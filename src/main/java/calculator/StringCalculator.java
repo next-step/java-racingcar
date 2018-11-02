@@ -12,16 +12,21 @@ public class StringCalculator {
 
         int result = Integer.parseInt(values[0]);
         for (int i = 1; i < values.length - 1; i++) {
-            if(isOperator(values[i])) {
-                result = calculate(values[i], result, Integer.parseInt(values[i + 1]));
-            }
+            result = calculate(values, result, i, i + 1);
         }
 
         return result;
     }
 
-    private static boolean isOperator(String value) {
-        return OPERATOR_PATTERN.matcher(value).matches();
+    private static boolean isNotOperator(String value) {
+        return !OPERATOR_PATTERN.matcher(value).matches();
+    }
+
+    private static int calculate(String[] values, int result, int currentIndex, int nextIndex) {
+        if(isNotOperator(values[currentIndex])) {
+            return result;
+        }
+        return calculate(values[currentIndex], result, Integer.parseInt(values[nextIndex]));
     }
 
     private static int calculate(String operator, int first, int second) {
