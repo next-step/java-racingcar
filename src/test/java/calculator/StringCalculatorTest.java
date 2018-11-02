@@ -37,9 +37,17 @@ public class StringCalculatorTest {
 	}
 
 	@Test
-	public void test_복합계산() {
+	public void test_복합계산_덧셈_곱셈_나눗셈_순서() {
 		StringCalculator stringCalculator = new StringCalculator();
 		int result = stringCalculator.calculate("2 + 3 * 2 / 2");
 		assertThat(result).isEqualTo(5);
 	}
+
+	@Test
+	public void test_복합계산_덧셈_나눗셈_곱셈_순서() {
+		StringCalculator stringCalculator = new StringCalculator();
+		int result = stringCalculator.calculate("10 + 10 / 2 * 2");
+		assertThat(result).isEqualTo(20);
+	}
+
 }

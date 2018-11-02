@@ -8,7 +8,7 @@ public class StringCalculator {
 		String[] values = text.split(" ");
 
 		int result = Integer.parseInt(values[0]);
-		for (int i = 1; i < values.length - 1; i++) {
+		for (int i = 1; i < values.length - 1; i += 2) {
 			Operator operator = Operator.findOperator(values[i]);
 			int number = Integer.parseInt(values[i + 1]);
 			result = operator.calculate(result, number);
