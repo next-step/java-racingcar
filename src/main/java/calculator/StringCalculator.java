@@ -1,40 +1,42 @@
 package calculator;
 
-import java.util.List;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
 
-    public static final Pattern OPERATOR_PATTERN = Pattern.compile("\\w");
-    public static final Pattern NUMBER_PATTERN = Pattern.compile("\\d");
+    public static final Pattern SPLIT_PATTERN = Pattern.compile("\\s");
+    public static final Pattern OPERATOR_PATTERN = Pattern.compile("\\W+");
 
     public static int calculate(String text) {
-        String[] values = text.split(" ");
-        int first = Integer.parseInt(values[0]);
-        int second = Integer.parseInt(values[2]);
+        String[] values = SPLIT_PATTERN.split(text);
 
-        for (String value : values) {
-
+        int result = Integer.parseInt(values[0]);
+        for (int i = 1; i < values.length - 1; i++) {
+            if(isOperator(values[i])) {
+                result = calculate(values[i], result, Integer.parseInt(values[i + 1]));
+            }
         }
 
+        return result;
+    }
 
-        if("+".equals(values[1])) {
-            return plus(first, second);
+    private static boolean isOperator(String value) {
+        return OPERATOR_PATTERN.matcher(value).matches();
+    }
+
+    private static int calculate(String operator, int first, int second) {
+        switch (operator) {
+            case "+" :
+                return plus(first, second);
+            case "-" :
+                return minus(first, second);
+            case "*" :
+                return multiply(first, second);
+            case "/" :
+                return divide(first, second);
+            default:
+                throw new IllegalArgumentException("지원되지 않는 연산자 입니다.");
         }
-
-        if("-".equals(values[1])) {
-            return minus(first, second);
-        }
-
-        if("*".equals(values[1])) {
-            return multiply(first, second);
-        }
-
-        if("/".equals(values[1])) {
-            return divide(first, second);
-        }
-
-        throw new IllegalArgumentException("잘못된 연산자!!");
     }
 
     private static int divide(int first, int second) {
