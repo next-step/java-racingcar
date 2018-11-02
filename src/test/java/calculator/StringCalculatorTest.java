@@ -30,6 +30,11 @@ public class StringCalculatorTest {
         assertThat(result).isEqualTo(12);
     }
 
+    @Test(expected = NullPointerException.class)
+    public void 연산자_아닐때(){
+        int result = StringCalculator.calculate("4 # 3");
+    }
+
     @Test
     public void split_길이테스트(){
         String text = "4 + 3";
