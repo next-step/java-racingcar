@@ -1,27 +1,31 @@
 package calculator;
 
 public class StringCalculator {
-    public static int calculator(String text) {
-        String[] values = text.split(" ");
 
-        int a = Integer.parseInt(values[0]);
-        int b = Integer.parseInt(values[2]);
-        String operator = values[1];
+    private CalculatorFactory factory = null;
 
-        return calculator(operator, a, b);
-
+    public StringCalculator(CalculatorFactory factory) {
+        this.factory = factory;
     }
 
-    private static int calculator(String operator, int first, int second) {
-        if ("+".equals(operator)) {
-            return first + second;
-        } else if ("-".equals(operator)) {
-            return first - second;
-        } else if ("*".equals(operator)) {
-            return first * second;
-        } else if ("/".equals(operator)) {
-            return first / second;
+    public int calculator(String text) {
+        String[] values = text.split(" ");
+
+        int sum = Integer.parseInt(values[0]);
+        String operator = null;
+
+        for (int i = 1; i < values.length; i+=2) {
+            // 연산자 추출
+            operator = values[i];
+
+            sum = calculator(operator, sum, Integer.parseInt(values[i+1]));
         }
-        return 0;
+
+        return sum;
+    }
+
+    private int calculator(String operator, int a, int b) {
+        Calculator calculator = factory.create(operator);
+        return calculator.calc(a, b);
     }
 }
