@@ -1,5 +1,7 @@
 package racinggame;
 
+import racinggame.rule.RandomNumberRacingGameRule;
+
 import java.util.Scanner;
 
 /**
@@ -15,6 +17,6 @@ public class InputView {
 		System.out.println("시도할 회수는 몇 회 인가요?");
 		int tryCount = scanner.nextInt();
 
-		return new RacingGame(carAmount, tryCount);
+		return new RacingGame(carAmount, tryCount, new RandomNumberRacingGameRule());
 	}
 }

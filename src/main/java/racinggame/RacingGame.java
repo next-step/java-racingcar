@@ -1,24 +1,25 @@
 package racinggame;
 
+import racinggame.rule.RacingGameRule;
+
 import java.util.*;
 
 /**
  * Created by hspark on 02/11/2018.
  */
 public class RacingGame {
-	private static final Random random = new Random();
-	private static final int STANDARD_SCORE = 5;
-	private static final int MAX_SCORE = 9;
 
+	private RacingGameRule gameRule;
 	private List<Car> cars;
 	private int tryCount;
 
-	public RacingGame(int carAmount, int tryCount) {
+	public RacingGame(int carAmount, int tryCount, RacingGameRule gameRule) {
 		this.cars = new ArrayList<>();
 		for (int i = 0; i < carAmount; i++) {
 			cars.add(new Car());
 		}
 		this.tryCount = tryCount;
+		this.gameRule = gameRule;
 	}
 
 	public List<Car> move() {
@@ -30,7 +31,7 @@ public class RacingGame {
 	}
 
 	private void moveCar(Car car) {
-		if (isAvailableMoving()) {
+		if (gameRule.isAvailableMoving()) {
 			car.moveForward();
 		}
 	}
@@ -45,10 +46,6 @@ public class RacingGame {
 
 	public boolean hasNextGame() {
 		return tryCount > 0;
-	}
-
-	protected boolean isAvailableMoving() {
-		return random.nextInt(MAX_SCORE + 1) > STANDARD_SCORE;
 	}
 
 	public int getRemainTryCount() {

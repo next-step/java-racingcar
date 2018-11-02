@@ -1,6 +1,7 @@
 package racinggame;
 
 import org.junit.Test;
+import racinggame.rule.RandomNumberRacingGameRule;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingGameTest {
 	@Test
 	public void test_레이싱게임_생성() {
-		RacingGame racingGame = new RacingGame(5, 5);
+		RacingGame racingGame = new RacingGame(5, 5, new RandomNumberRacingGameRule());
 
 		assertThat(racingGame.getCars().size()).isEqualTo(5);
 		assertThat(racingGame.getRemainTryCount()).isEqualTo(5);
@@ -20,12 +21,7 @@ public class RacingGameTest {
 
 	@Test
 	public void test_자동차_이동_확인() {
-		RacingGame racingGame = new RacingGame(5, 5) {
-			@Override
-			protected boolean isAvailableMoving() {
-				return true;
-			}
-		};
+		RacingGame racingGame = new RacingGame(5, 5, () -> true);
 
 		racingGame.move();
 
@@ -37,12 +33,7 @@ public class RacingGameTest {
 
 	@Test
 	public void test_자동차_미이동_확인() {
-		RacingGame racingGame = new RacingGame(5, 5) {
-			@Override
-			protected boolean isAvailableMoving() {
-				return false;
-			}
-		};
+		RacingGame racingGame = new RacingGame(5, 5, () -> false);
 
 		racingGame.move();
 
