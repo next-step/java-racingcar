@@ -28,7 +28,7 @@ public class RacingGame {
 	public List<Car> move() {
 		changeTime();
 		for(Car car : cars) {
-			int randomNumber = randomGenerator.getRandomPosition();
+			int randomNumber = randomGenerator.getRandomNumber();
 			car.move(randomNumber);
 		}
 		return cars;

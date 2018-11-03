@@ -12,7 +12,7 @@ public class RandomGenerator {
 		random = new Random();
 	}
 
-	public int getRandomPosition() {
+	public int getRandomNumber() {
 		return random.nextInt(MAX_MOVE_POSITION + 1);
 	}
 }

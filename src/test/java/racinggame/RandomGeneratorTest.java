@@ -14,7 +14,7 @@ public class RandomGeneratorTest {
 		RandomGenerator randomGenerator = new RandomGenerator();
 		List<Integer> randomNumbers = new ArrayList<>();
 		for(int index = 0; index < 100; index++) {
-			randomNumbers.add(randomGenerator.getRandomPosition());
+			randomNumbers.add(randomGenerator.getRandomNumber());
 		}
 
 		assertThat(randomNumbers.stream()
