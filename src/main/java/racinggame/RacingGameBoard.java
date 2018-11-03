@@ -1,6 +1,6 @@
 package racinggame;
 
-import java.util.List;
+import racinggame.rule.RandomNumberRacingGameRule;
 
 /**
  * Created by hspark on 03/11/2018.
@@ -8,12 +8,13 @@ import java.util.List;
 public class RacingGameBoard {
 
 	public static void main(String[] args) {
-		InputView inputView = new InputView();
-		ResultView resultView = new ResultView();
-		RacingGame racingGame = inputView.input();
+		int carAmount = InputView.inputCarAmount();
+		int tryCount = InputView.inputTryCount();
+
+		RacingGame racingGame = new RacingGame(carAmount, tryCount, new RandomNumberRacingGameRule());
 		while (racingGame.hasNextGame()) {
-			List<Car> carList = racingGame.move();
-			resultView.output(carList);
+			racingGame.move();
+			ResultView.output(racingGame.getCarDtoList());
 		}
 	}
 }

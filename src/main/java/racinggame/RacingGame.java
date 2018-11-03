@@ -3,6 +3,7 @@ package racinggame;
 import racinggame.rule.RacingGameRule;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by hspark on 02/11/2018.
@@ -22,33 +23,23 @@ public class RacingGame {
 		this.gameRule = gameRule;
 	}
 
-	public List<Car> move() {
+	public void move() {
 		tryCount -= 1;
 		for (Car car : cars) {
 			moveCar(car);
 		}
-		return getCars();
 	}
 
 	private void moveCar(Car car) {
-		if (gameRule.isAvailableMoving()) {
-			car.moveForward();
-		}
+		car.moveForward(gameRule);
 	}
 
-	public List<Car> getCars() {
-		List<Car> deepCopyList = new ArrayList();
-		for (Car car : cars) {
-			deepCopyList.add(new Car(car));
-		}
-		return deepCopyList;
+	public List<CarDTO> getCarDtoList() {
+		return cars.stream().map(CarDTO::of).collect(Collectors.toList());
+
 	}
 
 	public boolean hasNextGame() {
 		return tryCount > 0;
-	}
-
-	public int getRemainTryCount() {
-		return tryCount;
 	}
 }

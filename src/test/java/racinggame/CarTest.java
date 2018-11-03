@@ -8,13 +8,24 @@ import org.junit.Test;
  */
 public class CarTest {
 	@Test
-	public void test_자동차_이동() {
+	public void test_자동차_이동_이동이_가능할_시() {
 		Car car = new Car();
 
 		Assertions.assertThat(car.getPosition()).isEqualTo(0);
 
-		car.moveForward();
+		car.moveForward(()->true);
 
 		Assertions.assertThat(car.getPosition()).isEqualTo(1);
+	}
+
+	@Test
+	public void test_자동차_이동_이동이_불가능할_시() {
+		Car car = new Car();
+
+		Assertions.assertThat(car.getPosition()).isEqualTo(0);
+
+		car.moveForward(()->false);
+
+		Assertions.assertThat(car.getPosition()).isEqualTo(0);
 	}
 }

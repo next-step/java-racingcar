@@ -15,8 +15,8 @@ public class RacingGameTest {
 	public void test_레이싱게임_생성() {
 		RacingGame racingGame = new RacingGame(5, 5, new RandomNumberRacingGameRule());
 
-		assertThat(racingGame.getCars().size()).isEqualTo(5);
-		assertThat(racingGame.getRemainTryCount()).isEqualTo(5);
+		assertThat(racingGame.getCarDtoList().size()).isEqualTo(5);
+		assertThat(racingGame.hasNextGame()).isTrue();
 	}
 
 	@Test
@@ -25,8 +25,8 @@ public class RacingGameTest {
 
 		racingGame.move();
 
-		List<Car> cars = racingGame.getCars();
-		for (Car car : cars) {
+		List<CarDTO> cars = racingGame.getCarDtoList();
+		for (CarDTO car : cars) {
 			assertThat(car.getPosition()).isEqualTo(1);
 		}
 	}
@@ -37,8 +37,8 @@ public class RacingGameTest {
 
 		racingGame.move();
 
-		List<Car> cars = racingGame.getCars();
-		for (Car car : cars) {
+		List<CarDTO> cars = racingGame.getCarDtoList();
+		for (CarDTO car : cars) {
 			assertThat(car.getPosition()).isEqualTo(0);
 		}
 	}
