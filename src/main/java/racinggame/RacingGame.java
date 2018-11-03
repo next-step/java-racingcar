@@ -1,7 +1,6 @@
 package racinggame;
 
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import racinggame.domain.Car;
@@ -25,19 +24,14 @@ public class RacingGame {
 	public List<Car> move() {
 		changeTime();
 		for(Car car : cars) {
-			car.move(getRandomPosition());
+			int randomPosition = RandomGenerator.getInstance().getRandomPosition();
+			car.move(randomPosition);
 		}
 		return cars;
 	}
 
 	private void changeTime() {
 		time--;
-	}
-
-	private int getRandomPosition() {
-		final int MAX_MOVE_POSITION = 10;
-		Random random = new Random();
-		return random.nextInt(MAX_MOVE_POSITION);
 	}
 
 	public boolean isOver() {
