@@ -36,7 +36,6 @@ public class RacingGame {
 
 	public List<CarDTO> getCarDtoList() {
 		return cars.stream().map(CarDTO::of).collect(Collectors.toList());
-
 	}
 
 	public boolean hasNextGame() {

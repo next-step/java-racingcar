@@ -8,8 +8,8 @@ import racinggame.rule.RandomNumberRacingGameRule;
 public class RacingGameBoard {
 
 	public static void main(String[] args) {
-		int carAmount = InputView.inputCarAmount();
-		int tryCount = InputView.inputTryCount();
+		int carAmount = InputView.input(InputType.CAR_AMOUNT);
+		int tryCount = InputView.input(InputType.TRY_COUNT);
 
 		RacingGame racingGame = new RacingGame(carAmount, tryCount, new RandomNumberRacingGameRule());
 		while (racingGame.hasNextGame()) {
