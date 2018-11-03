@@ -35,5 +35,6 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.calculate("2 + 3 * 4")).isEqualTo(20);
         assertThat(StringCalculator.calculate("2 + 3 * 4 / 2")).isEqualTo(10);
         assertThat(StringCalculator.calculate("2 + 3 * 4 / 2 + 2")).isEqualTo(12);
+        assertThat(StringCalculator.calculate("2 + 3 * 4 / 2 + 2 * 1")).isEqualTo(12);
     }
 }
