@@ -6,13 +6,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleUI {
-    private Scanner scanner;
 
-    public ConsoleUI() {
-        this.scanner = new Scanner(System.in);
-    }
+    public static RacingGameCreateRequest getRacingGameCreateInput() {
+        Scanner scanner = new Scanner(System.in);
 
-    public RacingGameCreateRequest getRacingGameCreateInput() {
         System.out.println("자동차 대수는 몇 대 인가요?");
         int number = scanner.nextInt();
 
@@ -22,15 +19,16 @@ public class ConsoleUI {
         return new RacingGameCreateRequest(number, time);
     }
 
-    public void printRacingCarPositions(List<Integer> positions) {
+    public static void printRacingCarPositions(List<Integer> positions) {
         positions.forEach(i -> {
             String visiblePosition = new String(new char[i]).replace("\0", "-");
             System.out.println(visiblePosition);
         });
+
         System.out.println();
     }
 
-    public void printResultHeader() {
+    public static void printResultHeader() {
         System.out.println("\n실행결과");
     }
 }

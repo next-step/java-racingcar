@@ -1,4 +1,4 @@
-package racing.domain;
+package racing.testutil;
 
 import racing.util.RandomNumberProvider;
 

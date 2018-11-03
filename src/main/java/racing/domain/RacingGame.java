@@ -1,5 +1,7 @@
 package racing.domain;
 
+import racing.dto.RacingGameCreateRequest;
+
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -10,9 +12,9 @@ public class RacingGame {
     private int totalTime;
     private int currentTime;
 
-    public RacingGame(int racingCarNumber, int totalTime) {
-        this.initRacingCars(racingCarNumber);
-        this.totalTime = totalTime;
+    public RacingGame(RacingGameCreateRequest request) {
+        this.initRacingCars(request.getCarNumber());
+        this.totalTime = request.getTime();
         this.currentTime = 0;
     }
 
@@ -26,8 +28,7 @@ public class RacingGame {
     public List<Integer> race() {
         currentTime += 1;
         return racingCars.stream()
-                .peek(RacingCar::rush)
-                .map(RacingCar::getPosition)
+                .map(RacingCar::rush)
                 .collect(toList());
     }
 

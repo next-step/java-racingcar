@@ -2,6 +2,8 @@ package racing.domain;
 
 import org.junit.Before;
 import org.junit.Test;
+import racing.dto.RacingGameCreateRequest;
+import racing.testutil.TestNumberProvider;
 
 import java.util.Arrays;
 
@@ -17,24 +19,23 @@ public class RacingGameTest {
 
     @Test
     public void 레이싱_테스트() {
-        RacingGame racingGame = new RacingGame(3, 3);
-        testNumberProvider.setTestNumber(4);
+        RacingGameCreateRequest request = new RacingGameCreateRequest(3,3);
+        RacingGame racingGame = new RacingGame(request);
+
+        testNumberProvider.setTestNumber(RacingCar.MOVE_BOUND_VALUE);
+
+        // 전진 결과가 리스트와 맞는지 확인한다.
         assertThat(racingGame.race())
                 .isEqualTo(Arrays.asList(1, 1, 1));
-
-        testNumberProvider.setTestNumber(5);
-        assertThat(racingGame.race())
-                .isEqualTo(Arrays.asList(2, 2, 2));
-
-        testNumberProvider.setTestNumber(3);
-        assertThat(racingGame.race())
-                .isEqualTo(Arrays.asList(2, 2, 2));
     }
 
     @Test
     public void 레이싱_횟수_제한_확인() {
         // 총 race는 2회 가능하도록 설정
-        RacingGame racingGame = new RacingGame(1, 2);
+        RacingGameCreateRequest request = new RacingGameCreateRequest(1,2);
+        RacingGame racingGame = new RacingGame(request);
+
+        // 기본값은 0이 설정됨
         assertThat(racingGame.isRacingAvailable()).isTrue();
 
         // 1회 race를 하더라도 다음 레이스는 가능
@@ -44,7 +45,5 @@ public class RacingGameTest {
         // 2회 레이스 후 레이스는 더이상 불가능
         racingGame.race();
         assertThat(racingGame.isRacingAvailable()).isFalse();
-
-
     }
 }

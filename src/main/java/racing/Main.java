@@ -6,6 +6,8 @@ import racing.dto.RacingGameCreateRequest;
 
 import java.util.List;
 
+import static racing.ui.ConsoleUI.getRacingGameCreateInput;
+
 /**
  * 초간단 자동차 경주 게임을 구현한다.
  * <p>
@@ -18,10 +20,10 @@ public class Main {
 
     public static void main(String[] args) {
         ConsoleUI consoleUI = new ConsoleUI();
-        RacingGameCreateRequest request = consoleUI.getRacingGameCreateInput();
+        RacingGameCreateRequest request = getRacingGameCreateInput();
 
         // 레이싱게임 클래스를 생성합니다.
-        RacingGame racingGame = new RacingGame(request.getCarNumber(), request.getTime());
+        RacingGame racingGame = new RacingGame(request);
 
         consoleUI.printResultHeader();
         // 횟수가 끝날때까지 작업을 수행합니다
