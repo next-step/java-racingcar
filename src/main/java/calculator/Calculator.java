@@ -30,16 +30,16 @@ public class Calculator {
     }
 
     enum Operator {
-        ADD         ("+", (leftSide, rightSide) -> Calculator.add(leftSide, rightSide)),
-        SUBTRACT    ("-", (leftSide, rightSide) -> Calculator.subtract(leftSide, rightSide)),
-        MULTIPLE    ("*", (leftSide, rightSide) -> Calculator.multiple(leftSide, rightSide)),
-        DIVIDE      ("/", (leftSide, rightSide) -> Calculator.divide(leftSide, rightSide));
+        ADD         ("+", Calculator::add),
+        SUBTRACT    ("-", Calculator::subtract),
+        MULTIPLE    ("*", Calculator::multiple),
+        DIVIDE      ("/", Calculator::divide);
 
-        private String operator;
+        private String operatorName;
         private BiFunction<Integer, Integer, Integer> formula;
 
-        Operator(String operators, BiFunction<Integer, Integer, Integer> formula) {
-            this.operator = operators;
+        Operator(String operatorName, BiFunction<Integer, Integer, Integer> formula) {
+            this.operatorName = operatorName;
             this.formula = formula;
         }
 
@@ -49,7 +49,7 @@ public class Calculator {
 
         private static Operator findByOperatorName(String operatorName) {
             return Stream.of(Operator.values())
-                    .filter(o -> o.operator.equals(operatorName))
+                    .filter(o -> o.operatorName.equals(operatorName))
                     .findFirst()
                     .orElseThrow(IllegalArgumentException::new);
         }
