@@ -9,19 +9,35 @@ public class StringCalculator {
     }
 
     public int calculator(String text) {
-        String[] values = text.split(" ");
+        String[] values = splitFormula(text);
+        if (values.length == 0) {
+            return 0;
+        }
+        return calculator(values);
+    }
 
-        int sum = Integer.parseInt(values[0]);
+    private int calculator(String[] values) {
         String operator = null;
+        int sum = getAndParseNumber(values[0]);
 
         for (int i = 1; i < values.length; i+=2) {
-            // 연산자 추출
-            operator = values[i];
-
-            sum = calculator(operator, sum, Integer.parseInt(values[i+1]));
+            operator = getOperator(values[i]);
+            sum = calculator(operator, sum, getAndParseNumber(values[i+1]));
         }
 
         return sum;
+    }
+
+    private String getOperator(String value) {
+        return value;
+    }
+
+    private int getAndParseNumber(String value) {
+        return Integer.parseInt(value);
+    }
+
+    private String[] splitFormula(String text) {
+        return text.split("\\s+");
     }
 
     private int calculator(String operator, int a, int b) {
