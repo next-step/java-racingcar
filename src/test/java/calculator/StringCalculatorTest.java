@@ -50,4 +50,10 @@ public class StringCalculatorTest {
 		assertThat(result).isEqualTo(20);
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void test_연산자위치가_연산자가_아닐_경우(){
+		StringCalculator stringCalculator = new StringCalculator();
+		int result = stringCalculator.calculate("10 10 10 / 2 * 2");
+	}
+
 }

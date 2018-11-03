@@ -1,7 +1,6 @@
 package calculator;
 
 import java.util.Arrays;
-import java.util.function.BiFunction;
 
 /**
  * Created by hspark on 02/11/2018.
@@ -13,9 +12,9 @@ public enum Operator {
 	SUB("/", (a, b) -> a / b);
 
 	private String operator;
-	private BiFunction<Integer, Integer, Integer> calculator;
+	private IntCalculator calculator;
 
-	Operator(String operators, BiFunction<Integer, Integer, Integer> calculator) {
+	Operator(String operators, IntCalculator calculator) {
 		this.operator = operators;
 		this.calculator = calculator;
 	}
@@ -23,11 +22,11 @@ public enum Operator {
 	public static Operator findOperator(String operatorStr) {
 		return Arrays.stream(Operator.values())
 			.filter(operator -> operator.equalToString(operatorStr))
-			.findFirst().orElse(null);
+			.findFirst().orElseThrow(IllegalArgumentException::new);
 	}
 
 	public int calculate(int a, int b){
-		return calculator.apply(a, b);
+		return this.calculator.calculate(a, b);
 	}
 
 	private boolean equalToString(String str) {
