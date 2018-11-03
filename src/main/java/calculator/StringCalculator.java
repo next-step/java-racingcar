@@ -5,28 +5,41 @@ public class StringCalculator {
 
     public static int calculate(String exp){
         String[] values = exp.split(" ");
-        int result = Integer.parseInt(values[0]);
-        for(int i = 1; i < values.length-1; i++){
-            result = getSum(values, result, i);
+        int result = strToNum(values[0]);
+        for(int i = 1; i < values.length-1; i+=2){
+            result = getResult(values[i], strToNum(values[i+1]), result);
         }
       return result;
     }
 
-    private static int getSum(String[] values, int result, int index) {
-        if(values[index].equals("+")){
-            result += Integer.parseInt(values[index+1]);
-        }if(values[index].equals("-")){
-            result -= Integer.parseInt(values[index+1]);
-        }else  if(values[index].equals("/")){
-            result /= Integer.parseInt(values[index+1]);
-        }else  if(values[index].equals("*")){
-            result *= Integer.parseInt(values[index+1]);
+    private static int strToNum(String number) {
+        return Integer.parseInt(number);
+    }
+
+    private static int getResult(String operation, int number, int result) {
+        if(operation.equals("+")){
+            result = add(number, result);
         }
-        else if(values[index] == null || values[index+1] == null){
+        if(operation.equals("-")){
+            result -= number;
+        }
+        if(operation.equals("/")){
+            result /= number;
+        }
+        if(operation.equals("*")){
+            result *= number;
+        }
+        if(operation == null){
             throw new NullPointerException();
-        }else if(values[index].equals("") || values[index+1].equals("")){
+        }
+        if(operation.equals("")){
             throw new IllegalArgumentException();
         }
+        return result;
+    }
+
+    private static int add(int number, int result) {
+        result += number;
         return result;
     }
 

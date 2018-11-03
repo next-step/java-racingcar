@@ -33,23 +33,20 @@ public class StringCalculatorTest {
 
     @Test
     public void 종합테스트() {
-        int result = StringCalculator.calculate( "10 + 2 - 3 / 3");
-        assertThat(result).isEqualTo(3);
+        int result = StringCalculator.calculate( "9 + 2 - 3 / 2");
+        assertThat(result).isEqualTo(4);
         result = StringCalculator.calculate( "2 + 3 * 4 / 2");
         assertThat(result).isEqualTo(10);
-
     }
 
     @Test(expected=IllegalArgumentException.class)
     public void 공백테스트() {
-        int result = StringCalculator.calculate( "");
+        StringCalculator.calculate( "");
     }
 
     @Test(expected=NullPointerException.class)
     public void 널테스트()  {
-        String str = null;
-        int result = StringCalculator.calculate(str);
-        assertThat(result).isEqualTo(3);
+        StringCalculator.calculate(null);
 
     }
 }
