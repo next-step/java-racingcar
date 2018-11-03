@@ -30,8 +30,8 @@ public class RacingGame {
 	}
 
 	public List<CarDTO> getTopRankingCarDtoList() {
-		int maxValue = getMaxPosition();
-		return this.cars.stream().filter(car -> car.getPosition() == maxValue)
+		final int maxPosition = getMaxPosition();
+		return this.cars.stream().filter(car -> car.isEqualPosition(maxPosition))
 			.map(CarDTO::of).collect(Collectors.toList());
 	}
 
@@ -48,7 +48,6 @@ public class RacingGame {
 	}
 
 	private int getMaxPosition() {
-		return this.cars.stream().max(Comparator.comparingInt(Car::getPosition))
-			.orElseThrow(ArrayIndexOutOfBoundsException::new).getPosition();
+		return Collections.max(this.cars, Comparator.comparing(Car::getPosition)).getPosition();
 	}
 }

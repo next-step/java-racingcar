@@ -28,4 +28,8 @@ public class Car {
 		}
 	}
 
+	public boolean isEqualPosition(int position) {
+		return this.position == position;
+	}
+
 }
