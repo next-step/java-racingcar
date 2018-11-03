@@ -1,6 +1,5 @@
 package racinggame.car;
 
-import org.apache.commons.lang3.StringUtils;
 import racinggame.rule.RacingGameRule;
 
 /**
@@ -10,10 +9,6 @@ public class Car {
 
 	private String name;
 	private int position;
-
-	public Car() {
-		name = StringUtils.EMPTY;
-	}
 
 	public Car(String name) {
 		this.name = name;
