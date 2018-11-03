@@ -24,10 +24,14 @@ public class RacingGame {
 	}
 
 	public void move() {
-		tryCount -= 1;
+		reduceTryCount();
 		for (Car car : cars) {
 			car.moveForward(gameRule);
 		}
+	}
+
+	private void reduceTryCount() {
+		tryCount -= 1;
 	}
 
 	public List<CarDTO> getCarDtoList() {
