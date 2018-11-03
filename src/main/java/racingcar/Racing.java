@@ -9,6 +9,8 @@ public class Racing {
     private int tryTime;
     private List<RacingCar> racingCars;
 
+    private static final int RANDOM_NUMBER_BOUNDARY = 10;
+
     public Racing(int carNum, int tryTime) {
         this.racingCars = new ArrayList<>(carNum);
         for(int i = 0; i < carNum; i++){
@@ -32,7 +34,7 @@ public class Racing {
 
     public static int generateRandomNum() {
         Random random = new Random();
-        return random.nextInt(10);
+        return random.nextInt(RANDOM_NUMBER_BOUNDARY);
     }
 
     public List<RacingCar> getRacingCars() {
@@ -46,7 +48,6 @@ public class Racing {
         Racing r = new Racing(carNum, tryTime);
         r.startRace();
 
-        ResultView resultView = new ResultView();
-        resultView.printCars(r.getRacingCars());
+        ResultView.printCars(r.getRacingCars());
     }
 }

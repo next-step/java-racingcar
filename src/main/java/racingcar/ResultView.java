@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ResultView {
 
-    public void printCars(List<RacingCar> racingCars) {
+    public static void printCars(List<RacingCar> racingCars) {
         for(RacingCar racingCar : racingCars) {
             System.out.println(racingCar.toString());
         }

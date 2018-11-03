@@ -3,6 +3,7 @@ package racingcar;
 public class RacingCar {
 
     private int position = 0;
+    private static final int MOVING_CONDITION = 4;
 
     public int move(int random) {
         if(isMoving(random))
@@ -11,8 +12,8 @@ public class RacingCar {
         return position;
     }
 
-    public static boolean isMoving(int n) {
-        return n >= 4;
+    private boolean isMoving(int n) {
+        return n >= MOVING_CONDITION;
     }
 
     @Override

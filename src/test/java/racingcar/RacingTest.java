@@ -6,33 +6,26 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingTest {
 
-
-    //움직인 조건에 대한 테스트 코드
     @Test
-    public void 움직임_조건_4이상인_경우에만_움직임() {
-        boolean result;
-        result = RacingCar.isMoving(4);
-        assertThat(result).isEqualTo(true);
+    public void move_동작_테스트_움직임_조건_4미만인_경우_정지() {
+        RacingCar car = new RacingCar();
 
-        result = RacingCar.isMoving(6);
-        assertThat(result).isEqualTo(true);
+        int result = car.move(3);
+        assertThat(result).isEqualTo(0);
+    }
 
-        result = RacingCar.isMoving(2);
-        assertThat(result).isEqualTo(false);
+    @Test
+    public void move_동작_테스트_움직임_조건_4이상인_경우_이동() {
+        RacingCar car = new RacingCar();
+
+        int result = car.move(4);
+        assertThat(result).isEqualTo(1);
     }
 
     @Test
     public void 랜덤_숫자_생성() {
-       int random = Racing.generateRandomNum();
-       assertThat(random).isBetween(0, 9);
+        int random = Racing.generateRandomNum();
+        assertThat(random).isBetween(0, 9);
     }
 
-    @Test
-    public void move_동작_테스트() {
-        RacingCar car = new RacingCar();
-
-        int result = car.move(8);
-        assertThat(result).isEqualTo(1);
-
-    }
 }
