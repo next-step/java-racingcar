@@ -2,6 +2,8 @@ package racinggame.domain;
 
 public class Car {
 
+	public static final int MOVE_CONDITION = 4;
+
 	private int position;
 
 	public Car() {
@@ -16,7 +18,6 @@ public class Car {
 	}
 
 	public boolean canMove(int randomNumber) {
-		final int MOVE_CONDITION = 4;
 		return randomNumber >= MOVE_CONDITION;
 	}
 

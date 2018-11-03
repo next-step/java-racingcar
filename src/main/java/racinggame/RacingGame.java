@@ -7,6 +7,8 @@ import racinggame.domain.Car;
 
 public class RacingGame {
 
+	public static final int LAST_TIME = 0;
+
 	private List<Car> cars;
 	private int time;
 	private RandomGenerator randomGenerator;
@@ -37,7 +39,6 @@ public class RacingGame {
 	}
 
 	public boolean isOver() {
-		final int LAST_GAME = 0;
-		return time == LAST_GAME;
+		return time == LAST_TIME;
 	}
 }
