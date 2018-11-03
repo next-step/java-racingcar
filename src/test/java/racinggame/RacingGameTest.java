@@ -11,12 +11,13 @@ public class RacingGameTest {
 
 	@Test
 	public void 자동차_이동_검증() {
-		RacingGame racingGame = new RacingGame(5, 5);
+		final int time = 5;
+		RacingGame racingGame = new RacingGame(5, time);
 
 		List<Car> cars = moveWhenGameisOver(racingGame);
 
 		assertThat(cars.stream()
-				.filter(car -> car.getCurrentPosition() == 0 || car.getCurrentPosition() >= 4)
+				.filter(car -> car.getCurrentPosition() >= 0 && car.getCurrentPosition() <= time)
 				.collect(Collectors.toList())).hasSameSizeAs(cars);
 	}
 

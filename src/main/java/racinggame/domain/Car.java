@@ -8,16 +8,16 @@ public class Car {
 		position = 0;
 	}
 
-	public int move(int randomPosition) {
-		if(!canMove(randomPosition)) {
+	public int move(int randomNumber) {
+		if(!canMove(randomNumber)) {
 			return position;
 		}
-		return position += randomPosition;
+		return ++position;
 	}
 
-	public boolean canMove(int randomPosition) {
+	public boolean canMove(int randomNumber) {
 		final int MOVE_CONDITION = 4;
-		return randomPosition >= MOVE_CONDITION;
+		return randomNumber >= MOVE_CONDITION;
 	}
 
 	public int getCurrentPosition() {
