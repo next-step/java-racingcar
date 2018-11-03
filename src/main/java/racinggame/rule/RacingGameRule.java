@@ -1,6 +1,6 @@
 package racinggame.rule;
 
-import racinggame.Car;
+import racinggame.car.Car;
 
 /**
  * Created by hspark on 03/11/2018.

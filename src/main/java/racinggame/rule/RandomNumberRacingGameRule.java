@@ -1,6 +1,6 @@
 package racinggame.rule;
 
-import racinggame.Car;
+import racinggame.car.Car;
 
 import java.util.Random;
 
