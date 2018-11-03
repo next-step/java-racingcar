@@ -1,9 +1,10 @@
 package racing;
 
 import racing.domain.RacingGame;
+import racing.ui.ConsoleUI;
+import racing.dto.RacingGameCreateRequest;
 
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * 초간단 자동차 경주 게임을 구현한다.
@@ -16,31 +17,17 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int number = scanner.nextInt();
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int time = scanner.nextInt();
+        ConsoleUI consoleUI = new ConsoleUI();
+        RacingGameCreateRequest request = consoleUI.getRacingGameCreateInput();
 
         // 레이싱게임 클래스를 생성합니다.
-        RacingGame racingGame = new RacingGame(number, time);
+        RacingGame racingGame = new RacingGame(request.getCarNumber(), request.getTime());
 
-        // 횟수가 끝날때까지 작업을 수행합니다.
-        System.out.println();
-        System.out.println("실행결과");
-
+        consoleUI.printResultHeader();
+        // 횟수가 끝날때까지 작업을 수행합니다
         while (racingGame.isRacingAvailable()) {
             List<Integer> positions = racingGame.race();
-            drawRacingCarPositions(positions);
+            consoleUI.printRacingCarPositions(positions);
         }
-    }
-
-    private static void drawRacingCarPositions(List<Integer> positions) {
-        positions.forEach(i -> {
-            String visiblePosition = new String(new char[i]).replace("\0", "-");
-            System.out.println(visiblePosition);
-        });
-        System.out.println();
     }
 }
