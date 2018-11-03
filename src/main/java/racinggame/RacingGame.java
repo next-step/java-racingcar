@@ -26,12 +26,8 @@ public class RacingGame {
 	public void move() {
 		tryCount -= 1;
 		for (Car car : cars) {
-			moveCar(car);
+			car.moveForward(gameRule);
 		}
-	}
-
-	private void moveCar(Car car) {
-		car.moveForward(gameRule);
 	}
 
 	public List<CarDTO> getCarDtoList() {
