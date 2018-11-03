@@ -6,6 +6,9 @@ public class RacingGame {
     private int[] cars;
     private int tryCnt;
 
+    private static final int MAX_NUMBER = 9;
+    private static final int POSSIBLE_NUMBER = 4;
+
     public RacingGame(int carCnt, int tryCnt){
         this.cars = new int[carCnt];
         this.tryCnt = tryCnt;
@@ -34,7 +37,7 @@ public class RacingGame {
 
     protected boolean isPossibleMove(){
         Random number = new Random();
-        return number.nextInt(9) >= 4;
+        return number.nextInt(MAX_NUMBER) >= POSSIBLE_NUMBER;
     }
 
     public int[] getCars() {
