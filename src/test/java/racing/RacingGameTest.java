@@ -3,64 +3,69 @@ package racing;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
 
+import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Arrays;
 
 
 public class RacingGameTest {
 
+    private RacingGame game;
+
+    private final int cars = 3;
+    private final int times = 2;
+
+    @Before
+    public void setup() {
+        game = new RacingGame(times, cars);
+    }
+
     @Test
-    public void 레이싱정상동작() {
-        RacingGame game = new RacingGame(2, 3);
+    public void 레이싱_정상동작_확인() {
+        for (int i = 0; i < times; i++) {
+            game.move();
+        }
 
-        int[] gameResult = null;
-
-        gameResult = game.move();
-        gameResult = game.move();
-
-        assertThat(game.isReady()).isFalse();
-        assertThat(game.isRacing()).isFalse();
         assertThat(game.isFinish()).isTrue();
-        assertThat(gameResult.length).isEqualTo(3);
+        assertThat(game.getCarsPositions().length).isEqualTo(cars);
     }
 
     @Test
-    public void 레이싱래뒤상태() {
-        RacingGame game = new RacingGame(2, 3);
+    public void 레이싱_이동_조건_만족시_확인() {
+        int moveCondtion = 4;
 
-        int[] gameResult = null;
+        setTestMoveGenerator(moveCondtion);
 
-        assertThat(game.isReady()).isTrue();
-        assertThat(game.isRacing()).isFalse();
-        assertThat(game.isFinish()).isFalse();
+        game.move();
+
+        assertCarMove(1);
     }
 
     @Test
-    public void 레이싱게임중() {
-        RacingGame game = new RacingGame(2, 3);
+    public void 레이싱_이동_조건_불만족시_확인() {
+        int moveCondtion = 3;
 
-        int[] gameResult = null;
+        setTestMoveGenerator(moveCondtion);
 
-        gameResult = game.move();
+        game.move();
 
-        assertThat(game.isReady()).isFalse();
-        assertThat(game.isRacing()).isTrue();
-        assertThat(game.isFinish()).isFalse();
-        assertThat(gameResult.length).isEqualTo(3);
+        assertCarMove(0);
     }
 
-
-    @Test
-    public void 레이싱완료후이동() {
-        RacingGame game = new RacingGame(2, 3);
-
-        int[] gameResult = null;
-
-        try {
-            game.move();
-            game.move();
-            game.move();
-            fail("Racing Game is finish.");
-        } catch (RuntimeException e) {
+    private void assertCarMove(int i) {
+        for (int position : game.getCarsPositions()) {
+            assertThat(position).isEqualTo(i);
         }
     }
+
+    private void setTestMoveGenerator(int moveCondtion) {
+        game.setMoveNumberGenerator(new RandomMoveGenerator() {
+            @Override
+            public int generate() {
+                return moveCondtion;
+            }
+        });
+    }
+
 }

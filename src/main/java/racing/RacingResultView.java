@@ -1,15 +1,23 @@
 package racing;
 
 public class RacingResultView {
-    private String separator = "-";
+    private static String separator = "-";
 
-    public void render(int[] result) {
+    static {
+        System.out.println("실행 결과:");
+    }
+
+    public static void render(int[] result) {
         for (int position : result) {
-            for (int i = 0; i < position; i++) {
-                System.out.printf(separator);
-            }
+            renderCarStatus(position);
             System.out.println();
         }
         System.out.println();
+    }
+
+    private static void renderCarStatus(int position) {
+        for (int i = 0; i < position; i++) {
+            System.out.printf(separator);
+        }
     }
 }
