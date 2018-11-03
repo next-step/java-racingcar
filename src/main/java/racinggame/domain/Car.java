@@ -16,7 +16,8 @@ public class Car {
 	}
 
 	public boolean canMove(int randomPosition) {
-		return randomPosition >= 4;
+		final int MOVE_CONDITION = 4;
+		return randomPosition >= MOVE_CONDITION;
 	}
 
 	public int getCurrentPosition() {
