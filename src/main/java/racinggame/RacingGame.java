@@ -9,10 +9,12 @@ public class RacingGame {
 
 	private List<Car> cars;
 	private int time;
+	private RandomGenerator randomGenerator;
 
 	public RacingGame(int carNumber, int time) {
 		readyCar(carNumber);
 		this.time = time;
+		this.randomGenerator = new RandomGenerator();
 	}
 
 	private void readyCar(int carNumber) {
@@ -24,7 +26,7 @@ public class RacingGame {
 	public List<Car> move() {
 		changeTime();
 		for(Car car : cars) {
-			int randomNumber = RandomGenerator.getInstance().getRandomPosition();
+			int randomNumber = randomGenerator.getRandomPosition();
 			car.move(randomNumber);
 		}
 		return cars;

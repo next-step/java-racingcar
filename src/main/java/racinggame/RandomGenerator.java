@@ -8,19 +8,11 @@ public class RandomGenerator {
 
 	private Random random;
 
-	private RandomGenerator() {
+	public RandomGenerator() {
 		random = new Random();
 	}
 
-	private static class Singleton {
-		private static final RandomGenerator instance = new RandomGenerator();
-	}
-
-	public static RandomGenerator getInstance() {
-		return Singleton.instance;
-	}
-
 	public int getRandomPosition() {
-		return getInstance().random.nextInt(MAX_MOVE_POSITION + 1);
+		return random.nextInt(MAX_MOVE_POSITION + 1);
 	}
 }

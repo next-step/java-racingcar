@@ -11,9 +11,10 @@ public class RandomGeneratorTest {
 
 	@Test
 	public void 랜덤숫자_최대값_생성_검증() {
+		RandomGenerator randomGenerator = new RandomGenerator();
 		List<Integer> randomNumbers = new ArrayList<>();
 		for(int index = 0; index < 100; index++) {
-			randomNumbers.add(RandomGenerator.getInstance().getRandomPosition());
+			randomNumbers.add(randomGenerator.getRandomPosition());
 		}
 
 		assertThat(randomNumbers.stream()
