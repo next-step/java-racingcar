@@ -14,7 +14,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void add(){
+    public void add() {
         System.out.println("test");
         int result = Calculator.add(3, 5);
         assertThat(result).isEqualTo(8);

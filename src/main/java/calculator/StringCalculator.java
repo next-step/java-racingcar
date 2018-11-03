@@ -2,31 +2,37 @@ package calculator;
 
 public class StringCalculator {
 
-    public static int calculator(String text){
+    public static int calculator(String text) {
 
         String [] values = text.split(" ");
 
+        int result = strToInt(values[0]);
 
-        int first = Integer.parseInt(values[0]);
-        int second = Integer.parseInt(values[2]);
+        for(int i = 1; i < values.length; i+=2) {
+            result = calculate(values[i], result, strToInt(values[i+1]));
+        }
 
-        return calculate(values[1], first, second);
+        return result;
     }
 
-    private static int calculate(String value, int first, int second) {
-        if(value.equals("+")){
+    private static int strToInt(String numstr) {
+        return Integer.parseInt(numstr);
+    }
+
+    private static int calculate(String operation, int first, int second) {
+        if(operation.equals("+")) {
             return first + second;
         }
 
-        if(value.equals("-")){
+        if(operation.equals("-")) {
             return first - second;
         }
 
-        if(value.equals("*")){
+        if(operation.equals("*")) {
             return first * second;
         }
 
-        if(value.equals("/")){
+        if(operation.equals("/")) {
             return first / second;
         }
 
