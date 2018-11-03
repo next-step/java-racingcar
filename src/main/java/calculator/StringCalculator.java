@@ -2,10 +2,10 @@ package calculator;
 
 public class StringCalculator {
 
-    public static int calculate(String text) {
-        String[] values = splitExpression(text);
+    private static final String SPLIT_TOKEN = " ";
 
-        return calculateExpression(values);
+    public static int calculate(String text) {
+        return calculateExpression(splitExpression(text));
     }
 
     public static int parseToNumeric(String value) {
@@ -13,7 +13,7 @@ public class StringCalculator {
     }
 
     public static String[] splitExpression(String text) {
-        return text.split(" ");
+        return text.split(SPLIT_TOKEN);
     }
 
     public static int calculateExpression(String[] expression) {
