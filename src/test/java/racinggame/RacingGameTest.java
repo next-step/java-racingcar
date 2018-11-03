@@ -73,6 +73,6 @@ public class RacingGameTest {
 
 		assertThat(actual.size()).isEqualTo(2);
 		assertThat(actual).extracting("name").contains(CAR_NAME_ARR[0], CAR_NAME_ARR[1]);
-		assertThat(actual.get(0).getPosition()).isEqualTo(1);
+		assertThat(actual).extracting("position").contains(1, 1);
 	}
 }
