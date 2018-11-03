@@ -21,7 +21,7 @@ public class RacingGameTest {
 
 	@Test
 	public void test_자동차_이동_확인() {
-		RacingGame racingGame = new RacingGame(5, 5, () -> true);
+		RacingGame racingGame = new RacingGame(5, 5, (car) -> true);
 
 		racingGame.move();
 
@@ -33,7 +33,7 @@ public class RacingGameTest {
 
 	@Test
 	public void test_자동차_미이동_확인() {
-		RacingGame racingGame = new RacingGame(5, 5, () -> false);
+		RacingGame racingGame = new RacingGame(5, 5, (car) -> false);
 
 		racingGame.move();
 

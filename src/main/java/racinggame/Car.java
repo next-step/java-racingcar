@@ -14,7 +14,7 @@ public class Car {
 	}
 
 	public void moveForward(RacingGameRule gameRule) {
-		if (gameRule.isAvailableMoving()) {
+		if (gameRule.isAvailableMoving(this)) {
 			position++;
 		}
 	}
