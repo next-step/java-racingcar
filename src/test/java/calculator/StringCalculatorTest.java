@@ -31,14 +31,9 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void 누적연산1() {
-        int result = StringCalculator.calculate("2 + 3 * 4");
-        assertThat(result).isEqualTo(20);
-    }
-
-    @Test
-    public void 누적연산2() {
-        int result = StringCalculator.calculate("2 + 3 * 4 / 2");
-        assertThat(result).isEqualTo(10);
+    public void 누적연산() {
+        assertThat(StringCalculator.calculate("2 + 3 * 4")).isEqualTo(20);
+        assertThat(StringCalculator.calculate("2 + 3 * 4 / 2")).isEqualTo(10);
+        assertThat(StringCalculator.calculate("2 + 3 * 4 / 2 + 2")).isEqualTo(12);
     }
 }
