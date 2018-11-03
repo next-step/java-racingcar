@@ -10,14 +10,8 @@ public class StringCalculator {
         int result = calculate(values[1], first, second);
 
         if(values.length > 3){
-            String reValue = String.valueOf(result);
-            for(int i=3; i<values.length; i++){
-                reValue += values[i];
-            }
-            System.out.println(reValue);
-            calculate(reValue);
+            return recur(values, result);
         }
-
         return result;
     }
 
@@ -37,4 +31,11 @@ public class StringCalculator {
         throw new IllegalArgumentException();
     }
 
+    public static int recur(String[] values, int result){
+        String reValue = String.valueOf(result);
+        for(int i=3; i<values.length; i++){
+            reValue += (" " + values[i]);
+        }
+        return calculate(reValue);
+    }
 }
