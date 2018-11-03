@@ -43,21 +43,13 @@ public class Calculator {
             this.formula = formula;
         }
 
-        private String getOperator() {
-            return operator;
-        }
-
-        private BiFunction<Integer, Integer, Integer> getFormula() {
-            return formula;
-        }
-
         public static int apply(String operator, int leftSide, int rightSide) {
-            return findByOperatorName(operator).getFormula().apply(leftSide, rightSide);
+            return findByOperatorName(operator).formula.apply(leftSide, rightSide);
         }
 
         private static Operator findByOperatorName(String operatorName) {
             return Stream.of(Operator.values())
-                    .filter(o -> o.getOperator().equals(operatorName))
+                    .filter(o -> o.operator.equals(operatorName))
                     .findFirst()
                     .orElseThrow(IllegalArgumentException::new);
         }
