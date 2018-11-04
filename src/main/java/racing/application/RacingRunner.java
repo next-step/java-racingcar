@@ -2,6 +2,7 @@ package racing.application;
 
 import racing.Messages;
 import racing.domain.RacingGame;
+import racing.domain.RacingRanking;
 import racing.ui.RacingInputView;
 import racing.ui.RacingResultView;
 
@@ -15,8 +16,11 @@ public class RacingRunner {
 
         while (!racingGame.isFinish()) {
             racingGame.move();
-            RacingResultView.render(racingGame.getResultOfTheGame());
+            RacingResultView.renderGameProgress(racingGame.getResultOfTheGame());
         }
+
+        RacingRanking racingRanking = new RacingRanking(racingGame);
+        RacingResultView.renderWinner(racingRanking.getWinners());
     }
 
 }

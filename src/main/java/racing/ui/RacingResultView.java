@@ -3,28 +3,32 @@ package racing.ui;
 import racing.Messages;
 import racing.domain.RacingCar;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class RacingResultView {
     private static final String SEPARATOR = "-";
-    private static final String RACING_CAR_PROGRESS_FORMAT = "%10s : %s";
 
     static {
-        System.out.println(Messages.RACING_RESULT);
+        System.out.println(Messages.RACING_GAME_RESULT);
     }
 
-    public static void render(List<RacingCar> cars) {
+    public static void renderGameProgress(List<RacingCar> cars) {
         for (RacingCar car : cars) {
-            System.out.println(String.format(RACING_CAR_PROGRESS_FORMAT, car.getName(), makeRacingProgress(car.getCurrentPosition())));
+            System.out.println(String.format(Messages.RACING_GAME_PROGRESS, car.getName(), makeRacingCarProgress(car.getCurrentPosition())));
         }
         System.out.println();
     }
 
-    private static String makeRacingProgress(int position) {
+    private static String makeRacingCarProgress(int position) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < position; i++) {
             sb.append(SEPARATOR);
         }
         return sb.toString();
+    }
+
+    public static void renderWinner(String[] winners) {
+        System.out.println(String.format(Messages.RACING_GAME_WINNERS, Arrays.toString(winners)));
     }
 }

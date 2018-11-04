@@ -25,13 +25,13 @@ public class RacingGame {
     }
 
     public List<RacingCar> move() {
-        validateisRacingGameFinish();
+        validateGameDoing();
         moveCars();
         decreaseTimes();
         return cars;
     }
 
-    private void validateisRacingGameFinish() {
+    private void validateGameDoing() {
         if (isFinish()) {
             throw new RacingGameException("RacingGame is over.");
         }

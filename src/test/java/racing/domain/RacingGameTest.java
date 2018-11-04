@@ -1,12 +1,10 @@
 package racing.domain;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.fail;
-
 import org.junit.Before;
 import org.junit.Test;
-import racing.domain.RacingGame;
-import racing.domain.RacingGameException;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 
 
 public class RacingGameTest {

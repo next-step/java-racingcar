@@ -4,7 +4,6 @@ package racing.domain;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
-import racing.domain.RacingCar;
 
 public class RandomMoveGeneratorTest {
 
