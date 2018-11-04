@@ -16,7 +16,7 @@ public class RacingGameTest {
 
     @Test
     public void moveTest() {
-        racingGame.move();
+        racingGame.startGame();
 
         assertThat(racingGame.getCars().get(0).getPosition()).isNotEqualTo(0);
         assertThat(racingGame.getCars().get(1).getPosition()).isNotEqualTo(0);
