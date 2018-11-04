@@ -7,7 +7,6 @@ import java.util.Random;
 public class RacingGame {
 
     private static final int MAXIMUM_BOUND = 10;
-    private static final int MINIMUM_MOVABLE_SCORE = 4;
 
     private int move;
     private List<Car> cars;
@@ -19,9 +18,7 @@ public class RacingGame {
 
     public void move() {
         for (Car car : cars) {
-            if (canMove()) {
-                car.moveForward();
-            }
+            car.moveForward(generateMoveScore());
         }
 
         move--;
@@ -46,8 +43,8 @@ public class RacingGame {
         }
     }
 
-    private boolean canMove() {
+    private int generateMoveScore() {
         Random random = new Random();
-        return random.nextInt(MAXIMUM_BOUND) >= MINIMUM_MOVABLE_SCORE;
+        return random.nextInt(MAXIMUM_BOUND);
     }
 }
