@@ -9,6 +9,14 @@ public class RacingGame {
             return new ArrayList<>();
         }
 
-        return null;
+        int time = 0;
+        ArrayList<Integer> carPositions = new ArrayList<>(cars);
+
+        // 자동차 위치값 초기화
+        for (int i = 0, len = cars; i < len; i++) {
+            carPositions.add(0);
+        }
+
+        return carPositions;
     }
 }
