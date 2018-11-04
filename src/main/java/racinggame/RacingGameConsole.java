@@ -10,12 +10,11 @@ public class RacingGameConsole {
 		int time = InputView.inputNumber("시도할 회수는 몇 회 인가요?");
 		RacingGame racingGame = new RacingGame(carNames, time);
 
-		ResultView resultView = new ResultView();
-		resultView.printHeader();
+		ResultView.printHeader();
 		do {
 			List<Car> cars = racingGame.move();
-			resultView.print(cars);
+			ResultView.print(cars);
 		} while(!racingGame.isOver());
-		resultView.printRacingResult(racingGame.getRacingGameResult());
+		ResultView.printRacingResult(racingGame.getRacingGameResult());
 	}
 }

@@ -6,22 +6,18 @@ import racinggame.domain.Car;
 
 public class ResultView {
 
-	public ResultView() {
-	}
-
-	public void printHeader() {
+	public static void printHeader() {
 		System.out.println("실행 결과");
 	}
 
-	public void print(List<Car> cars) {
+	public static void print(List<Car> cars) {
 		for(Car car : cars) {
-
 			System.out.println(makeOutputPosition(car));
 		}
 		System.out.println();
 	}
 
-	private String makeOutputPosition(Car car) {
+	private static String makeOutputPosition(Car car) {
 		StringBuilder outputPosition = new StringBuilder(car.getName()).append(" : ");
 		for(int i = 0; i < car.getCurrentPosition(); i++) {
 			outputPosition.append("-");
@@ -29,7 +25,7 @@ public class ResultView {
 		return outputPosition.toString();
 	}
 
-	public void printRacingResult(RacingGameResult racingGameResult) {
+	public static void printRacingResult(RacingGameResult racingGameResult) {
 		StringJoiner names = new StringJoiner(", ");
 		List<Car> winners = racingGameResult.getWinners();
 		for(Car car : winners) {
