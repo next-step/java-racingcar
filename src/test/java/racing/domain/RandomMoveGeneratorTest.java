@@ -7,11 +7,11 @@ import org.junit.Test;
 
 public class RandomMoveGeneratorTest {
 
-    private RacingCar.RandomMoveGenerator moveNumberGenerator;
+    private RandomMoveGenerator moveNumberGenerator;
 
     @Before
     public void setup() {
-        moveNumberGenerator = new RacingCar.RandomMoveGenerator();
+        moveNumberGenerator = new RandomMoveGenerator();
     }
 
     @Test

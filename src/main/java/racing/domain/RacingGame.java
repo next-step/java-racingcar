@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
-    private RacingCar.RandomMoveGenerator moveNumberGenerator = null;
+    private RandomMoveGenerator moveNumberGenerator = null;
     private int times;
     private List<RacingCar> cars = null;
 
@@ -14,7 +14,7 @@ public class RacingGame {
     public RacingGame(int times, String[] carNames) {
         this.times = times;
         readyRacingCars(carNames);
-        this.moveNumberGenerator = new RacingCar.RandomMoveGenerator();
+        this.moveNumberGenerator = new RandomMoveGenerator();
     }
 
     private void readyRacingCars(String[] carNames) {
@@ -44,7 +44,7 @@ public class RacingGame {
         }
     }
 
-    public void setMoveNumberGenerator(RacingCar.RandomMoveGenerator moveNumberGenerator) {
+    public void setMoveNumberGenerator(RandomMoveGenerator moveNumberGenerator) {
         this.moveNumberGenerator = moveNumberGenerator;
     }
 
