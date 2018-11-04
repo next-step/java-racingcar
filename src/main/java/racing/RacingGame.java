@@ -10,26 +10,37 @@ import java.util.Random;
 public class RacingGame {
 
     private List<Car> cars;
-    private InputView inputView;
-    private ResultView resultView;
+    private int tryNumber;
+    private int carNumber;
+    private static final int MAX_BOUND = 10;
+
+
 
     public RacingGame() {
         cars = new ArrayList<>();
-        inputView = new InputView();
-        resultView = new ResultView();
+        carNumber = InputView.getCarNumber();
+        tryNumber = InputView.getTryNumber();
     }
 
     public void move() {
+        //차 세팅
         setCars();
 
-        for (int i = 0; i < inputView.getTryNumber(); i++) {
+        //경기 시작
+        doTracing();
+
+        //결과 출력
+        ResultView.showResult(cars, tryNumber);
+    }
+
+    private void doTracing() {
+        for (int i = 0; i < tryNumber; i++) {
             movingCarByValue();
-            resultView.showResult(cars);
         }
     }
 
     private void setCars() {
-        for(int i = 0; i < inputView.getCarNumber(); i++) {
+        for(int i = 0; i < carNumber; i++) {
             cars.add(new Car());
         }
     }
@@ -41,18 +52,17 @@ public class RacingGame {
     }
 
     private void setNewPosition(Car car) {
-        int randomValue = new Random().nextInt(10);
-        if (randomValue >= 4) {
-            car.addPosition();
-        }
+        int randomValue = new Random().nextInt(MAX_BOUND);
+        car.addPosition(randomValue);
+        car.record(car.getPosition());
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 
     public static void main(String[] args) {
         RacingGame racingGame = new RacingGame();
         racingGame.move();
-    }
-
-    public List<Car> getCars() {
-        return cars;
     }
 }

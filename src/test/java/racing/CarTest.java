@@ -16,8 +16,18 @@ public class CarTest {
 
     @Test
     public void addPositionTest() throws Exception {
-        car.addPosition();
+        int randomValue = 5;
+
+        car.addPosition(randomValue);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
+    @Test
+    public void recordTest() throws Exception {
+        int randomValue = 5;
+        car.addPosition(randomValue);
+        car.record(car.getPosition());
+
+        assertThat(car.getRecord().size()).isEqualTo(1);
+    }
 }
