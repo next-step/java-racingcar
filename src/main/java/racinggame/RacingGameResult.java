@@ -14,11 +14,15 @@ public class RacingGameResult {
 	}
 
 	public List<Car> getWinners() {
-		Car winner = cars.stream()
-				.max(new WinnerComparator())
-				.get();
+		Car winner = getWinner();
 		return cars.stream()
 				.filter(car -> car.isSamePosition(winner))
 				.collect(Collectors.toList());
+	}
+
+	private Car getWinner() {
+		return cars.stream()
+					.max(new WinnerComparator())
+					.get();
 	}
 }
