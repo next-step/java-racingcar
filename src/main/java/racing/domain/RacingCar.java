@@ -31,4 +31,9 @@ public class RacingCar {
     public String getName() {
         return name;
     }
+
+    // 테스트를 위한 목적으로만 사용함
+    void setPosition(int position) {
+        this.position = position;
+    }
 }

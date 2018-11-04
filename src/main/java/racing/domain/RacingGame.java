@@ -8,7 +8,7 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 public class RacingGame {
-    private List<RacingCar> racingCars;
+    List<RacingCar> racingCars;
     private int totalTime;
     private int currentTime;
 
@@ -34,5 +34,21 @@ public class RacingGame {
 
     public boolean isRacingAvailable() {
         return totalTime > currentTime;
+    }
+
+    public List<String> getWinner() {
+        if (racingCars.size() <= 0) {
+            throw new IllegalStateException("대상 자동차가 존재하지 않습니다.");
+        }
+
+        int maxValue = racingCars.stream()
+                .mapToInt(RacingCar::getPosition)
+                .max()
+                .orElse(0);
+
+        return racingCars.stream()
+                .filter(r -> r.getPosition() == maxValue)
+                .map(RacingCar::getName)
+                .collect(toList());
     }
 }

@@ -38,4 +38,9 @@ public class ConsoleUI {
     public static void printResultHeader() {
         System.out.println("\n실행결과");
     }
+
+    public static void printRacingGameWinner(List<String> winnerNames) {
+        String joinedNames = String.join(", ", winnerNames);
+        System.out.println(joinedNames + "가 최종 우승했습니다.");
+    }
 }

@@ -50,4 +50,20 @@ public class RacingGameTest {
         racingGame.race();
         assertThat(racingGame.isRacingAvailable()).isFalse();
     }
+
+    @Test
+    public void 승리자_찾기() {
+        RacingGameCreateRequest request = new RacingGameCreateRequest(asList("a, b,c"), 0);
+        RacingGame racingGame = new RacingGame(request);
+
+        // 테스트를 위해서 접근제한자를 제거하는건 옳은 판단일까??
+        // b와 c를 공동우승으로 설정하자!
+        List<RacingCar> internalRacingCars = racingGame.racingCars;
+        internalRacingCars.get(1).setPosition(3);
+        internalRacingCars.get(2).setPosition(3);
+
+        List<String> winnerNames = racingGame.getWinner();
+
+        assertThat(winnerNames).containsExactly("b", "c");
+    }
 }

@@ -38,5 +38,9 @@ public class Main {
             List<RacingCarStatus> racingCarStatuses = racingGame.race();
             printRacingCarStatuses(racingCarStatuses);
         }
+
+        // 우승자를 찍습니다.
+        List<String> winnerNames = racingGame.getWinner();
+        printRacingGameWinner(winnerNames);
     }
 }
