@@ -1,22 +1,18 @@
 package racing;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class RacingGame {
 
-    private int time = 0;
-    private int[] carPositions = {0, 0, 0};
-
-    RacingGame(){}
+    private int time;
+    private int[] carPositions;
 
     RacingGame(int count, int time){
         readyCar(count);
-        setTime(time);
-    }
-
-    public void setTime(int time){
         this.time = time;
     }
+
     public int getTime(){
         return time;
     }
@@ -25,7 +21,7 @@ public class RacingGame {
         carPositions = new int[count];
         return carPositions;
     }
-//InputView, ResultView와
+
     public int[] move() {
         for(int i = 0; i < carPositions.length; i++){
             tryMove(i);
@@ -51,7 +47,10 @@ public class RacingGame {
     }
 
     public static void main(String[] args){
-        new ResultView(new InputView().getRacingGame()).watchRace();
+        Scanner sc = new Scanner(System.in);
+        InputView inputView = new InputView(sc);
+        RacingGame racingGame = new RacingGame(inputView.getRacingCarCnt(), inputView.getTryCnt());
+        ResultView.watchRace(racingGame);
     }
 
 

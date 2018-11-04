@@ -11,7 +11,7 @@ public class RacingGameTest {
     RacingGame racingGame;
     @Before
     public void setUp()  {
-        racingGame = new RacingGame();
+        racingGame = new RacingGame(3,5);
     }
 
     @Test
@@ -49,17 +49,14 @@ public class RacingGameTest {
 
     @Test
     public void 중계() {
-        int time = 3;
-        assertThat(racingGame.readyCar(5).length).isEqualTo(5);
-        racingGame.setTime(time);
-        new ResultView(racingGame).watchRace();
+        assertThat(racingGame.readyCar(4).length).isEqualTo(4);
+        new ResultView().watchRace(racingGame);
     }
 
     @Test
     public void readyCar() {
-        assertThat(racingGame.readyCar(5).length).isEqualTo(5);
+        assertThat(racingGame.readyCar(3).length).isEqualTo(3);
     }
-
 
 
 }

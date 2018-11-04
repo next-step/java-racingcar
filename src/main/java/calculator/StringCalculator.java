@@ -1,8 +1,6 @@
 package calculator;
 
 public class StringCalculator {
-    //쪼개
-
     public static int calculate(String exp){
         String[] values = exp.split(" ");
         int result = strToNum(values[0]);
@@ -18,7 +16,7 @@ public class StringCalculator {
 
     private static int getResult(String operation, int number, int result) {
         if(operation.equals("+")){
-            result = add(number, result);
+            result += number;
         }
         if(operation.equals("-")){
             result -= number;
@@ -35,11 +33,6 @@ public class StringCalculator {
         if(operation.equals("")){
             throw new IllegalArgumentException();
         }
-        return result;
-    }
-
-    private static int add(int number, int result) {
-        result += number;
         return result;
     }
 
