@@ -4,8 +4,8 @@ import java.util.List;
 
 public class ResultView {
 
-    public static void printRound(List<Car> carList) {
-        for (Car car : carList) {
+    public static void printRound(List<Car> cars) {
+        for (Car car : cars) {
             printCar(car);
         }
         System.out.println();
