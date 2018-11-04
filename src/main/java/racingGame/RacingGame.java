@@ -12,6 +12,11 @@ public class RacingGame {
     private int move;
     private List<Car> cars;
 
+    public RacingGame(int numOfCars, int move) {
+        initializeCars(numOfCars);
+        initializeMove(move);
+    }
+
 
     public void move() {
         for (Car car : cars) {
@@ -21,11 +26,6 @@ public class RacingGame {
         }
 
         move--;
-    }
-
-    public void initialize(int numOfCars, int move) {
-        initializeMove(move);
-        initializeCars(numOfCars);
     }
 
     public boolean hasNextRound() {
