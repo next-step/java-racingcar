@@ -8,11 +8,9 @@ public class CarDTO {
 	private String name;
 	private int position;
 
-	public static CarDTO of(Car car) {
-		CarDTO carDTO = new CarDTO();
-		carDTO.setPosition(car.getPosition());
-		carDTO.setName(car.getName());
-		return carDTO;
+	public CarDTO(Car car) {
+		this.name = car.getName();
+		this.position = car.getPosition();
 	}
 
 	public String getName() {

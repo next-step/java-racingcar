@@ -14,11 +14,10 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class RacingGameTest {
 
-	public static final String[] CAR_NAME_ARR = new String[] { "test1", "test2", "test3" };
-
 	@Test
 	public void test_레이싱게임_생성() {
-		RacingGame racingGame = new RacingGame(CAR_NAME_ARR, 5, new RandomNumberRacingGameRule());
+		String[] testData = RacingGameTestHelper.createTestData(3);
+		RacingGame racingGame = new RacingGame(testData, 5, new RandomNumberRacingGameRule());
 
 		assertThat(racingGame.getCarDtoList().size()).isEqualTo(3);
 		assertThat(racingGame.hasNextGame()).isTrue();
@@ -26,7 +25,8 @@ public class RacingGameTest {
 
 	@Test
 	public void test_자동차_이동_확인() {
-		RacingGame racingGame = new RacingGame(CAR_NAME_ARR, 5, (car) -> true);
+		String[] testData = RacingGameTestHelper.createTestData(3);
+		RacingGame racingGame = new RacingGame(testData, 5, (car) -> true);
 
 		racingGame.move();
 
@@ -38,7 +38,8 @@ public class RacingGameTest {
 
 	@Test
 	public void test_자동차_미이동_확인() {
-		RacingGame racingGame = new RacingGame(CAR_NAME_ARR, 5, (car) -> false);
+		String[] testData = RacingGameTestHelper.createTestData(3);
+		RacingGame racingGame = new RacingGame(testData, 5, (car) -> false);
 
 		racingGame.move();
 
@@ -50,29 +51,31 @@ public class RacingGameTest {
 
 	@Test
 	public void test_현재_상위랭커_리스트_1등() {
-		RacingGameRule racingGameRule = (car) -> car.getName().equals(CAR_NAME_ARR[0]);
-		RacingGame racingGame = new RacingGame(CAR_NAME_ARR, 5, racingGameRule);
+		String[] testData = RacingGameTestHelper.createTestData(3);
+		RacingGameRule racingGameRule = RacingGameTestHelper.racingGameRuleByCarName(testData[0]);
+
+		RacingGame racingGame = new RacingGame(testData, 5, racingGameRule);
 		racingGame.move();
 
 		List<CarDTO> actual = racingGame.getTopRankingCarDtoList();
 
 		assertThat(actual.size()).isEqualTo(1);
-		assertThat(actual.get(0).getName()).isEqualTo(CAR_NAME_ARR[0]);
+		assertThat(actual.get(0).getName()).isEqualTo(testData[0]);
 		assertThat(actual.get(0).getPosition()).isEqualTo(1);
 	}
 
 	@Test
 	public void test_현재_상위랭커_리스트_공동1등() {
-		RacingGameRule racingGameRule = (car) ->
-			car.getName().equals(CAR_NAME_ARR[0]) || car.getName().equals(CAR_NAME_ARR[1]);
+		String[] testData = RacingGameTestHelper.createTestData(3);
+		RacingGameRule racingGameRule = RacingGameTestHelper.racingGameRuleByCarName(testData[0], testData[1]);
 
-		RacingGame racingGame = new RacingGame(CAR_NAME_ARR, 5, racingGameRule);
+		RacingGame racingGame = new RacingGame(testData, 5, racingGameRule);
 		racingGame.move();
-
 		List<CarDTO> actual = racingGame.getTopRankingCarDtoList();
 
 		assertThat(actual.size()).isEqualTo(2);
-		assertThat(actual).extracting("name").contains(CAR_NAME_ARR[0], CAR_NAME_ARR[1]);
+		assertThat(actual).extracting("name").contains(testData[0], testData[1]);
 		assertThat(actual).extracting("position").contains(1, 1);
 	}
+
 }

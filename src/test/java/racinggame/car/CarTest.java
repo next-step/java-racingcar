@@ -1,7 +1,6 @@
-package racinggame;
+package racinggame.car;
 
 import org.junit.Test;
-import racinggame.car.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,7 +15,7 @@ public class CarTest {
 
 		assertThat(actual.getPosition()).isEqualTo(0);
 
-		actual.moveForward((car)->true);
+		actual.moveForward((car) -> true);
 
 		assertThat(actual.getPosition()).isEqualTo(1);
 	}
@@ -28,7 +27,7 @@ public class CarTest {
 
 		assertThat(actual.getPosition()).isEqualTo(0);
 
-		actual.moveForward((car)->false);
+		actual.moveForward((car) -> false);
 
 		assertThat(actual.getPosition()).isEqualTo(0);
 	}
