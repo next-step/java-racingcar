@@ -1,45 +1,39 @@
 package calculator;
 
 public class StringCalculator {
-    //쪼개
-
-    public static int calculate(String text){
-        String[] values = text.split(" ");
-        int sum = 0;
-        for(int i = 0; i < values.length; i++){
-            if(i == 0){
-                sum = Integer.parseInt(values[i]);
-            }else if(i%2 == 1 ){
-                if(values[i].equals("+")){
-                    sum = add(sum, Integer.parseInt(values[i+1]));
-                }else  if(values[i].equals("-")){
-                    sum = sub(sum, Integer.parseInt(values[i+1]));
-                }else  if(values[i].equals("/")){
-                    sum = div(sum, Integer.parseInt(values[i+1]));
-                }else  if(values[i].equals("*")){
-                    sum = mul(sum, Integer.parseInt(values[i+1]));
-                }else{
-                    throw new IllegalArgumentException();
-                }
-
-            }
+    public static int calculate(String exp){
+        String[] values = exp.split(" ");
+        int result = strToNum(values[0]);
+        for(int i = 1; i < values.length-1; i+=2){
+            result = getResult(values[i], strToNum(values[i+1]), result);
         }
-      return sum;
+      return result;
     }
 
-    private static int mul(int sum, int i) {
-        return sum * i;
+    private static int strToNum(String number) {
+        return Integer.parseInt(number);
     }
 
-    private static int div(int sum, int i) {
-        return  sum / i;
+    private static int getResult(String operation, int number, int result) {
+        if(operation.equals("+")){
+            result += number;
+        }
+        if(operation.equals("-")){
+            result -= number;
+        }
+        if(operation.equals("/")){
+            result /= number;
+        }
+        if(operation.equals("*")){
+            result *= number;
+        }
+        if(operation == null){
+            throw new NullPointerException();
+        }
+        if(operation.equals("")){
+            throw new IllegalArgumentException();
+        }
+        return result;
     }
 
-    private static int sub(int sum, int i) {
-        return sum - i;
-    }
-
-    private static int add(int sum, int i) {
-        return sum + i ;
-    }
 }
