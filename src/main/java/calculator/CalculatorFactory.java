@@ -8,10 +8,10 @@ public class CalculatorFactory {
     private Map<String, Calculator> calculatorMap = new HashMap<>();
 
     public CalculatorFactory() {
-        calculatorMap.put("+", new Plus());
-        calculatorMap.put("-", new Minus());
-        calculatorMap.put("*", new Multiply());
-        calculatorMap.put("/", new Divide());
+        calculatorMap.put("+", (a, b) -> a + b);
+        calculatorMap.put("-", (a, b) -> a - b);
+        calculatorMap.put("*", (a, b) -> a * b);
+        calculatorMap.put("/", (a, b) -> a / b);
     }
 
     public Calculator create(String operator) {
