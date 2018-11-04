@@ -18,10 +18,6 @@ public class CarGroupTest {
 		carGroup.moveForward(RacingGameTestHelper.racingGameRuleByCarName(testData[0]));
 
 		assertThat(carGroup.getCarDTOList().size()).isEqualTo(dataSize);
-		assertThat(carGroup.getMaxPosition()).isEqualTo(1);
-		assertThat(carGroup.getSamePositionCarDTOList(0).size()).isEqualTo(4);
-		assertThat(carGroup.getSamePositionCarDTOList(1).size()).isEqualTo(1);
-		assertThat(carGroup.getSamePositionCarDTOList(1)).extracting("name").contains(testData[0]);
 	}
 
 	@Test
@@ -33,8 +29,5 @@ public class CarGroupTest {
 		carGroup.moveForward(car -> true);
 
 		assertThat(carGroup.getCarDTOList().size()).isEqualTo(dataSize);
-		assertThat(carGroup.getMaxPosition()).isEqualTo(1);
-		assertThat(carGroup.getSamePositionCarDTOList(0).size()).isEqualTo(0);
-		assertThat(carGroup.getSamePositionCarDTOList(1).size()).isEqualTo(5);
 	}
 }

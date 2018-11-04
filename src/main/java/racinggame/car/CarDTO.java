@@ -13,6 +13,11 @@ public class CarDTO {
 		this.position = car.getPosition();
 	}
 
+	public CarDTO(String name, int position) {
+		this.name = name;
+		this.position = position;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -28,4 +33,9 @@ public class CarDTO {
 	public int getPosition() {
 		return position;
 	}
+
+	public boolean isEqualPosition(int position) {
+		return getPosition() == position;
+	}
+
 }

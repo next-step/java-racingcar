@@ -26,11 +26,6 @@ public class RacingGame {
 		carGroup.moveForward(gameRule);
 	}
 
-	public List<CarDTO> getTopRankingCarDtoList() {
-		int maxPosition = carGroup.getMaxPosition();
-		return carGroup.getSamePositionCarDTOList(maxPosition);
-	}
-
 	private void reduceTryCount() {
 		tryCount -= 1;
 	}
@@ -41,6 +36,10 @@ public class RacingGame {
 
 	public boolean hasNextGame() {
 		return tryCount > 0;
+	}
+
+	public RacingGameResult getGameResult() {
+		return new RacingGameResult(carGroup.getCarDTOList());
 	}
 
 }

@@ -1,8 +1,8 @@
 package racinggame.view;
 
+import racinggame.RacingGameResult;
 import racinggame.car.CarDTO;
 
-import java.util.List;
 import java.util.StringJoiner;
 
 /**
@@ -12,8 +12,8 @@ public class ResultView {
 
 	public static final String CAR_TRAIL_STRING = "-";
 
-	public static void printGameResult(List<CarDTO> cars) {
-		for (CarDTO car : cars) {
+	public static void printGameResult(RacingGameResult racingGameResult) {
+		for (CarDTO car : racingGameResult.getCarDTOList()) {
 			printCar(car);
 		}
 		System.out.println();
@@ -27,9 +27,9 @@ public class ResultView {
 		System.out.println();
 	}
 
-	public static void printTopRankingList(List<CarDTO> cars) {
+	public static void printTopRankingList(RacingGameResult racingGameResult) {
 		StringJoiner joiner = new StringJoiner(", ");
-		for (CarDTO car : cars) {
+		for (CarDTO car : racingGameResult.getTopRankingCarDTOList()) {
 			joiner.add(car.getName());
 		}
 		System.out.println(String.format("%s가 최종 우승했습니다.", joiner.toString()));

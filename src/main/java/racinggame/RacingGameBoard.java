@@ -17,8 +17,8 @@ public class RacingGameBoard {
 		RacingGame racingGame = new RacingGame(carNames, tryCount, new RandomNumberRacingGameRule());
 		while (racingGame.hasNextGame()) {
 			racingGame.move();
-			ResultView.printGameResult(racingGame.getCarDtoList());
+			ResultView.printGameResult(racingGame.getGameResult());
 		}
-		ResultView.printTopRankingList(racingGame.getTopRankingCarDtoList());
+		ResultView.printTopRankingList(racingGame.getGameResult());
 	}
 }
