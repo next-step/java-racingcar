@@ -14,4 +14,9 @@ public class InputView {
 		System.out.println(print);
 		return scanner.nextInt();
 	}
+
+	public String inputString(String print) {
+		System.out.println(print);
+		return scanner.nextLine();
+	}
 }
