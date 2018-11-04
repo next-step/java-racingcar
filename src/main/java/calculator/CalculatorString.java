@@ -1,75 +1,43 @@
 package calculator;
 
 /**
- * 1 + 2 * 3 / 5
+ * 2 + 3 * 4 / 5
  */
 public class CalculatorString {
     public static int calculate(String text) {
         String[] values = text.split(" ");
 
+        int first = Integer.parseInt(values[0]);
+        int second = Integer.parseInt(values[2]);
+        String operator = values[1];
+        int total = calcu(operator, first, second);
 
-        for (int i=0; i<values.length; i++) {
-            String data = values[i];
-            String middle = null;
-            if(!isNumber(data)) {
-                middle = data;
-            }
-
-            int result = calcu(middle, i, i+2);
-
+        for (int i=4; i<values.length; i += 2) {
+            operator = values[i-1];
+            second = Integer.parseInt(values[i]);
+            total = calcu(operator, total, second);
         }
 
-
-
-        return 0;
+        return total;
     }
 
-    public static int calcu(String middle, int first, int second) {
-        if (middle.equals("+")) {
+    public static int calcu(String operator, int first, int second) {
+        if (operator.equals("+")) {
             return first + second;
         }
 
-        if (middle.equals("-")) {
+        if (operator.equals("-")) {
             return first - second;
         }
 
-        if (middle.equals("*")) {
+        if (operator.equals("*")) {
             return first * second;
         }
 
-        if (middle.equals("/")) {
+        if (operator.equals("/")) {
             return first / second;
         }
 
         return 0;
-    }
-
-
-
-
-    public static boolean isNumber(String data) {
-        try{
-            Integer.parseInt(data);
-        } catch (NumberFormatException e) {
-            return false;
-        }
-        return true;
-    }
-
-
-    public static int add(int i, int j) {
-        return i + j;
-    }
-
-    public static int min(int i, int j) {
-        return i - j;
-    }
-
-    public static int mul(int i, int j) {
-        return i * j;
-    }
-
-    public static int div(int i, int j) {
-        return i / j;
     }
 }
