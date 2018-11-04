@@ -1,17 +1,18 @@
-package racing;
+package racing.domain;
 
 
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
+import racing.domain.RacingCar;
 
 public class RandomMoveGeneratorTest {
 
-    private RandomMoveGenerator moveNumberGenerator;
+    private RacingCar.RandomMoveGenerator moveNumberGenerator;
 
     @Before
     public void setup() {
-        moveNumberGenerator = new RandomMoveGenerator();
+        moveNumberGenerator = new RacingCar.RandomMoveGenerator();
     }
 
     @Test

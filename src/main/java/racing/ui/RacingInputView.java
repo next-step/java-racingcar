@@ -1,11 +1,11 @@
-package racing;
+package racing.ui;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class RacingInputView {
     private static Scanner scanner = new Scanner(System.in);
-    private final String NAME_SEPERATOR = ",";
+    private static final String NAME_SEPERATOR = ",";
 
     public static String[] inputTryNames(String message) {
         System.out.println(message);
