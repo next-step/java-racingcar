@@ -20,10 +20,10 @@ public class ResultView {
      */
     public static void printAll(List<Integer> positions) {
         System.out.println();
-        for (int i = 0; i < positions.size(); i++) {
-            print(positions.get(i));
+        positions.forEach(i -> {
+            print(i);
             System.out.println();
-        }
+        });
     }
 
     /**

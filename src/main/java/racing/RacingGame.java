@@ -7,11 +7,13 @@ import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
-    private int time;
-    private List<Integer> carPositions;
     private static final int MIN_NUM = 4;
-    private static final int BOUND = 9 + 1;
+    private static final int BOUND = 10;
+    private static final int ZERO = 0;
     private Random random = SecureRandom.getInstanceStrong();
+    private List<Integer> carPositions;
+    private int time;
+
 
     /**
      * 초기화
@@ -19,25 +21,13 @@ public class RacingGame {
      * @param time   횟수
      * @param carNum 차 숫자
      */
-    public RacingGame(int time, int carNum) throws NoSuchAlgorithmException {
+    public RacingGame(int carNum, int time) throws NoSuchAlgorithmException {
         this.time = time;
         carPositions = new ArrayList<>();
 
         // 차 넣기
         for (int i = 0; i < carNum; i++) {
-            carPositions.add(0);
-        }
-    }
-
-    /**
-     * 시작
-     */
-    public void start() {
-        System.out.println("실행결과");
-
-        for (int i = 0; i < time; i++) {
-            carPositions = move();
-            ResultView.printAll(carPositions);
+            carPositions.add(ZERO);
         }
     }
 
@@ -50,9 +40,12 @@ public class RacingGame {
         for (int i = 0; i < carPositions.size(); i++) {
             Integer position = carPositions.get(i);
             int randNum = random.nextInt(BOUND);
-            carPositions.set(i, position + canMove(randNum));
+            if (canMove(randNum)) {
+                carPositions.set(i, ++position);
+            }
         }
 
+        --time;
         return carPositions;
     }
 
@@ -62,11 +55,16 @@ public class RacingGame {
      * @param num
      * @return
      */
-    public static int canMove(int num) {
-        if (num >= MIN_NUM) {
-            return 1;
-        }
+    public static boolean canMove(int num) {
+        return num >= MIN_NUM;
+    }
 
-        return 0;
+    /**
+     * 게임이 진행 가능한지 여부
+     *
+     * @return
+     */
+    public boolean canContinue() {
+        return time > ZERO;
     }
 }
