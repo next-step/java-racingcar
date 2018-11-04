@@ -3,6 +3,7 @@ package racing;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
 import java.util.Random;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -11,7 +12,9 @@ public class RacingGameTest {
     RacingGame racingGame;
     @Before
     public void setUp()  {
-        racingGame = new RacingGame(3,5);
+        String str = "pobi,crong,honux";
+        int count = 5;
+        racingGame = new RacingGame(str,count);
     }
 
     @Test
@@ -26,37 +29,55 @@ public class RacingGameTest {
     }
     @Test
     public void 준비_및_초기화확인() {
-        int[] result = racingGame.readyCar(5);
-        assertThat(result.length).isEqualTo(5);
+        assertThat(racingGame.getName(0)).isEqualTo("pobi");
+        assertThat(racingGame.getName(1)).isEqualTo("crong");
+        assertThat(racingGame.getName(2)).isEqualTo("honux");
 
-        for (int i = 0; i < result.length; i++){
-            assertThat(result[i]).isEqualTo(0);
-        }
     }
     @Test
     public void 이동_및_이동거리확인() {
-        int[] result = null;
-        int tryCnt = 3;
-        for(int i =0; i < tryCnt; i++){
+        List<Car> result = null;
+        for(int i =0; i < racingGame.getTime(); i++){
             result = racingGame.move();
         }
 
-        for(int i =0; i < result.length; i++){
-            assertThat(result[i]).isGreaterThanOrEqualTo(0);
-            assertThat(result[i]).isLessThanOrEqualTo(3);
+        for(int i =0; i < result.size(); i++){
+            assertThat(result.get(i).getPosition()).isGreaterThanOrEqualTo(0);
+            assertThat(result.get(i).getPosition()).isLessThanOrEqualTo(5);
         }
     }
 
-    @Test
-    public void 중계() {
-        assertThat(racingGame.readyCar(4).length).isEqualTo(4);
-        new ResultView().watchRace(racingGame);
-    }
+
 
     @Test
-    public void readyCar() {
-        assertThat(racingGame.readyCar(3).length).isEqualTo(3);
+    public void 플레이어초기화() {
+        assertThat(racingGame.getCarCount()).isEqualTo(3);
+        assertThat(racingGame.getName(0)).isEqualTo("pobi");
+        ResultView.watchRace(racingGame);
+
+        System.out.println("최종우승했습니다.");
     }
 
 
+    @Test
+    public void 끝이콤마로끝나면() {
+        String str = "pobi,crong,honux,";
+        int count = 5;
+        racingGame = new RacingGame(str,count);
+        assertThat(racingGame.getCarCount()).isEqualTo(3);
+        assertThat(racingGame.getName(0)).isEqualTo("pobi");
+        ResultView.watchRace(racingGame);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void null값테스트() {
+        String str = null;
+        int count = 5;
+        racingGame = new RacingGame(str,count);
+        assertThat(racingGame.getCarCount()).isEqualTo(3);
+        assertThat(racingGame.getName(0)).isEqualTo("pobi");
+        ResultView.watchRace(racingGame);
+
+        System.out.println("최종우승했습니다.");
+    }
 }

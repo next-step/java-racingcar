@@ -1,15 +1,24 @@
 package racing;
 
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class RacingGame {
 
     private int time;
-    private int[] carPositions;
-
-    RacingGame(int count, int time){
-        readyCar(count);
+    private List<Car> cars;
+    public int getCarCount(){
+        return cars.size();
+    }
+    public String getName(int index){
+        return cars.get(index).getName();
+    }
+    RacingGame(String player, int time){
+        String[] names = player.split(",");
+        cars = new ArrayList<>();
+        for(int i = 0; i < names.length; i ++){
+            Car car = new Car(names[i], i);
+            cars.add(car);
+        }
         this.time = time;
     }
 
@@ -17,39 +26,41 @@ public class RacingGame {
         return time;
     }
 
-    public int[] readyCar(int count){
-        carPositions = new int[count];
-        return carPositions;
-    }
 
-    public int[] move() {
-        for(int i = 0; i < carPositions.length; i++){
-            tryMove(i);
+    public List<Car> move() {
+        List<Car> nextStepCars = new ArrayList<>();
+        for(int i = 0; i < cars.size(); i++){
+             nextStepCars.add(tryMove(cars.get(i)));
         }
-        return carPositions;
+        return nextStepCars;
     }
 
-    private void tryMove(int i) {
+    public List<Car> getCars(){
+        return cars;
+    }
+
+    private Car tryMove(Car car) {
         if(isMove()){
-           carPositions[i]++;
+           car.addPosition();
         }
+        return car;
     }
 
     private boolean isMove() {
-        final int POSSIBLE_MOVE = 4;
-        return getRandomNum() >= POSSIBLE_MOVE;
+        final int MIN_NUM = 4;
+        return getRandomNum() >= MIN_NUM;
     }
 
     private int getRandomNum() {
-        final int LIMIT_NUM = 10;
+        final int MAX_NUM = 10;
         Random random = new Random();
-        return random.nextInt(LIMIT_NUM);
+        return random.nextInt(MAX_NUM);
     }
 
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         InputView inputView = new InputView(sc);
-        RacingGame racingGame = new RacingGame(inputView.getRacingCarCnt(), inputView.getTryCnt());
+        RacingGame racingGame = new RacingGame(inputView.getRacingCars(), inputView.getTryCnt());
         ResultView.watchRace(racingGame);
     }
 
