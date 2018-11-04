@@ -19,11 +19,7 @@ public class RacingGame {
         }
 
         for (int time = 0; time < times; time++) {
-            for (int car = 0; car < cars; car++) {
-                if (this.isForward(this.getLotteryNumber())) {
-                    this.setForward(carPositions, car);
-                }
-            }
+            this.moveCars(carPositions);
         }
 
         return carPositions;
@@ -43,5 +39,13 @@ public class RacingGame {
         }
 
         carPositions.set(carPosition, carPositions.get(carPosition) + 1);
+    }
+
+    public void moveCars(ArrayList<Integer> carPositions) {
+        for (int car = 0, cars = carPositions.size(); car < cars; car++) {
+            if (this.isForward(this.getLotteryNumber())) {
+                this.setForward(carPositions, car);
+            }
+        }
     }
 }
