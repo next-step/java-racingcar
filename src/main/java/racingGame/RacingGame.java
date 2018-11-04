@@ -1,15 +1,16 @@
 package racingGame;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class RacingGame {
+    Random random = new Random();
 
     public ArrayList<Integer> move(int cars, int times) {
         if (cars < 1 || times < 0) {
             return new ArrayList<>();
         }
 
-        int time = 0;
         ArrayList<Integer> carPositions = new ArrayList<>(cars);
 
         // 자동차 위치값 초기화
@@ -17,6 +18,30 @@ public class RacingGame {
             carPositions.add(0);
         }
 
+        for (int time = 0; time < times; time++) {
+            for (int car = 0; car < cars; car++) {
+                if (this.isForward(this.getLotteryNumber())) {
+                    this.setForward(carPositions, car);
+                }
+            }
+        }
+
         return carPositions;
+    }
+
+    public boolean isForward(int number) {
+        return number > 3 && number < 11;
+    }
+
+    public Integer getLotteryNumber() {
+        return random.nextInt(10);
+    }
+
+    public void setForward(ArrayList<Integer> carPositions, int carPosition) {
+        if (carPositions == null || carPositions.isEmpty() || carPositions.size() <= carPosition) {
+            return;
+        }
+
+        carPositions.set(carPosition, carPositions.get(carPosition) + 1);
     }
 }
