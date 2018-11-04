@@ -10,11 +10,11 @@ public class RacingGame {
     private static final int MINIMUM_MOVABLE_SCORE = 4;
 
     private int move;
-    private List<Car> carList;
+    private List<Car> cars;
 
 
     public void move() {
-        for (Car car : carList) {
+        for (Car car : cars) {
             if (canMove()) {
                 car.moveForward();
             }
@@ -23,9 +23,9 @@ public class RacingGame {
         move--;
     }
 
-    public void initialize(int cars, int move) {
+    public void initialize(int numOfCars, int move) {
         initializeMove(move);
-        initializeCars(cars);
+        initializeCars(numOfCars);
     }
 
     public boolean hasNextRound() {
@@ -33,17 +33,17 @@ public class RacingGame {
     }
 
     public List<Car> getCarsInGame() {
-        return carList;
+        return cars;
     }
 
     private void initializeMove(int move) {
         this.move = move;
     }
 
-    private void initializeCars(int cars) {
-        carList = new ArrayList<>();
-        for (int i = 0; i < cars; i++) {
-            carList.add(new Car());
+    private void initializeCars(int numOfCars) {
+        this.cars = new ArrayList<>();
+        for (int i = 0; i < numOfCars; i++) {
+            this.cars.add(new Car());
         }
     }
 
