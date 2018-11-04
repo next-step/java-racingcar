@@ -1,5 +1,6 @@
 package racing.domain;
 
+import racing.dto.RacingCarStatus;
 import racing.dto.RacingGameCreateRequest;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class RacingGame {
                 .collect(toList());
     }
 
-    public List<Integer> race() {
+    public List<RacingCarStatus> race() {
         currentTime += 1;
         return racingCars.stream()
                 .map(RacingCar::rush)

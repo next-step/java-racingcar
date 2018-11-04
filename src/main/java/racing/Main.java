@@ -1,12 +1,12 @@
 package racing;
 
 import racing.domain.RacingGame;
-import racing.ui.ConsoleUI;
+import racing.dto.RacingCarStatus;
 import racing.dto.RacingGameCreateRequest;
 
 import java.util.List;
 
-import static racing.ui.ConsoleUI.getRacingGameCreateInput;
+import static racing.ui.ConsoleUI.*;
 
 /**
  * 초간단 자동차 경주 게임을 구현한다.
@@ -27,17 +27,16 @@ import static racing.ui.ConsoleUI.getRacingGameCreateInput;
 public class Main {
 
     public static void main(String[] args) {
-        ConsoleUI consoleUI = new ConsoleUI();
         RacingGameCreateRequest request = getRacingGameCreateInput();
 
         // 레이싱게임 클래스를 생성합니다.
         RacingGame racingGame = new RacingGame(request);
 
-        consoleUI.printResultHeader();
+        printResultHeader();
         // 횟수가 끝날때까지 작업을 수행합니다
         while (racingGame.isRacingAvailable()) {
-            List<Integer> positions = racingGame.race();
-            consoleUI.printRacingCarPositions(positions);
+            List<RacingCarStatus> racingCarStatuses = racingGame.race();
+            printRacingCarStatuses(racingCarStatuses);
         }
     }
 }

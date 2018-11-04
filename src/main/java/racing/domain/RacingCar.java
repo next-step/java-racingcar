@@ -1,5 +1,6 @@
 package racing.domain;
 
+import racing.dto.RacingCarStatus;
 import racing.util.DefaultRandomNumberProvider;
 import racing.util.RandomNumberProvider;
 
@@ -15,12 +16,12 @@ public class RacingCar {
         this.position = 0;
     }
 
-    public int rush() {
+    public RacingCarStatus rush() {
         if (RANDOM_PROVIDER.getRandomNumber() >= MOVE_BOUND_VALUE) {
             position += 1;
         }
 
-        return position;
+        return new RacingCarStatus(name, position);
     }
 
     public int getPosition() {

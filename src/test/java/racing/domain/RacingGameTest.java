@@ -2,11 +2,15 @@ package racing.domain;
 
 import org.junit.Before;
 import org.junit.Test;
+import racing.dto.RacingCarStatus;
 import racing.dto.RacingGameCreateRequest;
 import racing.testutil.TestNumberProvider;
 
+import java.util.List;
+
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.groups.Tuple.tuple;
 
 public class RacingGameTest {
     TestNumberProvider testNumberProvider = new TestNumberProvider();
@@ -24,8 +28,9 @@ public class RacingGameTest {
         testNumberProvider.setTestNumber(RacingCar.MOVE_BOUND_VALUE);
 
         // 전진 결과가 리스트와 맞는지 확인한다.
-        assertThat(racingGame.race())
-                .isEqualTo(asList(1, 1, 1));
+        List<RacingCarStatus> race = racingGame.race();
+        assertThat(race).extracting("name", "position")
+                .containsSequence(tuple("a", 1), tuple("b", 1), tuple("c", 1));
     }
 
     @Test
