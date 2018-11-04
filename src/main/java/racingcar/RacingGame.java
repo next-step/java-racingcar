@@ -5,6 +5,7 @@ import java.util.Random;
 public class RacingGame {
     private int time;
     private int[] carPosition;
+    static final int MOVECHECK_NUM = 4;
 
     public int getTime(){
         return time;
@@ -20,36 +21,34 @@ public class RacingGame {
     }
 
     public static void main(String[] args){
-        int[] inputValues = InputView.input();
-        RacingGame game = new RacingGame(inputValues[0], inputValues[1]);
+        InputView in = new InputView();
+        in.inputSetting();
+        RacingGame game = new RacingGame(in.getCarCount(), in.getTime());
         int[] carPosition = game.getCarPosition();
         int time = game.getTime();
 
-        for(int i=0; i<time; i++){
+        for(int i = 0; i < time; i++){
             ResultView.result(move(carPosition));
         }
     }
 
     public static int[] move(int[] carPosition){
-        for(int i=0; i<carPosition.length; i++) {
-            movePerCarProcess(carPosition, i);
+        int idx = 0;
+        for (int position: carPosition) {
+            movePerCarProcess(carPosition, idx++);
         }
         return carPosition;
     }
 
-    public static void movePerCarProcess(int[] carPosition, int carSeq){
+    public static void movePerCarProcess(int[] carPosition, int idx){
         if (movePossibleCheck()) {
-            carPosition[carSeq] += 1;
+            carPosition[idx] += 1;
         }
     }
 
     public static boolean movePossibleCheck(){
-        Random random = new Random();
-        int randomNum = random.nextInt(10);
-        if(randomNum >= 4){
-            return true;
-        }
-        return false;
+        int randomNum = new Random().nextInt(10);
+        return randomNum >= MOVECHECK_NUM;
     }
 
 }

@@ -3,8 +3,8 @@ package racingcar;
 public class ResultView {
 
     public static void result(int[] carPosition){
-        for(int i=0; i<carPosition.length; i++){
-            System.out.println(positionGrid(carPosition[i]));
+        for (int position : carPosition){
+            System.out.println(positionGrid(position));
         }
         System.out.println();
     }
