@@ -1,16 +1,23 @@
 package racinggame;
 
+import java.util.List;
+
 public class ResultView {
 
-    public void print(int[] carPosition) {
-        for(int i =0; i < carPosition.length; i++){
-            printCar(carPosition[i]);
+    public void print(List<Car> cars) {
+        for(int i =0; i < cars.size(); i++){
+            printCarName(cars.get(i));
+            printCar(cars.get(i));
         }
         System.out.println();
     }
 
-    private void printCar(int location) {
-        for(int i =0; i < location; i++){
+    private void printCarName(Car car) {
+        System.out.print(car.getName() + " : ");
+    }
+
+    private void printCar(Car car) {
+        for(int i =0; i < car.getLocation(); i++){
             System.out.print("-");
         }
         System.out.println();
