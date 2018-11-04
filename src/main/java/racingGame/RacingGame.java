@@ -6,10 +6,12 @@ import java.util.Random;
 
 public class RacingGame {
 
-    private int move;
-    private List<Car> carList;
     private static final int MAXIMUM_BOUND = 10;
     private static final int MINIMUM_MOVABLE_SCORE = 4;
+
+    private int move;
+    private List<Car> carList;
+
 
     public void move() {
         for (Car car : carList) {
