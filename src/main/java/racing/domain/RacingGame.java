@@ -3,7 +3,6 @@ package racing.domain;
 import racing.dto.RacingGameCreateRequest;
 
 import java.util.List;
-import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toList;
 
@@ -13,15 +12,15 @@ public class RacingGame {
     private int currentTime;
 
     public RacingGame(RacingGameCreateRequest request) {
-        this.initRacingCars(request.getCarNumber());
+        this.initRacingCars(request.getCarNames());
         this.totalTime = request.getTime();
         this.currentTime = 0;
     }
 
-    private void initRacingCars(int racingCarNumber) {
+    private void initRacingCars(List<String> racingCarNames) {
         // 레이싱카 리스트 초기화
-        racingCars = IntStream.range(0, racingCarNumber)
-                .mapToObj(i -> new RacingCar())
+        racingCars = racingCarNames.stream()
+                .map(RacingCar::new)
                 .collect(toList());
     }
 

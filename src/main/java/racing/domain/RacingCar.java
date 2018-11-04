@@ -6,9 +6,12 @@ import racing.util.RandomNumberProvider;
 public class RacingCar {
     public static final int MOVE_BOUND_VALUE = 4;
     static RandomNumberProvider RANDOM_PROVIDER = new DefaultRandomNumberProvider();
+
+    private String name;
     private int position;
 
-    public RacingCar() {
+    public RacingCar(String name) {
+        this.name = name;
         this.position = 0;
     }
 
@@ -22,5 +25,9 @@ public class RacingCar {
 
     public int getPosition() {
         return position;
+    }
+
+    public String getName() {
+        return name;
     }
 }
