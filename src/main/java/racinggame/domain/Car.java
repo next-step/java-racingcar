@@ -8,8 +8,12 @@ public class Car implements Comparable<Car> {
 	private Integer position;
 
 	public Car(String name) {
+		this(name, 0);
+	}
+
+	public Car(String name, Integer position) {
 		this.name = name;
-		position = 0;
+		this.position = position;
 	}
 
 	public int move(int randomNumber) {

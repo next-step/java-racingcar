@@ -1,9 +1,6 @@
 package racinggame.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racinggame.utils.CarTestUtils.create;
-import static racinggame.utils.CarTestUtils.createAndMove;
-import static racinggame.utils.CarTestUtils.move;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +11,7 @@ public class CarTest {
 
 	@Before
 	public void setUp() {
-		car = create("hongsii");
+		car = new Car("hongsii");
 	}
 
 	@Test
@@ -49,16 +46,16 @@ public class CarTest {
 
 	@Test
 	public void 동일한_위치일때_동일위치확인_검증() {
-		move(car, 4);
-		Car compareCar = createAndMove("pobi", 4);
+		Car car = new Car("hongsii", 4);
+		Car compareCar = new Car("pobi", 4);
 
 		assertThat(car.isSamePosition(compareCar)).isTrue();
 	}
 
 	@Test
 	public void 다른_위치일때_동일위치확인_검증() {
-		move(car, 4);
-		Car compareCar = createAndMove("pobi", 3);
+		Car car = new Car("hongsii", 4);
+		Car compareCar = new Car("pobi", 3);
 
 		assertThat(car.isSamePosition(compareCar)).isFalse();
 	}
