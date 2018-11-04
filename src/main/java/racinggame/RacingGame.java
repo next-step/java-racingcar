@@ -2,14 +2,13 @@ package racinggame;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private int tryCnt;
     private List<Car> cars;
 
-    private static final int MAX_NUMBER = 9;
-    private static final int POSSIBLE_NUMBER = 4;
+    private List<String> victoryCar;
 
     public RacingGame(String[] carNames, int tryCnt){
         cars = new ArrayList<>();
@@ -25,26 +24,28 @@ public class RacingGame {
 
     public List<Car> move() {
         tryCnt--;
-        for(int i =0; i < cars.size(); i++){
-            moveCar(i);
-        }
+        cars.stream().forEach(car -> car.carMove(car));
         return cars;
-    }
-
-    private void moveCar(int location) {
-        if(isPossibleMove()){
-           cars.get(location).carMove();
-        }
-    }
-
-    protected boolean isPossibleMove(){
-        Random number = new Random();
-        return number.nextInt(MAX_NUMBER) >= POSSIBLE_NUMBER;
     }
 
     public List<Car> getCars() {
         return cars;
     }
 
+    public int getMaxLocation() {
+        return cars.stream().collect(Collectors.summarizingInt(Car::getLocation)).getMax();
+    }
+
+    public List<String> getVictorCar(){
+        int maxLocation = getMaxLocation();
+        return cars.stream()
+                .filter(car -> car.equalsPosition(maxLocation))
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
+    public List<String> getVictoryCar(){
+        return victoryCar;
+    }
 
 }
