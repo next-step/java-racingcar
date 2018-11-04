@@ -1,7 +1,19 @@
 package calculator;
 
 public class Calculator {
-    public static int add(int i, int i1) {
-        return 0;
+    public int add(int first, int second) {
+        return first + second;
+    }
+
+    public int sub(int first, int second) {
+        return first - second;
+    }
+
+    public int multiply(int first, int second) {
+        return first * second;
+    }
+
+    public int divide(int first, int second) {
+        return first / second;
     }
 }

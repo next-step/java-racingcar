@@ -1,43 +1,47 @@
 package calculator;
 
 public class StringCalculator {
-    public static int calculate(String text) {
 
-        String[] values = text.split(" ");
-        int result = Integer.parseInt(values[0]);
+    private static String PLUS = "+";
+    private static String SUBSTRACTION = "-";
+    private static String MULTIPLY = "*";
+    private static String DIVIDE = "/";
 
-        for (int i = 0; i <values.length; i++) {
-            if (i != 0) {
-                if (values[i].equals("+")) {
-                } else if (values[i].equals("-")) {
-                } else if (values[i].equals("*")) {
-                } else if (values[i].equals("/")) {
-                } else {
+    private Calculator calculator;
 
-                }
-            }
-
-        }
-
+    public StringCalculator() {
+        calculator = new Calculator();
     }
 
-    private static int calculate(String value, int first, int second) {
-        if (value.equals("+")) {
-            return first + second;
+    public int calculate(String text) {
+        String[] values = text.split(" ");
+
+        int result = Integer.parseInt(values[0]);
+
+        for (int i = 1; i < values.length; i += 2) {
+            int second = Integer.parseInt(values[i+1]);
+            result = getFirst(values[i], result, second);
         }
 
-        if (value.equals("-")) {
-            return first - second;
+        return result;
+    }
+
+    private int getFirst(String value, int result, int second) {
+        if (value.equals(PLUS)) {
+            result = calculator.add(result, second);
         }
 
-        if (value.equals("*")) {
-            return first * second;
+        if (value.equals(SUBSTRACTION)) {
+            result = calculator.sub(result, second);
         }
 
-        if (value.equals("/")) {
-            return first / second;
+        if (value.equals(MULTIPLY)) {
+            result = calculator.multiply(result, second);
         }
 
-        throw new IllegalArgumentException();
+        if (value.equals(DIVIDE)) {
+            result = calculator.divide(result, second);
+        }
+        return result;
     }
 }
