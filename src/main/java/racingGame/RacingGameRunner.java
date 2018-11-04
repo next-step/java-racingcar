@@ -3,8 +3,6 @@ package racingGame;
 public class RacingGameRunner {
 
     public static void main(String[] args) {
-        ResultView resultView = new ResultView();
-
         int numOfCars = InputView.inputGameValue(InputType.CAR);
         int move = InputView.inputGameValue(InputType.MOVE);
 
@@ -12,7 +10,7 @@ public class RacingGameRunner {
 
         while (game.hasNextRound()) {
             game.move();
-            resultView.printRound(game.getCarsInGame());
+            ResultView.printRound(game.getCarsInGame());
         }
     }
 }

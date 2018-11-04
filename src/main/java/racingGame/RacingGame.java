@@ -17,7 +17,6 @@ public class RacingGame {
         initializeMove(move);
     }
 
-
     public void move() {
         for (Car car : cars) {
             if (canMove()) {
