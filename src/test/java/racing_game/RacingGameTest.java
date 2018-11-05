@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -31,12 +32,12 @@ public class RacingGameTest {
     }
 
     @Test
-    public void 배열만들기() {
+    public void 자동차_만들기() {
         final int carCount = 2;
 
-        StringBuilder[] cars = racingGame.createCars(carCount);
+        List<Car> cars = racingGame.createCars(carCount);
 
-        assertThat(cars.length).isEqualTo(carCount);
+        assertThat(cars.size()).isEqualTo(carCount);
         assertThat(cars).allMatch(Objects::nonNull);
     }
 
@@ -49,27 +50,6 @@ public class RacingGameTest {
             int tryCount = racingGame.readTryCount(scanner);
             assertThat(tryCount).isEqualTo(inputTryCount);
         }
-    }
-
-    @Test
-    public void 전진여부확인() {
-        boolean yes = racingGame.isMove(4);
-        boolean no = racingGame.isMove(3);
-
-        assertThat(yes).isTrue();
-        assertThat(no).isFalse();
-    }
-
-    @Test
-    public void 이동하기() {
-        final StringBuilder car = new StringBuilder("-");
-        racingGame.move(car, 3);
-
-        assertThat(car.toString()).isEqualTo("-");
-
-        racingGame.move(car, 4);
-
-        assertThat(car.toString()).isEqualTo("--");
     }
 
 }

@@ -1,12 +1,13 @@
 package racing_game;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
 public class RacingGame {
 
-    private static final String CAR_STRING = "-";
-    private StringBuilder[] cars;
+    private List<Car> cars;
     private int tryCount;
     private Random random;
 
@@ -29,12 +30,12 @@ public class RacingGame {
         return Integer.parseInt(scanner.nextLine());
     }
 
-    StringBuilder[] createCars(int carCount) {
-        StringBuilder[] cars = new StringBuilder[carCount];
+    List<Car> createCars(int carCount) {
+        List<Car> cars = new ArrayList<>(carCount);
         for (int i = 0; i < carCount; i++) {
-            cars[i] = new StringBuilder();
-            cars[i].append(CAR_STRING);
+            cars.add(new Car());
         }
+
         return cars;
     }
 
@@ -53,35 +54,21 @@ public class RacingGame {
     }
 
     private void printAll() {
-        for (StringBuilder car : cars) {
-            printCar(car);
+        for (Car car : cars) {
+            StringBuilder sb = new StringBuilder(car.getMoveCount());
+            for (int i = 0; i < car.getMoveCount(); i++) {
+                sb.append("-");
+            }
+            System.out.println(sb.toString());
         }
         System.out.println();
     }
 
-    private void printCar(StringBuilder car) {
-        System.out.println(car.toString());
-    }
-
     private void moveAll() {
-        for (StringBuilder car : cars) {
+        for (Car car : cars) {
             int moveNumber = this.random.nextInt(10);
-            move(car, moveNumber);
+            car.move(moveNumber);
         }
-    }
-
-    void move(StringBuilder car, int moveNumber) {
-        if(isMove(moveNumber)) {
-            car.append("-");
-        }
-    }
-
-    boolean isMove(int number) {
-        if(number < 0 || number > 9) {
-            throw new IllegalArgumentException("숫자는 0 ~ 9 범위여야 합니다.");
-        }
-
-        return number >= 4;
     }
 
     public static void main(String[] args) {
