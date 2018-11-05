@@ -2,13 +2,14 @@ package racing.domain;
 
 import racing.dto.RacingCarStatus;
 import racing.dto.RacingGameCreateRequest;
+import racing.dto.RacingGameStatus;
 
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
 public class RacingGame {
-    List<RacingCar> racingCars;
+    private List<RacingCar> racingCars;
     private int totalTime;
     private int currentTime;
 
@@ -25,30 +26,25 @@ public class RacingGame {
                 .collect(toList());
     }
 
-    public List<RacingCarStatus> race() {
+    public RacingGameStatus race() {
         currentTime += 1;
-        return racingCars.stream()
+
+        List<RacingCarStatus> racingCarStatuses = racingCars.stream()
                 .map(RacingCar::rush)
                 .collect(toList());
+
+        return new RacingGameStatus(racingCarStatuses);
     }
 
     public boolean isRacingAvailable() {
         return totalTime > currentTime;
     }
 
-    public List<String> getWinner() {
-        if (racingCars.size() <= 0) {
-            throw new IllegalStateException("대상 자동차가 존재하지 않습니다.");
-        }
-
-        int maxValue = racingCars.stream()
-                .mapToInt(RacingCar::getPosition)
-                .max()
-                .orElse(0);
-
-        return racingCars.stream()
-                .filter(r -> r.getPosition() == maxValue)
-                .map(RacingCar::getName)
+    public RacingGameStatus getRacingGameStatus() {
+        List<RacingCarStatus> racingCarStatuses = racingCars.stream()
+                .map(RacingCar::getRacingCarStatus)
                 .collect(toList());
+
+        return new RacingGameStatus(racingCarStatuses);
     }
 }

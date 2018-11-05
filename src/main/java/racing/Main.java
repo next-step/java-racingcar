@@ -1,10 +1,8 @@
 package racing;
 
 import racing.domain.RacingGame;
-import racing.dto.RacingCarStatus;
 import racing.dto.RacingGameCreateRequest;
-
-import java.util.List;
+import racing.dto.RacingGameStatus;
 
 import static racing.ui.ConsoleUI.*;
 
@@ -35,12 +33,11 @@ public class Main {
         printResultHeader();
         // 횟수가 끝날때까지 작업을 수행합니다
         while (racingGame.isRacingAvailable()) {
-            List<RacingCarStatus> racingCarStatuses = racingGame.race();
+            RacingGameStatus racingCarStatuses = racingGame.race();
             printRacingCarStatuses(racingCarStatuses);
         }
 
         // 우승자를 찍습니다.
-        List<String> winnerNames = racingGame.getWinner();
-        printRacingGameWinner(winnerNames);
+        printRacingGameWinner(racingGame.getRacingGameStatus());
     }
 }

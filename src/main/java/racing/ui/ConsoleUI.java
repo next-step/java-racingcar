@@ -2,6 +2,7 @@ package racing.ui;
 
 import racing.dto.RacingCarStatus;
 import racing.dto.RacingGameCreateRequest;
+import racing.dto.RacingGameStatus;
 import racing.util.RacingCarStringUtils;
 
 import java.util.List;
@@ -24,7 +25,8 @@ public class ConsoleUI {
         return new RacingGameCreateRequest(names, time);
     }
 
-    public static void printRacingCarStatuses(List<RacingCarStatus> racingCarStatuses) {
+    public static void printRacingCarStatuses(RacingGameStatus racingGameStatus) {
+        List<RacingCarStatus> racingCarStatuses = racingGameStatus.getRacingCarStatuses();
         racingCarStatuses.forEach(status -> {
             String name = status.getName();
             String hyphenPosition = getHyphenStr(status.getPosition());
@@ -39,7 +41,8 @@ public class ConsoleUI {
         System.out.println("\n실행결과");
     }
 
-    public static void printRacingGameWinner(List<String> winnerNames) {
+    public static void printRacingGameWinner(RacingGameStatus racingGameStatus) {
+        List<String> winnerNames = racingGameStatus.getWinnerNames();
         String joinedNames = String.join(", ", winnerNames);
         System.out.println(joinedNames + "가 최종 우승했습니다.");
     }
