@@ -18,10 +18,11 @@ public class ResultView {
      *
      * @param positions 위치들
      */
-    public static void printAll(List<Integer> positions) {
+    public static void printAll(List<Car> positions) {
         System.out.println();
         positions.forEach(i -> {
-            print(i);
+            System.out.print(i.getName()+" : ");
+            print(i.getPosition());
             System.out.println();
         });
     }
