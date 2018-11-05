@@ -1,12 +1,18 @@
 package racing;
 
-public class Car {
-    int position;
-    String name;
 
-    Car (String name, int position){
+public class Car {
+    private static final int MIN_NUM = 4;
+
+    private int position;
+    private String name;
+
+    private boolean isMove(int num) {
+        return num >= MIN_NUM;
+    }
+
+    Car (String name){
         this.name = name;
-        this.position = position;
     }
 
     public String getName(){
@@ -15,9 +21,22 @@ public class Car {
     public int getPosition(){
         return position;
     }
-    public void addPosition(){
-        this.position++;
+    public Car addPosition(int num){
+        if(isMove(num)) {
+            this.position++;
+        }
+        return this;
     }
 
 
+    public int getMaxPosition(int max) {
+            return max < position ? position : max;
+    }
+
+    public String getWinner(int maxPosition) {
+        if(maxPosition ==  position) {
+            return name+ ",";
+        }
+        return "";
+    }
 }

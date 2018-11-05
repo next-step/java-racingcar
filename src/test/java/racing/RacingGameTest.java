@@ -19,7 +19,6 @@ public class RacingGameTest {
 
     @Test
     public void 랜덤학습테스트() {
-
         int result = 0;
         for(int i = 0; i < 100; i++){
             result = random.nextInt(10);
@@ -36,14 +35,13 @@ public class RacingGameTest {
     }
     @Test
     public void 이동_및_이동거리확인() {
-        List<Car> result = null;
+        List<Car> result = racingGame.getCars();
         for(int i =0; i < racingGame.getTime(); i++){
             result = racingGame.move();
         }
 
         for(int i =0; i < result.size(); i++){
-            assertThat(result.get(i).getPosition()).isGreaterThanOrEqualTo(0);
-            assertThat(result.get(i).getPosition()).isLessThanOrEqualTo(5);
+            assertThat(result.get(i).getPosition()).isLessThanOrEqualTo(6);
         }
     }
 
@@ -53,9 +51,8 @@ public class RacingGameTest {
     public void 플레이어초기화() {
         assertThat(racingGame.getCarCount()).isEqualTo(3);
         assertThat(racingGame.getName(0)).isEqualTo("pobi");
-        ResultView.watchRace(racingGame);
 
-        System.out.println("최종우승했습니다.");
+
     }
 
 
@@ -78,6 +75,29 @@ public class RacingGameTest {
         assertThat(racingGame.getName(0)).isEqualTo("pobi");
         ResultView.watchRace(racingGame);
 
-        System.out.println("최종우승했습니다.");
+    }
+
+    @Test
+    public void test(){
+        ResultView.watchRace(racingGame);
+    }
+
+    @Test
+    public void 최종결과테스트() {
+        int maxNum = 0;
+        String result = "";
+        List<Car> cars  = racingGame.move();
+        for(Car car : cars){
+            maxNum = car.getMaxPosition(maxNum);
+        }
+        assertThat(maxNum).isLessThanOrEqualTo(1);
+        for(Car car : cars){
+            result += car.getWinner(maxNum);
+        }
+
+        result = result.substring(0, result.length() -1 );
+        assertThat("pobi,crong,honux").contains(result);
+        result += "가 최종 우승했습니다.";
+        System.out.println(result);
     }
 }
