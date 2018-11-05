@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class InputView {
 
+    private InputView() {
+
+    }
+
     public static RacingGameOption inputRacingGameOption() {
         Scanner scanner = new Scanner(System.in);
 
