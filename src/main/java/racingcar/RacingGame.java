@@ -7,13 +7,19 @@ import static java.util.stream.Collectors.toList;
 
 public class RacingGame {
 
-    private final RacingGameOption racingGameOption;
+    private RacingGameOption racingGameOption;
     private RacingCarAccelerator accelerator;
 
     public RacingGame(RacingGameOption racingGameOption) {
+        initRacingGameOption(racingGameOption);
+        initAccelerator(racingGameOption);
+    }
+
+    private void initRacingGameOption(RacingGameOption racingGameOption) {
         this.racingGameOption = racingGameOption;
-        // TODO
-        // 추상화가 필요할 듯...
+    }
+
+    private void initAccelerator(RacingGameOption racingGameOption) {
         int maxSpeed = racingGameOption.getNumberOfTimes() + 1;
         this.accelerator = new RacingCarAccelerator(maxSpeed);
     }
