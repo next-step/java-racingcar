@@ -4,40 +4,43 @@ import java.util.Random;
 
 public class RacingCar {
 
-    //
-    public static int move() {
-        int condition;
-        // TODO 구현
-        Random rd = new Random();
-        condition = rd.nextInt(10);
-        if (isgoing(condition)) {
-            return 1;
+
+    private static final int randomBoundary=10;
+    private static final int conditionBoundary=4;
+
+    public static int createRandomValue(){
+        return new Random().nextInt(randomBoundary);
+    }
+
+    public static int move(int randomValue) {
+        int moveCount = 0;
+
+        if (isgoing(randomValue)) {
+           moveCount++;
         }
-        return 0;
+
+        return moveCount;
 
     }
 
     public static boolean isgoing(int condition) {
-        if (condition >= 4) {
-            return true;
-        }
-        return false;
+        return condition > conditionBoundary;
     }
 
 
     public static void startingGame(int time, int[] carPositions) {
         System.out.println("실행 결과");
         for (int i = 0; i < time; i++) {
-            carPositions = selectCar(carPositions); //이동하는지 안하는지 구하기!
+            carPositions = moveCar(carPositions); //이동하는지 안하는지 구하기!
             printPositions(carPositions); // 결과 출력.
             System.out.println();
         }
     }
 
     //자동차 선택하기
-    public static int[] selectCar(int[] carPositions) {
+    public static int[] moveCar(int[] carPositions) {
         for (int i = 0; i < carPositions.length; i++) {
-            carPositions[i] += move();
+            carPositions[i] += move(createRandomValue());
         }
 
         return carPositions;

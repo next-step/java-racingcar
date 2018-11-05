@@ -2,7 +2,9 @@ package racingCar;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertFalse;
 
 public class RacingCarTest {
 
@@ -14,11 +16,20 @@ public class RacingCarTest {
     }
 
     @Test
-    public void startingGame() {
-
+    public void moveCount(){
+        int result = RacingCar.move(7);
+        assertThat(result).isEqualTo(1);
     }
 
     @Test
-    public void selectCar() {
+    public void changeCarPosition(){
+        int[] result = {0,0,0};
+        result[0] += RacingCar.move(6);
+        result[1] += RacingCar.move(3);
+        result[2] += RacingCar.move(8);
+
+        assertArrayEquals(new int[]{1,0,1},result);
     }
+
+
 }
