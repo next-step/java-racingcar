@@ -1,11 +1,15 @@
 package racinggame.view.web;
 
 import racinggame.domain.RacingGame;
+import racinggame.domain.car.Car;
 import racinggame.domain.rule.RandomNumberRacingGameRule;
 import spark.ModelAndView;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static spark.Spark.get;
 import static spark.Spark.port;
@@ -25,14 +29,18 @@ public class RacingGameBoardWeb {
 
 		post("/name", (req, res) -> {
 			HashMap<String, Object> model = new HashMap<>();
-			model.put("names", req.queryParams("names").split(" "));
+			String[] carNames = req.queryParams("names").split(" ");
+			List<Car> carList = Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
+
+			req.session().attribute("carList", carList);
+			model.put("carList", carList);
 			return render(model, "/game.html");
 		});
 
 		get("/result", (req, res) -> {
-			String[] names = req.queryParamsValues("names");
+			List<Car> carList = req.session().attribute("carList");
 			int tryCount = Integer.parseInt(req.queryParams("turn"));
-			RacingGame racingGame = new RacingGame(names, tryCount, new RandomNumberRacingGameRule());
+			RacingGame racingGame = new RacingGame(carList, tryCount, new RandomNumberRacingGameRule());
 			while (racingGame.hasNextGame()) {
 				racingGame.move();
 			}

@@ -59,11 +59,11 @@ body {
 
         <div class="form-show-div" class="form-group">
           <table>
-            {{#names}}
+            {{#carList}}
             <tr>
-              <td>{{this}}</td>
+              <td>{{this.name}}</td>
             </tr>
-            {{/names}}
+            {{/carList}}
           </table>
 
         </div>
@@ -73,9 +73,6 @@ body {
             <button class="btn btn-lg btn-primary btn-block" type="submit">게임
               시작! </button>
           </div>
-          {{#names}}
-            <input type="hidden" name="names" value="{{this}}">
-          {{/names}}
         </form>
       </div>
 

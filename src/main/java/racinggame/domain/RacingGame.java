@@ -17,6 +17,12 @@ public class RacingGame {
 	private List<Car> cars;
 	private int tryCount;
 
+	public RacingGame(List<Car> cars, int tryCount, RacingGameRule gameRule) {
+		this.gameRule = gameRule;
+		this.cars = cars;
+		this.tryCount = tryCount;
+	}
+
 	public RacingGame(String[] carNames, int tryCount, RacingGameRule gameRule) {
 		this.cars = Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
 		this.tryCount = tryCount;
