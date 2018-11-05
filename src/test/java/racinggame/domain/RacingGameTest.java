@@ -1,7 +1,7 @@
-package racinggame;
+package racinggame.domain;
 
 import org.junit.Test;
-import racinggame.rule.RandomNumberRacingGameRule;
+import racinggame.domain.rule.RandomNumberRacingGameRule;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,7 +15,7 @@ public class RacingGameTest {
 		String[] testData = RacingGameTestHelper.createTestData(3);
 		RacingGame racingGame = new RacingGame(testData, 5, new RandomNumberRacingGameRule());
 
-		assertThat(racingGame.getCarDtoList()).hasSize(5);
+		assertThat(racingGame.getCarDtoList()).hasSize(3);
 		assertThat(racingGame.hasNextGame()).isTrue();
 	}
 

@@ -1,6 +1,6 @@
-package racinggame;
+package racinggame.domain;
 
-import racinggame.car.CarDTO;
+import racinggame.domain.car.CarDTO;
 
 import java.util.Collections;
 import java.util.Comparator;

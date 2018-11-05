@@ -1,4 +1,4 @@
-package racinggame.view;
+package racinggame.view.console;
 
 /**
  * Created by hspark on 03/11/2018.

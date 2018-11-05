@@ -1,4 +1,4 @@
-package racinggame.car;
+package racinggame.domain.car;
 
 /**
  * Created by hspark on 03/11/2018.

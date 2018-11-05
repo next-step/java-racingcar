@@ -1,9 +1,7 @@
-package racinggame;
+package racinggame.view.console;
 
-import racinggame.rule.RandomNumberRacingGameRule;
-import racinggame.view.InputMessageType;
-import racinggame.view.InputView;
-import racinggame.view.ResultView;
+import racinggame.domain.RacingGame;
+import racinggame.domain.rule.RandomNumberRacingGameRule;
 
 /**
  * Created by hspark on 03/11/2018.
