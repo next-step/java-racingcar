@@ -7,6 +7,11 @@ public class Car {
     private static final int MAX_NUMBER = 9;
 
     private int moveCount = 1;
+    private String name;
+
+    public Car(String name) {
+        this.name = name;
+    }
 
     public void move(int moveNumber) {
         if(isMove(moveNumber)) {
@@ -24,5 +29,9 @@ public class Car {
 
     public int getMoveCount() {
         return this.moveCount;
+    }
+
+    public String getName() {
+        return name;
     }
 }

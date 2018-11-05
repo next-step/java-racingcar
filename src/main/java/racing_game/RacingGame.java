@@ -11,30 +11,31 @@ public class RacingGame {
     private Random random;
     private int tryCount;
 
+    //TODO : 결과 출력시 자동차 이름 추가하기
+    //TODO : 우승자 출력
 
     public void start() {
-        try(CountReader countReader = new CountReader(System.in);
+        try(RacingGameReader racingGameReader = new RacingGameReader(System.in);
             ResultPrinter resultPrinter = new ResultPrinter(System.out);) {
 
-            init(countReader, resultPrinter);
+            init(racingGameReader, resultPrinter);
             process();
         }
     }
 
-    private void init(CountReader countReader, ResultPrinter resultPrinter) {
-        int carCount = countReader.readCarCount();
-        this.cars = createCars(carCount);
-        this.tryCount = countReader.readTryCount();
+    private void init(RacingGameReader racingGameReader, ResultPrinter resultPrinter) {
+        String[] carNames = racingGameReader.readCarName();
+        this.cars = createCars(carNames);
+        this.tryCount = racingGameReader.readTryCount();
         this.resultPrinter = resultPrinter;
         this.random = new Random();
     }
 
-    List<Car> createCars(int carCount) {
-        List<Car> cars = new ArrayList<>(carCount);
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+    List<Car> createCars(String[] carNames) {
+        List<Car> cars = new ArrayList<>(carNames.length);
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
-
         return cars;
     }
 
