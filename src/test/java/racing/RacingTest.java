@@ -1,6 +1,7 @@
 package racing;
 
 import org.junit.Test;
+import racing.rule.Forward;
 
 import java.util.Random;
 
@@ -17,7 +18,7 @@ public class RacingTest {
         final int catCount = 10;
         final int tryCount = random.nextInt(20);
 
-        final Game racing = new Racing(catCount, tryCount);
+        final Game racing = new Racing(catCount, tryCount, new Forward());
         assertThat(racing.getList().size()).isEqualTo(catCount);
     }
 
@@ -27,7 +28,7 @@ public class RacingTest {
         final int catCount = random.nextInt(20);
         final int tryCount = random.nextInt(20);
 
-        final Game racing = new Racing(catCount, tryCount);
+        final Game racing = new Racing(catCount, tryCount, new Forward());
         while (racing.hasTryCount()) {
             racing.start();
         }

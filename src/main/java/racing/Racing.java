@@ -1,5 +1,8 @@
 package racing;
 
+import racing.rule.Forward;
+import racing.rule.IForward;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -11,10 +14,11 @@ public class Racing implements Game {
     private int tryCount;
     private final List<Car> list = new ArrayList<>();
 
-    public Racing(final int carCount, final int tryCount) {
+    public Racing(final int carCount, final int tryCount, final IForward forward) {
         this.TRY_END_COUNT = 0;
         this.tryCount = tryCount;
-        IntStream.range(0, carCount).forEachOrdered(i -> list.add(new Car()));
+        IntStream.range(0, carCount).forEachOrdered(i -> list.add(new Car(forward)));
+
     }
 
     @Override

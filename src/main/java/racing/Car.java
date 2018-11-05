@@ -1,6 +1,6 @@
 package racing;
 
-import racing.rule.Forward;
+import racing.rule.IForward;
 
 import java.util.Objects;
 
@@ -8,9 +8,29 @@ public class Car {
 
     private static final int DEFAULT_POSITION = 0;
     private int position;
+    private IForward forward;
 
-    public Car() {
+    public Car(IForward forward) {
+        this.forward = forward;
         initialize();
+    }
+
+    public void run() {
+        if (forward.isPossible()) {
+            increasePosition();
+        }
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    private void initialize() {
+        position = DEFAULT_POSITION;
+    }
+
+    private void increasePosition() {
+        position++;
     }
 
     @Override
@@ -32,24 +52,6 @@ public class Car {
         sb.append("position=").append(position);
         sb.append('}');
         return sb.toString();
-    }
-
-    public void run() {
-        if (Forward.isPossible()) {
-            increasePosition();
-        }
-    }
-
-    public int getPosition() {
-        return position;
-    }
-
-    private void initialize() {
-        position = DEFAULT_POSITION;
-    }
-
-    private void increasePosition() {
-        position++;
     }
 
 }
