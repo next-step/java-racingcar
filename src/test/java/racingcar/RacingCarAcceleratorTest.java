@@ -19,9 +19,5 @@ public class RacingCarAcceleratorTest {
         assertThat(racingCarAccelerator.stepOn(4)).isLessThanOrEqualTo(maxSpeed);
         assertThat(racingCarAccelerator.stepOn(5)).isLessThanOrEqualTo(maxSpeed);
         assertThat(racingCarAccelerator.stepOn(6)).isLessThanOrEqualTo(maxSpeed);
-        assertThat(racingCarAccelerator.stepOn(7)).isLessThanOrEqualTo(maxSpeed);
-        assertThat(racingCarAccelerator.stepOn(8)).isLessThanOrEqualTo(maxSpeed);
-        assertThat(racingCarAccelerator.stepOn(9)).isLessThanOrEqualTo(maxSpeed);
-        assertThat(racingCarAccelerator.stepOn(10)).isLessThanOrEqualTo(maxSpeed);
     }
 }
