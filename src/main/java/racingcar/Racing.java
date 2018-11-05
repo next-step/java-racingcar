@@ -4,19 +4,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Racing {
-
-    private int tryTime;
-    private List<RacingCar> racingCars;
 
     private static final int RANDOM_NUMBER_BOUNDARY = 10;
     private static final int START_POSITION = 0;
 
-    public Racing(String cars, int tryTime) {
+    private List<RacingCar> racingCars;
+
+    public Racing(String cars) {
         this.racingCars = generateRacingCars(cars);
-        this.tryTime = tryTime;
     }
 
     private List<RacingCar> generateRacingCars(String cars) {
@@ -29,43 +26,11 @@ public class Racing {
         return this.racingCars;
     }
 
-    public void startRace() {
-        IntStream.range(0, this.tryTime)
-                .forEach(i -> {
-                    moveCars();
-                    ResultView.printCars(getRacingCars());
-                    System.out.println();
-                });
-
-       ResultView.printWinners(winner());
-    }
-
-    public void moveCars() {
+    public List<RacingCar> moveCars() {
         this.racingCars
                 .forEach(racingCar -> racingCar.move(generateRandomNum()));
-    }
 
-    public String winner() {
-        int maxPosition = findMaxPosition(
-                racingCars.stream()
-                            .map(racingCar -> racingCar.getPosition())
-                            .collect(Collectors.toList()));
-
-        return this.racingCars.stream()
-                .filter(r -> r.isSamePosition(maxPosition))
-                .map(RacingCar::getName)
-                .collect(Collectors.joining(", "));
-    }
-
-
-    protected int findMaxPosition(List<Integer> positions) {
-
-        int maxPosition = positions.stream()
-                .mapToInt(value -> value)
-                .max()
-                .orElse(0);
-
-        return maxPosition;
+        return this.racingCars;
     }
 
     public static int generateRandomNum() {
@@ -77,12 +42,21 @@ public class Racing {
         return this.racingCars;
     }
 
-
     public static void main(String[] args) {
         String cars = InputView.inputCars();
         int tryTime = InputView.inputTryTime();
 
-        Racing r = new Racing(cars, tryTime);
-        r.startRace();
+        Racing racing = new Racing(cars);
+        GameResult result;
+
+        for(int i = 0; i < tryTime; i++) {
+            racing.moveCars();
+            ResultView.printCars(racing.getRacingCars());
+            System.out.println();
+
+        }
+
+        result = new GameResult(racing.getRacingCars());
+        ResultView.printWinners(result);
     }
 }

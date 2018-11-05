@@ -32,19 +32,6 @@ public class RacingTest {
     }
 
     @Test
-    public void 가장_먼_위치_찾기() {
-        List<Integer> positions = new ArrayList<>();
-        positions.add(1);
-        positions.add(2);
-        positions.add(3);
-
-        Racing racing = new Racing("jihan,pobi,jihan2", 5);
-
-        int result = racing.findMaxPosition(positions);
-        assertThat(result).isEqualTo(3);
-    }
-
-    @Test
     public void 같은_위치인지_테스트() {
         RacingCar car = new RacingCar(0,"jihan");
 
@@ -53,12 +40,38 @@ public class RacingTest {
     }
 
     @Test
-    public void 우승자_이름_제대로_나오는지_테스트(){
-        Racing racing = new Racing("jihan,pobi,jihan2", 5);
+    public void 가장_먼_위치_찾기() {
+        List<RacingCar> racingCars = new ArrayList<>();
 
-        racing.getRacingCars().get(0).move(4);
+        RacingCar racingCar1 = new RacingCar(3, "jihan");
+        RacingCar racingCar2 = new RacingCar(2, "pobi");
+        RacingCar racingCar3 = new RacingCar(1, "wow");
 
-        String result = racing.winner();
+        racingCars.add(racingCar1);
+        racingCars.add(racingCar2);
+        racingCars.add(racingCar3);
+
+        GameResult gameResult = new GameResult(racingCars);
+        int result = gameResult.findMaxPosition(racingCars);
+
+        assertThat(result).isEqualTo(3);
+    }
+
+    @Test
+    public void 우승자_이름_제대로_나오는지_테스트() {
+        List<RacingCar> racingCars = new ArrayList<>();
+
+        RacingCar racingCar1 = new RacingCar(3, "jihan");
+        RacingCar racingCar2 = new RacingCar(2, "pobi");
+        RacingCar racingCar3 = new RacingCar(1, "wow");
+
+        racingCars.add(racingCar1);
+        racingCars.add(racingCar2);
+        racingCars.add(racingCar3);
+
+        GameResult gameResult = new GameResult(racingCars);
+        String result = gameResult.winner();
+
         assertThat(result).isEqualTo("jihan");
     }
 }

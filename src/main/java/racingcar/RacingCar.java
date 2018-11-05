@@ -2,10 +2,10 @@ package racingcar;
 
 public class RacingCar {
 
+    private static final int MOVING_CONDITION = 4;
+
     private int position;
     private String name;
-
-    public static final int MOVING_CONDITION = 4;
 
     public RacingCar(int position, String name){
         this.position = position;
@@ -14,7 +14,7 @@ public class RacingCar {
 
     public int move(int random) {
         if(isMoving(random))
-            return this.position+=1;
+            return this.position += 1;
 
         return this.position;
     }

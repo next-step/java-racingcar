@@ -8,8 +8,7 @@ public class ResultView {
         racingCars.forEach(racingCar -> System.out.println(racingCar.toString()));
     }
 
-    //우승자 출력
-    public static void printWinners(String winner){
-        System.out.println(winner + "가 최종 우승했습니다.");
+    public static void printWinners(GameResult result){
+        System.out.println(result.winner() + "가 최종 우승했습니다.");
     }
 }
