@@ -1,6 +1,7 @@
 package racingGame;
 
-import java.util.Scanner;
+import racingGame.view.InputView;
+import racingGame.view.QuestionType;
 
 public class RacingGrameRunner {
 
@@ -9,14 +10,8 @@ public class RacingGrameRunner {
         RacingGame racingGame = new RacingGame();
         racingGame.setLogger(logger);
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int cars = scanner.nextInt();
-
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int times = scanner.nextInt();
-
-        scanner.close();
+        int cars = InputView.inputInteger(QuestionType.CARS.getQuestion());
+        int times = InputView.inputInteger(QuestionType.TIMES.getQuestion());
 
         System.out.println("\n실행 결과");
         racingGame.move(cars, times);
