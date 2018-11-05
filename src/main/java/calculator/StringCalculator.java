@@ -15,8 +15,7 @@ public class StringCalculator {
     }
 
     public static int calculate(String text) {
-        String[] values = text.split(SEPARATOR);
-        return accumulate(values);
+        return accumulate(text.split(SEPARATOR));
     }
 
     private static int accumulate(String[] values) {
