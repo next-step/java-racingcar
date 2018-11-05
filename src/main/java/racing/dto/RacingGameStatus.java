@@ -2,6 +2,7 @@ package racing.dto;
 
 import java.util.List;
 
+import static java.util.Comparator.naturalOrder;
 import static java.util.stream.Collectors.toList;
 
 public class RacingGameStatus {
@@ -17,8 +18,17 @@ public class RacingGameStatus {
 
     public List<String> getWinnerNames() {
         validateRacingCarStatuses();
-        int maxValue = getMaxPositionValue();
-        return findMaxPositionCarNames(maxValue);
+        // 우선 가장 멀리간 차량을 찾는다.
+        RacingCarStatus maxPositionRacingCar = getMaxPositionRacingCar();
+        // 멀리간 포지션과 동일한 크기를 차량을 가져온다.
+        return getSamePositionCarNames(maxPositionRacingCar);
+    }
+
+    private List<String> getSamePositionCarNames(RacingCarStatus maxPositionRacingCar) {
+        return racingCarStatuses.stream()
+                .filter(c -> 0 == maxPositionRacingCar.compareTo(c))
+                .map(RacingCarStatus::getName)
+                .collect(toList());
     }
 
     private void validateRacingCarStatuses() {
@@ -27,16 +37,9 @@ public class RacingGameStatus {
         }
     }
 
-    private int getMaxPositionValue() {
+    private RacingCarStatus getMaxPositionRacingCar() {
         return racingCarStatuses.stream()
-                .mapToInt(RacingCarStatus::getPosition)
-                .max().orElse(0);
-    }
-
-    private List<String> findMaxPositionCarNames(int maxValue) {
-        return racingCarStatuses.stream()
-                .filter(r -> r.getPosition() == maxValue)
-                .map(RacingCarStatus::getName)
-                .collect(toList());
+                .max(naturalOrder())
+                .orElseThrow(() -> new IllegalArgumentException("list의 값이 존재하지 않음"));
     }
 }
