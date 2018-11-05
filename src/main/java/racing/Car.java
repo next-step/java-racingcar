@@ -6,51 +6,28 @@ import java.util.Objects;
 
 public class Car {
 
-    /**
-     * 위치 기본값
-     */
     private static final int DEFAULT_POSITION = 0;
 
-    /**
-     * 위치
-     */
     private int position;
 
-    /**
-     * 위치 가져오기
-     *
-     * @return int
-     */
     public int getPosition() {
         return position;
     }
 
-    /**
-     * 생성자
-     */
     public Car() {
         initialize();
     }
 
-    /**
-     * 초기화
-     */
     private void initialize() {
         position = DEFAULT_POSITION;
     }
 
-    /**
-     * 달리기
-     */
     public void run() {
         if (Forward.isPossible()) {
             increasePosition();
         }
     }
 
-    /**
-     * 위치 증가
-     */
     private void increasePosition() {
         position++;
     }

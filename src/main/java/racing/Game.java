@@ -5,7 +5,7 @@ import java.util.List;
 public interface Game {
 
     /**
-     * 시도할 카운트가 남아 있는지
+     * 게임을 시도할 카운트가 남아 있는지
      */
     boolean hasTryCount();
 

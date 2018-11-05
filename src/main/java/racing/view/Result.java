@@ -9,11 +9,6 @@ public abstract class Result {
     private Result() {
     }
 
-    /**
-     * 위치 출력
-     *
-     * @param list List<Car>
-     */
     public static void positionPrint(final List<Car> list) {
 
         for (Car car : list) {
@@ -24,11 +19,6 @@ public abstract class Result {
         System.out.println();
     }
 
-    /**
-     * 위치 계산
-     *
-     * @param position int
-     */
     private static void positionCalculator(final int position) {
 
         final StringBuilder sb = new StringBuilder();
