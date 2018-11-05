@@ -29,7 +29,12 @@ public class StringCalculatorTest {
     }
     @Test
     public void totalCal(){
-        int result = StringCalculator.calculate("2 + 3 * 4 / 2”");
+        int result = StringCalculator.calculate("2 + 3 * 4 / 2");
         assertThat(result).isEqualTo(10);
+    }
+    @Test
+    public void subString(){
+        String result = StringCalculator.getSubstring("2 + 3 * 4 / 2");
+        assertThat(result).isEqualToIgnoringCase(" * 4 / 2");
     }
 }
