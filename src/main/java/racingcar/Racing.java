@@ -1,35 +1,36 @@
 package racingcar;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Racing {
 
-    private int tryTime;
+    private static final int RANDOM_NUMBER_BOUNDARY = 10;
+    private static final int START_POSITION = 0;
+
     private List<RacingCar> racingCars;
 
-    private static final int RANDOM_NUMBER_BOUNDARY = 10;
-
-    public Racing(int carNum, int tryTime) {
-        this.racingCars = new ArrayList<>(carNum);
-        for(int i = 0; i < carNum; i++){
-            racingCars.add(new RacingCar());
-        }
-        this.tryTime = tryTime;
+    public Racing(String cars) {
+        this.racingCars = generateRacingCars(cars);
     }
 
-    public void startRace(){
-        for(int i = 0; i < tryTime; i++) {
-            moveCars();
-       }
+    private List<RacingCar> generateRacingCars(String cars) {
+        String [] carNames = cars.split(",");
+
+        this.racingCars = Arrays.stream(carNames)
+                .map(carName -> new RacingCar(START_POSITION, carName))
+                .collect(Collectors.toList());
+
+        return this.racingCars;
     }
 
-    public void moveCars(){
-        for(RacingCar racingCar: racingCars) {
-            int random = generateRandomNum();
-            racingCar.move(random);
-        }
+    public List<RacingCar> moveCars() {
+        this.racingCars
+                .forEach(racingCar -> racingCar.move(generateRandomNum()));
+
+        return this.racingCars;
     }
 
     public static int generateRandomNum() {
@@ -38,16 +39,24 @@ public class Racing {
     }
 
     public List<RacingCar> getRacingCars() {
-        return racingCars;
+        return this.racingCars;
     }
 
     public static void main(String[] args) {
-        int carNum = InputView.inputCarNum();
+        String cars = InputView.inputCars();
         int tryTime = InputView.inputTryTime();
 
-        Racing r = new Racing(carNum, tryTime);
-        r.startRace();
+        Racing racing = new Racing(cars);
+        GameResult result;
 
-        ResultView.printCars(r.getRacingCars());
+        for(int i = 0; i < tryTime; i++) {
+            racing.moveCars();
+            ResultView.printCars(racing.getRacingCars());
+            System.out.println();
+
+        }
+
+        result = new GameResult(racing.getRacingCars());
+        ResultView.printWinners(result);
     }
 }

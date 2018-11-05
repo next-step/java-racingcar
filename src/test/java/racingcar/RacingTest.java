@@ -2,13 +2,16 @@ package racingcar;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingTest {
 
     @Test
     public void move_동작_테스트_움직임_조건_4미만인_경우_정지() {
-        RacingCar car = new RacingCar();
+        RacingCar car = new RacingCar(0, "jihan");
 
         int result = car.move(3);
         assertThat(result).isEqualTo(0);
@@ -16,7 +19,7 @@ public class RacingTest {
 
     @Test
     public void move_동작_테스트_움직임_조건_4이상인_경우_이동() {
-        RacingCar car = new RacingCar();
+        RacingCar car = new RacingCar(0, "jihan");
 
         int result = car.move(4);
         assertThat(result).isEqualTo(1);
@@ -28,4 +31,47 @@ public class RacingTest {
         assertThat(random).isBetween(0, 9);
     }
 
+    @Test
+    public void 같은_위치인지_테스트() {
+        RacingCar car = new RacingCar(0,"jihan");
+
+        boolean result = car.isSamePosition(0);
+        assertThat(result).isEqualTo(true);
+    }
+
+    @Test
+    public void 가장_먼_위치_찾기() {
+        List<RacingCar> racingCars = new ArrayList<>();
+
+        RacingCar racingCar1 = new RacingCar(3, "jihan");
+        RacingCar racingCar2 = new RacingCar(2, "pobi");
+        RacingCar racingCar3 = new RacingCar(1, "wow");
+
+        racingCars.add(racingCar1);
+        racingCars.add(racingCar2);
+        racingCars.add(racingCar3);
+
+        GameResult gameResult = new GameResult(racingCars);
+        int result = gameResult.findMaxPosition(racingCars);
+
+        assertThat(result).isEqualTo(3);
+    }
+
+    @Test
+    public void 우승자_이름_제대로_나오는지_테스트() {
+        List<RacingCar> racingCars = new ArrayList<>();
+
+        RacingCar racingCar1 = new RacingCar(3, "jihan");
+        RacingCar racingCar2 = new RacingCar(2, "pobi");
+        RacingCar racingCar3 = new RacingCar(1, "wow");
+
+        racingCars.add(racingCar1);
+        racingCars.add(racingCar2);
+        racingCars.add(racingCar3);
+
+        GameResult gameResult = new GameResult(racingCars);
+        String result = gameResult.winner();
+
+        assertThat(result).isEqualTo("jihan");
+    }
 }
