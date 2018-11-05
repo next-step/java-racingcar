@@ -27,19 +27,4 @@ public class RacingCarTest {
         RacingCar racingCar = RacingCar.create();
         assertThat(racingCar.getPosition()).isEqualTo(1);
     }
-
-    @Test
-    public void 레이싱카는_이동할수있다() {
-        RacingCar racingCar = RacingCar.create();
-        racingCar.move();
-        assertThat(racingCar.getPosition()).isEqualTo(2);
-    }
-
-    @Test
-    public void 레이싱카는_원하는만큼_이동할수있다() {
-        int count = 5;
-        RacingCar racingCar = RacingCar.create();
-        racingCar.move(count);
-        assertThat(racingCar.getPosition()).isEqualTo(count + 1);
-    }
 }

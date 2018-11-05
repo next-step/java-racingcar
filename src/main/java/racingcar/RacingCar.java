@@ -27,12 +27,12 @@ public class RacingCar {
         this.move(accelerator.stepOn(position));
     }
 
-    public void move(int count) {
+    private void move(int count) {
         IntStream.range(0, count)
                 .forEach(i -> this.move());
     }
 
-    public void move() {
+    private void move() {
         this.position = position + 1;
     }
 
