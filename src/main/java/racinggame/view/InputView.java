@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.view;
 
 import java.util.Scanner;
 
@@ -10,5 +10,10 @@ public class InputView {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println(messageType.getMessage());
 		return scanner.nextInt();
+	}
+	public static String inputString(InputMessageType messageType){
+		Scanner scanner = new Scanner(System.in);
+		System.out.println(messageType.getMessage());
+		return scanner.nextLine();
 	}
 }

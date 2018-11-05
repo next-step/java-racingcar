@@ -3,43 +3,40 @@ package racinggame;
 import org.junit.Test;
 import racinggame.rule.RandomNumberRacingGameRule;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Created by hspark on 02/11/2018.
  */
 public class RacingGameTest {
+
 	@Test
 	public void test_레이싱게임_생성() {
-		RacingGame racingGame = new RacingGame(5, 5, new RandomNumberRacingGameRule());
+		String[] testData = RacingGameTestHelper.createTestData(3);
+		RacingGame racingGame = new RacingGame(testData, 5, new RandomNumberRacingGameRule());
 
-		assertThat(racingGame.getCarDtoList().size()).isEqualTo(5);
+		assertThat(racingGame.getCarDtoList()).hasSize(5);
 		assertThat(racingGame.hasNextGame()).isTrue();
 	}
 
 	@Test
-	public void test_자동차_이동_확인() {
-		RacingGame racingGame = new RacingGame(5, 5, (car) -> true);
+	public void test_자동차_게임이_끝났을_때() {
+		String[] testData = RacingGameTestHelper.createTestData(3);
+		RacingGame racingGame = new RacingGame(testData, 1, (car) -> true);
 
 		racingGame.move();
 
-		List<CarDTO> cars = racingGame.getCarDtoList();
-		for (CarDTO car : cars) {
-			assertThat(car.getPosition()).isEqualTo(1);
-		}
+		assertThat(racingGame.hasNextGame()).isFalse();
 	}
 
 	@Test
-	public void test_자동차_미이동_확인() {
-		RacingGame racingGame = new RacingGame(5, 5, (car) -> false);
+	public void test_자동차_게임이_끝나지않았을_때() {
+		String[] testData = RacingGameTestHelper.createTestData(3);
+		RacingGame racingGame = new RacingGame(testData, 2, (car) -> true);
 
 		racingGame.move();
 
-		List<CarDTO> cars = racingGame.getCarDtoList();
-		for (CarDTO car : cars) {
-			assertThat(car.getPosition()).isEqualTo(0);
-		}
+		assertThat(racingGame.hasNextGame()).isTrue();
 	}
+
 }

@@ -1,6 +1,9 @@
 package racinggame;
 
 import racinggame.rule.RandomNumberRacingGameRule;
+import racinggame.view.InputMessageType;
+import racinggame.view.InputView;
+import racinggame.view.ResultView;
 
 /**
  * Created by hspark on 03/11/2018.
@@ -8,13 +11,14 @@ import racinggame.rule.RandomNumberRacingGameRule;
 public class RacingGameBoard {
 
 	public static void main(String[] args) {
-		int carAmount = InputView.inputInt(InputMessageType.CAR_AMOUNT);
+		String[] carNames = InputView.inputString(InputMessageType.CAR_NAME).split(",");
 		int tryCount = InputView.inputInt(InputMessageType.TRY_COUNT);
 
-		RacingGame racingGame = new RacingGame(carAmount, tryCount, new RandomNumberRacingGameRule());
+		RacingGame racingGame = new RacingGame(carNames, tryCount, new RandomNumberRacingGameRule());
 		while (racingGame.hasNextGame()) {
 			racingGame.move();
-			ResultView.output(racingGame.getCarDtoList());
+			ResultView.printGameResult(racingGame.getGameResult());
 		}
+		ResultView.printTopRankingList(racingGame.getGameResult());
 	}
 }

@@ -1,9 +1,10 @@
 package racinggame;
 
+import racinggame.car.CarDTO;
+import racinggame.car.CarGroup;
 import racinggame.rule.RacingGameRule;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.List;
 
 /**
  * Created by hspark on 02/11/2018.
@@ -11,23 +12,18 @@ import java.util.stream.Collectors;
 public class RacingGame {
 
 	private RacingGameRule gameRule;
-	private List<Car> cars;
+	private CarGroup carGroup;
 	private int tryCount;
 
-	public RacingGame(int carAmount, int tryCount, RacingGameRule gameRule) {
-		this.cars = new ArrayList<>();
-		for (int i = 0; i < carAmount; i++) {
-			cars.add(new Car());
-		}
+	public RacingGame(String[] carNames, int tryCount, RacingGameRule gameRule) {
+		this.carGroup = new CarGroup(carNames);
 		this.tryCount = tryCount;
 		this.gameRule = gameRule;
 	}
 
 	public void move() {
 		reduceTryCount();
-		for (Car car : cars) {
-			car.moveForward(gameRule);
-		}
+		carGroup.moveForward(gameRule);
 	}
 
 	private void reduceTryCount() {
@@ -35,10 +31,15 @@ public class RacingGame {
 	}
 
 	public List<CarDTO> getCarDtoList() {
-		return cars.stream().map(CarDTO::of).collect(Collectors.toList());
+		return carGroup.getCarDTOList();
 	}
 
 	public boolean hasNextGame() {
 		return tryCount > 0;
 	}
+
+	public RacingGameResult getGameResult() {
+		return new RacingGameResult(carGroup.getCarDTOList());
+	}
+
 }
