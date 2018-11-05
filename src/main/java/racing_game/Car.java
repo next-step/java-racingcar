@@ -5,7 +5,6 @@ public class Car {
     private static final int MOVE_STANDARD = 4;
     private static final int MIN_NUMBER = 0;
     private static final int MAX_NUMBER = 9;
-    private static final String CAR_SHAPE = "-";
 
     private int moveCount = 1;
 
@@ -25,9 +24,5 @@ public class Car {
 
     public int getMoveCount() {
         return this.moveCount;
-    }
-
-    public String getCarShape() {
-        return CAR_SHAPE;
     }
 }

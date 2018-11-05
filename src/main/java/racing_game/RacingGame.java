@@ -3,31 +3,30 @@ package racing_game;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 public class RacingGame {
 
     private List<Car> cars;
-    private int tryCount;
+    private ResultPrinter resultPrinter;
     private Random random;
+    private int tryCount;
+
 
     public void start() {
-        try(Scanner scanner = new Scanner(System.in)) {
-            init(scanner);
+        try(CountReader countReader = new CountReader(System.in);
+            ResultPrinter resultPrinter = new ResultPrinter(System.out);) {
+
+            init(countReader, resultPrinter);
             process();
         }
     }
 
-    private void init(Scanner scanner) {
-        int carCount = readCarCount(scanner);
+    private void init(CountReader countReader, ResultPrinter resultPrinter) {
+        int carCount = countReader.readCarCount();
         this.cars = createCars(carCount);
-        this.tryCount = readTryCount(scanner);
+        this.tryCount = countReader.readTryCount();
+        this.resultPrinter = resultPrinter;
         this.random = new Random();
-    }
-
-    int readCarCount(Scanner scanner) {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return Integer.parseInt(scanner.nextLine());
     }
 
     List<Car> createCars(int carCount) {
@@ -37,11 +36,6 @@ public class RacingGame {
         }
 
         return cars;
-    }
-
-    int readTryCount(Scanner scanner) {
-        System.out.println("시도할 횟수는 몇 회 인가요?");
-        return Integer.parseInt(scanner.nextLine());
     }
 
     private void process() {
@@ -55,11 +49,7 @@ public class RacingGame {
 
     private void printAll() {
         for (Car car : cars) {
-            StringBuilder sb = new StringBuilder(car.getMoveCount());
-            for (int i = 0; i < car.getMoveCount(); i++) {
-                sb.append("-");
-            }
-            System.out.println(sb.toString());
+            resultPrinter.print(car.getMoveCount());
         }
         System.out.println();
     }
