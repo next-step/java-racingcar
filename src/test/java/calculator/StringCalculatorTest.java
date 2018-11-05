@@ -47,25 +47,39 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void 덧셈_뺄셈() {
-        int result = StringCalculator.calculate("2 + 3 * 4");
-        assertThat(result).isEqualTo(24);
+    public void 공백분리테스트() {
+        String origin = "11 * 33";
+        String[] values = StringCalculator.SPLIT_PATTERN.split(origin);
+        assertThat(values.length).isEqualTo(3);
     }
 
     @Test
-    public void 숫자만추출() {
-        String line = "21 + 356 * 42";
-        String[] values = line.split("\\s");
+    public void 문자만추출() {
+        String origin = "12 + 34 - 56 / 78";
+        String[] values = StringCalculator.SPLIT_PATTERN.split(origin);
 
-        List<Integer> numberList = new ArrayList<>();
+        List<String> operatorList = new ArrayList<>();
         for (String value : values) {
-            Matcher matcher = StringCalculator.NUMBER_PATTERN.matcher(value);
+            Matcher matcher = StringCalculator.OPERATOR_PATTERN.matcher(value);
             if(matcher.matches()) {
-
+                operatorList.add(value);
             }
         }
 
+        assertThat(operatorList.size()).isEqualTo(3);
+    }
 
+    @Test
+    public void 복합연산() {
+        int result = StringCalculator.calculate("2 + 3 * 4 / 2");
+        assertThat(result).isEqualTo(10);
+    }
+
+    @Test
+    public void 숫자하나만() {
+        int result = StringCalculator.calculate("3");
+
+        assertThat(result).isEqualTo(3);
     }
 
 }
