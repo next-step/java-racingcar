@@ -1,44 +1,34 @@
 package racinggame.car;
 
-import org.junit.Before;
 import org.junit.Test;
-import racinggame.car.Car;
-import racinggame.game.RacingGame;
-import racinggame.rule.RandomNumberRacing;
 
+import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class VictoryCarTest {
 
-    String[] carName;
-
-    @Before
-    public void 레이싱_카셋팅(){
-        carName = new String[]{"pobi","crong", "honux"};
-    }
+    List<Car> cars;
 
     @Test
     public void 레이싱_순위_1등(){
-        RacingGame racingGame = new RacingGame(carName, 2, new RandomNumberRacing());
+        cars = Arrays.asList(new Car("pobi", 1), new Car("crong", 5), new Car("pobi", 3));
+        VictoryCar victoryCar =  new VictoryCar(cars);
 
-        List<Car> cars = racingGame.getCar();
-        cars.get(0).move(() -> true);
 
-        assertEquals(racingGame.getVictorCar().size(), 1);
+        assertEquals(victoryCar.getVictorCar().size(), 1);
+        assertEquals(victoryCar.getMaxLocation(), 5);
     }
 
     @Test
     public void 레이싱_순위_공동1등(){
-        RacingGame racingGame = new RacingGame(carName, 2, new RandomNumberRacing());
+        cars = Arrays.asList(new Car("pobi", 1), new Car("crong", 5), new Car("pobi", 5));
+        VictoryCar victoryCar =  new VictoryCar(cars);
 
-        List<Car> cars = racingGame.getCar();
-        cars.get(0).move(() -> true);
-        cars.get(1).move(() -> true);
 
-        assertEquals(racingGame.getVictorCar().size(), 2);
+        assertEquals(victoryCar.getVictorCar().size(), 2);
+        assertEquals(victoryCar.getMaxLocation(), 5);
     }
-
 
 }
