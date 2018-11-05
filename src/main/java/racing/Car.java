@@ -13,24 +13,6 @@ public class Car {
         initialize();
     }
 
-    public void run() {
-        if (Forward.isPossible()) {
-            increasePosition();
-        }
-    }
-
-    public int getPosition() {
-        return position;
-    }
-
-    private void initialize() {
-        position = DEFAULT_POSITION;
-    }
-
-    private void increasePosition() {
-        position++;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -50,6 +32,24 @@ public class Car {
         sb.append("position=").append(position);
         sb.append('}');
         return sb.toString();
+    }
+
+    public void run() {
+        if (Forward.isPossible()) {
+            increasePosition();
+        }
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    private void initialize() {
+        position = DEFAULT_POSITION;
+    }
+
+    private void increasePosition() {
+        position++;
     }
 
 }
