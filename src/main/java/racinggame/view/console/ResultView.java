@@ -1,4 +1,4 @@
-package racinggame.view;
+package racinggame.view.console;
 
 import racinggame.domain.RacingGameResult;
 import racinggame.domain.car.CarDTO;
