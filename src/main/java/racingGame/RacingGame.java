@@ -1,55 +1,66 @@
 package racingGame;
 
-import racingGame.view.ResultView;
+import racingGame.model.RacingCar;
+import racingGame.util.Lottery;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class RacingGame {
-    Random random = new Random();
+    private static int LESS_MOVE_RANGE = 3;
+    private static int GREATER_MOVE_RANGE = 11;
+    private ArrayList<RacingCar> racingCars = new ArrayList<>();
+    private int cars;
+    private int times;
+    private int remainTimes;
 
-    public ArrayList<Integer> move(int cars, int times) {
-        if (cars < 1 || times < 0) {
-            return new ArrayList<>();
+    RacingGame(int cars, int times) {
+        this.cars = cars;
+        this.times = times;
+        this.remainTimes = times;
+
+        this.initRacingCars();
+    }
+
+    public void move() {
+        if (this.remainTimes > 0) {
+            this.moveCars();
+            this.remainTimes -= 1;
         }
+    }
 
-        ArrayList<Integer> carPositions = new ArrayList<>(cars);
-
-        // 자동차 위치값 초기화
-        for (int i = 0, len = cars; i < len; i++) {
-            carPositions.add(0);
+    public void moveCars() {
+        for (RacingCar racingCar : this.racingCars) {
+            if (this.isForward(Lottery.getLotteryNumber())) {
+                racingCar.setForward();
+            }
         }
+    }
 
-        for (int time = 0; time < times; time++) {
-            this.moveCars(carPositions);
+    public boolean isForward(int number) {
+        return number > LESS_MOVE_RANGE && number < GREATER_MOVE_RANGE;
+    }
 
-            ResultView.log(carPositions);
+    public boolean hasRemainTime() {
+        return this.remainTimes > 0;
+    }
+
+    public ArrayList<Integer> getCarPositions() {
+        ArrayList<Integer> carPositions = new ArrayList<>();
+        for (RacingCar racingCar : this.racingCars) {
+            carPositions.add(racingCar.getPosition());
         }
 
         return carPositions;
     }
 
-    public boolean isForward(int number) {
-        return number > 3 && number < 11;
-    }
-
-    public Integer getLotteryNumber() {
-        return random.nextInt(10);
-    }
-
-    public void setForward(ArrayList<Integer> carPositions, int carPosition) {
-        if (carPositions == null || carPositions.isEmpty() || carPositions.size() <= carPosition) {
+    private void initRacingCars() {
+        if (this.cars < 1 || this.times < 0) {
             return;
         }
 
-        carPositions.set(carPosition, carPositions.get(carPosition) + 1);
-    }
-
-    public void moveCars(ArrayList<Integer> carPositions) {
-        for (int car = 0, cars = carPositions.size(); car < cars; car++) {
-            if (this.isForward(this.getLotteryNumber())) {
-                this.setForward(carPositions, car);
-            }
+        // 경주용 자동차 초기화
+        for (int i = 0, len = this.cars; i < len; i++) {
+            this.racingCars.add(new RacingCar());
         }
     }
 }
