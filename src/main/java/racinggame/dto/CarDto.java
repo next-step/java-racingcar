@@ -12,19 +12,11 @@ public class CarDto {
 		position = car.getCurrentPosition();
 	}
 
-	public String getStatus() {
+	public String print(String displayString) {
 		StringBuilder status = new StringBuilder(name).append(" : ");
 		for(int i = 0; i < position; i++) {
-			status.append("-");
+			status.append(displayString);
 		}
 		return status.toString();
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public Integer getPosition() {
-		return position;
 	}
 }
