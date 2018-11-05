@@ -1,6 +1,6 @@
-package racinggame.view.handlebars;
+package racinggame.view.web;
 
-import racinggame.view.handlebars.helper.TimesHelper;
+import racinggame.view.web.handlebars.helper.TimesHelper;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
 /**

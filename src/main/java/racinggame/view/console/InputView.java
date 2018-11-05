@@ -1,7 +1,5 @@
 package racinggame.view.console;
 
-import racinggame.view.InputMessageType;
-
 import java.util.Scanner;
 
 /**

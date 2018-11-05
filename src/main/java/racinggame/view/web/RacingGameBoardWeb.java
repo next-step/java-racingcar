@@ -1,8 +1,7 @@
-package racinggame.view;
+package racinggame.view.web;
 
 import racinggame.domain.RacingGame;
 import racinggame.domain.rule.RandomNumberRacingGameRule;
-import racinggame.view.handlebars.CustomHandlebarsTemplateEngine;
 import spark.ModelAndView;
 
 import java.util.HashMap;
@@ -18,21 +17,20 @@ import static spark.Spark.post;
 public class RacingGameBoardWeb {
 	public static void main(String[] args) {
 		port(8080);
+		routes();
+	}
 
-		get("/", (req, res) -> {
-			return render(new HashMap<>(), "/index.html");
-		});
+	private static void routes() {
+		get("/", (req, res) -> render(new HashMap<>(), "/index.html"));
 
 		post("/name", (req, res) -> {
-			String[] names = req.queryParams("names").split(" ");
 			HashMap<String, Object> model = new HashMap<>();
-			req.session().attribute("names", names);
-			model.put("names", names);
+			model.put("names", req.queryParams("names").split(" "));
 			return render(model, "/game.html");
 		});
 
 		get("/result", (req, res) -> {
-			String[] names = req.session().attribute("names");
+			String[] names = req.queryParamsValues("names");
 			int tryCount = Integer.parseInt(req.queryParams("turn"));
 			RacingGame racingGame = new RacingGame(names, tryCount, new RandomNumberRacingGameRule());
 			while (racingGame.hasNextGame()) {

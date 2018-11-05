@@ -1,4 +1,4 @@
-package racinggame.view.handlebars.helper;
+package racinggame.view.web.handlebars.helper;
 
 import com.github.jknack.handlebars.Helper;
 import com.github.jknack.handlebars.Options;
