@@ -24,20 +24,23 @@ public class RacingGame {
         InputView in = new InputView();
         in.inputSetting();
         RacingGame game = new RacingGame(in.getCarCount(), in.getTime());
-        int[] carPosition = game.getCarPosition();
-        int time = game.getTime();
 
-        for(int i = 0; i < time; i++){
-            ResultView.result(move(carPosition));
-        }
+        game.move();
     }
 
-    public static int[] move(int[] carPosition){
+    public int[] move(){
+        for(int i = 0; i < time; i++){
+            moveProcessByTime(carPosition);
+            printCarPosition(carPosition);
+        }
+        return carPosition;
+    }
+
+    public static void moveProcessByTime(int[] carPosition){
         int idx = 0;
         for (int position: carPosition) {
             movePerCarProcess(carPosition, idx++);
         }
-        return carPosition;
     }
 
     public static void movePerCarProcess(int[] carPosition, int idx){
@@ -49,6 +52,10 @@ public class RacingGame {
     public static boolean movePossibleCheck(){
         int randomNum = new Random().nextInt(10);
         return randomNum >= MOVECHECK_NUM;
+    }
+
+    public static void printCarPosition(int[] carPosition){
+        ResultView.result(carPosition);
     }
 
 }
