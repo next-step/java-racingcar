@@ -11,8 +11,8 @@ public class RacingGame {
     private int move;
     private List<Car> cars;
 
-    public RacingGame(int numOfCars, int move) {
-        initializeCars(numOfCars);
+    public RacingGame(String carNames, int move) {
+        initializeCars(carNames);
         initializeMove(move);
     }
 
@@ -36,10 +36,10 @@ public class RacingGame {
         this.move = move;
     }
 
-    private void initializeCars(int numOfCars) {
+    private void initializeCars(String carNames) {
         this.cars = new ArrayList<>();
-        for (int i = 0; i < numOfCars; i++) {
-            this.cars.add(new Car());
+        for (String carName : carNames.split(",")) {
+            this.cars.add(new Car(carName));
         }
     }
 
