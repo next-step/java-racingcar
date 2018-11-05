@@ -3,6 +3,7 @@ package racinggame.domain;
 import java.util.List;
 import java.util.stream.Collectors;
 import racinggame.comparator.WinnerComparator;
+import racinggame.dto.CarDto;
 
 public class RacingGameResult {
 
@@ -12,10 +13,11 @@ public class RacingGameResult {
 		this.cars = cars;
 	}
 
-	public List<Car> getWinners() {
+	public List<CarDto> getWinners() {
 		Car winner = getWinner();
 		return cars.stream()
 				.filter(car -> car.isSamePosition(winner))
+				.map(CarDto::new)
 				.collect(Collectors.toList());
 	}
 
@@ -23,5 +25,11 @@ public class RacingGameResult {
 		return cars.stream()
 					.max(new WinnerComparator())
 					.get();
+	}
+
+	public List<CarDto> getCars() {
+		return cars.stream()
+				.map(CarDto::new)
+				.collect(Collectors.toList());
 	}
 }
