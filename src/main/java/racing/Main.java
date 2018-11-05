@@ -15,6 +15,7 @@ public class Main {
                 List<Car> cars = racingGame.move();
                 ResultView.printAll(cars);
             }
+            ResultView.printWinners(racingGame.getWinners());
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }

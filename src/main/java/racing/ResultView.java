@@ -1,6 +1,9 @@
 package racing;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 결과 UI
@@ -16,15 +19,28 @@ public class ResultView {
     /**
      * 모든 차의 위치 출력
      *
-     * @param positions 위치들
+     * @param cars 차
      */
-    public static void printAll(List<Car> positions) {
+    public static void printAll(List<Car> cars) {
         System.out.println();
-        positions.forEach(i -> {
-            System.out.print(i.getName()+" : ");
+        cars.forEach(i -> {
+            System.out.print(i.getName() + " : ");
             print(i.getPosition());
             System.out.println();
         });
+    }
+
+    /**
+     * 우승자 출력
+     *
+     * @param cars
+     */
+    public static void printWinners(List<Car> cars) {
+        List<String> names = cars.stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
+        String nameJoin = StringUtils.join(names, ", ");
+        System.out.println(nameJoin + "가 최종 우승했습니다.");
     }
 
     /**
@@ -35,4 +51,6 @@ public class ResultView {
             System.out.print(HYPEN);
         }
     }
+
+
 }
