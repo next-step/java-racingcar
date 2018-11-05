@@ -11,7 +11,7 @@ public class CarTest {
 
 	@Before
 	public void setUp() {
-		car = new Car();
+		car = new Car("hongsii");
 	}
 
 	@Test
@@ -42,6 +42,22 @@ public class CarTest {
 
 		assertMove(randomNumber1, 1);
 		assertMove(randomNumber2, 1);
+	}
+
+	@Test
+	public void 동일한_위치일때_동일위치확인_검증() {
+		Car car = new Car("hongsii", 4);
+		Car compareCar = new Car("pobi", 4);
+
+		assertThat(car.isSamePosition(compareCar)).isTrue();
+	}
+
+	@Test
+	public void 다른_위치일때_동일위치확인_검증() {
+		Car car = new Car("hongsii", 4);
+		Car compareCar = new Car("pobi", 3);
+
+		assertThat(car.isSamePosition(compareCar)).isFalse();
 	}
 
 	private void assertMove(int randomNumber, int expectedPosition) {

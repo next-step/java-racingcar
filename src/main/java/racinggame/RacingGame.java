@@ -1,8 +1,8 @@
 package racinggame;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import racinggame.domain.Car;
 
 public class RacingGame {
@@ -13,15 +13,15 @@ public class RacingGame {
 	private int time;
 	private RandomGenerator randomGenerator;
 
-	public RacingGame(int carNumber, int time) {
-		readyCar(carNumber);
+	public RacingGame(String carNames, int time) {
+		readyCar(carNames);
 		this.time = time;
 		this.randomGenerator = new RandomGenerator();
 	}
 
-	private void readyCar(int carNumber) {
-		cars = Stream.generate(Car::new)
-				.limit(carNumber)
+	private void readyCar(String carNames) {
+		cars = Arrays.stream(carNames.split("(\\s+)?,(\\s+)?"))
+				.map(carName -> new Car(carName))
 				.collect(Collectors.toList());
 	}
 
@@ -40,5 +40,9 @@ public class RacingGame {
 
 	public boolean isOver() {
 		return time == LAST_TIME;
+	}
+
+	public RacingGameResult getRacingGameResult() {
+		return new RacingGameResult(cars);
 	}
 }
