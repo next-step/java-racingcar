@@ -8,13 +8,6 @@ public class RacingGame {
     private int time;
     private List<Car> cars;
 
-    public int getCarCount(){
-        return cars.size();
-    }
-
-    public String getName(int index){
-        return cars.get(index).getName();
-    }
     RacingGame(String player, int time){
         readyCar(player.split(","));
         this.time = time;
@@ -27,6 +20,14 @@ public class RacingGame {
         }
     }
 
+    public int getCarCount(){
+        return cars.size();
+    }
+
+    public String getName(int index){
+        return cars.get(index).getName();
+    }
+
     public int getTime(){
         return time;
     }
@@ -36,7 +37,8 @@ public class RacingGame {
         for(int i = 0; i < cars.size(); i++){
              nextStepCars.add(tryMove(cars.get(i)));
         }
-        return nextStepCars;
+        this.cars = nextStepCars;
+        return cars;
     }
 
     public List<Car> getCars(){
