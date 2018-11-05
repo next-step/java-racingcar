@@ -6,31 +6,57 @@ import java.util.Scanner;
 public class RacingGame {
     private int numOfCars;
     private int racingTracks;
+    private int resultElement[];
+    static final int rangeOfNum = 10;
+    static final int limit = 4;
 
     private void racingGame() {
+        inputValue();
+        resultElement = new int[numOfCars];
+        racing();
+    }
+
+    private void inputValue() {
         Scanner sc = new Scanner(System.in);
-        Random rand = new Random();
         System.out.println("자동차 대수는 몇 대 인가요?");
         numOfCars = sc.nextInt();
         System.out.println("시도할 횟수는 몇 회 인가요?");
         racingTracks = sc.nextInt();
-        String resultElement[] = new String[numOfCars];
-        for(int i =0; i<numOfCars; i++) {
-            resultElement[i] = "";
-        }
-        racingResult(rand, numOfCars, racingTracks, resultElement);
     }
 
-    private void racingResult(Random rand, int numOfCars, int racingTracks, String[] resultElement) {
+    private void racing() {
         for(int i=0; i<racingTracks; i++) {
-            for(int j=0; j<numOfCars; j++) {
-                int result = rand.nextInt(10);
-                if(result >= 4) {
-                    resultElement[j] += "-";
-                }
-                System.out.println(resultElement[j]);
-            }
+            move();
+            displayResult();
             System.out.println();
+        }
+    }
+
+    private void displayResult() {
+        for(int i=0; i<numOfCars; i++) {
+            String str = "";
+            if(resultElement[i] > 0) {
+                str = drawLine(resultElement[i]);
+            }
+            System.out.println(str);
+        }
+    }
+
+    private String drawLine(int state) {
+        String str = "";
+        for(int i=0; i<state; i++) {
+            str += "-";
+        }
+        return str;
+    }
+
+    private void move() {
+        Random rand = new Random();
+        for(int i=0; i<numOfCars; i++) {
+            int currentPos = rand.nextInt(rangeOfNum);
+            if(currentPos >= limit) {
+                resultElement[i] += 1;
+            }
         }
     }
 
