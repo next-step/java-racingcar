@@ -11,9 +11,7 @@ public class StringCalculatorTest {
 
     @Before
     public void setup() {
-        stringCalculator = new StringCalculator(new CalculatorFactory() {
-
-        });
+        stringCalculator = new StringCalculator(new CalculatorFactory());
     }
 
     @Test
