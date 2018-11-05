@@ -1,17 +1,16 @@
 package racinggame;
 
-import java.util.List;
+import racinggame.rule.RandomNumberRacing;
 
 public class Game {
     public static void main(String[] args) {
         ResultView resultView = new ResultView();
-        WinnterView winnterView = new WinnterView();
-        RacingGame racingGame = new RacingGame(InputView.inpputCarName(), InputView.inputTryCnt());
+        RacingGame racingGame = new RacingGame(InputView.inpputCarName(), InputView.inputTryCnt(), new RandomNumberRacing());
         while(racingGame.nextRacingGame()){
-            List<Car> cars = racingGame.move();
-            resultView.print(cars);
+            racingGame.move();
+            resultView.print(racingGame.getCar());
         }
-        winnterView.print(racingGame.getVictorCar());
+        WinnterView.print(racingGame.getVictorCar());
 
     }
 }

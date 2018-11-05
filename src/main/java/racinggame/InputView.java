@@ -17,4 +17,5 @@ public class InputView {
         String[] carName = scanner.nextLine().split(",");
         return carName;
     }
+
 }

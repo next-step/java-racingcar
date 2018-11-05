@@ -11,41 +11,27 @@ public class CarTest {
 
     @Before
     public void 자동차_셋팅(){
-        car = new Car("pobi", 0);
-        //car("crong", 0);
-        //car("honux", 0);
-
+        car = new Car("pobi");
     }
 
     @Test
     public void 자동차_이동() {
-        car = new Car("pobi", 0){
-            @Override
-            protected boolean isPossibleMove() {
-                return true;
-            }
-        };
-        car.carMove(car);
+        car = new Car("pobi");
+        car.move(() -> true);
         assertThat(car.getLocation()).isEqualTo(1);
-
     }
 
     @Test
     public void 자동차_정지() {
-        car = new Car("pobi", 0){
-            @Override
-            protected boolean isPossibleMove() {
-                return false;
-            }
-        };
-        car.carMove(car);
+        car = new Car("pobi");
+        car.move(() -> false);
         assertThat(car.getLocation()).isEqualTo(0);
 
     }
 
     @Test
     public void 자동차_생성여부() {
-        car = new Car("pobi", 0);
+        car = new Car("pobi");
         assertThat(car.getName()).isEqualTo("pobi");
 
     }
