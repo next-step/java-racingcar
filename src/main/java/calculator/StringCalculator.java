@@ -1,11 +1,22 @@
 package calculator;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
 
     public static final Pattern SPLIT_PATTERN = Pattern.compile("\\s");
     public static final Pattern OPERATOR_PATTERN = Pattern.compile("\\W+");
+
+    private static final Map<String, Operator> operatorMap = new HashMap<>();
+    static {
+        operatorMap.put("+", (first, second) -> first + second);
+        operatorMap.put("-", (first, second) -> first - second);
+        operatorMap.put("*", (first, second) -> first * second);
+        operatorMap.put("/", (first, second) -> first / second);
+    }
+
 
     public static int calculate(String text) {
         String[] values = SPLIT_PATTERN.split(text);
@@ -30,18 +41,11 @@ public class StringCalculator {
     }
 
     private static int calculate(String operator, int first, int second) {
-        switch (operator) {
-            case "+" :
-                return plus(first, second);
-            case "-" :
-                return minus(first, second);
-            case "*" :
-                return multiply(first, second);
-            case "/" :
-                return divide(first, second);
-            default:
-                throw new IllegalArgumentException("지원되지 않는 연산자 입니다.");
+        if(!operatorMap.containsKey(operator)) {
+            throw new IllegalArgumentException("지원되지 않는 연산자 입니다.");
         }
+
+        return operatorMap.get(operator).operate(first, second);
     }
 
     private static int divide(int first, int second) {
@@ -58,6 +62,10 @@ public class StringCalculator {
 
     private static int plus(int first, int second) {
         return first + second;
+    }
+
+    private interface Operator {
+        int operate(int first, int second);
     }
 
 }
