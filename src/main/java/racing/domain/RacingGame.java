@@ -1,9 +1,10 @@
 package racing.domain;
 
+import racing.dto.RacingCarStatus;
 import racing.dto.RacingGameCreateRequest;
+import racing.dto.RacingGameStatus;
 
 import java.util.List;
-import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toList;
 
@@ -13,26 +14,37 @@ public class RacingGame {
     private int currentTime;
 
     public RacingGame(RacingGameCreateRequest request) {
-        this.initRacingCars(request.getCarNumber());
+        this.initRacingCars(request.getCarNames());
         this.totalTime = request.getTime();
         this.currentTime = 0;
     }
 
-    private void initRacingCars(int racingCarNumber) {
+    private void initRacingCars(List<String> racingCarNames) {
         // 레이싱카 리스트 초기화
-        racingCars = IntStream.range(0, racingCarNumber)
-                .mapToObj(i -> new RacingCar())
+        racingCars = racingCarNames.stream()
+                .map(RacingCar::new)
                 .collect(toList());
     }
 
-    public List<Integer> race() {
+    public RacingGameStatus race() {
         currentTime += 1;
-        return racingCars.stream()
+
+        List<RacingCarStatus> racingCarStatuses = racingCars.stream()
                 .map(RacingCar::rush)
                 .collect(toList());
+
+        return new RacingGameStatus(racingCarStatuses);
     }
 
     public boolean isRacingAvailable() {
         return totalTime > currentTime;
+    }
+
+    public RacingGameStatus getRacingGameStatus() {
+        List<RacingCarStatus> racingCarStatuses = racingCars.stream()
+                .map(RacingCar::getRacingCarStatus)
+                .collect(toList());
+
+        return new RacingGameStatus(racingCarStatuses);
     }
 }

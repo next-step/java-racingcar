@@ -1,16 +1,18 @@
 package racing.dto;
 
+import java.util.List;
+
 public class RacingGameCreateRequest {
-    private int carNumber;
+    private List<String> carNames;
     private int time;
 
-    public RacingGameCreateRequest(int carNumber, int time) {
-        this.carNumber = carNumber;
+    public RacingGameCreateRequest(List<String> carNames, int time) {
+        this.carNames = carNames;
         this.time = time;
     }
 
-    public int getCarNumber() {
-        return carNumber;
+    public List<String> getCarNames() {
+        return carNames;
     }
 
     public int getTime() {

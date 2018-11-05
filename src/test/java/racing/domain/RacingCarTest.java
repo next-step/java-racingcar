@@ -15,9 +15,16 @@ public class RacingCarTest {
         RacingCar.RANDOM_PROVIDER = testNumberProvider;
     }
 
+
+    @Test
+    public void 레이싱카에는_이름이_들어간다() {
+        RacingCar car = new RacingCar("test");
+        assertThat(car.getName()).isEqualTo("test");
+    }
+
     @Test
     public void 경계값_미만인_경우_정지() {
-        RacingCar car = new RacingCar();
+        RacingCar car = new RacingCar("test");
 
         // 초깃값은 0이다.
         assertThat(car.getPosition()).isEqualTo(0);
@@ -29,7 +36,7 @@ public class RacingCarTest {
 
     @Test
     public void 경계값_이상인_경우_전진() {
-        RacingCar car = new RacingCar();
+        RacingCar car = new RacingCar("test");
 
         // 초깃값은 0이다.
         assertThat(car.getPosition()).isEqualTo(0);
@@ -42,7 +49,7 @@ public class RacingCarTest {
     @Test
     public void 여러번_시도시_정상동작여부_확인() {
         // 레이싱카를 초기화한 다음
-        RacingCar car = new RacingCar();
+        RacingCar car = new RacingCar("test");
 
         // 포지션이 0이 맞는지 확인
         assertThat(car.getPosition()).isEqualTo(0);

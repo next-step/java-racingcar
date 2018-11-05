@@ -3,11 +3,12 @@ package racing.domain;
 import org.junit.Before;
 import org.junit.Test;
 import racing.dto.RacingGameCreateRequest;
+import racing.dto.RacingGameStatus;
 import racing.testutil.TestNumberProvider;
 
-import java.util.Arrays;
-
+import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.groups.Tuple.tuple;
 
 public class RacingGameTest {
     TestNumberProvider testNumberProvider = new TestNumberProvider();
@@ -19,20 +20,23 @@ public class RacingGameTest {
 
     @Test
     public void 레이싱_테스트() {
-        RacingGameCreateRequest request = new RacingGameCreateRequest(3,3);
+        RacingGameCreateRequest request = new RacingGameCreateRequest(asList("a", "b", "c"), 3);
         RacingGame racingGame = new RacingGame(request);
 
         testNumberProvider.setTestNumber(RacingCar.MOVE_BOUND_VALUE);
 
         // 전진 결과가 리스트와 맞는지 확인한다.
-        assertThat(racingGame.race())
-                .isEqualTo(Arrays.asList(1, 1, 1));
+        RacingGameStatus racingGameStatus = racingGame.race();
+
+        assertThat(racingGameStatus.getRacingCarStatuses())
+                .extracting("name", "position")
+                .containsSequence(tuple("a", 1), tuple("b", 1), tuple("c", 1));
     }
 
     @Test
     public void 레이싱_횟수_제한_확인() {
         // 총 race는 2회 가능하도록 설정
-        RacingGameCreateRequest request = new RacingGameCreateRequest(1,2);
+        RacingGameCreateRequest request = new RacingGameCreateRequest(asList("a"), 2);
         RacingGame racingGame = new RacingGame(request);
 
         // 기본값은 0이 설정됨
