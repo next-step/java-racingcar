@@ -1,7 +1,7 @@
 package racinggame.view;
 
-import racinggame.RacingGameResult;
-import racinggame.car.CarDTO;
+import racinggame.domain.RacingGameResult;
+import racinggame.domain.car.CarDTO;
 
 import java.util.StringJoiner;
 

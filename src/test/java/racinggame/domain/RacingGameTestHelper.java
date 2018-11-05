@@ -1,6 +1,6 @@
-package racinggame;
+package racinggame.domain;
 
-import racinggame.rule.RacingGameRule;
+import racinggame.domain.rule.RacingGameRule;
 
 import java.util.stream.Stream;
 

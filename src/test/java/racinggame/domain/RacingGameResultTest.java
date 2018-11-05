@@ -1,7 +1,7 @@
-package racinggame;
+package racinggame.domain;
 
 import org.junit.Test;
-import racinggame.car.CarDTO;
+import racinggame.domain.car.CarDTO;
 
 import java.util.Arrays;
 import java.util.List;

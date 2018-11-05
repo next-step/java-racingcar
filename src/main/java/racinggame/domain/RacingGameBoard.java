@@ -1,6 +1,6 @@
-package racinggame;
+package racinggame.domain;
 
-import racinggame.rule.RandomNumberRacingGameRule;
+import racinggame.domain.rule.RandomNumberRacingGameRule;
 import racinggame.view.InputMessageType;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;

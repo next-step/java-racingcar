@@ -1,10 +1,12 @@
-package racinggame;
+package racinggame.domain;
 
-import racinggame.car.CarDTO;
-import racinggame.car.CarGroup;
-import racinggame.rule.RacingGameRule;
+import racinggame.domain.car.Car;
+import racinggame.domain.car.CarDTO;
+import racinggame.domain.rule.RacingGameRule;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by hspark on 02/11/2018.
@@ -12,18 +14,18 @@ import java.util.List;
 public class RacingGame {
 
 	private RacingGameRule gameRule;
-	private CarGroup carGroup;
+	private List<Car> cars;
 	private int tryCount;
 
 	public RacingGame(String[] carNames, int tryCount, RacingGameRule gameRule) {
-		this.carGroup = new CarGroup(carNames);
+		this.cars = Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
 		this.tryCount = tryCount;
 		this.gameRule = gameRule;
 	}
 
 	public void move() {
 		reduceTryCount();
-		carGroup.moveForward(gameRule);
+		cars.stream().forEach((car) -> car.moveForward(gameRule));
 	}
 
 	private void reduceTryCount() {
@@ -31,7 +33,7 @@ public class RacingGame {
 	}
 
 	public List<CarDTO> getCarDtoList() {
-		return carGroup.getCarDTOList();
+		return getCars().stream().map(CarDTO::new).collect(Collectors.toList());
 	}
 
 	public boolean hasNextGame() {
@@ -39,7 +41,10 @@ public class RacingGame {
 	}
 
 	public RacingGameResult getGameResult() {
-		return new RacingGameResult(carGroup.getCarDTOList());
+		return new RacingGameResult(getCarDtoList());
 	}
 
+	private List<Car> getCars() {
+		return cars;
+	}
 }

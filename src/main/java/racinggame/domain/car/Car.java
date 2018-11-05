@@ -1,6 +1,6 @@
-package racinggame.car;
+package racinggame.domain.car;
 
-import racinggame.rule.RacingGameRule;
+import racinggame.domain.rule.RacingGameRule;
 
 /**
  * Created by hspark on 03/11/2018.

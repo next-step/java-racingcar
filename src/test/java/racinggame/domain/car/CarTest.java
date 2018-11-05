@@ -1,4 +1,4 @@
-package racinggame.car;
+package racinggame.domain.car;
 
 import org.junit.Test;
 
