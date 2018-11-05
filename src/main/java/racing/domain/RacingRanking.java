@@ -1,37 +1,29 @@
 package racing.domain;
 
 import java.util.Comparator;
+import java.util.List;
 
 public class RacingRanking {
-    private RacingGame racingGame = null;
+    private List<RacingCar> cars = null;
+    private int maxScore = 0;
 
-    public RacingRanking(RacingGame racingGame) {
-        this.racingGame = racingGame;
+    public RacingRanking(List<RacingCar> cars) {
+        this.maxScore = getRacingMaxScore(cars);
+        this.cars = cars;
     }
 
     public String[] getWinners() {
-        validateGameOver();
-        int racingMaxScore = getRacingMaxScore();
-        return getWinners(racingMaxScore);
-    }
-
-    private String[] getWinners(int racingMaxScore) {
-        return racingGame.getResultOfTheGame().stream()
-                .filter(car -> car.isPosition(racingMaxScore))
+        return cars.stream()
+                .filter(car -> car.isPosition(maxScore))
                 .map(car -> car.getName())
                 .toArray(String[]::new);
     }
 
-    private int getRacingMaxScore() {
-        return racingGame.getResultOfTheGame().stream()
+    private int getRacingMaxScore(List<RacingCar> cars) {
+        return cars.stream()
                     .max(Comparator.comparing(RacingCar::getCurrentPosition))
                     .map(car -> car.getCurrentPosition())
                     .get();
     }
 
-    private void validateGameOver() {
-        if (!racingGame.isFinish()) {
-            throw new RacingGameException("RacingGame's still playing.");
-        }
-    }
 }

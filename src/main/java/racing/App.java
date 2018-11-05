@@ -11,13 +11,13 @@ public class App {
         int times = RacingInputView.inputTryNo(Messages.INPUT_TRYTIMES);
 
         RacingGame racingGame = new RacingGame(times, carNames);
-        RacingRanking racingRanking = new RacingRanking(racingGame);
         
         while (!racingGame.isFinish()) {
             racingGame.move();
             RacingResultView.renderGameProgress(racingGame.getResultOfTheGame());
         }
-        
+
+        RacingRanking racingRanking = new RacingRanking(racingGame.getResultOfTheGame());
         RacingResultView.renderWinner(racingRanking.getWinners());
     }
 }
