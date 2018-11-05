@@ -17,7 +17,7 @@ public class RacingRanking {
 
     private String[] getWinners(int racingMaxScore) {
         return racingGame.getResultOfTheGame().stream()
-                .filter(car -> car.getCurrentPosition() == racingMaxScore)
+                .filter(car -> car.isPosition(racingMaxScore))
                 .map(car -> car.getName())
                 .toArray(String[]::new);
     }

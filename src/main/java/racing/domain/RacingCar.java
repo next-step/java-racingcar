@@ -1,7 +1,5 @@
 package racing.domain;
 
-import java.util.Random;
-
 public class RacingCar {
     private final int MOVE_CONIDTION = 4;
 
@@ -9,7 +7,13 @@ public class RacingCar {
     private int position = 0;
 
     public RacingCar(String name) {
+        this(name, 0);
+    }
+    
+    public RacingCar(String name, int position) {
+        super();
         this.name = name;
+        this.position = position;
     }
 
     public String getName() {
@@ -32,5 +36,9 @@ public class RacingCar {
 
     private boolean canMove(int drivingForce) {
         return drivingForce >= MOVE_CONIDTION;
+    }
+
+    public boolean isPosition(int position) {
+        return this.position == position;
     }
 }
