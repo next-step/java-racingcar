@@ -8,4 +8,5 @@ public interface IForward {
      * @return boolean
      */
     boolean isPossible();
+
 }

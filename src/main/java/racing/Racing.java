@@ -1,6 +1,5 @@
 package racing;
 
-import racing.rule.Forward;
 import racing.rule.IForward;
 
 import java.util.ArrayList;
