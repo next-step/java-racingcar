@@ -7,25 +7,24 @@ import java.util.Objects;
 public class Car {
 
     private static final int DEFAULT_POSITION = 0;
-
     private int position;
-
-    public int getPosition() {
-        return position;
-    }
 
     public Car() {
         initialize();
-    }
-
-    private void initialize() {
-        position = DEFAULT_POSITION;
     }
 
     public void run() {
         if (Forward.isPossible()) {
             increasePosition();
         }
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    private void initialize() {
+        position = DEFAULT_POSITION;
     }
 
     private void increasePosition() {

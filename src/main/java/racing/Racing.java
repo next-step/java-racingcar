@@ -7,9 +7,7 @@ import java.util.stream.IntStream;
 public class Racing implements Game {
 
     private final int TRY_END_COUNT;
-
     private int tryCount;
-
     private final List<Car> list = new ArrayList<>();
 
     public Racing(final int carCount, final int tryCount) {
@@ -29,13 +27,13 @@ public class Racing implements Game {
         list.forEach(Car::run);
     }
 
+    private void decreaseTryCount() {
+        tryCount--;
+    }
+
     @Override
     public List<Car> getList() {
         return list;
-    }
-
-    private void decreaseTryCount() {
-        tryCount--;
     }
 
 }
