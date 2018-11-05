@@ -59,9 +59,7 @@ public class RacingGame {
      */
     public List<Car> getWinners() {
         return cars.stream()
-                .filter(c -> {
-                    return c.getPosition().intValue() == getMaxPosition().intValue();
-                })
+                .filter(c -> c.getPosition().intValue() == getMaxPosition().intValue())
                 .collect(Collectors.toList());
 
     }
