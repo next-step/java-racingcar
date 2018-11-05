@@ -2,25 +2,15 @@ package racinggame.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.OptionalInt;
-
-import static java.util.stream.Collectors.toList;
-
 
 public class RacingGame {
-    private List<Car> carList;
+    private List<Car> cars;
     private int raceTime;
 
 
     public RacingGame(String[] inputName, int raceTime) {
         this.raceTime = raceTime;
-        this.carList = new ArrayList<>();
-
-        Car car;
-        for(int i = 0; i < inputName.length; i++) {
-            car = new Car(inputName[i]);
-            carList.add(car);
-        }
+        createCars(inputName);
     }
 
     /**
@@ -28,10 +18,10 @@ public class RacingGame {
      * @return
      */
     public List<Car> raceOneTime() {
-        carList.forEach(car -> car.moveCar());
+        cars.forEach(car -> car.moveCar());
         reduceRaceTime();
 
-        return carList;
+        return cars;
     }
 
     /**
@@ -39,7 +29,7 @@ public class RacingGame {
      * @return
      */
     public int reduceRaceTime() {
-        return raceTime--;
+        return this.raceTime--;
     }
 
     /**
@@ -47,25 +37,19 @@ public class RacingGame {
      * @return
      */
     public boolean isRaceEnd() {
-        return raceTime < 1;
-    }
-
-
-    /**
-     * 레이싱 경기 우승자 가져오기
-     * @return
-     */
-    public List<String> getWinner() {
-        int maxPostion = getMaxPositon(carList).getAsInt();
-        return carList.stream().filter(car -> car.getPosition() == maxPostion).map(Car::getName).collect(toList());
+        return this.raceTime < 1;
     }
 
     /**
-     * 포지션 최대 값 가져오기
-     * @param carList
-     * @return
+     * 레이싱 참석 자동차 생성
+     * @param inputName
      */
-    public OptionalInt getMaxPositon(List<Car> carList) {
-        return carList.stream().mapToInt(Car::getPosition).max();
+    public void createCars(String[] inputName) {
+        this.cars = new ArrayList<>();
+
+        for(int i = 0; i < inputName.length; i++) {
+            Car car = new Car(inputName[i]);
+            cars.add(car);
+        }
     }
 }

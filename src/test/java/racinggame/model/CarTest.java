@@ -3,18 +3,8 @@ package racinggame.model;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
 
-/**
- * **************************************
- * racinggame.model
- * **************************************
- * Created by on [05/11/2018 | Chris]
- * Task ::
- */
 
 public class CarTest {
     private static Car car;

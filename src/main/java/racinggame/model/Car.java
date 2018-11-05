@@ -9,8 +9,12 @@ public class Car {
     private static final int CAN_MOVE_NUMBER = 4;
 
     public Car(String name) {
+        this(name, 0);
+    }
+
+    public Car(String name, int position) {
         this.name = name;
-        this.position = 0;
+        this.position = position;
     }
 
     public String getName() {
@@ -37,5 +41,14 @@ public class Car {
      */
     public boolean isCarMove(int number) {
         return number > CAN_MOVE_NUMBER;
+    }
+
+    /**
+     * 자동차의 포지션 비교
+     * @param position
+     * @return
+     */
+    public boolean isSamePosition(int position) {
+        return this.position == position;
     }
 }

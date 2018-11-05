@@ -2,6 +2,7 @@ package racinggame;
 
 import racinggame.model.Car;
 import racinggame.model.RacingGame;
+import racinggame.model.RacingGameResult;
 import racinggame.ui.InputView;
 import racinggame.ui.ResultView;
 
@@ -16,12 +17,15 @@ public class Application {
 
         RacingGame racingGame = new RacingGame(inputName, raceTime);
 
+        List<Car> racingResult = null;
         while(!racingGame.isRaceEnd()) {
-            List<Car> racingResult = racingGame.raceOneTime();
+            racingResult = racingGame.raceOneTime();
             ResultView.printResultRacing(racingResult);
         }
 
-        List<String> racingGameWinnerList = racingGame.getWinner();
+        RacingGameResult racingGameResult = new RacingGameResult(racingResult);
+
+        List<String> racingGameWinnerList = racingGameResult.getWinner();
         ResultView.printRacingWinner(racingGameWinnerList);
     }
 }

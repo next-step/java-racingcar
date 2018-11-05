@@ -2,8 +2,6 @@ package racinggame.model;
 
 import org.junit.Before;
 import org.junit.Test;
-import racinggame.model.Car;
-import racinggame.model.RacingGame;
 
 import java.util.List;
 
@@ -15,20 +13,20 @@ public class RacingGameTest {
 
     @Before
     public void setUp() {
-        String[] carList = {"owner","chris","mary"};
+        String[] inputCars = {"owner","chris","mary"};
 
-        racingGame = new RacingGame(carList, RACE_TIME);
+        racingGame = new RacingGame(inputCars, RACE_TIME);
     }
 
     @Test
     public void 경기_완료() {
-        List<Car> carList = null;
+        List<Car> cars = null;
         while(!racingGame.isRaceEnd()) {
-            carList = racingGame.raceOneTime();
+            cars = racingGame.raceOneTime();
 
         }
 
-        for (Car car : carList) {
+        for (Car car : cars) {
             assertThat(car.getPosition()).isGreaterThanOrEqualTo(0);
             assertThat(car.getPosition()).isLessThanOrEqualTo(5);
         }
@@ -36,9 +34,9 @@ public class RacingGameTest {
 
     @Test
     public void 레이스_경기_1회_시도() {
-        List<Car> carList = racingGame.raceOneTime();
+        List<Car> cars = racingGame.raceOneTime();
 
-        carList.forEach(car -> assertThat(car.getPosition()).isLessThanOrEqualTo(1));
+        cars.forEach(car -> assertThat(car.getPosition()).isLessThanOrEqualTo(1));
     }
 
 }
