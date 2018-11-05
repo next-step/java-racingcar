@@ -1,9 +1,8 @@
-package racinggame;
+package racinggame.domain;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-import racinggame.domain.Car;
+import racinggame.dto.RacingGameInfo;
+import racinggame.utils.RandomGenerator;
 
 public class RacingGame {
 
@@ -13,16 +12,10 @@ public class RacingGame {
 	private int time;
 	private RandomGenerator randomGenerator;
 
-	public RacingGame(String carNames, int time) {
-		readyCar(carNames);
-		this.time = time;
+	public RacingGame(RacingGameInfo racingGameInfo) {
+		this.cars = racingGameInfo.readyCar();
+		this.time = racingGameInfo.getTime();
 		this.randomGenerator = new RandomGenerator();
-	}
-
-	private void readyCar(String carNames) {
-		cars = Arrays.stream(carNames.split("(\\s+)?,(\\s+)?"))
-				.map(carName -> new Car(carName))
-				.collect(Collectors.toList());
 	}
 
 	public List<Car> move() {

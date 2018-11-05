@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.view.console;
 
 import java.util.Scanner;
 

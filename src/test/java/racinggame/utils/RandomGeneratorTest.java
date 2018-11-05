@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.utils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

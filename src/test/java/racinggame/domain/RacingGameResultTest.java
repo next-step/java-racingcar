@@ -1,11 +1,12 @@
-package racinggame;
+package racinggame.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.tuple;
 
 import java.util.Arrays;
 import java.util.List;
+import org.assertj.core.groups.Tuple;
 import org.junit.Test;
-import racinggame.domain.Car;
 
 public class RacingGameResultTest {
 
@@ -17,7 +18,9 @@ public class RacingGameResultTest {
 		List<Car> cars = Arrays.asList(car1, car2, car3);
 
 		RacingGameResult racingGameResult = new RacingGameResult(cars);
-		assertThat(racingGameResult.getWinners()).contains(car1);
+		assertThat(racingGameResult.getWinners())
+				.extracting("name", "position")
+				.containsExactlyInAnyOrder(getTuple(car1));
 	}
 
 	@Test
@@ -28,6 +31,12 @@ public class RacingGameResultTest {
 		List<Car> cars = Arrays.asList(car1, car2, car3);
 
 		RacingGameResult racingGameResult = new RacingGameResult(cars);
-		assertThat(racingGameResult.getWinners()).containsExactlyInAnyOrder(car1, car2);
+		assertThat(racingGameResult.getWinners())
+				.extracting("name", "position")
+				.containsExactlyInAnyOrder(getTuple(car1), getTuple(car2));
+	}
+
+	private Tuple getTuple(Car car) {
+		return tuple(car.getName(), car.getCurrentPosition());
 	}
 }
