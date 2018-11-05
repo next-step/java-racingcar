@@ -11,12 +11,10 @@ public class RacingGame {
     private Random random;
     private int tryCount;
 
-    //TODO : 결과 출력시 자동차 이름 추가하기
-    //TODO : 우승자 출력
-
     public void start() {
         try(RacingGameReader racingGameReader = new RacingGameReader(System.in);
             ResultPrinter resultPrinter = new ResultPrinter(System.out);) {
+
 
             init(racingGameReader, resultPrinter);
             process();
@@ -46,11 +44,13 @@ public class RacingGame {
             moveAll();
             printAll();
         }
+        printGameResult();
     }
+
 
     private void printAll() {
         for (Car car : cars) {
-            resultPrinter.print(car.getMoveCount());
+            resultPrinter.printCurrentState(car.getName(), car.getMoveCount());
         }
         System.out.println();
     }
@@ -60,6 +60,10 @@ public class RacingGame {
             int moveNumber = this.random.nextInt(10);
             car.move(moveNumber);
         }
+    }
+
+    private void printGameResult() {
+        resultPrinter.printGameResult(cars);
     }
 
     public static void main(String[] args) {
