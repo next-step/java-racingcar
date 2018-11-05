@@ -1,11 +1,12 @@
 package racingGame;
 
+import racingGame.view.ResultView;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 public class RacingGame {
     Random random = new Random();
-    RacingGameLogger logger;
 
     public ArrayList<Integer> move(int cars, int times) {
         if (cars < 1 || times < 0) {
@@ -22,9 +23,7 @@ public class RacingGame {
         for (int time = 0; time < times; time++) {
             this.moveCars(carPositions);
 
-            if (this.logger != null) {
-                this.logger.log(carPositions);
-            }
+            ResultView.log(carPositions);
         }
 
         return carPositions;
@@ -52,9 +51,5 @@ public class RacingGame {
                 this.setForward(carPositions, car);
             }
         }
-    }
-
-    public void setLogger(RacingGameLogger logger) {
-        this.logger = logger;
     }
 }
