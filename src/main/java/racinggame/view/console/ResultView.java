@@ -1,8 +1,9 @@
-package racinggame;
+package racinggame.view.console;
 
 import java.util.List;
 import java.util.StringJoiner;
 import racinggame.domain.Car;
+import racinggame.domain.RacingGameResult;
 
 public class ResultView {
 

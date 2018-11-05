@@ -1,7 +1,8 @@
-package racinggame;
+package racinggame.view.console;
 
 import java.util.List;
 import racinggame.domain.Car;
+import racinggame.domain.RacingGame;
 
 public class RacingGameConsole {
 

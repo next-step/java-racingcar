@@ -1,11 +1,10 @@
-package racinggame;
+package racinggame.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.Test;
-import racinggame.domain.Car;
 
 public class RacingGameTest {
 

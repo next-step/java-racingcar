@@ -1,9 +1,8 @@
-package racinggame;
+package racinggame.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import racinggame.comparator.WinnerComparator;
-import racinggame.domain.Car;
 
 public class RacingGameResult {
 
