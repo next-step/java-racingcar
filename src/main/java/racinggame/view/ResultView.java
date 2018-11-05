@@ -1,4 +1,6 @@
-package racinggame;
+package racinggame.view;
+
+import racinggame.car.Car;
 
 import java.util.List;
 

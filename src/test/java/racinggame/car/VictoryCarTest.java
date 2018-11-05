@@ -1,14 +1,16 @@
-package racinggame;
+package racinggame.car;
 
 import org.junit.Before;
 import org.junit.Test;
+import racinggame.car.Car;
+import racinggame.game.RacingGame;
 import racinggame.rule.RandomNumberRacing;
 
 import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class CarListTest {
+public class VictoryCarTest {
 
     String[] carName;
 

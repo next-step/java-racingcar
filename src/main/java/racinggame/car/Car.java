@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.car;
 
 import racinggame.rule.RacingRule;
 
@@ -7,8 +7,9 @@ public class Car {
     private String name;
     private int location;
 
-    public Car(String name){
+    public Car(String name, int location){
         this.name = name;
+        this.location = location;
     }
 
     public int getLocation(){

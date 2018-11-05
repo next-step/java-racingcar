@@ -1,7 +1,8 @@
-package racinggame;
+package racinggame.game;
 
 import org.junit.Before;
 import org.junit.Test;
+import racinggame.game.RacingGame;
 import racinggame.rule.RandomNumberRacing;
 
 import static org.assertj.core.api.Assertions.assertThat;

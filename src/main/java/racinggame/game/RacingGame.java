@@ -1,21 +1,21 @@
-package racinggame;
+package racinggame.game;
 
+import racinggame.car.Car;
+import racinggame.car.CarGroup;
+import racinggame.car.VictoryCar;
 import racinggame.rule.RacingRule;
-import racinggame.rule.RandomNumberRacing;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGame {
 
     private int tryCnt;
-    private CarList carList;
     private RacingRule racingRule;
+    private CarGroup carGroup;
 
 
     public RacingGame(String[] carNames, int tryCnt, RacingRule racingRule){
-        carList = new CarList(carNames);
+        carGroup = new CarGroup(carNames);
         this.tryCnt = tryCnt;
         this.racingRule = racingRule;
     }
@@ -26,14 +26,14 @@ public class RacingGame {
 
     public void move() {
         tryCnt--;
-        carList.carMove(racingRule);
+        carGroup.carMove(racingRule);
     }
 
     public List<Car> getCar() {
-        return carList.getCars();
+        return carGroup.getGroupCars();
     }
 
     public List<String> getVictorCar() {
-        return carList.getVictorCar();
+        return new VictoryCar(getCar()).getVictorCar();
     }
 }

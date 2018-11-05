@@ -1,6 +1,9 @@
-package racinggame;
+package racinggame.game;
 
 import racinggame.rule.RandomNumberRacing;
+import racinggame.view.InputView;
+import racinggame.view.ResultView;
+import racinggame.view.WinnterView;
 
 public class Game {
     public static void main(String[] args) {
