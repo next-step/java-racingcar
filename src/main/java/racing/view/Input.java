@@ -3,7 +3,7 @@ package racing.view;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
-public abstract class Input<T> {
+public abstract class Input {
 
     private static final Scanner scanner = new Scanner(System.in, String.valueOf(StandardCharsets.UTF_8));
 
