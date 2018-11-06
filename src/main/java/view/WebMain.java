@@ -25,6 +25,7 @@ public class WebMain {
 
         post("/name",(req, res) -> {
             Map<String, Object> model = new HashMap<>();
+
             String names = req.queryParams("names");
             String[] name = names.split(" ");
             List<Car> cars = new ArrayList<>();
@@ -34,7 +35,6 @@ public class WebMain {
             }
             req.session().attribute("cars",cars);
             model.put("cars",cars);
-            model.put("names",names);
             return render(model, "/game.html");
         });
 
@@ -44,15 +44,14 @@ public class WebMain {
 
             String turn = req.queryParams("turn");
             int tryCnt = Integer.parseInt(turn);
-            model.put("turn",turn);
-
             RacingGame racingGame = new RacingGame(cars, tryCnt);
 
             for(int i =0; i < tryCnt; i++){
                 cars = racingGame.move();
             }
-            model.put("cars",cars);
             String result = CarResult.getRaceWinners(cars);
+
+            model.put("cars",cars);
             model.put("result", result);
 
             return render(model, "/result.html");
@@ -62,6 +61,7 @@ public class WebMain {
     public Function<Integer, Object> showDistance() {
         return (obj) -> obj >= 0 ? "&nbsp;" : "";
     }
+
 
     public static String render(Map<String, Object> model, String templatePath) {
         return new HandlebarsTemplateEngine().render(new ModelAndView(model, templatePath));
