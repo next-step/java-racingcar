@@ -19,14 +19,20 @@ public class RacingGameResultSet {
     }
 
     public static class RacingGameResult {
+        private String name;
         private int position;
 
-        private RacingGameResult(int position) {
-            this.position = position;
+        private RacingGameResult(RacingCar racingCar) {
+            this.name = racingCar.getName();
+            this.position = racingCar.getPosition();
         }
 
-        public static RacingGameResult of(int position) {
-            return new RacingGameResult(position);
+        public static RacingGameResult of(RacingCar racingCar) {
+            return new RacingGameResult(racingCar);
+        }
+
+        public String getName() {
+            return name;
         }
 
         public int getPosition() {

@@ -23,7 +23,7 @@ public class RacingGameResultSetCollector {
         return racingCars.stream()
                 .map(racingCar -> {
                     racingCar.move(racingCarAccelerator);
-                    return RacingGameResultSet.RacingGameResult.of(racingCar.getPosition());
+                    return RacingGameResultSet.RacingGameResult.of(racingCar);
                 }).collect(toList());
     }
 }
