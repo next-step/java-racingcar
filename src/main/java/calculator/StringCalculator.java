@@ -41,10 +41,7 @@ public class StringCalculator {
     }
 
     private static boolean isBlank(String data){
-        if(data == null || data.isEmpty() || " ".equals(data)){
-            return true;
-        }
-        return false;
+        return (data == null || data.isEmpty() || " ".equals(data));
     }
 
     private static int addition(int first, int second) {
