@@ -1,7 +1,7 @@
 package racing.view;
 
 import racing.Car;
-import racing.GameResult;
+import racing.domain.GameResult;
 
 public class ResultView {
 
