@@ -8,8 +8,17 @@ public class ResultView {
 
     }
 
-    public static void showRacingGameResults(List<RacingGameResultSet> resultSets) {
+    public static void showRacingGameResultSet(List<RacingGameResultSet> racingGameResultSets) {
         System.out.println("\n실행결과");
-        resultSets.forEach(RacingGameResultSet::showPositions);
+        racingGameResultSets.forEach(ResultView::showRacingGameResult);
+    }
+
+    private static void showRacingGameResult(RacingGameResultSet racingGameResultSet) {
+        racingGameResultSet.getRacingGameResults().forEach(ResultView::printPosition);
+        System.out.println();
+    }
+
+    private static void printPosition(RacingGameResultSet.RacingGameResult racingGameResult) {
+        System.out.println(StringUtils.convertToHyphen(racingGameResult.getPosition()));
     }
 }

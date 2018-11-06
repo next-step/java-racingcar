@@ -14,11 +14,8 @@ public class RacingGameResultSet {
         return new RacingGameResultSet(racingGameResults);
     }
 
-    public void showPositions() {
-        // TODO
-        // 이 역할을 RacingGameResultSet 하는게 맞을까 아니면 ResultView 에서 하는게 맞을까...
-        racingGameResults.forEach(RacingGameResult::showPosition);
-        System.out.println();
+    public List<RacingGameResult> getRacingGameResults() {
+        return racingGameResults;
     }
 
     public static class RacingGameResult {
@@ -32,8 +29,8 @@ public class RacingGameResultSet {
             return new RacingGameResult(position);
         }
 
-        public void showPosition() {
-            System.out.println(StringUtils.convertToHyphen(this.position));
+        public int getPosition() {
+            return position;
         }
     }
 }
