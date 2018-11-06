@@ -1,23 +1,32 @@
 package racing_game;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ResultPrinterTest {
 
+    private MockPrintStream mockPrintStream;
+    private ResultPrinter resultPrinter;
+
+    @Before
+    public void setup() {
+        this.mockPrintStream = new MockPrintStream(System.out);
+        this.resultPrinter = new ResultPrinter(mockPrintStream);
+    }
+
     @Test
     public void 현재상태_출력_확인() {
-        MockPrintStream mockPrintStream = new MockPrintStream(System.out);
-        ResultPrinter resultPrinter = new ResultPrinter(mockPrintStream);
         final String carName = "pobi";
+        final TestCar testCar = new TestCar(carName, 3);
 
-        resultPrinter.printCurrentState(carName, 3);
+        this.resultPrinter.printCurrentState(Arrays.asList(testCar));
 
         String inputString = mockPrintStream.getInputString();
         assertThat(inputString).isEqualTo(carName + " : " + "---");
@@ -25,25 +34,14 @@ public class ResultPrinterTest {
 
     @Test
     public void 게임결과_출력_확인() {
-        MockPrintStream mockPrintStream = new MockPrintStream(System.out);
-        ResultPrinter resultPrinter = new ResultPrinter(mockPrintStream);
+        final String user1 = "pobi";
+        final String user2 = "cron";
+        final List<String> winnerNames = Arrays.asList(user1, user2);
 
-        final int carCount = 3;
-        List<Car> cars = createCars(carCount);
-
-        resultPrinter.printGameResult(cars);
+        resultPrinter.printGameResult(winnerNames);
 
         String inputString = mockPrintStream.getInputString();
-        assertThat(inputString).isEqualTo(carCount + "가 최종 우승했습니다.");
-    }
-
-    private List<Car> createCars(int carCount) {
-        List<Car> cars = new ArrayList<>(carCount);
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new TestCar(String.valueOf(i + 1), i + 1));
-        }
-
-        return cars;
+        assertThat(inputString).isEqualTo(user1 + ", " + user2 + "가 최종 우승했습니다.");
     }
 
     private static class MockPrintStream extends PrintStream {
@@ -61,21 +59,6 @@ public class ResultPrinterTest {
 
         public String getInputString() {
             return inputString;
-        }
-    }
-
-    private static class TestCar extends Car {
-
-        private final int moveCount;
-
-        public TestCar(String name, int moveCount) {
-            super(name);
-            this.moveCount = moveCount;
-        }
-
-        @Override
-        public int getMoveCount() {
-            return this.moveCount;
         }
     }
 

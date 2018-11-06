@@ -3,6 +3,7 @@ package racing_game;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -49,9 +50,7 @@ public class RacingGame {
 
 
     private void printAll() {
-        for (Car car : cars) {
-            resultPrinter.printCurrentState(car.getName(), car.getMoveCount());
-        }
+        resultPrinter.printCurrentState(cars);
         System.out.println();
     }
 
@@ -63,7 +62,27 @@ public class RacingGame {
     }
 
     private void printGameResult() {
-        resultPrinter.printGameResult(cars);
+        List<String> winnerNames = findWinnerNames(cars);
+        resultPrinter.printGameResult(winnerNames);
+    }
+
+    List<String> findWinnerNames(List<Car> cars) {
+        final int maxMoveCount = findMaxMoveCount(cars);
+
+        return cars.stream()
+                .filter(car -> car.isSameMoveCount(maxMoveCount))
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
+    int findMaxMoveCount(List<Car> cars) {
+        int maxMoveCount = 0;
+
+        for (Car car : cars) {
+            maxMoveCount = Math.max(maxMoveCount, car.getMoveCount());
+        }
+
+        return maxMoveCount;
     }
 
     public static void main(String[] args) {
