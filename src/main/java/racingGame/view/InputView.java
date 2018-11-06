@@ -9,4 +9,9 @@ public class InputView {
         System.out.println(question);
         return scanner.nextInt();
     }
+
+    public static String[] inputStrings(String question) {
+        System.out.println(question);
+        return scanner.nextLine().split(",");
+    }
 }

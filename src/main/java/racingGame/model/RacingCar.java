@@ -2,6 +2,11 @@ package racingGame.model;
 
 public class RacingCar {
     private int position = 0;
+    private String name;
+
+    public RacingCar(String name) {
+        this.name = name;
+    }
 
     public int getPosition() {
         return this.position;
@@ -9,5 +14,9 @@ public class RacingCar {
 
     public void setForward() {
         this.position += 1;
+    }
+
+    public String getName() {
+        return this.name;
     }
 }
