@@ -4,10 +4,7 @@ import java.util.List;
 
 public class CarResult {
 
-    public static String getRaceWinners(RacingGame racingGame) {
-
-        List<Car> cars = racingGame.getCars();
-
+    public static String getRaceWinners(List<Car> cars) {
         int max = getMaxPosition( cars);
 
         return getWinners(cars, max);
@@ -18,9 +15,7 @@ public class CarResult {
         for(Car car : cars){
             result += car.getWinner(max);
         }
-
-        result = printWinners(result);
-        return result;
+        return printWinners(result);
     }
 
     public static String printWinners(String result) {

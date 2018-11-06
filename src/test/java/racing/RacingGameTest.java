@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -33,10 +35,11 @@ public class RacingGameTest {
     }
     @Test
     public void 준비_및_초기화확인() {
-        assertThat(racingGame.getName(0)).isEqualTo("pobi");
-        assertThat(racingGame.getName(1)).isEqualTo("crong");
-        assertThat(racingGame.getName(2)).isEqualTo("honux");
+        List<Car> cars = Arrays.asList(new Car("pobi", 1) , new Car("crong",3), new Car("honux",2));
 
+        for(int i =0; i < racingGame.getCarCount(); i++){
+            assertThat(racingGame.getName(i)).isEqualTo(cars.get(i).getName());
+        }
     }
     @Test
     public void 이동_및_이동거리확인() {
@@ -71,13 +74,7 @@ public class RacingGameTest {
 
     @Test(expected = NullPointerException.class)
     public void null값테스트() {
-        String str = null;
-        int count = 5;
-        racingGame = new RacingGame(str,count);
-        assertThat(racingGame.getCarCount()).isEqualTo(3);
-        assertThat(racingGame.move().get(0)).isEqualTo("pobi");
-        ResultView.watchRace(racingGame);
-
+        racingGame = new RacingGame(null, 5);
     }
 
     @Test
@@ -87,53 +84,23 @@ public class RacingGameTest {
 
     @Test
     public void 최종결과테스트() {
-        String result = "";
-        racingGame.move();
+        List<Car> cars = Arrays.asList(new Car("pobi", 1) , new Car("crong",3), new Car("honux",2));
 
-        result = CarResult.getRaceWinners(racingGame);
-        assertThat(result).contains("가 최종 우승했습니다.");
-        result += "";
-        System.out.println(result);
+        String result = CarResult.getRaceWinners(cars);
+        assertThat(result).contains("crong");
     }
 
     @Test
     public void 최대거리테스트() {
         CarResult carResult = new CarResult();
 
-        List<Car> cars = racingGame.getCars();
-        racingGame.move();
-        racingGame.move();
-        racingGame.move();
+        List<Car> cars = Arrays.asList(new Car("pobi", 1) , new Car("crong",4), new Car("honux",2));
+
         try {
             Method maxPositionMethod =carResult.getClass().getDeclaredMethod("getMaxPosition", List.class);
             maxPositionMethod.setAccessible(true);
             int max  = (int)maxPositionMethod.invoke(carResult,cars);
-            assertThat(max).isLessThanOrEqualTo(3).isGreaterThanOrEqualTo(0);
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    @Test
-    public void 우승자출력테스트_private() {
-        CarResult carResult = new CarResult();
-
-        racingGame.getCars();
-        racingGame.move();
-        List<Car> cars = racingGame.move();
-        int max = carResult.getMaxPosition( cars);
-
-
-        try {
-            Method method = carResult.getClass().getDeclaredMethod("getWinners", List.class, int.class);
-            method.setAccessible(true);
-            String resultTest = (String)method.invoke(carResult,cars, max);
-            assertThat(resultTest).contains("가 최종 우승했습니다.");
+            assertThat(max).isEqualTo(4);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -146,21 +113,18 @@ public class RacingGameTest {
 
     @Test
     public void 우승자구하기테스트_우승자길이구하기() {
+        List<Car> cars = Arrays.asList(new Car("pobi", 1) , new Car("crong",3), new Car("honux",2));
 
-        racingGame.getCars();
-        racingGame.move();
-        racingGame.move();
-        racingGame.move();
-        List<Car> cars = racingGame.move();
         int max = carResult.getMaxPosition( cars);
-        assertThat((carResult.getWinners(cars,max).length())).isGreaterThan("pobi".length());
+        assertThat((carResult.getWinners(cars,max))).contains("crong");
         assertThat((carResult.getWinners(cars,5).length())).isEqualTo(0);
     }
 
     @Test
     public void 우승자구하기테스트_우승자출력하기() {
-        assertThat(carResult.printWinners("pobi,crong,honux,")).isEqualTo("pobi,crong,honux가 최종 우승했습니다.");
-        assertThat(carResult.printWinners("pobi,crong,honux,")).contains("가 최종 우승했습니다.");
+        List<Car> cars = Arrays.asList(new Car("pobi", 1) , new Car("crong",3), new Car("honux",4));
+        String result = carResult.getRaceWinners(cars);
+        assertThat(result).isEqualTo("honux가 최종 우승했습니다.");
     }
 
 

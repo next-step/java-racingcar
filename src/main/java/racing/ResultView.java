@@ -11,12 +11,13 @@ public class ResultView {
         }
     }
 
-    private static void watchTrace(List<Car> cars) {
+    private static List<Car> watchTrace(List<Car> cars) {
         for(int j =0; j < cars.size(); j++){
             printName(cars.get(j));
             drawTrace(cars.get(j));
         }
         System.out.println();
+        return cars;
     }
 
     private static void printName(Car car) {

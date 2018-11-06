@@ -59,7 +59,7 @@ public class RacingGame {
         InputView inputView = new InputView(sc);
         RacingGame racingGame = new RacingGame(inputView.getRacingCars(), inputView.getTryCnt());
         ResultView.watchRace(racingGame);
-        CarResult.getRaceWinners(racingGame);
+        CarResult.getRaceWinners(racingGame.getCars());
     }
 
 
