@@ -5,15 +5,13 @@ import java.util.List;
 
 public class Car {
 
+    private static final int MOVING_STANDARD_VALUE = 4;
     private String name;
     private int position;
-    private static final int MOVING_STANDARD_VALUE = 4;
-    private List<Integer> myRecords;
 
     public Car(String name) {
         this.name = name;
         this.position = 0;
-        this.myRecords = new ArrayList<>();
     }
 
     public String getName() {
@@ -29,13 +27,5 @@ public class Car {
             return;
         }
         ++position;
-    }
-
-    public void record(int position) {
-        myRecords.add(position);
-    }
-
-    public List getRecord() {
-        return myRecords;
     }
 }

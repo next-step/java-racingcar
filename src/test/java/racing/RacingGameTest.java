@@ -11,15 +11,10 @@ public class RacingGameTest {
 
     @Before
     public void setUp() throws Exception {
-        racingGame = new RacingGame();
+        racingGame = new RacingGame("a,b,c");
     }
 
     @Test
     public void moveTest() {
-        racingGame.startGame();
-
-        assertThat(racingGame.getCars().get(0).getPosition()).isNotEqualTo(0);
-        assertThat(racingGame.getCars().get(1).getPosition()).isNotEqualTo(0);
-        assertThat(racingGame.getCars().get(2).getPosition()).isNotEqualTo(0);
     }
 }

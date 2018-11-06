@@ -9,64 +9,57 @@ import java.util.Random;
 
 public class RacingGame {
 
+    private static final int MAX_BOUND = 10;
     private List<Car> cars;
     private String carNames;
-    private int carNumber;
-    private int tryNumber;
-    private static final int MAX_BOUND = 10;
 
-    public RacingGame() {
+    public RacingGame(String carNames) {
         cars = new ArrayList<>();
-        carNames = InputView.getCarNames();
-        tryNumber = InputView.getTryNumber();
+        this.carNames = carNames;
+        initSettingCar();
     }
 
-    public void startGame() {
-        //차 세팅
-        setCars();
-
+    public GameResult startGame() {
         //경기 시작
-        doTracing();
-
-        //결과 출력
-        ResultView.showResult(cars, tryNumber);
-
-        //승자 출력
-        ResultView.showWinner(cars);
+        return doTracing();
     }
 
-    private void doTracing() {
-        for (int i = 0; i < tryNumber; i++) {
-            movingCarByValue();
-        }
-    }
-
-    private void setCars() {
+    private void initSettingCar() {
         String[] names = carNames.split(",");
-        carNumber = names.length;
-        for(int i = 0; i < carNumber; i++) {
+        int carNumber = names.length;
+
+        for (int i = 0; i < carNumber; i++) {
             cars.add(new Car(names[i]));
         }
     }
 
-    private void movingCarByValue() {
+    private GameResult doTracing() {
+        GameResult gameResult = new GameResult();
+
         for (Car car : cars) {
-            setNewPosition(car);
+            gameResult.setResult(setNewPosition(car));
         }
+
+        return gameResult;
     }
 
-    private void setNewPosition(Car car) {
+    private Car setNewPosition(Car car) {
         int randomValue = new Random().nextInt(MAX_BOUND);
         car.addPosition(randomValue);
-        car.record(car.getPosition());
-    }
-
-    public List<Car> getCars() {
-        return cars;
+        return car;
     }
 
     public static void main(String[] args) {
-        RacingGame racingGame = new RacingGame();
-        racingGame.startGame();
+        String carNames = InputView.getCarNames();
+        int tryNo = InputView.getTryNumber();
+
+        RacingGame racingGame = new RacingGame(carNames);
+        GameResult result = new GameResult();
+
+        for (int i = 0; i < tryNo; i++) {
+            result = racingGame.startGame();
+            ResultView.showResult(result);
+        }
+        ResultView.showWinner(result);
     }
 }
