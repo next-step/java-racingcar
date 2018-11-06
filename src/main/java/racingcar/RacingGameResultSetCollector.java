@@ -1,39 +1,29 @@
 package racingcar;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
-public class RacingGameResultSet {
+import static java.util.stream.Collectors.toList;
 
-    private List<RacingGameResult> racingGameResults;
+public class RacingGameResultSetCollector {
 
-    private RacingGameResultSet(List<RacingGameResult> racingGameResults) {
-        this.racingGameResults = racingGameResults;
+    private RacingCarAccelerator racingCarAccelerator;
+
+    public RacingGameResultSetCollector(RacingCarAccelerator racingCarAccelerator) {
+        this.racingCarAccelerator = racingCarAccelerator;
     }
 
-    public static RacingGameResultSet of(List<RacingGameResult> racingGameResults) {
-        return new RacingGameResultSet(racingGameResults);
+    public List<RacingGameResultSet> collectRacingGameResultSets(List<RacingCar> racingCars, int numberOfTimes) {
+        return IntStream.range(0, numberOfTimes)
+                .mapToObj(i -> RacingGameResultSet.of(collectRacingGameResults(racingCars)))
+                .collect(toList());
     }
 
-    public void showPositions() {
-        // TODO
-        // 이 역할을 RacingGameResultSet 하는게 맞을까 아니면 ResultView 에서 하는게 맞을까...
-        racingGameResults.forEach(RacingGameResult::showPosition);
-        System.out.println();
-    }
-
-    public static class RacingGameResult {
-        private int position;
-
-        private RacingGameResult(int position) {
-            this.position = position;
-        }
-
-        public static RacingGameResult of(int position) {
-            return new RacingGameResult(position);
-        }
-
-        public void showPosition() {
-            System.out.println(StringUtils.convertToHyphen(this.position));
-        }
+    private List<RacingGameResultSet.RacingGameResult> collectRacingGameResults(List<RacingCar> racingCars) {
+        return racingCars.stream()
+                .map(racingCar -> {
+                    racingCar.move(racingCarAccelerator);
+                    return RacingGameResultSet.RacingGameResult.of(racingCar.getPosition());
+                }).collect(toList());
     }
 }

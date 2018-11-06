@@ -10,6 +10,6 @@ public class RacingGameRunner {
         RacingGame racingGame = new RacingGame(option);
         List<RacingGameResultSet> resultSets = racingGame.start();
 
-        ResultView.showRacingGameResults(resultSets);
+        ResultView.showRacingGameResultSet(resultSets);
     }
 }

@@ -24,7 +24,7 @@ public class RacingCar {
     }
 
     public void move(RacingCarAccelerator accelerator) {
-        this.move(accelerator.stepOn(position));
+        this.move(accelerator.speedUp());
     }
 
     private void move(int count) {
