@@ -31,5 +31,11 @@ public class RacingCarTest {
         assertArrayEquals(new int[]{1,0,1},result);
     }
 
+    @Test
+    public void 자동차나누기(){
+        String[] result = RacingCar.splitCarList("pobi,crong,honux");
+        assertArrayEquals(new String[]{"pobi", "crong", "honux"}, result);
+    }
+
 
 }
