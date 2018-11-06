@@ -1,12 +1,10 @@
 package racing.view;
 
 import racing.Car;
-import racing.CarRacer;
+import racing.CarRacingUtils;
 import racing.msg.Winner;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -15,8 +13,8 @@ public abstract class Result {
     private Result() {
     }
 
-    public static void positionPrint(final List<Car> list) {
-        list.forEach(Result::positionCalculator);
+    public static void positionPrint(final List<Car> cars) {
+        cars.forEach(Result::positionCalculator);
         System.out.println();
     }
 
@@ -24,7 +22,7 @@ public abstract class Result {
 
         final StringBuilder sb = new StringBuilder();
 
-        sb.append(car.getCarRacer().getName());
+        sb.append(car.getName());
         sb.append(" ");
         sb.append(":");
         sb.append(" ");
@@ -36,16 +34,14 @@ public abstract class Result {
         System.out.print(sb.toString());
     }
 
-    public static void printWinner(final List<Car> list) {
-        final Optional<Car> max = list.stream().max(Comparator.comparing(Car::getPosition));
-        max.ifPresent(car -> System.out.print(winnerCalculator(list, car)));
+    public static void printWinner(final List<Car> cars) {
+        System.out.print(addACommaToWinnerName(cars));
         System.out.print(Winner.SUBFIX);
     }
 
-    private static String winnerCalculator(final List<Car> list, final Car car) {
-        return list.stream()
-                .filter(c -> c.getPosition() == car.getPosition())
-                .map(c -> c.getCarRacer().getName())
+    private static String addACommaToWinnerName(final List<Car> cars) {
+        return CarRacingUtils.findWinnders(cars).stream()
+                .map(Car::getName)
                 .collect(Collectors.joining(", "));
     }
 

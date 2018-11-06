@@ -12,12 +12,16 @@ public class Racing implements Game {
     private final int TRY_END_COUNT;
 
     private int tryCount;
-    private List<Car> list;
+    private final List<Car> cars = new ArrayList<>();
+    private final IForward forward;
 
-    public Racing(final List<Car> list, final int tryCount) {
+    public Racing(final String names, final int tryCount, final IForward forward) {
+
         this.TRY_END_COUNT = 0;
         this.tryCount = tryCount;
-        this.list = list;
+        this.forward = forward;
+
+        Arrays.stream(StringUtils.split(names, ",")).forEach(name -> cars.add(new Car(name, this.forward)));
     }
 
     @Override
@@ -28,7 +32,7 @@ public class Racing implements Game {
     @Override
     public void start() {
         decreaseTryCount();
-        list.forEach(Car::run);
+        cars.forEach(Car::run);
     }
 
     private void decreaseTryCount() {
@@ -36,8 +40,8 @@ public class Racing implements Game {
     }
 
     @Override
-    public List<Car> getList() {
-        return list;
+    public List<Car> getCars() {
+        return cars;
     }
 
 }

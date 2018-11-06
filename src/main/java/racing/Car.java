@@ -7,14 +7,19 @@ import java.util.Objects;
 public class Car {
 
     private static final int DEFAULT_POSITION = 0;
-    private int position;
+    private int position = DEFAULT_POSITION;
+    private String name;
     private IForward forward;
-    private CarRacer carRacer;
 
-    public Car(final CarRacer carRacer, final IForward forward) {
-        this.carRacer = carRacer;
+    public Car(final String name, final IForward forward) {
+        this.name = name;
         this.forward = forward;
-        initialize();
+    }
+
+    public Car(final String name, final int position, final IForward forward) {
+        this.name = name;
+        this.position = position;
+        this.forward = forward;
     }
 
     public void run() {
@@ -27,12 +32,12 @@ public class Car {
         return position;
     }
 
-    public CarRacer getCarRacer() {
-        return carRacer;
+    public String getName() {
+        return name;
     }
 
-    private void initialize() {
-        position = DEFAULT_POSITION;
+    public boolean isEqualsPosition(final int position) {
+        return this.position == position;
     }
 
     private void increasePosition() {
@@ -45,21 +50,21 @@ public class Car {
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
         return position == car.position &&
-                Objects.equals(forward, car.forward) &&
-                Objects.equals(carRacer, car.carRacer);
+                Objects.equals(name, car.name) &&
+                Objects.equals(forward, car.forward);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position, forward, carRacer);
+        return Objects.hash(position, name, forward);
     }
 
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Car{");
         sb.append("position=").append(position);
+        sb.append(", name='").append(name).append('\'');
         sb.append(", forward=").append(forward);
-        sb.append(", carRacer=").append(carRacer);
         sb.append('}');
         return sb.toString();
     }
