@@ -1,4 +1,4 @@
-package racinggame.rule;
+package racinggame.domain.rule;
 
 @FunctionalInterface
 public interface RacingRule {

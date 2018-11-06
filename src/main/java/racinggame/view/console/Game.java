@@ -1,9 +1,7 @@
-package racinggame.game;
+package racinggame.view.console;
 
-import racinggame.rule.RandomNumberRacing;
-import racinggame.view.InputView;
-import racinggame.view.ResultView;
-import racinggame.view.WinnterView;
+import racinggame.domain.game.RacingGame;
+import racinggame.domain.rule.RandomNumberRacing;
 
 public class Game {
     public static void main(String[] args) {

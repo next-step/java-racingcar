@@ -1,8 +1,7 @@
-package racinggame.car;
+package racinggame.domain.car;
 
 import org.junit.Before;
 import org.junit.Test;
-import racinggame.car.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
