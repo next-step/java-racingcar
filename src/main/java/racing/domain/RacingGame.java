@@ -1,5 +1,6 @@
-package racing;
+package racing.domain;
 
+import racing.Car;
 import racing.view.InputView;
 import racing.view.ResultView;
 
@@ -25,7 +26,7 @@ public class RacingGame {
     }
 
     private void initSettingCar() {
-        String[] names = carNames.split(",");
+        String[] names = carNames.split(" ");
         int carNumber = names.length;
 
         for (int i = 0; i < carNumber; i++) {
@@ -45,20 +46,6 @@ public class RacingGame {
     private Car setNewPosition(Car car) {
         int randomValue = new Random().nextInt(MAX_BOUND);
         car.addPosition(randomValue);
-        return car;
-    }
-
-    public static void main(String[] args) {
-        String carNames = InputView.getCarNames();
-        int tryNo = InputView.getTryNumber();
-
-        RacingGame racingGame = new RacingGame(carNames);
-        GameResult result = null;
-
-        for (int i = 0; i < tryNo; i++) {
-            result = racingGame.startGame();
-            ResultView.showResult(result);
-        }
-        ResultView.showWinner(result);
+        return new Car(car.getName(), car.getPosition());
     }
 }

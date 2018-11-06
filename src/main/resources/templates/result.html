@@ -48,10 +48,8 @@ body {
 	margin-top: 10px;
 }
 </style>
-
 </head>
 <body>
-
   <div class="container">
     <div class="row">
 
@@ -61,12 +59,13 @@ body {
         <div class="form-show-div" class="form-group">
           <h3>결과입니다</h3>
           (이름마다 띄어쓰기로 구분해 주세요.)
-          <div id="standings">박재성 : &nbsp;&nbsp;&nbsp;&#128652;</div>
-          <div id="standings">윤지수 : &nbsp;&nbsp;&#128652;</div>
-          <div id="standings">정호영 : &nbsp;&nbsp;&nbsp;&#128652;</div>
-          <div id="standings">김정 : &nbsp;&#128652;</div>
-          <br />
-          <div>박재성, 정호영이 우승했습니다.</div>
+            {{#results}}
+                {{#cars}}
+                    <div id="standings">{{name}} : {{position}}&nbsp;&nbsp;&nbsp;&#128652;</div>
+                {{/cars}}
+                <br />
+            {{/results}}
+            <div>{{winner}}가 최종 우승했습니다.</div>
         </div>
       </div>
     </div>
@@ -74,6 +73,12 @@ body {
 
 </body>
 <script src="/js/race.js">
-
+    // Handlebars.registerHelper('helpertest', function(position, options) {
+    //     var te = 1;
+    //     for (var i = 0; i < 5; i++) {
+    //         te =this.position;
+    //     }
+    //     return te;
+    // });
 </script>
 </html>
