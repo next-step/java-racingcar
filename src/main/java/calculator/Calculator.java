@@ -21,6 +21,4 @@ public class Calculator {
     public static int division(int i, int j) {
         return i / j;
     }
-
-
 }
