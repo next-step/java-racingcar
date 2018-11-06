@@ -1,27 +1,33 @@
 package racingCar;
 
-import java.util.Scanner;
+import java.util.List;
 
-import static racingCar.RacingCar.*;
+import static racingCar.Car.moveCar;
+import static racingCar.RacingCarUtil.arrayToList;
+import static racingCar.RacingCarUtil.splitList;
+import static racingCar.RacingCarInit.*;
 import static racingCar.RacingCarUI.*;
 
 
 public class RacingCarMain {
     private static int time;
-    private static CarVO[] cars;
+    private static Car[] cars;
+    private static List<Car> carList;
 
 
     public static void main(String[] args){
-        String carList = inCarName();
-        cars = createCarVO(splitCarList(carList));
-        time = inTryCount();
+        String carListStr = inputCarName();
+        cars = initCar(splitList(carListStr));
+        time = inputTryCount();
 
         System.out.println("실행 결과");
+
         for(int i=0; i<time;i++){
             cars = moveCar(cars);
-            outResult(cars);
+            outputResult(cars);
         }
-        outWinners(cars);
+        carList = arrayToList(cars);
+        outputWinners(carList);
 
     }
 }
