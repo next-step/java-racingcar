@@ -1,4 +1,4 @@
-package racing;
+package domain;
 
 
 public class Car {
@@ -7,7 +7,7 @@ public class Car {
     private int position;
     private String name;
 
-    Car (String name){
+    public Car (String name){
         this.name = name;
     }
 

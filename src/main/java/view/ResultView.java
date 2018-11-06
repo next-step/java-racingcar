@@ -1,4 +1,7 @@
-package racing;
+package view;
+
+import domain.Car;
+import domain.RacingGame;
 
 import java.util.List;
 
@@ -25,10 +28,11 @@ public class ResultView {
     }
 
     private static void drawTrace(Car car) {
+        StringBuffer sb = new StringBuffer();
         for (int k = 0; k < car.getPosition(); k++) {
-            System.out.print("-");
+           sb.append("-");
         }
-        System.out.println();
+        System.out.println(sb.toString());
     }
 
 }

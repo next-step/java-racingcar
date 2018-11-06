@@ -1,11 +1,14 @@
 package racing;
 
+import domain.Car;
+import domain.CarResult;
+import domain.RacingGame;
 import org.junit.Before;
 import org.junit.Test;
+import view.ResultView;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -19,8 +22,9 @@ public class RacingGameTest {
     @Before
     public void setUp()  {
         String str = "pobi,crong,honux";
+        String[] names = str.split(",");
         int count = 5;
-        racingGame = new RacingGame(str,count);
+        racingGame = new RacingGame(names,count);
         carResult = new CarResult();
     }
 
@@ -65,8 +69,9 @@ public class RacingGameTest {
     @Test
     public void 끝이콤마로끝나면() {
         String str = "pobi,crong,honux,";
+        String[] names = str.split(",");
         int count = 5;
-        racingGame = new RacingGame(str,count);
+        racingGame = new RacingGame(names,count);
         assertThat(racingGame.getCarCount()).isEqualTo(3);
         assertThat(racingGame.getName(0)).isEqualTo("pobi");
         ResultView.watchRace(racingGame);
