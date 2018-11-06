@@ -1,8 +1,9 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -41,15 +42,11 @@ public class RacingTest {
 
     @Test
     public void 가장_먼_위치_찾기() {
-        List<RacingCar> racingCars = new ArrayList<>();
-
-        RacingCar racingCar1 = new RacingCar(3, "jihan");
-        RacingCar racingCar2 = new RacingCar(2, "pobi");
-        RacingCar racingCar3 = new RacingCar(1, "wow");
-
-        racingCars.add(racingCar1);
-        racingCars.add(racingCar2);
-        racingCars.add(racingCar3);
+        List<RacingCar> racingCars = Arrays.asList(
+                new RacingCar(3, "jihan"),
+                new RacingCar(2, "pobi"),
+                new RacingCar(1, "wow")
+        );
 
         GameResult gameResult = new GameResult(racingCars);
         int result = gameResult.findMaxPosition(racingCars);
@@ -59,15 +56,11 @@ public class RacingTest {
 
     @Test
     public void 우승자_이름_제대로_나오는지_테스트() {
-        List<RacingCar> racingCars = new ArrayList<>();
-
-        RacingCar racingCar1 = new RacingCar(3, "jihan");
-        RacingCar racingCar2 = new RacingCar(2, "pobi");
-        RacingCar racingCar3 = new RacingCar(1, "wow");
-
-        racingCars.add(racingCar1);
-        racingCars.add(racingCar2);
-        racingCars.add(racingCar3);
+        List<RacingCar> racingCars = Arrays.asList(
+                new RacingCar(3, "jihan"),
+                new RacingCar(2, "pobi"),
+                new RacingCar(1, "wow")
+        );
 
         GameResult gameResult = new GameResult(racingCars);
         String result = gameResult.winner();
