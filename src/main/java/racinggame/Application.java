@@ -1,19 +1,31 @@
 package racinggame;
 
+import racinggame.model.Car;
+import racinggame.model.RacingGame;
+import racinggame.model.RacingGameResult;
+import racinggame.ui.InputView;
+import racinggame.ui.ResultView;
+
+import java.util.List;
+
 public class Application {
 
     public static void main(String[] args) {
 
-        int carCount = InputView.inputCarCount();
+        String[] inputName = InputView.inputCarNames().split(",");
         int raceTime = InputView.inputRaceTime();
 
-        RacingGame racingGame = new RacingGame(carCount, raceTime);
+        RacingGame racingGame = new RacingGame(inputName, raceTime);
 
+        List<Car> racingResult = null;
         while(!racingGame.isRaceEnd()) {
-            int[] racingResult = racingGame.raceOneTime();
-            ResultView.resultRacing(racingResult);
+            racingResult = racingGame.raceOneTime();
+            ResultView.printResultRacing(racingResult);
         }
 
+        RacingGameResult racingGameResult = new RacingGameResult(racingResult);
 
+        List<String> racingGameWinnerList = racingGameResult.getWinner();
+        ResultView.printRacingWinner(racingGameWinnerList);
     }
 }

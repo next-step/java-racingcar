@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.util;
 
 import org.junit.Test;
 
