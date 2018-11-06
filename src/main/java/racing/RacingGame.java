@@ -9,8 +9,14 @@ import java.util.stream.Collectors;
  */
 public class RacingGame {
     private static final int ZERO = 0;
+    private static final int BOUND = 10;
+    private final Random random = new Random();
     private List<Car> cars;
     private int time;
+
+    public List<Car> getCars() {
+        return cars;
+    }
 
     /**
      * 초기화
@@ -19,7 +25,7 @@ public class RacingGame {
      * @param time
      * @throws NoSuchAlgorithmException
      */
-    public RacingGame(String[] names, int time) throws NoSuchAlgorithmException {
+    public RacingGame(String[] names, int time) {
         this.time = time;
         cars = new ArrayList<>();
 
@@ -36,7 +42,7 @@ public class RacingGame {
      */
     public List<Car> move() {
         for (Car car : cars) {
-            car.move();
+            car.move(random.nextInt(BOUND));
         }
 
         --time;
@@ -52,16 +58,17 @@ public class RacingGame {
         return time > ZERO;
     }
 
+
     /**
      * 우승자 가져오기
      *
      * @return
      */
-    public List<Car> getWinners() {
+    public static List<Car> getWinners(List<Car> cars) {
+        final Integer maxPosition = getMaxPosition(cars);
         return cars.stream()
-                .filter(c -> c.getPosition().intValue() == getMaxPosition().intValue())
+                .filter(car -> car.isMaxPosition(maxPosition))
                 .collect(Collectors.toList());
-
     }
 
     /**
@@ -69,7 +76,7 @@ public class RacingGame {
      *
      * @return
      */
-    public Integer getMaxPosition() {
+    public static Integer getMaxPosition(List<Car> cars) {
         return cars.stream()
                 .max(Comparator.comparing(Car::getPosition))
                 .map(Car::getPosition)
