@@ -4,11 +4,10 @@ public class Car implements Comparable<Car> {
 
     private static final int MINIMUM_MOVABLE_SCORE = 4;
 
-    private int position;
+    private int position = 0;
     private String name;
 
     public Car(String name) {
-        position = 0;
         this.name = name;
     }
 
