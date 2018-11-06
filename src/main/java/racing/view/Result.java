@@ -8,6 +8,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public abstract class Result {
 
@@ -15,11 +16,7 @@ public abstract class Result {
     }
 
     public static void positionPrint(final List<Car> list) {
-
-        for (Car car : list) {
-            positionCalculator(car);
-        }
-
+        list.forEach(Result::positionCalculator);
         System.out.println();
     }
 
@@ -32,9 +29,7 @@ public abstract class Result {
         sb.append(":");
         sb.append(" ");
 
-        for (int i = 0; i < car.getPosition(); i++) {
-            sb.append("-");
-        }
+        IntStream.range(0, car.getPosition()).mapToObj(i -> "-").forEachOrdered(sb::append);
 
         sb.append("\n");
 
@@ -42,7 +37,7 @@ public abstract class Result {
     }
 
     public static void printWinner(final List<Car> list) {
-        Optional<Car> max = list.stream().max(Comparator.comparing(Car::getPosition));
+        final Optional<Car> max = list.stream().max(Comparator.comparing(Car::getPosition));
         max.ifPresent(car -> System.out.print(winnerCalculator(list, car)));
         System.out.print(Winner.SUBFIX);
     }
