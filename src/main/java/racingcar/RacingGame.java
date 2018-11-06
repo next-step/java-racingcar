@@ -4,10 +4,10 @@ import java.util.Random;
 
 public class RacingGame {
 
+    private static final int MIN_NUM = 4;
+    private static final int BOUND = 10;
     private static int time;
     private static int[] carPositions = {0, 0, 0};
-
-    private static ResultView resultView = new ResultView();
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
@@ -22,19 +22,17 @@ public class RacingGame {
 
         // 게임 회수만큼 레이싱 시작
         for (int i=0; i< time; i ++) {
-            racingGame.move();
+            carPositions = racingGame.move();
+            // 게임 회수 마다 전체 결과 출력
+            ResultView.showResult(carPositions);
+
+            // 한 회수당 구분을 위한 줄바꿈 처리
+            System.out.println();
         }
     }
 
     public int[] move() {
         moveCarPositions();
-
-        // 게임 회수 마다 전체 결과 출력
-        resultView.showResult(carPositions);
-
-        // 한 회수당 구분을 위한 줄바꿈 처리
-        System.out.println();
-
         return carPositions;
     }
 
@@ -43,7 +41,7 @@ public class RacingGame {
      */
     public void moveCarPositions() {
         for (int position = 0; position <carPositions.length; position++) {
-            moveOnePosition(position);
+            moveOnePosition(position, isCanMove());
         }
     }
 
@@ -51,8 +49,8 @@ public class RacingGame {
      * @param position
      * 전진 가능한 조건이라면 한칸 이동.
      */
-    public void moveOnePosition(int position) {
-        if(isCanMove()) {
+    public void moveOnePosition(int position, boolean isCanMove) {
+        if(isCanMove) {
             carPositions[position] = carPositions[position] + 1;
         }
     }
@@ -61,13 +59,17 @@ public class RacingGame {
      * 전진 가능여부 체크.
      */
     public Boolean isCanMove() {
-        return getRandom() >= 4;
+        return getRandom() >= MIN_NUM;
     }
 
     /**
      * 0 ~ 9 랜덤한 숫자를 반환.
      */
     public int getRandom() {
-        return new Random().nextInt(10);
+        return new Random().nextInt(BOUND);
+    }
+
+    public int[] getCarPositions() {
+        return carPositions;
     }
 }

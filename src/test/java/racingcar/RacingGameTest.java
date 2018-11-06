@@ -41,4 +41,11 @@ public class RacingGameTest {
 
         assertThat(carPositions[0]).isIn(0, 1);
     }
+
+    @Test
+    public void 한칸_이동_테스트() {
+        racingGame.moveOnePosition(0, true);
+        int[] carPositions = racingGame.getCarPositions();
+        assertThat(carPositions[0]).isEqualTo(1);
+    }
 }

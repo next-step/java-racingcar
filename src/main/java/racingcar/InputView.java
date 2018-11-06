@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class InputView {
     private int time;
-    private int[] carPositions = {0, 0, 0};
+    private int[] carPositions;
 
     /**
      * 자동차 대수와 시도 회수를 입력받는다.
