@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Arrays;
 import java.util.List;
@@ -42,21 +42,4 @@ public class Racing {
         return this.racingCars;
     }
 
-    public static void main(String[] args) {
-        String cars = InputView.inputCars();
-        int tryTime = InputView.inputTryTime();
-
-        Racing racing = new Racing(cars);
-        GameResult result;
-
-        for(int i = 0; i < tryTime; i++) {
-            racing.moveCars();
-            ResultView.printCars(racing.getRacingCars());
-            System.out.println();
-
-        }
-
-        result = new GameResult(racing.getRacingCars());
-        ResultView.printWinners(result);
-    }
 }

@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class RacingCar {
 
@@ -41,6 +41,15 @@ public class RacingCar {
 
         for(int i = 0; i < this.position; i++) {
             str += "-";
+        }
+        return str;
+    }
+
+    public String getView(){
+        String str = "";
+
+        for(int i = 0; i < this.position; i++) {
+            str += "\u00A0\u00A0";
         }
         return str;
     }
