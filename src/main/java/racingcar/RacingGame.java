@@ -24,10 +24,10 @@ public class RacingGame {
     }
 
     public List<RacingGameResultSet> start() {
-        int numberOfCar = racingGameOption.getNumberOfCar();
+        List<String> racingCarNames = racingGameOption.getRacingCarNames();
         int numberOfTimes = racingGameOption.getNumberOfTimes();
 
-        List<RacingCar> racingCars = RacingCar.create(numberOfCar);
+        List<RacingCar> racingCars = RacingCar.create(racingCarNames);
 
         return racingGameResultSetCollector.collectRacingGameResultSets(racingCars, numberOfTimes);
     }
