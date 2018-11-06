@@ -1,7 +1,6 @@
 package racinggame.util;
 
 import org.junit.Test;
-import racinggame.util.RandomUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -1,7 +1,5 @@
 package racinggame.model;
 
-import racinggame.util.RandomUtils;
-
 public class Car {
     private String name;
     private int position;
@@ -28,8 +26,8 @@ public class Car {
      * 자동차를 랜덤 결과에 따라 움직이게 한다.
      * @param
      */
-    public void moveCar() {
-        if(isCarMove(RandomUtils.getRandom10())) {
+    public void moveCar(int number) {
+        if(isCarMove(number)) {
             this.position++;
         }
     }

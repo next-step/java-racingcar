@@ -18,9 +18,11 @@ public class CarTest {
 
     @Test
     public void 자동차_움직이기_시도() throws Exception {
-        car.moveCar();
+        car.moveCar(0);
+        assertThat(car.getPosition()).isEqualTo(0);
 
-        assertThat(car.getPosition()).isLessThanOrEqualTo(1);
+        car.moveCar(5);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test

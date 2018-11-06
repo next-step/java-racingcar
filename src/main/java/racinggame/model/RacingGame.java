@@ -3,6 +3,8 @@ package racinggame.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import static racinggame.util.RandomUtils.getRandom10;
+
 public class RacingGame {
     private List<Car> cars;
     private int raceTime;
@@ -18,7 +20,7 @@ public class RacingGame {
      * @return
      */
     public List<Car> raceOneTime() {
-        cars.forEach(car -> car.moveCar());
+        cars.forEach(car -> car.moveCar(getRandom10()));
         reduceRaceTime();
 
         return cars;
