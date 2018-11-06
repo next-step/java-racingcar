@@ -26,19 +26,15 @@ public class CarTest {
 
     @Test
     public void 자동차_정보_출력_테스트() {
-        Car car = new Car("dicorndl");
-
-        car.moveForward(5);
+        Car car = new Car("dicorndl", 1);
 
         assertThat(car.toString()).isEqualTo("dicorndl : -");
     }
 
     @Test
     public void 자동차_position_순위_비교_테스트() {
-        Car car1 = new Car("dicorndl");
-        Car car2 = new Car("adcerp2");
-
-        car1.moveForward(5);
+        Car car1 = new Car("dicorndl", 3);
+        Car car2 = new Car("adcerp2", 1);
 
         assertThat(car1).isGreaterThan(car2);
     }

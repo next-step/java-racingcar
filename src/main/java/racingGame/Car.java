@@ -11,6 +11,11 @@ public class Car implements Comparable<Car> {
         this.name = name;
     }
 
+    public Car(String name, int position) {
+        this(name);
+        this.position = position;
+    }
+
     public void moveForward(int score) {
         if (canMove(score)) {
             position++;
