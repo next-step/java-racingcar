@@ -1,6 +1,6 @@
-package racinggame.car;
+package racinggame.domain.car;
 
-import racinggame.rule.RacingRule;
+import racinggame.domain.rule.RacingRule;
 
 public class Car {
 

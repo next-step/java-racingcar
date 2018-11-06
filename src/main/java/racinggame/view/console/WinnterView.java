@@ -1,4 +1,4 @@
-package racinggame.view;
+package racinggame.view.console;
 
 import java.util.List;
 import java.util.stream.Collectors;

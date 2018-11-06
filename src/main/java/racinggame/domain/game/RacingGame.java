@@ -1,9 +1,9 @@
-package racinggame.game;
+package racinggame.domain.game;
 
-import racinggame.car.Car;
-import racinggame.car.CarGroup;
-import racinggame.car.VictoryCar;
-import racinggame.rule.RacingRule;
+import racinggame.domain.car.Car;
+import racinggame.domain.car.CarGroup;
+import racinggame.domain.car.VictoryCar;
+import racinggame.domain.rule.RacingRule;
 
 import java.util.List;
 

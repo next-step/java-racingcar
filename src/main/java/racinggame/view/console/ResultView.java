@@ -1,6 +1,6 @@
-package racinggame.view;
+package racinggame.view.console;
 
-import racinggame.car.Car;
+import racinggame.domain.car.Car;
 
 import java.util.List;
 
