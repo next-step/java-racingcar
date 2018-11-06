@@ -9,10 +9,10 @@ public class StringCalculator {
 
 
         if(values.length <= 3 ){            //In case, need to one calculation
-            return getRes(values[1],getInt(values[0]),values[2]);
+            return getRes(values[1],Integer.parseInt(values[0]),values[2]);
         }
 
-        res= getRes(values[1],getInt(values[0]),values[2]);
+        res = getRes(values[1],Integer.parseInt(values[0]),values[2]);
         for(int i=3;i<values.length; i = i+2){
 
             res = getRes(values[i],res,values[i+1]);
@@ -25,7 +25,7 @@ public class StringCalculator {
 
     private Integer getRes(String value ,int first, String second) {
         int v1 = first;
-        int v2 = getInt(second);
+        int v2 = Integer.parseInt(second);
 
         if (value.equals("+")){
             return v1 + v2;
@@ -43,10 +43,6 @@ public class StringCalculator {
             return v1 / v2;
         }
         return 0;
-    }
-
-    private int getInt(String srt){
-        return Integer.parseInt(srt);
     }
 
 
