@@ -4,7 +4,7 @@ public class StringCalculator {
     // 최소 입력 갯수
     private static final int MIN_LENGTH = 3;
 
-    private StringCalculator(){
+    private StringCalculator() {
         throw new IllegalStateException("Utility class");
     }
 
