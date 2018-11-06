@@ -37,4 +37,21 @@ public class RacingTest {
 
         assertThat(racing.hasTryCount()).isEqualTo(false);
     }
+
+    @Test
+    public void 라이언과_테스터가_달리는데_라이언만_달릴수_있도록_했을때_라이언이_우승하는지() {
+
+        final Car ryan = new Car(new CarRacer("라이언"), () -> true);
+        final Car tester = new Car(new CarRacer("테스터"), () -> false);
+
+        final Game racing = new Racing(Arrays.asList(ryan, tester), 10);
+        while (racing.hasTryCount()) {
+            racing.start();
+        }
+
+        final String winnerName = ryan.getPosition() > tester.getPosition() ? ryan.getCarRacer().getName() : tester.getCarRacer().getName();
+
+        assertThat(winnerName).isEqualTo("라이언");
+    }
+
 }
