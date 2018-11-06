@@ -1,17 +1,23 @@
 package racing;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Car implements Comparable{
 
-public class Car {
-
-    private int position;
     private static final int MOVING_STANDARD_VALUE = 4;
-    private List<Integer> myRecords;
+    private String name;
+    private int position;
 
-    public Car() {
+    public Car(String name) {
+        this.name = name;
         this.position = 0;
-        this.myRecords = new ArrayList<>();
+    }
+
+    public Car(String name, int position) {
+        this.name = name;
+        this.position = position;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getPosition() {
@@ -25,11 +31,13 @@ public class Car {
         ++position;
     }
 
-    public void record(int position) {
-        myRecords.add(position);
-    }
-
-    public List getRecord() {
-        return myRecords;
+    @Override
+    public int compareTo(Object o) {
+        Car otherCar = (Car)o;
+        if (this.getPosition() > otherCar.getPosition())
+            return -1;
+        if (this.getPosition() < otherCar.getPosition())
+            return 1;
+        return 0;
     }
 }

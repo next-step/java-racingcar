@@ -1,29 +1,27 @@
 package racing.view;
 
 import racing.Car;
-
-import java.util.List;
+import racing.GameResult;
 
 public class ResultView {
 
-    public static void showResult(List<Car> cars, int tryNumber) {
-        for (int i = 0; i < tryNumber; i++) {
-            showEachCarRecord(cars, i);
-        }
-    }
-
-    private static void showEachCarRecord(List<Car> cars, int carNum) {
-        for (Car car : cars) {
-            int record = (int)car.getRecord().get(carNum);
-            showEachRecord(record);
+    public static void showResult(GameResult gameResult) {
+        for (Car car : gameResult.getCars()) {
+            int record = car.getPosition();
+            showEachRecord(car.getName(), record);
         }
         System.out.println();
     }
 
-    private static void showEachRecord(int record) {
+    private static void showEachRecord(String carName, int record) {
+        System.out.print(carName + " : ");
         for (int j = 0; j < record; j++) {
             System.out.print("-");
         }
         System.out.println();
+    }
+
+    public static void showWinner(GameResult gameResult) {
+        System.out.println(gameResult.getWinner()+"가 최종 우승했습니다.");
     }
 }

@@ -11,23 +11,28 @@ public class CarTest {
 
     @Before
     public void setUp() throws Exception {
-        car = new Car();
+        car = new Car("test");
     }
 
     @Test
     public void addPositionTest() throws Exception {
-        int randomValue = 5;
-
-        car.addPosition(randomValue);
+        getRandomValue();
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
-    public void recordTest() throws Exception {
+    public void getNameTest() {
+        assertThat(car.getName()).isEqualTo("test");
+    }
+
+    @Test
+    public void getPositionTest() {
+        getRandomValue();
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    private void getRandomValue() {
         int randomValue = 5;
         car.addPosition(randomValue);
-        car.record(car.getPosition());
-
-        assertThat(car.getRecord().size()).isEqualTo(1);
     }
 }
