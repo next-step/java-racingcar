@@ -1,9 +1,6 @@
 package racing;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Car {
+public class Car implements Comparable{
 
     private static final int MOVING_STANDARD_VALUE = 4;
     private String name;
@@ -12,6 +9,11 @@ public class Car {
     public Car(String name) {
         this.name = name;
         this.position = 0;
+    }
+
+    public Car(String name, int position) {
+        this.name = name;
+        this.position = position;
     }
 
     public String getName() {
@@ -27,5 +29,15 @@ public class Car {
             return;
         }
         ++position;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Car otherCar = (Car)o;
+        if (this.getPosition() > otherCar.getPosition())
+            return -1;
+        if (this.getPosition() < otherCar.getPosition())
+            return 1;
+        return 0;
     }
 }

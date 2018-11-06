@@ -34,13 +34,12 @@ public class RacingGame {
     }
 
     private GameResult doTracing() {
-        GameResult gameResult = new GameResult();
-
+        List<Car> newCars = new ArrayList<>();
         for (Car car : cars) {
-            gameResult.setResult(setNewPosition(car));
+            newCars.add(setNewPosition(car));
         }
 
-        return gameResult;
+        return new GameResult(newCars);
     }
 
     private Car setNewPosition(Car car) {
@@ -54,7 +53,7 @@ public class RacingGame {
         int tryNo = InputView.getTryNumber();
 
         RacingGame racingGame = new RacingGame(carNames);
-        GameResult result = new GameResult();
+        GameResult result = null;
 
         for (int i = 0; i < tryNo; i++) {
             result = racingGame.startGame();

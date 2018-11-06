@@ -2,40 +2,36 @@ package racing;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class GameResultTest {
 
+    private List<Car> cars;
     private GameResult gameResult;
 
     @Before
     public void setUp() throws Exception {
-        gameResult = new GameResult();
+        Car carA = new Car("A", 3);
+        Car carB = new Car("B", 7);
+        Car carC = new Car("C", 7);
+
+        cars = Arrays.asList(carA, carB, carC);
+
+        gameResult = new GameResult(cars);
     }
 
     @Test
     public void setResult() {
-        GameResult gameResult = new GameResult();
-        Car car = new Car("A");
-        gameResult.setResult(car);
-
-        assertThat(gameResult.getCars().size()).isEqualTo(1);
+        assertThat(gameResult.getCars().size()).isEqualTo(3);
     }
 
     @Test
     public void getWinner() {
-        Car carA = new Car("A");
-        carA.addPosition(3);
-        Car carB = new Car("B");
-        carB.addPosition(7);
-        Car carC = new Car("C");
-        carC.addPosition(5);
-
-
-        gameResult.setResult(carA);
-        gameResult.setResult(carB);
-        gameResult.setResult(carC);
         String result = gameResult.getWinner();
-        assertThat(result).isEqualTo("B, C가 최종 우승했습니다.");
+        assertThat(result).isEqualTo("B, C");
     }
 }

@@ -1,15 +1,15 @@
 package racing;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class GameResult {
 
     private static int WINNER_POSITION_IDX = 0;
-    private List<Car> cars = new ArrayList<>();
+    private List<Car> cars;
 
-    public void setResult(Car car) {
-        cars.add(car);
+    public GameResult(List<Car> cars) {
+        this.cars = cars;
     }
 
     public List<Car> getCars() {
@@ -17,10 +17,7 @@ public class GameResult {
     }
 
     public String getWinner() {
-        cars.sort((o1, o2) -> {
-            return makeDescending(o1, o2);
-        });
-
+        sortingCars();
         int winnerPosition = cars.get(WINNER_POSITION_IDX).getPosition();
 
         StringBuilder sb = new StringBuilder();
@@ -28,15 +25,15 @@ public class GameResult {
             sb = makeWinnerString(winnerPosition, sb, car);
         }
 
-        return sb.toString().substring(0, sb.lastIndexOf(","))+"가 최종 우승했습니다.";
+        return getSubstring(sb);
     }
 
-    private static int makeDescending(Car o1, Car o2) {
-        if (o1.getPosition() > o2.getPosition())
-            return -1;
-        if (o1.getPosition() < o2.getPosition())
-            return 1;
-        return 0;
+    private String getSubstring(StringBuilder sb) {
+        return sb.toString().substring(0, sb.lastIndexOf(","));
+    }
+
+    public void sortingCars() {
+        Collections.sort(cars);
     }
 
     private static StringBuilder makeWinnerString(int winnerPosition, StringBuilder sb, Car car) {

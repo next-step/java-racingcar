@@ -22,6 +22,6 @@ public class ResultView {
     }
 
     public static void showWinner(GameResult gameResult) {
-        System.out.println(gameResult.getWinner());
+        System.out.println(gameResult.getWinner()+"가 최종 우승했습니다.");
     }
 }
