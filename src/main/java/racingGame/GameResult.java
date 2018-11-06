@@ -9,7 +9,7 @@ public class GameResult {
     public static List<Car> getWinners(List<Car> cars) {
         int maxPosition = getMaxPositionOfCars(cars);
         return cars.stream()
-            .filter(car -> car.getCurrentPosition() == maxPosition)
+            .filter(car -> car.isSamePosition(maxPosition))
             .collect(Collectors.toList());
     }
 

@@ -25,10 +25,13 @@ public class Car implements Comparable<Car> {
         return this.name;
     }
 
+    public boolean isSamePosition(int position) {
+        return this.position == position;
+    }
+
     private boolean canMove(int score) {
         return score >= MINIMUM_MOVABLE_SCORE;
     }
-
 
     @Override
     public int compareTo(Car o) {
