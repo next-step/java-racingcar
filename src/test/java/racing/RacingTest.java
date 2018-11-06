@@ -3,6 +3,8 @@ package racing;
 import org.junit.Test;
 import racing.rule.Forward;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,7 +20,7 @@ public class RacingTest {
         final String carRacerName = "Ryan";
         final int tryCount = random.nextInt(20);
 
-        final Game racing = new Racing(carRacerName, tryCount, new Forward());
+        final Game racing = new Racing(Collections.singletonList(new Car(new CarRacer(carRacerName), new Forward())), tryCount);
         assertThat(racing.getList().size()).isEqualTo(1);
     }
 
@@ -28,7 +30,7 @@ public class RacingTest {
         final String carRacerName = "Ryan";
         final int tryCount = random.nextInt(20);
 
-        final Game racing = new Racing(carRacerName, tryCount, new Forward());
+        final Game racing = new Racing(Collections.singletonList(new Car(new CarRacer(carRacerName), new Forward())), tryCount);
         while (racing.hasTryCount()) {
             racing.start();
         }
