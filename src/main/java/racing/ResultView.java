@@ -1,6 +1,9 @@
 package racing;
 
+import java.util.List;
+
 public class ResultView {
+
     public static void watchRace(RacingGame racingGame){
         System.out.println("실행결과");
         for (int i = 0 ; i < racingGame.getTime(); i++){
@@ -8,15 +11,21 @@ public class ResultView {
         }
     }
 
-    private static void watchTrace(int[] carPositions) {
-        for(int j =0; j < carPositions.length; j++){
-            drawTrace(carPositions[j]);
+    private static List<Car> watchTrace(List<Car> cars) {
+        for(int j =0; j < cars.size(); j++){
+            printName(cars.get(j));
+            drawTrace(cars.get(j));
         }
         System.out.println();
+        return cars;
     }
 
-    private static void drawTrace(int carPosition) {
-        for (int k = 0; k < carPosition; k++) {
+    private static void printName(Car car) {
+        System.out.print(car.getName() +" : ");
+    }
+
+    private static void drawTrace(Car car) {
+        for (int k = 0; k < car.getPosition(); k++) {
             System.out.print("-");
         }
         System.out.println();
