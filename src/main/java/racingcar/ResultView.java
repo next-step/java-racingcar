@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.text.MessageFormat;
 import java.util.List;
 
 public class ResultView {
@@ -14,11 +15,12 @@ public class ResultView {
     }
 
     private static void showRacingGameResult(RacingGameResultSet racingGameResultSet) {
-        racingGameResultSet.getRacingGameResults().forEach(ResultView::printPosition);
+        racingGameResultSet.getRacingGameResults().forEach(ResultView::printResultMessage);
         System.out.println();
     }
 
-    private static void printPosition(RacingGameResultSet.RacingGameResult racingGameResult) {
-        System.out.println(StringUtils.convertToHyphen(racingGameResult.getPosition()));
+    private static void printResultMessage(RacingGameResultSet.RacingGameResult racingGameResult) {
+        String message = MessageFormat.format("{0}: {1}", racingGameResult.getName(), StringUtils.convertToHyphen(racingGameResult.getPosition()));
+        System.out.println(message);
     }
 }
