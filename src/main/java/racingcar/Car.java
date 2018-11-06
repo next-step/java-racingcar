@@ -5,8 +5,7 @@ public class Car {
     private int position;
 
     public Car(String name) {
-        this.name = name;
-        this.position = 0;
+        this(name, 0);
     }
 
     public Car(String name, int position) {
@@ -14,20 +13,14 @@ public class Car {
         this.position = position;
     }
 
-    public void setName(String name){
-        this.name = name;
-    }
-
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
     public String getName() {
         return name;
     }
-
     public int getPosition() {
         return position;
     }
 
+    public void move(){
+        this.position += 1;
+    }
 }

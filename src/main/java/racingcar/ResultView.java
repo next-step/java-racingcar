@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ResultView {
 
-    public static void result(Car[] car){
+    public static void result(ArrayList<Car> car){
         for (Car selectedOneCar : car){
             System.out.println(positionGrid(selectedOneCar));
         }

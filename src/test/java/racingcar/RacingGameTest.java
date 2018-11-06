@@ -23,10 +23,13 @@ public class RacingGameTest {
 
     @Test
     public void 자동차별위치이동(){
-        Car[] car = {new Car("pobi"), new Car("Crong"), new Car("honux")};
+        ArrayList<Car> car = new ArrayList<Car>();
+        car.add(new Car("pobi"));
+        car.add(new Car("crong"));
+        car.add(new Car("honux"));
         int carSeq = 2;
         RacingGame.movePerCarProcess(car, carSeq);
-        assertThat(car[2].getPosition()).isEqualTo(2);
+        assertThat(car.get(2).getPosition()).isEqualTo(2);
     }
 
     @Test
