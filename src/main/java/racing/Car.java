@@ -9,8 +9,10 @@ public class Car {
     private static final int DEFAULT_POSITION = 0;
     private int position;
     private IForward forward;
+    private CarRacer carRacer;
 
-    public Car(IForward forward) {
+    public Car(final CarRacer carRacer, final IForward forward) {
+        this.carRacer = carRacer;
         this.forward = forward;
         initialize();
     }
@@ -23,6 +25,10 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public CarRacer getCarRacer() {
+        return carRacer;
     }
 
     private void initialize() {
@@ -38,18 +44,22 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return position == car.position;
+        return position == car.position &&
+                Objects.equals(forward, car.forward) &&
+                Objects.equals(carRacer, car.carRacer);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position);
+        return Objects.hash(position, forward, carRacer);
     }
 
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Car{");
         sb.append("position=").append(position);
+        sb.append(", forward=").append(forward);
+        sb.append(", carRacer=").append(carRacer);
         sb.append('}');
         return sb.toString();
     }

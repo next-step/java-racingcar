@@ -12,14 +12,16 @@ public abstract class Main {
 
     public static void main(final String[] args) {
 
-        final int carCount = Input.question(Question.FIRST);
-        final int tryCount = Input.question(Question.SECOND);
+        final String carRacers = Input.StringQuestion(Question.FIRST);
+        final int tryCount = Input.IntegerQuestion(Question.SECOND);
 
-        final Game racing = new Racing(carCount, tryCount, new Forward());
+        final Game racing = new Racing(carRacers, tryCount, new Forward());
         while (racing.hasTryCount()) {
             racing.start();
             Result.positionPrint(racing.getList());
         }
+
+        Result.printWinner(racing.getList());
 
     }
 

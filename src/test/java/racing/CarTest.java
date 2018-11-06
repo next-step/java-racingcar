@@ -10,7 +10,7 @@ public class CarTest {
     @Test
     public void 차가_앞으로_가지_못하는_조건에서_차를_달리도록_하는_경우() {
 
-        final Car car = new Car(() -> false);
+        final Car car = new Car(new CarRacer("Ryan"), () -> false);
 
         for (int i = 0; i < 100; i++) {
             car.run();
@@ -22,7 +22,7 @@ public class CarTest {
     @Test
     public void 차가_앞으로_갈_수_있는_조건에서_차를_달리도록_하는_경우() {
 
-        final Car car = new Car(() -> true);
+        final Car car = new Car(new CarRacer("Ryan"), () -> true);
 
         for (int i = 0; i < 100; i++) {
             car.run();
