@@ -22,7 +22,7 @@ import static racing.ui.ConsoleUI.*;
  * 자동차 이름은 쉼표(,)를 기준으로 구분한다.
  * 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.
  */
-public class Main {
+public class ConsoleMain {
 
     public static void main(String[] args) {
         RacingGameCreateRequest request = getRacingGameCreateInput();
