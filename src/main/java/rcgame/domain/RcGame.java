@@ -38,22 +38,17 @@ public class RcGame {
         return totalTime > currentTime;
     }
 
-
     public List<RcCar> identifyWinner() {
-
-        int maxPosition = getMaxPosition();
-
-        List<RcCar> list = new ArrayList<>();
+        List<RcCar> winnerRcCars = new ArrayList<>();
         for (RcCar r : rcCars) {
-            if (r.isSamePosition(maxPosition)) {
-                list.add(r);
+            if (r.isSamePosition(findRcCarMaxPosition())) {
+                winnerRcCars.add(r);
             }
         }
-        return list;
-
+        return winnerRcCars;
     }
 
-    private int getMaxPosition() {
+    private int findRcCarMaxPosition() {
         return rcCars.stream()
                 .mapToInt(RcCar::getPosition)
                 .max().orElse(0);
