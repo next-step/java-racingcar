@@ -7,8 +7,6 @@ import racingGame.util.Lottery;
 import java.util.*;
 
 public class RacingGame {
-    private static int LESS_MOVE_RANGE = 3;
-    private static int GREATER_MOVE_RANGE = 11;
     private static String ERROR_NOT_FINISHD_RACE = "아직 경주가 끝나지 않았습니다.";
     private ArrayList<RacingCar> racingCars = new ArrayList<>();
     private String[] carNames;
@@ -32,14 +30,8 @@ public class RacingGame {
 
     public void moveCars() {
         for (RacingCar racingCar : this.racingCars) {
-            if (this.isForward(Lottery.getLotteryNumber())) {
-                racingCar.move();
-            }
+            racingCar.move(Lottery.getLotteryNumber());
         }
-    }
-
-    public boolean isForward(int number) {
-        return number > LESS_MOVE_RANGE && number < GREATER_MOVE_RANGE;
     }
 
     public boolean hasRemainTime() {

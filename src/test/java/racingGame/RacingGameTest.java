@@ -18,17 +18,6 @@ public class RacingGameTest {
     }
 
     @Test
-    public void 전진조건체크_전진가능() {
-        assertThat(racingGame.isForward(4)).isEqualTo(true);
-    }
-
-    @Test
-    public void 전진조건체크_전진불가능() {
-        assertThat(racingGame.isForward(3)).isEqualTo(false);
-        assertThat(racingGame.isForward(11)).isEqualTo(false);
-    }
-
-    @Test
     public void 경주시작하지않은경우() {
         List<RacingCarVO> snapshots = racingGame.getRacingCarSnapshots();
         assertThat(snapshots.get(0).getPosition()).isEqualTo(0);
