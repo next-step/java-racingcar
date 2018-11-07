@@ -51,8 +51,8 @@ public class ConsoleUI {
     public static void printWinnerNotice(List<RcCar> rcCars) {
         String winnerNotice = rcCars.stream()
                 .map(rcCar -> rcCar.getName())
-                .collect(Collectors.joining(","))
-                .concat("가 최종 우승했습니다");
+                .collect(Collectors.joining(","));
+        winnerNotice.concat("가 최종 우승했습니다");
 
         System.out.println(winnerNotice);
     }
