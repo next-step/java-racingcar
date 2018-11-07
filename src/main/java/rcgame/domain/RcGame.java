@@ -29,7 +29,7 @@ public class RcGame {
     }
 
     public List<RcCar> race(NumberGenerator numberGenerator) {
-        currentTime ++;햣
+        currentTime ++;
         return rcCars.stream()
                 .map(rcCar -> rcCar.move(numberGenerator))
                 .collect(toList());

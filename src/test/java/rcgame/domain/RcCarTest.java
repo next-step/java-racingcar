@@ -1,20 +1,14 @@
 package rcgame.domain;
 
-import org.junit.Before;
 import org.junit.Test;
 import rcgame.util.TestNumberGenerator;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static rcgame.domain.RcCar.MOVE_BOUND_VALUE;
 
 public class RcCarTest {
 
     TestNumberGenerator testNumberGenerator = new TestNumberGenerator();
-
-    @Before
-    public void setup() {
-        RcCar.setNumberGenerator(testNumberGenerator);
-    }
 
     @Test
     public void 자동차의_출발_위치는_0이다() {
@@ -30,7 +24,7 @@ public class RcCarTest {
         RcCar car = new RcCar();
         testNumberGenerator.setTestNumber(MOVE_BOUND_VALUE);
         //then
-        assertThat(car.move().getPosition()).isEqualTo(1);
+        assertThat(car.move(testNumberGenerator).getPosition()).isEqualTo(1);
     }
 
     @Test
@@ -39,6 +33,6 @@ public class RcCarTest {
         RcCar car = new RcCar();
         testNumberGenerator.setTestNumber(MOVE_BOUND_VALUE - 1);
         //then
-        assertThat(car.move().getPosition()).isEqualTo(0);
+        assertThat(car.move(testNumberGenerator).getPosition()).isEqualTo(0);
     }
 }

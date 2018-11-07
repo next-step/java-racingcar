@@ -1,7 +1,6 @@
 package rcgame.domain;
 
 import org.assertj.core.api.Assertions;
-import org.junit.Before;
 import org.junit.Test;
 import rcgame.dto.RcGameRequest;
 import rcgame.util.TestNumberGenerator;
@@ -15,11 +14,6 @@ public class RcGameTest {
 
     TestNumberGenerator testNumberGenerator = new TestNumberGenerator();
 
-    @Before
-    public void setup() {
-        RcCar.setNumberGenerator(testNumberGenerator);
-    }
-
     @Test
     public void 레이싱_테스트() {
         RcGameRequest rcGameRequest = new RcGameRequest(new String[]{"test1", "test2"}, 3);
@@ -27,7 +21,7 @@ public class RcGameTest {
         RcGame rcGame = new RcGame(rcGameRequest);
         testNumberGenerator.setTestNumber(MOVE_BOUND_VALUE);
 
-        List<RcCar> rcCars = rcGame.race();
+        List<RcCar> rcCars = rcGame.race(testNumberGenerator);
 
         Assertions.assertThat(rcCars)
                 .extracting("name", "position")
