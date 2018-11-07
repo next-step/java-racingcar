@@ -1,6 +1,7 @@
 package rcgame;
 
 import rcgame.domain.RcGame;
+import rcgame.util.NumberGenerator;
 
 import static rcgame.ui.ConsoleUI.*;
 

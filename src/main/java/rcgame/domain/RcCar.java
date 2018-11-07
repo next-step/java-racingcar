@@ -24,11 +24,16 @@ public class RcCar {
         this.position = 0;
     }
 
+    public RcCar(String name, int position) {
+        this.name = name;
+        this.position = position;
+    }
+
     public RcCar move() {
         if (numberGenerator.getRandomNumber() >= MOVE_BOUND_VALUE) {
             position ++;
         }
-        return this;
+        return new RcCar(name, position);
     }
 
     public int getPosition() {
@@ -36,4 +41,8 @@ public class RcCar {
     }
 
     public String getName() { return name; }
+
+    public boolean isSamePosition(int targetPosition){
+        return this.position == targetPosition;
+    }
 }

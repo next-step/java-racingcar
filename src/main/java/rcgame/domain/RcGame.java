@@ -18,11 +18,11 @@ public class RcGame {
         this.currentTime = 0;
     }
 
-    private void initRcCars(String[] rcCarName) {
+    private void initRcCars(String[] AllRcCarName) {
         this.rcCars= new ArrayList<>();
 
-        for(int i = 0; i < rcCarName.length; i++) {
-            this.rcCars.add(new RcCar(rcCarName[i]));
+        for (String rcCarName:AllRcCarName){
+            this.rcCars.add(new RcCar(rcCarName));
         }
     }
 
@@ -43,9 +43,13 @@ public class RcGame {
 
         int maxPosition = getMaxPosition();
 
-        return rcCars.stream()
-                .filter(r -> r.getPosition() == maxPosition)
-                .collect(toList());
+        List<RcCar> list = new ArrayList<>();
+        for (RcCar r : rcCars) {
+            if (r.isSamePosition(maxPosition)) {
+                list.add(r);
+            }
+        }
+        return list;
 
     }
 
