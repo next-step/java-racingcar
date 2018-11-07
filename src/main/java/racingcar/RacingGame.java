@@ -7,11 +7,9 @@ import static java.util.stream.Collectors.toList;
 
 public class RacingGame {
 
-    private RacingGameOption racingGameOption;
     private RacingCarAccelerator racingCarAccelerator;
 
-    public RacingGame(RacingGameOption racingGameOption) {
-        this.racingGameOption = racingGameOption;
+    public RacingGame() {
         initRacingCarAccelerator();
     }
 
@@ -19,12 +17,7 @@ public class RacingGame {
         this.racingCarAccelerator = new RacingCarAccelerator(4);
     }
 
-    public List<RacingGameResultSet> startRace() {
-        List<String> racingCarNames = racingGameOption.getRacingCarNames();
-        int numberOfTimes = racingGameOption.getNumberOfTimes();
-
-        List<RacingCar> racingCars = RacingCar.create(racingCarNames);
-
+    public List<RacingGameResultSet> startRace(int numberOfTimes, List<RacingCar> racingCars) {
         List<RacingGameResultSet> resultSets = new ArrayList<>();
         for (int i = 0; i < numberOfTimes; i++) {
             List<RacingGameResultSet.RacingGameResult> roundResult = startRoundRace(racingCars);
