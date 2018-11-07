@@ -20,6 +20,10 @@ public class RcGame {
         this.currentTime = 0;
     }
 
+    public RcGame(List<RcCar> rcCars) {
+        this.rcCars = rcCars;
+    }
+
     private void initRcCars(String[] AllRcCarName) {
         this.rcCars= new ArrayList<>();
 
