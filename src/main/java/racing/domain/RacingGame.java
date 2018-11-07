@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.*;

@@ -1,6 +1,7 @@
-package racing;
+package racing.view;
 
 import org.apache.commons.lang3.StringUtils;
+import racing.domain.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;

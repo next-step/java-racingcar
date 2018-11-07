@@ -1,8 +1,9 @@
 package racing;
 
 import org.junit.Test;
+import racing.domain.Car;
+import racing.domain.RacingGame;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
 
