@@ -1,5 +1,11 @@
 package racingGame;
 
+import racingGame.domain.GameResult;
+import racingGame.domain.RacingGame;
+import racingGame.view.InputType;
+import racingGame.view.InputView;
+import racingGame.view.ResultView;
+
 public class RacingGameRunner {
 
     public static void main(String[] args) {

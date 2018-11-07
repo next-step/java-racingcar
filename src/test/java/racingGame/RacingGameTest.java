@@ -1,6 +1,8 @@
 package racingGame;
 
 import org.junit.Test;
+import racingGame.domain.Car;
+import racingGame.domain.RacingGame;
 
 import java.util.stream.Collectors;
 
