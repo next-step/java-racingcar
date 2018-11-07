@@ -4,11 +4,11 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class RacingGame {
+    static final int RANGEOFNUM = 10;
+    static final int LIMIT = 4;
     private int numOfCars;
     private int racingTracks;
-    private int resultElement[];
-    static final int rangeOfNum = 10;
-    static final int limit = 4;
+    public int resultElement[];
 
     private void racingGame() {
         inputValue();
@@ -42,7 +42,7 @@ public class RacingGame {
         }
     }
 
-    private String drawLine(int state) {
+    public static String drawLine(int state) {
         String str = "";
         for(int i=0; i<state; i++) {
             str += "-";
@@ -50,14 +50,20 @@ public class RacingGame {
         return str;
     }
 
-    private void move() {
+    public void move() {
         Random rand = new Random();
         for(int i=0; i<numOfCars; i++) {
-            int currentPos = rand.nextInt(rangeOfNum);
-            if(currentPos >= limit) {
-                resultElement[i] += 1;
-            }
+            int currentPos = rand.nextInt(RANGEOFNUM);
+            int resultData = checkLimit(currentPos);
+            resultElement[i] += resultData;
         }
+    }
+
+    public int checkLimit(int currentPos) {
+        if(currentPos >= LIMIT) {
+            return 1;
+        }
+        return 0;
     }
 
     public static void main(String[] args) {
