@@ -6,6 +6,7 @@ public class Car {
 
     private int position;
     private String name;
+    private String distance;
 
     public Car (String name){
         this.name = name;
@@ -44,5 +45,13 @@ public class Car {
             return name+ ",";
         }
         return "";
+    }
+
+    public String getDistance() {
+        distance = "";
+        for(int i =0; i < position; i++){
+            distance += "\u00a0";
+        }
+        return distance;
     }
 }

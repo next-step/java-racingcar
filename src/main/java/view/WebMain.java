@@ -7,7 +7,6 @@ import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import java.util.*;
-import java.util.function.Function;
 
 import static spark.Spark.get;
 import static spark.Spark.port;
@@ -41,14 +40,13 @@ public class WebMain {
         get("/result",(req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Car> cars =  req.session().attribute("cars");
+            int turn = Integer.parseInt(req.queryParams("turn"));
+            RacingGame racingGame = new RacingGame(cars, turn);
 
-            String turn = req.queryParams("turn");
-            int tryCnt = Integer.parseInt(turn);
-            RacingGame racingGame = new RacingGame(cars, tryCnt);
-
-            for(int i =0; i < tryCnt; i++){
+            for(int i =0; i < turn; i++){
                 cars = racingGame.move();
             }
+
             String result = CarResult.getRaceWinners(cars);
 
             model.put("cars",cars);
@@ -57,9 +55,6 @@ public class WebMain {
             return render(model, "/result.html");
         });
 
-    }
-    public Function<Integer, Object> showDistance() {
-        return (obj) -> obj >= 0 ? "&nbsp;" : "";
     }
 
 
