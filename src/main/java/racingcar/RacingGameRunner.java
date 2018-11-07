@@ -9,8 +9,7 @@ public class RacingGameRunner {
 
         RacingGame racingGame = new RacingGame(option);
         List<RacingGameResultSet> racingGameResultSets = racingGame.start();
-        List<RacingGameWinner> racingGameWinners = RacingGameReferee.evaluate(racingGameResultSets);
 
-        ResultView.showRacingGameResultSet(racingGameResultSets, racingGameWinners);
+        ResultView.showRacingGameResult(racingGameResultSets);
     }
 }

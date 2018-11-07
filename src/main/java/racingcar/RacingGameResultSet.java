@@ -1,7 +1,10 @@
 package racingcar;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class RacingGameResultSet {
 
@@ -19,16 +22,23 @@ public class RacingGameResultSet {
         return racingGameResults;
     }
 
-    public List<RacingGameResult> getLeadingRacingGameResults() {
-        return racingGameResults.stream()
-                .filter(result -> result.getPosition() == getMaxPosition())
-                .collect(Collectors.toList());
+    // 이 역할은 ResultView 에서 해야하는 것은 아닐까?
+    public String getRacingGameWinner() {
+        return getWinnerRacingGameResults().stream()
+                .map(RacingGameResult::getName)
+                .collect(Collectors.joining(RacingGameOption.SEPARATOR));
     }
 
-    private int getMaxPosition() {
-        return racingGameResults.stream().
-                collect(Collectors.summarizingInt(RacingGameResultSet.RacingGameResult::getPosition))
-                .getMax();
+    private List<RacingGameResult> getWinnerRacingGameResults() {
+        return racingGameResults.stream()
+                .filter(result -> result.isRanking(calculateMaxPosition()))
+                .collect(toList());
+    }
+
+    private int calculateMaxPosition() {
+        return Collections.max(racingGameResults.stream()
+                .map(RacingGameResult::getPosition)
+                .collect(toList()));
     }
 
     public static class RacingGameResult {
@@ -50,6 +60,10 @@ public class RacingGameResultSet {
 
         public int getPosition() {
             return position;
+        }
+
+        public boolean isRanking(int maxPosition) {
+            return this.position == maxPosition;
         }
     }
 }
