@@ -24,10 +24,10 @@ public class RcGame {
         this.rcCars = rcCars;
     }
 
-    private void initRcCars(String[] AllRcCarName) {
+    private void initRcCars(String[] allRcCarName) {
         this.rcCars= new ArrayList<>();
 
-        for (String rcCarName:AllRcCarName){
+        for (String rcCarName:allRcCarName){
             this.rcCars.add(new RcCar(rcCarName));
         }
     }
