@@ -26,7 +26,7 @@ public class RacingGameResultSet {
     public String getRacingGameWinner() {
         return getWinnerRacingGameResults().stream()
                 .map(RacingGameResult::getName)
-                .collect(Collectors.joining(RacingGameOption.SEPARATOR));
+                .collect(Collectors.joining(", "));
     }
 
     private List<RacingGameResult> getWinnerRacingGameResults() {
@@ -50,8 +50,17 @@ public class RacingGameResultSet {
             this.position = racingCar.getPosition();
         }
 
+        private RacingGameResult(String name, int position) {
+            this.name = name;
+            this.position = position;
+        }
+
         public static RacingGameResult of(RacingCar racingCar) {
             return new RacingGameResult(racingCar);
+        }
+
+        public static RacingGameResult of(String name, int position) {
+            return new RacingGameResult(name, position);
         }
 
         public String getName() {
@@ -63,7 +72,7 @@ public class RacingGameResultSet {
         }
 
         public boolean isRanking(int maxPosition) {
-            return this.position == maxPosition;
+            return maxPosition <= this.position;
         }
     }
 }
