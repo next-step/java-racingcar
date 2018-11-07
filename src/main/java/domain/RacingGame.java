@@ -1,4 +1,7 @@
-package racing;
+package domain;
+
+import view.InputView;
+import view.ResultView;
 
 import java.util.*;
 
@@ -8,16 +11,22 @@ public class RacingGame {
     private int time;
     private List<Car> cars;
 
-    RacingGame(String player, int time){
-        readyCar(player.split(","));
+    public RacingGame(String[] names, int time){
+        readyCar(names);
         this.time = time;
     }
 
-    private void readyCar(String[] names) {
+    public RacingGame(List<Car> cars, int time){
+        this.cars = cars;
+        this.time = time;
+    }
+
+    private List<Car> readyCar(String[] names) {
         cars = new ArrayList<>();
         for(int i = 0; i < names.length; i ++){
             cars.add(new Car(names[i]));
         }
+        return cars;
     }
 
     public int getCarCount(){
@@ -54,13 +63,6 @@ public class RacingGame {
         return random.nextInt(MAX_NUM);
     }
 
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        InputView inputView = new InputView(sc);
-        RacingGame racingGame = new RacingGame(inputView.getRacingCars(), inputView.getTryCnt());
-        ResultView.watchRace(racingGame);
-        CarResult.getRaceWinners(racingGame.getCars());
-    }
 
 
 
