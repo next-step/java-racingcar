@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGameResultSet {
 
@@ -16,6 +17,18 @@ public class RacingGameResultSet {
 
     public List<RacingGameResult> getRacingGameResults() {
         return racingGameResults;
+    }
+
+    public List<RacingGameResult> getLeadingRacingGameResults() {
+        return racingGameResults.stream()
+                .filter(result -> result.getPosition() == getMaxPosition())
+                .collect(Collectors.toList());
+    }
+
+    private int getMaxPosition() {
+        return racingGameResults.stream().
+                collect(Collectors.summarizingInt(RacingGameResultSet.RacingGameResult::getPosition))
+                .getMax();
     }
 
     public static class RacingGameResult {
