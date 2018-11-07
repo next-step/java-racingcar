@@ -2,6 +2,7 @@ package racingGame.util;
 
 import org.junit.Before;
 import org.junit.Test;
+import racingGame.model.RacingCarVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,19 +11,18 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 
 public class HelperTest {
-    List<Integer> values;
+    List<RacingCarVO> snapshots;
 
     @Before
     public void setUp() {
-        values = new ArrayList<>();
+        snapshots = new ArrayList<>();
+        snapshots.add(new RacingCarVO("test1", 1));
+        snapshots.add(new RacingCarVO("test2", 2));
+        snapshots.add(new RacingCarVO("test3", 4));
     }
 
     @Test
     public void 최대값 () {
-        values.add(1);
-        values.add(2);
-        values.add(4);
-
-        assertThat(Helper.getHighstValue(values)).isEqualTo(4);
+        assertThat(Helper.getHighestPosition(snapshots)).isEqualTo(4);
     }
 }

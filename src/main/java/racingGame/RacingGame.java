@@ -1,6 +1,7 @@
 package racingGame;
 
 import racingGame.model.RacingCar;
+import racingGame.model.RacingCarVO;
 import racingGame.util.Helper;
 import racingGame.util.Lottery;
 
@@ -33,7 +34,7 @@ public class RacingGame {
     public void moveCars() {
         for (RacingCar racingCar : this.racingCars) {
             if (this.isForward(Lottery.getLotteryNumber())) {
-                racingCar.setForward();
+                racingCar.move();
             }
         }
     }
@@ -46,31 +47,21 @@ public class RacingGame {
         return this.remainTimes > 0;
     }
 
-    public Map<String, Integer> getRacingCarSnapshot() {
-        Map<String, Integer> resultMap = new HashMap<>();
+    public List<RacingCarVO> getRacingCarSnapshots() {
+        List<RacingCarVO> snapshots = new ArrayList<>();
         for (RacingCar racingCar : this.racingCars) {
-            resultMap.put(racingCar.getName(), racingCar.getPosition());
+            snapshots.add(new RacingCarVO(racingCar.getName(), racingCar.getPosition()));
         }
 
-        return resultMap;
+        return snapshots;
     }
 
-    public List<String> getChampionCarNames() {
+    public List<RacingCarVO> getFinishedCarSnapshots() {
         if (hasRemainTime()) {
             throw new IllegalStateException(ERROR_NOT_FINISHD_RACE);
         }
 
-        List<String> championCarNames = new ArrayList<>();
-        Map<String, Integer> racingCarSnapshot = this.getRacingCarSnapshot();
-        int maxPosition = Helper.getHighstValue(racingCarSnapshot.values());
-
-        for (String carName : racingCarSnapshot.keySet()) {
-            if (racingCarSnapshot.get(carName) == maxPosition) {
-                championCarNames.add(carName);
-            }
-        }
-
-        return championCarNames;
+        return this.getRacingCarSnapshots();
     }
 
     private void initRacingCars() {

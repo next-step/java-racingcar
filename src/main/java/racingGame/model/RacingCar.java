@@ -12,7 +12,7 @@ public class RacingCar {
         return this.position;
     }
 
-    public void setForward() {
+    public void move() {
         this.position += 1;
     }
 
