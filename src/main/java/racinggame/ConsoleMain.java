@@ -8,7 +8,7 @@ import racinggame.ui.ResultView;
 
 import java.util.List;
 
-public class Application {
+public class ConsoleMain {
 
     public static void main(String[] args) {
 
