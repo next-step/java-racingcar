@@ -1,6 +1,7 @@
 package rcgame.domain;
 
-import rcgame.dto.RcGameRequestDto;
+import rcgame.dto.RcGameRequest;
+import rcgame.util.NumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,27 +13,48 @@ public class RcGame {
     private int totalTime;
     private int currentTime;
 
-    public RcGame(RcGameRequestDto request) {
-        this.initRcCars(request.getCarNumber());
+    public RcGame(RcGameRequest request) {
+        this.initRcCars(request.getRcCarName());
         this.totalTime = request.getTime();
         this.currentTime = 0;
     }
 
-    private void initRcCars(int rcCarNumber) {
+    private void initRcCars(String[] allRcCarName) {
         this.rcCars= new ArrayList<>();
-        for(int i = 0; i < rcCarNumber; i++) {
-            this.rcCars.add(new RcCar());
+
+        for (String rcCarName:allRcCarName){
+            this.rcCars.add(new RcCar(rcCarName));
         }
     }
 
-    public List<Integer> race() {
+    public List<RcCar> race(NumberGenerator numberGenerator) {
         currentTime ++;
         return rcCars.stream()
-                .map(RcCar::move)
+                .map(rcCar -> rcCar.move(numberGenerator))
                 .collect(toList());
     }
 
     public boolean isOnGoing() {
         return totalTime > currentTime;
+    }
+
+    public static List<RcCar> identifyWinner(List<RcCar> rcCars) {
+        List<RcCar> winnerRcCars = new ArrayList<>();
+        for (RcCar r : rcCars) {
+            if (r.isSamePosition(findRcCarMaxPosition(rcCars))) {
+                winnerRcCars.add(r);
+            }
+        }
+        return winnerRcCars;
+    }
+
+    private static int findRcCarMaxPosition(List<RcCar> rcCars) {
+        return rcCars.stream()
+                .mapToInt(RcCar::getPosition)
+                .max().orElse(0);
+    }
+
+    public List<RcCar> getRcCars() {
+        return rcCars;
     }
 }

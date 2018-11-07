@@ -1,29 +1,24 @@
 package rcgame;
 
 import rcgame.domain.RcGame;
-import rcgame.dto.RcGameRequestDto;
-import rcgame.ui.ConsoleUI;
+import rcgame.util.NumberGenerator;
+import rcgame.util.RandomNumberGenerator;
 
-import java.util.List;
-
-import static rcgame.ui.ConsoleUI.getRcGameRequest;
-import static rcgame.ui.ConsoleUI.printResultNotice;
+import static rcgame.domain.RcGame.identifyWinner;
+import static rcgame.ui.ConsoleUI.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        ConsoleUI consoleUI = new ConsoleUI();
-        RcGameRequestDto requestDto = getRcGameRequest();
+        NumberGenerator numberGenerator = new RandomNumberGenerator();
+        RcGame rcGame = new RcGame(getRcGameRequest());
 
-        RcGame rcGame = new RcGame(requestDto);
-
-        printResultNotice();
+        printProgressNotice();
 
         while(rcGame.isOnGoing()) {
-            List<Integer> positions = rcGame.race();
-            consoleUI.printRcCarPositions(positions);
+            printRcCarPositions(rcGame.race(numberGenerator));
         }
 
-
+        printWinnerNotice(identifyWinner(rcGame.getRcCars()));
     }
 }
