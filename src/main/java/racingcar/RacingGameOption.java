@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RacingGameOption {
 
-    private static final String SEPARATOR = ",";
+    public static final String SEPARATOR = ",";
 
     private List<String> racingCarNames;
     private int numberOfTimes;
