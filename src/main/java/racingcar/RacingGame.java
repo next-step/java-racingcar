@@ -1,34 +1,36 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 public class RacingGame {
 
-    private RacingGameOption racingGameOption;
     private RacingCarAccelerator racingCarAccelerator;
-    private RacingGameResultSetCollector racingGameResultSetCollector;
 
-    public RacingGame(RacingGameOption racingGameOption) {
-        this.racingGameOption = racingGameOption;
-
+    public RacingGame() {
         initRacingCarAccelerator();
-        initRacingGameResultSetCollector();
     }
 
     private void initRacingCarAccelerator() {
         this.racingCarAccelerator = new RacingCarAccelerator(4);
     }
 
-    private void initRacingGameResultSetCollector() {
-        this.racingGameResultSetCollector = new RacingGameResultSetCollector(racingCarAccelerator);
+    public List<RacingGameResultSet> startRace(int numberOfTimes, List<RacingCar> racingCars) {
+        List<RacingGameResultSet> resultSets = new ArrayList<>();
+        for (int i = 0; i < numberOfTimes; i++) {
+            List<RacingGameResultSet.RacingGameResult> roundResult = startRoundRace(racingCars);
+            resultSets.add(RacingGameResultSet.of(roundResult));
+        }
+        return resultSets;
     }
 
-    public List<RacingGameResultSet> start() {
-        int numberOfCar = racingGameOption.getNumberOfCar();
-        int numberOfTimes = racingGameOption.getNumberOfTimes();
-
-        List<RacingCar> racingCars = RacingCar.create(numberOfCar);
-
-        return racingGameResultSetCollector.collectRacingGameResultSets(racingCars, numberOfTimes);
+    private List<RacingGameResultSet.RacingGameResult> startRoundRace(List<RacingCar> racingCars) {
+        return racingCars.stream()
+                .map(racingCar -> {
+                    racingCar.move(racingCarAccelerator);
+                    return RacingGameResultSet.RacingGameResult.of(racingCar);
+                }).collect(toList());
     }
 }

@@ -7,9 +7,12 @@ public class RacingGameRunner {
     public static void main(String[] args) {
         RacingGameOption option = InputView.inputRacingGameOption();
 
-        RacingGame racingGame = new RacingGame(option);
-        List<RacingGameResultSet> resultSets = racingGame.start();
+        int numberOfTimes = option.getNumberOfTimes();
+        List<RacingCar> racingCars = RacingCar.create(option.getRacingCarNames());
 
-        ResultView.showRacingGameResultSet(resultSets);
+        RacingGame racingGame = new RacingGame();
+        List<RacingGameResultSet> racingGameResultSets = racingGame.startRace(numberOfTimes, racingCars);
+
+        ResultView.showRacingGameResult(racingGameResultSets);
     }
 }

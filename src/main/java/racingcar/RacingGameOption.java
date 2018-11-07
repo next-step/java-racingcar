@@ -1,17 +1,20 @@
 package racingcar;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class RacingGameOption {
 
-    private int numberOfCar;
+    private List<String> racingCarNames;
     private int numberOfTimes;
 
-    public RacingGameOption(int numberOfCar, int numberOfTimes) {
-        this.numberOfCar = numberOfCar;
+    public RacingGameOption(String racingCarNames, int numberOfTimes) {
+        this.racingCarNames = Arrays.asList(racingCarNames.split(","));
         this.numberOfTimes = numberOfTimes;
     }
 
-    public int getNumberOfCar() {
-        return numberOfCar;
+    public List<String> getRacingCarNames() {
+        return racingCarNames;
     }
 
     public int getNumberOfTimes() {
