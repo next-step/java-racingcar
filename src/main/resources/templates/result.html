@@ -44,6 +44,14 @@ body {
 	font-size: 16px;
 }
 
+.standings-name {
+    width: 50px;
+    display:inline-block
+}
+.standings-value {
+    display:inline-block
+}
+
 .submit-button {
 	margin-top: 10px;
 }
@@ -61,12 +69,20 @@ body {
         <div class="form-show-div" class="form-group">
           <h3>결과입니다</h3>
           (이름마다 띄어쓰기로 구분해 주세요.)
-          <div id="standings">박재성 : &nbsp;&nbsp;&nbsp;&#128652;</div>
-          <div id="standings">윤지수 : &nbsp;&nbsp;&#128652;</div>
-          <div id="standings">정호영 : &nbsp;&nbsp;&nbsp;&#128652;</div>
-          <div id="standings">김정 : &nbsp;&#128652;</div>
+          {{#result}}
+            {{#racingCarStatuses}}
+          <div class="standings">
+          <span class="standings-name">{{name}} :</span>
+          <span class="standings-value">
+            {{#times position}}&nbsp;{{/times}}&#128652
+          </span>
+          </div>
+            {{/racingCarStatuses}}
           <br />
-          <div>박재성, 정호영이 우승했습니다.</div>
+          <div>
+              {{join winnerNames ", "}}이 우승했습니다.
+          </div>
+          {{/result}}
         </div>
       </div>
     </div>

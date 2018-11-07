@@ -1,6 +1,6 @@
 package racing.dto;
 
-public class RacingCarStatus {
+public class RacingCarStatus implements Comparable<RacingCarStatus> {
     private String name;
     private int position;
 
@@ -15,5 +15,10 @@ public class RacingCarStatus {
 
     public int getPosition() {
         return position;
+    }
+
+    @Override
+    public int compareTo(RacingCarStatus that) {
+        return Integer.compare(this.position, that.position);
     }
 }

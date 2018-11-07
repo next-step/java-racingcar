@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public final class RacingCarStringUtils {
-    public static List<String> splitByComma(String rawString) {
+    public static List<String> splitNames(String rawString, String delimiter/*regex*/) {
         if (rawString == null) {
             throw new IllegalArgumentException("문자열로 빈값은 허용하지 않습니다.");
         }
 
-        String[] splittedStr = rawString.split(",");
+        String[] splittedStr = rawString.split(delimiter);
         return Arrays.stream(splittedStr)
                 .map(String::trim)
                 .collect(Collectors.toList());
