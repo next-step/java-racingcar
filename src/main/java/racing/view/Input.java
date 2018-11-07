@@ -10,9 +10,14 @@ public abstract class Input {
     private Input() {
     }
 
-    public static int question(final String question) {
+    public static int IntegerQuestion(final String question) {
         printQuestion(question);
         return scanner.nextInt();
+    }
+
+    public static String StringQuestion(final String question) {
+        printQuestion(question);
+        return scanner.nextLine();
     }
 
     private static void printQuestion(final String question) {

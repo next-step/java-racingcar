@@ -1,23 +1,27 @@
 package racing;
 
 import racing.rule.IForward;
+import racing.utils.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class Racing implements Game {
 
     private final int TRY_END_COUNT;
 
     private int tryCount;
-    private final List<Car> list = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
+    private final IForward forward;
 
-    public Racing(final int carCount, final int tryCount, final IForward forward) {
+    public Racing(final String names, final int tryCount, final IForward forward) {
+
         this.TRY_END_COUNT = 0;
         this.tryCount = tryCount;
-        IntStream.range(0, carCount).forEachOrdered(i -> list.add(new Car(forward)));
+        this.forward = forward;
 
+        Arrays.stream(StringUtils.split(names, ",")).forEach(name -> cars.add(new Car(name, this.forward)));
     }
 
     @Override
@@ -28,7 +32,7 @@ public class Racing implements Game {
     @Override
     public void start() {
         decreaseTryCount();
-        list.forEach(Car::run);
+        cars.forEach(Car::run);
     }
 
     private void decreaseTryCount() {
@@ -36,8 +40,8 @@ public class Racing implements Game {
     }
 
     @Override
-    public List<Car> getList() {
-        return list;
+    public List<Car> getCars() {
+        return cars;
     }
 
 }

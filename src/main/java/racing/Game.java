@@ -19,6 +19,6 @@ public interface Game {
      *
      * @return List<Car>
      */
-    List<Car> getList();
+    List<Car> getCars();
 
 }
