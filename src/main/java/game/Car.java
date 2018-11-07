@@ -1,6 +1,7 @@
 package game;
 
 public class Car {
+
     private static final int MOVE_FLAG = 4;
     private int movingCount;
 

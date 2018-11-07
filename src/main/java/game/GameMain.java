@@ -7,11 +7,10 @@ public class GameMain {
         int numberofCars = InputView.getNumberofCars();
         int numberofAttempts = InputView.getNumberofAttempts();
 
-        RacingGame racingGame = new RacingGame(numberofCars, numberofAttempts);
-        for(int i = 1; i <= numberofAttempts; i++){
-            List<Car> cars = racingGame.playGame(i);
+        RacingGame racingGame = new RacingGame(numberofCars);
+        for(int i = 0; i < numberofAttempts; i++){
+            List<Car> cars = racingGame.playGame();
             OutputView.print(cars);
         }
-
     }
 }

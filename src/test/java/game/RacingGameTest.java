@@ -12,7 +12,7 @@ public class RacingGameTest {
 
     @Before
     public void setUp() {
-        game = new RacingGame(2, 5);
+        game = new RacingGame(2);
     }
 
     @Test
