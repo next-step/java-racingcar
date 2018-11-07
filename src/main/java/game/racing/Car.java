@@ -35,7 +35,7 @@ public class Car {
 
     public String getCurrentState() {
         StringBuilder sb = new StringBuilder();
-        sb.append(name).append(" : ");
+        sb.append(this.getName()).append(" : ");
         for (int i = 0; i < this.getMoveCount(); i++) {
             sb.append(CAR_SHAPE);
         }
@@ -52,5 +52,9 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    public int maxMoveCount(int maxMoveCount) {
+        return Math.max(this.moveCount, maxMoveCount);
     }
 }

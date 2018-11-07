@@ -3,7 +3,6 @@ package game.racing;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,9 +14,8 @@ public class RacingGameTest {
 
     @Before
     public void setup() {
-        this.racingGame = new RacingGame();
+        this.racingGame = new RacingGame("test");
     }
-
 
     @Test
     public void 자동차_만들기() {
@@ -31,33 +29,11 @@ public class RacingGameTest {
     }
 
     @Test
-    public void 가장큰숫자찾기() {
-        final int maxMoveCount = 3;
-        List<Car> testCars = createTestars(maxMoveCount);
+    public void testMove() {
+        GameResult gameResult = racingGame.move();
 
-        int findedMaxMoveCount = racingGame.findMaxMoveCount(testCars);
-
-        assertThat(maxMoveCount).isEqualTo(findedMaxMoveCount);
-    }
-
-    @Test
-    public void 우승자이름찾기() {
-        final int maxMoveCount = 3;
-        List<Car> testCars = createTestars(maxMoveCount);
-
-        List<String> winnerNames = racingGame.findWinnerNames(testCars);
-
-        assertThat(winnerNames.size()).isEqualTo(1);
-        assertThat(winnerNames.get(0)).isEqualTo(String.valueOf(maxMoveCount));
-    }
-
-    private List<Car> createTestars(int carCount) {
-        List<Car> cars = new ArrayList<>(carCount);
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car(String.valueOf(i + 1), i + 1));
-        }
-
-        return cars;
+        assertThat(gameResult).isNotNull();
+        assertThat(gameResult.getCurrentStates().size()).isEqualTo(1);
     }
 
 }
