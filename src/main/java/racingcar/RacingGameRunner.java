@@ -8,7 +8,7 @@ public class RacingGameRunner {
         RacingGameOption option = InputView.inputRacingGameOption();
 
         RacingGame racingGame = new RacingGame(option);
-        List<RacingGameResultSet> racingGameResultSets = racingGame.start();
+        List<RacingGameResultSet> racingGameResultSets = racingGame.startRace();
 
         ResultView.showRacingGameResult(racingGameResultSets);
     }
