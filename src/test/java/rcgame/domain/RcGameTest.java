@@ -10,6 +10,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Java6Assertions.tuple;
 import static rcgame.domain.RcCar.MOVE_BOUND_VALUE;
+import static rcgame.domain.RcGame.identifyWinner;
 
 public class RcGameTest {
 
@@ -42,8 +43,7 @@ public class RcGameTest {
         );
 
         //when
-        RcGame rcGame = new RcGame(rcCars, 0 ,0);
-        List<RcCar> winnerRcCars = rcGame.identifyWinner();
+        List<RcCar> winnerRcCars = identifyWinner(rcCars);
 
         //then
         Assertions.assertThat(winnerRcCars)

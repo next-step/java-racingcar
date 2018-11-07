@@ -19,12 +19,6 @@ public class RcGame {
         this.currentTime = 0;
     }
 
-    public RcGame(List<RcCar> rcCars, int totalTime, int currentTime) {
-        this.rcCars = rcCars;
-        this.totalTime = totalTime;
-        this.currentTime = currentTime;
-    }
-
     private void initRcCars(String[] allRcCarName) {
         this.rcCars= new ArrayList<>();
 
@@ -44,19 +38,23 @@ public class RcGame {
         return totalTime > currentTime;
     }
 
-    public List<RcCar> identifyWinner() {
+    public static List<RcCar> identifyWinner(List<RcCar> rcCars) {
         List<RcCar> winnerRcCars = new ArrayList<>();
         for (RcCar r : rcCars) {
-            if (r.isSamePosition(findRcCarMaxPosition())) {
+            if (r.isSamePosition(findRcCarMaxPosition(rcCars))) {
                 winnerRcCars.add(r);
             }
         }
         return winnerRcCars;
     }
 
-    private int findRcCarMaxPosition() {
+    private static int findRcCarMaxPosition(List<RcCar> rcCars) {
         return rcCars.stream()
                 .mapToInt(RcCar::getPosition)
                 .max().orElse(0);
+    }
+
+    public List<RcCar> getRcCars() {
+        return rcCars;
     }
 }

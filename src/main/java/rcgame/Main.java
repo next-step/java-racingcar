@@ -4,6 +4,7 @@ import rcgame.domain.RcGame;
 import rcgame.util.NumberGenerator;
 import rcgame.util.RandomNumberGenerator;
 
+import static rcgame.domain.RcGame.identifyWinner;
 import static rcgame.ui.ConsoleUI.*;
 
 public class Main {
@@ -18,6 +19,6 @@ public class Main {
             printRcCarPositions(rcGame.race(numberGenerator));
         }
 
-        printWinnerNotice(rcGame.identifyWinner());
+        printWinnerNotice(identifyWinner(rcGame.getRcCars()));
     }
 }
