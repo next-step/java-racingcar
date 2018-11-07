@@ -1,4 +1,4 @@
-package racing_game;
+package game.racing;
 
 import java.io.InputStream;
 import java.util.Scanner;

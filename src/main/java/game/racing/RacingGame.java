@@ -1,4 +1,4 @@
-package racing_game;
+package game.racing;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,25 +8,21 @@ import java.util.stream.Collectors;
 public class RacingGame {
 
     private List<Car> cars;
-    private ResultPrinter resultPrinter;
     private Random random;
     private int tryCount;
 
     public void start() {
-        try(RacingGameReader racingGameReader = new RacingGameReader(System.in);
-            ResultPrinter resultPrinter = new ResultPrinter(System.out);) {
+        try(RacingGameReader racingGameReader = new RacingGameReader(System.in)) {
 
-
-            init(racingGameReader, resultPrinter);
+            init(racingGameReader);
             process();
         }
     }
 
-    private void init(RacingGameReader racingGameReader, ResultPrinter resultPrinter) {
+    private void init(RacingGameReader racingGameReader) {
         String[] carNames = racingGameReader.readCarName();
         this.cars = createCars(carNames);
         this.tryCount = racingGameReader.readTryCount();
-        this.resultPrinter = resultPrinter;
         this.random = new Random();
     }
 
@@ -50,7 +46,7 @@ public class RacingGame {
 
 
     private void printAll() {
-        resultPrinter.printCurrentState(cars);
+        ResultPrinter.printCurrentState(cars);
         System.out.println();
     }
 
@@ -63,7 +59,7 @@ public class RacingGame {
 
     private void printGameResult() {
         List<String> winnerNames = findWinnerNames(cars);
-        resultPrinter.printGameResult(winnerNames);
+        ResultPrinter.printGameResult(winnerNames);
     }
 
     List<String> findWinnerNames(List<Car> cars) {

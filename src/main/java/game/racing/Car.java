@@ -1,4 +1,4 @@
-package racing_game;
+package game.racing;
 
 public class Car {
 
@@ -12,6 +12,11 @@ public class Car {
 
     public Car(String name) {
         this.name = name;
+    }
+
+    public Car(String name, int moveCount) {
+        this.name = name;
+        this.moveCount = moveCount;
     }
 
     public void move(int moveNumber) {

@@ -1,4 +1,4 @@
-package racing_game;
+package game.racing;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -54,7 +54,7 @@ public class RacingGameTest {
     private List<Car> createTestars(int carCount) {
         List<Car> cars = new ArrayList<>(carCount);
         for (int i = 0; i < carCount; i++) {
-            cars.add(new TestCar(String.valueOf(i + 1), i + 1));
+            cars.add(new Car(String.valueOf(i + 1), i + 1));
         }
 
         return cars;
