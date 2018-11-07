@@ -1,6 +1,12 @@
 package racingGame;
 
-public class RacingGameRunner {
+import racingGame.domain.GameResult;
+import racingGame.domain.RacingGame;
+import racingGame.view.InputType;
+import racingGame.view.InputView;
+import racingGame.view.ResultView;
+
+public class ConsoleMain {
 
     public static void main(String[] args) {
         String carNames = InputView.inputCarNames(InputType.CAR);
