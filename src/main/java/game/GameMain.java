@@ -2,7 +2,7 @@ package game;
 
 import java.util.List;
 
-public class gameMain {
+public class GameMain {
     public static void main(String[] args) {
         int numberofCars = InputView.getNumberofCars();
         int numberofAttempts = InputView.getNumberofAttempts();

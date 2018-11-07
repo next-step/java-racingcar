@@ -3,6 +3,8 @@ package game;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
@@ -14,20 +16,8 @@ public class RacingGameTest {
     }
 
     @Test
-    public void 랜덤값_0과9사이반환() {
-        int randomValue = game.getRandomValue();
-        assertThat(randomValue).isBetween(0, 9);
-    }
-
-    @Test
-    public void 이동한다(){
-        boolean value = game.isMove(5);
-        assertThat(value).isEqualTo(true);
-    }
-
-    @Test
-    public void 이동하지않는다(){
-        boolean value = game.isMove(0);
-        assertThat(value).isEqualTo(false);
+    public void 리스트사이즈_2() {
+        List<Car> cars = game.getCars();
+        assertThat(cars.size()).isNotNull().isEqualTo(2);
     }
 }

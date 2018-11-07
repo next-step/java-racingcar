@@ -1,17 +1,20 @@
 package game;
 
-import java.io.PrintWriter;
+import java.util.List;
 
 public class OutputView {
-    private static PrintWriter writer;
 
-    static {
-        writer = new PrintWriter(System.out);
+    public static void print(List<Car> cars) {
+        for (Car car : cars) {
+            printMovingCount(car.getMovingCount());
+        }
+        System.out.println();
     }
 
-    public static void printData(int movingCount) {
+    private static void printMovingCount(int movingCount) {
         for (int i = 0; i < movingCount; i++) {
             System.out.print("-");
         }
+        System.out.println();
     }
 }
