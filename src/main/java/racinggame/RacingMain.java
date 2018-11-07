@@ -1,7 +1,6 @@
 package racinggame;
 
 import racinggame.domain.RacingGame;
-import racinggame.domain.RacingResult;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;
 
@@ -11,8 +10,9 @@ public class RacingMain {
         int tryNo = InputView.getTryNo();
 
         RacingGame racingGame = new RacingGame(carNames);
-        RacingResult result = racingGame.racing(tryNo);
+        racingGame.racing(tryNo);
 
-        ResultView.printResult(result);
+        ResultView.printCars(racingGame.getCars());
+        ResultView.printWinners(racingGame.getWinners());
     }
 }
