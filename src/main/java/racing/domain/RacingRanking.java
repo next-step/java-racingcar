@@ -5,14 +5,13 @@ import java.util.List;
 
 public class RacingRanking {
     private List<RacingCar> cars = null;
-    private int maxScore = 0;
 
     public RacingRanking(List<RacingCar> cars) {
-        this.maxScore = getRacingMaxScore(cars);
         this.cars = cars;
     }
 
     public String[] getWinners() {
+        int maxScore = getRacingMaxScore(cars);
         return cars.stream()
                 .filter(car -> car.isPosition(maxScore))
                 .map(car -> car.getName())
@@ -25,5 +24,4 @@ public class RacingRanking {
                     .map(car -> car.getCurrentPosition())
                     .get();
     }
-
 }
