@@ -8,11 +8,11 @@ public class Car implements Comparable<Car> {
     private String name;
 
     public Car(String name) {
-        this.name = name;
+        this(name, 0);
     }
 
     public Car(String name, int position) {
-        this(name);
+        this.name = name;
         this.position = position;
     }
 
