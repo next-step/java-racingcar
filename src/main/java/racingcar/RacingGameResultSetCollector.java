@@ -16,7 +16,8 @@ public class RacingGameResultSetCollector {
     public List<RacingGameResultSet> collectRacingGameResultSets(List<RacingCar> racingCars, int numberOfTimes) {
         List<RacingGameResultSet> resultSets = new ArrayList<>();
         for (int i = 0; i < numberOfTimes; i++) {
-            resultSets.add(RacingGameResultSet.of(collectRacingGameResults(racingCars)));
+            List<RacingGameResultSet.RacingGameResult> racingGameResults = collectRacingGameResults(racingCars);
+            resultSets.add(RacingGameResultSet.of(racingGameResults));
         }
         return resultSets;
     }
