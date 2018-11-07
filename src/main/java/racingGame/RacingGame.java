@@ -2,7 +2,6 @@ package racingGame;
 
 import racingGame.model.RacingCar;
 import racingGame.model.RacingCarVO;
-import racingGame.util.Helper;
 import racingGame.util.Lottery;
 
 import java.util.*;
