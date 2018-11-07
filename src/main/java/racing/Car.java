@@ -7,13 +7,15 @@ import java.util.Objects;
 public class Car {
 
     private static final int DEFAULT_POSITION = 0;
-    private int position = DEFAULT_POSITION;
+
+    private int position;
     private String name;
     private IForward forward;
 
     public Car(final String name, final IForward forward) {
         this.name = name;
         this.forward = forward;
+        this.position = DEFAULT_POSITION;
     }
 
     public Car(final String name, final int position, final IForward forward) {
