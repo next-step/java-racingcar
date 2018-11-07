@@ -5,7 +5,6 @@ import rcgame.util.NumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
 
 import static java.util.stream.Collectors.toList;
 
@@ -20,8 +19,10 @@ public class RcGame {
         this.currentTime = 0;
     }
 
-    public RcGame(List<RcCar> rcCars) {
+    public RcGame(List<RcCar> rcCars, int totalTime, int currentTime) {
         this.rcCars = rcCars;
+        this.totalTime = totalTime;
+        this.currentTime = currentTime;
     }
 
     private void initRcCars(String[] allRcCarName) {

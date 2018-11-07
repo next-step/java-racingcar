@@ -42,7 +42,7 @@ public class RcGameTest {
         );
 
         //when
-        RcGame rcGame = new RcGame(rcCars);
+        RcGame rcGame = new RcGame(rcCars, 0 ,0);
         List<RcCar> winnerRcCars = rcGame.identifyWinner();
 
         //then
