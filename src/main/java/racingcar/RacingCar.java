@@ -1,7 +1,6 @@
 package racingcar;
 
 import java.util.List;
-import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toList;
 
@@ -31,8 +30,9 @@ public class RacingCar {
     }
 
     private void move(int count) {
-        IntStream.range(0, count)
-                .forEach(i -> this.move());
+        for (int i = 0; i < count; i++) {
+            this.move();
+        }
     }
 
     private void move() {

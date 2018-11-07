@@ -1,7 +1,7 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toList;
 
@@ -14,9 +14,11 @@ public class RacingGameResultSetCollector {
     }
 
     public List<RacingGameResultSet> collectRacingGameResultSets(List<RacingCar> racingCars, int numberOfTimes) {
-        return IntStream.range(0, numberOfTimes)
-                .mapToObj(i -> RacingGameResultSet.of(collectRacingGameResults(racingCars)))
-                .collect(toList());
+        List<RacingGameResultSet> resultSets = new ArrayList<>();
+        for (int i = 0; i < numberOfTimes; i++) {
+            resultSets.add(RacingGameResultSet.of(collectRacingGameResults(racingCars)));
+        }
+        return resultSets;
     }
 
     private List<RacingGameResultSet.RacingGameResult> collectRacingGameResults(List<RacingCar> racingCars) {
