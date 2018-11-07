@@ -1,8 +1,7 @@
 package racing;
 
 import org.junit.Test;
-
-import java.security.NoSuchAlgorithmException;
+import racing.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

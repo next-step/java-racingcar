@@ -1,6 +1,7 @@
-package racing;
+package racing.view;
 
 import org.apache.commons.lang3.StringUtils;
+import racing.domain.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,11 +37,19 @@ public class ResultView {
      * @param cars
      */
     public static void printWinners(List<Car> cars) {
+        System.out.println(joinWinner(cars) + "가 최종 우승했습니다.");
+    }
+
+    /**
+     * 우승자 출력
+     *
+     * @param cars
+     */
+    public static String joinWinner(List<Car> cars) {
         List<String> names = cars.stream()
                 .map(Car::getName)
                 .collect(Collectors.toList());
-        String nameJoin = StringUtils.join(names, ", ");
-        System.out.println(nameJoin + "가 최종 우승했습니다.");
+        return StringUtils.join(names, ",");
     }
 
     /**
@@ -51,6 +60,7 @@ public class ResultView {
             System.out.print(HYPEN);
         }
     }
+
 
 
 }

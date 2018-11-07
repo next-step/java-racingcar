@@ -1,10 +1,14 @@
 package racing;
 
-import java.security.NoSuchAlgorithmException;
+import racing.domain.Car;
+import racing.domain.RacingGame;
+import racing.view.InputView;
+import racing.view.ResultView;
+
 import java.util.List;
 
 
-public class Main {
+public class ConsoleMain {
 
     public static void main(String[] args) {
 
