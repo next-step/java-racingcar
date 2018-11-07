@@ -1,5 +1,6 @@
 package racing;
 
+import racing.domain.Car;
 import racing.rule.IForward;
 import racing.utils.StringUtils;
 

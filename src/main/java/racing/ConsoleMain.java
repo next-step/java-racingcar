@@ -5,9 +5,9 @@ import racing.rule.Forward;
 import racing.view.Input;
 import racing.view.Result;
 
-public abstract class Main {
+public abstract class ConsoleMain {
 
-    private Main() {
+    private ConsoleMain() {
     }
 
     public static void main(final String[] args) {
