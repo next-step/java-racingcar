@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-
     private List<Car> cars;
     private RandomProvider randomProvider;
 
@@ -29,7 +28,7 @@ public class RacingGame {
             cars = startRacing();
 
             ResultView.showResult(cars);
-
+          
             System.out.println();
         }
     }
