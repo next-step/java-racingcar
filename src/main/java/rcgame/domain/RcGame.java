@@ -1,9 +1,11 @@
 package rcgame.domain;
 
 import rcgame.dto.RcGameRequest;
+import rcgame.util.NumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 import static java.util.stream.Collectors.toList;
 
@@ -26,11 +28,10 @@ public class RcGame {
         }
     }
 
-    public List<RcCar> race() {
-        currentTime ++;
-
+    public List<RcCar> race(NumberGenerator numberGenerator) {
+        currentTime ++;햣
         return rcCars.stream()
-                .map(RcCar::move)
+                .map(rcCar -> rcCar.move(numberGenerator))
                 .collect(toList());
     }
 

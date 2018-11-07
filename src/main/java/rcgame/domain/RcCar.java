@@ -2,15 +2,9 @@ package rcgame.domain;
 
 
 import rcgame.util.NumberGenerator;
-import rcgame.util.RandomNumberGenerator;
 
 public class RcCar {
     public static final int MOVE_BOUND_VALUE = 4;
-    public static NumberGenerator numberGenerator = new RandomNumberGenerator();
-
-    public static void setNumberGenerator(NumberGenerator numberGenerator) {
-        RcCar.numberGenerator = numberGenerator;
-    }
 
     private String name;
     private int position;
@@ -29,7 +23,7 @@ public class RcCar {
         this.position = position;
     }
 
-    public RcCar move() {
+    public RcCar move(NumberGenerator numberGenerator) {
         if (numberGenerator.getRandomNumber() >= MOVE_BOUND_VALUE) {
             position ++;
         }
