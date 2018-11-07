@@ -1,7 +1,7 @@
 package racing.view;
 
-import racing.Car;
-import racing.CarRacingUtils;
+import racing.domain.Car;
+import racing.utils.CarRacingUtils;
 import racing.msg.Winner;
 
 import java.util.List;

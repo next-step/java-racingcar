@@ -1,6 +1,8 @@
 package racing;
 
 import org.junit.Test;
+import racing.domain.Car;
+import racing.utils.CarRacingUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -66,6 +68,5 @@ public class CarRacingUtilsTest {
 
         assertThat(winners.size()).isEqualTo(3);
     }
-
 
 }
