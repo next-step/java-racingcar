@@ -1,7 +1,6 @@
 package racingCar;
 
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Random;
 
 
@@ -21,12 +20,11 @@ public class RacingCarUtil {
         return List.split(SEPARATOR);
     }
 
-    //array 에서 List 로 변환
-    public static List<Car> arrayToList(Car[] cars){
-        List<Car> list = new ArrayList<Car>();
-        for(int i=0;i<cars.length;i++){
-            list.add(cars[i]);
+    public static String showPosition(int distance) {
+        String position = "";
+        for (int i = 0; i < distance; i++) {
+            position += '-';
         }
-        return list;
+        return position;
     }
 }

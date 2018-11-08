@@ -1,33 +1,25 @@
 package racingCar;
 
-import java.util.List;
+import racingCar.View.InputView;
+import racingCar.View.ResultView;
 
-import static racingCar.Car.moveCar;
-import static racingCar.RacingCarUtil.arrayToList;
-import static racingCar.RacingCarUtil.splitList;
-import static racingCar.RacingCarInit.*;
-import static racingCar.RacingCarUI.*;
 
 
 public class RacingCarMain {
-    private static int time;
-    private static Car[] cars;
-    private static List<Car> carList;
 
 
-    public static void main(String[] args){
-        String carListStr = inputCarName();
-        cars = initCar(splitList(carListStr));
-        time = inputTryCount();
+    public static void main(String[] args) {
+        String carNames = InputView.getCarNames();
+        int tryNo = InputView.getTryNo();
 
-        System.out.println("실행 결과");
+        RacingGame racingGame = new RacingGame(carNames);
+        GameResult result = new GameResult();
 
-        for(int i=0; i<time;i++){
-            cars = moveCar(cars);
-            outputResult(cars);
+        for(int i = 0; i < tryNo; i++) {
+            result = racingGame.move();
+            ResultView.print(result);
         }
-        carList = arrayToList(cars);
-        outputWinners(carList);
 
+        ResultView.printWinner(result);
     }
 }

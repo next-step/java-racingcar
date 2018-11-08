@@ -1,13 +1,13 @@
 package racingCar;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
+import static racingCar.RacingCarUtil.showPosition;
 
-import static racingCar.RacingCarUtil.createRandomValue;
-import static racingCar.RacingCarUI.showPosition;
 
-public class Car implements Comparable<Car>{
+public class Car {
 
     private static final int CONDITIONBOUNDARY=4;
 
@@ -15,52 +15,44 @@ public class Car implements Comparable<Car>{
     private int position;
 
     //생성자
-    public Car(String name, int position){
+    public Car(String name){
+        this.name = name;
+        this.position = 0;
+    }
+
+    public Car(String name, int position ){
         this.name = name;
         this.position = position;
     }
-
-    //차량 움직이기.
-    public static Car[] moveCar(Car[] cars){
-        for(Car car : cars){
-            car.getPosition(move(createRandomValue()));
-        }
-        return cars;
-    }
-
-    //이동할지 말지 카운트 구하기
-    public static int move(int randomValue) {
-        int moveCount = 0;
-
+    //차량 한대에 대한 이동
+    public int move(int randomValue) {
         if (randomValue > CONDITIONBOUNDARY) {
-            moveCount++;
+            return this.position += 1;
         }
-
-        return moveCount;
-
+        return this.position;
     }
 
-    //이동 & 정지하는 로직
-    public void getPosition(int moveCount) {
-        position += moveCount;
-    }
-
-    //내림차순 정렬를 위해 재정의된 compareTo method.
-    @Override
-    public int compareTo(Car otherCar){
-        Car tempCar=null;
-        if(this.position > otherCar.position){
-            return -1;
+    //차량 비교
+    public static List<Car> compare(List<Car> winnerList, Car car){
+        if(winnerList.get(0).position < car.position){
+            List<Car> returnList = new ArrayList<Car>();
+            returnList.add(car);
+            return returnList;
         }
-        if(this.position == otherCar.position){
-            return 0;
+        if(winnerList.get(0).position == car.position) {
+            winnerList.add(car);
         }
-        return 1;
+        return winnerList;
     }
+    //리스트에서 이름 추출하기.
+    public static List<String> getNamesFromList(List<Car> winnerList){
 
-    // 비교대상과 동일하면 true , 아니면 false
-    public boolean isEquals(Car otherCar){
-        return this.position == otherCar.position;
+        List<String> carNames = new ArrayList<String>();
+        for(int i=0;i<winnerList.size();i++){
+            carNames.add(winnerList.get(i).name);
+        }
+        return carNames;
+
     }
 
     //진행 결과값
@@ -68,15 +60,7 @@ public class Car implements Comparable<Car>{
         return this.name + " : " + showPosition(this.position);
     }
 
-    // 우승자 list String으로 return 하기.
-    public static String getResult(List<Car> winnerList){
-        String result = winnerList.get(0).name;
 
-        for(int i=1;i<winnerList.size();i++){
-            result +=", " + winnerList.get(i).name;
-        }
-        return result;
 
-    }
 
 }
