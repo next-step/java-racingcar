@@ -27,7 +27,7 @@ public class RacingGameTest {
 
         RacingGame rg = new RacingGame(1 ,5);
 
-        assertThat(rg.getCars().size()).isEqualTo(1);
+        assertThat(rg.getCars()).hasSize(1);
 
     }
 

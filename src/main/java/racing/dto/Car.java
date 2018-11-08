@@ -16,24 +16,14 @@ public class Car {
     }
 
     public void countPosition(int inputStandards){
-        if(inputStandards < STEP_CONDITION_STANDARD){
-            return;
+        if(inputStandards >= STEP_CONDITION_STANDARD){
+            ++position;
         }
-
-        ++position;
     }
 
     public int getPosition(){
         return position;
     }
-
-
-
-
-
-
-
-
 
 }
 

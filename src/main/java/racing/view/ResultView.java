@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class ResultView {
 
-    public void gameResult(List<Car> cars){
+    public  static void gameResult(List<Car> cars){
 
         for(Car c : cars){
             System.out.println(getDashs(c.getPosition()));
@@ -18,7 +18,7 @@ public class ResultView {
         System.out.println();
     }
 
-    public String getDashs(int position){
+    private static String getDashs(int position){
 
         StringBuilder sb = new StringBuilder();
         for(int i =0 ; i< position; i++){

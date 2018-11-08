@@ -13,13 +13,11 @@ public class ResultMain {
 
     public static void main(String[] args) {
 
-        InputView iv = new InputView();
-        RacingGame rg = new RacingGame(iv.numOfCars(), iv.times());
-        ResultView rv = new ResultView();
+        RacingGame rg = new RacingGame(InputView.numOfCars(), InputView.times());
 
         for (int i = 0; i < rg.getTimes(); i++) {
             rg.startGame();
-            rv.gameResult(rg.getCars());
+            ResultView.gameResult(rg.getCars());
         }
     }
 

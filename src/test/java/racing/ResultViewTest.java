@@ -6,6 +6,7 @@ import racing.dto.Car;
 import racing.view.ResultView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,23 +14,30 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ResultViewTest {
 
     static ResultView rv;
-    static List<Car> cars = new ArrayList<Car>();
+    static List<Car> cars;
 
     @BeforeClass
     public static void beforeMethod(){
         rv = new ResultView();
-        cars.add(new Car(3));
-        cars.add(new Car(5));
-        cars.add(new Car(8));
+        cars = Arrays.asList(new Car(3),new Car(5),new Car(8));
     }
 
 
-    @Test
+    /*@Test
     public void 대쉬카운트() {
 
         String dashs = rv.getDashs(4);
 
         assertThat(dashs).isEqualTo("----");
+    }*/
+
+    @Test
+    public void 대쉬출력2() {
+        StringBuilder sb = new StringBuilder();
+        for(int i =0 ; i< 4; i++){
+            sb.append("-");
+        }
+        assertThat(sb.toString()).isEqualTo("----");
     }
 
     /**
