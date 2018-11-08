@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.Test;
+import racingcar.domain.RacingGameResultSet;
 
 import java.util.Arrays;
 import java.util.List;

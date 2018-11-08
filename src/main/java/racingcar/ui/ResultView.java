@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.ui;
+
+import racingcar.domain.RacingGameResultSet;
+import racingcar.utils.StringUtils;
 
 import java.text.MessageFormat;
 import java.util.List;

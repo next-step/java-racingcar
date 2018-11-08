@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.utils.RandomUtils;
 
 public class RacingCarAccelerator {
 
