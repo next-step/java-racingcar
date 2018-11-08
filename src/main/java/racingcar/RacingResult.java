@@ -14,7 +14,7 @@ public class RacingResult {
 
     public String getWinners() {
         return cars.stream()
-                .filter(car -> car.getPosition() == getWinnerPosition())
+                .filter(car -> car.isWinner(getWinnerPosition()))
                 .map(Car::getName)
                 .collect(Collectors.joining(","));
     }

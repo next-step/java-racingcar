@@ -2,7 +2,7 @@ package racingcar.view
 
 import java.util.*
 
-class InputViewKt {
+object InputViewKt {
 
     private val scanner: Scanner = Scanner(System.`in`)
 

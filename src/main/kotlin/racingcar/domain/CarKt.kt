@@ -10,6 +10,9 @@ class CarKt(var name: String, var position: Int = 0) {
         return position
     }
 
+    fun isWinner(winnerPosition: Int): Boolean =
+            position == winnerPosition
+
     companion object {
         private const val MOVABLE_POSITION = 4
     }

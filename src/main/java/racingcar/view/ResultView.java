@@ -33,6 +33,10 @@ public class ResultView {
         System.out.print(sb.toString());
     }
 
+    /**
+     * @param winners
+     * 우승자 보여주기
+     */
     public static void showWinners(String winners) {
         System.out.println(winners+"가 최종 우승했습니다.");
     }

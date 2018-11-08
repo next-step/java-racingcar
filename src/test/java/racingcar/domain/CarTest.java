@@ -36,4 +36,18 @@ public class CarTest {
         car.move(randomNumber);
         assertThat(car.getPosition()).isEqualTo(3);
     }
+
+    @Test
+    public void 우승_테스트() {
+        int winnerPosition = 10;
+        Car winnerCar = new Car("우승차1", winnerPosition);
+        assertThat(winnerCar.isWinner(winnerPosition)).isTrue();
+    }
+
+    @Test
+    public void 우승이_아닌경우_테스트() {
+        int winnerPosition = 10;
+        Car loserCar = new Car("달팽이차", 5);
+        assertThat(loserCar.isWinner(winnerPosition)).isFalse();
+    }
 }

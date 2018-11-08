@@ -24,6 +24,10 @@ public class Car {
         return position;
     }
 
+    public boolean isWinner(int winnerPosition) {
+        return position == winnerPosition;
+    }
+
     public String getName() {
         return name;
     }

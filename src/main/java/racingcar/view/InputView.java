@@ -4,18 +4,14 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private Scanner scanner;
+    private static Scanner scanner = new Scanner(System.in);
 
-    public InputView() {
-        scanner = new Scanner(System.in);
-    }
-
-    public String getInputString(String message) {
+    public static String getInputString(String message) {
         System.out.println(message);
         return scanner.next();
     }
 
-    public int getInputNumber(String message) {
+    public static int getInputNumber(String message) {
         System.out.println(message);
         return scanner.nextInt();
     }

@@ -14,16 +14,6 @@ class RacingGameKt {
                 .toMutableList()
     }
 
-    fun playRacingGame(playTime: Int) {
-        for (i in 0 until playTime) {
-            cars = startRacing()
-
-            ResultViewKt.showResult(cars)
-
-            println()
-        }
-    }
-
     fun startRacing(): MutableList<CarKt> {
         cars.forEach {
             it.move(randomProvider.getRandom())
