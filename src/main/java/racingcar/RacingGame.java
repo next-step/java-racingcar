@@ -22,14 +22,14 @@ public class RacingGame {
         in.inputSetting();
         RacingGame game = new RacingGame(in.getCarNames(), in.getTime());
 
-        ResultView.result(game.move());
-        ResultView.printWinner(game.decideWinner());
+        for(int i = 0; i < game.time; i++){
+            ResultView.result(game.move());
+        }
+        ResultView.printWinner(Car.decideWinner(game.car));
     }
 
     public ArrayList<Car> move(){
-        for(int i = 0; i < time; i++){
-            moveProcessByTime(car);
-        }
+        moveProcessByTime(car);
         return car;
     }
 
@@ -42,40 +42,13 @@ public class RacingGame {
 
     public static void movePerCarProcess(ArrayList<Car> car, int idx){
         if (movePossibleCheck()) {
-            car.get(idx).move();
+            car.get(idx).moveOnePoint();
         }
     }
 
     public static boolean movePossibleCheck(){
         int randomNum = new Random().nextInt(10);
         return randomNum >= MOVECHECK_NUM;
-    }
-
-    public ArrayList<Car> decideWinner(){
-        ArrayList<Car> winners = new ArrayList<Car>();
-        int maxPosition = car.get(0).getPosition();
-        for(Car selectedCar : car){
-            maxPosition = searchMaxPosition(maxPosition, selectedCar);
-        }
-
-        for(Car selectedCar : car){
-            checkPositionPerCar(maxPosition, selectedCar, winners);
-        }
-
-        return winners;
-    }
-
-    public static int searchMaxPosition(int maxPosition, Car car){
-        if(car.getPosition() >= maxPosition){
-            return car.getPosition();
-        }
-        return maxPosition;
-    }
-
-    public static void checkPositionPerCar(int maxPosition, Car car, ArrayList<Car> winners){
-        if(car.getPosition() == maxPosition){
-            winners.add(car);
-        }
     }
 
 }
