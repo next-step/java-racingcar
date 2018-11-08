@@ -1,12 +1,9 @@
 package racingGame;
 
-import racingGame.model.RacingCarDTO;
-import racingGame.util.RacingCarUtils;
+import racingGame.service.RacingCarService;
 import racingGame.view.InputView;
 import racingGame.view.QuestionType;
 import racingGame.view.ResultView;
-
-import java.util.List;
 
 public class RacingGameRunner {
 
@@ -15,6 +12,7 @@ public class RacingGameRunner {
         int times = InputView.inputInteger(QuestionType.TIMES.getQuestion());
 
         RacingGame racingGame = new RacingGame(carNames, times);
+        RacingCarService racingCarService = null;
 
         System.out.println("\n실행 결과");
         while (racingGame.hasRemainTime()) {
@@ -22,14 +20,13 @@ public class RacingGameRunner {
             ResultView.logRace(racingGame.getRacingCarSnapshots());
         }
 
-        List<RacingCarDTO> snapshots = null;
         try {
-            snapshots = racingGame.getFinishedCarSnapshots();
+            racingCarService = new RacingCarService(racingGame.getFinishedCarSnapshots());
         } catch (IllegalStateException exception) {
             System.out.println(exception.getMessage());
         } finally {
-            int highestPosition = RacingCarUtils.getHighestPosition(snapshots);
-            ResultView.logChampion(RacingCarUtils.filterRacingCar(snapshots, highestPosition));
+            int highestPosition = racingCarService.getHighestPosition();
+            ResultView.logChampion(racingCarService.extractCarNamesByPosition(highestPosition));
         }
 
     }
