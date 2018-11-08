@@ -16,4 +16,8 @@ public class RacingCarDTO {
     public int getPosition() {
         return this.position;
     }
+
+    public boolean isMatchPosition(int position) {
+        return this.position == position;
+    }
 }

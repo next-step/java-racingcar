@@ -20,6 +20,6 @@ public class RacingCarUtils {
     }
 
     public static List<RacingCarDTO> filterRacingCar(List<RacingCarDTO> snapshots, int position) {
-        return snapshots.stream().filter(snapshot -> snapshot.getPosition() == position).collect(Collectors.toList());
+        return snapshots.stream().filter(snapshot -> snapshot.isMatchPosition(position)).collect(Collectors.toList());
     }
 }
