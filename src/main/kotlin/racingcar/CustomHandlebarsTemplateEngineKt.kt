@@ -4,6 +4,6 @@ import spark.template.handlebars.HandlebarsTemplateEngine
 
 class CustomHandlebarsTemplateEngineKt : HandlebarsTemplateEngine() {
     init {
-        this.handlebars.registerHelper(BlankHelper.NAME, BlankHelperKt())
+        this.handlebars.registerHelper(BlankHelperKt.NAME, BlankHelperKt())
     }
 }

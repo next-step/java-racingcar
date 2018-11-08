@@ -14,4 +14,8 @@ class BlankHelperKt: Helper<Int> {
 
         return sb.toString()
     }
+
+    companion object {
+        const val NAME = "blanks"
+    }
 }
