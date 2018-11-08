@@ -1,5 +1,7 @@
 package game.racing;
 
+import game.racing.domain.Car;
+import game.racing.domain.GameResult;
 import org.junit.Before;
 import org.junit.Test;
 
