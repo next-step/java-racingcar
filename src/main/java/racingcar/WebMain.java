@@ -27,7 +27,7 @@ public class WebMain {
         });
 
         get("/result", (req, res) -> {
-            int numberOfTimes = Integer.valueOf(req.queryParams("turn"));
+            int numberOfTimes = Integer.parseInt(req.queryParams("turn"));
             List<RacingCar> racingCars = RacingCar.create(Arrays.asList(req.queryParamsValues("name")));
 
             RacingGame racingGame = new RacingGame();
