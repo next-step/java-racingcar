@@ -39,14 +39,14 @@ class CarKtTest {
     @Test
     fun `우승 테스트`() {
         val winnerPosition = 10
-        val winnerCar = Car("우승차1", winnerPosition)
+        val winnerCar = CarKt("우승차1", winnerPosition)
         assertThat(winnerCar.isWinner(winnerPosition)).isTrue()
     }
 
     @Test
     fun `우승이 아닌경우 테스트`() {
         val winnerPosition = 10
-        val loserCar = Car("달팽이차", 5)
+        val loserCar = CarKt("달팽이차", 5)
         assertThat(loserCar.isWinner(winnerPosition)).isFalse()
     }
 }
