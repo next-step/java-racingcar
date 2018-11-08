@@ -1,11 +1,12 @@
-package racingCar.View;
+package racingCar.view;
 
 import racingCar.Car;
-import racingCar.GameResult;
+import racingCar.domain.GameResult;
 
 import java.util.List;
 
 import static racingCar.Car.getNamesFromList;
+import static racingCar.domain.GameResult.getWinnerList;
 
 public class ResultView {
 
@@ -21,10 +22,8 @@ public class ResultView {
     public static void printWinner(GameResult gr){
         String result = "";
         List<String> winnerList = getNamesFromList(gr.getWinnerCar());
-        result += winnerList.get(0);
-        for(int i=1; i<winnerList.size();i++){
-            result += ", " + winnerList.get(i);
-        }
+        result = getWinnerList(winnerList);
+
         System.out.println(result+ " 가 최종 우승했습니다.");
 
     }

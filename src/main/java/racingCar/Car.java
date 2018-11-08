@@ -4,7 +4,7 @@ package racingCar;
 import java.util.ArrayList;
 import java.util.List;
 
-import static racingCar.RacingCarUtil.showPosition;
+import static racingCar.domain.RacingCarUtil.showPosition;
 
 
 public class Car {
@@ -16,8 +16,7 @@ public class Car {
 
     //생성자
     public Car(String name){
-        this.name = name;
-        this.position = 0;
+        this(name,0);
     }
 
     public Car(String name, int position ){
@@ -60,6 +59,13 @@ public class Car {
         return this.name + " : " + showPosition(this.position);
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
 
 
 
