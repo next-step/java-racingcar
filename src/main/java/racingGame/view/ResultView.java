@@ -1,7 +1,7 @@
 package racingGame.view;
 
 import racingGame.model.RacingCarDTO;
-import racingGame.util.Helper;
+import racingGame.util.RacingCarUtils;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class ResultView {
     }
 
     public static void logChampion(List<RacingCarDTO> championSnapshots) {
-        printChampion(Helper.extractCarNames(championSnapshots));
+        printChampion(RacingCarUtils.extractCarNames(championSnapshots));
     }
 
     private static void printCarNameAndPosition(String carName, int position) {

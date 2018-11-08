@@ -10,7 +10,7 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 
-public class HelperTest {
+public class RacingCarUtilsTest {
     List<RacingCarDTO> snapshots;
 
     @Before
@@ -24,12 +24,12 @@ public class HelperTest {
 
     @Test
     public void 최대값() {
-        assertThat(Helper.getHighestPosition(snapshots)).isEqualTo(4);
+        assertThat(RacingCarUtils.getHighestPosition(snapshots)).isEqualTo(4);
     }
 
     @Test
     public void 자동차_이름_목록_추출() {
-        List<String> carNames = Helper.extractCarNames(snapshots);
+        List<String> carNames = RacingCarUtils.extractCarNames(snapshots);
 
         assertThat(carNames.get(0)).isEqualTo("test1");
         assertThat(carNames.get(1)).isEqualTo("test2");
@@ -39,7 +39,7 @@ public class HelperTest {
 
     @Test
     public void 자동차_위치_목록_추출() {
-        List<Integer> carPositions = Helper.extractCarPositions(snapshots);
+        List<Integer> carPositions = RacingCarUtils.extractCarPositions(snapshots);
 
         assertThat(carPositions.get(0)).isEqualTo(1);
         assertThat(carPositions.get(1)).isEqualTo(2);
@@ -49,7 +49,7 @@ public class HelperTest {
 
     @Test
     public void 특정_위치를_가지는_자동차_목록_추출() {
-        List<RacingCarDTO> filteredSnapshots = Helper.filterRacingCar(snapshots, 2);
+        List<RacingCarDTO> filteredSnapshots = RacingCarUtils.filterRacingCar(snapshots, 2);
 
         assertThat(filteredSnapshots.size()).isEqualTo(1);
         assertThat(filteredSnapshots.get(0).getName()).isEqualTo("test2");
@@ -58,8 +58,8 @@ public class HelperTest {
 
     @Test
     public void 우승한_자동차_목록_추출() {
-        int highestPosition = Helper.getHighestPosition(snapshots);
-        List<RacingCarDTO> championSnapshots = Helper.filterRacingCar(snapshots, highestPosition);
+        int highestPosition = RacingCarUtils.getHighestPosition(snapshots);
+        List<RacingCarDTO> championSnapshots = RacingCarUtils.filterRacingCar(snapshots, highestPosition);
 
         assertThat(highestPosition).isEqualTo(4);
         assertThat(championSnapshots.size()).isEqualTo(2);

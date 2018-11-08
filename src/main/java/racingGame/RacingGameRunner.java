@@ -1,7 +1,7 @@
 package racingGame;
 
 import racingGame.model.RacingCarDTO;
-import racingGame.util.Helper;
+import racingGame.util.RacingCarUtils;
 import racingGame.view.InputView;
 import racingGame.view.QuestionType;
 import racingGame.view.ResultView;
@@ -28,8 +28,8 @@ public class RacingGameRunner {
         } catch (IllegalStateException exception) {
             System.out.println(exception.getMessage());
         } finally {
-            int highestPosition = Helper.getHighestPosition(snapshots);
-            ResultView.logChampion(Helper.filterRacingCar(snapshots, highestPosition));
+            int highestPosition = RacingCarUtils.getHighestPosition(snapshots);
+            ResultView.logChampion(RacingCarUtils.filterRacingCar(snapshots, highestPosition));
         }
 
     }

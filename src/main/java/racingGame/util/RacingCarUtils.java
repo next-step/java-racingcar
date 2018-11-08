@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Helper {
+public class RacingCarUtils {
     public static int getHighestPosition(List<RacingCarDTO> snapshots) {
         return Collections.max(extractCarPositions(snapshots));
     }
