@@ -1,4 +1,6 @@
-package game.racing;
+package game.racing.view;
+
+import game.racing.domain.GameResult;
 
 public class ResultView {
     public static void print(GameResult result) {
