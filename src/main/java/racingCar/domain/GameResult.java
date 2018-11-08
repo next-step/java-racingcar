@@ -1,4 +1,6 @@
-package racingCar;
+package racingCar.domain;
+
+import racingCar.Car;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +18,7 @@ public class GameResult {
     }
     public List<Car> getResultList(){
 
-        return this.resultList;
+        return resultList;
     }
 
     //우승자 리스트 추출하기.
@@ -29,8 +31,14 @@ public class GameResult {
 
         return winnerList;
     }
-
-
+    public static String getWinnerList(List<String> winnerList) {
+        String result="";
+        result += winnerList.get(0);
+        for (int i = 1; i < winnerList.size(); i++) {
+            result += ", " + winnerList.get(i);
+        }
+        return result;
+    }
 
 }
 

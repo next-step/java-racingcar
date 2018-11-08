@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar.domain;
 
 
 import java.util.Random;
@@ -7,12 +7,12 @@ import java.util.Random;
 
 public class RacingCarUtil {
 
-    private static final int RANDOMBOUNDARY=10;
+    private static final int RANDOM_BOUNDARY=10;
     private static final String SEPARATOR=",";
 
     //랜덤 변수 생성
     public static int createRandomValue(){
-        return new Random().nextInt(RANDOMBOUNDARY);
+        return new Random().nextInt(RANDOM_BOUNDARY);
     }
 
     //리스트 나누기
