@@ -1,20 +1,20 @@
 package racingGame;
 
 import racingGame.model.RacingCar;
+import racingGame.model.RacingCarDTO;
 import racingGame.util.Lottery;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class RacingGame {
-    private static int LESS_MOVE_RANGE = 3;
-    private static int GREATER_MOVE_RANGE = 11;
+    private static String ERROR_NOT_FINISHD_RACE = "아직 경주가 끝나지 않았습니다.";
     private ArrayList<RacingCar> racingCars = new ArrayList<>();
-    private int cars;
+    private String[] carNames;
     private int times;
     private int remainTimes;
 
-    RacingGame(int cars, int times) {
-        this.cars = cars;
+    RacingGame(String[] carNames, int times) {
+        this.carNames = carNames;
         this.times = times;
         this.remainTimes = times;
 
@@ -30,37 +30,39 @@ public class RacingGame {
 
     public void moveCars() {
         for (RacingCar racingCar : this.racingCars) {
-            if (this.isForward(Lottery.getLotteryNumber())) {
-                racingCar.setForward();
-            }
+            racingCar.move(Lottery.getLotteryNumber());
         }
-    }
-
-    public boolean isForward(int number) {
-        return number > LESS_MOVE_RANGE && number < GREATER_MOVE_RANGE;
     }
 
     public boolean hasRemainTime() {
         return this.remainTimes > 0;
     }
 
-    public ArrayList<Integer> getCarPositions() {
-        ArrayList<Integer> carPositions = new ArrayList<>();
+    public List<RacingCarDTO> getRacingCarSnapshots() {
+        List<RacingCarDTO> snapshots = new ArrayList<>();
         for (RacingCar racingCar : this.racingCars) {
-            carPositions.add(racingCar.getPosition());
+            snapshots.add(new RacingCarDTO(racingCar.getName(), racingCar.getPosition()));
         }
 
-        return carPositions;
+        return snapshots;
+    }
+
+    public List<RacingCarDTO> getFinishedCarSnapshots() {
+        if (hasRemainTime()) {
+            throw new IllegalStateException(ERROR_NOT_FINISHD_RACE);
+        }
+
+        return this.getRacingCarSnapshots();
     }
 
     private void initRacingCars() {
-        if (this.cars < 1 || this.times < 0) {
+        if (this.carNames == null || this.carNames.length < 1 || this.times < 0) {
             return;
         }
 
         // 경주용 자동차 초기화
-        for (int i = 0, len = this.cars; i < len; i++) {
-            this.racingCars.add(new RacingCar());
+        for (String carName : this.carNames) {
+            this.racingCars.add(new RacingCar(carName));
         }
     }
 }

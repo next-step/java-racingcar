@@ -1,7 +1,6 @@
-package racingGame;
+package racingGame.util;
 
 import org.junit.Test;
-import racingGame.util.Lottery;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
