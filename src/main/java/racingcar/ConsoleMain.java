@@ -1,8 +1,15 @@
 package racingcar;
 
+import racingcar.domain.RacingCar;
+import racingcar.domain.RacingGame;
+import racingcar.domain.RacingGameResultSet;
+import racingcar.dto.RacingGameOption;
+import racingcar.ui.InputView;
+import racingcar.ui.ResultView;
+
 import java.util.List;
 
-public class RacingGameRunner {
+public class ConsoleMain {
 
     public static void main(String[] args) {
         RacingGameOption option = InputView.inputRacingGameOption();

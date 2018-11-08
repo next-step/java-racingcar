@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.Test;
+import racingcar.domain.RacingCarAccelerator;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 

@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.utils;
 
 import org.junit.Test;
+import racingcar.utils.RandomUtils;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 

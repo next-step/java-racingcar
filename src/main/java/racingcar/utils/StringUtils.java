@@ -1,8 +1,9 @@
-package racingcar;
+package racingcar.utils;
 
 public class StringUtils {
 
     private StringUtils() {
+
     }
 
     public static String convertToHyphen(int count) {
