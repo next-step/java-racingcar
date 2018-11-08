@@ -3,7 +3,7 @@ package racingcar.view
 import racingcar.RacingGameKt
 import racingcar.RacingResultKt
 
-class RacingConsoleKtKt {
+class ConsoleMainKtKt {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {

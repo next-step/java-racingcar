@@ -6,7 +6,7 @@ import racingcar.domain.Car;
 
 import java.util.List;
 
-public class RacingConsole {
+public class ConsoleMain {
 
     public static void main(String[] args) {
         RacingGame racingGame = new RacingGame();

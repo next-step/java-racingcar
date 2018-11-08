@@ -61,12 +61,11 @@ body {
         <div class="form-show-div" class="form-group">
           <h3>결과입니다</h3>
           (이름마다 띄어쓰기로 구분해 주세요.)
-          <div id="standings">박재성 : &nbsp;&nbsp;&nbsp;&#128652;</div>
-          <div id="standings">윤지수 : &nbsp;&nbsp;&#128652;</div>
-          <div id="standings">정호영 : &nbsp;&nbsp;&nbsp;&#128652;</div>
-          <div id="standings">김정 : &nbsp;&#128652;</div>
+            {{#cars}}
+            <div id="standings">{{name}} : {{#blanks position}}&nbsp;{{/blanks}}&#128652;</div>
+            {{/cars}}
           <br />
-          <div>박재성, 정호영이 우승했습니다.</div>
+          <div>{{winners}} 우승했습니다.</div>
         </div>
       </div>
     </div>
