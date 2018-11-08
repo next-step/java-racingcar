@@ -2,13 +2,12 @@ package racingcar;
 
 import org.junit.Test;
 
-import racingcar.RacingGame;
+import racingcar.RacingGame.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
     static final int TESTDATA = 3;
-    private int[] carPositions = {0,0,0};
 
     @Test
     public void draw() {
@@ -20,5 +19,9 @@ public class RacingGameTest {
         RacingGame rg = new RacingGame();
         assertThat(rg.checkLimit(4)).isEqualTo(1);
     }
-
+    @Test
+    public void compare() {
+        RacingGame rg = new RacingGame();
+        assertThat(rg.compareNum(7, 4)).isEqualTo(7);
+    }
 }
