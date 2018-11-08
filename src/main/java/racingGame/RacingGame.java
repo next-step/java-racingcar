@@ -1,7 +1,7 @@
 package racingGame;
 
 import racingGame.model.RacingCar;
-import racingGame.model.RacingCarVO;
+import racingGame.model.RacingCarDTO;
 import racingGame.util.Lottery;
 
 import java.util.*;
@@ -38,16 +38,16 @@ public class RacingGame {
         return this.remainTimes > 0;
     }
 
-    public List<RacingCarVO> getRacingCarSnapshots() {
-        List<RacingCarVO> snapshots = new ArrayList<>();
+    public List<RacingCarDTO> getRacingCarSnapshots() {
+        List<RacingCarDTO> snapshots = new ArrayList<>();
         for (RacingCar racingCar : this.racingCars) {
-            snapshots.add(new RacingCarVO(racingCar.getName(), racingCar.getPosition()));
+            snapshots.add(new RacingCarDTO(racingCar.getName(), racingCar.getPosition()));
         }
 
         return snapshots;
     }
 
-    public List<RacingCarVO> getFinishedCarSnapshots() {
+    public List<RacingCarDTO> getFinishedCarSnapshots() {
         if (hasRemainTime()) {
             throw new IllegalStateException(ERROR_NOT_FINISHD_RACE);
         }

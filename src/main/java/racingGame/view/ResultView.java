@@ -1,6 +1,6 @@
 package racingGame.view;
 
-import racingGame.model.RacingCarVO;
+import racingGame.model.RacingCarDTO;
 import racingGame.util.Helper;
 
 import java.util.List;
@@ -9,14 +9,14 @@ public class ResultView {
     private static String POSITION_MARKER = "-";
     private static String NAME_DELIMITER = ", ";
 
-    public static void logRace(List<RacingCarVO> snapshots) {
-        for (RacingCarVO snapshot : snapshots) {
+    public static void logRace(List<RacingCarDTO> snapshots) {
+        for (RacingCarDTO snapshot : snapshots) {
             printCarNameAndPosition(snapshot.getName(), snapshot.getPosition());
         }
         System.out.println();
     }
 
-    public static void logChampion(List<RacingCarVO> championSnapshots) {
+    public static void logChampion(List<RacingCarDTO> championSnapshots) {
         printChampion(Helper.extractCarNames(championSnapshots));
     }
 

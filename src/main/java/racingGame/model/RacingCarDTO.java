@@ -1,10 +1,10 @@
 package racingGame.model;
 
-public class RacingCarVO {
+public class RacingCarDTO {
     private String name;
     private int position;
 
-    public RacingCarVO(String name, int position) {
+    public RacingCarDTO(String name, int position) {
         this.name = name;
         this.position = position;
     }

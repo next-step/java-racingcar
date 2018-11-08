@@ -2,7 +2,7 @@ package racingGame;
 
 import org.junit.Before;
 import org.junit.Test;
-import racingGame.model.RacingCarVO;
+import racingGame.model.RacingCarDTO;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class RacingGameTest {
 
     @Test
     public void 경주시작하지않은경우() {
-        List<RacingCarVO> snapshots = racingGame.getRacingCarSnapshots();
+        List<RacingCarDTO> snapshots = racingGame.getRacingCarSnapshots();
         assertThat(snapshots.get(0).getPosition()).isEqualTo(0);
         assertThat(snapshots.get(1).getPosition()).isEqualTo(0);
         assertThat(racingGame.hasRemainTime()).isEqualTo(true);

@@ -2,7 +2,7 @@ package racingGame.util;
 
 import org.junit.Before;
 import org.junit.Test;
-import racingGame.model.RacingCarVO;
+import racingGame.model.RacingCarDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,15 +11,15 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 
 public class HelperTest {
-    List<RacingCarVO> snapshots;
+    List<RacingCarDTO> snapshots;
 
     @Before
     public void setUp() {
         snapshots = new ArrayList<>();
-        snapshots.add(new RacingCarVO("test1", 1));
-        snapshots.add(new RacingCarVO("test2", 2));
-        snapshots.add(new RacingCarVO("test3", 4));
-        snapshots.add(new RacingCarVO("test4", 4));
+        snapshots.add(new RacingCarDTO("test1", 1));
+        snapshots.add(new RacingCarDTO("test2", 2));
+        snapshots.add(new RacingCarDTO("test3", 4));
+        snapshots.add(new RacingCarDTO("test4", 4));
     }
 
     @Test
@@ -49,7 +49,7 @@ public class HelperTest {
 
     @Test
     public void 특정_위치를_가지는_자동차_목록_추출() {
-        List<RacingCarVO> filteredSnapshots = Helper.filterRacingCar(snapshots, 2);
+        List<RacingCarDTO> filteredSnapshots = Helper.filterRacingCar(snapshots, 2);
 
         assertThat(filteredSnapshots.size()).isEqualTo(1);
         assertThat(filteredSnapshots.get(0).getName()).isEqualTo("test2");
@@ -59,7 +59,7 @@ public class HelperTest {
     @Test
     public void 우승한_자동차_목록_추출() {
         int highestPosition = Helper.getHighestPosition(snapshots);
-        List<RacingCarVO> championSnapshots = Helper.filterRacingCar(snapshots, highestPosition);
+        List<RacingCarDTO> championSnapshots = Helper.filterRacingCar(snapshots, highestPosition);
 
         assertThat(highestPosition).isEqualTo(4);
         assertThat(championSnapshots.size()).isEqualTo(2);

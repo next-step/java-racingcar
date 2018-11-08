@@ -1,6 +1,6 @@
 package racingGame;
 
-import racingGame.model.RacingCarVO;
+import racingGame.model.RacingCarDTO;
 import racingGame.util.Helper;
 import racingGame.view.InputView;
 import racingGame.view.QuestionType;
@@ -22,7 +22,7 @@ public class RacingGameRunner {
             ResultView.logRace(racingGame.getRacingCarSnapshots());
         }
 
-        List<RacingCarVO> snapshots = null;
+        List<RacingCarDTO> snapshots = null;
         try {
             snapshots = racingGame.getFinishedCarSnapshots();
         } catch (IllegalStateException exception) {
