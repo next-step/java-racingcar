@@ -1,61 +1,56 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
+    private static final int MOVECHECK_NUM = 4;
+
+    private List<Car> cars;
     private int time;
-    private int[] carPosition;
-    static final int MOVECHECK_NUM = 4;
 
-    public int getTime(){
-        return time;
-    }
-
-    public int[] getCarPosition(){
-        return carPosition;
-    }
-
-    public RacingGame(int carCount, int time){
+    public RacingGame(String[] carNames, int time){
+        this.cars = new ArrayList<>();
+        for(String carName : carNames){
+            this.cars.add(new Car(carName));
+        }
         this.time = time;
-        this.carPosition = new int[carCount];
     }
 
     public static void main(String[] args){
         InputView in = new InputView();
         in.inputSetting();
-        RacingGame game = new RacingGame(in.getCarCount(), in.getTime());
+        RacingGame game = new RacingGame(in.getCarNames(), in.getTime());
+        CarCollection carCollection = new CarCollection(game.cars);
 
-        game.move();
-    }
-
-    public int[] move(){
-        for(int i = 0; i < time; i++){
-            moveProcessByTime(carPosition);
-            printCarPosition(carPosition);
+        for(int i = 0; i < game.time; i++){
+            ResultView.result(game.move());
         }
-        return carPosition;
+        ResultView.printWinner(carCollection.decideWinner(game.cars));
     }
 
-    public static void moveProcessByTime(int[] carPosition){
+    public List<Car> move(){
+        moveProcessByTime(cars);
+        return cars;
+    }
+
+    public static void moveProcessByTime(List<Car> car){
         int idx = 0;
-        for (int position: carPosition) {
-            movePerCarProcess(carPosition, idx++);
+        for (Car selectedCar : car) {
+            movePerCarProcess(car, idx++);
         }
     }
 
-    public static void movePerCarProcess(int[] carPosition, int idx){
+    public static void movePerCarProcess(List<Car> car, int idx){
         if (movePossibleCheck()) {
-            carPosition[idx] += 1;
+            car.get(idx).moveOnePoint();
         }
     }
 
     public static boolean movePossibleCheck(){
         int randomNum = new Random().nextInt(10);
         return randomNum >= MOVECHECK_NUM;
-    }
-
-    public static void printCarPosition(int[] carPosition){
-        ResultView.result(carPosition);
     }
 
 }
