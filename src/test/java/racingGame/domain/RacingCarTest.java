@@ -1,4 +1,4 @@
-package racingGame.model;
+package racingGame.domain;
 
 import org.junit.Before;
 import org.junit.Test;

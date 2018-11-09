@@ -1,4 +1,4 @@
-package racingGame.model;
+package racingGame.domain;
 
 public class RacingCar {
     private static int LESS_MOVE_RANGE = 3;

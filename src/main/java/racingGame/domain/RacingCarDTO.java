@@ -1,4 +1,4 @@
-package racingGame.model;
+package racingGame.domain;
 
 public class RacingCarDTO {
     private String name;

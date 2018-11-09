@@ -5,7 +5,7 @@ import racingGame.view.InputView;
 import racingGame.view.QuestionType;
 import racingGame.view.ResultView;
 
-public class RacingGameRunner {
+public class ConsoleMain {
 
     public static void main(String args[]) {
         String[] carNames = InputView.inputStrings(QuestionType.CAR_NAMES.getQuestion());

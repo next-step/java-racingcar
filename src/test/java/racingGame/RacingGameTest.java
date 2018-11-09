@@ -2,7 +2,7 @@ package racingGame;
 
 import org.junit.Before;
 import org.junit.Test;
-import racingGame.model.RacingCarDTO;
+import racingGame.domain.RacingCarDTO;
 
 import java.util.List;
 
