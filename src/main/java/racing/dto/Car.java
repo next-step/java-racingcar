@@ -10,9 +10,16 @@ public class Car {
     public static int STEP_CONDITION_STANDARD = 4;
 
     private int position;
-
+    private String name;
+/*
     public Car(int position) {
         this.position = position;
+    }
+*/
+
+    public Car(int position, String name) {
+        this.position = position;
+        this.name = name;
     }
 
     public void countPosition(int inputStandards){
@@ -25,6 +32,9 @@ public class Car {
         return position;
     }
 
+    public String getName() {
+        return name;
+    }
 }
 
 

@@ -3,6 +3,7 @@ package racing.view;
 import racing.dto.Car;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 기능 1. dash print
@@ -13,6 +14,7 @@ public class ResultView {
     public  static void gameResult(List<Car> cars){
 
         for(Car c : cars){
+            System.out.print(c.getName() + " : ");
             System.out.println(getDashs(c.getPosition()));
         }
         System.out.println();
@@ -27,5 +29,13 @@ public class ResultView {
         return sb.toString();
     }
 
+    public static void getWinnersList(List<Car> cars){
+        String winnersList = cars.stream()
+                                .map(car -> car.getName())
+                                .collect(Collectors.joining(","));
+
+        System.out.println(winnersList + " 가 최종 우승하였습니다.");
+
+    }
 
 }

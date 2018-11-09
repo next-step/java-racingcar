@@ -3,15 +3,16 @@ package racing.component;
 import racing.dto.Car;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
 
     private List<Car> cars;
-    private int carNum;
     private int times;
 
+    /* step1
     public RacingGame(int carNum, int times) {
         this.cars = getCarObjects(carNum);
         this.times = times;
@@ -24,6 +25,21 @@ public class RacingGame {
         }
 
         return cars;
+    }
+
+    */
+
+    public RacingGame(String[] carNames, int times) {
+        this.cars = getCarObjects(carNames);
+        this.times = times;
+    }
+
+    public List<Car> getCarObjects(String[] carNames){
+        List<Car> initCars = new ArrayList<Car>();
+        for(int i=0; i<carNames.length; i++){
+            initCars.add(new Car(0, carNames[i]));
+        }
+        return initCars;
     }
 
     public List<Car> getCars() {
@@ -47,18 +63,23 @@ public class RacingGame {
         }
     }
 
+    // private으로 선언해야할 것 같은데 stream test가 필요하다.
+    public static int maxPostion(List<Car> cars){
+        return cars.stream()
+                .max(Comparator.comparingInt(Car::getPosition))
+                .get()
+                .getPosition();
+    }
 
+    public static List<Car> racingWinners(List<Car> cars){
 
-//
-//    public List<Car> move(){
-//
-//
-//
-//
-//        return;
-//    }
-
-
-
-
+        List<Car> winners = new ArrayList<>();
+        int maxP = maxPostion(cars);
+        for(Car c : cars){
+            if(maxP == c.getPosition()){
+                winners.add(c) ;
+            }
+        }
+        return winners;
+    }
 }
