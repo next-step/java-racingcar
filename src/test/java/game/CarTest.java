@@ -5,29 +5,29 @@ import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CarTest {
+public class RacingCarTest {
 
-    Car car;
+    RacingCar racingCar;
 
     @Before
     public void setUp() throws Exception {
-        car = new Car();
+        racingCar = new RacingCar();
     }
 
     @Test
-    public void 움직일수있는값_9() {
-        int beforeCount = car.getMovingCount();
-        car.move(9);
-        int afterCount = car.getMovingCount();
+    public void 움직일수있는값_4() {
+        int beforeCount = racingCar.getMovingCount();
+        racingCar.move(4);
+        int afterCount = racingCar.getMovingCount();
 
         assertThat(afterCount).isEqualTo(beforeCount+1);
     }
 
     @Test
-    public void 움직일수없는_1() {
-        int beforeCount = car.getMovingCount();
-        car.move(1);
-        int afterCount = car.getMovingCount();
+    public void 움직일수없는_3() {
+        int beforeCount = racingCar.getMovingCount();
+        racingCar.move(3);
+        int afterCount = racingCar.getMovingCount();
 
         assertThat(afterCount).isEqualTo(beforeCount);
     }
