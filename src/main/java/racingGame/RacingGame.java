@@ -1,9 +1,8 @@
 package racingGame;
 
-import racingGame.model.RacingCar;
-import racingGame.model.RacingCarDTO;
+import racingGame.domain.RacingCar;
+import racingGame.domain.RacingCarDTO;
 import racingGame.util.Lottery;
-
 import java.util.*;
 
 public class RacingGame {

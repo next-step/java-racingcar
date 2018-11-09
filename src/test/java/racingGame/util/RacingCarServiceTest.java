@@ -2,7 +2,7 @@ package racingGame.util;
 
 import org.junit.Before;
 import org.junit.Test;
-import racingGame.model.RacingCarDTO;
+import racingGame.domain.RacingCarDTO;
 import racingGame.service.RacingCarService;
 
 import java.util.ArrayList;

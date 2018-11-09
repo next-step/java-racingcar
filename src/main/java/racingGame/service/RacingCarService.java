@@ -1,6 +1,6 @@
 package racingGame.service;
 
-import racingGame.model.RacingCarDTO;
+import racingGame.domain.RacingCarDTO;
 
 import java.util.Collections;
 import java.util.List;
