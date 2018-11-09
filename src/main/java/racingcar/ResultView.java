@@ -1,10 +1,10 @@
 package racingcar;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ResultView {
 
-    public static void result(ArrayList<Car> car){
+    public static void result(List<Car> car){
         for (Car selectedOneCar : car){
             System.out.println(positionGrid(selectedOneCar));
         }
@@ -20,7 +20,7 @@ public class ResultView {
         return str;
     }
 
-    public static void printWinner(ArrayList<Car> winners){
+    public static void printWinner(List<Car> winners){
         String str = "";
         for(Car car : winners){
             str += car.getName() + ", ";

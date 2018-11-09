@@ -1,18 +1,19 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
     private static final int MOVECHECK_NUM = 4;
 
-    private ArrayList<Car> car;
+    private List<Car> cars;
     private int time;
 
     public RacingGame(String[] carNames, int time){
-        this.car = new ArrayList<Car>();
+        this.cars = new ArrayList<>();
         for(String carName : carNames){
-            this.car.add(new Car(carName));
+            this.cars.add(new Car(carName));
         }
         this.time = time;
     }
@@ -21,26 +22,27 @@ public class RacingGame {
         InputView in = new InputView();
         in.inputSetting();
         RacingGame game = new RacingGame(in.getCarNames(), in.getTime());
+        CarCollection carCollection = new CarCollection(game.cars);
 
         for(int i = 0; i < game.time; i++){
             ResultView.result(game.move());
         }
-        ResultView.printWinner(Car.decideWinner(game.car));
+        ResultView.printWinner(carCollection.decideWinner(game.cars));
     }
 
-    public ArrayList<Car> move(){
-        moveProcessByTime(car);
-        return car;
+    public List<Car> move(){
+        moveProcessByTime(cars);
+        return cars;
     }
 
-    public static void moveProcessByTime(ArrayList<Car> car){
+    public static void moveProcessByTime(List<Car> car){
         int idx = 0;
         for (Car selectedCar : car) {
             movePerCarProcess(car, idx++);
         }
     }
 
-    public static void movePerCarProcess(ArrayList<Car> car, int idx){
+    public static void movePerCarProcess(List<Car> car, int idx){
         if (movePossibleCheck()) {
             car.get(idx).moveOnePoint();
         }

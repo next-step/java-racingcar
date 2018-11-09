@@ -1,6 +1,6 @@
 package racingcar;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Car {
     private String name;
@@ -26,20 +26,6 @@ public class Car {
         this.position += 1;
     }
 
-    public static ArrayList<Car> decideWinner(ArrayList<Car> car){
-        ArrayList<Car> winners = new ArrayList<Car>();
-        int maxPosition = car.get(0).position;
-        for(Car selectedCar : car){
-            maxPosition = searchMaxPosition(maxPosition, selectedCar);
-        }
-
-        for(Car selectedCar : car){
-            checkPositionPerCar(maxPosition, selectedCar, winners);
-        }
-
-        return winners;
-    }
-
     public static int searchMaxPosition(int maxPosition, Car car){
         if(car.position >= maxPosition){
             return car.position;
@@ -47,9 +33,9 @@ public class Car {
         return maxPosition;
     }
 
-    public static void checkPositionPerCar(int maxPosition, Car car, ArrayList<Car> winners){
+    public static void checkPositionPerCar(int maxPosition, Car car, List<Car> winner) {
         if(car.position == maxPosition){
-            winners.add(car);
+            winner.add(car);
         }
     }
 
