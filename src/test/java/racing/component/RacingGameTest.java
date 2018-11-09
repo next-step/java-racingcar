@@ -5,6 +5,7 @@ import org.junit.Test;
 import racing.dto.Car;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,19 +14,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingGameTest {
 
 
-    static List<Car> cars = new ArrayList<Car>();
     static int testNum = 3;
+    /**
+     * Class변수 선언시 beforeMethod 동작 여
+     */
     static RacingGame rg;
+    static List<Car> cars;
 
     @BeforeClass
     public static void beforeMethod(){
-        cars.add(new Car(testNum,"test1"));
-        cars.add(new Car(testNum,"test2"));
-        cars.add(new Car(testNum,"test3"));
-
-
         String[] carNames = {"lamborghini","test"};
-        rg = new RacingGame( carNames,5);
+        rg = new RacingGame( carNames);
+        cars =  Arrays.asList(new Car(testNum,"test1"),new Car(testNum+1,"test2"),new Car(testNum+2,"test3"));
     }
 
     @Test
@@ -37,7 +37,6 @@ public class RacingGameTest {
 
     @Test
     public void 자동차포지션확인테스트() {
-
         cars.get(0).countPosition(5);
         assertThat(cars.get(0).getPosition()).isEqualTo(++testNum);
     }
@@ -62,16 +61,10 @@ public class RacingGameTest {
 
     @Test
     public void 우승자_그룹_출력() {
+        List<Car> cars = Arrays.asList(new Car(3,"test1"),new Car(4,"test2"),new Car(5,"test3"));
         List<Car> wCars = RacingGame.racingWinners(cars);
-        int maxP = RacingGame.maxPostion(cars);
-        int count = 0;
-        for (Car c : cars){
-            if(c.getPosition() == maxP){
-                count ++;
-            }
-        }
 
-        assertThat(wCars.size()).isEqualTo(count);
+        assertThat(wCars.size()).isEqualTo(1);
     }
 
 }

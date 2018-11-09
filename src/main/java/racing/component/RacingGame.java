@@ -10,7 +10,6 @@ import java.util.Random;
 public class RacingGame {
 
     private List<Car> cars;
-    private int times;
 
     /* step1
     public RacingGame(int carNum, int times) {
@@ -29,12 +28,11 @@ public class RacingGame {
 
     */
 
-    public RacingGame(String[] carNames, int times) {
+    public RacingGame(String[] carNames) {
         this.cars = getCarObjects(carNames);
-        this.times = times;
     }
 
-    public List<Car> getCarObjects(String[] carNames){
+    private static List<Car> getCarObjects(String[] carNames){
         List<Car> initCars = new ArrayList<Car>();
         for(int i=0; i<carNames.length; i++){
             initCars.add(new Car(0, carNames[i]));
@@ -44,10 +42,6 @@ public class RacingGame {
 
     public List<Car> getCars() {
         return cars;
-    }
-
-    public int getTimes() {
-        return times;
     }
 
     public int getRand(){
@@ -76,8 +70,8 @@ public class RacingGame {
         List<Car> winners = new ArrayList<>();
         int maxP = maxPostion(cars);
         for(Car c : cars){
-            if(maxP == c.getPosition()){
-                winners.add(c) ;
+            if(c.isNeedPosition(maxP)) {
+                winners.add(c);
             }
         }
         return winners;

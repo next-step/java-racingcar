@@ -15,9 +15,10 @@ public class ResultMain {
 
         //RacingGame rg = new RacingGame(InputView.numOfCars(), InputView.times());
 
-        RacingGame rg = new RacingGame(InputView.numOfCarsByNames(), InputView.times());
+        RacingGame rg = new RacingGame(InputView.numOfCarsByNames());
+        int times = InputView.times();
 
-        for (int i = 0; i < rg.getTimes(); i++) {
+        for (int i = 0; i < times; i++) {
             rg.startGame();
             ResultView.gameResult(rg.getCars());
         }

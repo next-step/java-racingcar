@@ -28,6 +28,13 @@ public class Car {
         }
     }
 
+    public boolean isNeedPosition(int standardPosition){
+        if(standardPosition == getPosition()){
+            return true;
+        }
+        return false;
+    }
+
     public int getPosition(){
         return position;
     }
