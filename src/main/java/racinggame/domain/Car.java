@@ -27,12 +27,12 @@ public class Car {
     }
 
     public void move() {
-        if (getRandomNo() >= 4)
+        if (getRandomNo() >= FORWARD_NUM)
             this.position++;
     }
 
     public int getRandomNo() {
         Random random = new Random();
-        return random.nextInt(10);
+        return random.nextInt(MAX_BOUND);
     }
 }
