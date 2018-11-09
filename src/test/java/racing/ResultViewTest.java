@@ -19,7 +19,7 @@ public class ResultViewTest {
     @BeforeClass
     public static void beforeMethod(){
         rv = new ResultView();
-        cars = Arrays.asList(new Car(3),new Car(5),new Car(8));
+        cars = Arrays.asList(new Car(3,"test1"),new Car(5,"test2"),new Car(8,"test3"));
     }
 
 
@@ -48,5 +48,10 @@ public class ResultViewTest {
     @Test
     public void 움직인차들_위치반환() {
         rv.gameResult(cars);
+    }
+
+    @Test
+    public void 우승자리스트() {
+        rv.getWinnersList(cars);
     }
 }
