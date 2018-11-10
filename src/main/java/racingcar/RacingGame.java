@@ -35,7 +35,7 @@ public class RacingGame {
 
         for(int i = 0; i < racingTracks; i++) {
             result = racingGame.onTheGame(rand);
-            ResultView.print(result);
+            DisplayView.print(result);
             System.out.println();
         }
         ResultView.printWinner(result);
