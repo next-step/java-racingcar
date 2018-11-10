@@ -1,73 +1,43 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 public class RacingGame {
-    static final int RANGEOFNUM = 10;
-    static final int LIMIT = 4;
-    private int numOfCars;
-    private int racingTracks;
-    public int resultElement[];
+    static final int RANGE_OF_NUM = 10;
 
-    private void racingGame() {
-        inputValue();
-        resultElement = new int[numOfCars];
-        racing();
-    }
+    private List<Car> cars;
 
-    private void inputValue() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        numOfCars = sc.nextInt();
-        System.out.println("시도할 횟수는 몇 회 인가요?");
-        racingTracks = sc.nextInt();
-    }
-
-    private void racing() {
-        for(int i=0; i<racingTracks; i++) {
-            move();
-            displayResult();
-            System.out.println();
+    public RacingGame(String carNames) {
+        String names[] = carNames.split(",");
+        cars = new ArrayList<>();
+        for(int i = 0; i < names.length; i++) {
+            cars.add(new Car(names[i]));
         }
     }
 
-    private void displayResult() {
-        for(int i=0; i<numOfCars; i++) {
-            String str = "";
-            if(resultElement[i] > 0) {
-                str = drawLine(resultElement[i]);
-            }
-            System.out.println(str);
+    public List<Car> onTheGame(Random rand) {
+        for(Car car : cars) {
+            int currentPos = rand.nextInt(RANGE_OF_NUM);
+            car.move(currentPos);
         }
-    }
-
-    public static String drawLine(int state) {
-        String str = "";
-        for(int i=0; i<state; i++) {
-            str += "-";
-        }
-        return str;
-    }
-
-    public void move() {
-        Random rand = new Random();
-        for(int i=0; i<numOfCars; i++) {
-            int currentPos = rand.nextInt(RANGEOFNUM);
-            int resultData = checkLimit(currentPos);
-            resultElement[i] += resultData;
-        }
-    }
-
-    public int checkLimit(int currentPos) {
-        if(currentPos >= LIMIT) {
-            return 1;
-        }
-        return 0;
+        return cars;
     }
 
     public static void main(String[] args) {
-        RacingGame rg = new RacingGame();
-        rg.racingGame();
+        Random rand = new Random();
+        String carNames = InputView.getCarsNames();
+        int racingTracks = InputView.getRacingTracks();
+
+        RacingGame racingGame = new RacingGame(carNames);
+        List<Car> result = new ArrayList<>();
+
+        for(int i = 0; i < racingTracks; i++) {
+            result = racingGame.onTheGame(rand);
+            DisplayView.print(result);
+            System.out.println();
+        }
+        ResultView.printWinner(result);
     }
 }
