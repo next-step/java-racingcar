@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class StringCalculator {
     private static final String SEPARATOR = " ";
 
@@ -19,7 +17,7 @@ public class StringCalculator {
         return calculateResult;
     }
 
-    private static int eachOperation(int calculateResult, String operator, int operand) {
+    private static int eachOperation(int calculateResult, String operator, int operand) throws RuntimeException {
         switch (operator) {
             case "+":
                 calculateResult += operand;
@@ -34,15 +32,12 @@ public class StringCalculator {
                 calculateResult /= operand;
                 break;
             default:
-//                throw new RuntimeException();
+                throw new RuntimeException();
         }
         return calculateResult;
     }
 
     private static String[] inputData(String expression) {
-//        System.out.print("연산할 식을 입력하세요. >> ");
-//        Scanner scanner = new Scanner(System.in);
-//        String value = scanner.nextLine();
         return split(expression);
     }
 
