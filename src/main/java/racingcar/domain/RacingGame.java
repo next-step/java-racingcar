@@ -64,20 +64,27 @@ public class RacingGame {
 
             Random rand = new Random();
             RacingGame racingGame = new RacingGame(str);
-            for(int i = 0; i< turn; i++) {
+
+            for(int i = 0; i < turn; i++) {
                 racingGame.cars = racingGame.onTheGame(rand);
             }
             int WinnerNum = WinnerNumber.getWinnerNum(racingGame.cars);
             String WinnerName = ResultView.printWinner(racingGame.cars, WinnerNum);
-            model.put("users", result);
-            model.put("name", WinnerName);
+            model.put("users", racingGame.cars);
+            model.put("winner", WinnerName);
+            String str = "";
+            for(Car car : racingGame.cars) {
+                for(int i = 0; i < car.getCurPosition(); i++) {
+                    str += "&nbsp;&nbsp;&nbsp;&#128652";
+                }
+            }
 
             return render(model, "/result.html");
         });
     }
 
     public static String render(Map<String, Object> model, String templatePath) {
-        return new HandlebarsTemplateEngine().render(new ModelAndView(model, templatePath));
+        return new CustomHandlebarsTemplateEngine().render(new ModelAndView(model, templatePath));
     }
 
     private static void ConsoleMain() {
