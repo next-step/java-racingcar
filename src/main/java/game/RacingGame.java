@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
-
     private List<Car> cars;
 
     public RacingGame(String names) {
@@ -17,7 +16,6 @@ public class RacingGame {
         }
         return cars;
     }
-
     private int getRandomValue() {
         return new Random().nextInt(10);
     }

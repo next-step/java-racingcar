@@ -4,7 +4,6 @@ package game;
 import java.util.List;
 
 public class OutputView {
-
     public static void print(List<Car> cars) {
         for (Car car : cars) {
             System.out.print(car.getName() + " : ");
