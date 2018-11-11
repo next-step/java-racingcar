@@ -30,6 +30,7 @@ public class RacingGame {
         for (int i = 0; i < rAttempCnt; i++) {
             carRunOneTurn();
             System.out.println();
+
         }
     }
 

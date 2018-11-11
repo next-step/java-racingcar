@@ -11,8 +11,5 @@ public class RacingGameTest {
         RacingGame racingGame2 = new RacingGame();
         String[] carNames2 = {"BMW", "벤츠"};
         racingGame2.gameStart(carNames2, 3);
-
-//        racingGame.gameStart(2, 3);
     }
-
 }

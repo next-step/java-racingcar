@@ -3,6 +3,7 @@ package racingGame;
 import java.util.Random;
 
 public class Car {
+
     private static final int FORWARD_LIMIT = 4;
     private static final int RANDOM_MIN = 0;
     private static final int RANDOM_MAX = 9;
@@ -16,6 +17,15 @@ public class Car {
 
     public void run() {
         if (randomRangeValue() >= FORWARD_LIMIT) {
+
+    private static Random random = new Random();
+    private int runDistance = 0;
+
+    public void run() {
+        int forward = 0;
+        forward = random.nextInt();
+
+        if (forward >= 4) {
             runDistance++;
         }
     }
@@ -31,7 +41,6 @@ public class Car {
     public String getCarName() {
         return this.carName;
     }
-
 
     @Override
     public String toString() {
@@ -58,5 +67,9 @@ public class Car {
         public Car build() {
             return new Car(this);
         }
+    }
+          
+    public int getRunDistance() {
+        return runDistance;
     }
 }
