@@ -31,13 +31,13 @@ public class RacingGame {
         int racingTracks = InputView.getRacingTracks();
 
         RacingGame racingGame = new RacingGame(carNames);
-        List<Car> result = new ArrayList<>();
 
         for(int i = 0; i < racingTracks; i++) {
-            result = racingGame.onTheGame(rand);
-            DisplayView.print(result);
+            racingGame.cars = racingGame.onTheGame(rand);
+            ResultView.print(racingGame.cars);
             System.out.println();
         }
-        ResultView.printWinner(result);
+        int winnerNum = WinnerNum.getWinnerNum(racingGame.cars);
+        System.out.println(ResultView.printWinner(racingGame.cars, winnerNum) + "가 최종 우승했습니다.");
     }
 }
