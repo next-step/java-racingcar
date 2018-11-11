@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +21,9 @@ public class RacingGame {
         this.time = time;
     }
 
+    public List<Car> getCars() { return this.cars; }
+    public int getTime() { return  this.time; }
+
     public static void main(String[] args){
         InputView in = new InputView();
         in.inputSetting();
@@ -28,6 +34,7 @@ public class RacingGame {
             ResultView.result(game.move());
         }
         ResultView.printWinner(carCollection.decideWinner(game.cars));
+
     }
 
     public List<Car> move(){

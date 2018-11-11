@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.domain.Car;
 
 import java.util.List;
 
@@ -20,11 +22,8 @@ public class ResultView {
         return str;
     }
 
-    public static void printWinner(List<Car> winners){
-        String str = "";
-        for(Car car : winners){
-            str += car.getName() + ", ";
-        }
-        System.out.println(str + "가 최종 우승했습니다.");
+    public static String printWinner(List<String> winners){
+        System.out.println(String.join(", ", winners) + " 가 최종 우승했습니다.");
+        return String.join(", ", winners) + " 가 최종 우승했습니다.";
     }
 }
