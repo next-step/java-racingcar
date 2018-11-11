@@ -72,12 +72,6 @@ public class RacingGame {
             String WinnerName = ResultView.printWinner(racingGame.cars, WinnerNum);
             model.put("users", racingGame.cars);
             model.put("winner", WinnerName);
-            String str = "";
-            for(Car car : racingGame.cars) {
-                for(int i = 0; i < car.getCurPosition(); i++) {
-                    str += "&nbsp;&nbsp;&nbsp;&#128652";
-                }
-            }
 
             return render(model, "/result.html");
         });
