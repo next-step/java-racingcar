@@ -1,7 +1,6 @@
 package game;
 
 public class Car implements Comparable<Car> {
-
     private static final int MOVE_FLAG = 4;
     private int location;
     private String name;
@@ -37,12 +36,12 @@ public class Car implements Comparable<Car> {
         return MOVE_FLAG <= randomValue;
     }
 
-    public boolean isSameLocation(Car target) {
-        return this.location == target.location;
+    public boolean isEqualsMaxScore(int location) {
+        return this.location == location;
     }
 
     @Override
     public int compareTo(Car target) {
-        return target.location - this.location;
+        return this.location - target.location;
     }
 }

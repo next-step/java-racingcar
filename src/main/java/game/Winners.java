@@ -5,30 +5,35 @@ import java.util.Collections;
 import java.util.List;
 
 public class Winners {
-
-    private static StringBuffer winners;
+    private static final String SPERATOR = ", ";
 
     public static String findWinners(List<Car> cars) {
-        winners = new StringBuffer();
-        sortBiggest(cars);
-        Car car = cars.get(0);
-        for (Car target : cars) {
-            toWinners(car, target);
+        return insertSeparator(convertsNameToString(makeWinners(cars)));
+    }
+
+    private static String insertSeparator(String[] winnerNames){
+        return String.join(SPERATOR,winnerNames);
+
+    }
+
+    private static String[] convertsNameToString(List<String> winners){
+        String[] test = winners.toArray(new String[winners.size()]);
+        return test;
+
+    }
+
+    private static List<String> makeWinners(List<Car> cars){
+        int maxScore = findCarWithMaxScore(cars);
+        List<String> winners = new ArrayList<>();
+        for(Car car: cars){
+            if(car.isEqualsMaxScore(maxScore)){
+                winners.add(car.getName());
+            }
         }
-        return trimString();
+        return winners;
     }
 
-    private static String trimString(){
-        return winners.substring(0,winners.length()-2);
-    }
-
-    private static void sortBiggest(List<Car> cars) {
-        Collections.sort(cars);
-    }
-
-    private static void toWinners(Car car, Car target) {
-        if (car.isSameLocation(target)) {
-            winners.append(target.getName()+", ");
-        }
+    private static int findCarWithMaxScore(List<Car> cars) {
+        return Collections.max(cars).getLocation();
     }
 }
