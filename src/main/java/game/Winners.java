@@ -17,9 +17,7 @@ public class Winners {
     }
 
     private static String[] convertsNameToString(List<String> winners){
-        String[] test = winners.toArray(new String[winners.size()]);
-        return test;
-
+        return winners.toArray(new String[winners.size()]);
     }
 
     private static List<String> makeWinners(List<Car> cars){
