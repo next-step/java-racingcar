@@ -11,23 +11,23 @@ public class CarTest {
 
     @Before
     public void setUp() throws Exception {
-        car = new Car();
+        car = new Car("Hello");
     }
 
     @Test
-    public void 움직일수있는값_9() {
-        int beforeCount = car.getMovingCount();
-        car.move(9);
-        int afterCount = car.getMovingCount();
+    public void 움직일수있는값_4() {
+        int beforeCount = car.getLocation();
+        car.move(4);
+        int afterCount = car.getLocation();
 
         assertThat(afterCount).isEqualTo(beforeCount+1);
     }
 
     @Test
-    public void 움직일수없는_1() {
-        int beforeCount = car.getMovingCount();
-        car.move(1);
-        int afterCount = car.getMovingCount();
+    public void 움직일수없는_3() {
+        int beforeCount = car.getLocation();
+        car.move(3);
+        int afterCount = car.getLocation();
 
         assertThat(afterCount).isEqualTo(beforeCount);
     }
