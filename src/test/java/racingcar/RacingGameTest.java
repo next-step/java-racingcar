@@ -3,10 +3,12 @@ package racingcar;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
-    static final int TESTDATA = 3;
     private Car car;
 
     @Before
@@ -32,5 +34,19 @@ public class RacingGameTest {
         Car car = new Car("kitae");
         car.move(5);
         assertThat(car.compareNum(2)).isEqualTo(2);
+    }
+    @Test
+    public void 승자숫자() {
+        List<Car> lists = new ArrayList<>();
+
+        Car car1 = new Car("pobi");
+        car1.move(5);
+        lists.add(car1);
+
+        Car car2 = new Car("kitae");
+        car2.move(4);
+        lists.add(car2);
+
+        assertThat(WinnerNum.getWinnerNum(lists)).isEqualTo(1);
     }
 }
