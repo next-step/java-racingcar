@@ -1,4 +1,10 @@
-package game;
+package game.controller;
+
+import game.domain.Car;
+import game.domain.RacingGame;
+import game.domain.Winners;
+import game.view.InputView;
+import game.view.OutputView;
 
 import java.util.List;
 

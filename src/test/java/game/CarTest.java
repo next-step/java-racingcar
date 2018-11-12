@@ -1,5 +1,6 @@
 package game;
 
+import game.domain.Car;
 import org.junit.Before;
 import org.junit.Test;
 
