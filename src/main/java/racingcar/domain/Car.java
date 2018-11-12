@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.List;
 
@@ -33,9 +33,9 @@ public class Car {
         return maxPosition;
     }
 
-    public static void checkPositionPerCar(int maxPosition, Car car, List<Car> winner) {
+    public static void checkPositionPerCar(int maxPosition, Car car, List<String> winner) {
         if(car.position == maxPosition){
-            winner.add(car);
+            winner.add(car.name);
         }
     }
 

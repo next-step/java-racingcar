@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +17,8 @@ public class CarCollection {
         return this.cars.get(0).getPosition();
     }
 
-    public List<Car> decideWinner(List<Car> cars){
-        List<Car> winners = new ArrayList<>();
+    public List<String> decideWinner(List<Car> cars){
+        List<String> winners = new ArrayList<>();
 
         int maxPosition = this.getFirstPosition();
         for(Car selectedCar : cars){
