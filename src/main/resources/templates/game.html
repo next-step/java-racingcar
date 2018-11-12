@@ -58,17 +58,11 @@ body {
       <div class="col-md-12">
 
         <div class="form-show-div" class="form-group">
-          <table>
-            <tr>
-              <td>박재성</td>
-            </tr>
-            <tr>
-              <td>윤지수</td>
-            </tr>
-            <tr>
-              <td>정호영</td>
-            </tr>
-          </table>
+        <table>
+            {{#cars}}
+              <tr><td>{{name}}</td></tr>
+            {{/cars}}
+        </table>
 
         </div>
         <form class="form-lotto" method="get" action="/result">
