@@ -1,5 +1,7 @@
 package game;
 
+import game.domain.Car;
+import game.domain.CarList;
 import org.junit.Test;
 import java.util.List;
 

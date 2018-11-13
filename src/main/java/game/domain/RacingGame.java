@@ -1,4 +1,7 @@
-package game;
+package game.domain;
+
+import game.domain.Car;
+import game.domain.CarList;
 
 import java.util.List;
 import java.util.Random;

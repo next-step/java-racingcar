@@ -1,5 +1,7 @@
-package game;
+package game.view;
 
+
+import game.domain.Car;
 
 import java.util.List;
 

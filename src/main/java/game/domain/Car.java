@@ -1,4 +1,4 @@
-package game;
+package game.domain;
 
 public class Car implements Comparable<Car> {
     private static final int MOVE_FLAG = 4;

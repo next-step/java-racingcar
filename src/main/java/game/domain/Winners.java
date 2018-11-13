@@ -1,4 +1,6 @@
-package game;
+package game.domain;
+
+import game.domain.Car;
 
 import java.util.ArrayList;
 import java.util.Collections;
