@@ -76,4 +76,16 @@ public class RacingGame {
         }
         return winners;
     }
+
+    public static String racingWinnersString(List<Car> cars){
+
+        StringBuilder sb = new StringBuilder();
+        int maxP = maxPostion(cars);
+        for(Car c : cars){
+            if(c.isNeedPosition(maxP)) {
+                sb.append(c.getName());
+            }
+        }
+        return sb.toString();
+    }
 }
