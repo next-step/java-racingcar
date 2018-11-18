@@ -3,6 +3,7 @@ package racingGame;
 import java.util.*;
 
 public class Car {
+//<<<<<<< HEAD
 	private final int RANDOM_MIN;
 	private final int RANDOM_MAX;
 	private static Random random = new Random();
@@ -14,6 +15,34 @@ public class Car {
 		this.RANDOM_MIN = carBuilder.FORWARD_MIN_POINT;
 		this.RANDOM_MAX = carBuilder.FORWARD_MAX_POINT;
 	}
+//=======
+//
+//    private static final int FORWARD_LIMIT = 4;
+//    private static final int RANDOM_MIN = 0;
+//    private static final int RANDOM_MAX = 9;
+//    private static Random random = new Random();
+//    private int runDistance = 0;
+//    private String carName;
+//
+//    private Car(Builder carBuilder) {
+//        this.carName = carBuilder.carName;
+//    }
+//
+//    public void run() {
+//        if (randomRangeValue() >= FORWARD_LIMIT) {
+//
+//    private static Random random = new Random();
+//    private int runDistance = 0;
+//
+//    public void run() {
+//        int forward = 0;
+//        forward = random.nextInt();
+//
+//        if (forward >= 4) {
+//            runDistance++;
+//        }
+//    }
+//>>>>>>> 8ba7664d1f8f43d9c7aa172edf7bdc8f735ea663
 
 	// Builder Class
 	public static class Builder {
@@ -31,6 +60,7 @@ public class Car {
 			return this;
 		}
 
+//<<<<<<< HEAD
 		public Builder runMaxPoint(int maxPoint) {
 			this.FORWARD_MAX_POINT = maxPoint;
 			return this;
@@ -40,6 +70,12 @@ public class Car {
 			return new Car(this);
 		}
 	}
+//=======
+//    @Override
+//    public String toString() {
+//        return this.carName + ": " + printDistance();
+//    }
+//>>>>>>> 8ba7664d1f8f43d9c7aa172edf7bdc8f735ea663
 
 	public void run(int forwardLimit) {
 		if (randomRangeValue() >= forwardLimit) {
@@ -80,6 +116,7 @@ public class Car {
 			winCars.add(car);
 		}
     }
+//<<<<<<< HEAD
 
 	public int getRunDistance() {
 		return runDistance;
@@ -102,4 +139,10 @@ public class Car {
 		return distance;
 	}
 
+//=======
+//
+//    public int getRunDistance() {
+//        return runDistance;
+//    }
+//>>>>>>> 8ba7664d1f8f43d9c7aa172edf7bdc8f735ea663
 }

@@ -1,7 +1,7 @@
 import org.junit.Test;
 import racingGame.*;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class RacingGameTest {
 
@@ -34,6 +34,6 @@ public class RacingGameTest {
         RacingGame racingGame1 = new RacingGame(inputView, outputView);
 
         racingGame1.gameStart();
-    }
 
+    }
 }
