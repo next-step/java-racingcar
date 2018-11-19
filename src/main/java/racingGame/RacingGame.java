@@ -1,48 +1,65 @@
 package racingGame;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RacingGame {
-    private static int rCarCnt = 0;
-    private static int rAttempCnt = 0;
-    private static ArrayList<Car> cars = new ArrayList<>();
+    private static InputView inputView;
+    private static OutputView outputView;
+    private final int FORWARD_LIMIT = 4;
+    private int rAttemptCnt = 0;
+    private ArrayList<Car> cars = new ArrayList<>();
 
-    public void gameStart(int carCnt, int attempCnt) {
-        gameSet(carCnt, attempCnt);
-        carsRun();
+    public RacingGame(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
     }
 
-    private void gameSet(int carCnt, int attempCnt) {
-        System.out.println("자동차 수는 몇 대 인가요?");
-        rCarCnt = carCnt;
-        System.out.println("시도할 횟수는 몇 회 인가요?");
-        rAttempCnt = attempCnt;
+    public void gameStart() throws RuntimeException {
+        gameSet(inputView.getInputCarsName(), this.inputView.getInputRunDistance());
+        carsRun();
+        outputView.viewWinnersName(getWinners());
+    }
 
-        for (int i = 0; i < carCnt; i++) {
-            cars.add(new Car());
+    private void gameSet(String[] carsName, int attemptCnt) {
+        System.out.println("자동차 수는 몇 대 인가요?");
+        outputView.viewCarsSize(carsName.length);
+
+        System.out.println("시도할 횟수는 몇 회 인가요?");
+        rAttemptCnt = attemptCnt;
+
+        for (String carName : carsName) {
+            this.cars.add(new Car.Builder().carName(carName).runMinPoint(0).runMaxPoint(9).build());
         }
     }
 
     private void carsRun() {
-        for (int i = 0; i < rAttempCnt; i++) {
+        for (int i = 0; i < rAttemptCnt; i++) {
             carRunOneTurn();
-            System.out.println("");
+            outputView.viewEmptySpace();
         }
     }
 
     private void carRunOneTurn() {
         for (Car car : cars) {
-            car.run();
-            System.out.println(carDistancePrint(car.getRunDistance()));
+            car.run(FORWARD_LIMIT);
+            outputView.viewPrintCarName(car);
         }
     }
 
-    private String carDistancePrint(int carDistance) {
-        String printDistance = "";
-        for (int i = 0; i < carDistance; i++) {
-            printDistance += "-";
+    private String[] getWinners() throws RuntimeException {
+        if (cars.size() <= 0) {
+            throw new RuntimeException();
         }
-        return printDistance;
+
+        return getWinnerCarsName(Car.getWinCars(cars, Car.getWinDistance(cars)));
     }
 
+    private String[] getWinnerCarsName(List<Car> winnerCars) {
+        String[] carsName = new String[winnerCars.size()];
+        for (int i = 0; i < winnerCars.size(); i++) {
+            carsName[i] = winnerCars.get(i).getCarName();
+        }
+        return carsName;
+    }
 }
