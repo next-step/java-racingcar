@@ -1,4 +1,4 @@
-package racingGame;
+package racingGame.view;
 
 public interface InputView {
     void setInputCarsName(String[] newCarsName);

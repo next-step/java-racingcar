@@ -1,6 +1,9 @@
-package racingGame;
+package racingGame.view;
 
-public class OutputViewConsole implements OutputView {
+import racingGame.domain.Car;
+import racingGame.view.OutputView;
+
+public class OutputViewImpl implements OutputView {
     @Override
     public void viewPrintCarName(Car car) {
         System.out.println(car);

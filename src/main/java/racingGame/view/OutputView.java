@@ -1,4 +1,6 @@
-package racingGame;
+package racingGame.view;
+
+import racingGame.domain.Car;
 
 public interface OutputView {
     void viewPrintCarName(Car car);
