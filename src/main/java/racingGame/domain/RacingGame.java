@@ -1,4 +1,7 @@
-package racingGame;
+package racingGame.domain;
+
+import racingGame.view.InputView;
+import racingGame.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +50,7 @@ public class RacingGame {
         }
     }
 
-    private String[] getWinners() throws RuntimeException {
+    public String[] getWinners() throws RuntimeException {
         if (cars.size() <= 0) {
             throw new RuntimeException();
         }
@@ -61,5 +64,9 @@ public class RacingGame {
             carsName[i] = winnerCars.get(i).getCarName();
         }
         return carsName;
+    }
+
+    public ArrayList<Car> getCarList() {
+        return this.cars;
     }
 }

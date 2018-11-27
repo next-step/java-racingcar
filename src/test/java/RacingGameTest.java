@@ -1,5 +1,10 @@
 import org.junit.Test;
-import racingGame.*;
+import racingGame.domain.Car;
+import racingGame.domain.RacingGame;
+import racingGame.view.InputView;
+import racingGame.view.InputViewImpl;
+import racingGame.view.OutputView;
+import racingGame.view.OutputViewImpl;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -25,8 +30,8 @@ public class RacingGameTest {
 
     @Test
     public void 레이싱게임() {
-        InputView inputView = new InputViewConsole();
-        OutputView outputView = new OutputViewConsole();
+        InputView inputView = new InputViewImpl();
+        OutputView outputView = new OutputViewImpl();
         String[] carsNames = {"소나타", "K5", "SM6", "말리부"};
 
         inputView.setInputCarsName(carsNames);
@@ -34,6 +39,5 @@ public class RacingGameTest {
         RacingGame racingGame1 = new RacingGame(inputView, outputView);
 
         racingGame1.gameStart();
-
     }
 }

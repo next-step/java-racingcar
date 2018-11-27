@@ -1,9 +1,9 @@
-package racingGame;
+package racingGame.view;
 
 import java.util.Arrays;
 import java.util.Objects;
 
-public class InputViewConsole implements InputView {
+public class InputViewImpl implements InputView {
     int runDistance;
     String[] inputCarsName;
 
@@ -33,7 +33,7 @@ public class InputViewConsole implements InputView {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        InputViewConsole that = (InputViewConsole) o;
+        InputViewImpl that = (InputViewImpl) o;
         return runDistance == that.runDistance &&
                 Arrays.equals(inputCarsName, that.inputCarsName);
     }
