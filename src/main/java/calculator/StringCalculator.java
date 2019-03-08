@@ -15,6 +15,7 @@ public class StringCalculator {
         // 홀수의 숫자만 저장하도록해서 숫자만 가지고 있는 리스트를 만든다
         // 짝수만 저장해서 기호만 가지고 있는 리스트를 만든다.
         // 숫자 2개와 기호 1개를 받아서 연산하는 로직을 만든다.
+        // 재귀로 하면 좋을 것 같음
 
         // 띄우쓰기를 우선 제거
         String trim_str = str.trim();
@@ -44,8 +45,7 @@ public class StringCalculator {
             //2개의 오퍼랜드와 한개의 오퍼레이터를 넘긴다.
 
             if (operand_list.size() == 2) {
-                int value = calculator(operand_list.get(0), operand_list.get(1), operator_list.get(0));
-                result += value;
+                result += calculator(operand_list.get(0), operand_list.get(1), operator_list.get(0));
                 operand_list.clear();
                 operator_list.clear();
             }
