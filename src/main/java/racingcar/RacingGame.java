@@ -3,6 +3,8 @@ package racingcar;
 import java.util.Scanner;
 
 public class RacingGame {
+    private Car[] cars;
+
     public void start() {
         Scanner scanner = new Scanner(System.in);
 
@@ -10,38 +12,39 @@ public class RacingGame {
         int numberOfCar = scanner.nextInt();
         System.out.println("시도할 회수는 몇 회 인가요?");
         int tryCount = scanner.nextInt();
+
+        scanner.close();
         System.out.println();
 
-        start(numberOfCar, tryCount);
+        carSetUp(numberOfCar);
+        start(tryCount);
     }
 
-    private void start(int numberOfCar, int tryCount) {
+    public void start(int tryCount) {
         System.out.println("실행 결과\n");
-        Car[] cars = carSetUp(numberOfCar);
 
         for (int i = 0; i < tryCount; i++) {
-            run(cars);
-            showMovedDistance(cars);
+            run();
+            showMovedDistanceOfCars(cars);
             System.out.println();
         }
     }
 
     public Car[] carSetUp(int numberOfCar) {
-        Car[] cars = new Car[numberOfCar];
+        this.cars = new Car[numberOfCar];
 
         for (int i = 0; i < numberOfCar; i++)
-            cars[i] = new Car();
+            this.cars[i] = new Car();
 
-        return cars;
+        return this.cars;
     }
 
-    public void run(Car[] cars) {
-        for (int i = 0, loop = cars.length; i < loop; i++) {
-            cars[i].randomlyGo();
-        }
+    private void run() {
+        for (int i = 0, loop = this.cars.length; i < loop; i++)
+            this.cars[i].randomlyGo();
     }
 
-    private void showMovedDistance(Car[] cars) {
+    private void showMovedDistanceOfCars(Car[] cars) {
         for (int i = 0, loop = cars.length; i < loop; i++)
             cars[i].showMovedDistance();
     }
