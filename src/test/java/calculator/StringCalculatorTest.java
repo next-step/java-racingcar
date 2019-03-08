@@ -32,8 +32,20 @@ public class StringCalculatorTest {
     }
 
     @Test
+    public void 문자열계산() {
+        int result = StringCalculator.calculate("2 + 3 * 4 / 2");
+        assertThat(result).isEqualTo(10);
+    }
+
+    @Test
     public void 빈공백입력_예외처리() {
         int result = StringCalculator.calculate("");
-        assertThat(result).isEqualTo(-1);
+        assertThat(result).isEqualTo(-9999);
+    }
+
+    @Test
+    public void NULL입력_예외처리() {
+        int result = StringCalculator.calculate(null);
+        assertThat(result).isEqualTo(-9999);
     }
 }
