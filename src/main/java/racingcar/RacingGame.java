@@ -1,26 +1,11 @@
 package racingcar;
 
-import java.util.Scanner;
-
 public class RacingGame {
     private Car[] cars;
 
-    public void start() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int numberOfCar = scanner.nextInt();
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int tryCount = scanner.nextInt();
-
-        scanner.close();
-        System.out.println();
-
+    public void start(int numberOfCar, int tryCount) {
         carSetUp(numberOfCar);
-        start(tryCount);
-    }
 
-    public void start(int tryCount) {
         System.out.println("실행 결과\n");
 
         for (int i = 0; i < tryCount; i++) {
@@ -46,6 +31,10 @@ public class RacingGame {
 
     private void showMovedDistanceOfCars(Car[] cars) {
         for (int i = 0, loop = cars.length; i < loop; i++)
-            cars[i].showMovedDistance();
+            this.cars[i].showMovedDistance();
+    }
+
+    public Car[] getCars() {
+        return this.cars;
     }
 }

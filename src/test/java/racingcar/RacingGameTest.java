@@ -26,8 +26,8 @@ public class RacingGameTest {
         int numberOfCar = 3;
         int tryCount = 5;
 
-        Car[] cars = racingGame.carSetUp(numberOfCar);
-        racingGame.start(tryCount);
+        racingGame.start(numberOfCar, tryCount);
+        Car[] cars = racingGame.getCars();
 
         for (int i = 0; i < numberOfCar; i++) {
             assertThat(cars[i].getMovedDistance()).isLessThanOrEqualTo(tryCount);
