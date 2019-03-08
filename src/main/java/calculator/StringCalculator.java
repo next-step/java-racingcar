@@ -12,7 +12,7 @@ public class StringCalculator {
         String[] values = text.split(" ");
         int prev, next;
         prev = parseInt(values[0]);
-        for (int i = 0; i < values.length - 2; i++) {
+        for (int i = 0; i < values.length - 2; i+=2) {
             next = parseInt(values[i + 2]);
             prev = matchOperator(prev, values[i + 1], next);
         }
