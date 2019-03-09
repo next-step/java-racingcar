@@ -48,4 +48,10 @@ public class StringCalculatorTest {
         assertThat(result).isEqualTo(10);
     }
 
+    @Test
+    public void 덧셈_뺄셈_곱셈_나눗셈() {
+        int result = StringCalculator.calculate("2 + 3 - 1 * 4 / 2");
+        assertThat(result).isEqualTo(8);
+    }
+
 }
