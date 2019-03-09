@@ -2,62 +2,69 @@ package racingcar;
 
 import java.util.Random;
 import java.util.Scanner;
+import org.apache.commons.lang3.StringUtils;
 
 public class RacingCar {
-    private static final int BOUND = 10;
-    private static Random random = new Random();
 
-    public static void main(String[] args) throws Exception {
+    private static final int BOUND = 10;
+
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("자동차 대수는 몇 대 인가요?");
+        System.out.println("자동차 대수는 몇 대 인가요? ");
         int numberOfCars = scanner.nextInt();
 
-        System.out.print("시도할 회수는 몇 회 인가요?");
+        System.out.println("시도할 회수는 몇 회 인가요? ");
         int numberOfTimes = scanner.nextInt();
 
         int[][] positionsOfCars = makeMoveOfCars(numberOfCars, numberOfTimes);
 
+        System.out.println("실행 결과");
         showGame(positionsOfCars);
     }
 
     private static void showGame(int[][] positionsOfCars) {
 
         for (int[] positionsOfCar : positionsOfCars) {
+
             for (int position : positionsOfCar) {
-                if (checkCanMove(position)) {
-                    System.out.print("_");
-                }
+                String move = StringUtils.repeat("-", position);
+                System.out.println(move);
             }
 
-            System.out.println();
+            System.out.print("\n");
         }
-
 
     }
 
-    private static int[][] makeMoveOfCars(int numberOfCars, int numberOfTimes) {
+    public static int[][] makeMoveOfCars(int numberOfCars, int numberOfTimes) {
         int[][] positionsOfCars = new int[numberOfTimes][numberOfCars];
 
         for (int times = 0; times < numberOfTimes; times++) {
             for (int i = 0; i < numberOfCars; i++) {
-                positionsOfCars[times][i] = generateRandomInt();
+                int randomNum = generateRandomNum();
+                int prevPosition = positionsOfCars[times - 1 < 0 ? 0 : times - 1][i];
+
+                if (checkCanMove(randomNum)) {
+                    positionsOfCars[times][i] = prevPosition + 1;
+                }
+
+                if (!checkCanMove(randomNum)) {
+                    positionsOfCars[times][i] = prevPosition;
+                }
             }
         }
 
         return positionsOfCars;
     }
 
-    private static int generateRandomInt() {
+    public static int generateRandomNum() {
+        Random random = new Random();
+
         return random.nextInt(BOUND);
     }
 
-    private static boolean checkCanMove(int num) {
-
-        if (num >= 4 && num <= 10) {
-            return true;
-        }
-
-        return false;
+    public static boolean checkCanMove(int num) {
+        return num >= 4 && num <= 9;
     }
 }
