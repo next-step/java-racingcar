@@ -17,28 +17,28 @@ public class StringCalculator {
 
         while (idx < count) {
             String expression = values[idx++];
-            int y = Integer.parseInt(values[idx++]);
-            result = calculrate(result, y, expression);
+            int rightHandSideNumber = Integer.parseInt(values[idx++]);
+            result = calculrate(result, rightHandSideNumber, expression);
         }
 
         return result;
     }
 
-    private static int calculrate(int x, int y, String expression) {
+    private static int calculrate(int leftHandSideNumber, int rightHandSideNumber, String expression) {
         if ("+".equals(expression)) {
-            return x + y;
+            return leftHandSideNumber + rightHandSideNumber;
         }
 
         if ("-".equals(expression)) {
-            return x - y;
+            return leftHandSideNumber - rightHandSideNumber;
         }
 
         if ("*".equals(expression)) {
-            return x * y;
+            return leftHandSideNumber * rightHandSideNumber;
         }
 
         if ("/".equals(expression)) {
-            return x / y;
+            return leftHandSideNumber / rightHandSideNumber;
         }
 
         return Integer.MIN_VALUE;
