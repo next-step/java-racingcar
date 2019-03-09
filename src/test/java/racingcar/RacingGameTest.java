@@ -1,11 +1,13 @@
 package racingcar;
 
 import org.junit.Test;
+import racingcar.random.CarMoveThresholdGenerator;
+import racingcar.random.IntMoreThanCarMoveThresholdGenerator;
+import racingcar.random.RandomIntGenerator;
 
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.in;
 
 public class RacingGameTest {
 
@@ -21,18 +23,36 @@ public class RacingGameTest {
     }
 
     @Test
-    public void 레이스_종료_후_움직인거리가_시도횟수보다_크면_안됨() {
+    public void 전진하지않는_레이싱_경주() {
         int numberOfCar = 3;
         int tryCount = 5;
+        RandomIntGenerator randomIntGenerator = new CarMoveThresholdGenerator();
 
-        RacingGame racingGame = new RacingGame(numberOfCar);
+        RacingGame racingGame = new RacingGame(numberOfCar, randomIntGenerator);
         racingGame.start(tryCount);
 
         Car[] cars = racingGame.getCars();
 
         Arrays.stream(cars)
                 .forEach(car -> {
-                    assertThat(car.getMovedDistance()).isLessThanOrEqualTo(tryCount);
+                    assertThat(car.getMovedDistance()).isEqualTo(0);
+                });
+    }
+
+    @Test
+    public void 항상_전진하는_레이싱_경주() {
+        int numberOfCar = 3;
+        int tryCount = 5;
+        RandomIntGenerator randomIntGenerator = new IntMoreThanCarMoveThresholdGenerator();
+
+        RacingGame racingGame = new RacingGame(numberOfCar, randomIntGenerator);
+        racingGame.start(tryCount);
+
+        Car[] cars = racingGame.getCars();
+
+        Arrays.stream(cars)
+                .forEach(car -> {
+                    assertThat(car.getMovedDistance()).isEqualTo(tryCount);
                 });
     }
 }

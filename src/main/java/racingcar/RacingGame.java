@@ -1,13 +1,21 @@
 package racingcar;
 
+import racingcar.random.PositiveIntUnder10Generator;
+import racingcar.random.RandomIntGenerator;
+
 import java.util.Arrays;
-import java.util.Random;
 
 public class RacingGame {
     private Car[] cars;
+    private RandomIntGenerator randomIntGenerator;
 
     public RacingGame(int numberOfCar) {
+        this(numberOfCar, new PositiveIntUnder10Generator());
+    }
+
+    public RacingGame(int numberOfCar, RandomIntGenerator randomIntGenerator) {
         carSetUp(numberOfCar);
+        this.randomIntGenerator = randomIntGenerator;
     }
 
     private void carSetUp(int numberOfCar) {
@@ -30,8 +38,8 @@ public class RacingGame {
     private void runCars() {
         Arrays.stream(this.cars)
                 .forEach(car -> {
-                    int randomIntUnder10 = new Random().nextInt(10);
-                    car.goWhenGreaterThanThreshold(randomIntUnder10);
+                    int randomInt = this.randomIntGenerator.getRandomInt();
+                    car.goWhenGreaterThanThreshold(randomInt);
                 });
     }
 
