@@ -6,30 +6,36 @@ import java.util.Random;
 
 public class Car {
 
-    public List<Integer> moveCar(int moveCnt) {
+    private final int LIMIT_VALUE = 4;
 
-        List<Integer> moveList = new ArrayList<>();
+    private List<Integer> moveList;
+
+    public void move(int moveCnt) {
+
+        moveList = new ArrayList<>();
 
         for (int i = 0; i < moveCnt; i++) {
-            moveList.add(getMoveCount());
+            int randomValue = getRandomValue();
+            moveList.add(getMoveCount(randomValue));
         }
 
-        return moveList;
     }
 
-    private int getMoveCount() {
-        if (isMoved()) {
+    public int getMoveCount(int randomValue) {
+        if (randomValue > LIMIT_VALUE) {
             return 1;
         }
 
         return 0;
     }
 
-    private boolean isMoved() {
+    public int getRandomValue() {
 
-        Random random = new Random();
+        return new Random().nextInt(10);
 
-        return random.nextInt(10) > 4;
+    }
 
+    public List<Integer> getMoveList() {
+        return moveList;
     }
 }
