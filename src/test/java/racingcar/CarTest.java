@@ -8,26 +8,27 @@ public class CarTest {
     @Test
     public void 전진() {
         Car car = new Car();
+        car.go();
 
-        for (int i = 1; i <= 10; i++) {
-            car.go();
-            int movedDistance = car.getMovedDistance();
-            assertThat(movedDistance).isEqualTo(i);
-        }
+        int movedDistance = car.getMovedDistance();
+        assertThat(movedDistance).isEqualTo(1);
     }
 
     @Test
-    public void 무작위_전진() {
+    public void 전진_성공() {
         Car car = new Car();
-        int movedDistance = 0;
+        int value = Car.MOVE_THRESHOLD + 1;
 
-        for (int i = 0; i < 10; i++) {
-            boolean didCarGo = car.randomlyGo();
+        car.goWhenGreaterThanThreshold(value);
+        assertThat(car.getMovedDistance()).isEqualTo(1);
+    }
 
-            if (didCarGo)
-                movedDistance++;
-        }
+    @Test
+    public void 전진_실패() {
+        Car car = new Car();
+        int value = Car.MOVE_THRESHOLD - 1;
 
-        assertThat(movedDistance).isEqualTo(car.getMovedDistance());
+        car.goWhenGreaterThanThreshold(value);
+        assertThat(car.getMovedDistance()).isEqualTo(0);
     }
 }

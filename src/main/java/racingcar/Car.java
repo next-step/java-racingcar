@@ -1,30 +1,20 @@
 package racingcar;
 
-import java.util.Random;
-
 public class Car {
-    private static final int MOVE_THRESHOLD = 4;
+    public static final int MOVE_THRESHOLD = 3;
     private int movedDistance = 0;
 
     public void go() {
         this.movedDistance++;
     }
 
-    public int getMovedDistance() {
-        return this.movedDistance;
-    }
-
-    public boolean randomlyGo() {
-        if (canGo()) {
+    public boolean goWhenGreaterThanThreshold(int value) {
+        if (MOVE_THRESHOLD < value) {
             go();
             return true;
         }
 
         return false;
-    }
-
-    private boolean canGo() {
-        return MOVE_THRESHOLD < new Random().nextInt(10);
     }
 
     public void showMovedDistance() {
@@ -35,5 +25,9 @@ public class Car {
         }
 
         System.out.println(visualizedMovedDitance);
+    }
+
+    public int getMovedDistance() {
+        return this.movedDistance;
     }
 }
