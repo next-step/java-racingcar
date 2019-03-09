@@ -1,17 +1,6 @@
 package calculator;
 
-import java.text.ParseException;
-import java.util.Scanner;
-
 public class StringCalculator {
-
-    static String inputText() {
-
-        Scanner scanner = new Scanner(System.in);
-        String text = scanner.nextLine();
-
-        return text;
-    }
 
     static int calculate(String text) {
 

@@ -7,12 +7,12 @@ public class RacingGameStatusViewer {
 
         for (int car=0; car<cars; car++) {
             int position = carPosition[car];
-            printStatus(position);
+            printStatusOfEachCar(position);
         }
         System.out.println();
     }
 
-    private static void printStatus(int position) {
+    private static void printStatusOfEachCar(int position) {
         for(int p=0; p<=position ; p++) {
             System.out.print("-");
         }

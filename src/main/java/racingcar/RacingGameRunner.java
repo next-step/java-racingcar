@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.Scanner;
 
-public class RacingGameStarter {
+public class RacingGameRunner {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);

@@ -12,7 +12,6 @@ public class RacingGameTest {
     //1. Test를 위해 RacingGame 클래스에 getter를 만들었는데, 이렇게 해도 되는건가요?
     //2. return type이 void인 method에 대해서는 Test를 어떻게 만들어야하는지 잘 모르겠습니다.
 
-
     @Test
     public void 한대_전진_정지_확인() {
 
