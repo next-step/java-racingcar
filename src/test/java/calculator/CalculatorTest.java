@@ -24,6 +24,18 @@ public class CalculatorTest {
         assertThat(result).isEqualTo(2);
     }
 
+    @Test
+    public void 곱셈() {
+        int result = Calculator.supply(1, 3);
+        assertThat(result).isEqualTo(3);
+    }
+
+    @Test
+    public void 나눗셈() {
+        int result = Calculator.divde(3, 1);
+        assertThat(result).isEqualTo(3);
+    }
+
     @After
     public void tearDown() throws Exception {
         System.out.println("tearDown");

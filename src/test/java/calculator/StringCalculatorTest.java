@@ -30,4 +30,22 @@ public class StringCalculatorTest {
         assertThat(result).isEqualTo(2);
     }
 
+    @Test
+    public void 덧셈_뺄셈() {
+        int result = StringCalculator.calculate("4 + 2 - 1");
+        assertThat(result).isEqualTo(5);
+    }
+
+    @Test
+    public void 덧셈_뺄셈_곱셈() {
+        int result = StringCalculator.calculate("4 + 2 * 1");
+        assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    public void 덧셈_곱셈_나눗셈() {
+        int result = StringCalculator.calculate("2 + 3 * 4 / 2");
+        assertThat(result).isEqualTo(10);
+    }
+
 }
