@@ -6,39 +6,39 @@ import java.util.Random;
 
 public class RacingGame {
 
-//    private int time;
-//    private int[] carPositions = {0, 0, 0};
-
-
-//    public int[] move() {
-//
-//    }
 
     private static final int RULE_COUNT = 10;
     private static final int RUNNABLE_RULE_COUNT = 3;
 
-
     private List<Car> carList;
+    private int moveCount;
 
-
-
-    public void setGame(int carCount, int moveCount) {
-        RacingGame racingGame = new RacingGame();
-        racingGame.setupCar(carCount);
-        printRace(moveCount, racingGame);
+    public RacingGame(int carCount, int moveCount) {
+        this.moveCount = moveCount;
+        this.carList=setupCar(carCount);
     }
 
 
-
-    public void setupCar(int carCount) {
-        this.carList = new ArrayList<>();
+    public List<Car> setupCar(int carCount) {
+        carList = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
             carList.add(new Car());
         }
+        return carList;
     }
 
-    public List<Car> getCarList() {
-        return carList;
+
+    public void startRace() {
+        System.out.println("자동차 대수: " +  carList.size() + "\n");
+        for (int i = 0; i < moveCount; i++) {
+            System.out.println((i+1) + "번쨰횟수");
+            for (Car car : carList) {
+                run(car);
+                System.out.println(printCarDistance(car));
+            }
+
+            System.out.println();
+        }
     }
 
     private void run(Car car) {
@@ -48,27 +48,13 @@ public class RacingGame {
         }
     }
 
-    private String carRaceResult(Car car) {
-        StringBuffer raceResult = new StringBuffer();
+    private String printCarDistance(Car car) {
+        StringBuilder raceResult = new StringBuilder();
         for (int i = 0; i < car.getMovingDistance(); i++) {
             raceResult.append("-");
         }
-        return String.valueOf(raceResult);
+        return raceResult.toString();
 
-    }
-
-    private void printRace(int moveCount, RacingGame racingGame) {
-        List<Car> carList = racingGame.getCarList();
-        System.out.println("자동차 대수: " +  carList.size() + "\n");
-        for (int i = 0; i < moveCount; i++) {
-            System.out.println((i+1) + "번쨰횟수");
-            for (Car car : carList) {
-                racingGame.run(car);
-                System.out.println(racingGame.carRaceResult(car));
-            }
-
-            System.out.println();
-        }
     }
 
 
