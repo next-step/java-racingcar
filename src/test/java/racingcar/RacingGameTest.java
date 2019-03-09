@@ -5,7 +5,7 @@ import racingcar.random.CarMoveThresholdGenerator;
 import racingcar.random.IntMoreThanCarMoveThresholdGenerator;
 import racingcar.random.RandomIntGenerator;
 
-import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,7 +15,7 @@ public class RacingGameTest {
     public void RacingGame_생성_시_자동차_셋업() {
         int numberOfCar = 3;
         RacingGame racingGame = new RacingGame(numberOfCar);
-        Car[] cars = racingGame.getCars();
+        List<Car> cars = racingGame.getCars();
 
         assertThat(cars)
                 .hasSize(numberOfCar)
@@ -31,12 +31,11 @@ public class RacingGameTest {
         RacingGame racingGame = new RacingGame(numberOfCar, randomIntGenerator);
         racingGame.start(tryCount);
 
-        Car[] cars = racingGame.getCars();
+        List<Car> cars = racingGame.getCars();
 
-        Arrays.stream(cars)
-                .forEach(car -> {
-                    assertThat(car.getMovedDistance()).isEqualTo(0);
-                });
+        cars.forEach(car -> {
+            assertThat(car.getMovedDistance()).isEqualTo(0);
+        });
     }
 
     @Test
@@ -48,11 +47,10 @@ public class RacingGameTest {
         RacingGame racingGame = new RacingGame(numberOfCar, randomIntGenerator);
         racingGame.start(tryCount);
 
-        Car[] cars = racingGame.getCars();
+        List<Car> cars = racingGame.getCars();
 
-        Arrays.stream(cars)
-                .forEach(car -> {
-                    assertThat(car.getMovedDistance()).isEqualTo(tryCount);
-                });
+        cars.forEach(car -> {
+            assertThat(car.getMovedDistance()).isEqualTo(tryCount);
+        });
     }
 }
