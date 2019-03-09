@@ -1,47 +1,63 @@
 package calculator;
 
-import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringCalculator {
 
-    static int getString() {
-        Scanner scanner = new Scanner(System.in);
-        String value = scanner.nextLine();
-        return calculate(value);
+    private int result;
+
+    public boolean patternMatcher(String text) {
+        Pattern pattern = Pattern.compile("^([0-9]\\s[[+],[-],[*],[/]]\\s)+[0-9]$");
+        Matcher matcher = pattern.matcher(text);
+
+        return matcher.find();
     }
 
-    static int calculate(String text) {
+    public int calculate(String text) {
 
-        if (text == null || text.equals("")) {
-            return -1;
-        }
+        String[] values = splitTest(text);
 
-        String[] values = text.split(" ");
-
-        int result = Integer.parseInt(values[0]);
-
-        for (int i = 0; i < values.length; i++) {
-            result = getCalcResult(values, result, i);
+        for (int i = 0; i < values.length - 1; i++) {
+            result = doIntCalculate(values[i], values[i + 1]);
         }
 
         return result;
     }
 
-    private static int getCalcResult(String[] values, int result, int i) {
-        switch (values[i]) {
+    public String[] splitTest(String text) {
+
+        String[] values = text.split(" ");
+
+        result = Integer.parseInt(values[0]);
+
+        return values;
+    }
+
+    public int doIntCalculate(String operator, String nextValue) {
+
+        IntCalculator calc = new IntCalculator();
+
+        switch (operator) {
             case "+":
-                result = Calculator.add(result, Integer.parseInt(values[i + 1]));
+                result = calc.add(result, Integer.parseInt(nextValue));
                 break;
             case "-":
-                result = Calculator.subtract(result, Integer.parseInt(values[i + 1]));
+                result = calc.subtract(result, Integer.parseInt(nextValue));
                 break;
             case "*":
-                result = Calculator.multiple(result, Integer.parseInt(values[i + 1]));
+                result = calc.multiplication(result, Integer.parseInt(nextValue));
                 break;
             case "/":
-                result = Calculator.devide(result, Integer.parseInt(values[i + 1]));
+                result = calc.division(result, Integer.parseInt(nextValue));
+                break;
+            default:
                 break;
         }
+        return result;
+    }
+
+    public int getResult() {
         return result;
     }
 
