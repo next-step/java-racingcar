@@ -1,11 +1,13 @@
 package calculator;
 
+import spark.utils.StringUtils;
+
 public class StringCalculator {
 
     static int calculate(String text) {
 
         //validation (null or empty)
-        if (text == null || text.trim() == "") return Integer.MIN_VALUE;
+        if (StringUtils.isEmpty(text)) return Integer.MIN_VALUE;
 
         String[] values = text.split(" ");
         int count = values.length;
