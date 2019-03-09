@@ -26,7 +26,7 @@ public class CarTest {
     @Test
     public void 전진_실패() {
         Car car = new Car();
-        int value = Car.MOVE_THRESHOLD - 1;
+        int value = Car.MOVE_THRESHOLD;
 
         car.goWhenGreaterThanThreshold(value);
         assertThat(car.getMovedDistance()).isEqualTo(0);
