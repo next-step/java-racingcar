@@ -1,25 +1,31 @@
 package calculator;
 
+
+import java.util.Scanner;
+
 public class StringCalculator {
 
     static int calculate(String text) {
         String[] values = text.split(" ");
-        int i = Integer.parseInt(values[0]);
-        String mix = values[1];
-        int j = Integer.parseInt(values[2]);
-        return setFormatMix(i, mix, j);
+        int resultValue = setFormatMix(Integer.parseInt(values[0]), values[1], Integer.parseInt(values[2]));
+        if (values.length - 1 >= 3)
+            for (int i = 3; i < values.length; i += 2) {
+                resultValue = setFormatMix(resultValue, values[i], Integer.parseInt(values[i + 1]));
+            }
+        return resultValue;
     }
 
-    static int setFormatMix(int i, String s, int j) {
-        switch (s) {
+
+    static int setFormatMix(int startNumber, String operation, int endNumber) {
+        switch (operation) {
             case "+":
-                return add(i, j);
+                return add(startNumber, endNumber);
             case "-":
-                return sub(i, j);
+                return sub(startNumber, endNumber);
             case "/":
-                return div(i, j);
+                return div(startNumber, endNumber);
             case "*":
-                return multi(i, j);
+                return multi(startNumber, endNumber);
         }
         return 0;
     }
@@ -28,15 +34,30 @@ public class StringCalculator {
         return i + j;
     }
 
-    public static int sub(int i, int j) {
+    static int sub(int i, int j) {
         return i - j;
     }
 
-    public static int multi(int i, int i1) {
+    static int multi(int i, int i1) {
         return i * i1;
     }
 
-    public static int div(int i, int i1) {
+    static int div(int i, int i1) {
         return i / i1;
+    }
+
+    static void checkNull(String input) {
+        if (input == null || " ".equals(input))
+            throw new NullPointerException();
+    }
+
+    static int checkNumber(String input) {
+        checkNull(input);
+        return Integer.parseInt(input);
+    }
+
+    public static String start() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
     }
 }

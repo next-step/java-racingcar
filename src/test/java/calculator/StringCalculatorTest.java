@@ -2,31 +2,41 @@ package calculator;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringCalculatorTest {
+
+
+    @Test(expected = NumberFormatException.class)
+    public void 숫자인지_판단_슷자가아닌경우() {
+        StringCalculator.checkNumber("x");
+    }
+
     @Test
-    public void 계산() {
-        int result = StringCalculator.calculate("1 + 2");
-        assertThat(result).isEqualTo(3);
+    public void 숫자인지_판단_숫자인경우() {
+        assertThat(StringCalculator.checkNumber("2")).isEqualTo(2);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void 널혹은공백일경우예외처리() {
+        StringCalculator.checkNull(" ");
     }
 
     @Test
     public void 계산기_덧셈() {
-        int result = StringCalculator.add(1, 2);
-        assertThat(result).isEqualTo(3);
+        assertThat(StringCalculator.add(1, 2)).isEqualTo(3);
     }
 
     @Test
     public void 계산기_뺄셈() {
-        int result = StringCalculator.sub(2, 1);
-        assertThat(result).isEqualTo(1);
+        assertThat(StringCalculator.sub(2, 1)).isEqualTo(1);
     }
 
     @Test
     public void 계산기_곱셉() {
-        int result = StringCalculator.multi(2, 3);
-        assertThat(result).isEqualTo(6);
+        assertThat(StringCalculator.multi(2, 3)).isEqualTo(6);
     }
 
     @Test
@@ -35,8 +45,9 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void 구분자나열() {
-//       String[] strings = StringCalculator.getList("1 + 2");
-//       assertThat(
+    public void 계산하기() {
+        assertThat(StringCalculator.calculate("2 + 3 * 4 / 2")).isEqualTo(10);
     }
+
+
 }
