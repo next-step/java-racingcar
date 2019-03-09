@@ -7,10 +7,14 @@ import org.junit.Test;
 //point: import static
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CalculatorTest {
+public class IntCalculatorTest {
+
+    private IntCalculator intCalculator;
+
     //point: before > 각 test 실행 전 모두 실행
     @Before
     public void setUp() throws Exception {
+        intCalculator = new IntCalculator();
         System.out.println("setUp");
     }
 
@@ -18,15 +22,29 @@ public class CalculatorTest {
     @Test
     public void 덧셈() {
         System.out.println("add");
-        int result = Calculator.add(1, 2);
+        int result = intCalculator.add(1, 2);
         assertThat(result).isEqualTo(3);
     }
 
     @Test
     public void 뺄셈() {
         System.out.println("subtract");
-        int result = Calculator.subtract(2, 1);
+        int result = intCalculator.subtract(2, 1);
         assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void 곱셈() {
+        System.out.println("subtract");
+        int result = intCalculator.multiplication(4, 2);
+        assertThat(result).isEqualTo(8);
+    }
+
+    @Test
+    public void 나눗셈() {
+        System.out.println("subtract");
+        int result = intCalculator.division(10, 5);
+        assertThat(result).isEqualTo(2);
     }
 
     //point: after > 각 test 실행 후 모두 실행
