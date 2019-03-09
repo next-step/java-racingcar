@@ -1,37 +1,43 @@
 package racingcar;
 
+import java.util.Arrays;
+import java.util.Random;
+
 public class RacingGame {
     private Car[] cars;
 
-    public void start(int numberOfCar, int tryCount) {
+    public RacingGame(int numberOfCar) {
         carSetUp(numberOfCar);
-
-        System.out.println("실행 결과\n");
-
-        for (int i = 0; i < tryCount; i++) {
-            run();
-            showMovedDistanceOfCars(cars);
-            System.out.println();
-        }
     }
 
-    public Car[] carSetUp(int numberOfCar) {
+    private void carSetUp(int numberOfCar) {
         this.cars = new Car[numberOfCar];
 
         for (int i = 0; i < numberOfCar; i++)
             this.cars[i] = new Car();
-
-        return this.cars;
     }
 
-    private void run() {
-        for (int i = 0, loop = this.cars.length; i < loop; i++)
-            this.cars[i].randomlyGo();
+    public void start(int tryCount) {
+        System.out.println("실행 결과\n");
+
+        for (int i = 0; i < tryCount; i++) {
+            runCars();
+            showMovedDistanceOfCars();
+            System.out.println();
+        }
     }
 
-    private void showMovedDistanceOfCars(Car[] cars) {
-        for (int i = 0, loop = cars.length; i < loop; i++)
-            this.cars[i].showMovedDistance();
+    private void runCars() {
+        Arrays.stream(this.cars)
+                .forEach(car -> {
+                    int randomIntUnder10 = new Random().nextInt(10);
+                    car.goWhenGreaterThanThreshold(randomIntUnder10);
+                });
+    }
+
+    private void showMovedDistanceOfCars() {
+        Arrays.stream(this.cars)
+                .forEach(Car::showMovedDistance);
     }
 
     public Car[] getCars() {
