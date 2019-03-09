@@ -1,5 +1,7 @@
 package calculator;
 
+import java.util.Scanner;
+
 public class StringCalculator {
     static int calculate(String text) {
         if(text == null || text.length() == 0) {
@@ -9,38 +11,39 @@ public class StringCalculator {
         if(values.length == 0) {
             return -1;
         }
-        int i = Integer.parseInt(values[0]);
-        int j = Integer.parseInt(values[2]);
-        String ch = values[1];
+        int firstElement = Integer.parseInt(values[0]);
+        int secondElement = 0;
+        String expression = "";
 
-        for(int k=0; k<values.length; ) {
-            if(k == 0) {
-                i = Integer.parseInt(values[k]);
-            }
-            ch = values[k+1];
-            j = Integer.parseInt(values[k+2]);
-            k = k+2;
-            
+        for(int k=1; k<values.length-1; ) {
+            expression = values[k++];
+            secondElement = Integer.parseInt(values[k++]);
+            firstElement = calculating(expression, firstElement, secondElement);
         }
 
-        Integer x = calculating(ch, i, j);
-        if (x != null) return x;
-        return 0;
+        return firstElement;
     }
 
-    private static Integer calculating(String ch, int i, int j) {
-        if(ch.equals("+")) {
+    private static Integer calculating(String expression, int i, int j) {
+        if(expression.equals("+")) {
             return i + j;
         }
-        if(ch.equals("*")) {
+        if(expression.equals("*")) {
             return i * j;
         }
-        if(ch.equals("-")) {
+        if(expression.equals("-")) {
             return i - j;
         }
-        if(ch.equals("/")) {
+        if(expression.equals("/")) {
             return i / j;
         }
-        return null;
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String value = scanner.nextLine();
+        int result = StringCalculator.calculate(value);
+        System.out.println("result = " + result);
     }
 }

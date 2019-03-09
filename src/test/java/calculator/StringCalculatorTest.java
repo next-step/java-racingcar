@@ -28,4 +28,22 @@ public class StringCalculatorTest {
         int result = StringCalculator.calculate("10 / 2");
         assertThat(result).isEqualTo(5);
     }
+
+    @Test
+    public void 문자열계산() {
+        int result = StringCalculator.calculate("2 + 3 * 4 / 2 - 5");
+        assertThat(result).isEqualTo(5);
+    }
+
+    @Test
+    public void valueEmptyTest() {
+        int result = StringCalculator.calculate(" ");
+        assertThat(result).isEqualTo(-1);
+    }
+
+    @Test
+    public void valueNullTest() {
+        int result = StringCalculator.calculate(null);
+        assertThat(result).isEqualTo(-1);
+    }
 }
