@@ -58,7 +58,7 @@ public class StringCalculator {
         }
 
         if (Objects.equals(expression, "-")) {
-            return Calculator.substract(firstNum, secondNum);
+            return Calculator.subtract(firstNum, secondNum);
         }
 
         if (Objects.equals(expression, "*")) {
@@ -66,7 +66,7 @@ public class StringCalculator {
         }
 
         if (Objects.equals(expression, "/")) {
-            return Calculator.divde(firstNum, secondNum);
+            return Calculator.divide(firstNum, secondNum);
         }
 
         return 0;

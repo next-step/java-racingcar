@@ -20,7 +20,7 @@ public class CalculatorTest {
 
     @Test
     public void 뺄셈() {
-        int result = Calculator.substract(3, 1);
+        int result = Calculator.subtract(3, 1);
         assertThat(result).isEqualTo(2);
     }
 
@@ -32,7 +32,7 @@ public class CalculatorTest {
 
     @Test
     public void 나눗셈() {
-        int result = Calculator.divde(3, 1);
+        int result = Calculator.divide(3, 1);
         assertThat(result).isEqualTo(3);
     }
 

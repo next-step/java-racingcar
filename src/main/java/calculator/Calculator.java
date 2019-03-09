@@ -5,7 +5,7 @@ public class Calculator {
         return i + j;
     }
 
-    static int substract(int i, int j) {
+    static int subtract(int i, int j) {
         return i - j;
     }
 
@@ -13,7 +13,7 @@ public class Calculator {
         return i * j;
     }
 
-    static int divde(int i, int j) {
+    static int divide(int i, int j) {
         return i / j;
     }
 }
