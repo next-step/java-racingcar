@@ -10,7 +10,6 @@ public class RacingCar {
         if (power >= THRESHOLD_POWER) {
             position++;
         }
-
         return position;
     }
 }
