@@ -1,16 +1,22 @@
 package calculator;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class StringCalculator {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("계산식을 입력하세요: ");
         String text = scanner.nextLine();
+
+        if (StringUtils.isEmpty(text)) {
+            throw new Exception("입력값을 다시 확인해주세요.");
+        }
 
         System.out.println("계산 결과: " + calculate(text));
     }
