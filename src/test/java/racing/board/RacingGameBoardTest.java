@@ -1,7 +1,9 @@
 package racing.board;
 
 import org.junit.*;
-import racing.model.RacingCar;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -11,8 +13,7 @@ public class RacingGameBoardTest {
     public void test_차_생성() {
         int size = 3;
         RacingGameBoard board = new RacingGameBoard();
-        board.createCars(size);
-        assertThat(board.getCars().size()).isEqualTo(size);
+        assertThat(board.createCars(size)).isEqualTo(size);
     }
 
     @Test
@@ -20,12 +21,9 @@ public class RacingGameBoardTest {
         RacingGameBoard board = new RacingGameBoard(() -> 10);
         board.createCars(5);
         board.moveCars();
-        board.moveCars();
-        board.moveCars();
-
-        for (RacingCar car : board.getCars()) {
-            assertThat(car.getPosition()).isEqualTo(3);
-        }
+        board.moveCars();;
+        List<Integer> positions = board.moveCars();
+        assertThat(positions).isEqualTo(Arrays.asList(3, 3, 3, 3, 3));
     }
 
     @Test
@@ -33,21 +31,8 @@ public class RacingGameBoardTest {
         RacingGameBoard board = new RacingGameBoard(() -> 3);
         board.createCars(5);
         board.moveCars();
-
-        for (RacingCar car : board.getCars()) {
-            assertThat(car.getPosition()).isEqualTo(0);
-        }
-    }
-
-    @Test
-    public void test_toString() {
-        RacingGameBoard board = new RacingGameBoard(() -> 10);
-        board.createCars(3);
         board.moveCars();
-        assertThat(board.toString()).isEqualTo(
-            "-\n" +
-            "-\n" +
-            "-\n"
-        );
+        List<Integer> positions = board.moveCars();
+        assertThat(positions).isEqualTo(Arrays.asList(0, 0, 0, 0, 0));
     }
 }
