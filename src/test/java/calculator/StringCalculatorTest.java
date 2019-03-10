@@ -9,8 +9,8 @@ public class StringCalculatorTest {
 
     @Test
     public void 덧셈() {
-        int result = StringCalculator.calculate("1 + 2");
-        assertThat(result).isEqualTo(3);
+        int result = StringCalculator.calculate("1 + 2 + 3 + 7");
+        assertThat(result).isEqualTo(13);
     }
 
     @Test
@@ -22,7 +22,7 @@ public class StringCalculatorTest {
     @Test
     public void 곱셈() {
         int result = StringCalculator.calculate("1 * 2");
-        assertThat(result).isEqualTo(3);
+        assertThat(result).isEqualTo(2);
     }
 
     @Test
@@ -31,4 +31,9 @@ public class StringCalculatorTest {
         assertThat(result).isEqualTo(2);
     }
 
+    @Test
+    public void 멀티계산() {
+        int result = StringCalculator.calculate("2 / 1 + 2 + 1 - 3");
+        assertThat(result).isEqualTo(2);
+    }
 }
