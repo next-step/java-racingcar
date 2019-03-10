@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 public class RacingGame {
     private List<Car> cars;
     private RandomIntGenerator randomIntGenerator;
-    private RacingGameJudge judge;
 
     public RacingGame(List<String> carNames) {
         this(carNames, new PositiveIntUnder10Generator());
@@ -20,7 +19,6 @@ public class RacingGame {
     public RacingGame(List<String> carNames, RandomIntGenerator randomIntGenerator) {
         carSetUp(carNames);
         this.randomIntGenerator = randomIntGenerator;
-        this.judge = new RacingGameJudge();
     }
 
     private void carSetUp(List<String> carNames) {
@@ -30,17 +28,11 @@ public class RacingGame {
     }
 
     public void start(int tryCount) {
-        RacingGameOutputView.printLine("실행 결과");
-        RacingGameOutputView.printEmptyLine();
-
         for (int i = 0; i < tryCount; i++) {
             runCars();
             RacingGameOutputView.printMovedDistanceOfCars(this.cars);
             RacingGameOutputView.printEmptyLine();
         }
-
-        List<Car> winners = judge.getWinners(this.cars);
-        RacingGameOutputView.printWinners(winners);
     }
 
     private void runCars() {
