@@ -1,17 +1,10 @@
 package racing.view;
 
 
-public class ResultView implements View {
+public class ResultView {
 
-    String result;
-
-    @Override
-    public void render() {
+    public static void render(String result) {
         System.out.println("실행 결과");
         System.out.print(result);
-    }
-
-    public void setResult(String result) {
-        this.result = result;
     }
 }
