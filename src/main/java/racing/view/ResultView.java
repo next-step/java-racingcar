@@ -2,17 +2,12 @@ package racing.view;
 
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ResultView {
 
     private static final char CHAR_TO_CONVERT = '-';
 
     public static void render(List<String> results) {
-        System.out.println("실행 결과");
-        System.out.print(results
-                .stream()
-                .collect(Collectors.joining("\n")));
     }
 
     public static String convertToChars(List<Integer> positions) {
