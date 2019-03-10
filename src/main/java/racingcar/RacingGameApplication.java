@@ -9,8 +9,7 @@ public class RacingGameApplication {
     }
 
     public static void start() {
-        RacingGameParameterInputView inputView = new RacingGameParameterInputView();
-        RacingGameParameter parameter = inputView.readRacingGameParameter();
+        RacingGameParameter parameter = RacingGameParameterInputView.readRacingGameParameter();
 
         RacingGame racingGame = new RacingGame(parameter.getCarNames());
         racingGame.start(parameter.getTryCount());
