@@ -11,6 +11,10 @@ public class RacingGameOutputView {
         System.out.println();
     }
 
+    public static void printLine(String message) {
+        System.out.println(message);
+    }
+
     public static void printMovedDistance(Car car) {
         StringBuilder visualizedMovedDitance = new StringBuilder();
         int movedDistanceOfCar = car.getMovedDistance();
