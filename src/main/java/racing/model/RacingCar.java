@@ -6,16 +6,11 @@ public class RacingCar {
 
     private int position;
 
-    public boolean move(int power) {
-        if (power < THRESHOLD_POWER) {
-            return false;
+    public int move(int power) {
+        if (power >= THRESHOLD_POWER) {
+            position++;
         }
 
-        this.position++;
-        return true;
-    }
-
-    public int getPosition() {
         return position;
     }
 }
