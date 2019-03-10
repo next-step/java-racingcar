@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class BoundedRandomGenerator implements RandomGenerator {
 
-    Random random;
+    private Random random;
 
-    int bound;
+    private int bound;
 
     public BoundedRandomGenerator(int bound) {
         random = new Random();
