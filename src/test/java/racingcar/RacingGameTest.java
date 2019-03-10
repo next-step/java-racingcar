@@ -1,58 +1,57 @@
 package racingcar;
 
 import org.junit.Test;
+import racingcar.car.PowerGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
 
-    RacingGame racingGame;
-
     //TODO: 궁금한점이 있습니다
     //1. Test를 위해 RacingGame 클래스에 getter를 만들었는데, 이렇게 해도 되는건가요?
+        // > 인스턴수 변수에 대한 getter, setter 생성 X
     //2. return type이 void인 method에 대해서는 Test를 어떻게 만들어야하는지 잘 모르겠습니다.
+        // > return type이 void가 된 구조에 대해 생각해보고, 구조 개선
 
+    //3. class에 private method가 있다면 어떻게 테스트하는게 좋을까요?
+
+
+    //19.03.10 - step1 피드백, 개선한 구조에 맞게 테스트 method 수정
     @Test
-    public void 한대_전진_정지_확인() {
+    public void 전진_정지_확인() {
+        PowerGenerator powerGenerator = new PowerGenerator();
 
-        this.racingGame = new RacingGame(1, 3);
+        int result = powerGenerator.getPower(5);
+        assertThat(result).isEqualTo(1);
 
-        int[] carPosition = racingGame.getCarPosition();
-        assertThat(carPosition[0]).isEqualTo(0);
-
-        racingGame.determineMoveOrNot(0);
-
-        System.out.println(carPosition[0]);
-        assertThat(carPosition[0]).isBetween(0,1);
+        result = powerGenerator.getPower(2);
+        assertThat(result).isEqualTo(0);
     }
 
     @Test
-    public void 한번_모든차량_전진_정지_확인() {
-        this.racingGame = new RacingGame(1, 3);
+    public void 모든차량_전진_정지_확인() {
+        PowerGenerator powerGenerator = new PowerGenerator();
+        int[] carPositions = new int[3];
 
-        assertThat(racingGame.getCarPosition()[0]).isEqualTo(0);
-        assertThat(racingGame.getCarPosition()[1]).isEqualTo(0);
-        assertThat(racingGame.getCarPosition()[2]).isEqualTo(0);
+        powerGenerator.determineMoveOrNot(carPositions);
 
-        racingGame.getMovePower();
+        for (int idx : carPositions) {
+            System.out.println(carPositions[idx]);
+        }
 
-        assertThat(racingGame.getCarPosition()[0]).isBetween(0,1);
-        assertThat(racingGame.getCarPosition()[1]).isBetween(0,1);
-        assertThat(racingGame.getCarPosition()[2]).isBetween(0,1);
-
-        System.out.println(racingGame.getCarPosition()[0]);
-        System.out.println(racingGame.getCarPosition()[1]);
-        System.out.println(racingGame.getCarPosition()[2]);
-
+        assertThat(carPositions[0]).isBetween(0, 1);
+        assertThat(carPositions[1]).isBetween(0, 1);
+        assertThat(carPositions[2]).isBetween(0, 1);
     }
 
     @Test
     public void 레이싱_게임_3대_5회() {
-        this.racingGame = new RacingGame(5, 3);
+        RacingGame racingGame = new RacingGame(3, 5);
         racingGame.move();
+        int[] carPositions = racingGame.loadResultofGame();
 
-        assertThat(racingGame.getCarPosition()[0]).isBetween(0,4);
-        assertThat(racingGame.getCarPosition()[1]).isBetween(0,4);
-        assertThat(racingGame.getCarPosition()[2]).isBetween(0,4);
+        assertThat(carPositions[0]).isBetween(0, 4);
+        assertThat(carPositions[1]).isBetween(0, 4);
+        assertThat(carPositions[2]).isBetween(0, 4);
     }
 }

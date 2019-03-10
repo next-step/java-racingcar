@@ -12,7 +12,7 @@ public class RacingGameRunner {
         System.out.println("시도할 회수는 몇 회 인가요?");
         int time = scan.nextInt();
 
-        RacingGame racingGame = new RacingGame(time, cars);
+        RacingGame racingGame = new RacingGame(cars, time);
         racingGame.move();
     }
 }
