@@ -14,6 +14,19 @@ public class RacingGame {
         this.carPositions = carPositions;
     }
 
+    public RacingGame(int[] carPositions, int time) {
+        this.carPositions = carPositions;
+        this.time = time;
+    }
+
+    public int[] start() {
+        for (int i = 0; i < time; i++) {
+            carPositions = move();
+        }
+
+        return carPositions;
+    }
+
     public int[] move() {
         return Arrays.stream(carPositions).map(v -> move(v)).toArray();
     }

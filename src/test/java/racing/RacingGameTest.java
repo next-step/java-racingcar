@@ -61,4 +61,38 @@ public class RacingGameTest {
         //then
         assertThat(actual).isEqualTo(new int[]{1, 1, 1});
     }
+
+    @Test
+    public void 게임한번실행() {
+        //given
+        RacingGame game = new RacingGame(new int[]{0, 0, 0}, 1) {
+            @Override
+            public boolean canMove() {
+                return true;
+            }
+        };
+
+        //when
+        int[] actual = game.start();
+
+        //then
+        assertThat(actual).isEqualTo(new int[]{1, 1, 1});
+    }
+
+    @Test
+    public void 게임여러번실행() {
+        //given
+        RacingGame game = new RacingGame(new int[]{0, 0, 0}, 3) {
+            @Override
+            public boolean canMove() {
+                return true;
+            }
+        };
+
+        //when
+        int[] actual = game.start();
+
+        //then
+        assertThat(actual).isEqualTo(new int[]{3, 3, 3});
+    }
 }
