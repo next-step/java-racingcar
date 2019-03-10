@@ -1,52 +1,79 @@
 package calculator;
 
+import java.util.Arrays;
+
 public class StringCalculator {
-    static int calculate(String text) {
+    static int run(String text) {
         String[] values = text.split(" ");
 
-        int result = 0;
-        int first = Integer.parseInt(values[0]);
-        for (int i = 0; i <= values.length; i ++) {
-            String operator = values[i + 1];
-            int second = Integer.parseInt(values[i + 2]);
-            result = calculate(first, operator, second);
-            first = result;
+        return recursive(values);
+    }
+
+    private static int recursive(String[] input) {
+        int lastValue = getLastValue(input[input.length - 1]);
+        if (isValue(input)) {
+            return lastValue;
         }
-        return result;
+
+        String operator = getOperator(input);
+        return calculate(recursive(resize(input)), operator, lastValue);
+    }
+
+    private static boolean isValue(String[] input) {
+        return input.length == 1;
+    }
+
+    private static String getOperator(String[] values) {
+        return values[values.length - 2];
+    }
+
+    private static int getLastValue(String value) {
+        return Integer.parseInt(value);
+    }
+
+    private static String[] resize(String[] values) {
+        String[] copy = new String[values.length - 2];
+        System.arraycopy(values, 0, copy, 0, values.length - 2);
+        return copy;
     }
 
     private static int calculate(int first, String operator, int second) {
-        if (operator.equals("+")) {
-            return add(first, second);
+        return Operator.match(operator).calculate(first, second);
+    }
+
+}
+
+enum Operator {
+    ADD("+") {
+        int calculate(int first, int second) {
+            return first + second;
         }
-        if (operator.equals("-")) {
-            return sub(first, second);
+    },
+    SUB("-") {
+        int calculate(int first, int second) {
+            return first - second;
         }
-
-        if (operator.equals("*")) {
-            return multi(first, second);
+    },
+    MULTI("*") {
+        int calculate(int first, int second) {
+            return first * second;
         }
-
-        if (operator.equals("%")) {
-            return dividen(first, second);
+    },
+    DIVIDEN("/") {
+        int calculate(int first, int second) {
+            return first / second;
         }
-        return 0;
+    };
+
+    String value;
+
+    Operator(String value) {
+        this.value = value;
     }
 
-    static int add(int first, int second) {
-        return first + second;
+    static Operator match(String operator) {
+        return Arrays.stream(Operator.values()).filter(t -> t.value.equals(operator)).findFirst().get();
     }
 
-    static int sub(int first, int second) {
-        return first - second;
-    }
-
-    static int multi(int first, int second) {
-        return first * second;
-    }
-
-    static int dividen(int first, int second) {
-        return first / second;
-    }
-
+    abstract int calculate(int first, int second);
 }
