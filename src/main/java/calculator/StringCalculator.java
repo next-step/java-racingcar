@@ -1,49 +1,55 @@
 package calculator;
 
+import java.util.Scanner;
+
 import static java.lang.Integer.parseInt;
 
 public class StringCalculator {
-    static final String ADD = "+";
-    static final String SUBTRACT = "-";
-    static final String MULTIPLY = "*";
-    static final String DIVIDE = "/";
+    static String[] values;
+    static int result;
+
+    static void input() {
+        System.out.println("문자열을 입력하세요.");
+        Scanner scanner = new Scanner(System.in);
+        result = calculate(scanner.nextLine());
+    }
+
+    static void validate(String[] values) {
+        if (values.length < 3)
+            System.out.println("계산할 수 없는 문자열입니다.");
+    }
 
     static int calculate(String text) {
         String[] values = text.split(" ");
-        int prev, next;
+        validate(values);
+
+        int prev, post;
         prev = parseInt(values[0]);
-        for (int i = 0; i < values.length - 2; i+=2) {
-            next = parseInt(values[i + 2]);
-            prev = matchOperator(prev, values[i + 1], next);
+        for (int i = 0; i < values.length - 2; i += 2) {
+            post = parseInt(values[i + 2]);
+            prev = calculate(prev, values[i + 1], post);
         }
         return prev;
     }
 
-    static int matchOperator(int prev, String operator, int next) {
-        if (operator.equals(ADD))
-            return add(prev, next);
-        if (operator.equals(SUBTRACT))
-            return subtract(prev, next);
-        if (operator.equals(MULTIPLY))
-            return multiply(prev, next);
-        if (operator.equals(DIVIDE))
-            return divide(prev, next);
+    static int calculate(int prev, String operator, int post) {
+        switch (operator) {
+            case "+":
+                return prev + post;
+            case "-":
+                return prev - post;
+            case "*":
+                return prev * post;
+            case "/":
+                return prev / post;
+            default:
+                System.out.println("존재하지 않는 사칙연산 기호입니다.");
+        }
         return 0;
     }
 
-    static int add(int prev, int next) {
-        return prev + next;
-    }
-
-    static int subtract(int prev, int next) {
-        return prev - next;
-    }
-
-    static int multiply(int prev, int next) {
-        return prev * next;
-    }
-
-    static int divide(int prev, int next) {
-        return prev / next;
+    static void output() {
+        System.out.println(result);
     }
 }
+
