@@ -8,6 +8,6 @@ public class Car {
     }
 
     int addPosition() {
-        return this.position += 1;
+        return ++this.position;
     }
 }

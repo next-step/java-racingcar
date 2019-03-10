@@ -2,18 +2,19 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
     private static final int COUNT_UP_TARGET = 4;
 
+    private RandomGenerator randomGenerator;
     private List<Car> cars;
 
-    public RacingGame(int carCount) {
-        this.cars = setCars(carCount);
+    public RacingGame(int carCount, RandomGenerator randomGenerator) {
+        this.cars = createCars(carCount);
+        this.randomGenerator = randomGenerator;
     }
 
-    private List<Car> setCars(int carCount) {
+    private List<Car> createCars(int carCount) {
         List<Car> cars = new ArrayList<>(carCount);
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
@@ -25,20 +26,13 @@ public class RacingGame {
         return this.cars;
     }
 
-    public boolean run(Car car, int randomValue) {
-        if (randomValue >= COUNT_UP_TARGET) {
+    public void run(Car car) {
+        if (randomGenerator.getRandomValue() >= COUNT_UP_TARGET) {
             car.addPosition();
-            return true;
         }
-        return false;
     }
 
-    public int getRandomValue(int maxRange) {
-        Random generator = new Random();
-        return generator.nextInt(maxRange);
-    }
-
-    public String printRaceResult(Car car) {
+    public String generateRaceResultString(Car car) {
         StringBuilder result = new StringBuilder("|");
         for (int i = 0; i < car.getPosition(); i++) {
             result.append("-");

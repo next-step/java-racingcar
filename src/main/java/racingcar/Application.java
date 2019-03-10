@@ -14,13 +14,13 @@ public class Application {
 
         System.out.println();
 
-        RacingGame racingGame = new RacingGame(carCount);
+        RacingGame racingGame = new RacingGame(carCount, new RandomGeneratorImpl(MAX_RANGE));
         List<Car> cars = racingGame.getCars();
 
         for (int i = 0; i < tryCount; i++) {
             for (Car car : cars) {
-                racingGame.run(car, racingGame.getRandomValue(MAX_RANGE));
-                System.out.println(racingGame.printRaceResult(car));
+                racingGame.run(car);
+                System.out.println(racingGame.generateRaceResultString(car));
             }
             System.out.println();
         }
