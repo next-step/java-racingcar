@@ -9,10 +9,25 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class CarTest {
 
     @Test
-    public void 자동차달리기정보가져오기() {
-        Car car = new Car();
-        car.move(4);
-        assertThat(car.getMoveList().size()).isEqualTo(4);
+    public void 정규식() {
+        boolean result = RacingCarUtils.checkPattern("abc,asdf,erwe");
+        assertThat(result).isTrue();
+        result = RacingCarUtils.checkPattern("a,b,c,d,e");
+        assertThat(result).isTrue();
+        result = RacingCarUtils.checkPattern("a,b");
+        assertThat(result).isTrue();
+        result = RacingCarUtils.checkPattern(" aa,bb,cc");
+        assertThat(result).isFalse();
+        result = RacingCarUtils.checkPattern("aaa,bbb,");
+        assertThat(result).isFalse();
+    }
+
+    @Test
+    public void 자동차생성() {
+        String[] names = RacingCarUtils.splitText("aaa,bbb,ccc");
+        List<Car> cars = RacingCarUtils.getCars(names);
+        assertThat(cars.size()).isEqualTo(3);
+        assertThat(cars.get(0).getName()).isEqualTo("aaa");
     }
 
     @Test
@@ -29,10 +44,5 @@ public class CarTest {
         assertThat(car.getRandomValue()).isGreaterThanOrEqualTo(0);
     }
 
-    @Test
-    public void 자동차리스트가져오기() {
-        List<Car> carList = RacingCarUtils.getCarList(3, 5);
-        assertThat(carList.size()).isEqualTo(3);
-    }
 
 }
