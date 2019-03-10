@@ -13,7 +13,7 @@ public class RacingGameBoard {
 
     private final List<RacingCar> cars;
 
-    RandomGenerator randomGenerator;
+    private RandomGenerator randomGenerator;
 
     public RacingGameBoard() {
         this(new BoundedRandomGenerator(RANDOM_UPPER_BOUND));
