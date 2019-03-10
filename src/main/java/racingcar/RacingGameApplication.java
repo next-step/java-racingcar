@@ -11,7 +11,7 @@ public class RacingGameApplication {
         RacingGameParameterInputView inputView = new RacingGameParameterInputView();
         RacingGameParameter parameter = inputView.readRacingGameParameter();
 
-        RacingGame racingGame = new RacingGame(parameter.getNumberOfCar());
+        RacingGame racingGame = new RacingGame(parameter.getCarNames());
         racingGame.start(parameter.getTryCount());
     }
 }
