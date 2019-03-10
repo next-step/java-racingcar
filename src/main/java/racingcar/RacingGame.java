@@ -4,12 +4,14 @@ import racingcar.random.PositiveIntUnder10Generator;
 import racingcar.random.RandomIntGenerator;
 import racingcar.ui.RacingGameOutputView;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
     private List<Car> cars;
     private RandomIntGenerator randomIntGenerator;
+    private RacingGameJudge judge;
 
     public RacingGame(List<String> carNames) {
         this(carNames, new PositiveIntUnder10Generator());
@@ -18,6 +20,7 @@ public class RacingGame {
     public RacingGame(List<String> carNames, RandomIntGenerator randomIntGenerator) {
         carSetUp(carNames);
         this.randomIntGenerator = randomIntGenerator;
+        this.judge = new RacingGameJudge();
     }
 
     private void carSetUp(List<String> carNames) {
@@ -35,7 +38,7 @@ public class RacingGame {
             RacingGameOutputView.printEmptyLine();
         }
 
-        List<Car> winners = getWinners();
+        List<Car> winners = judge.getWinners(this.cars);
         RacingGameOutputView.printWinners(winners);
     }
 
@@ -47,21 +50,6 @@ public class RacingGame {
     }
 
     public List<Car> getCars() {
-        return this.cars;
-    }
-
-    public List<Car> getWinners() {
-        int maxMovedDistance = getMaxMovedDistanceOfCars();
-
-        return this.cars.stream()
-                .filter(car -> maxMovedDistance == car.getMovedDistance())
-                .collect(Collectors.toList());
-    }
-
-    private int getMaxMovedDistanceOfCars() {
-        return this.cars.stream()
-                .mapToInt(Car::getMovedDistance)
-                .max()
-                .getAsInt();
+        return Collections.unmodifiableList(this.cars);
     }
 }

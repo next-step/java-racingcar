@@ -61,19 +61,4 @@ public class RacingGameTest {
             assertThat(car.getMovedDistance()).isEqualTo(tryCount);
         });
     }
-
-    @Test
-    public void 우승자_확인() {
-        RacingGame racingGame = new RacingGame(carNames);
-        List<Car> cars = racingGame.getCars();
-
-        Car winner1 = cars.get(0);
-        Car winner2 = cars.get(1);
-        winner1.go();
-        winner2.go();
-
-        List<Car> winners = racingGame.getWinners();
-        assertThat(winners)
-                .containsExactly(winner1, winner2);
-    }
 }
