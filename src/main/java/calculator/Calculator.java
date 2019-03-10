@@ -10,9 +10,9 @@ public class Calculator {
         int numberOfOperation = inputArray.length / 2;
 
         for (int i = 0; i < numberOfOperation; i++) {
-            String op = inputArray[i * 2 + 1];
+            String operation = inputArray[i * 2 + 1];
             int newNum = Integer.parseInt(inputArray[i * 2 + 2]);
-            result = calculateEach(result, op, newNum);
+            result = calculate(result, operation, newNum);
         }
 
         return result;
@@ -25,21 +25,8 @@ public class Calculator {
         return input.split(" ");
     }
 
-    private static int calculateEach(int oldNum, String op, int newNum) {
-        if (StringUtils.equals(op, "+")) {
-            return oldNum + newNum;
-        }
-        if (StringUtils.equals(op, "-")) {
-            return oldNum - newNum;
-        }
-        if (StringUtils.equals(op, "*")) {
-            return oldNum * newNum;
-        }
-        if (StringUtils.equals(op, "/")) {
-            return oldNum / newNum;
-        }
-
-        throw new RuntimeException("부호 오류 발생");
+    private static int calculate(int oldNum, String operation, int newNum) {
+        OperationType type = OperationType.findType(operation);
+        return type.calculate(oldNum, newNum);
     }
-
 }
