@@ -21,11 +21,9 @@ public class RacingGame {
     }
 
     private void carSetUp(List<String> carNames) {
-        this.cars = new ArrayList<>(carNames.size());
-
-        carNames.forEach(carName ->
-                this.cars.add(new Car(carName))
-        );
+        this.cars = carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public void start(int tryCount) {
