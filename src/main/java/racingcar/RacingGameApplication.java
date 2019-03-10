@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.ui.RacingGameParameterInputView;
 import racingcar.vo.RacingGameParameter;
 
 public class RacingGameApplication {

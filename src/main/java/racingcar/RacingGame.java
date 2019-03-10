@@ -2,8 +2,8 @@ package racingcar;
 
 import racingcar.random.PositiveIntUnder10Generator;
 import racingcar.random.RandomIntGenerator;
+import racingcar.ui.RacingGameOutputView;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,11 +31,12 @@ public class RacingGame {
 
         for (int i = 0; i < tryCount; i++) {
             runCars();
-            printMovedDistanceOfCars();
-            System.out.println();
+            RacingGameOutputView.printMovedDistanceOfCars(this.cars);
+            RacingGameOutputView.printEmptyLine();
         }
 
-        printWinners();
+        List<Car> winners = getWinners();
+        RacingGameOutputView.printWinners(winners);
     }
 
     private void runCars() {
@@ -43,10 +44,6 @@ public class RacingGame {
             int randomInt = this.randomIntGenerator.getRandomInt();
             car.goWhenGreaterThanThreshold(randomInt);
         });
-    }
-
-    private void printMovedDistanceOfCars() {
-        this.cars.forEach(Car::printMovedDistance);
     }
 
     public List<Car> getCars() {
@@ -66,13 +63,5 @@ public class RacingGame {
                 .mapToInt(Car::getMovedDistance)
                 .max()
                 .getAsInt();
-    }
-
-    private void printWinners() {
-        String winnerCarNames = getWinners().stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(", "));
-
-        System.out.println(winnerCarNames + "가 최종 우승했습니다.");
     }
 }
