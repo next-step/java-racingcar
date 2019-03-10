@@ -12,7 +12,7 @@ public class RacingGameTest {
     @Test
     public void setCarList() {
         int carSize = 5;
-        List<Car> result = RacingGame.setCarList(carSize);
+        List<Car> result = RacingGame.setCars(carSize);
 
         assertThat(result.size()).isEqualTo(carSize);
     }
@@ -21,7 +21,7 @@ public class RacingGameTest {
     public void move() {
         int carSize = 5;
         List<Car> carList = makeTestCarList(5);
-        List<Car> resultList = RacingGame.move(carList);
+        List<Car> resultList = RacingGame.playingGame(carList);
 
         assertThat(resultList.size()).isEqualTo(carSize);
     }
@@ -39,16 +39,16 @@ public class RacingGameTest {
     public void carStatusStop() {
         int testRandomValue = 3;
         Car testCar = new Car();
-        testCar.setStatus(testRandomValue);
+        testCar.move(testRandomValue);
 
         assertThat(testCar.getMovingCount()).isEqualTo(0);
     }
 
     @Test
     public void carStatusStart() {
-        int testRandomValue = 7;
+        int testRandomValue = 4;
         Car testCar = new Car();
-        testCar.setStatus(testRandomValue);
+        testCar.move(testRandomValue);
 
         assertThat(testCar.getMovingCount()).isEqualTo(1);
     }
