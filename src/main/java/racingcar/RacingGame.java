@@ -1,70 +1,84 @@
 package racingcar;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 import org.apache.commons.lang3.StringUtils;
 
 public class RacingGame {
 
-    private static final int BOUND = 10;
+    static class RacingGameHelper {
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        static private int numberOfCars;
+        static private int numberOfTimes;
 
-        System.out.println("자동차 대수는 몇 대 인가요? ");
-        int numberOfCars = scanner.nextInt();
+        private static void configure() {
+            Scanner scanner = new Scanner(System.in);
 
-        System.out.println("시도할 회수는 몇 회 인가요? ");
-        int numberOfTimes = scanner.nextInt();
+            System.out.println("자동차 대수는 몇 대 인가요? ");
+            numberOfCars = scanner.nextInt();
 
-        int[][] positionsOfCars = makeMoveOfCars(numberOfCars, numberOfTimes);
-
-        System.out.println("실행 결과");
-        showGame(positionsOfCars);
-    }
-
-    private static void showGame(int[][] positionsOfCars) {
-
-        for (int[] positionsOfCar : positionsOfCars) {
-
-            for (int position : positionsOfCar) {
-                String move = StringUtils.repeat("-", position);
-                System.out.println(move);
-            }
-
-            System.out.print("\n");
+            System.out.println("시도할 회수는 몇 회 인가요? ");
+            numberOfTimes = scanner.nextInt();
         }
 
+        static void show(List<RacingGameBoard> racingGameBoards) {
+            for (int i = 0; i < numberOfTimes; i++) {
+                for (int j = 0; j < numberOfCars; j++) {
+                    System.out.println(StringUtils.repeat("-", racingGameBoards.get(i).getCars().get(j).getPosition()));
+                }
+
+                System.out.println();
+            }
+        }
     }
 
-    public static int[][] makeMoveOfCars(int numberOfCars, int numberOfTimes) {
-        int[][] positionsOfCars = new int[numberOfTimes][numberOfCars];
+    static List<RacingGameBoard> load(int numberOfCars, int numberOfTimes) throws Exception {
 
-        for (int times = 0; times < numberOfTimes; times++) {
-            for (int i = 0; i < numberOfCars; i++) {
-                int randomNum = generateRandomNum();
-                int prevPosition = positionsOfCars[times - 1 < 0 ? 0 : times - 1][i];
+        if (numberOfCars == 0 || numberOfTimes == 0) {
+            throw new Exception("게임 로딩 실패...");
+        }
 
-                if (checkCanMove(randomNum)) {
-                    positionsOfCars[times][i] = prevPosition + 1;
-                }
+        List<RacingGameBoard> racingGameBoards = new ArrayList<>();
 
-                if (!checkCanMove(randomNum)) {
-                    positionsOfCars[times][i] = prevPosition;
-                }
+        for (int i = 0; i < numberOfTimes; i++) {
+            racingGameBoards.add(new RacingGameBoard(i, numberOfCars));
+        }
+
+        return racingGameBoards;
+    }
+
+    static List<RacingGameBoard> play(List<RacingGameBoard> racingGameBoards, int numberOfCars, int numberOfTimes) throws Exception {
+        if (Objects.isNull(racingGameBoards)) {
+            throw new Exception("게임 시작 실패...");
+        }
+
+        for (int i = 0; i < numberOfTimes; i++) {
+            racingGameBoards.get(i).play();
+
+            for (int j = 0; j < numberOfCars; j++) {
+                int prevPosition = i - 1 < 0 ? 0 : racingGameBoards.get(i - 1).getCars().get(j).getPosition();
+                int curPosition = prevPosition + racingGameBoards.get(i).getCars().get(j).getMove();
+
+                racingGameBoards.get(i).getCars().get(j).setPosition(curPosition);
             }
         }
 
-        return positionsOfCars;
+        return racingGameBoards;
     }
 
-    public static int generateRandomNum() {
-        Random random = new Random();
+    public static void main(String[] args) throws Exception {
 
-        return random.nextInt(BOUND);
+        RacingGameHelper.configure();
+
+        List<RacingGameBoard> racingGameBoards = load(RacingGameHelper.numberOfCars, RacingGameHelper.numberOfTimes);
+        play(racingGameBoards, RacingGameHelper.numberOfCars, RacingGameHelper.numberOfTimes);
+
+        RacingGameHelper.show(racingGameBoards);
+
+        System.out.println(racingGameBoards);
     }
 
-    public static boolean checkCanMove(int num) {
-        return num >= 4 && num <= 9;
-    }
+
 }

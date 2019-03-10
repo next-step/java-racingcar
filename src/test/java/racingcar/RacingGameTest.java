@@ -2,39 +2,33 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
 import java.util.Random;
 import org.junit.Test;
 
 public class RacingGameTest {
 
+    private int numberOfCars = 3;
+    private int numberOfTimes = 5;
+
     @Test
-    public void test_makeMoveOfCars() {
-        int numTimes = 3, numCars = 5;
-        int[][] result = RacingGame.makeMoveOfCars(numCars, numTimes);
+    public void test_load() throws Exception {
+        List<RacingGameBoard> racingGameBoards = RacingGame.load(numberOfCars, numberOfTimes);
 
-        assertThat(result.length).isEqualTo(numTimes);
-        assertThat(result[new Random().nextInt(numTimes)].length).isEqualTo(numCars);
-
-        int timeN = new Random().nextInt(numTimes-1);
-        int carN = new Random().nextInt(numCars);
-
-        while (timeN < 1) {
-            timeN = new Random().nextInt(numTimes-1);
-        }
-
-        assertThat(result[timeN][carN]).isGreaterThanOrEqualTo(result[timeN-1][carN]);
-        assertThat(result[timeN][carN]).isLessThanOrEqualTo(result[timeN+1][carN]);
+        assertThat(racingGameBoards.size()).isEqualTo(numberOfTimes);
     }
 
     @Test
-    public void test_generateRandomNum() {
-        assertThat(RacingGame.generateRandomNum()).isBetween(0, 9);
-    }
+    public void test_play() throws Exception {
+        List<RacingGameBoard> racingGameBoards = RacingGame
+            .play(RacingGame.load(numberOfCars, numberOfTimes), numberOfCars, numberOfTimes);
 
-    @Test
-    public void test_checkCanMove() {
-        assertThat(RacingGame.checkCanMove(8)).isEqualTo(true);
-        assertThat(RacingGame.checkCanMove(3)).isEqualTo(false);
-        assertThat(RacingGame.checkCanMove(10)).isEqualTo(false);
+        assertThat(racingGameBoards.get(0).getCars().size()).isEqualTo(numberOfCars);
+
+        Random random = new Random();
+        int randomNum = random.nextInt(numberOfTimes - 1);
+
+        assertThat(racingGameBoards.get(randomNum).getCars().get(0).getPosition())
+            .isLessThanOrEqualTo(racingGameBoards.get(randomNum + 1).getCars().get(0).getPosition());
     }
 }
