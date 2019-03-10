@@ -6,8 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringCalculator {
+    private static final String INPUT_ERR = "입력한 계산식을 다시 확인해주세요.";
+
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
 
@@ -15,60 +19,90 @@ public class StringCalculator {
         String text = scanner.nextLine();
 
         if (StringUtils.isEmpty(text)) {
-            throw new Exception("입력값을 다시 확인해주세요.");
+            throw new Exception(INPUT_ERR);
+        }
+
+        if (!checkCalculatorText(text)) {
+            throw new Exception(INPUT_ERR);
         }
 
         System.out.println("계산 결과: " + calculate(text));
     }
 
-    public static int calculate(String text) {
+    public static boolean checkCalculatorText(String text) {
+        Pattern simpleCalcPattern = Pattern.compile("^(\\d+)((\\s[+\\-*/]\\s)(\\d+))+$");
+        Matcher simpleCalcMatcher = simpleCalcPattern.matcher(text);
 
-        String[] values = text.split(" ");
-        List<String> expressions = new ArrayList<>();
-        List<Integer> nums = new ArrayList<>();
+        return simpleCalcMatcher.matches();
+    }
 
-        for (int i = 0; i < values.length; i++) {
-            if (i % 2 == 0) {
-                nums.add(Integer.valueOf(values[i]));
-            }
+    public static List<String> extractOperators(String text) {
+        Pattern simplePattern = Pattern.compile("[+\\-*/]");
+        Matcher simpleMatcher = simplePattern.matcher(text);
 
-            if (i % 2 == 1) {
-                expressions.add(values[i]);
-            }
+        List<String> operators = new ArrayList<>();
+
+        while (simpleMatcher.find()) {
+            operators.add(simpleMatcher.group());
         }
 
-        int numsSize = nums.size();
+        return operators;
+    }
+
+    public static List<Integer> extractOperands(String text) {
+        Pattern simplePattern = Pattern.compile("\\d+");
+        Matcher simpleMatcher = simplePattern.matcher(text);
+
+        List<Integer> operands = new ArrayList<>();
+
+        while (simpleMatcher.find()) {
+            operands.add(Integer.parseInt(simpleMatcher.group()));
+        }
+
+        return operands;
+    }
+
+    public static Calculator selectCalculator(String operatorLooks) throws Exception {
+        if (Objects.equals(operatorLooks, "+")) {
+            return Calculator.ADD;
+        }
+
+        if (Objects.equals(operatorLooks, "-")) {
+            return Calculator.SUBTRACT;
+        }
+
+        if (Objects.equals(operatorLooks, "*")) {
+            return Calculator.MULTIPLY;
+        }
+
+        if (Objects.equals(operatorLooks, "/")) {
+            return Calculator.DIVIDE;
+        }
+
+        throw new Exception(INPUT_ERR);
+    }
+
+    public static int calculate(String text) throws Exception {
+
         int result = 0;
 
-        for (String expr : expressions) {
-            result = calculate(nums.get(0), nums.get(1), expr);
+        List<String> operators = extractOperators(text);
+        List<Integer> operands = extractOperands(text);
 
-            nums = nums.subList(1, numsSize--);
-            nums.set(0, result);
+        int j = 0;
+        for (int i = 0; i < operands.size() - 1; i++) {
+            result = calculate(operands.get(i), operands.get(i+1), operators.get(j++));
+
+            operands.set(i, 0);
+            operands.set(i+1, result);
         }
-
 
         return result;
     }
 
-    private static int calculate(int firstNum, int secondNum, String expression) {
+    private static int calculate(int firstNum, int secondNum, String operatorLooks) throws Exception {
+        Calculator calc = selectCalculator(operatorLooks);
 
-        if (Objects.equals(expression, "+")) {
-            return Calculator.add(firstNum, secondNum);
-        }
-
-        if (Objects.equals(expression, "-")) {
-            return Calculator.subtract(firstNum, secondNum);
-        }
-
-        if (Objects.equals(expression, "*")) {
-            return Calculator.supply(firstNum, secondNum);
-        }
-
-        if (Objects.equals(expression, "/")) {
-            return Calculator.divide(firstNum, secondNum);
-        }
-
-        return 0;
+        return calc.calculate(firstNum, secondNum);
     }
 }

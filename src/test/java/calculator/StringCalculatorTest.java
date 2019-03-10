@@ -2,56 +2,44 @@ package calculator;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class StringCalculatorTest {
+
     @Test
-    public void 덧셈() {
-        int result = StringCalculator.calculate("1 + 2");
-        assertThat(result).isEqualTo(3);
+    public void test_checkCalculatorText() {
+        assertThat(StringCalculator.checkCalculatorText("1 + 2")).isEqualTo(true);
+        assertThat(StringCalculator.checkCalculatorText("1 + 5 * 4 / 1 - 1")).isEqualTo(true);
+        assertThat(StringCalculator.checkCalculatorText("1 ! 5 * 4 / 1 - 1")).isEqualTo(false);
     }
 
     @Test
-    public void 뺄셈() {
-        int result = StringCalculator.calculate("3 - 2");
-        assertThat(result).isEqualTo(1);
+    public void test_extractExpressions() {
+        assertThat(StringCalculator.extractOperators("1 + 222 * 4 / 3 - 2"))
+                .isEqualTo(Arrays.asList("+", "*", "/", "-"));
     }
 
     @Test
-    public void 곱셈() {
-        int result = StringCalculator.calculate("1 * 2");
-        assertThat(result).isEqualTo(2);
+    public void test_extractOperands() {
+        assertThat(StringCalculator.extractOperands("13 + 2 * 4 / 3 - 2"))
+                .isEqualTo(Arrays.asList(13, 2, 4, 3, 2));
     }
 
     @Test
-    public void 나눗셈() {
-        int result = StringCalculator.calculate("4 / 2");
-        assertThat(result).isEqualTo(2);
+    public void test_selectCalculator() throws Exception {
+        assertThat(StringCalculator.selectCalculator("+")).isEqualTo(Calculator.ADD);
+        assertThat(StringCalculator.selectCalculator("-")).isEqualTo(Calculator.SUBTRACT);
+        assertThat(StringCalculator.selectCalculator("*")).isEqualTo(Calculator.MULTIPLY);
+        assertThat(StringCalculator.selectCalculator("/")).isEqualTo(Calculator.DIVIDE);
     }
 
     @Test
-    public void 덧셈_뺄셈() {
-        int result = StringCalculator.calculate("4 + 2 - 1");
-        assertThat(result).isEqualTo(5);
-    }
-
-    @Test
-    public void 덧셈_뺄셈_곱셈() {
-        int result = StringCalculator.calculate("4 + 2 * 1");
-        assertThat(result).isEqualTo(6);
-    }
-
-    @Test
-    public void 덧셈_곱셈_나눗셈() {
-        int result = StringCalculator.calculate("2 + 3 * 4 / 2");
-        assertThat(result).isEqualTo(10);
-    }
-
-    @Test
-    public void 덧셈_뺄셈_곱셈_나눗셈() {
-        int result = StringCalculator.calculate("2 + 3 - 1 * 4 / 2");
-        assertThat(result).isEqualTo(8);
+    public void test_calculate() throws Exception {
+        assertThat(StringCalculator.calculate("2 + 3 - 1 * 4 / 2")).isEqualTo(8);
+        assertThat(StringCalculator.calculate("22 / 2 - 1 * 4 / 2")).isEqualTo(20);
     }
 
 }

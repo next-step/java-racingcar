@@ -14,25 +14,25 @@ public class CalculatorTest {
 
     @Test
     public void 덧셈() {
-        int result = Calculator.add(1, 3);
+        int result = Calculator.ADD.calculate(1, 3);
         assertThat(result).isEqualTo(4);
     }
 
     @Test
     public void 뺄셈() {
-        int result = Calculator.subtract(3, 1);
+        int result = Calculator.SUBTRACT.calculate(3, 1);
         assertThat(result).isEqualTo(2);
     }
 
     @Test
     public void 곱셈() {
-        int result = Calculator.supply(1, 3);
+        int result = Calculator.MULTIPLY.calculate(1, 3);
         assertThat(result).isEqualTo(3);
     }
 
     @Test
     public void 나눗셈() {
-        int result = Calculator.divide(3, 1);
+        int result = Calculator.DIVIDE.calculate(3, 1);
         assertThat(result).isEqualTo(3);
     }
 
