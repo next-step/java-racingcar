@@ -21,6 +21,6 @@ public class CarTest {
         int actual = car.move();
 
         //then
-        assertThat(actual).isEqualTo(1);
+        assertThat(actual).isEqualTo(2);
     }
 }

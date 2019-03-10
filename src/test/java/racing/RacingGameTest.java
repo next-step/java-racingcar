@@ -38,10 +38,10 @@ public class RacingGameTest {
         RacingGame game = new RacingGame(request);
 
         //when
-        RacingCarsView actual = game.start();
+        RacingCarsView actual = game.run();
 
         //then
-        assertThat(game.getPosition(0)).isLessThanOrEqualTo(1);
+        assertThat(game.getPosition(0)).isLessThanOrEqualTo(2);
     }
 
     @Test
@@ -51,9 +51,9 @@ public class RacingGameTest {
         RacingGame game = new RacingGame(request);
 
         //when
-        game.start();
+        game.run();
 
         //then
-        assertThat(game.getPosition(0)).isBetween(0, 3);
+        assertThat(game.getPosition(0)).isBetween(1, 4);
     }
 }

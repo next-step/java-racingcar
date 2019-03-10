@@ -8,7 +8,7 @@ public class Car {
 
     private int position = 1;
 
-    protected int move() {
+    public int move() {
         if (canMove()) {
             return ++position;
         }
