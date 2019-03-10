@@ -17,6 +17,11 @@ public class CarUtilsTest {
         assertThat(result).isTrue();
         result = RacingCarUtils.checkPattern("a,b");
         assertThat(result).isTrue();
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void 정규식에러() {
+        boolean result;
         result = RacingCarUtils.checkPattern(" aa,bb,cc");
         assertThat(result).isFalse();
         result = RacingCarUtils.checkPattern("aaa,bbb,");
@@ -34,6 +39,13 @@ public class CarUtilsTest {
         cars = RacingCarUtils.getCars(names);
         assertThat(cars.size()).isEqualTo(2);
         assertThat(cars.get(0).getName()).isEqualTo("aaa");
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void 자동차생성에러() {
+        String[] names = RacingCarUtils.parseCarNames("aaa,bbb,");
+        List<Car> cars = RacingCarUtils.getCars(names);
+        assertThat(cars.size()).isEqualTo(0);
 
         names = RacingCarUtils.parseCarNames("aaa,bbb,");
         cars = RacingCarUtils.getCars(names);

@@ -19,9 +19,9 @@ public class RacingCar {
 
     private static void doRacing(String text, int moveCnt) {
 
-        String[] names = RacingCarUtils.parseCarNames(text);
+        try {
+            String[] names = RacingCarUtils.parseCarNames(text);
 
-        if(names.length > 0) {
             List<Car> cars = RacingCarUtils.getCars(names);
 
             RacingCarUtils.moveCars(cars, moveCnt);
@@ -33,6 +33,9 @@ public class RacingCar {
             List<Car> winners = RacingCarUtils.rankCars(cars);
 
             RacingCarUtils.viewRacingCarWinners(winners);
+
+        } catch (RuntimeException exception) {
+            System.out.println(exception.getMessage());
         }
     }
 

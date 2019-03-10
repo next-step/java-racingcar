@@ -8,21 +8,27 @@ import java.util.regex.Pattern;
 
 public class RacingCarUtils {
 
-    public static String[] parseCarNames(String text) {
+    public static String[] parseCarNames(String text) throws RuntimeException {
+
         String[] names = new String[0];
 
-        if(checkPattern(text)) {
+        if (checkPattern(text)) {
             names = splitText(text);
         }
 
         return names;
     }
 
-    public static boolean checkPattern(String text) {
+    public static boolean checkPattern(String text) throws RuntimeException {
+
         Pattern pattern = Pattern.compile("^(([a-zA-Z]+),)+([a-zA-Z]+)$");
         Matcher matcher = pattern.matcher(text);
 
-        return matcher.find();
+        if (!matcher.find()) {
+            throw new RuntimeException("패턴 불일치");
+        }
+
+        return true;
 
     }
 
@@ -100,7 +106,7 @@ public class RacingCarUtils {
         for (Car car : cars) {
             winners += car.getName() + ", ";
         }
-        System.out.println(winners.substring(0, winners.length()-2) + "가 최종 우승했습니다.");
+        System.out.println(winners.substring(0, winners.length() - 2) + "가 최종 우승했습니다.");
     }
 
 

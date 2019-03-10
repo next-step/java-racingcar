@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Car implements Comparable<Car>{
+public class Car implements Comparable<Car> {
 
     private final int LIMIT_VALUE = 4;
 
