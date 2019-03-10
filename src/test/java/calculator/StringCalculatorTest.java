@@ -31,7 +31,7 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void multipleOperation {
+    public void multipleOperation() {
         int result = StringCalculator.calculate("2 + 3 * 4");
         assertThat(result).isEqualTo(20);
     }
