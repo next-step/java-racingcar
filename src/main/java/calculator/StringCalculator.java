@@ -20,7 +20,6 @@ public class StringCalculator {
             String expression = values[idx++];
             int rightHandSideNumber = Integer.parseInt(values[idx++]);
             result = calculrate(result, rightHandSideNumber, expression);
-//            result = calculrate(CalculationOfEachType.valueOf(expression), result, rightHandSideNumber);
         }
 
         return result;
