@@ -6,7 +6,6 @@ import racing.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Application {
 
@@ -29,12 +28,9 @@ public class Application {
 
         List<String> results = new ArrayList<>();
         for (int i = 0; i < time; i++) {
-            gameBoard.moveCars();
-            results.add(gameBoard.toString());
+            results.add(ResultView.convertToChars(gameBoard.moveCars()));
         }
 
-        ResultView.render(results
-            .stream()
-            .collect(Collectors.joining("\n")));
+        ResultView.render(results);
     }
 }
