@@ -3,7 +3,7 @@ package calculator;
 public class StringCalculator {
     static int calculate(String text) {
 
-        if (text == null || "".equals(text)) {
+        if ("".equals(text)) {
             throw new NullPointerException();
         }
 
