@@ -57,15 +57,20 @@ public class RacingCarUtils {
     public static List<Car> rankCars(List<Car> cars) {
 
         List<Car> winners = new ArrayList<>();
-        winners.add(cars.get(0));
+        Car winner = cars.get(0);
+        winners.add(winner);
 
-        for (int i = 0; i < cars.size() - 1; i++) {
-            if (cars.get(i).getDistance().equals(cars.get(i + 1).getDistance())) {
-                winners.add(cars.get(i + 1));
-            }
+        for (int i = 1; i < cars.size(); i++) {
+            checkSameScore(winner.getTotalDistance(), cars.get(i), winners);
         }
 
         return winners;
+    }
+
+    public static void checkSameScore(int topDistance, Car otherCar, List<Car> winners) {
+        if (topDistance == otherCar.getTotalDistance()) {
+            winners.add(otherCar);
+        }
     }
 
     public static void viewRacingCar(List<Car> cars, int moveCnt) {

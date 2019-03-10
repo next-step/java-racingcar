@@ -12,13 +12,13 @@ public class Car implements Comparable<Car>{
 
     private String name;
 
-    private Integer distance;
+    private Integer totalDistance = 0;
 
-    public Car() {}
+    public Car() {
+    }
 
     public Car(String name) {
         this.name = name;
-        this.distance = 0;
     }
 
     public void move(int moveCnt) {
@@ -27,7 +27,9 @@ public class Car implements Comparable<Car>{
 
         for (int i = 0; i < moveCnt; i++) {
             int randomValue = getRandomValue();
-            moveList.add(getMoveCount(randomValue));
+            int moveDistance = getMoveCount(randomValue);
+            moveList.add(moveDistance);
+            totalDistance += moveDistance;
         }
 
     }
@@ -54,15 +56,12 @@ public class Car implements Comparable<Car>{
         return name;
     }
 
-    public Integer getDistance() {
-        for(int moveCnt : this.getMoveList()) {
-            distance += moveCnt;
-        }
-        return distance;
+    public Integer getTotalDistance() {
+        return totalDistance;
     }
 
     @Override
     public int compareTo(Car car) {
-        return car.getDistance().compareTo(this.getDistance());
+        return car.getTotalDistance().compareTo(this.getTotalDistance());
     }
 }

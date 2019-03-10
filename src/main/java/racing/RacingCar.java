@@ -13,6 +13,12 @@ public class RacingCar {
         System.out.println("시도할 회수는 몇 회 인가요?");
         int moveCnt = Integer.parseInt(scanner.nextLine());
 
+        doRacing(text, moveCnt);
+
+    }
+
+    private static void doRacing(String text, int moveCnt) {
+
         String[] names = RacingCarUtils.parseCarNames(text);
 
         if(names.length > 0) {
@@ -28,9 +34,7 @@ public class RacingCar {
 
             RacingCarUtils.viewRacingCarWinners(winners);
         }
-
     }
-
 
 
 }
