@@ -24,43 +24,18 @@ public class RacingGameBoard {
         this.randomGenerator = randomGenerator;
     }
 
-    public void createCars(int count) {
+    public int createCars(int count) {
         for (int i = 0 ; i < count; i++) {
             cars.add(new RacingCar());
         }
+        return cars.size();
     }
 
-    public void moveCars() {
+    public List<Integer> moveCars() {
+        List<Integer> positions = new ArrayList<>();
         for (RacingCar car : cars) {
-            moveCar(car);
+            positions.add(car.move(randomGenerator.nextInt()));
         }
-    }
-
-    private void moveCar(RacingCar car) {
-        car.move(randomGenerator.nextInt());
-    }
-
-    public List<RacingCar> getCars() {
-        return cars;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        appendCars(sb);
-        return sb.toString();
-    }
-
-    private void appendCars(StringBuilder sb) {
-        for (RacingCar car : cars) {
-            appendCar(sb, car);
-        }
-    }
-
-    private void appendCar(StringBuilder sb, RacingCar car) {
-        for (int i = 0; i < car.getPosition(); i++) {
-            sb.append("-");
-        }
-        sb.append("\n");
+        return positions;
     }
 }
