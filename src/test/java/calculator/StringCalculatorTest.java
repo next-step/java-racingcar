@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
-
 public class StringCalculatorTest {
 
     @Test
@@ -39,13 +38,19 @@ public class StringCalculatorTest {
 
     @Test
     public void 빈공백입력_예외처리() {
-        int result = StringCalculator.calculate("");
-        assertThat(result).isEqualTo(-9999);
+        try {
+            StringCalculator.calculate("");
+        } catch (Throwable expected) {
+            assertThat(expected.getClass()).isEqualTo(NullPointerException.class);
+        }
     }
 
     @Test
     public void NULL입력_예외처리() {
-        int result = StringCalculator.calculate(null);
-        assertThat(result).isEqualTo(-9999);
+        try {
+            StringCalculator.calculate(null);
+        } catch (Throwable expected) {
+            assertThat(expected.getClass()).isEqualTo(NullPointerException.class);
+        }
     }
 }

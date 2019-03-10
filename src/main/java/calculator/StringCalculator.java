@@ -3,8 +3,8 @@ package calculator;
 public class StringCalculator {
     static int calculate(String text) {
 
-        if (text == null || text.equals("")) {
-            return -9999;
+        if (text == null || "".equals(text)) {
+            throw new NullPointerException();
         }
 
         String[] values = text.split(" ");
