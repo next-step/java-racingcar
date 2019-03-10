@@ -10,36 +10,31 @@ import java.util.stream.Collectors;
 
 public class Application {
 
-    InputView inputView;
+    private RacingGameBoard gameBoard;
 
-    ResultView resultView;
-
-    RacingGameBoard gameBoard;
-
-    public Application(InputView inputView, ResultView resultView, RacingGameBoard gameBoard) {
-        this.inputView = inputView;
-        this.resultView = resultView;
-        this.gameBoard = gameBoard;
+    public Application() {
+        this.gameBoard = new RacingGameBoard();
     }
 
     public static void main(String[] args) {
-        Application app = new Application(new InputView(), new ResultView(), new RacingGameBoard());
+        Application app = new Application();
         app.run();
     }
 
     private void run() {
-        inputView.render();
+        int count = InputView.inputCount();
+        int time = InputView.inputTime();
 
-        gameBoard.createCars(inputView.getCount());
+        gameBoard.createCars(count);
+
         List<String> results = new ArrayList<>();
-        for (int i = 0; i < inputView.getTime(); i++) {
+        for (int i = 0; i < time; i++) {
             gameBoard.moveCars();
             results.add(gameBoard.toString());
         }
 
-        resultView.setResult(results
-                .stream()
-                .collect(Collectors.joining("\n")));
-        resultView.render();
+        ResultView.render(results
+            .stream()
+            .collect(Collectors.joining("\n")));
     }
 }
