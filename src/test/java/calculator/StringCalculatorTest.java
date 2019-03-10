@@ -46,11 +46,22 @@ public class StringCalculatorTest {
     }
 
     @Test
+    public void 복합연산2() {
+        int result = stringCalculator.calculate("2 + 3 * 4 * 2 * 10");
+        assertThat(result).isEqualTo(400);
+    }
+
+    @Test
     public void 정규식() {
         boolean result = stringCalculator.patternMatcher("2 + 3");
         assertThat(result).isTrue();
         result = stringCalculator.patternMatcher("2 + 3 * 4 / 2");
         assertThat(result).isTrue();
+        result = stringCalculator.patternMatcher("2 + 30 * 4 / 2");
+        assertThat(result).isTrue();
+        result = stringCalculator.patternMatcher("200 + 3 * 4 + 20");
+        assertThat(result).isTrue();
+
         result = stringCalculator.patternMatcher("2 +3 * 4 / 2");
         assertThat(result).isFalse();
         result = stringCalculator.patternMatcher("2 + 3 * 4 / ");
