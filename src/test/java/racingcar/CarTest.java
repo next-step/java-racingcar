@@ -18,11 +18,10 @@ public class CarTest {
     @Test
     public void 차_이동시_거리_증가() {
         Car car = new Car();
-            car.moveCar();
-            car.moveCar();
-            int movingDistance = car.getMovingDistance();
-            assertThat(movingDistance).isEqualTo(2);
-
+        car.moveCar();
+        car.moveCar();
+        int movingDistance = car.getMovingDistance();
+        assertThat(movingDistance).isEqualTo(2);
     }
 
 

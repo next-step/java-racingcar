@@ -5,9 +5,7 @@ import java.util.Scanner;
 public class App {
 
     public static void main(String[] args) {
-
         gameStart();
-
     }
 
     private static void gameStart() {
@@ -18,9 +16,6 @@ public class App {
         int moveCount = Integer.parseInt(scanner.nextLine());
 
         RacingGame racingGame = new RacingGame(carCount, moveCount);
-
-//        racingGame.setGame(carCount, moveCount);
-
         racingGame.startRace();
     }
 }
