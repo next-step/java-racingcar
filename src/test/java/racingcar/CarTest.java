@@ -29,6 +29,6 @@ public class CarTest {
         car.move(5);
         car.move(5);
 
-        assertThat(car.displayPosition()).isEqualTo(id + ": --");
+        assertThat(car.displayTrace()).isEqualTo(id + ": --");
     }
 }
