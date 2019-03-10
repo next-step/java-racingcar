@@ -8,6 +8,9 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class RacingGameParameterInputView {
+    private RacingGameParameterInputView() {
+    }
+
     public static RacingGameParameter readRacingGameParameter() {
         Scanner scanner = new Scanner(System.in);
 

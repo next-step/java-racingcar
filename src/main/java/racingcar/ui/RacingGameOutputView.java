@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGameOutputView {
+    private RacingGameOutputView() {
+    }
 
     public static void printEmptyLine() {
         System.out.println();
