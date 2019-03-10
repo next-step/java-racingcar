@@ -10,7 +10,7 @@ public class StringCalculator {
     }
 
     private static int recursive(String[] input) {
-        int lastValue = getLastValue(input[input.length - 1]);
+        int lastValue = getLastValue(input);
         if (isValue(input)) {
             return lastValue;
         }
@@ -27,8 +27,8 @@ public class StringCalculator {
         return values[values.length - 2];
     }
 
-    private static int getLastValue(String value) {
-        return Integer.parseInt(value);
+    private static int getLastValue(String[] values) {
+        return Integer.parseInt(values[values.length - 1]);
     }
 
     private static String[] resize(String[] values) {
