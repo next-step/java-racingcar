@@ -30,7 +30,8 @@ public class RacingGame {
     }
 
     public void start(int tryCount) {
-        System.out.println("실행 결과\n");
+        RacingGameOutputView.printLine("실행 결과");
+        RacingGameOutputView.printEmptyLine();
 
         for (int i = 0; i < tryCount; i++) {
             runCars();
