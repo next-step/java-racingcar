@@ -20,7 +20,7 @@ public class RacingGameTest {
 
         assertThat(cars)
                 .hasSize(carNames.size())
-                .doesNotContain((Car) null);
+                .doesNotContainNull();
     }
 
     @Test
