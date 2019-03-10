@@ -17,10 +17,17 @@ public class RacingGame {
         this.powerGenerator = new PowerGenerator();
     }
 
-    public void move() {
+    public void game() {
         for (int i = 0; i < time; i++) {
-            powerGenerator.determineMoveOrNot(carPositions);
+            move();
             showRacingGameStatus(carPositions);
+        }
+    }
+
+    public void move() {
+        for (int i = 0; i < cars; i++) {
+            int power = powerGenerator.determineMoveOrNot();
+            carPositions[i] += power;
         }
     }
 

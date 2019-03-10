@@ -8,14 +8,10 @@ public class PowerGenerator {
 
     //TODO: power Generator 는 getPower의 역할만 있어야 해
     //TODO: 어떻게 하면 더 분리할 수 있을지 모르겠다.
-    public void determineMoveOrNot(int[] carPositions) {
-        int cars = carPositions.length;
+//    public void determineMoveOrNot(int[] carPositions) {
+    public int determineMoveOrNot() {
         randomNumberGenerator = new RandomNumberGenerator();
-
-        for (int car = 0; car < cars; car++) {
-            int power = randomNumberGenerator.getRandomNumberZeroToNine();
-            carPositions[car] += getPower(power);
-        }
+        return getPower(randomNumberGenerator.getRandomNumberZeroToNine());
     }
 
     public int getPower(int power) {

@@ -18,7 +18,7 @@ public class RacingGameTest {
 
     //19.03.10 - step1 피드백, 개선한 구조에 맞게 테스트 method 수정
     @Test
-    public void 전진_정지_확인() {
+    public void power값_확인() {
         PowerGenerator powerGenerator = new PowerGenerator();
 
         int result = powerGenerator.getPower(5);
@@ -29,15 +29,19 @@ public class RacingGameTest {
     }
 
     @Test
-    public void 모든차량_전진_정지_확인() {
+    public void 전진_정지_여부_확인() {
         PowerGenerator powerGenerator = new PowerGenerator();
-        int[] carPositions = new int[3];
+        int power = powerGenerator.determineMoveOrNot();
+        assertThat(power).isBetween(0,1);
+    }
 
-        powerGenerator.determineMoveOrNot(carPositions);
+    @Test
+    public void 모든차량_1회_게임_확인() {
 
-        for (int idx : carPositions) {
-            System.out.println(carPositions[idx]);
-        }
+        RacingGame racingGame = new RacingGame(3, 1);
+
+        racingGame.move();
+        int[] carPositions = racingGame.loadResultofGame();
 
         assertThat(carPositions[0]).isBetween(0, 1);
         assertThat(carPositions[1]).isBetween(0, 1);

@@ -13,6 +13,6 @@ public class RacingGameRunner {
         int time = scan.nextInt();
 
         RacingGame racingGame = new RacingGame(cars, time);
-        racingGame.move();
+        racingGame.game();
     }
 }
