@@ -5,12 +5,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Random;
 import org.junit.Test;
 
-public class RacingCarTest {
+public class RacingGameTest {
 
     @Test
     public void test_makeMoveOfCars() {
         int numTimes = 3, numCars = 5;
-        int[][] result = RacingCar.makeMoveOfCars(numCars, numTimes);
+        int[][] result = RacingGame.makeMoveOfCars(numCars, numTimes);
 
         assertThat(result.length).isEqualTo(numTimes);
         assertThat(result[new Random().nextInt(numTimes)].length).isEqualTo(numCars);
@@ -28,13 +28,13 @@ public class RacingCarTest {
 
     @Test
     public void test_generateRandomNum() {
-        assertThat(RacingCar.generateRandomNum()).isBetween(0, 9);
+        assertThat(RacingGame.generateRandomNum()).isBetween(0, 9);
     }
 
     @Test
     public void test_checkCanMove() {
-        assertThat(RacingCar.checkCanMove(8)).isEqualTo(true);
-        assertThat(RacingCar.checkCanMove(3)).isEqualTo(false);
-        assertThat(RacingCar.checkCanMove(10)).isEqualTo(false);
+        assertThat(RacingGame.checkCanMove(8)).isEqualTo(true);
+        assertThat(RacingGame.checkCanMove(3)).isEqualTo(false);
+        assertThat(RacingGame.checkCanMove(10)).isEqualTo(false);
     }
 }

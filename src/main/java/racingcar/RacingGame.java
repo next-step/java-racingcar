@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 import org.apache.commons.lang3.StringUtils;
 
-public class RacingCar {
+public class RacingGame {
 
     private static final int BOUND = 10;
 
