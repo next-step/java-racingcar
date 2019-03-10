@@ -36,6 +36,8 @@ public class RacingGame {
             printMovedDistanceOfCars();
             System.out.println();
         }
+
+        printWinners();
     }
 
     private void runCars() {
@@ -70,5 +72,13 @@ public class RacingGame {
                 .getAsInt();
 
         return maxMovedDistanceOfCars;
+    }
+
+    private void printWinners() {
+        String winnerCarNames = getWinners().stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+
+        System.out.println(winnerCarNames + "가 최종 우승했습니다.");
     }
 }
