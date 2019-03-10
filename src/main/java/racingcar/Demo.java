@@ -10,12 +10,15 @@ public class Demo {
         RacingGame racingGame = new RacingGame(Input.getTimes());
 
         List<Car> cars = new ArrayList<>();
-        for (int i = 1; i <= Input.getNumOfCars(); i++) {
-            cars.add(new Car());
+        for (int i = 0; i < Input.getNames().length; i++) {
+            cars.add(new Car(Input.getNames()[i]));
         }
 
         List<Car> carsFinishedRace = racingGame.start(cars, new RandomNumberGenerator());
-        List<String> result = carsFinishedRace.stream().map(Car::getRacingPath).collect(Collectors.toList());
-        Output.print(result);
+        Output.print(carsFinishedRace);
+
+        Referee referee = new Referee();
+        List<Car> winners = referee.getWinners(carsFinishedRace);
+        Output.printWinner(winners);
     }
 }
