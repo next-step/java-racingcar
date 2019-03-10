@@ -24,10 +24,8 @@ public class RacingGameParameterInputView {
     }
 
     private List<String> convertCarNamesStringToList(String carNamesString) {
-        List<String> convertedCarNamesList = Arrays.stream(carNamesString.split(","))
+        return Arrays.stream(carNamesString.split(","))
                 .map(String::trim)
                 .collect(Collectors.toList());
-
-        return convertedCarNamesList;
     }
 }

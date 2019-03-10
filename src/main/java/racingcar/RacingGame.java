@@ -23,9 +23,9 @@ public class RacingGame {
     private void carSetUp(List<String> carNames) {
         this.cars = new ArrayList<>(carNames.size());
 
-        carNames.forEach(carName -> {
-            this.cars.add(new Car(carName));
-        });
+        carNames.forEach(carName ->
+                this.cars.add(new Car(carName))
+        );
     }
 
     public void start(int tryCount) {
@@ -58,20 +58,16 @@ public class RacingGame {
     public List<Car> getWinners() {
         int maxMovedDistance = getMaxMovedDistanceOfCars();
 
-        List<Car> winners = this.cars.stream()
+        return this.cars.stream()
                 .filter(car -> maxMovedDistance == car.getMovedDistance())
                 .collect(Collectors.toList());
-
-        return winners;
     }
 
     private int getMaxMovedDistanceOfCars() {
-        int maxMovedDistanceOfCars = this.cars.stream()
+        return this.cars.stream()
                 .mapToInt(Car::getMovedDistance)
                 .max()
                 .getAsInt();
-
-        return maxMovedDistanceOfCars;
     }
 
     private void printWinners() {
