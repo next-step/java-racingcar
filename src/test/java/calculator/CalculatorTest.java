@@ -2,7 +2,6 @@ package calculator;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

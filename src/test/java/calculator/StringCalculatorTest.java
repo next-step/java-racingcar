@@ -29,4 +29,10 @@ public class StringCalculatorTest {
         int result = StringCalculator.calculate("20 / 4");
         assertThat( result ).isEqualTo(5);
     }
+
+    @Test
+    public void complex() {
+        int result = StringCalculator.calculate("2 + 3 * 4 / 2");
+        assertThat( result ).isEqualTo(10);
+    }
 }
