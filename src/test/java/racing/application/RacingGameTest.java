@@ -1,7 +1,7 @@
 package racing.application;
 
 import org.junit.Test;
-import racing.infrastructure.RandomGame;
+import racing.infrastructure.RandomCondition;
 import racing.view.RacingRequestView;
 
 import java.util.Random;
@@ -36,12 +36,12 @@ public class RacingGameTest {
     public void 한명이_게임_한번_실행() {
         //given
         RacingRequestView requestView = new RacingRequestView(1, 3);
-        RacingGame racingGame = new RacingGame(requestView);
-        RandomGame randomGame = mock(RandomGame.class);
-        when(randomGame.win()).thenReturn(true);
+        RandomCondition condition = mock(RandomCondition.class);
+        RacingGame racingGame = new RacingGame(requestView, condition);
+        when(condition.check()).thenReturn(true);
 
         //when
-        racingGame.start(randomGame);
+        racingGame.start();
 
         //then
         assertThat(racingGame.getView().getPositions().get(0)).isEqualTo(4);

@@ -7,31 +7,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
+    private Condition condition;
     private int time;
     private List<Car> cars = new ArrayList();
     private List<RacingCarsView> history = new ArrayList();
 
-    public RacingGame(RacingRequestView view) {
+    public RacingGame(RacingRequestView view, Condition condition) {
         for (int i = 0; i < view.getCarCount(); i++) {
             cars.add(new Car());
         }
 
         this.time = view.getGameCount();
+        this.condition = condition;
     }
 
-    public void start(Game game) {
+    public void start() {
         for (int i = 0; i < time; i++) {
-            turn(game);
+            turn();
             history.add(getView());
         }
     }
 
-    private void turn(Game game) {
-        cars.stream().forEach(car -> play(game, car));
+    private void turn() {
+        cars.stream().forEach(car -> play(car));
     }
 
-    private void play(Game game, Car car) {
-        if (game.win()) {
+    private void play(Car car) {
+        if (condition.check()) {
             car.move();
         }
     }
