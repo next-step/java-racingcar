@@ -7,18 +7,18 @@ public class CalculatorMain {
         Scanner scanner = new Scanner(System.in);
         String value = scanner.nextLine();
 
-        int result = doStringCalculate(value);
-
-        System.out.println(result);
+        System.out.println(doStringCalculate(value));
     }
 
     private static int doStringCalculate(String value) {
-        int result = -11111;
-        StringCalculator stringCalculator = new StringCalculator();
+        int result = 0;
 
-        if(stringCalculator.patternMatcher(value)) {
-            stringCalculator.calculate(value);
-            result = stringCalculator.getResult();
+        try {
+            String[] values = CalculatorView.parseInputValues(value);
+
+            result = CalculatorCore.createExpression(values);
+        } catch (RuntimeException exception) {
+            System.out.println(exception.getMessage());
         }
 
         return result;
