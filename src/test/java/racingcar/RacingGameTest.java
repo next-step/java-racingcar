@@ -34,11 +34,10 @@ public class RacingGameTest {
 
     @Test
     public void 전진하지않는_레이싱_경주() {
-        int tryCount = 5;
         RandomIntGenerator randomIntGenerator = new CarMoveThresholdGenerator();
 
         RacingGame racingGame = new RacingGame(carNames, randomIntGenerator);
-        racingGame.start(tryCount);
+        racingGame.runCars();
 
         List<Car> cars = racingGame.getCars();
 
@@ -49,16 +48,15 @@ public class RacingGameTest {
 
     @Test
     public void 항상_전진하는_레이싱_경주() {
-        int tryCount = 5;
         RandomIntGenerator randomIntGenerator = new IntMoreThanCarMoveThresholdGenerator();
 
         RacingGame racingGame = new RacingGame(carNames, randomIntGenerator);
-        racingGame.start(tryCount);
+        racingGame.runCars();
 
         List<Car> cars = racingGame.getCars();
 
-        cars.forEach(car -> {
-            assertThat(car.getMovedDistance()).isEqualTo(tryCount);
-        });
+        cars.forEach(car ->
+                assertThat(car.getMovedDistance()).isEqualTo(1)
+        );
     }
 }

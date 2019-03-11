@@ -20,10 +20,20 @@ public class RacingGameApplication {
         RacingGameOutputView.printLine("실행 결과");
         RacingGameOutputView.printEmptyLine();
 
-        racingGame.start(parameter.getTryCount());
+        startRacingGame(racingGame, parameter.getTryCount());
 
         List<Car> cars = racingGame.getCars();
         List<Car> winners = racingGameJudge.getWinners(cars);
         RacingGameOutputView.printWinners(winners);
+    }
+
+    private static void startRacingGame(RacingGame racingGame, int tryCount) {
+        for (int i = 0; i < tryCount; i++) {
+            racingGame.runCars();
+
+            List<Car> cars = racingGame.getCars();
+            RacingGameOutputView.printMovedDistanceOfCars(cars);
+            RacingGameOutputView.printEmptyLine();
+        }
     }
 }

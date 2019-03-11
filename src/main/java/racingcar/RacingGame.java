@@ -2,7 +2,6 @@ package racingcar;
 
 import racingcar.random.PositiveIntUnder10Generator;
 import racingcar.random.RandomIntGenerator;
-import racingcar.ui.RacingGameOutputView;
 
 import java.util.Collections;
 import java.util.List;
@@ -27,15 +26,7 @@ public class RacingGame {
                 .collect(Collectors.toList());
     }
 
-    public void start(int tryCount) {
-        for (int i = 0; i < tryCount; i++) {
-            runCars();
-            RacingGameOutputView.printMovedDistanceOfCars(this.cars);
-            RacingGameOutputView.printEmptyLine();
-        }
-    }
-
-    private void runCars() {
+    public void runCars() {
         this.cars.forEach(car -> {
             int randomInt = this.randomIntGenerator.getRandomInt();
             car.goWhenGreaterThanThreshold(randomInt);
