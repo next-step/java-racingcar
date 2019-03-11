@@ -5,27 +5,34 @@ import racing.domain.RacingCarRequest;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RacingCarView {
 
-    public static void startRacing(List<Car> cars, int round) {
-        for (int i = 0; i < round; i++) {
-            startRound(cars);
+    public static boolean checkPattern(String text) throws RuntimeException {
+        Pattern pattern = Pattern.compile("^\\s*(([a-zA-Z]+),)+([a-zA-Z]+)+\\s*$");
+        Matcher matcher = pattern.matcher(text);
 
-            System.out.println();
+        if (!matcher.find()) {
+            throw new RuntimeException("패턴 불일치");
         }
+
+        return true;
     }
 
-    public static void startRound(List<Car> cars) {
-        for (Car car : cars) {
-            System.out.print(car.getName() + ": ");
+    public static String[] splitText(String text) {
+        return text.split(",");
+    }
 
-            car.move();
+    public static String[] parseCarNames(String text) throws RuntimeException {
+        String[] names = new String[0];
 
-            viewCarMoveInfo(car);
-
-            System.out.println();
+        if (checkPattern(text)) {
+            names = splitText(text.trim());
         }
+
+        return names;
     }
 
     public static void viewCarMoveInfo(Car car) {
@@ -42,7 +49,7 @@ public class RacingCarView {
         System.out.println(winner.substring(0, winner.length() - 2) + "가 최종 우승했습니다.");
     }
 
-    public static RacingCarRequest getRacingCarRequest() {
+    public static RacingCarRequest registerCars() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String names = scanner.nextLine();
