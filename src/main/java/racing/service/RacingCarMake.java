@@ -10,7 +10,6 @@ import java.util.regex.Pattern;
 public class RacingCarMake {
 
     public static String[] parseCarNames(String text) throws RuntimeException {
-
         String[] names = new String[0];
 
         if (checkPattern(text)) {
@@ -21,7 +20,6 @@ public class RacingCarMake {
     }
 
     public static boolean checkPattern(String text) throws RuntimeException {
-
         Pattern pattern = Pattern.compile("^\\s*(([a-zA-Z]+),)+([a-zA-Z]+)+\\s*$");
         Matcher matcher = pattern.matcher(text);
 
@@ -38,13 +36,13 @@ public class RacingCarMake {
     }
 
     public static List<Car> getCars(String[] names) {
-        List<Car> carList = new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
 
         for (String name : names) {
             Car car = new Car(name);
-            carList.add(car);
+            cars.add(car);
         }
-        return carList;
+        return cars;
     }
 
 }

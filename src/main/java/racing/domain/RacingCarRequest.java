@@ -6,19 +6,16 @@ public class RacingCarRequest {
 
     String names;
 
+    public RacingCarRequest(String names, int moveCnt) {
+        this.names = names;
+        this.moveCnt = moveCnt;
+    }
+
     public int getMoveCnt() {
         return moveCnt;
     }
 
-    public void setMoveCnt(int moveCnt) {
-        this.moveCnt = moveCnt;
-    }
-
     public String getNames() {
         return names;
-    }
-
-    public void setNames(String names) {
-        this.names = names;
     }
 }

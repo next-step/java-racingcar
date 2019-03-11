@@ -18,7 +18,6 @@ public class Car implements Comparable<Car> {
     }
 
     public void move() {
-
         int randomValue = getRandomValue();
         int moveDistance = getMoveCount(randomValue);
         if (moveDistance == 1) {
@@ -35,9 +34,7 @@ public class Car implements Comparable<Car> {
     }
 
     public int getRandomValue() {
-
         return new Random().nextInt(10);
-
     }
 
     public String getName() {

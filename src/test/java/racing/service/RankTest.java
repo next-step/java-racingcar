@@ -55,8 +55,6 @@ public class RankTest {
 
     @Test
     public void 자동차랭킹() {
-        RacingCarRank.sortCars(cars);
-
         List<Car> winners = RacingCarRank.rankCars(cars);
 
         assertThat(winners.get(0).getTotalDistance()).isGreaterThanOrEqualTo(cars.get(0).getTotalDistance());

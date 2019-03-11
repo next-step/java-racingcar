@@ -8,12 +8,11 @@ import java.util.List;
 
 public class RacingCarRank {
     public static void sortCars(List<Car> cars) {
-
         Collections.sort(cars, Collections.reverseOrder());
-
     }
 
     public static List<Car> rankCars(List<Car> cars) {
+        sortCars(cars);
 
         List<Car> winners = new ArrayList<>();
         Car winner = cars.get(0);
