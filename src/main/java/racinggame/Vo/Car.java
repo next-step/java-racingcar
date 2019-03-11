@@ -1,4 +1,4 @@
-package racinggame.carVo;
+package racinggame.Vo;
 
 public class Car {
     private StringBuilder countMoving;        // 이동한 거리

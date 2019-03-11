@@ -1,4 +1,4 @@
-package racinggame.carVo;
+package racinggame.Vo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,16 +22,7 @@ public class Racing {
     public List<Car> getCarList() {
         return carList;
     }
-
-    public void setCarList(List<Car> carList) {
-        this.carList = carList;
-    }
-
     public int getCountGame() {
         return countGame;
-    }
-
-    public void setCountGame(int countGame) {
-        this.countGame = countGame;
     }
 }
