@@ -1,79 +1,108 @@
 package calculator;
 
+import spark.utils.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class StringCalculator {
-    static int calculator(String str) {
+    public static final int MINIMUM_INVALID_INPUT = 1;
+    public static final int IN_TWO_OPERAND = 2;
+    public static final int MINIMUM_DENOMINATOR_VALUE = 0;
 
-        // 문자열에서 숫자를 찾는다. 다음 숫자가 나오면
-        // 이전의 숫자와 다음 숫자르 더한다..
-        // 기호와 숫자를 분리해야함.
-        // 숫자를 2개씩 저장하는 배열이 잇으면 좋을 것 같음
-        // 기호를 저장하는 변수가 필요함
+    static int calculator(String input)  {
 
-        // 홀수의 숫자만 저장하도록해서 숫자만 가지고 있는 리스트를 만든다
-        // 짝수만 저장해서 기호만 가지고 있는 리스트를 만든다.
-        // 숫자 2개와 기호 1개를 받아서 연산하는 로직을 만든다.
-        // 재귀로 하면 좋을 것 같음
+        if (StringUtils.isEmpty(input)) {
+            throw new IllegalArgumentException();
+        }
 
         // 띄우쓰기를 우선 제거
-        String trim_str = str.trim();
-
+        String trimString = input.trim();
         int result = 0;
-
-        // 홀수는 숫자 짝수는 기호
-
         // 피연산자를 저장해주는 리스트
-        List<Integer> operand_list = new ArrayList<>();
+        List<Integer> operands = new ArrayList<>();
         // 연산자를 저장해주는 리스트
-        List<String> operator_list = new ArrayList<>();
+        List<String> operators = new ArrayList<>();
+        // operand를 리스트에 저장하기 위한 임시 StringBuffer
+        StringBuilder tempForOperand = new StringBuilder();
 
-        String [] split_trim_str = trim_str.split("");
+        String [] splitTrimString = trimString.split("");
 
-        for (int i = 1; i < trim_str.length() + 1; i++) {
+        for (int i = 0; i < splitTrimString.length; i++) {
 
-            // 기호인 경우
-            if (i % 3 == 0 || i == 1) {
-                operand_list.add(Integer.valueOf(split_trim_str[i - 1]));
+            tempForOperand.append(splitTrimString[i]);
+
+            if (("+").equals(splitTrimString[i]) || ("*").equals(splitTrimString[i]) ||
+                    ("-").equals(splitTrimString[i]) || ("/").equals(splitTrimString[i])) {
+                isMeetOperator(tempForOperand, operands, operators);
             }
 
-            if (i % 2 == 0 ) {
-                operator_list.add(split_trim_str[i - 1]);
+            // 마지막 문자열의 경우 연산자 추가 없이 값만 추가해준다.
+            if (i == splitTrimString.length - 1) {
+                operands.add(Integer.parseInt(String.valueOf(tempForOperand)));
             }
 
             //2개의 오퍼랜드와 한개의 오퍼레이터를 넘긴다.
-
-            if (operand_list.size() == 2) {
-                result += calculator(operand_list.get(0), operand_list.get(1), operator_list.get(0));
-                operand_list.clear();
-                operator_list.clear();
+            if (operands.size() == IN_TWO_OPERAND) {
+                int value = calculator(operands.get(0), operands.get(1), operators.get(0));
+                result = value;
+                operands.clear();
+                operators.remove(0);
+                operands.add(value);
             }
         }
 
         return result;
     }
 
-    public static int calculator(int a, int b, String oprator) {
+    public static void isMeetOperator(StringBuilder tempForOperand, List<Integer> operands, List<String> operators) {
+        String temp = tempForOperand.toString();
+        temp = temp.substring(0, tempForOperand.length() - 1);
+
+        operands.add(Integer.parseInt(temp));
+        operators.add(String.valueOf(temp.charAt(temp.length() - 1)));
+
+        tempForOperand.setLength(0);
+    }
+
+    public static int calculator(int firstOperand, int secondOperand, String operator) {
 
         int result = 0;
-        if (oprator.equals("-")) {
-            result = a - b;
+        if (operator.equals("-")) {
+             return firstOperand - secondOperand;
         }
 
-        if (oprator.equals("+")) {
-            result = a + b;
+        if (operator.equals("+")) {
+            return firstOperand + secondOperand;
         }
 
-        if (oprator.equals("*")) {
-           result = a * b;
+        if (operator.equals("*")) {
+            return  firstOperand * secondOperand;
         }
 
-        if (oprator.equals("/")) {
+        if (operator.equals("/")) {
+            // 분모가 0인 경우 에러처리
+            if (secondOperand == MINIMUM_DENOMINATOR_VALUE) {
+                throw new IllegalArgumentException();
+            }
 
-            result = b == 0? 0 : a/b;
+            return firstOperand / secondOperand;
         }
-
         return result;
+    }
+
+    public static String inputConsole()  {
+        System.out.println("계산하고자하는 문자열을 입력하세요");
+        System.out.print(" : ");
+
+        Scanner scanner = new Scanner(System.in);
+        String value = scanner.nextLine();
+
+        if (value.length() < MINIMUM_INVALID_INPUT) {
+            throw new IllegalArgumentException();
+        }
+
+        return value;
     }
 }
