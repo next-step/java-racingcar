@@ -20,19 +20,19 @@ public class RacingCar {
     private static void doRacing(String text, int moveCnt) {
 
         try {
-            String[] names = RacingCarUtils.parseCarNames(text);
+            String[] names = RacingCarMake.parseCarNames(text);
 
-            List<Car> cars = RacingCarUtils.getCars(names);
+            List<Car> cars = RacingCarMake.getCars(names);
 
-            RacingCarUtils.moveCars(cars, moveCnt);
+            RacingCarMake.moveCars(cars, moveCnt);
 
-            RacingCarUtils.viewRacingCar(cars, moveCnt);
+            RacingCarView.viewRacingCar(cars, moveCnt);
 
-            RacingCarUtils.sortCars(cars);
+            RacingCarRank.sortCars(cars);
 
-            List<Car> winners = RacingCarUtils.rankCars(cars);
+            List<Car> winners = RacingCarRank.rankCars(cars);
 
-            RacingCarUtils.viewRacingCarWinners(winners);
+            RacingCarView.viewRacingCarWinners(winners);
 
         } catch (RuntimeException exception) {
             System.out.println(exception.getMessage());
