@@ -1,8 +1,9 @@
 package racingcar;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Input {
+public class InputView {
     private static int times;
     private static int numOfCars;
 
@@ -12,6 +13,8 @@ public class Input {
             numOfCars = scanner.nextInt();
             System.out.println("시도할 회수는 몇 회 인가요?");
             times = scanner.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("자연수만 입력할 수 있습니다.");
         }
     }
 

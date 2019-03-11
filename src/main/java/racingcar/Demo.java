@@ -2,20 +2,22 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Demo {
     public static void main(String[] args) {
-        Input.input();
-        RacingGame racingGame = new RacingGame(Input.getTimes());
+        InputView.input();
+        RacingGame racingGame = new RacingGame(InputView.getTimes());
 
         List<Car> cars = new ArrayList<>();
-        for (int i = 1; i <= Input.getNumOfCars(); i++) {
+        for (int i = 1; i <= InputView.getNumOfCars(); i++) {
             cars.add(new Car());
         }
 
-        List<Car> carsFinishedRace = racingGame.start(cars, new RandomNumberGenerator());
-        List<String> result = carsFinishedRace.stream().map(Car::getRacingPath).collect(Collectors.toList());
-        Output.print(result);
+        OutputView.printIntroduction();
+        List<Integer> result;
+        for (int i = 1; i <= racingGame.getTimes(); i++) {
+            result = racingGame.race(cars, new RandomNumberGenerator());
+            OutputView.printResult(result);
+        }
     }
 }

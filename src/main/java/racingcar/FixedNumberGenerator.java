@@ -1,14 +1,14 @@
 package racingcar;
 
 public class FixedNumberGenerator implements NumberGenerator {
-    int[] numbers;
+    int number;
 
-    public FixedNumberGenerator(int[] numbers) {
-        this.numbers = numbers;
+    public FixedNumberGenerator(int number) {
+        this.number = number;
     }
 
     @Override
-    public int[] generateNumbers(int count) {
-        return numbers;
+    public int generateNumber() {
+        return number;
     }
 }

@@ -1,6 +1,5 @@
 package racingcar;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -12,30 +11,32 @@ import static org.junit.Assert.assertThat;
 public class RacingGameTest {
     RacingGame racingGame;
 
-    @Before
-    public void setUp() throws Exception {
-        racingGame = new RacingGame(5);
-    }
-
     @Test
-    public void 차한대_전진2회_멈춤3회() {
-        int[] testNumbers = {4, 5, 0, 0, 0};
-        Car car = new Car();
-        racingGame.race(car, testNumbers);
-        assertThat(car.getRacingPath(), is("--"));
-    }
-
-    @Test
-    public void 차세대_전진3회_멈춤2회() {
-        int[] testNumbers2 = {2, 1, 8, 6, 7};
+    public void 차3대_레이싱2회_전진과멈춤_각각한번씩() {
+        racingGame = new RacingGame(2);
         List<Car> cars = new ArrayList<>();
         for (int i = 1; i <= 3; i++) {
             cars.add(new Car());
         }
-
-        racingGame.start(cars, new FixedNumberGenerator(testNumbers2));
+        racingGame.race(cars, new FixedNumberGenerator(1));
         for (Car car : cars) {
-            assertThat(car.getRacingPath(), is("---"));
+            assertThat(car.getPosition(), is(0));
         }
+        racingGame.race(cars, new FixedNumberGenerator(5));
+        for (Car car : cars) {
+            assertThat(car.getPosition(), is(1));
+        }
+    }
+
+    @Test
+    public void 차1대_레이싱10회_멈춤4회_전진6회() {
+        racingGame = new RacingGame(10);
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car());
+
+        for (int i = 0; i < 10; i++) {
+            racingGame.race(cars, new FixedNumberGenerator(i));
+        }
+        assertThat(cars.get(0).getPosition(), is(6));
     }
 }

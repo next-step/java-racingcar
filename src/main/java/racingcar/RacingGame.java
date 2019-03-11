@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
@@ -9,17 +10,16 @@ public class RacingGame {
         this.times = times;
     }
 
-    public List<Car> start(List<Car> cars, NumberGenerator numberGenerator) {
+    public List<Integer> race(List<Car> cars, NumberGenerator numberGenerator) {
+        List<Integer> positions = new ArrayList<>();
         for (Car car : cars) {
-            race(car, numberGenerator.generateNumbers(times));
+            car.move(numberGenerator);
+            positions.add(car.getPosition());
         }
-        return cars;
+        return positions;
     }
 
-    public Car race(Car car, int[] numbers) {
-        for (int i = 0; i < numbers.length; i++) {
-            car.move(numbers[i]);
-        }
-        return car;
+    public int getTimes() {
+        return this.times;
     }
 }
