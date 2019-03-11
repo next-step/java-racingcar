@@ -2,34 +2,63 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
     private Race race;
     private int moveCount;
+    private int maxScore = 0;
+    private List<String> rankers;
 
-    public RacingGame(int carCount, int moveCount) {
+    public RacingGame(String carNames, int moveCount) {
         this.moveCount = moveCount;
-        this.race = new Race(carCount);
+        this.race = new Race(carNames);
     }
 
     public void startRace() {
-//        System.out.println("자동차 대수: " +  race.carCount() + "\n");
         for (int i = 0; i < moveCount; i++) {
             System.out.println((i + 1) + "번째횟수");
             race.run();
             printCarsDistance();
         }
+        getMaxScore();
+        topRankSearch();
+    }
+
+
+    private void getMaxScore() {
+        for (Car car : race.getCars()) {
+            replaceMaxScore(car);
+        }
+    }
+
+    private void replaceMaxScore(Car car) {
+        if (car.getMovingDistance() > maxScore) {
+            maxScore = car.getMovingDistance();
+        }
+    }
+
+    private void topRankSearch() {
+        rankers = new ArrayList<>();
+        for (Car car : race.getCars()) {
+            getRankerName(car);
+        }
+        System.out.println("\n\n" + String.join(",", rankers) + "가 우승자 입니다.");
+    }
+
+    private void getRankerName(Car car) {
+        if (car.getMovingDistance() == maxScore) {
+            rankers.add(car.getName());
+        }
     }
 
     private void printCarsDistance() {
-        for (Car car : race.getCarList()) {
+        for (Car car : race.getCars()) {
             printCarDistance(car);
         }
     }
 
     private void printCarDistance(Car car) {
-        StringBuilder raceResult = new StringBuilder();
+        StringBuilder raceResult = new StringBuilder(car.getName() + " : ");
         for (int i = 0; i < car.getMovingDistance(); i++) {
             raceResult.append("-");
         }

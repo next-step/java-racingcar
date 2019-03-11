@@ -5,26 +5,28 @@ import java.util.List;
 
 public class Race {
 
-    private List<Car> carList;
+    private List<Car> cars;
 
-    public List<Car> getCarList() {
-        return carList;
+
+    public List<Car> getCars() {
+        return cars;
     }
 
-    public Race(int carCount) {
-        this.carList = setupCar(carCount);
+    public Race(String carNames) {
+        this.cars = setupCar(carNames);
     }
 
-    private List<Car> setupCar(int carCount) {
-        carList = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            carList.add(new Car());
+    private List<Car> setupCar(String carNames) {
+        cars = new ArrayList<>();
+        String[] names = carNames.split(",");
+        for (String name : names) {
+            cars.add(new Car(name.trim()));
         }
-        return carList;
+        return cars;
     }
 
     public void run() {
-        for (Car car : carList) {
+        for (Car car : cars) {
             if (car.canMove()) {
                 car.moveCar();
             }
