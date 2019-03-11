@@ -7,9 +7,7 @@ public class Car {
     private static final int RULE_COUNT = 10;
     private static final int RUNNABLE_RULE_COUNT = 3;
 
-
     private int movingDistance = 0;
-
     private String name;
 
     public Car(String name) {
@@ -22,6 +20,10 @@ public class Car {
 
     public int getMovingDistance() {
         return movingDistance;
+    }
+
+    public boolean isHighScore(int highScore) {
+        return getMovingDistance() == highScore;
     }
 
     public void moveCar() {

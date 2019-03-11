@@ -4,22 +4,27 @@ import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RaceTest {
-    private String inputThreeCarName = "가,나      ,다 ";
-
-
+public class RacingCarTest {
 
     @Test
     public void 자동차대수_셋업() {
-        Race race = new Race(inputThreeCarName);
-        assertThat(race.getCars().size()).isEqualTo(3);
+        InputReq inputReq = new InputReq();
+        inputReq.setCarNames("가가, 나나,  다다");
+        inputReq.setMoveCount(3);
+
+        RacingGame racingGame = new RacingGame(inputReq);
+        assertThat(racingGame.getCars().size()).isEqualTo(3);
     }
 
 
     @Test
     public void canMove가_true_일때_모든_자동차들이_이동한다() {
+        InputReq inputReq = new InputReq();
+        inputReq.setCarNames("가가, 나나,  다다");
+        inputReq.setMoveCount(3);
+
         boolean canMove = true;
-        Race race = new Race(inputThreeCarName) {
+        RacingGame race = new RacingGame(inputReq) {
             @Override
             public void run() {
                 for (Car car : getCars()) {
@@ -41,8 +46,12 @@ public class RaceTest {
 
     @Test
     public void canMove가_false_일때_모든_자동차들이_이동하지않는다() {
+        InputReq inputReq = new InputReq();
+        inputReq.setCarNames("가가, 나나,  다다");
+        inputReq.setMoveCount(3);
+
         boolean canMove = false;
-        Race race = new Race(inputThreeCarName) {
+        RacingGame race = new RacingGame(inputReq) {
             @Override
             public void run() {
                 for (Car car : getCars()) {

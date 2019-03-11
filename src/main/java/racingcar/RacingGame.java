@@ -4,55 +4,41 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private Race race;
+    private List<Car> cars;
     private int moveCount;
-    private int maxScore = 0;
-    private List<String> winners;
 
-    public RacingGame(String carNames, int moveCount) {
-        this.moveCount = moveCount;
-        this.race = new Race(carNames);
+    public RacingGame(InputReq inputReq) {
+        this.moveCount = inputReq.getMoveCount();
+        setupCar(inputReq.getCarNames());
+    }
+
+    private void setupCar(String carNames) {
+        cars = new ArrayList<>();
+        String[] names = carNames.split(",");
+        for (String name : names) {
+            cars.add(new Car(name.trim()));
+        }
     }
 
     public void startRace() {
         for (int i = 0; i < moveCount; i++) {
             System.out.println((i + 1) + "번째횟수");
-            race.run();
+            run();
             printCarsDistance();
         }
-        getMaxScore();
-        topRankSearch();
     }
 
-
-    private void getMaxScore() {
-        for (Car car : race.getCars()) {
-            replaceMaxScore(car);
+    public void run() {
+        for (Car car : cars) {
+            if (car.canMove()) {
+                car.moveCar();
+            }
         }
     }
 
-    private void replaceMaxScore(Car car) {
-        if (car.getMovingDistance() > maxScore) {
-            maxScore = car.getMovingDistance();
-        }
-    }
-
-    private void topRankSearch() {
-        winners = new ArrayList<>();
-        for (Car car : race.getCars()) {
-            getWinnders(car);
-        }
-        System.out.println("\n\n" + String.join(",", winners) + "가 우승자 입니다.");
-    }
-
-    private void getWinnders(Car car) {
-        if (car.getMovingDistance() == maxScore) {
-            winners.add(car.getName());
-        }
-    }
 
     private void printCarsDistance() {
-        for (Car car : race.getCars()) {
+        for (Car car : cars) {
             printCarDistance(car);
         }
     }
@@ -65,6 +51,10 @@ public class RacingGame {
         System.out.println(raceResult.toString());
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
 
 }
+
 
