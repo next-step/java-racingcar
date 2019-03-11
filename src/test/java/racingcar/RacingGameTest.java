@@ -47,7 +47,7 @@ public class RacingGameTest {
     }
 
     @Test
-    public void 항상_전진하는_레이싱_경주() {
+    public void 전진하는_레이싱_경주() {
         RandomIntGenerator randomIntGenerator = new IntMoreThanCarMoveThresholdGenerator();
 
         RacingGame racingGame = new RacingGame(carNames, randomIntGenerator);
