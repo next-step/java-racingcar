@@ -5,51 +5,54 @@ import java.util.Scanner;
 
 public class RacingGame {
 
-    public void move(int[] carPositions, int index, int randomValue) {
-        if(RacingGame.checkMove(randomValue)) {
-            carPositions[index] = RacingGame.add(carPositions[index]);
+    private static final int CHECK_VALUE = 4;
+    private static final int INCREASE_VALUE = 1;
+    private static final int RANDOM_BOUND = 10;
+    private int[] carPositions = {};
+    private int time = 0;
+
+    public RacingGame() {
+    }
+
+    public RacingGame(int[] carPositions, int time) {
+        this.carPositions = carPositions;
+        this.time = time;
+    }
+
+    public void move(int index, int randomValue) {
+        if (checkMove(randomValue)) {
+            carPositions[index] = add(carPositions[index]);
         }
     }
 
-    public static int add(int carPosition) {
-        return carPosition + 1;
+    private static int add(int carPosition) {
+        return carPosition + INCREASE_VALUE;
     }
 
-    public static boolean checkMove(int value) {
-        if(value >= 4) {
-            return true;
-        }
-        return false;
+    private static boolean checkMove(int value) {
+        return value >= CHECK_VALUE;
     }
 
-    public void resultView(int position) {
-        for(int i=0; i<position; i++) {
-            System.out.print("-");
-        }
-        System.out.println();
-    }
-
-    public static int randomValue() {
+    private static int randomValue() {
         Random random = new Random();
-        return random.nextInt(10);
+        return random.nextInt(RANDOM_BOUND);
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("자동차 대수는 몇 대 인가요?");
-        String value = scanner.nextLine();
+        String cars = scanner.nextLine();
         System.out.println("시도할 회수는 몇 회 인가요?");
         String count = scanner.nextLine();
 
-        RacingGame racingGame = new RacingGame();
-        int[] carPositions = new int[Integer.parseInt(value)];
-        int time = Integer.parseInt(count);
+        RacingGame racingGame = new RacingGame(new int[Integer.parseInt(cars)], Integer.parseInt(count));
+        ResultView resultView = new ResultView();
 
-        for(int i=0; i<time; i++) {
-            for(int j=0; j<carPositions.length; j++) {
-                int randomValue = RacingGame.randomValue();
-                racingGame.move(carPositions, j, randomValue);
-                racingGame.resultView(carPositions[j]);
+        for (int i = 0; i < racingGame.time; i++) {
+            for (int j = 0; j < racingGame.carPositions.length; j++) {
+                int randomValue = randomValue();
+                racingGame.move(j, randomValue);
+                resultView.showResult(racingGame.carPositions[j]);
             }
             System.out.println();
         }
