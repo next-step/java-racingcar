@@ -32,7 +32,7 @@ public class RacingCarView {
     }
 
     public static void viewCarMoveInfo(Car car) {
-        for (int j = 0; j < car.getTotalDistance(); j++) {
+        for (int i = 0; i < car.getTotalDistance(); i++) {
             System.out.print("-");
         }
     }
