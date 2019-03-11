@@ -1,71 +1,41 @@
 package racing.board;
 
 import org.junit.*;
+import racing.model.RacingCar;
 
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameBoardTest {
 
     @Test
-    public void test_차_생성() {
-        int size = 3;
+    public void test_차_생성_1대() {
         RacingGameBoard board = new RacingGameBoard();
-        assertThat(board.createCars(size))
-                .isEqualTo(size);
+        assertThat(board.createCars(Arrays.asList("pobi")))
+                .isEqualTo(1);
     }
 
     @Test
-    public void test_랜덤이동_0대_1회() {
+    public void test_차_생성_2대() {
         RacingGameBoard board = new RacingGameBoard();
-        assertThat(board.moveCars())
-                .isEqualTo(Collections.emptyList());
+        assertThat(board.createCars(Arrays.asList("pobi", "crong")))
+                .isEqualTo(2);
     }
 
     @Test
-    public void test_랜덤이동_3대_1회() {
-        RacingGameBoard board = new RacingGameBoard();
-        int size = board.createCars(3);
-        List<Integer> positions = board.moveCars();
+    public void test_게임_시작_전체_우승() {
+        // Given
+        RacingGameBoard board = new RacingGameBoard(() -> RacingCar.THRESHOLD_POWER);
+        List<String> names = Arrays.asList("pobi", "crong", "honux");
+        board.createCars(names);
 
-        assertThat(positions.size())
-                .isEqualTo(size);
+        // When
+        GameResult result = board.start(3);
 
-        for (int position : positions) {
-            assertThat(position).isGreaterThanOrEqualTo(0);
-        }
-    }
-
-    @Test
-    public void test_1칸이동_3대_3회() {
-        RacingGameBoard board = new RacingGameBoard(() -> 10);
-        int size = board.createCars(3);
-        int time = 3;
-        for (int position = 1; position <= time; position++) {
-            assertThat(board.moveCars())
-                    .isEqualTo(getPositions(size, position));
-        }
-    }
-
-    @Test
-    public void test_0칸이동_3대_3회() {
-        RacingGameBoard board = new RacingGameBoard(() -> 3);
-        int size = board.createCars(3);
-        int time = 3;
-        for (int positoin = 1; positoin <= time; positoin++) {
-            assertThat(board.moveCars())
-                    .isEqualTo(getPositions(size, 0));
-        }
-    }
-
-    private List<Integer> getPositions(int size, int value) {
-        return IntStream.range(0, size)
-                .boxed()
-                .map(i -> value)
-                .collect(Collectors.toList());
+        // Then
+        assertThat(result).isNotNull();
+        assertThat(result.winners()).isEqualTo(names);
     }
 }

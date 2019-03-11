@@ -1,37 +1,54 @@
 package racing.view;
 
 
-import java.util.List;
+import racing.board.GameResult;
+import racing.board.GameResultOfStepByStep;
+
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class ResultView {
 
-    private static final char CHAR_TO_CONVERT = '-';
+    private static final String CHAR_TO_CONVERT = "-";
 
-    public static void render(List<String> results) {
-        System.out.println("실행 결과");
-        System.out.print(results
-                .stream()
-                .collect(Collectors.joining("\n")));
-    }
-
-    public static String convertToChars(List<Integer> positions) {
+    public static void render(GameResult gameResult) {
         StringBuilder sb = new StringBuilder();
-        appendPositions(sb, positions);
-        return sb.toString();
+        sb.append("\n실행 결과\n")
+          .append(convert(
+                    gameResult.stream(),
+                    ResultView::convertStep,
+                    "\n\n"))
+          .append("\n\n")
+          .append(join(
+                    gameResult.winners().stream(),
+                    ", "))
+          .append("가 최종 우승했습니다.");
+
+        System.out.println(sb.toString());
     }
 
-
-    private static void appendPositions(StringBuilder sb, List<Integer> positions) {
-        for (int position : positions) {
-            appendPosition(sb, position);
-        }
+    private static String join(Stream<String> stream, String delimiter) {
+        return stream.collect(Collectors.joining(delimiter));
     }
 
-    private static void appendPosition(StringBuilder sb, int position) {
-        for (int i = 0; i < position; i++) {
-            sb.append(CHAR_TO_CONVERT);
-        }
-        sb.append("\n");
+    private static String convertStep(GameResultOfStepByStep step) {
+        return convert(
+                step.stream(),
+                carDto -> carDto.getName() + " : " + convertPosition(carDto.getPosition()),
+                "\n");
     }
+
+    private static String convertPosition(int position) {
+        return convert(
+                IntStream.range(0, position).boxed(),
+                i -> CHAR_TO_CONVERT,
+                "");
+    }
+
+    private static <T> String convert(Stream<T> stream, Function<T, String> mapper, String delimiter) {
+        return join(stream.map(mapper), delimiter);
+    }
+
 }

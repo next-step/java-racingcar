@@ -1,11 +1,13 @@
 package racing.board;
 
+import racing.model.NamedRacingCar;
 import racing.model.RacingCar;
 import racing.random.BoundedRandomGenerator;
 import racing.random.RandomGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGameBoard {
 
@@ -24,18 +26,27 @@ public class RacingGameBoard {
         this.randomGenerator = randomGenerator;
     }
 
-    public int createCars(int size) {
-        for (int i = 0 ; i < size; i++) {
-            cars.add(new RacingCar());
-        }
+    public int createCars(List<String> names) {
+        cars.addAll(names.stream()
+                .map(name -> new NamedRacingCar(name))
+                .collect(Collectors.toList()));
         return cars.size();
     }
 
-    public List<Integer> moveCars() {
-        List<Integer> positions = new ArrayList<>();
-        for (RacingCar car : cars) {
-            positions.add(car.move(randomGenerator.nextInt()));
+    public GameResult start(int timesOfMoves) {
+        GameResult result = new GameResult();
+
+        for (int i = 0; i < timesOfMoves; i++) {
+            moveCars();
+            result.addStep(cars);
         }
-        return positions;
+
+        return result;
+    }
+
+    private void moveCars() {
+        for (RacingCar car : cars) {
+            car.move(randomGenerator.nextInt());
+        }
     }
 }
