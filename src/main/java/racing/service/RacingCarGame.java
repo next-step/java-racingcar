@@ -29,9 +29,9 @@ public class RacingCarGame {
         for (Car car : cars) {
             System.out.print(car.getName() + ": ");
 
-            car.move();
+            int moveDistance = car.move();
 
-            RacingCarView.viewCarMoveInfo(car);
+            RacingCarView.viewCarMoveInfo(moveDistance);
 
             System.out.println();
         }

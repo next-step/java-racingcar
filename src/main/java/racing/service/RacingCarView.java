@@ -35,8 +35,8 @@ public class RacingCarView {
         return names;
     }
 
-    public static void viewCarMoveInfo(Car car) {
-        for (int i = 0; i < car.getTotalDistance(); i++) {
+    public static void viewCarMoveInfo(int moveDistance) {
+        for (int i = 0; i < moveDistance; i++) {
             System.out.print("-");
         }
     }

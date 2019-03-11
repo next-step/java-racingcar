@@ -17,12 +17,14 @@ public class Car implements Comparable<Car> {
         this.name = name;
     }
 
-    public void move() {
+    public int move() {
         int randomValue = getRandomValue();
         int moveDistance = getMoveCount(randomValue);
         if (moveDistance == 1) {
             totalDistance += moveDistance;
         }
+
+        return totalDistance;
     }
 
     public int getMoveCount(int randomValue) {

@@ -7,13 +7,20 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class CarTest {
 
     @Test
-    public void 자동차이동() {
+    public void 자동차단일이동() {
+        Car car = new Car();
+        int moveDistance = car.move();
+        assertThat(moveDistance).isLessThanOrEqualTo(1);
+    }
+
+    @Test
+    public void 자동차여러번이동() {
         Car car = new Car();
         car.move();
         car.move();
         car.move();
-        car.move();
-        assertThat(car.getTotalDistance()).isLessThanOrEqualTo(4);
+        int moveDistance = car.move();
+        assertThat(moveDistance).isLessThanOrEqualTo(4);
     }
 
     @Test
