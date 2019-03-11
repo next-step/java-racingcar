@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RaceTest {
-    private String inputThreeCarName = "가,나,다 ";
+    private String inputThreeCarName = "가,나      ,다 ";
 
 
 
@@ -60,5 +60,7 @@ public class RaceTest {
         assertThat(race.getCars().get(1).getMovingDistance()).isEqualTo(0);
         assertThat(race.getCars().get(2).getMovingDistance()).isEqualTo(0);
     }
+
+
 
 }

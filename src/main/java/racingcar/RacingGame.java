@@ -7,7 +7,7 @@ public class RacingGame {
     private Race race;
     private int moveCount;
     private int maxScore = 0;
-    private List<String> rankers;
+    private List<String> winners;
 
     public RacingGame(String carNames, int moveCount) {
         this.moveCount = moveCount;
@@ -38,16 +38,16 @@ public class RacingGame {
     }
 
     private void topRankSearch() {
-        rankers = new ArrayList<>();
+        winners = new ArrayList<>();
         for (Car car : race.getCars()) {
-            getRankerName(car);
+            getWinnders(car);
         }
-        System.out.println("\n\n" + String.join(",", rankers) + "가 우승자 입니다.");
+        System.out.println("\n\n" + String.join(",", winners) + "가 우승자 입니다.");
     }
 
-    private void getRankerName(Car car) {
+    private void getWinnders(Car car) {
         if (car.getMovingDistance() == maxScore) {
-            rankers.add(car.getName());
+            winners.add(car.getName());
         }
     }
 
