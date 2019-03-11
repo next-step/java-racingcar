@@ -2,13 +2,19 @@ package calculator;
 
 import org.junit.Test;
 
+import java.util.InputMismatchException;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringCalculatorTest {
     @Test
     public void 곱셈() {
-        int result = StringCalculator.calculate("1 * 2");
-        assertThat(result).isEqualTo(2);
+        try {
+            int result = StringCalculator.calculate("");
+        }catch (InputMismatchException e)
+        {
+            System.out.println("입력값이 올바르지않음");
+        }
     }
 
     @Test

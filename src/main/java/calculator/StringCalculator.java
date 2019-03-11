@@ -1,22 +1,28 @@
 package calculator;
+import java.util.InputMismatchException;
 
 public class StringCalculator {
-    static int calculate(String text) {
-        if (text.equals("")) {
-            return 0;
+
+    public static int calculate(String text) throws InputMismatchException {
+        if (text.equals("") || text == null) {
+            throw new InputMismatchException();
         }
 
-        String[] values = text.split(" ");
-        int firstValue = Integer.parseInt(values[0]);
-        for (int i = 1; i < values.length; ) {
-            firstValue = calculationWithString(firstValue, values[i], Integer.parseInt(values[i + 1]));
-            i += 2;
-        }
+        try {
+            String[] values = text.split(" ");
+            int firstValue = Integer.parseInt(values[0]);
+            for (int i = 1; i < values.length; ) {
+                firstValue = calculationWithString(firstValue, values[i], Integer.parseInt(values[i + 1]));
+                i += 2;
+            }
 
-        return firstValue;
+            return firstValue;
+        } catch (InputMismatchException e) {
+            throw new InputMismatchException();
+        }
     }
 
-    static int calculationWithString(int firstValue, String expression, int secondValue) {
+    public static int calculationWithString(int firstValue, String expression, int secondValue) throws InputMismatchException {
         switch (expression) {
             case "+":
                 return firstValue + secondValue;
@@ -27,7 +33,7 @@ public class StringCalculator {
             case "/":
                 return firstValue / secondValue;
             default:
-                return 0;
+                throw new InputMismatchException();
         }
     }
 }

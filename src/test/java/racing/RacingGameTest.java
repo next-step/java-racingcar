@@ -1,39 +1,26 @@
 package racing;
 
 import org.junit.Test;
-
-import java.util.Random;
-
 import static org.assertj.core.api.Assertions.assertThat;
-
 
 public class RacingGameTest {
     @Test
-    public void 겟터셋터확인()
+    public void 게임초기값확인()
     {
         RacingGame rg = new RacingGame();
-        rg.setTime(3);
-        rg.setCarPositions(10);
 
-        assertThat(rg.getTime()).isEqualTo(3);
-        assertThat(rg.getCarPositions().length).isEqualTo(10);
+        // 무조건 이동되도록 룰적용
+        GameRule gr = new GameRule(false);
 
-        //assertThat(rg.getTime()).isEqual(3);
-    }
+        int time = 5;
+        int carCount = 5;
 
-    @Test
-    public void 이동확인()
-    {
-        RacingGame rg = new RacingGame();
-        rg.setTime(3);
-        rg.setCarPositions(10);
+        rg.initRacingGame(time,carCount);
+        rg.runRacingGame(gr);
 
-        Random random = new Random();
-        int[] testCarPosition = rg.getCarPositions();
-        for (int i = 0; i < testCarPosition.length; i++) {
-            if (random.nextInt(10) >= 4) {
-                testCarPosition[i] += 1;
-            }
+        for(int i = 0; i < time; i++)
+        {
+            assertThat(rg.getList().get(i).getMoveValues().get(i)).isEqualTo(i + 1);
         }
     }
 }
