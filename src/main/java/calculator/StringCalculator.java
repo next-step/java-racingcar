@@ -8,7 +8,7 @@ public class StringCalculator {
     private int result;
 
     public boolean patternMatcher(String text) {
-        Pattern pattern = Pattern.compile("^([0-9]\\s[[+],[-],[*],[/]]\\s)+[0-9]$");
+        Pattern pattern = Pattern.compile("^(([0-9]+)\\s[[+],[-],[*],[/]]\\s)+([0-9]+)$");
         Matcher matcher = pattern.matcher(text);
 
         return matcher.find();

@@ -1,25 +1,27 @@
-package racing;
+package racing.domain;
 
 import org.junit.Test;
-
-import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class CarTest {
 
     @Test
-    public void 자동차달리기정보가져오기() {
+    public void 자동차이동() {
         Car car = new Car();
-        car.move(4);
-        assertThat(car.getMoveList().size()).isEqualTo(4);
+        car.move();
+        car.move();
+        car.move();
+        car.move();
+        assertThat(car.getTotalDistance()).isLessThanOrEqualTo(4);
     }
 
     @Test
     public void 자동차가이번에움직였나() {
         Car car = new Car();
-        assertThat(car.getMoveCount(4)).isEqualTo(0);
-        assertThat(car.getMoveCount(5)).isEqualTo(1);
+        assertThat(car.getMoveCount(1)).isEqualTo(0);
+        assertThat(car.getMoveCount(4)).isEqualTo(1);
+        assertThat(car.getMoveCount(7)).isEqualTo(1);
     }
 
     @Test
@@ -29,10 +31,5 @@ public class CarTest {
         assertThat(car.getRandomValue()).isGreaterThanOrEqualTo(0);
     }
 
-    @Test
-    public void 자동차리스트가져오기() {
-        List<Car> carList = RacingCarUtils.getCarList(3, 5);
-        assertThat(carList.size()).isEqualTo(3);
-    }
 
 }
