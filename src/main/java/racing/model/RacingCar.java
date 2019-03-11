@@ -12,4 +12,11 @@ public class RacingCar {
         }
         return position;
     }
+
+    public CarDto mapToDto() {
+        CarDto carDto = new CarDto();
+        carDto.setPosition(position);
+        carDto.setName(toString());
+        return carDto;
+    }
 }

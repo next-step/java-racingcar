@@ -31,4 +31,11 @@ public class RacingCarTest {
         assertThat(car.move(POWER_GREATER_THAN_THRESHOLD)).isEqualTo(2);
         assertThat(car.move(POWER_GREATER_THAN_THRESHOLD)).isEqualTo(3);
     }
+
+    @Test
+    public void test_변환_DTO() {
+        RacingCar racingCar = new RacingCar();
+        assertThat(racingCar.mapToDto().getPosition()).isEqualTo(0);
+        assertThat(racingCar.mapToDto().getName()).isEqualTo(racingCar.toString());
+    }
 }
