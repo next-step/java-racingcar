@@ -1,25 +1,17 @@
 package racing.application;
 
 import org.junit.Test;
-import racing.infrastructure.CarMoveValidation;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class CarTest {
-    Validation mock = mock(CarMoveValidation.class);
-    Car car = new Car();
 
     @Test
     public void 한칸이동() {
-        //given
-        when(mock.check()).thenReturn(true);
+        Car car = new Car();
 
-        //when
-        int actual = car.move(mock.check());
+        car.move();
 
-        //then
-        assertThat(actual).isEqualTo(2);
+        assertThat(car.getPosition()).isEqualTo(2);
     }
 }

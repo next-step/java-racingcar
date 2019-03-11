@@ -1,8 +1,7 @@
 package racing.application;
 
-import racing.infrastructure.CarMoveValidation;
-import racing.view.RacingRequestView;
 import racing.view.RacingCarsView;
+import racing.view.RacingRequestView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +9,7 @@ import java.util.List;
 public class RacingGame {
     private int time;
     private List<Car> cars = new ArrayList();
+    private List<RacingCarsView> history = new ArrayList();
 
     public RacingGame(RacingRequestView view) {
         for (int i = 0; i < view.getCarCount(); i++) {
@@ -19,30 +19,29 @@ public class RacingGame {
         this.time = view.getGameCount();
     }
 
-    public RacingCarsView start() {
-        List<Car> result = run(cars);
-        return RacingCarsView.toRacingCarsView(result);
+    public void start(Game game) {
+        for (int i = 0; i < time; i++) {
+            turn(game);
+            history.add(getView());
+        }
     }
 
-    protected List<Car> run(List<Car> cars) {
-        cars.stream().forEach(car -> runByPlayer(car, play()));
-        return cars;
+    private void turn(Game game) {
+        cars.stream().forEach(car -> play(game, car));
     }
 
-    protected int runByPlayer(Car car, boolean movable) {
-        return car.move(movable);
-    }
-
-    protected boolean play() {
-        return new CarMoveValidation().check();
+    private void play(Game game, Car car) {
+        if (game.win()) {
+            car.move();
+        }
     }
 
     public RacingCarsView getView() {
         return RacingCarsView.toRacingCarsView(cars);
     }
 
-    public int getTime() {
-        return time;
+    public List<RacingCarsView> getHistory() {
+        return history;
     }
 }
 

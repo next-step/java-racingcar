@@ -2,6 +2,8 @@ package racing.ui;
 
 import racing.view.RacingCarsView;
 
+import java.util.List;
+
 public class GameConsole {
     private static final String RESULT_COMMENT = "실행결과";
     private static final String RACING_CAR = "-";
@@ -11,13 +13,17 @@ public class GameConsole {
         resultView(view);
     }
 
-    public static void resultView(RacingCarsView view) {
-        view.getPositions().stream().forEach(v -> showCar(v));
+    private static void resultView(RacingCarsView view) {
+        view.getPositions().stream().forEach(position -> showCar(position));
         emptyLine();
     }
 
-    private static void showCar(Integer v) {
-        for (int i = 0; i < v; i++) {
+    public static void resultViews(List<RacingCarsView> views) {
+        views.stream().forEach(view -> resultView(view));
+    }
+
+    private static void showCar(Integer position) {
+        for (int i = 0; i < position; i++) {
             System.out.print(RACING_CAR);
         }
         emptyLine();

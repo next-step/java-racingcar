@@ -1,11 +1,14 @@
 package racing.application;
 
 import org.junit.Test;
+import racing.infrastructure.RandomGame;
 import racing.view.RacingRequestView;
 
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 
 public class RacingGameTest {
@@ -33,14 +36,14 @@ public class RacingGameTest {
     public void 한명이_게임_한번_실행() {
         //given
         RacingRequestView requestView = new RacingRequestView(1, 3);
-        RacingGame game = new RacingGame(requestView);
-        Car car = new Car();
-        boolean movable = true;
+        RacingGame racingGame = new RacingGame(requestView);
+        RandomGame randomGame = mock(RandomGame.class);
+        when(randomGame.win()).thenReturn(true);
 
         //when
-        game.runByPlayer(car, movable);
+        racingGame.start(randomGame);
 
         //then
-        assertThat(car.getPosition()).isEqualTo(2);
+        assertThat(racingGame.getView().getPositions().get(0)).isEqualTo(4);
     }
 }
