@@ -1,7 +1,10 @@
 package racingcar;
 
 import org.junit.Test;
+import racingcar.car.Car;
 import racingcar.car.PowerGenerator;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,17 +21,6 @@ public class RacingGameTest {
 
     //19.03.10 - step1 피드백, 개선한 구조에 맞게 테스트 method 수정
     @Test
-    public void power값_확인() {
-        PowerGenerator powerGenerator = new PowerGenerator();
-
-        int result = powerGenerator.getPower(5);
-        assertThat(result).isEqualTo(1);
-
-        result = powerGenerator.getPower(2);
-        assertThat(result).isEqualTo(0);
-    }
-
-    @Test
     public void 전진_정지_여부_확인() {
         PowerGenerator powerGenerator = new PowerGenerator();
         int power = powerGenerator.determineMoveOrNot();
@@ -41,21 +33,21 @@ public class RacingGameTest {
         RacingGame racingGame = new RacingGame(3, 1);
 
         racingGame.move();
-        int[] carPositions = racingGame.loadResultofGame();
+        List<Car> cars = racingGame.loadResultofGame();
 
-        assertThat(carPositions[0]).isBetween(0, 1);
-        assertThat(carPositions[1]).isBetween(0, 1);
-        assertThat(carPositions[2]).isBetween(0, 1);
+        assertThat(cars.get(0).getPosition()).isBetween(0, 1);
+        assertThat(cars.get(1).getPosition()).isBetween(0, 1);
+        assertThat(cars.get(2).getPosition()).isBetween(0, 1);
     }
 
     @Test
     public void 레이싱_게임_3대_5회() {
         RacingGame racingGame = new RacingGame(3, 5);
         racingGame.move();
-        int[] carPositions = racingGame.loadResultofGame();
+        List<Car> cars = racingGame.loadResultofGame();
 
-        assertThat(carPositions[0]).isBetween(0, 4);
-        assertThat(carPositions[1]).isBetween(0, 4);
-        assertThat(carPositions[2]).isBetween(0, 4);
+        assertThat(cars.get(0).getPosition()).isBetween(0, 4);
+        assertThat(cars.get(1).getPosition()).isBetween(0, 4);
+        assertThat(cars.get(2).getPosition()).isBetween(0, 4);
     }
 }

@@ -1,13 +1,15 @@
 package racingcar;
 
+import racingcar.car.Car;
+
+import java.util.List;
+
 public class RacingGameStatusViewer {
 
-    static void showRacingGameStatus(int[] carPosition) {
-        int cars = carPosition.length;
+    static void showRacingGameStatus(List<Car> cars) {
 
-        for (int car = 0; car < cars; car++) {
-            int position = carPosition[car];
-            printStatusOfEachCar(position);
+        for (Car car : cars) {
+            printStatusOfEachCar(car.getPosition());
         }
         System.out.println();
     }
