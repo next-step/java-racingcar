@@ -11,10 +11,6 @@ public class Car {
         return position;
     }
 
-    protected boolean canMove(Validation validation) {
-        return validation.check();
-    }
-
     public int getPosition() {
         return position;
     }

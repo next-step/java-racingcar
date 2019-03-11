@@ -15,6 +15,10 @@ public class RacingCarsView {
     public List<Integer> getPositions() {
         return positions;
     }
+
+    public static RacingCarsView toRacingCarsView(List<Car> cars) {
+        return new RacingCarsView(cars);
+    }
 }
 
 

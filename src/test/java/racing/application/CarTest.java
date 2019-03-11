@@ -8,18 +8,16 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class CarTest {
-    Car mock = mock(Car.class);
+    Validation mock = mock(CarMoveValidation.class);
     Car car = new Car();
-    Validation validation = new CarMoveValidation();
 
     @Test
     public void 한칸이동() {
         //given
-        when(mock.canMove(validation)).thenReturn(true);
+        when(mock.check()).thenReturn(true);
 
         //when
-        boolean movable = mock.canMove(validation);
-        int actual = car.move(movable);
+        int actual = car.move(mock.check());
 
         //then
         assertThat(actual).isEqualTo(2);

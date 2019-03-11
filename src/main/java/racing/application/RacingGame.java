@@ -21,11 +21,11 @@ public class RacingGame {
 
     public RacingCarsView start() {
         List<Car> result = run(cars);
-        return toRacingCarsView(result);
+        return RacingCarsView.toRacingCarsView(result);
     }
 
     protected List<Car> run(List<Car> cars) {
-        cars.stream().forEach(car -> runByPlayer(car, play(car)));
+        cars.stream().forEach(car -> runByPlayer(car, play()));
         return cars;
     }
 
@@ -33,16 +33,12 @@ public class RacingGame {
         return car.move(movable);
     }
 
-    protected boolean play(Car car) {
-        return car.canMove(new CarMoveValidation());
-    }
-
-    protected RacingCarsView toRacingCarsView(List<Car> cars) {
-        return new RacingCarsView(cars);
+    protected boolean play() {
+        return new CarMoveValidation().check();
     }
 
     public RacingCarsView getView() {
-        return toRacingCarsView(cars);
+        return RacingCarsView.toRacingCarsView(cars);
     }
 
     public int getTime() {
