@@ -1,5 +1,6 @@
 package racing.service;
 
+import org.junit.Before;
 import org.junit.Test;
 import racing.domain.Car;
 
@@ -10,21 +11,41 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class RankTest {
 
-    @Test
-    public void 자동차정렬() {
+    private List<Car> cars;
+
+    @Before
+    public void 자동차경주초기화() {
+        cars = new ArrayList<>();
+
         Car car1 = new Car("car1");
         Car car2 = new Car("car2");
         Car car3 = new Car("car3");
 
-        car1.move(5);
-        car2.move(5);
-        car3.move(5);
+        car1.move();
+        car1.move();
+        car1.move();
+        car1.move();
+        car1.move();
 
-        List<Car> cars = new ArrayList<>();
+        car2.move();
+        car2.move();
+        car2.move();
+        car2.move();
+        car2.move();
+
+        car3.move();
+        car3.move();
+        car3.move();
+        car3.move();
+        car3.move();
+
         cars.add(car1);
         cars.add(car2);
         cars.add(car3);
+    }
 
+    @Test
+    public void 자동차정렬() {
         RacingCarRank.sortCars(cars);
 
         assertThat(cars.get(0).getTotalDistance()).isGreaterThanOrEqualTo(cars.get(1).getTotalDistance());
@@ -34,19 +55,6 @@ public class RankTest {
 
     @Test
     public void 자동차랭킹() {
-        Car car1 = new Car("car1");
-        Car car2 = new Car("car2");
-        Car car3 = new Car("car3");
-
-        car1.move(5);
-        car2.move(5);
-        car3.move(5);
-
-        List<Car> cars = new ArrayList<>();
-        cars.add(car1);
-        cars.add(car2);
-        cars.add(car3);
-
         RacingCarRank.sortCars(cars);
 
         List<Car> winners = RacingCarRank.rankCars(cars);

@@ -9,9 +9,11 @@ public class CarTest {
     @Test
     public void 자동차이동() {
         Car car = new Car();
-        car.move(5);
-        assertThat(car.getMoveList().size()).isLessThanOrEqualTo(5);
-        assertThat(car.getTotalDistance()).isLessThanOrEqualTo(5);
+        car.move();
+        car.move();
+        car.move();
+        car.move();
+        assertThat(car.getTotalDistance()).isLessThanOrEqualTo(4);
     }
 
     @Test

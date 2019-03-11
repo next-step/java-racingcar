@@ -47,13 +47,4 @@ public class RacingCarMake {
         return carList;
     }
 
-    public static void moveCars(List<Car> cars, int moveCnt) {
-
-        for (Car car : cars) {
-            car.move(moveCnt);
-        }
-
-    }
-
-
 }

@@ -19,18 +19,22 @@ public class RacingCar {
     private static void doRacing(RacingCarRequest racingCarRequest) {
 
         try {
+            //자동차 이름 파싱
             String[] names = RacingCarMake.parseCarNames(racingCarRequest.getNames());
 
+            //자동차 리스트 생성
             List<Car> cars = RacingCarMake.getCars(names);
 
-            RacingCarMake.moveCars(cars, racingCarRequest.getMoveCnt());
+            //레이싱 시작
+            RacingCarView.startRacing(cars, racingCarRequest.getMoveCnt());
 
-            RacingCarView.viewRacingCar(cars, racingCarRequest.getMoveCnt());
-
+            //자동차 이동거리로 정렬
             RacingCarRank.sortCars(cars);
 
+            //자동차 순위결정
             List<Car> winners = RacingCarRank.rankCars(cars);
 
+            //자동차 순위 출력
             RacingCarView.viewRacingCarWinners(winners);
 
         } catch (RuntimeException exception) {
