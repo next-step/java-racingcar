@@ -1,16 +1,18 @@
 package racingcar.vo;
 
+import java.util.List;
+
 public class RacingGameParameter {
-    private final int numberOfCar;
+    private final List<String> carNames;
     private final int tryCount;
 
-    public RacingGameParameter(int numberOfCar, int tryCount) {
-        this.numberOfCar = numberOfCar;
+    public RacingGameParameter(List<String> carNames, int tryCount) {
+        this.carNames = carNames;
         this.tryCount = tryCount;
     }
 
-    public int getNumberOfCar() {
-        return numberOfCar;
+    public List<String> getCarNames() {
+        return carNames;
     }
 
     public int getTryCount() {
