@@ -1,14 +1,14 @@
 package racing;
 
-import java.util.Arrays;
-import java.util.Scanner;
-import java.util.Random;
+import java.util.*;
 
 public class RacingGame {
 
     private static int timeToTry;
     private static int numberOfCar;
-    private static int[] carPositions;
+    private static List<Car> cars;
+
+    private static final int CRITERION_TO_MOVE = 4;
 
     public static void inputView() {
         System.out.println("자동차 대수는 몇 대인가요?");
@@ -36,26 +36,28 @@ public class RacingGame {
         }
     }
 
-    public static int[] initCars() {
-        carPositions = new int[numberOfCar];
-        Arrays.fill(carPositions, 0);
-        return carPositions;
+    public static List<Car> initCars() {
+        cars = new ArrayList<Car>(numberOfCar);
+        for(int i = 0 ; i < numberOfCar ; i++){
+            cars.add(i, new Car());
+        }
+        return cars;
     }
 
 
 
-    public static int[] moveCars() {
-        for(int i = 0 ; i < carPositions.length ; i++) {
-            if (new Random().nextInt(10) >= 4) {
-                carPositions[i]++;
+    public static List<Car> moveCars() {
+        for(int i = 0 ; i < cars.size() ; i++) {
+            if (new Random().nextInt(10) >= CRITERION_TO_MOVE) {
+                cars.get(i).setPosition( cars.get(i).getPosition() + 1);
             }
         }
-        return carPositions;
+        return cars;
     }
 
     public static void oneTryView() {
-        for(int carPosition : carPositions) {
-            for(int i = 0 ; i < carPosition ; i++) {
+        for(Car car : cars) {
+            for(int i = 0 ; i < car.getPosition() ; i++) {
                 System.out.print("-");
             }
             System.out.println();
@@ -71,9 +73,6 @@ public class RacingGame {
         return numberOfCar;
     }
 
-    public static int[] getCarPositions() {
-        return carPositions;
-    }
 
     public static void setTimeToTry(int timeToTry) {
         RacingGame.timeToTry = timeToTry;
@@ -83,7 +82,4 @@ public class RacingGame {
         RacingGame.numberOfCar = numberOfCar;
     }
 
-    public static void setCarPositions(int[] carPositions) {
-        RacingGame.carPositions = carPositions;
-    }
 }
