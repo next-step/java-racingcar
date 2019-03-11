@@ -7,9 +7,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
 
-    final static int POWER_GREATER_THAN_THRESHOLD = 10;
+    private final static int POWER_GREATER_THAN_THRESHOLD = 10;
 
-    final static int POWER_LESS_THAN_THRESHOLD = 0;
+    private final static int POWER_LESS_THAN_THRESHOLD = 0;
+
 
     @Test
     public void test_이동_임계점미달() {
@@ -24,10 +25,10 @@ public class RacingCarTest {
     }
 
     @Test
-    public void test_세번_이동() {
+    public void test_이동_3회() {
         RacingCar car = new RacingCar();
-        car.move(POWER_GREATER_THAN_THRESHOLD);
-        car.move(POWER_GREATER_THAN_THRESHOLD);
+        assertThat(car.move(POWER_GREATER_THAN_THRESHOLD)).isEqualTo(1);
+        assertThat(car.move(POWER_GREATER_THAN_THRESHOLD)).isEqualTo(2);
         assertThat(car.move(POWER_GREATER_THAN_THRESHOLD)).isEqualTo(3);
     }
 }
