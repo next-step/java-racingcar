@@ -1,5 +1,6 @@
 package racing.application;
 
+import racing.infrastructure.CarMoveValidation;
 import racing.view.RacingRequestView;
 import racing.view.RacingCarsView;
 
@@ -18,17 +19,30 @@ public class RacingGame {
         this.time = view.getGameCount();
     }
 
-    public RacingCarsView run() {
-        cars.stream().forEach(car -> car.move());
+    public RacingCarsView start() {
+        List<Car> result = run(cars);
+        return toRacingCarsView(result);
+    }
+
+    protected List<Car> run(List<Car> cars) {
+        cars.stream().forEach(car -> runByPlayer(car, play(car)));
+        return cars;
+    }
+
+    protected int runByPlayer(Car car, boolean movable) {
+        return car.move(movable);
+    }
+
+    protected boolean play(Car car) {
+        return car.canMove(new CarMoveValidation());
+    }
+
+    protected RacingCarsView toRacingCarsView(List<Car> cars) {
         return new RacingCarsView(cars);
     }
 
     public RacingCarsView getView() {
-        return new RacingCarsView(cars);
-    }
-
-    public int getPosition(int index) {
-        return cars.get(index).getPosition();
+        return toRacingCarsView(cars);
     }
 
     public int getTime() {

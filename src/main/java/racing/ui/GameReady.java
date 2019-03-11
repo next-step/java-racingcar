@@ -4,7 +4,7 @@ import racing.view.RacingRequestView;
 
 import java.util.Scanner;
 
-public class Before {
+public class GameReady {
     private static final String QUESTION_CAR_COUNT = "자동차 대수는 몇 대 인가요?";
     private static final String QUESTION_GAME_COUNT = "시도할 회수는 몇 회 인가요?";
 

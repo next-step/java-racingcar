@@ -2,7 +2,7 @@ package racing.ui;
 
 import racing.view.RacingCarsView;
 
-public class Console {
+public class GameConsole {
     private static final String RESULT_COMMENT = "실행결과";
     private static final String RACING_CAR = "-";
 

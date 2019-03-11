@@ -1,23 +1,18 @@
 package racing.application;
 
-import java.util.Random;
-
 public class Car {
-    private final int BOUND = 9;
-    private final int CONDITION = 4;
-
     private int position = 1;
 
-    public int move() {
-        if (canMove()) {
+    public int move(boolean canMove) {
+        if (canMove) {
             return ++position;
         }
 
         return position;
     }
 
-    protected boolean canMove() {
-        return new Random().nextInt(BOUND) >= CONDITION;
+    protected boolean canMove(Validation validation) {
+        return validation.check();
     }
 
     public int getPosition() {

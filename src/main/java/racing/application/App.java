@@ -1,20 +1,20 @@
 package racing.application;
 
-import racing.ui.Before;
-import racing.ui.Console;
+import racing.ui.GameReady;
+import racing.ui.GameConsole;
 import racing.view.RacingRequestView;
 
 public class App {
 
     public static void main(String[] args) {
-        RacingRequestView request = Before.set();
+        RacingRequestView request = GameReady.set();
 
         RacingGame game = new RacingGame(request);
-        Console.preView(game.getView());
+        GameConsole.preView(game.getView());
 
         for (int i = 0; i < game.getTime(); i++) {
-            game.run();
-            Console.resultView(game.getView());
+            game.start();
+            GameConsole.resultView(game.getView());
         }
     }
 }
