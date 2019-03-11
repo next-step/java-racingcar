@@ -1,25 +1,22 @@
 package domain;
 
-import java.util.Random;
+import util.RandomNumberGenerator;
 
 public class RandomNumberCondition implements Condition{
     private int startNumber;
     private int endNumber;
     private int conditionNumber;
-    private Random random = new Random();
+    private RandomNumberGenerator randomNumberGenerator;
 
-    public RandomNumberCondition(int startNumber, int endNumber, int conditionNumber) {
+    public RandomNumberCondition(int startNumber, int endNumber, int conditionNumber, RandomNumberGenerator randomNumberGenerator) {
         this.startNumber = startNumber;
-        this.endNumber = endNumber + 1;
+        this.endNumber = endNumber;
         this.conditionNumber = conditionNumber;
+        this.randomNumberGenerator = randomNumberGenerator;
     }
 
     @Override
     public boolean canPass() {
-        return generateNumber() > conditionNumber;
-    }
-
-    private int generateNumber(){
-        return random.nextInt(endNumber - startNumber) + startNumber;
+        return randomNumberGenerator.nextInt(startNumber, endNumber) > conditionNumber;
     }
 }

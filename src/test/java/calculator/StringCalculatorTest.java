@@ -26,7 +26,6 @@ public class StringCalculatorTest {
 
     @Test
     public void 피연산자2개_2자리수이상() {
-        // 2글자 이상
         assertThat(StringCalculator.calculate("22+22")).isEqualTo(44);
         assertThat(StringCalculator.calculate("123*2")).isEqualTo(246);
     }

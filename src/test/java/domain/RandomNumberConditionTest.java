@@ -1,21 +1,22 @@
 package domain;
 
 import org.junit.Test;
+import util.RandomNumberGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RandomNumberConditionTest {
-    private RandomNumberCondition randomNumberCondition;
-
     @Test
-    public void correct_range() {
-        randomNumberCondition = new RandomNumberCondition(0, 9, -1);
+    public void check_if_generated_number_bigger_than_condition_number() {
+        RandomNumberCondition randomNumberCondition =
+                new RandomNumberCondition(1, 10, 5, new MockRandomNumberGenerator());
         assertThat(randomNumberCondition.canPass()).isTrue();
-        randomNumberCondition = new RandomNumberCondition(0, 9, 10);
-        assertThat(randomNumberCondition.canPass()).isFalse();
-        randomNumberCondition = new RandomNumberCondition(5, 15, 3);
-        assertThat(randomNumberCondition.canPass()).isTrue();
-        randomNumberCondition = new RandomNumberCondition(5, 15, 16);
-        assertThat(randomNumberCondition.canPass()).isFalse();
+    }
+
+    static class MockRandomNumberGenerator extends RandomNumberGenerator {
+        @Override
+        public int nextInt(int startNumber, int endNumber){
+            return 8;
+        }
     }
 }

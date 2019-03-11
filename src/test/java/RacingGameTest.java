@@ -2,26 +2,39 @@ import domain.*;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.*;
 
-public class RacingGameTest extends RacingGame{
-    public RacingGameTest(){
-        super(mock(Input.class), mock(Output.class), mock(Condition.class));
-        when(input.nextInt()).thenReturn(3);
-    }
-
+public class RacingGameTest{
     @Test
     public void init_game() {
-        init();
-        assertThat(gameCount).isGreaterThan(0);
-        assertThat(cars.size()).isGreaterThan(0);
+        RacingGame racingGame = new RacingGame(new MockInput(), new ConsoleOutput(), new MockCondition());
+        racingGame.init();
+
+        assertThat(racingGame.getGameCount()).isEqualTo(3);
+        assertThat(racingGame.getCars().size()).isEqualTo(3);
     }
 
     @Test
-    public void start() {
-        init();
-        play();
-        verify(output, times(gameCount)).carMileage(cars);
-        verify(condition, times(gameCount * cars.size())).canPass();
+    public void check_all_car_moved_if_game_started() {
+        RacingGame racingGame = new RacingGame(new MockInput(), new ConsoleOutput(), new MockCondition());
+        racingGame.init();
+        racingGame.play();
+
+        for (Car car : racingGame.getCars()) {
+            assertThat(car.getMileage()).isEqualTo(3);
+        }
+    }
+
+    static class MockCondition implements Condition{
+        @Override
+        public boolean canPass() {
+            return true;
+        }
+    }
+
+    static class MockInput implements Input{
+        @Override
+        public int nextInt() {
+            return 3;
+        }
     }
 }

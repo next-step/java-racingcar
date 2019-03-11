@@ -14,5 +14,4 @@ dependencies {
     compile('ch.qos.logback:logback-classic:1.2.3')
     testCompile('junit:junit:4.12')
     testCompile('org.assertj:assertj-core:3.11.1')
-    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.23.4'
 }

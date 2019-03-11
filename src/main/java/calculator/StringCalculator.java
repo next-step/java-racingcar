@@ -4,34 +4,40 @@ import java.util.Arrays;
 
 public class StringCalculator {
     static int calculate(String calculation){
-        if(calculation == null || calculation.equals(""))
+        if(calculation == null || calculation.equals("")){
             throw new IllegalArgumentException();
+        }
 
         int[] operands = extractOperands(calculation);
         char[] operators = extractOperators(calculation);
 
-        if(operands.length == operators.length-1)
+        if(operands.length == operators.length-1){
             throw new IllegalStateException();
+        }
 
         int result = operands[0];
         for (int i = 1; i < operands.length; i++) {
-            result = calculate2Operands(result, operands[i], operators[i-1]);
+            result = calculate(result, operands[i], operators[i-1]);
         }
 
         return result;
     }
 
-    private static int calculate2Operands(int i, int j, char operator) {
-        if(operator == '+')
+    private static int calculate(int i, int j, char operator) {
+        if(operator == '+'){
             return i + j;
-        if(operator == '-')
+        }
+        if(operator == '-'){
             return i - j;
-        if(operator == '*')
+        }
+        if(operator == '*'){
             return i * j;
-        if(operator == '/')
+        }
+        if(operator == '/'){
             return i / j;
+        }
 
-        return 0;
+        throw new IllegalArgumentException();
     }
 
     private static int[] extractOperands(String calculation){
@@ -41,13 +47,6 @@ public class StringCalculator {
     }
 
     private static char[] extractOperators(String calculation){
-        String[] operators = calculation.split("[0-9]+");
-
-        StringBuilder result = new StringBuilder();
-        for (String operator : operators) {
-            result.append(operator);
-        }
-
-        return result.toString().toCharArray();
+        return String.join("", calculation.split("[0-9]+")).toCharArray();
     }
 }

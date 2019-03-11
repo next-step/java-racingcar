@@ -12,7 +12,7 @@ public class CarTest {
     }
 
     @Test
-    public void move() {
+    public void check_if_move_1_mile() {
         Car car = new Car();
         car.move();
         assertThat(car.getMileage()).isEqualTo(1);

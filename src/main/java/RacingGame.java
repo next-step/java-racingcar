@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    protected int gameCount;
-    protected List<Car> cars = new ArrayList<>();
+    private int gameCount;
+    private List<Car> cars = new ArrayList<>();
 
-    protected Condition condition;
-    protected Input input;
-    protected Output output;
+    private Condition condition;
+    private Input input;
+    private Output output;
 
     public RacingGame(Input input, Output output, Condition condition){
         this.input = input;
@@ -44,5 +44,13 @@ public class RacingGame {
         }
 
         output.carMileage(cars);
+    }
+
+    public int getGameCount() {
+        return gameCount;
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }
