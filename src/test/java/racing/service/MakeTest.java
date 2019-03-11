@@ -1,6 +1,7 @@
-package racing;
+package racing.service;
 
 import org.junit.Test;
+import racing.domain.Car;
 
 import java.util.List;
 

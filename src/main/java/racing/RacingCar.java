@@ -1,32 +1,31 @@
 package racing;
 
+import racing.domain.Car;
+import racing.domain.RacingCarRequest;
+import racing.service.RacingCarMake;
+import racing.service.RacingCarRank;
+import racing.service.RacingCarView;
+
 import java.util.List;
-import java.util.Scanner;
 
 public class RacingCar {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        String text = scanner.nextLine();
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int moveCnt = Integer.parseInt(scanner.nextLine());
-
-        doRacing(text, moveCnt);
+        doRacing(RacingCarView.getRacingCarRequest());
 
     }
 
-    private static void doRacing(String text, int moveCnt) {
+    private static void doRacing(RacingCarRequest racingCarRequest) {
 
         try {
-            String[] names = RacingCarMake.parseCarNames(text);
+            String[] names = RacingCarMake.parseCarNames(racingCarRequest.getNames());
 
             List<Car> cars = RacingCarMake.getCars(names);
 
-            RacingCarMake.moveCars(cars, moveCnt);
+            RacingCarMake.moveCars(cars, racingCarRequest.getMoveCnt());
 
-            RacingCarView.viewRacingCar(cars, moveCnt);
+            RacingCarView.viewRacingCar(cars, racingCarRequest.getMoveCnt());
 
             RacingCarRank.sortCars(cars);
 

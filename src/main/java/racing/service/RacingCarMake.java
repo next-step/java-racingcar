@@ -1,7 +1,8 @@
-package racing;
+package racing.service;
+
+import racing.domain.Car;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
