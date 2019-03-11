@@ -24,8 +24,8 @@ public class RacingGameBoard {
         this.randomGenerator = randomGenerator;
     }
 
-    public int createCars(int count) {
-        for (int i = 0 ; i < count; i++) {
+    public int createCars(int size) {
+        for (int i = 0 ; i < size; i++) {
             cars.add(new RacingCar());
         }
         return cars.size();
