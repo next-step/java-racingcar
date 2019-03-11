@@ -1,4 +1,6 @@
-package car;
+package car.util;
+
+import car.entity.Car;
 
 import java.util.List;
 

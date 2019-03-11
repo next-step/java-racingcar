@@ -1,7 +1,7 @@
-package car;
+package car.entity;
 
 public class Car {
-    private static final int movableMinimumNum = 4;
+    private static final int MOVABLE_MINIMUM_NUM = 4;
 
     private int movingCount;
 
@@ -10,7 +10,7 @@ public class Car {
     }
 
     public void move(int randomValue) {
-        if(randomValue >= movableMinimumNum) {
+        if(randomValue >= MOVABLE_MINIMUM_NUM) {
             movingCount = movingCount+1;
         }
     }

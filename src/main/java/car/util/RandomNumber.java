@@ -1,12 +1,12 @@
-package car;
+package car.util;
 
 import java.util.Random;
 
 public class RandomNumber {
-    private static final int numberBound = 10;
+    private static final int MAX_NUMBER_BOUND = 10;
 
     public static int getNumber() {
         Random random = new Random();
-        return random.nextInt(numberBound);
+        return random.nextInt(MAX_NUMBER_BOUND);
     }
 }
