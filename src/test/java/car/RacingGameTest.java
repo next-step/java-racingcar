@@ -1,8 +1,9 @@
 package car;
 
+import car.entity.Car;
+import car.entity.RacingGame;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -10,29 +11,13 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class RacingGameTest {
 
     @Test
-    public void setCarList() {
+    public void initializeGame() {
         int carSize = 5;
-        List<Car> result = RacingGame.setCars(carSize);
+        int tryCount = 3;
+        RacingGame racingGame = new RacingGame(carSize,tryCount);
+        List<Car> result = racingGame.racingCars;
 
         assertThat(result.size()).isEqualTo(carSize);
-    }
-
-    @Test
-    public void move() {
-        int carSize = 5;
-        List<Car> carList = makeTestCarList(5);
-        List<Car> resultList = RacingGame.playingGame(carList);
-
-        assertThat(resultList.size()).isEqualTo(carSize);
-    }
-
-    public List<Car> makeTestCarList(int carCount)  {
-        List<Car> testCarList = new ArrayList<>();
-
-        for(int i=0; i<carCount; i++) {
-            testCarList.add(new Car());
-        }
-        return testCarList;
     }
 
     @Test
