@@ -12,36 +12,31 @@ public class StringCalculatorTest {
 
     @Test
     public void 덧셈() {
-        //작은 단위의 테스트 부터 진행
         int result = StringCalculator.calculate("1 + 2");
         assertThat(result).isEqualTo(3);
     }
 
     @Test
     public void 곱셈() {
-        //작은 단위의 테스트 부터 진행
         int result = StringCalculator.calculate("1 * 2");
         assertThat(result).isEqualTo(2);
     }
 
     @Test
     public void 뺄셈() {
-        //작은 단위의 테스트 부터 진행
         int result = StringCalculator.calculate("1 - 2");
         assertThat(result).isEqualTo(-1);
     }
 
     @Test
     public void 나눗셈() {
-        //작은 단위의 테스트 부터 진행
         int result = StringCalculator.calculate("1 / 2");
         assertThat(result).isEqualTo(0);
     }
 
     @Test
     public void 계산기() {
-        //작은 단위의 테스트 부터 진행
-        int result = StringCalculator.calculate("1 / 2 + 3 - 2");
-        assertThat(result).isEqualTo(1);
+        int result = StringCalculator.calculate("1 / 2 + 3 - 2 * 100 - 1");
+        assertThat(result).isEqualTo(99);
     }
 }
