@@ -3,10 +3,7 @@ package racingcar.racingcar_refactoring_version2;
 public class RacingGame {
     private Race race;
     private int moveCount;
-
-
     private WinnerUtils winnerUtils;
-
 
     public RacingGame(String carNames, int moveCount) {
         this.moveCount = moveCount;
@@ -20,7 +17,6 @@ public class RacingGame {
             race.run();
             printCarsDistance();
         }
-//        winnerUtils.topRankSearchAndPrint(race.getCars());
         winnerUtils.topRankSearchAndPrint();
     }
 

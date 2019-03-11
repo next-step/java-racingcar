@@ -6,6 +6,7 @@ import java.util.List;
 public class Race {
 
     private List<Car> cars;
+    private RaceRuleManager ruleManager;
 
 
     public List<Car> getCars() {
@@ -14,6 +15,7 @@ public class Race {
 
     public Race(String carNames) {
         this.cars = setupCar(carNames);
+        this.ruleManager = new RaceRuleManager();
     }
 
     private List<Car> setupCar(String carNames) {
@@ -27,7 +29,7 @@ public class Race {
 
     public void run() {
         for (Car car : cars) {
-            if (car.canMove()) {
+            if (ruleManager.canMove()) {
                 car.moveCar();
             }
         }
