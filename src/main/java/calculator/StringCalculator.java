@@ -1,29 +1,57 @@
 package calculator;
 
+import java.util.Scanner;
+
 public class StringCalculator {
-    static int calculate(String text) {
-        String [] values = text.split(" ");
-        String calc = "+";
+
+    public static void main(String[] args) {
+        String value = new Scanner(System.in).nextLine();
+        int result = new StringCalculator().calculate(value);
+
+        System.out.println(result);
+    }
+
+    public int calculate(String text) {
+        String [] characters = text.split(" ");
+        String operator = "+";
         int result = 0;
 
-        for (int i = 0, size = values.length; i < size; i++) {
+        for (String character : characters) {
             try {
-                if (calc.equals("*")) {
-                    result *= Integer.parseInt(values[i]);
+                int value = Integer.parseInt(character);
+
+                if (operator.equals("*")) {
+                    result = this.multiple(result, value);
                 }
-                if (calc.equals("/")) {
-                    result /= Integer.parseInt(values[i]);
+                if (operator.equals("/")) {
+                    result = this.division(result, value);
                 }
-                if (calc.equals("+")) {
-                    result += Integer.parseInt(values[i]);
+                if (operator.equals("+")) {
+                    result = this.add(result, value);
                 }
-                if (calc.equals("-")) {
-                    result -= Integer.parseInt(values[i]);
+                if (operator.equals("-")) {
+                    result = this.subtract(result, value);
                 }
             } catch (NumberFormatException e) {
-                calc = values[i];
+                operator = character;
             }
         }
         return result;
+    }
+
+    private int add(int result, int value) {
+        return result + value;
+    }
+
+    private int subtract(int result, int value) {
+        return result - value;
+    }
+
+    private int division(int result, int value) {
+        return result / value;
+    }
+
+    private int multiple(int result, int value) {
+        return result * value;
     }
 }

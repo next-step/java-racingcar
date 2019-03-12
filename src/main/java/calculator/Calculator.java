@@ -1,6 +1,7 @@
 package calculator;
 
 public class Calculator {
+
     static int add(int i, int j) {
         return i + j;
     }
@@ -8,5 +9,4 @@ public class Calculator {
     static int subtract(int i, int j) {
         return i - j;
     }
-
 }
