@@ -1,27 +1,33 @@
 package racinggame.View;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.*;
 
 public class InputGame {
-
-    private final int MINIMUM_INPUT_VALUE = 0;
-
-    public List<Integer> inputData() {
+    public Map<String, Object> inputData() {
         Scanner scanner = new Scanner(System.in);
+        Map<String, Object> input = new HashMap<>();
 
-        List<Integer> inputCount = new ArrayList<>();
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        input.put("carsName", scanner.nextLine());
         System.out.println("자동차 대수는 몇 대 인가요?");
-        inputCount.add(scanner.nextInt());
-
+        input.put("countCars", scanner.nextInt());
         System.out.println("시도할 횟수는 몇 회 인가요?");
-        inputCount.add(scanner.nextInt());
+        input.put("countGames", scanner.nextInt());
 
-        if(inputCount.size() < MINIMUM_INPUT_VALUE) {
-            throw new IllegalArgumentException();
+        for(String key : input.keySet()) {
+            nullCheck(input, key);
         }
 
-        return inputCount;
+        input.put("carsName", String.valueOf(input.get("carsName")).trim());
+
+        return input;
+    }
+
+    public void nullCheck(Map<String, Object> input, String inputKey) {
+        if (StringUtils.isEmpty(String.valueOf(input.get(inputKey)))) {
+            throw new IllegalArgumentException();
+        }
     }
 }
