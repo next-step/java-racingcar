@@ -16,20 +16,14 @@ public class RacingCar {
 
     private static void doRacing(RacingCarRequest racingCarRequest) {
         try {
-            //자동차 이름 파싱
+            //입력값 파싱
             String[] names = RacingCarView.parseCarNames(racingCarRequest.getNames());
 
-            //자동차 생성
-            List<Car> cars = RacingCarGame.createCars(names);
+            //레이싱
+            List<Car> cars = RacingCarGame.startRacing(RacingCarGame.createCars(names), racingCarRequest.getMoveCnt());
 
-            //레이싱 시작
-            RacingCarGame.startRacing(cars, racingCarRequest.getMoveCnt());
-
-            //자동차 순위결정
-            List<Car> winners = RacingCarRank.rankCars(cars);
-
-            //자동차 순위 출력
-            RacingCarView.viewRacingCarWinners(winners);
+            //랭킹
+            RacingCarView.viewRacingCarWinners(RacingCarRank.rankCars(cars));
         } catch (RuntimeException exception) {
             System.out.println(exception.getMessage());
         }

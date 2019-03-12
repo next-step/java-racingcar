@@ -26,9 +26,9 @@ public class CarTest {
     @Test
     public void 자동차가이번에움직였나() {
         Car car = new Car();
-        assertThat(car.getMoveCount(1)).isEqualTo(0);
-        assertThat(car.getMoveCount(4)).isEqualTo(1);
-        assertThat(car.getMoveCount(7)).isEqualTo(1);
+        assertThat(car.getMoveCount(1)).isFalse();
+        assertThat(car.getMoveCount(4)).isTrue();
+        assertThat(car.getMoveCount(7)).isTrue();
     }
 
     @Test

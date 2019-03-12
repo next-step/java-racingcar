@@ -6,6 +6,10 @@ public class Car implements Comparable<Car> {
 
     private final int LIMIT_VALUE = 4;
 
+    private final int RANDOM_VALUE = 10;
+
+    private final int MOVE_VALUE = 1;
+
     private String name;
 
     private Integer totalDistance = 0;
@@ -19,24 +23,23 @@ public class Car implements Comparable<Car> {
 
     public int move() {
         int randomValue = getRandomValue();
-        int moveDistance = getMoveCount(randomValue);
-        if (moveDistance == 1) {
-            totalDistance += moveDistance;
+        if (getMoveCount(randomValue)) {
+            totalDistance += MOVE_VALUE;
         }
 
         return totalDistance;
     }
 
-    public int getMoveCount(int randomValue) {
+    public boolean getMoveCount(int randomValue) {
         if (randomValue >= LIMIT_VALUE) {
-            return 1;
+            return true;
         }
 
-        return 0;
+        return false;
     }
 
     public int getRandomValue() {
-        return new Random().nextInt(10);
+        return new Random().nextInt(RANDOM_VALUE);
     }
 
     public String getName() {

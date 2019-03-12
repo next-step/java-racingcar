@@ -7,8 +7,10 @@ import java.util.List;
 
 public class RacingCarGame {
 
+    private static List<Car> cars;
+
     public static List<Car> createCars(String[] names) {
-        List<Car> cars = new ArrayList<>();
+        cars = new ArrayList<>();
 
         for (String name : names) {
             Car car = new Car(name);
@@ -17,12 +19,14 @@ public class RacingCarGame {
         return cars;
     }
 
-    public static void startRacing(List<Car> cars, int round) {
+    public static List<Car> startRacing(List<Car> cars, int round) {
         for (int i = 0; i < round; i++) {
             startRound(cars);
 
             System.out.println();
         }
+
+        return cars;
     }
 
     public static void startRound(List<Car> cars) {
