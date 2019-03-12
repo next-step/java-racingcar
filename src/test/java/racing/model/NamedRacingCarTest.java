@@ -7,11 +7,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class NamedRacingCarTest extends RacingCarTest {
 
     @Test
-    @Override
-    public void test_변환_DTO() {
+    public void test_변환_이름() {
         String name = "pobi";
         NamedRacingCar namedRacingCar = new NamedRacingCar(name);
-        assertThat(namedRacingCar.mapToDto().getPosition()).isEqualTo(0);
-        assertThat(namedRacingCar.mapToDto().getName()).isEqualTo(name);
+        assertThat(namedRacingCar.toString()).isEqualTo(name);
     }
 }

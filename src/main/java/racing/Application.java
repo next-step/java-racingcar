@@ -20,8 +20,10 @@ public class Application {
 
     private void run() {
         gameBoard.createCars(InputView.inputNames());
-        GameResult gameResult = gameBoard.start(InputView.inputTime());
+        int timesOfMoves = InputView.inputTime();
 
-        ResultView.render(gameResult);
+        ResultView.viewStart();
+        GameResult gameResult = gameBoard.start(timesOfMoves);
+        ResultView.viewWinners(gameResult);
     }
 }

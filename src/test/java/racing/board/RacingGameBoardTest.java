@@ -27,15 +27,15 @@ public class RacingGameBoardTest {
     @Test
     public void test_게임_시작_전체_우승() {
         // Given
+        String winnerName = "pobi, crong, honux";
         RacingGameBoard board = new RacingGameBoard(() -> RacingCar.THRESHOLD_POWER);
-        List<String> names = Arrays.asList("pobi", "crong", "honux");
-        board.createCars(names);
+        board.createCars(Arrays.asList(winnerName.split(",")));
 
         // When
         GameResult result = board.start(3);
 
         // Then
         assertThat(result).isNotNull();
-        assertThat(result.winners()).isEqualTo(names);
+        assertThat(result.getWinners()).isEqualTo(winnerName);
     }
 }

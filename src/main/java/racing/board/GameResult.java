@@ -1,38 +1,18 @@
 package racing.board;
 
-import racing.model.RacingCar;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class GameResult {
 
-    private final List<GameResultOfStepByStep> steps;
+    private List<String> winners;
 
-    public GameResult() {
-        steps = new ArrayList<>();
+    public GameResult(List<String> winners) {
+        this.winners = winners;
     }
 
-    int addStep(List<RacingCar> cars) {
-        steps.add(new GameResultOfStepByStep(cars.stream()
-                .map(RacingCar::mapToDto)
-                .collect(Collectors.toList())));
-        return steps.size();
-    }
-
-    public List<String> winners() {
-        GameResultOfStepByStep lastStep = steps.get(steps.size() - 1);
-        final int maxPosition = lastStep.getMaxPosition();
-
-        return lastStep.stream()
-                .filter(carDto -> carDto.getPosition() == maxPosition)
-                .map(carDto -> carDto.getName())
-                .collect(Collectors.toList());
-    }
-
-    public Stream<GameResultOfStepByStep> stream() {
-        return steps.stream();
+    public String getWinners() {
+        return winners.stream()
+                .collect(Collectors.joining(", "));
     }
 }

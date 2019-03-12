@@ -9,9 +9,7 @@ public class NamedRacingCar extends RacingCar {
     }
 
     @Override
-    public CarDto mapToDto() {
-        CarDto dto = super.mapToDto();
-        dto.setName(name);
-        return dto;
+    public String toString() {
+        return name;
     }
 }

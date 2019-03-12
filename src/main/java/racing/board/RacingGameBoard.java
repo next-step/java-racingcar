@@ -4,9 +4,14 @@ import racing.model.NamedRacingCar;
 import racing.model.RacingCar;
 import racing.random.BoundedRandomGenerator;
 import racing.random.RandomGenerator;
+import racing.view.ResultView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.IntConsumer;
 import java.util.stream.Collectors;
 
 public class RacingGameBoard {
@@ -28,25 +33,54 @@ public class RacingGameBoard {
 
     public int createCars(List<String> names) {
         cars.addAll(names.stream()
-                .map(name -> new NamedRacingCar(name))
+                .map(name -> new NamedRacingCar(name.trim()))
                 .collect(Collectors.toList()));
         return cars.size();
     }
 
     public GameResult start(int timesOfMoves) {
-        GameResult result = new GameResult();
+        if (timesOfMoves < 1) throw new IllegalArgumentException("timesOfMoves should greater than 0");
 
-        for (int i = 0; i < timesOfMoves; i++) {
-            moveCars();
-            result.addStep(cars);
-        }
+        int maxPosition = runSteps(timesOfMoves);
 
-        return result;
+        return new GameResult(cars
+            .stream()
+            .filter(cars -> cars.isAt(maxPosition))
+            .map(RacingCar::toString)
+            .collect(Collectors.toList()));
     }
 
-    private void moveCars() {
-        for (RacingCar car : cars) {
-            car.move(randomGenerator.nextInt());
+    private int runSteps(int times) {
+        int maxPosition = 0;
+        for (int i = 0; i < times; i++) {
+            maxPosition = runStep();
         }
+        return maxPosition;
+    }
+
+    private int runStep() {
+        List<Integer> positions = new ArrayList<>();
+
+        moveCars(position -> positions.add(position));
+        ResultView.viewNextStep();
+
+        return maxPosition(positions);
+    }
+
+    private int maxPosition(List<Integer> positions) {
+        return Collections.max(positions);
+    }
+
+    private void moveCars(IntConsumer moveCallback) {
+        for (RacingCar car : cars) {
+            int position = moveCar(car, ResultView::viewStep);
+            moveCallback.accept(position);
+        }
+    }
+
+    private int moveCar(RacingCar car, BiConsumer<String, Integer> viewCallback) {
+        int position = car.move(randomGenerator.nextInt());
+        viewCallback.accept(car.toString(), position);
+        return position;
     }
 }

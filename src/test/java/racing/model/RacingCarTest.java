@@ -33,9 +33,11 @@ public class RacingCarTest {
     }
 
     @Test
-    public void test_변환_DTO() {
-        RacingCar racingCar = new RacingCar();
-        assertThat(racingCar.mapToDto().getPosition()).isEqualTo(0);
-        assertThat(racingCar.mapToDto().getName()).isEqualTo(racingCar.toString());
+    public void test_위치_확인() {
+        RacingCar car = new RacingCar();
+        assertThat(car.isAt(1)).isFalse();
+
+        car.move(RacingCar.THRESHOLD_POWER);
+        assertThat(car.isAt(1)).isTrue();
     }
 }
