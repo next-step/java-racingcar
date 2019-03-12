@@ -7,7 +7,6 @@ public class StringCalculator {
         if(text == null || text.isEmpty()) {
             throw new IllegalAccessError();
         }
-
         String[] values = text.split(" ");
         int result = Integer.parseInt(values[0]);
 
@@ -20,19 +19,9 @@ public class StringCalculator {
     }
 
     private static int calculate(String operation, int value1, int value2) {
-
-        switch(operation) {
-            case "+" :
-                return value1 + value2;
-            case "-" :
-                return value1 - value2;
-            case "*" :
-                return value1 * value2;
-            case "/" :
-                return value1 / value2;
-            default :
-                throw new IllegalAccessError();
-        }
+        OperationType operationType = OperationType.of(operation);
+        return operationType.calculate(value1, value2);
     }
-
 }
+
+
