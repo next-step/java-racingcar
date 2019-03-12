@@ -1,8 +1,12 @@
 package racingcar;
 
-import racingcar.ui.RacingGameOutputView;
-import racingcar.ui.RacingGameParameterInputView;
+import racingcar.domain.Car;
+import racingcar.domain.RacingGame;
+import racingcar.domain.RacingGameJudge;
+import racingcar.view.RacingGameOutputView;
+import racingcar.view.RacingGameParameterInputView;
 import racingcar.vo.RacingGameParameter;
+import racingcar.vo.RacingResultOfRound;
 
 import java.util.List;
 
@@ -14,26 +18,30 @@ public class RacingGameApplication {
     public static void start() {
         RacingGameParameter parameter = RacingGameParameterInputView.readRacingGameParameter();
 
-        RacingGame racingGame = new RacingGame(parameter.getCarNames());
+        RacingGame racingGame = new RacingGame(parameter);
         RacingGameJudge racingGameJudge = new RacingGameJudge();
+
+        RacingResultOfRound racingResultOfFinalRound = runRacingGame(racingGame);
+        List<Car> winners = racingGameJudge.getWinners(racingResultOfFinalRound);
 
         RacingGameOutputView.printLine("실행 결과");
         RacingGameOutputView.printEmptyLine();
-
-        startRacingGame(racingGame, parameter.getTryCount());
-
-        List<Car> cars = racingGame.getCars();
-        List<Car> winners = racingGameJudge.getWinners(cars);
         RacingGameOutputView.printWinners(winners);
     }
 
-    private static void startRacingGame(RacingGame racingGame, int tryCount) {
-        for (int i = 0; i < tryCount; i++) {
-            racingGame.runCars();
+    public static RacingResultOfRound runRacingGame(RacingGame racingGame) {
+        RacingResultOfRound racingResultOfFinalRound = null;
 
-            List<Car> cars = racingGame.getCars();
+        while (racingGame.hasNextRound()) {
+            RacingResultOfRound racingResultOfRound = racingGame.runOnce();
+            List<Car> cars = racingResultOfRound.getCarsOfRound();
+
             RacingGameOutputView.printMovedDistanceOfCars(cars);
             RacingGameOutputView.printEmptyLine();
+
+            racingResultOfFinalRound = racingResultOfRound;
         }
+
+        return racingResultOfFinalRound;
     }
 }
