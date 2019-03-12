@@ -1,4 +1,4 @@
-package calculator.service;
+package calculator.domain;
 
 @FunctionalInterface
 public interface CalculateFunction {

@@ -1,13 +1,13 @@
-package racing.service;
+package racing.domain;
 
 import org.junit.Test;
-import racing.domain.Car;
+import racing.view.RacingCarView;
 
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class MakeTest {
+public class GameTest {
 
     @Test
     public void 정규식() {

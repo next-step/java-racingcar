@@ -1,6 +1,6 @@
 package spark;
 
-import racing.service.RacingCarView;
+import racing.view.RacingCarView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import java.util.HashMap;

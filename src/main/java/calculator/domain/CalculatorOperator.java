@@ -1,4 +1,4 @@
-package calculator.service;
+package calculator.domain;
 
 public enum CalculatorOperator {
     ADD("+", (v1, v2) -> v1 + v2),

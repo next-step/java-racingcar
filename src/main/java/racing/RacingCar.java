@@ -1,9 +1,9 @@
 package racing;
 
 import racing.domain.Car;
-import racing.service.RacingCarGame;
-import racing.service.RacingCarRank;
-import racing.service.RacingCarView;
+import racing.domain.RacingCarGame;
+import racing.domain.RacingCarRank;
+import racing.view.RacingCarView;
 
 import java.util.List;
 
