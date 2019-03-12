@@ -12,14 +12,9 @@ public class RacingGameJudgeTest {
 
     @Test
     public void 우승자_확인() {
-        int value = Car.MOVE_THRESHOLD + 1;
-
-        Car winner1 = new Car("winner1");
-        Car winner2 = new Car("winner2");
+        Car winner1 = new Car("winner1", 1);
+        Car winner2 = new Car("winner2", 1);
         Car loser = new Car("loser");
-
-        winner1.goWhenGreaterThanThreshold(value);
-        winner2.goWhenGreaterThanThreshold(value);
 
         List<Car> carsOfRound = Arrays.asList(winner1, winner2, loser);
         int round = 5;

@@ -35,15 +35,14 @@ public class CarTest {
     @Test
     public void copy_생성() {
         Car car = new Car(carName);
-        int value = Car.MOVE_THRESHOLD + 1;
 
-        car.goWhenGreaterThanThreshold(value);
+        car.go();
         Car copy = car.copy();
 
         assertThat(copy.getName()).isEqualTo(carName);
         assertThat(copy.getMovedDistance()).isEqualTo(1);
 
-        car.goWhenGreaterThanThreshold(value);
+        car.go();
         assertThat(copy.getMovedDistance()).isEqualTo(1);
     }
 }

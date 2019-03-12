@@ -10,18 +10,12 @@ public class Car {
         this.name = name;
     }
 
-    /**
-     * private constructor for copy
-     *
-     * @param name
-     * @param movedDistance
-     */
-    private Car(String name, int movedDistance) {
+    Car(String name, int movedDistance) {
         this.name = name;
         this.movedDistance = movedDistance;
     }
 
-    private void go() {
+    void go() {
         this.movedDistance++;
     }
 
