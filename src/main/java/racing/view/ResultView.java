@@ -1,7 +1,6 @@
 package racing.view;
 
 import java.util.List;
-import java.util.stream.IntStream;
 import racing.Car;
 
 public class ResultView {
@@ -13,9 +12,10 @@ public class ResultView {
 
   private void printCarPosition(Car car) {
 
-    IntStream
-        .range(0, car.getPosition())
-        .forEach(index -> System.out.print("-"));
+    int position = car.getPosition();
+    for(int index = 0; index < position; index++) {
+      System.out.print("-");
+    }
     System.out.print("\n");
   }
 }

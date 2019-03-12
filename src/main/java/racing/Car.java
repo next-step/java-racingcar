@@ -7,6 +7,11 @@ public class Car {
 
   // 자동차의 현재 위치
   private int position = 0;
+  private RandomGenerator randomGenerator;
+
+  public Car(RandomGenerator randomGenerator) {
+    this.randomGenerator = randomGenerator;
+  }
 
   // 자동차의 현재 위치 정보 가져오기
   public int getPosition() {
@@ -14,9 +19,9 @@ public class Car {
   }
 
   // 이동
-  void move() {
+  void move(int minNumber) {
 
-    if (new Random().nextInt(10) >= 4) {
+    if (randomGenerator.isMoving(minNumber)) {
       position++;
     }
   }

@@ -1,8 +1,6 @@
 package racing;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import racing.view.InputView;
@@ -10,35 +8,52 @@ import racing.view.ResultView;
 
 public class RacingGame {
 
-  public void game() {
+  private static final int MOVE_RANGE = 10;
+  private static final int MIN_NUMBER = 4;
 
-    InputView inputView = new InputView();
+  private InputView inputView;
+  private RandomGenerator randomGenerator;
+
+  public RacingGame(InputView inputView) {
+    this.inputView = inputView;
+    this.randomGenerator = new RandomGenerator(MOVE_RANGE);
+  }
+
+  public RacingGame(InputView inputView, RandomGenerator randomGenerator) {
+    this.inputView = inputView;
+    this.randomGenerator = randomGenerator;
+  }
+
+  public List<Car> game() {
 
     int carCount = inputView.inputCarCount();
     List<Car> cars = generateCars(carCount);
 
     int moveCount = inputView.inputMoveCount();
-
     startRacing(cars, moveCount);
+
+    return cars;
   }
 
   void startRacing(List<Car> cars, int moveCount) {
 
     ResultView resultView = new ResultView();
-    IntStream.range(0, moveCount).forEach(moveIndex -> {
+    for (int moveIndex = 0; moveIndex < moveCount; moveIndex++) {
       moveCars(cars);
       resultView.printMoveResult(cars);
-    });
+    }
   }
 
   List<Car> generateCars(int carCount) {
 
     return IntStream.range(0, carCount)
-        .mapToObj(index -> new Car())
+        .mapToObj(index -> new Car(randomGenerator))
         .collect(Collectors.toList());
   }
 
   void moveCars(List<Car> cars) {
-    cars.forEach(Car::move);
+    cars.forEach(car -> car.move(MIN_NUMBER));
   }
+
+
 }

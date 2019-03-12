@@ -10,12 +10,27 @@ public class CarTest {
   public void test_move() {
 
     // Given
-    Car car = new Car();
+    int minNumber = 4;
+    Car car = new Car(new TestRandomGenerator(true));
 
     // When
-    car.move();
+    car.move(minNumber);
 
     // Then
-    assertThat(car.getPosition()).isBetween(0, 1);
+    assertThat(car.getPosition()).isEqualTo( 1);
+  }
+
+  @Test
+  public void test_dont_move() {
+
+    // Given
+    int minNumber = 4;
+    Car car = new Car(new TestRandomGenerator(false));
+
+    // When
+    car.move(minNumber);
+
+    // Then
+    assertThat(car.getPosition()).isEqualTo( 0);
   }
 }
