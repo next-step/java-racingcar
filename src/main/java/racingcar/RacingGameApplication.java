@@ -24,24 +24,19 @@ public class RacingGameApplication {
         RacingResultOfRound racingResultOfFinalRound = runRacingGame(racingGame);
         List<Car> winners = racingGameJudge.getWinners(racingResultOfFinalRound);
 
-        RacingGameOutputView.printLine("실행 결과");
-        RacingGameOutputView.printEmptyLine();
         RacingGameOutputView.printWinners(winners);
     }
 
     public static RacingResultOfRound runRacingGame(RacingGame racingGame) {
-        RacingResultOfRound racingResultOfFinalRound = null;
+        RacingResultOfRound racingResult = null;
 
-        while (racingGame.hasNextRound()) {
-            RacingResultOfRound racingResultOfRound = racingGame.runOnce();
-            List<Car> cars = racingResultOfRound.getCarsOfRound();
+        while (!racingGame.isEnd()) {
+            racingResult = racingGame.race();
 
-            RacingGameOutputView.printMovedDistanceOfCars(cars);
+            RacingGameOutputView.printRacingResult(racingResult);
             RacingGameOutputView.printEmptyLine();
-
-            racingResultOfFinalRound = racingResultOfRound;
         }
 
-        return racingResultOfFinalRound;
+        return racingResult;
     }
 }
