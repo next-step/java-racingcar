@@ -47,8 +47,8 @@ public class RacingGame {
         return this.racingGameInfo.getCars();
     }
 
-    public RacingResultOfRound runOnce() {
-        if (!hasNextRound()) {
+    public RacingResultOfRound race() {
+        if (isEnd()) {
             throw new IllegalStateException("종료된 경주 입니다. 초기화를 해주세요.");
         }
 
@@ -72,8 +72,8 @@ public class RacingGame {
                 .collect(Collectors.toList());
     }
 
-    public boolean hasNextRound() {
-        return this.racingGameInfo.hasNextRound();
+    public boolean isEnd() {
+        return !this.racingGameInfo.hasNextRound();
     }
 
     public void initializeRacingGame() {

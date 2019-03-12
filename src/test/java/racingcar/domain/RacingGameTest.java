@@ -50,7 +50,7 @@ public class RacingGameTest {
     @Test
     public void 현재_라운드_경주_결과_가져오기() {
         RacingGame racingGame = new RacingGame(parameter);
-        RacingResultOfRound racingResultOfRound = racingGame.runOnce();
+        RacingResultOfRound racingResultOfRound = racingGame.race();
 
         assertThat(racingResultOfRound.getRound()).isEqualTo(1);
         assertThat(racingResultOfRound.getCarsOfRound())
@@ -64,7 +64,7 @@ public class RacingGameTest {
         RandomIntGenerator randomIntGenerator = new CarMoveThresholdGenerator();
 
         RacingGame racingGame = new RacingGame(parameter, randomIntGenerator);
-        RacingResultOfRound racingResultOfRound = racingGame.runOnce();
+        RacingResultOfRound racingResultOfRound = racingGame.race();
         List<Car> cars = racingResultOfRound.getCarsOfRound();
 
         cars.forEach(car ->
@@ -77,7 +77,7 @@ public class RacingGameTest {
         RandomIntGenerator randomIntGenerator = new IntMoreThanCarMoveThresholdGenerator();
 
         RacingGame racingGame = new RacingGame(parameter, randomIntGenerator);
-        RacingResultOfRound racingResultOfRound = racingGame.runOnce();
+        RacingResultOfRound racingResultOfRound = racingGame.race();
         List<Car> cars = racingResultOfRound.getCarsOfRound();
 
         cars.forEach(car ->
@@ -90,8 +90,8 @@ public class RacingGameTest {
         RacingGame racingGame = new RacingGame(parameter);
         int roundCount = 0;
 
-        while (racingGame.hasNextRound()) {
-            racingGame.runOnce();
+        while (!racingGame.isEnd()) {
+            racingGame.race();
             roundCount++;
         }
 
@@ -102,19 +102,19 @@ public class RacingGameTest {
     public void 모든_라운드가_끝난_후_경기_시도하면_IllegalStateException_발생() {
         RacingGame racingGame = new RacingGame(parameter);
 
-        while (racingGame.hasNextRound()) {
-            racingGame.runOnce();
+        while (!racingGame.isEnd()) {
+            racingGame.race();
         }
 
-        assertThatIllegalStateException().isThrownBy(() -> racingGame.runOnce());
+        assertThatIllegalStateException().isThrownBy(() -> racingGame.race());
     }
 
     @Test
     public void RacingGame_초기화() {
         RacingGame racingGame = new RacingGame(parameter);
 
-        while (racingGame.hasNextRound()) {
-            racingGame.runOnce();
+        while (!racingGame.isEnd()) {
+            racingGame.race();
         }
 
         racingGame.initializeRacingGame();
