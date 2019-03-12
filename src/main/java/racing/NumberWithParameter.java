@@ -1,6 +1,4 @@
-package racingcar;
-
-import java.util.Random;
+package racing;
 
 public class NumberWithParameter implements RandomStrategy {
     private int number;
