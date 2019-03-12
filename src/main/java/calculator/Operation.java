@@ -30,22 +30,22 @@ public enum Operation {
         }
     };
 
-    private final String symbol;
     private static final Map<String, Operation> OPERATION_MAP =
             Stream.of(values()).collect(Collectors.toMap(Operation::toString, e -> e));
+    private final String symbol;
 
     Operation(String symbol) {
         this.symbol = symbol;
     }
 
-    public abstract int apply(int x, int y);
-
     public static Operation fromString(String symbol) {
-        if(!OPERATION_MAP.containsKey(symbol)) {
+        if (!OPERATION_MAP.containsKey(symbol)) {
             throw new RuntimeException("존재하지 않는 사칙연산 기호입니다.");
         }
         return OPERATION_MAP.get(symbol);
     }
+
+    public abstract int apply(int x, int y);
 
     @Override
     public String toString() {

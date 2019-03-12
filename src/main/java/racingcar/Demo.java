@@ -7,17 +7,20 @@ public class Demo {
     public static void main(String[] args) {
         InputView.input();
         RacingGame racingGame = new RacingGame(InputView.getTimes());
+        Referee referee = new Referee();
 
         List<Car> cars = new ArrayList<>();
-        for (int i = 1; i <= InputView.getNumOfCars(); i++) {
-            cars.add(new Car());
+        String[] names = InputView.getNames();
+        for (int i = 0; i < names.length; i++) {
+            cars.add(new Car(names[i]));
         }
 
         OutputView.printIntroduction();
-        List<Integer> result;
         for (int i = 1; i <= racingGame.getTimes(); i++) {
-            result = racingGame.race(cars, new RandomNumberGenerator());
-            OutputView.printResult(result);
+            racingGame.race(cars, new RandomNumberGenerator());
+            OutputView.printBody(cars);
         }
+        List<Car> winners = referee.getWinners(cars);
+        OutputView.printResult(winners);
     }
 }
