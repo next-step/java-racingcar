@@ -1,6 +1,6 @@
 package calculator.type;
 
-public enum CalculationByOperator {
+public enum Operator {
 
     ADD("+") {
         public int calculrate(int leftHandSideNumber, int rightHandSideNumber) {
@@ -28,7 +28,7 @@ public enum CalculationByOperator {
 
     private final String value;
 
-    CalculationByOperator(String value) {
+    Operator(String value) {
         this.value = value;
     }
 
@@ -38,24 +38,15 @@ public enum CalculationByOperator {
 
     public abstract int calculrate(int leftHandSideNumber, int rightHandSideNumber);
 
-    public static CalculationByOperator convertTypeByOperator(String expression) {
+    public static Operator typeOf(String expression) {
 
-        if ("+".equals(expression)) {
-            return CalculationByOperator.ADD;
+        Operator[] operators = Operator.values();
+
+        for (Operator operator : operators) {
+            if(operator.getValue().equals(expression)) {
+                return operator;
+            }
         }
-
-        if ("-".equals(expression)) {
-            return CalculationByOperator.SUBTRACT;
-        }
-
-        if ("*".equals(expression)) {
-            return CalculationByOperator.MULTIPLY;
-        }
-
-        if ("/".equals(expression)) {
-            return CalculationByOperator.DIVIDE;
-        }
-
         return null;
     }
 }

@@ -1,22 +1,23 @@
 package calculator;
 
+import calculator.view.ExpressionValidator;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class StringExpressionValidatorTest {
+public class ExpressionValidatorTest {
 
     //19.03.11 클래스 분리에 따라 TEST CLASS도 분리
-    //TODO 입력값이 비정상적인 case 생각해보기 (요구사항 없음, 숫자만, 연산자-숫자 순서 오류 등)
+    //입력값이 비정상적인 case >> 정규표현식 사용 검출
 
     @Test
     public void 입력값이_null이거나_공백인경우() {
         boolean isOk = false;
 
-        isOk = StringExpressionValidator.validateExpression("");
+        isOk = ExpressionValidator.validate("");
         assertThat(isOk).isEqualTo(false);
 
-        isOk = StringExpressionValidator.validateExpression(null);
+        isOk = ExpressionValidator.validate(null);
         assertThat(isOk).isEqualTo(false);
     }
 
@@ -25,11 +26,11 @@ public class StringExpressionValidatorTest {
         boolean isOk = false;
         String text = "1 + 2 - 3 * 4 / 5";
 
-        isOk = StringExpressionValidator.validateExpression(text);
+        isOk = ExpressionValidator.validate(text);
         assertThat(isOk).isEqualTo(true);
 
         text = "1 + + 2 - 3 * 4 / 5";
-        isOk = StringExpressionValidator.validateExpression(text);
+        isOk = ExpressionValidator.validate(text);
         assertThat(isOk).isEqualTo(false);
     }
 
@@ -38,11 +39,11 @@ public class StringExpressionValidatorTest {
         boolean isOk = false;
         String text = "10 + 2 - 3 * 4 / 5";
 
-        isOk = StringExpressionValidator.validateExpression(text);
+        isOk = ExpressionValidator.validate(text);
         assertThat(isOk).isEqualTo(true);
 
         text = "100 + 20 - 33 * 4 / 51";
-        isOk = StringExpressionValidator.validateExpression(text);
+        isOk = ExpressionValidator.validate(text);
         assertThat(isOk).isEqualTo(true);
     }
 
