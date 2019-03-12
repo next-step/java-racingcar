@@ -108,4 +108,28 @@ public class RacingGameTest {
 
         assertThatIllegalStateException().isThrownBy(() -> racingGame.runOnce());
     }
+
+    @Test
+    public void RacingGame_초기화() {
+        RacingGame racingGame = new RacingGame(parameter);
+
+        while (racingGame.hasNextRound()) {
+            racingGame.runOnce();
+        }
+
+        racingGame.initializeRacingGame();
+
+        int currentRoundOfRacingGame = racingGame.getCurrentRound();
+        int totalRoundOfRacingGame = racingGame.getTotalRound();
+        List<Car> cars = racingGame.getCars();
+
+        assertThat(currentRoundOfRacingGame).isEqualTo(0);
+        assertThat(totalRoundOfRacingGame).isEqualTo(totalRound);
+
+        assertThat(cars.stream().map(Car::getName))
+                .containsExactlyElementsOf(carNames);
+        cars.forEach(car ->
+                assertThat(car.getMovedDistance()).isEqualTo(0)
+        );
+    }
 }

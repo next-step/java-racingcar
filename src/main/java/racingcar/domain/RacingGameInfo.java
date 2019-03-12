@@ -4,6 +4,7 @@ import racingcar.vo.RacingGameRound;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGameInfo {
     private List<Car> cars;
@@ -34,7 +35,12 @@ public class RacingGameInfo {
         setCurrentRound(currentRound + 1);
     }
 
-    public void initializeCurrentRound() {
+    public void initialize() {
+        this.cars = this.cars.stream()
+                .map(Car::getName)
+                .map(Car::new)
+                .collect(Collectors.toList());
+
         setCurrentRound(0);
     }
 
