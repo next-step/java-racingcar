@@ -11,12 +11,12 @@ public class GameConsole {
     private static final String RACING_CAR = "-";
     private static final String RESULT_WINNER_COMMENT = " 가 최종 우승했습니다.";
 
-    public static void preView(RacingCarsView view) {
+    public static void initShow(RacingCarsView view) {
         System.out.println(RESULT_COMMENT);
         resultView(view);
     }
 
-    public static void resultViews(List<RacingCarsView> views) {
+    public static void processShow(List<RacingCarsView> views) {
         views.stream().forEach(view -> resultView(view));
     }
 
@@ -45,7 +45,7 @@ public class GameConsole {
         System.out.println();
     }
 
-    public static void winnersView(List<String> winners) {
+    public static void resultShow(List<String> winners) {
         String convertedWinners = winners.stream().collect(Collectors.joining(","));
         System.out.println(convertedWinners + RESULT_WINNER_COMMENT);
     }

@@ -1,7 +1,6 @@
 package racing.application;
 
 import org.junit.Test;
-import racing.infrastructure.RandomCondition;
 import racing.view.RacingRequestView;
 
 import java.util.ArrayList;
@@ -9,8 +8,6 @@ import java.util.List;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 
 public class RacingGameTest {
@@ -38,36 +35,37 @@ public class RacingGameTest {
     public void 한명이_게임_한번_실행() {
         //given
         RacingRequestView requestView = new RacingRequestView("차", 3);
-        RandomCondition condition = mock(RandomCondition.class);
-        RacingGame racingGame = new RacingGame(requestView, condition);
-        when(condition.check()).thenReturn(true);
+        RacingGame game = new RacingGame(requestView, new TrueCondition());
 
         //when
-        racingGame.start();
+        game.start();
 
         //then
-        assertThat(racingGame.getViews().getPositions().get(0)).isEqualTo(4);
+        assertThat(game.getViews().getPositions().get(0)).isEqualTo(4);
     }
 
     @Test
     public void 승자확인() {
         //given
         RacingRequestView requestView = new RacingRequestView("pobi,crong,honux", 3);
-        RandomCondition condition = mock(RandomCondition.class);
+        RacingGame game = new RacingGame(requestView, new TrueCondition());
 
         List<Car> cars = new ArrayList();
-        Car car = mock(Car.class);
-        cars.add(car);
+        cars.add(new Car("pobi"));
         cars.add(new Car("crong"));
         cars.add(new Car("honux"));
-        RacingGame racingGame = new RacingGame(requestView, condition);
-        when(car.getName()).thenReturn("pobi");
-        when(car.getPosition()).thenReturn(5);
 
         //when
-        List<Car> sorted = racingGame.sortByPosition(cars);
+        List<String> sorted = game.getResult();
 
         //then
-        assertThat(sorted.get(0).getName()).isEqualTo("pobi");
+        assertThat(sorted.get(0)).isEqualTo("pobi");
+    }
+}
+
+class TrueCondition implements Condition {
+    @Override
+    public boolean check() {
+        return true;
     }
 }
