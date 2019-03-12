@@ -1,8 +1,11 @@
 package calculator;
 
+import calculator.service.CalculatorCore;
+import calculator.service.CalculatorView;
+
 import java.util.Scanner;
 
-public class CalculatorMain {
+public class Calculator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String value = scanner.nextLine();

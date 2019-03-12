@@ -1,5 +1,7 @@
 package calculator;
 
+import calculator.service.CalculatorCore;
+import calculator.service.CalculatorView;
 import org.junit.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

@@ -1,6 +1,6 @@
-package calculator;
+package calculator.service;
 
-import static calculator.CalculatorOperator.*;
+import static calculator.service.CalculatorOperator.*;
 
 public class CalculatorCore {
 

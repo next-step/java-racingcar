@@ -1,4 +1,4 @@
-package calculator;
+package calculator.service;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
