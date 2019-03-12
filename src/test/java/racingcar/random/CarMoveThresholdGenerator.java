@@ -1,6 +1,6 @@
 package racingcar.random;
 
-import racingcar.Car;
+import racingcar.domain.Car;
 
 public class CarMoveThresholdGenerator implements RandomIntGenerator {
     @Override
