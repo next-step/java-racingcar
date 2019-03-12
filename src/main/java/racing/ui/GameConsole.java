@@ -1,5 +1,6 @@
 package racing.ui;
 
+import com.google.common.base.Strings;
 import racing.view.RacingCarView;
 import racing.view.RacingCarsView;
 
@@ -36,9 +37,7 @@ public class GameConsole {
     }
 
     private static void showCarMovement(RacingCarView view) {
-        for (int i = 0; i < view.getPosition(); i++) {
-            System.out.print(RACING_CAR);
-        }
+        Strings.repeat(RACING_CAR, view.getPosition());
     }
 
     private static void emptyLine() {
