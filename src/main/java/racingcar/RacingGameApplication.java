@@ -1,30 +1,15 @@
 package racingcar;
 
-import java.util.Scanner;
-
 public class RacingGameApplication {
 
-    static class RacingGameHelper {
-        private static RacingGameBoard configure() {
-            Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args) {
+        int numberOfCars = RacingGameInput.takeNumberOfCars();
+        int numberOfTimes = RacingGameInput.takeNumberOfTimes();
 
-            System.out.println("자동차 대수는 몇 대 인가요? ");
-            int numberOfCars = scanner.nextInt();
+        RacingGame racingGame = new RacingGame(numberOfCars);
 
-            System.out.println("시도할 회수는 몇 회 인가요? ");
-            int numberOfTimes = scanner.nextInt();
-
-            return new RacingGameBoard(numberOfCars, numberOfTimes);
+        for (int i = 0; i < numberOfTimes; i++) {
+            RacingGameOutput.showRacingGame(racingGame.play());
         }
     }
-
-    public static void main(String[] args) {
-
-        RacingGameBoard racingGameBoard = RacingGameHelper.configure();
-
-        racingGameBoard.play();
-        racingGameBoard.show();
-    }
-
-
 }
