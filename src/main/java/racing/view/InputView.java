@@ -24,7 +24,7 @@ public class InputView {
                 () -> sc.nextInt());
     }
 
-    public static <T> T input(String msg, Supplier<T> supplier) {
+    private static <T> T input(String msg, Supplier<T> supplier) {
         System.out.println(msg);
         return supplier.get();
     }
