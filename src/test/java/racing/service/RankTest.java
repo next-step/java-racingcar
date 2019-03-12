@@ -48,17 +48,24 @@ public class RankTest {
     public void 자동차정렬() {
         RacingCarRank.sortCars(cars);
 
-        assertThat(cars.get(0).getTotalDistance()).isGreaterThanOrEqualTo(cars.get(1).getTotalDistance());
-        assertThat(cars.get(0).getTotalDistance()).isGreaterThanOrEqualTo(cars.get(2).getTotalDistance());
-        assertThat(cars.get(1).getTotalDistance()).isGreaterThanOrEqualTo(cars.get(2).getTotalDistance());
+        assertThat(cars.get(0).compareTo(cars.get(1))).isGreaterThanOrEqualTo(0);
+        assertThat(cars.get(0).compareTo(cars.get(2))).isGreaterThanOrEqualTo(0);
+        assertThat(cars.get(1).compareTo(cars.get(2))).isGreaterThanOrEqualTo(0);
+
+        assertThat(cars.get(2).compareTo(cars.get(1))).isLessThanOrEqualTo(0);
+        assertThat(cars.get(2).compareTo(cars.get(0))).isLessThanOrEqualTo(0);
+        assertThat(cars.get(1).compareTo(cars.get(0))).isLessThanOrEqualTo(0);
     }
 
     @Test
     public void 자동차랭킹() {
         List<Car> winners = RacingCarRank.rankCars(cars);
 
-        assertThat(winners.get(0).getTotalDistance()).isGreaterThanOrEqualTo(cars.get(0).getTotalDistance());
-        assertThat(winners.get(0).getTotalDistance()).isGreaterThanOrEqualTo(cars.get(1).getTotalDistance());
-        assertThat(winners.get(0).getTotalDistance()).isGreaterThanOrEqualTo(cars.get(2).getTotalDistance());
+        assertThat(winners.get(0).compareTo(cars.get(0))).isGreaterThanOrEqualTo(0);
+        assertThat(winners.get(0).compareTo(cars.get(1))).isGreaterThanOrEqualTo(0);
+        assertThat(winners.get(0).compareTo(cars.get(2))).isGreaterThanOrEqualTo(0);
+
+        assertThat(cars.get(2).compareTo(cars.get(0))).isLessThanOrEqualTo(0);
+        assertThat(cars.get(1).compareTo(cars.get(0))).isLessThanOrEqualTo(0);
     }
 }

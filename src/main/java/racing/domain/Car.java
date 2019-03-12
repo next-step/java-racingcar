@@ -31,11 +31,8 @@ public class Car implements Comparable<Car> {
     }
 
     public boolean getMoveCount(int randomValue) {
-        if (randomValue >= LIMIT_VALUE) {
-            return true;
-        }
+        return randomValue >= LIMIT_VALUE;
 
-        return false;
     }
 
     public int getRandomValue() {
@@ -46,12 +43,8 @@ public class Car implements Comparable<Car> {
         return name;
     }
 
-    public Integer getTotalDistance() {
-        return totalDistance;
-    }
-
     @Override
     public int compareTo(Car car) {
-        return totalDistance.compareTo(car.getTotalDistance());
+        return totalDistance.compareTo(car.totalDistance);
     }
 }

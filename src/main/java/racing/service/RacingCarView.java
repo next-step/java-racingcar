@@ -1,7 +1,6 @@
 package racing.service;
 
 import racing.domain.Car;
-import racing.domain.RacingCarRequest;
 
 import java.util.List;
 import java.util.Scanner;
@@ -49,13 +48,17 @@ public class RacingCarView {
         System.out.println(winner.substring(0, winner.length() - 2) + "가 최종 우승했습니다.");
     }
 
-    public static RacingCarRequest registerCars() {
+    public static String getCarNames() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        String names = scanner.nextLine();
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int moveCnt = Integer.parseInt(scanner.nextLine());
 
-        return new RacingCarRequest(names, moveCnt);
+        return scanner.nextLine();
+    }
+
+    public static int getRoundCount() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("시도할 회수는 몇 회 인가요?");
+
+        return Integer.parseInt(scanner.nextLine());
     }
 }
