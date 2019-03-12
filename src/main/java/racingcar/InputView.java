@@ -21,10 +21,12 @@ public class InputView {
     }
 
     private static void checkRaceCondition() {
-        if (names.length == 0)
+        if (names.length == 0) {
             throw new RuntimeException("경주에는 최소 1대 이상의 자동차가 필요합니다.");
-        if (times <= 0)
+        }
+        if (times <= 0) {
             throw new RuntimeException("시도할 회수는 자연수만 입력할 수 있습니다.");
+        }
     }
 
     public static String[] getNames() {

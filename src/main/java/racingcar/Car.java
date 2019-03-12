@@ -10,8 +10,9 @@ public class Car {
     }
 
     public void move(NumberGenerator numberGenerator) {
-        if (numberGenerator.generateNumber() >= LOWER_LIMIT_OF_MOVE)
+        if (numberGenerator.generateNumber() >= LOWER_LIMIT_OF_MOVE) {
             this.position++;
+        }
     }
 
     public int getPosition() {
