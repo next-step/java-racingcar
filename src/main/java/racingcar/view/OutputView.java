@@ -12,6 +12,6 @@ public class OutputView {
         for (Car winner : winners) {
             winnersName.add(winner.getName());
         }
-        System.out.println("\n\n" + String.join(",", winnersName) + "가 우승자 입니다.");
+        System.out.println(String.join(",", winnersName) + "가 우승자 입니다.");
     }
 }

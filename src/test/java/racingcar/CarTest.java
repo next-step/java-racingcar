@@ -6,6 +6,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class CarTest {
+    static final int MOVEABLE_RANDOMNUM = 4;
+    static final int NONE_MOVEABLE_RANDOMNUM = 1;
+
 
     @Test
     public void 차_생성시_거리_기본값() {
@@ -17,11 +20,12 @@ public class CarTest {
 
     @Test
     public void 차_이동시_거리_증가() {
+
         Car car = new Car("sonata");
-        car.moveCar();
-        car.moveCar();
+        car.moveCar(MOVEABLE_RANDOMNUM);
+        car.moveCar(NONE_MOVEABLE_RANDOMNUM);
         int movingDistance = car.getMovingDistance();
-        assertThat(movingDistance).isEqualTo(2);
+        assertThat(movingDistance).isEqualTo(1);
     }
 
 

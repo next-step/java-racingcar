@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WinnerUtils {
-    private static int highScore;
 
     public static List<Car> topRankSearch(List<Car> cars) {
-        getHighScore(cars);
         List<Car> winners = new ArrayList<>();
+        int highScore = getHighScore(cars);
         for (Car car : cars) {
             if (car.isHighScore(highScore)) {
                 winners.add(car);
@@ -17,17 +16,13 @@ public class WinnerUtils {
         return winners;
     }
 
-    private static void getHighScore(List<Car> cars) {
+    private static int getHighScore(List<Car> cars) {
+        int highScore = 0;
         for (Car car : cars) {
-            replaceHighScore(car);
+            if (car.compareToHighScore(highScore)) {
+                highScore = car.getMovingDistance();
+            }
         }
-
+        return highScore;
     }
-
-    private static void replaceHighScore(Car car) {
-        if (car.getMovingDistance() > highScore) {
-            highScore = car.getMovingDistance();
-        }
-    }
-
 }

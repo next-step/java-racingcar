@@ -23,14 +23,26 @@ public class Car {
     }
 
     public boolean isHighScore(int highScore) {
-        return getMovingDistance() == highScore;
+        return this.movingDistance == highScore;
     }
 
-    public void moveCar() {
-        movingDistance++;
+    public boolean compareToHighScore(int highScore) {
+        return this.movingDistance > highScore;
     }
 
-    public boolean canMove() {
-        return new Random().nextInt(RULE_COUNT) > RUNNABLE_RULE_COUNT;
+
+    public void move() {
+        int randomValue = getRandomValue();
+        moveCar(randomValue);
+    }
+
+    public void moveCar(int randomValue) {
+        if (randomValue > RUNNABLE_RULE_COUNT) {
+            movingDistance++;
+        }
+    }
+
+    private int getRandomValue() {
+        return new Random().nextInt(RULE_COUNT);
     }
 }

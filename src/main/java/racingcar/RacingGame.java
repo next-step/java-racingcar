@@ -30,11 +30,10 @@ public class RacingGame {
 
     public void run() {
         for (Car car : cars) {
-            if (car.canMove()) {
-                car.moveCar();
-            }
+            car.move();
         }
     }
+
 
 
     private void printCarsDistance() {
