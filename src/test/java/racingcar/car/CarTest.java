@@ -19,7 +19,6 @@ public class CarTest {
     @Test
     public void car객체_확인() {
         assertThat(car.getName()).isEqualTo(NAME);
-        assertThat(car.getPosition()).isEqualTo(4);
     }
 
     @Test

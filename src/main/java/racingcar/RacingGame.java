@@ -10,6 +10,8 @@ public class RacingGame {
     private int time;
     private List<Car> cars;
 
+    private int topPosition = 0;
+
     public RacingGame(String[] racers, int time) {
         this.time = time;
         registerRacer(racers);
@@ -26,6 +28,7 @@ public class RacingGame {
         for (int i = 0; i < time; i++) {
             move();
         }
+
         return cars;
     }
 
@@ -33,9 +36,21 @@ public class RacingGame {
     public void move() {
         for (Car car : cars) {
             int position = car.move();
+            checkTopPosition(position);
             OutputView.showStatus(car.getName(), position);
         }
         OutputView.nextTurn();
+    }
+
+    public void checkTopPosition(int position) {
+        if (topPosition < position) {
+            topPosition = position;
+        }
+    }
+
+    //TODO : getter를 아예 없앨 방법을 생각해봐야하는데...
+    public int getTopPosition() {
+        return topPosition;
     }
 }
 

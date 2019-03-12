@@ -26,7 +26,7 @@ public class OutputViewTest {
         OutputView.sortRanking(cars);
 
         for(Car car : cars) {
-            System.out.println(car.getName() + " / " + car.getPosition());
+            System.out.println(car.getName());
         }
 
         assertThat(cars.get(0).getName()).isEqualTo(car1.getName());

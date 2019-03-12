@@ -11,6 +11,8 @@ public class OutputView {
     private static final String POSITION_BAR = "-";
     private static final String EMPTY_LINE = "";
 
+    private static int topPosition=0;
+
     public static void showStatus(String name, int position) {
         System.out.print(name + " : ");
         System.out.println(StringUtils.repeat(POSITION_BAR, position));
@@ -21,10 +23,9 @@ public class OutputView {
     }
 
     //TODO : 개선필요,, 좋은방법 생각해볼 것
-    public static void showWinner(List<Car> cars) {
+    public static void showWinner(List<Car> cars, int topPosition) {
         sortRanking(cars);
 
-        int topPosition = cars.get(0).getPosition();
         int winner = countWinner(cars, topPosition);
 
         for (int i = 0; i < winner - 1; i++) {
@@ -48,7 +49,7 @@ public class OutputView {
     }
 
     private static int isWinner(Car car, int topPosition) {
-        if (topPosition == car.getPosition()) {
+        if (car.isWinner(topPosition)) {
             return 1;
         }
         return 0;

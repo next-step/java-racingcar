@@ -15,7 +15,8 @@ public class RacingGameRunner {
 
         RacingGame racingGame = new RacingGame(racers, time);
         List<Car> cars = racingGame.game();
+        int topPosition = racingGame.getTopPosition();
 
-        OutputView.showWinner(cars);
+        OutputView.showWinner(cars, topPosition);
     }
 }
