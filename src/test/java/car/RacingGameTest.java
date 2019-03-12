@@ -4,36 +4,31 @@ import car.entity.Car;
 import car.entity.RacingGame;
 import org.junit.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class RacingGameTest {
+    static final int INITIAL_CAR_COUNT = 3;
+    static final int NOT_MOVING_RANDOM_NUM = 3;
+    static final int MOVING_RANDOM_VALUE = 4;
 
     @Test
     public void initializeGame() {
-        int carSize = 5;
-        int tryCount = 3;
-        RacingGame racingGame = new RacingGame(carSize,tryCount);
-        List<Car> result = racingGame.racingCars;
-
-        assertThat(result.size()).isEqualTo(carSize);
+        RacingGame racingGame = new RacingGame(INITIAL_CAR_COUNT);
+        assertThat(racingGame.racingCars.size()).isEqualTo(INITIAL_CAR_COUNT);
     }
 
     @Test
     public void carStatusStop() {
-        int testRandomValue = 3;
-        Car testCar = new Car();
-        testCar.move(testRandomValue);
+        Car testCar = Car.getCarInstance();
+        testCar.move(NOT_MOVING_RANDOM_NUM);
 
         assertThat(testCar.getMovingCount()).isEqualTo(0);
     }
 
     @Test
     public void carStatusStart() {
-        int testRandomValue = 4;
-        Car testCar = new Car();
-        testCar.move(testRandomValue);
+        Car testCar = Car.getCarInstance();
+        testCar.move(MOVING_RANDOM_VALUE);
 
         assertThat(testCar.getMovingCount()).isEqualTo(1);
     }
