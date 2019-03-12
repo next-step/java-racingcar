@@ -26,4 +26,14 @@ public class CarTest {
         int position = car.move();
         assertThat(position).isBetween(4, 5);
     }
+
+    @Test
+    public void 우승자_확인() {
+        boolean isWinner = car.isWinner(4);
+        assertThat(isWinner).isEqualTo(true);
+
+        isWinner = car.isWinner(10);
+        assertThat(isWinner).isEqualTo(false);
+
+    }
 }

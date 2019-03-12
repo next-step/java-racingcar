@@ -30,10 +30,6 @@ public class Car implements Comparable<Car> {
         return name;
     }
 
-//    public int getPosition() {
-//        return position;
-//    }
-
     public int move() {
         position += powerGenerator.determineMoveOrNot();
         return position;

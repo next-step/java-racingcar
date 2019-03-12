@@ -1,8 +1,11 @@
 package racingcar;
 
+import org.junit.Before;
 import org.junit.Test;
 import racingcar.car.Car;
+import racingcar.race.RacingGame;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,48 +21,39 @@ public class RacingGameTest {
         // > private Method 테스트는 public Method 테스트를 통해 커버
 
     //19.03.10 - step1 피드백, 개선한 구조에 맞게 테스트 method 수정
-//    @Test
-//    public void 모든차량_1회_게임_확인() {
-//        String input = "pobi,crong,honux";
-//        String[] racers = input.split(",");
-//
-//        RacingGame racingGame = new RacingGame(racers, 1);
-//
-//
-//        List<Car> cars = racingGame.game();
-//
-//        assertThat(cars.get(0).getPosition()).isBetween(0, 1);
-//        assertThat(cars.get(1).getPosition()).isBetween(0, 1);
-//        assertThat(cars.get(2).getPosition()).isBetween(0, 1);
-//    }
-//
-//    @Test
-//    public void 레이싱_게임_3대_5회() {
-//        String input = "pobi,crong,honux";
-//        String[] racers = input.split(",");
-//
-//        RacingGame racingGame = new RacingGame(racers, 3);
-//        List<Car> cars = racingGame.game();
-//
-//        assertThat(cars.get(0).getPosition()).isBetween(0, 3);
-//        assertThat(cars.get(1).getPosition()).isBetween(0, 3);
-//        assertThat(cars.get(2).getPosition()).isBetween(0, 3);
-//    }
 
+
+    RacingGame racingGame;
+    private List<Car> cars = null;
+
+    @Before
+    public void setUp() throws Exception {
+
+        cars = new ArrayList<Car>();
+
+        Car car1 = new Car("po", 0);
+        Car car2 = new Car("jo", 0);
+        Car car3 = new Car("gu", 0);
+        Car car4 = new Car("yo", 0);
+
+        cars.add(car1);
+        cars.add(car2);
+        cars.add(car3);
+        cars.add(car4);
+    }
 
     @Test
-    public void topPosition구하기() {
-        String input = "pobi,crong,honux";
-        String[] racers = input.split(",");
+    public void 모든차량_1회_게임_확인() {
 
-        RacingGame racingGame = new RacingGame(racers, 1);
-        racingGame.checkTopPosition(3);
+        racingGame = new RacingGame(1);
+        int topPosition = racingGame.game(cars);
+        assertThat(topPosition).isBetween(0, 1);
+    }
 
-        int topPosition = racingGame.getTopPosition();
-        assertThat(topPosition).isEqualTo(3);
-
-        racingGame.checkTopPosition(2);
-        topPosition = racingGame.getTopPosition();
-        assertThat(topPosition).isEqualTo(3);
+    @Test
+    public void 레이싱_게임_3대_5회() {
+        racingGame = new RacingGame(5);
+        int topPosition = racingGame.game(cars);
+        assertThat(topPosition).isBetween(0, 5);
     }
 }
