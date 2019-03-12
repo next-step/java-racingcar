@@ -21,7 +21,7 @@ public class RacingCarsView {
 
     public static RacingCarsView toRacingCarsView(List<Car> cars) {
         return new RacingCarsView(cars.stream()
-                .map(v -> toRacingCarView(v))
+                .map(v-> toRacingCarView(v))
                 .collect(Collectors.toList()));
     }
 
@@ -33,6 +33,3 @@ public class RacingCarsView {
         return views.stream();
     }
 }
-
-
-

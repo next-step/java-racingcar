@@ -27,7 +27,7 @@ public class GameConsole {
 
     private static void show(RacingCarView view) {
         showName(view);
-        showCar(view);
+        showCarMovement(view);
         emptyLine();
     }
 
@@ -35,7 +35,7 @@ public class GameConsole {
         System.out.print(view.getCarName() + " : ");
     }
 
-    private static void showCar(RacingCarView view) {
+    private static void showCarMovement(RacingCarView view) {
         for (int i = 0; i < view.getPosition(); i++) {
             System.out.print(RACING_CAR);
         }
