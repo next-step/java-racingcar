@@ -13,6 +13,9 @@ public class ResultView {
         for ( Car car: result.getCars() ) {
             System.out.println(String.format("%s: %s", car.getName(), StringUtils.repeat(DASH, car.getPosition())));
         }
+    }
+
+    public static void printWinners(RacingResult result) {
         System.out.println(String.format("%s가 최종 우승했습니다", result.createDisplayWinnerNames()));
     }
 }

@@ -10,12 +10,14 @@ public class RacingGame {
     private static final int MAX_BOUND = 10;
 
     private List<Car> cars;
+    private int tryNo;
 
-    public RacingGame(String inputNames) {
-        if (StringUtils.isBlank(inputNames)) {
+    public RacingGame(String carNames, int tryNo) {
+        if (StringUtils.isBlank(carNames)) {
             throw new IllegalArgumentException("사용자 이름은 빈 값이 될 수 없습니다.");
         }
-        this.cars = createCars(inputNames);
+        this.cars = createCars(carNames);
+        this.tryNo = tryNo;
     }
 
     private static List<Car> createCars(String inputNames) {
@@ -27,10 +29,9 @@ public class RacingGame {
         return cars;
     }
 
-    public RacingResult racing(int tryNo) {
-        for (int i = 0; i < tryNo; i++) {
-            racingPerTry();
-        }
+    public RacingResult race() {
+        this.tryNo--;
+        racingPerTry();
         return new RacingResult(cars);
     }
 
@@ -38,5 +39,9 @@ public class RacingGame {
         for (Car car: cars) {
             car.move(RandomValueGenerator.nextInt(MAX_BOUND));
         }
+    }
+
+    public boolean isEnd() {
+        return this.tryNo == 0;
     }
 }
