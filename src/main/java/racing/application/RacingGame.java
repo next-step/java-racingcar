@@ -5,6 +5,7 @@ import racing.view.RacingRequestView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private Condition condition;
@@ -14,7 +15,7 @@ public class RacingGame {
 
     public RacingGame(RacingRequestView view, Condition condition) {
         for (int i = 0; i < view.getCarCount(); i++) {
-            cars.add(new Car());
+            cars.add(new Car(view.getCarName(i)));
         }
 
         this.time = view.getGameCount();
@@ -24,7 +25,7 @@ public class RacingGame {
     public void start() {
         for (int i = 0; i < time; i++) {
             turn();
-            history.add(getView());
+            history.add(getViews());
         }
     }
 
@@ -38,12 +39,34 @@ public class RacingGame {
         }
     }
 
-    public RacingCarsView getView() {
+    public RacingCarsView getViews() {
         return RacingCarsView.toRacingCarsView(cars);
     }
 
     public List<RacingCarsView> getHistory() {
         return history;
+    }
+
+    public List<String> judgeWinners() {
+        List<Car> sorted = sortByPosition(cars);
+        return getCarNameOfWinners(sorted);
+    }
+
+    public List<Car> sortByPosition(List<Car> cars) {
+        return cars.stream()
+                .sorted()
+                .collect(Collectors.toList());
+    }
+
+    private List<String> getCarNameOfWinners(List<Car> sorted) {
+        return sorted.stream()
+                .filter(v -> getWinnerPosition(sorted) == v.getPosition())
+                .map(v -> v.getName())
+                .collect(Collectors.toList());
+    }
+
+    private int getWinnerPosition(List<Car> sorted) {
+        return sorted.get(0).getPosition();
     }
 }
 
