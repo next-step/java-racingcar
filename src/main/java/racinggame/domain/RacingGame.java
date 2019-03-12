@@ -6,10 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private List<Car> cars;
+    private final List<Car> cars;
+    private int tryNo;
 
-    public RacingGame(String carNames) {
+    public RacingGame(String carNames, int tryNo) {
         this.cars = initCars(carNames);
+        this.tryNo = tryNo;
     }
 
     private static List<Car> initCars(String carNames) {
@@ -24,16 +26,19 @@ public class RacingGame {
         return cars;
     }
 
-    public void racing(int tryNo) {
-        for (int i = 0; i < tryNo; i++) {
-            moveCars();
-        }
+    public void race() {
+        this.tryNo--;
+        moveCars();
     }
 
     private void moveCars() {
         for (Car car : cars) {
             car.move();
         }
+    }
+
+    public boolean isEnd() {
+        return this.tryNo == 0;
     }
 
     public List<Car> getCars() {

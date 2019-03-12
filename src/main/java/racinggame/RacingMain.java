@@ -9,10 +9,11 @@ public class RacingMain {
         String carNames = InputView.getCarNames();
         int tryNo = InputView.getTryNo();
 
-        RacingGame racingGame = new RacingGame(carNames);
-        racingGame.racing(tryNo);
-
-        ResultView.printCars(racingGame.getCars());
+        RacingGame racingGame = new RacingGame(carNames, tryNo);
+        while(!racingGame.isEnd()) {
+            racingGame.race();
+            ResultView.printCars(racingGame.getCars());
+        }
         ResultView.printWinners(racingGame.getWinners());
     }
 }
