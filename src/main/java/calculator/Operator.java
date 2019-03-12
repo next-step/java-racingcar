@@ -2,7 +2,7 @@ package calculator;
 
 import java.util.function.BinaryOperator;
 
-public enum Calculator {
+public enum Operator {
     ADD("+", (firstNum, secondNum) -> firstNum + secondNum),
     SUBTRACT("-", (firstNum, secondNum) -> firstNum - secondNum),
     MULTIPLY("*", (firstNum, secondNum) -> firstNum * secondNum),
@@ -11,9 +11,19 @@ public enum Calculator {
     private BinaryOperator<Integer> expressions;
     private String looks;
 
-    Calculator(String looks, BinaryOperator<Integer> expressions) {
+    Operator(String looks, BinaryOperator<Integer> expressions) {
         this.looks = looks;
         this.expressions = expressions;
+    }
+
+    public static Operator looksOf(String looks) {
+        for (Operator operator : Operator.values()) {
+            if (operator.looks.equals(looks)) {
+                return operator;
+            }
+        }
+
+        throw new IllegalArgumentException();
     }
 
     public int calculate(int firstNum, int secondNum) {

@@ -4,7 +4,6 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -62,26 +61,6 @@ public class StringCalculator {
         return operands;
     }
 
-    public static Calculator selectCalculator(String operatorLooks) throws Exception {
-        if (Objects.equals(operatorLooks, "+")) {
-            return Calculator.ADD;
-        }
-
-        if (Objects.equals(operatorLooks, "-")) {
-            return Calculator.SUBTRACT;
-        }
-
-        if (Objects.equals(operatorLooks, "*")) {
-            return Calculator.MULTIPLY;
-        }
-
-        if (Objects.equals(operatorLooks, "/")) {
-            return Calculator.DIVIDE;
-        }
-
-        throw new Exception(INPUT_ERR);
-    }
-
     public static int calculate(String text) throws Exception {
 
         int result = 0;
@@ -101,7 +80,7 @@ public class StringCalculator {
     }
 
     private static int calculate(int firstNum, int secondNum, String operatorLooks) throws Exception {
-        Calculator calc = selectCalculator(operatorLooks);
+        Operator calc = Operator.looksOf(operatorLooks);
 
         return calc.calculate(firstNum, secondNum);
     }

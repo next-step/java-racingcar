@@ -29,14 +29,6 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void test_selectCalculator() throws Exception {
-        assertThat(StringCalculator.selectCalculator("+")).isEqualTo(Calculator.ADD);
-        assertThat(StringCalculator.selectCalculator("-")).isEqualTo(Calculator.SUBTRACT);
-        assertThat(StringCalculator.selectCalculator("*")).isEqualTo(Calculator.MULTIPLY);
-        assertThat(StringCalculator.selectCalculator("/")).isEqualTo(Calculator.DIVIDE);
-    }
-
-    @Test
     public void test_calculate() throws Exception {
         assertThat(StringCalculator.calculate("2 + 3 - 1 * 4 / 2")).isEqualTo(8);
         assertThat(StringCalculator.calculate("22 / 2 - 1 * 4 / 2")).isEqualTo(20);
