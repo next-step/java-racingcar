@@ -18,11 +18,8 @@ public class RacingGame {
     }
 
     public RacingGame(RacingGameParameter parameter, RandomIntGenerator randomIntGenerator) {
-        List<String> carNames = parameter.getCarNames();
-        List<Car> cars = carSetUp(carNames);
-
-        int totalRound = parameter.getTotalRound();
-        RacingGameRound racingGameRound = new RacingGameRound(totalRound);
+        List<Car> cars = carSetUp(parameter.getCarNames());
+        RacingGameRound racingGameRound = new RacingGameRound(parameter.getTotalRound());
 
         this.racingGameInfo = new RacingGameInfo(cars, racingGameRound);
         this.randomIntGenerator = randomIntGenerator;
