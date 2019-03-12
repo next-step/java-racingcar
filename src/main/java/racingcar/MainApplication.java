@@ -1,22 +1,19 @@
 package racingcar;
 
-import java.util.Scanner;
+import java.awt.print.Pageable;
 
 public class MainApplication {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        RacingGame racingGame = new RacingGame();
-
         System.out.println("자동차 대수는 몇 대 인가요?");
-        int carNumber = scanner.nextInt();
-        racingGame.setCarNumber(carNumber);
+        int carNumber = InputView.inputInt();
 
         System.out.println("시도할 회수는 몇 회 인가요?");
-        int time = scanner.nextInt();
-        racingGame.setTime(time);
+        int inputTimes = InputView.inputInt();
 
         System.out.println("실행 결과");
-        racingGame.gameStart();
-
+        RacingGame racingGame = new RacingGame(carNumber);
+        for(int i = 0; i < inputTimes; i++) {
+            ResultView.viewCars(racingGame.move());
+        }
     }
 }
