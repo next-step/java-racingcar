@@ -1,7 +1,7 @@
 package racingcar;
 
 import racingcar.car.Car;
-import racingcar.view.RacingGameStatusViewer;
+import racingcar.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,38 +10,32 @@ public class RacingGame {
     private int time;
     private List<Car> cars;
 
-    public RacingGame(int numberOfCars, int time) {
+    public RacingGame(String[] racers, int time) {
         this.time = time;
-        registerRacer(numberOfCars);
+        registerRacer(racers);
     }
 
-    public void registerRacer(int numberOfCars) {
+    public void registerRacer(String[] racers) {
         cars = new ArrayList<Car>();
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car(0));
+        for (int i = 0; i < racers.length; i++) {
+            cars.add(new Car(racers[i], 0));
         }
     }
 
-    public void game() {
+    public List<Car> game() {
         for (int i = 0; i < time; i++) {
             move();
         }
-    }
-
-    public void move() {
-        for(Car car : cars) {
-            int position = car.move();
-            RacingGameStatusViewer.showStatus(position);
-        }
-        RacingGameStatusViewer.nextTurn();
-    }
-
-    //19.03.10 - step1 피드백, movePower 객체로 분리
-
-    //19.03.10 - step1 피드백, 테스트를 위한 인스턴스 변수 getter제거
-    //대신 최종결과를 확인하기 위한 method 생성
-    public List<Car> loadResultofGame() {
         return cars;
+    }
+
+    //TODO : 더 좋은 출력방법 있는지 고민해보기..
+    public void move() {
+        for (Car car : cars) {
+            int position = car.move();
+            OutputView.showStatus(car.getName(), position);
+        }
+        OutputView.nextTurn();
     }
 }
 
