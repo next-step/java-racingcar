@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +11,12 @@ public class CarTest {
 
     @Before
     public void setUp() throws Exception {
-        car = new Car();
+        car = new Car("test");
+    }
+
+    @Test
+    public void 자동차_이름_확인() {
+        assertThat(car.getName()).isEqualTo("test");
     }
 
     @Test
