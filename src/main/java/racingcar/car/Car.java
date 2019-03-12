@@ -14,7 +14,8 @@ public class Car {
         return position;
     }
 
-    public void move() {
-        this.position += powerGenerator.determineMoveOrNot();
+    public int move() {
+        position += powerGenerator.determineMoveOrNot();
+        return position;
     }
 }

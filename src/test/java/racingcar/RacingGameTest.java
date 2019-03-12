@@ -2,7 +2,6 @@ package racingcar;
 
 import org.junit.Test;
 import racingcar.car.Car;
-import racingcar.car.PowerGenerator;
 
 import java.util.List;
 
@@ -17,16 +16,9 @@ public class RacingGameTest {
         // > return type이 void가 된 구조에 대해 생각해보고, 구조 개선
 
     //3. class에 private method가 있다면 어떻게 테스트하는게 좋을까요?
-
+        // > private Method 테스트는 public Method 테스트를 통해 커버
 
     //19.03.10 - step1 피드백, 개선한 구조에 맞게 테스트 method 수정
-    @Test
-    public void 전진_정지_여부_확인() {
-        PowerGenerator powerGenerator = new PowerGenerator();
-        int power = powerGenerator.determineMoveOrNot();
-        assertThat(power).isBetween(0,1);
-    }
-
     @Test
     public void 모든차량_1회_게임_확인() {
 
@@ -43,11 +35,11 @@ public class RacingGameTest {
     @Test
     public void 레이싱_게임_3대_5회() {
         RacingGame racingGame = new RacingGame(3, 5);
-        racingGame.move();
+        racingGame.game();
         List<Car> cars = racingGame.loadResultofGame();
 
-        assertThat(cars.get(0).getPosition()).isBetween(0, 4);
-        assertThat(cars.get(1).getPosition()).isBetween(0, 4);
-        assertThat(cars.get(2).getPosition()).isBetween(0, 4);
+        assertThat(cars.get(0).getPosition()).isBetween(0, 5);
+        assertThat(cars.get(1).getPosition()).isBetween(0, 5);
+        assertThat(cars.get(2).getPosition()).isBetween(0, 5);
     }
 }

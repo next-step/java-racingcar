@@ -16,13 +16,8 @@ public class CarTest {
     }
 
     @Test
-    public void car객체_생성() {
-        assertThat(car.getPosition()).isEqualTo(4);
-    }
-
-    @Test
     public void 파워를_얻어보자() {
-        car.move();
-        assertThat(car.getPosition()).isBetween(4,5);
+        int position = car.move();
+        assertThat(position).isBetween(4,5);
     }
 }

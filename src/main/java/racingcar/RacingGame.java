@@ -1,11 +1,10 @@
 package racingcar;
 
 import racingcar.car.Car;
+import racingcar.view.RacingGameStatusViewer;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static racingcar.RacingGameStatusViewer.showRacingGameStatus;
 
 public class RacingGame {
     private int time;
@@ -26,14 +25,15 @@ public class RacingGame {
     public void game() {
         for (int i = 0; i < time; i++) {
             move();
-            showRacingGameStatus(cars);
         }
     }
 
     public void move() {
         for(Car car : cars) {
-            car.move();
+            int position = car.move();
+            RacingGameStatusViewer.showStatus(position);
         }
+        RacingGameStatusViewer.nextTurn();
     }
 
     //19.03.10 - step1 피드백, movePower 객체로 분리
