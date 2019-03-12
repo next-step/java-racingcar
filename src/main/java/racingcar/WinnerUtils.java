@@ -5,10 +5,10 @@ import java.util.List;
 
 public class WinnerUtils {
 
-    public static List<Car> topRankSearch(List<Car> cars) {
+    public static List<Car> topRankSearch(RacingResult racingResult) {
         List<Car> winners = new ArrayList<>();
-        int highScore = getHighScore(cars);
-        for (Car car : cars) {
+        int highScore = getHighScore(racingResult.getCars());
+        for (Car car : racingResult.getCars()) {
             if (car.isHighScore(highScore)) {
                 winners.add(car);
             }

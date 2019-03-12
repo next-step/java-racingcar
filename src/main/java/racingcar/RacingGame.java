@@ -4,54 +4,41 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private List<Car> cars;
+    private static List<Car> cars;
+    private int currentTurn;
     private int moveCount;
 
-    public RacingGame(InputReq inputReq) {
-        this.moveCount = inputReq.getMoveCount();
-        setupCar(inputReq.getCarNames());
+
+    public RacingGame(String carNames, int moveCount) {
+        this.cars = setupCar(carNames);
+        this.moveCount = moveCount;
+
     }
 
-    private void setupCar(String carNames) {
+    private List<Car> setupCar(String carNames) {
         cars = new ArrayList<>();
         String[] names = carNames.split(",");
         for (String name : names) {
             cars.add(new Car(name.trim()));
         }
+        return cars;
     }
 
-    public void startRace() {
-        for (int i = 0; i < moveCount; i++) {
-            System.out.println((i + 1) + "번째횟수");
-            run();
-            printCarsDistance();
-        }
-    }
-
-    public void run() {
+    public RacingResult startRace() {
         for (Car car : cars) {
             car.move();
         }
+        currentTurn++;
+        return new RacingResult(cars);
     }
 
-
-
-    private void printCarsDistance() {
-        for (Car car : cars) {
-            printCarDistance(car);
-        }
-    }
-
-    private void printCarDistance(Car car) {
-        StringBuilder raceResult = new StringBuilder(car.getName() + " : ");
-        for (int i = 0; i < car.getMovingDistance(); i++) {
-            raceResult.append("-");
-        }
-        System.out.println(raceResult.toString());
-    }
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public boolean isEnd() {
+        return currentTurn<= moveCount;
     }
 
 }

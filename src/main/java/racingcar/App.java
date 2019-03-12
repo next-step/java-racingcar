@@ -12,12 +12,20 @@ public class App {
 
     private static void gameStart() {
         InputReq inputReq = InputView.getInputData();
+        String carNames = inputReq.getCarNames();
+        int moveCount = inputReq.getMoveCount();
 
-        RacingGame racingGame = new RacingGame(inputReq);
-        racingGame.startRace();
+        RacingGame racingGame = new RacingGame(carNames, moveCount);
 
-        List<Car> cars = racingGame.getCars();
-        List<Car> winners = WinnerUtils.topRankSearch(cars);
+        RacingResult racingResult = null;
+        while (racingGame.isEnd()) {
+            racingResult = racingGame.startRace();
+            OutputView.printResult(racingResult);
+            OutputView.printBlankLine();
+
+        }
+
+        List<Car> winners = WinnerUtils.topRankSearch(racingResult);
         OutputView.PrintWinner(winners);
     }
 
