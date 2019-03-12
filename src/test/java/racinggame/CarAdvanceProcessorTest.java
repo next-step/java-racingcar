@@ -3,22 +3,18 @@ package racinggame;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Random;
-
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class CarAdvanceProcessorTest {
 
     private CarAdvanceProcessor processor;
-    private Random random;
+
+    private RandomMock randomMock;
 
     @Before
     public void setUp() throws Exception {
-        processor = new CarAdvanceProcessor();
-        random = mock(Random.class);
-        processor.setRandom(random);
+        randomMock = new RandomMock();
+        processor = new CarAdvanceProcessor(randomMock);
     }
 
     @Test
@@ -28,7 +24,7 @@ public class CarAdvanceProcessorTest {
         int curPosition = 1;
 
         for( int randomValue : randomValues ) {
-            when(processor.getRandom().nextInt(10)).thenReturn(randomValue);
+            randomMock.setDesignatedIntValue(randomValue);
             assertEquals(true, processor.isMovingForward());
             assertEquals( curPosition+1, processor.getNextPosition(curPosition) );
         }
@@ -41,7 +37,7 @@ public class CarAdvanceProcessorTest {
         int curPosition = 3;
 
         for( int randomValue : randomValues ) {
-            when(processor.getRandom().nextInt(10)).thenReturn(randomValue);
+            randomMock.setDesignatedIntValue(randomValue);
             assertEquals(false, processor.isMovingForward());
             assertEquals( curPosition, processor.getNextPosition(curPosition) );
         }
@@ -53,14 +49,13 @@ public class CarAdvanceProcessorTest {
         int [] actualPositions = new int [] { 1, 2, 3 };
         int [] expectedPositions = new int [] { 2, 3, 4 };
 
-        when(processor.getRandom().nextInt(10)).thenReturn(9);
+        randomMock.setDesignatedIntValue(7);
         processor.moveForward(actualPositions);
 
         for( int i = 0, length = actualPositions.length; i < length; ++i ) {
             assertEquals( expectedPositions[i], actualPositions[i] );
         }
     }
-
 
     @Test
     public void moveForward_failed() {
@@ -68,12 +63,11 @@ public class CarAdvanceProcessorTest {
         int [] actualPositions = new int [] { 1, 2, 3 };
         int [] expectedPositions = new int [] { 1, 2, 3 };
 
-        when(processor.getRandom().nextInt(10)).thenReturn(0);
+        randomMock.setDesignatedIntValue(2);
         processor.moveForward(actualPositions);
 
         for( int i = 0, length = actualPositions.length; i < length; ++i ) {
             assertEquals( expectedPositions[i], actualPositions[i] );
         }
     }
-
 }

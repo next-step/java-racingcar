@@ -1,32 +1,33 @@
 package racinggame;
 
-import java.util.List;
+import java.util.Random;
 
 public class RacingGame {
 
-    private static int numberOfCars;
-    private static int numberOfTries;
-    private static int[] carPositions;
+    private int[] carPositions;
+
+    private RacingGameConfiguration configuration;
+
+    public RacingGame(RacingGameConfiguration configuration) {
+        this.configuration = configuration;
+    }
 
     public static void main(String[] args) {
-        List<Integer> inputs = InputView.getInput();
-        initRacingGame(inputs);
+        RacingGame racingGame = new RacingGame(InputView.getConfiguration());
+        racingGame.initializeCarPositions();
 
-        CarAdvanceProcessor processor = new CarAdvanceProcessor();
+        CarAdvanceProcessor processor = new CarAdvanceProcessor(new Random());
         ResultView resultView = new ResultView();
 
-        for( int i = 0; i < numberOfTries; ++i ) {
-            processor.moveForward(carPositions);
-            resultView.showCarPositions(carPositions);
+        for( int i = 0, numberOfTries = racingGame.configuration.getNumberOfTries(); i < numberOfTries; ++i ) {
+            processor.moveForward(racingGame.carPositions);
+            resultView.showCarPositions(racingGame.carPositions);
         }
     }
 
-    private static void initRacingGame(List<Integer> inputs) {
+    private void initializeCarPositions() {
 
-        numberOfCars = inputs.get(0);
-        numberOfTries = inputs.get(1);
-
-        carPositions = new int[numberOfCars];
+        carPositions = new int[configuration.getNumberOfCars()];
 
         for( int i = 0, length = carPositions.length; i < length; ++i ) {
             carPositions[i] = 1;

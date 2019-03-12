@@ -1,7 +1,5 @@
 package calculator;
 
-import calculator.operation.*;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,10 +11,10 @@ public class Invoker {
 
     private static void createMap() {
         map = new HashMap<>();
-        map.put( "+", new Add() );
-        map.put( "-", new Subtract() );
-        map.put( "*", new Multiply() );
-        map.put( "/", new Divide() );
+        map.put( "+", (a, b) -> a + b );
+        map.put( "-", (a, b) -> a - b );
+        map.put( "*", (a, b) -> a * b );
+        map.put( "/", (a, b) -> a / b );
     }
 
     public static Operation getOperation(String operator) {
