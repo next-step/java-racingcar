@@ -1,6 +1,7 @@
-package racing.generator;
+package racing.supplier;
 
 import java.util.Random;
+import java.util.function.IntSupplier;
 
 public class BoundedIntSupplier implements IntSupplier {
 
@@ -14,7 +15,7 @@ public class BoundedIntSupplier implements IntSupplier {
     }
 
     @Override
-    public int nextInt() {
+    public int getAsInt() {
         return random.nextInt(bound);
     }
 }
