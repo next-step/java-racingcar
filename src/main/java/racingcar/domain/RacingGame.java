@@ -52,21 +52,26 @@ public class RacingGame {
             throw new IllegalStateException("종료된 경주 입니다. 초기화를 해주세요.");
         }
 
+        moveCars();
+
+        RacingResultOfRound racingResultOfRound = new RacingResultOfRound(copyCarList(), getCurrentRound());
+        this.racingGameInfo.incrementCurrentRound();
+
+        return racingResultOfRound;
+    }
+
+    private void moveCars() {
         List<Car> cars = getCars();
 
         cars.forEach(car -> {
             int randomInt = this.randomIntGenerator.getRandomInt();
             car.goWhenGreaterThanThreshold(randomInt);
         });
-
-        int currentRound = getCurrentRound();
-        List<Car> carsOfRound = copyCarList(cars);
-
-        this.racingGameInfo.incrementCurrentRound();
-        return new RacingResultOfRound(carsOfRound, currentRound);
     }
 
-    private List<Car> copyCarList(List<Car> originalCars) {
+    private List<Car> copyCarList() {
+        List<Car> originalCars = getCars();
+
         return originalCars.stream()
                 .map(Car::copy)
                 .collect(Collectors.toList());
