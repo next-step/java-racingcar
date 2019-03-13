@@ -1,34 +1,55 @@
 package racingcar.domain;
 
-import racingcar.view.ResultView;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
 
     private int time;
     private List<Car> cars = new ArrayList<>();
-    private ResultView resultView = new ResultView();
-
-    public RacingGame(int carCount, int time) {
-        for (int car = 0; car < carCount; car++) {
-            this.cars.add(new Car(1));
+    
+    public RacingGame(String[] carNames, int time) {
+        for (int carNumber = 0; carNumber < carNames.length; carNumber++) {
+            cars.add(new Car(1, carNames[carNumber]));
         }
         this.time = time;
     }
 
-    public void play() {
-        for(int round = 0; round < time; round++) {
-            playRound();
-        }
+    public int getTime() {
+        return time;
     }
 
-    private void playRound() {
+    public List<Car> playRound() {
         for (Car car : cars) {
-            car.move();
-            resultView.printPosition(car.getPosition());
+            car.move(RandomCreator.createNewPosition());
         }
-        resultView.print("");
+        return cars;
     }
+
+    public String sortWinners() {
+        sortCars();
+        return collectWinners(cars);
+    }
+
+    public String collectWinners(List<Car> cars) {
+        int firstWinner = cars.get(0).getPosition();
+        String winners = cars.get(0).getName();
+        for(int carNumber = 1; carNumber < cars.size(); carNumber++) {
+            winners += nameCompare(firstWinner, cars.get(carNumber));
+        }
+        return winners;
+    }
+
+    private void sortCars() {
+        Collections.sort(cars);
+    }
+
+    public String nameCompare(int firstWinnerPosition, Car otherPlayer) {
+        if(firstWinnerPosition == (otherPlayer.getPosition())) {
+            return ", " + otherPlayer.getName();
+        }
+        return "";
+    }
+
 }
