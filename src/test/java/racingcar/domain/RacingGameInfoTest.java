@@ -16,13 +16,17 @@ public class RacingGameInfoTest {
 
     @Test
     public void 다음_라운드_여부_확인() {
+        // give
         List<Car> cars = carNames.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
 
         RacingGameRound racingGameRound = new RacingGameRound(totalRound);
+
+        // when
         RacingGameInfo racingGameInfo = new RacingGameInfo(cars, racingGameRound);
 
+        // then
         assertThat(racingGameInfo.hasNextRound()).isTrue();
 
         for (int i = 0; i < totalRound; i++) {
@@ -34,6 +38,7 @@ public class RacingGameInfoTest {
 
     @Test
     public void RacingGameInfo_초기화() {
+        // given
         List<Car> cars = carNames.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
@@ -45,11 +50,13 @@ public class RacingGameInfoTest {
         RacingGameRound racingGameRound = new RacingGameRound(totalRound, currentRound);
         RacingGameInfo racingGameInfo = new RacingGameInfo(cars, racingGameRound);
 
+        // when
         racingGameInfo.initialize();
 
+        // then
         RacingGameRound initializedRacingGameRound = racingGameInfo.getRacingGameRound();
 
-        assertThat(initializedRacingGameRound.getCurrentRound()).isEqualTo(0);
+        assertThat(initializedRacingGameRound.getCurrentRound()).isEqualTo(1);
         assertThat(initializedRacingGameRound.getTotalRound()).isEqualTo(totalRound);
 
         List<Car> initializedCars = racingGameInfo.getCars();
