@@ -35,6 +35,10 @@ public class WebController {
 
             RacingCarGame.startRacing(cars, Integer.parseInt(req.queryParams("turn")));
 
+            for (Car car : cars) {
+                WebView.setView(car);
+            }
+
             List<Car> winners = RacingCarRank.rankCars(new ArrayList<>(cars));
 
             Map<String, Object> model = new HashMap<>();
