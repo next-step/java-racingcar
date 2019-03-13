@@ -8,22 +8,21 @@ import java.util.stream.Collectors;
 
 public class GameResult {
 
-    private List<String> winners;
+    private List<RacingCar> cars;
 
-    public GameResult(List<RacingCar> cars, int winnerPosition) {
-        this.winners = cars
-                .stream()
-                .filter(car -> car.isAt(winnerPosition))
+    public GameResult(List<RacingCar> cars) {
+        this.cars = cars;
+    }
+
+    public List<String> getWinnerNames() {
+        if (cars.size() == 0) {
+            return Collections.emptyList();
+        }
+
+        RacingCar mostFarPositionedCar = Collections.max(cars);
+        return cars.stream()
+                .filter(car -> car.compareTo(mostFarPositionedCar) == 0)
                 .map(RacingCar::toString)
                 .collect(Collectors.toList());
-    }
-
-    public static int maxPosition(List<Integer> positions) {
-        return Collections.max(positions);
-    }
-
-    public String getWinnerNames() {
-        return winners.stream()
-                .collect(Collectors.joining(", "));
     }
 }

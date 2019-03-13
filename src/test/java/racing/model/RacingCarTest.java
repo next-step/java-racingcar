@@ -28,11 +28,18 @@ public class RacingCarTest {
     }
 
     @Test
-    public void test_위치_확인() {
-        RacingCar car = new RacingCar();
-        assertThat(car.isAt(1)).isFalse();
+    public void test_위치_대소비교() {
+        RacingCar carPositionedAt2 = new RacingCar();
+        carPositionedAt2.move(RacingCar.THRESHOLD_POWER);
+        carPositionedAt2.move(RacingCar.THRESHOLD_POWER);
 
-        car.move(RacingCar.THRESHOLD_POWER);
-        assertThat(car.isAt(1)).isTrue();
+        RacingCar carPositionedAt1 = new RacingCar();
+        carPositionedAt1.move(RacingCar.THRESHOLD_POWER);
+
+        RacingCar carPositionedAt0 = new RacingCar();
+        assertThat(carPositionedAt2.compareTo(carPositionedAt1))
+                .isGreaterThan(0);
+        assertThat(carPositionedAt2.compareTo(carPositionedAt0))
+                .isGreaterThan(0);
     }
 }

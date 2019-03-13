@@ -1,8 +1,8 @@
 package racing.board;
 
-import racing.supplier.BoundedRandomIntSupplier;
 import racing.model.NamedRacingCar;
 import racing.model.RacingCar;
+import racing.supplier.BoundedRandomIntSupplier;
 import racing.view.ResultView;
 
 import java.util.ArrayList;
@@ -45,8 +45,7 @@ public class RacingGameBoard {
     }
 
     private GameResult runLastStep() {
-        List<Integer> positions = runStep();
-        return new GameResult(cars, GameResult.maxPosition(positions));
+        return new GameResult(cars);
     }
 
     private void runUntilBeforeLastStep(int lastStep) {
@@ -55,22 +54,14 @@ public class RacingGameBoard {
         }
     }
 
-    private List<Integer> runStep() {
-        List<Integer> positions = moveCars();
+    private void runStep() {
+        moveCars();
         ResultView.viewEndingOfStep();
-        return positions;
     }
 
-    private List<Integer> moveCars() {
-        List<Integer> positions = new ArrayList<>();
-
+    private void moveCars() {
         for (RacingCar car : cars) {
-            int position = car.move(intSupplier.getAsInt());
-            ResultView.viewRunningStep(car.toString(), position);
-
-            positions.add(position);
+            ResultView.viewRunningStep(car.toString(), car.move(intSupplier.getAsInt()));
         }
-
-        return positions;
     }
 }
