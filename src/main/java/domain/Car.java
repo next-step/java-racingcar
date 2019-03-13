@@ -8,7 +8,8 @@ public class Car {
         this.mileage = 0;
     }
 
-    public void setName(String name){
+    public Car(String name) {
+        this();
         this.name = name;
     }
 

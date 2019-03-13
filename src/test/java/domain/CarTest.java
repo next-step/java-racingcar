@@ -22,8 +22,7 @@ public class CarTest {
 
     @Test
     public void check_if_car_has_name() {
-        Car car = new Car();
-        car.setName("joont92");
+        Car car = new Car("joont92");
         assertThat(car.getName()).isEqualTo("joont92");
     }
 }
