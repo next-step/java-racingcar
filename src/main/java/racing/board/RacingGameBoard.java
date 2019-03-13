@@ -1,6 +1,6 @@
 package racing.board;
 
-import racing.supplier.BoundedIntSupplier;
+import racing.supplier.BoundedRandomIntSupplier;
 import racing.model.NamedRacingCar;
 import racing.model.RacingCar;
 import racing.view.ResultView;
@@ -19,7 +19,7 @@ public class RacingGameBoard {
     private IntSupplier intSupplier;
 
     public RacingGameBoard() {
-        this(new BoundedIntSupplier(RANDOM_UPPER_BOUND));
+        this(new BoundedRandomIntSupplier(RANDOM_UPPER_BOUND));
     }
 
     public RacingGameBoard(IntSupplier intSupplier) {
