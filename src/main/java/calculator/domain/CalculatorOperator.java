@@ -21,10 +21,20 @@ public enum CalculatorOperator {
     }
 
     public static CalculatorOperator getEnumNameByString(String text){
+        CalculatorOperator result = null;
+
         for(CalculatorOperator operator : CalculatorOperator.values()){
-            if(operator.operator.equals(text))
-                return operator;
+            result = checkCalculatorOperator(text, result, operator);
         }
-        return null;
+
+        return result;
+    }
+
+    public static CalculatorOperator checkCalculatorOperator(String text, CalculatorOperator result, CalculatorOperator operator) {
+        if(operator.operator.equals(text)) {
+            result = operator;
+        }
+
+        return result;
     }
 }
