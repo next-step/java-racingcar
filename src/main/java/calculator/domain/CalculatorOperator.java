@@ -2,6 +2,7 @@ package calculator.domain;
 
 public enum CalculatorOperator {
     ADD("+", (v1, v2) -> v1 + v2),
+    ADD2("p", (v1, v2) -> v1 + v2),
     SUBTRACT("-", (v1, v2) -> v1 - v2),
     MULTIPLICATION("*", (v1, v2) -> v1 * v2),
     DIVISION("/", (v1, v2) -> v1 / v2);
@@ -19,7 +20,11 @@ public enum CalculatorOperator {
         return expression.calculate(v1, v2);
     }
 
-    public String getOperator() {
-        return operator;
+    public static CalculatorOperator getEnumNameByString(String text){
+        for(CalculatorOperator operator : CalculatorOperator.values()){
+            if(operator.operator.equals(text))
+                return operator;
+        }
+        return null;
     }
 }

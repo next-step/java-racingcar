@@ -1,7 +1,5 @@
 package calculator.domain;
 
-import static calculator.domain.CalculatorOperator.*;
-
 public class CalculatorCore {
 
     private static int result = 0;
@@ -11,32 +9,25 @@ public class CalculatorCore {
         result = Integer.parseInt(values[0]);
 
         for (int i = 1; i < values.length - 1; i += 2) {
-            result = calculate(values[i], values[i + 1]);
+            result = calculate(result, values[i], values[i + 1]);
         }
 
         return result;
     }
 
-    public static int calculate(String operator, String nextValue) throws RuntimeException {
+    public static int calculate(int beforeValue, String operator, String nextValue) throws RuntimeException {
 
-        if (operator.equals(ADD.getOperator())) {
-            return ADD.calculate(result, Integer.valueOf(nextValue));
+        CalculatorOperator calculatorOperator = CalculatorOperator.getEnumNameByString(operator);
+
+        if (calculatorOperator == null) {
+            throw new RuntimeException("해당 연산자 없음");
         }
 
-        if (operator.equals(SUBTRACT.getOperator())) {
-            return SUBTRACT.calculate(result, Integer.valueOf(nextValue));
-        }
-
-        if (operator.equals(MULTIPLICATION.getOperator())) {
-            return MULTIPLICATION.calculate(result, Integer.valueOf(nextValue));
-        }
-
-        if (operator.equals(DIVISION.getOperator())) {
+        if (calculatorOperator == CalculatorOperator.DIVISION) {
             checkByZero(nextValue);
-            return DIVISION.calculate(result, Integer.valueOf(nextValue));
         }
 
-        return result;
+        return calculatorOperator.calculate(beforeValue, Integer.valueOf(nextValue));
     }
 
     public static void checkByZero(String nextValue) {

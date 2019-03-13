@@ -16,7 +16,7 @@ public class CalculatorView {
     }
 
     public static boolean patternMatcher(String text) throws RuntimeException {
-        Pattern pattern = Pattern.compile("^(([0-9]+)\\s[[+],[-],[*],[/]]\\s)+([0-9]+)$");
+        Pattern pattern = Pattern.compile("^(([0-9]+)\\s[[+],[-],[*],[/],p,a]\\s)+([0-9]+)$");
         Matcher matcher = pattern.matcher(text);
 
         if (!matcher.find()) {
