@@ -1,14 +1,14 @@
-package racing.random;
+package racing.generator;
 
 import java.util.Random;
 
-public class BoundedRandomGenerator implements RandomGenerator {
+public class BoundedIntSupplier implements IntSupplier {
 
     private Random random;
 
     private int bound;
 
-    public BoundedRandomGenerator(int bound) {
+    public BoundedIntSupplier(int bound) {
         random = new Random();
         this.bound = bound;
     }

@@ -20,8 +20,11 @@ public class InputView {
     }
 
     public static int inputTime() {
-        return input("시도할 회수는 몇 회 인가요?",
-                () -> sc.nextInt());
+        int time = input("시도할 회수는 몇 회 인가요?", () -> sc.nextInt());
+
+        if (time < 1) throw new IllegalArgumentException("time should greater than 0");
+
+        return time;
     }
 
     private static <T> T input(String msg, Supplier<T> supplier) {

@@ -1,15 +1,15 @@
-package racing.random;
+package racing.generator;
 
 import org.junit.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class BoundedRandomGeneratorTest {
+public class BoundedIntGeneratorTest {
 
     @Test
-    public void test_nextInt() {
+    public void test_랜덤값_생성() {
         int bound = 10;
-        RandomGenerator generator = new BoundedRandomGenerator(bound);
+        IntSupplier generator = new BoundedIntSupplier(bound);
         for (int i = 0; i < 100; i++) {
             assertThat(generator.nextInt()).isLessThan(bound);
         }
