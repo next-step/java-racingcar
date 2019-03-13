@@ -19,4 +19,8 @@ public class Car {
     public int addPosition() {
         return ++this.position;
     }
+
+    public Boolean equalsPosition(int position) {
+        return this.position == position;
+    }
 }

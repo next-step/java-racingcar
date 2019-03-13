@@ -32,7 +32,7 @@ public class OutputView {
     private static List<Car> getWinners(List<Car> cars) {
         int maxPosition = getMaxPosition(cars);
         return cars.stream()
-            .filter(car -> car.getPosition() == maxPosition)
+            .filter(car -> car.equalsPosition(maxPosition))
             .collect(Collectors.toList());
     }
 
