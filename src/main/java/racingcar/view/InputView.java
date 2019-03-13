@@ -12,7 +12,7 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public static List<String> getStringArray(String question, String regex, Scanner scanner) {
+    public static List<String> getStringList(String question, String regex, Scanner scanner) {
         System.out.println(question);
         readString(scanner);
         String str = scanner.nextLine();

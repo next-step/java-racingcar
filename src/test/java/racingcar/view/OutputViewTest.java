@@ -26,7 +26,7 @@ public class OutputViewTest {
 
         racingGame.run(car);
 
-        assertThat(OutputView.generateRaceResultString(car)).isEqualTo(car.getName() + " : ");
+        assertThat(OutputView.generateRaceResultString(car)).isEqualTo("");
     }
 
     @Test
@@ -38,7 +38,7 @@ public class OutputViewTest {
         racingGame.run(car);
         racingGame.run(car);
 
-        assertThat(OutputView.generateRaceResultString(car)).isEqualTo(car.getName() + " : ---");
+        assertThat(OutputView.generateRaceResultString(car)).isEqualTo("---");
     }
 
     @Test

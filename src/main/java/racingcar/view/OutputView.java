@@ -11,7 +11,7 @@ public class OutputView {
     public static final String WINNER_MENT = "가 최종 우승했습니다.";
 
     public static String generateRaceResultString(Car car) {
-        StringBuilder result = new StringBuilder(car.getName() + " : ");
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < car.getPosition(); i++) {
             result.append("-");
         }
