@@ -1,7 +1,7 @@
 package calculator;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import calculator.view.InputView;
+import calculator.view.OutputView;
 
 public class StringCalculatorRunner {
 
@@ -9,20 +9,22 @@ public class StringCalculatorRunner {
      * - StringCalculator.inputText() method 분리
      */
     public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String text = br.readLine();
 
-        //validation
-        boolean isOk = StringExpressionValidator.validateExpression(text);
+        //---------------------------- inputView
+        //input expression
+        InputView inputView = new InputView();
+        String[] expression = inputView.input();
 
-        if (!isOk) {
-            System.out.println("please check expression : " + text);
+        if(expression == null) {
             return;
         }
 
-        int result = StringCalculator.calculate(text);
+        //---------------------------- model
+        //calculrate
+        int result = StringCalculator.calculate(expression);
+        //---------------------------- outPutView
+        //resultView
+        OutputView.printResult(result);
 
-        //view result
-        StringCalculatorResultViewer.viewResult(result);
     }
 }

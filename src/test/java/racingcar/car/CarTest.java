@@ -8,21 +8,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    Car car=null;
+    Car car = null;
+    public static final String NAME = "pobi";
 
     @Before
     public void setUp() throws Exception {
-        this.car = new Car(4);
+        this.car = new Car(NAME, 4);
     }
 
     @Test
-    public void car객체_생성() {
-        assertThat(car.getPosition()).isEqualTo(4);
+    public void car객체_확인() {
+        assertThat(car.getName()).isEqualTo(NAME);
     }
 
     @Test
     public void 파워를_얻어보자() {
-        car.move();
-        assertThat(car.getPosition()).isBetween(4,5);
+        int position = car.move();
+        assertThat(position).isBetween(4, 5);
     }
 }

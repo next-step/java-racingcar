@@ -1,22 +1,22 @@
 package calculator;
 
-import calculator.type.CalculationByOperator;
+import calculator.type.Operator;
 
 public class StringCalculator {
 
-    static int calculate(String text) {
+    static int calculate(String[] expression) {
 
-        String[] values = text.split(" ");
-        int count = values.length;
+        int count = expression.length;
 
-        int result = Integer.parseInt(values[0]);
+        int result = Integer.parseInt(expression[0]);
         int idx = 1;
 
         while (idx < count) {
-            String expression = values[idx++];
-            int rightHandSideNumber = Integer.parseInt(values[idx++]);
-            CalculationByOperator type =  CalculationByOperator.convertTypeByOperator(expression);
-            result = type.calculrate(result, rightHandSideNumber);
+            String operatorType = expression[idx++];
+            int rightHandSideNumber = Integer.parseInt(expression[idx++]);
+            Operator operator = Operator.typeOf(operatorType);
+
+            result = operator.calculrate(result, rightHandSideNumber);
         }
 
         return result;

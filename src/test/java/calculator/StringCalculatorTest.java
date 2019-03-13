@@ -12,31 +12,41 @@ public class StringCalculatorTest {
 
     @Test
     public void 덧셈() {
-        int result = StringCalculator.calculate("1 + 2");
+        String expression = "1 + 2";
+
+        int result = StringCalculator.calculate(expression.split(" "));
         assertThat(result).isEqualTo(3);
     }
 
     @Test
     public void 곱셈() {
-        int result = StringCalculator.calculate("1 * 2");
+        String expression = "1 * 2";
+
+        int result = StringCalculator.calculate(expression.split(" "));
         assertThat(result).isEqualTo(2);
     }
 
     @Test
     public void 뺄셈() {
-        int result = StringCalculator.calculate("1 - 2");
+        String expression = "1 - 2";
+
+        int result = StringCalculator.calculate(expression.split(" "));
         assertThat(result).isEqualTo(-1);
     }
 
     @Test
     public void 나눗셈() {
-        int result = StringCalculator.calculate("1 / 2");
+        String expression = "1 / 2";
+
+        int result = StringCalculator.calculate(expression.split(" "));
         assertThat(result).isEqualTo(0);
     }
 
     @Test
     public void 계산기() {
-        int result = StringCalculator.calculate("1 / 2 + 3 - 2 * 100 - 1");
+        String expression = "1 / 2 + 3 - 2 * 100 - 1";
+
+        int result = StringCalculator.calculate(expression.split(" "));
         assertThat(result).isEqualTo(99);
     }
 }
