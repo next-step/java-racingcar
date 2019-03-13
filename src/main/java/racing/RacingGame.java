@@ -1,5 +1,7 @@
 package racing;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -26,13 +28,39 @@ public class RacingGame {
 
   public List<Car> game() {
 
-    int carCount = inputView.inputCarCount();
-    List<Car> cars = generateCars(carCount);
+    String inputCarNames = inputView.inputCarNames();
+    List<Car> cars = generateCars(inputCarNames);
 
     int moveCount = inputView.inputMoveCount();
     startRacing(cars, moveCount);
 
-    return cars;
+    return winner(cars);
+  }
+
+  List<Car> winner(List<Car> cars) {
+
+    ResultView resultView = new ResultView();
+    List<Car> winnerCars = new ArrayList<>();
+    for (Car car : cars) {
+
+      if (winnerCars.isEmpty()) {
+        winnerCars.add(car);
+        continue;
+      }
+
+      if (winnerCars.get(0).getPosition() > car.getPosition()) {
+        continue;
+      }
+
+      if (winnerCars.get(0).getPosition() < car.getPosition()) {
+        winnerCars = new ArrayList<>();
+      }
+
+      winnerCars.add(car);
+    }
+
+    resultView.printWinner(winnerCars);
+    return winnerCars;
   }
 
   void startRacing(List<Car> cars, int moveCount) {
@@ -44,10 +72,11 @@ public class RacingGame {
     }
   }
 
-  List<Car> generateCars(int carCount) {
+  List<Car> generateCars(String carNames) {
 
-    return IntStream.range(0, carCount)
-        .mapToObj(index -> new Car(randomGenerator))
+    String[] carNameArray = carNames.split(",");
+    return Arrays.stream(carNameArray)
+        .map(carName -> new Car(randomGenerator, carName))
         .collect(Collectors.toList());
   }
 
