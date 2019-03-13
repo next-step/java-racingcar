@@ -1,9 +1,8 @@
-package racingcar.race;
+package racingcar.domain.race;
 
-import racingcar.car.Car;
-import racingcar.view.OutputView;
+import racingcar.domain.car.Car;
+import racingcar.view.console.OutputView;
 
-import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
@@ -18,9 +17,8 @@ public class RacingGame {
         for (int i = 0; i < time; i++) {
             move(cars);
         }
-        //sort
-        Collections.sort(cars);
-        return cars;
+
+        return Ranking.sortRanking(cars);
     }
 
     //TODO : 더 좋은 출력방법 있는지 고민해보기..

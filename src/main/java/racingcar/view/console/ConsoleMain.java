@@ -1,14 +1,12 @@
-package racingcar;
+package racingcar.view.console;
 
-import racingcar.car.Car;
-import racingcar.car.CarRegistration;
-import racingcar.race.RacingGame;
-import racingcar.view.InputView;
-import racingcar.view.OutputView;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.CarRegistration;
+import racingcar.domain.race.RacingGame;
 
 import java.util.List;
 
-public class RacingGameRunner {
+public class ConsoleMain {
 
     public static void main(String[] args) {
 
@@ -19,6 +17,7 @@ public class RacingGameRunner {
 
         RacingGame racingGame = new RacingGame(time);
         cars = racingGame.game(cars);
+
 
         OutputView.showWinner(cars);
     }

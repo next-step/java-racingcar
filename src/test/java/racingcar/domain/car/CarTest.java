@@ -1,4 +1,4 @@
-package racingcar.car;
+package racingcar.domain.car;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +13,7 @@ public class CarTest {
 
     @Before
     public void setUp() throws Exception {
-        this.car = new Car(NAME, 4);
+        this.car = new Car(NAME);
     }
 
     @Test
@@ -24,6 +24,6 @@ public class CarTest {
     @Test
     public void 파워를_얻어보자() {
         int position = car.move();
-        assertThat(position).isBetween(4, 5);
+        assertThat(position).isBetween(0, 1);
     }
 }

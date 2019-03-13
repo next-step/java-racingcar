@@ -1,9 +1,9 @@
-package racingcar.car;
+package racingcar.domain.car;
 
 public class Car implements Comparable<Car> {
 
     private String name;
-    private int position;
+    private int position = 0;
     private PowerGenerator powerGenerator;
 
     @Override
@@ -11,14 +11,17 @@ public class Car implements Comparable<Car> {
         return Integer.compare(o.position, this.position);
     }
 
-    public Car(String name, int position) {
+    public Car(String name) {
         this.name = name;
-        this.position = position;
         this.powerGenerator = new PowerGenerator();
     }
 
     public String getName() {
         return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     public int move() {

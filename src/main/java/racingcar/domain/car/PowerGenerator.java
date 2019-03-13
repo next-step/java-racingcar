@@ -1,6 +1,6 @@
-package racingcar.car;
+package racingcar.domain.car;
 
-import racingcar.util.RandomNumberGenerator;
+import racingcar.domain.util.RandomNumberGenerator;
 
 public class PowerGenerator {
 
@@ -8,12 +8,10 @@ public class PowerGenerator {
     private static final int GO = 1;
     private static final int STOP = 0;
 
-    private RandomNumberGenerator randomNumberGenerator;
-
     //TODO: power Generator 는 getPower의 역할만 있어야 해
+    //매번 Random객체를 만들고 있었다... 비효율적. 공용인데.
     public int determineMoveOrNot() {
-        randomNumberGenerator = new RandomNumberGenerator();
-        return getPower(randomNumberGenerator.getRandomNumberZeroToNine());
+        return getPower(RandomNumberGenerator.getRandomNumberZeroToNine());
     }
 
     public int getPower(int power) {

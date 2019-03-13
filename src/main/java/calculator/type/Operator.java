@@ -42,12 +42,14 @@ public enum Operator {
 
         Operator[] operators = Operator.values();
 
+        //TODO : 2Depth / if 조건문 분리하기
         for (Operator operator : operators) {
             if(operator.value.equals(expression)) {
                 return operator;
             }
         }
 
+        //TODO : Optional 사용해서 개선해보기
         return null;
     }
 }
