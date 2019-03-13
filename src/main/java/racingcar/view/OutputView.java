@@ -23,9 +23,6 @@ public class OutputView {
             .map(Car::getName)
             .collect(Collectors.toList());
 
-        if (winnerNames.size() == 1) {
-            return winnerNames.get(0) + WINNER_MENT;
-        }
         return String.join(", ", winnerNames) + WINNER_MENT;
     }
 
