@@ -5,28 +5,28 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.*;
 
 public class InputGame {
-    public Map<String, Object> inputData() {
+    public List<Object> inputData() {
         Scanner scanner = new Scanner(System.in);
-        Map<String, Object> input = new HashMap<>();
+        List<Object> input = new ArrayList<>();
 
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        input.put("carsName", scanner.nextLine());
+        input.add(scanner.nextLine());
         System.out.println("자동차 대수는 몇 대 인가요?");
-        input.put("countCars", scanner.nextInt());
+        input.add(scanner.nextInt());
         System.out.println("시도할 횟수는 몇 회 인가요?");
-        input.put("countGames", scanner.nextInt());
+        input.add(scanner.nextInt());
 
-        for(String key : input.keySet()) {
-            nullCheck(input, key);
+        for(Object input_value : input) {
+            nullCheck(input_value);
         }
 
-        input.put("carsName", String.valueOf(input.get("carsName")).trim());
+        input.add(String.valueOf(input.get(0)).trim());
 
         return input;
     }
 
-    public void nullCheck(Map<String, Object> input, String inputKey) {
-        if (StringUtils.isEmpty(String.valueOf(input.get(inputKey)))) {
+    public void nullCheck(Object input_value) {
+        if (StringUtils.isEmpty(String.valueOf(input_value))) {
             throw new IllegalArgumentException();
         }
     }

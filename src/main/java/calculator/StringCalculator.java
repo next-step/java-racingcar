@@ -35,7 +35,7 @@ public class StringCalculator {
 
             if (("+").equals(splitTrimString[i]) || ("*").equals(splitTrimString[i]) ||
                     ("-").equals(splitTrimString[i]) || ("/").equals(splitTrimString[i])) {
-                isMeetOperator(tempForOperand, operands, operators);
+                whenMeetOperator(tempForOperand, operands, operators);
             }
 
             // 마지막 문자열의 경우 연산자 추가 없이 값만 추가해준다.
@@ -56,7 +56,7 @@ public class StringCalculator {
         return result;
     }
 
-    public static void isMeetOperator(StringBuilder tempForOperand, List<Integer> operands, List<String> operators) {
+    public static void whenMeetOperator(StringBuilder tempForOperand, List<Integer> operands, List<String> operators) {
         String temp = tempForOperand.toString();
         temp = temp.substring(0, tempForOperand.length() - 1);
 
