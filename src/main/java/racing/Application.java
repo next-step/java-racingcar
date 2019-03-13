@@ -1,11 +1,9 @@
 package racing;
 
+import racing.board.GameResult;
 import racing.board.RacingGameBoard;
 import racing.view.InputView;
 import racing.view.ResultView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Application {
 
@@ -21,16 +19,10 @@ public class Application {
     }
 
     private void run() {
-        int count = InputView.inputCount();
-        int time = InputView.inputTime();
+        gameBoard.createCars(InputView.inputNames());
+        int timesOfMoves = InputView.inputTime();
 
-        gameBoard.createCars(count);
-
-        List<String> results = new ArrayList<>();
-        for (int i = 0; i < time; i++) {
-            results.add(ResultView.convertToChars(gameBoard.moveCars()));
-        }
-
-        ResultView.render(results);
+        GameResult gameResult = gameBoard.start(timesOfMoves);
+        ResultView.viewWinners(gameResult);
     }
 }

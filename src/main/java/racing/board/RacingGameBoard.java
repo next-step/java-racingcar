@@ -1,11 +1,14 @@
 package racing.board;
 
+import racing.model.NamedRacingCar;
 import racing.model.RacingCar;
-import racing.random.BoundedRandomGenerator;
-import racing.random.RandomGenerator;
+import racing.supplier.BoundedRandomIntSupplier;
+import racing.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.IntSupplier;
+import java.util.stream.Collectors;
 
 public class RacingGameBoard {
 
@@ -13,29 +16,53 @@ public class RacingGameBoard {
 
     private final List<RacingCar> cars;
 
-    private RandomGenerator randomGenerator;
+    private IntSupplier intSupplier;
 
     public RacingGameBoard() {
-        this(new BoundedRandomGenerator(RANDOM_UPPER_BOUND));
+        this(new BoundedRandomIntSupplier(RANDOM_UPPER_BOUND));
     }
 
-    public RacingGameBoard(RandomGenerator randomGenerator) {
+    public RacingGameBoard(IntSupplier intSupplier) {
         cars = new ArrayList<>();
-        this.randomGenerator = randomGenerator;
+        this.intSupplier = intSupplier;
     }
 
-    public int createCars(int count) {
-        for (int i = 0 ; i < count; i++) {
-            cars.add(new RacingCar());
-        }
+    public int createCars(List<String> names) {
+        cars.addAll(names.stream()
+                .map(name -> new NamedRacingCar(name.trim()))
+                .collect(Collectors.toList()));
         return cars.size();
     }
 
-    public List<Integer> moveCars() {
-        List<Integer> positions = new ArrayList<>();
-        for (RacingCar car : cars) {
-            positions.add(car.move(randomGenerator.nextInt()));
+    public GameResult start(int timesOfMoves) {
+        ResultView.viewGameStart();
+        return runSteps(timesOfMoves);
+    }
+
+    private GameResult runSteps(int times) {
+        runUntilBeforeLastStep(times);
+        return runLastStep();
+    }
+
+    private GameResult runLastStep() {
+        runStep();
+        return new GameResult(cars);
+    }
+
+    private void runUntilBeforeLastStep(int lastStep) {
+        for (int i = 0; i < lastStep - 1; i++) {
+            runStep();
         }
-        return positions;
+    }
+
+    private void runStep() {
+        moveCars();
+        ResultView.viewEndingOfStep();
+    }
+
+    private void moveCars() {
+        for (RacingCar car : cars) {
+            ResultView.viewRunningStep(car.toString(), car.move(intSupplier.getAsInt()));
+        }
     }
 }

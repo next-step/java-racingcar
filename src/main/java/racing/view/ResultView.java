@@ -1,37 +1,34 @@
 package racing.view;
 
 
-import java.util.List;
+import racing.board.GameResult;
+
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class ResultView {
 
-    private static final char CHAR_TO_CONVERT = '-';
+    private static final String CHAR_TO_CONVERT = "-";
 
-    public static void render(List<String> results) {
-        System.out.println("실행 결과");
-        System.out.print(results
-                .stream()
-                .collect(Collectors.joining("\n")));
+    public static void viewGameStart() {
+        System.out.println("\n실행 결과");
     }
 
-    public static String convertToChars(List<Integer> positions) {
-        StringBuilder sb = new StringBuilder();
-        appendPositions(sb, positions);
-        return sb.toString();
+    public static void viewRunningStep(String name, Integer position) {
+        System.out.println(name + " : " + convertPosition(position));
     }
 
-
-    private static void appendPositions(StringBuilder sb, List<Integer> positions) {
-        for (int position : positions) {
-            appendPosition(sb, position);
-        }
+    private static String convertPosition(int position) {
+        return IntStream.range(0, position)
+                .mapToObj(p -> CHAR_TO_CONVERT)
+                .collect(Collectors.joining());
     }
 
-    private static void appendPosition(StringBuilder sb, int position) {
-        for (int i = 0; i < position; i++) {
-            sb.append(CHAR_TO_CONVERT);
-        }
-        sb.append("\n");
+    public static void viewEndingOfStep() {
+        System.out.println();
+    }
+
+    public static void viewWinners(GameResult gameResult) {
+        System.out.println(gameResult.getWinnerNames() + "가 최종 우승했습니다.");
     }
 }

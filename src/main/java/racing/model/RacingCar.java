@@ -1,6 +1,6 @@
 package racing.model;
 
-public class RacingCar {
+public class RacingCar implements Comparable<RacingCar> {
 
     public static final int THRESHOLD_POWER = 4;
 
@@ -10,7 +10,11 @@ public class RacingCar {
         if (power >= THRESHOLD_POWER) {
             position++;
         }
-
         return position;
+    }
+
+    @Override
+    public int compareTo(RacingCar car) {
+        return Integer.compare(position, car.position);
     }
 }
