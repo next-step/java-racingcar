@@ -31,9 +31,11 @@ public class RacingGameOutputView {
 
     public static void printRacingResult(RacingResultOfRound racingResult) {
         racingResult.getCarsOfRound().forEach(RacingGameOutputView::printMovedDistance);
+        printEmptyLine();
     }
 
-    public static void printWinners(List<Car> winners) {
+    public static void printWinners(RacingResultOfRound racingResult) {
+        List<Car> winners = racingResult.getWinners();
         String winnerCarNames = winners.stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(", "));
