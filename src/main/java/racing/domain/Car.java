@@ -43,6 +43,10 @@ public class Car implements Comparable<Car> {
         return name;
     }
 
+    public Integer getTotalDistance() {
+        return totalDistance;
+    }
+
     @Override
     public int compareTo(Car car) {
         return totalDistance.compareTo(car.totalDistance);
