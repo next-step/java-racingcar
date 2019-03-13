@@ -3,8 +3,6 @@ package racing.application;
 import org.junit.Test;
 import racing.view.RacingRequestView;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -42,24 +40,6 @@ public class RacingGameTest {
 
         //then
         assertThat(game.getViews().getPositions().get(0)).isEqualTo(4);
-    }
-
-    @Test
-    public void 승자확인() {
-        //given
-        RacingRequestView requestView = new RacingRequestView("pobi,crong,honux", 3);
-        RacingGame game = new RacingGame(requestView, new TrueCondition());
-
-        List<Car> cars = new ArrayList();
-        cars.add(new Car("pobi"));
-        cars.add(new Car("crong"));
-        cars.add(new Car("honux"));
-
-        //when
-        List<String> sorted = game.getResult();
-
-        //then
-        assertThat(sorted.get(0)).isEqualTo("pobi");
     }
 }
 

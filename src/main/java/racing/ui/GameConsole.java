@@ -1,11 +1,11 @@
 package racing.ui;
 
 import com.google.common.base.Strings;
+import racing.application.RacingGameResult;
 import racing.view.RacingCarView;
 import racing.view.RacingCarsView;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class GameConsole {
     private static final String RESULT_COMMENT = "실행결과";
@@ -14,22 +14,22 @@ public class GameConsole {
 
     public static void initShow(RacingCarsView view) {
         System.out.println(RESULT_COMMENT);
-        resultView(view);
+        processShow(view);
     }
 
-    public static void processShow(List<RacingCarsView> views) {
-        views.stream().forEach(view -> resultView(view));
-    }
-
-    private static void resultView(RacingCarsView views) {
+    public static void processShow(RacingCarsView views) {
         views.stream().forEach(v -> show(v));
         emptyLine();
+    }
+
+    public static void resultShow(RacingGameResult result) {
+        historyShow(result.getHistory());
+        System.out.println(result.getWinners() + RESULT_WINNER_COMMENT);
     }
 
     private static void show(RacingCarView view) {
         showName(view);
         showCarMovement(view);
-        emptyLine();
     }
 
     private static void showName(RacingCarView view) {
@@ -37,15 +37,14 @@ public class GameConsole {
     }
 
     private static void showCarMovement(RacingCarView view) {
-        Strings.repeat(RACING_CAR, view.getPosition());
+        System.out.println(Strings.repeat(RACING_CAR, view.getPosition()));
     }
 
     private static void emptyLine() {
         System.out.println();
     }
 
-    public static void resultShow(List<String> winners) {
-        String convertedWinners = winners.stream().collect(Collectors.joining(","));
-        System.out.println(convertedWinners + RESULT_WINNER_COMMENT);
+    private static void historyShow(List<RacingCarsView> history) {
+        history.stream().forEach(h -> processShow(h));
     }
 }

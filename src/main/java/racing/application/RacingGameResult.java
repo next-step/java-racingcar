@@ -1,15 +1,22 @@
 package racing.application;
 
+import racing.view.RacingCarsView;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RacingGameResult implements Result<Car> {
-    public List<String> judgeWinners(List<Car> cars) {
+public class RacingGameResult {
+    List<String> winners = new ArrayList();
+    List<RacingCarsView> history = new ArrayList();
+
+    public RacingGameResult judge(List<Car> cars) {
         List<Car> sorted = sortByPosition(cars);
-        return getCarNameOfWinners(sorted);
+        winners = getCarNameOfWinners(sorted);
+        return this;
     }
 
-    public List<Car> sortByPosition(List<Car> cars) {
+    private List<Car> sortByPosition(List<Car> cars) {
         return cars.stream()
                 .sorted()
                 .collect(Collectors.toList());
@@ -26,8 +33,15 @@ public class RacingGameResult implements Result<Car> {
         return sorted.get(0).getPosition();
     }
 
-    @Override
-    public List<String> judge(List cars) {
-        return judgeWinners(cars);
+    public void addHistory(RacingCarsView view) {
+        history.add(view);
+    }
+
+    public List<RacingCarsView> getHistory(){
+        return history;
+    }
+
+    public String getWinners() {
+        return winners.stream().collect(Collectors.joining(","));
     }
 }

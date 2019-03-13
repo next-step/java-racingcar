@@ -13,9 +13,7 @@ public class App {
 
         GameConsole.initShow(game.getViews());
 
-        game.start();
-
-        GameConsole.processShow(game.getHistory());
-        GameConsole.resultShow(game.getResult());
+        RacingGameResult result = game.start();
+        GameConsole.resultShow(result);
     }
 }

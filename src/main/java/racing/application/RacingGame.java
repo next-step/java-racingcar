@@ -11,8 +11,6 @@ public class RacingGame {
     private Condition condition;
     private int time;
     private List<Car> cars = new ArrayList();
-    private List<RacingCarsView> history = new ArrayList();
-    private Result result = new RacingGameResult();
 
     public RacingGame(RacingRequestView view, Condition condition) {
         for (int i = 0; i < view.getCarCount(); i++) {
@@ -23,15 +21,18 @@ public class RacingGame {
         this.condition = condition;
     }
 
-    public void start() {
+    public RacingGameResult start() {
+        RacingGameResult result = new RacingGameResult();
         for (int i = 0; i < time; i++) {
             turn();
-            history.add(getViews());
+            result.addHistory(getViews());
         }
+
+        return result.judge(cars);
     }
 
     private void turn() {
-        cars.stream().forEach(car -> play(car));
+        cars.stream().forEach(this::play);
     }
 
     private void play(Car car) {
@@ -40,16 +41,8 @@ public class RacingGame {
         }
     }
 
-    public List<String> getResult() {
-        return result.judge(cars);
-    }
-
     public RacingCarsView getViews() {
         return RacingCarsView.toRacingCarsView(Collections.unmodifiableList(cars));
-    }
-
-    public List<RacingCarsView> getHistory() {
-        return history;
     }
 }
 
