@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -10,11 +12,11 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public static String[] getStringArray(String question, String regex, Scanner scanner) {
+    public static List<String> getStringArray(String question, String regex, Scanner scanner) {
         System.out.println(question);
         readString(scanner);
         String str = scanner.nextLine();
-        return str.split(regex);
+        return Arrays.asList(str.split(regex));
     }
 
     private static void readInteger(Scanner scanner) {

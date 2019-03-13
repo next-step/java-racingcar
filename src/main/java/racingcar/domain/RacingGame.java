@@ -11,16 +11,14 @@ public class RacingGame {
     private RandomGenerator randomGenerator;
     private List<Car> cars;
 
-    public RacingGame(String[] names, RandomGenerator randomGenerator) {
+    public RacingGame(List<String> names, RandomGenerator randomGenerator) {
         this.cars = createCars(names);
         this.randomGenerator = randomGenerator;
     }
 
-    private List<Car> createCars(String[] names) {
-        List<Car> cars = new ArrayList<>(names.length);
-        for (String name : names) {
-            cars.add(new Car(name));
-        }
+    private List<Car> createCars(List<String> names) {
+        List<Car> cars = new ArrayList<>(names.size());
+        names.forEach(name -> cars.add(new Car(name)));
         return cars;
     }
 

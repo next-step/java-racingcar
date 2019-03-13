@@ -3,24 +3,26 @@ package racingcar.domain;
 import org.junit.Before;
 import org.junit.Test;
 import racingcar.utils.RandomGeneratorImpl;
-import racingcar.view.OutputView;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 public class RacingGameTest {
     private static final int MAX_RANGE = 10;
     private RacingGame racingGame;
-    private String[] names;
+    private List<String> names;
 
     @Before
     public void setUp() throws Exception {
-        names = "pobi,crong,honux".split(",");
+        names = Arrays.asList("pobi,crong,honux".split(","));
     }
 
     @Test
     public void 자동차생성_테스트() {
         racingGame = new RacingGame(names, new RandomGeneratorImpl(MAX_RANGE));
-        assertThat(racingGame.getCars().size()).isEqualTo(names.length);
+        assertThat(racingGame.getCars().size()).isEqualTo(names.size());
     }
 
     @Test

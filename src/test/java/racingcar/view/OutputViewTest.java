@@ -6,14 +6,17 @@ import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
 import racingcar.domain.TestRandomGenerator;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 public class OutputViewTest {
-    private String[] names;
+    private List<String> names;
 
     @Before
     public void setUp() throws Exception {
-        names = "pobi,crong,honux".split(",");
+        names = Arrays.asList("pobi,crong,honux".split(","));
     }
 
     @Test
