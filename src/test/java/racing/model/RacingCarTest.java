@@ -37,6 +37,7 @@ public class RacingCarTest {
         carPositionedAt1.move(RacingCar.THRESHOLD_POWER);
 
         RacingCar carPositionedAt0 = new RacingCar();
+
         assertThat(carPositionedAt2.compareTo(carPositionedAt1))
                 .isGreaterThan(0);
         assertThat(carPositionedAt2.compareTo(carPositionedAt0))

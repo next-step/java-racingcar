@@ -45,6 +45,7 @@ public class RacingGameBoard {
     }
 
     private GameResult runLastStep() {
+        runStep();
         return new GameResult(cars);
     }
 

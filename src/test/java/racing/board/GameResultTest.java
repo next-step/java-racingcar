@@ -2,6 +2,7 @@ package racing.board;
 
 import org.junit.*;
 import racing.model.NamedRacingCar;
+import racing.model.RacingCar;
 
 import java.util.Arrays;
 
@@ -20,7 +21,7 @@ public class GameResultTest {
 
     @Test
     public void test_결과_있음() {
-        GameResult gameResult = new GameResult(Arrays.asList(new NamedRacingCar("pobi")));
+        GameResult gameResult = new GameResult(Arrays.asList(new RacingCar()));
 
         assertThat(gameResult.getWinnerNames().size())
             .isGreaterThan(0);
