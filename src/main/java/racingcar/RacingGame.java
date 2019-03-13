@@ -1,41 +1,53 @@
 package racingcar;
 
+import racingcar.rulemanager.RandomNumberLessThanTen;
+import racingcar.rulemanager.RuleManager;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
-    private Race race;
+    private List<Car> cars;
+    private int currentTurn;
     private int moveCount;
+    private RuleManager ruleManager;
 
-    public RacingGame(int carCount, int moveCount) {
+    public RacingGame(String carNames, int moveCount) {
+        this.cars = setupCar(carNames);
         this.moveCount = moveCount;
-        this.race = new Race(carCount);
+        this.ruleManager = new RandomNumberLessThanTen();
     }
 
-    public void startRace() {
-//        System.out.println("자동차 대수: " +  race.carCount() + "\n");
-        for (int i = 0; i < moveCount; i++) {
-            System.out.println((i + 1) + "번째횟수");
-            race.run();
-            printCarsDistance();
+    public RacingGame(String carNames, RuleManager ruleManager) {
+        this.cars = setupCar(carNames);
+        this.ruleManager = ruleManager;
+    }
+
+    public static List<Car> setupCar(String carNames) {
+        List<Car> newCars = new ArrayList<>();
+        String[] names = carNames.split(",");
+        for (String name : names) {
+            newCars.add(new Car(name.trim()));
         }
+        return newCars;
     }
 
-    private void printCarsDistance() {
-        for (Car car : race.getCarList()) {
-            printCarDistance(car);
+    public RacingResult startRace() {
+        for (Car car : cars) {
+            car.move(ruleManager.getRandomNum());
         }
+        currentTurn++;
+        return new RacingResult(cars);
     }
 
-    private void printCarDistance(Car car) {
-        StringBuilder raceResult = new StringBuilder();
-        for (int i = 0; i < car.getMovingDistance(); i++) {
-            raceResult.append("-");
-        }
-        System.out.println(raceResult.toString());
+    public boolean isEnd() {
+        return currentTurn < moveCount;
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
 
 }
+
 

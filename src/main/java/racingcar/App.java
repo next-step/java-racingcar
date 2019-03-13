@@ -1,23 +1,34 @@
 package racingcar;
 
-import java.util.Scanner;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
+
+import java.util.List;
 
 public class App {
-
     public static void main(String[] args) {
         gameStart();
     }
 
     private static void gameStart() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int carCount = Integer.parseInt(scanner.nextLine());
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int moveCount = Integer.parseInt(scanner.nextLine());
+        InputReq inputReq = InputView.getInputData();
+        String carNames = inputReq.getCarNames();
+        int moveCount = inputReq.getMoveCount();
 
-        RacingGame racingGame = new RacingGame(carCount, moveCount);
-        racingGame.startRace();
+        RacingGame racingGame = new RacingGame(carNames, moveCount);
+
+        RacingResult racingResult = null;
+        while (racingGame.isEnd()) {
+            racingResult = racingGame.startRace();
+            OutputView.printResult(racingResult);
+            OutputView.printBlankLine();
+
+        }
+
+        List<Car> winners = WinnerUtils.topRankSearch(racingResult);
+        OutputView.PrintWinner(winners);
     }
+
 }
 
 
