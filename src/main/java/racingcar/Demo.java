@@ -5,22 +5,25 @@ import java.util.List;
 
 public class Demo {
     public static void main(String[] args) {
-        InputView.input();
-        RacingGame racingGame = new RacingGame(InputView.getTimes());
+        InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
+
+        RacingGame racingGame = new RacingGame(inputView.getTimes());
         Referee referee = new Referee();
 
-        List<Car> cars = new ArrayList<>();
-        String[] names = InputView.getNames();
-        for (int i = 0; i < names.length; i++) {
-            cars.add(new Car(names[i]));
-        }
+        inputView.input();
 
-        OutputView.printIntroduction();
+        List<Car> cars = new ArrayList<>();
+        List<String> names = inputView.getNames();
+        names.forEach(name -> cars.add(new Car(name)));
+
+        outputView.printIntroduction();
         for (int i = 1; i <= racingGame.getTimes(); i++) {
             racingGame.race(cars, new RandomNumberGenerator());
-            OutputView.printBody(cars);
+            outputView.printBody(cars);
         }
-        List<Car> winners = referee.getWinners(cars);
-        OutputView.printResult(winners);
+
+        List<String> namesOfWinners = referee.pickNamesOfWinners(cars);
+        outputView.printResult(namesOfWinners);
     }
 }

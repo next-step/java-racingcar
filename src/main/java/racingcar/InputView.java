@@ -1,16 +1,18 @@
 package racingcar;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
-    private static int times;
-    private static String[] names;
+    private int times;
+    private List<String> names;
 
-    public static void input() {
+    public void input() {
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-            names = scanner.nextLine().split(",");
+            names = Arrays.asList(scanner.nextLine().split(","));
             System.out.println("시도할 회수는 몇 회 인가요?");
             times = scanner.nextInt();
 
@@ -20,8 +22,8 @@ public class InputView {
         }
     }
 
-    private static void checkRaceCondition() {
-        if (names.length == 0) {
+    private void checkRaceCondition() {
+        if (names.size() == 0) {
             throw new RuntimeException("경주에는 최소 1대 이상의 자동차가 필요합니다.");
         }
         if (times <= 0) {
@@ -29,11 +31,11 @@ public class InputView {
         }
     }
 
-    public static String[] getNames() {
+    public List<String> getNames() {
         return names;
     }
 
-    public static int getTimes() {
+    public int getTimes() {
         return times;
     }
 }

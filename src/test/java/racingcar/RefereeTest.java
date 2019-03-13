@@ -26,26 +26,30 @@ public class RefereeTest {
     }
 
     @Test
-    public void 차3대_레이싱1회_모두전진의경우_우승자의_기록() {
+    public void 단독우승자_테스트() {
         racingGame = new RacingGame(3);
         racingGame.race(cars, new FixedNumberGenerator(5));
+        racingGame.race(cars, new FixedNumberGenerator(6));
+
+        Car c = cars.get(2);
+        c.move(new FixedNumberGenerator(7));    // c만 힌킨 더 전진
 
         referee = new Referee();
-        assertThat(referee.getMaxPosition(cars), is(1));
+        assertThat(referee.pickNamesOfWinners(cars).get(0), is("c"));
     }
 
     @Test
-    public void 차3대_레이싱1회_첫차빼고전진의경우_우승자_리스트() {
-        Car firstCar = cars.get(0);
-        Car secondCar = cars.get(1);
-        Car thirdCar = cars.get(2);
+    public void 공동우승자_테스트() {
+        Car a = cars.get(0);
+        Car b = cars.get(1);
+        Car c = cars.get(2);
 
-        secondCar.move(new FixedNumberGenerator(5));
-        thirdCar.move(new FixedNumberGenerator(6));
+        b.move(new FixedNumberGenerator(5));
+        c.move(new FixedNumberGenerator(6));
 
         referee = new Referee();
-        List<Car> winners = referee.getWinners(cars);
-        assertThat(winners, hasItems(secondCar, thirdCar));
-        assertThat(winners, not(hasItems(firstCar)));
+        List<String> namesOfWinners = referee.pickNamesOfWinners(cars);
+        assertThat(namesOfWinners, hasItems("b", "c"));
+        assertThat(namesOfWinners, not(hasItems("a")));
     }
 }
