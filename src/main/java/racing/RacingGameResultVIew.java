@@ -1,34 +1,35 @@
 package racing;
 
-/*
-    ########################################################
-    모든 운행이 종료된후에 출력을 해야되다보니
-    3중 포문을 사용했내요-0-;;
-
-    가독성에 문제가 되겠죠? 머리를 아무리 쥐어짜도 다른 방법이
-    생각이 안나내요.
-
-    ########################################################
- */
-
+import java.util.List;
 
 public class RacingGameResultVIew {
 
-    private final static String CAR_MOVE_CHARTER = "-";
+    private final static String PRINT_CAR_PISITION = "-";
 
-    public static void racingResultView(RacingGame rg) {
+    public static void racingResultView(RacingGameResult rgr) {
         System.out.println("실행 결과");
 
-        for (int i = 0; i < rg.getTime(); i++) {
-            for (int j = 0; j < rg.getList().size(); j++) {
-                String outputValue = "";
-                for (int k = 0; k < rg.getList().get(j).getMoveValues().get(i); k++) {
-                    outputValue += CAR_MOVE_CHARTER;
-                }
-
-                System.out.println(outputValue);
-            }
+        // 운행횟수반복
+        for (int time = 0; time < rgr.getTime(); time++) {
+            printCars(rgr.getCars(), time);
             System.out.println();
         }
+    }
+
+    // 자동차 전체출력
+    public static void printCars(List<Car> cars, int time) {
+        for (Car car : cars) {
+            printCars(car.getMoveValues().get(time));
+        }
+    }
+
+    // 자동차 위치기반 출력
+    public static void printCars(int moveCount) {
+        String outputValue = "";
+
+        for (int i = 0; i < moveCount; i++) {
+            outputValue += PRINT_CAR_PISITION;
+        }
+        System.out.println(outputValue);
     }
 }

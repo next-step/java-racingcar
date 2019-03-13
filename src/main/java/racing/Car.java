@@ -1,41 +1,26 @@
 package racing;
 
 import java.util.HashMap;
-
-/*
-    ########################################################
-    운행별 이동횟수 정보가 필요할것 같아서 아래처럼 구현하다보니
-    소스 가독성에 문제가 있을것같내요..
-
-    좀더 깔끔하게 구현하고싶은데 다른 해결책이 있을까요?
-    ########################################################
- */
+import java.util.Map;
 
 public class Car {
-    private int tryCount;
     private int moveCount;
-    private HashMap<Integer,Integer> moveValues;
+    private Map<Integer, Integer> carTimeTable;
 
-    public Car()
-    {
-        this.tryCount = 0;
+    public Car() {
         this.moveCount = 0;
-        moveValues = new HashMap<Integer,Integer>();
+        carTimeTable = new HashMap<Integer, Integer>();
     }
 
-    public void move(final boolean carMoveTrueAndFalse)
-    {
-        if(carMoveTrueAndFalse)
-        {
-            moveCount+=1;
+    public void move(final boolean carMoveTrueAndFalse, final int time) {
+        if (carMoveTrueAndFalse) {
+            moveCount += 1;
         }
 
-        moveValues.put(tryCount,moveCount);
-        tryCount++;
+        carTimeTable.put(time, moveCount);
     }
 
-    public HashMap<Integer,Integer> getMoveValues()
-    {
-        return moveValues;
+    public Map<Integer, Integer> getMoveValues() {
+        return carTimeTable;
     }
 }

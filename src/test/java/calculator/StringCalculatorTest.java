@@ -11,8 +11,7 @@ public class StringCalculatorTest {
     public void 곱셈() {
         try {
             int result = StringCalculator.calculate("");
-        }catch (InputMismatchException e)
-        {
+        } catch (InputMismatchException e) {
             System.out.println("입력값이 올바르지않음");
         }
     }
