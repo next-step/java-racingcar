@@ -1,9 +1,8 @@
-package racingcar;
+package racingcar.race;
 
 import org.junit.Before;
 import org.junit.Test;
 import racingcar.car.Car;
-import racingcar.race.RacingGame;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +21,7 @@ public class RacingGameTest {
 
     //19.03.10 - step1 피드백, 개선한 구조에 맞게 테스트 method 수정
 
-
-    RacingGame racingGame;
+    private RacingGame racingGame;
     private List<Car> cars = null;
 
     @Before
@@ -31,10 +29,10 @@ public class RacingGameTest {
 
         cars = new ArrayList<Car>();
 
-        Car car1 = new Car("po", 0);
-        Car car2 = new Car("jo", 0);
-        Car car3 = new Car("gu", 0);
-        Car car4 = new Car("yo", 0);
+        Car car1 = new Car("po", 3);
+        Car car2 = new Car("jo", 2);
+        Car car3 = new Car("gu", 4);
+        Car car4 = new Car("yo", 2);
 
         cars.add(car1);
         cars.add(car2);
@@ -43,17 +41,12 @@ public class RacingGameTest {
     }
 
     @Test
-    public void 모든차량_1회_게임_확인() {
+    public void 순위_정렬_확인() {
 
         racingGame = new RacingGame(1);
-        int topPosition = racingGame.game(cars);
-        assertThat(topPosition).isBetween(0, 1);
-    }
+        cars = racingGame.game(cars);
 
-    @Test
-    public void 레이싱_게임_3대_5회() {
-        racingGame = new RacingGame(5);
-        int topPosition = racingGame.game(cars);
-        assertThat(topPosition).isBetween(0, 5);
+        assertThat(cars.get(0).compareTo(cars.get(1))).isEqualTo(-1);
+        assertThat(cars.get(2).compareTo(cars.get(3))).isEqualTo(0);
     }
 }

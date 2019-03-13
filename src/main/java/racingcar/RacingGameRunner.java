@@ -3,7 +3,6 @@ package racingcar;
 import racingcar.car.Car;
 import racingcar.car.CarRegistration;
 import racingcar.race.RacingGame;
-import racingcar.race.Ranking;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -16,14 +15,11 @@ public class RacingGameRunner {
         String[] racers = InputView.inputRacers();
         int time = InputView.inputTime();
 
-        CarRegistration carRegistration = new CarRegistration();
-        List<Car> cars = carRegistration.register(racers);
+        List<Car> cars = CarRegistration.register(racers);
 
         RacingGame racingGame = new RacingGame(time);
-        int topPosition = racingGame.game(cars);
+        cars = racingGame.game(cars);
 
-        Ranking ranking = new Ranking(topPosition, cars);
-        int winner = ranking.countWinner(cars);
-        OutputView.showWinner(cars, winner);
+        OutputView.showWinner(cars);
     }
 }

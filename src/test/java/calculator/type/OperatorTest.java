@@ -7,6 +7,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class OperatorTest {
 
     @Test
+    public void null또는0인경우() {
+        Operator operator = Operator.typeOf(null);
+        assertThat(operator).isNull();
+
+        operator = Operator.typeOf("sdfsrgerg");
+        assertThat(operator).isNull();
+    }
+
+    @Test
     public void 연산자에_맞는_enum_return확인() {
         String operator = "+";
         Operator addType = Operator.typeOf(operator);

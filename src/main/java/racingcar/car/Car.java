@@ -8,16 +8,7 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car o) {
-        //내림차순
-        if (this.position < o.position) {
-            return 1;
-        }
-
-        if(this.position == o.position) {
-            return 0;
-        }
-
-        return -1;
+        return Integer.compare(o.position, this.position);
     }
 
     public Car(String name, int position) {
@@ -33,11 +24,5 @@ public class Car implements Comparable<Car> {
     public int move() {
         position += powerGenerator.determineMoveOrNot();
         return position;
-    }
-
-    public boolean isWinner(int position) {
-        if(this.position == position) return true;
-
-        return false;
     }
 }

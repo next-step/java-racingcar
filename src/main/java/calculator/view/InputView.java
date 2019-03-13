@@ -6,22 +6,29 @@ import java.io.InputStreamReader;
 
 public class InputView {
 
-    public static String input() {
+    private static final String DELIMITER = " ";
+
+    public String[] input() {
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            return br.readLine();
+            String text = br.readLine();
+            if (!validate(text)) {
+                return null;
+            }
+
+            return splitExpression(text);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public static boolean validate(String expression) {
+    private boolean validate(String expression) {
         return ExpressionValidator.validate(expression);
     }
 
     //TODO: operator 와 operand 로 분리 반환 개선 필요
-    public static String[] splitExpression(String expression) {
-        return expression.split(" ");
+    private static String[] splitExpression(String expression) {
+        return expression.split(DELIMITER);
     }
 }

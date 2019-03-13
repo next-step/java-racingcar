@@ -12,16 +12,12 @@ public class StringCalculatorRunner {
 
         //---------------------------- inputView
         //input expression
-        String inputData = InputView.input();
-        //validate data
-        boolean isWrong = InputView.validate(inputData);
+        InputView inputView = new InputView();
+        String[] expression = inputView.input();
 
-        if (isWrong) {
-            System.out.println("please check expression : " + inputData);
+        if(expression == null) {
             return;
         }
-        //splitExpression
-        String[] expression = InputView.splitExpression(inputData);
 
         //---------------------------- model
         //calculrate

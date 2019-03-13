@@ -5,14 +5,13 @@ import java.util.List;
 
 public class CarRegistration {
 
-    private List<Car> cars;
+    public static List<Car> register(String[] racers) {
+        List<Car> cars = new ArrayList<Car>();
 
-    public List<Car> register(String[] racers) {
-        this.cars = new ArrayList<Car>();
-        for (int i = 0; i < racers.length; i++) {
-            this.cars.add(new Car(racers[i], 0));
+        for (String racer : racers) {
+            cars.add(new Car(racer, 0));
         }
 
-        return this.cars;
+        return cars;
     }
 }

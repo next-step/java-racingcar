@@ -20,10 +20,16 @@ public class OutputView {
     }
 
     //TODO : 개선필요, 좋은방법 생각해볼 것
-    public static void showWinner(List<Car> cars, int winner) {
-        for (int i = 0; i < winner - 1; i++) {
+    public static void showWinner(List<Car> cars) {
+        int count = cars.size();
+        int i=0;
+
+        for (i = 0; i < count-1; i++) {
+            int res = cars.get(i).compareTo(cars.get(i+1));
+            if (res < 0) break;
+
             System.out.print(cars.get(i).getName() + ", ");
         }
-        System.out.println(cars.get(winner - 1).getName() + "가 최종 우승했습니다.");
+        System.out.println(cars.get(i).getName() + "가 최종 우승했습니다.");
     }
 }

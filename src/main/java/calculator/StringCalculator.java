@@ -1,7 +1,6 @@
 package calculator;
 
 import calculator.type.Operator;
-import org.apache.commons.lang3.StringUtils;
 
 public class StringCalculator {
 

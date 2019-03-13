@@ -43,10 +43,11 @@ public enum Operator {
         Operator[] operators = Operator.values();
 
         for (Operator operator : operators) {
-            if(operator.getValue().equals(expression)) {
+            if(operator.value.equals(expression)) {
                 return operator;
             }
         }
+
         return null;
     }
 }
