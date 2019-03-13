@@ -22,8 +22,8 @@ public class CarTest {
     public void 차_이동시_거리_증가() {
 
         Car car = new Car("sonata");
-        car.moveCar(MOVEABLE_RANDOMNUM);
-        car.moveCar(NONE_MOVEABLE_RANDOMNUM);
+        car.move(MOVEABLE_RANDOMNUM);
+        car.move(NONE_MOVEABLE_RANDOMNUM);
         int movingDistance = car.getMovingDistance();
         assertThat(movingDistance).isEqualTo(1);
     }
