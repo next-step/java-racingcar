@@ -22,7 +22,6 @@ public class Application {
         gameBoard.createCars(InputView.inputNames());
         int timesOfMoves = InputView.inputTime();
 
-        ResultView.viewStart();
         GameResult gameResult = gameBoard.start(timesOfMoves);
         ResultView.viewWinners(gameResult);
     }

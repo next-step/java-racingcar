@@ -11,18 +11,18 @@ public class ResultView {
     private static final String CHAR_TO_CONVERT = "-";
 
     public static void viewWinners(GameResult gameResult) {
-        System.out.println(gameResult.getWinners() + "가 최종 우승했습니다.");
+        System.out.println(gameResult.getWinnerNames() + "가 최종 우승했습니다.");
     }
 
-    public static void viewStart() {
+    public static void viewGameStart() {
         System.out.println("\n실행 결과");
     }
 
-    public static void viewStep(String name, Integer position) {
+    public static void viewRunningStep(String name, Integer position) {
         System.out.println(name + " : " + convertPosition(position));
     }
 
-    public static void viewNextStep() {
+    public static void viewEndingOfStep() {
         System.out.println();
     }
 

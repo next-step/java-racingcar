@@ -1,6 +1,7 @@
 package racing.board;
 
 import org.junit.*;
+import racing.model.NamedRacingCar;
 import racing.model.RacingCar;
 
 import java.util.Arrays;
@@ -12,23 +13,56 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class GameResultTest {
 
+    @Test
+    public void test_최대값_위치_목록() {
+        List<Integer> positions = Arrays.asList(1, 2, 3, 5, 1);
+        assertThat(GameResult.maxPosition(positions))
+                .isEqualTo(5);
+    }
+
+    @Test
+    public void test_우승_없음() {
+        List<RacingCar> cars = Arrays.asList(new NamedRacingCar("pobi"));
+        GameResult gameResult = new GameResult(cars, 1);
+
+        assertThat(gameResult.getWinnerNames())
+                .isEmpty();
+    }
 
     @Test
     public void test_우승_1대() {
+        // given
         String winnerName = "pobi";
-        GameResult gameResult = new GameResult(Arrays.asList(winnerName));
+        NamedRacingCar winner = new NamedRacingCar(winnerName);
+        int winnerPosition = winner.move(RacingCar.THRESHOLD_POWER);
 
-        assertThat(gameResult.getWinners())
-                .isEqualTo(winnerName);
+        List<RacingCar> cars = Arrays.asList(winner);
+
+        // when
+        GameResult gameResult = new GameResult(cars, winnerPosition);
+
+        // then
+        assertThat(gameResult.getWinnerNames())
+            .isEqualTo(winnerName);
     }
 
     @Test
     public void test_우승_2대() {
-        String winnerName = "pobi, crong";
-        List<String> winnerNames = Arrays.asList(winnerName.split(", "));
-        GameResult gameResult = new GameResult(winnerNames);
+        // given
+        List<String> winnerNames = Arrays.asList("pobi", " crong");
+        List<RacingCar> winners = winnerNames.stream()
+                .map(NamedRacingCar::new)
+                .collect(Collectors.toList());
 
-        assertThat(gameResult.getWinners())
-                .isEqualTo(winnerName);
+        int winnerPosition = GameResult.maxPosition(winners.stream()
+                .map(car -> car.move(RacingCar.THRESHOLD_POWER))
+                .collect(Collectors.toList()));
+        // when
+        GameResult gameResult = new GameResult(winners, winnerPosition);
+
+        // then
+        assertThat(gameResult.getWinnerNames())
+                .isEqualTo(winnerNames.stream()
+                        .collect(Collectors.joining(", ")));
     }
 }
