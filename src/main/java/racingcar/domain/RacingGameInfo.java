@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGameInfo {
+    private static final int FIRST_ROUND = 1;
+
     private List<Car> cars;
     private RacingGameRound racingGameRound;
 
@@ -41,7 +43,7 @@ public class RacingGameInfo {
                 .map(Car::new)
                 .collect(Collectors.toList());
 
-        setCurrentRound(0);
+        setCurrentRound(FIRST_ROUND);
     }
 
     private void setCurrentRound(int currentRound) {

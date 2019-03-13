@@ -9,6 +9,8 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class RacingGameParameterInputView {
+    private static final int MINIMUM_ROUND = 1;
+
     private RacingGameParameterInputView() {
     }
 
@@ -35,14 +37,14 @@ public class RacingGameParameterInputView {
     }
 
     private static int readTotalRound(Scanner scanner) {
-        int totalCount;
+        int totalRound;
 
         do {
             System.out.println("시도할 회수는 몇 회 인가요?");
-            totalCount = scanner.nextInt();
-        } while (totalCount <= 0);
+            totalRound = scanner.nextInt();
+        } while (totalRound < MINIMUM_ROUND);
 
-        return totalCount;
+        return totalRound;
     }
 
 
