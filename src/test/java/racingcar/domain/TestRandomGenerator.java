@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.utils.RandomGenerator;
 
 public class TestRandomGenerator implements RandomGenerator {
     private int value;
