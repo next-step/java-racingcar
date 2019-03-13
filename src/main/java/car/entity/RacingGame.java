@@ -18,7 +18,7 @@ public class RacingGame {
 
         int i = 0;
         while (i < carsName.length) {
-            String name = carsName[i] == "" ? UNDEFINED_CAR_NAME : carsName[i];
+            String name = carsName[i].equals("") ? UNDEFINED_CAR_NAME : carsName[i];
             cars.add(Car.getCarInstance(name));
             i ++;
         }

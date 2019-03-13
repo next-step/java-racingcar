@@ -12,7 +12,6 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class RacingGameTest {
-    static final int INITIAL_CAR_COUNT = 3;
     static final int NOT_MOVING_RANDOM_NUM = 3;
     static final int MOVING_RANDOM_VALUE = 4;
 

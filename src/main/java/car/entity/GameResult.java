@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameResult {
-    private static final String WIN = "WIN";
-    private static final String LOSE = "LOSE";
-    private static final String SAME = "DRAW";
-
     private List<Car> aRoundResult;
     private List<Car> winners;
     private int maxMovement;
