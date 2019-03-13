@@ -10,23 +10,22 @@ import java.util.List;
 public class RacingCar {
 
     public static void main(String[] args) {
-        doRacing(RacingCarView.getCarNames(), RacingCarView.getRoundCount());
-    }
-
-    private static void doRacing(String carNames, int roundCnt) {
         try {
-            //입력값 파싱
-            String[] names = RacingCarView.parseCarNames(carNames);
-
-            //레이싱
-            List<Car> cars = RacingCarGame.startRacing(RacingCarGame.createCars(names), roundCnt);
-
-            //랭킹
-            RacingCarView.viewRacingCarWinners(RacingCarRank.rankCars(cars));
+            doRacing(RacingCarView.getCarNames(), RacingCarView.getRoundCount());
         } catch (RuntimeException exception) {
             System.out.println(exception.getMessage());
         }
     }
 
+    private static void doRacing(String[] names, int roundCnt) {
+        //레이싱
+        RacingCarGame racingCarGame = new RacingCarGame();
+        List<Car> cars = racingCarGame.createCars(names);
+        racingCarGame.startRacing(roundCnt);
 
+        //랭킹
+        RacingCarRank racingCarRank = new RacingCarRank();
+        List<Car> winners = racingCarRank.rankCars(cars);
+        RacingCarView.viewRacingCarWinners(winners);
+    }
 }

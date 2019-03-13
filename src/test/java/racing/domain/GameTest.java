@@ -36,25 +36,29 @@ public class GameTest {
 
     @Test
     public void 자동차생성() {
+        RacingCarGame racingCarGame = new RacingCarGame();
+
         String[] names = RacingCarView.parseCarNames("aaa,bbb,ccc");
-        List<Car> cars = RacingCarGame.createCars(names);
+        List<Car> cars = racingCarGame.createCars(names);
         assertThat(cars.size()).isEqualTo(3);
         assertThat(cars.get(0).getName()).isEqualTo("aaa");
 
         names = RacingCarView.parseCarNames("aaa,bbb");
-        cars = RacingCarGame.createCars(names);
+        cars = racingCarGame.createCars(names);
         assertThat(cars.size()).isEqualTo(2);
         assertThat(cars.get(0).getName()).isEqualTo("aaa");
     }
 
     @Test(expected = RuntimeException.class)
     public void 자동차생성에러() {
+        RacingCarGame racingCarGame = new RacingCarGame();
+
         String[] names = RacingCarView.parseCarNames("aaa,bbb,");
-        List<Car> cars = RacingCarGame.createCars(names);
+        List<Car> cars = racingCarGame.createCars(names);
         assertThat(cars.size()).isEqualTo(0);
 
         names = RacingCarView.parseCarNames("aaa,bbb,");
-        cars = RacingCarGame.createCars(names);
+        cars = racingCarGame.createCars(names);
         assertThat(cars.size()).isEqualTo(0);
     }
 }

@@ -45,7 +45,9 @@ public class RankTest {
 
     @Test
     public void 자동차정렬() {
-        RacingCarRank.sortCars(cars);
+        RacingCarRank racingCarRank = new RacingCarRank();
+
+        racingCarRank.sortCars(cars);
 
         assertThat(cars.get(0).compareTo(cars.get(1))).isGreaterThanOrEqualTo(0);
         assertThat(cars.get(0).compareTo(cars.get(2))).isGreaterThanOrEqualTo(0);
@@ -58,7 +60,9 @@ public class RankTest {
 
     @Test
     public void 자동차랭킹() {
-        List<Car> winners = RacingCarRank.rankCars(cars);
+        RacingCarRank racingCarRank = new RacingCarRank();
+
+        List<Car> winners = racingCarRank.rankCars(cars);
 
         assertThat(winners.get(0).compareTo(cars.get(0))).isGreaterThanOrEqualTo(0);
         assertThat(winners.get(0).compareTo(cars.get(1))).isGreaterThanOrEqualTo(0);

@@ -23,7 +23,9 @@ public class WebController {
 
             String params = req.queryParams("names");
             String[] names = RacingCarView.parseCarNames(params);
-            cars = RacingCarGame.createCars(names);
+
+            RacingCarGame racingCarGame = new RacingCarGame();
+            cars = racingCarGame.createCars(names);
 
             Map<String, Object> model = new HashMap<>();
             model.put("cars", cars);
@@ -33,13 +35,15 @@ public class WebController {
 
         get("/result", (req, res) -> {
 
-            RacingCarGame.startRacing(cars, Integer.parseInt(req.queryParams("turn")));
+            RacingCarGame racingCarGame = new RacingCarGame(cars);
+            racingCarGame.startRacing(Integer.parseInt(req.queryParams("turn")));
 
             for (Car car : cars) {
                 WebView.setView(car);
             }
 
-            List<Car> winners = RacingCarRank.rankCars(new ArrayList<>(cars));
+            RacingCarRank racingCarRank = new RacingCarRank();
+            List<Car> winners = racingCarRank.rankCars(new ArrayList<>(cars));
 
             Map<String, Object> model = new HashMap<>();
             model.put("cars", cars);
