@@ -10,11 +10,16 @@ public class RacingGameTest {
 
     @Before
     public void racingGameTest() {
-        this.racingGame = new RacingGame(3, 3);
+        this.racingGame = new RacingGame("shin, yeon, jong");
     }
 
     @Test
     public void createCarTest() {
-        assertThat(this.racingGame.racingCars.size()).isEqualTo(3);
+        assertThat(this.racingGame.getRacingCars().size()).isEqualTo(3);
+    }
+
+    @Test
+    public void getWinnerTest() {
+        racingGame.getWinner(3).forEach(racingCar -> racingCar.toString());
     }
 }

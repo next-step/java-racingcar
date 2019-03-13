@@ -2,36 +2,37 @@ package racing;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private static final int RANGE = 9;
-    public List<RacingCar> racingCars = new ArrayList<>();
-    private int tryCount;
-    private int carCount;
+    private static final String SEPARATOR = ",";
+    private List<RacingCar> racingCars = new ArrayList<>();
 
-    public RacingGame(int carCount, int tryCount) {
-        this.carCount = carCount;
-        this.tryCount = tryCount;
-        this.createCars();
+    public RacingGame(String carNames) {
+        this.createCars(carNames);
     }
 
-    public void createCars() {
-        IntStream.range(0, carCount).forEach(i -> {
-            this.racingCars.add(new RacingCar());
-        });
+    public void createCars(String carNames) {
+        for (String carName : carNames.split(SEPARATOR)) {
+            this.racingCars.add(new RacingCar(carName.trim()));
+        }
     }
 
     public void playRacing() {
-        IntStream.range(0, this.tryCount).forEach(i -> {
-            this.moveCar();
-            new ResultView().printResult(this.racingCars);
+        this.racingCars.forEach(car -> {
+            car.move(RandomNumberUtil.createRandomNumber(RANGE));
         });
     }
 
-    public void moveCar() {
-        this.racingCars.forEach(car -> {
-            car.move(new NumberWithRandom(RANGE));
-        });
+    public List<RacingCar> getWinner(int tryCount) {
+        List<RacingCar> list = this.racingCars.stream()
+                .filter(racingCar -> racingCar.getPosition() == tryCount)
+                .collect(Collectors.toList());
+        return list.isEmpty() ? getWinner(tryCount - 1) : list;
+    }
+
+    public List<RacingCar> getRacingCars() {
+        return this.racingCars;
     }
 }

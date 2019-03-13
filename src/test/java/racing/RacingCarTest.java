@@ -8,17 +8,15 @@ public class RacingCarTest {
 
     @Test
     public void moveTrueTest() {
-        RacingCar racingCar = new RacingCar();
-        racingCar.move(new NumberWithParameter(4));
-        String carPosition = racingCar.carPosition();
-        assertThat(carPosition).isEqualTo("-");
+        RacingCar racingCar = new RacingCar("shin, yeon");
+        racingCar.move(RandomNumberUtil.returnParamNumber(4));
+        racingCar.toString();
     }
 
     @Test
     public void moveFalseTest() {
-        RacingCar racingCar = new RacingCar();
-        racingCar.move(new NumberWithParameter(3));
-        String carPosition = racingCar.carPosition();
-        assertThat(carPosition).isEqualTo("");
+        RacingCar racingCar = new RacingCar("shin, yeon");
+        racingCar.move(RandomNumberUtil.returnParamNumber(5));
+        racingCar.toString();
     }
 }

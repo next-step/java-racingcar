@@ -2,23 +2,37 @@ package racing;
 
 public class RacingCar {
     private static final int FORWARD_NUM = 4;
+    private String carName;
     private int position;
 
-    public void move(RandomStrategy randomStrategy) {
-        if (this.isMove(randomStrategy)) {
+    public RacingCar(String carName) {
+        this.carName = carName;
+    }
+
+    public void move(int number) {
+        if (this.isMove(number)) {
             this.position++;
         }
     }
 
-    private boolean isMove(RandomStrategy randomStrategy) {
-        return randomStrategy.makeRandomNumber() >= FORWARD_NUM;
+    private boolean isMove(int number) {
+        return number >= this.FORWARD_NUM;
     }
 
-    public String carPosition() {
-        StringBuilder stringBuilder = new StringBuilder();
+    public int getPosition() {
+        return this.position;
+    }
+
+    public String getCarName() {
+        return this.carName;
+    }
+
+    @Override
+    public String toString() {
+        String position = "";
         for (int i = 0; i < this.position; i++) {
-            stringBuilder.append("-");
+            position += "-";
         }
-        return stringBuilder.toString();
+        return this.carName + " : " + position;
     }
 }
