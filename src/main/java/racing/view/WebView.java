@@ -1,4 +1,4 @@
-package web.view;
+package racing.view;
 
 import racing.domain.Car;
 import spark.ModelAndView;

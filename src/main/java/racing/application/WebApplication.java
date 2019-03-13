@@ -1,16 +1,16 @@
-package web;
+package racing.application;
 
 import racing.domain.Car;
 import racing.domain.RacingCarGame;
 import racing.domain.RacingCarRank;
-import racing.view.RacingCarView;
-import web.view.WebView;
+import racing.view.CommonView;
+import racing.view.WebView;
 
 import java.util.*;
 
 import static spark.Spark.*;
 
-public class WebController {
+public class WebApplication {
 
     private static List<Car> cars;
 
@@ -22,7 +22,7 @@ public class WebController {
         post("/name", (req, res) -> {
 
             String params = req.queryParams("names");
-            String[] names = RacingCarView.parseCarNames(params);
+            String[] names = CommonView.parseCarNames(params);
 
             RacingCarGame racingCarGame = new RacingCarGame();
             cars = racingCarGame.createCars(names);

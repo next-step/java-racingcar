@@ -1,17 +1,17 @@
-package racing;
+package racing.application;
 
 import racing.domain.Car;
 import racing.domain.RacingCarGame;
 import racing.domain.RacingCarRank;
-import racing.view.RacingCarView;
+import racing.view.ConsoleView;
 
 import java.util.List;
 
-public class RacingCar {
+public class ConsoleApplication {
 
     public static void main(String[] args) {
         try {
-            doRacing(RacingCarView.getCarNames(), RacingCarView.getRoundCount());
+            doRacing(ConsoleView.getCarNames(), ConsoleView.getRoundCount());
         } catch (RuntimeException exception) {
             System.out.println(exception.getMessage());
         }
@@ -26,6 +26,6 @@ public class RacingCar {
         //랭킹
         RacingCarRank racingCarRank = new RacingCarRank();
         List<Car> winners = racingCarRank.rankCars(cars);
-        RacingCarView.viewRacingCarWinners(winners);
+        ConsoleView.viewRacingCarWinners(winners);
     }
 }

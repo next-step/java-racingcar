@@ -1,6 +1,6 @@
 package racing.domain;
 
-import racing.view.RacingCarView;
+import racing.view.ConsoleView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +42,7 @@ public class RacingCarGame {
 
             int moveDistance = car.move();
 
-            RacingCarView.viewCarMoveInfo(moveDistance);
+            ConsoleView.viewCarMoveInfo(moveDistance);
 
             System.out.println();
         }
