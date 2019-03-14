@@ -14,7 +14,7 @@ public class GameResult {
         this.cars = cars;
     }
 
-    public List<String> getWinnerNames() {
+    public List<RacingCar> getWinners() {
         if (cars.size() == 0) {
             return Collections.emptyList();
         }
@@ -22,7 +22,6 @@ public class GameResult {
         RacingCar mostFarPositionedCar = Collections.max(cars);
         return cars.stream()
                 .filter(car -> car.compareTo(mostFarPositionedCar) == 0)
-                .map(RacingCar::toString)
                 .collect(Collectors.toList());
     }
 }
