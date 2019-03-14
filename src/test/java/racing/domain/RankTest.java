@@ -20,23 +20,11 @@ public class RankTest {
         Car car2 = new Car("car2");
         Car car3 = new Car("car3");
 
-        car1.move();
-        car1.move();
-        car1.move();
-        car1.move();
-        car1.move();
-
-        car2.move();
-        car2.move();
-        car2.move();
-        car2.move();
-        car2.move();
-
-        car3.move();
-        car3.move();
-        car3.move();
-        car3.move();
-        car3.move();
+        for (int i = 0; i < 5; i++) {
+            car1.move();
+            car2.move();
+            car3.move();
+        }
 
         cars.add(car1);
         cars.add(car2);
