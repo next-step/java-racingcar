@@ -7,7 +7,6 @@ import racing.model.RacingCar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -24,11 +23,11 @@ public class ResultView {
 
     private static List<Map<String, List<Integer>>> convertToStepByStepCarInfo(List<StepResult> history) {
         return history.stream()
-                .map(ResultView::convertCarInfo)
+                .map(ResultView::convertToCarInfo)
                 .collect(Collectors.toList());
     }
 
-    private static Map<String, List<Integer>> convertCarInfo(StepResult stepResult) {
+    private static Map<String, List<Integer>> convertToCarInfo(StepResult stepResult) {
         return stepResult.getCars()
                 .stream()
                 .collect(collectCarInfo());
