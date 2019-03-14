@@ -1,9 +1,9 @@
 package domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.Test;
 import util.RandomNumberGenerator;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class RandomNumberRuleTest {
     @Test

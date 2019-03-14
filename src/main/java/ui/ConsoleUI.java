@@ -6,6 +6,7 @@ import domain.RoundResult;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class ConsoleUI {
     public void setCarCount() {
@@ -24,14 +25,23 @@ public class ConsoleUI {
         System.out.println("실행 결과");
 
         for (RoundResult roundResult : roundResults) {
-            for (CarResult carResult : roundResult.getCarResults()) {
-                System.out.print(carResult.getName() + " : -");
-                for (int i = 0; i < carResult.getMileage(); i++) {
-                    System.out.print("-");
-                }
-                System.out.println();
-            }
+            roundResult(roundResult);
             System.out.println();
+        }
+    }
+
+    private void roundResult(RoundResult roundResult) {
+        for (CarResult carResult : roundResult.getCarResults()) {
+            printNameIfHas(carResult);
+
+            IntStream.rangeClosed(0, carResult.getMileage()).forEach(i -> System.out.print("-"));
+            System.out.println();
+        }
+    }
+
+    private void printNameIfHas(CarResult carResult) {
+        if(carResult.getName() != null){
+            System.out.print(carResult.getName() + " : ");
         }
     }
 

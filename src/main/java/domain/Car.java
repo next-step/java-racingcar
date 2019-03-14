@@ -1,7 +1,12 @@
 package domain;
 
+import lombok.Getter;
+
 public class Car {
+    @Getter
     private String name;
+
+    @Getter
     private Integer mileage;
 
     public Car() {
@@ -15,13 +20,5 @@ public class Car {
 
     public void move(){
         mileage++;
-    }
-
-    public String getName(){
-        return name;
-    }
-
-    public Integer getMileage(){
-        return mileage;
     }
 }

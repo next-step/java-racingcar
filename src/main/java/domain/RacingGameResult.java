@@ -3,9 +3,13 @@ package domain;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import lombok.Getter;
 
 public class RacingGameResult {
+    @Getter
     List<Car> ranking = new ArrayList<>();
+
+    @Getter
     List<RoundResult> roundResults = new ArrayList<>();
 
     public void createRanking(List<Car> cars){
@@ -16,13 +20,5 @@ public class RacingGameResult {
 
     public void addRoundResult(RoundResult roundResult){
         roundResults.add(roundResult);
-    }
-
-    public List<Car> getRanking() {
-        return ranking;
-    }
-
-    public List<RoundResult> getRoundResults() {
-        return roundResults;
     }
 }

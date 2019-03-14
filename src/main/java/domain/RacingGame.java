@@ -1,66 +1,40 @@
 package domain;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import lombok.experimental.Delegate;
 
 public class RacingGame {
-    private Rule rule;
-    private Integer gameCount;
-    private List<Car> cars = new ArrayList<>();
+    @Delegate
+    private RacingGameInfo racingGameInfo;
 
-    private RacingGame(Rule rule, Integer gameCount){
-        this.rule = rule;
-        this.gameCount = gameCount;
-    }
-
-    public RacingGame(Rule rule, Integer gameCount, Integer carCount) {
-        this(rule, gameCount);
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
-    }
-
-    public RacingGame(Rule rule, Integer gameCount, String[] carNames) {
-        this(rule, gameCount);
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
+    public RacingGame(RacingGameInfo racingGameInfo) {
+        this.racingGameInfo = racingGameInfo;
     }
 
     public RacingGameResult play(){
-        if(rule == null || gameCount == null || cars.size() == 0){
+        if(getRule() == null || getGameCount() == null || getCars().size() == 0){
             throw new IllegalStateException("Have to init first");
         }
 
         RacingGameResult racingGameResult = new RacingGameResult();
 
-        IntStream.rangeClosed(1, gameCount)
+        IntStream.rangeClosed(1, getGameCount())
             .mapToObj(this::playCycle)
             .forEach(racingGameResult::addRoundResult);
 
-        racingGameResult.createRanking(cars);
+        racingGameResult.createRanking(getCars());
 
         return racingGameResult;
     }
 
     private RoundResult playCycle(int roundNumber){
-        cars.stream()
-            .filter(c -> rule.canPass())
+        getCars().stream()
+            .filter(c -> getRule().canPass())
             .forEach(Car::move);
 
-        return new RoundResult(roundNumber, cars.stream()
+        return new RoundResult(roundNumber, getCars().stream()
             .map(CarResult::new)
             .collect(Collectors.toList()));
-    }
-
-    public int getGameCount() {
-        return gameCount;
-    }
-
-    public List<Car> getCars() {
-        return cars;
     }
 }

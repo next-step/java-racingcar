@@ -1,6 +1,7 @@
 package game;
 
 import domain.RacingGame;
+import domain.RacingGameInfo;
 import domain.RacingGameResult;
 import domain.RandomNumberRule;
 import ui.ConsoleUI;
@@ -14,14 +15,15 @@ public class ConsoleGame implements Game{
         ConsoleUI ui = new ConsoleUI();
 
         ui.setCarNames();
-        String[] carNames = scanner.nextLine().split(",");
+        String carNames = scanner.nextLine();
 
         ui.setGameCount();
         Integer gameCount = scanner.nextInt();
 
         RacingGame racingGame = new RacingGame(
+            new RacingGameInfo(
                 new RandomNumberRule(0, 10, 4),
-                gameCount, carNames);
+                gameCount, carNames));
         RacingGameResult result = racingGame.play();
 
         ui.roundResults(result.getRoundResults());
