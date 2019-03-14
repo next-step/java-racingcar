@@ -27,16 +27,16 @@ public class RacingGameBoardTest {
     @Test
     public void test_게임_시작_랜덤_우승() {
         // Given
-        List<String> winnerNames = Arrays.asList("pobi", "crong", "honux");
+        List<String> carNames = Arrays.asList("pobi", "crong", "honux");
         RacingGameBoard board = new RacingGameBoard();
-        board.createCars(winnerNames);
+        board.createCars(carNames);
 
         // When
         GameResult result = board.start(5);
 
         // Then
-        assertThat(result.getWinnerNames().size())
-                .isLessThanOrEqualTo(winnerNames.size());
+        assertThat(result.getWinners().size())
+                .isLessThanOrEqualTo(carNames.size());
     }
 
     @Test
@@ -50,7 +50,7 @@ public class RacingGameBoardTest {
         GameResult result = board.start(5);
 
         // Then
-        assertThat(result.getWinnerNames().size())
+        assertThat(result.getWinners().size())
                 .isEqualTo(winnerNames.size());
     }
 }

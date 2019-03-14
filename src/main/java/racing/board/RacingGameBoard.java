@@ -40,19 +40,10 @@ public class RacingGameBoard {
     }
 
     private GameResult runSteps(int times) {
-        runUntilBeforeLastStep(times);
-        return runLastStep();
-    }
-
-    private GameResult runLastStep() {
-        runStep();
-        return new GameResult(cars);
-    }
-
-    private void runUntilBeforeLastStep(int lastStep) {
-        for (int i = 0; i < lastStep - 1; i++) {
+        for (int i = 0; i < times; i++) {
             runStep();
         }
+        return new GameResult(cars);
     }
 
     private void runStep() {
