@@ -17,12 +17,12 @@ public class WebView {
         return new HandlebarsTemplateEngine().render(new ModelAndView(model, templatePath));
     }
 
-    public static WebResult setView(List<Car> cars) {
+    public static WebResult makeCarInfo(List<Car> cars) {
         webResult = new WebResult();
 
         Map<String, List<Integer>> resultMap = new HashMap<>();
         for (Car car : cars) {
-            List<Integer> moves = setMoves(car);
+            List<Integer> moves = makeCarMoveDistance(car);
             resultMap.put(car.getName(), moves);
         }
 
@@ -31,7 +31,7 @@ public class WebView {
         return webResult;
     }
 
-    public static List<Integer> setMoves(Car car) {
+    public static List<Integer> makeCarMoveDistance(Car car) {
         List<Integer> moves = new ArrayList<>();
         for (int i = 0; i < car.getTotalDistance(); i++) {
             moves.add(1);

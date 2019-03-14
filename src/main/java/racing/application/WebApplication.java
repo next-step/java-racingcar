@@ -47,7 +47,7 @@ public class WebApplication {
             List<Car> winners = racingCarRank.rankCars(new ArrayList<>(cars));
 
             //set result model
-            WebResult webResult = WebView.setView(cars);
+            WebResult webResult = WebView.makeCarInfo(cars);
             WebView.makeWinnerNameString(winners);
 
             Map<String, Object> model = new HashMap<>();
