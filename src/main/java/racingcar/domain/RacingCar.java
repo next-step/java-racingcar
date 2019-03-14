@@ -8,8 +8,10 @@ public class RacingCar {
         this.id = id;
     }
 
-    public void move() {
-        this.position++;
+    public void move(final MovingStrategy movingStrategy) {
+        if (movingStrategy.movable()) {
+            this.position++;
+        }
     }
 
     public Integer getId() {

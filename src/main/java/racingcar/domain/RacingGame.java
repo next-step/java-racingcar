@@ -27,12 +27,10 @@ public class RacingGame {
     }
 
     private void moveIfCan(final RacingCar racingCar) {
-        if (canMove()) {
-            racingCar.move();
-        }
+        racingCar.move(getMovingStrategy());
     }
 
-    private boolean canMove() {
-        return RandomUtils.nextInt(0, 9) >= difficulty;
+    private MovingStrategy getMovingStrategy() {
+        return () -> RandomUtils.nextInt(0, 9) >= difficulty;
     }
 }

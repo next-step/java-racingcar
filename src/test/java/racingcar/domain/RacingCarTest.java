@@ -17,14 +17,26 @@ public class RacingCarTest {
     }
 
     @Test
-    public void 이동() {
+    public void 이동하는_경우() {
         // given
         final RacingCar racingCar = new RacingCar(1);
 
         // when
-        racingCar.move();
+        racingCar.move(() -> true);
 
         // then
         assertThat(racingCar.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    public void 이동하지_않는_경우() {
+        // given
+        final RacingCar racingCar = new RacingCar(1);
+
+        // when
+        racingCar.move(() -> false);
+
+        // then
+        assertThat(racingCar.getPosition()).isEqualTo(0);
     }
 }
