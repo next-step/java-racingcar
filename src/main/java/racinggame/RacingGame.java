@@ -1,10 +1,17 @@
 package racinggame;
 
+import racinggame.service.CarAdvanceService;
+import racinggame.service.WinnerDecisionService;
+import util.StringUtils;
+
+import javax.xml.transform.Result;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
 
-    private int[] carPositions;
+    private List<Car> carList;
 
     private RacingGameConfiguration configuration;
 
@@ -16,21 +23,34 @@ public class RacingGame {
         RacingGame racingGame = new RacingGame(InputView.getConfiguration());
         racingGame.initializeCarPositions();
 
-        CarAdvanceProcessor processor = new CarAdvanceProcessor(new Random());
+        CarAdvanceService carAdvanceService = new CarAdvanceService(new Random());
         ResultView resultView = new ResultView();
 
-        for( int i = 0, numberOfTries = racingGame.configuration.getNumberOfTries(); i < numberOfTries; ++i ) {
-            processor.moveForward(racingGame.carPositions);
-            resultView.showCarPositions(racingGame.carPositions);
-        }
+        racingGame.showGame(carAdvanceService, resultView);
+
+        WinnerDecisionService winnerDecisionService = new WinnerDecisionService(racingGame.carList);
+        resultView.showWinners(winnerDecisionService.getWinners());
     }
 
     private void initializeCarPositions() {
 
-        carPositions = new int[configuration.getNumberOfCars()];
+        carList = new ArrayList<>();
 
-        for( int i = 0, length = carPositions.length; i < length; ++i ) {
-            carPositions[i] = 1;
+        if( StringUtils.isArrayNullOrEmpty(configuration.getCarNames()) ) {
+            return;
+        }
+
+        for( String name : configuration.getCarNames() ) {
+            carList.add( new Car( name, 1 ) );
         }
     }
+
+    private void showGame(CarAdvanceService service, ResultView resultView) {
+        resultView.showCarPositions(carList);
+
+        for( int i = 0, numberOfTries = configuration.getNumberOfTries(); i < numberOfTries; ++i ) {
+            service.moveForward(carList);
+        }
+    }
+
 }

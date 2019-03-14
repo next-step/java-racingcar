@@ -2,16 +2,16 @@ package racinggame;
 
 public class RacingGameConfiguration {
 
-    private int numberOfCars;
+    private String [] carNames;
     private int numberOfTries;
 
-    public RacingGameConfiguration(int numberOfCars, int numberOfTries) {
-        this.numberOfCars = numberOfCars;
+    public RacingGameConfiguration(String [] carNames, int numberOfTries) {
+        this.carNames = carNames;
         this.numberOfTries = numberOfTries;
     }
 
-    public int getNumberOfCars() {
-        return numberOfCars;
+    public String[] getCarNames() {
+        return carNames;
     }
 
     public int getNumberOfTries() {
