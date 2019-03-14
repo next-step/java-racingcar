@@ -14,8 +14,8 @@ public class CarAdvanceService {
         this.randomValueGenerator = randomValueGenerator;
     }
 
-    public void moveForward(List<Car> carList ) {
-        for( Car curCar : carList ) {
+    public void moveForward(List<Car> cars ) {
+        for( Car curCar : cars ) {
             moveForward(curCar);
         }
     }

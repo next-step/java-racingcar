@@ -14,8 +14,8 @@ public class ResultView {
         System.out.println(RESULT_TITLE);
     }
 
-    public void showCarPositions(List<Car> carList) {
-        for( Car curCar : carList ) {
+    public void showCarPositions(List<Car> cars) {
+        for( Car curCar : cars ) {
             showCarPosition(curCar);
         }
         System.out.println();

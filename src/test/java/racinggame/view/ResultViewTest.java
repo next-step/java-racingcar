@@ -48,15 +48,15 @@ public class ResultViewTest {
     @Test
     public void showCarPositions() {
 
-        List<Car> carList = Arrays.asList(
+        List<Car> cars = Arrays.asList(
                 new Car( "pororo", 3 ),
                 new Car( "pobi", 5 ),
                 new Car( "crong", 7 )
         );
 
-        resultView.showCarPositions(carList);
+        resultView.showCarPositions(cars);
 
-        assertEquals( getPrintedCarListPositionString(carList), outputStream.toString() );
+        assertEquals( getPrintedCarListPositionString(cars), outputStream.toString() );
     }
 
     @Test
@@ -113,11 +113,11 @@ public class ResultViewTest {
         assertEquals(expected, outputStream.toString() );
     }
 
-    private String getPrintedCarListPositionString(List<Car> carList) {
+    private String getPrintedCarListPositionString(List<Car> cars) {
 
         StringBuilder sb = new StringBuilder();
 
-        for( Car curCar : carList ) {
+        for( Car curCar : cars ) {
             sb.append(curCar.getName());
             sb.append(" : ");
             sb.append(getPositionString(curCar.getPosition()));

@@ -8,16 +8,16 @@ import static java.util.stream.Collectors.toList;
 
 public class WinnerDecisionService {
 
-    public List<Car> getWinnerList(List<Car> carList) {
-        int maximumPosition = getMaximumPosition(carList);
+    public static List<Car> getWinnerList(List<Car> cars) {
+        int maximumPosition = getMaximumPosition(cars);
 
-        return carList.stream()
+        return cars.stream()
                         .filter(c -> c.getPosition() == maximumPosition)
                         .collect(toList());
     }
 
-    int getMaximumPosition(List<Car> carList) {
-        return carList.stream()
+    static int getMaximumPosition(List<Car> cars) {
+        return cars.stream()
                         .mapToInt(Car::getPosition)
                         .max()
                         .orElse(Car.INITIAL_POSITION);

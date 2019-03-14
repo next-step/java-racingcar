@@ -13,17 +13,21 @@ import java.util.Scanner;
 
 public class RacingGame {
 
-    private List<Car> carList = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
 
-    private RacingGameConfiguration configuration;
+    private Configuration configuration;
 
-    public RacingGame(RacingGameConfiguration configuration) {
+    public RacingGame(Configuration configuration) {
         this.configuration = configuration;
+        initializeCarList();
     }
 
     public static void main(String[] args) {
-        RacingGame racingGame = new RacingGame(new InputView(new Scanner(System.in)).getConfiguration());
-        racingGame.initializeCarList();
+        InputView inputView = new InputView(new Scanner(System.in));
+        String[] carNames = inputView.getCarNames();
+        Integer numberOfTries = inputView.getNumberOfTries();
+
+        RacingGame racingGame = new RacingGame(new Configuration(carNames, numberOfTries));
 
         ResultView resultView = new ResultView();
         racingGame.proceed(resultView);
@@ -32,7 +36,7 @@ public class RacingGame {
 
     private void initializeCarList() {
         for( String name : configuration.getCarNames() ) {
-            carList.add( new Car(name) );
+            cars.add( new Car(name) );
         }
     }
 
@@ -40,16 +44,15 @@ public class RacingGame {
         CarAdvanceService carAdvanceService = new CarAdvanceService(new RandomValueGeneratorImpl());
 
         resultView.showResultTitle();
-        resultView.showCarPositions(carList);
+        resultView.showCarPositions(cars);
         for( int i = 0, numberOfTries = configuration.getNumberOfTries(); i < numberOfTries; ++i ) {
-            carAdvanceService.moveForward(carList);
-            resultView.showCarPositions(carList);
+            carAdvanceService.moveForward(cars);
+            resultView.showCarPositions(cars);
         }
     }
 
     private void showWinners(ResultView resultView) {
-        WinnerDecisionService winnerDecisionService = new WinnerDecisionService();
-        List<Car> winnerList = winnerDecisionService.getWinnerList(carList);
+        List<Car> winnerList = WinnerDecisionService.getWinnerList(cars);
         resultView.showWinners(winnerList);
     }
 

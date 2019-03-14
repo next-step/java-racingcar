@@ -1,11 +1,11 @@
 package racinggame;
 
-public class RacingGameConfiguration {
+public class Configuration {
 
-    private String [] carNames;
+    private String[] carNames;
     private int numberOfTries;
 
-    public RacingGameConfiguration(String [] carNames, int numberOfTries) {
+    public Configuration(String[] carNames, int numberOfTries) {
         this.carNames = carNames;
         this.numberOfTries = numberOfTries;
     }
