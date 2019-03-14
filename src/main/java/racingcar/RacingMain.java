@@ -6,6 +6,6 @@ public class RacingMain {
         int tryNo = InputView.getTryNo();
         RacingGame racingGame = new RacingGame(carNames, tryNo);
         RacingResult result = new RacingResult();
-        result.executionResult(racingGame.getTRY_CNT(), racingGame.getRacingCars());
+        result.executionResult(racingGame.getTryCnt(), racingGame.getRacingCars());
     }
 }

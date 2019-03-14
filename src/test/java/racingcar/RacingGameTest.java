@@ -21,7 +21,7 @@ public class RacingGameTest {
     @Test
     public void 시도횟수를입력한다() {
         racingGame = new RacingGame(2, 4);
-        assertThat(4).isEqualTo(racingGame.getTRY_CNT());
+        assertThat(4).isEqualTo(racingGame.getTryCnt());
     }
 
     @Test
