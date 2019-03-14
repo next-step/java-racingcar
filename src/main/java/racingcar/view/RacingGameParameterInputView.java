@@ -3,10 +3,8 @@ package racingcar.view;
 import org.apache.commons.lang3.StringUtils;
 import racingcar.vo.RacingGameParameter;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class RacingGameParameterInputView {
     private static final int MINIMUM_ROUND = 1;
@@ -20,7 +18,7 @@ public class RacingGameParameterInputView {
             int totalRound = readTotalRound(scanner);
             System.out.println();
 
-            List<String> carNames = convertCarNamesStringToList(carNamesString);
+            List<String> carNames = CarNameParser.parseCommaCarNamesString(carNamesString);
             return new RacingGameParameter(carNames, totalRound);
         }
     }
@@ -46,12 +44,4 @@ public class RacingGameParameterInputView {
 
         return totalRound;
     }
-
-
-    private static List<String> convertCarNamesStringToList(String carNamesString) {
-        return Arrays.stream(carNamesString.split(","))
-                .map(String::trim)
-                .collect(Collectors.toList());
-    }
-
 }
