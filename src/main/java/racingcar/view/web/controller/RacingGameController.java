@@ -2,12 +2,11 @@ package racingcar.view.web.controller;
 
 import racingcar.domain.car.Car;
 import racingcar.domain.car.CarRegistration;
-import racingcar.domain.dto.ResponseDto;
 import racingcar.domain.race.RacingGame;
 import racingcar.domain.race.Ranking;
+import racingcar.view.util.ResultView;
 import racingcar.view.web.TemplateEngine;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,24 +54,18 @@ public class RacingGameController {
     public static void game() {
         //result.html
         get("/result", (request, response) -> {
-            String turn = request.queryParams(TURN);
-            RacingGame racingGame = new RacingGame(Integer.parseInt(turn));
+            int turn = Integer.parseInt(request.queryParams(TURN));
+            RacingGame racingGame = new RacingGame(turn);
 
             //car List를 CarRegistration 인스턴스 변수로 선언하고 getter 사용
             List<Car> cars = racingGame.game(CarRegistration.getCars());
 
-
-            //TODO : Stream 사용방법 찾아보기..
-            List<ResponseDto> responseDtos = new ArrayList<>();
-            for (Car car : cars) {
-                responseDtos.add(new ResponseDto(car.getName(), car.getPosition()));
-            }
-
             Map<String, Object> model = new HashMap<>();
-            model.put(CARS, responseDtos);
+            model.put(CARS, cars);
 
             //winner는 String으로 결과 만들어서 넘김
-            model.put(WINNERS, Ranking.findWinner(cars));
+            String winners = ResultView.winner(Ranking.findWinner(cars));
+            model.put(WINNERS, winners);
 
             return TemplateEngine.render(model, RESULT_PAGE);
         });

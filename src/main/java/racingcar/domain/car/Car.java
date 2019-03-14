@@ -8,7 +8,8 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car o) {
-        return Integer.compare(o.position, this.position);
+        //A compare To B, 순차정렬
+        return Integer.compare(this.position, o.position);
     }
 
     public Car(String name) {

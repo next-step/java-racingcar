@@ -44,12 +44,19 @@ public enum Operator {
 
         //TODO : 2Depth / if 조건문 분리하기
         for (Operator operator : operators) {
-            if(operator.value.equals(expression)) {
+            if(findOperator(operator, expression)) {
                 return operator;
             }
         }
 
         //TODO : Optional 사용해서 개선해보기
         return null;
+    }
+
+    private static boolean findOperator(Operator operator, String expression) {
+        if(operator.value.equals(expression)) {
+            return true;
+        }
+        return false;
     }
 }

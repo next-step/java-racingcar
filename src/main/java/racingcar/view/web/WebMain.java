@@ -3,6 +3,7 @@ package racingcar.view.web;
 import racingcar.view.web.controller.RacingGameController;
 
 import static spark.Spark.port;
+import static spark.Spark.staticFiles;
 
 public class WebMain {
 

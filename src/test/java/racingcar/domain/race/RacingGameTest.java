@@ -1,8 +1,13 @@
 package racingcar.domain.race;
 
+import org.junit.Before;
+import org.junit.Test;
 import racingcar.domain.car.Car;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
 
@@ -19,31 +24,28 @@ public class RacingGameTest {
     private RacingGame racingGame;
     private List<Car> cars = null;
 
-//TODO: 다른 테스트 찾아보기,  구조 개선에 따라 테스트 불가
+    @Before
+    public void setUp() throws Exception {
 
-//    @Before
-//    public void setUp() throws Exception {
-//
-//        cars = new ArrayList<Car>();
-//
-//        Car car1 = new Car("po");
-//        Car car2 = new Car("jo");
-//        Car car3 = new Car("gu");
-//        Car car4 = new Car("yo");
-//
-//        cars.add(car1);
-//        cars.add(car2);
-//        cars.add(car3);
-//        cars.add(car4);
-//    }
-//
-//    @Test
-//    public void 순위_정렬_확인() {
-//
-//        racingGame = new RacingGame(1);
-//        cars = racingGame.game(cars);
-//
-//        assertThat(cars.get(0).compareTo(cars.get(1))).isEqualTo(-1);
-//        assertThat(cars.get(2).compareTo(cars.get(3))).isEqualTo(0);
-//    }
+        cars = new ArrayList<Car>();
+
+        Car car1 = new Car("po");
+        Car car2 = new Car("jo");
+        Car car3 = new Car("gu");
+        Car car4 = new Car("yo");
+
+        cars.add(car1);
+        cars.add(car2);
+        cars.add(car3);
+        cars.add(car4);
+    }
+
+    @Test
+    public void move_1회() {
+        racingGame = new RacingGame(5);
+        racingGame.move(cars);
+
+        System.out.println(cars.get(0).getPosition());
+        assertThat(cars.get(0).getPosition()).isGreaterThanOrEqualTo(0);
+    }
 }
