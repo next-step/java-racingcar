@@ -11,13 +11,13 @@ import java.util.Map;
 
 public class WebView {
 
-    private static WebResult webResult;
+    private WebResult webResult;
 
-    public static String render(Map<String, Object> model, String templatePath) {
+    public String render(Map<String, Object> model, String templatePath) {
         return new HandlebarsTemplateEngine().render(new ModelAndView(model, templatePath));
     }
 
-    public static WebResult makeCarInfo(List<Car> cars) {
+    public WebResult makeCarInfo(List<Car> cars) {
         webResult = new WebResult();
 
         Map<String, List<Integer>> resultMap = new HashMap<>();
@@ -31,7 +31,7 @@ public class WebView {
         return webResult;
     }
 
-    public static List<Integer> makeCarMoveDistance(Car car) {
+    public List<Integer> makeCarMoveDistance(Car car) {
         List<Integer> moves = new ArrayList<>();
         for (int i = 0; i < car.getTotalDistance(); i++) {
             moves.add(1);
@@ -39,14 +39,12 @@ public class WebView {
         return moves;
     }
 
-    public static void makeWinnerNameString(List<Car> winners) {
+    public String makeWinnerNameString(List<Car> winners) {
         String winnersName = "";
         for (Car car : winners) {
             winnersName += car.getName();
             winnersName += ",";
         }
-        winnersName = winnersName.substring(0, winnersName.length() - 1);
-
-        webResult.setWinners(winnersName);
+        return winnersName.substring(0, winnersName.length() - 1);
     }
 }

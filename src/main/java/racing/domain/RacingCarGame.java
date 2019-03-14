@@ -7,15 +7,11 @@ public class RacingCarGame {
 
     private List<Car> cars;
 
-    private List<List<Car>> roundHistory;
-
     public RacingCarGame() {
-        this.roundHistory = new ArrayList<>();
     }
 
     public RacingCarGame(List<Car> cars) {
         this.cars = cars;
-        this.roundHistory = new ArrayList<>();
     }
 
     public List<Car> createCars(String[] names) {
@@ -37,7 +33,6 @@ public class RacingCarGame {
             boolean isMoved = car.move();
             storeRoundHistory(movedCars, car, isMoved);
         }
-        roundHistory.add(movedCars);
 
         return this.cars;
     }
@@ -46,9 +41,5 @@ public class RacingCarGame {
         if (isMoved) {
             movedCars.add(car);
         }
-    }
-
-    public List<List<Car>> getRoundHistory() {
-        return roundHistory;
     }
 }
