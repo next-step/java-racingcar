@@ -2,6 +2,7 @@ package racingcar;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,9 +33,9 @@ public class RacingGameTest {
     @Test
     public void 모든_차량_이동() {
         RacingGame racingGame = new RacingGame(carNames);
-        List<Car> carPositions = racingGame.move(new RandomUtil(4,9));
+        List<Car> cars = racingGame.move(new RandomUtil(4,9));
 
-        for(Car car : carPositions) {
+        for(Car car : cars) {
             assertThat(car.getPosition()).isEqualTo(1);
         }
     }
@@ -42,9 +43,9 @@ public class RacingGameTest {
     @Test
     public void 모든_차량_이동안함() {
         RacingGame racingGame = new RacingGame(carNames);
-        List<Car> carPositions = racingGame.move(new RandomUtil(0,3));
+        List<Car> cars = racingGame.move(new RandomUtil(0,3));
 
-        for(Car car : carPositions) {
+        for(Car car : cars) {
             assertThat(car.getPosition()).isEqualTo(0);
         }
     }

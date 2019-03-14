@@ -1,7 +1,9 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
+import sun.awt.ConstrainableGraphics;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private static final int RANDOM_FROM = 0;
@@ -12,6 +14,7 @@ public class RacingGame {
 
     public RacingGame(String[] carNames) {
         int carNumber = carNames.length;
+
         cars = new ArrayList<>(carNumber);
         for(int i = 0; i < carNumber; i++) {
             cars.add(new Car(carNames[i]));
@@ -24,6 +27,9 @@ public class RacingGame {
         for(int i = 0; i < inputTimes; i++) {
             ResultView.viewCars(move(new RandomUtil(RANDOM_FROM, RANDOM_TO)));
         }
+
+        GameResult gameResult = new GameResult();
+        ResultView.viewWinner(gameResult.getWinner(cars));
     }
 
     public List<Car> move(RandomUtil randomUtil) {
