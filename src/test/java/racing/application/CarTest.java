@@ -8,7 +8,7 @@ public class CarTest {
 
     @Test
     public void 한칸이동() {
-        Car car = new Car();
+        Car car = new Car("차");
 
         car.move();
 

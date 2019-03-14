@@ -4,44 +4,45 @@ import racing.view.RacingCarsView;
 import racing.view.RacingRequestView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
+    private Condition condition;
     private int time;
     private List<Car> cars = new ArrayList();
-    private List<RacingCarsView> history = new ArrayList();
 
-    public RacingGame(RacingRequestView view) {
+    public RacingGame(RacingRequestView view, Condition condition) {
         for (int i = 0; i < view.getCarCount(); i++) {
-            cars.add(new Car());
+            cars.add(new Car(view.getCarName(i)));
         }
 
         this.time = view.getGameCount();
+        this.condition = condition;
     }
 
-    public void start(Game game) {
+    public RacingGameResult start() {
+        RacingGameResult result = new RacingGameResult();
         for (int i = 0; i < time; i++) {
-            turn(game);
-            history.add(getView());
+            turn();
+            result.addHistory(getViews());
         }
+
+        return result.judge(cars);
     }
 
-    private void turn(Game game) {
-        cars.stream().forEach(car -> play(game, car));
+    private void turn() {
+        cars.stream().forEach(this::play);
     }
 
-    private void play(Game game, Car car) {
-        if (game.win()) {
+    private void play(Car car) {
+        if (condition.check()) {
             car.move();
         }
     }
 
-    public RacingCarsView getView() {
-        return RacingCarsView.toRacingCarsView(cars);
-    }
-
-    public List<RacingCarsView> getHistory() {
-        return history;
+    public RacingCarsView getViews() {
+        return RacingCarsView.toRacingCarsView(Collections.unmodifiableList(cars));
     }
 }
 

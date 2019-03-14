@@ -1,14 +1,11 @@
 package racing.application;
 
 import org.junit.Test;
-import racing.infrastructure.RandomGame;
 import racing.view.RacingRequestView;
 
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 
 public class RacingGameTest {
@@ -35,15 +32,20 @@ public class RacingGameTest {
     @Test
     public void 한명이_게임_한번_실행() {
         //given
-        RacingRequestView requestView = new RacingRequestView(1, 3);
-        RacingGame racingGame = new RacingGame(requestView);
-        RandomGame randomGame = mock(RandomGame.class);
-        when(randomGame.win()).thenReturn(true);
+        RacingRequestView requestView = new RacingRequestView("차", 3);
+        RacingGame game = new RacingGame(requestView, new TrueCondition());
 
         //when
-        racingGame.start(randomGame);
+        game.start();
 
         //then
-        assertThat(racingGame.getView().getPositions().get(0)).isEqualTo(4);
+        assertThat(game.getViews().getPositions().get(0)).isEqualTo(4);
+    }
+}
+
+class TrueCondition implements Condition {
+    @Override
+    public boolean check() {
+        return true;
     }
 }
