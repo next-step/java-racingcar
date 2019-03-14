@@ -2,23 +2,21 @@ package racingcar.domain;
 
 import racingcar.vo.RacingGameRound;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGameInfo {
     private static final int FIRST_ROUND = 1;
 
-    private List<Car> cars;
+    private RacingCarGroup racingCarGroup;
     private RacingGameRound racingGameRound;
 
-    public RacingGameInfo(List<Car> cars, RacingGameRound racingGameRound) {
-        this.cars = cars;
+    public RacingGameInfo(RacingCarGroup racingCarGroup, RacingGameRound racingGameRound) {
+        this.racingCarGroup = racingCarGroup;
         this.racingGameRound = racingGameRound;
     }
 
     public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
+        return this.racingCarGroup.getCars();
     }
 
     public RacingGameRound getRacingGameRound() {
@@ -38,16 +36,16 @@ public class RacingGameInfo {
     }
 
     public void initialize() {
-        this.cars = this.cars.stream()
-                .map(Car::getName)
-                .map(Car::new)
-                .collect(Collectors.toList());
-
+        this.racingCarGroup.initialize();
         setCurrentRound(FIRST_ROUND);
     }
 
     private void setCurrentRound(int currentRound) {
         int totalRound = this.racingGameRound.getTotalRound();
         this.racingGameRound = new RacingGameRound(totalRound, currentRound);
+    }
+
+    public void moveCars() {
+        this.racingCarGroup.go();
     }
 }

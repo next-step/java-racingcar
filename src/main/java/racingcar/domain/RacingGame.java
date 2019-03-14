@@ -11,18 +11,20 @@ import java.util.stream.Collectors;
 
 public class RacingGame {
     private RacingGameInfo racingGameInfo;
-    private RandomIntGenerator randomIntGenerator;
 
     public RacingGame(RacingGameParameter parameter) {
         this(parameter, new PositiveIntUnder10Generator());
     }
 
     public RacingGame(RacingGameParameter parameter, RandomIntGenerator randomIntGenerator) {
-        List<Car> cars = carSetUp(parameter.getCarNames());
+        RacingCarGroup racingCarGroup = racingCarGroupSetUp(parameter.getCarNames(), randomIntGenerator);
         RacingGameRound racingGameRound = new RacingGameRound(parameter.getTotalRound());
 
-        this.racingGameInfo = new RacingGameInfo(cars, racingGameRound);
-        this.randomIntGenerator = randomIntGenerator;
+        this.racingGameInfo = new RacingGameInfo(racingCarGroup, racingGameRound);
+    }
+
+    private RacingCarGroup racingCarGroupSetUp(List<String> carNames, RandomIntGenerator randomIntGenerator) {
+        return new RacingCarGroup(carSetUp(carNames), randomIntGenerator);
     }
 
     private List<Car> carSetUp(List<String> carNames) {
@@ -61,12 +63,7 @@ public class RacingGame {
     }
 
     private void moveCars() {
-        List<Car> cars = getCars();
-
-        cars.forEach(car -> {
-            int randomInt = this.randomIntGenerator.getRandomInt();
-            car.goWhenGreaterThanThreshold(randomInt);
-        });
+        this.racingGameInfo.moveCars();
     }
 
     private List<Car> copyCarList() {

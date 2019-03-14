@@ -13,18 +13,16 @@ public class RacingGameInfoTest {
 
     private List<String> carNames = Arrays.asList("pobi", "crong", "honux");
     private int totalRound = 5;
+    private List<Car> cars = carNames.stream().map(Car::new).collect(Collectors.toList());
 
     @Test
     public void 다음_라운드_여부_확인() {
         // give
-        List<Car> cars = carNames.stream()
-                .map(Car::new)
-                .collect(Collectors.toList());
-
+        RacingCarGroup racingCarGroup = new RacingCarGroup(cars);
         RacingGameRound racingGameRound = new RacingGameRound(totalRound);
 
         // when
-        RacingGameInfo racingGameInfo = new RacingGameInfo(cars, racingGameRound);
+        RacingGameInfo racingGameInfo = new RacingGameInfo(racingCarGroup, racingGameRound);
 
         // then
         assertThat(racingGameInfo.hasNextRound()).isTrue();
@@ -39,16 +37,13 @@ public class RacingGameInfoTest {
     @Test
     public void RacingGameInfo_초기화() {
         // given
-        List<Car> cars = carNames.stream()
-                .map(Car::new)
-                .collect(Collectors.toList());
-        int value = Car.MOVE_THRESHOLD + 1;
-        cars.forEach(car -> car.goWhenGreaterThanThreshold(value));
-
+        cars.forEach(Car::go);
         int currentRound = 3;
 
+        RacingCarGroup racingCarGroup = new RacingCarGroup(cars);
         RacingGameRound racingGameRound = new RacingGameRound(totalRound, currentRound);
-        RacingGameInfo racingGameInfo = new RacingGameInfo(cars, racingGameRound);
+
+        RacingGameInfo racingGameInfo = new RacingGameInfo(racingCarGroup, racingGameRound);
 
         // when
         racingGameInfo.initialize();
