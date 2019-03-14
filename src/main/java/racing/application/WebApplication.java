@@ -49,6 +49,7 @@ public class WebApplication {
             //set result model
             WebResult webResult = WebView.makeCarInfo(cars);
             WebView.makeWinnerNameString(winners);
+            webResult.setRoundHistory(racingCarGame.getRoundHistory());
 
             Map<String, Object> model = new HashMap<>();
             model.put("result", webResult);
