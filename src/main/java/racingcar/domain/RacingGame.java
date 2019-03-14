@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import racingcar.domain.Car;
 import racingcar.rulemanager.RandomNumberLessThanTen;
 import racingcar.rulemanager.RuleManager;
 import racingcar.view.RacingResult;

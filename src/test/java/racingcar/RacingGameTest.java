@@ -7,7 +7,7 @@ import racingcar.domain.RacingGame;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RacingCarTest {
+public class RacingGameTest {
     String carNames = "가가, 나나,  다다";
     int moveCount = 3;
 
@@ -32,7 +32,7 @@ public class RacingCarTest {
 
 
     @Test
-    public void 움직임이_가능한_랜던값_일때_모든_자동차들이_이동하지않는다() {
+    public void 움직임이_불가능한_랜던값_일때_모든_자동차들이_이동하지않는다() {
         RacingGame racingGame = new RacingGame(carNames, new ImMovableGetRandomNum());
         racingGame.startRace();
         racingGame.startRace();

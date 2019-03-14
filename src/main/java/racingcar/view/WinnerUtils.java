@@ -12,19 +12,21 @@ public class WinnerUtils {
         List<Car> winners = new ArrayList<>();
         int highScore = getHighScore(racingResult.getCars());
         for (Car car : racingResult.getCars()) {
-            if (car.isHighScore(highScore)) {
-                winners.add(car);
-            }
+            addWinners(winners, highScore, car);
         }
         return winners;
     }
 
-    private static int getHighScore(List<Car> cars) {
+    private static void addWinners(List<Car> winners, int highScore, Car car) {
+        if (car.isHighScore(highScore)) {
+            winners.add(car);
+        }
+    }
+
+    public static int getHighScore(List<Car> cars) {
         int highScore = 0;
         for (Car car : cars) {
-            if (car.compareToHighScore(highScore)) {
-                highScore = car.getMovingDistance();
-            }
+            highScore = car.compareToHighScore(highScore);
         }
         return highScore;
     }
