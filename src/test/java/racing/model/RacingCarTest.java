@@ -43,4 +43,11 @@ public class RacingCarTest {
         assertThat(carPositionedAt2.compareTo(carPositionedAt0))
                 .isGreaterThan(0);
     }
+
+    @Test
+    public void test_복사_동일성() {
+        RacingCar car = new RacingCar();
+        RacingCar copy = new RacingCar(car);
+        assertThat(car).isNotSameAs(copy);
+    }
 }

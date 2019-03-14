@@ -8,6 +8,11 @@ public class NamedRacingCar extends RacingCar {
         this.name = name;
     }
 
+    public NamedRacingCar(RacingCar racingCar) {
+        super(racingCar);
+        name = racingCar.toString();
+    }
+
     @Override
     public String toString() {
         return name;
