@@ -21,7 +21,10 @@ public class ConsoleApplication {
         //레이싱
         RacingCarGame racingCarGame = new RacingCarGame();
         List<Car> cars = racingCarGame.createCars(names);
-        racingCarGame.startRacing(roundCnt);
+        for (int i = 0; i < roundCnt; i++) {
+            cars = racingCarGame.startRound(cars);
+            ConsoleView.viewRound(cars);
+        }
 
         //랭킹
         RacingCarRank racingCarRank = new RacingCarRank();

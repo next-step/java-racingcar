@@ -36,4 +36,18 @@ public class ConsoleView {
 
         return Integer.parseInt(scanner.nextLine());
     }
+
+    public static void viewRound(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.print(car.getName() + ": ");
+
+            int moveDistance = car.getTotalDistance();
+
+            viewCarMoveInfo(moveDistance);
+
+            System.out.println();
+        }
+
+        System.out.println();
+    }
 }

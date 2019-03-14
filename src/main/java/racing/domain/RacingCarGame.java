@@ -1,7 +1,5 @@
 package racing.domain;
 
-import racing.view.ConsoleView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,25 +24,12 @@ public class RacingCarGame {
         return cars;
     }
 
-    public List<Car> startRacing(int round) {
-        for (int i = 0; i < round; i++) {
-            startRound();
-
-            System.out.println();
-        }
-
-        return cars;
-    }
-
-    public void startRound() {
+    public List<Car> startRound(List<Car> cars) {
+        this.cars = cars;
         for (Car car : cars) {
-            System.out.print(car.getName() + ": ");
-
-            int moveDistance = car.move();
-
-            ConsoleView.viewCarMoveInfo(moveDistance);
-
-            System.out.println();
+            car.move();
         }
+
+        return this.cars;
     }
 }

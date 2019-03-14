@@ -5,8 +5,12 @@ import racing.domain.RacingCarGame;
 import racing.domain.RacingCarRank;
 import racing.view.CommonView;
 import racing.view.WebView;
+import racing.view.WebResult;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static spark.Spark.*;
 
@@ -30,26 +34,28 @@ public class WebApplication {
             Map<String, Object> model = new HashMap<>();
             model.put("cars", cars);
 
-            return WebView.render(model, "game.html");
+            WebView webView = new WebView();
+            return webView.render(model, "game.html");
         });
 
         get("/result", (req, res) -> {
 
             RacingCarGame racingCarGame = new RacingCarGame(cars);
-            racingCarGame.startRacing(Integer.parseInt(req.queryParams("turn")));
-
-            for (Car car : cars) {
-                WebView.setView(car);
+            for (int i = 0; i < Integer.parseInt(req.queryParams("turn")); i++) {
+                cars = racingCarGame.startRound(cars);
             }
 
             RacingCarRank racingCarRank = new RacingCarRank();
             List<Car> winners = racingCarRank.rankCars(new ArrayList<>(cars));
 
-            Map<String, Object> model = new HashMap<>();
-            model.put("cars", cars);
-            model.put("winners", WebView.makeWinnerNameString(winners));
+            WebView webView = new WebView();
+            WebResult webResult = webView.setView(cars);
+            webView.makeWinnerNameString(winners);
 
-            return WebView.render(model, "result.html");
+            Map<String, Object> model = new HashMap<>();
+            model.put("result", webResult);
+
+            return webView.render(model, "result.html");
         });
     }
 

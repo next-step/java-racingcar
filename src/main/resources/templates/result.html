@@ -61,12 +61,12 @@
             <div class="form-show-div" class="form-group">
                 <h3>결과입니다</h3>
                 (이름마다 띄어쓰기로 구분해 주세요.)
-                {{#each cars as |car|}}
-                <div id={{name}}>{{car.name}} : {{#each moves as |car.moves|}}&nbsp;{{/each}}&#128652;</div>
+                {{#each result.cars as |car|}}
+                <div id={{name}}>{{@key}} : {{#each this}}&nbsp;{{/each}}&#128652;</div>
                 {{/each}}
                 <br />
 
-                <div>{{winners}} 이 우승했습니다.</div>
+                <div>{{result.winners}} 이 우승했습니다.</div>
 
             </div>
         </div>

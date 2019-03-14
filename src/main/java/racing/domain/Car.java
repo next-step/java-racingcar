@@ -1,6 +1,5 @@
 package racing.domain;
 
-import java.util.List;
 import java.util.Random;
 
 public class Car implements Comparable<Car> {
@@ -14,8 +13,6 @@ public class Car implements Comparable<Car> {
     private String name;
 
     private Integer totalDistance = 0;
-
-    private List<Integer> moves;
 
     public Car() {
     }
@@ -48,14 +45,6 @@ public class Car implements Comparable<Car> {
 
     public Integer getTotalDistance() {
         return totalDistance;
-    }
-
-    public List<Integer> getMoves() {
-        return moves;
-    }
-
-    public void setMoves(List<Integer> moves) {
-        this.moves = moves;
     }
 
     @Override
