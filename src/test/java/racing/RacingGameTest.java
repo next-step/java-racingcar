@@ -25,15 +25,11 @@ public class RacingGameTest {
 
     // When
     RacingGame racingGame = new RacingGame(testInputView, randomGenerator);
-    List<Car> cars = racingGame.game();
+    WinnerCars winnerCars = racingGame.game();
 
     // Then
-    assertThat(cars.get(0).getName()).isEqualTo(carNamePobi);
-    assertThat(cars.get(0).getPosition()).isEqualTo(5);
-    assertThat(cars.get(1).getName()).isEqualTo(carNameCrong);
-    assertThat(cars.get(1).getPosition()).isEqualTo(5);
-    assertThat(cars.get(2).getName()).isEqualTo(carNameHonux);
-    assertThat(cars.get(2).getPosition()).isEqualTo(5);
+    assertThat(winnerCars.getWinnerNames())
+        .isEqualTo(carNamePobi + ", " + carNameCrong + ", " + carNameHonux);
   }
 
   @Test
@@ -47,21 +43,18 @@ public class RacingGameTest {
     int pobiPosition = 2;
     int crongPosition = 5;
     int honuxPosition = 3;
-    TestRandomGenerator randomGenerator = new TestRandomGenerator(true);
     List<Car> cars = Arrays.asList(
-        new TestCar(randomGenerator, carNamePobi, pobiPosition),
-        new TestCar(randomGenerator, carNameCrong, crongPosition),
-        new TestCar(randomGenerator, carNameHonux, honuxPosition)
+        TestCar.ofWithTrueRandomGenerator(carNamePobi, pobiPosition),
+        TestCar.ofWithTrueRandomGenerator(carNameCrong, crongPosition),
+        TestCar.ofWithTrueRandomGenerator(carNameHonux, honuxPosition)
     );
 
     // When
     RacingGame racingGame = new RacingGame(new InputView());
-    List<Car> winnerCars = racingGame.winner(cars);
+    WinnerCars winnerCars = racingGame.winner(cars);
 
     // Then
-    assertThat(winnerCars.size()).isEqualTo(1);
-    assertThat(winnerCars.get(0).getName()).isEqualTo(carNameCrong);
-    assertThat(winnerCars.get(0).getPosition()).isEqualTo(crongPosition);
+    assertThat(winnerCars.getWinnerNames()).isEqualTo(carNameCrong);
   }
 
   @Test
@@ -75,23 +68,19 @@ public class RacingGameTest {
     int pobiPosition = 5;
     int crongPosition = 3;
     int honuxPosition = 5;
-    TestRandomGenerator randomGenerator = new TestRandomGenerator(true);
     List<Car> cars = Arrays.asList(
-        new TestCar(randomGenerator, carNamePobi, pobiPosition),
-        new TestCar(randomGenerator, carNameCrong, crongPosition),
-        new TestCar(randomGenerator, carNameHonux, honuxPosition)
+        TestCar.ofWithTrueRandomGenerator(carNamePobi, pobiPosition),
+        TestCar.ofWithTrueRandomGenerator(carNameCrong, crongPosition),
+        TestCar.ofWithTrueRandomGenerator(carNameHonux, honuxPosition)
     );
 
     // When
     RacingGame racingGame = new RacingGame(new InputView());
-    List<Car> winnerCars = racingGame.winner(cars);
+    WinnerCars winnerCars = racingGame.winner(cars);
 
     // Then
-    assertThat(winnerCars.size()).isEqualTo(2);
-    assertThat(winnerCars.get(0).getName()).isEqualTo(carNamePobi);
-    assertThat(winnerCars.get(0).getPosition()).isEqualTo(pobiPosition);
-    assertThat(winnerCars.get(1).getName()).isEqualTo(carNameHonux);
-    assertThat(winnerCars.get(1).getPosition()).isEqualTo(honuxPosition);
+    assertThat(winnerCars.getWinnerNames())
+        .isEqualTo(carNamePobi + ", " + carNameHonux);
   }
 
   @Test

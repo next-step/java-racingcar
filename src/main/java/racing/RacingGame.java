@@ -1,10 +1,8 @@
 package racing;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import racing.view.InputView;
 import racing.view.ResultView;
 
@@ -26,7 +24,7 @@ public class RacingGame {
     this.randomGenerator = randomGenerator;
   }
 
-  public List<Car> game() {
+  public WinnerCars game() {
 
     String inputCarNames = inputView.inputCarNames();
     List<Car> cars = generateCars(inputCarNames);
@@ -37,29 +35,15 @@ public class RacingGame {
     return winner(cars);
   }
 
-  List<Car> winner(List<Car> cars) {
+  WinnerCars winner(List<Car> cars) {
 
     ResultView resultView = new ResultView();
-    List<Car> winnerCars = new ArrayList<>();
+    WinnerCars winnerCars = new WinnerCars();
     for (Car car : cars) {
-
-      if (winnerCars.isEmpty()) {
-        winnerCars.add(car);
-        continue;
-      }
-
-      if (winnerCars.get(0).getPosition() > car.getPosition()) {
-        continue;
-      }
-
-      if (winnerCars.get(0).getPosition() < car.getPosition()) {
-        winnerCars = new ArrayList<>();
-      }
-
       winnerCars.add(car);
     }
 
-    resultView.printWinner(winnerCars);
+    resultView.printWinner(winnerCars.getWinnerNames());
     return winnerCars;
   }
 

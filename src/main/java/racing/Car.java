@@ -33,4 +33,12 @@ public class Car {
       position++;
     }
   }
+
+  boolean isWinner(Car car) {
+    return this.position > car.getPosition();
+  }
+
+  boolean isLoser(Car car) {
+    return this.position < car.getPosition();
+  }
 }

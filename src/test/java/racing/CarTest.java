@@ -30,7 +30,7 @@ public class CarTest {
     car.move(minNumber);
 
     // Then
-    assertThat(car.getPosition()).isEqualTo( 1);
+    assertThat(car.getPosition()).isEqualTo(1);
   }
 
   @Test
@@ -44,6 +44,86 @@ public class CarTest {
     car.move(minNumber);
 
     // Then
-    assertThat(car.getPosition()).isEqualTo( 0);
+    assertThat(car.getPosition()).isEqualTo(0);
+  }
+
+  @Test
+  public void test_isWinner_true() {
+
+    // Given
+    String carNamePobi = "pobi";
+    String carNameCrong = "crong";
+
+    int pobiPosition = 5;
+    int crongPosition = 3;
+
+    Car pobiCar = TestCar.ofWithTrueRandomGenerator(carNamePobi, pobiPosition);
+    Car crongCar = TestCar.ofWithTrueRandomGenerator(carNameCrong, crongPosition);
+
+    // When
+    boolean isWinner = pobiCar.isWinner(crongCar);
+
+    // Then
+    assertThat(isWinner).isTrue();
+  }
+
+  @Test
+  public void test_isWinner_false() {
+
+    // Given
+    String carNamePobi = "pobi";
+    String carNameCrong = "crong";
+
+    int pobiPosition = 3;
+    int crongPosition = 5;
+
+    Car pobiCar = TestCar.ofWithTrueRandomGenerator(carNamePobi, pobiPosition);
+    Car crongCar = TestCar.ofWithTrueRandomGenerator(carNameCrong, crongPosition);
+
+    // When
+    boolean isWinner = pobiCar.isWinner(crongCar);
+
+    // Then
+    assertThat(isWinner).isFalse();
+  }
+
+  @Test
+  public void test_isLoser_true() {
+
+    // Given
+    String carNamePobi = "pobi";
+    String carNameCrong = "crong";
+
+    int pobiPosition = 3;
+    int crongPosition = 5;
+
+    Car pobiCar = TestCar.ofWithTrueRandomGenerator(carNamePobi, pobiPosition);
+    Car crongCar = TestCar.ofWithTrueRandomGenerator(carNameCrong, crongPosition);
+
+    // When
+    boolean isLoser = pobiCar.isLoser(crongCar);
+
+    // Then
+    assertThat(isLoser).isTrue();
+  }
+
+  @Test
+  public void test_isLoser_false() {
+
+    // Given
+    String carNamePobi = "pobi";
+    String carNameCrong = "crong";
+
+    int pobiPosition = 5;
+    int crongPosition = 3;
+
+    Car pobiCar = TestCar.ofWithTrueRandomGenerator(carNamePobi, pobiPosition);
+    Car crongCar = TestCar.ofWithTrueRandomGenerator(carNameCrong, crongPosition);
+
+    // When
+    boolean isLoser = pobiCar.isLoser(crongCar);
+
+    // Then
+    assertThat(isLoser).isFalse();
   }
 }
