@@ -24,9 +24,7 @@ public class WebApplication {
         get("/", (req, res) -> "index.html");
 
         post("/name", (req, res) -> {
-
-            String params = req.queryParams("names");
-            String[] names = CommonView.parseCarNames(params);
+            String[] names = CommonView.parseCarNames(req.queryParams("names"));
 
             RacingCarGame racingCarGame = new RacingCarGame();
             cars = racingCarGame.createCars(names);
@@ -34,28 +32,28 @@ public class WebApplication {
             Map<String, Object> model = new HashMap<>();
             model.put("cars", cars);
 
-            WebView webView = new WebView();
-            return webView.render(model, "game.html");
+            return WebView.render(model, "game.html");
         });
 
         get("/result", (req, res) -> {
-
+            //레이싱
             RacingCarGame racingCarGame = new RacingCarGame(cars);
             for (int i = 0; i < Integer.parseInt(req.queryParams("turn")); i++) {
                 cars = racingCarGame.startRound(cars);
             }
 
+            //랭킹
             RacingCarRank racingCarRank = new RacingCarRank();
             List<Car> winners = racingCarRank.rankCars(new ArrayList<>(cars));
 
-            WebView webView = new WebView();
-            WebResult webResult = webView.setView(cars);
-            webView.makeWinnerNameString(winners);
+            //set result model
+            WebResult webResult = WebView.setView(cars);
+            WebView.makeWinnerNameString(winners);
 
             Map<String, Object> model = new HashMap<>();
             model.put("result", webResult);
 
-            return webView.render(model, "result.html");
+            return WebView.render(model, "result.html");
         });
     }
 
