@@ -24,11 +24,11 @@ public class ResultView {
 
     private static List<Map<String, List<Integer>>> convertToStepByStepCarInfo(List<StepResult> history) {
         return history.stream()
-                .map(ResultView::convertToRunningStep)
+                .map(ResultView::convertCarInfo)
                 .collect(Collectors.toList());
     }
 
-    private static Map<String, List<Integer>> convertToRunningStep(StepResult stepResult) {
+    private static Map<String, List<Integer>> convertCarInfo(StepResult stepResult) {
         return stepResult.getCars()
                 .stream()
                 .collect(collectCarInfo());
