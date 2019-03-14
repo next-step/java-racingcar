@@ -2,7 +2,6 @@ package racing.web;
 
 import racing.board.GameResult;
 import racing.board.RacingGameBoard;
-import racing.model.RacingCar;
 import racing.web.view.InputView;
 import racing.web.view.ResultView;
 import spark.ModelAndView;
@@ -12,7 +11,6 @@ import spark.template.handlebars.HandlebarsTemplateEngine;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import static spark.Spark.*;
 
@@ -44,7 +42,7 @@ public class WebApplication {
             int timesOfMoves = InputView.inputTime(request);
             GameResult gameResult = board.start(timesOfMoves);
 
-            HashMap<String, Object> model = new HashMap<>();
+            Map<String, Object> model = new HashMap<>();
             ResultView.viewHistory(model, gameResult.getHistory());
             ResultView.viewWinners(model, gameResult);
 

@@ -1,6 +1,5 @@
 package racing;
 
-import jdk.internal.util.xml.impl.Input;
 import racing.board.GameResult;
 import racing.board.RacingGameBoard;
 import racing.view.InputView;

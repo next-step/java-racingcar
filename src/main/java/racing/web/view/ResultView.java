@@ -4,7 +4,6 @@ import racing.board.GameResult;
 import racing.board.StepResult;
 import racing.model.RacingCar;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collector;
