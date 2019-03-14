@@ -1,9 +1,9 @@
 package racingcar;
 
-import org.junit.Before;
 import org.junit.Test;
 import racingcar.rulemanager.ImMovableGetRandomNum;
 import racingcar.rulemanager.MovableGetRandomNum;
+import racingcar.domain.RacingGame;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

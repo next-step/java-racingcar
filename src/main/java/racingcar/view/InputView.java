@@ -1,7 +1,7 @@
 package racingcar.view;
 
 
-import racingcar.InputReq;
+import racingcar.domain.InputReq;
 
 import java.util.Scanner;
 

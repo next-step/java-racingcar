@@ -1,33 +1,40 @@
 package racingcar.view;
 
-import racingcar.Car;
-import racingcar.RacingResult;
+import racingcar.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class OutputView {
 
-    public static void PrintWinner(List<Car> winners) {
+    public static String getWinnerNames(List<Car> winners) {
         List<String> winnersName = new ArrayList<>();
         for (Car winner : winners) {
             winnersName.add(winner.getName());
         }
-        System.out.println(String.join(",", winnersName) + "가 우승자 입니다.");
+        return   String.join(",", winnersName) + "가 우승자 입니다.";
     }
 
-    public static void printResult(RacingResult racingResult) {
+    public static void racingResultSave(RacingResult racingResult) {
+        List<String> resultList = racingResult.getResultList();
         for (Car car : racingResult.getCars()) {
-            printCarDistance(car);
+            resultList.add(getCarDistance(car));
         }
     }
 
-    private static void printCarDistance(Car car) {
+    public static void consolePrintRacingResult(RacingResult racingResult) {
+        List<String> resultList= racingResult.getResultList();
+        for (String result : resultList) {
+            System.out.println(result);
+        }
+    }
+
+    private static String getCarDistance(Car car) {
         StringBuilder raceResult = new StringBuilder(car.getName() + " : ");
         for (int i = 0; i < car.getMovingDistance(); i++) {
             raceResult.append("-");
         }
-        System.out.println(raceResult.toString());
+        return String.valueOf(raceResult);
     }
 
     public static void printBlankLine() {

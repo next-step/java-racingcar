@@ -1,6 +1,4 @@
-package racingcar;
-
-import java.util.Random;
+package racingcar.domain;
 
 public class Car {
     //이동기능, 이동거리 기록

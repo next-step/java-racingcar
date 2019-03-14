@@ -1,7 +1,9 @@
-package racingcar;
+package racingcar.domain;
 
+import racingcar.domain.Car;
 import racingcar.rulemanager.RandomNumberLessThanTen;
 import racingcar.rulemanager.RuleManager;
+import racingcar.view.RacingResult;
 
 import java.util.ArrayList;
 import java.util.List;
