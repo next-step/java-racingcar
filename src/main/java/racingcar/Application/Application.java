@@ -14,7 +14,8 @@ public class Application {
         for(int round = 0; round < racingGame.getTime(); round++) {
             ResultView.printRoundResult(racingGame.playRound());
         }
-        
-        ResultView.announceWinner(racingGameResult.collectWinners(racingGame.sortCars()));
+
+        racingGameResult.collectWinners(racingGame.sortCars());
+        ResultView.announceWinner(racingGameResult.parsingWinners());
     }
 }
