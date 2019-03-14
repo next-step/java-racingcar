@@ -14,7 +14,7 @@ public class CalculatorTest {
         System.out.println("setup");
     }
 
-    @Test //테스트 실행 순러 랜ㅅ
+    @Test
     public void 덧셈() {
         System.out.println("덧셈");
         int result = Calculator.add(1,3);

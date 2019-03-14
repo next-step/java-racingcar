@@ -35,4 +35,14 @@ public class StringCalculatorTest {
         int result = StringCalculator.calculate("2 + 3 * 4 / 2");
         assertThat(result).isEqualTo(10);
     }
+
+    @Test(expected = IllegalAccessError.class)
+    public void null_입력() {
+        StringCalculator.calculate(null);
+    }
+
+    @Test(expected = IllegalAccessError.class)
+    public void 공백_입력() {
+        StringCalculator.calculate(null);
+    }
 }
