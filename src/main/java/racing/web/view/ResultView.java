@@ -13,11 +13,11 @@ import java.util.stream.IntStream;
 
 public class ResultView {
 
-    public static void viewWinners(HashMap<Object, Object> model, GameResult gameResult) {
+    public static void viewWinners(Map<String, Object> model, GameResult gameResult) {
         model.put("winnerNames", gameResult.getWinners().stream().map(RacingCar::toString).collect(Collectors.joining(", ")));
     }
 
-    public static void viewHistory(HashMap<Object, Object> model, List<StepResult> history) {
+    public static void viewHistory(Map<String, Object> model, List<StepResult> history) {
         model.put("stepByStep", convertToStepByStepCarInfo(history));
     }
 

@@ -44,7 +44,7 @@ public class WebApplication {
             int timesOfMoves = InputView.inputTime(request);
             GameResult gameResult = board.start(timesOfMoves);
 
-            HashMap<Object, Object> model = new HashMap<>();
+            HashMap<String, Object> model = new HashMap<>();
             ResultView.viewHistory(model, gameResult.getHistory());
             ResultView.viewWinners(model, gameResult);
 
