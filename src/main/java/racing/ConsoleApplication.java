@@ -1,20 +1,21 @@
 package racing;
 
+import jdk.internal.util.xml.impl.Input;
 import racing.board.GameResult;
 import racing.board.RacingGameBoard;
 import racing.view.InputView;
 import racing.view.ResultView;
 
-public class Application {
+public class ConsoleApplication {
 
     private RacingGameBoard gameBoard;
 
-    public Application() {
+    public ConsoleApplication() {
         this.gameBoard = new RacingGameBoard();
     }
 
     public static void main(String[] args) {
-        Application app = new Application();
+        ConsoleApplication app = new ConsoleApplication();
         app.run();
     }
 
@@ -22,7 +23,9 @@ public class Application {
         gameBoard.createCars(InputView.inputNames());
         int timesOfMoves = InputView.inputTime();
 
+        ResultView.viewGameStart();
         GameResult gameResult = gameBoard.start(timesOfMoves);
+        ResultView.viewHistory(gameResult.getHistory());
         ResultView.viewWinners(gameResult);
     }
 }
