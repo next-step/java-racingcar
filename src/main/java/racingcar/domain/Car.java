@@ -17,7 +17,7 @@ public class Car implements Comparable<Car> {
     public String getName() {
         return name;
     }
-    
+
     public void move(int newPosition) {
         if(ADVANCE_CONDITION < newPosition) {
             this.position++;
