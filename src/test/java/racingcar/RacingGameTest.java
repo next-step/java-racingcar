@@ -1,6 +1,9 @@
 package racingcar;
 
 import org.junit.Test;
+import racingcar.domain.Car;
+import racingcar.domain.RacingGame;
+import racingcar.utils.FixedNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;

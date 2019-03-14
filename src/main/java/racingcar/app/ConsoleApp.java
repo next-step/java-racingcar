@@ -1,9 +1,16 @@
-package racingcar;
+package racingcar.app;
+
+import racingcar.domain.Car;
+import racingcar.domain.RacingGame;
+import racingcar.domain.Referee;
+import racingcar.utils.RandomNumberGenerator;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Demo {
+public class ConsoleApp {
     public static void main(String[] args) {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
