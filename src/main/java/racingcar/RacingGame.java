@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private static final int RANDOM_FROM = 9;
-    private static final int RANDOM_TO = 0;
-    private static final int MOVE_DIFFIULTY = 4;
+    private static final int RANDOM_FROM = 0;
+    private static final int RANDOM_TO = 9;
+    private static final int MOVE_DIFFICULTY = 4;
 
     private List<Car> carPositions;
 
@@ -28,8 +28,7 @@ public class RacingGame {
     public List<Car> move(RandomUtil randomUtil) {
         for(Car car: carPositions) {
             int randomNumber = randomUtil.randomInt();
-            System.out.println(randomNumber);
-            car.moveCarByRandomNumber(MOVE_DIFFIULTY, randomNumber);
+            car.moveCarByRandomNumber(MOVE_DIFFICULTY, randomNumber);
         }
         return carPositions;
     }
