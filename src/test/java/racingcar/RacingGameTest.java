@@ -5,21 +5,36 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertTrue;
 
 public class RacingGameTest {
 
     @Test
-    public void move_테스트() {
-        int carNumber = 3;
+    public void 레이싱_게임_차량_초기화() {
+        int carNumber = 4;
         RacingGame racingGame = new RacingGame(carNumber);
-        List<Car> carPositions = racingGame.move();
 
-        assertThat(carPositions.size()).isEqualTo(carNumber);
-        ResultView.viewCars(carPositions);
-        assertTrue(carPositions
-                .stream()
-                .anyMatch (car -> car.getPosition() == 0 || car.getPosition() == 1 ));
+        assertThat(racingGame.getCarPositions()).hasSize(carNumber);
     }
 
+    @Test
+    public void 모든_차량_이동() {
+        int carNumber = 3;
+        RacingGame racingGame = new RacingGame(carNumber);
+        List<Car> carPositions = racingGame.move(new RandomUtil(4,9));
+
+        for(Car car : carPositions) {
+            assertThat(car.getPosition()).isEqualTo(1);
+        }
+    }
+
+    @Test
+    public void 모든_차량_이동안함() {
+        int carNumber = 3;
+        RacingGame racingGame = new RacingGame(carNumber);
+        List<Car> carPositions = racingGame.move(new RandomUtil(0,3));
+
+        for(Car car : carPositions) {
+            assertThat(car.getPosition()).isEqualTo(0);
+        }
+    }
 }

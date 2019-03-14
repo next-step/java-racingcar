@@ -8,16 +8,37 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarTest {
 
     @Test
+    public void 차_생성시_초기값_0() {
+        Car car = new Car();
+        int position = car.getPosition();
+        assertThat(car).isNotNull();
+        assertThat(position).isEqualTo(0);
+    }
+
+    @Test
+    public void 차_이동() {
+        Car car = new Car();
+        int position = car.getPosition();
+        car.go();
+        assertThat(car.getPosition()).isEqualTo(++position);
+
+    }
+
+    @Test
     public void 값_4미만_이동안하기() {
         Car car = new Car();
-        car.moveCar(3);
-        assertThat(car.getPosition()).isEqualTo(0);
+        int position = car.getPosition();
+        int difficulty = 4;
+        car.moveCarByRandomNumber(difficulty, 3);
+        assertThat(car.getPosition()).isEqualTo(position);
     }
 
     @Test
     public void 값_4이상_이동하기() {
         Car car = new Car();
-        car.moveCar(4);
-        assertThat(car.getPosition()).isEqualTo(1);
+        int position = car.getPosition();
+        int difficulty = 4;
+        car.moveCarByRandomNumber(difficulty, 4);
+        assertThat(car.getPosition()).isEqualTo(position + 1);
     }
 }
