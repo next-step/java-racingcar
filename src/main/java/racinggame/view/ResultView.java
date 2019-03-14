@@ -5,9 +5,13 @@ import racinggame.domain.Car;
 import java.util.List;
 
 public class ResultView {
+    static final String RESULT_TITLE = "\n실행 결과";
+    static final String POSITION_STRING = "-";
+    static final String WINNING_MESSAGE = "이(가) 최종 우승했습니다.";
+    static final String WINNER_SEPARATOR = ",";
 
     public void showResultTitle() {
-        System.out.println("\n실행 결과");
+        System.out.println(RESULT_TITLE);
     }
 
     public void showCarPositions(List<Car> carList) {
@@ -26,7 +30,7 @@ public class ResultView {
     }
 
     public void showWinners(List<Car> winnerList) {
-        System.out.println(getWinnerListString(winnerList) + "이(가) 최종 우승했습니다.");
+        System.out.println(getWinnerListString(winnerList) + WINNING_MESSAGE);
     }
 
     public String getWinnerListString(List<Car> winnerList) {
@@ -36,7 +40,7 @@ public class ResultView {
         int lastItemIndex = winnerList.size() - 1;
 
         for( int i = 0; i < lastItemIndex; ++i ) {
-            sb.append(winnerList.get(i).getName() + ", ");
+            sb.append(winnerList.get(i).getName() + WINNER_SEPARATOR);
         }
         sb.append(winnerList.get(lastItemIndex).getName());
 
