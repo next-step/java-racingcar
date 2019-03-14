@@ -4,25 +4,25 @@ import java.util.*;
 
 public class RacingGame {
 
-    public static int generateRandomValue() {
-        return new Random().nextInt(10);
-    }
+    private final static int RANDOM_VALUE_MAX = 10;
+    List<Car> cars = null;
+
+    public static int generateRandomValue() { return new Random().nextInt(RANDOM_VALUE_MAX); }
 
     public static List<Car> race(List<Car> cars) {
-        for(Car car : cars) {
+        for (Car car : cars) {
             car.move(generateRandomValue());
         }
         return cars;
     }
 
-
-    public static List<Car> initCars(int numberOfCar) {
-        List<Car> cars = new ArrayList<Car>(numberOfCar);
-        for(int i = 0 ; i < numberOfCar ; i++){
-            cars.add(i, new Car());
+    public RacingGame(int numberOfCar) {
+        this.cars = new ArrayList<Car>(numberOfCar);
+        for (int i = 0; i < numberOfCar; i++) {
+            cars.add(i, new Car(0));
         }
-        return cars;
     }
 
+    public List<Car> getCars() { return cars; }
 
 }

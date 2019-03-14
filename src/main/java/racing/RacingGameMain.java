@@ -8,7 +8,7 @@ public class RacingGameMain {
         int numberOfCars = InputView.getNumberOfCar();
         int timeToTry = InputView.getTimeToTry();
 
-        List<Car> cars = RacingGame.initCars(numberOfCars);
+        List<Car> cars = new RacingGame(numberOfCars).getCars();
 
         int time = 0;
         while(time < timeToTry) {

@@ -9,19 +9,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
 
+    List<Car> cars;
+
     @Before
-    public void setUp() {
-        RacingGame.setNumberOfCar(3);
+    public void setUp() { cars = new RacingGame(3).getCars(); }
+
+    @Test
+    public void moveCarsTestWithValue5() {
+        for(Car car:cars){
+            car.move(5);
+            assertThat(car.getPosition()).isEqualTo(1);
+        }
     }
 
     @Test
-    public void initCarsTest() {
-        //List<Car> result = RacingGame.initCars();
-        //assertThat(result).isEqualTo(new Car[3]);
+    public void moveCarsTestWithValue3() {
+        for(Car car:cars){
+            car.move(3);
+            assertThat(car.getPosition()).isEqualTo(0);
+        }
     }
 
-    @Test
-    public void moveCarsTest() {
-        //랜덤한 값에 대한 테스트?
-    }
 }
