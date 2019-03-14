@@ -1,11 +1,13 @@
 package racingcar.vo;
 
 public class RacingGameRound {
+    private static final int FIRST_ROUND = 1;
+
     private int totalRound;
     private int currentRound;
 
     public RacingGameRound(int totalRound) {
-        this(totalRound, 1);
+        this(totalRound, FIRST_ROUND);
     }
 
     public RacingGameRound(int totalRound, int currentRound) {
