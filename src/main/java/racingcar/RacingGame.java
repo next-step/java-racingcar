@@ -1,7 +1,6 @@
 package racingcar;
 
 public class RacingGame {
-
     private CarMovableDecider carMovableDecider;
     private RacingGameState racingGameState;
 

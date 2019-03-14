@@ -4,6 +4,7 @@ import com.google.common.base.Strings;
 
 public class ResultView {
 
+
     public static void printResult(RacingResult result) {
         for(Car car : result.getCars()) {
             System.out.print(car.getName() + " : ");
