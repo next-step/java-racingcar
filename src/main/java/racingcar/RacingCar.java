@@ -1,21 +1,19 @@
 package racingcar;
 
 public class RacingCar {
-
+    static final int NUMBER_1 = 1;
+    static final int NUMBER_4 = 4;
+    static final int RANDOM_NUM = 10;
     private int coord;
 
-    public int go() {
-        return ++this.coord;
-    }
-
-    public int stop() {
+    public int move(int randomValue) {
+        if (randomValue >= NUMBER_4)
+            return ++this.coord;
         return this.coord;
     }
 
-    public int checkRandom() {
-        int randomValue = (int) (Math.random() * 10) + 1;
-        if (randomValue >= 4)
-            return go();
-        return stop();
+    public int createRandom() {
+        return (int) (Math.random() * RANDOM_NUM) + NUMBER_1;
     }
 }
+

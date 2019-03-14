@@ -1,22 +1,23 @@
 package calculator;
 
 
-import java.util.Scanner;
-
 public class StringCalculator {
+    static final int NUMBER_0 = 0;
+    static final int NUMBER_1 = 1;
+    static final int NUMBER_2 = 2;
+    static final int NUMBER_3 = 3;
 
     static int calculate(String text) {
         String[] values = text.split(" ");
-        int resultValue = setFormatMix(Integer.parseInt(values[0]), values[1], Integer.parseInt(values[2]));
-        if (values.length - 1 >= 3)
-            for (int i = 3; i < values.length; i += 2) {
-                resultValue = setFormatMix(resultValue, values[i], Integer.parseInt(values[i + 1]));
+        int resultValue = operationDistribution(Integer.parseInt(values[NUMBER_0]), values[NUMBER_1], Integer.parseInt(values[NUMBER_2]));
+        if (values.length - NUMBER_1 >= NUMBER_3)
+            for (int i = NUMBER_3; i < values.length; i += NUMBER_2) {
+                resultValue = operationDistribution(resultValue, values[i], Integer.parseInt(values[i + NUMBER_1]));
             }
         return resultValue;
     }
 
-
-    static int setFormatMix(int startNumber, String operation, int endNumber) {
+    static int operationDistribution(int startNumber, String operation, int endNumber) {
         switch (operation) {
             case "+":
                 return add(startNumber, endNumber);
@@ -54,10 +55,5 @@ public class StringCalculator {
     static int checkNumber(String input) {
         checkNull(input);
         return Integer.parseInt(input);
-    }
-
-    public static String start() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
     }
 }
