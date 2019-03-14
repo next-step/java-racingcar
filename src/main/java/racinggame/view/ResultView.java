@@ -6,18 +6,18 @@ import java.util.List;
 
 public class ResultView {
 
-    public static void showResultTitle() {
+    public void showResultTitle() {
         System.out.println("\n실행 결과");
     }
 
-    public static void showCarPositions(List<Car> carList) {
+    public void showCarPositions(List<Car> carList) {
         for( Car curCar : carList ) {
             showCarPosition(curCar);
         }
         System.out.println();
     }
 
-    private static void showCarPosition(Car car) {
+    void showCarPosition(Car car) {
         System.out.print(car.getName() + " : " );
         for( int i = 0; i < car.getPosition(); ++i ) {
             System.out.print("-");

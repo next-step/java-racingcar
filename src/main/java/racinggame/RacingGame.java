@@ -9,6 +9,7 @@ import racinggame.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class RacingGame {
 
@@ -21,7 +22,7 @@ public class RacingGame {
     }
 
     public static void main(String[] args) {
-        RacingGame racingGame = new RacingGame(InputView.getConfiguration());
+        RacingGame racingGame = new RacingGame(new InputView(new Scanner(System.in)).getConfiguration());
         racingGame.initializeCarList();
 
         ResultView resultView = new ResultView();
