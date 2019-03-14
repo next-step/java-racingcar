@@ -6,6 +6,7 @@ public class ResultView {
 
     public static void viewCars(List<Car> carPositions) {
         for(int j = 0; j < carPositions.size(); j++) {
+            System.out.print(carPositions.get(j).getName() + " : ");
             printPosition(carPositions.get(j).getPosition());
         }
         System.out.println();

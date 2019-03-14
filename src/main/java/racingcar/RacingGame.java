@@ -8,17 +8,18 @@ public class RacingGame {
     private static final int RANDOM_TO = 9;
     private static final int MOVE_DIFFICULTY = 4;
 
-    private List<Car> carPositions;
+    private List<Car> cars;
 
-    public RacingGame(int carNumber) {
-        carPositions = new ArrayList<>(carNumber);
+    public RacingGame(String[] carNames) {
+        int carNumber = carNames.length;
+        cars = new ArrayList<>(carNumber);
         for(int i = 0; i < carNumber; i++) {
-            carPositions.add(new Car());
+            cars.add(new Car(carNames[i]));
         }
     }
 
     public void gameStart(int inputTimes) {
-        System.out.println("실행결과\n");
+        System.out.println("\n실행결과");
 
         for(int i = 0; i < inputTimes; i++) {
             ResultView.viewCars(move(new RandomUtil(RANDOM_FROM, RANDOM_TO)));
@@ -26,14 +27,15 @@ public class RacingGame {
     }
 
     public List<Car> move(RandomUtil randomUtil) {
-        for(Car car: carPositions) {
+        for(Car car: cars) {
             int randomNumber = randomUtil.randomInt();
             car.moveCarByRandomNumber(MOVE_DIFFICULTY, randomNumber);
         }
-        return carPositions;
+        return cars;
     }
 
-    public List<Car> getCarPositions() {
-        return carPositions;
+    public List<Car> getCars() {
+        return cars;
     }
+
 }

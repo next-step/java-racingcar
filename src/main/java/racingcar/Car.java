@@ -1,10 +1,21 @@
 package racingcar;
 
 public class Car {
-    private int position = 0;
+
+    private final String name;
+    private int position;
+
+    public Car(String name) {
+        position = 0;
+        this.name = name;
+    }
 
     public int getPosition() {
         return position;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void go() {

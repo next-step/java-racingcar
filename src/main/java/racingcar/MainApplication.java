@@ -3,10 +3,10 @@ package racingcar;
 public class MainApplication {
     public static void main(String[] args) {
 
-        int carNumber = InputView.getCarNumber();
+        String[] carNames = InputView.getCarNames();
         int inputTimes = InputView.getTimes();
 
-        RacingGame racingGame = new RacingGame(carNumber);
+        RacingGame racingGame = new RacingGame(carNames);
         racingGame.gameStart(inputTimes);
     }
 }
