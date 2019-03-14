@@ -21,6 +21,13 @@ public class Car implements Comparable<Car> {
         this.name = name;
     }
 
+    public Car(String name, int moveCnt) {
+        this.name = name;
+        for (int i = 0; i < moveCnt; i++) {
+            move();
+        }
+    }
+
     public boolean move() {
         int randomValue = getRandomValue();
         if (getMoveCount(randomValue)) {

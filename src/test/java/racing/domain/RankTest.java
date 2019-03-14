@@ -16,15 +16,9 @@ public class RankTest {
     public void 자동차경주초기화() {
         cars = new ArrayList<>();
 
-        Car car1 = new Car("car1");
-        Car car2 = new Car("car2");
-        Car car3 = new Car("car3");
-
-        for (int i = 0; i < 5; i++) {
-            car1.move();
-            car2.move();
-            car3.move();
-        }
+        Car car1 = new Car("car1", 5);
+        Car car2 = new Car("car2", 5);
+        Car car3 = new Car("car3", 5);
 
         cars.add(car1);
         cars.add(car2);
