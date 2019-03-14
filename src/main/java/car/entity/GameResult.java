@@ -6,13 +6,15 @@ import java.util.List;
 public class GameResult {
     private List<Car> aRoundResult;
     private List<Car> winners;
-    private int maxMovement;
+
+    public GameResult() {
+        aRoundResult = new ArrayList<>();
+        winners = new ArrayList<>();
+    }
 
     public static GameResult createResultInstance(List<Car> result) {
         GameResult gameResult = new GameResult();
         gameResult.aRoundResult = result;
-        gameResult.maxMovement = 0;
-        gameResult.winners = new ArrayList<>();
         return gameResult;
     }
 
@@ -20,29 +22,36 @@ public class GameResult {
         return aRoundResult;
     }
 
-    public List<Car> getGameWinner() {
-        for(Car aCar : aRoundResult) {
-            judgeWhoisWinner(aCar, maxMovement);
+
+    public List<Car> getWinnerNames() {
+        int maxMovement = 0;
+
+        for(Car car : aRoundResult) {
+            maxMovement = getWhoIsWinner(car, maxMovement);
         }
+
         return winners;
     }
 
-    public void judgeWhoisWinner(Car car, int maxCount) {
-        CarJudgeStatus judgeResult = car.judgeMaxMovement(maxCount);
-
+    private int getWhoIsWinner (Car car, int maxMovement) {
+        CarJudgeStatus judgeResult = car.judgeMaxMovement(maxMovement);
         if ( CarJudgeStatus.LOSE == judgeResult ) {
+            return maxMovement;
+        }
+
+        setWinnerNames(car, judgeResult );
+        return car.getMovingCount();
+    }
+
+    private void setWinnerNames(Car car, CarJudgeStatus status) {
+        if (CarJudgeStatus.DRAW == status) {
+            winners.add(Car.getCarInstance(car.getName()));
             return;
         }
 
-        if ( CarJudgeStatus.DRAW == judgeResult ) {
-            winners.add(Car.getCarInstance(car.name));
-            return;
-        }
-
-        if ( CarJudgeStatus.WIN == judgeResult ) {
+        if (CarJudgeStatus.WIN == status) {
             winners.clear();
-            maxMovement = car.movingCount;
-            winners.add(Car.getCarInstance(car.name));
+            winners.add(Car.getCarInstance(car.getName()));
         }
     }
 }

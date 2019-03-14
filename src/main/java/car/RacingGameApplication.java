@@ -13,16 +13,14 @@ public class RacingGameApplication {
 
     public static void startGame() {
         String[] carsName = InputValue.getCarsName();
-        int tryCount = InputValue.getTryCount();
+        int racingCount = InputValue.getRacingCount();
 
-        RacingGame racingGame = new RacingGame(carsName);
-        GameResult result = new GameResult();
+        RacingGame racingGame = new RacingGame(carsName, racingCount);
+        GameResult result = null;
 
-        int i =0;
-        while (i < tryCount) {
+        while ( racingGame.isRunning() ) {
             result = racingGame.playingGame();
             ResultView.printGame(result);
-            i ++;
         }
 
         ResultView.printGameWinner(result);

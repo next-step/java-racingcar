@@ -18,7 +18,8 @@ public class RacingGameTest {
     @Test
     public void 게임_초기화() {
         String[] carNames = {"test1", "test2", "test3"};
-        RacingGame racingGame = new RacingGame(carNames);
+        int racingCount = 5;
+        RacingGame racingGame = new RacingGame(carNames, 5);
         assertThat(racingGame.racingCars.size()).isEqualTo(carNames.length);
     }
 
@@ -27,7 +28,7 @@ public class RacingGameTest {
         Car testCar = Car.getCarInstance("test1");
         testCar.move(NOT_MOVING_RANDOM_NUM);
 
-        assertThat(testCar.movingCount).isEqualTo(0);
+        assertThat(testCar.getMovingCount()).isEqualTo(0);
     }
 
     @Test
@@ -35,7 +36,7 @@ public class RacingGameTest {
         Car testCar = Car.getCarInstance("test1");
         testCar.move(MOVING_RANDOM_VALUE);
 
-        assertThat(testCar.movingCount).isEqualTo(1);
+        assertThat(testCar.getMovingCount()).isEqualTo(1);
     }
 
     @Test
@@ -44,17 +45,17 @@ public class RacingGameTest {
         int[] movingCounts = {0,0,100};
 
         List<Car> cars = createRacingCar(carNames, movingCounts);
-        GameResult gameResult = GameResult.createResultInstance(cars);
 
-        assertThat(gameResult.getGameWinner().get(0).name).isEqualTo(carNames[carNames.length-1]);
+        GameResult gameResult = GameResult.createResultInstance(cars);
+        assertThat(gameResult.getWinnerNames().get(0).getName()).isEqualTo(carNames[carNames.length-1]);
     }
 
     public List<Car> createRacingCar(String[] carNames, int[] movingCounts) {
         List<Car> cars = new ArrayList<>();
 
-        for(int i=0; i < carNames.length; i++) {
+        for (int i=0; i < carNames.length; i++) {
             Car car = Car.getCarInstance(carNames[i]);
-            car.movingCount = movingCounts[i];
+            car.setMovingCount(movingCounts[i]);
             cars.add(car);
         }
 
@@ -64,7 +65,7 @@ public class RacingGameTest {
     @Test
     public void MAX값과_자신의_MOVINGCOUNT_비교_승리() {
         Car car = Car.getCarInstance("test");
-        car.movingCount = 5;
+        car.setMovingCount(5);
         CarJudgeStatus status = car.judgeMaxMovement(4);
         assertThat(status).isEqualTo(CarJudgeStatus.WIN);
     }
@@ -72,7 +73,7 @@ public class RacingGameTest {
     @Test
     public void MAX값과_자신의_MOVINGCOUNT_비교_패배() {
         Car car = Car.getCarInstance("test");
-        car.movingCount = 3;
+        car.setMovingCount(3);
         CarJudgeStatus status = car.judgeMaxMovement(4);
         assertThat(status).isEqualTo(CarJudgeStatus.LOSE);
     }
@@ -80,7 +81,7 @@ public class RacingGameTest {
     @Test
     public void MAX값과_자신의_MOVINGCOUNT_비교_무승부() {
         Car car = Car.getCarInstance("test");
-        car.movingCount = 4;
+        car.setMovingCount(4);
         CarJudgeStatus status = car.judgeMaxMovement(4);
         assertThat(status).isEqualTo(CarJudgeStatus.DRAW);
     }

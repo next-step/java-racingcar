@@ -1,32 +1,38 @@
 package car.entity;
 
 import car.util.RandomNumber;
+import spark.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private final static String UNDEFINED_CAR_NAME = "undefined";
     public List<Car> racingCars;
+    private int racingCount;
+    private int currentRound;
 
-    public RacingGame(String[] carsName) {
-        racingCars = createRacingCars(carsName);
+    private final static String UNDEFINED_CAR_NAME = "undefined";
+
+    public RacingGame(String[] carsName, int racingCount) {
+        this.racingCars = createRacingCars(carsName);
+        this.racingCount = racingCount;
+        this.currentRound = 0;
     }
 
     private List<Car> createRacingCars(String[] carsName) {
         List<Car> cars = new ArrayList<>();
 
-        int i = 0;
-        while (i < carsName.length) {
-            String name = carsName[i].equals("") ? UNDEFINED_CAR_NAME : carsName[i];
+        for ( String carName : carsName ) {
+            String name = StringUtils.isBlank(carName) ? UNDEFINED_CAR_NAME : carName;
             cars.add(Car.getCarInstance(name));
-            i ++;
         }
         return cars;
     }
 
     public GameResult playingGame() {
         move();
+        currentRound ++;
+
         return GameResult.createResultInstance(racingCars);
     }
 
@@ -34,5 +40,9 @@ public class RacingGame {
         racingCars.stream().forEach(car -> {
             car.move(RandomNumber.getNumber());
         });
+    }
+
+    public boolean isRunning() {
+        return currentRound < racingCount;
     }
 }
