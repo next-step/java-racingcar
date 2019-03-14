@@ -2,6 +2,7 @@ package racing.view;
 
 
 import racing.board.GameResult;
+import racing.model.RacingCar;
 
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -29,6 +30,9 @@ public class ResultView {
     }
 
     public static void viewWinners(GameResult gameResult) {
-        System.out.println(gameResult.getWinnerNames() + "가 최종 우승했습니다.");
+        System.out.printf("%s가 최종 우승했습니다.\n ", gameResult.getWinners()
+                .stream()
+                .map(RacingCar::toString)
+                .collect(Collectors.joining(", ")));
     }
 }
