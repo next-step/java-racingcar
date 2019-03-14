@@ -1,32 +1,25 @@
 package racinggame.service;
 
-import racinggame.Car;
+import racinggame.domain.Car;
 
 import java.util.List;
 
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.toList;
 
 public class WinnerDecisionService {
 
-    List<Car> carList;
-
-    public WinnerDecisionService(List<Car> carList) {
-        this.carList = carList;
-    }
-
-    public List<Car> getWinners() {
-        int maximumPosition = getMaximumPosition();
+    public List<Car> getWinnerList(List<Car> carList) {
+        int maximumPosition = getMaximumPosition(carList);
 
         return carList.stream()
-                .filter(c -> c.getPosition() == maximumPosition)
-                .collect(toList());
-
+                        .filter(c -> c.getPosition() == maximumPosition)
+                        .collect(toList());
     }
 
-    private int getMaximumPosition() {
+    int getMaximumPosition(List<Car> carList) {
         return carList.stream()
-                    .mapToInt(Car::getPosition)
-                    .max()
-                    .orElse(-1);
+                        .mapToInt(Car::getPosition)
+                        .max()
+                        .orElse(Car.INITIAL_POSITION);
     }
 }

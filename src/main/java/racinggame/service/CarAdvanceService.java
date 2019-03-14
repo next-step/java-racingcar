@@ -1,35 +1,32 @@
 package racinggame.service;
 
-import racinggame.Car;
+import racinggame.domain.Car;
 
 import java.util.List;
-import java.util.Random;
 
 public class CarAdvanceService {
 
-    private static final int RANDOM_LIMIT_NUMBER = 10;
     private static final int ADVANCE_THRESHOLD = 4;
 
-    Random random;
+    private RandomValueGenerator randomValueGenerator;
 
-    public CarAdvanceService(Random random) {
-        this.random = random;
+    public CarAdvanceService(RandomValueGenerator randomValueGenerator) {
+        this.randomValueGenerator = randomValueGenerator;
     }
 
-    public boolean isMovingForward() {
-        return random.nextInt(RANDOM_LIMIT_NUMBER) >= ADVANCE_THRESHOLD;
-    }
-
-    public void moveForward(List<Car> carList) {
+    public void moveForward(List<Car> carList ) {
         for( Car curCar : carList ) {
-            curCar.setPosition( getNextPosition(curCar.getPosition()));
+            moveForward(curCar);
         }
     }
 
-    public int getNextPosition(int position) {
-        if( isMovingForward() )
-            return position+1;
+    public void moveForward( Car car ) {
+        if( isMovingForward() ) {
+            car.moveForward();
+        }
+    }
 
-        return position;
+    public boolean isMovingForward() {
+        return randomValueGenerator.getRandomInteger() >= ADVANCE_THRESHOLD;
     }
 }

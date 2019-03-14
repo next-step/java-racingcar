@@ -6,7 +6,7 @@ public class StringUtils {
         return s == null || s.length() <= 0;
     }
 
-    public static boolean isArrayNullOrEmpty( String[] strArray ) {
+    public static boolean isNullOrEmptyArray( String[] strArray ) {
         return strArray == null || strArray.length <= 0;
     }
 }

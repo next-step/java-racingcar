@@ -1,17 +1,18 @@
 package racinggame;
 
+import racinggame.domain.Car;
 import racinggame.service.CarAdvanceService;
+import racinggame.service.RandomValueGeneratorImpl;
 import racinggame.service.WinnerDecisionService;
-import util.StringUtils;
+import racinggame.view.InputView;
+import racinggame.view.ResultView;
 
-import javax.xml.transform.Result;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
 
-    private List<Car> carList;
+    private List<Car> carList = new ArrayList<>();
 
     private RacingGameConfiguration configuration;
 
@@ -21,36 +22,34 @@ public class RacingGame {
 
     public static void main(String[] args) {
         RacingGame racingGame = new RacingGame(InputView.getConfiguration());
-        racingGame.initializeCarPositions();
+        racingGame.initializeCarList();
 
-        CarAdvanceService carAdvanceService = new CarAdvanceService(new Random());
         ResultView resultView = new ResultView();
-
-        racingGame.showGame(carAdvanceService, resultView);
-
-        WinnerDecisionService winnerDecisionService = new WinnerDecisionService(racingGame.carList);
-        resultView.showWinners(winnerDecisionService.getWinners());
+        racingGame.proceed(resultView);
+        racingGame.showWinners(resultView);
     }
 
-    private void initializeCarPositions() {
-
-        carList = new ArrayList<>();
-
-        if( StringUtils.isArrayNullOrEmpty(configuration.getCarNames()) ) {
-            return;
-        }
-
+    private void initializeCarList() {
         for( String name : configuration.getCarNames() ) {
-            carList.add( new Car( name, 1 ) );
+            carList.add( new Car(name) );
         }
     }
 
-    private void showGame(CarAdvanceService service, ResultView resultView) {
-        resultView.showCarPositions(carList);
+    private void proceed(ResultView resultView) {
+        CarAdvanceService carAdvanceService = new CarAdvanceService(new RandomValueGeneratorImpl());
 
+        resultView.showResultTitle();
+        resultView.showCarPositions(carList);
         for( int i = 0, numberOfTries = configuration.getNumberOfTries(); i < numberOfTries; ++i ) {
-            service.moveForward(carList);
+            carAdvanceService.moveForward(carList);
+            resultView.showCarPositions(carList);
         }
+    }
+
+    private void showWinners(ResultView resultView) {
+        WinnerDecisionService winnerDecisionService = new WinnerDecisionService();
+        List<Car> winnerList = winnerDecisionService.getWinnerList(carList);
+        resultView.showWinners(winnerList);
     }
 
 }

@@ -1,10 +1,7 @@
 package racinggame.service;
 
-import org.junit.Before;
 import org.junit.Test;
-import racinggame.Car;
-import racinggame.RandomMock;
-import racinggame.service.CarAdvanceService;
+import racinggame.domain.Car;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,26 +10,25 @@ import static org.junit.Assert.assertEquals;
 
 public class CarAdvanceServiceTest {
 
-    private CarAdvanceService processor;
+    private CarAdvanceService carAdvanceService;
 
-    private RandomMock randomMock;
-
-    @Before
-    public void setUp() throws Exception {
-        randomMock = new RandomMock();
-        processor = new CarAdvanceService(randomMock);
-    }
+    private MockRandomValueGeneratorImpl mockRandomValueGeneratorImpl;
 
     @Test
     public void test_when_random_value_equals_or_is_greater_than_4() {
 
         int [] randomValues = new int [] { 4, 5, 6, 7, 8, 9 };
-        int curPosition = 1;
+
+        Car car = new Car( "crong", 1 );
+        int expectedPosition = 2;
 
         for( int randomValue : randomValues ) {
-            randomMock.setDesignatedIntValue(randomValue);
-            assertEquals(true, processor.isMovingForward());
-            assertEquals( curPosition+1, processor.getNextPosition(curPosition) );
+            mockRandomValueGeneratorImpl = new MockRandomValueGeneratorImpl(randomValue);
+            carAdvanceService = new CarAdvanceService(mockRandomValueGeneratorImpl);
+
+            assertEquals(true, carAdvanceService.isMovingForward());
+            carAdvanceService.moveForward(car);
+            assertEquals( expectedPosition++, car.getPosition() );
         }
     }
 
@@ -40,60 +36,68 @@ public class CarAdvanceServiceTest {
     public void test_when_random_value_is_less_than_4() {
 
         int [] randomValues = new int [] { 0, 1, 2, 3 };
-        int curPosition = 3;
+
+        Car car = new Car( "crong", 1 );
+        int expectedPosition = 1;
 
         for( int randomValue : randomValues ) {
-            randomMock.setDesignatedIntValue(randomValue);
-            assertEquals(false, processor.isMovingForward());
-            assertEquals( curPosition, processor.getNextPosition(curPosition) );
+            mockRandomValueGeneratorImpl = new MockRandomValueGeneratorImpl(randomValue);
+            carAdvanceService = new CarAdvanceService(mockRandomValueGeneratorImpl);
+
+            assertEquals(false, carAdvanceService.isMovingForward());
+            carAdvanceService.moveForward(car);
+            assertEquals( expectedPosition, car.getPosition() );
         }
+
     }
 
     @Test
     public void moveForward_succeeded() {
 
-        List<Car> actualCars = Arrays.asList(
-                new Car( "pobi", 1 ),
-                new Car( "crong", 2 ),
-                new Car( "honux", 3 )
+        List<Car> actualCarList = Arrays.asList(
+            new Car( "pobi", 1 ),
+            new Car( "crong", 2 ),
+            new Car( "honux", 3 )
         );
 
-        List<Car> expectedCars = Arrays.asList(
-                new Car( "pobi", 2 ),
-                new Car( "crong", 3 ),
-                new Car( "honux", 4 )
+        List<Car> expectedCarList = Arrays.asList(
+            new Car( "pobi", 2 ),
+            new Car( "crong", 3 ),
+            new Car( "honux", 4 )
         );
 
-        randomMock.setDesignatedIntValue(7);
-        processor.moveForward(actualCars);
+        mockRandomValueGeneratorImpl = new MockRandomValueGeneratorImpl(7);
+        carAdvanceService = new CarAdvanceService(mockRandomValueGeneratorImpl);
+        carAdvanceService.moveForward(actualCarList);
 
-        for( int i = 0, size = actualCars.size(); i < size; ++i ) {
-            assertEquals( expectedCars.get(i).getName(), actualCars.get(i).getName());
-            assertEquals( expectedCars.get(i).getPosition(), actualCars.get(i).getPosition());
+        for( int i = 0, size = actualCarList.size(); i < size; ++i ) {
+            assertEquals( expectedCarList.get(i).getName(), actualCarList.get(i).getName() );
+            assertEquals( expectedCarList.get(i).getPosition(), actualCarList.get(i).getPosition() );
         }
     }
 
     @Test
     public void moveForward_failed() {
 
-        List<Car> actualCars = Arrays.asList(
+        List<Car> actualCarList = Arrays.asList(
                 new Car( "pobi", 1 ),
                 new Car( "crong", 2 ),
                 new Car( "honux", 3 )
         );
 
-        List<Car> expectedCars = Arrays.asList(
+        List<Car> expectedCarList = Arrays.asList(
                 new Car( "pobi", 1 ),
                 new Car( "crong", 2 ),
                 new Car( "honux", 3 )
         );
 
-        randomMock.setDesignatedIntValue(2);
-        processor.moveForward(actualCars);
+        mockRandomValueGeneratorImpl = new MockRandomValueGeneratorImpl(2);
+        carAdvanceService = new CarAdvanceService(mockRandomValueGeneratorImpl);
+        carAdvanceService.moveForward(actualCarList);
 
-        for( int i = 0, size = actualCars.size(); i < size; ++i ) {
-            assertEquals( expectedCars.get(i).getName(), actualCars.get(i).getName());
-            assertEquals( expectedCars.get(i).getPosition(), actualCars.get(i).getPosition());
+        for( int i = 0, size = actualCarList.size(); i < size; ++i ) {
+            assertEquals( expectedCarList.get(i).getName(), actualCarList.get(i).getName() );
+            assertEquals( expectedCarList.get(i).getPosition(), actualCarList.get(i).getPosition() );
         }
     }
 }
