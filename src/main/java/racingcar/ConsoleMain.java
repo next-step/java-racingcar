@@ -6,9 +6,9 @@ import racingcar.view.RacingGameParameterInputView;
 import racingcar.vo.RacingGameParameter;
 import racingcar.vo.RacingResultOfRound;
 
-public class RacingGameApplication {
+public class ConsoleMain {
     public static void main(String[] args) {
-        RacingGameApplication.start();
+        ConsoleMain.start();
     }
 
     public static void start() {
