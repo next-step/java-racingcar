@@ -1,25 +1,32 @@
 package calculator;
 
+
 public class StringCalculator {
+    static final int NUMBER_0 = 0;
+    static final int NUMBER_1 = 1;
+    static final int NUMBER_2 = 2;
+    static final int NUMBER_3 = 3;
 
     static int calculate(String text) {
         String[] values = text.split(" ");
-        int i = Integer.parseInt(values[0]);
-        String mix = values[1];
-        int j = Integer.parseInt(values[2]);
-        return setFormatMix(i, mix, j);
+        int resultValue = operationDistribution(Integer.parseInt(values[NUMBER_0]), values[NUMBER_1], Integer.parseInt(values[NUMBER_2]));
+        if (values.length - NUMBER_1 >= NUMBER_3)
+            for (int i = NUMBER_3; i < values.length; i += NUMBER_2) {
+                resultValue = operationDistribution(resultValue, values[i], Integer.parseInt(values[i + NUMBER_1]));
+            }
+        return resultValue;
     }
 
-    static int setFormatMix(int i, String s, int j) {
-        switch (s) {
+    static int operationDistribution(int startNumber, String operation, int endNumber) {
+        switch (operation) {
             case "+":
-                return add(i, j);
+                return add(startNumber, endNumber);
             case "-":
-                return sub(i, j);
+                return sub(startNumber, endNumber);
             case "/":
-                return div(i, j);
+                return div(startNumber, endNumber);
             case "*":
-                return multi(i, j);
+                return multi(startNumber, endNumber);
         }
         return 0;
     }
@@ -28,15 +35,25 @@ public class StringCalculator {
         return i + j;
     }
 
-    public static int sub(int i, int j) {
+    static int sub(int i, int j) {
         return i - j;
     }
 
-    public static int multi(int i, int i1) {
+    static int multi(int i, int i1) {
         return i * i1;
     }
 
-    public static int div(int i, int i1) {
+    static int div(int i, int i1) {
         return i / i1;
+    }
+
+    static void checkNull(String input) {
+        if (input == null || " ".equals(input))
+            throw new NullPointerException();
+    }
+
+    static int checkNumber(String input) {
+        checkNull(input);
+        return Integer.parseInt(input);
     }
 }

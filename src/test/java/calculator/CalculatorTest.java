@@ -7,9 +7,6 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CalculatorTest {
-    //테스트 독립된 관계 만들기
-    //의존관계 가지지 않고 독립된 관계 만듦
-    //순서 보장하면서 테스트 만들지 말기.
     @Before
     public void setUp() throws Exception {
         System.out.println("setup");
