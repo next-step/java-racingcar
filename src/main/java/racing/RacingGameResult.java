@@ -1,21 +1,28 @@
 package racing;
 
 import java.util.List;
+import java.util.Map;
 
 public class RacingGameResult {
+    private Map<Integer, Map<Car,Boolean>> roundHistory;
+    private List<String> winners;
     private int time;
-    private List<Car> cars;
 
-    public RacingGameResult(final int time, final List<Car> cars) {
+    public RacingGameResult(Map<Integer, Map<Car,Boolean>> roundHistory,List<String> winners, int time) {
+        this.roundHistory = roundHistory;
+        this.winners = winners;
         this.time = time;
-        this.cars = cars;
     }
 
-    public int getTime() {
+    public int getTime(){
         return this.time;
     }
 
-    public List<Car> getCars() {
-        return this.cars;
+    public Map<Integer, Map<Car,Boolean>> getRoundHistory(){
+        return this.roundHistory;
+    }
+
+    public List<String> getWinners(){
+        return this.winners;
     }
 }
