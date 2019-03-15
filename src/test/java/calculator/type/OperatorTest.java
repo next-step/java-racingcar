@@ -41,7 +41,7 @@ public class OperatorTest {
         String operator = "+";
 
         Operator addType = Operator.typeOf(operator);
-        int result = addType.calculrate(leftNumber, rightNumber);
+        int result = addType.calculate(leftNumber, rightNumber);
         assertThat(result).isEqualTo(30);
     }
 
@@ -52,7 +52,7 @@ public class OperatorTest {
         String operator = "*";
 
         Operator mulType = Operator.typeOf(operator);
-        int result = mulType.calculrate(leftNumber, rightNumber);
+        int result = mulType.calculate(leftNumber, rightNumber);
         assertThat(result).isEqualTo(200);
     }
 
@@ -63,7 +63,7 @@ public class OperatorTest {
         String operator = "/";
 
         Operator divType = Operator.typeOf(operator);
-        int result = divType.calculrate(leftNumber, rightNumber);
+        int result = divType.calculate(leftNumber, rightNumber);
         assertThat(result).isEqualTo(2);
     }
 
@@ -74,7 +74,7 @@ public class OperatorTest {
         String operator = "-";
 
         Operator subType = Operator.typeOf(operator);
-        int result = subType.calculrate(leftNumber, rightNumber);
+        int result = subType.calculate(leftNumber, rightNumber);
         assertThat(result).isEqualTo(-10);
     }
 }
