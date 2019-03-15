@@ -3,25 +3,25 @@ package calculator.type;
 public enum Operator {
 
     ADD("+") {
-        public int calculrate(int leftHandSideNumber, int rightHandSideNumber) {
+        public int calculate(int leftHandSideNumber, int rightHandSideNumber) {
             return leftHandSideNumber + rightHandSideNumber;
         }
     },
 
     SUBTRACT("-") {
-        public int calculrate(int leftHandSideNumber, int rightHandSideNumber) {
+        public int calculate(int leftHandSideNumber, int rightHandSideNumber) {
             return leftHandSideNumber - rightHandSideNumber;
         }
     },
 
     MULTIPLY("*") {
-        public int calculrate(int leftHandSideNumber, int rightHandSideNumber) {
+        public int calculate(int leftHandSideNumber, int rightHandSideNumber) {
             return leftHandSideNumber * rightHandSideNumber;
         }
     },
 
     DIVIDE("/") {
-        public int calculrate(int leftHandSideNumber, int rightHandSideNumber) {
+        public int calculate(int leftHandSideNumber, int rightHandSideNumber) {
             return leftHandSideNumber / rightHandSideNumber;
         }
     };
@@ -36,7 +36,7 @@ public enum Operator {
         return value;
     }
 
-    public abstract int calculrate(int leftHandSideNumber, int rightHandSideNumber);
+    public abstract int calculate(int leftHandSideNumber, int rightHandSideNumber);
 
     public static Operator typeOf(String expression) {
 
