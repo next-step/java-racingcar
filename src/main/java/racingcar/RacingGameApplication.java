@@ -2,14 +2,16 @@ package racingcar;
 
 public class RacingGameApplication {
 
-    public static void main(String[] args) {
-        int numberOfCars = RacingGameInput.takeNumberOfCars();
+    public static void main(String[] args) throws CloneNotSupportedException {
+        String[] carNames = RacingGameInput.takeCarNames();
         int numberOfTimes = RacingGameInput.takeNumberOfTimes();
 
-        RacingGame racingGame = new RacingGame(numberOfCars);
+        RacingGame racingGame = new RacingGame(carNames);
 
         for (int i = 0; i < numberOfTimes; i++) {
-            RacingGameOutput.showRacingGame(racingGame.play());
+            RacingGameOutput.showRaceOf(racingGame.play());
         }
+
+        RacingGameOutput.showFinalWinner(racingGame.determineWinners());
     }
 }

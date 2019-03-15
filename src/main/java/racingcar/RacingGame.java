@@ -1,34 +1,51 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private List<RacingCar> racingCars;
 
-    RacingGame(final int numberOfCars) {
+    RacingGame(String... carNames) {
         this.racingCars = new ArrayList<>();
-
-        this.initRacingCars(numberOfCars);
+        this.initRacingCars(carNames);
     }
 
-    private void initRacingCars(int numberOfCars) {
-        for (int iCar = 0; iCar < numberOfCars; iCar++) {
-            this.racingCars.add(new RacingCar());
-        }
+    RacingGame(List<RacingCar> racingCars) {
+        this.racingCars = new ArrayList<>(racingCars);
     }
 
-    /**
-     * 총 시도 회수만큼, 각 자동차들을 랜덤하게 이동시킨후 자동차 목록을 반환한다.
-     *
-     * @return 자동차 목록
-     */
-    public List<RacingCar> play() {
+    private void initRacingCars(String... carNames) {
+        Arrays.asList(carNames)
+                .forEach(carName -> this.racingCars.add(new RacingCar(carName)));
+    }
 
-        for (RacingCar racingCar : racingCars) {
-            racingCar.makeRandomMove();
+    public List<RacingCar> play() throws CloneNotSupportedException {
+        List<RacingCar> playCars = new ArrayList<>(this.racingCars.size());
+
+        for (RacingCar racingCar : this.racingCars) {
+            RacingCar newRacingCar = (RacingCar) racingCar.clone();
+            newRacingCar.moveRandomly();
+
+            playCars.add(newRacingCar);
         }
+
+        this.racingCars = playCars;
 
         return this.racingCars;
+    }
+
+    public List<RacingCar> determineWinners() {
+        final Comparator<RacingCar> racingCarComparator = Comparator.naturalOrder();
+
+        final RacingCar racingCarWinner = this.racingCars.stream()
+                .max(racingCarComparator)
+                .get();
+
+        final List<RacingCar> racingCarWinners = this.racingCars.stream()
+                .filter(racingCar -> racingCar.compareTo(racingCarWinner) == 0)
+                .collect(Collectors.toList());
+
+        return racingCarWinners;
     }
 }
