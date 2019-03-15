@@ -1,6 +1,7 @@
 package racingcar;
 
 import org.junit.Test;
+import racingcar.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -27,6 +28,8 @@ public class CarTest {
         int movingDistance = car.getMovingDistance();
         assertThat(movingDistance).isEqualTo(1);
     }
+
+
 
 
 }

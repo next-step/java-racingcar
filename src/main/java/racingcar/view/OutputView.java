@@ -1,37 +1,44 @@
 package racingcar.view;
 
-import racingcar.Car;
-import racingcar.RacingResult;
+import racingcar.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class OutputView {
 
-    public static void PrintWinner(List<Car> winners) {
+    public static String getWinnerNames(List<Car> winners) {
         List<String> winnersName = new ArrayList<>();
         for (Car winner : winners) {
             winnersName.add(winner.getName());
         }
-        System.out.println(String.join(",", winnersName) + "가 우승자 입니다.");
+        return   String.join(",", winnersName) + "가 우승자 입니다.";
     }
 
-    public static void printResult(RacingResult racingResult) {
-        for (Car car : racingResult.getCars()) {
-            printCarDistance(car);
+    public static void racingResultSave(RacingResult racingResult, List<Car> cars) {
+        List<RaceTurnResult> raceTurnResults = racingResult.getRaceTurnResults();
+        for (Car car : cars) {
+            raceTurnResults.add(new RaceTurnResult(car.getName(), getCarDistance(car)));
         }
     }
 
-    private static void printCarDistance(Car car) {
-        StringBuilder raceResult = new StringBuilder(car.getName() + " : ");
+    public static void consolePrintRacingResult(RacingResult racingResult) {
+        List<RaceTurnResult> raceTurnResults = racingResult.getRaceTurnResults();
+        for (RaceTurnResult raceTurnResult : raceTurnResults) {
+            System.out.println(raceTurnResult.getCarName() + ":" + raceTurnResult.getDistance());
+
+        }
+    }
+
+    private static String getCarDistance(Car car) {
+        StringBuilder raceResult = new StringBuilder();
         for (int i = 0; i < car.getMovingDistance(); i++) {
             raceResult.append("-");
         }
-        System.out.println(raceResult.toString());
+        return String.valueOf(raceResult);
     }
 
     public static void printBlankLine() {
         System.out.println();
     }
-
 }

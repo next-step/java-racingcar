@@ -1,6 +1,4 @@
-package racingcar;
-
-import java.util.Random;
+package racingcar.domain;
 
 public class Car {
     //이동기능, 이동거리 기록
@@ -25,8 +23,8 @@ public class Car {
         return this.movingDistance == highScore;
     }
 
-    public boolean compareToHighScore(int highScore) {
-        return this.movingDistance > highScore;
+    public int compareToHighScore(int highScore) {
+        return movingDistance > highScore ? movingDistance : highScore;
     }
 
 
