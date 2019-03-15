@@ -19,7 +19,10 @@ public class CarTest {
 
     @Test
     public void 자동차여러번이동() {
-        Car car = new Car("car1", 4);
+        Car car = new Car();
+        for (int i = 0; i < 4; i++) {
+            car.move();
+        }
         assertThat(car.getTotalDistance()).isLessThanOrEqualTo(4);
     }
 

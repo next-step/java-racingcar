@@ -21,11 +21,9 @@ public class Car implements Comparable<Car> {
         this.name = name;
     }
 
-    public Car(String name, int moveCnt) {
+    public Car(String name, int totalDistance) {
         this.name = name;
-        for (int i = 0; i < moveCnt; i++) {
-            move();
-        }
+        this.totalDistance = totalDistance;
     }
 
     public boolean move() {
