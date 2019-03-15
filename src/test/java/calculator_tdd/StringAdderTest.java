@@ -2,7 +2,7 @@ package calculator_tdd;
 
 import org.junit.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringAdderTest {
     @Test
@@ -114,4 +114,14 @@ public class StringAdderTest {
         assertThat(result).isEqualTo(0);
     }
 
+    @Test
+    public void 음수_사용_시_RuntimeException_발생() {
+        // given
+        String expression = "-1;0;1";
+
+        // when
+        // then
+        assertThatExceptionOfType(RuntimeException.class)
+                .isThrownBy(() -> StringAdder.calculate(expression));
+    }
 }

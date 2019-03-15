@@ -17,17 +17,16 @@ public class StringAdder {
             expression = expression.toStandard();
         }
 
-        return sum(expression.toNumbers());
+        return sum(expression.toInts());
     }
 
-    static int sum(int[] numbers) {
+    static int sum(int[] ints) {
         int sum = 0;
 
-        for (int i = 0; i < numbers.length; i++) {
-            sum += numbers[i];
+        for (int i = 0; i < ints.length; i++) {
+            sum += ints[i];
         }
 
         return sum;
     }
-
 }

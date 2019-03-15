@@ -2,6 +2,8 @@ package calculator_tdd;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ExpressionTest {
@@ -36,17 +38,5 @@ public class ExpressionTest {
 
         // then
         assertThat(standardExpression.isCustom()).isFalse();
-    }
-
-    @Test
-    public void 수식_int_배열로_변환() {
-        // given
-        Expression expression = new Expression("1,2,3");
-
-        // when
-        int[] numbers = expression.toNumbers();
-
-        // then
-        assertThat(numbers).containsExactly(1, 2, 3);
     }
 }

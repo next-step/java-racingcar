@@ -39,18 +39,26 @@ public class Expression {
         return customExpression.replaceAll(customDelimiter, COMMA);
     }
 
-    public int[] toNumbers() {
-        return toInts(splitExpression());
-    }
+    public int[] toInts() {
+        Positive[] positives = toPositives(splitExpression());
+        int[] ints = new int[positives.length];
 
-    private int[] toInts(String[] numbers) {
-        int[] ints = new int[numbers.length];
-
-        for (int i = 0; i < numbers.length; i++) {
-            ints[i] = Integer.parseInt(numbers[i]);
+        for (int i = 0; i < positives.length; i++) {
+            ints[i] = positives[i].getNumber();
         }
 
         return ints;
+    }
+
+    private Positive[] toPositives(String[] numbers) {
+        Positive[] positives = new Positive[numbers.length];
+
+        for (int i = 0; i < numbers.length; i++) {
+            int number = Integer.parseInt(numbers[i]);
+            positives[i] = new Positive(number);
+        }
+
+        return positives;
     }
 
     private String[] splitExpression() {

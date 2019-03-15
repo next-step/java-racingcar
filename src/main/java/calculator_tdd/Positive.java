@@ -5,9 +5,17 @@ public class Positive {
 
     public Positive(int number) {
         if (number < 0) {
-            throw new RuntimeException();
+            throw new IllegalArgumentException();
         }
 
         this.number = number;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public Positive add(Positive positive) {
+        return new Positive(this.number + positive.number);
     }
 }
