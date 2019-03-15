@@ -11,25 +11,23 @@ public class StringSumCalculator {
       return 0;
     }
 
-    // java.util.regex 패키지의 Matcher, Pattern import
-    Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
-    if (!m.find()) {
-      String[] numbers = input.split(",|:");
-      return sumNumbers(input, numbers);
-    }
-
-    String customDelimiter = m.group(1);
-    String[] numbers= m.group(2).split(customDelimiter);
-
-    // 덧셈 구현
-    return sumNumbers(input, numbers);
+    String[] numbers = splitNumberArray(input);
+    return sumNumbers(numbers);
   }
 
-  private static int sumNumbers(String input, String[] numbers) {
+  private static String[] splitNumberArray(String input) {
 
-    if (numbers.length == 1) {
-      return parseNumberToInt(numbers[0]);
+    // java.util.regex 패키지의 Matcher, Pattern import
+    Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(input);
+    if (!matcher.find()) {
+      return input.split("[,:]");
     }
+
+    String customDelimiter = matcher.group(1);
+    return matcher.group(2).split(customDelimiter);
+  }
+
+  private static int sumNumbers(String[] numbers) {
 
     int sum = 0;
     for(String number: numbers) {
