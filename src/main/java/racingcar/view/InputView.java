@@ -6,13 +6,13 @@ import java.util.Scanner;
 
 public class InputView {
 
-    public static int getIntegerValue(String question, Scanner scanner) {
+    public static int getTryCount(String question, Scanner scanner) {
         System.out.print(question);
         readInteger(scanner);
         return scanner.nextInt();
     }
 
-    public static List<String> getStringList(String question, String regex, Scanner scanner) {
+    public static List<String> getCarNames(String question, String regex, Scanner scanner) {
         System.out.println(question);
         readString(scanner);
         String str = scanner.nextLine();

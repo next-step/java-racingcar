@@ -1,12 +1,12 @@
-package racingcar.web;
+package racingcar;
 
 import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
 import racingcar.utils.RandomGeneratorImpl;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
-import racingcar.web.dto.RaceResultDTO;
-import racingcar.web.dto.RunResultDTO;
+import racingcar.dto.RaceResultDTO;
+import racingcar.dto.RunResultDTO;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
@@ -36,7 +36,7 @@ public class WebApplication {
         post("/name", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             Scanner scanner = new Scanner(req.queryParams("names"));
-            names = InputView.getStringList("", REGEX, scanner);
+            names = InputView.getCarNames("", REGEX, scanner);
             System.out.println(names);
             model.put("names", names);
             return render(model, "/game.html");

@@ -1,4 +1,4 @@
-package racingcar.web.dto;
+package racingcar.dto;
 
 public class RunResultDTO {
     private String carName;
@@ -15,5 +15,10 @@ public class RunResultDTO {
 
     public String getResult() {
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return carName + ":" + result;
     }
 }
