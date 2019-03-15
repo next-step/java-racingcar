@@ -28,4 +28,11 @@ public class Car {
         if(randomValue >= MOVE_THRESHOLD)
         this.position++;
     }
+
+    public boolean isEqualPosition(int position) {
+        if(this.position == position)
+            return true;
+
+        return false;
+    }
 }

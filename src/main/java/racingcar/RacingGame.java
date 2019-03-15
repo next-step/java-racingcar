@@ -26,8 +26,7 @@ public class RacingGame {
             ResultView.viewCars(move(new RandomUtil(RANDOM_FROM, RANDOM_TO)));
         }
 
-        GameResult gameResult = new GameResult();
-        ResultView.viewWinner(gameResult.getWinner(cars));
+        ResultView.viewWinner(GameResult.getWinner(cars));
     }
 
     public List<Car> move(RandomUtil randomUtil) {

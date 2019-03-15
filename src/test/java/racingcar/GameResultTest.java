@@ -17,9 +17,21 @@ public class GameResultTest {
         cars.add(new Car("sy",1));
         cars.add(new Car("dh",2));
 
-        GameResult gameResult = new GameResult();
-        List<Car> winners = gameResult.getWinner(cars);
+        List<Car> winners = GameResult.getWinner(cars);
         assertThat(winners).hasSize(1);
         assertThat(winners).containsExactly(winner);
+    }
+
+    @Test
+    public void 포지션_가장큰_자동차_구하기() {
+        int max = 9;
+        List<Car> cars = new ArrayList<>();
+
+        cars.add(new Car("max", max));
+        cars.add(new Car("sy", 3));
+        cars.add(new Car("dh", 7));
+
+        assertThat(GameResult.getMaxPositionFromCars(cars)).isEqualTo(max);
+
     }
 }
