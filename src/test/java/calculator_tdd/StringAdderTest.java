@@ -5,6 +5,7 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringAdderTest {
+
     @Test
     public void 쉼표_덧셈() {
         // given

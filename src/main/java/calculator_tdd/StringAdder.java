@@ -1,39 +1,27 @@
 package calculator_tdd;
 
-import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class StringAdder {
-    private static final Pattern CUSTUM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
-    private static final String COMMA = ",";
-    private static final String COLON = ":";
-    private static final String STANDARD_DELIMITER_PATTERN = COMMA + "|" + COLON;
+    private StringAdder() {
+    }
 
-    public static int calculate(String expression) {
-        if (checkCustomSeparator(expression)) {
-            expression = changeCustomExpressionToStandard(expression);
+    public static int calculate(String inputExpression) {
+        Expression expression = new Expression(inputExpression);
+
+        if (expression.isCustom()) {
+            expression = expression.toStandard();
         }
 
-        String[] numbers = expression.split(STANDARD_DELIMITER_PATTERN);
-
-        return Arrays.stream(numbers)
-                .mapToInt(Integer::parseInt)
-                .sum();
+        return sum(expression.toNumbers());
     }
 
-    private static String changeCustomExpressionToStandard(String customExpression) {
-        Matcher matcher = CUSTUM_DELIMITER_PATTERN.matcher(customExpression);
-        matcher.find();
+    static int sum(int[] numbers) {
+        int sum = 0;
 
-        String customDelimiter = matcher.group(1);
-        String expression = matcher.group(2);
+        for (int i = 0; i < numbers.length; i++) {
+            sum += numbers[i];
+        }
 
-        return expression.replaceAll(customDelimiter, COMMA);
+        return sum;
     }
 
-    private static boolean checkCustomSeparator(String expression) {
-        Matcher matcher = CUSTUM_DELIMITER_PATTERN.matcher(expression);
-        return matcher.matches();
-    }
 }
