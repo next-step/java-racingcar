@@ -23,6 +23,6 @@ public class GameResultTest {
         GameResult gameResult = new GameResult();
         List<Car> winners = gameResult.getWinner(cars);
         assertThat(winners).hasSize(1);
-        assertThat(winners.get(0)).isEqualTo(winner);
+        assertThat(winners).containsExactly(winner);
     }
 }
