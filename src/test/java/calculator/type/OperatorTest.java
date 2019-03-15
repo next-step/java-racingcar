@@ -6,12 +6,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class OperatorTest {
 
-    @Test
-    public void null또는0인경우() {
+    @Test(expected = IllegalArgumentException.class)
+    public void null값이_들어온경우() {
         Operator operator = Operator.typeOf(null);
         assertThat(operator).isNull();
+    }
 
-        operator = Operator.typeOf("sdfsrgerg");
+    @Test(expected = IllegalArgumentException.class)
+    public void 비정상_값이_들어온경우() {
+        Operator operator = Operator.typeOf("비정상값");
         assertThat(operator).isNull();
     }
 

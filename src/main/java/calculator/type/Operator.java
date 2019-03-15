@@ -44,19 +44,13 @@ public enum Operator {
 
         //TODO : 2Depth / if 조건문 분리하기
         for (Operator operator : operators) {
-            if(findOperator(operator, expression)) {
+            if(operator.value.equals(expression)) {
                 return operator;
             }
         }
 
-        //TODO : Optional 사용해서 개선해보기
-        return null;
-    }
-
-    private static boolean findOperator(Operator operator, String expression) {
-        if(operator.value.equals(expression)) {
-            return true;
-        }
-        return false;
+        //TODO : Optional 사용해서 개선해보기 - 조금 더 공부한 뒤 적용
+        //잘못된 값이 들어온것이므로, 에러 발생하는 방향으로 개선
+        throw new IllegalArgumentException();
     }
 }
