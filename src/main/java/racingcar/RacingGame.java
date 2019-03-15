@@ -2,10 +2,11 @@ package racingcar;
 
 import java.util.*;
 
+
 public class RacingGame {
     private static final int RANDOM_FROM = 0;
     private static final int RANDOM_TO = 9;
-    private static final int MOVE_DIFFICULTY = 4;
+
 
     private List<Car> cars;
 
@@ -16,7 +17,6 @@ public class RacingGame {
         for(String carName : carNames) {
             cars.add(new Car(carName));
         }
-
     }
 
     public void gameStart(int inputTimes) {
@@ -33,7 +33,7 @@ public class RacingGame {
     public List<Car> move(RandomUtil randomUtil) {
         for(Car car: cars) {
             int randomNumber = randomUtil.randomInt();
-            car.moveCarByRandomNumber(MOVE_DIFFICULTY, randomNumber);
+            car.go(randomNumber);
         }
         return cars;
     }

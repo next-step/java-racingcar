@@ -4,10 +4,16 @@ public class Car {
 
     private final String name;
     private int position;
+    private static final int MOVE_THRESHOLD= 4;
 
     public Car(String name) {
         position = 0;
         this.name = name;
+    }
+
+    public Car(String name, int position) {
+        this.name = name;
+        this.position = position;
     }
 
     public int getPosition() {
@@ -18,13 +24,8 @@ public class Car {
         return name;
     }
 
-    public void go() {
+    public void go(int randomValue) {
+        if(randomValue >= MOVE_THRESHOLD)
         this.position++;
-    }
-
-    public void moveCarByRandomNumber(int difficulty, int randomNumber) {
-        if(randomNumber >= difficulty) {
-            go();
-        }
     }
 }
