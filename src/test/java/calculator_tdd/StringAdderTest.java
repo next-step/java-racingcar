@@ -5,6 +5,17 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringAdderTest {
+    @Test
+    public void 숫자_하나_덧셈() {
+        // given
+        String expression = "5";
+
+        // when
+        int result = StringAdder.calculate(expression);
+
+        // then
+        assertThat(result).isEqualTo(5);
+    }
 
     @Test
     public void 쉼표_덧셈() {
@@ -102,4 +113,5 @@ public class StringAdderTest {
         // then
         assertThat(result).isEqualTo(0);
     }
+
 }
