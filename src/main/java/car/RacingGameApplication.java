@@ -12,11 +12,17 @@ public class RacingGameApplication {
     }
 
     public static void startGame() {
-        int carCount = InputValue.getCarCount();
-        int tryCount = InputValue.getTryCount();
+        String[] carsName = InputValue.getCarsName();
+        int racingCount = InputValue.getRacingCount();
 
-        RacingGame racingGame = new RacingGame(carCount);
-        GameResult result = racingGame.playingGame(tryCount);
-        ResultView.printAllGame(result);
+        RacingGame racingGame = new RacingGame(carsName, racingCount);
+        GameResult result = null;
+
+        while ( racingGame.isRunning() ) {
+            result = racingGame.playingGame();
+            ResultView.printGame(result);
+        }
+
+        ResultView.printGameWinner(result);
     }
 }

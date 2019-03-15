@@ -1,26 +1,25 @@
 package car.entity;
 
 public class ResultView {
-    public static void printAllGame(GameResult gameResult) {
-        gameResult.getAllResult().forEach(racingRound -> {
-            printOneRound(racingRound);
-            System.out.println();
+    public static void printGame(GameResult gameResult) {
+        StringBuffer gameString = new StringBuffer();
+
+        gameResult.getRoundResult().forEach(aCar -> {
+            gameString.append(aCar.toString());
         });
+
+        System.out.println(gameString.toString());
     }
 
-    private static void printOneRound(RacingRound racingRound) {
-        racingRound.getRound().forEach(aCar -> {
-            printOneRound(aCar);
-            System.out.println();
+    public static void printGameWinner(GameResult gameResult) {
+        StringBuffer winnerString = new StringBuffer();
+
+        gameResult.getWinnerNames().forEach(car -> {
+            winnerString.append(car.getName() + " ");
         });
-    }
 
-    private static void printOneRound(Car car) {
-        int i = 0;
+        winnerString.append("가 최종 우승했습니다.");
 
-        while ( i < car.getMovingCount() ) {
-            System.out.print("-");
-            i++;
-        }
+        System.out.println(winnerString);
     }
 }
