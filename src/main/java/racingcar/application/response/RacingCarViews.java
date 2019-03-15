@@ -1,4 +1,4 @@
-package racingcar.application;
+package racingcar.application.response;
 
 import java.util.ArrayList;
 import java.util.List;
