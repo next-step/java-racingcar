@@ -59,4 +59,17 @@ public class CarTest {
         car.go();
         assertThat(copy.getMovedDistance()).isEqualTo(1);
     }
+
+    @Test
+    public void 초기화() {
+        // given
+        Car car = new Car(carName);
+        car.go();
+
+        // when
+        car.initialize();
+
+        // then
+        assertThat(car.getMovedDistance()).isEqualTo(0);
+    }
 }

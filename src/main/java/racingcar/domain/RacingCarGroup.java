@@ -5,7 +5,6 @@ import racingcar.random.RandomIntGenerator;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingCarGroup {
     private List<Car> cars;
@@ -32,9 +31,6 @@ public class RacingCarGroup {
     }
 
     public void initialize() {
-        this.cars = this.cars.stream()
-                .map(Car::getName)
-                .map(Car::new)
-                .collect(Collectors.toList());
+        this.cars.forEach(Car::initialize);
     }
 }

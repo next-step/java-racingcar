@@ -2,12 +2,13 @@ package racingcar.domain;
 
 public class Car {
     public static final int MOVE_THRESHOLD = 3;
+    private static final int INITIAL_MOVED_DISTANCE = 0;
 
     private String name;
-    private int movedDistance = 0;
+    private int movedDistance;
 
     public Car(String name) {
-        this.name = name;
+        this(name, INITIAL_MOVED_DISTANCE);
     }
 
     Car(String name, int movedDistance) {
@@ -38,5 +39,9 @@ public class Car {
 
     public Car copy() {
         return new Car(this.name, this.movedDistance);
+    }
+
+    public void initialize() {
+        this.movedDistance = INITIAL_MOVED_DISTANCE;
     }
 }
