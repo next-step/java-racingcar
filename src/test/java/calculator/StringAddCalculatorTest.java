@@ -41,4 +41,22 @@ public class StringAddCalculatorTest {
 
         assertThat(result).isEqualTo(3);
     }
+
+    @Test
+    public void 숫자_새개_이상을_컴마로_구분하여_입력() {
+        StringAddCalculator calculator = new StringAddCalculator();
+        String input = "1,2,3";
+        int result = calculator.calculate(input);
+
+        assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    public void 숫자_새개_이상을_콜론으로_구분하여_입력() {
+        StringAddCalculator calculator = new StringAddCalculator();
+        String input = "1:2:3";
+        int result = calculator.calculate(input);
+
+        assertThat(result).isEqualTo(6);
+    }
 }

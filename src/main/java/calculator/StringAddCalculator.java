@@ -14,14 +14,20 @@ public class StringAddCalculator {
         }
 
         String[] inputs = input.split(",|:");
-        if (inputs.length == 2) {
-            int firstNumber = Integer.parseInt(inputs[0]);
-            int secondNumber = Integer.parseInt(inputs[1]);
-
-            return firstNumber + secondNumber;
+        if (inputs.length < 2) {
+            throw new RuntimeException();
         }
 
+        return addInputs(inputs);
+    }
 
-        return 0;
+    private int addInputs(String[] inputs) {
+        int result = 0;
+
+        for (int i = 0; i < inputs.length; i++) {
+            result += Integer.parseInt(inputs[i]);
+        }
+
+        return result;
     }
 }
