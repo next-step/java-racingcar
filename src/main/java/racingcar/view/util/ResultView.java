@@ -15,10 +15,9 @@ public class ResultView {
 
     private static void printPosition(List<Car> cars, int turn) {
 
-        for (int i = 0; i < cars.size(); i++) {
-            Car current = cars.get(i);
-            String result = current.getName() + " : ";
-            result += printProgress(current, turn);
+        for (Car car : cars) {
+            String result = car.getName() + " : ";
+            result += printProgress(car, turn);
             System.out.println(result);
         }
         System.out.println();
@@ -44,7 +43,7 @@ public class ResultView {
         for (i = 0; i < count - 1; i++) {
             stringBuilder.append(winners.get(i).getName() + ", ");
         }
-        stringBuilder.append(winners.get(count-1).getName() + "가 최종 우승했습니다.");
+        stringBuilder.append(winners.get(count - 1).getName() + "가 최종 우승했습니다.");
 
         return stringBuilder.toString();
     }
