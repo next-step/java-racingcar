@@ -1,23 +1,23 @@
 package racingcar.domain;
 
 public class RacingCar {
-    private final Integer id;
     private final String name;
-    private int position;
+    private final int position;
 
-    public RacingCar(final Integer id, final String name) {
-        this.id = id;
+    public RacingCar(final String name, final int position) {
         this.name = name;
+        this.position = position;
     }
 
-    public void move(final MovingStrategy movingStrategy) {
+    public RacingCar move(final MovingStrategy movingStrategy) {
         if (movingStrategy.movable()) {
-            this.position++;
+            return new RacingCar(this.name, this.position + 1);
         }
+        return this;
     }
 
-    public Integer getId() {
-        return id;
+    public boolean isInPosition(final int position) {
+        return this.position == position;
     }
 
     public String getName() {

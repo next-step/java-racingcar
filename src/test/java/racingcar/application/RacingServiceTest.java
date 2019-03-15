@@ -43,6 +43,6 @@ public class RacingServiceTest {
         final RacingView racingView = racingViews.get(0);
         assertThat(racingViews).hasSize(time);
         assertThat(racingView.getTime()).isEqualTo(time);
-        assertThat(racingView.getRacingCarViews().get()).hasSize(TEST_NAMES.split(",").length);
+        assertThat(racingView.getRacingCars().get()).hasSize(TEST_NAMES.split(",").length);
     }
 }

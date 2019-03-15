@@ -1,19 +1,21 @@
 package racingcar.application.response;
 
+import racingcar.domain.RacingCars;
+
 public class RacingView {
     private final int time;
-    private final RacingCarViews racingCarViews;
+    private final RacingCars racingCars;
 
-    public RacingView(final int time, final RacingCarViews racingCarViews) {
+    public RacingView(final int time, final RacingCars racingCars) {
         this.time = time;
-        this.racingCarViews = racingCarViews;
+        this.racingCars = racingCars;
     }
 
     public int getTime() {
         return time;
     }
 
-    public RacingCarViews getRacingCarViews() {
-        return racingCarViews;
+    public RacingCars getRacingCars() {
+        return racingCars;
     }
 }

@@ -3,9 +3,13 @@ package racingcar.console;
 import com.google.common.base.Strings;
 import racingcar.application.RacingService;
 import racingcar.application.request.InputView;
-import racingcar.application.response.*;
+import racingcar.application.response.RacingView;
+import racingcar.application.response.RacingViews;
+import racingcar.application.response.ResultView;
+import racingcar.application.response.WinnerViews;
+import racingcar.domain.RacingCar;
+import racingcar.domain.RacingCars;
 
-import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -49,18 +53,17 @@ public class RacingConsole {
     }
 
     private static void printRacing(final RacingView view) {
-        final List<RacingCarView> racingCarViews = view.getRacingCarViews()
-                .get();
-        for (final RacingCarView racingCarView : racingCarViews) {
-            System.out.println(changeToRacingCarFormat(racingCarView));
+        final RacingCars racingCars = view.getRacingCars();
+        for (final RacingCar racingCar : racingCars.get()) {
+            System.out.println(changeToRacingCarPrintFormat(racingCar));
         }
     }
 
-    private static String changeToRacingCarFormat(final RacingCarView racingCarView) {
+    private static String changeToRacingCarPrintFormat(final RacingCar racingCar) {
         return new StringBuilder()
-                .append(racingCarView.getName())
+                .append(racingCar.getName())
                 .append(" : ")
-                .append(Strings.repeat(POSITION_DISPLAY, racingCarView.getPosition()))
+                .append(Strings.repeat(POSITION_DISPLAY, racingCar.getPosition()))
                 .toString()
                 ;
     }

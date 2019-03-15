@@ -15,10 +15,7 @@ public class RacingGame {
     }
 
     public RacingCars race() {
-        racingCars.get()
-                .stream()
-                .forEach(this::moveIfCan)
-        ;
+        changeRacingCars(this.racingCars.race(getMovingStrategy()));
         return getRacingCars();
     }
 
@@ -26,40 +23,25 @@ public class RacingGame {
         return racingCars;
     }
 
+    public void changeRacingCars(final RacingCars racingCars) {
+        this.racingCars = racingCars;
+    }
+
     public RacingCars whoIsTheWinner() {
-        final int farthestPosition = getFarthestPosition();
-        return new RacingCars(
-                this.racingCars
-                        .get()
-                        .stream()
-                        .filter(racingCar -> racingCar.getPosition() == farthestPosition)
-                        .collect(Collectors.toList())
-        );
+        return this.racingCars.
+                whoWentTheFarthest()
+                ;
     }
 
     private RacingCars makeRacingCars(final String[] names) {
         return new RacingCars(
                 IntStream.rangeClosed(1, names.length)
-                        .mapToObj(id -> new RacingCar(id, names[id - 1]))
+                        .mapToObj(i -> new RacingCar(names[i - 1], 0))
                         .collect(Collectors.toList())
         );
     }
 
-    private void moveIfCan(final RacingCar racingCar) {
-        racingCar.move(getMovingStrategy());
-    }
-
     private MovingStrategy getMovingStrategy() {
         return () -> RandomUtils.nextInt(0, 9) >= difficulty;
-    }
-
-    private int getFarthestPosition() {
-        return this.racingCars
-                .get()
-                .stream()
-                .mapToInt(RacingCar::getPosition)
-                .max()
-                .orElse(0)
-                ;
     }
 }

@@ -25,7 +25,7 @@ public class RacingService {
     }
 
     private RacingView raceOnce(final int time, final RacingGame racingGame) {
-        return new RacingView(time, bindRacingCarViews(racingGame.race()));
+        return new RacingView(time, racingGame.race());
     }
 
     private WinnerViews bindWinnerViews(final RacingCars winners) {
@@ -33,15 +33,6 @@ public class RacingService {
                 winners.get()
                         .stream()
                         .map(RacingCar::getName)
-                        .collect(Collectors.toList())
-        );
-    }
-
-    private RacingCarViews bindRacingCarViews(final RacingCars racingCars) {
-        return new RacingCarViews(
-                racingCars.get()
-                        .stream()
-                        .map(racingCar -> new RacingCarView(racingCar.getName(), racingCar.getPosition()))
                         .collect(Collectors.toList())
         );
     }

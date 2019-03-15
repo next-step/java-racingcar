@@ -11,6 +11,7 @@ public class RacingGameTest {
     private static final int TEST_VERY_EASY_DIFFICULTY = 0;
     private static final int TEST_VERY_DIFFICULT_DIFFICULTY = 10;
     private static final String[] TEST_NAMES = {"pobi", "crong", "honux"};
+    private static final RacingCar TEST_WINNER = new RacingCar("jason", 999);
 
     @Test
     public void 자동차_생성() {
@@ -24,7 +25,7 @@ public class RacingGameTest {
     }
 
     @Test
-    public void 경주_모두_이동하는_경우() {
+    public void 경주_매우_쉬운_난이도() {
         // given
         final RacingGame racingGame = new RacingGame(TEST_VERY_EASY_DIFFICULTY, TEST_NAMES);
 
@@ -37,7 +38,7 @@ public class RacingGameTest {
     }
 
     @Test
-    public void 경주_모두_이동하지_않는_경우() {
+    public void 경주_매우_어려운_난이도() {
         // given
         final RacingGame racingGame = new RacingGame(TEST_VERY_DIFFICULT_DIFFICULTY, TEST_NAMES);
 
@@ -50,7 +51,7 @@ public class RacingGameTest {
     }
 
     @Test
-    public void 누가_우승했는지() {
+    public void 공동_우승() {
         // given
         final RacingGame racingGame = new RacingGame(TEST_VERY_DIFFICULT_DIFFICULTY, TEST_NAMES);
 
@@ -61,6 +62,19 @@ public class RacingGameTest {
         assertThat(getRacingCarNames(winners)).contains(TEST_NAMES);
     }
 
+    @Test
+    public void 개인_우승() {
+        // given
+        final RacingGame racingGame = new RacingGame(TEST_VERY_DIFFICULT_DIFFICULTY, TEST_NAMES);
+        racingGame.changeRacingCars(addRacingCar(racingGame.getRacingCars(), TEST_WINNER));
+
+        // when
+        final RacingCars winners = racingGame.whoIsTheWinner();
+
+        // then
+        assertThat(getRacingCarNames(winners)).contains(TEST_WINNER.getName());
+    }
+
     private List<RacingCar> getMovedRacingCars(final RacingCars racingCars) {
         return racingCars.get()
                 .stream()
@@ -69,11 +83,17 @@ public class RacingGameTest {
                 ;
     }
 
-    private List<String> getRacingCarNames(final RacingCars winners) {
-        return winners.get()
+    private List<String> getRacingCarNames(final RacingCars racingCars) {
+        return racingCars.get()
                 .stream()
                 .map(RacingCar::getName)
                 .collect(Collectors.toList())
                 ;
+    }
+
+    private RacingCars addRacingCar(final RacingCars racingCars, final RacingCar racingCar) {
+        final List<RacingCar> cars = racingCars.get();
+        cars.add(racingCar);
+        return new RacingCars(cars);
     }
 }
