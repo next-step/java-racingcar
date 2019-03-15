@@ -1,36 +1,55 @@
 package racinggame;
 
-import java.util.Random;
+import racinggame.domain.Car;
+import racinggame.domain.RacingResult;
+import racinggame.service.CarAdvanceService;
+import racinggame.service.RandomValueGeneratorImpl;
+import racinggame.view.InputView;
+import racinggame.view.ResultView;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class RacingGame {
 
-    private int[] carPositions;
+    private Configuration configuration;
 
-    private RacingGameConfiguration configuration;
+    private CarAdvanceService carAdvanceService = new CarAdvanceService(new RandomValueGeneratorImpl());
 
-    public RacingGame(RacingGameConfiguration configuration) {
+    public RacingGame(Configuration configuration) {
         this.configuration = configuration;
     }
 
     public static void main(String[] args) {
-        RacingGame racingGame = new RacingGame(InputView.getConfiguration());
-        racingGame.initializeCarPositions();
+        InputView inputView = new InputView(new Scanner(System.in));
+        String[] carNames = inputView.getCarNames();
+        Integer numberOfTries = inputView.getNumberOfTries();
 
-        CarAdvanceProcessor processor = new CarAdvanceProcessor(new Random());
+        RacingGame racingGame = new RacingGame(new Configuration(carNames, numberOfTries));
+
         ResultView resultView = new ResultView();
+        resultView.showResultTitle();
 
-        for( int i = 0, numberOfTries = racingGame.configuration.getNumberOfTries(); i < numberOfTries; ++i ) {
-            processor.moveForward(racingGame.carPositions);
-            resultView.showCarPositions(racingGame.carPositions);
+        RacingResult result = new RacingResult(racingGame.createCars());
+        for( int i = 0; i < numberOfTries; ++i ) {
+            racingGame.proceed(result);
+            resultView.showCarPositions(result);
         }
+        resultView.showWinners(result);
     }
 
-    private void initializeCarPositions() {
+    private List<Car> createCars() {
+        List<Car> cars = new ArrayList<>();
 
-        carPositions = new int[configuration.getNumberOfCars()];
-
-        for( int i = 0, length = carPositions.length; i < length; ++i ) {
-            carPositions[i] = 1;
+        for( String name : configuration.getCarNames() ) {
+            cars.add( new Car(name) );
         }
+
+        return cars;
+    }
+
+    private void proceed(RacingResult result) {
+        carAdvanceService.moveForward(result.getCars());
     }
 }
