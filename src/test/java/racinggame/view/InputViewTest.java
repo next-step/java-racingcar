@@ -37,7 +37,7 @@ public class InputViewTest {
         System.out.println(inputLine);
         String [] carNames = inputView.getCarNames(inputLine);
 
-        inputView.validatedCarNames(carNames);
+        inputView.validateCarNames(carNames);
     }
 
     @Test

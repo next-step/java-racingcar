@@ -1,27 +1,32 @@
-package racinggame;
+package racinggame.domain;
 
-import racinggame.domain.Car;
-import racinggame.domain.RacingResult;
 import racinggame.service.CarAdvanceService;
 import racinggame.service.RandomValueGeneratorImpl;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
 
-    private Configuration configuration;
+    private List<Car> cars;
+    private int numberOfTries;
 
     private CarAdvanceService carAdvanceService = new CarAdvanceService(new RandomValueGeneratorImpl());
 
-    public RacingGame(Configuration configuration) {
-        this.configuration = configuration;
+    public RacingGame(List<String> carNames, int numberOfTries) {
+        this.cars = createCars(carNames);
+        this.numberOfTries = numberOfTries;
     }
 
-    public List<Car> createCars() {
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
+    }
+
+    List<Car> createCars(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
 
-        for( String name : configuration.getCarNames() ) {
+        for( String name : carNames ) {
             cars.add( new Car(name) );
         }
 

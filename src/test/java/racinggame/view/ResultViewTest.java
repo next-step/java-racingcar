@@ -36,17 +36,6 @@ public class ResultViewTest {
     }
 
     @Test
-    public void showCarPosition() {
-        String carName = "pororo";
-        int position = 5;
-        Car car = new Car( carName, position );
-
-        resultView.showCarPosition(car);
-
-        assertEquals( carName + " : " + getPositionString(position) + System.lineSeparator(), outputStream.toString() );
-    }
-
-    @Test
     public void showCarPositions() {
 
         List<Car> cars = Arrays.asList(
@@ -62,33 +51,6 @@ public class ResultViewTest {
     }
 
     @Test
-    public void getWinnerListString_for_a_winner() {
-
-        List<Car> winners = Arrays.asList(
-            new Car( "pororo")
-        );
-
-        String expected = winners.get(0).getName();
-        String actual = resultView.getWinnersString(winners);
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void getWinnerListString_for_two_winners() {
-
-        List<Car> winners = Arrays.asList(
-                new Car( "pororo"),
-                new Car( "pobi")
-        );
-
-        String expected = winners.get(0).getName() + WINNER_SEPARATOR + winners.get(1).getName();
-        String actual = resultView.getWinnersString(winners);
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
     public void showWinners_for_a_winner() {
 
         List<Car> winners = Arrays.asList(
@@ -98,7 +60,7 @@ public class ResultViewTest {
 
         resultView.showWinners(result);
 
-        String expected = resultView.getWinnersString(winners) + WINNING_MESSAGE + System.lineSeparator();
+        String expected = result.getDisplayableWinnerNames() + WINNING_MESSAGE + System.lineSeparator();
         assertEquals(expected, outputStream.toString());
     }
 
@@ -113,7 +75,7 @@ public class ResultViewTest {
 
         resultView.showWinners(result);
 
-        String expected = resultView.getWinnersString(winners) + WINNING_MESSAGE + System.lineSeparator();
+        String expected = result.getDisplayableWinnerNames() + WINNING_MESSAGE + System.lineSeparator();
         assertEquals(expected, outputStream.toString() );
     }
 

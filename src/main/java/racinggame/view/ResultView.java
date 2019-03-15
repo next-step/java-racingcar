@@ -2,49 +2,25 @@ package racinggame.view;
 
 import racinggame.domain.Car;
 import racinggame.domain.RacingResult;
-
-import java.util.List;
+import util.StringUtils;
 
 public class ResultView {
     static final String RESULT_TITLE = "\n실행 결과";
     static final String POSITION_STRING = "-";
     static final String WINNING_MESSAGE = "이(가) 최종 우승했습니다.";
-    static final String WINNER_SEPARATOR = ",";
 
-    public void showResultTitle() {
+    public static void showResultTitle() {
         System.out.println(RESULT_TITLE);
     }
 
-    public void showCarPositions(RacingResult result) {
-        for( Car curCar : result.getCars() ) {
-            showCarPosition(curCar);
+    public static void showCarPositions(RacingResult result) {
+        for(Car curCar : result.getCars()) {
+            System.out.println(String.format("%s : %s", curCar.getName(), StringUtils.repeat(POSITION_STRING, curCar.getPosition())));
         }
         System.out.println();
     }
 
-    void showCarPosition(Car car) {
-        System.out.print(car.getName() + " : " );
-        for( int i = 0; i < car.getPosition(); ++i ) {
-            System.out.print(POSITION_STRING);
-        }
-        System.out.println();
-    }
-
-    public void showWinners(RacingResult result) {
-        System.out.println(getWinnersString(result.getWinners()) + WINNING_MESSAGE);
-    }
-
-    String getWinnersString(List<Car> winners) {
-
-        StringBuilder sb = new StringBuilder();
-
-        int lastItemIndex = winners.size() - 1;
-
-        for( int i = 0; i < lastItemIndex; ++i ) {
-            sb.append(winners.get(i).getName() + WINNER_SEPARATOR);
-        }
-        sb.append(winners.get(lastItemIndex).getName());
-
-        return sb.toString();
+    public static void showWinners(RacingResult result) {
+        System.out.println(result.getDisplayableWinnerNames() + WINNING_MESSAGE);
     }
 }

@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 
@@ -42,7 +43,7 @@ public class RacingResultTest {
     }
 
     @Test
-    public void getWinnerList_when_there_are_one_maximum_value() {
+    public void getWinners_when_there_are_one_maximum_value() {
         int expected = 13;
         List<Car> cars = Arrays.asList(
                 new Car("pobi", 7 ),
@@ -58,7 +59,7 @@ public class RacingResultTest {
     }
 
     @Test
-    public void getWinnerList_when_there_are_two_maximum_values() {
+    public void getWinners_when_there_are_two_maximum_values() {
         int expected = 10;
         List<Car> cars = Arrays.asList(
                 new Car("pobi", 7 ),
@@ -75,7 +76,7 @@ public class RacingResultTest {
     }
 
     @Test
-    public void getWinnerList_when_there_are_all_maximum_values() {
+    public void getWinners_when_there_are_all_maximum_values() {
         int expected = 10;
         List<Car> cars = Arrays.asList(
                 new Car("pobi", expected ),
@@ -90,5 +91,30 @@ public class RacingResultTest {
         assertEquals( expected, winners.get(0).getPosition() );
         assertEquals( expected, winners.get(1).getPosition() );
         assertEquals( expected, winners.get(2).getPosition() );
+    }
+
+    @Test
+    public void getWinnerNames_for_a_winner() {
+        List<Car> winners = Arrays.asList(
+                new Car( "pororo")
+        );
+
+        List<String> expected = winners.stream().map(Car::getName).collect(Collectors.toList());
+        List<String> actual = RacingResult.getWinnerNames(winners);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getWinnerNames_for_two_winners() {
+        List<Car> winners = Arrays.asList(
+                new Car( "pororo"),
+                new Car( "pobi")
+        );
+
+        List<String> expected = winners.stream().map(Car::getName).collect(Collectors.toList());
+        List<String> actual = RacingResult.getWinnerNames(winners);
+
+        assertEquals(expected, actual);
     }
 }
