@@ -1,14 +1,13 @@
 package racingcar;
 
-
 public class RacingGame {
-    
     private CarMovableDecider carMovableDecider;
     private RacingGameState racingGameState;
 
     public RacingGame(CarMovableDecider carMovableDecider, RacingGameState racingGameState) {
         this.carMovableDecider = carMovableDecider;
         this.racingGameState = racingGameState;
+
     }
 
     public RacingResult race() {

@@ -10,7 +10,6 @@ public class RacingGameTest {
     private int tryNo = 3;
 
     @Test
-
     public void 무조건_모든차량_이동() {
         RacingGame racingGame = new RacingGame(new CarMovableAlwaysTrueDecider(), new RacingGameState(carNames, tryNo));
         racingGame.race();
