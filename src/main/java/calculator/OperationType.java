@@ -28,7 +28,7 @@ public enum OperationType {
         }
     };
 
-    String sign;
+    private String sign;
 
     OperationType(String sign) {
         this.sign = sign;

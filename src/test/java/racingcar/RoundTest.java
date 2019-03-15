@@ -8,7 +8,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RoundTest {
-
     @Test
     public void 라운드의_승자를_찾기() {
         List<Car> cars = new ArrayList<>();

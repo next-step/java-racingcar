@@ -23,7 +23,7 @@ public class GameResult {
     }
 
     public String getWinnerId() {
-        Round finalRound = rounds.get(rounds.size() - 1);
+        Round finalRound = rounds.get(countRoundLength() - 1);
         return finalRound.getWinnerId();
     }
 }

@@ -10,9 +10,9 @@ public class RacingGame {
     public RacingGame(String names) {
         this.cars = new ArrayList<>();
 
-        String[] nameArray = names.split(",");
-        for (int i = 0; i < nameArray.length; i++) {
-            cars.add(new Car(nameArray[i]));
+        String[] carNames = names.split(",");
+        for (int i = 0; i < carNames.length; i++) {
+            cars.add(new Car(carNames[i]));
         }
     }
 
@@ -28,7 +28,7 @@ public class RacingGame {
         return result;
     }
 
-    void carsMove() {
+    private void carsMove() {
         this.cars.stream()
                 .forEach(it -> it.move(RandomUtils.getRandomNumber(10)));
     }
