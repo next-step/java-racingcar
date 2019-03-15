@@ -1,47 +1,48 @@
 package calculator;
 
-import util.StringUtils;
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class StringAddCalculator {
 
-    public int add(String input) {
-        if(StringUtils.isNullOrEmpty(input) ) {
+    public static int add(String input) {
+        if(isNullOrEmptyString(input) ) {
             return 0;
         }
 
-        List<Integer> operands = getOperands(input);
-
-        return getSum(operands);
+        return getSum(parseIntArray(splitInput(input)));
     }
 
-    List<Integer> getOperands(String input) {
+    static boolean isNullOrEmptyString(String input) {
+        return input == null || input.length() == 0;
+    }
 
-        List<Integer> operands = new ArrayList<>();
 
-        String[] splittedInput = input.split(",|:");
+    static String[] splitInput(String input) {
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
 
-        for( String str : splittedInput ) {
-            operands.add(parseOperand(str));
+        if (m.find()) {
+            String delimeter = m.group(1);
+            return m.group(2).split(delimeter);
         }
 
-        return operands;
+        return input.split("[,:]");
     }
 
-    private int parseOperand(String str) {
-        Integer operand = Integer.parseInt(str);
-
-        if( operand.intValue() < 0 ) {
-            throw new RuntimeException();
-        }
-
-        return operand.intValue();
+    static List<PositiveInteger> parseIntArray(String[] strArray) {
+        return Stream.of(strArray)
+                    .map(Integer::parseInt)
+                    .map(PositiveInteger::new)
+                    .collect(Collectors.toList());
     }
 
-    private int getSum(List<Integer> operands) {
-        return operands.stream().mapToInt(i -> i.intValue()).sum();
+    static int getSum(List<PositiveInteger> positiveIntegers) {
+        return positiveIntegers.stream()
+                        .mapToInt(PositiveInteger::getNumber)
+                        .sum();
     }
 
 }
