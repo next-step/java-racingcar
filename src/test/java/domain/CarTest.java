@@ -19,4 +19,10 @@ public class CarTest {
         car.move();
         assertThat(car.getMileage()).isEqualTo(2);
     }
+
+    @Test
+    public void check_if_car_has_name() {
+        Car car = new Car("joont92");
+        assertThat(car.getName()).isEqualTo("joont92");
+    }
 }

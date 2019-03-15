@@ -1,15 +1,15 @@
 package domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.Test;
 import util.RandomNumberGenerator;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-public class RandomNumberConditionTest {
+public class RandomNumberRuleTest {
     @Test
     public void check_if_generated_number_bigger_than_condition_number() {
-        RandomNumberCondition randomNumberCondition =
-                new RandomNumberCondition(1, 10, 5, new MockRandomNumberGenerator());
+        RandomNumberRule randomNumberCondition =
+                new RandomNumberRule(1, 10, 5, new MockRandomNumberGenerator());
         assertThat(randomNumberCondition.canPass()).isTrue();
     }
 

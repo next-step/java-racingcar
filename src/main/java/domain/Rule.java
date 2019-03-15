@@ -1,5 +1,5 @@
 package domain;
 
-public interface Condition {
+public interface Rule {
     boolean canPass();
 }
