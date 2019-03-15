@@ -16,4 +16,16 @@ public class StringAdderTest {
         // then
         assertThat(result).isEqualTo(10);
     }
+
+    @Test
+    public void 콜론_덧셈() {
+        // given
+        String expression = "1:2:4";
+
+        // when
+        int result = StringAdder.calculate(expression);
+
+        // then
+        assertThat(result).isEqualTo(7);
+    }
 }
