@@ -13,77 +13,82 @@ public class RacingResultTest {
 
     @Test
     public void getMaximumPosition_when_there_are_one_maximum_value() {
+        int expected = 13;
         List<Car> cars = Arrays.asList(
                 new Car("pobi", 7 ),
                 new Car("crong", 10 ),
-                new Car("honux", 13 )
+                new Car("honux", expected )
         );
         result = new RacingResult(cars);
 
-        int maximumPosition = result.getMaximumPosition();
+        int actual = result.getMaximumPosition();
 
-        assertEquals( 13, maximumPosition );
+        assertEquals( expected, actual );
     }
 
     @Test
     public void getMaximumPosition_when_there_are_two_maximum_values() {
+        int expected = 10;
         List<Car> cars = Arrays.asList(
                 new Car("pobi", 7 ),
-                new Car("crong", 10 ),
-                new Car("honux", 10 )
+                new Car("crong", expected ),
+                new Car("honux", expected )
         );
         result = new RacingResult(cars);
 
-        int maximumPosition = result.getMaximumPosition();
+        int actual = result.getMaximumPosition();
 
-        assertEquals( 10, maximumPosition );
+        assertEquals( expected, actual );
     }
 
     @Test
     public void getWinnerList_when_there_are_one_maximum_value() {
+        int expected = 13;
         List<Car> cars = Arrays.asList(
                 new Car("pobi", 7 ),
                 new Car("crong", 10 ),
-                new Car("honux", 13 )
+                new Car("honux", expected )
         );
         result = new RacingResult(cars);
 
         List<Car> winners = result.getWinners();
 
         assertEquals( 1, winners.size() );
-        assertEquals( 13, winners.get(0).getPosition() );
+        assertEquals( expected, winners.get(0).getPosition() );
     }
 
     @Test
     public void getWinnerList_when_there_are_two_maximum_values() {
+        int expected = 10;
         List<Car> cars = Arrays.asList(
                 new Car("pobi", 7 ),
-                new Car("crong", 10 ),
-                new Car("honux", 10 )
+                new Car("crong", expected ),
+                new Car("honux", expected )
         );
         result = new RacingResult(cars);
 
         List<Car> winners = result.getWinners();
 
         assertEquals( 2, winners.size() );
-        assertEquals( 10, winners.get(0).getPosition() );
-        assertEquals( 10, winners.get(1).getPosition() );
+        assertEquals( expected, winners.get(0).getPosition() );
+        assertEquals( expected, winners.get(1).getPosition() );
     }
 
     @Test
     public void getWinnerList_when_there_are_all_maximum_values() {
+        int expected = 10;
         List<Car> cars = Arrays.asList(
-                new Car("pobi", 10 ),
-                new Car("crong", 10 ),
-                new Car("honux", 10 )
+                new Car("pobi", expected ),
+                new Car("crong", expected ),
+                new Car("honux", expected )
         );
         result = new RacingResult(cars);
 
         List<Car> winners = result.getWinners();
 
         assertEquals( 3, winners.size() );
-        assertEquals( 10, winners.get(0).getPosition() );
-        assertEquals( 10, winners.get(1).getPosition() );
-        assertEquals( 10, winners.get(2).getPosition() );
+        assertEquals( expected, winners.get(0).getPosition() );
+        assertEquals( expected, winners.get(1).getPosition() );
+        assertEquals( expected, winners.get(2).getPosition() );
     }
 }

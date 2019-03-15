@@ -1,9 +1,9 @@
 package racinggame.view;
 
+import racinggame.domain.Car;
 import util.StringUtils;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 public class InputView {
 
@@ -13,11 +13,12 @@ public class InputView {
         this.scanner = scanner;
     }
 
-    public String[] getCarNames() {
+    public List<String> getCarNames() {
         showCarNamesInputMessage();
         String[] carNames = getCarNames(getInputLine());
         validatedCarNames(carNames);
-        return carNames;
+
+        return new ArrayList(Arrays.asList(carNames));
     }
 
     public Integer getNumberOfTries() {

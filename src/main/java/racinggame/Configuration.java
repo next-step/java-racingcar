@@ -1,20 +1,18 @@
 package racinggame;
 
+import java.util.List;
+
 public class Configuration {
 
-    private String[] carNames;
+    private List<String> carNames;
     private int numberOfTries;
 
-    public Configuration(String[] carNames, int numberOfTries) {
+    public Configuration(List<String> carNames, int numberOfTries) {
         this.carNames = carNames;
         this.numberOfTries = numberOfTries;
     }
 
-    public String[] getCarNames() {
+    public List<String> getCarNames() {
         return carNames;
-    }
-
-    public int getNumberOfTries() {
-        return numberOfTries;
     }
 }
