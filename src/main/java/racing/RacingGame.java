@@ -9,10 +9,8 @@ public class RacingGame {
 
     public static int generateRandomValue() { return new Random().nextInt(RANDOM_VALUE_MAX); }
 
-    public static List<Car> race(List<Car> cars) {
-        for (Car car : cars) {
-            car.move(generateRandomValue());
-        }
+    public List<Car> race() {
+        for (Car car:cars) { car.move(generateRandomValue()); }
         return cars;
     }
 
@@ -23,6 +21,27 @@ public class RacingGame {
         }
     }
 
-    public List<Car> getCars() { return cars; }
+    public RacingGame(String[] namesOfCars) {
+        int numberOfCar = namesOfCars.length;
+        this.cars = new ArrayList<Car>(numberOfCar);
+        for(String name:namesOfCars) {
+            cars.add(new Car(name));
+        }
+    }
+
+    //TODO : 최종 우승했습니다 구현
+    public List<Car> getWinner(List<Car> cars) {
+        int maxCarPosition = cars.get(0).getPosition();
+
+        for(Car car:cars){
+            maxCarPosition = (car.getPosition() > maxCarPosition) ? car.getPosition() : maxCarPosition;
+        }
+
+        List<Car> winners = new ArrayList<Car>();
+        for(Car car:cars){
+            if(car.getPosition() == maxCarPosition) { winners.add(car); }
+        }
+        return winners;
+    }
 
 }

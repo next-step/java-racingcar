@@ -15,9 +15,9 @@ public class RacingGameTest {
     public void setUp() { cars = new RacingGame(3).getCars(); }
 
     @Test
-    public void moveCarsTestWithValue5() {
+    public void moveCarsTestWithValue4() {
         for(Car car:cars){
-            car.move(5);
+            car.move(4);
             assertThat(car.getPosition()).isEqualTo(1);
         }
     }

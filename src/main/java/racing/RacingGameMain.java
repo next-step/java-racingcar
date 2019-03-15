@@ -5,17 +5,20 @@ import java.util.List;
 public class RacingGameMain {
     public static void main(String args[]) {
 
-        int numberOfCars = InputView.getNumberOfCar();
-        int timeToTry = InputView.getTimeToTry();
+        RacingGame racingGame = new RacingGame(InputView.getNamesOfCars());
+        List<Car> cars = null;
 
-        List<Car> cars = new RacingGame(numberOfCars).getCars();
+        int timeToTry = InputView.getTimeToTry();
 
         int time = 0;
         while(time < timeToTry) {
-            cars = RacingGame.race(cars);
+            cars = racingGame.race();
             ResultView.printResult(cars);
             time++;
         }
+
+        List<Car> winners = racingGame.getWinner(cars);
+        ResultView.printWinners(winners);
 
     }
 }
