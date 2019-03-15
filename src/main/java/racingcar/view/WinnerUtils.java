@@ -1,17 +1,17 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
-import racingcar.view.RacingResult;
+import racingcar.domain.RacingGame;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class WinnerUtils {
 
-    public static List<Car> topRankSearch(RacingResult racingResult) {
+    public static List<Car> topRankSearch(RacingGame racinggame) {
         List<Car> winners = new ArrayList<>();
-        int highScore = getHighScore(racingResult.getCars());
-        for (Car car : racingResult.getCars()) {
+        int highScore = getHighScore(racinggame.getCars());
+        for (Car car : racinggame.getCars()) {
             addWinners(winners, highScore, car);
         }
         return winners;

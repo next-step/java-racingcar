@@ -62,7 +62,9 @@
         <h3>결과입니다</h3>
         (이름마다 띄어쓰기로 구분해 주세요.)
         {{#each result}}
-        <div id="standings"> {{this}}&nbsp;&#128652;</div>
+        {{#each}}
+        <div id="standings"> {{carName}} : {{distance}}&nbsp;&#128652;<br/></div>
+        {{/each}}
         {{/each}}
         <br/>
 

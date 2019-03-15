@@ -3,7 +3,10 @@ package racingcar;
 import racingcar.domain.Car;
 import racingcar.domain.InputReq;
 import racingcar.domain.RacingGame;
-import racingcar.view.*;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
+import racingcar.view.RacingResult;
+import racingcar.view.WinnerUtils;
 
 import java.util.List;
 
@@ -19,15 +22,16 @@ public class ConsoleApp {
 
         RacingGame racingGame = new RacingGame(carNames, moveCount);
 
-        RacingResult racingResult = null;
         while (racingGame.isEnd()) {
-            racingResult = racingGame.startRace();
-            OutputView.racingResultSave(racingResult);
-            OutputView.consolePrintRacingResult(racingResult);
+            racingGame.startRace();
+            RacingResult turnResult = new RacingResult();
+            OutputView.racingResultSave(turnResult, racingGame.getCars());
+            OutputView.consolePrintRacingResult(turnResult);
+
             OutputView.printBlankLine();
         }
 
-        List<Car> winners = WinnerUtils.topRankSearch(racingResult);
+        List<Car> winners = WinnerUtils.topRankSearch(racingGame);
         System.out.println(OutputView.getWinnerNames(winners));
     }
 

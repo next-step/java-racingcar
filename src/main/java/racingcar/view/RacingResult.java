@@ -7,20 +7,14 @@ import java.util.List;
 
 public class RacingResult {
 
-    private List<Car> cars;
-    private List<String> resultList;
+    private List<RaceTurnResult> raceTurnResults;
 
-    public RacingResult(List<Car> cars) {
-        this.cars = cars;
-        this.resultList = new ArrayList<>();
+    public RacingResult() {
+        this.raceTurnResults = new ArrayList<>();
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
-    public List<String> getResultList() {
-        return resultList;
+    public List<RaceTurnResult> getRaceTurnResults() {
+        return raceTurnResults;
     }
 }
 

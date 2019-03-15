@@ -15,22 +15,23 @@ public class OutputView {
         return   String.join(",", winnersName) + "가 우승자 입니다.";
     }
 
-    public static void racingResultSave(RacingResult racingResult) {
-        List<String> resultList = racingResult.getResultList();
-        for (Car car : racingResult.getCars()) {
-            resultList.add(getCarDistance(car));
+    public static void racingResultSave(RacingResult racingResult, List<Car> cars) {
+        List<RaceTurnResult> raceTurnResults = racingResult.getRaceTurnResults();
+        for (Car car : cars) {
+            raceTurnResults.add(new RaceTurnResult(car.getName(), getCarDistance(car)));
         }
     }
 
     public static void consolePrintRacingResult(RacingResult racingResult) {
-        List<String> resultList= racingResult.getResultList();
-        for (String result : resultList) {
-            System.out.println(result);
+        List<RaceTurnResult> raceTurnResults = racingResult.getRaceTurnResults();
+        for (RaceTurnResult raceTurnResult : raceTurnResults) {
+            System.out.println(raceTurnResult.getCarName() + ":" + raceTurnResult.getDistance());
+
         }
     }
 
     private static String getCarDistance(Car car) {
-        StringBuilder raceResult = new StringBuilder(car.getName() + " : ");
+        StringBuilder raceResult = new StringBuilder();
         for (int i = 0; i < car.getMovingDistance(); i++) {
             raceResult.append("-");
         }
@@ -40,5 +41,4 @@ public class OutputView {
     public static void printBlankLine() {
         System.out.println();
     }
-
 }

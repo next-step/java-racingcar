@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import racingcar.rulemanager.RandomNumberLessThanTen;
 import racingcar.rulemanager.RuleManager;
-import racingcar.view.RacingResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,12 +32,11 @@ public class RacingGame {
         return newCars;
     }
 
-    public RacingResult startRace() {
+    public void startRace() {
         for (Car car : cars) {
             car.move(ruleManager.getRandomNum());
         }
         currentTurn++;
-        return new RacingResult(cars);
     }
 
     public boolean isEnd() {

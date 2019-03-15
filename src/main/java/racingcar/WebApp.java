@@ -1,8 +1,8 @@
 package racingcar;
 
 import racingcar.domain.Car;
-import racingcar.view.OutputView;
 import racingcar.domain.RacingGame;
+import racingcar.view.OutputView;
 import racingcar.view.RacingResult;
 import racingcar.view.WinnerUtils;
 import spark.ModelAndView;
@@ -27,7 +27,7 @@ public class WebApp {
 
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            return render(null , "/index.html");
+            return render(null, "/index.html");
         });
 
 
@@ -42,20 +42,19 @@ public class WebApp {
         post("/result", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             RacingGame racingGame = new RacingGame(names, Integer.parseInt(req.queryParams("turn")));
-            RacingResult racingResult = null;
+
+
+            RacingResult racingGameResult = new RacingResult();
             while (racingGame.isEnd()) {
-                racingResult = racingGame.startRace();
-
-                OutputView.racingResultSave(racingResult);
-                List<String> resultList = racingResult.getResultList();
-                model.put("result", resultList);
-
-                OutputView.consolePrintRacingResult(racingResult);
-
+                racingGame.startRace();
+                OutputView.racingResultSave(racingGameResult, racingGame.getCars());
+                //콘솔확인
+                OutputView.consolePrintRacingResult(racingGameResult);
             }
 
-            List<Car> winnersList = WinnerUtils.topRankSearch(racingResult);
-            String winners = OutputView.getWinnerNames(winnersList);
+            List<Car> topRankers = WinnerUtils.topRankSearch(racingGame);
+            String winners = OutputView.getWinnerNames(topRankers);
+            model.put("result", racingGameResult);
             model.put("winners", winners);
             return render(model, "/result.html");
         });
