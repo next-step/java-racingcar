@@ -1,11 +1,9 @@
 package racingcar;
 
-import java.util.List;
-
 public class RacingGameApplication {
 
-    public static void main(String[] args) {
-        List<String> carNames = RacingGameInput.takeCarNames();
+    public static void main(String[] args) throws CloneNotSupportedException {
+        String[] carNames = RacingGameInput.takeCarNames();
         int numberOfTimes = RacingGameInput.takeNumberOfTimes();
 
         RacingGame racingGame = new RacingGame(carNames);

@@ -4,10 +4,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class RacingCarTest {
 
     @Test
-    public void test_checkCanMoveTrue() {
+    public void test_checkMovableTrue() {
         // Given
         int num = 4;
 
@@ -19,7 +22,7 @@ public class RacingCarTest {
     }
 
     @Test
-    public void test_checkCanMoveFalse() {
+    public void test_checkMovableFalse() {
         // Given
         int num = 10;
 
@@ -31,7 +34,7 @@ public class RacingCarTest {
     }
 
     @Test
-    public void test_makeRandomMove() {
+    public void test_moveRandomly() {
         // Given
         RacingCar racingCar = new RacingCar();
 
@@ -55,5 +58,38 @@ public class RacingCarTest {
 
         // Then
         assertThat(gap > 0).isEqualTo(compareTo > 0);
+    }
+
+    @Test
+    public void test_equals() {
+        // Given
+        RacingCar racingCar1 = new RacingCar("pobi", 2);
+        RacingCar racingCar2 = new RacingCar("pobi", 2);
+
+        // When
+        boolean result = racingCar1.equals(racingCar2);
+
+        // Then
+        assertThat(result).isEqualTo(true);
+    }
+
+    @Test
+    public void test_compareRacingCarList() {
+        // Given
+        final List<RacingCar> racingCars1 = Arrays.asList(
+                new RacingCar("pobi", 2),
+                new RacingCar("honux", 1),
+                new RacingCar("crong", 5));
+
+        final List<RacingCar> racingCars2 = Arrays.asList(
+                new RacingCar("pobi", 2),
+                new RacingCar("honux", 1),
+                new RacingCar("crong", 5));
+
+        // When
+        boolean result = racingCars1.equals(racingCars2);
+
+        // Then
+        assertThat(result).isEqualTo(true);
     }
 }

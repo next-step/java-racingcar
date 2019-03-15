@@ -1,9 +1,10 @@
 package racingcar;
 
-import java.util.Comparator;
 import org.apache.commons.lang3.StringUtils;
 
-public class RacingCar implements Comparable<RacingCar> {
+import java.util.Objects;
+
+public class RacingCar implements Comparable<RacingCar>, Cloneable {
 
     public final static int RANDOM_BOUND = 10;
     public final static int MOVABLE_MIN = 4;
@@ -16,6 +17,11 @@ public class RacingCar implements Comparable<RacingCar> {
 
     RacingCar(final String name) {
         this.name = name;
+    }
+
+    RacingCar(final String name, final int position) {
+        this.name = name;
+        this.position = position;
     }
 
     /**
@@ -47,14 +53,27 @@ public class RacingCar implements Comparable<RacingCar> {
 
     @Override
     public int compareTo(RacingCar racingCar) {
-        if (this.position > racingCar.position) {
-            return 1;
-        }
+        return Integer.compare(this.position, racingCar.position);
+    }
 
-        if (this.position < racingCar.position) {
-            return -1;
-        }
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 
-        return 0;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RacingCar racingCar = (RacingCar) o;
+
+        return position == racingCar.position &&
+                Objects.equals(name, racingCar.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position, name);
     }
 }
