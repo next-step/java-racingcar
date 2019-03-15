@@ -1,10 +1,16 @@
 package calculator_tdd;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class StringAdder {
     private StringAdder() {
     }
 
     public static int calculate(String inputExpression) {
+        if (StringUtils.isBlank(inputExpression)) {
+            return 0;
+        }
+
         Expression expression = new Expression(inputExpression);
 
         if (expression.isCustom()) {

@@ -54,4 +54,52 @@ public class StringAdderTest {
         // then
         assertThat(result).isEqualTo(6);
     }
+
+    @Test
+    public void 숫자_배열의_합_구하기() {
+        // given
+        int[] ints = {1, 2, 3};
+
+        //when
+        int sum = StringAdder.sum(ints);
+
+        // then
+        assertThat(sum).isEqualTo(6);
+    }
+
+    @Test
+    public void 문자열_null일_때_0_반환() {
+        // given
+        String expression = null;
+
+        // when
+        int result = StringAdder.calculate(expression);
+
+        // then
+        assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void 문자열_비었을_때_0_반환() {
+        // given
+        String expression = "";
+
+        // when
+        int result = StringAdder.calculate(expression);
+
+        // then
+        assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void 문자열_공백일_때_0_반환() {
+        // given
+        String expression = "  ";
+
+        // when
+        int result = StringAdder.calculate(expression);
+
+        // then
+        assertThat(result).isEqualTo(0);
+    }
 }
