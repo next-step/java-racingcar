@@ -3,6 +3,9 @@ package racingcar;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
@@ -10,17 +13,24 @@ public class RacingGameTest {
 
     @Before
     public void setUp() throws Exception {
-        racingGame = new RacingGame(2, 4);
+        RacingResult result = new RacingResult();
+        String[] names = result.splitCarName("minsu,ruru,sian");
+        List<RacingCar> resultCarNames = result.createRacingCar(names);
+        racingGame = new RacingGame(resultCarNames, 4);
     }
 
     @Test
-    public void 자동차대수를입력한다() {
-        assertThat(2).isEqualTo(racingGame.getRacingCars().size());
+    public void 자동차이름을입력한다() {
+
+        List<String> carNames = new ArrayList<>();
+        carNames.add("minsu");
+        carNames.add("ruru");
+        carNames.add("sian");
+        assertThat(carNames).isEqualTo(racingGame.getRacingCarNames());
     }
 
     @Test
     public void 시도횟수를입력한다() {
-        racingGame = new RacingGame(2, 4);
         assertThat(4).isEqualTo(racingGame.getTryCnt());
     }
 

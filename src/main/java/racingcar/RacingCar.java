@@ -1,19 +1,32 @@
 package racingcar;
 
 public class RacingCar {
-    static final int NUMBER_1 = 1;
-    static final int NUMBER_4 = 4;
-    static final int RANDOM_NUM = 10;
     private int coord;
+    private String name;
+
+    public RacingCar() {
+    }
+
+    public RacingCar(String name) {
+        this.name = name;
+    }
+
+    public int getCoord() {
+        return coord;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     public int move(int randomValue) {
-        if (randomValue >= NUMBER_4)
+        if (randomValue >= Constant.NUMBER_4)
             return ++this.coord;
         return this.coord;
     }
 
     public int createRandom() {
-        return (int) (Math.random() * RANDOM_NUM) + NUMBER_1;
+        return (int) (Math.random() * Constant.RANDOM_NUM) + Constant.NUMBER_1;
     }
 }
 

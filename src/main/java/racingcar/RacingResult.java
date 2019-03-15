@@ -1,17 +1,63 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingResult {
-    public void executionResult(int tryCnt, List<RacingCar> racingCars) {
+    public static String formatLastCharacterRemove(String strings) {
+        return strings.replaceAll(Constant.FORMAT_REGULAR_LAST_COMMA, "");
+    }
+
+    public String[] splitCarName(String carNames) {
+        return carNames.split(Constant.FORMAT_COMMA);
+    }
+
+    public List<RacingCar> createRacingCar(String[] carNames) {
+        List<RacingCar> racingCars = new ArrayList<>();
+        for (String carName : carNames) {
+            racingCars.add(new RacingCar(carName));
+        }
+        return racingCars;
+    }
+
+    public void executeBattle(int tryCnt, List<RacingCar> racingCars) {
         for (int i = 0; i < tryCnt; i++)
             setRandomValue(racingCars);
     }
 
+    public int getWinnerPosition(List<RacingCar> racingCars) {
+        int winnerPosition = 0;
+        for (RacingCar car : racingCars) {
+            if (car.getCoord() > winnerPosition)
+                winnerPosition = car.getCoord();
+
+        }
+        return winnerPosition;
+    }
+
+    public void getWinner(List<RacingCar> racingCars, int winnerPosition) {
+        StringBuilder winnerNamesBuilder = new StringBuilder();
+        StringBuilder winners = new StringBuilder();
+        for (RacingCar car : racingCars) {
+            if (car.getCoord() == winnerPosition)
+                winnerNamesBuilder.append(car.getName()).append(Constant.FORMAT_COMMA);
+        }
+        String winnerNames = formatLastCharacterRemove(winnerNamesBuilder.toString());
+        winners.append(winnerNames);
+        winners.append("가 최종 우승했습니다.");
+        System.out.println(winners);
+    }
+
+    public void executeWinner(List<RacingCar> racingCars) {
+        int winnerPosition = getWinnerPosition(racingCars);
+        getWinner(racingCars, winnerPosition);
+    }
+
+
     public void setRandomValue(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
             int value = racingCar.move(racingCar.createRandom());
-            System.out.println(getRandomString(value));
+            System.out.println(racingCar.getName() + Constant.FORMAT_COLON + getRandomString(value));
         }
         System.out.println("\n");
     }

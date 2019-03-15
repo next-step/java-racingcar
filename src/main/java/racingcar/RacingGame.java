@@ -1,6 +1,5 @@
 package racingcar;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,11 +7,8 @@ public class RacingGame {
     private int tryCnt;
     private List<RacingCar> racingCars;
 
-    public RacingGame(int carCnt, int tryCnt) {
-        racingCars = new ArrayList<>();
-        for (int i = 0; i < carCnt; i++) {
-            racingCars.add(new RacingCar());
-        }
+    public RacingGame(List<RacingCar> racingCars, int tryCnt) {
+        this.racingCars = racingCars;
         this.tryCnt = tryCnt;
     }
 
@@ -22,5 +18,13 @@ public class RacingGame {
 
     public List<RacingCar> getRacingCars() {
         return racingCars;
+    }
+
+    public List<String> getRacingCarNames() {
+        List<String> carNames = new ArrayList<>();
+        for (RacingCar car : racingCars) {
+            carNames.add(car.getName());
+        }
+        return carNames;
     }
 }
