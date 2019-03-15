@@ -17,6 +17,12 @@ public class Car implements Comparable<Car> {
         this.powerGenerator = new PowerGenerator();
     }
 
+    public Car(String name, int position) {
+        this.name = name;
+        this.position = position;
+        this.powerGenerator = new PowerGenerator();
+    }
+
     public String getName() {
         return name;
     }

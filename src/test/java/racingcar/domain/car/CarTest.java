@@ -13,17 +13,18 @@ public class CarTest {
 
     @Before
     public void setUp() throws Exception {
-        this.car = new Car(NAME);
+        this.car = new Car(NAME, 10);
     }
 
     @Test
     public void car객체_확인() {
         assertThat(car.getName()).isEqualTo(NAME);
+        assertThat(car.getPosition()).isEqualTo(10);
     }
 
     @Test
     public void 파워를_얻어보자() {
         int position = car.move();
-        assertThat(position).isBetween(0, 1);
+        assertThat(position).isBetween(10, 11);
     }
 }
