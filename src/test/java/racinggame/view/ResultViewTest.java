@@ -67,10 +67,9 @@ public class ResultViewTest {
         List<Car> winners = Arrays.asList(
             new Car( "pororo")
         );
-        RacingResult result = new RacingResult(winners);
 
         String expected = winners.get(0).getName();
-        String actual = resultView.getWinnersString(result);
+        String actual = resultView.getWinnersString(winners);
 
         assertEquals(expected, actual);
     }
@@ -82,10 +81,9 @@ public class ResultViewTest {
                 new Car( "pororo"),
                 new Car( "pobi")
         );
-        RacingResult result = new RacingResult(winners);
 
         String expected = winners.get(0).getName() + WINNER_SEPARATOR + winners.get(1).getName();
-        String actual = resultView.getWinnersString(result);
+        String actual = resultView.getWinnersString(winners);
 
         assertEquals(expected, actual);
     }
@@ -100,7 +98,7 @@ public class ResultViewTest {
 
         resultView.showWinners(result);
 
-        String expected = resultView.getWinnersString(result) + WINNING_MESSAGE + System.lineSeparator();
+        String expected = resultView.getWinnersString(winners) + WINNING_MESSAGE + System.lineSeparator();
         assertEquals(expected, outputStream.toString());
     }
 
@@ -115,7 +113,7 @@ public class ResultViewTest {
 
         resultView.showWinners(result);
 
-        String expected = resultView.getWinnersString(result) + WINNING_MESSAGE + System.lineSeparator();
+        String expected = resultView.getWinnersString(winners) + WINNING_MESSAGE + System.lineSeparator();
         assertEquals(expected, outputStream.toString() );
     }
 

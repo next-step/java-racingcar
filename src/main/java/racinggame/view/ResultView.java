@@ -31,13 +31,12 @@ public class ResultView {
     }
 
     public void showWinners(RacingResult result) {
-        System.out.println(getWinnersString(result) + WINNING_MESSAGE);
+        System.out.println(getWinnersString(result.getWinners()) + WINNING_MESSAGE);
     }
 
-    String getWinnersString(RacingResult result) {
+    String getWinnersString(List<Car> winners) {
 
         StringBuilder sb = new StringBuilder();
-        List<Car> winners = result.getWinners();
 
         int lastItemIndex = winners.size() - 1;
 
