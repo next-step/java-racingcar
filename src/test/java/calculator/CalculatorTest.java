@@ -5,7 +5,7 @@ import calculator.domain.CalculatorOperator;
 import calculator.domain.CalculatorView;
 import org.junit.Test;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CalculatorTest {
 
