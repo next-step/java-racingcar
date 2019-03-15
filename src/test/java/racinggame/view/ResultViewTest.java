@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import racinggame.domain.Car;
+import racinggame.domain.RacingResult;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
@@ -53,8 +54,9 @@ public class ResultViewTest {
                 new Car( "pobi", 5 ),
                 new Car( "crong", 7 )
         );
+        RacingResult result = new RacingResult(cars);
 
-        resultView.showCarPositions(cars);
+        resultView.showCarPositions(result);
 
         assertEquals( getPrintedCarListPositionString(cars), outputStream.toString() );
     }
@@ -62,12 +64,13 @@ public class ResultViewTest {
     @Test
     public void getWinnerListString_for_a_winner() {
 
-        List<Car> winnerList = Arrays.asList(
+        List<Car> winners = Arrays.asList(
             new Car( "pororo")
         );
+        RacingResult result = new RacingResult(winners);
 
-        String expected = winnerList.get(0).getName();
-        String actual = resultView.getWinnerListString(winnerList);
+        String expected = winners.get(0).getName();
+        String actual = resultView.getWinnersString(result);
 
         assertEquals(expected, actual);
     }
@@ -75,13 +78,14 @@ public class ResultViewTest {
     @Test
     public void getWinnerListString_for_two_winners() {
 
-        List<Car> winnerList = Arrays.asList(
+        List<Car> winners = Arrays.asList(
                 new Car( "pororo"),
                 new Car( "pobi")
         );
+        RacingResult result = new RacingResult(winners);
 
-        String expected = winnerList.get(0).getName() + WINNER_SEPARATOR + winnerList.get(1).getName();
-        String actual = resultView.getWinnerListString(winnerList);
+        String expected = winners.get(0).getName() + WINNER_SEPARATOR + winners.get(1).getName();
+        String actual = resultView.getWinnersString(result);
 
         assertEquals(expected, actual);
     }
@@ -89,27 +93,29 @@ public class ResultViewTest {
     @Test
     public void showWinners_for_a_winner() {
 
-        List<Car> winnerList = Arrays.asList(
+        List<Car> winners = Arrays.asList(
             new Car( "pororo")
         );
+        RacingResult result = new RacingResult(winners);
 
-        resultView.showWinners(winnerList);
+        resultView.showWinners(result);
 
-        String expected = resultView.getWinnerListString(winnerList) + WINNING_MESSAGE + System.lineSeparator();
+        String expected = resultView.getWinnersString(result) + WINNING_MESSAGE + System.lineSeparator();
         assertEquals(expected, outputStream.toString());
     }
 
     @Test
     public void showWinners_for_two_winners() {
 
-        List<Car> winnerList = Arrays.asList(
+        List<Car> winners = Arrays.asList(
             new Car( "pororo"),
             new Car( "pobi")
         );
+        RacingResult result = new RacingResult(winners);
 
-        resultView.showWinners(winnerList);
+        resultView.showWinners(result);
 
-        String expected = resultView.getWinnerListString(winnerList) + WINNING_MESSAGE + System.lineSeparator();
+        String expected = resultView.getWinnersString(result) + WINNING_MESSAGE + System.lineSeparator();
         assertEquals(expected, outputStream.toString() );
     }
 

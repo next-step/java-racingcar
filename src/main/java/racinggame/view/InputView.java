@@ -1,6 +1,5 @@
 package racinggame.view;
 
-import racinggame.Configuration;
 import util.StringUtils;
 
 import java.util.InputMismatchException;
@@ -12,15 +11,6 @@ public class InputView {
 
     public InputView(Scanner scanner) {
         this.scanner = scanner;
-    }
-
-    public Configuration getConfiguration() {
-
-        String[] carNames = getCarNames();
-
-        Integer numberOfTries = getNumberOfTries();
-
-        return new Configuration( carNames, numberOfTries );
     }
 
     public String[] getCarNames() {
@@ -77,5 +67,4 @@ public class InputView {
     String getInputLine() {
         return scanner.nextLine();
     }
-
 }
