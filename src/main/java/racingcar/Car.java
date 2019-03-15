@@ -3,30 +3,27 @@ package racingcar;
 public class Car {
     private static final int THRESHOLD_TO_MOVE = 4;
 
-    private int id;
+    private String id;
     private int position;
 
-    public Car(int id) {
+    public Car(String id) {
         this.id = id;
         this.position = 0;
     }
 
-    public int move(int randomValue) {
+    public Car(String id, int position) {
+        this.id = id;
+        this.position = position;
+    }
+
+    public void move(int randomValue) {
         if (randomValue > THRESHOLD_TO_MOVE) {
             this.position++;
         }
-
-        return this.position;
     }
 
-    public String displayTrace() {
-        String result = id+": ";
-
-        for (int i = 0; i < this.position; i++) {
-            result += "-";
-        }
-
-        return result;
+    public String getId() {
+        return id;
     }
 
     public int getPosition() {

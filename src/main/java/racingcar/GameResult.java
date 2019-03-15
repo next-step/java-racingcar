@@ -21,4 +21,9 @@ public class GameResult {
     public Round getRound(int index) {
         return rounds.get(index);
     }
+
+    public String getWinnerId() {
+        Round finalRound = rounds.get(rounds.size() - 1);
+        return finalRound.getWinnerId();
+    }
 }

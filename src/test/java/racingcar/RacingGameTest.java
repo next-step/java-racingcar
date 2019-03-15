@@ -2,38 +2,25 @@ package racingcar;
 
 import org.junit.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
     @Test
     public void 초기화() {
-        int numberOfCar = 3;
-        RacingGame game = new RacingGame(numberOfCar);
+        String namesOfCar = "aaa,bbb,ccc";
+        RacingGame game = new RacingGame(namesOfCar);
 
-        assertThat(game.getNumberOfCars()).isEqualTo(numberOfCar);
+        assertThat(game.getNumberOfCars()).isEqualTo(3);
     }
 
     @Test
     public void 게임하기() {
+        String namesOfCar = "aaa,bbb,ccc";
+        RacingGame game = new RacingGame(namesOfCar);
+
         int time = 5;
-        int numberOfCar = 3;
-        RacingGame game = new RacingGame(numberOfCar);
         GameResult result = game.play(time);
 
         assertThat(result.countRoundLength()).isEqualTo(time);
     }
-
-
-    @Test
-    public void 이동_후_자동차_위치정보_추출() {
-        int numberOfCar = 3;
-        RacingGame game = new RacingGame(numberOfCar);
-        List<Integer> positions = game.positionsAfterCarsMove(game.getCars());
-
-        assertThat(positions.size()).isEqualTo(numberOfCar);
-    }
-
-
 }

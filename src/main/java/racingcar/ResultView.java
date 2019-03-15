@@ -11,17 +11,19 @@ public class ResultView {
             Round round = result.getRound(i);
             System.out.println(displayTraces(round) + "\n");
         }
+
+        System.out.println(result.getWinnerId() + "가 최종 우승했습니다.");
     }
 
     private static String displayTraces(Round round) {
-        return round.positions.stream()
+        return round.cars.stream()
                 .map(it -> displayTrace(it))
                 .collect(Collectors.joining("\n"));
     }
 
-    private static String displayTrace(int position) {
-        String trace = "";
-        for (int i = 0; i < position; i++) {
+    private static String displayTrace(Car car) {
+        String trace = car.getId() + " : ";
+        for (int i = 0; i < car.getPosition(); i++) {
             trace += "-";
         }
         return trace;
