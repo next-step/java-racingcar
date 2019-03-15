@@ -47,6 +47,11 @@ body {
 .submit-button {
 	margin-top: 10px;
 }
+
+.name {
+	width: 70px;
+	display: inline-block;
+}
 </style>
 
 </head>
@@ -54,26 +59,119 @@ body {
 
   <div class="container">
     <div class="row">
-
       <div class="col-md-12">
 
+	      {{#raceResult}}
         <h2 class="text-center">박진감 넘치는 자동차 레이싱 게임 with Pobi</h2>
         <div class="form-show-div" class="form-group">
-          <h3>결과입니다</h3>
-          (이름마다 띄어쓰기로 구분해 주세요.)
-          <div id="standings">박재성 : &nbsp;&nbsp;&nbsp;&#128652;</div>
-          <div id="standings">윤지수 : &nbsp;&nbsp;&#128652;</div>
-          <div id="standings">정호영 : &nbsp;&nbsp;&nbsp;&#128652;</div>
-          <div id="standings">김정 : &nbsp;&#128652;</div>
-          <br />
-          <div>박재성, 정호영이 우승했습니다.</div>
+	        <h3>{{round}} 라운드 결과입니다</h3>
+
+	        <div id="racingDisplay"></div>
+
+	        <br />
+
+	        <div id="winners">
+		        {{^isEnd}}
+		        <button onclick="location.href = location.href">다음</button>
+		        {{/isEnd}}
+	        </div>
         </div>
+	      {{/raceResult}}
+
       </div>
     </div>
   </div>
-
 </body>
-<script src="/js/race.js">
+<script>
+    const carIcon = "&#128652;";
+    const space = "&nbsp;";
 
+    let cars = [];
+    {
+        {
+            #raceResult
+        }
+    }
+    {
+        {
+            #carsOfRound
+        }
+    }
+    cars.push({
+        name: "{{name}}",
+        movedDistance: {
+    {
+        movedDistance
+    }
+    }
+    })
+    ;
+    {
+        {
+            /carsOfRound}}
+            {
+                {
+                    /raceResult}}
+
+                    let winners = [];
+                    {
+                        {
+                            #isEnd
+                        }
+                    }
+                    {
+                        {
+                            #winners
+                        }
+                    }
+                    winners.push("{{name}}")
+                    {
+                        {
+                            /winners}}
+                            {
+                                {
+                                    /isEnd}}
+
+                                    window.onload = () => {
+                                        racingGame.drawRacingDisplay(cars);
+
+                                        if (0 < winners.length) {
+                                            racingGame.drawWinners(winners);
+                                        }
+                                    };
+
+                                    let racingGame = {
+                                        drawRacingDisplay(cars) {
+                                            let carDivs = this.getCarDivs(cars);
+                                            let racingDisplay = document.getElementById("racingDisplay");
+                                            racingDisplay.innerHTML = carDivs;
+                                        },
+
+                                        getCarDivs(cars) {
+                                            let carDivs = "";
+
+                                            cars.forEach(car => carDivs += this.getCarDiv(car))
+
+                                            return carDivs;
+                                        },
+
+                                        getCarDiv(car) {
+                                            let movedDistance = "";
+
+                                            for (let i = 0; i < car.movedDistance; i++) {
+                                                movedDistance += space;
+                                            }
+
+                                            return `<div id="standings" class="car">
+                        <div class="name">${car.name}</div> : <span>${movedDistance} ${carIcon}</span>
+                    </div>`;
+                                        },
+
+                                        drawWinners(winners) {
+                                            let winnerText = winners.join(", ") + "이 우승했습니다.";
+                                            winnerText += "<button onclick=\"location.href='/'\">홈으로 돌아가기</button>"
+                                            document.getElementById("winners").innerHTML = winnerText;
+                                        }
+                                    }
 </script>
 </html>
