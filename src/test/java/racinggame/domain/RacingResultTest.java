@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 
 public class RacingResultTest {
@@ -13,7 +14,7 @@ public class RacingResultTest {
     private RacingResult result;
 
     @Test
-    public void getMaximumPosition_when_there_are_one_maximum_value() {
+    public void getMaximumPosition_when_there_is_one_maximum_value() {
         int expected = 13;
         List<Car> cars = Arrays.asList(
                 new Car("pobi", 7 ),
@@ -43,7 +44,7 @@ public class RacingResultTest {
     }
 
     @Test
-    public void getWinners_when_there_are_one_maximum_value() {
+    public void getWinners_when_there_is_one_maximum_value() {
         int expected = 13;
         List<Car> cars = Arrays.asList(
                 new Car("pobi", 7 ),

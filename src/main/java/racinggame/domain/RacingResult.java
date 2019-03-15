@@ -24,7 +24,7 @@ public class RacingResult {
         int maximumPosition = getMaximumPosition();
 
         return cars.stream()
-                .filter(c -> c.getPosition() == maximumPosition)
+                .filter(c -> c.hasMaximumPosition(maximumPosition))
                 .collect(toList());
     }
 
