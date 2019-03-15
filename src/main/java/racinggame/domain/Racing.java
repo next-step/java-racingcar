@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static utils.ConstantCollection.FORWARD_NUMBER;
-import static utils.ConstantCollection.RANGE_RANDOM;
+import static utils.ConstantCollection.*;
 import static utils.GenerateRandom.generatingRandomNumber;
 import static utils.Separator.separateName;
 
@@ -42,6 +41,9 @@ public class Racing {
     public List<String> getWinners() {
         List<String> winners = new ArrayList<>();
 
+        if(getMaxMovement() == EXCEPTION_VALUE) {
+            throw new IllegalArgumentException();
+        }
         int maxMovement = getMaxMovement();
 
         for(Car car : this.cars) {
@@ -59,7 +61,7 @@ public class Racing {
             carsMovement.add(car.getCountMoving());
         }
 
-        return carsMovement.isEmpty() ? -1 : Collections.max(carsMovement);
+        return carsMovement.isEmpty() ? EXCEPTION_VALUE : Collections.max(carsMovement);
     }
 
     // 난수를 생성하여 자동차가 움직일지의 전진 여부를 결정하여 추가하는 메서드
