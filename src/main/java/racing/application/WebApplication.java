@@ -44,7 +44,7 @@ public class WebApplication {
             //레이싱
             RacingCarGame racingCarGame = new RacingCarGame(cars);
             for (int i = 0; i < Integer.parseInt(req.queryParams("turn")); i++) {
-                cars = racingCarGame.startRound(cars);
+                cars = racingCarGame.startRound();
 
                 //라운드별기록
                 results.add(webView.makeCarInfo(cars));

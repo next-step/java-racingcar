@@ -22,7 +22,7 @@ public class ConsoleApplication {
         RacingCarGame racingCarGame = new RacingCarGame();
         List<Car> cars = racingCarGame.createCars(names);
         for (int i = 0; i < roundCnt; i++) {
-            cars = racingCarGame.startRound(cars);
+            cars = racingCarGame.startRound();
             ConsoleView.viewRound(cars);
         }
 

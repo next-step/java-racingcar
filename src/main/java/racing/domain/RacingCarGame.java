@@ -24,22 +24,12 @@ public class RacingCarGame {
         return cars;
     }
 
-    public List<Car> startRound(List<Car> cars) {
-        this.cars = cars;
-
-        List<Car> movedCars = new ArrayList<>();
+    public List<Car> startRound() {
 
         for (Car car : cars) {
-            boolean isMoved = car.move();
-            storeRoundHistory(movedCars, car, isMoved);
+            car.move();
         }
 
-        return this.cars;
-    }
-
-    public void storeRoundHistory(List<Car> movedCars, Car car, boolean isMoved) {
-        if (isMoved) {
-            movedCars.add(car);
-        }
+        return cars;
     }
 }
