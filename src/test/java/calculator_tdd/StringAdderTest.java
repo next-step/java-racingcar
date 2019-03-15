@@ -28,4 +28,16 @@ public class StringAdderTest {
         // then
         assertThat(result).isEqualTo(7);
     }
+
+    @Test
+    public void 쉼표_콜론_복합_덧셈() {
+        // given
+        String expression = "1,2:3,4:5";
+
+        // when
+        int result = StringAdder.calculate(expression);
+
+        // then
+        assertThat(result).isEqualTo(15);
+    }
 }
