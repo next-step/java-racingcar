@@ -87,91 +87,62 @@ body {
     const space = "&nbsp;";
 
     let cars = [];
-    {
-        {
-            #raceResult
+    {{#raceResult}}
+        {{#carsOfRound}}
+            cars.push({
+                name: "{{name}}",
+                movedDistance: {{movedDistance}}
+            });
+        {{/carsOfRound}}
+    {{/raceResult}}
+
+    let winners = [];
+    {{#isEnd}}
+        {{#winners}}
+            winners.push("{{name}}")
+        {{/winners}}
+    {{/isEnd}}
+
+    window.onload = () => {
+        racingGame.drawRacingDisplay(cars);
+
+        if (0 < winners.length) {
+            racingGame.drawWinners(winners);
         }
-    }
-    {
-        {
-            #carsOfRound
+    };
+
+    let racingGame = {
+        drawRacingDisplay(cars) {
+            let carDivs = this.getCarDivs(cars);
+            let racingDisplay = document.getElementById("racingDisplay");
+            racingDisplay.innerHTML = carDivs;
+        },
+
+        getCarDivs(cars) {
+            let carDivs = "";
+
+            cars.forEach(car => carDivs += this.getCarDiv(car))
+
+            return carDivs;
+        },
+
+        getCarDiv(car) {
+            let movedDistance = "";
+
+            for (let i = 0; i < car.movedDistance; i++) {
+                movedDistance += space;
+            }
+
+        return `<div id="standings" class="car">
+                    <div class="name">${car.name}</div> : <span>${movedDistance} ${carIcon}</span>
+                </div>`;
+        },
+
+        drawWinners(winners) {
+            let winnerText = winners.join(", ") + "이 우승했습니다.";
+            winnerText += "<button onclick=\"location.href='/'\">홈으로 돌아가기</button>"
+            document.getElementById("winners").innerHTML = winnerText;
         }
-    }
-    cars.push({
-        name: "{{name}}",
-        movedDistance: {
-    {
-        movedDistance
-    }
-    }
-    })
-    ;
-    {
-        {
-            /carsOfRound}}
-            {
-                {
-                    /raceResult}}
-
-                    let winners = [];
-                    {
-                        {
-                            #isEnd
-                        }
-                    }
-                    {
-                        {
-                            #winners
-                        }
-                    }
-                    winners.push("{{name}}")
-                    {
-                        {
-                            /winners}}
-                            {
-                                {
-                                    /isEnd}}
-
-                                    window.onload = () => {
-                                        racingGame.drawRacingDisplay(cars);
-
-                                        if (0 < winners.length) {
-                                            racingGame.drawWinners(winners);
-                                        }
-                                    };
-
-                                    let racingGame = {
-                                        drawRacingDisplay(cars) {
-                                            let carDivs = this.getCarDivs(cars);
-                                            let racingDisplay = document.getElementById("racingDisplay");
-                                            racingDisplay.innerHTML = carDivs;
-                                        },
-
-                                        getCarDivs(cars) {
-                                            let carDivs = "";
-
-                                            cars.forEach(car => carDivs += this.getCarDiv(car))
-
-                                            return carDivs;
-                                        },
-
-                                        getCarDiv(car) {
-                                            let movedDistance = "";
-
-                                            for (let i = 0; i < car.movedDistance; i++) {
-                                                movedDistance += space;
-                                            }
-
-                                            return `<div id="standings" class="car">
-                        <div class="name">${car.name}</div> : <span>${movedDistance} ${carIcon}</span>
-                    </div>`;
-                                        },
-
-                                        drawWinners(winners) {
-                                            let winnerText = winners.join(", ") + "이 우승했습니다.";
-                                            winnerText += "<button onclick=\"location.href='/'\">홈으로 돌아가기</button>"
-                                            document.getElementById("winners").innerHTML = winnerText;
-                                        }
-                                    }
+    };
 </script>
 </html>
