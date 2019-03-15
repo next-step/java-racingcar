@@ -11,6 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RankingTest {
 
+    //TODO : 좋은 TC 유형아님 , 개선필요
     @Test
     public void sortRanking() {
 
@@ -37,8 +38,8 @@ public class RankingTest {
             System.out.println(car.getName() + " : " + car.getPosition());
         }
 
-        assertThat(cars.get(0).compareTo(cars.get(1))).isGreaterThan(0);
-        assertThat(cars.get(1).compareTo(cars.get(2))).isGreaterThan(0);
+        assertThat(cars.get(0).compareTo(cars.get(1))).isGreaterThanOrEqualTo(0);
+        assertThat(cars.get(1).compareTo(cars.get(2))).isGreaterThanOrEqualTo(0);
         assertThat(cars.get(2).compareTo(cars.get(0))).isLessThan(0);
     }
 

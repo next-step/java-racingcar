@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ResultViewTest {
 
-    //View라서 수행결과 눈으로만 확인
+    //TODO : addAll 적용해보기
     @Test
     public void result() {
         List<Car> cars = new ArrayList<>();

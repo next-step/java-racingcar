@@ -10,6 +10,8 @@ public class Ranking {
 
     private static final int EQUAL = 0;
 
+    private static List<Car> winners = null;
+
     public static List<Car> sort(List<Car> cars) {
         Collections.sort(cars, Collections.reverseOrder());
         return cars;
@@ -21,16 +23,16 @@ public class Ranking {
 
         sort(cars);
 
-        List<Car> winners = new ArrayList<>();
+        winners = new ArrayList<>();
         boolean isAll = false;
         for (int i = 1; i < cars.size() && !isAll; i++) {
-            isAll = addWinner(cars.get(i-1), cars.get(i), winners);
+            isAll = addWinner(cars.get(i-1), cars.get(i));
         }
 
         return winners;
     }
 
-    private static boolean addWinner(Car before, Car after, List<Car> winners) {
+    private static boolean addWinner(Car before, Car after) {
 
         if (winners.isEmpty()) {
             winners.add(before);
