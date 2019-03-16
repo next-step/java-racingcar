@@ -5,6 +5,7 @@ import java.util.List;
 
 public class RacingGame {
     private int tryCnt;
+    private int winnerCoordinate = 0;
     private List<RacingCar> racingCars;
 
     public RacingGame(List<RacingCar> racingCars, int tryCnt) {
@@ -26,5 +27,11 @@ public class RacingGame {
             carNames.add(car.getName());
         }
         return carNames;
+    }
+
+    public int getWinnerCoordinate() {
+        for (RacingCar car : racingCars)
+            winnerCoordinate = car.findMaxCoordinate(winnerCoordinate);
+        return winnerCoordinate;
     }
 }

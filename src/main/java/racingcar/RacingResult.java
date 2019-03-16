@@ -21,17 +21,7 @@ public class RacingResult {
             setRandomValue(racingCars);
     }
 
-    public int getWinnerPosition(List<RacingCar> racingCars) {
-        int winnerPosition = 0;
-        for (RacingCar car : racingCars) {
-            if (car.getCoordinate() > winnerPosition)
-                winnerPosition = car.getCoordinate();
-
-        }
-        return winnerPosition;
-    }
-
-    public void getWinner(List<RacingCar> racingCars, int winnerPosition) {
+    public void printWinner(List<RacingCar> racingCars, int winnerPosition) {
         StringBuilder winnerNamesBuilder = new StringBuilder();
         StringBuilder winners = new StringBuilder();
         for (RacingCar car : racingCars) {
@@ -43,12 +33,6 @@ public class RacingResult {
         winners.append("가 최종 우승했습니다.");
         System.out.println(winners);
     }
-
-    public void executeWinner(List<RacingCar> racingCars) {
-        int winnerPosition = getWinnerPosition(racingCars);
-        getWinner(racingCars, winnerPosition);
-    }
-
 
     public void setRandomValue(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {

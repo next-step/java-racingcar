@@ -36,5 +36,11 @@ public class RacingCar {
     public boolean isMaxCoordinate(int maxCoordinate) {
         return maxCoordinate >= coordinate;
     }
+
+    public int findMaxCoordinate(int checkCoordinate){
+        if (coordinate > checkCoordinate)
+            return coordinate;
+        return  checkCoordinate;
+    }
 }
 

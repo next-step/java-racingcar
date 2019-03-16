@@ -3,6 +3,7 @@ package racingcar;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -45,5 +46,13 @@ public class RacingGameTest {
     @Test
     public void 우승자의_좌표가_5일때_우승자인지_확인() {
         assertThat(new RacingCar(5).isMaxCoordinate(5)).isTrue();
+    }
+
+    @Test
+    public void 우승자_좌표구하기() {
+        List<RacingCar> racingCars = new ArrayList<>();
+        racingCars.add(new RacingCar(1));
+        racingCars.add(new RacingCar(5));
+        assertThat(new RacingGame(racingCars, 3).getWinnerCoordinate()).isEqualTo(5);
     }
 }
