@@ -1,6 +1,7 @@
-package racingcar.ui;
+package racingcar.view;
 
-import racingcar.Car;
+import racingcar.domain.Car;
+import racingcar.vo.RacingResultOfRound;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,15 +29,19 @@ public class RacingGameOutputView {
         System.out.println(visualizedMovedDitance);
     }
 
-    public static void printMovedDistanceOfCars(List<Car> cars) {
-        cars.forEach(RacingGameOutputView::printMovedDistance);
+    public static void printRacingResult(RacingResultOfRound racingResult) {
+        racingResult.getCarsOfRound().forEach(RacingGameOutputView::printMovedDistance);
+        printEmptyLine();
     }
 
-    public static void printWinners(List<Car> winners) {
+    public static void printWinners(RacingResultOfRound racingResult) {
+        List<Car> winners = racingResult.getWinners();
         String winnerCarNames = winners.stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(", "));
 
-        System.out.println(winnerCarNames + "가 최종 우승했습니다.");
+        printLine("실행 결과");
+        printEmptyLine();
+        printLine(winnerCarNames + "가 최종 우승했습니다.");
     }
 }

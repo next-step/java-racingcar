@@ -1,15 +1,22 @@
-package racingcar;
+package racingcar.domain;
 
 public class Car {
     public static final int MOVE_THRESHOLD = 3;
+    private static final int INITIAL_MOVED_DISTANCE = 0;
+
     private String name;
-    private int movedDistance = 0;
+    private int movedDistance;
 
     public Car(String name) {
-        this.name = name;
+        this(name, INITIAL_MOVED_DISTANCE);
     }
 
-    public void go() {
+    Car(String name, int movedDistance) {
+        this.name = name;
+        this.movedDistance = movedDistance;
+    }
+
+    void go() {
         this.movedDistance++;
     }
 
@@ -30,4 +37,11 @@ public class Car {
         return this.movedDistance;
     }
 
+    public Car copy() {
+        return new Car(this.name, this.movedDistance);
+    }
+
+    public void initialize() {
+        this.movedDistance = INITIAL_MOVED_DISTANCE;
+    }
 }

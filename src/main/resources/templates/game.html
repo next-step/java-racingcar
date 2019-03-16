@@ -59,21 +59,19 @@ body {
 
         <div class="form-show-div" class="form-group">
           <table>
-            <tr>
-              <td>박재성</td>
-            </tr>
-            <tr>
-              <td>윤지수</td>
-            </tr>
-            <tr>
-              <td>정호영</td>
-            </tr>
+	          {{#carNames}}
+	          <tr>
+		          <td>{{this}}</td>
+	          </tr>
+	          {{/carNames}}
           </table>
-
         </div>
+
         <form class="form-lotto" method="get" action="/result">
-          Count 수 : <input type="number" name="turn"> 
-          <div class="submit-button">
+	        Count 수 : <input type="number" name="turn" value="1">
+	        <input type="hidden" name="names" value="{{names}}">
+
+	        <div class="submit-button">
             <button class="btn btn-lg btn-primary btn-block" type="submit">게임
               시작! </button>
           </div>
