@@ -12,19 +12,24 @@ public class RacingGameTest {
     @Test
     public void test_play() throws CloneNotSupportedException {
         // Given
-        final List<RacingCar> racingCars = Arrays.asList(
+        final List<RacingCar> cars = Arrays.asList(
                 new RacingCar("pobi", 2),
                 new RacingCar("honux", 1),
                 new RacingCar("crong", 5));
 
-        RacingGame racingGame = new RacingGame(racingCars);
+        final List<RacingCar> copyCars1 = new ArrayList<>(cars.size());
+
+        for (RacingCar car : cars) {
+            copyCars1.add((RacingCar) car.clone());
+        }
 
         // When
-        final List<RacingCar> racingCarsAfterPlay = racingGame.play();
+        RacingGame racingGame = new RacingGame(cars);
+        final List<RacingCar> playedCars = racingGame.play();
 
         // Then
-        for (int i = 0; i < racingCars.size(); i++) {
-            assertThat(racingCars.get(i).compareTo(racingCarsAfterPlay.get(i))).isNotEqualTo(1);
+        for (int i = 0; i < cars.size(); i++) {
+            assertThat(copyCars1.get(i).compareTo(playedCars.get(i))).isNotEqualTo(1);
         }
     }
 

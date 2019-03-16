@@ -20,17 +20,10 @@ public class RacingGame {
                 .forEach(carName -> this.racingCars.add(new RacingCar(carName)));
     }
 
-    public List<RacingCar> play() throws CloneNotSupportedException {
-        List<RacingCar> playCars = new ArrayList<>(this.racingCars.size());
-
-        for (RacingCar racingCar : this.racingCars) {
-            RacingCar newRacingCar = (RacingCar) racingCar.clone();
-            newRacingCar.moveRandomly();
-
-            playCars.add(newRacingCar);
+    public List<RacingCar> play() {
+        for (RacingCar car : this.racingCars) {
+            car.moveRandomly();
         }
-
-        this.racingCars = playCars;
 
         return this.racingCars;
     }
