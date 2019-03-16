@@ -10,20 +10,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
     RacingGame racingGame;
+    String[] names;
+    RacingCar firstrCar;
 
     @Before
     public void setUp() throws Exception {
-        InputView input = new InputView();
-        String[] names = input.splitCarNames("minsu,ruru,sian");
-        RacingResult racingCarResult = new RacingResult();
-        List<RacingCar> resultCarNames = racingCarResult.createRacingCar(names);
-        racingGame = new RacingGame(resultCarNames, 4);
+        names = new InputView().splitCarNames("minsu,ruru,sian");
+        racingGame = new RacingGame(names, 4);
+        List<RacingCar> racingCars = new ArrayList<>();
+        firstrCar = new RacingCar(names[0], 5);
+        racingCars.add(firstrCar);
+        racingCars.add(new RacingCar(names[0], 3));
+        racingGame.setRacingCars(racingCars);
     }
 
     @Test
     public void 자동차이름을입력한다() {
-        String[] expectedNames = {"minsu", "ruru", "sian"};
-        assertThat(new InputView().splitCarNames("minsu,ruru,sian")).isEqualTo(expectedNames);//
+        assertThat(new InputView().splitCarNames("minsu,ruru,sian")).isEqualTo(names);
     }
 
     @Test
@@ -33,26 +36,21 @@ public class RacingGameTest {
 
     @Test
     public void 자동차한대가슷지4이상일경우전진한다() {
-        RacingCar racingCar = new RacingCar();
-        assertThat(1).isEqualTo(racingCar.move(4));
+        assertThat(firstrCar.move(4)).isEqualTo(6);
     }
 
     @Test
     public void 자동차한대가슷지4미만경우멈춘다() {
-        RacingCar racingCar = new RacingCar();
-        assertThat(0).isEqualTo(racingCar.move(0));
+        assertThat(firstrCar.move(3)).isEqualTo(5);
     }
 
     @Test
     public void 우승자의_좌표가_5일때_우승자인지_확인() {
-        assertThat(new RacingCar(5).isMaxCoordinate(5)).isTrue();
+        assertThat(firstrCar.isMaxCoordinate(5)).isTrue();
     }
 
     @Test
     public void 우승자_좌표구하기() {
-        List<RacingCar> racingCars = new ArrayList<>();
-        racingCars.add(new RacingCar(1));
-        racingCars.add(new RacingCar(5));
-        assertThat(new RacingGame(racingCars, 3).getWinnerCoordinate()).isEqualTo(5);
+        assertThat(racingGame.getWinnerCoordinate()).isEqualTo(5);
     }
 }

@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.utils.Constant;
+
 import java.util.Scanner;
 
 public class InputView {

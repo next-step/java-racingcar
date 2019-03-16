@@ -1,19 +1,13 @@
 package racingcar;
 
-import java.util.ArrayList;
+import racingcar.utils.Constant;
+import racingcar.utils.RandomUtils;
+
 import java.util.List;
 
 public class RacingResult {
     public static String formatLastCharacterRemove(String strings) {
         return strings.replaceAll(Constant.FORMAT_REGULAR_LAST_COMMA, "");
-    }
-
-    public List<RacingCar> createRacingCar(String[] carNames) {
-        List<RacingCar> racingCars = new ArrayList<>();
-        for (String carName : carNames) {
-            racingCars.add(new RacingCar(carName));
-        }
-        return racingCars;
     }
 
     public void executeBattle(int tryCnt, List<RacingCar> racingCars) {
@@ -36,7 +30,7 @@ public class RacingResult {
 
     public void setRandomValue(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
-            int value = racingCar.move(racingCar.createRandom());
+            int value = racingCar.move(RandomUtils.createRandom());
             System.out.println(racingCar.getName() + Constant.FORMAT_COLON + getRandomString(value));
         }
         System.out.println("\n");
