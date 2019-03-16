@@ -16,7 +16,7 @@ public class StringCalculator {
             int rightHandSideNumber = Integer.parseInt(expression[idx++]);
             Operator operator = Operator.typeOf(operatorType);
 
-            result = operator.calculrate(result, rightHandSideNumber);
+            result = operator.calculate(result, rightHandSideNumber);
         }
 
         return result;

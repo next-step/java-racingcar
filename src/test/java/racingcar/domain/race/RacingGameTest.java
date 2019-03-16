@@ -1,8 +1,8 @@
-package racingcar.race;
+package racingcar.domain.race;
 
 import org.junit.Before;
 import org.junit.Test;
-import racingcar.car.Car;
+import racingcar.domain.car.Car;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,10 +29,10 @@ public class RacingGameTest {
 
         cars = new ArrayList<Car>();
 
-        Car car1 = new Car("po", 3);
-        Car car2 = new Car("jo", 2);
-        Car car3 = new Car("gu", 4);
-        Car car4 = new Car("yo", 2);
+        Car car1 = new Car("po");
+        Car car2 = new Car("jo");
+        Car car3 = new Car("gu");
+        Car car4 = new Car("yo");
 
         cars.add(car1);
         cars.add(car2);
@@ -41,12 +41,11 @@ public class RacingGameTest {
     }
 
     @Test
-    public void 순위_정렬_확인() {
+    public void move_1회() {
+        racingGame = new RacingGame(5);
+        racingGame.move(cars);
 
-        racingGame = new RacingGame(1);
-        cars = racingGame.game(cars);
-
-        assertThat(cars.get(0).compareTo(cars.get(1))).isEqualTo(-1);
-        assertThat(cars.get(2).compareTo(cars.get(3))).isEqualTo(0);
+        System.out.println(cars.get(0).getPosition());
+        assertThat(cars.get(0).getPosition()).isGreaterThanOrEqualTo(0);
     }
 }

@@ -20,7 +20,7 @@ public class StringCalculatorRunner {
         }
 
         //---------------------------- model
-        //calculrate
+        //calculate
         int result = StringCalculator.calculate(expression);
         //---------------------------- outPutView
         //resultView

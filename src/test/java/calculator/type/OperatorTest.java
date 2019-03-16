@@ -6,12 +6,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class OperatorTest {
 
-    @Test
-    public void null또는0인경우() {
+    @Test(expected = IllegalArgumentException.class)
+    public void null값이_들어온경우() {
         Operator operator = Operator.typeOf(null);
         assertThat(operator).isNull();
+    }
 
-        operator = Operator.typeOf("sdfsrgerg");
+    @Test(expected = IllegalArgumentException.class)
+    public void 비정상_값이_들어온경우() {
+        Operator operator = Operator.typeOf("비정상값");
         assertThat(operator).isNull();
     }
 
@@ -41,7 +44,7 @@ public class OperatorTest {
         String operator = "+";
 
         Operator addType = Operator.typeOf(operator);
-        int result = addType.calculrate(leftNumber, rightNumber);
+        int result = addType.calculate(leftNumber, rightNumber);
         assertThat(result).isEqualTo(30);
     }
 
@@ -52,7 +55,7 @@ public class OperatorTest {
         String operator = "*";
 
         Operator mulType = Operator.typeOf(operator);
-        int result = mulType.calculrate(leftNumber, rightNumber);
+        int result = mulType.calculate(leftNumber, rightNumber);
         assertThat(result).isEqualTo(200);
     }
 
@@ -63,7 +66,7 @@ public class OperatorTest {
         String operator = "/";
 
         Operator divType = Operator.typeOf(operator);
-        int result = divType.calculrate(leftNumber, rightNumber);
+        int result = divType.calculate(leftNumber, rightNumber);
         assertThat(result).isEqualTo(2);
     }
 
@@ -74,7 +77,7 @@ public class OperatorTest {
         String operator = "-";
 
         Operator subType = Operator.typeOf(operator);
-        int result = subType.calculrate(leftNumber, rightNumber);
+        int result = subType.calculate(leftNumber, rightNumber);
         assertThat(result).isEqualTo(-10);
     }
 }
