@@ -1,9 +1,10 @@
 package domain;
 
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import lombok.Getter;
 
 public class RacingGameInfo {
     @Getter
@@ -18,13 +19,6 @@ public class RacingGameInfo {
     private RacingGameInfo(Rule rule, Integer gameCount){
         this.rule = rule;
         this.gameCount = gameCount;
-    }
-
-    public RacingGameInfo(Rule rule, Integer gameCount, Integer carCount) {
-        this(rule, gameCount);
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
     }
 
     public RacingGameInfo(Rule rule, Integer gameCount, String carNames) {

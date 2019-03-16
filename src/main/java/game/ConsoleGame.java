@@ -6,19 +6,12 @@ import domain.RacingGameResult;
 import domain.RandomNumberRule;
 import ui.ConsoleUI;
 
-import java.util.Scanner;
+public class ConsoleGame {
+    private static ConsoleUI ui = new ConsoleUI();
 
-public class ConsoleGame implements Game{
-    @Override
-    public void start() {
-        Scanner scanner = new Scanner(System.in);
-        ConsoleUI ui = new ConsoleUI();
-
-        ui.setCarNames();
-        String carNames = scanner.nextLine();
-
-        ui.setGameCount();
-        Integer gameCount = scanner.nextInt();
+    public static void start() {
+        String carNames = ui.setCarNames();
+        Integer gameCount = ui.setGameCount();
 
         RacingGame racingGame = new RacingGame(
             new RacingGameInfo(

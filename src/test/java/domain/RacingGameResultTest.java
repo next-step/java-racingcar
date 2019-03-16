@@ -11,16 +11,9 @@ public class RacingGameResultTest {
     @Test
     public void check_ranking_if_correct() {
         List<Car> cars = new ArrayList<>();
-        Car car1 = new Car();
-        Car car2 = new Car();
-        Car car3 = new Car();
-
-        car1.move();
-        car1.move();
-        car2.move();
-        car2.move();
-        car2.move();
-        car3.move();
+        Car car1 = new Car("a", 2);
+        Car car2 = new Car("b", 3);
+        Car car3 = new Car("c", 1);
 
         cars.add(car1);
         cars.add(car2);
@@ -29,7 +22,7 @@ public class RacingGameResultTest {
         RacingGameResult racingGameResult = new RacingGameResult();
         racingGameResult.createRanking(cars);
 
-        assertThat(racingGameResult.getRanking().size()).isEqualTo(3);
+        assertThat(racingGameResult.getRanking()).hasSize(3);
         assertThat(racingGameResult.getRanking().get(0)).isEqualTo(car2);
         assertThat(racingGameResult.getRanking().get(1)).isEqualTo(car1);
         assertThat(racingGameResult.getRanking().get(2)).isEqualTo(car3);
@@ -44,6 +37,6 @@ public class RacingGameResultTest {
         racingGameResult.addRoundResult(roundResult1);
         racingGameResult.addRoundResult(roundResult2);
 
-        assertThat(racingGameResult.getRoundResults().size()).isEqualTo(2);
+        assertThat(racingGameResult.getRoundResults()).hasSize(2);
     }
 }

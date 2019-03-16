@@ -7,17 +7,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarResultTest {
     @Test
     public void check_car_result_created() {
-        Car car = new MockCar();
+        Car car = new MockCar("a");
         CarResult carResult = new CarResult(car);
 
-        assertThat(carResult.getName()).isEqualTo("test-car");
+        assertThat(carResult.getName()).isEqualTo("a");
         assertThat(carResult.getMileage()).isEqualTo(3);
     }
 
     static class MockCar extends Car{
-        @Override
-        public String getName() {
-            return "test-car";
+        public MockCar(String name) {
+            super(name);
         }
 
         @Override
