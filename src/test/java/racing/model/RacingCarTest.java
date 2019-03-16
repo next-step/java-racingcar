@@ -20,22 +20,15 @@ public class RacingCarTest {
     }
 
     @Test
-    public void test_이동_3회() {
-        RacingCar car = new RacingCar();
-        assertThat(car.move(RacingCar.THRESHOLD_POWER)).isEqualTo(1);
-        assertThat(car.move(RacingCar.THRESHOLD_POWER)).isEqualTo(2);
-        assertThat(car.move(RacingCar.THRESHOLD_POWER)).isEqualTo(3);
+    public void test_초기_위치_3에서_이동() {
+        RacingCar car = new RacingCar(3);
+        assertThat(car.move(RacingCar.THRESHOLD_POWER)).isEqualTo(4);
     }
 
     @Test
     public void test_위치_대소비교() {
-        RacingCar carPositionedAt2 = new RacingCar();
-        carPositionedAt2.move(RacingCar.THRESHOLD_POWER);
-        carPositionedAt2.move(RacingCar.THRESHOLD_POWER);
-
-        RacingCar carPositionedAt1 = new RacingCar();
-        carPositionedAt1.move(RacingCar.THRESHOLD_POWER);
-
+        RacingCar carPositionedAt2 = new RacingCar(2);
+        RacingCar carPositionedAt1 = new RacingCar(1);
         RacingCar carPositionedAt0 = new RacingCar();
 
         assertThat(carPositionedAt2.compareTo(carPositionedAt1))
