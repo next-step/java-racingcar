@@ -20,6 +20,8 @@ public class ConsoleMain {
         racingGame.game(cars);
 
         OutputView.showStatus(cars, turn);
-        OutputView.showWinner(Ranking.findWinner(cars));
+
+        Ranking ranking = new Ranking();
+        OutputView.showWinner(ranking.findWinner(cars));
     }
 }

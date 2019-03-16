@@ -10,7 +10,7 @@ public class Ranking {
 
     private static final int EQUAL = 0;
 
-    private static List<Car> winners = null;
+    private List<Car> winners = null;
 
     public static List<Car> sort(List<Car> cars) {
         Collections.sort(cars, Collections.reverseOrder());
@@ -19,7 +19,7 @@ public class Ranking {
 
     //TODO: view에서 해야할 일을 model에서 하고 있다.
     //TODO: winner만 뽑아서 전달해보자 , 출력form은 view에서 생성!!
-    public static List<Car> findWinner(List<Car> cars) {
+    public List<Car> findWinner(List<Car> cars) {
 
         sort(cars);
 
@@ -32,7 +32,7 @@ public class Ranking {
         return winners;
     }
 
-    private static boolean addWinner(Car before, Car after) {
+    private boolean addWinner(Car before, Car after) {
 
         if (winners.isEmpty()) {
             winners.add(before);

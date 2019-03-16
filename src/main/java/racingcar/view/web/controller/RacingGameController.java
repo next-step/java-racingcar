@@ -64,7 +64,8 @@ public class RacingGameController {
             model.put(CARS, cars);
 
             //winner는 String으로 결과 만들어서 넘김
-            String winners = ResultView.winner(Ranking.findWinner(cars));
+            Ranking ranking = new Ranking();
+            String winners = ResultView.winner(ranking.findWinner(cars));
             model.put(WINNERS, winners);
 
             return TemplateEngine.render(model, RESULT_PAGE);
