@@ -3,16 +3,19 @@ package racing;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
 
-    List<Car> cars;
+    List<Car> cars = new ArrayList<Car>();
 
     @Before
-    public void setUp() { cars = new RacingGame(3).getCars(); }
+    public void setUp() {
+        cars.add(new Car(0));
+    }
 
     @Test
     public void moveCarsTestWithValue4() {

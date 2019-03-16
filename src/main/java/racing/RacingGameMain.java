@@ -1,24 +1,20 @@
 package racing;
 
-import java.util.List;
-
 public class RacingGameMain {
     public static void main(String args[]) {
 
-        RacingGame racingGame = new RacingGame(InputView.getNamesOfCars());
-        List<Car> cars = null;
-
+        String[] carNames = InputView.getNamesOfCars();
         int timeToTry = InputView.getTimeToTry();
 
-        int time = 0;
-        while(time < timeToTry) {
-            cars = racingGame.race();
-            ResultView.printResult(cars);
-            time++;
+        RacingGame racingGame = new RacingGame(carNames, timeToTry);
+        RacingResult result = null;
+
+        while(racingGame.isEnd()) {
+            result = racingGame.race();
+            ResultView.printResult(result);
         }
 
-        List<Car> winners = racingGame.getWinner(cars);
-        ResultView.printWinners(winners);
+        ResultView.printWinners(result);
 
     }
 }
