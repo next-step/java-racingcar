@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -6,12 +6,12 @@ import java.util.stream.Collectors;
 public class RacingGame {
     private List<RacingCar> racingCars;
 
-    RacingGame(String... carNames) {
+    public RacingGame(String... carNames) {
         this.racingCars = new ArrayList<>();
         this.initRacingCars(carNames);
     }
 
-    RacingGame(List<RacingCar> racingCars) {
+    public RacingGame(List<RacingCar> racingCars) {
         this.racingCars = new ArrayList<>(racingCars);
     }
 
@@ -35,17 +35,23 @@ public class RacingGame {
         return this.racingCars;
     }
 
-    public List<RacingCar> determineWinners() {
-        final Comparator<RacingCar> racingCarComparator = Comparator.naturalOrder();
+    public List<RacingCar> getWinners() {
+        return getWinners(getMaxPosition());
+    }
 
-        final RacingCar racingCarWinner = this.racingCars.stream()
-                .max(racingCarComparator)
-                .get();
+    private int getMaxPosition() {
+        int maxPosition = 0;
 
-        final List<RacingCar> racingCarWinners = this.racingCars.stream()
-                .filter(racingCar -> racingCar.compareTo(racingCarWinner) == 0)
+        for (RacingCar car : this.racingCars) {
+            maxPosition = car.getMaxPosition(maxPosition);
+        }
+
+        return maxPosition;
+    }
+
+    private List<RacingCar> getWinners(final int maxPosition) {
+        return this.racingCars.stream()
+                .filter(car -> car.hasMaxPosition(maxPosition))
                 .collect(Collectors.toList());
-
-        return racingCarWinners;
     }
 }

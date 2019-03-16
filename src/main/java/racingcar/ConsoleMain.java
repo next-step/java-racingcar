@@ -1,6 +1,10 @@
 package racingcar;
 
-public class RacingGameApplication {
+import racingcar.domain.RacingGame;
+import racingcar.view.console.RacingGameInput;
+import racingcar.view.console.RacingGameOutput;
+
+public class ConsoleMain {
 
     public static void main(String[] args) throws CloneNotSupportedException {
         String[] carNames = RacingGameInput.takeCarNames();
@@ -12,6 +16,7 @@ public class RacingGameApplication {
             RacingGameOutput.showRaceOf(racingGame.play());
         }
 
-        RacingGameOutput.showFinalWinner(racingGame.determineWinners());
+        RacingGameOutput.showWinners(racingGame.getWinners());
     }
+
 }

@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -29,25 +29,39 @@ public class RacingGameTest {
     }
 
     @Test
-    public void test_determineWinners() {
+    public void 우승자_한명_구하기() {
         // Given
-        final RacingCar expectedRacingCarWinner = new RacingCar("crong", 5);
+        final RacingCar winner = new RacingCar("crong", 5);
         final List<RacingCar> racingCars = Arrays.asList(
                 new RacingCar("pobi", 2),
                 new RacingCar("honux", 1),
-                expectedRacingCarWinner);
+                winner);
 
         RacingGame racingGame = new RacingGame(racingCars);
 
         // When
-        List<RacingCar> racingCarWinners = racingGame.determineWinners();
+        List<RacingCar> winners = racingGame.getWinners();
 
         // Then
-        RacingCar racingCarWinner = racingCarWinners.stream()
-                .max(Comparator.naturalOrder())
-                .get();
+        assertThat(winners.get(0)).isEqualTo(winner);
+    }
 
-        assertThat(racingCarWinner).isEqualTo(expectedRacingCarWinner);
+    @Test
+    public void 우승자_두명이상_구하기() {
+        // Given
+        final RacingCar winner1 = new RacingCar("winner1", 5);
+        final RacingCar winner2 = new RacingCar("winner2", 5);
 
+        final List<RacingCar> cars = Arrays.asList(
+                new RacingCar("pobi", 2), new RacingCar("honux", 1),
+                winner1, winner2);
+
+        RacingGame racingGame = new RacingGame(cars);
+
+        // When
+        List<RacingCar> winners = racingGame.getWinners();
+
+        // Then
+        assertThat(winners).contains(winner1, winner2);
     }
 }
