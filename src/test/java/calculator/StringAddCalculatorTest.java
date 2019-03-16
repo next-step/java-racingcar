@@ -67,4 +67,16 @@ public class StringAddCalculatorTest {
         // Then
         assertThat(result).isEqualTo(Arrays.asList(1, 2, 3));
     }
+
+    @Test
+    public void 입력값_모두더하기() {
+        // Given
+        String inputText = "1,2,3,4,5";
+
+        // When
+        int result = StringAddCalculator.calc(inputText);
+
+        // Then
+        assertThat(result).isEqualTo(15);
+    }
 }

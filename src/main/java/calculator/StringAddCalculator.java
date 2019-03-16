@@ -12,7 +12,17 @@ public class StringAddCalculator {
             return 0;
         }
 
-        return 1;
+        return addAll(split(inputText));
+    }
+
+    private static int addAll(List<Integer> numbers) {
+        int result = 0;
+
+        for (Integer number : numbers) {
+            result += number;
+        }
+
+        return result;
     }
 
     static List<Integer> split(final String inputText, final String delimiter) {
