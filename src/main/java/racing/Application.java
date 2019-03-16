@@ -4,11 +4,11 @@ public class Application {
     public static void main(String[] args) {
         RacingGame racingGame = new RacingGame(InputView.inputCarName());
         int tryCount = InputView.inputTryCount();
-        int racing = tryCount;
-        while (racing-- > 0) {
+
+        while (tryCount-- > 0) {
             racingGame.playRacing();
-            ResultView.printResult(racingGame.getRacingCars());
+            ResultView.printResult(racingGame.getRacingCar());
         }
-        ResultView.printWinner(racingGame.getWinner(tryCount));
+        ResultView.printWinner(new WinnerCar().getWinners(racingGame.getRacingCar()));
     }
 }

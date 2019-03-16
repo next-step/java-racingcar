@@ -1,22 +1,22 @@
 package racing;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class RacingCarTest {
+    private RacingCar racingCar;
 
-    @Test
-    public void moveTrueTest() {
-        RacingCar racingCar = new RacingCar("shin, yeon");
-        racingCar.move(RandomNumberUtil.returnParamNumber(4));
-        racingCar.toString();
+    @Before
+    public void createRacingCarTest() {
+        this.racingCar = new RacingCar("shin", 0);
     }
 
     @Test
-    public void moveFalseTest() {
-        RacingCar racingCar = new RacingCar("shin, yeon");
-        racingCar.move(RandomNumberUtil.returnParamNumber(5));
-        racingCar.toString();
+    public void moveTest() {
+        assertThat(this.racingCar.move(3)).isEqualTo(0);
+        assertThat(this.racingCar.move(4)).isEqualTo(1);
     }
+
 }

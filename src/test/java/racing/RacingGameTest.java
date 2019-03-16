@@ -14,12 +14,7 @@ public class RacingGameTest {
     }
 
     @Test
-    public void createCarTest() {
-        assertThat(this.racingGame.getRacingCars().size()).isEqualTo(3);
-    }
-
-    @Test
-    public void getWinnerTest() {
-        racingGame.getWinner(3).forEach(racingCar -> racingCar.toString());
+    public void createRacingCar() {
+        assertThat(this.racingGame.getRacingCar().size()).isEqualTo(3);
     }
 }

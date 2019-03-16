@@ -5,25 +5,27 @@ public class RacingCar {
     private String carName;
     private int position;
 
-    public RacingCar(String carName) {
+    public RacingCar(String carName, int position) {
         this.carName = carName;
+        this.position = position;
     }
 
-    public void move(int number) {
+    protected int move(int number) {
         if (this.isMove(number)) {
             this.position++;
         }
+        return this.position;
     }
 
     private boolean isMove(int number) {
         return number >= this.FORWARD_NUM;
     }
 
-    public int getPosition() {
+    protected int getPosition() {
         return this.position;
     }
 
-    public String getCarName() {
+    protected String getName() {
         return this.carName;
     }
 
