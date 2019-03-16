@@ -33,6 +33,18 @@ public class StringAddCalculatorTest {
     }
 
     @Test
+    public void 숫자하나입력_숫자하나반환하기() {
+        // Given
+        String inputText = "1";
+
+        // When
+        Positive result = StringAddCalculator.calc(inputText);
+
+        // Then
+        assertThat(result).isEqualTo(new Positive(1));
+    }
+
+    @Test
     public void 숫자문자열_쉼표_구분자로_구분하기() {
         // Given
         String inputText = "1,2,3";
@@ -56,7 +68,6 @@ public class StringAddCalculatorTest {
         // When
         List<Positive> result = StringAddCalculator.split(inputText);
 
-        // Then
         // Then
         assertThat(result)
                 .isEqualTo(Arrays.asList(
