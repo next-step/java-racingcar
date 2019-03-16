@@ -1,10 +1,14 @@
 package racing;
 
 public class Application {
-
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        RacingGame racingGame = new RacingGame(inputView.inputCarCount(), inputView.inputTryCount());
-        racingGame.playRacing();
+        RacingGame racingGame = new RacingGame(InputView.inputCarName());
+        int tryCount = InputView.inputTryCount();
+
+        while (tryCount-- > 0) {
+            racingGame.playRacing();
+            ResultView.printResult(racingGame.getRacingCar());
+        }
+        ResultView.printWinner(new WinnerCar().getWinners(racingGame.getRacingCar()));
     }
 }

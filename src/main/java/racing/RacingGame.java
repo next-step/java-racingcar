@@ -2,36 +2,29 @@ package racing;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class RacingGame {
-    private static final int RANGE = 9;
-    public List<RacingCar> racingCars = new ArrayList<>();
-    private int tryCount;
-    private int carCount;
+    private static final int RANGE = 10;
+    private static final String SEPARATOR = ",";
+    private List<RacingCar> racingCars = new ArrayList<>();
 
-    public RacingGame(int carCount, int tryCount) {
-        this.carCount = carCount;
-        this.tryCount = tryCount;
-        this.createCars();
+    public RacingGame(String carNames) {
+        this.createCars(carNames);
     }
 
-    public void createCars() {
-        IntStream.range(0, carCount).forEach(i -> {
-            this.racingCars.add(new RacingCar());
-        });
+    private void createCars(String carNames) {
+        for (String carName : carNames.split(SEPARATOR)) {
+            this.racingCars.add(new RacingCar(carName, 0));
+        }
     }
 
-    public void playRacing() {
-        IntStream.range(0, this.tryCount).forEach(i -> {
-            this.moveCar();
-            new ResultView().printResult(this.racingCars);
-        });
-    }
-
-    public void moveCar() {
+    protected void playRacing() {
         this.racingCars.forEach(car -> {
-            car.move(new NumberWithRandom(RANGE));
+            car.move(RandomNumberUtil.createRandomNumber(RANGE));
         });
+    }
+
+    protected List<RacingCar> getRacingCar() {
+        return this.racingCars;
     }
 }

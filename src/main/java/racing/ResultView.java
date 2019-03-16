@@ -3,11 +3,14 @@ package racing;
 import java.util.List;
 
 public class ResultView {
-
-    public void printResult(List<RacingCar> racingCars) {
+    public static void printResult(List<RacingCar> racingCars) {
         System.out.println();
         racingCars.forEach(racingCar -> {
-            System.out.println(racingCar.carPosition());
+            System.out.println(racingCar.toString());
         });
+    }
+
+    public static void printWinner(List<String> winners) {
+         System.out.print(String.join(", ", winners) + " 가(이) 최종 우승했습니다.");
     }
 }
