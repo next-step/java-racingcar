@@ -27,8 +27,8 @@ public class InputViewTest {
         String [] carNames = inputView.getCarNames(inputLine);
 
         assertNotNull( carNames );
-        assertEquals( 1, carNames.length );
-        assertEquals( "", carNames[0] );
+        assertEquals(1, carNames.length );
+        assertEquals("", carNames[0] );
     }
 
 
@@ -68,8 +68,8 @@ public class InputViewTest {
         String[] carNames = inputView.getCarNames(inputLine);
 
         assertNotNull(carNames);
-        assertEquals( 1, carNames.length);
-        assertEquals( carName1 + " " + carName2, carNames[0]);
+        assertEquals(1, carNames.length);
+        assertEquals(carName1 + " " + carName2, carNames[0]);
     }
 
     @Test
@@ -83,7 +83,7 @@ public class InputViewTest {
         String[] carNames = inputView.getCarNames(inputLine);
 
         assertNotNull(carNames);
-        assertEquals( 2, carNames.length);
+        assertEquals(2, carNames.length);
         assertEquals(carName1, carNames[0]);
         assertEquals(carName2, carNames[1]);
     }

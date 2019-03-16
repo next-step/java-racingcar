@@ -97,7 +97,7 @@ public class RacingResultTest {
     @Test
     public void getWinnerNames_for_a_winner() {
         List<Car> winners = Arrays.asList(
-                new Car( "pororo")
+                new Car("pororo")
         );
 
         List<String> expected = winners.stream().map(Car::getName).collect(Collectors.toList());
@@ -109,8 +109,8 @@ public class RacingResultTest {
     @Test
     public void getWinnerNames_for_two_winners() {
         List<Car> winners = Arrays.asList(
-                new Car( "pororo"),
-                new Car( "pobi")
+                new Car("pororo"),
+                new Car("pobi")
         );
 
         List<String> expected = winners.stream().map(Car::getName).collect(Collectors.toList());

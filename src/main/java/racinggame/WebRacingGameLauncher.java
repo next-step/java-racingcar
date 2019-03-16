@@ -1,6 +1,5 @@
 package racinggame;
 
-import racinggame.domain.Car;
 import racinggame.domain.RacingGame;
 import racinggame.domain.RacingResult;
 import racinggame.view.InputView;
@@ -36,7 +35,7 @@ public class WebRacingGameLauncher {
        get( "/result", (req, res) -> {
            List<String> carNames = req.session().attribute(req.ip());
 
-           if( StringUtils.isNullOrEmptyList(carNames) ) {
+           if( StringUtils.isEmpty(carNames) ) {
                return renderIndex();
            }
 

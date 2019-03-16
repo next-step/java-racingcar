@@ -65,10 +65,10 @@ public class StringAddCalculatorTest {
 
     @Test
     public void isNullOrEmptyString() {
-        assertTrue(StringAddCalculator.isNullOrEmptyString(""));
-        assertTrue(StringAddCalculator.isNullOrEmptyString(null));
-        assertFalse(StringAddCalculator.isNullOrEmptyString(" "));
-        assertFalse(StringAddCalculator.isNullOrEmptyString("1,2,3"));
+        assertTrue(StringAddCalculator.isEmpty(""));
+        assertTrue(StringAddCalculator.isEmpty(null));
+        assertFalse(StringAddCalculator.isEmpty(" "));
+        assertFalse(StringAddCalculator.isEmpty("1,2,3"));
     }
 
     @Test

@@ -4,15 +4,15 @@ import java.util.List;
 
 public class StringUtils {
 
-    public static boolean isNullOrEmpty(String s) {
+    public static boolean isEmpty(String s) {
         return s == null || s.length() <= 0;
     }
 
-    public static boolean isNullOrEmptyList(List<String> strs) {
+    public static boolean isEmpty(List<String> strs) {
         return strs == null || strs.size() <= 0;
     }
 
-    public static boolean isNullOrEmptyArray(String[] strs) {
+    public static boolean isEmpty(String[] strs) {
         return strs == null || strs.length <= 0;
     }
 

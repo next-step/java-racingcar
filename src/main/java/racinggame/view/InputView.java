@@ -41,8 +41,8 @@ public class InputView {
     }
 
     void validateCarNames(String[] carNames) {
-        if( StringUtils.isNullOrEmptyArray(carNames) ||
-            StringUtils.isNullOrEmpty(carNames[0])) {
+        if( StringUtils.isEmpty(carNames) ||
+            StringUtils.isEmpty(carNames[0])) {
             throw new InputMismatchException("자동차 이름을 입력하셔야 합니다.");
         }
     }

@@ -9,19 +9,18 @@ import java.util.stream.Stream;
 public class StringAddCalculator {
 
     public static int add(String input) {
-        if(isNullOrEmptyString(input) ) {
+        if(isEmpty(input) ) {
             return 0;
         }
 
         return getSum(parseIntArray(splitInput(input)));
     }
 
-    static boolean isNullOrEmptyString(String input) {
+    public static boolean isEmpty(String input) {
         return input == null || input.length() == 0;
     }
 
-
-    static String[] splitInput(String input) {
+    public static String[] splitInput(String input) {
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
 
         if (m.find()) {
@@ -32,14 +31,14 @@ public class StringAddCalculator {
         return input.split("[,:]");
     }
 
-    static List<PositiveInteger> parseIntArray(String[] strArray) {
+    public static List<PositiveInteger> parseIntArray(String[] strArray) {
         return Stream.of(strArray)
                     .map(Integer::parseInt)
                     .map(PositiveInteger::new)
                     .collect(Collectors.toList());
     }
 
-    static int getSum(List<PositiveInteger> positiveIntegers) {
+    public static int getSum(List<PositiveInteger> positiveIntegers) {
         return positiveIntegers.stream()
                         .mapToInt(PositiveInteger::getNumber)
                         .sum();

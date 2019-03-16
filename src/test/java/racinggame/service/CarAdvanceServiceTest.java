@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static racinggame.service.CarAdvanceService.ADVANCE_THRESHOLD;
 
 public class CarAdvanceServiceTest {
 
@@ -61,7 +62,7 @@ public class CarAdvanceServiceTest {
             new Car( "honux", 3 )
         );
 
-        carAdvanceService = new CarAdvanceService(() -> 4);
+        carAdvanceService = new CarAdvanceService(() -> ADVANCE_THRESHOLD);
         carAdvanceService.moveForward(actual);
 
         assertEquals( expected, actual );
@@ -82,7 +83,7 @@ public class CarAdvanceServiceTest {
                 new Car( "honux", 3 )
         );
 
-        carAdvanceService = new CarAdvanceService(() -> 3);
+        carAdvanceService = new CarAdvanceService(() -> ADVANCE_THRESHOLD-1);
         carAdvanceService.moveForward(actual);
 
         assertEquals( expected, actual );
