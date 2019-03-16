@@ -9,7 +9,7 @@ import java.util.List;
 
 public class RacingGame {
 
-    private List<Car> cars;
+    private final List<Car> cars;
     private int numberOfTries;
 
     private CarAdvanceService carAdvanceService = new CarAdvanceService(new RandomValueGeneratorImpl());
@@ -23,7 +23,7 @@ public class RacingGame {
         return Collections.unmodifiableList(cars);
     }
 
-    List<Car> createCars(List<String> carNames) {
+    public static List<Car> createCars(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
 
         for( String name : carNames ) {

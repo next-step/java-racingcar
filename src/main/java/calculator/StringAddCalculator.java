@@ -44,5 +44,4 @@ public class StringAddCalculator {
                         .mapToInt(PositiveInteger::getNumber)
                         .sum();
     }
-
 }
