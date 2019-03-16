@@ -11,9 +11,7 @@ public class RacingCar implements Comparable<RacingCar>, Cloneable {
     private final static int MIN_MOVABLE = 4;
 
     private int position;
-    private String name;
-
-    RacingCar() {}
+    final private String name;
 
     RacingCar(final String name) {
         this.name = name;
@@ -24,8 +22,8 @@ public class RacingCar implements Comparable<RacingCar>, Cloneable {
         this.position = position;
     }
     
-    static boolean checkMovable(int num) {
-        return num >= MIN_MOVABLE;
+    static boolean checkMovable(final int num) {
+        return num >= MIN_MOVABLE && num < RANDOM_BOUND;
     }
 
     int moveRandomly() {
@@ -58,8 +56,8 @@ public class RacingCar implements Comparable<RacingCar>, Cloneable {
     }
 
     @Override
-    public int compareTo(RacingCar racingCar) {
-        return Integer.compare(this.position, racingCar.position);
+    public int compareTo(final RacingCar car) {
+        return Integer.compare(this.position, car.position);
     }
 
     @Override
@@ -72,10 +70,10 @@ public class RacingCar implements Comparable<RacingCar>, Cloneable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        RacingCar racingCar = (RacingCar) o;
+        RacingCar car = (RacingCar) o;
 
-        return position == racingCar.position &&
-                Objects.equals(name, racingCar.name);
+        return position == car.position &&
+                Objects.equals(name, car.name);
     }
 
     @Override

@@ -7,7 +7,7 @@ import java.util.*;
 
 import org.junit.Test;
 
-public class RacingGameTest {
+public class RaceTest {
 
     @Test
     public void test_play() throws CloneNotSupportedException {
@@ -24,8 +24,8 @@ public class RacingGameTest {
         }
 
         // When
-        RacingGame racingGame = new RacingGame(cars);
-        final List<RacingCar> playedCars = racingGame.play();
+        Race race = new Race(cars);
+        final List<RacingCar> playedCars = race.play();
 
         // Then
         for (int i = 0; i < cars.size(); i++) {
@@ -37,15 +37,15 @@ public class RacingGameTest {
     public void 우승자_한명_구하기() {
         // Given
         final RacingCar winner = new RacingCar("crong", 5);
-        final List<RacingCar> racingCars = Arrays.asList(
+        final List<RacingCar> cars = Arrays.asList(
                 new RacingCar("pobi", 2),
                 new RacingCar("honux", 1),
                 winner);
 
-        RacingGame racingGame = new RacingGame(racingCars);
+        Race race = new Race(cars);
 
         // When
-        List<RacingCar> winners = racingGame.getWinners();
+        List<RacingCar> winners = race.getWinners();
 
         // Then
         assertThat(winners.get(0)).isEqualTo(winner);
@@ -61,10 +61,10 @@ public class RacingGameTest {
                 new RacingCar("pobi", 2), new RacingCar("honux", 1),
                 winner1, winner2);
 
-        RacingGame racingGame = new RacingGame(cars);
+        Race race = new Race(cars);
 
         // When
-        List<RacingCar> winners = racingGame.getWinners();
+        List<RacingCar> winners = race.getWinners();
 
         // Then
         assertThat(winners).contains(winner1, winner2);
