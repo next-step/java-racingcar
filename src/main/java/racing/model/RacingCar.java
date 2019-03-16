@@ -4,14 +4,18 @@ public class RacingCar implements Comparable<RacingCar> {
 
     public static final int THRESHOLD_POWER = 4;
 
-    protected int position;
+    private int position;
 
     public RacingCar() {
 
     }
 
     public RacingCar(RacingCar racingCar) {
-        this.position = racingCar.position;
+        this(racingCar.position);
+    }
+
+    public RacingCar(int position) {
+        this.position = position;
     }
 
     public int move(int power) {
