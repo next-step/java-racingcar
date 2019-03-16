@@ -4,6 +4,8 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
@@ -25,7 +27,7 @@ public class StringAddCalculator {
         return result;
     }
 
-    static List<Integer> split(final String inputText, final String delimiter) {
+    private static List<Integer> split(final String inputText, final String delimiter) {
         String[] inputNums = inputText.split(delimiter);
         List<Integer> numbers = new ArrayList<>();
 
@@ -37,6 +39,16 @@ public class StringAddCalculator {
     }
 
     static List<Integer> split(final String inputText) {
-        return split(inputText, ",|:");
+        String delimiter = ",|:";
+
+        String customDelimiterRegex = "\\/\\/([\\W])\\\n";
+        Pattern delimiterPattern = Pattern.compile(customDelimiterRegex);
+        Matcher delimiterMatcher = delimiterPattern.matcher(inputText);
+
+        if (delimiterMatcher.find()){
+            return split(inputText.substring(4), delimiterMatcher.group(1));
+        }
+
+        return split(inputText, delimiter);
     }
 }

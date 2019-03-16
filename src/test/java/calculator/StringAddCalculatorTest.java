@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.in;
 
 public class StringAddCalculatorTest {
     @Test
@@ -78,5 +79,29 @@ public class StringAddCalculatorTest {
 
         // Then
         assertThat(result).isEqualTo(15);
+    }
+
+    @Test
+    public void 커스텀구분자로_구분하기() {
+        // Given
+        String inputText = "//;\n1;2;3";
+
+        // When
+        List<Integer> numbers = StringAddCalculator.split(inputText);
+
+        // Then
+        assertThat(numbers).isEqualTo(Arrays.asList(1, 2, 3));
+    }
+
+    @Test
+    public void 커스텀구분자_포함된_입력값_모두더하기() {
+        // Given
+        String inputText = "//;\n1;2;3";
+
+        // When
+        int result = StringAddCalculator.calc(inputText);
+
+        // Then
+        assertThat(result).isEqualTo(6);
     }
 }
