@@ -55,4 +55,21 @@ public class RacingCarGroupTest {
                 assertThat(car.getMovedDistance()).isEqualTo(0)
         );
     }
+
+    @Test
+    public void 초기화() {
+        // given
+        List<Car> cars = carNames.stream()
+                .map(name -> new Car(name, 3))
+                .collect(Collectors.toList());
+        RacingCarGroup racingCarGroup = new RacingCarGroup(cars);
+
+        // when
+        racingCarGroup.initialize();
+
+        // then
+        racingCarGroup.getCars().forEach(car ->
+                assertThat(car.getMovedDistance()).isEqualTo(0)
+        );
+    }
 }
