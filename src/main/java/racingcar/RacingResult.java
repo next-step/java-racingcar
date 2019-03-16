@@ -8,10 +8,6 @@ public class RacingResult {
         return strings.replaceAll(Constant.FORMAT_REGULAR_LAST_COMMA, "");
     }
 
-    public String[] splitCarName(String carNames) {
-        return carNames.split(Constant.FORMAT_COMMA);
-    }
-
     public List<RacingCar> createRacingCar(String[] carNames) {
         List<RacingCar> racingCars = new ArrayList<>();
         for (String carName : carNames) {

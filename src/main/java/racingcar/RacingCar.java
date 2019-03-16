@@ -25,6 +25,8 @@ public class RacingCar {
         return this.coord;
     }
 
+
+
     public int createRandom() {
         return (int) (Math.random() * Constant.RANDOM_NUM) + Constant.NUMBER_1;
     }

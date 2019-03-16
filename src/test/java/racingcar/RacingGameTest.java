@@ -3,7 +3,6 @@ package racingcar;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,20 +12,17 @@ public class RacingGameTest {
 
     @Before
     public void setUp() throws Exception {
-        RacingResult result = new RacingResult();
-        String[] names = result.splitCarName("minsu,ruru,sian");
-        List<RacingCar> resultCarNames = result.createRacingCar(names);
+        InputView input = new InputView();
+        String[] names = input.splitCarNames("minsu,ruru,sian");
+        RacingResult racingCarResult = new RacingResult();
+        List<RacingCar> resultCarNames = racingCarResult.createRacingCar(names);
         racingGame = new RacingGame(resultCarNames, 4);
     }
 
     @Test
     public void 자동차이름을입력한다() {
-
-        List<String> carNames = new ArrayList<>();
-        carNames.add("minsu");
-        carNames.add("ruru");
-        carNames.add("sian");
-        assertThat(carNames).isEqualTo(racingGame.getRacingCarNames());
+        String[] expectedNames = {"minsu", "ruru", "sian"};
+        assertThat(new InputView().splitCarNames("minsu,ruru,sian")).isEqualTo(expectedNames);//
     }
 
     @Test
