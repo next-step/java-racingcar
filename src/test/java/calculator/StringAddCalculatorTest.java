@@ -12,7 +12,6 @@ public class StringAddCalculatorTest {
         int result = calculator.calculate(input);
 
         assertThat(result).isEqualTo(0);
-
     }
 
     @Test
@@ -58,5 +57,21 @@ public class StringAddCalculatorTest {
         int result = calculator.calculate(input);
 
         assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    public void 커스텀_구분자로_구분하여_입력() {
+        StringAddCalculator calculator = new StringAddCalculator();
+        String input = "//;\n1;2;3";
+        int result = calculator.calculate(input);
+
+        assertThat(result).isEqualTo(6);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void 음수_입력() {
+        StringAddCalculator calculator = new StringAddCalculator();
+        String input = "//;\n-1;2;3";
+        calculator.calculate(input);
     }
 }
