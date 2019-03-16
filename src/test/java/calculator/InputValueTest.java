@@ -52,4 +52,28 @@ public class InputValueTest {
 
         assertThat(inputValue.getFormula()).isEqualTo("1;2;3");
     }
+
+    @Test
+    public void 결과내기() {
+        String input = "//;\n1;2;3";
+        InputValue inputValue = new InputValue(input);
+
+        assertThat(inputValue.getResult()).isEqualTo(6);
+    }
+
+    @Test
+    public void 결과내기2() {
+        String input = "//;\n3;4;5";
+        InputValue inputValue = new InputValue(input);
+
+        assertThat(inputValue.getResult()).isEqualTo(12);
+    }
+
+    @Test
+    public void 결과내기3() {
+        String input = "3,4,5";
+        InputValue inputValue = new InputValue(input);
+
+        assertThat(inputValue.getResult()).isEqualTo(12);
+    }
 }

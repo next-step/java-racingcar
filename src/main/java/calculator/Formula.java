@@ -10,4 +10,8 @@ public class Formula {
     public String getFormulaInput() {
         return this.formula;
     }
+
+    public Numbers getNumbers(Delimiter delimiter) {
+        return new Numbers(formula.split(delimiter.getDelimiter()));
+    }
 }
