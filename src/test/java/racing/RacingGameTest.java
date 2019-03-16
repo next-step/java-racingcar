@@ -14,25 +14,20 @@ public class RacingGameTest {
         carNames.add("car2");
         carNames.add("car3");
 
-        RacingGame rg = new RacingGame(5, carNames);
+        // 처음운행은 무조건 이동
+        RacingGame rg = new RacingGame(1, carNames);
+        for(Car car : rg.getList()){
+            assertThat(car.getMovePosition()).isEqualTo(1);
+        }
+
+        rg = new RacingGame(5,carNames);
         //게임 처음 실행 및 라운드별 히스토리 기록
         GameRule gr = new CarGameRuleUseRandomNumber();
         rg.runRacingGame(gr);
-        Map<Integer, Map<Car, Boolean>> roundHistory = rg.getRoundHistory();
+        List<CarRoundResult> roundHistory = rg.getRoundHistory();
 
-        for (int i = 1; i < 5; i++) {
-            Iterator<Car> iter = roundHistory.get(i).keySet().iterator();
-
-            // 전체 라운드 5
-            assertThat(roundHistory.size()).isEqualTo(5);
-            // 라운드별 총 3대의 기록
-            assertThat(roundHistory.get(i).size()).isEqualTo(3);
-
-            while (iter.hasNext()) {
-                Car car = iter.next();
-                assertThat(car).isNotNull();
-            }
-        }
+        // 라운드별 전체운행횟수 확인
+        assertThat(roundHistory).hasSize(15);
     }
 
     @Test
@@ -51,7 +46,19 @@ public class RacingGameTest {
         List<String> winners = new ArrayList<String>();
         winners = rg.winnerRacingGame();
 
-        assertThat(winners.size()).isEqualTo(3);
+        assertThat(winners).hasSize(3);
     }
 
+    @Test
+    public void 우승자한명테스트(){
+        List<String> carNames = new ArrayList<String>();
+        carNames.add("car1");
+        carNames.add("car2");
+        carNames.add("car3");
+
+        RacingGame rg = new RacingGame(5, carNames);
+        GameRule gameRule = new CarGameRuleOnlyTrue();
+        rg.runRacingGame(gameRule);
+
+    }
 }

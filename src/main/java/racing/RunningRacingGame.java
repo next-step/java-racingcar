@@ -16,6 +16,6 @@ public class RunningRacingGame {
         rg.runRacingGame(gameRule);
 
         //결과출력
-        RacingGameResultVIew.racingResultView(rg.racingGameResult());
+        RacingGameResultView.racingResultView(rg);
     }
 }

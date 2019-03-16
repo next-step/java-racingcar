@@ -1,10 +1,8 @@
 package racing;
 
 import java.util.List;
-import java.util.Map;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 
 public class RacingGame {
     // 운행횟수
@@ -12,15 +10,18 @@ public class RacingGame {
     // Car 컬렉션
     private List<Car> cars;
     // 운행테이블
-    private Map<Integer, Map<Car, Boolean>> RoundHistory;
+    private List<CarRoundResult> roundHistory;
 
     RacingGame(final int time, List<String> carNames) {
         this.time = time;
         this.cars = new ArrayList<Car>();
-        this.RoundHistory = new HashMap<Integer, Map<Car, Boolean>>();
+        this.roundHistory = new ArrayList<CarRoundResult>();
 
-        for (String car : carNames) {
-            cars.add(new Car(car));
+        for (String carName : carNames) {
+            Car car = new Car(carName, 1);
+            cars.add(car);
+            // 첫번째운항은 무조건이동
+            roundHistory.add(new CarRoundResult(1, 1, car));
         }
     }
 
@@ -32,43 +33,33 @@ public class RacingGame {
         return Collections.unmodifiableList(this.cars);
     }
 
-    public Map<Integer, Map<Car, Boolean>> getRoundHistory() {
-        return this.RoundHistory;
+    public List<CarRoundResult> getRoundHistory() {
+        return this.roundHistory;
     }
 
     public RacingGameResult racingGameResult() {
-        return new RacingGameResult(RoundHistory, winnerRacingGame(), time);
+        return new RacingGameResult(roundHistory, time);
     }
 
     // 운행횟수
     public void runRacingGame(GameRule gameRule) {
-        for (int i = 1; i <= time; i++) {
-            moveCarPositionByGameRule(i,gameRule);
+        for (int i = 2; i <= time; i++) {
+            moveCarPositionByGameRule(i, gameRule);
         }
     }
 
-    public void moveCarPositionByGameRule(int time,GameRule gameRule) {
-        // 첫번쨰 운행은 이동
-        if (time == 1) {
-            gameRule = new CarGameRuleOnlyTrue();
-        }
-
-        Map<Car, Boolean> move = new HashMap<Car, Boolean>();
+    public void moveCarPositionByGameRule(int time, GameRule gameRule) {
         for (Car car : cars) {
             if (gameRule.moveRacingGameRule()) {
                 car.move();
-                move.put(car, true);
-                RoundHistory.put(time, move);
+                roundHistory.add(new CarRoundResult(time, car.getMovePosition(), car));
                 continue;
             }
-
-            move.put(car, false);
-            RoundHistory.put(time, move);
+            roundHistory.add(new CarRoundResult(time, car.getMovePosition(), car));
         }
     }
 
     public List<String> winnerRacingGame() {
-        // position 정렬
         Collections.sort(cars);
         List<String> winners = new ArrayList<String>();
         for (Car car : cars) {
