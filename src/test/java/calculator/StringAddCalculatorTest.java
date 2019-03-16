@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.in;
 
 public class StringAddCalculatorTest {
     @Test
@@ -15,10 +14,10 @@ public class StringAddCalculatorTest {
         String inputText = null;
 
         // When
-        int result = StringAddCalculator.calc(inputText);
+        Positive result = StringAddCalculator.calc(inputText);
 
         // Then
-        assertThat(result).isEqualTo(0);
+        assertThat(result).isEqualTo(new Positive(0));
     }
 
     @Test
@@ -27,10 +26,10 @@ public class StringAddCalculatorTest {
         String inputText = "";
 
         // When
-        int result = StringAddCalculator.calc(inputText);
+        Positive result = StringAddCalculator.calc(inputText);
 
         // Then
-        assertThat(result).isEqualTo(0);
+        assertThat(result).isEqualTo(new Positive(0));
     }
 
     @Test
@@ -39,10 +38,14 @@ public class StringAddCalculatorTest {
         String inputText = "1,2,3";
 
         // When
-        List<Integer> result = StringAddCalculator.split(inputText);
+        List<Positive> result = StringAddCalculator.split(inputText);
 
         // Then
-        assertThat(result).isEqualTo(Arrays.asList(1, 2, 3));
+        assertThat(result)
+                .isEqualTo(Arrays.asList(
+                        new Positive(1),
+                        new Positive(2),
+                        new Positive(3)));
     }
 
     @Test
@@ -51,10 +54,15 @@ public class StringAddCalculatorTest {
         String inputText = "1:2:3";
 
         // When
-        List<Integer> result = StringAddCalculator.split(inputText);
+        List<Positive> result = StringAddCalculator.split(inputText);
 
         // Then
-        assertThat(result).isEqualTo(Arrays.asList(1, 2, 3));
+        // Then
+        assertThat(result)
+                .isEqualTo(Arrays.asList(
+                        new Positive(1),
+                        new Positive(2),
+                        new Positive(3)));
     }
 
     @Test
@@ -63,10 +71,14 @@ public class StringAddCalculatorTest {
         String inputText = "1:2,3";
 
         // When
-        List<Integer> result = StringAddCalculator.split(inputText);
+        List<Positive> result = StringAddCalculator.split(inputText);
 
         // Then
-        assertThat(result).isEqualTo(Arrays.asList(1, 2, 3));
+        assertThat(result)
+                .isEqualTo(Arrays.asList(
+                        new Positive(1),
+                        new Positive(2),
+                        new Positive(3)));
     }
 
     @Test
@@ -75,10 +87,10 @@ public class StringAddCalculatorTest {
         String inputText = "1,2,3,4,5";
 
         // When
-        int result = StringAddCalculator.calc(inputText);
+        Positive result = StringAddCalculator.calc(inputText);
 
         // Then
-        assertThat(result).isEqualTo(15);
+        assertThat(result).isEqualTo(new Positive(15));
     }
 
     @Test
@@ -87,10 +99,15 @@ public class StringAddCalculatorTest {
         String inputText = "//;\n1;2;3";
 
         // When
-        List<Integer> numbers = StringAddCalculator.split(inputText);
+        List<Positive> result = StringAddCalculator.split(inputText);
 
         // Then
-        assertThat(numbers).isEqualTo(Arrays.asList(1, 2, 3));
+        // Then
+        assertThat(result)
+                .isEqualTo(Arrays.asList(
+                        new Positive(1),
+                        new Positive(2),
+                        new Positive(3)));
     }
 
     @Test
@@ -99,9 +116,23 @@ public class StringAddCalculatorTest {
         String inputText = "//;\n1;2;3";
 
         // When
-        int result = StringAddCalculator.calc(inputText);
+        Positive result = StringAddCalculator.calc(inputText);
 
         // Then
-        assertThat(result).isEqualTo(6);
+        assertThat(result).isEqualTo(new Positive(6));
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void 입력값에_숫자아닌값이_포함된_경우() {
+        String inputText = "1:r:3";
+
+        StringAddCalculator.calc(inputText);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void 입력값에_음수가_포함된_경우() {
+        String inputText = "1:-1:3";
+
+        Positive result = StringAddCalculator.calc(inputText);
     }
 }

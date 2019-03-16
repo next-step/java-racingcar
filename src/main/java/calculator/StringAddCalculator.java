@@ -9,36 +9,36 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    static int calc(String inputText) {
+    static Positive calc(String inputText) {
         if (StringUtils.isEmpty(inputText)) {
-            return 0;
+            return new Positive(0);
         }
 
         return addAll(split(inputText));
     }
 
-    private static int addAll(List<Integer> numbers) {
-        int result = 0;
+    private static Positive addAll(List<Positive> numbers) {
+        Positive positive = new Positive(0);
 
-        for (Integer number : numbers) {
-            result += number;
+        for (Positive number : numbers) {
+            positive = number.add(positive);
         }
 
-        return result;
+        return positive;
     }
 
-    private static List<Integer> split(final String inputText, final String delimiter) {
+    private static List<Positive> split(final String inputText, final String delimiter) {
         String[] inputNums = inputText.split(delimiter);
-        List<Integer> numbers = new ArrayList<>();
+        List<Positive> numbers = new ArrayList<>();
 
         for (String inputNum : inputNums) {
-            numbers.add(Integer.parseInt(inputNum));
+            numbers.add(new Positive(Integer.parseInt(inputNum)));
         }
 
         return numbers;
     }
 
-    static List<Integer> split(final String inputText) {
+    static List<Positive> split(final String inputText) {
         String delimiter = ",|:";
 
         String customDelimiterRegex = "\\/\\/([\\W])\\\n";
