@@ -6,10 +6,10 @@ import java.util.stream.Collectors;
 
 public class Referee {
     private int getMaxPosition(List<Car> cars) {
-        return cars.stream()
+        Car maxCar = cars.stream()
                 .max(Comparator.comparing(Car::getPosition))
-                .get()
-                .getPosition();
+                .orElseThrow(() -> new RuntimeException("경주에서 우승한 차가 없습니다."));
+        return maxCar.getPosition();
     }
 
     public List<String> pickNamesOfWinners(List<Car> cars) {

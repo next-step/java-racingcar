@@ -1,5 +1,7 @@
 package racingcar.view.dto;
 
+import racingcar.domain.Car;
+
 public class CarResponseDto {
     private static final String SPACE = "&nbsp;";
     private static final String CAR_EMOTICON = "&#128652;";
@@ -7,9 +9,9 @@ public class CarResponseDto {
     private String name;
     private String statusResult;
 
-    public CarResponseDto(int position, String name) {
-        this.position = position;
-        this.name = name;
+    public CarResponseDto(Car car) {
+        this.position = car.getPosition();
+        this.name = car.getName();
         this.statusResult = produceStatus();
     }
 

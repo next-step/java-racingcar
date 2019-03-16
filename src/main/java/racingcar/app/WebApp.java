@@ -8,11 +8,7 @@ import static java.lang.Integer.parseInt;
 import static spark.Spark.*;
 
 public class WebApp {
-    public static CarDao carDao;
-
     public static void main(String[] args) {
-        carDao = new CarDao();
-
         port(8080);
 
         // routes

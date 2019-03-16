@@ -1,4 +1,4 @@
-package calculator;
+package calculator.ver1;
 
 import java.util.Map;
 import java.util.stream.Collectors;

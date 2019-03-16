@@ -1,4 +1,4 @@
-package calculator;
+package calculator.ver1;
 
 public class Calculator {
     static int add(int i, int j) {
