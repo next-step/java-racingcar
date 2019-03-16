@@ -15,7 +15,7 @@ public class Expression {
         this.expression = expression;
     }
 
-    public boolean isCustom() {
+    boolean isCustom() {
         return CUSTOM_EXPRESSION_PATTERN.matcher(this.expression).matches();
     }
 

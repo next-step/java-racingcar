@@ -11,11 +11,7 @@ public class StringAdder {
             return 0;
         }
 
-        Expression expression = new Expression(inputExpression);
-
-        if (expression.isCustom()) {
-            expression = expression.toStandard();
-        }
+        Expression expression = new Expression(inputExpression).toStandard();
 
         return sum(expression.toInts());
     }
