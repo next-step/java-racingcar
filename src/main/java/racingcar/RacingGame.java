@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.utils.Constant;
+import racingcar.utils.RandomUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +11,8 @@ public class RacingGame {
     private int winnerCoordinate = 0;
     private List<RacingCar> racingCars;
 
-    public RacingGame(String[] carNames, int tryCnt) {
+    public RacingGame(String[] carNames) {
         this.racingCars = new ArrayList<>();
-        this.tryCnt = tryCnt;
         createRacingCar(carNames);
     }
 
@@ -22,12 +22,15 @@ public class RacingGame {
         }
     }
 
-    public int getTryCnt() {
-        return tryCnt;
-    }
-
     public void setRacingCars(List<RacingCar> racingCars) {
         this.racingCars = racingCars;
+    }
+
+    public List<RacingCar> getRandomValue() {
+        for (RacingCar racingCar : racingCars) {
+            racingCar.move(RandomUtils.createRandom());
+        }
+        return racingCars;
     }
 
     public int getWinnerCoordinate() {
@@ -37,11 +40,11 @@ public class RacingGame {
     }
 
     public String getWinnerName() {
+        getWinnerCoordinate();
         StringBuilder winnerNames = new StringBuilder();
         for (RacingCar car : racingCars){
-            if(car.isMaxCoordinate(winnerCoordinate)){
+            if(car.isMaxCoordinate(winnerCoordinate))
                 winnerNames.append(car.getName()).append(Constant.FORMAT_COMMA);
-            }
         }
         return winnerNames.toString();
     }

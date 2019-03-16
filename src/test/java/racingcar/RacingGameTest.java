@@ -16,7 +16,7 @@ public class RacingGameTest {
     @Before
     public void setUp() throws Exception {
         names = new InputView().splitCarNames("minsu,ruru,sian");
-        racingGame = new RacingGame(names, 4);
+        racingGame = new RacingGame(names);
         List<RacingCar> racingCars = new ArrayList<>();
         firstCar = new RacingCar(names[0], 5);
         racingCars.add(firstCar);
@@ -27,11 +27,6 @@ public class RacingGameTest {
     @Test
     public void 자동차이름을입력한다() {
         assertThat(new InputView().splitCarNames("minsu,ruru,sian")).isEqualTo(names);
-    }
-
-    @Test
-    public void 시도횟수를입력한다() {
-        assertThat(4).isEqualTo(racingGame.getTryCnt());
     }
 
     @Test
@@ -56,7 +51,6 @@ public class RacingGameTest {
 
     @Test
     public void 우승자_이름_구하기() {
-        racingGame.getWinnerCoordinate();
         assertThat(racingGame.getWinnerName()).contains("minsu");
     }
 }
