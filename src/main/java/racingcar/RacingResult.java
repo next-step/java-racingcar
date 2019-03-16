@@ -24,8 +24,8 @@ public class RacingResult {
     public int getWinnerPosition(List<RacingCar> racingCars) {
         int winnerPosition = 0;
         for (RacingCar car : racingCars) {
-            if (car.getCoord() > winnerPosition)
-                winnerPosition = car.getCoord();
+            if (car.getCoordinate() > winnerPosition)
+                winnerPosition = car.getCoordinate();
 
         }
         return winnerPosition;
@@ -35,7 +35,7 @@ public class RacingResult {
         StringBuilder winnerNamesBuilder = new StringBuilder();
         StringBuilder winners = new StringBuilder();
         for (RacingCar car : racingCars) {
-            if (car.getCoord() == winnerPosition)
+            if (car.getCoordinate() == winnerPosition)
                 winnerNamesBuilder.append(car.getName()).append(Constant.FORMAT_COMMA);
         }
         String winnerNames = formatLastCharacterRemove(winnerNamesBuilder.toString());

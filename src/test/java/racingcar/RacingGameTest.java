@@ -41,4 +41,9 @@ public class RacingGameTest {
         RacingCar racingCar = new RacingCar();
         assertThat(0).isEqualTo(racingCar.move(0));
     }
+
+    @Test
+    public void 우승자의_좌표가_5일때_우승자인지_확인() {
+        assertThat(new RacingCar(5).isMaxCoordinate(5)).isTrue();
+    }
 }

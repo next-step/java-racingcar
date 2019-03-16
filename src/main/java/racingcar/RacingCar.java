@@ -1,8 +1,8 @@
 package racingcar;
 
 public class RacingCar {
-    private int coord;
     private String name;
+    private int coordinate;
 
     public RacingCar() {
     }
@@ -11,8 +11,12 @@ public class RacingCar {
         this.name = name;
     }
 
-    public int getCoord() {
-        return coord;
+    public RacingCar(int coordinate) {
+        this.coordinate = coordinate;
+    }
+
+    public int getCoordinate() {
+        return coordinate;
     }
 
     public String getName() {
@@ -21,14 +25,16 @@ public class RacingCar {
 
     public int move(int randomValue) {
         if (randomValue >= Constant.NUMBER_4)
-            return ++this.coord;
-        return this.coord;
+            return ++this.coordinate;
+        return this.coordinate;
     }
-
-
 
     public int createRandom() {
         return (int) (Math.random() * Constant.RANDOM_NUM) + Constant.NUMBER_1;
+    }
+
+    public boolean isMaxCoordinate(int maxCoordinate) {
+        return maxCoordinate >= coordinate;
     }
 }
 
