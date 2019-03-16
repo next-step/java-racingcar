@@ -47,8 +47,8 @@ public class RacingCar implements Comparable<RacingCar>, Cloneable {
         return this.position == maxPosition;
     }
 
-    public String getPositionAsText() {
-        return this.name + " : " + StringUtils.repeat("-", this.position);
+    public String getPositionAsText(final String positionLooks) {
+        return this.name + " : " + StringUtils.repeat(positionLooks, this.position);
     }
 
     public String getName() {
@@ -61,7 +61,7 @@ public class RacingCar implements Comparable<RacingCar>, Cloneable {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
 
