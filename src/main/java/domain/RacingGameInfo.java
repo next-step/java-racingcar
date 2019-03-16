@@ -1,6 +1,7 @@
 package domain;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,6 +11,7 @@ public class RacingGameInfo {
     @Getter
     private Rule rule;
 
+    @Setter
     @Getter
     private Integer gameCount;
 
@@ -21,9 +23,9 @@ public class RacingGameInfo {
         this.gameCount = gameCount;
     }
 
-    public RacingGameInfo(Rule rule, Integer gameCount, String carNames) {
+    public RacingGameInfo(Rule rule, Integer gameCount, List<String> carNames) {
         this(rule, gameCount);
-        Arrays.stream(carNames.split(",")).map(String::trim)
+        carNames.stream()
             .map(Car::new)
             .forEach(cars::add);
     }

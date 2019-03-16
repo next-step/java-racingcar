@@ -19,7 +19,7 @@ public class RacingGame {
             .mapToObj(this::playCycle)
             .forEach(racingGameResult::addRoundResult);
 
-        racingGameResult.createRanking(getCars());
+        racingGameResult.createWinner(getCars());
 
         return racingGameResult;
     }

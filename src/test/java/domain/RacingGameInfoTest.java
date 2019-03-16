@@ -1,6 +1,7 @@
 package domain;
 
 import org.junit.Test;
+import util.StringParser;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -9,7 +10,7 @@ public class RacingGameInfoTest {
 
     @Test
     public void set_car_names() {
-        RacingGameInfo racingGameInfo = new RacingGameInfo(rule, 5, "a, b,c, d");
+        RacingGameInfo racingGameInfo = new RacingGameInfo(rule, 5, StringParser.split("a, b,c, d"));
         assertThat(racingGameInfo.getCars()).hasSize(4);
         assertThat(racingGameInfo.getCars().get(0).getName()).isEqualTo("a");
         assertThat(racingGameInfo.getCars().get(1).getName()).isEqualTo("b");

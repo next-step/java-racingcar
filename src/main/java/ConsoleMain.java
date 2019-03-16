@@ -1,13 +1,12 @@
-package game;
-
 import domain.RacingGame;
 import domain.RacingGameInfo;
 import domain.RacingGameResult;
 import domain.RandomNumberRule;
-import ui.ConsoleUI;
+import util.StringParser;
+import view.ConsoleView;
 
-public class ConsoleGame {
-    private static ConsoleUI ui = new ConsoleUI();
+public class ConsoleMain {
+    private static ConsoleView ui = new ConsoleView();
 
     public static void start() {
         String carNames = ui.setCarNames();
@@ -16,10 +15,10 @@ public class ConsoleGame {
         RacingGame racingGame = new RacingGame(
             new RacingGameInfo(
                 new RandomNumberRule(0, 10, 4),
-                gameCount, carNames));
+                gameCount, StringParser.split(carNames)));
         RacingGameResult result = racingGame.play();
 
         ui.roundResults(result.getRoundResults());
-        ui.winners(result.getRanking());
+        ui.winners(result.getWinner());
     }
 }

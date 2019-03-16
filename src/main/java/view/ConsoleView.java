@@ -1,4 +1,4 @@
-package ui;
+package view;
 
 import domain.Car;
 import domain.CarResult;
@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class ConsoleUI {
+public class ConsoleView {
     private static Scanner scanner = new Scanner(System.in);
 
     public String setCarNames() {
