@@ -5,14 +5,9 @@ public class Car implements Comparable<Car> {
     private int position;
     private String name;
 
-<<<<<<< HEAD
     public Car(String name, int position) {
         this.name = name;
-=======
-    public Car(int position, String name) {
->>>>>>> Car 불필요한 공백삭제 및 한칸 전진으로 수정
         this.position = position;
-        this.name = name;
     }
 
     public int getPosition() {
