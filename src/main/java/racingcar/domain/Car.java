@@ -5,9 +5,9 @@ public class Car implements Comparable<Car> {
     private int position;
     private String name;
 
-    public Car(int position, String name) {
-        this.position = position;
+    public Car(String name, int position) {
         this.name = name;
+        this.position = position;
     }
 
     public int getPosition() {

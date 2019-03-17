@@ -9,7 +9,7 @@ public class CarTest {
 
     @Test
     public void 이동테스트() {
-        Car car = new Car(1, TEST_NAME);
+        Car car = new Car(TEST_NAME, 1);
         int moveValue = 4;
         car.move(moveValue);
         assertThat(car.getPosition()).isEqualTo(2);
@@ -17,7 +17,7 @@ public class CarTest {
     
     @Test
     public void 정지테스트() {
-        Car car = new Car(1, TEST_NAME);
+        Car car = new Car(TEST_NAME,1);
         int stopValue = 3;
         car.move(stopValue);
         assertThat(car.getPosition()).isEqualTo(1);
