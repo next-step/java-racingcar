@@ -3,33 +3,26 @@ package racingcar;
 public class Car {
     private static final int THRESHOLD_TO_MOVE = 4;
 
-    private int id;
+    private String name;
     private int position;
 
-    public Car(int id) {
-        this.id = id;
-        this.position = 0;
+    Car(String name, int position) {
+        this.name = name;
+        this.position = position;
     }
 
-    public int move(int randomValue) {
-        if (randomValue > THRESHOLD_TO_MOVE) {
+    Car(String name) {
+        this(name, 0);
+    }
+
+    Car move(int randomValue) {
+        if (randomValue >= THRESHOLD_TO_MOVE) {
             this.position++;
         }
-
-        return this.position;
+        return this;
     }
 
-    public String displayTrace() {
-        String result = id+": ";
-
-        for (int i = 0; i < this.position; i++) {
-            result += "-";
-        }
-
-        return result;
-    }
-
-    public int getPosition() {
-        return position;
+    CarDTO toCarDTO() {
+        return new CarDTO(name, position);
     }
 }

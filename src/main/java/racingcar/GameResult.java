@@ -4,21 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameResult {
-    List<Round> rounds;
+    private List<Round> rounds;
 
-    public GameResult() {
+    GameResult() {
         this.rounds = new ArrayList<>();
     }
 
-    public void addRound(Round round) {
+    void addRound(Round round) {
         rounds.add(round);
     }
 
-    public int countRoundLength() {
-        return rounds.size();
+    List<Round> getRounds() {
+        return rounds;
     }
 
-    public Round getRound(int index) {
-        return rounds.get(index);
+    Winners getWinners() {
+        return getLastRound().getWinners();
+    }
+
+    private Round getLastRound() {
+        return rounds.get(rounds.size() - 1);
+    }
+
+    int countRoundLength() {
+        return rounds.size();
     }
 }

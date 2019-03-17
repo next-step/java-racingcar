@@ -4,26 +4,33 @@ import java.util.stream.Collectors;
 
 public class ResultView {
 
-    public static void print(GameResult result) {
+    static void printTraces(GameResult result) {
         System.out.println("실행 결과\n");
-
-        for (int i = 0; i < result.countRoundLength(); i++) {
-            Round round = result.getRound(i);
-            System.out.println(displayTraces(round) + "\n");
-        }
+        System.out.println(getCarTraces(result));
     }
 
-    private static String displayTraces(Round round) {
-        return round.positions.stream()
-                .map(it -> displayTrace(it))
+    static String getCarTraces(GameResult result) {
+        return result.getRounds().stream()
+                .map(round -> getCarTraces(round))
                 .collect(Collectors.joining("\n"));
     }
 
-    private static String displayTrace(int position) {
-        String trace = "";
-        for (int i = 0; i < position; i++) {
+    private static String getCarTraces(Round round) {
+        return round.getCars().stream()
+                .map(carDTO -> getCarTrace(carDTO))
+                .collect(Collectors.joining("\n"));
+    }
+
+    static String getCarTrace(CarDTO carDTO) {
+        String trace = carDTO.getName() + " : ";
+        for (int i = 0; i < carDTO.getPosition(); i++) {
             trace += "-";
         }
         return trace;
+    }
+
+    static void printWinner(GameResult result) {
+        Winners winners = result.getWinners();
+        System.out.println(winners.getWinnersName() + "가 최종 우승했습니다.");
     }
 }

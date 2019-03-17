@@ -1,6 +1,6 @@
 package racingcar;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -8,52 +8,45 @@ import java.util.stream.Collectors;
 public class RacingGame {
     private List<Car> cars;
 
-    public RacingGame(int numberOfCar) {
-        this.cars = new ArrayList<>();
-
-        for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car(i));
-        }
+    RacingGame(String names) {
+        this.cars = Arrays.stream(names.split(","))
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
-    public GameResult play(int time) {
+    GameResult play(int time) {
         GameResult result = new GameResult();
 
         for (int i = 0; i < time; i++) {
-            List<Integer> positions = positionsAfterCarsMove(cars);
-            Round round = new Round(positions);
-            result.addRound(round);
+            this.cars = move(cars);
+            result.addRound(new Round(this.cars));
         }
 
         return result;
     }
 
-    List<Integer> positionsAfterCarsMove(List<Car> cars) {
+    private List<Car> move(List<Car> cars) {
         return cars.stream()
-                .mapToInt(it -> it.move(RandomUtils.getRandomNumber(10)))
-                .boxed()
+                .map(it -> it.move(RandomUtils.getRandomNumber(10)))
                 .collect(Collectors.toList());
     }
 
-    public int getNumberOfCars() {
+    int getNumberOfCars() {
         return cars.size();
-    }
-
-    public List<Car> getCars() {
-        return cars;
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int numberOfCar = scanner.nextInt();
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        String carNames = scanner.nextLine();
 
         System.out.println("시도할 회수는 몇 회 인가요?");
         int time = scanner.nextInt();
 
-        RacingGame game = new RacingGame(numberOfCar);
+        RacingGame game = new RacingGame(carNames);
         GameResult result = game.play(time);
-        ResultView.print(result);
+        ResultView.printTraces(result);
+        ResultView.printWinner(result);
     }
 }
