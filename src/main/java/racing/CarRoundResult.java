@@ -1,25 +1,30 @@
 package racing;
 
-public class CarRoundResult {
-    private int roundNo;
-    private int movePoint;
-    private Car car;
+public class CarRoundResult implements Comparable<CarRoundResult> {
+    private int movePosition;
+    private String carName;
 
-    CarRoundResult(int roundNo,int movePoint,Car car){
-        this.roundNo = roundNo;
-        this.movePoint = movePoint;
-        this.car = car;
+    CarRoundResult(String carName, int movePoint) {
+        this.carName = carName;
+        this.movePosition = movePoint;
     }
 
-    public int getRoundNo(){
-        return this.roundNo;
+    public int getMovePosition() {
+        return this.movePosition;
     }
 
-    public int getMovePoint(){
-        return this.movePoint;
+    public String getCarName() {
+        return this.carName;
     }
 
-    public Car getCar(){
-        return this.car;
+    @Override
+    public int compareTo(CarRoundResult o) {
+        if (this.movePosition < o.movePosition) {
+            return -1;
+        } else if (this.movePosition > o.movePosition) {
+            return 1;
+        }
+
+        return 0;
     }
 }

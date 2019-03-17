@@ -3,7 +3,7 @@ package racing;
 import java.util.Scanner;
 
 public class RacingGameInputView {
-    public static UserInputValueObject racingGameInput() {
+    public static UserInputValueObject takeUserInput() {
         Scanner io = new Scanner(System.in);
         String time, carNames;
 

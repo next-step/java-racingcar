@@ -3,19 +3,19 @@ package racing;
 public class RunningRacingGame {
     public static void main(String[] args) {
         UserInputValueObject inputValueObject;
-        RacingGame rg;
+        RacingGame racingGame;
 
         //사용자 입력값
-        inputValueObject = RacingGameInputView.racingGameInput();
+        inputValueObject = RacingGameInputView.takeUserInput();
         //레이싱게임 초기화
-        rg = new RacingGame(inputValueObject.getInputCarTime(),
+        racingGame = new RacingGame(inputValueObject.getInputCarTime(),
                 inputValueObject.getInputCarNames());
 
         //게임시작
         GameRule gameRule = new CarGameRuleUseRandomNumber();
-        rg.runRacingGame(gameRule);
+        RacingGameResult racingGameResult = racingGame.runRacingGame(gameRule);
 
         //결과출력
-        RacingGameResultView.racingResultView(rg);
+        RacingGameResultView.raceResultView(racingGameResult);
     }
 }
