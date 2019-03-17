@@ -22,9 +22,9 @@ public class RacingGameResultTest {
         RacingGameResult result = new RacingGameResult();
 
         //when
-        result.judge(cars);
+        String winners = result.getWinners(cars);
 
         //then
-        assertThat(result.getWinners()).isEqualTo("pobi");
+        assertThat(winners).isEqualTo("pobi");
     }
 }
