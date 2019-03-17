@@ -3,9 +3,9 @@ package calculator;
 import java.util.Objects;
 
 public class Positive {
-    private int number;
+    private final int number;
 
-    Positive(int number) {
+    public Positive(int number) {
         if (number < 0) {
             throw new IllegalArgumentException();
         }
@@ -13,7 +13,7 @@ public class Positive {
         this.number = number;
     }
 
-    Positive add(Positive positive) {
+    public Positive add(Positive positive) {
         return new Positive(this.number + positive.number);
     }
 

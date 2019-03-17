@@ -14,7 +14,7 @@ public class StringAddCalculatorTest {
         String inputText = null;
 
         // When
-        Positive result = StringAddCalculator.calc(inputText);
+        Positive result = StringAddCalculator.calculate(inputText);
 
         // Then
         assertThat(result).isEqualTo(new Positive(0));
@@ -26,7 +26,19 @@ public class StringAddCalculatorTest {
         String inputText = "";
 
         // When
-        Positive result = StringAddCalculator.calc(inputText);
+        Positive result = StringAddCalculator.calculate(inputText);
+
+        // Then
+        assertThat(result).isEqualTo(new Positive(0));
+    }
+
+    @Test
+    public void 공백문자열입력_0반환하기() {
+        // Given
+        String inputText = "  ";
+
+        // When
+        Positive result = StringAddCalculator.calculate(inputText);
 
         // Then
         assertThat(result).isEqualTo(new Positive(0));
@@ -38,7 +50,7 @@ public class StringAddCalculatorTest {
         String inputText = "1";
 
         // When
-        Positive result = StringAddCalculator.calc(inputText);
+        Positive result = StringAddCalculator.calculate(inputText);
 
         // Then
         assertThat(result).isEqualTo(new Positive(1));
@@ -98,7 +110,7 @@ public class StringAddCalculatorTest {
         String inputText = "1,2,3,4,5";
 
         // When
-        Positive result = StringAddCalculator.calc(inputText);
+        Positive result = StringAddCalculator.calculate(inputText);
 
         // Then
         assertThat(result).isEqualTo(new Positive(15));
@@ -113,7 +125,6 @@ public class StringAddCalculatorTest {
         List<Positive> result = StringAddCalculator.split(inputText);
 
         // Then
-        // Then
         assertThat(result)
                 .isEqualTo(Arrays.asList(
                         new Positive(1),
@@ -127,7 +138,7 @@ public class StringAddCalculatorTest {
         String inputText = "//;\n1;2;3";
 
         // When
-        Positive result = StringAddCalculator.calc(inputText);
+        Positive result = StringAddCalculator.calculate(inputText);
 
         // Then
         assertThat(result).isEqualTo(new Positive(6));
@@ -137,13 +148,13 @@ public class StringAddCalculatorTest {
     public void 입력값에_숫자아닌값이_포함된_경우() {
         String inputText = "1:r:3";
 
-        StringAddCalculator.calc(inputText);
+        StringAddCalculator.calculate(inputText);
     }
 
     @Test(expected = RuntimeException.class)
     public void 입력값에_음수가_포함된_경우() {
         String inputText = "1:-1:3";
 
-        Positive result = StringAddCalculator.calc(inputText);
+        StringAddCalculator.calculate(inputText);
     }
 }

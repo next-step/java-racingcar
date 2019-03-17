@@ -9,15 +9,15 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
-    static Positive calc(String inputText) {
-        if (StringUtils.isEmpty(inputText)) {
+    public static Positive calculate(final String inputText) {
+        if (inputText == null || StringUtils.isEmpty(inputText.trim())) {
             return new Positive(0);
         }
 
         return addAll(split(inputText));
     }
 
-    private static Positive addAll(List<Positive> numbers) {
+    private static Positive addAll(final List<Positive> numbers) {
         Positive positive = new Positive(0);
 
         for (Positive number : numbers) {
@@ -41,7 +41,7 @@ public class StringAddCalculator {
     static List<Positive> split(final String inputText) {
         String delimiter = ",|:";
 
-        String customDelimiterRegex = "\\/\\/([\\W])\\\n";
+        String customDelimiterRegex = "//([\\W])\\n";
         Pattern delimiterPattern = Pattern.compile(customDelimiterRegex);
         Matcher delimiterMatcher = delimiterPattern.matcher(inputText);
 
