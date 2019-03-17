@@ -10,28 +10,23 @@ public class CarTest {
 
     @Before
     public void setUp() {
-        String carId = "aaa";
-        car = new Car(carId);
+        String carName = "aaa";
+        car = new Car(carName);
     }
 
     @Test
     public void 이동하기_이동하는_상황() {
-        car.move(9);
+        car.move(4);
+        CarDTO carDTO = car.toCarDTO();
 
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(carDTO.getPosition()).isEqualTo(1);
     }
 
     @Test
     public void 이동하기_이동하지_않는_상황() {
         car.move(3);
+        CarDTO carDTO = car.toCarDTO();
 
-        assertThat(car.getPosition()).isEqualTo(0);
-    }
-
-    @Test
-    public void 결과를_저장하기위해_Car_객체를_복사() {
-        Car newCar = car.copy();
-
-        assertThat(car.getPosition()).isEqualTo(newCar.getPosition());
+        assertThat(carDTO.getPosition()).isEqualTo(0);
     }
 }

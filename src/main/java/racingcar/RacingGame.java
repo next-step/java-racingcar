@@ -1,39 +1,37 @@
 package racingcar;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private List<Car> cars;
 
-    public RacingGame(String names) {
-        this.cars = new ArrayList<>();
-
-        String[] carNames = names.split(",");
-        for (int i = 0; i < carNames.length; i++) {
-            cars.add(new Car(carNames[i]));
-        }
+    RacingGame(String names) {
+        this.cars = Arrays.stream(names.split(","))
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
-    public GameResult play(int time) {
+    GameResult play(int time) {
         GameResult result = new GameResult();
 
         for (int i = 0; i < time; i++) {
-            carsMove();
-            Round round = new Round(cars);
-            result.addRound(round);
+            this.cars = move(cars);
+            result.addRound(new Round(this.cars));
         }
 
         return result;
     }
 
-    private void carsMove() {
-        this.cars.stream()
-                .forEach(it -> it.move(RandomUtils.getRandomNumber(10)));
+    private List<Car> move(List<Car> cars) {
+        return cars.stream()
+                .map(it -> it.move(RandomUtils.getRandomNumber(10)))
+                .collect(Collectors.toList());
     }
 
-    public int getNumberOfCars() {
+    int getNumberOfCars() {
         return cars.size();
     }
 
@@ -48,6 +46,7 @@ public class RacingGame {
 
         RacingGame game = new RacingGame(carNames);
         GameResult result = game.play(time);
-        ResultView.print(result);
+        ResultView.printTraces(result);
+        ResultView.printWinner(result);
     }
 }

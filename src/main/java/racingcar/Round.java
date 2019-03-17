@@ -1,44 +1,36 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Round {
-    List<Car> cars;
+    private List<CarDTO> cars;
 
-    public Round(List<Car> cars) {
-        this.cars = new ArrayList<>();
-        cars.forEach(car -> this.cars.add(car.copy()));
-    }
-
-    public String getWinnerId() {
-        int winnerPosition = getWinnerPosition();
-        List<Car> winnerCars = getWinnerCars(winnerPosition);
-        return getCarsId(winnerCars);
-    }
-
-    public String displayTraces() {
-        return this.cars.stream()
-                .map(it -> it.displayTrace())
-                .collect(Collectors.joining("\n"));
-    }
-
-    private int getWinnerPosition() {
-        return cars.stream()
-                .map(Car::getPosition)
-                .max(Integer::compareTo).orElseThrow(RuntimeException::new);
-    }
-
-    private List<Car> getWinnerCars(int winnerPosition) {
-        return cars.stream()
-                .filter(car -> car.getPosition() == winnerPosition)
+    Round(List<Car> cars) {
+        this.cars = cars.stream()
+                .map(Car::toCarDTO)
                 .collect(Collectors.toList());
     }
 
-    private String getCarsId(List<Car> winnerCars) {
-        return winnerCars.stream()
-                .map(Car::getId)
-                .collect(Collectors.joining(", "));
+    List<CarDTO> getCars() {
+        return cars;
+    }
+
+    Winners getWinners() {
+        int winnerPosition = getWinnerPosition(this.cars);
+        return getWinnerCars(winnerPosition);
+    }
+
+    private int getWinnerPosition(List<CarDTO> cars) {
+        return cars.stream()
+                .map(CarDTO::getPosition)
+                .max(Integer::compareTo).orElseThrow(RuntimeException::new);
+    }
+
+    private Winners getWinnerCars(int winnerPosition) {
+        List<CarDTO> winners = this.cars.stream()
+                .filter(car -> car.isPositionOf(winnerPosition))
+                .collect(Collectors.toList());
+        return new Winners(winners);
     }
 }
