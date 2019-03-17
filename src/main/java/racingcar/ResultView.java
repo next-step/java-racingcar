@@ -23,4 +23,5 @@ public class ResultView {
     private static void printPosition(int position) {
         System.out.println(Strings.repeat("-", position));
     }
+
 }

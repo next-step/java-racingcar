@@ -32,11 +32,4 @@ public class Car implements Comparable<Car> {
     public int compareTo(Car o) {
         return this.position - o.position;
     }
-
-    public boolean isEqualPosition(int position) {
-        if(this.position == position)
-            return true;
-
-        return false;
-    }
 }
