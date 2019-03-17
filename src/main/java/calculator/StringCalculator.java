@@ -12,7 +12,7 @@ public class StringCalculator {
         Scanner sc = new Scanner(System.in);
         String inputLine = sc.nextLine();
 
-        if( StringUtils.isNullOrEmpty(inputLine) ) {
+        if( StringUtils.isEmpty(inputLine) ) {
             System.out.println("수식을 입력하지 않았습니다.");
             exit(0);
         }

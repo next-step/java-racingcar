@@ -2,10 +2,12 @@ package racinggame.view;
 
 import util.StringUtils;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 public class InputView {
+
+    static final String CONSOLE_CARNAME_DELIMETER = ",";
+    public static final String WEB_CARNAME_DELIMETER = " ";
 
     private Scanner scanner;
 
@@ -13,11 +15,36 @@ public class InputView {
         this.scanner = scanner;
     }
 
-    public String[] getCarNames() {
+    public List<String> getCarNames() {
         showCarNamesInputMessage();
-        String[] carNames = getCarNames(getInputLine());
-        validatedCarNames(carNames);
+        String[] carNames = getCarNames(getInputLine(), CONSOLE_CARNAME_DELIMETER);
+        validateCarNames(carNames);
+
+        return new ArrayList(Arrays.asList(carNames));
+    }
+
+    void showCarNamesInputMessage() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+    }
+
+    public String[] getCarNames(String inputLine) {
+        return getCarNames(inputLine, CONSOLE_CARNAME_DELIMETER);
+    }
+
+    public static String[] getCarNames(String inputLine, String delimeter) {
+        String[] carNames = inputLine.split(delimeter);
         return carNames;
+    }
+
+    String getInputLine() {
+        return scanner.nextLine();
+    }
+
+    void validateCarNames(String[] carNames) {
+        if( StringUtils.isEmpty(carNames) ||
+            StringUtils.isEmpty(carNames[0])) {
+            throw new InputMismatchException("자동차 이름을 입력하셔야 합니다.");
+        }
     }
 
     public Integer getNumberOfTries() {
@@ -27,27 +54,15 @@ public class InputView {
         return numberOfTries;
     }
 
-    void showCarNamesInputMessage() {
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+    void showNumberOfTriesInputMessage() {
+        System.out.println("시도할 회수는 몇 회 인가요?");
     }
 
-    String[] getCarNames(String inputLine) {
-        String [] carNames = inputLine.split(",");
-        return carNames;
-    }
-
-    void validatedCarNames(String[] carNames) {
-        if( StringUtils.isNullOrEmptyArray(carNames) ||
-            StringUtils.isNullOrEmpty(carNames[0]) ) {
-            throw new InputMismatchException("자동차 이름을 입력하셔야 합니다.");
-        }
-    }
-
-    Integer getNumberOfTries(String inputLine) {
+    public static Integer getNumberOfTries(String inputLine) {
         Integer numberOfTries = null;
         try {
             numberOfTries = Integer.parseInt(inputLine);
-        } catch( Exception e ) {
+        } catch(Exception e) {
             e.printStackTrace();
         }
 
@@ -55,16 +70,8 @@ public class InputView {
     }
 
     void validateNumberOfTries(Integer numberOfTries) {
-        if( numberOfTries == null || numberOfTries <= 0 ) {
+        if(numberOfTries == null || numberOfTries <= 0) {
             throw new InputMismatchException("0보다 큰 숫자를 입력 해 주세요.");
         }
-    }
-
-    void showNumberOfTriesInputMessage() {
-        System.out.println("시도할 회수는 몇 회 인가요?");
-    }
-
-    String getInputLine() {
-        return scanner.nextLine();
     }
 }

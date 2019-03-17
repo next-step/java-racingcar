@@ -6,7 +6,7 @@ import java.util.List;
 
 public class CarAdvanceService {
 
-    private static final int ADVANCE_THRESHOLD = 4;
+    static final int ADVANCE_THRESHOLD = 4;
 
     private RandomValueGenerator randomValueGenerator;
 

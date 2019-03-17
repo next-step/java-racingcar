@@ -4,10 +4,13 @@ import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 import static org.junit.Assert.*;
+import static racinggame.view.InputView.CONSOLE_CARNAME_DELIMETER;
 
 public class InputViewTest {
 
@@ -24,8 +27,8 @@ public class InputViewTest {
         String [] carNames = inputView.getCarNames(inputLine);
 
         assertNotNull( carNames );
-        assertEquals( 1, carNames.length );
-        assertEquals( "", carNames[0] );
+        assertEquals(1, carNames.length );
+        assertEquals("", carNames[0] );
     }
 
 
@@ -37,7 +40,7 @@ public class InputViewTest {
         System.out.println(inputLine);
         String [] carNames = inputView.getCarNames(inputLine);
 
-        inputView.validatedCarNames(carNames);
+        inputView.validateCarNames(carNames);
     }
 
     @Test
@@ -49,9 +52,9 @@ public class InputViewTest {
         System.out.println(inputLine);
         String [] carNames = inputView.getCarNames(inputLine);
 
-        assertNotNull( carNames );
-        assertEquals( 1, carNames.length );
-        assertEquals( carName, carNames[0] );
+        assertNotNull(carNames);
+        assertEquals(1, carNames.length);
+        assertEquals(carName, carNames[0]);
     }
 
     @Test
@@ -62,11 +65,11 @@ public class InputViewTest {
 
         String inputLine = scanner.nextLine();
         System.out.println(inputLine);
-        String [] carNames = inputView.getCarNames(inputLine);
+        String[] carNames = inputView.getCarNames(inputLine);
 
-        assertNotNull( carNames );
-        assertEquals( 1, carNames.length );
-        assertEquals( carName1 + " " + carName2, carNames[0] );
+        assertNotNull(carNames);
+        assertEquals(1, carNames.length);
+        assertEquals(carName1 + " " + carName2, carNames[0]);
     }
 
     @Test
@@ -77,31 +80,31 @@ public class InputViewTest {
 
         String inputLine = scanner.nextLine();
         System.out.println(inputLine);
-        String [] carNames = inputView.getCarNames(inputLine);
+        String[] carNames = inputView.getCarNames(inputLine);
 
-        assertNotNull( carNames );
-        assertEquals( 2, carNames.length );
-        assertEquals( carName1, carNames[0] );
-        assertEquals( carName2, carNames[1] );
+        assertNotNull(carNames);
+        assertEquals(2, carNames.length);
+        assertEquals(carName1, carNames[0]);
+        assertEquals(carName2, carNames[1]);
     }
 
     @Test
     public void test_validatedCarNames_when_there_are_three_cars() {
-        String carName1 = "pororo";
-        String carName2 = "pobi";
-        String carName3 = "crong";
-        String cars = carName1 + "," + carName2 + "," + carName3;
-        prepareInputString( cars + "\r\n");
+
+        List<String> expectedCarNames = Arrays.asList("pororo", "pobi", "crong");
+        String inputCarNames = String.join(CONSOLE_CARNAME_DELIMETER, expectedCarNames);
+
+        prepareInputString(inputCarNames + "\r\n");
 
         String inputLine = scanner.nextLine();
         System.out.println(inputLine);
-        String [] carNames = inputView.getCarNames(inputLine);
+        String [] actualCarNames = inputView.getCarNames(inputLine);
 
-        assertNotNull( carNames );
-        assertEquals( 3, carNames.length );
-        assertEquals( carName1, carNames[0] );
-        assertEquals( carName2, carNames[1] );
-        assertEquals( carName3, carNames[2] );
+        assertNotNull(actualCarNames);
+        assertEquals(3, actualCarNames.length);
+        assertEquals(expectedCarNames.get(0), actualCarNames[0]);
+        assertEquals(expectedCarNames.get(1), actualCarNames[1]);
+        assertEquals(expectedCarNames.get(2), actualCarNames[2]);
     }
 
     @Test
@@ -110,9 +113,9 @@ public class InputViewTest {
 
         String inputLine = scanner.nextLine();
         System.out.println(inputLine);
-        Integer numberOfTries = inputView.getNumberOfTries(inputLine);
+        Integer numberOfTries = InputView.getNumberOfTries(inputLine);
 
-        assertNull( numberOfTries );
+        assertNull(numberOfTries);
     }
 
     @Test
@@ -122,9 +125,9 @@ public class InputViewTest {
 
         String inputLine = scanner.nextLine();
         System.out.println(inputLine);
-        Integer numberOfTries = inputView.getNumberOfTries(inputLine);
+        Integer numberOfTries = InputView.getNumberOfTries(inputLine);
 
-        assertNull( numberOfTries );
+        assertNull(numberOfTries);
     }
 
     @Test
@@ -134,9 +137,9 @@ public class InputViewTest {
 
         String inputLine = scanner.nextLine();
         System.out.println(inputLine);
-        Integer numberOfTries = inputView.getNumberOfTries(inputLine);
+        Integer numberOfTries = InputView.getNumberOfTries(inputLine);
 
-        assertEquals( negative, numberOfTries );
+        assertEquals(negative, numberOfTries);
     }
 
     @Test
@@ -146,9 +149,9 @@ public class InputViewTest {
 
         String inputLine = scanner.nextLine();
         System.out.println(inputLine);
-        Integer numberOfTries = inputView.getNumberOfTries(inputLine);
+        Integer numberOfTries = InputView.getNumberOfTries(inputLine);
 
-        assertEquals( integer, numberOfTries );
+        assertEquals(integer, numberOfTries);
     }
 
     @Test(expected = InputMismatchException.class)
@@ -157,7 +160,7 @@ public class InputViewTest {
 
         String inputLine = scanner.nextLine();
         System.out.println(inputLine);
-        Integer numberOfTries = inputView.getNumberOfTries(inputLine);
+        Integer numberOfTries = InputView.getNumberOfTries(inputLine);
 
         inputView.validateNumberOfTries(numberOfTries);
     }
@@ -168,7 +171,7 @@ public class InputViewTest {
 
         String inputLine = scanner.nextLine();
         System.out.println(inputLine);
-        Integer numberOfTries = inputView.getNumberOfTries(inputLine);
+        Integer numberOfTries = InputView.getNumberOfTries(inputLine);
 
         inputView.validateNumberOfTries(numberOfTries);
     }
@@ -179,12 +182,12 @@ public class InputViewTest {
 
         String inputLine = scanner.nextLine();
         System.out.println(inputLine);
-        Integer numberOfTries = inputView.getNumberOfTries(inputLine);
+        Integer numberOfTries = InputView.getNumberOfTries(inputLine);
 
         inputView.validateNumberOfTries(numberOfTries);
     }
 
-    public void prepareInputString(String inputString) {
+    private void prepareInputString(String inputString) {
         InputStream stdin = System.in;
         try {
             System.setIn(new ByteArrayInputStream(inputString.getBytes()));
