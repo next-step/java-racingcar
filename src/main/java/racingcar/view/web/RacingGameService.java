@@ -29,7 +29,14 @@ public class RacingGameService {
             gameResult.addRaceResult(new RaceResult("Race " + i, copyCars(race.play())));
         }
 
-        gameResult.setWinnerNames(GameResult.extractWinnerNamesOf(race));
+        List<RacingCar> winners = race.getWinners();
+        List<String> winnerNames = new ArrayList<>();
+
+        for (int i = 0; i < winners.size(); i++) {
+            winnerNames.add(winners.get(i).getName());
+        }
+
+        gameResult.setWinnerNames(winnerNames);
 
         return gameResult;
     }
