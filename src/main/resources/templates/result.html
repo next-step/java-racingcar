@@ -59,15 +59,16 @@
             <div class="form-show-div" class="form-group">
                 <h3>결과입니다</h3>
                 (이름마다 띄어쓰기로 구분해 주세요.)
-                {{#carsByRaces}}
+                {{#gameResult}}
+                  {{#raceResults}}
                     <h4>{{name}}</h4>
                     {{#cars}}
-                        <div>
-                            {{&positionText}}&#128652;
-                        </div>
+                    <div>
+                        {{name}} : {{&positionAsText}}&#128652;
+                    </div>
                     {{/cars}}
-                {{/carsByRaces}}
-
+                  {{/raceResults}}
+                {{/gameResult}}
                 <br/>
                 <div>{{winnerNames}}가 우승했습니다.</div>
             </div>

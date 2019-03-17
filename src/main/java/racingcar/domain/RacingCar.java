@@ -9,9 +9,11 @@ public class RacingCar implements Comparable<RacingCar>, Cloneable {
 
     private final static int RANDOM_BOUND = 10;
     private final static int MIN_MOVABLE = 4;
+    private final static String DEFAULT_POSITION_LOOKS = "&nbsp;";
 
     private int position;
     final private String name;
+    private String positionAsText;
 
     RacingCar(final String name) {
         this.name = name;
@@ -47,8 +49,12 @@ public class RacingCar implements Comparable<RacingCar>, Cloneable {
         return this.position == maxPosition;
     }
 
+    public String getPositionAsText() {
+        return StringUtils.repeat(DEFAULT_POSITION_LOOKS, this.position);
+    }
+
     public String getPositionAsText(final String positionLooks) {
-        return this.name + " : " + StringUtils.repeat(positionLooks, this.position);
+        return StringUtils.repeat(positionLooks, this.position);
     }
 
     public String getName() {

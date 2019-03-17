@@ -7,7 +7,11 @@ import java.util.List;
 public class RacingGameOutput {
 
     public static void showRaceOf(final List<RacingCar> cars) {
-        cars.forEach(car -> System.out.println(car.getPositionAsText("-")));
+        cars.forEach(car -> {
+            System.out.print(car.getName() + " : ");
+            System.out.println(car.getPositionAsText("-"));
+        });
+
         System.out.println();
     }
 

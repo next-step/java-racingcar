@@ -19,35 +19,19 @@ public class RacingGameService {
         return result;
     }
 
-    public static Map<String, Object> startGame(final String[] carNames, final int turn)
+    public static GameResult startGame(final String[] carNames, final int turn)
         throws CloneNotSupportedException {
 
+        GameResult gameResult = new GameResult();
         Race race = new Race(carNames);
-        List<RaceResult> carsByRaces = new ArrayList<>();
 
         for (int i = 1; i <= turn; i++) {
-            RaceResult raceResult = new RaceResult("Race " + i, copyCars(race.play()));
-
-            carsByRaces.add(raceResult);
+            gameResult.addRaceResult(new RaceResult("Race " + i, copyCars(race.play())));
         }
 
-        Map<String, Object> gameResult = new HashMap<>();
-
-        gameResult.put("carsByRaces", carsByRaces);
-        gameResult.put("winnerNames", getWinnerNames(race));
+        gameResult.setWinnerNames(GameResult.extractWinnerNamesOf(race));
 
         return gameResult;
-    }
-
-    private static String getWinnerNames(Race race) {
-        List<RacingCar> winners = race.getWinners();
-        List<String> winnerNames = new ArrayList<>();
-
-        for (RacingCar winner : winners) {
-            winnerNames.add(winner.getName());
-        }
-
-        return String.join(", ", winnerNames);
     }
 
     private static List<RacingCar> copyCars(List<RacingCar> cars)
