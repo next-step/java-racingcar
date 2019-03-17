@@ -13,21 +13,29 @@ public class Racing {
     private int tryGame;                    // 시도할 횟수
 
     // 사용자에게 입력받은 자동차 회수와 game 횟수를 저장하는 생성자
-    public Racing(String carsName, int CountCar, int tryGame) {
+    public Racing(String carsName, int tryGame) {
         cars = new ArrayList<>();
 
         //이름을 하나씩 분리해주는 메서드
         String [] names = separateName(carsName);
 
-        if (names.length != CountCar) {
-            throw new IllegalArgumentException();
-        }
-
-        for(int i = 0; i < CountCar; i++) {
+        for(int i = 0; i < names.length; i++) {
             cars.add(new Car(names[i]));
         }
 
         this.tryGame = tryGame;
+    }
+
+    public Racing(String carsName) {
+        cars = new ArrayList<>();
+
+        //이름을 하나씩 분리해주는 메서드
+        String [] names = separateName(carsName);
+        int countCars = names.length;
+
+        for(int i = 0; i < countCars; i++) {
+            cars.add(new Car(names[i]));
+        }
     }
 
     public int getTryGame() {
@@ -67,14 +75,14 @@ public class Racing {
     // 난수를 생성하여 자동차가 움직일지의 전진 여부를 결정하여 추가하는 메서드
     public void carForwardStatus() {
         for(Car car : this.cars) {
-            if(isCarMoving()){
+            int random = generatingRandomNumber(RANGE_RANDOM);
+            if(isCarMoving(random)){
                 car.move();
             }
         }
     }
 
-    public boolean isCarMoving() {
-        int random = generatingRandomNumber(RANGE_RANDOM);
+    public boolean isCarMoving(int random) {
         // 난수가 4이상인 경우 전진한다.
         if (random >= FORWARD_NUMBER) {
             return true;

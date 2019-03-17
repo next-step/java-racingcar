@@ -38,10 +38,9 @@ public class RacingGameTest {
 
     @Test
     public void 레이싱_실행_테스트() {
-        int countCar = generatingRandomNumber(RANGE_RANDOM);
         int tryGame = generatingRandomNumber(RANGE_RANDOM);
 
-        Racing racing = new Racing((String)forTestMap.get("userName"), countCar, tryGame);
+        Racing racing = new Racing((String)forTestMap.get("userName"), tryGame);
 
         game(racing);
     }
@@ -51,24 +50,24 @@ public class RacingGameTest {
         printWinner((List<String>)forTestMap.get("winners"));
     }
 
+
     @Test
     public void 레이싱_정상출력_테스트() {
         int tryGame = generatingRandomNumber(RANGE_RANDOM);
-        Racing racing = new Racing((String)forTestMap.get("userName"), usersLength, tryGame);
+        Racing racing = new Racing((String)forTestMap.get("userName"),tryGame);
 
         printRacing(racing);
     }
 
     @Test
-    public void ForwardStatusTest() {
-        int random = generatingRandomNumber(RANGE_RANDOM);
+    public void 움직임_조건_테스트() {
 
-        // 난수가 4이상인 경우 전진한다.
-        if (random >= FORWARD_NUMBER) {
-            assertThat(true);
-            return;
-        }
+        Racing racing = new Racing((String)forTestMap.get("userName"), 3);
 
-        assertThat(false);
+        racing.isCarMoving(4);
+        assertThat(true).isEqualTo(true);
+
+        racing.isCarMoving(3);
+        assertThat(false).isEqualTo(false);
     }
 }
