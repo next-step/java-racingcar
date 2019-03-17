@@ -1,12 +1,13 @@
 package racingcar.view.web;
 
 import java.util.List;
+import racingcar.domain.RacingCar;
 
-public class RaceDto {
+public class RaceResult {
     private String name;
-    private List<RacingCarDto> cars;
+    private List<RacingCar> cars;
 
-    public RaceDto(String name, List<RacingCarDto> cars) {
+    public RaceResult(String name, List<RacingCar> cars) {
         this.name = name;
         this.cars = cars;
     }
@@ -15,7 +16,7 @@ public class RaceDto {
         return name;
     }
 
-    public List<RacingCarDto> getCars() {
+    public List<RacingCar> getCars() {
         return cars;
     }
 }

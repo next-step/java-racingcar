@@ -1,5 +1,6 @@
 package racingcar.view.web;
 
+import java.util.Arrays;
 import racingcar.domain.Race;
 import racingcar.domain.RacingCar;
 import java.util.ArrayList;
@@ -8,28 +9,26 @@ import java.util.List;
 import java.util.Map;
 
 public class RacingGameService {
-    public static Map<String, Object> getNames(final String[] carNames) {
-        List<RacingCarDto> cars = new ArrayList<>(carNames.length);
-
-        for (String name : carNames) {
-            cars.add(new RacingCarDto(name));
-        }
+    public static Map<String, Object> getNames(final String[] names) {
+        List<String> carNames = Arrays.asList(names);
 
         Map<String, Object> result = new HashMap<>();
 
-        result.put("cars", cars);
+        result.put("cars", carNames);
 
         return result;
     }
 
-    public static Map<String, Object> startGame(final String[] carNames, final int turn) {
+    public static Map<String, Object> startGame(final String[] carNames, final int turn)
+        throws CloneNotSupportedException {
+
         Race race = new Race(carNames);
-        List<RaceDto> carsByRaces = new ArrayList<>();
+        List<RaceResult> carsByRaces = new ArrayList<>();
 
         for (int i = 1; i <= turn; i++) {
-            RaceDto raceDto = new RaceDto("Race " + i, copyCars(race.play()));
+            RaceResult raceResult = new RaceResult("Race " + i, copyCars(race.play()));
 
-            carsByRaces.add(raceDto);
+            carsByRaces.add(raceResult);
         }
 
         Map<String, Object> gameResult = new HashMap<>();
@@ -51,12 +50,13 @@ public class RacingGameService {
         return String.join(", ", winnerNames);
     }
 
-    private static List<RacingCarDto> copyCars(List<RacingCar> cars) {
-        List<RacingCarDto> copyCars = new ArrayList<>(cars.size());
+    private static List<RacingCar> copyCars(List<RacingCar> cars)
+        throws CloneNotSupportedException {
+
+        List<RacingCar> copyCars = new ArrayList<>(cars.size());
 
         for (RacingCar car : cars) {
-            RacingCarDto carDto = new RacingCarDto(car);
-            copyCars.add(carDto);
+            copyCars.add((RacingCar) car.clone());
         }
 
         return copyCars;
