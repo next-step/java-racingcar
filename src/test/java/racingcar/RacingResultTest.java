@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class GameResultTest {
+public class RacingResultTest {
 
     @Test
     public void 우승자_구하기() {
@@ -17,21 +17,24 @@ public class GameResultTest {
         cars.add(new Car("sy",1));
         cars.add(new Car("dh",2));
 
-        List<Car> winners = RacingGameUtil.getWinner(cars);
-        assertThat(winners).hasSize(1);
-        assertThat(winners).containsExactly(winner);
+        RacingResult result = new RacingResult(cars);
+
+        assertThat(result.getWinners()).contains(winner);
     }
 
     @Test
-    public void 포지션_가장큰_자동차_구하기() {
-        int max = 9;
+    public void 우승자가_두명인_경우() {
+
         List<Car> cars = new ArrayList<>();
+        Car winner = new Car("winner", 5);
+        Car hs = new Car("hs", 5);
+        cars.add(winner);
+        cars.add(new Car("sy",1));
+        cars.add(new Car("dh",2));
+        cars.add(hs);
 
-        cars.add(new Car("max", max));
-        cars.add(new Car("sy", 3));
-        cars.add(new Car("dh", 7));
+        RacingResult result = new RacingResult(cars);
 
-        assertThat(RacingGameUtil.getMaxPositionFromCars(cars)).isEqualTo(max);
-
+        assertThat(result.getWinners()).contains(winner, hs);
     }
 }

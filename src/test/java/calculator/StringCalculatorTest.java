@@ -45,4 +45,6 @@ public class StringCalculatorTest {
     public void 공백_입력() {
         StringCalculator.calculate(null);
     }
+
+
 }

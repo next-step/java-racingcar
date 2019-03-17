@@ -7,38 +7,38 @@ public class RacingGame {
     private static final int RANDOM_FROM = 0;
     private static final int RANDOM_TO = 9;
 
-
     private List<Car> cars;
+    private final int tryNo;
+    private int round;
 
-    public RacingGame(String[] carNames) {
-        int carNumber = carNames.length;
-        cars = new ArrayList<>(carNumber);
-
+    public RacingGame(String[] carNames, int tryNo) {
+        this.tryNo = tryNo;
+        this.round = 0;
+        cars = new ArrayList<>(carNames.length);
         for(String carName : carNames) {
             cars.add(new Car(carName));
         }
     }
 
-    public void gameStart(int inputTimes) {
-        System.out.println("\n실행결과");
+    public RacingResult race() {
+        this.round++;
+        move(new RandomUtil(RANDOM_FROM, RANDOM_TO));
+        return new RacingResult(cars);
 
-        for(int i = 0; i < inputTimes; i++) {
-            ResultView.viewCars(move(new RandomUtil(RANDOM_FROM, RANDOM_TO)));
-        }
-
-        ResultView.viewWinner(GameResult.getWinner(cars));
     }
 
-    public List<Car> move(RandomUtil randomUtil) {
-        for(Car car: cars) {
-            int randomNumber = randomUtil.randomInt();
-            car.go(randomNumber);
-        }
-        return cars;
+    public void move(RandomUtil randomUtil) {
+        cars.stream()
+            .forEach(car -> car.go(randomUtil.randomInt()));
+    }
+
+    public boolean isEnd() {
+        if(this.round == tryNo) return true;
+
+        return false;
     }
 
     public List<Car> getCars() {
-        return cars;
+        return this.cars;
     }
-
 }

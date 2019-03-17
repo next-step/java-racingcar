@@ -1,10 +1,10 @@
 package racingcar;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
+    private static final int MOVE_THRESHOLD= 4;
     private final String name;
     private int position;
-    private static final int MOVE_THRESHOLD= 4;
 
     public Car(String name) {
         position = 0;
@@ -16,12 +16,12 @@ public class Car {
         this.position = position;
     }
 
-    public int getPosition() {
-        return position;
-    }
-
     public String getName() {
         return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     public void go(int randomValue) {
@@ -29,10 +29,12 @@ public class Car {
         this.position++;
     }
 
-    public boolean isEqualPosition(int position) {
-        if(this.position == position)
-            return true;
+    public int comparePosition(int position) {
+        return this.position - position;
+    }
 
-        return false;
+    @Override
+    public int compareTo(Car o) {
+        return this.position - o.position;
     }
 }
