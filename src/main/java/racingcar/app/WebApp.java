@@ -1,7 +1,6 @@
 package racingcar.app;
 
 import racingcar.controller.Controller;
-import racingcar.dao.CarDao;
 import racingcar.view.dto.NamesRequestDto;
 
 import static java.lang.Integer.parseInt;

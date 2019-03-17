@@ -22,7 +22,9 @@ public class Service {
     public List<CarResponseDto> playRacingGame(Integer times) {
         List<Car> cars = carDao.findAll();
         RacingGame racingGame = new RacingGame(times);
-        racingGame.repeat(cars, new RandomNumberGenerator());
+        while (racingGame.isEnd()) {
+            racingGame.race(cars, new RandomNumberGenerator());
+        }
         return cars.stream().map(CarResponseDto::new).collect(Collectors.toList());
     }
 

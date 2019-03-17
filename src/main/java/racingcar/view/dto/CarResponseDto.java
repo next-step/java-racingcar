@@ -5,6 +5,7 @@ import racingcar.domain.Car;
 public class CarResponseDto {
     private static final String SPACE = "&nbsp;";
     private static final String CAR_EMOTICON = "&#128652;";
+    private static final String PATH = "-";
     private int position;
     private String name;
     private String statusResult;
