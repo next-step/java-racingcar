@@ -40,6 +40,12 @@ public class StringAddCalculatorTest {
     }
 
     @Test
+    public void 컴마_또는_콜론_체크() {
+        int result = stringAddCalculator.add("1,2:3");
+        assertThat(result).isEqualTo(6);
+    }
+
+    @Test
     public void 커스텀체크() {
         int result = stringAddCalculator.add("//;\n1;2;3");
         assertThat(result).isEqualTo(6);
