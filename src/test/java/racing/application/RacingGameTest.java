@@ -1,7 +1,8 @@
 package racing.application;
 
 import org.junit.Test;
-import racing.view.RacingRequestView;
+import racing.view.RacingGameRequestView;
+import racing.view.RacingGameResultView;
 
 import java.util.Random;
 
@@ -30,22 +31,22 @@ public class RacingGameTest {
 
 
     @Test
-    public void 한명이_게임_한번_실행() {
+    public void 한명이_게임_여러번_실행() {
         //given
-        RacingRequestView requestView = new RacingRequestView("차", 3);
+        RacingGameRequestView requestView = new RacingGameRequestView(new String[]{"차"}, 3);
         RacingGame game = new RacingGame(requestView, new TrueCondition());
 
         //when
-        game.start();
+        RacingGameResultView view = game.start();
 
         //then
-        assertThat(game.getViews().getPositions().get(0)).isEqualTo(4);
+        assertThat(view.getLastHistory().getDtos().get(0).getPosition()).isEqualTo(4);
     }
 }
 
 class TrueCondition implements Condition {
     @Override
-    public boolean check() {
+    public boolean meet() {
         return true;
     }
 }

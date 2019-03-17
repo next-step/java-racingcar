@@ -9,7 +9,7 @@ public class RandomCondition implements Condition {
     private final int CONDITION = 4;
 
     @Override
-    public boolean check() {
+    public boolean meet() {
         return new Random().nextInt(BOUND) >= CONDITION;
     }
 }
