@@ -13,7 +13,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static racinggame.Controller.RacingGame.game;
 import static racinggame.View.PrintRacing.printRacing;
 import static racinggame.View.PrintRacing.printWinner;
-import static utils.ConstantCollection.FORWARD_NUMBER;
 import static utils.ConstantCollection.RANGE_RANDOM;
 import static utils.GenerateRandom.generatingRandomNumber;
 
@@ -49,7 +48,6 @@ public class RacingGameTest {
     public void 승자_정상출력_테스트() {
         printWinner((List<String>)forTestMap.get("winners"));
     }
-
 
     @Test
     public void 레이싱_정상출력_테스트() {
