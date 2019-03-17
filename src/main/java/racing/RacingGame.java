@@ -5,24 +5,38 @@ import java.util.*;
 public class RacingGame {
 
     private final static int RANDOM_VALUE_MAX = 10;
-    List<Car> cars = null;
 
-    public static int generateRandomValue() { return new Random().nextInt(RANDOM_VALUE_MAX); }
+    private List<Car> cars = null;
+    private int timeToTry;
+    private int time = 0;
 
-    public static List<Car> race(List<Car> cars) {
-        for (Car car : cars) {
-            car.move(generateRandomValue());
-        }
-        return cars;
-    }
+    public RacingGame(String[] namesOfCars, int timeToTry) {
 
-    public RacingGame(int numberOfCar) {
+        int numberOfCar = namesOfCars.length;
+        this.timeToTry = timeToTry;
         this.cars = new ArrayList<Car>(numberOfCar);
-        for (int i = 0; i < numberOfCar; i++) {
-            cars.add(i, new Car(0));
+        for(String name:namesOfCars) {
+            cars.add(new Car(name));
         }
     }
 
-    public List<Car> getCars() { return cars; }
+    public boolean isEnd() {
+        if(time >= timeToTry) return false;
+        return true;
+    }
+
+    private static int generateRandomValue() {
+        return new Random().nextInt(RANDOM_VALUE_MAX);
+    }
+
+    public RacingResult race() {
+        for (Car car:cars) { car.move(generateRandomValue()); }
+        time++;
+        return new RacingResult(cars);
+    }
+
+    public boolean isWinner(){
+        return false;
+    }
 
 }
