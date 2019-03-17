@@ -1,5 +1,7 @@
 package calculator;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,6 +14,7 @@ public class StringAddCalculator {
         if(isNull(inputText) || inputText.isEmpty()) {
             return EMPTY_RETURN;
         }
+        
         if(inputText.length() == MONO_TEXT) {
             return Integer.parseInt(inputText);
         }
@@ -24,31 +27,41 @@ public class StringAddCalculator {
             return sum(parseString(inputText));
         }
 
-        Matcher matcher = Pattern.compile("//(.)\\n(.*)").matcher(inputText);
-        if (matcher.find()) {
-            return sum(parseMatcher(matcher));
+        if (inputText.contains("//") & inputText.contains("\n")) {
+            return sum(convertInts(parseMatcher(inputText)));
         }
-        return 1;
+
+        return 0;
     }
 
-    private String[] parseMatcher(Matcher matcher) {
+    private String[] parseMatcher(String inputText) {
+        Matcher matcher = Pattern.compile("//(.)\\n(.*)").matcher(inputText);
+        matcher.find();
         String customDelimiter = matcher.group(1);
         return matcher.group(2).split(customDelimiter);
     }
 
-    private boolean isNull(String text) {
-        return text == null;
+    private boolean isNull(String inputText) {
+        return inputText == null;
     }
 
-    private String[] parseString(String text) {
-        return text.split(",|:");
+    private List<Integer> parseString(String inputText) {
+        return convertInts(inputText.split(",|:"));
     }
 
-    private int sum(String[] numbers) {
+    private int sum(List<Integer> numbers) {
         int sum = 0;
-        for (String number : numbers) {
-            sum += Integer.parseInt(number);
+        for (int number : numbers) {
+            sum += number;
         }
         return sum;
+    }
+
+    private List<Integer> convertInts(String[] values) {
+        List<Integer> numbers = new ArrayList<>();
+        for (int index = 0; index < values.length ; index++) {
+            numbers.add(Integer.parseInt(values[index]));
+        }
+        return numbers;
     }
 }
