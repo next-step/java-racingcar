@@ -23,12 +23,4 @@ public class RacingGameResult {
             winners.add(otherPlayer.getName());
         }
     }
-    
-    public String parsingWinners() {
-        String resultString = "";
-        for(String winner : winners) {
-            resultString += winner + ", ";
-        }
-        return resultString.substring(0, resultString.length()-2);
-    }
 }

@@ -12,8 +12,8 @@ public class RacingGameResultTest {
 
     @Before
     public void setUp() {
-        Car firstWinner = new Car(testPosition, "a");
-        Car secondWinner = new Car(testPosition, "b");
+        Car firstWinner = new Car("a", testPosition);
+        Car secondWinner = new Car("b",testPosition );
         racingGameResult.comparePosition(testPosition, firstWinner);
         racingGameResult.comparePosition(testPosition, secondWinner);
     }
@@ -21,11 +21,5 @@ public class RacingGameResultTest {
     @Test
     public void 우승자가_여러명인지_체크() {
         assertThat(racingGameResult.getWinners().size()).isEqualTo(2);
-    }
-
-    @Test
-    public void 우승자명단확보() {
-        String result = racingGameResult.parsingWinners();
-        assertThat(result).isEqualTo(resultWinnersString);
     }
 }
