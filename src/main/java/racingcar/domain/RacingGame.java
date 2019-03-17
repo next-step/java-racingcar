@@ -10,7 +10,7 @@ public class RacingGame {
     
     public RacingGame(String[] carNames, int time) {
         for(String carName : carNames) {
-            cars.add(new Car(1, carName));
+            cars.add(new Car(carName, 1));
         }
         this.time = time;
     }
