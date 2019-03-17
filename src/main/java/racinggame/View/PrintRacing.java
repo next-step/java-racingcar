@@ -44,11 +44,11 @@ public class PrintRacing {
     }
 
     public static void printWinner(List<String> winners) {
-        System.out.print(setWinnerFormatForPrint(winners));
+        System.out.print(makeWinnerFormatForPrint(winners));
         System.out.println(" 가 최종 우승했습니다.");
     }
 
-    private static String setWinnerFormatForPrint(List<String> winners) {
+    public static String makeWinnerFormatForPrint(List<String> winners) {
         StringBuilder winnersForPrint = new StringBuilder();
 
         for(String winner : winners) {
