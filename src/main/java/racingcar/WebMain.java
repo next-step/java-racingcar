@@ -1,7 +1,6 @@
 package racingcar;
 
 import java.util.HashMap;
-import racingcar.view.web.GameResult;
 import racingcar.view.web.RacingGameService;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
@@ -30,10 +29,7 @@ public class WebMain {
 
             Map<String, Object> model = new HashMap<>();
 
-            GameResult gameResult = RacingGameService.startGame(carNames, turn);
-
-            model.put("gameResult", gameResult);
-            model.put("winnerNames", String.join(", ", gameResult.getWinnerNames()));
+            model.put("gameResult", RacingGameService.startGame(carNames, turn));
 
             return render(model, "/result.html");
         });

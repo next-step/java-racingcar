@@ -25,7 +25,7 @@ public class RaceTest {
 
         // When
         Race race = new Race(cars);
-        final List<RacingCar> playedCars = race.play();
+        final List<RacingCar> playedCars = race.play().getCars();
 
         // Then
         for (int i = 0; i < cars.size(); i++) {

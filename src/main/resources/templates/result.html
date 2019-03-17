@@ -61,16 +61,18 @@
                 (이름마다 띄어쓰기로 구분해 주세요.)
                 {{#gameResult}}
                   {{#raceResults}}
-                    <h4>{{name}}</h4>
+                    {{#if @index}}<b>---------------------------------------------</b>{{/if}}
                     {{#cars}}
                     <div>
                         {{name}} : {{&positionAsText}}&#128652;
                     </div>
                     {{/cars}}
                   {{/raceResults}}
-                {{/gameResult}}
                 <br/>
-                <div>{{winnerNames}}가 우승했습니다.</div>
+                <div>
+                  {{#each winnerNames}}{{#if @index}}, {{/if}}{{.}}{{/each}} 가 우승했습니다.
+                {{/gameResult}}
+                </div>
             </div>
         </div>
     </div>

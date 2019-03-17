@@ -1,12 +1,15 @@
 package racingcar.view.console;
 
+import racingcar.domain.Race;
 import racingcar.domain.RacingCar;
 
 import java.util.List;
 
 public class RacingGameOutput {
 
-    public static void showRaceOf(final List<RacingCar> cars) {
+    public static void showRaceOf(final Race race) {
+        List<RacingCar> cars = race.getCars();
+
         cars.forEach(car -> {
             System.out.print(car.getName() + " : ");
             System.out.println(car.getPositionAsText("-"));

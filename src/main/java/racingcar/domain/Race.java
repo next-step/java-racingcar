@@ -3,7 +3,7 @@ package racingcar.domain;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Race {
+public class Race implements Cloneable {
     private List<RacingCar> cars;
 
     public Race(final String... carNames) {
@@ -20,11 +20,15 @@ public class Race {
                 .forEach(carName -> this.cars.add(new RacingCar(carName)));
     }
 
-    public List<RacingCar> play() {
+    public Race play() {
         for (RacingCar car : this.cars) {
             car.moveRandomly();
         }
 
+        return this;
+    }
+
+    public List<RacingCar> getCars() {
         return this.cars;
     }
 
@@ -46,5 +50,10 @@ public class Race {
         return this.cars.stream()
                 .filter(car -> car.hasMaxPosition(maxPosition))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Race clone() throws CloneNotSupportedException {
+        return (Race) super.clone();
     }
 }

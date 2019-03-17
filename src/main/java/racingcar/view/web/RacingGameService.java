@@ -2,8 +2,6 @@ package racingcar.view.web;
 
 import java.util.Arrays;
 import racingcar.domain.Race;
-import racingcar.domain.RacingCar;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,30 +24,11 @@ public class RacingGameService {
         Race race = new Race(carNames);
 
         for (int i = 1; i <= turn; i++) {
-            gameResult.addRaceResult(new RaceResult("Race " + i, copyCars(race.play())));
+            gameResult.addRaceResult(race.play().clone());
         }
 
-        List<RacingCar> winners = race.getWinners();
-        List<String> winnerNames = new ArrayList<>();
-
-        for (int i = 0; i < winners.size(); i++) {
-            winnerNames.add(winners.get(i).getName());
-        }
-
-        gameResult.setWinnerNames(winnerNames);
+        gameResult.endGame();
 
         return gameResult;
-    }
-
-    private static List<RacingCar> copyCars(List<RacingCar> cars)
-        throws CloneNotSupportedException {
-
-        List<RacingCar> copyCars = new ArrayList<>(cars.size());
-
-        for (RacingCar car : cars) {
-            copyCars.add((RacingCar) car.clone());
-        }
-
-        return copyCars;
     }
 }
