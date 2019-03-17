@@ -2,7 +2,6 @@ package racingcar;
 
 public class Car implements Comparable<Car> {
 
-    private static final int MOVE_THRESHOLD= 4;
     private final String name;
     private int position;
 
@@ -24,13 +23,10 @@ public class Car implements Comparable<Car> {
         return position;
     }
 
-    public void go(int randomValue) {
-        if(randomValue >= MOVE_THRESHOLD)
-        this.position++;
-    }
-
-    public int comparePosition(int position) {
-        return this.position - position;
+    public void go(boolean moveSignal) {
+        if (moveSignal) {
+            this.position++;
+        }
     }
 
     @Override

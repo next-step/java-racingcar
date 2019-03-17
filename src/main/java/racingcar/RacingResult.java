@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 public class RacingResult {
 
+    private static final int EQUAL_VALUE = 0;
     private List<Car> cars;
 
     public RacingResult(List<Car> cars) {
@@ -12,22 +13,18 @@ public class RacingResult {
     }
 
     public List<Car> getWinners() {
-        int maxPosition = getMaxPosition();
 
         return cars.stream()
-            .filter(car -> car.comparePosition(maxPosition) == 0)
-            .collect(Collectors.toList());
+                .filter(car -> car.compareTo(getAnyFirstCar()) == EQUAL_VALUE)
+                .collect(Collectors.toList());
     }
 
-    private int getMaxPosition() {
-        int maxPosition = cars.get(0).getPosition();
+    private Car getAnyFirstCar() {
 
-        for(Car car : cars) {
-            if(car.comparePosition(maxPosition) > 0) {
-                maxPosition = car.getPosition();
-            }
-        }
-        return maxPosition;
+        return cars.stream()
+                .max(Car::compareTo)
+                .get();
+
     }
 
     public List<Car> getCars() {

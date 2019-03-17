@@ -6,7 +6,7 @@ public class MainApplication {
         String[] carNames = InputView.getCarNames();
         int tryNo = InputView.getTryNo();
 
-        RacingGame racingGame = new RacingGame(carNames, tryNo);
+        RacingGame racingGame = new RacingGame(carNames, tryNo, new CarMovableRandomDecider());
         RacingResult result = null;
 
         while(!racingGame.isEnd()) {
