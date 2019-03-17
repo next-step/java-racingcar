@@ -28,9 +28,17 @@ public class ResultView {
         println("");
     }
 
-    public static void announceWinner(String winners) {
+    public static void announceWinner(List<String> winners) {
         println("우승자를 발표하겠습니다!!");
-        print("우승자는 " +winners);
+        print("우승자는 " + parsingWinners(winners));
         print("입니다. 축하합니다!");
+    }
+
+    private static String parsingWinners(List<String> winners) {
+        String resultString = "";
+        for(String winner : winners) {
+            resultString += winner + ", ";
+        }
+        return resultString.substring(0, resultString.length()-2);
     }
 }
