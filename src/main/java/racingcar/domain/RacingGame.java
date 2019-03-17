@@ -1,34 +1,33 @@
 package racingcar.domain;
 
-import racingcar.view.ResultView;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
-
     private int time;
     private List<Car> cars = new ArrayList<>();
-    private ResultView resultView = new ResultView();
-
-    public RacingGame(int carCount, int time) {
-        for (int car = 0; car < carCount; car++) {
-            this.cars.add(new Car(1));
+    
+    public RacingGame(String[] carNames, int time) {
+        for(String carName : carNames) {
+            cars.add(new Car(carName, 1));
         }
         this.time = time;
     }
 
-    public void play() {
-        for(int round = 0; round < time; round++) {
-            playRound();
-        }
+    public int getTime() {
+        return time;
     }
 
-    private void playRound() {
-        for (Car car : cars) {
-            car.move();
-            resultView.printPosition(car.getPosition());
-        }
-        resultView.print("");
+    public List<Car> playRound() {
+        cars.forEach(car -> {
+            car.move(RandomCreator.createNewPosition());
+        });
+        return cars;
+    }
+
+    public List<Car> sortCars() {
+        Collections.sort(cars);
+        return cars;
     }
 }

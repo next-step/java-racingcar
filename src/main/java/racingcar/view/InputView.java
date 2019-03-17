@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 public class InputView {
 
-    Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
 
-    public int setCarCount() {
-        System.out.println("몇대로 플레이 할거에요?");
-        return scanner.nextInt();
+    public static String[] inputCarNames() {
+        System.out.println("경주할 차 이름을 정해주세요! ");
+        return scanner.nextLine().split(",");
     }
 
-    public int setRound() {
+    public static int inputRound() {
         System.out.println("몇 라운드 실행 할거에요?");
         return scanner.nextInt();
     }
