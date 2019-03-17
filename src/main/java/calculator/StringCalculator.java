@@ -9,8 +9,6 @@ import java.util.Scanner;
 import static utils.ConstantCollection.*;
 
 public class StringCalculator {
-
-
     static int calculator(String input)  {
 
         if (StringUtils.isEmpty(input)) {
@@ -70,7 +68,7 @@ public class StringCalculator {
 
         int result = 0;
         if (operator.equals("-")) {
-             return firstOperand - secondOperand;
+            return firstOperand - secondOperand;
         }
 
         if (operator.equals("+")) {

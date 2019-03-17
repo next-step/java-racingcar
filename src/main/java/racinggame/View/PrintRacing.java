@@ -15,25 +15,25 @@ public class PrintRacing {
         System.out.println("실행 결과");
 
         for(int i = 0; i < racing.getTryGame(); i++) {
-            System.out.println(setRacingForPrint(game(racing)));
+            System.out.println(makeRacingForPrint(game(racing)));
         }
 
         List<String> winners = racing.getWinners();
         printWinner(winners);
     }
 
-    public static StringBuilder setRacingForPrint(Racing racing) {
+    public static StringBuilder makeRacingForPrint(Racing racing) {
         StringBuilder viewRacing = new StringBuilder();
 
         for(Car car : racing.getCars()) {
             viewRacing.append(car.getName() + " : ");
-            viewRacing.append(setCarMovementForPrint(car) + "\n");
+            viewRacing.append(makeCarMovementForPrint(car) + "\n");
         }
 
         return viewRacing;
     }
 
-    public static StringBuilder setCarMovementForPrint(Car car) {
+    public static StringBuilder makeCarMovementForPrint(Car car) {
         StringBuilder viewMoving = new StringBuilder();
 
         for(int i = 0; i < car.getCountMoving(); i++) {
