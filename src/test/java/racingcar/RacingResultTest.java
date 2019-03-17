@@ -17,7 +17,7 @@ public class GameResultTest {
         cars.add(new Car("sy",1));
         cars.add(new Car("dh",2));
 
-        List<Car> winners = GameResult.getWinner(cars);
+        List<Car> winners = RacingGameUtil.getWinner(cars);
         assertThat(winners).hasSize(1);
         assertThat(winners).containsExactly(winner);
     }
@@ -31,7 +31,7 @@ public class GameResultTest {
         cars.add(new Car("sy", 3));
         cars.add(new Car("dh", 7));
 
-        assertThat(GameResult.getMaxPositionFromCars(cars)).isEqualTo(max);
+        assertThat(RacingGameUtil.getMaxPositionFromCars(cars)).isEqualTo(max);
 
     }
 }
