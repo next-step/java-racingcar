@@ -1,5 +1,6 @@
-package calculator;
+package calculator.ver1;
 
+import calculator.ver1.StringCalculator;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

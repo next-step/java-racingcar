@@ -1,5 +1,6 @@
-package calculator;
+package calculator.ver1;
 
+import calculator.ver1.Calculator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
