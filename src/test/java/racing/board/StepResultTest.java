@@ -16,7 +16,10 @@ public class StepResultTest {
         List<RacingCar> originCars = Arrays.asList(new RacingCar(), new NamedRacingCar("pobi"));
         StepResult stepResult = new StepResult(originCars);
 
-        List<RacingCar> copiedCars = stepResult.getCars();
-        assertThat(originCars).doesNotContain(copiedCars.toArray(new RacingCar[copiedCars.size()]));
+        RacingCar[] copiedCars = stepResult.getCars()
+                .toArray(new RacingCar[originCars.size()]);
+
+        assertThat(originCars)
+                .doesNotContain(copiedCars);
     }
 }

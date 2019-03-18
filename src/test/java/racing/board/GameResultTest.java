@@ -40,12 +40,14 @@ public class GameResultTest {
 
     @Test
     public void test_우승자들이_같은_위치에_있는지() {
-        List<RacingCar> cars = Arrays.asList(new RacingCar(2), new RacingCar(2), new RacingCar(1));
+        int winnerPosition = 2;
+        List<RacingCar> cars = Arrays.asList(new RacingCar(winnerPosition),
+                new RacingCar(winnerPosition), new RacingCar(winnerPosition - 1));
 
         GameResult gameResult = new GameResult();
         gameResult.addStep(cars);
 
         assertThat(gameResult.getWinners())
-                .allMatch(car -> car.compareTo(new RacingCar(2)) == 0);
+                .allMatch(car -> car.compareTo(new RacingCar(winnerPosition)) == 0);
     }
 }
