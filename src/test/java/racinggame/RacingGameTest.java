@@ -2,70 +2,79 @@ package racinggame;
 
 import org.junit.Before;
 import org.junit.Test;
+import racinggame.domain.Car;
 import racinggame.domain.Racing;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static racinggame.Controller.RacingGame.game;
-import static racinggame.View.PrintRacing.printRacing;
-import static racinggame.View.PrintRacing.printWinner;
+import static racinggame.controller.RacingGame.game;
+import static racinggame.dto.WebGameDto.checkNull;
 import static utils.ConstantCollection.RANGE_RANDOM;
 import static utils.GenerateRandom.generatingRandomNumber;
+import static utils.Separator.separateName;
 
 public class RacingGameTest {
-    Map<String, Object> forTestMap = new HashMap<>();
-    String userName;
-    int usersLength;
+    final String userName = "Kim,Lee,Park";
 
     @Before
     public void setUp() {
-        userName = "Kim,Lee,Park";
-        String [] users = userName.split(",");
-        usersLength = users.length;
-        forTestMap.put("userName", userName);
-
-
         List<String> winners = new ArrayList<>();
         winners.add("Kim");
         winners.add("Park");
-        forTestMap.put("winners", winners);
     }
 
     @Test
-    public void 레이싱_실행_테스트() {
+    public void 레이싱_실행() {
         int tryGame = generatingRandomNumber(RANGE_RANDOM);
 
-        Racing racing = new Racing((String)forTestMap.get("userName"), tryGame);
-
+        Racing racing = new Racing(userName, tryGame);
         game(racing);
     }
 
     @Test
-    public void 승자_정상출력_테스트() {
-        printWinner((List<String>)forTestMap.get("winners"));
-    }
-
-    @Test
-    public void 레이싱_정상출력_테스트() {
-        int tryGame = generatingRandomNumber(RANGE_RANDOM);
-        Racing racing = new Racing((String)forTestMap.get("userName"),tryGame);
-
-        printRacing(racing);
-    }
-
-    @Test
-    public void 움직임_조건_테스트() {
-
-        Racing racing = new Racing((String)forTestMap.get("userName"), 3);
-
-        racing.isCarMoving(4);
-        assertThat(true).isEqualTo(true);
+    public void 정지() {
+        Racing racing = new Racing(userName, 3);
 
         racing.isCarMoving(3);
         assertThat(false).isEqualTo(false);
     }
+
+    @Test
+    public void 동작() {
+        Racing racing = new Racing(userName, 3);
+
+        racing.isCarMoving(4);
+        assertThat(true).isEqualTo(true);
+    }
+
+    @Test
+    public void 자동차_움직임() {
+        Car car = new Car("kim");
+
+        car.move();
+        assertThat(car.getCountMoving()).isEqualTo(1);
+    }
+
+    @Test
+    public void 문자열_콤마_분리() {
+        assertThat(separateName(userName)).isEqualTo(new String[]{"Kim", "Lee", "Park"});
+    }
+
+    @Test
+    public void 문자열_띄어쓰기_분리() {
+        final String name = "Kim Lee Park";
+        assertThat(separateName(name)).isEqualTo(new String[]{"Kim", "Lee", "Park"});
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void webNullTest() {
+        List<Racing> racings = new ArrayList<>();
+        racings.add(null);
+
+        checkNull(racings);
+    }
+
+
 }
