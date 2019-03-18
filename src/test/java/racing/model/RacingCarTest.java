@@ -42,15 +42,4 @@ public class RacingCarTest {
         assertThat(carPositionedAt2.compareTo(carPositionedAt0))
                 .isEqualTo(1);
     }
-
-    @Test
-    public void test_복사_동일성() {
-        RacingCar car = new RacingCar(3);
-        RacingCar copy = car.clone();
-
-        assertThat(car)
-                .isNotSameAs(copy);
-        assertThat(car.toString())
-                .isNotEqualTo(copy.toString());
-    }
 }
