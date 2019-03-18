@@ -1,20 +1,16 @@
 package racing;
 
-import org.junit.Before;
 import org.junit.Test;
+import racing.domain.RacingGame;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import java.util.Arrays;
 
 public class RacingGameTest {
     private RacingGame racingGame;
 
-    @Before
+    @Test
     public void racingGameTest() {
-        this.racingGame = new RacingGame("shin, yeon, jong");
+        this.racingGame = new RacingGame(Arrays.asList("SHIN,YEON"), 5);
     }
 
-    @Test
-    public void createRacingCar() {
-        assertThat(this.racingGame.getRacingCar().size()).isEqualTo(3);
-    }
 }

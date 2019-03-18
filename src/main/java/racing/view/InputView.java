@@ -1,4 +1,6 @@
-package racing;
+package racing.view;
+
+import racing.domain.RacingCar;
 
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
