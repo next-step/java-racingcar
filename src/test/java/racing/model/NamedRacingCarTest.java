@@ -11,14 +11,19 @@ public class NamedRacingCarTest extends RacingCarTest {
     @Test
     public void test_변환_이름() {
         String name = "pobi";
-        NamedRacingCar namedRacingCar = new NamedRacingCar(name);
-        assertThat(namedRacingCar.toString()).isEqualTo(name);
+        RacingCar car = new NamedRacingCar(name);
+
+        assertThat(car.toString()).isEqualTo(name);
     }
 
     @Test
     public void test_복사_동일성() {
-        NamedRacingCar namedRacingCar = new NamedRacingCar("pobi");
-        NamedRacingCar copy = new NamedRacingCar(namedRacingCar);
-        assertThat(namedRacingCar).isNotSameAs(copy);
+        RacingCar car = new NamedRacingCar("pobi");
+        RacingCar copy = car.clone();
+
+        assertThat(car.toString())
+                .isEqualTo(copy.toString());
+        assertThat(car)
+                .isNotSameAs(copy);
     }
 }

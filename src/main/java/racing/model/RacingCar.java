@@ -1,6 +1,6 @@
 package racing.model;
 
-public class RacingCar implements Comparable<RacingCar> {
+public class RacingCar implements Comparable<RacingCar>, Cloneable {
 
     public static final int THRESHOLD_POWER = 4;
 
@@ -8,10 +8,6 @@ public class RacingCar implements Comparable<RacingCar> {
 
     public RacingCar() {
 
-    }
-
-    public RacingCar(RacingCar racingCar) {
-        this(racingCar.position);
     }
 
     public RacingCar(int position) {
@@ -32,5 +28,14 @@ public class RacingCar implements Comparable<RacingCar> {
     @Override
     public int compareTo(RacingCar car) {
         return Integer.compare(position, car.position);
+    }
+
+    @Override
+    public RacingCar clone() {
+        try {
+            return (RacingCar) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

@@ -5,12 +5,19 @@ public class NamedRacingCar extends RacingCar {
     private String name;
 
     public NamedRacingCar(String name) {
+        this(name, 0);
+    }
+
+    public NamedRacingCar(String name, int position) {
+        super(position);
         this.name = name;
     }
 
-    public NamedRacingCar(RacingCar racingCar) {
-        super(racingCar);
-        name = racingCar.toString();
+    @Override
+    public NamedRacingCar clone() {
+        NamedRacingCar clone = (NamedRacingCar) super.clone();
+        clone.name = this.name;
+        return clone;
     }
 
     @Override
