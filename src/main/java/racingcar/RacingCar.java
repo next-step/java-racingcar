@@ -6,10 +6,6 @@ public class RacingCar {
     private String name;
     private int coordinate;
 
-    public RacingCar(String name) {
-        this.name = name;
-    }
-
     public RacingCar(String name, int coordinate) {
         this.name = name;
         this.coordinate = coordinate;
@@ -33,10 +29,10 @@ public class RacingCar {
         return maxCoordinate == coordinate;
     }
 
-    public int findMaxCoordinate(int checkCoordinate){
+    public int findMaxCoordinate(int checkCoordinate) {
         if (coordinate > checkCoordinate)
             return coordinate;
-        return  checkCoordinate;
+        return checkCoordinate;
     }
 }
 

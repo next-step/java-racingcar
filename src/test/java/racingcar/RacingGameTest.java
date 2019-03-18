@@ -12,18 +12,16 @@ import static racingcar.InputView.splitCarNames;
 public class RacingGameTest {
     RacingGame racingGame;
     String[] names;
+    RacingResult racingResult;
     RacingCar firstCar;
 
     @Before
     public void setUp() throws Exception {
         names = splitCarNames("minsu,ruru,sian");
-        List<RacingCar> racingCars = Arrays.asList(
-                        new RacingCar(names[0], 5)
-                        , new RacingCar(names[1], 3)
-                        , new RacingCar(names[2], 1));
-        racingGame = new RacingGame(names);
-        racingGame.setRacingCars(racingCars);
-        firstCar = racingCars.get(0);
+        racingGame = new RacingGame(names, 4);
+        racingGame.race();
+        racingResult.getRacingCars();
+        firstCar = racingResult.getRacingCars().get(0);
     }
 
     @Test
@@ -33,12 +31,12 @@ public class RacingGameTest {
 
     @Test
     public void 자동차한대가슷지4이상일경우전진한다() {
-        assertThat(firstCar.move(4)).isEqualTo(6);
+        assertThat(firstCar.move(4)).isEqualTo(1);
     }
 
     @Test
     public void 자동차한대가슷지4미만경우멈춘다() {
-        assertThat(firstCar.move(3)).isEqualTo(5);
+        assertThat(firstCar.move(3)).isEqualTo(0);
     }
 
     @Test

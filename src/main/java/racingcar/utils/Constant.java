@@ -6,7 +6,5 @@ public class Constant {
     public static final int RANDOM_NUM = 10;
 
     public final static String FORMAT_COMMA = ",";
-    public final static String FORMAT_COLON = " : ";
-
-    public final static String FORMAT_REGULAR_LAST_COMMA = ",$";
+    public final static String FORMAT_DASH = "-";
 }
