@@ -6,24 +6,29 @@ import java.util.stream.Collectors;
 
 class WinnerCars {
 
-  List<Car> cars = new ArrayList<>();
+  private List<Car> cars = new ArrayList<>();
 
-  void add(Car car) {
+  void add(Car addCar) {
 
+    if (isWinnerCar(addCar)) {
+      removeLoserCars(addCar);
+      cars.add(addCar);
+    }
+  }
+
+  private void removeLoserCars(Car addCar) {
+
+    cars = cars.stream()
+        .filter(car -> car.isWinner(addCar))
+        .collect(Collectors.toList());
+  }
+
+  private boolean isWinnerCar(Car addCar) {
     if (cars.isEmpty()) {
-      cars.add(car);
-      return;
+      return true;
     }
 
-    if (car.isLoser(cars.get(0))) {
-      return;
-    }
-
-    if (car.isWinner(cars.get(0))) {
-      cars = new ArrayList<>();
-    }
-
-    cars.add(car);
+    return cars.stream().allMatch(addCar::isWinner);
   }
 
   String getWinnerNames() {

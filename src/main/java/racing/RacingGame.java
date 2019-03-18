@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import racing.view.InputView;
 import racing.view.ResultView;
 
-public class RacingGame {
+class RacingGame {
 
   private static final int MOVE_RANGE = 10;
   private static final int MIN_NUMBER = 4;
@@ -14,17 +14,17 @@ public class RacingGame {
   private InputView inputView;
   private RandomGenerator randomGenerator;
 
-  public RacingGame(InputView inputView) {
+  RacingGame(InputView inputView) {
     this.inputView = inputView;
     this.randomGenerator = new RandomGenerator(MOVE_RANGE);
   }
 
-  public RacingGame(InputView inputView, RandomGenerator randomGenerator) {
+  RacingGame(InputView inputView, RandomGenerator randomGenerator) {
     this.inputView = inputView;
     this.randomGenerator = randomGenerator;
   }
 
-  public WinnerCars game() {
+  WinnerCars game() {
 
     String inputCarNames = inputView.inputCarNames();
     List<Car> cars = generateCars(inputCarNames);
@@ -67,6 +67,4 @@ public class RacingGame {
   void moveCars(List<Car> cars) {
     cars.forEach(car -> car.move(MIN_NUMBER));
   }
-
-
 }

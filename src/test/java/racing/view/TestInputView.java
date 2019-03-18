@@ -6,30 +6,16 @@ import java.util.Scanner;
 
 public class TestInputView extends InputView {
 
-  private int carCount;
   private int moveCount;
-
   private String carNames;
 
   private TestInputView(int moveCount) {
     this.moveCount = moveCount;
   }
 
-  public TestInputView(int carCount, int moveCount) {
-    this(moveCount);
-    this.carCount = carCount;
-  }
-
   public TestInputView(String carNames, int moveCount) {
     this(moveCount);
     this.carNames = carNames;
-  }
-
-  @Override
-  public int inputCarCount() {
-
-    setSystemIn(carCount + "");
-    return super.inputCarCount();
   }
 
   @Override

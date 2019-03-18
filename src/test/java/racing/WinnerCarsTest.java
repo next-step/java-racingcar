@@ -2,10 +2,6 @@ package racing;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import org.junit.Test;
 
 public class WinnerCarsTest {
@@ -16,19 +12,15 @@ public class WinnerCarsTest {
     // Given
     String carNamePobi = "pobi";
     int pobiPosition = 5;
-    Car pobiCar = TestCar.ofWithTrueRandomGenerator(carNamePobi, pobiPosition);
+    Car pobiCar = TestCar.ofNameAndPosition(carNamePobi, pobiPosition);
 
-    TestWinnerCars winnerCars = new TestWinnerCars();
+    WinnerCars winnerCars = new WinnerCars();
 
     // When
     winnerCars.add(pobiCar);
 
     // Then
-    assertThat(winnerCars.getWinnerCars().size()).isEqualTo(1);
-
-    Car winnerCar = winnerCars.getWinnerCars().get(0);
-    assertThat(winnerCar.getName()).isEqualTo(carNamePobi);
-    assertThat(winnerCar.getPosition()).isEqualTo(pobiPosition);
+    assertThat(winnerCars.getWinnerNames()).isEqualTo(carNamePobi);
   }
 
   @Test
@@ -39,20 +31,17 @@ public class WinnerCarsTest {
     String carNameCrong = "crong";
     int pobiPosition = 5;
     int crongPosition = 3;
-    Car pobiCar = TestCar.ofWithTrueRandomGenerator(carNamePobi, pobiPosition);
-    Car crongCar = TestCar.ofWithTrueRandomGenerator(carNameCrong, crongPosition);
+    Car pobiCar = TestCar.ofNameAndPosition(carNamePobi, pobiPosition);
+    Car crongCar = TestCar.ofNameAndPosition(carNameCrong, crongPosition);
 
-    TestWinnerCars winnerCars = new TestWinnerCars(Collections.singletonList(pobiCar));
+    WinnerCars winnerCars = new WinnerCars();
+    winnerCars.add(pobiCar);
 
     // When
     winnerCars.add(crongCar);
 
     // Then
-    assertThat(winnerCars.getWinnerCars().size()).isEqualTo(1);
-
-    Car winnerCar = winnerCars.getWinnerCars().get(0);
-    assertThat(winnerCar.getName()).isEqualTo(carNamePobi);
-    assertThat(winnerCar.getPosition()).isEqualTo(pobiPosition);
+    assertThat(winnerCars.getWinnerNames()).isEqualTo(carNamePobi);
   }
 
   @Test
@@ -63,20 +52,17 @@ public class WinnerCarsTest {
     String carNameCrong = "crong";
     int pobiPosition = 3;
     int crongPosition = 5;
-    Car pobiCar = TestCar.ofWithTrueRandomGenerator(carNamePobi, pobiPosition);
-    Car crongCar = TestCar.ofWithTrueRandomGenerator(carNameCrong, crongPosition);
+    Car pobiCar = TestCar.ofNameAndPosition(carNamePobi, pobiPosition);
+    Car crongCar = TestCar.ofNameAndPosition(carNameCrong, crongPosition);
 
-    TestWinnerCars winnerCars = new TestWinnerCars(Collections.singletonList(pobiCar));
+    WinnerCars winnerCars = new WinnerCars();
+    winnerCars.add(pobiCar);
 
     // When
     winnerCars.add(crongCar);
 
     // Then
-    assertThat(winnerCars.getWinnerCars().size()).isEqualTo(1);
-
-    Car winnerCar = winnerCars.getWinnerCars().get(0);
-    assertThat(winnerCar.getName()).isEqualTo(carNameCrong);
-    assertThat(winnerCar.getPosition()).isEqualTo(crongPosition);
+    assertThat(winnerCars.getWinnerNames()).isEqualTo(carNameCrong);
   }
 
   @Test
@@ -87,19 +73,17 @@ public class WinnerCarsTest {
     String carNameCrong = "crong";
     int pobiPosition = 5;
     int crongPosition = 5;
-    Car pobiCar = TestCar.ofWithTrueRandomGenerator(carNamePobi, pobiPosition);
-    Car crongCar = TestCar.ofWithTrueRandomGenerator(carNameCrong, crongPosition);
+    Car pobiCar = TestCar.ofNameAndPosition(carNamePobi, pobiPosition);
+    Car crongCar = TestCar.ofNameAndPosition(carNameCrong, crongPosition);
 
-    List<Car> cars = new ArrayList<>();
-    cars.add(pobiCar);
-
-    TestWinnerCars winnerCars = new TestWinnerCars(cars);
+    WinnerCars winnerCars = new WinnerCars();
+    winnerCars.add(pobiCar);
 
     // When
     winnerCars.add(crongCar);
 
     // Then
-    assertThat(winnerCars.getWinnerCars().size()).isEqualTo(2);
+    assertThat(winnerCars.getWinnerNames()).isEqualTo(carNamePobi + ", " + carNameCrong);
   }
 
   @Test
@@ -107,13 +91,12 @@ public class WinnerCarsTest {
 
     // Given
     String carNamePobi = "pobi";
-
     int pobiPosition = 5;
-    List<Car> cars = Collections.singletonList(
-        TestCar.ofWithTrueRandomGenerator(carNamePobi, pobiPosition)
-    );
 
-    WinnerCars winnerCar = new TestWinnerCars(cars);
+    Car pobiCar =  TestCar.ofNameAndPosition(carNamePobi, pobiPosition);
+
+    WinnerCars winnerCar = new WinnerCars();
+    winnerCar.add(pobiCar);
 
     // When
     String winnerNames = winnerCar.getWinnerNames();
@@ -131,12 +114,12 @@ public class WinnerCarsTest {
 
     int pobiPosition = 5;
     int honuxPosition = 5;
-    List<Car> cars = Arrays.asList(
-        TestCar.ofWithTrueRandomGenerator(carNamePobi, pobiPosition),
-        TestCar.ofWithTrueRandomGenerator(carNameHonux, honuxPosition)
-    );
+    Car pobiCar = TestCar.ofNameAndPosition(carNamePobi, pobiPosition);
+    Car honuxCar = TestCar.ofNameAndPosition(carNameHonux, honuxPosition);
 
-    WinnerCars winnerCar = new TestWinnerCars(cars);
+    WinnerCars winnerCar = new WinnerCars();
+    winnerCar.add(pobiCar);
+    winnerCar.add(honuxCar);
 
     // When
     String winnerNames = winnerCar.getWinnerNames();

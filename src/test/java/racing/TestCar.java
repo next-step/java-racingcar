@@ -7,7 +7,7 @@ class TestCar extends Car {
     this.position = position;
   }
 
-  public static TestCar ofWithTrueRandomGenerator(String name, int position) {
+  static TestCar ofNameAndPosition(String name, int position) {
 
     TestRandomGenerator testRandomGenerator = new TestRandomGenerator(true);
     return new TestCar(testRandomGenerator, name, position);

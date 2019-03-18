@@ -57,8 +57,8 @@ public class CarTest {
     int pobiPosition = 5;
     int crongPosition = 3;
 
-    Car pobiCar = TestCar.ofWithTrueRandomGenerator(carNamePobi, pobiPosition);
-    Car crongCar = TestCar.ofWithTrueRandomGenerator(carNameCrong, crongPosition);
+    Car pobiCar = TestCar.ofNameAndPosition(carNamePobi, pobiPosition);
+    Car crongCar = TestCar.ofNameAndPosition(carNameCrong, crongPosition);
 
     // When
     boolean isWinner = pobiCar.isWinner(crongCar);
@@ -77,53 +77,13 @@ public class CarTest {
     int pobiPosition = 3;
     int crongPosition = 5;
 
-    Car pobiCar = TestCar.ofWithTrueRandomGenerator(carNamePobi, pobiPosition);
-    Car crongCar = TestCar.ofWithTrueRandomGenerator(carNameCrong, crongPosition);
+    Car pobiCar = TestCar.ofNameAndPosition(carNamePobi, pobiPosition);
+    Car crongCar = TestCar.ofNameAndPosition(carNameCrong, crongPosition);
 
     // When
     boolean isWinner = pobiCar.isWinner(crongCar);
 
     // Then
     assertThat(isWinner).isFalse();
-  }
-
-  @Test
-  public void test_isLoser_true() {
-
-    // Given
-    String carNamePobi = "pobi";
-    String carNameCrong = "crong";
-
-    int pobiPosition = 3;
-    int crongPosition = 5;
-
-    Car pobiCar = TestCar.ofWithTrueRandomGenerator(carNamePobi, pobiPosition);
-    Car crongCar = TestCar.ofWithTrueRandomGenerator(carNameCrong, crongPosition);
-
-    // When
-    boolean isLoser = pobiCar.isLoser(crongCar);
-
-    // Then
-    assertThat(isLoser).isTrue();
-  }
-
-  @Test
-  public void test_isLoser_false() {
-
-    // Given
-    String carNamePobi = "pobi";
-    String carNameCrong = "crong";
-
-    int pobiPosition = 5;
-    int crongPosition = 3;
-
-    Car pobiCar = TestCar.ofWithTrueRandomGenerator(carNamePobi, pobiPosition);
-    Car crongCar = TestCar.ofWithTrueRandomGenerator(carNameCrong, crongPosition);
-
-    // When
-    boolean isLoser = pobiCar.isLoser(crongCar);
-
-    // Then
-    assertThat(isLoser).isFalse();
   }
 }

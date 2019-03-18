@@ -6,12 +6,12 @@ public class Car {
   private RandomGenerator randomGenerator;
 
   // 자동차의 현재 위치
-  protected int position = 0;
+  int position = 0;
 
   // 자동차 이름
   private String name;
 
-  public Car(RandomGenerator randomGenerator, String name) {
+  Car(RandomGenerator randomGenerator, String name) {
     this.randomGenerator = randomGenerator;
     this.name = name;
   }
@@ -35,10 +35,6 @@ public class Car {
   }
 
   boolean isWinner(Car car) {
-    return this.position > car.getPosition();
-  }
-
-  boolean isLoser(Car car) {
-    return this.position < car.getPosition();
+    return this.position >= car.getPosition();
   }
 }
