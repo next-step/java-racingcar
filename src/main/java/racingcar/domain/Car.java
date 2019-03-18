@@ -24,7 +24,8 @@ public class Car implements Comparable<Car> {
         }
     }
 
-    public int compareTo(Car compareCar) { // override
+    @Override
+    public int compareTo(Car compareCar) {
         // 내림차순
         return compareCar.position - this.position;
     }
