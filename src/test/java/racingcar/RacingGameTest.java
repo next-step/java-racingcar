@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static racingcar.InputView.splitCarNames;
 
 public class RacingGameTest {
     RacingGame racingGame;
@@ -15,7 +16,7 @@ public class RacingGameTest {
 
     @Before
     public void setUp() throws Exception {
-        names = new InputView().splitCarNames("minsu,ruru,sian");
+        names = splitCarNames("minsu,ruru,sian");
         List<RacingCar> racingCars = Arrays.asList(
                         new RacingCar(names[0], 5)
                         , new RacingCar(names[1], 3)
@@ -27,7 +28,7 @@ public class RacingGameTest {
 
     @Test
     public void 자동차이름을입력한다() {
-        assertThat(new InputView().splitCarNames("minsu,ruru,sian")).isEqualTo(names);
+        assertThat(splitCarNames("minsu,ruru,sian")).isEqualTo(names);
     }
 
     @Test

@@ -35,7 +35,7 @@ public class RacingResult {
         System.out.println("\n");
     }
 
-    public String getRandomString(int coordinate) {
+    static String getRandomString(int coordinate) {
         StringBuilder coordinateString = new StringBuilder();
         for (int i = 0; i < coordinate; i++)
             coordinateString.append("-");
