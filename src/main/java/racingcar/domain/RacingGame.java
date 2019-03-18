@@ -15,13 +15,9 @@ public class RacingGame {
         this.time = time;
     }
 
-    public int getTime() {
-        return time;
-    }
-
-    public List<Car> playRound() {
+    public List<Car> playRound(RandomCreator randomCreator) {
         cars.forEach(car -> {
-            car.move(RandomCreator.createNewPosition());
+            car.move(randomCreator.createNewPosition());
         });
         return cars;
     }
@@ -29,5 +25,13 @@ public class RacingGame {
     public List<Car> sortCars() {
         Collections.sort(cars);
         return cars;
+    }
+
+    public boolean isFinished() {
+        if(time != 0) {
+            time--;
+            return false;
+        }
+        return true;
     }
 }
