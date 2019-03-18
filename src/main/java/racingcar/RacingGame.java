@@ -19,7 +19,7 @@ public class RacingGame {
 
     public void createRacingCar(String[] carNames) {
         for (String carName : carNames) {
-            racingCars.add(new RacingCar(carName, 0));
+            racingCars.add(new RacingCar(carName));
         }
     }
 

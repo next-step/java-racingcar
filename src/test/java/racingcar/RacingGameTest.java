@@ -12,16 +12,18 @@ import static racingcar.InputView.splitCarNames;
 public class RacingGameTest {
     RacingGame racingGame;
     String[] names;
-    RacingResult racingResult;
     RacingCar firstCar;
 
     @Before
     public void setUp() throws Exception {
         names = splitCarNames("minsu,ruru,sian");
         racingGame = new RacingGame(names, 4);
-        racingGame.race();
-        racingResult.getRacingCars();
-        firstCar = racingResult.getRacingCars().get(0);
+        List<RacingCar> racingCars = Arrays.asList(
+                new RacingCar(names[0])
+                , new RacingCar(names[0])
+                , new RacingCar(names[0])
+        );
+        firstCar = racingCars.get(0);
     }
 
     @Test

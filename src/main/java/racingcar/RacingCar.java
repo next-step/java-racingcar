@@ -6,9 +6,8 @@ public class RacingCar {
     private String name;
     private int coordinate;
 
-    public RacingCar(String name, int coordinate) {
+    public RacingCar(String name) {
         this.name = name;
-        this.coordinate = coordinate;
     }
 
     public int getCoordinate() {
