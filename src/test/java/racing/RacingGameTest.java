@@ -2,33 +2,49 @@ package racing;
 
 import org.junit.Test;
 
-import java.util.List;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
     @Test
-    public void 게임초기값확인() {
-        RacingGame rg = new RacingGame(5, 3);
-        assertThat(rg.getTime()).isEqualTo(5);
-        assertThat(rg.getList().size()).isEqualTo(3);
-    }
+    public void runRacingGame() {
 
-    @Test(expected = UnsupportedOperationException.class)
-    public void 컬렉션수정가능확인() {
-        RacingGame rg = new RacingGame(5, 3);
-        List<Car> cars = rg.getList();
-        cars.add(new Car());
+        RacingGame racingGame = new RacingGame(5, Arrays.asList("car1", "car2", "car3"));
+        GameRule gameRule = new CarGameRuleOnlyTrue();
+        RacingGameResult racingGameResult = racingGame.runRacingGame(gameRule);
+
+        assertThat(racingGameResult.printRoundHistory()).hasSize(5);
+        assertThat(racingGameResult.findRacingWinner()).hasSize(3);
+
+        List<RacingGameRoundResult> racingGameRoundResults = racingGameResult.printRoundHistory();
+        RacingGameRoundResult racingGameRoundResult = racingGameRoundResults.get(0);
+        CarRoundResult carRoundResult = racingGameRoundResult.getCarResults().get(0);
+
+        assertThat(carRoundResult.getMovePosition()).isEqualTo(5);
     }
 
     @Test
-    public void 게임결과확인() {
-        RacingGame rg = new RacingGame(5, 3);
-        RacingGameResult rgr = rg.racingGameResult();
+    public void 우승자테스트() {
+        RacingGame racingGame = new RacingGame(5, Arrays.asList("car1", "car2", "car3"));
 
-        assertThat(rgr.getTime()).isEqualTo(5);
-        assertThat(rgr.getCars().size()).isEqualTo(3);
+        //게임 처음 실행 및 라운드별 히스토리 기록
+        GameRule gameRule = new CarGameRuleOnlyTrue();
+        RacingGameResult gameResult = racingGame.runRacingGame(gameRule);
+
+        List<String> winners = gameResult.findRacingWinner();
+        assertThat(winners).hasSize(3);
     }
 
+    @Test
+    public void 우승자한명테스트() {
+        RacingGame racingGame = new RacingGame(100, Arrays.asList("car1", "car2", "car3", "car4", "car5", "car6",
+                "car7", "car8", "car9"));
 
+        GameRule gameRule = new CarGameRuleUseRandomNumber();
+        RacingGameResult gameResult = racingGame.runRacingGame(gameRule);
+
+        List<String> winners = gameResult.findRacingWinner();
+        assertThat(winners).hasSize(1);
+    }
 }

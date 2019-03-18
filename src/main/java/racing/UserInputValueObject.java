@@ -1,19 +1,28 @@
 package racing;
 
-public class UserInputValueObject {
-    private String inputCarCount;
-    private String inputTime;
+import java.util.ArrayList;
+import java.util.List;
 
-    UserInputValueObject(final String inputCarCount, final String inputTime) {
-        this.inputCarCount = inputCarCount;
+public class UserInputValueObject {
+    private int inputTime;
+    private List<String> inputCarNames;
+
+    UserInputValueObject(final String inputCarNames, final int inputTime) {
+        String[] cars = inputCarNames.split(",");
+        this.inputCarNames = new ArrayList<String>();
+
+        for (String car : cars) {
+            this.inputCarNames.add(car);
+        }
+
         this.inputTime = inputTime;
     }
 
-    public String getInputCarCount() {
-        return this.inputCarCount;
+    public List<String> getInputCarNames() {
+        return this.inputCarNames;
     }
 
-    public String getInputCarTime() {
+    public int getInputCarTime() {
         return this.inputTime;
     }
 
