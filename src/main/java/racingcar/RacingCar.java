@@ -7,7 +7,12 @@ public class RacingCar {
     private int coordinate;
 
     public RacingCar(String name) {
+        this(name, 0);
+    }
+
+    public RacingCar(String name, int coordinate) {
         this.name = name;
+        this.coordinate = coordinate;
     }
 
     public int getCoordinate() {
