@@ -15,11 +15,11 @@ public class RacingCar implements Comparable<RacingCar>, Cloneable {
     final private String name;
     private String positionAsText;
 
-    RacingCar(final String name) {
+    public RacingCar(final String name) {
         this.name = name;
     }
 
-    RacingCar(final String name, final int position) {
+    public RacingCar(final String name, final int position) {
         this.name = name;
         this.position = position;
     }
