@@ -2,6 +2,7 @@ package racing;
 
 import org.junit.Before;
 import org.junit.Test;
+import racing.domain.RacingCar;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 

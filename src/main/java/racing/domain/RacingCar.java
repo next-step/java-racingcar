@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 public class RacingCar {
     private static final int FORWARD_NUM = 4;
@@ -10,7 +10,7 @@ public class RacingCar {
         this.position = position;
     }
 
-    protected int move(int number) {
+    public int move(int number) {
         if (this.isMove(number)) {
             this.position++;
         }
@@ -21,11 +21,11 @@ public class RacingCar {
         return number >= this.FORWARD_NUM;
     }
 
-    protected int getPosition() {
+    public int getPosition() {
         return this.position;
     }
 
-    protected String getName() {
+    public String getCarName() {
         return this.carName;
     }
 
