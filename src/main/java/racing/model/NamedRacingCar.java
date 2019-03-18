@@ -13,11 +13,8 @@ public class NamedRacingCar extends RacingCar {
         this.name = name;
     }
 
-    @Override
-    public NamedRacingCar clone() {
-        NamedRacingCar clone = (NamedRacingCar) super.clone();
-        clone.name = this.name;
-        return clone;
+    public static RacingCar copy(RacingCar car) {
+        return new NamedRacingCar(car.toString(), car.getPosition());
     }
 
     @Override
