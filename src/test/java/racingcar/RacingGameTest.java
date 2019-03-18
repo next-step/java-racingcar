@@ -2,6 +2,7 @@ package racingcar;
 
 import org.junit.Before;
 import org.junit.Test;
+import racingcar.utils.Constant;
 
 import java.util.Arrays;
 import java.util.List;
@@ -42,8 +43,9 @@ public class RacingGameTest {
     }
 
     @Test
-    public void 우승자의_좌표가_5일때_우승자인지_확인() {
-        assertThat(firstCar.isMaxCoordinate(5)).isTrue();
+    public void 우승자의_좌표가_1일때_우승자인지_확인() {
+        firstCar.move(Constant.NUMBER_4);
+        assertThat(firstCar.isMaxCoordinate(Constant.NUMBER_1)).isTrue();
     }
 
     @Test
