@@ -11,15 +11,15 @@ public class RacingGameResult {
     }
 
     public List<String> collectWinners(List<Car> cars) {
-        int firstWinnerPosition = cars.get(0).getPosition();
+        Car firstWinner = cars.get(0);
         for(Car car : cars) {
-            comparePosition(firstWinnerPosition, car);
+            comparePosition(firstWinner, car);
         }
         return winners;
     }
 
-    void comparePosition(int firstWinnerPosition, Car otherPlayer) {
-        if (firstWinnerPosition == (otherPlayer.getPosition())) {
+    void comparePosition(Car firstWinner, Car otherPlayer) {
+        if (firstWinner.getPosition() == (otherPlayer.getPosition())) {
             winners.add(otherPlayer.getName());
         }
     }

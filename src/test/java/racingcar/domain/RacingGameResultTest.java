@@ -14,8 +14,7 @@ public class RacingGameResultTest {
     public void setUp() {
         Car firstWinner = new Car("a", testPosition);
         Car secondWinner = new Car("b",testPosition );
-        racingGameResult.comparePosition(testPosition, firstWinner);
-        racingGameResult.comparePosition(testPosition, secondWinner);
+        racingGameResult.comparePosition(firstWinner, secondWinner);
     }
 
     @Test
