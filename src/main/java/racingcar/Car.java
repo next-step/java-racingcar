@@ -4,9 +4,8 @@ public class Car {
 
     private String carName;
     private int position;
-
-    public Car() {
-    }
+    private static final int INCREASE_VALUE = 1;
+    private static final int CHECK_VALUE = 4;
 
     public Car(String carName, int position) {
         this.carName = carName;
@@ -17,15 +16,25 @@ public class Car {
         return carName;
     }
 
-    public void setCarName(String carName) {
-        this.carName = carName;
-    }
-
     public int getPosition() {
         return position;
     }
 
-    public void setPosition(int position) {
-        this.position = position;
+    public void move(int randomValue) {
+        if (checkMove(randomValue)) {
+            position += INCREASE_VALUE;
+        }
+    }
+
+    boolean checkMove(int value) {
+        return value >= CHECK_VALUE;
+    }
+
+    public int isMaxPosition(int maxPosition) {
+        if (position >= maxPosition) {
+            return position;
+        }
+
+        return -1;
     }
 }

@@ -12,23 +12,6 @@ public class RacingGameTest {
     private RacingGame racingGame;
 
     @Test
-    public void moveTest() {
-        Car car = new Car("test1", 0);
-        racingGame = new RacingGame();
-
-        racingGame.move(car, 3);
-        assertThat(car.getPosition()).isEqualTo(0);
-        racingGame.move(car, 4);
-        assertThat(car.getPosition()).isEqualTo(1);
-    }
-
-    @Test
-    public void addTest() {
-        int result = RacingGame.add(1);
-        assertThat(result).isEqualTo(2);
-    }
-
-    @Test
     public void sortByValueTest() {
         racingGame = new RacingGame();
         List<Car> carList = new ArrayList<>();
@@ -41,10 +24,15 @@ public class RacingGameTest {
     }
 
     @Test
-    public void checkMoveTest() {
-        boolean result = RacingGame.checkMove(3);
-        assertThat(result).isFalse();
-        result = RacingGame.checkMove(4);
-        assertThat(result).isTrue();
+    public void getWinnersTest() {
+        Car car1 = new Car("test1", 0);
+        Car car2 = new Car("test2", 1);
+        List<Car> carList = new ArrayList<>();
+        carList.add(car2);
+        carList.add(car1);
+        racingGame = new RacingGame();
+        List<String> winners = racingGame.getWinners(carList);
+        assertThat(winners.get(0)).isEqualTo("test2");
+
     }
 }

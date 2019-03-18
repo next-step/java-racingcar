@@ -7,8 +7,6 @@ import java.util.Scanner;
 
 public class RacingGame {
 
-    private static final int CHECK_VALUE = 4;
-    private static final int INCREASE_VALUE = 1;
     private static final int RANDOM_BOUND = 10;
     private int time = 0;
     private List<Car> carList;
@@ -21,21 +19,6 @@ public class RacingGame {
         this.carList = new ArrayList<>();
     }
 
-    void move(Car car, int randomValue) {
-        if (checkMove(randomValue)) {
-            int position = car.getPosition();
-            car.setPosition(add(position));
-        }
-    }
-
-    static int add(int carPosition) {
-        return carPosition + INCREASE_VALUE;
-    }
-
-    static boolean checkMove(int value) {
-        return value >= CHECK_VALUE;
-    }
-
     private static int randomValue() {
         Random random = new Random();
         return random.nextInt(RANDOM_BOUND);
@@ -46,7 +29,7 @@ public class RacingGame {
 
         for (Car car : carList) {
             int randomValue = randomValue();
-            move(car, randomValue);
+            car.move(randomValue);
             resultView.showResult(car);
         }
     }
@@ -67,24 +50,25 @@ public class RacingGame {
         return carList;
     }
 
-    private List<String> getWinnerList(List<Car> carList) {
+    List<String> getWinners(List<Car> carList) {
         List<String> winnerList = new ArrayList<>();
-        Car winner = carList.get(0);
-        int winnerPosition = winner.getPosition();
-        winnerList.add(winner.getCarName());
+        int winnerPosition = 0;
 
-        for (int i = 1; i < carList.size(); i++) {
-            checkWinner(carList.get(i), winnerPosition, winnerList);
+        for (Car car : carList) {
+            winnerPosition = checkWinner(car, winnerPosition, winnerList);
         }
 
         return winnerList;
     }
 
-    private void checkWinner(Car car, int winnerPosition, List<String> winnerList) {
-        int position = car.getPosition();
-        if (winnerPosition == position) {
+    private int checkWinner(Car car, int winnerPosition, List<String> winnerList) {
+        int maxPosition = car.isMaxPosition(winnerPosition);
+        if (maxPosition > 0) {
             winnerList.add(car.getCarName());
+            return maxPosition;
         }
+
+        return winnerPosition;
     }
 
     public static void main(String[] args) {
@@ -105,7 +89,7 @@ public class RacingGame {
         }
 
         racingGame.sortByValue(racingGame.carList);
-        List<String> winnerList = racingGame.getWinnerList(racingGame.carList);
+        List<String> winnerList = racingGame.getWinners(racingGame.carList);
         resultView.showWinner(winnerList);
     }
 }
