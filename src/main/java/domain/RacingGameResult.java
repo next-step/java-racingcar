@@ -7,15 +7,17 @@ import lombok.Getter;
 
 public class RacingGameResult {
     @Getter
-    List<Car> ranking = new ArrayList<>();
+    List<Car> winner = new ArrayList<>();
 
     @Getter
     List<RoundResult> roundResults = new ArrayList<>();
 
-    public void createRanking(List<Car> cars){
+    public void createWinner(List<Car> cars){
+        int max = cars.stream().mapToInt(Car::getMileage).max().getAsInt();
+
         cars.stream()
-            .sorted(Comparator.comparing(Car::getMileage).reversed())
-            .forEach(ranking::add);
+            .filter(c -> c.getMileage().equals(max))
+            .forEach(winner::add);
     }
 
     public void addRoundResult(RoundResult roundResult){
