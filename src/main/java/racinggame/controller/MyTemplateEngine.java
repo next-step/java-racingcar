@@ -1,4 +1,4 @@
-package racinggame.Controller;
+package racinggame.controller;
 
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;

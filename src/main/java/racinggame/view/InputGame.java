@@ -1,4 +1,4 @@
-package racinggame.View;
+package racinggame.view;
 
 import org.apache.commons.lang3.StringUtils;
 

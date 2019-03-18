@@ -1,11 +1,11 @@
-package racinggame.View;
+package racinggame.view;
 
 import racinggame.domain.Car;
 import racinggame.domain.Racing;
 
 import java.util.List;
 
-import static racinggame.Controller.RacingGame.game;
+import static racinggame.controller.RacingGame.game;
 import static utils.ConstantCollection.DELIMITER;
 
 public class PrintRacing {
