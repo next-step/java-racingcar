@@ -1,4 +1,4 @@
-package racinggame.Controller;
+package racinggame.controller;
 
 import racinggame.domain.Racing;
 
@@ -7,5 +7,11 @@ public class RacingGame {
     public static Racing game(Racing racing) {
         racing.carForwardStatus();
         return racing;
+    }
+
+    public static void playGame(Racing racing, int tryGame) {
+        for (int i = 0; i < tryGame; i++) {
+            game(racing);
+        }
     }
 }
