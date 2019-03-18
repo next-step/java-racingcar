@@ -14,19 +14,21 @@ public class StringAdder {
             return 0;
         }
 
-        return calculate(parseInts(split(numbersWithSeparator)));
+        return calculate(parseInts(split(replace(numbersWithSeparator))));
     }
 
-    private static boolean isEmpty(String target) {
-        return target == null || target.isEmpty();
+    private static String replace(String numbersWithSeparator) {
+        return numbersWithSeparator.replaceAll(" ", "");
     }
 
-    private static int calculate(int[] numbers) {
-        int sum = 0;
-        for (int number : numbers) {
-            sum += number;
-        }
-        return sum;
+    private static String[] split(String numbersWithSeparator) {
+        Pattern pattern = Pattern.compile(CUSTOM_SEPARATOR_REGEX);
+        Matcher matcher = pattern.matcher(numbersWithSeparator);
+
+        String numbers = matcher.matches() ? matcher.group(2) : numbersWithSeparator;
+        String separator = matcher.matches() ? matcher.group(1) : DEFAULT_SEPARATOR;
+
+        return numbers.split(separator);
     }
 
     private static int[] parseInts(String[] numbers) {
@@ -45,13 +47,15 @@ public class StringAdder {
         }
     }
 
-    private static String[] split(String numbersWithSeparator) {
-        Pattern pattern = Pattern.compile(CUSTOM_SEPARATOR_REGEX);
-        Matcher matcher = pattern.matcher(numbersWithSeparator);
+    private static int calculate(int[] numbers) {
+        int sum = 0;
+        for (int number : numbers) {
+            sum += number;
+        }
+        return sum;
+    }
 
-        String numbers = matcher.matches() ? matcher.group(2) : numbersWithSeparator;
-        String separator = matcher.matches() ? matcher.group(1) : DEFAULT_SEPARATOR;
-
-        return numbers.split(separator);
+    private static boolean isEmpty(String target) {
+        return target == null || target.isEmpty();
     }
 }

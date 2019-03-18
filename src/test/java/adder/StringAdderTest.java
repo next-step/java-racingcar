@@ -89,6 +89,12 @@ public class StringAdderTest {
                 .isEqualTo(0);
     }
 
+    @Test
+    public void 공백포함() {
+        assertThat(StringAdder.add(" 1, 2, 3 "))
+                .isEqualTo(6);
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void 음수() {
         StringAdder.add("-1, 1");
