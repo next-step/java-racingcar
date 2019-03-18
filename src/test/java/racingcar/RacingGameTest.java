@@ -3,7 +3,7 @@ package racingcar;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,12 +16,13 @@ public class RacingGameTest {
     @Before
     public void setUp() throws Exception {
         names = new InputView().splitCarNames("minsu,ruru,sian");
+        List<RacingCar> racingCars = Arrays.asList(
+                        new RacingCar(names[0], 5)
+                        , new RacingCar(names[1], 3)
+                        , new RacingCar(names[2], 1));
         racingGame = new RacingGame(names);
-        List<RacingCar> racingCars = new ArrayList<>();
-        firstCar = new RacingCar(names[0], 5);
-        racingCars.add(firstCar);
-        racingCars.add(new RacingCar(names[1], 3));
         racingGame.setRacingCars(racingCars);
+        firstCar = racingCars.get(0);
     }
 
     @Test
