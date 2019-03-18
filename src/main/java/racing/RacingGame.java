@@ -16,7 +16,7 @@ public class RacingGame {
         this.timeToTry = timeToTry;
         this.cars = new ArrayList<Car>(numberOfCar);
         for(String name:namesOfCars) {
-            cars.add(new Car(name));
+            cars.add(new Car(0, name));
         }
     }
 

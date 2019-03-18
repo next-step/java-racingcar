@@ -13,12 +13,7 @@ public class RacingResult {
         this.maxCarPosition = getWinnerPosition();
     }
 
-    public RacingResult(List<Car> cars, int maxCarPosition){
-        this.cars = cars;
-        this.maxCarPosition = maxCarPosition;
-    }
-
-    public int getWinnerPosition(){
+    private int getWinnerPosition(){
         maxCarPosition = cars.get(0).getPosition();
         for(Car car:cars){
             maxCarPosition = (car.getPosition() > maxCarPosition) ? car.getPosition() : maxCarPosition;
@@ -26,7 +21,8 @@ public class RacingResult {
         return maxCarPosition;
     }
 
-    public List<Car> getWinners(int maxCarPosition){
+    public List<Car> getWinners(){
+        int maxCarPosition = getWinnerPosition();
         List<Car> winners = new ArrayList<Car>();
         for(Car car:cars){
             if(car.getPosition() == maxCarPosition) { winners.add(car); }
