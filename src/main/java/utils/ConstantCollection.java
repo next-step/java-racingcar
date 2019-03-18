@@ -8,8 +8,5 @@ public class ConstantCollection {
     public static final int RANGE_RANDOM = 10;              // 난수 생성 범위
     public static final int EXCEPTION_VALUE = -1;           // 값이 없거나 예외의 상황이 발생했을 경우 리턴 값
     public static final String DELIMITER = ",";
-<<<<<<< HEAD
     public static final String WHITESPACE = " ";
-=======
->>>>>>> SGKIM94
 }
