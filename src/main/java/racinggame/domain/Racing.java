@@ -1,9 +1,12 @@
 package racinggame.domain;
 
+import racinggame.dto.WebGameDto;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static racinggame.view.WebRacing.printWebRacing;
 import static utils.ConstantCollection.*;
 import static utils.GenerateRandom.generatingRandomNumber;
 import static utils.Separator.separateName;
@@ -14,6 +17,7 @@ public class Racing {
 
     // 사용자에게 입력받은 자동차 회수와 game 횟수를 저장하는 생성자
     public Racing(String carsName, int tryGame) {
+        this.tryGame = 0;
         cars = new ArrayList<>();
 
         //이름을 하나씩 분리해주는 메서드
@@ -24,18 +28,6 @@ public class Racing {
         }
 
         this.tryGame = tryGame;
-    }
-
-    public Racing(String carsName) {
-        cars = new ArrayList<>();
-
-        //이름을 하나씩 분리해주는 메서드
-        String [] names = separateName(carsName);
-        int countCars = names.length;
-
-        for(int i = 0; i < countCars; i++) {
-            cars.add(new Car(names[i]));
-        }
     }
 
     public int getTryGame() {
@@ -90,4 +82,9 @@ public class Racing {
         return false;
     }
 
+    public void makeWebGame(List<WebGameDto> webGameDtos) {
+        for (Car car :  getCars()) {
+            webGameDtos.add(printWebRacing(car));
+        }
+    }
 }
