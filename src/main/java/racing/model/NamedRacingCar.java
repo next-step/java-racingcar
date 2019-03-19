@@ -13,8 +13,9 @@ public class NamedRacingCar extends RacingCar {
         this.name = name;
     }
 
-    public static RacingCar copy(RacingCar car) {
-        return new NamedRacingCar(car.toString(), car.getPosition());
+    @Override
+    public NamedRacingCar copy() {
+        return new NamedRacingCar(name, position);
     }
 
     @Override

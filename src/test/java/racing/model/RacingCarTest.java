@@ -3,6 +3,7 @@ package racing.model;
 import org.junit.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.extractProperty;
 
 
 public class RacingCarTest {
@@ -41,5 +42,23 @@ public class RacingCarTest {
                 .isEqualTo(1);
         assertThat(carPositionedAt2.compareTo(carPositionedAt0))
                 .isEqualTo(1);
+    }
+
+    @Test
+    public void test_복사_참조_불일치() {
+        RacingCar origin = new RacingCar();
+        RacingCar copy = origin.copy();
+
+        assertThat(origin)
+                .isNotSameAs(copy);
+    }
+
+    @Test
+    public void test_복사_위치_일치() {
+        RacingCar origin = new RacingCar(3);
+        RacingCar copy = origin.copy();
+
+        assertThat(origin.getPosition())
+                .isEqualTo(copy.getPosition());
     }
 }

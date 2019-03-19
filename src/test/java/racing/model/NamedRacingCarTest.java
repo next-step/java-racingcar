@@ -13,28 +13,24 @@ public class NamedRacingCarTest extends RacingCarTest {
         String name = "pobi";
         NamedRacingCar car = new NamedRacingCar(name);
 
-        assertThat(car.toString()).isEqualTo(name);
+        assertThat(car).hasToString(name);
     }
 
     @Test
-    public void test_복사_동일성_동일한타입() {
-        RacingCar origin = new NamedRacingCar("pobi");
-        RacingCar copy = NamedRacingCar.copy(origin);
+    public void test_복사_참조_불일치() {
+        NamedRacingCar origin = new NamedRacingCar("pobi");
+        NamedRacingCar copy = origin.copy();
 
-        assertThat(origin.toString())
-                .isEqualTo(copy.toString());
         assertThat(origin)
                 .isNotSameAs(copy);
     }
 
     @Test
-    public void test_복사_동일성_상위타입_베이스() {
-        RacingCar origin = new RacingCar();
-        RacingCar copy = NamedRacingCar.copy(origin);
+    public void test_복사_이름_일치() {
+        NamedRacingCar origin = new NamedRacingCar("pobi");
+        NamedRacingCar copy = origin.copy();
 
         assertThat(origin.toString())
                 .isEqualTo(copy.toString());
-        assertThat(origin)
-                .isNotSameAs(copy);
     }
 }

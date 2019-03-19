@@ -1,6 +1,5 @@
 package racing.view;
 
-
 import racing.board.GameResult;
 import racing.board.StepResult;
 import racing.model.RacingCar;

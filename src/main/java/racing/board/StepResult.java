@@ -1,6 +1,5 @@
 package racing.board;
 
-import racing.model.NamedRacingCar;
 import racing.model.RacingCar;
 
 import java.util.List;
@@ -20,7 +19,7 @@ public class StepResult {
 
     private List<RacingCar> copyCars(List<RacingCar> cars) {
         return cars.stream()
-                .map(car -> NamedRacingCar.copy(car))
+                .map(car -> car.copy())
                 .collect(Collectors.toList());
     }
 }

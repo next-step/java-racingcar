@@ -14,6 +14,10 @@ public class RacingCar implements Comparable<RacingCar> {
         this.position = position;
     }
 
+    public RacingCar copy() {
+        return new RacingCar(position);
+    }
+
     public int move(int power) {
         if (power >= THRESHOLD_POWER) {
             position++;
