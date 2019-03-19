@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 import java.util.*;
 
@@ -16,12 +16,12 @@ public class RacingGame {
         this.timeToTry = timeToTry;
         this.cars = new ArrayList<Car>(numberOfCar);
         for(String name:namesOfCars) {
-            cars.add(new Car(name));
+            cars.add(new Car(0, name));
         }
     }
 
     public boolean isEnd() {
-        if(time >= timeToTry) return false;
+        if (time >= timeToTry) return false;
         return true;
     }
 
@@ -35,8 +35,7 @@ public class RacingGame {
         return new RacingResult(cars);
     }
 
-    public boolean isWinner(){
-        return false;
+    public List<Car> getCars() {
+        return cars;
     }
-
 }

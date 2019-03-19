@@ -1,4 +1,7 @@
-package racing;
+package racing.view.console;
+
+import racing.domain.Car;
+import racing.domain.RacingResult;
 
 import java.util.List;
 
@@ -9,7 +12,7 @@ public class ResultView {
     }
 
     public static void printWinners(RacingResult result) {
-        List<Car> cars = result.getWinners(result.getWinnerPosition());
+        List<Car> cars = result.getWinners();
 
         for (Car car : cars) {
             System.out.print(car.getName() + ",");

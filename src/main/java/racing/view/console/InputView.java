@@ -1,4 +1,4 @@
-package racing;
+package racing.view.console;
 
 import java.util.Scanner;
 import java.util.StringTokenizer;

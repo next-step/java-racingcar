@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 public class Car {
 
@@ -6,10 +6,10 @@ public class Car {
     private int position = 0;
     private String name;
 
-    public Car(int position){
+    public Car(int position, String name){
         this.position = position;
+        this.name = name;
     }
-    public Car(String name){ this.name = name; }
 
     public void move(int randomValue) {
         if (randomValue >= CRITERION_TO_MOVE) {
