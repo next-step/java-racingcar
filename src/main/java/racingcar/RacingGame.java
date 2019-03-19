@@ -9,14 +9,14 @@ public class RacingGame {
 
     private static final int RANDOM_BOUND = 10;
     private int time = 0;
-    private List<Car> carList;
+    private List<Car> cars;
 
     public RacingGame() {
     }
 
     public RacingGame(int time) {
         this.time = time;
-        this.carList = new ArrayList<>();
+        this.cars = new ArrayList<>();
     }
 
     private static int randomValue() {
@@ -27,17 +27,17 @@ public class RacingGame {
     private void racing() {
         ResultView resultView = new ResultView();
 
-        for (Car car : carList) {
+        for (Car car : cars) {
             int randomValue = randomValue();
             car.move(randomValue);
             resultView.showResult(car);
         }
     }
 
-    private void initCarList(String cars) {
-        String[] carNames = cars.split(",");
-        for (String carName : carNames) {
-            carList.add(new Car(carName.trim(), 0));
+    private void initCarList(String carNames) {
+        String[] carNamesArray = carNames.split(",");
+        for (String carName : carNamesArray) {
+            cars.add(new Car(carName.trim(), 0));
         }
     }
 
@@ -50,11 +50,11 @@ public class RacingGame {
         return carList;
     }
 
-    List<String> getWinners(List<Car> carList) {
+    List<String> getWinners(List<Car> cars) {
         List<String> winnerList = new ArrayList<>();
         int winnerPosition = 0;
 
-        for (Car car : carList) {
+        for (Car car : cars) {
             winnerPosition = checkWinner(car, winnerPosition, winnerList);
         }
 
@@ -88,8 +88,8 @@ public class RacingGame {
             System.out.println();
         }
 
-        racingGame.sortByValue(racingGame.carList);
-        List<String> winnerList = racingGame.getWinners(racingGame.carList);
-        resultView.showWinner(winnerList);
+        racingGame.sortByValue(racingGame.cars);
+        List<String> winners = racingGame.getWinners(racingGame.cars);
+        resultView.showWinner(winners);
     }
 }
