@@ -40,11 +40,11 @@ public class StringAdder {
     }
 
     private static int parseInt(String number) {
-        try {
-            return Integer.parseInt(number);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(e.getMessage());
+        final int result = Integer.parseInt(number);
+        if (result < 0) {
+            throw new IllegalArgumentException();
         }
+        return result;
     }
 
     private static int calculate(int[] numbers) {
