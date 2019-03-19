@@ -1,25 +1,59 @@
 package racingcar;
 
+import racingcar.utils.Constant;
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingResult {
-    public void executionResult(int tryCnt, List<RacingCar> racingCars) {
-        for (int i = 0; i < tryCnt; i++)
-            setRandomValue(racingCars);
+    List<RacingCar> racingCars;
+
+    public RacingResult(List<RacingCar> racingCars) {
+        this.racingCars = racingCars;
     }
 
-    public void setRandomValue(List<RacingCar> racingCars) {
-        for (RacingCar racingCar : racingCars) {
-            int value = racingCar.move(racingCar.createRandom());
-            System.out.println(getRandomString(value));
+    public List<RacingCar> getRacingCars() {
+        return Collections.unmodifiableList(racingCars);
+    }
+
+    public String createDisplayWinnerNames() {
+        List<RacingCar> winners = findWinners();
+        return joinComma(getWinnerNames(winners));
+    }
+
+    private static String joinComma(List<String> winnerNames) {
+        return String.join(Constant.FORMAT_COMMA, winnerNames);
+    }
+
+    public List<RacingCar> findWinners() {
+        int maxCoordinate = maxCoordinate();
+        return getWinners(maxCoordinate);
+    }
+
+    private int maxCoordinate() {
+        int maxcoordinate = 0;
+        for (RacingCar car: racingCars) {
+            maxcoordinate = car.findMaxCoordinate(maxcoordinate);
         }
-        System.out.println("\n");
+        return maxcoordinate;
     }
 
-    public String getRandomString(int coord) {
-        StringBuilder coordString = new StringBuilder();
-        for (int i = 0; i < coord; i++)
-            coordString.append("-");
-        return coordString.toString();
+    private List<RacingCar> getWinners(int maxCoordinate) {
+        List<RacingCar> winners = new ArrayList<>();
+        for (RacingCar car: racingCars) {
+            if (car.isMaxCoordinate(maxCoordinate)) {
+                winners.add(car);
+            }
+        }
+        return winners;
+    }
+
+    private static List<String> getWinnerNames(List<RacingCar> winners) {
+        List<String> winnerNames = new ArrayList<>();
+        for (RacingCar car: winners) {
+            winnerNames.add(car.getName());
+        }
+        return winnerNames;
     }
 }

@@ -1,11 +1,15 @@
 package racingcar;
 
+
 public class RacingMain {
     public static void main(String[] args) {
-        int carNames = InputView.getCarNo();
-        int tryNo = InputView.getTryNo();
-        RacingGame racingGame = new RacingGame(carNames, tryNo);
-        RacingResult result = new RacingResult();
-        result.executionResult(racingGame.getTRY_CNT(), racingGame.getRacingCars());
+        InputView input = new InputView();
+        RacingGame racingGame = new RacingGame(input.getNames(), input.getTryNo());
+        RacingResult result = null;
+        while (!racingGame.isEnd()) {
+            result = racingGame.race();
+            ResultView.printBattle(result);
+        }
+        ResultView.printWinners(result);
     }
 }
