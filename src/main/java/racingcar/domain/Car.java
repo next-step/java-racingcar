@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class Car {
     private static final int THRESHOLD_TO_MOVE = 4;
@@ -6,23 +6,23 @@ public class Car {
     private String name;
     private int position;
 
-    Car(String name, int position) {
+    public Car(String name, int position) {
         this.name = name;
         this.position = position;
     }
 
-    Car(String name) {
+    public Car(String name) {
         this(name, 0);
     }
 
-    Car move(int randomValue) {
+    public Car move(int randomValue) {
         if (randomValue >= THRESHOLD_TO_MOVE) {
             this.position++;
         }
         return this;
     }
 
-    CarDTO toCarDTO() {
+    public CarDTO toCarDTO() {
         return new CarDTO(name, position);
     }
 }

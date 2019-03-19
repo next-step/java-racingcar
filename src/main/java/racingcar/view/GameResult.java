@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.domain.Round;
+import racingcar.domain.Winners;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,19 +9,19 @@ import java.util.List;
 public class GameResult {
     private List<Round> rounds;
 
-    GameResult() {
+    public GameResult() {
         this.rounds = new ArrayList<>();
     }
 
-    void addRound(Round round) {
+    public void addRound(Round round) {
         rounds.add(round);
     }
 
-    List<Round> getRounds() {
+    public List<Round> getRounds() {
         return rounds;
     }
 
-    Winners getWinners() {
+    public Winners getWinners() {
         return getLastRound().getWinners();
     }
 
@@ -26,7 +29,7 @@ public class GameResult {
         return rounds.get(rounds.size() - 1);
     }
 
-    int countRoundLength() {
+    public int countRoundLength() {
         return rounds.size();
     }
 }
