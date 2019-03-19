@@ -35,34 +35,22 @@ public class RacingGameBoard {
     }
 
     public GameResult start(int timesOfMoves) {
-        ResultView.viewGameStart();
         return runSteps(timesOfMoves);
     }
 
     private GameResult runSteps(int times) {
-        runUntilBeforeLastStep(times);
-        return runLastStep();
-    }
-
-    private GameResult runLastStep() {
-        runStep();
-        return new GameResult(cars);
-    }
-
-    private void runUntilBeforeLastStep(int lastStep) {
-        for (int i = 0; i < lastStep - 1; i++) {
+        GameResult gameResult = new GameResult();
+        for (int i = 0; i < times; i++) {
             runStep();
+            gameResult.addStep(cars);
+
         }
+        return gameResult;
     }
 
     private void runStep() {
-        moveCars();
-        ResultView.viewEndingOfStep();
-    }
-
-    private void moveCars() {
         for (RacingCar car : cars) {
-            ResultView.viewRunningStep(car.toString(), car.move(intSupplier.getAsInt()));
+            car.move(intSupplier.getAsInt());
         }
     }
 }
