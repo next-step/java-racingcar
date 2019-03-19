@@ -1,4 +1,7 @@
-package racing;
+package racing.view.console;
+
+import racing.domain.RacingResult;
+import racing.domain.RacingGame;
 
 public class RacingGameMain {
     public static void main(String args[]) {

@@ -1,4 +1,7 @@
-package racing;
+package racing.view.console;
+
+import racing.domain.Car;
+import racing.domain.RacingResult;
 
 import java.util.List;
 

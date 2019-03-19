@@ -1,7 +1,8 @@
 package racing;
 
-import org.junit.Before;
 import org.junit.Test;
+import racing.domain.Car;
+import racing.domain.RacingResult;
 
 import java.util.ArrayList;
 import java.util.List;
