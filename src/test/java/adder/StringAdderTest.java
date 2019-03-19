@@ -100,7 +100,7 @@ public class StringAdderTest {
         StringAdder.add("-1, 1");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = NumberFormatException.class)
     public void 숫자의외의값() {
         StringAdder.add("1, a");
     }
