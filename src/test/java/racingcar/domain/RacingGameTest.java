@@ -18,7 +18,8 @@ public class RacingGameTest {
 
         });
         List<Car> expected = Arrays.asList(new Car("test1", 2), new Car("test2", 2));
-        assertThat(result.contains(expected));
+        assertThat(result.get(0)).isEqualByComparingTo(expected.get(0));
+        assertThat(result.get(1)).isEqualByComparingTo(expected.get(1));
     }
 
 }
