@@ -1,4 +1,6 @@
-package racing;
+package racing.domain;
+
+import racing.domain.RandomGenerator;
 
 public class TestRandomGenerator extends RandomGenerator {
 
