@@ -20,14 +20,6 @@ public class RacingGame {
     this.randomGenerator = randomGenerator;
   }
 
-  public WinnerCars startGame(String carNames, int moveCount) {
-
-    List<Car> cars = generateCars(carNames);
-    startRacing(cars, moveCount);
-
-    return winner(cars);
-  }
-
   public WinnerCars winner(List<Car> cars) {
 
     WinnerCars winnerCars = new WinnerCars();

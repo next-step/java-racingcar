@@ -9,27 +9,6 @@ import org.junit.Test;
 public class RacingGameTest {
 
   @Test
-  public void test_startGame() {
-
-    // Given
-    String carNamePobi = "pobi";
-    String carNameCrong = "crong";
-    String carNameHonux = "honux";
-
-    String carNames = carNamePobi + "," + carNameCrong + "," + carNameHonux;
-    int moveCount = 5;
-    TestRandomGenerator randomGenerator = new TestRandomGenerator(true);
-
-    // When
-    RacingGame racingGame = new RacingGame(randomGenerator);
-    WinnerCars winnerCars = racingGame.startGame(carNames, moveCount);
-
-    // Then
-    assertThat(winnerCars.getWinnerNames())
-        .isEqualTo(carNamePobi + ", " + carNameCrong + ", " + carNameHonux);
-  }
-
-  @Test
   public void test_winner_one() {
 
     // Given
