@@ -1,18 +1,17 @@
-package racingcar.Application;
+package racingcar.application;
+
+import racingcar.domain.RacingGame;
+import racingcar.domain.RacingGameResult;
+import racingcar.domain.RandomCreator;
+import spark.ModelAndView;
+import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import racingcar.domain.RacingGame;
-import racingcar.domain.RacingGameResult;
-import racingcar.domain.RandomCreator;
-import spark.ModelAndView;
-import spark.Session;
-import spark.template.handlebars.HandlebarsTemplateEngine;
-
-import static  spark.Spark.*;
+import static spark.Spark.*;
 public class WebMain {
     public static void main(String[] args) {
         port(8080);
@@ -25,8 +24,6 @@ public class WebMain {
         post("/name", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             String inputNames = req.queryParams("names");
-            Session session = req.session();
-            session.attribute("names", inputNames);
             List<String> cars = Arrays.asList(inputNames.split(" "));
             model.put("cars", cars);
             return render(model, "game.html");
@@ -34,20 +31,18 @@ public class WebMain {
 
         post("/result", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            Session session = req.session();
-            String inputNames = session.attribute("names");
-            String[] carNames = inputNames.split(" ");
-            int round = Integer.parseInt(req.queryParams("turn"));
+            int inputRound = Integer.parseInt(req.queryParams("turn"));
+            String[] carNames = req.queryParams("names").split(" ");
 
-            RacingGame racingGame = new RacingGame(carNames, round);
+            RacingGame racingGame = new RacingGame(carNames, inputRound);
             RacingGameResult racingGameResult = new RacingGameResult();
 
-            while(!racingGame.isFinished()) {
+            for(int round = 0; round < racingGame.getTime(); round++) {
                 racingGame.playRound(new RandomCreator());
             }
-            
-            model.put("cars" , racingGame.sortCars());
-            model.put("gameResult", racingGameResult.collectWinners(racingGame.sortCars()));
+
+            model.put("cars" , racingGame.getCars());
+            model.put("gameResult", racingGameResult.collectWinners(racingGame.getCars()));
             return render(model, "result.html");
         });
     }
