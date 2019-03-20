@@ -7,7 +7,6 @@ public class MainApplication {
         int tryNo = InputView.getTryNo();
 
         RacingGame racingGame = new RacingGame(new CarMovableRandomDecider(), new RacingGameState(carNames, tryNo));
-
         RacingResult result = null;
 
         while(!racingGame.isEnd()) {

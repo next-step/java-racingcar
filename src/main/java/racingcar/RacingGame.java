@@ -1,6 +1,7 @@
 package racingcar;
 
 public class RacingGame {
+
     private CarMovableDecider carMovableDecider;
     private RacingGameState racingGameState;
 
@@ -18,7 +19,6 @@ public class RacingGame {
 
     public boolean isEnd() {
         if (racingGameState.getRound() == racingGameState.getTryNo()) {
-
             return true;
         }
         return false;
