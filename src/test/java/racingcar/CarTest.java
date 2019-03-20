@@ -31,14 +31,7 @@ public class CarTest {
     @Test
     public void 전진하기() {
         Car car = new Car("test",5);
-        car.go(true);
+        car.go();
         assertThat(car.getPosition()).isEqualTo(6);
-    }
-
-    @Test
-    public void 정지하기() {
-        Car car = new Car("test",5);
-        car.go(false);
-        assertThat(car.getPosition()).isEqualTo(5);
     }
 }

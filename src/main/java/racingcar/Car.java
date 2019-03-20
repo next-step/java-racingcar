@@ -8,6 +8,7 @@ public class Car implements Comparable<Car> {
     public Car(String name) {
         position = 0;
         this.name = name;
+
     }
 
     public Car(String name, int position) {
@@ -23,10 +24,8 @@ public class Car implements Comparable<Car> {
         return position;
     }
 
-    public void go(boolean moveSignal) {
-        if (moveSignal) {
-            this.position++;
-        }
+    public void go() {
+        this.position++;
     }
 
     @Override

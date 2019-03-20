@@ -2,9 +2,6 @@ package racingcar;
 
 import org.junit.Test;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
@@ -13,38 +10,22 @@ public class RacingGameTest {
     private int tryNo = 3;
 
     @Test
-    public void 차량_초기화() {
-        RacingGame racingGame = new RacingGame(carNames, tryNo, new CarMovableAlwaysTrueDecider());
-        List<Car> cars = racingGame.getCars();
-        assertThat(cars).hasSize(carNames.length);
-    }
-
-    @Test
-    public void 이름_초기화() {
-        RacingGame racingGame = new RacingGame(carNames, tryNo, new CarMovableAlwaysTrueDecider());
-        List<String> carNames = racingGame.getCars()
-                .stream()
-                .map(car -> car.getName())
-                .collect(Collectors.toList());
-        assertThat(carNames).containsAnyOf(this.carNames);
-    }
-
-    @Test
     public void 무조건_모든차량_이동() {
-        RacingGame racingGame = new RacingGame(carNames, tryNo, new CarMovableAlwaysTrueDecider());
+        RacingGame racingGame = new RacingGame(new CarMovableAlwaysTrueDecider(), new RacingGameState(carNames, tryNo));
         racingGame.race();
-
-        for (Car car : racingGame.getCars()) {
+        RacingGameState racingGameState = racingGame.getRacingGameState();
+        for (Car car : racingGameState.getCars()) {
             assertThat(car.getPosition()).isEqualTo(1);
         }
     }
 
     @Test
     public void 모든_차량_이동안함() {
-        RacingGame racingGame = new RacingGame(carNames, tryNo, new CarMovableAlwaysFalseDecider());
+        RacingGame racingGame = new RacingGame(new CarMovableAlwaysFalseDecider(), new RacingGameState(carNames, tryNo));
         racingGame.race();
+        RacingGameState racingGameState = racingGame.getRacingGameState();
 
-        for (Car car : racingGame.getCars()) {
+        for (Car car : racingGameState.getCars()) {
             assertThat(car.getPosition()).isEqualTo(0);
         }
     }
