@@ -1,14 +1,14 @@
 package car;
 
-import car.entity.RacingGame;
-import car.entity.GameResult;
-import car.util.InputValue;
-import car.entity.ResultView;
+import car.domain.RacingGame;
+import car.domain.GameResult;
+import car.view.InputValue;
+import car.view.ResultView;
 
-public class RacingGameApplication {
+public class RacingGameConsoleApplication {
 
     public static void main(String args[]) {
-        RacingGameApplication.startGame();
+        RacingGameConsoleApplication.startGame();
     }
 
     public static void startGame() {

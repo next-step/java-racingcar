@@ -1,13 +1,8 @@
 package car;
 
-import car.entity.Car;
-import car.entity.CarJudgeStatus;
-import car.entity.GameResult;
-import car.entity.RacingGame;
+import car.domain.Car;
+import car.domain.RacingGame;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -18,7 +13,6 @@ public class RacingGameTest {
     @Test
     public void 게임_초기화() {
         String[] carNames = {"test1", "test2", "test3"};
-        int racingCount = 5;
         RacingGame racingGame = new RacingGame(carNames, 5);
         assertThat(racingGame.racingCars.size()).isEqualTo(carNames.length);
     }
@@ -35,54 +29,6 @@ public class RacingGameTest {
     public void 차_움직임_기준치보다_높을_때_움직임() {
         Car testCar = Car.getCarInstance("test1");
         testCar.move(MOVING_RANDOM_VALUE);
-
         assertThat(testCar.getMovingCount()).isEqualTo(1);
-    }
-
-    @Test
-    public void 승자_확인하기() {
-        String[] carNames = {"test1", "test2", "test3"};
-        int[] movingCounts = {0,0,100};
-
-        List<Car> cars = createRacingCar(carNames, movingCounts);
-
-        GameResult gameResult = GameResult.createResultInstance(cars);
-        assertThat(gameResult.getWinnerNames().get(0).getName()).isEqualTo(carNames[carNames.length-1]);
-    }
-
-    public List<Car> createRacingCar(String[] carNames, int[] movingCounts) {
-        List<Car> cars = new ArrayList<>();
-
-        for (int i=0; i < carNames.length; i++) {
-            Car car = Car.getCarInstance(carNames[i]);
-            car.setMovingCount(movingCounts[i]);
-            cars.add(car);
-        }
-
-        return cars;
-    }
-
-    @Test
-    public void MAX값과_자신의_MOVINGCOUNT_비교_승리() {
-        Car car = Car.getCarInstance("test");
-        car.setMovingCount(5);
-        CarJudgeStatus status = car.judgeMaxMovement(4);
-        assertThat(status).isEqualTo(CarJudgeStatus.WIN);
-    }
-
-    @Test
-    public void MAX값과_자신의_MOVINGCOUNT_비교_패배() {
-        Car car = Car.getCarInstance("test");
-        car.setMovingCount(3);
-        CarJudgeStatus status = car.judgeMaxMovement(4);
-        assertThat(status).isEqualTo(CarJudgeStatus.LOSE);
-    }
-
-    @Test
-    public void MAX값과_자신의_MOVINGCOUNT_비교_무승부() {
-        Car car = Car.getCarInstance("test");
-        car.setMovingCount(4);
-        CarJudgeStatus status = car.judgeMaxMovement(4);
-        assertThat(status).isEqualTo(CarJudgeStatus.DRAW);
     }
 }

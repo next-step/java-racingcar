@@ -1,16 +1,20 @@
-package car.entity;
+package car.domain;
 
 import spark.utils.StringUtils;
 
 public class Car {
-
+    private static final int MOVABLE_MINIMUM_NUM = 3;
     private String name;
     private int movingCount;
-    private static final int MOVABLE_MINIMUM_NUM = 3;
 
     private Car(String name) {
         this.name = StringUtils.isEmpty(name) ? "undefined" : name;
         this.movingCount = 0;
+    }
+
+    public Car(String name, int movingCount) {
+        this.name = name;
+        this.movingCount = movingCount;
     }
 
     public static Car getCarInstance(String name) {
@@ -21,18 +25,6 @@ public class Car {
         if ( MOVABLE_MINIMUM_NUM < randomValue) {
             movingCount = movingCount+1;
         }
-    }
-
-    public CarJudgeStatus judgeMaxMovement(int maxMovement) {
-        if( maxMovement < movingCount ) {
-            return CarJudgeStatus.WIN;
-        }
-
-        if( maxMovement == movingCount ) {
-            return CarJudgeStatus.DRAW;
-        }
-
-        return CarJudgeStatus.LOSE;
     }
 
     public String getName() {
@@ -55,10 +47,5 @@ public class Car {
         carResult.append("\n");
 
         return carResult.toString();
-    }
-
-    //Testcase 작성을 위해 추가해둠.
-    public void setMovingCount(int movingCount) {
-        this.movingCount = movingCount;
     }
 }
