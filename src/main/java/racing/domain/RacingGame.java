@@ -37,9 +37,8 @@ public class RacingGame {
     }
   }
 
-  public List<Car> generateCars(String carNames) {
+  public List<Car> generateCars(String[] carNameArray) {
 
-    String[] carNameArray = carNames.split(",");
     return Arrays.stream(carNameArray)
         .map(carName -> new Car(randomGenerator, carName))
         .collect(Collectors.toList());

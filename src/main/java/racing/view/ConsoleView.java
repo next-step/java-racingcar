@@ -34,6 +34,7 @@ public class ConsoleView {
   }
 
   private static List<Car> name(String carNames) {
-    return racingGame.generateCars(carNames);
+    String[] carNamesArray = carNames.split(",");
+    return racingGame.generateCars(carNamesArray);
   }
 }
