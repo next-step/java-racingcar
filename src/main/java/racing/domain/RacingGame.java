@@ -3,7 +3,7 @@ package racing.domain;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import racing.view.ResultView;
+import racing.view.ConsoleResultView;
 
 public class RacingGame {
 
@@ -28,28 +28,24 @@ public class RacingGame {
     return winner(cars);
   }
 
-  WinnerCars winner(List<Car> cars) {
+  public WinnerCars winner(List<Car> cars) {
 
-    ResultView resultView = new ResultView();
     WinnerCars winnerCars = new WinnerCars();
     for (Car car : cars) {
       winnerCars.add(car);
     }
 
-    resultView.printWinner(winnerCars.getWinnerNames());
     return winnerCars;
   }
 
-  void startRacing(List<Car> cars, int moveCount) {
+  public void startRacing(List<Car> cars, int moveCount) {
 
-    ResultView resultView = new ResultView();
     for (int moveIndex = 0; moveIndex < moveCount; moveIndex++) {
       moveCars(cars);
-      resultView.printMoveResult(cars);
     }
   }
 
-  List<Car> generateCars(String carNames) {
+  public List<Car> generateCars(String carNames) {
 
     String[] carNameArray = carNames.split(",");
     return Arrays.stream(carNameArray)
@@ -57,7 +53,7 @@ public class RacingGame {
         .collect(Collectors.toList());
   }
 
-  void moveCars(List<Car> cars) {
+  public void moveCars(List<Car> cars) {
     cars.forEach(car -> car.move(MIN_NUMBER));
   }
 }

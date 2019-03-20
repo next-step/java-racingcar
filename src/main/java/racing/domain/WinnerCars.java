@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-class WinnerCars {
+public class WinnerCars {
 
   private List<Car> cars = new ArrayList<>();
 
@@ -31,7 +31,7 @@ class WinnerCars {
     return cars.stream().allMatch(addCar::isWinner);
   }
 
-  String getWinnerNames() {
+  public String getWinnerNames() {
 
     return cars.stream()
         .map(Car::getName)
