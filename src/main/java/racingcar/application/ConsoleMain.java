@@ -1,4 +1,4 @@
-package racingcar.Application;
+package racingcar.application;
 
 import racingcar.domain.RacingGame;
 import racingcar.domain.RacingGameResult;
@@ -12,10 +12,10 @@ public class ConsoleMain {
         RacingGameResult racingGameResult = new RacingGameResult();
 
         ResultView.println("경기 시작!!!");
-        while(!racingGame.isFinished()) {
+        for(int round = 0; round < racingGame.getTime(); round++) {
             ResultView.printRoundResult(racingGame.playRound(new RandomCreator()));
         }
 
-        ResultView.announceWinner(racingGameResult.collectWinners(racingGame.sortCars()));
+        ResultView.announceWinner(racingGameResult.collectWinners(racingGame.getCars()));
     }
 }
