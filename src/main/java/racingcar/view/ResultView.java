@@ -1,6 +1,8 @@
-package racingcar;
+package racingcar.view;
 
-import java.util.ArrayList;
+import racingcar.domain.Car;
+import racingcar.domain.RacingGame;
+
 import java.util.List;
 
 public class ResultView {
@@ -23,7 +25,8 @@ public class ResultView {
     }
 
     public void showWinner(List<Car> cars) {
-        List<Car> winners = getWinners(cars);
+        RacingGame racingGame = new RacingGame();
+        List<Car> winners = racingGame.getWinners(cars);
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < winners.size(); i++) {
             builder.append(winners.get(i).getCarName());
@@ -34,32 +37,5 @@ public class ResultView {
         int lastIndex = result.lastIndexOf(",");
         result = result.substring(0, lastIndex);
         System.out.println(result + "가 최종 우승했습니다.");
-    }
-
-    List<Car> sortByValue(List<Car> carList) {
-        carList.sort((o1, o2) -> {
-            if (o1.getPosition() < o2.getPosition()) return 1;
-            return -1;
-        });
-
-        return carList;
-    }
-
-    List<Car> getWinners(List<Car> cars) {
-        sortByValue(cars);
-        List<Car> winners = new ArrayList<>();
-        Car winner = cars.get(0);
-
-        for (Car car : cars) {
-            checkWinner(car, winner, winners);
-        }
-
-        return winners;
-    }
-
-    private void checkWinner(Car car, Car winner, List<Car> winners) {
-        if (car.isMaxPosition(winner)) {
-            winners.add(car);
-        }
     }
 }

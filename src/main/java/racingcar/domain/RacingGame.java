@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,9 @@ public class RacingGame {
     private List<Car> cars;
     private String carNames;
 
+    public RacingGame() {
+    }
+
     public RacingGame(String carNames, int time) {
         this.time = time;
         this.carNames = carNames;
@@ -22,7 +27,7 @@ public class RacingGame {
         return random.nextInt(RANDOM_BOUND);
     }
 
-    private List<Car> racing() {
+    public List<Car> racing() {
         if (cars == null) {
             initCarList(carNames);
         }
@@ -40,6 +45,33 @@ public class RacingGame {
         String[] carNamesArray = carNames.split(",");
         for (String carName : carNamesArray) {
             cars.add(new Car(carName.trim(), 0));
+        }
+    }
+
+    List<Car> sortByValue(List<Car> carList) {
+        carList.sort((o1, o2) -> {
+            if (o1.getPosition() < o2.getPosition()) return 1;
+            return -1;
+        });
+
+        return carList;
+    }
+
+    public List<Car> getWinners(List<Car> cars) {
+        sortByValue(cars);
+        List<Car> winners = new ArrayList<>();
+        Car winner = cars.get(0);
+
+        for (Car car : cars) {
+            checkWinner(car, winner, winners);
+        }
+
+        return winners;
+    }
+
+    private void checkWinner(Car car, Car winner, List<Car> winners) {
+        if (car.isMaxPosition(winner)) {
+            winners.add(car);
         }
     }
 
