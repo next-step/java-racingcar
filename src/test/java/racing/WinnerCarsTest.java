@@ -12,7 +12,7 @@ public class WinnerCarsTest {
     // Given
     String carNamePobi = "pobi";
     int pobiPosition = 5;
-    Car pobiCar = TestCar.ofNameAndPosition(carNamePobi, pobiPosition);
+    Car pobiCar = TestCar.of(carNamePobi, pobiPosition);
 
     WinnerCars winnerCars = new WinnerCars();
 
@@ -31,8 +31,8 @@ public class WinnerCarsTest {
     String carNameCrong = "crong";
     int pobiPosition = 5;
     int crongPosition = 3;
-    Car pobiCar = TestCar.ofNameAndPosition(carNamePobi, pobiPosition);
-    Car crongCar = TestCar.ofNameAndPosition(carNameCrong, crongPosition);
+    Car pobiCar = TestCar.of(carNamePobi, pobiPosition);
+    Car crongCar = TestCar.of(carNameCrong, crongPosition);
 
     WinnerCars winnerCars = new WinnerCars();
     winnerCars.add(pobiCar);
@@ -52,8 +52,8 @@ public class WinnerCarsTest {
     String carNameCrong = "crong";
     int pobiPosition = 3;
     int crongPosition = 5;
-    Car pobiCar = TestCar.ofNameAndPosition(carNamePobi, pobiPosition);
-    Car crongCar = TestCar.ofNameAndPosition(carNameCrong, crongPosition);
+    Car pobiCar = TestCar.of(carNamePobi, pobiPosition);
+    Car crongCar = TestCar.of(carNameCrong, crongPosition);
 
     WinnerCars winnerCars = new WinnerCars();
     winnerCars.add(pobiCar);
@@ -73,8 +73,8 @@ public class WinnerCarsTest {
     String carNameCrong = "crong";
     int pobiPosition = 5;
     int crongPosition = 5;
-    Car pobiCar = TestCar.ofNameAndPosition(carNamePobi, pobiPosition);
-    Car crongCar = TestCar.ofNameAndPosition(carNameCrong, crongPosition);
+    Car pobiCar = TestCar.of(carNamePobi, pobiPosition);
+    Car crongCar = TestCar.of(carNameCrong, crongPosition);
 
     WinnerCars winnerCars = new WinnerCars();
     winnerCars.add(pobiCar);
@@ -93,7 +93,7 @@ public class WinnerCarsTest {
     String carNamePobi = "pobi";
     int pobiPosition = 5;
 
-    Car pobiCar =  TestCar.ofNameAndPosition(carNamePobi, pobiPosition);
+    Car pobiCar =  TestCar.of(carNamePobi, pobiPosition);
 
     WinnerCars winnerCar = new WinnerCars();
     winnerCar.add(pobiCar);
@@ -114,8 +114,8 @@ public class WinnerCarsTest {
 
     int pobiPosition = 5;
     int honuxPosition = 5;
-    Car pobiCar = TestCar.ofNameAndPosition(carNamePobi, pobiPosition);
-    Car honuxCar = TestCar.ofNameAndPosition(carNameHonux, honuxPosition);
+    Car pobiCar = TestCar.of(carNamePobi, pobiPosition);
+    Car honuxCar = TestCar.of(carNameHonux, honuxPosition);
 
     WinnerCars winnerCar = new WinnerCars();
     winnerCar.add(pobiCar);

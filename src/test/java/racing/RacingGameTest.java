@@ -44,9 +44,9 @@ public class RacingGameTest {
     int crongPosition = 5;
     int honuxPosition = 3;
     List<Car> cars = Arrays.asList(
-        TestCar.ofNameAndPosition(carNamePobi, pobiPosition),
-        TestCar.ofNameAndPosition(carNameCrong, crongPosition),
-        TestCar.ofNameAndPosition(carNameHonux, honuxPosition)
+        TestCar.of(carNamePobi, pobiPosition),
+        TestCar.of(carNameCrong, crongPosition),
+        TestCar.of(carNameHonux, honuxPosition)
     );
 
     // When
@@ -69,9 +69,9 @@ public class RacingGameTest {
     int crongPosition = 3;
     int honuxPosition = 5;
     List<Car> cars = Arrays.asList(
-        TestCar.ofNameAndPosition(carNamePobi, pobiPosition),
-        TestCar.ofNameAndPosition(carNameCrong, crongPosition),
-        TestCar.ofNameAndPosition(carNameHonux, honuxPosition)
+        TestCar.of(carNamePobi, pobiPosition),
+        TestCar.of(carNameCrong, crongPosition),
+        TestCar.of(carNameHonux, honuxPosition)
     );
 
     // When
