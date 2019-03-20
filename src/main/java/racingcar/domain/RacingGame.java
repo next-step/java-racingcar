@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
@@ -15,23 +14,18 @@ public class RacingGame {
         this.time = time;
     }
 
+    public int getTime() {
+        return time;
+    }
+    
+    public List<Car> getCars() {
+        return cars;
+    }
+
     public List<Car> playRound(RandomCreator randomCreator) {
         cars.forEach(car -> {
             car.move(randomCreator.createNewPosition());
         });
         return cars;
-    }
-
-    public List<Car> sortCars() {
-        Collections.sort(cars);
-        return cars;
-    }
-
-    public boolean isFinished() {
-        if(time != 0) {
-            time--;
-            return false;
-        }
-        return true;
     }
 }
