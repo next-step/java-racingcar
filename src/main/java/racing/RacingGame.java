@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import racing.view.InputView;
 import racing.view.ResultView;
 
-class RacingGame {
+public class RacingGame {
 
   private static final int MOVE_RANGE = 10;
   private static final int MIN_NUMBER = 4;
