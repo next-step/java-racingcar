@@ -5,13 +5,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
-import racing.view.InputView;
-import racing.view.TestInputView;
 
 public class RacingGameTest {
 
   @Test
-  public void test_game() {
+  public void test_startGame() {
 
     // Given
     String carNamePobi = "pobi";
@@ -20,12 +18,11 @@ public class RacingGameTest {
 
     String carNames = carNamePobi + "," + carNameCrong + "," + carNameHonux;
     int moveCount = 5;
-    TestInputView testInputView = new TestInputView(carNames, moveCount);
     TestRandomGenerator randomGenerator = new TestRandomGenerator(true);
 
     // When
-    RacingGame racingGame = new RacingGame(testInputView, randomGenerator);
-    WinnerCars winnerCars = racingGame.game();
+    RacingGame racingGame = new RacingGame(randomGenerator);
+    WinnerCars winnerCars = racingGame.startGame(carNames, moveCount);
 
     // Then
     assertThat(winnerCars.getWinnerNames())
@@ -50,7 +47,7 @@ public class RacingGameTest {
     );
 
     // When
-    RacingGame racingGame = new RacingGame(new InputView());
+    RacingGame racingGame = new RacingGame();
     WinnerCars winnerCars = racingGame.winner(cars);
 
     // Then
@@ -75,7 +72,7 @@ public class RacingGameTest {
     );
 
     // When
-    RacingGame racingGame = new RacingGame(new InputView());
+    RacingGame racingGame = new RacingGame();
     WinnerCars winnerCars = racingGame.winner(cars);
 
     // Then
@@ -100,7 +97,7 @@ public class RacingGameTest {
     );
 
     // When
-    RacingGame racingGame = new RacingGame(new InputView());
+    RacingGame racingGame = new RacingGame();
     racingGame.startRacing(cars, moveCount);
 
     // Then
@@ -124,7 +121,7 @@ public class RacingGameTest {
     String carNames = carNamePobi + "," + carNameCrong + "," + carNameHonux;
 
     // When
-    RacingGame racingGame = new RacingGame(new InputView());
+    RacingGame racingGame = new RacingGame();
     List<Car> cars = racingGame.generateCars(carNames);
 
     // Then
@@ -149,7 +146,7 @@ public class RacingGameTest {
     );
 
     // When
-    RacingGame racingGame = new RacingGame(new InputView());
+    RacingGame racingGame = new RacingGame();
     racingGame.moveCars(cars);
 
     // Then

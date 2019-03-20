@@ -3,7 +3,6 @@ package racing.domain;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import racing.view.InputView;
 import racing.view.ResultView;
 
 public class RacingGame {
@@ -11,25 +10,19 @@ public class RacingGame {
   private static final int MOVE_RANGE = 10;
   private static final int MIN_NUMBER = 4;
 
-  private InputView inputView;
   private RandomGenerator randomGenerator;
 
-  RacingGame(InputView inputView) {
-    this.inputView = inputView;
+  public RacingGame() {
     this.randomGenerator = new RandomGenerator(MOVE_RANGE);
   }
 
-  RacingGame(InputView inputView, RandomGenerator randomGenerator) {
-    this.inputView = inputView;
+  public RacingGame(RandomGenerator randomGenerator) {
     this.randomGenerator = randomGenerator;
   }
 
-  WinnerCars game() {
+  public WinnerCars startGame(String carNames, int moveCount) {
 
-    String inputCarNames = inputView.inputCarNames();
-    List<Car> cars = generateCars(inputCarNames);
-
-    int moveCount = inputView.inputMoveCount();
+    List<Car> cars = generateCars(carNames);
     startRacing(cars, moveCount);
 
     return winner(cars);
