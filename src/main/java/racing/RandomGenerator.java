@@ -6,7 +6,7 @@ public class RandomGenerator {
 
   private int range;
 
-  public RandomGenerator(int range) {
+  RandomGenerator(int range) {
     this.range = range;
   }
 

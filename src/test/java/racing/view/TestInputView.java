@@ -6,31 +6,35 @@ import java.util.Scanner;
 
 public class TestInputView extends InputView {
 
-  private int carCount;
   private int moveCount;
+  private String carNames;
 
-  public TestInputView(int carCount, int moveCount) {
-    this.carCount = carCount;
+  private TestInputView(int moveCount) {
     this.moveCount = moveCount;
   }
 
-  @Override
-  public int inputCarCount() {
-
-    setSystemIn(carCount);
-    return super.inputCarCount();
+  public TestInputView(String carNames, int moveCount) {
+    this(moveCount);
+    this.carNames = carNames;
   }
 
   @Override
   public int inputMoveCount() {
 
-    setSystemIn(moveCount);
+    setSystemIn(moveCount + "");
     return super.inputMoveCount();
   }
 
-  private void setSystemIn(int inputCount) {
+  @Override
+  public String inputCarNames() {
+
+    setSystemIn(carNames);
+    return super.inputCarNames();
+  }
+
+  private void setSystemIn(String input) {
     ByteArrayInputStream in = new ByteArrayInputStream(
-        (inputCount + "").getBytes(StandardCharsets.UTF_8)
+        (input + "").getBytes(StandardCharsets.UTF_8)
     );
     this.scanner = new Scanner(in);
   }

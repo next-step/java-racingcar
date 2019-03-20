@@ -2,8 +2,9 @@ package racing;
 
 public class TestRandomGenerator extends RandomGenerator {
 
-  boolean movingResult;
-  public TestRandomGenerator(boolean movingResult) {
+  private boolean movingResult;
+
+  TestRandomGenerator(boolean movingResult) {
     super(10);
     this.movingResult = movingResult;
   }
