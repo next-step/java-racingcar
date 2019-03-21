@@ -1,36 +1,12 @@
-package racing;
+package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
-import racing.view.InputView;
-import racing.view.TestInputView;
 
 public class RacingGameTest {
-
-  @Test
-  public void test_game() {
-
-    // Given
-    String carNamePobi = "pobi";
-    String carNameCrong = "crong";
-    String carNameHonux = "honux";
-
-    String carNames = carNamePobi + "," + carNameCrong + "," + carNameHonux;
-    int moveCount = 5;
-    TestInputView testInputView = new TestInputView(carNames, moveCount);
-    TestRandomGenerator randomGenerator = new TestRandomGenerator(true);
-
-    // When
-    RacingGame racingGame = new RacingGame(testInputView, randomGenerator);
-    WinnerCars winnerCars = racingGame.game();
-
-    // Then
-    assertThat(winnerCars.getWinnerNames())
-        .isEqualTo(carNamePobi + ", " + carNameCrong + ", " + carNameHonux);
-  }
 
   @Test
   public void test_winner_one() {
@@ -44,13 +20,13 @@ public class RacingGameTest {
     int crongPosition = 5;
     int honuxPosition = 3;
     List<Car> cars = Arrays.asList(
-        TestCar.ofNameAndPosition(carNamePobi, pobiPosition),
-        TestCar.ofNameAndPosition(carNameCrong, crongPosition),
-        TestCar.ofNameAndPosition(carNameHonux, honuxPosition)
+        TestCar.of(carNamePobi, pobiPosition),
+        TestCar.of(carNameCrong, crongPosition),
+        TestCar.of(carNameHonux, honuxPosition)
     );
 
     // When
-    RacingGame racingGame = new RacingGame(new InputView());
+    RacingGame racingGame = new RacingGame();
     WinnerCars winnerCars = racingGame.winner(cars);
 
     // Then
@@ -69,13 +45,13 @@ public class RacingGameTest {
     int crongPosition = 3;
     int honuxPosition = 5;
     List<Car> cars = Arrays.asList(
-        TestCar.ofNameAndPosition(carNamePobi, pobiPosition),
-        TestCar.ofNameAndPosition(carNameCrong, crongPosition),
-        TestCar.ofNameAndPosition(carNameHonux, honuxPosition)
+        TestCar.of(carNamePobi, pobiPosition),
+        TestCar.of(carNameCrong, crongPosition),
+        TestCar.of(carNameHonux, honuxPosition)
     );
 
     // When
-    RacingGame racingGame = new RacingGame(new InputView());
+    RacingGame racingGame = new RacingGame();
     WinnerCars winnerCars = racingGame.winner(cars);
 
     // Then
@@ -100,7 +76,7 @@ public class RacingGameTest {
     );
 
     // When
-    RacingGame racingGame = new RacingGame(new InputView());
+    RacingGame racingGame = new RacingGame();
     racingGame.startRacing(cars, moveCount);
 
     // Then
@@ -121,11 +97,11 @@ public class RacingGameTest {
     String carNameCrong = "crong";
     String carNameHonux = "honux";
 
-    String carNames = carNamePobi + "," + carNameCrong + "," + carNameHonux;
+    String[] carNameArray = {carNamePobi, carNameCrong, carNameHonux};
 
     // When
-    RacingGame racingGame = new RacingGame(new InputView());
-    List<Car> cars = racingGame.generateCars(carNames);
+    RacingGame racingGame = new RacingGame();
+    List<Car> cars = racingGame.generateCars(carNameArray);
 
     // Then
     assertThat(cars.size()).isEqualTo(3);
@@ -149,7 +125,7 @@ public class RacingGameTest {
     );
 
     // When
-    RacingGame racingGame = new RacingGame(new InputView());
+    RacingGame racingGame = new RacingGame();
     racingGame.moveCars(cars);
 
     // Then

@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 // 자동차 객체
 public class Car {

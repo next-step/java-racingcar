@@ -1,10 +1,9 @@
 package racing.view;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import racing.Car;
+import racing.domain.Car;
 
-public class ResultView {
+public class ConsoleResultView {
 
   public void printMoveResult(List<Car> cars) {
     cars.forEach(this::printCarPosition);
@@ -12,12 +11,10 @@ public class ResultView {
   }
 
   public void printWinner(String winnerCarNames) {
-
     System.out.println(winnerCarNames + "가 최종 우승했습니다.");
   }
 
   private void printCarPosition(Car car) {
-
     System.out.print(car.getName() + " : ");
 
     int position = car.getPosition();

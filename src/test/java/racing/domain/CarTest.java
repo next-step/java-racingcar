@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -57,8 +57,8 @@ public class CarTest {
     int pobiPosition = 5;
     int crongPosition = 3;
 
-    Car pobiCar = TestCar.ofNameAndPosition(carNamePobi, pobiPosition);
-    Car crongCar = TestCar.ofNameAndPosition(carNameCrong, crongPosition);
+    Car pobiCar = TestCar.of(carNamePobi, pobiPosition);
+    Car crongCar = TestCar.of(carNameCrong, crongPosition);
 
     // When
     boolean isWinner = pobiCar.isWinner(crongCar);
@@ -77,8 +77,8 @@ public class CarTest {
     int pobiPosition = 3;
     int crongPosition = 5;
 
-    Car pobiCar = TestCar.ofNameAndPosition(carNamePobi, pobiPosition);
-    Car crongCar = TestCar.ofNameAndPosition(carNameCrong, crongPosition);
+    Car pobiCar = TestCar.of(carNamePobi, pobiPosition);
+    Car crongCar = TestCar.of(carNameCrong, crongPosition);
 
     // When
     boolean isWinner = pobiCar.isWinner(crongCar);

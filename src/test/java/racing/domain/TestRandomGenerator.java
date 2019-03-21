@@ -1,11 +1,15 @@
-package racing;
+package racing.domain;
+
+import racing.domain.RandomGenerator;
 
 public class TestRandomGenerator extends RandomGenerator {
+
+  private static final int MOVE_RANGE = 10;
 
   private boolean movingResult;
 
   TestRandomGenerator(boolean movingResult) {
-    super(10);
+    super(MOVE_RANGE);
     this.movingResult = movingResult;
   }
 

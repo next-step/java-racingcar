@@ -2,11 +2,11 @@ package racing.view;
 
 import java.util.Scanner;
 
-public class InputView {
+public class ConsoleInputView {
 
-  Scanner scanner;
+  private Scanner scanner;
 
-  public InputView() {
+  public ConsoleInputView() {
     this.scanner = new Scanner(System.in);
   }
 

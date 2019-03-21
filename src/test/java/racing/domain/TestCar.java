@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 class TestCar extends Car {
 
@@ -7,7 +7,7 @@ class TestCar extends Car {
     this.position = position;
   }
 
-  static TestCar ofNameAndPosition(String name, int position) {
+  static TestCar of(String name, int position) {
 
     TestRandomGenerator testRandomGenerator = new TestRandomGenerator(true);
     return new TestCar(testRandomGenerator, name, position);
