@@ -3,10 +3,16 @@ package racingcar;
 public class MainApplication {
     public static void main(String[] args) {
 
-        int carNumber = InputView.getCarNumber();
-        int inputTimes = InputView.getTimes();
+        String[] carNames = InputView.getCarNames();
+        int tryNo = InputView.getTryNo();
 
-        RacingGame racingGame = new RacingGame(carNumber);
-        racingGame.gameStart(inputTimes);
+        RacingGame racingGame = new RacingGame(new CarMovableRandomDecider(), new RacingGameState(carNames, tryNo));
+        RacingResult result = null;
+
+        while(!racingGame.isEnd()) {
+            result = racingGame.race();
+            ResultView.printResult(result);
+        }
+        ResultView.printWinners(result);
     }
 }
