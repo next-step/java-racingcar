@@ -1,6 +1,9 @@
-package racingcar;
+package racingcar.view;
 
 import com.google.common.base.Strings;
+import racingcar.domain.Car;
+import racingcar.domain.RacingResult;
+import racingcar.domain.RacingUtil;
 
 public class ResultView {
 

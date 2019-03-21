@@ -1,5 +1,8 @@
-package racingcar;
+package racingcar.domain;
 
+
+import racingcar.domain.Car;
+import racingcar.domain.CarMovableDecider;
 
 import java.util.ArrayList;
 import java.util.Collections;
