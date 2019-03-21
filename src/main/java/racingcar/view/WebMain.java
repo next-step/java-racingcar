@@ -1,6 +1,5 @@
 package racingcar.view;
 
-import racingcar.domain.GameResult;
 import racingcar.domain.RacingGame;
 import racingcar.util.CustomTemplateEngine;
 import spark.ModelAndView;

@@ -1,7 +1,6 @@
 package racingcar.view;
 
 import racingcar.domain.CarDTO;
-import racingcar.domain.GameResult;
 import racingcar.domain.Round;
 import racingcar.domain.Winners;
 
