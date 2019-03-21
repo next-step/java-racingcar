@@ -1,6 +1,10 @@
 package racing;
 
 import org.junit.Test;
+import racing.domain.RacingGame;
+import racing.domain.RacingGameResult;
+import racing.dto.CarRoundResult;
+import racing.dto.RacingGameRoundResult;
 
 import java.util.*;
 

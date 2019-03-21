@@ -1,4 +1,4 @@
-package racing;
+package racing.dto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ public class UserInputValueObject {
     private int inputTime;
     private List<String> inputCarNames;
 
-    UserInputValueObject(final String inputCarNames, final int inputTime) {
+    public UserInputValueObject(final String inputCarNames, final int inputTime) {
         String[] cars = inputCarNames.split(",");
         this.inputCarNames = new ArrayList<String>();
 

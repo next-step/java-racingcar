@@ -1,4 +1,6 @@
-package racing;
+package racing.view.consoleview;
+
+import racing.dto.UserInputValueObject;
 
 import java.util.Scanner;
 

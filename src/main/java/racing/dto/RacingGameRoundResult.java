@@ -1,11 +1,11 @@
-package racing;
+package racing.dto;
 
 import java.util.List;
 
 public class RacingGameRoundResult {
     private List<CarRoundResult> carResults;
 
-    RacingGameRoundResult(List<CarRoundResult> carResults) {
+    public RacingGameRoundResult(List<CarRoundResult> carResults) {
         this.carResults = carResults;
     }
 

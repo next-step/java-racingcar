@@ -1,4 +1,9 @@
-package racing;
+package racing.domain;
+
+import racing.dto.Car;
+import racing.dto.CarRoundResult;
+import racing.GameRule;
+import racing.dto.RacingGameRoundResult;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -9,45 +14,44 @@ public class RacingGame {
     private int time;
     // Car 컬렉션
     private List<Car> cars;
-    // 각 라운드 차량 이동정보
-    private List<CarRoundResult> carRoundResult;
     // 라운드별 결과
     private List<RacingGameRoundResult> racingGameRoundResult;
 
-    RacingGame(final int time, List<String> carNames) {
+    public RacingGame(final int time, List<String> carNames) {
         this.time = time;
         this.cars = new ArrayList<Car>();
-        this.carRoundResult = new ArrayList<CarRoundResult>();
         this.racingGameRoundResult = new ArrayList<RacingGameRoundResult>();
 
+        List carRoundResult = new ArrayList();
         for (String carName : carNames) {
             Car car = new Car(carName, 1);
             cars.add(car);
-            // 첫번째운행은 무조건이동
             carRoundResult.add(new CarRoundResult(car.getCarName(), car.getMovePosition()));
         }
+        // 첫번째 라운드저장
+        racingGameRoundResult.add(new RacingGameRoundResult(carRoundResult));
+    }
+
+    public List<Car> getCars() {
+        return this.cars;
     }
 
     // 운행횟수
     public RacingGameResult runRacingGame(GameRule gameRule) {
-        // 첫번째라운드 저장
-        racingGameRoundResult.add(new RacingGameRoundResult(carRoundResult));
-
-        for (int i = SECOND_ROUND_NUM; i <= time; i++) {
-            carRoundResult = new ArrayList<CarRoundResult>();
-            moveCarPositionByGameRule(i, gameRule);
-            racingGameRoundResult.add(new RacingGameRoundResult(carRoundResult));
+        for (int round = SECOND_ROUND_NUM; round <= time; round++) {
+            moveCarPositionByGameRule(round, gameRule);
         }
-
         return new RacingGameResult(racingGameRoundResult, time);
     }
 
     public void moveCarPositionByGameRule(int time, GameRule gameRule) {
+        List carRoundResult = new ArrayList();
         for (Car car : cars) {
             if (gameRule.moveRacingGameRule()) {
                 car.move();
             }
             carRoundResult.add(new CarRoundResult(car.getCarName(), car.getMovePosition()));
         }
+        racingGameRoundResult.add(new RacingGameRoundResult(carRoundResult));
     }
 }

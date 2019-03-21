@@ -1,16 +1,12 @@
-package racing;
+package racing.dto;
 
-public class Car {
+public class WebRacingGameResultDto {
     private String carName;
     private int movePosition;
 
-    public Car(String carName, int movePosition) {
+    public WebRacingGameResultDto(String carName, int movePosition) {
         this.carName = carName;
         this.movePosition = movePosition;
-    }
-
-    public void move() {
-        movePosition++;
     }
 
     public String getCarName() {

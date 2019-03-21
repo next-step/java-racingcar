@@ -1,4 +1,8 @@
-package racing;
+package racing.view.consoleview;
+
+import racing.dto.CarRoundResult;
+import racing.domain.RacingGameResult;
+import racing.dto.RacingGameRoundResult;
 
 import java.util.List;
 

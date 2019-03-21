@@ -1,10 +1,10 @@
-package racing;
+package racing.dto;
 
 public class CarRoundResult implements Comparable<CarRoundResult> {
     private int movePosition;
     private String carName;
 
-    CarRoundResult(String carName, int movePoint) {
+    public CarRoundResult(String carName, int movePoint) {
         this.carName = carName;
         this.movePosition = movePoint;
     }
