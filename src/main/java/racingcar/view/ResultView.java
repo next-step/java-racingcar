@@ -25,8 +25,7 @@ public class ResultView {
     }
 
     public void showWinner(List<Car> cars) {
-        RacingGame racingGame = new RacingGame();
-        List<Car> winners = racingGame.getWinners(cars);
+        List<Car> winners = RacingGame.getWinners(cars);
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < winners.size(); i++) {
             builder.append(winners.get(i).getCarName());

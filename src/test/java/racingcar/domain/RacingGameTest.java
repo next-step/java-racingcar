@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -10,10 +11,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingGameTest {
 
     private RacingGame racingGame;
+    private List<Car> cars;
+
+    @Before
+    public void setUp() {
+        cars = new ArrayList<>();
+        cars.add(new Car("test", 0));
+        cars.add(new Car("test1", 0));
+        cars.add(new Car("test2", 0));
+    }
 
     @Test
     public void racingTest() {
-        RacingGame racingGame = new RacingGame("test, test1, test2", 2);
+        RacingGame racingGame = new RacingGame(cars, 2);
         List<Car> cars = racingGame.racing();
         assertThat(cars.get(0).getPosition()).isBetween(0, 2);
 
@@ -21,7 +31,7 @@ public class RacingGameTest {
 
     @Test
     public void sortByValueTest() {
-        racingGame = new RacingGame();
+        racingGame = new RacingGame(cars, 1);
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             carList.add(new Car("a" + i, i));
@@ -33,13 +43,8 @@ public class RacingGameTest {
 
     @Test
     public void getWinnersTest() {
-        Car car1 = new Car("test1", 0);
-        Car car2 = new Car("test2", 1);
-        List<Car> carList = new ArrayList<>();
-        carList.add(car2);
-        carList.add(car1);
-        racingGame = new RacingGame();
-        List<Car> winners = racingGame.getWinners(carList);
+        racingGame = new RacingGame(cars, 2);
+        List<Car> winners = racingGame.getWinners(cars);
         assertThat(winners.get(0).getCarName()).isEqualTo("test2");
 
     }
