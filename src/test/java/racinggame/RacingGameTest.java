@@ -2,73 +2,68 @@ package racinggame;
 
 import org.junit.Before;
 import org.junit.Test;
+import racinggame.domain.Car;
 import racinggame.domain.Racing;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static racinggame.Controller.RacingGame.game;
-import static racinggame.View.PrintRacing.printRacing;
-import static racinggame.View.PrintRacing.printWinner;
-import static utils.ConstantCollection.FORWARD_NUMBER;
-import static utils.ConstantCollection.RANGE_RANDOM;
+import static racinggame.controller.RacingGame.game;
 import static utils.GenerateRandom.generatingRandomNumber;
+import static utils.Separator.separateName;
 
 public class RacingGameTest {
-    Map<String, Object> forTestMap = new HashMap<>();
-    String userName;
-    int usersLength;
+    public static final int RANGE_RANDOM = 10;
+    final String userName = "Kim,Lee,Park";
 
     @Before
     public void setUp() {
-        userName = "Kim,Lee,Park";
-        String [] users = userName.split(",");
-        usersLength = users.length;
-        forTestMap.put("userName", userName);
-
-
         List<String> winners = new ArrayList<>();
         winners.add("Kim");
         winners.add("Park");
-        forTestMap.put("winners", winners);
     }
 
     @Test
-    public void 레이싱_실행_테스트() {
-        int countCar = generatingRandomNumber(RANGE_RANDOM);
+    public void 레이싱_실행() {
         int tryGame = generatingRandomNumber(RANGE_RANDOM);
 
-        Racing racing = new Racing((String)forTestMap.get("userName"), countCar, tryGame);
-
+        Racing racing = new Racing(userName, tryGame);
         game(racing);
     }
 
     @Test
-    public void 승자_정상출력_테스트() {
-        printWinner((List<String>)forTestMap.get("winners"));
+    public void 정지() {
+        Racing racing = new Racing(userName, 3);
+
+        racing.isCarMoving(3);
+        assertThat(false).isEqualTo(false);
     }
 
     @Test
-    public void 레이싱_정상출력_테스트() {
-        int tryGame = generatingRandomNumber(RANGE_RANDOM);
-        Racing racing = new Racing((String)forTestMap.get("userName"), usersLength, tryGame);
+    public void 동작() {
+        Racing racing = new Racing(userName, 3);
 
-        printRacing(racing);
+        racing.isCarMoving(4);
+        assertThat(true).isEqualTo(true);
     }
 
     @Test
-    public void ForwardStatusTest() {
-        int random = generatingRandomNumber(RANGE_RANDOM);
+    public void 자동차_움직임() {
+        Car car = new Car("kim");
 
-        // 난수가 4이상인 경우 전진한다.
-        if (random >= FORWARD_NUMBER) {
-            assertThat(true);
-            return;
-        }
+        car.move();
+        assertThat(car.getCountMoving()).isEqualTo(1);
+    }
 
-        assertThat(false);
+    @Test
+    public void 문자열_콤마_분리() {
+        assertThat(separateName(userName)).isEqualTo(new String[]{"Kim", "Lee", "Park"});
+    }
+
+    @Test
+    public void 문자열_띄어쓰기_분리() {
+        final String name = "Kim Lee Park";
+        assertThat(separateName(name)).isEqualTo(new String[]{"Kim", "Lee", "Park"});
     }
 }
