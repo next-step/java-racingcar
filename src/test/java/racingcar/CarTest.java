@@ -2,6 +2,8 @@ package racingcar;
 
 import org.junit.Before;
 import org.junit.Test;
+import racingcar.domain.Car;
+import racingcar.domain.CarDTO;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

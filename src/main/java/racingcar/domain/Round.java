@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -6,17 +6,17 @@ import java.util.stream.Collectors;
 public class Round {
     private List<CarDTO> cars;
 
-    Round(List<Car> cars) {
+    public Round(List<Car> cars) {
         this.cars = cars.stream()
                 .map(Car::toCarDTO)
                 .collect(Collectors.toList());
     }
 
-    List<CarDTO> getCars() {
+    public List<CarDTO> getCars() {
         return cars;
     }
 
-    Winners getWinners() {
+    public Winners getWinners() {
         int winnerPosition = getWinnerPosition(this.cars);
         return getWinnerCars(winnerPosition);
     }
