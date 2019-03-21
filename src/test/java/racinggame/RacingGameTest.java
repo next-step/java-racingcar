@@ -10,12 +10,11 @@ import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static racinggame.controller.RacingGame.game;
-import static racinggame.dto.WebGameDto.checkNull;
-import static utils.ConstantCollection.RANGE_RANDOM;
 import static utils.GenerateRandom.generatingRandomNumber;
 import static utils.Separator.separateName;
 
 public class RacingGameTest {
+    public static final int RANGE_RANDOM = 10;
     final String userName = "Kim,Lee,Park";
 
     @Before
@@ -67,14 +66,4 @@ public class RacingGameTest {
         final String name = "Kim Lee Park";
         assertThat(separateName(name)).isEqualTo(new String[]{"Kim", "Lee", "Park"});
     }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void webNullTest() {
-        List<Racing> racings = new ArrayList<>();
-        racings.add(null);
-
-        checkNull(racings);
-    }
-
-
 }
