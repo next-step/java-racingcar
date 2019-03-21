@@ -17,14 +17,15 @@ public class Car implements Comparable<Car> {
     public String getName() {
         return name;
     }
-    
+
     public void move(int newPosition) {
         if(ADVANCE_CONDITION < newPosition) {
             this.position++;
         }
     }
 
-    public int compareTo(Car compareCar) { // override
+    @Override
+    public int compareTo(Car compareCar) {
         // 내림차순
         return compareCar.position - this.position;
     }

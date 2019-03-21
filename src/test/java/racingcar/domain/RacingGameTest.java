@@ -2,18 +2,24 @@ package racingcar.domain;
 
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
 
-    // 여기는 테스트코드 어떻게 짤지 잘 모르겠어요;;
     @Test
     public void 한라운드_진행() {
         RacingGame racingGame = new RacingGame(new String[]{"test1", "test2"}, 1);
-        List<Car> result = racingGame.playRound();
-        //assertThat(result).is
+        List<Car> result = racingGame.playRound(new RandomCreator() {
+            @Override
+            public int createNewPosition() {return 4;}
+
+        });
+        List<Car> expected = Arrays.asList(new Car("test1", 2), new Car("test2", 2));
+        assertThat(result.get(0)).isEqualByComparingTo(expected.get(0));
+        assertThat(result.get(1)).isEqualByComparingTo(expected.get(1));
     }
 
 }

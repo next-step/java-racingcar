@@ -7,15 +7,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameResultTest {
     private final int testPosition = 3;
-    private final String resultWinnersString = "a, b";
     RacingGameResult racingGameResult = new RacingGameResult();
 
     @Before
     public void setUp() {
         Car firstWinner = new Car("a", testPosition);
         Car secondWinner = new Car("b",testPosition );
-        racingGameResult.comparePosition(testPosition, firstWinner);
-        racingGameResult.comparePosition(testPosition, secondWinner);
+        racingGameResult.comparePosition(firstWinner, firstWinner);
+        racingGameResult.comparePosition(firstWinner, secondWinner);
     }
 
     @Test

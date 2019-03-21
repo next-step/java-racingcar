@@ -1,7 +1,9 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class RacingGameResult {
     private List<String> winners = new ArrayList<>();
@@ -11,15 +13,17 @@ public class RacingGameResult {
     }
 
     public List<String> collectWinners(List<Car> cars) {
-        int firstWinnerPosition = cars.get(0).getPosition();
+        Car firstWinner = cars.stream()
+            .max(Comparator.comparing(Car::getPosition))
+            .orElseThrow(NoSuchElementException::new);
         for(Car car : cars) {
-            comparePosition(firstWinnerPosition, car);
+            comparePosition(firstWinner, car);
         }
         return winners;
     }
 
-    void comparePosition(int firstWinnerPosition, Car otherPlayer) {
-        if (firstWinnerPosition == (otherPlayer.getPosition())) {
+    void comparePosition(Car firstWinner, Car otherPlayer) {
+        if (firstWinner.getPosition() == (otherPlayer.getPosition())) {
             winners.add(otherPlayer.getName());
         }
     }

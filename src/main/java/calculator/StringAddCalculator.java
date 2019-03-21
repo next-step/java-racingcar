@@ -14,7 +14,7 @@ public class StringAddCalculator {
         if(isNull(inputText) || inputText.isEmpty()) {
             return EMPTY_RETURN;
         }
-        
+
         if(inputText.length() == MONO_TEXT) {
             return Integer.parseInt(inputText);
         }
