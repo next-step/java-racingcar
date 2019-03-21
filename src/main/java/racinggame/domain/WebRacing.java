@@ -74,7 +74,7 @@ public class WebRacing {
     }
 
     public void checkNull(String inputs) {
-        if(inputs == null) {
+        if (inputs == null) {
             throw new IllegalArgumentException();
         }
     }
