@@ -1,21 +1,17 @@
 package racinggame.controller;
 
-import racinggame.domain.Racing;
+import racinggame.domain.WebRacing;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static racinggame.dto.WebGameDto.*;
+import static spark.Spark.port;
 
 public class RacingWebGame {
 
     public static void main(String[] args) {
-        List<Racing> racings = new ArrayList<>();
+        WebRacing webRacing = new WebRacing();
+        port(8080);
 
-        inputNameByGet();
-
-        inputTryGameByPost(racings);
-
-        playGameByGet(racings);
+        webRacing.inputNameByGet();
+        webRacing.inputTryGameByPost();
+        webRacing.playGameByGet();
     }
 }
