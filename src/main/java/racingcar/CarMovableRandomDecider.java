@@ -11,9 +11,9 @@ public class CarMovableRandomDecider implements CarMovableDecider {
     public boolean movable() {
         int randomValue = new RandomUtil(RANDOM_FROM, RANDOM_TO).randomInt();
 
-        if (randomValue > MOVE_THRESHOLD)
+        if (randomValue > MOVE_THRESHOLD) {
             return true;
-
+        }
         return false;
     }
 

@@ -2,12 +2,12 @@ package racingcar;
 
 
 public class Car implements Comparable<Car> {
-
+    private static int START_POSITION = 0;
     private final String name;
     private int position;
 
     public Car(String name) {
-        position = 0;
+        position = START_POSITION;
         this.name = name;
 
     }
