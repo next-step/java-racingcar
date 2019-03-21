@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.Test;
 
@@ -27,9 +27,11 @@ public class CarTest {
     @Test
     public void isMaxPosition() {
         Car car = new Car("test", 1);
-        int result = car.isMaxPosition(2);
-        assertThat(result).isEqualTo(-1);
-        result = car.isMaxPosition(1);
-        assertThat(result).isEqualTo(1);
+        Car car1 = new Car("test2", 2);
+        Car car2 = new Car("test3", 3);
+        boolean result = car.isMaxPosition(car1);
+        assertThat(result).isFalse();
+        result = car2.isMaxPosition(car1);
+        assertThat(result).isTrue();
     }
 }

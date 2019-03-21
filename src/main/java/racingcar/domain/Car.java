@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class Car {
 
@@ -30,11 +30,7 @@ public class Car {
         return value >= CHECK_VALUE;
     }
 
-    public int isMaxPosition(int maxPosition) {
-        if (position >= maxPosition) {
-            return position;
-        }
-
-        return -1;
+    public boolean isMaxPosition(Car car) {
+        return position >= car.getPosition();
     }
 }
