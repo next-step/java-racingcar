@@ -1,7 +1,4 @@
-package racingcar.view;
-
-import racingcar.domain.Round;
-import racingcar.domain.Winners;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +22,7 @@ public class GameResult {
         return getLastRound().getWinners();
     }
 
-    private Round getLastRound() {
+    public Round getLastRound() {
         return rounds.get(rounds.size() - 1);
     }
 

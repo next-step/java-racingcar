@@ -22,6 +22,10 @@ public class Car {
         return this;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public CarDTO toCarDTO() {
         return new CarDTO(name, position);
     }

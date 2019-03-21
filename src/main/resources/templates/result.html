@@ -60,13 +60,11 @@ body {
         <h2 class="text-center">박진감 넘치는 자동차 레이싱 게임 with Pobi</h2>
         <div class="form-show-div" class="form-group">
           <h3>결과입니다</h3>
-          (이름마다 띄어쓰기로 구분해 주세요.)
-          <div name="standings">박재성 : &nbsp;&nbsp;&nbsp;&#128652;</div>
-          <div name="standings">윤지수 : &nbsp;&nbsp;&#128652;</div>
-          <div name="standings">정호영 : &nbsp;&nbsp;&nbsp;&#128652;</div>
-          <div name="standings">김정 : &nbsp;&#128652;</div>
-          <br />
-          <div>박재성, 정호영이 우승했습니다.</div>
+            {{#cars}}
+            <div name="standings">{{name}} : {{#repeat position}}-{{/repeat}}&#128652;</div>
+            {{/cars}}
+          <!--<br />-->
+          <div>{{winners}}이 우승했습니다.</div>
         </div>
       </div>
     </div>
