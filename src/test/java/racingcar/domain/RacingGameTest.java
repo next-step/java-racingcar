@@ -31,20 +31,18 @@ public class RacingGameTest {
 
     @Test
     public void sortByValueTest() {
-        racingGame = new RacingGame(cars, 1);
         List<Car> carList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             carList.add(new Car("a" + i, i));
         }
-        racingGame.sortByValue(carList);
+        RacingGame.sortByValue(carList);
         int maxPosition = carList.get(0).getPosition();
         assertThat(maxPosition).isEqualTo(2);
     }
 
     @Test
     public void getWinnersTest() {
-        racingGame = new RacingGame(cars, 2);
-        List<Car> winners = racingGame.getWinners(cars);
+        List<Car> winners = RacingGame.getWinners(cars);
         assertThat(winners.get(0).getCarName()).isEqualTo("test2");
 
     }
