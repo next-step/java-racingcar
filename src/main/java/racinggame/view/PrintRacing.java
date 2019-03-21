@@ -6,15 +6,15 @@ import racinggame.domain.Racing;
 import java.util.List;
 
 import static racinggame.controller.RacingGame.game;
-import static utils.ConstantCollection.DELIMITER;
 
 public class PrintRacing {
+    public static final String DELIMITER = ",";
 
     // 결과를 출력하는 메서드
     public static void printRacing(Racing racing) {
         System.out.println("실행 결과");
 
-        for(int i = 0; i < racing.getTryGame(); i++) {
+        for (int i = 0; i < racing.getTryGame(); i++) {
             System.out.println(makeRacingForPrint(game(racing)));
         }
 
@@ -25,7 +25,7 @@ public class PrintRacing {
     public static StringBuilder makeRacingForPrint(Racing racing) {
         StringBuilder viewRacing = new StringBuilder();
 
-        for(Car car : racing.getCars()) {
+        for (Car car : racing.getCars()) {
             viewRacing.append(car.getName() + " : ");
             viewRacing.append(makeCarMovementForPrint(car) + "\n");
         }
@@ -36,7 +36,7 @@ public class PrintRacing {
     public static StringBuilder makeCarMovementForPrint(Car car) {
         StringBuilder viewMoving = new StringBuilder();
 
-        for(int i = 0; i < car.getCountMoving(); i++) {
+        for (int i = 0; i < car.getCountMoving(); i++) {
             viewMoving.append("-");
         }
 
@@ -51,7 +51,7 @@ public class PrintRacing {
     public static String makeWinnerFormatForPrint(List<String> winners) {
         StringBuilder winnersForPrint = new StringBuilder();
 
-        for(String winner : winners) {
+        for (String winner : winners) {
             winnersForPrint.append(winner).append(DELIMITER);
         }
 

@@ -16,7 +16,7 @@ public class InputGame {
         System.out.println("시도할 횟수는 몇 회 인가요?");
         input.add(scanner.nextInt());
 
-        for(Object input_value : input) {
+        for (Object input_value : input) {
             nullCheck(input_value);
         }
 

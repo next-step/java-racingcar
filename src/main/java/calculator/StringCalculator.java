@@ -6,9 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static utils.ConstantCollection.*;
-
 public class StringCalculator {
+    public static final int IN_TWO_OPERAND = 2;
+    public static final int MINIMUM_DENOMINATOR_VALUE = 0;
+    public static final int MINIMUM_INVALID_INPUT = 0;
+
     static int calculator(String input)  {
 
         if (StringUtils.isEmpty(input)) {
