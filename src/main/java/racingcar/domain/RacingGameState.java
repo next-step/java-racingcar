@@ -1,12 +1,15 @@
-package racingcar;
+package racingcar.domain;
 
+
+import racingcar.domain.Car;
+import racingcar.domain.CarMovableDecider;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class RacingGameState {
-
+    private static final int READY_ROUND = 0;
     private List<Car> cars;
     private int tryNo;
     private int round;
@@ -18,7 +21,7 @@ public class RacingGameState {
         }
 
         this.tryNo = tryNo;
-        this.round = 0;
+        this.round = READY_ROUND;
 
     }
 
@@ -35,12 +38,11 @@ public class RacingGameState {
         round++;
     }
 
-    public int getTryNo() {
-        return tryNo;
-    }
-
-    public int getRound() {
-        return round;
+    public boolean isEnd() {
+        if(this.round == this.tryNo) {
+            return true;
+        }
+        return false;
     }
 
     public List<Car> getCars() {

@@ -1,6 +1,10 @@
 package racingcar;
 
-public class MainApplication {
+import racingcar.domain.*;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
+
+public class ConsoleMain {
     public static void main(String[] args) {
 
         String[] carNames = InputView.getCarNames();

@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class RacingGame {
 
@@ -18,10 +18,7 @@ public class RacingGame {
     }
 
     public boolean isEnd() {
-        if (racingGameState.getRound() == racingGameState.getTryNo()) {
-            return true;
-        }
-        return false;
+        return racingGameState.isEnd();
     }
 
     public RacingGameState getRacingGameState() {

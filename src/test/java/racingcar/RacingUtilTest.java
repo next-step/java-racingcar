@@ -1,6 +1,8 @@
 package racingcar;
 
 import org.junit.Test;
+import racingcar.domain.Car;
+import racingcar.domain.RacingUtil;
 
 import java.util.Arrays;
 

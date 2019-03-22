@@ -1,6 +1,8 @@
 package racingcar;
 
 import org.junit.Test;
+import racingcar.domain.Car;
+import racingcar.domain.RacingGameState;
 
 import java.util.List;
 import java.util.stream.Collectors;

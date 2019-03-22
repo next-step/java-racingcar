@@ -1,6 +1,7 @@
 package racingcar;
 
 import org.junit.Test;
+import racingcar.domain.RandomUtil;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
