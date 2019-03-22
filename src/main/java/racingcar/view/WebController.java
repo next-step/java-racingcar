@@ -5,16 +5,25 @@ import racingcar.domain.RacingGame;
 import racingcar.domain.RacingGameState;
 import racingcar.domain.RacingResult;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import spark.ModelAndView;
 import spark.Route;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
+import static spark.Spark.*;
+
 public class WebController {
     private static String[] carNames;
     private static int tryNo;
+
+    public void start(int port) {
+        port(port);
+
+        get("/", getIndexPage());
+        post("/name", getNamePage());
+        get("/result", getResultPage());
+    }
 
     public static Route getIndexPage() {
         return (request, response) -> render(new HashMap<>(), "index.html");
