@@ -20,6 +20,5 @@ public class GameRuleTest {
         assertThat(gr.moveRacingGameRule()).isEqualTo(false);
         assertThat(gr.moveRacingGameRule()).isEqualTo(false);
         assertThat(gr.moveRacingGameRule()).isEqualTo(false);
-
     }
 }

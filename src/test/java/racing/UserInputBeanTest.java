@@ -1,6 +1,8 @@
 package racing;
 
 import org.junit.Test;
+import racing.dto.UserInputValueObject;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class UserInputBeanTest {

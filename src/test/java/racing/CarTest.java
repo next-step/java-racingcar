@@ -1,6 +1,7 @@
 package racing;
 
 import org.junit.Test;
+import racing.dto.Car;
 
 import java.util.ArrayList;
 import java.util.List;
