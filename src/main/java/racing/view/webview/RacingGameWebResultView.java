@@ -1,6 +1,6 @@
 package racing.view.webview;
 
-import racing.dto.Car;
+import racing.dto.CarRoundResult;
 import racing.dto.WebRacingGameResultDto;
 
 import java.util.ArrayList;
@@ -10,13 +10,13 @@ import java.util.Map;
 
 public class RacingGameWebResultView {
 
-    public static Map<String, Object> getRacingGameResultModel(List<Car> cars, List<String> winners) {
+    public static Map<String, Object> getRacingGameResultModel(List<CarRoundResult> cars, List<String> winners) {
         List<WebRacingGameResultDto> resultDto = new ArrayList<WebRacingGameResultDto>();
 
-        for (Car car : cars) {
+        for (CarRoundResult car : cars) {
             resultDto.add(new WebRacingGameResultDto(car.getCarName(), car.getMovePosition()));
         }
-        String winnerNames = String.join(" ,", winners) + "이 우승했습니다.";
+        String winnerNames = String.join(" ,", winners);
 
         Map<String, Object> model = new HashMap<String, Object>();
         model.put("racingGameResult", resultDto);

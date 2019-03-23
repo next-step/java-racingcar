@@ -6,23 +6,16 @@ import spark.Request;
 import spark.Response;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Stream;
 
 public class NameController {
     private static final String TEMPLATE_NAME = "/game.html";
 
-    public static String get(Request req, Response res) {
-        return null;
-    }
-
     public static String post(Request req, Response res) {
         List<User> users = new ArrayList<>();
-        for (int i = 0; i < req.queryParams("names").split(" ").length; i++) {
-            users.add(new User(req.queryParams("names").split(" ")[i]));
-        }
+        Stream<String> stream = Arrays.stream(req.queryParams("names").split(" "));
+        stream.forEach(name -> users.add(new User(name)));
 
         Map<String, Object> model = new HashMap<>();
         model.put("users", users);

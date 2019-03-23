@@ -19,6 +19,5 @@ public class StartWebMain {
         post("/name", NameController::post);
         get("/result", ResultController::get);
     }
-
 }
 

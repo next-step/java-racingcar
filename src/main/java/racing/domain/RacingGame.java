@@ -39,19 +39,25 @@ public class RacingGame {
     // 운행횟수
     public RacingGameResult runRacingGame(GameRule gameRule) {
         for (int round = SECOND_ROUND_NUM; round <= time; round++) {
-            moveCarPositionByGameRule(round, gameRule);
+            move(gameRule);
         }
-        return new RacingGameResult(racingGameRoundResult, time);
+        return new RacingGameResult(racingGameRoundResult);
     }
 
-    public void moveCarPositionByGameRule(int time, GameRule gameRule) {
+    public void move(GameRule gameRule) {
         List carRoundResult = new ArrayList();
+
         for (Car car : cars) {
-            if (gameRule.moveRacingGameRule()) {
-                car.move();
-            }
+            moveByGameRule(car, gameRule.moveRacingGameRule());
             carRoundResult.add(new CarRoundResult(car.getCarName(), car.getMovePosition()));
         }
+
         racingGameRoundResult.add(new RacingGameRoundResult(carRoundResult));
+    }
+
+    public void moveByGameRule(Car car, boolean isMove) {
+        if (isMove) {
+            car.move();
+        }
     }
 }

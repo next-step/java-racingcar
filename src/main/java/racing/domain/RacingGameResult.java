@@ -6,22 +6,25 @@ import racing.dto.RacingGameRoundResult;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RacingGameResult {
     private List<RacingGameRoundResult> racingGameRoundResult;
-    private int time;
 
-    public RacingGameResult(List<RacingGameRoundResult> racingGameRoundResult, int time) {
+    public RacingGameResult(List<RacingGameRoundResult> racingGameRoundResult) {
         this.racingGameRoundResult = racingGameRoundResult;
-        this.time = time;
-    }
-
-    public int getTime() {
-        return this.time;
     }
 
     public List<RacingGameRoundResult> printRoundHistory() {
         return this.racingGameRoundResult;
+    }
+
+    public List<CarRoundResult> findLastRoundCars() {
+        int lastRound = racingGameRoundResult.size() - 1;
+        RacingGameRoundResult lastRoundResult = racingGameRoundResult.get(lastRound);
+        List<CarRoundResult> lastRoundCarResults = lastRoundResult.getCarResults();
+        return lastRoundCarResults;
     }
 
     // 우승자 반환
@@ -35,12 +38,13 @@ public class RacingGameResult {
                         .max(Comparator.comparing(CarRoundResult::getMovePosition))
                         .get();
 
+        List<CarRoundResult> carWinners =
+                carRoundResults.stream()
+                        .filter(x -> x.getMovePosition() == maxCarRoundResult.getMovePosition())
+                        .collect(Collectors.toList());
+
         List<String> winners = new ArrayList<String>();
-        for (CarRoundResult carRoundResult : carRoundResults) {
-            if (carRoundResult.getMovePosition() == maxCarRoundResult.getMovePosition()) {
-                winners.add(carRoundResult.getCarName());
-            }
-        }
+        carWinners.forEach(name -> winners.add(name.getCarName()));
 
         return winners;
     }
