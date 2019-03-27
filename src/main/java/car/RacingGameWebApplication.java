@@ -2,8 +2,10 @@ package car;
 
 import car.domain.GameResult;
 import car.domain.RacingGame;
+import car.domain.SavedRacingCar;
 import car.view.ResultView;
 import car.view.WebInputValue;
+import car.view.WebResultView;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
@@ -27,26 +29,23 @@ public class RacingGameWebApplication {
         post("/name", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             String test  = req.queryParams("names");
-            String[] carNames = WebInputValue.getCarsName(test);
+            SavedRacingCar.racingCars = WebInputValue.getCarsName(test);
 
-            model.put("names", carNames);
+            model.put("names", SavedRacingCar.racingCars);
             return render(model, "/game.html");
         });
 
-        get("/result", (req, res) -> {
+        post("/result", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             int racingCount = WebInputValue.getRacingCount(req.queryParams("turn"));
-            String[] carNames = WebInputValue.getCarsName(req.queryParams("names"));
-
-            RacingGame racingGame = new RacingGame(carNames, racingCount);
+            RacingGame racingGame = new RacingGame(SavedRacingCar.racingCars, racingCount);
             GameResult result = null;
 
             while ( racingGame.isRunning() ) {
                 result = racingGame.playingGame();
             }
             model.put("result", result.getRoundResult());
-            model.put("winners", result.getWinnerNames());
-            List<String> str = result.getWinnerNames();
+            model.put("winners", WebResultView.printGameWinner(result));
 
             return render(model, "/result.html");
         });
