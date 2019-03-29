@@ -1,6 +1,5 @@
-package car.entity;
+package car.domain;
 
-import car.util.RandomNumber;
 import spark.utils.StringUtils;
 
 import java.util.ArrayList;
