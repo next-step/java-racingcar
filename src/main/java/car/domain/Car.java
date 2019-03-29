@@ -12,14 +12,10 @@ public class Car {
         this.movingCount = 0;
     }
 
-    public Car(String name, int movingCount) {
-        this.name = name;
-        this.movingCount = movingCount;
-    }
-
     public static Car getCarInstance(String name) {
         return new Car(name);
     }
+
 
     public void move(int randomValue) {
         if ( MOVABLE_MINIMUM_NUM < randomValue) {

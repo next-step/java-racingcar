@@ -54,17 +54,4 @@ public class RacingGameWebApplication {
     public static String render(Map<String, Object> model, String templatePath) {
         return new HandlebarsTemplateEngine().render(new ModelAndView(model, templatePath));
     }
-    /*
-    public static void startGame() {
-        RacingGame racingGame = new RacingGame(carsName, racingCount);
-        GameResult result = null;
-
-        while ( racingGame.isRunning() ) {
-            result = racingGame.playingGame();
-            ResultView.printGame(result);
-        }
-
-        ResultView.printGameWinner(result);
-    }
-    */
 }

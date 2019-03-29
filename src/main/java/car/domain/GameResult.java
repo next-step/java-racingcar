@@ -7,14 +7,13 @@ import java.util.stream.Collectors;
 public class GameResult {
     private List<Car> aRoundResult;
 
-    public GameResult() {
+    private GameResult() {
         aRoundResult = new ArrayList<>();
     }
 
     public static GameResult createResultInstance(List<Car> result) {
         GameResult gameResult = new GameResult();
         gameResult.aRoundResult = result;
-
         return gameResult;
     }
 
