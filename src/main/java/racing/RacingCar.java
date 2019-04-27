@@ -13,6 +13,13 @@ public class RacingCar {
         return position;
     }
 
+    public int move2(MovingStrategy movingStrategy) {
+        if(movingStrategy.isMove()){
+            return position += 1;
+        }
+        return position;
+    }
+
     private boolean isMoving(int randomValue) {
         return randomValue >= MOVE_MIN_COUNT;
     }
