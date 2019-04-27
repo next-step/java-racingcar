@@ -37,6 +37,6 @@ public class Racing {
     }
 
     public List<RacingCar> getRacingCars() {
-        return (List<RacingCar>) Collections.unmodifiableCollection(racingCars);
+        return Collections.unmodifiableList(racingCars);
     }
 }
