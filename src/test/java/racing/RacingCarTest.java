@@ -24,12 +24,6 @@ public class RacingCarTest {
         assertThat(result).isEqualTo(1);
     }
 
-    @Test
-    public void 랜덤_숫자_생성() {
-        int random = Utils.generateRandomNum();
-        assertThat(random).isBetween(0, 9);
-    }
-
     @Test(expected =  ClassCastException.class)
     public void 레이싱카_외부에서_변경_못하게_설정() {
         Racing racing = new Racing(2, 3);
