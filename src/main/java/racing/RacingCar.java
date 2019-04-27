@@ -1,7 +1,10 @@
 package racing;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class RacingCar {
     public static final int MOVE_MIN_COUNT = 4;
+    public static final String PROGRESS_POSITION = "-";
     int position;
 
     public int move(int randomValue) {
@@ -16,10 +19,6 @@ public class RacingCar {
 
     @Override
     public String toString() {
-        String steps = "";
-        for (int i = 0; i < position; i++) {
-            steps += "-";
-        }
-        return steps;
+        return StringUtils.repeat(PROGRESS_POSITION, position);
     }
 }
