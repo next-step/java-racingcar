@@ -1,6 +1,7 @@
 package racing;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static racing.Utils.generateRandomNum;
@@ -36,6 +37,6 @@ public class Racing {
     }
 
     public List<RacingCar> getRacingCars() {
-        return racingCars;
+        return (List<RacingCar>) Collections.unmodifiableCollection(racingCars);
     }
 }
