@@ -2,8 +2,6 @@ package racing;
 
 import org.junit.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -32,15 +30,15 @@ public class RacingCarTest {
         assertThat(result).isEqualTo(1);
     }
 
-    @Test(expected = UnsupportedOperationException.class)
-    public void 레이싱카_외부에서_변경_못하게_설정() {
+    @Test
+    public void 레이싱카_일급콜렉션_변경() {
         //given
         Racing racing = new Racing(2, 3);
 
         //when
-        List<RacingCar> racingCars = racing.getRacingCars();
+        RacingCars racingCars = racing.getRacingCar();
 
         //then
-        racingCars.add(new RacingCar());
+        assertThat(racingCars.count()).isEqualTo(2);
     }
 }

@@ -1,10 +1,8 @@
 package racing;
 
-import java.util.List;
-
 public class ResultView {
-    public static void printCars(List<RacingCar> racingCars) {
-        for(RacingCar racingCar : racingCars) {
+    public static void printCars(RacingCars racingCars) {
+        for (RacingCar racingCar : racingCars.getObject()) {
             System.out.println(racingCar.toString());
         }
     }

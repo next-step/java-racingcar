@@ -6,7 +6,7 @@ public class RacingMain {
         int tryTime = InputView.inputTryTime();
 
         Racing racing = new Racing(carNum, tryTime);
-        racing.startRace();
-        ResultView.printCars(racing.getRacingCars());
+//        racing.startRace();
+//        ResultView.printCars(racing.getRacingCar());
     }
 }
