@@ -31,9 +31,13 @@ public class Racing {
 
     private void moveCars() {
         for(RacingCar racingCar: racingCars) {
-            int random = generateRandomNum();
-            racingCar.move(random);
+            int randomValue = generateRandomNum();
+            racingCar.move(()-> isMoving(randomValue));
         }
+    }
+
+    private boolean isMoving(int randomValue) {
+        return randomValue >= Consts.MOVE_MIN_COUNT;
     }
 
     public List<RacingCar> getRacingCars() {

@@ -14,7 +14,7 @@ public class RacingCarTest {
         RacingCar car = new RacingCar();
 
         //when
-        int result = car.move2(() -> false);
+        int result = car.move(() -> false);
 
         //then
         assertThat(result).isEqualTo(0);
@@ -26,7 +26,7 @@ public class RacingCarTest {
         RacingCar car = new RacingCar();
 
         //when
-        int result = car.move2(() -> true);
+        int result = car.move(() -> true);
 
         //then
         assertThat(result).isEqualTo(1);
