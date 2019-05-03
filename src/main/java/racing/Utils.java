@@ -9,4 +9,8 @@ public class Utils {
         Random random = new Random();
         return random.nextInt(RANDOM_NUMBER_BOUNDARY);
     }
+
+    public static String[] splitCarNames(String carNames) {
+        return carNames.split(Consts.FORMAT_COMMA);
+    }
 }
