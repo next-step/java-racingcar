@@ -3,7 +3,6 @@ package racing;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,20 +21,30 @@ public class RacingCarsTest {
                 new RacingCar(names[0], 1)
                 , new RacingCar(names[1], 0)
         );
-       resultRacingCars = new RacingCars(racingCars);
+        resultRacingCars = new RacingCars(racingCars);
     }
 
-    @Test(expected = UnsupportedOperationException.class)
-    public void 레이싱카_외부에서_변경_못하게_설정() {
-        //given
-        List<RacingCar> racingCars = new ArrayList<>();
-        racingCars.add(new RacingCar());
+//    @Test(expected = UnsupportedOperationException.class)
+//    public void 레이싱카_외부에서_변경_못하게_설정() {
+//        //given
+//        List<RacingCar> racingCars = new ArrayList<>();
+//        racingCars.add(new RacingCar());
+//
+//        //when
+//        RacingCars resultRacingCars = new RacingCars(racingCars);
+//
+//        //then
+//        resultRacingCars.add(new RacingCar());
+//    }
 
+    @Test
+    public void 차_2대이상_생성_후_움직임() {
+        //given
         //when
-        RacingCars resultRacingCars = new RacingCars(racingCars);
+        List<RacingCar> racingCars2 = resultRacingCars.getObject();
 
         //then
-        resultRacingCars.add(new RacingCar());
+        assertThat(racingCars2.get(0).toString()).isEqualTo("-");
     }
 
     @Test
@@ -54,5 +63,4 @@ public class RacingCarsTest {
     public void 우승자_이름_구하기() {
         assertThat(resultRacingCars.getWinnerName()).contains("m1");
     }
-
 }

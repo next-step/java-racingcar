@@ -7,6 +7,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
     @Test
+    public void 차생성() {
+        //given
+        //when
+        RacingCar car = new RacingCar("m1");
+
+        //then
+        assertThat(car).hasNoNullFieldsOrProperties();
+    }
+
+    @Test
     public void move_동작_테스트_움직임_조건이_아닐_경우_정지() {
         //given
         RacingCar car = new RacingCar();

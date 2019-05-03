@@ -11,6 +11,10 @@ public class RacingCar {
     public RacingCar() {
     }
 
+    public RacingCar(String name) {
+        this(name, 0);
+    }
+
     public RacingCar(String name, int position) {
         this.name = name;
         this.position = position;
@@ -20,6 +24,10 @@ public class RacingCar {
         if(movingStrategy.isMove())
             return position += 1;
         return position;
+    }
+
+    public boolean isMoving(int randomValue) {
+        return randomValue >= Consts.MOVE_MIN_COUNT;
     }
 
     public boolean isMaxPosition(int maxPosition) {

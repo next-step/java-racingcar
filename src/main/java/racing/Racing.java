@@ -33,9 +33,6 @@ public class Racing {
 //        }
 //    }
 
-    private boolean isMoving(int randomValue) {
-        return randomValue >= Consts.MOVE_MIN_COUNT;
-    }
 
     public RacingCars getRacingCar() {
         return racingCars;

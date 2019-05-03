@@ -1,5 +1,6 @@
 package racing;
 
+import javax.rmi.CORBA.Util;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,7 +10,7 @@ public class RacingCars {
     private int winnerPosition = 0;
 
     public RacingCars(List<RacingCar> racingCars) {
-        this.racingCars = Collections.unmodifiableList(racingCars);
+        this.racingCars = racingCars;
     }
 
     public int count() {
@@ -21,7 +22,7 @@ public class RacingCars {
     }
 
     public List<RacingCar> getObject() {
-        return racingCars;
+        return Collections.unmodifiableList(racingCars);
     }
 
     public List<RacingCar> findWinners() {
@@ -31,7 +32,7 @@ public class RacingCars {
 
     private int maxCoordinate() {
         int maxPosition = 0;
-        for (RacingCar car: racingCars) {
+        for (RacingCar car : racingCars) {
             maxPosition = car.findMaxPosition(maxPosition);
         }
         return maxPosition;
@@ -39,7 +40,7 @@ public class RacingCars {
 
     private List<RacingCar> getWinners(int maxCoordinate) {
         List<RacingCar> winners = new ArrayList<>();
-        for (RacingCar car: racingCars) {
+        for (RacingCar car : racingCars) {
             if (car.isMaxPosition(maxCoordinate)) {
                 winners.add(car);
             }
@@ -63,4 +64,9 @@ public class RacingCars {
         return winnerNames.toString();
     }
 
+    public void randomMove() {
+        for (RacingCar car : racingCars) {
+            car.move(() -> car.isMoving(Utils.generateRandomNum()));
+        }
+    }
 }
