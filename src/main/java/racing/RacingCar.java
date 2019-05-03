@@ -36,4 +36,8 @@ public class RacingCar {
     public String toString() {
         return StringUtils.repeat(PROGRESS_POSITION, position);
     }
+
+    public String getName() {
+        return name;
+    }
 }

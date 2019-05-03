@@ -6,6 +6,7 @@ import java.util.List;
 
 public class RacingCars {
     List<RacingCar> racingCars;
+    private int winnerPosition = 0;
 
     public RacingCars(List<RacingCar> racingCars) {
         this.racingCars = Collections.unmodifiableList(racingCars);
@@ -45,4 +46,21 @@ public class RacingCars {
         }
         return winners;
     }
+
+    public int getWinnerPosition() {
+        for (RacingCar car : racingCars)
+            winnerPosition = car.findMaxPosition(winnerPosition);
+        return winnerPosition;
+    }
+
+    public String getWinnerName() {
+        getWinnerPosition();
+        StringBuilder winnerNames = new StringBuilder();
+        for (RacingCar car : racingCars) {
+            if (car.isMaxPosition(winnerPosition))
+                winnerNames.append(car.getName()).append(Consts.FORMAT_COMMA);
+        }
+        return winnerNames.toString();
+    }
+
 }

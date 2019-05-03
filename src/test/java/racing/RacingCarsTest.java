@@ -49,4 +49,10 @@ public class RacingCarsTest {
         //then
         assertThat(racingCars.get(0).isMaxPosition(1)).isTrue();
     }
+
+    @Test
+    public void 우승자_이름_구하기() {
+        assertThat(resultRacingCars.getWinnerName()).contains("m1");
+    }
+
 }
