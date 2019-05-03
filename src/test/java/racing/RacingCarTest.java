@@ -32,7 +32,7 @@ public class RacingCarTest {
         assertThat(result).isEqualTo(1);
     }
 
-    @Test(expected = ClassCastException.class)
+    @Test(expected = UnsupportedOperationException.class)
     public void 레이싱카_외부에서_변경_못하게_설정() {
         //given
         Racing racing = new Racing(2, 3);
