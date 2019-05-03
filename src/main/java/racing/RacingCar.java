@@ -2,8 +2,9 @@ package racing;
 
 import org.apache.commons.lang3.StringUtils;
 
+import static racing.Consts.PROGRESS_POSITION;
+
 public class RacingCar {
-    public static final String PROGRESS_POSITION = "-";
     int position;
 
     public int move(MovingStrategy movingStrategy) {
