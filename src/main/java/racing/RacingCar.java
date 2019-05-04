@@ -20,8 +20,14 @@ public class RacingCar {
         this.position = position;
     }
 
-    public int move(MovingStrategy movingStrategy) {
-        if(movingStrategy.isMove())
+//    public int move(MovingStrategy movingStrategy) {
+//        if(movingStrategy.isMove())
+//            return position += 1;
+//        return position;
+//    }
+
+    public int move2(boolean isMove) {
+        if(isMove)
             return position += 1;
         return position;
     }

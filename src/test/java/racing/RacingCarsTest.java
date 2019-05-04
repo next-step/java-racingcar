@@ -19,7 +19,7 @@ public class RacingCarsTest {
         names = splitCarNames("m1, m2");
         racingCars = Arrays.asList(
                 new RacingCar(names[0], 1)
-                , new RacingCar(names[1], 0)
+                , new RacingCar(names[1], 1)
         );
         resultRacingCars = new RacingCars(racingCars);
     }
@@ -41,7 +41,7 @@ public class RacingCarsTest {
     public void 차_2대이상_생성_후_움직임() {
         //given
         //when
-        List<RacingCar> racingCars2 = resultRacingCars.getObject();
+        List<RacingCar> racingCars2 = resultRacingCars.getObjects();
 
         //then
         assertThat(racingCars2.get(0).toString()).isEqualTo("-");
@@ -50,7 +50,7 @@ public class RacingCarsTest {
     @Test
     public void 우승자_구하기() {
         //then
-        assertThat(resultRacingCars.findWinners()).hasSize(1);
+        assertThat(resultRacingCars.findWinners()).hasSize(2);
     }
 
     @Test
@@ -62,5 +62,17 @@ public class RacingCarsTest {
     @Test
     public void 우승자_이름_구하기() {
         assertThat(resultRacingCars.getWinnerName()).contains("m1");
+        assertThat(resultRacingCars.getWinnerName()).contains("m2");
+    }
+
+    @Test
+    public void 무빙랜덤생성() {
+        //when
+        resultRacingCars.randomMove(3);
+
+        //then
+        for (RacingCar racingCar : resultRacingCars.getObjects()) {
+            assertThat(racingCar.position).isEqualTo(1);
+        }
     }
 }

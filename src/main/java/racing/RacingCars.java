@@ -20,7 +20,7 @@ public class RacingCars {
         racingCars.add(racingCar);
     }
 
-    public List<RacingCar> getObject() {
+    public List<RacingCar> getObjects() {
         return Collections.unmodifiableList(racingCars);
     }
 
@@ -63,9 +63,10 @@ public class RacingCars {
         return winnerNames.toString();
     }
 
-    public void randomMove() {
+    public void randomMove(int randomValue) {
+        RandomMovingStrategy randomMovingStrategy = new RandomMovingStrategy();
         for (RacingCar car : racingCars) {
-            car.move(() -> car.isMoving(Utils.generateRandomNum()));
+            car.move2(randomMovingStrategy.isMove(randomValue));
         }
     }
 }

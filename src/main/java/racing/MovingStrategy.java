@@ -1,5 +1,5 @@
 package racing;
 
 public interface MovingStrategy {
-    boolean isMove();
+    boolean isMove(int randomValue);
 }
