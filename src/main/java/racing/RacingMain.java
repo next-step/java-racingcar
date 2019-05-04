@@ -2,10 +2,11 @@ package racing;
 
 public class RacingMain {
     public static void main(String[] args) {
-        int carNum = InputView.inputCarNum();
+        String carNames[] = InputView.getNames();
+//        int carNum = InputView.inputCarNum();
         int tryTime = InputView.inputTryTime();
 
-        Racing racing = new Racing(carNum, tryTime);
+        Racing racing = new Racing(carNames, tryTime);
 //        racing.startRace();
 //        ResultView.printCars(racing.getRacingCar());
     }

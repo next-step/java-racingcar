@@ -7,19 +7,22 @@ public class Racing {
     private int tryTime;
     private RacingCars racingCars;
 
-    public Racing(int carNum, int tryTime) {
-        racingCars = createRacingCar(carNum);
+    public Racing(String carNames[], int tryTime) {
+        racingCars = createRacingCar(carNames);
         this.tryTime = tryTime;
     }
 
-    private RacingCars createRacingCar(int carNum) {
-        List<RacingCar> racingCars = new ArrayList<>(carNum);
-        for (int i = 0; i < carNum; i++) {
-            racingCars.add(new RacingCar());
+    private RacingCars createRacingCar(String carNames[]) {
+        List<RacingCar> racingCars = new ArrayList<>(carNames.length);
+        for (int i = 0; i < carNames.length; i++) {
+            racingCars.add(new RacingCar(carNames[i]));
         }
         return new RacingCars(racingCars);
     }
 
+    public void move(){
+
+    }
 //    public void startRace() {
 //        for(int i = 0; i < tryTime; i++) {
 //            moveCars();
@@ -32,7 +35,6 @@ public class Racing {
 //            racingCar.move(()-> isMoving(randomValue));
 //        }
 //    }
-
 
     public RacingCars getRacingCar() {
         return racingCars;

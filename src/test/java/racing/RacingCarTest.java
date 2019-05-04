@@ -43,7 +43,8 @@ public class RacingCarTest {
     @Test
     public void 레이싱카_일급콜렉션_변경() {
         //given
-        Racing racing = new Racing(2, 3);
+        String names[] = {"m1", "m2"};
+        Racing racing = new Racing(names, 3);
 
         //when
         RacingCars racingCars = racing.getRacingCar();
