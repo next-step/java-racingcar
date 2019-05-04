@@ -7,9 +7,15 @@ import java.util.List;
 public class RacingCars {
     List<RacingCar> racingCars;
     private int winnerPosition = 0;
+    MovingStrategy movingStrategy;
 
     public RacingCars(List<RacingCar> racingCars) {
         this.racingCars = racingCars;
+    }
+
+    public RacingCars(List<RacingCar> racingCars, MovingStrategy movingStrategy) {
+        this.racingCars = racingCars;
+        this.movingStrategy = movingStrategy;
     }
 
     public int count() {
@@ -68,5 +74,15 @@ public class RacingCars {
         for (RacingCar car : racingCars) {
             car.move(randomMovingStrategy.isMove(randomValue));
         }
+    }
+
+    public void randomMove2() {
+        for (RacingCar car : racingCars) {
+            addRandomValue(car, movingStrategy);
+        }
+    }
+
+    void addRandomValue(RacingCar car, MovingStrategy movingStrategy) {
+        car.move(movingStrategy.isMove(Utils.generateRandomNum()));
     }
 }

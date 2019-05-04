@@ -21,7 +21,7 @@ public class RacingCarsTest {
                 new RacingCar(names[0], 1)
                 , new RacingCar(names[1], 1)
         );
-        resultRacingCars = new RacingCars(racingCars);
+        resultRacingCars = new RacingCars(racingCars, new ManualMovingStrategy());
     }
 
 //    @Test(expected = UnsupportedOperationException.class)
@@ -69,11 +69,20 @@ public class RacingCarsTest {
     @Test
     public void 무빙랜덤생성() {
         //when
-        resultRacingCars.randomMove(3);
+        resultRacingCars.addRandomValue(racingCars.get(0), resultRacingCars.movingStrategy);
+
+        //then
+        assertThat(racingCars.get(0).getPosition()).isEqualTo(2);
+    }
+
+    @Test
+    public void 무빙랜덤전체생성() {
+        //when
+        resultRacingCars.randomMove2();
 
         //then
         for (RacingCar racingCar : resultRacingCars.getObjects()) {
-            assertThat(racingCar.position).isEqualTo(1);
+            assertThat(racingCar.getPosition()).isEqualTo(2);
         }
     }
 }

@@ -5,8 +5,8 @@ import org.apache.commons.lang3.StringUtils;
 import static racing.Consts.PROGRESS_POSITION;
 
 public class RacingCar {
-    String name;
-    int position;
+    private String name;
+    private int position;
 
     public RacingCar() {
     }
@@ -43,5 +43,9 @@ public class RacingCar {
 
     public String getName() {
         return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 }
