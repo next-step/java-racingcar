@@ -20,20 +20,10 @@ public class RacingCar {
         this.position = position;
     }
 
-//    public int move(MovingStrategy movingStrategy) {
-//        if(movingStrategy.isMove())
-//            return position += 1;
-//        return position;
-//    }
-
-    public int move2(boolean isMove) {
-        if(isMove)
+    public int move(boolean isMove) {
+        if (isMove)
             return position += 1;
         return position;
-    }
-
-    public boolean isMoving(int randomValue) {
-        return randomValue >= Consts.MOVE_MIN_COUNT;
     }
 
     public boolean isMaxPosition(int maxPosition) {

@@ -20,9 +20,6 @@ public class Racing {
         return new RacingCars(racingCars);
     }
 
-    public void move(){
-
-    }
 //    public void startRace() {
 //        for(int i = 0; i < tryTime; i++) {
 //            moveCars();

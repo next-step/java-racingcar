@@ -16,29 +16,29 @@ public class RacingCarTest {
         assertThat(car).hasNoNullFieldsOrProperties();
     }
 
-//    @Test
-//    public void move_동작_테스트_움직임_조건이_아닐_경우_정지() {
-//        //given
-//        RacingCar car = new RacingCar();
-//
-//        //when
-////        int result = car.move(() -> false);
-//
-//        //then
-//        assertThat(result).isEqualTo(0);
-//    }
-//
-//    @Test
-//    public void move_동작_테스트_움직임_조건일_경우_이동() {
-//        //given
-//        RacingCar car = new RacingCar();
-//
-//        //when
-//        int result = car.move(() -> true);
-//
-//        //then
-//        assertThat(result).isEqualTo(1);
-//    }
+    @Test
+    public void move_동작_테스트_움직임_조건이_아닐_경우_정지() {
+        //given
+        RacingCar car = new RacingCar();
+
+        //when
+        int result = car.move(Boolean.FALSE);
+
+        //then
+        assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    public void move_동작_테스트_움직임_조건일_경우_이동() {
+        //given
+        RacingCar car = new RacingCar();
+
+        //when
+        int result = car.move(Boolean.TRUE);
+
+        //then
+        assertThat(result).isEqualTo(1);
+    }
 
     @Test
     public void 레이싱카_일급콜렉션_변경() {

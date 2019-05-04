@@ -3,7 +3,6 @@ package racing;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.StringJoiner;
 
 public class RacingCars {
     List<RacingCar> racingCars;
@@ -67,7 +66,7 @@ public class RacingCars {
     public void randomMove(int randomValue) {
         RandomMovingStrategy randomMovingStrategy = new RandomMovingStrategy();
         for (RacingCar car : racingCars) {
-            car.move2(randomMovingStrategy.isMove(randomValue));
+            car.move(randomMovingStrategy.isMove(randomValue));
         }
     }
 }
