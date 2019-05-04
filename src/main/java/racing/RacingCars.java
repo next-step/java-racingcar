@@ -3,6 +3,7 @@ package racing;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.StringJoiner;
 
 public class RacingCars {
     List<RacingCar> racingCars;
@@ -55,12 +56,12 @@ public class RacingCars {
 
     public String getWinnerName() {
         getWinnerPosition();
-        StringBuilder winnerNames = new StringBuilder();
+        List<String> winnerNames = new ArrayList<>();
         for (RacingCar car : racingCars) {
             if (car.isMaxPosition(winnerPosition))
-                winnerNames.append(car.getName()).append(Consts.FORMAT_COMMA);
+                winnerNames.add(car.getName());
         }
-        return winnerNames.toString();
+        return String.join(Consts.FORMAT_COMMA, winnerNames);
     }
 
     public void randomMove(int randomValue) {

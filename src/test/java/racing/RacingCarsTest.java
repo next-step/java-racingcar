@@ -61,6 +61,7 @@ public class RacingCarsTest {
 
     @Test
     public void 우승자_이름_구하기() {
+        System.out.println(resultRacingCars.getWinnerName());
         assertThat(resultRacingCars.getWinnerName()).contains("m1");
         assertThat(resultRacingCars.getWinnerName()).contains("m2");
     }
