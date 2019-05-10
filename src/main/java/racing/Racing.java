@@ -32,4 +32,8 @@ public class Racing {
     public RacingCars getRacingCar() {
         return racingCars;
     }
+
+    public String whoIsWin() {
+        return racingCars.getWinnerName();
+    }
 }
