@@ -3,6 +3,7 @@ package racing;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,18 +25,11 @@ public class RacingCarsTest {
         resultRacingCars = new RacingCars(racingCars);
     }
 
-//    @Test(expected = UnsupportedOperationException.class)
-//    public void 레이싱카_외부에서_변경_못하게_설정() {
-//        //given
-//        List<RacingCar> racingCars = new ArrayList<>();
-//        racingCars.add(new RacingCar());
-//
-//        //when
-//        RacingCars resultRacingCars = new RacingCars(racingCars);
-//
-//        //then
-//        resultRacingCars.add(new RacingCar());
-//    }
+    @Test(expected = UnsupportedOperationException.class)
+    public void 레이싱카_외부에서_변경_못하게_설정() {
+        //then
+        resultRacingCars.add(new RacingCar());
+    }
 
     @Test
     public void 차_2대이상_생성_후_움직임() {
