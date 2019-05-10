@@ -85,7 +85,9 @@ public class RacingCarsTest {
 
         //then
         for (RacingCar racingCar : resultRacingCars.getObjects()) {
+            System.out.println(racingCar.toString());
             assertThat(racingCar.getPosition()).isGreaterThanOrEqualTo(1);
         }
     }
+
 }

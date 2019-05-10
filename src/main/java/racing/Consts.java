@@ -6,4 +6,5 @@ public class Consts {
 
     public static final String FORMAT_COMMA = ",";
     public static final String PROGRESS_POSITION = "-";
+    public static final String FORMAT_COLON = " : ";
 }

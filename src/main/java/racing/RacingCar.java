@@ -2,8 +2,6 @@ package racing;
 
 import org.apache.commons.lang3.StringUtils;
 
-import static racing.Consts.PROGRESS_POSITION;
-
 public class RacingCar {
     private String name;
     private int position;
@@ -36,16 +34,16 @@ public class RacingCar {
         return checkPosition;
     }
 
-    @Override
-    public String toString() {
-        return StringUtils.repeat(PROGRESS_POSITION, position);
-    }
-
     public String getName() {
         return name;
     }
 
     public int getPosition() {
         return position;
+    }
+
+    @Override
+    public String toString() {
+        return name + Consts.FORMAT_COLON + StringUtils.repeat(Consts.PROGRESS_POSITION, position);
     }
 }
