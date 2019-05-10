@@ -7,15 +7,9 @@ import java.util.List;
 public class RacingCars {
     List<RacingCar> racingCars;
     private int winnerPosition = 0;
-    MovingStrategy movingStrategy;
 
     public RacingCars(List<RacingCar> racingCars) {
         this.racingCars = racingCars;
-    }
-
-    public RacingCars(List<RacingCar> racingCars, MovingStrategy movingStrategy) {
-        this.racingCars = racingCars;
-        this.movingStrategy = movingStrategy;
     }
 
     public int count() {
@@ -69,16 +63,9 @@ public class RacingCars {
         return String.join(Consts.FORMAT_COMMA, winnerNames);
     }
 
-    public void randomMove(int randomValue) {
-        RandomMovingStrategy randomMovingStrategy = new RandomMovingStrategy();
+    public void randomMove() {
         for (RacingCar car : racingCars) {
-            car.move(randomMovingStrategy.isMove(randomValue));
-        }
-    }
-
-    public void randomMove2() {
-        for (RacingCar car : racingCars) {
-            addRandomValue(car, movingStrategy);
+            addRandomValue(car, new RandomMovingStrategy());
         }
     }
 

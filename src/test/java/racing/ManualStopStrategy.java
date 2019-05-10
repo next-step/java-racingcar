@@ -1,8 +1,8 @@
 package racing;
 
-public class ManualMovingStrategy implements MovingStrategy {
+public class ManualStopStrategy implements MovingStrategy {
     @Override
     public boolean isMove(int randomValue) {
-        return true;
+        return false;
     }
 }
