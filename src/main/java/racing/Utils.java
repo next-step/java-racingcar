@@ -2,11 +2,15 @@ package racing;
 
 import java.util.Random;
 
-public class Utils {
-    private static int RANDOM_NUMBER_BOUNDARY = 10;
+import static racing.Consts.RANDOM_NUMBER_BOUNDARY;
 
-    public static int generateRandomNum(){
+public class Utils {
+    public static int generateRandomNum() {
         Random random = new Random();
         return random.nextInt(RANDOM_NUMBER_BOUNDARY);
+    }
+
+    public static String[] splitCarNames(String carNames) {
+        return carNames.split(Consts.FORMAT_COMMA);
     }
 }

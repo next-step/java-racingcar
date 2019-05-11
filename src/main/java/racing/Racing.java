@@ -1,42 +1,33 @@
 package racing;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import static racing.Utils.generateRandomNum;
-
 public class Racing {
-    private int tryTime;
-    private List<RacingCar> racingCars;
+    private RacingCars racingCars;
 
-    public Racing(int carNum, int tryTime) {
-        racingCars = createRacingCar(carNum);
-        this.tryTime = tryTime;
+    public Racing(String[] carNames) {
+        racingCars = createRacingCar(carNames);
     }
 
-    private List<RacingCar> createRacingCar(int carNum) {
-        List<RacingCar> racingCars = new ArrayList<>(carNum);
-        for (int i = 0; i < carNum; i++) {
-            racingCars.add(new RacingCar());
+    private RacingCars createRacingCar(String carNames[]) {
+        List<RacingCar> racingCars = new ArrayList<>(carNames.length);
+        for (String carName : carNames) {
+            racingCars.add(new RacingCar(carName));
         }
+        return new RacingCars(racingCars);
+    }
+
+    public RacingCars onceMove() {
+        racingCars.randomMove();
         return racingCars;
     }
 
-    public void startRace() {
-        for(int i = 0; i < tryTime; i++) {
-            moveCars();
-        }
+    public RacingCars getRacingCar() {
+        return racingCars;
     }
 
-    private void moveCars() {
-        for(RacingCar racingCar: racingCars) {
-            int random = generateRandomNum();
-            racingCar.move(random);
-        }
-    }
-
-    public List<RacingCar> getRacingCars() {
-        return Collections.unmodifiableList(racingCars);
+    public String whoIsWin() {
+        return racingCars.getWinnerName();
     }
 }
