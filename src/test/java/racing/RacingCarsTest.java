@@ -38,7 +38,7 @@ public class RacingCarsTest {
         List<RacingCar> racingCars2 = resultRacingCars.getObjects();
 
         //then
-        assertThat(racingCars2.get(0).toString()).isEqualTo("-");
+        assertThat(racingCars2.get(0).toString()).isEqualTo("m1 : -");
     }
 
     @Test
