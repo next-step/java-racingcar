@@ -15,9 +15,6 @@ public class WebMain {
     public static void main(String[] args) {
         // root is 'src/main/resources', so put files in 'src/main/resources/public'
         staticFiles.location("/templates"); // Static files
-        get("/", (req, res) -> {
-            return render(null, "/index.html");
-        });
 
         post("/name", (req, res) -> {
             String requestParam = req.queryParams("names");
