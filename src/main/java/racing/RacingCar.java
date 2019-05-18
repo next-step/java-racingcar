@@ -5,6 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 public class RacingCar {
     private String name;
     private int position;
+    private String webPosition;
 
     public RacingCar() {
     }
@@ -40,6 +41,10 @@ public class RacingCar {
 
     public int getPosition() {
         return position;
+    }
+
+    public String getWebPosition() {
+        return StringUtils.repeat("\u00A0\u00A0", position);
     }
 
     @Override
