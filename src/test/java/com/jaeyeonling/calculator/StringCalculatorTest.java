@@ -17,9 +17,9 @@ public class StringCalculatorTest {
 
     @Test
     void subtract() {
-        assertThat(calculator.calculate("1 - 1")).isEqualTo(1);
-        assertThat(calculator.calculate("10 - 2")).isEqualTo(5);
-        assertThat(calculator.calculate("500 - 2")).isEqualTo(250);
+        assertThat(calculator.calculate("1 - 1")).isEqualTo(0);
+        assertThat(calculator.calculate("10 - 2")).isEqualTo(8);
+        assertThat(calculator.calculate("500 - 2")).isEqualTo(498);
     }
 
     @Test
