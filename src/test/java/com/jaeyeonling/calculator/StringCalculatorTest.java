@@ -50,4 +50,18 @@ public class StringCalculatorTest {
                 });
     }
 
+
+    @Test
+    void invalidOperator() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    calculator.calculate("1 & 1");
+                });
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    calculator.calculate("1 ( 1");
+                });
+    }
+
 }
