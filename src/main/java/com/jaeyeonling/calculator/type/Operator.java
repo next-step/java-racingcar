@@ -1,8 +1,5 @@
 package com.jaeyeonling.calculator.type;
 
-
-import com.jaeyeonling.calculator.Calculator;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -12,33 +9,31 @@ public enum Operator {
     ADD("+") {
         @Override
         public int apply(int a, int b) {
-            return calculator.add(a, b);
+            return a + b;
         }
     },
     SUBTRACT("-") {
         @Override
         public int apply(int a, int b) {
-            return calculator.subtract(a, b);
+            return a - b;
         }
     },
     MULTIPLY("*") {
         @Override
         public int apply(int a, int b) {
-            return calculator.multiply(a, b);
+            return a * b;
         }
     },
     DIVIDE("/") {
         @Override
         public int apply(int a, int b) {
-            return calculator.divide(a, b);
+            return a / b;
         }
     };
 
     //
     //
     //
-
-    private static final Calculator calculator = new Calculator();
 
     private static final Map<String, Operator> operatorMap = new HashMap<>();
     static {
