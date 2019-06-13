@@ -7,10 +7,11 @@ public class StringCalculator {
     public int calculate(final String input) {
         final String[] splitInput = input.split(" ");
 
-        if ("+".equals(splitInput[1])) {
+        final String operator = splitInput[1];
+        if ("+".equals(operator)) {
             return calculator.add(Integer.valueOf(splitInput[0]), Integer.valueOf(splitInput[2]));
         }
-        if ("-".equals(splitInput[1])) {
+        if ("-".equals(operator)) {
             return calculator.subtract(Integer.valueOf(splitInput[0]), Integer.valueOf(splitInput[2]));
         }
 
