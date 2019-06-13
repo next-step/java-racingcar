@@ -5,6 +5,10 @@ public class StringCalculator {
     private static final Calculator calculator = new Calculator();
 
     public int calculate(final String input) {
+        if (input == null || input.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+
         final String[] splitInput = input.split(" ");
 
         final String operator = splitInput[1];
