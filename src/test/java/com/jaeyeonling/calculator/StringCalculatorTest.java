@@ -11,6 +11,8 @@ public class StringCalculatorTest {
     @Test
     void add() {
         assertThat(calculator.calculate("1 + 1")).isEqualTo(2);
+        assertThat(calculator.calculate("2 + 5")).isEqualTo(7);
+        assertThat(calculator.calculate("123 + 123")).isEqualTo(246);
     }
 
     @Test
