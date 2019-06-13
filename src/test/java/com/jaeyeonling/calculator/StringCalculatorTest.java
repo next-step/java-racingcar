@@ -24,7 +24,9 @@ public class StringCalculatorTest {
 
     @Test
     void multiply() {
-
+        assertThat(calculator.calculate("1 * 1")).isEqualTo(1);
+        assertThat(calculator.calculate("10 * 2")).isEqualTo(20);
+        assertThat(calculator.calculate("500 * 2")).isEqualTo(1000);
     }
 
     @Test
