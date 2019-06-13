@@ -37,4 +37,16 @@ class StringCalculatorTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> stringCalculator.divide(4,0));
     }
+
+    @Test
+    void multiCalculator() {
+        assertCalculator(2, '+', 3, 5);
+        assertCalculator(3, '-', 1, 2);
+        assertCalculator(4, '/', 2, 2);
+        assertCalculator(2, '*', 3, 6);
+    }
+
+    private void assertCalculator(int num, char symbol, int num2, int result) {
+        assertThat(stringCalculator.calculate(num, symbol, num2)).isEqualTo(result);
+    }
 }
