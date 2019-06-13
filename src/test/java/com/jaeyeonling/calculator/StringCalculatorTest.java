@@ -3,6 +3,7 @@ package com.jaeyeonling.calculator;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class StringCalculatorTest {
 
@@ -35,4 +36,18 @@ public class StringCalculatorTest {
         assertThat(calculator.calculate("10 / 2")).isEqualTo(5);
         assertThat(calculator.calculate("500 / 2")).isEqualTo(250);
     }
+
+    @Test
+    void invalidInput() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    calculator.calculate(null);
+                });
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    calculator.calculate("");
+                });
+    }
+
 }
