@@ -16,11 +16,11 @@ class CalculatorTest {
     }
 
     @Test
-    void minus() {
-        assertThat(calculator.minus(1, 2)).isEqualTo(-1);
-        assertThat(calculator.minus(3, 4)).isEqualTo(-1);
-        assertThat(calculator.minus(100, 200)).isEqualTo(-100);
-        assertThat(calculator.minus(10, 2)).isEqualTo(8);
+    void subtract() {
+        assertThat(calculator.subtract(1, 2)).isEqualTo(-1);
+        assertThat(calculator.subtract(3, 4)).isEqualTo(-1);
+        assertThat(calculator.subtract(100, 200)).isEqualTo(-100);
+        assertThat(calculator.subtract(10, 2)).isEqualTo(8);
     }
 
     @Test
