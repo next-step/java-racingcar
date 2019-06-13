@@ -18,4 +18,10 @@ class StringCalculatorTest {
     void minus() {
         assertThat(stringCalculator.minus(3, 2)).isEqualTo(1);
     }
+
+    @Test
+    void multiply() {
+        int result = stringCalculator.multiply(2,3);
+        assertThat(result).isEqualTo(6);
+    }
 }
