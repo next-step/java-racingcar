@@ -11,7 +11,8 @@ class CalculatorTest {
     void add() {
         final Calculator calculator = new Calculator();
 
-        final int result = calculator.add(1, 2);
-        assertThat(result).isEqualTo(3);
+        assertThat(calculator.add(1, 2)).isEqualTo(3);
+        assertThat(calculator.add(3, 4)).isEqualTo(7);
+        assertThat(calculator.add(100, 200)).isEqualTo(300);
     }
 }
