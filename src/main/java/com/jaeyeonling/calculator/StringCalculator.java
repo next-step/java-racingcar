@@ -25,6 +25,6 @@ public class StringCalculator {
             return calculator.divide(Integer.valueOf(splitInput[0]), Integer.valueOf(splitInput[2]));
         }
 
-        return 0;
+        throw new IllegalArgumentException();
     }
 }
