@@ -38,6 +38,14 @@ public class StringCalculatorTest {
     }
 
     @Test
+    void complexCalculate() {
+        assertThat(calculator.calculate("1 + 1 + 1 + 123")).isEqualTo(126);
+        assertThat(calculator.calculate("1 - 1 + 1 * 100")).isEqualTo(100);
+        assertThat(calculator.calculate("1 * 2 * 3 * 4 * 5")).isEqualTo(120);
+        assertThat(calculator.calculate("100 / 2 * 2 + 100 - 50")).isEqualTo(100);
+    }
+
+    @Test
     void invalidInput() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
