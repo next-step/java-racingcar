@@ -17,6 +17,9 @@ public class StringCalculator {
         if ("*".equals(operator)) {
             return calculator.multiply(Integer.valueOf(splitInput[0]), Integer.valueOf(splitInput[2]));
         }
+        if ("/".equals(operator)) {
+            return calculator.divide(Integer.valueOf(splitInput[0]), Integer.valueOf(splitInput[2]));
+        }
 
         return 0;
     }
