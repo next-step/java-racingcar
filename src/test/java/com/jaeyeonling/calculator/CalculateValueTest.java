@@ -10,4 +10,37 @@ public class CalculateValueTest {
     void createCalculateValue() {
         assertThat(CalculateValue.text("1 + 1")).isNotNull();
     }
+
+    @Test
+    void invalidText() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    CalculateValue.text(null);
+                });
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    CalculateValue.text("");
+                });
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    CalculateValue.text("123");
+                });
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    CalculateValue.text("123 &");
+                });
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    CalculateValue.text("123 &");
+                });
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    CalculateValue.text("123 ^ 23423");
+                });
+    }
 }
