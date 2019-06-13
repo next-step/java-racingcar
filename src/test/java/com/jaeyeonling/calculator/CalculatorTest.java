@@ -22,4 +22,12 @@ class CalculatorTest {
         assertThat(calculator.minus(100, 200)).isEqualTo(-100);
         assertThat(calculator.minus(10, 2)).isEqualTo(8);
     }
+
+    @Test
+    void multiply() {
+        assertThat(calculator.multiply(1, 2)).isEqualTo(2);
+        assertThat(calculator.multiply(3, 4)).isEqualTo(12);
+        assertThat(calculator.multiply(100, 200)).isEqualTo(20_000);
+        assertThat(calculator.multiply(10, 2)).isEqualTo(20);
+    }
 }
