@@ -36,7 +36,7 @@ public class StringTest {
 
     @Test
     void chatAtException1() {
-        assertThatExceptionOfType(IndexOutOfBoundsException.class)
+        assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
                 .isThrownBy(() -> {
                     char result = "abc".charAt(5);
                 })
