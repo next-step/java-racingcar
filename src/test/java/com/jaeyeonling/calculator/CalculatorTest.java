@@ -21,5 +21,8 @@ class CalculatorTest {
         final Calculator calculator = new Calculator();
 
         assertThat(calculator.minus(1, 2)).isEqualTo(-1);
+        assertThat(calculator.minus(3, 4)).isEqualTo(-1);
+        assertThat(calculator.minus(100, 200)).isEqualTo(-100);
+        assertThat(calculator.minus(10, 2)).isEqualTo(8);
     }
 }
