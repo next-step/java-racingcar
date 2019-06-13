@@ -15,4 +15,11 @@ class CalculatorTest {
         assertThat(calculator.add(3, 4)).isEqualTo(7);
         assertThat(calculator.add(100, 200)).isEqualTo(300);
     }
+
+    @Test
+    void minus() {
+        final Calculator calculator = new Calculator();
+
+        assertThat(calculator.minus(1, 2)).isEqualTo(-1);
+    }
 }
