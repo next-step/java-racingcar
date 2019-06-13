@@ -1,43 +1,42 @@
 package calculator;
 
+import java.util.function.IntBinaryOperator;
+
 public class StringCalculator {
 
-    int plus(int num,
-             int num2) {
-        return num + num2;
+    public StringCalculator() {
+
     }
 
-    int minus(int num1,
-              int num2) {
-        return num1 - num2;
+    public int calculate(int num, Operator operator, int num2) {
+        return operator.calculator(num, num2);
     }
 
-    int divide(int num,
-               int num2) {
-        validateDivision(num2);
-        return num / num2;
-    }
+    enum Operator {
+        PLUS('+', (num, num2) -> num + num2),
+        MINUS('-', (num, num2) -> num - num2),
+        MULTIPLY('*', (num, num2) -> num * num2),
+        DIVIDE('/', (num, num2) -> {
+            validateDivision(num2);
+            return num / num2;
+        });
 
-    private void validateDivision(int number) {
-        if (number == 0) {
-            throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
+        private final char symbol;
+        private final IntBinaryOperator expression;
+
+        Operator(char symbol, IntBinaryOperator expression) {
+            this.symbol = symbol;
+            this.expression = expression;
         }
-    }
 
-    int multiply(int num,
-                 int num2) {
-        return num * num2;
-    }
+        public int calculator(int num, int num2) {
+            return expression.applyAsInt(num, num2);
+        }
 
-    public int calculate(int num,
-                          char symbol,
-                          int num2) {
-        switch (symbol){
-            case '+' : return plus(num, num2);
-            case '-' : return minus(num, num2);
-            case '/' : return divide(num, num2);
-            case '*' : return multiply(num, num2);
-            default: throw new IllegalArgumentException(symbol + " 부호는 연산이 불가합니다.");
+        private static void validateDivision(int number) {
+            if (number == 0) {
+                throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
+            }
         }
     }
 }
