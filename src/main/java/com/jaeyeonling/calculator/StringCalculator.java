@@ -7,6 +7,13 @@ public class StringCalculator {
     public int calculate(final String input) {
         final String[] splitInput = input.split(" ");
 
-        return calculator.add(Integer.valueOf(splitInput[0]), Integer.valueOf(splitInput[2]));
+        if ("+".equals(splitInput[1])) {
+            return calculator.add(Integer.valueOf(splitInput[0]), Integer.valueOf(splitInput[2]));
+        }
+        if ("-".equals(splitInput[1])) {
+            return calculator.subtract(Integer.valueOf(splitInput[0]), Integer.valueOf(splitInput[2]));
+        }
+
+        return 0;
     }
 }
