@@ -30,4 +30,12 @@ class CalculatorTest {
         assertThat(calculator.multiply(100, 200)).isEqualTo(20_000);
         assertThat(calculator.multiply(10, 2)).isEqualTo(20);
     }
+
+    @Test
+    void divide() {
+        assertThat(calculator.divide(2, 2)).isEqualTo(1);
+        assertThat(calculator.divide(6, 3)).isEqualTo(2);
+        assertThat(calculator.divide(100, 10)).isEqualTo(10);
+        assertThat(calculator.divide(50, 2)).isEqualTo(25);
+    }
 }
