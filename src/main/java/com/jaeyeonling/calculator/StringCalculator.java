@@ -11,18 +11,29 @@ public class StringCalculator {
 
         final String[] splitInput = input.split(" ");
 
-        final String operator = splitInput[1];
+        int result = Integer.valueOf(splitInput[0]);
+        for (int i = 1; i < splitInput.length; i += 2) {
+            final String operator = splitInput[i];
+            final int number = Integer.valueOf(splitInput[i + 1]);
+
+            result = calculate(operator, result, number);
+        }
+
+        return result;
+    }
+
+    private int calculate(final String operator, final int a, final int b) {
         if ("+".equals(operator)) {
-            return calculator.add(Integer.valueOf(splitInput[0]), Integer.valueOf(splitInput[2]));
+            return calculator.add(a, b);
         }
         if ("-".equals(operator)) {
-            return calculator.subtract(Integer.valueOf(splitInput[0]), Integer.valueOf(splitInput[2]));
+            return calculator.subtract(a, b);
         }
         if ("*".equals(operator)) {
-            return calculator.multiply(Integer.valueOf(splitInput[0]), Integer.valueOf(splitInput[2]));
+            return calculator.multiply(a, b);
         }
         if ("/".equals(operator)) {
-            return calculator.divide(Integer.valueOf(splitInput[0]), Integer.valueOf(splitInput[2]));
+            return calculator.divide(a, b);
         }
 
         throw new IllegalArgumentException();
