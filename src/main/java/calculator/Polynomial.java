@@ -52,7 +52,7 @@ class Polynomial {
         Operable operable = BinaryOperator.of(operator);
         int result = operable.calculate(operand1, operand2);
 
-        operands.add(result);
+        operands.push(result);
         return result;
     }
 }
