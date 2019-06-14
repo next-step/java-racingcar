@@ -23,8 +23,8 @@ public enum FourArithmeticalRules {
     }
     
     public static FourArithmeticalRules getMathSign(String sign) {
-        FourArithmeticalRules[] fourArithmeticalRules = FourArithmeticalRules.values();
-        Stream<FourArithmeticalRules> result = Arrays.stream(fourArithmeticalRules)
+        FourArithmeticalRules[] arithmeticalRules = FourArithmeticalRules.values();
+        Stream<FourArithmeticalRules> result = Arrays.stream(arithmeticalRules)
             .filter(arithmeticalRule -> sign.equals(arithmeticalRule.mathSign));
         
         try {
@@ -32,5 +32,13 @@ public enum FourArithmeticalRules {
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
+    }
+    
+    public static boolean hasMathSign(String sign) {
+        FourArithmeticalRules[] arithmeticalRules = FourArithmeticalRules.values();
+        return Arrays.stream(arithmeticalRules)
+            .anyMatch(arithmeticalRule -> 
+                sign.equals(arithmeticalRule.mathSign)
+            );
     }
 }

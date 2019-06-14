@@ -1,30 +1,32 @@
 package calculate;
 
-import org.apache.commons.lang3.StringUtils;
-
-import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class Calculator {
+    private final static String SPLIT_REGEX = " ";
+    private final static int FIRST_NUMBER_INDEX = 0;
+    private final static int FIRST_SIGN_INDEX = 1;
+    private final static int JUMP_POINT = 2;
+    
     public int calculate(String method) {
         if (!CalculateValidator.isCalculable(method)) {
             throw new IllegalArgumentException();
         }
-    
-        String baseNumer = null;
+        
+        String[] methodPieces = method.split(SPLIT_REGEX);
         FourArithmeticalRules arithmeticalRule = null;
-        String[] methodPieces = method.split(" ");
-        for (String methodPiece : methodPieces) {
-            if (StringUtils.isNumeric(methodPiece)) {
-                if (arithmeticalRule != null) {
-                    baseNumer = String.valueOf(arithmeticalRule.calculate(Integer.parseInt(baseNumer), Integer.parseInt(methodPiece)));
-                    continue;
-                }
-                baseNumer = methodPiece;
-                continue;
-            }
-            
-            arithmeticalRule = FourArithmeticalRules.getMathSign(methodPiece);
+        int baseNumber = Integer.parseInt(methodPieces[FIRST_NUMBER_INDEX]);
+        int nextNumber = 0;
+        for (int signIndex = FIRST_SIGN_INDEX; signIndex < methodPieces.length; signIndex += JUMP_POINT) {
+            arithmeticalRule = FourArithmeticalRules.getMathSign(methodPieces[signIndex]);
+            nextNumber = Integer.parseInt(methodPieces[getNumberIndex(signIndex)]);
+            baseNumber = arithmeticalRule.calculate(baseNumber, nextNumber);
         }
-        return Integer.parseInt(baseNumer);
+        
+        return baseNumber;
+    }
+    
+    private int getNumberIndex(int signIndex) {
+        return signIndex + 1;
     }
 }
