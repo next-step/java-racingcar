@@ -8,6 +8,10 @@ public class StringCalculateValue {
     private static final OperatorProvider operatorProvider = new OperatorProvider();
     private static final String SEPARATOR = " ";
 
+    //
+    //
+    //
+
     private final String[] splitValue;
 
     private int result;
