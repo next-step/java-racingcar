@@ -2,23 +2,36 @@ package calculator;
 
 import java.util.Scanner;
 
+import static calculator.CalculatorConsole.Console.println;
+
 public class CalculatorConsole {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         StringCalculator stringCalculator = new StringCalculator();
         while (true){
             try{
-                System.out.println("문자열을 입력하세요.(종료: q) \n구분자는 공백(\" \")입니다.");
-                String inputValue = scanner.nextLine();
-                if(inputValue.equals("q")) break;
-                int result = stringCalculator.calculate(inputValue);
-                System.out.println("RESULT: " + result);
-
+                String inputValue = Console.input();
+                if(inputValue.equals("q")) {
+                    break;
+                }
+                println("결과: " + stringCalculator.calculate(inputValue));
             }catch (Exception e){
-                System.out.println(e.getMessage());
+                println(e.getMessage());
             }
-            System.out.println("=========================");
+            println("======================================");
         }
-        System.out.println("프로그램 종료");
+        println("프로그램 종료");
+    }
+
+    static class Console {
+        private static Scanner scanner = new Scanner(System.in);
+
+        public static String input(){
+            println("문자열을 입력하세요.(종료:q, 구분자는 공백입니다.)");
+            return scanner.nextLine();
+        }
+
+        public static void println(String text){
+            System.out.println(text);
+        }
     }
 }
