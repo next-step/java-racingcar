@@ -32,4 +32,11 @@ public class Operator {
     int multiply(int firstNumber, int secondNumber) {
         return firstNumber * secondNumber;
     }
+
+    /*
+    2개의 숫자를 파라미터로 전달받아 나눗셈 하는 기능
+     */
+    int divided(int firstNumber, int secondNumber) {
+        return firstNumber / secondNumber;
+    }
 }
