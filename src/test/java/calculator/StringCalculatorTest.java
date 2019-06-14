@@ -16,6 +16,27 @@ public class StringCalculatorTest {
     }
 
     @Test
+    void add() {
+        assertThat(Operator.ADD.getResult(4, 3)).isEqualTo(7);
+    }
+
+    @Test
+    void subtract() {
+        assertThat(Operator.SUBTRACT.getResult(7, 2)).isEqualTo(5);
+    }
+
+    @Test
+    void multiply() {
+        assertThat(Operator.MULTIPLY.getResult(3, 7)).isEqualTo(21);
+    }
+
+    @Test
+    void divide() {
+        assertThat(Operator.DIVIDE.getResult(10, 2)).isEqualTo(5);
+    }
+
+
+    @Test
     void isEmpty() {
         assertThat(stringCalculator.isEmpty(null)).isTrue();
         assertThat(stringCalculator.isEmpty(" ")).isTrue();

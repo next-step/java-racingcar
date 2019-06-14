@@ -7,6 +7,7 @@ public class Calculator {
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
 
+
         StringCalculator stringCalculator = new StringCalculator();
 
         int result = stringCalculator.calculate(input);
