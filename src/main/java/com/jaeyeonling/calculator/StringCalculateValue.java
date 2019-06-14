@@ -1,9 +1,11 @@
 package com.jaeyeonling.calculator;
 
+import com.jaeyeonling.calculator.provider.OperatorProvider;
 import com.jaeyeonling.calculator.type.Operator;
 
 public class CalculateValue {
 
+    private static final OperatorProvider operatorProvider = new OperatorProvider();
     private static final String SEPARATOR = " ";
 
     private final String[] splitValue;
@@ -35,7 +37,7 @@ public class CalculateValue {
     }
 
     public Operator getOperator(final int index) {
-        return Operator.symbol(splitValue[index]);
+        return operatorProvider.symbol(splitValue[index]);
     }
 
     //

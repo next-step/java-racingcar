@@ -1,9 +1,5 @@
 package com.jaeyeonling.calculator.type;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-
 public enum Operator {
     
     ADD("+") {
@@ -31,39 +27,16 @@ public enum Operator {
         }
     };
 
-    //
-    //
-    //
-
-    private static final Map<String, Operator> operatorMap = new HashMap<>();
-    static {
-        for (final Operator operator : values()) {
-            operatorMap.put(operator.symbol, operator);
-        }
-    }
-
     private final String symbol;
-
-    //
-    //
-    //
 
     Operator(final String symbol) {
         this.symbol = symbol;
     }
 
-    //
-    //
-    //
-
     public abstract int apply(int a, int b);
 
-    public static Operator symbol(final String symbol) {
-        final Operator operator = operatorMap.get(symbol);
-        if (Objects.isNull(operator)) {
-            throw new IllegalArgumentException();
-        }
-
-        return operator;
+    public String getSymbol() {
+        return this.symbol;
     }
+
 }
