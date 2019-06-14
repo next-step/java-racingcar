@@ -1,5 +1,7 @@
 package camp.nextstep.edu.calculator;
 
+import camp.nextstep.edu.util.ListUtils;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -33,22 +35,18 @@ public class SequentialCalculator implements StringCalculator<Integer> {
         }
         // 종료 조건
         if (elements.size() == SIZE_CALCULATION_TERMINATED) {
-            final String result = elements.get(INDEX_FIRST_ELEMENT);
-            return Integer.parseInt(result);
+            return ListUtils.getForInteger(elements, INDEX_FIRST_ELEMENT);
         }
 
         // 처음 3개의 원소들(숫자, 연산자, 숫자)을 계산
-        final String firstElement = elements.get(INDEX_FIRST_ELEMENT);
-        final int source = Integer.parseInt(firstElement);
-        final String secondElement = elements.get(INDEX_SECOND_ELEMENT);
-        final OperatorType operatorType = OperatorType.from(secondElement);
-        final String thirdElement = elements.get(INDEX_THIRD_ELEMENT);
-        final int target = Integer.parseInt(thirdElement);
+        final Integer source = ListUtils.getForInteger(elements, INDEX_FIRST_ELEMENT);
+        final OperatorType operatorType = ListUtils.getForOperatorType(elements, INDEX_SECOND_ELEMENT);
+        final Integer target = ListUtils.getForInteger(elements, INDEX_THIRD_ELEMENT);
         final int result = operatorType.operate(source, target);
+        final String resultString = String.valueOf(result);
 
         // 남은 원소들이 있다면, 계속 계산
         final List<String> nextElements = new ArrayList<>();
-        final String resultString = String.valueOf(result);
         nextElements.add(resultString);
         final List<String> remainingElements = this.getRemainingElements(elements);
         nextElements.addAll(remainingElements);
