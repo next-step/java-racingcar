@@ -10,6 +10,9 @@ public class StringCalculateValue {
 
     private final String[] splitValue;
 
+    private int result;
+    private boolean executed = false;
+
     private StringCalculateValue(final String[] splitValue) {
         this.splitValue = splitValue;
 
@@ -28,13 +31,25 @@ public class StringCalculateValue {
     //
     //
 
-    public int calculate() {
-        int result = getValue(0);
+    public int getResult() {
+        if (!isExecuted()) {
+            calculate();
+        }
+
+        return result;
+    }
+
+    public void calculate() {
+        if (isExecuted()) {
+            return;
+        }
+
+        result = getValue(0);
         for (int i = 1; i < length(); i += 2) {
             result = getOperator(i).apply(result, getValue(i + 1));
         }
 
-        return result;
+        executed = true;
     }
 
     public int length() {
@@ -47,6 +62,10 @@ public class StringCalculateValue {
 
     public Operator getOperator(final int index) {
         return operatorProvider.symbol(splitValue[index]);
+    }
+
+    public boolean isExecuted() {
+        return executed;
     }
 
     //
