@@ -81,7 +81,7 @@ public class StringCalculateValueTest {
             "123 + 123,246"
     })
     void add(final String expression, final Integer result) {
-        assertThat(StringCalculateValue.ofExpression(expression).getResult()).isEqualTo(result);
+        assertThat(StringCalculator.calculate(StringCalculateValue.ofExpression(expression))).isEqualTo(result);
     }
 
     @DisplayName("빼기")
@@ -92,7 +92,7 @@ public class StringCalculateValueTest {
             "500 - 2,498"
     })
     void subtract(final String expression, final Integer result) {
-        assertThat(StringCalculateValue.ofExpression(expression).getResult()).isEqualTo(result);
+        assertThat(StringCalculator.calculate(StringCalculateValue.ofExpression(expression))).isEqualTo(result);
     }
 
     @DisplayName("곱하기")
@@ -103,7 +103,7 @@ public class StringCalculateValueTest {
             "500 * 2,1000"
     })
     void multiply(final String expression, final Integer result) {
-        assertThat(StringCalculateValue.ofExpression(expression).getResult()).isEqualTo(result);
+        assertThat(StringCalculator.calculate(StringCalculateValue.ofExpression(expression))).isEqualTo(result);
     }
 
     @DisplayName("나누기")
@@ -114,7 +114,7 @@ public class StringCalculateValueTest {
             "500 / 2,250"
     })
     void divide(final String expression, final Integer result) {
-        assertThat(StringCalculateValue.ofExpression(expression).getResult()).isEqualTo(result);
+        assertThat(StringCalculator.calculate(StringCalculateValue.ofExpression(expression))).isEqualTo(result);
     }
 
     @Test
@@ -122,7 +122,7 @@ public class StringCalculateValueTest {
     void divideByZero() {
         assertThatExceptionOfType(ArithmeticException.class)
                 .isThrownBy(() -> {
-                    StringCalculateValue.ofExpression("1 / 0").getResult();
+                    StringCalculator.calculate(StringCalculateValue.ofExpression("1 / 0"));
                 });
     }
 
@@ -135,7 +135,7 @@ public class StringCalculateValueTest {
             "100 / 2 * 2 + 100 - 50,150"
     })
     void complexCalculate(final String expression, final Integer result) {
-        assertThat(StringCalculateValue.ofExpression(expression).getResult()).isEqualTo(result);
+        assertThat(StringCalculator.calculate(StringCalculateValue.ofExpression(expression))).isEqualTo(result);
     }
 
 }
