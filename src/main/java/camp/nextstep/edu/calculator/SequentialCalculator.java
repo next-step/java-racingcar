@@ -8,7 +8,6 @@ import java.util.List;
 public class SequentialCalculator implements StringCalculator<Integer> {
     private static final int SIZE_CALCULATION_TERMINATED = 1;
     private static final int CALCULATION_UNIT = 3;
-    private static final int ZERO = 0;
     private static final int INDEX_FIRST_ELEMENT = 0;
     private static final int INDEX_SECOND_ELEMENT = 1;
     private static final int INDEX_THIRD_ELEMENT = 2;
@@ -45,7 +44,7 @@ public class SequentialCalculator implements StringCalculator<Integer> {
         final OperatorType operatorType = OperatorType.from(secondElement);
         final String thirdElement = elements.get(INDEX_THIRD_ELEMENT);
         final int target = Integer.parseInt(thirdElement);
-        final int result = this.calculateByOperator(operatorType, source, target);
+        final int result = operatorType.operate(source, target);
 
         // 남은 원소들이 있다면, 계속 계산
         final List<String> nextElements = new ArrayList<>();
@@ -62,23 +61,5 @@ public class SequentialCalculator implements StringCalculator<Integer> {
             return Collections.emptyList();
         }
         return elements.subList(CALCULATION_UNIT, size);
-    }
-
-    private int calculateByOperator(OperatorType operatorType, int source, int target) {
-        switch (operatorType) {
-            case ADDITION:
-                return source + target;
-            case SUBTRACTION:
-                return source - target;
-            case MULTIPLICATION:
-                return source * target;
-            case DIVISION:
-                if (target == ZERO) {
-                    throw new ArithmeticException("0으로 나눌 수 없습니다");
-                }
-                return source / target;
-            default:
-                throw new IllegalArgumentException("'operatorType' is not supported. operatorType:" + operatorType);
-        }
     }
 }
