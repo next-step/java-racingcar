@@ -60,7 +60,7 @@ public class StringCalculateValue {
     }
 
     public Operator getOperator(final int index) {
-        return OperatorProvider.symbol(splitValue[index]);
+        return Operator.symbol(splitValue[index]);
     }
 
     public boolean isExecuted() {
