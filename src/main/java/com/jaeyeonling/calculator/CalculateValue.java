@@ -35,7 +35,7 @@ public class CalculateValue {
     }
 
     public Operator getOperator(final int index) {
-        return Operator.of(splitValue[index]);
+        return Operator.symbol(splitValue[index]);
     }
 
     //

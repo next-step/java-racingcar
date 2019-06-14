@@ -58,7 +58,7 @@ public enum Operator {
 
     public abstract int apply(int a, int b);
 
-    public static Operator of(final String symbol) {
+    public static Operator symbol(final String symbol) {
         final Operator operator = operatorMap.get(symbol);
         if (Objects.isNull(operator)) {
             throw new IllegalArgumentException();
