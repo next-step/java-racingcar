@@ -47,8 +47,8 @@ public class Polynomial {
         int operand2 = operands.pop();
         String operator = operators.pop();
 
-        Calculable calculable = BinaryOperator.of(operator);
-        int result = calculable.calculate(operand1, operand2);
+        Operable operable = BinaryOperator.of(operator);
+        int result = operable.calculate(operand1, operand2);
 
         operands.add(result);
         return result;
