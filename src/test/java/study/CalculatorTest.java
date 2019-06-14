@@ -1,7 +1,9 @@
 package study;
 
+import com.sun.xml.internal.ws.policy.spi.AssertionCreationException;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 public class CalculatorTest {
@@ -51,10 +53,32 @@ public class CalculatorTest {
         assertThat(calc.calculate(sample)).isEqualTo(10);
     }
 
+    @Test
+    void invalidInput1() {
+        String sample = "";
+
+        Calculator calc = new Calculator();
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> calc.calculate(sample));
+    }
+
+    @Test
+    void invalidInput2() {
+        String sample = null;
+
+        Calculator calc = new Calculator();
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> calc.calculate(sample));
+    }
+
     class Calculator {
         private int result = 0;
 
         int calculate(String equation) {
+            checkValidEquation(equation);
+
             String[] operList = equation.split(" ");
 
             int first = toInt(operList[0]);
@@ -87,6 +111,12 @@ public class CalculatorTest {
             }
 
             return 0;
+        }
+
+        private void checkValidEquation(String equation) {
+            if (equation == null || equation.isEmpty()) {
+                throw new IllegalArgumentException();
+            }
         }
 
         private boolean isNotValidOperator(String word) {
