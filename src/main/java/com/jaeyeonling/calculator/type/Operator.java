@@ -9,9 +9,9 @@ import java.util.Objects;
 public enum Operator {
     
     ADD("+", Integer::sum),
-    SUBTRACT("-", (a, b) -> a - b),
-    MULTIPLY("*", (a, b) -> a * b),
-    DIVIDE("/", (a, b) -> a / b);
+    SUBTRACT("-", (num1, num2) -> num1 - num2),
+    MULTIPLY("*", (num1, num2) -> num1 * num2),
+    DIVIDE("/", (num1, num2) -> num1 / num2);
 
     private static final Map<String, Operator> operatorMap = new HashMap<>();
     static {
@@ -37,8 +37,8 @@ public enum Operator {
         return operator;
     }
 
-    public int apply(int a, int b) {
-        return operation.apply(a, b);
+    public int apply(int num1, int num2) {
+        return operation.apply(num1, num2);
     }
 
 }
