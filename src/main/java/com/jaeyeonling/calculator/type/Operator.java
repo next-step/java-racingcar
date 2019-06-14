@@ -1,10 +1,9 @@
 package com.jaeyeonling.calculator.type;
 
-import com.jaeyeonling.calculator.BiOperation;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.function.IntBinaryOperator;
 
 public enum Operator {
     
@@ -21,11 +20,12 @@ public enum Operator {
     }
 
     private final String symbol;
-    private BiOperation<Integer> operation;
+    private IntBinaryOperator calculator;
 
-    Operator(final String symbol, final BiOperation<Integer> operation) {
+    Operator(final String symbol, final IntBinaryOperator calculator) {
+
         this.symbol = symbol;
-        this.operation = operation;
+        this.calculator = calculator;
     }
 
     public static Operator symbol(final String symbol) {
@@ -38,6 +38,6 @@ public enum Operator {
     }
 
     public int apply(int num1, int num2) {
-        return operation.apply(num1, num2);
+        return calculator.applyAsInt(num1, num2);
     }
 }
