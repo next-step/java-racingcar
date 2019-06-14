@@ -26,7 +26,7 @@
 - [x] 문자열을 공백기준으로 split 한다.
   - [x] 공백이 아닌 다른 특수문자가 들어 올 경우 Exception
   - [x] 입력 값이 null 이거나 빈 문자열 일 경우 Exception
-  - [ ] 사칙연산의 기호가 아닌 경우 IllegalArgumentException
+  - [x] 사칙연산의 기호가 아닌 경우 IllegalArgumentException
   
 반복적인 패턴을 찾아 반복문으로 구현한다.
 공백 문자열을 빈 공백 문자로 분리하려면 String 클래스의 split(" ") 메소드를 활용한다.
