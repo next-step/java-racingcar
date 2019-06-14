@@ -24,8 +24,8 @@ public class StringCalculator {
         validateBlank(input);
         String[] stringArray = split(input);
         result = parseInt(stringArray[0]);
-        for (int index = 1; index < stringArray.length; index+=2) {
-            operator(hasOperator(stringArray[index]), stringArray[index+1]);
+        for (int index = 1; index < stringArray.length; index += 2) {
+            operator(hasOperator(stringArray[index]), stringArray[index + 1]);
         }
         return result;
     }

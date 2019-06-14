@@ -18,8 +18,10 @@ enum Operator {
 
     private final char symbol;
     private final IntBinaryOperator expression;
-    private static final Map<String, Operator> symbolToEnum = Stream.of(values()).collect(Collectors.toMap(Operator::getSymbol, operator -> operator));
-
+    private static final Map<String, Operator> symbolToEnum = Stream.of(values())
+                                                                    .collect(
+                                                                            Collectors.toMap(Operator::getSymbol, operator -> operator)
+                                                                    );
     Operator(char symbol, IntBinaryOperator expression) {
         this.symbol = symbol;
         this.expression = expression;
