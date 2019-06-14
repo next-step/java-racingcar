@@ -62,10 +62,10 @@ public class StringCalculateValue {
             throw new IllegalArgumentException();
         }
 
-        for (int i = 0; i < length(); i += 3) {
-            checkValue(i);
-            checkOperator(i + 1);
-            checkValue(i + 2);
+        checkValue(0);
+        for (int i = 1; i < length(); i += 2) {
+            checkOperator(i);
+            checkValue(i + 1);
         }
     }
 
