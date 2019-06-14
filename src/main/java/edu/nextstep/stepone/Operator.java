@@ -25,4 +25,11 @@ public class Operator {
     int minus(int firstNumber, int secondNumber) {
         return firstNumber - secondNumber;
     }
+
+    /*
+    2개의 숫자를 파라미터로 전달받아 곱셈 하는 기능
+     */
+    int multiply(int firstNumber, int secondNumber) {
+        return firstNumber * secondNumber;
+    }
 }
