@@ -21,18 +21,6 @@ public class CalculatorTest {
     }
 
     @Test
-    public void resetTest() {
-        assertThat(calculator.getTotal()).isEqualTo(2);
-        calculator.reset(10);
-        assertThat(calculator.getTotal()).isEqualTo(10);
-
-        calculator.add(10).subtract(2).multiply(2);
-        assertThat(calculator.getTotal()).isEqualTo(36);
-        calculator.reset(2);
-        assertThat(calculator.getTotal()).isEqualTo(2);
-    }
-
-    @Test
     public void addTest() {
         assertThat(calculator.add(2).getTotal()).isEqualTo(4);
         assertThat(calculator.getTotal()).isEqualTo(4);
