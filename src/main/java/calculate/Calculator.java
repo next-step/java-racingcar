@@ -1,7 +1,5 @@
 package calculate;
 
-import java.util.stream.IntStream;
-
 public class Calculator {
     private final static String SPLIT_REGEX = " ";
     private final static int FIRST_NUMBER_INDEX = 0;
