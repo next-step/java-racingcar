@@ -2,19 +2,22 @@ package com.jaeyeonling.calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class StringCalculateValueTest {
 
-    @Test
     @DisplayName("StringCalculateValue 생성")
+    @Test
     void createCalculateValue() {
         assertThat(StringCalculateValue.ofExpression("1 + 1")).isNotNull();
     }
 
-    @Test
     @DisplayName("null 계산식 입력 시 예외처리")
+    @Test
     void nullExpression() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
@@ -22,8 +25,8 @@ public class StringCalculateValueTest {
                 });
     }
 
-    @Test
     @DisplayName("빈 값 계산식 입력 시 예외처리")
+    @Test
     void emptyExpression() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
@@ -31,8 +34,8 @@ public class StringCalculateValueTest {
                 });
     }
 
-    @Test
     @DisplayName("수식없는 하나의 숫자 계산식 입력 시 예외처리")
+    @Test
     void singleExpression() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
@@ -40,69 +43,78 @@ public class StringCalculateValueTest {
                 });
     }
 
-    @Test
     @DisplayName("갯수가 맞지 않는 계산식 입력 시 예외처리")
-    void evenExpression() {
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "123 *",
+            "123 * 1 + 5 +",
+            "* 1231",
+            "123123 *"
+    })
+    void evenExpression(final String expression) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    StringCalculateValue.ofExpression("123 *");
-                });
-
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    StringCalculateValue.ofExpression("123 * 1 + 5 +");
+                    StringCalculateValue.ofExpression(expression);
                 });
     }
 
-    @Test
     @DisplayName("잘못된 수식 입력 시 예외처리")
-    void invalidOperationSymbolExpression() {
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "123 & 124",
+            "123 ^ 23423",
+            "123 ! 23423",
+            "123 +-/* 23423"
+    })
+    void invalidOperationSymbolExpression(final String expression) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    StringCalculateValue.ofExpression("123 & 124");
-                });
-
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    StringCalculateValue.ofExpression("123 ^ 23423");
-                });
-
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    StringCalculateValue.ofExpression("123 ! 23423");
+                    StringCalculateValue.ofExpression(expression);
                 });
     }
 
-    @Test
     @DisplayName("더하기")
-    void add() {
-        assertThat(StringCalculateValue.ofExpression("1 + 1").getResult()).isEqualTo(2);
-        assertThat(StringCalculateValue.ofExpression("2 + 5").getResult()).isEqualTo(7);
-        assertThat(StringCalculateValue.ofExpression("123 + 123").getResult()).isEqualTo(246);
+    @ParameterizedTest
+    @CsvSource({
+            "1 + 1,2",
+            "2 + 5,7",
+            "123 + 123,246"
+    })
+    void add(final String expression, final Integer result) {
+        assertThat(StringCalculateValue.ofExpression(expression).getResult()).isEqualTo(result);
     }
 
-    @Test
     @DisplayName("빼기")
-    void subtract() {
-        assertThat(StringCalculateValue.ofExpression("1 - 1").getResult()).isEqualTo(0);
-        assertThat(StringCalculateValue.ofExpression("10 - 2").getResult()).isEqualTo(8);
-        assertThat(StringCalculateValue.ofExpression("500 - 2").getResult()).isEqualTo(498);
+    @ParameterizedTest
+    @CsvSource({
+            "1 - 1,0",
+            "10 - 2,8",
+            "500 - 2,498"
+    })
+    void subtract(final String expression, final Integer result) {
+        assertThat(StringCalculateValue.ofExpression(expression).getResult()).isEqualTo(result);
     }
 
-    @Test
     @DisplayName("곱하기")
-    void multiply() {
-        assertThat(StringCalculateValue.ofExpression("1 * 1").getResult()).isEqualTo(1);
-        assertThat(StringCalculateValue.ofExpression("10 * 2").getResult()).isEqualTo(20);
-        assertThat(StringCalculateValue.ofExpression("500 * 2").getResult()).isEqualTo(1000);
+    @ParameterizedTest
+    @CsvSource({
+            "1 * 1,1",
+            "10 * 2,20",
+            "500 * 2,1000"
+    })
+    void multiply(final String expression, final Integer result) {
+        assertThat(StringCalculateValue.ofExpression(expression).getResult()).isEqualTo(result);
     }
 
-    @Test
     @DisplayName("나누기")
-    void divide() {
-        assertThat(StringCalculateValue.ofExpression("1 / 1").getResult()).isEqualTo(1);
-        assertThat(StringCalculateValue.ofExpression("10 / 2").getResult()).isEqualTo(5);
-        assertThat(StringCalculateValue.ofExpression("500 / 2").getResult()).isEqualTo(250);
+    @ParameterizedTest
+    @CsvSource({
+            "1 / 1,1",
+            "10 / 2,5",
+            "500 / 2,250"
+    })
+    void divide(final String expression, final Integer result) {
+        assertThat(StringCalculateValue.ofExpression(expression).getResult()).isEqualTo(result);
     }
 
     @Test
@@ -114,13 +126,16 @@ public class StringCalculateValueTest {
                 });
     }
 
-    @Test
     @DisplayName("복합적인 계산")
-    void complexCalculate() {
-        assertThat(StringCalculateValue.ofExpression("1 + 1 + 1 + 123").getResult()).isEqualTo(126);
-        assertThat(StringCalculateValue.ofExpression("1 - 1 + 1 * 100").getResult()).isEqualTo(100);
-        assertThat(StringCalculateValue.ofExpression("1 * 2 * 3 * 4 * 5").getResult()).isEqualTo(120);
-        assertThat(StringCalculateValue.ofExpression("100 / 2 * 2 + 100 - 50").getResult()).isEqualTo(150);
+    @ParameterizedTest
+    @CsvSource({
+            "1 + 1 + 1 + 123,126",
+            "1 - 1 + 1 * 100,100",
+            "1 * 2 * 3 * 4 * 5,120",
+            "100 / 2 * 2 + 100 - 50,150"
+    })
+    void complexCalculate(final String expression, final Integer result) {
+        assertThat(StringCalculateValue.ofExpression(expression).getResult()).isEqualTo(result);
     }
 
 }
