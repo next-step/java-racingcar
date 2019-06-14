@@ -4,7 +4,7 @@ import com.jaeyeonling.calculator.type.Operator;
 
 import java.util.regex.Pattern;
 
-public class StringCalculateValue {
+public class CalculateExpression {
 
     private static final String REGEX_EXPRESSION = "^(\\d+)(?:\\s+[\\+\\-\\*\\/]{1}\\s+(\\d+))+$";
     private static final Pattern EXPRESSION_PATTERN = Pattern.compile(REGEX_EXPRESSION);
@@ -12,16 +12,16 @@ public class StringCalculateValue {
 
     private final String[] splitValue;
 
-    private StringCalculateValue(final String[] splitValue) {
+    private CalculateExpression(final String[] splitValue) {
         this.splitValue = splitValue;
     }
 
-    public static StringCalculateValue ofExpression(final String expression) {
+    public static CalculateExpression ofExpression(final String expression) {
         if (isInvalidExpression(expression)) {
             throw new IllegalArgumentException("올바르지 않은 Expression");
         }
 
-        return new StringCalculateValue(expression.split(SEPARATOR));
+        return new CalculateExpression(expression.split(SEPARATOR));
     }
 
     int length() {

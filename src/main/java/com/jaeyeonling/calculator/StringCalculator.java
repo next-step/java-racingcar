@@ -8,11 +8,11 @@ public final class StringCalculator {
     private static final int START_INDEX = 1;
     private static final int CALCULATION_SIZE = 2;
 
-    public static int calculate(final StringCalculateValue calculateValue) {
-        int result = calculateValue.getValue(DEFAULT_INDEX);
-        for (int i = START_INDEX; i < calculateValue.length(); i += CALCULATION_SIZE) {
-            final Operator operator = calculateValue.getOperator(i);
-            final int nextValue = calculateValue.getValue(i + START_INDEX);
+    public static int calculate(final CalculateExpression expression) {
+        int result = expression.getValue(DEFAULT_INDEX);
+        for (int i = START_INDEX; i < expression.length(); i += CALCULATION_SIZE) {
+            final Operator operator = expression.getOperator(i);
+            final int nextValue = expression.getValue(i + START_INDEX);
 
             result = operator.apply(result, nextValue);
         }

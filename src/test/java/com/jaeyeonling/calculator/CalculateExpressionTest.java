@@ -8,12 +8,12 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class StringCalculateValueTest {
+public class CalculateExpressionTest {
 
-    @DisplayName("StringCalculateValue 생성")
+    @DisplayName("CalculateExpression 생성")
     @Test
     void createCalculateValue() {
-        assertThat(StringCalculateValue.ofExpression("1 + 1")).isNotNull();
+        assertThat(CalculateExpression.ofExpression("1 + 1")).isNotNull();
     }
 
     @DisplayName("null 계산식 입력 시 예외처리")
@@ -21,7 +21,7 @@ public class StringCalculateValueTest {
     void nullExpression() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    StringCalculateValue.ofExpression(null);
+                    CalculateExpression.ofExpression(null);
                 });
     }
 
@@ -30,7 +30,7 @@ public class StringCalculateValueTest {
     void emptyExpression() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    StringCalculateValue.ofExpression("");
+                    CalculateExpression.ofExpression("");
                 });
     }
 
@@ -39,7 +39,7 @@ public class StringCalculateValueTest {
     void singleExpression() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    StringCalculateValue.ofExpression("123");
+                    CalculateExpression.ofExpression("123");
                 });
     }
 
@@ -54,7 +54,7 @@ public class StringCalculateValueTest {
     void evenExpression(final String expression) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    StringCalculateValue.ofExpression(expression);
+                    CalculateExpression.ofExpression(expression);
                 });
     }
 
@@ -69,7 +69,7 @@ public class StringCalculateValueTest {
     void invalidOperationSymbolExpression(final String expression) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    StringCalculateValue.ofExpression(expression);
+                    CalculateExpression.ofExpression(expression);
                 });
     }
 
@@ -81,7 +81,7 @@ public class StringCalculateValueTest {
             "123 + 123,246"
     })
     void add(final String expression, final Integer result) {
-        assertThat(StringCalculator.calculate(StringCalculateValue.ofExpression(expression))).isEqualTo(result);
+        assertThat(StringCalculator.calculate(CalculateExpression.ofExpression(expression))).isEqualTo(result);
     }
 
     @DisplayName("빼기")
@@ -92,7 +92,7 @@ public class StringCalculateValueTest {
             "500 - 2,498"
     })
     void subtract(final String expression, final Integer result) {
-        assertThat(StringCalculator.calculate(StringCalculateValue.ofExpression(expression))).isEqualTo(result);
+        assertThat(StringCalculator.calculate(CalculateExpression.ofExpression(expression))).isEqualTo(result);
     }
 
     @DisplayName("곱하기")
@@ -103,7 +103,7 @@ public class StringCalculateValueTest {
             "500 * 2,1000"
     })
     void multiply(final String expression, final Integer result) {
-        assertThat(StringCalculator.calculate(StringCalculateValue.ofExpression(expression))).isEqualTo(result);
+        assertThat(StringCalculator.calculate(CalculateExpression.ofExpression(expression))).isEqualTo(result);
     }
 
     @DisplayName("나누기")
@@ -114,7 +114,7 @@ public class StringCalculateValueTest {
             "500 / 2,250"
     })
     void divide(final String expression, final Integer result) {
-        assertThat(StringCalculator.calculate(StringCalculateValue.ofExpression(expression))).isEqualTo(result);
+        assertThat(StringCalculator.calculate(CalculateExpression.ofExpression(expression))).isEqualTo(result);
     }
 
     @Test
@@ -122,7 +122,7 @@ public class StringCalculateValueTest {
     void divideByZero() {
         assertThatExceptionOfType(ArithmeticException.class)
                 .isThrownBy(() -> {
-                    StringCalculator.calculate(StringCalculateValue.ofExpression("1 / 0"));
+                    StringCalculator.calculate(CalculateExpression.ofExpression("1 / 0"));
                 });
     }
 
@@ -135,7 +135,7 @@ public class StringCalculateValueTest {
             "100 / 2 * 2 + 100 - 50,150"
     })
     void complexCalculate(final String expression, final Integer result) {
-        assertThat(StringCalculator.calculate(StringCalculateValue.ofExpression(expression))).isEqualTo(result);
+        assertThat(StringCalculator.calculate(CalculateExpression.ofExpression(expression))).isEqualTo(result);
     }
 
 }
