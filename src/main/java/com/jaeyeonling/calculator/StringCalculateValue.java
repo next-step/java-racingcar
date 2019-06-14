@@ -13,18 +13,18 @@ public class StringCalculateValue {
     private int result;
     private boolean executed = false;
 
+    private StringCalculateValue(final String[] splitValue) {
+        this.splitValue = splitValue;
+
+        checkConstraints();
+    }
+
     public static StringCalculateValue ofExpression(final String expression) {
         if (isInvalidExpression(expression)) {
             throw new IllegalArgumentException();
         }
 
         return new StringCalculateValue(expression.split(SEPARATOR));
-    }
-
-    private StringCalculateValue(final String[] splitValue) {
-        this.splitValue = splitValue;
-
-        checkConstraints();
     }
 
     public int getResult() {
