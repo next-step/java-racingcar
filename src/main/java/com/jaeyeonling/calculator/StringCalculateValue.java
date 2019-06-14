@@ -49,7 +49,7 @@ public class StringCalculateValue {
             return;
         }
 
-        result = getValue(0);
+        int result = getValue(0);
         for (int i = 1; i < length(); i += 2) {
             final Operator operator = getOperator(i);
             final int nextValue = getValue(i + 1);
@@ -57,6 +57,7 @@ public class StringCalculateValue {
             result = operator.apply(result, nextValue);
         }
 
+        this.result = result;
         executed = true;
     }
 
