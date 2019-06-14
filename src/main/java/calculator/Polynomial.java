@@ -17,7 +17,7 @@ class Polynomial {
 
     static Polynomial createPolynomialWithExpression(String expression) {
         if (!PolynomialParser.isValid(expression)) {
-            throw new IllegalArgumentException("수식이 올바르지 않습니다.");
+            throw new IllegalArgumentException("입력 수식이 수식 표현 규약에 어긋납니다.");
         }
 
         List<Integer> operands = PolynomialParser.extractOperands(expression);

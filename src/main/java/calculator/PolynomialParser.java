@@ -14,7 +14,7 @@ class PolynomialParser {
 
     static boolean isValid(String expression) {
         if (expression == null || expression.trim().isEmpty()) {
-            throw new IllegalArgumentException("수식이 비어있습니다.");
+            throw new IllegalArgumentException("입력 수식이 비어있습니다.");
         }
 
         Pattern pattern = Pattern.compile(REGULAR_EXPRESSION_FOR_POLYNOMIAL);
@@ -39,7 +39,7 @@ class PolynomialParser {
 
     private static List<String> extractMatches(String regularExpression, String expression) {
         if (!isValid(expression)) {
-            throw new IllegalArgumentException("수식이 올바르지 않습니다.");
+            throw new IllegalArgumentException("입력 수식이 수식 표현 규약에 어긋납니다.");
         }
 
         List<String> matches = new ArrayList<>();

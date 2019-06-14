@@ -35,6 +35,6 @@ public enum BinaryOperator implements Operable {
         return Arrays.stream(BinaryOperator.values())
                 .filter(operator -> operator.operatorNotation.equals(operatorNotation))
                 .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(() -> new IllegalArgumentException("지원하지 않는 연산자입니다."));
     }
 }
