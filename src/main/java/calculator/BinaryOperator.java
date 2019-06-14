@@ -2,7 +2,7 @@ package calculator;
 
 import java.util.Arrays;
 
-public enum BinaryOperator {
+public enum BinaryOperator implements Calculable {
     ADDITION("+") {
         @Override
         public int calculate(int operand1, int operand2) {
@@ -27,7 +27,6 @@ public enum BinaryOperator {
 
     private String operatorNotation;
 
-    public abstract int calculate(int operand1, int operand2);
 
     BinaryOperator(String operatorNotation) {
         this.operatorNotation = operatorNotation;

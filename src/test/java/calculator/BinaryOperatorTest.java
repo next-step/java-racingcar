@@ -20,10 +20,9 @@ public class BinaryOperatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource({
-            "10, 120",
-            "10, -123",
-            "20, 492"
+    @CsvSource({"10, 120"
+            , "10, -123"
+            , "20, 492"
     })
     void 덧셈_테스트(int operand1, int operand2) {
         BinaryOperator addition = BinaryOperator.of("+");
@@ -31,10 +30,9 @@ public class BinaryOperatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource({
-            "10, 120",
-            "10, -123",
-            "20, 492"
+    @CsvSource({"10, 120"
+            , "10, -123"
+            , "20, 492"
     })
     void 뺄셈_테스트(int operand1, int operand2) {
         BinaryOperator subtraction = BinaryOperator.of("-");
@@ -53,10 +51,9 @@ public class BinaryOperatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource({
-            "10, 120",
-            "10, -123",
-            "20, 492"
+    @CsvSource({"10, 120"
+            , "10, -123"
+            , "20, 492"
     })
     void 나눗셈_테스트(int operand1, int operand2) {
         BinaryOperator division = BinaryOperator.of("/");
