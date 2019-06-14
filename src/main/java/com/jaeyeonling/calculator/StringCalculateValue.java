@@ -3,25 +3,25 @@ package com.jaeyeonling.calculator;
 import com.jaeyeonling.calculator.provider.OperatorProvider;
 import com.jaeyeonling.calculator.type.Operator;
 
-public class CalculateValue {
+public class StringCalculateValue {
 
     private static final OperatorProvider operatorProvider = new OperatorProvider();
     private static final String SEPARATOR = " ";
 
     private final String[] splitValue;
 
-    private CalculateValue (final String[] splitValue) {
+    private StringCalculateValue(final String[] splitValue) {
         this.splitValue = splitValue;
 
         checkConstraints();
     }
 
-    public static CalculateValue text(final String text) {
+    public static StringCalculateValue text(final String text) {
         if (isInvalidText(text)) {
             throw new IllegalArgumentException();
         }
 
-        return new CalculateValue(text.split(SEPARATOR));
+        return new StringCalculateValue(text.split(SEPARATOR));
     }
 
     //
