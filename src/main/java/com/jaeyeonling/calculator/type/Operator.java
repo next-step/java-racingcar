@@ -40,5 +40,4 @@ public enum Operator {
     public int apply(int num1, int num2) {
         return operation.apply(num1, num2);
     }
-
 }
