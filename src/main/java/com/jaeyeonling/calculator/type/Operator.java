@@ -15,7 +15,7 @@ public enum Operator {
 
     private static final Map<String, Operator> operatorMap = new HashMap<>();
     static {
-        for (final Operator operator : Operator.values()) {
+        for (final Operator operator : values()) {
             operatorMap.put(operator.symbol, operator);
         }
     }
