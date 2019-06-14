@@ -8,6 +8,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.HashSet;
 import java.util.Set;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * author       : gwonbyeong-yun <sksggg123>
  * ------------------------------------------
@@ -31,26 +33,17 @@ public class SetTest2 {
         numbers.add(3);
     }
 
-    /**
-     * Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인하는 학습테스트를 구현하려한다.
-     * 구현하고 보니 다음과 같이 중복 코드가 계속해서 발생한다.
-     * JUnit의 ParameterizedTest를 활용해 중복 코드를 제거해 본다.
-     * 테스트는 동일한데 value값만 다를 경우 !
-     *
-     * assertThat(numbers.contains("1")).isE
-     *
-     *
-     *
-     * @parameterizedTest
-     * @ValueSource{ints = {1, 2, 3})
-     * void contains(int numbers)
-     * assertThaat(numbers.contains(number)).isTrue();
-     */
-
-
     @Test
-    @ParameterizedTest
-    @ValueSource(ints = )
-    void
+    void size() {
+        assertThat(numbers.size()).isEqualTo(3);
+    }
 
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void contains(int number) {
+        assertThat(numbers.contains(number)).isTrue();
+//        assertThat(numbers.contains(1)).isTrue();
+//        assertThat(numbers.contains(2)).isTrue();
+//        assertThat(numbers.contains(3)).isTrue();
+    }
 }
