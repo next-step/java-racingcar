@@ -18,4 +18,11 @@ public class Operator {
     int add(int firstNumber, int secondNumber) {
         return firstNumber + secondNumber;
     }
+
+    /*
+    2개의 숫자를 파라미터로 전달받아 뺄셈 하는 기능
+     */
+    int minus(int firstNumber, int secondNumber) {
+        return firstNumber - secondNumber;
+    }
 }
