@@ -2,21 +2,9 @@ package calculator;
 
 public class StringCalculator {
 
-    public int add(int a, int b) {
-        return a + b;
-    }
-
-    public int subtract(int a, int b) {
-        return a - b;
-    }
-
-    public int multiply(int a, int b) {
-        return a * b;
-    }
-
-    public int divide(int a, int b) {
-        return a / b;
-    }
+    private final static int DEFAULT_VALUE = 0;
+    private final static int START_VALUE = 1;
+    private final static int INCREMENT_VALUE = 2;
 
     public boolean isEmpty(String s) {
         return s == null || "".equals(s.trim());
@@ -28,23 +16,16 @@ public class StringCalculator {
         }
 
         String[] strings = input.split(" ");
-        int result = convertInteger(strings[0]);
+        int result = convertInteger(strings[DEFAULT_VALUE]);
 
-        String operator = null;
-
-        for (int i = 1; i < strings.length; i++) {
-            if (i % 2 != 0) {
-                operator = strings[i];
-            }
-            if (i % 2 == 0) {
-                result = getResult(result, operator, convertInteger(strings[i]));
-            }
+        for (int i = START_VALUE; i < strings.length; i+= INCREMENT_VALUE) {
+            result = getResult(result, strings[i], convertInteger(strings[i+START_VALUE]));
         }
         return result;
     }
 
-    private int getResult(int result, String operator, int i) {
-        return Operator.getOperator(operator).getResult(result, i);
+    private int getResult(int num1, String operator, int num2) {
+        return Operator.getOperator(operator).getResult(num1, num2);
     }
 
     public int convertInteger(String s) {

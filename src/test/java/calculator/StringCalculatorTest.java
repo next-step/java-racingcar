@@ -16,30 +16,6 @@ public class StringCalculatorTest {
     }
 
     @Test
-    void add() {
-        int add = stringCalculator.add(3, 5);
-        assertThat(add).isEqualTo(8);
-    }
-
-    @Test
-    void subtract() {
-        int subtract = stringCalculator.subtract(5, 2);
-        assertThat(subtract).isEqualTo(3);
-    }
-
-    @Test
-    void multiply() {
-        int multiply = stringCalculator.multiply(7, 3);
-        assertThat(multiply).isEqualTo(21);
-    }
-
-    @Test
-    void divide() {
-        int divide = stringCalculator.divide(20, 4);
-        assertThat(divide).isEqualTo(5);
-    }
-
-    @Test
     void isEmpty() {
         assertThat(stringCalculator.isEmpty(null)).isTrue();
         assertThat(stringCalculator.isEmpty(" ")).isTrue();
