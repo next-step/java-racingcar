@@ -77,4 +77,11 @@ public class BinaryOperatorTest {
         BinaryOperator addition = BinaryOperator.of("+");
         assertThat(addition.calculate(Integer.MAX_VALUE, 1)).isEqualTo(Integer.MIN_VALUE);
     }
+
+    @Test
+    void 사칙연산_기호가_아닌_경우_예외를_발생시킨다() {
+        assertThatThrownBy(() -> {
+            BinaryOperator division = BinaryOperator.of(")");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }
