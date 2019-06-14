@@ -1,19 +1,28 @@
 package calculator;
 
 public class StringCalculator {
-    public static int sum(int a, int b) {
+    public int add(int a, int b) {
         return a + b;
     }
 
-    public static int subtract(int a, int b) {
+    public int subtract(int a, int b) {
         return a - b;
     }
 
-    public static int multiply(int a, int b) {
+    public int multiply(int a, int b) {
         return a * b;
     }
 
-    public static int divide(int a, int b) {
+    public int divide(int a, int b) {
         return a / b;
+    }
+
+    public boolean isNotEmpty(String s) {
+        if (s == null || "".equals(s.trim())) {
+
+            throw new IllegalArgumentException();
+        }
+
+        return true;
     }
 }
