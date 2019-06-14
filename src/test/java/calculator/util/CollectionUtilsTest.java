@@ -1,7 +1,6 @@
 package calculator.util;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
 import java.util.Arrays;
@@ -10,7 +9,7 @@ import java.util.Stack;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class CollectionUtilsTest {
+class CollectionUtilsTest {
     private List<Integer> list;
 
     @BeforeEach

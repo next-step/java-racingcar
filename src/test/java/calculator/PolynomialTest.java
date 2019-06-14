@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class PolynomialTest {
+class PolynomialTest {
     @Test
     void 다항식_생성_테스트() {
         String expression = "12 + 252 - 3";

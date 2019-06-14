@@ -6,13 +6,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class PolynomialParser {
+class PolynomialParser {
 
     private static final String REGULAR_EXPRESSION_FOR_POLYNOMIAL = "^(\\d+)(\\s[+\\-*/]\\s\\d+)+$";
     private static final String REGULAR_EXPRESSION_FOR_OPERAND = "\\d+";
     private static final String REGULAR_EXPRESSION_FOR_OPERATOR = "[+\\-*/]";
 
-    public static boolean isValid(String expression) {
+    static boolean isValid(String expression) {
         if (expression == null || expression.trim().isEmpty()) {
             throw new IllegalArgumentException("수식이 비어있습니다.");
         }
@@ -23,7 +23,7 @@ public class PolynomialParser {
         return matcher.matches();
     }
 
-    public static List<Integer> extractOperands(String expression) {
+    static List<Integer> extractOperands(String expression) {
         List<String> matches = extractMatches(REGULAR_EXPRESSION_FOR_OPERAND, expression);
 
         return matches.stream()
@@ -33,7 +33,7 @@ public class PolynomialParser {
     }
 
 
-    public static List<String> extractOperators(String expression) {
+    static List<String> extractOperators(String expression) {
         return extractMatches(REGULAR_EXPRESSION_FOR_OPERATOR, expression);
     }
 

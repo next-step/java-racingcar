@@ -5,7 +5,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class CalculatorTest {
+class CalculatorTest {
     @ParameterizedTest
     @CsvSource({"1 - 2, -1"
             , "1 + 2 + 3, 6"

@@ -5,7 +5,7 @@ import calculator.util.CollectionUtils;
 import java.util.List;
 import java.util.Stack;
 
-public class Polynomial {
+class Polynomial {
     private List<String> operators;
     private List<Integer> operands;
     private Integer resultCache = null;
@@ -15,7 +15,7 @@ public class Polynomial {
         this.operators = operators;
     }
 
-    public static Polynomial createPolynomialWithExpression(String expression) {
+    static Polynomial createPolynomialWithExpression(String expression) {
         if (!PolynomialParser.isValid(expression)) {
             throw new IllegalArgumentException("수식이 올바르지 않습니다.");
         }
@@ -26,7 +26,7 @@ public class Polynomial {
         return new Polynomial(operands, operators);
     }
 
-    public int calculate() {
+    int calculate() {
         if (resultCache != null) {
             return resultCache;
         }

@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class BinaryOperatorTest {
+class BinaryOperatorTest {
     @ParameterizedTest
     @CsvSource({"10, 120"
             , "10, -123"

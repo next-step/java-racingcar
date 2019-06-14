@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class PolynomialParserTest {
+class PolynomialParserTest {
     @ParameterizedTest
     @ValueSource(strings = {"1 - 2"
             , "1 + 2 + 3"
