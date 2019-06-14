@@ -1,9 +1,9 @@
 package calculator;
 
+import calculator.util.CollectionUtils;
+
 import java.util.List;
 import java.util.Stack;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Polynomial {
     private List<String> operators;
@@ -26,14 +26,16 @@ public class Polynomial {
         return new Polynomial(operands, operators);
     }
 
-
     public int calculate() {
         if (resultCache != null) {
             return resultCache;
         }
 
-        Stack<Integer> operands = convertListToStack(reverse(this.operands));
-        Stack<String> operators = convertListToStack(reverse(this.operators));
+        List<Integer> reversedOperands = CollectionUtils.reverse(this.operands);
+        List<String> reversedOperators = CollectionUtils.reverse(this.operators);
+
+        Stack<Integer> operands = CollectionUtils.convertListToStack(reversedOperands);
+        Stack<String> operators = CollectionUtils.convertListToStack(reversedOperators);
 
         while (!operators.isEmpty()) {
             resultCache = performBinaryOperation(operands, operators);
@@ -52,20 +54,6 @@ public class Polynomial {
 
         operands.add(result);
         return result;
-    }
-
-    private <E> Stack<E> convertListToStack(List<E> list) {
-        Stack<E> stack = new Stack<>();
-        stack.addAll(list);
-
-        return stack;
-    }
-
-    private <E> List<E> reverse(List<E> list) {
-        return IntStream.range(0, list.size())
-                .map(i -> (list.size() - 1 - i))
-                .mapToObj(list::get)
-                .collect(Collectors.toList());
     }
 }
 

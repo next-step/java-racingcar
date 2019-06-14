@@ -27,7 +27,6 @@ public enum BinaryOperator implements Operable {
 
     private String operatorNotation;
 
-
     BinaryOperator(String operatorNotation) {
         this.operatorNotation = operatorNotation;
     }
