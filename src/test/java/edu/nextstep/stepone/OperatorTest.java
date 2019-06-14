@@ -34,4 +34,13 @@ public class OperatorTest {
         assertThat(operator.minus(200,100)).isEqualTo(100);
     }
 
+    @Test
+    void 곱셈() {
+        Operator operator = new Operator();
+        assertThat(operator.multiply(1,2)).isEqualTo(2);
+        assertThat(operator.multiply(2,1)).isEqualTo(2);
+        assertThat(operator.multiply(2,2)).isEqualTo(4);
+        assertThat(operator.multiply(10,2)).isEqualTo(20);
+    }
+
 }
