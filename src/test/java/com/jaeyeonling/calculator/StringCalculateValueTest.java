@@ -1,5 +1,6 @@
 package com.jaeyeonling.calculator;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -7,12 +8,14 @@ import static org.assertj.core.api.Assertions.*;
 public class StringCalculateValueTest {
 
     @Test
+    @DisplayName("StringCalculateValue 생성")
     void createCalculateValue() {
         assertThat(StringCalculateValue.ofExpression("1 + 1")).isNotNull();
     }
 
     @Test
-    void invalidText() {
+    @DisplayName("잘못된 계산식 입력 시 예외처리")
+    void invalidExpression() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
                     StringCalculateValue.ofExpression(null);
@@ -45,6 +48,7 @@ public class StringCalculateValueTest {
     }
 
     @Test
+    @DisplayName("더하기")
     void add() {
         assertThat(StringCalculateValue.ofExpression("1 + 1").getResult()).isEqualTo(2);
         assertThat(StringCalculateValue.ofExpression("2 + 5").getResult()).isEqualTo(7);
@@ -52,6 +56,7 @@ public class StringCalculateValueTest {
     }
 
     @Test
+    @DisplayName("빼기")
     void subtract() {
         assertThat(StringCalculateValue.ofExpression("1 - 1").getResult()).isEqualTo(0);
         assertThat(StringCalculateValue.ofExpression("10 - 2").getResult()).isEqualTo(8);
@@ -59,6 +64,7 @@ public class StringCalculateValueTest {
     }
 
     @Test
+    @DisplayName("곱하기")
     void multiply() {
         assertThat(StringCalculateValue.ofExpression("1 * 1").getResult()).isEqualTo(1);
         assertThat(StringCalculateValue.ofExpression("10 * 2").getResult()).isEqualTo(20);
@@ -66,6 +72,7 @@ public class StringCalculateValueTest {
     }
 
     @Test
+    @DisplayName("나누기")
     void divide() {
         assertThat(StringCalculateValue.ofExpression("1 / 1").getResult()).isEqualTo(1);
         assertThat(StringCalculateValue.ofExpression("10 / 2").getResult()).isEqualTo(5);
@@ -73,6 +80,7 @@ public class StringCalculateValueTest {
     }
 
     @Test
+    @DisplayName("복합적인 계산")
     void complexCalculate() {
         assertThat(StringCalculateValue.ofExpression("1 + 1 + 1 + 123").getResult()).isEqualTo(126);
         assertThat(StringCalculateValue.ofExpression("1 - 1 + 1 * 100").getResult()).isEqualTo(100);
