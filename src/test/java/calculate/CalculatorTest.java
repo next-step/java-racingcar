@@ -1,31 +1,37 @@
 package calculate;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class CalculatorTest {
-    @Test
-    void additionTest() {
-        Assertions.assertThat(Calculator.ADDITION.calculate(1, 2)).isEqualTo(3);
-    }
+public class CalculatorTest {
+    private Calculator calculator;
     
-    @Test
-    void subtractionTest() {
-        Assertions.assertThat(Calculator.SUBTRACTION.calculate(2, 1)).isEqualTo(1);
+    @BeforeEach
+    void setUp() {
+        calculator = new Calculator();
     }
 
     @Test
-    void divisionTest() {
-        Assertions.assertThat(Calculator.DIVISION.calculate(6, 3)).isEqualTo(2);
+    void nullValueCalcuateTest() {
+        Assertions.assertThatIllegalArgumentException()
+            .isThrownBy(() -> calculator.calculate(""));
+        Assertions.assertThatIllegalArgumentException()
+            .isThrownBy(() -> calculator.calculate(null));
     }
     
     @Test
-    void multiplicationTest() {
-        Assertions.assertThat(Calculator.MULTIPLICATION.calculate(1, 2)).isEqualTo(2);
-    }
+    void successCalculateTest() {
+        Assertions.assertThat(
+            calculator.calculate("2 + 3 * 4 / 2")
+        ).isEqualTo(10);
+        
+        Assertions.assertThat(
+            calculator.calculate("1 + 3 * 5 + 7")
+        ).isEqualTo(27);
     
-    @Test
-    void notFourMathSign() {
-        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> Calculator.getMathSign("("));
+        Assertions.assertThat(
+            calculator.calculate("300 / 100 + 20 * 10 - 20")
+        ).isEqualTo(210);
     }
 }
