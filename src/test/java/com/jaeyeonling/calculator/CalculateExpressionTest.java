@@ -13,7 +13,7 @@ public class CalculateExpressionTest {
     @DisplayName("CalculateExpression 생성")
     @Test
     void createCalculateValue() {
-        assertThat(CalculateExpression.ofExpression("1 + 1")).isNotNull();
+        assertThat(expression("1 + 1")).isNotNull();
     }
 
     @DisplayName("null 계산식 입력 시 예외처리")
@@ -135,6 +135,10 @@ public class CalculateExpressionTest {
     }
 
     private int calculate(final String expression) {
-        return StringCalculator.calculate(CalculateExpression.ofExpression(expression));
+        return StringCalculator.calculate(expression(expression));
+    }
+
+    private CalculateExpression expression(final String expression) {
+        return CalculateExpression.ofExpression(expression);
     }
 }
