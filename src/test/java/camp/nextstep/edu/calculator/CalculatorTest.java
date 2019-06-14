@@ -14,8 +14,8 @@ class CalculatorTest {
 
     @BeforeEach
     void setup() {
-        final Validator<String> validator = new MockExpressionValidator();
-        calculator = new StringCalculator(validator);
+        final ExpressionValidator mockValidator = new MockExpressionValidator();
+        calculator = new StringCalculator(mockValidator);
     }
 
     @ParameterizedTest

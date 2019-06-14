@@ -12,9 +12,9 @@ public class StringCalculator implements Calculator<Integer> {
     private static final int INDEX_SECOND_ELEMENT = 1;
     private static final int INDEX_THIRD_ELEMENT = 2;
 
-    private final Validator<String> expressionValidator;
+    private final ExpressionValidator expressionValidator;
 
-    public StringCalculator(Validator<String> expressionValidator) {
+    public StringCalculator(ExpressionValidator expressionValidator) {
         this.expressionValidator = expressionValidator;
     }
 

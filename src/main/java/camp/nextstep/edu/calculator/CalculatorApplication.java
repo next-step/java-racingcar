@@ -10,7 +10,7 @@ public class CalculatorApplication {
     }
 
     public static void main(String[] args) {
-        final Validator<String> validator = new ExpressionValidator();
+        final ExpressionValidator validator = new ExpressionValidatorImpl();
         final Calculator<Integer> calculator = new StringCalculator(validator);
         final CalculatorApplication application = new CalculatorApplication(calculator);
 
