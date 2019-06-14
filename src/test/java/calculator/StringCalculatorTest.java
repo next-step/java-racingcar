@@ -6,11 +6,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.regex.Pattern;
 
 import static calculator.StringCalculator.Operator.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-
 
 class StringCalculatorTest {
 
@@ -25,7 +27,7 @@ class StringCalculatorTest {
     void calculator() {
         assertThat(stringCalculator.calculate("1 + 2 * 3")).isEqualTo(9);
         assertThat(stringCalculator.calculate("4 / 2 - 1")).isEqualTo(1);
-        assertThat(stringCalculator.calculate("4 / 2 - 1 * 3 ")).isEqualTo(3);
+        assertThat(stringCalculator.calculate("4 / 2 - 1 * 3")).isEqualTo(3);
     }
 
     @Test
@@ -44,9 +46,47 @@ class StringCalculatorTest {
     @DisplayName("입력 값이 공백 또는 Null일 경우 Exception")
     @ParameterizedTest
     @NullAndEmptySource
-    void inputString2(String inputNullAndEmpty) {
+    void inputNullAndEmptyThenFail(String inputNullAndEmpty) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> stringCalculator.split(inputNullAndEmpty));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1 + 10 +", "1_2", "1^+^10^/^20"})
+    void splitWrongDelimiters(String wrongInput) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> stringCalculator.split(wrongInput))
+                .withMessageMatching("구분자는 공백을 사용합니다.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1",
+                            "1 + 20",
+                            "2 + 20 - 2 / 2 * 3"})
+    void regexSuccess(String text) {
+        String regex = "^(\\d+)(?:\\s+[\\+\\-\\*\\/]+\\s+(\\d+))*$";
+        Pattern pattern = Pattern.compile(regex);
+        assertThat(pattern.matcher(text).find()).isTrue();
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1 + ",
+                            "1 + 10 +",
+                            "1+20"})
+    void regexFail(String text) {
+        String regex = "^(\\d+)(?:\\s+[\\+\\-\\*\\/]+\\s+(\\d+))*$";
+        Pattern pattern = Pattern.compile(regex);
+        assertThat(pattern.matcher(text).find()).isFalse();
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"_", "^"})
+    void regexWrongInput(String text) {
+//        String regex = "^\d*[02468]$";
+
+        String regex2 = "(^[ ]*$)";
+//        Pattern pattern = Pattern.compile(regex);
+//        assertThat(pattern.matcher(text).find()).isFalse();
     }
 
     @ParameterizedTest
