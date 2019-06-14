@@ -1,3 +1,5 @@
+package stringClass;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
