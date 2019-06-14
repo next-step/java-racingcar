@@ -3,7 +3,6 @@ package study;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringTest {
@@ -36,9 +35,9 @@ public class StringTest {
 
     @Test
     void chatAtException1() {
-        assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
-                .isThrownBy(() -> {
-                    char result = "abc".charAt(5);
-                })
+        assertThatThrownBy(() -> {
+            char result = "abc".charAt(5);
+        }).isInstanceOf(StringIndexOutOfBoundsException.class)
+          .hasMessageContaining("String index out of range:");
     }
 }
