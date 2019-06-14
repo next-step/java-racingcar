@@ -1,4 +1,4 @@
-package com.haeseong.racingcar.learningtest;
+package camp.nextstep.edu.learningtest;
 
 import org.junit.jupiter.api.Test;
 
