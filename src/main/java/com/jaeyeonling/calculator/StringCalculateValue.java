@@ -5,7 +5,6 @@ import com.jaeyeonling.calculator.type.Operator;
 
 public class StringCalculateValue {
 
-    private static final OperatorProvider operatorProvider = new OperatorProvider();
     private static final String SEPARATOR = " ";
 
     private final String[] splitValue;
@@ -61,7 +60,7 @@ public class StringCalculateValue {
     }
 
     public Operator getOperator(final int index) {
-        return operatorProvider.symbol(splitValue[index]);
+        return OperatorProvider.symbol(splitValue[index]);
     }
 
     public boolean isExecuted() {

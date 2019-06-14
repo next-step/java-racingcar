@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class OperatorProvider {
+public final class OperatorProvider {
 
     private static final Map<String, Operator> operatorMap = new HashMap<>();
     static {
@@ -15,7 +15,9 @@ public class OperatorProvider {
         }
     }
 
-    public Operator symbol(final String symbol) {
+    private OperatorProvider() { }
+
+    public static Operator symbol(final String symbol) {
         final Operator operator = operatorMap.get(symbol);
         if (Objects.isNull(operator)) {
             throw new IllegalArgumentException();
