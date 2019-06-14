@@ -1,6 +1,8 @@
 package calculator;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import static calculator.StringCalculator.Operator.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,41 +13,28 @@ class StringCalculatorTest {
 
     StringCalculator stringCalculator = new StringCalculator();
 
-    @Test
-    void plus() {
-        assertThat(stringCalculator.calculate(1, PLUS,2)).isEqualTo(3);
+    @ParameterizedTest
+    @MethodSource("operatorProvider")
+    void operatorTest(int num1, StringCalculator.Operator operator, int num2, int expectedResult) {
+        assertCalculate(num1, operator, num2, expectedResult);
     }
 
-    @Test
-    void minus() {
-        assertThat(stringCalculator.calculate(3, MINUS,2)).isEqualTo(1);
-    }
-
-    @Test
-    void multiply() {
-        assertThat(stringCalculator.calculate(3, MULTIPLY,2)).isEqualTo(6);
-    }
-
-    @Test
-    void divide() {
-        assertThat(stringCalculator.calculate(4, DIVIDE,2)).isEqualTo(2);
+    static Object[] operatorProvider() {
+        return new Object[]{
+                new Object[]{1, PLUS, 2, 3},
+                new Object[]{3, MINUS, 2, 1},
+                new Object[]{3, MULTIPLY, 2, 6},
+                new Object[]{4, DIVIDE, 2, 2}
+        };
     }
 
     @Test
     void divideByZeroThanFail() {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> StringCalculator.Operator.DIVIDE.calculator(4,0));
+                .isThrownBy(() -> StringCalculator.Operator.DIVIDE.calculator(4, 0));
     }
 
-    @Test
-    void multiCalculator() {
-        assertCalculator(2, PLUS, 3, 5);
-        assertCalculator(3, MINUS, 1, 2);
-        assertCalculator(4, DIVIDE, 2, 2);
-        assertCalculator(2, MULTIPLY, 3, 6);
-    }
-
-    private void assertCalculator(int num, StringCalculator.Operator symbol, int num2, int result) {
-        assertThat(stringCalculator.calculate(num, symbol, num2)).isEqualTo(result);
+    private void assertCalculate(int num1, StringCalculator.Operator operator, int num2, int expectedResult) {
+        assertThat(stringCalculator.calculate(num1, operator, num2)).isEqualTo(expectedResult);
     }
 }
