@@ -2,7 +2,6 @@ package study;
 
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 public class CalculatorTest {
@@ -13,7 +12,7 @@ public class CalculatorTest {
 
         Calculator calc = new Calculator();
 
-        assertThat(calc.calculation(sample)).isEqualTo(5);
+        assertThat(calc.calculate(sample)).isEqualTo(5);
     }
 
     @Test
@@ -22,7 +21,7 @@ public class CalculatorTest {
 
         Calculator calc = new Calculator();
 
-        assertThat(calc.calculation(sample)).isEqualTo(-1);
+        assertThat(calc.calculate(sample)).isEqualTo(-1);
     }
 
     @Test
@@ -31,7 +30,7 @@ public class CalculatorTest {
 
         Calculator calc = new Calculator();
 
-        assertThat(calc.calculation(sample)).isEqualTo(6);
+        assertThat(calc.calculate(sample)).isEqualTo(6);
     }
 
     @Test
@@ -40,34 +39,65 @@ public class CalculatorTest {
 
         Calculator calc = new Calculator();
 
-        assertThat(calc.calculation(sample)).isEqualTo(2);
+        assertThat(calc.calculate(sample)).isEqualTo(2);
+    }
+
+    @Test
+    void multiOperator() {
+        String sample = "2 + 3 * 4 / 2";
+
+        Calculator calc = new Calculator();
+
+        assertThat(calc.calculate(sample)).isEqualTo(10);
     }
 
     class Calculator {
-        int result = 0;
+        private int result = 0;
 
-        int calculation(String equation) {
+        int calculate(String equation) {
             String[] operList = equation.split(" ");
 
-            int oper1 = parseInt(operList[0]);
-            int oper2 = parseInt(operList[2]);
+            int first = toInt(operList[0]);
+            result = add(first);
 
-            result = add(oper1);
-            if (isAddOperator(operList[1])) {
-                result = add(oper2);
-
-            } else if (isSubtractOperator(operList[1])) {
-                result = subtract(oper2);
-
-            } else if (isMultiplyOperator(operList[1])) {
-                result = multiply(oper2);
-
-            } else if (isDivideOperator(operList[1])) {
-                result = divide(oper2);
-
+            for (int i = 1; i < operList.length - 1; i++ ) {
+                result = operate(operList[i], operList[i+1]);
             }
 
             return result;
+        }
+
+        private int operate(String operator, String operand) {
+            if (isNotValidOperator(operator)) {
+                return result;
+            }
+
+            if (isAddOperator(operator)) {
+                return add(toInt(operand));
+
+            } else if (isSubtractOperator(operator)) {
+                return subtract(toInt(operand));
+
+            } else if (isMultiplyOperator(operator)) {
+                return multiply(toInt(operand));
+
+            } else if (isDivideOperator(operator)) {
+                return divide(toInt(operand));
+
+            }
+
+            return 0;
+        }
+
+        private boolean isNotValidOperator(String word) {
+            return !isValidOperator(word);
+        }
+
+        private boolean isValidOperator(String word) {
+            return isAddOperator(word)
+                    || isSubtractOperator(word)
+                    || isMultiplyOperator(word)
+                    || isDivideOperator(word);
         }
 
         private boolean isAddOperator(String word) {
@@ -86,7 +116,7 @@ public class CalculatorTest {
             return word.equals("/");
         }
 
-        private int parseInt(String word) {
+        private int toInt(String word) {
             return Integer.parseInt(word);
         }
 
