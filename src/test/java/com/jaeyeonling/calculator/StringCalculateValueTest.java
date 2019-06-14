@@ -80,6 +80,15 @@ public class StringCalculateValueTest {
     }
 
     @Test
+    @DisplayName("0으로 나눌 시 예외처리")
+    void divideByZero() {
+        assertThatExceptionOfType(ArithmeticException.class)
+                .isThrownBy(() -> {
+                    StringCalculateValue.ofExpression("1 / 0").getResult();
+                });
+    }
+
+    @Test
     @DisplayName("복합적인 계산")
     void complexCalculate() {
         assertThat(StringCalculateValue.ofExpression("1 + 1 + 1 + 123").getResult()).isEqualTo(126);
