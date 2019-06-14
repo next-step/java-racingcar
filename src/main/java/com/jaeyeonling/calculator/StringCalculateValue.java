@@ -28,6 +28,15 @@ public class StringCalculateValue {
     //
     //
 
+    public int calculate() {
+        int result = getValue(0);
+        for (int i = 1; i < length(); i += 2) {
+            result = getOperator(i).apply(result, getValue(i + 1));
+        }
+
+        return result;
+    }
+
     public int length() {
         return splitValue.length;
     }
