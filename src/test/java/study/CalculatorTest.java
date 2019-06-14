@@ -15,6 +15,15 @@ public class CalculatorTest {
         assertThat(calc.calculation(sample)).isEqualTo(5);
     }
 
+    @Test
+    void subtract() {
+        String sample = "2 - 3";
+
+        Calculator calc = new Calculator();
+
+        assertThat(calc.calculation(sample)).isEqualTo(-1);
+    }
+
     class Calculator {
         int result = 0;
 
@@ -27,6 +36,12 @@ public class CalculatorTest {
 
                 result = add(oper1);
                 result = add(oper2);
+            } else if (isSubtractOperator(operList[1])) {
+                int oper1 = parseInt(operList[0]);
+                int oper2 = parseInt(operList[2]);
+
+                result = add(oper1);
+                result = subtract(oper2);
             }
 
             return result;
@@ -36,12 +51,20 @@ public class CalculatorTest {
             return word.equals("+");
         }
 
+        private boolean isSubtractOperator(String word) {
+            return word.equals("-");
+        }
+
         private int parseInt(String word) {
             return Integer.parseInt(word);
         }
 
         private int add(int oper) {
             return result + oper;
+        }
+
+        private int subtract(int oper) {
+            return result - oper;
         }
     }
 }
