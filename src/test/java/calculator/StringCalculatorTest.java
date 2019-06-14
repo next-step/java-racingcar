@@ -46,4 +46,13 @@ public class StringCalculatorTest {
         assertThatIllegalArgumentException()
             .isThrownBy(() -> stringCalculator.isNotEmpty(" "));
     }
+
+    @Test
+    void isOperation() {
+        assertThat(stringCalculator.isOperation("+")).isTrue();
+        assertThatIllegalArgumentException()
+            .isThrownBy(() -> stringCalculator.isOperation("!"));
+        assertThatIllegalArgumentException()
+            .isThrownBy(() -> stringCalculator.isOperation("&"));
+    }
 }

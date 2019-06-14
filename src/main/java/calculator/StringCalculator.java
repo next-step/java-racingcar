@@ -19,10 +19,15 @@ public class StringCalculator {
 
     public boolean isNotEmpty(String s) {
         if (s == null || "".equals(s.trim())) {
-
             throw new IllegalArgumentException();
         }
+        return true;
+    }
 
+    public boolean isOperation(String s) {
+        if (!"+-*/".contains(s)) {
+            throw new IllegalArgumentException();
+        }
         return true;
     }
 }
