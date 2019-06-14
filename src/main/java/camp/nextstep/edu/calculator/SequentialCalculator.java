@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class SequentialCalculator implements StringCalculator<Integer> {
+    private static final int SIZE_CALCULATION_TERMINATED = 1;
     private static final int CALCULATION_UNIT = 3;
     private static final int ZERO = 0;
     private static final int INDEX_FIRST_ELEMENT = 0;
@@ -32,7 +33,7 @@ public class SequentialCalculator implements StringCalculator<Integer> {
             throw new IllegalArgumentException("'elements' must not be null or empty");
         }
         // 종료 조건
-        if (elements.size() == 1) {
+        if (elements.size() == SIZE_CALCULATION_TERMINATED) {
             final String result = elements.get(INDEX_FIRST_ELEMENT);
             return Integer.parseInt(result);
         }
