@@ -8,11 +8,11 @@ public class Calculator {
         this.total = 0;
     }
 
-    public Calculator(int total) {
-        this.total = total;
+    public Calculator(int number) {
+        this.total = number;
     }
 
-    public Calculator reset(int number) {
+    public Calculator initialize(int number) {
         this.total = number;
         return this;
     }
