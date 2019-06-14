@@ -13,12 +13,12 @@ public class StringCalculateValue {
     private int result;
     private boolean executed = false;
 
-    public static StringCalculateValue text(final String text) {
-        if (isInvalidText(text)) {
+    public static StringCalculateValue ofExpression(final String expression) {
+        if (isInvalidExpression(expression)) {
             throw new IllegalArgumentException();
         }
 
-        return new StringCalculateValue(text.split(SEPARATOR));
+        return new StringCalculateValue(expression.split(SEPARATOR));
     }
 
     private StringCalculateValue(final String[] splitValue) {
@@ -68,7 +68,7 @@ public class StringCalculateValue {
         return executed;
     }
 
-    private static boolean isInvalidText(final String text) {
+    private static boolean isInvalidExpression(final String text) {
         return text == null || text.isEmpty();
     }
 

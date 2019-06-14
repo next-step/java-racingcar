@@ -8,76 +8,76 @@ public class StringCalculateValueTest {
 
     @Test
     void createCalculateValue() {
-        assertThat(StringCalculateValue.text("1 + 1")).isNotNull();
+        assertThat(StringCalculateValue.ofExpression("1 + 1")).isNotNull();
     }
 
     @Test
     void invalidText() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    StringCalculateValue.text(null);
+                    StringCalculateValue.ofExpression(null);
                 });
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    StringCalculateValue.text("");
+                    StringCalculateValue.ofExpression("");
                 });
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    StringCalculateValue.text("123");
+                    StringCalculateValue.ofExpression("123");
                 });
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    StringCalculateValue.text("123 &");
+                    StringCalculateValue.ofExpression("123 &");
                 });
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    StringCalculateValue.text("123 &");
+                    StringCalculateValue.ofExpression("123 &");
                 });
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    StringCalculateValue.text("123 ^ 23423");
+                    StringCalculateValue.ofExpression("123 ^ 23423");
                 });
     }
 
     @Test
     void add() {
-        assertThat(StringCalculateValue.text("1 + 1").getResult()).isEqualTo(2);
-        assertThat(StringCalculateValue.text("2 + 5").getResult()).isEqualTo(7);
-        assertThat(StringCalculateValue.text("123 + 123").getResult()).isEqualTo(246);
+        assertThat(StringCalculateValue.ofExpression("1 + 1").getResult()).isEqualTo(2);
+        assertThat(StringCalculateValue.ofExpression("2 + 5").getResult()).isEqualTo(7);
+        assertThat(StringCalculateValue.ofExpression("123 + 123").getResult()).isEqualTo(246);
     }
 
     @Test
     void subtract() {
-        assertThat(StringCalculateValue.text("1 - 1").getResult()).isEqualTo(0);
-        assertThat(StringCalculateValue.text("10 - 2").getResult()).isEqualTo(8);
-        assertThat(StringCalculateValue.text("500 - 2").getResult()).isEqualTo(498);
+        assertThat(StringCalculateValue.ofExpression("1 - 1").getResult()).isEqualTo(0);
+        assertThat(StringCalculateValue.ofExpression("10 - 2").getResult()).isEqualTo(8);
+        assertThat(StringCalculateValue.ofExpression("500 - 2").getResult()).isEqualTo(498);
     }
 
     @Test
     void multiply() {
-        assertThat(StringCalculateValue.text("1 * 1").getResult()).isEqualTo(1);
-        assertThat(StringCalculateValue.text("10 * 2").getResult()).isEqualTo(20);
-        assertThat(StringCalculateValue.text("500 * 2").getResult()).isEqualTo(1000);
+        assertThat(StringCalculateValue.ofExpression("1 * 1").getResult()).isEqualTo(1);
+        assertThat(StringCalculateValue.ofExpression("10 * 2").getResult()).isEqualTo(20);
+        assertThat(StringCalculateValue.ofExpression("500 * 2").getResult()).isEqualTo(1000);
     }
 
     @Test
     void divide() {
-        assertThat(StringCalculateValue.text("1 / 1").getResult()).isEqualTo(1);
-        assertThat(StringCalculateValue.text("10 / 2").getResult()).isEqualTo(5);
-        assertThat(StringCalculateValue.text("500 / 2").getResult()).isEqualTo(250);
+        assertThat(StringCalculateValue.ofExpression("1 / 1").getResult()).isEqualTo(1);
+        assertThat(StringCalculateValue.ofExpression("10 / 2").getResult()).isEqualTo(5);
+        assertThat(StringCalculateValue.ofExpression("500 / 2").getResult()).isEqualTo(250);
     }
 
     @Test
     void complexCalculate() {
-        assertThat(StringCalculateValue.text("1 + 1 + 1 + 123").getResult()).isEqualTo(126);
-        assertThat(StringCalculateValue.text("1 - 1 + 1 * 100").getResult()).isEqualTo(100);
-        assertThat(StringCalculateValue.text("1 * 2 * 3 * 4 * 5").getResult()).isEqualTo(120);
-        assertThat(StringCalculateValue.text("100 / 2 * 2 + 100 - 50").getResult()).isEqualTo(150);
+        assertThat(StringCalculateValue.ofExpression("1 + 1 + 1 + 123").getResult()).isEqualTo(126);
+        assertThat(StringCalculateValue.ofExpression("1 - 1 + 1 * 100").getResult()).isEqualTo(100);
+        assertThat(StringCalculateValue.ofExpression("1 * 2 * 3 * 4 * 5").getResult()).isEqualTo(120);
+        assertThat(StringCalculateValue.ofExpression("100 / 2 * 2 + 100 - 50").getResult()).isEqualTo(150);
     }
 
 }
