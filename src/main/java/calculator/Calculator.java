@@ -9,11 +9,7 @@ public class Calculator {
 
         StringCalculator stringCalculator = new StringCalculator();
 
-        stringCalculator.isNotEmpty(input);
-
-        String[] strings = input.split(" ");
-
-        int result = stringCalculator.calculate(strings);
+        int result = stringCalculator.calculate(input);
         System.out.println(result);
 
         sc.close();

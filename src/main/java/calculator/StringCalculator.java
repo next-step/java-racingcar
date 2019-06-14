@@ -17,10 +17,8 @@ public class StringCalculator {
         return a / b;
     }
 
-    public void isNotEmpty(String s) {
-        if (s == null || "".equals(s.trim())) {
-            throw new IllegalArgumentException();
-        }
+    public boolean isNotEmpty(String s) {
+        return s == null || "".equals(s.trim());
     }
 
     public String isOperation(String s) {
@@ -30,9 +28,16 @@ public class StringCalculator {
         return s;
     }
 
-    public int calculate(String[] strings) {
-        int result = Integer.parseInt(strings[0]);
+    public int calculate(String input) {
+        if (isNotEmpty(input)) {
+            throw new IllegalArgumentException();
+        }
+
+        String[] strings = input.split(" ");
+        int result = convertInteger(strings[0]);
+
         String operator = null;
+
         for (int i = 1; i < strings.length; i++) {
             if (i % 2 != 0) {
                 operator = isOperation(strings[i]);
@@ -40,20 +45,24 @@ public class StringCalculator {
             if (i % 2 == 0) {
                 switch (operator) {
                     case "+" :
-                        result = add(result, Integer.parseInt(strings[i]));
+                        result = add(result, convertInteger(strings[i]));
                         break;
                     case "-" :
-                        result = subtract(result, Integer.parseInt(strings[i]));
+                        result = subtract(result, convertInteger(strings[i]));
                         break;
                     case "*" :
-                        result = multiply(result, Integer.parseInt(strings[i]));
+                        result = multiply(result, convertInteger(strings[i]));
                         break;
                     case "/" :
-                        result = divide(result, Integer.parseInt(strings[i]));
+                        result = divide(result, convertInteger(strings[i]));
                         break;
                 }
             }
         }
         return result;
+    }
+
+    public int convertInteger(String s) {
+        return Integer.parseInt(s);
     }
 }
