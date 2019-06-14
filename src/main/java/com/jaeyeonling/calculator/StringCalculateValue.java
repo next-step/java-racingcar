@@ -8,18 +8,10 @@ public class StringCalculateValue {
     private static final OperatorProvider operatorProvider = new OperatorProvider();
     private static final String SEPARATOR = " ";
 
-    //
-    //
-    //
-
     private final String[] splitValue;
 
     private int result;
     private boolean executed = false;
-
-    //
-    //
-    //
 
     public static StringCalculateValue text(final String text) {
         if (isInvalidText(text)) {
@@ -34,11 +26,6 @@ public class StringCalculateValue {
 
         checkConstraints();
     }
-
-
-    //
-    //
-    //
 
     public int getResult() {
         if (!isExecuted()) {
@@ -80,10 +67,6 @@ public class StringCalculateValue {
     public boolean isExecuted() {
         return executed;
     }
-
-    //
-    //
-    //
 
     private static boolean isInvalidText(final String text) {
         return text == null || text.isEmpty();

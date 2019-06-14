@@ -17,10 +17,6 @@ public enum Operator {
         this.operation = operation;
     }
 
-    //
-    //
-    //
-
     public int apply(int a, int b) {
         return operation.apply(a, b);
     }
