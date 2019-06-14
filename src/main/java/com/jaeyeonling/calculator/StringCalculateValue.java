@@ -13,11 +13,9 @@ public class StringCalculateValue {
     private int result;
     private boolean executed = false;
 
-    private StringCalculateValue(final String[] splitValue) {
-        this.splitValue = splitValue;
-
-        checkConstraints();
-    }
+    //
+    //
+    //
 
     public static StringCalculateValue text(final String text) {
         if (isInvalidText(text)) {
@@ -26,6 +24,13 @@ public class StringCalculateValue {
 
         return new StringCalculateValue(text.split(SEPARATOR));
     }
+
+    private StringCalculateValue(final String[] splitValue) {
+        this.splitValue = splitValue;
+
+        checkConstraints();
+    }
+
 
     //
     //
@@ -46,7 +51,10 @@ public class StringCalculateValue {
 
         result = getValue(0);
         for (int i = 1; i < length(); i += 2) {
-            result = getOperator(i).apply(result, getValue(i + 1));
+            final Operator operator = getOperator(i);
+            final int nextValue = getValue(i + 1);
+
+            result = operator.apply(result, nextValue);
         }
 
         executed = true;
