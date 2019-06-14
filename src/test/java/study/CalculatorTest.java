@@ -2,6 +2,7 @@ package study;
 
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 public class CalculatorTest {
@@ -24,6 +25,15 @@ public class CalculatorTest {
         assertThat(calc.calculation(sample)).isEqualTo(-1);
     }
 
+    @Test
+    void multiply() {
+        String sample = "2 * 3";
+
+        Calculator calc = new Calculator();
+
+        assertThat(calc.calculation(sample)).isEqualTo(6);
+    }
+
     class Calculator {
         int result = 0;
 
@@ -42,6 +52,12 @@ public class CalculatorTest {
 
                 result = add(oper1);
                 result = subtract(oper2);
+            } else if (isMultiplyOperator(operList[1])) {
+                int oper1 = parseInt(operList[0]);
+                int oper2 = parseInt(operList[2]);
+
+                result = add(oper1);
+                result = multiply(oper2);
             }
 
             return result;
@@ -55,6 +71,10 @@ public class CalculatorTest {
             return word.equals("-");
         }
 
+        private boolean isMultiplyOperator(String word) {
+            return word.equals("*");
+        }
+
         private int parseInt(String word) {
             return Integer.parseInt(word);
         }
@@ -65,6 +85,10 @@ public class CalculatorTest {
 
         private int subtract(int oper) {
             return result - oper;
+        }
+
+        private int multiply(int oper) {
+            return result * oper;
         }
     }
 }
