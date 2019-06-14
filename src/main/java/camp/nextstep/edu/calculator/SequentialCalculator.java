@@ -39,18 +39,22 @@ public class SequentialCalculator implements StringCalculator<Integer> {
         }
 
         // 처음 3개의 원소들(숫자, 연산자, 숫자)을 계산
+        final String result = this.processFirstOperator(elements);
+
+        // 남은 원소들이 있다면, 계속 계산
+        final List<String> remainingElements = this.getRemainingElements(elements);
+        final List<String> nextElements = new ArrayList<>();
+        nextElements.add(result);
+        nextElements.addAll(remainingElements);
+        return calculateRecursively(nextElements);
+    }
+
+    private String processFirstOperator(List<String> elements) {
         final Integer source = ListUtils.getForInteger(elements, INDEX_FIRST_ELEMENT);
         final OperatorType operatorType = ListUtils.getForOperatorType(elements, INDEX_SECOND_ELEMENT);
         final Integer target = ListUtils.getForInteger(elements, INDEX_THIRD_ELEMENT);
         final int result = operatorType.operate(source, target);
-        final String resultString = String.valueOf(result);
-
-        // 남은 원소들이 있다면, 계속 계산
-        final List<String> nextElements = new ArrayList<>();
-        nextElements.add(resultString);
-        final List<String> remainingElements = this.getRemainingElements(elements);
-        nextElements.addAll(remainingElements);
-        return calculateRecursively(nextElements);
+        return String.valueOf(result);
     }
 
     private List<String> getRemainingElements(List<String> elements) {
