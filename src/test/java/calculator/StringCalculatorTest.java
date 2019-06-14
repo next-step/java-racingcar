@@ -2,6 +2,8 @@ package calculator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -49,10 +51,15 @@ public class StringCalculatorTest {
 
     @Test
     void isOperation() {
-        assertThat(stringCalculator.isOperation("+")).isTrue();
+        assertThat(stringCalculator.isOperation("+")).isEqualTo("+");
         assertThatIllegalArgumentException()
             .isThrownBy(() -> stringCalculator.isOperation("!"));
         assertThatIllegalArgumentException()
             .isThrownBy(() -> stringCalculator.isOperation("&"));
+    }
+
+    @Test
+    void calculate() {
+        assertThat(stringCalculator.calculate("2 * 5 + 10 / 2".split(" "))).isEqualTo(10);
     }
 }

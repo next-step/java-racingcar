@@ -17,17 +17,43 @@ public class StringCalculator {
         return a / b;
     }
 
-    public boolean isNotEmpty(String s) {
+    public void isNotEmpty(String s) {
         if (s == null || "".equals(s.trim())) {
             throw new IllegalArgumentException();
         }
-        return true;
     }
 
-    public boolean isOperation(String s) {
+    public String isOperation(String s) {
         if (!"+-*/".contains(s)) {
             throw new IllegalArgumentException();
         }
-        return true;
+        return s;
+    }
+
+    public int calculate(String[] strings) {
+        int result = Integer.parseInt(strings[0]);
+        String operator = null;
+        for (int i = 1; i < strings.length; i++) {
+            if (i % 2 != 0) {
+                operator = isOperation(strings[i]);
+            }
+            if (i % 2 == 0) {
+                switch (operator) {
+                    case "+" :
+                        result = add(result, Integer.parseInt(strings[i]));
+                        break;
+                    case "-" :
+                        result = subtract(result, Integer.parseInt(strings[i]));
+                        break;
+                    case "*" :
+                        result = multiply(result, Integer.parseInt(strings[i]));
+                        break;
+                    case "/" :
+                        result = divide(result, Integer.parseInt(strings[i]));
+                        break;
+                }
+            }
+        }
+        return result;
     }
 }
