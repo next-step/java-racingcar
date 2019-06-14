@@ -23,4 +23,9 @@ class CalculatorTest {
     void multiplicationTest() {
         Assertions.assertThat(Calculator.MULTIPLICATION.calculate(1, 2)).isEqualTo(2);
     }
+    
+    @Test
+    void notFourMathSign() {
+        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> Calculator.getMathSign("("));
+    }
 }
