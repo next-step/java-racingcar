@@ -1,6 +1,5 @@
 package com.jaeyeonling.calculator;
 
-import com.jaeyeonling.calculator.provider.OperatorProvider;
 import com.jaeyeonling.calculator.type.Operator;
 
 public class StringCalculateValue {
@@ -20,7 +19,7 @@ public class StringCalculateValue {
 
     public static StringCalculateValue ofExpression(final String expression) {
         if (isInvalidExpression(expression)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("올바르지 않은 Expression");
         }
 
         return new StringCalculateValue(expression.split(SEPARATOR));
@@ -73,7 +72,7 @@ public class StringCalculateValue {
 
     private void checkConstraints() {
         if (isInvalidValueLength()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("올바르지 않은 Expression");
         }
 
         checkValue(0);
@@ -95,7 +94,7 @@ public class StringCalculateValue {
         try {
             getValue(index);
         } catch (final NumberFormatException ignore) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("올바르지 않은 Expression");
         }
     }
 

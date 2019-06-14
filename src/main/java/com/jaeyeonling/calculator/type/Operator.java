@@ -31,7 +31,7 @@ public enum Operator {
     public static Operator symbol(final String symbol) {
         final Operator operator = operatorMap.get(symbol);
         if (Objects.isNull(operator)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("지원하지 않는 Symbol");
         }
 
         return operator;
