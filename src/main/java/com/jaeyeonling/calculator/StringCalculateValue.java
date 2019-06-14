@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class StringCalculateValue {
 
-    private static final String REGEX_EXPRESSION = "^(\\d+)(?:\\s+[\\+\\-\\*\\/]+\\s+(\\d+))+$";
+    private static final String REGEX_EXPRESSION = "^(\\d+)(?:\\s+[\\+\\-\\*\\/]{1}\\s+(\\d+))+$";
     private static final Pattern EXPRESSION_PATTERN = Pattern.compile(REGEX_EXPRESSION);
     private static final String SEPARATOR = " ";
 
