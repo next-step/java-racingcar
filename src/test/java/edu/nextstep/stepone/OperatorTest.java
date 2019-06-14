@@ -1,5 +1,9 @@
 package edu.nextstep.stepone;
 
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * author       : gwonbyeong-yun <sksggg123>
  * ------------------------------------------
@@ -11,4 +15,14 @@ package edu.nextstep.stepone;
  * create date  : 2019-06-14 14:33
  */
 public class OperatorTest {
+
+    @Test
+    void 덧셈() {
+        Operator operator = new Operator();
+        assertThat(operator.add(1,2)).isEqualTo(3);
+        assertThat(operator.add(2,3)).isEqualTo(5);
+        assertThat(operator.add(3,4)).isEqualTo(7);
+        assertThat(operator.add(1000,2000)).isEqualTo(3000);
+    }
+
 }
