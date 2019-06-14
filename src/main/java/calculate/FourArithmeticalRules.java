@@ -23,15 +23,15 @@ public enum FourArithmeticalRules {
     }
     
     public static FourArithmeticalRules getMathSign(String sign) {
+        if (!FourArithmeticalRules.hasMathSign(sign)) {
+            throw new IllegalArgumentException();
+        }
+        
         FourArithmeticalRules[] arithmeticalRules = FourArithmeticalRules.values();
         Stream<FourArithmeticalRules> result = Arrays.stream(arithmeticalRules)
             .filter(arithmeticalRule -> sign.equals(arithmeticalRule.mathSign));
         
-        try {
-            return result.findFirst().get();
-        } catch (Exception e) {
-            throw new IllegalArgumentException();
-        }
+        return result.findFirst().get();
     }
     
     public static boolean hasMathSign(String sign) {
