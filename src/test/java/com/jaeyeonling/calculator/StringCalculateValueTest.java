@@ -14,36 +14,62 @@ public class StringCalculateValueTest {
     }
 
     @Test
-    @DisplayName("잘못된 계산식 입력 시 예외처리")
-    void invalidExpression() {
+    @DisplayName("null 계산식 입력 시 예외처리")
+    void nullExpression() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
                     StringCalculateValue.ofExpression(null);
                 });
+    }
 
+    @Test
+    @DisplayName("빈 값 계산식 입력 시 예외처리")
+    void emptyExpression() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
                     StringCalculateValue.ofExpression("");
                 });
+    }
 
+    @Test
+    @DisplayName("수식없는 하나의 숫자 계산식 입력 시 예외처리")
+    void singleExpression() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
                     StringCalculateValue.ofExpression("123");
                 });
+    }
 
+    @Test
+    @DisplayName("갯수가 맞지 않는 계산식 입력 시 예외처리")
+    void evenExpression() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    StringCalculateValue.ofExpression("123 &");
+                    StringCalculateValue.ofExpression("123 *");
                 });
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    StringCalculateValue.ofExpression("123 &");
+                    StringCalculateValue.ofExpression("123 * 1 + 5 +");
+                });
+    }
+
+    @Test
+    @DisplayName("잘못된 수식 입력 시 예외처리")
+    void invalidOperationSymbolExpression() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    StringCalculateValue.ofExpression("123 & 124");
                 });
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
                     StringCalculateValue.ofExpression("123 ^ 23423");
+                });
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    StringCalculateValue.ofExpression("123 ! 23423");
                 });
     }
 
