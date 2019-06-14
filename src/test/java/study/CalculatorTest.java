@@ -73,18 +73,26 @@ public class CalculatorTest {
                 .isThrownBy(() -> calc.calculate(sample));
     }
 
+    @Test
+    void invalidOperator() {
+        String sample = "1 & 1";
+
+        Calculator calc = new Calculator();
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> calc.calculate(sample));
+    }
+
     class Calculator {
         private int result = 0;
 
         int calculate(String equation) {
             checkValidEquation(equation);
 
-            String[] operList = equation.split(" ");
+            String[] operList = split(equation);
+            result = add(toInt(operList[0]));
 
-            int first = toInt(operList[0]);
-            result = add(first);
-
-            for (int i = 1; i < operList.length - 1; i++ ) {
+            for (int i = 1; i < operList.length - 1; i = i + 2 ) {
                 result = operate(operList[i], operList[i+1]);
             }
 
@@ -93,7 +101,7 @@ public class CalculatorTest {
 
         private int operate(String operator, String operand) {
             if (isNotValidOperator(operator)) {
-                return result;
+                throw new IllegalArgumentException();
             }
 
             if (isAddOperator(operator)) {
@@ -110,7 +118,11 @@ public class CalculatorTest {
 
             }
 
-            return 0;
+            return result;
+        }
+
+        private String[] split(String equation) {
+            return equation.split(" ");
         }
 
         private void checkValidEquation(String equation) {
