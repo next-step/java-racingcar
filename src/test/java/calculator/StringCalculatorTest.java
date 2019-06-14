@@ -2,8 +2,6 @@ package calculator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -42,24 +40,17 @@ public class StringCalculatorTest {
     }
 
     @Test
-    void isNotEmpty() {
-        assertThatIllegalArgumentException()
-            .isThrownBy(() -> stringCalculator.isNotEmpty(null));
-        assertThatIllegalArgumentException()
-            .isThrownBy(() -> stringCalculator.isNotEmpty(" "));
-    }
-
-    @Test
-    void isOperation() {
-        assertThat(stringCalculator.isOperation("+")).isEqualTo("+");
-        assertThatIllegalArgumentException()
-            .isThrownBy(() -> stringCalculator.isOperation("!"));
-        assertThatIllegalArgumentException()
-            .isThrownBy(() -> stringCalculator.isOperation("&"));
+    void isEmpty() {
+        assertThat(stringCalculator.isEmpty(null)).isTrue();
+        assertThat(stringCalculator.isEmpty(" ")).isTrue();
     }
 
     @Test
     void calculate() {
-        assertThat(stringCalculator.calculate("2 * 5 + 10 / 2".split(" "))).isEqualTo(10);
+        assertThat(stringCalculator.calculate("2 * 5 + 10 / 2")).isEqualTo(10);
+        assertThatIllegalArgumentException()
+            .isThrownBy(() -> stringCalculator.calculate("!"));
+        assertThatIllegalArgumentException()
+            .isThrownBy(() -> stringCalculator.calculate("&"));
     }
 }

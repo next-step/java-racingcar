@@ -17,19 +17,12 @@ public class StringCalculator {
         return a / b;
     }
 
-    public boolean isNotEmpty(String s) {
+    public boolean isEmpty(String s) {
         return s == null || "".equals(s.trim());
     }
 
-    public String isOperation(String s) {
-        if (!"+-*/".contains(s)) {
-            throw new IllegalArgumentException();
-        }
-        return s;
-    }
-
     public int calculate(String input) {
-        if (isNotEmpty(input)) {
+        if (isEmpty(input)) {
             throw new IllegalArgumentException();
         }
 
@@ -40,29 +33,34 @@ public class StringCalculator {
 
         for (int i = 1; i < strings.length; i++) {
             if (i % 2 != 0) {
-                operator = isOperation(strings[i]);
+                operator = strings[i];
             }
             if (i % 2 == 0) {
-                switch (operator) {
-                    case "+" :
-                        result = add(result, convertInteger(strings[i]));
-                        break;
-                    case "-" :
-                        result = subtract(result, convertInteger(strings[i]));
-                        break;
-                    case "*" :
-                        result = multiply(result, convertInteger(strings[i]));
-                        break;
-                    case "/" :
-                        result = divide(result, convertInteger(strings[i]));
-                        break;
-                }
+                result = getResult(result, operator, convertInteger(strings[i]));
             }
         }
         return result;
     }
 
+    private int getResult(int result, String operator, int i) {
+        switch (operator) {
+            case "+" :
+                return add(result, i);
+            case "-" :
+                return subtract(result, i);
+            case "*" :
+                return multiply(result, i);
+            case "/" :
+                return divide(result, i);
+        }
+        throw new IllegalArgumentException();
+    }
+
     public int convertInteger(String s) {
-        return Integer.parseInt(s);
+        try {
+            return Integer.parseInt(s);
+        } catch (NumberFormatException ex) {
+            throw new IllegalArgumentException();
+        }
     }
 }
