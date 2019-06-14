@@ -3,15 +3,15 @@ package camp.nextstep.edu.calculator;
 import java.util.Scanner;
 
 public class CalculatorApplication {
-    private final Calculator<Integer> calculator;
+    private final StringCalculator<Integer> calculator;
 
-    public CalculatorApplication(Calculator<Integer> calculator) {
+    public CalculatorApplication(StringCalculator<Integer> calculator) {
         this.calculator = calculator;
     }
 
     public static void main(String[] args) {
         final ExpressionValidator validator = new ExpressionValidatorImpl();
-        final Calculator<Integer> calculator = new StringCalculator(validator);
+        final StringCalculator<Integer> calculator = new SequentialCalculator(validator);
         final CalculatorApplication application = new CalculatorApplication(calculator);
 
         application.run();
