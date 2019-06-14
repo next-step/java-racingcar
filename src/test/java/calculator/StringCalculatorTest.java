@@ -53,4 +53,15 @@ public class StringCalculatorTest {
         assertThatIllegalArgumentException()
             .isThrownBy(() -> stringCalculator.calculate("&"));
     }
+
+    @Test
+    void getOperator() {
+        assertThat(Operator.getOperator("+")).isEqualByComparingTo(Operator.ADD);
+        assertThat(Operator.getOperator("-")).isEqualByComparingTo(Operator.SUBTRACT);
+        assertThat(Operator.getOperator("*")).isEqualByComparingTo(Operator.MULTIPLY);
+        assertThat(Operator.getOperator("/")).isEqualByComparingTo(Operator.DIVIDE);
+
+        assertThatIllegalArgumentException()
+            .isThrownBy(() -> Operator.getOperator("!"));
+    }
 }

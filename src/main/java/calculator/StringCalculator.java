@@ -1,23 +1,6 @@
 package calculator;
 
-import java.util.AbstractMap.SimpleEntry;
-import java.util.Collections;
-import java.util.Map;
-import java.util.stream.Stream;
-
-import static java.util.stream.Collectors.toMap;
-
 public class StringCalculator {
-
-    private static Map<String, Operator> operatorMap;
-    static {
-       operatorMap =  Collections.unmodifiableMap(Stream.of(
-                               new SimpleEntry<>("+", Operator.ADD)
-                               , new SimpleEntry<>("-", Operator.SUBSTRACT)
-                               , new SimpleEntry<>("*", Operator.MULTIPLY)
-                               , new SimpleEntry<>("/", Operator.DIVIDE))
-                               .collect(toMap(e -> e.getKey(), e -> e.getValue())));
-    }
 
     public int add(int a, int b) {
         return a + b;
@@ -61,10 +44,7 @@ public class StringCalculator {
     }
 
     private int getResult(int result, String operator, int i) {
-        if (operatorMap.get(operator) == null) {
-            throw new IllegalArgumentException();
-        }
-        return operatorMap.get(operator).getResult(result, i);
+        return Operator.getOperator(operator).getResult(result, i);
     }
 
     public int convertInteger(String s) {

@@ -4,7 +4,7 @@ import java.util.function.BiFunction;
 
 public enum  Operator {
     ADD("+", Integer::sum),
-    SUBSTRACT("-", (num1, num2) -> num1 - num2),
+    SUBTRACT("-", (num1, num2) -> num1 - num2),
     MULTIPLY("*", (num1, num2) -> num1 * num2),
     DIVIDE("/", (num1, num2) -> num1 / num2);
 
@@ -22,5 +22,14 @@ public enum  Operator {
 
     public int getResult(int num1, int num2) {
         return expression.apply(num1, num2);
+    }
+
+    public static Operator getOperator(String op) {
+        for (Operator operator : Operator.values()) {
+            if (op.equals(operator.getOperation())) {
+                return operator;
+            }
+        }
+        throw new IllegalArgumentException();
     }
 }
