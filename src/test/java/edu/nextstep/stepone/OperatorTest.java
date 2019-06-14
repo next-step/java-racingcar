@@ -25,4 +25,13 @@ public class OperatorTest {
         assertThat(operator.add(1000,2000)).isEqualTo(3000);
     }
 
+    @Test
+    void 뺄셈() {
+        Operator operator = new Operator();
+        assertThat(operator.minus(1,2)).isEqualTo(-1);
+        assertThat(operator.minus(2,1)).isEqualTo(1);
+        assertThat(operator.minus(100,200)).isEqualTo(-100);
+        assertThat(operator.minus(200,100)).isEqualTo(100);
+    }
+
 }
