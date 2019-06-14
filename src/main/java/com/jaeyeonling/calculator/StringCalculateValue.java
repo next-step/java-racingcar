@@ -2,8 +2,12 @@ package com.jaeyeonling.calculator;
 
 import com.jaeyeonling.calculator.type.Operator;
 
+import java.util.regex.Pattern;
+
 public class StringCalculateValue {
 
+    private static final String REGEX_EXPRESSION = "^(\\d+)(?:\\s+[\\+\\-\\*\\/]+\\s+(\\d+))+$";
+    private static final Pattern EXPRESSION_PATTERN = Pattern.compile(REGEX_EXPRESSION);
     private static final String SEPARATOR = " ";
 
     private static final int DEFAULT_INDEX = 0;
@@ -18,8 +22,6 @@ public class StringCalculateValue {
 
     private StringCalculateValue(final String[] splitValue) {
         this.splitValue = splitValue;
-
-        checkConstraints();
     }
 
     public static StringCalculateValue ofExpression(final String expression) {
@@ -72,38 +74,14 @@ public class StringCalculateValue {
     }
 
     private static boolean isInvalidExpression(final String text) {
+        return isEmpty(text) || isNotMatchExpression(text);
+    }
+
+    private static boolean isEmpty(final String text) {
         return text == null || text.isEmpty();
     }
 
-    private void checkConstraints() {
-        if (isInvalidValueLength()) {
-            throw new IllegalArgumentException("올바르지 않은 Expression");
-        }
-
-        checkValue(DEFAULT_INDEX);
-        for (int i = START_INDEX; i < length(); i += CALCULATION_SIZE) {
-            checkOperator(i);
-            checkValue(i + START_INDEX);
-        }
-    }
-
-    private boolean isInvalidValueLength() {
-        return length() < CALCULATION_SIZE || isEvenLength();
-    }
-
-    private boolean isEvenLength() {
-        return length() / CALCULATION_SIZE == 0;
-    }
-
-    private void checkValue(final int index) {
-        try {
-            getValue(index);
-        } catch (final NumberFormatException ignore) {
-            throw new IllegalArgumentException("올바르지 않은 Expression");
-        }
-    }
-
-    private void checkOperator(final int index) {
-        getOperator(index);
+    private static boolean isNotMatchExpression(final String text) {
+        return !EXPRESSION_PATTERN.matcher(text).matches();
     }
 }
