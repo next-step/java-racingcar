@@ -19,28 +19,19 @@ public class CalculateExpressionTest {
     @DisplayName("null 계산식 입력 시 예외처리")
     @Test
     void nullExpression() {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    CalculateExpression.ofExpression(null);
-                });
+        calculateThrowIllegalArgumentExceptionTest(null);
     }
 
     @DisplayName("빈 값 계산식 입력 시 예외처리")
     @Test
     void emptyExpression() {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    CalculateExpression.ofExpression("");
-                });
+        calculateThrowIllegalArgumentExceptionTest("");
     }
 
     @DisplayName("수식없는 하나의 숫자 계산식 입력 시 예외처리")
     @Test
     void singleExpression() {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    CalculateExpression.ofExpression("123");
-                });
+        calculateThrowIllegalArgumentExceptionTest("123");
     }
 
     @DisplayName("갯수가 맞지 않는 계산식 입력 시 예외처리")
@@ -52,10 +43,7 @@ public class CalculateExpressionTest {
             "123123 *"
     })
     void evenExpression(final String expression) {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    CalculateExpression.ofExpression(expression);
-                });
+        calculateThrowIllegalArgumentExceptionTest(expression);
     }
 
     @DisplayName("잘못된 수식 입력 시 예외처리")
@@ -67,10 +55,7 @@ public class CalculateExpressionTest {
             "123 +-/* 23423"
     })
     void invalidOperationSymbolExpression(final String expression) {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    CalculateExpression.ofExpression(expression);
-                });
+        calculateThrowIllegalArgumentExceptionTest(expression);
     }
 
     @DisplayName("더하기")
@@ -81,7 +66,7 @@ public class CalculateExpressionTest {
             "123 + 123,246"
     })
     void add(final String expression, final Integer result) {
-        assertThat(StringCalculator.calculate(CalculateExpression.ofExpression(expression))).isEqualTo(result);
+        calculateTest(expression, result);
     }
 
     @DisplayName("빼기")
@@ -92,7 +77,7 @@ public class CalculateExpressionTest {
             "500 - 2,498"
     })
     void subtract(final String expression, final Integer result) {
-        assertThat(StringCalculator.calculate(CalculateExpression.ofExpression(expression))).isEqualTo(result);
+        calculateTest(expression, result);
     }
 
     @DisplayName("곱하기")
@@ -103,7 +88,7 @@ public class CalculateExpressionTest {
             "500 * 2,1000"
     })
     void multiply(final String expression, final Integer result) {
-        assertThat(StringCalculator.calculate(CalculateExpression.ofExpression(expression))).isEqualTo(result);
+        calculateTest(expression, result);
     }
 
     @DisplayName("나누기")
@@ -114,16 +99,13 @@ public class CalculateExpressionTest {
             "500 / 2,250"
     })
     void divide(final String expression, final Integer result) {
-        assertThat(StringCalculator.calculate(CalculateExpression.ofExpression(expression))).isEqualTo(result);
+        calculateTest(expression, result);
     }
 
     @Test
     @DisplayName("0으로 나눌 시 예외처리")
     void divideByZero() {
-        assertThatExceptionOfType(ArithmeticException.class)
-                .isThrownBy(() -> {
-                    StringCalculator.calculate(CalculateExpression.ofExpression("1 / 0"));
-                });
+        calculateThrowExceptionTest("1 / 0", ArithmeticException.class);
     }
 
     @DisplayName("복합적인 계산")
@@ -135,7 +117,24 @@ public class CalculateExpressionTest {
             "100 / 2 * 2 + 100 - 50,150"
     })
     void complexCalculate(final String expression, final Integer result) {
-        assertThat(StringCalculator.calculate(CalculateExpression.ofExpression(expression))).isEqualTo(result);
+        calculateTest(expression, result);
     }
 
+    private void calculateThrowIllegalArgumentExceptionTest(final String expression) {
+        calculateThrowExceptionTest(expression, IllegalArgumentException.class);
+    }
+
+    private void calculateThrowExceptionTest(final String expression,
+                                             final Class<? extends Exception> targetException) {
+        assertThatExceptionOfType(targetException)
+                .isThrownBy(() -> calculate(expression));
+    }
+
+    private void calculateTest(final String expression, final Integer result) {
+        assertThat(calculate(expression)).isEqualTo(result);
+    }
+
+    private int calculate(final String expression) {
+        return StringCalculator.calculate(CalculateExpression.ofExpression(expression));
+    }
 }
