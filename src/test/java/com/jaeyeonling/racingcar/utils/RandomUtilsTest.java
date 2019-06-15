@@ -13,7 +13,7 @@ public class RandomUtilsTest {
     @DisplayName("getIntWithBound 테스트")
     @ParameterizedTest
     @ValueSource(ints = { 0, 1, 100, 500 })
-    void repeat(final int bound) {
+    void getIntWithBound(final int bound) {
         for (int i = 0; i < RANDOM_VERIFY_REPEAT_COUNT; i++) {
             final int randomValue = RandomUtils.getIntWithBound(bound);
             assertThat(randomValue).isLessThan(bound);
