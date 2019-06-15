@@ -11,12 +11,12 @@ public class InputView {
         reader = new Scanner(source);
     }
 
-    public String readFromConsole() {
+    public String readString() {
         return reader.nextLine();
     }
 
-    public String readFromConsoleWithMessage(final String message) {
+    public String readStringWithMessage(final String message) {
         System.out.println(message);
-        return readFromConsole();
+        return readString();
     }
 }

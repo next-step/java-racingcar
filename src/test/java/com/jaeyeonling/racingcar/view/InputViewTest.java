@@ -22,6 +22,6 @@ public class InputViewTest {
     @DisplayName("값 입력 검증")
     @Test
     void readFromConsole() {
-        assertThat(inputView.readFromConsole()).isEqualTo(TEST_INPUT);
+        assertThat(inputView.readString()).isEqualTo(TEST_INPUT);
     }
 }
