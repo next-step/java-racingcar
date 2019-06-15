@@ -16,8 +16,7 @@ public enum Math {
 
     private BiFunction<Long, Long, Long> expression;
 
-    Math(String sign,
-         BiFunction<Long, Long, Long> expression) {
+    Math(String sign, BiFunction<Long, Long, Long> expression) {
         this.sign = sign;
         this.expression = expression;
     }
