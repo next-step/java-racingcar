@@ -4,7 +4,7 @@ import step2.racing.random.RandomGenerator;
 
 public class Car {
 
-    private int position = 0;
+    private int position;
 
     /**
      * 차량번호
@@ -12,10 +12,13 @@ public class Car {
     private final int number;
     private final RandomGenerator randomGenerator;
 
+    public static final int DEFAULT_POSITION = 1;
     private static final int BOUND = 10;
     private static final int MOVE_VALUE = 4;
 
     private Car(int number, RandomGenerator randomGenerator) {
+
+        this.position = DEFAULT_POSITION;
 
         this.number = number;
         this.randomGenerator = randomGenerator;
@@ -39,7 +42,7 @@ public class Car {
         return randomInt >= MOVE_VALUE;
     }
 
-    int checkPosition() {
+    public int checkPosition() {
 
         return position;
     }

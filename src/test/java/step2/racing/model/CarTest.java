@@ -18,9 +18,11 @@ class CarTest {
 
         IntStream.rangeClosed(4, 9)
                 .forEach(fixedNumber -> {
+
                     car = Car.of(0, new StubRandomGenerator(fixedNumber));
                     car.race();
-                    assertThat(car.checkPosition()).isOne();
+                    assertThat(car.checkPosition()).isGreaterThan(Car.DEFAULT_POSITION);
+
                 });
     }
 
@@ -30,9 +32,11 @@ class CarTest {
 
         IntStream.rangeClosed(0, 3)
                 .forEach(fixedNumber -> {
+
                     car = Car.of(0, new StubRandomGenerator(fixedNumber));
                     car.race();
-                    assertThat(car.checkPosition()).isZero();
+                    assertThat(car.checkPosition()).isEqualTo(Car.DEFAULT_POSITION);
+
                 });
     }
 }

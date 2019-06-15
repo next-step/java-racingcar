@@ -3,7 +3,7 @@ package step2.racing.scanner;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import step2.racing.exception.ScanException;
-import step2.racing.testutil.InputStreamMockUtil;
+import step2.racing.testutil.SystemInputStubUtil;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -40,7 +40,7 @@ class SystemConsoleInputScannerTest {
 
     private void mockSystemConsoleInputScanner(String input) {
 
-        InputStreamMockUtil.mockInputStream(input);
+        SystemInputStubUtil.stubInputStream(input);
         systemConsoleInputScanner = new SystemConsoleInputScanner();
     }
 

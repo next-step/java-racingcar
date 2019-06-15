@@ -7,7 +7,7 @@ import step2.racing.scanner.SystemConsoleInputScanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static step2.racing.testutil.InputStreamMockUtil.mockInputStream;
+import static step2.racing.testutil.SystemInputStubUtil.stubInputStream;
 
 class InputViewTest {
 
@@ -79,7 +79,7 @@ class InputViewTest {
 
     private void mockInput(String input) {
 
-        mockInputStream(input);
+        stubInputStream(input);
         inputView = new InputView(new SystemConsoleInputScanner());
     }
 
