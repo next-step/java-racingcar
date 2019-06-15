@@ -1,20 +1,15 @@
 package com.jaeyeonling.racingcar.domain;
 
 import java.util.Objects;
-import java.util.stream.IntStream;
 
 public class RacingGameOption {
 
-    private static final int PARTICIPANTS_START_INCLUSIVE = 1;
-
-    private final Car[] participants;
+    private final Participants participants;
     private final int movingCount;
     private final MoveStrategy moveStrategy;
 
     private RacingGameOption(final Builder builder) {
-        participants = IntStream.rangeClosed(PARTICIPANTS_START_INCLUSIVE, builder.numberOfParticipants)
-                .mapToObj(i -> new Car())
-                .toArray(Car[]::new);
+        participants = new Participants(builder.numberOfParticipants);
         movingCount = builder.movingCount;
         moveStrategy = builder.moveStrategy;
     }
@@ -23,7 +18,7 @@ public class RacingGameOption {
         return new Builder();
     }
 
-    Car[] getParticipants() {
+    Participants getParticipants() {
         return participants;
     }
 

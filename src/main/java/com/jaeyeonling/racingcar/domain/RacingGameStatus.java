@@ -4,7 +4,7 @@ import com.jaeyeonling.racingcar.utils.StringUtils;
 
 public class RacingGameStatus implements Visualizable {
 
-    private final Car[] participants;
+    private final Participants participants;
 
     RacingGameStatus(final RacingGame racingGame) {
         this.participants = racingGame.getParticipants();
@@ -18,7 +18,7 @@ public class RacingGameStatus implements Visualizable {
     private String getVisualGameStatus() {
         final StringBuilder visualBuilder = new StringBuilder();
 
-        for (final Car car : participants) {
+        for (final Car car : participants.list()) {
             final CarStatus status = car.getStatus();
 
             visualBuilder.append(status.visualize())

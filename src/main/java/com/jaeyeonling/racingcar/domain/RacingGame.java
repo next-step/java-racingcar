@@ -2,7 +2,7 @@ package com.jaeyeonling.racingcar.domain;
 
 public class RacingGame {
 
-    private final Car[] participants;
+    private final Participants participants;
     private final MoveStrategy moveStrategy;
     private final int movingCount;
 
@@ -31,12 +31,12 @@ public class RacingGame {
         return new RacingGameStatus(this);
     }
 
-    Car[] getParticipants() {
+    Participants getParticipants() {
         return participants;
     }
 
     private void moveAllCar() {
-        for (final Car car : participants) {
+        for (final Car car : participants.list()) {
             moveCar(car);
         }
     }
