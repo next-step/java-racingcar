@@ -1,6 +1,6 @@
 package study;
 
-import com.sun.xml.internal.ws.policy.spi.AssertionCreationException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
@@ -8,11 +8,16 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 public class CalculatorTest {
 
+    Calculator calc;
+
+    @BeforeEach
+    void setUp() {
+        calc = new Calculator();
+    }
+
     @Test
     void add() {
         String sample = "2 + 3";
-
-        Calculator calc = new Calculator();
 
         assertThat(calc.calculate(sample)).isEqualTo(5);
     }
@@ -21,16 +26,12 @@ public class CalculatorTest {
     void subtract() {
         String sample = "2 - 3";
 
-        Calculator calc = new Calculator();
-
         assertThat(calc.calculate(sample)).isEqualTo(-1);
     }
 
     @Test
     void multiply() {
         String sample = "2 * 3";
-
-        Calculator calc = new Calculator();
 
         assertThat(calc.calculate(sample)).isEqualTo(6);
     }
@@ -39,143 +40,37 @@ public class CalculatorTest {
     void divide() {
         String sample = "6 / 3";
 
-        Calculator calc = new Calculator();
-
         assertThat(calc.calculate(sample)).isEqualTo(2);
     }
 
     @Test
-    void multiOperator() {
-        String sample = "2 + 3 * 4 / 2";
+    void multi_operator() {
+        String sample = "2 + 3 * 4 / 2 - 4";
 
-        Calculator calc = new Calculator();
-
-        assertThat(calc.calculate(sample)).isEqualTo(10);
+        assertThat(calc.calculate(sample)).isEqualTo(6);
     }
 
     @Test
-    void invalidInput1() {
+    void 잛못된입력_빈값_입력시() {
         String sample = "";
 
-        Calculator calc = new Calculator();
-
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> calc.calculate(sample));
     }
 
     @Test
-    void invalidInput2() {
+    void 잘못된입력_null_입력시() {
         String sample = null;
 
-        Calculator calc = new Calculator();
-
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> calc.calculate(sample));
     }
 
     @Test
-    void invalidOperator() {
+    void 잘못된입력_사칙연산이아닌문자_입력시() {
         String sample = "1 & 1";
-
-        Calculator calc = new Calculator();
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> calc.calculate(sample));
-    }
-
-    class Calculator {
-        private int result = 0;
-
-        int calculate(String equation) {
-            checkValidEquation(equation);
-
-            String[] operList = split(equation);
-            result = add(toInt(operList[0]));
-
-            for (int i = 1; i < operList.length - 1; i = i + 2 ) {
-                result = operate(operList[i], operList[i+1]);
-            }
-
-            return result;
-        }
-
-        private int operate(String operator, String operand) {
-            if (isNotValidOperator(operator)) {
-                throw new IllegalArgumentException();
-            }
-
-            if (isAddOperator(operator)) {
-                return add(toInt(operand));
-
-            } else if (isSubtractOperator(operator)) {
-                return subtract(toInt(operand));
-
-            } else if (isMultiplyOperator(operator)) {
-                return multiply(toInt(operand));
-
-            } else if (isDivideOperator(operator)) {
-                return divide(toInt(operand));
-
-            }
-
-            return result;
-        }
-
-        private String[] split(String equation) {
-            return equation.split(" ");
-        }
-
-        private void checkValidEquation(String equation) {
-            if (equation == null || equation.isEmpty()) {
-                throw new IllegalArgumentException();
-            }
-        }
-
-        private boolean isNotValidOperator(String word) {
-            return !isValidOperator(word);
-        }
-
-        private boolean isValidOperator(String word) {
-            return isAddOperator(word)
-                    || isSubtractOperator(word)
-                    || isMultiplyOperator(word)
-                    || isDivideOperator(word);
-        }
-
-        private boolean isAddOperator(String word) {
-            return word.equals("+");
-        }
-
-        private boolean isSubtractOperator(String word) {
-            return word.equals("-");
-        }
-
-        private boolean isMultiplyOperator(String word) {
-            return word.equals("*");
-        }
-
-        private boolean isDivideOperator(String word) {
-            return word.equals("/");
-        }
-
-        private int toInt(String word) {
-            return Integer.parseInt(word);
-        }
-
-        private int add(int oper) {
-            return result + oper;
-        }
-
-        private int subtract(int oper) {
-            return result - oper;
-        }
-
-        private int multiply(int oper) {
-            return result * oper;
-        }
-
-        private int divide(int oper) {
-            return result / oper;
-        }
     }
 }
