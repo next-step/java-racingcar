@@ -1,6 +1,9 @@
+
+import com.google.common.base.Strings;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
 
 import java.util.Scanner;
 
@@ -8,34 +11,64 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class StringCalculator {
 
-    public static void main (String[] args){
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("사칙연산을 위한 문자열을 입력해하세요");
-
-        //사용자에게 문자열 입력
-        String input = sc.nextLine();
-        int addResult= add(input);
-        //더하기 결과 출력
-        System.out.println("더하기 결과는 " + addResult);
-
-
-    }
-
+    // 각 연산의 결과값을 저장하는 변수
+    public static int addResult, subtractResult, multiplyResult, divideResult;
 
     /*
-    add() 함수 단위 테스트 구현
-    해당 함수는 더하기 기능 구현.
-     */
+    add() 함수 기능 및 단위 테스트 구현
+    */
     @ParameterizedTest
-    @ValueSource(strings = {"1+2"})
-    static int add(String input){
+    @ValueSource(strings = {"1+2","2+3","0+6"})
+    void add(String input){
         int plusIndex = input.indexOf("+");
         int num1 = Character.getNumericValue(input.charAt(plusIndex-1));
         int num2 = Character.getNumericValue(input.charAt(plusIndex+1));
-        assertThat(num1 + num2).toString().contains("3");
-        return num1+num2;
+        addResult = num1 +num2;
+        assertThat(addResult).isEqualTo(6);
 
     }
+
+    /*
+    Subtract() 함수 기능 및 단위 테스트 구현
+    */
+    @ParameterizedTest
+    @ValueSource(strings = {"2-1","5-2","6-4"})
+    void Subtract(String input){
+        int plusIndex = input.indexOf("-");
+        int num1 = Character.getNumericValue(input.charAt(plusIndex-1));
+        int num2 = Character.getNumericValue(input.charAt(plusIndex+1));
+        subtractResult = num1 -num2;
+        assertThat(subtractResult).isEqualTo(3);
+
+    }
+
+    /*
+    Multiply() 함수 기능 및 단위 테스트 구현
+    */
+    @ParameterizedTest
+    @ValueSource(strings = {"2*8","5*2","6*4"})
+    void Multiply(String input){
+        int plusIndex = input.indexOf("*");
+        int num1 = Character.getNumericValue(input.charAt(plusIndex-1));
+        int num2 = Character.getNumericValue(input.charAt(plusIndex+1));
+        multiplyResult = num1 * num2;
+        assertThat(multiplyResult).isEqualTo(10);
+
+    }
+
+    /*
+    Divide() 함수 기능 및 단위 테스트 구현
+    */
+    @ParameterizedTest
+    @ValueSource(strings = {"8/2","6/3","5/5"})
+    void Divide(String input){
+        int plusIndex = input.indexOf("/");
+        int num1 = Character.getNumericValue(input.charAt(plusIndex-1));
+        int num2 = Character.getNumericValue(input.charAt(plusIndex+1));
+        divideResult = num1 / num2;
+        assertThat(divideResult).isEqualTo(4);
+
+    }
+
 
 }
