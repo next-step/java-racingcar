@@ -7,20 +7,26 @@ public class StringCalculator {
 	static String[] operator = {"+", "-", "*", "/"};
 	
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
-
-        if(input.isEmpty()) throw new IllegalArgumentException();
-        
-		String[] exp = input.split(" ");
+		String[] exp = getInput().split(" ");
 		
 		Double result = doRecursiveCalculate(exp);
 		
 		System.out.println(result);
 	}
 	
+	public static String getInput() {
+		Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine();
+        
+        if(input.isEmpty()) throw new IllegalArgumentException();
+        
+        return input;
+	}
+
 	public static double doRecursiveCalculate(String[] exp) {
+		if(exp==null) throw new IllegalArgumentException();
         if(exp[0]==null) throw new IllegalArgumentException();
+        if(exp.length<=1) throw new IllegalArgumentException();
         
 		double result = 0;
 		
@@ -39,8 +45,7 @@ public class StringCalculator {
 				result = cal.doDevide(exp[0], exp[2]);
 				break;
 			default:
-				new IllegalArgumentException();
-					
+				throw new IllegalArgumentException();					
 		}
 
 		if(exp.length>3) {	
