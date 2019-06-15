@@ -52,4 +52,24 @@ public class OperatorTest {
         assertThat(operator.divided(2,2)).isEqualTo(1);
         assertThat(operator.divided(10,2)).isEqualTo(5);
     }
+
+    @Test
+    void 연산결과() {
+        Operator operator = new Operator();
+        assertThat(operator.doOperation("+", 10, 2)).isEqualTo(12);
+        assertThat(operator.doOperation("-", 10, 2)).isEqualTo(8);
+        assertThat(operator.doOperation("*", 10, 2)).isEqualTo(20);
+        assertThat(operator.doOperation("/", 10, 2)).isEqualTo(5);
+    }
+
+    /*
+    연산 종합 테스트
+     */
+    @Test
+    void 종합테스트() {
+        CalculatorApplication app = new CalculatorApplication();
+        assertThat(app.start("3 + 2 - 1")).isEqualTo(4);
+        assertThat(app.start("3 + 2 * 3")).isEqualTo(15);
+        assertThat(app.start("3 + 2 - 5 + 10 / 2")).isEqualTo(5);
+    }
 }
