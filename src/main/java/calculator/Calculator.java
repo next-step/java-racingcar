@@ -14,7 +14,7 @@ public class Calculator {
 	private List<Term> parseInput(String expression){
 		List<Term> terms = new ArrayList<>();
 
-		if(expression == null){
+		if(expression == null || expression.isEmpty()){
 			throw new IllegalArgumentException("입력된 수식이 없습니다.");
 		}
 
