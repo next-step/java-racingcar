@@ -43,4 +43,10 @@ public class StringCalculatorTest {
         String input = "5 ] 3";
         assertThatThrownBy(() -> StringCalculator.of(input).calculate()).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void calculate() {
+        String input = "2 + 3 * 4 / 2";
+        assertThat(StringCalculator.of(input).calculate()).isEqualTo(10);
+    }
 }
