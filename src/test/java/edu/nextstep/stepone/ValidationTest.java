@@ -19,16 +19,16 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
  */
 public class ValidationTest {
 
+    private Validation validation = new Validation();
+
     @ParameterizedTest
     @ValueSource(strings = {"1","2","3", "+", "-", "*", "/"})
     void 공백제거_리스트반환(String compareStr) {
-        Validation validation = new Validation();
         assertThat(validation.splitSpace("1 + 2 - 1 * 2 / 3").contains(compareStr)).isTrue();
     }
 
     @Test
     void 연산자_데이터유무체크() {
-        Validation validation = new Validation();
         assertThatIllegalArgumentException().isThrownBy(() -> {
             validation.isBlank(" ");
         });
@@ -49,13 +49,11 @@ public class ValidationTest {
 
     @Test
     void 숫자_포맷정상() {
-        Validation validation = new Validation();
         assertThat(validation.convertInt("10")).isEqualTo(10);
     }
 
     @Test
     void 숫자_포맷예외상황() {
-        Validation validation = new Validation();
         assertThatIllegalArgumentException().isThrownBy(() -> {
            validation.convertInt("+");
         });
