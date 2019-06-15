@@ -52,6 +52,6 @@ public class CalculatorTest {
 		int result = calculator.execute();
 
 		// Assertion
-		assertThat(result).isEqualTo(2);
+		assertThat(result).isEqualTo(8);
 	}
 }

@@ -70,6 +70,9 @@ public class Calculator {
 				case DIFFERENCE:
 					initial -= otherTerm.getValue();
 					break;
+				case MULTIPLY:
+					initial *= otherTerm.getValue();
+					break;
 				default:
 					throw new IllegalStateException();
 			}
