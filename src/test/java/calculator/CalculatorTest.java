@@ -3,6 +3,7 @@ package calculator;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class CalculatorTest {
 
@@ -80,5 +81,18 @@ public class CalculatorTest {
 
 		// Assertion
 		assertThat(result).isEqualTo(10);
+	}
+
+	@Test
+	void test_end_with_operator(){
+		// Arrange
+		String input = "2 + 3 *";
+		Calculator calculator = new Calculator(input);
+
+		// Action & Assertion
+		assertThatExceptionOfType(IllegalArgumentException.class)
+				.isThrownBy(() -> {
+					calculator.execute();
+		});
 	}
 }
