@@ -3,6 +3,7 @@ package calculator;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringCalculatorTest {
 
@@ -14,7 +15,7 @@ public class StringCalculatorTest {
     }
 
     @Test
-    void subtraction(){
+    void subtraction() {
         String input = "5 - 3";
         assertThat(StringCalculator.of(input).calculate()).isEqualTo(2);
     }
@@ -29,5 +30,11 @@ public class StringCalculatorTest {
     void division() {
         String input = "6 / 2";
         assertThat(StringCalculator.of(input).calculate()).isEqualTo(3);
+    }
+
+    @Test
+    void throwIllegalArgumentExceptionWhenInputNull() {
+        String input = null;
+        assertThatThrownBy(() -> StringCalculator.of(input).calculate()).isInstanceOf(IllegalArgumentException.class);
     }
 }
