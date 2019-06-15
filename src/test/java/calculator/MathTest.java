@@ -35,4 +35,13 @@ public class MathTest {
         assertThat(Math.DIVISION.calculate(5L, 1L)).isEqualTo(5L);
     }
 
+    @DisplayName("sign으로 Math찾기 테스트")
+    @Test
+    void createFor() {
+        assertThat(Math.createFor("+").equals(Math.ADDITION));
+        assertThat(Math.createFor("-").equals(Math.SUBTRACTION));
+        assertThat(Math.createFor("*").equals(Math.MULTIPLICATION));
+        assertThat(Math.createFor("/").equals(Math.DIVISION));
+    }
+
 }

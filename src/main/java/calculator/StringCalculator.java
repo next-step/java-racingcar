@@ -30,7 +30,7 @@ public class StringCalculator {
     }
 
     private String calculate(final String firstArg, final String expression, final String secondArg) {
-        return Math.createMath(expression)
+        return Math.createFor(expression)
                 .calculate(parseLong(firstArg), parseLong(secondArg))
                 .toString();
     }

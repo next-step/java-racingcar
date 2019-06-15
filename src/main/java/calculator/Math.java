@@ -29,7 +29,7 @@ public enum Math {
         return expression.apply(arg1, arg2);
     }
 
-    public static Math createMath(final String sign) {
+    public static Math createFor(final String sign) {
         return Arrays.stream(Math.values())
                 .filter(math -> StringUtils.equals(math.getSign(), sign))
                 .findFirst()
