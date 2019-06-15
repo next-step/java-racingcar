@@ -12,7 +12,7 @@ public class ExpressionParser {
     return new Expression(new Numbers(separatedExpression), new Operator(separatedExpression));
   }
 
-  private static String[] separateStringExpression(String expression) {
+  public static String[] separateStringExpression(String expression) {
     return expression.split(SEPARATOR);
   }
 

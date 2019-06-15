@@ -20,7 +20,7 @@ public class Numbers {
         .collect(Collectors.toList());
   }
 
-  private Boolean isNumber(String value) {
+  public static Boolean isNumber(String value) {
     return Pattern.matches("^[0-9]*$", value);
   }
 

@@ -30,4 +30,8 @@ public class Operator {
   public int calculate(int leftValue, int rightValue) {
     return OperatorType.calculate(getOperator(), leftValue, rightValue);
   }
+
+  public static boolean isOperator(String value) {
+    return OperatorType.isOperator(value);
+  }
 }

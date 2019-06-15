@@ -59,4 +59,14 @@ public class CalculatorTest {
     }).isInstanceOf(IllegalArgumentException.class)
         .hasMessageContaining("식을 입력하세요");
   }
+
+  @Test
+  public void 숫자와사칙연사기호인지테스트() {
+    AssertionsForClassTypes.assertThatThrownBy(() -> {
+      calculator.calculate("3 & 5");
+    }).isInstanceOf(IllegalArgumentException.class)
+        .hasMessageContaining("숫자와 사칙연산 기호만 입력가능합니다.");
+  }
+
+
 }
