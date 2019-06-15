@@ -2,7 +2,7 @@ package com.jaeyeonling.racingcar.domain;
 
 class Car {
 
-    private static final int DEFAULT_POSITION = 0;
+    static final int DEFAULT_POSITION = 1;
 
     private int position = DEFAULT_POSITION;
 

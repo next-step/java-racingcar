@@ -8,8 +8,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    private static final int DEFAULT_POSITION = 0;
-
     @DisplayName("이동 후 위치 변경 확인")
     @ParameterizedTest
     @ValueSource(ints = { 0, 1, 5, 4, 35, 41, 23 })
@@ -23,6 +21,6 @@ public class CarTest {
         }
 
         // then
-        assertThat(car.getPosition()).isEqualTo(moveCount + DEFAULT_POSITION);
+        assertThat(car.getPosition()).isEqualTo(moveCount + Car.DEFAULT_POSITION);
     }
 }
