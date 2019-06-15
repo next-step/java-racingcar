@@ -1,7 +1,5 @@
-package com.jaeyeonling.racingcar;
+package com.jaeyeonling.racingcar.domain;
 
-import com.jaeyeonling.racingcar.domain.RacingGame;
-import com.jaeyeonling.racingcar.domain.RacingGameOption;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,5 @@
-package com.jaeyeonling.racingcar;
+package com.jaeyeonling.racingcar.domain;
 
-import com.jaeyeonling.racingcar.domain.Car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -8,6 +7,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
+
+    private static final int DEFAULT_POSITION = 1;
 
     @DisplayName("이동 후 위치 변경 확인")
     @ParameterizedTest
@@ -22,6 +23,6 @@ public class CarTest {
         }
 
         // then
-        assertThat(car.getPosition()).isEqualTo(moveCount);
+        assertThat(car.getPosition()).isEqualTo(moveCount + DEFAULT_POSITION);
     }
 }
