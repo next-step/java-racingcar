@@ -1,9 +1,6 @@
 package calculator;
 
-import calculator.util.CollectionUtils;
-
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 class Polynomial {
     private List<String> operators;
@@ -31,11 +28,8 @@ class Polynomial {
             return resultCache;
         }
 
-        List<Integer> reversedOperands = CollectionUtils.reverse(this.operands);
-        List<String> reversedOperators = CollectionUtils.reverse(this.operators);
-
-        Stack<Integer> operands = CollectionUtils.convertListToStack(reversedOperands);
-        Stack<String> operators = CollectionUtils.convertListToStack(reversedOperators);
+        Deque<Integer> operands = new LinkedList<>(this.operands);
+        Queue<String> operators = new LinkedList<>(this.operators);
 
         while (!operators.isEmpty()) {
             resultCache = performBinaryOperation(operands, operators);
@@ -44,15 +38,15 @@ class Polynomial {
         return resultCache;
     }
 
-    private int performBinaryOperation(Stack<Integer> operands, Stack<String> operators) {
-        int operand1 = operands.pop();
-        int operand2 = operands.pop();
-        String operator = operators.pop();
+    private int performBinaryOperation(Deque<Integer> operands, Queue<String> operators) {
+        int operand1 = operands.pollFirst();
+        int operand2 = operands.pollFirst();
+        String operator = operators.poll();
 
         Operable operable = BinaryOperator.of(operator);
         int result = operable.calculate(operand1, operand2);
 
-        operands.push(result);
+        operands.offerFirst(result);
         return result;
     }
 }

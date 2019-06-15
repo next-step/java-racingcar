@@ -27,6 +27,8 @@ class PolynomialTest {
             , "1 + 2 + 3, 6"
             , "2 + 3 * 4 / 2, 10"
             , "1343 + 231 * 2 / 4, 787"
+            , "25 + 30 - 12 * 20 / 5, 172"
+            , "1 + 1 - 1 * 1 / 1, 1"
     })
     void 다항식_연산_수행_테스트(String expression, int expectedResult) {
         Polynomial polynomial = Polynomial.createPolynomialWithExpression(expression);
