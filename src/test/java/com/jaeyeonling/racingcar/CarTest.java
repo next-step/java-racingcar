@@ -9,18 +9,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    @DisplayName("Car 객체 생성")
-    @Test
-    void createCar() {
-        assertThat(new Car()).isNotNull();
-    }
-
-    @DisplayName("Car 객체 생성")
-    @Test
-    void getStatus() {
-        assertThat(new Car().getStatus()).isNotNull();
-    }
-
     @DisplayName("이동 후 위치 변경 확인")
     @ParameterizedTest
     @ValueSource(ints = { 0, 1, 5, 4, 35, 41, 23 })
