@@ -1,4 +1,4 @@
-import java.util.Scanner;
+package step1;
 
 public class Calculator {
 
