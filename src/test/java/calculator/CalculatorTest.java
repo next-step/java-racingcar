@@ -18,5 +18,14 @@ public class CalculatorTest {
 
 		// Assertion
 		assertThat(result).isEqualTo(6);
+
+		// Arrange
+		calculator = new Calculator("2 + 3");
+
+		// Action
+		result = calculator.execute();
+
+		// Assertion
+		assertThat(result).isEqualTo(5);
 	}
 }
