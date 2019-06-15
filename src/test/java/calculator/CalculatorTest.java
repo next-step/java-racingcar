@@ -87,12 +87,12 @@ public class CalculatorTest {
 	void test_end_with_operator(){
 		// Arrange
 		String input = "2 + 3 *";
-		Calculator calculator = new Calculator(input);
 
 		// Action & Assertion
 		assertThatExceptionOfType(IllegalArgumentException.class)
 				.isThrownBy(() -> {
-					calculator.execute();
+			Calculator calculator = new Calculator(input);
 		});
 	}
+
 }

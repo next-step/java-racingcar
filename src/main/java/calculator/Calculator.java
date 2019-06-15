@@ -25,6 +25,10 @@ public class Calculator {
 			}
 		}
 
+		if(operator != null){
+			throw new IllegalArgumentException();
+		}
+
 		return terms;
 	}
 
