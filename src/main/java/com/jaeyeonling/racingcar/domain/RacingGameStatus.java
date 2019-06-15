@@ -1,8 +1,8 @@
 package com.jaeyeonling.racingcar.domain;
 
-public class RacingGameStatus implements Visualizable {
+import com.jaeyeonling.racingcar.utils.StringUtils;
 
-    private static final String NEW_LINE = "\n";
+public class RacingGameStatus implements Visualizable {
 
     private final Car[] participants;
 
@@ -22,7 +22,7 @@ public class RacingGameStatus implements Visualizable {
             final CarStatus status = car.getStatus();
 
             visualBuilder.append(status.visualize())
-                    .append(NEW_LINE);
+                    .append(StringUtils.NEW_LINE);
         }
 
         return visualBuilder.toString();

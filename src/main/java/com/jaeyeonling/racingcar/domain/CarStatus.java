@@ -4,7 +4,7 @@ import com.jaeyeonling.racingcar.utils.StringUtils;
 
 public class CarStatus implements Visualizable {
 
-    private static final String VISUAL_POSITION_STRING = "-";
+    static final String VISUAL_POSITION_STRING = "-";
 
     private int position;
 

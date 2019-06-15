@@ -6,7 +6,7 @@ public class RacingGame {
     private final MoveStrategy moveStrategy;
     private final int movingCount;
 
-    private int movedCount;
+    private int movedCount = Car.DEFAULT_POSITION;
 
     public RacingGame(final RacingGameOption option) {
         this.participants = option.getParticipants();

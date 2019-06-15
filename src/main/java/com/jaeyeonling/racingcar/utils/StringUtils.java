@@ -2,7 +2,8 @@ package com.jaeyeonling.racingcar.utils;
 
 public final class StringUtils {
 
-    private static final String NULL_STRING = "\0";
+    public static final String NEW_LINE = "\n";
+    public static final String NULL_STRING = "\0";
 
     private StringUtils() { }
 

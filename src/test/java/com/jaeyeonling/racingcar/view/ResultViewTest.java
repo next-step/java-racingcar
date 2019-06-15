@@ -1,5 +1,6 @@
 package com.jaeyeonling.racingcar.view;
 
+import com.jaeyeonling.racingcar.utils.StringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,7 +12,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ResultViewTest {
 
-    private static final String NEW_LINE = "\n";
     private static final String TEST_INPUT = "리뷰어님, 리뷰해주셔서 감사합니다.";
 
     private ByteArrayOutputStream outputStream;
@@ -27,6 +27,6 @@ public class ResultViewTest {
     @Test
     void show() {
         resultView.show(TEST_INPUT);
-        assertThat(new String(outputStream.toByteArray())).isEqualTo(TEST_INPUT + NEW_LINE);
+        assertThat(new String(outputStream.toByteArray())).isEqualTo(TEST_INPUT + StringUtils.NEW_LINE);
     }
 }
