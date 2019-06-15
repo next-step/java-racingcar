@@ -26,7 +26,7 @@ public class ResultViewTest {
 
     @DisplayName("값 출력 검증")
     @Test
-    void readFromConsole() {
+    void show() {
         resultView.show(TEST_INPUT);
         assertThat(new String(outputStream.toByteArray())).isEqualTo(TEST_INPUT + NEW_LINE);
     }
