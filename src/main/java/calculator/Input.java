@@ -21,7 +21,7 @@ public class Input {
 
 
     public String[] splitByString() {
-        return this.value.split("\\s");
+        return this.value.replace(" ","").split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
     }
 
 }

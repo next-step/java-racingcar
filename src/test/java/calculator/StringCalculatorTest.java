@@ -47,6 +47,6 @@ public class StringCalculatorTest {
     @Test
     void calculate() {
         String input = "2 + 3 * 4 / 2";
-        assertThat(StringCalculator.of(input).calculate()).isEqualTo(10);
+        assertThat(StringCalculator.of(input).calculate()).isEqualTo(10L);
     }
 }
