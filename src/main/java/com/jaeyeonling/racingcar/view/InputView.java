@@ -19,4 +19,13 @@ public class InputView {
         System.out.println(message);
         return readString();
     }
+
+    public int readInt() {
+        return reader.nextInt();
+    }
+
+    public int readIntWithMessage(final String message) {
+        System.out.println(message);
+        return readInt();
+    }
 }
