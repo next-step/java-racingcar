@@ -37,4 +37,10 @@ public class StringCalculatorTest {
         String input = null;
         assertThatThrownBy(() -> StringCalculator.of(input).calculate()).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void throwIllegalArgumentExceptionWhenInputIsNotSignForMath() {
+        String input = "5 ] 3";
+        assertThatThrownBy(() -> StringCalculator.of(input).calculate()).isInstanceOf(IllegalArgumentException.class);
+    }
 }
