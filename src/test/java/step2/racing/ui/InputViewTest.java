@@ -3,10 +3,11 @@ package step2.racing.ui;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import step2.racing.exception.ScanException;
+import step2.racing.scanner.SystemConsoleInputScanner;
 
-import java.io.ByteArrayInputStream;
-
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static step2.racing.testutil.InputStreamMockUtil.mockInputStream;
 
 class InputViewTest {
 
@@ -16,30 +17,25 @@ class InputViewTest {
     void askCarCount() {
 
         String input = "3";
-        mockInputStream(input);
-        inputView = new InputView();
+        mockInput(input);
 
         assertThat(inputView.askCarCount()).isEqualTo(Integer.valueOf(input));
     }
 
     @Test
-    void askCarCount_IllegalArgumentException() {
+    void askCarCount_notNumber() {
 
-        String input = "abc";
-        mockInputStream(input);
-        inputView = new InputView();
+        mockInput("abc");
 
-        assertThatIllegalArgumentException()
+        assertThatExceptionOfType(ScanException.class)
                 .isThrownBy(() -> inputView.askCarCount())
                 .withMessage("숫자를 입력해주세요");
     }
 
     @Test
-    void askCarCount_ScanException() {
+    void askCarCount_exception() {
 
-        String input = "";
-        mockInputStream(input);
-        inputView = new InputView();
+        mockInput("");
 
         assertThatExceptionOfType(ScanException.class)
                 .isThrownBy(() -> inputView.askCarCount())
@@ -50,30 +46,25 @@ class InputViewTest {
     void askAttemptingTimes() {
 
         String input = "3";
-        mockInputStream(input);
-        inputView = new InputView();
+        mockInput(input);
 
         assertThat(inputView.askAttemptingTimes()).isEqualTo(Integer.valueOf(input));
     }
 
     @Test
-    void askAttemptingTimes_IllegalArgumentException() {
+    void askAttemptingTimes_notNumber() {
 
-        String input = "abc";
-        mockInputStream(input);
-        inputView = new InputView();
+        mockInput("abc");
 
-        assertThatIllegalArgumentException()
+        assertThatExceptionOfType(ScanException.class)
                 .isThrownBy(() -> inputView.askAttemptingTimes())
                 .withMessage("숫자를 입력해주세요");
     }
 
     @Test
-    void askAttemptingTimes_ScanException() {
+    void askAttemptingTimes_exception() {
 
-        String input = "";
-        mockInputStream(input);
-        inputView = new InputView();
+        mockInput("");
 
         assertThatExceptionOfType(ScanException.class)
                 .isThrownBy(() -> inputView.askAttemptingTimes())
@@ -84,12 +75,12 @@ class InputViewTest {
     void tearDown() {
 
         System.setIn(System.in);
-
     }
 
-    private void mockInputStream(String input) {
+    private void mockInput(String input) {
 
-        byte[] inputBytes = input.getBytes();
-        System.setIn(new ByteArrayInputStream(inputBytes));
+        mockInputStream(input);
+        inputView = new InputView(new SystemConsoleInputScanner());
     }
+
 }
