@@ -33,7 +33,7 @@ public class StringTest {
     @DisplayName("요구사항 3")
     void quest3() {
         String input = "abc";
-        assertEquals(input.charAt(1), "a");
+        assertEquals(input.charAt(0), 'a');
         assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
                 .isThrownBy(() -> {
                     input.charAt(Integer.MAX_VALUE);
