@@ -1,8 +1,6 @@
 package edu.nextstep.stepone;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Stream;
 
 /**
  * author       : gwonbyeong-yun <sksggg123>
