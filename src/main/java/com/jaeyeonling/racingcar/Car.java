@@ -2,7 +2,9 @@ package com.jaeyeonling.racingcar;
 
 class Car {
 
-    private int position;
+    private static final int DEFAULT_POSITION = 1;
+
+    private int position = DEFAULT_POSITION;
 
     void moveForward() {
         position++;
@@ -10,5 +12,9 @@ class Car {
 
     int getPosition() {
         return position;
+    }
+
+    public CarStatus getStatus() {
+        return new CarStatus(this);
     }
 }
