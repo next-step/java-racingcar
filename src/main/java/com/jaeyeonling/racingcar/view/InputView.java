@@ -5,14 +5,14 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private final Scanner scanner;
+    private final Scanner reader;
 
     public InputView(final InputStream source) {
-        scanner = new Scanner(source);
+        reader = new Scanner(source);
     }
 
     public String readFromConsole() {
-        return scanner.nextLine();
+        return reader.nextLine();
     }
 
     public String readFromConsoleWithMessage(final String message) {
