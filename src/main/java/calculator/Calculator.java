@@ -24,13 +24,17 @@ public class Calculator {
 		}
 
 		String[] tokens = expression.split(" ");
+
+		// 모든 수식은 맨 앞에 더하기(+) 연산자가 생략된 것으로 보고 기본값으로 지정
 		Operator operator = Operator.ADD;
+
 		for(String token : tokens){
 			try {
 				int value = Integer.parseInt(token);
 				terms.add(new Term(operator, value));
 				operator = null;
 			}catch (NumberFormatException e){
+				// 숫자로 변환되지 못하는 문자는 연산자로 변환
 				operator = Operator.valueOfSign(token);
 			}
 		}
