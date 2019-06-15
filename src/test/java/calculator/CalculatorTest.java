@@ -68,4 +68,17 @@ public class CalculatorTest {
 		// Assertion
 		assertThat(result).isEqualTo(2);
 	}
+
+	@Test
+	void test_calculate_more_than_two_numbers(){
+		// Arrange
+		String input = "2 + 3 * 4 / 2";
+		Calculator calculator = new Calculator(input);
+
+		// Action
+		int result = calculator.execute();
+
+		// Assertion
+		assertThat(result).isEqualTo(10);
+	}
 }
