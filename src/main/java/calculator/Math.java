@@ -30,7 +30,7 @@ public enum Math {
     }
 
     public static Math createMath(String sign) {
-        return Arrays.stream(Math.values()).filter(value -> StringUtils.equals(value.getSign(), sign)).findFirst().orElseThrow(NumberFormatException::new);
+        return Arrays.stream(Math.values()).filter(value -> StringUtils.equals(value.getSign(), sign)).findFirst().orElseThrow(IllegalArgumentException::new);
     }
 
 }

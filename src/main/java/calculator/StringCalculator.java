@@ -18,6 +18,6 @@ public class StringCalculator {
     }
 
     public Long calculate() {
-        return calculate(Splitter.of(this.input).splitByString());
+        return calculate(Input.of(this.input).splitByString());
     }
 }
