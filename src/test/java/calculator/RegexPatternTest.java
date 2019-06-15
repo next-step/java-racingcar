@@ -5,6 +5,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.regex.Pattern;
 
+import static calculator.StringCalculator.REGEX_PATTERN;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RegexPatternTest {
@@ -28,7 +29,6 @@ public class RegexPatternTest {
     }
 
     private Pattern getPattern() {
-        String regex = "^(\\d+)(?:\\s+[\\+\\-\\*\\/]+\\s+(\\d+))*$";
-        return Pattern.compile(regex);
+        return Pattern.compile(REGEX_PATTERN);
     }
 }

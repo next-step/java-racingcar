@@ -29,7 +29,7 @@ class StringCalculatorTest {
 
     @Test
     void splitInputString() {
-        String[] result = stringCalculator.split("1 + 2");
+        String[] result = stringCalculator.toStringArrays("1 + 2");
         assertThat(result).containsExactly("1", "+", "2")
                 .hasSize(3);
     }
@@ -46,7 +46,7 @@ class StringCalculatorTest {
     @ValueSource(strings = {"1 + 10 +", "1_2", "1^+^10^/^20"})
     void splitWrongDelimiters(String wrongInput) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> stringCalculator.split(wrongInput))
+                .isThrownBy(() -> stringCalculator.toStringArrays(wrongInput))
                 .withMessageMatching("구분자는 공백을 사용합니다.");
     }
 }
