@@ -1,6 +1,5 @@
 package com.jaeyeonling.racingcar.view;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,7 +19,7 @@ public class InputViewTest {
         inputView = new InputView(new ByteArrayInputStream(TEST_INPUT.getBytes()));
     }
 
-    @DisplayName("값 입력받기")
+    @DisplayName("값 입력 검증")
     @Test
     void readFromConsole() {
         assertThat(inputView.readFromConsole()).isEqualTo(TEST_INPUT);
