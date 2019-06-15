@@ -15,7 +15,7 @@ public class RacingGameTest {
 
     @DisplayName("RacingGame 게임 완료 테스트")
     @Test
-    void playGame() {
+    void completeGame() {
         final RacingGameOption gameOption = RacingGameOption.builder().build();
         final RacingGame game = new RacingGame(gameOption);
 
