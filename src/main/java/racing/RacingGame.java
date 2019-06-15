@@ -16,8 +16,8 @@ public class RacingGame {
         this.cars = new ArrayList<>();
     }
     
-    public int[] move() {
-        // TODO 구현
+    public List<Car> move() {
+//        cars.stream().filter()
         return null;
     }
     
