@@ -2,6 +2,7 @@ package calculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -43,4 +44,19 @@ public class CalculatorTest {
     assertThat(calculator.calculate("10 + 5 * 8 - 20 / 4")).isEqualTo(25);
   }
 
+  @Test
+  public void 공백테스트() {
+    AssertionsForClassTypes.assertThatThrownBy(() -> {
+      calculator.calculate(" ");
+    }).isInstanceOf(IllegalArgumentException.class)
+        .hasMessageContaining("식을 입력하세요");
+  }
+
+  @Test
+  public void null테스트() {
+    AssertionsForClassTypes.assertThatThrownBy(() -> {
+      calculator.calculate(null);
+    }).isInstanceOf(IllegalArgumentException.class)
+        .hasMessageContaining("식을 입력하세요");
+  }
 }
