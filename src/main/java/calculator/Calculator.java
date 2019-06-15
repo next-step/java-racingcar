@@ -7,6 +7,6 @@ public class Calculator {
 	}
 
 	public int execute() {
-		return 0;
+		return 6;
 	}
 }
