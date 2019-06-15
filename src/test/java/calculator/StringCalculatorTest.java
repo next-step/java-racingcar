@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 public class StringCalculatorTest {
 
-    private static StringCalculator stringCalculator;
+    private StringCalculator stringCalculator;
 
     @BeforeEach
     void setUp() {
@@ -53,12 +53,12 @@ public class StringCalculatorTest {
 
     @Test
     void getOperator() {
-        assertThat(Operator.getOperator("+")).isEqualByComparingTo(Operator.ADD);
-        assertThat(Operator.getOperator("-")).isEqualByComparingTo(Operator.SUBTRACT);
-        assertThat(Operator.getOperator("*")).isEqualByComparingTo(Operator.MULTIPLY);
-        assertThat(Operator.getOperator("/")).isEqualByComparingTo(Operator.DIVIDE);
+        assertThat(Operator.getInstance("+")).isEqualByComparingTo(Operator.ADD);
+        assertThat(Operator.getInstance("-")).isEqualByComparingTo(Operator.SUBTRACT);
+        assertThat(Operator.getInstance("*")).isEqualByComparingTo(Operator.MULTIPLY);
+        assertThat(Operator.getInstance("/")).isEqualByComparingTo(Operator.DIVIDE);
 
         assertThatIllegalArgumentException()
-            .isThrownBy(() -> Operator.getOperator("!"));
+            .isThrownBy(() -> Operator.getInstance("!"));
     }
 }

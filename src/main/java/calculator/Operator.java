@@ -1,5 +1,6 @@
 package calculator;
 
+import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public enum  Operator {
@@ -16,20 +17,14 @@ public enum  Operator {
         this.expression = expression;
     }
 
-    public String getOperation() {
-        return operation;
-    }
-
     public int getResult(int num1, int num2) {
         return expression.apply(num1, num2);
     }
 
-    public static Operator getOperator(String op) {
-        for (Operator operator : Operator.values()) {
-            if (op.equals(operator.getOperation())) {
-                return operator;
-            }
-        }
-        throw new IllegalArgumentException();
+    public static Operator getInstance(String op) {
+        return Arrays.stream(Operator.values())
+                .filter(operator -> op.equals(operator.operation))
+                .findAny()
+                .orElseThrow(IllegalArgumentException::new);
     }
 }
