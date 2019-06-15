@@ -16,6 +16,10 @@ public class ResultView {
         show(target.visualize());
     }
 
+    public void newLine() {
+        writer.println();
+    }
+
     public void show(final String message) {
         writer.println(message);
     }

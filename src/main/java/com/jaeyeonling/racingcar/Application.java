@@ -23,6 +23,7 @@ public class Application {
 
         final RacingGame racingGame = new RacingGame(racingGameOption);
 
+        consoleWriter.newLine();
         consoleWriter.show("실행 결과");
         consoleWriter.show(racingGame.getStatus());
         while (!racingGame.isComplete()) {
