@@ -39,4 +39,17 @@ public class Operator {
     int divided(int firstNumber, int secondNumber) {
         return firstNumber / secondNumber;
     }
+
+
+    /*
+    전달받은 연산자를 구분하여 계산메서드 호출
+     */
+    public int doOperation(String letter, int firstNumber, int secondNumber) {
+        switch (letter) {
+            case "+": return this.add(firstNumber, secondNumber);
+            case "-": return this.minus(firstNumber, secondNumber);
+            case "*": return this.multiply(firstNumber, secondNumber);
+            default : return this.divided(firstNumber, secondNumber);
+        }
+    }
 }
