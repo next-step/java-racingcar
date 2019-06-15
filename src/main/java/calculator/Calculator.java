@@ -74,7 +74,7 @@ public class Calculator {
 					initial *= otherTerm.getValue();
 					break;
 				default:
-					throw new IllegalStateException();
+					throw new IllegalStateException("방법을 알 수 없는 연산자");
 			}
 
 			return new Term(initial);

@@ -3,7 +3,8 @@ package calculator;
 public enum Operator {
 	ADD("+"),
 	DIFFERENCE("-"),
-	MULTIPLY("*");
+	MULTIPLY("*"),
+	DIVISION("/");
 
 	String sign;
 

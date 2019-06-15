@@ -54,4 +54,18 @@ public class CalculatorTest {
 		// Assertion
 		assertThat(result).isEqualTo(8);
 	}
+
+
+	@Test
+	void test_division_two_numbers(){
+		// Arrange
+		String input = "4 / 2";
+		Calculator calculator = new Calculator(input);
+
+		// Action
+		int result = calculator.execute();
+
+		// Assertion
+		assertThat(result).isEqualTo(2);
+	}
 }
