@@ -5,6 +5,10 @@ public class Car {
     public static final int RUNNING_CONDITION = 4;
     private int position;
 
+    public static Car of() {
+        return new Car();
+    }
+
     public void move(int status) {
         validateStatus(status);
         if(status >= RUNNING_CONDITION){
