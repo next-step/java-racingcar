@@ -46,4 +46,18 @@ public class ValidationTest {
             OperatorType type = OperatorType.typeCheck("&");
         });
     }
+
+    @Test
+    void 숫자_포맷정상() {
+        Validation validation = new Validation();
+        assertThat(validation.convertInt("10")).isEqualTo(10);
+    }
+
+    @Test
+    void 숫자_포맷예외상황() {
+        Validation validation = new Validation();
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+           validation.convertInt("+");
+        });
+    }
 }
