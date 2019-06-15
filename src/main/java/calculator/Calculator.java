@@ -13,6 +13,11 @@ public class Calculator {
 
 	private List<Term> parseInput(String expression){
 		List<Term> terms = new ArrayList<>();
+
+		if(expression == null){
+			throw new IllegalArgumentException();
+		}
+
 		String[] tokens = expression.split(" ");
 		Operator operator = Operator.ADD;
 		for(String token : tokens){
