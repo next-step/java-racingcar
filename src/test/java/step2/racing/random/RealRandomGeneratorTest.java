@@ -8,14 +8,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RealRandomGeneratorTest {
 
-    private RealRandomGenerator realRandomGenerator = new RealRandomGenerator();
+    private final int bound = 10;
+    private RealRandomGenerator realRandomGenerator = new RealRandomGenerator(bound);
 
     @Test
     void getRandomIntValue() {
 
-        int bound = 5;
-
         IntStream.range(0, 1000)
-                .forEach(i -> assertThat(realRandomGenerator.getRandomIntValue(bound)).isGreaterThanOrEqualTo(0).isLessThan(bound));
+                .forEach(i -> assertThat(realRandomGenerator.getRandomIntValue())
+                        .isGreaterThanOrEqualTo(0)
+                        .isLessThan(bound));
     }
 }

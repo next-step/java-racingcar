@@ -2,6 +2,7 @@ package step2.racing.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step2.racing.random.RandomGenerator;
 import step2.racing.random.StubRandomGenerator;
 
 import java.util.stream.IntStream;
@@ -17,10 +18,10 @@ class CarTest {
     void race_should_move() {
 
         IntStream.rangeClosed(4, 9)
-                .forEach(fixedNumber -> {
+                .forEach(number -> {
 
-                    car = Car.of(0, new StubRandomGenerator(fixedNumber));
-                    car.race();
+                    car = Car.of(0);
+                    car.race(number);
                     assertThat(car.getPosition()).isGreaterThan(Car.DEFAULT_POSITION);
 
                 });
@@ -31,10 +32,10 @@ class CarTest {
     void race_should_not_move() {
 
         IntStream.rangeClosed(0, 3)
-                .forEach(fixedNumber -> {
+                .forEach(number -> {
 
-                    car = Car.of(0, new StubRandomGenerator(fixedNumber));
-                    car.race();
+                    car = Car.of(0);
+                    car.race(number);
                     assertThat(car.getPosition()).isEqualTo(Car.DEFAULT_POSITION);
 
                 });

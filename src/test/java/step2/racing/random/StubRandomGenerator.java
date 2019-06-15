@@ -10,11 +10,7 @@ public class StubRandomGenerator implements RandomGenerator {
     }
 
     @Override
-    public int getRandomIntValue(int bound) {
-
-        if (bound <= fixedNumber) {
-            throw new IllegalArgumentException("bound 값은 fixedNumber 보다 커야 합니다");
-        }
+    public int getRandomIntValue() {
 
         return fixedNumber;
     }
