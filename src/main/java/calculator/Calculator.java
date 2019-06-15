@@ -73,6 +73,9 @@ public class Calculator {
 				case MULTIPLY:
 					initial *= otherTerm.getValue();
 					break;
+				case DIVISION:
+					initial /= otherTerm.getValue();
+					break;
 				default:
 					throw new IllegalStateException("방법을 알 수 없는 연산자");
 			}
