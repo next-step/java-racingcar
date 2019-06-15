@@ -6,8 +6,8 @@
 - [x] 예를 들어 "2 + 3 * 4 / 2"와 같은 문자열을 입력할 경우 2 + 3 * 4 / 2 실행 결과인 10을 출력해야 한다.
 
 ## 예외 처리
-- [ ] 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
-- [ ] 사칙연산 기호가 아닌 경우 IllegalArgumentException throw
+- [x] 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
+- [x] 사칙연산 기호가 아닌 경우 IllegalArgumentException throw
 
 ## 프로그래밍 요구사항
 - [x] 메소드가 너무 많은 일을 하지 않도록 분리하기 위해 노력해 본다.
