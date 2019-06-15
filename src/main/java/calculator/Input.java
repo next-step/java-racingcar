@@ -10,18 +10,21 @@ public class Input {
         this.value = value;
     }
 
-    public static Input of(String value) {
+    public static Input of(final String value) {
         validate(value);
         return new Input(value);
     }
 
-    private static void validate(String value) {
-        Optional.ofNullable(value).orElseThrow(IllegalArgumentException::new);
+    private static void validate(final String value) {
+        Optional.ofNullable(value)
+                .orElseThrow(IllegalArgumentException::new);
     }
 
 
     public String[] splitByString() {
-        return this.value.replace(" ","").split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
+        return this.value
+                .replace(" ", "")
+                .split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
     }
 
 }

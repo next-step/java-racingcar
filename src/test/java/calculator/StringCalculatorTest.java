@@ -1,52 +1,34 @@
 package calculator;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringCalculatorTest {
 
-
     @Test
-    void addition() {
-        String input = "2 + 3";
-        assertThat(StringCalculator.of(input).calculate()).isEqualTo(5);
-    }
-
-    @Test
-    void subtraction() {
-        String input = "5 - 3";
-        assertThat(StringCalculator.of(input).calculate()).isEqualTo(2);
-    }
-
-    @Test
-    void multiplication() {
-        String input = "5 * 3";
-        assertThat(StringCalculator.of(input).calculate()).isEqualTo(15);
-    }
-
-    @Test
-    void division() {
-        String input = "6 / 2";
-        assertThat(StringCalculator.of(input).calculate()).isEqualTo(3);
-    }
-
-    @Test
-    void throwIllegalArgumentExceptionWhenInputNull() {
-        String input = null;
-        assertThatThrownBy(() -> StringCalculator.of(input).calculate()).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void throwIllegalArgumentExceptionWhenInputIsNotSignForMath() {
-        String input = "5 ] 3";
-        assertThatThrownBy(() -> StringCalculator.of(input).calculate()).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
+    @DisplayName("계산기 계산 값을 비교")
     void calculate() {
-        String input = "2 + 3 * 4 / 2";
-        assertThat(StringCalculator.of(input).calculate()).isEqualTo(10L);
+        // given and expect
+        assertThat(StringCalculator.of("2 + 3 * 4 / 2").calculate()).isEqualTo(10);
+        assertThat(StringCalculator.of("2 + 3 * 4 / 1").calculate()).isEqualTo(20);
+        assertThat(StringCalculator.of("1 + 3 * 4 / 2").calculate()).isEqualTo(8);
     }
+
+
+    @DisplayName("잘못된 수식이 들어 갈 경우 IllegalArgumentException")
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "5 @ 1",
+            "5 [ 3",
+            "1 ) 1",
+    })
+    void throwIllegalArgumentExceptionWhenInputIsNotSignForMath(final String input) {
+        // given and expect
+        assertThatThrownBy(() -> StringCalculator.of(input).calculate()).isInstanceOf(IllegalArgumentException.class);
+    }
+
 }

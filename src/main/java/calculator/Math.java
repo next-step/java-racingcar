@@ -7,10 +7,10 @@ import java.util.function.BiFunction;
 
 public enum Math {
 
-    ADDITION("+", (number1, number2) -> number1 + number2),
-    SUBTRACTION("-", (number1, number2) -> number1 - number2),
-    MULTIPLICATION("*", (number1, number2) -> number1 * number2),
-    DIVISION("/", (number1, number2) -> number1 / number2);
+    ADDITION("+", (arg1, arg2) -> arg1 + arg2),
+    SUBTRACTION("-", (arg1, arg2) -> arg1 - arg2),
+    MULTIPLICATION("*", (arg1, args2) -> arg1 * args2),
+    DIVISION("/", (arg1, arg2) -> arg1 / arg2);
 
     private String sign;
 
@@ -25,12 +25,15 @@ public enum Math {
         return this.sign;
     }
 
-    public Long calculate(Long number1, Long number2) {
-        return expression.apply(number1, number2);
+    public Long calculate(final Long arg1, final Long arg2) {
+        return expression.apply(arg1, arg2);
     }
 
-    public static Math createMath(String sign) {
-        return Arrays.stream(Math.values()).filter(value -> StringUtils.equals(value.getSign(), sign)).findFirst().orElseThrow(IllegalArgumentException::new);
+    public static Math createMath(final String sign) {
+        return Arrays.stream(Math.values())
+                .filter(math -> StringUtils.equals(math.getSign(), sign))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
     }
 
 }
