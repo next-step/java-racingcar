@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    private static final int DEFAULT_POSITION = 1;
+    private static final int DEFAULT_POSITION = 0;
 
     @DisplayName("이동 후 위치 변경 확인")
     @ParameterizedTest
