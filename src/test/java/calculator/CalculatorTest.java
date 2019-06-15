@@ -8,7 +8,7 @@ public class CalculatorTest {
 
 
 	@Test
-	void test_adding_two_numbers(){
+	void test_sum_two_numbers(){
 		// Arrange
 		String input = "2 + 4";
 		Calculator calculator = new Calculator(input);
@@ -27,5 +27,18 @@ public class CalculatorTest {
 
 		// Assertion
 		assertThat(result).isEqualTo(5);
+	}
+
+	@Test
+	void test_difference_two_numbers(){
+		// Arrange
+		String input = "4 - 2";
+		Calculator calculator = new Calculator(input);
+
+		// Action
+		int result = calculator.execute();
+
+		// Assertion
+		assertThat(result).isEqualTo(2);
 	}
 }
