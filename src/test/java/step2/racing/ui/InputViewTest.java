@@ -43,31 +43,31 @@ class InputViewTest {
     }
 
     @Test
-    void askAttemptingTimes() {
+    void askAttempts() {
 
         String input = "3";
         mockInput(input);
 
-        assertThat(inputView.askAttemptingTimes()).isEqualTo(Integer.valueOf(input));
+        assertThat(inputView.askAttempts()).isEqualTo(Integer.valueOf(input));
     }
 
     @Test
-    void askAttemptingTimes_notNumber() {
+    void askAttempts_notNumber() {
 
         mockInput("abc");
 
         assertThatExceptionOfType(ScanException.class)
-                .isThrownBy(() -> inputView.askAttemptingTimes())
+                .isThrownBy(() -> inputView.askAttempts())
                 .withMessage("숫자를 입력해주세요");
     }
 
     @Test
-    void askAttemptingTimes_exception() {
+    void askAttempts_exception() {
 
         mockInput("");
 
         assertThatExceptionOfType(ScanException.class)
-                .isThrownBy(() -> inputView.askAttemptingTimes())
+                .isThrownBy(() -> inputView.askAttempts())
                 .withMessage("입력 도중 에러가 발생했습니다");
     }
 
