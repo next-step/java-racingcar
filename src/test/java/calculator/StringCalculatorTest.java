@@ -1,9 +1,8 @@
 package calculator;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringCalculatorTest {
 
@@ -15,7 +14,7 @@ public class StringCalculatorTest {
     }
 
     @Test
-    void minut(){
+    void minus(){
         String input = "5 - 3";
         assertThat(StringCalculator.of(input).calculate()).isEqualTo(2);
     }
