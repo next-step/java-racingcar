@@ -1,6 +1,7 @@
 package com.jaeyeonling.racingcar;
 
-import org.assertj.core.api.Assertions;
+import com.jaeyeonling.racingcar.domain.RacingGame;
+import com.jaeyeonling.racingcar.domain.RacingGameOption;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

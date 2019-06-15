@@ -1,4 +1,4 @@
-package com.jaeyeonling.racingcar;
+package com.jaeyeonling.racingcar.domain;
 
 import java.util.Objects;
 import java.util.stream.IntStream;

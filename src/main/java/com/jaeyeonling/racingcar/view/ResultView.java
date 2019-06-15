@@ -1,6 +1,6 @@
 package com.jaeyeonling.racingcar.view;
 
-import com.jaeyeonling.racingcar.Visualizable;
+import com.jaeyeonling.racingcar.domain.Visualizable;
 
 import java.io.PrintStream;
 

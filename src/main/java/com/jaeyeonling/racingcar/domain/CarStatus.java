@@ -1,4 +1,4 @@
-package com.jaeyeonling.racingcar;
+package com.jaeyeonling.racingcar.domain;
 
 import com.jaeyeonling.racingcar.utils.StringUtils;
 

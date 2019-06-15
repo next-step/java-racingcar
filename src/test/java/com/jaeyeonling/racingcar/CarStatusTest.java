@@ -1,5 +1,7 @@
 package com.jaeyeonling.racingcar;
 
+import com.jaeyeonling.racingcar.domain.Car;
+import com.jaeyeonling.racingcar.domain.CarStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;

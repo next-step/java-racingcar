@@ -1,4 +1,4 @@
-package com.jaeyeonling.racingcar;
+package com.jaeyeonling.racingcar.domain;
 
 public class RacingGameStatus implements Visualizable {
 
