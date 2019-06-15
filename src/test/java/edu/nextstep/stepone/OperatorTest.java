@@ -3,6 +3,7 @@ package edu.nextstep.stepone;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 /**
  * author       : gwonbyeong-yun <sksggg123>
@@ -44,12 +45,11 @@ public class OperatorTest {
     }
 
     @Test
-    void 나눗셈(){
+    void 나눗셈() {
         Operator operator = new Operator();
         assertThat(operator.divided(1,2)).isEqualTo(0);
         assertThat(operator.divided(2,1)).isEqualTo(2);
         assertThat(operator.divided(2,2)).isEqualTo(1);
         assertThat(operator.divided(10,2)).isEqualTo(5);
     }
-
 }
