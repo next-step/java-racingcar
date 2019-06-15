@@ -15,7 +15,6 @@ import java.util.List;
  */
 public class Validation {
     private String SEPARATOR_SPLIT = " ";
-    private List<String> letter;
 
     /*
     null & " " 데이터 체크
@@ -32,16 +31,8 @@ public class Validation {
      */
     public List<String> splitSpace(String inputData) {
         String[] tempArray = inputData.split(SEPARATOR_SPLIT);
-        this.letter = Arrays.asList(tempArray);
+        List<String> tempList = Arrays.asList(tempArray);
 
-        return this.letter;
+        return tempList;
     }
-
-    /*
-    @return: List data
-     */
-    public List<String> getLetter() {
-        return this.letter;
-    }
-
 }
