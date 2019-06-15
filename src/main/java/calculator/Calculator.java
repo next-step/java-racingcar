@@ -15,7 +15,7 @@ public class Calculator {
 		List<Term> terms = new ArrayList<>();
 
 		if(expression == null){
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("입력된 수식이 없습니다.");
 		}
 
 		String[] tokens = expression.split(" ");
@@ -31,7 +31,7 @@ public class Calculator {
 		}
 
 		if(operator != null){
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("수식은 연산자로 끝날 수 없습니다.");
 		}
 
 		return terms;

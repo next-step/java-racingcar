@@ -119,4 +119,16 @@ public class CalculatorTest {
 				});
 	}
 
+	@Test
+	void test_empty_input(){
+		// Arrange
+		String input = "";
+
+		// Action & Assertion
+		assertThatExceptionOfType(IllegalArgumentException.class)
+				.isThrownBy(() -> {
+					Calculator calculator = new Calculator(input);
+				}).withMessageStartingWith("입력된 수식이");
+	}
+
 }
