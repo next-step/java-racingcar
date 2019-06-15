@@ -1,26 +1,22 @@
 package com.jaeyeonling.calculator;
 
-import com.jaeyeonling.calculator.provider.OperatorProvider;
 import com.jaeyeonling.calculator.type.Operator;
 
-public class StringCalculator {
+public final class StringCalculator {
 
-    private static final OperatorProvider operatorProvider = new OperatorProvider();
+    private static final int DEFAULT_INDEX = 0;
+    private static final int START_INDEX = 1;
+    private static final int CALCULATION_SIZE = 2;
 
-    public int calculate(final String input) {
-        if (input == null || input.isEmpty()) {
-            throw new IllegalArgumentException();
-        }
+    private StringCalculator() { }
 
-        final String[] splitInput = input.split(" ");
+    public static int calculate(final CalculateExpression expression) {
+        int result = expression.getValue(DEFAULT_INDEX);
+        for (int i = START_INDEX; i < expression.length(); i += CALCULATION_SIZE) {
+            final Operator operator = expression.getOperator(i);
+            final int nextValue = expression.getValue(i + START_INDEX);
 
-        int result = Integer.valueOf(splitInput[0]);
-        for (int i = 1; i < splitInput.length; i += 2) {
-            final Operator operator = operatorProvider.symbol(splitInput[i]);
-
-            final int number = Integer.valueOf(splitInput[i + 1]);
-
-            result = operator.apply(result, number);
+            result = operator.apply(result, nextValue);
         }
 
         return result;
