@@ -14,7 +14,7 @@ class CarTest {
     private Car car;
 
     @Test
-    @DisplayName("랜덤숫자가 4 이상 9 이하라면 이동한다.")
+    @DisplayName("랜덤숫자가 4 이상 9 이하라면 이동한다")
     void race_should_move() {
 
         IntStream.rangeClosed(4, 9)
@@ -28,7 +28,7 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("랜덤숫자가 0 이상 3 이하라면 이동하지 않는다.")
+    @DisplayName("랜덤숫자가 0 이상 3 이하라면 이동하지 않는다")
     void race_should_not_move() {
 
         IntStream.rangeClosed(0, 3)

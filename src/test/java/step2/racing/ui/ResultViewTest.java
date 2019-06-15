@@ -3,21 +3,15 @@ package step2.racing.ui;
 import org.junit.jupiter.api.*;
 import step2.racing.dto.RacingResult;
 import step2.racing.model.Car;
-import step2.racing.random.RandomGenerator;
-import step2.racing.random.StubRandomGenerator;
 
 import java.io.*;
 import java.util.Arrays;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ResultViewTest {
 
     private ResultView resultView;
-
-    private RandomGenerator moveStubRandomGenerator = new StubRandomGenerator(7);
-    private RandomGenerator notMoveStubRandomGenerator = new StubRandomGenerator(2);
 
     private OutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
@@ -44,9 +38,9 @@ class ResultViewTest {
 
         assertThat(byteArrayOutputStream.toString())
                 .isEqualTo("\n"
-                         + "--\n"
-                         + "-\n"
-                         + "--\n"
-                         + "\n");
+                                   + "--\n"
+                                   + "-\n"
+                                   + "--\n"
+                                   + "\n");
     }
 }

@@ -26,6 +26,13 @@ public class RacingService {
         this.randomGenerator = new RealRandomGenerator(RANDOM_NUMBER_BOUND);
     }
 
+    public RacingService(int carCount, int attempts, RandomGenerator randomGenerator) {
+
+        this.carCount = carCount;
+        this.attempts = attempts;
+        this.randomGenerator = randomGenerator;
+    }
+
     public RacingResult run() {
 
         List<Car> cars = createCars(carCount);

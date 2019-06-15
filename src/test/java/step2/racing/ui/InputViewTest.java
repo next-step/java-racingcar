@@ -1,7 +1,6 @@
 package step2.racing.ui;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import step2.racing.exception.ScanException;
 import step2.racing.inputter.SystemConsoleInputter;
 
@@ -14,6 +13,7 @@ class InputViewTest {
     InputView inputView;
 
     @Test
+    @DisplayName("차량대수 입력 검증")
     void askCarCount() {
 
         String input = "3";
@@ -23,6 +23,7 @@ class InputViewTest {
     }
 
     @Test
+    @DisplayName("차량대수 입력 시 숫자가 아니라면 ScanException 발생")
     void askCarCount_notNumber() {
 
         mockInput("abc");
@@ -33,6 +34,7 @@ class InputViewTest {
     }
 
     @Test
+    @DisplayName("차량대수 입력 시 Exception 발생한다면 ScanException 으로 변환")
     void askCarCount_exception() {
 
         mockInput("");
@@ -43,6 +45,7 @@ class InputViewTest {
     }
 
     @Test
+    @DisplayName("횟수 입력 검증")
     void askAttempts() {
 
         String input = "3";
@@ -52,6 +55,7 @@ class InputViewTest {
     }
 
     @Test
+    @DisplayName("횟수 입력 시 숫자가 아니라면 ScanException 발생")
     void askAttempts_notNumber() {
 
         mockInput("abc");
@@ -62,6 +66,7 @@ class InputViewTest {
     }
 
     @Test
+    @DisplayName("횟수 입력 시 Exception 발생한다면 ScanException 으로 변환")
     void askAttempts_exception() {
 
         mockInput("");
