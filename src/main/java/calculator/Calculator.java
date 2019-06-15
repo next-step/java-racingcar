@@ -20,4 +20,22 @@ public class Calculator {
 
         return source / inputNumber;
     }
+
+    public static double calculateByOperator(double source, double inputNumber, SymbolType operator) {
+        switch (operator) {
+            case ADD: {
+                return Calculator.add(source, inputNumber);
+            }
+            case SUBTRACT: {
+                return Calculator.subtract(source, inputNumber);
+            }
+            case MULTIPLY: {
+                return Calculator.multiply(source, inputNumber);
+            }
+            case DIVIDE: {
+                return Calculator.divide(source, inputNumber);
+            }
+        }
+        throw new IllegalArgumentException("Unexpected operator. Operator: " + operator);
+    }
 }
