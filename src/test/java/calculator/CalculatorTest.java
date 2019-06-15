@@ -95,4 +95,16 @@ public class CalculatorTest {
 		});
 	}
 
+	@Test
+	void test_unknown_operator(){
+		// Arrange
+		String input = "2 = 2";
+
+		// Action & Assertion
+		assertThatExceptionOfType(IllegalArgumentException.class)
+				.isThrownBy(() -> {
+					Calculator calculator = new Calculator(input);
+				});
+	}
+
 }
