@@ -5,7 +5,7 @@ import java.util.stream.IntStream;
 
 public class RacingGameOption {
 
-    private static final int PARTICIPANTS_START_INCLUSIVE = 0;
+    private static final int PARTICIPANTS_START_INCLUSIVE = 1;
 
     private final Car[] participants;
     private final int movingCount;
