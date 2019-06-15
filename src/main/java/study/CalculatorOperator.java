@@ -32,7 +32,7 @@ public enum CalculatorOperator {
                 .orElseThrow(() -> new IllegalArgumentException("허용된 연산자가 아닙니다. " + text));
     }
 
-    public int calculator(int left, int right) {
+    public int calculate(int left, int right) {
         return this.expression.apply(left, right);
     }
 }
