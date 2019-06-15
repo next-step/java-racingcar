@@ -5,9 +5,9 @@ package study;
  * Blog : http://wyparks2.github.io
  * Github : http://github.com/wyparks2
  */
-public class StringCalcurator {
+public class StringCalculator {
 
-    public int caculate(String input) {
+    public int calculate(String input) {
         String[] splitInputs = input.split(" ");
         return calculate(splitInputs);
 

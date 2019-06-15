@@ -13,16 +13,16 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class StringCalcuratorTest {
 
-    private StringCalcurator calcurator;
+    private StringCalculator calcurator;
 
     @BeforeEach
     void setUp() {
-        calcurator = new StringCalcurator();
+        calcurator = new StringCalculator();
     }
 
     @Test
     void 계산() {
-        assertThat(calcurator.caculate("2 + 3 * 4 / 2")).isEqualTo(10);
+        assertThat(calcurator.calculate("2 + 3 * 4 / 2")).isEqualTo(10);
     }
 
     @AfterEach
