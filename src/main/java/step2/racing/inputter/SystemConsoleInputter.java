@@ -1,16 +1,16 @@
-package step2.racing.scanner;
+package step2.racing.inputter;
 
 import step2.racing.exception.ScanException;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class SystemConsoleInputScanner implements InputScanner {
+public class SystemConsoleInputter implements Inputter {
 
     private final Scanner scanner = new Scanner(System.in);
 
     @Override
-    public int scanIntValue() {
+    public int inputIntValue() {
 
         try {
             return scanner.nextInt();

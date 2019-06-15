@@ -1,24 +1,24 @@
-package step2.racing.scanner;
+package step2.racing.inputter;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import step2.racing.exception.ScanException;
-import step2.racing.testutil.SystemInputStubUtil;
+import util.SystemInputStubUtil;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-class SystemConsoleInputScannerTest {
+class SystemConsoleInputterTest {
 
-    SystemConsoleInputScanner systemConsoleInputScanner;
+    SystemConsoleInputter systemConsoleInputter;
 
     @Test
     void scanIntValue() {
 
         String input = "3";
-        mockSystemConsoleInputScanner(input);
+        stubInputStream(input);
 
-        int value = systemConsoleInputScanner.scanIntValue();
+        int value = systemConsoleInputter.inputIntValue();
         assertThat(value).isEqualTo(Integer.valueOf(input));
     }
 
@@ -26,10 +26,10 @@ class SystemConsoleInputScannerTest {
     void scanIntValue_thrown_exception() {
 
         String input = "abc";
-        mockSystemConsoleInputScanner(input);
+        stubInputStream(input);
 
         assertThatExceptionOfType(ScanException.class)
-                .isThrownBy(() -> systemConsoleInputScanner.scanIntValue());
+                .isThrownBy(() -> systemConsoleInputter.inputIntValue());
     }
 
     @AfterEach
@@ -38,10 +38,10 @@ class SystemConsoleInputScannerTest {
         System.setIn(System.in);
     }
 
-    private void mockSystemConsoleInputScanner(String input) {
+    private void stubInputStream(String input) {
 
         SystemInputStubUtil.stubInputStream(input);
-        systemConsoleInputScanner = new SystemConsoleInputScanner();
+        systemConsoleInputter = new SystemConsoleInputter();
     }
 
 }

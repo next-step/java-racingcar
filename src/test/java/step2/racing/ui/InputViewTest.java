@@ -3,11 +3,11 @@ package step2.racing.ui;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import step2.racing.exception.ScanException;
-import step2.racing.scanner.SystemConsoleInputScanner;
+import step2.racing.inputter.SystemConsoleInputter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static step2.racing.testutil.SystemInputStubUtil.stubInputStream;
+import static util.SystemInputStubUtil.stubInputStream;
 
 class InputViewTest {
 
@@ -80,7 +80,7 @@ class InputViewTest {
     private void mockInput(String input) {
 
         stubInputStream(input);
-        inputView = new InputView(new SystemConsoleInputScanner());
+        inputView = new InputView(new SystemConsoleInputter());
     }
 
 }

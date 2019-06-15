@@ -1,4 +1,4 @@
-package step2.racing.scanner;
+package step2.racing.inputter;
 
 import org.junit.jupiter.api.Test;
 import step2.racing.exception.ScanException;
@@ -6,25 +6,25 @@ import step2.racing.exception.ScanException;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-class FileInputScannerTest {
+class FileInputterTest {
 
-    private FileInputScanner fileInputScanner;
+    private FileInputter fileInputter;
 
     @Test
     void scanIntValue() {
 
-        fileInputScanner = new FileInputScanner("racing");
+        fileInputter = new FileInputter("racing");
 
-        int value = fileInputScanner.scanIntValue();
+        int value = fileInputter.inputIntValue();
         assertThat(value).isEqualTo(3);
     }
 
     @Test
     void scanIntValue_notExistsFile() {
 
-        fileInputScanner = new FileInputScanner("empty");
+        fileInputter = new FileInputter("empty");
 
         assertThatExceptionOfType(ScanException.class)
-                .isThrownBy(() -> fileInputScanner.scanIntValue());
+                .isThrownBy(() -> fileInputter.inputIntValue());
     }
 }

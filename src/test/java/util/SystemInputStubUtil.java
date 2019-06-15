@@ -1,4 +1,4 @@
-package step2.racing.testutil;
+package util;
 
 import java.io.*;
 

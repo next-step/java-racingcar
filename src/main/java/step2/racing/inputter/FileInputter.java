@@ -1,4 +1,4 @@
-package step2.racing.scanner;
+package step2.racing.inputter;
 
 import step2.racing.exception.ScanException;
 
@@ -10,14 +10,14 @@ import java.util.stream.Stream;
 /**
  * 요구사항에는 벗어나지만 인터페이스 학습용으로 작성
  */
-public class FileInputScanner implements InputScanner {
+public class FileInputter implements Inputter {
 
     private final String fileName;
 
-    public FileInputScanner(String fileName) {this.fileName = fileName;}
+    public FileInputter(String fileName) {this.fileName = fileName;}
 
     @Override
-    public int scanIntValue() {
+    public int inputIntValue() {
 
         try {
             Path path = Paths.get(ClassLoader.getSystemResource(fileName).toURI());
