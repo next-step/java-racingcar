@@ -6,4 +6,8 @@ public class Car {
     public void move() {
         this.position += 1;
     }
+
+    public int getPosition() {
+        return position;
+    }
 }
