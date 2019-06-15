@@ -107,4 +107,16 @@ public class CalculatorTest {
 				});
 	}
 
+	@Test
+	void test_null_input(){
+		// Arrange
+		String input = null;
+
+		// Action & Assertion
+		assertThatExceptionOfType(IllegalArgumentException.class)
+				.isThrownBy(() -> {
+					Calculator calculator = new Calculator(input);
+				});
+	}
+
 }
