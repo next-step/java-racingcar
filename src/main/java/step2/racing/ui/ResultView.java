@@ -1,9 +1,9 @@
 package step2.racing.ui;
 
-import step2.racing.model.Car;
+import step2.racing.dto.CarPosition;
+import step2.racing.dto.RacingResult;
 
 import java.io.PrintStream;
-import java.util.List;
 import java.util.stream.IntStream;
 
 public class ResultView {
@@ -16,22 +16,30 @@ public class ResultView {
         this.printStream = printStream;
     }
 
-    public void printEntireCarsPosition(List<Car> cars) {
+    public void printTotalRaces(RacingResult racingResult) {
 
         printNewLine();
-        cars.forEach(this::printCarPosition);
+
+        IntStream.range(0, racingResult.length())
+                .mapToObj(racingResult::getCarPosition)
+                .forEach(this::printRace);
     }
 
-    private void printCarPosition(Car car) {
+    private void printRace(CarPosition carPosition) {
 
-        IntStream.range(0, car.checkPosition())
-                .forEach(i -> printPositionMark());
+        IntStream.range(0, carPosition.sizeOfCars())
+                .map(carPosition::getPosition)
+                .forEach(this::printCarPosition);
+
         printNewLine();
     }
 
-    private void printPositionMark() {
+    private void printCarPosition(int position) {
 
-        printStream.print(POSITION_MARK);
+        IntStream.range(0, position)
+                .forEach(i -> printStream.print(POSITION_MARK));
+
+        printNewLine();
     }
 
     private void printNewLine() {

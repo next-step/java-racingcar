@@ -1,6 +1,11 @@
 package step2.racing.model;
 
+import com.google.common.collect.Maps;
+import step2.racing.dto.CarPosition;
 import step2.racing.random.RandomGenerator;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Car {
 
@@ -42,8 +47,13 @@ public class Car {
         return randomInt >= MOVE_VALUE;
     }
 
-    public int checkPosition() {
+    public int getPosition() {
 
         return position;
+    }
+
+    public int getNumber() {
+
+        return number;
     }
 }

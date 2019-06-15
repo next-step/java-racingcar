@@ -1,9 +1,8 @@
 package step2.racing.service;
 
+import step2.racing.dto.RacingResult;
 import step2.racing.model.Car;
 import step2.racing.random.RealRandomGenerator;
-import step2.racing.ui.InputView;
-import step2.racing.ui.ResultView;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,25 +12,28 @@ public class RacingService {
 
     private int raceCount = 0;
 
-    private final InputView inputView;
-    private final ResultView resultView;
+    private final int carCount;
+    private final int attempts;
 
-    public RacingService(InputView inputView, ResultView resultView) {
+    public RacingService(int carCount, int attempts) {
 
-        this.inputView = inputView;
-        this.resultView = resultView;
+        this.carCount = carCount;
+        this.attempts = attempts;
     }
 
-    public void start() {
-
-        int carCount = inputView.askCarCount();
-        int attempts = inputView.askAttempts();
+    public RacingResult run() {
 
         List<Car> cars = createCars(carCount);
+
+        RacingResult racingResult = new RacingResult();
+        racingResult.addCarPosition(cars);
+
         while (!isFinished(attempts)) {
-            resultView.printEntireCarsPosition(cars);
             raceEntireCars(cars);
+            racingResult.addCarPosition(cars);
         }
+
+        return racingResult;
     }
 
     private List<Car> createCars(int carCount) {

@@ -21,7 +21,7 @@ class CarTest {
 
                     car = Car.of(0, new StubRandomGenerator(fixedNumber));
                     car.race();
-                    assertThat(car.checkPosition()).isGreaterThan(Car.DEFAULT_POSITION);
+                    assertThat(car.getPosition()).isGreaterThan(Car.DEFAULT_POSITION);
 
                 });
     }
@@ -35,7 +35,7 @@ class CarTest {
 
                     car = Car.of(0, new StubRandomGenerator(fixedNumber));
                     car.race();
-                    assertThat(car.checkPosition()).isEqualTo(Car.DEFAULT_POSITION);
+                    assertThat(car.getPosition()).isEqualTo(Car.DEFAULT_POSITION);
 
                 });
     }
