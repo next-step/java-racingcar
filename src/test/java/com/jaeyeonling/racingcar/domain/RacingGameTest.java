@@ -16,13 +16,16 @@ public class RacingGameTest {
     @DisplayName("RacingGame 게임 완료 테스트")
     @Test
     void completeGame() {
+        // given
         final RacingGameOption gameOption = RacingGameOption.builder().build();
         final RacingGame game = new RacingGame(gameOption);
 
+        // when
         while (!game.isComplete()) {
             game.move();
         }
 
+        // then
         assertThat(game.isComplete()).isTrue();
     }
 }
