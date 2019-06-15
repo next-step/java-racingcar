@@ -11,6 +11,7 @@ import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static step2.racing.model.Car.DEFAULT_POSITION;
+import static step2.racing.service.RacingService.START_UNIQUE_CAR_NUMBER;
 
 class RacingServiceTest {
 
@@ -31,8 +32,8 @@ class RacingServiceTest {
         RacingResult racingResult = racingService.run();
 
         IntStream.range(0, attempts).forEach(attempt ->
-                IntStream.range(0, carCount).forEach( carNumber ->
-                        assertThat(racingResult.getCarPosition(attempt).getPosition(carNumber))
+                IntStream.rangeClosed(START_UNIQUE_CAR_NUMBER, carCount).forEach( uniqueNumber ->
+                        assertThat(racingResult.getCarPosition(attempt).getPosition(uniqueNumber))
                                 .isEqualTo(DEFAULT_POSITION + attempt)
                 )
             );
@@ -49,8 +50,8 @@ class RacingServiceTest {
         RacingResult racingResult = racingService.run();
 
         IntStream.range(0, attempts).forEach(attempt ->
-                IntStream.range(0, carCount).forEach( carNumber ->
-                        assertThat(racingResult.getCarPosition(attempt).getPosition(carNumber))
+                IntStream.rangeClosed(START_UNIQUE_CAR_NUMBER, carCount).forEach( uniqueNumber ->
+                        assertThat(racingResult.getCarPosition(attempt).getPosition(uniqueNumber))
                                 .isEqualTo(DEFAULT_POSITION)
                 )
             );

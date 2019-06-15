@@ -18,7 +18,7 @@ public class RacingResult {
     public void addCarPosition(List<Car> cars) {
 
         CarPosition carPosition = new CarPosition(cars.stream()
-                                .collect(Collectors.toMap(Car::getNumber, Car::getPosition)));
+                                .collect(Collectors.toMap(Car::getUniqueNumber, Car::getPosition)));
 
         carPositions.add(carPosition);
     }

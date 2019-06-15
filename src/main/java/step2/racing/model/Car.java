@@ -7,15 +7,15 @@ public class Car {
     /**
      * 차량번호
      */
-    private final int number;
+    private final int uniqueNumber;
 
     public static final int DEFAULT_POSITION = 1;
     private static final int MOVE_VALUE = 4;
 
-    private Car(int number) {
+    private Car(int uniqueNumber) {
 
         this.position = DEFAULT_POSITION;
-        this.number = number;
+        this.uniqueNumber = uniqueNumber;
     }
 
     public static Car of(int number) {
@@ -40,8 +40,8 @@ public class Car {
         return position;
     }
 
-    public int getNumber() {
+    public int getUniqueNumber() {
 
-        return number;
+        return uniqueNumber;
     }
 }

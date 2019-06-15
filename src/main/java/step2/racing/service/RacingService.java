@@ -17,6 +17,7 @@ public class RacingService {
     private final int attempts;
     private final RandomGenerator randomGenerator;
 
+    public static final int START_UNIQUE_CAR_NUMBER = 1;
     private static final int RANDOM_NUMBER_BOUND = 10;
 
     public RacingService(int carCount, int attempts) {
@@ -50,7 +51,7 @@ public class RacingService {
 
     private List<Car> createCars(int carCount) {
 
-        return IntStream.range(0, carCount)
+        return IntStream.rangeClosed(START_UNIQUE_CAR_NUMBER, carCount)
                 .mapToObj(Car::of)
                 .collect(Collectors.toList());
     }

@@ -2,9 +2,12 @@ package step2.racing.ui;
 
 import step2.racing.inputter.Inputter;
 
+import java.io.PrintStream;
+
 public class InputView {
 
     private final Inputter inputter;
+    private final PrintStream printStream = System.out;
 
     private static final String ASK_CAR_COUNT_MESSAGE = "자동차 대수는 몇 대 인가요?";
     private static final String ASK_ATTEMPTS_MESSAGE = "시도할 회수는 몇 회 인가요?";
@@ -25,6 +28,6 @@ public class InputView {
 
     private void printAskMessage(String message) {
 
-        System.out.println(message);
+        printStream.println(message);
     }
 }
