@@ -8,10 +8,9 @@ public class Cars {
 
     private List<Car> cars;
 
-    public static Cars generate(int count){
+    public static Cars generate(int count) {
         List<Car> cars = IntStream.range(0, count)
-                            .mapToObj(value -> new Car())
-                            .collect(Collectors.toList());
+                .mapToObj(value -> new Car()).collect(Collectors.toList());
         return new Cars(cars);
     }
 
@@ -19,14 +18,18 @@ public class Cars {
         this.cars = cars;
     }
 
-    List<Car> init(){
-        for (Car car : cars) {
-            car.move();
-        }
+    List<Car> init(int count) {
+        IntStream.range(0, count).forEach(value -> moveAll());
         return getCars();
     }
 
-    List<Car> moveAll(Mover mover){
+    private void moveAll() {
+        for (Car car : cars) {
+            car.move();
+        }
+    }
+
+    List<Car> moveAll(Mover mover) {
         for (Car car : cars) {
             move(mover, car);
         }

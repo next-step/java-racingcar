@@ -1,22 +1,15 @@
 package racingcar.model;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static racingcar.model.MockCarMoverTest.mockMover;
 import static racingcar.model.RandomCarMover.MOVING_CONDITION;
 
 class CarsTest {
-
-    @BeforeEach
-    void setUp() {
-
-    }
 
     @Test
     @DisplayName("개수만큼 자동차를 생성한다")

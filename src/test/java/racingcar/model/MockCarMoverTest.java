@@ -20,7 +20,7 @@ class MockCarMoverTest {
     @DisplayName(MOVING_CONDITION + "이상 인 경우 자동차는 움직인다")
     void moveCar() {
         Car car = new Car();
-        MockCarMover mover = mockMover(1, 4, 5);
+        MockCarMover mover = mockMover(MOVING_CONDITION - 1, MOVING_CONDITION, MOVING_CONDITION + 1);
         assertThat(mover.move(car)).isFalse();
         assertThat(mover.move(car)).isTrue();
         assertThat(mover.move(car)).isTrue();
@@ -30,8 +30,7 @@ class MockCarMoverTest {
     @ParameterizedTest
     @ValueSource(ints = {-1, 10})
     void mockCarMoverWhenWrongState(int wrongState) {
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> mockMover(wrongState));
+        assertThatIllegalArgumentException().isThrownBy(() -> mockMover(wrongState));
     }
 
     public static MockCarMover mockMover(int... randomNumber) {

@@ -4,11 +4,12 @@ import java.util.List;
 
 public class RacingCar {
 
+    private static final int INITALIZE_POSITION = 1;
     private int time;
     private Cars cars;
     private Mover<Car> mover;
 
-    public static RacingCar generate(int time, int carCount){
+    public static RacingCar generate(int time, int carCount) {
         return of(time, carCount, new RandomCarMover());
     }
 
@@ -23,12 +24,12 @@ public class RacingCar {
         this.mover = mover;
     }
 
-    public List<Car> ready(){
-        return cars.init();
+    public List<Car> ready() {
+        return cars.init(INITALIZE_POSITION);
     }
 
-    public List<Car> play(){
-        time --;
+    public List<Car> play() {
+        time--;
         return cars.moveAll(mover);
     }
 
