@@ -1,9 +1,11 @@
 package edu.nextstep.raing;
 
 import edu.nextstep.raing.model.Car;
+import edu.nextstep.raing.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * author       : gwonbyeong-yun <sksggg123>
@@ -42,4 +44,25 @@ public class CarRacing {
         return returnCarList;
     }
 
+    /*
+    각각의 자동차의 전진 체크
+     */
+    private void doMoveCheck(Car targetCar) {
+        if(isMoving()) {
+           targetCar.move();
+        }
+    }
+
+    /*
+    전진여부 판단
+    @return boolean type
+     */
+    private boolean isMoving() {
+        Random generator = new Random();
+        int limit = generator.nextInt(10);
+        if(limit >= MOVE_LIMIT_COUNT_FLAG) {
+            return true;
+        }
+        return false;
+    }
 }

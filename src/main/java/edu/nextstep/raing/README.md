@@ -27,6 +27,6 @@
 
 - Racing Class
     - [x] Main Class로 부터 입력받은 값을 통해 생성자초기화
-    - [ ] 전진 여부를 판단하는 기능 (Random Class - nextInt())
+    - [X] 전진 여부를 판단하는 기능 (Random Class - nextInt())
     - [ ] 각각의 자동차의 전진 기능
     
