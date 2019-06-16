@@ -8,6 +8,9 @@ import java.util.regex.Pattern;
 public class StringCalculator {
 
     private final static String SPLIT_REGEX = " ";
+    private final static int FRIST_NUMBER = 0;
+    private final static int SECOND_NUMBER_INDEX = 1;
+    private final static int CALCULATE_STEP = 2;
 
     private int total;
     private String inputFormula;
@@ -35,12 +38,12 @@ public class StringCalculator {
     private StringCalculator calculate() {
         String[] strings = split(this.inputFormula);
 
-        int firstNumber = Integer.parseInt(strings[0]);
+        int firstNumber = Integer.parseInt(strings[FRIST_NUMBER]);
         calculator.initialize(firstNumber);
 
-        for (int i = 1; i < strings.length; i+=2) {
+        for (int i = 1; i < strings.length; i+=CALCULATE_STEP) {
             String symbol = strings[i];
-            int number = Integer.parseInt(strings[i + 1]);
+            int number = Integer.parseInt(strings[i + SECOND_NUMBER_INDEX]);
             calculator = calculates(symbol, number);
         }
         this.total = calculator.getTotal();
