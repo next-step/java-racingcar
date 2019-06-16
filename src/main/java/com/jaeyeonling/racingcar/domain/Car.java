@@ -4,7 +4,15 @@ class Car {
 
     static final int DEFAULT_POSITION = 1;
 
-    private int position = DEFAULT_POSITION;
+    private int position;
+
+    Car() {
+        this(DEFAULT_POSITION);
+    }
+
+    Car(final int position) {
+        this.position = position;
+    }
 
     void moveForward() {
         position++;
