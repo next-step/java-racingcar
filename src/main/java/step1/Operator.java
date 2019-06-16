@@ -8,19 +8,14 @@ public class Operator {
     public String operate(String inputString) {
 
         validator.stringValidation(inputString);
-        int result = calculateElements(separateElements(inputString)); //TODO: 질문!
+        String[] separatedElements = inputString.split(" ");
+        int result = calculateElements(separatedElements);
         return String.valueOf(result);
-    }
-
-    public String[] separateElements(String inputString) {
-
-        return inputString.split(" ");
     }
 
     public int calculateElements(String[] separatedElements) {
 
         int calculationResult = Integer.parseInt(separatedElements[0]);
-
         for(int i=1; i<separatedElements.length; i+=2) {
             String operatorType = separatedElements[i];
             validator.operatorTypeValidation(operatorType);

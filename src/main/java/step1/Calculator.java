@@ -2,20 +2,20 @@ package step1;
 
 public class Calculator {
 
-    static int add(int a, int b){
-        return a + b;
+    public int add(int leftValue, int rightValue){
+        return leftValue + rightValue;
     }
 
-    static int subtract(int a, int b) {
-        return a - b;
+    public int subtract(int leftValue, int rightValue) {
+        return leftValue - rightValue;
     }
 
-    static int multiple(int a, int b) {
-        return a * b;
+    public int multiple(int leftValue, int rightValue) {
+        return leftValue * rightValue;
     }
 
-    static int divide(int a, int b) {
-        return a / b;
+    public int divide(int leftValue, int rightValue) {
+        return leftValue / rightValue;
     }
 
     public int calculate(String operatorType, int leftValue, String rightValueInString) {

@@ -9,12 +9,14 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 @DisplayName("입력된 문자열의 유효성 검증 테스트")
 public class ValidationTest {
 
+    Validator validator = new Validator();
+
     @Test
     @DisplayName("공백 검증 테스트")
     void string_validation_test_for_blank() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    CalculatorApplication.stringValidation("");
+                    validator.stringValidation("");
                 });
     }
 
@@ -23,7 +25,7 @@ public class ValidationTest {
     void string_validation_test_for_null(){
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                   CalculatorApplication.stringValidation(null);
+                    validator.stringValidation(null);
                 });
     }
 
@@ -32,7 +34,7 @@ public class ValidationTest {
     void operator_type_validation_test() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    CalculatorApplication.operatorTypeValidation("%");
+                    validator.operatorTypeValidation("%");
                 });
     }
 }
