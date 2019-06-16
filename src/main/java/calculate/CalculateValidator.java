@@ -4,6 +4,9 @@ import org.apache.commons.lang3.StringUtils;
 
 public class CalculateValidator {
     private final static String SPLIT_REGEX = " ";
+    private final static int FOR_START_NUMBER = 0;
+    private final static int EVEN_DIVIDING_NUMBER = 2;
+    private final static int EVEN_EXPECTED_REMAINDER = 0;
     
     public static void checkCalculable(String method) {
         if (StringUtils.isEmpty(method)) {
@@ -15,7 +18,7 @@ public class CalculateValidator {
             throwException(ErrorMessage.INCORRECT_END_CHARACTER.getMessage());
         }
         
-        for (int i = 0, size = methodPieces.length; i < size; i++) {
+        for (int i = FOR_START_NUMBER, size = methodPieces.length; i < size; i++) {
             String piece = methodPieces[i];
             if (isEvenNumber(i)) {
                 validateNumeric(piece);
@@ -26,7 +29,7 @@ public class CalculateValidator {
     }
     
     private static boolean isEvenNumber(int number) {
-        return number % 2 == 0;
+        return number % EVEN_DIVIDING_NUMBER == EVEN_EXPECTED_REMAINDER;
     }
     
     private static void validateNumeric(String piece) {

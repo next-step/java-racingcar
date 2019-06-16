@@ -1,15 +1,14 @@
 package racing;
 
+import racing.common.Question;
 import racing.view.InputView;
 
 public class RacingGameRunner {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        inputView.printQuestionCar();
-        int carCount = inputView.requireInputInteger();
-        inputView.printQuestionTime();
-        int timeCount = inputView.requireInputInteger();
-        RacingGame racingGame = new RacingGame(carCount, timeCount);
+        RacingGame racingGame = new RacingGame(
+          InputView.printQuestionAndgetAnswer(Question.CAR_COUNT.getQuestion()), 
+          InputView.printQuestionAndgetAnswer(Question.TIME_COUNT.getQuestion())
+        );
         racingGame.startRacing();
     }
 }

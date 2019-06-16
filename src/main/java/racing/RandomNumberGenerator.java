@@ -7,10 +7,6 @@ public class RandomNumberGenerator {
     private Random generator;
     private int maxNumber;
     
-    public int getMaxNumber() {
-        return maxNumber;
-    }
-    
     public RandomNumberGenerator(int maxNumber) {
         this.maxNumber = maxNumber;
         generator = new Random();

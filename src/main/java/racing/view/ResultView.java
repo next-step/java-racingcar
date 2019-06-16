@@ -9,7 +9,7 @@ public class ResultView {
     private final static int START_NUMBER = 0;
     
     public static void printCarsMoving(List<Car> cars) {
-        cars.stream().forEach(car -> printCarStatus(car));
+        cars.stream().forEach(ResultView::printCarStatus);
     }
     
     private static void printCarStatus(Car car) {

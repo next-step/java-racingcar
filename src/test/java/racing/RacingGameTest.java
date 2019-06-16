@@ -1,8 +1,8 @@
 package racing;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racing.common.ErrorMessage;
 
 class RacingGameTest {
     private final int OVER_CARS_COUNT = RacingGame.MAX_CARS + 1;
@@ -11,8 +11,8 @@ class RacingGameTest {
     private final int SUCCESS_TIME_COUNT = RacingGame.MIN_TIME;
     private final int SHORT_CARS_COUNT = 0;
     private final int SHORT_TIME_COUNT = 0;
-    @Test
     
+    @Test
     void overMaxValueTest() {
         Assertions.assertThatIllegalArgumentException()
           .isThrownBy(() -> new RacingGame(SUCCESS_CARS_COUNT, OVER_TIME_COUNT))

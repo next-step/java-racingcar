@@ -1,4 +1,4 @@
-package racing;
+package racing.common;
 
 public enum ErrorMessage {
     INCORRECT_TIME("실행 횟수는 1~100까지만 입력이 가능합니다."),

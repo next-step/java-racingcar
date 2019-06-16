@@ -6,18 +6,17 @@ import org.junit.jupiter.api.Test;
 
 class CarTest {
     private final static int ONE_MOVED_POSITION = 1;
-    private int carName;
+    private final static int TEST_CAR_NAME = 1;
     private Car car;
     
     @BeforeEach
     void setUp() {
-        carName = 1;
-        car = new Car(carName);
+        car = new Car(TEST_CAR_NAME);
     }
     
     @Test
     void constructorTest() {
-        Assertions.assertThat(car.getName()).isEqualTo(String.valueOf(carName));
+        Assertions.assertThat(car.getName()).isEqualTo(String.valueOf(TEST_CAR_NAME));
         Assertions.assertThat(car.getPosition()).isEqualTo(Car.DEFAULT_POSITION);
     }
     
