@@ -31,7 +31,6 @@ public class InputMain {
         System.out.println("연산 결과는 나누기를 고려하여, 소수점 둘째자리까지 출력됩니다.");
         System.out.format("%.2f%n", answer);
     }
-
 }
 
 

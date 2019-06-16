@@ -39,7 +39,5 @@ public class ValidationCheck {
         if(!operatorList.contains(str)){
             throw new IllegalArgumentException("연산자(+, -, *, /)가 아닌 값이 있습니다. 재입력 해주세요.");
         }
-
     }
-
 }
