@@ -65,7 +65,7 @@ public class RacingGameOptionTest {
     @DisplayName("moveStrategy 값에 null 입력 시 예외처리")
     @Test
     void nullMoveStrategy() {
-        assertThatExceptionOfType(NullPointerException.class)
+        assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> RacingGameOption.builder().moveStrategy(null));
     }
 }

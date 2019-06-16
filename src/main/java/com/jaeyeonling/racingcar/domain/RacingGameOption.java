@@ -95,7 +95,7 @@ public class RacingGameOption {
 
         private void checkMovingStrategyConstraints(final MoveStrategy moveStrategy) {
             if (Objects.isNull(moveStrategy)) {
-                throw new NullPointerException("MoveStrategy 는 null 일 수 없습니다.");
+                throw new IllegalArgumentException("MoveStrategy 는 null 일 수 없습니다.");
             }
         }
     }
