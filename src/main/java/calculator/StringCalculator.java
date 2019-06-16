@@ -26,7 +26,7 @@ public class StringCalculator {
         String[] stringArray = toStringArrays(input);
         result = parseInt(stringArray[0]);
         for (int index = 1; index < stringArray.length; index += 2) {
-            operator(fromOperator(stringArray[index]), stringArray[index + 1]);
+            operator(Operator.from(stringArray[index]), stringArray[index + 1]);
         }
         return result;
     }
@@ -35,10 +35,6 @@ public class StringCalculator {
         if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException("문자열을 입력하세요. ex) 4 + 2 / 3 ..");
         }
-    }
-
-    private Operator fromOperator(String symbol) {
-        return Operator.from(symbol);
     }
 
     private void operator(Operator operator, String num) {
