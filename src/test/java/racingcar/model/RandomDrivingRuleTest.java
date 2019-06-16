@@ -1,7 +1,6 @@
 package racingcar.model;
 
 import org.junit.jupiter.api.Test;
-import racingcar.model.RandomDrivingRule;
 
 import static org.assertj.core.api.Assertions.*;
 

@@ -1,8 +1,6 @@
 package racingcar.model;
 
 import org.junit.jupiter.api.Test;
-import racingcar.model.Car;
-import racingcar.model.DrivingRule;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -22,5 +20,16 @@ class CarTest {
         assertThat(car.move()).isEqualTo(1);
         assertThat(car.move()).isEqualTo(2);
         assertThat(car.move()).isEqualTo(3);
+    }
+
+    @Test
+    void 자동차는_정지할_수_있다() {
+        DrivingRule mockRule = () -> false;
+
+        Car car = Car.createCarWithDrivingRule(mockRule);
+
+        assertThat(car.move()).isEqualTo(0);
+        assertThat(car.move()).isEqualTo(0);
+        assertThat(car.move()).isEqualTo(0);
     }
 }
