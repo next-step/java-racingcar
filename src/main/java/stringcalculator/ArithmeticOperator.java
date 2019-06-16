@@ -38,7 +38,7 @@ public class ArithmeticOperator {
                     .filter(symbol -> symbol.getSymbol().equals(str))
                     .findFirst()
                     .orElseGet(() -> {
-                        throw new IllegalArgumentException("Unsupproted operator");
+                        throw new IllegalArgumentException("Unsupported operator");
                     });
         }
 
