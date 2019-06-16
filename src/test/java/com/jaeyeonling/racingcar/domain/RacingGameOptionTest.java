@@ -25,7 +25,7 @@ public class RacingGameOptionTest {
 
     @DisplayName("numberOfParticipants 값에 범위를 초과하는 입력 시 예외처리")
     @ParameterizedTest
-    @ValueSource(ints = { 242, 456645, 745567, 3462352, 235252 })
+    @ValueSource(ints = { 456645, 745567, 3462352, 235252 })
     void overNumberOfParticipants(final int overNumber) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> RacingGameOption.builder().numberOfParticipants(overNumber));
@@ -48,7 +48,7 @@ public class RacingGameOptionTest {
 
     @DisplayName("movingCount 값에 범위를 초과하는 입력 시 예외처리")
     @ParameterizedTest
-    @ValueSource(ints = { 242, 456645, 745567, 3462352, 235252 })
+    @ValueSource(ints = { 456645, 745567, 3462352, 235252 })
     void overMovingCount(final int overNumber) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> RacingGameOption.builder().movingCount(overNumber));
