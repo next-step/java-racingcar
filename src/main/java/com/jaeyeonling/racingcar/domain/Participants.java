@@ -1,20 +1,24 @@
 package com.jaeyeonling.racingcar.domain;
 
+import com.google.common.collect.ImmutableList;
+
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 class Participants {
 
     private static final int PARTICIPANTS_START_INCLUSIVE = 1;
 
-    private final Car[] participants;
+    private final List<Car> participants;
 
     Participants(final int numberOfParticipants) {
         participants = IntStream.rangeClosed(PARTICIPANTS_START_INCLUSIVE, numberOfParticipants)
                 .mapToObj(i -> new Car())
-                .toArray(Car[]::new);
+                .collect(Collectors.toList());
     }
 
-    Car[] list() {
-        return participants;
+    List<Car> getParticipants() {
+        return ImmutableList.copyOf(participants);
     }
 }
