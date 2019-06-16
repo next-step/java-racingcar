@@ -1,6 +1,7 @@
 package calculator;
 
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.function.BinaryOperator;
 import java.util.stream.Stream;
 
@@ -21,11 +22,7 @@ enum OperatorType {
 
 
   private static OperatorType getOperator(String symbol) {
-    OperatorType[] values = OperatorType.values();
-    return Stream.of(values)
-        .filter(operator -> operator.symbol.equals(symbol))
-        .findAny()
-        .orElseThrow(NoSuchElementException::new);
+    return findOperator(symbol).orElseThrow(NoSuchElementException::new);
   }
 
   public static int calculate(String symbol, int value1, int value2) {
@@ -33,11 +30,14 @@ enum OperatorType {
   }
 
   public static boolean isOperator(String symbol) {
+    return findOperator(symbol).isPresent();
+  }
+
+  private static Optional<OperatorType> findOperator(String symbol) {
     OperatorType[] values = OperatorType.values();
     return Stream.of(values)
         .filter(operator -> operator.symbol.equals(symbol))
-        .findAny()
-        .isPresent();
+        .findAny();
   }
 
 }
