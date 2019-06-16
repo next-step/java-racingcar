@@ -1,7 +1,5 @@
 package com.jaeyeonling.racingcar.view;
 
-import com.jaeyeonling.racingcar.domain.Visualizable;
-
 import java.io.PrintStream;
 
 public class ResultView {

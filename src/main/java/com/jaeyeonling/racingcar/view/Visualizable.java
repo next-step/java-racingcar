@@ -1,4 +1,4 @@
-package com.jaeyeonling.racingcar.domain;
+package com.jaeyeonling.racingcar.view;
 
 public interface Visualizable {
 

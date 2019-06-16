@@ -1,6 +1,7 @@
 package com.jaeyeonling.racingcar.domain;
 
 import com.jaeyeonling.racingcar.utils.StringUtils;
+import com.jaeyeonling.racingcar.view.Visualizable;
 
 public class Car implements Visualizable {
 

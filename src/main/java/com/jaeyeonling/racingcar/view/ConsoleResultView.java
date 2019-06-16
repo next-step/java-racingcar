@@ -1,7 +1,5 @@
 package com.jaeyeonling.racingcar.view;
 
-import com.jaeyeonling.racingcar.domain.Visualizable;
-
 public final class ConsoleResultView {
 
     private static final ResultView console = new ResultView(System.out);
