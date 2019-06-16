@@ -2,10 +2,7 @@ package camp.nextstep.edu.racingcar.domain;
 
 import camp.nextstep.edu.util.AssertUtils;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Stream;
 
 public class Rounds {
@@ -51,7 +48,23 @@ public class Rounds {
                 .orElse(CarNames.emptyInstance());
     }
 
-    // TODO: toString
-    // TODO: equal
-    // TODO: hashcode
+    @Override
+    public String toString() {
+        return "Rounds{" +
+                "roundList=" + roundList +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Rounds rounds = (Rounds) o;
+        return roundList.equals(rounds.roundList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(roundList);
+    }
 }

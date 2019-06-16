@@ -4,6 +4,7 @@ import camp.nextstep.edu.util.AssertUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -42,7 +43,23 @@ public class Cars {
         return new Cars(movedCarList);
     }
 
-    // TODO: toString
-    // TODO: equal
-    // TODO: hashcode
+    @Override
+    public String toString() {
+        return "Cars{" +
+                "carList=" + carList +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cars cars = (Cars) o;
+        return carList.equals(cars.carList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carList);
+    }
 }

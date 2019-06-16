@@ -2,6 +2,8 @@ package camp.nextstep.edu.racingcar.domain;
 
 import camp.nextstep.edu.util.AssertUtils;
 
+import java.util.Objects;
+
 public class GamePlayer {
     private Game game;
     private MovingStrategy movingStrategy;
@@ -38,7 +40,25 @@ public class GamePlayer {
         }
     }
 
-    // TODO: toString
-    // TODO: equal
-    // TODO: hashcode
+    @Override
+    public String toString() {
+        return "GamePlayer{" +
+                "game=" + game +
+                ", movingStrategy=" + movingStrategy +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GamePlayer that = (GamePlayer) o;
+        return Objects.equals(game, that.game) &&
+                movingStrategy.equals(that.movingStrategy);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(game, movingStrategy);
+    }
 }

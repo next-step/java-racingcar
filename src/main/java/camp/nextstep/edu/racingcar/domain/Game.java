@@ -2,6 +2,8 @@ package camp.nextstep.edu.racingcar.domain;
 
 import camp.nextstep.edu.util.AssertUtils;
 
+import java.util.Objects;
+
 public class Game {
     private static final int MINIMUM_NUMBER_OF_ROUNDS = 0;
 
@@ -55,7 +57,27 @@ public class Game {
         return rounds;
     }
 
-    // TODO: toString
-    // TODO: equal
-    // TODO: hashcode
+    @Override
+    public String toString() {
+        return "Game{" +
+                "carNames=" + carNames +
+                ", numberOfRounds=" + numberOfRounds +
+                ", rounds=" + rounds +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Game game = (Game) o;
+        return numberOfRounds == game.numberOfRounds &&
+                carNames.equals(game.carNames) &&
+                rounds.equals(game.rounds);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carNames, numberOfRounds, rounds);
+    }
 }

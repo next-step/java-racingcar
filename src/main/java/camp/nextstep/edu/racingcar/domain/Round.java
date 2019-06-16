@@ -1,6 +1,7 @@
 package camp.nextstep.edu.racingcar.domain;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Round {
@@ -40,7 +41,23 @@ public class Round {
                 .reduce(0, Integer::max);
     }
 
-    // TODO: toString
-    // TODO: equal
-    // TODO: hashcode
+    @Override
+    public String toString() {
+        return "Round{" +
+                "cars=" + cars +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Round round = (Round) o;
+        return cars.equals(round.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars);
+    }
 }

@@ -2,6 +2,8 @@ package camp.nextstep.edu.racingcar.domain;
 
 import camp.nextstep.edu.util.StringUtils;
 
+import java.util.Objects;
+
 public class Car {
     private static final int POSITION_INITIAL_VALUE = 0;
     private static final int POSITION_MINIMUM_VALUE = 0;
@@ -37,7 +39,25 @@ public class Car {
         return new Car(name, position + distance);
     }
 
-    // TODO: toString
-    // TODO: equal
-    // TODO: hashcode
+    @Override
+    public String toString() {
+        return "Car{" +
+                "name='" + name + '\'' +
+                ", position=" + position +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return position == car.position &&
+                name.equals(car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position);
+    }
 }

@@ -2,6 +2,8 @@ package camp.nextstep.edu.racingcar.view.dto;
 
 import camp.nextstep.edu.racingcar.domain.CarNames;
 
+import java.util.Objects;
+
 public class GameRequest {
     private final CarNames carNames;
     private final int numberOfRounds;
@@ -23,7 +25,25 @@ public class GameRequest {
         return numberOfRounds;
     }
 
-    // TODO: toString
-    // TODO: equal
-    // TODO: hashcode
+    @Override
+    public String toString() {
+        return "GameRequest{" +
+                "carNames=" + carNames +
+                ", numberOfRounds=" + numberOfRounds +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GameRequest that = (GameRequest) o;
+        return numberOfRounds == that.numberOfRounds &&
+                carNames.equals(that.carNames);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carNames, numberOfRounds);
+    }
 }

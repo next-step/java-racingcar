@@ -5,6 +5,7 @@ import camp.nextstep.edu.util.AssertUtils;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Stream;
 
 public class CarNames {
@@ -33,7 +34,23 @@ public class CarNames {
         return carNameList.stream();
     }
 
-    // TODO: toString
-    // TODO: equal
-    // TODO: hashcode
+    @Override
+    public String toString() {
+        return "CarNames{" +
+                "carNameList=" + carNameList +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CarNames carNames = (CarNames) o;
+        return carNameList.equals(carNames.carNameList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carNameList);
+    }
 }
