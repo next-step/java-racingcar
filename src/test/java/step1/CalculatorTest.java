@@ -43,7 +43,7 @@ public class CalculatorTest {
     @ValueSource(strings = {
             "!",
             "%",
-            "^"git s
+            "^"
     })
     void calTest(String inputCal){
         assertThatIllegalArgumentException().isThrownBy(() -> vCheck.operatorCheck(inputCal));
