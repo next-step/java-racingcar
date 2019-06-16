@@ -18,17 +18,17 @@ public class CalculatorApplication {
         System.out.println("연산 결과 : " + result);
     }
 
-    private static int operateCalculator(String inputString) {
-
+    public static int operateCalculator(String inputString) {
+        return 1;
     }
 
-    private static void stringValidation(String inputString) {
+    public static void stringValidation(String inputString) {
         if("".equals(inputString) || StringUtils.isEmpty(inputString)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private  static void operatorTypeValidation(String inputType) {
+    public static void operatorTypeValidation(String inputType) {
         if(!"+".equals(inputType)
                 && !"-".equals(inputType)
                 && !"*".equals(inputType)
