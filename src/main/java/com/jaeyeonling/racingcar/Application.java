@@ -5,6 +5,7 @@ import com.jaeyeonling.racingcar.domain.RacingGameOption;
 import com.jaeyeonling.racingcar.domain.RandomMoveStrategy;
 import com.jaeyeonling.racingcar.view.ConsoleInputView;
 import com.jaeyeonling.racingcar.view.ConsoleResultView;
+import com.jaeyeonling.racingcar.view.VisualRecorder;
 
 public class Application {
 
@@ -19,13 +20,17 @@ public class Application {
                 .build();
 
         final RacingGame racingGame = new RacingGame(racingGameOption);
+        final VisualRecorder viewRecorder = new VisualRecorder();
 
-        ConsoleResultView.newLine();
-        ConsoleResultView.show("실행 결과");
-        ConsoleResultView.show(racingGame);
+        viewRecorder.newLine();
+        viewRecorder.recode("실행 결과");
+        viewRecorder.recode(racingGame);
+
         while (!racingGame.isComplete()) {
             racingGame.move();
-            ConsoleResultView.show(racingGame);
+            viewRecorder.recode(racingGame);
         }
+
+        ConsoleResultView.show(viewRecorder);
     }
 }
