@@ -1,27 +1,28 @@
 package step1;
 
-import spark.utils.StringUtils;
-
 import java.util.Scanner;
 
 public class CalculatorApplication {
 
+    private Validator validator = new Validator();
+
     public static void main(String[] args) {
 
+        CalculatorApplication app = new CalculatorApplication();
         System.out.println("연산하고 싶은 문자열을 입력하세요.");
 
         Scanner scan = new Scanner(System.in);
         String inputString = scan.nextLine();
         scan.close();
 
-        String result = runCalculatorApplication(inputString);
+        String result = app.runCalculatorApplication(inputString);
         System.out.println("연산 결과 : " + result);
     }
 
-    public static String runCalculatorApplication(String inputString) {
+    public String runCalculatorApplication(String inputString) {
 
         try {
-            stringValidation(inputString);
+            validator.stringValidation(inputString);
             return operate(inputString);
 
         } catch (IllegalArgumentException e) {
@@ -31,19 +32,19 @@ public class CalculatorApplication {
         }
     }
 
-    public static String operate(String inputString) {
+    public String operate(String inputString) {
 
         String[] inputElements = inputString.split(" ");
         int calculationResult = Integer.parseInt(inputElements[0]);
 
         for(int i=1; i<inputElements.length; i+=2) {
-            operatorTypeValidation(inputElements[i]);
+            validator.operatorTypeValidation(inputElements[i]);
             calculationResult = calculate(inputElements[i], calculationResult, inputElements[i+1]);
         }
         return String.valueOf(calculationResult);
     }
 
-    public static int calculate(String operator, int leftValue, String rightValueInString) {
+    public int calculate(String operator, int leftValue, String rightValueInString) {
 
         int rightValue = Integer.parseInt(rightValueInString);
 
@@ -55,20 +56,7 @@ public class CalculatorApplication {
         return -1;
     }
 
-    public static void stringValidation(String inputString) {
-        if(StringUtils.isEmpty(inputString)) {
-            throw new IllegalArgumentException();
-        }
-    }
 
-    public static void operatorTypeValidation(String inputType) {
-        if(!"+".equals(inputType)
-                && !"-".equals(inputType)
-                && !"*".equals(inputType)
-                && !"/".equals(inputType)) {
-            throw new IllegalArgumentException();
-        }
-    }
 
 
 
