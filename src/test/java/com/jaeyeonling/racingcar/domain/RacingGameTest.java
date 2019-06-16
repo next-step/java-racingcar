@@ -68,6 +68,6 @@ public class RacingGameTest {
         }
 
         // then
-        assertThat(racingGame.getStatus().visualize()).isEqualTo(expectResultBuilder.toString());
+        assertThat(racingGame.visualize()).isEqualTo(expectResultBuilder.toString());
     }
 }
