@@ -21,7 +21,14 @@ public class Numbers {
   }
 
   public static Boolean isNumber(String value) {
+    if (isBlank(value)) {
+      return false;
+    }
     return Pattern.matches("^[0-9]*$", value);
+  }
+
+  private static boolean isBlank(String value) {
+    return value == null || "".equals(value);
   }
 
   private List<Integer> convertStringToInteger(List<String> numbers) {
