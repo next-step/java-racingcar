@@ -19,12 +19,12 @@ public class OutputView {
 
     public static void playResult(List<Car> cars){
         for (Car car : cars) {
-            carPosition(car);
+            playCarResult(car);
         }
         newLine();
     }
 
-    private static void carPosition(Car car) {
+    private static void playCarResult(Car car) {
         IntStream.range(0, car.getPosition())
                 .forEach(value -> print(VISUAL_EXPRESSION));
         newLine();
