@@ -5,55 +5,58 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class RacingGameTest {
-    private RacingGame racingGame; 
-    
-    @BeforeEach
-    void setUp() {
-        this.racingGame = new RacingGame();
-    }
-    
+    private final int OVER_CARS_COUNT = RacingGame.MAX_CARS + 1;
+    private final int OVER_TIME_COUNT = RacingGame.MAX_TIME + 1;
+    private final int SUCCESS_CARS_COUNT = RacingGame.MIN_CARS;
+    private final int SUCCESS_TIME_COUNT = RacingGame.MIN_TIME;
+    private final int SHORT_CARS_COUNT = 0;
+    private final int SHORT_TIME_COUNT = 0;
     @Test
-    void setTimeExceptionTest() {
+    
+    void overMaxValueTest() {
         Assertions.assertThatIllegalArgumentException()
-          .isThrownBy(() -> racingGame.setTime(101))
+          .isThrownBy(() -> new RacingGame(SUCCESS_CARS_COUNT, OVER_TIME_COUNT))
           .withMessage(ErrorMessage.INCORRECT_TIME.getMessage());
         
         Assertions.assertThatIllegalArgumentException()
-          .isThrownBy(() -> racingGame.setTime(0))
+          .isThrownBy(() -> new RacingGame(OVER_CARS_COUNT, SUCCESS_TIME_COUNT))
+          .withMessage(ErrorMessage.INCORRECT_CAR_COUNT.getMessage());
+    
+    }
+    
+    @Test
+    void shortValueTest() { 
+        Assertions.assertThatIllegalArgumentException()
+          .isThrownBy(() -> new RacingGame(SUCCESS_CARS_COUNT, SHORT_TIME_COUNT))
           .withMessage(ErrorMessage.INCORRECT_TIME.getMessage());
-    }
-    
-    @Test
-    void setCarsExceptionTest() { 
+
         Assertions.assertThatIllegalArgumentException()
-          .isThrownBy(() -> racingGame.makeCars(101))
-          .withMessage(ErrorMessage.INCORRECT_CAR_COUNT.getMessage());
-    
-        Assertions.assertThatIllegalArgumentException()
-          .isThrownBy(() -> racingGame.makeCars(0))
+          .isThrownBy(() -> new RacingGame(SHORT_CARS_COUNT, SHORT_TIME_COUNT))
           .withMessage(ErrorMessage.INCORRECT_CAR_COUNT.getMessage());
     
     }
     
     @Test
-    void getTimeTest() {
-        int testTimeCount = 5;
-        racingGame.setTime(testTimeCount);
-        Assertions.assertThat(racingGame.getTime()).isEqualTo(testTimeCount);
+    void getterTest() {
+        RacingGame racingGame = new RacingGame(SUCCESS_CARS_COUNT, SUCCESS_TIME_COUNT);
+        Assertions.assertThat(racingGame.getCars().size()).isEqualTo(SUCCESS_CARS_COUNT);
+        Assertions.assertThat(racingGame.getTime()).isEqualTo(SUCCESS_TIME_COUNT);
     }
     
     @Test
-    void getCarsTest() {
-        int testCarsCount = 5;
-        racingGame.makeCars(testCarsCount);
-        Assertions.assertThat(racingGame.getCars().size()).isEqualTo(testCarsCount);
-    }
-    
-    @Test
-    void isMoveableTest() {
+    void isMovableTest() {
         int movableNumber = 4;
         int notEnoughNumber = 3;
         Assertions.assertThat(RacingGame.isMovable(movableNumber)).isTrue();
         Assertions.assertThat(RacingGame.isMovable(notEnoughNumber)).isFalse();
+    }
+    
+    @Test
+    void starGameTest() {
+        RacingGame racingGame = new RacingGame(RacingGame.MAX_CARS, RacingGame.MAX_TIME);
+        racingGame.startRacing();
+        boolean noCarMoved = racingGame.getCars().stream()
+          .allMatch(car -> car.getPosition() == 0);
+        Assertions.assertThat(noCarMoved).isFalse();
     }
 }
