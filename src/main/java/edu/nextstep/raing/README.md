@@ -23,7 +23,7 @@
     - [ ] 입력받은 input(자동차 대수, 전진 횟수)값을 통해 move메서드 수행
 
 - Car Class
-    - [ ] 자동차 객체 생성(멤버변수 : move, currentIndex)
+    - [X] 자동차 객체 생성(멤버변수 : move, currentIndex)
 
 - Racing Class
     - [ ] Main Class로 부터 입력받은 값을 통해 생성자초기화
