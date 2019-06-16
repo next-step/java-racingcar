@@ -22,10 +22,10 @@ public class Application {
 
         ConsoleResultView.newLine();
         ConsoleResultView.show("실행 결과");
-        ConsoleResultView.show(racingGame.getStatus());
+        ConsoleResultView.show(racingGame);
         while (!racingGame.isComplete()) {
             racingGame.move();
-            ConsoleResultView.show(racingGame.getStatus());
+            ConsoleResultView.show(racingGame);
         }
     }
 }

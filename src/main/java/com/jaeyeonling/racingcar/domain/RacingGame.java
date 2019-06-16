@@ -1,6 +1,10 @@
 package com.jaeyeonling.racingcar.domain;
 
-public class RacingGame {
+import com.jaeyeonling.racingcar.utils.StringUtils;
+
+import java.util.List;
+
+public class RacingGame implements Visualizable {
 
     private final RacingGameOption option;
 
@@ -23,17 +27,31 @@ public class RacingGame {
         return movedCount == option.getMovingCount();
     }
 
-    public RacingGameStatus getStatus() {
-        return new RacingGameStatus(this);
+    @Override
+    public String visualize() {
+        return getVisualGameStatus();
     }
 
-    Participants getParticipants() {
+    private String getVisualGameStatus() {
+        final StringBuilder visualBuilder = new StringBuilder();
+        for (final Car car : getCarList()) {
+            visualBuilder.append(car.visualize())
+                    .append(StringUtils.NEW_LINE);
+        }
+
+        return visualBuilder.toString();
+    }
+
+    private List<Car> getCarList() {
+        return getParticipants().toList();
+    }
+
+    private Participants getParticipants() {
         return option.getParticipants();
     }
 
     private void moveAllCar() {
-        getParticipants().toList()
-                .forEach(this::moveCar);
+        getCarList().forEach(this::moveCar);
     }
 
     private void moveCar(final Car car) {
