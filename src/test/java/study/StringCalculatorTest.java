@@ -32,4 +32,10 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.calculate("2 / 1")).isEqualTo(2);
 
     }
+
+    @Test
+    void testStringCalculatorAllSign() {
+        assertThat(StringCalculator.calculate("2 + 3 * 4 / 2")).isEqualTo(10);
+
+    }
 }
