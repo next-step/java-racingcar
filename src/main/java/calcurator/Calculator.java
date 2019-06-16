@@ -19,13 +19,8 @@ public class Calculator {
         return a / b;
     }
 
-    public static boolean isValidOperation(String str) {
-        return Operation.getOperationValues().contains(str);
-
-    }
-
     public static int calculate(String operation, int a, int b) {
-        if (!isValidOperation(operation)) {
+        if (!Operation.isValidOperation(operation)) {
             throw new IllegalArgumentException();
         }
 

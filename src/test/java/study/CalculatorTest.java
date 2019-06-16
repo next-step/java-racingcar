@@ -1,6 +1,7 @@
 package study;
 
 import calcurator.Calculator;
+import calcurator.Operation;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -39,7 +40,7 @@ public class CalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"@"})
     void testInvalidOperation(String operation) {
-        assertThat(Calculator.isValidOperation(operation)).isEqualTo(false);
+        assertThat(Operation.isValidOperation(operation)).isEqualTo(false);
     }
 
 

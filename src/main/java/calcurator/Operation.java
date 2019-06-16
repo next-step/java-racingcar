@@ -25,6 +25,11 @@ public enum Operation {
         return Arrays.stream(values()).map((s) -> s.getOperation()).collect(Collectors.toList());
     }
 
+    public static boolean isValidOperation(String str) {
+        return getOperationValues().contains(str);
+
+    }
+
 
 
 }
