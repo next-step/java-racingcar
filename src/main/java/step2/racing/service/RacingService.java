@@ -5,7 +5,6 @@ import step2.racing.model.Car;
 import step2.racing.random.RandomGenerator;
 import step2.racing.random.RealRandomGenerator;
 
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -32,40 +31,33 @@ public class RacingService {
 
     public RacingResult run() {
 
-        List<Car> cars = createCars(racingInfo.getCarCount());
+        EntireCars entireCars = EntireCars.createCars(racingInfo.getCarCount());
 
-        return race(cars);
+        return race(entireCars);
     }
 
-    private List<Car> createCars(int carCount) {
-
-        return IntStream.rangeClosed(START_UNIQUE_CAR_NUMBER, carCount)
-                .mapToObj(Car::of)
-                .collect(Collectors.toList());
-    }
-
-    private RacingResult race(List<Car> cars) {
+    private RacingResult race(EntireCars entireCars) {
 
         RacingResult racingResult = new RacingResult();
-        addCurrentCarPosition(cars, racingResult);
+        addCurrentCarPosition(entireCars, racingResult);
 
         IntStream.range(START_RACE_COUNT, racingInfo.getAttempts())
                 .forEach(currentRaceCount -> {
-                    raceEntireCars(cars);
-                    addCurrentCarPosition(cars, racingResult);
+                    raceEntireCars(entireCars);
+                    addCurrentCarPosition(entireCars, racingResult);
                 });
 
         return racingResult;
     }
 
-    private void raceEntireCars(List<Car> cars) {
+    private void raceEntireCars(EntireCars entireCars) {
 
-        cars.forEach(car -> car.race(randomGenerator.getRandomIntValue()));
+        entireCars.stream().forEach(car -> car.race(randomGenerator.getRandomIntValue()));
     }
 
-    private void addCurrentCarPosition(List<Car> cars, RacingResult racingResult) {
+    private void addCurrentCarPosition(EntireCars entireCars, RacingResult racingResult) {
 
-        Map<Integer, Integer> carNumberPositions = cars.stream()
+        Map<Integer, Integer> carNumberPositions = entireCars.stream()
                 .collect(Collectors.toMap(Car::getUniqueNumber, Car::getPosition, (car1, car2) -> car1));
 
         racingResult.add(new CarPosition(carNumberPositions));
