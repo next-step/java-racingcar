@@ -12,6 +12,7 @@ public class InputView {
     }
 
     private static int inputNumber(String outputMessage) {
+        System.out.println(outputMessage);
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
