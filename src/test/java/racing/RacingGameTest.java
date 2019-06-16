@@ -48,4 +48,12 @@ class RacingGameTest {
         racingGame.makeCars(testCarsCount);
         Assertions.assertThat(racingGame.getCars().size()).isEqualTo(testCarsCount);
     }
+    
+    @Test
+    void isMoveableTest() {
+        int movableNumber = 4;
+        int notEnoughNumber = 3;
+        Assertions.assertThat(RacingGame.isMovable(movableNumber)).isTrue();
+        Assertions.assertThat(RacingGame.isMovable(notEnoughNumber)).isFalse();
+    }
 }

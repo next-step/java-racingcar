@@ -1,28 +1,27 @@
 package calculate;
 
 import org.apache.commons.lang3.StringUtils;
-import java.util.stream.IntStream;
 
 public class CalculateValidator {
-    private final static int MIN_ARRAY_SIZE = 0;
     private final static String SPLIT_REGEX = " ";
     
     public static void checkCalculable(String method) {
         if (StringUtils.isEmpty(method)) {
-            throw new IllegalArgumentException(ErrorMessage.EMPTY_VALUE.getMessage());
+            throwException(ErrorMessage.EMPTY_VALUE.getMessage());
         }
         
         String[] methodPieces = method.split(SPLIT_REGEX);
         if (isEvenNumber(methodPieces.length)) {
-            throw new IllegalArgumentException(ErrorMessage.INCORRECT_END_CHARACTER.getMessage());
+            throwException(ErrorMessage.INCORRECT_END_CHARACTER.getMessage());
         }
         
-        if (!checkNumbers(methodPieces)) {
-            throw new IllegalArgumentException(ErrorMessage.INCORRECT_NUMBER.getMessage());
-        }
-        
-        if (!checkMathSigns(methodPieces)) {
-            throw new IllegalArgumentException(ErrorMessage.INCORRECT_MATH_SIGN.getMessage());
+        for (int i = 0, size = methodPieces.length; i < size; i++) {
+            String piece = methodPieces[i];
+            if (isEvenNumber(i)) {
+                validateNumeric(piece);
+                continue;
+            }
+            validateOperator(piece);
         }
     }
     
@@ -30,17 +29,21 @@ public class CalculateValidator {
         return number % 2 == 0;
     }
     
-    private static boolean checkNumbers(String[] methodPieces) {
-        int methodPiecesSize = methodPieces.length;
-        return IntStream.range(MIN_ARRAY_SIZE, methodPiecesSize)
-            .filter(i -> isEvenNumber(i))
-            .allMatch(i -> StringUtils.isNumeric(methodPieces[i]));
+    private static void validateNumeric(String piece) {
+        if (StringUtils.isNumeric(piece)) {
+            return;
+        }
+        throwException(ErrorMessage.INCORRECT_NUMBER.getMessage());
     }
     
-    private static boolean checkMathSigns(String[] methodPieces) {
-        int methodPiecesSize = methodPieces.length;
-        return IntStream.range(MIN_ARRAY_SIZE, methodPiecesSize)
-            .filter(i -> !isEvenNumber(i))
-            .allMatch(i -> Operator.hasMathSign(methodPieces[i]));
+    private static void validateOperator(String piece) {
+        if (Operator.hasMathSign(piece)) {
+            return;
+        }
+        throwException(ErrorMessage.INCORRECT_MATH_SIGN.getMessage());
+    }
+    
+    private static void throwException(String message) {
+        throw new IllegalArgumentException(message);
     }
 }
