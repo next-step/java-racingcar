@@ -1,7 +1,6 @@
 package study;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -23,8 +22,9 @@ public class StringCalculator {
     void addition(int number) {
         int num1 = number * 2;
         int num2 = number - 1;
+        String operator = "+";
 
-        int result = calculator.Addition(num1, num2);
+        int result = calculator.computation(num1, num2, operator);
         assertThat(result).isEqualTo(num1 + num2);
 
     }
@@ -34,8 +34,8 @@ public class StringCalculator {
     void subtraction(int number) {
         int num1 = number * 2;
         int num2 = number - 1;
-
-        int result = calculator.subtraction(num1, num2);
+        String operator = "-";
+        int result = calculator.computation(num1, num2, operator);
         assertThat(result).isEqualTo(num1 - num2);
 
     }
@@ -45,8 +45,8 @@ public class StringCalculator {
     void multiplication(int number) {
         int num1 = number * 2;
         int num2 = number - 1;
-
-        int result = calculator.multiplication(num1, num2);
+        String operator = "*";
+        int result = calculator.computation(num1, num2, operator);
         assertThat(result).isEqualTo(num1 * num2);
 
     }
@@ -56,8 +56,8 @@ public class StringCalculator {
     void division(int number) {
         int num1 = number * 2;
         int num2 = number - 1;
-
-        int result = calculator.division(num1, num2);
+        String operator = "/";
+        int result = calculator.computation(num1, num2, operator);
         assertThat(result).isEqualTo(num1 / num2);
 
     }
@@ -81,4 +81,6 @@ public class StringCalculator {
     void checkPolicyOperatorIsOk(String operator) {
         assertThat(calculator.checkPolicyOperator(operator)).isEqualTo(operator);
     }
+
+
 }
