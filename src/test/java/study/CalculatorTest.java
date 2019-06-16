@@ -64,9 +64,9 @@ public class CalculatorTest {
 
     @ParameterizedTest
     @NullAndEmptySource
-    void nullAndEmptyValue(String number) {
+    void nullAndEmptyValue(String input) {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> calculator.nullAndEmptyValue(number));
+                .isThrownBy(() -> calculator.nullAndEmptyValue(input));
     }
 
     @ParameterizedTest

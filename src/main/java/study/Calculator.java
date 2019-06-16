@@ -1,5 +1,7 @@
 package study;
 
+import java.util.regex.Pattern;
+
 public class Calculator {
 
 
@@ -20,12 +22,10 @@ public class Calculator {
         return 0;
     }
 
-    public int nullAndEmptyValue(String number) {
-        if (number == null || number.equals(" ")) {
+    public void nullAndEmptyValue(String number) {
+        if (number == null || number.equals("")) {
             throw new IllegalArgumentException();
         }
-
-        return Integer.parseInt(number);
     }
 
     public String checkPolicyOperator(String operator) {
@@ -43,5 +43,9 @@ public class Calculator {
 
     public String[] getSplitFormula(String formula) {
         return formula.split(" ");
+    }
+
+    public boolean isNumber(String value){
+        return Pattern.matches("^[0-9]*$", value);
     }
 }
