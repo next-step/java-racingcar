@@ -8,8 +8,9 @@ import java.util.stream.IntStream;
 
 public class ResultView {
 
-    private final PrintStream printStream;
     private static final String POSITION_MARK = "-";
+
+    private final PrintStream printStream;
 
     public ResultView(PrintStream printStream) {
 

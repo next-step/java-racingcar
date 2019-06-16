@@ -2,15 +2,14 @@ package step2.racing.model;
 
 public class Car {
 
-    private int position;
+    public static final int DEFAULT_POSITION = 1;
+    private static final int MOVE_VALUE = 4;
 
     /**
      * 차량번호
      */
     private final int uniqueNumber;
-
-    public static final int DEFAULT_POSITION = 1;
-    private static final int MOVE_VALUE = 4;
+    private int position;
 
     private Car(int uniqueNumber) {
 

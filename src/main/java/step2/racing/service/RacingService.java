@@ -11,14 +11,14 @@ import java.util.stream.IntStream;
 
 public class RacingService {
 
+    public static final int START_UNIQUE_CAR_NUMBER = 1;
+    private static final int RANDOM_NUMBER_BOUND = 10;
+
     private int raceCount = 0;
 
     private final int carCount;
     private final int attempts;
     private final RandomGenerator randomGenerator;
-
-    public static final int START_UNIQUE_CAR_NUMBER = 1;
-    private static final int RANDOM_NUMBER_BOUND = 10;
 
     public RacingService(int carCount, int attempts) {
 
