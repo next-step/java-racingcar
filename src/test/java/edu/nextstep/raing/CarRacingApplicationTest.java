@@ -16,7 +16,9 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class CarRaingApplicationTest {
 
+
     @Test
-    void start() {
+    void 통합_테스트() {
+
     }
 }
