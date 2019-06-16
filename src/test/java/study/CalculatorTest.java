@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
-public class StringCalculator {
+public class CalculatorTest {
 
     private Calculator calculator;
 
@@ -80,6 +80,13 @@ public class StringCalculator {
     @ValueSource(strings = {"+", "-", "*", "/"})
     void checkPolicyOperatorIsOk(String operator) {
         assertThat(calculator.checkPolicyOperator(operator)).isEqualTo(operator);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"2 + 3 * 4 / 2", "3 / 6 * 8 + 2"})
+    void splitString(String formula) {
+        String[] splitFormula = calculator.getSplitFormula(formula);
+        assertThat(splitFormula).hasSize(7);
     }
 
 

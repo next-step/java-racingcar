@@ -2,6 +2,7 @@ package study;
 
 public class Calculator {
 
+
     public int computation(int num1, int num2, String operator) {
         switch (operator) {
             case "+":
@@ -40,4 +41,7 @@ public class Calculator {
         throw new IllegalArgumentException();
     }
 
+    public String[] getSplitFormula(String formula) {
+        return formula.split(" ");
+    }
 }
