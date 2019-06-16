@@ -2,7 +2,7 @@ package racingcar.model;
 
 public class Car {
 
-    private int position = 1;
+    private int position;
 
     public void move() {
         position++;
