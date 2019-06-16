@@ -3,13 +3,17 @@ package racing;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public class RacingGame {
     private int time;
     private ArrayList<Car> cars;
 
-    public RacingGame() {
-
+    private void greeting() {
+        System.out.println("자동차 대수는 몇 대 인가요?");
+        setNumOfCars(getInput());
+        System.out.println("시도할 회수는 몇 회 인가요?");
+        setNumOfMove(getInput());
     }
 
     public int getNumOfCars() {
@@ -35,6 +39,16 @@ public class RacingGame {
     public List<Integer> move() {
         // TODO 구현
         return Collections.emptyList();
+    }
+
+    private int getInput() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
+    }
+
+    public static void main(String[] args) {
+        RacingGame game = new RacingGame();
+        game.greeting();
     }
 
 }
