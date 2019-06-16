@@ -4,12 +4,10 @@ import edu.nextstep.raing.model.Car;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 /**
  * author       : gwonbyeong-yun <sksggg123>
@@ -38,5 +36,19 @@ class CarRacingTest {
         int position = cars.get(0).currentPosition();
         assertThat(position).isGreaterThan(-1);
         assertThat(position).isLessThan(6);
+    }
+
+    @Test
+    void 자동차_대수데이터_초기화작업_예외상황() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            CarRacing carRacing = new CarRacing(0, 10);
+        });
+    }
+
+    @Test
+    void 전진_시도데이터_초기화작업_예외상황() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            CarRacing carRacing = new CarRacing(10, 0);
+        });
     }
 }
