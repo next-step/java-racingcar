@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class CalculatorApplication {
 
     private Validator validator = new Validator();
+    private Operator operator = new Operator();
 
     public static void main(String[] args) {
 
@@ -23,7 +24,7 @@ public class CalculatorApplication {
 
         try {
             validator.stringValidation(inputString);
-            return operate(inputString);
+            return operator.operate(inputString);
 
         } catch (IllegalArgumentException e) {
             return "공백을 입력하셨거나, 연산자 기호가 아닌 기호를 입력하셨습니다.";
@@ -32,17 +33,7 @@ public class CalculatorApplication {
         }
     }
 
-    public String operate(String inputString) {
 
-        String[] inputElements = inputString.split(" ");
-        int calculationResult = Integer.parseInt(inputElements[0]);
-
-        for(int i=1; i<inputElements.length; i+=2) {
-            validator.operatorTypeValidation(inputElements[i]);
-            calculationResult = calculate(inputElements[i], calculationResult, inputElements[i+1]);
-        }
-        return String.valueOf(calculationResult);
-    }
 
     public int calculate(String operator, int leftValue, String rightValueInString) {
 
