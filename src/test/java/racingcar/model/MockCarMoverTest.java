@@ -34,7 +34,7 @@ class MockCarMoverTest {
                 .isThrownBy(() -> mockMover(wrongState));
     }
 
-    private MockCarMover mockMover(int... randomNumber) {
+    public static MockCarMover mockMover(int... randomNumber) {
         List<Integer> collect = Arrays.stream(randomNumber).boxed().collect(Collectors.toList());
         return new MockCarMover(collect);
     }

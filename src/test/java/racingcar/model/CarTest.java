@@ -14,7 +14,7 @@ public class CarTest {
     void move() {
         Car car = new Car();
         int movingCount = 4;
-        IntStream.rangeClosed(1, movingCount).forEach(i -> car.move());
+        IntStream.range(0, movingCount).forEach(i -> car.move());
         assertThat(car.getPosition()).isEqualTo(movingCount);
     }
 }

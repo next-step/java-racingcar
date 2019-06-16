@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static racingcar.model.MockCarMoverTest.mockMover;
 
 public class RacingCarTest {
 
@@ -47,10 +48,5 @@ public class RacingCarTest {
 
     private RacingCar ofRacingCar(int time) {
         return RacingCar.of(time, 0, new MockCarMover(Arrays.asList(1, 4, 9, 8, 2, 7)));
-    }
-
-    private MockCarMover mockMover(int... randomNumber) {
-        List<Integer> collect = Arrays.stream(randomNumber).boxed().collect(Collectors.toList());
-        return new MockCarMover(collect);
     }
 }

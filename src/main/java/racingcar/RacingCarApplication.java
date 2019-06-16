@@ -16,7 +16,7 @@ public class RacingCarApplication {
 
         OutputView.result();
         while (!racingCar.isGameOver()){
-            OutputView.playResult(racingCar.init());
+            OutputView.playResult(racingCar.ready());
             OutputView.playResult(racingCar.play());
         }
         OutputView.end();
