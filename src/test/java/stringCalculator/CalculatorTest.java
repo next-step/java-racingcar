@@ -23,25 +23,25 @@ public class CalculatorTest {
 
     @Test
     public void addTest() {
-        assertThat(calculator.add(2).getTotal()).isEqualTo(4);
+        calculator.add(2);
         assertThat(calculator.getTotal()).isEqualTo(4);
     }
 
     @Test
     public void subtractTest() {
-        assertThat(calculator.subtract(1).getTotal()).isEqualTo(1);
+        calculator.subtract(1);
         assertThat(calculator.getTotal()).isEqualTo(1);
     }
 
     @Test
     public void multiplyTest() {
-        assertThat(calculator.multiply(3).getTotal()).isEqualTo(6);
+        calculator.multiply(3);
         assertThat(calculator.getTotal()).isEqualTo(6);
     }
 
     @Test
     public void divideTest() {
-        assertThat(calculator.divide(2).getTotal()).isEqualTo(1);
+        calculator.divide(2);
         assertThat(calculator.getTotal()).isEqualTo(1);
     }
 
