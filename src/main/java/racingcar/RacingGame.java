@@ -4,7 +4,6 @@ import racingcar.model.Car;
 import racingcar.view.InputView;
 
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class RacingGame {
 
