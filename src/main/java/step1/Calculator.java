@@ -27,7 +27,7 @@ public class Calculator {
         if("*".equals(operatorType)) return multiple(leftValue, rightValue);
         if("/".equals(operatorType)) return divide(leftValue, rightValue);
 
-        return -1;
+        return -1; //TODO: 질문입니다! 여기서 무엇을 반환해야 할 지 모르겠습니다.
     }
 
 }

@@ -18,4 +18,6 @@ public class Validator {
             throw new IllegalArgumentException();
         }
     }
+
+    //TODO: 더 다양한 경우의 유효성 검증 필요
 }

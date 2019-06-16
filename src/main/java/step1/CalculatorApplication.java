@@ -21,7 +21,7 @@ public class CalculatorApplication {
             Operator operator = new Operator();
             return operator.operate(inputString);
         } catch (IllegalArgumentException e) {
-            return "공백을 입력하셨거나, 연산자 기호가 아닌 기호를 입력하셨습니다.";
+            return "공백을 입력하셨거나, 연산자 기호가 아닌 기호를 입력하셨습니다."; //TODO: 공백 입력의 경우와 잘못된 연산자 입력한 경우를 각각 잡으려면 어떤 방식이 좋을까요?
         } catch (ArithmeticException e) {
             return "0으로 나눌 수 없습니다.";
         }
