@@ -21,16 +21,16 @@ import java.util.stream.IntStream;
  */
 public class Calculator {
 
-    private final String DELIMITER = " ";
+    private static final String DELIMITER = " ";
 
-    private final String PLUS_SYMBOL = "+";
-    private final String MINUS_SYMBOL = "-";
-    private final String MULTIPLY_SYMBOL = "*";
-    private final String DIVID_SYMBOL = "/";
+    private static final String PLUS_SYMBOL = "+";
+    private static final String MINUS_SYMBOL = "-";
+    private static final String MULTIPLY_SYMBOL = "*";
+    private static final String DIVID_SYMBOL = "/";
 
-    private List<String> ENABLED_ARITHMETIC_SYMBOLS = Arrays.asList(PLUS_SYMBOL, MINUS_SYMBOL, MULTIPLY_SYMBOL, DIVID_SYMBOL); // Arithmetic symbols
+    private static final List<String> ENABLED_ARITHMETIC_SYMBOLS = Arrays.asList(PLUS_SYMBOL, MINUS_SYMBOL, MULTIPLY_SYMBOL, DIVID_SYMBOL); // Arithmetic symbols
 
-    private final String ILLEGAL_ARGUMENT_EXCEPTION_MSG = "입력값을 제대로 입력해주세요.";
+    private static final String ILLEGAL_ARGUMENT_EXCEPTION_MSG = "입력값을 제대로 입력해주세요.";
 
     public int calculate(String input) {
         validateIsNotEmpty(input); // 공백 or null이 아닌지 판단
