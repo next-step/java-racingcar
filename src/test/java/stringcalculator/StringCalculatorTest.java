@@ -149,4 +149,15 @@ public class StringCalculatorTest {
                     // then
                 }).withMessageMatching("For input string: \"a\"");
     }
+
+    @Test
+    @DisplayName("연산자가 여러개인 경우를 확인한다")
+    void checkCompositeCase() {
+        // given
+        StringCalculator stringCalculator = new StringCalculator();
+        // when
+        String result =  stringCalculator.calculate("2 + 3 * 4 / 2");
+        // then
+        assertThat(result).isEqualTo("10");
+    }
 }
