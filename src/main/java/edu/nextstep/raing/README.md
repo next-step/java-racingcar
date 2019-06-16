@@ -30,3 +30,16 @@
     - [X] 전진 여부를 판단하는 기능 (Random Class - nextInt())
     - [X] 각각의 자동차의 전진 기능
     
+### 문의사항
+
+1. CarTest.class
+    - Test코드에 기존에 구현한 Test코드를 호출하여 사용해도 문제가 없을까요? ex) this.이동()
+
+2. CarRacingApplication.class
+    - Main class의 void type method는 테스트를 어떤식으로 해야할지요
+
+3. CarRacing.class
+    - move() 메서드는 외부접근(public) 가능하게 한 뒤 내부 메서드별 분리는 private으로 감추는게 더 좋을듯 하다고 판단을 하였는데 맞을까요?
+    
+    - 만일 위의 생각이 맞다면 move() 메서드를 제외한 메서드는 private으로 되어있어 테스트를 작성이 안되는데 메서드별 단위테스트는 이럴때 어떤식으로 진행하면 될까요? (https://coronasdk.tistory.com/658) 블로그의 내용처럼 진행을 해야할 까요?
+    
