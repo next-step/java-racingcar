@@ -10,7 +10,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-class RoundsTest implements CarNamesHelper {
+class RoundsTest implements CarNamesHelper, CarHelper, CarsHelper, RoundHelper {
 
     private CarNames validCarNames;
 
@@ -20,7 +20,7 @@ class RoundsTest implements CarNamesHelper {
         assertThat(validCarNames.size()).isEqualTo(3);
     }
 
-    @DisplayName("empty 팩터리 메서드는 비어있는 Rounds 객체를 생성해야함")
+    @DisplayName("emptyInstance 팩터리 메서드는 비어있는 Rounds 객체를 생성해야함")
     @Test
     void constructor() {
         final Rounds rounds = Rounds.empty();
@@ -96,5 +96,34 @@ class RoundsTest implements CarNamesHelper {
         final Optional<Round> actual = rounds.getLast();
         // then
         assertThat(actual).isEmpty();
+    }
+
+    @DisplayName("마지막 라운드의 우승자를 잘 구하는지")
+    @Test
+    void getWinnersOfLastRound() {
+        // given
+        final Car firstCar = this.createCar(CAR_NAME_FIRST, 1);
+        final Car secondCar = this.createCar(CAR_NAME_SECOND, 2);
+        final Car thirdCar = this.createCar(CAR_NAME_THIRD, 3);
+        final Cars cars = this.createCars(firstCar, secondCar, thirdCar);
+        final Round round = this.createRound(cars);
+        final Rounds rounds = Rounds.empty();
+        rounds.add(round);
+        // when
+        final CarNames carNames = rounds.getWinnersOfLastRound();
+        // then
+        assertThat(carNames.size()).isEqualTo(1);
+        assertThat(carNames.stream().anyMatch(name -> name.equals(CAR_NAME_THIRD))).isTrue();
+    }
+
+    @DisplayName("rounds 가 비어있을 때, 우승자를 구하려고 하면 비어있는 CarNames 을 리턴해야함")
+    @Test
+    void getWinnersOfLastRoundReturnsEmptyCarNamesWhenRoundIsEmpty() {
+        // given
+        final Rounds rounds = Rounds.empty();
+        // when
+        final CarNames carNames = rounds.getWinnersOfLastRound();
+        // then
+        assertThat(carNames.size()).isEqualTo(0);
     }
 }
