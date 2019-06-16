@@ -2,16 +2,12 @@ package com.jaeyeonling.racingcar.domain;
 
 public class RacingGame {
 
-    private final Participants participants;
-    private final MoveStrategy moveStrategy;
-    private final int movingCount;
+    private final RacingGameOption option;
 
     private int movedCount = Car.DEFAULT_POSITION;
 
     public RacingGame(final RacingGameOption option) {
-        this.participants = option.getParticipants();
-        this.moveStrategy = option.getMoveStrategy();
-        this.movingCount = option.getMovingCount();
+        this.option = option;
     }
 
     public void move() {
@@ -24,7 +20,7 @@ public class RacingGame {
     }
 
     public boolean isComplete() {
-        return movedCount == movingCount;
+        return movedCount == option.getMovingCount();
     }
 
     public RacingGameStatus getStatus() {
@@ -32,17 +28,18 @@ public class RacingGame {
     }
 
     Participants getParticipants() {
-        return participants;
+        return option.getParticipants();
     }
 
     private void moveAllCar() {
-        for (final Car car : participants.toList()) {
+
+        for (final Car car : getParticipants().toList()) {
             moveCar(car);
         }
     }
 
     private void moveCar(final Car car) {
-        if (moveStrategy.isMove()) {
+        if (option.getMoveStrategy().isMove()) {
             car.moveForward();
         }
     }
