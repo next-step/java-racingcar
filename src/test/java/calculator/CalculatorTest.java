@@ -15,45 +15,18 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 class CalculatorTest {
 
+    private Validator validator;
     private Calculator calculator;
 
     @BeforeEach
     void setUp() {
-        calculator = new Calculator();
+
+        validator = new Validator();
+        calculator = new Calculator(validator);
     }
 
     @AfterEach
     void tearDown() {
-    }
-
-    @Test
-    @DisplayName("사칙연산 이외의 기호 입력")
-    void validateSymbol() {
-        assertThatIllegalArgumentException().isThrownBy(() -> calculator.validateSymbol("!"));
-        assertThatIllegalArgumentException().isThrownBy(() -> calculator.validateSymbol("@"));
-    }
-
-    @Test
-    @DisplayName("String으로 숫자가 아닌 문자 입력")
-    void validateNumber() {
-        assertThatIllegalArgumentException().isThrownBy(() -> calculator.validateNumber("a"));
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"", "   "})
-    @DisplayName("공백 입력")
-    void validateInputWithWhiteSpaces(String input) {
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> calculator.validateIsNotEmpty(input))
-                .withMessage("입력값을 제대로 입력해주세요.");
-    }
-
-    @Test
-    @DisplayName("input이 null일 경우 IllegalArgumentException")
-    void validateInputWithNull() {
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> calculator.validateIsNotEmpty(null))
-                .withMessage("입력값을 제대로 입력해주세요.");
     }
 
     @ParameterizedTest
@@ -63,18 +36,6 @@ class CalculatorTest {
         List<String> result = calculator.tokenize(input);
 
         assertThat(result.size()).isNotZero();
-    }
-
-    @Test
-    @DisplayName("Token (List<String>)의 size validation")
-    void validateSizeOf() {
-
-        // 3개 이하
-        assertThatIllegalArgumentException().isThrownBy(() -> calculator.validateSizeOf(Arrays.asList("1", "+")));
-
-        // 짝수개
-        assertThatIllegalArgumentException().isThrownBy(() -> calculator.validateSizeOf(Arrays.asList("1", "+", "3", "*")));
-
     }
 
     @Test
