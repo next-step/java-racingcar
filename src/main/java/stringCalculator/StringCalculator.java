@@ -7,6 +7,8 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
 
+    private final static String SPLIT_REGEX = " ";
+
     private int total;
     private String inputFormula;
     private Calculator calculator;
@@ -27,7 +29,7 @@ public class StringCalculator {
     }
 
     private String[] split(String str) {
-        return str.split(" ");
+        return str.split(SPLIT_REGEX);
     }
 
     private StringCalculator calculate() {
