@@ -15,28 +15,10 @@ public class StringCalculator {
 
         for (int i = 1; i < inputStr.length; i += 2) {
 
-            String val = inputStr[i];
+            String operation = inputStr[i];
 
-            if (!Calculator.isValidSign(val)) {
-                throw new IllegalArgumentException();
-            }
+            num = Calculator.calculrate(operation, num, Integer.valueOf(inputStr[i + 1]));
 
-
-            if (val.equals(Sign.ADD.getSign())) {
-                num = Calculator.add(num, Integer.valueOf(inputStr[i + 1]));
-            }
-
-            if (val.equals(Sign.SUBTRACT.getSign())) {
-                num = Calculator.subtract(num, Integer.valueOf(inputStr[i + 1]));
-            }
-
-            if (val.equals(Sign.MULTIPLY.getSign())) {
-                num = Calculator.multiply(num, Integer.valueOf(inputStr[i + 1]));
-            }
-
-            if (val.equals(Sign.DIVISION.getSign())) {
-                num = Calculator.division(num, Integer.valueOf(inputStr[i + 1]));
-            }
 
         }
 

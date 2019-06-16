@@ -23,4 +23,16 @@ public class Calculator {
         return Sign.getSignValues().contains(str);
 
     }
+
+    public static int calculrate(String operation, int a, int b) {
+        if (!isValidSign(operation)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (operation.equals(Sign.ADD.getSign())) return add(a, b);
+        if (operation.equals(Sign.SUBTRACT.getSign())) return subtract(a, b);
+        if (operation.equals(Sign.MULTIPLY.getSign())) return multiply(a, b);
+        if (operation.equals(Sign.DIVISION.getSign())) return division(a, b);
+        return 0;
+    }
 }
