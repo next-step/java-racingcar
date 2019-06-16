@@ -18,11 +18,22 @@ public class StringCalculator {
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
     void Addition(int number) {
-        int result = calculator.Addition(number, number + 1);
-        assertThat(result)
-                .isNotZero()
-                .isNotNull()
-                .isEqualTo(number + number + 1);
+        int num1 = number * 2;
+        int num2 = number - 1;
+
+        int result = calculator.Addition(num1, num2);
+        assertThat(result).isEqualTo(num1 + num2);
+
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
+    void subtraction(int number) {
+        int num1 = number * 2;
+        int num2 = number - 1;
+
+        int result = calculator.subtraction(num1, num2);
+        assertThat(result).isEqualTo(num1 - num2);
 
     }
 }
