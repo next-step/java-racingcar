@@ -3,17 +3,19 @@ package racing.view;
 import java.util.Scanner;
 
 public class InputView {
-    private static void printQuestion(String question) {
+    public static void printQuestion(String question) {
         System.out.println(question);
     }
     
-    private static int requireInputInteger() {
+    public static int getIntAnswer() {
         Scanner scanner = new Scanner(System.in);
+        scanner.close();
         return scanner.nextInt();
     }
     
-    public static int printQuestionAndgetAnswer(String question) {
-        printQuestion(question);
-        return requireInputInteger();
+    public static String getStringAnswer() {
+        Scanner scanner = new Scanner(System.in);
+        scanner.close();
+        return scanner.nextLine();
     }
 }

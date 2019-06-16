@@ -19,8 +19,8 @@ public class RacingGame {
     private RandomNumberGenerator randomNumberGenerator;
     private int time;
     
-    public RacingGame(int carCount, int time) {
-        makeCars(carCount);
+    public RacingGame(String carNames, int time) {
+        makeCars(carNames);
         setTime(time);
         randomNumberGenerator = new RandomNumberGenerator(MAX_RANDOM_NUMBER);
     }
