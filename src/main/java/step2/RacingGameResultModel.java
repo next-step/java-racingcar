@@ -1,11 +1,16 @@
 package step2;
 
-import java.util.Map;
+import java.util.List;
 
-public class SimpleRacingGameResultModel implements ResultModel {
-    private final Map<Car, String> resultMap;
+public class RacingGameResultModel {
+    private final List<Cars> cars;
 
-    public SimpleRacingGameResultModel(Map<Car, String> resultMap) {
-        this.resultMap = resultMap;
+    public RacingGameResultModel(List<Cars> cars) {
+        this.cars = cars;
     }
+
+    public List<Cars> getCars() {
+        return cars;
+    }
+
 }
