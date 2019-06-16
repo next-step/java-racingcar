@@ -1,7 +1,5 @@
 package camp.nextstep.edu.racingcar.domain;
 
-import java.util.Objects;
-
 public class Round {
     private final Cars cars;
 
@@ -10,8 +8,8 @@ public class Round {
         this.cars = cars;
     }
 
-    public static Round initialRoundFrom(int numberOfCars) {
-        final Cars initialCars = Cars.defaultInstance(numberOfCars);
+    public static Round initialRoundFrom(CarNames carNames) {
+        final Cars initialCars = Cars.defaultInstance(carNames);
         return new Round(initialCars);
     }
 
@@ -24,23 +22,7 @@ public class Round {
         return new Round(movedCars);
     }
 
-    @Override
-    public String toString() {
-        return "Round{" +
-                "cars=" + cars +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Round round = (Round) o;
-        return cars.equals(round.cars);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(cars);
-    }
+    // TODO: toString
+    // TODO: equal
+    // TODO: hashcode
 }

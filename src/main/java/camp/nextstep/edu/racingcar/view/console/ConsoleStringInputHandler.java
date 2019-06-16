@@ -4,15 +4,15 @@ import camp.nextstep.edu.racingcar.view.InputHandler;
 
 import java.util.Scanner;
 
-public class ConsoleIntegerInputHandler implements InputHandler<Integer> {
+public class ConsoleStringInputHandler implements InputHandler<String> {
     private final Scanner scanner;
 
-    public ConsoleIntegerInputHandler(Scanner scanner) {
+    public ConsoleStringInputHandler(Scanner scanner) {
         this.scanner = scanner;
     }
 
     @Override
-    public Integer getInput() {
-        return scanner.nextInt();
+    public String getInput() {
+        return scanner.nextLine();
     }
 }

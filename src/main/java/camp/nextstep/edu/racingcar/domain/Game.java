@@ -2,32 +2,28 @@ package camp.nextstep.edu.racingcar.domain;
 
 import camp.nextstep.edu.util.AssertUtils;
 
-import java.util.Objects;
-
 public class Game {
     private static final int MINIMUM_NUMBER_OF_CARS = 0;
     private static final int MINIMUM_NUMBER_OF_ROUNDS = 0;
-
-    private final int numberOfCars;
+    private final CarNames carNames;
     private final int numberOfRounds;
     private final Rounds rounds;
 
-    private Game(int numberOfCars, int numberOfRounds, Rounds rounds) {
-        if (numberOfCars < MINIMUM_NUMBER_OF_CARS) {
-            throw new IllegalArgumentException("'numberOfCars' must be greater than or equal to " + MINIMUM_NUMBER_OF_CARS);
-        }
+    private Game(CarNames carNames, int numberOfRounds, Rounds rounds) {
+        AssertUtils.notNull(carNames, "'carNames' must not be null");
         if (numberOfRounds < MINIMUM_NUMBER_OF_ROUNDS) {
             throw new IllegalArgumentException("'numberOfRounds' must be greater than or equal to " + MINIMUM_NUMBER_OF_ROUNDS);
         }
         AssertUtils.notNull(rounds, "'rounds' must not be null");
-        this.numberOfCars = numberOfCars;
+
+        this.carNames = carNames;
         this.numberOfRounds = numberOfRounds;
         this.rounds = rounds;
     }
 
-    public static Game of(int numberOfCars, int numberOfRounds) {
+    public static Game of(CarNames carNames, int numberOfRounds) {
         return new Game(
-                numberOfCars,
+                carNames,
                 numberOfRounds,
                 Rounds.empty()
         );
@@ -40,7 +36,7 @@ public class Game {
     }
 
     private Round load() {
-        return rounds.getLast().orElse(Round.initialRoundFrom(numberOfCars));
+        return rounds.getLast().orElse(Round.initialRoundFrom(carNames));
     }
 
     private Round move(Round round, MovingStrategy movingStrategy) {
@@ -59,27 +55,7 @@ public class Game {
         return rounds;
     }
 
-    @Override
-    public String toString() {
-        return "Game{" +
-                "numberOfCars=" + numberOfCars +
-                ", numberOfRounds=" + numberOfRounds +
-                ", rounds=" + rounds +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Game game = (Game) o;
-        return numberOfCars == game.numberOfCars &&
-                numberOfRounds == game.numberOfRounds &&
-                rounds.equals(game.rounds);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(numberOfCars, numberOfRounds, rounds);
-    }
+    // TODO: toString
+    // TODO: equal
+    // TODO: hashcode
 }

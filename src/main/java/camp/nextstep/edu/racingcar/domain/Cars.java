@@ -1,15 +1,13 @@
 package camp.nextstep.edu.racingcar.domain;
 
+import camp.nextstep.edu.util.AssertUtils;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Cars {
-
-    private static final int MINIMUM_NUMBER_OF_CARS = 0;
 
     private final List<Car> carList;
 
@@ -18,13 +16,10 @@ public class Cars {
         this.carList = new ArrayList<>(carList);
     }
 
-    public static Cars defaultInstance(int numberOfCars) {
-        if (numberOfCars < MINIMUM_NUMBER_OF_CARS) {
-            throw new IllegalArgumentException("'numberOfCars' must be greater than or equal to " + MINIMUM_NUMBER_OF_CARS +
-                    ". numberOfCars:" + numberOfCars);
-        }
-        final List<Car> carList = IntStream.range(0, numberOfCars)
-                .mapToObj(number -> Car.defaultInstance())
+    public static Cars defaultInstance(CarNames carNames) {
+        AssertUtils.notNull(carNames, "'carNames' must not be null");
+        final List<Car> carList = carNames.stream()
+                .map(Car::from)
                 .collect(Collectors.toList());
         return new Cars(carList);
     }
@@ -47,23 +42,7 @@ public class Cars {
         return new Cars(movedCarList);
     }
 
-    @Override
-    public String toString() {
-        return "Cars{" +
-                "carList=" + carList +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Cars cars = (Cars) o;
-        return carList.equals(cars.carList);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(carList);
-    }
+    // TODO: toString
+    // TODO: equal
+    // TODO: hashcode
 }
