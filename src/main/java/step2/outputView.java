@@ -2,7 +2,7 @@ package step2;
 
 import java.util.List;
 
-public class RacingOutput {
+public class outputView {
 
     public void racingResult(List<Integer> carsPosition) {
         int carNumber = carsPosition.size();
