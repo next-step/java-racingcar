@@ -23,6 +23,11 @@ public class StringCalculator {
                 i++;
             }
 
+            if (inputStr[i].equals("*")) {
+                num = Calculator.multiply(num, Integer.valueOf(inputStr[i + 1]));
+                i++;
+            }
+
         }
 
         return num;
