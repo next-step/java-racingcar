@@ -1,12 +1,9 @@
 package step2.racing.service;
 
 import step2.racing.dto.*;
-import step2.racing.model.Car;
 import step2.racing.random.RandomGenerator;
 import step2.racing.random.RealRandomGenerator;
 
-import java.util.Map;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingService {
@@ -39,12 +36,12 @@ public class RacingService {
     private RacingResult race(EntireCars entireCars) {
 
         RacingResult racingResult = new RacingResult();
-        addCurrentCarPosition(entireCars, racingResult);
+        racingResult.addCurrentCarPosition(entireCars);
 
         IntStream.range(START_RACE_COUNT, racingInfo.getAttempts())
                 .forEach(currentRaceCount -> {
                     raceEntireCars(entireCars);
-                    addCurrentCarPosition(entireCars, racingResult);
+                    racingResult.addCurrentCarPosition(entireCars);
                 });
 
         return racingResult;
@@ -53,13 +50,5 @@ public class RacingService {
     private void raceEntireCars(EntireCars entireCars) {
 
         entireCars.stream().forEach(car -> car.race(randomGenerator.getRandomIntValue()));
-    }
-
-    private void addCurrentCarPosition(EntireCars entireCars, RacingResult racingResult) {
-
-        Map<Integer, Integer> carNumberPositions = entireCars.stream()
-                .collect(Collectors.toMap(Car::getUniqueNumber, Car::getPosition, (car1, car2) -> car1));
-
-        racingResult.add(new CarPosition(carNumberPositions));
     }
 }

@@ -12,14 +12,13 @@ public class RacingResult {
         return carPositions.get(raceCount);
     }
 
-    public void add(CarPosition carPosition) {
+    public void addCurrentCarPosition(EntireCars entireCars) {
 
-        carPositions.add(carPosition);
+        carPositions.add(CarPosition.of(entireCars));
     }
 
     public int length() {
 
         return carPositions.size();
     }
-
 }

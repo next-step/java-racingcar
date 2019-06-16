@@ -19,7 +19,7 @@ public class ResultView {
         this.printStream = printStream;
     }
 
-    public void printTotalRaces(RacingResult racingResult) {
+    public void printRacingResult(RacingResult racingResult) {
 
         printNewLine();
 
