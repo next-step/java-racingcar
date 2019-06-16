@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingGameTest {
 
     @Test
-    @DisplayName("자동차 단계별 이동(상태) 테스트")
+    @DisplayName("자동차 레이싱 ")
     void moveTest() {
         int carNumber = 4;
         RacingGame racingGame = new RacingGame();
