@@ -11,8 +11,8 @@
 
 ##### UI 로직
 - input View (System.in)
-    - [ ] 자동차 대수
-    - [ ] 전진 시도 횟수
+    - [X] 자동차 대수
+    - [X] 전진 시도 횟수
 
 - result View (System.out)
     - [ ] 전진 시도마다 상태값 출력
