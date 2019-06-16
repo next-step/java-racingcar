@@ -65,38 +65,38 @@ public class RacingGameOption {
 
         private void checkNumberOfParticipantsConstraints(final int numberOfParticipants) {
             if (numberOfParticipants >= MAXIMUM_NUMBER_OF_PARTICIPANTS) {
-                final String errorMessage = String.format("numberOfParticipants 값은 %d 이상이 될 수 없습니다. (입력 값: %d)",
+                throwConstraintsException(String.format("numberOfParticipants 값은 %d 이상이 될 수 없습니다. (입력 값: %d)",
                         MAXIMUM_NUMBER_OF_PARTICIPANTS,
-                        numberOfParticipants);
-                throw new IllegalArgumentException(errorMessage);
+                        numberOfParticipants));
             }
             if (numberOfParticipants <= MINIMUM_NUMBER_OF_PARTICIPANTS) {
-                final String errorMessage = String.format("numberOfParticipants 값은 %d 이하가 될 수 없습니다. (입력 값: %d)",
+                throwConstraintsException(String.format("numberOfParticipants 값은 %d 이하가 될 수 없습니다. (입력 값: %d)",
                         MINIMUM_NUMBER_OF_PARTICIPANTS,
-                        numberOfParticipants);
-                throw new IllegalArgumentException(errorMessage);
+                        numberOfParticipants));
             }
         }
 
         private void checkMovingCountConstraints(final int movingCount) {
             if (movingCount >= MAXIMUM_MOVING_COUNT) {
-                final String errorMessage = String.format("movingCount 값은 %d 이상이 될 수 없습니다. (입력 값: %d)",
+                throwConstraintsException(String.format("movingCount 값은 %d 이상이 될 수 없습니다. (입력 값: %d)",
                         MAXIMUM_MOVING_COUNT,
-                        movingCount);
-                throw new IllegalArgumentException(errorMessage);
+                        movingCount));
             }
             if (movingCount <= MINIMUM_MOVING_COUNT) {
-                final String errorMessage = String.format("movingCount 값은 %d 이하가 될 수 없습니다. (입력 값: %d)",
+                throwConstraintsException(String.format("movingCount 값은 %d 이하가 될 수 없습니다. (입력 값: %d)",
                         MINIMUM_MOVING_COUNT,
-                        movingCount);
-                throw new IllegalArgumentException(errorMessage);
+                        movingCount));
             }
         }
 
         private void checkMovingStrategyConstraints(final MoveStrategy moveStrategy) {
             if (Objects.isNull(moveStrategy)) {
-                throw new IllegalArgumentException("MoveStrategy 는 null 일 수 없습니다.");
+                throwConstraintsException("MoveStrategy 는 null 일 수 없습니다.");
             }
+        }
+
+        private void throwConstraintsException(final String message) {
+            throw new IllegalArgumentException(message);
         }
     }
 }
