@@ -17,6 +17,14 @@ public class CalculatorTest {
 
     }
 
+    @Test
+    void testCalculatorSubtract(){
+        assertThat(Calculator.subtract(2, 1)).isEqualTo(1);
+        assertThat(Calculator.subtract(1, 4)).isEqualTo(-3);
+
+
+    }
+
 
 
 }

@@ -15,4 +15,9 @@ public class StringCalculatorTest {
     }
 
 
+    @Test
+    void testStringCalculatorSubtractSign() {
+        assertThat(StringCalculator.calculate("2 - 1")).isEqualTo(1);
+
+    }
 }
