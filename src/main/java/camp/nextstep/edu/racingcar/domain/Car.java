@@ -25,6 +25,10 @@ public class Car {
         return new Car(name, POSITION_INITIAL_VALUE);
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getPosition() {
         return position;
     }

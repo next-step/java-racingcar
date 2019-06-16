@@ -45,6 +45,12 @@ public class Rounds {
         return Optional.ofNullable(round);
     }
 
+    public CarNames getWinnersOfLastRound() {
+        return this.getLast()
+                .map(Round::getWinners)
+                .orElse(CarNames.emptyInstance());
+    }
+
     // TODO: toString
     // TODO: equal
     // TODO: hashcode

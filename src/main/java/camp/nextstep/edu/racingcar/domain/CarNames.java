@@ -3,6 +3,7 @@ package camp.nextstep.edu.racingcar.domain;
 import camp.nextstep.edu.util.AssertUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -17,6 +18,11 @@ public class CarNames {
 
     public static CarNames from(List<String> carNameList) {
         return new CarNames(carNameList);
+    }
+
+    public static CarNames emptyInstance() {
+        final List<String> emptyList = Collections.emptyList();
+        return new CarNames(emptyList);
     }
 
     public int size() {
