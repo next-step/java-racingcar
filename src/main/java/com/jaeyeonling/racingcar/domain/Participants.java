@@ -1,7 +1,6 @@
 package com.jaeyeonling.racingcar.domain;
 
-import com.google.common.collect.ImmutableList;
-
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -20,6 +19,6 @@ class Participants {
     }
 
     List<Car> toList() {
-        return ImmutableList.copyOf(participants);
+        return Collections.unmodifiableList(participants);
     }
 }
