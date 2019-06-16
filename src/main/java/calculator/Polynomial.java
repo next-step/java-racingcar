@@ -1,27 +1,40 @@
 package calculator;
 
-import calculator.util.CollectionUtils;
+import calculator.util.PolynomialParsingUtils;
 
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 class Polynomial {
-    private List<String> operators;
     private List<Integer> operands;
+    private List<Operable> operators;
     private Integer resultCache = null;
 
-    private Polynomial(List<Integer> operands, List<String> operators) {
+    private Polynomial(List<Integer> operands, List<Operable> operators) {
         this.operands = operands;
         this.operators = operators;
     }
 
     static Polynomial createPolynomialWithExpression(String expression) {
-        if (!PolynomialParser.isValid(expression)) {
-            throw new IllegalArgumentException("입력 수식이 수식 표현 규약에 어긋납니다.");
-        }
+        PolynomialParsingUtils.isEmpty(expression);
+        String[] terms = PolynomialParsingUtils.splitExpression(expression);
 
-        List<Integer> operands = PolynomialParser.extractOperands(expression);
-        List<String> operators = PolynomialParser.extractOperators(expression);
+        return createPolynomialWithTerms(terms);
+    }
+
+    private static Polynomial createPolynomialWithTerms(String[] terms) {
+        List<Integer> operands = new ArrayList<>();
+        List<Operable> operators = new ArrayList<>();
+
+        int firstOperand = PolynomialParsingUtils.convertToNumber(terms[0]);
+        operands.add(firstOperand);
+
+        for (int i = 1; i < terms.length; i += 2) {
+            Operable operator = BinaryOperator.of(terms[i]);
+            int operand = PolynomialParsingUtils.convertToNumber(terms[i + 1]);
+
+            operands.add(operand);
+            operators.add(operator);
+        }
 
         return new Polynomial(operands, operators);
     }
@@ -31,29 +44,17 @@ class Polynomial {
             return resultCache;
         }
 
-        List<Integer> reversedOperands = CollectionUtils.reverse(this.operands);
-        List<String> reversedOperators = CollectionUtils.reverse(this.operators);
+        Queue<Integer> operands = new LinkedList<>(this.operands);
+        Queue<Operable> operators = new LinkedList<>(this.operators);
 
-        Stack<Integer> operands = CollectionUtils.convertListToStack(reversedOperands);
-        Stack<String> operators = CollectionUtils.convertListToStack(reversedOperators);
-
+        resultCache = operands.poll();
         while (!operators.isEmpty()) {
-            resultCache = performBinaryOperation(operands, operators);
+            int operand = operands.poll();
+            Operable operator = operators.poll();
+            resultCache = operator.calculate(resultCache, operand);
         }
 
         return resultCache;
-    }
-
-    private int performBinaryOperation(Stack<Integer> operands, Stack<String> operators) {
-        int operand1 = operands.pop();
-        int operand2 = operands.pop();
-        String operator = operators.pop();
-
-        Operable operable = BinaryOperator.of(operator);
-        int result = operable.calculate(operand1, operand2);
-
-        operands.push(result);
-        return result;
     }
 }
 
