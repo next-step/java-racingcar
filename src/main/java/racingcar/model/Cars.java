@@ -1,5 +1,9 @@
 package racingcar.model;
 
+import racingcar.util.NumberGenerator;
+import racingcar.util.RandomGenerator;
+
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -7,43 +11,28 @@ import java.util.stream.IntStream;
 public class Cars {
 
     private List<Car> cars;
+    private NumberGenerator numberGenerator;
 
-    public static Cars generate(int count) {
+    static Cars generate(int count) {
         List<Car> cars = IntStream.range(0, count)
                 .mapToObj(value -> new Car()).collect(Collectors.toList());
-        return new Cars(cars);
+        return new Cars(cars, new RandomGenerator());
     }
 
-    Cars(List<Car> cars) {
+    Cars(List<Car> cars, NumberGenerator numberGenerator) {
         this.cars = cars;
+        this.numberGenerator = numberGenerator;
     }
 
-    List<Car> init(int count) {
-        for (int i = 0; i < count; i++) {
-            moveAll();
+    List<Car> moveAll() {
+        for (Car car : cars) {
+            car.move(numberGenerator.getNumber());
         }
         return getCars();
     }
 
-    private void moveAll() {
-        for (Car car : cars) {
-            car.move();
-        }
-    }
-
-    List<Car> moveAll(Mover mover) {
-        for (Car car : cars) {
-            move(mover, car);
-        }
-        return getCars();
-    }
-
-    boolean move(Mover mover, Car car) {
-        return mover.move(car);
-    }
-
-    public List<Car> getCars() {
-        return cars;
+    List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 
     @Override
