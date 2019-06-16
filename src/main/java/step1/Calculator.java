@@ -18,4 +18,16 @@ public class Calculator {
         return a / b;
     }
 
+    public int calculate(String operatorType, int leftValue, String rightValueInString) {
+
+        int rightValue = Integer.parseInt(rightValueInString);
+
+        if("+".equals(operatorType)) return add(leftValue, rightValue);
+        if("-".equals(operatorType)) return subtract(leftValue, rightValue);
+        if("*".equals(operatorType)) return multiple(leftValue, rightValue);
+        if("/".equals(operatorType)) return divide(leftValue, rightValue);
+
+        return -1;
+    }
+
 }
