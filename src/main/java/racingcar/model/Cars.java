@@ -19,7 +19,9 @@ public class Cars {
     }
 
     List<Car> init(int count) {
-        IntStream.range(0, count).forEach(value -> moveAll());
+        for (int i = 0; i < count; i++) {
+            moveAll();
+        }
         return getCars();
     }
 

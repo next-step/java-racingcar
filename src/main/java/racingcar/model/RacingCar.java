@@ -4,7 +4,7 @@ import java.util.List;
 
 public class RacingCar {
 
-    private static final int INITALIZE_POSITION = 1;
+    private static final int INITIALIZE_POSITION = 1;
     private int time;
     private Cars cars;
     private Mover<Car> mover;
@@ -25,7 +25,7 @@ public class RacingCar {
     }
 
     public List<Car> ready() {
-        return cars.init(INITALIZE_POSITION);
+        return cars.init(INITIALIZE_POSITION);
     }
 
     public List<Car> play() {
