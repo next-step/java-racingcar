@@ -16,8 +16,7 @@ public class Cars {
     public List<Integer> move() {
         List<Integer> positions = new ArrayList<>();
 
-        for (Car car :
-                cars) {
+        for (Car car : cars) {
             int position = car.move();
             positions.add(position);
         }

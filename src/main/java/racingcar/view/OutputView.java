@@ -6,19 +6,14 @@ public class OutputView {
     private static final String CAR_MARK = "-";
 
     public static void printResultMessage() {
-        System.out.println("실행 결과");
-    }
-
-    public static void printNewLine() {
-        System.out.println();
+        System.out.println("\n실행 결과");
     }
 
     public static void printCarPositions(List<Integer> positions) {
-        for (int position :
-                positions) {
+        for (int position : positions) {
             printCarPosition(position);
         }
-        printNewLine();
+        System.out.println();
     }
 
     private static void printCarPosition(int position) {
