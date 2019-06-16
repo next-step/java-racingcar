@@ -33,6 +33,9 @@ public class CarRacing implements CarRacingInterface{
     @parameter carCount, moveCount
      */
     public CarRacing(int carCount, int moveCount) {
+        if(this.isInValid(carCount, moveCount)) {
+            throw new IllegalArgumentException("입력한 데이터의 값이 0보다 작습니다." + " [자동차 대수] :" + carCount + " [시도횟수] : " + moveCount);
+        }
         this.carList = initCarList(carCount);
         MOVE_COUNT = moveCount;
     }
@@ -59,6 +62,13 @@ public class CarRacing implements CarRacingInterface{
             returnCarList.add(new Car());
         }
         return returnCarList;
+    }
+
+    private boolean isInValid(int carCount, int moveCount) {
+        if(carCount <= 0 || moveCount <= 0) {
+            return true;
+        }
+        return false;
     }
 
     /*
