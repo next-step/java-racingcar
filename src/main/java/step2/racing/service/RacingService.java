@@ -1,7 +1,6 @@
 package step2.racing.service;
 
-import step2.racing.dto.CarPosition;
-import step2.racing.dto.RacingResult;
+import step2.racing.dto.*;
 import step2.racing.model.Car;
 import step2.racing.random.RandomGenerator;
 import step2.racing.random.RealRandomGenerator;
@@ -14,39 +13,28 @@ import java.util.stream.IntStream;
 public class RacingService {
 
     public static final int START_UNIQUE_CAR_NUMBER = 1;
+    public static final int START_RACE_COUNT = 0;
     private static final int RANDOM_NUMBER_BOUND = 10;
 
-    private int raceCount = 0;
-
-    private final int carCount;
-    private final int attempts;
+    private final RacingInfo racingInfo;
     private final RandomGenerator randomGenerator;
 
-    public RacingService(int carCount, int attempts) {
+    public RacingService(RacingInfo racingInfo) {
 
-        this(carCount, attempts, new RealRandomGenerator(RANDOM_NUMBER_BOUND));
+        this(racingInfo, new RealRandomGenerator(RANDOM_NUMBER_BOUND));
     }
 
-    public RacingService(int carCount, int attempts, RandomGenerator randomGenerator) {
+    public RacingService(RacingInfo racingInfo, RandomGenerator randomGenerator) {
 
-        this.carCount = carCount;
-        this.attempts = attempts;
+        this.racingInfo = racingInfo;
         this.randomGenerator = randomGenerator;
     }
 
     public RacingResult run() {
 
-        List<Car> cars = createCars(carCount);
+        List<Car> cars = createCars(racingInfo.getCarCount());
 
-        RacingResult racingResult = new RacingResult();
-        addCurrentCarPosition(racingResult, cars);
-
-        while (!isFinished(attempts)) {
-            raceEntireCars(cars);
-            addCurrentCarPosition(racingResult, cars);
-        }
-
-        return racingResult;
+        return race(cars);
     }
 
     private List<Car> createCars(int carCount) {
@@ -56,18 +44,26 @@ public class RacingService {
                 .collect(Collectors.toList());
     }
 
-    private boolean isFinished(int attempts) {
+    private RacingResult race(List<Car> cars) {
 
-        return raceCount >= attempts;
+        RacingResult racingResult = new RacingResult();
+        addCurrentCarPosition(cars, racingResult);
+
+        IntStream.range(START_RACE_COUNT, racingInfo.getAttempts())
+                .forEach(currentRaceCount -> {
+                    raceEntireCars(cars);
+                    addCurrentCarPosition(cars, racingResult);
+                });
+
+        return racingResult;
     }
 
     private void raceEntireCars(List<Car> cars) {
 
         cars.forEach(car -> car.race(randomGenerator.getRandomIntValue()));
-        raceCount++;
     }
 
-    private void addCurrentCarPosition(RacingResult racingResult, List<Car> cars) {
+    private void addCurrentCarPosition(List<Car> cars, RacingResult racingResult) {
 
         Map<Integer, Integer> carNumberPositions = cars.stream()
                 .collect(Collectors.toMap(Car::getUniqueNumber, Car::getPosition, (car1, car2) -> car1));
