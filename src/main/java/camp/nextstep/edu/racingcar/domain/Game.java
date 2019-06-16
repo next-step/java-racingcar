@@ -3,8 +3,8 @@ package camp.nextstep.edu.racingcar.domain;
 import camp.nextstep.edu.util.AssertUtils;
 
 public class Game {
-    private static final int MINIMUM_NUMBER_OF_CARS = 0;
     private static final int MINIMUM_NUMBER_OF_ROUNDS = 0;
+
     private final CarNames carNames;
     private final int numberOfRounds;
     private final Rounds rounds;
