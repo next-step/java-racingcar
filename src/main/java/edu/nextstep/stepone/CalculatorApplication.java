@@ -17,11 +17,12 @@ public class CalculatorApplication {
 
     private Operator operator = new Operator();
     private Validation validation = new Validation();
+    private StringUtils utils = new StringUtils();
 
     private List<String> letter;
-    private static int firstIndex = 0;
-    private static int lastIndex = 2;
-    private static int totalNumber = 0;
+    private static int FIRST_INDEX = 0;
+    private int LAST_INDEX = 2;
+    private int totalNumber = 0;
 
     public static void main(String[] args) {
         CalculatorApplication calculator = new CalculatorApplication();
@@ -35,17 +36,17 @@ public class CalculatorApplication {
 
     public int start(String inputData) {
 
-        if (this.validation.isBlank(inputData)) {
+        if (this.validation.isNotBlank(inputData)) {
             this.letter = this.validation.splitSpace(inputData);
         }
 
-        totalNumber = this.validation.convertInt(this.letter.get(0));
+        totalNumber = this.utils.convertInt(this.letter.get(0));
 
-        for (int i = firstIndex; i < this.letter.size() - 2 ; i += lastIndex) {
+        for (int i = FIRST_INDEX; i < this.letter.size() - 2 ; i += LAST_INDEX) {
             OperatorType type = OperatorType.typeCheck(this.letter.get(i+1));
             String oper = type.getType();
 
-            int second = this.validation.convertInt(this.letter.get(i+2));
+            int second = this.utils.convertInt(this.letter.get(i+2));
             totalNumber = this.operator.doOperation(oper, totalNumber, second);
         }
 
