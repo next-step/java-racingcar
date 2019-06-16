@@ -7,6 +7,8 @@ import static java.util.stream.Collectors.joining;
 
 public class Car {
 
+  private static final int INITIAL_POSITION = 1;
+
   private int carNo;
   private int position;
 
@@ -15,7 +17,7 @@ public class Car {
 
   public Car(int carNo) {
     this.carNo = carNo;
-    this.position = 0;
+    this.position = INITIAL_POSITION;
 
     this.random = new Random();
   }
@@ -31,7 +33,7 @@ public class Car {
    * 경주가 끝난 후 새로운 경주를 하기 전에 position reset
    */
   public void resetPosition() {
-    this.position = 0;
+    this.position = INITIAL_POSITION;
   }
 
   /**
@@ -45,13 +47,18 @@ public class Car {
     return false;
   }
 
+
   /**
    * 현재 차의 위치를 "-"로 표시
    * ex) 현재 위치가 5이면, "-----"
    * @return
    */
+  public void showCurrentPosition() {
+    System.out.println(this.toString());
+  }
+
   @Override
   public String toString() {
-    return IntStream.range(0, position).mapToObj(pos -> "-").collect(joining());
+    return IntStream.range(INITIAL_POSITION, position).mapToObj(pos -> "-").collect(joining());
   }
 }
