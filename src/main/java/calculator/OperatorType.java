@@ -26,7 +26,11 @@ enum OperatorType {
   }
 
   public static int calculate(String symbol, int value1, int value2) {
-    return (int) getOperator(symbol).expression.apply(value1, value2);
+    return (int) getExpression(symbol).apply(value1, value2);
+  }
+
+  private static BinaryOperator getExpression(String symbol) {
+    return getOperator(symbol).expression;
   }
 
   public static boolean isOperator(String symbol) {
