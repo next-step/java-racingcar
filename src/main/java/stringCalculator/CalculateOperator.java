@@ -1,5 +1,6 @@
 package stringCalculator;
 
+import java.util.EnumSet;
 import java.util.function.IntBinaryOperator;
 
 public enum CalculateOperator {
@@ -21,6 +22,13 @@ public enum CalculateOperator {
 
     public Integer calculate(int first, int second) {
         return expression.applyAsInt(first, second);
+    }
+
+    public static CalculateOperator getOperatorBySymbol(String symbol) throws IllegalArgumentException {
+        return EnumSet.allOf(CalculateOperator.class).stream()
+                .filter(CalculateOperator -> CalculateOperator.mathematicsSymbol.equals(symbol))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("잘못된 계산식 입니다."));
     }
 
 
