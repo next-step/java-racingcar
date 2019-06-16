@@ -2,10 +2,14 @@ package racingcar.model;
 
 public class Car {
 
-    private int position;
+    public static final int RUNNING_CONDITION = 4;
+    private int position = 1;
 
-    public void move() {
-        position++;
+    int move(int power) {
+        if(RUNNING_CONDITION <= power){
+            position++;
+        }
+        return position;
     }
 
     public int getPosition() {
