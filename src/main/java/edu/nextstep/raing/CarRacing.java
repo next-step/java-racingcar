@@ -1,7 +1,6 @@
 package edu.nextstep.raing;
 
 import edu.nextstep.raing.model.Car;
-import edu.nextstep.raing.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +16,15 @@ import java.util.Random;
  * project      : java-racingcar
  * create date  : 2019-06-15 23:33
  */
-public class CarRacing {
+public class CarRacing implements CarRacingInterface{
 
     private List<Car> carList;
     private final int MOVE_COUNT;
     private static int MOVE_LIMIT_COUNT_FLAG = 4;
+
+    public List<Car> getCarList() {
+        return carList;
+    }
 
     /*
     CarRacing 생성자
@@ -30,6 +33,18 @@ public class CarRacing {
     public CarRacing(int carCount, int moveCount) {
         this.carList = initCarList(carCount);
         MOVE_COUNT = moveCount;
+    }
+
+    /*
+    자동차 경주 시작 메서드
+    @return List<Car>
+     */
+    @Override
+    public List<Car> move() {
+        for (int i = 0; i < MOVE_COUNT; i++) {
+            doMove();
+        }
+        return this.carList;
     }
 
     /*
@@ -45,11 +60,20 @@ public class CarRacing {
     }
 
     /*
+    전진 수행을 위한 메서드
+     */
+    private void doMove() {
+        for (int i = 0; i < this.carList.size(); i++) {
+            doMoveCheck(this.carList.get(i));
+        }
+    }
+
+    /*
     각각의 자동차의 전진 체크
      */
     private void doMoveCheck(Car targetCar) {
         if(isMoving()) {
-           targetCar.move();
+            targetCar.move();
         }
     }
 
