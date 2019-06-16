@@ -32,7 +32,7 @@ enum Operator {
     }
 
     public static Operator from(String symbol) {
-        return EnumSet.allOf(Operator.class).stream()
+        return Arrays.stream(Operator.values())
                 .filter(operator -> operator.getSymbol().equals(symbol))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(symbol + "은 지원하지 않는 연산기호입니다."));
