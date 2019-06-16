@@ -17,7 +17,7 @@ public class StringCalculator {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
-    void Addition(int number) {
+    void addition(int number) {
         int num1 = number * 2;
         int num2 = number - 1;
 
@@ -39,12 +39,23 @@ public class StringCalculator {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
-    void Multiplication(int number) {
+    void multiplication(int number) {
         int num1 = number * 2;
         int num2 = number - 1;
 
         int result = calculator.multiplication(num1, num2);
         assertThat(result).isEqualTo(num1 * num2);
+
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {2, 3, 4, 5, 6, 7, 8, 9, 10})
+    void division(int number) {
+        int num1 = number * 2;
+        int num2 = number - 1;
+
+        int result = calculator.division(num1, num2);
+        assertThat(result).isEqualTo(num1 / num2);
 
     }
 }
