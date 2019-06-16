@@ -37,6 +37,7 @@ public class Calculator {
     }
 
     public Calculator divide(int number) {
+        if(number==0) throw new IllegalArgumentException("0으로 나눌수 없습니다.");
         this.total = this.total / number;
         return this;
     }

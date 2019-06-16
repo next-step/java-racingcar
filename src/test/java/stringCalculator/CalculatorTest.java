@@ -1,5 +1,6 @@
 package stringCalculator;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -42,5 +43,13 @@ public class CalculatorTest {
     public void divideTest() {
         assertThat(calculator.divide(2).getTotal()).isEqualTo(1);
         assertThat(calculator.getTotal()).isEqualTo(1);
+    }
+
+    @Test
+    public void divideZeroExceptionTest() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            assertThat(calculator.divide(0));
+        });
+
     }
 }
