@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class RandomGenerator implements NumberGenerator {
 
-    static final int LIMIT_BOUND = 10;
+    public static final int LIMIT_BOUND = 10;
     private static final Random random = new Random();
 
     @Override
