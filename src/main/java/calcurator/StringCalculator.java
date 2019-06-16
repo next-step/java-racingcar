@@ -28,6 +28,11 @@ public class StringCalculator {
                 i++;
             }
 
+            if (inputStr[i].equals("/")) {
+                num = Calculator.division(num, Integer.valueOf(inputStr[i + 1]));
+                i++;
+            }
+
         }
 
         return num;
