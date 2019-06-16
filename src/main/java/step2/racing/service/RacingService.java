@@ -22,9 +22,7 @@ public class RacingService {
 
     public RacingService(int carCount, int attempts) {
 
-        this.carCount = carCount;
-        this.attempts = attempts;
-        this.randomGenerator = new RealRandomGenerator(RANDOM_NUMBER_BOUND);
+        this(carCount, attempts, new RealRandomGenerator(RANDOM_NUMBER_BOUND));
     }
 
     public RacingService(int carCount, int attempts, RandomGenerator randomGenerator) {
