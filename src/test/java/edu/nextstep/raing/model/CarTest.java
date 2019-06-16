@@ -2,7 +2,7 @@ package edu.nextstep.raing.model;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * author       : gwonbyeong-yun <sksggg123>
@@ -16,11 +16,18 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class CarTest {
 
+    private Car car = new Car();
+
     @Test
-    void move() {
+    void 이동() {
+        assertThat(car.move()).isEqualTo(1);
+        assertThat(car.move()).isEqualTo(2);
+        assertThat(car.move()).isEqualTo(3);
     }
 
     @Test
-    void currentPosition() {
+    void 자동차_현재위치() {
+        this.이동();
+        assertThat(car.currentPosition()).isEqualTo(3);
     }
 }
