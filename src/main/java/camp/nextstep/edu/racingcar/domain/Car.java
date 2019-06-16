@@ -21,10 +21,6 @@ public class Car {
         this.position = position;
     }
 
-    public static Car from(String name, int position) {
-        return new Car(name, position);
-    }
-
     public static Car from(String name) {
         return new Car(name, POSITION_INITIAL_VALUE);
     }

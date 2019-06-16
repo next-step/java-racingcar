@@ -1,12 +1,20 @@
 package camp.nextstep.edu.racingcar.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
-class GamePlayerTest {
+class GamePlayerTest implements CarNamesHelper {
     private MovingStrategy moveOnlyStrategy = new MoveOnlyStrategy();
+    private CarNames validCarNames;
+
+    @BeforeEach
+    void setUp() {
+        validCarNames = this.getValidCarNames();
+        assertThat(validCarNames.size()).isEqualTo(3);
+    }
 
     @DisplayName("객체를 잘 생성하는지")
     @Test
@@ -27,7 +35,7 @@ class GamePlayerTest {
     void playAllRound() {
         // given
         final GamePlayer gamePlayer = GamePlayer.from(moveOnlyStrategy);
-        gamePlayer.initializeGame(3, 5);
+        gamePlayer.initializeGame(validCarNames, 5);
         // when
         assertThatCode(gamePlayer::playAllRounds)
                 // then
@@ -51,7 +59,7 @@ class GamePlayerTest {
     void getGameResult() {
         // given
         final GamePlayer gamePlayer = GamePlayer.from(moveOnlyStrategy);
-        gamePlayer.initializeGame(3, 5);
+        gamePlayer.initializeGame(validCarNames, 5);
         gamePlayer.playAllRounds();
         // when
         final Rounds gameResult = gamePlayer.getGameResult();

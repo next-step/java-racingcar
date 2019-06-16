@@ -1,16 +1,25 @@
 package camp.nextstep.edu.racingcar.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RoundTest {
+class RoundTest implements CarNamesHelper {
+
+    private CarNames validCarNames;
+
+    @BeforeEach
+    void setUp() {
+        validCarNames = this.getValidCarNames();
+        assertThat(validCarNames.size()).isEqualTo(3);
+    }
 
     @DisplayName("주어진 자동차의 개수에 대해서 round 객체를 잘 생성하는지")
     @Test
     void constructor() {
-        final Round round = Round.initialRoundFrom(3);
+        final Round round = Round.initialRoundFrom(validCarNames);
         assertThat(round).isNotNull();
         assertThat(round.getCars().size()).isEqualTo(3);
     }
@@ -19,7 +28,7 @@ class RoundTest {
     @Test
     void move() {
         // given
-        final Round round = Round.initialRoundFrom(3);
+        final Round round = Round.initialRoundFrom(validCarNames);
         round.getCars().stream().forEach(
                 car -> assertThat(car.getPosition()).isEqualTo(0)
         );

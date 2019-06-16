@@ -1,5 +1,6 @@
 package camp.nextstep.edu.racingcar.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.opentest4j.AssertionFailedError;
@@ -9,7 +10,16 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-class RoundsTest {
+class RoundsTest implements CarNamesHelper {
+
+    private CarNames validCarNames;
+
+    @BeforeEach
+    void setUp() {
+        validCarNames = this.getValidCarNames();
+        assertThat(validCarNames.size()).isEqualTo(3);
+    }
+
     @DisplayName("empty 팩터리 메서드는 비어있는 Rounds 객체를 생성해야함")
     @Test
     void constructor() {
@@ -22,7 +32,7 @@ class RoundsTest {
     @Test
     void add() {
         // given
-        final Round first = Round.initialRoundFrom(3);
+        final Round first = Round.initialRoundFrom(validCarNames);
         final Round second = first.move(() -> 1);
         final Round third = second.move(() -> 1);
 
@@ -64,7 +74,7 @@ class RoundsTest {
     void getLast() {
         // given
         final Rounds rounds = Rounds.empty();
-        final Round first = Round.initialRoundFrom(3);
+        final Round first = Round.initialRoundFrom(validCarNames);
         final Round second = first.move(() -> 1);
         final Round last = second.move(() -> 1);
         rounds.add(first);

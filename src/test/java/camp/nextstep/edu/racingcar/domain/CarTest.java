@@ -7,27 +7,37 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class CarTest {
+    private static final String CAR_NAME = "carName";
+
     @DisplayName("Car 객체가 잘 생성되는지")
     @Test
     void constructor() {
-        final Car car = Car.from(1);
+        final Car car = Car.from(CAR_NAME);
         assertThat(car).isNotNull();
         assertThat(car.getPosition())
-                .isEqualTo(1);
+                .isEqualTo(0);
     }
 
-    @DisplayName("0보다 작은 position 이면 자동차 객체를 생성할 수 없어야함")
+    @DisplayName("name 이 null 이면 자동차 객체를 생성할 수 없어야함")
     @Test
-    void constructorThrowsException() {
+    void constructorThrowsExceptionWhenNameIsNull() {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> Car.from(-1))
-                .withMessageContaining("must be greater than");
+                .isThrownBy(() -> Car.from(null))
+                .withMessageContaining("must not be null or empty");
+    }
+
+    @DisplayName("name 이 빈 문자열 이면 자동차 객체를 생성할 수 없어야함")
+    @Test
+    void constructorThrowsExceptionWhenNameIsEmpty() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> Car.from(""))
+                .withMessageContaining("must not be null or empty");
     }
 
     @DisplayName("defaultInstance 로 생성된 자동차의 위치는 0이어야함")
     @Test
     void defaultInstanceFromStaticFactoryMethod() {
-        final Car defaultCar = Car.defaultInstance();
+        final Car defaultCar = Car.from(CAR_NAME);
         assertThat(defaultCar).isNotNull();
         assertThat(defaultCar.getPosition()).isEqualTo(0);
     }
@@ -36,7 +46,7 @@ class CarTest {
     @Test
     void move() {
         // given
-        final Car car = Car.defaultInstance();
+        final Car car = Car.from(CAR_NAME);
         assertThat(car.getPosition()).isEqualTo(0);
         // when
         final Car movedCar = car.move(1);
@@ -48,7 +58,7 @@ class CarTest {
     @Test
     void failToMoveWhenTargetPositionIsLessThanZero() {
         // given
-        final Car car = Car.defaultInstance();
+        final Car car = Car.from(CAR_NAME);
         assertThat(car.getPosition()).isEqualTo(0);
 
         // when
@@ -62,7 +72,7 @@ class CarTest {
     @Test
     void immutableWhenMove() {
         // given
-        final Car car = Car.defaultInstance();
+        final Car car = Car.from(CAR_NAME);
         assertThat(car.getPosition()).isEqualTo(0);
         // when
         final Car movedCar = car.move(1);
@@ -76,7 +86,7 @@ class CarTest {
     @Test
     void immutableWhenFailToMove() {
         // given
-        final Car car = Car.defaultInstance();
+        final Car car = Car.from(CAR_NAME);
         assertThat(car.getPosition()).isEqualTo(0);
         // when
         assertThatIllegalArgumentException()
