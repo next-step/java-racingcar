@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static racingcar.util.MockGenerator.CarState.MAINTAIN;
 import static racingcar.util.MockGenerator.CarState.RUN;
 
@@ -28,21 +29,37 @@ class CarsTest {
         assertThat(generate.getCars().size()).isEqualTo(3);
     }
 
+    @DisplayName("자동차 생성 개수가 음수일 경우 실패")
     @Test
-    @DisplayName("임의의 값을 넘겨 자동차를 움직이게 한다")
-    void moveACarSuccess() {
-        List<Car> carList = generateCarList(3);
-        mockGenerator = mockGenerator.generate(RUN, MAINTAIN, RUN);
-        cars = new Cars(carList, mockGenerator);
-
-        List<Car> cars = this.cars.moveAll();
-
-        assertThat(cars.get(0).getPosition()).isEqualTo(2);
-        assertThat(cars.get(1).getPosition()).isEqualTo(1);
-        assertThat(cars.get(2).getPosition()).isEqualTo(2);
+    void generateFail() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> Cars.generate(-1));
     }
 
-    // todo : 메소드 명
+    @Test
+    @DisplayName("자동차가 모두 전진한다")
+    void moveCarSuccess() {
+        List<Car> carList = generateCarList(3);
+        mockGenerator = mockGenerator.generate(RUN);
+        cars = new Cars(carList, mockGenerator);
+
+        List<Car> result = cars.moveAll();
+
+        assertThat(result).extracting(Car::getPosition).contains(2);
+    }
+
+    @Test
+    @DisplayName("자동차가 모두 움직이지 않는다")
+    void nonMoveCar() {
+        List<Car> carList = generateCarList(3);
+        mockGenerator = mockGenerator.generate(MAINTAIN);
+        cars = new Cars(carList, mockGenerator);
+
+        List<Car> result = cars.moveAll();
+
+        assertThat(result).extracting(Car::getPosition).contains(1);
+    }
+
     static List<Car> generateCarList(int count) {
         return IntStream.range(0, count).mapToObj(i -> new Car()).collect(Collectors.toList());
     }

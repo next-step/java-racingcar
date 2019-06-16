@@ -25,7 +25,6 @@ public class RacingCar {
         return time == 0;
     }
 
-
     public List<Car> getResult() {
         return cars.getCars();
     }

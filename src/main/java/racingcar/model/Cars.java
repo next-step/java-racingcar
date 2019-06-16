@@ -19,6 +19,9 @@ public class Cars {
     }
 
     static Cars generate(int count) {
+        if(count < 0){
+            throw new IllegalArgumentException("자동차 개수는 정수여야 합니다.");
+        }
         List<Car> cars = IntStream.range(0, count)
                 .mapToObj(value -> new Car()).collect(Collectors.toList());
         return new Cars(cars, new RandomGenerator());

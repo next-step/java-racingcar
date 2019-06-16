@@ -8,39 +8,25 @@ import racingcar.util.MockGenerator.CarState;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.model.CarsTest.carList;
-import static racingcar.util.MockGenerator.CarState.MAINTAIN;
+import static racingcar.model.CarsTest.generateCarList;
 import static racingcar.util.MockGenerator.CarState.RUN;
 
 public class RacingCarTest {
 
     @Test
-    @DisplayName("경기 횟수와 참가하는 자동차를 받는다")
-    void generate() {
-        int time = 0;
-        int carCount = 3;
-        RacingCar.generate(time, carCount);
-    }
-
-    @Test
-    @DisplayName("2번째 레이싱 결과를 반환한다")
+    @DisplayName("레이싱을 한번 진행한 결과를 반환한다")
     void racing() {
-        int time = 2;
+        int time = 1;
         int carCount = 2;
-        RacingCar racingCar = of(time, carCount, MAINTAIN, RUN, RUN, RUN);
+        RacingCar racingCar = of(time, carCount, RUN);
 
-        for (int i = 0; i < time; i++) {
-            racingCar.racing();
-        }
-        List<Car> result = racingCar.getResult();
+        List<Car> result = racingCar.racing();
 
-        assertThat(result.get(0).getPosition()).isEqualTo(2);
-        assertThat(result.get(1).getPosition()).isEqualTo(3);
+        assertThat(result).extracting(Car::getPosition).contains(2);
     }
 
-    private RacingCar of(int time, int carCount, CarState... carStates) {
-        MockGenerator numberGenerator = MockGenerator.generate(carStates);
-        Cars cars = new Cars(carList(carCount), numberGenerator);
+    private RacingCar of(int time, int carCount, CarState carStates) {
+        Cars cars = new Cars(generateCarList(carCount), MockGenerator.generate(carStates));
         return new RacingCar(time, cars);
     }
 
