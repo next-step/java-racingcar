@@ -20,4 +20,10 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.calculate("2 - 1")).isEqualTo(1);
 
     }
+
+    @Test
+    void testStringCalculatorMultiplySign() {
+        assertThat(StringCalculator.calculate("5 * 2")).isEqualTo(10);
+
+    }
 }

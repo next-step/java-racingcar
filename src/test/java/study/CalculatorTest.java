@@ -26,5 +26,12 @@ public class CalculatorTest {
     }
 
 
+    @Test
+    void testCalculatorMultiply(){
+        assertThat(Calculator.multiply(2, 1)).isEqualTo(2);
+
+    }
+
+
 
 }
