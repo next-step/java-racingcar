@@ -6,8 +6,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class RacingGame {
-    private int time;
     private ArrayList<Car> cars;
+    private int time;
+    private Random mRand;
+
+    public RacingGame() {
+        mRand = new Random();
+    }
 
     private void greeting() {
         System.out.println("자동차 대수는 몇 대 인가요?");
@@ -44,6 +49,14 @@ public class RacingGame {
     private int getInput() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
+    }
+
+    public boolean checkGoOrNot(int randValue) {
+        return randValue >= 4;
+    }
+
+    private int getRand() {
+        return mRand.nextInt(10);
     }
 
     public static void main(String[] args) {
