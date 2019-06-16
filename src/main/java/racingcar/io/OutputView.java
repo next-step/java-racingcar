@@ -13,6 +13,10 @@ public class OutputView {
         System.out.println("게임을 시작합니다.");
     }
 
+    public static void result(){
+        System.out.println("실행 결과");
+    }
+
     public static void playResult(List<Car> cars){
         for (Car car : cars) {
             carPosition(car);
@@ -21,7 +25,6 @@ public class OutputView {
     }
 
     private static void carPosition(Car car) {
-        print(VISUAL_EXPRESSION);
         IntStream.range(0, car.getPosition())
                 .forEach(value -> print(VISUAL_EXPRESSION));
         newLine();
