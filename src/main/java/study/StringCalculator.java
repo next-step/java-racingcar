@@ -36,7 +36,7 @@ public class StringCalculator {
     }
 
     public int computationLoof(LinkedList<Integer> intValues, LinkedList<String> operators) {
-        for (String operator : operators){
+        for (String operator : operators) {
             int num1 = intValues.pollFirst();
             int num2 = intValues.poll();
             int result = calculator.computation(num1, num2, operator);
@@ -44,5 +44,11 @@ public class StringCalculator {
         }
 
         return intValues.getFirst();
+    }
+
+    public int execute(String input) {
+        calculator.nullAndEmptyValue(input);
+        this.separatingValueFromTheOperator(input);
+        return this.computationLoof(this.getIntValues(), this.getOperators());
     }
 }

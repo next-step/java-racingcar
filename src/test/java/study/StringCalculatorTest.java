@@ -34,4 +34,11 @@ class StringCalculatorTest {
         int result = stringCalculator.computationLoof(intValues, operators);
         assertThat(result).isEqualTo(10);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"2 + 3 * 4 / 2"})
+    void execute(String input) {
+        int result = stringCalculator.execute(input);
+        assertThat(result).isEqualTo(10);
+    }
 }
