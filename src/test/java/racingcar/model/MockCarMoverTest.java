@@ -19,10 +19,11 @@ class MockCarMoverTest {
     @Test
     @DisplayName(MOVING_CONDITION + "이상 인 경우 자동차는 움직인다")
     void moveCar() {
+        Car car = new Car();
         MockCarMover mover = mockMover(1, 4, 5);
-        assertThat(mover.move(new Car())).isFalse();
-        assertThat(mover.move(new Car())).isTrue();
-        assertThat(mover.move(new Car())).isTrue();
+        assertThat(mover.move(car)).isFalse();
+        assertThat(mover.move(car)).isTrue();
+        assertThat(mover.move(car)).isTrue();
     }
 
     @DisplayName("임의의 값이 음수 또는 " + RANDOM_LIMIT + "이상이면 실패")

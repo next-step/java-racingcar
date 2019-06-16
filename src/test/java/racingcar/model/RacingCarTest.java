@@ -39,6 +39,7 @@ public class RacingCarTest {
     }
 
     @Test
+    @DisplayName("횟수가 0이 아닐 시 Fail")
     void timeNoZeroThenGameOver() {
         racingCar = ofRacingCar(3);
         assertThat(racingCar.isGameOver()).isFalse();

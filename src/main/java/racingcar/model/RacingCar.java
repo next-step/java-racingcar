@@ -19,7 +19,7 @@ public class RacingCar {
         return of(time, carCount, new RandomCarMover());
     }
 
-    RacingCar(int time, List<Car> cars, Mover mover) {
+    private RacingCar(int time, List<Car> cars, Mover mover) {
         this.time = time;
         this.cars = cars;
         this.mover = mover;
