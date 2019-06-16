@@ -1,6 +1,5 @@
 package calcurator;
 
-import java.util.Arrays;
 
 public class Calculator {
 
@@ -21,9 +20,7 @@ public class Calculator {
     }
 
     public static boolean isValidSign(String str) {
-        String[] validSign = new String[]{"+", "-", "*", "/"};
-
-        return (Arrays.asList(validSign).contains(str));
+        return Sign.getSignValues().contains(str);
 
     }
 }

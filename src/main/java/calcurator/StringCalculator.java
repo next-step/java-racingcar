@@ -20,19 +20,21 @@ public class StringCalculator {
             if (!Calculator.isValidSign(val)) {
                 throw new IllegalArgumentException();
             }
-            if (inputStr[i].equals("+")) {
+
+
+            if (val.equals(Sign.ADD.getSign())) {
                 num = Calculator.add(num, Integer.valueOf(inputStr[i + 1]));
             }
 
-            if (inputStr[i].equals("-")) {
+            if (val.equals(Sign.SUBTRACT.getSign())) {
                 num = Calculator.subtract(num, Integer.valueOf(inputStr[i + 1]));
             }
 
-            if (inputStr[i].equals("*")) {
+            if (val.equals(Sign.MULTIPLY.getSign())) {
                 num = Calculator.multiply(num, Integer.valueOf(inputStr[i + 1]));
             }
 
-            if (inputStr[i].equals("/")) {
+            if (val.equals(Sign.DIVISION.getSign())) {
                 num = Calculator.division(num, Integer.valueOf(inputStr[i + 1]));
             }
 
