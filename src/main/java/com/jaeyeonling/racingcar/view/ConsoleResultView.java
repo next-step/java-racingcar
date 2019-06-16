@@ -10,10 +10,6 @@ public final class ConsoleResultView {
         show(target.visualize());
     }
 
-    public static void newLine() {
-        console.newLine();
-    }
-
     public static void show(final String message) {
         console.show(message);
     }
