@@ -4,6 +4,7 @@ import calcurator.StringCalculator;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -28,4 +29,12 @@ public class StringCalculatorTest {
 
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"1 + 2 @ 4"})
+    void testStringCalculatorInvalidSign(String input) {
+        assertThatThrownBy(() -> {
+            int result = StringCalculator.calculate(input);
+        }).isInstanceOf(IllegalArgumentException.class);
+
+    }
 }
