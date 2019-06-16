@@ -12,11 +12,12 @@ public class RacingGame {
     }
 
     private void greeting() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
+        print("자동차 대수는 몇 대 인가요?");
         setNumOfCars(getInput());
-        System.out.println("시도할 회수는 몇 회 인가요?");
+
+        print("시도할 회수는 몇 회 인가요?");
         setNumOfMove(getInput());
-        System.out.println("\n실행 결과");
+        print("\n실행 결과");
     }
 
     private void startRace() {
@@ -36,10 +37,10 @@ public class RacingGame {
 
     public void printCurrentTurn() {
         for (Car car : cars) {
-            System.out.println(car.getMovesRoad());
+            print(car.getMovesRoad());
         }
 
-        System.out.println();
+        print("");
     }
 
     public static void main(String[] args) {
@@ -62,6 +63,10 @@ public class RacingGame {
 
     private int getRand() {
         return mRand.nextInt(10);
+    }
+
+    private void print(String message) {
+        System.out.println(message);
     }
 
 
