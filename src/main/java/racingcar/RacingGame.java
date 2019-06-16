@@ -2,43 +2,48 @@ package racingcar;
 
 import racingcar.model.Car;
 import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 import java.util.List;
 
 public class RacingGame {
 
-  public static void main(String[] args) {
-    InputView inputView = new InputView();
+  private InputView inputView;
+
+  public RacingGame() {
+    this.inputView = new InputView();;
+  }
+
+  public void startRacing() {
 
     List<Car> cars = inputView.prepare();
 
     int rounds = inputView.getRounds();
 
+    printRacingStatus(rounds, cars);
+
+  }
+
+  static void printRacingStatus(int rounds, List<Car> cars) {
+
     for(int round = 1; round <= rounds; round++) {
 
-      printCurrentRound(round);
+      ResultView.printCurrentRound(round);
 
-      startGame(cars);
+      drive(cars);
 
-      addLineBreak();
+      ResultView.addLineBreak();
 
     }
 
   }
 
-  private static void startGame(List<Car> cars) {
+  static void drive(List<Car> cars) {
     cars.forEach(car -> {
       car.move();
-      car.showCurrentPosition();
+      ResultView.printCurrentPositionOf(car);
     });
   }
 
-  private static void printCurrentRound(int round) {
-    System.out.println(round + "번째 라운드");
-  }
 
-  private static void addLineBreak() {
-    System.out.println();
-    System.out.println();
-  }
 }
