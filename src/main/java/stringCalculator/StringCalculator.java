@@ -43,11 +43,19 @@ public class StringCalculator {
 
         for (int i = 1; i < strings.length; i+=CALCULATE_STEP) {
             String symbol = strings[i];
-            int number = Integer.parseInt(strings[i + SECOND_NUMBER_INDEX]);
+            int number = stringConvertToInt(strings[i + SECOND_NUMBER_INDEX]);
             calculator = calculates(symbol, number);
         }
         this.total = calculator.getTotal();
         return this;
+    }
+
+    private int stringConvertToInt(String str) {
+        try {
+            return Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 계산식 입니다.");
+        }
     }
 
     private Calculator calculates(String symbol, int number) {
@@ -55,7 +63,7 @@ public class StringCalculator {
         if ("-".equals(symbol)) return calculator.subtract(number);
         if ("*".equals(symbol)) return calculator.multiply(number);
         if ("/".equals(symbol)) return calculator.divide(number);
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("옳바른 계산식이 아닙니다.");
     }
 
     private void verifyMathematicalSymbol(String input) {
