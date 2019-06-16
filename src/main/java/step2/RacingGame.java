@@ -32,7 +32,7 @@ public class RacingGame {
         return carPositions;
     }
 
-    public int carPositionUpdateValue() {
+    private int carPositionUpdateValue() {
         Random generator = new Random();
         int randomNumber = generator.nextInt(10);
         if (randomNumber < 4) {
