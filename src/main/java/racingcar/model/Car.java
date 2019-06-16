@@ -1,9 +1,8 @@
 package racingcar.model;
 
-import java.util.Random;
-import java.util.stream.IntStream;
+import racingcar.view.ResultView;
 
-import static java.util.stream.Collectors.joining;
+import java.util.Random;
 
 public class Car {
 
@@ -47,18 +46,11 @@ public class Car {
     return false;
   }
 
-
-  /**
-   * 현재 차의 위치를 "-"로 표시
-   * ex) 현재 위치가 5이면, "-----"
-   * @return
-   */
-  public void showCurrentPosition() {
-    System.out.println(this.toString());
+  public int getInitialPosition() {
+    return INITIAL_POSITION;
   }
 
-  @Override
-  public String toString() {
-    return IntStream.range(INITIAL_POSITION, position).mapToObj(pos -> "-").collect(joining());
+  public int getPosition() {
+    return position;
   }
 }
