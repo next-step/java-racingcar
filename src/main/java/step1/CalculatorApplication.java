@@ -14,30 +14,33 @@ public class CalculatorApplication {
         String inputString = scan.nextLine();
         scan.close();
 
-        String result = operateCalculator(inputString);
+        String result = runCalculatorApplication(inputString);
         System.out.println("연산 결과 : " + result);
     }
 
-    public static String operateCalculator(String inputString) {
+    public static String runCalculatorApplication(String inputString) {
 
         try {
             stringValidation(inputString);
-            String[] inputElements = inputString.split(" ");
-            int calculationResult = Integer.parseInt(inputElements[0]);
-
-            for(int i=1; i<inputElements.length; i+=2) {
-                operatorTypeValidation(inputElements[i]);
-                calculationResult = calculate(inputElements[i], calculationResult, inputElements[i+1]);
-            }
-            return String.valueOf(calculationResult);
+            return operate(inputString);
 
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
             return "공백을 입력하셨거나, 연산자 기호가 아닌 기호를 입력하셨습니다.";
         } catch (ArithmeticException e) {
-            e.printStackTrace();
             return "0으로 나눌 수 없습니다.";
         }
+    }
+
+    public static String operate(String inputString) {
+
+        String[] inputElements = inputString.split(" ");
+        int calculationResult = Integer.parseInt(inputElements[0]);
+
+        for(int i=1; i<inputElements.length; i+=2) {
+            operatorTypeValidation(inputElements[i]);
+            calculationResult = calculate(inputElements[i], calculationResult, inputElements[i+1]);
+        }
+        return String.valueOf(calculationResult);
     }
 
     public static int calculate(String operator, int leftValue, String rightValueInString) {
