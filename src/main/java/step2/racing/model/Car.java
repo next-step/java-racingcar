@@ -2,8 +2,8 @@ package step2.racing.model;
 
 public class Car {
 
-    public static final int DEFAULT_POSITION = 1;
-    public static final int MOVE_THRESHOLD = 4;
+    static final int DEFAULT_POSITION = 1;
+    static final int MOVE_THRESHOLD = 4;
 
     /**
      * 차량번호

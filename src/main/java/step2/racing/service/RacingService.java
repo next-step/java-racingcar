@@ -8,9 +8,9 @@ import java.util.stream.IntStream;
 
 public class RacingService {
 
-    public static final int START_UNIQUE_CAR_NUMBER = 1;
-    public static final int START_RACE_COUNT = 1;
     public static final int RANDOM_NUMBER_BOUND = 10;
+    public static final int START_UNIQUE_CAR_NUMBER = 1;
+    private static final int START_RACE_COUNT = 1;
 
     private final RacingInfo racingInfo;
     private final RandomGenerator randomGenerator;

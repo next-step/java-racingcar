@@ -3,7 +3,6 @@ package step2.racing.ui;
 import org.junit.jupiter.api.*;
 import step2.racing.dto.EntireCars;
 import step2.racing.dto.RacingResult;
-import step2.racing.model.Car;
 
 import java.io.*;
 
@@ -25,10 +24,12 @@ class ResultViewTest {
     @DisplayName("차량 위치 출력 검증")
     void printEntireCarsPosition() {
 
+        int shouldMoveNumber = 5;
+
         EntireCars entireCars = EntireCars.createCars(3);
         entireCars.stream()
                 .filter(car -> car.getUniqueNumber() % 2 == 1)
-                .forEach(car -> car.race(Car.MOVE_THRESHOLD + 1));
+                .forEach(car -> car.race(shouldMoveNumber));
 
         RacingResult racingResult = new RacingResult();
         racingResult.addCurrentCarPosition(entireCars);
