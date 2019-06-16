@@ -18,7 +18,7 @@ class Participants {
                 .collect(Collectors.toList());
     }
 
-    List<Car> getParticipants() {
+    List<Car> toList() {
         return ImmutableList.copyOf(participants);
     }
 }

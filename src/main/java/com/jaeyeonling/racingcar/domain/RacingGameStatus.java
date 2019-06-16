@@ -18,7 +18,7 @@ public class RacingGameStatus implements Visualizable {
     private String getVisualGameStatus() {
         final StringBuilder visualBuilder = new StringBuilder();
 
-        for (final Car car : participants.getParticipants()) {
+        for (final Car car : participants.toList()) {
             final CarStatus status = car.getStatus();
 
             visualBuilder.append(status.visualize())

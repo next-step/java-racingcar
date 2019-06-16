@@ -36,7 +36,7 @@ public class RacingGame {
     }
 
     private void moveAllCar() {
-        for (final Car car : participants.getParticipants()) {
+        for (final Car car : participants.toList()) {
             moveCar(car);
         }
     }
