@@ -20,6 +20,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 public class ValidationTest {
 
     private Validation validation = new Validation();
+    private StringUtils stringUtils = new StringUtils();
 
     @ParameterizedTest
     @ValueSource(strings = {"1","2","3", "+", "-", "*", "/"})
@@ -30,7 +31,7 @@ public class ValidationTest {
     @Test
     void 연산자_데이터유무체크() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            validation.isBlank(" ");
+            validation.isNotBlank(" ");
         });
     }
 
@@ -49,13 +50,13 @@ public class ValidationTest {
 
     @Test
     void 숫자_포맷정상() {
-        assertThat(validation.convertInt("10")).isEqualTo(10);
+        assertThat(stringUtils.convertInt("10")).isEqualTo(10);
     }
 
     @Test
     void 숫자_포맷예외상황() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-           validation.convertInt("+");
+            stringUtils.convertInt("+");
         });
     }
 }
