@@ -30,7 +30,7 @@ public class StringCalculator {
     }
 
     private boolean hasInvalidToken(String[] tokens) {
-        return tokens == null || tokens.length == 0 || isNumberOfTokensEven(tokens);
+        return tokens == null || tokens.length == 0 || tokens.length < 3 || isNumberOfTokensEven(tokens);
     }
 
     private boolean isNumberOfTokensEven(String[] token) {

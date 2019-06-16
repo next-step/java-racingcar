@@ -65,4 +65,88 @@ public class StringCalculatorTest {
                     // then
                 }).withMessageMatching("Can not divide by zero");
     }
+
+    @Test
+    @DisplayName("입력문자열이 null인 경우를 확인한다")
+    void checkInputStringNull() {
+        // gien
+        StringCalculator stringCalculator = new StringCalculator();
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                // when
+                .isThrownBy(() -> {
+                    stringCalculator.calculate(null);
+                    // then
+                }).withMessageMatching("Empty input string");
+    }
+
+    @Test
+    @DisplayName("입력문자열이 빈 경우를 확인한다")
+    void checkInputStringEmpty() {
+        // gien
+        StringCalculator stringCalculator = new StringCalculator();
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                // when
+                .isThrownBy(() -> {
+                    stringCalculator.calculate("");
+                    // then
+                }).withMessageMatching("Empty input string");
+    }
+
+    @Test
+    @DisplayName("토큰의 전체개수가 3보다 작은경우를 확인한다")
+    void checkNumberOfTokensIsLessThanThree() {
+        // gien
+        StringCalculator stringCalculator = new StringCalculator();
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                // when
+                .isThrownBy(() -> {
+                    stringCalculator.calculate("1 +");
+                    // then
+                }).withMessageMatching("Invalid token");
+    }
+
+    @Test
+    @DisplayName("토큰의 전체개수가 홀수인지 확인한다")
+    void checkNumberOfTokensOdd() {
+        // gien
+        StringCalculator stringCalculator = new StringCalculator();
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                // when
+                .isThrownBy(() -> {
+                    stringCalculator.calculate("1 + 1 +");
+                    // then
+                }).withMessageMatching("Invalid token");
+    }
+
+    @Test
+    @DisplayName("지원하지 않는 연산자를 입력한 경우를 확인한다")
+    void checkUnsupprotedOperator() {
+        // gien
+        StringCalculator stringCalculator = new StringCalculator();
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                // when
+                .isThrownBy(() -> {
+                    stringCalculator.calculate("1 % 1");
+                    // then
+                }).withMessageMatching("Unsupported operator");
+    }
+
+    @Test
+    @DisplayName("숫자가 아닌 문자열을 입력한 경우를 확인한다")
+    void checkNonNumericString() {
+        // gien
+        StringCalculator stringCalculator = new StringCalculator();
+
+        assertThatExceptionOfType(NumberFormatException.class)
+                // when
+                .isThrownBy(() -> {
+                    stringCalculator.calculate("a + 1");
+                    // then
+                }).withMessageMatching("For input string: \"a\"");
+    }
 }
