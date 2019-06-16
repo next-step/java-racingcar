@@ -1,43 +1,39 @@
 package study;
 
 import calcurator.Calculator;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CalculatorTest {
 
 
-    @Test
-    void testCalculatorAdd(){
-        assertThat(Calculator.add(1, 2)).isEqualTo(3);
-        assertThat(Calculator.add(1, 4)).isEqualTo(5);
-        assertThat(Calculator.add(100, 200)).isEqualTo(300);
-
-
-    }
-
-    @Test
-    void testCalculatorSubtract(){
-        assertThat(Calculator.subtract(2, 1)).isEqualTo(1);
-        assertThat(Calculator.subtract(1, 4)).isEqualTo(-3);
-
-
+    @ParameterizedTest
+    @CsvSource({"1, 2"})
+    void testCalculatorAdd(int a, int b) {
+        assertThat(Calculator.add(a, b)).isEqualTo(3);
     }
 
 
-    @Test
-    void testCalculatorMultiply(){
-        assertThat(Calculator.multiply(2, 1)).isEqualTo(2);
-
+    @ParameterizedTest
+    @CsvSource({"1, 2"})
+    void testCalculatorSubtract(int a, int b) {
+        assertThat(Calculator.subtract(a, b)).isEqualTo(-1);
     }
 
-    @Test
-    void testCalculatorDivision(){
-        assertThat(Calculator.division(2, 1)).isEqualTo(2);
 
+    @ParameterizedTest
+    @CsvSource({"1, 2"})
+    void testCalculatorMultiply(int a, int b) {
+        assertThat(Calculator.multiply(a, b)).isEqualTo(2);
     }
 
+    @ParameterizedTest
+    @CsvSource({"1, 2"})
+    void testCalculatorDivision(int a, int b) {
+        assertThat(Calculator.division(a, b)).isEqualTo(0);
+    }
 
 
 }
