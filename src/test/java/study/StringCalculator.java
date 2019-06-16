@@ -1,6 +1,7 @@
 package study;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -69,9 +70,15 @@ public class StringCalculator {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"!","@","#","4"})
-    void checkPolicyOperator(String operator) {
+    @ValueSource(strings = {"!", "@", "#", "4"})
+    void checkPolicyOperatorException(String operator) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> calculator.checkPolicyOperator(operator));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"+", "-", "*", "/"})
+    void checkPolicyOperatorIsOk(String operator) {
+        assertThat(calculator.checkPolicyOperator(operator)).isEqualTo(operator);
     }
 }

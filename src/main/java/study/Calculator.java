@@ -1,6 +1,7 @@
 package study;
 
 public class Calculator {
+
     public int Addition(int num1, int num2) {
         return num1 + num2;
     }
@@ -18,7 +19,7 @@ public class Calculator {
     }
 
     public int nullAndEmptyValue(String number) {
-        if (number == null || number == " ") {
+        if (number == null || number.equals(" ")) {
             throw new IllegalArgumentException();
         }
 
@@ -27,11 +28,11 @@ public class Calculator {
 
     public String checkPolicyOperator(String operator) {
 
-        switch (operator){
-            case "+" :
-            case "-" :
-            case "*" :
-            case "/" :
+        switch (operator) {
+            case "+":
+            case "-":
+            case "*":
+            case "/":
                 return operator;
         }
 
