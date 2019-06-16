@@ -2,49 +2,59 @@ package racingcar.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.util.MockGenerator;
+import racingcar.util.MockGenerator.CarState;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.model.MockCarMoverTest.mockMover;
+import static racingcar.model.CarsTest.carList;
+import static racingcar.util.MockGenerator.CarState.MAINTAIN;
+import static racingcar.util.MockGenerator.CarState.RUN;
 
 public class RacingCarTest {
 
-    private RacingCar racingCar;
-
     @Test
-    @DisplayName("2번째 플레이에 대한 결과를 반환한다.")
-    void onePlayByResult() {
-        RacingCar racingCar = RacingCar.of(3, 2, mockMover(4, 3, 8, 9));
-        List<Car> result = play(racingCar, 2);
-        assertThat(result.get(0).getPosition()).isEqualTo(2);
-        assertThat(result.get(1).getPosition()).isEqualTo(1);
+    @DisplayName("경기 횟수와 참가하는 자동차를 받는다")
+    void generate() {
+        int time = 0;
+        int carCount = 3;
+        RacingCar.generate(time, carCount);
     }
 
-    private List<Car> play(RacingCar racingCar, int count) {
-        List<Car> result = null;
-        for (int i = 0; i < count; i++) {
-            result = racingCar.play();
+    @Test
+    @DisplayName("2번째 레이싱 결과를 반환한다")
+    void racing() {
+        int time = 2;
+        int carCount = 2;
+        RacingCar racingCar = of(time, carCount, MAINTAIN, RUN, RUN, RUN);
+
+        for (int i = 0; i < time; i++) {
+            racingCar.racing();
         }
-        return result;
+        List<Car> result = racingCar.getResult();
+
+        assertThat(result.get(0).getPosition()).isEqualTo(2);
+        assertThat(result.get(1).getPosition()).isEqualTo(3);
+    }
+
+    private RacingCar of(int time, int carCount, CarState... carStates) {
+        MockGenerator numberGenerator = MockGenerator.generate(carStates);
+        Cars cars = new Cars(carList(carCount), numberGenerator);
+        return new RacingCar(time, cars);
     }
 
     @Test
     @DisplayName("횟수가 0이면 게임종료")
     void timeZeroThenGameOver() {
-        racingCar = ofRacingCar(0);
+        RacingCar racingCar = RacingCar.generate(0, 3);
         assertThat(racingCar.isGameOver()).isTrue();
     }
 
     @Test
-    @DisplayName("횟수가 0이 아닐 시 Fail")
+    @DisplayName("횟수가 0이 아닐 시 게임진행")
     void timeNoZeroThenGameOver() {
-        racingCar = ofRacingCar(3);
+        RacingCar racingCar = RacingCar.generate(3, 3);
         assertThat(racingCar.isGameOver()).isFalse();
-    }
-
-    private RacingCar ofRacingCar(int time) {
-        return RacingCar.of(time, 0, new MockCarMover(Arrays.asList(1, 4, 9, 8, 2, 7)));
     }
 }

@@ -4,36 +4,29 @@ import java.util.List;
 
 public class RacingCar {
 
-    private static final int INITIALIZE_POSITION = 1;
     private int time;
     private Cars cars;
-    private Mover<Car> mover;
 
     public static RacingCar generate(int time, int carCount) {
-        return of(time, carCount, new RandomCarMover());
+        return new RacingCar(time, Cars.generate(carCount));
     }
 
-    public static RacingCar of(int time, int carCount, Mover<Car> mover) {
-        Cars cars = Cars.generate(carCount);
-        return new RacingCar(time, cars, mover);
-    }
-
-    private RacingCar(int time, Cars cars, Mover mover) {
+    RacingCar(int time, Cars cars) {
         this.time = time;
         this.cars = cars;
-        this.mover = mover;
     }
 
-    public List<Car> ready() {
-        return cars.init(INITIALIZE_POSITION);
-    }
-
-    public List<Car> play() {
+    public List<Car> racing() {
         time--;
-        return cars.moveAll(mover);
+        return cars.moveAll();
     }
 
     public boolean isGameOver() {
         return time == 0;
+    }
+
+
+    public List<Car> getResult() {
+        return cars.getCars();
     }
 }
