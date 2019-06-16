@@ -15,9 +15,6 @@ import static racingcar.util.MockGenerator.CarState.RUN;
 
 class CarsTest {
 
-    private MockGenerator mockGenerator;
-    private Cars cars;
-
     @Test
     @DisplayName("개수만큼 자동차를 생성한다")
     void carGenerator() {
@@ -39,9 +36,7 @@ class CarsTest {
     @Test
     @DisplayName("자동차가 모두 전진한다")
     void moveCarSuccess() {
-        List<Car> carList = generateCarList(3);
-        mockGenerator = mockGenerator.generate(RUN);
-        cars = new Cars(carList, mockGenerator);
+        Cars cars = carsOf(RUN);
 
         List<Car> result = cars.moveAll();
 
@@ -51,13 +46,16 @@ class CarsTest {
     @Test
     @DisplayName("자동차가 모두 움직이지 않는다")
     void nonMoveCar() {
-        List<Car> carList = generateCarList(3);
-        mockGenerator = mockGenerator.generate(MAINTAIN);
-        cars = new Cars(carList, mockGenerator);
+        Cars cars = carsOf(MAINTAIN);
 
         List<Car> result = cars.moveAll();
 
         assertThat(result).extracting(Car::getPosition).contains(1);
+    }
+
+    private static Cars carsOf(MockGenerator.CarState carState) {
+        List<Car> carList = generateCarList(3);
+        return new Cars(carList, MockGenerator.generate(carState));
     }
 
     static List<Car> generateCarList(int count) {
