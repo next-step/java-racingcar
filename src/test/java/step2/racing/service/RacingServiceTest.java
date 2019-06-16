@@ -1,11 +1,9 @@
 package step2.racing.service;
 
-import org.junit.jupiter.api.*;
-import step2.racing.dto.CarPosition;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import step2.racing.dto.RacingResult;
 import step2.racing.random.StubRandomGenerator;
-
-import javax.rmi.CORBA.Stub;
 
 import java.util.stream.IntStream;
 
@@ -32,11 +30,11 @@ class RacingServiceTest {
         RacingResult racingResult = racingService.run();
 
         IntStream.range(0, attempts).forEach(attempt ->
-                IntStream.rangeClosed(START_UNIQUE_CAR_NUMBER, carCount).forEach( uniqueNumber ->
-                        assertThat(racingResult.getCarPosition(attempt).getPosition(uniqueNumber))
-                                .isEqualTo(DEFAULT_POSITION + attempt)
-                )
-            );
+                                                     IntStream.rangeClosed(START_UNIQUE_CAR_NUMBER, carCount).forEach(uniqueNumber ->
+                                                                                                                              assertThat(racingResult.getCarPosition(attempt).getPosition(uniqueNumber))
+                                                                                                                                      .isEqualTo(DEFAULT_POSITION + attempt)
+                                                     )
+        );
     }
 
     @Test
@@ -50,10 +48,10 @@ class RacingServiceTest {
         RacingResult racingResult = racingService.run();
 
         IntStream.range(0, attempts).forEach(attempt ->
-                IntStream.rangeClosed(START_UNIQUE_CAR_NUMBER, carCount).forEach( uniqueNumber ->
-                        assertThat(racingResult.getCarPosition(attempt).getPosition(uniqueNumber))
-                                .isEqualTo(DEFAULT_POSITION)
-                )
-            );
+                                                     IntStream.rangeClosed(START_UNIQUE_CAR_NUMBER, carCount).forEach(uniqueNumber ->
+                                                                                                                              assertThat(racingResult.getCarPosition(attempt).getPosition(uniqueNumber))
+                                                                                                                                      .isEqualTo(DEFAULT_POSITION)
+                                                     )
+        );
     }
 }

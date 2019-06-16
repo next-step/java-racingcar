@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class SystemConsoleInputterTest {
 
-    SystemConsoleInputter systemConsoleInputter;
+    private SystemConsoleInputter systemConsoleInputter;
 
     @Test
     @DisplayName("시스템 콘솔을 통해 숫자를 입력")

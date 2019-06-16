@@ -2,8 +2,6 @@ package step2.racing.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step2.racing.random.RandomGenerator;
-import step2.racing.random.StubRandomGenerator;
 
 import java.util.stream.IntStream;
 

@@ -10,7 +10,7 @@ import static util.SystemInputStubUtil.stubInputStream;
 
 class InputViewTest {
 
-    InputView inputView;
+    private InputView inputView;
 
     @Test
     @DisplayName("차량대수 입력 검증")
