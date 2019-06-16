@@ -26,4 +26,10 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.calculate("5 * 2")).isEqualTo(10);
 
     }
+
+    @Test
+    void testStringCalculatorDivisionSign() {
+        assertThat(StringCalculator.calculate("2 / 1")).isEqualTo(2);
+
+    }
 }

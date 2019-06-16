@@ -32,6 +32,12 @@ public class CalculatorTest {
 
     }
 
+    @Test
+    void testCalculatorDivision(){
+        assertThat(Calculator.division(2, 1)).isEqualTo(2);
+
+    }
+
 
 
 }
