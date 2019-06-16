@@ -16,4 +16,12 @@ public class Calculator {
     public int division(int num1, int num2) {
         return num1 / num2;
     }
+
+    public int nullAndEmptyValue(String number) {
+        if (number == null || number == " ") {
+            throw new IllegalArgumentException();
+        }
+
+        return Integer.parseInt(number);
+    }
 }

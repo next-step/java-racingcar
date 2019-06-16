@@ -2,9 +2,11 @@ package study;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 public class StringCalculator {
 
@@ -58,4 +60,12 @@ public class StringCalculator {
         assertThat(result).isEqualTo(num1 / num2);
 
     }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    void nullAndEmptyValue(String number) {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> calculator.nullAndEmptyValue(number));
+    }
+
 }
