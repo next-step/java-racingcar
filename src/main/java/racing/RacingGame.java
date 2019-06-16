@@ -1,5 +1,7 @@
 package racing;
 
+import racing.view.ResultView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -26,18 +28,8 @@ public class RacingGame {
             cars.stream()
               .filter(car -> isMovable(randomNumberGenerator.getNumber()))
               .forEach(car -> car.forward());
-            cars.forEach(car -> {
-                String movePoint = "";
-                for (int j = 0; j < car.getPosition(); j++) {
-                    movePoint += "-";
-                }
-                System.out.println(car.getName() + " : " + movePoint);
-            });
+            ResultView.printCarsMoving(cars);
         });
-    }
-    
-    public List<Car> move() {
-        return null;
     }
     
     public static boolean isMovable(int randomNumber) {
