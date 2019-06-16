@@ -23,7 +23,7 @@ public class CalculatorApplication {
     }
 
     public static void stringValidation(String inputString) {
-        if("".equals(inputString) || StringUtils.isEmpty(inputString)) {
+        if(StringUtils.isEmpty(inputString)) {
             throw new IllegalArgumentException();
         }
     }
