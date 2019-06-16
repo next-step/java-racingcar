@@ -50,7 +50,7 @@ public class RacingGameTest {
         final StringBuilder expectResultBuilder = new StringBuilder();
         for (int i = numberOfParticipants; i > 0; i--) {
             for (int j = moveCount; j > 0; j--) {
-                expectResultBuilder.append(CarStatus.VISUAL_POSITION_STRING);
+                expectResultBuilder.append(Car.VISUAL_POSITION_STRING);
             }
             expectResultBuilder.append(StringUtils.NEW_LINE);
         }

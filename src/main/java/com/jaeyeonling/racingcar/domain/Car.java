@@ -1,7 +1,10 @@
 package com.jaeyeonling.racingcar.domain;
 
-class Car {
+import com.jaeyeonling.racingcar.utils.StringUtils;
 
+public class Car implements Visualizable {
+
+    static final String VISUAL_POSITION_STRING = "-";
     static final int DEFAULT_POSITION = 1;
 
     private int position;
@@ -16,6 +19,11 @@ class Car {
         this.moveStrategy = moveStrategy;
     }
 
+    @Override
+    public String visualize() {
+        return getVisualPosition();
+    }
+
     void moveForward() {
         if (moveStrategy.isMove()) {
             position++;
@@ -26,7 +34,7 @@ class Car {
         return position;
     }
 
-    public CarStatus getStatus() {
-        return new CarStatus(this);
+    private String getVisualPosition() {
+        return StringUtils.repeat(VISUAL_POSITION_STRING, position);
     }
 }
