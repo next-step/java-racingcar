@@ -13,22 +13,18 @@ public class StringCalculator {
         operators = new LinkedList<>();
     }
 
-    public int separatingValueFromTheOperator(String input) {
+    public void separatingValueFromTheOperator(String input) {
         String[] splitFormula = calculator.getSplitFormula(input);
 
-        int length = splitFormula.length;
-        for (int i = 0; i < length; i++) {
-            String value = splitFormula[i];
-
-            if (calculator.isNumber(value)){
+        for (String value : splitFormula) {
+            if (calculator.isNumber(value)) {
                 intValues.add(Integer.valueOf(value));
                 continue;
             }
-            operators.add(value);
+
+            operators.add(calculator.checkPolicyOperator(value));
         }
 
-
-        return 0;
     }
 
     public LinkedList<Integer> getIntValues() {
@@ -37,5 +33,16 @@ public class StringCalculator {
 
     public LinkedList<String> getOperators() {
         return operators;
+    }
+
+    public int computationLoof(LinkedList<Integer> intValues, LinkedList<String> operators) {
+        for (String operator : operators){
+            int num1 = intValues.pollFirst();
+            int num2 = intValues.poll();
+            int result = calculator.computation(num1, num2, operator);
+            intValues.addFirst(result);
+        }
+
+        return intValues.getFirst();
     }
 }
