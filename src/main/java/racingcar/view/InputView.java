@@ -2,6 +2,7 @@ package racingcar.view;
 
 import racingcar.exception.GameNotPreparedException;
 import racingcar.model.Car;
+import racingcar.util.RandomUtil;
 
 import java.util.List;
 import java.util.Scanner;
@@ -20,12 +21,14 @@ import static java.util.stream.IntStream.range;
 public class InputView {
 
   private Scanner scanner;
+  private RandomUtil random;
 
   private int rounds = -1;
   private int cars = -1;
 
   public InputView() {
     this.scanner = new Scanner(System.in);
+    this.random = new RandomUtil();
   }
 
   public int getRounds() {
@@ -67,7 +70,7 @@ public class InputView {
   private List<Car> generatePlayers() {
 
     return range(0, this.cars)
-      .mapToObj((carNo) -> new Car(carNo))
+      .mapToObj((carNo) -> new Car(carNo, random))
       .collect(Collectors.toList());
   }
 

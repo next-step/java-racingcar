@@ -1,8 +1,6 @@
 package racingcar.model;
 
-import racingcar.view.ResultView;
-
-import java.util.Random;
+import racingcar.util.RandomUtil;
 
 public class Car {
 
@@ -11,14 +9,14 @@ public class Car {
   private int carNo;
   private int position;
 
-  private Random random;
+  private RandomUtil random;
 
 
-  public Car(int carNo) {
+  public Car(int carNo, RandomUtil random) {
     this.carNo = carNo;
     this.position = INITIAL_POSITION;
 
-    this.random = new Random();
+    this.random = random;
   }
 
   /**
@@ -40,7 +38,7 @@ public class Car {
    * @return
    */
   private boolean enableMoveForward() {
-    int value = random.nextInt(10);
+    int value = random.nextInt();
     if (value > 4) return true;
 
     return false;
