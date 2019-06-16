@@ -18,11 +18,11 @@ public class CalculatorApplication {
     private Operator operator = new Operator();
     private Validation validation = new Validation();
     private StringUtils utils = new StringUtils();
-
+  
     private List<String> letter;
-    private static int FIRST_INDEX = 0;
-    private int LAST_INDEX = 2;
-    private int totalNumber = 0;
+    private static int firstIndex = 0;
+    private static int lastIndex = 2;
+    private static int totalNumber = 0;
 
     public static void main(String[] args) {
         CalculatorApplication calculator = new CalculatorApplication();
@@ -35,7 +35,6 @@ public class CalculatorApplication {
     }
 
     public int start(String inputData) {
-
         if (this.validation.isNotBlank(inputData)) {
             this.letter = this.validation.splitSpace(inputData);
         }
