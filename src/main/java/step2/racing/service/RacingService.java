@@ -1,18 +1,20 @@
 package step2.racing.service;
 
+import step2.racing.dto.CarPosition;
 import step2.racing.dto.RacingResult;
 import step2.racing.model.Car;
 import step2.racing.random.RandomGenerator;
 import step2.racing.random.RealRandomGenerator;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingService {
 
     public static final int START_UNIQUE_CAR_NUMBER = 1;
-    public static final int RANDOM_NUMBER_BOUND = 10;
+    private static final int RANDOM_NUMBER_BOUND = 10;
 
     private int raceCount = 0;
 
@@ -37,11 +39,11 @@ public class RacingService {
         List<Car> cars = createCars(carCount);
 
         RacingResult racingResult = new RacingResult();
-        racingResult.addCarPosition(cars);
+        addCurrentCarPosition(racingResult, cars);
 
         while (!isFinished(attempts)) {
             raceEntireCars(cars);
-            racingResult.addCarPosition(cars);
+            addCurrentCarPosition(racingResult, cars);
         }
 
         return racingResult;
@@ -63,5 +65,13 @@ public class RacingService {
 
         cars.forEach(car -> car.race(randomGenerator.getRandomIntValue()));
         raceCount++;
+    }
+
+    private void addCurrentCarPosition(RacingResult racingResult, List<Car> cars) {
+
+        Map<Integer, Integer> carNumberPositions = cars.stream()
+                .collect(Collectors.toMap(Car::getUniqueNumber, Car::getPosition, (car1, car2) -> car1));
+
+        racingResult.add(new CarPosition(carNumberPositions));
     }
 }

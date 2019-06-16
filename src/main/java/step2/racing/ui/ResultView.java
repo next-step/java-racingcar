@@ -6,6 +6,8 @@ import step2.racing.dto.RacingResult;
 import java.io.PrintStream;
 import java.util.stream.IntStream;
 
+import static step2.racing.service.RacingService.START_UNIQUE_CAR_NUMBER;
+
 public class ResultView {
 
     private static final String POSITION_MARK = "-";
@@ -28,7 +30,7 @@ public class ResultView {
 
     private void printRace(CarPosition carPosition) {
 
-        IntStream.range(0, carPosition.sizeOfCars())
+        IntStream.rangeClosed(START_UNIQUE_CAR_NUMBER, carPosition.sizeOfCars())
                 .map(carPosition::getPosition)
                 .forEach(this::printCarPosition);
 
