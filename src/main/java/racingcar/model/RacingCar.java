@@ -7,13 +7,13 @@ public class RacingCar {
     private int time;
     private Cars cars;
 
-    public static RacingCar generate(int time, int carCount) {
-        return new RacingCar(time, Cars.generate(carCount));
-    }
-
     RacingCar(int time, Cars cars) {
         this.time = time;
         this.cars = cars;
+    }
+
+    public static RacingCar generate(int time, int carCount) {
+        return new RacingCar(time, Cars.generate(carCount));
     }
 
     public List<Car> racing() {
