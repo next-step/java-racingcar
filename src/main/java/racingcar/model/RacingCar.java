@@ -25,6 +25,13 @@ public class RacingCar {
         this.mover = mover;
     }
 
+    public List<Car> init(){
+        for (Car car : cars) {
+            car.move();
+        }
+        return cars;
+    }
+
     public List<Car> play(){
         time --;
         for (Car car : cars) {
