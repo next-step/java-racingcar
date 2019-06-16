@@ -23,5 +23,11 @@ public class CarRacingApplication {
     public static void main(String[] args) {
         CarRacingApplication app = new CarRacingApplication();
         int[] settingNumber = app.input.setNumber();
+        app.start(settingNumber[0], settingNumber[1]);
+    }
+
+    public void start(int carCount, int moveCount) {
+        CarRacing race = new CarRacing(carCount, moveCount);
+        race.move();
     }
 }

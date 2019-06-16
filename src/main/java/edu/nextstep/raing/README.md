@@ -20,13 +20,13 @@
 ##### 핵심 로직
 - Main Class 
     - [X] 자동차 대수와 전진 시도 횟수 입력받기
-    - [ ] 입력받은 input(자동차 대수, 전진 횟수)값을 통해 move메서드 수행
+    - [X] 입력받은 input(자동차 대수, 전진 횟수)값을 통해 move메서드 수행
 
 - Car Class
     - [X] 자동차 객체 생성(멤버변수 : move, currentIndex)
 
 - Racing Class
-    - [x] Main Class로 부터 입력받은 값을 통해 생성자초기화
+    - [X] Main Class로 부터 입력받은 값을 통해 생성자초기화
     - [X] 전진 여부를 판단하는 기능 (Random Class - nextInt())
     - [X] 각각의 자동차의 전진 기능
     
