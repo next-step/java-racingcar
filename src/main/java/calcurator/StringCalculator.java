@@ -4,6 +4,10 @@ package calcurator;
 public class StringCalculator {
 
     public static int calculate(String input){
+
+        if(input == null || input.isEmpty()){
+            throw new IllegalArgumentException();
+        }
         String[] inputStr = input.split(" ");
         int num = 0;
 
