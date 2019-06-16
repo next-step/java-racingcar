@@ -1,6 +1,7 @@
 package edu.nextstep.raing;
 
 import edu.nextstep.raing.model.Car;
+import edu.nextstep.raing.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ public class CarRacing implements CarRacingInterface{
     private List<Car> carList;
     private final int MOVE_COUNT;
     private static int MOVE_LIMIT_COUNT_FLAG = 4;
+    private ResultView output = new ResultView();
 
     public List<Car> getCarList() {
         return carList;
@@ -66,6 +68,8 @@ public class CarRacing implements CarRacingInterface{
         for (int i = 0; i < this.carList.size(); i++) {
             doMoveCheck(this.carList.get(i));
         }
+        // 전진 완료 후 출력
+        output.resultView(this.carList);
     }
 
     /*

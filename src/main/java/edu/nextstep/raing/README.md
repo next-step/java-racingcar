@@ -15,7 +15,7 @@
     - [X] 전진 시도 횟수
 
 - result View (System.out)
-    - [ ] 전진 시도마다 상태값 출력
+    - [X] 전진 시도마다 상태값 출력
     
 ##### 핵심 로직
 - Main Class 
