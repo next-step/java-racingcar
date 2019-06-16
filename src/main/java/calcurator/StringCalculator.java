@@ -17,7 +17,7 @@ public class StringCalculator {
 
             String operation = inputStr[i];
 
-            num = Calculator.calculrate(operation, num, Integer.valueOf(inputStr[i + 1]));
+            num = Calculator.calculate(operation, num, Integer.valueOf(inputStr[i + 1]));
 
 
         }

@@ -19,20 +19,20 @@ public class Calculator {
         return a / b;
     }
 
-    public static boolean isValidSign(String str) {
-        return Sign.getSignValues().contains(str);
+    public static boolean isValidOperation(String str) {
+        return Operation.getOperationValues().contains(str);
 
     }
 
-    public static int calculrate(String operation, int a, int b) {
-        if (!isValidSign(operation)) {
+    public static int calculate(String operation, int a, int b) {
+        if (!isValidOperation(operation)) {
             throw new IllegalArgumentException();
         }
 
-        if (operation.equals(Sign.ADD.getSign())) return add(a, b);
-        if (operation.equals(Sign.SUBTRACT.getSign())) return subtract(a, b);
-        if (operation.equals(Sign.MULTIPLY.getSign())) return multiply(a, b);
-        if (operation.equals(Sign.DIVISION.getSign())) return division(a, b);
+        if (operation.equals(Operation.ADD.getOperation())) return add(a, b);
+        if (operation.equals(Operation.SUBTRACT.getOperation())) return subtract(a, b);
+        if (operation.equals(Operation.MULTIPLY.getOperation())) return multiply(a, b);
+        if (operation.equals(Operation.DIVISION.getOperation())) return division(a, b);
         return 0;
     }
 }

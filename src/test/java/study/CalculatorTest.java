@@ -3,6 +3,7 @@ package study;
 import calcurator.Calculator;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -33,6 +34,12 @@ public class CalculatorTest {
     @CsvSource({"1, 2"})
     void testCalculatorDivision(int a, int b) {
         assertThat(Calculator.division(a, b)).isEqualTo(0);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"@"})
+    void testInvalidOperation(String operation) {
+        assertThat(Calculator.isValidOperation(operation)).isEqualTo(false);
     }
 
 
