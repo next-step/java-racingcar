@@ -1,30 +1,31 @@
 package com.jaeyeonling.racingcar.view;
 
+import java.io.InputStream;
 import java.util.Scanner;
 
-public final class InputView {
+public class InputView {
 
-    private static final Scanner console = new Scanner(System.in);
+    private final Scanner reader;
 
-    private InputView() { }
-
-    public static String readString() {
-        return console.nextLine();
+    public InputView(final InputStream source) {
+        reader = new Scanner(source);
     }
 
-    public static String readStringWithMessage(final String message) {
+    public String readString() {
+        return reader.nextLine();
+    }
+
+    public String readStringWithMessage(final String message) {
         System.out.println(message);
         return readString();
     }
 
-    public static int readInt() {
-        return console.nextInt();
+    public int readInt() {
+        return reader.nextInt();
     }
 
-    public static int readIntWithMessage(final String message) {
+    public int readIntWithMessage(final String message) {
         System.out.println(message);
         return readInt();
     }
-
-
 }

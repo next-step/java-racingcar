@@ -4,21 +4,23 @@ import com.jaeyeonling.racingcar.domain.Visualizable;
 
 import java.io.PrintStream;
 
-public final class ResultView {
+public class ResultView {
 
-    private static final PrintStream console = System.out;
+    private final PrintStream writer;
 
-    private ResultView() { }
+    public ResultView(final PrintStream target) {
+        writer = target;
+    }
 
-    public static void show(final Visualizable target) {
+    public void show(final Visualizable target) {
         show(target.visualize());
     }
 
-    public static void newLine() {
-        console.println();
+    public void newLine() {
+        writer.println();
     }
 
-    public static void show(final String message) {
-        console.println(message);
+    public void show(final String message) {
+        writer.println(message);
     }
 }
