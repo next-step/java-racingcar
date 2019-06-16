@@ -1,14 +1,11 @@
 package racing;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class RacingGame {
-    private ArrayList<Car> cars;
     private int time;
     private Random mRand;
+    private ArrayList<Car> cars;
 
     public RacingGame() {
         mRand = new Random();
@@ -19,7 +16,54 @@ public class RacingGame {
         setNumOfCars(getInput());
         System.out.println("시도할 회수는 몇 회 인가요?");
         setNumOfMove(getInput());
+        System.out.println("\n실행 결과");
     }
+
+    private void startRace() {
+        for (int i = 0; i < this.time; i++) {
+            turn();
+        }
+    }
+
+    private void turn() {
+        for (Car car : cars) {
+            car.goOrNot(getRand());
+
+        }
+
+        printCurrentTurn();
+    }
+
+    public void printCurrentTurn() {
+        for (Car car : cars) {
+            System.out.println(car.getMovesRoad());
+        }
+
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        RacingGame game = new RacingGame();
+        game.race();
+    }
+
+
+    private void race() {
+        greeting();
+
+        startRace();
+
+    }
+
+    private int getInput() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
+    }
+
+    private int getRand() {
+        return mRand.nextInt(10);
+    }
+
 
     public int getNumOfCars() {
         return cars.size();
@@ -40,30 +84,6 @@ public class RacingGame {
     public void setNumOfMove(int numberOfMoves) {
         this.time = numberOfMoves;
     }
-
-    public List<Integer> move() {
-        // TODO 구현
-        return Collections.emptyList();
-    }
-
-    private int getInput() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
-    }
-
-    public boolean checkGoOrNot(int randValue) {
-        return randValue >= 4;
-    }
-
-    private int getRand() {
-        return mRand.nextInt(10);
-    }
-
-    public static void main(String[] args) {
-        RacingGame game = new RacingGame();
-        game.greeting();
-    }
-
 }
 
 class Car {
@@ -71,5 +91,33 @@ class Car {
 
     public Car() {
         position = 0;
+    }
+
+    public void goOrNot(int randValue) {
+        if (isNotAvailToGo(randValue)) {
+            return;
+        }
+
+        go();
+    }
+
+    public void go() {
+        position++;
+    }
+
+    public boolean isNotAvailToGo(int randValue) { return !isAvailToGo(randValue); }
+
+    public boolean isAvailToGo(int randValue) {
+        return randValue >= 4;
+    }
+
+    public String getMovesRoad() {
+        StringBuilder builder = new StringBuilder();
+
+        for (int i = 0; i < position; i++ ) {
+            builder.append("-");
+        }
+
+        return builder.toString();
     }
 }

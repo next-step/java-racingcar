@@ -9,10 +9,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingTest {
     private RacingGame mGame;
+    private Car mCar;
 
     @BeforeEach
     void setUp() {
         mGame = new RacingGame();
+        mCar = new Car();
     }
 
     @Test
@@ -32,16 +34,23 @@ public class RacingTest {
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void go(int randValue) {
-        boolean isGo = mGame.checkGoOrNot(randValue);
+        boolean result = mCar.isAvailToGo(randValue);
 
-        assertThat(isGo).isTrue();
+        assertThat(result).isTrue();
     }
 
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3})
     void stop(int randValue) {
-        boolean isGo = mGame.checkGoOrNot(randValue);
+        boolean result = mCar.isAvailToGo(randValue);
 
-        assertThat(isGo).isFalse();
+        assertThat(result).isFalse();
+    }
+
+    @Test
+    void print_position() {
+        mCar.go();
+
+        assertThat(mCar.getMovesRoad()).isEqualTo("-");
     }
 }
