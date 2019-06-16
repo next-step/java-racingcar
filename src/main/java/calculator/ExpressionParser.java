@@ -16,5 +16,4 @@ public class ExpressionParser {
     return expression.split(SEPARATOR);
   }
 
-
 }

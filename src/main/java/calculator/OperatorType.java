@@ -20,7 +20,6 @@ enum OperatorType {
     this.expression = expression;
   }
 
-
   private static OperatorType getOperator(String symbol) {
     return findOperator(symbol).orElseThrow(NoSuchElementException::new);
   }

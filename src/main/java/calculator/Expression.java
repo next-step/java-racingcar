@@ -10,7 +10,6 @@ public class Expression {
     this.operators = operator;
   }
 
-
   public int calculate() {
 
     while (numbers.hasNumber()) {

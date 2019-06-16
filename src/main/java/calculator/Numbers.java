@@ -14,7 +14,6 @@ public class Numbers {
   private final int RESULT_INSERT_INDEX = 0;
   private final int FINAL_RESULT_INDEX = 0;
 
-
   private List<Integer> numbers;
 
   public Numbers(String[] numbers) {

@@ -1,8 +1,6 @@
 package calculator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +19,6 @@ public class Operator {
         .filter(value -> OperatorType.isOperator(value))
         .collect(Collectors.toList());
   }
-
 
   public String getOperator() {
     String operator = operators.get(PEEK_OPERATOR_INDEX);
