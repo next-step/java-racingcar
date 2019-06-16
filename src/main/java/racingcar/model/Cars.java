@@ -40,4 +40,9 @@ public class Cars {
     public List<Car> getCars() {
         return cars;
     }
+
+    @Override
+    public String toString() {
+        return "Cars{" + "cars=" + cars + '}';
+    }
 }
