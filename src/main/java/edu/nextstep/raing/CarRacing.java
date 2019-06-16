@@ -22,6 +22,7 @@ public class CarRacing implements CarRacingInterface{
     private List<Car> carList;
     private final int MOVE_COUNT;
     private static int MOVE_LIMIT_COUNT_FLAG = 4;
+    private static int MOVE_MAX_VALUE = 9;
     private ResultView output = new ResultView();
 
     public List<Car> getCarList() {
@@ -97,7 +98,7 @@ public class CarRacing implements CarRacingInterface{
      */
     private boolean isMoving() {
         Random generator = new Random();
-        int limit = generator.nextInt(10);
+        int limit = generator.nextInt(MOVE_MAX_VALUE);
         if(limit >= MOVE_LIMIT_COUNT_FLAG) {
             return true;
         }
