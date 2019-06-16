@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static step2.racing.model.Car.DEFAULT_POSITION;
-import static step2.racing.model.Car.MOVE_VALUE;
+import static step2.racing.model.Car.MOVE_THRESHOLD;
 import static step2.racing.service.RacingService.START_RACE_COUNT;
 import static step2.racing.service.RacingService.START_UNIQUE_CAR_NUMBER;
 
@@ -36,6 +36,6 @@ class RacingServiceTest {
         IntStream.range(START_RACE_COUNT, attempts)
                 .forEach(attempt -> IntStream.rangeClosed(START_UNIQUE_CAR_NUMBER, carCount)
                         .forEach(uniqueNumber -> assertThat(racingResult.getCarPosition(attempt).getPosition(uniqueNumber))
-                                                .isEqualTo(randomNumber >= MOVE_VALUE ? DEFAULT_POSITION + attempt : DEFAULT_POSITION)));
+                                                .isEqualTo(randomNumber >= MOVE_THRESHOLD ? DEFAULT_POSITION + attempt : DEFAULT_POSITION)));
     }
 }

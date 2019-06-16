@@ -3,7 +3,7 @@ package step2.racing.model;
 public class Car {
 
     public static final int DEFAULT_POSITION = 1;
-    public static final int MOVE_VALUE = 4;
+    public static final int MOVE_THRESHOLD = 4;
 
     /**
      * 차량번호
@@ -17,21 +17,21 @@ public class Car {
         this.uniqueNumber = uniqueNumber;
     }
 
-    public static Car of(int number) {
+    public static Car of(int uniqueNumber) {
 
-        return new Car(number);
+        return new Car(uniqueNumber);
     }
 
-    public void race(int randomInt) {
+    public void race(int value) {
 
-        if (isMove(randomInt)) {
+        if (isMoveValue(value)) {
             position++;
         }
     }
 
-    private boolean isMove(int randomInt) {
+    private boolean isMoveValue(int value) {
 
-        return randomInt >= MOVE_VALUE;
+        return value >= MOVE_THRESHOLD;
     }
 
     public int getPosition() {

@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static step2.racing.model.Car.DEFAULT_POSITION;
-import static step2.racing.model.Car.MOVE_VALUE;
+import static step2.racing.model.Car.MOVE_THRESHOLD;
 
 class CarTest {
 
@@ -19,7 +19,7 @@ class CarTest {
 
         car.race(randomNumber);
 
-        if (randomNumber >= MOVE_VALUE) {
+        if (randomNumber >= MOVE_THRESHOLD) {
             assertThat(car.getPosition()).isGreaterThan(DEFAULT_POSITION);
         } else {
             assertThat(car.getPosition()).isEqualTo(DEFAULT_POSITION);
