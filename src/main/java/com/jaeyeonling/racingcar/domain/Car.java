@@ -5,17 +5,21 @@ class Car {
     static final int DEFAULT_POSITION = 1;
 
     private int position;
+    private MoveStrategy moveStrategy;
 
-    Car() {
-        this(DEFAULT_POSITION);
+    Car(final MoveStrategy moveStrategy) {
+        this(DEFAULT_POSITION, moveStrategy);
     }
 
-    Car(final int position) {
+    Car(final int position, final MoveStrategy moveStrategy) {
         this.position = position;
+        this.moveStrategy = moveStrategy;
     }
 
     void moveForward() {
-        position++;
+        if (moveStrategy.isMove()) {
+            position++;
+        }
     }
 
     int getPosition() {

@@ -12,7 +12,7 @@ public class CarStatusTest {
     @ParameterizedTest
     @ValueSource(ints = { 0, 1, 5, 4, 35, 41, 23 })
     void visualize(final int moveCount) {
-        final Car car = new Car();
+        final Car car = new Car(() -> true);
 
         final StringBuilder visualBuilder = new StringBuilder(CarStatus.VISUAL_POSITION_STRING);
         for (int i = 0; i < moveCount; i++) {

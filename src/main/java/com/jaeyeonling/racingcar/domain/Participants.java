@@ -12,9 +12,10 @@ class Participants {
 
     private final List<Car> participants;
 
-    Participants(final int numberOfParticipants) {
+    Participants(final int numberOfParticipants,
+                 final MoveStrategy moveStrategy) {
         participants = IntStream.rangeClosed(PARTICIPANTS_START_INCLUSIVE, numberOfParticipants)
-                .mapToObj(i -> new Car())
+                .mapToObj(i -> new Car(moveStrategy))
                 .collect(Collectors.toList());
     }
 

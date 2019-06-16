@@ -6,12 +6,10 @@ public class RacingGameOption {
 
     private final Participants participants;
     private final int movingCount;
-    private final MoveStrategy moveStrategy;
 
     private RacingGameOption(final Builder builder) {
-        participants = new Participants(builder.numberOfParticipants);
+        participants = new Participants(builder.numberOfParticipants, builder.moveStrategy);
         movingCount = builder.movingCount;
-        moveStrategy = builder.moveStrategy;
     }
 
     public static Builder builder() {
@@ -24,10 +22,6 @@ public class RacingGameOption {
 
     int getMovingCount() {
         return movingCount;
-    }
-
-    MoveStrategy getMoveStrategy() {
-        return moveStrategy;
     }
 
     public static class Builder {

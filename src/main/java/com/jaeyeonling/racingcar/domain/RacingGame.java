@@ -32,15 +32,11 @@ public class RacingGame {
     }
 
     private void moveAllCar() {
-
-        for (final Car car : getParticipants().toList()) {
-            moveCar(car);
-        }
+        getParticipants().toList()
+                .forEach(this::moveCar);
     }
 
     private void moveCar(final Car car) {
-        if (option.getMoveStrategy().isMove()) {
-            car.moveForward();
-        }
+        car.moveForward();
     }
 }

@@ -13,7 +13,7 @@ public class CarTest {
     @ValueSource(ints = { 0, 1, 5, 4, 35, 41, 23 })
     void move(final int moveCount) {
         // given
-        final Car car = new Car();
+        final Car car = new Car(() -> true);
 
         // when
         for (int i = 0; i < moveCount; i++) {
