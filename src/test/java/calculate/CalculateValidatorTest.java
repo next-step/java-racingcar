@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 public class CalculateValidatorTest {
     @Test
-    void calculableStringFailTest() {
+    void calculableWrongValueTest() {
         assertThatIllegalArgumentException()
           .isThrownBy(() -> checkCalculable("2 + 3 * 4 /"))
           .withMessage(INCORRECT_END_CHARACTER.getMessage());
@@ -23,5 +23,16 @@ public class CalculateValidatorTest {
         assertThatIllegalArgumentException()
           .isThrownBy(() -> checkCalculable("2 + 3*4 + 2"))
           .withMessage(INCORRECT_NUMBER.getMessage());
+    }
+    
+    @Test
+    void calculableEmptyValueTest() {
+        assertThatIllegalArgumentException()
+          .isThrownBy(() -> checkCalculable(""))
+          .withMessage(EMPTY_VALUE.getMessage());
+        
+        assertThatIllegalArgumentException()
+          .isThrownBy(() -> checkCalculable(null))
+          .withMessage(EMPTY_VALUE.getMessage());
     }
 }

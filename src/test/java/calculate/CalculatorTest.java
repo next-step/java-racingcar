@@ -6,15 +6,15 @@ import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
     
-    @Test
-    void nullValueCalcuateTest() {
-        assertThatIllegalArgumentException()
-          .isThrownBy(() -> calculate(""))
-          .withMessage(ErrorMessage.EMPTY_VALUE.getMessage());
-        assertThatIllegalArgumentException()
-          .isThrownBy(() -> calculate(null))
-          .withMessage(ErrorMessage.EMPTY_VALUE.getMessage());
-    }
+//    @Test
+//    void nullValueCalcuateTest() {
+//        assertThatIllegalArgumentException()
+//          .isThrownBy(() -> calculate(""))
+//          .withMessage(ErrorMessage.EMPTY_VALUE.getMessage());
+//        assertThatIllegalArgumentException()
+//          .isThrownBy(() -> calculate(null))
+//          .withMessage(ErrorMessage.EMPTY_VALUE.getMessage());
+//    }
     
     @Test
     void successCalculateTest() {
