@@ -10,18 +10,18 @@ import java.util.stream.IntStream;
 
 public class Cars {
 
-    private List<Car> cars;
     private NumberGenerator numberGenerator;
+    private List<Car> cars;
+
+    Cars(List<Car> cars, NumberGenerator numberGenerator) {
+        this.cars = cars;
+        this.numberGenerator = numberGenerator;
+    }
 
     static Cars generate(int count) {
         List<Car> cars = IntStream.range(0, count)
                 .mapToObj(value -> new Car()).collect(Collectors.toList());
         return new Cars(cars, new RandomGenerator());
-    }
-
-    Cars(List<Car> cars, NumberGenerator numberGenerator) {
-        this.cars = cars;
-        this.numberGenerator = numberGenerator;
     }
 
     List<Car> moveAll() {
