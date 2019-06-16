@@ -13,21 +13,13 @@ public class StringCalculator {
     private final static int CALCULATE_STEP = 2;
 
     private int total;
-    private String inputFormula;
     private Calculator calculator;
 
     public StringCalculator(){
         calculator = new Calculator();
     }
 
-    public void setFormula(String formula) {
-        if(StringUtils.isEmpty(formula)) throw new IllegalArgumentException();
-        verifyMathematicalSymbol(formula);
-        this.inputFormula = formula;
-    }
-
     public int getTotal() {
-        calculate();
         return this.total;
     }
 
@@ -35,8 +27,10 @@ public class StringCalculator {
         return str.split(SPLIT_REGEX);
     }
 
-    private StringCalculator calculate() {
-        String[] strings = split(this.inputFormula);
+    public StringCalculator calculate(String inputFormula) {
+        if(StringUtils.isEmpty(inputFormula)) throw new IllegalArgumentException();
+        verifyMathematicalSymbol(inputFormula);
+        String[] strings = split(inputFormula);
 
         int firstNumber = Integer.parseInt(strings[FRIST_NUMBER]);
         calculator.initialize(firstNumber);

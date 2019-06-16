@@ -32,7 +32,7 @@ public class StringCalculatorTest {
             "15 / 3 + 5 * 2, 20"
     })
     public void correctCalculation(String input, int expected) {
-        stringCalculator.setFormula(input);
+        stringCalculator.calculate(input);
         assertThat(stringCalculator.getTotal()).isEqualTo(expected);
     }
 
@@ -46,7 +46,7 @@ public class StringCalculatorTest {
     public void errorCalculationTest(String input) {
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            stringCalculator.setFormula(input);
+            stringCalculator.calculate(input);
             stringCalculator.getTotal();
         });
     }
@@ -55,7 +55,7 @@ public class StringCalculatorTest {
     @DisplayName("Null 입력시 예외처리")
     public void nullExceptionTest() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            stringCalculator.setFormula(null);
+            stringCalculator.calculate(null);
         });
     }
 
@@ -63,7 +63,7 @@ public class StringCalculatorTest {
     @DisplayName("빈 문자열 입력시 예외처리")
     public void emptyStringExceptionTest() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            stringCalculator.setFormula("");
+            stringCalculator.calculate("");
         });
     }
 
@@ -71,7 +71,7 @@ public class StringCalculatorTest {
     @DisplayName("특수문자 입력시 예외처리")
     public void specialCharacterExceptionTest() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            stringCalculator.setFormula("10 $ 2 % 3");
+            stringCalculator.calculate("10 $ 2 % 3");
         });
     }
 }
