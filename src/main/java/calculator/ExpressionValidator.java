@@ -15,8 +15,6 @@ public class ExpressionValidator {
     if (!isAllowedCharacters(ExpressionParser.separateStringExpression(expression))) {
       throw new IllegalArgumentException("숫자와 사칙연산 기호만 입력가능합니다.");
     }
-    ;
-
   }
 
   private static boolean isAllowedCharacters(String[] parsedExpression) {
