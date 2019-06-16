@@ -3,7 +3,7 @@ package step2.racing.model;
 public class Car {
 
     public static final int DEFAULT_POSITION = 1;
-    private static final int MOVE_VALUE = 4;
+    public static final int MOVE_VALUE = 4;
 
     /**
      * 차량번호
