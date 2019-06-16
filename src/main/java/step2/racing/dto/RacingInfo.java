@@ -5,13 +5,10 @@ public class RacingInfo {
     private int carCount;
     private int attempts;
 
-    private RacingInfo() {}
+    public RacingInfo(int carCount, int attempts) {
 
-    public static RacingInfo of(int carCount, int attempts) {
-        RacingInfo racingInfo = new RacingInfo();
-        racingInfo.carCount = carCount;
-        racingInfo.attempts = attempts;
-        return racingInfo;
+        this.carCount = carCount;
+        this.attempts = attempts;
     }
 
     public int getCarCount() {

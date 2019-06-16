@@ -15,7 +15,7 @@ public class Main {
         int carCount = inputView.askCarCount();
         int attempts = inputView.askAttempts();
 
-        RacingInfo racingInfo = RacingInfo.of(carCount, attempts);
+        RacingInfo racingInfo = new RacingInfo(carCount, attempts);
         RacingService racingService = new RacingService(racingInfo);
         RacingResult racingResult = racingService.run();
 

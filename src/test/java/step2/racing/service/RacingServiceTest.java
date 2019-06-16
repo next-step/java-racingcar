@@ -29,7 +29,7 @@ class RacingServiceTest {
     void start(int randomNumber) {
 
         stubRandomGenerator = new StubRandomGenerator(randomNumber);
-        racingService = new RacingService(RacingInfo.of(carCount, attempts), stubRandomGenerator);
+        racingService = new RacingService(new RacingInfo(carCount, attempts), stubRandomGenerator);
 
         RacingResult racingResult = racingService.run();
 
