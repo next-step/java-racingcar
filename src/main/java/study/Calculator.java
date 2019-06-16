@@ -24,4 +24,18 @@ public class Calculator {
 
         return Integer.parseInt(number);
     }
+
+    public String checkPolicyOperator(String operator) {
+
+        switch (operator){
+            case "+" :
+            case "-" :
+            case "*" :
+            case "/" :
+                return operator;
+        }
+
+        throw new IllegalArgumentException();
+    }
+
 }

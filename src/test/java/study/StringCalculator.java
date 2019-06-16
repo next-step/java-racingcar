@@ -68,4 +68,10 @@ public class StringCalculator {
                 .isThrownBy(() -> calculator.nullAndEmptyValue(number));
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"!","@","#","4"})
+    void checkPolicyOperator(String operator) {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> calculator.checkPolicyOperator(operator));
+    }
 }
