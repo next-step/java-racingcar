@@ -25,29 +25,26 @@ public class Calculator {
 
     private static final String DELIMITER = " ";
 
-    private static final String PLUS_SYMBOL = "+";
-    private static final String MINUS_SYMBOL = "-";
-    private static final String MULTIPLY_SYMBOL = "*";
-    private static final String DIVID_SYMBOL = "/";
+    private Validator validator;
 
-    private static final List<String> ENABLED_ARITHMETIC_SYMBOLS = Arrays.asList(PLUS_SYMBOL, MINUS_SYMBOL, MULTIPLY_SYMBOL, DIVID_SYMBOL); // Arithmetic symbols
-
-    private static final String ILLEGAL_ARGUMENT_EXCEPTION_MSG = "입력값을 제대로 입력해주세요.";
+    public Calculator(Validator validator) {
+        this.validator = validator;
+    }
 
     public int calculate(String input) {
-        validateIsNotEmpty(input); // 공백 or null이 아닌지 판단
+        validator.validateIsNotEmpty(input); // 공백 or null이 아닌지 판단
 
         // tokenize해서 분리
         List<String> tokens = tokenize(input);
 
         // token 사이즈 확인
-        validateSizeOf(tokens);
+        validator.validateSizeOf(tokens);
 
         // validate numbers with passing function
-        validate(tokens, n -> n % 2 == 0, this::validateNumber);
+        validator.validate(tokens, n -> n % 2 == 0, validator::validateNumber);
 
         // validate symbols with passing function
-        validate(tokens, n -> n % 2 == 1, this::validateSymbol);
+        validator.validate(tokens, n -> n % 2 == 1, validator::validateSymbol);
 
         return calculate(tokens);
     }
@@ -67,20 +64,20 @@ public class Calculator {
 
         switch (symbol) {
 
-            case PLUS_SYMBOL:
+            case Symbols.PLUS_SYMBOL:
                 result += Integer.valueOf(number);
                 break;
-            case MINUS_SYMBOL:
+            case Symbols.MINUS_SYMBOL:
                 result -= Integer.valueOf(number);
                 break;
-            case MULTIPLY_SYMBOL:
+            case Symbols.MULTIPLY_SYMBOL:
                 result *= Integer.valueOf(number);
                 break;
-            case DIVID_SYMBOL:
+            case Symbols.DIVID_SYMBOL:
                 result /= Integer.valueOf(number);
                 break;
             default:
-                throw new IllegalArgumentException(ILLEGAL_ARGUMENT_EXCEPTION_MSG);
+                throw new IllegalArgumentException(ExceptionMessages.ILLEGAL_ARGUMENT_EXCEPTION_MSG);
         }
 
         return result;
@@ -89,41 +86,6 @@ public class Calculator {
 
     List<String> tokenize(String input) {
         return Arrays.asList(input.split(DELIMITER));
-    }
-
-    void validate(List<String> tokens, IntPredicate predicate, Consumer<String> validationConsumer) {
-        IntStream.range(0, tokens.size())
-                .filter(predicate)
-                .mapToObj(tokens::get)
-                .forEach(validationConsumer);
-    }
-
-    void validateSizeOf(List<String> tokens) {
-        int size = tokens.size();
-
-        if (size < 3 || size % 2 == 0) {
-            throw new IllegalArgumentException(ILLEGAL_ARGUMENT_EXCEPTION_MSG);
-        }
-    }
-
-    void validateIsNotEmpty(String input) {
-        if (null == input || input.trim().isEmpty()) {
-            throw new IllegalArgumentException(ILLEGAL_ARGUMENT_EXCEPTION_MSG);
-        }
-    }
-
-    void validateNumber(String stringNumber) {
-        try {
-            Integer.valueOf(stringNumber);
-        } catch (Exception ignored) {
-            throw new IllegalArgumentException(ILLEGAL_ARGUMENT_EXCEPTION_MSG);
-        }
-    }
-
-    void validateSymbol(String symbol) {
-        if(!ENABLED_ARITHMETIC_SYMBOLS.contains(symbol)) {
-            throw new IllegalArgumentException(ILLEGAL_ARGUMENT_EXCEPTION_MSG);
-        }
     }
 
 }
