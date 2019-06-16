@@ -7,7 +7,8 @@ import static org.assertj.core.api.Assertions.*;
 
 class CalculatorTest {
     @ParameterizedTest
-    @CsvSource({"1 - 2, -1"
+    @CsvSource({"123, 123"
+            , "1 - 2, -1"
             , "1 + 2 + 3, 6"
             , "2 + 3 * 4 / 2, 10"
             , "1343 + 231 * 2 / 4, 787"
