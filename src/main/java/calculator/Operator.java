@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class Operator {
 
-  private final int PEEK_OPERATOR_INDEX = 0;
+  private static final int PEEK_OPERATOR_INDEX = 0;
   private List<String> operators;
 
   public Operator(String[] operators) {

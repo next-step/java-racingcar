@@ -7,12 +7,12 @@ import java.util.stream.Collectors;
 
 public class Numbers {
 
-  private final int LEFT_NUM_INDEX = 0;
-  private final int RIGHT_NUM_INDEX = 1;
-  private final int REQUIRED_FOR_CALCULATION_NUM = 2;
-  private final int NUMBERS_DELETE_INDEX = 0;
-  private final int RESULT_INSERT_INDEX = 0;
-  private final int FINAL_RESULT_INDEX = 0;
+  private static final int LEFT_NUM_INDEX = 0;
+  private static final int RIGHT_NUM_INDEX = 1;
+  private static final int REQUIRED_FOR_CALCULATION_NUM = 2;
+  private static final int NUMBERS_DELETE_INDEX = 0;
+  private static final int RESULT_INSERT_INDEX = 0;
+  private static final int FINAL_RESULT_INDEX = 0;
 
   private List<Integer> numbers;
 
