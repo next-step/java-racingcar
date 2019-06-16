@@ -1,5 +1,6 @@
 package stringcalculator;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BinaryOperator;
@@ -30,6 +31,19 @@ public class ArithmeticOperator {
 
         Type(String symbol) {
             this.symbol = symbol;
+        }
+
+        public static Type from(String str) {
+            return Arrays.stream(Type.values())
+                    .filter(symbol -> symbol.getSymbol().equals(str))
+                    .findFirst()
+                    .orElseGet(() -> {
+                        throw new IllegalArgumentException("Unsupproted operator");
+                    });
+        }
+
+        public String getSymbol() {
+            return symbol;
         }
     }
 }

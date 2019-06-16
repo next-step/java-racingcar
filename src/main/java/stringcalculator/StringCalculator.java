@@ -51,7 +51,7 @@ public class StringCalculator {
     }
 
     private String calculate(String symbol, String num1, String num2) {
-        return String.valueOf(arithmeticOperator.operate(ArithmeticOperator.Type.valueOf(symbol),
+        return String.valueOf(arithmeticOperator.operate(ArithmeticOperator.Type.from(symbol),
                 Integer.valueOf(num1),
                 Integer.valueOf(num2)));
     }
