@@ -6,10 +6,10 @@ public class Cars {
 
   public Cars(int numberOfCar) {
     cars = new Car[numberOfCar];
-    carMake();
+    makeCars();
   }
 
-  private void carMake() {
+  private void makeCars() {
     for (int i = 0; i < cars.length; i++) {
       cars[i] = new Car();
     }
