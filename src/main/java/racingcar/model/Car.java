@@ -1,6 +1,7 @@
 package racingcar.model;
 
-import racingcar.util.RandomUtil;
+import racingcar.util.DrivingStrategy;
+import racingcar.util.RandomStrategy;
 
 public class Car {
 
@@ -9,14 +10,21 @@ public class Car {
   private int carNo;
   private int position;
 
-  private RandomUtil random;
+  private DrivingStrategy drivingStrategy;
 
 
-  public Car(int carNo, RandomUtil random) {
+  public Car(int carNo) {
     this.carNo = carNo;
     this.position = INITIAL_POSITION;
+    this.drivingStrategy = RandomStrategy.getInstance();
+  }
 
-    this.random = random;
+  /**
+   * test시 mocking을 위한 setter
+   * @param drivingStrategy
+   */
+  public void setDrivingStrategy(DrivingStrategy drivingStrategy) {
+    this.drivingStrategy = drivingStrategy;
   }
 
   /**
@@ -38,10 +46,8 @@ public class Car {
    * @return
    */
   private boolean enableMoveForward() {
-    int value = random.nextInt();
-    if (value > 4) return true;
-
-    return false;
+    int value = drivingStrategy.throwDice();
+    return value > 4;
   }
 
   public int getInitialPosition() {

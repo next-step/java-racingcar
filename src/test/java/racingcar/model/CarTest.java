@@ -3,20 +3,20 @@ package racingcar.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.mocks.MockRandomUtil;
+import racingcar.mocks.MockDrivingStrategy;
+import racingcar.util.DrivingStrategy;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class CarTest {
 
 
-  private MockRandomUtil random;
   private Car car;
 
   @BeforeEach
   void setUp() {
-    this.random = new MockRandomUtil();
-    this.car = new Car(1, random);
+    this.car = new Car(1);
+    this.car.setDrivingStrategy(MockDrivingStrategy.getInstance());
   }
 
   @Test
