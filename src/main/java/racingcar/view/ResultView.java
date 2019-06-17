@@ -18,7 +18,8 @@ public class ResultView {
    * @param round
    */
   public static void printCurrentRound(int round) {
-    System.out.println(round + "번째 라운드");
+    String resultMessage = round + "번째 라운드";
+    System.out.println(resultMessage);
   }
 
   /**
@@ -35,10 +36,13 @@ public class ResultView {
    * @param car
    */
   public static void printCurrentPositionOf(Car car) {
+
+    String nameOfCar = car.getName();
     String currentPosition = IntStream.rangeClosed(car.getInitialPosition(), car.getPosition())
             .mapToObj(pos -> CURRENT_POSITION_MARKER)
             .collect(joining());
 
-    System.out.println(currentPosition);
+    String resultMessage = nameOfCar.concat(" : ").concat(currentPosition);
+    System.out.println(resultMessage);
   }
 }
