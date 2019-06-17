@@ -3,55 +3,48 @@ package com.iksoo.racer;
 import java.util.Random;
 
 public class RacingGame {
-    private static int time;
-    private static int[] carPositions;
     private static InputRacingValues inputRacingValues;
     private static OutputRacingValues outputRacingValues;
     private static Random random;
 
-    public static void initiator() {
+    private static final int GOSTOP_CRITERION = 4;
+
+    public static void initiateObjects() {
         inputRacingValues = new InputRacingValues();
         outputRacingValues = new OutputRacingValues();
         random = new Random();
     }
 
-    public static void main (String[] args) {
-        // 객체 초기화 메소드
-        initiator();
+    public static void main(String[] args) {
+        initiateObjects();
 
-        // 변수값 입력 메소드
-        inputValues();
+        int[] carPositions = new int[inputRacingValues.inputCars()];
+        int times = inputRacingValues.inputTrys();
 
         System.out.println("\n실행결과");
 
-        // 이동횟수 만큼 작업 시작
-        for(int i = 0; i < time; i++) {
-            move();
-            System.out.println();
+        move(carPositions, times);
+    }
+
+    public static void move(int[] carPositions, int times) {
+        for (int i = 0; i < times; i++) {
+            moveOneByOne(carPositions);
+
+            outputRacingValues.printPositions(carPositions);
         }
     }
 
-    public static void inputValues() {
-        // 자동차 수 입력
-        carPositions = new int[inputRacingValues.inputCars()];
-        // 이동횟수 입력
-        time = inputRacingValues.inputTrys();
-    }
-
-    public static void move () {
-        // 각 자동차별 움직임 시작
-        for(int i = 0; i < carPositions.length; i++) {
-            // isGoStop이 true일 경우만 한 칸 전진
-            carPositions[i] += isGoStop() ? 1 : 0;
-            // 자동차들의 현재 상태 출력
-            outputRacingValues.printLine(carPositions[i]);
+    public static void moveOneByOne(int[] carPositions) {
+        for (int i = 0; i < carPositions.length; i++) {
+            carPositions[i] += goOrStop();
         }
     }
 
-    public static boolean isGoStop() {
-        int randomValue = random.nextInt(10);
+    public static int goOrStop() {
+        return GOSTOP_CRITERION <= getRandom() ? 1 : 0;
+    }
 
-        // 랜던값이 4이상일 경우 true 아니면 false
-        return randomValue >= 4 ? true : false;
+    public static int getRandom() {
+        return random.nextInt(10);
     }
 }

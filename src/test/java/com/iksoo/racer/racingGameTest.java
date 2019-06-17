@@ -17,40 +17,33 @@ public class racingGameTest {
     RacingGame racingGame;
 
     private Set<Integer> numbers;
-
-    Random random;
+    private Set<Integer> numbersGoStop;
 
     @BeforeEach
     void setUp() {
-        random = new Random();
-
         racingGame = new RacingGame();
 
+        racingGame.initiateObjects();
+
         numbers = new HashSet<>();
-        numbers.add(0);
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(3);
-        numbers.add(4);
-        numbers.add(5);
-        numbers.add(6);
-        numbers.add(7);
-        numbers.add(8);
-        numbers.add(9);
+        for (int i = 0; i < 10; i++) {
+            numbers.add(i);
+        }
+
+        numbersGoStop = new HashSet<>();
+        for (int i = 0; i < 2; i++) {
+            numbersGoStop.add(i);
+        }
     }
 
     @Test
-    void moveTest() {
-
+    void goOrStopTest() {
+        assertThat(numbersGoStop.contains(racingGame.goOrStop())).isTrue();
     }
 
     @Test
-    @ParameterizedTest
-    @ValueSource(ints = {0,1,2,3,4,5,6,7,8,9})
-    void isGoStopTest() {
-        int randomValue = random.nextInt(10);
-
-        assertThat(numbers.contains(randomValue)).isTrue();
+    void getRandomTest() {
+        assertThat(numbers.contains(racingGame.getRandom())).isTrue();
     }
 
 }
