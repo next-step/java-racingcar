@@ -63,13 +63,6 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest
-    @NullAndEmptySource
-    void nullAndEmptyValue(String input) {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> calculator.nullAndEmptyValue(input));
-    }
-
-    @ParameterizedTest
     @ValueSource(strings = {"!", "@", "#", "4"})
     void checkPolicyOperatorException(String operator) {
         assertThatExceptionOfType(IllegalArgumentException.class)

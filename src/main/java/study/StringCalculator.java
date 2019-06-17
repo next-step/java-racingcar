@@ -47,8 +47,14 @@ public class StringCalculator {
     }
 
     public int execute(String input) {
-        calculator.nullAndEmptyValue(input);
+        this.nullAndEmptyValue(input);
         this.separatingValueFromTheOperator(input);
         return this.computationLoof(this.getIntValues(), this.getOperators());
+    }
+
+    public void nullAndEmptyValue(String number) {
+        if (number == null || number.equals("")) {
+            throw new IllegalArgumentException();
+        }
     }
 }

@@ -3,12 +3,14 @@ package study;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
 import java.util.LinkedList;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 class StringCalculatorTest {
     private StringCalculator stringCalculator;
@@ -40,5 +42,12 @@ class StringCalculatorTest {
     void execute(String input) {
         int result = stringCalculator.execute(input);
         assertThat(result).isEqualTo(10);
+    }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    void nullAndEmptyValue(String input) {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> stringCalculator.nullAndEmptyValue(input));
     }
 }
