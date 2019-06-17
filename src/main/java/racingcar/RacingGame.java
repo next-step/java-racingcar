@@ -4,7 +4,8 @@ public class RacingGame {
 
   private Initializerer initializerer;
   private Cars cars;
-  private Position position = new Position();
+  private Record record = new Record();
+
 
   public RacingGame(Initializerer initializerer) {
     this.initializerer = initializerer;
@@ -23,10 +24,10 @@ public class RacingGame {
   }
 
   private void record() {
-    position.add(cars.getCarsPosition());
+    record.write(cars.position());
   }
 
-  public Position result() {
-    return position;
+  public Record result() {
+    return record;
   }
 }

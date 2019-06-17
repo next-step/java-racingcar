@@ -28,9 +28,10 @@ public class Cars {
     return cars.stream();
   }
 
-  public List<Integer> getCarsPosition() {
-    return getStream()
-        .map(Car::getPosition)
-        .collect(Collectors.toList());
+  public Position position() {
+    return new Position(
+        getStream()
+            .map(Car::getPosition)
+            .collect(Collectors.toList()));
   }
 }

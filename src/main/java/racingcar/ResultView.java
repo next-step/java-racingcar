@@ -6,12 +6,18 @@ public class ResultView {
 
   public static final String POSITION_INDICATOR = "-";
 
-  public static void display(Position result) {
-    for (int i = 0; i < result.numberOfTimes(); i++) {
-      List<Integer> carPosition = result.getCarPosition(i);
-      printCarPosition(carPosition);
-      printBlankLine();
+  public static void display(Record record) {
+    List<Position> positions = record.getRecord();
+    for (int i = 0; i < positions.size(); i++) {
+      Position position = positions.get(i);
+      printPosition(position);
     }
+  }
+
+  private static void printPosition(Position position) {
+    List<Integer> carPosition = position.getCarPosition();
+    printCarPosition(carPosition);
+    printBlankLine();
   }
 
   private static void printCarPosition(List<Integer> carPosition) {
