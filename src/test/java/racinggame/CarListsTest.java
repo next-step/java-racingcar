@@ -1,8 +1,8 @@
 package racinggame;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class CarListsTest {
@@ -11,7 +11,7 @@ class CarListsTest {
     @Test
     void 생성자_정상() {
         CarLists carLists = new CarLists(carQuantity);
-        Assertions.assertThat(carLists.getCarList().size()).isEqualTo(carQuantity);
+        assertThat(carLists.getCarList().size()).isEqualTo(carQuantity);
     }
 
     @Test

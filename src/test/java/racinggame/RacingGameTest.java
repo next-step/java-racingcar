@@ -1,9 +1,10 @@
 package racinggame;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
     int round = 2;
@@ -15,9 +16,9 @@ class RacingGameTest {
         RacingGame racingGame = new RacingGame(racingGameParameters);
         List<GameResult> actual = racingGame.getGameResults().getGameResultList();
 
-        Assertions.assertThat(actual).hasSize(1);
-        Assertions.assertThat(actual.get(0).getGameResult()).hasSize(car);
-        Assertions.assertThat(actual.get(0).getGameResult()).allMatch(integer -> integer == 1);
+        assertThat(actual).hasSize(1);
+        assertThat(actual.get(0).getGameResult()).hasSize(car);
+        assertThat(actual.get(0).getGameResult()).allMatch(integer -> integer == 1);
     }
 
     @Test
@@ -27,8 +28,8 @@ class RacingGameTest {
         racingGame.playFullRound();
 
         List<GameResult> actual = racingGame.getGameResults().getGameResultList();
-        Assertions.assertThat(actual).hasSize(round + 1);
-        Assertions.assertThat(racingGameParameters.isFinished()).isTrue();
+        assertThat(actual).hasSize(round + 1);
+        assertThat(racingGameParameters.isFinished()).isTrue();
         // 이곳에서 게임 결과를 테스트 해야 할까요?
     }
 }
