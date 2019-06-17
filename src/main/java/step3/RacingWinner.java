@@ -13,7 +13,7 @@ public class RacingWinner {
                             .collect(Collectors.joining(", "));
     }
 
-    private int maxPostion(List<CarDto> carsPosition){
+    public int maxPostion(List<CarDto> carsPosition){
         return carsPosition.stream()
                             .mapToInt(v -> v.getPosition())
                             .max()
