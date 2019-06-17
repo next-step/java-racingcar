@@ -15,7 +15,6 @@ import java.util.Scanner;
  */
 public class CalculatorApplication {
 
-    private Operator operator = new Operator();
     private Validation validation = new Validation();
     private StringUtils utils = new StringUtils();
 
@@ -42,12 +41,11 @@ public class CalculatorApplication {
 
         totalNumber = this.utils.convertInt(this.letter.get(0));
 
-        for (int i = FIRST_INDEX; i < this.letter.size() - 2 ; i += LAST_INDEX) {
-            OperatorType type = OperatorType.typeCheck(this.letter.get(i+1));
-            String oper = type.getType();
+        for (int i = FIRST_INDEX; i < this.letter.size() - 2; i += LAST_INDEX) {
+            OperatorType type = OperatorType.typeCheck(this.letter.get(i + 1));
+            int second = this.utils.convertInt(this.letter.get(i + 2));
 
-            int second = this.utils.convertInt(this.letter.get(i+2));
-            totalNumber = this.operator.doOperation(oper, totalNumber, second);
+            totalNumber = type.calculate(totalNumber, second);
         }
 
         return totalNumber;
