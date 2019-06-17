@@ -1,5 +1,6 @@
 package calculator;
 
+
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -42,7 +43,7 @@ public class StringCalculatorTest {
         assertThat(result).isEqualTo(2);
     }
 
-    //@Test
+    @Test
     public void complexCalculation() {
         int result = StringCalculator.calculate("2 + 1 * 5 - 3 / 4");
         assertThat(result).isEqualTo(3);

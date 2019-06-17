@@ -1,7 +1,5 @@
 package calculator;
 
-import java.util.Scanner;
-
 public class Calculator {
 
     static int add(int operand1, int operand2) {
@@ -19,6 +17,5 @@ public class Calculator {
     static int divide(int operand1, int operand2) {
         return operand1 / operand2;
     }
-
 
 }

@@ -1,6 +1,7 @@
 package calculator;
 
 public class StringCalculator {
+
     static int calculate(String input) {
         String[] values = split(input);
 
@@ -47,11 +48,7 @@ public class StringCalculator {
 
     static int subtract(int operand1, int operand2) { return operand1 - operand2; }
 
-    static int multiply(int operand1, int operand2) {
-        return operand1 * operand2;
-    }
+    static int multiply(int operand1, int operand2) { return operand1 * operand2; }
 
-    static int divide(int operand1, int operand2) {
-        return operand1 / operand2;
-    }
+    static int divide(int operand1, int operand2) { return operand1 / operand2; }
 }
