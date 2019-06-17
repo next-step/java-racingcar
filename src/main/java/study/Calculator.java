@@ -23,16 +23,12 @@ class Calculator {
 
         if (isAddOperator(operator)) {
             return add(toInt(operand));
-
         } else if (isSubtractOperator(operator)) {
             return subtract(toInt(operand));
-
         } else if (isMultiplyOperator(operator)) {
             return multiply(toInt(operand));
-
         } else if (isDivideOperator(operator)) {
             return divide(toInt(operand));
-
         }
 
         return result;
