@@ -19,11 +19,11 @@ public class RacingGame {
     // client에게 최초 질문
     inputView.askQuestions();
 
-    int players = inputView.getPlayers();
+    String[] names = inputView.getNames();
     int rounds = inputView.getRounds();
 
-    // Car을 player 수만큼 생성
-    List<Car> cars = CarFactory.generate(players);
+    // name을 가진 Car 생성
+    List<Car> cars = CarFactory.generate(names);
     printRacingStatus(rounds, cars);
   }
 
