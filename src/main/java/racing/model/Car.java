@@ -8,18 +8,18 @@ public class Car {
     /**
      * 차량번호
      */
-    private final int uniqueNumber;
+    private final String name;
     private int position;
 
-    private Car(int uniqueNumber) {
+    private Car(String name) {
 
+        this.name = name;
         this.position = DEFAULT_POSITION;
-        this.uniqueNumber = uniqueNumber;
     }
 
-    public static Car of(int uniqueNumber) {
+    public static Car of(String name) {
 
-        return new Car(uniqueNumber);
+        return new Car(name);
     }
 
     public void race(int value) {
@@ -39,8 +39,8 @@ public class Car {
         return position;
     }
 
-    public int getUniqueNumber() {
+    public String getName() {
 
-        return uniqueNumber;
+        return name;
     }
 }

@@ -28,7 +28,7 @@ public class RacingService {
 
     public RacingResult run() {
 
-        EntireCars entireCars = EntireCars.createCars(racingInfo.getCarCount());
+        EntireCars entireCars = EntireCars.createCars(racingInfo.getCarNames());
 
         return race(entireCars);
     }

@@ -3,29 +3,30 @@ package racing.dto;
 import racing.model.Car;
 
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class CarPosition {
 
-    private Map<Integer, Integer> carNumberPositions;
+    private Map<String, Integer> carNamePositions;
 
     public static CarPosition of(EntireCars entireCars) {
 
         CarPosition carPosition = new CarPosition();
-        carPosition.carNumberPositions = entireCars.stream()
-                .collect(Collectors.toMap(Car::getUniqueNumber, Car::getPosition, (car1, car2) -> car1));
+        carPosition.carNamePositions = entireCars.stream()
+                .collect(Collectors.toMap(Car::getName, Car::getPosition, (car1, car2) -> car1));
 
         return carPosition;
     }
 
-    public int getPosition(int carNumber) {
+    public int getPosition(String carName) {
 
-        return carNumberPositions.get(carNumber);
+        return carNamePositions.get(carName);
     }
 
-    public int sizeOfCars() {
+    public Set<Map.Entry<String, Integer>> entrySet() {
 
-        return carNumberPositions.keySet().size();
+        return carNamePositions.entrySet();
     }
 
 }

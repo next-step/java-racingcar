@@ -19,7 +19,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = Car.of(1);
+        car = Car.of("pobi");
     }
 
     @ParameterizedTest(name = "랜덤값이 4 미만이라면 이동하지 않고, 9 이상이라면 이동한다 - randomNumber -> {0}, position -> {1}")

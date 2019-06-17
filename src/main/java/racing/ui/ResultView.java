@@ -4,9 +4,8 @@ import racing.dto.CarPosition;
 import racing.dto.RacingResult;
 
 import java.io.PrintStream;
+import java.util.Map;
 import java.util.stream.IntStream;
-
-import static racing.service.RacingService.START_UNIQUE_CAR_NUMBER;
 
 public class ResultView {
 
@@ -30,11 +29,21 @@ public class ResultView {
 
     private void printRace(CarPosition carPosition) {
 
-        IntStream.rangeClosed(START_UNIQUE_CAR_NUMBER, carPosition.sizeOfCars())
-                .map(carPosition::getPosition)
-                .forEach(this::printCarPosition);
+        carPosition.entrySet().forEach(this::printCarPosition);
 
         printNewLine();
+    }
+
+    private void printCarPosition(Map.Entry<String, Integer> carNamePositionEntry) {
+
+        printStream.print(carNamePositionEntry.getKey());
+        printDelimiter();
+        printCarPosition(carNamePositionEntry.getValue());
+    }
+
+    private void printDelimiter() {
+
+        printStream.print(" : ");
     }
 
     private void printCarPosition(int position) {

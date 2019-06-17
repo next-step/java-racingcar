@@ -4,19 +4,18 @@ import racing.model.Car;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.*;
-
-import static racing.service.RacingService.START_UNIQUE_CAR_NUMBER;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class EntireCars {
 
     private List<Car> cars = new ArrayList<>();
 
-    public static EntireCars createCars(int carCount) {
+    public static EntireCars createCars(List<String> carNames) {
 
         EntireCars entireCars = new EntireCars();
-        entireCars.cars = IntStream.rangeClosed(START_UNIQUE_CAR_NUMBER, carCount)
-                .mapToObj(Car::of)
+        entireCars.cars = carNames.stream()
+                .map(Car::of)
                 .collect(Collectors.toList());
 
         return entireCars;

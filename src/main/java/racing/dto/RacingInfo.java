@@ -14,31 +14,12 @@ public class RacingInfo {
     private static final String CAR_NAMES_DELIMITER = ",";
 
     private List<String> carNames;
-    private int carCount;
     private int attempts;
 
     public RacingInfo(List<String> carNames, int attempts) {
 
         this.carNames = carNames;
         this.attempts = attempts;
-    }
-
-    private RacingInfo(int carCount, int attempts) {
-
-        this.carCount = carCount;
-        this.attempts = attempts;
-    }
-
-    public static RacingInfo of(int carCount, int attempts) {
-
-        if (carCount < VALID_CAR_NAMES_COUNT) {
-            throw new IllegalArgumentException(CAR_NAMES_EXCEPTION_MESSAGE);
-        }
-        if (attempts < VALID_ATTEMPTS) {
-            throw new IllegalArgumentException(ATTEMPTS_EXCEPTION_MESSAGE);
-        }
-
-        return new RacingInfo(carCount, attempts);
     }
 
     public static RacingInfo of(String carNames, int attempts) {
@@ -67,11 +48,6 @@ public class RacingInfo {
     public List<String> getCarNames() {
 
         return carNames;
-    }
-
-    public int getCarCount() {
-
-        return carCount;
     }
 
     public int getAttempts() {

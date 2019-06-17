@@ -38,7 +38,7 @@ class RacingInfoTest {
     void ofIllegalArgumentExceptionByAttempts() {
 
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> RacingInfo.of(5, VALID_ATTEMPTS - 1))
+                .isThrownBy(() -> RacingInfo.of("pobi,crong,honux", VALID_ATTEMPTS - 1))
                 .withMessage(ATTEMPTS_EXCEPTION_MESSAGE);
     }
 

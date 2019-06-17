@@ -2,6 +2,7 @@ package racing.service;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import racing.dto.RacingInfo;
 import racing.dto.RacingResult;
 import racing.random.StubValueGenerator;
@@ -13,18 +14,17 @@ class RacingServiceTest {
     private RacingService racingService;
     private StubValueGenerator stubValueGenerator = new StubValueGenerator(0);
 
-    @ParameterizedTest(name = "레이싱 후에 결과가 정상적으로 저장된다. (carCount={0}, attempts={0})")
-    @CsvSource({"3, 6",
-            "4, 3",
-            "2, 2"})
-    void run(int carCount, int attempts) {
+    @ParameterizedTest(name = "레이싱 후에 결과가 정상적으로 저장된다. (carNames={0}, attempts={1})")
+    @CsvSource(value = "pobi,crong,honux:6", delimiter = ':')
+    @MethodSource
+    void run(String carNames, int attempts) {
 
-        RacingInfo racingInfo = RacingInfo.of(carCount, attempts);
+        RacingInfo racingInfo = RacingInfo.of(carNames, attempts);
         racingService = new RacingService(racingInfo, stubValueGenerator);
 
         RacingResult racingResult = racingService.run();
 
         assertThat(racingResult.length()).isEqualTo(attempts);
-        assertThat(racingResult.getCarPosition(0).sizeOfCars()).isEqualTo(carCount);
+        assertThat(racingResult.getCarPosition(0)).isEqualTo(1);
     }
 }
