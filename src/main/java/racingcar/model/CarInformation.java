@@ -10,19 +10,18 @@ public class CarInformation {
     }
 
     public CarInformation(String name) {
-        new CarInformation(name, Position.valueOf(0));
+        this(name, Position.valueOf(0));
     }
 
-    public Position increasePosition() {
-        position = Position.add(position, Position.valueOf(1));
-        return position;
+    public String getName() {
+        return name;
     }
 
     public Position getPosition() {
         return position;
     }
 
-    public String getName() {
-        return name;
+    public void setPosition(Position position) {
+        this.position = position;
     }
 }

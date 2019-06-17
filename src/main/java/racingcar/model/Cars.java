@@ -17,10 +17,8 @@ public class Cars {
         List<CarInformation> informationList = new ArrayList<>();
 
         for (Car car : cars) {
-            String name = car.toString();
-            Position position = car.move();
-
-            CarInformation information = new CarInformation(name, position);
+            car.move();
+            CarInformation information = car.getInformation();
             informationList.add(information);
         }
 

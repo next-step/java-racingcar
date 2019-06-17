@@ -21,14 +21,19 @@ public class Car {
     }
 
     public Position move() {
-        if (!drivingRule.isMovable()) {
-            return carInformation.getPosition();
+        if (drivingRule.isMovable()) {
+            Position position = carInformation.getPosition();
+            position = Position.add(position, Position.valueOf(1));
+
+            carInformation.setPosition(position);
         }
-        return carInformation.increasePosition();
+        return carInformation.getPosition();
     }
 
-    @Override
-    public String toString() {
-        return carInformation.getName();
+    public CarInformation getInformation() {
+        String name = carInformation.getName();
+        Position position = carInformation.getPosition();
+
+        return new CarInformation(name, position);
     }
 }
