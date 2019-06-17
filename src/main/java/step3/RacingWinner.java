@@ -5,15 +5,15 @@ import java.util.stream.Collectors;
 
 public class RacingWinner {
 
-    public String racingWinner(List<CarDto> carsPosition){
-        int winnerPostion = maxPostion(carsPosition);
+    public String maxPostionCarName(List<CarDto> carsPosition){
+        int winnerPostion = maxPosition(carsPosition);
         return carsPosition.stream()
                             .filter(f -> isWinnerPosition(f, winnerPostion))
                             .map(CarDto::getName)
                             .collect(Collectors.joining(", "));
     }
 
-    public int maxPostion(List<CarDto> carsPosition){
+    public int maxPosition(List<CarDto> carsPosition){
         return carsPosition.stream()
                             .mapToInt(v -> v.getPosition())
                             .max()

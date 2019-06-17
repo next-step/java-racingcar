@@ -27,7 +27,7 @@ public class OutputView {
 
     public static void racingWinnerResult(List<CarDto> carsPosition){
         RacingWinner racingWinner = new RacingWinner();
-        String winners = racingWinner.racingWinner(carsPosition);
+        String winners = racingWinner.maxPostionCarName(carsPosition);
         System.out.println(winners + "가 최종 우승 했습니다.");
     }
 

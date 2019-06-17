@@ -37,7 +37,7 @@ public class RacingWinnerTest {
     @DisplayName("우승자 이름 정보 가져오는 테스트")
     void racingWinnerTest() {
         RacingWinner winnerResult = new RacingWinner();
-        String winners = winnerResult.racingWinner(CAR_LIST);
+        String winners = winnerResult.maxPostionCarName(CAR_LIST);
         assertThat(winners).isEqualTo("dhlee, jwlee");
     }
 
@@ -45,7 +45,7 @@ public class RacingWinnerTest {
     @DisplayName("가장 높은 position 정보 가져오는 테스트")
     void maxPostionTest() {
         RacingWinner winnerResult = new RacingWinner();
-        int maxPostion = winnerResult.maxPostion(CAR_LIST);
+        int maxPostion = winnerResult.maxPosition(CAR_LIST);
         assertThat(maxPostion).isEqualTo(2);
     }
 
