@@ -30,4 +30,10 @@ public class Car {
 
         return false;
     }
+
+    public void nextRace() {
+        int randomNumber = this.getRandomNumber();
+        boolean isMoveCar = this.isMoveCar(randomNumber);
+        this.move(isMoveCar);
+    }
 }

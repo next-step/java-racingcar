@@ -2,6 +2,8 @@ package RacingGame;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -67,5 +69,21 @@ class CarTest {
         assertThat(isMoveCar).isTrue();
         isMoveCar = car.isMoveCar(9);
         assertThat(isMoveCar).isTrue();
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3, 4})
+    void nextRaceNotMove(int randomNumber) {
+        boolean isMoveCar = car.isMoveCar(randomNumber);
+        car.move(isMoveCar);
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {5, 6, 7, 8, 9})
+    void nextRaceMove(int randomNumber) {
+        boolean isMoveCar = car.isMoveCar(randomNumber);
+        car.move(isMoveCar);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 }

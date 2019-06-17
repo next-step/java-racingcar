@@ -32,5 +32,4 @@ public class Racing {
         this.cars = cars;
     }
 
-
 }
