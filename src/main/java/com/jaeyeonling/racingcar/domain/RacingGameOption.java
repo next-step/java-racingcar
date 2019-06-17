@@ -27,7 +27,7 @@ public class RacingGameOption {
     public static class Builder {
         private static final int DEFAULT_NUMBER_OF_PARTICIPANTS = 5;
         private static final int DEFAULT_MOVING_COUNT = 5;
-        private static final MoveStrategy DEFAULT_MOVE_STRATEGY = new RandomMoveStrategy();
+        private static final MoveStrategy DEFAULT_MOVE_STRATEGY = new RacingStrategy();
 
         private static final int MINIMUM_NUMBER_OF_PARTICIPANTS = 0;
         private static final int MAXIMUM_NUMBER_OF_PARTICIPANTS = 10_000;

@@ -1,11 +1,14 @@
 package com.jaeyeonling.racingcar.domain;
 
+import com.jaeyeonling.racingcar.utils.RandomUtils;
 import com.jaeyeonling.racingcar.utils.StringUtils;
 import com.jaeyeonling.racingcar.view.Visualizable;
 
 import java.util.List;
 
 public class RacingGame implements Visualizable {
+
+    private static final int MOVING_RANDOM_BOUND = 9;
 
     private final RacingGameOption option;
 
@@ -56,6 +59,6 @@ public class RacingGame implements Visualizable {
     }
 
     private void moveCar(final Car car) {
-        car.moveForward();
+        car.moveForward(RandomUtils.getIntWithBound(MOVING_RANDOM_BOUND));
     }
 }

@@ -25,8 +25,8 @@ public class Car implements Visualizable {
         return getVisualPosition();
     }
 
-    void moveForward() {
-        if (moveStrategy.isMove()) {
+    void moveForward(final int condition) {
+        if (moveStrategy.isMove(condition)) {
             position++;
         }
     }

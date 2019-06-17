@@ -2,5 +2,5 @@ package com.jaeyeonling.racingcar.domain;
 
 public interface MoveStrategy {
 
-    boolean isMove();
+    boolean isMove(int condition);
 }
