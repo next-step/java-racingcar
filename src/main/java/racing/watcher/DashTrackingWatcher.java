@@ -8,6 +8,8 @@ import java.util.List;
 
 public class DashTrackingWatcher extends RacingWatcher {
 
+	private static final String DASH_SYMBOL = "-";
+
 	public static final String EMPTY_NEW_LINE = " ";
 
 	private ConsolePrinter printer;
@@ -17,7 +19,7 @@ public class DashTrackingWatcher extends RacingWatcher {
 	}
 
 	private void handle(StartedRacingEvent event){
-		printer.printMessage("실행 결과");
+		printer.printMessage(event.getMessage());
 	}
 
 	private void handle(ChangedPlayerPositionEvent event) {
@@ -33,11 +35,11 @@ public class DashTrackingWatcher extends RacingWatcher {
 	}
 
 	private String render(int position) {
-		String result = "-";
+		String result = DASH_SYMBOL;
 
 		// 첫 출발 위치를 표시하기 위해 position이 1보다 큰만큼 점선이 추가되도록 조정
 		for(int i = 1; i < position; i++){
-			result += "-";
+			result += DASH_SYMBOL;
 		}
 
 		return result;

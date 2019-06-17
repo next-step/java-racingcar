@@ -2,8 +2,6 @@ package racing.watcher;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.InOrder;
-import org.mockito.Mockito;
 import racing.util.ConsolePrinter;
 import racing.watcher.events.ChangedPlayerPositionEvent;
 import racing.watcher.events.StartedRacingEvent;
@@ -30,7 +28,7 @@ class DashTrackingWatcherTest {
 		watcher.handle(new StartedRacingEvent());
 
 		// Assertion
-		verify(mockPrinter).printMessage("실행 결과");
+		verify(mockPrinter).printMessage(StartedRacingEvent.DEFAULT_START_MESSAGE);
 	}
 
 	@Test
