@@ -35,7 +35,7 @@ public class RacingGame implements Visualizable {
 
     private String getVisualGameStatus() {
         final StringBuilder visualBuilder = new StringBuilder();
-        for (final Car car : getCarList()) {
+        for (final Car car : getCars()) {
             visualBuilder.append(car.visualize())
                     .append(StringUtils.NEW_LINE);
         }
@@ -43,7 +43,7 @@ public class RacingGame implements Visualizable {
         return visualBuilder.toString();
     }
 
-    private List<Car> getCarList() {
+    private List<Car> getCars() {
         return getParticipants().toList();
     }
 
@@ -52,7 +52,7 @@ public class RacingGame implements Visualizable {
     }
 
     private void moveAllCar() {
-        getCarList().forEach(this::moveCar);
+        getCars().forEach(this::moveCar);
     }
 
     private void moveCar(final Car car) {
