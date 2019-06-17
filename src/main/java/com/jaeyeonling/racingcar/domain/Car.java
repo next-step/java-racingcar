@@ -31,10 +31,6 @@ public class Car implements Visualizable {
         }
     }
 
-    int getPosition() {
-        return position;
-    }
-
     private String getVisualPosition() {
         return StringUtils.repeat(VISUAL_POSITION_STRING, position);
     }
