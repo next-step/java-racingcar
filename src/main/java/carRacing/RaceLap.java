@@ -15,6 +15,12 @@ public class RaceLap {
     public List<Car> getCars() {
         return cars;
     }
+    public RaceLap race() {
+        for (Car car : cars) {
+            car.move();
+        }
+        return this;
+    }
 
     private void raceSetting(Engine engine, int numberOfCars) {
         for (int i = 0; i < numberOfCars; i++) {
@@ -22,25 +28,4 @@ public class RaceLap {
         }
     }
 
-    public RaceLap startRace() {
-        for (Car car : cars) {
-            car.move();
-        }
-        return this;
-    }
-
-    public RaceLap printRacingResult() {
-        for (Car car : cars) {
-            int movement = car.getMovement();
-            chartPrint(movement);
-        }
-        System.out.println("\n");
-        return this;
-    }
-
-    private void chartPrint(int movement) {
-        for (int i = 0; i < movement; i++) {
-            System.out.println("-");
-        }
-    }
 }

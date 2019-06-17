@@ -17,11 +17,11 @@ class RaceLapTest {
             "6, 1",
             "9, 1",
     })
-    void moveAllCars() {
-        RaceLap raceLap = new RaceLap(new MockEngine(4), 5).startRace();
+    void moveAllCars(int inputPowerOutput, int expected) {
+        RaceLap raceLap = new RaceLap(new MockEngine(inputPowerOutput), 5).race();
         List<Car> cars = raceLap.getCars();
         for (Car car : cars) {
-            assertThat(car.getMovement()).isEqualTo(1);
+            assertThat(car.getMovement()).isEqualTo(expected);
         }
     }
 
@@ -32,11 +32,11 @@ class RaceLapTest {
             "1, 0",
             "0, 0",
     })
-    void stopAllCars() {
-        RaceLap raceLap = new RaceLap(new MockEngine(4), 5).startRace();
+    void stopAllCars(int inputPowerOutput, int expected) {
+        RaceLap raceLap = new RaceLap(new MockEngine(inputPowerOutput), 5).race();
         List<Car> cars = raceLap.getCars();
         for (Car car : cars) {
-            assertThat(car.getMovement()).isEqualTo(1);
+            assertThat(car.getMovement()).isEqualTo(expected);
         }
     }
 }
