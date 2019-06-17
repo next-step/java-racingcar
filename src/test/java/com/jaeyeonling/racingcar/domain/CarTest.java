@@ -63,6 +63,32 @@ public class CarTest {
         }
     }
 
+    @DisplayName("RacingStrategy 기준 이동 후 위치 변함 확인")
+    @Test
+    void racingStrategySimpleMove() {
+        // given
+        final Car car = new Car(new RacingStrategy());
+
+        // when
+        car.moveForward(RacingCondition.MOVE.condition);
+
+        // then
+        assertThat(car.getPosition()).isEqualTo(Car.DEFAULT_POSITION + 1);
+    }
+
+    @DisplayName("RacingStrategy 기준 이동 후 위치 변함 없는지 확인")
+    @Test
+    void racingStrategySimpleNotMove() {
+        // given
+        final Car car = new Car(new RacingStrategy());
+
+        // when
+        car.moveForward(RacingCondition.STAY.condition);
+
+        // then
+        assertThat(car.getPosition()).isEqualTo(Car.DEFAULT_POSITION);
+    }
+
     enum RacingCondition {
         MOVE(RacingStrategy.MORE_THAN_MOVING_CONDITION + 1),
         STAY(RacingStrategy.MORE_THAN_MOVING_CONDITION - 1);
