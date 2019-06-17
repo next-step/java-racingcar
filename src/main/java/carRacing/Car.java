@@ -2,6 +2,7 @@ package carRacing;
 
 public class Car {
 
+    private final int MOVEMENT_LIMIT_BY_OUTPUT = 4;
     private Engine engine;
     private int movement;
 
@@ -11,9 +12,17 @@ public class Car {
 
     public Car move() {
         int output = engine.getPowerOutput();
-        movement += (output < 4) ? 0 : 1;
+        if (canMove(output)) {
+            movement += 1;
+        }
         return this;
     }
+
+    private boolean canMove(int output) {
+        return MOVEMENT_LIMIT_BY_OUTPUT <= output;
+    }
+
+
 
     public int getMovement() {
         return movement;
