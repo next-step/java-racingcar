@@ -15,9 +15,9 @@ public class RacingWinner {
 
     private int maxPostion(List<CarDto> carsPosition){
         return carsPosition.stream()
-                .mapToInt(v -> v.getPosition())
-                .max()
-                .getAsInt();
+                            .mapToInt(v -> v.getPosition())
+                            .max()
+                            .getAsInt();
     }
 
     private boolean isWinnerPosition(CarDto carDto, int winnerPostion){
