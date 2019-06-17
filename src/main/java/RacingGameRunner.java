@@ -1,5 +1,6 @@
 import racing.Stage;
 import racing.car.ThresholdEngineCar;
+import racing.player.RandomAcceleratePlayer;
 import racing.watcher.DashTrackingBroadcaster;
 
 import java.util.Scanner;
@@ -17,7 +18,7 @@ public class RacingGameRunner {
 
 		Stage.StageBuilder builder = Stage.builder(entrySize, round);
 		for(int i = 0; i < entrySize; i++) {
-			builder.addToEntry(new ThresholdEngineCar());
+			builder.addToEntry(new RandomAcceleratePlayer(new ThresholdEngineCar()));
 		}
 
 		builder.watcher(new DashTrackingBroadcaster());

@@ -2,7 +2,6 @@ package racing.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.car.ThresholdEngineCar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,7 +15,7 @@ class ThresholdEngineCarTest {
 		ThresholdEngineCar car = new ThresholdEngineCar(threshold);
 
 		// Action
-		car.accelerate(threshold + 1);
+		car.move(threshold + 1);
 
 		// Assertion
 		assertThat(car.getMileage()).isGreaterThan(0);
@@ -30,7 +29,7 @@ class ThresholdEngineCarTest {
 		ThresholdEngineCar car = new ThresholdEngineCar(threshold);
 
 		// Action
-		car.accelerate(threshold - 1);
+		car.move(threshold - 1);
 
 		// Assertion
 		assertThat(car.getMileage()).isEqualTo(0);

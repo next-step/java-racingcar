@@ -5,14 +5,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.ArgumentCaptor;
-import racing.car.RacingCar;
 import racing.exception.PlayOverException;
+import racing.player.Player;
 import racing.watcher.RacingWatcher;
 import racing.watcher.events.ChangedPlayerPositionEvent;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
@@ -27,7 +26,7 @@ class StageTest {
 		Stage.StageBuilder builder = Stage.builder(entrySize, round);
 
 		for(int i = 0; i < entrySize; i++) {
-			builder.addToEntry(mock(RacingCar.class));
+			builder.addToEntry(mock(Player.class));
 		}
 
 		// Action
@@ -45,11 +44,11 @@ class StageTest {
 		// Arrange
 		Stage.StageBuilder builder = Stage.builder(2, 5);
 
-		RacingCar car1 = mock(RacingCar.class);
-		builder.addToEntry(car1);
+		Player player1 = mock(Player.class);
+		builder.addToEntry(player1);
 
-		RacingCar car2 = mock(RacingCar.class);
-		builder.addToEntry(car2);
+		Player player2 = mock(Player.class);
+		builder.addToEntry(player2);
 
 		Stage stage = builder.build();
 
@@ -58,8 +57,8 @@ class StageTest {
 
 		// Assertion
 		assertThat(stage.getRemainingRounds()).isEqualTo(4);
-		verify(car1, times(1)).accelerate(anyInt());
-		verify(car2, times(1)).accelerate(anyInt());
+		verify(player1, times(1)).drive();
+		verify(player2, times(1)).drive();
 	}
 
 	@Test
@@ -68,7 +67,7 @@ class StageTest {
 		// Arrange
 		int roundLimit = 5;
 		Stage.StageBuilder builder = Stage.builder(1, roundLimit);
-		builder.addToEntry(mock(RacingCar.class));
+		builder.addToEntry(mock(Player.class));
 		Stage stage = builder.build();
 
 		// Action & Assertion
@@ -89,8 +88,8 @@ class StageTest {
 		Stage.StageBuilder builder = Stage.builder(2, roundLimit);
 
 		// add to racer
-		builder.addToEntry(mock(RacingCar.class));
-		builder.addToEntry(mock(RacingCar.class));
+		builder.addToEntry(mock(Player.class));
+		builder.addToEntry(mock(Player.class));
 
 		// set watcher
 		RacingWatcher watcher = mock(RacingWatcher.class);
@@ -101,7 +100,7 @@ class StageTest {
 		// Action
 		stage.playRound();
 
-		// Assertion
+		// Assertion (플레이어 위치변경 이벤트에 전체 참가자 숫자만큼 정보가 전달되는지 확인)
 		ArgumentCaptor<ChangedPlayerPositionEvent> argument = ArgumentCaptor.forClass(ChangedPlayerPositionEvent.class);
 		verify(watcher, times(1)).handle(argument.capture());
 		assertThat(argument.getValue().getPositions().size()).isEqualTo(2);

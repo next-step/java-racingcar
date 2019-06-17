@@ -1,7 +1,7 @@
 package racing;
 
-import racing.car.RacingCar;
 import racing.exception.PlayOverException;
+import racing.player.Player;
 import racing.watcher.RacingWatcher;
 import racing.watcher.events.ChangedPlayerPositionEvent;
 import racing.watcher.events.StartedRacingEvent;
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Stage {
 
-	private List<RacingCar> players;
+	private List<Player> players;
 
 	private RacingWatcher watcher;
 
@@ -44,14 +44,14 @@ public class Stage {
 			watcher.handle(new StartedRacingEvent());
 		}
 
-		for(RacingCar car : players){
-			car.accelerate(5);
+		for(Player player : players){
+			player.drive();
 		}
 
 		if(watcher != null){
 			ArrayList currentPositions = new ArrayList<>();
-			for(RacingCar car : players){
-				currentPositions.add(car.getMileage());
+			for(Player player : players){
+				currentPositions.add(player.getPosition());
 			}
 
 			watcher.handle(new ChangedPlayerPositionEvent(currentPositions));
@@ -77,7 +77,7 @@ public class Stage {
 
 		private int round;
 
-		private List<RacingCar> players;
+		private List<Player> players;
 
 		private RacingWatcher watcher;
 
@@ -91,7 +91,7 @@ public class Stage {
 			return new Stage(this);
 		}
 
-		public void addToEntry(RacingCar racingCar) {
+		public void addToEntry(Player racingCar) {
 			players.add(racingCar);
 		}
 

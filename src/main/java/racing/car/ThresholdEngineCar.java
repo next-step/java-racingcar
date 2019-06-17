@@ -17,7 +17,7 @@ public class ThresholdEngineCar extends RacingCar {
 	}
 
 	@Override
-	public void accelerate(int amount) {
-		this.addMileage(amount > thresholdAmount ? 1 : 0);
+	public void move(int accelerate) {
+		this.addMileage(accelerate > thresholdAmount ? 1 : 0);
 	}
 }
