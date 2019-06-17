@@ -28,4 +28,12 @@ class CarHandlerTest {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> CarHandler.isMoveCondition(CarHandler.MAX_RANDOM_INTEGER + 1));
     }
+
+    /*
+    1. getRandomInt 메서드는 자바에서의 random.nextInt() 메서드를 테스트하는 격이 되는데, 그래도 테스트 코드가 필요한지 궁금합니다.
+
+    2. getRandomMoveCondition 메서드는 단순히 getRandomInt 의 결과를 isMoveCondition 메서드에 넣어서 boolean 을 반환하는 메서드입니다.
+       isMoveCondition 메서드는 위에서 테스트가 완료되었고, 만약 getRandomInt 에 대한 테스트도 있다면,
+       이 getRandomMoveCondition 메서드에 대한 테스트는 생략해도 되는지 궁금합니다.
+     */
 }
