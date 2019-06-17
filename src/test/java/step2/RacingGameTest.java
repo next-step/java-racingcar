@@ -1,5 +1,6 @@
 package step2;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -9,30 +10,30 @@ import java.util.Random;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
-/*
-    @Test
-    @DisplayName("자동차 레이싱")
-    void moveTest() {
-        int carNumber = 4;
-        RacingGame racingGame = new RacingGame();
-        racingGame.carPositionsInit(carNumber);
 
-        List<CarDto> carPositionList = racingGame.move();
-        int sumCarPosition = carPositionList.stream().reduce(0, (a, b) -> a + b);
-        assertThat(sumCarPosition).isEqualTo(4);
+    private RacingGame racingGame;
+    private static final int CAR_NUMBER = 3;
 
-        carPositionList = racingGame.move();
-        sumCarPosition = carPositionList.stream().reduce(0, (a, b) -> a + b);
-        assertThat(sumCarPosition).isGreaterThan(4);
+    @BeforeEach
+    void init(){
+        racingGame = new RacingGame();
+        racingGame.carPositionsInit(CAR_NUMBER);
     }
-*/
+
+    @Test
+    @DisplayName("postion 값 셋팅 테스트(처음 position 무조건 1로 셋팅)")
+    void firstMoveTest() {
+        List<CarDto> carPositionList = racingGame.move();
+        for(CarDto carDto : carPositionList){
+            assertThat(carDto.getPosition()).isEqualTo(1);
+        }
+    }
+
     @Test
     @DisplayName("랜덤 숫자에 따른 자동차 움직임 테스트")
     void carPositionUpdateValueTest() {
         Random generator = new Random();
         int randomNumber = generator.nextInt(10);
-
-        RacingGame racingGame = new RacingGame();
         int moveNumber = racingGame.carPositionUpdateValue(randomNumber);
 
         assertThat(randomNumber > 3).isEqualTo(moveNumber == 1);
