@@ -8,8 +8,7 @@ import org.mockito.ArgumentCaptor;
 import racing.car.RacingCar;
 import racing.exception.PlayOverException;
 import racing.watcher.RacingWatcher;
-
-import java.util.List;
+import racing.watcher.events.ChangedPlayerPositionEvent;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -36,7 +35,7 @@ class StageTest {
 
 		// Assertion
 		assertThat(stage.getCountOfPlayers()).isEqualTo(entrySize);
-		assertThat(stage.remainingRounds()).isEqualTo(round);
+		assertThat(stage.getRemainingRounds()).isEqualTo(round);
 	}
 
 	@Test
@@ -58,7 +57,7 @@ class StageTest {
 		stage.playRound(); // 1회 수행
 
 		// Assertion
-		assertThat(stage.remainingRounds()).isEqualTo(4);
+		assertThat(stage.getRemainingRounds()).isEqualTo(4);
 		verify(car1, times(1)).accelerate(anyInt());
 		verify(car2, times(1)).accelerate(anyInt());
 	}
@@ -103,9 +102,9 @@ class StageTest {
 		stage.playRound();
 
 		// Assertion
-		ArgumentCaptor<List<Integer>> argument = ArgumentCaptor.forClass(List.class);
-		verify(watcher, times(1)).update(argument.capture());
-		assertThat(argument.getValue().size()).isEqualTo(2);
+		ArgumentCaptor<ChangedPlayerPositionEvent> argument = ArgumentCaptor.forClass(ChangedPlayerPositionEvent.class);
+		verify(watcher, times(1)).handle(argument.capture());
+		assertThat(argument.getValue().getPositions().size()).isEqualTo(2);
 
 
 	}

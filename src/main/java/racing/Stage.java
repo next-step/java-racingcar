@@ -3,6 +3,8 @@ package racing;
 import racing.car.RacingCar;
 import racing.exception.PlayOverException;
 import racing.watcher.RacingWatcher;
+import racing.watcher.events.ChangedPlayerPositionEvent;
+import racing.watcher.events.StartedRacingEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +15,12 @@ public class Stage {
 
 	private RacingWatcher watcher;
 
-	private int round;
+	private int initialRound;
+
+	private int remainingRound;
 
 	private Stage(StageBuilder stageBuilder){
-		this.round = stageBuilder.round;
+		this.initialRound = this.remainingRound = stageBuilder.round;
 		this.players = stageBuilder.players;
 		this.watcher = stageBuilder.watcher;
 
@@ -26,18 +30,22 @@ public class Stage {
 		return players.size();
 	}
 
-	public int remainingRounds() {
-		return round;
+	public int getRemainingRounds() {
+		return remainingRound;
 	}
 
 	public void playRound() {
 
-		if (round == 0){
+		if (remainingRound == 0){
 			throw new PlayOverException("레이싱이 종료되었습니다.");
 		}
 
+		if(remainingRound == initialRound){
+			watcher.handle(new StartedRacingEvent());
+		}
+
 		for(RacingCar car : players){
-			car.accelerate(1);
+			car.accelerate(5);
 		}
 
 		if(watcher != null){
@@ -45,10 +53,11 @@ public class Stage {
 			for(RacingCar car : players){
 				currentPositions.add(car.getMileage());
 			}
-			watcher.update(currentPositions);
+
+			watcher.handle(new ChangedPlayerPositionEvent(currentPositions));
 		}
 
-		round -= 1;
+		remainingRound -= 1;
 	}
 
 	/**

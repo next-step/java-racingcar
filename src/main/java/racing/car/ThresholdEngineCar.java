@@ -4,7 +4,13 @@ import racing.car.RacingCar;
 
 public class ThresholdEngineCar extends RacingCar {
 
-	private int thresholdAmount = 0;
+	private static int DEFAULT_THRESHOLD = 4;
+
+	private int thresholdAmount;
+
+	public ThresholdEngineCar(){
+		this(DEFAULT_THRESHOLD);
+	}
 
 	public ThresholdEngineCar(int thresholdAmount){
 		this.thresholdAmount = thresholdAmount;
