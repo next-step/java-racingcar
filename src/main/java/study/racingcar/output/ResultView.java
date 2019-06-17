@@ -10,5 +10,6 @@ import java.util.List;
  * Github : http://github.com/wyparks2
  */
 public interface ResultView {
+    void printInit();
     void print(List<Car> cars);
 }

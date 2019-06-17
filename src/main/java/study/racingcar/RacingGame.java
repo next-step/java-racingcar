@@ -23,10 +23,9 @@ public class RacingGame {
     }
 
     public void start() {
-        System.out.println();
-        System.out.println("실행 결과");
-
         List<Car> cars = makeRacingCar();
+
+        resultView.printInit();
 
         printStandbyStatus(cars);
         runCarsAndPrintStatus(cars);

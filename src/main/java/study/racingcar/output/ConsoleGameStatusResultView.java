@@ -13,6 +13,12 @@ public class ConsoleGameStatusResultView implements ResultView {
     private static final String POSITION_TEXT = "-";
 
     @Override
+    public void printInit() {
+        System.out.println();
+        System.out.println("실행 결과");
+    }
+
+    @Override
     public void print(List<Car> cars) {
         for (Car car : cars)
             this.print(car);
