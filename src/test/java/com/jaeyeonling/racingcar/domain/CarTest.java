@@ -62,4 +62,15 @@ public class CarTest {
             assertThat(car.getPosition()).isEqualTo(expectedPosition);
         }
     }
+
+    enum RacingCondition {
+        MOVE(RacingStrategy.MORE_THAN_MOVING_CONDITION + 1),
+        STAY(RacingStrategy.MORE_THAN_MOVING_CONDITION - 1);
+
+        private int condition;
+
+        RacingCondition(final int condition) {
+            this.condition = condition;
+        }
+    }
 }
