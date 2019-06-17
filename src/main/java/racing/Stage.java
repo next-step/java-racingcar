@@ -24,6 +24,11 @@ public class Stage {
 	}
 
 	public void playRound() {
+
+		if (round == 0){
+			throw new PlayOverException("레이싱이 종료되었습니다.");
+		}
+
 		for(RacingCar car : players){
 			car.run();
 		}
