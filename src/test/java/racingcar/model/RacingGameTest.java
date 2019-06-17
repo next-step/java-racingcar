@@ -4,36 +4,26 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.util.MockGenerator;
-import racingcar.util.MockGenerator.CarState;
-
-import java.util.List;
+import racingcar.util.MovingGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static racingcar.model.CarsTest.generateCarList;
 import static racingcar.model.RacingGame.GAME_END_ROUND;
 import static racingcar.model.RacingGame.INPUT_MIN_VALUE;
-import static racingcar.util.MockGenerator.CarState.RUN;
 
 public class RacingGameTest {
 
     @Test
     @DisplayName("레이싱을 한번 진행한 결과를 반환한다")
     void racing() {
-        int time = 1;
+        int round = 1;
         int carCount = 2;
-        RacingGame racingGame = of(time, carCount, RUN);
 
-        List<Car> result = racingGame.racing();
+        RacingGame racingGame = new RacingGame(round, Cars.generate(carCount), new MovingGenerator());
 
-        assertThat(result).extracting(Car::getPosition).contains(2);
-    }
+        Cars result = racingGame.racing();
 
-    private RacingGame of(int time, int carCount, CarState carStates) {
-        Cars cars = new Cars(generateCarList(carCount), MockGenerator.generate(carStates));
-        return new RacingGame(time, cars);
+        assertThat(result.getCars()).extracting(Car::getPosition).containsOnly(2);
     }
 
     @ParameterizedTest

@@ -1,6 +1,7 @@
 package racingcar.io;
 
 import racingcar.model.Car;
+import racingcar.model.Cars;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -13,13 +14,13 @@ public class OutputView {
         System.out.println("게임을 시작합니다.");
     }
 
-    public static void ready(List<Car> result){
+    public static void ready(Cars result){
         System.out.println("실행 결과");
         playResult(result);
     }
 
-    public static void playResult(List<Car> cars){
-        for (Car car : cars) {
+    public static void playResult(Cars cars){
+        for (Car car : cars.getCars()) {
             playCarResult(car);
         }
         newLine();

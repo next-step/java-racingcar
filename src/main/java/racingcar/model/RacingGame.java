@@ -1,6 +1,7 @@
 package racingcar.model;
 
-import java.util.List;
+import racingcar.util.NumberGenerator;
+import racingcar.util.RandomGenerator;
 
 public class RacingGame {
 
@@ -8,10 +9,18 @@ public class RacingGame {
     public static final int INPUT_MIN_VALUE = 0;
     private Cars cars;
     private int round;
+    private NumberGenerator numberGenerator;
 
-    RacingGame(int round, Cars cars) {
+    private RacingGame(int round, Cars cars) {
         this.round = round;
         this.cars = cars;
+        this.numberGenerator = new RandomGenerator();
+    }
+
+    RacingGame(int round, Cars cars, NumberGenerator numberGenerator) {
+        this.round = round;
+        this.cars = cars;
+        this.numberGenerator = numberGenerator;
     }
 
     public static RacingGame generate(int round, int carCount) {
@@ -26,16 +35,16 @@ public class RacingGame {
         }
     }
 
-    public List<Car> racing() {
+    public Cars racing() {
         round--;
-        return cars.moveAll();
+        return cars.moveAll(numberGenerator);
     }
 
     public boolean isGameOver() {
         return round == GAME_END_ROUND;
     }
 
-    public List<Car> getResult() {
-        return cars.getCars();
+    public Cars getResult() {
+        return cars;
     }
 }

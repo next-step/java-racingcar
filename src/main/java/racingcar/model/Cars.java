@@ -1,7 +1,6 @@
 package racingcar.model;
 
 import racingcar.util.NumberGenerator;
-import racingcar.util.RandomGenerator;
 
 import java.util.Collections;
 import java.util.List;
@@ -10,12 +9,10 @@ import java.util.stream.IntStream;
 
 public class Cars {
 
-    private NumberGenerator numberGenerator;
     private List<Car> cars;
 
-    Cars(List<Car> cars, NumberGenerator numberGenerator) {
+    Cars(List<Car> cars) {
         this.cars = cars;
-        this.numberGenerator = numberGenerator;
     }
 
     static Cars generate(int count) {
@@ -25,17 +22,17 @@ public class Cars {
         List<Car> cars = IntStream.range(0, count)
                 .mapToObj(value -> Car.create())
                 .collect(Collectors.toList());
-        return new Cars(cars, new RandomGenerator());
+        return new Cars(cars);
     }
 
-    List<Car> moveAll() {
+    Cars moveAll(NumberGenerator numberGenerator) {
         for (Car car : cars) {
             car.move(numberGenerator.getNumber());
         }
-        return getCars();
+        return this;
     }
 
-    List<Car> getCars() {
+    public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
 
