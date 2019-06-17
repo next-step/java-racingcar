@@ -5,11 +5,11 @@ import java.util.Random;
 public class RacingGame {
 
     private static int[] carPositions;
-    private Random random = new Random();
-
     private static final int STRAIGHT = 4;
     private static final int GO = 1;
     private static final int STOP = 0;
+
+    private Random random = new Random();
 
     public void setInitPosition(int carQty){
         carPositions = new int[carQty];
