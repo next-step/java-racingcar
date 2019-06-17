@@ -20,4 +20,13 @@ class CarTest {
         assertThat(position).isEqualTo(0);
     }
 
+    @Test
+    void move() {
+        car.move();
+        assertThat(car.getPosition()).isEqualTo(1);
+        car.move();
+        assertThat(car.getPosition()).isEqualTo(2);
+        car.move();
+        assertThat(car.getPosition()).isEqualTo(3);
+    }
 }
