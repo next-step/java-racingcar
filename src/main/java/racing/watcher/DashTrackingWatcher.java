@@ -8,6 +8,8 @@ import java.util.List;
 
 public class DashTrackingWatcher extends RacingWatcher {
 
+	public static final String EMPTY_NEW_LINE = " ";
+
 	private ConsolePrinter printer;
 
 	public DashTrackingWatcher(ConsolePrinter printer){
@@ -24,10 +26,10 @@ public class DashTrackingWatcher extends RacingWatcher {
 
 		currentPositionOfPlayers
 				.stream()
-				.forEach(position -> System.out.println(this.render(position)));
+				.forEach(position -> printer.printMessage(this.render(position)));
 
 		// 라운드 업데이트 후 공백라인 출력
-		System.out.println();
+		printer.printMessage(EMPTY_NEW_LINE);
 	}
 
 	private String render(int position) {

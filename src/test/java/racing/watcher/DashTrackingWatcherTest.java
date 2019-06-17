@@ -11,6 +11,7 @@ import racing.watcher.events.StartedRacingEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -37,8 +38,11 @@ class DashTrackingWatcherTest {
 	void changedPositionEventHandling(){
 
 		// Arrange
-		ConsolePrinter mockPrinter = mock(ConsolePrinter.class);
-		DashTrackingWatcher watcher = new DashTrackingWatcher(mockPrinter);
+		StringBuilder verifyMessage = new StringBuilder();
+		DashTrackingWatcher watcher = new DashTrackingWatcher((message) -> {
+			verifyMessage.append(message);
+			verifyMessage.append("/");
+		});
 
 		List<Integer> positions = new ArrayList<>();
 		positions.add(0);
@@ -49,9 +53,6 @@ class DashTrackingWatcherTest {
 		watcher.handle(new ChangedPlayerPositionEvent(positions));
 
 		// Assertion
-		InOrder inOrder = Mockito.inOrder(mockPrinter);
-		inOrder.verify(mockPrinter).printMessage("-");
-		inOrder.verify(mockPrinter).printMessage("-");
-		inOrder.verify(mockPrinter).printMessage("--");
+		assertThat(verifyMessage.toString()).isEqualTo("-/-/--/" + DashTrackingWatcher.EMPTY_NEW_LINE + "/");
 	}
 }
