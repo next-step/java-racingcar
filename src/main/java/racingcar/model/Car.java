@@ -2,12 +2,11 @@ package racingcar.model;
 
 public class Car {
     private DrivingRule drivingRule;
-    private String name;
-    private int position = 0;
+    private CarInformation carInformation;
 
     private Car(DrivingRule drivingRule, String name) {
         this.drivingRule = drivingRule;
-        this.name = name;
+        this.carInformation = new CarInformation(name);
     }
 
     public static Car create(String name) {
@@ -21,15 +20,15 @@ public class Car {
         return new Car(drivingRule, name);
     }
 
-    public int move() {
+    public Position move() {
         if (!drivingRule.isMovable()) {
-            return position;
+            return carInformation.getPosition();
         }
-        return ++position;
+        return carInformation.increasePosition();
     }
 
     @Override
     public String toString() {
-        return name;
+        return carInformation.getName();
     }
 }

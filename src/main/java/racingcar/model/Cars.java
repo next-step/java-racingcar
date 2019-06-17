@@ -13,14 +13,17 @@ public class Cars {
         }
     }
 
-    public List<Integer> move() {
-        List<Integer> positions = new ArrayList<>();
+    public List<CarInformation> move() {
+        List<CarInformation> informationList = new ArrayList<>();
 
         for (Car car : cars) {
-            int position = car.move();
-            positions.add(position);
+            String name = car.toString();
+            Position position = car.move();
+
+            CarInformation information = new CarInformation(name, position);
+            informationList.add(information);
         }
 
-        return positions;
+        return informationList;
     }
 }

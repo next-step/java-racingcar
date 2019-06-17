@@ -1,6 +1,8 @@
 package racingcar.controller;
 
+import racingcar.model.CarInformation;
 import racingcar.model.Cars;
+import racingcar.model.Position;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -22,8 +24,8 @@ public class RacingGame {
         Cars cars = new Cars(carNames);
         OutputView.printResultMessage();
         for (int i = 0; i < numberOfTries; i++) {
-            List<Integer> positions = cars.move();
-            OutputView.printCarPositions(positions);
+            List<CarInformation> informationList = cars.move();
+            OutputView.printCars(informationList);
         }
 
         return true;
