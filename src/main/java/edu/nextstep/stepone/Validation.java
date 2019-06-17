@@ -14,13 +14,13 @@ import java.util.List;
  * create date  : 2019-06-14 15:09
  */
 public class Validation {
-    private static String SEPARATOR_SPLIT = " ";
+    private static final String SEPARATOR_SPLIT = " ";
 
     /*
     null & " " 데이터 체크
      */
     public boolean isNotBlank(String inputData) {
-        if ("".equals(inputData.trim()) || inputData == null) {
+        if (inputData == null || "".equals(inputData.trim())) {
             throw new IllegalArgumentException();
         }
         return true;

@@ -19,8 +19,8 @@ public class CalculatorApplication {
     private StringUtils utils = new StringUtils();
 
     private List<String> letter;
-    private static int FIRST_INDEX = 0;
-    private int LAST_INDEX = 2;
+    private static final int FIRST_INDEX = 0;
+    private static final int LAST_INDEX = 2;
     private int totalNumber = 0;
 
     public static void main(String[] args) {
