@@ -6,11 +6,9 @@ import java.util.Random;
 
 public class RacingGame {
 
-    private int carNumber;
     private List<Car> carsPosition;
 
     public RacingGame(int carNumber) {
-        this.carNumber = carNumber;
         carsPosition = new ArrayList <>();
         while (carNumber > 0) {
             carsPosition.add(new Car());
