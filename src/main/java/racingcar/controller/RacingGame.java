@@ -22,8 +22,10 @@ public class RacingGame {
 
         Cars cars = new Cars(carNames);
         OutputView.printResultMessage();
+
+        List<CarInformation> informationList = null;
         for (int i = 0; i < numberOfTries; i++) {
-            List<CarInformation> informationList = cars.move();
+            informationList = cars.move();
             OutputView.printCars(informationList);
         }
 

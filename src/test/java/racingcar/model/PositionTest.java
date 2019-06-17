@@ -18,4 +18,14 @@ class PositionTest {
 
         assertThat(position1 == position2).isTrue();
     }
+
+    @Test
+    void Position객체끼리_크기_비교가_가능하다() {
+        Integer smallNumber = 1;
+        Integer bigNumber = 10;
+        Position position1 = Position.valueOf(smallNumber);
+        Position position2 = Position.valueOf(bigNumber);
+
+        assertThat(position1.compareTo(position2)).isEqualTo(smallNumber.compareTo(bigNumber));
+    }
 }
