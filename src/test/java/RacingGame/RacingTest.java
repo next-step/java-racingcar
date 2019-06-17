@@ -45,33 +45,4 @@ class RacingTest {
         racing.setCars(cars);
         assertThat(racing.getCars().size()).isEqualTo(3);
     }
-
-    @Test
-    void getRandomNumber() {
-        int randomNumber = racing.getRandomNumber();
-        assertThat(randomNumber).isBetween(0, 9);
-        System.out.println(randomNumber);
-    }
-
-    @Test
-    void isMoveCar() {
-        boolean isMoveCar = racing.isMoveCar(1);
-        assertThat(isMoveCar).isFalse();
-        isMoveCar = racing.isMoveCar(2);
-        assertThat(isMoveCar).isFalse();
-        isMoveCar = racing.isMoveCar(3);
-        assertThat(isMoveCar).isFalse();
-        isMoveCar = racing.isMoveCar(4);
-        assertThat(isMoveCar).isFalse();
-        isMoveCar = racing.isMoveCar(5);
-        assertThat(isMoveCar).isTrue();
-        isMoveCar = racing.isMoveCar(6);
-        assertThat(isMoveCar).isTrue();
-        isMoveCar = racing.isMoveCar(7);
-        assertThat(isMoveCar).isTrue();
-        isMoveCar = racing.isMoveCar(8);
-        assertThat(isMoveCar).isTrue();
-        isMoveCar = racing.isMoveCar(9);
-        assertThat(isMoveCar).isTrue();
-    }
 }

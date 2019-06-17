@@ -2,7 +2,6 @@ package RacingGame;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Racing {
     private int time;
@@ -33,16 +32,5 @@ public class Racing {
         this.cars = cars;
     }
 
-    public int getRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(10);
-    }
 
-    public boolean isMoveCar(int randomNumber) {
-        if(randomNumber > 4){
-            return true;
-        }
-
-        return false;
-    }
 }

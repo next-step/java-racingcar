@@ -29,4 +29,34 @@ class CarTest {
         car.move();
         assertThat(car.getPosition()).isEqualTo(3);
     }
+
+
+    @Test
+    void getRandomNumber() {
+        int randomNumber = car.getRandomNumber();
+        assertThat(randomNumber).isBetween(0, 9);
+        System.out.println(randomNumber);
+    }
+
+    @Test
+    void isMoveCar() {
+        boolean isMoveCar = car.isMoveCar(1);
+        assertThat(isMoveCar).isFalse();
+        isMoveCar = car.isMoveCar(2);
+        assertThat(isMoveCar).isFalse();
+        isMoveCar = car.isMoveCar(3);
+        assertThat(isMoveCar).isFalse();
+        isMoveCar = car.isMoveCar(4);
+        assertThat(isMoveCar).isFalse();
+        isMoveCar = car.isMoveCar(5);
+        assertThat(isMoveCar).isTrue();
+        isMoveCar = car.isMoveCar(6);
+        assertThat(isMoveCar).isTrue();
+        isMoveCar = car.isMoveCar(7);
+        assertThat(isMoveCar).isTrue();
+        isMoveCar = car.isMoveCar(8);
+        assertThat(isMoveCar).isTrue();
+        isMoveCar = car.isMoveCar(9);
+        assertThat(isMoveCar).isTrue();
+    }
 }
