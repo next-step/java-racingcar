@@ -33,6 +33,10 @@ public class InputView {
     return players;
   }
 
+  public String[] getNames() {
+    return names;
+  }
+
   public boolean askQuestions() {
     // askNumberOfPlayers();
     askNameOfPlayers();
@@ -41,7 +45,6 @@ public class InputView {
     return true;
   }
 
-  @Deprecated
   void askNumberOfPlayers() {
     System.out.println("자동차 대수는 몇 대 인가요? \n");
     this.players = scanner.nextInt();
