@@ -9,6 +9,10 @@ public abstract class RacingCar {
 		return mileage;
 	}
 
+	protected void addMileage(int value){
+		mileage += value;
+	}
+
 	/**
 	 * 자동차 주행을 위해 가속페달을 밟는 것을 추상화한 메서드
 	 * @param amount 가속페달 가중치
