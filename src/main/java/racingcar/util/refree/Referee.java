@@ -16,7 +16,7 @@ public class Referee {
                 .collect(joining(", "));
     }
 
-    static int max(List<Car> cars) {
+    public static int max(List<Car> cars) {
         return cars.stream()
                 .mapToInt(Car::getPosition)
                 .max().orElse(1);
