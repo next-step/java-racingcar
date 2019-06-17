@@ -1,7 +1,7 @@
-package step1.validator;
+package calculator.validator;
 
-import step1.enums.OperationSymbol;
-import step1.util.StringUtil;
+import calculator.enums.OperationSymbol;
+import calculator.util.StringUtil;
 
 import java.util.List;
 import java.util.stream.IntStream;

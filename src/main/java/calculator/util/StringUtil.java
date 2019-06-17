@@ -1,4 +1,4 @@
-package step1.util;
+package calculator.util;
 
 public class StringUtil {
 

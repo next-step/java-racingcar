@@ -1,14 +1,14 @@
-package step1;
+package calculator;
 
-import step1.enums.OperationSymbol;
+import calculator.enums.OperationSymbol;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static step1.util.StringUtil.isConsistOnlyWhiteSpace;
-import static step1.validator.Validator.validateInput;
-import static step1.validator.Validator.validateToken;
+import static calculator.util.StringUtil.isConsistOnlyWhiteSpace;
+import static calculator.validator.Validator.validateInput;
+import static calculator.validator.Validator.validateToken;
 
 public class Calculator {
 

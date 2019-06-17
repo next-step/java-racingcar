@@ -1,7 +1,7 @@
-package step1.enums;
+package calculator.enums;
 
 import java.util.Arrays;
-import java.util.function.*;
+import java.util.function.BiFunction;
 
 public enum OperationSymbol {
 
