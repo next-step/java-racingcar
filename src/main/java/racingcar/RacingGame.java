@@ -32,8 +32,9 @@ public class RacingGame {
       ResultView.printCurrentRound(round);
       drive(cars);
       ResultView.addLineBreak();
-
     }
+
+    ResultView.printWinner(cars);
   }
 
   static void drive(List<Car> cars) {
