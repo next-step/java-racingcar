@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Racing {
     private int time;
+    private List<Car> cars;
 
     public int getTime() {
         return time;
@@ -21,5 +22,13 @@ public class Racing {
         }
 
         return cars;
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
     }
 }

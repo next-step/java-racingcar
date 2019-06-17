@@ -30,9 +30,22 @@ class RacingTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
-    void setCars(int carCount) {
+    void makeCarList(int carCount) {
         List<Car> cars = racing.arrayWithCar(carCount);
         assertThat(cars.size()).isEqualTo(carCount);
         assertThat(cars.get(0).getPosition()).isEqualTo(0);
     }
+
+    @Test
+    void setCars() {
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car());
+        cars.add(new Car());
+        cars.add(new Car());
+
+        racing.setCars(cars);
+        assertThat(racing.getCars().size()).isEqualTo(3);
+    }
+
+
 }
