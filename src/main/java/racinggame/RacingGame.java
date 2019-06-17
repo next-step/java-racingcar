@@ -5,14 +5,13 @@ import java.util.List;
 
 public class RacingGame {
     private int currentRound = 0;
-    private List<Car> carList;
+    private CarLists carLists;
     private RacingGameParameters racingGameParameters;
     private List<List<Integer>> gameResult;
 
     public RacingGame(RacingGameParameters racingGameParameters) {
         this.racingGameParameters = racingGameParameters;
-        this.carList = createCars(racingGameParameters.getCarQuantity());
-        this.gameResult = new ArrayList<>();
+        this.carLists = new CarLists(racingGameParameters.getCarQuantity());
         this.saveCurrentResult();
     }
 
@@ -26,7 +25,7 @@ public class RacingGame {
 
     private void playRound() {
         this.currentRound += 1;
-        for (Car car : this.carList) {
+        for (Car car : this.carLists.getCarList()) {
             car.move();
         }
     }
@@ -40,7 +39,7 @@ public class RacingGame {
 
     private void saveCurrentResult() {
         List<Integer> carPositionList = new ArrayList<>();
-        for (Car car : this.carList) {
+        for (Car car : this.carLists.getCarList()) {
             carPositionList.add(car.getPosition());
         }
         this.gameResult.add(carPositionList);
