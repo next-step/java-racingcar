@@ -13,13 +13,13 @@ class InputViewTest {
     private InputView inputView;
 
     @Test
-    @DisplayName("차량대수 입력 검증")
+    @DisplayName("차량명 입력 검증")
     void askCarCount() {
 
-        String input = "3";
+        String input = "pobi,crong,honux";
         mockInput(input);
 
-        assertThat(inputView.askCarCount()).isEqualTo(Integer.valueOf(input));
+        assertThat(inputView.askCarNames()).containsExactly("pobi", "crong", "honux");
     }
 
     @Test

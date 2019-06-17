@@ -7,15 +7,17 @@ import racing.service.RacingService;
 import racing.ui.InputView;
 import racing.ui.ResultView;
 
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
 
         InputView inputView = new InputView(new SystemConsoleInputter());
-        int carCount = inputView.askCarCount();
+        List<String> carNames = inputView.askCarNames();
         int attempts = inputView.askAttempts();
 
-        RacingInfo racingInfo = RacingInfo.of(carCount, attempts);
+        RacingInfo racingInfo = RacingInfo.of(carNames, attempts);
         RacingService racingService = new RacingService(racingInfo);
         RacingResult racingResult = racingService.run();
 

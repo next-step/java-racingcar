@@ -5,6 +5,7 @@ import racing.exception.ScanException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.*;
+import java.util.List;
 import java.util.stream.Stream;
 
 /**
@@ -26,5 +27,11 @@ public class FileInputter implements Inputter {
         } catch (URISyntaxException | IOException e) {
             throw new ScanException(e);
         }
+    }
+
+    @Override
+    public List<String> inputDelimiterSeparatedStringValue(String delimiter) {
+
+        return null;
     }
 }
