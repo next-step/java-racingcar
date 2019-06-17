@@ -8,6 +8,7 @@ public class Car {
   private static final int INITIAL_POSITION = 1;
 
   private int carNo;
+  private String name;
   private int position;
 
   private DrivingStrategy drivingStrategy;
@@ -15,6 +16,12 @@ public class Car {
 
   public Car(int carNo) {
     this.carNo = carNo;
+    this.position = INITIAL_POSITION;
+    this.drivingStrategy = RandomStrategy.getInstance();
+  }
+
+  public Car(String name) {
+    this.name = name;
     this.position = INITIAL_POSITION;
     this.drivingStrategy = RandomStrategy.getInstance();
   }
@@ -57,4 +64,6 @@ public class Car {
   public int getPosition() {
     return position;
   }
+
+  public String getName() { return name; }
 }
