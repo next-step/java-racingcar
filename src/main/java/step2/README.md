@@ -15,3 +15,5 @@
         * turn() 기능 : 한 time(한 turn) 이 지난 후 List\<Car\> 반환
     * RacingGameRecord
         * 각 turn 마다 Car 의 경주 기록, Cars(List\<Car\>) 를 기록
+    * MoveStrategy
+        * Car 객체가 전진할지 말지 판단하는 전략을 외부에서 주입받음
