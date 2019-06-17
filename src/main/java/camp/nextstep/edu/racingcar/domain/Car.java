@@ -1,30 +1,28 @@
 package camp.nextstep.edu.racingcar.domain;
 
+import camp.nextstep.edu.util.AssertUtils;
 import camp.nextstep.edu.util.StringUtils;
 
 import java.util.Objects;
 
 public class Car {
-    private static final int POSITION_INITIAL_VALUE = 0;
-    private static final int POSITION_MINIMUM_VALUE = 0;
 
     private final String name;
-    private final int position;
+    private final Position position;
 
-    private Car(String name, int position) {
+    private Car(String name, Position position) {
         if (StringUtils.isEmpty(name)) {
             throw new IllegalArgumentException("'name' must not be null or empty");
         }
-        if (position < POSITION_MINIMUM_VALUE) {
-            throw new IllegalArgumentException("'position' must be greater than or equal to " + POSITION_MINIMUM_VALUE +
-                    ". position:" + position);
-        }
+        AssertUtils.notNull(position, "'position' must not be null");
+
         this.name = name;
         this.position = position;
     }
 
     public static Car from(String name) {
-        return new Car(name, POSITION_INITIAL_VALUE);
+        final Position origin = Position.origin();
+        return new Car(name, origin);
     }
 
     public String getName() {
@@ -32,11 +30,12 @@ public class Car {
     }
 
     public int getPosition() {
-        return position;
+        return position.getValue();
     }
 
     public Car move(int distance) {
-        return new Car(name, position + distance);
+        final Position movedPosition = position.add(distance);
+        return new Car(name, movedPosition);
     }
 
     @Override
@@ -52,8 +51,8 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return position == car.position &&
-                name.equals(car.name);
+        return name.equals(car.name) &&
+                position.equals(car.position);
     }
 
     @Override
