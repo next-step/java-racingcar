@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racinggame.model.Car;
+import racinggame.model.Cars;
 import racinggame.util.RandomValueUtil;
 
 import java.util.stream.IntStream;
@@ -37,5 +38,13 @@ public class RacingGameTest {
 		}
 
 		assertThat(car.getStatus()).isEqualTo(movePoint);
+	}
+
+	@DisplayName("자동차 생성 테스트")
+	@ParameterizedTest
+	@ValueSource(ints = {3, 4, 7})
+	void createCars(int carCount) {
+		final Cars cars = new Cars(carCount);
+		assertThat(cars.getCarsStatus().length).isEqualTo(carCount);
 	}
 }
