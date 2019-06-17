@@ -19,7 +19,7 @@ public class Position {
         return ORIGIN;
     }
 
-    public int getValue() {
+    public int value() {
         return value;
     }
 

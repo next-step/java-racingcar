@@ -12,7 +12,7 @@ class PositionTest {
     void constructor() {
         final Position position = Position.origin();
         assertThat(position).isNotNull();
-        assertThat(position.getValue()).isEqualTo(0);
+        assertThat(position.value()).isEqualTo(0);
     }
 
     @DisplayName("add 메서드를 호출하면, 현재 값보다 distance 만큼 더해진 새 Position 객체가 생성되어야함")
@@ -24,7 +24,7 @@ class PositionTest {
         final Position result = position.add(2);
         // then
         assertThat(result).isNotNull();
-        assertThat(result.getValue()).isEqualTo(2);
+        assertThat(result.value()).isEqualTo(2);
     }
 
     @DisplayName("add 메서드를 호출해도, 원본 객체는 값을 그대로 유지해야함")
@@ -35,8 +35,8 @@ class PositionTest {
         // when
         final Position result = position.add(2);
         // then
-        assertThat(result.getValue()).isEqualTo(2);
-        assertThat(position.getValue()).isEqualTo(0);
+        assertThat(result.value()).isEqualTo(2);
+        assertThat(position.value()).isEqualTo(0);
     }
 
     @DisplayName("add 의 결과가 음수 좌표값을 가지게 되면, IllegalArgumentException 을 발생시켜야함")
@@ -50,6 +50,6 @@ class PositionTest {
                 // then 1
                 .withMessageContaining("must be greater than or equal to");
         // then 2
-        assertThat(position.getValue()).isEqualTo(0);
+        assertThat(position.value()).isEqualTo(0);
     }
 }
