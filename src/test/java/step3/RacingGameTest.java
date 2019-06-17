@@ -12,12 +12,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingGameTest {
 
     private RacingGame racingGame;
-    private static final int CAR_NUMBER = 3;
+    private static final String CAR_NAME = "feelydh,dhlee,jwlee";
 
     @BeforeEach
     void init(){
         racingGame = new RacingGame();
-        racingGame.carPositionsInit(CAR_NUMBER);
+        racingGame.carPositionsInit(CAR_NAME);
     }
 
     @Test
