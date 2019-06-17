@@ -12,6 +12,6 @@ public class RacingRunner {
             racingView.printCarQuestionAndGetAnswer(), 
             racingView.printTimeQuestionAndGetAnswer()
         );
-        controller.stratGame();
+        controller.processGame();
     }
 }

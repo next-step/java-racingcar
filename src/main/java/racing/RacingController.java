@@ -1,10 +1,13 @@
 package racing;
 
+import racing.common.Cars;
 import racing.common.ErrorMessage;
 import racing.common.RacingManager;
 import racing.common.RacingValidator;
 import racing.view.RacingView;
 
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingController {
@@ -28,9 +31,17 @@ public class RacingController {
         return racingManager;
     }
     
-    public void startGame() {
+    public void processGame() {
+        processCarMoving();
+        Cars winners = racingManager.getWinners();
+        String carNames = winners.getCars().stream().map(car -> car.getName()).reduce((name1, name2) -> name1 += "," + name2).get();
+        racingView.printWinner(carNames);
+    }
+    
+    private void processCarMoving() {
         IntStream.range(0, time).forEach(i -> {
             racingManager.moveCars();
+            racingView.printMovingStatus(racingManager.getCars());
         });
     }
     

@@ -1,5 +1,6 @@
 package racing.view;
 
+import racing.common.Cars;
 import racing.common.Question;
 
 public class RacingView {
@@ -19,5 +20,13 @@ public class RacingView {
     public int printTimeQuestionAndGetAnswer() {
         InputView.printQuestion(Question.TIME_COUNT.getQuestion());
         return InputView.requireInputInteger();
+    }
+    
+    public void printWinner(String winnerNames) {
+        resultView.printWinners(winnerNames);
+    }
+    
+    public void printMovingStatus(Cars cars) {
+        resultView.printMovingStatus(cars);
     }
 }

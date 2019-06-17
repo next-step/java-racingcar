@@ -10,6 +10,12 @@ public class Car {
         this.name = name;
         this.position = DEFAULT_POSITION;
     }
+    
+    public Car(String name, int position) {
+        this.name = name;
+        this.position = position;
+    }
+    
     public void forward() {
         position++;
     }
