@@ -8,7 +8,7 @@ public class CarHandler {
     public static final int MIN_RANDOM_INTEGER = 0;
     public static final int MAX_RANDOM_INTEGER = 10;
     public static final int MIN_MOVE_NUMBER = 4;
-    private static Random random = new Random();
+    private static final Random random = new Random();
 
     private static int getRandomInt() {
         return random.nextInt(MAX_RANDOM_INTEGER);

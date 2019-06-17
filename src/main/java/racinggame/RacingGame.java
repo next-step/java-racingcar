@@ -1,9 +1,9 @@
 package racinggame;
 
 public class RacingGame {
-    private CarLists carLists;
-    private RacingGameParameters racingGameParameters;
-    private GameResults gameResults;
+    private final CarLists carLists;
+    private final RacingGameParameters racingGameParameters;
+    private final GameResults gameResults;
 
     public RacingGame(RacingGameParameters racingGameParameters) {
         this.racingGameParameters = racingGameParameters;

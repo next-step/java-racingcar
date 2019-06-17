@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameResult {
-    private List<Integer> gameResult;
+    private final List<Integer> gameResult;
 
     public GameResult(CarLists carLists) {
         List<Integer> carPositionList = new ArrayList<>();
