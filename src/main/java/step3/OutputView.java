@@ -27,23 +27,10 @@ public class OutputView {
     }
 
     public static void racingWinnerResult(List<CarDto> carsPosition){
-        int winnerPostion = maxPostion(carsPosition);
-        String winners = carsPosition.stream()
-                                        .filter(f -> isWinnerPosition(f, winnerPostion))
-                                        .map(CarDto::getName)
-                                        .collect(Collectors.joining(", "));
+        RacingWinner racingWinner = new RacingWinner();
+        String winners = racingWinner.racingWinner(carsPosition);
         System.out.println(winners + "가 최종 우승 했습니다.");
     }
 
-    private static int maxPostion(List<CarDto> carsPosition){
-        return carsPosition.stream()
-                            .mapToInt(v -> v.getPosition())
-                            .max()
-                            .getAsInt();
-    }
-
-    private static boolean isWinnerPosition(CarDto carDto, int winnerPostion){
-        return carDto.getPosition() == winnerPostion;
-    }
 
 }
