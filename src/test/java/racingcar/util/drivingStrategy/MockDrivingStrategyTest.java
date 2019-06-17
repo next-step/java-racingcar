@@ -1,9 +1,7 @@
-package racingcar.mocks;
+package racingcar.util.drivingStrategy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.Car;
-import racingcar.util.DrivingStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

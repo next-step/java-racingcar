@@ -1,6 +1,4 @@
-package racingcar.mocks;
-
-import racingcar.util.DrivingStrategy;
+package racingcar.util.drivingStrategy;
 
 /**
  *
