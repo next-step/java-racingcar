@@ -1,6 +1,5 @@
 package com.jaeyeonling.racingcar.domain;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -15,10 +14,10 @@ class Participants {
                  final MoveStrategy moveStrategy) {
         participants = IntStream.rangeClosed(PARTICIPANTS_START_INCLUSIVE, numberOfParticipants)
                 .mapToObj(i -> new Car(moveStrategy))
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableList());
     }
 
     List<Car> toList() {
-        return Collections.unmodifiableList(participants);
+        return participants;
     }
 }
