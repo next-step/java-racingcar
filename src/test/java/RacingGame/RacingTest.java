@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class RacingTest {
 
@@ -47,5 +46,10 @@ class RacingTest {
         assertThat(racing.getCars().size()).isEqualTo(3);
     }
 
-
+    @Test
+    void getRandomNumber() {
+        int randomNumber = racing.getRandomNumber();
+        assertThat(randomNumber).isBetween(0, 9);
+        System.out.println(randomNumber);
+    }
 }

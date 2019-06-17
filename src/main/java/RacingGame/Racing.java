@@ -2,6 +2,7 @@ package RacingGame;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Racing {
     private int time;
@@ -30,5 +31,10 @@ public class Racing {
 
     public void setCars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public int getRandomNumber() {
+        Random random = new Random();
+        return random.nextInt(10);
     }
 }
