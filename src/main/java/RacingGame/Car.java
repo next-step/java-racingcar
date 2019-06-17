@@ -13,8 +13,9 @@ public class Car {
         return position;
     }
 
-    public void move() {
-        this.position += 1;
+    public void move(boolean isMove) {
+        if(isMove)
+            this.position += 1;
     }
 
     public int getRandomNumber() {

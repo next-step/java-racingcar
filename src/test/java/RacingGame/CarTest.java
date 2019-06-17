@@ -21,13 +21,23 @@ class CarTest {
     }
 
     @Test
-    void move() {
-        car.move();
+    void moveWithTrue() {
+        car.move(true);
         assertThat(car.getPosition()).isEqualTo(1);
-        car.move();
+        car.move(true);
         assertThat(car.getPosition()).isEqualTo(2);
-        car.move();
+        car.move(true);
         assertThat(car.getPosition()).isEqualTo(3);
+    }
+
+    @Test
+    void moveWithFalse() {
+        car.move(false);
+        assertThat(car.getPosition()).isEqualTo(0);
+        car.move(false);
+        assertThat(car.getPosition()).isEqualTo(0);
+        car.move(false);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
 
@@ -35,7 +45,6 @@ class CarTest {
     void getRandomNumber() {
         int randomNumber = car.getRandomNumber();
         assertThat(randomNumber).isBetween(0, 9);
-        System.out.println(randomNumber);
     }
 
     @Test
