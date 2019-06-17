@@ -23,6 +23,8 @@ public class Stage {
 		return round;
 	}
 
+	public void playRound() {
+	}
 
 	/**
 	 * @param entrySize	참여가능한 최대 플레이어 수
@@ -33,6 +35,7 @@ public class Stage {
 
 		return new StageBuilder(entrySize, round);
 	}
+
 
 	public static class StageBuilder{
 
