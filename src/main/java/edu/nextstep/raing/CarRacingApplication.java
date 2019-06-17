@@ -22,8 +22,9 @@ public class CarRacingApplication {
 
     public static void main(String[] args) {
         CarRacingApplication app = new CarRacingApplication();
-        int[] settingNumber = app.input.setNumber();
-        app.start(settingNumber[0], settingNumber[1]);
+        int carCount = app.input.setCarNumber();
+        int moveCount = app.input.setMoveNumber();
+        app.start(carCount, moveCount);
     }
 
     public void start(int carCount, int moveCount) {
