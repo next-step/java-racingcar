@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
@@ -31,8 +32,8 @@ class StageTest {
 		assertThat(stage.remainingRounds()).isEqualTo(round);
 	}
 
-	@DisplayName("게임 진행관련 기능 테스트")
 	@Test
+	@DisplayName("게임 진행관련 기본기능 테스트")
 	void playRound(){
 
 		// Arrange
@@ -53,6 +54,25 @@ class StageTest {
 		assertThat(stage.remainingRounds()).isEqualTo(4);
 		verify(car1, times(1)).run();
 		verify(car2, times(1)).run();
+	}
+
+	@Test
+	@DisplayName("지정된 라운드를 초과하는 게임 수행 테스트")
+	void outOfRound(){
+		// Arrange
+		int roundLimit = 5;
+		Stage.StageBuilder builder = Stage.builder(1, roundLimit);
+		builder.addToEntry(mock(RacingCar.class));
+		Stage stage = builder.build();
+
+		// Action & Assertion
+		assertThatExceptionOfType(PlayOverException.class)
+				.isThrownBy(() -> {
+					for(int i = 0; i < (roundLimit + 1); i++){
+						stage.playRound();
+					}
+				});
+
 	}
 
 }
