@@ -5,24 +5,20 @@ import racing.model.Car;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class EntireCars {
 
     private List<Car> cars = new ArrayList<>();
 
-    public static EntireCars createCars(List<String> carNames) {
+    public static EntireCars of(List<String> carNames) {
 
         EntireCars entireCars = new EntireCars();
-        entireCars.cars = carNames.stream()
-                .map(Car::of)
-                .collect(Collectors.toList());
-
+        entireCars.cars = carNames.stream().map(Car::of).collect(Collectors.toList());
         return entireCars;
     }
 
-    public Stream<Car> stream() {
+    public List<Car> getCars() {
 
-        return cars.stream();
+        return cars;
     }
 }

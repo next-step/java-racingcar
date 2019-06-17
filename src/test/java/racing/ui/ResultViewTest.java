@@ -3,9 +3,12 @@ package racing.ui;
 import org.junit.jupiter.api.*;
 import racing.dto.EntireCars;
 import racing.dto.RacingResult;
+import racing.model.Car;
 
 import java.io.*;
 import java.util.Arrays;
+import java.util.Objects;
+import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,6 +18,9 @@ class ResultViewTest {
     private ResultView resultView;
 
     private OutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+    private int shouldMove = 5;
+    private EntireCars entireCars = EntireCars.of(Arrays.asList("pobi", "crong", "honux"));
+
 
     @BeforeEach
     void setUp() {
@@ -23,26 +29,51 @@ class ResultViewTest {
     }
 
     @Test
-    @DisplayName("레이싱 결과 출력")
-    void printRacingResult() {
+    @DisplayName("공동우승 시 레이싱 결과출력 검증")
+    void printRacingResult_multi_winner() {
 
-        int shouldMoveNumber = 5;
-
-        EntireCars entireCars = EntireCars.createCars(Arrays.asList("pobi", "crong", "honux"));
-        IntStream.range(0, 6).forEach( i->
-            entireCars.stream().forEach(car -> car.race(shouldMoveNumber)));
+        testRace(6, Objects::nonNull);
 
         RacingResult racingResult = new RacingResult();
-        racingResult.addCurrentRacingPosition(entireCars);
+        racingResult.addCurrentRacingScore(entireCars);
 
-        resultView.printRacingResult(racingResult);
+        resultView.print(racingResult);
 
         assertThat(byteArrayOutputStream.toString())
                 .isEqualTo("\n"
-                         + "crong : -------\n"
-                         + "pobi : -------\n"
-                         + "honux : -------\n"
-                         + "\n"
-                         + "crong, pobi, honux가 최종우승 했습니다.");
+                                   + "pobi : -------\n"
+                                   + "crong : -------\n"
+                                   + "honux : -------\n"
+                                   + "\n"
+                                   + "pobi, crong, honux가 최종우승 했습니다.");
+    }
+
+    @Test
+    @DisplayName("단독우승 시 레이싱 결과출력 검증")
+    void printRacingResult() {
+
+        testRace(6, car -> "pobi".equals(car.getName()));
+
+        RacingResult racingResult = new RacingResult();
+        racingResult.addCurrentRacingScore(entireCars);
+
+        resultView.print(racingResult);
+
+        assertThat(byteArrayOutputStream.toString())
+                .isEqualTo("\n"
+                                   + "pobi : -------\n"
+                                   + "crong : -\n"
+                                   + "honux : -\n"
+                                   + "\n"
+                                   + "pobi가 최종우승 했습니다.");
+    }
+
+    private void testRace(int raceCount, Predicate<Car> shouldRacePredicate) {
+
+        IntStream.range(0, raceCount).forEach(
+                i -> entireCars.getCars()
+                        .stream()
+                        .filter(shouldRacePredicate)
+                        .forEach(car -> car.race(shouldMove)));
     }
 }

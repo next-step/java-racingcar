@@ -1,0 +1,24 @@
+package racing.dto;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class RacingScore {
+
+    private List<CarNamePosition> carNamePositions;
+
+    public static RacingScore of(EntireCars entireCars) {
+
+        RacingScore racingScore = new RacingScore();
+        racingScore.carNamePositions = entireCars.getCars()
+                .stream()
+                .map(CarNamePosition::of)
+                .collect(Collectors.toList());
+        return racingScore;
+    }
+
+    public List<CarNamePosition> getCarNamePositions() {
+
+        return carNamePositions;
+    }
+}

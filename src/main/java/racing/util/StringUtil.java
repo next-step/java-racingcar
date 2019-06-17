@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 public class StringUtil {
 
+    private StringUtil() {}
+
     public static List<String> split(String s, String delimiter) {
 
         return Arrays.stream(s.split(delimiter))

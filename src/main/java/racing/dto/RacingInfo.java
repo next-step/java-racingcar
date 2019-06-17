@@ -1,7 +1,5 @@
 package racing.dto;
 
-import racing.util.StringUtil;
-
 import java.util.List;
 
 public class RacingInfo {
@@ -11,7 +9,6 @@ public class RacingInfo {
 
     static final String CAR_NAMES_EXCEPTION_MESSAGE = String.format("차량이름 수는 %d 보다 커야 합니다.", VALID_CAR_NAMES_COUNT);
     static final String ATTEMPTS_EXCEPTION_MESSAGE = String.format("시도 횟수는 %d 보다 커야 합니다.", VALID_ATTEMPTS);
-    private static final String CAR_NAMES_DELIMITER = ",";
 
     private List<String> carNames;
     private int attempts;
@@ -22,17 +19,16 @@ public class RacingInfo {
         this.attempts = attempts;
     }
 
-    public static RacingInfo of(String carNames, int attempts) {
+    public static RacingInfo of(List<String> carNames, int attempts) {
 
-        List<String> splitCarNames = StringUtil.split(carNames, CAR_NAMES_DELIMITER);
-        if (!isValidCarNames(splitCarNames)) {
+        if (!isValidCarNames(carNames)) {
             throw new IllegalArgumentException(CAR_NAMES_EXCEPTION_MESSAGE);
         }
         if (!isValidAttempts(attempts)) {
             throw new IllegalArgumentException(ATTEMPTS_EXCEPTION_MESSAGE);
         }
 
-        return new RacingInfo(splitCarNames, attempts);
+        return new RacingInfo(carNames, attempts);
     }
 
     private static boolean isValidCarNames(List<String> splitCarNames) {

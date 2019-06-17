@@ -19,7 +19,7 @@ class InputViewTest {
         String input = "pobi,crong,honux";
         mockInput(input);
 
-        assertThat(inputView.askCarNames()).isEqualTo("pobi,crong,honux");
+        assertThat(inputView.askCarNames()).containsExactly("pobi","crong","honux");
     }
 
     @Test

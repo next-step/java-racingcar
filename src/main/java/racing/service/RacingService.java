@@ -28,7 +28,7 @@ public class RacingService {
 
     public RacingResult run() {
 
-        EntireCars entireCars = EntireCars.createCars(racingInfo.getCarNames());
+        EntireCars entireCars = EntireCars.of(racingInfo.getCarNames());
 
         return race(entireCars);
     }
@@ -36,12 +36,12 @@ public class RacingService {
     private RacingResult race(EntireCars entireCars) {
 
         RacingResult racingResult = new RacingResult();
-        racingResult.addCurrentRacingPosition(entireCars);
+        racingResult.addCurrentRacingScore(entireCars);
 
         IntStream.range(START_RACE_COUNT, racingInfo.getAttempts())
                 .forEach(currentRaceCount -> {
                     raceEntireCars(entireCars);
-                    racingResult.addCurrentRacingPosition(entireCars);
+                    racingResult.addCurrentRacingScore(entireCars);
                 });
 
         return racingResult;
@@ -49,6 +49,6 @@ public class RacingService {
 
     private void raceEntireCars(EntireCars entireCars) {
 
-        entireCars.stream().forEach(car -> car.race(valueGenerator.generateIntValue()));
+        entireCars.getCars().forEach(car -> car.race(valueGenerator.generateIntValue()));
     }
 }
