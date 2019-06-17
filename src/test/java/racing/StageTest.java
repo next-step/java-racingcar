@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
@@ -52,8 +53,8 @@ class StageTest {
 
 		// Assertion
 		assertThat(stage.remainingRounds()).isEqualTo(4);
-		verify(car1, times(1)).run();
-		verify(car2, times(1)).run();
+		verify(car1, times(1)).accelerate(anyInt());
+		verify(car2, times(1)).accelerate(anyInt());
 	}
 
 	@Test

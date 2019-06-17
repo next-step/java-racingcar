@@ -30,7 +30,7 @@ public class Stage {
 		}
 
 		for(RacingCar car : players){
-			car.run();
+			car.accelerate(1);
 		}
 
 		round -= 1;
