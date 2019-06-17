@@ -6,8 +6,8 @@ public class RacingGame {
 
     public static final int GAME_END_ROUND = 0;
     public static final int INPUT_MIN_VALUE = 0;
-    private int round;
     private Cars cars;
+    private int round;
 
     RacingGame(int round, Cars cars) {
         this.round = round;
