@@ -1,32 +1,31 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cars {
 
-  private Car[] cars;
+  private List<Car> cars = new ArrayList<>();
 
   public Cars(int numberOfCar) {
-    cars = new Car[numberOfCar];
-    makeCars();
+    makeCars(numberOfCar);
   }
 
-  private void makeCars() {
-    for (int i = 0; i < cars.length; i++) {
-      cars[i] = new Car();
+  private void makeCars(int numberOfCar) {
+    for (int i = 0; i < numberOfCar; i++) {
+      cars.add(i, new Car());
     }
   }
 
-  public int[] move() {
-    int[] moveDistance = new int[cars.length];
-    for (int i = 0; i < cars.length; i++) {
-      moveDistance[i] = cars[i].move(RandomNumberGenerator.randomValue());
-    }
-    return moveDistance;
+  public void moveCars() {
+    cars.stream()
+        .forEach(car -> car.move(RandomNumberGenerator.randomValue()));
   }
 
   public int[] getCarsPosition() {
-    int[] carsPosition = new int[cars.length];
-    for (int i = 0; i < cars.length; i++) {
-      carsPosition[i] = cars[i].getPosition();
+    int[] carsPosition = new int[cars.size()];
+    for (int i = 0; i < cars.size(); i++) {
+      carsPosition[i] = cars.get(i).getPosition();
     }
     return carsPosition;
   }
