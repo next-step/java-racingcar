@@ -4,11 +4,10 @@ public class ResultView {
 
     public void result(int[] carPositions){
 
-        System.out.println("==========");
-
         for(int i =0; i < carPositions.length; i++){
             outputView(carPositions[i]);
         }
+        System.out.println();
     }
 
     private void outputView(int num){
