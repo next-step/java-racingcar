@@ -15,8 +15,7 @@ public class DashTrackingWatcher extends RacingWatcher {
 	}
 
 	private void handle(StartedRacingEvent event){
-		System.out.println();
-		System.out.println("실행 결과");
+		printer.printMessage("실행 결과");
 	}
 
 	private void handle(ChangedPlayerPositionEvent event) {
