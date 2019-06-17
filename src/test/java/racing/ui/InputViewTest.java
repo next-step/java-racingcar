@@ -13,7 +13,7 @@ class InputViewTest {
     private InputView inputView;
 
     @Test
-    @DisplayName("차량명 입력 검증")
+    @DisplayName("차량이름 입력 검증")
     void askCarNames() {
 
         String input = "pobi,crong,honux";
@@ -23,7 +23,7 @@ class InputViewTest {
     }
 
     @Test
-    @DisplayName("차량명 입력 시 Exception 발생한다면 ScanException 으로 변환")
+    @DisplayName("차량이름 입력 시 Exception 발생한다면 ScanException 으로 변환")
     void askCarCount_exception() {
 
         mockInput("");

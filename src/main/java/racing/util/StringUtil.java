@@ -6,9 +6,10 @@ import java.util.stream.Collectors;
 
 public class StringUtil {
 
-    public static List<String> tokenize(String s, String delimiter) {
+    public static List<String> split(String s, String delimiter) {
 
         return Arrays.stream(s.split(delimiter))
+                .filter(result -> !result.isEmpty())
                 .collect(Collectors.toList());
     }
 }

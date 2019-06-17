@@ -6,10 +6,10 @@ import java.util.List;
 
 public class RacingInfo {
 
-    static final int VALID_CAR_COUNT = 1;
+    static final int VALID_CAR_NAMES_COUNT = 1;
     static final int VALID_ATTEMPTS = 1;
 
-    static final String CAR_COUNT_EXCEPTION_MESSAGE = String.format("차량 개수는 %d 보다 커야 합니다.", VALID_CAR_COUNT);
+    static final String CAR_NAMES_EXCEPTION_MESSAGE = String.format("차량이름 수는 %d 보다 커야 합니다.", VALID_CAR_NAMES_COUNT);
     static final String ATTEMPTS_EXCEPTION_MESSAGE = String.format("시도 횟수는 %d 보다 커야 합니다.", VALID_ATTEMPTS);
     private static final String CAR_NAMES_DELIMITER = ",";
 
@@ -31,8 +31,8 @@ public class RacingInfo {
 
     public static RacingInfo of(int carCount, int attempts) {
 
-        if (carCount < VALID_CAR_COUNT) {
-            throw new IllegalArgumentException(CAR_COUNT_EXCEPTION_MESSAGE);
+        if (carCount < VALID_CAR_NAMES_COUNT) {
+            throw new IllegalArgumentException(CAR_NAMES_EXCEPTION_MESSAGE);
         }
         if (attempts < VALID_ATTEMPTS) {
             throw new IllegalArgumentException(ATTEMPTS_EXCEPTION_MESSAGE);
@@ -43,15 +43,30 @@ public class RacingInfo {
 
     public static RacingInfo of(String carNames, int attempts) {
 
-        List<String> tokenizedCarNames = StringUtil.tokenize(carNames, CAR_NAMES_DELIMITER);
-        if (tokenizedCarNames.size() < VALID_CAR_COUNT) {
-            throw new IllegalArgumentException(CAR_COUNT_EXCEPTION_MESSAGE);
+        List<String> splitCarNames = StringUtil.split(carNames, CAR_NAMES_DELIMITER);
+        if (!isValidCarNames(splitCarNames)) {
+            throw new IllegalArgumentException(CAR_NAMES_EXCEPTION_MESSAGE);
         }
-        if (attempts < VALID_ATTEMPTS) {
+        if (!isValidAttempts(attempts)) {
             throw new IllegalArgumentException(ATTEMPTS_EXCEPTION_MESSAGE);
         }
 
-        return new RacingInfo(tokenizedCarNames, attempts);
+        return new RacingInfo(splitCarNames, attempts);
+    }
+
+    private static boolean isValidCarNames(List<String> splitCarNames) {
+
+        return splitCarNames.size() >= VALID_CAR_NAMES_COUNT;
+    }
+
+    private static boolean isValidAttempts(int attempts) {
+
+        return attempts >= VALID_ATTEMPTS;
+    }
+
+    public List<String> getCarNames() {
+
+        return carNames;
     }
 
     public int getCarCount() {
