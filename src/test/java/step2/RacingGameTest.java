@@ -23,9 +23,9 @@ public class RacingGameTest {
     @Test
     @DisplayName("postion 값 셋팅 테스트(처음 position 무조건 1로 셋팅)")
     void firstMoveTest() {
-        List<CarDto> carPositionList = racingGame.move();
-        for(CarDto carDto : carPositionList){
-            assertThat(carDto.getPosition()).isEqualTo(1);
+        List<Car> carPositionList = racingGame.move();
+        for(Car car : carPositionList){
+            assertThat(car.getPosition()).isEqualTo(1);
         }
     }
 

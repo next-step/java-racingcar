@@ -4,7 +4,7 @@ import java.util.List;
 
 public class OutputView {
 
-    static void racingResult(List<CarDto> carsPosition) {
+    static void racingResult(List<Car> carsPosition) {
         int carNumber = carsPosition.size();
         for (int i = 0; i < carNumber; i++) {
             carResult(carsPosition.get(i).getPosition());

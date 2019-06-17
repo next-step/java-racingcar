@@ -1,11 +1,11 @@
 package step2;
 
-public class CarDto {
+public class Car {
 
     private int position;
     private int executeNumber;
 
-    public CarDto(){
+    public Car(){
         this.position = 0;
     }
 
