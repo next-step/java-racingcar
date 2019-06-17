@@ -1,12 +1,18 @@
 package racing.watcher;
 
+import racing.util.ConsolePrinter;
 import racing.watcher.events.ChangedPlayerPositionEvent;
 import racing.watcher.events.StartedRacingEvent;
 
 import java.util.List;
 
-public class DashTrackingBroadcaster extends RacingWatcher {
+public class DashTrackingWatcher extends RacingWatcher {
 
+	private ConsolePrinter printer;
+
+	public DashTrackingWatcher(ConsolePrinter printer){
+		this.printer = printer;
+	}
 
 	private void handle(StartedRacingEvent event){
 		System.out.println();
