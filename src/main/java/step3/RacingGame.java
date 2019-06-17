@@ -9,12 +9,15 @@ public class RacingGame {
     private int carNumber;
     private List<CarDto> carsPosition;
 
-    public void carPositionsInit(int carNumber) {
-        this.carNumber = carNumber;
+    public void carPositionsInit(String carsName) {
         carsPosition = new ArrayList <>();
-        while (carNumber > 0) {
-            carsPosition.add(new CarDto());
-            carNumber--;
+
+        String[] carNameArray = carsName.split(",");
+        int carsNameCount = carNameArray.length;
+        carNumber = carsNameCount;
+
+        for(int i=0; i<carsNameCount; i++){
+            carsPosition.add(new CarDto(carNameArray[i]));
         }
     }
 

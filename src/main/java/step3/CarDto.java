@@ -7,8 +7,9 @@ public class CarDto {
     private int executeNumber;
     private String name;
 
-    public CarDto(){
+    public CarDto(String name){
         this.position = 0;
+        this.name = name;
     }
 
     public int getPosition(){
