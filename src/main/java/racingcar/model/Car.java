@@ -15,7 +15,6 @@ public class Car {
   public Car(int carNo, RandomUtil random) {
     this.carNo = carNo;
     this.position = INITIAL_POSITION;
-
     this.random = random;
   }
 

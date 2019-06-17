@@ -42,7 +42,6 @@ public class InputView {
   }
 
   public List<Car> prepare() {
-
     askNumberOfCars();
 
     askNumberOfRounds();
@@ -50,25 +49,21 @@ public class InputView {
     List<Car> cars = generatePlayers();
 
     return cars;
-
   }
 
   void askNumberOfCars() {
-
     System.out.println("자동차 대수는 몇 대 인가요? \n");
 
     this.cars = scanner.nextInt();
   }
 
   void askNumberOfRounds() {
-
     System.out.println("시도할 회수는 몇 회 인가요? \n");
 
     this.rounds = scanner.nextInt();
   }
 
   private List<Car> generatePlayers() {
-
     return range(0, this.cars)
       .mapToObj((carNo) -> new Car(carNo, random))
       .collect(Collectors.toList());
