@@ -33,7 +33,6 @@ public class CalculatorApplication {
     }
 
     public int start(String inputData) {
-
         if (this.validation.isNotBlank(inputData)) {
             this.letter = this.validation.splitSpace(inputData);
         }
