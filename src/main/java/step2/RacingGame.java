@@ -9,7 +9,7 @@ public class RacingGame {
     private int carNumber;
     private List<Car> carsPosition;
 
-    public void carPositionsInit(int carNumber) {
+    public RacingGame(int carNumber) {
         this.carNumber = carNumber;
         carsPosition = new ArrayList <>();
         while (carNumber > 0) {
