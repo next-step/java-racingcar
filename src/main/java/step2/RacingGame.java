@@ -19,17 +19,22 @@ public class RacingGame {
     }
 
     public List<CarDto> move() {
+        int randomPostion;
         CarDto carDto;
         for (int i = 0; i < carNumber; i++) {
+            randomPostion = carPositionSatatus();
             carDto = carsPosition.get(i);
-            carDto.setUpdatePosition(carPositionUpdateValue());
+            carDto.setUpdatePosition(carPositionUpdateValue(randomPostion));
         }
         return carsPosition;
     }
 
-    private int carPositionUpdateValue() {
+    private int carPositionSatatus(){
         Random generator = new Random();
-        int randomNumber = generator.nextInt(10);
+        return generator.nextInt(10);
+    }
+
+    private int carPositionUpdateValue(int randomNumber) {
         if (randomNumber < 4) {
             return 0;
         }
