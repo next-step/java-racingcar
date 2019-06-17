@@ -50,7 +50,7 @@ if("".equals(inputData.trim()) || inputData == null)
 ### src/main/java/edu/nextstep/stepone/Operator.java
 Operator는 OperatorType과 합칠 수 있을까요?
 
-==> Enum에 lambda를 적용하면 가능할 것으로 보입니다. 이 부분은 좀더 학습을 한뒤에 수정하여 리뷰요청을 드려보겠습니다.
+==> Operator는 삭제하고 OperatorType만을 사용하게 변경했습니다.
 
 ### src/main/java/edu/nextstep/stepone/Validation.java
 현재 Validation은 입력된 값의 유효성을 검사하는 기능과 문자를 숫자로 변환하는 기능을 하고 있어요. 단일 책임 원칙(single responsibility principle)이라는 것을 찾아보고 아래의 질문에 답해보면 좋을 것 같아요.
