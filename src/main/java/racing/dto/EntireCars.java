@@ -10,6 +10,8 @@ public class EntireCars {
 
     private List<Car> cars = new ArrayList<>();
 
+    private EntireCars() {}
+
     public static EntireCars of(List<String> carNames) {
 
         EntireCars entireCars = new EntireCars();

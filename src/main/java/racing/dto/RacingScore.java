@@ -7,6 +7,8 @@ public class RacingScore {
 
     private List<CarNamePosition> carNamePositions;
 
+    private RacingScore() {}
+
     public static RacingScore of(EntireCars entireCars) {
 
         RacingScore racingScore = new RacingScore();

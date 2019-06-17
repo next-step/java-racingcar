@@ -20,7 +20,6 @@ class ResultViewTest {
     private int shouldMove = 5;
     private EntireCars entireCars = EntireCars.of(Arrays.asList("pobi", "crong", "honux"));
 
-
     @BeforeEach
     void setUp() {
 
@@ -37,8 +36,7 @@ class ResultViewTest {
         resultView.printResult(racingResult);
 
         assertThat(byteArrayOutputStream.toString())
-                .isEqualTo("\n"
-                                   + "pobi : -------\n"
+                .isEqualTo("pobi : -------\n"
                                    + "crong : -------\n"
                                    + "honux : -------\n"
                                    + "\n"
@@ -55,8 +53,7 @@ class ResultViewTest {
         resultView.printResult(racingResult);
 
         assertThat(byteArrayOutputStream.toString())
-                .isEqualTo("\n"
-                                   + "pobi : -------\n"
+                .isEqualTo("pobi : -------\n"
                                    + "crong : -\n"
                                    + "honux : -\n"
                                    + "\n"

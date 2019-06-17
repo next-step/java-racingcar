@@ -4,7 +4,7 @@ import java.util.List;
 
 public class RacingInfo {
 
-    static final int VALID_CAR_NAMES_COUNT = 1;
+    private static final int VALID_CAR_NAMES_COUNT = 1;
     static final int VALID_ATTEMPTS = 1;
 
     static final String CAR_NAMES_EXCEPTION_MESSAGE = String.format("차량이름 수는 %d 보다 커야 합니다.", VALID_CAR_NAMES_COUNT);
@@ -13,11 +13,7 @@ public class RacingInfo {
     private List<String> carNames;
     private int attempts;
 
-    public RacingInfo(List<String> carNames, int attempts) {
-
-        this.carNames = carNames;
-        this.attempts = attempts;
-    }
+    private RacingInfo() {}
 
     public static RacingInfo of(List<String> carNames, int attempts) {
 
@@ -28,7 +24,10 @@ public class RacingInfo {
             throw new IllegalArgumentException(ATTEMPTS_EXCEPTION_MESSAGE);
         }
 
-        return new RacingInfo(carNames, attempts);
+        RacingInfo racingInfo = new RacingInfo();
+        racingInfo.carNames = carNames;
+        racingInfo.attempts = attempts;
+        return racingInfo;
     }
 
     private static boolean isValidCarNames(List<String> splitCarNames) {

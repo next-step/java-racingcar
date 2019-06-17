@@ -7,6 +7,8 @@ public class CarNamePosition {
     private String carName;
     private int position;
 
+    private CarNamePosition() {}
+
     public static CarNamePosition of (Car car) {
 
         CarNamePosition carNamePosition = new CarNamePosition();
