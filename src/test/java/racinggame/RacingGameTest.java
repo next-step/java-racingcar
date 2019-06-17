@@ -26,6 +26,7 @@ class RacingGameTest {
 
         racingGame.playFullRound();
 
+        // TODO: 랜덤때문에 테스트 깨짐
         List<GameResult> actual = racingGame.getGameResults().getGameResultList();
         Assertions.assertThat(actual).hasSize(round + 1);
         Assertions.assertThat(actual.get(0).getGameResult()).allMatch(integer -> integer == 1);

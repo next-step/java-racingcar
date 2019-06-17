@@ -16,7 +16,9 @@ public class RacingGame {
     private void playRound() {
         this.currentRound += 1;
         for (Car car : this.carLists.getCarList()) {
-            car.move();
+            if (CarHandler.getRandomMoveCondition()) {
+                car.move();
+            }
         }
     }
 
