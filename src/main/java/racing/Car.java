@@ -6,8 +6,8 @@ public class Car {
     private String name;
     private int position;
     
-    public Car(int name) {
-        this.name = String.valueOf(name);
+    public Car(String name) {
+        this.name = name;
         this.position = DEFAULT_POSITION;
     }
     public void forward() {

@@ -2,7 +2,6 @@ package calculate;
 
 import java.util.Arrays;
 import java.util.function.BinaryOperator;
-import java.util.stream.Stream;
 
 public enum Operator {
     ADDITION("+", (number1, number2) -> number1 + number2),
