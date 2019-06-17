@@ -27,7 +27,9 @@ class CarTest {
 
     @Test
     void 자동차_현재위치() {
-        this.이동();
-        assertThat(car.currentPosition()).isEqualTo(3);
+        car.move();
+        assertThat(car.currentPosition()).isEqualTo(1);
+        car.move();
+        assertThat(car.currentPosition()).isEqualTo(2);
     }
 }
