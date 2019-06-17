@@ -27,6 +27,10 @@ public class Car implements Visualizable {
         return String.format("%s : %s", name, getVisualPosition());
     }
 
+    public String getName() {
+        return name;
+    }
+
     void moveForward(final int condition) {
         if (moveStrategy.isMove(condition)) {
             position++;
@@ -39,10 +43,6 @@ public class Car implements Visualizable {
 
     boolean isMatchPosition(final int expected) {
         return position == expected;
-    }
-
-    String getName() {
-        return name;
     }
 
     private String getVisualPosition() {

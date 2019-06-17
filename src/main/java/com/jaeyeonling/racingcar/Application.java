@@ -22,14 +22,15 @@ public class Application {
         final RacingGame racingGame = new RacingGame(racingGameOption);
         final VisualRecorder viewRecorder = new VisualRecorder();
 
-        viewRecorder.newLine();
-        viewRecorder.recode("실행 결과");
+        viewRecorder.recodeResultMessage();
         viewRecorder.recode(racingGame);
 
         while (!racingGame.isComplete()) {
             racingGame.move();
             viewRecorder.recode(racingGame);
         }
+
+        viewRecorder.recodeVictors(racingGame.getVictors());
 
         ConsoleResultView.show(viewRecorder);
     }
