@@ -89,6 +89,38 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(Car.DEFAULT_POSITION);
     }
 
+    @DisplayName("RacingStrategy 기준으로 무조건 이동하는 조건 입력 시 위치 변경 확인")
+    @ParameterizedTest
+    @ValueSource(ints = { 0, 1, 5, 4, 35, 41, 23 })
+    void racingStrategyBaseMove(final int moveCount) {
+        // given
+        final Car car = new Car(new RacingStrategy());
+
+        // when
+        for (int i = 0; i < moveCount; i++) {
+            car.moveForward(RacingCondition.MOVE.condition);
+        }
+
+        // then
+        assertThat(car.getPosition()).isEqualTo(moveCount + Car.DEFAULT_POSITION);
+    }
+
+    @DisplayName("RacingStrategy 기준으로 이동 안되는 조건 입력 시 위치 변경 안되는 것 확인")
+    @ParameterizedTest
+    @ValueSource(ints = { 0, 1, 5, 4, 35, 41, 23 })
+    void racingStrategyBaseNotMove(final int moveCount) {
+        // given
+        final Car car = new Car(new RacingStrategy());
+
+        // when
+        for (int i = 0; i < moveCount; i++) {
+            car.moveForward(RacingCondition.STAY.condition);
+        }
+
+        // then
+        assertThat(car.getPosition()).isEqualTo(Car.DEFAULT_POSITION);
+    }
+
     enum RacingCondition {
         MOVE(RacingStrategy.MORE_THAN_MOVING_CONDITION + 1),
         STAY(RacingStrategy.MORE_THAN_MOVING_CONDITION - 1);
