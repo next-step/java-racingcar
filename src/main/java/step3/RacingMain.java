@@ -5,17 +5,18 @@ import java.util.List;
 public class RacingMain {
 
     public static void main(String[] arg) {
-        RacingGame racingGame = new RacingGame();
-
         String[] userInput = InputView.inputMessage();
+        RacingGame racingGame = new RacingGame();
         racingGame.carPositionsInit(userInput[0]);
 
+        List<CarDto> carPositions = null;
         int gameNumber = stringToInteger(userInput[1]);
         while (gameNumber > 0) {
-            List<CarDto> carPositions = racingGame.move();
+            carPositions = racingGame.move();
             OutputView.racingResult(carPositions);
             gameNumber--;
         }
+        OutputView.racingWinnerResult(carPositions);
     }
 
     private static int stringToInteger(String convertStr){
