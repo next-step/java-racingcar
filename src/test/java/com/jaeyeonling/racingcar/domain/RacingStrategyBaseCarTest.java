@@ -15,7 +15,7 @@ public class RacingStrategyBaseCarTest {
     @Test
     void simpleMove() {
         // given
-        final Car car = new Car(new RacingStrategy());
+        final Car car = new Car("TestCar", new RacingStrategy());
 
         // when
         car.moveForward(RacingStrategy.MORE_THAN_MOVING_CONDITION + 1);
@@ -28,7 +28,7 @@ public class RacingStrategyBaseCarTest {
     @Test
     void simpleNotMove() {
         // given
-        final Car car = new Car(new RacingStrategy());
+        final Car car = new Car("TestCar", new RacingStrategy());
 
         // when
         car.moveForward(RacingStrategy.MORE_THAN_MOVING_CONDITION - 1);
@@ -42,7 +42,7 @@ public class RacingStrategyBaseCarTest {
     @ValueSource(ints = { 0, 1, 5, 4, 35, 41, 23 })
     void move(final int moveCount) {
         // given
-        final Car car = new Car(new RacingStrategy());
+        final Car car = new Car("TestCar", new RacingStrategy());
 
         // when
         for (int i = 0; i < moveCount; i++) {
@@ -58,7 +58,7 @@ public class RacingStrategyBaseCarTest {
     @ValueSource(ints = { 0, 1, 5, 4, 35, 41, 23 })
     void notMove(final int moveCount) {
         // given
-        final Car car = new Car(new RacingStrategy());
+        final Car car = new Car("TestCar", new RacingStrategy());
 
         // when
         for (int i = 0; i < moveCount; i++) {

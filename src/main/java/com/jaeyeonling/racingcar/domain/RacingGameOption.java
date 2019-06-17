@@ -1,14 +1,18 @@
 package com.jaeyeonling.racingcar.domain;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class RacingGameOption {
+
+    static final String NAME_SEPARATOR = ",";
 
     private final Participants participants;
     private final int movingCount;
 
     private RacingGameOption(final Builder builder) {
-        participants = new Participants(builder.numberOfParticipants, builder.moveStrategy);
+        participants = new Participants(builder.nameOfParticipants, builder.moveStrategy);
         movingCount = builder.movingCount;
     }
 
@@ -25,7 +29,6 @@ public class RacingGameOption {
     }
 
     public static class Builder {
-        private static final int DEFAULT_NUMBER_OF_PARTICIPANTS = 5;
         private static final int DEFAULT_MOVING_COUNT = 5;
         private static final MoveStrategy DEFAULT_MOVE_STRATEGY = new RacingStrategy();
 
@@ -34,18 +37,19 @@ public class RacingGameOption {
         private static final int MINIMUM_MOVING_COUNT = 0;
         private static final int MAXIMUM_MOVING_COUNT = 10_000;
 
-        private int numberOfParticipants = DEFAULT_NUMBER_OF_PARTICIPANTS;
+        private List<String> nameOfParticipants;
         private int movingCount = DEFAULT_MOVING_COUNT;
         private MoveStrategy moveStrategy = DEFAULT_MOVE_STRATEGY;
 
-        public Builder numberOfParticipants(final int numberOfParticipants) {
-            this.numberOfParticipants = numberOfParticipants;
-            checkNumberOfParticipantsConstraints();
+        public Builder nameOfParticipants(final String nameOfParticipants) {
+            this.nameOfParticipants = Arrays.asList(nameOfParticipants.split(NAME_SEPARATOR));
+            checkNameOfParticipantsConstraints();
 
             return this;
         }
 
         public Builder movingCount(final int movingCount) {
+
             this.movingCount = movingCount;
             checkMovingCountConstraints();
 
@@ -63,16 +67,16 @@ public class RacingGameOption {
             return new RacingGameOption(this);
         }
 
-        private void checkNumberOfParticipantsConstraints() {
-            if (numberOfParticipants >= MAXIMUM_NUMBER_OF_PARTICIPANTS) {
-                throwConstraintsException(String.format("numberOfParticipants 값은 %d 이상이 될 수 없습니다. (입력 값: %d)",
+        private void checkNameOfParticipantsConstraints() {
+            if (nameOfParticipants.size() >= MAXIMUM_NUMBER_OF_PARTICIPANTS) {
+                throwConstraintsException(String.format("참여자는 %d 이상이 될 수 없습니다. (입력 값: %d)",
                         MAXIMUM_NUMBER_OF_PARTICIPANTS,
-                        numberOfParticipants));
+                        nameOfParticipants.size()));
             }
-            if (numberOfParticipants <= MINIMUM_NUMBER_OF_PARTICIPANTS) {
-                throwConstraintsException(String.format("numberOfParticipants 값은 %d 이하가 될 수 없습니다. (입력 값: %d)",
+            if (nameOfParticipants.size() <= MINIMUM_NUMBER_OF_PARTICIPANTS) {
+                throwConstraintsException(String.format("참여자는 %d 이하가 될 수 없습니다. (입력 값: %d)",
                         MINIMUM_NUMBER_OF_PARTICIPANTS,
-                        numberOfParticipants));
+                        nameOfParticipants.size()));
             }
         }
 
