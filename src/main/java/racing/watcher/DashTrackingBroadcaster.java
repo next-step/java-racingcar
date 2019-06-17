@@ -26,8 +26,10 @@ public class DashTrackingBroadcaster extends RacingWatcher {
 	}
 
 	private String render(int position) {
-		String result = "";
-		for(int i = 0; i < position; i++){
+		String result = "-";
+
+		// 첫 출발 위치를 표시하기 위해 position이 1보다 큰만큼 점선이 추가되도록 조정
+		for(int i = 1; i < position; i++){
 			result += "-";
 		}
 
