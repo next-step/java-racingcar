@@ -1,5 +1,9 @@
 package racing;
 
+import racing.car.RacingCar;
+import racing.exception.PlayOverException;
+import racing.watcher.RacingWatcher;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,11 +11,14 @@ public class Stage {
 
 	private List<RacingCar> players;
 
+	private RacingWatcher watcher;
+
 	private int round;
 
 	private Stage(StageBuilder stageBuilder){
 		this.round = stageBuilder.round;
 		this.players = stageBuilder.players;
+		this.watcher = stageBuilder.watcher;
 
 	}
 
@@ -31,6 +38,14 @@ public class Stage {
 
 		for(RacingCar car : players){
 			car.accelerate(1);
+		}
+
+		if(watcher != null){
+			ArrayList currentPositions = new ArrayList<>();
+			for(RacingCar car : players){
+				currentPositions.add(car.getMileage());
+			}
+			watcher.update(currentPositions);
 		}
 
 		round -= 1;
@@ -53,7 +68,9 @@ public class Stage {
 
 		private int round;
 
-		List<RacingCar> players;
+		private List<RacingCar> players;
+
+		private RacingWatcher watcher;
 
 		private StageBuilder(int entrySize, int round) {
 			this.entrySize = entrySize;
@@ -69,7 +86,8 @@ public class Stage {
 			players.add(racingCar);
 		}
 
-		public void addWatcher(Broadcaster mock) {
+		public void watcher(RacingWatcher watcher) {
+			this.watcher = watcher;
 		}
 	}
 }

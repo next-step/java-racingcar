@@ -1,6 +1,8 @@
-package racing;
+package racing.car;
 
-public class ThresholdEngineCar extends RacingCar{
+import racing.car.RacingCar;
+
+public class ThresholdEngineCar extends RacingCar {
 
 	private int thresholdAmount = 0;
 

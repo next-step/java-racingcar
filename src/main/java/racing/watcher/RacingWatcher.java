@@ -1,7 +1,7 @@
-package racing;
+package racing.watcher;
 
 import java.util.List;
 
-public interface Broadcaster {
+public interface RacingWatcher {
 	void update(List<Integer> currentPositionOfPlayers);
 }

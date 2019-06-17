@@ -4,11 +4,16 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.mockito.ArgumentCaptor;
+import racing.car.RacingCar;
+import racing.exception.PlayOverException;
+import racing.watcher.RacingWatcher;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
@@ -82,11 +87,15 @@ class StageTest {
 	void updateWatcher(){
 		// Arrange
 		int roundLimit = 5;
-		Stage.StageBuilder builder = Stage.builder(1, roundLimit);
+		Stage.StageBuilder builder = Stage.builder(2, roundLimit);
+
+		// add to racer
+		builder.addToEntry(mock(RacingCar.class));
 		builder.addToEntry(mock(RacingCar.class));
 
-		Broadcaster broadcaster = mock(Broadcaster.class);
-		builder.addWatcher(broadcaster);
+		// set watcher
+		RacingWatcher watcher = mock(RacingWatcher.class);
+		builder.watcher(watcher);
 
 		Stage stage = builder.build();
 
@@ -94,7 +103,9 @@ class StageTest {
 		stage.playRound();
 
 		// Assertion
-		verify(broadcaster, times(1)).update(anyList());
+		ArgumentCaptor<List<Integer>> argument = ArgumentCaptor.forClass(List.class);
+		verify(watcher, times(1)).update(argument.capture());
+		assertThat(argument.getValue().size()).isEqualTo(2);
 
 
 	}
