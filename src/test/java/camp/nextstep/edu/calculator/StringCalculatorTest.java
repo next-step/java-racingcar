@@ -9,13 +9,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 @SuppressWarnings("NonAsciiCharacters")
-class CalculatorTest {
-    private Calculator<Integer> calculator;
+class StringCalculatorTest {
+    private StringCalculator<Integer> calculator;
 
     @BeforeEach
     void setup() {
-        final Validator<String> validator = new MockExpressionValidator();
-        calculator = new StringCalculator(validator);
+        final ExpressionValidator mockValidator = new MockExpressionValidator();
+        calculator = new SequentialCalculator(mockValidator);
     }
 
     @ParameterizedTest

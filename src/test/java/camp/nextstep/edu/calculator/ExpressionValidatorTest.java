@@ -9,13 +9,13 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 @SuppressWarnings("NonAsciiCharacters")
-class ValidatorTest {
+class ExpressionValidatorTest {
 
-    private Validator<String> validator;
+    private ExpressionValidator validator;
 
     @BeforeEach
     void setUp() {
-        validator = new ExpressionValidator();
+        validator = new ExpressionValidatorImpl();
     }
 
     @ParameterizedTest
