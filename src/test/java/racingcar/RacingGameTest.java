@@ -4,7 +4,7 @@ package racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.mocks.MockRandomUtil;
+import racingcar.mocks.MockDrivingStrategy;
 import racingcar.model.Car;
 
 import java.util.Arrays;
@@ -15,12 +15,10 @@ import static java.util.stream.Collectors.joining;
 public class RacingGameTest {
 
 
-  private MockRandomUtil random;
   private RacingGame racingGame;
 
   @BeforeEach
   void setUp() {
-    this.random = new MockRandomUtil();
     this.racingGame = new RacingGame();
   }
 
@@ -41,9 +39,9 @@ public class RacingGameTest {
 
     int rounds = 3;
     List<Car> cars = Arrays.asList(
-            new Car(1, random),
-            new Car(2, random),
-            new Car(3, random));
+            new Car(1),
+            new Car(2),
+            new Car(3));
 
     racingGame.printRacingStatus(rounds, cars);
 
@@ -53,9 +51,9 @@ public class RacingGameTest {
   @DisplayName("총 3라운드 진행, 1라운드에 '--' 3줄, 2라운드에 '---' 3줄, 3라운드에 '----' 3줄 표시된다")
   void drive() {
     List<Car> cars = Arrays.asList(
-            new Car(1, random),
-            new Car(2, random),
-            new Car(3, random));
+            new Car(1),
+            new Car(2),
+            new Car(3));
 
     racingGame.drive(cars);
   }
