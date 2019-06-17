@@ -19,7 +19,7 @@ public class RacingGameTest {
         int round = 1;
         int carCount = 2;
 
-        RacingGame racingGame = new RacingGame(round, Cars.generate(carCount), new MovingGenerator());
+        RacingGame racingGame = new RacingGame(round, Cars.newInstance(carCount), new MovingGenerator());
 
         Cars result = racingGame.racing();
 

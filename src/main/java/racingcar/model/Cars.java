@@ -2,6 +2,7 @@ package racingcar.model;
 
 import racingcar.util.NumberGenerator;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,13 +16,26 @@ public class Cars {
         this.cars = cars;
     }
 
-    static Cars generate(int count) {
-        if(count < 0){
-            throw new IllegalArgumentException("자동차 개수는 정수여야 합니다.");
-        }
-        List<Car> cars = IntStream.range(0, count)
-                .mapToObj(value -> Car.create())
+    public static Cars from(String names) {
+        CarsValidator.validate(names);
+
+        String[] namesArr = parseArrays(names);
+        List<Car> cars = Arrays.stream(namesArr)
+                .map(name -> Car.create(name))
                 .collect(Collectors.toList());
+        return new Cars(cars);
+    }
+
+    private static String[] parseArrays(String names) {
+        String noBlackNames = names.replace(" ", "");
+        String[] namesArr = noBlackNames.split("\\,");
+        CarsValidator.validateCount(namesArr.length);
+        return namesArr;
+    }
+
+    public static Cars newInstance(int count) {
+        CarsValidator.validateCount(count);
+        List<Car> cars = IntStream.range(0, count).mapToObj(value -> Car.create()).collect(Collectors.toList());
         return new Cars(cars);
     }
 

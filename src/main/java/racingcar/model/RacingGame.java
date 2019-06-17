@@ -26,7 +26,7 @@ public class RacingGame {
     public static RacingGame generate(int round, int carCount) {
         validateInputMin(round, "시도 횟수는 " + INPUT_MIN_VALUE + "보다 커야합니다.");
         validateInputMin(carCount, "자동차 대수는 " + INPUT_MIN_VALUE + "보다 커야합니다.");
-        return new RacingGame(round, Cars.generate(carCount));
+        return new RacingGame(round, Cars.newInstance(carCount));
     }
 
     private static void validateInputMin(int count, String text) {

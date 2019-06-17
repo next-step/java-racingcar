@@ -8,19 +8,18 @@ import java.util.regex.Pattern;
 public class CarValidator {
 
     public static final int NAME_LENGTH_LIMIT = 10;
-    public static final String REGEX_PATTERN = "^[a-zA-Z가-힇]*$";
-
+    static final String REGEX_PATTERN = "^[\\w]*$";
     private static Pattern pattern = Pattern.compile(REGEX_PATTERN);
 
-    public static void validate(String name){
+    public static void validate(String name) {
         validateEmpty(name);
-        validatePattern(name);
         validateLength(name);
+        validatePattern(name);
     }
 
     private static void validateEmpty(String name) {
         if (name == null || Strings.isNullOrEmpty(name.trim())) {
-            throw new CarNameException("name doesn't empty");
+            throw new CarNameException("이름을 입력하세요.");
         }
     }
 
@@ -32,8 +31,7 @@ public class CarValidator {
 
     private static void validatePattern(String name) {
         if (!pattern.matcher(name).find()) {
-            throw new CarNameException("이름은 영문 또는 한글만 가능합니다.");
+            throw new CarNameException("이름은 영문 숫자 특수문자(_)만 가능합니다.");
         }
     }
-
 }

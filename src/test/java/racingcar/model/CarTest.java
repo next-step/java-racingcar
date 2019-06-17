@@ -16,7 +16,7 @@ public class CarTest {
 
     @DisplayName("자동차를 생성한다")
     @ParameterizedTest
-    @ValueSource(strings = {"name", "한글"})
+    @ValueSource(strings = {"name", "test1"})
     void createCarNameSuccess(String name) {
         Car car = Car.create(name);
         assertThat(car.getName()).isEqualTo(name);
