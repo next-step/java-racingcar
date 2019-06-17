@@ -17,7 +17,7 @@ public class CarsTest {
   }
 
   private int[] carsMove() {
-    return cars.move(0);
+    return cars.move();
   }
 
   @Test
