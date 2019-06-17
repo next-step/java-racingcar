@@ -2,7 +2,11 @@ package racingcar.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.util.MockGenerator;
+import racingcar.util.MockGenerator.CarState;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,8 +14,6 @@ import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static racingcar.util.MockGenerator.CarState.MAINTAIN;
-import static racingcar.util.MockGenerator.CarState.RUN;
 
 class CarsTest {
 
@@ -33,24 +35,20 @@ class CarsTest {
                 .isThrownBy(() -> Cars.generate(-1));
     }
 
-    @Test
-    @DisplayName("자동차가 모두 전진한다")
-    void moveCarSuccess() {
-        Cars cars = carsOf(RUN);
+    @DisplayName("모든 자동차를 동작시킨다.")
+    @ParameterizedTest
+    @CsvSource({
+            "RUN, 2",
+            "MAINTAIN, 1"
+    })
+    void nonMoveCar(ArgumentsAccessor param) {
+        CarState state = param.get(0, CarState.class);
+        int expectedPosition = param.getInteger(1);
+        Cars cars = carsOf(state);
 
         List<Car> result = cars.moveAll();
 
-        assertThat(result).extracting(Car::getPosition).contains(2);
-    }
-
-    @Test
-    @DisplayName("자동차가 모두 움직이지 않는다")
-    void nonMoveCar() {
-        Cars cars = carsOf(MAINTAIN);
-
-        List<Car> result = cars.moveAll();
-
-        assertThat(result).extracting(Car::getPosition).contains(1);
+        assertThat(result).extracting(Car::getPosition).contains(expectedPosition);
     }
 
     private static Cars carsOf(MockGenerator.CarState carState) {
