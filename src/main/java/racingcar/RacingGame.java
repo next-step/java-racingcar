@@ -2,22 +2,20 @@ package racingcar;
 
 public class RacingGame {
 
-  private Initializerer initializerer;
   private Cars cars;
   private Record record = new Record();
 
 
-  public RacingGame(Initializerer initializerer) {
-    this.initializerer = initializerer;
-    initCars();
+  public RacingGame(int numberOfCar) {
+    initCars(numberOfCar);
   }
 
-  private void initCars() {
-    cars = new Cars(initializerer.getNumberOfCar());
+  private void initCars(int numberOfCar) {
+    cars = new Cars(numberOfCar);
   }
 
-  public void start() {
-    for (int i = 0; i < initializerer.getNumberOfTimes(); i++) {
+  public void start(int numberOfTimes) {
+    for (int i = 0; i < numberOfTimes; i++) {
       cars.moveCars();
       record();
     }

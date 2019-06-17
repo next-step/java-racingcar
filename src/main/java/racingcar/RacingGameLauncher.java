@@ -1,19 +1,22 @@
 package racingcar;
 
+import java.util.Scanner;
+
 public class RacingGameLauncher {
 
-  public static void launch() {
-    Initializerer initializerer = new Initializerer();
+  static Scanner scanner = new Scanner(System.in);
+
+  public static void start() {
     InputView.askNumberOfCar();
-    initializerer.initNumberOfCar();
+    int numberOfCar = scanner.nextInt();
     InputView.askNumberOfTimes();
-    initializerer.initNumberOfTimes();
-    RacingGame racingGame = new RacingGame(initializerer);
-    racingGame.start();
+    int numberOfTimes = scanner.nextInt();
+    RacingGame racingGame = new RacingGame(numberOfCar);
+    racingGame.start(numberOfTimes);
     ResultView.display(racingGame.result());
   }
 
   public static void main(String[] args) {
-    RacingGameLauncher.launch();
+    RacingGameLauncher.start();
   }
 }
