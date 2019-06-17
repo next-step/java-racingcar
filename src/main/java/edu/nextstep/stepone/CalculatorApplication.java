@@ -16,7 +16,6 @@ import java.util.Scanner;
 public class CalculatorApplication {
 
     private Validation validation = new Validation();
-    private StringUtils utils = new StringUtils();
 
     private List<String> letter;
     private static final int FIRST_INDEX = 0;
@@ -39,11 +38,11 @@ public class CalculatorApplication {
             this.letter = this.validation.splitSpace(inputData);
         }
 
-        totalNumber = this.utils.convertInt(this.letter.get(0));
+        totalNumber = StringUtils.convertInt(this.letter.get(0));
 
         for (int i = FIRST_INDEX; i < calculateLastIndex(); i += NEXT_INDEX) {
             OperatorType type = OperatorType.typeCheck(this.letter.get(i + 1));
-            int second = this.utils.convertInt(this.letter.get(i + 2));
+            int second = StringUtils.convertInt(this.letter.get(i + 2));
 
             totalNumber = type.calculate(totalNumber, second);
         }

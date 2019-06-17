@@ -14,7 +14,7 @@ public class StringUtils {
     /*
     문자 -> 숫자 변환
      */
-    public int convertInt(String letter) {
+    public static int convertInt(String letter) {
         try {
             return Integer.parseInt(letter);
         } catch (NumberFormatException e) {
