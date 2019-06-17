@@ -13,25 +13,19 @@ public class CarsTest {
 
   @BeforeEach
   public void setup() {
-    cars = new Cars(numberOfCar);
+    cars = new Cars(5);
   }
 
-  private int[] carsMove() {
-    return cars.move();
+  @Test
+  public void 자동차는_햔번에_1또는0_이동한다() {
+    cars.moveCars();
+    assertThat(cars.getCarsPosition()).containsOnly(0, 1);
   }
 
   @Test
   public void 자동자수만큼_위치값이_리턴된다() {
-
-    assertThat(carsMove().length).isEqualTo(numberOfCar);
+    assertThat(cars.getCarsPosition()).hasSize(numberOfCar);
   }
 
-  @Test
-  public void 자동자는_한번에_1또는0_이동한다() {
-    int[] positions = carsMove();
-    for (int position : positions) {
-      assertThat(position).isLessThan(2);
-    }
-  }
 
 }
