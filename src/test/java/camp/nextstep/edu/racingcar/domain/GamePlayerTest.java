@@ -4,16 +4,23 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 class GamePlayerTest implements CarNamesHelper {
     private MovingStrategy moveOnlyStrategy = new MoveOnlyStrategy();
-    private CarNames validCarNames;
+    private List<String> validCarNameStrings;
 
     @BeforeEach
     void setUp() {
-        validCarNames = this.getValidCarNames();
-        assertThat(validCarNames.size()).isEqualTo(3);
+        validCarNameStrings = Arrays.asList(
+                CAR_NAME_FIRST_VALUE,
+                CAR_NAME_SECOND_VALUE,
+                CAR_NAME_THIRD_VALUE
+        );
+        assertThat(validCarNameStrings.size()).isEqualTo(3);
     }
 
     @DisplayName("객체를 잘 생성하는지")
@@ -35,7 +42,7 @@ class GamePlayerTest implements CarNamesHelper {
     void playAllRound() {
         // given
         final GamePlayer gamePlayer = GamePlayer.from(moveOnlyStrategy);
-        gamePlayer.initializeGame(validCarNames, 5);
+        gamePlayer.initializeGame(validCarNameStrings, 5);
         // when
         assertThatCode(gamePlayer::playAllRounds)
                 // then
@@ -59,7 +66,7 @@ class GamePlayerTest implements CarNamesHelper {
     void getGameResult() {
         // given
         final GamePlayer gamePlayer = GamePlayer.from(moveOnlyStrategy);
-        gamePlayer.initializeGame(validCarNames, 5);
+        gamePlayer.initializeGame(validCarNameStrings, 5);
         gamePlayer.playAllRounds();
         // when
         final Rounds gameResult = gamePlayer.getGameResult();

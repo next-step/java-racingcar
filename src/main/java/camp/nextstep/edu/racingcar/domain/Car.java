@@ -1,47 +1,44 @@
 package camp.nextstep.edu.racingcar.domain;
 
 import camp.nextstep.edu.util.AssertUtils;
-import camp.nextstep.edu.util.StringUtils;
 
 import java.util.Objects;
 
 public class Car {
 
-    private final String name;
+    private final CarName carName;
     private final Position position;
 
-    private Car(String name, Position position) {
-        if (StringUtils.isEmpty(name)) {
-            throw new IllegalArgumentException("'name' must not be null or empty");
-        }
+    private Car(CarName carName, Position position) {
+        AssertUtils.notNull(carName, "'carName' must not be null");
         AssertUtils.notNull(position, "'position' must not be null");
 
-        this.name = name;
+        this.carName = carName;
         this.position = position;
     }
 
-    public static Car from(String name) {
+    public static Car from(CarName carName) {
         final Position origin = Position.origin();
-        return new Car(name, origin);
+        return new Car(carName, origin);
     }
 
-    public String getName() {
-        return name;
+    public CarName getName() {
+        return carName;
     }
 
-    public int getPosition() {
-        return position.value();
+    public Position getPosition() {
+        return position;
     }
 
     public Car move(int distance) {
         final Position movedPosition = position.add(distance);
-        return new Car(name, movedPosition);
+        return new Car(carName, movedPosition);
     }
 
     @Override
     public String toString() {
         return "Car{" +
-                "name='" + name + '\'' +
+                "carName=" + carName +
                 ", position=" + position +
                 '}';
     }
@@ -51,12 +48,12 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return name.equals(car.name) &&
+        return carName.equals(car.carName) &&
                 position.equals(car.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, position);
+        return Objects.hash(carName, position);
     }
 }

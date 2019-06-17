@@ -1,24 +1,24 @@
 package camp.nextstep.edu.racingcar.view.dto;
 
-import camp.nextstep.edu.racingcar.domain.CarNames;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class GameRequest {
-    private final CarNames carNames;
+    private final List<String> carNames;
     private final int numberOfRounds;
 
-    private GameRequest(CarNames carNames, int numberOfRounds) {
-        this.carNames = carNames;
+    private GameRequest(List<String> carNames, int numberOfRounds) {
+        this.carNames = new ArrayList<>(carNames);
         this.numberOfRounds = numberOfRounds;
     }
 
-    public static GameRequest of(CarNames carNames, int numberOfRounds) {
+    public static GameRequest of(List<String> carNames, int numberOfRounds) {
         return new GameRequest(carNames, numberOfRounds);
     }
 
-    public CarNames getCarNames() {
-        return carNames;
+    public List<String> getCarNames() {
+        return new ArrayList<>(carNames);
     }
 
     public int getNumberOfRounds() {

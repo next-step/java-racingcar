@@ -56,7 +56,7 @@ class GameTest implements CarNamesHelper {
         assertThat(gameResult.size()).isEqualTo(1);
         final Round lastRound = gameResult.getLast().orElseThrow(AssertionFailedError::new);
         lastRound.getCars().stream().forEach(
-                car -> assertThat(car.getPosition()).isEqualTo(1)
+                car -> assertThat(car.getPosition().value()).isEqualTo(1)
         );
     }
 

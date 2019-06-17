@@ -1,5 +1,6 @@
 package camp.nextstep.edu.racingcar.view.console;
 
+import camp.nextstep.edu.racingcar.domain.CarName;
 import camp.nextstep.edu.racingcar.domain.CarNames;
 import camp.nextstep.edu.racingcar.domain.Rounds;
 import camp.nextstep.edu.racingcar.view.OutputHandler;
@@ -45,6 +46,7 @@ public class ConsoleResultView implements ResultView {
 
     private String formatWinners(CarNames carNames) {
         final String formattedWinners = carNames.stream()
+                .map(CarName::value)
                 .collect(Collectors.joining(DELIMITER_WINNER));
         return formattedWinners + POSTFIX_WINNER_MESSAGE;
     }

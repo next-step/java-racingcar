@@ -51,11 +51,15 @@ class CarsTest implements CarNamesHelper {
     void moveCars() {
         // given
         final Cars cars = Cars.defaultInstance(validCarNames);
-        cars.stream().forEach(car -> assertThat(car.getPosition()).isEqualTo(0));
+        cars.stream().forEach(car ->
+                assertThat(car.getPosition().value()).isEqualTo(0)
+        );
         // when
         final MovingStrategy moveOnlyStrategy = new MoveOnlyStrategy();
         final Cars movedCars = cars.move(moveOnlyStrategy);
         // then
-        movedCars.stream().forEach(car -> assertThat(car.getPosition()).isEqualTo(1));
+        movedCars.stream().forEach(car ->
+                assertThat(car.getPosition().value()).isEqualTo(1)
+        );
     }
 }

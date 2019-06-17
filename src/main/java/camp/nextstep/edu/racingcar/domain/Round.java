@@ -27,18 +27,19 @@ public class Round {
     }
 
     public CarNames getWinners() {
-        final int maxPosition = this.getMaximumPosition();
-        final List<String> carList = cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
+        final Position maxPosition = this.getMaximumPosition();
+        final List<CarName> carNameList = cars.stream()
+                .filter(car -> maxPosition.equals(car.getPosition()))
                 .map(Car::getName)
                 .collect(Collectors.toList());
-        return CarNames.from(carList);
+        return CarNames.from(carNameList);
     }
 
-    private Integer getMaximumPosition() {
+    private Position getMaximumPosition() {
+        final Position origin = Position.origin();
         return cars.stream()
                 .map(Car::getPosition)
-                .reduce(0, Integer::max);
+                .reduce(origin, Position::max);
     }
 
     @Override

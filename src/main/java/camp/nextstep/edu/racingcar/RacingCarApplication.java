@@ -9,6 +9,7 @@ import camp.nextstep.edu.racingcar.view.console.*;
 import camp.nextstep.edu.racingcar.view.dto.GameRequest;
 import camp.nextstep.edu.racingcar.view.formatter.*;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class RacingCarApplication {
@@ -55,7 +56,7 @@ public class RacingCarApplication {
     public void run() {
         final GameRequest gameRequest = inputView.printAndGetInput();
 
-        final CarNames carNames = gameRequest.getCarNames();
+        final List<String> carNames = gameRequest.getCarNames();
         final int numberOfRounds = gameRequest.getNumberOfRounds();
         gamePlayer.initializeGame(carNames, numberOfRounds);
         gamePlayer.playAllRounds();

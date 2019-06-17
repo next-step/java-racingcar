@@ -1,6 +1,5 @@
 package camp.nextstep.edu.racingcar.view.console;
 
-import camp.nextstep.edu.racingcar.domain.CarNames;
 import camp.nextstep.edu.racingcar.view.InputHandler;
 import camp.nextstep.edu.racingcar.view.InputView;
 import camp.nextstep.edu.racingcar.view.OutputHandler;
@@ -30,12 +29,12 @@ public class ConsoleInputView implements InputView {
 
     @Override
     public GameRequest printAndGetInput() {
-        final CarNames carNames = this.getCarNames();
+        final List<String> carNames = this.getCarNames();
         final int numberOfRounds = this.getNumberOfRounds();
         return GameRequest.of(carNames, numberOfRounds);
     }
 
-    private CarNames getCarNames() {
+    private List<String> getCarNames() {
         consoleStringOutputHandler.handle(MESSAGE_FOR_CAR_NAMES);
         final String carNameString = consoleStringInputHandler.getInput();
         return convertStringToCarNames(carNameString);
@@ -46,10 +45,9 @@ public class ConsoleInputView implements InputView {
         return consoleIntegerInputHandler.getInput();
     }
 
-    private CarNames convertStringToCarNames(String carNameString) {
+    private List<String> convertStringToCarNames(String carNameString) {
         final String[] splitCarNames = carNameString.split(DELIMITER_CAR_NAME);
-        final List<String> carNameList = Stream.of(splitCarNames)
+        return Stream.of(splitCarNames)
                 .collect(Collectors.toList());
-        return CarNames.from(carNameList);
     }
 }

@@ -19,6 +19,11 @@ public class Position {
         return ORIGIN;
     }
 
+    public static Position max(Position a, Position b) {
+        final int result = Math.max(a.value, b.value);
+        return new Position(result);
+    }
+
     public int value() {
         return value;
     }

@@ -113,7 +113,8 @@ class RoundsTest implements CarNamesHelper, CarHelper, CarsHelper, RoundHelper {
         final CarNames carNames = rounds.getWinnersOfLastRound();
         // then
         assertThat(carNames.size()).isEqualTo(1);
-        assertThat(carNames.stream().anyMatch(name -> name.equals(CAR_NAME_THIRD))).isTrue();
+        assertThat(carNames.stream()
+                .anyMatch(name -> name.equals(CAR_NAME_THIRD))).isTrue();
     }
 
     @DisplayName("rounds 가 비어있을 때, 우승자를 구하려고 하면 비어있는 CarNames 을 리턴해야함")

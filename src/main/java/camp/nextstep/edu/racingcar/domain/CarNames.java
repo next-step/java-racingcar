@@ -10,19 +10,19 @@ import java.util.stream.Stream;
 
 public class CarNames {
 
-    private final List<String> carNameList;
+    private final List<CarName> carNameList;
 
-    private CarNames(List<String> carNameList) {
+    private CarNames(List<CarName> carNameList) {
         AssertUtils.notNull(carNameList, "'carNameList' must not be null");
         this.carNameList = new ArrayList<>(carNameList);
     }
 
-    public static CarNames from(List<String> carNameList) {
+    public static CarNames from(List<CarName> carNameList) {
         return new CarNames(carNameList);
     }
 
     public static CarNames emptyInstance() {
-        final List<String> emptyList = Collections.emptyList();
+        final List<CarName> emptyList = Collections.emptyList();
         return new CarNames(emptyList);
     }
 
@@ -30,7 +30,7 @@ public class CarNames {
         return carNameList.size();
     }
 
-    public Stream<String> stream() {
+    public Stream<CarName> stream() {
         return carNameList.stream();
     }
 

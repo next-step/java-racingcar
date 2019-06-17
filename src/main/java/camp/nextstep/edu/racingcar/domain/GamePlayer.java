@@ -2,7 +2,9 @@ package camp.nextstep.edu.racingcar.domain;
 
 import camp.nextstep.edu.util.AssertUtils;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class GamePlayer {
     private Game game;
@@ -18,7 +20,11 @@ public class GamePlayer {
         return new GamePlayer(null, movingStrategy);
     }
 
-    public void initializeGame(CarNames carNames, int numberOfRounds) {
+    public void initializeGame(List<String> names, int numberOfRounds) {
+        final List<CarName> carNameList = names.stream()
+                .map(CarName::from)
+                .collect(Collectors.toList());
+        final CarNames carNames = CarNames.from(carNameList);
         game = Game.of(carNames, numberOfRounds);
     }
 
@@ -54,7 +60,7 @@ public class GamePlayer {
         if (o == null || getClass() != o.getClass()) return false;
         GamePlayer that = (GamePlayer) o;
         return Objects.equals(game, that.game) &&
-                movingStrategy.equals(that.movingStrategy);
+                Objects.equals(movingStrategy, that.movingStrategy);
     }
 
     @Override

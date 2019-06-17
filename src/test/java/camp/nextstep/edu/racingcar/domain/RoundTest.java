@@ -30,7 +30,7 @@ class RoundTest implements CarNamesHelper, CarHelper, CarsHelper, RoundHelper {
         // given
         final Round round = Round.initialRoundFrom(validCarNames);
         round.getCars().stream().forEach(
-                car -> assertThat(car.getPosition()).isEqualTo(0)
+                car -> assertThat(car.getPosition().value()).isEqualTo(0)
         );
         // when
         final MovingStrategy moveOnlyStrategy = new MoveOnlyStrategy();
@@ -38,7 +38,7 @@ class RoundTest implements CarNamesHelper, CarHelper, CarsHelper, RoundHelper {
         // then
         assertThat(movedRound).isNotNull();
         movedRound.getCars().stream().forEach(
-                car -> assertThat(car.getPosition()).isEqualTo(1)
+                car -> assertThat(car.getPosition().value()).isEqualTo(1)
         );
     }
 
@@ -56,7 +56,8 @@ class RoundTest implements CarNamesHelper, CarHelper, CarsHelper, RoundHelper {
         // then
         assertThat(carNames).isNotNull();
         assertThat(carNames.size()).isEqualTo(1);
-        assertThat(carNames.stream().anyMatch(name -> name.equals(CAR_NAME_THIRD))).isTrue();
+        assertThat(carNames.stream()
+                .anyMatch(name -> name.equals(CAR_NAME_THIRD))).isTrue();
     }
 
     @DisplayName("우승자가 여러명일 때 잘 구하는지")
@@ -72,8 +73,11 @@ class RoundTest implements CarNamesHelper, CarHelper, CarsHelper, RoundHelper {
         final CarNames carNames = round.getWinners();
         // then
         assertThat(carNames.size()).isEqualTo(3);
-        assertThat(carNames.stream().anyMatch(name -> name.equals(CAR_NAME_FIRST))).isTrue();
-        assertThat(carNames.stream().anyMatch(name -> name.equals(CAR_NAME_SECOND))).isTrue();
-        assertThat(carNames.stream().anyMatch(name -> name.equals(CAR_NAME_THIRD))).isTrue();
+        assertThat(carNames.stream()
+                .anyMatch(name -> name.equals(CAR_NAME_FIRST))).isTrue();
+        assertThat(carNames.stream()
+                .anyMatch(name -> name.equals(CAR_NAME_SECOND))).isTrue();
+        assertThat(carNames.stream()
+                .anyMatch(name -> name.equals(CAR_NAME_THIRD))).isTrue();
     }
 }
