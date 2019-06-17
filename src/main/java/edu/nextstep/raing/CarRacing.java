@@ -17,12 +17,14 @@ import java.util.Random;
  * project      : java-racingcar
  * create date  : 2019-06-15 23:33
  */
-public class CarRacing implements CarRacingInterface{
+public class CarRacing implements CarRacingInterface {
 
     private List<Car> carList;
     private final int MOVE_COUNT;
-    private static int MOVE_LIMIT_COUNT_FLAG = 4;
-    private static int MOVE_MAX_VALUE = 9;
+    private static final int MOVE_LIMIT_COUNT_FLAG = 4;
+    private static final int MOVE_MAX_VALUE = 9;
+    private static final int MIN_VALUE = 0;
+
     private ResultView output = new ResultView();
 
     public List<Car> getCarList() {
@@ -34,9 +36,8 @@ public class CarRacing implements CarRacingInterface{
     @parameter carCount, moveCount
      */
     public CarRacing(int carCount, int moveCount) {
-        if(this.isInValid(carCount, moveCount)) {
-            throw new IllegalArgumentException("입력한 데이터의 값이 0보다 작습니다." + " [자동차 대수] :" + carCount + " [시도횟수] : " + moveCount);
-        }
+        checkArgumentException(carCount, moveCount);
+
         this.carList = initCarList(carCount);
         MOVE_COUNT = moveCount;
     }
@@ -65,11 +66,10 @@ public class CarRacing implements CarRacingInterface{
         return returnCarList;
     }
 
-    private boolean isInValid(int carCount, int moveCount) {
-        if(carCount <= 0 || moveCount <= 0) {
-            return true;
+    private void checkArgumentException(int carCount, int moveCount) {
+        if (carCount <= MIN_VALUE || moveCount <= MIN_VALUE) {
+            throw new IllegalArgumentException("입력한 데이터의 값이 0보다 작습니다." + " [자동차 대수] :" + carCount + " [시도횟수] : " + moveCount);
         }
-        return false;
     }
 
     /*
@@ -87,7 +87,7 @@ public class CarRacing implements CarRacingInterface{
     각각의 자동차의 전진 체크
      */
     private void doMoveCheck(Car targetCar) {
-        if(isMoving()) {
+        if (isMoving()) {
             targetCar.move();
         }
     }
@@ -99,7 +99,7 @@ public class CarRacing implements CarRacingInterface{
     private boolean isMoving() {
         Random generator = new Random();
         int limit = generator.nextInt(MOVE_MAX_VALUE);
-        if(limit >= MOVE_LIMIT_COUNT_FLAG) {
+        if (limit >= MOVE_LIMIT_COUNT_FLAG) {
             return true;
         }
         return false;
