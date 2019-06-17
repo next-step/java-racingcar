@@ -1,7 +1,8 @@
-import org.apache.commons.lang3.StringUtils;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import org.apache.commons.lang3.StringUtils;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -9,52 +10,53 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class StringCalculatorTest {
 
     /*
-    덧셈 함수 기능 및 단위 테스트 구현
+    뎃셈 연산 기능 및 단위 테스트 구현
     */
     @ParameterizedTest
     @ValueSource(strings = {"1+2", "2+3", "0+6"})
     void add(String input) {
-        int signIndex = input.indexOf("+");
-        int num1 = Character.getNumericValue(input.charAt(signIndex - 1));
-        int num2 = Character.getNumericValue(input.charAt(signIndex + 1));
+        String[] array_input = input.split("\\+");
+        int num1 = Integer.parseInt(array_input[0]);
+        int num2 = Integer.parseInt(array_input[1]);
         assertThat(num1 + num2).isEqualTo(6);
     }
 
     /*
-    뺄셈 함수 기능 및 단위 테스트 구현
+    뺄셈 연산 기능 및 단위 테스트 구현
     */
     @ParameterizedTest
     @ValueSource(strings = {"2-1", "5-2", "6-4"})
     void subtract(String input) {
-        int signIndex = input.indexOf("-");
-        int num1 = Character.getNumericValue(input.charAt(signIndex - 1));
-        int num2 = Character.getNumericValue(input.charAt(signIndex + 1));
+        String[] array_input = input.split("-");
+        int num1 = Integer.parseInt(array_input[0]);
+        int num2 = Integer.parseInt(array_input[1]);
         assertThat(num1 - num2).isEqualTo(3);
     }
 
     /*
-    곱셈 함수 기능 및 단위 테스트 구현
+    곱셈 연산 기능 및 단위 테스트 구현
     */
     @ParameterizedTest
     @ValueSource(strings = {"2*8", "5*2", "6*4"})
     void multiply(String input) {
-        int signIndex = input.indexOf("*");
-        int num1 = Character.getNumericValue(input.charAt(signIndex - 1));
-        int num2 = Character.getNumericValue(input.charAt(signIndex + 1));
+        String[] array_input = input.split("\\*");
+        int num1 = Integer.parseInt(array_input[0]);
+        int num2 = Integer.parseInt(array_input[1]);
         assertThat(num1 * num2).isEqualTo(10);
     }
 
     /*
-    나눗셈 함수 기능 및 단위 테스트 구현
+    나눗셈 연산 기능 및 단위 테스트 구현
     */
     @ParameterizedTest
-    @ValueSource(strings = {"8/2", "6/3", "5/5"})
+    @ValueSource(strings = {"8/2", "20/5", "5/5"})
     void divide(String input) {
-        int signIndex = input.indexOf("/");
-        int num1 = Character.getNumericValue(input.charAt(signIndex - 1));
-        int num2 = Character.getNumericValue(input.charAt(signIndex + 1));
+        String[] array_input = input.split("/");
+        int num1 = Integer.parseInt(array_input[0]);
+        int num2 = Integer.parseInt(array_input[1]);
         assertThat(num1 / num2).isEqualTo(4);
     }
+
     /*
     공백 문자 or null 체크 기능 및 단위 테스트 구현
      */
@@ -67,6 +69,7 @@ public class StringCalculatorTest {
                 }
         );
     }
+
     /*
     사칙연수 부호 체크 기능 및 단위 테스트 구현
      */
@@ -77,7 +80,6 @@ public class StringCalculatorTest {
 
         array_input = input.split(" ");
         assertThatIllegalArgumentException().isThrownBy(() -> {
-
             for (int i = 0; i < array_input.length; ++i) {
 
                 if (i % 2 == 1) {
@@ -100,14 +102,9 @@ public class StringCalculatorTest {
 
                         default:
                             throw new IllegalArgumentException("입력값이 잘못되었습니다. 사칙연산이 아닌 기호가 입력되었습니다.");
-
                     }
                 }
-
             }
         });
-
     }
-
-
 }
