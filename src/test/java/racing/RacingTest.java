@@ -4,47 +4,46 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.strategy.DrivingMoveStrategy;
+import racing.strategy.DrivingStopStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingTest {
+    private int INPUT_CARS_COUNT = 1;
+    private int INPUT_MOVES_COUNT = 1;
+
     private RacingGame mGame;
     private Car mCar;
 
     @BeforeEach
     void setUp() {
-        mGame = new RacingGame();
+        mGame = new RacingGame(INPUT_CARS_COUNT, INPUT_MOVES_COUNT);
         mCar = new Car();
     }
 
     @Test
     void input_generate_cars() {
-        mGame.setNumOfCars(3);
-
-        assertThat(mGame.getNumOfCars()).isEqualTo(3);
+        assertThat(mGame.getNumOfCars()).isEqualTo(INPUT_CARS_COUNT);
     }
 
     @Test
     void input_move_times() {
-        mGame.setNumOfMove(2);
-
-        assertThat(mGame.getNumOfMove()).isEqualTo(2);
+        assertThat(mGame.getNumOfMove()).isEqualTo(INPUT_MOVES_COUNT);
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-    void go(int randValue) {
-        boolean result = mCar.isAvailToGo(randValue);
+    @Test
+    void go() {
+        mCar.goOrNot(new DrivingMoveStrategy());
 
-        assertThat(result).isTrue();
+        assertThat(mCar.position).isEqualTo(1);
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3})
-    void stop(int randValue) {
-        boolean result = mCar.isAvailToGo(randValue);
+    @Test
+    void stop() {
+        mCar.goOrNot(new DrivingStopStrategy());
 
-        assertThat(result).isFalse();
+        assertThat(mCar.position).isEqualTo(0);
     }
 
     @Test

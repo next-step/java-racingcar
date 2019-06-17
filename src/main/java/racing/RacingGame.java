@@ -1,128 +1,50 @@
 package racing;
 
 import java.util.*;
+import racing.strategy.*;
 
 public class RacingGame {
-    private int time;
-    private Random mRand;
-    private ArrayList<Car> cars;
+    private List<Car> cars;
+    private int moves;
 
-    public RacingGame() {
-        mRand = new Random();
+    public RacingGame(int numOfCars, int numOfMoves) {
+        setCars(numOfCars);
+        setMoves(numOfMoves);
     }
 
-    private void greeting() {
-        print("자동차 대수는 몇 대 인가요?");
-        setNumOfCars(getInput());
+    public void startRacing() {
+        Printer.printStartRacing();
 
-        print("시도할 회수는 몇 회 인가요?");
-        setNumOfMove(getInput());
-        print("\n실행 결과");
-    }
-
-    private void startRace() {
-        for (int i = 0; i < this.time; i++) {
-            turn();
+        for (int i = 0; i < this.moves; i++) {
+            move();
         }
     }
 
-    private void turn() {
+    private void move() {
         for (Car car : cars) {
-            car.goOrNot(getRand());
-
+            car.goOrNot(new DrivingRandomStrategy());
         }
 
-        printCurrentTurn();
+        Printer.printResult(cars);
     }
 
-    public void printCurrentTurn() {
-        for (Car car : cars) {
-            print(car.getMovesRoad());
+    private void setCars(int numOfCars) {
+        cars = new ArrayList<>(numOfCars);
+
+        for (int i = 0; i < numOfCars; i++) {
+            cars.add(new Car());
         }
-
-        print("");
     }
-
-    public static void main(String[] args) {
-        RacingGame game = new RacingGame();
-        game.race();
-    }
-
-
-    private void race() {
-        greeting();
-
-        startRace();
-
-    }
-
-    private int getInput() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
-    }
-
-    private int getRand() {
-        return mRand.nextInt(10);
-    }
-
-    private void print(String message) {
-        System.out.println(message);
-    }
-
 
     public int getNumOfCars() {
         return cars.size();
     }
 
-    public void setNumOfCars(int numberOfCars) {
-        cars = new ArrayList<>(numberOfCars);
-
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
-        }
+    private void setMoves(int numOfMoves) {
+        this.moves = numOfMoves;
     }
 
     public int getNumOfMove() {
-        return this.time;
-    }
-
-    public void setNumOfMove(int numberOfMoves) {
-        this.time = numberOfMoves;
-    }
-}
-
-class Car {
-    public int position;
-
-    public Car() {
-        position = 0;
-    }
-
-    public void goOrNot(int randValue) {
-        if (isNotAvailToGo(randValue)) {
-            return;
-        }
-
-        go();
-    }
-
-    public void go() {
-        position++;
-    }
-
-    public boolean isNotAvailToGo(int randValue) { return !isAvailToGo(randValue); }
-
-    public boolean isAvailToGo(int randValue) {
-        return randValue >= 4;
-    }
-
-    public String getMovesRoad() {
-        StringBuilder builder = new StringBuilder();
-
-        for (int i = 0; i < position; i++ ) {
-            builder.append("-");
-        }
-
-        return builder.toString();
+        return this.moves;
     }
 }
