@@ -11,13 +11,16 @@ class StageTest {
 	@DisplayName("게임 생성 테스트")
 	@ParameterizedTest
 	@CsvSource({"1,5", "3,2"})
-	void createGame(int entry, int round){
+	void createGame(int entrySize, int round){
 
-		Stage.StageBuilder builder = Stage.builder(entry, round);
+		Stage.StageBuilder builder = Stage.builder(entrySize, round);
 
+		for(int i = 0; i < entrySize; i++) {
+			builder.addToEntry(new RacingCar());
+		}
 
 		Stage stage = builder.build();
-		assertThat(stage.getCountOfPlayers()).isEqualTo(entry);
+		assertThat(stage.getCountOfPlayers()).isEqualTo(entrySize);
 		assertThat(stage.remainingRounds()).isEqualTo(round);
 	}
 

@@ -1,19 +1,22 @@
 package racing;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Stage {
 
-	private int players;
+	private List<RacingCar> players;
 
 	private int round;
 
 	private Stage(StageBuilder stageBuilder){
 		this.round = stageBuilder.round;
-		this.players = stageBuilder.entry;
+		this.players = stageBuilder.players;
 
 	}
 
 	public int getCountOfPlayers() {
-		return players;
+		return players.size();
 	}
 
 	public int remainingRounds() {
@@ -21,24 +24,36 @@ public class Stage {
 	}
 
 
-	public static StageBuilder builder(int entry, int round) {
+	/**
+	 * @param entrySize	참여가능한 최대 플레이어 수
+	 * @param round 게임 라운드 수
+	 * @return
+	 */
+	public static StageBuilder builder(int entrySize, int round) {
 
-		return new StageBuilder(entry, round);
+		return new StageBuilder(entrySize, round);
 	}
 
 	public static class StageBuilder{
 
-		private int entry;
+		private int entrySize;
 
 		private int round;
 
-		private StageBuilder(int entry, int round) {
-			this.entry = entry;
+		List<RacingCar> players;
+
+		private StageBuilder(int entrySize, int round) {
+			this.entrySize = entrySize;
 			this.round = round;
+			players = new ArrayList<>();
 		}
 
 		public Stage build() {
 			return new Stage(this);
+		}
+
+		public void addToEntry(RacingCar racingCar) {
+			players.add(racingCar);
 		}
 	}
 }
