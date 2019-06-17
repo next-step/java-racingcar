@@ -1,26 +1,16 @@
 package racinggame;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RacingGame {
     private int currentRound = 0;
     private CarLists carLists;
     private RacingGameParameters racingGameParameters;
-    private List<List<Integer>> gameResult;
+    private GameResults gameResults;
 
     public RacingGame(RacingGameParameters racingGameParameters) {
         this.racingGameParameters = racingGameParameters;
         this.carLists = new CarLists(racingGameParameters.getCarQuantity());
+        this.gameResults = new GameResults();
         this.saveCurrentResult();
-    }
-
-    private List<Car> createCars(int carQuantity) {
-        List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < carQuantity; i++) {
-            carList.add(new Car());
-        }
-        return carList;
     }
 
     private void playRound() {
@@ -38,14 +28,11 @@ public class RacingGame {
     }
 
     private void saveCurrentResult() {
-        List<Integer> carPositionList = new ArrayList<>();
-        for (Car car : this.carLists.getCarList()) {
-            carPositionList.add(car.getPosition());
-        }
-        this.gameResult.add(carPositionList);
+        GameResult gameResult = new GameResult(this.carLists);
+        this.gameResults.addRoundResult(gameResult);
     }
 
-    public List<List<Integer>> getGameResult() {
-        return gameResult;
+    public GameResults getGameResults() {
+        return this.gameResults;
     }
 }
