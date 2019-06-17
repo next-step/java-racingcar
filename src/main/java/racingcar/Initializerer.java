@@ -23,5 +23,4 @@ public class Initializerer {
   public int getNumberOfTimes() {
     return numberOfTimes;
   }
-
 }

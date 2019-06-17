@@ -8,10 +8,11 @@ public class RacingGameLauncher {
     initializerer.initNumberOfCar();
     InputView.askNumberOfTimes();
     initializerer.initNumberOfTimes();
+    RacingGame racingGame = new RacingGame(initializerer);
+    racingGame.start();
   }
 
   public static void main(String[] args) {
     RacingGameLauncher.launch();
   }
-
 }
