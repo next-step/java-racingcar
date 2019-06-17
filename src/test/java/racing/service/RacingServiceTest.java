@@ -13,7 +13,7 @@ class RacingServiceTest {
     private RacingService racingService;
     private StubValueGenerator stubValueGenerator = new StubValueGenerator(0);
 
-    @ParameterizedTest(name = "레이싱 후에 결과가 정상적으로 저장된다. (carNames={0}, attempts={1})")
+    @ParameterizedTest(name = "레이싱 후에 모든 결과를 정상적으로 저장하고, 출력한다. (carNames={0}, attempts={1})")
     @CsvSource(value = "pobi,crong,honux:6", delimiter = ':')
     void run(String carNames, int attempts) {
 
@@ -22,7 +22,8 @@ class RacingServiceTest {
 
         RacingResult racingResult = racingService.run();
 
-        assertThat(racingResult.length()).isEqualTo(attempts);
-        assertThat(racingResult.getRacingPosition(0).entrySet().size()).isEqualTo(3);
+        assertThat(racingResult.size()).isEqualTo(attempts);
+        // TODO : 케이스 보충
+        assertThat(racingResult.getLastRacingPosition().entrySet().size()).isEqualTo(3);
     }
 }

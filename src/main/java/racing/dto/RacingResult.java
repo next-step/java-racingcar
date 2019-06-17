@@ -17,7 +17,12 @@ public class RacingResult {
         racingPositions.add(RacingPosition.of(entireCars));
     }
 
-    public int length() {
+    public RacingPosition getLastRacingPosition() {
+
+        return racingPositions.get(size() - 1);
+    }
+
+    public int size() {
 
         return racingPositions.size();
     }

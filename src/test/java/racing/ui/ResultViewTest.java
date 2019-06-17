@@ -6,6 +6,7 @@ import racing.dto.RacingResult;
 
 import java.io.*;
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,14 +23,14 @@ class ResultViewTest {
     }
 
     @Test
-    @DisplayName("차량 위치 출력 검증")
-    void printEntireCarsPosition() {
+    @DisplayName("레이싱 결과 출력")
+    void printRacingResult() {
 
         int shouldMoveNumber = 5;
 
         EntireCars entireCars = EntireCars.createCars(Arrays.asList("pobi", "crong", "honux"));
-        entireCars.stream()
-                .forEach(car -> car.race(shouldMoveNumber));
+        IntStream.range(0, 6).forEach( i->
+            entireCars.stream().forEach(car -> car.race(shouldMoveNumber)));
 
         RacingResult racingResult = new RacingResult();
         racingResult.addCurrentRacingPosition(entireCars);
@@ -38,8 +39,10 @@ class ResultViewTest {
 
         assertThat(byteArrayOutputStream.toString())
                 .isEqualTo("\n"
-                         + "crong : --\n"
-                         + "pobi : --\n"
-                         + "honux : --\n\n");
+                         + "crong : -------\n"
+                         + "pobi : -------\n"
+                         + "honux : -------\n"
+                         + "\n"
+                         + "crong, pobi, honux가 최종우승 했습니다.");
     }
 }
