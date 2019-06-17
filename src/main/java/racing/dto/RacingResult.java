@@ -5,20 +5,20 @@ import java.util.List;
 
 public class RacingResult {
 
-    private List<CarPosition> carPositions = new ArrayList<>();
+    private List<RacingPosition> racingPositions = new ArrayList<>();
 
-    public CarPosition getCarPosition(int raceCount) {
+    public RacingPosition getRacingPosition(int raceCount) {
 
-        return carPositions.get(raceCount);
+        return racingPositions.get(raceCount);
     }
 
-    public void addCurrentCarPosition(EntireCars entireCars) {
+    public void addCurrentRacingPosition(EntireCars entireCars) {
 
-        carPositions.add(CarPosition.of(entireCars));
+        racingPositions.add(RacingPosition.of(entireCars));
     }
 
     public int length() {
 
-        return carPositions.size();
+        return racingPositions.size();
     }
 }

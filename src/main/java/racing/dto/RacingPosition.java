@@ -6,17 +6,17 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class CarPosition {
+public class RacingPosition {
 
     private Map<String, Integer> carNamePositions;
 
-    public static CarPosition of(EntireCars entireCars) {
+    public static RacingPosition of(EntireCars entireCars) {
 
-        CarPosition carPosition = new CarPosition();
-        carPosition.carNamePositions = entireCars.stream()
+        RacingPosition racingPosition = new RacingPosition();
+        racingPosition.carNamePositions = entireCars.stream()
                 .collect(Collectors.toMap(Car::getName, Car::getPosition, (car1, car2) -> car1));
 
-        return carPosition;
+        return racingPosition;
     }
 
     public int getPosition(String carName) {
@@ -24,6 +24,7 @@ public class CarPosition {
         return carNamePositions.get(carName);
     }
 
+    // TODO
     public Set<Map.Entry<String, Integer>> entrySet() {
 
         return carNamePositions.entrySet();

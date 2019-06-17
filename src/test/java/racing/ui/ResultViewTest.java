@@ -32,13 +32,14 @@ class ResultViewTest {
                 .forEach(car -> car.race(shouldMoveNumber));
 
         RacingResult racingResult = new RacingResult();
-        racingResult.addCurrentCarPosition(entireCars);
+        racingResult.addCurrentRacingPosition(entireCars);
 
         resultView.printRacingResult(racingResult);
 
         assertThat(byteArrayOutputStream.toString())
-                .isEqualTo("crong : --\n"
+                .isEqualTo("\n"
+                         + "crong : --\n"
                          + "pobi : --\n"
-                         + "honux : --");
+                         + "honux : --\n\n");
     }
 }

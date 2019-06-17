@@ -36,12 +36,12 @@ public class RacingService {
     private RacingResult race(EntireCars entireCars) {
 
         RacingResult racingResult = new RacingResult();
-        racingResult.addCurrentCarPosition(entireCars);
+        racingResult.addCurrentRacingPosition(entireCars);
 
         IntStream.range(START_RACE_COUNT, racingInfo.getAttempts())
                 .forEach(currentRaceCount -> {
                     raceEntireCars(entireCars);
-                    racingResult.addCurrentCarPosition(entireCars);
+                    racingResult.addCurrentRacingPosition(entireCars);
                 });
 
         return racingResult;

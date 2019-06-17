@@ -1,6 +1,6 @@
 package racing.ui;
 
-import racing.dto.CarPosition;
+import racing.dto.RacingPosition;
 import racing.dto.RacingResult;
 
 import java.io.PrintStream;
@@ -23,13 +23,13 @@ public class ResultView {
         printNewLine();
 
         IntStream.range(0, racingResult.length())
-                .mapToObj(racingResult::getCarPosition)
+                .mapToObj(racingResult::getRacingPosition)
                 .forEach(this::printRace);
     }
 
-    private void printRace(CarPosition carPosition) {
+    private void printRace(RacingPosition racingPosition) {
 
-        carPosition.entrySet().forEach(this::printCarPosition);
+        racingPosition.entrySet().forEach(this::printCarPosition);
 
         printNewLine();
     }
