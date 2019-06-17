@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
@@ -73,6 +74,28 @@ class StageTest {
 						stage.playRound();
 					}
 				});
+
+	}
+
+	@Test
+	@DisplayName("게임 중계 시스템 적용 테스트")
+	void updateWatcher(){
+		// Arrange
+		int roundLimit = 5;
+		Stage.StageBuilder builder = Stage.builder(1, roundLimit);
+		builder.addToEntry(mock(RacingCar.class));
+
+		Broadcaster broadcaster = mock(Broadcaster.class);
+		builder.addWatcher(broadcaster);
+
+		Stage stage = builder.build();
+
+		// Action
+		stage.playRound();
+
+		// Assertion
+		verify(broadcaster, times(1)).update(anyList());
+
 
 	}
 

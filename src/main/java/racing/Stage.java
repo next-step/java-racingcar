@@ -68,5 +68,8 @@ public class Stage {
 		public void addToEntry(RacingCar racingCar) {
 			players.add(racingCar);
 		}
+
+		public void addWatcher(Broadcaster mock) {
+		}
 	}
 }
