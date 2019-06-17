@@ -1,12 +1,14 @@
 package com.jaeyeonling.racingcar.domain;
 
+import com.jaeyeonling.racingcar.utils.StringUtils;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 public class RacingGameOption {
 
-    static final String NAME_SEPARATOR = ",";
+    public static final String NAME_SEPARATOR = ",";
 
     private final Participants participants;
     private final int movingCount;
@@ -42,6 +44,10 @@ public class RacingGameOption {
         private MoveStrategy moveStrategy = DEFAULT_MOVE_STRATEGY;
 
         public Builder nameOfParticipants(final String nameOfParticipants) {
+            if (StringUtils.isEmpty(nameOfParticipants)) {
+                throwNameOfParticipantsEmpty();
+            }
+
             this.nameOfParticipants = Arrays.asList(nameOfParticipants.split(NAME_SEPARATOR));
             checkNameOfParticipantsConstraints();
 
@@ -49,7 +55,6 @@ public class RacingGameOption {
         }
 
         public Builder movingCount(final int movingCount) {
-
             this.movingCount = movingCount;
             checkMovingCountConstraints();
 
@@ -64,10 +69,15 @@ public class RacingGameOption {
         }
 
         public RacingGameOption build() {
+            checkNameOfParticipantsConstraints();
+
             return new RacingGameOption(this);
         }
 
         private void checkNameOfParticipantsConstraints() {
+            if (Objects.isNull(nameOfParticipants)) {
+                throwNameOfParticipantsEmpty();
+            }
             if (nameOfParticipants.size() >= MAXIMUM_NUMBER_OF_PARTICIPANTS) {
                 throwConstraintsException(String.format("참여자는 %d 이상이 될 수 없습니다. (입력 값: %d)",
                         MAXIMUM_NUMBER_OF_PARTICIPANTS,
@@ -97,6 +107,10 @@ public class RacingGameOption {
             if (Objects.isNull(moveStrategy)) {
                 throwConstraintsException("MoveStrategy 는 null 일 수 없습니다.");
             }
+        }
+
+        private void throwNameOfParticipantsEmpty() {
+            throwConstraintsException("nameOfParticipants 값은 빈 값일 수 없습니다.");
         }
 
         private void throwConstraintsException(final String message) {
