@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -20,10 +19,9 @@ class StringCalculatorTest {
         stringCalculator = new StringCalculator();
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"2 + 3 * 4 / 2"})
-    void separatingValueFromTheOperatorTest(String input) {
-        stringCalculator.separatingValueFromTheOperator(input);
+    @Test
+    void separatingValueFromTheOperatorTest() {
+        stringCalculator.separatingValueFromTheOperator("2 + 3 * 4 / 2");
         assertThat(stringCalculator.getIntValues()).contains(2, 3, 4, 2);
         assertThat(stringCalculator.getOperators()).contains("+", "*", "/");
     }
@@ -37,10 +35,9 @@ class StringCalculatorTest {
         assertThat(result).isEqualTo(10);
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"2 + 3 * 4 / 2"})
-    void execute(String input) {
-        int result = stringCalculator.execute(input);
+    @Test
+    void execute() {
+        int result = stringCalculator.execute("2 + 3 * 4 / 2");
         assertThat(result).isEqualTo(10);
     }
 

@@ -20,7 +20,7 @@ public class Calculator {
     }
 
     public String checkPolicyOperator(String operator) {
-        boolean isContainsOperator = "+_*/".contains(operator);
+        boolean isContainsOperator = "+-*/".contains(operator);
         if (isContainsOperator) {
             return operator;
         }
