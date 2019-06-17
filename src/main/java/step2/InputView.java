@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class InputView {
 
-    public Integer[] inputMessage(){
+    static Integer[] inputMessage(){
         Integer[] userInputArray = new Integer[2];
         Scanner scanner = new Scanner(System.in);
 

@@ -2,9 +2,9 @@ package step2;
 
 import java.util.List;
 
-public class outputView {
+public class OutputView {
 
-    public void racingResult(List<CarDto> carsPosition) {
+    static void racingResult(List<CarDto> carsPosition) {
         int carNumber = carsPosition.size();
         for (int i = 0; i < carNumber; i++) {
             carResult(carsPosition.get(i).getPosition());
@@ -12,7 +12,7 @@ public class outputView {
         System.out.println();
     }
 
-    public void carResult(int carMoveStatusNumber) {
+    static void carResult(int carMoveStatusNumber) {
         StringBuffer carMoveBuffer = new StringBuffer();
         while (carMoveStatusNumber > 0) {
             carMoveBuffer.append("-");
