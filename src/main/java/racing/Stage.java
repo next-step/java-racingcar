@@ -44,16 +44,13 @@ public class Stage {
 			watcher.handle(new StartedRacingEvent());
 		}
 
+		ArrayList currentPositions = new ArrayList<>();
 		for(Player player : players){
 			player.drive();
+			currentPositions.add(player.getPosition());
 		}
 
 		if(watcher != null){
-			ArrayList currentPositions = new ArrayList<>();
-			for(Player player : players){
-				currentPositions.add(player.getPosition());
-			}
-
 			watcher.handle(new ChangedPlayerPositionEvent(currentPositions));
 		}
 
