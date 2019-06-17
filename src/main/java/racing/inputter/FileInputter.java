@@ -5,7 +5,6 @@ import racing.exception.ScanException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.*;
-import java.util.List;
 import java.util.stream.Stream;
 
 /**
@@ -18,7 +17,7 @@ public class FileInputter implements Inputter {
     public FileInputter(String fileName) {this.fileName = fileName;}
 
     @Override
-    public int inputIntValue() {
+    public int getIntValue() {
 
         try {
             Path path = Paths.get(ClassLoader.getSystemResource(fileName).toURI());
@@ -30,7 +29,7 @@ public class FileInputter implements Inputter {
     }
 
     @Override
-    public List<String> inputDelimiterSeparatedStringValue(String delimiter) {
+    public String getStringValue() {
 
         return null;
     }

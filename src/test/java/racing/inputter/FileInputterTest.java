@@ -17,7 +17,7 @@ class FileInputterTest {
 
         fileInputter = new FileInputter("test-racing");
 
-        int value = fileInputter.inputIntValue();
+        int value = fileInputter.getIntValue();
         assertThat(value).isEqualTo(3);
     }
 
@@ -28,6 +28,6 @@ class FileInputterTest {
         fileInputter = new FileInputter("empty");
 
         assertThatExceptionOfType(ScanException.class)
-                .isThrownBy(() -> fileInputter.inputIntValue());
+                .isThrownBy(() -> fileInputter.getIntValue());
     }
 }

@@ -20,7 +20,7 @@ class SystemConsoleInputterTest {
         String input = "3";
         stubInputStream(input);
 
-        int value = systemConsoleInputter.inputIntValue();
+        int value = systemConsoleInputter.getIntValue();
         assertThat(value).isEqualTo(Integer.valueOf(input));
     }
 
@@ -32,7 +32,7 @@ class SystemConsoleInputterTest {
         stubInputStream(input);
 
         assertThatExceptionOfType(ScanException.class)
-                .isThrownBy(() -> systemConsoleInputter.inputIntValue());
+                .isThrownBy(() -> systemConsoleInputter.getIntValue());
     }
 
     @Test
@@ -43,7 +43,7 @@ class SystemConsoleInputterTest {
         stubInputStream(input);
 
         assertThatExceptionOfType(ScanException.class)
-                .isThrownBy(() -> systemConsoleInputter.inputIntValue())
+                .isThrownBy(() -> systemConsoleInputter.getIntValue())
                 .withCause(new NoSuchElementException());
     }
 

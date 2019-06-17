@@ -1,10 +1,8 @@
 package racing.inputter;
 
-import java.util.List;
-
 public interface Inputter {
 
-    int inputIntValue();
+    int getIntValue();
 
-    List<String> inputDelimiterSeparatedStringValue(String delimiter);
+    String getStringValue();
 }

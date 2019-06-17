@@ -2,14 +2,15 @@ package racing.inputter;
 
 import racing.exception.ScanException;
 
-import java.util.*;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class SystemConsoleInputter implements Inputter {
 
     private final Scanner scanner = new Scanner(System.in);
 
     @Override
-    public int inputIntValue() {
+    public int getIntValue() {
 
         try {
             return scanner.nextInt();
@@ -21,15 +22,12 @@ public class SystemConsoleInputter implements Inputter {
     }
 
     @Override
-    public List<String> inputDelimiterSeparatedStringValue(String delimiter) {
-        // TODO : 예외처리
-
-        String line = scanner.nextLine();
+    public String getStringValue() {
 
         try {
-            return Arrays.asList(line.split(delimiter));
+            return scanner.nextLine();
         } catch (Exception e) {
-            throw new ScanException("변환도중 에러가 발생했습니다. 입력값=" + line + ", 구분자=" + delimiter, e);
+            throw new ScanException("입력 도중 에러가 발생했습니다", e);
         }
     }
 }

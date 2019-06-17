@@ -14,33 +14,22 @@ class InputViewTest {
 
     @Test
     @DisplayName("차량명 입력 검증")
-    void askCarCount() {
+    void askCarNames() {
 
         String input = "pobi,crong,honux";
         mockInput(input);
 
-        assertThat(inputView.askCarNames()).containsExactly("pobi", "crong", "honux");
+        assertThat(inputView.askCarNames()).isEqualTo("pobi,crong,honux");
     }
 
     @Test
-    @DisplayName("차량대수 입력 시 숫자가 아니라면 ScanException 발생")
-    void askCarCount_notNumber() {
-
-        mockInput("abc");
-
-        assertThatExceptionOfType(ScanException.class)
-                .isThrownBy(() -> inputView.askCarCount())
-                .withMessage("숫자를 입력해주세요");
-    }
-
-    @Test
-    @DisplayName("차량대수 입력 시 Exception 발생한다면 ScanException 으로 변환")
+    @DisplayName("차량명 입력 시 Exception 발생한다면 ScanException 으로 변환")
     void askCarCount_exception() {
 
         mockInput("");
 
         assertThatExceptionOfType(ScanException.class)
-                .isThrownBy(() -> inputView.askCarCount())
+                .isThrownBy(() -> inputView.askCarNames())
                 .withMessage("입력 도중 에러가 발생했습니다");
     }
 
