@@ -14,6 +14,6 @@ import java.util.List;
  * project      : java-racingcar
  * create date  : 2019-06-15 23:39
  */
-public interface CarRacingInterface {
-    public abstract List<Car> move();
+interface CarRacingInterface {
+    abstract List<Car> move();
 }
