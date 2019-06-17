@@ -12,30 +12,28 @@ class CarTest {
     }
 
     @Test
-    void Car는_이름을_갖는다() {
+    void Car는_CarInformation을_갖는다() {
         Car car = Car.create("yong");
-        assertThat(car.toString()).isEqualTo("yong");
+        assertThat(car.getInformation()).isInstanceOf(CarInformation.class);
     }
 
     @Test
     void 자동차는_움직일_수_있다() {
         DrivingRule mockRule = () -> true;
-
         Car car = Car.createWithDrivingRule(mockRule, "yong");
 
-        assertThat(car.move()).isEqualTo(1);
-        assertThat(car.move()).isEqualTo(2);
-        assertThat(car.move()).isEqualTo(3);
+        assertThat(car.move()).isEqualTo(Position.valueOf(1));
+        assertThat(car.move()).isEqualTo(Position.valueOf(2));
+        assertThat(car.move()).isEqualTo(Position.valueOf(3));
     }
 
     @Test
     void 자동차는_정지할_수_있다() {
         DrivingRule mockRule = () -> false;
-
         Car car = Car.createWithDrivingRule(mockRule, "yong");
 
-        assertThat(car.move()).isEqualTo(0);
-        assertThat(car.move()).isEqualTo(0);
-        assertThat(car.move()).isEqualTo(0);
+        assertThat(car.move()).isEqualTo(Position.valueOf(0));
+        assertThat(car.move()).isEqualTo(Position.valueOf(0));
+        assertThat(car.move()).isEqualTo(Position.valueOf(0));
     }
 }

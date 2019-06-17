@@ -3,7 +3,7 @@ package racingcar.model;
 import java.util.Random;
 
 public class RandomNumberGenerator implements NumberGenerationStrategy {
-    private static final int RANDOM_VALUE_BOUNDARY = 10;
+    public static final int RANDOM_VALUE_BOUNDARY = 10;
 
     private Random random = new Random();
 
