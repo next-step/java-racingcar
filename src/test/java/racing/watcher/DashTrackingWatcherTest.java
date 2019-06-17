@@ -43,9 +43,12 @@ class DashTrackingWatcherTest {
 		});
 
 		List<Integer> positions = new ArrayList<>();
-		positions.add(0);
-		positions.add(1);
-		positions.add(2);
+		// 0, 1 모두 대시("-") 1개 출력
+		positions.add(0); // -
+		positions.add(1); // -
+
+		// 2 이상은 개수만큼 출력
+		positions.add(2); // --
 
 		// Action
 		watcher.handle(new ChangedPlayerPositionEvent(positions));
