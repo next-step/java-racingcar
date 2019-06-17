@@ -1,19 +1,20 @@
 package step2;
 
-public class GameInputModel implements InputModel {
-    private int countOfCar;
-    private int times;
+public class RacingGameInputModel {
+    private final int numberOfCar;
+    private final int times;
 
-    public GameInputModel(int countOfCar, int times) {
-        this.countOfCar = countOfCar;
+    public RacingGameInputModel(int numberOfCar, int times) {
+        this.numberOfCar = numberOfCar;
         this.times = times;
     }
 
-    public int getCountOfCar() {
-        return countOfCar;
+    public int getNumberOfCar() {
+        return numberOfCar;
     }
 
     public int getTimes() {
         return times;
     }
+
 }
