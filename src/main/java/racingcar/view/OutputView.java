@@ -27,4 +27,12 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    public static void printWinners(List<CarInformation> winners) {
+        System.out.print(winners.get(0).getName());
+        for (int i = 1; i < winners.size(); i++) {
+            System.out.print(", " + winners.get(i).getName());
+        }
+        System.out.println("가 최종 우승했습니다.");
+    }
 }

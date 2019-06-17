@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.model.CarInformation;
 import racingcar.model.Cars;
+import racingcar.model.Referee;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -9,17 +10,30 @@ import java.util.InputMismatchException;
 import java.util.List;
 
 public class RacingGame {
-    public boolean run() {
-        List<String> carNames;
-        int numberOfTries;
+    private List<String> carNames;
+    private int numberOfTries;
 
+    public boolean run() {
+        if (!inputRaceSetting()) {
+            return false;
+        }
+
+        List<CarInformation> resultList = race();
+        awards(resultList);
+        return true;
+    }
+
+    private boolean inputRaceSetting() {
         try {
             carNames = InputView.inputCarNames();
             numberOfTries = InputView.inputNumberOfTries();
         } catch (InputMismatchException exception) {
             return false;
         }
+        return true;
+    }
 
+    private List<CarInformation> race() {
         Cars cars = new Cars(carNames);
         OutputView.printResultMessage();
 
@@ -28,7 +42,11 @@ public class RacingGame {
             informationList = cars.move();
             OutputView.printCars(informationList);
         }
+        return informationList;
+    }
 
-        return true;
+    private void awards(List<CarInformation> resultList) {
+        List<CarInformation> winners = Referee.judgeWinners(resultList);
+        OutputView.printWinners(winners);
     }
 }
