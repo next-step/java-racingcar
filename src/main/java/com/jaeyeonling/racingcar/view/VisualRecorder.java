@@ -9,18 +9,21 @@ import java.util.stream.Collectors;
 
 public class VisualRecorder implements Visualizable {
 
+    private static final String RESULT_MESSAGE = "실행 결과";
+    private static final String VICTOR_MESSAGE = "%s가 최종 우승했습니다.";
+
     private final StringBuilder recorder = new StringBuilder();
 
     public void recodeResultMessage() {
         newLine();
-        recode("실행 결과");
+        recode(RESULT_MESSAGE);
     }
 
     public void recodeVictors(final List<Car> victors) {
         final String victorNames = victors.stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(RacingGameOption.NAME_SEPARATOR));
-        recode(String.format("%s가 최종 우승했습니다.", victorNames));
+        recode(String.format(VICTOR_MESSAGE, victorNames));
     }
 
     public void recode(final Visualizable recodeData) {

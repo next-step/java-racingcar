@@ -5,6 +5,7 @@ import com.jaeyeonling.racingcar.view.Visualizable;
 
 public class Car implements Visualizable {
 
+    private static final String VISUALIZE_FORMAT = "%s : %s";
     static final String VISUAL_POSITION_STRING = "-";
     static final int DEFAULT_POSITION = 1;
 
@@ -24,7 +25,7 @@ public class Car implements Visualizable {
 
     @Override
     public String visualize() {
-        return String.format("%s : %s", name, getVisualPosition());
+        return String.format(VISUALIZE_FORMAT, name, getVisualPosition());
     }
 
     public String getName() {
