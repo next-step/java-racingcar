@@ -38,9 +38,7 @@ public class Car {
    */
   private boolean enableMoveForward() {
     int value = random.nextInt();
-    if (value > 4) return true;
-
-    return false;
+    return value > 4;
   }
 
   public int getInitialPosition() {
