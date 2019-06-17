@@ -8,7 +8,7 @@ public class Cars {
 
     public Cars(int numberOfCars) {
         for (int i = 0; i < numberOfCars; i++) {
-            Car car = Car.createCar();
+            Car car = Car.create();
             cars.add(car);
         }
     }

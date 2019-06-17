@@ -8,13 +8,13 @@ public class Car {
         this.drivingRule = drivingRule;
     }
 
-    public static Car createCar() {
-        return new Car(RandomDrivingRule.getInstance());
+    public static Car create() {
+        return new Car(RacingDrivingRule.createDefault());
     }
 
-    public static Car createCarWithDrivingRule(DrivingRule drivingRule) {
+    public static Car createWithDrivingRule(DrivingRule drivingRule) {
         if (drivingRule == null) {
-            return createCar();
+            return create();
         }
         return new Car(drivingRule);
     }
