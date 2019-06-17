@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.model.Car;
+import racingcar.model.CarFactory;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -15,8 +16,14 @@ public class RacingGame {
   }
 
   public void startRacing() {
-    List<Car> cars = inputView.prepare();
+    // client에게 최초 질문
+    inputView.askQuestions();
+
+    int players = inputView.getPlayers();
     int rounds = inputView.getRounds();
+
+    // Car을 player 수만큼 생성
+    List<Car> cars = CarFactory.generate(players);
     printRacingStatus(rounds, cars);
   }
 
@@ -35,6 +42,4 @@ public class RacingGame {
       ResultView.printCurrentPositionOf(car);
     });
   }
-
-
 }
