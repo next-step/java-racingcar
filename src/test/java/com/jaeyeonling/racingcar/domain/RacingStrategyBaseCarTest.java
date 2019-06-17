@@ -18,7 +18,7 @@ public class RacingStrategyBaseCarTest {
         final Car car = new Car(new RacingStrategy());
 
         // when
-        car.moveForward(RacingCondition.MOVE.condition);
+        car.moveForward(RacingStrategy.MORE_THAN_MOVING_CONDITION + 1);
 
         // then
         assertThat(car.getPosition()).isEqualTo(Car.DEFAULT_POSITION + 1);
@@ -31,7 +31,7 @@ public class RacingStrategyBaseCarTest {
         final Car car = new Car(new RacingStrategy());
 
         // when
-        car.moveForward(RacingCondition.STAY.condition);
+        car.moveForward(RacingStrategy.MORE_THAN_MOVING_CONDITION - 1);
 
         // then
         assertThat(car.getPosition()).isEqualTo(Car.DEFAULT_POSITION);
@@ -46,7 +46,7 @@ public class RacingStrategyBaseCarTest {
 
         // when
         for (int i = 0; i < moveCount; i++) {
-            car.moveForward(RacingCondition.MOVE.condition);
+            car.moveForward(RacingStrategy.MORE_THAN_MOVING_CONDITION + 1);
         }
 
         // then
@@ -62,21 +62,10 @@ public class RacingStrategyBaseCarTest {
 
         // when
         for (int i = 0; i < moveCount; i++) {
-            car.moveForward(RacingCondition.STAY.condition);
+            car.moveForward(RacingStrategy.MORE_THAN_MOVING_CONDITION - 1);
         }
 
         // then
         assertThat(car.getPosition()).isEqualTo(Car.DEFAULT_POSITION);
-    }
-
-    enum RacingCondition {
-        MOVE(RacingStrategy.MORE_THAN_MOVING_CONDITION + 1),
-        STAY(RacingStrategy.MORE_THAN_MOVING_CONDITION - 1);
-
-        private int condition;
-
-        RacingCondition(final int condition) {
-            this.condition = condition;
-        }
     }
 }
