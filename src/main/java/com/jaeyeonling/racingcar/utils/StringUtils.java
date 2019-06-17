@@ -1,5 +1,7 @@
 package com.jaeyeonling.racingcar.utils;
 
+import java.util.Objects;
+
 public final class StringUtils {
 
     public static final String NEW_LINE = "\n";
@@ -16,5 +18,9 @@ public final class StringUtils {
         }
 
         return target.repeat(repeatCount);
+    }
+
+    public static boolean isEmpty(final String target) {
+        return !Objects.isNull(target) && target.isEmpty();
     }
 }
