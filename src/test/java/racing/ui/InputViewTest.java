@@ -4,9 +4,9 @@ import org.junit.jupiter.api.*;
 import racing.exception.ScanException;
 import racing.inputter.SystemConsoleInputter;
 
+import static learn.StubSystemInputLearnTest.stubInputStream;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static util.SystemInputStubUtil.stubInputStream;
 
 class InputViewTest {
 

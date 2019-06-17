@@ -28,10 +28,10 @@ class RacingServiceTest {
         RacingResult racingResult = racingService.run();
 
         // 스코어보드의 개수가 시도 횟수와 일치하는지 검증
-        assertThat(racingResult.getEntireRacingScore().size()).isEqualTo(attempts);
+        assertThat(racingResult.getEntireRacingScore()).hasSize(attempts);
         // 모든 스코어보드에서 차의 개수와 CarNamePositions 개수와 일치하는지 검증
         racingResult.getEntireRacingScore().forEach(
-                racingScore -> assertThat(racingScore.getCarNamePositions().size()).isEqualTo(carNames.size()));
+                racingScore -> assertThat(racingScore.getCarNamePositions()).hasSize(carNames.size()));
     }
 
     private static Stream<Arguments> run() {

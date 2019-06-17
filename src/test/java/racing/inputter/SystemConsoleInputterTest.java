@@ -1,8 +1,8 @@
 package racing.inputter;
 
+import learn.StubSystemInputLearnTest;
 import org.junit.jupiter.api.*;
 import racing.exception.ScanException;
-import util.SystemInputStubUtil;
 
 import java.util.NoSuchElementException;
 
@@ -55,7 +55,7 @@ class SystemConsoleInputterTest {
 
     private void stubInputStream(String input) {
 
-        SystemInputStubUtil.stubInputStream(input);
+        StubSystemInputLearnTest.stubInputStream(input);
         systemConsoleInputter = new SystemConsoleInputter();
     }
 
