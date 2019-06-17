@@ -32,4 +32,9 @@ public class Racing {
         this.cars = cars;
     }
 
+    public void raceCarMoveLoop() {
+        for (Car car : this.cars){
+            car.nextRace();
+        }
+    }
 }

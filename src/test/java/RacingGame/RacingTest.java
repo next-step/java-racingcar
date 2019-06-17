@@ -45,4 +45,15 @@ class RacingTest {
         racing.setCars(cars);
         assertThat(racing.getCars().size()).isEqualTo(3);
     }
+
+    @Test
+    void raceCarMoveLoop() {
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car());
+        cars.add(new Car());
+        cars.add(new Car());
+
+        racing.setCars(cars);
+        racing.raceCarMoveLoop();
+    }
 }
