@@ -9,16 +9,17 @@ import java.util.List;
 
 public class RacingGame {
     public boolean run() {
-        int numberOfCars, numberOfTries;
+        List<String> carNames;
+        int numberOfTries;
 
         try {
-            numberOfCars = InputView.inputNumberOfCars();
+            carNames = InputView.inputCarNames();
             numberOfTries = InputView.inputNumberOfTries();
         } catch (InputMismatchException exception) {
             return false;
         }
 
-        Cars cars = new Cars(numberOfCars);
+        Cars cars = new Cars(carNames);
         OutputView.printResultMessage();
         for (int i = 0; i < numberOfTries; i++) {
             List<Integer> positions = cars.move();

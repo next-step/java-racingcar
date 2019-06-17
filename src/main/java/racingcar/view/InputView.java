@@ -1,10 +1,23 @@
 package racingcar.view;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class InputView {
-    public static int inputNumberOfCars() {
-        return inputNumber("자동차 대수는 몇 대 인가요?");
+    private static final String SEPARATOR_FOR_SPLIT = ",";
+
+    public static List<String> inputCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        Scanner scanner = new Scanner(System.in);
+
+        String input = scanner.nextLine();
+        String[] carNames = input.split(SEPARATOR_FOR_SPLIT);
+
+        return Arrays.stream(carNames)
+                .collect(Collectors.toList());
     }
 
     public static int inputNumberOfTries() {
