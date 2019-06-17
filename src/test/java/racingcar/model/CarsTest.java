@@ -59,6 +59,6 @@ class CarsTest {
     }
 
     static List<Car> generateCarList(int count) {
-        return IntStream.range(0, count).mapToObj(i -> new Car()).collect(Collectors.toList());
+        return IntStream.range(0, count).mapToObj(i -> Car.create()).collect(Collectors.toList());
     }
 }

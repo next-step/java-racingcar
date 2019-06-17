@@ -2,22 +2,21 @@ package racingcar;
 
 import racingcar.io.InputView;
 import racingcar.io.OutputView;
-import racingcar.model.RacingCar;
+import racingcar.model.RacingGame;
 
 public class RacingCarApplication {
 
-    private static RacingCar racingCar;
+    private static RacingGame racingGame;
 
     public static void main(String[] args) {
         OutputView.start();
         int carCount = InputView.askCarCount();
         int time = InputView.askTime();
-        racingCar = RacingCar.generate(time, carCount);
+        racingGame = RacingGame.generate(time, carCount);
 
-        OutputView.result();
-        while (!racingCar.isGameOver()){
-            OutputView.playResult(racingCar.getResult());
-            OutputView.playResult(racingCar.racing());
+        OutputView.ready(racingGame.getResult());
+        while (!racingGame.isGameOver()){
+            OutputView.playResult(racingGame.racing());
         }
         OutputView.end();
     }

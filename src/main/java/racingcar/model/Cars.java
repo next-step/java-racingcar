@@ -23,7 +23,8 @@ public class Cars {
             throw new IllegalArgumentException("자동차 개수는 정수여야 합니다.");
         }
         List<Car> cars = IntStream.range(0, count)
-                .mapToObj(value -> new Car()).collect(Collectors.toList());
+                .mapToObj(value -> Car.create())
+                .collect(Collectors.toList());
         return new Cars(cars, new RandomGenerator());
     }
 

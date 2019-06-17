@@ -3,7 +3,16 @@ package racingcar.model;
 public class Car {
 
     public static final int RUNNING_CONDITION = 4;
-    private int position = 1;
+    public static final int DEFAULT_POSITION = 1;
+    private int position;
+
+    private Car(int position) {
+        this.position = position;
+    }
+
+    public static Car create(){
+        return new Car(DEFAULT_POSITION);
+    }
 
     int move(int power) {
         if(isRunning(power)){

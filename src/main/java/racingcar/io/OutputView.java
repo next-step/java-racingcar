@@ -13,8 +13,9 @@ public class OutputView {
         System.out.println("게임을 시작합니다.");
     }
 
-    public static void result(){
+    public static void ready(List<Car> result){
         System.out.println("실행 결과");
+        playResult(result);
     }
 
     public static void playResult(List<Car> cars){
