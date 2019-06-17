@@ -1,6 +1,7 @@
 package step2;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public class ResultView {
     private final RacingGameResultModel racingGameResultModel;
@@ -11,10 +12,14 @@ public class ResultView {
 
     public void printRacingGameResult() {
         List<Cars> result = racingGameResultModel.getCars();
-        for (Cars cars : result) {
-            cars.getCars().forEach(car -> System.out.println("=> " + getMovingPosition(car.getPosition())));
-            System.out.println();
-        }
+        result.stream()
+              .flatMap(this::flatMapAndNextLine)
+              .forEach(car -> System.out.println(" => " + getMovingPosition(car.getPosition())));
+    }
+
+    private Stream<Car> flatMapAndNextLine(Cars cars) {
+        System.out.println();
+        return cars.getCars().stream();
     }
 
     private String getMovingPosition(Integer position) {
