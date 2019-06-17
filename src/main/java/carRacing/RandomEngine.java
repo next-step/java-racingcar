@@ -4,7 +4,6 @@ import java.util.Random;
 
 public class RandomEngine implements Engine{
 
-    private int powerOutput;
     private Random random;
 
     public RandomEngine() {
