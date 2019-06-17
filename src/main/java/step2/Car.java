@@ -27,7 +27,7 @@ public class Car {
 
     public Car move() {
         if (moveStrategy.isMove()) {
-            return new Car(this.getCarNo(), this.getPosition() + 1);
+            return new Car(this.getCarNo(), this.getPosition() + 1, moveStrategy);
         }
         return this;
     }
