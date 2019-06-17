@@ -10,6 +10,7 @@ public class RacingGameLauncher {
     initializerer.initNumberOfTimes();
     RacingGame racingGame = new RacingGame(initializerer);
     racingGame.start();
+    ResultView.display(racingGame.result());
   }
 
   public static void main(String[] args) {

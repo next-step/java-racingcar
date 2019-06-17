@@ -15,7 +15,7 @@ public class Cars {
     }
   }
 
-  public int[] move(int time) {
+  public int[] move() {
     int[] moveDistance = new int[cars.length];
     for (int i = 0; i < cars.length; i++) {
       moveDistance[i] = cars[i].move(RandomNumberGenerator.randomValue());
@@ -23,7 +23,7 @@ public class Cars {
     return moveDistance;
   }
 
-  public int[] getCarsPosition(int time) {
+  public int[] getCarsPosition() {
     int[] carsPosition = new int[cars.length];
     for (int i = 0; i < cars.length; i++) {
       carsPosition[i] = cars[i].getPosition();

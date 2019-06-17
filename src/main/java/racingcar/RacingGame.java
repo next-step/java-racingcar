@@ -17,14 +17,16 @@ public class RacingGame {
 
   public void start() {
     for (int i = 0; i < initializerer.getNumberOfTimes(); i++) {
-      cars.move(i);
+      cars.move();
+      record();
     }
   }
 
+  private void record() {
+    position.add(cars.getCarsPosition());
+  }
+
   public Position result() {
-    for (int i = 0; i < initializerer.getNumberOfTimes(); i++) {
-      position.add(cars.getCarsPosition(i));
-    }
     return position;
   }
 }
