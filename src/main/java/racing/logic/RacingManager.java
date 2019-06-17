@@ -1,7 +1,9 @@
-package racing.common;
+package racing.logic;
 
-import racing.Car;
-import racing.RandomNumberGenerator;
+import racing.common.RandomNumberGenerator;
+import racing.vo.Car;
+import racing.vo.Cars;
+import racing.common.RacingSettings;
 
 import java.util.ArrayList;
 import java.util.Arrays;

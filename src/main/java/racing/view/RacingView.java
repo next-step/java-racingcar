@@ -1,25 +1,25 @@
 package racing.view;
 
-import racing.common.Cars;
+import racing.vo.Cars;
 import racing.common.Question;
 
 public class RacingView {
     private InputView inputView;
     private ResultView resultView;
     
-    public RacingView(InputView inputView, ResultView resultView) {
-        this.inputView = inputView;
-        this.resultView = resultView;
+    public RacingView() {
+        this.inputView = new InputView();
+        this.resultView = new ResultView();
     }
     
     public String printCarQuestionAndGetAnswer() {
-        InputView.printQuestion(Question.CAR_NAMES.getQuestion());
-        return InputView.requestInputString();
+        inputView.printQuestion(Question.CAR_NAMES.getQuestion());
+        return inputView.requestInputString();
     }
     
     public int printTimeQuestionAndGetAnswer() {
-        InputView.printQuestion(Question.TIME_COUNT.getQuestion());
-        return InputView.requireInputInteger();
+        inputView.printQuestion(Question.TIME_COUNT.getQuestion());
+        return inputView.requireInputInteger();
     }
     
     public void printWinner(String winnerNames) {

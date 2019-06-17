@@ -22,7 +22,7 @@ public class RacingValidator {
         return false;
     }
     
-    public static boolean isInTimeCountRange(int time) {
+    public static boolean isInTimeRange(int time) {
         if (RacingSettings.MIN_TIME.getValue() <= time && RacingSettings.MAX_TIME.getValue() >= time) {
             return true;
         }

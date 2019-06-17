@@ -1,6 +1,4 @@
-package racing.common;
-
-import racing.Car;
+package racing.vo;
 
 import java.util.List;
 

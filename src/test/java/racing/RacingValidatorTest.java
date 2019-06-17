@@ -1,7 +1,6 @@
 package racing;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.common.RacingValidator;
@@ -22,13 +21,13 @@ class RacingValidatorTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 20, 50})
     void isInTimeRangeTrueTest(int timeCount) {
-        Assertions.assertThat(RacingValidator.isInTimeCountRange(timeCount)).isTrue();
+        Assertions.assertThat(RacingValidator.isInTimeRange(timeCount)).isTrue();
     }
     
     @ParameterizedTest
     @ValueSource(ints = {0, 51})
     void isInTimeCountRangeFalseTest(int timeCount) {
-        Assertions.assertThat(RacingValidator.isInTimeCountRange(timeCount)).isFalse();
+        Assertions.assertThat(RacingValidator.isInTimeRange(timeCount)).isFalse();
     }
     
     @ParameterizedTest

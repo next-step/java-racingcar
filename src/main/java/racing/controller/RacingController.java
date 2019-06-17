@@ -1,13 +1,11 @@
-package racing;
+package racing.controller;
 
-import racing.common.Cars;
+import racing.logic.RacingManager;
 import racing.common.ErrorMessage;
-import racing.common.RacingManager;
 import racing.common.RacingValidator;
 import racing.view.RacingView;
+import racing.vo.Cars;
 
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingController {
@@ -23,7 +21,7 @@ public class RacingController {
         if (!RacingValidator.isValidCarNames(carNames)) {
             throwException(ErrorMessage.INCORRECT_CAR_NAMES.getMessage());
         }
-        if (!RacingValidator.isInTimeCountRange(time)) {
+        if (!RacingValidator.isInTimeRange(time)) {
             throwException(ErrorMessage.INCORRECT_TIME.getMessage());
         }
         racingManager = new RacingManager(carNames);

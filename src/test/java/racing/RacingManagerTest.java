@@ -2,13 +2,13 @@ package racing;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import racing.common.Cars;
-import racing.common.RacingManager;
+import racing.logic.RacingManager;
+import racing.vo.Cars;
 
 public class RacingManagerTest {
     @Test
     void moveCarTest() {
-        RacingManager manager = new RacingManager("11,22,33,44,55,66,77");
+        RacingManager manager = new RacingManager(TestData.MANY_CAR_NAME);
         manager.moveCars();
         Assertions.assertThat(manager.getCars().getCars().stream()
             .allMatch(car -> car.getPosition() == 0)).isFalse();

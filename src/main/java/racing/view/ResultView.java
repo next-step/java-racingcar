@@ -1,7 +1,7 @@
 package racing.view;
 
-import racing.Car;
-import racing.common.Cars;
+import racing.vo.Car;
+import racing.vo.Cars;
 
 import java.util.List;
 import java.util.stream.IntStream;

@@ -1,4 +1,4 @@
-package racing;
+package racing.vo;
 
 public class Car {
     public final static int DEFAULT_POSITION = 0;
