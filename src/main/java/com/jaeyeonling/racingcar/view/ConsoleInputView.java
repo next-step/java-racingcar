@@ -1,13 +1,15 @@
 package com.jaeyeonling.racingcar.view;
 
+import java.util.Scanner;
+
 public final class ConsoleInputView {
 
-    private static final InputView console = new InputView(System.in);
+    private static final Scanner reader = new Scanner(System.in);
 
     private ConsoleInputView() { }
 
     public static String readString() {
-        return console.readString();
+        return reader.nextLine();
     }
 
     public static String readStringWithMessage(final String message) {
@@ -16,7 +18,7 @@ public final class ConsoleInputView {
     }
 
     public static int readInt() {
-        return console.readInt();
+        return reader.nextInt();
     }
 
     public static int readIntWithMessage(final String message) {
