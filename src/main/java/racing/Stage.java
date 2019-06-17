@@ -24,6 +24,7 @@ public class Stage {
 	}
 
 	public void playRound() {
+		round -= 1;
 	}
 
 	/**
