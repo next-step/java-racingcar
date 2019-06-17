@@ -24,6 +24,10 @@ public class Stage {
 	}
 
 	public void playRound() {
+		for(RacingCar car : players){
+			car.run();
+		}
+
 		round -= 1;
 	}
 
