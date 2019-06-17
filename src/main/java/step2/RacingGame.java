@@ -19,25 +19,13 @@ public class RacingGame {
     }
 
     public List<Car> move() {
-        int randomPostion;
-        Car car;
-        for (int i = 0; i < carNumber; i++) {
-            randomPostion = carPositionSatatus();
-            car = carsPosition.get(i);
-            car.setUpdatePosition(carPositionUpdateValue(randomPostion));
-        }
+        RacingPosition racingPosition = new RacingPosition();
+        carsPosition.forEach((car) -> {
+            int randomPostion = racingPosition.carPositionSatatus();
+            int positionUpdate = racingPosition.carPositionUpdateValue(randomPostion);
+            car.setUpdatePosition(positionUpdate);
+        });
         return carsPosition;
     }
 
-    private int carPositionSatatus(){
-        Random generator = new Random();
-        return generator.nextInt(10);
-    }
-
-    public int carPositionUpdateValue(int randomNumber) {
-        if (randomNumber < 4) {
-            return 0;
-        }
-        return 1;
-    }
 }

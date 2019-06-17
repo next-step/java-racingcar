@@ -16,8 +16,7 @@ public class RacingGameTest {
 
     @BeforeEach
     void init(){
-        racingGame = new RacingGame();
-        racingGame.carPositionsInit(CAR_NUMBER);
+        racingGame = new RacingGame(CAR_NUMBER);
     }
 
     @Test
@@ -34,7 +33,9 @@ public class RacingGameTest {
     void carPositionUpdateValueTest() {
         Random generator = new Random();
         int randomNumber = generator.nextInt(10);
-        int moveNumber = racingGame.carPositionUpdateValue(randomNumber);
+
+        RacingPosition racingPosition = new RacingPosition();
+        int moveNumber = racingPosition.carPositionUpdateValue(randomNumber);
 
         assertThat(randomNumber > 3).isEqualTo(moveNumber == 1);
         assertThat(randomNumber < 4).isEqualTo(moveNumber == 0);
