@@ -46,7 +46,7 @@ public class RacingGameTest {
     void playGame(int numberOfParticipants,
                   int moveCount) {
         // given
-        final MoveStrategy mockAlwaysMoveStrategy = () -> true;
+        final MoveStrategy mockAlwaysMoveStrategy = i -> true;
         final StringBuilder expectResultBuilder = new StringBuilder();
         for (int i = numberOfParticipants; i > 0; i--) {
             for (int j = moveCount; j > 0; j--) {
