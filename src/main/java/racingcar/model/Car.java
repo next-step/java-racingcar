@@ -1,7 +1,7 @@
 package racingcar.model;
 
-import racingcar.util.DrivingStrategy;
-import racingcar.util.RandomStrategy;
+import racingcar.util.drivingStrategy.DrivingStrategy;
+import racingcar.util.drivingStrategy.RandomStrategy;
 
 public class Car {
 
