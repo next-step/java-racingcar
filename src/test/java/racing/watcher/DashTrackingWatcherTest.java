@@ -2,8 +2,14 @@ package racing.watcher;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.InOrder;
+import org.mockito.Mockito;
 import racing.util.ConsolePrinter;
+import racing.watcher.events.ChangedPlayerPositionEvent;
 import racing.watcher.events.StartedRacingEvent;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -26,4 +32,26 @@ class DashTrackingWatcherTest {
 		verify(mockPrinter).printMessage("실행 결과");
 	}
 
+	@Test
+	@DisplayName("플레이어 위치변경 이벤트 핸들링 테스트")
+	void changedPositionEventHandling(){
+
+		// Arrange
+		ConsolePrinter mockPrinter = mock(ConsolePrinter.class);
+		DashTrackingWatcher watcher = new DashTrackingWatcher(mockPrinter);
+
+		List<Integer> positions = new ArrayList<>();
+		positions.add(0);
+		positions.add(1);
+		positions.add(2);
+
+		// Action
+		watcher.handle(new ChangedPlayerPositionEvent(positions));
+
+		// Assertion
+		InOrder inOrder = Mockito.inOrder(mockPrinter);
+		inOrder.verify(mockPrinter).printMessage("-");
+		inOrder.verify(mockPrinter).printMessage("-");
+		inOrder.verify(mockPrinter).printMessage("--");
+	}
 }
