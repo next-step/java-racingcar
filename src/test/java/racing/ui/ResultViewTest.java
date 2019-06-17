@@ -1,8 +1,7 @@
 package racing.ui;
 
 import org.junit.jupiter.api.*;
-import racing.dto.EntireCars;
-import racing.dto.RacingResult;
+import racing.dto.*;
 import racing.model.Car;
 
 import java.io.*;
@@ -33,11 +32,9 @@ class ResultViewTest {
     void printRacingResult_multi_winner() {
 
         testRace(6, Objects::nonNull);
+        RacingResult racingResult = RacingResult.initRacingScore(RacingScore.of(entireCars));
 
-        RacingResult racingResult = new RacingResult();
-        racingResult.addCurrentRacingScore(entireCars);
-
-        resultView.print(racingResult);
+        resultView.printResult(racingResult);
 
         assertThat(byteArrayOutputStream.toString())
                 .isEqualTo("\n"
@@ -53,11 +50,9 @@ class ResultViewTest {
     void printRacingResult() {
 
         testRace(6, car -> "pobi".equals(car.getName()));
+        RacingResult racingResult = RacingResult.initRacingScore(RacingScore.of(entireCars));
 
-        RacingResult racingResult = new RacingResult();
-        racingResult.addCurrentRacingScore(entireCars);
-
-        resultView.print(racingResult);
+        resultView.printResult(racingResult);
 
         assertThat(byteArrayOutputStream.toString())
                 .isEqualTo("\n"

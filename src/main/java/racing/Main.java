@@ -22,6 +22,6 @@ public class Main {
         RacingResult racingResult = racingService.run();
 
         ResultView resultView = new ResultView(System.out);
-        resultView.print(racingResult);
+        resultView.printResult(racingResult);
     }
 }

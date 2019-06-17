@@ -11,7 +11,7 @@ public class ResultView {
 
     private static final String POSITION_MARK = "-";
     private static final String CAR_NAME_POSITION_DELIMITER = " : ";
-    private static final String NAME_DELIMITTER = ", ";
+    private static final String NAME_DELIMITER = ", ";
     private static final String WINNERS_MESSAGE = "가 최종우승 했습니다.";
 
     private final PrintStream printStream;
@@ -21,11 +21,9 @@ public class ResultView {
         this.printStream = printStream;
     }
 
-    public void print(RacingResult racingResult) {
+    public void printResult(RacingResult racingResult) {
 
-        printStream.println();
         printRacingScores(racingResult);
-
         printWinners(racingResult);
     }
 
@@ -36,29 +34,34 @@ public class ResultView {
 
     private void printRacingScore(RacingScore racingScore) {
 
-        racingScore.getCarNamePositions().forEach(this::printCarPosition);
-        printStream.println();
+        printCarNamePositions(racingScore.getCarNamePositions());
+        printNewLine();
     }
 
-    private void printCarPosition(CarNamePosition carNamePosition) {
+    private void printCarNamePositions(List<CarNamePosition> carNamePositions) {
 
-        printStream.print(carNamePosition.getCarName());
-        printStream.print(CAR_NAME_POSITION_DELIMITER);
-        printCarPosition(carNamePosition.getPosition());
+        carNamePositions.forEach(this::printPositionMark);
     }
 
-    private void printCarPosition(int position) {
+    private void printPositionMark(CarNamePosition carNamePosition) {
+
+        printString(carNamePosition.getCarName());
+        printString(CAR_NAME_POSITION_DELIMITER);
+        printPositionMark(carNamePosition.getPosition());
+    }
+
+    private void printPositionMark(int position) {
 
         IntStream.range(0, position)
                 .forEach(i -> printStream.print(POSITION_MARK));
 
-        printStream.println();
+        printNewLine();
     }
 
     private void printWinners(RacingResult racingResult) {
 
         String winnersName = getWinnersName(racingResult);
-        printStream.print(winnersName + WINNERS_MESSAGE);
+        printString(winnersName + WINNERS_MESSAGE);
     }
 
     private String getWinnersName(RacingResult racingResult) {
@@ -72,7 +75,16 @@ public class ResultView {
         return lastCarNamePositions.stream()
                 .filter(carNamePosition -> carNamePosition.getPosition() == winnersPosition)
                 .map(CarNamePosition::getCarName)
-                .collect(Collectors.joining(NAME_DELIMITTER));
+                .collect(Collectors.joining(NAME_DELIMITER));
+    }
 
+    private void printString(String s) {
+
+        printStream.print(s);
+    }
+
+    private void printNewLine() {
+
+        printStream.println();
     }
 }

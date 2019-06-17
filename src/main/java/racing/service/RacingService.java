@@ -9,7 +9,6 @@ import java.util.stream.IntStream;
 public class RacingService {
 
     public static final int RANDOM_NUMBER_BOUND = 10;
-    public static final int START_UNIQUE_CAR_NUMBER = 1;
     private static final int START_RACE_COUNT = 1;
 
     private final RacingInfo racingInfo;
@@ -35,13 +34,12 @@ public class RacingService {
 
     private RacingResult race(EntireCars entireCars) {
 
-        RacingResult racingResult = new RacingResult();
-        racingResult.addCurrentRacingScore(entireCars);
+        RacingResult racingResult = RacingResult.initRacingScore(RacingScore.of(entireCars));
 
         IntStream.range(START_RACE_COUNT, racingInfo.getAttempts())
                 .forEach(currentRaceCount -> {
                     raceEntireCars(entireCars);
-                    racingResult.addCurrentRacingScore(entireCars);
+                    racingResult.addCurrentRacingScore(RacingScore.of(entireCars));
                 });
 
         return racingResult;

@@ -7,14 +7,22 @@ public class RacingResult {
 
     private List<RacingScore> racingScores = new ArrayList<>();
 
+    private RacingResult() {}
+
+    public static RacingResult initRacingScore(RacingScore racingScore) {
+        RacingResult racingResult = new RacingResult();
+        racingResult.racingScores.add(racingScore);
+        return racingResult;
+    }
+
     public List<RacingScore> getEntireRacingScore() {
 
         return racingScores;
     }
 
-    public void addCurrentRacingScore(EntireCars entireCars) {
+    public void addCurrentRacingScore(RacingScore racingScore) {
 
-        racingScores.add(RacingScore.of(entireCars));
+        racingScores.add(racingScore);
     }
 
     public RacingScore getLastRacingScore() {
