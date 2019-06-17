@@ -7,29 +7,24 @@ import java.util.Random;
 public class RacingGame {
 
     private int carNumber;
-    private int time = 0;
-    private List<Integer> carPositions;
+    private List<CarDto> carsPosition;
 
     public void carPositionsInit(int carNumber) {
         this.carNumber = carNumber;
-        carPositions = new ArrayList <>();
+        carsPosition = new ArrayList <>();
         while (carNumber > 0) {
-            carPositions.add(1);
+            carsPosition.add(new CarDto());
             carNumber--;
         }
     }
 
-    public List <Integer> move() {
-        if(time == 0){
-            time++;
-            return carPositions;
-        }
+    public List<CarDto> move() {
+        CarDto carDto;
         for (int i = 0; i < carNumber; i++) {
-            int carPosition = carPositions.get(i);
-            carPosition += carPositionUpdateValue();
-            carPositions.set(i, carPosition);
+            carDto = carsPosition.get(i);
+            carDto.setUpdatePosition(carPositionUpdateValue());
         }
-        return carPositions;
+        return carsPosition;
     }
 
     private int carPositionUpdateValue() {

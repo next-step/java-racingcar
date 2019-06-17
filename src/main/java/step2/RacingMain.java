@@ -6,12 +6,13 @@ public class RacingMain {
 
     public static void main(String[] arg) {
         InputView inputView = new InputView();
-        Integer[] userInput = inputView.inputMessage();
         outputView outputView = new outputView();
         RacingGame racingGame = new RacingGame();
+
+        Integer[] userInput = inputView.inputMessage();
         racingGame.carPositionsInit(userInput[0]);
         while (userInput[1] > 0) {
-            List<Integer> carPositions = racingGame.move();
+            List<CarDto> carPositions = racingGame.move();
             outputView.racingResult(carPositions);
             userInput[1]--;
         }
