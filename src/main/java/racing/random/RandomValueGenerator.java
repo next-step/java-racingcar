@@ -2,19 +2,19 @@ package racing.random;
 
 import java.util.Random;
 
-public class RealRandomGenerator implements RandomGenerator {
+public class RandomValueGenerator implements ValueGenerator {
 
     private final Random random;
     private final int bound;
 
-    public RealRandomGenerator(int bound) {
+    public RandomValueGenerator(int bound) {
 
         this.random = new Random();
         this.bound = bound;
     }
 
     @Override
-    public int getRandomIntValue() {
+    public int generateIntValue() {
 
         return random.nextInt(bound);
     }

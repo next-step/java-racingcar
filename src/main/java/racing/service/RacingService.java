@@ -1,8 +1,8 @@
 package racing.service;
 
 import racing.dto.*;
-import racing.random.RandomGenerator;
-import racing.random.RealRandomGenerator;
+import racing.random.RandomValueGenerator;
+import racing.random.ValueGenerator;
 
 import java.util.stream.IntStream;
 
@@ -13,17 +13,17 @@ public class RacingService {
     private static final int START_RACE_COUNT = 1;
 
     private final RacingInfo racingInfo;
-    private final RandomGenerator randomGenerator;
+    private final ValueGenerator valueGenerator;
 
     public RacingService(RacingInfo racingInfo) {
 
-        this(racingInfo, new RealRandomGenerator(RANDOM_NUMBER_BOUND));
+        this(racingInfo, new RandomValueGenerator(RANDOM_NUMBER_BOUND));
     }
 
-    public RacingService(RacingInfo racingInfo, RandomGenerator randomGenerator) {
+    public RacingService(RacingInfo racingInfo, ValueGenerator valueGenerator) {
 
         this.racingInfo = racingInfo;
-        this.randomGenerator = randomGenerator;
+        this.valueGenerator = valueGenerator;
     }
 
     public RacingResult run() {
@@ -49,6 +49,6 @@ public class RacingService {
 
     private void raceEntireCars(EntireCars entireCars) {
 
-        entireCars.stream().forEach(car -> car.race(randomGenerator.getRandomIntValue()));
+        entireCars.stream().forEach(car -> car.race(valueGenerator.generateIntValue()));
     }
 }

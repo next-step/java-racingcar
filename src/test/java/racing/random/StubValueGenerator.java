@@ -1,16 +1,16 @@
 package racing.random;
 
-public class StubRandomGenerator implements RandomGenerator {
+public class StubValueGenerator implements ValueGenerator {
 
     private int fixedNumber;
 
-    public StubRandomGenerator(int fixedNumber) {
+    public StubValueGenerator(int fixedNumber) {
 
         this.fixedNumber = fixedNumber;
     }
 
     @Override
-    public int getRandomIntValue() {
+    public int generateIntValue() {
 
         return fixedNumber;
     }
