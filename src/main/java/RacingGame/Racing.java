@@ -37,4 +37,12 @@ public class Racing {
         Random random = new Random();
         return random.nextInt(10);
     }
+
+    public boolean isMoveCar(int randomNumber) {
+        if(randomNumber > 4){
+            return true;
+        }
+
+        return false;
+    }
 }
