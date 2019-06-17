@@ -5,26 +5,17 @@ public class Calculator {
     private final static int FIRST_NUMBER_INDEX = 0;
     private final static int FIRST_SIGN_INDEX = 1;
     private final static int JUMP_POINT = 2;
+    private final static int NEXT_POINT = 1;
     
-    public int calculate(String method) {
-        if (!CalculateValidator.isCalculable(method)) {
-            throw new IllegalArgumentException();
-        }
-        
-        String[] methodPieces = method.split(SPLIT_REGEX);
-        FourArithmeticalRules arithmeticalRule = null;
-        int baseNumber = Integer.parseInt(methodPieces[FIRST_NUMBER_INDEX]);
-        int nextNumber = 0;
-        for (int signIndex = FIRST_SIGN_INDEX; signIndex < methodPieces.length; signIndex += JUMP_POINT) {
-            arithmeticalRule = FourArithmeticalRules.getMathSign(methodPieces[signIndex]);
-            nextNumber = Integer.parseInt(methodPieces[getNumberIndex(signIndex)]);
-            baseNumber = arithmeticalRule.calculate(baseNumber, nextNumber);
+    public static int calculate(String fomula) {
+        String[] fomulaPieces = fomula.split(SPLIT_REGEX);
+        int baseNumber = Integer.parseInt(fomulaPieces[FIRST_NUMBER_INDEX]);
+        for (int i = FIRST_SIGN_INDEX; i < fomulaPieces.length; i += JUMP_POINT) {
+            Operator operator = Operator.getMathSign(fomulaPieces[i]);
+            int nextNumber = Integer.parseInt(fomulaPieces[i + NEXT_POINT]);
+            baseNumber = operator.calculate(baseNumber, nextNumber);
         }
         
         return baseNumber;
-    }
-    
-    private int getNumberIndex(int signIndex) {
-        return signIndex + 1;
     }
 }
