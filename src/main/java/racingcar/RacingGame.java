@@ -16,19 +16,14 @@ public class RacingGame {
 
   public void startRacing() {
     List<Car> cars = inputView.prepare();
-
     int rounds = inputView.getRounds();
-
     printRacingStatus(rounds, cars);
   }
 
   static void printRacingStatus(int rounds, List<Car> cars) {
     for(int round = 1; round <= rounds; round++) {
-
       ResultView.printCurrentRound(round);
-
       drive(cars);
-
       ResultView.addLineBreak();
 
     }
