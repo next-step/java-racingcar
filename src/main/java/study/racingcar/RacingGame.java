@@ -2,6 +2,7 @@ package study.racingcar;
 
 import study.racingcar.creator.RacingCarCreator;
 import study.racingcar.model.Car;
+import study.racingcar.output.ResultView;
 
 import java.util.List;
 
@@ -13,16 +14,33 @@ import java.util.List;
 public class RacingGame {
     private final int carCount;
     private final int time;
-    private final RacingCarCreator carCreator;
+    private final ResultView resultView;
 
-    public RacingGame(int carCount, int time,
-                      RacingCarCreator carCreator) {
+    public RacingGame(int carCount, int time, ResultView resultView) {
         this.carCount = carCount;
         this.time = time;
-        this.carCreator = carCreator;
+        this.resultView = resultView;
     }
 
     public void start() {
+        System.out.println();
+        System.out.println("실행 결과");
+
+        List<Car> cars = makeRacingCar();
+
+        printStandbyStatus(cars);
+        runCarsAndPrintStatus(cars);
+    }
+
+    private void printStandbyStatus(List<Car> cars) {
+        resultView.print(cars);
+    }
+
+    private void runCarsAndPrintStatus(List<Car> cars) {
+        for (int index = 0; index < time; index++) {
+            cars.forEach(Car::run);
+            resultView.print(cars);
+        }
     }
 
     private List<Car> makeRacingCar() {
