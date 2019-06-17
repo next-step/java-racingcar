@@ -14,10 +14,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingTest {
 
     Racing racing;
+    List<Car> cars;
 
     @BeforeEach
     void setUp() {
         racing = new Racing();
+
+        cars = new ArrayList<>();
+        cars.add(new Car());
+        cars.add(new Car());
+        cars.add(new Car());
     }
 
     @ParameterizedTest
@@ -37,23 +43,20 @@ class RacingTest {
 
     @Test
     void setCars() {
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car());
-        cars.add(new Car());
-        cars.add(new Car());
-
-        racing.setCars(cars);
+        racing.setCars(this.cars);
         assertThat(racing.getCars().size()).isEqualTo(3);
     }
 
     @Test
     void raceCarMoveLoop() {
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car());
-        cars.add(new Car());
-        cars.add(new Car());
-
-        racing.setCars(cars);
+        racing.setCars(this.cars);
         racing.raceCarMoveLoop();
+    }
+
+    @Test
+    void raceStart() {
+        racing.setCars(this.cars);
+        racing.setTime(9);
+        racing.raceStart();
     }
 }

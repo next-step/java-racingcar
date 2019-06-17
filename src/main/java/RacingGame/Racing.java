@@ -37,4 +37,10 @@ public class Racing {
             car.nextRace();
         }
     }
+
+    public void raceStart() {
+        for (int i = 0; i < this.time; i++) {
+            this.raceCarMoveLoop();
+        }
+    }
 }
