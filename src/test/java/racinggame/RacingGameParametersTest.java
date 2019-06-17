@@ -15,6 +15,7 @@ class RacingGameParametersTest {
 
         assertThat(racingGameParameters.getCarQuantity()).isEqualTo(carQuantity);
         assertThat(racingGameParameters.getGameRound()).isEqualTo(round);
+        assertThat(racingGameParameters.isFinished()).isFalse();
     }
 
     @Test
@@ -33,5 +34,17 @@ class RacingGameParametersTest {
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new RacingGameParameters(round, carQuantity));
+    }
+
+    @Test
+    void 게임_라운드를_초과하면_isFinished_함수는_true_반환() {
+        int round = 2;
+        RacingGameParameters racingGameParameters = new RacingGameParameters(round, 1);
+
+        assertThat(racingGameParameters.isFinished()).isFalse();
+        racingGameParameters.increaseCurrentRound();
+        assertThat(racingGameParameters.isFinished()).isFalse();
+        racingGameParameters.increaseCurrentRound();
+        assertThat(racingGameParameters.isFinished()).isTrue();
     }
 }

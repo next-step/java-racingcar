@@ -1,7 +1,6 @@
 package racinggame;
 
 public class RacingGame {
-    private int currentRound = 0;
     private CarLists carLists;
     private RacingGameParameters racingGameParameters;
     private GameResults gameResults;
@@ -14,16 +13,16 @@ public class RacingGame {
     }
 
     private void playRound() {
-        this.currentRound += 1;
         for (Car car : this.carLists.getCarList()) {
             if (CarHandler.getRandomMoveCondition()) {
                 car.move();
             }
         }
+        racingGameParameters.increaseCurrentRound();
     }
 
     public void playFullRound() {
-        while (this.currentRound < this.racingGameParameters.getGameRound()) {
+        while (!racingGameParameters.isFinished()) {
             playRound();
             saveCurrentResult();
         }
