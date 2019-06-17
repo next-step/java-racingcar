@@ -12,14 +12,13 @@ public class InputRacingValues {
 
         try {
             carNumbers = scanner.nextInt();
-        }
-        catch (InputMismatchException e) {
+        } catch (InputMismatchException e) {
             System.out.println("[Error] 숫자를 입력해주세요.");
             e.printStackTrace();
         }
 
         if (carNumbers <= 0) {
-            throw new IllegalArgumentException ("자동차 대수는 0 이하일 수 없습니다.");
+            throw new IllegalArgumentException("자동차 대수는 0 이하일 수 없습니다.");
         }
 
         return carNumbers;
@@ -33,14 +32,13 @@ public class InputRacingValues {
 
         try {
             tryNumbers = scanner.nextInt();
-        }
-        catch (InputMismatchException e) {
+        } catch (InputMismatchException e) {
             System.out.println("[Error] 숫자를 입력해주세요.");
             e.printStackTrace();
         }
 
         if (tryNumbers <= 0) {
-            throw new IllegalArgumentException ("시도 횟수는 0 이하일 수 없습니다.");
+            throw new IllegalArgumentException("시도 횟수는 0 이하일 수 없습니다.");
         }
 
         return tryNumbers;
