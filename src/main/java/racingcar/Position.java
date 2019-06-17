@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Position {
 
-  private List<int[]> carPosition = new ArrayList<>();
+  private List<List<Integer>> carPosition = new ArrayList<>();
 
-  public void add(int[] carPosition) {
+  public void add(List<Integer> carPosition) {
     this.carPosition.add(carPosition);
   }
 
@@ -15,7 +15,7 @@ public class Position {
     return carPosition;
   }
 
-  public int[] getCarPosition(int time) {
+  public List<Integer> getCarPosition(int time) {
     return carPosition.get(time);
   }
 

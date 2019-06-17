@@ -17,7 +17,7 @@ public class RacingGame {
 
   public void start() {
     for (int i = 0; i < initializerer.getNumberOfTimes(); i++) {
-      cars.move();
+      cars.moveCars();
       record();
     }
   }

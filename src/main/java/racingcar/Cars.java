@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -22,11 +23,9 @@ public class Cars {
         .forEach(car -> car.move(RandomNumberGenerator.randomValue()));
   }
 
-  public int[] getCarsPosition() {
-    int[] carsPosition = new int[cars.size()];
-    for (int i = 0; i < cars.size(); i++) {
-      carsPosition[i] = cars.get(i).getPosition();
-    }
-    return carsPosition;
+  public List<Integer> getCarsPosition() {
+    return cars.stream()
+        .map(Car::getPosition)
+        .collect(Collectors.toList());
   }
 }
