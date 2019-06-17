@@ -5,6 +5,7 @@ public class CarDto {
 
     private int position;
     private int executeNumber;
+    private String name;
 
     public CarDto(){
         this.position = 0;
@@ -20,6 +21,14 @@ public class CarDto {
             executeNumber++;
         }
         this.position += update;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public void setName(String name){
+        this.name = name;
     }
 
 }
