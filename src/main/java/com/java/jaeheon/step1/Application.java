@@ -1,15 +1,18 @@
 package com.java.jaeheon.step1;
 
+import java.util.Scanner;
+
 public class Application {
 
-    public static  void main(String[] args){
-        // 1. 연산 문자열 입력
+    public static void main(String[] args) {
 
-        // 2. 문자열 파싱 후 연산을 위해 변환
+        Scanner sc = new Scanner(System.in);
+        System.out.print("계산 수식을 입력하세요 : ");
 
-        // 3. Calculator 클래스에 변환된 값을 인자로 전달
-        //    여기서 Operater를 통하여 연산 후 값을 리턴
+        String input = sc.nextLine();
 
-        // 4. 리턴 받은 값을 출력
+        Calculator calculator = new Calculator(input);
+        System.out.println("계산 값 : " + calculator.run());
+
     }
 }
