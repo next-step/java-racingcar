@@ -1,10 +1,7 @@
 package calculator;
 
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.IntBinaryOperator;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 enum Operator {
 
@@ -18,10 +15,7 @@ enum Operator {
 
     private final char symbol;
     private final IntBinaryOperator expression;
-    private static final Map<String, Operator> symbolToEnum = Stream.of(values())
-                                                                    .collect(
-                                                                            Collectors.toMap(Operator::getSymbol, operator -> operator)
-                                                                    );
+
     Operator(char symbol, IntBinaryOperator expression) {
         this.symbol = symbol;
         this.expression = expression;
@@ -38,7 +32,9 @@ enum Operator {
     }
 
     public static Operator from(String symbol) {
-        return Optional.ofNullable(symbolToEnum.get(symbol))
+        return Arrays.stream(Operator.values())
+                .filter(operator -> operator.getSymbol().equals(symbol))
+                .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(symbol + "은 지원하지 않는 연산기호입니다."));
     }
 
@@ -48,9 +44,8 @@ enum Operator {
 
     @Override
     public String toString() {
-        return this.name() + "{" +
-                "symbol=" + symbol +
-                ", expression=" + expression +
-                '}';
+        return this.name() + "{"
+                + "symbol=" + symbol
+                + ", expression=" + expression + '}';
     }
 }

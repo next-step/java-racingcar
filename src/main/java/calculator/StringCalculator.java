@@ -4,12 +4,14 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
 
+    public static final String DELIMITER = "\\s";
     public static final String REGEX_PATTERN = "^(\\d+)(?:\\s+[\\+\\-\\*\\/]+\\s+(\\d+))*$";
     private int result;
 
-    String[] split(String input) {
+    String[] toStringArrays(String input) {
+        validateBlank(input);
         validateDelimiters(input);
-        return input.split(" ");
+        return input.split(DELIMITER);
     }
 
     private void validateDelimiters(String checkString) {
@@ -21,11 +23,10 @@ public class StringCalculator {
     }
 
     public int calculate(String input) {
-        validateBlank(input);
-        String[] stringArray = split(input);
+        String[] stringArray = toStringArrays(input);
         result = parseInt(stringArray[0]);
         for (int index = 1; index < stringArray.length; index += 2) {
-            operator(hasOperator(stringArray[index]), stringArray[index + 1]);
+            operator(Operator.from(stringArray[index]), stringArray[index + 1]);
         }
         return result;
     }
@@ -34,10 +35,6 @@ public class StringCalculator {
         if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException("문자열을 입력하세요. ex) 4 + 2 / 3 ..");
         }
-    }
-
-    private Operator hasOperator(String index) {
-        return Operator.from(index);
     }
 
     private void operator(Operator operator, String num) {
