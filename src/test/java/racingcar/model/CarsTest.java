@@ -23,9 +23,9 @@ class CarsTest {
         DrivingRule alwaysTrueRule = () -> true;
         DrivingRule alwaysFalseRule = () -> true;
 
-        Car car1 = Car.createWithDrivingRule(alwaysTrueRule, "yong");
-        Car car2 = Car.createWithDrivingRule(alwaysTrueRule, "pobi");
-        Car car3 = Car.createWithDrivingRule(alwaysFalseRule, "crong");
+        Car car1 = Car.createWithDrivingRule("yong", alwaysTrueRule);
+        Car car2 = Car.createWithDrivingRule( "pobi", alwaysTrueRule);
+        Car car3 = Car.createWithDrivingRule( "crong", alwaysFalseRule);
 
         carList.add(car1);
         carList.add(car2);

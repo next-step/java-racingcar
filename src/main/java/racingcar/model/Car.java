@@ -3,40 +3,45 @@ package racingcar.model;
 import java.util.Objects;
 
 public class Car {
-    private DrivingRule drivingRule;
     private CarInformation carInformation;
 
-    private Car(DrivingRule drivingRule, String name) {
-        this.drivingRule = drivingRule;
-        this.carInformation = new CarInformation(name);
+    private Car(CarInformation carInformation) {
+        this.carInformation = carInformation;
     }
 
     public static Car create(String name) {
-        return new Car(RacingDrivingRule.createDefault(), name);
+        CarInformation carInformation = CarInformation.create(name);
+        return new Car(carInformation);
     }
 
-    public static Car createWithDrivingRule(DrivingRule drivingRule, String name) {
+    public static Car createWithDrivingRule(String name, DrivingRule drivingRule) {
         if (drivingRule == null) {
             return create(name);
         }
-        return new Car(drivingRule, name);
+        CarInformation carInformation = CarInformation.createWithRule(name, drivingRule);
+        return new Car(carInformation);
     }
 
     public Position move() {
-        if (drivingRule.isMovable()) {
-            Position position = carInformation.getPosition();
-            position = Position.add(position, Position.valueOf(1));
+        DrivingRule drivingRule = carInformation.getDrivingRule();
+        Position position = carInformation.getPosition();
 
-            carInformation = new CarInformation(carInformation.getName(), position);
+        if (drivingRule.isMovable()) {
+            Position step = Position.valueOf(1);
+            position = Position.add(position, step);
+
+            String name = carInformation.getName();
+            carInformation = CarInformation.createWithPositionAndRule(name, position, drivingRule);
         }
-        return carInformation.getPosition();
+
+        return position;
     }
 
     public CarInformation getInformation() {
         String name = carInformation.getName();
         Position position = carInformation.getPosition();
 
-        return new CarInformation(name, position);
+        return CarInformation.createWithPosition(name, position);
     }
 
     @Override
