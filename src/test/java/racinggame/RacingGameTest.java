@@ -39,6 +39,6 @@ public class RacingGameTest {
 	@ValueSource(ints = {3, 4, 7})
 	void createCars(int carCount) {
 		final Cars cars = new Cars(carCount);
-		assertThat(cars.viewCarsStatus()).hasSize(carCount);
+		assertThat(cars.getCarsStatus()).hasSize(carCount);
 	}
 }

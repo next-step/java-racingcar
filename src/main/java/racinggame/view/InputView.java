@@ -3,7 +3,9 @@ package racinggame.view;
 import java.util.Scanner;
 
 public class InputView {
-	public static int input(Scanner scanner, String output) {
+	private static final Scanner scanner = new Scanner(System.in);
+
+	public static int input(String output) {
 		System.out.println(output);
 		return inputValue(scanner.nextLine());
 	}

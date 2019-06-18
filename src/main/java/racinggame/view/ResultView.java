@@ -1,9 +1,13 @@
 package racinggame.view;
 
-import java.util.List;
+import racinggame.model.Cars;
+import racinggame.util.StringUtil;
 
 public class ResultView {
-	public static void resultView(List<String> result) {
-		result.stream().forEach(r -> System.out.println(r));
+	public static void resultView(Cars cars) {
+		cars.getCarsStatus()
+				.stream()
+				.map(i -> StringUtil.getCarRacingPrint(i))
+				.forEach(System.out::println);
 	}
 }

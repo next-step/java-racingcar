@@ -2,8 +2,6 @@ package racinggame.model;
 
 import racinggame.util.RandomValueUtil;
 
-import java.util.stream.IntStream;
-
 public class Car {
 
 	private static final int DEFAULT_STATUS = 1;
@@ -15,16 +13,12 @@ public class Car {
 		this.status = DEFAULT_STATUS;
 	}
 
-	public int move() {
+	public void move() {
 		status++;
-		return status;
 	}
 
-	public String viewStatus() {
-		StringBuilder stringBuilder = new StringBuilder();
-		IntStream.range(0, status)
-						 .forEach(i -> stringBuilder.append("-"));
-		return stringBuilder.toString();
+	public int getStatus() {
+		return status;
 	}
 
 	public boolean isMove() {

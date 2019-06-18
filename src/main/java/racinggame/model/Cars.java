@@ -21,9 +21,9 @@ public class Cars {
         .forEach(Car::move);
   }
 
-  public List<String> viewCarsStatus() {
+  public List<Integer> getCarsStatus() {
     return cars.stream()
-               .map(Car::viewStatus)
+               .map(Car::getStatus)
                .collect(toList());
   }
 
