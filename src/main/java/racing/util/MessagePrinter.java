@@ -1,6 +1,6 @@
 package racing.util;
 
 @FunctionalInterface
-public interface ConsolePrinter {
+public interface MessagePrinter {
 	void printMessage(String message);
 }

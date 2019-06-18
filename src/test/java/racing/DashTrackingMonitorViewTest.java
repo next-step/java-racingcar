@@ -1,10 +1,11 @@
-package racing.watcher;
+package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.util.ConsolePrinter;
-import racing.watcher.events.ChangedPlayerPositionEvent;
-import racing.watcher.events.StartedRacingEvent;
+import racing.util.MessagePrinter;
+import racing.view.DashTrackingMonitorView;
+import racing.view.events.ChangedPlayerPositionEvent;
+import racing.view.events.StartedRacingEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,15 +14,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-class DashTrackingWatcherTest {
+class DashTrackingMonitorViewTest {
 
 	@Test
 	@DisplayName("게임시작 이벤트 핸들링 테스트")
 	void startedPlayEventHandling(){
 
 		// Arrange
-		ConsolePrinter mockPrinter = mock(ConsolePrinter.class);
-		DashTrackingWatcher watcher = new DashTrackingWatcher(mockPrinter);
+		MessagePrinter mockPrinter = mock(MessagePrinter.class);
+		DashTrackingMonitorView watcher = new DashTrackingMonitorView(mockPrinter);
 
 
 		// Action
@@ -37,7 +38,7 @@ class DashTrackingWatcherTest {
 
 		// Arrange
 		StringBuilder verifyMessage = new StringBuilder();
-		DashTrackingWatcher watcher = new DashTrackingWatcher((message) -> {
+		DashTrackingMonitorView watcher = new DashTrackingMonitorView((message) -> {
 			verifyMessage.append(message);
 			verifyMessage.append("/");
 		});
@@ -54,6 +55,6 @@ class DashTrackingWatcherTest {
 		watcher.handle(new ChangedPlayerPositionEvent(positions));
 
 		// Assertion
-		assertThat(verifyMessage.toString()).isEqualTo("-/-/--/" + DashTrackingWatcher.EMPTY_NEW_LINE + "/");
+		assertThat(verifyMessage.toString()).isEqualTo("-/-/--/" + DashTrackingMonitorView.EMPTY_NEW_LINE + "/");
 	}
 }

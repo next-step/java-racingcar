@@ -1,6 +1,8 @@
-package racing.car;
+package racing.domain;
 
-public abstract class RacingCar {
+public class RacingCar {
+
+	public static int DEFAULT_THRESHOLD = 4;
 
 	// 게임 중 누적주행거리
 	private int mileage = 0;
@@ -9,13 +11,11 @@ public abstract class RacingCar {
 		return mileage;
 	}
 
-	protected void addMileage(int value){
-		mileage += value;
-	}
-
 	/**
 	 * 자동차 주행을 위해 가속페달을 밟아 이동하는 메서드
 	 * @param accelerate 가속페달 가중치
 	 */
-	public abstract void move(int accelerate);
+	public void move(int accelerate) {
+		this.mileage += accelerate > DEFAULT_THRESHOLD ? 1 : 0;
+	}
 }

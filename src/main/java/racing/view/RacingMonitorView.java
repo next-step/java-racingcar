@@ -1,18 +1,17 @@
-package racing.watcher;
+package racing.view;
 
-import racing.watcher.events.RacingEvent;
+import racing.view.events.RacingEvent;
 
 import java.lang.reflect.Method;
 
-public abstract class RacingWatcher {
+public abstract class RacingMonitorView {
 
 	private static final String METHOD_NAME = "handle";
 
 	public final void handle(RacingEvent event){
 
-		Method method;
 		try {
-			method = this.getClass().getDeclaredMethod(METHOD_NAME, event.getClass());
+			Method method = this.getClass().getDeclaredMethod(METHOD_NAME, event.getClass());
 
 			if (method != null) {
 				method.setAccessible(true);

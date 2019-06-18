@@ -1,4 +1,4 @@
-package racing.watcher.events;
+package racing.view.events;
 
 public class StartedRacingEvent implements RacingEvent {
 
