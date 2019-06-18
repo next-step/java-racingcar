@@ -75,15 +75,10 @@ public class Car {
 =======
     private String carName;
     public int carPosition;
-    private static final int GOSTOP_CRITERION = 4;
 
     Car(String Name) {
         this.carName = Name;
         this.carPosition = 0;
-    }
-
-    public int judgeGoOrStop(int number) {
-        return number >= GOSTOP_CRITERION ? 1 : 0;
     }
 
     public String getCarName() {
