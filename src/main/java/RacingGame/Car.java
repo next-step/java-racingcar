@@ -3,6 +3,11 @@ package RacingGame;
 import java.util.Random;
 
 public class Car {
+
+    private final int TRANSFER_UNIT = 1;
+    private final int BASE_BOUND = 10;
+    private final int REFERENCE_VALUE = 4;
+
     private int position;
 
     public Car() {
@@ -14,17 +19,18 @@ public class Car {
     }
 
     public void move(boolean isMove) {
-        if(isMove)
-            this.position += 1;
+        if (isMove) {
+            this.position += TRANSFER_UNIT;
+        }
     }
 
     public int getRandomNumber() {
         Random random = new Random();
-        return random.nextInt(10);
+        return random.nextInt(BASE_BOUND);
     }
 
     public boolean isMoveCar(int randomNumber) {
-        if (randomNumber > 4) {
+        if (randomNumber > REFERENCE_VALUE) {
             return true;
         }
 
