@@ -15,6 +15,7 @@ public class CarRaceApplication {
 
         carRace.raceStart(numberOfCars);
 
+        OutputView.showResultTitle();
         for (int i = 0; i < numberOfTrials; i++) {
             new OutputView(carRace.executeTrials());
         }

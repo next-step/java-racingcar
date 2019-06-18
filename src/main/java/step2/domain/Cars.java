@@ -1,7 +1,5 @@
 package step2.domain;
 
-import step2.utils.NumberGenerator;
-
 import java.util.ArrayList;
 import java.util.List;
 
