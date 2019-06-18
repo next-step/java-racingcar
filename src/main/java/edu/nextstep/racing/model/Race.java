@@ -1,5 +1,7 @@
 package edu.nextstep.racing.model;
 
+import edu.nextstep.racing.utils.ValidationUtils;
+
 /**
  * author       : gwonbyeong-yun <sksggg123>
  * ------------------------------------------
@@ -15,6 +17,7 @@ public class Race {
     private static final int MIN_VALUE = 0;
 
     public Race(int time) {
+        ValidationUtils.checkMinValue(MIN_VALUE, time);
         this.time = time;
     }
 

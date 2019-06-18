@@ -2,6 +2,7 @@ package edu.nextstep.racing.domain;
 
 import edu.nextstep.racing.model.Car;
 import edu.nextstep.racing.model.Cars;
+import edu.nextstep.racing.utils.NumberUtils;
 import edu.nextstep.racing.view.ResultView;
 
 import java.util.ArrayList;
@@ -25,7 +26,6 @@ public class CarRacing {
 
     private Cars player;
     private static final int MOVE_LIMIT_COUNT_FLAG = 4;
-    private static final int MOVE_CHECK_RANDOM_VALUE = 9;
 
     /*
     CarRacing 생성자
@@ -62,8 +62,7 @@ public class CarRacing {
     @return boolean type
      */
     private boolean isMoving() {
-        Random generator = new Random();
-        if (generator.nextInt(MOVE_CHECK_RANDOM_VALUE) >= MOVE_LIMIT_COUNT_FLAG) {
+        if (NumberUtils.getRandomNumber() >= MOVE_LIMIT_COUNT_FLAG) {
             return true;
         }
         return false;

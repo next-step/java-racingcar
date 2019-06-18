@@ -1,5 +1,7 @@
 package edu.nextstep.racing.model;
 
+import edu.nextstep.racing.utils.ValidationUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +19,9 @@ public class Cars {
     private List<Car> cars;
 
     public Cars(List<String> cars) {
+        // 각각의 자동차의 이름이 null or "" 인지 체크하는 로직
+        validateCarName(cars);
+
         this.cars = new ArrayList<>();
         convertStringToCar(cars);
     }
@@ -33,6 +38,12 @@ public class Cars {
         for (String carName : cars) {
             Car car = new Car(carName);
             this.cars.add(car);
+        }
+    }
+
+    private void validateCarName(List<String> carName) {
+        for (String s : carName) {
+            ValidationUtils.checkObject(s);
         }
     }
 }

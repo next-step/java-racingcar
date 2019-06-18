@@ -1,5 +1,7 @@
 package edu.nextstep.racing.model;
 
+import edu.nextstep.racing.utils.ValidationUtils;
+
 /**
  * author       : gwonbyeong-yun <sksggg123>
  * ------------------------------------------
@@ -20,6 +22,7 @@ public class Car {
     private static int autoIncrease = 0;
 
     public Car(String name) {
+        ValidationUtils.checkNull(name);
         this.moveIndex = INIT_POSITION;
         this.carName = name;
         this.carNumber = autoIncrease++;
