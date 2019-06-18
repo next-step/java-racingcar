@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racing.common.ErrorMessage;
+import racing.controller.RacingController;
 import racing.view.InputView;
 import racing.view.RacingView;
 import racing.view.ResultView;
@@ -13,21 +14,21 @@ class RacingControllerTest {
     
     @BeforeEach
     void setUp() {
-        controller = new RacingController(new RacingView(new InputView(), new ResultView()));
+        controller = new RacingController(new RacingView());
     }
     
     @Test
     void makeNewGameSuccessTest() {
-        Assertions.assertThat(controller.makeNewGame("aa, bb", 3)).isNotNull();
+        Assertions.assertThat(controller.makeNewGame(TestData.DEFAULT_CAR_NAME, TestData.DEFAULT_TIME)).isNotNull();
     }
     
     @Test
     void makeNewGameFailTest() {
         Assertions.assertThatIllegalArgumentException()
-            .isThrownBy(() -> controller.makeNewGame(null, 5))
+            .isThrownBy(() -> controller.makeNewGame(null, TestData.DEFAULT_TIME))
             .withMessage(ErrorMessage.INCORRECT_CAR_NAMES.getMessage());
         Assertions.assertThatIllegalArgumentException()
-            .isThrownBy(() -> controller.makeNewGame("aa,bb", 0))
+            .isThrownBy(() -> controller.makeNewGame(TestData.DEFAULT_CAR_NAME, TestData.ZERO_TIME))
             .withMessage(ErrorMessage.INCORRECT_TIME.getMessage());
     }
 }
