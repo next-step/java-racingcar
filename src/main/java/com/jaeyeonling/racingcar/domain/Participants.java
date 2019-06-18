@@ -4,18 +4,19 @@ import com.jaeyeonling.racingcar.utils.RandomUtils;
 import com.jaeyeonling.racingcar.utils.StringUtils;
 import com.jaeyeonling.racingcar.view.Visualizable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 class Participants implements Visualizable {
 
-    private final List<Car> participants;
+    private final List<Car> participants = new ArrayList<>();
 
     Participants(final List<String> nameOfParticipants,
                  final MoveStrategy moveStrategy) {
-        participants = nameOfParticipants.stream()
+        nameOfParticipants.stream()
                 .map(name -> new Car(name, moveStrategy))
-                .collect(Collectors.toUnmodifiableList());
+                .forEach(this::add);
     }
 
     @Override
@@ -33,6 +34,10 @@ class Participants implements Visualizable {
 
     void move() {
         participants.forEach(this::move);
+    }
+
+    void add(final Car car) {
+        participants.add(car);
     }
 
     private String getVisualGameStatus() {
