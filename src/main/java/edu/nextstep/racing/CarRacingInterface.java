@@ -1,6 +1,6 @@
-package edu.nextstep.raing;
+package edu.nextstep.racing;
 
-import edu.nextstep.raing.model.Car;
+import edu.nextstep.racing.model.Car;
 
 import java.util.List;
 

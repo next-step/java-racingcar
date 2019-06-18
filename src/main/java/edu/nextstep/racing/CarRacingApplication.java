@@ -1,6 +1,6 @@
-package edu.nextstep.raing;
+package edu.nextstep.racing;
 
-import edu.nextstep.raing.view.InputView;
+import edu.nextstep.racing.view.InputView;
 
 /**
  * author       : gwonbyeong-yun <sksggg123>

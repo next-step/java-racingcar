@@ -1,4 +1,4 @@
-package edu.nextstep.raing.view;
+package edu.nextstep.racing.view;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package edu.nextstep.raing.model;
+package edu.nextstep.racing.model;
 
 import org.junit.jupiter.api.Test;
 
