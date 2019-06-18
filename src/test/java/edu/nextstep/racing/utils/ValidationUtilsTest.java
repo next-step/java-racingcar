@@ -2,6 +2,8 @@ package edu.nextstep.racing.utils;
 
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -17,18 +19,23 @@ import static org.junit.jupiter.api.Assertions.*;
 class ValidationUtilsTest {
 
     @Test
-    void checkObject() {
+    void 객체가_NULL인지_체크() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            ValidationUtils.checkNull(null);
+        });
     }
 
     @Test
-    void checkNull() {
+    void 객체가_EMPTY인지_체크() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            ValidationUtils.checkEmpty("");
+        });
     }
 
     @Test
-    void checkEmpty() {
-    }
-
-    @Test
-    void checkMinValue() {
+    void 좌측기준값과_보다_우측비교값이_큰값인지_체크() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            ValidationUtils.checkMinValue(10,1);
+        });
     }
 }
