@@ -20,8 +20,9 @@ public class ConsoleGameStatusResultView implements ResultView {
 
     @Override
     public void print(List<Car> cars) {
-        for (Car car : cars)
+        for (Car car : cars) {
             this.print(car);
+        }
 
         System.out.println();
     }
@@ -34,10 +35,10 @@ public class ConsoleGameStatusResultView implements ResultView {
         final StringBuilder sb = new StringBuilder();
 
         int movedDistance = car.getPosition();
-        while (movedDistance-- > 0)
+        while (movedDistance-- > 0) {
             sb.append(POSITION_TEXT);
+        }
 
         return sb.toString();
     }
-
 }

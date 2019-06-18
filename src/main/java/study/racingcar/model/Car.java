@@ -18,8 +18,9 @@ public class Car {
     }
 
     public void run() {
-        if (this.canMove())
-            position ++;
+        if (this.canMove()) {
+            position++;
+        }
     }
 
     private boolean canMove() {
