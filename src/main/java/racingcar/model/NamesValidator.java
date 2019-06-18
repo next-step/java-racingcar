@@ -3,7 +3,7 @@ package racingcar.model;
 import java.util.regex.Pattern;
 
 
-public class CarsValidator {
+public class NamesValidator {
 
     static final String REGEX_CAR_NAMES_PATTERN = "^[\\w*]*(?:,\\w*)*[\\w+]$";
     private static Pattern pattern = Pattern.compile(REGEX_CAR_NAMES_PATTERN);

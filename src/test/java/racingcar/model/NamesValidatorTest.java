@@ -3,16 +3,15 @@ package racingcar.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static racingcar.model.CarsValidator.REGEX_CAR_NAMES_PATTERN;
+import static racingcar.model.NamesValidator.REGEX_CAR_NAMES_PATTERN;
 
-public class CarsValidatorTest {
+public class NamesValidatorTest {
 
     private static final String INPUT_NAMES = "test1,test2,test3";
 
@@ -27,11 +26,10 @@ public class CarsValidatorTest {
     @DisplayName("문자열 유효성 통합 테스트")
     @Test
     void textNameSplitSuccess() {
-        CarsValidator.validate(INPUT_NAMES);
+        NamesValidator.validate(INPUT_NAMES);
     }
 
-    @DisplayName("문자열 길이가 null, 빈값, 잘못된 구분자 일 경우 에러")
-    @NullAndEmptySource
+    @DisplayName("잘못된 구분자 일 경우 에러")
     @ParameterizedTest
     @ValueSource(strings = {
             "juyoung|jinho|chloe",
@@ -39,6 +37,6 @@ public class CarsValidatorTest {
     })
     void textNamesSplitFail(String wrongNames) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> CarsValidator.validate(wrongNames));
+                .isThrownBy(() -> NamesValidator.validate(wrongNames));
     }
 }

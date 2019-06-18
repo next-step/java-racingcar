@@ -18,7 +18,7 @@ public class RacingGameTest {
     void racing() {
         int round = 1;
 
-        RacingGame racingGame = new RacingGame(round, Cars.from(SAMPLE_NAMES), new MovingGenerator());
+        RacingGame racingGame = new RacingGame(round, Cars.from(Names.from(SAMPLE_NAMES)), new MovingGenerator());
 
         Cars result = racingGame.racing();
 

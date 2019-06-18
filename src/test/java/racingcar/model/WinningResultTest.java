@@ -13,11 +13,11 @@ class WinningResultTest {
     @DisplayName("winningResult 생성")
     @Test
     void winningResult() {
-        Cars cars = Cars.from("test1,test2,test3");
+        Cars cars = Cars.from(Names.from("test1,test2,test3"));
 
         WinningResult result = WinningResult.of(cars.getCars());
 
-        assertThat(result.getPosition()).isEqualTo(1);
+        assertThat(result.getPosition()).isEqualTo(Position.valueOf(1));
         assertThat(result.getNames()).hasSize(3);
     }
 
@@ -26,6 +26,6 @@ class WinningResultTest {
     void createWhenInputNullThenFail() {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> WinningResult.of(new ArrayList<>()))
-                .withMessageMatching("Cars can't be null");
+                .withMessageMatching("cars는 null일 수 없습니다.");
     }
 }

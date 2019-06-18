@@ -1,5 +1,6 @@
 package racingcar.model;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.util.MovingGenerator;
@@ -13,24 +14,18 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 class CarsTest {
 
-    @Test
-    @DisplayName("문자열의 쉼표(,)를 구분자로 하여 자동차 생성")
-    void createOfString() {
-        String nameText = "test1,test2,test3";
-        Cars cars = Cars.from(nameText);
+    private Names CAR_NAMES;
 
-        assertThat(cars.getCars())
-                .hasSize(3)
-                .extracting(Car::getName)
-                .containsExactly("test1","test2","test3");
+    @BeforeEach
+    void setUp() {
+        CAR_NAMES = Names.from("test1,test2,test3");
     }
 
     @Test
-    @DisplayName("잘못된 문자열 입력으로 실패")
-    void createOfStringFail() {
-        String nameText = "test|test2$test3";
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> Cars.from(nameText));
+    @DisplayName("문자열의 쉼표(,)를 구분자로 하여 자동차 생성")
+    void createOfString() {
+        Cars cars = Cars.from(CAR_NAMES);
+        assertThat(cars.getCars()).hasSize(3);
     }
 
     @Test
@@ -53,10 +48,6 @@ class CarsTest {
                 .containsOnly(Position.valueOf(1));
     }
 
-    private Cars getCars() {
-        return Cars.from("test1,test2,test3");
-    }
-
     @Test
     @DisplayName("가장 많이 전진한 자동차를 반환한다")
     void winningResultACar() {
@@ -72,6 +63,10 @@ class CarsTest {
 
         assertThat(result).hasSize(1)
                 .containsOnly(winningCar);
+    }
+
+    private Cars getCars() {
+        return Cars.from(CAR_NAMES);
     }
 
     private Car carOf(String name, int position) {

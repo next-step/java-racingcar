@@ -10,16 +10,16 @@ public class OutputView {
 
     private static final String VISUAL_EXPRESSION = "-";
 
-    public static void start(){
+    public static void start() {
         System.out.println("게임을 시작합니다.");
     }
 
-    public static void ready(Cars result){
+    public static void ready(Cars result) {
         System.out.println("실행 결과");
         playResult(result);
     }
 
-    public static void playResult(Cars cars){
+    public static void playResult(Cars cars) {
         for (Car car : cars.getCars()) {
             playCarResult(car);
         }
@@ -33,20 +33,21 @@ public class OutputView {
     }
 
     private static void printPosition(Position position) {
-        for (int i=0; i < position.parseInt(); i++){
+        for (int i = 0; i < position.parseInt(); i++) {
             System.out.print(VISUAL_EXPRESSION);
         }
     }
 
     public static void winningResult(WinningResult result) {
-        System.out.print(result.getNames().get(0));
-        for (String name: result.getNames()) {
+        System.out.println("우승위치: " + result.getPosition());
+        System.out.print(result.getNames());
+        for (String name : result.getNames()) {
             System.out.print(", " + name);
         }
         System.out.println("가 최종 우승했습니다.");
     }
 
-    public static void end(){
+    public static void end() {
         System.out.println("게임을 종료합니다.");
     }
 

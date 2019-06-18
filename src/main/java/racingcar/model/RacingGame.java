@@ -25,7 +25,8 @@ public class RacingGame {
 
     public static RacingGame generate(int round, String names) {
         validateRound(round);
-        return new RacingGame(round, Cars.from(names));
+        Names namesList = Names.from(names);
+        return new RacingGame(round, Cars.from(namesList));
     }
 
     private static void validateRound(int count) {

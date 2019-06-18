@@ -26,9 +26,9 @@ class NameValidatorTest {
     @DisplayName("자동차 이름 유효성 검사 통합 테스트")
     @ParameterizedTest
     @CsvSource({
-            " , 이름을 입력하세요.",
+            " ,             이름은 null 일 수 없습니다.",
             "hellooooojava, 이름은 " + NAME_LENGTH_LIMIT + "이하여야 합니다.",
-            "test/, 이름은 영문 숫자 특수문자\\(\\_\\)만 가능합니다.",
+            "test/,         이름은 영문 숫자 특수문자\\(\\_\\)만 가능합니다.",
     })
     void createCarFail(String wrongName, String errorMessage) {
         assertThatIllegalArgumentException()
