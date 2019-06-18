@@ -1,7 +1,5 @@
 package edu.nextstep.racing.domain;
 
-import edu.nextstep.racing.domain.CarRacing;
-import edu.nextstep.racing.model.Car;
 import edu.nextstep.racing.model.Cars;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 /**
  * author       : gwonbyeong-yun <sksggg123>
@@ -40,22 +37,24 @@ class CarRacingTest {
 
     @Test
     void 자동차_전진() {
-        assertThat(cars.getCars().get(0).currentPosition()).isEqualTo(0);
+        assertThat(carRacing.starRoundGame().stream()
+                .map(car -> car.currentPosition())
+                .min((o1, o2) -> o1 < o2 ? o1 : o2)
+                .get()
+        ).isBetween(0,1);
+
+        assertThat(carRacing.starRoundGame().stream()
+                .map(car -> car.currentPosition())
+                .max((o1, o2) -> o1 > o2 ? o1 : o2)
+                .get()
+        ).isBetween(0,2);
+    }
+
+    @Test
+    void 자동차_경주종료_자동차들_반환() {
         carRacing.starRoundGame();
-        assertThat(cars.getCars().get(0).currentPosition()).isBetween(0,1);
-    }
+        Cars finishCars = carRacing.finishGame();
 
-    @Test
-    void 자동차_대수데이터_초기화작업_예외상황() {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            CarRacing carRacing = new CarRacing(0, 10);
-        });
-    }
-
-    @Test
-    void 전진_시도데이터_초기화작업_예외상황() {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            CarRacing carRacing = new CarRacing(10, 0);
-        });
+        assertThat(finishCars.getCars().size()).isEqualTo(3);
     }
 }
