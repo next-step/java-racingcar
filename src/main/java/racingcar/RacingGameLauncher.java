@@ -8,12 +8,15 @@ public class RacingGameLauncher {
 
   public static void start() {
     Record record = new Record();
+
     InputView.askNumberOfCar();
     int numberOfCar = scanner.nextInt();
     InputView.askNumberOfTimes();
     int numberOfTimes = scanner.nextInt();
+
     RacingGame racingGame = new RacingGame(numberOfCar);
     racingGame.start(numberOfTimes, record);
+
     ResultView.display(record);
   }
 
