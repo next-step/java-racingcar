@@ -13,7 +13,7 @@ public class Application {
         try {
             run();
         } catch (Exception e) {
-            OutputView.println(e.getMessage());
+            System.out.println(e.getMessage());
         }
         OutputView.end();
     }
