@@ -54,7 +54,7 @@ public class InputRacingInfo {
         return num;
     }
 
-    public String[] getCarTotalNames() {
+    public String getCarTotalNames() {
         return this.carTotalNames;
     }
 
