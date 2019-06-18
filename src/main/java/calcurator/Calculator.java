@@ -24,10 +24,10 @@ public class Calculator {
             throw new IllegalArgumentException();
         }
 
-        if (operation.equals(Operation.ADD.getOperation())) return add(a, b);
-        if (operation.equals(Operation.SUBTRACT.getOperation())) return subtract(a, b);
-        if (operation.equals(Operation.MULTIPLY.getOperation())) return multiply(a, b);
-        if (operation.equals(Operation.DIVISION.getOperation())) return division(a, b);
+        if (Operation.ADD.getOperation().equals(operation)) return add(a, b);
+        if (Operation.SUBTRACT.getOperation().equals(operation)) return subtract(a, b);
+        if (Operation.MULTIPLY.getOperation().equals(operation)) return multiply(a, b);
+        if (Operation.DIVISION.getOperation().equals(operation)) return division(a, b);
         return 0;
     }
 }
