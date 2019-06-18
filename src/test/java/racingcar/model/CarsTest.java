@@ -2,26 +2,51 @@ package racingcar.model;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
 class CarsTest {
     @Test
-    void Cars는_여러대의_Car를_다루는_일급_컬렉션이다() {
-        int numberOfCars = 10;
+    void Cars는_Car의_이름만으로_생성할_수_있다() {
+        List<CarName> names = Arrays.asList(CarName.valueOf("yong")
+                , CarName.valueOf("pobi")
+                , CarName.valueOf("crong")
+                , CarName.valueOf("honux"));
+        Cars cars = Cars.createWithNames(names);
 
-        Cars cars = new Cars(numberOfCars);
+        assertThat(cars).isInstanceOf(Cars.class);
+    }
+
+    @Test
+    void Cars는_여러대의_Car로_생성할_수_있다() {
+        List<Car> carList = new ArrayList<>();
+        DrivingRule alwaysTrueRule = () -> true;
+        DrivingRule alwaysFalseRule = () -> true;
+
+        Car car1 = Car.createWithDrivingRule(CarName.valueOf("yong"), alwaysTrueRule);
+        Car car2 = Car.createWithDrivingRule(CarName.valueOf("pobi"), alwaysTrueRule);
+        Car car3 = Car.createWithDrivingRule(CarName.valueOf("crong"), alwaysFalseRule);
+
+        carList.add(car1);
+        carList.add(car2);
+        carList.add(car3);
+
+        Cars cars = Cars.create(carList);
         assertThat(cars).isInstanceOf(Cars.class);
     }
 
     @Test
     void Cars는_여러대의_차를_움직일_수_있다() {
-        int numberOfCars = 10;
+        List<CarName> names = Arrays.asList(CarName.valueOf("yong")
+                , CarName.valueOf("pobi")
+                , CarName.valueOf("crong")
+                , CarName.valueOf("honux"));
+        Cars cars = Cars.createWithNames(names);
+        List<CarInformation> positions = cars.move();
 
-        Cars cars = new Cars(numberOfCars);
-        List<Integer> positions = cars.move();
-
-        assertThat(positions.size()).isEqualTo(numberOfCars);
+        assertThat(positions.size()).isEqualTo(names.size());
     }
 }

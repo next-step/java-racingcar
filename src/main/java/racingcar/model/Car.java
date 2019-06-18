@@ -1,28 +1,59 @@
 package racingcar.model;
 
+import java.util.Objects;
+
 public class Car {
-    private DrivingRule drivingRule;
-    private int position = 0;
+    private CarInformation carInformation;
 
-    private Car(DrivingRule drivingRule) {
-        this.drivingRule = drivingRule;
+    private Car(CarInformation carInformation) {
+        this.carInformation = carInformation;
     }
 
-    public static Car createCar() {
-        return new Car(RandomDrivingRule.getInstance());
+    public static Car create(CarName name) {
+        CarInformation carInformation = CarInformation.create(name);
+        return new Car(carInformation);
     }
 
-    public static Car createCarWithDrivingRule(DrivingRule drivingRule) {
+    public static Car createWithDrivingRule(CarName name, DrivingRule drivingRule) {
         if (drivingRule == null) {
-            return createCar();
+            return create(name);
         }
-        return new Car(drivingRule);
+        CarInformation carInformation = CarInformation.createWithRule(name, drivingRule);
+        return new Car(carInformation);
     }
 
-    public int move() {
-        if (!drivingRule.isMovable()) {
-            return position;
+    public Position move() {
+        DrivingRule drivingRule = carInformation.getDrivingRule();
+        Position position = carInformation.getPosition();
+
+        if (drivingRule.isMovable()) {
+            Position step = Position.valueOf(1);
+            position = Position.add(position, step);
+
+            CarName name = carInformation.getName();
+            carInformation = CarInformation.createWithPositionAndRule(name, position, drivingRule);
         }
-        return ++position;
+
+        return position;
+    }
+
+    public CarInformation getInformation() {
+        CarName name = carInformation.getName();
+        Position position = carInformation.getPosition();
+
+        return CarInformation.createWithPosition(name, position);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car)) return false;
+        Car car = (Car) o;
+        return carInformation.equals(car.carInformation);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carInformation);
     }
 }

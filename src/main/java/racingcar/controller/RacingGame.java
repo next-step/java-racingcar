@@ -1,26 +1,24 @@
 package racingcar.controller;
 
+import racingcar.model.CarInformation;
+import racingcar.model.CarName;
 import racingcar.model.Cars;
-import racingcar.view.InputView;
-import racingcar.view.OutputView;
+import racingcar.model.Referee;
 
 import java.util.List;
 
 public class RacingGame {
     private Cars cars;
 
-    public void run() {
-        int numberOfCars = InputView.inputNumberOfCars();
-        int numberOfTries = InputView.inputNumberOfTries();
+    public RacingGame(List<CarName> carNames) {
+        this.cars = Cars.createWithNames(carNames);
+    }
 
-        cars = new Cars(numberOfCars);
+    public List<CarInformation> raceOneStep() {
+        return cars.move();
+    }
 
-        OutputView.printNewLine();
-        OutputView.printResultMessage();
-
-        for (int i = 0; i < numberOfTries; i++) {
-            List<Integer> positions = cars.move();
-            OutputView.printCarPositions(positions);
-        }
+    public List<CarInformation> awards() {
+        return Referee.judgeWinners(cars);
     }
 }

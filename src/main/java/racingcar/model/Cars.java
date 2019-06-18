@@ -2,26 +2,45 @@ package racingcar.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private List<Car> cars = new ArrayList<>();
 
-    public Cars(int numberOfCars) {
-        for (int i = 0; i < numberOfCars; i++) {
-            Car car = Car.createCar();
-            cars.add(car);
-        }
+    private Cars(List<Car> cars) {
+        this.cars.addAll(cars);
     }
 
-    public List<Integer> move() {
-        List<Integer> positions = new ArrayList<>();
+    public static Cars create(List<Car> cars) {
+        return new Cars(cars);
+    }
 
-        for (Car car :
-                cars) {
-            int position = car.move();
-            positions.add(position);
+    public static Cars createWithNames(List<CarName> names) {
+        List<Car> cars = new ArrayList<>();
+
+        for (CarName name : names) {
+            Car car = Car.create(name);
+            cars.add(car);
         }
 
-        return positions;
+        return new Cars(cars);
+    }
+
+    public List<CarInformation> move() {
+        List<CarInformation> informationList = new ArrayList<>();
+
+        for (Car car : cars) {
+            car.move();
+            CarInformation information = car.getInformation();
+            informationList.add(information);
+        }
+
+        return informationList;
+    }
+
+    public List<CarInformation> getCarInformationList() {
+        return cars.stream()
+                .map(Car::getInformation)
+                .collect(Collectors.toList());
     }
 }
