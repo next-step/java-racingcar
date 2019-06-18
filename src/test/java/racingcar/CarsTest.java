@@ -18,13 +18,12 @@ public class CarsTest {
 
   @Test
   public void 자동차는_햔번에_1또는0_이동한다() {
-    cars.moveCars();
-    assertThat(cars.getCarsPosition()).containsOnly(0, 1);
+    assertThat(cars.moveCars().getCarPosition()).containsOnly(0, 1);
   }
 
   @Test
   public void 자동자수만큼_위치값이_리턴된다() {
-    assertThat(cars.getCarsPosition()).hasSize(numberOfCar);
+    assertThat(cars.moveCars().getCarPosition()).hasSize(numberOfCar);
   }
 
 
