@@ -74,23 +74,23 @@ public class Car {
         System.out.println(this.carName + " : " + result);
 =======
     private String carName;
-    private String carPosition;
+    public int carPosition;
     private static final int GOSTOP_CRITERION = 4;
 
     Car(String Name) {
         this.carName = Name;
-        this.carPosition = "";
+        this.carPosition = 0;
     }
 
-    public boolean judgeGoOrStop(int number) {
-        return number >= GOSTOP_CRITERION ? true : false;
+    public int judgeGoOrStop(int number) {
+        return number >= GOSTOP_CRITERION ? 1 : 0;
     }
 
     public String getCarName() {
         return this.carName;
     }
 
-    public String getCarPosition() {
+    public int getCarPosition() {
         return this.carPosition;
 >>>>>>> fix(Car) : carPosition 변수의 자료형 변경 int->String
     }
