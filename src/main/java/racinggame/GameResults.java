@@ -4,17 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameResults {
-    private final List<GameResult> gameResultList;
+    private final List<GameResult> gameResults;
 
     public GameResults() {
-        this.gameResultList = new ArrayList<>();
+        this.gameResults = new ArrayList<>();
     }
 
-    public void addRoundResult(GameResult gameResult) {
-        gameResultList.add(gameResult);
-    }
-
-    public List<GameResult> getGameResultList() {
-        return gameResultList;
+    public List<GameResult> getGameResults() {
+        return gameResults;
     }
 }

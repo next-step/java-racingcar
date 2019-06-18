@@ -11,9 +11,9 @@ public class Main {
         RacingGameParameters racingGameParameters = new RacingGameParameters(gameRound, carQuantity);
         RacingGame racingGame = new RacingGame(racingGameParameters);
 
-        racingGame.playFullRound();
+        GameResults gameResults = racingGame.playFullRound();
 
 
-        ResultView.displayResult(racingGame.getGameResults());
+        ResultView.displayResult(gameResults);
     }
 }

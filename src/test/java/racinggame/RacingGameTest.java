@@ -14,7 +14,7 @@ class RacingGameTest {
     @Test
     void 생성자_정상() {
         RacingGame racingGame = new RacingGame(racingGameParameters);
-        List<GameResult> actual = racingGame.getGameResults().getGameResultList();
+        List<GameResult> actual = racingGame.getGameResults().getGameResults();
 
         assertThat(actual).hasSize(1);
         assertThat(actual.get(0).getGameResult()).hasSize(car);
@@ -27,9 +27,9 @@ class RacingGameTest {
 
         racingGame.playFullRound();
 
-        List<GameResult> actual = racingGame.getGameResults().getGameResultList();
+        List<GameResult> actual = racingGame.getGameResults().getGameResults();
         assertThat(actual).hasSize(round + 1);
-        assertThat(racingGameParameters.isFinished()).isTrue();
-        // 이곳에서 게임 결과를 테스트 해야 할까요?
+
+        // TODO: 가능하다면 테스트를 구현해보자.
     }
 }

@@ -9,8 +9,8 @@ class GameResultTest {
 
     @Test
     void 생성자_정상() {
-        CarLists carLists = new CarLists(carQuantity);
-        GameResult gameResult = new GameResult(carLists);
+        Cars cars = new Cars(carQuantity);
+        GameResult gameResult = new GameResult(cars);
         assertThat(gameResult.getGameResult().size()).isEqualTo(carQuantity);
     }
 }
