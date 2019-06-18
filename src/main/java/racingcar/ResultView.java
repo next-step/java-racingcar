@@ -6,8 +6,9 @@ public class ResultView {
 
   public static final String POSITION_INDICATOR = "-";
   public static final String POSITION_PRINT_FORMAT = "%s : %s";
+  public static final String WINNER_PRINT_FORMAT = "%s 가 최종 우승했습니다.";
 
-  public static void display(List<Car> record) {
+  public static void displayRecord(List<Car> record) {
     for (int i = 0; i < record.size(); i++) {
       Car car = record.get(i);
       printCarRecord(car);
@@ -35,5 +36,9 @@ public class ResultView {
 
   private static void printBlankLine() {
     System.out.println();
+  }
+
+  public static void displayWinner(String winner) {
+    System.out.printf(WINNER_PRINT_FORMAT, winner);
   }
 }

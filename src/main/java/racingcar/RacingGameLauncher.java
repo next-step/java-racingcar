@@ -17,8 +17,11 @@ public class RacingGameLauncher {
     RacingGame racingGame = new RacingGame(carNames);
     for (int i = 0; i < numberOfTimes; i++) {
       List<Car> record = racingGame.start();
-      ResultView.display(record);
+      ResultView.displayRecord(record);
     }
+
+    String winner = racingGame.announceWinner();
+    ResultView.displayWinner(winner);
 
   }
 
