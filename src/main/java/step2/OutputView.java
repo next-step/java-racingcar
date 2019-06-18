@@ -4,10 +4,10 @@ import java.util.List;
 
 public class OutputView {
 
-    static void racingResult(List<Car> carsPosition) {
-        int carNumber = carsPosition.size();
+    static void racingResult(List<Car> carList) {
+        int carNumber = carList.size();
         for (int i = 0; i < carNumber; i++) {
-            carResult(carsPosition.get(i).getPosition());
+            carResult(carList.get(i).lastCarPosition());
         }
         System.out.println();
     }

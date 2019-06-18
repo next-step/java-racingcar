@@ -16,12 +16,7 @@ public class RacingGame {
     }
 
     public List<Car> move() {
-        RacingPosition racingPosition = new RacingPosition();
-        carsPosition.forEach((car) -> {
-            int randomPostion = racingPosition.carPositionSatatus();
-            int positionUpdate = racingPosition.carPositionUpdateValue(randomPostion);
-            car.setUpdatePosition(positionUpdate);
-        });
+        carsPosition.forEach((car) -> car.carPositionUpdate());
         return carsPosition;
     }
 

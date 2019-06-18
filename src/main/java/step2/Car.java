@@ -1,24 +1,41 @@
 package step2;
 
+import java.util.Random;
+
 public class Car {
 
-    private int position;
-    private int executeNumber;
+    private int CAR_POSISION;
+    private static final int EXCUTE_STANDARD_NUMBER = 4;
+    private static final int GENERATOR_RANGE = 10;
+    private static final int EXCUTE_NUMBER = 1;
+    private static final int STOP_NUMBER = 0;
 
     public Car(){
-        this.position = 0;
+        this.CAR_POSISION = STOP_NUMBER;
     }
 
-    public int getPosition(){
-        return this.position;
-    }
-
-    public void setUpdatePosition(int update) {
-        if(executeNumber == 0){
-            update = 1;
-            executeNumber++;
+    void carPositionUpdate() {
+        int carPostionUpdateNumber = EXCUTE_NUMBER;
+        if(CAR_POSISION != 0){
+            carPostionUpdateNumber = carPositionUpdateValue(carPositionStatus());
         }
-        this.position += update;
+        this.CAR_POSISION += carPostionUpdateNumber;
+    }
+
+    int carPositionUpdateValue(int carPositionStatusNumber) {
+        if (carPositionStatusNumber < EXCUTE_STANDARD_NUMBER) {
+            return STOP_NUMBER;
+        }
+        return EXCUTE_NUMBER;
+    }
+
+    int carPositionStatus(){
+        Random generator = new Random();
+        return generator.nextInt(GENERATOR_RANGE);
+    }
+
+    int lastCarPosition(){
+        return this.CAR_POSISION;
     }
 
 }
