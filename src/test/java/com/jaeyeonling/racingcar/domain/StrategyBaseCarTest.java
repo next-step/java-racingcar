@@ -16,7 +16,7 @@ public class StrategyBaseCarTest {
     @ValueSource(ints = { 0, 1, 5, 4, 35, 41, 23 })
     void move(final int moveCount) {
         // given
-        final Car car = new Car(i -> true);
+        final Car car = new Car("TestCar", i -> true);
 
         // when
         for (int i = 0; i < moveCount; i++) {
@@ -32,7 +32,7 @@ public class StrategyBaseCarTest {
     @ValueSource(ints = { 0, 1, 5, 4, 35, 41, 23 })
     void notMove(final int moveCount) {
         // given
-        final Car car = new Car(i -> false);
+        final Car car = new Car("TestCar", i -> false);
 
         // when
         for (int i = 0; i < moveCount; i++) {
@@ -48,7 +48,7 @@ public class StrategyBaseCarTest {
     void sometimeMove() {
         final List<Boolean> movingCondition = List.of(true, true, true, false, false, true, false, true, false);
         final MoveStrategy moveStrategy = new MockMoveStrategy(movingCondition);
-        final Car car = new Car(moveStrategy);
+        final Car car = new Car("TestCar", moveStrategy);
 
         int expectedPosition = Car.DEFAULT_POSITION;
 

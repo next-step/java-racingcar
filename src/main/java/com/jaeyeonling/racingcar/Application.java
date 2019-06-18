@@ -10,26 +10,27 @@ import com.jaeyeonling.racingcar.view.VisualRecorder;
 public class Application {
 
     public static void main(final String... args) {
-        final int numberOfParticipants = ConsoleInputView.readIntWithMessage("자동차 대수는 몇 대 인가요?");
-        final int moveCount = ConsoleInputView.readIntWithMessage("시도할 회수는 몇 회 인가요?");
+        final String nameOfParticipants = ConsoleInputView.readNameOfParticipants();
+        final int moveCount = ConsoleInputView.readMoveCount();
 
         final RacingGameOption racingGameOption = RacingGameOption.builder()
                 .moveStrategy(new RacingStrategy())
                 .movingCount(moveCount)
-                .numberOfParticipants(numberOfParticipants)
+                .nameOfParticipants(nameOfParticipants)
                 .build();
 
         final RacingGame racingGame = new RacingGame(racingGameOption);
         final VisualRecorder viewRecorder = new VisualRecorder();
 
-        viewRecorder.newLine();
-        viewRecorder.recode("실행 결과");
+        viewRecorder.recodeResultMessage();
         viewRecorder.recode(racingGame);
 
         while (!racingGame.isComplete()) {
             racingGame.move();
             viewRecorder.recode(racingGame);
         }
+
+        viewRecorder.recodeVictors(racingGame.getVictors());
 
         ConsoleResultView.show(viewRecorder);
     }

@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.stream.Collectors;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
@@ -43,12 +45,14 @@ public class RacingGameTest {
             "32,45",
             "665,454"
     })
-    void playGame(int numberOfParticipants,
+    void playGame(String nameOfParticipants,
                   int moveCount) {
+        final int ParticipantsLength = nameOfParticipants.split(RacingGameOption.NAME_SEPARATOR).length;
+
         // given
         final MoveStrategy mockAlwaysMoveStrategy = i -> true;
         final StringBuilder expectResultBuilder = new StringBuilder();
-        for (int i = numberOfParticipants; i > 0; i--) {
+        for (int i = ParticipantsLength; i > 0; i--) {
             for (int j = moveCount; j > 0; j--) {
                 expectResultBuilder.append(Car.VISUAL_POSITION_STRING);
             }
@@ -59,7 +63,7 @@ public class RacingGameTest {
         final RacingGameOption racingGameOption = RacingGameOption.builder()
                 .moveStrategy(mockAlwaysMoveStrategy)
                 .movingCount(moveCount)
-                .numberOfParticipants(numberOfParticipants)
+                .nameOfParticipants(nameOfParticipants)
                 .build();
 
         final RacingGame racingGame = new RacingGame(racingGameOption);
@@ -69,5 +73,42 @@ public class RacingGameTest {
 
         // then
         assertThat(racingGame.visualize()).isEqualTo(expectResultBuilder.toString());
+    }
+
+    @DisplayName("RacingGame 공동 우승 테스트")
+    @ParameterizedTest
+    @CsvSource({
+            "'a,b,c,d,e',4",
+            "'a,b,c,d,e',6",
+            "'a,b,c,d,e',5",
+            "'a,b,c,d,e',3",
+            "'a,b,c,d,e',346",
+            "'a,b,c,d,e',45",
+            "'a,b,c,d,e',454"
+    })
+    void everyoneVictory(String nameOfParticipants,
+                 int moveCount) {
+        // given
+        final MoveStrategy mockAlwaysMoveStrategy = i -> true;
+
+        // when
+        final RacingGameOption racingGameOption = RacingGameOption.builder()
+                .moveStrategy(mockAlwaysMoveStrategy)
+                .movingCount(moveCount)
+                .nameOfParticipants(nameOfParticipants)
+                .build();
+
+        final RacingGame racingGame = new RacingGame(racingGameOption);
+        while (!racingGame.isComplete()) {
+            racingGame.move();
+        }
+
+        final String victors = racingGame.getVictors()
+                .stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(RacingGameOption.NAME_SEPARATOR));
+
+        // then
+        assertThat(nameOfParticipants).isEqualTo(victors);
     }
 }

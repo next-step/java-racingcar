@@ -1,8 +1,10 @@
 package com.jaeyeonling.racingcar.view;
 
+import java.io.PrintStream;
+
 public final class ConsoleResultView {
 
-    private static final ResultView console = new ResultView(System.out);
+    private static final PrintStream console = System.out;
 
     private ConsoleResultView() { }
 
@@ -11,6 +13,6 @@ public final class ConsoleResultView {
     }
 
     public static void show(final String message) {
-        console.show(message);
+        console.println(message);
     }
 }

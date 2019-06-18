@@ -12,6 +12,8 @@
 
 ## 요구사항
 
-### [Step0 - 문자열 계산기](./docs/string-calculator.md)
+### [Step1 - 문자열 계산기](./docs/string-calculator.md)
 
-### [Step1 - 자동차 경주](./docs/racing-car.md)
+### [Step2 - 자동차 경주](./docs/racing-car.md)
+
+### [Step3 - 자동차 경주 (우승자)](./docs/racing-car-victory.md)
