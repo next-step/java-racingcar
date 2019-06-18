@@ -8,7 +8,6 @@ public class RacingGame {
   }
 
   public Cars startGame() {
-    cars.carsMove();
-    return cars;
+    return cars.moveCars();
   }
 }

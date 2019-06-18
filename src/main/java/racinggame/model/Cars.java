@@ -17,8 +17,9 @@ public class Cars {
                     .collect(toList());
   }
 
-  public void carsMove() {
+  public Cars moveCars() {
     cars.forEach(car -> car.move(RandomValueUtil.getRandomValue()));
+    return this;
   }
 
   public List<Integer> getCarsStatus() {
