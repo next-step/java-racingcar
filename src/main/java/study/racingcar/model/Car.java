@@ -12,9 +12,11 @@ public class Car {
 
     private String name; // 자동차 이름
     private int position = DEFAULT_POSITION; // 이동한 거리
+    private CarMoveCondition carMoveCondition;
 
-    public Car(String name) {
+    public Car(String name, CarMoveCondition carMoveCondition) {
         this.name = name;
+        this.carMoveCondition = carMoveCondition;
     }
 
     public void run() {
@@ -24,7 +26,7 @@ public class Car {
     }
 
     private boolean canMove() {
-        return CarMoveCondition.canMove();
+        return carMoveCondition.canMove();
     }
 
     public int getPosition() {
