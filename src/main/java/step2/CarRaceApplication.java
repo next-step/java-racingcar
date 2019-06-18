@@ -14,7 +14,7 @@ public class CarRaceApplication {
         final int numberOfCars = inputView.getNumberOfCars();
         final int numberOfTrials = inputView.getNumberOfTrials();
 
-        carRace.raceStart(numberOfCars, numberOfTrials);
+        carRace = CarRace.raceStart(numberOfCars, numberOfTrials);
 
         OutputView outputView = new OutputView();
         outputView.showResultTitle();
