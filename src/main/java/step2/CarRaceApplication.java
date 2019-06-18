@@ -8,7 +8,7 @@ public class CarRaceApplication {
         final int numberOfTrials = inputView.getNumberOfTrials();
 
         CarRace carRace = new CarRace(numberOfCars, numberOfTrials);
-        carRace.start();
+        carRace.raceStart();
     }
 
 

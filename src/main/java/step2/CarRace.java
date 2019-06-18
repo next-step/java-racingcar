@@ -2,6 +2,7 @@ package step2;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class CarRace {
     private int numberOfCars;
@@ -12,7 +13,7 @@ public class CarRace {
         this.numberOfTrials = numberOfTrials;
     }
 
-    public List<Car> makeCars(int numberOfCars) {
+    private List<Car> makeCars(int numberOfCars) {
         List<Car> cars = new ArrayList<>();
         for(int i=0; i<numberOfCars; i++) {
             cars.add(new Car());
@@ -20,7 +21,22 @@ public class CarRace {
         return cars;
     }
 
-    public OutputView start() {
+    private Car decideMoveOrNot(Car car) {
+        if(canMove()) {
+            return car.move(1);
+        }
+        return car.move(0);
+    }
+
+    public boolean canMove() {
+        Random random = new Random();
+        if(random.nextInt(10) >= 4) {
+            return true;
+        }
+        return false;
+    }
+
+    public OutputView raceStart() {
         List<Car> cars = makeCars(numberOfCars);
         return new OutputView(cars);
     }
