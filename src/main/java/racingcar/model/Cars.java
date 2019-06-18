@@ -1,13 +1,12 @@
 package racingcar.model;
 
+import com.google.common.base.Strings;
 import racingcar.util.NumberGenerator;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Cars {
 
@@ -19,20 +18,27 @@ public class Cars {
     }
 
     public static Cars from(String names) {
+        validateEmpty(names);
         CarsValidator.validate(names);
-        String[] namesArr = parseArrays(names);
-        List<Car> cars = Arrays.stream(namesArr)
-                .map(name -> Car.create(name))
-                .collect(Collectors.toList());
+
+        List<Car> cars = createCarList(names);
         return new Cars(cars);
     }
 
-    private static String[] parseArrays(String names) {
-        String[] namesArr = names.split(DELIMITER);
-        return namesArr;
+    private static void validateEmpty(String name) {
+        if (name == null || Strings.isNullOrEmpty(name.trim())) {
+            throw new NameException("빈 문자열 입니다");
+        }
     }
 
-    Cars moveAll(NumberGenerator numberGenerator) {
+    private static List<Car> createCarList(String names) {
+        String[] nameArr = names.split(DELIMITER);
+        return Arrays.stream(nameArr)
+                .map(name -> Car.create(name))
+                .collect(Collectors.toList());
+    }
+
+    public Cars move(NumberGenerator numberGenerator) {
         for (Car car : cars) {
             car.move(numberGenerator.getNumber());
         }

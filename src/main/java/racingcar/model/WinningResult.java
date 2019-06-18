@@ -16,7 +16,10 @@ public class WinningResult {
     public static WinningResult of(List<Car> cars){
         validateNull(cars);
         Position position = Position.max();
-        List<String> names = cars.stream().map(Car::getName).collect(Collectors.toList());
+
+        List<String> names = cars.stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
         return new WinningResult(position, names);
     }
 

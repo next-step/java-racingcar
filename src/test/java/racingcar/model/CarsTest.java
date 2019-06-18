@@ -22,7 +22,7 @@ class CarsTest {
         assertThat(cars.getCars())
                 .hasSize(3)
                 .extracting(Car::getName)
-                .containsExactly("test1", "test2", "test3");
+                .containsExactly("test1","test2","test3");
     }
 
     @Test
@@ -37,7 +37,7 @@ class CarsTest {
     @DisplayName("자동차들이 전진한다")
     void moveCar() {
         Cars cars = getCars();
-        cars.moveAll(new MovingGenerator());
+        cars.move(new MovingGenerator());
         assertThat(cars.getCars()).
                 extracting(Car::getPosition)
                 .containsOnly(Position.valueOf(2));
@@ -47,7 +47,7 @@ class CarsTest {
     @DisplayName("자동차는 움직이지 않는다")
     void nonMoveCar() {
         Cars cars = getCars();
-        cars.moveAll(new NoMovingGenerator());
+        cars.move(new NoMovingGenerator());
         assertThat(cars.getCars())
                 .extracting(Car::getPosition)
                 .containsOnly(Position.valueOf(1));
@@ -60,17 +60,21 @@ class CarsTest {
     @Test
     @DisplayName("가장 많이 전진한 자동차를 반환한다")
     void winningResultACar() {
-//        Car winningCar = new Car("test2", 5);
+        Car winningCar = carOf("test2", 5);
 
         List<Car> carList = new ArrayList();
-//        carList.add(winningCar);
-//        carList.add(new Car("test", 1));
-//        carList.add(new Car("test3", 3));
+        carList.add(winningCar);
+        carList.add(carOf("test", 1));
+        carList.add(carOf("test3", 3));
 
         Cars cars = new Cars(carList);
         List<Car> result = cars.winningCars();
 
-//        assertThat(result).hasSize(1)
-//                .containsOnly(winningCar);
+        assertThat(result).hasSize(1)
+                .containsOnly(winningCar);
+    }
+
+    private Car carOf(String name, int position) {
+        return new Car(name, Position.valueOf(position));
     }
 }

@@ -5,7 +5,6 @@ import racingcar.model.Cars;
 import racingcar.model.Position;
 import racingcar.model.WinningResult;
 
-import java.util.stream.IntStream;
 
 public class OutputView {
 

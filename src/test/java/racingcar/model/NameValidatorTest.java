@@ -11,9 +11,9 @@ import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static racingcar.model.CarValidator.*;
+import static racingcar.model.NameValidator.*;
 
-class CarValidatorTest {
+class NameValidatorTest {
 
     @DisplayName("이름 정규식 테스트")
     @Test
@@ -32,7 +32,7 @@ class CarValidatorTest {
     })
     void createCarFail(String wrongName, String errorMessage) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> CarValidator.validate(wrongName))
+                .isThrownBy(() -> NameValidator.validate(wrongName))
                 .withMessageMatching(errorMessage);
     }
 
@@ -41,7 +41,7 @@ class CarValidatorTest {
     @ValueSource(strings = { " ", "   ", "\t", "\n"})
     void validateNullCheck(String empty) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> CarValidator.validate(empty));
+                .isThrownBy(() -> NameValidator.validate(empty));
     }
 
     @DisplayName("특수문자, 한글 입력 시 에러")
@@ -49,6 +49,6 @@ class CarValidatorTest {
     @ValueSource(strings = { "name/", "%test", "te@st", "한글"})
     void validateWrongName(String wrongName) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> CarValidator.validate(wrongName));
+                .isThrownBy(() -> NameValidator.validate(wrongName));
     }
 }

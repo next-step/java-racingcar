@@ -3,7 +3,6 @@ package racingcar.model;
 public class Car{
 
     public static final int RUNNING_CONDITION = 4;
-
     private Position position;
     private String name;
 
@@ -13,7 +12,7 @@ public class Car{
     }
 
     public static Car create(String name) {
-        CarValidator.validate(name);
+        NameValidator.validate(name);
         return new Car(name, Position.create());
     }
 
@@ -38,7 +37,6 @@ public class Car{
 
     @Override
     public String toString() {
-        return "Car{" + "position=" + position + '}';
+        return "Car{" + "position=" + position + ", name=" + name + '}';
     }
-
 }

@@ -5,7 +5,7 @@ import com.google.common.base.Strings;
 import java.util.regex.Pattern;
 
 
-public class CarValidator {
+public class NameValidator {
 
     public static final int NAME_LENGTH_LIMIT = 10;
     static final String REGEX_PATTERN = "^[\\w]*$";
@@ -19,19 +19,19 @@ public class CarValidator {
 
     private static void validateEmpty(String name) {
         if (name == null || Strings.isNullOrEmpty(name.trim())) {
-            throw new CarNameException("이름은 null 일 수 없습니다.");
+            throw new NameException("이름은 null 일 수 없습니다.");
         }
     }
 
     private static void validateLength(String name) {
         if (NAME_LENGTH_LIMIT < name.length()) {
-            throw new CarNameException("이름은 " + NAME_LENGTH_LIMIT + "이하여야 합니다.");
+            throw new NameException("이름은 " + NAME_LENGTH_LIMIT + "이하여야 합니다.");
         }
     }
 
     private static void validatePattern(String name) {
         if (!pattern.matcher(name).find()) {
-            throw new CarNameException("이름은 영문 숫자 특수문자(_)만 가능합니다.");
+            throw new NameException("이름은 영문 숫자 특수문자(_)만 가능합니다.");
         }
     }
 }

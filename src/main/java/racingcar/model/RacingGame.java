@@ -36,7 +36,7 @@ public class RacingGame {
 
     public Cars racing() {
         round--;
-        return cars.moveAll(numberGenerator);
+        return cars.move(numberGenerator);
     }
 
     public Cars getResult() {
