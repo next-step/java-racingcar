@@ -1,4 +1,4 @@
-package racing.model;
+package racing.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -9,8 +9,8 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racing.model.Car.DEFAULT_POSITION;
-import static racing.model.Car.MOVE_THRESHOLD;
+import static racing.domain.Car.DEFAULT_POSITION;
+import static racing.domain.Car.MOVE_THRESHOLD;
 import static racing.service.RacingService.RANDOM_NUMBER_BOUND;
 
 class CarTest {

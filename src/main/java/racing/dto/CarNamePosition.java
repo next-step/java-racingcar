@@ -1,6 +1,6 @@
 package racing.dto;
 
-import racing.model.Car;
+import racing.domain.Car;
 
 public class CarNamePosition {
 

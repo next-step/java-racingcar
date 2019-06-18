@@ -1,5 +1,7 @@
 package racing.dto;
 
+import racing.domain.EntireCars;
+
 import java.util.List;
 import java.util.stream.Collectors;
 

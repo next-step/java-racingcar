@@ -1,8 +1,10 @@
 package racing.ui;
 
 import org.junit.jupiter.api.*;
-import racing.dto.*;
-import racing.model.Car;
+import racing.domain.Car;
+import racing.domain.EntireCars;
+import racing.dto.RacingResult;
+import racing.dto.RacingScore;
 
 import java.io.*;
 import java.util.Arrays;

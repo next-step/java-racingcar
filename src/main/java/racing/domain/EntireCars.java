@@ -1,6 +1,4 @@
-package racing.dto;
-
-import racing.model.Car;
+package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +11,10 @@ public class EntireCars {
     private EntireCars() {}
 
     public static EntireCars of(List<String> carNames) {
+
+        if (carNames == null || carNames.isEmpty()) {
+            throw new IllegalArgumentException("차량명은 1개 이상이어야 합니다.");
+        }
 
         EntireCars entireCars = new EntireCars();
         entireCars.cars = carNames.stream().map(Car::of).collect(Collectors.toList());

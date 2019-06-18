@@ -1,5 +1,6 @@
 package racing.service;
 
+import racing.domain.EntireCars;
 import racing.dto.*;
 import racing.random.RandomValueGenerator;
 import racing.random.ValueGenerator;
