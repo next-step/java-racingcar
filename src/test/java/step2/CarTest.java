@@ -22,8 +22,12 @@ public class CarTest {
     }
 
     @Test
-    void 자동차는_랜덤숫자가_4이상인_경우만_이동한다() {
+    void 입력된_숫자만큼_자동차가_생성된다() {
+        // TODO
+    }
 
+    @Test
+    void 자동차는_랜덤숫자가_4이상인_경우만_이동한다() {
         // RaceExecutor 리팩토링 후 작성 예정
     }
 
