@@ -1,4 +1,4 @@
-package carRacing;
+package carRacing.model;
 
 import carRacing.model.Car;
 import org.junit.jupiter.api.Assertions;

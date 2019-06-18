@@ -1,35 +1,38 @@
 package carRacing.model;
 
-import carRacing.utils.StringUtils;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RacingGameTest {
 
 
-    private RacingGame racingGame;
+    @Test
+    @DisplayName("빈 자동차 리스트로 생성시 예외처리")
+    void RacingGameTest() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            new RacingGame(new RacingCarGroup(new ArrayList<>()), new MockGamePoint(3));
+        });
+    }
 
-    @BeforeEach
-    void setUp() {
+
+
+    @Test
+    @DisplayName("자동차 경주 자동차 이동")
+    void race() {
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("ferrari"));
         cars.add(new Car("bmw"));
         cars.add(new Car("audi"));
         MockGamePoint mockGamePoint = new MockGamePoint(5); // 항상 전진
-        racingGame = new RacingGame(new RacingCarGroup(cars), mockGamePoint);
-    }
+        RacingGame racingGame = new RacingGame(new RacingCarGroup(cars), mockGamePoint);
 
-    @Test
-    @DisplayName("자동차 경주 자동차 이동")
-    void race() {
+
         racingGame.race();
         RacingCarGroup race = racingGame.race();
         List<Car> racingCars = race.getRacingCars();
@@ -41,6 +44,14 @@ class RacingGameTest {
     @Test
     @DisplayName("우승자 판별")
     void gameResult() {
+
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("ferrari"));
+        cars.add(new Car("bmw"));
+        cars.add(new Car("audi"));
+        MockGamePoint mockGamePoint = new MockGamePoint(5); // 항상 전진
+        RacingGame racingGame = new RacingGame(new RacingCarGroup(cars), mockGamePoint);
+
         racingGame.race();
         RacingCarGroup winners = racingGame.gameResult();
 

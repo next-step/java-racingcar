@@ -13,7 +13,7 @@ class RacingCarFactoryTest {
     public void raceCarsTest() {
         String[] carName = {"ferrari", "benz", "bmw"};
         RacingCarFactory racingCarFactory = new RacingCarFactory(carName);
-        assertThat(racingCarFactory.getRacingCars().size()).isEqualTo(3);
+        assertThat(racingCarFactory.manufacture().getRacingCars().size()).isEqualTo(3);
     }
 
     @Test

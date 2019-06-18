@@ -1,12 +1,11 @@
 package carRacing.model;
 
-import carRacing.exception.RaceCarNotFoundException;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
 
+    private static int MINUMUN_DEMAND = 1;
     private GamePoint gamePoint;
     private RacingCarGroup racingCarGroup;
     private int racingHighPosition;
@@ -37,8 +36,8 @@ public class RacingGame {
     }
 
     private void verifyRacingCarGroup(RacingCarGroup racingCars) {
-        if(racingCars == null || racingCars.getRacingCars().size() == 0) {
-            throw new RaceCarNotFoundException("게임을 위해최소한 하나 이상의 자동차가 필요합니다.");
+        if(racingCars == null || racingCars.getRacingCars().size() < MINUMUN_DEMAND) {
+            throw new IllegalArgumentException("게임을 위해최소한 하나 이상의 자동차가 필요합니다.");
         }
     }
 }
