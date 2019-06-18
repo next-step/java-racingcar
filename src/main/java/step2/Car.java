@@ -1,25 +1,23 @@
 package step2;
 
-import java.util.Random;
-
 public class Car {
 
-    private int CAR_POSISION;
+    private int carPosition;
     private static final int EXCUTE_STANDARD_NUMBER = 4;
     private static final int EXCUTE_NUMBER = 1;
     private static final int STOP_NUMBER = 0;
 
     public Car(){
-        this.CAR_POSISION = STOP_NUMBER;
+        this.carPosition = STOP_NUMBER;
     }
 
     void carPositionUpdate() {
         int carPostionUpdateNumber = EXCUTE_NUMBER;
-        if(CAR_POSISION != 0){
+        if(carPosition != 0){
             int carPositionStatus = Utils.createRandomNumber();
             carPostionUpdateNumber = carPositionUpdateValue(carPositionStatus);
         }
-        this.CAR_POSISION += carPostionUpdateNumber;
+        this.carPosition += carPostionUpdateNumber;
     }
 
     int carPositionUpdateValue(int carPositionStatusNumber) {
@@ -30,7 +28,7 @@ public class Car {
     }
 
     int lastCarPosition(){
-        return this.CAR_POSISION;
+        return this.carPosition;
     }
 
 }
