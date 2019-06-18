@@ -15,13 +15,12 @@ import java.util.Scanner;
  */
 public class CalculatorApplication {
 
-    private Operator operator = new Operator();
     private Validation validation = new Validation();
 
     private List<String> letter;
-    private static int firstIndex = 0;
-    private static int lastIndex = 2;
-    private static int totalNumber = 0;
+    private static final int FIRST_INDEX = 0;
+    private static final int NEXT_INDEX = 2;
+    private int totalNumber = 0;
 
     public static void main(String[] args) {
         CalculatorApplication calculator = new CalculatorApplication();
@@ -34,22 +33,23 @@ public class CalculatorApplication {
     }
 
     public int start(String inputData) {
-
-        if (this.validation.isBlank(inputData)) {
+        if (this.validation.isNotBlank(inputData)) {
             this.letter = this.validation.splitSpace(inputData);
         }
 
-        totalNumber = this.validation.convertInt(this.letter.get(0));
+        totalNumber = StringUtils.convertInt(this.letter.get(0));
 
-        for (int i = firstIndex; i < this.letter.size() - 2 ; i += lastIndex) {
-            OperatorType type = OperatorType.typeCheck(this.letter.get(i+1));
-            String oper = type.getType();
+        for (int i = FIRST_INDEX; i < calculateLastIndex(); i += NEXT_INDEX) {
+            OperatorType type = OperatorType.typeCheck(this.letter.get(i + 1));
+            int second = StringUtils.convertInt(this.letter.get(i + 2));
 
-            int second = this.validation.convertInt(this.letter.get(i+2));
-            totalNumber = this.operator.doOperation(oper, totalNumber, second);
+            totalNumber = type.calculate(totalNumber, second);
         }
 
         return totalNumber;
     }
 
+    private int calculateLastIndex() {
+        return this.letter.size() - NEXT_INDEX;
+    }
 }

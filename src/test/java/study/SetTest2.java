@@ -42,8 +42,5 @@ public class SetTest2 {
     @ValueSource(ints = {1, 2, 3})
     void contains(int number) {
         assertThat(numbers.contains(number)).isTrue();
-//        assertThat(numbers.contains(1)).isTrue();
-//        assertThat(numbers.contains(2)).isTrue();
-//        assertThat(numbers.contains(3)).isTrue();
     }
 }

@@ -14,13 +14,13 @@ import java.util.List;
  * create date  : 2019-06-14 15:09
  */
 public class Validation {
-    private String SEPARATOR_SPLIT = " ";
+    private static final String SEPARATOR_SPLIT = " ";
 
     /*
     null & " " 데이터 체크
      */
-    public boolean isBlank(String inputData) {
-        if(inputData.trim().equals("") || inputData == null) {
+    public boolean isNotBlank(String inputData) {
+        if (inputData == null || "".equals(inputData.trim())) {
             throw new IllegalArgumentException();
         }
         return true;
@@ -35,17 +35,4 @@ public class Validation {
 
         return tempList;
     }
-
-    /*
-    문자 -> 숫자 변환
-     */
-    public int convertInt(String letter) {
-        try {
-            return Integer.parseInt(letter);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(e.getMessage());
-        }
-    }
-
-
 }
