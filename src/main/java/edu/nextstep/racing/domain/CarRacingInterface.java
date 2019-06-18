@@ -1,4 +1,4 @@
-package edu.nextstep.racing;
+package edu.nextstep.racing.domain;
 
 import edu.nextstep.racing.model.Car;
 
@@ -15,5 +15,6 @@ import java.util.List;
  * create date  : 2019-06-15 23:39
  */
 interface CarRacingInterface {
-    abstract List<Car> move();
+    // interface는 묵지적으로 "abstract"가 포함되어있기에 불필요하다.
+    List<Car> move();
 }

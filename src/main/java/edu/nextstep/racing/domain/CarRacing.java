@@ -1,4 +1,4 @@
-package edu.nextstep.racing;
+package edu.nextstep.racing.domain;
 
 import edu.nextstep.racing.model.Car;
 import edu.nextstep.racing.view.ResultView;
@@ -61,7 +61,7 @@ public class CarRacing implements CarRacingInterface {
     private List<Car> initCarList(int carCount) {
         List<Car> returnCarList = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
-            returnCarList.add(new Car());
+            returnCarList.add(new Car(""));
         }
         return returnCarList;
     }

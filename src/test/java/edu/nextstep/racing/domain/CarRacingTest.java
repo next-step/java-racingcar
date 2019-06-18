@@ -1,5 +1,6 @@
-package edu.nextstep.racing;
+package edu.nextstep.racing.domain;
 
+import edu.nextstep.racing.domain.CarRacing;
 import edu.nextstep.racing.model.Car;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,5 +1,6 @@
 package edu.nextstep.racing;
 
+import edu.nextstep.racing.domain.CarRacing;
 import edu.nextstep.racing.view.InputView;
 
 /**
