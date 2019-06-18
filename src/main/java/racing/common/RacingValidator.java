@@ -15,16 +15,10 @@ public class RacingValidator {
     }
     
     public static boolean isInCarCountRange(int carCount) {
-        if (RacingSettings.MIN_CAR_COUNT.getValue() <= carCount && RacingSettings.MAX_CAR_COUNT.getValue() >= carCount) {
-            return true;
-        }
-        return false;
+        return RacingSettings.MIN_CAR_COUNT.getValue() <= carCount && RacingSettings.MAX_CAR_COUNT.getValue() >= carCount;
     }
     
     public static boolean isInTimeRange(int time) {
-        if (RacingSettings.MIN_TIME.getValue() <= time && RacingSettings.MAX_TIME.getValue() >= time) {
-            return true;
-        }
-        return false;
+        return RacingSettings.MIN_TIME.getValue() <= time && RacingSettings.MAX_TIME.getValue() >= time;
     }
 }

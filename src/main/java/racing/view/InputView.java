@@ -8,12 +8,10 @@ public class InputView {
     }
     
     public int requireInputInteger() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
+        return new Scanner(System.in).nextInt();
     }
     
     public String requestInputString() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
+        return new Scanner(System.in).nextLine();
     }
 }
