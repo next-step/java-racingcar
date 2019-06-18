@@ -13,9 +13,16 @@ package edu.nextstep.racing.model;
 public class Car {
 
     private int moveIndex;
+    private int carNumber;
+    private String carName;
 
-    public Car() {
-        this.moveIndex = 0;
+    private static final int INIT_POSITION = 0;
+    private static int autoIncrease = 0;
+
+    public Car(String name) {
+        this.moveIndex = INIT_POSITION;
+        this.carName = name;
+        this.carNumber = autoIncrease++;
     }
 
     public int move() {
@@ -24,5 +31,13 @@ public class Car {
 
     public int currentPosition() {
         return this.moveIndex;
+    }
+
+    public String getCarName() {
+        return this.carName;
+    }
+
+    public int getCarNumber() {
+        return this.carNumber;
     }
 }
