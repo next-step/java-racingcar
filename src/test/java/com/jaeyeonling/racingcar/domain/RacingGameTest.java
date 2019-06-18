@@ -30,7 +30,7 @@ public class RacingGameTest {
         final RacingGame game = new RacingGame(gameOption);
 
         // when
-        for (int i = 1; i < moveCount; i++) {
+        for (int i = Car.DEFAULT_POSITION; i < moveCount; i++) {
             game.move();
         }
 
@@ -72,7 +72,7 @@ public class RacingGameTest {
                 .build();
 
         final RacingGame racingGame = new RacingGame(racingGameOption);
-        for (int i = 1; i < moveCount; i++) {
+        for (int i = Car.DEFAULT_POSITION; i < moveCount; i++) {
             racingGame.move();
         }
 
@@ -104,7 +104,7 @@ public class RacingGameTest {
                 .build();
 
         final RacingGame racingGame = new RacingGame(racingGameOption);
-        for (int i = 1; i < moveCount; i++) {
+        for (int i = Car.DEFAULT_POSITION; i < moveCount; i++) {
             racingGame.move();
         }
 
