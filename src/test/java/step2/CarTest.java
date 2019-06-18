@@ -23,19 +23,20 @@ public class CarTest {
 
     @Test
     void 입력된_숫자만큼_자동차가_생성된다() {
-        // TODO
+        //TODO
     }
 
     @Test
     void 자동차는_랜덤숫자가_4이상인_경우만_이동한다() {
-        // RaceExecutor 리팩토링 후 작성 예정
+        //TODO
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5})
-    void 자동차가_주어진_거리만큼_이동한다(int numberOfMoves) {
+    void 자동차가_이동기준을_통과한_횟수만큼_이동한다(int numberOfMoves) {
+        final int aboveMoveCriterionNumber = 5;
         for (int i = 0; i < numberOfMoves; i++) {
-            car.move();
+            car.move(aboveMoveCriterionNumber);
         }
         assertThat(car.getPosition()).isEqualTo(numberOfMoves);
     }
