@@ -26,7 +26,7 @@ class CarTest {
 
     @Test
     void 자동차_이름_가져오기() {
-        assertThat(car.getCarNumber()).isEqualTo("test");
+        assertThat(car.getCarName()).isEqualTo("test");
     }
 
     @Test
