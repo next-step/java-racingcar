@@ -2,6 +2,7 @@ package edu.nextstep.racing.utils;
 
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -17,10 +18,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class NumberUtilsTest {
 
     @Test
-    void getMax() {
+    void 두개의_파라미터중_큰값_반환() {
+        assertThat(NumberUtils.getMax(10,20)).isEqualTo(20);
     }
 
     @Test
-    void getRandomNumber() {
+    void 램던한_숫자를_반환() {
+        assertThat(NumberUtils.getRandomNumber()).isBetween(0,9);
     }
 }
