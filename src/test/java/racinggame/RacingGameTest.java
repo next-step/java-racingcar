@@ -19,12 +19,4 @@ public class RacingGameTest {
     assertThat(randomValue).isGreaterThan(-1)
         .isLessThan(10);
   }
-
-  @DisplayName("자동차 생성 테스트")
-  @ParameterizedTest
-  @ValueSource(ints = {3, 4, 7})
-  void createCars(int carCount) {
-    final Cars cars = new Cars(carCount);
-    assertThat(cars.getCarsStatus()).hasSize(carCount);
-  }
 }
