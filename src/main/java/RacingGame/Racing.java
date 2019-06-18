@@ -1,6 +1,7 @@
 package RacingGame;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Racing {
@@ -43,5 +44,9 @@ public class Racing {
             this.raceCarMoveLoop();
             outputView.printRace(this.cars);
         }
+    }
+
+    public List<String> splitCarNames(String names) {
+        return Arrays.asList(names.split(","));
     }
 }
