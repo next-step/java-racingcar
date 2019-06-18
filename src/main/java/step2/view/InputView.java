@@ -28,8 +28,8 @@ public class InputView {
         return numberOfTrials;
     }
 
-    public void inputNumberValidation(int number) {
-        if(number < MINIMUM_NUMBER_CAN_BE_INPUT) {
+    private void inputNumberValidation(int number) {
+        if (number < MINIMUM_NUMBER_CAN_BE_INPUT) {
             scanner.close();
             throw new IllegalArgumentException("최소 1대의 자동차와 최소 1번의 시도횟수가 필요합니다.");
         }
