@@ -1,5 +1,7 @@
 package racing.domain;
 
+import racing.random.ValueGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,6 +21,11 @@ public class EntireCars {
         EntireCars entireCars = new EntireCars();
         entireCars.cars = carNames.stream().map(Car::of).collect(Collectors.toList());
         return entireCars;
+    }
+
+    public void race(ValueGenerator valueGenerator) {
+
+        cars.forEach(car -> car.race(valueGenerator.generateIntValue()));
     }
 
     public List<Car> getCars() {

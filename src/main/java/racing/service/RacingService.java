@@ -39,15 +39,11 @@ public class RacingService {
 
         IntStream.range(START_RACE_COUNT, racingInfo.getAttempts())
                 .forEach(currentRaceCount -> {
-                    raceEntireCars(entireCars);
+                    entireCars.race(valueGenerator);
                     racingResult.addCurrentRacingScore(RacingScore.of(entireCars));
                 });
 
         return racingResult;
     }
 
-    private void raceEntireCars(EntireCars entireCars) {
-
-        entireCars.getCars().forEach(car -> car.race(valueGenerator.generateIntValue()));
-    }
 }

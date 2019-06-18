@@ -4,14 +4,12 @@ import racing.dto.*;
 
 import java.io.PrintStream;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ResultView {
 
     private static final String POSITION_MARK = "-";
     private static final String CAR_NAME_POSITION_DELIMITER = " : ";
-    private static final String NAME_DELIMITER = ", ";
     private static final String WINNERS_MESSAGE = "가 최종우승 했습니다.";
 
     private final PrintStream printStream;
@@ -60,22 +58,7 @@ public class ResultView {
 
     private void printWinners(RacingResult racingResult) {
 
-        String winnersName = getWinnersName(racingResult);
-        printString(winnersName + WINNERS_MESSAGE);
-    }
-
-    private String getWinnersName(RacingResult racingResult) {
-
-        List<CarNamePosition> lastCarNamePositions = racingResult.getLastRacingScore().getCarNamePositions();
-        int winnersPosition = lastCarNamePositions.stream()
-                .map(CarNamePosition::getPosition)
-                .max(Integer::compareTo)
-                .orElseThrow(() -> new IllegalStateException("우승자 계산도중 에러가 발생했습니다."));
-
-        return lastCarNamePositions.stream()
-                .filter(carNamePosition -> carNamePosition.getPosition() == winnersPosition)
-                .map(CarNamePosition::getCarName)
-                .collect(Collectors.joining(NAME_DELIMITER));
+        printString(racingResult.getWinnersName() + WINNERS_MESSAGE);
     }
 
     private void printString(String s) {
