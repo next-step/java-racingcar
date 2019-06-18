@@ -21,8 +21,26 @@ public class CarTest {
     }
 
     @Test
+    @DisplayName("+3 칸 전진하는 자동차 테스트")
+    void move_plus_3() {
+        Car car = new Car(1, new MoveStrategy() {
+            @Override
+            public boolean isMove() {
+                return true;
+            }
+
+            @Override
+            public Integer getMoveSize() {
+                return 3;
+            }
+        });
+        Car movedCar = car.move();
+        assertThat(movedCar.getPosition()).isEqualTo(3);
+    }
+
+    @Test
     @DisplayName("무조건 정지하는 자동차 테스트")
-    void move_minus_1() {
+    void move_stop() {
         Car car = new Car(1, new MoveStrategy() {
             @Override
             public boolean isMove() {
