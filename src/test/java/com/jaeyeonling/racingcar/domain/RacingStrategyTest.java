@@ -2,7 +2,6 @@ package com.jaeyeonling.racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -15,12 +14,6 @@ public class RacingStrategyTest {
     @BeforeEach
     void setUp() {
         racingStrategy = new RacingStrategy();
-    }
-
-    @DisplayName("이동 판단 기준 값이 같은지 확인")
-    @Test
-    void equalsStandard() {
-        assertThat(racingStrategy.getStandard()).isEqualTo(RacingStrategy.MORE_THAN_MOVING_CONDITION);
     }
 
     @DisplayName("조건에 맞을 때 이동 확인")

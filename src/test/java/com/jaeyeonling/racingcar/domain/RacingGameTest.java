@@ -38,22 +38,22 @@ public class RacingGameTest {
         assertThat(game.isComplete()).isTrue();
     }
 
-    @DisplayName("RacingGame 게임 완료 테스트")
+    @DisplayName("RacingGame 게임 완료 메시지 테스트")
     @ParameterizedTest
     @CsvSource({
-            "3,4",
-            "5,6",
-            "10,5",
-            "5,3",
-            "345,346",
-            "32,45",
-            "665,454"
+            "TestCar,4",
+            "TestCar,6",
+            "TestCar,5",
+            "TestCar,3",
+            "TestCar,346",
+            "TestCar,45",
+            "TestCar,454"
     })
-    void playGame(String nameOfParticipants,
-                  int moveCount) {
+    void playGameResultMessage(String nameOfParticipants,
+                               int moveCount) {
+        // given
         final int participantsLength = nameOfParticipants.split(RacingGameOption.NAME_SEPARATOR).length;
 
-        // given
         final MoveStrategy mockAlwaysMoveStrategy = i -> true;
         final StringBuilder expectResultBuilder = new StringBuilder();
         for (int i = 0; i < participantsLength; i++) {
@@ -64,13 +64,13 @@ public class RacingGameTest {
             expectResultBuilder.append(StringUtils.NEW_LINE);
         }
 
-        // when
         final RacingGameOption racingGameOption = RacingGameOption.builder()
                 .moveStrategy(mockAlwaysMoveStrategy)
                 .movingCount(moveCount)
                 .nameOfParticipants(nameOfParticipants)
                 .build();
 
+        // when
         final RacingGame racingGame = new RacingGame(racingGameOption);
         for (int i = Car.DEFAULT_POSITION; i < moveCount; i++) {
             racingGame.move();
@@ -94,15 +94,13 @@ public class RacingGameTest {
     void everyoneVictory(String nameOfParticipants,
                          int moveCount) {
         // given
-        final MoveStrategy mockAlwaysMoveStrategy = i -> true;
-
-        // when
         final RacingGameOption racingGameOption = RacingGameOption.builder()
-                .moveStrategy(mockAlwaysMoveStrategy)
+                .moveStrategy(i -> true)
                 .movingCount(moveCount)
                 .nameOfParticipants(nameOfParticipants)
                 .build();
 
+        // when
         final RacingGame racingGame = new RacingGame(racingGameOption);
         for (int i = Car.DEFAULT_POSITION; i < moveCount; i++) {
             racingGame.move();
