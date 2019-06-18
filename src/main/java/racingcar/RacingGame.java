@@ -3,8 +3,6 @@ package racingcar;
 public class RacingGame {
 
   private Cars cars;
-  private Record record = new Record();
-
 
   public RacingGame(int numberOfCar) {
     initCars(numberOfCar);
@@ -14,18 +12,10 @@ public class RacingGame {
     cars = new Cars(numberOfCar);
   }
 
-  public void start(int numberOfTimes) {
+  public void start(int numberOfTimes, Record record) {
     for (int i = 0; i < numberOfTimes; i++) {
-      cars.moveCars();
-      record();
+      record.write(cars.moveCars());
     }
   }
 
-  private void record() {
-    record.write(cars.position());
-  }
-
-  public Record result() {
-    return record;
-  }
 }

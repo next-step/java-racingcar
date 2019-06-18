@@ -7,13 +7,14 @@ public class RacingGameLauncher {
   static Scanner scanner = new Scanner(System.in);
 
   public static void start() {
+    Record record = new Record();
     InputView.askNumberOfCar();
     int numberOfCar = scanner.nextInt();
     InputView.askNumberOfTimes();
     int numberOfTimes = scanner.nextInt();
     RacingGame racingGame = new RacingGame(numberOfCar);
-    racingGame.start(numberOfTimes);
-    ResultView.display(racingGame.result());
+    racingGame.start(numberOfTimes, record);
+    ResultView.display(record);
   }
 
   public static void main(String[] args) {

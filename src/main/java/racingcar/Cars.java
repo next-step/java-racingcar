@@ -19,16 +19,17 @@ public class Cars {
     }
   }
 
-  public void moveCars() {
+  public Position moveCars() {
     getStream()
         .forEach(car -> car.move(RandomNumberGenerator.randomValue()));
+    return position();
   }
 
   private Stream<Car> getStream() {
     return cars.stream();
   }
 
-  public Position position() {
+  private Position position() {
     return new Position(
         getStream()
             .map(Car::getPosition)
