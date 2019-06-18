@@ -1,6 +1,6 @@
 package study.racingcar.creator;
 
-import study.racingcar.condition.RandomCarMoveCondition;
+import study.racingcar.strategy.RandomMovableStrategy;
 import study.racingcar.model.Car;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class RacingCarCreator {
     public static List<Car> create(int count) {
         return IntStream.range(0, count)
                 .boxed()
-                .map(index -> new Car("자동차 - " + index, new RandomCarMoveCondition()))
+                .map(index -> new Car("자동차 - " + index, new RandomMovableStrategy()))
                 .collect(toList());
     }
 }

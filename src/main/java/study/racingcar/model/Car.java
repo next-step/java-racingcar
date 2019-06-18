@@ -1,6 +1,6 @@
 package study.racingcar.model;
 
-import study.racingcar.condition.CarMoveCondition;
+import study.racingcar.strategy.MovableStrategy;
 
 /**
  * Created by wyparks2@gmail.com on 2019-06-17
@@ -10,13 +10,13 @@ import study.racingcar.condition.CarMoveCondition;
 public class Car {
     private static final int DEFAULT_POSITION = 1; // 초기 위치
 
+    private MovableStrategy movableStrategy;
     private String name; // 자동차 이름
     private int position = DEFAULT_POSITION; // 이동한 거리
-    private CarMoveCondition carMoveCondition;
 
-    public Car(String name, CarMoveCondition carMoveCondition) {
+    public Car(MovableStrategy movableStrategy, String name) {
+        this.movableStrategy = movableStrategy;
         this.name = name;
-        this.carMoveCondition = carMoveCondition;
     }
 
     public void run() {
@@ -26,7 +26,7 @@ public class Car {
     }
 
     private boolean canMove() {
-        return carMoveCondition.canMove();
+        return movableStrategy.canMove();
     }
 
     public int getPosition() {

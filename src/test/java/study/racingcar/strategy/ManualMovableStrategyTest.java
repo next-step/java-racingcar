@@ -1,4 +1,4 @@
-package study.racingcar.condition;
+package study.racingcar.strategy;
 
 import org.junit.jupiter.api.Test;
 
@@ -9,9 +9,9 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Blog : http://wyparks2.github.io
  * Github : http://github.com/wyparks2
  */
-class ManualDeclarationCarMoveConditionTest {
+class ManualMovableStrategyTest {
     @Test
     void canMove() {
-        assertThat(new ManualDeclarationCarMoveCondition(true).canMove()).isTrue();
+        assertThat(new ManualMovableStrategy(true).canMove()).isTrue();
     }
 }

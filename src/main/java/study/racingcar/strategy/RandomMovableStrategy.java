@@ -1,4 +1,4 @@
-package study.racingcar.condition;
+package study.racingcar.strategy;
 
 import java.util.Random;
 
@@ -7,7 +7,7 @@ import java.util.Random;
  * Blog : http://wyparks2.github.io
  * Github : http://github.com/wyparks2
  */
-public class RandomCarMoveCondition implements CarMoveCondition {
+public class RandomMovableStrategy implements MovableStrategy {
     private static final Random RANDOM = new Random();
     private static final int NUMBER_OF_CASE = 10;
     private static final int CAN_MOVING_CONDITION = 4;
