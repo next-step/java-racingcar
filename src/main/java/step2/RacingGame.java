@@ -11,17 +11,20 @@ public class RacingGame {
         CreateCarList(carNumber);
     }
 
+    public List<Car> move() {
+        carList.forEach((car) -> {
+            int carPositionStatusNumber = Utils.createRandomNumber();
+            car.carPositionUpdate(carPositionStatusNumber);
+        });
+        return carList;
+    }
+
     private void CreateCarList(int carNumber){
         carList = new ArrayList <>();
         while (carNumber > 0) {
             carList.add(new Car());
             carNumber--;
         }
-    }
-
-    public List<Car> move() {
-        carList.forEach((car) -> car.carPositionUpdate());
-        return carList;
     }
 
 }
