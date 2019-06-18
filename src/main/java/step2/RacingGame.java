@@ -11,14 +11,14 @@ public class RacingGame {
 
     public List<Cars> start() {
         Cars cars = Cars.newCars(racingGameInputModel.getNumberOfCar());
-        RacingGameRecord record = RacingGameRecord.newGame(cars.startTurn());
+        RacingGameRecord racingGameRecord = RacingGameRecord.newGame(cars.startTurn());
 
         for (int i = 1; i < racingGameInputModel.getTimes(); i++) {
-            Cars previousCars = record.previousTurn(i - 1);
-            record = record.record(previousCars.startTurn());
+            Cars previousCars = racingGameRecord.previousTurn(i - 1);
+            racingGameRecord.record(previousCars.startTurn());
         }
 
-        return record.getResult();
+        return racingGameRecord.getResult();
     }
 
 }

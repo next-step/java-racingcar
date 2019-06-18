@@ -41,8 +41,8 @@ public class RacingGameRecordTest {
     void new_record() {
         Cars previousTurn = racingGameRecord.previousTurn(0);
         Cars turnResult = previousTurn.startTurn();
-        RacingGameRecord newRecord = racingGameRecord.record(turnResult);
-        assertThat(newRecord.getResult().size()).isEqualTo(2);
+        racingGameRecord.record(turnResult);
+        assertThat(racingGameRecord.getResult().size()).isEqualTo(2);
     }
 
 }

@@ -17,11 +17,11 @@ public class RacingGameRecord {
         return new RacingGameRecord(result);
     }
 
-    public RacingGameRecord record(Cars cars) {
-        List<Cars> raceRecord = new ArrayList<>(result);
-        raceRecord.add(cars);
-
-        return new RacingGameRecord(raceRecord);
+    public void record(Cars cars) {
+        if (cars.getCars().size() == 0) {
+            throw new IllegalArgumentException("경주 자동차가 없습니다.");
+        }
+        this.result.add(cars);
     }
 
     public List<Cars> getResult() {
