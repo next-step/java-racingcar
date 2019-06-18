@@ -5,24 +5,24 @@ import java.util.List;
 
 public class RacingGame {
 
-    private List<Car> carList;
+    private List<Car> cars;
 
     public RacingGame(int carNumber) {
-        CreateCarList(carNumber);
+        CreateCars(carNumber);
     }
 
     public List<Car> move() {
-        carList.forEach((car) -> {
+        cars.forEach((car) -> {
             int carPositionStatusNumber = Utils.createRandomNumber();
             car.carPositionUpdate(carPositionStatusNumber);
         });
-        return carList;
+        return cars;
     }
 
-    private void CreateCarList(int carNumber){
-        carList = new ArrayList <>();
+    private void CreateCars(int carNumber){
+        cars = new ArrayList <>();
         while (carNumber > 0) {
-            carList.add(new Car());
+            cars.add(new Car());
             carNumber--;
         }
     }
