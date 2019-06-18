@@ -15,14 +15,14 @@ public class RacingGameTest {
     @DisplayName("RacingGame 객체 생성")
     @Test
     void newRacingGame() {
-        assertThat(new RacingGame(RacingGameOption.builder().build())).isNotNull();
+        assertThat(new RacingGame(RacingGameOption.builder().nameOfParticipants("TestCar").build())).isNotNull();
     }
 
     @DisplayName("RacingGame 게임 완료 테스트")
     @Test
     void completeGame() {
         // given
-        final RacingGameOption gameOption = RacingGameOption.builder().build();
+        final RacingGameOption gameOption = RacingGameOption.builder().nameOfParticipants("TestCar").build();
         final RacingGame game = new RacingGame(gameOption);
 
         // when
@@ -53,6 +53,7 @@ public class RacingGameTest {
         final MoveStrategy mockAlwaysMoveStrategy = i -> true;
         final StringBuilder expectResultBuilder = new StringBuilder();
         for (int i = participantsLength; i > 0; i--) {
+            expectResultBuilder.append(nameOfParticipants).append(" : ");
             for (int j = moveCount; j > 0; j--) {
                 expectResultBuilder.append(Car.VISUAL_POSITION_STRING);
             }
