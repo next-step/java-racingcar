@@ -7,24 +7,27 @@ import java.util.ArrayList;
 public class CarRace {
 
     private Cars cars;
-    private final int numberOfTrials;
-//    private RaceExecutor raceExecutor;
+    private int numberOfTrials;
 
-    public CarRace(int numberOfCars, int numberOfTrials) {
-        makeCars(numberOfCars);
+    private CarRace(Cars cars, int numberOfTrials) {
+        this.cars = cars;
         this.numberOfTrials = numberOfTrials;
-//        this.raceExecutor = new RaceExecutor(this.cars);
     }
 
-    private void makeCars(int numberOfCars) {
-        Cars cars = new Cars(new ArrayList<>());
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.getCars().add(new Car());
-        }
+    public CarRace raceExecute(int numberOfCars, int numberOfTrials) {
+        return new CarRace(Cars.makeCars(numberOfCars), numberOfTrials);
     }
 
-    public void raceExecute() {
-        System.out.println("실행 결과"); //TODO: view에 위임
+
+//    private void makeCars(int numberOfCars) {
+//        Cars cars = new Cars(new ArrayList<>());
+//        for (int i = 0; i < numberOfCars; i++) {
+//            cars.getCars().add(new Car());
+//        }
+//    }
+
+//    public void raceExecute() {
+//        System.out.println("실행 결과"); //TODO: view에 위임
 //        raceExecutor.executeTrials(numberOfTrials);
     }
 }
