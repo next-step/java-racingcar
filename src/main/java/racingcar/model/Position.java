@@ -8,8 +8,7 @@ import java.util.Objects;
 public class Position implements Comparable<Position> {
 
     public static final int DEFAULT_POSITION = 1;
-    private final static Map<Integer,Position> CACHE = new HashMap<>();
-
+    private static final Map<Integer,Position> CACHE = new HashMap<>();
     private int position;
 
     private Position(int position) {

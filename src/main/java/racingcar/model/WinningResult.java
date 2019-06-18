@@ -34,7 +34,7 @@ public class WinningResult {
     }
 
     public List<String> getNames() {
-        return names.getNames();
+        return names.getList();
     }
 
     @Override

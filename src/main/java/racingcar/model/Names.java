@@ -1,8 +1,7 @@
 package racingcar.model;
 
-import com.google.common.base.Strings;
-
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -18,7 +17,6 @@ public class Names{
     }
 
     public static Names from(String names){
-        validateEmpty(names);
         NamesValidator.validate(names);
 
         List<String> nameList = Arrays.stream(names.split(DELIMITER))
@@ -27,21 +25,12 @@ public class Names{
         return new Names(nameList);
     }
 
-    private static void validateEmpty(String name) {
-        if (name == null || Strings.isNullOrEmpty(name.trim())) {
-            throw new NameException("빈 문자열 입니다");
-        }
-    }
-
     public Stream<String> stream() {
         return names.stream();
     }
 
-    public List<String> getNames() {
-        return names;
-    }
-    public int size(){
-        return names.size();
+    public List<String> getList() {
+        return Collections.unmodifiableList(names);
     }
 
     @Override
