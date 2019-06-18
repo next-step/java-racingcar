@@ -7,12 +7,6 @@ public class Car {
     private final Integer position;
     private final MoveStrategy moveStrategy;
 
-    public Car(Integer carNo, Integer position) {
-        this.carNo = carNo;
-        this.position = position;
-        this.moveStrategy = new DefaultMoveStrategy();
-    }
-
     public Car(Integer carNo, MoveStrategy moveStrategy) {
         this.carNo = carNo;
         this.position = STARTING_POINT;
