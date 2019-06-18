@@ -1,6 +1,7 @@
 package edu.nextstep.racing.view;
 
 import edu.nextstep.racing.model.Car;
+import edu.nextstep.racing.utils.ViewUtils;
 
 import java.util.List;
 
@@ -16,26 +17,22 @@ import java.util.List;
  */
 public class ResultView {
 
-    private static final String OUTPUT_SYMBOL = "- ";
-
     /*
     파라미터로 객체(자동차)를 받아 step 별로 출력
      */
     public void resultView(List<Car> cars) {
         for (Car car : cars) {
-            resultPrint(car);
+            int carPosition = car.currentPosition();
+            resultPrint(car, carPosition);
         }
-        print();
+        ViewUtils.print();
     }
 
-    private void resultPrint(Car car) {
-        for (int i = 0; i < car.currentPosition(); i++) {
-            System.out.print(OUTPUT_SYMBOL);
-        }
-        System.out.println();
+    public void printWinnerPlayer(List<Car> cars) {
+        ViewUtils.printWinner(cars);
     }
 
-    private void print() {
-        System.out.println();
+    private void resultPrint(Car car, int position) {
+        ViewUtils.combinDash(car, position);
     }
 }
