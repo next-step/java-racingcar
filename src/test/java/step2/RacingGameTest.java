@@ -16,7 +16,7 @@ public class RacingGameTest {
         RacingGame racingGame = new RacingGame(carNumber);
         List<Car> carPositionList = racingGame.move();
         for(Car car : carPositionList){
-            assertThat(car.getPosition()).isEqualTo(1);
+            assertThat(car.lastCarPosition()).isEqualTo(1);
         }
     }
 

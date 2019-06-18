@@ -18,7 +18,7 @@ public class RacingPositionTest {
     @Test
     @DisplayName("0~10까지 랜덤 숫자 가져오기 테스트")
     void carPositionSatatusTest(){
-        int randomNumber = car.carPositionStatus();
+        int randomNumber = Utils.createRandomNumber();
         assertThat(randomNumber).isBetween(0, 9);
     }
 
