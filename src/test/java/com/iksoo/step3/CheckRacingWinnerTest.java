@@ -1,5 +1,6 @@
 package com.iksoo.step3;
 
+<<<<<<< HEAD
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -45,4 +46,7 @@ public class CheckRacingWinnerTest {
 
         assertThat(winner).contains("pobi", "crong");
     }
+=======
+public class CarTest {
+>>>>>>> fix(CheckWinner) : 불필요한 메소드 파라미터 제거
 }
