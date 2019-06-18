@@ -6,11 +6,11 @@ import step2.domain.Cars;
 public class OutputView {
     private static final String POSITION_OF_CAR = "-";
 
-    public static void showResultTitle() {
+    public void showResultTitle() {
         System.out.println("실행 결과");
     }
 
-    public OutputView(Cars cars) {
+    public void showResult(Cars cars) {
         for (Car car : cars.getCars()) {
             printCars(car);
         }
