@@ -27,15 +27,16 @@ public class OutputView {
     }
 
     private static void playCarResult(Car car) {
-        print(car.getName() + " : ");
+        System.out.print(car.getName() + " : ");
         IntStream.range(0, car.getPosition())
-                .forEach(value -> print(VISUAL_EXPRESSION));
+                .forEach(value -> System.out.print(VISUAL_EXPRESSION));
         newLine();
     }
 
     public static void winningResult(WinningResult result) {
+        System.out.print(result.getNames().get(0));
         for (String name: result.getNames()) {
-            System.out.print(name + ", ");
+            System.out.print(", " + name);
         }
         System.out.println("가 최종 우승했습니다.");
     }
@@ -48,7 +49,7 @@ public class OutputView {
         System.out.println();
     }
 
-    private static void print(String text){
-        System.out.print(text);
+    public static void println(String message) {
+        System.out.println(message);
     }
 }
