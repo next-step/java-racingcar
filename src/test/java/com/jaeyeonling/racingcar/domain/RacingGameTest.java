@@ -22,11 +22,15 @@ public class RacingGameTest {
     @Test
     void completeGame() {
         // given
-        final RacingGameOption gameOption = RacingGameOption.builder().nameOfParticipants("TestCar").build();
+        final int moveCount = 10;
+        final RacingGameOption gameOption = RacingGameOption.builder()
+                .movingCount(moveCount)
+                .nameOfParticipants("TestCar")
+                .build();
         final RacingGame game = new RacingGame(gameOption);
 
         // when
-        while (!game.isComplete()) {
+        for (int i = 1; i < moveCount; i++) {
             game.move();
         }
 
@@ -52,9 +56,9 @@ public class RacingGameTest {
         // given
         final MoveStrategy mockAlwaysMoveStrategy = i -> true;
         final StringBuilder expectResultBuilder = new StringBuilder();
-        for (int i = participantsLength; i > 0; i--) {
+        for (int i = 0; i < participantsLength; i++) {
             expectResultBuilder.append(nameOfParticipants).append(" : ");
-            for (int j = moveCount; j > 0; j--) {
+            for (int j = 0; j < moveCount; j++) {
                 expectResultBuilder.append(Car.VISUAL_POSITION_STRING);
             }
             expectResultBuilder.append(StringUtils.NEW_LINE);
@@ -68,7 +72,7 @@ public class RacingGameTest {
                 .build();
 
         final RacingGame racingGame = new RacingGame(racingGameOption);
-        while (!racingGame.isComplete()) {
+        for (int i = 1; i < moveCount; i++) {
             racingGame.move();
         }
 
@@ -100,7 +104,7 @@ public class RacingGameTest {
                 .build();
 
         final RacingGame racingGame = new RacingGame(racingGameOption);
-        while (!racingGame.isComplete()) {
+        for (int i = 1; i < moveCount; i++) {
             racingGame.move();
         }
 
