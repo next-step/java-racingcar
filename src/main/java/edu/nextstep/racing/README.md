@@ -47,8 +47,9 @@ String[] names = inputName.split(",");
 
 ##### 핵심 로직
 - [X] 자동차 객체 클래스에 이름, 자동차 생성번호 멤버변수 추가 - Car.class
-- [ ] 자동차를 갖는 자동차 리스트 객체 추가 - Cars.class
-- [ ] 우승자 객체 추가 - Winner.class
+- [X] 자동차를 갖는 자동차 리스트 객체 추가 - Cars.class
+- [X] 우승자 객체 추가 - Winner.class
+- [ ] 경주게임 객체 추가 - Race.class
 - [ ] 경주, 경기, 우승 을 수행하는 클래스로 분리 (단일책임)
     - [ ] 경주(CarRacing) 클래스 : 한번의 경기 단위로 자동차의 경기 결과 저장하기
     - [ ] 경주(CarRacing) 클래스 : 자동차의 move 여부 체크
