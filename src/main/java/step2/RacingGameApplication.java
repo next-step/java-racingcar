@@ -9,8 +9,12 @@ public class RacingGameApplication {
         int tryCount = input.setTryCount();
 
         RacingGame rg = new RacingGame();
+        ValidationCheck vc = new ValidationCheck();
+
+        vc.checkInputZero(carQty, tryCount);
         rg.setInitPosition(carQty);
 
+        System.out.println("실행결과");
         while (tryCount-- > 0){
             rg.startRacing(carQty);
             rg.resultView();
