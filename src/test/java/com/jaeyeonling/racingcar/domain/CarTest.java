@@ -9,7 +9,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-
     @DisplayName("Car 생성")
     @Test
     void create() {
