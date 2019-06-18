@@ -26,6 +26,12 @@ public class Car {
     this.drivingStrategy = RandomStrategy.getInstance();
   }
 
+  public Car(String name, DrivingStrategy strategy) {
+    this.name = name;
+    this.position = INITIAL_POSITION;
+    this.drivingStrategy = strategy;
+  }
+
   /**
    * test시 mocking을 위한 setter
    * @param drivingStrategy
