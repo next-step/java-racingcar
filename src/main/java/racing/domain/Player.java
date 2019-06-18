@@ -1,22 +1,24 @@
 package racing.domain;
 
-import java.util.Random;
+import racing.domain.accelerator.DriveAccelerator;
+
 
 public class Player {
 
-	private static final int DEFAULT_RANDOM_BOUND = 10;
-
-	private Random randomAccelerator;
+	private DriveAccelerator accelerator;
 
 	private RacingCar car;
 
-	public Player(RacingCar car) {
+	public Player(DriveAccelerator accelerator, RacingCar car) {
+
 		this.car = car;
-		this.randomAccelerator = new Random();
+		this.accelerator = accelerator;
 	}
 
 	public int drive() {
-		this.car.move(randomAccelerator.nextInt(DEFAULT_RANDOM_BOUND));
+
+		this.car.move(accelerator.getAmount());
+
 		return car.getMileage();
 	}
 }
