@@ -5,12 +5,12 @@ import camp.nextstep.edu.racingcar.view.InputHandler;
 import camp.nextstep.edu.racingcar.view.InputView;
 import camp.nextstep.edu.racingcar.view.OutputHandler;
 import camp.nextstep.edu.racingcar.view.ResultView;
-import camp.nextstep.edu.racingcar.view.console.ConsoleInputView;
-import camp.nextstep.edu.racingcar.view.console.ConsoleIntegerInputHandler;
-import camp.nextstep.edu.racingcar.view.console.ConsoleResultView;
-import camp.nextstep.edu.racingcar.view.console.ConsoleStringOutputHandler;
+import camp.nextstep.edu.racingcar.view.console.*;
 import camp.nextstep.edu.racingcar.view.dto.GameRequest;
 import camp.nextstep.edu.racingcar.view.formatter.*;
+
+import java.util.List;
+import java.util.Scanner;
 
 public class RacingCarApplication {
 
@@ -27,7 +27,9 @@ public class RacingCarApplication {
     }
 
     public static void main(String[] args) {
-        final InputHandler<Integer> inputHandler = new ConsoleIntegerInputHandler();
+        final Scanner scanner = new Scanner(System.in);
+        final InputHandler<Integer> integerInputHandler = new ConsoleIntegerInputHandler(scanner);
+        final InputHandler<String> stringInputHandler = new ConsoleStringInputHandler(scanner);
         final OutputHandler<String> outputHandler = new ConsoleStringOutputHandler();
         final MovingStrategy randomMovingStrategy = new RandomStrategy();
         final GamePlayer gamePlayer = GamePlayer.from(randomMovingStrategy);
@@ -37,7 +39,7 @@ public class RacingCarApplication {
         final Formatter<Round> roundFormatter = new RoundFormatter(carsFormatter);
         final Formatter<Rounds> roundsFormatter = new RoundsFormatter(roundFormatter);
 
-        final InputView inputView = new ConsoleInputView(inputHandler, outputHandler);
+        final InputView inputView = new ConsoleInputView(integerInputHandler, stringInputHandler, outputHandler);
         final ResultView resultView = new ConsoleResultView(outputHandler, roundsFormatter);
 
         final RacingCarApplication application = new RacingCarApplication(inputView, resultView, gamePlayer);
@@ -45,16 +47,18 @@ public class RacingCarApplication {
         try {
             application.run();
         } catch (Exception ex) {
-            System.out.println("An exception occurred while running RacingCarApplication. message:" + ex.getMessage());
+            outputHandler.handle("An exception occurred while running RacingCarApplication. message:" + ex.getMessage());
+        } finally {
+            scanner.close();
         }
     }
 
     public void run() {
         final GameRequest gameRequest = inputView.printAndGetInput();
 
-        final int numberOfCars = gameRequest.getNumberOfCars();
+        final List<String> carNames = gameRequest.getCarNames();
         final int numberOfRounds = gameRequest.getNumberOfRounds();
-        gamePlayer.initializeGame(numberOfCars, numberOfRounds);
+        gamePlayer.initializeGame(carNames, numberOfRounds);
         gamePlayer.playAllRounds();
         final Rounds gameResult = gamePlayer.getGameResult();
 

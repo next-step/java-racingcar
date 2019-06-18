@@ -1,22 +1,24 @@
 package camp.nextstep.edu.racingcar.view.dto;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class GameRequest {
-    private final int numberOfCars;
+    private final List<String> carNames;
     private final int numberOfRounds;
 
-    private GameRequest(int numberOfCars, int numberOfRounds) {
-        this.numberOfCars = numberOfCars;
+    private GameRequest(List<String> carNames, int numberOfRounds) {
+        this.carNames = new ArrayList<>(carNames);
         this.numberOfRounds = numberOfRounds;
     }
 
-    public static GameRequest of(int numberOfCars, int numberOfRounds) {
-        return new GameRequest(numberOfCars, numberOfRounds);
+    public static GameRequest of(List<String> carNames, int numberOfRounds) {
+        return new GameRequest(carNames, numberOfRounds);
     }
 
-    public int getNumberOfCars() {
-        return numberOfCars;
+    public List<String> getCarNames() {
+        return new ArrayList<>(carNames);
     }
 
     public int getNumberOfRounds() {
@@ -26,7 +28,7 @@ public class GameRequest {
     @Override
     public String toString() {
         return "GameRequest{" +
-                "numberOfCars=" + numberOfCars +
+                "carNames=" + carNames +
                 ", numberOfRounds=" + numberOfRounds +
                 '}';
     }
@@ -36,12 +38,12 @@ public class GameRequest {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GameRequest that = (GameRequest) o;
-        return numberOfCars == that.numberOfCars &&
-                numberOfRounds == that.numberOfRounds;
+        return numberOfRounds == that.numberOfRounds &&
+                carNames.equals(that.carNames);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(numberOfCars, numberOfRounds);
+        return Objects.hash(carNames, numberOfRounds);
     }
 }

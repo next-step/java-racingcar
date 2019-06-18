@@ -1,6 +1,8 @@
 package camp.nextstep.edu.racingcar.domain;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Round {
     private final Cars cars;
@@ -10,8 +12,8 @@ public class Round {
         this.cars = cars;
     }
 
-    public static Round initialRoundFrom(int numberOfCars) {
-        final Cars initialCars = Cars.defaultInstance(numberOfCars);
+    public static Round initialRoundFrom(CarNames carNames) {
+        final Cars initialCars = Cars.defaultInstance(carNames);
         return new Round(initialCars);
     }
 
@@ -22,6 +24,22 @@ public class Round {
     public Round move(MovingStrategy movingStrategy) {
         final Cars movedCars = cars.move(movingStrategy);
         return new Round(movedCars);
+    }
+
+    public CarNames getWinners() {
+        final Position maxPosition = this.getMaximumPosition();
+        final List<CarName> carNameList = cars.stream()
+                .filter(car -> maxPosition.equals(car.getPosition()))
+                .map(Car::getName)
+                .collect(Collectors.toList());
+        return CarNames.from(carNameList);
+    }
+
+    private Position getMaximumPosition() {
+        final Position origin = Position.origin();
+        return cars.stream()
+                .map(Car::getPosition)
+                .reduce(origin, Position::max);
     }
 
     @Override

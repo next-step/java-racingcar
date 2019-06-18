@@ -42,6 +42,12 @@ public class Rounds {
         return Optional.ofNullable(round);
     }
 
+    public CarNames getWinnersOfLastRound() {
+        return this.getLast()
+                .map(Round::getWinners)
+                .orElse(CarNames.emptyInstance());
+    }
+
     @Override
     public String toString() {
         return "Rounds{" +
