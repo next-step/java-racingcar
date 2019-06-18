@@ -37,24 +37,26 @@ class DashTrackingMonitorViewTest {
 	void changedPositionEventHandling(){
 
 		// Arrange
-		StringBuilder verifyMessage = new StringBuilder();
+		List<String> resultMessages = new ArrayList<>();
 		DashTrackingMonitorView watcher = new DashTrackingMonitorView((message) -> {
-			verifyMessage.append(message);
-			verifyMessage.append("/");
+			resultMessages.add(message);
 		});
 
 		List<Integer> positions = new ArrayList<>();
 		// 0, 1 모두 대시("-") 1개 출력
-		positions.add(0); // -
-		positions.add(1); // -
+		positions.add(0);
+		positions.add(1);
 
 		// 2 이상은 개수만큼 출력
-		positions.add(2); // --
+		positions.add(2);
 
 		// Action
 		watcher.handle(new ChangedPlayerPositionEvent(positions));
 
 		// Assertion
-		assertThat(verifyMessage.toString()).isEqualTo("-/-/--/" + DashTrackingMonitorView.EMPTY_NEW_LINE + "/");
+		assertThat(resultMessages.get(0)).isEqualTo("-");
+		assertThat(resultMessages.get(1)).isEqualTo("-");
+		assertThat(resultMessages.get(2)).isEqualTo("--");
+		assertThat(resultMessages.size()).isEqualTo(4); // 마지막 공백라인으로 플레이어 수 + 1 개 메세지 전달
 	}
 }
