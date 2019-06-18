@@ -36,7 +36,7 @@ public class RacingGame implements Visualizable {
             throw new IllegalStateException("결과가 나오지 않은 게임입니다.");
         }
 
-        return new RacingGameResult(getParticipants());
+        return new RacingGameResult(getCars());
     }
 
     @Override
@@ -55,11 +55,7 @@ public class RacingGame implements Visualizable {
     }
 
     private List<Car> getCars() {
-        return getParticipants().toList();
-    }
-
-    private Participants getParticipants() {
-        return option.getParticipants();
+        return option.getCars();
     }
 
     private void moveAllCar() {

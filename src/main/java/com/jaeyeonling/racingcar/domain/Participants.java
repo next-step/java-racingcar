@@ -14,7 +14,7 @@ class Participants {
                 .collect(Collectors.toUnmodifiableList());
     }
 
-    List<Car> toList() {
+    List<Car> getCars() {
         return participants;
     }
 }

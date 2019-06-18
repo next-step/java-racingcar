@@ -8,15 +8,13 @@ public class RacingGameResult {
     private final int victorPosition;
     private final List<Car> victors;
 
-    RacingGameResult(final Participants participants) {
-        victorPosition = participants.toList()
-                .stream()
+    RacingGameResult(final List<Car> cars) {
+        victorPosition = cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElse(Car.DEFAULT_POSITION);
 
-        victors = participants.toList()
-                .stream()
+        victors = cars.stream()
                 .filter(car -> car.isMatchPosition(victorPosition))
                 .collect(Collectors.toUnmodifiableList());
     }

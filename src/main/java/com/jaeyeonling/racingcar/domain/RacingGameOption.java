@@ -22,8 +22,8 @@ public class RacingGameOption {
         return new Builder();
     }
 
-    Participants getParticipants() {
-        return participants;
+    List<Car> getCars() {
+        return participants.getCars();
     }
 
     int getMovingCount() {
