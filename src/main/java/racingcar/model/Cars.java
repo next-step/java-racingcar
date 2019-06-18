@@ -3,9 +3,11 @@ package racingcar.model;
 import racingcar.util.NumberGenerator;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Cars {
 
@@ -38,13 +40,13 @@ public class Cars {
     }
 
     public List<Car> winningCars() {
-        int maxPosition = Collections.max(cars).getPosition();
         return cars.stream()
-                .filter(car -> isMaxPosition(maxPosition, car))
+                .filter(car -> isMaxPosition(car))
                 .collect(Collectors.toList());
     }
-    private boolean isMaxPosition(int maxPosition, Car car) {
-        return car.getPosition() == maxPosition;
+
+    public boolean isMaxPosition(Car car) {
+        return Position.max() == car.getPosition();
     }
 
     public List<Car> getCars() {

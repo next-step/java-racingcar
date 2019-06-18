@@ -24,18 +24,16 @@ public class RacingGameTest {
 
         Cars result = racingGame.racing();
 
-        assertThat(result.getCars()).extracting(Car::getPosition).containsOnly(2);
+        assertThat(result.getCars())
+                .extracting(Car::getPosition)
+                .containsOnly(Position.valueOf(2));
     }
 
-    @ParameterizedTest
-    @CsvSource({
-            "-1,'test1,test2', 시도 횟수는 " + INPUT_MIN_ROUND + "보다 커야합니다.",
-            "0, 'tests', 2이상 입력해주세요."
-    })
-    void inputWrongValueFail(int round, String carNames, String errorMessage) {
+    @Test
+    void inputWrongValueFail() {
        assertThatIllegalArgumentException()
-               .isThrownBy(() -> RacingGame.generate(round, carNames))
-               .withMessageMatching(errorMessage);
+               .isThrownBy(() -> RacingGame.generate(-1, "test1,test2"))
+               .withMessageMatching("시도 횟수는 " + INPUT_MIN_ROUND + "보다 커야합니다.");
     }
 
     @Test

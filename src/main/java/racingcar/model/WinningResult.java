@@ -5,17 +5,17 @@ import java.util.stream.Collectors;
 
 public class WinningResult {
 
-    private int position;
+    private Position position;
     private List<String> names;
 
-    private WinningResult(int position, List<String> names) {
+    private WinningResult(Position position, List<String> names) {
         this.position = position;
         this.names = names;
     }
 
     public static WinningResult of(List<Car> cars){
         validateNull(cars);
-        int position = cars.get(0).getPosition();
+        Position position = Position.max();
         List<String> names = cars.stream().map(Car::getName).collect(Collectors.toList());
         return new WinningResult(position, names);
     }
@@ -26,7 +26,7 @@ public class WinningResult {
         }
     }
 
-    public int getPosition() {
+    public Position getPosition() {
         return position;
     }
 

@@ -1,26 +1,25 @@
 package racingcar.model;
 
-public class Car implements Comparable<Car>{
+public class Car{
 
     public static final int RUNNING_CONDITION = 4;
-    public static final int DEFAULT_POSITION = 1;
 
+    private Position position;
     private String name;
-    private int position;
 
-    Car(String name, int position) {
+    Car(String name, Position position) {
         this.name = name;
         this.position = position;
     }
 
     public static Car create(String name) {
         CarValidator.validate(name);
-        return new Car(name, DEFAULT_POSITION);
+        return new Car(name, Position.create());
     }
 
-    int move(int power) {
+    public Position move(int power) {
         if(isRunning(power)){
-            position++;
+            this.position = position.incrementExact();
         }
         return position;
     }
@@ -29,7 +28,7 @@ public class Car implements Comparable<Car>{
         return RUNNING_CONDITION <= power;
     }
 
-    public int getPosition() {
+    public Position getPosition() {
         return position;
     }
 
@@ -38,12 +37,8 @@ public class Car implements Comparable<Car>{
     }
 
     @Override
-    public int compareTo(Car other) {
-        return Integer.compare(position, other.position);
-    }
-
-    @Override
     public String toString() {
         return "Car{" + "position=" + position + '}';
     }
+
 }

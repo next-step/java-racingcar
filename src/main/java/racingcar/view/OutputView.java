@@ -2,6 +2,7 @@ package racingcar.view;
 
 import racingcar.model.Car;
 import racingcar.model.Cars;
+import racingcar.model.Position;
 import racingcar.model.WinningResult;
 
 import java.util.stream.IntStream;
@@ -28,9 +29,14 @@ public class OutputView {
 
     private static void playCarResult(Car car) {
         System.out.print(car.getName() + " : ");
-        IntStream.range(0, car.getPosition())
-                .forEach(value -> System.out.print(VISUAL_EXPRESSION));
+        printPosition(car.getPosition());
         newLine();
+    }
+
+    private static void printPosition(Position position) {
+        for (int i=0; i < position.parseInt(); i++){
+            System.out.print(VISUAL_EXPRESSION);
+        }
     }
 
     public static void winningResult(WinningResult result) {

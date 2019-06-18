@@ -5,7 +5,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.model.Car.DEFAULT_POSITION;
 import static racingcar.model.Car.RUNNING_CONDITION;
 
 public class CarTest {
@@ -16,7 +15,6 @@ public class CarTest {
     void createCarNameSuccess(String name) {
         Car car = Car.create(name);
         assertThat(car.getName()).isEqualTo(name);
-        assertThat(car.getPosition()).isEqualTo(DEFAULT_POSITION);
     }
 
     @DisplayName(RUNNING_CONDITION + "이상이면 전진한다")
@@ -24,10 +22,8 @@ public class CarTest {
     @ValueSource(ints = {4, 9})
     void move(int power) {
         Car car = createCar();
-
-        int expected = DEFAULT_POSITION + car.getPosition();
-
-        assertThat(car.move(power)).isEqualTo(expected);
+        Position move = car.move(power);
+        assertThat(move).isEqualTo(Position.valueOf(2));
     }
 
     @DisplayName(RUNNING_CONDITION + "보다 작으면 움직이지 않는다")
@@ -35,10 +31,7 @@ public class CarTest {
     @ValueSource(ints = {0, 1, 2, 3})
     void moveFail(int power) {
         Car car = createCar();
-
-        int expected = car.getPosition();
-
-        assertThat(car.move(power)).isEqualTo(expected);
+        assertThat(car.move(power)).isEqualTo(Position.valueOf(1));
     }
 
     public static Car createCar() {
