@@ -10,11 +10,19 @@ public class Car {
         this.position = INITIAL_POSITION;
     }
 
+    public Car(int position) {
+        this.position = position;
+    }
+
     public int getPosition() {
         return this.position;
     }
 
-    public int move() {
-        return this.position + DISTANCE_PER_MOVE;
+//    public int move() {
+//        return this.position + DISTANCE_PER_MOVE;
+//    }
+
+    public Car move(int distancePerMove) {
+        return new Car(this.position + distancePerMove);
     }
 }
