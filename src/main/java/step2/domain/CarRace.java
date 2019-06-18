@@ -1,5 +1,7 @@
 package step2.domain;
 
+import step2.utils.NumberGenerator;
+
 public class CarRace {
 
     private Cars cars;
@@ -10,14 +12,13 @@ public class CarRace {
         this.numberOfTrials = numberOfTrials;
     }
 
-    public CarRace raceExecute(int numberOfCars, int numberOfTrials) {
+    public CarRace raceStart(int numberOfCars, int numberOfTrials) {
         return new CarRace(Cars.makeCars(numberOfCars), numberOfTrials);
     }
 
+    public Cars executeTrials(NumberGenerator numberGenerator) {
+        int randomNumber = numberGenerator.getRandomNumber();
+        return cars.moveCars(randomNumber);
+    }
 
-
-//    public void raceExecute() {
-//        System.out.println("실행 결과"); //TODO: view에 위임
-//        raceExecutor.executeTrials(numberOfTrials);
-//    }
 }

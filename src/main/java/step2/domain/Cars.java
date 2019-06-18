@@ -1,5 +1,7 @@
 package step2.domain;
 
+import step2.utils.NumberGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +9,7 @@ public class Cars {
 
     private List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    private Cars(List<Car> cars) {
         this.cars = cars;
     }
 
@@ -22,4 +24,13 @@ public class Cars {
         }
         return new Cars(cars);
     }
+
+    public Cars moveCars(int randomNumber) {
+        for (Car car : cars) {
+            car.move(randomNumber);
+        }
+        return this;
+    }
+
+
 }

@@ -1,14 +1,15 @@
 package step2.view;
 
 import step2.domain.Car;
+import step2.domain.Cars;
 
 import java.util.List;
 
 public class OutputView {
     private static final String POSITION_OF_CAR = "-";
 
-    public OutputView(List<Car> cars) {
-        for (Car car : cars) {
+    public OutputView(Cars cars) {
+        for (Car car : cars.getCars()) {
             printCars(car);
         }
         System.out.println();
