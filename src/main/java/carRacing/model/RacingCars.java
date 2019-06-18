@@ -10,13 +10,10 @@ public class RacingCars {
 
     private List<Car> racingCars;
 
-    public RacingCars(String carNames) {
-        if(Strings.isNullOrEmpty(carNames)) throw new IllegalArgumentException("자동차 이름을 찾을 수 없습니다.");
-
-        String[] splitCarNames = nameSplit(carNames);
-        this.racingCars = prepareRace(splitCarNames);
+    public RacingCars(String[] carNames) {
+        if(carNames == null) throw new NullPointerException("배열 형태의 자동차 이름을 입력해주세요");
+        this.racingCars = prepareRace(carNames);
     }
-
 
     private String[] nameSplit(String carNames) {
         return carNames.split(",");
