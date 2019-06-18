@@ -17,14 +17,17 @@ public class CarRacing {
     }
 
     public void carRacingStart() {
+        System.out.println("실행 결과");
         for (int i = 0; i < numberOfAttempts; i++) {
             race();
+            ResultView.toTheNextLine();
         }
     }
 
     private List<Car> race() {
         for (Car car : carManagement.Cars()) {
             car.attempt(createCondition());
+            ResultView.resultViewDistanceByCar(car);
         }
         return carManagement.Cars();
     }
