@@ -1,4 +1,7 @@
-package step2;
+package step2.domain;
+
+import step2.utils.RandomNumberGenerator;
+import step2.view.OutputView;
 
 import java.util.List;
 
@@ -19,11 +22,11 @@ public class RaceExecutor {
         }
     }
 
-    private OutputView moveCars() {
+    private void moveCars() {
         for (Car car : this.cars) {
             decideMoveOrNot(car);
         }
-        return new OutputView(this.cars); // TODO: 결과화면을 여기서 반환하는 것이 어색한데 문제없을지 궁금합니다.
+        new OutputView(this.cars); // TODO: 결과화면을 여기서 생성하는 것이 어색한데 문제 없을지 궁금합니다.
     }
 
     private void decideMoveOrNot(Car car) {

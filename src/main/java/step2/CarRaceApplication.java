@@ -1,5 +1,8 @@
 package step2;
 
+import step2.domain.CarRace;
+import step2.view.InputView;
+
 public class CarRaceApplication {
 
     public static void main(String[] args) {
@@ -8,7 +11,7 @@ public class CarRaceApplication {
         final int numberOfTrials = inputView.getNumberOfTrials();
 
         CarRace carRace = new CarRace(numberOfCars, numberOfTrials);
-        carRace.raceStart();
+        carRace.raceExecute();
     }
 
 

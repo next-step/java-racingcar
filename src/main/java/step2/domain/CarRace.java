@@ -1,4 +1,4 @@
-package step2;
+package step2.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public class CarRace {
         return cars;
     }
 
-    public void raceStart() {
+    public void raceExecute() {
         System.out.println("실행 결과");
         raceExecutor.executeTrials(numberOfTrials);
     }

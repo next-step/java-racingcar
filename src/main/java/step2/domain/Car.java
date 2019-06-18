@@ -1,4 +1,4 @@
-package step2;
+package step2.domain;
 
 public class Car {
     private final static int INITIAL_POSITION = 0;
