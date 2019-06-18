@@ -10,23 +10,23 @@ public class Application {
 
     public static void main(String[] args) {
         OutputView.start();
-
-        while(true){
-            try{
-                String askCarNames = InputView.askCarNames();
-                int time = InputView.askRound();
-                racingGame = RacingGame.generate(time, askCarNames);
-                OutputView.ready(racingGame.getResult());
-
-                while (!racingGame.isGameOver()){
-                    OutputView.playResult(racingGame.racing());
-                }
-                OutputView.winningResult(racingGame.getFinalResult());
-                break;
-            }catch (Exception e){
-                System.out.println(e);
-            }
+        try {
+            run();
+        } catch (Exception e) {
+            OutputView.println(e.getMessage());
         }
         OutputView.end();
+    }
+
+    private static void run() {
+        String askCarNames = InputView.askCarNames();
+        int time = InputView.askRound();
+        racingGame = RacingGame.generate(time, askCarNames);
+        OutputView.ready(racingGame.getResult());
+
+        while (!racingGame.isGameOver()) {
+            OutputView.playResult(racingGame.racing());
+        }
+        OutputView.winningResult(racingGame.getFinalResult());
     }
 }
