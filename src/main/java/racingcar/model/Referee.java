@@ -5,10 +5,14 @@ import java.util.List;
 import java.util.TreeMap;
 
 public class Referee {
-    public static List<CarInformation> judgeWinners(List<CarInformation> carInformationList) {
+    public static List<CarInformation> judgeWinners(Cars cars) {
+        return judgeWinners(cars.getCarInformationList());
+    }
+
+    private static List<CarInformation> judgeWinners(List<CarInformation> cars) {
         TreeMap<Position, List<CarInformation>> informationMap = new TreeMap<>();
 
-        for (CarInformation car : carInformationList) {
+        for (CarInformation car : cars) {
             Position position = car.getPosition();
             List<CarInformation> carListInMap = informationMap.getOrDefault(position, null);
             if (carListInMap == null) {

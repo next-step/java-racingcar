@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import java.util.Objects;
+
 public class Car {
     private DrivingRule drivingRule;
     private CarInformation carInformation;
@@ -35,5 +37,18 @@ public class Car {
         Position position = carInformation.getPosition();
 
         return new CarInformation(name, position);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car)) return false;
+        Car car = (Car) o;
+        return carInformation.equals(car.carInformation);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carInformation);
     }
 }

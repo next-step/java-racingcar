@@ -13,13 +13,12 @@ public class RacingCarMain {
         int numberOfTries = InputView.inputNumberOfTries();
         OutputView.printResultMessage();
 
-        List<CarInformation> carsAfterRace = null;
         for (int i = 0; i < numberOfTries; i++) {
-            carsAfterRace = racingGame.raceOneStep();
+            List<CarInformation> carsAfterRace = racingGame.raceOneStep();
             OutputView.printCars(carsAfterRace);
         }
 
-        List<CarInformation> winners = racingGame.awards(carsAfterRace);
+        List<CarInformation> winners = racingGame.awards();
         OutputView.printWinners(winners);
     }
 }
