@@ -10,7 +10,7 @@ public class Car {
         this.position = INITIAL_POSITION;
     }
 
-    public Car(int position) {
+    private Car(int position) {
         this.position = position;
     }
 
