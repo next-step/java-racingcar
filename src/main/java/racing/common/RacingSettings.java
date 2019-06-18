@@ -7,7 +7,10 @@ public enum RacingSettings {
     MIN_TIME(1),
     MAX_RANDOM_MOVABLE_NUMBER(9),
     MIN_MOVABLE_NUMBER(4),
-    CAR_NAME_SEPARATOR(",");
+    MOVING_START_COUNT(0),
+    CAR_NAME_SEPARATOR(","),
+    CAR_STATUS_SEPARATOR(" : "),
+    CAR_MOVING_SIGN("-");
 
     private int value;
     private String str;

@@ -1,7 +1,7 @@
 package racing.view;
 
 import racing.vo.Cars;
-import racing.common.Question;
+import racing.common.Script;
 
 public class RacingView {
     private InputView inputView;
@@ -13,12 +13,12 @@ public class RacingView {
     }
     
     public String printCarQuestionAndGetAnswer() {
-        inputView.printQuestion(Question.CAR_NAMES.getQuestion());
+        inputView.printQuestion(Script.CAR_NAMES_QUESTION.getMessage());
         return inputView.requestInputString();
     }
     
     public int printTimeQuestionAndGetAnswer() {
-        inputView.printQuestion(Question.TIME_COUNT.getQuestion());
+        inputView.printQuestion(Script.TIME_COUNT_QUESTION.getMessage());
         return inputView.requireInputInteger();
     }
     

@@ -29,7 +29,7 @@ public class RacingManager {
     public void moveCars() {
         cars.getCars().stream()
           .filter(car -> randomGenerator.getNumber() > RacingSettings.MIN_MOVABLE_NUMBER.getValue())
-          .forEach(car -> car.forward());
+          .forEach(Car::forward);
     }
     
     public Cars getWinners() {

@@ -1,9 +1,11 @@
 package racing.controller;
 
+import racing.common.RacingSettings;
 import racing.logic.RacingManager;
 import racing.common.ErrorMessage;
 import racing.common.RacingValidator;
 import racing.view.RacingView;
+import racing.vo.Car;
 import racing.vo.Cars;
 
 import java.util.stream.IntStream;
@@ -32,12 +34,15 @@ public class RacingController {
     public void processGame() {
         processCarMoving();
         Cars winners = racingManager.getWinners();
-        String carNames = winners.getCars().stream().map(car -> car.getName()).reduce((name1, name2) -> name1 += "," + name2).get();
+        String carNames = winners.getCars().stream()
+            .map(Car::getName)
+            .reduce((name1, name2) -> name1 += "," + name2)
+            .get();
         racingView.printWinner(carNames);
     }
     
     private void processCarMoving() {
-        IntStream.range(0, time).forEach(i -> {
+        IntStream.range(RacingSettings.MOVING_START_COUNT.getValue(), time).forEach(i -> {
             racingManager.moveCars();
             racingView.printMovingStatus(racingManager.getCars());
         });
