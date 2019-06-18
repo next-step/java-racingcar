@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class RacingGame {
 
   private Cars cars;
@@ -12,10 +14,8 @@ public class RacingGame {
     cars = new Cars(carNames);
   }
 
-  public void start(int numberOfTimes, Record record) {
-    for (int i = 0; i < numberOfTimes; i++) {
-      record.write(cars.moveCars());
-    }
+  public List<Car> start() {
+    return cars.moveCars();
   }
 
 }
