@@ -19,7 +19,7 @@ public class CarValidator {
 
     private static void validateEmpty(String name) {
         if (name == null || Strings.isNullOrEmpty(name.trim())) {
-            throw new CarNameException("이름을 입력하세요.");
+            throw new CarNameException("이름은 null 일 수 없습니다.");
         }
     }
 

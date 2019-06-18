@@ -6,10 +6,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Cars {
 
+    public static final String DELIMITER = "\\,";
     private List<Car> cars;
 
     Cars(List<Car> cars) {
@@ -18,7 +18,6 @@ public class Cars {
 
     public static Cars from(String names) {
         CarsValidator.validate(names);
-
         String[] namesArr = parseArrays(names);
         List<Car> cars = Arrays.stream(namesArr)
                 .map(name -> Car.create(name))
@@ -27,9 +26,7 @@ public class Cars {
     }
 
     private static String[] parseArrays(String names) {
-        String noBlackNames = names.replace(" ", "");
-        String[] namesArr = noBlackNames.split("\\,");
-        CarsValidator.validateCount(namesArr.length);
+        String[] namesArr = names.split(DELIMITER);
         return namesArr;
     }
 
