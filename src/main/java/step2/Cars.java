@@ -13,17 +13,21 @@ public class Cars {
     }
 
     public static Cars newCars(int numberOfCar) {
-        return new Cars(createNewCarsByMoveStrategy(numberOfCar, new DefaultMoveStrategy()));
+        return new Cars(createCars(numberOfCar, new DefaultCarFactoryImpl(), new DefaultMoveStrategy()));
     }
 
     public static Cars newCars(int numberOfCar, MoveStrategy moveStrategy) {
-        return new Cars(createNewCarsByMoveStrategy(numberOfCar, moveStrategy));
+        return new Cars(createCars(numberOfCar, new DefaultCarFactoryImpl(), moveStrategy));
     }
 
-    private static List<Car> createNewCarsByMoveStrategy(int numberOfCar, MoveStrategy moveStrategy) {
+    public static Cars newCars(int numberOfCar, CarFactory carFactory, MoveStrategy moveStrategy) {
+        return new Cars(createCars(numberOfCar, carFactory, moveStrategy));
+    }
+
+    private static List<Car> createCars(int numberOfCar, CarFactory carFactory, MoveStrategy moveStrategy) {
         List<Car> newCars = new ArrayList<>();
         for (int carNo = 0; carNo < numberOfCar; carNo++) {
-            newCars.add(new Car(carNo, STARTING_POINT, moveStrategy));
+            newCars.add(carFactory.createCar(carNo, STARTING_POINT, moveStrategy));
         }
         return newCars;
     }
