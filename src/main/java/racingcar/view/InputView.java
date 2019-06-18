@@ -16,6 +16,7 @@ public class InputView {
         String[] carNames = input.split(SEPARATOR_FOR_SPLIT);
 
         return Arrays.stream(carNames)
+                .map(String::trim)
                 .collect(Collectors.toList());
     }
 

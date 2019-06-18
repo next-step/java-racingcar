@@ -20,8 +20,4 @@ public class CarInformation {
     public Position getPosition() {
         return position;
     }
-
-    public void setPosition(Position position) {
-        this.position = position;
-    }
 }

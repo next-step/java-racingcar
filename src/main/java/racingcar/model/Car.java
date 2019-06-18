@@ -25,7 +25,7 @@ public class Car {
             Position position = carInformation.getPosition();
             position = Position.add(position, Position.valueOf(1));
 
-            carInformation.setPosition(position);
+            carInformation = new CarInformation(carInformation.getName(), position);
         }
         return carInformation.getPosition();
     }
