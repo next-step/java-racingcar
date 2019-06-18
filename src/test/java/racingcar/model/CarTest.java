@@ -1,18 +1,14 @@
 package racingcar.model;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static racingcar.model.Car.DEFAULT_POSITION;
 import static racingcar.model.Car.RUNNING_CONDITION;
-import static racingcar.model.CarValidator.NAME_LENGTH_LIMIT;
 
 public class CarTest {
-
 
     @DisplayName("자동차를 생성한다")
     @ParameterizedTest
@@ -27,7 +23,7 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {4, 9})
     void move(int power) {
-        Car car = Car.create();
+        Car car = createCar();
 
         int expected = DEFAULT_POSITION + car.getPosition();
 
@@ -38,8 +34,14 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3})
     void moveFail(int power) {
-        Car car = Car.create();
+        Car car = createCar();
+
         int expected = car.getPosition();
+
         assertThat(car.move(power)).isEqualTo(expected);
+    }
+
+    public static Car createCar() {
+        return Car.create("test1");
     }
 }

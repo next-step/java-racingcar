@@ -9,17 +9,18 @@ import racingcar.util.MovingGenerator;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static racingcar.model.RacingGame.GAME_END_ROUND;
-import static racingcar.model.RacingGame.INPUT_MIN_VALUE;
+import static racingcar.model.RacingGame.INPUT_MIN_ROUND;
 
 public class RacingGameTest {
+
+    private static final String SAMPLE_NAMES = "test1,test2";
 
     @Test
     @DisplayName("레이싱을 한번 진행한 결과를 반환한다")
     void racing() {
         int round = 1;
-        int carCount = 2;
 
-        RacingGame racingGame = new RacingGame(round, Cars.newInstance(carCount), new MovingGenerator());
+        RacingGame racingGame = new RacingGame(round, Cars.from(SAMPLE_NAMES), new MovingGenerator());
 
         Cars result = racingGame.racing();
 
@@ -28,26 +29,26 @@ public class RacingGameTest {
 
     @ParameterizedTest
     @CsvSource({
-            "-1, 0, 시도 횟수는 " + INPUT_MIN_VALUE + "보다 커야합니다.",
-            "0, -1, 자동차 대수는 " + INPUT_MIN_VALUE + "보다 커야합니다."
+            "-1,'test1,test2', 시도 횟수는 " + INPUT_MIN_ROUND + "보다 커야합니다.",
+            "0, 'tests', 2이상 입력해주세요."
     })
-    void inputWrongValueFail(int round, int carCount, String errorMessage) {
+    void inputWrongValueFail(int round, String carNames, String errorMessage) {
        assertThatIllegalArgumentException()
-               .isThrownBy(() -> RacingGame.generate(round, carCount))
+               .isThrownBy(() -> RacingGame.generate(round, carNames))
                .withMessageMatching(errorMessage);
     }
 
     @Test
     @DisplayName("횟수가 " + GAME_END_ROUND + "이면 게임종료")
     void timeZeroThenGameOver() {
-        RacingGame racingGame = RacingGame.generate(0, 3);
+        RacingGame racingGame = RacingGame.generate(0, SAMPLE_NAMES);
         assertThat(racingGame.isGameOver()).isTrue();
     }
 
     @Test
     @DisplayName("횟수가 " + GAME_END_ROUND + "이 아닐 시 게임진행")
     void timeNoZeroThenGameOver() {
-        RacingGame racingGame = RacingGame.generate(3, 3);
+        RacingGame racingGame = RacingGame.generate(3, SAMPLE_NAMES);
         assertThat(racingGame.isGameOver()).isFalse();
     }
 }

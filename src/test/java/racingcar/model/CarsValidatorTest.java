@@ -14,22 +14,23 @@ import static racingcar.model.CarsValidator.REGEX_CAR_NAMES_PATTERN;
 
 public class CarsValidatorTest {
 
+    private static final String INPUT_NAMES = "test1,test2,test3";
+
     @DisplayName("구분자 정규식 테스트")
     @Test
     void regexCarNameTest() {
         String regex = REGEX_CAR_NAMES_PATTERN;
         Pattern compile = Pattern.compile(regex);
-        assertThat(compile.matcher("test1,test2,test3").find()).isTrue();
+        assertThat(compile.matcher(INPUT_NAMES).find()).isTrue();
     }
 
     @DisplayName("문자열 유효성 통합 테스트")
     @Test
     void textNameSplitSuccess() {
-        String nameText = "test1, test2, test3";
-        CarsValidator.validate(nameText);
+        CarsValidator.validate(INPUT_NAMES);
     }
 
-    @DisplayName("문자열 길이가 null or 빈값 or 잘못된 구분자 에러")
+    @DisplayName("문자열 길이가 null, 빈값, 잘못된 구분자 일 경우 에러")
     @NullAndEmptySource
     @ParameterizedTest
     @ValueSource(strings = {
