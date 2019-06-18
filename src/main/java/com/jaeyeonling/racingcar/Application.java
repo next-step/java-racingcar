@@ -23,11 +23,11 @@ public class Application {
         final VisualRecorder viewRecorder = new VisualRecorder();
 
         viewRecorder.recodeResultMessage();
-        viewRecorder.recode(racingGame);
+        viewRecorder.recode(racingGame.getParticipants());
 
         while (!racingGame.isComplete()) {
             racingGame.move();
-            viewRecorder.recode(racingGame);
+            viewRecorder.recode(racingGame.getParticipants());
         }
 
         viewRecorder.recodeVictors(racingGame.getResult().getVictors());

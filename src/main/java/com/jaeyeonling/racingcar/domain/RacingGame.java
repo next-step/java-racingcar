@@ -1,12 +1,10 @@
 package com.jaeyeonling.racingcar.domain;
 
 import com.jaeyeonling.racingcar.utils.RandomUtils;
-import com.jaeyeonling.racingcar.utils.StringUtils;
-import com.jaeyeonling.racingcar.view.Visualizable;
 
 import java.util.List;
 
-public class RacingGame implements Visualizable {
+public class RacingGame {
 
     private static final int MOVING_RANDOM_BOUND = 9;
 
@@ -39,23 +37,12 @@ public class RacingGame implements Visualizable {
         return new RacingGameResult(getCars());
     }
 
-    @Override
-    public String visualize() {
-        return getVisualGameStatus();
-    }
-
-    private String getVisualGameStatus() {
-        final StringBuilder visualBuilder = new StringBuilder();
-        for (final Car car : getCars()) {
-            visualBuilder.append(car.visualize())
-                    .append(StringUtils.NEW_LINE);
-        }
-
-        return visualBuilder.toString();
+    public Participants getParticipants() {
+        return option.getParticipants();
     }
 
     private List<Car> getCars() {
-        return option.getCars();
+        return getParticipants().getCars();
     }
 
     private void moveAllCar() {

@@ -77,7 +77,7 @@ public class RacingGameTest {
         }
 
         // then
-        assertThat(racingGame.visualize()).isEqualTo(expectResultBuilder.toString());
+        assertThat(racingGame.getParticipants().visualize()).isEqualTo(expectResultBuilder.toString());
     }
 
     @DisplayName("RacingGame 공동 우승 테스트")
