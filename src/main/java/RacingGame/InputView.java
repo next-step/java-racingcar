@@ -3,6 +3,7 @@ package RacingGame;
 import java.util.Scanner;
 
 public class InputView {
+
     private Scanner scanner;
 
     public InputView() {

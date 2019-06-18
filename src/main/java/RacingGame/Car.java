@@ -26,15 +26,12 @@ public class Car {
 
     public int getRandomNumber() {
         Random random = new Random();
+
         return random.nextInt(BASE_BOUND);
     }
 
     public boolean isMoveCar(int randomNumber) {
-        if (randomNumber > REFERENCE_VALUE) {
-            return true;
-        }
-
-        return false;
+        return randomNumber > REFERENCE_VALUE;
     }
 
     public void nextRace() {

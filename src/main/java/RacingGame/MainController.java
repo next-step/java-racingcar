@@ -8,7 +8,6 @@ public class MainController {
         int inputCountCar = inputView.countCar();
 
         Racing racing = new Racing(inputTime, inputCountCar);
-
         racing.raceStart();
 
         OutputView outputView = new OutputView();

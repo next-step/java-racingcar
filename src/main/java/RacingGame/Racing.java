@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {
+
     private int time;
     private List<Car> cars;
 

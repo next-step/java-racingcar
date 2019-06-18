@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    Car car;
+    private Car car;
 
     @BeforeEach
     void setUp() {
