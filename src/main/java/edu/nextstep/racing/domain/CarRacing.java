@@ -34,7 +34,7 @@ public class CarRacing {
     public CarRacing(Cars player) {
         this.player = player;
     }
-    
+
     public void starRoundGame() {
         List<Car> carList = this.player.getCars().stream()
                 .peek(car -> doMoveCheck(car))

@@ -2,9 +2,11 @@ package edu.nextstep.racing.domain;
 
 import edu.nextstep.racing.domain.CarRacing;
 import edu.nextstep.racing.model.Car;
+import edu.nextstep.racing.model.Cars;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,21 +24,25 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
  */
 class CarRacingTest {
 
-    private CarRacing race;
-    private List<Car> cars;
+    private CarRacing carRacing;
+    private Cars cars;
+    private List<String> carName;
 
     @BeforeEach
     void setUp() {
-        race = new CarRacing(3, 5);
-        cars = race.getCarList();
+        carName = new ArrayList<>();
+        carName.add("TEST1");
+        carName.add("TEST2");
+        carName.add("TEST3");
+        cars = new Cars(carName);
+        carRacing = new CarRacing(cars);
     }
 
     @Test
     void 자동차_전진() {
-        cars = race.move();
-        int position = cars.get(0).currentPosition();
-        assertThat(position).isGreaterThan(-1);
-        assertThat(position).isLessThan(6);
+        assertThat(cars.getCars().get(0).currentPosition()).isEqualTo(0);
+        carRacing.starRoundGame();
+        assertThat(cars.getCars().get(0).currentPosition()).isBetween(0,1);
     }
 
     @Test
