@@ -31,6 +31,10 @@ public class Car {
         return movableStrategy.canMove();
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getPosition() {
         return position;
     }

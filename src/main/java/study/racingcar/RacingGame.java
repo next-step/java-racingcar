@@ -2,9 +2,12 @@ package study.racingcar;
 
 import study.racingcar.creator.RacingCarCreator;
 import study.racingcar.model.Car;
-import study.racingcar.output.ResultView;
+import study.racingcar.model.CarRacingLog;
+import study.racingcar.model.CarsRacingLog;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Created by wyparks2@gmail.com on 2019-06-17
@@ -14,32 +17,36 @@ import java.util.List;
 public class RacingGame {
     private final int carCount;
     private final int time;
-    private final ResultView resultView;
 
-    public RacingGame(int carCount, int time, ResultView resultView) {
+    public RacingGame(int carCount, int time) {
         this.carCount = carCount;
         this.time = time;
-        this.resultView = resultView;
     }
 
-    public void start() {
+    public List<CarsRacingLog> start() {
         List<Car> cars = makeRacingCar();
-
-        resultView.printInit();
-
-        printStandbyStatus(cars);
-        runCarsAndPrintStatus(cars);
+        return runCarsRepeatByTime(cars);
     }
 
-    private void printStandbyStatus(List<Car> cars) {
-        resultView.print(cars);
+    private List<CarsRacingLog> runCarsRepeatByTime(List<Car> cars) {
+        return IntStream.range(0, time)
+                .boxed()
+                .map(index -> this.runCars(cars))
+                .collect(Collectors.toList());
     }
 
-    private void runCarsAndPrintStatus(List<Car> cars) {
-        for (int index = 0; index < time; index++) {
-            cars.forEach(Car::run);
-            resultView.print(cars);
+    private CarsRacingLog runCars(List<Car> cars) {
+        CarsRacingLog carsRacingLog = new CarsRacingLog();
+
+        for (Car car : cars) {
+            car.run();
+            carsRacingLog.add(makeCarRacingLog(car));
         }
+        return carsRacingLog;
+    }
+
+    private CarRacingLog makeCarRacingLog(Car car) {
+        return new CarRacingLog(car.getName(), car.getPosition());
     }
 
     private List<Car> makeRacingCar() {

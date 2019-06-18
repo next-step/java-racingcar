@@ -1,6 +1,7 @@
 package study.racingcar.output;
 
-import study.racingcar.model.Car;
+import study.racingcar.model.CarRacingLog;
+import study.racingcar.model.CarsRacingLog;
 
 import java.util.List;
 
@@ -19,23 +20,29 @@ public class ConsoleGameStatusResultView implements ResultView {
     }
 
     @Override
-    public void print(List<Car> cars) {
-        for (Car car : cars) {
-            this.print(car);
+    public void print(List<CarsRacingLog> carsRacingLogs) {
+        for (CarsRacingLog carsRacingLog : carsRacingLogs) {
+            this.print(carsRacingLog);
+        }
+    }
+
+    private void print(CarsRacingLog carsRacingLog) {
+        for (CarRacingLog carRacingLog : carsRacingLog.getCarRacingLogs()) {
+            print(carRacingLog);
         }
 
         System.out.println();
     }
 
-    private void print(Car car) {
-        System.out.println(convertPositionToString(car));
+    private void print(CarRacingLog carRacingLog) {
+        System.out.println(convertPositionToString(carRacingLog));
     }
 
-    private String convertPositionToString(Car car) {
+    private String convertPositionToString(CarRacingLog carRacingLog) {
         final StringBuilder sb = new StringBuilder();
 
-        int movedDistance = car.getPosition();
-        while (movedDistance-- > 0) {
+        int movedPosition = carRacingLog.getPosition();
+        while (movedPosition-- > 0) {
             sb.append(POSITION_TEXT);
         }
 
