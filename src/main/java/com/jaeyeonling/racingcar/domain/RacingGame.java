@@ -34,7 +34,7 @@ public class RacingGame {
             throw new IllegalStateException("결과가 나오지 않은 게임입니다.");
         }
 
-        return new RacingGameResult(getCars());
+        return new RacingGameResult(getParticipants());
     }
 
     public Participants getParticipants() {

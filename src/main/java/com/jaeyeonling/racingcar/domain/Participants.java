@@ -17,13 +17,28 @@ class Participants implements Visualizable {
                 .collect(Collectors.toUnmodifiableList());
     }
 
-    List<Car> getCars() {
-        return participants;
+    public int maxPosition() {
+        return participants.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(Car.DEFAULT_POSITION);
+    }
+
+    public List<Car> getLeadingCars() {
+        final int leaderPosition = maxPosition();
+
+        return participants.stream()
+                .filter(car -> car.isMatchPosition(leaderPosition))
+                .collect(Collectors.toUnmodifiableList());
     }
 
     @Override
     public String visualize() {
         return getVisualGameStatus();
+    }
+
+    List<Car> getCars() {
+        return participants;
     }
 
     private String getVisualGameStatus() {
@@ -35,5 +50,4 @@ class Participants implements Visualizable {
 
         return visualBuilder.toString();
     }
-
 }
