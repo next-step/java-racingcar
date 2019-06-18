@@ -20,10 +20,10 @@ public class OutputRacingData {
         printBlankLine();
     }
 
-    public void printCarResult(String carName, String carPosition) {
+    public void printCarResult(String carName, int carPosition) {
         System.out.print(carName + " : ");
-        for (int i = 0; i < carPosition.length(); i++) {
-            System.out.print(carPosition.charAt(i) == '1' ? "-" : "");
+        for (int i = 0; i < carPosition; i++) {
+            System.out.print("-");
         }
         printBlankLine();
     }
