@@ -1,7 +1,10 @@
 package racingcar.view;
 
 import racingcar.model.Car;
+import racingcar.util.refree.Referee;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.joining;
@@ -18,7 +21,8 @@ public class ResultView {
    * @param round
    */
   public static void printCurrentRound(int round) {
-    System.out.println(round + "번째 라운드");
+    String resultMessage = round + "번째 라운드";
+    System.out.println(resultMessage);
   }
 
   /**
@@ -35,10 +39,18 @@ public class ResultView {
    * @param car
    */
   public static void printCurrentPositionOf(Car car) {
+
+    String nameOfCar = car.getName();
     String currentPosition = IntStream.rangeClosed(car.getInitialPosition(), car.getPosition())
             .mapToObj(pos -> CURRENT_POSITION_MARKER)
             .collect(joining());
 
-    System.out.println(currentPosition);
+    String resultMessage = nameOfCar.concat(" : ").concat(currentPosition);
+    System.out.println(resultMessage);
+  }
+
+  public static void printWinner(List<Car> cars) {
+    String resultMessage = Referee.getWinnerFrom(cars).concat("가 최종 우승했습니다.");
+    System.out.println(resultMessage);
   }
 }

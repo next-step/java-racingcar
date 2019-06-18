@@ -17,6 +17,7 @@ public class InputView {
   private Scanner scanner;
   private int rounds = -1;
   private int players = -1;
+  private String[] names = null;
 
   public InputView() {
     this.scanner = new Scanner(System.in);
@@ -32,8 +33,13 @@ public class InputView {
     return players;
   }
 
+  public String[] getNames() {
+    return names;
+  }
+
   public boolean askQuestions() {
-    askNumberOfPlayers();
+    // askNumberOfPlayers();
+    askNameOfPlayers();
     askNumberOfRounds();
 
     return true;
@@ -42,6 +48,12 @@ public class InputView {
   void askNumberOfPlayers() {
     System.out.println("자동차 대수는 몇 대 인가요? \n");
     this.players = scanner.nextInt();
+  }
+
+  void askNameOfPlayers() {
+    System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분). \n");
+    String inputNames = scanner.next();
+    this.names = inputNames.split(",");
   }
 
   void askNumberOfRounds() {

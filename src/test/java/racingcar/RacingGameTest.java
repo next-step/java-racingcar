@@ -4,8 +4,9 @@ package racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.mocks.MockDrivingStrategy;
 import racingcar.model.Car;
+import racingcar.util.drivingStrategy.DrivingStrategy;
+import racingcar.util.drivingStrategy.MockDrivingStrategy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,12 +15,11 @@ import static java.util.stream.Collectors.joining;
 
 public class RacingGameTest {
 
-
-  private RacingGame racingGame;
+  private DrivingStrategy drivingStrategy;
 
   @BeforeEach
   void setUp() {
-    this.racingGame = new RacingGame();
+    drivingStrategy = MockDrivingStrategy.getInstance();
   }
 
   @Test
@@ -34,28 +34,27 @@ public class RacingGameTest {
   }
 
   @Test
-  @DisplayName("console에 '--' 3줄이 표시된다")
+  @DisplayName("총 3라운드 진행, 1라운드에 '--' 3줄, 2라운드에 '---' 3줄, 3라운드에 '----' 3줄 표시된다")
   void printRacingStatus() {
 
     int rounds = 3;
     List<Car> cars = Arrays.asList(
-            new Car(1),
-            new Car(2),
-            new Car(3));
+            new Car("car1", drivingStrategy),
+            new Car("car2", drivingStrategy),
+            new Car("car3", drivingStrategy));
 
-    racingGame.printRacingStatus(rounds, cars);
+    RacingGame.printRacingStatus(rounds, cars);
 
   }
 
   @Test
-  @DisplayName("총 3라운드 진행, 1라운드에 '--' 3줄, 2라운드에 '---' 3줄, 3라운드에 '----' 3줄 표시된다")
+  @DisplayName("console에 '--' 3줄이 표시된다")
   void drive() {
     List<Car> cars = Arrays.asList(
-            new Car(1),
-            new Car(2),
-            new Car(3));
+            new Car("car1", drivingStrategy),
+            new Car("car2", drivingStrategy),
+            new Car("car3", drivingStrategy));
 
-    racingGame.drive(cars);
+    RacingGame.drive(cars);
   }
-
 }

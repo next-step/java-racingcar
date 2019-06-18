@@ -1,13 +1,14 @@
 package racingcar.model;
 
-import racingcar.util.DrivingStrategy;
-import racingcar.util.RandomStrategy;
+import racingcar.util.drivingStrategy.DrivingStrategy;
+import racingcar.util.drivingStrategy.RandomStrategy;
 
 public class Car {
 
   private static final int INITIAL_POSITION = 1;
 
   private int carNo;
+  private String name;
   private int position;
 
   private DrivingStrategy drivingStrategy;
@@ -17,6 +18,18 @@ public class Car {
     this.carNo = carNo;
     this.position = INITIAL_POSITION;
     this.drivingStrategy = RandomStrategy.getInstance();
+  }
+
+  public Car(String name) {
+    this.name = name;
+    this.position = INITIAL_POSITION;
+    this.drivingStrategy = RandomStrategy.getInstance();
+  }
+
+  public Car(String name, DrivingStrategy strategy) {
+    this.name = name;
+    this.position = INITIAL_POSITION;
+    this.drivingStrategy = strategy;
   }
 
   /**
@@ -56,5 +69,12 @@ public class Car {
 
   public int getPosition() {
     return position;
+  }
+
+  public String getName() { return name; }
+
+  @Override
+  public String toString() {
+    return name;
   }
 }

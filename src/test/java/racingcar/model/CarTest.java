@@ -3,20 +3,17 @@ package racingcar.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.mocks.MockDrivingStrategy;
-import racingcar.util.DrivingStrategy;
+import racingcar.util.drivingStrategy.MockDrivingStrategy;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class CarTest {
 
-
   private Car car;
 
   @BeforeEach
   void setUp() {
-    this.car = new Car(1);
-    this.car.setDrivingStrategy(MockDrivingStrategy.getInstance());
+    this.car = new Car("1", MockDrivingStrategy.getInstance());
   }
 
   @Test
@@ -56,6 +53,5 @@ public class CarTest {
     car.resetPosition();
     assertThat(car.getPosition()).isEqualTo(1);
   }
-
 }
 
