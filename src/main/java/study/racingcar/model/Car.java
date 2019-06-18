@@ -19,10 +19,12 @@ public class Car {
         this.name = name;
     }
 
-    public void run() {
+    public int run() {
         if (this.canMove()) {
             position++;
         }
+
+        return position;
     }
 
     private boolean canMove() {
