@@ -2,16 +2,19 @@ package racing;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import racing.strategy.DrivingMoveStrategy;
 import racing.strategy.DrivingStopStrategy;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingTest {
-    private int INPUT_CARS_COUNT = 1;
-    private int INPUT_MOVES_COUNT = 1;
+    private int             INPUT_MOVES_COUNT = 1;
+    private List<String>    INPUT_CARS_NAMES = Arrays.asList("car1", "car2");
     private String          INPUT_CAR_NAME = "car";
 
     private RacingGame mGame;
@@ -19,13 +22,13 @@ public class RacingTest {
 
     @BeforeEach
     void setUp() {
-        mGame = new RacingGame(INPUT_CARS_COUNT, INPUT_MOVES_COUNT);
+        mGame = new RacingGame(INPUT_CARS_NAMES, INPUT_MOVES_COUNT);
         mCar = new Car(INPUT_CAR_NAME);
     }
 
     @Test
     void input_generate_cars() {
-        assertThat(mGame.getNumOfCars()).isEqualTo(INPUT_CARS_COUNT);
+        assertThat(mGame.getNumOfCars()).isEqualTo(INPUT_CARS_NAMES.size());
     }
 
     @Test
