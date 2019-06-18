@@ -88,7 +88,7 @@ public class RacingGameTest {
             "'a,b,c,d,e',454"
     })
     void everyoneVictory(String nameOfParticipants,
-                 int moveCount) {
+                         int moveCount) {
         // given
         final MoveStrategy mockAlwaysMoveStrategy = i -> true;
 
