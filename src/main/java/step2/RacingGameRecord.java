@@ -18,9 +18,6 @@ public class RacingGameRecord {
     }
 
     public void record(Cars cars) {
-        if (cars.getCars().size() == 0) {
-            throw new IllegalArgumentException("경주 자동차가 없습니다.");
-        }
         this.result.add(cars);
     }
 
@@ -32,7 +29,7 @@ public class RacingGameRecord {
         if (previousTurnNo < 0) {
             throw new IllegalArgumentException("previousTurnNo 는 0 이상의 index 값입니다.");
         }
-        if (previousTurnNo > result.size()) {
+        if (previousTurnNo >= result.size()) {
             throw new IndexOutOfBoundsException("현재 " + result.size() + " 턴 까지 실행되었습니다. 입력 값 : " + previousTurnNo);
         }
 

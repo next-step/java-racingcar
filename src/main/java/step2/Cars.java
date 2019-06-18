@@ -27,6 +27,10 @@ public class Cars {
     }
 
     private static List<Car> createCars(int numberOfCar, CarFactory carFactory, MoveStrategy moveStrategy) {
+        if (numberOfCar == 0) {
+            throw new IllegalArgumentException("경주 자동차는 1대 이상 추가해야 합니다. Invalid Parameter : " + numberOfCar);
+        }
+
         List<Car> newCars = new ArrayList<>();
         for (int carNo = 0; carNo < numberOfCar; carNo++) {
             newCars.add(carFactory.createCar(carNo, moveStrategy));

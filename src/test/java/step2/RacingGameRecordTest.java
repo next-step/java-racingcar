@@ -23,7 +23,9 @@ public class RacingGameRecordTest {
     @Test
     @DisplayName("직전 턴 기록 조회시 turnNo 가 현재 record 인덱스 범위를 벗어난 경우")
     void invalid_over_turn_no() {
-        assertThatIllegalArgumentException().isThrownBy(() -> racingGameRecord.previousTurn(-1));
+        assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(
+            () -> racingGameRecord.previousTurn(5)
+        );
     }
 
     @Test
