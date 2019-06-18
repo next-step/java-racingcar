@@ -2,10 +2,11 @@ package carRacing.model;
 
 import com.google.common.base.Strings;
 
+import java.util.Objects;
+
 public class Car {
 
     private final static int MOVEMENT_LIMIT_BY_OUTPUT = 4;
-    private final static int MOVE = 1;
     private String name;
     private int position;
 
@@ -16,7 +17,7 @@ public class Car {
 
     public int move(int gamePoint) {
         if (canMove(gamePoint)) {
-            position += MOVE;
+            position ++;
         }
         return position;
     }
@@ -27,6 +28,19 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return name.equals(car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 
     private boolean canMove(int output) {
