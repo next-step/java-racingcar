@@ -12,24 +12,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingTest {
 
-    private final String INPUT_NAMES = "jojo,mike,brian,cell,chacha";
     private Racing racing;
+    private List<String> inputNames;
 
     @BeforeEach
     void setUp() {
-        racing = new Racing(5,this.INPUT_NAMES);
+        inputNames = Util.stringSplitToList("jojo,mike,brian,cell,chacha", ",");
+        racing = new Racing(5, this.inputNames);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
     void setTime(int input) {
-        racing = new Racing(input, this.INPUT_NAMES);
+        racing = new Racing(input, this.inputNames);
         assertThat(racing.getTime()).isEqualTo(input);
     }
 
     @Test
     void makeCarList() {
-        racing = new Racing(0, this.INPUT_NAMES);
+        racing = new Racing(0, this.inputNames);
         assertThat(racing.getCars().size()).isEqualTo(5);
         assertThat(racing.getCars().get(0).getPosition()).isEqualTo(0);
     }
@@ -50,13 +51,7 @@ class RacingTest {
     }
 
     @Test
-    void splitStringNames() {
-        List<String> carNames = racing.splitCarNames(this.INPUT_NAMES);
-        assertThat(carNames).contains("jojo","mike","brian","cell","chacha");
-    }
-
-    @Test
     void constructorRacing() {
-        racing = new Racing(0, this.INPUT_NAMES);
+        racing = new Racing(0, this.inputNames);
     }
 }

@@ -10,9 +10,9 @@ public class Racing {
     private List<Car> cars;
     private OutputView outputView;
 
-    public Racing(int time, String inputCarNames) {
+    public Racing(int time, List<String> inputCarNames) {
         this.time = time;
-        this.cars = this.arrayWithCar(this.splitCarNames(inputCarNames));
+        this.cars = this.arrayWithCar(inputCarNames);
         this.outputView = new OutputView();
     }
 
@@ -44,9 +44,5 @@ public class Racing {
             this.raceCarMoveLoop();
             outputView.printRace(this.cars);
         }
-    }
-
-    public List<String> splitCarNames(String names) {
-        return Arrays.asList(names.split(","));
     }
 }

@@ -7,7 +7,7 @@ public class MainController {
         String inputNames = inputView.inputNames();
         int inputTime = inputView.countTime();
 
-        Racing racing = new Racing(inputTime, inputNames);
+        Racing racing = new Racing(inputTime, Util.stringSplitToList(inputNames, ","));
         racing.raceStart();
     }
 }
