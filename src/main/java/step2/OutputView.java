@@ -5,10 +5,7 @@ import java.util.List;
 public class OutputView {
 
     static void racingResult(List<Car> carList) {
-        int carNumber = carList.size();
-        for (int i = 0; i < carNumber; i++) {
-            carResult(carList.get(i).lastCarPosition());
-        }
+        carList.forEach((car) -> carResult(car.lastCarPosition()));
         System.out.println();
     }
 
