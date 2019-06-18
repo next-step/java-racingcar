@@ -1,8 +1,8 @@
-package edu.nextstep.racing.domain;
+package edu.nextstep.racing.utils;
 
-import edu.nextstep.racing.model.Car;
+import org.junit.jupiter.api.Test;
 
-import java.util.List;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * author       : gwonbyeong-yun <sksggg123>
@@ -12,9 +12,15 @@ import java.util.List;
  * | blog         : sksggg123.github.io     |
  * ------------------------------------------
  * project      : java-racingcar
- * create date  : 2019-06-15 23:39
+ * create date  : 2019-06-18 20:26
  */
-interface CarRacingInterface {
-    // interface는 묵지적으로 "abstract"가 포함되어있기에 불필요하다.
-    List<Car> move();
+class NumberUtilsTest {
+
+    @Test
+    void getMax() {
+    }
+
+    @Test
+    void getRandomNumber() {
+    }
 }
