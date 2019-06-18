@@ -7,8 +7,7 @@ public class RacingValidator {
         if (StringUtils.isEmpty(carNames)) {
             return false;
         }
-        
-        if (!isInCarCountRange(carNames.split(",").length)) {
+        if (!isInCarCountRange(carNames.split(RacingSettings.CAR_NAME_SEPARATOR.getStr()).length)) {
             return false;
         } 
         
