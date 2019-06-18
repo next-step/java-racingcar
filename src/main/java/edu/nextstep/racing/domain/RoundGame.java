@@ -27,4 +27,12 @@ public class RoundGame {
     public int getGameTime() {
         return race.getGameTime();
     }
+
+    public void doRace() {
+        this.currentTime++;
+    }
+
+    public int getRemainTime() {
+        return getGameTime() - currentTime;
+    }
 }
