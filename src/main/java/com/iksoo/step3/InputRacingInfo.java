@@ -1,7 +1,11 @@
 /*
  * ClassName : InputRacingInfo.java
  *
+<<<<<<< HEAD
  * Version : 1.1
+=======
+ * Version : 1.0
+>>>>>>> feat(Input) : 자동차경주 Input 클래스 생성
  *
  * Create Date : 2019.06.17
  *
