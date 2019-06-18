@@ -12,7 +12,6 @@ import study.racingcar.output.ResultView;
  * Github : http://github.com/wyparks2
  */
 public class RacingGameStater {
-
     public static void main(String[] args) {
         InputView inputView = new ConsoleInputView();
         RacingGameCondition gameCondition = inputView.questionAndAnswer();

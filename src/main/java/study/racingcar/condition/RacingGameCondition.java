@@ -6,9 +6,8 @@ package study.racingcar.condition;
  * Github : http://github.com/wyparks2
  */
 public class RacingGameCondition {
-    private int countOfRacingCar; // 경주하는 자동차 댓수
-
-    private int moveCarTryLimit; // 자동차 이동 시도 횟수 제한
+    private int countOfRacingCar;
+    private int moveCarTryLimit;
 
     public RacingGameCondition(int countOfRacingCar, int moveCarTryLimit) {
         this.countOfRacingCar = countOfRacingCar;
