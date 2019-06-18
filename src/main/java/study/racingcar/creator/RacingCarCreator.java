@@ -20,7 +20,7 @@ public class RacingCarCreator {
     public static List<Car> create(int count) {
         return IntStream.range(0, count)
                 .boxed()
-                .map(index -> new Car("자동차 - " + index, new RandomMovableStrategy()))
+                .map(index -> new Car(new RandomMovableStrategy(), "자동차 - " + index))
                 .collect(toList());
     }
 }
