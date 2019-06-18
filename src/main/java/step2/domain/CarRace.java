@@ -5,15 +5,13 @@ import step2.utils.NumberGenerator;
 public class CarRace {
 
     private Cars cars;
-    private int numberOfTrials;
 
-    private CarRace(Cars cars, int numberOfTrials) {
+    private CarRace(Cars cars) {
         this.cars = cars;
-        this.numberOfTrials = numberOfTrials;
     }
 
-    public CarRace raceStart(int numberOfCars, int numberOfTrials) {
-        return new CarRace(Cars.makeCars(numberOfCars), numberOfTrials);
+    public CarRace raceStart(int numberOfCars) {
+        return new CarRace(Cars.makeCars(numberOfCars));
     }
 
     public Cars executeTrials(NumberGenerator numberGenerator) {
