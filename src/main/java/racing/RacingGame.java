@@ -18,6 +18,8 @@ public class RacingGame {
         for (int i = 0; i < this.moves; i++) {
             move();
         }
+
+        Printer.printEndGame(new WinnerMaker(cars).getWinners());
     }
 
     private void move() {
