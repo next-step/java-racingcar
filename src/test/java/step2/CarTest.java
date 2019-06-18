@@ -29,7 +29,9 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5})
     void 자동차가_주어진_거리만큼_이동한다(int numberOfMoves) {
-        Car movedCar = car.move(numberOfMoves);
-        assertThat(movedCar.getPosition()).isEqualTo(numberOfMoves);
+        for(int i=0; i<numberOfMoves; i++) {
+            car.move();
+        }
+        assertThat(car.getPosition()).isEqualTo(numberOfMoves);
     }
 }

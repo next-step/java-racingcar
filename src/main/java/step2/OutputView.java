@@ -6,8 +6,6 @@ public class OutputView {
     private static final String POSITION_OF_CAR = "-";
 
     public OutputView(List<Car> cars) {
-        System.out.println();
-        System.out.println("실행 결과");
         for(Car car : cars) {
             printCars(car);
         }

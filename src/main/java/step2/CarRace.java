@@ -5,11 +5,12 @@ import java.util.List;
 import java.util.Random;
 
 public class CarRace {
-    private int numberOfCars;
+
+    private List<Car> cars;
     private int numberOfTrials;
 
     public CarRace(int numberOfCars, int numberOfTrials) {
-        this.numberOfCars = numberOfCars;
+        this.cars = makeCars(numberOfCars);
         this.numberOfTrials = numberOfTrials;
     }
 
@@ -21,23 +22,39 @@ public class CarRace {
         return cars;
     }
 
-    private Car decideMoveOrNot(Car car) {
-        if(canMove()) {
-            return car.move(1);
+    private void executeTrials() {
+        for(int i=0; i<numberOfTrials; i++) {
+            moveCars();
         }
-        return car.move(0);
     }
 
-    public boolean canMove() {
-        Random random = new Random();
-        if(random.nextInt(10) >= 4) {
+    private OutputView moveCars() {
+        for(Car car : this.cars) {
+            decideMoveOrNot(car);
+        }
+        return new OutputView(this.cars);
+    }
+
+    private void decideMoveOrNot(Car car) {
+        if(canMove()) {
+            car.move();
+        }
+    }
+
+    private boolean canMove() {
+        if(getRandomNumber() >= 4) {
             return true;
         }
         return false;
     }
 
-    public OutputView raceStart() {
-        List<Car> cars = makeCars(numberOfCars);
-        return new OutputView(cars);
+    private int getRandomNumber() {
+        Random random = new Random();
+        return random.nextInt(10);
+    }
+
+    public void raceStart() {
+        System.out.println("실행 결과");
+        executeTrials();
     }
 }

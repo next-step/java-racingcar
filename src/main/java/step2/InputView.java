@@ -24,6 +24,7 @@ public class InputView {
         final int numberOfTrials = scanner.nextInt();
         inputNumberValidation(numberOfTrials);
         scanner.close();
+        System.out.println();
         return numberOfTrials;
     }
 
