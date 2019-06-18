@@ -1,21 +1,16 @@
 package racingcar.model;
 
-public class Car {
+public class Car implements Comparable<Car>{
 
     public static final int RUNNING_CONDITION = 4;
     public static final int DEFAULT_POSITION = 1;
-    public static final String DEFAULT_NAME = "COMPUTER";
 
     private String name;
     private int position;
 
-    private Car(String name, int position) {
+    Car(String name, int position) {
         this.name = name;
         this.position = position;
-    }
-
-    public static Car create(){
-        return new Car(DEFAULT_NAME, DEFAULT_POSITION);
     }
 
     public static Car create(String name) {
@@ -40,6 +35,11 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public int compareTo(Car other) {
+        return Integer.compare(position, other.position);
     }
 
     @Override

@@ -33,17 +33,21 @@ public class Cars {
         return namesArr;
     }
 
-    public static Cars newInstance(int count) {
-        CarsValidator.validateCount(count);
-        List<Car> cars = IntStream.range(0, count).mapToObj(value -> Car.create()).collect(Collectors.toList());
-        return new Cars(cars);
-    }
-
     Cars moveAll(NumberGenerator numberGenerator) {
         for (Car car : cars) {
             car.move(numberGenerator.getNumber());
         }
         return this;
+    }
+
+    public List<Car> winningCars() {
+        int maxPosition = Collections.max(cars).getPosition();
+        return cars.stream()
+                .filter(car -> isMaxPosition(maxPosition, car))
+                .collect(Collectors.toList());
+    }
+    private boolean isMaxPosition(int maxPosition, Car car) {
+        return car.getPosition() == maxPosition;
     }
 
     public List<Car> getCars() {

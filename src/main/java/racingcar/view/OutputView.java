@@ -1,9 +1,9 @@
-package racingcar.io;
+package racingcar.view;
 
 import racingcar.model.Car;
 import racingcar.model.Cars;
+import racingcar.model.WinningResult;
 
-import java.util.List;
 import java.util.stream.IntStream;
 
 public class OutputView {
@@ -27,9 +27,17 @@ public class OutputView {
     }
 
     private static void playCarResult(Car car) {
+        print(car.getName() + " : ");
         IntStream.range(0, car.getPosition())
                 .forEach(value -> print(VISUAL_EXPRESSION));
         newLine();
+    }
+
+    public static void winningResult(WinningResult result) {
+        for (String name: result.getNames()) {
+            System.out.print(name + ", ");
+        }
+        System.out.println("가 최종 우승했습니다.");
     }
 
     public static void end(){
