@@ -1,5 +1,6 @@
 /*
  * ClassName : Car.java
+<<<<<<< HEAD
  *
  * Version : 1.0
  *
@@ -7,6 +8,15 @@
  *
  * Creator : 신익수
  *
+=======
+ * 
+ * Version : 1.0
+ * 
+ * Create Date : 2019.06.17
+ * 
+ * Creator : 신익수
+ * 
+>>>>>>> feat(Car) : Car 클래스파일 생성
  */
 package com.iksoo.step3;
 
