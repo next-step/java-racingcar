@@ -12,6 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingTest {
     private int INPUT_CARS_COUNT = 1;
     private int INPUT_MOVES_COUNT = 1;
+    private String          INPUT_CAR_NAME = "car";
 
     private RacingGame mGame;
     private Car mCar;
@@ -19,7 +20,7 @@ public class RacingTest {
     @BeforeEach
     void setUp() {
         mGame = new RacingGame(INPUT_CARS_COUNT, INPUT_MOVES_COUNT);
-        mCar = new Car();
+        mCar = new Car(INPUT_CAR_NAME);
     }
 
     @Test
@@ -36,14 +37,14 @@ public class RacingTest {
     void go() {
         mCar.goOrNot(new DrivingMoveStrategy());
 
-        assertThat(mCar.position).isEqualTo(1);
+        assertThat(mCar.getPosition()).isEqualTo(1);
     }
 
     @Test
     void stop() {
         mCar.goOrNot(new DrivingStopStrategy());
 
-        assertThat(mCar.position).isEqualTo(0);
+        assertThat(mCar.getPosition()).isEqualTo(0);
     }
 
     @Test
@@ -51,5 +52,10 @@ public class RacingTest {
         mCar.go();
 
         assertThat(mCar.getMovesRoad()).isEqualTo("-");
+    }
+
+    @Test
+    void name() {
+        assertThat(mCar.getName()).isEqualTo(INPUT_CAR_NAME);
     }
 }

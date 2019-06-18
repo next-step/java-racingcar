@@ -3,9 +3,11 @@ package racing;
 import racing.strategy.DrivingStrategy;
 
 public class Car {
-    public int position;
+    private String name;
+    private int position;
 
-    public Car() {
+    public Car(String name) {
+        this.name = name;
         position = 0;
     }
 
@@ -26,6 +28,14 @@ public class Car {
         }
 
         return builder.toString();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 }
 

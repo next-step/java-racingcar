@@ -7,8 +7,8 @@ public class RacingGame {
     private List<Car> cars;
     private int moves;
 
-    public RacingGame(int numOfCars, int numOfMoves) {
-        setCars(numOfCars);
+    public RacingGame(List<String> carNames, int numOfMoves) {
+        setCars(carNames);
         setMoves(numOfMoves);
     }
 
@@ -28,11 +28,11 @@ public class RacingGame {
         Printer.printResult(cars);
     }
 
-    private void setCars(int numOfCars) {
-        cars = new ArrayList<>(numOfCars);
+    private void setCars(List<String> carNames) {
+        cars = new ArrayList<>(carNames.size());
 
-        for (int i = 0; i < numOfCars; i++) {
-            cars.add(new Car());
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
     }
 
