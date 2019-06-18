@@ -20,4 +20,5 @@ public class RacingGameApplication {
             rg.resultView();
         }
     }
+
 }

@@ -22,5 +22,4 @@ public class RacingGameTest {
         void tearDown() {
             System.out.println("tearDown");
         }
-
     }

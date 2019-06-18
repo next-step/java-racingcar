@@ -10,7 +10,6 @@ public class ValidationCheck {
         if(tryCnt == 0){
             throw new IllegalArgumentException("경주 시도횟수가 0회이므로 게임을 시작할 수 없습니다. 재입력해주세요.");
         }
-
     }
 
 }

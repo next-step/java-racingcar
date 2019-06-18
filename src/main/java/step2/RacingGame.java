@@ -34,5 +34,4 @@ public class RacingGame {
         ResultView rv = new ResultView();
         rv.result(carPositions);
     }
-
 }
