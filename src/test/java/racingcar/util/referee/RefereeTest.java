@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
+import racingcar.util.drivingStrategy.DrivingStrategy;
 import racingcar.util.drivingStrategy.MockDrivingStrategy;
 import racingcar.util.refree.Referee;
 
@@ -19,13 +20,11 @@ public class RefereeTest {
     @BeforeEach
     void setUp() {
 
-        Car car1 = new Car("pobi");
-        Car car2 = new Car("tobi");
-        Car car3 = new Car("sobi");
+        DrivingStrategy strategy = MockDrivingStrategy.getInstance();
 
-        car1.setDrivingStrategy(MockDrivingStrategy.getInstance());
-        car2.setDrivingStrategy(MockDrivingStrategy.getInstance());
-        car3.setDrivingStrategy(MockDrivingStrategy.getInstance());
+        Car car1 = new Car("pobi", strategy);
+        Car car2 = new Car("tobi", strategy);
+        Car car3 = new Car("sobi", strategy);
 
         cars = Arrays.asList(car1, car2, car3);
     }
