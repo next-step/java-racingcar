@@ -8,10 +8,16 @@ public class Car {
     private final int BASE_BOUND = 10;
     private final int REFERENCE_VALUE = 4;
 
+    private String name;
     private int position;
 
     public Car() {
         this.position = 0;
+    }
+
+    public Car(String name) {
+        this();
+        this.name = name;
     }
 
     public int getPosition() {
@@ -38,5 +44,9 @@ public class Car {
         int randomNumber = this.getRandomNumber();
         boolean isMoveCar = this.isMoveCar(randomNumber);
         this.move(isMoveCar);
+    }
+
+    public String getName() {
+        return this.name;
     }
 }

@@ -86,4 +86,10 @@ class CarTest {
         car.move(isMoveCar);
         assertThat(car.getPosition()).isEqualTo(1);
     }
+
+    @Test
+    void setCarName() {
+        car = new Car("jojo");
+        assertThat(car.getName()).isEqualTo("jojo");
+    }
 }
