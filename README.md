@@ -7,3 +7,15 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+
+## [step2] 자동차 경주
+### 기능 구현 목록
+* 사용자에게 2개의 입력을 받는다.
+    1. 몇대의 자동차를 사용할 것인지
+    2. 몇번의 이동이 필요한지
+    3. 숫자가 아닌 입력에 대해 NumberFormatException을 발생시킨다.
+* 입력받은 횟수에 따라 반복하며, random값을 구한다.
+* 구한 random값이 4이상인지 판단한다.
+* 전진한다.
+* 자동차의 상태를 출력한다.
