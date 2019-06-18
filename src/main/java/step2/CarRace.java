@@ -2,16 +2,17 @@ package step2;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class CarRace {
 
     private List<Car> cars;
     private int numberOfTrials;
+    private RaceExecutor raceExecutor;
 
     public CarRace(int numberOfCars, int numberOfTrials) {
         this.cars = makeCars(numberOfCars);
         this.numberOfTrials = numberOfTrials;
+        this.raceExecutor = new RaceExecutor(this.cars); //TODO : RaceExcutor는 CarRace가 생성되어야만 필요하니까 이렇게 생성했는데 문제없을까요?
     }
 
     private List<Car> makeCars(int numberOfCars) {
@@ -22,39 +23,8 @@ public class CarRace {
         return cars;
     }
 
-    private void executeTrials() {
-        for(int i=0; i<numberOfTrials; i++) {
-            moveCars();
-        }
-    }
-
-    private OutputView moveCars() {
-        for(Car car : this.cars) {
-            decideMoveOrNot(car);
-        }
-        return new OutputView(this.cars);
-    }
-
-    private void decideMoveOrNot(Car car) {
-        if(canMove()) {
-            car.move();
-        }
-    }
-
-    private boolean canMove() {
-        if(getRandomNumber() >= 4) {
-            return true;
-        }
-        return false;
-    }
-
-    private int getRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(10);
-    }
-
     public void raceStart() {
         System.out.println("실행 결과");
-        executeTrials();
+        raceExecutor.executeTrials(numberOfTrials);
     }
 }
