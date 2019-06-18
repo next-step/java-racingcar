@@ -1,11 +1,11 @@
 package com.jaeyeonling.racingcar.domain;
 
-public class RacingStrategy extends StandardOverMoveStrategy {
+public class RacingStrategy implements MoveStrategy {
 
     static final int MORE_THAN_MOVING_CONDITION = 4;
 
     @Override
-    protected int getStandard() {
-        return MORE_THAN_MOVING_CONDITION;
+    public boolean isMove(final int condition) {
+        return condition >= MORE_THAN_MOVING_CONDITION;
     }
 }
