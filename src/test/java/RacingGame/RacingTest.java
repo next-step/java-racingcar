@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingTest {
 
-    Racing racing;
+    private Racing racing;
 
     @BeforeEach
     void setUp() {

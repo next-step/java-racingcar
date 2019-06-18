@@ -7,10 +7,12 @@ public class Racing {
 
     private int time;
     private List<Car> cars;
+    private OutputView outputView;
 
     public Racing(int time, int inputCountCar) {
         this.time = time;
         this.cars = this.arrayWithCar(inputCountCar);
+        this.outputView = new OutputView();
     }
 
     public int getTime() {
@@ -39,6 +41,7 @@ public class Racing {
     public void raceStart() {
         for (int i = 0; i < this.time; i++) {
             this.raceCarMoveLoop();
+            outputView.printRace(this.cars);
         }
     }
 }

@@ -9,8 +9,5 @@ public class MainController {
 
         Racing racing = new Racing(inputTime, inputCountCar);
         racing.raceStart();
-
-        OutputView outputView = new OutputView();
-        outputView.printRace(racing.getCars());
     }
 }

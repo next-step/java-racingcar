@@ -8,6 +8,7 @@ public class OutputView {
         for (Car car : cars) {
             printPosition(car.getPosition());
         }
+        System.out.println();
     }
 
     private void printPosition(int position) {
