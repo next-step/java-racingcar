@@ -12,18 +12,20 @@ package com.iksoo.step3;
 
 public class Car {
     private String carName;
-    public int carPosition;
+    public String carPosition;
+    public int maxDistance;
 
     Car(String Name) {
         this.carName = Name;
-        this.carPosition = 0;
+        this.carPosition = "";
+        this.maxDistance = 0;
     }
 
     public String getCarName() {
         return this.carName;
     }
 
-    public int getCarPosition() {
+    public String getCarPosition() {
         return this.carPosition;
     }
 }
