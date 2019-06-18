@@ -136,9 +136,10 @@ public class RacingGameTest {
                 .nameOfParticipants(nameOfParticipants)
                 .build();
         final Car victor = new Car("Victor", Car.DEFAULT_POSITION + moveCount + 1, moveStrategy);
-        racingGameOption.getParticipants().add(victor);
 
         // when
+        racingGameOption.getParticipants().add(victor);
+
         final RacingGame racingGame = new RacingGame(racingGameOption);
         for (int i = Car.DEFAULT_POSITION; i < moveCount; i++) {
             racingGame.move();
