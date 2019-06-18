@@ -7,15 +7,16 @@ public class Racing {
     private int time;
     private List<Car> cars;
 
+    public Racing(int time, int inputCountCar) {
+        this.time = time;
+        this.cars = this.arrayWithCar(inputCountCar);
+    }
+
     public int getTime() {
         return time;
     }
 
-    public void setTime(int time) {
-        this.time = time;
-    }
-
-    public List<Car> arrayWithCar(int carCount) {
+    private List<Car> arrayWithCar(int carCount) {
         ArrayList<Car> cars = new ArrayList<>(carCount);
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
@@ -28,12 +29,8 @@ public class Racing {
         return cars;
     }
 
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
-    }
-
     public void raceCarMoveLoop() {
-        for (Car car : this.cars){
+        for (Car car : this.cars) {
             car.nextRace();
         }
     }

@@ -14,49 +14,39 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingTest {
 
     Racing racing;
-    List<Car> cars;
 
     @BeforeEach
     void setUp() {
-        racing = new Racing();
-
-        cars = new ArrayList<>();
-        cars.add(new Car());
-        cars.add(new Car());
-        cars.add(new Car());
+        racing = new Racing(5,5);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
-    void setTime(int time) {
-        racing.setTime(time);
-        assertThat(racing.getTime()).isEqualTo(time);
+    void setTime(int input) {
+        racing = new Racing(input, 0);
+        assertThat(racing.getTime()).isEqualTo(input);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
     void makeCarList(int carCount) {
-        List<Car> cars = racing.arrayWithCar(carCount);
-        assertThat(cars.size()).isEqualTo(carCount);
-        assertThat(cars.get(0).getPosition()).isEqualTo(0);
+        racing = new Racing(0, carCount);
+        assertThat(racing.getCars().size()).isEqualTo(carCount);
+        assertThat(racing.getCars().get(0).getPosition()).isEqualTo(0);
     }
 
     @Test
     void setCars() {
-        racing.setCars(this.cars);
-        assertThat(racing.getCars().size()).isEqualTo(3);
+        assertThat(racing.getCars().size()).isEqualTo(5);
     }
 
     @Test
     void raceCarMoveLoop() {
-        racing.setCars(this.cars);
         racing.raceCarMoveLoop();
     }
 
     @Test
     void raceStart() {
-        racing.setCars(this.cars);
-        racing.setTime(9);
         racing.raceStart();
     }
 }
