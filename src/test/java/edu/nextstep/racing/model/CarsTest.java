@@ -35,7 +35,7 @@ class CarsTest {
     @Test
     void 리스트파라미터를통해_생성된_자동차그룹안_자동차들의_이름가져오기() {
         Cars cars = new Cars(carName);
-        assertThat(cars.getCars.get(0).getCarName()).isEqualTo("TEST2");
+        assertThat(cars.getCars().get(0).getCarName()).isEqualTo("TEST1");
     }
 
 }
