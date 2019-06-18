@@ -3,6 +3,7 @@ package racing;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racing.common.RacingSettings;
 import racing.vo.Car;
 
 class CarTest {
@@ -16,7 +17,7 @@ class CarTest {
     @Test
     void constructorTest() {
         Assertions.assertThat(car.getName()).isEqualTo(TestData.DEFAULT_CAR_NAME);
-        Assertions.assertThat(car.getPosition()).isEqualTo(Car.DEFAULT_POSITION);
+        Assertions.assertThat(car.getPosition()).isEqualTo(RacingSettings.MOVING_START_COUNT.getValue());
     }
     
     @Test

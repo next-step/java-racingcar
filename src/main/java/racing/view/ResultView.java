@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
 public class ResultView {
     public void printMovingStatus(Cars cars) {
         cars.getCars().forEach(car -> {
-            System.out.print(car.getName() + CAR_STATUS_SEPARATOR.getValue());
+            System.out.print(car.getName() + CAR_STATUS_SEPARATOR.getStr());
             IntStream.range(MOVING_START_COUNT.getValue(), car.getPosition())
                 .forEach(i -> System.out.print(CAR_MOVING_SIGN.getStr()));
             System.out.println();

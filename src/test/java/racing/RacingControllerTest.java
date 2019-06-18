@@ -5,9 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racing.common.ErrorMessage;
 import racing.controller.RacingController;
-import racing.view.InputView;
 import racing.view.RacingView;
-import racing.view.ResultView;
 
 class RacingControllerTest {
     private RacingController controller;    
