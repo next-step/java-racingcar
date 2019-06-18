@@ -1,6 +1,6 @@
 package study.racingcar;
 
-import study.racingcar.condition.RacingGameCondition;
+import study.racingcar.model.RacingGameInfo;
 import study.racingcar.input.ConsoleInputView;
 import study.racingcar.input.InputView;
 import study.racingcar.output.ConsoleGameStatusResultView;
@@ -14,7 +14,7 @@ import study.racingcar.output.ResultView;
 public class RacingGameStater {
     public static void main(String[] args) {
         InputView inputView = new ConsoleInputView();
-        RacingGameCondition gameCondition = inputView.questionAndAnswer();
+        RacingGameInfo gameCondition = inputView.questionAndAnswer();
 
         ResultView resultView = new ConsoleGameStatusResultView();
 

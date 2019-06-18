@@ -1,6 +1,6 @@
 package study.racingcar.input;
 
-import study.racingcar.condition.RacingGameCondition;
+import study.racingcar.model.RacingGameInfo;
 
 import java.util.Scanner;
 
@@ -14,7 +14,7 @@ public class ConsoleInputView implements InputView {
     private static final String SECOND_QUESTION = "시도할 회수는 몇 회 인가요?";
 
     @Override
-    public RacingGameCondition questionAndAnswer() {
+    public RacingGameInfo questionAndAnswer() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println(FIRST_QUESTION);
@@ -23,6 +23,6 @@ public class ConsoleInputView implements InputView {
         System.out.println(SECOND_QUESTION);
         int moveCarTryLimit = scanner.nextInt();
 
-        return new RacingGameCondition(countOfRacingCar, moveCarTryLimit);
+        return new RacingGameInfo(countOfRacingCar, moveCarTryLimit);
     }
 }
