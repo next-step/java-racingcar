@@ -5,6 +5,7 @@ import step2.utils.NumberGenerator;
 public class CarRace {
 
     private Cars cars;
+    private NumberGenerator numberGenerator;
 
     private CarRace(Cars cars) {
         this.cars = cars;
@@ -14,8 +15,8 @@ public class CarRace {
         return new CarRace(Cars.makeCars(numberOfCars));
     }
 
-    public Cars executeTrials(NumberGenerator numberGenerator) {
-        int randomNumber = numberGenerator.getRandomNumber();
+    public Cars executeTrials() {
+        int randomNumber = this.numberGenerator.getRandomNumber();
         return cars.moveCars(randomNumber);
     }
 
