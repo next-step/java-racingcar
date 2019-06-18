@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class RacingGame {
     private int timeOfGame; // 자동차 경주 횟수
     private int numberOfCar;    // 자동차 대수
@@ -35,11 +37,44 @@ public class RacingGame {
         }
     }
 
+    public String[] getCarStatus() {
+        return carStatus;
+    }
+
+    // 생성된 랜덤값이 4이상일때 자동차 위치를 전진하는 함수
+    public void move(int position) {
+        carPositions[position] += 1;
+        carStatus[position] += "-";
+
+    }
+
+    // 랜덤값 생성 및 자동차 경주 결과를 호출하는 함수
+    public void makeRandomNumberAndGameResult(RacingGame racingGame) {
+        Random generatorNumber = new Random();
+        ResultView resultView = new ResultView(); // 자동차 경주 결과의 출력을 위한 객체 생성
+        int result;
+
+        System.out.println("실행 결과");
+
+        for (int i = 0; i < racingGame.getTime(); ++i) {
+            for (int j = 0; j < racingGame.getNumberOfCar(); ++j) {
+
+                result = generatorNumber.nextInt(10); // 랜덤값 생성
+                if (result >= 4) {
+                    move(j); // 자동차 위치 전진 함수 호출
+                }
+                resultView.disPlayRacingResult(j, racingGame.getCarStatus()); //자동차 경주 결과 출력
+            }
+            System.out.println("\n");
+        }
+    }
+
     public static void main(String[] args) {
         RacingGame racingGame = new RacingGame();
         InputView inputView = new InputView(); // 사용자 입력을 위한 객체 생성
 
         inputView.userInput(racingGame);  //사용자 입력 실행
         racingGame.gameInitialSet(racingGame.getNumberOfCar()); // 유저 입력값을 기반으로 최초 설정값 세팅
+        racingGame.makeRandomNumberAndGameResult(racingGame); //Random 값 생성 및 자동차 상태 출력
     }
 }
