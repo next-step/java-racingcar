@@ -53,4 +53,12 @@ public class InputRacingInfo {
 
         return num;
     }
+
+    public String[] getCarTotalNames() {
+        return this.carTotalNames;
+    }
+
+    public int getTryOfNumbers() {
+        return this.tryOfNumbers;
+    }
 }
