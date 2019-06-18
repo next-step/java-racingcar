@@ -59,12 +59,12 @@ class RacingTest {
     void maxPosition() {
         racing.raceStart();
         int maxPosition = racing.maxPosition();
-        System.out.println(maxPosition);
+        assertThat(maxPosition).isNotZero();
     }
 
     @Test
     void winners() {
-        List<Car> winners = racing.winners();
+        List<String> winners = racing.winners();
         assertThat(winners.size()).isNotZero();
     }
 }

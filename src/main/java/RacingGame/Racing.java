@@ -51,10 +51,10 @@ public class Racing {
         return max.get().getPosition();
     }
 
-    public List<Car> winners() {
+    public List<String> winners() {
         return cars.stream().filter(car -> {
             int maxPosition = maxPosition();
             return car.getPosition() == maxPosition;
-        }).collect(Collectors.toList());
+        }).map(Car::getName).collect(Collectors.toList());
     }
 }
