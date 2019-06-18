@@ -1,6 +1,7 @@
 /*
  * ClassName : Car.java
 <<<<<<< HEAD
+<<<<<<< HEAD
  *
  * Version : 1.0
  *
@@ -10,17 +11,25 @@
  *
 =======
  * 
+=======
+ *
+>>>>>>> fix(Car) : carPosition 변수의 자료형 변경 int->String
  * Version : 1.0
- * 
+ *
  * Create Date : 2019.06.17
- * 
+ *
  * Creator : 신익수
+<<<<<<< HEAD
  * 
 >>>>>>> feat(Car) : Car 클래스파일 생성
+=======
+ *
+>>>>>>> fix(Car) : carPosition 변수의 자료형 변경 int->String
  */
 package com.iksoo.step3;
 
 public class Car {
+<<<<<<< HEAD
     private int inning;
     private String carName;
     private String[] carPosition;
@@ -63,5 +72,26 @@ public class Car {
         }
 
         System.out.println(this.carName + " : " + result);
+=======
+    private String carName;
+    private String carPosition;
+    private static final int GOSTOP_CRITERION = 4;
+
+    Car(String Name) {
+        this.carName = Name;
+        this.carPosition = "";
+    }
+
+    public boolean judgeGoOrStop(int number) {
+        return number >= GOSTOP_CRITERION ? true : false;
+    }
+
+    public String getCarName() {
+        return this.carName;
+    }
+
+    public String getCarPosition() {
+        return this.carPosition;
+>>>>>>> fix(Car) : carPosition 변수의 자료형 변경 int->String
     }
 }
