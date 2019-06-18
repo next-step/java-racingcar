@@ -1,14 +1,11 @@
 package racing.vo;
 
 public class Car {
-    public final static int DEFAULT_POSITION = 0;
-    
     private String name;
     private int position;
     
     public Car(String name) {
         this.name = name;
-        this.position = DEFAULT_POSITION;
     }
     
     public Car(String name, int position) {

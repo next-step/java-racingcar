@@ -36,7 +36,7 @@ public class RacingController {
         Cars winners = racingManager.getWinners();
         String carNames = winners.getCars().stream()
             .map(Car::getName)
-            .reduce((name1, name2) -> name1 += "," + name2)
+            .reduce((name1, name2) -> name1 += RacingSettings.CAR_NAME_SEPARATOR.getStr() + name2)
             .get();
         racingView.printWinner(carNames);
     }
