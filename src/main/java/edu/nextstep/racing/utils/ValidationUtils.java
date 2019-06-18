@@ -20,19 +20,19 @@ public final class ValidationUtils {
     }
 
     public static void checkNull(Object obj) {
-        if(Objects.isNull(obj)) {
+        if (Objects.isNull(obj)) {
             throw new IllegalArgumentException("Object is NULL" + obj);
         }
     }
 
     public static void checkEmpty(Object obj) {
-        if("".equals(obj)) {
+        if ("".equals(obj)) {
             throw new IllegalArgumentException("Object is Empty" + obj);
         }
     }
 
     public static void checkMinValue(int minValue, int originValue) {
-        if(minValue > originValue) {
+        if (minValue > originValue) {
             throw new IllegalArgumentException(minValue + "보다 " + originValue + " 가 더 작습니다.");
         }
     }

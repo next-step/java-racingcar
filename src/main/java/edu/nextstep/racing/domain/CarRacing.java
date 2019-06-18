@@ -5,9 +5,7 @@ import edu.nextstep.racing.model.Cars;
 import edu.nextstep.racing.utils.NumberUtils;
 import edu.nextstep.racing.view.ResultView;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 /**

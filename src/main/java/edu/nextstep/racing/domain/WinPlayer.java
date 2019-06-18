@@ -28,10 +28,6 @@ public class WinPlayer {
         return this.winner;
     }
 
-    public int getWinScore() {
-        return this.winner.getWinScore();
-    }
-
     public void doWinnerCheck() {
         calculateWinScore(this.winner.getWinners());
 
