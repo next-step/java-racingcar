@@ -9,13 +9,13 @@ public class Cars {
 
   private List<Car> cars = new ArrayList<>();
 
-  public Cars(int numberOfCar) {
-    makeCars(numberOfCar);
+  public Cars(String[] carNames) {
+    makeCars(carNames);
   }
 
-  private void makeCars(int numberOfCar) {
-    for (int i = 0; i < numberOfCar; i++) {
-      cars.add(i, new Car());
+  private void makeCars(String[] carNames) {
+    for (int i = 0; i < carNames.length; i++) {
+      cars.add(i, new Car(carNames[i]));
     }
   }
 

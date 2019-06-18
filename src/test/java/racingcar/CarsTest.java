@@ -9,11 +9,11 @@ import org.junit.jupiter.api.Test;
 public class CarsTest {
 
   private Cars cars;
-  private int numberOfCar = 5;
+  private String[] carNames = {"name1", "name2", "name3"};
 
   @BeforeEach
   public void setup() {
-    cars = new Cars(5);
+    cars = new Cars(new String[]{});
   }
 
   @Test
@@ -23,7 +23,7 @@ public class CarsTest {
 
   @Test
   public void 자동자수만큼_위치값이_리턴된다() {
-    assertThat(cars.moveCars().getCarPosition()).hasSize(numberOfCar);
+    assertThat(cars.moveCars().getCarPosition()).hasSize(carNames.length);
   }
 
 

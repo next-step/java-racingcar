@@ -4,12 +4,12 @@ public class RacingGame {
 
   private Cars cars;
 
-  public RacingGame(int numberOfCar) {
-    initCars(numberOfCar);
+  public RacingGame(String[] carNames) {
+    initCars(carNames);
   }
 
-  private void initCars(int numberOfCar) {
-    cars = new Cars(numberOfCar);
+  private void initCars(String[] carNames) {
+    cars = new Cars(carNames);
   }
 
   public void start(int numberOfTimes, Record record) {

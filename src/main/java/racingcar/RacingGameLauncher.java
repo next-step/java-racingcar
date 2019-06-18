@@ -9,12 +9,13 @@ public class RacingGameLauncher {
   public static void start() {
     Record record = new Record();
 
-    InputView.askNumberOfCar();
-    int numberOfCar = scanner.nextInt();
+    InputView.askNameOfCars();
+    String inputCarNames = scanner.next();
+    String[] carNames = Parser.carNameParse(inputCarNames);
     InputView.askNumberOfTimes();
     int numberOfTimes = scanner.nextInt();
 
-    RacingGame racingGame = new RacingGame(numberOfCar);
+    RacingGame racingGame = new RacingGame(carNames);
     racingGame.start(numberOfTimes, record);
 
     ResultView.display(record);
