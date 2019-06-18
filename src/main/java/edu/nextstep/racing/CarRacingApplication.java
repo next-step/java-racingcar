@@ -3,6 +3,7 @@ package edu.nextstep.racing;
 import edu.nextstep.racing.domain.CarRacing;
 import edu.nextstep.racing.domain.RoundGame;
 import edu.nextstep.racing.domain.WinPlayer;
+import edu.nextstep.racing.model.Car;
 import edu.nextstep.racing.model.Cars;
 import edu.nextstep.racing.model.Race;
 import edu.nextstep.racing.model.Winner;
@@ -55,7 +56,8 @@ public class CarRacingApplication {
         this.roundGame = new RoundGame(race);
 
         for (int i = 0; i < this.roundGame.getGameTime(); i++) {
-            this.carRacing.starRoundGame();
+            List<Car> viewCarList = this.carRacing.starRoundGame();
+            output.resultView(viewCarList);
         }
         this.winPlayer = new WinPlayer(new Winner(this.carRacing.finishGame().getCars(), INIT_SCORE));
         this.winPlayer.doWinnerCheck();

@@ -20,8 +20,6 @@ import java.util.stream.Collectors;
  */
 public class CarRacing {
 
-    private ResultView view = new ResultView();
-
     private Cars player;
     private static final int MOVE_LIMIT_COUNT_FLAG = 4;
 
@@ -33,13 +31,13 @@ public class CarRacing {
         this.player = player;
     }
 
-    public void starRoundGame() {
+    public List<Car> starRoundGame() {
         List<Car> carList = this.player.getCars().stream()
                 .peek(car -> doMoveCheck(car))
                 .collect(Collectors.toList());
 
         this.player.setCars(carList);
-        view.resultView(carList);
+        return carList;
     }
 
     public Cars finishGame() {

@@ -22,7 +22,7 @@ public class Car {
     private static int autoIncrease = 0;
 
     public Car(String name) {
-        ValidationUtils.checkNull(name);
+        ValidationUtils.checkObject(name);
         this.moveIndex = INIT_POSITION;
         this.carName = name;
         this.carNumber = autoIncrease++;

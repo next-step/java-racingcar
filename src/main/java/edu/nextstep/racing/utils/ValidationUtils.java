@@ -32,7 +32,7 @@ public final class ValidationUtils {
     }
 
     public static void checkMinValue(int minValue, int originValue) {
-        if (minValue > originValue) {
+        if (minValue >= originValue) {
             throw new IllegalArgumentException(minValue + "보다 " + originValue + " 가 더 작습니다.");
         }
     }
