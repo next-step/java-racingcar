@@ -29,4 +29,11 @@ class RoundGameTest {
     void 게임경기_횟수_가져오기() {
         assertThat(game.getGameTime()).isEqualTo(10);
     }
+
+    @Test
+    void 남은_게임라운드_가져오기() {
+        assertThat(game.getRemainTime()).isEqualTo(10);
+        game.doRace();
+        assertThat(game.getRemainTime()).isEqualTo(9);
+    }
 }
