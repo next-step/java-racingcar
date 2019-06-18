@@ -13,9 +13,9 @@ public class StringCalculatorTest {
     @DisplayName("계산기 계산 값을 비교")
     void calculate() {
         // given and expect
-        assertThat(StringCalculator.of("2 + 3 * 4 / 2").calculate()).isEqualTo(10);
-        assertThat(StringCalculator.of("2 + 3 * 4 / 1").calculate()).isEqualTo(20);
-        assertThat(StringCalculator.of("1 + 3 * 4 / 2").calculate()).isEqualTo(8);
+        assertThat(StringCalculator.calculate(Input.of("2 + 3 * 4 / 2"))).isEqualTo(10);
+        assertThat(StringCalculator.calculate(Input.of("2 + 3 * 4 / 1"))).isEqualTo(20);
+        assertThat(StringCalculator.calculate(Input.of("1 + 3 * 4 / 2"))).isEqualTo(8);
     }
 
 
@@ -28,7 +28,7 @@ public class StringCalculatorTest {
     })
     void throwIllegalArgumentExceptionWhenInputIsNotSignForMath(final String input) {
         // given and expect
-        assertThatThrownBy(() -> StringCalculator.of(input).calculate()).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> StringCalculator.calculate(Input.of(input))).isInstanceOf(IllegalArgumentException.class);
     }
 
 }

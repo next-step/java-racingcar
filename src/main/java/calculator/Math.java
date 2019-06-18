@@ -21,19 +21,20 @@ public enum Math {
         this.expression = expression;
     }
 
-    private String getSign() {
-        return this.sign;
-    }
 
-    public Long calculate(final Long arg1, final Long arg2) {
+    private Long calculate(final Long arg1, final Long arg2) {
         return expression.apply(arg1, arg2);
     }
 
-    public static Math createFor(final String sign) {
+    private static Math getBySign(final String sign) {
         return Arrays.stream(Math.values())
-                .filter(math -> StringUtils.equals(math.getSign(), sign))
+                .filter(math -> StringUtils.equals(math.sign, sign))
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
+    }
+
+    public static String getBySignAndCalculate(final Long arg1, final String sign, final Long arg2) {
+        return getBySign(sign).calculate(arg1, arg2).toString();
     }
 
 }
