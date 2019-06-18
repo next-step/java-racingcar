@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import racingcar.model.CarName;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,12 +10,15 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 class RacingGameTest {
-    private List<String> carNames;
+    private List<CarName> carNames;
     private RacingGame racingGame;
 
     @BeforeEach
     void setUp() {
-        carNames = Arrays.asList("yong", "pobi", "crong", "honux");
+        carNames = Arrays.asList(CarName.valueOf("yong")
+                , CarName.valueOf("pobi")
+                , CarName.valueOf("crong")
+                , CarName.valueOf("honux"));
         racingGame = new RacingGame(carNames);
     }
 

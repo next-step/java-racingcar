@@ -3,39 +3,39 @@ package racingcar.model;
 import java.util.Objects;
 
 public class CarInformation {
-    private String name;
+    private CarName name;
     private Position position;
     private DrivingRule drivingRule;
 
-    private CarInformation(String name, Position position, DrivingRule drivingRule) {
+    private CarInformation(CarName name, Position position, DrivingRule drivingRule) {
         this.name = name;
         this.position = position;
         this.drivingRule = drivingRule;
     }
 
-    public static CarInformation create(String name) {
+    public static CarInformation create(CarName name) {
         DrivingRule drivingRule = RacingDrivingRule.createDefault();
 
         return createWithRule(name, drivingRule);
     }
 
-    public static CarInformation createWithRule(String name, DrivingRule drivingRule) {
+    public static CarInformation createWithRule(CarName name, DrivingRule drivingRule) {
         Position position = Position.valueOf(0);
 
         return new CarInformation(name, position, drivingRule);
     }
 
-    public static CarInformation createWithPosition(String name, Position position) {
+    public static CarInformation createWithPosition(CarName name, Position position) {
         DrivingRule drivingRule = RacingDrivingRule.createDefault();
 
         return new CarInformation(name, position, drivingRule);
     }
 
-    public static CarInformation createWithPositionAndRule(String name, Position position, DrivingRule drivingRule) {
+    public static CarInformation createWithPositionAndRule(CarName name, Position position, DrivingRule drivingRule) {
         return new CarInformation(name, position, drivingRule);
     }
 
-    public String getName() {
+    public CarName getName() {
         return name;
     }
 

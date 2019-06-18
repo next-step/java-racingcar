@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.model.CarInformation;
+import racingcar.model.CarName;
 import racingcar.model.Cars;
 import racingcar.model.Referee;
 
@@ -9,7 +10,7 @@ import java.util.List;
 public class RacingGame {
     private Cars cars;
 
-    public RacingGame(List<String> carNames) {
+    public RacingGame(List<CarName> carNames) {
         this.cars = Cars.createWithNames(carNames);
     }
 

@@ -17,9 +17,9 @@ class RefereeTest {
         DrivingRule alwaysTrueRule = () -> true;
         DrivingRule alwaysFalseRule = () -> false;
 
-        Car car1 = Car.createWithDrivingRule("yong", alwaysTrueRule);
-        Car car2 = Car.createWithDrivingRule( "pobi", alwaysTrueRule);
-        Car car3 = Car.createWithDrivingRule( "crong", alwaysFalseRule);
+        Car car1 = Car.createWithDrivingRule(CarName.valueOf("yong"), alwaysTrueRule);
+        Car car2 = Car.createWithDrivingRule(CarName.valueOf("pobi"), alwaysTrueRule);
+        Car car3 = Car.createWithDrivingRule(CarName.valueOf("crong"), alwaysFalseRule);
 
         carList.add(car1);
         carList.add(car2);
@@ -33,8 +33,8 @@ class RefereeTest {
         cars.move();
         cars.move();
 
-        CarInformation expectedWinner1 = CarInformation.create("yong");
-        CarInformation expectedWinner2 = CarInformation.create("pobi");
+        CarInformation expectedWinner1 = CarInformation.create(CarName.valueOf("yong"));
+        CarInformation expectedWinner2 = CarInformation.create(CarName.valueOf("pobi"));
 
         assertThat(Referee.judgeWinners(cars)).containsExactly(expectedWinner1, expectedWinner2);
     }

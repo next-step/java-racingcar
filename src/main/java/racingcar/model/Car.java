@@ -9,12 +9,12 @@ public class Car {
         this.carInformation = carInformation;
     }
 
-    public static Car create(String name) {
+    public static Car create(CarName name) {
         CarInformation carInformation = CarInformation.create(name);
         return new Car(carInformation);
     }
 
-    public static Car createWithDrivingRule(String name, DrivingRule drivingRule) {
+    public static Car createWithDrivingRule(CarName name, DrivingRule drivingRule) {
         if (drivingRule == null) {
             return create(name);
         }
@@ -30,7 +30,7 @@ public class Car {
             Position step = Position.valueOf(1);
             position = Position.add(position, step);
 
-            String name = carInformation.getName();
+            CarName name = carInformation.getName();
             carInformation = CarInformation.createWithPositionAndRule(name, position, drivingRule);
         }
 
@@ -38,7 +38,7 @@ public class Car {
     }
 
     public CarInformation getInformation() {
-        String name = carInformation.getName();
+        CarName name = carInformation.getName();
         Position position = carInformation.getPosition();
 
         return CarInformation.createWithPosition(name, position);

@@ -15,10 +15,10 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public static Cars createWithNames(List<String> names) {
+    public static Cars createWithNames(List<CarName> names) {
         List<Car> cars = new ArrayList<>();
 
-        for (String name : names) {
+        for (CarName name : names) {
             Car car = Car.create(name);
             cars.add(car);
         }

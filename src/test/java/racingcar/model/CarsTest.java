@@ -11,7 +11,10 @@ import static org.assertj.core.api.Assertions.*;
 class CarsTest {
     @Test
     void Cars는_Car의_이름만으로_생성할_수_있다() {
-        List<String> names = Arrays.asList("yong", "pobi", "crong", "honux");
+        List<CarName> names = Arrays.asList(CarName.valueOf("yong")
+                , CarName.valueOf("pobi")
+                , CarName.valueOf("crong")
+                , CarName.valueOf("honux"));
         Cars cars = Cars.createWithNames(names);
 
         assertThat(cars).isInstanceOf(Cars.class);
@@ -23,9 +26,9 @@ class CarsTest {
         DrivingRule alwaysTrueRule = () -> true;
         DrivingRule alwaysFalseRule = () -> true;
 
-        Car car1 = Car.createWithDrivingRule("yong", alwaysTrueRule);
-        Car car2 = Car.createWithDrivingRule( "pobi", alwaysTrueRule);
-        Car car3 = Car.createWithDrivingRule( "crong", alwaysFalseRule);
+        Car car1 = Car.createWithDrivingRule(CarName.valueOf("yong"), alwaysTrueRule);
+        Car car2 = Car.createWithDrivingRule(CarName.valueOf("pobi"), alwaysTrueRule);
+        Car car3 = Car.createWithDrivingRule(CarName.valueOf("crong"), alwaysFalseRule);
 
         carList.add(car1);
         carList.add(car2);
@@ -37,7 +40,10 @@ class CarsTest {
 
     @Test
     void Cars는_여러대의_차를_움직일_수_있다() {
-        List<String> names = Arrays.asList("yong", "pobi", "crong", "honux");
+        List<CarName> names = Arrays.asList(CarName.valueOf("yong")
+                , CarName.valueOf("pobi")
+                , CarName.valueOf("crong")
+                , CarName.valueOf("honux"));
         Cars cars = Cars.createWithNames(names);
         List<CarInformation> positions = cars.move();
 
