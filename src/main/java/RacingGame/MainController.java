@@ -9,5 +9,8 @@ public class MainController {
 
         Racing racing = new Racing(inputTime, Util.stringSplitToList(inputNames, ","));
         racing.raceStart();
+
+        OutputView outputView = new OutputView();
+        outputView.printWinners(Util.joinListString(racing.getWinnerNames(), ", "));
     }
 }

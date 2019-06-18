@@ -51,7 +51,7 @@ public class Racing {
         return max.get().getPosition();
     }
 
-    public List<String> winners() {
+    public List<String> getWinnerNames() {
         return cars.stream().filter(car -> {
             int maxPosition = maxPosition();
             return car.getPosition() == maxPosition;

@@ -64,7 +64,7 @@ class RacingTest {
 
     @Test
     void winners() {
-        List<String> winners = racing.winners();
+        List<String> winners = racing.getWinnerNames();
         assertThat(winners.size()).isNotZero();
     }
 }
