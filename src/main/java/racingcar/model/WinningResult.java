@@ -29,8 +29,8 @@ public class WinningResult {
         }
     }
 
-    public Position getPosition() {
-        return position;
+    public int getPosition() {
+        return position.parseInt();
     }
 
     public List<String> getNames() {

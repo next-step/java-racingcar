@@ -63,6 +63,10 @@ public class Position implements Comparable<Position> {
         return Integer.compare(position, other.position);
     }
 
+    public int getPosition() {
+        return position;
+    }
+
     @Override
     public String toString() {
         return "Position{" + "position=" + position + '}';
