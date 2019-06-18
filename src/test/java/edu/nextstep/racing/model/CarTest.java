@@ -1,5 +1,6 @@
 package edu.nextstep.racing.model;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,20 +17,20 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 class CarTest {
 
-    private Car car = new Car();
+    private Car car;
 
-    @Test
-    void 이동() {
-        assertThat(car.move()).isEqualTo(1);
-        assertThat(car.move()).isEqualTo(2);
-        assertThat(car.move()).isEqualTo(3);
+    @BeforeEach
+    void 사전설정() {
+        car = new Car("TEST");
     }
 
     @Test
-    void 자동차_현재위치() {
-        car.move();
-        assertThat(car.currentPosition()).isEqualTo(1);
-        car.move();
-        assertThat(car.currentPosition()).isEqualTo(2);
+    void 자동차_이름_가져오기() {
+        assertThat(car.getCarNumber()).isEqualTo("test");
+    }
+
+    @Test
+    void 자동차_생성번호_가져오기() {
+        assertThat(car.getCarNumber()).isEqualTo(0);
     }
 }
