@@ -99,12 +99,12 @@ public class RacingGameTest {
                 .nameOfParticipants(nameOfParticipants)
                 .build();
 
-        // when
         final RacingGame racingGame = new RacingGame(racingGameOption);
         for (int i = Car.DEFAULT_POSITION; i < moveCount; i++) {
             racingGame.move();
         }
 
+        // when
         final String victors = racingGame.getResult()
                 .getVictors()
                 .stream()
@@ -113,5 +113,39 @@ public class RacingGameTest {
 
         // then
         assertThat(nameOfParticipants).isEqualTo(victors);
+    }
+
+    @DisplayName("RacingGame 1명 우승 테스트")
+    @ParameterizedTest
+    @CsvSource({
+            "'a,b,c,d,e',4",
+            "'a,b,c,d,e',6",
+            "'a,b,c,d,e',5",
+            "'a,b,c,d,e',3",
+            "'a,b,c,d,e',346",
+            "'a,b,c,d,e',45",
+            "'a,b,c,d,e',454"
+    })
+    void oneVictory(String nameOfParticipants,
+                    int moveCount) {
+        // given
+        final MoveStrategy moveStrategy = i -> true;
+        final RacingGameOption racingGameOption = RacingGameOption.builder()
+                .moveStrategy(moveStrategy)
+                .movingCount(moveCount)
+                .nameOfParticipants(nameOfParticipants)
+                .build();
+        final Car victor = new Car("Victor", Car.DEFAULT_POSITION + moveCount + 1, moveStrategy);
+        racingGameOption.getParticipants().add(victor);
+
+        // when
+        final RacingGame racingGame = new RacingGame(racingGameOption);
+        for (int i = Car.DEFAULT_POSITION; i < moveCount; i++) {
+            racingGame.move();
+        }
+
+        // then
+        assertThat(racingGame.getResult().getVictors().size()).isEqualTo(1);
+        assertThat(racingGame.getResult().getVictors().get(0)).isEqualTo(victor);
     }
 }
