@@ -12,25 +12,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingTest {
 
+    private final String INPUT_NAMES = "jojo,mike,brian,cell,chacha";
     private Racing racing;
 
     @BeforeEach
     void setUp() {
-        racing = new Racing(5,5);
+        racing = new Racing(5,this.INPUT_NAMES);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
     void setTime(int input) {
-        racing = new Racing(input, 0);
+        racing = new Racing(input, this.INPUT_NAMES);
         assertThat(racing.getTime()).isEqualTo(input);
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
-    void makeCarList(int carCount) {
-        racing = new Racing(0, carCount);
-        assertThat(racing.getCars().size()).isEqualTo(carCount);
+    @Test
+    void makeCarList() {
+        racing = new Racing(0, this.INPUT_NAMES);
+        assertThat(racing.getCars().size()).isEqualTo(5);
         assertThat(racing.getCars().get(0).getPosition()).isEqualTo(0);
     }
 
@@ -51,8 +51,12 @@ class RacingTest {
 
     @Test
     void splitStringNames() {
-        String names = "jojo,mike,brian,cell,chacha";
-        List<String> carNames = racing.splitCarNames(names);
+        List<String> carNames = racing.splitCarNames(this.INPUT_NAMES);
         assertThat(carNames).contains("jojo","mike","brian","cell","chacha");
+    }
+
+    @Test
+    void constructorRacing() {
+        racing = new Racing(0, this.INPUT_NAMES);
     }
 }

@@ -5,9 +5,9 @@ public class MainController {
     public static void main(String[] args) {
         InputView inputView = new InputView();
         int inputTime = inputView.countTime();
-        int inputCountCar = inputView.countCar();
+        String inputNames = inputView.inputNames();
 
-        Racing racing = new Racing(inputTime, inputCountCar);
+        Racing racing = new Racing(inputTime, inputNames);
         racing.raceStart();
     }
 }

@@ -10,9 +10,9 @@ public class Racing {
     private List<Car> cars;
     private OutputView outputView;
 
-    public Racing(int time, int inputCountCar) {
+    public Racing(int time, String inputCarNames) {
         this.time = time;
-        this.cars = this.arrayWithCar(inputCountCar);
+        this.cars = this.arrayWithCar(this.splitCarNames(inputCarNames));
         this.outputView = new OutputView();
     }
 
@@ -20,10 +20,10 @@ public class Racing {
         return time;
     }
 
-    private List<Car> arrayWithCar(int carCount) {
-        ArrayList<Car> cars = new ArrayList<>(carCount);
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+    private List<Car> arrayWithCar(List<String> carNames) {
+        ArrayList<Car> cars = new ArrayList<>();
+        for (String name : carNames) {
+            cars.add(new Car(name));
         }
 
         return cars;
