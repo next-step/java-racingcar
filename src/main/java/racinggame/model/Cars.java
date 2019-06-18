@@ -1,5 +1,7 @@
 package racinggame.model;
 
+import racinggame.util.RandomValueUtil;
+
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -16,9 +18,7 @@ public class Cars {
   }
 
   public void carsMove() {
-    cars.stream()
-        .filter(Car::isMove)
-        .forEach(Car::move);
+    cars.forEach(car -> car.move(RandomValueUtil.getRandomValue()));
   }
 
   public List<Integer> getCarsStatus() {
