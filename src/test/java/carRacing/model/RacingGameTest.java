@@ -42,6 +42,25 @@ class RacingGameTest {
     }
 
     @Test
+    @DisplayName("자동차 경주 자동차 이동할 수 없음")
+    void cannotMove() {
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("ferrari"));
+        cars.add(new Car("bmw"));
+        cars.add(new Car("audi"));
+        MockGamePoint mockGamePoint = new MockGamePoint(3); // 항상 Stop
+        RacingGame racingGame = new RacingGame(new RacingCarGroup(cars), mockGamePoint);
+
+
+        racingGame.race();
+        RacingCarGroup race = racingGame.race();
+        List<Car> racingCars = race.getRacingCars();
+        for (Car racingCar : racingCars) {
+            assertThat(racingCar.getPosition()).isEqualTo(0);
+        }
+    }
+
+    @Test
     @DisplayName("우승자 판별")
     void gameResult() {
 
