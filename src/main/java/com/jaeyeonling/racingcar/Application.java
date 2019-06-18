@@ -30,7 +30,7 @@ public class Application {
             viewRecorder.recode(racingGame);
         }
 
-        viewRecorder.recodeVictors(racingGame.getVictors());
+        viewRecorder.recodeVictors(racingGame.getResult().getVictors());
 
         ConsoleResultView.show(viewRecorder);
     }

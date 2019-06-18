@@ -104,7 +104,8 @@ public class RacingGameTest {
             racingGame.move();
         }
 
-        final String victors = racingGame.getVictors()
+        final String victors = racingGame.getResult()
+                .getVictors()
                 .stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(RacingGameOption.NAME_SEPARATOR));

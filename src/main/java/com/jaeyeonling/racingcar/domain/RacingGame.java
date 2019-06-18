@@ -5,7 +5,6 @@ import com.jaeyeonling.racingcar.utils.StringUtils;
 import com.jaeyeonling.racingcar.view.Visualizable;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGame implements Visualizable {
 
@@ -32,16 +31,12 @@ public class RacingGame implements Visualizable {
         return movedCount == option.getMovingCount();
     }
 
-    public List<Car> getVictors() {
+    public RacingGameResult getResult() {
         if (!isComplete()) {
             throw new IllegalStateException("결과가 나오지 않은 게임입니다.");
         }
 
-        final int victorPosition = getVictorPosition();
-
-        return getCars().stream()
-                .filter(car -> car.isMatchPosition(victorPosition))
-                .collect(Collectors.toUnmodifiableList());
+        return new RacingGameResult(getParticipants());
     }
 
     @Override
@@ -73,12 +68,5 @@ public class RacingGame implements Visualizable {
 
     private void moveCar(final Car car) {
         car.moveForward(RandomUtils.getIntWithBound(MOVING_RANDOM_BOUND));
-    }
-
-    private int getVictorPosition() {
-        return getCars().stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElse(Car.DEFAULT_POSITION);
     }
 }
