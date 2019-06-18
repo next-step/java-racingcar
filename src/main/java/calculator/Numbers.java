@@ -1,6 +1,5 @@
 package calculator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -8,7 +7,14 @@ import java.util.stream.Collectors;
 
 public class Numbers {
 
-  private List<Integer> numbers = new ArrayList<>();
+  private static final int LEFT_NUM_INDEX = 0;
+  private static final int RIGHT_NUM_INDEX = 1;
+  private static final int REQUIRED_FOR_CALCULATION_NUM = 2;
+  private static final int NUMBERS_DELETE_INDEX = 0;
+  private static final int RESULT_INSERT_INDEX = 0;
+  private static final int FINAL_RESULT_INDEX = 0;
+
+  private List<Integer> numbers;
 
   public Numbers(String[] numbers) {
     this.numbers = convertStringToInteger(separateNumbers(numbers));
@@ -21,7 +27,14 @@ public class Numbers {
   }
 
   public static Boolean isNumber(String value) {
+    if (isBlank(value)) {
+      return false;
+    }
     return Pattern.matches("^[0-9]*$", value);
+  }
+
+  private static boolean isBlank(String value) {
+    return value == null || "".equals(value);
   }
 
   private List<Integer> convertStringToInteger(List<String> numbers) {
@@ -30,15 +43,15 @@ public class Numbers {
   }
 
   public int leftValue() {
-    return numbers.get(0);
+    return numbers.get(LEFT_NUM_INDEX);
   }
 
   public int rightVale() {
-    return numbers.get(1);
+    return numbers.get(RIGHT_NUM_INDEX);
   }
 
   public boolean hasNumber() {
-    return numbers.size() >= 2;
+    return numbers.size() >= REQUIRED_FOR_CALCULATION_NUM;
   }
 
 
@@ -48,15 +61,15 @@ public class Numbers {
   }
 
   private void insertResult(int result) {
-    numbers.add(0, result);
+    numbers.add(RESULT_INSERT_INDEX, result);
   }
 
   private void deleteCalculatedNum() {
-    numbers.remove(0);
-    numbers.remove(0);
+    numbers.remove(NUMBERS_DELETE_INDEX);
+    numbers.remove(NUMBERS_DELETE_INDEX);
   }
 
   public int getResult() {
-    return numbers.get(0);
+    return numbers.get(FINAL_RESULT_INDEX);
   }
 }

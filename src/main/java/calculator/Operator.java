@@ -1,13 +1,13 @@
 package calculator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Operator {
 
-  private List<String> operators = new ArrayList<>();
+  private static final int PEEK_OPERATOR_INDEX = 0;
+  private List<String> operators;
 
   public Operator(String[] operators) {
 
@@ -20,10 +20,9 @@ public class Operator {
         .collect(Collectors.toList());
   }
 
-
   public String getOperator() {
-    String operator = operators.get(0);
-    operators.remove(0);
+    String operator = operators.get(PEEK_OPERATOR_INDEX);
+    operators.remove(PEEK_OPERATOR_INDEX);
     return operator;
   }
 

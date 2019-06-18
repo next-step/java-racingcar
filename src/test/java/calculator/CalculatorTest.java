@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class CalculatorTest {
 
@@ -16,7 +17,8 @@ public class CalculatorTest {
   }
 
   @Test
-  public void 더하기테스트() {
+  public void 더하기테스트(String input, String result) {
+    assertThat(calculator.calculate(input)).isEqualTo(Integer.parseInt(result));
     assertThat(calculator.calculate("10 + 5")).isEqualTo(15);
     assertThat(calculator.calculate("10 + 5 + 7")).isEqualTo(22);
   }
