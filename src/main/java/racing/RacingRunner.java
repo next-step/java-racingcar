@@ -7,12 +7,6 @@ import racing.view.ResultView;
 
 public class RacingRunner {
     public static void main(String[] args) {
-        RacingView racingView = new RacingView();
-        RacingController controller = new RacingController(racingView);
-        controller.makeNewGame(
-            racingView.printCarQuestionAndGetAnswer(), 
-            racingView.printTimeQuestionAndGetAnswer()
-        );
-        controller.processGame();
+        new RacingController(new RacingView()).processGame();
     }
 }

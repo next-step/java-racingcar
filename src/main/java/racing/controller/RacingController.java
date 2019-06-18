@@ -1,12 +1,13 @@
 package racing.controller;
 
 import racing.common.RacingSettings;
-import racing.logic.RacingManager;
+import racing.domain.RacingManager;
 import racing.common.ErrorMessage;
 import racing.common.RacingValidator;
 import racing.view.RacingView;
 import racing.vo.Car;
 import racing.vo.Cars;
+import racing.vo.GameMakingInfo;
 
 import java.util.stream.IntStream;
 
@@ -15,20 +16,27 @@ public class RacingController {
     private RacingManager racingManager;
     private int time;
     
-    public RacingController(RacingView racingView) {
-        this.racingView = racingView;
+    public RacingController(RacingView view) {
+        this.racingView = view;
+        racingView.setController(this);
+        racingView.requestGameInfo();
     }     
     
-    public RacingManager makeNewGame(String carNames, int time) {
-        if (!RacingValidator.isValidCarNames(carNames)) {
+    public RacingManager makeNewGame(final GameMakingInfo gameMakingInfo) {
+        makeSureUserInputs(gameMakingInfo);
+        racingManager = new RacingManager(gameMakingInfo.getCarNames());
+        this.time = gameMakingInfo.getTime();
+        return racingManager;
+    }
+    
+    private void makeSureUserInputs(final GameMakingInfo gameMakingInfo) {
+        if (!RacingValidator.isValidCarNames(gameMakingInfo.getCarNames())) {
             throwException(ErrorMessage.INCORRECT_CAR_NAMES.getMessage());
         }
-        if (!RacingValidator.isInTimeRange(time)) {
+        if (!RacingValidator.isInTimeRange(gameMakingInfo.getTime())) {
             throwException(ErrorMessage.INCORRECT_TIME.getMessage());
         }
-        racingManager = new RacingManager(carNames);
-        this.time = time;
-        return racingManager;
+        
     }
     
     public void processGame() {

@@ -1,4 +1,4 @@
-package racing.logic;
+package racing.domain;
 
 import static racing.common.RacingSettings.*;
 import racing.common.RandomNumberGenerator;
@@ -20,7 +20,7 @@ public class RacingManager {
     
     public RacingManager(String carNames) {
         this.cars = new Cars(Arrays.stream(carNames.split(","))
-          .map(carName -> new Car(carName))
+          .map(Car::new)
           .collect(Collectors.toList())
         );
         randomGenerator = new RandomNumberGenerator(MAX_RANDOM_MOVABLE_NUMBER.getValue());
@@ -43,7 +43,7 @@ public class RacingManager {
     }
     
     private Comparator<Car> getCarWinnerComparator() {
-        return Comparator.comparing((Car car) -> car.getPosition()).reversed();
+        return Comparator.comparing(Car::getPosition).reversed();
     }
     
     public Cars getCars() {
