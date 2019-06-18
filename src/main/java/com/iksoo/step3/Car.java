@@ -74,18 +74,20 @@ public class Car {
         System.out.println(this.carName + " : " + result);
 =======
     private String carName;
-    public int carPosition;
+    public String carPosition;
+    public int maxDistance;
 
     Car(String Name) {
         this.carName = Name;
-        this.carPosition = 0;
+        this.carPosition = "";
+        this.maxDistance = 0;
     }
 
     public String getCarName() {
         return this.carName;
     }
 
-    public int getCarPosition() {
+    public String getCarPosition() {
         return this.carPosition;
 >>>>>>> fix(Car) : carPosition 변수의 자료형 변경 int->String
     }
