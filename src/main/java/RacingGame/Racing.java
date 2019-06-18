@@ -1,8 +1,7 @@
 package RacingGame;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Racing {
 
@@ -44,5 +43,18 @@ public class Racing {
             this.raceCarMoveLoop();
             outputView.printRace(this.cars);
         }
+    }
+
+    public int maxPosition() {
+        Optional<Car> max = cars.stream().max(Comparator.comparing(Car::getPosition));
+
+        return max.get().getPosition();
+    }
+
+    public List<Car> winners() {
+        return cars.stream().filter(car -> {
+            int maxPosition = maxPosition();
+            return car.getPosition() == maxPosition;
+        }).collect(Collectors.toList());
     }
 }

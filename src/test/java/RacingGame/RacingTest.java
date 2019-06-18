@@ -54,4 +54,17 @@ class RacingTest {
     void constructorRacing() {
         racing = new Racing(0, this.inputNames);
     }
+
+    @Test
+    void maxPosition() {
+        racing.raceStart();
+        int maxPosition = racing.maxPosition();
+        System.out.println(maxPosition);
+    }
+
+    @Test
+    void winners() {
+        List<Car> winners = racing.winners();
+        assertThat(winners.size()).isNotZero();
+    }
 }
