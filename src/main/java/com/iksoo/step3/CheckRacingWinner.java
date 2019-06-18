@@ -8,14 +8,14 @@ public class CheckRacingWinner {
     public static List<Object> checkResult(Car[] cars) {
         List<Object> winner = new ArrayList<Object>();
 
-        int maxDistance = checkDistance(cars, winner);
+        int maxDistance = checkDistance(cars);
         checkWinner(cars, winner, maxDistance);
 
         return winner;
     }
 
 
-    public static int checkDistance(Car[] cars, List<Object> winner) {
+    public static int checkDistance(Car[] cars) {
         int maxDistance = 0;
         for (int i = 0; i < cars.length; i++) {
             cars[i].currentDistance = checkCurrentPosition(cars[i]);
