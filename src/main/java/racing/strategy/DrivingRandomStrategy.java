@@ -15,11 +15,7 @@ public class DrivingRandomStrategy implements DrivingStrategy {
     @Override
     public boolean isMovable() {
         int rand = getNumber();
-        if (rand >= MIN_MOVABLE_NUMBER) {
-            return true;
-        }
-
-        return false;
+        return rand >= MIN_MOVABLE_NUMBER;
     }
 
     private int getNumber() {
