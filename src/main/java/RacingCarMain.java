@@ -1,12 +1,25 @@
 import racingcar.controller.RacingGame;
+import racingcar.model.CarInformation;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
+
+import java.util.List;
 
 public class RacingCarMain {
     public static void main(String[] args) {
-        RacingGame racingGame = new RacingGame();
-        boolean isGameEnd = racingGame.run();
+        List<String> carNames = InputView.inputCarNames();
+        RacingGame racingGame = new RacingGame(carNames);
 
-        if (!isGameEnd) {
-            System.out.println("경주가 진행되지 못했습니다.");
+        int numberOfTries = InputView.inputNumberOfTries();
+        OutputView.printResultMessage();
+
+        List<CarInformation> carsAfterRace = null;
+        for (int i = 0; i < numberOfTries; i++) {
+            carsAfterRace = racingGame.raceOneStep();
+            OutputView.printCars(carsAfterRace);
         }
+
+        List<CarInformation> winners = racingGame.awards(carsAfterRace);
+        OutputView.printWinners(winners);
     }
 }
