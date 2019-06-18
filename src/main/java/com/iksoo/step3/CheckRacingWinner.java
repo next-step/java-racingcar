@@ -5,28 +5,27 @@ import java.util.List;
 
 public class CheckRacingWinner {
 
-    public static List<Object> checkResult(Car[] cars, int maxDistance) {
+    public static List<Object> checkResult(Car[] cars) {
         List<Object> winner = new ArrayList<Object>();
 
-        for (int i = 0; i < cars.length; i++) {
-            checkWinner(cars[i], winner, maxDistance);
-        }
+        int maxDistance = checkDistance(cars, winner);
+        checkWinner(cars, winner, maxDistance);
 
         return winner;
     }
 
 
-    public static boolean checkWinner(Car car, List<Object> winner, int maxDistance) {
-        car.maxDistance = checkDistance(car);
-
-        if(addWinnerList(car, winner, maxDistance)) {
-            return true;
+    public static int checkDistance(Car[] cars, List<Object> winner) {
+        int maxDistance = 0;
+        for (int i = 0; i < cars.length; i++) {
+            cars[i].currentDistance = checkCurrentPosition(cars[i]);
+            maxDistance = cars[i].currentDistance > maxDistance ? cars[i].currentDistance : maxDistance;
         }
 
-        return false;
+        return maxDistance;
     }
 
-    public static int checkDistance(Car car) {
+    public static int checkCurrentPosition(Car car) {
         int sumDistance = 0;
         for (int i = 0; i < car.carPosition.length(); i++) {
             sumDistance += Character.getNumericValue(car.carPosition.charAt(i));
@@ -35,12 +34,15 @@ public class CheckRacingWinner {
         return sumDistance;
     }
 
-    public static boolean addWinnerList(Car car, List<Object> winner, int maxDistance) {
+    public static void checkWinner(Car[] cars, List<Object> winner, int maxDistance) {
+        for (int i = 0; i < cars.length; i++) {
+            addWinnerList(cars[i], winner, maxDistance);
+        }
+    }
 
-        System.out.println("maxDistance:"+maxDistance + ", carDistance : " + car.maxDistance);
-        if (maxDistance == car.maxDistance) {
+    public static boolean addWinnerList(Car car, List<Object> winner, int maxDistance) {
+        if (maxDistance == car.currentDistance) {
             winner.add(car.getCarName());
-            System.out.println(winner);
             return true;
         }
 
