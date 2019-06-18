@@ -16,4 +16,8 @@ public class OutputRacingData {
         System.out.print(winner);
         System.out.print("가 최종 우승했습니다.");
     }
+
+    public void printWinner(List<Object> winner) {
+        System.out.print(winner);
+    }
 }
