@@ -13,8 +13,7 @@ public class CarTest {
 
   @BeforeEach
   void setUp() {
-    this.car = new Car(1);
-    this.car.setDrivingStrategy(MockDrivingStrategy.getInstance());
+    this.car = new Car("1", MockDrivingStrategy.getInstance());
   }
 
   @Test
