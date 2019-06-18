@@ -54,7 +54,6 @@ public class RacingGameTest {
         // given
         final int participantsLength = nameOfParticipants.split(RacingGameOption.NAME_SEPARATOR).length;
 
-        final MoveStrategy mockAlwaysMoveStrategy = i -> true;
         final StringBuilder expectResultBuilder = new StringBuilder();
         for (int i = 0; i < participantsLength; i++) {
             expectResultBuilder.append(nameOfParticipants).append(" : ");
@@ -65,7 +64,7 @@ public class RacingGameTest {
         }
 
         final RacingGameOption racingGameOption = RacingGameOption.builder()
-                .moveStrategy(mockAlwaysMoveStrategy)
+                .moveStrategy(i -> true)
                 .movingCount(moveCount)
                 .nameOfParticipants(nameOfParticipants)
                 .build();

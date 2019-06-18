@@ -39,8 +39,7 @@ public class VisualRecorderTest {
             "dsf3232\n"
     })
     void visualRecord(final String recodeData) {
-        final Visualizable mockVisualizable = () -> recodeData;
-        recorder.recode(mockVisualizable);
+        recorder.recode(() -> recodeData);
         assertThat(recorder.visualize()).isEqualTo(recodeData + StringUtils.NEW_LINE);
     }
 }
