@@ -8,6 +8,7 @@ public enum RacingSettings {
     MAX_RANDOM_MOVABLE_NUMBER(9),
     MIN_MOVABLE_NUMBER(4),
     MOVING_START_COUNT(0),
+    LEADER_INDEX(0),
     CAR_NAME_SEPARATOR(","),
     CAR_STATUS_SEPARATOR(" : "),
     CAR_MOVING_SIGN("-");

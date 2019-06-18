@@ -42,10 +42,11 @@ public class RacingController {
     }
     
     private void processCarMoving() {
-        IntStream.range(RacingSettings.MOVING_START_COUNT.getValue(), time).forEach(i -> {
-            racingManager.moveCars();
-            racingView.printMovingStatus(racingManager.getCars());
-        });
+        IntStream.range(RacingSettings.MOVING_START_COUNT.getValue(), time)
+            .forEach(i -> { 
+                racingManager.moveCars();
+                racingView.printMovingStatus(racingManager.getCars()); 
+            });
     }
     
     private static void throwException(String errorMessage) {
