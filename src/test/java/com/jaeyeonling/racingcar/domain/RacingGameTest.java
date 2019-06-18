@@ -47,12 +47,12 @@ public class RacingGameTest {
     })
     void playGame(String nameOfParticipants,
                   int moveCount) {
-        final int ParticipantsLength = nameOfParticipants.split(RacingGameOption.NAME_SEPARATOR).length;
+        final int participantsLength = nameOfParticipants.split(RacingGameOption.NAME_SEPARATOR).length;
 
         // given
         final MoveStrategy mockAlwaysMoveStrategy = i -> true;
         final StringBuilder expectResultBuilder = new StringBuilder();
-        for (int i = ParticipantsLength; i > 0; i--) {
+        for (int i = participantsLength; i > 0; i--) {
             for (int j = moveCount; j > 0; j--) {
                 expectResultBuilder.append(Car.VISUAL_POSITION_STRING);
             }
