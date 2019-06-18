@@ -10,6 +10,10 @@ public class CarManagement {
         this.cars = new ArrayList<>();
     }
 
+    public List<Car> Cars() {
+        return cars;
+    }
+
     public CarManagement register() {
         Car car = new Car();
         cars.add(car);
