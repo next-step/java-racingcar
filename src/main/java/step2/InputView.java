@@ -6,7 +6,11 @@ public class InputView {
     private final static String ASK_NUMBER_OF_CARS = "자동차 대수는 몇 대 인가요?";
     private final static String ASK_NUMBER_OF_TRIALS = "시도할 횟수는 몇 회 인가요?";
     private final static int MINIMUM_NUMBER_CAN_BE_INPUT = 1;
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner;
+
+    public InputView() {
+        this.scanner = new Scanner(System.in);
+    }
 
     public int getNumberOfCars() {
         System.out.println(ASK_NUMBER_OF_CARS);
