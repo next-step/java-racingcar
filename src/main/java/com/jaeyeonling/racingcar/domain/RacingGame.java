@@ -1,5 +1,8 @@
 package com.jaeyeonling.racingcar.domain;
 
+import com.jaeyeonling.exception.CompleteException;
+import com.jaeyeonling.exception.NotCompleteException;
+
 public class RacingGame {
 
     static final int MOVING_RANDOM_BOUND = 9;
@@ -14,7 +17,7 @@ public class RacingGame {
 
     public void move() {
         if (isComplete()) {
-            throw new IllegalStateException("이미 결과가 나온 게임입니다.");
+            throw new CompleteException();
         }
 
         participants.move();
@@ -27,7 +30,7 @@ public class RacingGame {
 
     public RacingGameResult getResult() {
         if (!isComplete()) {
-            throw new IllegalStateException("결과가 나오지 않은 게임입니다.");
+            throw new NotCompleteException();
         }
 
         return new RacingGameResult(participants);
