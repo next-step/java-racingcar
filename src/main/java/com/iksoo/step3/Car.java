@@ -75,12 +75,12 @@ public class Car {
 =======
     private String carName;
     public String carPosition;
-    public int maxDistance;
+    public int currentDistance;
 
     Car(String Name) {
         this.carName = Name;
         this.carPosition = "";
-        this.maxDistance = 0;
+        this.currentDistance = 0;
     }
 
     public String getCarName() {
