@@ -1,16 +1,19 @@
 package step2.domain;
 
+import step2.view.OutputView;
+
 import java.util.ArrayList;
 
 public class CarRace {
 
-    private int numberOfTrials;
-    private RaceExecutor raceExecutor;
+    private Cars cars;
+    private final int numberOfTrials;
+//    private RaceExecutor raceExecutor;
 
     public CarRace(int numberOfCars, int numberOfTrials) {
         makeCars(numberOfCars);
         this.numberOfTrials = numberOfTrials;
-        this.raceExecutor = new RaceExecutor(this.cars);
+//        this.raceExecutor = new RaceExecutor(this.cars);
     }
 
     private void makeCars(int numberOfCars) {
@@ -22,6 +25,6 @@ public class CarRace {
 
     public void raceExecute() {
         System.out.println("실행 결과"); //TODO: view에 위임
-        raceExecutor.executeTrials(numberOfTrials);
+//        raceExecutor.executeTrials(numberOfTrials);
     }
 }
