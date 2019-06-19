@@ -6,16 +6,26 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 public class RacingCarGameEngineTest {
+        private RacingCarGameEngine carGameEngine;
     @BeforeEach
     void setUp() {
         System.out.println("setUp");
+        carGameEngine = new RacingCarGameEngine(5, new int[3]);
     }
 
     @Test
     void racingCarGameEngineConstructor() {
         System.out.println("racingCarGameEngineConstructor");
-        RacingCarGameEngine carGameEngine = new RacingCarGameEngine(5, new int[3]);
         assertThat(carGameEngine.getNumbersOfRacing()).isEqualTo(5);
         assertThat(carGameEngine.getCarPositions().length).isEqualTo(3);
+        assertThat(carGameEngine.getCarPositions()).containsExactly(0,0,0);
+    }
+
+    @Test
+    void checkRunCondition() {
+        System.out.println("checkRunCondition");
+        assertThat(carGameEngine.checkRunCondition(3)).isFalse();
+        assertThat(carGameEngine.checkRunCondition(4)).isTrue();
+
     }
 }

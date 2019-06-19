@@ -11,9 +11,9 @@
 ##자동차 경주 게임 step2 기능 목록(기능 목록 단위로 commit)
 * 클래스 생성 : 핵심 로직 클래스인 RacingCarGameEngine, 핵심 로직을 테스트 하는 RacingCarGameEngine, 
   UI 로직 클래스인 RacingCarGameFront 만든다.
-* 초기화1 : 사용자 입력을 받은 몇 대의 자동차 정보는 RacingCarGameEngine 클래스의 인스턴스 변수인 
+* 초기화 : 사용자 입력을 받은 몇 대의 자동차 정보는 RacingCarGameEngine 클래스의 인스턴스 변수인 
   int형 배열인 carPositions 을 입력받은 수의 크기로 배열을 생성한다. 배열의 value 는 자동차가 전진한 횟수에 해당한다.
-* 초기화2 : 사용자 입력을 받은 경주 할 회수 정보는 RacingCarGameEngine 클래스의 
+  사용자 입력을 받은 경주 할 회수 정보는 RacingCarGameEngine 클래스의 
   int형 인스턴스 변수 numbersOfRacing 의 값으로 셋팅한다.
 * 핵심 로직 기능1 : 자동차가 run 할 수 있는 조건을 체크하는 리턴형이 boolean 이고 매개변수로 int 형을 인자 하나를 가지는 
   checkRunCondition 메소드를 생성한다. 해당 매소드가 true 를 return 하는 조건은 매개변수로 인자가 4 이상일 경우이며

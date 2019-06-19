@@ -2,6 +2,8 @@ package homework.week1;
 
 public class RacingCarGameEngine {
 
+    private static final int MIN_RUN_CONDITION_VALUE = 4;
+
     private int numbersOfRacing;
     private int[] carPositions;
 
@@ -21,5 +23,12 @@ public class RacingCarGameEngine {
 
     public int[] getCarPositions() {
         return this.carPositions;
+    }
+
+    boolean checkRunCondition(int value) {
+        if (value < MIN_RUN_CONDITION_VALUE) {
+            return false;
+        }
+        return true;
     }
 }
