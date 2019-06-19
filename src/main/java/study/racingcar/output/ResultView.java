@@ -1,6 +1,7 @@
 package study.racingcar.output;
 
 import study.racingcar.model.CarsRacingLog;
+import study.racingcar.model.Drivers;
 
 import java.util.List;
 
@@ -11,5 +12,6 @@ import java.util.List;
  */
 public interface ResultView {
     void printInit();
-    void print(List<CarsRacingLog> carsRacingLogs);
+    void printRacingLogs(List<CarsRacingLog> carsRacingLogs);
+    void printWinners(Drivers winners);
 }
