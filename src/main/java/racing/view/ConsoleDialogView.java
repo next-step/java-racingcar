@@ -18,6 +18,7 @@ public class ConsoleDialogView {
 		System.out.println("시도할 회수는 몇 회 인가요?");
 		int round = scanner.nextInt();
 
+		System.out.println();	// 빈줄 출력
 
 		return new StageOption(playerNames, SEPARATOR, round);
 	}
