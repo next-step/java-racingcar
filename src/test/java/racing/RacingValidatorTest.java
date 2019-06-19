@@ -7,18 +7,6 @@ import racing.common.RacingValidator;
 
 class RacingValidatorTest {
     @ParameterizedTest
-    @ValueSource(ints = {1, 4, 10})
-    void isInCarCountRangeTrueTest(int carCount) {
-        Assertions.assertThat(RacingValidator.isInCarCountRange(carCount)).isTrue();
-    }
-    
-    @ParameterizedTest
-    @ValueSource(ints = {0, 11})
-    void isInCarCountRangeFalseTest(int carCount) {
-        Assertions.assertThat(RacingValidator.isInCarCountRange(carCount)).isFalse();
-    }
-    
-    @ParameterizedTest
     @ValueSource(ints = {1, 20, 50})
     void isInTimeRangeTrueTest(int timeCount) {
         Assertions.assertThat(RacingValidator.isInTimeRange(timeCount)).isTrue();

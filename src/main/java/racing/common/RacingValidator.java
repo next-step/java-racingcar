@@ -12,14 +12,15 @@ public class RacingValidator {
         if (StringUtils.isEmpty(carNames)) {
             return false;
         }
-        if (!isInCarCountRange(carNames.split(RacingSettings.CAR_NAME_SEPARATOR.getStr()).length)) {
+        String[] carNamesArr = carNames.split(RacingSettings.CAR_NAME_SEPARATOR.getStr());
+        if (!isInCarCountRange(carNamesArr.length)) {
             return false;
         } 
         
         return true;
     }
     
-    public static boolean isInCarCountRange(int carCount) {
+    private static boolean isInCarCountRange(int carCount) {
         return MIN_CAR_COUNT <= carCount && MAX_CAR_COUNT >= carCount;
     }
     
