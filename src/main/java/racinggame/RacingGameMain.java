@@ -1,14 +1,17 @@
 package racinggame;
 
 import racinggame.model.RacingGame;
+import racinggame.model.RacingInfo;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;
+
+import java.util.List;
 
 public class RacingGameMain {
   public static void main(String[] args) {
 
-    int carCount = InputView.input("자동차 대수는 몇 대 인가요?");
-    int time = InputView.input("시도할 회수는 몇 회 인가요?");
+    String carName = InputView.inputName();
+    int time = InputView.inputTime();
 
     RacingGame racingGame = new RacingGame(carCount);
 
