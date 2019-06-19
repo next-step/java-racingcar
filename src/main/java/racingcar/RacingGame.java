@@ -1,21 +1,24 @@
 package racingcar;
 
+import java.util.List;
+
 public class RacingGame {
 
   private Cars cars;
 
-  public RacingGame(int numberOfCar) {
-    initCars(numberOfCar);
+  public RacingGame(String[] carNames) {
+    initCars(carNames);
   }
 
-  private void initCars(int numberOfCar) {
-    cars = new Cars(numberOfCar);
+  private void initCars(String[] carNames) {
+    cars = new Cars(carNames);
   }
 
-  public void start(int numberOfTimes, Record record) {
-    for (int i = 0; i < numberOfTimes; i++) {
-      record.write(cars.moveCars());
-    }
+  public List<Car> start() {
+    return cars.moveCars();
   }
 
+  public String announceWinner() {
+    return Referee.announceWinner(cars);
+  }
 }

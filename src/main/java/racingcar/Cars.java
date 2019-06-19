@@ -1,38 +1,31 @@
 package racingcar;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Cars {
 
-  private List<Car> cars = new ArrayList<>();
+  private List<Car> cars;
 
-  public Cars(int numberOfCar) {
-    makeCars(numberOfCar);
+  public Cars(String[] carNames) {
+    cars = makeCars(carNames);
   }
 
-  private void makeCars(int numberOfCar) {
-    for (int i = 0; i < numberOfCar; i++) {
-      cars.add(i, new Car());
-    }
+  private List<Car> makeCars(String[] carNames) {
+    return Arrays.stream(carNames)
+        .map(Car::new)
+        .collect(Collectors.toList());
   }
 
-  public Position moveCars() {
-    getStream()
+  public List<Car> moveCars() {
+    cars.stream()
         .forEach(car -> car.move(RandomNumberGenerator.randomValue()));
-    return position();
+    return cars;
   }
 
-  private Stream<Car> getStream() {
-    return cars.stream();
+  public List<Car> getCars() {
+    return cars;
   }
 
-  private Position position() {
-    return new Position(
-        getStream()
-            .map(Car::getPosition)
-            .collect(Collectors.toList()));
-  }
 }

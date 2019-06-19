@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class RacingGameLauncher {
@@ -7,17 +8,21 @@ public class RacingGameLauncher {
   static Scanner scanner = new Scanner(System.in);
 
   public static void start() {
-    Record record = new Record();
-
-    InputView.askNumberOfCar();
-    int numberOfCar = scanner.nextInt();
+    InputView.askNameOfCars();
+    String inputCarNames = scanner.next();
+    String[] carNames = Parser.parseCarNames(inputCarNames);
     InputView.askNumberOfTimes();
     int numberOfTimes = scanner.nextInt();
 
-    RacingGame racingGame = new RacingGame(numberOfCar);
-    racingGame.start(numberOfTimes, record);
+    RacingGame racingGame = new RacingGame(carNames);
+    for (int i = 0; i < numberOfTimes; i++) {
+      List<Car> record = racingGame.start();
+      ResultView.displayRecord(record);
+    }
 
-    ResultView.display(record);
+    String winner = racingGame.announceWinner();
+    ResultView.displayWinner(winner);
+
   }
 
   public static void main(String[] args) {
