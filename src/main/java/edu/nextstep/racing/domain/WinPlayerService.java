@@ -17,10 +17,10 @@ import java.util.stream.Collectors;
  * project      : java-racingcar
  * create date  : 2019-06-18 20:22
  */
-public class WinPlayer {
+public class WinPlayerService {
     private Winner winner;
 
-    public WinPlayer(Winner Winner) {
+    public WinPlayerService(Winner Winner) {
         this.winner = Winner;
     }
 

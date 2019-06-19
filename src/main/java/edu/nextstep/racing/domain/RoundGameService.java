@@ -12,14 +12,14 @@ import edu.nextstep.racing.model.Race;
  * project      : java-racingcar
  * create date  : 2019-06-18 19:37
  */
-public class RoundGame {
+public class RoundGameService {
 
     private Race race;
     private int currentTime;
 
     private static final int INIT_CURRENT_TIME = 0;
 
-    public RoundGame(Race race) {
+    public RoundGameService(Race race) {
         this.race = race;
         this.currentTime = INIT_CURRENT_TIME;
     }

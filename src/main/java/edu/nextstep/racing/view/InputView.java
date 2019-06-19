@@ -6,6 +6,7 @@ import edu.nextstep.racing.utils.ViewUtils;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 /**
  * author       : gwonbyeong-yun <sksggg123>
@@ -27,9 +28,9 @@ public class InputView {
         ViewUtils.printMessage("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String cars = scanner.nextLine();
 
-        ValidationUtils.checkNull(cars);
+        ValidationUtils.checkObject(cars);
 
-        return Arrays.asList(splitCars(cars));
+        return splitCars(cars.replaceAll(" ", ""));
     }
 
     public int getNumberOfTime() {
@@ -41,7 +42,10 @@ public class InputView {
         return time;
     }
 
-    public String[] splitCars(String cars) {
-        return cars.split(SPLIT_CAR_SEPERATOR);
+    public List<String> splitCars(String cars) {
+        String[] temp = cars.split(SPLIT_CAR_SEPERATOR);
+        return Arrays.stream(temp)
+                .filter(s -> !"".equals(s))
+                .collect(Collectors.toList());
     }
 }

@@ -16,13 +16,13 @@ import static org.assertj.core.api.Assertions.assertThat;
  * project      : java-racingcar
  * create date  : 2019-06-18 19:37
  */
-class RoundGameTest {
+class RoundGameServiceTest {
 
-    private RoundGame game;
+    private RoundGameService game;
 
     @BeforeEach
     void 사전설정() {
-        game = new RoundGame(new Race(10));
+        game = new RoundGameService(new Race(10));
     }
 
     @Test

@@ -3,7 +3,6 @@ package edu.nextstep.racing.domain;
 import edu.nextstep.racing.model.Car;
 import edu.nextstep.racing.model.Cars;
 import edu.nextstep.racing.utils.NumberUtils;
-import edu.nextstep.racing.view.ResultView;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,7 +17,7 @@ import java.util.stream.Collectors;
  * project      : java-racingcar
  * create date  : 2019-06-15 23:33
  */
-public class CarRacing {
+public class CarRacingService {
 
     private Cars player;
     private static final int MOVE_LIMIT_COUNT_FLAG = 4;
@@ -27,7 +26,7 @@ public class CarRacing {
     CarRacing 생성자
     @parameter carCount, moveCount
      */
-    public CarRacing(Cars player) {
+    public CarRacingService(Cars player) {
         this.player = player;
     }
 

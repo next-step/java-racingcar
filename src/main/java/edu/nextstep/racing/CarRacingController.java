@@ -1,8 +1,8 @@
 package edu.nextstep.racing;
 
-import edu.nextstep.racing.domain.CarRacing;
-import edu.nextstep.racing.domain.RoundGame;
-import edu.nextstep.racing.domain.WinPlayer;
+import edu.nextstep.racing.domain.CarRacingService;
+import edu.nextstep.racing.domain.RoundGameService;
+import edu.nextstep.racing.domain.WinPlayerService;
 import edu.nextstep.racing.model.Car;
 import edu.nextstep.racing.model.Cars;
 import edu.nextstep.racing.model.Race;
@@ -23,45 +23,44 @@ import java.util.stream.Collectors;
  * project      : java-racingcar
  * create date  : 2019-06-15 21:03
  */
-public class CarRacingApplication {
+public class CarRacingController {
 
     private InputView ui;
     private ResultView output;
-    private CarRacing carRacing;
-    private RoundGame roundGame;
-    private WinPlayer winPlayer;
+    private CarRacingService carRacingService;
+    private RoundGameService roundGameService;
+    private WinPlayerService winPlayerService;
 
     private static final int INIT_SCORE = 0;
 
-    public CarRacingApplication() {
+    public CarRacingController() {
         this.ui = new InputView();
         this.output = new ResultView();
     }
 
     public static void main(String[] args) {
-        CarRacingApplication app = new CarRacingApplication();
+        CarRacingController app = new CarRacingController();
         app.start();
     }
 
     public void start() {
-        List<String> carList = ui.getNameOfCars()
-                .stream()
+        List<String> carList = ui.getNameOfCars().stream()
                 .distinct()
                 .collect(Collectors.toList());
 
         Cars cars = new Cars(carList);
         Race race = new Race(ui.getNumberOfTime());
 
-        this.carRacing = new CarRacing(cars);
-        this.roundGame = new RoundGame(race);
+        this.carRacingService = new CarRacingService(cars);
+        this.roundGameService = new RoundGameService(race);
 
-        for (int i = 0; i < this.roundGame.getGameTime(); i++) {
-            List<Car> viewCarList = this.carRacing.starRoundGame();
+        for (int i = 0; i < this.roundGameService.getGameTime(); i++) {
+            List<Car> viewCarList = this.carRacingService.starRoundGame();
             output.resultView(viewCarList);
         }
-        this.winPlayer = new WinPlayer(new Winner(this.carRacing.finishGame().getCars(), INIT_SCORE));
-        this.winPlayer.doWinnerCheck();
+        this.winPlayerService = new WinPlayerService(new Winner(this.carRacingService.finishGame().getCars(), INIT_SCORE));
+        this.winPlayerService.doWinnerCheck();
 
-        output.printWinnerPlayer(this.winPlayer.getWinners().getWinners());
+        output.printWinnerPlayer(this.winPlayerService.getWinners().getWinners());
     }
 }

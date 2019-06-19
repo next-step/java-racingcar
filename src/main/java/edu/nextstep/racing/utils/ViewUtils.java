@@ -3,7 +3,6 @@ package edu.nextstep.racing.utils;
 import edu.nextstep.racing.model.Car;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -23,7 +22,7 @@ public final class ViewUtils {
     private static final String COMMA = ",";
 
     public static void printMessage(String message) {
-        assert (message == null || "".equals(message)) : "Message is Null -> [" + message + "]";
+        ValidationUtils.checkStringArgument(message);
         System.out.println(message);
     }
 

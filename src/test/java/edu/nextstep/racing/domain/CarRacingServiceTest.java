@@ -19,9 +19,9 @@ import static org.assertj.core.api.Assertions.assertThat;
  * project      : java-racingcar
  * create date  : 2019-06-16 15:22
  */
-class CarRacingTest {
+class CarRacingServiceTest {
 
-    private CarRacing carRacing;
+    private CarRacingService carRacingService;
     private Cars cars;
     private List<String> carName;
 
@@ -32,18 +32,18 @@ class CarRacingTest {
         carName.add("TEST2");
         carName.add("TEST3");
         cars = new Cars(carName);
-        carRacing = new CarRacing(cars);
+        carRacingService = new CarRacingService(cars);
     }
 
     @Test
     void 자동차_전진() {
-        assertThat(carRacing.starRoundGame().stream()
+        assertThat(carRacingService.starRoundGame().stream()
                 .map(car -> car.currentPosition())
                 .min((o1, o2) -> o1 < o2 ? o1 : o2)
                 .get()
         ).isBetween(0,1);
 
-        assertThat(carRacing.starRoundGame().stream()
+        assertThat(carRacingService.starRoundGame().stream()
                 .map(car -> car.currentPosition())
                 .max((o1, o2) -> o1 > o2 ? o1 : o2)
                 .get()
@@ -52,8 +52,8 @@ class CarRacingTest {
 
     @Test
     void 자동차_경주종료_자동차들_반환() {
-        carRacing.starRoundGame();
-        Cars finishCars = carRacing.finishGame();
+        carRacingService.starRoundGame();
+        Cars finishCars = carRacingService.finishGame();
 
         assertThat(finishCars.getCars().size()).isEqualTo(3);
     }

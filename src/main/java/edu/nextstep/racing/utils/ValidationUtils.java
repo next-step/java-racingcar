@@ -36,4 +36,9 @@ public final class ValidationUtils {
             throw new IllegalArgumentException(minValue + "보다 " + originValue + " 가 더 작습니다.");
         }
     }
+
+    public static void checkStringArgument(String str) {
+        assert (str == null || "".equals(str)) : "Message is Null -> [" + str + "]";
+    }
+
 }
