@@ -41,7 +41,7 @@ public class RacingCarGameFront {
         }
     }
 
-    void printRacingCar(int[] carPositions) {
+    void printRacingCars(int[] carPositions) {
         for (int carPosition : carPositions) {
             printRunCar(carPosition);
         }
@@ -58,7 +58,7 @@ public class RacingCarGameFront {
     void goRacingGame(RacingCarGameEngine carGameEngine) {
         for (int count = 0; count < carGameEngine.getNumbersOfRacing(); count++) {
             carGameEngine.move();
-            printRacingCar(carGameEngine.getCarPositions());
+            printRacingCars(carGameEngine.getCarPositions());
         }
     }
 }
