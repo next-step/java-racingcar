@@ -40,11 +40,18 @@ class CarsTest {
     }
 
     @Test
+    void Cars에_속한_자동차_갯수를_확인한다() {
+        Cars cars = Cars.createWithNames(names);
+
+        assertThat(cars.size()).isEqualTo(names.size());
+    }
+
+    @Test
     void Cars는_여러대의_차를_움직일_수_있다() {
         Cars cars = Cars.createWithNames(names);
         List<CarInformation> informationOnCars = cars.move();
 
-        assertThat(informationOnCars).hasSize(names.size())
+        assertThat(informationOnCars).hasSize(cars.size())
                 .extracting("class")
                 .containsOnly(CarInformation.class);
     }
@@ -54,7 +61,7 @@ class CarsTest {
         Cars cars = Cars.createWithNames(names);
         List<CarInformation> informationOnCars = cars.getInformationOnCars();
 
-        assertThat(informationOnCars).hasSize(names.size())
+        assertThat(informationOnCars).hasSize(cars.size())
                 .extracting("class")
                 .containsOnly(CarInformation.class);
     }

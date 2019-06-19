@@ -41,4 +41,8 @@ public class Cars {
                 .map(Car::getInformation)
                 .collect(Collectors.toList());
     }
+
+    public int size() {
+        return cars.size();
+    }
 }
