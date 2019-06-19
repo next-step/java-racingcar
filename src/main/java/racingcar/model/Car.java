@@ -2,20 +2,19 @@ package racingcar.model;
 
 import com.google.common.base.Strings;
 
-public class Car implements Comparable<Car> {
+public class Car {
 
-    public static final int RUNNING_CONDITION = 4;
+    public static final int MOVING_CONDITION = 4;
     public static final int DEFAULT_POSITION = 1;
-
-    private int position;
     private String name;
+    private int position;
 
     Car(String name, int position) {
         this.name = name;
         this.position = position;
     }
 
-    public static Car create(String name) {
+    public static Car newInstance(String name) {
         validateEmpty(name);
         return new Car(name, DEFAULT_POSITION);
     }
@@ -34,23 +33,18 @@ public class Car implements Comparable<Car> {
     }
 
     private boolean isRunning(int power) {
-        return RUNNING_CONDITION <= power;
+        return MOVING_CONDITION <= power;
+    }
+
+    public boolean isMatchPosition(int position) {
+        return this.position == position;
     }
 
     public int getPosition() {
         return position;
     }
 
-    public boolean isMatchPosition(int position){
-        return this.position == position;
-    }
-
     public String getName() {
         return name;
-    }
-
-    @Override
-    public int compareTo(Car other) {
-        return Integer.compare(position, other.position);
     }
 }
