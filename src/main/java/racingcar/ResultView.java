@@ -9,10 +9,7 @@ public class ResultView {
   public static final String WINNER_PRINT_FORMAT = "%s 가 최종 우승했습니다.";
 
   public static void displayRecord(List<Car> record) {
-    for (int i = 0; i < record.size(); i++) {
-      Car car = record.get(i);
-      printCarRecord(car);
-    }
+    record.stream().forEach(car -> printCarRecord(car));
     printBlankLine();
   }
 
