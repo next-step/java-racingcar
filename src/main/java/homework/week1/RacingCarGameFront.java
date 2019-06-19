@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class RacingCarGameFront {
     private static final String RUN_SYMBOL = "-";
+    private static final int MIN_INPUT_VALUE = 1;
 
     public static void main(String[] args) {
         RacingCarGameFront gameFront = new RacingCarGameFront();
@@ -28,13 +29,14 @@ public class RacingCarGameFront {
         int numbersOfCars = scanner.nextInt();
         System.out.println("경주 할 회수는 몇 회 인가요?");
         int numbersOfRacing = scanner.nextInt();
+        System.out.println("***********************");
         validateUserInputValues(numbersOfCars, numbersOfRacing);
         return new RacingCarGameEngine(numbersOfRacing, new int[numbersOfCars]);
     }
 
     void validateUserInputValues(int numbersOfCars, int numbersOfRacing)
             throws IllegalArgumentException {
-        if (numbersOfCars < 1 || numbersOfRacing < 1) {
+        if (numbersOfCars < MIN_INPUT_VALUE || numbersOfRacing < MIN_INPUT_VALUE) {
             throw new IllegalArgumentException("반드시 1 이상의 숫자를 입력하세요!");
         }
     }

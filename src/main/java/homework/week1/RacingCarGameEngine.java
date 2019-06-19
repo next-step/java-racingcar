@@ -18,7 +18,6 @@ public class RacingCarGameEngine {
         if (carPositions == null) {
             throw new NullPointerException("경주에 참여하는 자동차 대수가 설정되지 않았습니다!");
         }
-
         Random randomNumber = new Random();
         for (int index=0; index < carPositions.length; index++) {
             carPositions[index] = getRunCount(checkRunCondition(randomNumber.nextInt(10)),
