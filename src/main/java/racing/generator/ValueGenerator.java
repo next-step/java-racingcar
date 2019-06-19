@@ -1,4 +1,4 @@
-package racing.random;
+package racing.generator;
 
 public interface ValueGenerator {
 

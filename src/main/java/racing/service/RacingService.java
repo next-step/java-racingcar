@@ -2,8 +2,8 @@ package racing.service;
 
 import racing.domain.EntireCars;
 import racing.dto.*;
-import racing.random.RandomValueGenerator;
-import racing.random.ValueGenerator;
+import racing.generator.RandomValueGenerator;
+import racing.generator.ValueGenerator;
 
 import java.util.stream.IntStream;
 

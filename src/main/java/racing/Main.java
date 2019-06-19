@@ -4,8 +4,8 @@ import racing.dto.RacingInfo;
 import racing.dto.RacingResult;
 import racing.inputter.SystemConsoleInputter;
 import racing.service.RacingService;
-import racing.ui.InputView;
-import racing.ui.ResultView;
+import racing.view.InputView;
+import racing.view.ResultView;
 
 import java.util.List;
 

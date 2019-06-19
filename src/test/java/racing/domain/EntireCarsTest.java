@@ -27,7 +27,7 @@ class EntireCarsTest {
 
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> EntireCars.of(carNames))
-                .withMessage("차량명은 1개 이상이어야 합니다.");
+                .withMessage("차의 개수는 1개 이상이어야 합니다.");
     }
 
     private static Stream<Arguments> of() {

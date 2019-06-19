@@ -17,12 +17,8 @@ public class RacingInfo {
 
     public static RacingInfo of(List<String> carNames, int attempts) {
 
-        if (!isValidCarNames(carNames)) {
-            throw new IllegalArgumentException(CAR_NAMES_EXCEPTION_MESSAGE);
-        }
-        if (!isValidAttempts(attempts)) {
-            throw new IllegalArgumentException(ATTEMPTS_EXCEPTION_MESSAGE);
-        }
+        validateCarNames(carNames);
+        validateAttempts(attempts);
 
         RacingInfo racingInfo = new RacingInfo();
         racingInfo.carNames = carNames;
@@ -30,14 +26,18 @@ public class RacingInfo {
         return racingInfo;
     }
 
-    private static boolean isValidCarNames(List<String> splitCarNames) {
+    private static void validateCarNames(List<String> splitCarNames) {
 
-        return splitCarNames.size() >= VALID_CAR_NAMES_COUNT;
+        if (splitCarNames.size() < VALID_CAR_NAMES_COUNT) {
+            throw new IllegalArgumentException(CAR_NAMES_EXCEPTION_MESSAGE);
+        }
     }
 
-    private static boolean isValidAttempts(int attempts) {
+    private static void validateAttempts(int attempts) {
 
-        return attempts >= VALID_ATTEMPTS;
+        if (attempts < VALID_ATTEMPTS) {
+            throw new IllegalArgumentException(ATTEMPTS_EXCEPTION_MESSAGE);
+        }
     }
 
     public List<String> getCarNames() {

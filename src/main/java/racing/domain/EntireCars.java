@@ -1,6 +1,6 @@
 package racing.domain;
 
-import racing.random.ValueGenerator;
+import racing.generator.ValueGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +14,7 @@ public class EntireCars {
 
     public static EntireCars of(List<String> carNames) {
 
-        if (carNames == null || carNames.isEmpty()) {
-            throw new IllegalArgumentException("차량명은 1개 이상이어야 합니다.");
-        }
+        validate(carNames);
 
         EntireCars entireCars = new EntireCars();
         entireCars.cars = carNames.stream().map(Car::of).collect(Collectors.toList());
@@ -31,5 +29,12 @@ public class EntireCars {
     public List<Car> getCars() {
 
         return cars;
+    }
+
+    private static void validate(List<String> carNames) {
+
+        if (carNames == null || carNames.isEmpty()) {
+            throw new IllegalArgumentException("차의 개수는 1개 이상이어야 합니다.");
+        }
     }
 }
