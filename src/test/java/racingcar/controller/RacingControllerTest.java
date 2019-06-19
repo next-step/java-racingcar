@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.controller;
 
 
 import org.junit.jupiter.api.BeforeEach;
@@ -11,9 +11,10 @@ import racingcar.util.drivingStrategy.MockDrivingStrategy;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
+
 import static java.util.stream.Collectors.joining;
 
-public class RacingGameTest {
+public class RacingControllerTest {
 
   private DrivingStrategy drivingStrategy;
 
@@ -43,7 +44,7 @@ public class RacingGameTest {
             new Car("car2", drivingStrategy),
             new Car("car3", drivingStrategy));
 
-    RacingGame.printRacingStatus(rounds, cars);
+    RacingController.printRacingStatus(rounds, cars);
 
   }
 
@@ -55,6 +56,6 @@ public class RacingGameTest {
             new Car("car2", drivingStrategy),
             new Car("car3", drivingStrategy));
 
-    RacingGame.drive(cars);
+    RacingController.drive(cars);
   }
 }
