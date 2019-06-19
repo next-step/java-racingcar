@@ -4,11 +4,13 @@ public class Car {
 
     private int carPosition;
     private int carPositionStatusNumber;
+    private String carName;
     private static final int EXCUTE_STANDARD_NUMBER = 4;
     private static final int EXCUTE_NUMBER = 1;
     private static final int STOP_NUMBER = 0;
 
-    public Car(){
+    public Car(String carName){
+        this.carName = carName;
         this.carPosition = STOP_NUMBER;
     }
 

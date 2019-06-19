@@ -6,7 +6,7 @@ import java.util.List;
 public class RacingMain {
 
     public static void main(String[] arg) {
-        int inputCarNumber = InputView.inputCarNumber();
+        String inputCarNumber = InputView.inputCarNames();
         int inputExecuteNumber = InputView.inputExecuteNumber();
 
         RacingGame racingGame = new RacingGame(createCars(inputCarNumber));
@@ -17,11 +17,11 @@ public class RacingMain {
         }
     }
 
-    private static List<Car> createCars(int inputCarNumber){
+    private static List<Car> createCars(String inputCarNames){
+        String[] carNames = inputCarNames.split(",");
         List<Car> cars = new ArrayList<>();
-        while (inputCarNumber > 0) {
-            cars.add(new Car());
-            inputCarNumber--;
+        for(String carName : carNames){
+            cars.add(new Car(carName));
         }
         return cars;
     }
