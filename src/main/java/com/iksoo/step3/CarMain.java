@@ -24,14 +24,13 @@ public class CarMain {
         String[] carNames = inputRacingInfo.inputCarNames().split(",");
         int tryOfNumbers = inputRacingInfo.inputTryOfNumber();
 
+        outputRacingInfo.printRacingStart();
         CarRacer cars = new CarRacer(initiateCar(carNames, tryOfNumbers));
         List<Object> winner = checkRacingWinner.checkWinner(cars.getCars());
         outputRacingInfo.printFinalResult(winner);
     }
 
     public static List<Car> initiateCar(String[] carNames, int tryOfNumbers) {
-        outputRacingInfo.printRacingStart();
-
         List<Car> cars = new ArrayList<>();
 
         for (int i = 0; i < carNames.length; i++) {

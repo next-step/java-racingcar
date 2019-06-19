@@ -5,10 +5,10 @@ import java.util.Random;
 
 public class CarRacer {
     private final int GOSTOP_CRITERION = 4;
+    private final List<Car> cars;
 
     private OutputRacingData outputRacingInfo = new OutputRacingData();
     private Random random = new Random();
-    private final List<Car> cars;
 
     public CarRacer(List<Car> cars) {
         this.cars = cars;
