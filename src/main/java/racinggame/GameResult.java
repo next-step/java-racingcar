@@ -1,15 +1,15 @@
 package racinggame;
 
-import java.util.List;
+import java.util.Map;
 
 public class GameResult {
-    private final List<Integer> gameResult;
+    private final Map<String, Integer> gameResult;
 
     public GameResult(Cars cars) {
         this.gameResult = cars.getPositions();
     }
 
-    public List<Integer> getGameResult() {
+    public Map<String, Integer> getGameResult() {
         return this.gameResult;
     }
 }

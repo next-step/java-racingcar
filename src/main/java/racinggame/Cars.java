@@ -3,7 +3,9 @@ package racinggame;
 import com.google.common.base.Preconditions;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Cars {
     public static final int MIN_CAR_QUANTITY = 1;
@@ -22,10 +24,10 @@ public class Cars {
         return cars;
     }
 
-    public List<Integer> getPositions() {
-        List<Integer> positions = new ArrayList<>();
+    public Map<String, Integer> getPositions() {
+        Map<String, Integer> positions = new LinkedHashMap<>();
         for (Car car : cars) {
-            positions.add(car.getPosition());
+            positions.put(car.getCarName(), car.getPosition());
         }
         return positions;
     }
