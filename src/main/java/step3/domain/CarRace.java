@@ -3,6 +3,8 @@ package step3.domain;
 import step3.utils.NumberGenerator;
 import step3.utils.RandomNumberGenerator;
 
+import java.util.List;
+
 public class CarRace {
 
     private final static int MINIMUM_NUMBER_CAN_BE_INPUT = 1;
@@ -17,8 +19,13 @@ public class CarRace {
     public static CarRace raceStart(String inputCarNames, int numberOfTrials) {
         inputCarNamesValidation(inputCarNames);
         //TODO: String으로 입력된 자동차이름들을 배열 혹은 리스트로 저장하기.
+        String[] carNameList = convertCarNames(inputCarNames);
         numberOfTrialsValidation(numberOfTrials);
-        return new CarRace(Cars.makeCars(numberOfCars));
+        return new CarRace(Cars.makeCars(carNameList));
+    }
+
+    private static String[] convertCarNames(String inputCarNames) {
+        return inputCarNames.split(",");
     }
 
     public Cars executeTrials() {
