@@ -10,5 +10,6 @@ public class RacingCarGameFront {
         int numbersOfCars = scanner.nextInt();
         System.out.println("경주 할 회수는 몇 회 인가요?");
         int numbersOfRacing = scanner.nextInt();
+        RacingCarGameEngine carGameEngine = new RacingCarGameEngine(numbersOfRacing, new int[numbersOfCars]);
     }
 }
