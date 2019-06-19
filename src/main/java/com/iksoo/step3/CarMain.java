@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Random;
 
 public class CarMain {
-    //private static final long RANDOM_SEED = 190618;
     private static final int GOSTOP_CRITERION = 4;
     private static Random random = new Random();
     private static OutputRacingData outputRacingInfo;
@@ -27,20 +26,17 @@ public class CarMain {
         String[] carNames = inputRacingInfo.inputCarNames().split(",");
         int tryOfNumbers = inputRacingInfo.inputTryOfNumber();
 
-        Car[] cars = initiateCar(carNames);
-
+        Car[] cars = initiateCar(carNames, tryOfNumbers);
         startRacing(cars, tryOfNumbers);
-
         List<Object> winner = checkRacingWinner.checkResult(cars);
-
-        outputRacingInfo.printFinalResult(cars, tryOfNumbers, winner);
+        outputRacingInfo.printFinalResult(winner);
     }
 
-    public static Car[] initiateCar(String[] carNames) {
+    public static Car[] initiateCar(String[] carNames, int tryOfNumbers) {
         Car[] tempCars = new Car[carNames.length];
 
         for (int i = 0; i < carNames.length; i++) {
-            tempCars[i] = new Car(carNames[i]);
+            tempCars[i] = new Car(carNames[i], tryOfNumbers);
         }
 
         return tempCars;
@@ -55,15 +51,8 @@ public class CarMain {
 
     public static void doOneInning(Car[] cars) {
         for (int i = 0; i < cars.length; i++) {
-            //cars[i].addCarPosition(judgeGoOrStop(getRandom()));
+            cars[i].addNextInning(getRandom(), GOSTOP_CRITERION);
         }
-    }
-
-    public static String judgeGoOrStop(int random) {
-        if (random >= GOSTOP_CRITERION) {
-            return "1";
-        }
-        return "0";
     }
 
     public static int getRandom() {
