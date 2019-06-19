@@ -27,13 +27,15 @@ public class Car {
         DrivingRule drivingRule = carInformation.getDrivingRule();
         Position position = carInformation.getPosition();
 
-        if (drivingRule.isMovable()) {
-            Position step = Position.valueOf(ONE_STEP_DISTANCE);
-            position = Position.add(position, step);
-
-            CarName name = carInformation.getName();
-            carInformation = CarInformation.createWithPositionAndRule(name, position, drivingRule);
+        if (!drivingRule.isMovable()) {
+            return position;
         }
+
+        Position step = Position.valueOf(ONE_STEP_DISTANCE);
+        position = Position.add(position, step);
+
+        CarName name = carInformation.getName();
+        carInformation = CarInformation.createWithPositionAndRule(name, position, drivingRule);
         return position;
     }
 
