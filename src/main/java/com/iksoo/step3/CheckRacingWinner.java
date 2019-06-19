@@ -8,35 +8,32 @@ public class CheckRacingWinner {
     public List<Object> checkResult(Car[] cars) {
         List<Object> winner = new ArrayList<Object>();
 
-        int maxDistance = checkDistance(cars);
-        checkWinner(cars, winner, maxDistance);
+        int maxDistance = checkWinnerDistance(cars);
+        addWinnerList(cars, winner, maxDistance);
 
         return winner;
     }
 
 
-    public int checkDistance(Car[] cars) {
+    public int checkWinnerDistance(Car[] cars) {
         int maxDistance = 0;
         for (int i = 0; i < cars.length; i++) {
-            int carDistance = cars[i].getCurrentDistance();
+            int carDistance = cars[i].getFinalPosition();
             maxDistance = carDistance > maxDistance ? carDistance : maxDistance;
         }
 
         return maxDistance;
     }
 
-    public void checkWinner(Car[] cars, List<Object> winner, int maxDistance) {
+    public void addWinnerList(Car[] cars, List<Object> winner, int maxDistance) {
         for (int i = 0; i < cars.length; i++) {
-            addWinnerList(cars[i], winner, maxDistance);
+            isWinnerThenAdd(cars[i], winner, maxDistance);
         }
     }
 
-    public boolean addWinnerList(Car car, List<Object> winner, int maxDistance) {
-        if (maxDistance == car.getCurrentDistance()) {
+    public void isWinnerThenAdd(Car car, List<Object> winner, int maxDistance) {
+        if (maxDistance == car.getFinalPosition()) {
             winner.add(car.getCarName());
-            return true;
         }
-
-        return false;
     }
 }
