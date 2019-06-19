@@ -100,4 +100,16 @@ class CarTest {
         boolean isWin = car.isWinner(2);
         assertThat(isWin).isTrue();
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4, 5})
+    void getPosition(int time) {
+        car.nextRace();
+        car.nextRace();
+        car.nextRace();
+        car.nextRace();
+        car.nextRace();
+        int carPosition = car.getPosition(time - 1);
+        assertThat(carPosition).isBetween(0, time);
+    }
 }

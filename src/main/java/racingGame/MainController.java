@@ -13,6 +13,7 @@ public class MainController {
         Racing racing = new Racing(inputTime, Util.stringSplitToList(inputNames, ","));
         racing.raceStart();
 
+        OutputView.printRace(racing.getCars(), inputTime);
         OutputView.printWinners(Util.joinListString(racing.getWinnerNames(), ", "));
     }
 }

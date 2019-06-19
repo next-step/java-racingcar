@@ -1,7 +1,5 @@
 package racingGame.domain;
 
-import racingGame.view.OutputView;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -43,7 +41,6 @@ public class Racing {
     public void raceStart() {
         for (int i = 0; i < this.time; i++) {
             this.raceCarMoveLoop();
-            OutputView.printRace(this.cars);
         }
     }
 
