@@ -50,5 +50,8 @@ public class Car {
         return this.name;
     }
 
+    public boolean isWinner(int winPosition) {
+        return getPosition() == winPosition;
+    }
 
 }

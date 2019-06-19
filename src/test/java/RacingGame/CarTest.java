@@ -92,4 +92,12 @@ class CarTest {
         car = new Car("jojo");
         assertThat(car.getName()).isEqualTo("jojo");
     }
+
+    @Test
+    void isWinner() {
+        car.move(true);
+        car.move(true);
+        boolean isWin = car.isWinner(2);
+        assertThat(isWin).isTrue();
+    }
 }
