@@ -1,6 +1,6 @@
 package com.jaeyeonling.racingcar.domain;
 
-import com.jaeyeonling.exception.*;
+import com.jaeyeonling.racingcar.exception.*;
 import com.jaeyeonling.racingcar.utils.StringUtils;
 
 import java.util.Arrays;

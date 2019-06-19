@@ -1,6 +1,6 @@
 package com.jaeyeonling.racingcar.domain;
 
-import com.jaeyeonling.exception.*;
+import com.jaeyeonling.racingcar.exception.*;
 import com.jaeyeonling.racingcar.utils.StringUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

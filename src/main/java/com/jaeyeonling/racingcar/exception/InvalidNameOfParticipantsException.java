@@ -1,4 +1,4 @@
-package com.jaeyeonling.exception;
+package com.jaeyeonling.racingcar.exception;
 
 public class InvalidNameOfParticipantsException extends IllegalArgumentException {
 

@@ -1,6 +1,6 @@
 package com.jaeyeonling.racingcar.utils;
 
-import com.jaeyeonling.exception.RepeatCountNegativeException;
+import com.jaeyeonling.racingcar.exception.RepeatCountNegativeException;
 
 import java.util.Objects;
 

@@ -1,6 +1,6 @@
 package com.jaeyeonling.racingcar.utils;
 
-import com.jaeyeonling.exception.BoundNegativeException;
+import com.jaeyeonling.racingcar.exception.BoundNegativeException;
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;

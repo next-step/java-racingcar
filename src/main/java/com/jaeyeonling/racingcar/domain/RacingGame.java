@@ -1,7 +1,7 @@
 package com.jaeyeonling.racingcar.domain;
 
-import com.jaeyeonling.exception.CompleteException;
-import com.jaeyeonling.exception.NotCompleteException;
+import com.jaeyeonling.racingcar.exception.CompleteException;
+import com.jaeyeonling.racingcar.exception.NotCompleteException;
 
 public class RacingGame {
 
