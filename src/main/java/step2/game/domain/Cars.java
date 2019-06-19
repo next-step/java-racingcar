@@ -15,9 +15,7 @@ public class Cars {
 
     public static Cars newCars(List<CarName> carNames) {
         int numberOfCar = carNames.size();
-        if (numberOfCar == 0) {
-            throw new IllegalArgumentException("경주 자동차는 1대 이상 추가해야 합니다.");
-        }
+        assertCarNames(numberOfCar);
 
         List<Car> newCars = new ArrayList<>();
         for (int carNo = 0; carNo < numberOfCar; carNo++) {
@@ -41,6 +39,12 @@ public class Cars {
         return cars.stream()
                    .map(Car::new)
                    .collect(Collectors.toList());
+    }
+
+    private static void assertCarNames(final int numberOfCar) {
+        if (numberOfCar == 0) {
+            throw new IllegalArgumentException("경주 자동차는 1대 이상 추가해야 합니다.");
+        }
     }
 
 }
