@@ -7,50 +7,47 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
 
+    private final static String DELIMITER = " ";
+    private final static int FRIST_NUMBER = 0;
+    private final static int CALCULATE_STEP = 2;
+
     private int total;
-    private String inputFormula;
-    private Calculator calculator;
 
     public StringCalculator(){
-        calculator = new Calculator();
-    }
-
-    public void setFormula(String formula) {
-        if(StringUtils.isEmpty(formula)) throw new IllegalArgumentException();
-        verifyMathematicalSymbol(formula);
-        this.inputFormula = formula;
+        this.total = 0;
     }
 
     public int getTotal() {
-        calculate();
         return this.total;
     }
 
     private String[] split(String str) {
-        return str.split(" ");
+        return str.split(DELIMITER);
     }
 
-    private StringCalculator calculate() {
-        String[] strings = split(this.inputFormula);
+    public StringCalculator calculate(String inputFormula) {
+        if(StringUtils.isEmpty(inputFormula)) throw new IllegalArgumentException();
+        verifyMathematicalSymbol(inputFormula);
+        String[] strings = split(inputFormula);
 
-        int firstNumber = Integer.parseInt(strings[0]);
-        calculator.initialize(firstNumber);
+        int total = Integer.parseInt(strings[FRIST_NUMBER]);
 
-        for (int i = 1; i < strings.length; i+=2) {
+        for (int i = 1; i < strings.length; i+=CALCULATE_STEP) {
             String symbol = strings[i];
-            int number = Integer.parseInt(strings[i + 1]);
-            calculator = calculates(symbol, number);
+            int number = stringConvertToInt(strings[i + 1]);
+            CalculateOperator selectedOperator = CalculateOperator.getOperatorBySymbol(symbol);
+            total = selectedOperator.calculate(total, number);
         }
-        this.total = calculator.getTotal();
+        this.total = total;
         return this;
     }
 
-    private Calculator calculates(String symbol, int number) {
-        if ("+".equals(symbol)) return calculator.add(number);
-        if ("-".equals(symbol)) return calculator.subtract(number);
-        if ("*".equals(symbol)) return calculator.multiply(number);
-        if ("/".equals(symbol)) return calculator.divide(number);
-        throw new IllegalArgumentException();
+    private int stringConvertToInt(String str) {
+        try {
+            return Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 계산식 입니다.");
+        }
     }
 
     private void verifyMathematicalSymbol(String input) {
