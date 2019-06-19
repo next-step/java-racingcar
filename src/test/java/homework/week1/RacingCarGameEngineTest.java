@@ -59,7 +59,13 @@ public class RacingCarGameEngineTest {
     void printRacingCars() {
         System.out.println("printRacingCars");
         int[] printTestArr = {1,2,3};
-        carGameFront.printRacingCars(printTestArr);
-        carGameFront.printRacingCars(printTestArr);
+        carGameFront.printRacingCar(printTestArr);
+        carGameFront.printRacingCar(printTestArr);
+    }
+
+    @Test
+    void goRacingGame() {
+        System.out.println("goRacingGame");
+        carGameFront.goRacingGame(carGameEngine);
     }
 }

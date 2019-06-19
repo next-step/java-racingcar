@@ -29,12 +29,12 @@
   해당 자동차 포지션에 해당하는 carPositions 의 value 를 담는다. move 매소드의 리턴값은 1회 경주한 후 경주한 자동차들의
   전진한 횟수를 담는 int 형 배열이다.
 * UI 로직 기능1 : 리턴형 void 이고 매개변수로 move 매소드 호출 결과인 int 형 배열을 받아 
-  콘솔에 1회 경주당 자동차들의 전진을 출력하는 printRacingCar 매소드이다.
+  콘솔에 1회 경주당 자동차들의 전진을 출력하는 printMoveRacingCar 매소드이다.
   매개변수로 받는 int 형 배열의 요소갯수 만큼 해당 value 를 매개변수로 printRunCar 메소드를 호출한다.
 * UI 로직 기능2 : 자동자들의 run count 정보를 담고있는 int형 배열인 carPositions 요소의 value 값 만큼 
   '-'을 출력해서 콘솔에 보여주는 리턴형 void 이고 자동차 전진횟수를 의미하는 int 형 매개변수가 있는 printRunCar 매소드이다.
-* UI 로직 기능3 : 사용자 입력으로 받은 경수 횟수 만큼 printMoveRacingCar 를 호출하는 void 리턴형이고 매개변수가 없는 
-  goRacingGame 매소드이다. 
+* UI 로직 기능3 : 사용자 입력으로 받은 경주 횟수를 int 형 매개변수로 하고 그 만큼 move 와 printRacingCar 를 호출하는
+  void 리턴형인 goRacingGame 매소드이다. 
 * UI 로직 기능4 : 사용자 입력값이 유효한 값이 올때까지 입력을 받도록 유도하는 void 리턴형 tryValidUserInputValue 매서드이다.
   valicateUserInputValue 의 호출결과 exception 을 catch 하여 사용자 입력받는 부분을 다시 호출하도록 한다.
 * UI 로직 기능5 : 사용자가 원하는 정보를 입력하도록 유도하는 void 리턴형 doUserInputValue 매서드이다.
