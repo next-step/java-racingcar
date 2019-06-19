@@ -17,7 +17,6 @@ public class CarName {
             CarName carName = new CarName(value);
             CACHE.put(value, carName);
         }
-
         return CACHE.get(value);
     }
 

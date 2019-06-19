@@ -2,7 +2,6 @@ package racingcar.model;
 
 public class RacingDrivingRule implements DrivingRule {
     public static final int MOVEMENT_CRITERIA = 4;
-
     private NumberGenerationStrategy numberGenerationStrategy;
 
     private RacingDrivingRule(NumberGenerationStrategy numberGenerationStrategy) {

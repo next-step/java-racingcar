@@ -17,7 +17,6 @@ public class Position implements Comparable<Position> {
             Position position = new Position(value);
             CACHE.put(value, position);
         }
-
         return CACHE.get(value);
     }
 

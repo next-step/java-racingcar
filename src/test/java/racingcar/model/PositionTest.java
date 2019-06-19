@@ -8,6 +8,7 @@ class PositionTest {
     @Test
     void 위치_객체_생성_테스트() {
         Position position = Position.valueOf(1);
+
         assertThat(position).isInstanceOf(Position.class);
     }
 
@@ -27,5 +28,13 @@ class PositionTest {
         Position position2 = Position.valueOf(bigNumber);
 
         assertThat(position1.compareTo(position2)).isEqualTo(smallNumber.compareTo(bigNumber));
+    }
+
+    @Test
+    void Position객체를_Integer로_변환할_수_있다() {
+        int number = 10;
+        Position position = Position.valueOf(number);
+
+        assertThat(Position.toInteger(position)).isEqualTo(number);
     }
 }

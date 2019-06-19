@@ -8,7 +8,7 @@ import racingcar.model.Referee;
 import java.util.List;
 
 public class RacingGame {
-    private Cars cars;
+    private final Cars cars;
 
     public RacingGame(List<CarName> carNames) {
         this.cars = Cars.createWithNames(carNames);

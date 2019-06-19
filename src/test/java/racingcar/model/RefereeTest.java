@@ -3,29 +3,27 @@ package racingcar.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
 class RefereeTest {
     private Cars cars;
+    private List<CarName> names;
 
     @BeforeEach
     void setUp() {
-        List<Car> carList = new ArrayList<>();
         DrivingRule alwaysTrueRule = () -> true;
         DrivingRule alwaysFalseRule = () -> false;
 
-        Car car1 = Car.createWithDrivingRule(CarName.valueOf("yong"), alwaysTrueRule);
-        Car car2 = Car.createWithDrivingRule(CarName.valueOf("pobi"), alwaysTrueRule);
-        Car car3 = Car.createWithDrivingRule(CarName.valueOf("crong"), alwaysFalseRule);
+        names = Arrays.asList(CarName.valueOf("yong")
+                , CarName.valueOf("pobi")
+                , CarName.valueOf("crong"));
 
-        carList.add(car1);
-        carList.add(car2);
-        carList.add(car3);
-
-        cars = Cars.create(carList);
+        cars = Cars.create(Arrays.asList(Car.createWithDrivingRule(names.get(0), alwaysTrueRule)
+                , Car.createWithDrivingRule(names.get(1), alwaysTrueRule)
+                , Car.createWithDrivingRule(names.get(2), alwaysFalseRule)));
     }
 
     @Test
@@ -33,8 +31,8 @@ class RefereeTest {
         cars.move();
         cars.move();
 
-        CarInformation expectedWinner1 = CarInformation.create(CarName.valueOf("yong"));
-        CarInformation expectedWinner2 = CarInformation.create(CarName.valueOf("pobi"));
+        CarInformation expectedWinner1 = CarInformation.create(names.get(0));
+        CarInformation expectedWinner2 = CarInformation.create(names.get(1));
 
         assertThat(Referee.judgeWinners(cars)).containsExactly(expectedWinner1, expectedWinner2);
     }
