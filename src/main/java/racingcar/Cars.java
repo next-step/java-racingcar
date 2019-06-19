@@ -12,6 +12,10 @@ public class Cars {
     cars = makeCars(carNames);
   }
 
+  public Cars(List<Car> cars) {
+    this.cars = cars;
+  }
+
   private List<Car> makeCars(String[] carNames) {
     return Arrays.stream(carNames)
         .map(Car::new)
