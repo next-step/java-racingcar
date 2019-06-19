@@ -15,6 +15,8 @@ public class DashTrackingMonitorView extends RacingMonitorView {
 
 	private static final String DASH_SYMBOL = "-";
 
+	private static final String NAME_SEPARATOR = ":";
+
 	public static final String EMPTY_NEW_LINE = " ";
 
 	private MessagePrinter printer;
@@ -45,20 +47,22 @@ public class DashTrackingMonitorView extends RacingMonitorView {
 
 		currentPositionOfPlayers
 				.stream()
-				.forEach(record -> printer.printMessage(record.getPlayerName() + ":" + this.renderPosition(record.getPosition())));
+				.forEach(record -> printer.printMessage(this.renderPosition(record)));
 
 		// 라운드 업데이트 후 공백라인 출력
 		printer.printMessage(EMPTY_NEW_LINE);
 	}
 
-	private String renderPosition(int position) {
-		String result = DASH_SYMBOL;
+	private String renderPosition(RacingRecord record) {
+		StringBuilder result = new StringBuilder(record.getPlayerName());
+		result.append(NAME_SEPARATOR);
+		result.append(DASH_SYMBOL);
 
 		// 첫 출발 위치를 표시하기 위해 position이 1보다 큰만큼 점선이 추가되도록 조정
-		for(int i = 1; i < position; i++){
-			result += DASH_SYMBOL;
+		for(int i = 1; i < record.getPosition(); i++){
+			result.append(DASH_SYMBOL);
 		}
 
-		return result;
+		return result.toString();
 	}
 }
