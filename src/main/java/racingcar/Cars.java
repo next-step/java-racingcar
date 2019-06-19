@@ -1,20 +1,21 @@
 package racingcar;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
-  private List<Car> cars = new ArrayList<>();
+  private List<Car> cars;
 
   public Cars(String[] carNames) {
-    makeCars(carNames);
+    cars = makeCars(carNames);
   }
 
-  private void makeCars(String[] carNames) {
-    for (int i = 0; i < carNames.length; i++) {
-      cars.add(i, new Car(carNames[i]));
-    }
+  private List<Car> makeCars(String[] carNames) {
+    return Arrays.stream(carNames)
+        .map(Car::new)
+        .collect(Collectors.toList());
   }
 
   public List<Car> moveCars() {
