@@ -12,8 +12,8 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars makeCars(CarNameList list) {
-        return new Cars(list.getCarNameList()
+    public static Cars makeCars(CarNames carNames) {
+        return new Cars(carNames.getCarNames()
                 .stream()
                 .map(Car::new)
                 .collect(Collectors.toList()));

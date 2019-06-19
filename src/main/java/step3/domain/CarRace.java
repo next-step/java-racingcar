@@ -19,14 +19,14 @@ public class CarRace {
     public static CarRace raceStart(String inputCarNames, int numberOfTrials) {
         inputCarNamesValidation(inputCarNames);
         numberOfTrialsValidation(numberOfTrials);
-        CarNameList carNameList = convertCarNames(inputCarNames);
+        CarNames carNames = convertCarNames(inputCarNames);
 
-        return new CarRace(Cars.makeCars(carNameList));
+        return new CarRace(Cars.makeCars(carNames));
     }
 
-    private static CarNameList convertCarNames(String inputCarNames) {
+    private static CarNames convertCarNames(String inputCarNames) {
         String[] carNameArray = inputCarNames.split(CAR_NAME_SEPARATOR);
-        return CarNameList.makeCarNameList(carNameArray);
+        return CarNames.makeCarNames(carNameArray);
     }
 
     public Cars executeTrials() {
