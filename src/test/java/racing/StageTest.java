@@ -82,19 +82,4 @@ class StageTest {
 
 	}
 
-
-	/**
-	 * 지정한 값으로 고정 가속하는 플레이어 Stub 생성 메서드
-	 * @param amount 가속가중치 값
-	 * @return
-	 */
-	private Player createStaticAmountAcceleratePlayer(int amount){
-		return new Player(new DriveAccelerator() {
-			@Override
-			public int getAmount() {
-				return amount;
-			}
-		}, new RacingCar());
-	}
-
 }
