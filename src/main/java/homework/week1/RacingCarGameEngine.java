@@ -31,4 +31,12 @@ public class RacingCarGameEngine {
         }
         return true;
     }
+
+    int getRunCount(boolean isRun, int runCount) {
+        if (isRun) {
+            return ++runCount;
+        }
+        return runCount;
+    }
+
 }

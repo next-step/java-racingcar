@@ -28,4 +28,11 @@ public class RacingCarGameEngineTest {
         assertThat(carGameEngine.checkRunCondition(4)).isTrue();
 
     }
+
+    @Test
+    void getRunCount() {
+        System.out.println("getRunCount");
+        assertThat(carGameEngine.getRunCount(true, 0)).isEqualTo(1);
+        assertThat(carGameEngine.getRunCount(false, 0)).isEqualTo(0);
+    }
 }
