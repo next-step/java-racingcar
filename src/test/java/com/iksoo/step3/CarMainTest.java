@@ -1,26 +1,20 @@
 package com.iksoo.step3;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarMainTest {
-    String[] carNames = {"pobi","crong","honux"};
-    Car[] cars;
+    private final int TRY_OF_NUMBERS = 3;
+
+    private String[] carNames = {"pobi", "crong", "honux"};
+    private List<Car> cars = CarMain.initiateCar(carNames, TRY_OF_NUMBERS);
 
     @Test
     void initiateCarTest() {
-        cars = CarMain.initiateCar(carNames);
-        assertThat(cars[0].getCarName()).contains("pobi");
-        assertThat(cars[1].getCarName()).contains("crong");
-        assertThat(cars[2].getCarName()).contains("honux");
-    }
-
-    @Test
-    void judgeGoOrStopTest() {
-        assertThat(CarMain.judgeGoOrStop(3)).isEqualTo("0");
-        assertThat(CarMain.judgeGoOrStop(4)).isEqualTo("1");
-        assertThat(CarMain.judgeGoOrStop(5)).isEqualTo("1");
+        cars = CarMain.initiateCar(carNames, TRY_OF_NUMBERS);
+        assertThat(cars.get(0).getCarName()).contains("pobi");
     }
 }
