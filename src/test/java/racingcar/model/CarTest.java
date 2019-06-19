@@ -14,7 +14,7 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(strings = {"name", "test1"})
     void createCarNameSuccess(String name) {
-        Car car = Car.newInstance(name);
+        Car car = Car.of(name);
         assertThat(car.getName()).isEqualTo(name);
     }
 
@@ -36,6 +36,6 @@ public class CarTest {
     }
 
     private Car createCar() {
-        return Car.newInstance("test1");
+        return Car.of("test1");
     }
 }

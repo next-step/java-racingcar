@@ -23,7 +23,7 @@ public class Cars {
 
     public static Cars from(List<String> names) {
         validateCarSize(names);
-        List<Car> cars = names.stream().map(Car::newInstance).collect(Collectors.toList());
+        List<Car> cars = names.stream().map(Car::of).collect(Collectors.toList());
         return new Cars(cars);
     }
 

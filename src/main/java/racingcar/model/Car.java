@@ -14,7 +14,7 @@ public class Car {
         this.position = position;
     }
 
-    public static Car newInstance(String name) {
+    public static Car of(String name) {
         validateEmpty(name);
         return new Car(name, DEFAULT_POSITION);
     }
