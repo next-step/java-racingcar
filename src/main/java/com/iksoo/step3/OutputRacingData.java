@@ -7,29 +7,24 @@ public class OutputRacingData {
         System.out.println();
     }
 
-    public void printFinalResult(Car[] car, int tryOfNumber, List<Object> winner) {
+    OutputRacingData() {
         System.out.println("\n실행 결과");
+    }
+
+    public void printFinalResult(Car[] car, int tryOfNumber, List<Object> winner) {
+        printBlankLine();
 
         for (int i = 0; i < tryOfNumber; i++) {
-            printEachInning(car, i + 1);
+            printEachInning(car);
         }
 
         printWinner(winner);
     }
 
-    public void printEachInning(Car[] car, int inning) {
+    public void printEachInning(Car[] car) {
         for (int i = 0; i < car.length; i++) {
-            printResultOfOne(car[i].getCarName(), car[i].getCarPosition(), inning);
+            car[i].printInningResult();
         }
-        printBlankLine();
-    }
-
-    public void printResultOfOne(String carName, String carPosition, int inning) {
-        System.out.print(carName + " : ");
-        for (int i = 0; i < inning; i++) {
-            System.out.print(carPosition.charAt(i) == '1' ? "-" : "");
-        }
-        printBlankLine();
     }
 
     public void printWinner(List<Object> winner) {
