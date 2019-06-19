@@ -1,4 +1,4 @@
-package step2;
+package step2.game.dto;
 
 public class RacingGameInputModel {
     private final int numberOfCar;

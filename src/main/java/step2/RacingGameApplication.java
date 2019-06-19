@@ -4,7 +4,10 @@ import java.util.List;
 import java.util.Scanner;
 
 import step2.game.domain.Cars;
+import step2.game.dto.RacingGameInputModel;
+import step2.game.dto.RacingGameResultModel;
 import step2.game.service.RacingGame;
+import step2.game.ui.ResultView;
 
 public class RacingGameApplication {
 

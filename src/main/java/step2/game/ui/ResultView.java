@@ -1,8 +1,9 @@
-package step2;
+package step2.game.ui;
 
 import java.util.List;
 import java.util.stream.Stream;
 
+import step2.game.dto.RacingGameResultModel;
 import step2.game.domain.Car;
 import step2.game.domain.Cars;
 
