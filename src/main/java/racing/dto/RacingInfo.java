@@ -28,14 +28,14 @@ public class RacingInfo {
 
     private static void validateCarNames(List<String> splitCarNames) {
 
-        if (splitCarNames.size() >= VALID_CAR_NAMES_COUNT) {
+        if (splitCarNames.size() < VALID_CAR_NAMES_COUNT) {
             throw new IllegalArgumentException(CAR_NAMES_EXCEPTION_MESSAGE);
         }
     }
 
     private static void validateAttempts(int attempts) {
 
-        if(attempts >= VALID_ATTEMPTS) {
+        if (attempts < VALID_ATTEMPTS) {
             throw new IllegalArgumentException(ATTEMPTS_EXCEPTION_MESSAGE);
         }
     }

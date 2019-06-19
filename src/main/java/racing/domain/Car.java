@@ -19,6 +19,7 @@ public class Car {
 
     public static Car of(String name) {
 
+        validateName(name);
         return new Car(name);
     }
 
@@ -32,6 +33,13 @@ public class Car {
     private boolean isMoveValue(int value) {
 
         return value >= MOVE_THRESHOLD;
+    }
+
+    private static void validateName(String name) {
+
+        if(name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("유효하지 않은 차량명입니다.");
+        }
     }
 
     public int getPosition() {
