@@ -4,24 +4,30 @@ public class Car {
     private final static int INITIAL_POSITION = 0;
     private final static int DISTANCE_PER_MOVE = 1;
     private final static int MOVE_CRITERION = 4;
-    private int position;
 
-    public Car() {
+    private int position;
+    private String carName;
+
+    public Car(String carName) {
         this.position = INITIAL_POSITION;
+        this.carName = carName;
+    }
+
+    public void move(int randomNumber) {
+        if (canMove(randomNumber)) {
+            position += DISTANCE_PER_MOVE;
+        }
+    }
+
+    private boolean canMove(int randomNumber) {
+        return randomNumber >= MOVE_CRITERION;
     }
 
     public int getPosition() {
         return position;
     }
 
-    public int move(int randomNumber) {
-        if (canMove(randomNumber)) {
-            return position += DISTANCE_PER_MOVE;
-        }
-        return position;
-    }
-
-    private boolean canMove(int randomNumber) {
-        return randomNumber >= MOVE_CRITERION;
+    public String getCarName() {
+        return carName;
     }
 }
