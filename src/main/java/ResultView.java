@@ -1,5 +1,11 @@
 public class ResultView {
-    void disPlayRacingResult(int position,String[] gameResult){
-        System.out.println(gameResult[position]);
+    void disPlayRacingResult(CarInfo carInfo){
+        String carStatus="";
+
+        for(int i=0; i< carInfo.getCarPosition(); ++i)
+            carStatus += "-";
+        carInfo.setCarStatus(carStatus);
+        System.out.println(carInfo.getCarName()+ ": "+ carInfo.getCarStatus());
     }
+
 }
