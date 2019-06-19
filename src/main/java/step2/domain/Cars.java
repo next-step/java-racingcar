@@ -3,6 +3,7 @@ package step2.domain;
 import step2.utils.NumberGenerator;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -14,7 +15,8 @@ public class Cars {
     }
 
     public List<Car> getCars() {
-        return cars;
+        List<Car> readOnlyCars = Collections.unmodifiableList(cars);
+        return readOnlyCars;
     }
 
     public static Cars makeCars(int numberOfCars) {
