@@ -52,4 +52,58 @@ class PositionTest {
         // then 2
         assertThat(position.value()).isEqualTo(0);
     }
+
+    @DisplayName("max 메서드가 잘 동작하는지 - a 가 큰 경우")
+    @Test
+    void maxWhenAIsGreaterThanB() {
+        // given
+        final Position one = Position.origin().add(1);
+        final Position two = Position.origin().add(2);
+        // when
+        final Position result = Position.max(one, two);
+        // then
+        assertThat(result).isEqualTo(two);
+    }
+
+    @DisplayName("max 메서드가 잘 동작하는지 - b 가 큰 경우")
+    @Test
+    void maxWhenAIsLessThanB() {
+        // given
+        final Position one = Position.origin().add(1);
+        final Position two = Position.origin().add(2);
+        // when
+        final Position result = Position.max(two, one);
+        // then
+        assertThat(result).isEqualTo(two);
+    }
+
+    @DisplayName("max 메서드가 잘 동작하는지 - a, b 가 같은 경우")
+    @Test
+    void maxWhenAIsEqualToB() {
+        // given
+        final Position one = Position.origin().add(1);
+        // when
+        final Position result = Position.max(one, one);
+        // then
+        assertThat(result).isEqualTo(one);
+    }
+
+    @DisplayName("두 패러미터 중에 하나라도 null 이면 IllegalArgumentException 발생해야함")
+    @Test
+    void maxShouldThrowsIllegalArgumentExceptionWhenGivenArgumentIsNull() {
+        // given
+        final Position notNullPosition = Position.origin().add(1);
+
+        assertThatIllegalArgumentException()
+                // when 1
+                .isThrownBy(() -> Position.max(null, notNullPosition))
+                // then 1
+                .withMessageContaining("must not be null");
+
+        assertThatIllegalArgumentException()
+                // when 2
+                .isThrownBy(() -> Position.max(notNullPosition, null))
+                // then 2
+                .withMessageContaining("must not be null");
+    }
 }
