@@ -1,6 +1,8 @@
 package RacingGame;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Racing {
@@ -46,15 +48,16 @@ public class Racing {
     }
 
     public int maxPosition() {
-        Optional<Car> max = cars.stream().max(Comparator.comparing(Car::getPosition));
-
-        return max.get().getPosition();
+        return cars.stream()
+                .max(Comparator.comparing(Car::getPosition))
+                .get().getPosition();
     }
 
     public List<String> getWinnerNames() {
-        return cars.stream().filter(car -> {
-            int maxPosition = maxPosition();
-            return car.getPosition() == maxPosition;
-        }).map(Car::getName).collect(Collectors.toList());
+        int maxPosition = maxPosition();
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 }
