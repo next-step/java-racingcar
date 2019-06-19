@@ -16,10 +16,7 @@ public class StringCalculator {
         for (int i = 1; i < inputStr.length; i += 2) {
 
             String operation = inputStr[i];
-
-            num = Calculator.calculate(operation, num, Integer.valueOf(inputStr[i + 1]));
-
-
+            num = Calculator.calculateByOperation(operation).getCalculate().apply(num, Integer.valueOf(inputStr[i + 1]));
         }
 
         return num;
