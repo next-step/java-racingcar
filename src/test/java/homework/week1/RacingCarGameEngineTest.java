@@ -7,10 +7,12 @@ import static org.assertj.core.api.Assertions.*;
 
 public class RacingCarGameEngineTest {
         private RacingCarGameEngine carGameEngine;
+        private RacingCarGameFront carGameFront;
     @BeforeEach
     void setUp() {
         System.out.println("setUp");
         carGameEngine = new RacingCarGameEngine(5, new int[3]);
+        carGameFront = new RacingCarGameFront();
     }
 
     @Test
@@ -47,9 +49,17 @@ public class RacingCarGameEngineTest {
 
     @Test
     void validateUserInputValue() {
-        System.out.println();
+        System.out.println("validateUserInputValue");
         assertThatIllegalArgumentException().isThrownBy(()->{
             carGameEngine.validateUserInputValue(0);
         });
+    }
+
+    @Test
+    void printRacingCars() {
+        System.out.println("printRacingCars");
+        int[] printTestArr = {1,2,3};
+        carGameFront.printRacingCars(printTestArr);
+        carGameFront.printRacingCars(printTestArr);
     }
 }
