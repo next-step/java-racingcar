@@ -1,38 +1,23 @@
 package racing.model;
 
-import racing.io.OutputView;
-
 import java.util.List;
 
 public class RacingGame {
 
     private List<Car> cars;
-    private int gameCount;
 
-
-    private RacingGame(List<Car> cars, int gameCount) {
+    private RacingGame(List<Car> cars) {
         this.cars = cars;
-        this.gameCount = gameCount;
     }
 
-    public static RacingGame of(List<Car> cars, int gameCount) {
-        return new RacingGame(cars, gameCount);
+    public static RacingGame of(List<Car> cars) {
+        return new RacingGame(cars);
     }
 
 
     public void run() {
-        while (gameCount != 0) {
-            movingCars();
-            viewResult();
-            gameCount--;
-        }
+        movingCars();
 
-        OutputView.showWinner(this.cars);
-
-    }
-
-    private void viewResult() {
-        OutputView.view(this.cars);
     }
 
     private void movingCars() {
@@ -43,5 +28,9 @@ public class RacingGame {
         if (RandomNumberCreator.getZeroToNine() >= 4) car.move();
     }
 
+
+    public List<Car> getCars() {
+        return this.cars;
+    }
 
 }
