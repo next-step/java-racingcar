@@ -1,20 +1,26 @@
-package step2;
+package step3.game.domain;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import step2.game.domain.Cars;
-import step2.game.domain.RacingGameRecord;
-
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class RacingGameRecordTest {
     private RacingGameRecord racingGameRecord;
 
     @BeforeEach
     void before() {
-        this.racingGameRecord = RacingGameRecord.newGame(Cars.newCars(3));
+        List<CarName> carNames = new ArrayList<>();
+        carNames.add(new CarName("pobi"));
+        carNames.add(new CarName("crong"));
+        carNames.add(new CarName("honux"));
+        this.racingGameRecord = RacingGameRecord.newGame(Cars.newCars(carNames));
     }
 
     @Test
@@ -48,6 +54,19 @@ public class RacingGameRecordTest {
         Cars turnResult = previousTurn.startTurn();
         racingGameRecord.record(turnResult);
         assertThat(racingGameRecord.getResult().size()).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("우승자는 한 명 이상")
+    void winners_count() {
+        assertThat(racingGameRecord.winners().size() > 0).isTrue();
+    }
+
+    @Test
+    @DisplayName("게임 기록이 없는 상태에서 우승자 조회")
+    void no_record_game() {
+        RacingGameRecord record = new RacingGameRecord(new ArrayList<>());
+        assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(record::winners);
     }
 
 }

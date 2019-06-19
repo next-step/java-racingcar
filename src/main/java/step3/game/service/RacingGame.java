@@ -1,10 +1,9 @@
-package step2.game.service;
+package step3.game.service;
 
-import java.util.List;
-
-import step2.game.dto.RacingGameInputModel;
-import step2.game.domain.Cars;
-import step2.game.domain.RacingGameRecord;
+import step3.game.domain.Cars;
+import step3.game.domain.RacingGameRecord;
+import step3.game.dto.RacingGameInputModel;
+import step3.game.dto.RacingGameResultModel;
 
 public class RacingGame {
     private final RacingGameInputModel racingGameInputModel;
@@ -13,8 +12,8 @@ public class RacingGame {
         this.racingGameInputModel = racingGameInputModel;
     }
 
-    public List<Cars> start() {
-        Cars cars = Cars.newCars(racingGameInputModel.getNumberOfCar());
+    public RacingGameResultModel start() {
+        Cars cars = Cars.newCars(racingGameInputModel.getCarNames());
         RacingGameRecord racingGameRecord = RacingGameRecord.newGame(cars.startTurn());
 
         int times = racingGameInputModel.getTimes();
@@ -23,7 +22,7 @@ public class RacingGame {
             racingGameRecord.record(previousCars.startTurn());
         }
 
-        return racingGameRecord.getResult();
+        return new RacingGameResultModel(racingGameRecord.getResult(), racingGameRecord.winners());
     }
 
 }
