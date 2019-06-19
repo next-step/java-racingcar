@@ -13,15 +13,8 @@ public class RacingPositionTest {
 
     @BeforeEach
     void init(){
-        car = new Car();
+        car = new Car("testCar");
         car.carPositionUpdate(INIT_RANDOMNUMBER);
-    }
-
-    @Test
-    @DisplayName("0~10까지 랜덤 숫자 가져오기 테스트")
-    void carPositionSatatusTest(){
-        int randomNumber = Utils.createRandomNumber();
-        assertThat(randomNumber).isBetween(0, 9);
     }
 
     @Test
