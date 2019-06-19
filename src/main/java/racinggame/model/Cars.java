@@ -11,6 +11,7 @@ import java.util.stream.Stream;
 import static java.util.stream.Collectors.toList;
 
 public class Cars {
+  private static final String SEPARATOR = ",";
   private final List<Car> cars;
 
 
@@ -25,9 +26,21 @@ public class Cars {
     return this;
   }
 
-  public List<Integer> getCarsStatus() {
+  public List<Car> getCars() {
+    return cars;
+  }
+
+  public String getWinner() {
+    int max = 0;
+    for (Car car : cars) {
+      if (max <= car.getStatus()) {
+        max = car.getStatus();
+      }
+    }
+    final int t = max;
     return cars.stream()
-               .map(Car::getStatus)
-               .collect(toList());
+               .filter(c -> c.getStatus() == t)
+               .map(Car::getName)
+               .collect(Collectors.joining(", "));
   }
 }
