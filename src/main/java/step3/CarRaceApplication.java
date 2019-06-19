@@ -10,19 +10,17 @@ public class CarRaceApplication {
     private static CarRace carRace;
 
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        final String inputCarNames = inputView.getCarNames();
-        final int numberOfTrials = inputView.getNumberOfTrials();
+        final String inputCarNames = InputView.getCarNames();
+        final int numberOfTrials = InputView.getNumberOfTrials();
 
         carRace = CarRace.raceStart(inputCarNames, numberOfTrials);
 
-        OutputView outputView = new OutputView();
-        outputView.showResultTitle();
-        for (int i = 0; i < numberOfTrials; i++) {
+        OutputView.showResultTitle();
+        for (int i = 0; i < numberOfTrials; i++) { //TODO: 모델에 위임하고 VO리턴받아서 OutputView에 전달
             Cars raceResult = carRace.executeTrials();
-            outputView.showResult(raceResult);
+            OutputView.showResult(raceResult);
         }
-        outputView.printWinners(carRace.pickWinners());
+        OutputView.printWinners(carRace.pickWinners());
     }
 
 }

@@ -14,18 +14,18 @@ public class OutputView {
     private static final String WINNER_NAME_SEPARATOR = ", ";
     private static final String CAR_NAME_SEPARATOR = " : ";
 
-    public void showResultTitle() {
+    public static void showResultTitle() {
         System.out.println(RESULT_TITLE);
     }
 
-    public void showResult(Cars cars) {
+    public static void showResult(Cars cars) {
         for (Car car : cars.getCars()) {
             printCars(car);
         }
         printEmptyLine();
     }
 
-    public void printWinners(Winners winners) {
+    public static void printWinners(Winners winners) {
         List<String> winnerNames = winners.getWinners().stream()
                 .map(Car::getCarName)
                 .collect(Collectors.toList());
@@ -33,13 +33,13 @@ public class OutputView {
         System.out.println(winnerAnnounce + WINNER_ANNOUNCE_POSTFIX);
     }
 
-    private String separateWinnerNames(List<String> winnerNames) {
+    private static String separateWinnerNames(List<String> winnerNames) {
         return winnerNames.stream()
                 .reduce((s, s2) -> s + WINNER_NAME_SEPARATOR + s2)
                 .get();
     }
 
-    private void printCars(Car car) {
+    private static void printCars(Car car) {
         printCarName(car.getCarName());
         for (int i = 0; i < car.getPosition(); i++) {
             System.out.print(POSITION_OF_CAR);
@@ -47,11 +47,11 @@ public class OutputView {
         printEmptyLine();
     }
 
-    private void printCarName(String carName) {
+    private static void printCarName(String carName) {
         System.out.print(carName + CAR_NAME_SEPARATOR);
     }
 
-    private void printEmptyLine() {
+    private static void printEmptyLine() {
         System.out.println();
     }
 
