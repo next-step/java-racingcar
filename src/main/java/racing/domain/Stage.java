@@ -31,6 +31,11 @@ public class Stage {
 		return entry.size();
 	}
 
+
+	public int getRemainingRounds() {
+		return remainingRound;
+	}
+
 	public void play() {
 
 		if (remainingRound == END_OF_ROUND){
@@ -67,9 +72,6 @@ public class Stage {
 		return new StageBuilder(entrySize, round);
 	}
 
-	public int getRemainingRounds() {
-		return remainingRound;
-	}
 
 
 	public static class StageBuilder{
@@ -93,7 +95,7 @@ public class Stage {
 			return new Stage(this);
 		}
 
-		public void addToEntry(RacingCar racingCar) {
+		public void addToEntry(String name, RacingCar racingCar) {
 
 			if(carList.size() == entrySize){
 				throw new OutOfEntryException();

@@ -13,6 +13,7 @@ import racing.view.RacingMonitorView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -26,9 +27,8 @@ class StageTest {
 		// Arrange
 		Stage.StageBuilder builder = Stage.builder(entrySize, round);
 
-		for(int i = 0; i < entrySize; i++) {
-			builder.addToEntry(new RacingCar(new StaticAccelerator(5)));
-		}
+		IntStream.range(0, entrySize)
+				.forEach((index) -> builder.addToEntry("player" + index, new RacingCar(new StaticAccelerator(5))));
 
 		// Action
 		Stage stage = builder.build();
@@ -44,7 +44,7 @@ class StageTest {
 
 	@Test
 	@DisplayName("게임 중계 시스템 적용 테스트")
-	void updateWatcher(){
+	void updateView(){
 
 		// Arrange
 		int roundLimit = 1;
@@ -52,11 +52,11 @@ class StageTest {
 
 		DriveAccelerator accelerator = new StaticAccelerator(acceleratorAmount);
 		Stage.StageBuilder builder = Stage.builder(2, roundLimit);
-		builder.addToEntry(new RacingCar(accelerator));
-		builder.addToEntry(new RacingCar(accelerator));
+		builder.addToEntry("player1", new RacingCar(accelerator));
+		builder.addToEntry("player2", new RacingCar(accelerator));
 
-		List<String> monitorMessage = new ArrayList<>();
-		RacingMonitorView view = new DashTrackingMonitorView(message -> monitorMessage.add(message));
+		List<String> messageFormView = new ArrayList<>();
+		RacingMonitorView view = new DashTrackingMonitorView(message -> messageFormView.add(message));
 		builder.view(view);
 
 		Stage stage = builder.build();
@@ -69,9 +69,9 @@ class StageTest {
 		 * 고민 : RacingMonitorView 의 구현클래스를 사용해서 State 동작을 테스트하니 검증 구문이 구현클래스에 종속되는 문제
 		 */
 		// Assertion
-		assertThat(monitorMessage.size()).isEqualTo(4); // 시작 1회, 이동 2회(차가 2대), 라운드 종료 1회
-		assertThat(monitorMessage.get(1)).isEqualTo("-");
-		assertThat(monitorMessage.get(2)).isEqualTo("-");
+		assertThat(messageFormView.size()).isEqualTo(4); // 시작 1회, 이동 2회(차가 2대), 라운드 종료 1회
+		assertThat(messageFormView.get(1)).isEqualTo("player1:-");
+		assertThat(messageFormView.get(2)).isEqualTo("player2:-");
 
 
 	}

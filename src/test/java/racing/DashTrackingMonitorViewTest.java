@@ -24,7 +24,6 @@ class DashTrackingMonitorViewTest {
 			messagesFromView.add(message);
 		});
 
-
 		// Action
 		watcher.handle(new StartedRacingEvent());
 
