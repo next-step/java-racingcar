@@ -11,7 +11,7 @@ public class OutputRacingData {
         System.out.println("\n실행 결과");
 
         for (int i = 0; i < tryOfNumber; i++) {
-            printEachInning(car, i+1);
+            printEachInning(car, i + 1);
         }
 
         printWinner(winner);
