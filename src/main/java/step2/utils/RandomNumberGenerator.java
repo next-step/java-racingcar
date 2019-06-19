@@ -1,0 +1,13 @@
+package step2.utils;
+
+import java.util.Random;
+
+public class RandomNumberGenerator implements NumberGenerator {
+    private final static int LIMIT_OF_RANDOM_NUMBER = 10;
+
+    @Override
+    public int getRandomNumber() {
+        Random random = new Random();
+        return random.nextInt(LIMIT_OF_RANDOM_NUMBER);
+    }
+}
