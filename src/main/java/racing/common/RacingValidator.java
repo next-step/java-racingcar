@@ -3,6 +3,11 @@ package racing.common;
 import spark.utils.StringUtils;
 
 public class RacingValidator {
+    private final static int MAX_CAR_COUNT = 10;
+    private final static int MAX_TIME = 50;
+    private final static int MIN_CAR_COUNT = 1;
+    private final static int MIN_TIME = 1;
+    
     public static boolean isValidCarNames(String carNames) {
         if (StringUtils.isEmpty(carNames)) {
             return false;
@@ -15,10 +20,10 @@ public class RacingValidator {
     }
     
     public static boolean isInCarCountRange(int carCount) {
-        return RacingSettings.MIN_CAR_COUNT.getValue() <= carCount && RacingSettings.MAX_CAR_COUNT.getValue() >= carCount;
+        return MIN_CAR_COUNT <= carCount && MAX_CAR_COUNT >= carCount;
     }
     
     public static boolean isInTimeRange(int time) {
-        return RacingSettings.MIN_TIME.getValue() <= time && RacingSettings.MAX_TIME.getValue() >= time;
+        return MIN_TIME <= time && MAX_TIME >= time;
     }
 }

@@ -1,15 +1,13 @@
 package racing;
 
-import racing.vo.Car;
-import racing.vo.Cars;
+import racing.domain.Car;
+import racing.domain.Cars;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class TestData {
-    public static List<String> WINNER_NAMES = Arrays.asList("b", "c");
+    public static String WINNER_NAMES = "b,c";
     public static Cars GAME_ENDED_CARS;
     public static String DEFAULT_CAR_NAME = "a,b,c,d";
     public static String MANY_CAR_NAME = "a,b,c,d,e,f,g,h,i,j";

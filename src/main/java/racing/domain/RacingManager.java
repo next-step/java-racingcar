@@ -1,53 +1,57 @@
 package racing.domain;
 
 import static racing.common.RacingSettings.*;
-import racing.common.RandomNumberGenerator;
-import racing.vo.Car;
-import racing.vo.Cars;
 
+import racing.common.RacingSettings;
+import racing.common.RandomNumberGenerator;
+import racing.vo.GameMakingInfo;
+
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class RacingManager {
-    private Cars cars;
+    private final static int MAX_RANDOM_MOVABLE_NUMBER = 9;
+    private final static int START_TIME = 0;
+    private List<Cars> movingHistory;
     private RandomNumberGenerator randomGenerator;
+    private Cars cars;
+    private int time;
     
-    public RacingManager(Cars cars) {
-        this.cars = cars;
-    }
-    
-    public RacingManager(String carNames) {
-        this.cars = new Cars(Arrays.stream(carNames.split(","))
-          .map(Car::new)
-          .collect(Collectors.toList())
+    public RacingManager(final GameMakingInfo gameMakingInfo) {
+        this.cars = new Cars(Arrays.stream(gameMakingInfo.getCarNames().split(RacingSettings.CAR_NAME_SEPARATOR.getStr()))
+            .map(Car::new)
+            .collect(Collectors.toList())
         );
-        randomGenerator = new RandomNumberGenerator(MAX_RANDOM_MOVABLE_NUMBER.getValue());
+        time = gameMakingInfo.getTime();
+        randomGenerator = new RandomNumberGenerator(MAX_RANDOM_MOVABLE_NUMBER);
+        movingHistory = new ArrayList<>();
+        movingHistory.add(cars);
     }
     
-    public void moveCars() {
-        cars.getCars().stream()
-          .filter(car -> randomGenerator.getNumber() > MIN_MOVABLE_NUMBER.getValue())
-          .forEach(Car::forward);
+    public String getWinnerNames() {
+        return cars.getWinner().getCarNames();
     }
     
-    public Cars getWinners() {
-        List<Car> players = cars.getCars().stream()
-            .sorted(getCarWinnerComparator())
-            .collect(Collectors.toList());
-        int winnerPosition = players.get(LEADER_INDEX.getValue()).getPosition();
-        return new Cars(players.stream()
-            .filter(car -> car.getPosition() == winnerPosition)
-            .collect(Collectors.toList())); 
+    public void startGame() {
+        IntStream.range(START_TIME, time)
+            .forEach(i -> cars.moveCars(randomGenerator.getNumber()));
+        movingHistory.add(cars.getCopiedCars());
     }
     
-    private Comparator<Car> getCarWinnerComparator() {
-        return Comparator.comparing(Car::getPosition).reversed();
+    public List<Cars> getMovingHistory() {
+        return movingHistory;
     }
     
     public Cars getCars() {
         return cars;
     }
     
+    public void setCars(Cars cars) {
+        this.cars = cars;
+    }
 }

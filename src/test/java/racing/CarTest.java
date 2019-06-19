@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racing.common.RacingSettings;
-import racing.vo.Car;
+import racing.domain.Car;
 
 class CarTest {
     private Car car;

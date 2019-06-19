@@ -3,8 +3,10 @@ package racing.view;
 import static racing.common.Script.*;
 
 import racing.controller.RacingController;
-import racing.vo.Cars;
+import racing.domain.Cars;
 import racing.vo.GameMakingInfo;
+
+import java.util.List;
 
 public class RacingView {
     protected InputView inputView;
@@ -16,11 +18,10 @@ public class RacingView {
         this.resultView = new ResultView();
     }
     
-    public void requestGameInfo() {
-        final GameMakingInfo gameMakingInfo = new GameMakingInfo(
+    public GameMakingInfo requestGameInfo() {
+        return new GameMakingInfo(
             printCarQuestionAndGetAnswer(), printTimeQuestionAndGetAnswer()
         );
-        controller.makeNewGame(gameMakingInfo);
     }
     
     private String printCarQuestionAndGetAnswer() {
@@ -37,8 +38,8 @@ public class RacingView {
         resultView.printWinners(winnerNames);
     }
     
-    public void printMovingStatus(Cars cars) {
-        resultView.printMovingStatus(cars);
+    public void printMovingStatus(List<Cars> movingHistory) {
+        resultView.printMovingStatus(movingHistory);
     }
     
     public void setController(RacingController controller) {
