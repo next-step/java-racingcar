@@ -14,11 +14,6 @@ public class RacingCarGameEngine {
         this.carPositions = carPositions;
     }
 
-    public void validateUserInputValue(int value) throws IllegalArgumentException {
-        if (value < 1)
-            throw new IllegalArgumentException("반드시 1 이상의 숫자를 입력하세요!");
-    }
-
     public int[] move() throws NullPointerException {
         if (carPositions == null) {
             throw new NullPointerException("경주에 참여하는 자동차 대수가 설정되지 않았습니다!");

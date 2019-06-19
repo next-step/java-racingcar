@@ -6,12 +6,37 @@ public class RacingCarGameFront {
     private static final String RUN_SYMBOL = "-";
 
     public static void main(String[] args) {
+        RacingCarGameFront gameFront = new RacingCarGameFront();
+        gameFront.startGame(gameFront);
+    }
+
+    void startGame(RacingCarGameFront gameFront) {
+        RacingCarGameEngine carGameEngine = null;
+        try {
+            carGameEngine = gameFront.getRacingCarGameEngine();
+            gameFront.goRacingGame(carGameEngine);
+        } catch (IllegalArgumentException exception) {
+            System.out.println("1이상의 숫자로 처음부터 다시 입력하세요!");
+            System.out.println("---------------------------------");
+            startGame(gameFront);
+        }
+    }
+
+    RacingCarGameEngine getRacingCarGameEngine() throws IllegalArgumentException {
         System.out.println("자동차 대수는 몇 대 인가요?");
         Scanner scanner = new Scanner(System.in);
         int numbersOfCars = scanner.nextInt();
         System.out.println("경주 할 회수는 몇 회 인가요?");
         int numbersOfRacing = scanner.nextInt();
-        RacingCarGameEngine carGameEngine = new RacingCarGameEngine(numbersOfRacing, new int[numbersOfCars]);
+        validateUserInputValues(numbersOfCars, numbersOfRacing);
+        return new RacingCarGameEngine(numbersOfRacing, new int[numbersOfCars]);
+    }
+
+    void validateUserInputValues(int numbersOfCars, int numbersOfRacing)
+            throws IllegalArgumentException {
+        if (numbersOfCars < 1 || numbersOfRacing < 1) {
+            throw new IllegalArgumentException("반드시 1 이상의 숫자를 입력하세요!");
+        }
     }
 
     void printRacingCar(int[] carPositions) {
@@ -34,12 +59,4 @@ public class RacingCarGameFront {
             printRacingCar(carGameEngine.getCarPositions());
         }
     }
-
-    /**
-     * * UI 로직 기능3 : 사용자 입력으로 받은 경수 횟수 만큼 printMoveRacingCar 를 호출하는 void 리턴형이고 매개변수가 없는
-     *   goRacingGame 매소드이다.
-     * * UI 로직 기능4 : 사용자 입력값이 유효한 값이 올때까지 입력을 받도록 유도하는 void 리턴형 tryValidUserInputValue 매서드이다.
-     *   valicateUserInputValue 의 호출결과 exception 을 catch 하여 사용자 입력받는 부분을 다시 호출하도록 한다.
-     * * UI 로직 기능5 : 사용자가 원하는 정보를 입력하도록 유도하는 void 리턴형 doUserInputValue 매서드이다.
-     */
 }

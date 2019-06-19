@@ -33,11 +33,14 @@
   매개변수로 받는 int 형 배열의 요소갯수 만큼 해당 value 를 매개변수로 printRunCar 메소드를 호출한다.
 * UI 로직 기능2 : 자동자들의 run count 정보를 담고있는 int형 배열인 carPositions 요소의 value 값 만큼 
   '-'을 출력해서 콘솔에 보여주는 리턴형 void 이고 자동차 전진횟수를 의미하는 int 형 매개변수가 있는 printRunCar 매소드이다.
-* UI 로직 기능3 : 사용자 입력으로 받은 경주 횟수를 int 형 매개변수로 하고 그 만큼 move 와 printRacingCar 를 호출하는
-  void 리턴형인 goRacingGame 매소드이다. 
-* UI 로직 기능4 : 사용자 입력값이 유효한 값이 올때까지 입력을 받도록 유도하는 void 리턴형 tryValidUserInputValue 매서드이다.
-  valicateUserInputValue 의 호출결과 exception 을 catch 하여 사용자 입력받는 부분을 다시 호출하도록 한다.
-* UI 로직 기능5 : 사용자가 원하는 정보를 입력하도록 유도하는 void 리턴형 doUserInputValue 매서드이다.
+* UI 로직 기능3 : 핵심 로직 클래스인 RacingCarGameEngine 인스턴스를 매개변수로 하고 RacingCarGameEngine 의 인스턴스 변수중
+  int 형인 numbersOfRacing 값만큼 move 와 printRacingCar 를 호출하는 void 리턴형인 goRacingGame 매소드이다. 
+* UI 로직 기능4 : 사용자 입력값이 유효한 값이 올때까지 입력을 받도록 유도하는 void 리턴형 startGame 매서드이다.
+  getRacingCarGameEngine 의 호출결과 유효하지 않은 값이 입력되면 발생하는 IllegalArgumentException 을 catch 하여 
+  사용자 입력받는 부분을 다시 호출하도록 한다. 유효한 값이 입력되면 getRacingCarGameEngine 호출 결과 리턴받는 
+  RacingCarEngine 인스턴스를 매개변수로 goRacingGame 를 호출한다.
+* UI 로직 기능5 : 사용자에게 유효한 정보를 입력받아 RacingCarEngine 인스턴스를 생성하여 리턴하는 getRacingCarGameEngine 매소드이다.
+  입력받은 값이 유효한지 검사하는 validateUserInputValues 를 호출하여 유효하지 않으면 IllegalArgumentException 를 발생시킨다.
 
 
 

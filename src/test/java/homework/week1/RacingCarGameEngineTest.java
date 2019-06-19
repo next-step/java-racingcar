@@ -48,14 +48,6 @@ public class RacingCarGameEngineTest {
     }
 
     @Test
-    void validateUserInputValue() {
-        System.out.println("validateUserInputValue");
-        assertThatIllegalArgumentException().isThrownBy(()->{
-            carGameEngine.validateUserInputValue(0);
-        });
-    }
-
-    @Test
     void printRacingCars() {
         System.out.println("printRacingCars");
         int[] printTestArr = {1,2,3};
@@ -67,5 +59,13 @@ public class RacingCarGameEngineTest {
     void goRacingGame() {
         System.out.println("goRacingGame");
         carGameFront.goRacingGame(carGameEngine);
+    }
+
+    @Test
+    void getRacingCarGameEngine() {
+        System.out.println("getRacingCarGameEngine");
+        assertThatIllegalArgumentException().isThrownBy(()->{
+            carGameFront.getRacingCarGameEngine();
+        });
     }
 }
