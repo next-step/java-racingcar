@@ -16,6 +16,14 @@ public class RacingGameParameters {
         this.carQuantity = carQuantity;
     }
 
+    public static NumberGenerator getNumberGenerator() {
+        return numberGenerator;
+    }
+
+    public static void setNumberGenerator(NumberGenerator numberGenerator) {
+        RacingGameParameters.numberGenerator = numberGenerator;
+    }
+
     public int getCarQuantity() {
         return carQuantity;
     }
@@ -24,12 +32,5 @@ public class RacingGameParameters {
         return gameRound;
     }
 
-    public static NumberGenerator getNumberGenerator() {
-        return numberGenerator;
-    }
-
-    public static void setNumberGenerator(NumberGenerator numberGenerator) {
-        RacingGameParameters.numberGenerator = numberGenerator;
-    }
 }
 
