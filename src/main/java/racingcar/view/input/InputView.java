@@ -1,6 +1,8 @@
 package racingcar.view.input;
 
+import java.util.List;
+
 public interface InputView {
-    Integer getNumberOfCars();
+    List<String> getCarNames();
     Integer getNumberOfTimes();
 }
