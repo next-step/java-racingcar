@@ -7,9 +7,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 class GameResultsTest {
     @Test
     void 라운드_진행() {
-        int carQuantity = 3;
+        String carNameString = "pobi,crong,honux";
         GameResults gameResults = new GameResults();
-        Cars cars = new Cars(carQuantity);
+        Cars cars = new Cars(carNameString);
         GameResult gameResult = new GameResult(cars);
         gameResults.getGameResults().add(gameResult);
 

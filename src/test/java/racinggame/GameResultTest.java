@@ -5,11 +5,12 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class GameResultTest {
+    private String carNameString = "pobi,crong,honux";
     private int carQuantity = 3;
 
     @Test
     void 생성자_정상() {
-        Cars cars = new Cars(carQuantity);
+        Cars cars = new Cars(carNameString);
         GameResult gameResult = new GameResult(cars);
         assertThat(gameResult.getGameResult().size()).isEqualTo(carQuantity);
     }
