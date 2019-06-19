@@ -17,16 +17,10 @@ public class RacingGame {
         }
     }
 
-    private Car createNextPositionCar(Car car) {
-        String carName = car.getName();
-        int nextPosition = car.getPosition() + 1;
-        return new Car(carName, nextPosition);
-    }
-
     public List<Car> move() {
         List<Car> nextCarList = new ArrayList<>();
         for(Car currentCar : CAR_LIST) {
-            Car nextCar = movingConditioner.isMoveCondition() ? createNextPositionCar(currentCar) : currentCar;
+            Car nextCar = movingConditioner.isMoveCondition() ? currentCar.nextPositionCar() : currentCar;
             nextCarList.add(nextCar);
         }
 
