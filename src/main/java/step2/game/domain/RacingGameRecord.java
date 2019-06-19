@@ -38,6 +38,10 @@ public class RacingGameRecord {
     }
 
     public List<Car> winners() {
+        if (result.size() < 1) {
+            throw new IndexOutOfBoundsException("현재 " + result.size() + " 턴 까지 진행되었습니다.");
+        }
+
         List<Car> finalTurn = result.get(result.size() - 1).getCars();
         int winnerPosition = winnerPosition(finalTurn);
 

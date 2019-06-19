@@ -1,14 +1,13 @@
 package step2.game.ui;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import step2.game.domain.CarName;
-import step2.game.dto.RacingGameResultModel;
 import step2.game.domain.Car;
+import step2.game.domain.CarName;
 import step2.game.domain.Cars;
+import step2.game.dto.RacingGameResultModel;
 
 public class ResultView {
     private final RacingGameResultModel racingGameResultModel;

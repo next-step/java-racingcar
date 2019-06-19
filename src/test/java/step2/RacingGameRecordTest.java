@@ -58,4 +58,17 @@ public class RacingGameRecordTest {
         assertThat(racingGameRecord.getResult().size()).isEqualTo(2);
     }
 
+    @Test
+    @DisplayName("우승자는 한 명 이상")
+    void winners_count() {
+        assertThat(racingGameRecord.winners().size() > 0).isTrue();
+    }
+
+    @Test
+    @DisplayName("게임 기록이 없는 상태에서 우승자 조회")
+    void no_record_game() {
+        RacingGameRecord record = new RacingGameRecord(new ArrayList<>());
+        assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(record::winners);
+    }
+
 }
