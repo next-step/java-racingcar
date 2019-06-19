@@ -21,7 +21,7 @@ public class ConsoleResultView implements ResultView {
    * 현재 라운드를 화면에 출력
    * @param round
    */
-  public void printCurrentRound(int round) {
+  public void printCurrentRound(final int round) {
     String resultMessage = round + "번째 라운드";
     System.out.println(resultMessage);
   }
@@ -39,7 +39,7 @@ public class ConsoleResultView implements ResultView {
    * ex) ----
    * @param car
    */
-  public void printCurrentPositionOf(Car car) {
+  public void printCurrentPositionOf(final Car car) {
 
     String nameOfCar = car.getName();
     String currentPosition = IntStream.rangeClosed(car.getInitialPosition(), car.getPosition())
@@ -50,7 +50,7 @@ public class ConsoleResultView implements ResultView {
     System.out.println(resultMessage);
   }
 
-  public void printWinner(List<Car> cars) {
+  public void printWinner(final List<Car> cars) {
     String resultMessage = Referee.getWinnerFrom(cars).concat("가 최종 우승했습니다.");
     System.out.println(resultMessage);
   }

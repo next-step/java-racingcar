@@ -29,7 +29,7 @@ public class RacingController {
     printRacingStatus(rounds, cars);
   }
 
-  void printRacingStatus(int rounds, final List<Car> cars) {
+  void printRacingStatus(final int rounds, final List<Car> cars) {
     for(int round = 1; round <= rounds; round++) {
       resultView.printCurrentRound(round);
       drive(cars);

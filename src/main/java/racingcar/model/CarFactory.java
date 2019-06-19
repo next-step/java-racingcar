@@ -8,13 +8,13 @@ import static java.util.stream.IntStream.range;
 
 public class CarFactory {
 
-    public static List<Car> generate(int players) {
+    public static List<Car> generate(final int players) {
         return range(0, players)
                 .mapToObj(Car::new)
                 .collect(Collectors.toList());
     }
 
-    public static List<Car> generate(String[] names) {
+    public static List<Car> generate(final String[] names) {
         return Arrays.stream(names)
                 .map(Car::new)
                 .collect(Collectors.toList());

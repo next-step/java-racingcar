@@ -5,8 +5,8 @@ import racingcar.model.Car;
 import java.util.List;
 
 public interface ResultView {
-    void printCurrentRound(int round);
+    void printCurrentRound(final int round);
     void addLineBreak();
-    void printCurrentPositionOf(Car car);
-    void printWinner(List<Car> cars);
+    void printCurrentPositionOf(final Car car);
+    void printWinner(final List<Car> cars);
 }
