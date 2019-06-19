@@ -58,7 +58,10 @@ public class CarRacingController {
             List<Car> viewCarList = this.carRacingService.starRoundGame();
             output.resultView(viewCarList);
         }
-        this.winPlayerService = new WinPlayerService(new Winner(this.carRacingService.finishGame().getCars(), INIT_SCORE));
+
+        List<Car> finishPlayer = this.carRacingService.finishGame().getCars();
+        Winner candidateWinner = new Winner(finishPlayer, INIT_SCORE);
+        this.winPlayerService = new WinPlayerService(candidateWinner);
         this.winPlayerService.doWinnerCheck();
 
         output.printWinnerPlayer(this.winPlayerService.getWinners().getWinners());
