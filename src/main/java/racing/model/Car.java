@@ -9,7 +9,7 @@ public class Car {
         this.name = name;
     }
 
-    public Car of(String name) {
+    public static Car of(String name) {
         return new Car(name);
     }
 
@@ -20,5 +20,7 @@ public class Car {
     public int getPosition() {
         return position;
     }
+
+    public String getName(){return name;}
 
 }

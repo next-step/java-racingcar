@@ -26,6 +26,9 @@ public class RacingGame {
             viewResult();
             gameCount--;
         }
+
+        OutputView.showWinner(this.cars);
+
     }
 
     private void viewResult() {
