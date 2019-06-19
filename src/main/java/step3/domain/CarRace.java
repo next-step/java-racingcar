@@ -1,7 +1,10 @@
 package step3.domain;
 
+import spark.utils.StringUtils;
 import step3.utils.NumberGenerator;
 import step3.utils.RandomNumberGenerator;
+
+import java.util.regex.Pattern;
 
 public class CarRace {
 
@@ -45,13 +48,10 @@ public class CarRace {
 
 
     private static void inputCarNamesValidation(String inputCarNames) {
-        // TODO: 입력값 유효성 체크 로직 작성
-    }
-
-    private static void numberOfCarsValidation(int numberOfCars) {
-        if (numberOfCars < MINIMUM_NUMBER_CAN_BE_INPUT) {
-            throw new IllegalArgumentException("최소 1대의 자동차가 필요합니다.");
+        if (StringUtils.isEmpty(inputCarNames)) {
+            throw new IllegalArgumentException("자동차 이름들을 입력해주세요.");
         }
+        //TODO: 정규식으로 입력된 자동차이름들 검증
     }
 
     private static void numberOfTrialsValidation(int numberOfTrials) {

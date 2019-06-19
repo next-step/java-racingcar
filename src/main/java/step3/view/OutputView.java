@@ -4,11 +4,17 @@ import step3.domain.Car;
 import step3.domain.Cars;
 import step3.domain.Winners;
 
+import java.util.stream.Collectors;
+
 public class OutputView {
+    private static final String RESULT_TITLE = "실행 결과";
+    private static final String WINNER_ANNOUNCE_POSTFIX = "가 최종 우승했습니다.";
     private static final String POSITION_OF_CAR = "-";
+    private static final String WINNER_NAME_SEPARATOR = ", ";
+    private static final String CAR_NAME_SEPARATOR = " : ";
 
     public void showResultTitle() {
-        System.out.println("실행 결과");
+        System.out.println(RESULT_TITLE);
     }
 
     public void showResult(Cars cars) {
@@ -19,7 +25,13 @@ public class OutputView {
     }
 
     public void printWinners(Winners winners) {
-        System.out.println(winners + "가 최종 우승했습니다.");
+        String winnerAnnounce = winners.getWinners().stream()
+                .map(Car::getCarName)
+                .collect(Collectors.toList())
+                .stream()
+                .reduce((s, s2) -> s + WINNER_NAME_SEPARATOR + s2)
+                .get();
+        System.out.println(winnerAnnounce + WINNER_ANNOUNCE_POSTFIX);
     }
 
     private void printCars(Car car) {
@@ -31,7 +43,7 @@ public class OutputView {
     }
 
     private void printCarName(String carName) {
-        System.out.print(carName + " : ");
+        System.out.print(carName + CAR_NAME_SEPARATOR);
     }
 
     private void printEmptyLine() {

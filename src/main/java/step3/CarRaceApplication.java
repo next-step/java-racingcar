@@ -22,7 +22,7 @@ public class CarRaceApplication {
             Cars raceResult = carRace.executeTrials();
             outputView.showResult(raceResult);
         }
-//        outputView.printWinners(winners);
+        outputView.printWinners(carRace.pickWinners());
     }
 
 }

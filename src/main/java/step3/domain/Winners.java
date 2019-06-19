@@ -1,8 +1,9 @@
 package step3.domain;
 
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Winners {
 
@@ -13,21 +14,23 @@ public class Winners {
     }
 
     public static Winners pickWinners(Cars cars) {
+        int winnerPosition = findWinnerPosition(cars);
+        List<Car> winners = cars.getCars().stream()
+                .filter(car -> isWinnerPosition(winnerPosition, car))
+                .collect(Collectors.toList());
 
-        List<Car> winners = new ArrayList<>();
-        int winnerPosition = 0;
-
-        for (Car car : cars.getCars()) {
-            if (car.getPosition() > winnerPosition) {
-                winnerPosition = car.getPosition();
-            }
-        }
-        for (Car car : cars.getCars()) {
-            if (car.getPosition() == winnerPosition) {
-                winners.add(car);
-            }
-        }
         return new Winners(winners);
+    }
+
+    private static int findWinnerPosition(Cars cars) { //TODO: Q. 이렇게 static을 난사(?)하고있는데 괜찮을까요?
+        return cars.getCars().stream()
+                .map(Car::getPosition)
+                .max(Comparator.comparing(Integer::valueOf))
+                .get();
+    }
+
+    private static boolean isWinnerPosition(int winnerPosition, Car car) {
+        return car.getPosition() == winnerPosition;
     }
 
     public List<Car> getWinners() {
