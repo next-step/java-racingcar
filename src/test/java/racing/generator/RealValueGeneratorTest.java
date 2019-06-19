@@ -1,4 +1,4 @@
-package racing.random;
+package racing.generator;
 
 import org.junit.jupiter.api.RepeatedTest;
 

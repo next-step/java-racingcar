@@ -5,7 +5,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import racing.dto.RacingInfo;
 import racing.dto.RacingResult;
-import racing.random.StubValueGenerator;
+import racing.generator.StubValueGenerator;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,4 +1,4 @@
-package racing.ui;
+package racing.view;
 
 import org.junit.jupiter.api.*;
 import racing.exception.ScanException;
