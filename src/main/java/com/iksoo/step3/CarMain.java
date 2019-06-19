@@ -10,12 +10,10 @@
  */
 package com.iksoo.step3;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class CarMain {
-    private static final int GOSTOP_CRITERION = 4;
-    private static Random random = new Random();
     private static OutputRacingData outputRacingInfo;
 
     public static void main(String[] args) {
@@ -26,36 +24,20 @@ public class CarMain {
         String[] carNames = inputRacingInfo.inputCarNames().split(",");
         int tryOfNumbers = inputRacingInfo.inputTryOfNumber();
 
-        Car[] cars = initiateCar(carNames, tryOfNumbers);
-        startRacing(cars, tryOfNumbers);
-        List<Object> winner = checkRacingWinner.checkResult(cars);
+        CarRacer cars = new CarRacer(initiateCar(carNames, tryOfNumbers));
+        List<Object> winner = checkRacingWinner.checkWinner(cars.getCars());
         outputRacingInfo.printFinalResult(winner);
     }
 
-    public static Car[] initiateCar(String[] carNames, int tryOfNumbers) {
-        Car[] tempCars = new Car[carNames.length];
+    public static List<Car> initiateCar(String[] carNames, int tryOfNumbers) {
+        outputRacingInfo.printRacingStart();
+
+        List<Car> cars = new ArrayList<>();
 
         for (int i = 0; i < carNames.length; i++) {
-            tempCars[i] = new Car(carNames[i], tryOfNumbers);
+            cars.add(new Car(carNames[i], tryOfNumbers));
         }
 
-        return tempCars;
-    }
-
-    public static void startRacing(Car[] cars, int tryOfNumbers) {
-        for (int i = 0; i < tryOfNumbers; i++) {
-            doOneInning(cars);
-            outputRacingInfo.printEachInning(cars);
-        }
-    }
-
-    public static void doOneInning(Car[] cars) {
-        for (int i = 0; i < cars.length; i++) {
-            cars[i].addNextInning(getRandom(), GOSTOP_CRITERION);
-        }
-    }
-
-    public static int getRandom() {
-        return random.nextInt(10);
+        return cars;
     }
 }

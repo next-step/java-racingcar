@@ -5,28 +5,28 @@ import java.util.List;
 
 public class CheckRacingWinner {
 
-    public List<Object> checkResult(Car[] cars) {
-        List<Object> winner = new ArrayList<Object>();
+    public List<Object> checkWinner(List<Car> cars) {
+        List<Object> winner = new ArrayList<>();
 
-        int maxDistance = getMaxDistance(cars);
-        addWinnerList(cars, winner, maxDistance);
+        checkEachCars(cars, winner, getMaxDistance(cars));
 
         return winner;
     }
 
-    public int getMaxDistance(Car[] cars) {
+    public int getMaxDistance(List<Car> cars) {
         int maxDistance = 0;
-        for (int i = 0; i < cars.length; i++) {
-            int carDistance = cars[i].getFinalPosition();
+
+        for (int i = 0; i < cars.size(); i++) {
+            int carDistance = cars.get(i).getFinalPosition();
             maxDistance = carDistance > maxDistance ? carDistance : maxDistance;
         }
 
         return maxDistance;
     }
 
-    public void addWinnerList(Car[] cars, List<Object> winner, int maxDistance) {
-        for (int i = 0; i < cars.length; i++) {
-            isWinnerThenAdd(cars[i], winner, maxDistance);
+    public void checkEachCars(List<Car> cars, List<Object> winner, int maxDistance) {
+        for (int i = 0; i < cars.size(); i++) {
+            isWinnerThenAdd(cars.get(i), winner, maxDistance);
         }
     }
 

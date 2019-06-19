@@ -7,15 +7,9 @@ public class OutputRacingData {
         System.out.println();
     }
 
-    OutputRacingData() {
+    public void printRacingStart() {
         System.out.println("\n실행 결과");
         printBlankLine();
-    }
-
-    public void printEachInning(Car[] car) {
-        for (int i = 0; i < car.length; i++) {
-            car[i].printInningResult();
-        }
     }
 
     public void printFinalResult(List<Object> winner) {
