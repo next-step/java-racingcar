@@ -10,7 +10,9 @@ class GameResultTest {
 
     @Test
     void 생성자_정상() {
-        Cars cars = new Cars(carNameString);
+        CarNames carNames = new CarNames(carNameString);
+
+        Cars cars = new Cars(carNames);
         GameResult gameResult = new GameResult(cars);
         assertThat(gameResult.getGameResult().size()).isEqualTo(carQuantity);
     }

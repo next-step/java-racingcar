@@ -8,8 +8,10 @@ class GameResultsTest {
     @Test
     void 라운드_진행() {
         String carNameString = "pobi,crong,honux";
+        CarNames carNames = new CarNames(carNameString);
+
         GameResults gameResults = new GameResults();
-        Cars cars = new Cars(carNameString);
+        Cars cars = new Cars(carNames);
         GameResult gameResult = new GameResult(cars);
         gameResults.getGameResults().add(gameResult);
 

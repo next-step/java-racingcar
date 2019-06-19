@@ -7,9 +7,10 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
+    int carAmount = 3;
     int round = 2;
-    int car = 3;
-    private RacingGameParameters racingGameParameters = new RacingGameParameters(round, car);
+    private String carNameString = "pobi,crong,honux";
+    private RacingGameParameters racingGameParameters = new RacingGameParameters(round, carNameString);
 
     @Test
     void 생성자_정상() {
@@ -17,7 +18,7 @@ class RacingGameTest {
         List<GameResult> actual = racingGame.getGameResults().getGameResults();
 
         assertThat(actual).hasSize(1);
-        assertThat(actual.get(0).getGameResult()).hasSize(car);
+        assertThat(actual.get(0).getGameResult()).hasSize(carAmount);
         assertThat(actual.get(0).getGameResult()).allMatch(integer -> integer == 1);
     }
 

@@ -3,7 +3,6 @@ package racinggame;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class CarsTest {
     private String carNameString = "pobi,crong,honux";
@@ -11,13 +10,9 @@ class CarsTest {
 
     @Test
     void 생성자_정상() {
-        Cars cars = new Cars(carNameString);
-        assertThat(cars.getCars().size()).isEqualTo(carQuantity);
-    }
+        CarNames carNames = new CarNames(carNameString);
 
-    @Test
-    void 생성자_비정상() {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new Cars(""));
+        Cars cars = new Cars(carNames);
+        assertThat(cars.getCars().size()).isEqualTo(carQuantity);
     }
 }

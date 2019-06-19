@@ -6,7 +6,7 @@ public class RacingGame {
     private final GameResults gameResults;
 
     public RacingGame(RacingGameParameters racingGameParameters) {
-        this.cars = new Cars(racingGameParameters.getCarQuantity());
+        this.cars = new Cars(racingGameParameters.getCarNames());
         this.gameRound = new GameRound(racingGameParameters.getGameRound());
         this.gameResults = new GameResults();
         this.saveCurrentResult();
