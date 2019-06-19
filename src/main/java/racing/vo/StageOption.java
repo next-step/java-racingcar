@@ -6,31 +6,25 @@ import java.util.stream.Collectors;
 
 public class StageOption {
 
-	private int entrySize;
+	private List<String> entry;
 
 	private int roundLimit;
 
-	public StageOption(int entrySize, int roundLimit){
+	public StageOption(String playNames, String separator, int roundLimit) {
 
-		this.entrySize = entrySize;
-		this.roundLimit = roundLimit;
-	}
+	    String[] fragments = playNames.split(separator);
 
-	public StageOption(String entryInformation, String separator, int roundLimit) {
-
-	    String[] fragments = entryInformation.split(separator);
-        List<String> entry = Arrays.stream(fragments)
+        this.entry = Arrays.stream(fragments)
                 .map(name -> name.trim())
                 .filter(name -> !name.isEmpty())
                 .collect(Collectors.toList());
 
-        this.entrySize = entry.size();
         this.roundLimit = roundLimit;
 
 	}
 
 	public int getEntrySize(){
-		return entrySize;
+		return entry.size();
 	}
 
 	public int getRoundLimit(){
@@ -38,6 +32,6 @@ public class StageOption {
 	}
 
     public String getPlayerName(int i) {
-	    return "";
+	    return this.entry.get(i);
     }
 }

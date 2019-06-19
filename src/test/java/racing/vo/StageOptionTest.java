@@ -13,7 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class StageOptionTest {
 
-
     private static final String SEPARATOR = ",";
 
     @DisplayName("선수명단 문자열 처리")
