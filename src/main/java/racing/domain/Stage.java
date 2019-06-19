@@ -22,7 +22,7 @@ public class Stage {
 
 	private Stage(StageBuilder stageBuilder){
 
-		this.entry = new Entry(stageBuilder.players);
+		this.entry = new Entry(stageBuilder.carList);
 		this.remainingRound = stageBuilder.round;
 		this.monitorView = stageBuilder.monitorView;
 	}
@@ -78,7 +78,7 @@ public class Stage {
 
 		private int round;
 
-		private List<Player> players;
+		private List<RacingCar> carList;
 
 		private RacingMonitorView monitorView;
 
@@ -86,20 +86,20 @@ public class Stage {
 
 			this.entrySize = entrySize;
 			this.round = round;
-			players = new ArrayList<>();
+			carList = new ArrayList<>();
 		}
 
 		public Stage build() {
 			return new Stage(this);
 		}
 
-		public void addToEntry(Player racingCar) {
+		public void addToEntry(RacingCar racingCar) {
 
-			if(players.size() == entrySize){
+			if(carList.size() == entrySize){
 				throw new OutOfEntryException();
 			}
 
-			players.add(racingCar);
+			carList.add(racingCar);
 		}
 
 		public void view(RacingMonitorView watcher) {

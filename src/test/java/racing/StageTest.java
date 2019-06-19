@@ -4,24 +4,17 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.mockito.ArgumentCaptor;
-import racing.domain.Player;
 import racing.domain.RacingCar;
 import racing.domain.Stage;
 import racing.domain.accelerator.DriveAccelerator;
-import racing.domain.accelerator.RandomAccelerator;
 import racing.domain.accelerator.StaticAccelerator;
 import racing.view.DashTrackingMonitorView;
 import racing.view.RacingMonitorView;
-import racing.view.events.ChangedPlayerPositionEvent;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.times;
 
 class StageTest {
 
@@ -34,7 +27,7 @@ class StageTest {
 		Stage.StageBuilder builder = Stage.builder(entrySize, round);
 
 		for(int i = 0; i < entrySize; i++) {
-			builder.addToEntry(new Player(new RandomAccelerator(), new RacingCar()));
+			builder.addToEntry(new RacingCar(new StaticAccelerator(5)));
 		}
 
 		// Action
@@ -57,9 +50,10 @@ class StageTest {
 		int roundLimit = 1;
 		int acceleratorAmount = 5;
 
+		DriveAccelerator accelerator = new StaticAccelerator(acceleratorAmount);
 		Stage.StageBuilder builder = Stage.builder(2, roundLimit);
-		builder.addToEntry(new Player(new StaticAccelerator(acceleratorAmount), new RacingCar()));
-		builder.addToEntry(new Player(new StaticAccelerator(acceleratorAmount), new RacingCar()));
+		builder.addToEntry(new RacingCar(accelerator));
+		builder.addToEntry(new RacingCar(accelerator));
 
 		List<String> monitorMessage = new ArrayList<>();
 		RacingMonitorView view = new DashTrackingMonitorView(message -> monitorMessage.add(message));

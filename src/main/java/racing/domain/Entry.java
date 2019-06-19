@@ -9,9 +9,9 @@ import java.util.stream.Stream;
  */
 public class Entry {
 
-	private List<Player> players;
+	private List<RacingCar> players;
 
-	public Entry(List<Player> players){
+	public Entry(List<RacingCar> players){
 		// shallow copy
 		this.players = players.stream().collect(Collectors.toList());
 	}
@@ -22,7 +22,9 @@ public class Entry {
 
 	public List<Integer> drive() {
 		return players.stream()
-				.map(Player::drive)
-				.collect(Collectors.toList());
+				.map(car -> {
+					car.move();
+					return car.getMileage();
+				}).collect(Collectors.toList());
 	}
 }
