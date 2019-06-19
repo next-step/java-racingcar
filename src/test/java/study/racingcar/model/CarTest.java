@@ -1,8 +1,11 @@
 package study.racingcar.model;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import study.racingcar.strategy.ManualMovableStrategy;
 import study.racingcar.strategy.MovableStrategy;
+import study.racingcar.strategy.RandomMovableStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,6 +16,19 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class CarTest {
     private static final int DEFAULT_POSITION = 1;
+
+    @ParameterizedTest
+    @CsvSource({
+            "pobi",
+            "crong",
+            "honux"
+    })
+    void 자동차_이름(String name) {
+        RandomMovableStrategy strategy = new RandomMovableStrategy();
+        Car car = new Car(name, strategy);
+
+        assertThat(car.getName()).isEqualTo(name);
+    }
 
     @Test
     void run_position_증가() {
