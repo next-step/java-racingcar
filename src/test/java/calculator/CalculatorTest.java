@@ -1,6 +1,6 @@
 package calculator;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
     @Test
@@ -23,12 +23,12 @@ public class CalculatorTest {
 
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void 값_null() {
 
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void 값_빈공백() {
 
     }
