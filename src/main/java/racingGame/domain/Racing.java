@@ -1,4 +1,6 @@
-package RacingGame;
+package racingGame.domain;
+
+import racingGame.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -9,12 +11,10 @@ public class Racing {
 
     private int time;
     private List<Car> cars;
-    private OutputView outputView;
 
     public Racing(int time, List<String> inputCarNames) {
         this.time = time;
         this.cars = this.arrayWithCar(inputCarNames);
-        this.outputView = new OutputView();
     }
 
     public int getTime() {

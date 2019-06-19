@@ -1,4 +1,8 @@
-package RacingGame;
+package racingGame;
+
+import racingGame.domain.Racing;
+import racingGame.view.InputView;
+import racingGame.view.OutputView;
 
 public class MainController {
 

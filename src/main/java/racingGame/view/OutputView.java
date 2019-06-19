@@ -1,10 +1,12 @@
-package RacingGame;
+package racingGame.view;
+
+import racingGame.domain.Car;
 
 import java.util.List;
 
-class OutputView {
+public class OutputView {
 
-    static void printRace(List<Car> cars) {
+    public static void printRace(List<Car> cars) {
         for (Car car : cars) {
             printPosition(car.getName(), car.getPosition());
         }
@@ -19,7 +21,7 @@ class OutputView {
         System.out.println();
     }
 
-    static void printWinners(String winnerNames) {
+    public static void printWinners(String winnerNames) {
         System.out.print(winnerNames);
         System.out.print("가 최종 우승했습니다.");
     }
