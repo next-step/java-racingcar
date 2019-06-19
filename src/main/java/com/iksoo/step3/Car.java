@@ -29,8 +29,8 @@ public class Car {
         return this.carPosition;
     }
 
-    public void setCarPosition(String position) {
-        this.carPosition = position;
+    public void addCarPosition(String position) {
+        this.carPosition += position;
     }
 
     public int getCurrentDistance() {
