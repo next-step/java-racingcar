@@ -1,8 +1,15 @@
-# 자동차 경주 게임
-## 구현기능 목록
-1. 자동차 수와 이동횟수를 저장할 전역변수 선언
-1. input() : 자동차 수와 이동횟수를 입력받는 input 메소드
-1. main() : input에 따른 이동횟수 만큼의 기능동작 반복 메소드
-1. checkRandomValue() : Random.nextInt(10)에 따른 true/false 구별 메소드
-1. move() : checkRandomValue()이 true일 경우에 '자동차 수'의 각 자동차마다 +1을 해줄 메소드
-1. print() : 동작별 결과를 출력해줄 메소드
+# 자동차 경주 게임 Step3
+## 개발 기능
+* Car 객체 생성 : 초기화/GoStop판단메소드 기능 개발
+* input 메소드 생성 : 자동차 명,시도횟수 받아오는 메소드
+* 객체 생성 메소드 : input.split으로 생긴 길이만큼의 배열생성 메소드. <br> ex)
+Car[] car = new Car[String.length]; <br>
+car[0] = new Car("jack");
+* 이하 프로세스 step2와 동일
+
+## 제한사항
+* 리턴타입 void는 쓰지않는다.
+* indent는 1까지만 허용한다.
+* 하나의 메소드 Line 수는 15까지만 허용한다.
+* I/O를 제외한 모든 로직에 단위테스트를 구현한다.
+* else는 쓰지않는다.
