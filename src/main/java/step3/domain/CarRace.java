@@ -6,6 +6,7 @@ import step3.utils.RandomNumberGenerator;
 public class CarRace {
 
     private final static int MINIMUM_NUMBER_CAN_BE_INPUT = 1;
+    private final static String CAR_NAME_SEPARATOR = ",";
     private Cars cars;
     private NumberGenerator numberGenerator;
 
@@ -17,26 +18,31 @@ public class CarRace {
     public static CarRace raceStart(String inputCarNames, int numberOfTrials) {
         inputCarNamesValidation(inputCarNames);
         numberOfTrialsValidation(numberOfTrials);
-
         CarNameList carNameList = convertCarNames(inputCarNames);
+
         return new CarRace(Cars.makeCars(carNameList));
     }
 
     private static CarNameList convertCarNames(String inputCarNames) {
-         String[] carNameArray = inputCarNames.split(",");
-         return CarNameList.makeCarNameList(carNameArray);
+        String[] carNameArray = inputCarNames.split(CAR_NAME_SEPARATOR);
+        return CarNameList.makeCarNameList(carNameArray);
     }
 
     public Cars executeTrials() {
         return moveCars(numberGenerator);
     }
 
-    public Cars moveCars(NumberGenerator numberGenerator) {
+    private Cars moveCars(NumberGenerator numberGenerator) {
         for (Car car : cars.getCars()) {
             car.move(numberGenerator.getRandomNumber());
         }
         return cars;
     }
+
+    public Winners pickWinners() {
+        return Winners.pickWinners(cars);
+    }
+
 
     private static void inputCarNamesValidation(String inputCarNames) {
         // TODO: 입력값 유효성 체크 로직 작성
