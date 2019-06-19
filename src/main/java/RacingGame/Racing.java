@@ -43,7 +43,7 @@ public class Racing {
     public void raceStart() {
         for (int i = 0; i < this.time; i++) {
             this.raceCarMoveLoop();
-            outputView.printRace(this.cars);
+            OutputView.printRace(this.cars);
         }
     }
 

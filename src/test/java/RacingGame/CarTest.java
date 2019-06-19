@@ -13,7 +13,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car("jojo");
     }
 
     @Test
@@ -89,7 +89,6 @@ class CarTest {
 
     @Test
     void setCarName() {
-        car = new Car("jojo");
         assertThat(car.getName()).isEqualTo("jojo");
     }
 

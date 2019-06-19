@@ -11,12 +11,8 @@ public class Car {
     private String name;
     private int position;
 
-    public Car() {
-        this.position = 0;
-    }
-
     public Car(String name) {
-        this();
+        this.position = 0;
         this.name = name;
     }
 
