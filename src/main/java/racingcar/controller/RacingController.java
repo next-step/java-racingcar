@@ -11,18 +11,16 @@ public class RacingController {
 
   private InputView inputView;
 
-  public RacingController() {
-    this.inputView = new InputView();;
+  public RacingController(InputView inputView) {
+    this.inputView = inputView;
   }
 
   public void startRacing() {
-    // client에게 최초 질문
     inputView.askQuestions();
 
     String[] names = inputView.getNames();
     int rounds = inputView.getRounds();
 
-    // name을 가진 Car 생성
     List<Car> cars = CarFactory.generate(names);
     printRacingStatus(rounds, cars);
   }
