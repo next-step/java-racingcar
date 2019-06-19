@@ -1,11 +1,11 @@
 package study.racingcar;
 
-import study.racingcar.creator.RacingCarCreator;
-import study.racingcar.model.Car;
-import study.racingcar.model.CarRacingLog;
+import study.racingcar.model.Cars;
 import study.racingcar.model.CarsRacingLog;
+import study.racingcar.model.Drivers;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -15,41 +15,27 @@ import java.util.stream.IntStream;
  * Github : http://github.com/wyparks2
  */
 public class RacingGame {
-    private final int carCount;
-    private final int time;
+    private Drivers drivers;
+    private int time;
 
-    public RacingGame(int carCount, int time) {
-        this.carCount = carCount;
+    public RacingGame(Set<String> driverNames, int time) {
+        this.drivers = new Drivers(driverNames);
         this.time = time;
     }
 
     public List<CarsRacingLog> start() {
-        List<Car> cars = makeRacingCar();
+        final Cars cars = driversRideRacingCar();
         return runCarsRepeatByTime(cars);
     }
 
-    private List<CarsRacingLog> runCarsRepeatByTime(List<Car> cars) {
+    private List<CarsRacingLog> runCarsRepeatByTime(Cars cars) {
         return IntStream.range(0, time)
                 .boxed()
-                .map(index -> this.runCars(cars))
+                .map(index -> cars.allRun())
                 .collect(Collectors.toList());
     }
 
-    private CarsRacingLog runCars(List<Car> cars) {
-        CarsRacingLog carsRacingLog = new CarsRacingLog();
-
-        for (Car car : cars) {
-            car.run();
-            carsRacingLog.add(makeCarRacingLog(car));
-        }
-        return carsRacingLog;
-    }
-
-    private CarRacingLog makeCarRacingLog(Car car) {
-        return new CarRacingLog(car.getName(), car.getPosition());
-    }
-
-    private List<Car> makeRacingCar() {
-        return RacingCarCreator.create(this.carCount);
+    private Cars driversRideRacingCar() {
+        return Cars.ride(this.drivers);
     }
 }
