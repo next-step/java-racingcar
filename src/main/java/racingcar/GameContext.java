@@ -1,38 +1,52 @@
 package racingcar;
 
-import racingcar.logic.GameLogic;
+import racingcar.logic.CarEngine;
+import racingcar.model.RacingCar;
+import racingcar.model.RacingCars;
 import racingcar.view.input.InputView;
 import racingcar.view.result.ResultView;
 
-import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class GameContext {
 
     private final InputView inputView;
     private final ResultView resultView;
-    private final GameLogic gameLogic;
+    private final CarEngine carEngine;
 
-    GameContext(InputView inputView, ResultView resultView, GameLogic gameLogic) {
+    private RacingCars racingCars;
+    private Integer numberOfTimes;
+
+    GameContext(InputView inputView, ResultView resultView, CarEngine carEngine) {
         this.inputView = inputView;
         this.resultView = resultView;
-        this.gameLogic = gameLogic;
+        this.carEngine = carEngine;
     }
 
     public void run() {
-        int numberOfCars = inputView.getNumberOfCars();
-        int numberOfTimes = inputView.getNumberOfTimes();
+        initGame();
+        startGame();
+        showResult();
+    }
 
-        List<Integer> carPositions = IntStream.range(0, numberOfCars)
-                .mapToObj(i -> 0)
-                .collect(Collectors.toList());
+    private void initGame() {
+        racingCars = RacingCars.of(
+                inputView.getCarNames().stream()
+                .map(name -> RacingCar.of(name, carEngine))
+                .collect(Collectors.toList())
+        );
+        numberOfTimes = inputView.getNumberOfTimes();
+    }
 
+    private void startGame() {
         resultView.printHeader();
         for (int i=0; i<numberOfTimes; i++) {
-            carPositions = gameLogic.move(carPositions);
-            resultView.printBody(carPositions);
+            racingCars.move();
+            resultView.printBody(racingCars);
         }
-        resultView.printFooter();
+    }
+
+    private void showResult() {
+        resultView.printFooter(racingCars);
     }
 }
