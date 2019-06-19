@@ -17,8 +17,8 @@ public class CarRace {
     }
 
     public static CarRace raceStart(String inputCarNames, int numberOfTrials) {
-        inputCarNamesValidation(inputCarNames);
-        numberOfTrialsValidation(numberOfTrials);
+        validationInputCarNames(inputCarNames);
+        validationNumberOfTrials(numberOfTrials);
         CarNames carNames = convertCarNames(inputCarNames);
 
         return new CarRace(Cars.makeCars(carNames));
@@ -45,14 +45,14 @@ public class CarRace {
     }
 
 
-    private static void inputCarNamesValidation(String inputCarNames) {
+    private static void validationInputCarNames(String inputCarNames) {
         if (StringUtils.isEmpty(inputCarNames)) {
             throw new IllegalArgumentException("자동차 이름들을 입력해주세요.");
         }
         //TODO: 정규식으로 입력된 자동차이름들 검증 추가하기
     }
 
-    private static void numberOfTrialsValidation(int numberOfTrials) {
+    private static void validationNumberOfTrials(int numberOfTrials) {
         if (numberOfTrials < MINIMUM_NUMBER_CAN_BE_INPUT) {
             throw new IllegalArgumentException("최소 1번의 시행 횟수가 필요합니다.");
         }
