@@ -21,6 +21,12 @@ public class Car {
         return position;
     }
 
-    public String getName(){return name;}
+    public String getName() {
+        return name;
+    }
+
+    public int getCondition() {
+        return (int) (Math.random() * 10);
+    }
 
 }

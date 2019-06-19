@@ -2,21 +2,19 @@ package racing;
 
 import racing.io.InputView;
 import racing.io.OutputView;
-import racing.model.Car;
+import racing.model.CarFactory;
 import racing.model.RacingGame;
-
-import java.util.List;
+import racing.model.Winner;
 
 public class RacingApplication {
 
     public static void main(String[] args) {
-        List<Car> cars = InputView.createCarsByNames();
+        RacingGame racingGame = RacingGame.of(CarFactory.createCarsByNames(InputView.getCarNames()));
         int raceCount = InputView.getRaceCount();
-        RacingGame racingGame = RacingGame.of(cars);
         for (; raceCount != 0; raceCount--) {
             racingGame.run();
             OutputView.view(racingGame.getCars());
         }
-        OutputView.showWinner(racingGame.getCars());
+        OutputView.showWinner(Winner.getNames(racingGame.getCars()));
     }
 }

@@ -1,11 +1,9 @@
 package racing.io;
 
-import racing.model.Car;
 import racing.model.Splitter;
 
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class InputView {
 
@@ -14,13 +12,7 @@ public class InputView {
         return new Scanner(System.in).nextInt();
     }
 
-    public static List<Car> createCarsByNames() {
-        return getCarNames().stream()
-                .map(Car::of)
-                .collect(Collectors.toList());
-    }
-
-    private static List<String> getCarNames() {
+    public static List<String> getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         return Splitter.spiltWithComma(new Scanner(System.in).nextLine());
     }

@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class SplitterTest {
 
-    @DisplayName("스플리터의 콤마 스플릿 기능 체크")
+    @DisplayName("스플리터의 콤마 스플릿 기능 테스트")
     @Test
     void splitWithComma() {
         List<String> carNames = Splitter.spiltWithComma("hellworld,comma,javajigi");

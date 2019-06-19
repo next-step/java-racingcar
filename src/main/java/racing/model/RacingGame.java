@@ -17,17 +17,15 @@ public class RacingGame {
 
     public void run() {
         movingCars();
-
     }
 
     private void movingCars() {
-        this.cars.forEach(this::moveWhenHigher4);
+        this.cars.forEach(this::moveWhenCarConditionHigherThan4);
     }
 
-    private void moveWhenHigher4(Car car) {
-        if (RandomNumberCreator.getZeroToNine() >= 4) car.move();
+    private void moveWhenCarConditionHigherThan4(Car car) {
+        if (car.getCondition() >= 4) car.move();
     }
-
 
     public List<Car> getCars() {
         return this.cars;
