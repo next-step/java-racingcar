@@ -28,6 +28,10 @@ public class Car {
         return this.carPosition;
     }
 
+    String name(){
+        return this. carName;
+    }
+
     private int carPositionUpdateValue() {
         if (carPositionStatusNumber < EXCUTE_STANDARD_NUMBER) {
             return STOP_NUMBER;
