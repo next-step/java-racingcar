@@ -18,7 +18,7 @@ public class RefereeTest {
     Car car = racingCars.stream().max(Comparator.comparingInt(Car::getPosition)).get();
     String winner = car.getName();
 
-    assertThat(new Referee().announceWinner(cars)).contains(winner);
+    assertThat(Referee.announceWinner(cars)).contains(winner);
 
   }
 

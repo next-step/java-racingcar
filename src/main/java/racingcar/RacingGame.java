@@ -19,6 +19,6 @@ public class RacingGame {
   }
 
   public String announceWinner() {
-    return new Referee().announceWinner(cars);
+    return Referee.announceWinner(cars);
   }
 }
