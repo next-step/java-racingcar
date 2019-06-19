@@ -43,13 +43,6 @@ class CarTest {
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
-
-    @Test
-    void getRandomNumber() {
-        int randomNumber = car.getRandomNumber();
-        assertThat(randomNumber).isBetween(0, 9);
-    }
-
     @Test
     void isMoveCar() {
         boolean isMoveCar = car.isMoveCar(1);

@@ -1,5 +1,7 @@
 package racingGame.domain;
 
+import racingGame.Util;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -34,18 +36,12 @@ public class Car {
         }
     }
 
-    public int getRandomNumber() {
-        Random random = new Random();
-
-        return random.nextInt(BASE_BOUND);
-    }
-
     public boolean isMoveCar(int randomNumber) {
         return randomNumber > REFERENCE_VALUE;
     }
 
     public void nextRace() {
-        int randomNumber = this.getRandomNumber();
+        int randomNumber = Util.randomNumber(BASE_BOUND);
         boolean isMoveCar = this.isMoveCar(randomNumber);
         this.move(isMoveCar);
         this.recode.add(this.getPosition());
