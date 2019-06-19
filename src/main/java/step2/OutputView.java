@@ -18,4 +18,10 @@ public class OutputView {
         System.out.println(carMoveBuffer);
     }
 
+    public static void racingWinnerResult(List<Car> cars){
+        RacingWinner racingWinner = new RacingWinner(cars);
+        String winners = racingWinner.maxPostionCarName();
+        System.out.println(winners + "가 최종 우승 했습니다.");
+    }
+
 }

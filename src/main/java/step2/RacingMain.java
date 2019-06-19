@@ -9,12 +9,14 @@ public class RacingMain {
         String inputCarNumber = InputView.inputCarNames();
         int inputExecuteNumber = InputView.inputExecuteNumber();
 
+        List<Car> cars = null;
         RacingGame racingGame = new RacingGame(createCars(inputCarNumber));
         while (inputExecuteNumber > 0) {
-            List<Car> cars = racingGame.move();
+            cars = racingGame.move();
             OutputView.racingResult(cars);
             inputExecuteNumber--;
         }
+        OutputView.racingWinnerResult(cars);
     }
 
     private static List<Car> createCars(String inputCarNames){
