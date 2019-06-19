@@ -17,7 +17,7 @@ public class Awards {
         this.awardsStrategy = awardsStrategy;
     }
 
-    public Drivers award(CarsRacingLog lastCarsRacingLog) {
+    public Cars award(CarsRacingLog lastCarsRacingLog) {
         final int maxPosition = getMaxPosition(lastCarsRacingLog);
 
         return getWinners(lastCarsRacingLog, maxPosition);
@@ -30,12 +30,12 @@ public class Awards {
                 .orElse(0);
     }
 
-    private Drivers getWinners(CarsRacingLog carsRacingLog, int maxPosition) {
-        List<Driver> drivers = carsRacingLog.getCarRacingLogs().stream()
+    private Cars getWinners(CarsRacingLog carsRacingLog, int maxPosition) {
+        List<Car> cars = carsRacingLog.getCarRacingLogs().stream()
                 .filter(carRacingLog -> awardsStrategy.isWinner(maxPosition, carRacingLog.getPosition()))
-                .map(carRacingLog -> carRacingLog.getCar().getDriver())
+                .map(CarRacingLog::getCar)
                 .collect(Collectors.toList());
 
-        return new Drivers(drivers);
+        return new Cars(cars);
     }
 }

@@ -15,18 +15,19 @@ import java.util.Set;
 public class ConsoleInputView implements InputView {
     private static final String FIRST_QUESTION = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String SECOND_QUESTION = "시도할 회수는 몇 회 인가요?";
+    private static final String SPLIT_REGEX = ",";
 
     @Override
     public RacingGameInfo questionAndAnswer() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println(FIRST_QUESTION);
-        final String driverNames = scanner.next();
-        final Set<String> splitedDriverNames = new HashSet<>(Arrays.asList(driverNames.split(",")));
+        final String carNames = scanner.next();
+        final Set<String> splitCarNames = new HashSet<>(Arrays.asList(carNames.split(SPLIT_REGEX)));
 
         System.out.println(SECOND_QUESTION);
         final int moveCarTryLimit = scanner.nextInt();
 
-        return new RacingGameInfo(splitedDriverNames, moveCarTryLimit);
+        return new RacingGameInfo(splitCarNames, moveCarTryLimit);
     }
 }

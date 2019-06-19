@@ -2,7 +2,6 @@ package study.racingcar;
 
 import study.racingcar.model.Cars;
 import study.racingcar.model.CarsRacingLog;
-import study.racingcar.model.Drivers;
 
 import java.util.List;
 import java.util.Set;
@@ -15,16 +14,15 @@ import java.util.stream.IntStream;
  * Github : http://github.com/wyparks2
  */
 public class RacingGame {
-    private Drivers drivers;
+    private Cars cars;
     private int time;
 
-    public RacingGame(Set<String> driverNames, int time) {
-        this.drivers = new Drivers(driverNames);
+    public RacingGame(Set<String> carNames, int time) {
+        this.cars = new Cars(carNames);
         this.time = time;
     }
 
     public List<CarsRacingLog> start() {
-        final Cars cars = driversRideRacingCar();
         return runCarsRepeatByTime(cars);
     }
 
@@ -33,9 +31,5 @@ public class RacingGame {
                 .boxed()
                 .map(index -> cars.allRun())
                 .collect(Collectors.toList());
-    }
-
-    private Cars driversRideRacingCar() {
-        return Cars.ride(this.drivers);
     }
 }

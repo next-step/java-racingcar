@@ -8,16 +8,16 @@ import java.util.Set;
  * Github : http://github.com/wyparks2
  */
 public class RacingGameInfo {
-    private Set<String> driverNames;
+    private Set<String> carNames;
     private int moveCarTryLimit;
 
-    public RacingGameInfo(Set<String> driverNames, int moveCarTryLimit) {
-        this.driverNames = driverNames;
+    public RacingGameInfo(Set<String> carNames, int moveCarTryLimit) {
+        this.carNames = carNames;
         this.moveCarTryLimit = moveCarTryLimit;
     }
 
-    public Set<String> getDriverNames() {
-        return driverNames;
+    public Set<String> getCarNames() {
+        return carNames;
     }
 
     public int getMoveCarTryLimit() {

@@ -1,9 +1,9 @@
 package study.racingcar.output;
 
+import study.racingcar.model.Car;
 import study.racingcar.model.CarRacingLog;
+import study.racingcar.model.Cars;
 import study.racingcar.model.CarsRacingLog;
-import study.racingcar.model.Driver;
-import study.racingcar.model.Drivers;
 
 import java.util.List;
 
@@ -33,16 +33,16 @@ public class ConsoleGameStatusResultView implements ResultView {
     }
 
     @Override
-    public void printWinners(Drivers winners) {
+    public void printWinners(Cars winners) {
         final StringBuilder sb = new StringBuilder();
 
         int index = 0;
-        for (Driver driver : winners.getDrivers()) {
+        for (Car car : winners.getCars()) {
             if (index != 0) {
                 sb.append(WINNERS_DELIMITER);
             }
 
-            sb.append(driver.getName());
+            sb.append(car.getName());
             index++;
         }
 
@@ -64,10 +64,10 @@ public class ConsoleGameStatusResultView implements ResultView {
     }
 
     private String convertPositionToString(CarRacingLog carRacingLog) {
-        final String driverName = carRacingLog.getCar().getDriver().getName();
+        final String carName = carRacingLog.getCar().getName();
         final StringBuilder sb = new StringBuilder();
 
-        sb.append(driverName);
+        sb.append(carName);
         sb.append(SEPARATOR);
 
         int movedPosition = carRacingLog.getPosition();

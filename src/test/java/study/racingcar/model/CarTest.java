@@ -17,7 +17,7 @@ public class CarTest {
     @Test
     void run_position_증가() {
         MovableStrategy strategy = new ManualMovableStrategy(true);
-        Car car = new Car(strategy, "test");
+        Car car = new Car("test", strategy);
 
         assertThat(car.run()).isEqualTo(DEFAULT_POSITION + 1);
     }
@@ -25,7 +25,7 @@ public class CarTest {
     @Test
     void run_position_변경없음() {
         MovableStrategy strategy = new ManualMovableStrategy(false);
-        Car car = new Car(strategy, "test");
+        Car car = new Car("test", strategy);
 
         assertThat(car.run()).isEqualTo(DEFAULT_POSITION);
     }

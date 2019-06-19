@@ -5,8 +5,7 @@ import study.racingcar.strategy.RandomMovableStrategy;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import static java.util.stream.Collectors.toList;
+import java.util.stream.Collectors;
 
 /**
  * Created by wyparks2@gmail.com on 2019-06-19
@@ -15,6 +14,12 @@ import static java.util.stream.Collectors.toList;
  */
 public class Cars {
     private Set<Car> cars;
+
+    public Cars(Set<String> carNames) {
+        this.cars = carNames.stream()
+                .map(carName -> new Car(carName, new RandomMovableStrategy()))
+                .collect(Collectors.toSet());
+    }
 
     public Cars(List<Car> cars) {
         this.cars = new HashSet<>(cars);
@@ -31,15 +36,11 @@ public class Cars {
         return carsRacingLog;
     }
 
-    private CarRacingLog makeCarRacingLog(Car car) {
-        return new CarRacingLog(car, car.getPosition());
+    public Set<Car> getCars() {
+        return cars;
     }
 
-    public static Cars ride(Drivers drivers) {
-        final List<Car> cars = drivers.getDrivers().stream()
-                .map(driver -> new Car(driver, new RandomMovableStrategy()))
-                .collect(toList());
-
-        return new Cars(cars);
+    private CarRacingLog makeCarRacingLog(Car car) {
+        return new CarRacingLog(car, car.getPosition());
     }
 }

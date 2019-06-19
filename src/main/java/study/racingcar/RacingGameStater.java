@@ -3,8 +3,8 @@ package study.racingcar;
 import study.racingcar.input.ConsoleInputView;
 import study.racingcar.input.InputView;
 import study.racingcar.model.Awards;
+import study.racingcar.model.Cars;
 import study.racingcar.model.CarsRacingLog;
-import study.racingcar.model.Drivers;
 import study.racingcar.model.RacingGameInfo;
 import study.racingcar.output.ConsoleGameStatusResultView;
 import study.racingcar.output.ResultView;
@@ -23,7 +23,7 @@ public class RacingGameStater {
         RacingGameInfo racingGameInfo = inputView.questionAndAnswer();
 
         RacingGame racingGame = new RacingGame(
-                racingGameInfo.getDriverNames(),
+                racingGameInfo.getCarNames(),
                 racingGameInfo.getMoveCarTryLimit()
         );
 
@@ -31,7 +31,7 @@ public class RacingGameStater {
 
         Awards awards = new Awards(new MaxPositionWinnerStrategy());
         CarsRacingLog lastCarsRacingLog = carsRacingLogs.get(carsRacingLogs.size() - 1);
-        Drivers winners = awards.award(lastCarsRacingLog);
+        Cars winners = awards.award(lastCarsRacingLog);
 
         ResultView resultView = new ConsoleGameStatusResultView();
         resultView.printInit();
