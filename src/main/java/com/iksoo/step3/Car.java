@@ -11,34 +11,41 @@
 package com.iksoo.step3;
 
 public class Car {
+    private int inning;
     private String carName;
-    private String carPosition;
-    private int currentDistance;
+    private String[] carPosition;
 
     Car(String name) {
+        this.inning = 0;
         this.carName = name;
-        this.carPosition = "";
-        this.currentDistance = 0;
     }
 
     public String getCarName() {
         return this.carName;
     }
 
-    public String getCarPosition() {
-        return this.carPosition;
+    public void addNextInning(String position) {
+        this.carPosition[this.inning] += position;
+        this.inning++;
     }
 
-    public void addCarPosition(String position) {
-        this.carPosition += position;
-    }
+    public int getFinalPosition() {
+        int finalPosition = 0;
 
-    public int getCurrentDistance() {
-        int sumDistance = 0;
-        for (int i = 0; i < this.carPosition.length(); i++) {
-            sumDistance += Character.getNumericValue(this.carPosition.charAt(i));
+        for (int i = 0; i < this.inning; i++) {
+            finalPosition += this.carPosition[i].equals("1") ? 1 : 0;
         }
 
-        return sumDistance;
+        return finalPosition;
+    }
+
+    public void printInningResult() {
+        String result = "";
+
+        for (int i = 0; i < this.inning; i++) {
+            result += this.carPosition[i].equals("1") ? "-" : "";
+        }
+
+        System.out.println(this.carName + " : " + result);
     }
 }
