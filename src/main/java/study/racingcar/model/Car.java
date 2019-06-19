@@ -10,13 +10,13 @@ import study.racingcar.strategy.MovableStrategy;
 public class Car {
     private static final int DEFAULT_POSITION = 1; // 초기 위치
 
+    private Driver driver;
     private MovableStrategy movableStrategy;
-    private String name; // 자동차 이름
     private int position = DEFAULT_POSITION; // 이동한 거리
 
-    public Car(MovableStrategy movableStrategy, String name) {
+    public Car(Driver driver, MovableStrategy movableStrategy) {
+        this.driver = driver;
         this.movableStrategy = movableStrategy;
-        this.name = name;
     }
 
     public int run() {
@@ -31,8 +31,8 @@ public class Car {
         return movableStrategy.canMove();
     }
 
-    public String getName() {
-        return name;
+    public Driver getDriver() {
+        return driver;
     }
 
     public int getPosition() {
