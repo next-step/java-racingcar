@@ -2,6 +2,8 @@ package racingcar.controller;
 
 import racingcar.model.Car;
 import racingcar.model.CarFactory;
+import racingcar.view.ConsoleInputView;
+import racingcar.view.ConsoleResultView;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -10,9 +12,11 @@ import java.util.List;
 public class RacingController {
 
   private InputView inputView;
+  private ResultView resultView;
 
-  public RacingController(InputView inputView) {
+  public RacingController(final InputView inputView, final ResultView resultView) {
     this.inputView = inputView;
+    this.resultView = resultView;
   }
 
   public void startRacing() {
@@ -25,20 +29,20 @@ public class RacingController {
     printRacingStatus(rounds, cars);
   }
 
-  static void printRacingStatus(int rounds, List<Car> cars) {
+  void printRacingStatus(int rounds, final List<Car> cars) {
     for(int round = 1; round <= rounds; round++) {
-      ResultView.printCurrentRound(round);
+      resultView.printCurrentRound(round);
       drive(cars);
-      ResultView.addLineBreak();
+      resultView.addLineBreak();
     }
 
-    ResultView.printWinner(cars);
+    resultView.printWinner(cars);
   }
 
-  static void drive(List<Car> cars) {
+  void drive(final List<Car> cars) {
     cars.forEach(car -> {
       car.move();
-      ResultView.printCurrentPositionOf(car);
+      resultView.printCurrentPositionOf(car);
     });
   }
 }
