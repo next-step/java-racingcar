@@ -23,6 +23,10 @@ public class Car {
         return randomNumber >= MOVE_CRITERION;
     }
 
+    public boolean isSamePosition(int position) {
+        return this.position == position;
+    }
+
     public int getPosition() {
         return position;
     }

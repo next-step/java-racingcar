@@ -27,10 +27,6 @@ public class Cars {
                 .get();
     }
 
-    public boolean isWinnerPosition(int winnerPosition, Car car) {
-        return car.getPosition() == winnerPosition; //TODO: Car 객체에 메세지를 던져서 결과 반환하도록 구현하기
-    }
-
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
