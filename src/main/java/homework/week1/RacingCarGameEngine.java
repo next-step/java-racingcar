@@ -1,5 +1,7 @@
 package homework.week1;
 
+import java.util.Random;
+
 public class RacingCarGameEngine {
 
     private static final int MIN_RUN_CONDITION_VALUE = 4;
@@ -12,9 +14,22 @@ public class RacingCarGameEngine {
         this.carPositions = carPositions;
     }
 
-    public int[] move() {
-        // TODO 구현
-        return null;
+    public void validateUserInputValue(int value) throws IllegalArgumentException {
+        if (value < 1)
+            throw new IllegalArgumentException("반드시 1 이상의 숫자를 입력하세요!");
+    }
+
+    public int[] move() throws NullPointerException {
+        if (carPositions == null) {
+            throw new NullPointerException("경주에 참여하는 자동차 대수가 설정되지 않았습니다!");
+        }
+
+        Random randomNumber = new Random();
+        for (int index=0; index < carPositions.length; index++) {
+            carPositions[index] = getRunCount(checkRunCondition(randomNumber.nextInt(10)),
+                    carPositions[index]);
+        }
+        return carPositions;
     }
 
     public int getNumbersOfRacing() {

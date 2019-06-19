@@ -15,6 +15,8 @@
   int형 배열인 carPositions 을 입력받은 수의 크기로 배열을 생성한다. 배열의 value 는 자동차가 전진한 횟수에 해당한다.
   사용자 입력을 받은 경주 할 회수 정보는 RacingCarGameEngine 클래스의 
   int형 인스턴스 변수 numbersOfRacing 의 값으로 셋팅한다.
+* 입력값 validate : 사용자 입력으로 받는 숫자는 1이상의 숫자여야 한다.
+  1보다 작은 값이 사용자 입력으로 들어올 경우 IllegalArgumentException 을 발생시키는 validateUserInputValue 매소드이다.
 * 핵심 로직 기능1 : 자동차가 run 할 수 있는 조건을 체크하는 리턴형이 boolean 이고 매개변수로 int 형을 인자 하나를 가지는 
   checkRunCondition 메소드를 생성한다. 해당 매소드가 true 를 return 하는 조건은 매개변수로 인자가 4 이상일 경우이며
   0,1,2,3 과 같은 수가 매개변수로 올 경우엔 false를 return 한다.
@@ -30,6 +32,9 @@
   리턴형 void 이고 매개변수가 없는 printRacingCar 매소드이다.
 * UI 로직 기능2 : 사용자 입력으로 받은 경수 횟수 만큼 printMoveRacingCar 를 호출하는 void 리턴형이고 매개변수가 없는 
   goRacingGame 매소드이다. 
+* UI 로직 기능3 : 사용자 입력값이 유효한 값이 올때까지 입력을 받도록 유도하는 void 리턴형 tryValidUserInputValue 매서드이다.
+  valicateUserInputValue 의 호출결과 exception 을 catch 하여 사용자 입력받는 부분을 다시 호출하도록 한다.
+* UI 로직 기능4 : 사용자가 원하는 정보를 입력하도록 유도하는 void 리턴형 doUserInputValue 매서드이다.
 
 
 

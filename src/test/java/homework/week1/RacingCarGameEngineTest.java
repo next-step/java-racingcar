@@ -35,4 +35,21 @@ public class RacingCarGameEngineTest {
         assertThat(carGameEngine.getRunCount(true, 0)).isEqualTo(1);
         assertThat(carGameEngine.getRunCount(false, 0)).isEqualTo(0);
     }
+
+    @Test
+    void moveNullPointerException() {
+        System.out.println("moveNullPointerException");
+        RacingCarGameEngine emptyCarGame = new RacingCarGameEngine(5, null);
+        assertThatNullPointerException().isThrownBy(() -> {
+            emptyCarGame.move();
+        });
+    }
+
+    @Test
+    void validateUserInputValue() {
+        System.out.println();
+        assertThatIllegalArgumentException().isThrownBy(()->{
+            carGameEngine.validateUserInputValue(0);
+        });
+    }
 }
