@@ -24,19 +24,19 @@ public class OutputView {
         for (Car car : cars.getCars()) {
             System.out.print(car.getName() + " : ");
             printPosition(car.getPosition());
-            newLine();
         }
         newLine();
     }
 
-    private static void printPosition(Position position) {
-        for (int i = 0; i < position.parseInt(); i++) {
+    private static void printPosition(int position) {
+        for (int i = 0; i < position; i++) {
             System.out.print(VISUAL_EXPRESSION);
         }
+        newLine();
     }
 
     public static void winningResult(WinningResult result) {
-        String name = result.winners().stream()
+        String name = result.getNames().stream()
                 .collect(Collectors.joining(WINNING_NAMES_DELIMITER));
         System.out.println(name + "가 최종 우승했습니다.");
     }

@@ -21,7 +21,7 @@ class WinningResultTest {
 
         WinningResult winningResult = WinningResult.of(createMockCars(cars));
 
-        assertThat(winningResult.getCars()).containsExactly(winningCar);
+        assertThat(winningResult.getNames()).containsExactly(winningCar.getName());
     }
 
     private Cars createMockCars(List<Car> cars) {
