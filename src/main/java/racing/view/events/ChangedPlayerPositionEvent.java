@@ -1,16 +1,18 @@
 package racing.view.events;
 
+import racing.vo.RacingRecord;
+
 import java.util.List;
 
 public class ChangedPlayerPositionEvent implements RacingEvent {
 
-	private List<Integer> positions;
+	private List<RacingRecord> records;
 
-	public ChangedPlayerPositionEvent(List<Integer> positions){
-		this.positions = positions;
+	public ChangedPlayerPositionEvent(List<RacingRecord> records){
+		this.records = records;
 	}
 
-	public List<Integer> getPositions(){
-		return positions;
+	public List<RacingRecord> getPositions(){
+		return records;
 	}
 }

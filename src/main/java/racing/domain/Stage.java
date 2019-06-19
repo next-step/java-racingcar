@@ -6,6 +6,7 @@ import racing.view.RacingMonitorView;
 import racing.view.events.ChangedPlayerPositionEvent;
 import racing.view.events.RacingEvent;
 import racing.view.events.StartedRacingEvent;
+import racing.vo.EntrySlot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,7 +81,7 @@ public class Stage {
 
 		private int round;
 
-		private List<RacingCar> carList;
+		private List<EntrySlot> carList;
 
 		private RacingMonitorView monitorView;
 
@@ -101,7 +102,7 @@ public class Stage {
 				throw new OutOfEntryException();
 			}
 
-			carList.add(racingCar);
+			carList.add(new EntrySlot(name, racingCar));
 		}
 
 		public void view(RacingMonitorView watcher) {

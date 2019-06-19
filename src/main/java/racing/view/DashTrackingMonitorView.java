@@ -3,6 +3,7 @@ package racing.view;
 import racing.util.MessagePrinter;
 import racing.view.events.ChangedPlayerPositionEvent;
 import racing.view.events.StartedRacingEvent;
+import racing.vo.RacingRecord;
 
 import java.util.List;
 
@@ -40,11 +41,11 @@ public class DashTrackingMonitorView extends RacingMonitorView {
 	 */
 	private void handle(ChangedPlayerPositionEvent event) {
 
-		List<Integer> currentPositionOfPlayers = event.getPositions();
+		List<RacingRecord> currentPositionOfPlayers = event.getPositions();
 
 		currentPositionOfPlayers
 				.stream()
-				.forEach(position -> printer.printMessage(this.renderPosition(position)));
+				.forEach(record -> printer.printMessage(record.getPlayerName() + ":" + this.renderPosition(record.getPosition())));
 
 		// 라운드 업데이트 후 공백라인 출력
 		printer.printMessage(EMPTY_NEW_LINE);

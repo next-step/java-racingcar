@@ -1,5 +1,8 @@
 package racing.domain;
 
+import racing.vo.EntrySlot;
+import racing.vo.RacingRecord;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -9,9 +12,9 @@ import java.util.stream.Stream;
  */
 public class Entry {
 
-	private List<RacingCar> players;
+	private List<EntrySlot> players;
 
-	public Entry(List<RacingCar> players){
+	public Entry(List<EntrySlot> players){
 		// shallow copy
 		this.players = players.stream().collect(Collectors.toList());
 	}
@@ -20,11 +23,11 @@ public class Entry {
 		return players.size();
 	}
 
-	public List<Integer> drive() {
+	public List<RacingRecord> drive() {
 		return players.stream()
-				.map(car -> {
-					car.move();
-					return car.getMileage();
+				.map(entrySlot -> {
+					entrySlot.drive();
+					return new RacingRecord(entrySlot.getPlayerName(), entrySlot.getCarMilieage());
 				}).collect(Collectors.toList());
 	}
 }
