@@ -4,6 +4,7 @@ import step3.domain.Car;
 import step3.domain.Cars;
 import step3.domain.Winners;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputView {
@@ -25,13 +26,17 @@ public class OutputView {
     }
 
     public void printWinners(Winners winners) {
-        String winnerAnnounce = winners.getWinners().stream()
+        List<String> winnerNames = winners.getWinners().stream()
                 .map(Car::getCarName)
-                .collect(Collectors.toList())
-                .stream()
+                .collect(Collectors.toList());
+        String winnerAnnounce = separateWinnerNames(winnerNames);
+        System.out.println(winnerAnnounce + WINNER_ANNOUNCE_POSTFIX);
+    }
+
+    private String separateWinnerNames(List<String> winnerNames) {
+        return winnerNames.stream()
                 .reduce((s, s2) -> s + WINNER_NAME_SEPARATOR + s2)
                 .get();
-        System.out.println(winnerAnnounce + WINNER_ANNOUNCE_POSTFIX);
     }
 
     private void printCars(Car car) {
