@@ -21,8 +21,8 @@ import java.util.stream.Collectors;
 public class WinPlayerService {
     private Winner winner;
 
-    public WinPlayerService(Winner Winner) {
-        this.winner = Winner;
+    public WinPlayerService(Winner winner) {
+        this.winner = winner;
     }
 
     public Winner getWinners() {
@@ -40,7 +40,7 @@ public class WinPlayerService {
         for (Car car : cars.getCars()) {
             winnerScore = NumberUtils.getMax(this.winner.getWinScore(), car.currentPosition());
         }
-        this.winner.setWinScore(winnerScore);
+        this.winner = new Winner(cars, winnerScore);
     }
 
     private Cars calculateWinPlayer(Cars cars) {

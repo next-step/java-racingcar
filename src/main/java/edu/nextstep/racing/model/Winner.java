@@ -27,8 +27,4 @@ public class Winner {
     public int getWinScore() {
         return winScore;
     }
-
-    public void setWinScore(int winScore) {
-        this.winScore = winScore;
-    }
 }
