@@ -1,25 +1,42 @@
 package com.mommoo.step2;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+
 public class RacingGame {
-    private final int[] CAR_POSITIONS;
+    private static final int INIT_POSITION = 0;
+    private final List<Car> CAR_LIST = new LinkedList<>();
     private final RacingCarMovingConditioner movingConditioner = new RacingCarMovingConditioner();
 
-    public RacingGame(int carCount) {
-        this.CAR_POSITIONS = new int[carCount];
+    public RacingGame(String[] carNames) {
+        for (String carName : carNames) {
+            Car car = new Car(carName, INIT_POSITION);
+            CAR_LIST.add(car);
+        }
     }
 
-    public int[] move() {
-        int size = CAR_POSITIONS.length;
-        int[] returnPositions = new int[size];
+    private Car createNextPositionCar(Car car) {
+        String carName = car.getName();
+        int nextPosition = car.getPosition() + 1;
+        return new Car(carName, nextPosition);
+    }
 
-        for (int index = 0; index < size ; index++) {
-            boolean isMoving = movingConditioner.isMoveCondition();
-            if (isMoving) {
-                CAR_POSITIONS[index] += 1;
-            }
-            returnPositions[index] = CAR_POSITIONS[index];
+    public List<Car> move() {
+        List<Car> nextCarList = new ArrayList<>();
+        for(Car currentCar : CAR_LIST) {
+            Car nextCar = movingConditioner.isMoveCondition() ? createNextPositionCar(currentCar) : currentCar;
+            nextCarList.add(nextCar);
         }
 
-        return returnPositions;
+        CAR_LIST.clear();
+        CAR_LIST.addAll(nextCarList);
+
+        return nextCarList;
+    }
+
+    public List<Car> currentCarList() {
+        return Collections.unmodifiableList(CAR_LIST);
     }
 }
