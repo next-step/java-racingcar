@@ -21,7 +21,14 @@ public class CarRace {
     }
 
     public Cars executeTrials() {
-        return cars.moveCars(numberGenerator);
+        return moveCars(numberGenerator);
+    }
+
+    public Cars moveCars(NumberGenerator numberGenerator) {
+        for (Car car : cars.getCars()) {
+            car.move(numberGenerator.getRandomNumber());
+        }
+        return cars;
     }
 
     private static void numberOfCarsValidation(int numberOfCars) {

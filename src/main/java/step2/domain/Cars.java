@@ -25,12 +25,5 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public Cars moveCars(NumberGenerator numberGenerator) {
-        for (Car car : cars) {
-            car.move(numberGenerator.getRandomNumber());
-        }
-        return this;
-    }
-
 
 }
