@@ -4,7 +4,7 @@ public class Parser {
 
   public final static String CAR_NAME_DELIMITER = ",";
 
-  public static String[] carNameParse(String inputName) {
+  public static String[] parseCarNames(String inputName) {
     if (inputName == null || "".equals(inputName.trim())) {
       throw new IllegalArgumentException("자동차명을 입력하세요");
     }

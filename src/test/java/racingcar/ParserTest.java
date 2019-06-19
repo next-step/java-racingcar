@@ -12,14 +12,14 @@ class ParserTest {
   @Test
   public void 차이름분리테스트() {
     String inputCarName = "name1,name2,name3";
-    assertThat(Parser.carNameParse(inputCarName)).containsExactly("name1", "name2", "name3");
+    assertThat(Parser.parseCarNames(inputCarName)).containsExactly("name1", "name2", "name3");
   }
 
   @ParameterizedTest
   @ValueSource(strings = {" ", "", "   "})
   public void 공백테스트(String input) {
     AssertionsForClassTypes.assertThatThrownBy(() -> {
-      Parser.carNameParse(input);
+      Parser.parseCarNames(input);
     }).isInstanceOf(IllegalArgumentException.class)
         .hasMessageContaining("자동차명을 입력하세요");
   }
@@ -27,7 +27,7 @@ class ParserTest {
   @Test
   public void null_테스트() {
     AssertionsForClassTypes.assertThatThrownBy(() -> {
-      Parser.carNameParse(null);
+      Parser.parseCarNames(null);
     }).isInstanceOf(IllegalArgumentException.class)
         .hasMessageContaining("자동차명을 입력하세요");
   }

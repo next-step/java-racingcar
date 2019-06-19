@@ -10,7 +10,7 @@ public class RacingGameLauncher {
   public static void start() {
     InputView.askNameOfCars();
     String inputCarNames = scanner.next();
-    String[] carNames = Parser.carNameParse(inputCarNames);
+    String[] carNames = Parser.parseCarNames(inputCarNames);
     InputView.askNumberOfTimes();
     int numberOfTimes = scanner.nextInt();
 
