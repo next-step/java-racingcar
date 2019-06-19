@@ -14,11 +14,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 class StageOptionTest {
 
 
+    private static final String SEPARATOR = ",";
+
     @ParameterizedTest
     @MethodSource("createEntryInformation")
     void parseStringToEntry(String entryInformation, int entrySize){
         // Arrange & Action
-        StageOption option = new StageOption(entryInformation);
+        int roundLimit = 5;
+        StageOption option = new StageOption(entryInformation, SEPARATOR, roundLimit);
 
         // Assertion
         assertThat(option.getEntrySize()).isEqualTo(entrySize);
