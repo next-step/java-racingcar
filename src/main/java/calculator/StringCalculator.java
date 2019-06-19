@@ -4,8 +4,8 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
 
-    public static final String DELIMITER = "\\s";
-    public static final String REGEX_PATTERN = "^(\\d+)(?:\\s+[\\+\\-\\*\\/]+\\s+(\\d+))*$";
+    static final String DELIMITER = "\\s";
+    static final String REGEX_PATTERN = "^(\\d+)(?:\\s+[\\+\\-\\*\\/]+\\s+(\\d+))*$";
     private int result;
 
     String[] toStringArrays(String input) {

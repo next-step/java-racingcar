@@ -4,43 +4,54 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.util.MovingGenerator;
 import racingcar.util.NoMovingGenerator;
+import racingcar.util.NumberGenerator;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static racingcar.model.Car.DEFAULT_POSITION;
 
 class CarsTest {
 
+    @DisplayName("문자열의 쉼표(,)를 구분자로 하여 자동차 생성")
     @Test
-    @DisplayName("개수만큼 자동차를 생성한다")
-    void carGenerator() {
-        int count = 3;
-
-        Cars generate = Cars.generate(count);
-
-        assertThat(generate).isNotNull();
-        assertThat(generate.getCars().size()).isEqualTo(3);
+    void createOfNamesString() {
+        List<String> names = Arrays.asList("test1", "test2", "test3");
+        Cars cars = Cars.from(names);
+        assertThat(cars.getCars()).hasSize(3);
     }
 
-    @DisplayName("자동차 생성 개수가 음수일 경우 실패")
+    @DisplayName("자동차 이름 갯수가 2미만 일 시 에러")
     @Test
-    void generateFail() {
+    void createOfOneNameThenFail() {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> Cars.generate(-1));
+                .isThrownBy(() -> Cars.from(Arrays.asList("test1")))
+                .withMessageMatching("자동차는 2대이상이어야 합니다.");
     }
 
-    @Test
     @DisplayName("자동차들이 전진한다")
-    void moveCar() {
-        Cars cars = Cars.generate(3);
-        cars.moveAll(new MovingGenerator());
-        assertThat(cars.getCars()).extracting(Car::getPosition).containsOnly(2);
+    @Test
+    void moveCars() {
+        Cars cars = createCars(new MovingGenerator());
+        Cars move = cars.move();
+        assertThat(move.getCars()).extracting(Car::getPosition)
+                .containsOnly(DEFAULT_POSITION + 1);
     }
 
+    @DisplayName("자동차들이 움직이지 않는다")
     @Test
-    @DisplayName("자동차는 움직이지 않는다")
-    void nonMoveCar() {
-        Cars cars = Cars.generate(3);
-        cars.moveAll(new NoMovingGenerator());
-        assertThat(cars.getCars()).extracting(Car::getPosition).containsOnly(1);
+    void nonMoveCars() {
+        Cars cars = createCars(new NoMovingGenerator());
+        cars.move();
+        assertThat(cars.getCars()).extracting(Car::getPosition).containsOnly(DEFAULT_POSITION);
+    }
+
+    private Cars createCars(NumberGenerator numberGenerator) {
+        List<Car> carList = Arrays.asList(Car.newInstance("test1"),
+                                            Car.newInstance("test2"),
+                                            Car.newInstance("test3"));
+        return new Cars(carList, numberGenerator);
     }
 }

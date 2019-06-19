@@ -1,50 +1,36 @@
 package racingcar.model;
 
-import racingcar.util.NumberGenerator;
-import racingcar.util.RandomGenerator;
-
 public class RacingGame {
 
-    public static final int GAME_END_ROUND = 0;
-    public static final int INPUT_MIN_VALUE = 0;
+    public static final int MIN_ROUND = 0;
     private Cars cars;
     private int round;
-    private NumberGenerator numberGenerator;
 
-    private RacingGame(int round, Cars cars) {
-        this.round = round;
+    RacingGame(int round, Cars cars) {
         this.cars = cars;
-        this.numberGenerator = new RandomGenerator();
-    }
-
-    RacingGame(int round, Cars cars, NumberGenerator numberGenerator) {
         this.round = round;
-        this.cars = cars;
-        this.numberGenerator = numberGenerator;
     }
 
-    public static RacingGame generate(int round, int carCount) {
-        validateInputMin(round, "시도 횟수는 " + INPUT_MIN_VALUE + "보다 커야합니다.");
-        validateInputMin(carCount, "자동차 대수는 " + INPUT_MIN_VALUE + "보다 커야합니다.");
-        return new RacingGame(round, Cars.generate(carCount));
+    public static RacingGame generate(GameRequest gameRequest) {
+        int round = gameRequest.getInputOfRound();
+        Cars cars = Cars.from(gameRequest.getNames());
+        return new RacingGame(round, cars);
     }
 
-    private static void validateInputMin(int count, String text) {
-        if (count < 0) {
-            throw new IllegalArgumentException(text);
-        }
+    public Cars start() {
+        return cars;
     }
 
-    public Cars racing() {
+    public Cars playOfOneRound() {
         round--;
-        return cars.moveAll(numberGenerator);
+        return cars.move();
     }
 
     public boolean isGameOver() {
-        return round == GAME_END_ROUND;
+        return MIN_ROUND == round;
     }
 
-    public Cars getResult() {
-        return cars;
+    public WinningResult getWinningResult() {
+        return WinningResult.of(cars);
     }
 }
