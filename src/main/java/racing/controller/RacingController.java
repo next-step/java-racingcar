@@ -16,7 +16,7 @@ public class RacingController {
         makeNewGame(inputView.requestGameInfo());
     }     
     
-    public RacingManager makeNewGame(final GameMakingInfo gameMakingInfo) {
+    public RacingManager makeNewGame(GameMakingInfo gameMakingInfo) {
         makeSureUserInputs(gameMakingInfo);
         racingManager = new RacingManager(gameMakingInfo);
         return racingManager;
