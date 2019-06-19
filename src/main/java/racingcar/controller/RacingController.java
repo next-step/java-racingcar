@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.controller;
 
 import racingcar.model.Car;
 import racingcar.model.CarFactory;
@@ -7,11 +7,11 @@ import racingcar.view.ResultView;
 
 import java.util.List;
 
-public class RacingGame {
+public class RacingController {
 
   private InputView inputView;
 
-  public RacingGame() {
+  public RacingController() {
     this.inputView = new InputView();;
   }
 
