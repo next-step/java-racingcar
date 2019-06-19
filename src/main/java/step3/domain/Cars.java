@@ -1,8 +1,8 @@
 package step3.domain;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -12,12 +12,11 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars makeCars(CarNameList list) { //TODO: Q. 이 메서드도 불변 컬렉션에 위반되는 메서드인가요?
-        List<Car> cars = new ArrayList<>();
-        for (String carName : list.getCarNameList()) {
-            cars.add(new Car(carName));
-        }
-        return new Cars(cars);
+    public static Cars makeCars(CarNameList list) {
+        return new Cars(list.getCarNameList()
+                .stream()
+                .map(Car::new)
+                .collect(Collectors.toList()));
     }
 
     public List<Car> getCars() {
