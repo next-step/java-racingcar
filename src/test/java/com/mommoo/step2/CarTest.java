@@ -16,4 +16,16 @@ public class CarTest {
         assertThat(car.getName()).isEqualTo(carName);
         assertThat(car.getPosition()).isEqualTo(position);
     }
+
+    @DisplayName("자동차 객체의 다음 포지션 객체 생성 테스트")
+    @Test
+    public void testNextPositionCar() {
+        int position = 10;
+        Car car = new Car("Mommoo", position);
+
+        Car nextPositionCar = car.nextPositionCar();
+        int nextPosition = nextPositionCar.getPosition();
+
+        assertThat(nextPosition).isEqualTo(position+1);
+    }
 }
