@@ -8,12 +8,19 @@ public class ResultView {
     private static final String CAR_POSITION_TEXT = "-";
 
     public static void displayResult(GameResults gameResults) {
-        System.out.println("\n실행 결과");
-        List<GameResult> gameResultList = gameResults.getGameResults();
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("\n실행 결과\n");
+
+        List<GameResult> gameResultList = gameResults.getGameResults();
         gameResultList.forEach(gameResult -> {
             stringBuilder.append(getCurrentRoundCarsPositionText(gameResult));
         });
+
+        int lastIndex = gameResults.getGameResults().size() - 1;
+        GameResult lastRoundResult = gameResults.getGameResults().get(lastIndex);
+
+        stringBuilder.append(lastRoundResult.getWinner());
+        stringBuilder.append("가 최종 우승했습니다.");
         System.out.println(stringBuilder.toString());
     }
 
