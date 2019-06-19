@@ -25,9 +25,14 @@ public class Car {
         return this.carName;
     }
 
+    public int getTotalInning() {
+        return this.carPosition.length;
+    }
+
     public void addNextInning(int random, int criterion) {
         this.carPosition[this.inning] = random >= criterion ? "1" : "0";
         this.inning++;
+        printInningResult();
     }
 
     public int getFinalPosition() {
