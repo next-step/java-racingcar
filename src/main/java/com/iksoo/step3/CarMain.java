@@ -10,20 +10,22 @@
  */
 package com.iksoo.step3;
 
-import java.util.*;
+import java.util.List;
+import java.util.Random;
 
 public class CarMain {
-    private static final long RANDOM_SEED = 190618;
+    //private static final long RANDOM_SEED = 190618;
     private static final int GOSTOP_CRITERION = 4;
-    private static Random random = new Random(RANDOM_SEED);
+    private static Random random = new Random();
+    private static OutputRacingData outputRacingInfo;
 
     public static void main(String[] args) {
-        InputRacingInfo inputRacingInfo = new InputRacingInfo();
-        OutputRacingData outputRacingInfo = new OutputRacingData();
         CheckRacingWinner checkRacingWinner = new CheckRacingWinner();
+        InputRacingInfo inputRacingInfo = new InputRacingInfo();
+        outputRacingInfo = new OutputRacingData();
 
-        String[] carNames = inputRacingInfo.getCarTotalNames().split(",");
-        int tryOfNumbers = inputRacingInfo.getTryOfNumbers();
+        String[] carNames = inputRacingInfo.inputCarNames().split(",");
+        int tryOfNumbers = inputRacingInfo.inputTryOfNumber();
 
         Car[] cars = initiateCar(carNames);
 
@@ -47,12 +49,13 @@ public class CarMain {
     public static void startRacing(Car[] cars, int tryOfNumbers) {
         for (int i = 0; i < tryOfNumbers; i++) {
             doOneInning(cars);
+            outputRacingInfo.printEachInning(cars);
         }
     }
 
     public static void doOneInning(Car[] cars) {
         for (int i = 0; i < cars.length; i++) {
-            cars[i].carPosition += judgeGoOrStop(getRandom());
+            //cars[i].addCarPosition(judgeGoOrStop(getRandom()));
         }
     }
 
