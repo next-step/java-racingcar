@@ -1,24 +1,16 @@
 package racing.controller;
 
-import racing.common.ErrorMessage;
-import racing.common.RacingValidator;
 import racing.domain.RacingManager;
 import racing.view.InputView;
 import racing.view.ResultView;
-import racing.vo.GameMakingInfo;
 
 public class RacingController {
-    private ResultView resultView;
+    private final ResultView resultView;
     private RacingManager racingManager;
     
-    public RacingController(InputView inputView, ResultView resultView) {
+    public RacingController(final InputView inputView, final ResultView resultView) {
         this.resultView = resultView;
-        makeNewGame(inputView.requestGameInfo());
-    }     
-    
-    public RacingManager makeNewGame(GameMakingInfo gameMakingInfo) {
-        racingManager = new RacingManager(gameMakingInfo);
-        return racingManager;
+        racingManager = new RacingManager(inputView.requestGameInfo());
     }
     
     public void processGame() {
