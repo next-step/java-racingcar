@@ -24,29 +24,28 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
  */
 class CarsTest {
 
-    private List<String> carName;
-    private List<String> exceptionCarName;
+    private List<Car> car;
+    private List<Car> exceptionCarName;
 
     @BeforeEach
     void 사전설정() {
-        carName = new ArrayList<>();
-        carName.add("TEST1");
-        carName.add("TEST2");
-        carName.add("TEST3");
+        Car car1 = new Car("TEST1");
+        Car car2 = new Car("TEST2");
+        Car car3 = new Car("TEST3");
+
+        car = new ArrayList<>();
+        car.add(car1);
+        car.add(car2);
+        car.add(car3);
+
+        Car exceptionCar1 = new Car("EXCEP1");
+        Car exceptionCar2 = new Car("");
+        Car exceptionCar3 = new Car("EXCEP3");
 
         exceptionCarName = new ArrayList<>();
-        exceptionCarName.add("EXCEP1");
-        exceptionCarName.add("");
-        exceptionCarName.add("EXCEP3");
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"TEST1", "TEST2", "TEST3"})
-    void 리스트파라미터를통해_생성된_자동차그룹안_자동차들의_이름가져오기(String nameList) {
-        Cars cars = new Cars(carName);
-        assertThat(cars.getCars().stream()
-                .map(car -> car.getCarName())
-                .collect(Collectors.toList()).contains(nameList)).isTrue();
+        exceptionCarName.add(exceptionCar1);
+        exceptionCarName.add(exceptionCar2);
+        exceptionCarName.add(exceptionCar3);
     }
 
     @Test
@@ -54,6 +53,19 @@ class CarsTest {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             Cars cars = new Cars(exceptionCarName);
         });
+    }
+
+    @Test
+    void 자동차그룹_대수() {
+
+        List<Car> carTest = new ArrayList<>();
+        carTest.add(new Car("TEST1"));
+        carTest.add(new Car("TEST2"));
+        carTest.add(new Car("TEST3"));
+
+        Cars cars = new Cars(carTest);
+
+        assertThat(cars.getNumberOfCars()).isEqualTo(3);
     }
 
 }
