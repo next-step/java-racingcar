@@ -1,4 +1,4 @@
-package step2;
+package step2.game.domain;
 
 public class DefaultCarFactoryImpl implements CarFactory {
 }

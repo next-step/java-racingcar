@@ -3,6 +3,9 @@ package step2;
 import java.util.List;
 import java.util.stream.Stream;
 
+import step2.game.domain.Car;
+import step2.game.domain.Cars;
+
 public class ResultView {
     private final RacingGameResultModel racingGameResultModel;
 

@@ -3,6 +3,9 @@ package step2;
 import java.util.List;
 import java.util.Scanner;
 
+import step2.game.domain.Cars;
+import step2.game.service.RacingGame;
+
 public class RacingGameApplication {
 
     public static void main(String[] args) {

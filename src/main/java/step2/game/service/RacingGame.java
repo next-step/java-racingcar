@@ -1,6 +1,10 @@
-package step2;
+package step2.game.service;
 
 import java.util.List;
+
+import step2.RacingGameInputModel;
+import step2.game.domain.Cars;
+import step2.game.domain.RacingGameRecord;
 
 public class RacingGame {
     private final RacingGameInputModel racingGameInputModel;

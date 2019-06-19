@@ -1,4 +1,4 @@
-package step2;
+package step2.game.domain;
 
 public class Car {
     private static final int STARTING_POINT = 0;

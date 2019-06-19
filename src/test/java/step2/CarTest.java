@@ -3,6 +3,11 @@ package step2;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import step2.game.domain.Car;
+import step2.game.domain.CarFactory;
+import step2.game.domain.DefaultCarFactoryImpl;
+import step2.game.domain.MoveStrategy;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
