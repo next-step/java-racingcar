@@ -1,19 +1,36 @@
 package racing.view;
 
+import racing.vo.GameMakingInfo;
+
 import java.util.Scanner;
 
+import static racing.common.Script.CAR_NAMES_QUESTION;
+import static racing.common.Script.TIME_COUNT_QUESTION;
+
 public class InputView {
-    private static void printQuestion(String question) {
+    public void printQuestion(String question) {
         System.out.println(question);
     }
     
-    private static int requireInputInteger() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
+    public int requireInputInteger() {
+        return new Scanner(System.in).nextInt();
     }
     
-    public static int printQuestionAndgetAnswer(String question) {
-        printQuestion(question);
+    public String requestInputString() {
+        return new Scanner(System.in).nextLine();
+    }
+    
+    private String printCarQuestionAndGetAnswer() {
+        printQuestion(CAR_NAMES_QUESTION.getMessage());
+        return requestInputString();
+    }
+    
+    private int printTimeQuestionAndGetAnswer() {
+        printQuestion(TIME_COUNT_QUESTION.getMessage());
         return requireInputInteger();
+    }
+    
+    public GameMakingInfo requestGameInfo() {
+        return new GameMakingInfo(printCarQuestionAndGetAnswer(), printTimeQuestionAndGetAnswer());
     }
 }
