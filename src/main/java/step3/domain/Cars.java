@@ -12,10 +12,10 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars makeCars(int numberOfCars) {
+    public static Cars makeCars(String[] carNameList) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
+        for (String carName : carNameList) {
+            cars.add(new Car(carName));
         }
         return new Cars(cars);
     }
