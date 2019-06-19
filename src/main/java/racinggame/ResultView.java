@@ -17,14 +17,14 @@ public class ResultView {
         System.out.println(stringBuilder.toString());
     }
 
-    private static String convertToDisplayableText(int carPosition) {
-        return Strings.repeat(CAR_POSITION_TEXT, carPosition);
+    private static String convertToDisplayableText(String carName, int carPosition) {
+        return carName + " : " + Strings.repeat(CAR_POSITION_TEXT, carPosition);
     }
 
     private static String getCurrentRoundCarsPositionText(GameResult gameResult) {
         StringBuilder stringBuilder = new StringBuilder();
-        gameResult.getGameResult().forEach(carPosition -> {
-            stringBuilder.append(convertToDisplayableText(carPosition));
+        gameResult.getGameResult().forEach((carName, carPosition) -> {
+            stringBuilder.append(convertToDisplayableText(carName, carPosition));
             stringBuilder.append("\n");
         });
         stringBuilder.append("\n");

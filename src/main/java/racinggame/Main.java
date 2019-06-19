@@ -3,12 +3,12 @@ package racinggame;
 public class Main {
     public static void main(String[] args) {
         InputView.displayCarInput();
-        int carQuantity = InputView.getUserInputToInt();
+        String carNameString = InputView.getNextString();
 
         InputView.displayRoundInput();
         int gameRound = InputView.getUserInputToInt();
 
-        RacingGameParameters racingGameParameters = new RacingGameParameters(gameRound, carQuantity);
+        RacingGameParameters racingGameParameters = new RacingGameParameters(gameRound, carNameString);
         RacingGame racingGame = new RacingGame(racingGameParameters);
 
         GameResults gameResults = racingGame.playFullRound();
