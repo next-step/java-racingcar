@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class Referee {
 
-  public static String announceWinner(Cars car) {
+  public static String announceWinners(Cars car) {
     List<Car> cars = car.getCars();
     int maxPosition = getMaxPosition(cars);
     List<Car> winner = getWinner(maxPosition, cars);

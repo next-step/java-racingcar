@@ -20,7 +20,7 @@ public class RacingGameLauncher {
       ResultView.displayRecord(record);
     }
 
-    String winner = racingGame.announceWinner();
+    String winner = racingGame.announceWinners();
     ResultView.displayWinner(winner);
 
   }

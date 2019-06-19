@@ -18,7 +18,7 @@ public class RacingGame {
     return cars.moveCars();
   }
 
-  public String announceWinner() {
-    return Referee.announceWinner(cars);
+  public String announceWinners() {
+    return Referee.announceWinners(cars);
   }
 }
