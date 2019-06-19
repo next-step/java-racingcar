@@ -1,5 +1,6 @@
 package com.jaeyeonling.racingcar.domain;
 
+import com.jaeyeonling.racingcar.exception.*;
 import com.jaeyeonling.racingcar.utils.StringUtils;
 
 import java.util.Arrays;
@@ -33,11 +34,6 @@ public class RacingGameOption {
     public static class Builder {
         private static final int DEFAULT_MOVING_COUNT = 5;
         private static final MoveStrategy DEFAULT_MOVE_STRATEGY = new RacingStrategy();
-
-        private static final int MINIMUM_NUMBER_OF_PARTICIPANTS = 0;
-        private static final int MAXIMUM_NUMBER_OF_PARTICIPANTS = 10_000;
-        private static final int MINIMUM_MOVING_COUNT = 0;
-        private static final int MAXIMUM_MOVING_COUNT = 10_000;
 
         private List<String> nameOfParticipants;
         private int movingCount = DEFAULT_MOVING_COUNT;
@@ -78,43 +74,31 @@ public class RacingGameOption {
             if (Objects.isNull(nameOfParticipants)) {
                 throwNameOfParticipantsEmpty();
             }
-            if (nameOfParticipants.size() >= MAXIMUM_NUMBER_OF_PARTICIPANTS) {
-                throwConstraintsException(String.format("참여자는 %d 이상이 될 수 없습니다. (입력 값: %d)",
-                        MAXIMUM_NUMBER_OF_PARTICIPANTS,
-                        nameOfParticipants.size()));
+            if (nameOfParticipants.size() >= ParticipantsLongerThanMaxException.MAXIMUM_NUMBER_OF_PARTICIPANTS) {
+                throw new ParticipantsLongerThanMaxException(nameOfParticipants.size());
             }
-            if (nameOfParticipants.size() <= MINIMUM_NUMBER_OF_PARTICIPANTS) {
-                throwConstraintsException(String.format("참여자는 %d 이하가 될 수 없습니다. (입력 값: %d)",
-                        MINIMUM_NUMBER_OF_PARTICIPANTS,
-                        nameOfParticipants.size()));
+            if (nameOfParticipants.size() <= ParticipantsShorterThanMinException.MINIMUM_NUMBER_OF_PARTICIPANTS) {
+                throw new ParticipantsLongerThanMaxException(nameOfParticipants.size());
             }
         }
 
         private void checkMovingCountConstraints() {
-            if (movingCount >= MAXIMUM_MOVING_COUNT) {
-                throwConstraintsException(String.format("movingCount 값은 %d 이상이 될 수 없습니다. (입력 값: %d)",
-                        MAXIMUM_MOVING_COUNT,
-                        movingCount));
+            if (movingCount >= MovingCountLongerThanMaxException.MAXIMUM_MOVING_COUNT) {
+                throw new MovingCountLongerThanMaxException(movingCount);
             }
-            if (movingCount <= MINIMUM_MOVING_COUNT) {
-                throwConstraintsException(String.format("movingCount 값은 %d 이하가 될 수 없습니다. (입력 값: %d)",
-                        MINIMUM_MOVING_COUNT,
-                        movingCount));
+            if (movingCount <= MovingCountShorterThanMinException.MINIMUM_MOVING_COUNT) {
+                throw new MovingCountShorterThanMinException(movingCount);
             }
         }
 
         private void checkMovingStrategyConstraints() {
             if (Objects.isNull(moveStrategy)) {
-                throwConstraintsException("MoveStrategy 는 null 일 수 없습니다.");
+                throw new InvalidMoveStrategyException();
             }
         }
 
         private void throwNameOfParticipantsEmpty() {
-            throwConstraintsException("nameOfParticipants 값은 빈 값일 수 없습니다.");
-        }
-
-        private void throwConstraintsException(final String message) {
-            throw new IllegalArgumentException(message);
+            throw new InvalidNameOfParticipantsException();
         }
     }
 }

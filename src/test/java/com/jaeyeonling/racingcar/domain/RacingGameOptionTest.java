@@ -1,5 +1,6 @@
 package com.jaeyeonling.racingcar.domain;
 
+import com.jaeyeonling.racingcar.exception.*;
 import com.jaeyeonling.racingcar.utils.StringUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,14 +21,14 @@ public class RacingGameOptionTest {
     @DisplayName("nameOfParticipants 없이 RacingGameOption 객체 생성 예외처리")
     @Test
     void noNameOfParticipants() {
-        assertThatExceptionOfType(IllegalArgumentException.class)
+        assertThatExceptionOfType(InvalidNameOfParticipantsException.class)
                 .isThrownBy(() -> RacingGameOption.builder().build());
     }
 
     @DisplayName("nameOfParticipants 값에 빈 값 입력 시 예외처리")
     @Test
     void zeroNumberOfParticipants() {
-        assertThatExceptionOfType(IllegalArgumentException.class)
+        assertThatExceptionOfType(InvalidNameOfParticipantsException.class)
                 .isThrownBy(() -> RacingGameOption.builder().nameOfParticipants(""));
     }
 
@@ -37,14 +38,14 @@ public class RacingGameOptionTest {
     void overNumberOfParticipants(final int overNumber) {
         final String nameOfParticipants = generateNameOfParticipants(overNumber);
 
-        assertThatExceptionOfType(IllegalArgumentException.class)
+        assertThatExceptionOfType(ParticipantsLongerThanMaxException.class)
                 .isThrownBy(() -> RacingGameOption.builder().nameOfParticipants(nameOfParticipants));
     }
 
     @DisplayName("movingCount 값에 0 입력 시 예외처리")
     @Test
     void zeroMovingCount() {
-        assertThatExceptionOfType(IllegalArgumentException.class)
+        assertThatExceptionOfType(MovingCountShorterThanMinException.class)
                 .isThrownBy(() -> RacingGameOption.builder().movingCount(0));
     }
 
@@ -52,7 +53,7 @@ public class RacingGameOptionTest {
     @ParameterizedTest
     @ValueSource(ints = { 456645, 745567, 3462352, 235252 })
     void overMovingCount(final int overNumber) {
-        assertThatExceptionOfType(IllegalArgumentException.class)
+        assertThatExceptionOfType(MovingCountLongerThanMaxException.class)
                 .isThrownBy(() -> RacingGameOption.builder().movingCount(overNumber));
     }
 
@@ -60,14 +61,14 @@ public class RacingGameOptionTest {
     @ParameterizedTest
     @ValueSource(ints = { -1, -23, -523, -4353, -45645 })
     void negativeMovingCount(final int negativeNumber) {
-        assertThatExceptionOfType(IllegalArgumentException.class)
+        assertThatExceptionOfType(MovingCountShorterThanMinException.class)
                 .isThrownBy(() -> RacingGameOption.builder().movingCount(negativeNumber));
     }
 
     @DisplayName("moveStrategy 값에 null 입력 시 예외처리")
     @Test
     void nullMoveStrategy() {
-        assertThatExceptionOfType(IllegalArgumentException.class)
+        assertThatExceptionOfType(InvalidMoveStrategyException.class)
                 .isThrownBy(() -> RacingGameOption.builder().moveStrategy(null));
     }
 

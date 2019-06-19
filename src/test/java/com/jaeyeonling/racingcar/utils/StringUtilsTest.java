@@ -11,7 +11,6 @@ public class StringUtilsTest {
     @DisplayName("repeat 테스트")
     @ParameterizedTest
     @CsvSource({
-            "-,0",
             "-,1",
             "-,5",
             "asdfsa,100",
