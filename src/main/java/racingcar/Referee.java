@@ -15,7 +15,7 @@ public class Referee {
 
   private static List<Car> getWinner(int maxPosition, List<Car> cars) {
     return cars.stream()
-        .filter(car -> car.getPosition() == maxPosition)
+        .filter(car -> car.isMyPosition(maxPosition))
         .collect(Collectors.toList());
   }
 
