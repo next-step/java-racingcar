@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racing.common.ErrorMessage;
 import racing.controller.RacingController;
+import racing.view.ResultView;
 import racing.vo.GameMakingInfo;
 
 class RacingControllerTest {
@@ -12,7 +13,7 @@ class RacingControllerTest {
     
     @BeforeEach
     void setUp() {
-        controller = new RacingController(new TestRacingView());
+        controller = new RacingController(new TestInputView(), new ResultView());
     }
     
     @Test

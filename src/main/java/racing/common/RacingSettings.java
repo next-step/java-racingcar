@@ -2,9 +2,7 @@ package racing.common;
 
 public enum RacingSettings {
     MOVING_START_COUNT(0),
-    CAR_NAME_SEPARATOR(","),
-    CAR_STATUS_SEPARATOR(" : "),
-    CAR_MOVING_SIGN("-");
+    CAR_NAME_SEPARATOR(",");
 
     private int value;
     private String str;

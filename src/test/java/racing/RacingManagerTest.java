@@ -21,4 +21,10 @@ class RacingManagerTest {
         
         Assertions.assertThat(winners).isEqualTo(TestData.WINNER_NAMES);
     }
+    
+    @Test
+    void getMovingHistoryTest() {
+        manager.startGame();
+        Assertions.assertThat(manager.getMovingHistory().size()).isEqualTo(TestData.DEFAULT_TIME);
+    }
 }
