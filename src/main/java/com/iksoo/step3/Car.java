@@ -15,17 +15,18 @@ public class Car {
     private String carName;
     private String[] carPosition;
 
-    Car(String name) {
+    Car(String name, int totalInning) {
         this.inning = 0;
         this.carName = name;
+        this.carPosition = new String[totalInning];
     }
 
     public String getCarName() {
         return this.carName;
     }
 
-    public void addNextInning(String position) {
-        this.carPosition[this.inning] += position;
+    public void addNextInning(int random, int criterion) {
+        this.carPosition[this.inning] = random >= criterion ? "1" : "0";
         this.inning++;
     }
 
