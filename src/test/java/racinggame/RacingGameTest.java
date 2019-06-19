@@ -19,7 +19,8 @@ class RacingGameTest {
 
         assertThat(actual).hasSize(1);
         assertThat(actual.get(0).getGameResult()).hasSize(carAmount);
-        assertThat(actual.get(0).getGameResult()).allMatch(integer -> integer == 1);
+        assertThat(actual.get(0).getGameResult()).containsKeys("pobi", "crong", "honux");
+        assertThat(actual.get(0).getGameResult()).containsValues(1, 1, 1);
     }
 
     @Test
