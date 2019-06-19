@@ -16,4 +16,19 @@ public class Car {
     public int getPosition() {
         return POSITION;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean isCarInstance = obj instanceof Car;
+
+        if (!isCarInstance) {
+            return false;
+        }
+
+        Car car = (Car) obj;
+        String targetCarName = car.getName();
+        int targetPosition = car.getPosition();
+
+        return targetCarName.equals(getName()) && targetPosition == getPosition();
+    }
 }
