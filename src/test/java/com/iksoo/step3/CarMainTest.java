@@ -9,10 +9,6 @@ public class CarMainTest {
     String[] carNames = {"pobi","crong","honux"};
     Car[] cars;
 
-    @BeforeEach
-    void setUp() {
-    }
-
     @Test
     void initiateCarTest() {
         cars = CarMain.initiateCar(carNames);
