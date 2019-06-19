@@ -1,13 +1,11 @@
 package racingcar.model;
 
-import com.google.common.base.Strings;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static racingcar.model.RacingGame.MIN_ROUND;
+import static racingcar.controller.RacingGame.MIN_ROUND;
 
 
 public class GameRequest {

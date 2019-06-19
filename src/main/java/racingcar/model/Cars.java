@@ -16,7 +16,7 @@ public class Cars {
         this(cars, new RandomGenerator());
     }
 
-    Cars(List<Car> cars, NumberGenerator numberGenerator) {
+    public Cars(List<Car> cars, NumberGenerator numberGenerator) {
         this.cars = cars;
         this.numberGenerator = numberGenerator;
     }

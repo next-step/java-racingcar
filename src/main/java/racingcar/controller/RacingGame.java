@@ -1,4 +1,8 @@
-package racingcar.model;
+package racingcar.controller;
+
+import racingcar.model.Cars;
+import racingcar.model.GameRequest;
+import racingcar.model.WinningResult;
 
 import java.util.List;
 
