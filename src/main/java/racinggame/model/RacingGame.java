@@ -18,9 +18,15 @@ public class RacingGame {
 
   public List<RacingInfo> startGame() {
     for (int i = RACING_START_VALUE; i <= time; i++) {
-      racingInfos.add(new RacingInfo(i, move()));
+      move().getCars()
+            .stream()
+            .forEach(c -> racingInfos.add(new RacingInfo(c.getName(), c.getStatus())));
     }
     return racingInfos;
+  }
+
+  public String getWinner() {
+    return cars.getWinner();
   }
 
   private Cars move() {

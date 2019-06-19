@@ -1,19 +1,19 @@
 package racinggame.model;
 
 public class RacingInfo {
-  private int time;
-  private Cars cars;
+  private String name;
+  private int position;
 
-  public RacingInfo(int time, Cars cars) {
-    this.time = time;
-    this.cars = cars;
+  public RacingInfo(String name, int position) {
+    this.name = name;
+    this.position = position;
   }
 
-  public Cars getCars() {
-    return cars;
+  public String getName() {
+    return name;
   }
 
-  public int getTime() {
-    return time;
+  public int getPosition() {
+    return position;
   }
 }
