@@ -19,8 +19,8 @@ import java.util.stream.Collectors;
  */
 public class CarRacingService {
 
-    private Cars player;
     private static final int MOVE_LIMIT_COUNT_FLAG = 4;
+    private Cars player;
 
     /*
     CarRacing 생성자
