@@ -6,9 +6,11 @@ public class Car {
   private static final int MOVE_VALUE = 4;
 
   private int status;
+  private String name;
 
-  public Car() {
+  public Car(String name) {
     this.status = DEFAULT_STATUS;
+    this.name = name;
   }
 
   public int move(int num) {
@@ -20,6 +22,10 @@ public class Car {
 
   public int getStatus() {
     return status;
+  }
+
+  public String getName() {
+    return name;
   }
 
   private boolean isMove(int num) {
