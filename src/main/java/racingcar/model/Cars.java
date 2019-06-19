@@ -1,34 +1,39 @@
 package racingcar.model;
 
 import racingcar.util.NumberGenerator;
+import racingcar.util.RandomGenerator;
 
-import static racingcar.model.Car.DEFAULT_POSITION;
-import static racingcar.model.NamesValidator.CAR_NAMES_DELIMITER;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
 
+    private NumberGenerator numberGenerator;
     private List<Car> cars;
 
-    Cars(List<Car> cars) {
-        this.cars = cars;
+    private Cars(List<Car> cars) {
+        this(cars, new RandomGenerator());
     }
 
-    public static Cars from(String names) {
-        String[] namesArray = names.split(CAR_NAMES_DELIMITER);
-        if (namesArray.length < 2) {
-            throw new IllegalArgumentException("자동차는 2대이상이어야 합니다.");
-        }
-        List<Car> cars = Arrays.stream(namesArray)
-                .map(Car::create)
-                .collect(Collectors.toList());
+    Cars(List<Car> cars, NumberGenerator numberGenerator) {
+        this.cars = cars;
+        this.numberGenerator = numberGenerator;
+    }
+
+    public static Cars from(List<String> names) {
+        validateCarSize(names);
+        List<Car> cars = names.stream().map(Car::newInstance).collect(Collectors.toList());
         return new Cars(cars);
     }
 
-    public Cars move(NumberGenerator numberGenerator) {
+    private static void validateCarSize(List<String> names) {
+        if (names.size() < 2) {
+            throw new IllegalArgumentException("자동차는 2대이상이어야 합니다.");
+        }
+    }
+
+    public Cars move() {
         for (Car car : cars) {
             car.move(numberGenerator.getNumber());
         }
