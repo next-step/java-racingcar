@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 public class Referee {
 
+  public final static String WINNERS_DELIMITER = ",";
+
   public static String announceWinners(Cars car) {
     List<Car> cars = car.getCars();
     int maxPosition = getMaxPosition(cars);
@@ -28,7 +30,7 @@ public class Referee {
 
   private static String getWinnerName(List<Car> winner) {
     return winner.stream().map(Car::getName)
-        .collect(Collectors.joining(","));
+        .collect(Collectors.joining(WINNERS_DELIMITER));
   }
 
 }
