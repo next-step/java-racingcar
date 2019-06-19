@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import java.util.List;
+
 public class RacingGame {
 
     public static final int MIN_ROUND = 0;
@@ -30,7 +32,7 @@ public class RacingGame {
         return MIN_ROUND == round;
     }
 
-    public WinningResult getWinningResult() {
-        return WinningResult.of(cars);
+    public List<String> getWinningResult() {
+        return WinningResult.ofWinningCars(cars);
     }
 }

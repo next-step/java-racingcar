@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class WinningResultTest {
 
-    @DisplayName("가장 많이 전진한 자동차를 반환한다")
+    @DisplayName("우승자 이름을 반환한다")
     @Test
     void winningResult() {
         Car winningCar = new Car("test2", 5);
@@ -19,9 +19,9 @@ class WinningResultTest {
                                         new Car("test", 1),
                                         new Car("test3", 3));
 
-        WinningResult winningResult = WinningResult.of(createMockCars(cars));
+        List<String> winningNames = WinningResult.ofWinningCars(createMockCars(cars));
 
-        assertThat(winningResult.getNames()).containsExactly(winningCar.getName());
+        assertThat(winningNames).containsExactly(winningCar.getName());
     }
 
     private Cars createMockCars(List<Car> cars) {

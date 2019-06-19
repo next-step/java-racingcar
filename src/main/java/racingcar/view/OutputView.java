@@ -4,6 +4,7 @@ import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.model.WinningResult;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputView {
@@ -35,9 +36,8 @@ public class OutputView {
         newLine();
     }
 
-    public static void winningResult(WinningResult result) {
-        String name = result.getNames().stream()
-                .collect(Collectors.joining(WINNING_NAMES_DELIMITER));
+    public static void winningResult(List<String> result) {
+        String name = result.stream().collect(Collectors.joining(WINNING_NAMES_DELIMITER));
         System.out.println(name + "가 최종 우승했습니다.");
     }
 
