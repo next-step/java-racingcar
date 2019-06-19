@@ -23,7 +23,7 @@ public class InputRacingInfo {
 
         try {
             carName = in.nextLine();
-        }catch (InputMismatchException e) {
+        } catch (InputMismatchException e) {
             System.out.println("[Error] 올바른 값을 입력해주세요.");
             e.printStackTrace();
         }
@@ -38,7 +38,7 @@ public class InputRacingInfo {
 
         try {
             num = in.nextInt();
-        }catch (InputMismatchException e) {
+        } catch (InputMismatchException e) {
             System.out.println("[Error] 올바른 값을 입력해주세요.");
             e.printStackTrace();
         }

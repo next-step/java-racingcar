@@ -9,16 +9,7 @@ public class OutputRacingData {
 
     OutputRacingData() {
         System.out.println("\n실행 결과");
-    }
-
-    public void printFinalResult(Car[] car, int tryOfNumber, List<Object> winner) {
         printBlankLine();
-
-        for (int i = 0; i < tryOfNumber; i++) {
-            printEachInning(car);
-        }
-
-        printWinner(winner);
     }
 
     public void printEachInning(Car[] car) {
@@ -27,7 +18,7 @@ public class OutputRacingData {
         }
     }
 
-    public void printWinner(List<Object> winner) {
+    public void printFinalResult(List<Object> winner) {
         System.out.print(winner);
         System.out.print("가 최종 우승했습니다.");
     }
