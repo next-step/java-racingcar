@@ -3,8 +3,6 @@ package step3.domain;
 import step3.utils.NumberGenerator;
 import step3.utils.RandomNumberGenerator;
 
-import java.util.List;
-
 public class CarRace {
 
     private final static int MINIMUM_NUMBER_CAN_BE_INPUT = 1;

@@ -3,17 +3,23 @@ package step3;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import step2.domain.Car;
+import step3.domain.Car;
+import step3.domain.CarRace;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    private Car car = new Car();
+    private Car car = new Car("testCar");
 
     @Test
     void 자동차가_생성된다() {
         assertThat(car).isNotNull();
+    }
+
+    @Test
+    void 자동차_이름이_제대로_생성된다() {
+        assertThat(car.getCarName()).isEqualTo("testCar");
     }
 
     @Test
@@ -24,6 +30,9 @@ public class CarTest {
     @Test
     void 입력된_이름의_숫자만큼_자동차가_생성된다() {
         //TODO: 입력된 이름의 숫자만큼 자동차가 생성되는지 테스트 코드 작성
+        String inputString = "Car1,Car2,Car3,Car4,Car5";
+        CarRace.raceStart(inputString, 3);
+//        cars.getCars().size();
     }
 
     @Test

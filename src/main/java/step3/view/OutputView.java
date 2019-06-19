@@ -26,7 +26,7 @@ public class OutputView {
     }
 
     private void printCarName(String carName) {
-        System.out.println(carName + " : ");
+        System.out.print(carName + " : ");
     }
 
     private void printEmptyLine() {
