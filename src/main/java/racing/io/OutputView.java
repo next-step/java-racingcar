@@ -12,10 +12,6 @@ public class OutputView {
     }
 
     private static void printForCount(Car car) {
-        if (car.getPosition() == 0)
-            System.out.println();
-        else {
-            System.out.println(new String(new char[car.getPosition()]).replace("\0", "-"));
-        }
+        System.out.println(new String(new char[car.getPosition()]).replace("\0", "-"));
     }
 }
