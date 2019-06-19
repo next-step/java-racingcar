@@ -4,7 +4,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import step3.domain.Car;
+import step3.domain.CarNames;
 import step3.domain.CarRace;
+import step3.domain.Cars;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -27,22 +29,42 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3, 4})
+    void 입력된_이름대로_자동차의_이름들이_생성된다(int num) {
+        String inputString = "Car0,Car1,Car2,Car3,Car4";
+        String[] carNameArray = inputString.split(",");
+        CarNames carNames = CarNames.makeCarNames(carNameArray);
+
+        assertThat(carNames.getCarNames().get(num)).isEqualTo("Car" + num);
+    }
+
     @Test
     void 입력된_이름의_숫자만큼_자동차가_생성된다() {
-        //TODO: 입력된 이름의 숫자만큼 자동차가 생성되는지 테스트 코드 작성
         String inputString = "Car1,Car2,Car3,Car4,Car5";
-        CarRace.raceStart(inputString, 3);
-//        cars.getCars().size();
+        String[] carNameArray = inputString.split(",");
+        CarNames carNames = CarNames.makeCarNames(carNameArray); //TODO: Q. 위의 코드와 중복되는데 상관 없을까요?
+        Cars cars = Cars.makeCars(carNames);
+
+        assertThat(cars.getCars().size()).isEqualTo(5);
     }
 
     @Test
-    void 입력된_이름대로_자동차의_이름들이_생성된다() {
-        //TODO: 입력된 이름대로 자동차의 이름들이 생성되는지 테스트 코드 작성
+    void 자동차는_랜덤숫자가_4이상인_경우_이동한다() {
+        int randomNumberOverFour = 5;
+        int initialPosition = car.getPosition();
+        car.move(randomNumberOverFour);
+
+        assertThat(car.getPosition()).isEqualTo(initialPosition + 1);
     }
 
     @Test
-    void 자동차는_랜덤숫자가_4이상인_경우만_이동한다() {
-        //TODO: 자동차는 랜덤숫자가 4 이상인 경우만 이동하는지 테스트 코드 작성
+    void 자동차는_랜덤숫자가_4미만인_경우_이동하지_않는다() {
+        int randomNumberUnderFour = 3;
+        int initialPosition = car.getPosition();
+        car.move(randomNumberUnderFour);
+
+        assertThat(car.getPosition()).isEqualTo(initialPosition);
     }
 
     @ParameterizedTest
