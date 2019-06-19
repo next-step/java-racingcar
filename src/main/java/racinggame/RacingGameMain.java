@@ -13,11 +13,10 @@ public class RacingGameMain {
     String carName = InputView.inputName();
     int time = InputView.inputTime();
 
-    RacingGame racingGame = new RacingGame(carCount);
+    RacingGame racingGame = new RacingGame(carName, time);
 
-    for (int i = 0; i < time; i++) {
-      ResultView.resultView(racingGame.startGame());
-      System.out.println();
-    }
+    List<RacingInfo> result = racingGame.startGame();
+    ResultView.resultView(result);
+    ResultView.resultWinner(racingGame.getWinner());
   }
 }
