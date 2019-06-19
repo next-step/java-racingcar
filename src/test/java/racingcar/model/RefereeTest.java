@@ -16,6 +16,7 @@ class RefereeTest {
     void setUp() {
         DrivingRule alwaysTrueRule = () -> true;
         DrivingRule alwaysFalseRule = () -> false;
+
         names = Arrays.asList(CarName.valueOf("yong")
                 , CarName.valueOf("pobi")
                 , CarName.valueOf("crong"));

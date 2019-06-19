@@ -20,18 +20,21 @@ class CarTest {
     @Test
     void Car는_이름으로_생성_가능하다() {
         Car car = Car.create(name);
+
         assertThat(car).isInstanceOf(Car.class);
     }
 
     @Test
     void Car는_이름과_DrivingRule로_생성_가능하다() {
         Car car = Car.createWithDrivingRule(name, mockTrueRule);
+
         assertThat(car).isInstanceOf(Car.class);
     }
 
     @Test
     void Car는_CarInformation으로_자신의_정보를_전달할_수_있다() {
         Car car = Car.create(name);
+
         assertThat(car.getInformation()).isInstanceOf(CarInformation.class);
     }
 

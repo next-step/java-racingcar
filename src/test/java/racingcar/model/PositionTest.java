@@ -8,6 +8,7 @@ class PositionTest {
     @Test
     void 위치_객체_생성_테스트() {
         Position position = Position.valueOf(1);
+
         assertThat(position).isInstanceOf(Position.class);
     }
 

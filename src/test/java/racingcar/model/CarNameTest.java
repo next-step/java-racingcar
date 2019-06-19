@@ -17,6 +17,7 @@ class CarNameTest {
     void CarName은_캐시를_이용한다() {
         CarName name1 = CarName.valueOf(name);
         CarName name2 = CarName.valueOf(name);
+
         assertThat(name1 == name2).isTrue();
     }
 
@@ -24,6 +25,7 @@ class CarNameTest {
     void CarName은_이름이_같으면_같은_객체다() {
         CarName name1 = CarName.valueOf(name);
         CarName name2 = CarName.valueOf(name);
+
         assertThat(name1.equals(name2)).isTrue();
     }
 }
