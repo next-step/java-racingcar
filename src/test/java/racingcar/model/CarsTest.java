@@ -42,9 +42,9 @@ class CarsTest {
     @Test
     void Cars는_여러대의_차를_움직일_수_있다() {
         Cars cars = Cars.createWithNames(names);
-        List<CarInformation> positions = cars.move();
+        List<CarInformation> informationOnCars = cars.move();
 
-        assertThat(positions.size()).isEqualTo(names.size())
+        assertThat(informationOnCars).hasSize(names.size())
                 .extracting("class")
                 .containsOnly(CarInformation.class);
     }
