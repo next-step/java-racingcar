@@ -56,8 +56,8 @@ String[] names = inputName.split(",");
     - [X] 경주(CarRacing) 클래스 : 경기 종료 후 자동차들의 객체를 반환하는 기능
     - [X] 경기(RoundGame) 클래스 : 사용자가 입력한 경기의 횟수를 반환하는 기능
     - [X] 경기(RoundGame) 클래스 : 남아있는 경기 라운드를 반환하는 기능 
-    - [X] 우승(WinPlater) 클래스 : 우승자를 선정하는 기능
-    - [X] 우승(WinPlater) 클래스 : 우승자를 반환하는 기능
+    - [X] 우승(WinPlayer) 클래스 : 우승자를 선정하는 기능
+    - [X] 우승(WinPlayer) 클래스 : 우승자를 반환하는 기능
 - [X] 유효성 체크
 
 
