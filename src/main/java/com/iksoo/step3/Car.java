@@ -12,11 +12,11 @@ package com.iksoo.step3;
 
 public class Car {
     private String carName;
-    public String carPosition;
-    public int currentDistance;
+    private String carPosition;
+    private int currentDistance;
 
-    Car(String Name) {
-        this.carName = Name;
+    Car(String name) {
+        this.carName = name;
         this.carPosition = "";
         this.currentDistance = 0;
     }
@@ -27,5 +27,18 @@ public class Car {
 
     public String getCarPosition() {
         return this.carPosition;
+    }
+
+    public void setCarPosition(String position) {
+        this.carPosition = position;
+    }
+
+    public int getCurrentDistance() {
+        int sumDistance = 0;
+        for (int i = 0; i < this.carPosition.length(); i++) {
+            sumDistance += Character.getNumericValue(this.carPosition.charAt(i));
+        }
+
+        return sumDistance;
     }
 }
