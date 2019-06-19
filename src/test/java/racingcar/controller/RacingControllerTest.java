@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
 import racingcar.util.drivingStrategy.DrivingStrategy;
 import racingcar.util.drivingStrategy.MockDrivingStrategy;
+import racingcar.view.ConsoleInputView;
+import racingcar.view.ConsoleResultView;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,10 +18,12 @@ import static java.util.stream.Collectors.joining;
 
 public class RacingControllerTest {
 
+  private RacingController racingController;
   private DrivingStrategy drivingStrategy;
 
   @BeforeEach
   void setUp() {
+    racingController = new RacingController(new ConsoleInputView(), new ConsoleResultView());
     drivingStrategy = MockDrivingStrategy.getInstance();
   }
 
@@ -44,7 +48,7 @@ public class RacingControllerTest {
             new Car("car2", drivingStrategy),
             new Car("car3", drivingStrategy));
 
-    RacingController.printRacingStatus(rounds, cars);
+    racingController.printRacingStatus(rounds, cars);
 
   }
 
@@ -56,6 +60,6 @@ public class RacingControllerTest {
             new Car("car2", drivingStrategy),
             new Car("car3", drivingStrategy));
 
-    RacingController.drive(cars);
+    racingController.drive(cars);
   }
 }
