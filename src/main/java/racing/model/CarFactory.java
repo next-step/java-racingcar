@@ -1,12 +1,15 @@
 package racing.model;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class CarFactory {
 
     public static List<Car> createByCount(int count) {
-        return IntStream.of(count).boxed().map(e -> new Car()).collect(Collectors.toList());
+        List<Car> cars = new ArrayList<>();
+        for (int o = 0; count != 0; count--) {
+            cars.add(new Car());
+        }
+        return cars;
     }
 }
