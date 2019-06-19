@@ -8,7 +8,7 @@ import org.opentest4j.AssertionFailedError;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-class GameTest implements CarNamesHelper {
+class GameTest implements CarNamesHelper, CarHelper {
 
     private static final int VALID_NUMBER_OF_ROUNDS = 5;
 
@@ -53,10 +53,12 @@ class GameTest implements CarNamesHelper {
         // then
         final Rounds gameResult = game.getResult();
         assertThat(gameResult).isNotNull();
-        assertThat(gameResult.size()).isEqualTo(1);
+        assertThat(gameResult).hasSize(1);
         final Round lastRound = gameResult.getLast().orElseThrow(AssertionFailedError::new);
-        lastRound.getCars().stream().forEach(
-                car -> assertThat(car.getPosition().value()).isEqualTo(1)
+        assertThat(lastRound.getCars()).containsExactly(
+                this.createCar(CAR_NAME_FIRST, 1),
+                this.createCar(CAR_NAME_SECOND, 1),
+                this.createCar(CAR_NAME_THIRD, 1)
         );
     }
 

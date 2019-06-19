@@ -13,7 +13,7 @@ class RoundTest implements CarNamesHelper, CarHelper, CarsHelper, RoundHelper {
     @BeforeEach
     void setUp() {
         validCarNames = this.getValidCarNames();
-        assertThat(validCarNames.size()).isEqualTo(3);
+        assertThat(validCarNames).hasSize(3);
     }
 
     @DisplayName("주어진 자동차의 개수에 대해서 round 객체를 잘 생성하는지")
@@ -21,7 +21,7 @@ class RoundTest implements CarNamesHelper, CarHelper, CarsHelper, RoundHelper {
     void constructor() {
         final Round round = Round.initialRoundFrom(validCarNames);
         assertThat(round).isNotNull();
-        assertThat(round.getCars().size()).isEqualTo(3);
+        assertThat(round.getCars()).hasSize(3);
     }
 
     @DisplayName("자동차들을 이동시키면, 그 결과로 이루어진 새 round 객체를 리턴해야함")
@@ -29,7 +29,7 @@ class RoundTest implements CarNamesHelper, CarHelper, CarsHelper, RoundHelper {
     void move() {
         // given
         final Round round = Round.initialRoundFrom(validCarNames);
-        round.getCars().stream().forEach(
+        round.getCars().forEach(
                 car -> assertThat(car.getPosition().value()).isEqualTo(0)
         );
         // when
@@ -37,9 +37,12 @@ class RoundTest implements CarNamesHelper, CarHelper, CarsHelper, RoundHelper {
         final Round movedRound = round.move(moveOnlyStrategy);
         // then
         assertThat(movedRound).isNotNull();
-        movedRound.getCars().stream().forEach(
-                car -> assertThat(car.getPosition().value()).isEqualTo(1)
-        );
+        assertThat(movedRound.getCars())
+                .containsExactly(
+                        this.createCar(CAR_NAME_FIRST, 1),
+                        this.createCar(CAR_NAME_SECOND, 1),
+                        this.createCar(CAR_NAME_THIRD, 1)
+                );
     }
 
     @DisplayName("우승자를 잘 구하는지")
@@ -55,9 +58,8 @@ class RoundTest implements CarNamesHelper, CarHelper, CarsHelper, RoundHelper {
         final CarNames carNames = round.getWinners();
         // then
         assertThat(carNames).isNotNull();
-        assertThat(carNames.size()).isEqualTo(1);
-        assertThat(carNames.stream()
-                .anyMatch(name -> name.equals(CAR_NAME_THIRD))).isTrue();
+        assertThat(carNames).hasSize(1);
+        assertThat(carNames).anyMatch(name -> name.equals(CAR_NAME_THIRD));
     }
 
     @DisplayName("우승자가 여러명일 때 잘 구하는지")
@@ -72,12 +74,7 @@ class RoundTest implements CarNamesHelper, CarHelper, CarsHelper, RoundHelper {
         // when
         final CarNames carNames = round.getWinners();
         // then
-        assertThat(carNames.size()).isEqualTo(3);
-        assertThat(carNames.stream()
-                .anyMatch(name -> name.equals(CAR_NAME_FIRST))).isTrue();
-        assertThat(carNames.stream()
-                .anyMatch(name -> name.equals(CAR_NAME_SECOND))).isTrue();
-        assertThat(carNames.stream()
-                .anyMatch(name -> name.equals(CAR_NAME_THIRD))).isTrue();
+        assertThat(carNames).hasSize(3);
+        assertThat(carNames).containsExactlyInAnyOrder(CAR_NAME_FIRST, CAR_NAME_SECOND, CAR_NAME_THIRD);
     }
 }

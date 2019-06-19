@@ -24,16 +24,12 @@ class CarNamesTest implements CarNamesHelper {
         final CarNames carNames = CarNames.from(carNameList);
         // then
         assertThat(carNames).isNotNull();
-        assertThat(carNames.size()).isEqualTo(3);
-        assertThat(carNames.stream()
-                .map(CarName::value)
-                .anyMatch(name -> name.equals(CAR_NAME_FIRST_VALUE))).isTrue();
-        assertThat(carNames.stream()
-                .map(CarName::value)
-                .anyMatch(name -> name.equals(CAR_NAME_SECOND_VALUE))).isTrue();
-        assertThat(carNames.stream()
-                .map(CarName::value)
-                .anyMatch(name -> name.equals(CAR_NAME_THIRD_VALUE))).isTrue();
+        assertThat(carNames).hasSize(3);
+        assertThat(carNames).containsExactly(
+                CAR_NAME_FIRST,
+                CAR_NAME_SECOND,
+                CAR_NAME_THIRD
+        );
     }
 
     @DisplayName("carNameList 가 null 이면, 객체가 생성되지 않아야함")
@@ -42,21 +38,5 @@ class CarNamesTest implements CarNamesHelper {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> CarNames.from(null))
                 .withMessageContaining("must not be null");
-    }
-
-    @DisplayName("개수를 잘 돌려주는지")
-    @Test
-    void size() {
-        // given
-        final List<CarName> carNameList = Arrays.asList(
-                CAR_NAME_FIRST,
-                CAR_NAME_SECOND,
-                CAR_NAME_THIRD
-        );
-        final CarNames carNames = CarNames.from(carNameList);
-        // when
-        final int size = carNames.size();
-        // then
-        assertThat(size).isEqualTo(3);
     }
 }

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-class CarTest implements PositionHelper {
+class CarTest {
     private static final CarName CAR_NAME = CarName.from("carName");
 
     @DisplayName("Car 객체가 잘 생성되는지")
@@ -14,8 +14,7 @@ class CarTest implements PositionHelper {
     void constructor() {
         final Car car = Car.from(CAR_NAME);
         assertThat(car).isNotNull();
-        assertThat(car.getPosition().value())
-                .isEqualTo(0);
+        assertThat(car.getPosition().value()).isEqualTo(0);
     }
 
     @DisplayName("carName 이 null 이면 자동차 객체를 생성할 수 없어야함")
