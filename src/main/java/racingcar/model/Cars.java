@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private List<Car> cars = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
 
     private Cars(List<Car> cars) {
         this.cars.addAll(cars);
@@ -22,23 +22,21 @@ public class Cars {
             Car car = Car.create(name);
             cars.add(car);
         }
-
         return new Cars(cars);
     }
 
     public List<CarInformation> move() {
-        List<CarInformation> informationList = new ArrayList<>();
+        List<CarInformation> informationOnCars = new ArrayList<>();
 
-        for (Car car : cars) {
+        for (Car car : this.cars) {
             car.move();
             CarInformation information = car.getInformation();
-            informationList.add(information);
+            informationOnCars.add(information);
         }
-
-        return informationList;
+        return informationOnCars;
     }
 
-    public List<CarInformation> getCarInformationList() {
+    public List<CarInformation> getInformationOnCars() {
         return cars.stream()
                 .map(Car::getInformation)
                 .collect(Collectors.toList());

@@ -3,6 +3,7 @@ package racingcar.model;
 import java.util.Objects;
 
 public class Car {
+    private static final int ONE_STEP_DISTANCE = 1;
     private CarInformation carInformation;
 
     private Car(CarInformation carInformation) {
@@ -27,20 +28,18 @@ public class Car {
         Position position = carInformation.getPosition();
 
         if (drivingRule.isMovable()) {
-            Position step = Position.valueOf(1);
+            Position step = Position.valueOf(ONE_STEP_DISTANCE);
             position = Position.add(position, step);
 
             CarName name = carInformation.getName();
             carInformation = CarInformation.createWithPositionAndRule(name, position, drivingRule);
         }
-
         return position;
     }
 
     public CarInformation getInformation() {
         CarName name = carInformation.getName();
         Position position = carInformation.getPosition();
-
         return CarInformation.createWithPosition(name, position);
     }
 

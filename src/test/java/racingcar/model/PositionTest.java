@@ -28,4 +28,12 @@ class PositionTest {
 
         assertThat(position1.compareTo(position2)).isEqualTo(smallNumber.compareTo(bigNumber));
     }
+
+    @Test
+    void Position객체를_Integer로_변환할_수_있다() {
+        int number = 10;
+        Position position = Position.valueOf(number);
+
+        assertThat(Position.toInteger(position)).isEqualTo(number);
+    }
 }
