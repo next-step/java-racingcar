@@ -13,7 +13,8 @@ public class RacingGame {
         Cars cars = Cars.newCars(racingGameInputModel.getNumberOfCar());
         RacingGameRecord racingGameRecord = RacingGameRecord.newGame(cars.startTurn());
 
-        for (int i = 1; i < racingGameInputModel.getTimes(); i++) {
+        int times = racingGameInputModel.getTimes();
+        for (int i = 1; i < times; i++) {
             Cars previousCars = racingGameRecord.previousTurn(i - 1);
             racingGameRecord.record(previousCars.startTurn());
         }
