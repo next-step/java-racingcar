@@ -13,6 +13,7 @@ public class ResultView {
                .append(" : ");
 
         int moveCount = car.getPosition();
+
         while (moveCount-- > 0) {
             BUILDER.append(LINE);
         }
