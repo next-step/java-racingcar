@@ -30,13 +30,13 @@ public class CarRacingService {
         this.player = player;
     }
 
-    public List<Car> starRoundGame() {
+    public Cars starRoundGame() {
         List<Car> carList = this.player.getCars().stream()
                 .peek(car -> doMoveCheck(car))
                 .collect(Collectors.toList());
 
         this.player.setCars(carList);
-        return carList;
+        return this.player;
     }
 
     public Cars finishGame() {

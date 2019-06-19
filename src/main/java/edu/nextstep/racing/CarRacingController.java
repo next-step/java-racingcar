@@ -55,7 +55,7 @@ public class CarRacingController {
         this.roundGameService = new RoundGameService(race);
 
         for (int i = 0; i < this.roundGameService.getGameTime(); i++) {
-            List<Car> viewCarList = this.carRacingService.starRoundGame();
+            Cars viewCarList = this.carRacingService.starRoundGame();
             output.resultView(viewCarList);
         }
 
