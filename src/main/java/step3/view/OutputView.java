@@ -2,6 +2,7 @@ package step3.view;
 
 import step3.domain.Car;
 import step3.domain.Cars;
+import step3.domain.Winners;
 
 public class OutputView {
     private static final String POSITION_OF_CAR = "-";
@@ -15,6 +16,10 @@ public class OutputView {
             printCars(car);
         }
         printEmptyLine();
+    }
+
+    public void printWinners(Winners winners) {
+        System.out.println(winners + "가 최종 우승했습니다.");
     }
 
     private void printCars(Car car) {
