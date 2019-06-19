@@ -6,21 +6,19 @@ public class Car {
     private final Integer carNo;
     private final CarName carName;
     private final Integer position;
-    private final MoveStrategy moveStrategy;
 
     public Car(Car car) {
-        this(car.carNo, car.carName, car.position, car.moveStrategy);
+        this(car.carNo, car.carName, car.position);
     }
 
-    public Car(Integer carNo, CarName carName, MoveStrategy moveStrategy) {
-        this(carNo, carName, STARTING_POINT, moveStrategy);
+    public Car(Integer carNo, CarName carName) {
+        this(carNo, carName, STARTING_POINT);
     }
 
-    private Car(Integer carNo, CarName carName, Integer position, MoveStrategy moveStrategy) {
+    private Car(Integer carNo, CarName carName, Integer position) {
         this.carNo = carNo;
         this.carName = carName;
         this.position = position;
-        this.moveStrategy = moveStrategy;
     }
 
     public int getCarNo() {
@@ -35,11 +33,11 @@ public class Car {
         return position;
     }
 
-    public Car move() {
+    public Car move(MoveStrategy moveStrategy) {
         if (moveStrategy.isMove()) {
-            return new Car(carNo, carName, position + 1, moveStrategy);
+            return new Car(carNo, carName, position + 1);
         }
-        return new Car(carNo, carName, position, moveStrategy);
+        return new Car(this);
     }
 
 }

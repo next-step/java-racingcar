@@ -14,14 +14,6 @@ public class Cars {
     }
 
     public static Cars newCars(List<CarName> carNames) {
-        return new Cars(createCars(carNames, RacingGameRandomUtils::isMove));
-    }
-
-    public static Cars newCars(List<CarName> carNames, MoveStrategy moveStrategy) {
-        return new Cars(createCars(carNames, moveStrategy));
-    }
-
-    private static List<Car> createCars(List<CarName> carNames, MoveStrategy moveStrategy) {
         int numberOfCar = carNames.size();
         if (numberOfCar == 0) {
             throw new IllegalArgumentException("경주 자동차는 1대 이상 추가해야 합니다.");
@@ -29,15 +21,16 @@ public class Cars {
 
         List<Car> newCars = new ArrayList<>();
         for (int carNo = 0; carNo < numberOfCar; carNo++) {
-            newCars.add(new Car(carNo, carNames.get(carNo), moveStrategy));
+            newCars.add(new Car(carNo, carNames.get(carNo)));
         }
-        return newCars;
+
+        return new Cars(newCars);
     }
 
     public Cars startTurn() {
         List<Car> newCars = new ArrayList<>();
         for (Car car : this.getCars()) {
-            Car movedCar = car.move();
+            Car movedCar = car.move(RacingGameRandomUtils::isMove);
             newCars.add(movedCar);
         }
 

@@ -5,12 +5,11 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import step2.game.domain.Cars;
 import step2.game.domain.CarName;
 import step2.game.dto.RacingGameInputModel;
 import step2.game.dto.RacingGameResultModel;
 import step2.game.service.RacingGame;
-import step2.game.ui.ResultView;
+import step2.game.view.ResultView;
 
 public class RacingGameApplication {
 

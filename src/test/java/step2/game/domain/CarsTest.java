@@ -1,4 +1,4 @@
-package step2;
+package step2.game.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,26 +41,6 @@ public class CarsTest {
     void create_new_car_starting_point_is_0() {
         Cars cars = Cars.newCars(carNames);
         assertThat(cars.getCars().get(0).getPosition()).isEqualTo(0);
-    }
-
-    @Test
-    @DisplayName("모든 차량 +1 전진")
-    void go_all_cars() {
-        Cars cars = Cars.newCars(carNames, () -> true);
-        Cars newCars = cars.startTurn();
-        assertThat(newCars.getCars().get(0).getPosition()).isEqualTo(1);
-        assertThat(newCars.getCars().get(1).getPosition()).isEqualTo(1);
-        assertThat(newCars.getCars().get(2).getPosition()).isEqualTo(1);
-    }
-
-    @Test
-    @DisplayName("모든 차량 정지")
-    void stop_all_cars() {
-        Cars cars = Cars.newCars(carNames, () -> false);
-        Cars newCars = cars.startTurn();
-        assertThat(newCars.getCars().get(0).getPosition()).isEqualTo(0);
-        assertThat(newCars.getCars().get(1).getPosition()).isEqualTo(0);
-        assertThat(newCars.getCars().get(2).getPosition()).isEqualTo(0);
     }
 
 }

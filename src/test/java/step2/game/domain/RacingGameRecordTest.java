@@ -1,4 +1,4 @@
-package step2;
+package step2.game.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,9 @@ import step2.game.domain.CarName;
 import step2.game.domain.Cars;
 import step2.game.domain.RacingGameRecord;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class RacingGameRecordTest {
     private RacingGameRecord racingGameRecord;

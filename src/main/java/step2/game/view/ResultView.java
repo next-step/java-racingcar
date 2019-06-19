@@ -1,4 +1,4 @@
-package step2.game.ui;
+package step2.game.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,7 +26,7 @@ public class ResultView {
                                               .map(Car::getCarName)
                                               .map(CarName::getName)
                                               .collect(Collectors.joining(", "));
-        System.out.println(winners + "가 최종 우승했습니다.");
+        System.out.println("\n" + winners + "가 최종 우승했습니다.");
     }
 
     private Stream<Car> flatMapAndNextLine(Cars cars) {
