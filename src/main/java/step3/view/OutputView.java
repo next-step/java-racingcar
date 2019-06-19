@@ -18,10 +18,15 @@ public class OutputView {
     }
 
     private void printCars(Car car) {
+        printCarName(car.getCarName());
         for (int i = 0; i < car.getPosition(); i++) {
             System.out.print(POSITION_OF_CAR);
         }
         printEmptyLine();
+    }
+
+    private void printCarName(String carName) {
+        System.out.println(carName + " : ");
     }
 
     private void printEmptyLine() {

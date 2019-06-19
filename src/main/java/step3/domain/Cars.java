@@ -12,7 +12,7 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars makeCars(String[] carNameList) {
+    public static Cars makeCars(String[] carNameList) { //TODO: Q. 이 메서드도 불변 컬렉션에 위반되는 메서드인가요?
         List<Car> cars = new ArrayList<>();
         for (String carName : carNameList) {
             cars.add(new Car(carName));
@@ -21,8 +21,7 @@ public class Cars {
     }
 
     public List<Car> getCars() {
-        List<Car> readOnlyCars = Collections.unmodifiableList(cars);
-        return readOnlyCars;
+        return Collections.unmodifiableList(cars);
     }
 
 

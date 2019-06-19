@@ -22,8 +22,13 @@ public class CarTest {
     }
 
     @Test
-    void 입력된_숫자만큼_자동차가_생성된다() {
-        //TODO: 입력된 숫자만큼 자동차가 생성되는지 테스트 코드 작성
+    void 입력된_이름의_숫자만큼_자동차가_생성된다() {
+        //TODO: 입력된 이름의 숫자만큼 자동차가 생성되는지 테스트 코드 작성
+    }
+
+    @Test
+    void 입력된_이름대로_자동차의_이름들이_생성된다() {
+        //TODO: 입력된 이름대로 자동차의 이름들이 생성되는지 테스트 코드 작성
     }
 
     @Test
@@ -40,4 +45,5 @@ public class CarTest {
         }
         assertThat(car.getPosition()).isEqualTo(numberOfMoves);
     }
+
 }
