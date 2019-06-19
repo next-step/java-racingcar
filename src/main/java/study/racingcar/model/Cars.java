@@ -1,5 +1,6 @@
 package study.racingcar.model;
 
+import study.racingcar.strategy.MovableStrategy;
 import study.racingcar.strategy.RandomMovableStrategy;
 
 import java.util.HashSet;
@@ -18,6 +19,12 @@ public class Cars {
     public Cars(Set<String> carNames) {
         this.cars = carNames.stream()
                 .map(carName -> new Car(carName, new RandomMovableStrategy()))
+                .collect(Collectors.toSet());
+    }
+
+    public Cars(Set<String> carNames, MovableStrategy movableStrategy) {
+        this.cars = carNames.stream()
+                .map(carName -> new Car(carName, movableStrategy))
                 .collect(Collectors.toSet());
     }
 

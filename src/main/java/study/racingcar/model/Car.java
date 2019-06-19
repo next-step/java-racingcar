@@ -2,6 +2,8 @@ package study.racingcar.model;
 
 import study.racingcar.strategy.MovableStrategy;
 
+import java.util.Objects;
+
 /**
  * Created by wyparks2@gmail.com on 2019-06-17
  * Blog : http://wyparks2.github.io
@@ -37,5 +39,18 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }
