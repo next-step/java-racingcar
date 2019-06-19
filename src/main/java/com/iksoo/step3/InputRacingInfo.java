@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class InputRacingInfo {
     private String carTotalNames;
     private int tryOfNumbers;
-    Scanner in;
+    private Scanner in;
 
     InputRacingInfo() {
         in = new Scanner(System.in);
