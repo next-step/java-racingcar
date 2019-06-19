@@ -1,7 +1,7 @@
 package step3.game.domain;
 
 public class CarName {
-    private String name;
+    private final String name;
 
     public CarName(String name) {
         this.name = name;

@@ -3,6 +3,7 @@ package step3.game.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import step3.game.util.RacingGameRandomUtils;
 
@@ -13,14 +14,13 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars newCars(List<CarName> carNames) {
+    public static Cars newCars(final List<CarName> carNames) {
         int numberOfCar = carNames.size();
         assertCarNames(numberOfCar);
 
-        List<Car> newCars = new ArrayList<>();
-        for (int carNo = 0; carNo < numberOfCar; carNo++) {
-            newCars.add(new Car(carNo, carNames.get(carNo)));
-        }
+        List<Car> newCars = IntStream.range(0, numberOfCar)
+                                     .mapToObj(no -> new Car(no, carNames.get(no)))
+                                     .collect(Collectors.toList());
 
         return new Cars(newCars);
     }

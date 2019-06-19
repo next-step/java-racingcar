@@ -33,7 +33,7 @@ public class Car {
         return position;
     }
 
-    public Car move(MoveStrategy moveStrategy) {
+    public Car move(final MoveStrategy moveStrategy) {
         if (moveStrategy.isMove()) {
             return new Car(carNo, carName, position + 1);
         }
