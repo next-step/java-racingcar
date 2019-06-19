@@ -29,7 +29,7 @@ public class ResultView {
         ViewUtils.print();
     }
 
-    public void printWinnerPlayer(List<Car> cars) {
+    public void printWinnerPlayer(Cars cars) {
         ViewUtils.printWinner(cars);
     }
 

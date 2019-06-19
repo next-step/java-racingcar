@@ -1,6 +1,7 @@
 package edu.nextstep.racing.utils;
 
 import edu.nextstep.racing.model.Car;
+import edu.nextstep.racing.model.Cars;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -37,8 +38,8 @@ public final class ViewUtils {
         System.out.println(sb.toString());
     }
 
-    public static void printWinner(List<Car> winner) {
-        String win = winner.stream()
+    public static void printWinner(Cars winner) {
+        String win = winner.getCars().stream()
                 .map(Car::getCarName)
                 .collect(Collectors.toList())
                 .stream()

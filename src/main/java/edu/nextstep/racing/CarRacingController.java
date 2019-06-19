@@ -59,7 +59,7 @@ public class CarRacingController {
             output.resultView(viewCarList);
         }
 
-        List<Car> finishPlayer = this.carRacingService.finishGame().getCars();
+        Cars finishPlayer = this.carRacingService.finishGame();
         Winner candidateWinner = new Winner(finishPlayer, INIT_SCORE);
         this.winPlayerService = new WinPlayerService(candidateWinner);
         this.winPlayerService.doWinnerCheck();

@@ -1,6 +1,7 @@
 package edu.nextstep.racing.domain;
 
 import edu.nextstep.racing.model.Car;
+import edu.nextstep.racing.model.Cars;
 import edu.nextstep.racing.model.Winner;
 import edu.nextstep.racing.utils.NumberUtils;
 
@@ -30,15 +31,24 @@ public class WinPlayerService {
 
     public void doWinnerCheck() {
         calculateWinScore(this.winner.getWinners());
-
-        this.winner.setWinners(this.winner.getWinners().stream()
-                .filter(car -> car.currentPosition() >= this.winner.getWinScore())
-                .collect(Collectors.toList()));
+        calculateWinPlayer(this.winner.getWinners());
     }
 
-    private void calculateWinScore(List<Car> cars) {
-        for (Car car : cars) {
-            this.winner.setWinScore(NumberUtils.getMax(this.winner.getWinScore(), car.currentPosition()));
+    private void calculateWinScore(Cars cars) {
+        int winnerScore = 0;
+
+        for (Car car : cars.getCars()) {
+            winnerScore = NumberUtils.getMax(this.winner.getWinScore(), car.currentPosition());
         }
+        this.winner.setWinScore(winnerScore);
+    }
+
+    private Cars calculateWinPlayer(Cars cars) {
+        List<Car> tempCars = this.winner.getWinners().getCars().stream()
+                .filter(car -> car.currentPosition() >= this.winner.getWinScore())
+                .collect(Collectors.toList());
+
+        cars.setCars(tempCars);
+        return cars;
     }
 }

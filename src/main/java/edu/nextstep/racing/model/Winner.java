@@ -1,7 +1,5 @@
 package edu.nextstep.racing.model;
 
-import java.util.List;
-
 /**
  * author       : gwonbyeong-yun <sksggg123>
  * ------------------------------------------
@@ -14,20 +12,16 @@ import java.util.List;
  */
 public class Winner {
 
-    private List<Car> winners;
+    private Cars winners;
     private int winScore;
 
-    public Winner(List<Car> winners, int winScore) {
+    public Winner(Cars winners, int winScore) {
         this.winners = winners;
         this.winScore = winScore;
     }
 
-    public List<Car> getWinners() {
+    public Cars getWinners() {
         return winners;
-    }
-
-    public void setWinners(List<Car> winners) {
-        this.winners = winners;
     }
 
     public int getWinScore() {
