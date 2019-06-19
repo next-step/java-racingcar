@@ -13,6 +13,10 @@ public class StageOption {
 		this.roundLimit = roundLimit;
 	}
 
+	public StageOption(String entryInformation) {
+
+	}
+
 	public int getEntrySize(){
 		return entrySize;
 	}
