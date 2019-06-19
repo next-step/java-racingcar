@@ -11,10 +11,10 @@ public class CarRaceApplication {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        final int numberOfCars = inputView.getNumberOfCars();
+        final String inputCarNames = inputView.getCarNames();
         final int numberOfTrials = inputView.getNumberOfTrials();
 
-        carRace = CarRace.raceStart(numberOfCars, numberOfTrials);
+        carRace = CarRace.raceStart(inputCarNames, numberOfTrials);
 
         OutputView outputView = new OutputView();
         outputView.showResultTitle();

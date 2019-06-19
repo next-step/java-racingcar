@@ -3,7 +3,7 @@ package step3.view;
 import java.util.Scanner;
 
 public class InputView {
-    private final static String ASK_NUMBER_OF_CARS = "자동차 대수는 몇 대 인가요?";
+    private final static String ASK_CAR_NAMES = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)";
     private final static String ASK_NUMBER_OF_TRIALS = "시도할 횟수는 몇 회 인가요?";
     private Scanner scanner;
 
@@ -11,9 +11,9 @@ public class InputView {
         this.scanner = new Scanner(System.in);
     }
 
-    public int getNumberOfCars() {
-        System.out.println(ASK_NUMBER_OF_CARS);
-        return scanner.nextInt();
+    public String getCarNames() {
+        System.out.println(ASK_CAR_NAMES);
+        return scanner.nextLine();
     }
 
     public int getNumberOfTrials() {
@@ -27,5 +27,4 @@ public class InputView {
     private void printEmptyLine() {
         System.out.println();
     }
-
 }

@@ -14,8 +14,9 @@ public class CarRace {
         numberGenerator = new RandomNumberGenerator();
     }
 
-    public static CarRace raceStart(int numberOfCars, int numberOfTrials) {
-        numberOfCarsValidation(numberOfCars);
+    public static CarRace raceStart(String inputCarNames, int numberOfTrials) {
+        inputCarNamesValidation(inputCarNames);
+        //TODO: String으로 입력된 자동차이름들을 배열 혹은 리스트로 저장하기.
         numberOfTrialsValidation(numberOfTrials);
         return new CarRace(Cars.makeCars(numberOfCars));
     }
@@ -29,6 +30,10 @@ public class CarRace {
             car.move(numberGenerator.getRandomNumber());
         }
         return cars;
+    }
+
+    private static void inputCarNamesValidation(String inputCarNames) {
+        // TODO: 입력값 유효성 체크 로직 작성
     }
 
     private static void numberOfCarsValidation(int numberOfCars) {
