@@ -36,4 +36,8 @@ public class StageOption {
 	public int getRoundLimit(){
 		return roundLimit;
 	}
+
+    public String getPlayerName(int i) {
+	    return "";
+    }
 }
