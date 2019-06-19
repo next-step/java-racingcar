@@ -3,7 +3,6 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,18 +18,16 @@ public class CarsTest {
 
   @Test
   public void 자동차는_햔번에_1또는0_이동한다() {
-    assertThat(cars.moveCars()
-        .stream()
-        .map(Car::getPosition)
-        .collect(Collectors.toList())).containsOnly(0, 1);
+    assertThat(cars.moveCars())
+        .extracting(Car::getPosition)
+        .contains(1, 0);
   }
 
   @Test
   public void 자동차이름셋팅() {
-    assertThat(cars.moveCars()
-        .stream()
-        .map(Car::getName)
-        .collect(Collectors.toList())).containsExactly("name1", "name2", "name3");
+    assertThat(cars.moveCars())
+        .extracting(Car::getName)
+        .containsExactly("name1", "name2", "name3");
   }
 
   @Test
