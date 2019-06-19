@@ -1,6 +1,5 @@
 package racingGame;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -13,7 +12,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 class UtilTest {
 
     private final String INPUT_STRING = "jojo,mike,brian,cell,chacha";
-
 
     @Test
     void splitStringNames() {
@@ -28,9 +26,9 @@ class UtilTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3,4,5,6,7,8,9,10})
+    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
     void randomNumber(int bound) {
         int result = Util.randomNumber(bound);
-        assertThat(result).isBetween(0, bound-1);
+        assertThat(result).isBetween(0, bound - 1);
     }
 }

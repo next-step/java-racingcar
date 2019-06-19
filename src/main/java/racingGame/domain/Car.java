@@ -4,7 +4,6 @@ import racingGame.Util;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Car {
 
@@ -54,5 +53,4 @@ public class Car {
     public boolean isWinner(int winPosition) {
         return getPosition() == winPosition;
     }
-
 }
