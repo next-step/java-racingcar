@@ -1,12 +1,10 @@
 package racingcar;
 
+import racingcar.model.RacingGame;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
-import racingcar.model.RacingGame;
 
 public class Application {
-
-    private static RacingGame racingGame;
 
     public static void main(String[] args) {
         OutputView.start();
@@ -20,16 +18,16 @@ public class Application {
 
     private static void run() {
         // 준비
-        String askCarNames = InputView.askCarNames();
-        int time = InputView.askRound();
-        racingGame = RacingGame.generate(time, askCarNames);
+        String inputOfCarNames = InputView.askCarNames();
+        int inputOfRound = InputView.askRound();
+        RacingGame racingGame = RacingGame.generate(inputOfCarNames);
 
-        // 시작
-        OutputView.ready(racingGame.getResult());
-        while (!racingGame.isGameOver()) {
-            OutputView.playResult(racingGame.racing());
+        // 경기 시작
+        OutputView.ready(racingGame.start());
+        for (int i = 0; i < inputOfRound; i++) {
+            OutputView.getCurrentGameResult(racingGame.playOfOneRound());
         }
-        // 결과 출력
-        OutputView.winningResult(racingGame.getFinalResult());
+        // 경기 종료: 최종 우승
+        OutputView.winningResult(racingGame.winningResult());
     }
 }

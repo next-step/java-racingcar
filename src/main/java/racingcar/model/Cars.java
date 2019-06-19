@@ -2,6 +2,9 @@ package racingcar.model;
 
 import racingcar.util.NumberGenerator;
 
+import static racingcar.model.Car.DEFAULT_POSITION;
+import static racingcar.model.NamesValidator.CAR_NAMES_DELIMITER;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,9 +17,13 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars from(Names names) {
-        List<Car> cars = names.stream()
-                .map(name -> Car.create(name))
+    public static Cars from(String names) {
+        String[] namesArray = names.split(CAR_NAMES_DELIMITER);
+        if (namesArray.length < 2) {
+            throw new IllegalArgumentException("자동차는 2대이상이어야 합니다.");
+        }
+        List<Car> cars = Arrays.stream(namesArray)
+                .map(Car::create)
                 .collect(Collectors.toList());
         return new Cars(cars);
     }
@@ -25,25 +32,10 @@ public class Cars {
         for (Car car : cars) {
             car.move(numberGenerator.getNumber());
         }
-        return this;
-    }
-
-    public List<Car> winningCars() {
-        return cars.stream()
-                .filter(car -> isMaxPosition(car))
-                .collect(Collectors.toList());
-    }
-
-    public boolean isMaxPosition(Car car) {
-        return Position.max() == car.getPosition();
+        return new Cars(cars);
     }
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
-    }
-
-    @Override
-    public String toString() {
-        return "Cars{" + "cars=" + cars + '}';
     }
 }

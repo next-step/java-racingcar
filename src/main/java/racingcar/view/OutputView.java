@@ -2,26 +2,25 @@ package racingcar.view;
 
 import racingcar.model.Car;
 import racingcar.model.Cars;
-import racingcar.model.Position;
 import racingcar.model.WinningResult;
 
 import java.util.stream.Collectors;
 
-
 public class OutputView {
 
     private static final String VISUAL_EXPRESSION = "-";
+    private static final String WINNING_NAMES_DELIMITER = ",";
 
     public static void start() {
         System.out.println("게임을 시작합니다.");
     }
 
-    public static void ready(Cars result) {
+    public static void ready(Cars cars) {
         System.out.println("실행 결과");
-        playResult(result);
+        getCurrentGameResult(cars);
     }
 
-    public static void playResult(Cars cars) {
+    public static void getCurrentGameResult(Cars cars) {
         for (Car car : cars.getCars()) {
             System.out.print(car.getName() + " : ");
             printPosition(car.getPosition());
@@ -37,11 +36,8 @@ public class OutputView {
     }
 
     public static void winningResult(WinningResult result) {
-        System.out.println("우승위치: " + result.getPosition());
-
-        String name = result.getNames().stream()
-                .collect(Collectors.joining(","));
-
+        String name = result.winners().stream()
+                .collect(Collectors.joining(WINNING_NAMES_DELIMITER));
         System.out.println(name + "가 최종 우승했습니다.");
     }
 

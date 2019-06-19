@@ -1,44 +1,38 @@
 package racingcar.model;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.toList;
+import static racingcar.model.Car.DEFAULT_POSITION;
 
 public class WinningResult {
 
-    private Position position;
-    private Names names;
+    private List<Car> cars;
 
-    private WinningResult(Position position, Names names) {
-        this.position = position;
-        this.names = names;
+    private WinningResult(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public static WinningResult of(List<Car> cars){
-        validateNull(cars);
-        Position position = Position.max();
+    public static WinningResult of(Cars cars) {
+        List<Car> carList = cars.getCars();
 
-        List<String> nameList = cars.stream().map(Car::getName).collect(toList());
+        int maxPosition = carList.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(DEFAULT_POSITION);
 
-        return new WinningResult(position, new Names(nameList));
+        List<Car> winningCars = carList.stream()
+                .filter(car -> car.isMatchPosition(maxPosition))
+                .collect(Collectors.toList());
+
+        return new WinningResult(winningCars);
     }
 
-    private static void validateNull(List<Car> cars) {
-        if(cars.isEmpty()){
-            throw new IllegalArgumentException("cars는 null일 수 없습니다.");
-        }
+    public List<String> winners() {
+        return cars.stream().map(Car::getName).collect(Collectors.toList());
     }
 
-    public int getPosition() {
-        return position.parseInt();
-    }
-
-    public List<String> getNames() {
-        return names.getList();
-    }
-
-    @Override
-    public String toString() {
-        return "WinningResult{" + "position=" + position + ", names=" + names + '}';
+    public List<Car> getCars() {
+        return cars;
     }
 }

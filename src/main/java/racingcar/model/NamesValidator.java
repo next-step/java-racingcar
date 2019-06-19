@@ -7,7 +7,8 @@ import java.util.regex.Pattern;
 
 public class NamesValidator {
 
-    static final String REGEX_CAR_NAMES_PATTERN = "^[\\w*]*(?:,\\w*)*[\\w+]$";
+    static final String CAR_NAMES_DELIMITER = ",";
+    static final String REGEX_CAR_NAMES_PATTERN = "^[가-힣\\w]+(,[가-힣\\w]+)*$";
     private static Pattern pattern = Pattern.compile(REGEX_CAR_NAMES_PATTERN);
 
     public static void validate(String names) {
@@ -17,13 +18,13 @@ public class NamesValidator {
 
     private static void validateEmpty(String name) {
         if (name == null || Strings.isNullOrEmpty(name.trim())) {
-            throw new NameException("빈 문자열 입니다");
+            throw new IllegalArgumentException("빈 문자열 입니다");
         }
     }
 
     private static void validatePattern(String names) {
-        if (!pattern.matcher(names).find()) {
-            throw new NameException("잘못된 입력입니다. 구분자: ,");
+        if (!pattern.matcher(names).matches()) {
+            throw new IllegalArgumentException("잘못된 입력입니다. 구분자: " + CAR_NAMES_DELIMITER);
         }
     }
 }

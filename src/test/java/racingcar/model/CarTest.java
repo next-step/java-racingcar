@@ -34,7 +34,7 @@ public class CarTest {
         assertThat(car.move(power)).isEqualTo(Position.valueOf(1));
     }
 
-    public static Car createCar() {
+    private Car createCar() {
         return Car.create("test1");
     }
 }
