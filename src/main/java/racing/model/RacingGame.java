@@ -33,9 +33,11 @@ public class RacingGame {
     }
 
     private void movingCars() {
-        this.cars.forEach(car -> {
-            if (RandomNumberCreator.getZeroToNine() >= 4) car.move();
-        });
+        this.cars.forEach(this::moveWhenHigher4);
+    }
+
+    private void moveWhenHigher4(Car car) {
+        if (RandomNumberCreator.getZeroToNine() >= 4) car.move();
     }
 
 
