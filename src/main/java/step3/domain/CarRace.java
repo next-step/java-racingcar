@@ -4,8 +4,6 @@ import spark.utils.StringUtils;
 import step3.utils.NumberGenerator;
 import step3.utils.RandomNumberGenerator;
 
-import java.util.regex.Pattern;
-
 public class CarRace {
 
     private final static int MINIMUM_NUMBER_CAN_BE_INPUT = 1;
@@ -51,7 +49,7 @@ public class CarRace {
         if (StringUtils.isEmpty(inputCarNames)) {
             throw new IllegalArgumentException("자동차 이름들을 입력해주세요.");
         }
-        //TODO: 정규식으로 입력된 자동차이름들 검증
+        //TODO: 정규식으로 입력된 자동차이름들 검증 추가하기
     }
 
     private static void numberOfTrialsValidation(int numberOfTrials) {
