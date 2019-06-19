@@ -38,11 +38,8 @@ public final class ViewUtils {
         System.out.println(sb.toString());
     }
 
-    public static void printWinner(Cars winner) {
-        String win = winner.getCars().stream()
-                .map(Car::getCarName)
-                .collect(Collectors.toList())
-                .stream()
+    public static void printWinner(Cars winner, int winScore) {
+        String win = winner.getWinnerName(winScore).stream()
                 .reduce((s1, s2) -> s1 + COMMA + s2)
                 .get();
         System.out.println(win);

@@ -2,14 +2,13 @@ package edu.nextstep.racing;
 
 import edu.nextstep.racing.domain.CarRacingService;
 import edu.nextstep.racing.domain.RoundGameService;
-import edu.nextstep.racing.domain.WinPlayerService;
 import edu.nextstep.racing.model.Car;
 import edu.nextstep.racing.model.Cars;
 import edu.nextstep.racing.model.Race;
-import edu.nextstep.racing.model.Winner;
 import edu.nextstep.racing.view.InputView;
 import edu.nextstep.racing.view.ResultView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,9 +28,6 @@ public class CarRacingController {
     private ResultView output;
     private CarRacingService carRacingService;
     private RoundGameService roundGameService;
-    private WinPlayerService winPlayerService;
-
-    private static final int INIT_SCORE = 0;
 
     public CarRacingController() {
         this.ui = new InputView();
@@ -44,11 +40,16 @@ public class CarRacingController {
     }
 
     public void start() {
-        List<String> carList = ui.getNameOfCars().stream()
+        List<String> inputCarList = ui.getNameOfCars().stream()
                 .distinct()
                 .collect(Collectors.toList());
 
-        Cars cars = new Cars(carList);
+        List<Car> carlist = new ArrayList<>();
+        for (String carName : inputCarList) {
+            carlist.add(new Car(carName));
+        }
+
+        Cars cars = new Cars(carlist);
         Race race = new Race(ui.getNumberOfTime());
 
         this.carRacingService = new CarRacingService(cars);
@@ -60,10 +61,8 @@ public class CarRacingController {
         }
 
         Cars finishPlayer = this.carRacingService.finishGame();
-        Winner candidateWinner = new Winner(finishPlayer, INIT_SCORE);
-        this.winPlayerService = new WinPlayerService(candidateWinner);
-        this.winPlayerService.doWinnerCheck();
 
-        output.printWinnerPlayer(this.winPlayerService.getWinners().getWinners());
+        int winScore = finishPlayer.getWinnerScore();
+        output.printWinnerPlayer(finishPlayer.getWinnerPlayer(winScore), winScore);
     }
 }

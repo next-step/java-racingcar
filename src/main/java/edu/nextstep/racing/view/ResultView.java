@@ -22,15 +22,18 @@ public class ResultView {
     파라미터로 객체(자동차)를 받아 step 별로 출력
      */
     public void resultView(Cars cars) {
-        for (Car car : cars.getCars()) {
-            int carPosition = car.currentPosition();
-            resultPrint(car, carPosition);
+        int carNumber = cars.getNumberOfCars();
+
+        for (int i = 0; i < carNumber; i++) {
+            Car targetCar = cars.getCarInformation(i);
+            resultPrint(targetCar, targetCar.currentPosition());
         }
+
         ViewUtils.print();
     }
 
-    public void printWinnerPlayer(Cars cars) {
-        ViewUtils.printWinner(cars);
+    public void printWinnerPlayer(Cars winner, int winScore) {
+        ViewUtils.printWinner(winner, winScore);
     }
 
     private void resultPrint(Car car, int position) {

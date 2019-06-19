@@ -2,6 +2,8 @@ package edu.nextstep.racing.model;
 
 import edu.nextstep.racing.utils.ValidationUtils;
 
+import java.util.List;
+
 /**
  * author       : gwonbyeong-yun <sksggg123>
  * ------------------------------------------
@@ -43,4 +45,5 @@ public class Car {
     public int getCarNumber() {
         return this.carNumber;
     }
+
 }

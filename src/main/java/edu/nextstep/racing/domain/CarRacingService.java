@@ -1,11 +1,6 @@
 package edu.nextstep.racing.domain;
 
-import edu.nextstep.racing.model.Car;
 import edu.nextstep.racing.model.Cars;
-import edu.nextstep.racing.utils.NumberUtils;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * author       : gwonbyeong-yun <sksggg123>
@@ -19,7 +14,6 @@ import java.util.stream.Collectors;
  */
 public class CarRacingService {
 
-    private static final int MOVE_LIMIT_COUNT_FLAG = 4;
     private Cars player;
 
     /*
@@ -31,35 +25,10 @@ public class CarRacingService {
     }
 
     public Cars startRoundGame() {
-        List<Car> carList = this.player.getCars().stream()
-                .peek(car -> doMoveCheck(car))
-                .collect(Collectors.toList());
-
-        this.player.setCars(carList);
-        return this.player;
+        return this.player.goForward();
     }
 
     public Cars finishGame() {
         return this.player;
-    }
-
-    /*
-    각각의 자동차의 전진 체크
-     */
-    private void doMoveCheck(Car targetCar) {
-        if (isMoving()) {
-            targetCar.move();
-        }
-    }
-
-    /*
-    전진여부 판단
-    @return boolean type
-     */
-    private boolean isMoving() {
-        if (NumberUtils.getRandomNumber() >= MOVE_LIMIT_COUNT_FLAG) {
-            return true;
-        }
-        return false;
     }
 }
