@@ -1,6 +1,7 @@
 package racingcar.view.result;
 
-import java.util.List;
+import racingcar.model.CarPosition;
+import racingcar.model.RacingCars;
 
 public class DefaultResultView implements ResultView {
 
@@ -10,19 +11,22 @@ public class DefaultResultView implements ResultView {
     }
 
     @Override
-    public void printBody(List<Integer> carPositions) {
-        carPositions.stream()
-                .forEach(DefaultResultView::printPosition);
+    public void printBody(RacingCars racingCars) {
+        racingCars.getCarPosition().stream()
+                .forEach(DefaultResultView::printCar);
+        System.out.println();
+    }
+
+    private static void printCar(CarPosition carPosition) {
+        System.out.print(carPosition.getName() + " : ");
+        for (int i=0; i<carPosition.getPosition(); i++) {
+            System.out.print("-");
+        }
         System.out.println();
     }
 
     @Override
-    public void printFooter() {}
-
-    private static void printPosition(Integer position) {
-        for (int i=0; i<position; i++) {
-            System.out.print("-");
-        }
-        System.out.println();
+    public void printFooter(RacingCars racingCars) {
+        System.out.println(String.join(",", racingCars.getWinners()) + "가 최종 우승했습니다.");
     }
 }

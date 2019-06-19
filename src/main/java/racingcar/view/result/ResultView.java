@@ -1,9 +1,10 @@
 package racingcar.view.result;
 
-import java.util.List;
+import racingcar.model.RacingCars;
+
 
 public interface ResultView {
     void printHeader();
-    void printBody(List<Integer> carPositions);
-    void printFooter();
+    void printBody(RacingCars racingCars);
+    void printFooter(RacingCars racingCars);
 }
