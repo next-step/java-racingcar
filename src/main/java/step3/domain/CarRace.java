@@ -16,14 +16,15 @@ public class CarRace {
 
     public static CarRace raceStart(String inputCarNames, int numberOfTrials) {
         inputCarNamesValidation(inputCarNames);
-        //TODO: String으로 입력된 자동차이름들을 배열 혹은 리스트로 저장하기.
-        String[] carNameList = convertCarNames(inputCarNames);
         numberOfTrialsValidation(numberOfTrials);
+
+        CarNameList carNameList = convertCarNames(inputCarNames);
         return new CarRace(Cars.makeCars(carNameList));
     }
 
-    private static String[] convertCarNames(String inputCarNames) {
-        return inputCarNames.split(",");
+    private static CarNameList convertCarNames(String inputCarNames) {
+         String[] carNameArray = inputCarNames.split(",");
+         return CarNameList.makeCarNameList(carNameArray);
     }
 
     public Cars executeTrials() {
