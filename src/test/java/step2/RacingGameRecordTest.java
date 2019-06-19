@@ -1,9 +1,13 @@
 package step2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import step2.game.domain.CarName;
 import step2.game.domain.Cars;
 import step2.game.domain.RacingGameRecord;
 
@@ -14,7 +18,11 @@ public class RacingGameRecordTest {
 
     @BeforeEach
     void before() {
-        this.racingGameRecord = RacingGameRecord.newGame(Cars.newCars(3));
+        List<CarName> carNames = new ArrayList<>();
+        carNames.add(new CarName("pobi"));
+        carNames.add(new CarName("crong"));
+        carNames.add(new CarName("honux"));
+        this.racingGameRecord = RacingGameRecord.newGame(Cars.newCars(carNames));
     }
 
     @Test

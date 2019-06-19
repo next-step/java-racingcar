@@ -1,16 +1,20 @@
 package step2.game.dto;
 
+import java.util.List;
+
+import step2.game.domain.CarName;
+
 public class RacingGameInputModel {
-    private final int numberOfCar;
+    private final List<CarName> carNames;
     private final int times;
 
-    public RacingGameInputModel(int numberOfCar, int times) {
-        this.numberOfCar = numberOfCar;
+    public RacingGameInputModel(List<CarName> carNames, int times) {
+        this.carNames = carNames;
         this.times = times;
     }
 
-    public int getNumberOfCar() {
-        return numberOfCar;
+    public List<CarName> getCarNames() {
+        return carNames;
     }
 
     public int getTimes() {

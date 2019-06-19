@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import step2.game.util.RacingGameRandomUtils;
+
 public class Cars {
     private final List<Car> cars;
 
@@ -11,30 +13,23 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars newCars(int numberOfCar) {
-        return new Cars(createCars(numberOfCar, new DefaultCarFactoryImpl(), new DefaultMoveStrategy()));
+    public static Cars newCars(List<CarName> carNames) {
+        return new Cars(createCars(carNames, RacingGameRandomUtils::isMove));
     }
 
-    public static Cars newCars(int numberOfCar, MoveStrategy moveStrategy) {
-        return new Cars(createCars(numberOfCar, new DefaultCarFactoryImpl(), moveStrategy));
+    public static Cars newCars(List<CarName> carNames, MoveStrategy moveStrategy) {
+        return new Cars(createCars(carNames, moveStrategy));
     }
 
-    public static Cars newCars(int numberOfCar, CarFactory carFactory) {
-        return new Cars(createCars(numberOfCar, carFactory, new DefaultMoveStrategy()));
-    }
-
-    public static Cars newCars(int numberOfCar, CarFactory carFactory, MoveStrategy moveStrategy) {
-        return new Cars(createCars(numberOfCar, carFactory, moveStrategy));
-    }
-
-    private static List<Car> createCars(int numberOfCar, CarFactory carFactory, MoveStrategy moveStrategy) {
+    private static List<Car> createCars(List<CarName> carNames, MoveStrategy moveStrategy) {
+        int numberOfCar = carNames.size();
         if (numberOfCar == 0) {
-            throw new IllegalArgumentException("경주 자동차는 1대 이상 추가해야 합니다. Invalid Parameter : " + numberOfCar);
+            throw new IllegalArgumentException("경주 자동차는 1대 이상 추가해야 합니다.");
         }
 
         List<Car> newCars = new ArrayList<>();
         for (int carNo = 0; carNo < numberOfCar; carNo++) {
-            newCars.add(carFactory.createCar(carNo, moveStrategy));
+            newCars.add(new Car(carNo, carNames.get(carNo), moveStrategy));
         }
         return newCars;
     }

@@ -2,6 +2,7 @@ package step2.game.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGameRecord {
     private final List<Cars> result;
@@ -34,5 +35,20 @@ public class RacingGameRecord {
         }
 
         return result.get(previousTurnNo);
+    }
+
+    public List<Car> winners() {
+        List<Car> finalTurn = result.get(result.size() - 1).getCars();
+        int winnerPosition = winnerPosition(finalTurn);
+
+        return finalTurn.stream()
+                        .filter(car -> winnerPosition == car.getPosition())
+                        .collect(Collectors.toList());
+    }
+
+    private int winnerPosition(List<Car> finalTurn) {
+        return finalTurn.stream()
+                        .mapToInt(Car::getPosition)
+                        .max().orElse(0);
     }
 }
