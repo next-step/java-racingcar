@@ -1,26 +1,21 @@
 import Domain.CarInfo;
 import Domain.RacingGame;
-import org.apache.commons.lang3.StringUtils;
-import org.assertj.core.util.Strings;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 
 public class RacingGameTest {
     // 자동차 경주의 최초 설정 세팅 함수에 대한 Junit 테스트 구현
 
     // 사용자가 입력한 공백 문자 혹은 개행문자가 포함되었는지 체크하는 함수에 대한 Junit 테스트 구현
     @Test
-    public void checkNameOfCar(){
-        String inputString=" ";
+    public void checkNameOfCar() {
+        String inputString = " ";
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
-                    if ( inputString.isEmpty() || inputString.equals(" ")|| inputString.equals("\n"))
+                    if (inputString.isEmpty() || inputString.equals(" ") || inputString.equals("\n"))
                         throw new IllegalArgumentException("입력값이 잘못되었습니다. 자동차 이름을 다시 한번 입력해주세요.");
                 }
         );
