@@ -12,7 +12,7 @@ public class CarsTest {
     
     @Test
     void getCopiedCarTest() {
-        Cars cars = new Cars.Builder(TestData.getNewDefaultCarsForTest()).build();
+        Cars cars = new Cars(TestData.getNewDefaultCarsForTest());
         Cars copiedCar = cars.getCopiedCars();
         Assertions.assertThat(cars).isNotSameAs(copiedCar);
         Assertions.assertThat(cars.getCars()).isNotSameAs(copiedCar.getCars());
@@ -21,15 +21,14 @@ public class CarsTest {
     
     @Test
     void getCarNamesTest() {
-        Cars cars = new Cars.Builder(TestData.getNewDefaultCarsForTest()).build();
+        Cars cars = new Cars(TestData.getNewDefaultCarsForTest());
         Assertions.assertThat(cars.getCarNames()).isEqualTo(TestData.DEFAULT_CAR_NAME);
     }
     
     @Test
     void moveCarsSuccessTest() {
-        Cars cars = new Cars.Builder(TestData.getNewDefaultCarsForTest())
-          .generator(() -> CAN_MOVABLE_NUMBER).build();
-        Assertions.assertThat(isAllCarMoved(cars.moveCars()))
+        Cars cars = new Cars(TestData.getNewDefaultCarsForTest());
+        Assertions.assertThat(isAllCarMoved(cars.moveCars(() -> CAN_MOVABLE_NUMBER)))
           .isTrue();
     }
     
@@ -40,9 +39,8 @@ public class CarsTest {
     
     @Test
     void moveCarsFailTest() {
-        Cars cars = new Cars.Builder(TestData.getNewDefaultCarsForTest())
-          .generator(() -> CANT_MOVABLE_NUMBER).build();
-        Assertions.assertThat(isAllCarCantMoved(cars.moveCars())).isTrue();
+        Cars cars = new Cars(TestData.getNewDefaultCarsForTest());
+        Assertions.assertThat(isAllCarCantMoved(cars.moveCars(() -> CANT_MOVABLE_NUMBER))).isTrue();
     }
     
     private boolean isAllCarCantMoved(Cars cars) {

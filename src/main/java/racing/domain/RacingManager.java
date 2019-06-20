@@ -1,6 +1,7 @@
 package racing.domain;
 
 import racing.common.ErrorMessage;
+import racing.common.NumberGenerator;
 import racing.common.RacingSettings;
 import racing.common.RacingValidator;
 import racing.common.RandomNumberGenerator;
@@ -16,12 +17,13 @@ public class RacingManager {
     private final static int MAX_RANDOM_NUMBER = 9;
     private MovingHistory movingHistory;
     private Cars cars;
+    private NumberGenerator randomNumberGenerator;
     private final int time;
     
     public RacingManager(final GameMakingInfo gameMakingInfo) {
         makeSureUserInputs(gameMakingInfo);
-        this.cars = new Cars.Builder(makeCarsAt(gameMakingInfo.getCarNames()))
-          .generator(new RandomNumberGenerator(MAX_RANDOM_NUMBER)).build();
+        this.cars = new Cars(makeCarsAt(gameMakingInfo.getCarNames()));
+        randomNumberGenerator = new RandomNumberGenerator(MAX_RANDOM_NUMBER);
         time = gameMakingInfo.getTime();
         movingHistory = new MovingHistory();
     }
@@ -47,7 +49,7 @@ public class RacingManager {
     
     public RacingResult startGame() {
         IntStream.range(START_TIME, time).forEach(i -> {
-            cars.moveCars();
+            cars.moveCars(randomNumberGenerator);
             movingHistory.addHistory(cars.getCopiedCars());
         });
         return new RacingResult(movingHistory, cars.getWinner().getCarNames());

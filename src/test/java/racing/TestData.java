@@ -22,10 +22,9 @@ public class TestData {
     static {
         final String SPLIT_REGEX = RacingSettings.CAR_NAME_SEPARATOR.getStr();
         String[] carNames = GAME_ENDED_CARS_NAME.split(SPLIT_REGEX);
-        GAME_ENDED_CARS = new Cars.Builder(IntStream.range(0, carNames.length)
+        GAME_ENDED_CARS = new Cars(IntStream.range(0, carNames.length)
           .mapToObj(i -> new Car(carNames[i], GAME_ENDED_CARS_POSITION[i]))
-          .collect(Collectors.toList())
-        ).build();
+          .collect(Collectors.toList()));
     }
     
     public static List<Car> getNewDefaultCarsForTest() {
