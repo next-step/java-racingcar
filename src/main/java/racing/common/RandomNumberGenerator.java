@@ -2,16 +2,17 @@ package racing.common;
 
 import java.util.Random;
 
-public class RandomNumberGenerator {
+public class RandomNumberGenerator implements NumberGenerator {
     private final static int INCREASED_NUMBER = 1;
-    private Random generator;
-    private int maxNumber;
+    private final Random generator;
+    private final int maxNumber;
     
     public RandomNumberGenerator(int maxNumber) {
         this.maxNumber = maxNumber;
         generator = new Random();
     }
     
+    @Override
     public int getNumber() {
         return generator.nextInt(maxNumber + INCREASED_NUMBER);
     }
