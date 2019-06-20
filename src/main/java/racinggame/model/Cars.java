@@ -9,6 +9,7 @@ import java.util.stream.Stream;
 import static java.util.stream.Collectors.toList;
 
 public class Cars {
+
   private static final String SEPARATOR = ",";
   private final List<Car> cars;
 
@@ -28,16 +29,19 @@ public class Cars {
   }
 
   public String getWinner() {
-    int max = 0;
-    for (Car car : cars) {
-      if (max <= car.getStatus()) {
-        max = car.getStatus();
-      }
-    }
-    final int t = max;
+    final int max = getMax();
+
     return cars.stream()
-               .filter(c -> c.getStatus() == t)
+               .filter(car -> car.getStatus() == max)
                .map(Car::getName)
                .collect(Collectors.joining(", "));
+  }
+
+  private int getMax() {
+    return cars.stream()
+               .mapToInt(Car::getStatus)
+               .filter(car -> car >= 0)
+               .max()
+               .orElse(0);
   }
 }
