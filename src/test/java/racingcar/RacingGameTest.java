@@ -2,6 +2,7 @@ package racingcar;
 
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
 import racingcar.util.drivingStrategy.DrivingStrategy;
@@ -23,6 +24,7 @@ public class RacingGameTest {
   }
 
   @Test
+  @DisplayName("race() 메소드 한번에 position이 1씩 증가")
   void race() {
     List<Car> racingCars = racingGame.race();
     assertThat(racingCars.get(0).getPosition()).isEqualTo(2);
@@ -41,6 +43,7 @@ public class RacingGameTest {
   }
 
   @Test
+  @DisplayName("우승자 이름을 String[] 으로 Return")
   void awards() {
     List<Car> racingCars = racingGame.race();
     assertThat(racingCars.get(0).getPosition()).isEqualTo(2);
