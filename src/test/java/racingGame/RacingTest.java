@@ -7,9 +7,12 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingGame.domain.Racing;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class RacingTest {
 
@@ -68,4 +71,10 @@ class RacingTest {
         List<String> winners = racing.getWinnerNames();
         assertThat(winners.size()).isNotZero();
     }
+
+    @Test
+    void constructRacingValidTime() {
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(()->racing.validConstructTime(0));
+    }
+
 }
