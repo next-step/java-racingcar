@@ -3,7 +3,6 @@ package step3;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import step3.domain.CarRace;
-import step3.domain.Cars;
 import step3.domain.Winners;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -37,6 +36,6 @@ public class WinnerTest {
 
     @Test
     void 선정된_우승자들의_Position이_가장_크다() {
-        //TODO: 구현 실패..
+        // TODO: 선정된 우승자들의 Position이 가장 큰 지 테스트 코드 작성
     }
 }

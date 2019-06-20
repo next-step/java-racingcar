@@ -1,5 +1,7 @@
 package step3.domain;
 
+import step3.utils.NumberGenerator;
+
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -25,6 +27,13 @@ public class Cars {
                 .map(Car::getPosition)
                 .max(Comparator.comparing(Integer::valueOf))
                 .get();
+    }
+
+    public Cars move(NumberGenerator numberGenerator) {
+        for (Car car : cars) {
+            car.move(numberGenerator.getRandomNumber());
+        }
+        return new Cars(cars);
     }
 
     public List<Car> getCars() {
