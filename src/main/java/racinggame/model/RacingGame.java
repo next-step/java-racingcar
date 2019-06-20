@@ -25,7 +25,7 @@ public class RacingGame {
   }
 
   public String getWinner() {
-    return cars.getWinner();
+    return cars.getWinner(cars.getMax());
   }
 
   private Cars move() {

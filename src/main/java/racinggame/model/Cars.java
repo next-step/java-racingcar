@@ -28,16 +28,14 @@ public class Cars {
     return cars;
   }
 
-  public String getWinner() {
-    final int max = getMax();
-
+  public String getWinner(int max) {
     return cars.stream()
                .filter(car -> car.getStatus() == max)
                .map(Car::getName)
                .collect(Collectors.joining(", "));
   }
 
-  private int getMax() {
+  public int getMax() {
     return cars.stream()
                .mapToInt(Car::getStatus)
                .filter(car -> car >= 0)
