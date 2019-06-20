@@ -1,38 +1,76 @@
 package homework.week1;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RacingCarGameEngine {
 
+    private static final String SEPARATOR_STRING = ",";
+    private static final int MIN_RACING_VALUE = 1;
     private static final int MIN_RUN_CONDITION_VALUE = 4;
     private static final int RANDOM_NUM_RANGE = 10;
 
-    private int numbersOfRacing;
-    private int[] carPositions;
+    private int numberOfRacing;
+    private List<Integer> carsRunCount;
+    private List<Car> cars;
 
-    public RacingCarGameEngine(int numbersOfRacing, int[] carPositions) {
-        this.numbersOfRacing = numbersOfRacing;
-        this.carPositions = carPositions;
+    public RacingCarGameEngine() {}
+
+    public void initialize(String[] carNames, int numbersOfRacing) {
+        List<Car> cars = getCarNameArrToCars(carNames);
+        setCars(cars);
+        setNumberOfRacing(numbersOfRacing);
+        List<Integer> carsRunCount = new ArrayList<>();
+        for(int index=0; index < cars.size(); index++) {
+            carsRunCount.add(0);
+        }
+        setCarsRunCount(carsRunCount);
     }
 
-    public int[] move() throws NullPointerException {
-        if (carPositions == null) {
-            throw new NullPointerException("경주에 참여하는 자동차 대수가 설정되지 않았습니다!");
+    public List<Car> getCarNameArrToCars(String[] carNames) {
+        List<Car> cars = new ArrayList<>();
+        for(int position = 0; position < carNames.length; position++) {
+            Car car = new Car(carNames[position], position);
+            cars.add(car);
+        }
+        return cars;
+    }
+    public String[] splitInput(String value) {
+        return value.split(SEPARATOR_STRING);
+    }
+
+    public List<Integer> move() throws NullPointerException {
+        if (carsRunCount == null) {
+            throw new NullPointerException("경주에 참여하는 자동차가 설정되지 않았습니다!");
         }
         Random randomNumber = new Random();
-        for (int index=0; index < carPositions.length; index++) {
-            carPositions[index] = getRunCount(checkRunCondition(randomNumber.nextInt(RANDOM_NUM_RANGE)),
-                    carPositions[index]);
+        for (int index=0; index < carsRunCount.size(); index++) {
+            carsRunCount.add(getRunCount(checkRunCondition(randomNumber.nextInt(RANDOM_NUM_RANGE)),
+                    carsRunCount.get(index)));
         }
-        return carPositions;
+        return carsRunCount;
     }
 
-    public int getNumbersOfRacing() {
-        return this.numbersOfRacing;
+    void checkEmptyCarNames(String[] carNames) throws IllegalArgumentException {
+        if (carNames.length == 0) {
+            throw new IllegalArgumentException("차이름은 빈 문자열이나 공백문자열이 올 수 없습니다.");
+        }
+        for (String carName : carNames) {
+            checkEmptyString(carName);
+        }
     }
 
-    public int[] getCarPositions() {
-        return this.carPositions;
+    void checkEmptyString(String value) throws IllegalArgumentException {
+        if (value == null || value.isEmpty()) {
+            throw new IllegalArgumentException("차이름은 빈 문자열이나 공백문자열이 올 수 없습니다.");
+        }
+    }
+
+    void checkInputPositiveNum(int value) throws IllegalArgumentException {
+        if (value < MIN_RACING_VALUE) {
+            throw new IllegalArgumentException("반드시 1 이상의 숫자를 입력하세요!");
+        }
     }
 
     boolean checkRunCondition(int value) {
@@ -49,4 +87,27 @@ public class RacingCarGameEngine {
         return runCount;
     }
 
+    public int getNumberOfRacing() {
+        return numberOfRacing;
+    }
+
+    private void setNumberOfRacing(int numbersOfRacing) {
+        this.numberOfRacing = numbersOfRacing;
+    }
+
+    public List<Integer> getCarsRunCount() {
+        return carsRunCount;
+    }
+
+    private void setCarsRunCount(List<Integer> carsRunCount) {
+        this.carsRunCount = carsRunCount;
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    private void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
 }
