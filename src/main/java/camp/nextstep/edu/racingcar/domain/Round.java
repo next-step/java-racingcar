@@ -29,7 +29,7 @@ public class Round {
     public CarNames getWinners() {
         final Position maxPosition = this.getMaximumPosition();
         final List<CarName> carNameList = cars.stream()
-                .filter(car -> maxPosition.equals(car.getPosition()))
+                .filter(car -> car.isLocatedAt(maxPosition))
                 .map(Car::getName)
                 .collect(Collectors.toList());
         return CarNames.from(carNameList);

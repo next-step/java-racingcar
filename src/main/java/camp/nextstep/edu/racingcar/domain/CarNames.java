@@ -2,13 +2,11 @@ package camp.nextstep.edu.racingcar.domain;
 
 import camp.nextstep.edu.util.AssertUtils;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+import java.util.function.Consumer;
 import java.util.stream.Stream;
 
-public class CarNames {
+public class CarNames implements Iterable<CarName> {
 
     private final List<CarName> carNameList;
 
@@ -26,12 +24,23 @@ public class CarNames {
         return new CarNames(emptyList);
     }
 
-    public int size() {
-        return carNameList.size();
-    }
-
     public Stream<CarName> stream() {
         return carNameList.stream();
+    }
+
+    @Override
+    public Iterator<CarName> iterator() {
+        return carNameList.iterator();
+    }
+
+    @Override
+    public void forEach(Consumer<? super CarName> action) {
+        carNameList.forEach(action);
+    }
+
+    @Override
+    public Spliterator<CarName> spliterator() {
+        return carNameList.spliterator();
     }
 
     @Override

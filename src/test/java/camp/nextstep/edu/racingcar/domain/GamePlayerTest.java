@@ -20,7 +20,7 @@ class GamePlayerTest implements CarNamesHelper {
                 CAR_NAME_SECOND_VALUE,
                 CAR_NAME_THIRD_VALUE
         );
-        assertThat(validCarNameStrings.size()).isEqualTo(3);
+        assertThat(validCarNameStrings).hasSize(3);
     }
 
     @DisplayName("객체를 잘 생성하는지")
@@ -72,7 +72,7 @@ class GamePlayerTest implements CarNamesHelper {
         final Rounds gameResult = gamePlayer.getGameResult();
         // then
         assertThat(gameResult).isNotNull();
-        assertThat(gameResult.size()).isEqualTo(5);
+        assertThat(gameResult).hasSize(5);
     }
 
     @DisplayName("게임이 세팅되지 않았을 때, 게임 결과를 조회하면 IllegalStateException 을 던져야함")

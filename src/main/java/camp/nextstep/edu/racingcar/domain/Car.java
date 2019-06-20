@@ -30,6 +30,10 @@ public class Car {
         return position;
     }
 
+    public boolean isLocatedAt(Position position) {
+        return this.position.equals(position);
+    }
+
     public Car move(int distance) {
         final Position movedPosition = position.add(distance);
         return new Car(carName, movedPosition);

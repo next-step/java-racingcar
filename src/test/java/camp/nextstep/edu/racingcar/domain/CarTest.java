@@ -14,8 +14,7 @@ class CarTest {
     void constructor() {
         final Car car = Car.from(CAR_NAME);
         assertThat(car).isNotNull();
-        assertThat(car.getPosition().value())
-                .isEqualTo(0);
+        assertThat(car.getPosition().value()).isEqualTo(0);
     }
 
     @DisplayName("carName 이 null 이면 자동차 객체를 생성할 수 없어야함")
@@ -87,5 +86,16 @@ class CarTest {
         // then
         assertThat(car).isNotNull();
         assertThat(car.getPosition().value()).isEqualTo(0);
+    }
+
+    @DisplayName("자동차가 주어진 위치에 있는지 확인할 수 있어야함")
+    @Test
+    void isLocatedAt() {
+        // given
+        final Car car = Car.from(CAR_NAME);
+        // when
+        boolean result = car.isLocatedAt(Position.origin());
+        // then
+        assertThat(result).isTrue();
     }
 }

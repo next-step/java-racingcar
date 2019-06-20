@@ -1,5 +1,7 @@
 package camp.nextstep.edu.racingcar.domain;
 
+import camp.nextstep.edu.util.AssertUtils;
+
 import java.util.Objects;
 
 public class Position {
@@ -20,6 +22,9 @@ public class Position {
     }
 
     public static Position max(Position a, Position b) {
+        AssertUtils.notNull(a, "'a' must not be null");
+        AssertUtils.notNull(b, "'b' must not be null");
+
         final int result = Math.max(a.value, b.value);
         return new Position(result);
     }

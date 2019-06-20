@@ -3,9 +3,10 @@ package camp.nextstep.edu.racingcar.domain;
 import camp.nextstep.edu.util.AssertUtils;
 
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.stream.Stream;
 
-public class Rounds {
+public class Rounds implements Iterable<Round> {
 
     private final List<Round> roundList;
 
@@ -46,6 +47,21 @@ public class Rounds {
         return this.getLast()
                 .map(Round::getWinners)
                 .orElse(CarNames.emptyInstance());
+    }
+
+    @Override
+    public Iterator<Round> iterator() {
+        return roundList.iterator();
+    }
+
+    @Override
+    public void forEach(Consumer<? super Round> action) {
+        roundList.forEach(action);
+    }
+
+    @Override
+    public Spliterator<Round> spliterator() {
+        return roundList.spliterator();
     }
 
     @Override
