@@ -13,7 +13,6 @@ public class Car {
 
   private DrivingStrategy drivingStrategy;
 
-
   public Car(int carNo) {
     this.carNo = carNo;
     this.position = INITIAL_POSITION;
