@@ -22,8 +22,8 @@ public class ValidationCheck {
         }
     }
 
-    public void checkCarNumber(int carNumber, int[] carPositions) {
-        if (carNumber != carPositions.length) {
+    public void checkCarNumber(int carNumber, int carPositions) {
+        if (carNumber != carPositions ) {
             throw new IllegalArgumentException("입력한 값과 출전하는 차량의 수가 일치하지 않습니다.");
         }
     }
