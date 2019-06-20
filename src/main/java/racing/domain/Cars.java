@@ -1,7 +1,6 @@
-package racing;
+package racing.domain;
 
-import racing.strategy.DrivingRandomStrategy;
-import racing.strategy.DrivingStrategy;
+import racing.domain.strategy.DrivingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;

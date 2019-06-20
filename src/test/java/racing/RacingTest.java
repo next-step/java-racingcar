@@ -2,6 +2,7 @@ package racing;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racing.domain.RacingGame;
 
 import java.util.Arrays;
 import java.util.List;

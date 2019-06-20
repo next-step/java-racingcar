@@ -1,9 +1,9 @@
-package racing;
+package racing.domain;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
-import racing.strategy.*;
+import racing.domain.strategy.*;
+import racing.view.Printer;
 
 public class RacingGame {
     private Cars cars;

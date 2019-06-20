@@ -2,7 +2,10 @@ package racing;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racing.strategy.DrivingMoveStrategy;
+import racing.domain.Car;
+import racing.domain.Cars;
+import racing.domain.WinnerMaker;
+import racing.domain.strategy.DrivingMoveStrategy;
 
 import java.util.Arrays;
 import java.util.List;

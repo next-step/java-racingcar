@@ -1,5 +1,8 @@
 package racing;
 
+import racing.domain.RacingGame;
+import racing.view.Prompter;
+
 public class RacingGameRunner {
 
     public static void main(String[] args) {
