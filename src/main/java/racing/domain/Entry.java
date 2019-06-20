@@ -3,6 +3,7 @@ package racing.domain;
 import racing.vo.EntryItem;
 import racing.vo.RacingRecord;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,19 +12,19 @@ import java.util.stream.Collectors;
  */
 public class Entry {
 
-	private List<EntryItem> players;
+	private List<EntryItem> items;
 
-	public Entry(List<EntryItem> players){
+	public Entry(List<EntryItem> items){
 		// shallow copy
-		this.players = players.stream().collect(Collectors.toList());
+		this.items = items.stream().collect(Collectors.toList());
 	}
 
 	public int size() {
-		return players.size();
+		return items.size();
 	}
 
 	public List<RacingRecord> drive() {
-		return players.stream()
+		return items.stream()
 				.map(entryItem -> {
 					entryItem.drive();
 					return new RacingRecord(entryItem.getPlayerName(), entryItem.getCarMilieage());
@@ -31,6 +32,7 @@ public class Entry {
 	}
 
 	public List<RacingRecord> getWinners() {
-		return null;
+		EntryItem item = items.get(0);
+		return Collections.singletonList(new RacingRecord(item.getPlayerName(), item.getCarMilieage()));
 	}
 }
