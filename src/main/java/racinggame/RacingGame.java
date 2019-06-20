@@ -13,7 +13,7 @@ public class RacingGame {
     }
 
     private void playRound() {
-        CarHandler.moveAllCars(cars);
+        cars.moveCarsByRandomCondition();
         gameRound.increaseCurrentRound();
     }
 

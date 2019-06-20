@@ -20,8 +20,8 @@ public class Cars {
         this.cars = carList;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public void moveCarsByRandomCondition() {
+        cars.forEach(CarHandler::moveCarByRandomCondition);
     }
 
     public Map<String, Integer> getPositions() {

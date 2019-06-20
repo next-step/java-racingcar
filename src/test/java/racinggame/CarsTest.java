@@ -13,6 +13,7 @@ class CarsTest {
         CarNames carNames = new CarNames(carNameString);
 
         Cars cars = new Cars(carNames);
-        assertThat(cars.getCars().size()).isEqualTo(carQuantity);
+        assertThat(cars.getPositions()).containsKeys("pobi", "crong", "honux");
+        assertThat(cars.getPositions()).containsValues(1, 1, 1);
     }
 }

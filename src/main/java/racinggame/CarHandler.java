@@ -15,20 +15,14 @@ public class CarHandler {
         return number >= MIN_MOVE_NUMBER;
     }
 
-    /*
-    주신 피드백처럼 인자로 받으려고 했으나, 아래 moveAllCars 메서드에서 getRandomMoveCondition 을
-    호출하기 때문에 그 위치에서 인자로 넣어주기 애매해서 RacingGameParameters 에 추가를 하여 구현했는데 괜찮은 방법인지 모르겠습니다.
-     */
-    public static boolean getRandomMoveCondition() {
+    static boolean getRandomMoveCondition() {
         int ruleNumber = RacingGameParameters.getNumberGenerator().generate();
         return isMoveCondition(ruleNumber);
     }
 
-    public static void moveAllCars(Cars cars) {
-        for (Car car : cars.getCars()) {
-            if (CarHandler.getRandomMoveCondition()) {
-                car.move();
-            }
+    public static void moveCarByRandomCondition(Car car) {
+        if (getRandomMoveCondition()) {
+            car.move();
         }
     }
 }
