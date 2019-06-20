@@ -51,8 +51,8 @@ public class RacingCarGameEngineTest {
     void printRacingCars() {
         System.out.println("printRacingCars");
         int[] printTestArr = {1,2,3};
-        carGameFront.printRacingCar(printTestArr);
-        carGameFront.printRacingCar(printTestArr);
+        carGameFront.printRacingCars(printTestArr);
+        carGameFront.printRacingCars(printTestArr);
     }
 
     @Test
@@ -61,11 +61,4 @@ public class RacingCarGameEngineTest {
         carGameFront.goRacingGame(carGameEngine);
     }
 
-    @Test
-    void getRacingCarGameEngine() {
-        System.out.println("getRacingCarGameEngine");
-        assertThatIllegalArgumentException().isThrownBy(()->{
-            carGameFront.getRacingCarGameEngine();
-        });
-    }
 }

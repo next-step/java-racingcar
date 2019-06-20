@@ -5,6 +5,7 @@ import java.util.Random;
 public class RacingCarGameEngine {
 
     private static final int MIN_RUN_CONDITION_VALUE = 4;
+    private static final int RANDOM_NUM_RANGE = 10;
 
     private int numbersOfRacing;
     private int[] carPositions;
@@ -20,7 +21,7 @@ public class RacingCarGameEngine {
         }
         Random randomNumber = new Random();
         for (int index=0; index < carPositions.length; index++) {
-            carPositions[index] = getRunCount(checkRunCondition(randomNumber.nextInt(10)),
+            carPositions[index] = getRunCount(checkRunCondition(randomNumber.nextInt(RANDOM_NUM_RANGE)),
                     carPositions[index]);
         }
         return carPositions;
