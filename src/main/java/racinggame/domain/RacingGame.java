@@ -3,6 +3,7 @@ package racinggame.domain;
 import racinggame.utils.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
@@ -42,7 +43,7 @@ public class RacingGame {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
     public List<Car> getWinners() {
