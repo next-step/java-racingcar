@@ -70,8 +70,8 @@ class StageTest {
 		 */
 		// Assertion
 		assertThat(messageFormView.size()).isEqualTo(5); // 시작 1회, 이동 2회(차가 2대), 라운드 종료 1회
-		assertThat(messageFormView.get(1)).isEqualTo("player1 : -");
-		assertThat(messageFormView.get(2)).isEqualTo("player2 : -");
+		assertThat(messageFormView.get(1)).contains("player1");
+		assertThat(messageFormView.get(2)).contains("player2");
 		assertThat(messageFormView.get(4)).contains("우승");
 
 
