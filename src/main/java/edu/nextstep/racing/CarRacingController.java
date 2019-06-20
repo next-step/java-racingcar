@@ -63,6 +63,6 @@ public class CarRacingController {
         Cars finishPlayer = this.carRacingService.finishGame();
 
         int winScore = finishPlayer.getWinnerScore();
-        output.printWinnerPlayer(finishPlayer.getWinnerPlayer(winScore), winScore);
+        output.printWinnerPlayer(finishPlayer.getWinnerPlayer(winScore));
     }
 }
