@@ -8,14 +8,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class UtilTest {
 
-    private final String INPUT_STRING = "jojo,mike,brian,cell,chacha";
-
     @Test
     void splitStringNames() {
-        List<String> inputStrings = Util.stringSplitToList(this.INPUT_STRING, ",");
+        String INPUT_STRING = "jojo,mike,brian,cell,chacha";
+        List<String> inputStrings = Util.stringSplitToList(INPUT_STRING, ",");
         assertThat(inputStrings).contains("jojo", "mike", "brian", "cell", "chacha");
     }
 
@@ -30,5 +30,17 @@ class UtilTest {
     void randomNumber(int bound) {
         int result = Util.randomNumber(bound);
         assertThat(result).isBetween(0, bound - 1);
+    }
+
+    @Test
+    void stringNameIsEmpty() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> Util.stringName(""));
+    }
+
+    @Test
+    void stringNameIsNull() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> Util.stringName(null));
     }
 }

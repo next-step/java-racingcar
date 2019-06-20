@@ -1,5 +1,7 @@
 package racingGame.domain;
 
+import racingGame.Util;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,6 +16,7 @@ public class Racing {
 
     public Racing(int time, List<String> inputCarNames) {
         this.validConstructTime(time);
+        this.constructRacingValidNames(inputCarNames);
         this.time = time;
         this.cars = this.arrayWithCar(inputCarNames);
     }
@@ -62,5 +65,12 @@ public class Racing {
         if (time > MAX_TIME || time < MIN_TIME) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public void constructRacingValidNames(List<String> inputNames) {
+        for (String inputName : inputNames) {
+            Util.stringName(inputName);
+        }
+
     }
 }

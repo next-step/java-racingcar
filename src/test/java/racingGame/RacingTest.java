@@ -74,7 +74,12 @@ class RacingTest {
 
     @Test
     void constructRacingValidTime() {
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(()->racing.validConstructTime(0));
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> racing.validConstructTime(0));
     }
 
+    @Test
+    void constructRacingValidCars() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> racing.constructRacingValidNames(Arrays.asList("")));
+    }
 }
