@@ -4,6 +4,7 @@ import racing.exception.OutOfEntryException;
 import racing.exception.PlayOverException;
 import racing.view.RacingMonitorView;
 import racing.view.events.ChangedPlayerPositionEvent;
+import racing.view.events.FinishStageEvent;
 import racing.view.events.RacingEvent;
 import racing.view.events.StartedRacingEvent;
 import racing.vo.EntryItem;
@@ -49,6 +50,7 @@ public class Stage {
 			this.playRound();
 		}while (remainingRound > 0);
 
+		this.emitEvent(new FinishStageEvent(entry.getWinners()));
 	}
 
 	private void playRound() {
