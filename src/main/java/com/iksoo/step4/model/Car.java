@@ -21,7 +21,7 @@ public class Car {
         return this.carPosition.length;
     }
 
-    public void doNextInning(int random) {
+    public void doRacing(int random) {
         this.carPosition[this.inning] = random >= GOSTOP_CRITERION ? "1" : "0";
         this.inning++;
     }

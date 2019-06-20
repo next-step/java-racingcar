@@ -25,7 +25,7 @@ public class Cars {
 
     public void doOneInning(List<Car> cars) {
         for (int i = 0; i < cars.size(); i++) {
-            cars.get(i).doNextInning(CarMainController.getRandom());
+            cars.get(i).doRacing(CarMainController.getRandom());
         }
     }
 }
