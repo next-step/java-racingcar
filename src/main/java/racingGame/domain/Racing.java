@@ -20,12 +20,9 @@ public class Racing {
     }
 
     private List<Car> arrayWithCar(List<String> carNames) {
-        ArrayList<Car> cars = new ArrayList<>();
-        for (String name : carNames) {
-            cars.add(new Car(name));
-        }
-
-        return cars;
+        return carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public List<Car> getCars() {
