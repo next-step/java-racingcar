@@ -21,7 +21,7 @@ public class ConsoleGameStatusResultView implements ResultView {
 
     @Override
     public void printInit() {
-        System.out.println();
+        newLine();
         System.out.println(RESULT_MESSAGE);
     }
 
@@ -56,7 +56,7 @@ public class ConsoleGameStatusResultView implements ResultView {
             print(carRacingLog);
         }
 
-        System.out.println();
+        newLine();
     }
 
     private void print(CarRacingLog carRacingLog) {
@@ -76,5 +76,9 @@ public class ConsoleGameStatusResultView implements ResultView {
         }
 
         return sb.toString();
+    }
+
+    private static void newLine() {
+        System.out.println();
     }
 }
