@@ -6,12 +6,16 @@ package study.racingcar.model;
  * Github : http://github.com/wyparks2
  */
 public class CarRacingLog {
-    private String name;
+    private Car car;
     private int position;
 
-    public CarRacingLog(String name, int position) {
-        this.name = name;
+    public CarRacingLog(Car car, int position) {
+        this.car = car;
         this.position = position;
+    }
+
+    public Car getCar() {
+        return car;
     }
 
     public int getPosition() {

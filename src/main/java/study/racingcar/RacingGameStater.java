@@ -2,10 +2,13 @@ package study.racingcar;
 
 import study.racingcar.input.ConsoleInputView;
 import study.racingcar.input.InputView;
+import study.racingcar.model.Awards;
+import study.racingcar.model.Cars;
 import study.racingcar.model.CarsRacingLog;
 import study.racingcar.model.RacingGameInfo;
 import study.racingcar.output.ConsoleGameStatusResultView;
 import study.racingcar.output.ResultView;
+import study.racingcar.strategy.MaxPositionWinnerStrategy;
 
 import java.util.List;
 
@@ -20,12 +23,19 @@ public class RacingGameStater {
         RacingGameInfo racingGameInfo = inputView.questionAndAnswer();
 
         RacingGame racingGame = new RacingGame(
-                racingGameInfo.getCountOfRacingCar(), racingGameInfo.getMoveCarTryLimit());
+                racingGameInfo.getCarNames(),
+                racingGameInfo.getMoveCarTryLimit()
+        );
 
         List<CarsRacingLog> carsRacingLogs = racingGame.start();
 
+        Awards awards = new Awards(new MaxPositionWinnerStrategy());
+        CarsRacingLog lastCarsRacingLog = carsRacingLogs.get(carsRacingLogs.size() - 1);
+        Cars winners = awards.award(lastCarsRacingLog);
+
         ResultView resultView = new ConsoleGameStatusResultView();
         resultView.printInit();
-        resultView.print(carsRacingLogs);
+        resultView.printRacingLogs(carsRacingLogs);
+        resultView.printWinners(winners);
     }
 }
