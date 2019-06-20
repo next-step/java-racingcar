@@ -1,3 +1,5 @@
+import Domain.CarInfo;
+
 public class ResultView {
     public static void disPlayRacingResult(CarInfo carInfo) {
         String carStatus = "";

@@ -1,3 +1,5 @@
+import Domain.CarInfo;
+
 import java.util.List;
 import java.util.Scanner;
 
