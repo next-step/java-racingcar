@@ -1,6 +1,9 @@
-package racingcar;
+package racingcar.controller;
 
 import java.util.List;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.Referee;
 
 public class RacingGame {
 

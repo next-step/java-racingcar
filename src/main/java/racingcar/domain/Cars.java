@@ -1,8 +1,9 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.util.RandomNumberGenerator;
 
 public class Cars {
 
