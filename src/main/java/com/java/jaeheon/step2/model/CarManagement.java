@@ -1,4 +1,4 @@
-package com.java.jaeheon.step2;
+package com.java.jaeheon.step2.model;
 
 import java.util.ArrayList;
 import java.util.List;

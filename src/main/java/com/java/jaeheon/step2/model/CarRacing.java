@@ -1,7 +1,9 @@
-package com.java.jaeheon.step2;
+package com.java.jaeheon.step2.model;
 
 import java.util.List;
 import java.util.Random;
+
+import com.java.jaeheon.step2.view.ResultView;
 
 public class CarRacing {
     private static final int CONDITION_LIMIT = 10;

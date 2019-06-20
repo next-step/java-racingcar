@@ -1,4 +1,6 @@
-package com.java.jaeheon.step2;
+package com.java.jaeheon.step2.view;
+
+import com.java.jaeheon.step2.model.Car;
 
 public class ResultView {
     private static final String DISTANCE_SYMBOL = "-";

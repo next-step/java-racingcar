@@ -1,4 +1,4 @@
-package com.java.jaeheon.step2;
+package com.java.jaeheon.step2.view;
 
 import java.util.Scanner;
 

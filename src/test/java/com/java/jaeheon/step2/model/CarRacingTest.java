@@ -1,8 +1,12 @@
-package com.java.jaeheon.step2;
+package com.java.jaeheon.step2.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+
+import com.java.jaeheon.step2.model.Car;
+import com.java.jaeheon.step2.model.CarManagement;
+import com.java.jaeheon.step2.model.CarRacing;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

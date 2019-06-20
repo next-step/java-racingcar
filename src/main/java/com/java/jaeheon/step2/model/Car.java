@@ -1,4 +1,4 @@
-package com.java.jaeheon.step2;
+package com.java.jaeheon.step2.model;
 
 public class Car {
     private final int MOVING_CONDITION = 4;
