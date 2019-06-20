@@ -1,11 +1,7 @@
 package racingcar.view;
 
 import racingcar.model.Car;
-import racingcar.util.refree.Referee;
 
-import javax.xml.transform.Result;
-import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.joining;
@@ -50,8 +46,8 @@ public class ConsoleResultView implements ResultView {
     System.out.println(resultMessage);
   }
 
-  public void printWinner(final List<Car> cars) {
-    String resultMessage = Referee.getWinnerFrom(cars).concat("가 최종 우승했습니다.");
+  public void printWinner(final String names) {
+    String resultMessage = names.concat("가 최종 우승했습니다.");
     System.out.println(resultMessage);
   }
 }

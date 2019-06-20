@@ -8,5 +8,5 @@ public interface ResultView {
     void printCurrentRound(final int round);
     void addLineBreak();
     void printCurrentPositionOf(final Car car);
-    void printWinner(final List<Car> cars);
+    void printWinner(final String names);
 }
