@@ -44,7 +44,7 @@ public class Cars {
     }
 
     public Set<Car> getCars() {
-        return cars;
+        return new HashSet<>(cars);
     }
 
     private CarRacingLog makeCarRacingLog(Car car) {

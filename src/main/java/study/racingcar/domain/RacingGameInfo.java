@@ -1,5 +1,6 @@
 package study.racingcar.domain;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -12,7 +13,7 @@ public class RacingGameInfo {
     private int moveCarTryLimit;
 
     public RacingGameInfo(Set<String> carNames, int moveCarTryLimit) {
-        this.carNames = carNames;
+        this.carNames = new HashSet<>(carNames);
         this.moveCarTryLimit = moveCarTryLimit;
     }
 
