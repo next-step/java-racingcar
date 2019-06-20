@@ -10,7 +10,7 @@ public class Car {
 
   public Car(String name) {
     this.status = DEFAULT_STATUS;
-    this.name = name;
+    this.name = name.trim();
   }
 
   public int move(int num) {
