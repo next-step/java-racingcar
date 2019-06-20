@@ -21,6 +21,11 @@ public class Cars {
         return this.cars;
     }
 
+    public List<Car> resetPosition() {
+        this.cars.forEach(Car::resetPosition);
+        return this.cars;
+    }
+
     public List<Car> getCars() {
         return cars;
     }
