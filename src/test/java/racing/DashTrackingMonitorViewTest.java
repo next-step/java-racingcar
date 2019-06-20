@@ -60,8 +60,8 @@ class DashTrackingMonitorViewTest {
 	}
 
 	@Test
-	@DisplayName("게임종료 이벤트 핸들링 테스트")
-	void finishStageEventHandling(){
+	@DisplayName("게임종료(단독우승) 이벤트 핸들링 테스트")
+	void finishStageWithSingleWinnerEventHandling(){
 
 		// Arrange
 		List<String> messagesFromView = new ArrayList<>();
@@ -77,6 +77,28 @@ class DashTrackingMonitorViewTest {
 
 		// Assertion
 		assertThat(messagesFromView.get(0)).isEqualTo("playerA가 최종 우승했습니다.");
+	}
+
+
+	@Test
+	@DisplayName("게임종료(동반우승) 이벤트 핸들링 테스트")
+	void finishStageWithMultiWinnerEventHandling(){
+
+		// Arrange
+		List<String> messagesFromView = new ArrayList<>();
+		DashTrackingMonitorView watcher = new DashTrackingMonitorView((message) -> {
+			messagesFromView.add(message);
+		});
+
+		List<RacingRecord> records = new ArrayList<>();
+		records.add(new RacingRecord("playerA", 5));	// position 은 사용하지 않기 때문에 의미 없음
+		records.add(new RacingRecord("playerB", 5));	// position 은 사용하지 않기 때문에 의미 없음
+
+		// Action
+		watcher.handle(new FinishStageEvent(records));
+
+		// Assertion
+		assertThat(messagesFromView.get(0)).isEqualTo("playerA, playerB가 최종 우승했습니다.");
 	}
 
 

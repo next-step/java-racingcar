@@ -29,6 +29,7 @@ public class DashTrackingMonitorView extends RacingMonitorView {
 
 	private MessagePrinter printer;
 
+
 	/**
 	 * 메세지 출력 방법을 외부에서 주입받아 사용
 	 * @param printer 메세지출력 방법을 구현한 람다함수
@@ -37,6 +38,7 @@ public class DashTrackingMonitorView extends RacingMonitorView {
 		this.printer = printer;
 	}
 
+
 	/**
 	 * 게임 시작 이벤트에 전달된 메세지를 출력
 	 * @param event 레이싱게임이 시작 될 때 발생하는 이벤트
@@ -44,6 +46,7 @@ public class DashTrackingMonitorView extends RacingMonitorView {
 	private void handle(StartedRacingEvent event){
 		printer.printMessage(event.getMessage());
 	}
+
 
 	/**
 	 * 게임 진행 중 플레이어위치변경 이벤트를 받아 각 플레이어 위치를 출력
@@ -61,9 +64,10 @@ public class DashTrackingMonitorView extends RacingMonitorView {
 		printer.printMessage(EMPTY_NEW_LINE);
 	}
 
+
 	/**
-	 *
-	 * @param event
+	 * 게임 종료 이벤트를 받아 우승자 이름 출력
+	 * @param event 레이싱게임이 종료될 때 발생하는 이벤트, 우승자의 기록 포함
 	 */
 	private void handle(FinishStageEvent event){
 
