@@ -3,6 +3,7 @@ package racing.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.domain.accelerator.StaticAccelerator;
+import racing.vo.EntryItem;
 import racing.vo.RacingRecord;
 
 import java.util.ArrayList;
@@ -17,9 +18,9 @@ class EntryTest {
 	@Test
 	void getWinner(){
 		// arrange
-		List<RacingCar> items = new ArrayList<>();
-		items.add(new RacingCar("A", new StaticAccelerator(RacingCar.DEFAULT_THRESHOLD + 1)));
-		items.add(new RacingCar("B", new StaticAccelerator(RacingCar.DEFAULT_THRESHOLD)));
+		List<EntryItem> items = new ArrayList<>();
+		items.add(new EntryItem("A", new RacingCar(new StaticAccelerator(RacingCar.DEFAULT_THRESHOLD + 1))));
+		items.add(new EntryItem("B", new RacingCar(new StaticAccelerator(RacingCar.DEFAULT_THRESHOLD))));
 
 		Entry entry = new Entry(items);
 		entry.drive();
@@ -37,9 +38,9 @@ class EntryTest {
 	@Test
 	void getWinnerWithReversedScore(){
 		// arrange
-		List<RacingCar> items = new ArrayList<>();
-		items.add(new RacingCar("A", new StaticAccelerator(RacingCar.DEFAULT_THRESHOLD)));
-		items.add(new RacingCar("B", new StaticAccelerator(RacingCar.DEFAULT_THRESHOLD + 1)));
+		List<EntryItem> items = new ArrayList<>();
+		items.add(new EntryItem("A", new RacingCar(new StaticAccelerator(RacingCar.DEFAULT_THRESHOLD))));
+		items.add(new EntryItem("B", new RacingCar(new StaticAccelerator(RacingCar.DEFAULT_THRESHOLD + 1))));
 
 		Entry entry = new Entry(items);
 		entry.drive();

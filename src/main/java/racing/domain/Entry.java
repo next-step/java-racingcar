@@ -1,7 +1,9 @@
 package racing.domain;
 
+import racing.vo.EntryItem;
 import racing.vo.RacingRecord;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,9 +13,9 @@ import java.util.stream.Collectors;
  */
 public class Entry {
 
-	private List<RacingCar> items;
+	private List<EntryItem> items;
 
-	public Entry(List<RacingCar> items){
+	public Entry(List<EntryItem> items){
 		// shallow copy
 		this.items = items.stream().collect(Collectors.toList());
 	}
@@ -24,9 +26,9 @@ public class Entry {
 
 	public List<RacingRecord> drive() {
 		return items.stream()
-				.map(car -> {
-					car.move();
-					return new RacingRecord(car.getDriverName(), car.getMileage());
+				.map(entryItem -> {
+					entryItem.drive();
+					return new RacingRecord(entryItem.getPlayerName(), entryItem.getCarMilieage());
 				}).collect(Collectors.toList());
 	}
 
@@ -36,11 +38,11 @@ public class Entry {
 				.sorted(Comparator.reverseOrder())
 				.findFirst()
 				.orElseThrow(IllegalStateException::new)
-				.getMileage();
+				.getCarMilieage();
 
 		return items.stream()
-				.filter(car -> car.getMileage() >= longestMileage)
-				.map(car -> new RacingRecord(car.getDriverName(), car.getMileage()))
+				.filter(entryItem -> entryItem.getCarMilieage() >= longestMileage)
+				.map(entryItem -> new RacingRecord(entryItem.getPlayerName(), entryItem.getCarMilieage()))
 				.collect(Collectors.toList());
 	}
 }

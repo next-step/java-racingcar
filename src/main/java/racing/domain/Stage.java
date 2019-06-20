@@ -7,6 +7,7 @@ import racing.view.events.ChangedPlayerPositionEvent;
 import racing.view.events.FinishStageEvent;
 import racing.view.events.RacingEvent;
 import racing.view.events.StartedRacingEvent;
+import racing.vo.EntryItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class Stage {
 
 	private Stage(StageBuilder stageBuilder){
 
-		this.entry = new Entry(stageBuilder.cars);
+		this.entry = new Entry(stageBuilder.items);
 		this.remainingRound = stageBuilder.round;
 		this.monitorView = stageBuilder.monitorView;
 	}
@@ -82,7 +83,7 @@ public class Stage {
 
 		private int round;
 
-		private List<RacingCar> cars;
+		private List<EntryItem> items;
 
 		private RacingMonitorView monitorView;
 
@@ -90,20 +91,20 @@ public class Stage {
 
 			this.entrySize = entrySize;
 			this.round = round;
-			cars = new ArrayList<>();
+			items = new ArrayList<>();
 		}
 
 		public Stage build() {
 			return new Stage(this);
 		}
 
-		public void addToEntry(RacingCar racingCar) {
+		public void addToEntry(String name, RacingCar racingCar) {
 
-			if(cars.size() == entrySize){
+			if(items.size() == entrySize){
 				throw new OutOfEntryException();
 			}
 
-			cars.add(racingCar);
+			items.add(new EntryItem(name, racingCar));
 		}
 
 		public void view(RacingMonitorView watcher) {

@@ -2,7 +2,7 @@ package racing.domain;
 
 import racing.domain.accelerator.DriveAccelerator;
 
-public class RacingCar implements Comparable<RacingCar>{
+public class RacingCar {
 
 	public static int DEFAULT_THRESHOLD = 4;
 
@@ -11,25 +11,14 @@ public class RacingCar implements Comparable<RacingCar>{
 	 */
 	private int mileage = 0;
 
-	private String driverName;
-
 	DriveAccelerator accelerator;
 
 	public RacingCar(DriveAccelerator accelerator) {
-		this("anymous", accelerator);
-	}
-
-	public RacingCar(String driverName, DriveAccelerator accelerator) {
-		this.driverName = driverName;
 		this.accelerator = accelerator;
 	}
 
 	public int getMileage(){
 		return mileage;
-	}
-
-	public String getDriverName(){
-		return driverName;
 	}
 
 	/**
@@ -40,18 +29,5 @@ public class RacingCar implements Comparable<RacingCar>{
 		int delta = accelerator.getAmount() > DEFAULT_THRESHOLD ? 1 : 0;
 		this.mileage += delta;
 		return delta;
-	}
-
-	@Override
-	public int compareTo(RacingCar other) {
-		if(other == null){
-			return 1;
-		}
-
-		if(this.getMileage() == other.getMileage()){
-			return 0;
-		}
-
-		return (this.getMileage() > other.getMileage()) ? 1 : -1;
 	}
 }

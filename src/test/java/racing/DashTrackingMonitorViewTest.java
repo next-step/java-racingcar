@@ -53,9 +53,9 @@ class DashTrackingMonitorViewTest {
 		watcher.handle(new ChangedPlayerPositionEvent(records));
 
 		// Assertion
-		assertThat(messagesFromView.get(0)).isEqualTo("playerA : -");	// 0, 1 모두 대시("-") 1개 출력
-		assertThat(messagesFromView.get(1)).isEqualTo("playerB : -");
-		assertThat(messagesFromView.get(2)).isEqualTo("playerC : --");	// 2 이상은 개수만큼 출력
+		assertThat(messagesFromView.get(0)).isEqualTo("playerA:-");	// 0, 1 모두 대시("-") 1개 출력
+		assertThat(messagesFromView.get(1)).isEqualTo("playerB:-");
+		assertThat(messagesFromView.get(2)).isEqualTo("playerC:--");	// 2 이상은 개수만큼 출력
 		assertThat(messagesFromView.size()).isEqualTo(4); // 마지막 공백라인으로 플레이어 수 + 1 개 메세지 전달
 	}
 

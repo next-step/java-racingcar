@@ -28,7 +28,7 @@ class StageTest {
 		Stage.StageBuilder builder = Stage.builder(entrySize, round);
 
 		IntStream.range(0, entrySize)
-				.forEach((index) -> builder.addToEntry(new RacingCar("player" + index, new StaticAccelerator(5))));
+				.forEach((index) -> builder.addToEntry("player" + index, new RacingCar(new StaticAccelerator(5))));
 
 		// Action
 		Stage stage = builder.build();
@@ -52,8 +52,8 @@ class StageTest {
 
 		DriveAccelerator accelerator = new StaticAccelerator(acceleratorAmount);
 		Stage.StageBuilder builder = Stage.builder(2, roundLimit);
-		builder.addToEntry(new RacingCar("player1", accelerator));
-		builder.addToEntry(new RacingCar("player2", accelerator));
+		builder.addToEntry("player1", new RacingCar(accelerator));
+		builder.addToEntry("player2", new RacingCar(accelerator));
 
 		List<String> messageFormView = new ArrayList<>();
 		RacingMonitorView view = new DashTrackingMonitorView(message -> messageFormView.add(message));
