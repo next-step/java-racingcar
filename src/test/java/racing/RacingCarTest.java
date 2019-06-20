@@ -7,7 +7,7 @@ import racing.domain.accelerator.StaticAccelerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class ThresholdEngineCarTest {
+class RacingCarTest {
 
 	@Test
 	@DisplayName("가속페달을 기준보다 많이 밟을 경우 테스트")
