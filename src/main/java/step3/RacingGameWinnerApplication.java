@@ -1,27 +1,27 @@
 package step3;
 
-class RacingGameWithNameApplication {
+class RacingGameWinnerApplication {
 
     private InputView input;
 
-    protected RacingGameWithNameApplication() {
+    protected RacingGameWinnerApplication() {
         this.input = new InputView();
     }
 
     public static void main(String[] args) {
 
-        RacingGameWithNameApplication app = new RacingGameWithNameApplication();
+        RacingGameWinnerApplication app = new RacingGameWinnerApplication();
         int carNumber = app.input.inputCarNumber();
         int tryCount = app.input.inputTryCount();
 
-        RacingGameWithName racingGamewithName = new RacingGameWithName();
-        racingGamewithName.setInitPosition(carNumber);
+        RacingGameWinner racingGameWinner = new RacingGameWinner();
+        racingGameWinner.setInitPosition(carNumber);
 
         System.out.println("실행결과");
 
         while (tryCount-- > 0) {
-            racingGamewithName.startRacing(carNumber);
-            racingGamewithName.resultView();
+            racingGameWinner.startRacing(carNumber);
+            racingGameWinner.resultView();
         }
     }
 }
