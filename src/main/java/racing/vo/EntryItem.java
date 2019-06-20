@@ -2,13 +2,13 @@ package racing.vo;
 
 import racing.domain.RacingCar;
 
-public class EntrySlot {
+public class EntryItem {
 
     RacingCar car;
 
     String playerName;
 
-    public EntrySlot(String playerName, RacingCar car){
+    public EntryItem(String playerName, RacingCar car){
         this.playerName = playerName;
         this.car = car;
     }
