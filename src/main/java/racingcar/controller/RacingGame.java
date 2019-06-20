@@ -4,6 +4,7 @@ import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Referee;
+import racingcar.domain.Winners;
 
 public class RacingGame {
 
@@ -21,7 +22,7 @@ public class RacingGame {
     return cars.moveCars();
   }
 
-  public String announceWinners() {
+  public Winners announceWinners() {
     return Referee.announceWinners(cars);
   }
 }

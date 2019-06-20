@@ -6,19 +6,10 @@ import java.util.stream.Collectors;
 
 public class Referee {
 
-  public final static String WINNERS_DELIMITER = ",";
-
-  public static String announceWinners(Cars car) {
+  public static Winners announceWinners(Cars car) {
     List<Car> cars = car.getCars();
     int maxPosition = getMaxPosition(cars);
-    List<Car> winner = getWinner(maxPosition, cars);
-    return getWinnerName(winner);
-  }
-
-  private static List<Car> getWinner(int maxPosition, List<Car> cars) {
-    return cars.stream()
-        .filter(car -> car.isMyPosition(maxPosition))
-        .collect(Collectors.toList());
+    return winners(maxPosition, cars);
   }
 
   private static int getMaxPosition(List<Car> cars) {
@@ -28,9 +19,10 @@ public class Referee {
         .getPosition();
   }
 
-  private static String getWinnerName(List<Car> winner) {
-    return winner.stream().map(Car::getName)
-        .collect(Collectors.joining(WINNERS_DELIMITER));
+  private static Winners winners(int maxPosition, List<Car> cars) {
+    return new Winners(cars.stream()
+        .filter(car -> car.isMyPosition(maxPosition))
+        .collect(Collectors.toList()));
   }
 
 }

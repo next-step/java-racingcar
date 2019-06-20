@@ -15,7 +15,7 @@ public class RefereeTest {
 
     Cars cars = generateCars(car, car1, car2);
 
-    assertThat(Referee.announceWinners(cars)).contains("car3");
+    assertThat(Referee.announceWinners(cars)).isEqualTo(new Winners(Arrays.asList(car2)));
 
   }
 
@@ -27,7 +27,7 @@ public class RefereeTest {
 
     Cars cars = generateCars(car, car1, car2);
 
-    assertThat(Referee.announceWinners(cars)).contains("car2", "car3");
+    assertThat(Referee.announceWinners(cars)).isEqualTo(new Winners(Arrays.asList(car1, car2)));
 
   }
 
