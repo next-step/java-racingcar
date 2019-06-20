@@ -1,19 +1,41 @@
 package com.java.jaeheon.step2.view;
 
+import java.util.List;
+
 import com.java.jaeheon.step2.model.Car;
+import com.java.jaeheon.step2.model.RecordBoard;
 
 public class ResultView {
-    private static final String DISTANCE_SYMBOL = "-";
+	private static final String POSITION_SYMBOL = "-";
 
-    public static void resultViewDistanceByCar(Car cars) {
-        for (int i = 0; i < cars.getDistance(); i++) {
-            System.out.print(DISTANCE_SYMBOL);
-        }
-        toTheNextLine();
-    }
+	public static void resultViewRacing(RecordBoard recordBoard) {
+		changeNextLine();
+		System.out.println("실행 결과");
+		for (int attempts = 1; attempts <= recordBoard.getRecord().size(); attempts++) {
+			List<Car> cars = recordBoard.getRecord().get(attempts);
+			resultViewByCar(cars);
+			changeNextLine();
+		}
+		System.out.println(recordBoard.getWinner()+ "가 최종 우승했습니다.");
 
-    public static void toTheNextLine() {
-        System.out.println();
-    }
+	}
+
+	public static void resultViewByCar(List<Car> cars) {
+		for (Car car : cars) {
+			System.out.print(car.getNameOfCar() + " : ");
+			resultViewPositionByCar(car);
+			changeNextLine();
+		}
+	}
+
+	public static void resultViewPositionByCar(Car car) {
+		for (int i = 0; i < car.getPosition(); i++) {
+			System.out.print(POSITION_SYMBOL);
+		}
+	}
+
+	public static void changeNextLine() {
+		System.out.println();
+	}
 
 }

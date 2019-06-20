@@ -31,7 +31,7 @@ public class Car {
 		return numberOfAttempts;
 	}
 
-	public int getPosition() {
+	public Integer getPosition() {
 		return position;
 	}
 

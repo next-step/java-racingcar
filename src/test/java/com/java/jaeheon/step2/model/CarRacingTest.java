@@ -5,10 +5,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.java.jaeheon.step2.controller.CarController;
+import com.java.jaeheon.step2.controller.CarRaceController;
 
 public class CarRacingTest {
 	CarManagement carManagement;
+	CarRaceController carRaceController;
 
 	String namerOfCars;
 	int numberOfAttempts;
@@ -17,9 +18,9 @@ public class CarRacingTest {
 	void setup() {
 		namerOfCars = "pobi,crong,honux";
 		numberOfAttempts = 5;
-		carManagement = CarController.carRegister(namerOfCars);
+		carManagement = carRaceController.carRegister(namerOfCars);
 		CarRacing carRacing = new CarRacing(carManagement, numberOfAttempts);
-		carManagement = carRacing.carRacingStart();
+//		carManagement = carRacing.carRacingStart();
 	}
 
 	@Test
