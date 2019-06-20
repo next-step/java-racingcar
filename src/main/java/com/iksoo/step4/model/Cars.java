@@ -1,16 +1,13 @@
-package com.iksoo.step3;
+package com.iksoo.step4.model;
+
+import com.iksoo.step4.controller.CarMainController;
 
 import java.util.List;
-import java.util.Random;
 
-public class CarRacer {
-    private final int GOSTOP_CRITERION = 4;
+public class Cars {
     private final List<Car> cars;
 
-    private OutputRacingData outputRacingInfo = new OutputRacingData();
-    private Random random = new Random();
-
-    public CarRacer(List<Car> cars) {
+    public Cars(List<Car> cars) {
         this.cars = cars;
         startRacing(this.cars);
     }
@@ -22,17 +19,12 @@ public class CarRacer {
     public void startRacing(List<Car> cars) {
         for (int i = 0; i < cars.get(0).getTotalInning(); i++) {
             doOneInning(cars);
-            outputRacingInfo.printBlankLine();
         }
     }
 
     public void doOneInning(List<Car> cars) {
         for (int i = 0; i < cars.size(); i++) {
-            cars.get(i).addNextInning(getRandom(), GOSTOP_CRITERION);
+            cars.get(i).doRacing(CarMainController.getRandom());
         }
-    }
-
-    public int getRandom() {
-        return random.nextInt(10);
     }
 }
