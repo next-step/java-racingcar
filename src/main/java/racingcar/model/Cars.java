@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.util.drivingStrategy.DrivingStrategy;
+
 import java.util.List;
 
 public class Cars {
@@ -8,6 +10,10 @@ public class Cars {
 
     public Cars(final String[] names) {
         this.cars = CarFactory.generate(names);
+    }
+
+    public Cars(final String[] names, final DrivingStrategy strategy) {
+        this.cars = CarFactory.generate(names, strategy);
     }
 
     public List<Car> move() {
