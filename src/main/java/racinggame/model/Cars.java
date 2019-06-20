@@ -1,30 +1,45 @@
 package racinggame.model;
 
+import racinggame.util.RandomValueUtil;
+
 import java.util.List;
-import java.util.stream.IntStream;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
 public class Cars {
+
+  private static final String SEPARATOR = ",";
   private final List<Car> cars;
 
-
-  public Cars(int carCount) {
-    cars = IntStream.range(0, carCount)
-                    .mapToObj(i -> new Car())
-                    .collect(toList());
+  public Cars(String names) {
+    cars = Stream.of(names.split(SEPARATOR))
+                 .map(Car::new)
+                 .collect(toList());
   }
 
-  public void carsMove() {
-    cars.stream()
-        .filter(Car::isMove)
-        .forEach(Car::move);
+  public Cars moveCars() {
+    cars.forEach(car -> car.move(RandomValueUtil.getRandomValue()));
+    return this;
   }
 
-  public List<Integer> getCarsStatus() {
+  public List<Car> getCars() {
+    return cars;
+  }
+
+  public String getWinner(int max) {
     return cars.stream()
-               .map(Car::getStatus)
-               .collect(toList());
+               .filter(car -> car.getStatus() == max)
+               .map(Car::getName)
+               .collect(Collectors.joining(", "));
   }
 
+  public int getMax() {
+    return cars.stream()
+               .mapToInt(Car::getStatus)
+               .filter(car -> car >= 0)
+               .max()
+               .orElse(0);
+  }
 }

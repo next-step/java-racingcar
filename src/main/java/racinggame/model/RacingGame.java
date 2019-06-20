@@ -1,14 +1,34 @@
 package racinggame.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RacingGame {
-	private Cars cars;
+  private static final int RACING_START_VALUE = 1;
 
-	public RacingGame(int carCount) {
-		cars = new Cars(carCount);
-	}
+  private Cars cars;
+  private int time;
 
-	public Cars startGame() {
-		cars.carsMove();
-		return cars;
-	}
+  public RacingGame(String names, int time) {
+    cars = new Cars(names);
+    this.time = time;
+  }
+
+  public List<RacingInfo> startGame() {
+    List<RacingInfo> racingInfos = new ArrayList<>();
+
+    for (int i = RACING_START_VALUE; i <= time; i++) {
+      move().getCars()
+            .forEach(car -> racingInfos.add(new RacingInfo(car.getName(), car.getStatus())));
+    }
+    return racingInfos;
+  }
+
+  public String getWinner() {
+    return cars.getWinner(cars.getMax());
+  }
+
+  private Cars move() {
+    return cars.moveCars();
+  }
 }
