@@ -9,23 +9,28 @@ import com.java.jaeheon.step2.model.Car;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
-    Car car;
+	Car car;
 
-    @BeforeEach
-    void setup() {
-        this.car = new Car();
-    }
+	int numberOfAttempts;
+	int position;
 
-    @ParameterizedTest
-    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-    void moveAfterAttempt(int condition) {
-        assertThat(car.getDistance() - car.attempt(condition).getDistance()).isEqualTo(-1);
-    }
+	@BeforeEach
+	void setup() {
+		numberOfAttempts = 0;
+		position = 0;
+		this.car = new Car(numberOfAttempts, position);
+	}
 
-    @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3})
-    void stopAfterAttempt(int condition) {
-        assertThat(car.attempt(condition).getDistance() - car.getDistance()).isEqualTo(0);
-    }
+	@ParameterizedTest
+	@ValueSource(ints = { 4, 5, 6, 7, 8, 9 })
+	void moveAfterAttempt(int condition) {
+		assertThat(car.getPosition() + 1).isEqualTo(car.attemptsToMove(condition).getPosition());
+	}
+
+	@ParameterizedTest
+	@ValueSource(ints = { 0, 1, 2, 3 })
+	void stopAfterAttempt(int condition) {
+		assertThat(car.getPosition()).isEqualTo(car.attemptsToMove(condition).getPosition());
+	}
 
 }

@@ -1,34 +1,20 @@
 package com.java.jaeheon.step2.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CarManagement {
-    private final List<Car> cars;
+	private final List<Car> cars;
 
-    public CarManagement() {
-        this.cars = new ArrayList<>();
-    }
+	public CarManagement(List<Car> cars) {
+		this.cars = cars;
+	}
 
-    public List<Car> Cars() {
-        return cars;
-    }
+	public List<Car> getCarsList() {
+		return cars;
+	}
 
-    public CarManagement register() {
-        Car car = new Car();
-        cars.add(car);
-        return this;
-    }
-
-    public CarManagement registerByNumber(int numberOfCars) {
-        for (int i = 0; i < numberOfCars; i++) {
-            register();
-        }
-        return this;
-    }
-
-    public long numberOfRegisteredCars() {
-        return cars.stream().count();
-    }
+	public long getCarsSize() {
+		return cars.size();
+	}
 
 }
