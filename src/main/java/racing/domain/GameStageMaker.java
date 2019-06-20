@@ -11,7 +11,7 @@ public class GameStageMaker {
 		Stage.StageBuilder builder = Stage.builder(option.getEntrySize(), option.getRoundLimit());
 
 		for(int i = 0; i < option.getEntrySize(); i++) {
-			builder.addToEntry(option.getPlayerName(i), new RacingCar(new RandomAccelerator()));
+			builder.addToEntry(new RacingCar(option.getPlayerName(i), new RandomAccelerator()));
 		}
 
 		builder.view(view);
