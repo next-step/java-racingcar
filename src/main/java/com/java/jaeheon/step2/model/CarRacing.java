@@ -1,40 +1,42 @@
 package com.java.jaeheon.step2.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import com.java.jaeheon.step2.view.ResultView;
 
 public class CarRacing {
-    private static final int CONDITION_LIMIT = 10;
+	private static final int CONDITION_LIMIT = 10;
 
-    private final CarManagement carManagement;
-    private final int numberOfAttempts;
-    private final Random random;
+	private final int numberOfAttempts;
+	private final Random random;
+	private CarManagement carManagement;
 
-    public CarRacing(CarManagement carManagement, int numberOfAttempts) {
-        this.carManagement = carManagement;
-        this.numberOfAttempts = numberOfAttempts;
-        this.random = new Random();
-    }
+	public CarRacing(CarManagement carManagement, int numberOfAttempts) {
+		this.carManagement = carManagement;
+		this.numberOfAttempts = numberOfAttempts;
+		this.random = new Random();
+	}
 
-    public void carRacingStart() {
-        System.out.println("실행 결과");
-        for (int i = 0; i < numberOfAttempts; i++) {
-            race();
-            ResultView.toTheNextLine();
-        }
-    }
+	public CarManagement carRacingStart() {
+		for (int i = 0; i < numberOfAttempts; i++) {
+			carManagement = race();
+			ResultView.toTheNextLine();
+		}
+		return carManagement;
+	}
 
-    private List<Car> race() {
-        for (Car car : carManagement.Cars()) {
-            car.attempt(createCondition());
-            ResultView.resultViewDistanceByCar(car);
-        }
-        return carManagement.Cars();
-    }
+	private CarManagement race() {
+		List<Car> cars = new ArrayList<>();
+		for (Car car : carManagement.getCarsList()) {
+			cars.add(car.attemptsToMove(createCondition()));
+			ResultView.resultViewDistanceByCar(car);
+		}
+		return new CarManagement(cars);
+	}
 
-    private int createCondition() {
-        return random.nextInt(CONDITION_LIMIT);
-    }
+	private int createCondition() {
+		return random.nextInt(CONDITION_LIMIT);
+	}
 }
