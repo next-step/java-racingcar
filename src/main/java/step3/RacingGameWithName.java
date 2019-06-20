@@ -2,7 +2,7 @@ package step3;
 
 import java.util.Random;
 
-public class RacingGame {
+class RacingGameWithName {
 
     private static final int STRAIGHT = 4;
     private static final int GO = 1;
