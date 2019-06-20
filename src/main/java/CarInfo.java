@@ -3,13 +3,27 @@ public class CarInfo {
     private int carPosition;
     private String carStatus;
 
-    public int getCarPosition(){return carPosition;}
-    public String getCarStatus(){return carStatus;}
-    public String getCarName() {return  carName;}
-
-    public void setCarName(String carName ){
+    CarInfo(String carName){
         this.carName = carName;
     }
-    public void setCarPositions(int carPosition) {this.carPosition = carPosition; }
-    public void setCarStatus(String carStatus) {this.carStatus = carStatus;}
+
+    public int getCarPosition() {
+        return carPosition;
+    }
+
+    public String getCarStatus() {
+        return carStatus;
+    }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public void setCarPositions(int carPosition) {
+        this.carPosition = carPosition;
+    }
+
+    public void setCarStatus(String carStatus) {
+        this.carStatus = carStatus;
+    }
 }
