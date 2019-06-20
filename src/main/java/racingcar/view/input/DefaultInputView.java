@@ -1,37 +1,27 @@
 package racingcar.view.input;
 
+import java.util.List;
+
 public class DefaultInputView implements InputView {
 
-    private static final Integer MAX_NUMBER = 100;
-    private static final String MESSAGE_NUMBER_OF_CARS = "자동차 대수는 몇 대 인가요?";
+    private static final String MESSAGE_LIST_OF_CARS = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String MESSAGE_NUMBER_OF_TIMES = "시도할 회수는 몇 회 인가요?";
 
-    private final NumberInputReader numberInputReader;
+    private final CommandLineReader commandLineReader;
 
-    public DefaultInputView(NumberInputReader numberInputReader) {
-        this.numberInputReader = numberInputReader;
+    public DefaultInputView(CommandLineReader commandLineReader) {
+        this.commandLineReader = commandLineReader;
     }
 
     @Override
-    public Integer getNumberOfCars() {
-        return checkInput(getInput(MESSAGE_NUMBER_OF_CARS));
+    public List<String> getCarNames() {
+        System.out.println(MESSAGE_LIST_OF_CARS);
+        return commandLineReader.getCsv();
     }
 
     @Override
     public Integer getNumberOfTimes() {
-        return checkInput(getInput(MESSAGE_NUMBER_OF_TIMES));
-    }
-
-    private Integer getInput(String message) {
-        System.out.println(message);
-        return numberInputReader.get();
-    }
-
-    private Integer checkInput(Integer num) {
-        if (num == null || num < 0 || num > MAX_NUMBER) {
-            throw new IllegalArgumentException("Invalid input");
-        }
-
-        return num;
+        System.out.println(MESSAGE_NUMBER_OF_TIMES);
+        return commandLineReader.getNumber();
     }
 }
