@@ -4,7 +4,6 @@ import racing.io.InputView;
 import racing.io.OutputView;
 import racing.model.CarFactory;
 import racing.model.RacingGame;
-import racing.model.Winner;
 
 public class RacingApplication {
 

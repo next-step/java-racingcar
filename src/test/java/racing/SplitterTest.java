@@ -2,7 +2,7 @@ package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.model.Splitter;
+import racing.util.Splitter;
 
 import java.util.List;
 

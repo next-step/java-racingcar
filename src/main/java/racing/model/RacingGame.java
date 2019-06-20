@@ -14,7 +14,6 @@ public class RacingGame {
         return new RacingGame(cars);
     }
 
-
     public void run() {
         movingCars();
     }

@@ -1,6 +1,6 @@
 package racing.io;
 
-import racing.model.Splitter;
+import racing.util.Splitter;
 
 import java.util.List;
 import java.util.Scanner;
