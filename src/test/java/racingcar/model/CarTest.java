@@ -19,15 +19,12 @@ public class CarTest {
   @Test
   @DisplayName("InitialPosition은 1이다")
   void initialPosition() {
-
     assertThat(car.getInitialPosition()).isEqualTo(1);
-
   }
 
   @Test
   @DisplayName("move() 메소드")
   void move() {
-
     assertThat(car.getPosition()).isEqualTo(1);
 
     car.move();
@@ -38,13 +35,11 @@ public class CarTest {
 
     car.move();
     assertThat(car.getPosition()).isEqualTo(4);
-
   }
 
   @Test
   @DisplayName("reset() 메소드")
   void reset() {
-
     assertThat(car.getPosition()).isEqualTo(1);
 
     car.move();
