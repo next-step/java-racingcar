@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import racing.util.MessagePrinter;
 import racing.view.DashTrackingMonitorView;
 import racing.view.events.ChangedPlayerPositionEvent;
+import racing.view.events.FinishStageEvent;
 import racing.view.events.StartedRacingEvent;
 import racing.vo.RacingRecord;
 
@@ -57,4 +58,26 @@ class DashTrackingMonitorViewTest {
 		assertThat(messagesFromView.get(2)).isEqualTo("playerC:--");	// 2 이상은 개수만큼 출력
 		assertThat(messagesFromView.size()).isEqualTo(4); // 마지막 공백라인으로 플레이어 수 + 1 개 메세지 전달
 	}
+
+	@Test
+	@DisplayName("게임종료 이벤트 핸들링 테스트")
+	void finishStageEventHandling(){
+
+		// Arrange
+		List<String> messagesFromView = new ArrayList<>();
+		DashTrackingMonitorView watcher = new DashTrackingMonitorView((message) -> {
+			messagesFromView.add(message);
+		});
+
+		List<RacingRecord> records = new ArrayList<>();
+		records.add(new RacingRecord("playerA", 5));	// position 은 사용하지 않기 때문에 의미 없음
+
+		// Action
+		watcher.handle(new FinishStageEvent(records));
+
+		// Assertion
+		assertThat(messagesFromView.get(0)).isEqualTo("playerA가 최종 우승했습니다.");
+	}
+
+
 }
