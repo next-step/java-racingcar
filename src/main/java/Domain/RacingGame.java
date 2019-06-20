@@ -1,8 +1,10 @@
-import Domain.CarInfo;
+package Domain;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import View.*;
 
 public class RacingGame {
     public static final int MAX_RANDOM_NUMBER = 10;
@@ -10,10 +12,10 @@ public class RacingGame {
 
     private int timeOfGame; // 자동차 경주 횟수
 
-    RacingGame() {
+    public RacingGame() {
     }
 
-    RacingGame(int timeOfGame) {
+    public RacingGame(int timeOfGame) {
         this.timeOfGame = timeOfGame;
     }
 

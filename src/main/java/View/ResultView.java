@@ -1,3 +1,5 @@
+package View;
+
 import Domain.CarInfo;
 
 public class ResultView {

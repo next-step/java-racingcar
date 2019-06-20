@@ -1,9 +1,11 @@
+package Domain;
+
 public class CarInfo {
     private String carName;
     private int carPosition;
     private String carStatus;
 
-    CarInfo(String carName){
+    public CarInfo(String carName) {
         this.carName = carName;
     }
 
