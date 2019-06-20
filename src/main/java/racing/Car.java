@@ -17,7 +17,7 @@ public class Car {
         }
     }
 
-    public void go() {
+    private void go() {
         position++;
     }
 
@@ -38,4 +38,3 @@ public class Car {
         return position;
     }
 }
-

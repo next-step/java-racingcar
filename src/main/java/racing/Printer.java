@@ -9,8 +9,8 @@ public class Printer {
         print("\n실행 결과");
     }
 
-    static public void printResult(List<Car> cars) {
-        for (Car car : cars) {
+    static public void printResult(Cars cars) {
+        for (Car car : cars.toList()) {
             print(car.getName() + " : " + car.getMovesRoad());
         }
 

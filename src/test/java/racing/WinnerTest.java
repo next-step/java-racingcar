@@ -2,6 +2,7 @@ package racing;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racing.strategy.DrivingMoveStrategy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,29 +15,30 @@ public class WinnerTest {
     private String INPUT_CAR_NAME_COMPARED = "car_compared";
 
     private WinnerMaker winnerMaker;
-    private Car mCar;
-    private Car mCompared;
-    private List<Car> cars;
+    private List<String> carNames;
+    private Cars mCars;
 
     @BeforeEach
     void setUp() {
-        mCar        = new Car(INPUT_CAR_NAME);
-        mCompared   = new Car(INPUT_CAR_NAME_COMPARED);
+        carNames = Arrays.asList(INPUT_CAR_NAME, INPUT_CAR_NAME_COMPARED);
+        mCars = new Cars(carNames);
 
-        cars = Arrays.asList(mCompared, mCar);
-
-        winnerMaker = new WinnerMaker(cars);
+        winnerMaker = new WinnerMaker(mCars);
     }
 
     @Test
     void winner() {
-        mCompared.go();
+        Car target = mCars.getCar(0);
+        target.goOrNot(new DrivingMoveStrategy());
 
-        assertThat(new WinnerMaker(cars).getWinners()).containsExactly(mCompared);
+        assertThat(winnerMaker.getWinners()).containsExactly(target);
     }
 
     @Test
     void winners_두명이상() {
-        assertThat(new WinnerMaker(cars).getWinners()).contains(mCar, mCompared);
+        Car target = mCars.getCar(1);
+        Car anotherTarget = mCars.getCar(1);
+
+        assertThat(winnerMaker.getWinners()).contains(target, anotherTarget);
     }
 }

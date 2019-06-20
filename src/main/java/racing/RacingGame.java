@@ -1,15 +1,17 @@
 package racing;
 
 import java.util.*;
+import java.util.stream.Collectors;
+
 import racing.strategy.*;
 
 public class RacingGame {
-    private List<Car> cars;
+    private Cars cars;
     private int moves;
 
     public RacingGame(List<String> carNames, int numOfMoves) {
-        setCars(carNames);
-        setMoves(numOfMoves);
+        this.cars = new Cars(carNames);
+        this.moves = numOfMoves;
     }
 
     public void startRacing() {
@@ -23,27 +25,13 @@ public class RacingGame {
     }
 
     private void move() {
-        for (Car car : cars) {
-            car.goOrNot(new DrivingRandomStrategy());
-        }
+        cars.go(new DrivingRandomStrategy());
 
         Printer.printResult(cars);
     }
 
-    private void setCars(List<String> carNames) {
-        cars = new ArrayList<>(carNames.size());
-
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
-    }
-
     public int getNumOfCars() {
         return cars.size();
-    }
-
-    private void setMoves(int numOfMoves) {
-        this.moves = numOfMoves;
     }
 
     public int getNumOfMove() {
