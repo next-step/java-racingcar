@@ -8,12 +8,12 @@ import com.java.jaeheon.step2.model.CarManagement;
 
 public class CarController {
 
-	public static CarManagement carRegister(int numberOfCars) {
+	public static CarManagement carRegister(String nameOfCars) {
+		String[] nameOfCarsArray = nameOfCars.split(",");
 		List<Car> cars = new ArrayList<>();
-		for (int i = 0; i < numberOfCars; i++) {
-			cars.add(new Car());
+		for (String nameOfCar : nameOfCarsArray) {
+			cars.add(new Car(nameOfCar));
 		}
 		return new CarManagement(cars);
 	}
-
 }

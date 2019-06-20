@@ -10,14 +10,14 @@ import com.java.jaeheon.step2.controller.CarController;
 public class CarRacingTest {
 	CarManagement carManagement;
 
-	int numberOfCars;
+	String namerOfCars;
 	int numberOfAttempts;
 
 	@BeforeEach
 	void setup() {
-		numberOfCars = 3;
+		namerOfCars = "pobi,crong,honux";
 		numberOfAttempts = 5;
-		carManagement = CarController.carRegister(numberOfCars);
+		carManagement = CarController.carRegister(namerOfCars);
 		CarRacing carRacing = new CarRacing(carManagement, numberOfAttempts);
 		carManagement = carRacing.carRacingStart();
 	}

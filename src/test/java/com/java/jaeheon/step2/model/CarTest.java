@@ -11,14 +11,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarTest {
 	Car car;
 
-	int numberOfAttempts;
-	int position;
-
 	@BeforeEach
 	void setup() {
-		numberOfAttempts = 0;
-		position = 0;
-		this.car = new Car(numberOfAttempts, position);
+		String nameOfCar = "testCar";
+		this.car = new Car(nameOfCar);
 	}
 
 	@ParameterizedTest

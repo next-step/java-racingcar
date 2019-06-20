@@ -9,10 +9,10 @@ public class RacingGame {
 
     public static void main(String[] args) {
 
-        int numberOfCars = InputView.inputViewNumberOfCars();
+        String nameOfCars = InputView.inputViewNameOfCars();
         int numberOfAttempts = InputView.inputViewNumberOfAttempts();
 
-        CarManagement carManagement = CarController.carRegister(numberOfCars);
+        CarManagement carManagement = CarController.carRegister(nameOfCars);
 
         CarRacing carRacing = new CarRacing(carManagement, numberOfAttempts);
         carRacing.carRacingStart();
