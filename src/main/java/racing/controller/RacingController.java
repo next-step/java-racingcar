@@ -14,8 +14,6 @@ public class RacingController {
     }
     
     public void processGame() {
-        racingManager.startGame();
-        resultView.printMovingStatus(racingManager.getMovingHistory());
-        resultView.printWinners(racingManager.getWinnerNames());
+        resultView.printResult(racingManager.startGame());
     }
 }

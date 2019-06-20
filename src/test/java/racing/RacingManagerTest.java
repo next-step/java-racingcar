@@ -24,14 +24,12 @@ class RacingManagerTest {
     
     @Test
     void startGameTest() {
-        manager.startGame();
-        Assertions.assertThat(manager.getMovingHistory().size() > COUNT_ZERO).isTrue();
+        Assertions.assertThat(manager.startGame().getMovingHistory().getMovingHistory().size() > COUNT_ZERO).isTrue();
     }
     
     @Test
     void getMovingHistoryTest() {
-        manager.startGame();
-        Assertions.assertThat(manager.getMovingHistory().size()).isEqualTo(TestData.DEFAULT_TIME);
+        Assertions.assertThat(manager.startGame().getMovingHistory().getMovingHistory().size()).isEqualTo(TestData.DEFAULT_TIME);
     }
     
     @Test

@@ -1,5 +1,6 @@
 package racing.domain;
 
+import racing.common.ErrorMessage;
 import racing.common.NumberGenerator;
 import racing.common.RacingSettings;
 
@@ -12,7 +13,6 @@ public class Cars {
     private final static int LEADER_INDEX = 0;
     private NumberGenerator movableNumberGenerator;
     private List<Car> cars;
-    
     
     private Cars(Builder builder) {
         cars = builder.cars;
@@ -41,7 +41,7 @@ public class Cars {
         return cars.stream()
             .map(Car::getName)
             .reduce((name1, name2) -> name1 += RacingSettings.CAR_NAME_SEPARATOR.getStr() + name2)
-            .get();
+            .orElseThrow(() -> new NullPointerException(ErrorMessage.HAVE_NO_CAR.getMessage()));
     }
     
     public List<Car> getCars() {

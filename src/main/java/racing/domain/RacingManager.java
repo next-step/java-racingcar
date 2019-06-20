@@ -6,7 +6,6 @@ import racing.common.RacingValidator;
 import racing.common.RandomNumberGenerator;
 import racing.vo.GameMakingInfo;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,7 +14,7 @@ import java.util.stream.IntStream;
 public class RacingManager {
     private final static int START_TIME = 0;
     private final static int MAX_RANDOM_NUMBER = 9;
-    private List<Cars> movingHistory;
+    private MovingHistory movingHistory;
     private Cars cars;
     private final int time;
     
@@ -24,7 +23,7 @@ public class RacingManager {
         this.cars = new Cars.Builder(makeCarsAt(gameMakingInfo.getCarNames()))
           .generator(new RandomNumberGenerator(MAX_RANDOM_NUMBER)).build();
         time = gameMakingInfo.getTime();
-        movingHistory = new ArrayList<>();
+        movingHistory = new MovingHistory();
     }
     
     private static List<Car> makeCarsAt(final String carNames) {
@@ -46,15 +45,12 @@ public class RacingManager {
         return cars.getWinner().getCarNames();
     }
     
-    public void startGame() {
+    public RacingResult startGame() {
         IntStream.range(START_TIME, time).forEach(i -> {
             cars.moveCars();
-            movingHistory.add(cars.getCopiedCars());
+            movingHistory.addHistory(cars.getCopiedCars());
         });
-    }
-    
-    public List<Cars> getMovingHistory() {
-        return movingHistory;
+        return new RacingResult(movingHistory, cars.getWinner().getCarNames());
     }
     
     public void setCars(Cars cars) {
