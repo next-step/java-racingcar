@@ -8,6 +8,7 @@ import racing.domain.RacingManager;
 import racing.vo.GameMakingInfo;
 
 class RacingManagerTest {
+    private static final int COUNT_ZERO = 0;
     private RacingManager manager;
     
     @BeforeEach
@@ -16,11 +17,15 @@ class RacingManagerTest {
     }
     
     @Test
-    void getWinnersTest() {
+    void getWinnerNamesTest() {
         manager.setCars(TestData.GAME_ENDED_CARS);
-        String winners = manager.getWinnerNames();
-        
-        Assertions.assertThat(winners).isEqualTo(TestData.WINNER_NAMES);
+        Assertions.assertThat(manager.getWinnerNames()).isEqualTo(TestData.WINNER_NAMES);
+    }
+    
+    @Test
+    void startGameTest() {
+        manager.startGame();
+        Assertions.assertThat(manager.getMovingHistory().size() > COUNT_ZERO).isTrue();
     }
     
     @Test
