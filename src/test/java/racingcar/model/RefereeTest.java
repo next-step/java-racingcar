@@ -1,32 +1,26 @@
-package racingcar.util.referee;
+package racingcar.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.Car;
 import racingcar.util.drivingStrategy.DrivingStrategy;
 import racingcar.util.drivingStrategy.MockDrivingStrategy;
-import racingcar.util.refree.Referee;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 public class RefereeTest {
 
-    private List<Car> cars;
+    private Cars cars;
 
     @BeforeEach
     void setUp() {
-
         DrivingStrategy strategy = MockDrivingStrategy.getInstance();
 
-        Car car1 = new Car("pobi", strategy);
-        Car car2 = new Car("tobi", strategy);
-        Car car3 = new Car("sobi", strategy);
-
-        cars = Arrays.asList(car1, car2, car3);
+        String[] names = {"pobi", "tobi", "sobi"};
+        cars = new Cars(names, strategy);
+        cars.resetPosition();
     }
 
     @Test
@@ -34,22 +28,24 @@ public class RefereeTest {
     void max() {
         assertThat(Referee.max(cars)).isEqualTo(1);
 
-        cars.get(0).move();
+        cars.move();
         assertThat(Referee.max(cars)).isEqualTo(2);
 
-        cars.get(0).move();
+        cars.move();
         assertThat(Referee.max(cars)).isEqualTo(3);
     }
 
     @Test
     @DisplayName("Car들 중에서 Winner를 찾는다.")
     void getWinnerFrom() {
-        cars.get(0).move();
-        cars.get(0).move();
+        List<Car> carList = cars.getCars();
+        Car pobi = carList.get(0);
+        Car tobi = carList.get(1);
+
+        pobi.move();
         assertThat(Referee.getWinnerFrom(cars)).isEqualTo("pobi");
 
-        cars.get(1).move();
-        cars.get(1).move();
+        tobi.move();
         assertThat(Referee.getWinnerFrom(cars)).isEqualTo("pobi, tobi");
     }
 

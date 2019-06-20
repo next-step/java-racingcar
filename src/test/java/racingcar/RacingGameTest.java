@@ -8,53 +8,48 @@ import racingcar.model.Car;
 import racingcar.util.drivingStrategy.DrivingStrategy;
 import racingcar.util.drivingStrategy.MockDrivingStrategy;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
-import static java.util.stream.Collectors.joining;
+
+import static org.assertj.core.api.Java6Assertions.assertThat;
 
 public class RacingGameTest {
 
-  private DrivingStrategy drivingStrategy;
+  private RacingGame racingGame;
 
   @BeforeEach
   void setUp() {
-    drivingStrategy = MockDrivingStrategy.getInstance();
+    DrivingStrategy drivingStrategy = MockDrivingStrategy.getInstance();
+    String[] names = {"car1", "car2", "car3"};
+    racingGame = new RacingGame(names, drivingStrategy);
   }
 
   @Test
-  @DisplayName("console에 '--' 가 표시된다")
-  void test() {
+  @DisplayName("race() 메소드 한번에 position이 1씩 증가")
+  void race() {
+    List<Car> racingCars = racingGame.race();
+    assertThat(racingCars.get(0).getPosition()).isEqualTo(2);
+    assertThat(racingCars.get(1).getPosition()).isEqualTo(2);
+    assertThat(racingCars.get(2).getPosition()).isEqualTo(2);
 
-    String currentPosition = IntStream.rangeClosed(0, 1)
-            .mapToObj(pos -> "-")
-            .collect(joining());
+    racingCars = racingGame.race();
+    assertThat(racingCars.get(0).getPosition()).isEqualTo(3);
+    assertThat(racingCars.get(1).getPosition()).isEqualTo(3);
+    assertThat(racingCars.get(2).getPosition()).isEqualTo(3);
 
-    System.out.println(currentPosition);
+    racingCars = racingGame.race();
+    assertThat(racingCars.get(0).getPosition()).isEqualTo(4);
+    assertThat(racingCars.get(1).getPosition()).isEqualTo(4);
+    assertThat(racingCars.get(2).getPosition()).isEqualTo(4);
   }
 
   @Test
-  @DisplayName("총 3라운드 진행, 1라운드에 '--' 3줄, 2라운드에 '---' 3줄, 3라운드에 '----' 3줄 표시된다")
-  void printRacingStatus() {
+  @DisplayName("우승자 이름을 String[] 으로 Return")
+  void awards() {
+    List<Car> racingCars = racingGame.race();
+    assertThat(racingCars.get(0).getPosition()).isEqualTo(2);
+    assertThat(racingCars.get(1).getPosition()).isEqualTo(2);
+    assertThat(racingCars.get(2).getPosition()).isEqualTo(2);
 
-    int rounds = 3;
-    List<Car> cars = Arrays.asList(
-            new Car("car1", drivingStrategy),
-            new Car("car2", drivingStrategy),
-            new Car("car3", drivingStrategy));
-
-    RacingGame.printRacingStatus(rounds, cars);
-
-  }
-
-  @Test
-  @DisplayName("console에 '--' 3줄이 표시된다")
-  void drive() {
-    List<Car> cars = Arrays.asList(
-            new Car("car1", drivingStrategy),
-            new Car("car2", drivingStrategy),
-            new Car("car3", drivingStrategy));
-
-    RacingGame.drive(cars);
+    assertThat(racingGame.awards()).contains("car1", "car2", "car3");
   }
 }

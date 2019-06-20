@@ -1,46 +1,29 @@
 package racingcar;
 
 import racingcar.model.Car;
-import racingcar.model.CarFactory;
-import racingcar.view.InputView;
-import racingcar.view.ResultView;
+import racingcar.model.Cars;
+import racingcar.model.Referee;
+import racingcar.util.drivingStrategy.DrivingStrategy;
 
 import java.util.List;
 
 public class RacingGame {
 
-  private InputView inputView;
+  private Cars cars;
 
-  public RacingGame() {
-    this.inputView = new InputView();;
+  public RacingGame(final String[] names) {
+    this.cars = new Cars(names);
   }
 
-  public void startRacing() {
-    // client에게 최초 질문
-    inputView.askQuestions();
-
-    String[] names = inputView.getNames();
-    int rounds = inputView.getRounds();
-
-    // name을 가진 Car 생성
-    List<Car> cars = CarFactory.generate(names);
-    printRacingStatus(rounds, cars);
+  public RacingGame(final String[] names, final DrivingStrategy strategy) {
+    this.cars = new Cars(names, strategy);
   }
 
-  static void printRacingStatus(int rounds, List<Car> cars) {
-    for(int round = 1; round <= rounds; round++) {
-      ResultView.printCurrentRound(round);
-      drive(cars);
-      ResultView.addLineBreak();
-    }
-
-    ResultView.printWinner(cars);
+  public List<Car> race() {
+    return this.cars.move();
   }
 
-  static void drive(List<Car> cars) {
-    cars.forEach(car -> {
-      car.move();
-      ResultView.printCurrentPositionOf(car);
-    });
+  public String awards() {
+    return Referee.getWinnerFrom(cars);
   }
 }
