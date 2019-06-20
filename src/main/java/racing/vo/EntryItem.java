@@ -2,7 +2,7 @@ package racing.vo;
 
 import racing.domain.RacingCar;
 
-public class EntryItem {
+public class EntryItem implements Comparable<EntryItem>{
 
     RacingCar car;
 
@@ -24,4 +24,18 @@ public class EntryItem {
     public String getPlayerName(){
         return playerName;
     }
+
+    @Override
+    public int compareTo(EntryItem other) {
+        if(other == null){
+            return 1;
+        }
+
+        if(this.car.getMileage() == other.car.getMileage()){
+            return 0;
+        }
+
+        return (this.car.getMileage() > other.car.getMileage()) ? 1 : -1;
+    }
+
 }

@@ -1,10 +1,10 @@
 package racing.vo;
 
-public class RacingRecord {
+public class RacingRecord{
 
-    int position;
+    private int position;
 
-    String playerName;
+    private String playerName;
 
     public RacingRecord(String playerName, int position){
         this.playerName = playerName;

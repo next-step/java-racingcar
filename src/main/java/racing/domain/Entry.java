@@ -4,6 +4,7 @@ import racing.vo.EntryItem;
 import racing.vo.RacingRecord;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,7 +33,16 @@ public class Entry {
 	}
 
 	public List<RacingRecord> getWinners() {
-		EntryItem item = items.get(0);
-		return Collections.singletonList(new RacingRecord(item.getPlayerName(), item.getCarMilieage()));
+
+		int longestMileage = items.stream()
+				.sorted(Comparator.reverseOrder())
+				.findFirst()
+				.orElseThrow(IllegalStateException::new)
+				.getCarMilieage();
+
+		return items.stream()
+				.filter(entryItem -> entryItem.getCarMilieage() >= longestMileage)
+				.map(entryItem -> new RacingRecord(entryItem.getPlayerName(), entryItem.getCarMilieage()))
+				.collect(Collectors.toList());
 	}
 }
