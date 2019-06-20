@@ -2,10 +2,13 @@ package racing.view;
 
 import racing.util.MessagePrinter;
 import racing.view.events.ChangedPlayerPositionEvent;
+import racing.view.events.FinishStageEvent;
 import racing.view.events.StartedRacingEvent;
 import racing.vo.RacingRecord;
 
+import java.time.YearMonth;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * RacingEvent를 전달받아 이벤트 형식에 맞는 방식/내용을 MessagePrinter를 통해 출력
@@ -17,7 +20,12 @@ public class DashTrackingMonitorView extends RacingMonitorView {
 
 	private static final String NAME_SEPARATOR = " : ";
 
+	private static final String NAME_JOIN_SEPARATOR = ", ";
+
+	private static final String RESULT_MESSAGE = "%s가 최종 우승했습니다.";
+
 	public static final String EMPTY_NEW_LINE = " ";
+
 
 	private MessagePrinter printer;
 
@@ -52,6 +60,22 @@ public class DashTrackingMonitorView extends RacingMonitorView {
 		// 라운드 업데이트 후 공백라인 출력
 		printer.printMessage(EMPTY_NEW_LINE);
 	}
+
+	/**
+	 *
+	 * @param event
+	 */
+	private void handle(FinishStageEvent event){
+
+		List<RacingRecord> winners = event.getWinners();
+
+		String winnerNames = winners.stream()
+				.map(record -> record.getPlayerName())
+				.collect(Collectors.joining(NAME_JOIN_SEPARATOR));
+
+		printer.printMessage(String.format(RESULT_MESSAGE, winnerNames));
+	}
+
 
 	private String renderPosition(RacingRecord record) {
 		StringBuilder result = new StringBuilder(record.getPlayerName());

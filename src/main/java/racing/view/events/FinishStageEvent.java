@@ -12,7 +12,7 @@ public class FinishStageEvent implements RacingEvent{
 		this.winners = winners;
 	}
 
-	public List<RacingRecord> getPositions(){
+	public List<RacingRecord> getWinners(){
 		return winners;
 	}
 
