@@ -8,4 +8,8 @@ public class ResultView {
         System.out.println(carInfo.getCarName() + ": " + carInfo.getCarStatus());
     }
 
+    public static void disPlayRaceWinner(String winnerNames) {
+        winnerNames = winnerNames.substring(0, winnerNames.length() - 1);
+        System.out.print(winnerNames + "가 최종 우승했습니다.");
+    }
 }
