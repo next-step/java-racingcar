@@ -22,9 +22,28 @@ public class CarsTest {
     assertThat(cars.getCars()).hasSize(2);
   }
 
-  @DisplayName("우승자 테스트")
+  @DisplayName("우승자 테스트 - 우승자가 1명")
   @Test
   void getWinner() {
-    assertThat(cars.getWinner()).isNotBlank().isNotEmpty();
+
+    cars.getCars().get(0).move(4);
+    cars.getCars().get(1).move(1);
+
+    assertThat(this.cars.getWinner(cars.getMax()))
+        .isNotBlank()
+        .isEqualTo("test1");
+  }
+
+  @DisplayName("우승자 테스트 - 우승자가 2명")
+  @Test
+  void getWinners() {
+    cars = new Cars("test1, test2, test3");
+
+    cars.getCars().get(0).move(5);
+    cars.getCars().get(1).move(2);
+    cars.getCars().get(2).move(7);
+
+    assertThat(this.cars.getWinner(cars.getMax()))
+        .isEqualTo("test1, test3");
   }
 }
