@@ -18,7 +18,6 @@ import java.util.stream.Collectors;
  */
 public class Cars {
 
-    private static final int MOVE_LIMIT_COUNT_FLAG = 4;
     private List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -26,10 +25,9 @@ public class Cars {
     }
 
     public Cars goForward() {
-        this.cars = this.cars.stream()
-                .peek(car -> doMoveCheck(car))
-                .collect(Collectors.toList());
-
+        for (Car car : cars) {
+            car.move(NumberUtils.getRandomNumber());
+        }
         return new Cars(this.cars);
     }
 
@@ -39,7 +37,7 @@ public class Cars {
 
     public Car getCarInformation(int carNumber) {
         return this.cars.stream()
-                .filter(car -> car.getCarNumber() == carNumber)
+                .filter(car -> car.getCarNumber(carNumber))
                 .findFirst()
                 .get();
     }
@@ -54,33 +52,16 @@ public class Cars {
     }
 
     public Cars getWinnerPlayer(int winScore) {
-        List<Car> tempCars = getWinners(winScore);
+        List<Car> winners = this.cars.stream()
+                .filter(car -> car.compareWinScore(car, winScore))
+                .collect(Collectors.toList());
 
-        return new Cars(tempCars);
+        return new Cars(winners);
     }
 
-    public List<String> getWinnerName(int winScore) {
-        return getWinners(winScore).stream()
+    public List<String> getWinnerName() {
+        return this.cars.stream()
                 .map(Car::getCarName)
                 .collect(Collectors.toList());
-    }
-
-    private List<Car> getWinners(int winScore) {
-        return cars.stream()
-                .filter(car -> car.currentPosition() >= winScore)
-                .collect(Collectors.toList());
-    }
-
-    private void doMoveCheck(Car targetCar) {
-        if (isMoving()) {
-            targetCar.move();
-        }
-    }
-
-    private boolean isMoving() {
-        if (NumberUtils.getRandomNumber() >= MOVE_LIMIT_COUNT_FLAG) {
-            return true;
-        }
-        return false;
     }
 }

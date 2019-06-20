@@ -2,8 +2,6 @@ package edu.nextstep.racing.model;
 
 import edu.nextstep.racing.utils.ValidationUtils;
 
-import java.util.List;
-
 /**
  * author       : gwonbyeong-yun <sksggg123>
  * ------------------------------------------
@@ -15,6 +13,8 @@ import java.util.List;
  * create date  : 2019-06-15 21:35
  */
 public class Car {
+
+    private static final int MOVE_POSSIBLE_NUMBER = 4;
 
     private int moveIndex;
     private int carNumber;
@@ -30,8 +30,8 @@ public class Car {
         this.carNumber = autoIncrease++;
     }
 
-    public int move() {
-        return ++this.moveIndex;
+    public int move(int validMoveNumber) {
+        return this.movePossible(validMoveNumber) ? ++this.moveIndex : this.moveIndex;
     }
 
     public int currentPosition() {
@@ -42,8 +42,19 @@ public class Car {
         return this.carName;
     }
 
-    public int getCarNumber() {
-        return this.carNumber;
+    public boolean getCarNumber(int carNumber) {
+        return this.carNumber == carNumber;
     }
 
+    public boolean compareWinScore(Car car, int winScore) {
+        return car.moveIndex >= winScore;
+    }
+
+    /*
+    TEST코드 작성을 위해 접근제어자 default로 선언
+     */
+
+    boolean movePossible(int validMoveNumber) {
+        return validMoveNumber >= MOVE_POSSIBLE_NUMBER;
+    }
 }
