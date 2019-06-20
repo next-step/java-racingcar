@@ -1,4 +1,4 @@
-package study.racingcar.model;
+package study.racingcar.domain;
 
 /**
  * Created by wyparks2@gmail.com on 2019-06-18

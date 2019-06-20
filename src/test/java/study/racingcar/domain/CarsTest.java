@@ -1,4 +1,4 @@
-package study.racingcar.model;
+package study.racingcar.domain;
 
 import org.junit.jupiter.api.Test;
 import study.racingcar.strategy.ManualMovableStrategy;

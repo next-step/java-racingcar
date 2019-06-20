@@ -1,6 +1,6 @@
-package study.racingcar.input;
+package study.racingcar.view.input;
 
-import study.racingcar.model.RacingGameInfo;
+import study.racingcar.domain.RacingGameInfo;
 
 import java.util.Arrays;
 import java.util.HashSet;

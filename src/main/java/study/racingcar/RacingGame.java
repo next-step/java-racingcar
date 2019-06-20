@@ -1,7 +1,7 @@
 package study.racingcar;
 
-import study.racingcar.model.Cars;
-import study.racingcar.model.CarsRacingLog;
+import study.racingcar.domain.Cars;
+import study.racingcar.domain.CarsRacingLog;
 
 import java.util.List;
 import java.util.Set;

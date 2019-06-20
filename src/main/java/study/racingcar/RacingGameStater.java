@@ -1,14 +1,14 @@
 package study.racingcar;
 
-import study.racingcar.input.ConsoleInputView;
-import study.racingcar.input.InputView;
-import study.racingcar.model.Awards;
-import study.racingcar.model.Cars;
-import study.racingcar.model.CarsRacingLog;
-import study.racingcar.model.RacingGameInfo;
-import study.racingcar.output.ConsoleGameStatusResultView;
-import study.racingcar.output.ResultView;
+import study.racingcar.domain.Awards;
+import study.racingcar.domain.Cars;
+import study.racingcar.domain.CarsRacingLog;
+import study.racingcar.domain.RacingGameInfo;
 import study.racingcar.strategy.MaxPositionWinnerStrategy;
+import study.racingcar.view.input.ConsoleInputView;
+import study.racingcar.view.input.InputView;
+import study.racingcar.view.output.ConsoleGameStatusResultView;
+import study.racingcar.view.output.ResultView;
 
 import java.util.List;
 
