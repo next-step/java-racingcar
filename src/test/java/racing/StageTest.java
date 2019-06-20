@@ -69,9 +69,10 @@ class StageTest {
 		 * 고민 : RacingMonitorView 의 구현클래스를 사용해서 State 동작을 테스트하니 검증 구문이 구현클래스에 종속되는 문제
 		 */
 		// Assertion
-		assertThat(messageFormView.size()).isEqualTo(4); // 시작 1회, 이동 2회(차가 2대), 라운드 종료 1회
+		assertThat(messageFormView.size()).isEqualTo(5); // 시작 1회, 이동 2회(차가 2대), 라운드 종료 1회
 		assertThat(messageFormView.get(1)).isEqualTo("player1:-");
 		assertThat(messageFormView.get(2)).isEqualTo("player2:-");
+		assertThat(messageFormView.get(4)).contains("우승");
 
 
 	}
