@@ -3,7 +3,6 @@ package com.iksoo.step4.model;
 import com.iksoo.step4.controller.CarMainController;
 
 import java.util.List;
-import static com.iksoo.step4.view.CarOutputData.printBlankLine;
 
 public class Cars {
     private final List<Car> cars;
