@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class InputView {
-    void userInput(RacingGame racingGame, ArrayList<CarInfo> carInfo){
+    public static void userInput(RacingGame racingGame, ArrayList<CarInfo> carInfo) {
         Scanner scanner = new Scanner(System.in);
         String inputCarList;
         String[] carList;
@@ -13,7 +13,7 @@ public class InputView {
         carList = inputCarList.split(",");
         racingGame.setNumberOfCar(carList.length);
 
-        for(int i=0; i<carList.length; i++){
+        for (int i = 0; i < carList.length; i++) {
             inputCarInfo = new CarInfo();
             inputCarInfo.setCarName(carList[i]);
             carInfo.add(inputCarInfo);
