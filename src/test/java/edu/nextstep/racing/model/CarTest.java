@@ -1,6 +1,7 @@
 package edu.nextstep.racing.model;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,23 +27,13 @@ class CarTest {
     }
 
     @Test
-    void 자동차_전진_체크() {
-        assertThat(car.move()).isEqualTo(1);
-    }
-
-    @Test
-    void 자동차_현재위치() {
-        assertThat(car.move()).isEqualTo(1);
-    }
-
-    @Test
     void 자동차_이름_가져오기() {
         assertThat(car.getCarName()).isEqualTo("TESTR");
     }
 
     @Test
     void 자동차_생성번호_가져오기() {
-        assertThat(car.getCarNumber()).isEqualTo(0);
+        assertThat(car.getCarNumber(0)).isTrue();
     }
 
     @Test
@@ -57,5 +48,23 @@ class CarTest {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             Car exceptionCar = new Car("");
         });
+    }
+
+    @Test
+    @DisplayName("자동차 전진 기능")
+    void 전진_현재_위치반환() {
+        assertThat(car.move(4)).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("자동차 전진을 가능성 확인을 위한 기능")
+    void 전진_boolean_type() {
+        assertThat(car.movePossible(4)).isTrue();
+    }
+
+    @Test
+    @DisplayName("자동차 전진을 가능성 확인을 위한 기능")
+    void 이동없음_boolean_type() {
+        assertThat(car.movePossible(3)).isFalse();
     }
 }
