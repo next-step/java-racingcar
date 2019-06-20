@@ -25,4 +25,8 @@ pobi,crong,honux
 pobi : -
 crong : -
 honux : -
+
+=== 중략 ===
+
+pobi, honux가 최종 우승했습니다.
 ```

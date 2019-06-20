@@ -15,7 +15,7 @@ public class DashTrackingMonitorView extends RacingMonitorView {
 
 	private static final String DASH_SYMBOL = "-";
 
-	private static final String NAME_SEPARATOR = ":";
+	private static final String NAME_SEPARATOR = " : ";
 
 	public static final String EMPTY_NEW_LINE = " ";
 
