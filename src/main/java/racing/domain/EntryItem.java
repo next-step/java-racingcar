@@ -1,6 +1,4 @@
-package racing.vo;
-
-import racing.domain.RacingCar;
+package racing.domain;
 
 public class EntryItem implements Comparable<EntryItem>{
 

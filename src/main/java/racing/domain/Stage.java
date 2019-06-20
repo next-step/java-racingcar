@@ -7,7 +7,6 @@ import racing.view.events.ChangedPlayerPositionEvent;
 import racing.view.events.FinishStageEvent;
 import racing.view.events.RacingEvent;
 import racing.view.events.StartedRacingEvent;
-import racing.vo.EntryItem;
 
 import java.util.ArrayList;
 import java.util.List;

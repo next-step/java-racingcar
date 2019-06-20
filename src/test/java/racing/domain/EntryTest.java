@@ -3,7 +3,6 @@ package racing.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.domain.accelerator.StaticAccelerator;
-import racing.vo.EntryItem;
 import racing.vo.RacingRecord;
 
 import java.util.ArrayList;
