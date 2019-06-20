@@ -23,12 +23,12 @@ public class CarTest {
 
     @Test
     void 입력된_숫자만큼_자동차가_생성된다() {
-        //TODO
+        //TODO: 입력된 숫자만큼 자동차가 생성되는지 테스트 코드 작성
     }
 
     @Test
     void 자동차는_랜덤숫자가_4이상인_경우만_이동한다() {
-        //TODO
+        //TODO: 자동차는 랜덤숫자가 4 이상인 경우만 이동하는지 테스트 코드 작성
     }
 
     @ParameterizedTest
