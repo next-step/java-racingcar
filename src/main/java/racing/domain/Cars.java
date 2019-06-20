@@ -50,9 +50,13 @@ public class Cars {
     
     public Cars moveCars() {
         cars.stream()
-            .filter(car -> movableNumberGenerator.getNumber() >= MIN_MOVABLE_NUMBER)
+            .filter(car -> isMovable())
             .forEach(Car::forward);
         return this;
+    }
+
+    private boolean isMovable() {
+        return movableNumberGenerator.getNumber() >= MIN_MOVABLE_NUMBER;
     }
     
     public Cars getWinner() {
