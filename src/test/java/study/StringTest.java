@@ -54,7 +54,7 @@ public class StringTest {
     @Test
     void charAt_outOfRange_fail2() {
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
-                .isThrownBy(() -> "abc".charAt(4)).withMessageMatching("String index out of range: \\d+");
+                .isThrownBy(() -> "abc".charAt(4)).withMessageMatching("String index out ofWinningCars range: \\d+");
     }
 
     @Test @DisplayName("junit contains")

@@ -1,13 +1,11 @@
 package racingcar.model;
 
-import com.google.common.base.Strings;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static racingcar.model.RacingGame.MIN_ROUND;
+import static racingcar.controller.RacingGame.MIN_ROUND;
 
 
 public class GameRequest {
@@ -30,19 +28,19 @@ public class GameRequest {
         return new GameRequest(inputOfRound, parseNames(inputOfCarNames));
     }
 
-    static List<String> parseNames(String inputOfCarNames) {
+    private static List<String> parseNames(String inputOfCarNames) {
         return Arrays.stream(inputOfCarNames.split(NAMES_DELIMITER))
                 .collect(Collectors.toList());
     }
 
-    static void validateMinRound(int inputOfRound) {
+    private static void validateMinRound(int inputOfRound) {
         if (inputOfRound < MIN_ROUND) {
             throw new IllegalArgumentException(String.format("실행 횟수는 %d보다 커야합니다.", MIN_ROUND));
         }
     }
 
-    static void validateCarNames(String names) {
-        if (names == null || Strings.isNullOrEmpty(names.trim())) {
+    private static void validateCarNames(String names) {
+        if (names == null || names.trim().isEmpty()) {
             throw new IllegalArgumentException("빈 문자열 입니다");
         }
         if (!pattern.matcher(names).matches()) {

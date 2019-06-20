@@ -49,9 +49,9 @@ class CarsTest {
     }
 
     private Cars createCars(NumberGenerator numberGenerator) {
-        List<Car> carList = Arrays.asList(Car.newInstance("test1"),
-                                            Car.newInstance("test2"),
-                                            Car.newInstance("test3"));
+        List<Car> carList = Arrays.asList(Car.of("test1"),
+                                            Car.of("test2"),
+                                            Car.of("test3"));
         return new Cars(carList, numberGenerator);
     }
 }

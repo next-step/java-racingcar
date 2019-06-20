@@ -1,14 +1,16 @@
-package racingcar.model;
+package racingcar.controller;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.model.Car;
+import racingcar.model.Cars;
 import racingcar.util.MovingGenerator;
 
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static racingcar.model.Car.DEFAULT_POSITION;
-import static racingcar.model.RacingGame.MIN_ROUND;
+import static racingcar.controller.RacingGame.MIN_ROUND;
 
 public class RacingGameTest {
 

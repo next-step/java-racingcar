@@ -1,4 +1,10 @@
-package racingcar.model;
+package racingcar.controller;
+
+import racingcar.model.Cars;
+import racingcar.model.GameRequest;
+import racingcar.model.WinningResult;
+
+import java.util.List;
 
 public class RacingGame {
 
@@ -30,7 +36,7 @@ public class RacingGame {
         return MIN_ROUND == round;
     }
 
-    public WinningResult getWinningResult() {
-        return WinningResult.of(cars);
+    public List<String> getWinningResult() {
+        return WinningResult.ofWinningCars(cars);
     }
 }

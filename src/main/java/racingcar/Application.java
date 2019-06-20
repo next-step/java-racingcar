@@ -1,7 +1,7 @@
 package racingcar;
 
 import racingcar.model.GameRequest;
-import racingcar.model.RacingGame;
+import racingcar.controller.RacingGame;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 

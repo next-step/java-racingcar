@@ -7,28 +7,15 @@ import static racingcar.model.Car.DEFAULT_POSITION;
 
 public class WinningResult {
 
-    private List<Car> cars;
-
-    private WinningResult(List<Car> cars) {
-        this.cars = cars;
-    }
-
-    public static WinningResult of(Cars cars) {
-        List<Car> carList = cars.getCars();
-
-        int maxPosition = carList.stream()
+    public static List<String> ofWinningCars(Cars cars) {
+        int maxPosition = cars.getCars().stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElse(DEFAULT_POSITION);
 
-        List<Car> winningCars = carList.stream()
+        return cars.getCars().stream()
                 .filter(car -> car.isMatchPosition(maxPosition))
+                .map(Car::getName)
                 .collect(toList());
-
-        return new WinningResult(winningCars);
-    }
-
-    public List<String> getNames() {
-        return cars.stream().map(Car::getName).collect(toList());
     }
 }

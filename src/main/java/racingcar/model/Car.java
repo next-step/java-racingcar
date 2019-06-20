@@ -1,7 +1,5 @@
 package racingcar.model;
 
-import com.google.common.base.Strings;
-
 public class Car {
 
     public static final int MOVING_CONDITION = 4;
@@ -9,18 +7,18 @@ public class Car {
     private String name;
     private int position;
 
-    Car(String name, int position) {
+    public Car(String name, int position) {
         this.name = name;
         this.position = position;
     }
 
-    public static Car newInstance(String name) {
+    public static Car of(String name) {
         validateEmpty(name);
         return new Car(name, DEFAULT_POSITION);
     }
 
     private static void validateEmpty(String name) {
-        if (name == null || Strings.isNullOrEmpty(name.trim())) {
+        if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("이름을 입력하세요.");
         }
     }
