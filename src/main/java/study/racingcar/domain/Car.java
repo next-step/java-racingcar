@@ -10,11 +10,9 @@ import java.util.Objects;
  * Github : http://github.com/wyparks2
  */
 public class Car {
-    private static final int DEFAULT_POSITION = 1; // 초기 위치
-
     private MovableStrategy movableStrategy;
     private String name;
-    private int position = DEFAULT_POSITION; // 이동한 거리
+    private int position = 1;
 
     public Car(String name, MovableStrategy movableStrategy) {
         this.name = name;
