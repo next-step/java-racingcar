@@ -24,7 +24,7 @@ public class RacingGame {
     return racingInfos;
   }
 
-  public String getWinner() {
+  public List<String> getWinner() {
     return cars.getWinner(cars.getMax());
   }
 

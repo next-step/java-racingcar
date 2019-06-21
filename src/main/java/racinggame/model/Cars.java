@@ -28,11 +28,11 @@ public class Cars {
     return cars;
   }
 
-  public String getWinner(int max) {
+  public List<String> getWinner(int max) {
     return cars.stream()
                .filter(car -> car.getStatus() == max)
                .map(Car::getName)
-               .collect(Collectors.joining(", "));
+               .collect(toList());
   }
 
   public int getMax() {
