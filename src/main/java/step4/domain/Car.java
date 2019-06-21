@@ -12,17 +12,21 @@ public class Car {
         this.position = new Position();
     }
 
-    public Car(Name name, int position) {
-        this.name = name;
+    public Car(String name, int position) {
+        this.name = new Name(name);
         this.position = new Position(position);
+    }
+
+    public void move(RandomNumber randomNumber) {
+        this.position = position.move(randomNumber.getRandomNumber());
+    }
+
+    public String getName() {
+        return name.getName();
     }
 
     public int getPosition() {
         return position.getPosition();
-    }
-
-    public void move(int randomNumber) {
-        this.position = position.move(randomNumber);
     }
 
     @Override

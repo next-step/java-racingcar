@@ -11,7 +11,6 @@ public class RoundTest {
     @Test
     void 라운드를_생성한다() {
         Round round = Round.from(TEST_ROUND);
-
         assertThat(round.getRound()).isEqualTo(TEST_ROUND);
     }
 }

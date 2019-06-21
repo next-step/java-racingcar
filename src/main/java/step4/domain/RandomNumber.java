@@ -8,7 +8,7 @@ public class RandomNumber {
 
     private int randomNumber;
 
-    RandomNumber(int generatedNumber) {
+    public RandomNumber(int generatedNumber) {
         if (generatedNumber < ZERO || generatedNumber >= LIMIT) {
             throw new IllegalArgumentException("랜덤 숫자가 잘못 생성되었습니다.");
         }

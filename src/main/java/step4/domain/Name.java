@@ -7,11 +7,15 @@ import java.util.Objects;
 public class Name {
     private String name;
 
-    Name(String name) {
+    public Name(String name) {
         if (StringUtils.isEmpty(name)) {
             throw new IllegalArgumentException("올바른 이름이 아닙니다.");
         }
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
