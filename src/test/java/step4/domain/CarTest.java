@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
+    private static final int TEN = 10;
 
-    public static final int TEN = 10;
-    private Car car = new Car("testCar");
+    private Car car = new Car("testCar", TEN);
 
     @Test
     void 자동차는_이름으로_생성된다() {
@@ -16,7 +16,8 @@ public class CarTest {
 
     @Test
     void 생성된_자동차의_최초위치는_0이다() {
-        assertThat(car.getPosition()).isEqualTo(Position.INITIAL_POSITION);
+        Car newCar = new Car("newCar");
+        assertThat(newCar.getPosition()).isEqualTo(Position.INITIAL_POSITION);
     }
 
     @Test
@@ -26,7 +27,12 @@ public class CarTest {
 
     @Test
     void 자동차가_이동한_이후의_위치를_구한다() {
-        Car movedCar = new Car("positionTest", TEN);
-        assertThat(movedCar.getPosition()).isEqualTo(TEN);
+        assertThat(car.getPosition()).isEqualTo(TEN);
+    }
+
+    @Test
+    void 우승한_자동차인지_판단한다() {
+        int winnerPosition = TEN;
+        assertThat(car.isSamePosition(winnerPosition)).isTrue();
     }
 }

@@ -21,6 +21,10 @@ public class Car {
         this.position = position.move(randomNumber.getRandomNumber());
     }
 
+    public boolean isSamePosition(int winnerPosition) {
+        return this.position.getPosition() == winnerPosition;
+    }
+
     public String getName() {
         return name.getName();
     }

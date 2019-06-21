@@ -29,6 +29,13 @@ public class Cars {
         return new Cars(cars);
     }
 
+    public int findWinnerPosition() {
+        return cars.stream()
+                .map(Car::getPosition)
+                .max(Integer::compareTo)
+                .get();
+    }
+
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }

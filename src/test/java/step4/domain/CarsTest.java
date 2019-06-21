@@ -1,5 +1,6 @@
 package step4.domain;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -7,7 +8,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
     private static final String CAR_NAMES_FOR_TEST = "car1,car2,car3";
-    private static final int ZERO = 0;
 
     private CarNames carNames = CarNames.from(CAR_NAMES_FOR_TEST);
     private Cars cars = Cars.of(carNames);
@@ -18,4 +18,5 @@ public class CarsTest {
         assertThat(cars.getCars().get(num))
                 .isEqualTo(new Car("car" + (num + 1)));
     }
+
 }
