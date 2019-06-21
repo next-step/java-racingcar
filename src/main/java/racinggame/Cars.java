@@ -2,22 +2,25 @@ package racinggame;
 
 import com.google.common.base.Preconditions;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
+import static java.util.stream.Collectors.toList;
 
 public class Cars {
     public static final int MIN_CAR_QUANTITY = 1;
     private final List<Car> cars;
 
     public Cars(CarNames carNames) {
-        int carQuantity = carNames.getCarNameList().size();
+        List<String> carNameList = carNames.getCarNameList();
+        int carQuantity = carNameList.size();
         Preconditions.checkArgument(carQuantity >= MIN_CAR_QUANTITY, "자동차 숫자는 1 이상이어야 합니다.");
 
-        List<Car> carList = new ArrayList<>();
-        carNames.getCarNameList().forEach((carName) -> carList.add(new Car(carName)));
-        this.cars = carList;
+        this.cars = carNames.getCarNameList()
+                .stream()
+                .map(Car::new)
+                .collect(toList());
     }
 
     public void moveCarsByRandomCondition() {
