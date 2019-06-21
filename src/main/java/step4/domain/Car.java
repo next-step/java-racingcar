@@ -1,7 +1,5 @@
 package step4.domain;
 
-import org.apache.commons.lang3.ObjectUtils;
-
 public class Car {
 
     private Name name;
@@ -17,9 +15,11 @@ public class Car {
         this.position = new Position(position);
     }
 
-    public boolean isInitialPositionZero(Car car) {
-        return ObjectUtils.equals(car.position, new Position());
+    public int getPosition() {
+        return position.getPosition();
     }
 
-
+    public void move() {
+        this.position = position.move();
+    }
 }

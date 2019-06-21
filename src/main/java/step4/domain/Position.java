@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class Position {
     private static final int INITIAL_POSITION = 0;
+    private static final int DISTANCE_PER_MOVE = 1;
+    static final int ZERO = 0;
 
     private int position;
 
@@ -12,10 +14,18 @@ public class Position {
     }
 
     public Position(int position) {
-        if (position < 0) {
+        if (position < ZERO) {
             throw new IllegalArgumentException("위치값은 음수가 될 수 없습니다.");
         }
         this.position = position;
+    }
+
+    public Position move() {
+        return new Position(position + DISTANCE_PER_MOVE);
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     @Override
@@ -29,5 +39,12 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(position);
+    }
+
+    @Override
+    public String toString() {
+        return "Position{" +
+                "position=" + position +
+                '}';
     }
 }

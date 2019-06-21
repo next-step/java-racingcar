@@ -15,6 +15,12 @@ public class CarTest {
 
     @Test
     void 생성된_자동차의_최초위치는_0이다() {
-        assertThat(car.isInitialPositionZero(car)).isTrue();
+        assertThat(car.getPosition()).isEqualTo(Position.ZERO);
+    }
+
+    @Test
+    void 자동차가_전진하면_position이_1만큼_증가한다() {
+        car.move();
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 }
