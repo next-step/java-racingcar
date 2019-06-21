@@ -18,6 +18,10 @@ public class Cars {
                  .collect(toList());
   }
 
+  public Cars(List<Car> cars) {
+    this.cars = cars;
+  }
+
   public Cars moveCars() {
     cars.forEach(car -> car.move(RandomValueUtil.getRandomValue()));
     return this;
