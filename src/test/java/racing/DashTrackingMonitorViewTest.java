@@ -5,14 +5,14 @@ import org.junit.jupiter.api.Test;
 import racing.util.MessagePrinter;
 import racing.view.DashTrackingMonitorView;
 import racing.view.events.ChangedPlayerPositionEvent;
+import racing.view.events.FinishStageEvent;
 import racing.view.events.StartedRacingEvent;
+import racing.vo.RacingRecord;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 
 class DashTrackingMonitorViewTest {
 
@@ -21,15 +21,17 @@ class DashTrackingMonitorViewTest {
 	void startedPlayEventHandling(){
 
 		// Arrange
-		MessagePrinter mockPrinter = mock(MessagePrinter.class);
-		DashTrackingMonitorView watcher = new DashTrackingMonitorView(mockPrinter);
-
+		List<String> messagesFromView = new ArrayList<>();
+		DashTrackingMonitorView watcher = new DashTrackingMonitorView((message) -> {
+			messagesFromView.add(message);
+		});
 
 		// Action
 		watcher.handle(new StartedRacingEvent());
 
 		// Assertion
-		verify(mockPrinter).printMessage(StartedRacingEvent.DEFAULT_START_MESSAGE);
+		assertThat(messagesFromView.size()).isEqualTo(1);
+		assertThat(messagesFromView.get(0)).isEqualTo(StartedRacingEvent.DEFAULT_START_MESSAGE);
 	}
 
 	@Test
@@ -37,26 +39,67 @@ class DashTrackingMonitorViewTest {
 	void changedPositionEventHandling(){
 
 		// Arrange
-		List<String> resultMessages = new ArrayList<>();
+		List<String> messagesFromView = new ArrayList<>();
 		DashTrackingMonitorView watcher = new DashTrackingMonitorView((message) -> {
-			resultMessages.add(message);
+			messagesFromView.add(message);
 		});
 
-		List<Integer> positions = new ArrayList<>();
-		// 0, 1 모두 대시("-") 1개 출력
-		positions.add(0);
-		positions.add(1);
-
-		// 2 이상은 개수만큼 출력
-		positions.add(2);
+		List<RacingRecord> records = new ArrayList<>();
+		records.add(new RacingRecord("playerA", 0));
+		records.add(new RacingRecord("playerB", 1));
+		records.add(new RacingRecord("playerC", 2));
 
 		// Action
-		watcher.handle(new ChangedPlayerPositionEvent(positions));
+		watcher.handle(new ChangedPlayerPositionEvent(records));
 
 		// Assertion
-		assertThat(resultMessages.get(0)).isEqualTo("-");
-		assertThat(resultMessages.get(1)).isEqualTo("-");
-		assertThat(resultMessages.get(2)).isEqualTo("--");
-		assertThat(resultMessages.size()).isEqualTo(4); // 마지막 공백라인으로 플레이어 수 + 1 개 메세지 전달
+		assertThat(messagesFromView.get(0)).isEqualTo("playerA:-");	// 0, 1 모두 대시("-") 1개 출력
+		assertThat(messagesFromView.get(1)).isEqualTo("playerB:-");
+		assertThat(messagesFromView.get(2)).isEqualTo("playerC:--");	// 2 이상은 개수만큼 출력
+		assertThat(messagesFromView.size()).isEqualTo(4); // 마지막 공백라인으로 플레이어 수 + 1 개 메세지 전달
 	}
+
+	@Test
+	@DisplayName("게임종료(단독우승) 이벤트 핸들링 테스트")
+	void finishStageWithSingleWinnerEventHandling(){
+
+		// Arrange
+		List<String> messagesFromView = new ArrayList<>();
+		DashTrackingMonitorView watcher = new DashTrackingMonitorView((message) -> {
+			messagesFromView.add(message);
+		});
+
+		List<RacingRecord> records = new ArrayList<>();
+		records.add(new RacingRecord("playerA", 5));	// position 은 사용하지 않기 때문에 의미 없음
+
+		// Action
+		watcher.handle(new FinishStageEvent(records));
+
+		// Assertion
+		assertThat(messagesFromView.get(0)).isEqualTo("playerA가 최종 우승했습니다.");
+	}
+
+
+	@Test
+	@DisplayName("게임종료(동반우승) 이벤트 핸들링 테스트")
+	void finishStageWithMultiWinnerEventHandling(){
+
+		// Arrange
+		List<String> messagesFromView = new ArrayList<>();
+		DashTrackingMonitorView watcher = new DashTrackingMonitorView((message) -> {
+			messagesFromView.add(message);
+		});
+
+		List<RacingRecord> records = new ArrayList<>();
+		records.add(new RacingRecord("playerA", 5));	// position 은 사용하지 않기 때문에 의미 없음
+		records.add(new RacingRecord("playerB", 5));	// position 은 사용하지 않기 때문에 의미 없음
+
+		// Action
+		watcher.handle(new FinishStageEvent(records));
+
+		// Assertion
+		assertThat(messagesFromView.get(0)).isEqualTo("playerA, playerB가 최종 우승했습니다.");
+	}
+
+
 }

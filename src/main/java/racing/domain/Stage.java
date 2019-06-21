@@ -4,6 +4,7 @@ import racing.exception.OutOfEntryException;
 import racing.exception.PlayOverException;
 import racing.view.RacingMonitorView;
 import racing.view.events.ChangedPlayerPositionEvent;
+import racing.view.events.FinishStageEvent;
 import racing.view.events.RacingEvent;
 import racing.view.events.StartedRacingEvent;
 
@@ -22,13 +23,18 @@ public class Stage {
 
 	private Stage(StageBuilder stageBuilder){
 
-		this.entry = new Entry(stageBuilder.players);
+		this.entry = new Entry(stageBuilder.items);
 		this.remainingRound = stageBuilder.round;
 		this.monitorView = stageBuilder.monitorView;
 	}
 
 	public int getCountOfPlayers() {
 		return entry.size();
+	}
+
+
+	public int getRemainingRounds() {
+		return remainingRound;
 	}
 
 	public void play() {
@@ -43,6 +49,7 @@ public class Stage {
 			this.playRound();
 		}while (remainingRound > 0);
 
+		this.emitEvent(new FinishStageEvent(entry.getWinners()));
 	}
 
 	private void playRound() {
@@ -67,9 +74,6 @@ public class Stage {
 		return new StageBuilder(entrySize, round);
 	}
 
-	public int getRemainingRounds() {
-		return remainingRound;
-	}
 
 
 	public static class StageBuilder{
@@ -78,7 +82,7 @@ public class Stage {
 
 		private int round;
 
-		private List<Player> players;
+		private List<EntryItem> items;
 
 		private RacingMonitorView monitorView;
 
@@ -86,20 +90,20 @@ public class Stage {
 
 			this.entrySize = entrySize;
 			this.round = round;
-			players = new ArrayList<>();
+			items = new ArrayList<>();
 		}
 
 		public Stage build() {
 			return new Stage(this);
 		}
 
-		public void addToEntry(Player racingCar) {
+		public void addToEntry(String name, RacingCar racingCar) {
 
-			if(players.size() == entrySize){
+			if(items.size() == entrySize){
 				throw new OutOfEntryException();
 			}
 
-			players.add(racingCar);
+			items.add(new EntryItem(name, racingCar));
 		}
 
 		public void view(RacingMonitorView watcher) {

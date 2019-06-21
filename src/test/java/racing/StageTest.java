@@ -4,24 +4,18 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.mockito.ArgumentCaptor;
-import racing.domain.Player;
 import racing.domain.RacingCar;
 import racing.domain.Stage;
 import racing.domain.accelerator.DriveAccelerator;
-import racing.domain.accelerator.RandomAccelerator;
 import racing.domain.accelerator.StaticAccelerator;
 import racing.view.DashTrackingMonitorView;
 import racing.view.RacingMonitorView;
-import racing.view.events.ChangedPlayerPositionEvent;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.times;
 
 class StageTest {
 
@@ -33,9 +27,8 @@ class StageTest {
 		// Arrange
 		Stage.StageBuilder builder = Stage.builder(entrySize, round);
 
-		for(int i = 0; i < entrySize; i++) {
-			builder.addToEntry(new Player(new RandomAccelerator(), new RacingCar()));
-		}
+		IntStream.range(0, entrySize)
+				.forEach((index) -> builder.addToEntry("player" + index, new RacingCar(new StaticAccelerator(5))));
 
 		// Action
 		Stage stage = builder.build();
@@ -51,18 +44,19 @@ class StageTest {
 
 	@Test
 	@DisplayName("게임 중계 시스템 적용 테스트")
-	void updateWatcher(){
+	void updateView(){
 
 		// Arrange
 		int roundLimit = 1;
 		int acceleratorAmount = 5;
 
+		DriveAccelerator accelerator = new StaticAccelerator(acceleratorAmount);
 		Stage.StageBuilder builder = Stage.builder(2, roundLimit);
-		builder.addToEntry(new Player(new StaticAccelerator(acceleratorAmount), new RacingCar()));
-		builder.addToEntry(new Player(new StaticAccelerator(acceleratorAmount), new RacingCar()));
+		builder.addToEntry("player1", new RacingCar(accelerator));
+		builder.addToEntry("player2", new RacingCar(accelerator));
 
-		List<String> monitorMessage = new ArrayList<>();
-		RacingMonitorView view = new DashTrackingMonitorView(message -> monitorMessage.add(message));
+		List<String> messageFormView = new ArrayList<>();
+		RacingMonitorView view = new DashTrackingMonitorView(message -> messageFormView.add(message));
 		builder.view(view);
 
 		Stage stage = builder.build();
@@ -75,9 +69,10 @@ class StageTest {
 		 * 고민 : RacingMonitorView 의 구현클래스를 사용해서 State 동작을 테스트하니 검증 구문이 구현클래스에 종속되는 문제
 		 */
 		// Assertion
-		assertThat(monitorMessage.size()).isEqualTo(4); // 시작 1회, 이동 2회(차가 2대), 라운드 종료 1회
-		assertThat(monitorMessage.get(1)).isEqualTo("-");
-		assertThat(monitorMessage.get(2)).isEqualTo("-");
+		assertThat(messageFormView.size()).isEqualTo(5); // 시작 1회, 이동 2회(차가 2대), 라운드 종료 1회
+		assertThat(messageFormView.get(1)).contains("player1");
+		assertThat(messageFormView.get(2)).contains("player2");
+		assertThat(messageFormView.get(4)).contains("우승");
 
 
 	}
