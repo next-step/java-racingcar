@@ -35,3 +35,19 @@
     - [x] 우승자들(Winners) 일급콜렉션 클래스 추가
     - [x] 우승자 선정 로직 추가
         - [ ] 테스트 코드
+        
+### step4
+>수업시간에 배운 TDD로 리팩토링 도전
+
+- [x] 기존의 모든 코드 삭제
+- [x] 테스트 코드 작성 (CarTest) 
+    - [x] Car 객체 생성
+        - [x] 자동차 이름(name), 위치(position) 속성 추가
+    - [x] Car 객체의 원시값인 멤버변수(name, position)를 객체로 분리하여 포장
+        - [x] 테스트 코드 작성 (NameTest)
+        - [x] 테스트 코드 작성 (PositionTest)
+    - [x] 자동차 전진(move) 기능 추가
+- [x] 테스트 코드 작성 (CarNamesTest)
+    - [x] CarNames 객체 생성
+    - [x] 입력값 변환하여 저장 (String -> List<String>)
+    - [ ] CarNames 객체를 일급컬렉션으로 변경
