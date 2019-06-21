@@ -2,7 +2,7 @@ package racinggame;
 
 public class RacingGame {
     private final Cars cars;
-    private final GameRound gameRound;
+    private GameRound gameRound;
     private final GameResults gameResults;
 
     public RacingGame(RacingGameParameters racingGameParameters) {
@@ -14,7 +14,7 @@ public class RacingGame {
 
     private void playRound() {
         cars.moveCarsByRandomCondition();
-        gameRound.increaseCurrentRound();
+        gameRound = gameRound.increaseCurrentRound();
     }
 
     public GameResults playFullRound() {

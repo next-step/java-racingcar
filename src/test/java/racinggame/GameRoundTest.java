@@ -17,8 +17,8 @@ class GameRoundTest {
     void 게임_라운드를_초과하면_isFinished_함수는_true_반환() {
         GameRound gameRound = new GameRound(2);
 
-        gameRound.increaseCurrentRound();
-        gameRound.increaseCurrentRound();
+        gameRound = gameRound.increaseCurrentRound();
+        gameRound = gameRound.increaseCurrentRound();
 
         assertThat(gameRound.isFinished()).isTrue();
     }
@@ -27,8 +27,8 @@ class GameRoundTest {
     void 라운드가_끝났을때_increaseCurrentRound_호출시_에러() {
         GameRound gameRound = new GameRound(2);
 
-        gameRound.increaseCurrentRound();
-        gameRound.increaseCurrentRound();
+        gameRound = gameRound.increaseCurrentRound();
+        gameRound = gameRound.increaseCurrentRound();
 
         assertThatExceptionOfType(IllegalStateException.class)
                 .isThrownBy(gameRound::increaseCurrentRound);
