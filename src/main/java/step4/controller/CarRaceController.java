@@ -11,7 +11,21 @@
  * ------------------       --------------            ------------------
  *   integer                2019-06-21
  */
-package step4;
+package step4.controller;
+
+import step4.domain.CarNames;
+import step4.domain.Cars;
 
 public class CarRaceController {
+
+    public static void main(String[] args) {
+        CarRaceController controller = new CarRaceController();
+        controller.start();
+    }
+
+    Cars start() {
+        return Cars.of(CarNames.from("startTest"));
+    }
+
+
 }
