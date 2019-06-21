@@ -2,7 +2,6 @@ package edu.nextstep.racing.view;
 
 import edu.nextstep.racing.model.Car;
 import edu.nextstep.racing.model.Cars;
-import edu.nextstep.racing.utils.ValidationUtils;
 
 /**
  * author       : gwonbyeong-yun <sksggg123>
