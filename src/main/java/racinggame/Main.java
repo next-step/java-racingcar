@@ -13,7 +13,6 @@ public class Main {
 
         GameResults gameResults = racingGame.playFullRound();
 
-
         ResultView.displayResult(gameResults);
     }
 }
