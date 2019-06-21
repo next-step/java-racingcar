@@ -2,6 +2,7 @@ package edu.nextstep.racing.domain;
 
 import edu.nextstep.racing.model.Cars;
 import edu.nextstep.racing.model.Race;
+import edu.nextstep.racing.utils.NumberUtils;
 
 /**
  * author       : gwonbyeong-yun <sksggg123>
@@ -24,7 +25,7 @@ public class CarRacingService {
     }
 
     public Cars startRoundGame() {
-        return this.player.goForward();
+        return player.goForward(NumberUtils.getRandomNumber());
     }
 
     public Cars finishGame() {

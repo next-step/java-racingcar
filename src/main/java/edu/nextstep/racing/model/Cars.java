@@ -24,9 +24,9 @@ public class Cars {
         this.cars = new ArrayList<>(cars);
     }
 
-    public Cars goForward() {
+    public Cars goForward(int moveConditionNumber) {
         for (Car car : cars) {
-            car.move(NumberUtils.getRandomNumber());
+            car.move(moveConditionNumber);
         }
         return new Cars(this.cars);
     }
@@ -59,7 +59,7 @@ public class Cars {
         return new Cars(winners);
     }
 
-    public List<String> getWinnerName() {
+    public List<String> getWinnersName() {
         return this.cars.stream()
                 .map(Car::getCarName)
                 .collect(Collectors.toList());
