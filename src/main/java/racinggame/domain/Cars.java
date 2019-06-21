@@ -1,9 +1,8 @@
-package racinggame.model;
+package racinggame.domain;
 
 import racinggame.util.RandomValueUtil;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;

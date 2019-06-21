@@ -1,6 +1,6 @@
 package racinggame.view;
 
-import racinggame.model.RacingInfo;
+import racinggame.domain.RacingInfo;
 import racinggame.util.StringUtil;
 
 import java.util.List;
