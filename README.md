@@ -61,5 +61,7 @@
 - [x] Car 객체에 자동차 전진 결정 메서드 추가
     - [x] 테스트 코드 작성 (CarTest)
 - [x] Controller 생성
-- [ ] RandomNumber 생성 기능 추가
-    - [ ] 
+- [x] RandomNumber 생성 기능 추가
+    - [x] 테스트 코드 작성 (RandomNumberTest)
+    - [x] RandomNumber 객체 생성
+    - [x] 정적 팩토리 메서드(generate) 추가 
