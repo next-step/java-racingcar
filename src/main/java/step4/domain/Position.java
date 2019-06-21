@@ -3,9 +3,9 @@ package step4.domain;
 import java.util.Objects;
 
 public class Position {
-    private static final int INITIAL_POSITION = 0;
-    private static final int DISTANCE_PER_MOVE = 1;
-    static final int ZERO = 0;
+    static final int INITIAL_POSITION = 0;
+    static final int DISTANCE_PER_MOVE = 1;
+    static final int MOVE_CRITERION = 4;
 
     private int position;
 
@@ -14,14 +14,21 @@ public class Position {
     }
 
     public Position(int position) {
-        if (position < ZERO) {
+        if (position < INITIAL_POSITION) {
             throw new IllegalArgumentException("위치값은 음수가 될 수 없습니다.");
         }
         this.position = position;
     }
 
-    public Position move() {
-        return new Position(position + DISTANCE_PER_MOVE);
+    public Position move(int randomNumber) {
+        if (canMove(randomNumber)) {
+            return new Position(position + DISTANCE_PER_MOVE);
+        }
+        return new Position(position);
+    }
+
+    private boolean canMove(int randomNumber) {
+        return randomNumber >= MOVE_CRITERION;
     }
 
     public int getPosition() {

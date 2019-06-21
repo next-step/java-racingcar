@@ -21,8 +21,8 @@ public class Car {
         return position.getPosition();
     }
 
-    public void move() {
-        this.position = position.move();
+    public void move(int randomNumber) {
+        this.position = position.move(randomNumber);
     }
 
     @Override
