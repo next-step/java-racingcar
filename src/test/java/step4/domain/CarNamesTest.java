@@ -16,4 +16,9 @@ public class CarNamesTest {
 
         assertThat(carNames.getCarNames()).isEqualTo(testList);
     }
+
+    @Test
+    void CarN() {
+        CarNames.from("");
+    }
 }

@@ -7,7 +7,7 @@ public class Name {
 
     Name(String name) {
         if (StringUtils.isEmpty(name)) {
-            throw new IllegalArgumentException("이름을 입력하세요.");
+            throw new IllegalArgumentException("올바른 이름이 아닙니다.");
         }
         this.name = name;
     }
