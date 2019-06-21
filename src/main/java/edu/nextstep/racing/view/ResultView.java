@@ -20,10 +20,6 @@ public class ResultView {
     private static final String COLON = " : ";
     private static final String COMMA = ",";
 
-    public static void printMessage(String message) {
-        ValidationUtils.checkStringArgument(message);
-        System.out.println(message);
-    }
 
     public void resultView(Cars cars) {
         int carNumber = cars.getNumberOfCars();
@@ -37,7 +33,7 @@ public class ResultView {
     }
 
     public void printWinnerPlayer(Cars winner) {
-        String win = winner.getWinnerName().stream()
+        String win = winner.getWinnersName().stream()
                 .reduce((s1, s2) -> s1 + COMMA + s2)
                 .get();
         System.out.println(win);

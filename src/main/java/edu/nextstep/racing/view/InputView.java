@@ -24,7 +24,7 @@ public class InputView {
     private static final String SPLIT_CAR_SEPERATOR = ",";
 
     public List<String> getNameOfCars() {
-        ResultView.printMessage("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        printMessage("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String cars = scanner.nextLine();
 
         ValidationUtils.checkObject(cars);
@@ -33,7 +33,7 @@ public class InputView {
     }
 
     public int getNumberOfTime() {
-        ResultView.printMessage("시도할 회수는 몇회인가요.");
+        printMessage("시도할 회수는 몇회인가요.");
         int time = Integer.parseInt(scanner.nextLine());
 
         ValidationUtils.checkNull(time);
@@ -46,5 +46,10 @@ public class InputView {
         return Arrays.stream(temp)
                 .filter(s -> !"".equals(s))
                 .collect(Collectors.toList());
+    }
+
+    private void printMessage(String message) {
+        ValidationUtils.checkStringArgument(message);
+        System.out.println(message);
     }
 }
