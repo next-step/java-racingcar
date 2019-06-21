@@ -55,16 +55,4 @@ class CarTest {
     void 전진_현재_위치반환() {
         assertThat(car.move(4)).isEqualTo(1);
     }
-
-    @Test
-    @DisplayName("자동차 전진을 가능성 확인을 위한 기능")
-    void 전진_boolean_type() {
-        assertThat(car.movePossible(4)).isTrue();
-    }
-
-    @Test
-    @DisplayName("자동차 전진을 가능성 확인을 위한 기능")
-    void 이동없음_boolean_type() {
-        assertThat(car.movePossible(3)).isFalse();
-    }
 }
