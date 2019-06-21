@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class Car {
 
@@ -27,5 +27,9 @@ public class Car {
 
   public String getName() {
     return name;
+  }
+
+  public boolean isMyPosition(int position) {
+    return this.position == position;
   }
 }

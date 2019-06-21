@@ -2,6 +2,12 @@ package racingcar;
 
 import java.util.List;
 import java.util.Scanner;
+import racingcar.controller.RacingGame;
+import racingcar.domain.Car;
+import racingcar.domain.Winners;
+import racingcar.util.Parser;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 public class RacingGameLauncher {
 
@@ -20,8 +26,8 @@ public class RacingGameLauncher {
       ResultView.displayRecord(record);
     }
 
-    String winner = racingGame.announceWinner();
-    ResultView.displayWinner(winner);
+    Winners winners = racingGame.announceWinners();
+    ResultView.displayWinnersOneLine(winners);
 
   }
 
