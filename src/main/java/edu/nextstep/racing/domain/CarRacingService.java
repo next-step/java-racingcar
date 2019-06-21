@@ -15,20 +15,12 @@ import edu.nextstep.racing.model.Race;
  */
 public class CarRacingService {
 
-    private static final int INIT_CURRENT_TIME = 0;
-
     private Cars player;
     private Race race;
-    private int currentTime;
 
-    /*
-    CarRacing 생성자
-    @parameter carCount, moveCount
-     */
     public CarRacingService(Cars player, Race race) {
         this.player = player;
         this.race = race;
-        this.currentTime = INIT_CURRENT_TIME;
     }
 
     public Cars startRoundGame() {
