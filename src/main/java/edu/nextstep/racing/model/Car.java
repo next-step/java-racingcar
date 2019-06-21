@@ -15,13 +15,12 @@ import edu.nextstep.racing.utils.ValidationUtils;
 public class Car {
 
     private static final int MOVE_POSSIBLE_NUMBER = 4;
+    private static final int INIT_POSITION = 0;
+    private static int autoIncrease = 0;
 
     private int moveIndex;
     private int carNumber;
     private String carName;
-
-    private static final int INIT_POSITION = 0;
-    private static int autoIncrease = 0;
 
     public Car(String name) {
         ValidationUtils.checkObject(name);

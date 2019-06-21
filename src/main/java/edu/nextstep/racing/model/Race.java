@@ -13,8 +13,8 @@ import edu.nextstep.racing.utils.ValidationUtils;
  * create date  : 2019-06-18 19:33
  */
 public class Race {
-    private int time;
     private static final int MIN_VALUE = 0;
+    private int time;
 
     public Race(int time) {
         ValidationUtils.checkMinValue(MIN_VALUE, time);
