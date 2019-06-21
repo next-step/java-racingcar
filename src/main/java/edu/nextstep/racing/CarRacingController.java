@@ -1,7 +1,6 @@
 package edu.nextstep.racing;
 
 import edu.nextstep.racing.domain.CarRacingService;
-import edu.nextstep.racing.domain.RoundGameService;
 import edu.nextstep.racing.model.Car;
 import edu.nextstep.racing.model.Cars;
 import edu.nextstep.racing.model.Race;
@@ -27,7 +26,6 @@ public class CarRacingController {
     private InputView ui;
     private ResultView output;
     private CarRacingService carRacingService;
-    private RoundGameService roundGameService;
 
     public CarRacingController() {
         this.ui = new InputView();
@@ -52,10 +50,11 @@ public class CarRacingController {
         Cars cars = new Cars(carlist);
         Race race = new Race(ui.getNumberOfTime());
 
-        this.carRacingService = new CarRacingService(cars);
-        this.roundGameService = new RoundGameService(race);
+        this.carRacingService = new CarRacingService(cars, race);
 
-        for (int i = 0; i < this.roundGameService.getGameTime(); i++) {
+        int totalRaceTime = this.carRacingService.getGameTime();
+
+        for (int i = 0; i < totalRaceTime; i++) {
             Cars viewCarList = this.carRacingService.startRoundGame();
             output.resultView(viewCarList);
         }

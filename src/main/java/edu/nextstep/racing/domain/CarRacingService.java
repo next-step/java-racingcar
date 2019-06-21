@@ -1,6 +1,7 @@
 package edu.nextstep.racing.domain;
 
 import edu.nextstep.racing.model.Cars;
+import edu.nextstep.racing.model.Race;
 
 /**
  * author       : gwonbyeong-yun <sksggg123>
@@ -14,14 +15,20 @@ import edu.nextstep.racing.model.Cars;
  */
 public class CarRacingService {
 
+    private static final int INIT_CURRENT_TIME = 0;
+
     private Cars player;
+    private Race race;
+    private int currentTime;
 
     /*
     CarRacing 생성자
     @parameter carCount, moveCount
      */
-    public CarRacingService(Cars player) {
+    public CarRacingService(Cars player, Race race) {
         this.player = player;
+        this.race = race;
+        this.currentTime = INIT_CURRENT_TIME;
     }
 
     public Cars startRoundGame() {
@@ -30,5 +37,9 @@ public class CarRacingService {
 
     public Cars finishGame() {
         return this.player;
+    }
+
+    public int getGameTime() {
+        return race.getGameTime();
     }
 }
