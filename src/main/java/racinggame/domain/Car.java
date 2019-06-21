@@ -1,27 +1,31 @@
-package racinggame.model;
+package racinggame.domain;
 
 public class Car {
 
   private static final int DEFAULT_STATUS = 1;
   private static final int MOVE_VALUE = 4;
 
-  private int status;
+  private int position;
   private String name;
 
   public Car(String name) {
-    this.status = DEFAULT_STATUS;
-    this.name = name.trim();
+    this(name, DEFAULT_STATUS);
+  }
+
+  public Car(String name, int position) {
+    this.name = name;
+    this.position = position;
   }
 
   public int move(int num) {
     if(isMove(num)) {
-      status++;
+      position++;
     }
-    return status;
+    return position;
   }
 
   public int getStatus() {
-    return status;
+    return position;
   }
 
   public String getName() {

@@ -1,7 +1,7 @@
 package racinggame;
 
-import racinggame.model.RacingGame;
-import racinggame.model.RacingInfo;
+import racinggame.controller.RacingGame;
+import racinggame.domain.RacingInfo;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;
 

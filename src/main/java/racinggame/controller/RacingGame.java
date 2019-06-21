@@ -1,4 +1,7 @@
-package racinggame.model;
+package racinggame.controller;
+
+import racinggame.domain.Cars;
+import racinggame.domain.RacingInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +27,7 @@ public class RacingGame {
     return racingInfos;
   }
 
-  public String getWinner() {
+  public List<String> getWinner() {
     return cars.getWinner(cars.getMax());
   }
 

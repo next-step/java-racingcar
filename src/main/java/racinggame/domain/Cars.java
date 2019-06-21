@@ -1,9 +1,8 @@
-package racinggame.model;
+package racinggame.domain;
 
 import racinggame.util.RandomValueUtil;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
@@ -19,6 +18,10 @@ public class Cars {
                  .collect(toList());
   }
 
+  public Cars(List<Car> cars) {
+    this.cars = cars;
+  }
+
   public Cars moveCars() {
     cars.forEach(car -> car.move(RandomValueUtil.getRandomValue()));
     return this;
@@ -28,11 +31,11 @@ public class Cars {
     return cars;
   }
 
-  public String getWinner(int max) {
+  public List<String> getWinner(int max) {
     return cars.stream()
                .filter(car -> car.getStatus() == max)
                .map(Car::getName)
-               .collect(Collectors.joining(", "));
+               .collect(toList());
   }
 
   public int getMax() {
