@@ -53,8 +53,4 @@ public class Car {
     public boolean compareWinScore(Car car, int winScore) {
         return car.moveIndex >= winScore;
     }
-
-    /*
-    TEST코드 작성을 위해 접근제어자 default로 선언
-     */
 }
