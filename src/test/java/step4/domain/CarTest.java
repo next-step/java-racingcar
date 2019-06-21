@@ -1,7 +1,6 @@
 package step4.domain;
 
 import org.junit.jupiter.api.Test;
-import step4.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,7 +14,7 @@ public class CarTest {
     }
 
     @Test
-    void 자동차의_최초위치는_0이다() {
-        assertThat(car.position).isEqualTo(0);
+    void 생성된_자동차의_최초위치는_0이다() {
+        assertThat(car.isInitialPositionZero(car)).isTrue();
     }
 }
