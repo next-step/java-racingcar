@@ -34,6 +34,10 @@ public class Car {
         return this.movePossible(validMoveNumber) ? ++this.moveIndex : this.moveIndex;
     }
 
+    private boolean movePossible(int validMoveNumber) {
+        return validMoveNumber >= MOVE_POSSIBLE_NUMBER;
+    }
+
     public int currentPosition() {
         return this.moveIndex;
     }
@@ -53,8 +57,4 @@ public class Car {
     /*
     TEST코드 작성을 위해 접근제어자 default로 선언
      */
-
-    boolean movePossible(int validMoveNumber) {
-        return validMoveNumber >= MOVE_POSSIBLE_NUMBER;
-    }
 }
