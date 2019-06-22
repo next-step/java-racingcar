@@ -3,12 +3,12 @@ package racinggame;
 public class RacingGame {
     private final GameResults gameResults;
     private Cars cars;
-    private GameRound gameRound;
+    private GameRound maxRound;
     private MoveDecider moveDecider;
 
     public RacingGame(RacingGameParameters racingGameParameters) {
         this.cars = new Cars(racingGameParameters.getCarNames());
-        this.gameRound = new GameRound(racingGameParameters.getGameRound());
+        this.maxRound = new GameRound(racingGameParameters.getGameRound());
         this.gameResults = new GameResults();
         this.saveCurrentResult();
         this.moveDecider = racingGameParameters.getMoveDecider();
@@ -16,11 +16,11 @@ public class RacingGame {
 
     private void playRound() {
         cars = cars.moveCarsByDecider(moveDecider);
-        gameRound = gameRound.increaseCurrentRound();
+        maxRound = maxRound.increaseCurrentRound();
     }
 
     public GameResults playFullRound() {
-        while (!gameRound.isFinished()) {
+        while (!maxRound.isFinished()) {
             playRound();
             saveCurrentResult();
         }
