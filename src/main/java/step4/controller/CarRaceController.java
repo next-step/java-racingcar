@@ -26,18 +26,25 @@ public class CarRaceController {
         startRace(newCars, round);
     }
 
-    private void startRace(Cars cars, Round round) {
-        ResultSheet resultSheet = new ResultSheet();
-        for (int i = 0; i < round.getRound(); i++) {
-            resultSheet.addResult(cars.move());
-        }
-        wrapUpRace(resultSheet, round);
-    }
+//    private void startRace(Cars cars, Round round) {
+//        ResultSheet resultSheet = new ResultSheet();
+//        for (int i = 0; i < round.getRound(); i++) {
+//            resultSheet.addResult(cars.move());
+//        }
+//        wrapUpRace(resultSheet, round);
+//    }
+//
+//    private void wrapUpRace(ResultSheet raceResult, Round round) {
+//        OutputView.readResultSheet(raceResult);
+//        Cars lastRoundResult = raceResult.getLastRoundResult(round);
+//        OutputView.printWinners(Winners.from(lastRoundResult));
+//    }
 
-    private void wrapUpRace(ResultSheet raceResult, Round round) {
-        OutputView.readResultSheet(raceResult);
-        Cars lastRoundResult = raceResult.getLastRoundResult(round);
-        OutputView.printWinners(Winners.from(lastRoundResult));
+    private void startRace(Cars cars, Round round) {
+        for (int i = 0; i < round.getRound(); i++) {
+            OutputView.showResult(cars.move());
+        }
+        OutputView.printWinners(Winners.from(cars));
     }
 
 
