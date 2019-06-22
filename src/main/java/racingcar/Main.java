@@ -8,10 +8,10 @@ import racingcar.view.input.CommandLineReader;
 
 public class Main {
     public static void main(String[] args) {
-        GameContext gameContext = new GameContext(
+        RacingGame racingGame = new RacingGame(
                 new DefaultInputView(new CommandLineReader()),
                 new DefaultResultView(),
                 new DefaultCarEngine(new RandomValueProvider(10)));
-        gameContext.run();
+        racingGame.run();
     }
 }

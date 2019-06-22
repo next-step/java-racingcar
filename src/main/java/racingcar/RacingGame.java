@@ -8,7 +8,7 @@ import racingcar.view.result.ResultView;
 
 import java.util.stream.Collectors;
 
-public class GameContext {
+public class RacingGame {
 
     private final InputView inputView;
     private final ResultView resultView;
@@ -17,7 +17,7 @@ public class GameContext {
     private RacingCars racingCars;
     private Integer numberOfTimes;
 
-    GameContext(InputView inputView, ResultView resultView, CarEngine carEngine) {
+    RacingGame(InputView inputView, ResultView resultView, CarEngine carEngine) {
         this.inputView = inputView;
         this.resultView = resultView;
         this.carEngine = carEngine;
