@@ -9,10 +9,10 @@ public class Car {
     }
 
     public void move() {
-
+        position.progress();
     }
 
     public int getPosition() {
-        return position.getPositon();
+        return position.getPosition();
     }
 }
