@@ -10,26 +10,23 @@ public class RacingGame {
         this.cars = new Cars(racingGameParameters.getCarNames());
         this.gameRound = new GameRound(racingGameParameters.getGameRound());
         this.gameResults = new GameResults();
-        this.saveCurrentResult();
         this.moveDecider = racingGameParameters.getMoveDecider();
+
+        this.gameResults.addResult(new GameResult(cars));
     }
 
-    private void playRound() {
-        cars = cars.moveCarsByDecider(moveDecider);
+    private GameResult playRound() {
+        cars = this.cars.moveCarsByDecider(moveDecider);
         gameRound = gameRound.nextRound();
+        return new GameResult(cars);
     }
 
     public GameResults playFullRound() {
         while (!gameRound.isFinished()) {
-            playRound();
-            saveCurrentResult();
+            GameResult gameResult = playRound();
+            gameResults.addResult(gameResult);
         }
         return gameResults;
-    }
-
-    private void saveCurrentResult() {
-        GameResult gameResult = new GameResult(this.cars);
-        gameResults.addResult(gameResult);
     }
 
     public GameResults getGameResults() {
