@@ -13,15 +13,7 @@ public class InputModel {
         return carNum;
     }
 
-    public void setCarNum(int carNum) {
-        this.carNum = carNum;
-    }
-
     public int getTimes() {
         return times;
-    }
-
-    public void setTimes(int times) {
-        this.times = times;
     }
 }
