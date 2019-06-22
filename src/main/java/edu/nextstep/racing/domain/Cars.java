@@ -1,5 +1,6 @@
 package edu.nextstep.racing.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -32,9 +33,11 @@ public class Cars {
     }
 
     public Cars doMoveGame() {
-        return new Cars(cars.stream()
-                .peek(car -> car.carMove(validMoveNumber()))
-                .collect(Collectors.toList()));
+        List<Car> newCarList = new ArrayList<>();
+        for (Car car : asList()) {
+            newCarList.add(car.carMove(validMoveNumber()));
+        }
+        return new Cars(newCarList);
     }
 
     public List<String> getCarNames() {

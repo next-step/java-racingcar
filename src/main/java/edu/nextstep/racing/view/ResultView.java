@@ -20,15 +20,10 @@ public class ResultView {
     private static final String COLON = " : ";
     private static final String COMMA = ",";
 
-    public static void printRuslt(Cars cars) {
-        int carsSize = cars.size();
-        for (int i = 0; i < carsSize; i++) {
-            String carName = cars.asList().get(i).getCarName();
-            int carPosition = cars.asList().get(i).getCarPosition();
-
-            resultPrint(carName, carPosition);
+    public static void printResult(List<Cars> cars) {
+        for (Cars car : cars) {
+            showStageResult(car);
         }
-        print();
     }
 
     public static void resultPrint(String carName, int position) {
@@ -51,6 +46,21 @@ public class ResultView {
 
     public static void print() {
         System.out.println();
+    }
+
+    private static void showStageResult(Cars cars) {
+        int carsSize = cars.size();
+        for (int i = 0; i < carsSize; i++) {
+            combineNameAndPosition(cars, i);
+        }
+        print();
+    }
+
+    private static void combineNameAndPosition(Cars cars, int index) {
+        String carName = cars.asList().get(index).getCarName();
+        int carPosition = cars.asList().get(index).getCarPosition();
+
+        resultPrint(carName, carPosition);
     }
 
 }

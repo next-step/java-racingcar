@@ -26,10 +26,12 @@ public class Car {
         this.position = new Position(position);
     }
 
-    public void carMove(int validNumber) {
+    public Car carMove(int validNumber) {
         if (isMove(validNumber)) {
-            this.position = new Position(position.move());
+//            this.position = new Position(position.move());
+            return new Car(name.getName(), position.move());
         }
+        return new Car(name.getName(), position.getPosition());
     }
 
     public int getCarPosition() {
