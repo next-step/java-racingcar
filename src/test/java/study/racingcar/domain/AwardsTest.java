@@ -1,5 +1,6 @@
 package study.racingcar.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import study.racingcar.strategy.MaxPositionWinnerStrategy;
 
@@ -11,11 +12,17 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Github : http://github.com/wyparks2
  */
 class AwardsTest {
+    private Awards awards;
+    private CarsRacingLog carsRacingLog;
+
+    @BeforeEach
+    void setUp() {
+        this.awards = new Awards(new MaxPositionWinnerStrategy());
+        this.carsRacingLog = new CarsRacingLog();
+    }
+
     @Test
     void 우승차_한대() {
-        Awards awards = new Awards(new MaxPositionWinnerStrategy());
-
-        CarsRacingLog carsRacingLog = new CarsRacingLog();
         CarRacingLog winner1 = new CarRacingLog(new Car("car3"), 3);
 
         carsRacingLog.add(new CarRacingLog(new Car("car1"), 1));
@@ -29,9 +36,6 @@ class AwardsTest {
 
     @Test
     void 우승차_두대() {
-        Awards awards = new Awards(new MaxPositionWinnerStrategy());
-
-        CarsRacingLog carsRacingLog = new CarsRacingLog();
         CarRacingLog winner1 = new CarRacingLog(new Car("car3"), 3);
         CarRacingLog winner2 = new CarRacingLog(new Car("car4"), 3);
 
