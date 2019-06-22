@@ -1,9 +1,8 @@
-package edu.nextstep.racing.Service;
+package edu.nextstep.racing.service;
 
-import edu.nextstep.racing.domain.Car;
 import edu.nextstep.racing.domain.Cars;
+import edu.nextstep.racing.view.ResultView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,7 +27,8 @@ public class CarRacingService {
 
     public void raceStart() {
         for (int i = 0; i < round; i++) {
-            cars.doMoveGame().stream();
+            Cars carResult = cars.doMoveGame();
+            ResultView.printRuslt(carResult);
         }
     }
 }

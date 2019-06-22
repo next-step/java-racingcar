@@ -55,6 +55,11 @@ public class Cars {
         return this.cars.stream();
     }
 
+    public List<Car> asList() {
+        return this.cars.stream()
+                .collect(Collectors.toList());
+    }
+
     private int validMoveNumber() {
         Random random = new Random();
         return random.nextInt(RANDOM_NUMBER_RANGE);
