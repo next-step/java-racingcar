@@ -1,7 +1,7 @@
-package Domain;
+package domain;
 
 public class CarInfo {
-    private String carName;
+    private final String carName;
     private int carPosition;
 
     public CarInfo(String carName) {

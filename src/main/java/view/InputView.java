@@ -1,7 +1,7 @@
-package View;
+package view;
 
-import Domain.CarInfo;
-import Domain.RacingGame;
+import domain.CarInfo;
+import domain.RacingGame;
 
 import java.util.List;
 import java.util.Scanner;

@@ -1,5 +1,5 @@
-import Domain.CarInfo;
-import Domain.RacingGame;
+import domain.CarInfo;
+import domain.RacingGame;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

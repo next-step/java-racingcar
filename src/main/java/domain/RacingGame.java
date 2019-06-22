@@ -1,10 +1,10 @@
-package Domain;
+package domain;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import View.*;
+import view.*;
 
 public class RacingGame {
     private static final int MAX_RANDOM_NUMBER = 10;

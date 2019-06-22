@@ -1,6 +1,6 @@
-package View;
+package view;
 
-import Domain.CarInfo;
+import domain.CarInfo;
 
 public class ResultView {
     public static void disPlayRacingResult(CarInfo carInfo) {
