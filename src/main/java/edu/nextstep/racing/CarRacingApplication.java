@@ -1,4 +1,4 @@
-package edu.nextstep.racing.view;
+package edu.nextstep.racing;
 
 /**
  * author       : gwonbyeong-yun <sksggg123>
@@ -8,7 +8,7 @@ package edu.nextstep.racing.view;
  * | blog         : sksggg123.github.io     |
  * ------------------------------------------
  * project      : java-racingcar
- * create date  : 2019-06-22 15:04
+ * create date  : 2019-06-22 15:03
  */
-public class InputView {
+public class CarRacingApplication {
 }
