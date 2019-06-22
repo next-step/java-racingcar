@@ -1,30 +1,43 @@
-/* Copyright (c) 2019 ZUM Internet, Inc.
- * All right reserved.
- * http://www.zum.com
- * This software is the confidential and proprietary information of ZUM
- * , Inc. You shall not disclose such Confidential Information and
- * shall use it only in accordance with the terms of the license agreement
- * you entered into with ZUM.
- *
- * Revision History
- * Author                    Date                     Description
- * ------------------       --------------            ------------------
- *   integer                2019-06-21
- */
 package step4.controller;
 
-import step4.domain.CarNames;
+
 import step4.domain.Cars;
+import step4.domain.ResultSheet;
+import step4.domain.Round;
+import step4.domain.Winners;
+import step4.view.InputView;
+import step4.view.OutputView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class CarRaceController {
 
     public static void main(String[] args) {
         CarRaceController controller = new CarRaceController();
-        controller.start();
+        controller.readyRace();
     }
 
-    Cars start() {
-        return Cars.of(CarNames.from("startTest"));
+    private void readyRace() {
+        Cars newCars = Cars.of(InputView.getCarNames());
+        Round round = InputView.getRound();
+        startRace(newCars, round);
+    }
+
+    private void startRace(Cars cars, Round round) {
+        ResultSheet resultSheet = new ResultSheet();
+        for (int i = 0; i < round.getRound(); i++) {
+            resultSheet.addResult(cars.move());
+        }
+        wrapUpRace(resultSheet, round);
+    }
+
+    private void wrapUpRace(ResultSheet raceResult, Round round) {
+        OutputView.readResultSheet(raceResult);
+        Cars lastRoundResult = raceResult.getLastRoundResult(round);
+        OutputView.printWinners(Winners.from(lastRoundResult));
     }
 
 
