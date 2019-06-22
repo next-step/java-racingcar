@@ -1,13 +1,10 @@
 package edu.nextstep.racing;
 
-import edu.nextstep.racing.Service.CarRacingService;
-import edu.nextstep.racing.domain.Car;
-import edu.nextstep.racing.domain.Cars;
+import edu.nextstep.racing.service.CarRacingService;
 import edu.nextstep.racing.utils.SplitUtils;
 import edu.nextstep.racing.view.InputView;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * author       : gwonbyeong-yun <sksggg123>
@@ -21,8 +18,6 @@ import java.util.stream.Collectors;
  */
 public class CarRacingApplication {
 
-    private Cars cars;
-
     public static void main(String[] args) {
         CarRacingApplication app = new CarRacingApplication();
         app.run();
@@ -34,5 +29,7 @@ public class CarRacingApplication {
 
         List<String> names = SplitUtils.commaSplit(carNames);
         CarRacingService service = new CarRacingService(names, round);
+
+        service.raceStart();
     }
 }
