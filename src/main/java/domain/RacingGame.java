@@ -9,7 +9,8 @@ import view.*;
 public class RacingGame {
 
     private int timeOfGame; // 자동차 경주 횟수
-    public List<CarInfo> car;
+    private List<CarInfo> car;
+    private List<Winner> winner;
     private int indexofTimeofGame = 1;
 
     // 사용자 입력에 따라서 실행되는 RaceGame 생성자
@@ -41,10 +42,10 @@ public class RacingGame {
         return inputStrings;
     }
 
-
-    public List<CarInfo> getCars(){
-        return this.car;
+    public List<CarInfo> getCars() {
+        return car;
     }
+
 
 //    // 자동차 경주의 최초 설정 세팅 함수
 //    public void gameInitialSet(List<CarInfo> carInfo) {
@@ -121,10 +122,12 @@ public class RacingGame {
 
     // 사용자가 입력한 횟수에 따라서 자동화 게임 실행 함수
     public void race() {
+
         for (CarInfo elemnt : car) {
-            elemnt.move();
+            if (this.indexofTimeofGame > 1) {
+                elemnt.move();
+            }
         }
         ++indexofTimeofGame;
     }
-
 }

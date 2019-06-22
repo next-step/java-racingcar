@@ -29,17 +29,17 @@ public class RacingGameTest {
         });
     }
 
-    // 랜덤값 생성 및 자동차 경주 결과를 호출하는 함수에 대한 Junit 테스트 구현
-    @Test
-    public void makeRandomNumberAndGameResult() {
-        RacingGame racingGame = new RacingGame();
-        List<CarInfo> carInfo = null;
-
-        assertThatNullPointerException().isThrownBy(() -> {
-            if (racingGame == null || carInfo == null)
-                throw new NullPointerException("함수의 객체 중에 null값이 있습니다. 확인하시고 다시 실행해주시길 바랍니다.");
-        });
-    }
+//    // 랜덤값 생성 및 자동차 경주 결과를 호출하는 함수에 대한 Junit 테스트 구현
+//    @Test
+//    public void makeRandomNumberAndGameResult() {
+//        RacingGame racingGame = new RacingGame();
+//        List<CarInfo> carInfo = null;
+//
+//        assertThatNullPointerException().isThrownBy(() -> {
+//            if (racingGame == null || carInfo == null)
+//                throw new NullPointerException("함수의 객체 중에 null값이 있습니다. 확인하시고 다시 실행해주시길 바랍니다.");
+//        });
+//    }
 
     @Test
     // 랜덤번호의 결과에 따라서 자동차 위치의 전진 혹은 유지를 결정하는 함수에 대한 Junit 테스트 구현

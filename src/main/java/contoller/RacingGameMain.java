@@ -16,7 +16,7 @@ public class RacingGameMain {
             ResultView.printCars(racingGame.getCars());
         }
 
-//        System.out.println("첫번째 자동차" + racingGame.car.get(2).getCarName()+ " : "+racingGame.car.get(2).getCarPosition());
+//        ResultView.printWinners(racingGame.getWinners());
 
     }
 }
