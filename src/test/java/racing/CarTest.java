@@ -10,7 +10,14 @@ public class CarTest {
     @Test
     void move() {
         Car car = new Car();
-        car.move();
+        car.move(5L);
         assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    void stop() {
+        Car car = new Car();
+        car.move(3L);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 }

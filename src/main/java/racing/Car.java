@@ -8,8 +8,9 @@ public class Car {
         position = new Position();
     }
 
-    public void move() {
-        position.progress();
+    public void move(long l) {
+        if (l >= 4)
+            position.progress();
     }
 
     public int getPosition() {
