@@ -8,7 +8,9 @@ public class Main {
         InputView.displayRoundInput();
         int gameRound = InputView.getUserInputToInt();
 
-        RacingGameParameters racingGameParameters = new RacingGameParameters(gameRound, carNameString);
+        MoveDecider moveDecider = new RandomDecider();
+
+        RacingGameParameters racingGameParameters = new RacingGameParameters(gameRound, carNameString, moveDecider);
         RacingGame racingGame = new RacingGame(racingGameParameters);
 
         GameResults gameResults = racingGame.playFullRound();
