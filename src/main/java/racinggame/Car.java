@@ -6,13 +6,17 @@ public class Car {
     private int position;
     private String carName;
 
-    public Car(String carName) {
+    private Car(String carName, int position) {
         this.carName = carName;
-        this.position = INITIAL_CAR_POSITION;
+        this.position = position;
     }
 
-    public void move() {
-        this.position += MOVE_DISTANCE_PER_ONCE;
+    public Car(String carName) {
+        this(carName, INITIAL_CAR_POSITION);
+    }
+
+    public Car move() {
+        return new Car(this.carName, this.position + MOVE_DISTANCE_PER_ONCE);
     }
 
     public int getPosition() {

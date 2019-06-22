@@ -22,7 +22,7 @@ class CarTest {
     @Test
     void move_호출시_위치_1만큼_이동() {
         Car car = new Car(carName);
-        car.move();
+        car = car.move();
         assertThat(car.getPosition()).isEqualTo(Car.INITIAL_CAR_POSITION + Car.MOVE_DISTANCE_PER_ONCE);
     }
 }
