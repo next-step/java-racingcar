@@ -1,38 +1,40 @@
 package racing.domain;
 
-import static racing.common.RacingSettings.*;
-
 import racing.common.ErrorMessage;
+import racing.common.NumberGenerator;
 import racing.common.RacingSettings;
 import racing.common.RacingValidator;
 import racing.common.RandomNumberGenerator;
 import racing.vo.GameMakingInfo;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingManager {
     private final static int START_TIME = 0;
-    private List<Cars> movingHistory;
+    private final static int MAX_RANDOM_NUMBER = 9;
+    private MovingHistory movingHistory;
     private Cars cars;
-    private int time;
+    private NumberGenerator randomNumberGenerator;
+    private final int time;
     
-    public RacingManager(GameMakingInfo gameMakingInfo) {
+    public RacingManager(final GameMakingInfo gameMakingInfo) {
         makeSureUserInputs(gameMakingInfo);
-        this.cars = new Cars(Arrays.stream(gameMakingInfo.getCarNames().split(RacingSettings.CAR_NAME_SEPARATOR.getStr()))
-            .map(Car::new)
-            .collect(Collectors.toList())
-        );
+        this.cars = new Cars(makeCarsAt(gameMakingInfo.getCarNames()));
+        randomNumberGenerator = new RandomNumberGenerator(MAX_RANDOM_NUMBER);
         time = gameMakingInfo.getTime();
-        movingHistory = new ArrayList<>();
+        movingHistory = new MovingHistory();
     }
     
-    private void makeSureUserInputs(GameMakingInfo gameMakingInfo) {
+    private static List<Car> makeCarsAt(final String carNames) {
+        return Arrays.stream(carNames.split(RacingSettings.CAR_NAME_SEPARATOR.getStr()))
+                .map(Car::new)
+                .collect(Collectors.toList());
+    }
+    
+    private void makeSureUserInputs(final GameMakingInfo gameMakingInfo) {
         if (!RacingValidator.isValidCarNames(gameMakingInfo.getCarNames())) {
             throwException(ErrorMessage.INCORRECT_CAR_NAMES.getMessage());
         }
@@ -45,22 +47,19 @@ public class RacingManager {
         return cars.getWinner().getCarNames();
     }
     
-    public void startGame() {
+    public RacingResult startGame() {
         IntStream.range(START_TIME, time).forEach(i -> {
-            cars.moveCars();
-            movingHistory.add(cars.getCopiedCars());
+            cars.moveCars(randomNumberGenerator);
+            movingHistory.addHistory(cars.getCopiedCars());
         });
-    }
-    
-    public List<Cars> getMovingHistory() {
-        return movingHistory;
+        return new RacingResult(movingHistory, cars.getWinner().getCarNames());
     }
     
     public void setCars(Cars cars) {
         this.cars = cars;
     }
     
-    private static void throwException(String errorMessage) {
+    private static void throwException(final String errorMessage) {
         throw new IllegalArgumentException(errorMessage);
     }
 }
