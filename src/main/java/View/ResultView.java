@@ -8,8 +8,7 @@ public class ResultView {
 
         for (int i = 0; i < carInfo.getCarPosition(); ++i)
             carStatus += "-";
-        carInfo.setCarStatus(carStatus);
-        System.out.println(carInfo.getCarName() + ": " + carInfo.getCarStatus());
+        System.out.println(carInfo.getCarName() + ": " + carStatus);
     }
 
     public static void disPlayRaceWinner(String winnerNames) {

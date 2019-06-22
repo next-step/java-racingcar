@@ -23,7 +23,6 @@ public class RacingGame {
         return timeOfGame;
     }
 
-
     // 자동차 경주의 최초 설정 세팅 함수
     public void gameInitialSet(List<CarInfo> carInfo) {
         if (carInfo == null)
