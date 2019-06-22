@@ -30,11 +30,9 @@ public class Cars {
     }
 
     public Cars doMoveGame() {
-        cars.stream()
+        return new Cars(cars.stream()
                 .peek(car -> car.carMove(validMoveNumber()))
-                .collect(Collectors.toList());
-
-        return new Cars(this.cars);
+                .collect(Collectors.toList()));
     }
 
     public List<String> getCarNames() {

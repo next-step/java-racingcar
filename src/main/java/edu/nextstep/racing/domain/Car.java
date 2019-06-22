@@ -28,7 +28,7 @@ public class Car {
 
     public void carMove(int validNumber) {
         if(isMove(validNumber)) {
-            position.move();
+            this.position = new Position(position.move());
         }
     }
 
@@ -43,5 +43,4 @@ public class Car {
     private boolean isMove(int validNumber) {
         return validNumber >= MOVE_POSSIBLE_NUMBER ? true : false;
     }
-
 }
