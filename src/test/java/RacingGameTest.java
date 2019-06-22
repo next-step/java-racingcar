@@ -7,8 +7,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 public class RacingGameTest {
-    // 자동차 경주의 최초 설정 세팅 함수에 대한 Junit 테스트 구현
-
     // 사용자가 입력한 공백 문자 혹은 개행문자가 포함되었는지 체크하는 함수에 대한 Junit 테스트 구현
     @Test
     public void checkNameOfCar() {
@@ -20,7 +18,7 @@ public class RacingGameTest {
                 }
         );
     }
-
+    // 자동차 경주의 최초 설정 세팅 함수에 대한 Junit 테스트 구현
     @Test
     public void gameInitialSet() {
         List<CarInfo> carInfo = null;

@@ -7,8 +7,8 @@ import java.util.Random;
 import View.*;
 
 public class RacingGame {
-    public static final int MAX_RANDOM_NUMBER = 10;
-    public static final int MOVE_POINT_NUMBER = 4;
+    private static final int MAX_RANDOM_NUMBER = 10;
+    private static final int MOVE_POINT_NUMBER = 4;
 
     private int timeOfGame; // 자동차 경주 횟수
 
