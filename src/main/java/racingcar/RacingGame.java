@@ -8,10 +8,10 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingGame {
+    private final static int GO_CONDITION = 4;
     private int time;
     private List<Car> cars = new ArrayList<>();
     private NumGenerator randomNumGenerator;
-    private final static int GO_CONDITION = 4;
 
     private RacingGame() {
 
