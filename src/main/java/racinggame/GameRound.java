@@ -19,7 +19,7 @@ public class GameRound {
         this(maxRound, INITIAL_ROUND);
     }
 
-    public GameRound increaseCurrentRound() {
+    public GameRound nextRound() {
         Preconditions.checkState(!this.isFinished(), "게임이 이미 끝났습니다.");
         return new GameRound(maxRound, currentRound + 1);
     }

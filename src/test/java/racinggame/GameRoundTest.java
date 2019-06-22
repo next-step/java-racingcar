@@ -21,18 +21,18 @@ class GameRoundTest {
 
     @Test
     void 게임_라운드를_초과하면_isFinished_함수는_true_반환() {
-        gameRound = gameRound.increaseCurrentRound();
-        gameRound = gameRound.increaseCurrentRound();
+        gameRound = gameRound.nextRound();
+        gameRound = gameRound.nextRound();
 
         assertThat(gameRound.isFinished()).isTrue();
     }
 
     @Test
     void 라운드가_끝났을때_increaseCurrentRound_호출시_에러() {
-        gameRound = gameRound.increaseCurrentRound();
-        gameRound = gameRound.increaseCurrentRound();
+        gameRound = gameRound.nextRound();
+        gameRound = gameRound.nextRound();
 
         assertThatExceptionOfType(IllegalStateException.class)
-                .isThrownBy(gameRound::increaseCurrentRound);
+                .isThrownBy(gameRound::nextRound);
     }
 }
