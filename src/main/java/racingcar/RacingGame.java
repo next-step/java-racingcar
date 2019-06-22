@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.model.Car;
+import racingcar.model.Cars;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +24,11 @@ public class RacingGame {
         this.randomNumGenerator =  randomNumGenerator;
     }
 
-    public List<List<Car>> run() {
-        List<List<Car>> histories = new ArrayList<>();
+    public List<Cars> run() {
+        List<Cars> histories = new ArrayList<>();
         for (int i = 0; i < this.time; i++) {
             List<Car> c = moveCars(this.cars);
-            histories.add(c);
+            histories.add(new Cars(c));
         }
         return histories;
 
