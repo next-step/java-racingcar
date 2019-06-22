@@ -15,11 +15,19 @@ public class CarsRacingLog {
         carRacingLogs = new ArrayList<>();
     }
 
-    public void add(CarRacingLog carRacingLog) {
-        this.carRacingLogs.add(carRacingLog);
+    public boolean add(CarRacingLog carRacingLog) {
+        return this.carRacingLogs.add(carRacingLog);
     }
 
     public List<CarRacingLog> getCarRacingLogs() {
         return carRacingLogs;
     }
+
+    public int getMaxPosition() {
+        return carRacingLogs.stream()
+                .map(CarRacingLog::getPosition)
+                .max(Integer::compare)
+                .orElse(0);
+    }
+
 }

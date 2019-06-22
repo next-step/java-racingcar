@@ -18,16 +18,9 @@ public class Awards {
     }
 
     public Cars award(CarsRacingLog lastCarsRacingLog) {
-        final int maxPosition = getMaxPosition(lastCarsRacingLog);
+        final int maxPosition = lastCarsRacingLog.getMaxPosition();
 
         return getWinners(lastCarsRacingLog, maxPosition);
-    }
-
-    private int getMaxPosition(CarsRacingLog carsRacingLog) {
-        return carsRacingLog.getCarRacingLogs().stream()
-                .map(CarRacingLog::getPosition)
-                .max(Integer::compare)
-                .orElse(0);
     }
 
     private Cars getWinners(CarsRacingLog carsRacingLog, int maxPosition) {

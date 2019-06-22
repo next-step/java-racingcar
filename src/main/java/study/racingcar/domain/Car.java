@@ -1,6 +1,7 @@
 package study.racingcar.domain;
 
 import study.racingcar.strategy.MovableStrategy;
+import study.racingcar.strategy.RandomMovableStrategy;
 
 import java.util.Objects;
 
@@ -13,6 +14,11 @@ public class Car {
     private MovableStrategy movableStrategy;
     private String name;
     private int position = 1;
+
+    public Car(String name) {
+        this.name = name;
+        this.movableStrategy = new RandomMovableStrategy();
+    }
 
     public Car(String name, MovableStrategy movableStrategy) {
         this.name = name;
