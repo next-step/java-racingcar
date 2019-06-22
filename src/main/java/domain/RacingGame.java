@@ -2,6 +2,7 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class RacingGame {
 
@@ -41,15 +42,6 @@ public class RacingGame {
 
     public List<CarInfo> getCars() {
         return car;
-    }
-
-    // 생성된 랜덤값이 4이상일때 자동차 위치를 전진하는 함수
-    public void move(int numberOfCar, List<CarInfo> carInfo) {
-        if (carInfo == null)
-            throw new NullPointerException("객체 carInfo가 null 입니다. 확인하시고 다시 실행해주시길 바랍니다.");
-
-        int prePosition = carInfo.get(numberOfCar).getCarPosition();
-        carInfo.get(numberOfCar).setCarPositions(prePosition + 1);
     }
 
     // 자동차 게임 종료 여부를 확인하는 함수

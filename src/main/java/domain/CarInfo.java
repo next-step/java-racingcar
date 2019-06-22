@@ -3,8 +3,8 @@ package domain;
 import java.util.Random;
 
 public class CarInfo implements MovableStrategy {
-    private static final int FORWARD_NUM = 4;
     private static final int MAX_RANDOM_NUMBER = 10;
+    private static final int FORWARD_NUM = 4;
 
     private final String carName;
     private int carPosition = 1;
@@ -14,22 +14,8 @@ public class CarInfo implements MovableStrategy {
         this.carName = carName;
     }
 
-    public CarInfo(String carName, int carPosition, String carStatus) {
-        this.carName = carName;
-        this.carPosition = carPosition;
-        this.carStatus = carStatus;
-    }
-
-    public int getCarPosition() {
-        return carPosition;
-    }
-
     public String getCarName() {
         return carName;
-    }
-
-    public void setCarPositions(int carPosition) {
-        this.carPosition = carPosition;
     }
 
     public String getCarStatus() {
