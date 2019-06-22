@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+
 public class RacingGameTest {
     int carPosition = 5;
     int maxPosition = 4;
@@ -35,7 +36,6 @@ public class RacingGameTest {
     @Test
     public void getMaxPosition() {
         int maxPosition = 4;
-
         assertThat(Math.max(maxPosition, this.carPosition)).isEqualTo(5);
     }
 
