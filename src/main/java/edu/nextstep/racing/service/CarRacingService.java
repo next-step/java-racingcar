@@ -1,6 +1,7 @@
 package edu.nextstep.racing.service;
 
 import edu.nextstep.racing.domain.Cars;
+import edu.nextstep.racing.domain.Winner;
 import edu.nextstep.racing.view.ResultView;
 
 import java.util.List;
@@ -27,8 +28,10 @@ public class CarRacingService {
 
     public void raceStart() {
         for (int i = 0; i < round; i++) {
-            Cars carResult = cars.doMoveGame();
-            ResultView.printRuslt(carResult);
+            this.cars = cars.doMoveGame();
+            ResultView.printRuslt(this.cars);
         }
+        Winner winner = Winner.checkPosition(this.cars.asList());
+        ResultView.resultWinPlayer(winner.getCarNames());
     }
 }

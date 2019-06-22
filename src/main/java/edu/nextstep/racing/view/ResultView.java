@@ -2,6 +2,9 @@ package edu.nextstep.racing.view;
 
 import edu.nextstep.racing.domain.Cars;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * author       : gwonbyeong-yun <sksggg123>
  * ------------------------------------------
@@ -37,6 +40,13 @@ public class ResultView {
             sb.append(DASH);
         }
         System.out.println(sb.toString());
+    }
+
+    public static void resultWinPlayer(List<String> winPlayerNames) {
+        String winPlater = winPlayerNames.stream()
+                .collect(Collectors.joining(COMMA));
+
+        System.out.println(winPlater+"가 최종 우승했습니다.");
     }
 
     public static void print() {

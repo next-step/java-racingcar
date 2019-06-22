@@ -50,7 +50,7 @@ class CarsTest {
 
     @Test
     void 자동차들의_경기결과() {
-        List<Car> finishGameCars = new ArrayList<>(Arrays.asList(new Car("TEST1"), new Car("TEST2")));
+        List<Car> finishGameCars = new ArrayList<>(carList);
         Cars cars = new Cars(finishGameCars);
         cars = cars.doMoveGame();
 
