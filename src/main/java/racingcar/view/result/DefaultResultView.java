@@ -30,6 +30,6 @@ public class DefaultResultView implements ResultView {
 
     @Override
     public void printFooter(RacingCars racingCars) {
-        System.out.println(String.join(",", racingCars.getWinners()) + "가 최종 우승했습니다.");
+        //System.out.println(String.join(",", racingCars.getWinners()) + "가 최종 우승했습니다.");
     }
 }

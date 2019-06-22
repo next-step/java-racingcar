@@ -32,23 +32,12 @@ public class PositionTest {
     }
 
     @Test
-    @DisplayName("최대위치를 정상적으로 비교하는지 확인한다")
-    void testMaxPosition() {
-        // given
-        Position position = Position.of(10);
-        // when
-        int maxPosition = position.max(9);
-        // then
-        assertThat(maxPosition).isEqualTo(10);
-    }
-
-    @Test
     @DisplayName("현재위치가 최대위치와 같은지 확인한다")
     void testMaxPosition2() {
         // given
         Position position = Position.of(10);
         // when
-        boolean maxPosition = position.isMaxPosition(10);
+        boolean maxPosition = position.isSamePosition(10);
         // then
         assertTrue(maxPosition);
     }

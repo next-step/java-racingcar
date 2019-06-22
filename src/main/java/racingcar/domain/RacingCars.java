@@ -14,21 +14,18 @@ public class RacingCars {
         return new RacingCars(racingCars);
     }
 
-    public List<String> getWinners() {
-        int winnerPosition = getWinnerPosition();
-
-        return racingCars.stream()
-                .filter(racingCar -> racingCar.getPosition().equals(winnerPosition))
-                .map(RacingCar::getName)
-                .collect(Collectors.toList());
+    public List<RacingCar> findWinners() {
+        return filterWinners(getWinnerPosition());
     }
 
+    private List<RacingCar> filterWinners(int winnerPosition) {
+        return racingCars.stream()
+                .filter(racingCar -> racingCar.isWinner(winnerPosition))
+                .collect(Collectors.toList());
+    }
     private int getWinnerPosition() {
-        return 0;
-        /*
         return racingCars.stream()
                 .mapToInt(RacingCar::getPosition)
                 .max().orElse(0);
-        */
     }
 }

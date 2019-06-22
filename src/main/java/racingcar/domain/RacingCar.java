@@ -1,33 +1,44 @@
 package racingcar.domain;
 
-import racingcar.domain.moving.MovingStrategy;
 import racingcar.domain.moving.Position;
 
-public class RacingCar implements Comparable<RacingCar>{
+import java.util.Objects;
+
+public class RacingCar {
     private String name;
     private Position position;
-    private MovingStrategy movingStrategy;
 
-    private RacingCar(String name, Position position, MovingStrategy movingStrategy) {
+    private RacingCar(String name, Position position) {
         this.name = name;
         this.position = position;
-        this.movingStrategy = movingStrategy;
     }
 
-    public static RacingCar of(String name, Position position, MovingStrategy movingStrategy) {
-        return new RacingCar(name, position, movingStrategy);
+    public static RacingCar of(String name, Position position) {
+        return new RacingCar(name, position);
     }
 
     public String getName() {
         return name;
     }
 
-    public Position getPosition() {
-        return position;
+    public int getPosition() {
+        return position.get();
+    }
+
+    public boolean isWinner(int winnerPosition) {
+        return position.isSamePosition(winnerPosition);
     }
 
     @Override
-    public int compareTo(RacingCar o) {
-        return Integer.compare(position.get(), o.position.get());
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCar racingCar = (RacingCar) o;
+        return Objects.equals(position, racingCar.position);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position);
     }
 }

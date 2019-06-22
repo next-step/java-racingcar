@@ -27,12 +27,8 @@ public class Position {
         return this;
     }
 
-    public int max(int maxPosition) {
-        return Math.max(position, maxPosition);
-    }
-
-    public boolean isMaxPosition(int maxPosition) {
-        return position == maxPosition;
+    public boolean isSamePosition(int position) {
+        return this.position == position;
     }
 
     @Override
