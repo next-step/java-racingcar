@@ -13,4 +13,8 @@ public class CarManagement {
         return cars;
     }
 
+    public int getSize(){
+        return cars.size();
+    }
+
 }

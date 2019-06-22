@@ -14,6 +14,10 @@ public class Car {
         this.nameOfCar = nameOfCar;
     }
 
+    public Car(int position, String nameOfCar) {
+        this(INITIAL_VALUE, position, nameOfCar);
+    }
+
     public Car(int numberOfAttempts, int position, String nameOfCar) {
         this.numberOfAttempts = numberOfAttempts;
         this.position = position;
