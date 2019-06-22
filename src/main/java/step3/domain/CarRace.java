@@ -34,10 +34,7 @@ public class CarRace {
     }
 
     private Cars moveCars(NumberGenerator numberGenerator) {
-        for (Car car : cars.getCars()) {
-            car.move(numberGenerator.getRandomNumber());
-        }
-        return cars;
+        return cars.move(numberGenerator);
     }
 
     public Winners pickWinners() {
