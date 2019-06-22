@@ -26,6 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CarsTest {
     private List<String> carNames;
     private List<Car> carList;
+    private List<Car> carPositionList;
 
     @BeforeEach
     void 사전설정() {
@@ -36,6 +37,11 @@ class CarsTest {
         carList = new ArrayList<>();
         for (String carName : carNames) {
             carList.add(new Car(carName));
+        }
+
+        carList = new ArrayList<>();
+        for (String carName : carNames) {
+            carList.add(new Car(carName,3));
         }
     }
 
@@ -61,5 +67,11 @@ class CarsTest {
                 .orElse(0);
 
         assertThat(maxPosition).isBetween(0, 1);
+    }
+
+    @Test
+    void 자동차들_위치_가져오기() {
+        Cars cars = new Cars(carList);
+        assertThat(cars.getCarsPosition().contains(3)).isTrue();
     }
 }
