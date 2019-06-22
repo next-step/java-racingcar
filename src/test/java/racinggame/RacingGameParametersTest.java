@@ -8,22 +8,20 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 class RacingGameParametersTest {
     private String carNameString = "pobi,crong,honux";
     private int carQuantity = 3;
+    private MoveDecider moveDecider = new MoveDecider() {
+        @Override
+        public boolean canMove() {
+            return true;
+        }
+    };
 
     @Test
     void 생성자_전부_정상() {
         int round = 2;
 
-        RacingGameParameters racingGameParameters = new RacingGameParameters(round, carNameString);
+        RacingGameParameters racingGameParameters = new RacingGameParameters(round, carNameString, moveDecider);
 
         assertThat(racingGameParameters.getCarQuantity()).isEqualTo(carQuantity);
-    }
-
-    @Test
-    void 생성자_전부_정상2() {
-        int round = 2;
-
-        RacingGameParameters racingGameParameters = new RacingGameParameters(round, carNameString);
-
         assertThat(racingGameParameters.getGameRound()).isEqualTo(round);
     }
 
@@ -32,7 +30,7 @@ class RacingGameParametersTest {
         int round = 0;
 
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new RacingGameParameters(round, carNameString));
+                .isThrownBy(() -> new RacingGameParameters(round, carNameString, moveDecider));
     }
 
     @Test
@@ -40,18 +38,6 @@ class RacingGameParametersTest {
         int round = 2;
 
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new RacingGameParameters(round, ""));
-    }
-
-    @Test
-    void numberGenerator를_직접_주입() {
-        NumberGenerator numberGenerator = new NumberGenerator() {
-            @Override
-            public int generate() {
-                return 3;
-            }
-        };
-        RacingGameParameters.setNumberGenerator(numberGenerator);
-        assertThat(CarHandler.getRandomMoveCondition()).isFalse();
+                .isThrownBy(() -> new RacingGameParameters(round, "", moveDecider));
     }
 }
