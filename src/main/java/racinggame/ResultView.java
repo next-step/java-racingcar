@@ -16,8 +16,8 @@ public class ResultView {
             stringBuilder.append(getCurrentRoundCarsPositionText(gameResult));
         });
 
-        int lastIndex = gameResults.getGameResults().size() - 1;
-        GameResult lastRoundResult = gameResults.getGameResults().get(lastIndex);
+        int lastIndex = gameResults.getSize() - 1;
+        GameResult lastRoundResult = gameResults.getByIndex(lastIndex);
 
         stringBuilder.append(lastRoundResult.getWinner());
         stringBuilder.append("가 최종 우승했습니다.");

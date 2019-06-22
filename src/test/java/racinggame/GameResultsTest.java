@@ -15,6 +15,6 @@ class GameResultsTest {
         GameResult gameResult = new GameResult(cars);
         gameResults.addResult(gameResult);
 
-        assertThat(gameResults.getGameResults().size()).isEqualTo(1);
+        assertThat(gameResults.getSize()).isEqualTo(1);
     }
 }
