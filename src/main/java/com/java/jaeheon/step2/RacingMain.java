@@ -1,6 +1,7 @@
 package com.java.jaeheon.step2;
 
 import com.java.jaeheon.step2.view.InputView;
+import com.java.jaeheon.step2.view.ResultView;
 
 public class RacingMain {
 
@@ -11,7 +12,7 @@ public class RacingMain {
 
         RacingGame racingGame = new RacingGame(nameOfCars, numberOfAttempts);
         racingGame.carRacingStart();
-        racingGame.resultViewer();
+        ResultView.resultViewRacing(racingGame.racingResult());
     }
 
 }

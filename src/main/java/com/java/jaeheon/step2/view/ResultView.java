@@ -11,13 +11,11 @@ public class ResultView {
     public static void resultViewRacing(RecordBoard recordBoard) {
         changeNextLine();
         System.out.println("실행 결과");
-        for (int attempts = 1; attempts <= recordBoard.getRecorderdNumber(); attempts++) {
+        for (int attempts = 1; attempts <= recordBoard.getRecordedNumber(); attempts++) {
             List<Car> cars = recordBoard.getRecord(attempts);
             resultViewByCar(cars);
-            changeNextLine();
         }
         System.out.println(recordBoard.getWinner() + "가 최종 우승했습니다.");
-
     }
 
     public static void resultViewByCar(List<Car> cars) {
@@ -26,6 +24,7 @@ public class ResultView {
             resultViewPositionByCar(car);
             changeNextLine();
         }
+        changeNextLine();
     }
 
     public static void resultViewPositionByCar(Car car) {

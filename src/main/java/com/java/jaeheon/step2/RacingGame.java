@@ -3,7 +3,6 @@ package com.java.jaeheon.step2;
 import com.java.jaeheon.step2.model.Car;
 import com.java.jaeheon.step2.model.CarManagement;
 import com.java.jaeheon.step2.model.RecordBoard;
-import com.java.jaeheon.step2.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,8 +51,8 @@ public class RacingGame {
         return random.nextInt(CONDITION_LIMIT);
     }
 
-    public void resultViewer() {
-        ResultView.resultViewRacing(recordBoard);
+    public RecordBoard racingResult() {
+        return recordBoard;
     }
 
 }

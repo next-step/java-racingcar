@@ -7,11 +7,11 @@ import java.util.stream.Collectors;
 
 public class RecordBoard {
     private Map<Integer, List<Car>> recordByAttempts = new HashMap<>();
-    private int recorderdNumber = 0;
+    private int recordedNumber = 0;
 
     public RecordBoard racingRecorder(int attempts, List<Car> cars) {
         recordByAttempts.put(attempts, cars);
-        recorderdNumber++;
+        recordedNumber++;
         return this;
     }
 
@@ -19,14 +19,14 @@ public class RecordBoard {
         return recordByAttempts.get(attempts);
     }
 
-    public int getRecorderdNumber(){
-        return recorderdNumber;
+    public int getRecordedNumber() {
+        return recordedNumber;
     }
 
     public String getWinner() {
         int maxPosition = 0;
 
-        List<Car> cars = recordByAttempts.get(recorderdNumber);
+        List<Car> cars = recordByAttempts.get(recordedNumber);
         for (Car comparedCar : cars) {
             maxPosition = CompareRecords(maxPosition, comparedCar.getPosition());
         }
