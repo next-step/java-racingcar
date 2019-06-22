@@ -11,5 +11,9 @@ public class Car {
         return position;
     }
 
+    public int addPosition(){
+        return this.position += 1;
+    }
+
 }
 

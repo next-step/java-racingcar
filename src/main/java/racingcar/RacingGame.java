@@ -48,7 +48,7 @@ public class RacingGame {
     public Car move(Car car){
         int randomNum = getRandomNum();
         if (randomNum >= GO_CONDITION) {
-            car.move(car.getPosition() + 1);
+            car.addPosition();
         }
         return new Car(car.getPosition());
     }
