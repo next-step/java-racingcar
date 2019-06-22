@@ -25,6 +25,8 @@ public class Cars {
 
     public static Cars of(List<String> names) {
         return new Cars(names.stream()
+                .filter(s -> !"".equals(s.trim()))
+                .distinct()
                 .map(s -> new Car(s))
                 .collect(Collectors.toList()));
     }
