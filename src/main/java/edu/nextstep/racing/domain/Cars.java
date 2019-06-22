@@ -23,12 +23,24 @@ public class Cars {
         this.cars = cars;
     }
 
+    public static Cars of(List<String> names) {
+        return new Cars(names.stream()
+                .map(s -> new Car(s))
+                .collect(Collectors.toList()));
+    }
+
     public Cars doMoveGame() {
         cars.stream()
                 .peek(car -> car.carMove(validMoveNumber()))
                 .collect(Collectors.toList());
 
         return new Cars(this.cars);
+    }
+
+    public List<String> getCarNames() {
+        return this.cars.stream()
+                .map(Car::getCarName)
+                .collect(Collectors.toList());
     }
 
     public Stream<Car> stream() {
