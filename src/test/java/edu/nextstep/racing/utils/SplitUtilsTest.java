@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class SplitUtilsTest {
 
     @ParameterizedTest
-    @ValueSource(strings = {"kwon","byeong","yun"})
+    @ValueSource(strings = {"kwon", "byeong", "yun"})
     void 콤마_기준으로_문자열자르기(String names) {
         List<String> carNames = SplitUtils.commaSplit("kwon,byeong,yun");
         assertThat(carNames.contains(names)).isTrue();

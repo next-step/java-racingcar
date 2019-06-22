@@ -1,6 +1,5 @@
 package edu.nextstep.racing.domain;
 
-import javafx.geometry.Pos;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -33,7 +32,7 @@ public class PositionTest {
     @Test
     void 음수값_예외상황() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-           Position position = new Position(-1);
+            Position position = new Position(-1);
         });
     }
 

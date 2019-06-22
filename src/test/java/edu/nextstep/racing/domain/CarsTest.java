@@ -1,6 +1,5 @@
 package edu.nextstep.racing.domain;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,8 +11,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.in;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * author       : gwonbyeong-yun <sksggg123>
@@ -68,14 +65,14 @@ class CarsTest {
 
     @Test
     void 자동차들_위치_가져오기() {
-        List<Car> positionCars = new ArrayList<>(Arrays.asList(new Car("TEST1", 3), new Car("TEST2",3)));
+        List<Car> positionCars = new ArrayList<>(Arrays.asList(new Car("TEST1", 3), new Car("TEST2", 3)));
         Cars cars = new Cars(positionCars);
         assertThat(cars.getCarsPosition().get(0)).isEqualTo(3);
     }
 
     @Test
     void 자동차_리스트_사이즈() {
-        List<Car> carsList = new ArrayList<>(Arrays.asList(new Car("TEST1", 3), new Car("TEST2",3)));
+        List<Car> carsList = new ArrayList<>(Arrays.asList(new Car("TEST1", 3), new Car("TEST2", 3)));
         Cars cars = new Cars(carsList);
         assertThat(cars.size()).isEqualTo(2);
     }

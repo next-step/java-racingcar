@@ -27,7 +27,7 @@ public class Car {
     }
 
     public void carMove(int validNumber) {
-        if(isMove(validNumber)) {
+        if (isMove(validNumber)) {
             this.position = new Position(position.move());
         }
     }

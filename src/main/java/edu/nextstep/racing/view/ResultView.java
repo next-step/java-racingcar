@@ -30,7 +30,7 @@ public class ResultView {
         }
         print();
     }
-    
+
     public static void resultPrint(String carName, int position) {
         StringBuilder sb = new StringBuilder();
         sb.append(carName);
@@ -46,7 +46,7 @@ public class ResultView {
         String winPlater = winPlayerNames.stream()
                 .collect(Collectors.joining(COMMA));
 
-        System.out.println(winPlater+"가 최종 우승했습니다.");
+        System.out.println(winPlater + "가 최종 우승했습니다.");
     }
 
     public static void print() {

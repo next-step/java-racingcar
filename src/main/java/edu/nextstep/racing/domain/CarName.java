@@ -24,7 +24,7 @@ public class CarName {
     }
 
     private void nameValidation(String carName) {
-        if(carName == null || "".equals(carName)) {
+        if (carName == null || "".equals(carName)) {
             throw new IllegalArgumentException("자동차 이름이 유효하지 않습니다.");
         }
     }

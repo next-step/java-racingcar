@@ -20,7 +20,7 @@ public class CarNameTest {
     @Test
     void 자동차이름_생성시_예외상황() {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-           CarName name = new CarName("");
+            CarName name = new CarName("");
         });
     }
 
