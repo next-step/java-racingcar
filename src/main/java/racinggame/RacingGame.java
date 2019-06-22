@@ -29,7 +29,7 @@ public class RacingGame {
 
     private void saveCurrentResult() {
         GameResult gameResult = new GameResult(this.cars);
-        this.gameResults.getGameResults().add(gameResult);
+        gameResults.getGameResults().add(gameResult);
     }
 
     public GameResults getGameResults() {
