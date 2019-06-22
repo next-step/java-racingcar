@@ -1,9 +1,5 @@
 package view;
 
-import domain.CarInfo;
-import domain.RacingGame;
-
-import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -20,6 +16,7 @@ public class InputView {
 
         System.out.println("시도할 회수는 몇 회 인가요?");
         int timeofRace = scanner.nextInt();
+        System.out.println("실행 결과");
         return timeofRace;
     }
 }

@@ -11,12 +11,12 @@ public class RacingGameMain {
         int timeofGame = InputView.getTimeofGame();
 
         RacingGame racingGame = new RacingGame(namesOfCar, timeofGame);
-        while(!racingGame.isEnd()) {
+        while (!racingGame.isEnd()) {
             racingGame.race();
             ResultView.printCars(racingGame.getCars());
         }
 
-//        ResultView.printWinners(racingGame.getWinners());
+        ResultView.printWinners(racingGame.getWinners());
 
     }
 }

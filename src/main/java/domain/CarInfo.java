@@ -14,6 +14,12 @@ public class CarInfo implements MovableStrategy {
         this.carName = carName;
     }
 
+    public CarInfo(String carName, int carPosition, String carStatus) {
+        this.carName = carName;
+        this.carPosition = carPosition;
+        this.carStatus = carStatus;
+    }
+
     public int getCarPosition() {
         return carPosition;
     }
@@ -45,6 +51,10 @@ public class CarInfo implements MovableStrategy {
         return random.nextInt(MAX_RANDOM_NUMBER) >= FORWARD_NUM;
     }
 
+    public int getMaxPosition(int maxPosition) {
+        return Math.max(maxPosition, this.carPosition);
+    }
+
     // 자동차의 위치를 상태로 변경해주는 함수 (결과를 출력할때 로직추가 없이 바로 자동차 상태를 변경하기 위해 추가)
     private void makeStatusofCar() {
         StringBuilder status = new StringBuilder();
@@ -54,4 +64,10 @@ public class CarInfo implements MovableStrategy {
         }
         this.carStatus = status.toString();
     }
+
+    // maxpositon 값과 현재 자동차의 position 값이 같은지 비교
+    public boolean compareWithMaxPosition(int maxpositon) {
+        return this.carPosition == maxpositon;
+    }
+
 }
