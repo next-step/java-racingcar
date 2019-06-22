@@ -93,11 +93,11 @@ public class RacingGame {
 
     public static void main(String[] args) {
         RacingGame racingGame;
-        List carInfoList = new ArrayList<CarInfo>();
+        List car = new ArrayList<CarInfo>();
 
-        racingGame = InputView.userInput(carInfoList);  //사용자 입력 실행
-        racingGame.gameInitialSet(carInfoList); // 유저 입력값을 기반으로 최초 설정값 세팅
-        racingGame.makeRandomNumberAndGameResult(racingGame, carInfoList); //Random 값 생성 및 자동차 상태 출력
-        racingGame.findRaceWinner(carInfoList); // 최총 우승자 찾기 실행
+        racingGame = InputView.userInput(car);  //사용자 입력 실행
+        racingGame.gameInitialSet(car); // 유저 입력값을 기반으로 최초 설정값 세팅
+        racingGame.makeRandomNumberAndGameResult(racingGame, car); //Random 값 생성 및 자동차 상태 출력
+        racingGame.findRaceWinner(car); // 최총 우승자 찾기 실행
     }
 }
