@@ -1,11 +1,13 @@
 package edu.nextstep.racing.domain;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,7 +28,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class CarsTest {
     private List<String> carNames;
     private List<Car> carList;
-    private List<Car> carPositionList;
 
     @BeforeEach
     void 사전설정() {
@@ -37,11 +38,6 @@ class CarsTest {
         carList = new ArrayList<>();
         for (String carName : carNames) {
             carList.add(new Car(carName));
-        }
-
-        carList = new ArrayList<>();
-        for (String carName : carNames) {
-            carList.add(new Car(carName,3));
         }
     }
 
@@ -54,7 +50,8 @@ class CarsTest {
 
     @Test
     void 자동차들의_경기결과() {
-        Cars cars = new Cars(carList);
+        List<Car> finishGameCars = new ArrayList<>(Arrays.asList(new Car("TEST1"), new Car("TEST2")));
+        Cars cars = new Cars(finishGameCars);
         cars = cars.doMoveGame();
 
         List<Integer> carPositionList = cars.stream()
@@ -71,7 +68,15 @@ class CarsTest {
 
     @Test
     void 자동차들_위치_가져오기() {
-        Cars cars = new Cars(carList);
-        assertThat(cars.getCarsPosition().contains(3)).isTrue();
+        List<Car> positionCars = new ArrayList<>(Arrays.asList(new Car("TEST1", 3), new Car("TEST2",3)));
+        Cars cars = new Cars(positionCars);
+        assertThat(cars.getCarsPosition().get(0)).isEqualTo(3);
+    }
+
+    @Test
+    void 자동차_리스트_사이즈() {
+        List<Car> carsList = new ArrayList<>(Arrays.asList(new Car("TEST1", 3), new Car("TEST2",3)));
+        Cars cars = new Cars(carsList);
+        assertThat(cars.size()).isEqualTo(2);
     }
 }
