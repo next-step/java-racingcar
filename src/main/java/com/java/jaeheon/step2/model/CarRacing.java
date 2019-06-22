@@ -1,5 +1,7 @@
 package com.java.jaeheon.step2.model;
 
+import com.java.jaeheon.step2.view.ResultView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -12,23 +14,31 @@ public class CarRacing {
 	private CarManagement carManagement;
 	private RecordBoard recordBoard;
 
-	public CarRacing(CarManagement carManagement, int numberOfAttempts) {
-		this.carManagement = carManagement;
+	public CarRacing(String nameOfCars, int numberOfAttempts) {
+		this.carManagement = carRegister(nameOfCars);
 		this.numberOfAttempts = numberOfAttempts;
 		this.recordBoard = new RecordBoard();
 	}
 
-	public RecordBoard carRacingStart() {
+	private CarManagement carRegister(String nameOfCars) {
+		String[] nameOfCarsArray = nameOfCars.split(",");
+		List<Car> cars = new ArrayList<>();
+		for (String nameOfCar : nameOfCarsArray) {
+			cars.add(new Car(nameOfCar));
+		}
+		return new CarManagement(cars);
+	}
+
+	public void carRacingStart() {
 		for (int attempts = 1; attempts <= numberOfAttempts; attempts++) {
 			carManagement = race();
-			recordBoard.racingRecorder(attempts, carManagement.getCarsList());
+			recordBoard.racingRecorder(attempts, carManagement.getCars());
 		}
-		return recordBoard;
 	}
 
 	private CarManagement race() {
 		List<Car> cars = new ArrayList<>();
-		for (Car car : carManagement.getCarsList()) {
+		for (Car car : carManagement.getCars()) {
 			cars.add(car.attemptsToMove(createCondition()));
 		}
 		return new CarManagement(cars);
@@ -36,6 +46,10 @@ public class CarRacing {
 
 	private int createCondition() {
 		return random.nextInt(CONDITION_LIMIT);
+	}
+
+	public void resultViewer() {
+		ResultView.resultViewRacing(recordBoard);
 	}
 
 }

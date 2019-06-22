@@ -9,12 +9,8 @@ public class CarManagement {
 		this.cars = cars;
 	}
 
-	public List<Car> getCarsList() {
+	public List<Car> getCars() {
 		return cars;
-	}
-
-	public long getCarsSize() {
-		return cars.size();
 	}
 
 }
