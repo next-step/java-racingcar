@@ -20,4 +20,8 @@ public class CarNames {
     public List<String> getCarNameList() {
         return Collections.unmodifiableList(carNameList);
     }
+
+    public int getSize() {
+        return carNameList.size();
+    }
 }

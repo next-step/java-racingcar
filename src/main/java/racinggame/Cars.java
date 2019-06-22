@@ -13,8 +13,7 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(CarNames carNames) {
-        List<String> carNameList = carNames.getCarNameList();
-        int carQuantity = carNameList.size();
+        int carQuantity = carNames.getSize();
         Preconditions.checkArgument(carQuantity >= MIN_CAR_QUANTITY, "자동차 숫자는 1 이상이어야 합니다.");
 
         this.cars = carNames.getCarNameList()
