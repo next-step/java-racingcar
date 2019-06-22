@@ -26,14 +26,6 @@ class RacingGameParametersTest {
     }
 
     @Test
-    void 생성자_round_비정상() {
-        int round = 0;
-
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new RacingGameParameters(round, carNameString, moveDecider));
-    }
-
-    @Test
     void 생성자_carQuantity_비정상() {
         int round = 2;
 
