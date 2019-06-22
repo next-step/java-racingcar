@@ -6,39 +6,48 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class RecordBoard {
-	private Map<Integer, List<Car>> recordByAttempts = new HashMap<>();
+    private Map<Integer, List<Car>> recordByAttempts = new HashMap<>();
+    private int recorderdNumber = 0;
 
-	public RecordBoard racingRecorder(int attempts, List<Car> cars) {
-		recordByAttempts.put(attempts, cars);
-		return this;
-	}
+    public RecordBoard racingRecorder(int attempts, List<Car> cars) {
+        recordByAttempts.put(attempts, cars);
+        recorderdNumber++;
+        return this;
+    }
 
-	public Map<Integer, List<Car>> getRecord() {
-		return recordByAttempts;
-	}
+    public List<Car> getRecord(int attempts) {
+        return recordByAttempts.get(attempts);
+    }
 
-	public String getWinner() {
-		int maxPosition = 0;
+    public int getRecorderdNumber(){
+        return recorderdNumber;
+    }
 
-		List<Car> cars = recordByAttempts.get(recordByAttempts.size());
-		for (Car comparedCar : cars) {
-			maxPosition = CompareRecords(maxPosition, comparedCar.getPosition());
-		}
+    public String getWinner() {
+        int maxPosition = 0;
 
-		final int max = maxPosition;
-		List<String> winners = cars.stream().filter(car -> car.getPosition().equals(max)).map(car -> car.getNameOfCar()).collect(Collectors.toList());
+        List<Car> cars = recordByAttempts.get(recorderdNumber);
+        for (Car comparedCar : cars) {
+            maxPosition = CompareRecords(maxPosition, comparedCar.getPosition());
+        }
 
-		return winners.toString();
-	}
+        final int max = maxPosition;
+        List<String> winners = cars.stream()
+                .filter(car -> car.getPosition().equals(max))
+                .map(car -> car.getNameOfCar())
+                .collect(Collectors.toList());
 
-	private int CompareRecords(int maxPosition, int comparedPosition) {
-		if (maxPosition == 0) {
-			return comparedPosition;
-		}
-		if (maxPosition > comparedPosition) {
-			return maxPosition;
-		}
-		return comparedPosition;
-	}
+        return winners.toString();
+    }
+
+    private int CompareRecords(int maxPosition, int comparedPosition) {
+        if (maxPosition == 0) {
+            return comparedPosition;
+        }
+        if (maxPosition > comparedPosition) {
+            return maxPosition;
+        }
+        return comparedPosition;
+    }
 
 }
