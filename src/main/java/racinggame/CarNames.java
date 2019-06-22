@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class CarNames {
-    private List<String> carNameList;
+    private final List<String> carNameList;
 
     public CarNames(String carNameString) {
         List<String> carNameList = Arrays.asList(carNameString.split(","));

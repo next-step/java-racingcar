@@ -11,7 +11,7 @@ import static java.util.stream.Collectors.toList;
 
 public class Cars {
     public static final int MIN_CAR_QUANTITY = 1;
-    private List<Car> cars;
+    private final List<Car> cars;
 
     private Cars(List<Car> cars) {
         this.cars = cars;

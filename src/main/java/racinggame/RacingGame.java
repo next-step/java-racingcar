@@ -2,9 +2,9 @@ package racinggame;
 
 public class RacingGame {
     private final GameResults gameResults;
+    private final MoveDecider moveDecider;
     private Cars cars;
     private GameRound gameRound;
-    private MoveDecider moveDecider;
 
     public RacingGame(RacingGameParameters racingGameParameters) {
         this.cars = new Cars(racingGameParameters.getCarNames());

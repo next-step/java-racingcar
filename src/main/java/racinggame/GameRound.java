@@ -7,7 +7,7 @@ public class GameRound {
     public static final int INITIAL_ROUND = 0;
 
     private final int maxRound;
-    private int currentRound;
+    private final int currentRound;
 
     private GameRound(int maxRound, int currentRound) {
         Preconditions.checkArgument(maxRound >= MIN_GAME_ROUND, "GameRound 는 반드시 " + MIN_GAME_ROUND + "이상이어야 합니다.");
