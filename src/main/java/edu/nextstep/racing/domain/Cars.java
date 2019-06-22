@@ -47,6 +47,10 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
+    public int size() {
+        return this.cars.size();
+    }
+
     public Stream<Car> stream() {
         return this.cars.stream();
     }
