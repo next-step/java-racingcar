@@ -3,8 +3,6 @@ package racinggame;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
@@ -29,21 +27,24 @@ class RacingGameTest {
 
     @Test
     void 생성자_정상() {
-        List<GameResult> actual = racingGame.getGameResults().getGameResults();
+        GameResults actual = racingGame.getGameResults();
 
-        assertThat(actual).hasSize(1);
-        assertThat(actual.get(0).getGameResult()).hasSize(carAmount);
-        assertThat(actual.get(0).getGameResult()).containsKeys("pobi", "crong", "honux");
-        assertThat(actual.get(0).getGameResult()).containsValues(1, 1, 1);
+        assertThat(actual.getSize()).isEqualTo(1);
+        assertThat(actual.getByIndex(0).getGameResult()).hasSize(carAmount);
+        assertThat(actual.getByIndex(0).getGameResult()).containsKeys("pobi", "crong", "honux");
+        assertThat(actual.getByIndex(0).getGameResult()).containsValues(1, 1, 1);
     }
 
     @Test
     void 게임_라운드_전체_진행() {
         racingGame.playFullRound();
 
-        List<GameResult> actual = racingGame.getGameResults().getGameResults();
-        assertThat(actual).hasSize(round + 1);
+        GameResults actual = racingGame.getGameResults();
 
-        // TODO: 가능하다면 테스트를 구현해보자.
+        // 최초 위치도 GameResult 로 갖고 있어서 + 1 로 검사함.
+        assertThat(actual.getSize()).isEqualTo(round + 1);
+        assertThat(actual.getByIndex(round).getGameResult()).hasSize(carAmount);
+        assertThat(actual.getByIndex(round).getGameResult()).containsKeys("pobi", "crong", "honux");
+        assertThat(actual.getByIndex(round).getGameResult()).containsValues(round + 1, round + 1, round + 1);
     }
 }
