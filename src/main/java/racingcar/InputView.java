@@ -5,7 +5,7 @@ import racingcar.model.InputModel;
 import java.util.Scanner;
 
 public class InputView {
-    public InputModel getInput() {
+    public static InputModel getInput() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("자동차 대수는 몇 대 인가요?");
         int carNum = scanner.nextInt();
