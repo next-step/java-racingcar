@@ -1,7 +1,6 @@
 package racingcar.view.result;
 
-import racingcar.model.CarPosition;
-import racingcar.model.RacingCars;
+import racingcar.domain.RacingCars;
 
 public class DefaultResultView implements ResultView {
 
@@ -12,11 +11,14 @@ public class DefaultResultView implements ResultView {
 
     @Override
     public void printBody(RacingCars racingCars) {
+        /*
         racingCars.getCarPosition().stream()
                 .forEach(DefaultResultView::printCar);
+        */
         System.out.println();
     }
 
+    /*
     private static void printCar(CarPosition carPosition) {
         System.out.print(carPosition.getName() + " : ");
         for (int i=0; i<carPosition.getPosition(); i++) {
@@ -24,6 +26,7 @@ public class DefaultResultView implements ResultView {
         }
         System.out.println();
     }
+    */
 
     @Override
     public void printFooter(RacingCars racingCars) {

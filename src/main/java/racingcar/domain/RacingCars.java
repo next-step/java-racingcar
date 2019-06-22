@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,28 +14,21 @@ public class RacingCars {
         return new RacingCars(racingCars);
     }
 
-    public void move() {
-        racingCars = racingCars.stream()
-                .map(RacingCar::tryMove)
-                .collect(Collectors.toList());
-    }
-
-    public List<CarPosition> getCarPosition() {
-        return racingCars.stream()
-                .map(racingCar -> new CarPosition(racingCar.getName(), racingCar.getPosition()))
-                .collect(Collectors.toList());
-    }
-
     public List<String> getWinners() {
+        int winnerPosition = getWinnerPosition();
+
         return racingCars.stream()
-                .filter(racingCar -> racingCar.getPosition().equals(getWinnerPosition()))
+                .filter(racingCar -> racingCar.getPosition().equals(winnerPosition))
                 .map(RacingCar::getName)
                 .collect(Collectors.toList());
     }
 
     private int getWinnerPosition() {
+        return 0;
+        /*
         return racingCars.stream()
                 .mapToInt(RacingCar::getPosition)
                 .max().orElse(0);
+        */
     }
 }

@@ -1,8 +1,8 @@
 package racingcar;
 
-import racingcar.logic.CarEngine;
-import racingcar.model.RacingCar;
-import racingcar.model.RacingCars;
+import racingcar.domain.moving.MovingStrategy;
+import racingcar.domain.RacingCar;
+import racingcar.domain.RacingCars;
 import racingcar.view.input.InputView;
 import racingcar.view.result.ResultView;
 
@@ -12,15 +12,15 @@ public class RacingGame {
 
     private final InputView inputView;
     private final ResultView resultView;
-    private final CarEngine carEngine;
+    private final MovingStrategy movingStrategy;
 
     private RacingCars racingCars;
     private Integer numberOfTimes;
 
-    RacingGame(InputView inputView, ResultView resultView, CarEngine carEngine) {
+    RacingGame(InputView inputView, ResultView resultView, MovingStrategy movingStrategy) {
         this.inputView = inputView;
         this.resultView = resultView;
-        this.carEngine = carEngine;
+        this.movingStrategy = movingStrategy;
     }
 
     public void run() {
@@ -30,20 +30,24 @@ public class RacingGame {
     }
 
     private void initGame() {
+        /*
         racingCars = RacingCars.of(
                 inputView.getCarNames().stream()
-                .map(name -> RacingCar.of(name, carEngine))
+                .map(name -> RacingCar.of(name, movingStrategy))
                 .collect(Collectors.toList())
         );
+        */
         numberOfTimes = inputView.getNumberOfTimes();
     }
 
     private void startGame() {
         resultView.printHeader();
+        /*
         for (int i=0; i<numberOfTimes; i++) {
             racingCars.move();
             resultView.printBody(racingCars);
         }
+        */
     }
 
     private void showResult() {

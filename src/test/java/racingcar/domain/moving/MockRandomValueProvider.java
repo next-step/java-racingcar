@@ -1,16 +1,16 @@
-package racingcar.logic;
+package racingcar.domain.moving;
 
 public class MockRandomValueProvider extends RandomValueProvider {
 
-    private Integer result;
+    private int result;
 
-    MockRandomValueProvider(Integer result) {
+    MockRandomValueProvider(int result) {
         super(0);
         this.result = result;
     }
 
     @Override
-    public Integer get() {
+    public int get() {
         return result;
     }
 }

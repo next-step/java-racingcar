@@ -1,6 +1,6 @@
 package racingcar.view.result;
 
-import racingcar.model.RacingCars;
+import racingcar.domain.RacingCars;
 
 
 public interface ResultView {
