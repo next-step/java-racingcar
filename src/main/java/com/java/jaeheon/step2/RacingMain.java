@@ -1,5 +1,6 @@
 package com.java.jaeheon.step2;
 
+import com.java.jaeheon.step2.domain.RacingGame;
 import com.java.jaeheon.step2.view.InputView;
 import com.java.jaeheon.step2.view.ResultView;
 

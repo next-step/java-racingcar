@@ -6,11 +6,11 @@ import java.util.List;
 public class Winners {
     static List<Car> winners = new ArrayList<Car>();
 
-    public static List<Car> findWinner(List<Car> cars) {
-        return findWinner(cars, getMaxPosition(cars));
+    public static List<Car> findWinners(List<Car> cars) {
+        return findWinners(cars, getMaxPosition(cars));
     }
 
-    private static List<Car> findWinner(List<Car> cars, int maxPosition) {
+    private static List<Car> findWinners(List<Car> cars, int maxPosition) {
         for (Car car : cars) {
             winnerAdd(car, maxPosition);
         }

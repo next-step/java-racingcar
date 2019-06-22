@@ -1,8 +1,4 @@
-package com.java.jaeheon.step2;
-
-import com.java.jaeheon.step2.domain.Car;
-import com.java.jaeheon.step2.domain.CarManagement;
-import com.java.jaeheon.step2.domain.Winners;
+package com.java.jaeheon.step2.domain;
 
 import java.util.*;
 
@@ -17,6 +13,11 @@ public class RacingGame {
 
     public RacingGame(String nameOfCars, int numberOfAttempts) {
         this.carManagement = carRegister(nameOfCars);
+        this.numberOfAttempts = numberOfAttempts;
+    }
+
+    public RacingGame(List<Car> cars, int numberOfAttempts) {
+        this.carManagement = new CarManagement(cars);
         this.numberOfAttempts = numberOfAttempts;
     }
 
@@ -51,12 +52,16 @@ public class RacingGame {
         return numberOfAttempts;
     }
 
-    public List<Car> getCars(int attempts) {
+    public int getNumberOfCars() {
+        return carManagement.getSize();
+    }
+
+    public List<Car> getAttemptsCars(int attempts) {
         return recordByAttempts.get(attempts);
     }
 
     public List<Car> getWinner() {
-        return Winners.findWinner(carManagement.getCars());
+        return Winners.findWinners(carManagement.getCars());
     }
 
 }

@@ -3,7 +3,7 @@ package com.java.jaeheon.step2.view;
 import java.util.List;
 import java.util.StringJoiner;
 
-import com.java.jaeheon.step2.RacingGame;
+import com.java.jaeheon.step2.domain.RacingGame;
 import com.java.jaeheon.step2.domain.Car;
 
 public class ResultView {
@@ -13,7 +13,7 @@ public class ResultView {
         changeNextLine();
         System.out.println("실행 결과");
         for (int attempts = 1; attempts <= racingGame.getNumberOfAttempts(); attempts++) {
-            resultViewByCars(racingGame.getCars(attempts));
+            resultViewByCars(racingGame.getAttemptsCars(attempts));
         }
         resultViewByWinners(racingGame.getWinner());
     }
