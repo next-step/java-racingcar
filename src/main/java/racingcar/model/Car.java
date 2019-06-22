@@ -11,13 +11,5 @@ public class Car {
         return position;
     }
 
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
-    public Car move(int position) {
-        this.setPosition(position);
-        return this;
-    }
 }
 
