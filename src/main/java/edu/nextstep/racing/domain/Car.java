@@ -28,7 +28,6 @@ public class Car {
 
     public Car carMove(int validNumber) {
         if (isMove(validNumber)) {
-//            this.position = new Position(position.move());
             return new Car(name.getName(), position.move());
         }
         return new Car(name.getName(), position.getPosition());

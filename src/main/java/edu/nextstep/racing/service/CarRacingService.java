@@ -28,15 +28,6 @@ public class CarRacingService {
         this.round = round;
     }
 
-//    public void raceStart() {
-//        for (int i = 0; i < round; i++) {
-//            this.cars = cars.doMoveGame();
-//            ResultView.printRuslt(this.cars);
-//        }
-//        Winner winner = Winner.checkPosition(this.cars.asList());
-//        ResultView.resultWinPlayer(winner.getCarNames());
-//    }
-
     public void raceStart() {
         for (int i = 0; i < round; i++) {
             movingHistory.add(cars.doMoveGame());
