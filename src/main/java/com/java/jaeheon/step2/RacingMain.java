@@ -12,7 +12,7 @@ public class RacingMain {
 
         RacingGame racingGame = new RacingGame(nameOfCars, numberOfAttempts);
         racingGame.carRacingStart();
-        ResultView.resultViewRacing(racingGame.racingResult());
+        ResultView.resultViewRacing(racingGame);
     }
 
 }

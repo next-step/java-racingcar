@@ -1,32 +1,28 @@
 package com.java.jaeheon.step2;
 
-import com.java.jaeheon.step2.model.Car;
-import com.java.jaeheon.step2.model.CarManagement;
-import com.java.jaeheon.step2.model.RecordBoard;
+import com.java.jaeheon.step2.domain.Car;
+import com.java.jaeheon.step2.domain.CarManagement;
+import com.java.jaeheon.step2.domain.Winners;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class RacingGame {
+    private Map<Integer, List<Car>> recordByAttempts = new HashMap<>();
 
     private static final int CONDITION_LIMIT = 10;
     private final Random random = new Random();
 
     private final int numberOfAttempts;
     private CarManagement carManagement;
-    private RecordBoard recordBoard;
 
     public RacingGame(String nameOfCars, int numberOfAttempts) {
         this.carManagement = carRegister(nameOfCars);
         this.numberOfAttempts = numberOfAttempts;
-        this.recordBoard = new RecordBoard();
     }
 
     private CarManagement carRegister(String nameOfCars) {
-        String[] nameOfCarsArray = nameOfCars.split(",");
         List<Car> cars = new ArrayList<>();
-        for (String nameOfCar : nameOfCarsArray) {
+        for (String nameOfCar : nameOfCars.trim().split(",")) {
             cars.add(new Car(nameOfCar));
         }
         return new CarManagement(cars);
@@ -35,7 +31,7 @@ public class RacingGame {
     public void carRacingStart() {
         for (int attempts = 1; attempts <= numberOfAttempts; attempts++) {
             carManagement = race();
-            recordBoard.racingRecorder(attempts, carManagement.getCars());
+            recordByAttempts.put(attempts, carManagement.getCars());
         }
     }
 
@@ -51,8 +47,16 @@ public class RacingGame {
         return random.nextInt(CONDITION_LIMIT);
     }
 
-    public RecordBoard racingResult() {
-        return recordBoard;
+    public int getNumberOfAttempts() {
+        return numberOfAttempts;
+    }
+
+    public List<Car> getCars(int attempts) {
+        return recordByAttempts.get(attempts);
+    }
+
+    public List<Car> getWinner() {
+        return Winners.findWinner(carManagement.getCars());
     }
 
 }

@@ -1,4 +1,4 @@
-package com.java.jaeheon.step2.model;
+package com.java.jaeheon.step2.domain;
 
 public class Car {
     private static final int INITIAL_VALUE = 0;
@@ -38,6 +38,14 @@ public class Car {
 
     public Integer getPosition() {
         return position;
+    }
+
+    public int getMaxPosition(int maxPosition) {
+        return this.position > maxPosition ? this.position : maxPosition;
+    }
+
+    public boolean matchPosition(int position) {
+        return this.position == position;
     }
 
     public String getNameOfCar() {

@@ -1,4 +1,4 @@
-package com.java.jaeheon.step2.model;
+package com.java.jaeheon.step2.domain;
 
 import java.util.List;
 
