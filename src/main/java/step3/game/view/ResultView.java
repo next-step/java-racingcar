@@ -17,6 +17,8 @@ public class ResultView {
     }
 
     public void printRacingGameResult() {
+        System.out.println("\n실행 결과");
+
         List<Cars> result = racingGameResultModel.getCars();
         result.stream()
               .flatMap(this::flatMapAndNextLine)

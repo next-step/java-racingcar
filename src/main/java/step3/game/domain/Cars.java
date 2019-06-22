@@ -10,6 +10,10 @@ import step3.game.util.RacingGameRandomUtils;
 public class Cars {
     private final List<Car> cars;
 
+    Cars(Cars cars) {
+        this(cars.cars);
+    }
+
     private Cars(List<Car> cars) {
         this.cars = cars;
     }

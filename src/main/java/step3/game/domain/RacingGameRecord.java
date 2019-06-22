@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class RacingGameRecord {
     private final List<Cars> result;
 
-    public RacingGameRecord(List<Cars> result) {
+    private RacingGameRecord(List<Cars> result) {
         this.result = result;
     }
 
@@ -23,7 +23,9 @@ public class RacingGameRecord {
     }
 
     public List<Cars> getResult() {
-        return result;
+        return result.stream()
+                     .map(Cars::new)
+                     .collect(Collectors.toList());
     }
 
     public Cars previousTurn(int previousTurnNo) {
@@ -37,15 +39,19 @@ public class RacingGameRecord {
         List<Car> finalTurn = result.get(result.size() - 1).getCars();
         int winnerPosition = winnerPosition(finalTurn);
 
-        return finalTurn.stream()
-                        .filter(car -> winnerPosition == car.getPosition())
-                        .collect(Collectors.toList());
+        return winners(finalTurn, winnerPosition);
     }
 
     private int winnerPosition(List<Car> finalTurn) {
         return finalTurn.stream()
                         .mapToInt(Car::getPosition)
                         .max().orElse(0);
+    }
+
+    private List<Car> winners(List<Car> finalTurn, int winnerPosition) {
+        return finalTurn.stream()
+                        .filter(car -> winnerPosition == car.getPosition())
+                        .collect(Collectors.toList());
     }
 
     private void assertTurnNo(final int previousTurnNo, final int resultSize) {

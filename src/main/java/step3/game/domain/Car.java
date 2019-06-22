@@ -7,7 +7,7 @@ public class Car {
     private final CarName carName;
     private final Integer position;
 
-    public Car(Car car) {
+    Car(Car car) {
         this(car.carNo, car.carName, car.position);
     }
 
