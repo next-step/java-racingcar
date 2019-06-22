@@ -1,5 +1,6 @@
 package racinggame;
 
+import java.util.Collections;
 import java.util.Map;
 
 public class GameResult {
@@ -10,7 +11,7 @@ public class GameResult {
     }
 
     public Map<String, Integer> getGameResult() {
-        return this.gameResult;
+        return Collections.unmodifiableMap(this.gameResult);
     }
 
     public String getWinner() {

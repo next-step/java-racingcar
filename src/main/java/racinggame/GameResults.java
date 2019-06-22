@@ -1,6 +1,7 @@
 package racinggame;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class GameResults {
@@ -11,6 +12,14 @@ public class GameResults {
     }
 
     public List<GameResult> getGameResults() {
-        return gameResults;
+        return Collections.unmodifiableList(gameResults);
+    }
+
+    public int getSize() {
+        return gameResults.size();
+    }
+
+    public void addResult(GameResult gameResult) {
+        gameResults.add(gameResult);
     }
 }
