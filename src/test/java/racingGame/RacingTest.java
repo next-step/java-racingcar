@@ -34,9 +34,8 @@ class RacingTest {
 
     @Test
     void makeCarList() {
-        racing = new Racing(0, this.inputNames);
+        racing = new Racing(1, this.inputNames);
         assertThat(racing.getCars().size()).isEqualTo(5);
-        assertThat(racing.getCars().get(0).getPosition()).isEqualTo(0);
     }
 
     @Test
@@ -56,7 +55,7 @@ class RacingTest {
 
     @Test
     void constructorRacing() {
-        racing = new Racing(0, this.inputNames);
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(()-> new Racing(0, this.inputNames));
     }
 
     @Test

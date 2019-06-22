@@ -11,8 +11,8 @@ public class Racing {
     private int time;
     private List<Car> cars;
 
-    private int MAX_TIME = 999;
-    private int MIN_TIME = 1;
+    private final int MIN_TIME = 1;
+    private final int MAX_TIME = 999;
 
     public Racing(int time, List<String> inputCarNames) {
         this.validConstructTime(time);
@@ -37,7 +37,7 @@ public class Racing {
 
     public void raceCarMoveLoop() {
         for (Car car : this.cars) {
-            car.nextRace();
+            car.nextRace(new RandomNumber());
         }
     }
 
