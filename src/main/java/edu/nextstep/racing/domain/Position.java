@@ -20,6 +20,7 @@ public class Position {
     }
 
     public Position(int position) {
+        positionValidation(position);
         this.position = position;
     }
 
@@ -29,5 +30,11 @@ public class Position {
 
     public int move() {
         return ++this.position;
+    }
+
+    private void positionValidation(int position) {
+        if (position < 0) {
+            throw new IllegalArgumentException("자동차 이름이 유효하지 않습니다.");
+        }
     }
 }
