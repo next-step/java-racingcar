@@ -19,6 +19,10 @@ public class GameResults {
         return gameResults.size();
     }
 
+    public GameResult getByIndex(int index) {
+        return gameResults.get(index);
+    }
+
     public void addResult(GameResult gameResult) {
         gameResults.add(gameResult);
     }
