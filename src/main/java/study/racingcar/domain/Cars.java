@@ -1,4 +1,4 @@
-package study.racingcar.model;
+package study.racingcar.domain;
 
 import study.racingcar.strategy.MovableStrategy;
 import study.racingcar.strategy.RandomMovableStrategy;
@@ -44,7 +44,7 @@ public class Cars {
     }
 
     public Set<Car> getCars() {
-        return cars;
+        return new HashSet<>(cars);
     }
 
     private CarRacingLog makeCarRacingLog(Car car) {

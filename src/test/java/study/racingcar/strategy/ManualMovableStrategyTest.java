@@ -11,7 +11,12 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 class ManualMovableStrategyTest {
     @Test
-    void canMove() {
+    void 움직인다() {
         assertThat(new ManualMovableStrategy(true).canMove()).isTrue();
+    }
+
+    @Test
+    void 움직이지_않는다() {
+        assertThat(new ManualMovableStrategy(false).canMove()).isFalse();
     }
 }
