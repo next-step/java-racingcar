@@ -13,7 +13,7 @@ class GameResultsTest {
         GameResults gameResults = new GameResults();
         Cars cars = new Cars(carNames);
         GameResult gameResult = new GameResult(cars);
-        gameResults.getGameResults().add(gameResult);
+        gameResults.addResult(gameResult);
 
         assertThat(gameResults.getGameResults().size()).isEqualTo(1);
     }
