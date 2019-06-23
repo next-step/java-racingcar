@@ -13,6 +13,7 @@ package edu.nextstep.racing.domain;
 public class Position {
 
     private static final int INIT_POSITION = 0;
+    private static final int MOVE_POSITION = 1;
     private int position;
 
     public Position() {
@@ -28,8 +29,8 @@ public class Position {
         return this.position;
     }
 
-    public int move() {
-        return ++this.position;
+    public Position move() {
+        return new Position(this.position + MOVE_POSITION);
     }
 
     private void positionValidation(int position) {

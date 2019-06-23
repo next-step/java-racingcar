@@ -24,9 +24,17 @@ public class WinnerTest {
     @ParameterizedTest
     @ValueSource(strings = {"TEST1", "TEST3"})
     void 우승자_생성(String winners) {
-        Car car1 = new Car("TEST1", 5);
-        Car car2 = new Car("TEST2", 4);
-        Car car3 = new Car("TEST3", 5);
+        CarName name1 = new CarName("TEST1");
+        CarName name2 = new CarName("TEST2");
+        CarName name3 = new CarName("TEST3");
+
+        Position position1 = new Position(5);
+        Position position2 = new Position(4);
+        Position position3 = new Position(5);
+
+        Car car1 = new Car(name1, position1);
+        Car car2 = new Car(name2, position2);
+        Car car3 = new Car(name3, position3);
 
         List<Car> candinateWinners = new ArrayList<>(Arrays.asList(car1, car2, car3));
         Winner winner = Winner.checkPosition(candinateWinners);

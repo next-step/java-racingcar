@@ -65,14 +65,20 @@ class CarsTest {
 
     @Test
     void 자동차들_위치_가져오기() {
-        List<Car> positionCars = new ArrayList<>(Arrays.asList(new Car("TEST1", 3), new Car("TEST2", 3)));
+        Car car1 = new Car(new CarName("TEST1"), new Position(3));
+        Car car2 = new Car(new CarName("TEST2"), new Position(3));
+        List<Car> positionCars = new ArrayList<>(Arrays.asList(car1, car2));
+
         Cars cars = new Cars(positionCars);
         assertThat(cars.getCarsPosition().get(0)).isEqualTo(3);
     }
 
     @Test
     void 자동차_리스트_사이즈() {
-        List<Car> carsList = new ArrayList<>(Arrays.asList(new Car("TEST1", 3), new Car("TEST2", 3)));
+        Car car1 = new Car(new CarName("TEST1"), new Position(3));
+        Car car2 = new Car(new CarName("TEST2"), new Position(3));
+        List<Car> carsList = new ArrayList<>(Arrays.asList(car1, car2));
+
         Cars cars = new Cars(carsList);
         assertThat(cars.size()).isEqualTo(2);
     }

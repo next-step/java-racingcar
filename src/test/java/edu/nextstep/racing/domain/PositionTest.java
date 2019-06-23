@@ -26,7 +26,7 @@ public class PositionTest {
     @Test
     void 자동차_이동시키기() {
         Position position = new Position();
-        assertThat(position.move()).isEqualTo(1);
+        assertThat(position.move().getPosition()).isEqualTo(1);
     }
 
     @Test

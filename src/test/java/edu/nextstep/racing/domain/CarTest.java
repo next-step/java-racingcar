@@ -43,7 +43,8 @@ public class CarTest {
     @Test
     void 자동차의_위치가_전달받은_파라미터와같은지_확인() {
         Position position = new Position(3);
-        Car car = new Car("TEST", position.getPosition());
+        CarName name = new CarName("TEST");
+        Car car = new Car(name, position);
 
         assertThat(car.comparePosition(3)).isTrue();
     }

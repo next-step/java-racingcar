@@ -39,6 +39,7 @@ public class CarRacingService {
     }
 
     private void saveStepStatus() {
-        this.movingHistory.add(cars.doMoveGame());
+        this.cars = new Cars(cars.doMoveGame().asList());
+        this.movingHistory.add(cars);
     }
 }
