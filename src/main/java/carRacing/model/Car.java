@@ -39,6 +39,7 @@ public class Car {
         return name;
     }
 
+
     private boolean canMove(int output) {
         return MOVEMENT_LIMIT_BY_OUTPUT <= output;
     }
