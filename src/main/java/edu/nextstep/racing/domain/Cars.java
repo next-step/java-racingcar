@@ -28,7 +28,7 @@ public class Cars {
         return new Cars(names.getNames().stream()
                 .filter(s -> !"".equals(s.trim()))
                 .distinct()
-                .map(s -> new Car(s))
+                .map(name -> new Car(name))
                 .collect(Collectors.toList()));
     }
 
@@ -44,6 +44,12 @@ public class Cars {
         return this.cars.stream()
                 .map(Car::getCarPosition)
                 .collect(Collectors.toList());
+    }
+
+    public CarNames getCarNames() {
+        return CarNames.of(this.stream()
+                .map(Car::getCarName)
+                .collect(Collectors.toList()));
     }
 
     public int size() {
