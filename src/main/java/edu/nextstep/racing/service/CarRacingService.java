@@ -2,7 +2,6 @@ package edu.nextstep.racing.service;
 
 import edu.nextstep.racing.domain.Cars;
 import edu.nextstep.racing.domain.Winner;
-import edu.nextstep.racing.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,12 +27,18 @@ public class CarRacingService {
         this.round = round;
     }
 
-    public void raceStart() {
+    public List<Cars> raceStart() {
         for (int i = 0; i < round; i++) {
-            movingHistory.add(cars.doMoveGame());
+            saveStepStatus();
         }
-        ResultView.printResult(movingHistory);
-        Winner winner = Winner.checkPosition(this.cars.asList());
-        ResultView.resultWinPlayer(winner.getCarNames());
+        return movingHistory;
+    }
+
+    public Winner extractWinners() {
+        return Winner.checkPosition(this.cars.asList());
+    }
+
+    private void saveStepStatus() {
+        this.movingHistory.add(cars.doMoveGame());
     }
 }

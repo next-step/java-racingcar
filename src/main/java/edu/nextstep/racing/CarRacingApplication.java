@@ -1,8 +1,11 @@
 package edu.nextstep.racing;
 
+import edu.nextstep.racing.domain.Cars;
+import edu.nextstep.racing.domain.Winner;
 import edu.nextstep.racing.service.CarRacingService;
 import edu.nextstep.racing.utils.SplitUtils;
 import edu.nextstep.racing.view.InputView;
+import edu.nextstep.racing.view.ResultView;
 
 import java.util.List;
 
@@ -30,6 +33,10 @@ public class CarRacingApplication {
         List<String> names = SplitUtils.commaSplit(carNames);
         CarRacingService service = new CarRacingService(names, round);
 
-        service.raceStart();
+        List<Cars> movingHistory = service.raceStart();
+        ResultView.printResult(movingHistory);
+
+        Winner winners = service.extractWinners();
+        ResultView.resultWinPlayer(winners.getCarNames());
     }
 }
