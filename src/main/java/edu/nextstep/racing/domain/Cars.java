@@ -34,7 +34,7 @@ public class Cars {
 
     public Cars doMoveGame() {
         List<Car> newCarList = new ArrayList<>();
-        for (Car car : asList()) {
+        for (Car car : this.cars) {
             newCarList.add(car.carMove(validMoveNumber()));
         }
         return new Cars(newCarList);
