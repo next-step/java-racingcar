@@ -1,10 +1,13 @@
 package racingcar.view.result;
 
-import racingcar.domain.RacingCars;
+import racingcar.domain.RacingCar;
+import racingcar.domain.Winners;
+
+import java.util.List;
 
 
 public interface ResultView {
     void printHeader();
-    void printBody(RacingCars racingCars);
-    void printFooter(RacingCars racingCars);
+    void printBody(List<RacingCar> racingCars);
+    void printFooter(Winners winners);
 }

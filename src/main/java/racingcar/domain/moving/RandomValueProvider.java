@@ -8,6 +8,9 @@ public class RandomValueProvider {
     private final int range;
 
     public RandomValueProvider(int range) {
+        if (range < 0) {
+            throw new IllegalArgumentException("invalid random range");
+        }
         this.range = range;
     }
 
