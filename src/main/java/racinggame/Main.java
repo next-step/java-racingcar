@@ -3,17 +3,18 @@ package racinggame;
 public class Main {
     public static void main(String[] args) {
         InputView.displayCarInput();
-        int carQuantity = InputView.getUserInputToInt();
+        String carNameString = InputView.getNextString();
 
         InputView.displayRoundInput();
         int gameRound = InputView.getUserInputToInt();
 
-        RacingGameParameters racingGameParameters = new RacingGameParameters(gameRound, carQuantity);
+        MoveDecider moveDecider = new RandomDecider();
+
+        RacingGameParameters racingGameParameters = new RacingGameParameters(gameRound, carNameString, moveDecider);
         RacingGame racingGame = new RacingGame(racingGameParameters);
 
-        racingGame.playFullRound();
+        GameResults gameResults = racingGame.playFullRound();
 
-
-        ResultView.displayResult(racingGame.getGameResults());
+        ResultView.displayResult(gameResults);
     }
 }

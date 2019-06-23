@@ -1,35 +1,50 @@
 package racinggame;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
-    int round = 2;
-    int car = 3;
-    private RacingGameParameters racingGameParameters = new RacingGameParameters(round, car);
+    private int carAmount = 3;
+    private int round = 2;
+    private String carNameString;
+    private RacingGameParameters racingGameParameters;
+    private RacingGame racingGame;
+
+    @BeforeEach
+    void setUp() {
+        carNameString = "pobi,crong,honux";
+        MoveDecider moveDecider = new MoveDecider() {
+            @Override
+            public boolean canMove() {
+                return true;
+            }
+        };
+        racingGameParameters = new RacingGameParameters(round, carNameString, moveDecider);
+        racingGame = new RacingGame(racingGameParameters);
+    }
 
     @Test
     void 생성자_정상() {
-        RacingGame racingGame = new RacingGame(racingGameParameters);
-        List<GameResult> actual = racingGame.getGameResults().getGameResultList();
+        GameResults actual = racingGame.getGameResults();
 
-        assertThat(actual).hasSize(1);
-        assertThat(actual.get(0).getGameResult()).hasSize(car);
-        assertThat(actual.get(0).getGameResult()).allMatch(integer -> integer == 1);
+        assertThat(actual.getSize()).isEqualTo(1);
+        assertThat(actual.getByIndex(0).getGameResult()).hasSize(carAmount);
+        assertThat(actual.getByIndex(0).getGameResult()).containsKeys("pobi", "crong", "honux");
+        assertThat(actual.getByIndex(0).getGameResult()).containsValues(1, 1, 1);
     }
 
     @Test
     void 게임_라운드_전체_진행() {
-        RacingGame racingGame = new RacingGame(racingGameParameters);
-
         racingGame.playFullRound();
 
-        List<GameResult> actual = racingGame.getGameResults().getGameResultList();
-        assertThat(actual).hasSize(round + 1);
-        assertThat(racingGameParameters.isFinished()).isTrue();
-        // 이곳에서 게임 결과를 테스트 해야 할까요?
+        GameResults actual = racingGame.getGameResults();
+
+        // 최초 위치도 GameResult 로 갖고 있어서 + 1 로 검사함.
+        assertThat(actual.getSize()).isEqualTo(round + 1);
+        assertThat(actual.getByIndex(round).getGameResult()).hasSize(carAmount);
+        assertThat(actual.getByIndex(round).getGameResult()).containsKeys("pobi", "crong", "honux");
+        assertThat(actual.getByIndex(round).getGameResult()).containsValues(round + 1, round + 1, round + 1);
     }
 }

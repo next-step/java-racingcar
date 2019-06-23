@@ -6,7 +6,7 @@ public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void displayCarInput() {
-        String text = "자동차 대수는 몇 대 인가요?";
+        String text = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
         System.out.println(text);
     }
 
@@ -17,5 +17,9 @@ public class InputView {
 
     public static int getUserInputToInt() {
         return scanner.nextInt();
+    }
+
+    public static String getNextString() {
+        return scanner.nextLine();
     }
 }

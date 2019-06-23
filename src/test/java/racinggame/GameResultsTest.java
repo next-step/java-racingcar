@@ -6,21 +6,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class GameResultsTest {
     @Test
-    void 생성자_정상() {
-        GameResults gameResults = new GameResults();
-        assertThat(gameResults.getGameResultList().size()).isEqualTo(0);
-    }
-
-    @Test
     void 라운드_진행() {
-        int carQuantity = 3;
+        String carNameString = "pobi,crong,honux";
+        CarNames carNames = new CarNames(carNameString);
+
         GameResults gameResults = new GameResults();
-        assertThat(gameResults.getGameResultList().size()).isEqualTo(0);
+        Cars cars = new Cars(carNames);
+        GameResult gameResult = new GameResult(cars);
+        gameResults.addResult(gameResult);
 
-        CarLists carLists = new CarLists(carQuantity);
-        GameResult gameResult = new GameResult(carLists);
-        gameResults.addRoundResult(gameResult);
-
-        assertThat(gameResults.getGameResultList().size()).isEqualTo(1);
+        assertThat(gameResults.getSize()).isEqualTo(1);
     }
 }

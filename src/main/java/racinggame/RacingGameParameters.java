@@ -1,19 +1,27 @@
 package racinggame;
 
-import com.google.common.base.Preconditions;
-
 public class RacingGameParameters {
-    public static final int MIN_GAME_ROUND = 1;
-    public static final int MIN_CAR_AMOUNT = 1;
     private final int gameRound;
     private final int carQuantity;
-    private int currentRound = 0;
+    private final CarNames carNames;
+    private final MoveDecider moveDecider;
 
-    public RacingGameParameters(int gameRound, int carQuantity) {
-        Preconditions.checkArgument(gameRound >= MIN_GAME_ROUND, "게임 라운드는 " + MIN_GAME_ROUND + " 이상이어야 합니다.");
-        Preconditions.checkArgument(carQuantity >= MIN_CAR_AMOUNT, "차량 수는" + MIN_CAR_AMOUNT + "이상이어야 합니다.");
+    public RacingGameParameters(int gameRound, String carNameString, MoveDecider moveDecider) {
+        carNames = new CarNames(carNameString);
+        int carQuantity = carNames.getCarNameList().size();
+        /*
+        RacingGameParameters 에서는 GameRound 생성을 하지 않기 떄문에 오류가 나지 않습니다.
+        Production 코드에서는 RacingGame 을 생성하면서 오류가 납니다.
+        이 부분에 인자 검사를 하는건 뭔가 테스트코드만을 위해서 넣는 느낌이 들어서 일부러 넣지 않았습니다.
+        어떻게 하는게 좋은 방법일까요?
+         */
         this.gameRound = gameRound;
         this.carQuantity = carQuantity;
+        this.moveDecider = moveDecider;
+    }
+
+    public MoveDecider getMoveDecider() {
+        return moveDecider;
     }
 
     public int getCarQuantity() {
@@ -24,13 +32,8 @@ public class RacingGameParameters {
         return gameRound;
     }
 
-    public void increaseCurrentRound() {
-        Preconditions.checkState(!this.isFinished(), "게임이 이미 끝났습니다.");
-        currentRound += 1;
-    }
-
-    public boolean isFinished() {
-        return currentRound >= gameRound;
+    public CarNames getCarNames() {
+        return carNames;
     }
 }
 

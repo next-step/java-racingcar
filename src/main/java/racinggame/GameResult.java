@@ -1,20 +1,20 @@
 package racinggame;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
+import java.util.Map;
 
 public class GameResult {
-    private final List<Integer> gameResult;
+    private final Map<String, Integer> gameResult;
 
-    public GameResult(CarLists carLists) {
-        List<Integer> carPositionList = new ArrayList<>();
-        for (Car car : carLists.getCarList()) {
-            carPositionList.add(car.getPosition());
-        }
-        this.gameResult = carPositionList;
+    public GameResult(Cars cars) {
+        this.gameResult = cars.getPositions();
     }
 
-    public List<Integer> getGameResult() {
-        return this.gameResult;
+    public Map<String, Integer> getGameResult() {
+        return Collections.unmodifiableMap(this.gameResult);
+    }
+
+    public String getWinner() {
+        return String.join(",", Winners.getWinner(gameResult));
     }
 }

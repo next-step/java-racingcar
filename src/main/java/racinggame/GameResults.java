@@ -1,20 +1,29 @@
 package racinggame;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class GameResults {
-    private final List<GameResult> gameResultList;
+    private final List<GameResult> gameResults;
 
     public GameResults() {
-        this.gameResultList = new ArrayList<>();
+        this.gameResults = new ArrayList<>();
     }
 
-    public void addRoundResult(GameResult gameResult) {
-        gameResultList.add(gameResult);
+    public List<GameResult> getGameResults() {
+        return Collections.unmodifiableList(gameResults);
     }
 
-    public List<GameResult> getGameResultList() {
-        return gameResultList;
+    public int getSize() {
+        return gameResults.size();
+    }
+
+    public GameResult getByIndex(int index) {
+        return gameResults.get(index);
+    }
+
+    public void addResult(GameResult gameResult) {
+        gameResults.add(gameResult);
     }
 }

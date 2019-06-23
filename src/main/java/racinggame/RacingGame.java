@@ -1,36 +1,32 @@
 package racinggame;
 
 public class RacingGame {
-    private final CarLists carLists;
-    private final RacingGameParameters racingGameParameters;
     private final GameResults gameResults;
+    private final MoveDecider moveDecider;
+    private Cars cars;
+    private GameRound gameRound;
 
     public RacingGame(RacingGameParameters racingGameParameters) {
-        this.racingGameParameters = racingGameParameters;
-        this.carLists = new CarLists(racingGameParameters.getCarQuantity());
+        this.cars = new Cars(racingGameParameters.getCarNames());
+        this.gameRound = new GameRound(racingGameParameters.getGameRound());
         this.gameResults = new GameResults();
-        this.saveCurrentResult();
+        this.moveDecider = racingGameParameters.getMoveDecider();
+
+        this.gameResults.addResult(new GameResult(cars));
     }
 
-    private void playRound() {
-        for (Car car : this.carLists.getCarList()) {
-            if (CarHandler.getRandomMoveCondition()) {
-                car.move();
-            }
+    private GameResult playRound() {
+        cars = this.cars.moveCarsByDecider(moveDecider);
+        gameRound = gameRound.nextRound();
+        return new GameResult(cars);
+    }
+
+    public GameResults playFullRound() {
+        while (!gameRound.isFinished()) {
+            GameResult gameResult = playRound();
+            gameResults.addResult(gameResult);
         }
-        racingGameParameters.increaseCurrentRound();
-    }
-
-    public void playFullRound() {
-        while (!racingGameParameters.isFinished()) {
-            playRound();
-            saveCurrentResult();
-        }
-    }
-
-    private void saveCurrentResult() {
-        GameResult gameResult = new GameResult(this.carLists);
-        this.gameResults.addRoundResult(gameResult);
+        return gameResults;
     }
 
     public GameResults getGameResults() {
