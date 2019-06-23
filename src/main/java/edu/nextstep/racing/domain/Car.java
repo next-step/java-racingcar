@@ -17,20 +17,19 @@ public class Car {
     private Position position;
 
     public Car(String name) {
-        this.name = new CarName(name);
-        this.position = new Position();
+        this(new CarName(name), new Position());
     }
 
-    public Car(String name, int position) {
-        this.name = new CarName(name);
-        this.position = new Position(position);
+    public Car(CarName name, Position position) {
+        this.name = name;
+        this.position = position;
     }
 
     public Car carMove(int validNumber) {
         if (isMove(validNumber)) {
-            return new Car(name.getName(), position.move());
+            return new Car(name, new Position(position.move()));
         }
-        return new Car(name.getName(), position.getPosition());
+        return new Car(name, new Position(position.getPosition()));
     }
 
     public boolean comparePosition(int carPosition) {
