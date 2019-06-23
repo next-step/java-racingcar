@@ -27,4 +27,21 @@ public class Cars {
         }
     }
 
+    public List<Car> getWinners() {
+        return cars.stream().collect(Collectors.groupingBy(c -> c.getPosition()))
+                .entrySet()
+                .stream()
+                .sorted((e1, e2) -> Integer.compare(e1.getKey(), e2.getKey()) * -1)
+                .map(e -> e.getValue())
+                .findFirst()
+                .orElse(Collections.emptyList());
+    }
+
+    public void printWinners() {
+        StringJoiner joiner = new StringJoiner(", ", "", "가 최종 우승했습니다.");
+        for (Car car : getWinners()) {
+            joiner.add(car.getName());
+        }
+        System.out.println(joiner.toString());
+    }
 }

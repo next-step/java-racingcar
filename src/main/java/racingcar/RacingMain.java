@@ -20,6 +20,7 @@ public class RacingMain {
 
         RacingGame rg = new RacingGame(carNames, times, numGenerator);
         Cars racingCars = rg.run();
+        racingCars.printWinners();
 
     }
 }
