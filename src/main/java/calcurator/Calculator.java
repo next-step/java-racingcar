@@ -14,9 +14,7 @@ public enum Calculator {
 
 
     private static final Map<String, Calculator> operationMap = Arrays.stream(values()).collect(
-            Collectors.toMap(x -> x.operation, Function.identity()));
-
-
+            Collectors.toMap(x -> x.operation, Function.identity(),  (calculator, calculator2) -> calculator));
     private String operation;
     private BiFunction<Integer, Integer, Integer> calculate;
 
@@ -43,5 +41,4 @@ public enum Calculator {
 
         return finedOperation;
     }
-
 }

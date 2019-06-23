@@ -1,23 +1,57 @@
 package racingcar.model;
 
-public class Car {
-    private int position;
+import racingcar.utils.NumGenerator;
 
-    public Car(int position) {
+import java.util.Objects;
+
+public class Car {
+    private final int GO_CONDITION = 4;
+    private String name;
+    private int position;
+    private NumGenerator numGenerator;
+
+    private Car() {
+    }
+
+    public Car(String name, int position, NumGenerator numGenerator) {
+        this.name = name;
         this.position = position;
+        this.numGenerator = numGenerator;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public int getPosition() {
-        return position;
+        return this.position;
     }
 
-    public void setPosition(int position) {
-        this.position = position;
+    public void setNumGenerator(NumGenerator numGenerator) {
+        this.numGenerator = numGenerator;
     }
 
-    public Car move(int position) {
-        this.setPosition(position);
-        return this;
+    public int getNumGenerator() {
+        return numGenerator.nextInt();
+    }
+
+    public void move() {
+        if (getNumGenerator() > GO_CONDITION) {
+            this.position++;
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return position == car.position &&
+                name.equals(car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position);
     }
 }
-
