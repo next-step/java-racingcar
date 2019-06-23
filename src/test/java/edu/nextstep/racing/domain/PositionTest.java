@@ -25,7 +25,7 @@ public class PositionTest {
 
     @Test
     void 자동차_이동시키기() {
-        Position position = new Position();
+        Position position = Position.INIT_POSITION;
         assertThat(position.move().getPosition()).isEqualTo(1);
     }
 

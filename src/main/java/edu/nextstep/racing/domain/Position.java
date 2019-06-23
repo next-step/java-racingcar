@@ -12,13 +12,9 @@ package edu.nextstep.racing.domain;
  */
 public class Position {
 
-    private static final int INIT_POSITION = 0;
+    public static final Position INIT_POSITION = new Position(0);
     private static final int MOVE_POSITION = 1;
     private int position;
-
-    public Position() {
-        this.position = INIT_POSITION;
-    }
 
     public Position(int position) {
         positionValidation(position);
@@ -35,7 +31,7 @@ public class Position {
 
     private void positionValidation(int position) {
         if (position < 0) {
-            throw new IllegalArgumentException("자동차 이름이 유효하지 않습니다.");
+            throw new IllegalArgumentException("자동차 위치가 유효하지 않습니다.");
         }
     }
 }
