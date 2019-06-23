@@ -11,11 +11,8 @@ public class RaceGameApplication {
 
     public static void main(String[] args) {
 
-        InputView inputView = new InputView();
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");
-        String[] inputRaceCars = inputView.inputRaceCars();
-        System.out.println("시도핧 회수는 몇 회 인가요?");
-        int numberOfRaceLaps= inputView.inputNumberOfLaps();
+        String[] inputRaceCars = InputView.inputRaceCars();
+        int numberOfRaceLaps= InputView.inputNumberOfLaps();
 
         RacingCarFactory racingCarFactory = new RacingCarFactory(inputRaceCars);
         RacingGame racingGame = new RacingGame(racingCarFactory.manufacture(), new RandomGamePoint());
