@@ -27,26 +27,11 @@ public class ResultView {
         }
     }
 
-    private static void resultPrint(String carName, int position) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(carName);
-        sb.append(COLON);
-
-        for (int i = 0; i < position; i++) {
-            sb.append(DASH);
-        }
-        System.out.println(sb.toString());
-    }
-
     public static void resultWinPlayer(CarNames winPlayerNames) {
         String winPlater = winPlayerNames.getNames().stream()
                 .collect(Collectors.joining(COMMA));
 
         System.out.println(winPlater + "가 최종 우승했습니다.");
-    }
-
-    public static void print() {
-        System.out.println();
     }
 
     private static void showStageResult(Cars cars) {
@@ -64,4 +49,18 @@ public class ResultView {
         resultPrint(carName, carPosition);
     }
 
+    private static void resultPrint(String carName, int position) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(carName);
+        sb.append(COLON);
+
+        for (int i = 0; i < position; i++) {
+            sb.append(DASH);
+        }
+        System.out.println(sb.toString());
+    }
+
+    private static void print() {
+        System.out.println();
+    }
 }
