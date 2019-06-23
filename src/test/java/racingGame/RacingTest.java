@@ -1,14 +1,18 @@
-package RacingGame;
+package racingGame;
 
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingGame.domain.Racing;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class RacingTest {
 
@@ -30,9 +34,8 @@ class RacingTest {
 
     @Test
     void makeCarList() {
-        racing = new Racing(0, this.inputNames);
+        racing = new Racing(1, this.inputNames);
         assertThat(racing.getCars().size()).isEqualTo(5);
-        assertThat(racing.getCars().get(0).getPosition()).isEqualTo(0);
     }
 
     @Test
@@ -52,7 +55,7 @@ class RacingTest {
 
     @Test
     void constructorRacing() {
-        racing = new Racing(0, this.inputNames);
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(()-> new Racing(0, this.inputNames));
     }
 
     @Test
@@ -66,5 +69,16 @@ class RacingTest {
     void winners() {
         List<String> winners = racing.getWinnerNames();
         assertThat(winners.size()).isNotZero();
+    }
+
+    @Test
+    void constructRacingValidTime() {
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> racing.validConstructTime(0));
+    }
+
+    @Test
+    void constructRacingValidCars() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> racing.constructRacingValidNames(Arrays.asList("")));
     }
 }
