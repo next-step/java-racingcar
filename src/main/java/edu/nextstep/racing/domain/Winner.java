@@ -28,11 +28,11 @@ public class Winner {
 
         int maxPosition = getMaxPosition(positionList);
 
-        List<Car> winners = candinateWinner.stream()
+        Cars winners = new Cars(candinateWinner.stream()
                 .filter(car -> car.comparePosition(maxPosition))
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
 
-        return new Winner(new Cars(winners));
+        return new Winner(winners);
     }
 
     public static int getMaxPosition(List<Integer> positionList) {
@@ -42,8 +42,6 @@ public class Winner {
     }
 
     public CarNames getCarNames() {
-        return CarNames.of(this.winner.stream()
-                .map(Car::getCarName)
-                .collect(Collectors.toList()));
+        return this.winner.getCarNames();
     }
 }
