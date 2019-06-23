@@ -1,7 +1,5 @@
 package carRacing.model;
 
-import com.google.common.base.Strings;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,9 +13,9 @@ public class RacingCarFactory {
         this.carNames = carNames;
     }
 
-    public RacingCarGroup manufacture() {
+    public RacingCars manufacture() {
         List<Car> carList = Arrays.stream(this.carNames)
                 .map(Car::new).collect(Collectors.toList());
-        return new RacingCarGroup(carList);
+        return new RacingCars(carList);
     }
 }

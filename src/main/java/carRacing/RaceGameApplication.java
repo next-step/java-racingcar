@@ -1,7 +1,7 @@
 package carRacing;
 
 import carRacing.model.RacingCarFactory;
-import carRacing.model.RacingCarGroup;
+import carRacing.model.RacingCars;
 import carRacing.model.RacingGame;
 import carRacing.model.RandomGamePoint;
 import carRacing.view.InputView;
@@ -18,10 +18,10 @@ public class RaceGameApplication {
         RacingGame racingGame = new RacingGame(racingCarFactory.manufacture(), new RandomGamePoint());
 
         for (int lap = 0; lap < numberOfRaceLaps; lap++) {
-            RacingCarGroup racingCars = racingGame.race();
+            RacingCars racingCars = racingGame.race();
             ResultView.printRacingMiddleResult(racingCars);
         }
-        RacingCarGroup racingWinners = racingGame.gameResult();
+        RacingCars racingWinners = racingGame.gameResult();
         ResultView.printWinners(racingWinners);
 
     }
