@@ -13,8 +13,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
 
-
     private List<Car> cars;
+    static final int ALWAYS_GO = 4;
+    static final int ALWAYS_STOP = 3;
 
     @BeforeEach
     void setUp() {
@@ -28,16 +29,14 @@ class RacingGameTest {
     @DisplayName("빈 자동차 리스트로 생성시 예외처리")
     void RacingGameTest() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new RacingGame(new RacingCars(new ArrayList<>()), new MockGamePoint(3));
+            new RacingGame(new RacingCars(new ArrayList<>()), () -> 3);
         });
     }
 
     @Test
     @DisplayName("자동차 경주 자동차 이동")
     void race() {
-        MockGamePoint mockGamePoint = new MockGamePoint(5); // 항상 전진
-        RacingGame racingGame = new RacingGame(new RacingCars(cars), mockGamePoint);
-
+        RacingGame racingGame = new RacingGame(new RacingCars(cars), () -> ALWAYS_GO);
 
         racingGame.race();
         RacingCars race = racingGame.race();
@@ -50,9 +49,7 @@ class RacingGameTest {
     @Test
     @DisplayName("자동차 경주 자동차 이동할 수 없음")
     void cannotMove() {
-        MockGamePoint mockGamePoint = new MockGamePoint(3); // 항상 Stop
-        RacingGame racingGame = new RacingGame(new RacingCars(cars), mockGamePoint);
-
+        RacingGame racingGame = new RacingGame(new RacingCars(cars), () -> ALWAYS_STOP);
 
         racingGame.race();
         RacingCars race = racingGame.race();
@@ -65,8 +62,7 @@ class RacingGameTest {
     @Test
     @DisplayName("우승자 판별")
     void gameResult() {
-        MockGamePoint mockGamePoint = new MockGamePoint(5); // 항상 전진
-        RacingGame racingGame = new RacingGame(new RacingCars(cars), mockGamePoint);
+        RacingGame racingGame = new RacingGame(new RacingCars(cars), () -> ALWAYS_GO);
 
         racingGame.race();
         RacingCars winners = racingGame.gameResult();
@@ -75,8 +71,5 @@ class RacingGameTest {
         Car bmw = new Car("bmw");
         Car audi = new Car("audi");
         assertThat(winners.getRacingCars()).containsExactly(ferrari, bmw, audi);
-
-
-
     }
 }
