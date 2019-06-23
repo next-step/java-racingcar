@@ -10,30 +10,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class CarTest {
-    private Car goingCar;
-    private Car stoppdCar;
+    private Car car;
 
     @BeforeEach
     void setUp() {
         NumGenerator goingNum = new FixedNumGenerator(5);
-        NumGenerator stopNum = new FixedNumGenerator(3);
-        goingCar = new Car("alice", 0, goingNum);
-        stoppdCar = new Car("alice", 0, stopNum);
+        car = new Car("alice", 0, goingNum);
     }
 
     @Test
-    void testGoCar() {
-        goingCar.move();
-        assertThat(goingCar.getPosition()).isEqualTo(1);
+    void testGoAndStopCar() {
+        car.move();
+        assertThat(car.getPosition()).isEqualTo(1);
 
-        goingCar.move();
-        goingCar.move();
-        assertThat(goingCar.getPosition()).isEqualTo(3);
-    }
+        car.setNumGenerator(new FixedNumGenerator(3));
+        car.move();
+        assertThat(car.getPosition()).isEqualTo(1);
+        car.move();
+        assertThat(car.getPosition()).isEqualTo(1);
 
-    @Test
-    void testStopCar(){
-        stoppdCar.move();
-        assertThat(stoppdCar.getPosition()).isEqualTo(0);
     }
 }
