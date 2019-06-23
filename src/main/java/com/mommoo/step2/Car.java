@@ -1,25 +1,25 @@
 package com.mommoo.step2;
 
 public class Car {
-    private final String NAME;
-    private final int POSITION;
+    private final String name;
+    private final int position;
 
     public Car(String name, int position) {
-        this.NAME = name;
-        this.POSITION = position;
+        this.name = name;
+        this.position = position;
     }
 
     public Car nextPositionCar() {
-        int nextPosition = this.POSITION + 1;
-        return new Car(this.NAME, nextPosition);
+        int nextPosition = this.position + 1;
+        return new Car(this.name, nextPosition);
     }
 
     public String getName() {
-        return NAME;
+        return name;
     }
 
     public int getPosition() {
-        return POSITION;
+        return position;
     }
 
     @Override
@@ -31,9 +31,9 @@ public class Car {
         }
 
         Car car = (Car) obj;
-        String targetCarName = car.getName();
-        int targetPosition = car.getPosition();
+        String targetCarName = car.name;
+        int targetPosition = car.position;
 
-        return targetCarName.equals(getName()) && targetPosition == getPosition();
+        return targetCarName.equals(this.name) && targetPosition == this.position;
     }
 }

@@ -8,7 +8,6 @@ import java.util.List;
 public class RacingGame {
     private static final int INIT_POSITION = 0;
     private final List<Car> CAR_LIST = new LinkedList<>();
-    private final RacingCarMovingConditioner movingConditioner = new RacingCarMovingConditioner();
 
     public RacingGame(String[] carNames) {
         for (String carName : carNames) {
@@ -20,7 +19,7 @@ public class RacingGame {
     public List<Car> move() {
         List<Car> nextCarList = new ArrayList<>();
         for(Car currentCar : CAR_LIST) {
-            Car nextCar = movingConditioner.isMoveCondition() ? currentCar.nextPositionCar() : currentCar;
+            Car nextCar = RacingCarMovingConditioner.isMoveCondition() ? currentCar.nextPositionCar() : currentCar;
             nextCarList.add(nextCar);
         }
 

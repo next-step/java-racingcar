@@ -29,17 +29,16 @@ public class CarWinnerComputerTest {
         assertThat(carWinnerComputer.isWinnerNotExist()).isFalse();
         assertThat(carWinnerComputer.getWinnerCarNameList()).hasSize(2);
 
-        String[] finalWinnerCarNames = cars.stream()
-                                           .limit(2)
-                                           .map(Car::getName)
-                                           .toArray(String[]::new);
+        String[] finalWinnerCarNames = {
+                cars.get(0).getName(),
+                cars.get(1).getName()
+        };
 
-        String[] notWinnerCarNames = cars.stream()
-                                         .skip(2)
-                                         .map(Car::getName)
-                                         .toArray(String[]::new);
+        String[] notWinnerCarNames = {
+                cars.get(2).getName()
+        };
 
-        assertThat(carWinnerComputer.getWinnerCarNameList()).contains(finalWinnerCarNames);
+        assertThat(carWinnerComputer.getWinnerCarNameList()).containsOnly(finalWinnerCarNames);
         assertThat(carWinnerComputer.getWinnerCarNameList()).doesNotContain(notWinnerCarNames);
     }
 

@@ -4,23 +4,22 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        String[] carNames = inputView.getCarNames();
-        int times = inputView.getCountOfTrying();
+        String[] carNames = InputView.getCarNames();
+        int times = InputView.getCountOfTrying();
 
         RacingGame racingGame = new RacingGame(carNames);
-
-        ResultView resultView = new ResultView();
 
         while(times-- > 0) {
             List<Car> carList = racingGame.move();
             for (Car car : carList) {
-                resultView.printCarMoveLine(car);
+                ResultView.printCarMoveLine(car);
             }
             System.out.println();
         }
 
         List<Car> finalCarList = racingGame.currentCarList();
-        resultView.printFinalWinner(finalCarList);
+        CarWinnerComputer carWinnerComputer = new CarWinnerComputer(finalCarList);
+
+        ResultView.printFinalWinner(carWinnerComputer);
     }
 }

@@ -28,9 +28,9 @@ public class RacingGameTest {
                                                 .stream()
                                                 .map(Car::getPosition)
                                                 .collect(Collectors.toList());
-        for (int position : movePositions) {
-            assertThat(position).isLessThan(time + 1);
-        }
+        int drivenDistance = time + 1;
+
+        assertThat(movePositions).allMatch(position -> position <= drivenDistance);
     }
 
     @DisplayName("올바른 자동차 상태 값이 저장된 리스트여야 합니다.")
