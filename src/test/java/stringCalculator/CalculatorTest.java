@@ -7,7 +7,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CalculatorTest {
 
-
     private Calculator calculator;
 
     @BeforeEach
