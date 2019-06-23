@@ -36,4 +36,9 @@ public class Car {
 
         return targetCarName.equals(this.name) && targetPosition == this.position;
     }
+
+    @Override
+    public int hashCode() {
+        return this.name.hashCode();
+    }
 }

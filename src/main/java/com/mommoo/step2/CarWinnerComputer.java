@@ -1,5 +1,6 @@
 package com.mommoo.step2;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,6 +35,6 @@ public class CarWinnerComputer {
     }
 
     public List<String> getWinnerCarNameList() {
-        return new LinkedList<>(winnerCarNameList);
+        return Collections.unmodifiableList(winnerCarNameList);
     }
 }

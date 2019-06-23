@@ -1,19 +1,24 @@
 package com.mommoo.step2;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private static final int INIT_POSITION = 0;
-    private final List<Car> CAR_LIST = new LinkedList<>();
+    private final List<Car> CAR_LIST;
 
     public RacingGame(String[] carNames) {
-        for (String carName : carNames) {
-            Car car = new Car(carName, INIT_POSITION);
-            CAR_LIST.add(car);
-        }
+        this.CAR_LIST = convertToCarList(carNames);
+    }
+
+    private List<Car> convertToCarList(String[] carNames) {
+        return Arrays.stream(carNames)
+                .map(carName -> new Car(carName, INIT_POSITION))
+                .collect(Collectors.toList());
     }
 
     public List<Car> move() {
