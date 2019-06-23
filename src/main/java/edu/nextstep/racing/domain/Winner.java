@@ -41,9 +41,9 @@ public class Winner {
                 .get();
     }
 
-    public List<String> getCarNames() {
-        return this.winner.stream()
+    public CarNames getCarNames() {
+        return CarNames.of(this.winner.stream()
                 .map(Car::getCarName)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
 }

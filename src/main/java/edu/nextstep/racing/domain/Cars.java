@@ -24,8 +24,8 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars of(List<String> names) {
-        return new Cars(names.stream()
+    public static Cars of(CarNames names) {
+        return new Cars(names.getNames().stream()
                 .filter(s -> !"".equals(s.trim()))
                 .distinct()
                 .map(s -> new Car(s))
@@ -38,12 +38,6 @@ public class Cars {
             newCarList.add(car.carMove(validMoveNumber()));
         }
         return new Cars(newCarList);
-    }
-
-    public List<String> getCarNames() {
-        return this.cars.stream()
-                .map(Car::getCarName)
-                .collect(Collectors.toList());
     }
 
     public List<Integer> getCarsPosition() {

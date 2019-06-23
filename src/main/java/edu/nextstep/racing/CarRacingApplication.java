@@ -1,5 +1,6 @@
 package edu.nextstep.racing;
 
+import edu.nextstep.racing.domain.CarNames;
 import edu.nextstep.racing.domain.Cars;
 import edu.nextstep.racing.domain.Winner;
 import edu.nextstep.racing.service.CarRacingService;
@@ -30,7 +31,7 @@ public class CarRacingApplication {
         String carNames = InputView.inputCars();
         int round = InputView.inputRound();
 
-        List<String> names = SplitUtils.commaSplit(carNames);
+        CarNames names = CarNames.of(SplitUtils.commaSplit(carNames));
         CarRacingService service = new CarRacingService(names, round);
 
         List<Cars> movingHistory = service.raceStart();

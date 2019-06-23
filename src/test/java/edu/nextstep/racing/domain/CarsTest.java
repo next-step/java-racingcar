@@ -2,8 +2,6 @@ package edu.nextstep.racing.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,13 +34,6 @@ class CarsTest {
         for (String carName : carNames) {
             carList.add(new Car(carName));
         }
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"TEST1", "TEST2"})
-    void 자동차들_객체생성(String names) {
-        Cars cars = Cars.of(carNames);
-        assertThat(cars.getCarNames().contains(names)).isTrue();
     }
 
     @Test

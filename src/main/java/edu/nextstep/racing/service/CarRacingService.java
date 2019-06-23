@@ -1,5 +1,6 @@
 package edu.nextstep.racing.service;
 
+import edu.nextstep.racing.domain.CarNames;
 import edu.nextstep.racing.domain.Cars;
 import edu.nextstep.racing.domain.Winner;
 
@@ -22,7 +23,7 @@ public class CarRacingService {
     private int round;
     private List<Cars> movingHistory = new ArrayList<>();
 
-    public CarRacingService(List<String> carNames, int round) {
+    public CarRacingService(CarNames carNames, int round) {
         this.cars = Cars.of(carNames);
         this.round = round;
     }

@@ -1,5 +1,6 @@
 package edu.nextstep.racing.view;
 
+import edu.nextstep.racing.domain.CarNames;
 import edu.nextstep.racing.domain.Cars;
 
 import java.util.List;
@@ -37,8 +38,8 @@ public class ResultView {
         System.out.println(sb.toString());
     }
 
-    public static void resultWinPlayer(List<String> winPlayerNames) {
-        String winPlater = winPlayerNames.stream()
+    public static void resultWinPlayer(CarNames winPlayerNames) {
+        String winPlater = winPlayerNames.getNames().stream()
                 .collect(Collectors.joining(COMMA));
 
         System.out.println(winPlater + "가 최종 우승했습니다.");

@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -40,6 +41,6 @@ public class WinnerTest {
         Cars candinateCars = new Cars(candinateWinners);
 
         Winner winner = Winner.checkPosition(candinateCars);
-        assertThat(winner.getCarNames().contains(winners)).isTrue();
+        assertThat(winner.getCarNames().getNames().contains(winners)).isTrue();
     }
 }
