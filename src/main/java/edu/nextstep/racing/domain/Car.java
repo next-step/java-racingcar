@@ -29,7 +29,7 @@ public class Car {
         if (isMove(validNumber)) {
             return new Car(name, position.move());
         }
-        return new Car(name, new Position(position.getPosition()));
+        return this;
     }
 
     public boolean comparePosition(int carPosition) {
