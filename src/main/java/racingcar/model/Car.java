@@ -6,33 +6,37 @@ public class Car {
     private final int GO_CONDITION = 4;
     private String name;
     private int position;
-    private NumGenerator randomNum;
+    private NumGenerator numGenerator;
 
-    private Car(){
-
+    private Car() {
     }
 
-    public Car(String name, int position, NumGenerator randomNum){
+    public Car(String name, int position, NumGenerator numGenerator) {
         this.name = name;
         this.position = position;
-        this.randomNum = randomNum;
+        this.numGenerator = numGenerator;
 
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    public int getPosition(){
+    public int getPosition() {
         return this.position;
     }
 
-    public int getRandomNum(){
-        return randomNum.nextInt();
+    public void setNumGenerator(NumGenerator numGenerator) {
+        this.numGenerator = numGenerator;
+
     }
 
-    public void move(){
-        if(getRandomNum() > GO_CONDITION) {
+    public int getNumGenerator() {
+        return numGenerator.nextInt();
+    }
+
+    public void move() {
+        if (getNumGenerator() > GO_CONDITION) {
             this.position++;
         }
     }
