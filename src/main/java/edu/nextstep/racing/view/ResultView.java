@@ -26,7 +26,7 @@ public class ResultView {
         }
     }
 
-    public static void resultPrint(String carName, int position) {
+    private static void resultPrint(String carName, int position) {
         StringBuilder sb = new StringBuilder();
         sb.append(carName);
         sb.append(COLON);
