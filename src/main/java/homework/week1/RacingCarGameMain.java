@@ -11,5 +11,7 @@ public class RacingCarGameMain {
             gameFront.printRacingCars(gameEngine.getCars());
             gameFront.printEmptyLine();
         }
+        Winner winner = new Winner();
+        gameFront.printWinnerCars(winner.getWinnersName(gameEngine.getCars()));
     }
 }

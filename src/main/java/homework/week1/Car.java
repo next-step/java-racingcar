@@ -7,13 +7,18 @@ public class Car {
     private String name;
     private int position;
 
+    public Car(String name, int position) {
+        this(name);
+        this.position = position;
+    }
+
     public Car(String name) {
         this.name = name;
     }
 
     void move(int value) {
         if (MIN_MOVE_CONDITION_VALUE <= value) {
-            position += 1;
+            position++;
         }
     }
 

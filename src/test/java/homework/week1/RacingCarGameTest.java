@@ -45,4 +45,14 @@ public class RacingCarGameTest {
         car.move(4);
         assertThat(car.getPosition()).isEqualTo(1);
     }
+
+    @Test
+    void getWinnersName_우승자이름() {
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("pobi", 3));
+        cars.add(new Car("crong", 5));
+        cars.add(new Car("honux", 5));
+        Winner winner = new Winner();
+        assertThat(winner.getWinnersName(cars)).containsExactly("crong", "honux");
+    }
 }
