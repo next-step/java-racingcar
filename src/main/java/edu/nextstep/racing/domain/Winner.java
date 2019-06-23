@@ -31,7 +31,7 @@ public class Winner {
         int maxPosition = getMaxPosition(positionList);
 
         List<Car> winners = candinateWinner.stream()
-                .filter(car -> car.getCarPosition() == maxPosition)
+                .filter(car -> car.comparePosition(maxPosition))
                 .collect(Collectors.toList());
 
         return new Winner(new Cars(winners), maxPosition);

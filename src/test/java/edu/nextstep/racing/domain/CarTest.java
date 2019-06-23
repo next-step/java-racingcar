@@ -39,4 +39,12 @@ public class CarTest {
     void 자동차_현재위치가져오기() {
         assertThat(car.getCarPosition()).isEqualTo(0);
     }
+
+    @Test
+    void 자동차의_위치가_전달받은_파라미터와같은지_확인() {
+        Position position = new Position(3);
+        Car car = new Car("TEST", position.getPosition());
+
+        assertThat(car.comparePosition(3)).isTrue();
+    }
 }

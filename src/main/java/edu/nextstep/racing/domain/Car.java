@@ -33,6 +33,10 @@ public class Car {
         return new Car(name.getName(), position.getPosition());
     }
 
+    public boolean comparePosition(int carPosition) {
+        return position.getPosition() == carPosition;
+    }
+
     public int getCarPosition() {
         return this.position.getPosition();
     }
