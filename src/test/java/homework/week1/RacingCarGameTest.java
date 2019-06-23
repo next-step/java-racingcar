@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class RacingCarGameEngineTest {
+public class RacingCarGameTest {
         private RacingCarGameEngine carGameEngine;
 
     @BeforeEach
@@ -28,8 +28,7 @@ public class RacingCarGameEngineTest {
         String[] carNames = carGameEngine.splitInput("qwe,asd,zxc");
         assertThat(carNames).containsExactly("qwe", "asd", "zxc");
     }
-
-
+    
     @Test
     void positiveNumber_경주회수0이하숫자입력시에러() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
@@ -37,18 +36,13 @@ public class RacingCarGameEngineTest {
             carGameEngine.checkInputPositiveNum(0);
         });
     }
-/*
-    @Test
-    void checkRunCondition() {
-        assertThat(carGameEngine.checkRunCondition(3)).isFalse();
-        assertThat(carGameEngine.checkRunCondition(4)).isTrue();
-
-    }
 
     @Test
-    void getRunCount() {
-        assertThat(carGameEngine.getRunCount(true, 0)).isEqualTo(1);
-        assertThat(carGameEngine.getRunCount(false, 0)).isEqualTo(0);
+    void move_move파라미터3일땐이동없음4일땐1이동() {
+        Car car = new Car("pobi");
+        car.move(3);
+        assertThat(car.getPosition()).isEqualTo(0);
+        car.move(4);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
-*/
 }

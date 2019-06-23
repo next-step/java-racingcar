@@ -21,22 +21,22 @@ public class RacingCarGameFront {
         return scanner.nextInt();
     }
 
-    void printRunCar(int runCount) {
-        for (int count = 0; count < runCount; count++) {
-            System.out.print(RUN_SYMBOL);
-        }
-        printEmptyLine();
-    }
-
-    void printRacingCars(List<Integer> carsRunCount) {
-        for (int runCount : carsRunCount) {
-            printRunCar(runCount);
-        }
-        printEmptyLine();
-    }
-
     void printGuideStr(String guideStr) {
         System.out.println(guideStr);
+    }
+
+    void printRacingCars(List<Car> cars) {
+        for (Car car : cars) {
+            printRacingCar(car.getName(), car.getPosition());
+        }
+    }
+
+    void printRacingCar(String carName, int position) {
+        String runCountStr = "";
+        for (int index = 0 ; index < position; index++) {
+            runCountStr += RUN_SYMBOL;
+        }
+        System.out.println(carName + " : " + runCountStr);
     }
 
     void printEmptyLine() {

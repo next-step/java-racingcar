@@ -6,6 +6,10 @@ public class RacingCarGameMain {
         String carStrings = gameFront.getInputCarStrs();
         int numOfRacing = gameFront.getInputNumberOfRacing();
         RacingCarGameEngine gameEngine = new RacingCarGameEngine(carStrings, numOfRacing);
-
+        for(int racingNumber = 1; racingNumber <= gameEngine.getNumberOfRacing(); racingNumber++) {
+            gameEngine.tryRace();
+            gameFront.printRacingCars(gameEngine.getCars());
+            gameFront.printEmptyLine();
+        }
     }
 }
