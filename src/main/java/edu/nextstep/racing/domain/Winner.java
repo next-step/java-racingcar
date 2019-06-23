@@ -15,15 +15,13 @@ import java.util.stream.Collectors;
  */
 public class Winner {
 
-    private final int winScore;
     private Cars winner;
 
-    public Winner(Cars winner, int winScore) {
+    public Winner(Cars winner) {
         this.winner = winner;
-        this.winScore = winScore;
     }
 
-    public static Winner checkPosition(List<Car> candinateWinner) {
+    public static Winner checkPosition(Cars candinateWinner) {
         List<Integer> positionList = candinateWinner.stream()
                 .map(Car::getCarPosition)
                 .collect(Collectors.toList());
@@ -34,7 +32,7 @@ public class Winner {
                 .filter(car -> car.comparePosition(maxPosition))
                 .collect(Collectors.toList());
 
-        return new Winner(new Cars(winners), maxPosition);
+        return new Winner(new Cars(winners));
     }
 
     public static int getMaxPosition(List<Integer> positionList) {

@@ -37,7 +37,9 @@ public class WinnerTest {
         Car car3 = new Car(name3, position3);
 
         List<Car> candinateWinners = new ArrayList<>(Arrays.asList(car1, car2, car3));
-        Winner winner = Winner.checkPosition(candinateWinners);
+        Cars candinateCars = new Cars(candinateWinners);
+
+        Winner winner = Winner.checkPosition(candinateCars);
         assertThat(winner.getCarNames().contains(winners)).isTrue();
     }
 }

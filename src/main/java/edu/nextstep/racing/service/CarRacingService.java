@@ -35,7 +35,7 @@ public class CarRacingService {
     }
 
     public Winner extractWinners() {
-        return Winner.checkPosition(this.cars.asList());
+        return Winner.checkPosition(this.cars);
     }
 
     private void saveStepStatus() {
