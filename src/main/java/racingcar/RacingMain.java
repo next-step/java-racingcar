@@ -1,5 +1,10 @@
 package racingcar;
 
+import racingcar.model.Cars;
+import racingcar.model.RacingGame;
+import racingcar.utils.NumGenerator;
+import racingcar.utils.RandomNumGenerator;
+
 import java.util.Scanner;
 
 public class RacingMain {
@@ -11,5 +16,10 @@ public class RacingMain {
 
         System.out.println("시도할 회수는 몇회인가요?");
         int times = Input.getTimes(sc);
+        NumGenerator numGenerator = new RandomNumGenerator();
+
+        RacingGame rg = new RacingGame(carNames, times, numGenerator);
+        Cars racingCars = rg.run();
+
     }
 }
