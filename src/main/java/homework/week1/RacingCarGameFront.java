@@ -5,33 +5,18 @@ import java.util.Scanner;
 
 public class RacingCarGameFront {
 
+    private static final String INPUT_CAR_NAME_GUIDE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    private static final String INPUT_RACING_NUMBER_GUIDE = "시도할 회수는 몇회인가요?";
     private static final String RUN_SYMBOL = "-";
 
-    public static void main(String[] args) {
-        RacingCarGameFront gameFront = new RacingCarGameFront();
-        RacingCarGameEngine gameEngine = new RacingCarGameEngine();
-        gameFront.setInputValue(gameEngine);
-
-    }
-
-    void setInputValue(RacingCarGameEngine gameEngine) {
-        String carStr = getInputCarStrs();
-        gameEngine.checkEmptyString(carStr);
-        String[] carNames = gameEngine.splitInput(carStr);
-        gameEngine.checkEmptyCarNames(carNames);
-        int numberOfRacing = getInputNumberOfRacing();
-        gameEngine.checkInputPositiveNum(numberOfRacing);
-        gameEngine.initialize(carNames, numberOfRacing);
-    }
-
     String getInputCarStrs() {
-        printGuideStr("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        printGuideStr(INPUT_CAR_NAME_GUIDE);
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
 
     int getInputNumberOfRacing() {
-        printGuideStr("시도할 회수는 몇회인가요?");
+        printGuideStr(INPUT_RACING_NUMBER_GUIDE);
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
@@ -48,13 +33,6 @@ public class RacingCarGameFront {
             printRunCar(runCount);
         }
         printEmptyLine();
-    }
-
-    void goRacingGame(RacingCarGameEngine carGameEngine) {
-        for (int count = 0; count < carGameEngine.getNumberOfRacing(); count++) {
-            carGameEngine.move();
-            printRacingCars(carGameEngine.getCarsRunCount());
-        }
     }
 
     void printGuideStr(String guideStr) {
