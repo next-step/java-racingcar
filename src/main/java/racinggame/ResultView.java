@@ -16,11 +16,8 @@ public class ResultView {
             stringBuilder.append(getCurrentRoundCarsPositionText(gameResult));
         });
 
-        int lastIndex = gameResults.getSize() - 1;
-        GameResult lastRoundResult = gameResults.getByIndex(lastIndex);
+        stringBuilder.append(getWinnerText(gameResults));
 
-        stringBuilder.append(lastRoundResult.getWinner());
-        stringBuilder.append("가 최종 우승했습니다.");
         System.out.println(stringBuilder.toString());
     }
 
@@ -35,6 +32,17 @@ public class ResultView {
             stringBuilder.append("\n");
         });
         stringBuilder.append("\n");
+        return stringBuilder.toString();
+    }
+
+    private static String getWinnerText(GameResults gameResults) {
+        StringBuilder stringBuilder = new StringBuilder();
+        int lastIndex = gameResults.getSize() - 1;
+        GameResult lastRoundResult = gameResults.getByIndex(lastIndex);
+
+        stringBuilder.append(lastRoundResult.getWinner());
+        stringBuilder.append("가 최종 우승했습니다.");
+
         return stringBuilder.toString();
     }
 }
