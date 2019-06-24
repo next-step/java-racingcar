@@ -27,10 +27,6 @@ public class Car {
         return this.position;
     }
 
-    public void setNumGenerator(NumGenerator numGenerator) {
-        this.numGenerator = numGenerator;
-    }
-
     public int getNumGenerator() {
         return numGenerator.nextInt();
     }
