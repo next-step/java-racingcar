@@ -1,6 +1,8 @@
-package racinggame;
+package racinggame.view;
 
 import com.google.common.base.Strings;
+import racinggame.domain.GameResult;
+import racinggame.domain.GameResults;
 
 import java.util.List;
 

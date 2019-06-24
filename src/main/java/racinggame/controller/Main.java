@@ -1,4 +1,8 @@
-package racinggame;
+package racinggame.controller;
+
+import racinggame.domain.*;
+import racinggame.view.InputView;
+import racinggame.view.ResultView;
 
 public class Main {
     public static void main(String[] args) {
