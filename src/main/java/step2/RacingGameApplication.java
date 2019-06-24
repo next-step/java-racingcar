@@ -2,23 +2,26 @@ package step2;
 
 public class RacingGameApplication {
 
-    private static  InputView input = new InputView();
+    private InputView input;
 
-    public static void main(String[] args){
-        int carQty = input.setCarNumber();
-        int tryCount = input.setTryCount();
-
-        RacingGame rg = new RacingGame();
-        ValidationCheck vc = new ValidationCheck();
-
-        vc.checkInputZero(carQty, tryCount);
-        rg.setInitPosition(carQty);
-
-        System.out.println("실행결과");
-        while (tryCount-- > 0){
-            rg.startRacing(carQty);
-            rg.resultView();
-        }
+    public RacingGameApplication() {
+        this.input = new InputView();
     }
 
+    public static void main(String[] args) {
+
+        RacingGameApplication app = new RacingGameApplication();
+        int carNumber = app.input.inputCarNumber();
+        int tryCount = app.input.inputTryCount();
+
+        RacingGame racingGame = new RacingGame();
+        racingGame.setInitPosition(carNumber);
+
+        System.out.println("실행결과");
+
+        while (tryCount-- > 0) {
+            racingGame.startRacing(carNumber);
+            racingGame.resultView();
+        }
+    }
 }
