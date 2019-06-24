@@ -3,6 +3,7 @@ package racingcar.model;
 import racingcar.utils.StringUtil;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,13 +31,17 @@ public class Cars {
     }
 
     public List<Car> getWinners() {
-        return cars.stream().collect(Collectors.groupingBy(c -> c.getPosition()))
-                .entrySet()
-                .stream()
-                .sorted((e1, e2) -> Integer.compare(e1.getKey(), e2.getKey()) * -1)
-                .map(e -> e.getValue())
-                .findFirst()
-                .orElse(Collections.emptyList());
+        int maxPosition = maxPosition();
+
+        return cars.stream()
+                .filter(c -> c.getPosition() == maxPosition)
+                .collect(Collectors.toList());
+    }
+
+    public int maxPosition(){
+        return cars.stream().map(Car::getPosition)
+                .max(Comparator.naturalOrder())
+                .orElse(0);
     }
 
 }
