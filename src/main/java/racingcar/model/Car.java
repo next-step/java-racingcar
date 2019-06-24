@@ -32,7 +32,7 @@ public class Car {
     }
 
     public void move() {
-        if (getNumGenerator() > GO_CONDITION) {
+        if (getNumGenerator() >= GO_CONDITION) {
             this.position++;
         }
     }
