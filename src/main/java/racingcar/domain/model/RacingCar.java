@@ -1,7 +1,6 @@
-package racingcar.domain;
+package racingcar.domain.model;
 
 import racingcar.domain.moving.MovingStrategy;
-import racingcar.domain.moving.Position;
 
 import java.util.Objects;
 
@@ -25,16 +24,15 @@ public class RacingCar {
         return name;
     }
 
-    public int getPosition() {
-        return position.get();
+    public Position getPosition() {
+        return position;
     }
 
     public RacingCar move(MovingStrategy movingStrategy) {
-        position = position.move(movingStrategy);
-        return this;
+        return of(name, position.move(movingStrategy));
     }
 
-    public boolean isWinner(int winnerPosition) {
+    public boolean isWinner(Position winnerPosition) {
         return position.isSamePosition(winnerPosition);
     }
 

@@ -1,5 +1,7 @@
 package racingcar.view.input;
 
+import racingcar.dto.GameRequest;
+
 import java.util.List;
 
 public class DefaultInputView implements InputView {
@@ -14,13 +16,16 @@ public class DefaultInputView implements InputView {
     }
 
     @Override
-    public List<String> getCarNames() {
+    public GameRequest read() {
+        return GameRequest.of(getCarNames(), getNumberOfTimes());
+    }
+
+    private List<String> getCarNames() {
         System.out.println(MESSAGE_LIST_OF_CARS);
         return commandLineReader.getCsv();
     }
 
-    @Override
-    public Integer getNumberOfTimes() {
+    private Integer getNumberOfTimes() {
         System.out.println(MESSAGE_NUMBER_OF_TIMES);
         return commandLineReader.getNumber();
     }

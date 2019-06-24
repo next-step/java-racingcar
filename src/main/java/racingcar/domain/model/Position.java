@@ -1,4 +1,6 @@
-package racingcar.domain.moving;
+package racingcar.domain.model;
+
+import racingcar.domain.moving.MovingStrategy;
 
 import java.util.Objects;
 
@@ -27,8 +29,8 @@ public class Position {
         return this;
     }
 
-    public boolean isSamePosition(int position) {
-        return this.position == position;
+    public boolean isSamePosition(Position position) {
+        return equals(position);
     }
 
     @Override
