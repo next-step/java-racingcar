@@ -5,12 +5,17 @@ import racingcar.utils.NumGenerator;
 import java.util.Objects;
 
 public class Car {
+    private static final int DEFAULT_POSITION = 0;
     private final int GO_CONDITION = 4;
     private String name;
-    private int position;
+    private int position = DEFAULT_POSITION;
     private NumGenerator numGenerator;
 
     private Car() {
+    }
+
+    public Car(String name, NumGenerator numGenerator) {
+        this(name, DEFAULT_POSITION, numGenerator);
     }
 
     public Car(String name, int position, NumGenerator numGenerator) {

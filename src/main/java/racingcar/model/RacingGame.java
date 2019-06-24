@@ -40,7 +40,7 @@ public class RacingGame {
         List<Car> lCars = new ArrayList<>();
         String[] newCarNames = StringUtil.splitBySeparator(SEPARATOR, carNames);
         for (String carName : newCarNames) {
-            lCars.add(new Car(carName, 0, this.numGenerator));
+            lCars.add(new Car(carName, this.numGenerator));
         }
         return new Cars(lCars);
     }
