@@ -9,19 +9,17 @@ import java.util.List;
 
 public class RacingGame {
     private final String SEPARATOR = ",";
-    private String carNames;
     private int times;
     private NumGenerator numGenerator;
     private Cars cars;
 
     public RacingGame(String carNames, int times, NumGenerator numGenerator) {
-        this.carNames = carNames;
         this.times = times;
         this.numGenerator = numGenerator;
+        this.cars = createCars(carNames);
     }
 
     public Cars run() {
-        cars = createCars(this.carNames);
         for (int i = 0; i < this.times; i++) {
             cars.move();
             cars.printResult();
