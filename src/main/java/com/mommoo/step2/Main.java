@@ -1,21 +1,25 @@
 package com.mommoo.step2;
 
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        int carCount = inputView.getCountOfCar();
-        int times = inputView.getCountOfTrying();
+        String[] carNames = InputView.getCarNames();
+        int times = InputView.getCountOfTrying();
 
-        RacingGame racingGame = new RacingGame(carCount);
-
-        ResultView resultView = new ResultView();
+        RacingGame racingGame = new RacingGame(carNames);
 
         while(times-- > 0) {
-            int[] result = racingGame.move();
-            for (int moveCount : result) {
-                resultView.printCarMoveLine(moveCount);
+            List<Car> carList = racingGame.move();
+            for (Car car : carList) {
+                ResultView.printCarMoveLine(car);
             }
             System.out.println();
         }
+
+        List<Car> finalCarList = racingGame.currentCarList();
+        CarWinnerComputer carWinnerComputer = new CarWinnerComputer(finalCarList);
+
+        ResultView.printFinalWinner(carWinnerComputer);
     }
 }
