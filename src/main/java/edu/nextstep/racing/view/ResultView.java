@@ -1,9 +1,10 @@
 package edu.nextstep.racing.view;
 
-import edu.nextstep.racing.model.Car;
-import edu.nextstep.racing.utils.ViewUtils;
+import edu.nextstep.racing.domain.CarNames;
+import edu.nextstep.racing.domain.Cars;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * author       : gwonbyeong-yun <sksggg123>
@@ -13,26 +14,53 @@ import java.util.List;
  * | blog         : sksggg123.github.io     |
  * ------------------------------------------
  * project      : java-racingcar
- * create date  : 2019-06-15 21:29
+ * create date  : 2019-06-22 18:39
  */
 public class ResultView {
+    private static final String DASH = "- ";
+    private static final String COLON = " : ";
+    private static final String COMMA = ",";
 
-    /*
-    파라미터로 객체(자동차)를 받아 step 별로 출력
-     */
-    public void resultView(List<Car> cars) {
-        for (Car car : cars) {
-            int carPosition = car.currentPosition();
-            resultPrint(car, carPosition);
+    public static void printResult(List<Cars> cars) {
+        for (Cars car : cars) {
+            showStageResult(car);
         }
-        ViewUtils.print();
     }
 
-    public void printWinnerPlayer(List<Car> cars) {
-        ViewUtils.printWinner(cars);
+    public static void resultWinPlayer(CarNames winPlayerNames) {
+        String winPlater = winPlayerNames.getNames().stream()
+                .collect(Collectors.joining(COMMA));
+
+        System.out.println(winPlater + "가 최종 우승했습니다.");
     }
 
-    private void resultPrint(Car car, int position) {
-        ViewUtils.combinDash(car, position);
+    private static void showStageResult(Cars cars) {
+        int carsSize = cars.size();
+        for (int i = 0; i < carsSize; i++) {
+            combineNameAndPosition(cars, i);
+        }
+        print();
+    }
+
+    private static void combineNameAndPosition(Cars cars, int index) {
+        String carName = cars.asList().get(index).getCarName();
+        int carPosition = cars.asList().get(index).getCarPosition();
+
+        resultPrint(carName, carPosition);
+    }
+
+    private static void resultPrint(String carName, int position) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(carName);
+        sb.append(COLON);
+
+        for (int i = 0; i < position; i++) {
+            sb.append(DASH);
+        }
+        System.out.println(sb.toString());
+    }
+
+    private static void print() {
+        System.out.println();
     }
 }

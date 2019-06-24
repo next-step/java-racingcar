@@ -1,10 +1,9 @@
-package edu.nextstep.racing.model;
+package edu.nextstep.racing.domain;
 
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * author       : gwonbyeong-yun <sksggg123>
@@ -14,19 +13,27 @@ import static org.junit.jupiter.api.Assertions.*;
  * | blog         : sksggg123.github.io     |
  * ------------------------------------------
  * project      : java-racingcar
- * create date  : 2019-06-19 00:27
+ * create date  : 2019-06-22 14:30
  */
-class RaceTest {
+public class PositionTest {
 
     @Test
-    void 라운드_횟수_초기화하여_라운드횟수_가져오기() {
-        Race race = new Race(10);
-        assertThat(race.getGameTime()).isEqualTo(10);
+    void 현재위치_가져오기() {
+        Position position = new Position(3);
+        assertThat(position.getPosition()).isEqualTo(3);
     }
+
     @Test
-    void 라운드_횟수_초기화_예외상황() {
+    void 자동차_이동시키기() {
+        Position position = Position.INIT_POSITION;
+        assertThat(position.move().getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    void 음수값_예외상황() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            Race race = new Race(0);
+            Position position = new Position(-1);
         });
     }
+
 }
