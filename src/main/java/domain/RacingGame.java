@@ -2,14 +2,14 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
+    private static final String SEPARATOR = ",";
 
-    private int timeOfGame; // 자동차 경주 횟수
+    private int timeOfGame;
     private List<CarInfo> car;
     private List<CarInfo> winner;
-    private int indexofTimeofGame = 1;
+    private int indexofTimeofGame = 0;
 
     // 사용자 입력에 따라서 실행되는 RaceGame 생성자
     public RacingGame(String namesOfCar, int timeofGame) {
@@ -18,7 +18,7 @@ public class RacingGame {
         CarInfo inputCarInfo;
 
         for (int i = 0; i < inputnamesOfCar.length; ++i) {
-            inputCarInfo = new CarInfo(inputnamesOfCar[i]); //입력된 자동차 이름으로 CarInfo 생성하여 List에 추가
+            inputCarInfo = new CarInfo(inputnamesOfCar[i], timeofGame); //입력된 자동차 이름으로 CarInfo 생성하여 List에 추가
             this.car.add(inputCarInfo);
         }
 
@@ -27,7 +27,7 @@ public class RacingGame {
 
     // 사용자에게 입력받은 자동차 이름을 문자 "," 기준으로 split하는 함수
     private String[] splitName(String names) {
-        return names.split(",");
+        return names.split(SEPARATOR);
     }
 
     // 사용자가 입력한 공백 문자 혹은 개행문자가 포함되었는지 체크하는 함수
@@ -44,17 +44,17 @@ public class RacingGame {
         return car;
     }
 
-    // 자동차 게임 종료 여부를 확인하는 함수
-    public boolean isEnd() {
-        return this.timeOfGame < this.indexofTimeofGame;
+    // 자동차 게임 진행 여부를 확인하는 함수
+    public boolean isRaceOnging() {
+        return this.timeOfGame > this.indexofTimeofGame;
     }
 
     // 사용자가 입력한 횟수에 따라서 자동화 게임 실행 함수
     public void race() {
 
         for (CarInfo elemnt : car) {
-            if (this.indexofTimeofGame > 1) {
-                elemnt.move();
+            if (this.indexofTimeofGame > 0) {
+                elemnt.move(indexofTimeofGame);
             }
         }
         ++indexofTimeofGame;
