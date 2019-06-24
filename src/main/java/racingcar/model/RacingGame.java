@@ -19,13 +19,21 @@ public class RacingGame {
         this.cars = createCars(carNames);
     }
 
+    public Cars getCars() {
+        return this.cars;
+    }
+
     public Cars run() {
-        for (int i = 0; i < this.times; i++) {
-            cars.move();
-            cars.printResult();
-            System.out.println();
+        if (this.times < 0){
+            return cars;
         }
+        cars.move();
+        this.times--;
         return cars;
+    }
+
+    public boolean isMovable(){
+        return this.times > 0;
     }
 
     private Cars createCars(String carNames) {

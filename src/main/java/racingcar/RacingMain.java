@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.model.Cars;
 import racingcar.model.RacingGame;
+import racingcar.model.Result;
 import racingcar.utils.NumGenerator;
 import racingcar.utils.RandomNumGenerator;
 
@@ -13,7 +14,12 @@ public class RacingMain {
         NumGenerator numGenerator = new RandomNumGenerator();
 
         RacingGame rg = new RacingGame(carNames, times, numGenerator);
-        Cars racingCars = rg.run();
-        racingCars.printWinners();
+
+        while (rg.isMovable()){
+            Cars racingCars = rg.run();
+            Result.printResult(racingCars);
+        }
+
+        Result.printWinners(rg.getCars());
     }
 }

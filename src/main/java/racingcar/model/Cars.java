@@ -4,7 +4,6 @@ import racingcar.utils.StringUtil;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -21,10 +20,13 @@ public class Cars {
         return cars;
     }
 
-    public void printResult(){
+    public String getResult(){
+        StringBuilder sb = new StringBuilder();
         for (Car car : cars) {
-            System.out.println(car.getName() + ": " + StringUtil.repeat("-", car.getPosition()));
+            sb.append(car.getName() + ": " + StringUtil.repeat("-", car.getPosition()));
+            sb.append("\n");
         }
+        return sb.toString();
     }
 
     public List<Car> getWinners() {
@@ -37,11 +39,4 @@ public class Cars {
                 .orElse(Collections.emptyList());
     }
 
-    public void printWinners() {
-        StringJoiner joiner = new StringJoiner(", ", "", "가 최종 우승했습니다.");
-        for (Car car : getWinners()) {
-            joiner.add(car.getName());
-        }
-        System.out.println(joiner.toString());
-    }
 }
