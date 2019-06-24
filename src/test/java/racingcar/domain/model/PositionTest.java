@@ -1,7 +1,8 @@
-package racingcar.domain.moving;
+package racingcar.domain.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.model.Position;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -37,7 +38,7 @@ public class PositionTest {
         // given
         Position position = Position.of(10);
         // when
-        boolean maxPosition = position.isSamePosition(10);
+        boolean maxPosition = position.isSamePosition(Position.of(10));
         // then
         assertTrue(maxPosition);
     }

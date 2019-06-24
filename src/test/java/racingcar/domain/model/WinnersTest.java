@@ -1,11 +1,13 @@
-package racingcar.domain;
+package racingcar.domain.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.moving.Position;
+import racingcar.domain.model.RacingCar;
+import racingcar.domain.model.RacingCars;
+import racingcar.domain.model.Winners;
+import racingcar.domain.model.Position;
 
 import java.util.Arrays;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

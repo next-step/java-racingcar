@@ -4,7 +4,7 @@ public class MockRandomValueProvider extends RandomValueProvider {
 
     private int result;
 
-    MockRandomValueProvider(int result) {
+    public MockRandomValueProvider(int result) {
         super(0);
         this.result = result;
     }

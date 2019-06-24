@@ -1,8 +1,7 @@
-package racingcar.domain;
+package racingcar.domain.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.moving.Position;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,7 +20,7 @@ public class RacingCarsTest {
                 RacingCar.of("yellow", Position.of(7))
         ));
         // when
-        List<RacingCar> winners = racingCars.findWinners();
+        List<RacingCar> winners = racingCars.findWinners().findAll();
         // then
         assertThat(winners.size()).isEqualTo(1);
         assertThat(winners.get(0).getPosition()).isEqualTo(10);
@@ -37,7 +36,7 @@ public class RacingCarsTest {
                 RacingCar.of("yellow", Position.of(7))
         ));
         // when
-        List<RacingCar> winners = racingCars.findWinners();
+        List<RacingCar> winners = racingCars.findWinners().findAll();
         // then
         assertThat(winners.size()).isEqualTo(2);
         assertThat(winners.get(0).getPosition()).isEqualTo(10);
@@ -54,7 +53,7 @@ public class RacingCarsTest {
                 RacingCar.of("yellow", Position.of(10))
         ));
         // when
-        List<RacingCar> winners = racingCars.findWinners();
+        List<RacingCar> winners = racingCars.findWinners().findAll();
         // then
         assertThat(winners.size()).isEqualTo(3);
         assertThat(winners.get(0).getPosition()).isEqualTo(10);

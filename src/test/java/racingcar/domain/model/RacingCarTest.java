@@ -1,8 +1,7 @@
-package racingcar.domain;
+package racingcar.domain.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.moving.Position;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -15,7 +14,7 @@ public class RacingCarTest {
         // given
         RacingCar racingCar = RacingCar.of("blue", Position.of(10));
         // when
-        boolean winner = racingCar.isWinner(10);
+        boolean winner = racingCar.isWinner(Position.of(10));
         // then
         assertTrue(winner);
     }
