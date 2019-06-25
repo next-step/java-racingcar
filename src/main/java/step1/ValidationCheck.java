@@ -10,6 +10,7 @@ import java.util.*;
 
 public class ValidationCheck {
     ArrayList<String> operatorList = new ArrayList<>();
+
     // 1. null Check
     public void nullCheck(String str) {
 

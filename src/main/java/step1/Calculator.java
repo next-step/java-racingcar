@@ -52,3 +52,4 @@ public class Calculator {
         return num * nextNum;
     }
 }
+
