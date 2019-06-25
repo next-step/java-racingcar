@@ -24,7 +24,9 @@ public class ResultView {
               .flatMap(this::flatMapAndNextLine)
               .forEach(car -> System.out.println(car.getCarName().getName() + "\t: " + getMovingPosition(car.getPosition())));
 
-        String winners = racingGameResultModel.getWinners().stream()
+        String winners = racingGameResultModel.getWinners()
+                                              .getCars()
+                                              .stream()
                                               .map(Car::getCarName)
                                               .map(CarName::getName)
                                               .collect(Collectors.joining(", "));

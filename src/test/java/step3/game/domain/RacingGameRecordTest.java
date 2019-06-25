@@ -59,7 +59,7 @@ public class RacingGameRecordTest {
     @Test
     @DisplayName("우승자는 한 명 이상")
     void winners_count() {
-        assertThat(racingGameRecord.winners().size() > 0).isTrue();
+        assertThat(racingGameRecord.winners().getNumberOfWinners() > 0).isTrue();
     }
 
     @Test

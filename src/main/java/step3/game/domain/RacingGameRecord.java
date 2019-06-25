@@ -33,7 +33,7 @@ public class RacingGameRecord {
         return result.get(previousTurnNo);
     }
 
-    public List<Car> winners() {
+    public Winners winners() {
         assertGameRecord(result.size() - 1);
 
         List<Car> finalTurn = result.get(result.size() - 1).getCars();
@@ -48,10 +48,10 @@ public class RacingGameRecord {
                         .max().orElse(0);
     }
 
-    private List<Car> winners(List<Car> finalTurn, int winnerPosition) {
-        return finalTurn.stream()
-                        .filter(car -> winnerPosition == car.getPosition())
-                        .collect(Collectors.toList());
+    private Winners winners(List<Car> finalTurn, int winnerPosition) {
+        return new Winners(finalTurn.stream()
+                                    .filter(car -> car.isWinner(winnerPosition))
+                                    .collect(Collectors.toList()));
     }
 
     private void assertTurnNo(final int previousTurnNo, final int resultSize) {
