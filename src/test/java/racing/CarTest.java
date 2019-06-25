@@ -12,24 +12,24 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        this.car = new Car(new CarName("hennry"), new Position());
+        this.car = Car.of(new CarName("hennry"), new Position());
     }
 
     @Test
     void move() {
-        car.move(5L);
+        car.move(5);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
     void stop() {
-        car.move(3L);
+        car.move(3);
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @Test
     void ifCarNameNullThrowIllegalException() {
-        assertThatThrownBy(() -> new Car(new CarName(null), new Position())).isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> new Car(new CarName(""), new Position())).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Car.of(new CarName(null), new Position())).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Car.of(new CarName(""), new Position())).isInstanceOf(IllegalArgumentException.class);
     }
 }
