@@ -60,5 +60,6 @@ public class CarTest {
     @Test
     void validate() {
         assertThatThrownBy(() -> Car.of(new CarName(""), new Position())).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Car.of(new CarName(null), new Position())).isInstanceOf(IllegalArgumentException.class);
     }
 }
