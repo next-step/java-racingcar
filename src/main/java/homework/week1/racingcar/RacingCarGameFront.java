@@ -1,4 +1,4 @@
-package homework.week1;
+package homework.week1.racingcar;
 
 import java.util.List;
 import java.util.Scanner;

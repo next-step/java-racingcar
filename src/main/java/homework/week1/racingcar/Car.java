@@ -1,4 +1,4 @@
-package homework.week1;
+package homework.week1.racingcar;
 
 public class Car {
 

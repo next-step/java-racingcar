@@ -1,4 +1,4 @@
-package homework.week1;
+package homework.week1.racingcar;
 
 import org.apache.commons.lang3.StringUtils;
 

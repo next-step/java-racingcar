@@ -1,4 +1,4 @@
-package homework.week1;
+package homework.week1.calculator;
 
 import java.util.ArrayList;
 import java.util.List;

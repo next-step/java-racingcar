@@ -1,5 +1,8 @@
-package homework.week1;
+package homework.week1.racingcar;
 
+import homework.week1.racingcar.Car;
+import homework.week1.racingcar.RacingCarGameEngine;
+import homework.week1.racingcar.Winner;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
