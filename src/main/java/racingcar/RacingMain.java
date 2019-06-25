@@ -2,25 +2,24 @@ package racingcar;
 
 import racingcar.model.Cars;
 import racingcar.model.RacingGame;
+import racingcar.model.Result;
 import racingcar.utils.NumGenerator;
 import racingcar.utils.RandomNumGenerator;
 
-import java.util.Scanner;
-
 public class RacingMain {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
 
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        String carNames = Input.getCarNames(sc);
-
-        System.out.println("시도할 회수는 몇회인가요?");
-        int times = Input.getTimes(sc);
+        String carNames = Input.getCarNames();
+        int times = Input.getTimes();
         NumGenerator numGenerator = new RandomNumGenerator();
 
         RacingGame rg = new RacingGame(carNames, times, numGenerator);
-        Cars racingCars = rg.run();
-        racingCars.printWinners();
 
+        while (rg.isMovable()){
+            Cars racingCars = rg.run();
+            Result.printResult(racingCars);
+        }
+
+        Result.printWinners(rg.getCars());
     }
 }
