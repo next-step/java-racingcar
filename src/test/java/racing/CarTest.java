@@ -7,6 +7,7 @@ import racing.model.CarName;
 import racing.model.Position;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
@@ -54,5 +55,10 @@ public class CarTest {
     void getDistance() {
         car.move(Car.MOVE_CONDITION);
         assertThat(car.getDistance()).isEqualTo("-");
+    }
+
+    @Test
+    void validate() {
+        assertThatThrownBy(() -> Car.of(new CarName(""), new Position())).isInstanceOf(IllegalArgumentException.class);
     }
 }
