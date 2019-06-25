@@ -1,64 +1,51 @@
 package homework.week1;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class RacingCarGameFront {
+
+    private static final String INPUT_CAR_NAME_GUIDE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    private static final String INPUT_RACING_NUMBER_GUIDE = "시도할 회수는 몇회인가요?";
+    private static final String WINNER_CAR_NAME_GUIDE = "가 최종 우승했습니다.";
     private static final String RUN_SYMBOL = "-";
-    private static final int MIN_INPUT_VALUE = 1;
 
-    public static void main(String[] args) {
-        RacingCarGameFront gameFront = new RacingCarGameFront();
-        gameFront.startGame(gameFront);
-    }
-
-    void startGame(RacingCarGameFront gameFront) {
-        RacingCarGameEngine carGameEngine = null;
-        try {
-            carGameEngine = gameFront.getRacingCarGameEngine();
-            gameFront.goRacingGame(carGameEngine);
-        } catch (IllegalArgumentException exception) {
-            System.out.println("1이상의 숫자로 처음부터 다시 입력하세요!");
-            System.out.println("---------------------------------");
-            startGame(gameFront);
-        }
-    }
-
-    RacingCarGameEngine getRacingCarGameEngine() throws IllegalArgumentException {
-        System.out.println("자동차 대수는 몇 대 인가요?");
+    String getInputCarStrs() {
+        printGuideStr(INPUT_CAR_NAME_GUIDE);
         Scanner scanner = new Scanner(System.in);
-        int numbersOfCars = scanner.nextInt();
-        System.out.println("경주 할 회수는 몇 회 인가요?");
-        int numbersOfRacing = scanner.nextInt();
-        System.out.println("***********************");
-        validateUserInputValues(numbersOfCars, numbersOfRacing);
-        return new RacingCarGameEngine(numbersOfRacing, new int[numbersOfCars]);
+        return scanner.nextLine();
     }
 
-    void validateUserInputValues(int numbersOfCars, int numbersOfRacing)
-            throws IllegalArgumentException {
-        if (numbersOfCars < MIN_INPUT_VALUE || numbersOfRacing < MIN_INPUT_VALUE) {
-            throw new IllegalArgumentException("반드시 1 이상의 숫자를 입력하세요!");
+    int getInputNumberOfRacing() {
+        printGuideStr(INPUT_RACING_NUMBER_GUIDE);
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
+    }
+
+    void printGuideStr(String guideStr) {
+        System.out.println(guideStr);
+    }
+
+    void printRacingCars(List<Car> cars) {
+        for (Car car : cars) {
+            printRacingCar(car.getName(), car.getPosition());
         }
     }
 
-    void printRacingCars(int[] carPositions) {
-        for (int carPosition : carPositions) {
-            printRunCar(carPosition);
+    void printRacingCar(String carName, int position) {
+        String runCountStr = "";
+        for (int index = 0 ; index < position; index++) {
+            runCountStr += RUN_SYMBOL;
         }
+        System.out.println(carName + " : " + runCountStr);
+    }
+
+    void printWinnerCars(List<String> carNames) {
+        System.out.println(String.join(", ", carNames) + WINNER_CAR_NAME_GUIDE);
+    }
+
+    void printEmptyLine() {
         System.out.println();
     }
 
-    void printRunCar(int runCount) {
-        for (int count = 0; count < runCount; count++) {
-            System.out.print(RUN_SYMBOL);
-        }
-        System.out.println();
-    }
-
-    void goRacingGame(RacingCarGameEngine carGameEngine) {
-        for (int count = 0; count < carGameEngine.getNumbersOfRacing(); count++) {
-            carGameEngine.move();
-            printRacingCars(carGameEngine.getCarPositions());
-        }
-    }
 }

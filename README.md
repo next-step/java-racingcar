@@ -41,6 +41,28 @@
   RacingCarEngine 인스턴스를 매개변수로 goRacingGame 를 호출한다.
 * UI 로직 기능5 : 사용자에게 유효한 정보를 입력받아 RacingCarEngine 인스턴스를 생성하여 리턴하는 getRacingCarGameEngine 매소드이다.
   입력받은 값이 유효한지 검사하는 validateUserInputValues 를 호출하여 유효하지 않으면 IllegalArgumentException 를 발생시킨다.
+  
+##자동차 경주 게임 step3 기능 목록(기능 목록 단위로 commit)
+* 자동차의 이름인 name과 위치정보인 position 을 가지는 Car 클래스를 만든다
+* 입력받는 자동차이름들 문자열은 빈문자열이거나 null 인지 유효성 검사 
+* 입력값인 자동차는 쉼표(,) 로 구분한다. 입력된 이름 수 만큼 Car 를 생성한다. 
+  String[] names = inputName.split(",");
+* 쉼표(,)로 자른 문자열이 빈문자열인지 유효성 검사
+* 가장 큰 position 을 가지는 Car 를 구한다. 
+  가장 큰 position을 가지는 Car는 한 대 이상일 수 있다
+* 자동차의 name 와 position 을 각 자동차 출력시 아래와 같이 출력하도록 출력 메소드를 만든다. 
+  ex) pobi : -
+* 입력받은 횟수만큼 경주한 뒤 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다. 쉼표(,)로 연결 된 우승한 Car 의 이름들 + “가 최종 우승했습니다.” 를 출력 메소드를 만든다.
+          ex)pobi : -----
+            crong : ----
+            honux : -----
+
+            pobi, honux가 최종 우승했습니다.
+            
+
+
+
+
 
 
 

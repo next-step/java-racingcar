@@ -15,115 +15,101 @@ public class StringCalculator {
     static final String EMPTY_STRING = "";
     static final int MIN_ELEMENT_STRING_ARRAY_LENGTH = 3;
 
-    private String inputString;
-    private List<Integer> numberElementList;
-    private List<String> operationalSymbolElementList;
+    private String inputStr;
+    private List<Integer> numbers;
+    private List<String> operationalSymbols;
 
-    public StringCalculator(String inputString) {
-        this.inputString = inputString;
+    public StringCalculator(String inputStr) {
+        this.inputStr = inputStr;
     }
 
-    public List<Integer> getNumberElementList() {
-        return numberElementList;
+    public static void main(String[] args) {
+        StringCalculator stringCalculator = new StringCalculator("2 + 3 * 4 / 2");
+        stringCalculator.prepareForCalculate(stringCalculator);
+        stringCalculator.printResult(stringCalculator.calculate());
     }
 
-    public List<String> getOperationalSymbolElementList() {
-        return operationalSymbolElementList;
-    }
-
-    void validateInputString() throws IllegalArgumentException {
-        if (inputString == null
-                || inputString.isEmpty()
-                || inputString.replaceAll(SEPARATOR_STRING, EMPTY_STRING).isEmpty()) {
+    void checkInputEmpty() throws IllegalArgumentException {
+        if (inputStr == null
+                || inputStr.isEmpty()
+                || inputStr.replaceAll(SEPARATOR_STRING, EMPTY_STRING).isEmpty()) {
             throw new IllegalArgumentException("입력값은 null, 빈 문자열, 공백 문자열로만 이루어진 것을 허용하지 않습니다!");
         }
     }
 
-    String[] splitInputString() {
-        return inputString.split(SEPARATOR_STRING);
-    }
-
-    void validateElementStringArrayLength(String[] elementStringArray) throws IllegalArgumentException {
-        if (elementStringArray.length < MIN_ELEMENT_STRING_ARRAY_LENGTH) {
+    void checkMinLength(String[] strArr) throws IllegalArgumentException {
+        if (strArr.length < MIN_ELEMENT_STRING_ARRAY_LENGTH) {
             throw new IllegalArgumentException("입력값은 최소 계산 할 두개의 숫자와 하나의 사칙연산 기호로 이루어져야 합니다.");
         }
-        if (elementStringArray.length % 2 != 1) {
-            throw new IllegalArgumentException("입력값은 계산할 숫자문자열과 사칙연산기호 문자열의 개수를 더 했을 때 홀수로 이루어져야 합니다.");
+    }
+
+    void checkOddLength(String[] strArr) throws IllegalArgumentException {
+        if (strArr.length % 2 == 0) {
+            throw new IllegalArgumentException("입력값은 최소 계산 할 두개의 숫자와 하나의 사칙연산 기호로 이루어져야 합니다.");
         }
     }
 
-    void validateElementStringArrayFirstValueAndLastValue(String[] elementStringArray) {
-        validateNumberStringValue(elementStringArray[0]);
-        validateNumberStringValue(elementStringArray[elementStringArray.length - 1]);
+    void checkFirstAndLastNumberValues(String[] strArr) {
+        checkNumberString(strArr[0]);
+        checkNumberString(strArr[strArr.length - 1]);
     }
 
-    void validateNumberStringValue(String stringValue) throws IllegalArgumentException {
-        if (!Pattern.matches(NUMBER_REGEX, stringValue)) {
+    void validationInputStrings(String[] strArr) {
+        checkMinLength(strArr);
+        checkOddLength(strArr);
+        checkFirstAndLastNumberValues(strArr);
+    }
+
+    void checkNumberString(String strValue) throws IllegalArgumentException {
+        if (!Pattern.matches(NUMBER_REGEX, strValue)) {
             throw new IllegalArgumentException("숫자형태 문자열이 와야 할 자리에 다른형태 문자열이 있습니다.");
         }
     }
 
-    void validateOperationalSymbolStringValue(String stringValue) throws IllegalArgumentException {
-        if (!PLUS_SYMBOL.equals(stringValue)
-                && !MINUS_SYMBOL.equals(stringValue)
-                && !MULTIPLY_SYMBOL.equals(stringValue)
-                && !DIVISION_SYMBOL.equals(stringValue))
+    void checkOperationalSymbol(String strValue) throws IllegalArgumentException {
+        if (!PLUS_SYMBOL.equals(strValue)
+                && !MINUS_SYMBOL.equals(strValue)
+                && !MULTIPLY_SYMBOL.equals(strValue)
+                && !DIVISION_SYMBOL.equals(strValue))
             throw new IllegalArgumentException("사칙연산기호 문자열이 와야 할 자리에 다른형태 문자열이 있습니다.");
     }
 
-    List<String> getNumberStringElementList(String[] elementStringArray) {
-        List<String> numberStringElementList = new ArrayList();
-        for (int index = 0; index < elementStringArray.length; index += 2) {
-            numberStringElementList.add(elementStringArray[index]);
-        }
-        return numberStringElementList;
-    }
-
-    void setOperationalSymbolElementList(String[] elementStringArray) {
-        operationalSymbolElementList = new ArrayList();
-        for (int index = 1; index < elementStringArray.length; index += 2) {
-            operationalSymbolElementList.add(elementStringArray[index]);
+    void checkNumbers(List<String> numberStrings) {
+        for (String numberString : numberStrings) {
+            checkNumberString(numberString);
         }
     }
 
-    void validateNumberStringElementListValues(List<String> numberStringElementList) {
-        for (String numberString : numberStringElementList) {
-            validateNumberStringValue(numberString);
+    void checkOperationalSymbols() throws IllegalArgumentException {
+        for (String operationalSymbol: operationalSymbols) {
+            checkOperationalSymbol(operationalSymbol);
         }
     }
 
-    void validateOperationalSymbolElementListValues() throws IllegalArgumentException {
-        for (String operationalSymbolString : operationalSymbolElementList) {
-            validateOperationalSymbolStringValue(operationalSymbolString);
+    String[] splitInput() {
+        return inputStr.split(SEPARATOR_STRING);
+    }
+
+    List<String> getNumerStrings(String[] strArr) {
+        List<String> numberStrings = new ArrayList();
+        for (int index = 0; index < strArr.length; index += 2) {
+            numberStrings.add(strArr[index]);
+        }
+        return numberStrings;
+    }
+
+    void setOperationalSymbols(String[] strArr) {
+        operationalSymbols = new ArrayList();
+        for (int index = 1; index < strArr.length; index += 2) {
+            operationalSymbols.add(strArr[index]);
         }
     }
 
-    void setNumberElementList(List<String> numberStringElementList) {
-        numberElementList = new ArrayList<>();
-        for (String numberString : numberStringElementList) {
-            numberElementList.add(Integer.parseInt(numberString));
+    void setNumbers(List<String> numberStrings) {
+        numbers = new ArrayList<>();
+        for (String numberString : numberStrings) {
+            numbers.add(Integer.parseInt(numberString));
         }
-    }
-
-    void prepareForCalculate(StringCalculator stringCalculator) {
-        // 입력 문자열 null or empty string or white space string validation check
-        stringCalculator.validateInputString();
-        // 입력 문자열 split
-        String[] elementStringArray = stringCalculator.splitInputString();
-        // 쪼갠 문자열 요소 배열길이 validation check
-        stringCalculator.validateElementStringArrayLength(elementStringArray);
-        // 조갠 문자열 요소 배열의 첫번째 value, 마지막 value validation check
-        stringCalculator.validateElementStringArrayFirstValueAndLastValue(elementStringArray);
-        // 문자열 요소 배열의 인덱스가 0 포함 짝수인 값들만 사직연산 기호 문자열 리스트에 담는다.
-        List<String> numberStringElements = stringCalculator.getNumberStringElementList(elementStringArray);
-        // 문자열 요소 배열의 인덱스가 홀수인 값들만 사직연산 기호 문자열 리스트에 담는다.
-        stringCalculator.setOperationalSymbolElementList(elementStringArray);
-        // 문자열 요소 배열의 인덱스가 짝수 번째 문자열은 숫자형태로만 이루어져야 한다.
-        stringCalculator.validateNumberStringElementListValues(numberStringElements);
-        // 문자열 요소 배열의 인덱스가 홀수 번째 문자열은 사칙연산 기호로만 이루어져야 한다.
-        stringCalculator.validateOperationalSymbolElementListValues();
-        // 숫자형태 문자열 리스트 value를 Integer로 parse 후 numberElementList add
-        stringCalculator.setNumberElementList(numberStringElements);
     }
 
     int plus(int result, int value, String symbol) {
@@ -150,27 +136,40 @@ public class StringCalculator {
         return result;
     }
 
-    void printResult(int result) {
-        System.out.println(result);
+    void prepareForCalculate(StringCalculator strCal) {
+        strCal.checkInputEmpty();
+        String[] strArr = strCal.splitInput();
+        validationInputStrings(strArr);
+        strCal.setOperationalSymbols(strArr);
+        strCal.checkOperationalSymbols();
+        List<String> numberStrings = strCal.getNumerStrings(strArr);
+        strCal.checkNumbers(numberStrings);
+        strCal.setNumbers(numberStrings);
     }
 
     int calculate() {
-        int result = numberElementList.get(0);
+        int result = numbers.get(0);
         int symbolsIndex = 0;
-        for (int numbersIndex = 1; numbersIndex < numberElementList.size(); numbersIndex++) {
-            result = plus(result, numberElementList.get(numbersIndex), operationalSymbolElementList.get(symbolsIndex));
-            result = minus(result, numberElementList.get(numbersIndex), operationalSymbolElementList.get(symbolsIndex));
-            result = multiply(result, numberElementList.get(numbersIndex), operationalSymbolElementList.get(symbolsIndex));
-            result = division(result, numberElementList.get(numbersIndex), operationalSymbolElementList.get(symbolsIndex));
+        for (int numbersIndex = 1; numbersIndex < numbers.size(); numbersIndex++) {
+            result = plus(result, numbers.get(numbersIndex), operationalSymbols.get(symbolsIndex));
+            result = minus(result, numbers.get(numbersIndex), operationalSymbols.get(symbolsIndex));
+            result = multiply(result, numbers.get(numbersIndex), operationalSymbols.get(symbolsIndex));
+            result = division(result, numbers.get(numbersIndex), operationalSymbols.get(symbolsIndex));
             symbolsIndex++;
         }
         return result;
     }
 
-    public static void main(String[] args) {
-        StringCalculator stringCalculator = new StringCalculator("2 + 3 * 4 / 2");
-        stringCalculator.prepareForCalculate(stringCalculator);
-        stringCalculator.printResult(stringCalculator.calculate());
+    void printResult(int result) {
+        System.out.println(result);
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public List<String> getOperationalSymbols() {
+        return operationalSymbols;
     }
 }
 
