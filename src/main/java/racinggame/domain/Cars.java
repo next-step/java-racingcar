@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 import com.google.common.base.Preconditions;
 
@@ -30,7 +30,7 @@ public class Cars {
     public Map<String, Integer> getPositions() {
         Map<String, Integer> positions = new LinkedHashMap<>();
         for (Car car : cars) {
-            positions.put(car.getCarName(), car.getPosition());
+            positions.putAll(car.getCarMap());
         }
         return positions;
     }

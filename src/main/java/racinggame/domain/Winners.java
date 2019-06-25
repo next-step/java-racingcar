@@ -1,8 +1,9 @@
-package racinggame;
+package racinggame.domain;
 
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class Winners {
     public static List<String> getWinner(Map<String, Integer> gameResult) {
@@ -11,7 +12,7 @@ public class Winners {
         return gameResult.entrySet().stream()
                 .filter((stringIntegerEntry -> stringIntegerEntry.getValue() == maxPosition))
                 .map(Map.Entry::getKey)
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     private static int getMaxPosition(Map<String, Integer> gameResult) {

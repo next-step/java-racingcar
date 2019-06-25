@@ -1,4 +1,7 @@
-package racinggame;
+package racinggame.domain;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Car {
     public static final int MOVE_DISTANCE_PER_ONCE = 1;
@@ -18,6 +21,12 @@ public class Car {
 
     public Car move() {
         return new Car(this.carName, this.position + MOVE_DISTANCE_PER_ONCE);
+    }
+
+    public Map<String, Integer> getCarMap() {
+        Map<String, Integer> map = new HashMap<>();
+        map.put(getCarName(), getPosition());
+        return map;
     }
 
     public int getPosition() {
