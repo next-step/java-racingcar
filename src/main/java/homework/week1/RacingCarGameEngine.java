@@ -1,5 +1,7 @@
 package homework.week1;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -14,7 +16,7 @@ public class RacingCarGameEngine {
     private List<Car> cars;
 
     public RacingCarGameEngine(String carStrings, int numOfRacing) {
-        checkEmptyString(carStrings);
+        checkEmptyOrNull(carStrings);
         initializeCars(carStrings);
         checkInputPositiveNum(numOfRacing);
         this.numOfRacing = numOfRacing;
@@ -23,7 +25,7 @@ public class RacingCarGameEngine {
     private void initializeCars(String carStrings) {
         cars = new ArrayList<>();
         for (String carName : splitInput(carStrings)) {
-            checkEmptyString(carName);
+            checkEmptyOrNull(carName);
             Car car = new Car(carName);
             cars.add(car);
         }
@@ -44,12 +46,8 @@ public class RacingCarGameEngine {
         }
     }
 
-    void checkEmptyString(String value) throws IllegalArgumentException {
-        if (value == null) {
-            throw new IllegalArgumentException("차 이름을 반드시 입력하세요");
-        }
-        value = value.trim();
-        if (value.isEmpty()) {
+    void checkEmptyOrNull(String value) throws IllegalArgumentException {
+        if (StringUtils.isBlank(value)) {
             throw new IllegalArgumentException("차이름은 빈 문자열이나 공백문자열이 올 수 없습니다.");
         }
     }
