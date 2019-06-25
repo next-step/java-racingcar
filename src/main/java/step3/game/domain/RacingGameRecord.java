@@ -34,22 +34,26 @@ public class RacingGameRecord {
     }
 
     public Winners winners() {
-        assertGameRecord(result.size() - 1);
+        final int beforeTurnNo = result.size() - 1;
+        assertGameRecord(beforeTurnNo);
 
-        List<Car> finalTurn = result.get(result.size() - 1).getCars();
+        Cars finalTurn = result.get(beforeTurnNo);
         int winnerPosition = winnerPosition(finalTurn);
 
         return winners(finalTurn, winnerPosition);
     }
 
-    private int winnerPosition(List<Car> finalTurn) {
-        return finalTurn.stream()
+    private int winnerPosition(Cars finalTurn) {
+        return finalTurn.getCars()
+                        .stream()
                         .mapToInt(Car::getPosition)
-                        .max().orElse(0);
+                        .max()
+                        .orElse(0);
     }
 
-    private Winners winners(List<Car> finalTurn, int winnerPosition) {
-        return new Winners(finalTurn.stream()
+    private Winners winners(Cars finalTurn, int winnerPosition) {
+        return new Winners(finalTurn.getCars()
+                                    .stream()
                                     .filter(car -> car.isWinner(winnerPosition))
                                     .collect(Collectors.toList()));
     }
