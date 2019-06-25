@@ -1,7 +1,7 @@
 package carRacing.view;
 
 import carRacing.model.Car;
-import carRacing.model.RacingCarGroup;
+import carRacing.model.RacingCars;
 import com.google.common.base.Strings;
 
 import java.util.StringJoiner;
@@ -10,15 +10,15 @@ public class ResultView {
 
     private final static String GRAPH_POSINT = "-";
 
-    public static void printRacingMiddleResult(RacingCarGroup racingCarGroup) {
-        for (Car car : racingCarGroup.getRacingCars()) {
+    public static void printRacingMiddleResult(RacingCars racingCars) {
+        for (Car car : racingCars.getRacingCars()) {
             int position = car.getPosition();
             System.out.println(car.getName() + ":" + buildStringGraph(position));
         }
         System.out.println();
     }
 
-    public static void printWinners(RacingCarGroup winners) {
+    public static void printWinners(RacingCars winners) {
         StringJoiner stringJoiner = new StringJoiner(",");
         for (Car car : winners.getRacingCars()) {
             stringJoiner.add(car.getName());
