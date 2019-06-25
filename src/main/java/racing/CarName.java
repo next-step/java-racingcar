@@ -12,7 +12,7 @@ public class CarName {
     }
 
     private void validate(String name) {
-        if (StringUtils.isEmpty(name) || name.equals(""))
+        if (StringUtils.isEmpty(name))
             throw new IllegalArgumentException();
     }
 

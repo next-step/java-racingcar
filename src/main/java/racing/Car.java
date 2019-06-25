@@ -2,10 +2,11 @@ package racing;
 
 public class Car {
 
+    private static final int MOVE_CONDITION = 4;
     private Position position;
     private CarName name;
 
-    public Car(CarName name, Position position) {
+    private Car(CarName name, Position position) {
         this.name = name;
         this.position = new Position();
     }
@@ -14,8 +15,8 @@ public class Car {
         return new Car(carName, position);
     }
 
-    public void move(Long l) {
-        if (l >= 4)
+    void move(int condition) {
+        if (condition >= MOVE_CONDITION)
             position.progress();
     }
 
@@ -25,5 +26,13 @@ public class Car {
 
     public String getName() {
         return name.getName();
+    }
+
+    public boolean isWinner(int position) {
+        return getPosition() == position;
+    }
+
+    public String getDistance() {
+        return new String(new char[this.getPosition()]).replace("\0", "-");
     }
 }
