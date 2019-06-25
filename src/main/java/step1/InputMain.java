@@ -4,6 +4,7 @@ import java.util.Scanner;
 /**
  * 메인클래스: 입력받고, 각 유효성 검사를 호출 및 결과 값 도출
  */
+
 public class InputMain {
 
     // 1. 사용자 입력을 받는다.
