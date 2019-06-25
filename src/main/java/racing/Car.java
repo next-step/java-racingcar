@@ -14,7 +14,7 @@ public class Car {
         return new Car(carName, position);
     }
 
-    public void move(long l) {
+    public void move(Long l) {
         if (l >= 4)
             position.progress();
     }
