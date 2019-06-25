@@ -10,7 +10,7 @@ public class RacingCarGameFront {
     private static final String WINNER_CAR_NAME_GUIDE = "가 최종 우승했습니다.";
     private static final String RUN_SYMBOL = "-";
 
-    String getInputCarStrs() {
+    String inputCarName() {
         printGuideStr(INPUT_CAR_NAME_GUIDE);
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();

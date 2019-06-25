@@ -19,7 +19,7 @@ public class RacingCarGameTest {
     @Test
     void checkEmptyString_입력값빈문자입력시에러() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            carGameEngine.checkEmptyString("");
+            carGameEngine.checkEmptyOrNull("");
         });
     }
 

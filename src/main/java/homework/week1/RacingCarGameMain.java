@@ -3,7 +3,7 @@ package homework.week1;
 public class RacingCarGameMain {
     public static void main(String[] args) {
         RacingCarGameFront gameFront = new RacingCarGameFront();
-        String carStrings = gameFront.getInputCarStrs();
+        String carStrings = gameFront.inputCarName();
         int numOfRacing = gameFront.getInputNumberOfRacing();
         RacingCarGameEngine gameEngine = new RacingCarGameEngine(carStrings, numOfRacing);
         for(int racingNumber = 1; racingNumber <= gameEngine.getNumberOfRacing(); racingNumber++) {
