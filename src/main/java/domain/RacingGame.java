@@ -52,9 +52,9 @@ public class RacingGame {
     // 사용자가 입력한 횟수에 따라서 자동화 게임 실행 함수
     public void race() {
 
-        for (CarInfo elemnt : car) {
+        for (CarInfo element : car) {
             if (this.indexofTimeofGame > 0) {
-                elemnt.move(indexofTimeofGame);
+                element.move(indexofTimeofGame);
             }
         }
         ++indexofTimeofGame;
