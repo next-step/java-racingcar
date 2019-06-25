@@ -50,6 +50,6 @@ public class CarTest {
     @Test
     void getDistance() {
         car.move(Car.MOVE_CONDITION);
-        assertThat(car.getPosition()).isEqualTo("-");
+        assertThat(car.getDistance()).isEqualTo("-");
     }
 }
