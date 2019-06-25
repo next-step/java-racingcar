@@ -9,7 +9,7 @@ public class CarConditionTest {
 
     @Test
     @RepeatedTest(10)
-    void getCondition() {
+    void get() {
         assertThat(CarCondition.get()).isBetween(0, 9);
     }
 }
