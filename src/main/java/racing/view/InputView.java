@@ -1,8 +1,8 @@
 package racing.view;
 
-import racing.Car;
-import racing.CarName;
-import racing.Position;
+import racing.model.Car;
+import racing.model.CarName;
+import racing.model.Position;
 
 import java.util.List;
 import java.util.Scanner;

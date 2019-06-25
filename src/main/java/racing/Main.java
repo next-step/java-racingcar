@@ -1,5 +1,7 @@
 package racing;
 
+import racing.model.Car;
+import racing.model.CarCondition;
 import racing.view.InputView;
 import racing.view.OutputView;
 

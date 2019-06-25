@@ -2,6 +2,7 @@ package racing;
 
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import racing.model.CarCondition;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

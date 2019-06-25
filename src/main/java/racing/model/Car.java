@@ -1,4 +1,4 @@
-package racing;
+package racing.model;
 
 public class Car {
 
@@ -15,7 +15,7 @@ public class Car {
         return new Car(carName, position);
     }
 
-    void move(int condition) {
+    public void move(int condition) {
         if (condition >= MOVE_CONDITION)
             position.progress();
     }
