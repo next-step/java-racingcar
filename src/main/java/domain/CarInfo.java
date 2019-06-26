@@ -11,7 +11,6 @@ public class CarInfo implements MovableStrategy {
     private int indexOftime;
 
     public CarInfo(String carName, int time) {
-
         this.carName = carName;
         this.indexOftime = time;
         this.carPosition = new int[time];
@@ -22,8 +21,8 @@ public class CarInfo implements MovableStrategy {
         return carName;
     }
 
-    public int getCarLastPosition() {
-        return carPosition[indexOftime - 1];
+    public int getCarPosition(int index) {
+        return carPosition[index];
     }
 
     // 랜덤함수 결과 여부에 따라서 전진 or 정지를 결정하는 함수
@@ -48,8 +47,8 @@ public class CarInfo implements MovableStrategy {
     }
 
     // maxpositon 값과 현재 자동차의 position 값이 같은지 비교
-    public boolean compareWithMaxPosition(int maxpositon) {
-        return this.carPosition[indexOftime - 1] == maxpositon;
+    public boolean compareWithMaxPosition(int maxposition) {
+        return this.carPosition[indexOftime - 1] == maxposition;
     }
 
 }

@@ -11,7 +11,6 @@ public class RacingGame {
     private List<CarInfo> winner;
     private int indexofTimeofGame = 0;
 
-    // 사용자 입력에 따라서 실행되는 RaceGame 생성자
     public RacingGame(String namesOfCar, int timeofGame) {
         String[] inputnamesOfCar = checkNameOfCar(splitName(namesOfCar));
         this.car = new ArrayList<>();
@@ -51,7 +50,6 @@ public class RacingGame {
 
     // 사용자가 입력한 횟수에 따라서 자동화 게임 실행 함수
     public void race() {
-
         for (CarInfo element : car) {
             if (this.indexofTimeofGame > 0) {
                 element.move(indexofTimeofGame);

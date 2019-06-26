@@ -1,3 +1,5 @@
+import domain.RacingGame;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -42,18 +44,6 @@ public class RacingGameTest {
     @Test
     void compareWithMaxPosition() {
         assertThat(this.carPosition == this.maxPosition).isFalse();
-    }
-
-    @Test
-    void makeStatusofCar() {
-        StringBuilder status = new StringBuilder();
-        String carStatus;
-
-        for (int i = 0; i < this.carPosition; ++i) {
-            status.append("-");
-        }
-        carStatus = status.toString();
-        assertThat(carStatus).isEqualTo("-----");
     }
 
 }

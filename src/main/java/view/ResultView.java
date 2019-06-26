@@ -15,9 +15,9 @@ public class ResultView {
         }
     }
 
-    private static void printEachGameResult(List<CarInfo> car, int time) {
+    private static void printEachGameResult(List<CarInfo> car, int index) {
         for (CarInfo element : car) {
-            System.out.println(element.getCarName() + " : " + getRacingGameResult(element));
+            System.out.println(element.getCarName() + " : " + getRacingGameResult(element, index));
         }
     }
 
@@ -30,9 +30,9 @@ public class ResultView {
         System.out.println(String.join(DELIMITER, winnerNames) + "가 최종 우승했습니다.");
     }
 
-    private static String getRacingGameResult(CarInfo car) {
+    private static String getRacingGameResult(CarInfo car, int index) {
         StringBuilder status = new StringBuilder();
-        for (int i = 0; i < car.getCarLastPosition(); ++i) {
+        for (int i = 0; i < car.getCarPosition(index); ++i) {
             status.append("-");
         }
         return status.toString();
