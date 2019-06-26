@@ -33,29 +33,11 @@ public class RacingGameRecord {
         return result.get(previousTurnNo);
     }
 
-    public Winners winners() {
+    public Cars winners() {
         final int beforeTurnNo = result.size() - 1;
-        assertGameRecord(beforeTurnNo);
 
         Cars finalTurn = result.get(beforeTurnNo);
-        int winnerPosition = winnerPosition(finalTurn);
-
-        return winners(finalTurn, winnerPosition);
-    }
-
-    private int winnerPosition(Cars finalTurn) {
-        return finalTurn.getCars()
-                        .stream()
-                        .mapToInt(Car::getPosition)
-                        .max()
-                        .orElse(0);
-    }
-
-    private Winners winners(Cars finalTurn, int winnerPosition) {
-        return new Winners(finalTurn.getCars()
-                                    .stream()
-                                    .filter(car -> car.isWinner(winnerPosition))
-                                    .collect(Collectors.toList()));
+        return finalTurn.winners();
     }
 
     private void assertTurnNo(final int previousTurnNo, final int resultSize) {
@@ -65,12 +47,6 @@ public class RacingGameRecord {
 
         if (previousTurnNo >= resultSize) {
             throw new IndexOutOfBoundsException("현재 " + resultSize + " 턴 까지 실행되었습니다. 입력 값 : " + previousTurnNo);
-        }
-    }
-
-    private void assertGameRecord(final int turnNo) {
-        if (turnNo < 0) {
-            throw new IndexOutOfBoundsException("현재 저장된 기록이 없습니다.");
         }
     }
 }
