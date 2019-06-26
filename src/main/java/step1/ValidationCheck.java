@@ -10,8 +10,8 @@ import java.util.*;
 
 public class ValidationCheck {
 
-    ArrayList<String> operatorList = new ArrayList<>();
-    // 1. null Check
+    private ArrayList<String> operatorList = new ArrayList<>();
+
     public void nullCheck(String str) {
 
         if (ObjectUtils.equals(str, null) || str.isEmpty()) {
@@ -19,7 +19,6 @@ public class ValidationCheck {
         }
     }
 
-    // 2. numberCheck
     public void numberCheck(String str) {
 
         if (ObjectUtils.equals(str, null) || str.isEmpty()) {
@@ -30,15 +29,19 @@ public class ValidationCheck {
         }
     }
 
-    // 3. operatorCheck
     public void operatorCheck(String str) {
+        if (operatorList.isEmpty() || ObjectUtils.equals(operatorList, null)) {
+            operatorAdd(operatorList);
+        }
+        if (!operatorList.contains(str)) {
+            throw new IllegalArgumentException("연산자(+, -, *, /)가 아닌 값이 있습니다. 재입력 해주세요.");
+        }
+    }
+
+    private void operatorAdd(ArrayList<String> operatorList) {
         operatorList.add("+");
         operatorList.add("-");
         operatorList.add("*");
         operatorList.add("/");
-
-        if (!operatorList.contains(str)) {
-            throw new IllegalArgumentException("연산자(+, -, *, /)가 아닌 값이 있습니다. 재입력 해주세요.");
-        }
     }
 }
