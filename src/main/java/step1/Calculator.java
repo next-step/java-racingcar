@@ -8,47 +8,48 @@ import java.util.*;
 
 public class Calculator {
 
-    public double callCalculate(double num, String str, double nextNum){
+    public double callCalculate(double num, String str, double nextNum) {
 
         double answer = 0.00;
-        if(str.equals("+")){
-            answer =  sum(num, nextNum);
+        if ("+".equals(str)) {
+            answer = sum(num, nextNum);
         }
 
-        if(str.equals("-")){
+        if ("-".equals(str)) {
             answer = subtraction(num, nextNum);
         }
 
-        if(str.equals("/")){
+        if ("/".equals(str)) {
             answer = divide(num, nextNum);
         }
 
-        if(str.equals("*")){
+        if ("*".equals(str)) {
             answer = multiple(num, nextNum);
         }
         return answer;
     }
 
-    public double sum(double num, double nextNum){
+    public double sum(double num, double nextNum) {
 
         return num + nextNum;
     }
 
-    public double subtraction(double num, double nextNum){
+    public double subtraction(double num, double nextNum) {
 
         return num - nextNum;
     }
 
-    public double divide(double num, double nextNum){
+    public double divide(double num, double nextNum) {
 
-        if(nextNum == 0){
+        if (nextNum == 0) {
             throw new ArithmeticException("0 으로 나누기는 불가합니다. [0보다 크거나 작은수]로 나누기 해주세요.");
         }
         return num / nextNum;
     }
 
-    public double multiple(double num, double nextNum){
+    public double multiple(double num, double nextNum) {
 
         return num * nextNum;
     }
 }
+
