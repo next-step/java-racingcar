@@ -12,7 +12,6 @@ public class RacingGameWinner {
 
     protected List<Integer> carPositions = new ArrayList<>();
     private Random random = new Random();
-    private ResultView resultView = new ResultView();
     private ValidationCheck validationCheck = new ValidationCheck();
 
     void setInitPosition(int carNumber) {
