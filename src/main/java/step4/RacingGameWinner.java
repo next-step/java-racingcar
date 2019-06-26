@@ -30,8 +30,6 @@ public class RacingGameWinner {
 
     private int move() {
         int randomNum = random.nextInt(10);
-        checkRandomValue(randomNum);
-
         if (randomNum >= STRAIGHT) {
             checkGo(randomNum);
             return GO;
