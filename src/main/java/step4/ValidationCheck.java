@@ -43,7 +43,7 @@ public class ValidationCheck {
         }
     }
 
-    void checkGo(int randomNum) {
+    public static void checkGo(int randomNum) {
         if (randomNum < 4) {
             throw new IllegalArgumentException("전진 할 수 없는 랜덤 값 입니다.");
         }
