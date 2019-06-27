@@ -10,7 +10,11 @@ import step3.game.util.RacingGameRandomUtils;
 public class Cars {
     private final List<Car> cars;
 
-    private Cars(List<Car> cars) {
+    Cars(Cars cars) {
+        this(cars.cars);
+    }
+
+    public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
@@ -35,6 +39,20 @@ public class Cars {
         return new Cars(newCars);
     }
 
+    public Cars winners() {
+        final int winnerPosition = getWinnerPosition();
+        return new Cars(cars.stream()
+                            .filter(car -> car.isWinner(winnerPosition))
+                            .collect(Collectors.toList()));
+    }
+
+    private int getWinnerPosition() {
+        return cars.stream()
+                   .mapToInt(Car::getPosition)
+                   .max()
+                   .orElse(0);
+    }
+
     public List<Car> getCars() {
         return cars.stream()
                    .map(Car::new)
@@ -45,6 +63,10 @@ public class Cars {
         if (numberOfCar == 0) {
             throw new IllegalArgumentException("경주 자동차는 1대 이상 추가해야 합니다.");
         }
+    }
+
+    public int getNumberOfWinners() {
+        return cars.size();
     }
 
 }

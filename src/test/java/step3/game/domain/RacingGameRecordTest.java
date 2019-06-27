@@ -59,14 +59,13 @@ public class RacingGameRecordTest {
     @Test
     @DisplayName("우승자는 한 명 이상")
     void winners_count() {
-        assertThat(racingGameRecord.winners().size() > 0).isTrue();
+        assertThat(racingGameRecord.winners().getNumberOfWinners() > 0).isTrue();
     }
 
     @Test
-    @DisplayName("게임 기록이 없는 상태에서 우승자 조회")
-    void no_record_game() {
-        RacingGameRecord record = new RacingGameRecord(new ArrayList<>());
-        assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(record::winners);
+    @DisplayName("자동차 갯수가 0인 상태에서 새로운 레이싱 게임을 생성할때 에러를 발생시킨다")
+    void fail_new_record_game() {
+        assertThatIllegalArgumentException().isThrownBy(() -> RacingGameRecord.newGame(Cars.newCars(List.of())));
     }
 
 }

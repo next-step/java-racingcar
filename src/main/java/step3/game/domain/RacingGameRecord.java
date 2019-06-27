@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class RacingGameRecord {
     private final List<Cars> result;
 
-    public RacingGameRecord(List<Cars> result) {
+    private RacingGameRecord(List<Cars> result) {
         this.result = result;
     }
 
@@ -23,7 +23,9 @@ public class RacingGameRecord {
     }
 
     public List<Cars> getResult() {
-        return result;
+        return result.stream()
+                     .map(Cars::new)
+                     .collect(Collectors.toList());
     }
 
     public Cars previousTurn(int previousTurnNo) {
@@ -31,21 +33,11 @@ public class RacingGameRecord {
         return result.get(previousTurnNo);
     }
 
-    public List<Car> winners() {
-        assertGameRecord(result.size() - 1);
+    public Cars winners() {
+        final int beforeTurnNo = result.size() - 1;
 
-        List<Car> finalTurn = result.get(result.size() - 1).getCars();
-        int winnerPosition = winnerPosition(finalTurn);
-
-        return finalTurn.stream()
-                        .filter(car -> winnerPosition == car.getPosition())
-                        .collect(Collectors.toList());
-    }
-
-    private int winnerPosition(List<Car> finalTurn) {
-        return finalTurn.stream()
-                        .mapToInt(Car::getPosition)
-                        .max().orElse(0);
+        Cars finalTurn = result.get(beforeTurnNo);
+        return finalTurn.winners();
     }
 
     private void assertTurnNo(final int previousTurnNo, final int resultSize) {
@@ -55,12 +47,6 @@ public class RacingGameRecord {
 
         if (previousTurnNo >= resultSize) {
             throw new IndexOutOfBoundsException("현재 " + resultSize + " 턴 까지 실행되었습니다. 입력 값 : " + previousTurnNo);
-        }
-    }
-
-    private void assertGameRecord(final int turnNo) {
-        if (turnNo < 0) {
-            throw new IndexOutOfBoundsException("현재 저장된 기록이 없습니다.");
         }
     }
 }

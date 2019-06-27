@@ -7,7 +7,7 @@ public class Car {
     private final CarName carName;
     private final Integer position;
 
-    public Car(Car car) {
+    Car(Car car) {
         this(car.carNo, car.carName, car.position);
     }
 
@@ -31,6 +31,10 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public boolean isWinner(final int winnerPosition) {
+        return position == winnerPosition;
     }
 
     public Car move(final MoveStrategy moveStrategy) {
