@@ -67,6 +67,8 @@ class StageTest {
 		assertThat(records.get(0).getPlayerName()).isEqualTo("player1");
 		assertThat(records.get(0).getPosition()).isEqualTo(1);
 
+		assertThat(records.get(1).getPlayerName()).isEqualTo("player2");
+		assertThat(records.get(1).getPosition()).isEqualTo(1);
 	}
 
 }

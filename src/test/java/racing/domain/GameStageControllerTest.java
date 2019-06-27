@@ -23,11 +23,10 @@ class GameStageControllerTest {
         StageOption option = new StageOption("A,B", ",", 1);
 
         // Action
-        Stage stage = GameStageController.create(option, view);
-        stage.play();
+        GameStageController controller = new GameStageController(option, view);
+        controller.play();
 
         // Assertion
-        assertThat(stage.getCountOfPlayers()).isEqualTo(2);
         assertThat(messageFormView.get(1)).startsWith("A");
     }
 }

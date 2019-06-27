@@ -12,6 +12,6 @@ public class RacingGameRunner {
 
 		StageOption option = ConsoleDialogView.use();
 		RacingMonitorView monitorView = new DashTrackingMonitorView(message -> System.out.println(message));
-		GameStageController.create(option, monitorView).play();
+		new GameStageController(option, monitorView).play();
 	}
 }
