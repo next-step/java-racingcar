@@ -4,7 +4,10 @@ import racing.domain.accelerator.RandomAccelerator;
 import racing.view.RacingMonitorView;
 import racing.vo.StageOption;
 
-public class GameStageMaker {
+/**
+ * 옵션을 받아 게임(컨트롤러)을 생성하고 뷰를 주입받아 제어하는 컨트롤러
+ */
+public class GameStageController {
 
 	public static Stage create(StageOption option, RacingMonitorView view){
 
@@ -13,8 +16,6 @@ public class GameStageMaker {
 		for(int i = 0; i < option.getEntrySize(); i++) {
 			builder.addToEntry(option.getPlayerName(i), new RacingCar(new RandomAccelerator()));
 		}
-
-		builder.view(view);
 
 		return builder.build();
 	}

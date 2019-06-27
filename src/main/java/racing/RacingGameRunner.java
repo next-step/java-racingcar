@@ -1,6 +1,6 @@
 package racing;
 
-import racing.domain.GameStageMaker;
+import racing.domain.GameStageController;
 import racing.view.DashTrackingMonitorView;
 import racing.view.ConsoleDialogView;
 import racing.view.RacingMonitorView;
@@ -12,6 +12,6 @@ public class RacingGameRunner {
 
 		StageOption option = ConsoleDialogView.use();
 		RacingMonitorView monitorView = new DashTrackingMonitorView(message -> System.out.println(message));
-		GameStageMaker.create(option, monitorView).play();
+		GameStageController.create(option, monitorView).play();
 	}
 }

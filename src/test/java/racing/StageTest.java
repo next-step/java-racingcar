@@ -10,6 +10,8 @@ import racing.domain.accelerator.DriveAccelerator;
 import racing.domain.accelerator.StaticAccelerator;
 import racing.view.DashTrackingMonitorView;
 import racing.view.RacingMonitorView;
+import racing.view.events.ChangedPlayerPositionEvent;
+import racing.vo.RacingRecord;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,25 +57,15 @@ class StageTest {
 		builder.addToEntry("player1", new RacingCar(accelerator));
 		builder.addToEntry("player2", new RacingCar(accelerator));
 
-		List<String> messageFormView = new ArrayList<>();
-		RacingMonitorView view = new DashTrackingMonitorView(message -> messageFormView.add(message));
-		builder.view(view);
-
 		Stage stage = builder.build();
 
 		// Action
-		stage.play();
+		List<RacingRecord> records = stage.play();
 
-		/**
-		 * 플레이어 위치변경 이벤트에 전체 참가자 숫자만큼 정보가 전달되는지 확인
-		 * 고민 : RacingMonitorView 의 구현클래스를 사용해서 State 동작을 테스트하니 검증 구문이 구현클래스에 종속되는 문제
-		 */
 		// Assertion
-		assertThat(messageFormView.size()).isEqualTo(5); // 시작 1회, 이동 2회(차가 2대), 라운드 종료 1회
-		assertThat(messageFormView.get(1)).contains("player1");
-		assertThat(messageFormView.get(2)).contains("player2");
-		assertThat(messageFormView.get(4)).contains("우승");
-
+		assertThat(records.size()).isEqualTo(2);
+		assertThat(records.get(0).getPlayerName()).isEqualTo("player1");
+		assertThat(records.get(0).getPosition()).isEqualTo(1);
 
 	}
 
