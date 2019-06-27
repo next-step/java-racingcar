@@ -7,17 +7,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameResult {
-    List<RacingCars> snapshot = new ArrayList<>();
+    private List<RacingCars> snapshot = new ArrayList<>();
+    private String winnerNames;
 
     public void addSnapshot(RacingCars racingCars) {
         snapshot.add(racingCars);
+    }
+
+    public void setWinnerNames(String winnerNames) {
+        this.winnerNames = winnerNames;
     }
 
     public List<RacingCars> getSnapshot() {
         return new ArrayList<>(snapshot);
     }
 
-    public Winners getWinners() {
-        return Winners.of(snapshot.stream().reduce((first, second) -> second).orElse(null).findWinners());
+    public String getWinnerNames() {
+        return winnerNames;
     }
 }

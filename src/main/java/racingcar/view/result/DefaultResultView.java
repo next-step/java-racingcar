@@ -12,7 +12,7 @@ public class DefaultResultView implements ResultView {
         printHeader();
         gameResult.getSnapshot().stream()
                 .forEach(this::printBody);
-        printFooter(gameResult.getWinners());
+        printFooter(gameResult.getWinnerNames());
     }
 
     private void printHeader() {
@@ -27,13 +27,15 @@ public class DefaultResultView implements ResultView {
 
     private void printCar(RacingCar racingCar) {
         System.out.print(racingCar.getName() + " : ");
-        for (int i = 0; i < racingCar.getPosition().get(); i++) {
+
+        int position = racingCar.getPosition().get();
+        for (int i = 0; i < position; i++) {
             System.out.print("-");
         }
         System.out.println();
     }
 
-    private void printFooter(Winners winners) {
-        System.out.println(winners.getNames() + "가 최종 우승했습니다.");
+    private void printFooter(String winnerNames) {
+        System.out.println(winnerNames + "가 최종 우승했습니다.");
     }
 }

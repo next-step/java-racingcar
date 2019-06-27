@@ -34,6 +34,6 @@ public class RacingGameTest {
         // when
         GameResult gameResult = racingGame.start(gameRequest);
         // then
-        assertThat(gameResult.getWinners().getNames()).isEqualTo("blue,green,yellow");
+        assertThat(gameResult.getWinnerNames()).isEqualTo("blue,green,yellow");
     }
 }

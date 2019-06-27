@@ -12,7 +12,7 @@ public class RacingCars {
     }
 
     public static RacingCars of(List<RacingCar> racingCars) {
-        return new RacingCars(racingCars);
+        return new RacingCars(new ArrayList<>(racingCars));
     }
 
     public RacingCars findWinners() {

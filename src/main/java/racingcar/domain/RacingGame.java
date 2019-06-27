@@ -39,6 +39,8 @@ public class RacingGame {
             racingCars = move(racingCars);
             gameResult.addSnapshot(racingCars);
         }
+
+        gameResult.setWinnerNames(Winners.of(racingCars.findWinners()).getNames());
         return gameResult;
     }
 
