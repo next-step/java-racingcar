@@ -1,32 +1,41 @@
 package racingcar.view.result;
 
-import racingcar.model.CarPosition;
-import racingcar.model.RacingCars;
+import racingcar.dto.GameResult;
+import racingcar.domain.model.RacingCar;
+import racingcar.domain.model.RacingCars;
+import racingcar.domain.model.Winners;
 
 public class DefaultResultView implements ResultView {
 
     @Override
-    public void printHeader() {
+    public void print(GameResult gameResult) {
+        printHeader();
+        gameResult.getSnapshot().stream()
+                .forEach(this::printBody);
+        printFooter(gameResult.getWinnerNames());
+    }
+
+    private void printHeader() {
         System.out.println("\n실행 결과");
     }
 
-    @Override
-    public void printBody(RacingCars racingCars) {
-        racingCars.getCarPosition().stream()
-                .forEach(DefaultResultView::printCar);
+    private void printBody(RacingCars racingCars) {
+        racingCars.findAll().stream()
+                .forEach(this::printCar);
         System.out.println();
     }
 
-    private static void printCar(CarPosition carPosition) {
-        System.out.print(carPosition.getName() + " : ");
-        for (int i=0; i<carPosition.getPosition(); i++) {
+    private void printCar(RacingCar racingCar) {
+        System.out.print(racingCar.getName() + " : ");
+
+        int position = racingCar.getPosition().get();
+        for (int i = 0; i < position; i++) {
             System.out.print("-");
         }
         System.out.println();
     }
 
-    @Override
-    public void printFooter(RacingCars racingCars) {
-        System.out.println(String.join(",", racingCars.getWinners()) + "가 최종 우승했습니다.");
+    private void printFooter(String winnerNames) {
+        System.out.println(winnerNames + "가 최종 우승했습니다.");
     }
 }

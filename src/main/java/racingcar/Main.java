@@ -1,17 +1,18 @@
 package racingcar;
 
-import racingcar.logic.DefaultCarEngine;
-import racingcar.logic.RandomValueProvider;
+import racingcar.domain.RacingGame;
+import racingcar.domain.moving.DefaultMovingStrategy;
+import racingcar.domain.moving.RandomValueProvider;
 import racingcar.view.input.DefaultInputView;
 import racingcar.view.result.DefaultResultView;
 import racingcar.view.input.CommandLineReader;
 
 public class Main {
     public static void main(String[] args) {
-        GameContext gameContext = new GameContext(
+        GameController gameController = new GameController(
                 new DefaultInputView(new CommandLineReader()),
                 new DefaultResultView(),
-                new DefaultCarEngine(new RandomValueProvider(10)));
-        gameContext.run();
+                new RacingGame(new DefaultMovingStrategy(new RandomValueProvider(10))));
+        gameController.run();
     }
 }

@@ -1,10 +1,7 @@
 package racingcar.view.result;
 
-import racingcar.model.RacingCars;
-
+import racingcar.dto.GameResult;
 
 public interface ResultView {
-    void printHeader();
-    void printBody(RacingCars racingCars);
-    void printFooter(RacingCars racingCars);
+    void print(GameResult gameResult);
 }

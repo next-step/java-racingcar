@@ -16,7 +16,7 @@ public class DefaultInputViewTest {
         // given
         InputView inputView = new DefaultInputView(new MockCommandLineReader(3, Arrays.asList("blue","red","yellow")));
         // when
-        List<String> result = inputView.getCarNames();
+        List<String> result = inputView.read().getCarNames();
         // then
         assertThat(result.size()).isEqualTo(3);
         assertThat(result.get(0)).isEqualTo("blue");
@@ -30,7 +30,7 @@ public class DefaultInputViewTest {
         // given
         InputView inputView = new DefaultInputView(new MockCommandLineReader(5, Arrays.asList("")));
         // when
-        Integer result = inputView.getNumberOfTimes();
+        Integer result = inputView.read().getNumberOfTimes();
         // then
         assertThat(result).isEqualTo(5);
     }
