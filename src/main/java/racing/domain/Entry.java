@@ -2,7 +2,6 @@ package racing.domain;
 
 import racing.vo.PlayerRecord;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,10 +23,8 @@ public class Entry {
 
 	public List<PlayerRecord> drive() {
 		return items.stream()
-				.map(entryItem -> {
-					entryItem.drive();
-					return new PlayerRecord(entryItem.getPlayerName(), entryItem.getCarMilieage());
-				}).collect(Collectors.toList());
+				.map(entryItem -> entryItem.drive())
+				.collect(Collectors.toList());
 	}
 
 }

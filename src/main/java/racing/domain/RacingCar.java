@@ -17,17 +17,12 @@ public class RacingCar {
 		this.accelerator = accelerator;
 	}
 
-	public int getMileage(){
-		return mileage;
-	}
-
 	/**
 	 * 자동차 주행을 위해 가속페달을 밟아 이동하는 메서드
 	 * @return 메서드 호출로 이동한 거리
 	 */
 	public int move() {
-		int delta = accelerator.getAmount() > DEFAULT_THRESHOLD ? 1 : 0;
-		this.mileage += delta;
-		return delta;
+		this.mileage += accelerator.getAmount() > DEFAULT_THRESHOLD ? 1 : 0;
+		return this.mileage;
 	}
 }

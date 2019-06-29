@@ -18,7 +18,6 @@ public class GameStageController {
 	private RacingMonitorView view;
 
 	public GameStageController(StageOption option, RacingMonitorView view){
-
 		Stage.StageBuilder builder = Stage.builder(option.getEntrySize(), option.getRoundLimit());
 
 		for(int i = 0; i < option.getEntrySize(); i++) {
@@ -30,7 +29,6 @@ public class GameStageController {
 	}
 
 	public void play() {
-
 	    this.view.renderStart("실행 결과");
 
 		RacingReport report = null;

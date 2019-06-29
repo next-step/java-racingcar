@@ -15,11 +15,8 @@ class RacingCarTest {
 		// Arrange
 		RacingCar car = new RacingCar(new StaticAccelerator(RacingCar.DEFAULT_THRESHOLD + 1));
 
-		// Action
-		car.move();
-
-		// Assertion
-		assertThat(car.getMileage()).isGreaterThan(0);
+		// Action & Assertion
+		assertThat(car.move()).isGreaterThan(0);
 	}
 
 	@Test
@@ -28,11 +25,8 @@ class RacingCarTest {
 		// Arrange
 		RacingCar car = new RacingCar(new StaticAccelerator(RacingCar.DEFAULT_THRESHOLD));
 
-		// Action
-		car.move();
-
-		// Assertion
-		assertThat(car.getMileage()).isEqualTo(0);
+		// Action & Assertion
+		assertThat(car.move()).isEqualTo(0);
 	}
 
 }

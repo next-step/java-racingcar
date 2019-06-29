@@ -16,7 +16,6 @@ public class RacingReport {
     private int remainRound;
 
     public RacingReport(List<PlayerRecord> records, int remainRound){
-
         this.records = records;
 
         this.remainRound = remainRound;

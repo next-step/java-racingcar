@@ -22,7 +22,6 @@ public class DashTrackingMonitorView implements RacingMonitorView {
 
 	public static final String EMPTY_NEW_LINE = " ";
 
-
 	private MessagePrinter printer;
 
 
@@ -51,14 +50,12 @@ public class DashTrackingMonitorView implements RacingMonitorView {
 	 */
 	@Override
 	public void renderRound(List<PlayerRecord> currentPositionOfPlayers) {
-
 		currentPositionOfPlayers
 				.stream()
 				.forEach(record -> printer.printMessage(this.renderPosition(record)));
 
 		// 라운드 업데이트 후 공백라인 출력
 		printer.printMessage(EMPTY_NEW_LINE);
-
 	}
 
 
@@ -68,7 +65,6 @@ public class DashTrackingMonitorView implements RacingMonitorView {
 	 */
 	@Override
 	public void renderFinish(List<PlayerRecord> winners) {
-
 		String winnerNames = winners.stream()
 				.map(record -> record.getPlayerName())
 				.collect(Collectors.joining(NAME_JOIN_SEPARATOR));

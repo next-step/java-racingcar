@@ -17,7 +17,6 @@ public class Stage {
 	private int remainingRound;
 
 	private Stage(StageBuilder stageBuilder){
-
 		this.entry = new Entry(stageBuilder.items);
 		this.remainingRound = stageBuilder.round;
 	}
@@ -32,7 +31,6 @@ public class Stage {
 	}
 
 	public RacingReport play() {
-
 		if (remainingRound == END_OF_ROUND){
 			throw new PlayOverException("레이싱이 종료되었습니다.");
 		}
@@ -54,7 +52,6 @@ public class Stage {
 
 
 	public static class StageBuilder{
-
 		private int entrySize;
 
 		private int round;
