@@ -2,11 +2,7 @@ package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.util.MessagePrinter;
 import racing.view.DashTrackingMonitorView;
-import racing.view.events.ChangedPlayerPositionEvent;
-import racing.view.events.FinishStageEvent;
-import racing.view.events.StartedRacingEvent;
 import racing.vo.RacingRecord;
 
 import java.util.ArrayList;
@@ -21,17 +17,18 @@ class DashTrackingMonitorViewTest {
 	void startedPlayEventHandling(){
 
 		// Arrange
+		String startMessage = "Game start";
 		List<String> messagesFromView = new ArrayList<>();
 		DashTrackingMonitorView watcher = new DashTrackingMonitorView((message) -> {
 			messagesFromView.add(message);
 		});
 
 		// Action
-		watcher.handle(new StartedRacingEvent());
+		watcher.renderStart(startMessage);
 
 		// Assertion
 		assertThat(messagesFromView.size()).isEqualTo(1);
-		assertThat(messagesFromView.get(0)).isEqualTo(StartedRacingEvent.DEFAULT_START_MESSAGE);
+		assertThat(messagesFromView.get(0)).isEqualTo(startMessage);
 	}
 
 	@Test
@@ -50,7 +47,7 @@ class DashTrackingMonitorViewTest {
 		records.add(new RacingRecord("playerC", 2));
 
 		// Action
-		watcher.handle(new ChangedPlayerPositionEvent(records));
+		watcher.renderRound(records);
 
 		// Assertion
 		assertThat(messagesFromView.get(0)).isEqualTo("playerA : -");	// 0, 1 모두 대시("-") 1개 출력
@@ -73,7 +70,7 @@ class DashTrackingMonitorViewTest {
 		records.add(new RacingRecord("playerA", 5));	// position 은 사용하지 않기 때문에 의미 없음
 
 		// Action
-		watcher.handle(new FinishStageEvent(records));
+		watcher.renderFinish(records);
 
 		// Assertion
 		assertThat(messagesFromView.get(0)).isEqualTo("playerA가 최종 우승했습니다.");
@@ -95,7 +92,7 @@ class DashTrackingMonitorViewTest {
 		records.add(new RacingRecord("playerB", 5));	// position 은 사용하지 않기 때문에 의미 없음
 
 		// Action
-		watcher.handle(new FinishStageEvent(records));
+		watcher.renderFinish(records);
 
 		// Assertion
 		assertThat(messagesFromView.get(0)).isEqualTo("playerA, playerB가 최종 우승했습니다.");

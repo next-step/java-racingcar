@@ -1,27 +1,14 @@
 package racing.view;
 
-import racing.view.events.RacingEvent;
+import racing.vo.RacingRecord;
 
-import java.lang.reflect.Method;
+import java.util.List;
 
-public abstract class RacingMonitorView {
+public interface RacingMonitorView {
 
-	private static final String METHOD_NAME = "handle";
+	void renderStart(String message);
 
-	public final void handle(RacingEvent event){
+	void renderRound(List<RacingRecord> records);
 
-		try {
-			Method method = this.getClass().getDeclaredMethod(METHOD_NAME, event.getClass());
-
-			if (method != null) {
-				method.setAccessible(true);
-				method.invoke(this, event);
-			}
-
-		} catch (Exception e) {
-			// do nothing
-			// 게임 중계자가 발생시키는 오류는 무시
-		}
-
-	}
+	void renderFinish(List<RacingRecord> records);
 }

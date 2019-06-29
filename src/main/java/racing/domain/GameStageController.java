@@ -2,8 +2,6 @@ package racing.domain;
 
 import racing.domain.accelerator.RandomAccelerator;
 import racing.view.RacingMonitorView;
-import racing.view.events.ChangedPlayerPositionEvent;
-import racing.view.events.StartedRacingEvent;
 import racing.vo.RacingRecord;
 import racing.vo.StageOption;
 
@@ -31,8 +29,15 @@ public class GameStageController {
 	}
 
 	public void play() {
-		view.handle(new StartedRacingEvent());
-		List<RacingRecord> records = this.stage.play();
-		view.handle(new ChangedPlayerPositionEvent(records));
+		view.renderStart("실행 결과");
+
+		List<RacingRecord> records = null;
+		while (this.stage.getRemainingRounds() > 0){
+			records = this.stage.play();
+			view.renderRound(records);
+		}
+
+		view.renderFinish(records);
+
 	}
 }

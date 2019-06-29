@@ -8,9 +8,6 @@ import racing.domain.RacingCar;
 import racing.domain.Stage;
 import racing.domain.accelerator.DriveAccelerator;
 import racing.domain.accelerator.StaticAccelerator;
-import racing.view.DashTrackingMonitorView;
-import racing.view.RacingMonitorView;
-import racing.view.events.ChangedPlayerPositionEvent;
 import racing.vo.RacingRecord;
 
 import java.util.ArrayList;

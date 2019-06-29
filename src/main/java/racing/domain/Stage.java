@@ -2,9 +2,6 @@ package racing.domain;
 
 import racing.exception.OutOfEntryException;
 import racing.exception.PlayOverException;
-import racing.view.events.ChangedPlayerPositionEvent;
-import racing.view.events.RacingEvent;
-import racing.view.events.StartedRacingEvent;
 import racing.vo.RacingRecord;
 
 import java.util.ArrayList;
