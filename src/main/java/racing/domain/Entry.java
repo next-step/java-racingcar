@@ -1,6 +1,6 @@
 package racing.domain;
 
-import racing.vo.RacingRecord;
+import racing.vo.PlayerRecord;
 
 import java.util.Comparator;
 import java.util.List;
@@ -22,15 +22,15 @@ public class Entry {
 		return items.size();
 	}
 
-	public List<RacingRecord> drive() {
+	public List<PlayerRecord> drive() {
 		return items.stream()
 				.map(entryItem -> {
 					entryItem.drive();
-					return new RacingRecord(entryItem.getPlayerName(), entryItem.getCarMilieage());
+					return new PlayerRecord(entryItem.getPlayerName(), entryItem.getCarMilieage());
 				}).collect(Collectors.toList());
 	}
 
-	public List<RacingRecord> getWinners() {
+	public List<PlayerRecord> getWinners() {
 
 		int longestMileage = items.stream()
 				.sorted(Comparator.reverseOrder())
@@ -40,7 +40,7 @@ public class Entry {
 
 		return items.stream()
 				.filter(entryItem -> entryItem.getCarMilieage() >= longestMileage)
-				.map(entryItem -> new RacingRecord(entryItem.getPlayerName(), entryItem.getCarMilieage()))
+				.map(entryItem -> new PlayerRecord(entryItem.getPlayerName(), entryItem.getCarMilieage()))
 				.collect(Collectors.toList());
 	}
 }

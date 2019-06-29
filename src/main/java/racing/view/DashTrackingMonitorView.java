@@ -1,7 +1,7 @@
 package racing.view;
 
 import racing.util.MessagePrinter;
-import racing.vo.RacingRecord;
+import racing.vo.PlayerRecord;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,7 +50,7 @@ public class DashTrackingMonitorView implements RacingMonitorView {
 	 * @param currentPositionOfPlayers currentPositionOfPlayers 플레이어들의 현재 위치정보
 	 */
 	@Override
-	public void renderRound(List<RacingRecord> currentPositionOfPlayers) {
+	public void renderRound(List<PlayerRecord> currentPositionOfPlayers) {
 
 		currentPositionOfPlayers
 				.stream()
@@ -67,7 +67,7 @@ public class DashTrackingMonitorView implements RacingMonitorView {
 	 * @param winners 우승자의 기록
 	 */
 	@Override
-	public void renderFinish(List<RacingRecord> winners) {
+	public void renderFinish(List<PlayerRecord> winners) {
 
 		String winnerNames = winners.stream()
 				.map(record -> record.getPlayerName())
@@ -77,7 +77,7 @@ public class DashTrackingMonitorView implements RacingMonitorView {
 	}
 
 
-	private String renderPosition(RacingRecord record) {
+	private String renderPosition(PlayerRecord record) {
 		StringBuilder result = new StringBuilder(record.getPlayerName());
 		result.append(NAME_SEPARATOR);
 		result.append(DASH_SYMBOL);

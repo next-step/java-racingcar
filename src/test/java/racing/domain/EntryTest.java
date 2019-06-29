@@ -3,7 +3,7 @@ package racing.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.domain.accelerator.StaticAccelerator;
-import racing.vo.RacingRecord;
+import racing.vo.PlayerRecord;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ class EntryTest {
 		entry.drive();
 
 		// action
-		List<RacingRecord> winnerRecords = entry.getWinners();
+		List<PlayerRecord> winnerRecords = entry.getWinners();
 
 		// assertion
 		assertThat(winnerRecords.size()).isEqualTo(1);
@@ -45,7 +45,7 @@ class EntryTest {
 		entry.drive();
 
 		// action
-		List<RacingRecord> winnerRecords = entry.getWinners();
+		List<PlayerRecord> winnerRecords = entry.getWinners();
 
 		// assertion
 		assertThat(winnerRecords.size()).isEqualTo(1);

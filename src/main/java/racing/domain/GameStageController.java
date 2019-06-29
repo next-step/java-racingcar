@@ -2,7 +2,7 @@ package racing.domain;
 
 import racing.domain.accelerator.RandomAccelerator;
 import racing.view.RacingMonitorView;
-import racing.vo.RacingRecord;
+import racing.vo.PlayerRecord;
 import racing.vo.StageOption;
 
 import java.util.List;
@@ -31,7 +31,7 @@ public class GameStageController {
 	public void play() {
 		view.renderStart("실행 결과");
 
-		List<RacingRecord> records = null;
+		List<PlayerRecord> records = null;
 		while (this.stage.getRemainingRounds() > 0){
 			records = this.stage.play();
 			view.renderRound(records);

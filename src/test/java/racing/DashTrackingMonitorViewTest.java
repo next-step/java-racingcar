@@ -3,7 +3,7 @@ package racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.view.DashTrackingMonitorView;
-import racing.vo.RacingRecord;
+import racing.vo.PlayerRecord;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,10 +41,10 @@ class DashTrackingMonitorViewTest {
 			messagesFromView.add(message);
 		});
 
-		List<RacingRecord> records = new ArrayList<>();
-		records.add(new RacingRecord("playerA", 0));
-		records.add(new RacingRecord("playerB", 1));
-		records.add(new RacingRecord("playerC", 2));
+		List<PlayerRecord> records = new ArrayList<>();
+		records.add(new PlayerRecord("playerA", 0));
+		records.add(new PlayerRecord("playerB", 1));
+		records.add(new PlayerRecord("playerC", 2));
 
 		// Action
 		watcher.renderRound(records);
@@ -66,8 +66,8 @@ class DashTrackingMonitorViewTest {
 			messagesFromView.add(message);
 		});
 
-		List<RacingRecord> records = new ArrayList<>();
-		records.add(new RacingRecord("playerA", 5));	// position 은 사용하지 않기 때문에 의미 없음
+		List<PlayerRecord> records = new ArrayList<>();
+		records.add(new PlayerRecord("playerA", 5));	// position 은 사용하지 않기 때문에 의미 없음
 
 		// Action
 		watcher.renderFinish(records);
@@ -87,9 +87,9 @@ class DashTrackingMonitorViewTest {
 			messagesFromView.add(message);
 		});
 
-		List<RacingRecord> records = new ArrayList<>();
-		records.add(new RacingRecord("playerA", 5));	// position 은 사용하지 않기 때문에 의미 없음
-		records.add(new RacingRecord("playerB", 5));	// position 은 사용하지 않기 때문에 의미 없음
+		List<PlayerRecord> records = new ArrayList<>();
+		records.add(new PlayerRecord("playerA", 5));	// position 은 사용하지 않기 때문에 의미 없음
+		records.add(new PlayerRecord("playerB", 5));	// position 은 사용하지 않기 때문에 의미 없음
 
 		// Action
 		watcher.renderFinish(records);
