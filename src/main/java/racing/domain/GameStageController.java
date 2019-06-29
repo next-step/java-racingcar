@@ -3,6 +3,7 @@ package racing.domain;
 import racing.domain.accelerator.RandomAccelerator;
 import racing.view.RacingMonitorView;
 import racing.vo.PlayerRecord;
+import racing.vo.RacingReport;
 import racing.vo.StageOption;
 
 import java.util.List;
@@ -29,15 +30,17 @@ public class GameStageController {
 	}
 
 	public void play() {
-		view.renderStart("실행 결과");
 
-		List<PlayerRecord> records = null;
-		while (this.stage.getRemainingRounds() > 0){
-			records = this.stage.play();
-			view.renderRound(records);
-		}
+	    this.view.renderStart("실행 결과");
 
-		view.renderFinish(records);
+		RacingReport report = null;
+
+		do{
+			report = this.stage.play();
+            this.view.renderRound(report.getRecords());
+		}while (report.hasNext());
+
+        this.view.renderFinish(report.getWinners());
 
 	}
 }

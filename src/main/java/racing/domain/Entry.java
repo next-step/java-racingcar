@@ -30,17 +30,4 @@ public class Entry {
 				}).collect(Collectors.toList());
 	}
 
-	public List<PlayerRecord> getWinners() {
-
-		int longestMileage = items.stream()
-				.sorted(Comparator.reverseOrder())
-				.findFirst()
-				.orElseThrow(IllegalStateException::new)
-				.getCarMilieage();
-
-		return items.stream()
-				.filter(entryItem -> entryItem.getCarMilieage() >= longestMileage)
-				.map(entryItem -> new PlayerRecord(entryItem.getPlayerName(), entryItem.getCarMilieage()))
-				.collect(Collectors.toList());
-	}
 }

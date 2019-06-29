@@ -1,6 +1,8 @@
 package racing.vo;
 
-public class PlayerRecord {
+import java.util.Comparator;
+
+public class PlayerRecord implements Comparable<PlayerRecord>{
 
     private int position;
 
@@ -17,5 +19,19 @@ public class PlayerRecord {
 
     public String getPlayerName(){
         return playerName;
+    }
+
+    @Override
+    public int compareTo(PlayerRecord other) {
+        if(other == null){
+            return 1;
+        }
+
+        if(this.position == other.position){
+            return 0;
+        }
+
+        return (this.position > other.position) ? 1 : -1;
+
     }
 }

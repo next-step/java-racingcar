@@ -2,7 +2,7 @@ package racing.domain;
 
 import racing.exception.OutOfEntryException;
 import racing.exception.PlayOverException;
-import racing.vo.PlayerRecord;
+import racing.vo.RacingReport;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +31,7 @@ public class Stage {
 		return remainingRound;
 	}
 
-	public List<PlayerRecord> play() {
+	public RacingReport play() {
 
 		if (remainingRound == END_OF_ROUND){
 			throw new PlayOverException("레이싱이 종료되었습니다.");
@@ -39,7 +39,7 @@ public class Stage {
 
 		remainingRound -= 1;
 
-		return entry.drive();
+		return new RacingReport(entry.drive(), remainingRound);
 	}
 
 	/**

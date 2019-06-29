@@ -9,6 +9,7 @@ import racing.domain.Stage;
 import racing.domain.accelerator.DriveAccelerator;
 import racing.domain.accelerator.StaticAccelerator;
 import racing.vo.PlayerRecord;
+import racing.vo.RacingReport;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -56,7 +57,8 @@ class StageTest {
 		Stage stage = builder.build();
 
 		// Action
-		List<PlayerRecord> records = stage.play();
+        RacingReport report = stage.play();
+		List<PlayerRecord> records = report.getRecords();
 
 		// Assertion
 		assertThat(records.size()).isEqualTo(2);

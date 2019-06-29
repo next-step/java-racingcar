@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.domain.accelerator.StaticAccelerator;
 import racing.vo.PlayerRecord;
+import racing.vo.RacingReport;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +23,10 @@ class EntryTest {
 		items.add(new EntryItem("B", new RacingCar(new StaticAccelerator(RacingCar.DEFAULT_THRESHOLD))));
 
 		Entry entry = new Entry(items);
-		entry.drive();
+		RacingReport report = new RacingReport(entry.drive(), 0);
 
 		// action
-		List<PlayerRecord> winnerRecords = entry.getWinners();
+		List<PlayerRecord> winnerRecords = report.getWinners();
 
 		// assertion
 		assertThat(winnerRecords.size()).isEqualTo(1);
@@ -42,10 +43,10 @@ class EntryTest {
 		items.add(new EntryItem("B", new RacingCar(new StaticAccelerator(RacingCar.DEFAULT_THRESHOLD + 1))));
 
 		Entry entry = new Entry(items);
-		entry.drive();
+		RacingReport report = new RacingReport(entry.drive(), 0);
 
 		// action
-		List<PlayerRecord> winnerRecords = entry.getWinners();
+		List<PlayerRecord> winnerRecords = report.getWinners();
 
 		// assertion
 		assertThat(winnerRecords.size()).isEqualTo(1);
