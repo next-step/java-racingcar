@@ -10,9 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
-class GameStageMakerTest {
+class GameStageControllerTest {
 
     @Test
     @DisplayName("스테이지 생성 테스트")
@@ -24,11 +23,10 @@ class GameStageMakerTest {
         StageOption option = new StageOption("A,B", ",", 1);
 
         // Action
-        Stage stage = GameStageMaker.create(option, view);
-        stage.play();
+        GameStageController controller = new GameStageController(option, view);
+        controller.play();
 
         // Assertion
-        assertThat(stage.getCountOfPlayers()).isEqualTo(2);
         assertThat(messageFormView.get(1)).startsWith("A");
     }
 }

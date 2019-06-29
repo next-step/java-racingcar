@@ -2,14 +2,11 @@ package racing.domain;
 
 import racing.exception.OutOfEntryException;
 import racing.exception.PlayOverException;
-import racing.view.RacingMonitorView;
-import racing.view.events.ChangedPlayerPositionEvent;
-import racing.view.events.FinishStageEvent;
-import racing.view.events.RacingEvent;
-import racing.view.events.StartedRacingEvent;
+import racing.vo.RacingReport;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class Stage {
 
@@ -17,15 +14,11 @@ public class Stage {
 
 	private Entry entry;
 
-	private RacingMonitorView monitorView;
-
 	private int remainingRound;
 
 	private Stage(StageBuilder stageBuilder){
-
 		this.entry = new Entry(stageBuilder.items);
 		this.remainingRound = stageBuilder.round;
-		this.monitorView = stageBuilder.monitorView;
 	}
 
 	public int getCountOfPlayers() {
@@ -37,32 +30,14 @@ public class Stage {
 		return remainingRound;
 	}
 
-	public void play() {
-
+	public RacingReport play() {
 		if (remainingRound == END_OF_ROUND){
 			throw new PlayOverException("레이싱이 종료되었습니다.");
 		}
 
-		this.emitEvent(new StartedRacingEvent());
-
-		do{
-			this.playRound();
-		}while (remainingRound > 0);
-
-		this.emitEvent(new FinishStageEvent(entry.getWinners()));
-	}
-
-	private void playRound() {
-
-		this.emitEvent(new ChangedPlayerPositionEvent(entry.drive()));
 		remainingRound -= 1;
-	}
 
-	private void emitEvent(RacingEvent event){
-
-		if(monitorView != null){
-			monitorView.handle(event);
-		}
+		return new RacingReport(entry.drive(), remainingRound);
 	}
 
 	/**
@@ -77,14 +52,11 @@ public class Stage {
 
 
 	public static class StageBuilder{
-
 		private int entrySize;
 
 		private int round;
 
 		private List<EntryItem> items;
-
-		private RacingMonitorView monitorView;
 
 		private StageBuilder(int entrySize, int round) {
 
@@ -104,10 +76,6 @@ public class Stage {
 			}
 
 			items.add(new EntryItem(name, racingCar));
-		}
-
-		public void view(RacingMonitorView watcher) {
-			this.monitorView = watcher;
 		}
 	}
 }

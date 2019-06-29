@@ -1,12 +1,8 @@
 package racing.view;
 
 import racing.util.MessagePrinter;
-import racing.view.events.ChangedPlayerPositionEvent;
-import racing.view.events.FinishStageEvent;
-import racing.view.events.StartedRacingEvent;
-import racing.vo.RacingRecord;
+import racing.vo.PlayerRecord;
 
-import java.time.YearMonth;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,7 +10,7 @@ import java.util.stream.Collectors;
  * RacingEvent를 전달받아 이벤트 형식에 맞는 방식/내용을 MessagePrinter를 통해 출력
  * 처리하고자 하는 RacingEvent 타입별로 handle 메서드 정의
  */
-public class DashTrackingMonitorView extends RacingMonitorView {
+public class DashTrackingMonitorView implements RacingMonitorView {
 
 	private static final String DASH_SYMBOL = "-";
 
@@ -25,7 +21,6 @@ public class DashTrackingMonitorView extends RacingMonitorView {
 	private static final String RESULT_MESSAGE = "%s가 최종 우승했습니다.";
 
 	public static final String EMPTY_NEW_LINE = " ";
-
 
 	private MessagePrinter printer;
 
@@ -40,22 +35,21 @@ public class DashTrackingMonitorView extends RacingMonitorView {
 
 
 	/**
-	 * 게임 시작 이벤트에 전달된 메세지를 출력
-	 * @param event 레이싱게임이 시작 될 때 발생하는 이벤트
+	 * 게임 시작시 전달된 메세지를 출력
+	 * @param message 레이싱게임이 시작을 알리는 문자열
 	 */
-	private void handle(StartedRacingEvent event){
-		printer.printMessage(event.getMessage());
+	@Override
+	public void renderStart(String message) {
+		printer.printMessage(message);
 	}
 
 
 	/**
-	 * 게임 진행 중 플레이어위치변경 이벤트를 받아 각 플레이어 위치를 출력
-	 * @param event 레이싱게임 라운드가 실행 될 때마다 발생하는 이벤트, 각 플레이어들의 현재 위치정보 포함
+	 * 게임 진행 중 플레이어위치변경 정보를 받아 각 플레이어 위치를 출력
+	 * @param currentPositionOfPlayers currentPositionOfPlayers 플레이어들의 현재 위치정보
 	 */
-	private void handle(ChangedPlayerPositionEvent event) {
-
-		List<RacingRecord> currentPositionOfPlayers = event.getPositions();
-
+	@Override
+	public void renderRound(List<PlayerRecord> currentPositionOfPlayers) {
 		currentPositionOfPlayers
 				.stream()
 				.forEach(record -> printer.printMessage(this.renderPosition(record)));
@@ -66,13 +60,11 @@ public class DashTrackingMonitorView extends RacingMonitorView {
 
 
 	/**
-	 * 게임 종료 이벤트를 받아 우승자 이름 출력
-	 * @param event 레이싱게임이 종료될 때 발생하는 이벤트, 우승자의 기록 포함
+	 * 게임 종료 후 우승자 이름 출력
+	 * @param winners 우승자의 기록
 	 */
-	private void handle(FinishStageEvent event){
-
-		List<RacingRecord> winners = event.getWinners();
-
+	@Override
+	public void renderFinish(List<PlayerRecord> winners) {
 		String winnerNames = winners.stream()
 				.map(record -> record.getPlayerName())
 				.collect(Collectors.joining(NAME_JOIN_SEPARATOR));
@@ -81,7 +73,7 @@ public class DashTrackingMonitorView extends RacingMonitorView {
 	}
 
 
-	private String renderPosition(RacingRecord record) {
+	private String renderPosition(PlayerRecord record) {
 		StringBuilder result = new StringBuilder(record.getPlayerName());
 		result.append(NAME_SEPARATOR);
 		result.append(DASH_SYMBOL);

@@ -1,39 +1,20 @@
 package racing.domain;
 
-public class EntryItem implements Comparable<EntryItem>{
+import racing.vo.PlayerRecord;
 
-    RacingCar car;
+public class EntryItem{
 
-    String playerName;
+    private RacingCar car;
+
+    private String playerName;
 
     public EntryItem(String playerName, RacingCar car){
         this.playerName = playerName;
         this.car = car;
     }
 
-    public int drive(){
-        return car.move();
-    }
-
-    public int getCarMilieage(){
-        return car.getMileage();
-    }
-
-    public String getPlayerName(){
-        return playerName;
-    }
-
-    @Override
-    public int compareTo(EntryItem other) {
-        if(other == null){
-            return 1;
-        }
-
-        if(this.car.getMileage() == other.car.getMileage()){
-            return 0;
-        }
-
-        return (this.car.getMileage() > other.car.getMileage()) ? 1 : -1;
+    public PlayerRecord drive(){
+        return new PlayerRecord(playerName, car.move());
     }
 
 }
