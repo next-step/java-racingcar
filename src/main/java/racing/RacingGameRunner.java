@@ -9,7 +9,6 @@ import racing.vo.StageOption;
 public class RacingGameRunner {
 
 	public static void main(String args[]) {
-
 		StageOption option = ConsoleDialogView.use();
 		RacingMonitorView monitorView = new DashTrackingMonitorView(message -> System.out.println(message));
 		new GameStageController(option, monitorView).play();
