@@ -13,7 +13,10 @@ public class OutputView {
     }
 
     public static void showWinner(List<Car> cars) {
-        int maxPosition = cars.stream().mapToInt(Car::getPosition).max().getAsInt();
+        int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .getAsInt();
 
         String winner = cars.stream()
                 .filter(car -> car.isWinner(maxPosition))

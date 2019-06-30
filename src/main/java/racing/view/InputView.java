@@ -25,7 +25,7 @@ public class InputView {
     }
 
     private static List<Car> createCarsByName(String[] splitWithComma) {
-        return Stream.of(splitWithComma).map(name -> Car.of(new CarName(name), new Position())).collect(Collectors.toList());
+        return Stream.of(splitWithComma).map(name -> Car.of(new CarName(name))).collect(Collectors.toList());
     }
 
     private static String[] splitWithComma(String string) {
