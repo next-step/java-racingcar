@@ -2,6 +2,7 @@ package racing.view;
 
 import racing.model.Car;
 import racing.model.CarName;
+import racing.model.Cars;
 import racing.model.Position;
 
 import java.util.List;
@@ -14,9 +15,9 @@ public class InputView {
     private static final String COMMA = ",";
     private static Scanner scanner = new Scanner(System.in);
 
-    public static List<Car> getCarsByNames() {
+    public static Cars getCarsByNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        return createCarsByName(splitWithComma(scanner.nextLine()));
+        return new Cars(createCarsByName(splitWithComma(scanner.nextLine())));
     }
 
     public static int getRacingCount() {
