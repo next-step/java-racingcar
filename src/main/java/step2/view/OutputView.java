@@ -1,15 +1,18 @@
-package step2;
+package step2.view;
+
+import step2.model.Car;
+import step2.model.RacingWinner;
 
 import java.util.List;
 
 public class OutputView {
 
-    static void racingResult(List<Car> cars) {
+    public static void racingResult(List<Car> cars) {
         cars.forEach((car) -> carResult(car.lastCarPosition(), car.name()));
         System.out.println();
     }
 
-    static void carResult(int carMoveStatusNumber, String carNmae) {
+    public static void carResult(int carMoveStatusNumber, String carNmae) {
         StringBuffer carMoveBuffer = new StringBuffer();
         carMoveBuffer.append(carNmae + " : ");
         while (carMoveStatusNumber > 0) {

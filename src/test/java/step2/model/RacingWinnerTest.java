@@ -1,8 +1,10 @@
-package step2;
+package step2.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step2.model.Car;
+import step2.model.RacingWinner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +19,7 @@ public class RacingWinnerTest {
     void init() {
         cars = new ArrayList<>();
         String[] carNameArray = new String[]{"feelydh", "dhlee", "jwlee"};
-        int[] carPositionArray = new int[]{0, 1, 1};
+        int[] carPositionArray = new int[]{0, 4, 4};
 
         Car car;
         String carName;

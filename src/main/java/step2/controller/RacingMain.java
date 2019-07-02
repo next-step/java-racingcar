@@ -1,7 +1,14 @@
-package step2;
+package step2.controller;
+
+import step2.model.Car;
+import step2.model.RacingGame;
+import step2.view.InputView;
+import step2.view.OutputView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingMain {
 
@@ -20,12 +27,10 @@ public class RacingMain {
     }
 
     private static List<Car> createCars(String inputCarNames){
-        String[] carNames = inputCarNames.split(",");
-        List<Car> cars = new ArrayList<>();
-        for(String carName : carNames){
-            cars.add(new Car(carName));
-        }
-        return cars;
+        List<String> carNames = Arrays.asList(inputCarNames.split(","));
+        return carNames.stream()
+                       .map(Car::new)
+                       .collect(Collectors.toList());
     }
 
 }
