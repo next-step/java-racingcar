@@ -1,14 +1,17 @@
 package step2.view;
 
 import step2.model.Car;
-import step2.model.RacingWinner;
+import step2.model.Cars;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OutputView {
 
-    public static void racingResult(List<Car> cars) {
-        cars.forEach((car) -> carResult(car.lastCarPosition(), car.name()));
+    public static void racingResult(Cars cars) {
+        for(Car car : cars.getCars()){
+            carResult(car.lastCarPosition(), car.name());
+        }
         System.out.println();
     }
 
@@ -22,10 +25,12 @@ public class OutputView {
         System.out.println(carMoveBuffer);
     }
 
-    public static void racingWinnerResult(List<Car> cars){
-        RacingWinner racingWinner = new RacingWinner(cars);
-        String winners = racingWinner.maxPostionCarName();
-        System.out.println(winners + "가 최종 우승 했습니다.");
+    public static void racingWinnerResult(Cars cars){
+        List<Car> winners = cars.maxPostionCarName();
+        String winnerNames = winners.stream()
+                                    .map(Car::name)
+                                    .collect(Collectors.joining(", "));
+        System.out.println(winnerNames + "가 최종 우승 했습니다.");
     }
 
 }

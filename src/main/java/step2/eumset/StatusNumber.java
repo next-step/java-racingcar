@@ -1,4 +1,4 @@
-package step2.eumSet;
+package step2.eumset;
 
 public enum StatusNumber {
 

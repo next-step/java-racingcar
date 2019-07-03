@@ -1,11 +1,12 @@
 package step2.model;
 
-import step2.eumSet.StatusNumber;
+import step2.eumset.StatusNumber;
+
+import java.util.Objects;
 
 public class Car {
 
     private int carPosition;
-    private int carPositionStatusNumber;
     private String carName;
 
     public Car(String carName){
@@ -14,13 +15,10 @@ public class Car {
     }
 
     public void carPositionUpdate(int carPositionStatusNumber) {
-        this.carPositionStatusNumber = carPositionStatusNumber;
-
-        int carPostionUpdateNumber = carPositionUpdateValue();
-        if(carPosition == StatusNumber.STOP.getValue()){
-            carPostionUpdateNumber = StatusNumber.EXCUTE.getValue();
+        boolean isUpdate = isCarPositionUpdate(carPositionStatusNumber);
+        if(isUpdate || carPosition == StatusNumber.STOP.getValue()){
+            this.carPosition += StatusNumber.EXCUTE.getValue();
         }
-        this.carPosition += carPostionUpdateNumber;
     }
 
     public int lastCarPosition(){
@@ -31,11 +29,24 @@ public class Car {
         return this. carName;
     }
 
-    private int carPositionUpdateValue() {
-        if (carPositionStatusNumber < StatusNumber.EXCUTE_STANDARD.getValue()) {
-            return StatusNumber.STOP.getValue();
-        }
-        return StatusNumber.EXCUTE.getValue();
+    private boolean isCarPositionUpdate(int carPositionStatusNumber) {
+        return carPositionStatusNumber >= StatusNumber.EXCUTE_STANDARD.getValue();
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return carPosition == car.carPosition &&
+                Objects.equals(carName, car.carName);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(carPosition, carName);
     }
 
 }
