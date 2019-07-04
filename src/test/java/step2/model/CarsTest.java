@@ -1,4 +1,4 @@
-package step2;
+package step2.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RacingWinnerTest {
+public class CarsTest {
 
     private List<Car> cars;
 
@@ -17,7 +17,7 @@ public class RacingWinnerTest {
     void init() {
         cars = new ArrayList<>();
         String[] carNameArray = new String[]{"feelydh", "dhlee", "jwlee"};
-        int[] carPositionArray = new int[]{0, 1, 1};
+        int[] carPositionArray = new int[]{0, 4, 4};
 
         Car car;
         String carName;
@@ -36,15 +36,15 @@ public class RacingWinnerTest {
     @Test
     @DisplayName("우승자 이름 정보 가져오는 테스트")
     void racingWinnerTest() {
-        RacingWinner winnerResult = new RacingWinner(cars);
-        String winners = winnerResult.maxPostionCarName();
-        assertThat(winners).isEqualTo("dhlee, jwlee");
+        Cars winnerResult = new Cars(cars);
+        List<Car> winners = winnerResult.maxPostionCarName();
+        assertThat(winners).containsExactly(cars.get(1), cars.get(2));
     }
 
     @Test
     @DisplayName("가장 높은 position 정보 가져오는 테스트")
     void maxPostionTest() {
-        RacingWinner winnerResult = new RacingWinner(cars);
+        Cars winnerResult = new Cars(cars);
         int maxPostion = winnerResult.maxPosition();
         assertThat(maxPostion).isEqualTo(2);
     }
