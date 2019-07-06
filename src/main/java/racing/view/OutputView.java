@@ -1,6 +1,9 @@
 package racing.view;
 
+import racing.model.Car;
 import racing.model.Cars;
+
+import java.util.stream.Collectors;
 
 public class OutputView {
 
@@ -10,6 +13,14 @@ public class OutputView {
     }
 
     public static void showWinner(Cars cars) {
-        System.out.print(cars.getWinnersName() + "가 우승하셨습니다.");
+
+        int maxPosition = cars.getMaxPosition();
+
+        String winnersName = cars.getCars().stream()
+                .filter(car -> car.isWinner(maxPosition))
+                .map(Car::getName)
+                .collect(Collectors.joining(","));
+
+        System.out.print(winnersName + "가 우승하셨습니다.");
     }
 }

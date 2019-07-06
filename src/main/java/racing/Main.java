@@ -16,6 +16,7 @@ public class Main {
             OutputView.showCarsProcess(cars);
             racingCount--;
         }
+
         OutputView.showWinner(cars);
     }
 }

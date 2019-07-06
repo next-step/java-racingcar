@@ -1,15 +1,12 @@
 package racing;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import racing.model.Car;
 import racing.model.CarName;
 import racing.model.Cars;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
 
@@ -35,9 +32,5 @@ public class CarsTest {
 
         cars = new Cars(carList);
     }
-
-    @Test
-    void getWinnersName() {
-        assertThat(cars.getWinnersName()).isEqualTo("poison,twoCar");
-    }
 }
+
