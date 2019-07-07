@@ -13,7 +13,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class WinnerTest {
-
     private String INPUT_CAR_NAME = "car";
     private String INPUT_CAR_NAME_COMPARED = "car_compared";
 
