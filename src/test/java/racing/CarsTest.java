@@ -51,14 +51,6 @@ public class CarsTest {
     }
 
     @Test
-    void find_max_position_2() {
-        Car target = mCars.getCar(0);
-        target.goOrNot(moveStrategy);
-
-        assertThat(mCars.findMaxPosition2()).isEqualTo(1);
-    }
-
-    @Test
     void find_cars_in_position() {
         Car target = mCars.getCar(0);
         Car anotherTarget = mCars.getCar(1);
