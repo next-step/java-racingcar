@@ -1,6 +1,5 @@
 package racing.domain;
 
-import racing.CarStatement;
 import racing.domain.strategy.DrivingStrategy;
 
 public class Car {

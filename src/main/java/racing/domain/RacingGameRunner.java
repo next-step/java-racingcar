@@ -1,6 +1,5 @@
-package racing;
+package racing.domain;
 
-import racing.domain.RacingGame;
 import racing.view.Prompter;
 
 public class RacingGameRunner {

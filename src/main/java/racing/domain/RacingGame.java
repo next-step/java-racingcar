@@ -1,10 +1,9 @@
 package racing.domain;
 
-import java.util.*;
-import java.util.stream.IntStream;
-
-import racing.domain.strategy.*;
+import racing.domain.strategy.DrivingRandomStrategy;
 import racing.view.Printer;
+
+import java.util.List;
 
 public class RacingGame {
     private Cars cars;

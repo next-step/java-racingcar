@@ -2,7 +2,6 @@ package racing.domain;
 
 import racing.domain.strategy.DrivingStrategy;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
