@@ -10,23 +10,17 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingTest {
-    private int             INPUT_MOVES_COUNT = 1;
     private List<String>    INPUT_CARS_NAMES = Arrays.asList("car1", "car2");
 
     private RacingGame mGame;
 
     @BeforeEach
     void setUp() {
-        mGame = new RacingGame(INPUT_CARS_NAMES, INPUT_MOVES_COUNT);
+        mGame = new RacingGame(INPUT_CARS_NAMES);
     }
 
     @Test
     void input_generate_cars() {
         assertThat(mGame.getNumOfCars()).isEqualTo(INPUT_CARS_NAMES.size());
-    }
-
-    @Test
-    void input_move_times() {
-        assertThat(mGame.getNumOfMove()).isEqualTo(INPUT_MOVES_COUNT);
     }
 }

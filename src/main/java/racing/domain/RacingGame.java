@@ -1,23 +1,22 @@
 package racing.domain;
 
 import java.util.*;
+import java.util.stream.IntStream;
 
 import racing.domain.strategy.*;
 import racing.view.Printer;
 
 public class RacingGame {
     private Cars cars;
-    private int moves;
 
-    public RacingGame(List<String> carNames, int numOfMoves) {
+    public RacingGame(List<String> carNames) {
         this.cars = new Cars(carNames);
-        this.moves = numOfMoves;
     }
 
-    public void startRacing() {
+    public void startRacing(int moves) {
         Printer.printStartRacing();
 
-        for (int i = 0; i < this.moves; i++) {
+        for (int i = 0; i < moves; i++) {
             move();
         }
 
@@ -32,9 +31,5 @@ public class RacingGame {
 
     public int getNumOfCars() {
         return cars.size();
-    }
-
-    public int getNumOfMove() {
-        return this.moves;
     }
 }

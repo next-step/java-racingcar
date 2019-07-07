@@ -33,7 +33,7 @@ public class CarsTest {
     }
 
     @Test
-    void go() {
+    void go_car() {
         Car target = mCars.getCar(0);
         Car anotherTarget = mCars.getCar(1);
 
@@ -48,6 +48,14 @@ public class CarsTest {
         target.goOrNot(moveStrategy);
 
         assertThat(mCars.findMaxPosition()).isEqualTo(1);
+    }
+
+    @Test
+    void find_max_position_2() {
+        Car target = mCars.getCar(0);
+        target.goOrNot(moveStrategy);
+
+        assertThat(mCars.findMaxPosition2()).isEqualTo(1);
     }
 
     @Test

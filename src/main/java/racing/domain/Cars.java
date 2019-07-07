@@ -10,38 +10,29 @@ public class Cars {
     private List<Car> cars;
 
     public Cars(List<String> names) {
-        cars = new ArrayList<>(names.size());
-
-        for (String carName : names) {
-            cars.add(new Car(carName));
-        }
+        cars = names.stream()
+                .map(name -> Car.of(name))
+                .collect(Collectors.toList());
     }
 
     public void go(DrivingStrategy strategy) {
-        for (Car car : cars) {
-            car.goOrNot(strategy);
-        }
+        cars.stream()
+                .forEach(car -> car.goOrNot(strategy));
     }
 
     public int findMaxPosition() {
         int max = Integer.MIN_VALUE;
-
         for (Car car : cars) {
-            int position = car.getPosition();
-            if (isBigger(position, max)) {
-                max = position;
-            }
+            max = car.max(max);
         }
 
         return max;
     }
 
     public List<Car> findCarsInPosition(int pos) {
-        List<Car> founds = cars.stream()
+        return cars.stream()
                 .filter(car -> car.getPosition() == pos)
                 .collect(Collectors.toList());
-
-        return founds;
     }
 
     public int size() {
@@ -58,9 +49,5 @@ public class Cars {
 
     public List<Car> toList() {
         return cars;
-    }
-
-    private boolean isBigger(int original, int target) {
-        return original > target;
     }
 }

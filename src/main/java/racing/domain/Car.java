@@ -1,14 +1,18 @@
 package racing.domain;
 
+import racing.CarStatement;
 import racing.domain.strategy.DrivingStrategy;
 
 public class Car {
-    private String name;
-    private int position;
+    private final CarStatement state;
 
-    public Car(String name) {
-        this.name = name;
-        position = 0;
+    private Car(CarStatement state) {
+        this.state = state;
+    }
+
+    public static Car of(String name) {
+        CarStatement state = new CarStatement(name);
+        return new Car(state);
     }
 
     public void goOrNot(DrivingStrategy strategy) {
@@ -18,23 +22,18 @@ public class Car {
     }
 
     private void go() {
-        position++;
-    }
-
-    public String getMovesRoad() {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < this.position; i++) {
-            builder.append("-");
-        }
-
-        return builder.toString();
+        state.move();
     }
 
     public String getName() {
-        return name;
+        return state.getName();
     }
 
     public int getPosition() {
-        return position;
+        return state.getPosition();
+    }
+
+    public int max(int max) {
+        return state.max(max);
     }
 }

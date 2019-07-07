@@ -15,7 +15,7 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        mCar = new Car(INPUT_CAR_NAME);
+        mCar = Car.of(INPUT_CAR_NAME);
     }
 
     @Test
@@ -30,13 +30,6 @@ public class CarTest {
         mCar.goOrNot(new DrivingStopStrategy());
 
         assertThat(mCar.getPosition()).isEqualTo(0);
-    }
-
-    @Test
-    void print_position() {
-        mCar.goOrNot(new DrivingMoveStrategy());
-
-        assertThat(mCar.getMovesRoad()).isEqualTo("-");
     }
 
     @Test
