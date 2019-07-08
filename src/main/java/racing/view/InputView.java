@@ -3,9 +3,7 @@ package racing.view;
 import racing.model.Car;
 import racing.model.CarName;
 import racing.model.Cars;
-import racing.model.Position;
 
-import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;

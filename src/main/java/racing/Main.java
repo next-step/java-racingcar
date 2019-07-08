@@ -1,22 +1,21 @@
 package racing;
 
-import racing.model.CarCondition;
-import racing.model.Cars;
+import racing.model.RacingGame;
 import racing.view.InputView;
 import racing.view.OutputView;
 
 public class Main {
-
     public static void main(String[] args) {
-        Cars cars = InputView.getCarsByNames();
+        RacingGame racingGame = new RacingGame(InputView.getCarsByNames());
+
         int racingCount = InputView.getRacingCount();
 
         while (racingCount != 0) {
-            cars.getCars().forEach(car -> car.move(CarCondition.get()));
-            OutputView.showCarsProcess(cars);
+            racingGame.play();
             racingCount--;
         }
 
-        OutputView.showWinner(cars);
+        OutputView.showResult(racingGame.getResult());
+        OutputView.showWinner(racingGame.getCars());
     }
 }
