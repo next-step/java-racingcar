@@ -1,9 +1,10 @@
 package racing.domain;
 
 import racing.domain.strategy.DrivingRandomStrategy;
-import racing.view.Printer;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class RacingGame {
     private Cars cars;
@@ -12,20 +13,12 @@ public class RacingGame {
         this.cars = new Cars(carNames);
     }
 
-    public void startRacing(int moves) {
-        Printer.printStartRacing();
+    public RacingGameResult startRacing(int moves) {
+        List<TrackResult> trackResults = IntStream.range(0, moves)
+                .mapToObj(i -> cars.go(new DrivingRandomStrategy()))
+                .collect(Collectors.toList());
 
-        for (int i = 0; i < moves; i++) {
-            move();
-        }
-
-        Printer.printEndGame(new WinnerMaker(cars).getWinners());
-    }
-
-    private void move() {
-        cars.go(new DrivingRandomStrategy());
-
-        Printer.printResult(cars);
+        return new RacingGameResult(trackResults, new WinnerMaker(cars).getWinners());
     }
 
     public int getNumOfCars() {

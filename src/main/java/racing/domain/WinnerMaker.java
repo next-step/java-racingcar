@@ -10,7 +10,7 @@ public class WinnerMaker {
     }
 
     public List<Car> getWinners() {
-        int max = cars.findMaxPosition();
+        int max = cars.findFirstPosition();
 
         return cars.findCarsInPosition(max);
     }

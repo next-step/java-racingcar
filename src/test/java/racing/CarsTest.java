@@ -47,7 +47,7 @@ public class CarsTest {
         Car target = mCars.getCar(0);
         target.goOrNot(moveStrategy);
 
-        assertThat(mCars.findMaxPosition()).isEqualTo(1);
+        assertThat(mCars.findFirstPosition()).isEqualTo(1);
     }
 
     @Test

@@ -1,7 +1,8 @@
 package racing.view;
 
 import racing.domain.Car;
-import racing.domain.Cars;
+import racing.domain.RacingGameResult;
+import racing.domain.TrackResult;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -9,19 +10,27 @@ import java.util.stream.IntStream;
 public class Printer {
     static public final String DEL_WINNER_CARS = ", ";
 
-    static public void printStartRacing() {
+    static public void printGameResult(RacingGameResult result) {
+        printStartRacing();
+
+        result.getTracks().stream()
+                .forEach(track -> Printer.printResult(track));
+
+        printEndGame(result.getWinners());
+    }
+
+    static private void printStartRacing() {
         print("\n실행 결과");
     }
 
-    static public void printResult(Cars cars) {
-        for (Car car : cars.toList()) {
-            print(car.getName() + " : " + getRoad(car.getPosition()));
-        }
+    static private void printResult(TrackResult result) {
+        result.getCars().stream()
+                .forEach(car -> print(car.getName() + " : " + getRoad(car.getPosition())));
 
         print("");
     }
 
-    static public String getRoad(int position) {
+    static private String getRoad(int position) {
         StringBuilder builder = new StringBuilder();
         IntStream.range(0, position)
                 .forEach(i -> builder.append("-"));
@@ -29,7 +38,7 @@ public class Printer {
         return builder.toString();
     }
 
-    static public void printEndGame(List<Car> winners) {
+    static private void printEndGame(List<Car> winners) {
         String winner = getWinnersString(winners);
 
         print(winner + "가 최종 우승했습니다.");

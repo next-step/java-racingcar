@@ -14,18 +14,20 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public void go(DrivingStrategy strategy) {
+    public TrackResult go(DrivingStrategy strategy) {
         cars.stream()
                 .forEach(car -> car.goOrNot(strategy));
+
+        return new TrackResult(cars);
     }
 
-    public int findMaxPosition() {
-        int max = Integer.MIN_VALUE;
+    public int findFirstPosition() {
+        int index = Integer.MIN_VALUE;
         for (Car car : cars) {
-            max = car.max(max);
+            index = car.max(index);
         }
 
-        return max;
+        return index;
     }
 
     public List<Car> findCarsInPosition(int pos) {
@@ -44,9 +46,5 @@ public class Cars {
         }
 
         return cars.get(index);
-    }
-
-    public List<Car> toList() {
-        return cars;
     }
 }
