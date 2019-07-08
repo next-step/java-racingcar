@@ -1,4 +1,4 @@
-package racing.strategy;
+package racing.domain.strategy;
 
 public class DrivingMoveStrategy implements DrivingStrategy {
     @Override
