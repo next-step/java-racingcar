@@ -15,7 +15,7 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        this.car = Car.of(new CarName("hennry"), new Position());
+        this.car = Car.of(new CarName("hennry"));
     }
 
     @Test
@@ -59,7 +59,7 @@ public class CarTest {
 
     @Test
     void validate() {
-        assertThatThrownBy(() -> Car.of(new CarName(""), new Position())).isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> Car.of(new CarName(null), new Position())).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Car.of(new CarName(""))).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Car.of(new CarName(null))).isInstanceOf(IllegalArgumentException.class);
     }
 }

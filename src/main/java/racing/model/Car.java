@@ -6,13 +6,13 @@ public class Car {
     private Position position;
     private CarName name;
 
-    private Car(CarName name, Position position) {
+    private Car(CarName name) {
         this.name = name;
         this.position = new Position();
     }
 
-    public static Car of(CarName carName, Position position) {
-        return new Car(carName, position);
+    public static Car of(CarName carName) {
+        return new Car(carName);
     }
 
     public void move(int condition) {
