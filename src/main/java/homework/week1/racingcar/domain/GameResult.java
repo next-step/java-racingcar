@@ -2,17 +2,18 @@ package homework.week1.racingcar.domain;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class RacingCarGameResult {
+public class GameResult {
     private final List<Car> resultCars;
 
-    private RacingCarGameResult(List<Car> resultCars) {
+    private GameResult(List<Car> resultCars) {
         this.resultCars = resultCars;
     }
 
-    public static RacingCarGameResult of(List<Car> resultCars) {
-        return new RacingCarGameResult(resultCars);
+    public static GameResult of(List<Car> resultCars) {
+        return new GameResult(resultCars);
     }
 
     public int getMaxPosition() {
@@ -22,7 +23,6 @@ public class RacingCarGameResult {
                 .orElse(0)
                 .intValue();
     }
-
 
     public List<String> getWinnerNames(int maxPosition) {
         return resultCars.stream()
@@ -34,4 +34,5 @@ public class RacingCarGameResult {
     public List<Car> getResultCars() {
         return Collections.unmodifiableList(resultCars);
     }
+
 }

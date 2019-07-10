@@ -1,26 +1,24 @@
 package homework.week1.racingcar;
 
-import homework.week1.racingcar.domain.RacingCarGame;
-import homework.week1.racingcar.domain.RacingCarGameResult;
-import homework.week1.racingcar.view.RacingCarGameInPutView;
-import homework.week1.racingcar.view.RacingCarGameResultView;
+import homework.week1.racingcar.domain.Game;
+import homework.week1.racingcar.domain.GameResult;
+import homework.week1.racingcar.view.GameInputView;
+import homework.week1.racingcar.view.GameResultView;
 
 public class RacingCarGameMain {
     public static void main(String[] args) {
-        RacingCarGameInPutView inPutView = RacingCarGameInPutView.newInstance();
-        RacingCarGameResultView resultView = RacingCarGameResultView.newInstance();
+        GameResultView resultView = GameResultView.newInstance();
 
-        String carStrings = inPutView.inputCarName();
-        String numberOfRacing = inPutView.inputNumberOfRacing();
+        String carStrings = GameInputView.inputCarName();
+        String numberOfRacing = GameInputView.inputNumberOfRacing();
 
-        RacingCarGame racingCarGame = new RacingCarGame(carStrings, numberOfRacing);
+        Game racingCarGame = new Game(carStrings, numberOfRacing);
         int tryNumberOfRacing = 0;
-        RacingCarGameResult result = null;
+        GameResult result = null;
         while (!racingCarGame.isFinishRace(tryNumberOfRacing)) {
             ++tryNumberOfRacing;
             result = racingCarGame.tryRace();
             resultView.printRaceResultCars(result);
-            resultView.printEmptyLine();
         }
 
         if (result != null) {

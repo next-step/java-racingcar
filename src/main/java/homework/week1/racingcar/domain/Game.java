@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.regex.Pattern;
 
-public class RacingCarGame {
+public class Game {
     private static final String NUMBER_REGEX = "^[0-9]*$";
     private static final int MIN_RACING_VALUE = 1;
     private static final int RANDOM_NUM_RANGE = 10;
@@ -16,7 +16,7 @@ public class RacingCarGame {
     private List<Car> cars;
     private int numberOfRacing;
 
-    public RacingCarGame(String carStrings, String numberOfRacing) {
+    public Game(String carStrings, String numberOfRacing) {
         checkNumberString(numberOfRacing);
         int number = Integer.parseInt(numberOfRacing);
         checkInputPositiveNum(number);
@@ -25,19 +25,14 @@ public class RacingCarGame {
     }
 
     private static List<Car> initializeCars(String carStrings) {
-        checkEmptyOrNull(carStrings);
+        if (StringUtils.isBlank(carStrings)) {
+            throw new IllegalArgumentException("입력되는 차이름 문자열은 빈 문자열이나 공백문자열이 올 수 없습니다.");
+        }
         List<Car> cars = new ArrayList<>();
         for (String carName : carStrings.split(SEPARATOR_STRING)) {
-            checkEmptyOrNull(carName);
             cars.add(new Car(carName));
         }
         return cars;
-    }
-
-    private static void checkEmptyOrNull(String value) throws IllegalArgumentException {
-        if (StringUtils.isBlank(value)) {
-            throw new IllegalArgumentException("차이름은 빈 문자열이나 공백문자열이 올 수 없습니다.");
-        }
     }
 
     private static void checkNumberString(String strValue) throws IllegalArgumentException {
@@ -52,9 +47,19 @@ public class RacingCarGame {
         }
     }
 
-    public RacingCarGameResult tryRace() {
+    public GameResult tryRace() {
         startEachOfCar();
-        return RacingCarGameResult.of(cars);
+        return GameResult.of(cars);
+    }
+
+    public List<GameResult> numberOfRacingGameResults() {
+        int tryNumberOfRacing = 0;
+        List<GameResult> gameResults = new ArrayList<>();
+        while (!isFinishRace(tryNumberOfRacing)) {
+            ++tryNumberOfRacing;
+            gameResults.add(tryRace());
+        }
+        return gameResults;
     }
 
     public boolean isFinishRace(int tryNumberOfRacing) {

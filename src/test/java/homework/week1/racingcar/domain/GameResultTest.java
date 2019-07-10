@@ -9,8 +9,8 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class RacingCarGameResultTest {
-    private RacingCarGameResult result;
+public class GameResultTest {
+    private GameResult result;
     @BeforeEach
     void setUp() {
         List<Car> cars = new ArrayList<>();
@@ -18,7 +18,7 @@ public class RacingCarGameResultTest {
         cars.add(new Car("crong", 2));
         cars.add(new Car("honux", 3));
         cars.add(new Car("jk", 3));
-        result = RacingCarGameResult.of(cars);
+        result = GameResult.of(cars);
     }
 
     @Test

@@ -1,5 +1,7 @@
 package homework.week1.racingcar.domain;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Objects;
 
 public class Car {
@@ -14,6 +16,9 @@ public class Car {
     }
 
     public Car(String name, int position) {
+        if (StringUtils.isBlank(name)) {
+            throw new IllegalArgumentException("차이름은 빈 문자열이나 공백문자열이 올 수 없습니다.");
+        }
         this.name = name;
         this.position = position;
     }

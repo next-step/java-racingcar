@@ -6,37 +6,37 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class RacingCarGameTest {
-    private RacingCarGame racingCarGame;
+public class GameTest {
+    private Game racingCarGame;
 
     @BeforeEach
     void setUp() {
-        racingCarGame = new RacingCarGame("pobi,crong,honux", "5");
+        racingCarGame = new Game("pobi,crong,honux", "5");
     }
 
     @Test
     void 자동차이름_사용자입력예외처리() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-           new RacingCarGame("", "1");
-            new RacingCarGame("pobi,,crong", "1");
-            new RacingCarGame(null, "1");
-            new RacingCarGame(" ", "1");
+           new Game("", "1");
+            new Game("pobi,,crong", "1");
+            new Game(null, "1");
+            new Game(" ", "1");
         });
     }
 
     @Test
     void 경주횟수_사용자입력예외처리() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            new RacingCarGame("pobi,crong", "-1");
-            new RacingCarGame("pobi,crong", "aaa");
-            new RacingCarGame("pobi,crong", "");
-            new RacingCarGame("pobi,crong", "0");
+            new Game("pobi,crong", "-1");
+            new Game("pobi,crong", "aaa");
+            new Game("pobi,crong", "");
+            new Game("pobi,crong", "0");
         });
     }
 
     @Test
     void tryRace_result_RacingCarGameResult() {
-        assertThat(racingCarGame.tryRace()).isInstanceOf(RacingCarGameResult.class);
+        assertThat(racingCarGame.tryRace()).isInstanceOf(GameResult.class);
     }
 
     @Test

@@ -1,22 +1,28 @@
 package homework.week1.racingcar.view;
 
-import homework.week1.racingcar.domain.RacingCarGameResult;
+import homework.week1.racingcar.domain.GameResult;
 
 import java.util.List;
 
-public class RacingCarGameResultView {
+public class GameResultView {
     private static final String WINNER_CAR_NAME_GUIDE = "가 최종 우승했습니다.";
     private static final String RUN_SYMBOL = "-";
 
-    private RacingCarGameResultView() {}
+    private GameResultView() {}
 
-    public static RacingCarGameResultView newInstance() {
-        return new RacingCarGameResultView();
+    public static GameResultView newInstance() {
+        return new GameResultView();
     }
 
-    public void printRaceResultCars(RacingCarGameResult gameResult) {
+    public void printNumberOfRacingResults(List<GameResult> gameResults) {
+        gameResults.stream()
+                .forEach(t -> printRaceResultCars(t));
+    }
+
+    public void printRaceResultCars(GameResult gameResult) {
         gameResult.getResultCars().stream()
                 .forEach(t -> printCar(t.getName(), t.getPosition()));
+        printEmptyLine();
     }
 
     public void printCar(String carName, int position) {
