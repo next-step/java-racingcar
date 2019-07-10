@@ -17,11 +17,11 @@ public class GameResult {
     }
 
     public int getMaxPosition() {
+        Collections.sort(resultCars);
         return resultCars.stream()
-                .map(Car::getPosition)
-                .max(Integer::compareTo)
-                .orElse(0)
-                .intValue();
+                .findFirst()
+                .orElse(new Car("none"))
+                .getPosition();
     }
 
     public List<String> getWinnerNames(int maxPosition) {
