@@ -19,12 +19,6 @@ public class CarTest {
     }
 
     @Test
-    void movable() {
-        assertThat(car.movable(4)).isTrue();
-        assertThat(car.movable(3)).isFalse();
-    }
-
-    @Test
     void move() {
         assertThat(car.move(true)).isEqualTo(1);
         assertThat(car.move(true)).isEqualTo(2);

@@ -35,14 +35,15 @@ public class GameTest {
     }
 
     @Test
-    void tryRace_result_RacingCarGameResult() {
-        assertThat(racingCarGame.tryRace()).isInstanceOf(GameResult.class);
-    }
-
-    @Test
     void isFinishRace() {
         assertThat(racingCarGame.isFinishRace(4)).isFalse();
         assertThat(racingCarGame.isFinishRace(5)).isTrue();
         assertThat(racingCarGame.isFinishRace(6)).isFalse();
+    }
+
+    @Test
+    void tryMoveCar후position() {
+        assertThat(racingCarGame.tryMoveCar(new Car("test"), true).getPosition()).isEqualTo(1);
+        assertThat(racingCarGame.tryMoveCar(new Car("test"), false).getPosition()).isEqualTo(0);
     }
 }

@@ -1,5 +1,6 @@
 package homework.week1.racingcar.domain;
 
+import homework.week1.racingcar.util.RandomNumberGenerator;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
@@ -10,7 +11,6 @@ import java.util.regex.Pattern;
 public class Game {
     private static final String NUMBER_REGEX = "^[0-9]*$";
     private static final int MIN_RACING_VALUE = 1;
-    private static final int RANDOM_NUM_RANGE = 10;
     private static final String SEPARATOR_STRING = ",";
 
     private List<Car> cars;
@@ -22,17 +22,6 @@ public class Game {
         checkInputPositiveNum(number);
         this.numberOfRacing = number;
         this.cars = initializeCars(carStrings);
-    }
-
-    private static List<Car> initializeCars(String carStrings) {
-        if (StringUtils.isBlank(carStrings)) {
-            throw new IllegalArgumentException("입력되는 차이름 문자열은 빈 문자열이나 공백문자열이 올 수 없습니다.");
-        }
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carStrings.split(SEPARATOR_STRING)) {
-            cars.add(new Car(carName));
-        }
-        return cars;
     }
 
     private static void checkNumberString(String strValue) throws IllegalArgumentException {
@@ -47,33 +36,30 @@ public class Game {
         }
     }
 
-    public GameResult tryRace() {
-        startEachOfCar();
-        return GameResult.of(cars);
+    private static List<Car> initializeCars(String carStrings) {
+        if (StringUtils.isBlank(carStrings)) {
+            throw new IllegalArgumentException("입력되는 차이름 문자열은 빈 문자열이나 공백문자열이 올 수 없습니다.");
+        }
+        List<Car> cars = new ArrayList<>();
+        for (String carName : carStrings.split(SEPARATOR_STRING)) {
+            cars.add(new Car(carName));
+        }
+        return cars;
     }
 
-    public List<GameResult> numberOfRacingGameResults() {
-        int tryNumberOfRacing = 0;
-        List<GameResult> gameResults = new ArrayList<>();
-        while (!isFinishRace(tryNumberOfRacing)) {
-            ++tryNumberOfRacing;
-            gameResults.add(tryRace());
+    public List<Car> tryRace() {
+        for (Car car : cars) {
+            tryMoveCar(car, RandomNumberGenerator.newRandomNumber(new Random()).movable());
         }
-        return gameResults;
+        return cars;
     }
 
     public boolean isFinishRace(int tryNumberOfRacing) {
         return this.numberOfRacing == tryNumberOfRacing;
     }
 
-    private int randomNumber(int numberRange) {
-        Random random = new Random();
-        return random.nextInt(numberRange);
-    }
-
-    private void startEachOfCar() {
-        for (Car car : cars) {
-            car.move(car.movable(randomNumber(RANDOM_NUM_RANGE)));
-        }
+    Car tryMoveCar(Car car, boolean movable) {
+        car.move(movable);
+        return car;
     }
 }

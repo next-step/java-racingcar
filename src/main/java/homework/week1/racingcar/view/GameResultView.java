@@ -1,5 +1,7 @@
 package homework.week1.racingcar.view;
 
+import com.google.common.base.Strings;
+import homework.week1.racingcar.domain.Car;
 import homework.week1.racingcar.domain.GameResult;
 
 import java.util.List;
@@ -8,36 +10,26 @@ public class GameResultView {
     private static final String WINNER_CAR_NAME_GUIDE = "가 최종 우승했습니다.";
     private static final String RUN_SYMBOL = "-";
 
-    private GameResultView() {}
-
-    public static GameResultView newInstance() {
-        return new GameResultView();
-    }
-
-    public void printNumberOfRacingResults(List<GameResult> gameResults) {
-        gameResults.stream()
-                .forEach(t -> printRaceResultCars(t));
-    }
-
-    public void printRaceResultCars(GameResult gameResult) {
+    public static void printRaceResultCars(GameResult gameResult) {
         gameResult.getResultCars().stream()
-                .forEach(t -> printCar(t.getName(), t.getPosition()));
+                .map(GameResultView::makeCarRaceResultMessage)
+                .forEach(System.out::println);
         printEmptyLine();
     }
 
-    public void printCar(String carName, int position) {
-        String positionSymbol = "";
-        for (int index = 0 ; index < position; index++) {
-            positionSymbol += RUN_SYMBOL;
-        }
-        System.out.println(carName + " : " + positionSymbol);
-    }
-
-    public void printWinnerCars(List<String> carNames) {
+    public static void printWinnerCars(List<String> carNames) {
         System.out.println(String.join(", ", carNames) + WINNER_CAR_NAME_GUIDE);
     }
 
-    public void printEmptyLine() {
+    public static void printEmptyLine() {
         System.out.println();
+    }
+
+    private static String makeCarRaceResultMessage(Car car) {
+        return car.getName()  + " : " + makeCarRaceImage(car.getPosition());
+    }
+
+    private static String makeCarRaceImage(int position) {
+        return Strings.repeat(RUN_SYMBOL, position);
     }
 }

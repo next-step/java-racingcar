@@ -5,9 +5,6 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Objects;
 
 public class Car {
-
-    private static final int MIN_MOVE_CONDITION_VALUE = 4;
-
     private String name;
     private int position;
 
@@ -21,18 +18,6 @@ public class Car {
         }
         this.name = name;
         this.position = position;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getPosition() {
-        return position;
-    }
-
-    boolean movable(int randomNumber) {
-        return MIN_MOVE_CONDITION_VALUE <= randomNumber;
     }
 
     int move(boolean movable) {
@@ -62,5 +47,13 @@ public class Car {
                 "name='" + name + '\'' +
                 ", position=" + position +
                 '}';
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 }
