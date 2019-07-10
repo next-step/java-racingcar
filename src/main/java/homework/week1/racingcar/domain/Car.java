@@ -4,7 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.Objects;
 
-public class Car implements Comparable<Car>{
+public class Car {
 
     private static final int MIN_MOVE_CONDITION_VALUE = 4;
 
@@ -40,11 +40,6 @@ public class Car implements Comparable<Car>{
             ++position;
         }
         return position;
-    }
-
-    @Override
-    public int compareTo(Car o) {
-        return o.getPosition() - getPosition();
     }
 
     @Override

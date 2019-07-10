@@ -2,7 +2,6 @@ package homework.week1.racingcar.domain;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class GameResult {
@@ -17,8 +16,8 @@ public class GameResult {
     }
 
     public int getMaxPosition() {
-        Collections.sort(resultCars);
         return resultCars.stream()
+                .sorted((Car a, Car b) -> b.getPosition() - a.getPosition())
                 .findFirst()
                 .orElse(new Car("none"))
                 .getPosition();
