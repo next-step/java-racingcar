@@ -1,59 +1,46 @@
 package racingcar;
 
-import racingcar.Car;
-import racingcar.Cars;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class RacingGame {
-
-    private int numberOfCars;
+    private List<Car> cars;
     private int numberOfGames;
-    private Cars carsList;
-    private Map<Integer, List<Car>> gameRecord = new HashMap<>();
 
-    RacingGame(int numberOfCars, int numberOfGames) {
-        this.numberOfCars = numberOfCars;
+    public RacingGame(String namesOfCars, int numberOfGames) {
+        this.cars = initCars(namesOfCars);
         this.numberOfGames = numberOfGames;
     }
 
-    public void carsLineup() {
+    public List<Car> initCars(String namesOfCars) {
+        String[] names = namesOfCars.trim()
+                .replace(" ", "")
+                .split(",");
         List<Car> cars = new ArrayList<>();
-
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
+        for (String name : names) {
+            cars.add(new Car(name));
         }
-        carsList = new Cars(cars);
+        return cars;
     }
 
-    public Map<Integer, List<Car>> gameStart() {
-        List<Car> cars = carsList.getCars();
-        for (int i = 0; i < numberOfGames; i++) {
-            for (int j = 0; j < numberOfCars; j++) {
-                Random random = new Random();
-                cars.get(j).move(random.nextInt(10));
-
-            }
-            gameRecord.put(i, cars);
+    public void race() {
+        for (Car car : cars) {
+            car.move(generateRandomNumber());
         }
-        carsList = new Cars(cars);
-
-        return gameRecord;
+        numberOfGames--;
     }
 
-    public void gameStart2() {
-        List<Car> cars = new ArrayList<Car>();
-
-        for (int i = 0; i < numberOfGames; i++) {
-            for (Car car : carsList.getCars()) {
-                Random random = new Random();
-                car.move(random.nextInt(10));
-                cars.add(car);
-            }
-        }
-        carsList = new Cars(cars);
+    public int generateRandomNumber() {
+        Random random = new Random();
+        return random.nextInt(10);
     }
 
+    public boolean isEnd() {
+        return this.numberOfGames == 0;
+    }
 
-
+    public List<Car> getCars() {
+        return cars;
+    }
 }
