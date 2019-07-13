@@ -2,35 +2,27 @@ package racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.Car;
-import racingcar.Cars;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    Car car;
-    Cars cars;
+    private Car car;
 
     @BeforeEach
     void setup() {
-        car = new Car();
-
+        car = new Car("pobi");
     }
 
     @Test
-    public void moveSuccessTest() {
+    void 이동() {
         car.move(4);
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
-    public void moveFailTest() {
+    void 정지() {
         car.move(3);
         assertThat(car.getPosition()).isEqualTo(0);
     }
-
-
 }
