@@ -1,5 +1,7 @@
 package homework.week1.racingcar.view;
 
+import homework.week1.racingcar.util.ResultStringUtil;
+
 import java.util.Scanner;
 
 public class GameInputView {
@@ -7,23 +9,15 @@ public class GameInputView {
     private static final String INPUT_RACING_NUMBER_GUIDE = "시도할 회수는 몇회인가요?";
 
     public static String inputCarName() {
-        printGuideStr(INPUT_CAR_NAME_GUIDE);
+        ResultStringUtil.printGuideStr(INPUT_CAR_NAME_GUIDE);
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
 
     public static String inputNumberOfRacing() {
-        printEmptyLine();
-        printGuideStr(INPUT_RACING_NUMBER_GUIDE);
+        ResultStringUtil.printEmptyLine();
+        ResultStringUtil.printGuideStr(INPUT_RACING_NUMBER_GUIDE);
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
-    }
-
-    private static void printGuideStr(String guideStr) {
-        System.out.println(guideStr);
-    }
-
-    private static void printEmptyLine() {
-        System.out.println();
     }
 }

@@ -15,11 +15,12 @@ public class RacingCarGameMain {
         String numberOfRacing = GameInputView.inputNumberOfRacing();
 
         Game racingCarGame = new Game(carStrings, numberOfRacing);
+
         int tryNumberOfRacing = 0;
         List<Car> perRaceResultCars = new ArrayList<>();
         while (!racingCarGame.isFinishRace(tryNumberOfRacing)) {
             ++tryNumberOfRacing;
-            perRaceResultCars = racingCarGame.tryRace();
+            perRaceResultCars = racingCarGame.tryRaceCars();
             GameResultView.printRaceResultCars(GameResult.of(perRaceResultCars));
         }
 

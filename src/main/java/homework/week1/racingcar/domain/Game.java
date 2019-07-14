@@ -47,7 +47,7 @@ public class Game {
         return cars;
     }
 
-    public List<Car> tryRace() {
+    public List<Car> tryRaceCars() {
         for (Car car : cars) {
             tryMoveCar(car, RandomNumberGenerator.newRandomNumber(new Random()).movable());
         }
