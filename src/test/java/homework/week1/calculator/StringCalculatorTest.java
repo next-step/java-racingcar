@@ -1,5 +1,6 @@
-package homework.week1;
+package homework.week1.calculator;
 
+import homework.week1.calculator.StringCalculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,13 +10,13 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 public class StringCalculatorTest {
-    private StringCalculator strCal;
-    private StringCalculator operStrCal;
+    private StringCalculator calculator;
+    private StringCalculator operationCalculator;
 
     @BeforeEach
     void setUp() {
-        strCal = new StringCalculator("2 + 3 * 4 / 2");
-        operStrCal = new StringCalculator("2 + 3 * 4 / 2");
+        calculator = new StringCalculator("2 + 3 * 4 / 2");
+        operationCalculator = new StringCalculator("2 + 3 * 4 / 2");
     }
 
     @DisplayName("입력값이 null, 빈문자열, 공백문자열 테스트")
@@ -28,14 +29,14 @@ public class StringCalculatorTest {
             emptyInputStrCal.checkInputEmpty();
             whiteSpaceInputStrCal.checkInputEmpty();
             nullInputStrCal.checkInputEmpty();
-            strCal.checkInputEmpty();
+            calculator.checkInputEmpty();
         });
     }
 
     @DisplayName("공백문자 한개를 구분자로 입력 문자열 자르기 테스트")
     @Test
     void splitInput() {
-        assertThat(strCal.splitInput().length).isEqualTo(7);
+        assertThat(calculator.splitInput().length).isEqualTo(7);
     }
 
     @DisplayName("문자열 배열의 최소 길이 3인지 테스트")
@@ -77,7 +78,7 @@ public class StringCalculatorTest {
     @DisplayName("0 번째 포함 짝수 인덱스의 문자열 배열요소로 숫자형 문자열 배열로 얻기 테스트")
     @Test
     void getNumerStrings() {
-        List<String> numberStrings = strCal.getNumerStrings(strCal.splitInput());
+        List<String> numberStrings = calculator.getNumerStrings(calculator.splitInput());
         assertThat(numberStrings.size()).isEqualTo(4);
 
     }
@@ -85,15 +86,15 @@ public class StringCalculatorTest {
     @DisplayName("홀수 인덱스의 문자열 배열요소로 사칙연산 기호 문자열 배열로 얻기 테스트")
     @Test
     void setOperationalSymbols() {
-        strCal.setOperationalSymbols(strCal.splitInput());
-        assertThat(strCal.getOperationalSymbols().size()).isEqualTo(3);
+        calculator.setOperationalSymbols(calculator.splitInput());
+        assertThat(calculator.getOperationalSymbols().size()).isEqualTo(3);
     }
 
     @DisplayName("숫자형 문자열인지 테스트")
     @Test
     void checkNumberString() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            strCal.checkNumberString("344/");
+            calculator.checkNumberString("344/");
         });
     }
 
@@ -101,7 +102,7 @@ public class StringCalculatorTest {
     @Test
     void checkOperationalSymbol() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            strCal.checkOperationalSymbol("?234");
+            calculator.checkOperationalSymbol("?234");
         });
     }
 
@@ -130,46 +131,46 @@ public class StringCalculatorTest {
 
     @Test
     void setNumbers() {
-        List<String> numberStrings = strCal.getNumerStrings(strCal.splitInput());
-        strCal.setNumbers(numberStrings);
-        assertThat(strCal.getNumbers().size()).isEqualTo(numberStrings.size());
+        List<String> numberStrings = calculator.getNumerStrings(calculator.splitInput());
+        calculator.setNumbers(numberStrings);
+        assertThat(calculator.getNumbers().size()).isEqualTo(numberStrings.size());
     }
 
     @Test
     void plus() {
         int result = 1;
-        result = operStrCal.plus(result,3, StringCalculator.PLUS_SYMBOL);
-        result = operStrCal.plus(result,3, StringCalculator.MINUS_SYMBOL);
+        result = operationCalculator.plus(result,3, StringCalculator.PLUS_SYMBOL);
+        result = operationCalculator.plus(result,3, StringCalculator.MINUS_SYMBOL);
         assertThat(result).isEqualTo(4);
     }
 
     @Test
     void minus() {
         int result = 1;
-        result = operStrCal.minus(result, 3, StringCalculator.MINUS_SYMBOL);
-        result = operStrCal.minus(result, 3, StringCalculator.PLUS_SYMBOL);
+        result = operationCalculator.minus(result, 3, StringCalculator.MINUS_SYMBOL);
+        result = operationCalculator.minus(result, 3, StringCalculator.PLUS_SYMBOL);
         assertThat(result).isEqualTo(-2);
     }
 
     @Test
     void multiply() {
         int result = 1;
-        result = operStrCal.multiply(result, 3, StringCalculator.MULTIPLY_SYMBOL);
-        result = operStrCal.multiply(result, 3, StringCalculator.MINUS_SYMBOL);
+        result = operationCalculator.multiply(result, 3, StringCalculator.MULTIPLY_SYMBOL);
+        result = operationCalculator.multiply(result, 3, StringCalculator.MINUS_SYMBOL);
         assertThat(result).isEqualTo(3);
     }
 
     @Test
     void division() {
         int result = 3;
-        result = operStrCal.division(result, 3, StringCalculator.DIVISION_SYMBOL);
-        result = operStrCal.division(result, 3, StringCalculator.MINUS_SYMBOL);
+        result = operationCalculator.division(result, 3, StringCalculator.DIVISION_SYMBOL);
+        result = operationCalculator.division(result, 3, StringCalculator.MINUS_SYMBOL);
         assertThat(result).isEqualTo(1);
     }
 
     @Test
     void calculate() {
-        strCal.prepareForCalculate(strCal);
-        assertThat(strCal.calculate()).isEqualTo(10);
+        calculator.prepareForCalculate(calculator);
+        assertThat(calculator.calculate()).isEqualTo(10);
     }
 }
