@@ -1,5 +1,6 @@
-package com.mommoo.step2;
+package com.mommoo.step2.domain;
 
+import com.mommoo.step2.Car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +18,7 @@ public class CarWinnerComputerTest {
 
         CarWinnerComputer carWinnerComputer = new CarWinnerComputer(cars);
         assertThat(carWinnerComputer.isWinnerNotExist()).isTrue();
-        assertThat(carWinnerComputer.getWinnerCarNameList()).hasSize(0);
+        assertThat(carWinnerComputer.getWinnerCarNames()).hasSize(0);
     }
 
     @DisplayName("이동 포지션이 가장 큰 자동차가 우승이어야 합니다.")
@@ -27,7 +28,7 @@ public class CarWinnerComputerTest {
 
         CarWinnerComputer carWinnerComputer = new CarWinnerComputer(cars);
         assertThat(carWinnerComputer.isWinnerNotExist()).isFalse();
-        assertThat(carWinnerComputer.getWinnerCarNameList()).hasSize(2);
+        assertThat(carWinnerComputer.getWinnerCarNames()).hasSize(2);
 
         String[] finalWinnerCarNames = {
                 cars.get(0).getName(),
@@ -38,8 +39,8 @@ public class CarWinnerComputerTest {
                 cars.get(2).getName()
         };
 
-        assertThat(carWinnerComputer.getWinnerCarNameList()).containsOnly(finalWinnerCarNames);
-        assertThat(carWinnerComputer.getWinnerCarNameList()).doesNotContain(notWinnerCarNames);
+        assertThat(carWinnerComputer.getWinnerCarNames()).containsOnly(finalWinnerCarNames);
+        assertThat(carWinnerComputer.getWinnerCarNames()).doesNotContain(notWinnerCarNames);
     }
 
     private List<Car> createCarListByPositions(int... movePositions) {

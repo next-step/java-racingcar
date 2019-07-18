@@ -1,4 +1,4 @@
-package com.mommoo.step2;
+package com.mommoo.step2.view;
 
 import java.util.Scanner;
 

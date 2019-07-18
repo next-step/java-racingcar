@@ -23,7 +23,7 @@ public class CarTest {
         int position = 10;
         Car car = new Car("Mommoo", position);
 
-        Car nextPositionCar = car.nextPositionCar();
+        Car nextPositionCar = car.nextCar();
         int nextPosition = nextPositionCar.getPosition();
 
         assertThat(nextPosition).isEqualTo(position+1);
