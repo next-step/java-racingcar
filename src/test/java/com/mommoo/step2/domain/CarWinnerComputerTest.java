@@ -11,14 +11,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarWinnerComputerTest {
 
-    @DisplayName("어떤 자동차도 출발을 하지 못했다면, 최종 우승은 없습니다.")
+    @DisplayName("어떤 자동차도 출발을 하지 못했다면, 동일 선상에 있으므로 모든 자동차가 최종 우승 입니다.")
     @Test
     public void testNoneOfFinalWinnerCar() {
         List<Car> cars = createCarListByPositions(0, 0, 0);
 
         CarWinnerComputer carWinnerComputer = new CarWinnerComputer(cars);
-        assertThat(carWinnerComputer.isWinnerNotExist()).isTrue();
-        assertThat(carWinnerComputer.getWinnerCarNames()).hasSize(0);
+        assertThat(carWinnerComputer.isWinnerNotExist()).isFalse();
+        assertThat(carWinnerComputer.getWinnerCarNames()).hasSize(cars.size());
     }
 
     @DisplayName("이동 포지션이 가장 큰 자동차가 우승이어야 합니다.")
@@ -28,7 +28,6 @@ public class CarWinnerComputerTest {
 
         CarWinnerComputer carWinnerComputer = new CarWinnerComputer(cars);
         assertThat(carWinnerComputer.isWinnerNotExist()).isFalse();
-        assertThat(carWinnerComputer.getWinnerCarNames()).hasSize(2);
 
         String[] finalWinnerCarNames = {
                 cars.get(0).getName(),
@@ -39,8 +38,10 @@ public class CarWinnerComputerTest {
                 cars.get(2).getName()
         };
 
-        assertThat(carWinnerComputer.getWinnerCarNames()).containsOnly(finalWinnerCarNames);
-        assertThat(carWinnerComputer.getWinnerCarNames()).doesNotContain(notWinnerCarNames);
+        assertThat(carWinnerComputer.getWinnerCarNames())
+                .hasSize(2)
+                .containsOnly(finalWinnerCarNames)
+                .doesNotContain(notWinnerCarNames);
     }
 
     private List<Car> createCarListByPositions(int... movePositions) {

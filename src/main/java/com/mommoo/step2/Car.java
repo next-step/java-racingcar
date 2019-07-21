@@ -1,6 +1,6 @@
 package com.mommoo.step2;
 
-import com.mommoo.step2.domain.RacingCarMovingConditioner;
+import com.mommoo.step2.domain.CarMovingConditioner;
 
 public class Car {
     private static final int MOVE_ONE_POSITION = 1;
@@ -13,8 +13,8 @@ public class Car {
         this.position = position;
     }
 
-    public Car nextCar() {
-        int nextPosition = computeNextPosition();
+    public Car nextCar(CarMovingConditioner carMovingConditioner) {
+        int nextPosition = carMovingConditioner.isCanMove() ? position + MOVE_ONE_POSITION : position;
         return new Car(this.name, nextPosition);
     }
 
@@ -28,10 +28,6 @@ public class Car {
 
     public boolean isPositionAt(int position) {
         return this.position == position;
-    }
-
-    private int computeNextPosition() {
-        return RacingCarMovingConditioner.isMoveCondition() ? this.position + MOVE_ONE_POSITION : this.position;
     }
 
     @Override

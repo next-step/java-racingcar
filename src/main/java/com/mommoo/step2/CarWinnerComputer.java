@@ -15,8 +15,8 @@ public class CarWinnerComputer {
         this.winnerCarNameList = pickCarNames(cars, maxPosition);
     }
 
-    private static int getMaxPosition(List<Car> carList) {
-        return carList.stream()
+    private static int getMaxPosition(List<Car> cars) {
+        return cars.stream()
                       .mapToInt(Car::getPosition)
                       .max()
                       .orElse(NONE_OF_WINNER_CAR_POSITION);
@@ -24,7 +24,7 @@ public class CarWinnerComputer {
 
     private static List<String> pickCarNames(List<Car> cars, int position) {
         return cars.stream()
-                   .filter(car -> car.getPosition() > NONE_OF_WINNER_CAR_POSITION)
+                   .filter(car -> car.getPosition() >= NONE_OF_WINNER_CAR_POSITION)
                    .filter(car -> car.getPosition() == position)
                    .map(Car::getName)
                    .collect(Collectors.toList());
