@@ -1,5 +1,7 @@
-package com.mommoo.step2;
+package com.mommoo.step2.domain;
 
+import com.mommoo.step2.Car;
+import com.mommoo.step2.domain.RacingGame;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -31,21 +33,5 @@ public class RacingGameTest {
         int drivenDistance = time + 1;
 
         assertThat(movePositions).allMatch(position -> position <= drivenDistance);
-    }
-
-    @DisplayName("올바른 자동차 상태 값이 저장된 리스트여야 합니다.")
-    @ParameterizedTest
-    @ValueSource(ints={1, 2, 3})
-    public void testCurrentCarListIsValid(int time) {
-        List<Car> movedCarList = racingGame.move();
-        List<Car> currentCarList = racingGame.currentCarList();
-
-        int size = movedCarList.size();
-
-        for (int index = 0; index < size; index++) {
-            Car movedCar = movedCarList.get(index);
-            Car currentCar = currentCarList.get(index);
-            assertThat(movedCar).isEqualTo(currentCar);
-        }
     }
 }

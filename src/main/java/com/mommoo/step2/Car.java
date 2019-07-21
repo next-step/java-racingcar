@@ -1,6 +1,10 @@
 package com.mommoo.step2;
 
+import com.mommoo.step2.domain.CarMovingConditioner;
+
 public class Car {
+    private static final int MOVE_ONE_POSITION = 1;
+
     private final String name;
     private final int position;
 
@@ -9,8 +13,8 @@ public class Car {
         this.position = position;
     }
 
-    public Car nextPositionCar() {
-        int nextPosition = this.position + 1;
+    public Car nextCar(CarMovingConditioner carMovingConditioner) {
+        int nextPosition = carMovingConditioner.canMove() ? position + MOVE_ONE_POSITION : position;
         return new Car(this.name, nextPosition);
     }
 
@@ -20,6 +24,10 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public boolean isPositionAt(int position) {
+        return this.position == position;
     }
 
     @Override

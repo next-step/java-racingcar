@@ -1,5 +1,11 @@
 package com.mommoo.step2;
 
+import com.mommoo.step2.domain.CarWinnerComputer;
+import com.mommoo.step2.domain.RacingGame;
+import com.mommoo.step2.view.InputView;
+import com.mommoo.step2.view.ResultView;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -9,16 +15,14 @@ public class Main {
 
         RacingGame racingGame = new RacingGame(carNames);
 
+        List<Car> carList = new ArrayList<>();
         while(times-- > 0) {
-            List<Car> carList = racingGame.move();
-            for (Car car : carList) {
-                ResultView.printCarMoveLine(car);
-            }
+            carList = racingGame.move();
+            carList.forEach(ResultView::printCarMoveLine);
             System.out.println();
         }
 
-        List<Car> finalCarList = racingGame.currentCarList();
-        CarWinnerComputer carWinnerComputer = new CarWinnerComputer(finalCarList);
+        CarWinnerComputer carWinnerComputer = new CarWinnerComputer(carList);
 
         ResultView.printFinalWinner(carWinnerComputer);
     }

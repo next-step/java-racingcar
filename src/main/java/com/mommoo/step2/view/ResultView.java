@@ -1,4 +1,7 @@
-package com.mommoo.step2;
+package com.mommoo.step2.view;
+
+import com.mommoo.step2.Car;
+import com.mommoo.step2.domain.CarWinnerComputer;
 
 import java.util.List;
 
@@ -31,7 +34,7 @@ public class ResultView {
             return;
         }
 
-        List<String> winnerCarNameList = carWinnerComputer.getWinnerCarNameList();
+        List<String> winnerCarNameList = carWinnerComputer.getWinnerCarNames();
 
         String prefixCarNames = String.join(",", winnerCarNameList);
 

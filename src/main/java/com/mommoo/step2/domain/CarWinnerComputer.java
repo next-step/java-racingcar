@@ -1,22 +1,23 @@
-package com.mommoo.step2;
+package com.mommoo.step2.domain;
+
+import com.mommoo.step2.Car;
 
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class CarWinnerComputer {
     private static final int NONE_OF_WINNER_CAR_POSITION = 0;
 
-    private final List<String> winnerCarNameList;
+    private final List<String> winnerCarNames;
 
     public CarWinnerComputer(List<Car> cars) {
         int maxPosition = getMaxPosition(cars);
-        this.winnerCarNameList = pickCarNames(cars, maxPosition);
+        this.winnerCarNames = pickCarNames(cars, maxPosition);
     }
 
-    private static int getMaxPosition(List<Car> cars) {
-        return cars.stream()
+    private static int getMaxPosition(List<Car> carList) {
+        return carList.stream()
                       .mapToInt(Car::getPosition)
                       .max()
                       .orElse(NONE_OF_WINNER_CAR_POSITION);
@@ -24,17 +25,16 @@ public class CarWinnerComputer {
 
     private static List<String> pickCarNames(List<Car> cars, int position) {
         return cars.stream()
-                   .filter(car -> car.getPosition() >= NONE_OF_WINNER_CAR_POSITION)
-                   .filter(car -> car.getPosition() == position)
+                   .filter(car -> car.isPositionAt(position))
                    .map(Car::getName)
                    .collect(Collectors.toList());
     }
 
     public boolean isWinnerNotExist() {
-        return winnerCarNameList.size() == 0;
+        return winnerCarNames.isEmpty();
     }
 
-    public List<String> getWinnerCarNameList() {
-        return Collections.unmodifiableList(winnerCarNameList);
+    public List<String> getWinnerCarNames() {
+        return Collections.unmodifiableList(winnerCarNames);
     }
 }
