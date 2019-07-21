@@ -31,7 +31,7 @@ public class CarTest {
         Car nextPositionCar = car.nextCar(carMovingConditioner);
         int nextPosition = nextPositionCar.getPosition();
 
-        int expectedPosition = carMovingConditioner.isCanMove() ? position + 1 : position;
+        int expectedPosition = carMovingConditioner.canMove() ? position + 1 : position;
 
         assertThat(nextPosition).isEqualTo(expectedPosition);
     }

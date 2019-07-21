@@ -6,14 +6,14 @@ public class CarMovingConditioner {
     private static final Random RANDOM = new Random();
     private static final int MAX_RANDOM_RANGE = 10;
     private static final int MINIMUM_MOVING_CONDITION = 4;
-    private final boolean isCanMove;
+    private final boolean canMove;
 
     public CarMovingConditioner() {
-        this.isCanMove = isCanMove();
+        this.canMove = computeIsCanMove();
     }
 
-    public boolean isCanMove() {
-        return this.isCanMove;
+    public boolean canMove() {
+        return this.canMove;
     }
 
     private static boolean computeIsCanMove() {

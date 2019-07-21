@@ -14,7 +14,7 @@ public class Car {
     }
 
     public Car nextCar(CarMovingConditioner carMovingConditioner) {
-        int nextPosition = carMovingConditioner.isCanMove() ? position + MOVE_ONE_POSITION : position;
+        int nextPosition = carMovingConditioner.canMove() ? position + MOVE_ONE_POSITION : position;
         return new Car(this.name, nextPosition);
     }
 
