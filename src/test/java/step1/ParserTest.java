@@ -27,7 +27,7 @@ class ParserTest {
 	}
 
 	@ParameterizedTest
-	@CsvSource(value = {"+,PLUS", "-,MINUS", "*,MULTIPLY", "/,DIVIDE"})
+	@CsvSource({"+,PLUS", "-,MINUS", "*,MULTIPLY", "/,DIVIDE"})
 	void 네_종류의_사칙연산_파싱이_성공한다(String operatorExpression, Operator operator) {
 		// given
 		String inputString = String.format("1 %s 2", operatorExpression);

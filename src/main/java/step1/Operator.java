@@ -12,17 +12,18 @@ public enum Operator {
 	MINUS("-", BigDecimal::subtract),
 	MULTIPLY("*", BigDecimal::multiply),
 	DIVIDE("/", (leftNum, rightNum) -> {
-		return leftNum.divide(rightNum, 4, RoundingMode.HALF_UP);
+		return leftNum.divide(rightNum, 8, RoundingMode.HALF_UP);
 	});
 
 	private final String operationExpression;
 	private final BiFunction<BigDecimal, BigDecimal, BigDecimal> operate;
 
-	Operator(String oper, BiFunction<BigDecimal, BigDecimal, BigDecimal> operate) {
-		this.operationExpression = oper;
+	Operator(String operationExpression, BiFunction<BigDecimal, BigDecimal, BigDecimal> operate) {
+		this.operationExpression = operationExpression;
 		this.operate = operate;
 	}
 
+	// 성능을 위한 캐싱
 	private static Map<String, Operator> operators = new HashMap<>();
 
 	static {
@@ -40,6 +41,10 @@ public enum Operator {
 
 	public String getOperationExpression() {
 		return this.operationExpression;
+	}
+
+	public BiFunction<BigDecimal, BigDecimal, BigDecimal> getOperate() {
+		return this.operate;
 	}
 
 }
