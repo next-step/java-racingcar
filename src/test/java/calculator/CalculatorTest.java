@@ -42,4 +42,11 @@ public class CalculatorTest {
     void add(String input, int result) {
         assertThat(calculator.result(input)).isEqualTo(result);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"2 - 1:1", "3 - 1:2", "3 - 1 -:2"}, delimiter = ':')
+    @DisplayName("뺄셈 테스트")
+    void subtraction(String input, int result) {
+        assertThat(calculator.result(input)).isEqualTo(result);
+    }
 }

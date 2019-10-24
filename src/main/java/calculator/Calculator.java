@@ -12,11 +12,13 @@ public class Calculator {
     private static final String INPUT_SPLIT_SEPARATOR = " ";
 
     private static final String PLUS_OPERATOR = "+";
+    private static final String SUBTRACTION_OPERATOR = "-";
 
     private Map<String, OperatorFunction> operators = new HashMap<>();
 
     public Calculator() {
         operators.put(PLUS_OPERATOR, Long::sum);
+        operators.put(SUBTRACTION_OPERATOR, (a, b) -> a - b);
     }
 
     public long result(String input) {
