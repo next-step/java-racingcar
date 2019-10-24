@@ -2,6 +2,7 @@ package calculator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -55,5 +56,19 @@ public class CalculatorTest {
     @DisplayName("곱셈 테스트")
     void multiplication(String input, int result) {
         assertThat(calculator.result(input)).isEqualTo(result);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"2 / 1:2", "6 / 2:3"}, delimiter = ':')
+    @DisplayName("나눗셈 테스트")
+    void division(String input, int result) {
+        assertThat(calculator.result(input)).isEqualTo(result);
+    }
+
+    @Test
+    @DisplayName("문자열 계산기의 동작을 테스트한다.")
+    void calculate() {
+        String input = "2 + 3 * 4 / 2";
+        assertThat(calculator.result(input)).isEqualTo(10);
     }
 }

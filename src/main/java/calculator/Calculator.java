@@ -14,6 +14,7 @@ public class Calculator {
     private static final String PLUS_OPERATOR = "+";
     private static final String SUBTRACTION_OPERATOR = "-";
     private static final String MULTIPLICATION_OPERATOR = "*";
+    private static final String DIVISION_OPERATOR = "/";
 
     private Map<String, OperatorFunction> operators = new HashMap<>();
 
@@ -21,6 +22,7 @@ public class Calculator {
         operators.put(PLUS_OPERATOR, Long::sum);
         operators.put(SUBTRACTION_OPERATOR, (a, b) -> a - b);
         operators.put(MULTIPLICATION_OPERATOR, (a, b) -> a * b);
+        operators.put(DIVISION_OPERATOR, (a, b) -> a / b);
     }
 
     public long result(String input) {
