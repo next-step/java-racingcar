@@ -29,7 +29,7 @@ public class SetTest {
 
   @ParameterizedTest
   @ValueSource(ints = {1, 2, 3})
-  void contains(String no) {
+  void contains(int no) {
     assertThat(numbers.contains(no)).isTrue();
   }
 
