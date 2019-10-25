@@ -19,7 +19,7 @@ public class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"2 + 3:5", "4 + 5:9"}, delimiter = ':')
     void add(String input, int output) {
-        int result = Calculator.operate(input);
+        int result = Calculator.calculate(input);
         assertThat(result).isEqualTo(output);
     }
 
@@ -27,7 +27,7 @@ public class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"12 - 3:9", "4 - 5:-1", "10 - 10:0"}, delimiter = ':')
     void subtract(String input, int output) {
-        int result = Calculator.operate(input);
+        int result = Calculator.calculate(input);
         assertThat(result).isEqualTo(output);
     }
 
@@ -35,7 +35,7 @@ public class CalculatorTest {
     @ParameterizedTest
     @CsvFileSource(numLinesToSkip = 1, delimiter = '=', resources = "/calculator/multiply.csv")
     void multiply(String input, int output) {
-        int result = Calculator.operate(input);
+        int result = Calculator.calculate(input);
         assertThat(result).isEqualTo(output);
     }
 
@@ -43,7 +43,7 @@ public class CalculatorTest {
     @ParameterizedTest
     @CsvFileSource(numLinesToSkip = 1, delimiter = '!', resources = "/calculator/divide.csv")
     void divide(String input, int output) {
-        int result = Calculator.operate(input);
+        int result = Calculator.calculate(input);
         assertThat(result).isEqualTo(output);
     }
 
@@ -51,7 +51,7 @@ public class CalculatorTest {
     @ParameterizedTest
     @CsvFileSource(resources = "/calculator/operate.csv")
     void operate(String input, int output) {
-        int result = Calculator.operate(input);
+        int result = Calculator.calculate(input);
         assertThat(result).isEqualTo(output);
     }
 
@@ -61,7 +61,7 @@ public class CalculatorTest {
     void illegalArgumentTest(String input) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> {
-                    Calculator.operate(input);
+                    Calculator.calculate(input);
                 });
     }
 
@@ -71,7 +71,7 @@ public class CalculatorTest {
     void isBlank_ShouldReturnTrueForNullOrBlankStrings(String input) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> {
-                    Calculator.operate(input);
+                    Calculator.calculate(input);
                 });
     }
 }
