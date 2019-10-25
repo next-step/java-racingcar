@@ -48,17 +48,17 @@ public class StringCalculatorTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "      "})
-    void input_ShouldReturnIllegalArgumentExceptionForEmptyString(String expression) {
+    void validate_ShouldReturnIllegalArgumentExceptionForEmptyString(String expression) {
         assertThatThrownBy(() -> {
-            stringCalculator.input(expression);
+            stringCalculator.validate(expression);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
     @NullSource
-    void input_ShouldReturnIllegalArgumentExceptionForNull(String expression) {
+    void validate_ShouldReturnIllegalArgumentExceptionForNull(String expression) {
         assertThatThrownBy(() -> {
-            stringCalculator.input(expression);
+            stringCalculator.validate(expression);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 

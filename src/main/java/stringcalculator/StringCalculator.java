@@ -21,13 +21,9 @@ public class StringCalculator {
         return operand1 / operand2;
     }
 
-    public void input(String expression) {
-        if (expression == null || expression.trim().isEmpty()) {
-            throw new IllegalArgumentException();
-        }
-    }
-
     public void validate(String expression) {
+        checkWhetherEmpty(expression);
+
         String[] seperatedExpression = expression.split(" ");
 
         if (seperatedExpression.length % 2 == 0) {
@@ -36,6 +32,12 @@ public class StringCalculator {
 
         for (int i = 0; i < seperatedExpression.length; i++) {
             matches(availablePattern[i % 2], seperatedExpression[i]);
+        }
+    }
+
+    private void checkWhetherEmpty(String expression) {
+        if (expression == null || expression.trim().isEmpty()) {
+            throw new IllegalArgumentException();
         }
     }
 
