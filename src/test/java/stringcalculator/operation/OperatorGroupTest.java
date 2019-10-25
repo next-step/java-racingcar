@@ -1,9 +1,8 @@
-package stringcalculator;
+package stringcalculator.operation;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import stringcalculator.operation.OperatorGroup;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -26,7 +25,8 @@ class OperatorGroupTest {
         //when
         //then
         assertThatThrownBy(() -> OperatorGroup.findOperator(unknownOperator))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("연산자가 아닙니다.");
     }
 
     @ParameterizedTest

@@ -20,7 +20,7 @@ public enum OperatorGroup {
         return Arrays.stream(values())
                 .filter(op -> op.isEqual(operator))
                 .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(() -> new IllegalArgumentException("연산자가 아닙니다."));
     }
 
     public Double operate(Double x, Double y) {
