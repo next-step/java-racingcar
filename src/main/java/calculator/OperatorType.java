@@ -42,4 +42,11 @@ public enum OperatorType {
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 연산자입니다."));
 
     }
+
+    public static boolean isOperatorType(String type) {
+        return getOperatorCodes().contains(type);
+    }
+    public static boolean isNotOperatorType(String type) {
+        return !isOperatorType(type);
+    }
 }
