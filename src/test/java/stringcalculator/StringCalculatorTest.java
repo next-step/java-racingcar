@@ -85,4 +85,11 @@ public class StringCalculatorTest {
             stringCalculator.validate(expression);
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"5 + 4 - 3 * 2 / 3"})
+    void calculate(String expression) {
+        int result = stringCalculator.calculate(expression);
+        assertThat(result).isEqualTo(4);
+    }
 }
