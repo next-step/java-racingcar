@@ -26,12 +26,13 @@ public class Parser {
 
 	private void validateLength(int length) {
 		if (length % 2 == 0) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(String.format("문자열에 들어 있는 원소 개수를 확인해주세요! %d개가 들어왔습니다", length));
 		}
 	}
 
 	private void insertAllStringIntoList(String[] separatedString) {
-		for (int i = 0; i < separatedString.length; i++) {
+		int separatedStringLength = separatedString.length;
+		for (int i = 0; i < separatedStringLength; i++) {
 			addNumberIfOrderIsEven(separatedString[i], i);
 			addOperatorIfOrderIsOdd(separatedString[i], i);
 		}

@@ -18,6 +18,7 @@ class SequentialCalculatorTest {
 
 	@ParameterizedTest
 	@CsvSource({"PLUS,6.0000", "MINUS,-4.0000", "MULTIPLY,5.0000", "DIVIDE,0.2000"})
+	@SuppressWarnings("NonAsciiCharacters")
 	void 사칙연산이_정상적으로_적용된다(Operator operator, String result) {
 		// given
 		List<BigDecimal> numbers = Arrays.asList(new BigDecimal("1"), new BigDecimal("5"));
@@ -31,6 +32,7 @@ class SequentialCalculatorTest {
 	}
 
 	@Test
+	@SuppressWarnings("NonAsciiCharacters")
 	void 사칙연산_규칙을_무시하고_순차적으로_계산한다() {
 		// given
 		List<BigDecimal> numbers = Arrays.asList(new BigDecimal("2"),
@@ -48,6 +50,7 @@ class SequentialCalculatorTest {
 
 	@ParameterizedTest
 	@CsvSource({"4,0.0000", "5,0.0001", "6,0.0001"})
+	@SuppressWarnings("NonAsciiCharacters")
 	void 소수점_넷째자리까지_반올림을_한다(String number, String result) {
 		// given
 		List<BigDecimal> numbers = Arrays.asList(new BigDecimal(number), new BigDecimal("100000"));
@@ -61,6 +64,7 @@ class SequentialCalculatorTest {
 	}
 
 	@Test
+	@SuppressWarnings("NonAsciiCharacters")
 	void 피연산자와_연산자_개수가_맞지않으면_계산에_실패한다() {
 		// given
 		List<BigDecimal> numbers = Arrays.asList(new BigDecimal("10"), new BigDecimal("20"));
