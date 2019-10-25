@@ -21,4 +21,11 @@ public class StringCalculatorTest {
         int result = stringCalculator.plus(operand1, operand2);
         assertThat(result).isEqualTo(3);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1, 2"}, delimiter = ',')
+    void minus(int operand1, int operand2) {
+        int result = stringCalculator.minus(operand1, operand2);
+        assertThat(result).isEqualTo(-1);
+    }
 }
