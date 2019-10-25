@@ -41,9 +41,9 @@ public class SetTest {
         assertThat(numbers.contains(no)).isTrue();
     }
 
-//    ParameterizedTest
-//    @CsvSource(value = {"1:true", "4:false"}, delimiter = ':')
-//    void contains2(int no, boolean result) {
-//        assertThat(numbers.contains(no)).isEqualTo(result);
-//    }
+    @ParameterizedTest
+    @CsvSource(value = {"1:true", "4:false"}, delimiter = ':')
+    void contains2(int no, boolean result) {
+        assertThat(numbers.contains(no)).isEqualTo(result);
+    }
 }
