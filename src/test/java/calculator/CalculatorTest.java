@@ -2,6 +2,7 @@ package calculator;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -91,5 +92,16 @@ class CalculatorTest {
         });
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {"2 + 3 * 4 / 2:10",
+            "5 + 3 * 2 - 6 / 2:5",
+            "100 - 10 / 3 + 5 * 2:70",
+            "10 - 1 - 1 - 1 - 1 - 1:5"
+    }, delimiter = ':')
+    void 사칙연산(String input, long result) {
+        Calculator calculator = new Calculator();
+        long number = calculator.calculate(input);
+        assertThat(number).isEqualTo(result);
+    }
 
 }
