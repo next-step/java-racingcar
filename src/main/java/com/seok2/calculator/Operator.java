@@ -1,7 +1,12 @@
 package com.seok2.calculator;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public enum Operator {
 
@@ -12,6 +17,13 @@ public enum Operator {
 
     private String operator;
     private BiFunction<Integer, Integer, Integer> expression;
+    private static final Map<String, Operator> BY_OPERATOR;
+
+
+    static {
+        BY_OPERATOR = Arrays.stream(values()).collect(Collectors.toMap(o-> o.operator,Function.identity()));
+    }
+
 
     Operator(String operator, BiFunction<Integer, Integer, Integer> expression) {
         this.operator = operator;
@@ -19,10 +31,7 @@ public enum Operator {
     }
 
     public static Operator find(String operator) {
-        return Arrays.stream(values())
-            .filter(x -> x.operator.equals(operator))
-            .findFirst()
-            .orElseThrow(IllegalArgumentException::new);
+        return Optional.ofNullable(BY_OPERATOR.get(operator)).orElseThrow(IllegalArgumentException::new);
     }
 
     public Integer calculator(int num1, int num2) {
