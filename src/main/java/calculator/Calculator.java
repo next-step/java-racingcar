@@ -11,31 +11,20 @@ public class Calculator {
     }
 
     private void run() {
-        String inputString = "2 + 3 * 4 / 2";
+        String input = "2 + 3 * 4 / 2";
 
-        long result = calculate(inputString);
+        long result = calculate(input);
         System.out.println(result);
     }
 
     public long calculate(String inputString) {
 
-        if (inputString == null) {
-            throw new IllegalArgumentException("입력이 올바르지 않습니다.");
-        }
-        String[] split = inputString.split(" ");
-
-        List<String> list = Arrays.stream(split)
-                .filter(a -> !"".equals(a))
-                .collect(Collectors.toList());
-
-        if (list.size() < 2 || list.size() % 2 == 0) {
-            throw new IllegalArgumentException("숫자와 연산자의 개수가 맞지 않습니다.");
-        }
+        CalculatorItemCollection collection =  new CalculatorItemCollection(inputString);
 
         long result = 0;
         OperatorType operatorType = null;
 
-        for (String s : list) {
+        for (String s : collection.getItem()) {
 
             if (isNumeric(s)) {
                 long number = Long.parseLong(s);
