@@ -23,7 +23,7 @@ public class InputTest {
     @NullSource
     void nullTest(String inputStr) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            iv.numberValidate(inputStr);
+            iv.validate(inputStr);
         });
     }
 
@@ -31,7 +31,7 @@ public class InputTest {
     @ValueSource(strings = {"", " ", "    "})
     void emptyStringTest(String inputStr) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-           iv.numberValidate(inputStr);
+           iv.validate(inputStr);
         });
     }
 
