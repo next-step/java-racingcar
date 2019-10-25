@@ -3,7 +3,6 @@ package calculator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -16,7 +15,7 @@ public class CalculatorTest {
 
     @Test
     void stringCalculatorTest() {
-        double resultValue = StringCalculator.calculate("    ");
+        double resultValue = StringCalculator.calculate("2 + 3 * 4 / 2");
         assertThat(resultValue).isEqualTo(10);
     }
 
