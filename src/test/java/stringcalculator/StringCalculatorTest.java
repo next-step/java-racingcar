@@ -35,4 +35,11 @@ public class StringCalculatorTest {
         int result = stringCalculator.multiply(operand1, operand2);
         assertThat(result).isEqualTo(6);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"2, 2"}, delimiter = ',')
+    void divide(int operand1, int operand2) {
+        int result = stringCalculator.divide(operand1, operand2);
+        assertThat(result).isEqualTo(1);
+    }
 }

@@ -12,4 +12,8 @@ public class StringCalculator {
     public int multiply(int operand1, int operand2) {
         return operand1 * operand2;
     }
+
+    public int divide(int operand1, int operand2) {
+        return operand1 / operand2;
+    }
 }
