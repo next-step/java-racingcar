@@ -21,7 +21,7 @@ public enum Operator {
 
 
     static {
-        BY_OPERATOR = Arrays.stream(values()).collect(Collectors.toMap(o-> o.operator,Function.identity()));
+        BY_OPERATOR = Arrays.stream(values()).collect(Collectors.toMap(o -> o.operator, Function.identity()));
     }
 
 
