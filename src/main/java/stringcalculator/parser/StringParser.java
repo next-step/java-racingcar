@@ -20,6 +20,6 @@ public class StringParser {
     }
 
     private static boolean isEmpty(String input) {
-        return (input == null) || (input.equals(EMPTY));
+        return (input == null) || (input.trim().equals(EMPTY));
     }
 }

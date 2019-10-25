@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class StringParserTest {
 
     private static Stream<String> illegalInput() {
-        return Stream.of("", null);
+        return Stream.of("", " ", "    ", null);
     }
 
     @ParameterizedTest
