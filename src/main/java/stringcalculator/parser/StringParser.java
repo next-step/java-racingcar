@@ -1,33 +1,25 @@
 package stringcalculator.parser;
 
-import java.util.Arrays;
-
 public class StringParser {
     private static final String EMPTY = "";
     private static final String BLANK = " ";
 
-    private String[] parsedInputs;
-
-    public void parse(String input) {
+    public static String[] parse(String input) {
         checkLegal(input);
-        splitInput(input);
+        return splitInput(input);
     }
 
-    public String[] getParsedInputs() {
-        return Arrays.copyOf(this.parsedInputs, this.parsedInputs.length);
+    private static String[] splitInput(String input) {
+        return input.split(BLANK);
     }
 
-    private void splitInput(String input) {
-        this.parsedInputs = input.split(BLANK);
-    }
-
-    private void checkLegal(String input) {
+    private static void checkLegal(String input) {
         if (isEmpty(input)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력이 올바르지 않습니다.");
         }
     }
 
-    private boolean isEmpty(String input) {
+    private static boolean isEmpty(String input) {
         return (input == null) || (input.equals(EMPTY));
     }
 }

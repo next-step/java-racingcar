@@ -6,7 +6,7 @@ import java.util.Queue;
 import java.util.stream.Collectors;
 
 public class OperatorCollection {
-    private static final String NUMBER_FORMAT = "\\d";
+    private static final String NUMBER_FORMAT = "\\d+";
 
     private Queue<String> operators;
 

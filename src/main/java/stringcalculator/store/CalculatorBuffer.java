@@ -1,7 +1,9 @@
 package stringcalculator.store;
 
+import java.util.Queue;
+
 public class CalculatorBuffer {
-    private static final String NUMBER_FORMAT = "\\d";
+    private static final String NUMBER_FORMAT = "\\d+";
 
     private NumberCollection numberCollection;
     private OperatorCollection operatorCollection;
@@ -11,6 +13,14 @@ public class CalculatorBuffer {
         this.numberCollection = new NumberCollection(parsedInputs);
         this.operatorCollection = new OperatorCollection(parsedInputs);
         validateOperationSize(numberCollection, operatorCollection);
+    }
+
+    public Queue<Double> getNumberCollection() {
+        return numberCollection.getNumbers();
+    }
+
+    public Queue<String> getOperatorCollection() {
+        return operatorCollection.getOperators();
     }
 
     private void validateOperateOrder(String[] parsedInputs) {
