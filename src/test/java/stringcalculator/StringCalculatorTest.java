@@ -62,4 +62,11 @@ public class StringCalculatorTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"5 ! 4 . 3 & 2 @ 3"})
+    void validateOperators(String expression) {
+        assertThatThrownBy(() -> {
+            stringCalculator.validateOperators(expression);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }
