@@ -19,6 +19,9 @@ public class Calculator {
 
     public long calculate(String inputString) {
 
+        if (inputString == null) {
+            throw new IllegalArgumentException("입력이 올바르지 않습니다.");
+        }
         String[] split = inputString.split(" ");
 
         List<String> list = Arrays.stream(split)
@@ -26,7 +29,7 @@ public class Calculator {
                 .collect(Collectors.toList());
 
         if (list.size() < 2 || list.size() % 2 == 0) {
-            throw new IllegalStateException("숫자와 연산자의 개수가 맞지 않습니다.");
+            throw new IllegalArgumentException("숫자와 연산자의 개수가 맞지 않습니다.");
         }
 
         long result = 0;

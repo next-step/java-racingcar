@@ -1,8 +1,11 @@
 package calculator;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class CalculatorTest {
 
@@ -60,5 +63,22 @@ class CalculatorTest {
 
         //then
         assertThat(result).isEqualTo(10);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", "  "})
+    void 입력_값이_빈_공백일_경우_IllegalArgumentException_throw(String input) {
+        Calculator calculator = new Calculator();
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            calculator.calculate(input);
+        });
+    }
+
+    @Test
+    void 입력_값이_null일_경우_IllegalArgumentException_throw() {
+        Calculator calculator = new Calculator();
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            calculator.calculate(null);
+        });
     }
 }
