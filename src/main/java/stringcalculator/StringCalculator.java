@@ -4,6 +4,7 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
     private String availableOperatorsPattern = "^(\\+|\\-|\\*|\\/)$";
+    private String availableOperandsPattern = "^[0-9]*$";
 
     public int plus(int operand1, int operand2) {
         return operand1 + operand2;
@@ -32,6 +33,14 @@ public class StringCalculator {
 
         for (int i = 1; i < seperatedExpression.length; i += 2) {
             matches(availableOperatorsPattern, seperatedExpression[i]);
+        }
+    }
+
+    public void validateOperands(String expression) {
+        String[] seperatedExpression = expression.split(" ");
+
+        for (int i = 0; i < seperatedExpression.length; i += 2) {
+            matches(availableOperandsPattern, seperatedExpression[i]);
         }
     }
 
