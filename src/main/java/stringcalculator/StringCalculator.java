@@ -3,7 +3,7 @@ package stringcalculator;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
-    private String[] availablePattern = new String[]{"^[0-9]*$", "^(\\+|\\-|\\*|\\/)$"};
+    private final String[] availablePattern = new String[]{"^[0-9]*$", "^(\\+|\\-|\\*|\\/)$"};
 
     public int plus(int operand1, int operand2) {
         return operand1 + operand2;
