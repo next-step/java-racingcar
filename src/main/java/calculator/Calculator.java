@@ -1,8 +1,7 @@
 package calculator;
 
+import java.util.List;
 import java.util.Scanner;
-
-import static calculator.NumberUtils.isNumeric;
 
 public class Calculator {
 
@@ -19,21 +18,17 @@ public class Calculator {
     public long calculate(String inputString) {
 
         CalculatorItemCollection collection = new CalculatorItemCollection(inputString);
+        List<String> items = collection.getItem();
 
-        long result = 0;
-        OperatorType operatorType = null;
-
-        for (String s : collection.getItem()) {
-
-            if (isNumeric(s)) {
-                long number = Long.parseLong(s);
-                result = operatorType == null ? number : operatorType.getExpression().apply(result, number);
-                continue;
-            }
-            operatorType = OperatorType.findByCode(s);
+        long result = Long.parseLong(items.get(0));
+        for (int i = 1; i < items.size() - 1; i += 2) {
+            result = apply(result, items.get(i), items.get(i + 1));
         }
-
         return result;
+    }
+
+    private long apply(long result, String code, String number) {
+        return OperatorType.findByCode(code).getExpression().apply(result, Long.parseLong(number));
     }
 
 }

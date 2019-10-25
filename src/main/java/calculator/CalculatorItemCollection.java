@@ -39,22 +39,24 @@ public class CalculatorItemCollection {
         }
 
         for (int i = 0; i < item.size(); i++) {
-            if (i % 2 == 0) {
-                checkNumeric(item.get(i));
-                continue;
-            }
-
-            checkOperator(item.get(i));
+            checkNumeric(i, item.get(i));
+            checkOperator(i, item.get(i));
         }
     }
 
-    private void checkNumeric(String s) {
+    private void checkNumeric(int i, String s) {
+        if (i % 2 == 1) {
+            return;
+        }
         if (!isNumeric(s)) {
             throw new IllegalArgumentException("입력이 올바르지 않습니다.");
         }
     }
 
-    private void checkOperator(String s) {
+    private void checkOperator(int i, String s) {
+        if (i % 2 == 0) {
+            return;
+        }
         if (isNotOperatorType(s)) {
             throw new IllegalArgumentException("입력이 올바르지 않습니다.");
         }
