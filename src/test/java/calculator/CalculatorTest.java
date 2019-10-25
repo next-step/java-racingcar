@@ -93,10 +93,19 @@ class CalculatorTest {
     }
 
     @ParameterizedTest
+    @ValueSource(strings = {"2 2", "3 * 5 + 2 -", "+ 1"})
+    void 숫자_연산자가_올바르지_않을_경우_IllegalArgumentException(String input) {
+        Calculator calculator = new Calculator();
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            calculator.calculate(input);
+        });
+    }
+
+    @ParameterizedTest
     @CsvSource(value = {"2 + 3 * 4 / 2:10",
-            "5 + 3 * 2 - 6 / 2:5",
-            "100 - 10 / 3 + 5 * 2:70",
-            "10 - 1 - 1 - 1 - 1 - 1:5"
+            "5        + 3 * 2 - 6 / 2:5",
+            "100 - 10    / 3 + 5 * 2:70",
+            "10 - 1 - 1 -       1 - 1 - 1:5"
     }, delimiter = ':')
     void 사칙연산(String input, long result) {
         Calculator calculator = new Calculator();
