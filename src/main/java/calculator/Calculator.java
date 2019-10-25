@@ -13,11 +13,11 @@ public class Calculator {
     private void run() {
         String inputString = "2 + 3 * 4 / 2";
 
-        double result = calculate(inputString);
+        long result = calculate(inputString);
         System.out.println(result);
     }
 
-    private double calculate(String inputString) {
+    public long calculate(String inputString) {
 
         String[] split = inputString.split(" ");
 
@@ -37,6 +37,7 @@ public class Calculator {
             if (isNumeric(s)) {
                 long number = Long.parseLong(s);
                 result = operatorType == null ? number : operatorType.getExpression().apply(result, number);
+                continue;
             }
 
             if (isOperator(s)) {
