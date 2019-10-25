@@ -23,7 +23,7 @@ public class InputTest {
     @NullSource
     void nullTest(String inputStr) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            iv.validate(inputStr);
+            iv.numberValidate(inputStr);
         });
     }
 
@@ -31,7 +31,15 @@ public class InputTest {
     @ValueSource(strings = {"", " ", "    "})
     void emptyStringTest(String inputStr) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-           iv.validate(inputStr);
+           iv.numberValidate(inputStr);
+        });
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"@", "$", "%"})
+    void calcStringTest(String inputStr) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+           iv.calculateValidate(inputStr);
         });
     }
 }
