@@ -1,7 +1,6 @@
 package com.seok2.calculator;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.BiFunction;
