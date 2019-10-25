@@ -81,4 +81,15 @@ class CalculatorTest {
             calculator.calculate(null);
         });
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"a", "1 b 2", "a b c"})
+    void 사칙연산_기호가_아닌_경우_IllegalArgumentException(String input) {
+        Calculator calculator = new Calculator();
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            calculator.calculate(input);
+        });
+    }
+
+
 }

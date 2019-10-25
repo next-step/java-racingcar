@@ -43,9 +43,7 @@ public class Calculator {
                 continue;
             }
 
-            if (isOperator(s)) {
-                operatorType = OperatorType.findByCode(s);
-            }
+            operatorType = OperatorType.findByCode(s);
         }
 
         return result;
