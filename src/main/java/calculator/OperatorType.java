@@ -34,4 +34,12 @@ public enum OperatorType {
                 .map(OperatorType::getCode)
                 .collect(Collectors.toList());
     }
+
+    public static OperatorType findByCode(String code) {
+        return Arrays.stream(OperatorType.values())
+                .filter(o -> o.name().equals(code))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 연산자입니다."));
+
+    }
 }

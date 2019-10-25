@@ -25,16 +25,22 @@ public class Calculator {
                 .filter(a -> !"".equals(a))
                 .collect(Collectors.toList());
 
+        if (list.size() < 2 || list.size() % 2 == 0) {
+            throw new IllegalStateException("숫자와 연산자의 개수가 맞지 않습니다.");
+        }
+
         long result = 0;
-        long leftSection = 0;
+        OperatorType operatorType = null;
 
         for (String s : list) {
+
             if (isNumeric(s)) {
-                leftSection = Long.parseLong(s);
+                long number = Long.parseLong(s);
+                result = operatorType == null ? number : operatorType.getExpression().apply(result, number);
             }
 
             if (isOperator(s)) {
-
+                operatorType = OperatorType.findByCode(s);
             }
         }
 
@@ -51,7 +57,7 @@ public class Calculator {
     }
 
     private boolean isOperator(String s) {
-        return Arrays.asList("+", "-", "*", "/").contains(s);
+        return OperatorType.getOperatorCodes().contains(s);
     }
 
 }
