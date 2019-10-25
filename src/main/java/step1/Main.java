@@ -34,6 +34,8 @@ public class Main {
 			System.out.println(String.format("결과는 %s 입니다", calculator.getResult().toPlainString()));
 		} catch (IllegalArgumentException e) {
 			System.out.println("입력한 문자열을 확인해 주세요");
+		} catch (ArithmeticException e) {
+			System.out.println("혹시 0으로 나누셨나요?");
 		}
 	}
 
