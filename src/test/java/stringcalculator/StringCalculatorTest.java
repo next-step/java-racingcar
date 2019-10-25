@@ -64,25 +64,25 @@ public class StringCalculatorTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"5 ! 4 . 3 & 2 @ 3"})
-    void input_ShouldReturnIllegalArgumentExceptionForWrongOperator(String expression) {
+    void validate_ShouldReturnIllegalArgumentExceptionForWrongOperator(String expression) {
         assertThatThrownBy(() -> {
-            stringCalculator.input(expression);
+            stringCalculator.validate(expression);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"5 + 4 - a * 2 / 3"})
-    void input_ShouldReturnIllegalArgumentExceptionForWrongOperand(String expression) {
+    void validate_ShouldReturnIllegalArgumentExceptionForWrongOperand(String expression) {
         assertThatThrownBy(() -> {
-            stringCalculator.input(expression);
+            stringCalculator.validate(expression);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"5 + 4 - 3 * 2 / 3 +"})
-    void input_ShouldReturnIllegalArgumentExceptionForMissingOperand(String expression) {
+    void validate_ShouldReturnIllegalArgumentExceptionForMissingOperand(String expression) {
         assertThatThrownBy(() -> {
-            stringCalculator.input(expression);
+            stringCalculator.validate(expression);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }

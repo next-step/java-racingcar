@@ -25,11 +25,9 @@ public class StringCalculator {
         if (expression == null || expression.trim().isEmpty()) {
             throw new IllegalArgumentException();
         }
-
-        validate(expression);
     }
 
-    private void validate(String expression) {
+    public void validate(String expression) {
         String[] seperatedExpression = expression.split(" ");
 
         if (seperatedExpression.length % 2 == 0) {
