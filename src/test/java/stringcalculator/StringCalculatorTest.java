@@ -77,4 +77,12 @@ public class StringCalculatorTest {
             stringCalculator.input(expression);
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"5 + 4 - 3 * 2 / 3 +"})
+    void input_ShouldReturnIllegalArgumentExceptionForMissingOperand(String expression) {
+        assertThatThrownBy(() -> {
+            stringCalculator.input(expression);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }

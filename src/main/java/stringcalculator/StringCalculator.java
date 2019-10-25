@@ -32,6 +32,10 @@ public class StringCalculator {
     private void validate(String expression) {
         String[] seperatedExpression = expression.split(" ");
 
+        if (seperatedExpression.length % 2 == 0) {
+            throw new IllegalArgumentException();
+        }
+
         for (int i = 0; i < seperatedExpression.length; i++) {
             matches(availablePattern[i % 2], seperatedExpression[i]);
         }
