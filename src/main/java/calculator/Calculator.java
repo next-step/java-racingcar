@@ -1,18 +1,19 @@
 package calculator;
 
+import java.util.Scanner;
+
 import static calculator.NumberUtils.isNumeric;
 
 public class Calculator {
 
     public static void main(String[] args) {
-        new Calculator().run();
-    }
 
-    private void run() {
-        String input = "2 + 3 * 4 / 2";
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("계산할 숫자와 연산자를 입력하세요 (ex:2 + 3 * 4 / 2)");
+        String input = scanner.nextLine();
 
-        long result = calculate(input);
-        System.out.println(result);
+        long result = new Calculator().calculate(input);
+        System.out.println("결과 : " + result);
     }
 
     public long calculate(String inputString) {
