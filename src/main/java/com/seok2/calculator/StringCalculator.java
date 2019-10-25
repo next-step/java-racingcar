@@ -3,8 +3,9 @@ package com.seok2.calculator;
 public class StringCalculator {
 
     public void checkIsEmpty(String expression) {
-        if(isEmpty(expression))
+        if (isEmpty(expression)) {
             throw new IllegalArgumentException();
+        }
     }
 
     private boolean isEmpty(String expression) {
@@ -22,8 +23,8 @@ public class StringCalculator {
 
     private int calculate(String[] array) {
         int result = Integer.parseInt(array[0]);
-        for(int idx = 1 ; idx < array.length; idx +=2) {
-            result = Operator.find(array[idx]).calculator(result, Integer.parseInt(array[idx+1]));
+        for (int idx = 1; idx < array.length; idx += 2) {
+            result = Operator.find(array[idx]).calculator(result, Integer.parseInt(array[idx + 1]));
         }
         return result;
     }

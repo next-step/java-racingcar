@@ -26,6 +26,6 @@ public enum Operator {
     }
 
     public Integer calculator(int num1, int num2) {
-        return this.expression.apply(num1,num2);
+        return this.expression.apply(num1, num2);
     }
 }
