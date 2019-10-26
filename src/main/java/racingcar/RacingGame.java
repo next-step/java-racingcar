@@ -7,6 +7,8 @@ public class RacingGame {
 
     private List<RacingCycle> cycles = new ArrayList<>();
 
+    private static final int FIRST_INDEX = 0;
+
     public RacingGame(int carNumber, int runNumber) {
         run(carNumber, runNumber);
     }
@@ -22,7 +24,7 @@ public class RacingGame {
     }
 
     private RacingCycle getRacingCycle(int i, int carNumber) {
-        if (i == 0) {
+        if (i == FIRST_INDEX) {
             return new RacingCycle(carNumber);
         }
 

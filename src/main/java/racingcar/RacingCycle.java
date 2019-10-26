@@ -2,33 +2,30 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+
+import static racingcar.RandomGenerator.getRandomInteger;
 
 public class RacingCycle {
 
-    private static final int BOUND_NUMBER = 10;
     private List<Car> cycle = new ArrayList<>();
-    private Random random;
+
+    private static final int BOUND_NUMBER = 10;
 
     public RacingCycle(List<Car> status) {
-
         for (Car car : status) {
             cycle.add(new Car(car.getLocation()));
         }
-
-        this.random = new Random();
     }
 
     public RacingCycle(int carNumber) {
         for (int i = 0; i < carNumber; i++) {
             cycle.add(new Car());
         }
-        this.random = new Random();
     }
 
     public void doCycle() {
         for (Car car : cycle) {
-            int number = random.nextInt(BOUND_NUMBER);
+            int number = getRandomInteger(BOUND_NUMBER);
             car.move(number);
         }
     }

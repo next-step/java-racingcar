@@ -6,6 +6,8 @@ public class ResultView {
 
     private List<RacingCycle> cycles;
 
+    private static final String LOCATION_EXPRESSION_STRING = "-";
+
     public ResultView(List<RacingCycle> cycles) {
         this.cycles = cycles;
     }
@@ -27,7 +29,7 @@ public class ResultView {
     private String drawLocation(int location) {
         StringBuilder locationBuilder = new StringBuilder();
         for (int i = 0; i < location; i++) {
-            locationBuilder.append("-");
+            locationBuilder.append(LOCATION_EXPRESSION_STRING);
         }
         return locationBuilder.toString();
     }
