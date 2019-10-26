@@ -2,6 +2,7 @@ package calculator;
 
 import com.sun.istack.internal.NotNull;
 import com.*;
+import com.sun.istack.internal.Nullable;
 
 import java.math.BigInteger;
 
@@ -13,12 +14,12 @@ public class Number {
         mValue = value;
     }
 
-    public Number plus(@NotNull Number number) {
+    public Number plus(@Nullable Number number) {
         ValidationUtils.assertNull(number);
         return new Number(mValue.add(number.mValue));
     }
 
-    public Number minus(@NotNull Number number) {
+    public Number minus(@Nullable Number number) {
         return plus(number.toNegative());
     }
 
