@@ -21,4 +21,8 @@ public class Number {
     public BigInteger getValue() {
         return mValue;
     }
+
+    public Number toNegative() {
+        return new Number(mValue.negate());
+    }
 }
