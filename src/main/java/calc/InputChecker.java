@@ -12,6 +12,7 @@ public class InputChecker {
 
     private static final String NULL_INPUT = "아무 것도 입력하지 않았습니다.";
     private static final String ILLEGAL_FORMULA = "입력한 식을 다시 한번 확인해주세요.";
+    private static final String INPUT_DELIMETER = " ";
     private String[] formula;
 
     public InputChecker(String input) {
@@ -27,7 +28,7 @@ public class InputChecker {
             throw new IllegalArgumentException(NULL_INPUT);
         }
 
-        String[] formula = input.split(" ");
+        String[] formula = input.split(INPUT_DELIMETER);
         if (isEven(formula.length)) {
             throw new IllegalArgumentException(ILLEGAL_FORMULA);
         }
@@ -40,20 +41,26 @@ public class InputChecker {
     }
 
     private boolean isValidFormula(String[] formula) {
-        // 짝수번째 있는 값이 숫자인가?
-        if (!IntStream.range(0, formula.length)
-            .filter(NumberUtils::isEven)
-            .allMatch(i -> StringUtils.isNumeric(formula[i]))) {
+        if (!isEvenOrderNumeric(formula)) {
             return false;
         }
 
-        // 홀수번째 있는 값이 operation인가?
-        if (!IntStream.range(0, formula.length)
-            .filter(NumberUtils::isOdd)
-            .allMatch(i -> Operators.isOperator(formula[i]))) {
+        if (!isaOddOrderOperation(formula)) {
             return false;
         }
 
         return true;
+    }
+
+    private boolean isaOddOrderOperation(String[] formula) {
+        return IntStream.range(0, formula.length)
+            .filter(NumberUtils::isOdd)
+            .allMatch(i -> Operators.isOperator(formula[i]));
+    }
+
+    private boolean isEvenOrderNumeric(String[] formula) {
+        return IntStream.range(0, formula.length)
+            .filter(NumberUtils::isEven)
+            .allMatch(i -> StringUtils.isNumeric(formula[i]));
     }
 }
