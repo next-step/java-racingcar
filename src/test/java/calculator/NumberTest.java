@@ -28,7 +28,7 @@ public class NumberTest {
         one = new IntegerNumber("1");
         two = new IntegerNumber("2");
         ten = new IntegerNumber("10");
-        twoPointFive = NumberManager.getNumberFrom(2.5);
+        twoPointFive = new DecimalNumber(2.5);
     }
 
     @Test
