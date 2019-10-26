@@ -25,10 +25,10 @@ public class NumberTest {
     @BeforeEach
     void setUp() {
         nullableNumber = null;
-        one = NumberConverter.from(1);
-        two = NumberConverter.from(2);
-        ten = NumberConverter.from(10);
-        twoPointFive = NumberConverter.from(2.5);
+        one = NumberManager.getNumberFrom(1);
+        two = NumberManager.getNumberFrom(2);
+        ten = NumberManager.getNumberFrom(10);
+        twoPointFive = NumberManager.getNumberFrom(2.5);
     }
 
     @Test
@@ -40,10 +40,22 @@ public class NumberTest {
     }
 
     @Test
-    void plusTest() {
-        assertThat(one.plus(one).toString()).isEqualTo("2");
-        assertThat(one.plus(two).toString()).isEqualTo("3");
-        assertThat(one.plus(ten).toString()).isEqualTo("10");
-        assertThat(one.plus(twoPointFive).toString()).isEqualTo("3.5");
+    void plusTestForDecimalNumber() {
+        assertThat(twoPointFive.plus(twoPointFive).toString()).isEqualTo("5.0");
+    }
+
+    @Test
+    void minusTestForDecimalNumber() {
+        assertThat(twoPointFive.minus(twoPointFive).toString()).isEqualTo("0.0");
+    }
+
+    @Test
+    void multiplyTestForDecimalNumber() {
+        assertThat(twoPointFive.multiply(twoPointFive).toString()).isEqualTo("6.25");
+    }
+
+    @Test
+    void divideTestForDecimalNumber() {
+        assertThat(twoPointFive.divide(twoPointFive).toString()).isEqualTo("1.0");
     }
 }
