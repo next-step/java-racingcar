@@ -22,7 +22,7 @@ public class CarTest {
             car.race();
         }
         int result = car.getTotalDistance();
-        assertThat(result).isEqualTo(distance);
+        assertThat(result).isLessThanOrEqualTo(distance);
     }
 
     @ParameterizedTest
