@@ -6,6 +6,13 @@ import static step1.Utils.ValidationUtils.isBlankThrowException;
 import static step1.Utils.ValidationUtils.isNotNumericThrowException;
 
 public class StringCalculator {
+
+    private static final String PLUS = "+";
+    private static final String MINUS = "-";
+    private static final String MULTIPLY = "*";
+    private static final String DIVIDE = "/";
+    private static final String SPACE_DELIMITER = " ";
+
     private ArrayList<String> operands;
     private ArrayList<Integer> operates;
     private int result;
@@ -26,21 +33,21 @@ public class StringCalculator {
     }
 
     public String[] splitStringBySpace(String input){
-        return input.split(" ");
+        return input.split(SPACE_DELIMITER);
     }
 
     public void iterateClassification(String[] splitedStringArray) {
         for(String splitedString: splitedStringArray) {
-            classification(splitedString);
+            classificateOperandAndOperate(splitedString);
         }
     }
 
-    public void classification(String splitedString) {
+    public void classificateOperandAndOperate(String splitedString) {
         switch(splitedString) {
-            case "+":
-            case "-":
-            case "*":
-            case "/":
+            case PLUS:
+            case MINUS:
+            case MULTIPLY:
+            case DIVIDE:
                 operands.add(splitedString);
                 break;
             default:
@@ -66,16 +73,16 @@ public class StringCalculator {
         }
 
         switch(operand) {
-            case "+":
+            case PLUS:
                 add(a, b);
                 break;
-            case "-":
+            case MINUS:
                 subtract(a, b);
                 break;
-            case "*":
+            case MULTIPLY:
                 multiply(a, b);
                 break;
-            case "/":
+            case DIVIDE:
                 divide(a, b);
                 break;
             default:
