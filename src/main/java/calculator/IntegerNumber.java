@@ -32,7 +32,7 @@ public class IntegerNumber implements Number {
     public Number plus(Number number) {
         ValidationUtils.assertNull(number);
 
-        BigInteger addResult = mValue.add(NumberManager.getBigIntegerFrom(number));
+        BigInteger addResult = mValue.add(getBigIntegerFrom(number));
         return new IntegerNumber(addResult);
     }
 
@@ -45,7 +45,7 @@ public class IntegerNumber implements Number {
     public Number multiply(Number number) {
         ValidationUtils.assertNull(number);
 
-        BigInteger multiplyResult = mValue.multiply(NumberManager.getBigIntegerFrom(number));
+        BigInteger multiplyResult = mValue.multiply(getBigIntegerFrom(number));
         return new IntegerNumber(multiplyResult);
     }
 
@@ -53,7 +53,7 @@ public class IntegerNumber implements Number {
     public Number divide(Number number) {
         ValidationUtils.assertNull(number);
 
-        BigInteger divideResult = mValue.divide(NumberManager.getBigIntegerFrom(number));
+        BigInteger divideResult = mValue.divide(getBigIntegerFrom(number));
         return new IntegerNumber(divideResult);
     }
 
@@ -65,5 +65,15 @@ public class IntegerNumber implements Number {
     @Override
     public String toString() {
         return mValue.toString();
+    }
+
+    // 실수 -> 정수로의 변환은 불가능하다.
+    private static BigInteger getBigIntegerFrom(@NotNull Number number) {
+        if (number instanceof IntegerNumber) {
+            IntegerNumber integerNumber = (IntegerNumber) number;
+            return integerNumber.getValue();
+        }
+
+        throw new IllegalArgumentException();
     }
 }

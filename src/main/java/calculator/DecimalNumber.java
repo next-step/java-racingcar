@@ -30,7 +30,7 @@ public class DecimalNumber implements Number {
     public Number plus(@Nullable Number number) {
         ValidationUtils.assertNull(number);
 
-        BigDecimal addResult = mValue.add(NumberManager.getBigDecimalFrom(number));
+        BigDecimal addResult = mValue.add(getBigDecimalFrom(number));
         return new DecimalNumber(addResult);
     }
 
@@ -43,7 +43,7 @@ public class DecimalNumber implements Number {
     public Number multiply(@Nullable Number number) {
         ValidationUtils.assertNull(number);
 
-        BigDecimal multiplyResult = mValue.multiply(NumberManager.getBigDecimalFrom(number));
+        BigDecimal multiplyResult = mValue.multiply(getBigDecimalFrom(number));
         return new DecimalNumber(multiplyResult);
     }
 
@@ -51,7 +51,7 @@ public class DecimalNumber implements Number {
     public Number divide(@Nullable Number number) {
         ValidationUtils.assertNull(number);
 
-        BigDecimal divideResult = mValue.divide(NumberManager.getBigDecimalFrom(number), RoundingMode.HALF_UP);
+        BigDecimal divideResult = mValue.divide(getBigDecimalFrom(number), RoundingMode.HALF_UP);
         return new DecimalNumber(divideResult);
     }
 
@@ -67,5 +67,19 @@ public class DecimalNumber implements Number {
     @Override
     public String toString() {
         return mValue.toString();
+    }
+
+    private static BigDecimal getBigDecimalFrom(@NotNull Number number) {
+        if (number instanceof IntegerNumber) {
+            IntegerNumber integerNumber = (IntegerNumber) number;
+            return new BigDecimal(integerNumber.getValue());
+        }
+
+        if (number instanceof DecimalNumber) {
+            DecimalNumber decimalNumber = (DecimalNumber) number;
+            return decimalNumber.getValue();
+        }
+
+        throw new IllegalArgumentException();
     }
 }
