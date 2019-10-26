@@ -5,10 +5,11 @@ import java.util.Objects;
 public class Car {
 
     private String name;
-    private int totalDistance = 0;
+    private int totalDistance;
 
     private Car(String name) {
         this.name = name;
+        this.totalDistance = 0;
     }
 
     public static Car of(String name) {
