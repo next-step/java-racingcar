@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
  */
 public class RegxUtils {
     private static final Pattern NUMERIC = Pattern.compile("[-+]?\\d*\\.?\\d+");
-    private static final Pattern OPERATOR = Pattern.compile("^(\\+|\\-|\\*|\\/)$");
+    private static final Pattern OPERATOR = Pattern.compile("^([+\\-*/])$");
 
     public static boolean isNumeric(String str) {
         return str != null && NUMERIC.matcher(str).matches();
