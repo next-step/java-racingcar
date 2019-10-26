@@ -1,10 +1,9 @@
 package racing;
 
 public class RacingGame {
-    private int time;
-    private int[] carPositions = {0, 0, 0};
 
     public void start() {
-
+        int carCount = RacingInput.input(RacingInputType.CAR);
+        int tryCount = RacingInput.input(RacingInputType.TRY);
     }
 }
