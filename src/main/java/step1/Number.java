@@ -41,21 +41,19 @@ public class Number {
             throw new IllegalArgumentException();
         }
 
-        switch (operation) {
-            case "+":
+        Operator operator = Operator.getOperator(operation);
+        switch (operator) {
+            case PLUS:
                 plus(num);
                 return;
-            case "-":
+            case MINUS:
                 minus(num);
                 return;
-            case "*":
-                multiplied(num);
+            case MULTIPLY:
+                multiply(num);
                 return;
-            case "/":
+            case DIVIDE:
                 divide(num);
-                return;
-            default:
-                throw new IllegalArgumentException();
         }
     }
 }
