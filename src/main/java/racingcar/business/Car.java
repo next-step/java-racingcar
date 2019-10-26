@@ -16,6 +16,13 @@ public class Car {
         return new Car(name);
     }
 
+    public String getName() {
+        return this.name;
+    }
+    public int getTotalDistance() {
+        return this.totalDistance;
+    }
+
     public void race() {
         if (isEnableToMove()) {
             move();
@@ -27,12 +34,7 @@ public class Car {
     }
 
     private boolean isEnableToMove() {
-        double randomValue = Math.random();
-        return (int) (randomValue * 10) > 3;
-    }
-
-    public int getTotalDistance() {
-        return this.totalDistance;
+        return (int) (Math.random() * 10) > 3;
     }
 
     @Override
