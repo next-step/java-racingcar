@@ -1,6 +1,6 @@
 package calculator;
 
-public class IntergerNumber implements Number {
+public class IntegerNumber implements Number {
 
     @Override
     public Number plus(Number number) {
