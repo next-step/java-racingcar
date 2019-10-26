@@ -9,11 +9,7 @@ public class Number {
     }
 
     public Number(String num) {
-        try {
-            value = Integer.parseInt(num);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
+        value = parseInt(num);
     }
 
     private void plus(int num) {
@@ -24,7 +20,7 @@ public class Number {
         value -= num;
     }
 
-    private void multiplied(int num) {
+    private void multiply(int num) {
         value *= num;
     }
 
@@ -33,13 +29,7 @@ public class Number {
     }
 
     public void operate(String operation, String obj) {
-        int num;
-
-        try {
-            num = Integer.parseInt(obj);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
+        int num = parseInt(obj);
 
         Operator operator = Operator.getOperator(operation);
         switch (operator) {
@@ -55,5 +45,14 @@ public class Number {
             case DIVIDE:
                 divide(num);
         }
+    }
+
+    private int parseInt(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+
     }
 }
