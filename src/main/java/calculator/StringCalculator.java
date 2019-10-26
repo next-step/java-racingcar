@@ -2,6 +2,7 @@ package calculator;
 
 import java.util.Arrays;
 import java.util.function.Function;
+import java.util.regex.Pattern;
 
 /**
  * @author : 김윤호
@@ -19,7 +20,7 @@ public class StringCalculator {
         if (inputString == null || inputString.replaceAll(BLANK_STRING, EMPTY_STRING).isEmpty()) {
             throw new IllegalArgumentException("null이나 빈 문자열을 입력할 수 없습니다.");
         }
-
+          
         String[] values = inputString.split(" ");
 
         if (!checkValues(values)) {
@@ -37,7 +38,7 @@ public class StringCalculator {
         return resultValue;
     }
 
-    private static boolean checkValues(String... splitText) {
+     private static boolean checkValues(String... splitText) {
         if (!CheckUtil.isNumeric(splitText[FIRST_VALUE]) || !CheckUtil.isNumeric(splitText[LAST_VALUE_INDEX.apply(splitText)])) {
             return false;
         }
