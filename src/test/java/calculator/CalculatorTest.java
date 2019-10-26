@@ -71,4 +71,13 @@ public class CalculatorTest {
         String input = "2 + 3 * 4 / 2";
         assertThat(calculator.result(input)).isEqualTo(10);
     }
+
+    @Test
+    @DisplayName("계산 중 오류가 발생시 Exception을 던지나 확인한다.")
+    void calculateException() {
+        String input = "2 + 3 * 4 / 0";
+        assertThatThrownBy(() -> {
+            calculator.result(input);
+        }).isInstanceOf(OperatorException.class);
+    }
 }

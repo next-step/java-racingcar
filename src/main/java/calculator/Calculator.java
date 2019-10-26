@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import static calculator.OperatorFunction.wrap;
+
 public class Calculator {
     private static final String INPUT_IS_NULL_EXCEPTION_MESSAGE = "Input이 Null 입니다.";
     private static final String INPUT_IS_EMPTY_EXCEPTION_MESSAGE = "Input이 공백 입니다.";
@@ -19,10 +21,10 @@ public class Calculator {
     private Map<String, OperatorFunction> operators = new HashMap<>();
 
     public Calculator() {
-        operators.put(PLUS_OPERATOR, Long::sum);
-        operators.put(SUBTRACTION_OPERATOR, (a, b) -> a - b);
-        operators.put(MULTIPLICATION_OPERATOR, (a, b) -> a * b);
-        operators.put(DIVISION_OPERATOR, (a, b) -> a / b);
+        operators.put(PLUS_OPERATOR, wrap(Long::sum));
+        operators.put(SUBTRACTION_OPERATOR, wrap((a, b) -> a - b));
+        operators.put(MULTIPLICATION_OPERATOR, wrap((a, b) -> a * b));
+        operators.put(DIVISION_OPERATOR, wrap((a, b) -> a / b));
     }
 
     public long result(String input) {
