@@ -7,15 +7,23 @@ import static org.assertj.core.api.Assertions.*;
 
 public class ExpressionTest {
 
-    private Expression mExpression;
+    private Expression mInvalidExpression;
+    private Expression mValidExpression;
 
     @BeforeEach
     void setUp() {
-        mExpression = new Expression("3 + 4 x 6 + 1 +7", NumberType.INTEGER);
+        mInvalidExpression = new Expression("3 + 4 * 6 = 1 +7", NumberType.INTEGER);
+        mValidExpression = new Expression("3 * 4 * 6 - 1 + 7", NumberType.INTEGER);
+    }
+
+    @Test
+    void invalidExpressionTest() {
+        assertThatIllegalArgumentException().isThrownBy(() -> mInvalidExpression.getElements());
     }
 
     @Test
     void expressionResultTest() {
-        assertThat(mExpression.getElements()).contains("3","4","6","1","7");
+        assertThat(mValidExpression.getElements()).contains("3", "4", "6", "1", "7");
+        assertThat(mValidExpression.getElements()).contains("*", "-", "+");
     }
 }
