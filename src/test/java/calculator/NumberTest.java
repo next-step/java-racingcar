@@ -25,10 +25,10 @@ public class NumberTest {
     @BeforeEach
     void setUp() {
         nullableNumber = null;
-        one = new Number(1);
-        two = new Number(2);
-        ten = new Number(10);
-        twoPointFive = new Number(2.5);
+        one = NumberConverter.from(1);
+        two = NumberConverter.from(2);
+        ten = NumberConverter.from(10);
+        twoPointFive = NumberConverter.from(2.5);
     }
 
     @Test

@@ -1,6 +1,29 @@
 package calculator;
 
+import com.sun.istack.internal.NotNull;
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 public class IntegerNumber implements Number {
+
+    private BigInteger mValue;
+
+    IntegerNumber(int value) {
+        this(String.valueOf(value));
+    }
+
+    IntegerNumber(long value) {
+        this(String.valueOf(value));
+    }
+
+    private IntegerNumber(@NotNull String value) {
+        this(new BigInteger(value));
+    }
+
+    private IntegerNumber(@NotNull BigInteger value) {
+        mValue = value;
+    }
 
     @Override
     public Number plus(Number number) {
