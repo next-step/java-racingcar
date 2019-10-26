@@ -2,7 +2,7 @@ package racingcar.business;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Map;
 
@@ -18,9 +18,9 @@ public class RacingTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {3})
-    void registerCarsToParticipateInRace_And_getCurrentSituation(int carCount) {
-        racing.registerCarsToParticipateInRace(carCount);
+    @CsvSource(value = {"3, 5"}, delimiter = ',')
+    void initialize(int countOfCars, int countOfMovesAttemps) {
+        racing.initialize(countOfCars, countOfMovesAttemps);
         Map<Car, Integer> currentSituation = racing.getCurrentSituation();
 
         // 등록된 자동차 이름 확인
