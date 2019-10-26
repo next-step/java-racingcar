@@ -21,7 +21,7 @@ public enum Calculator {
         return Arrays.stream(values())
                 .filter(x -> x.operator.equals(op))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Invalid Operator"));
+                .orElseThrow(() -> new IllegalArgumentException("유효하지 않은 연산자입니다."));
     }
 
     public double calculate(double value1, double value2) {

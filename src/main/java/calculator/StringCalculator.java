@@ -15,7 +15,7 @@ public class StringCalculator {
 
     public static double calculate(String inputString) {
         if (inputString == null || inputString.replaceAll(" ", "").isEmpty()) {
-            throw new IllegalArgumentException("Invalid Argument");
+            throw new IllegalArgumentException("숫자나 오퍼레이터만 넣어주세요.");
         }
 
         String[] values = inputString.split(" ");
