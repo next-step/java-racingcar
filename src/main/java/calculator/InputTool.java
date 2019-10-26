@@ -1,0 +1,25 @@
+package calculator;
+
+import com.sun.istack.internal.NotNull;
+
+import java.util.Scanner;
+
+public class InputTool {
+
+    private Scanner mScanner;
+
+    public InputTool(Scanner scanner) {
+        mScanner = scanner;
+    }
+
+    @NotNull
+    public String readLine() {
+        String inputText = mScanner.nextLine();
+
+        if (inputText == null || inputText.isEmpty()) {
+            throw new IllegalArgumentException("입력된 수식이 없습니다. 다시 입력해주세요.");
+        }
+
+        return inputText;
+    }
+}
