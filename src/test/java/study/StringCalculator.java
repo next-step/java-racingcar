@@ -1,6 +1,7 @@
+package study;
+
 public class StringCalculator {
     private String[] input;
-
 
     public int execute(String input) {
         inputValidator(input);

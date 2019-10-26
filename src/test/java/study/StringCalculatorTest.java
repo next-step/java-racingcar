@@ -6,25 +6,15 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
-
 public class StringCalculatorTest {
-    private String input;
-    private String[] resultInput;
+
+    private StringCalculator stringCalculator;
 
     @BeforeEach
     void setUp() {
-        input = "2 + 3 * 4 / 2";
-        resultInput = input.split(" ");
+        stringCalculator = new StringCalculator();
     }
 
-    @Test
-    void inputTest() {
-        assertThat(resultInput).hasSize(7);
-//        assertThat(resultInput).contains("5");
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            Integer.parseInt("/");
-        });
-    }
 
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "1"})
@@ -40,9 +30,34 @@ public class StringCalculatorTest {
         }).isInstanceOf(IllegalArgumentException.class).hasMessageMatching("For input string: \""+input+"\"");
     }
 
-    @Test
-    void inputValidator() {
-        System.out.println(Integer.parseInt(resultInput[1]));
+    @ParameterizedTest
+    @ValueSource(strings = {})
 
+    @Test
+    void addTest() {
+        assertThat(stringCalculator.execute("1 + 2")).isEqualTo(3);
+    }
+
+    @Test
+    void subtractTest() {
+        assertThat(stringCalculator.execute("1 - 2")).isEqualTo(-1);
+    }
+
+    @Test
+    void divideTest() {
+        assertThat(stringCalculator.execute("4 / 2")).isEqualTo(2);
+    }
+
+    @Test
+    void multiplyTest() {
+        assertThat(stringCalculator.execute("5 * 2")).isEqualTo(10);
+    }
+
+    @Test
+    void inputValidatorTest() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            stringCalculator.inputValidator(null);
+            stringCalculator.inputValidator("");
+        });
     }
 }
