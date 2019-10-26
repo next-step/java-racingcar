@@ -28,10 +28,9 @@ public class StringCalculator {
     }
 
     private static final double calculate(String... splitText) {
-        final Function<String, Double> stringToInt = str -> Double.parseDouble(str);
-        double resultValue = stringToInt.apply(splitText[FIRST_VALUE]);
+        double resultValue = Double.parseDouble(splitText[FIRST_VALUE]);
         for (int i = 1; i < splitText.length; i += 2) {
-            resultValue = Calculator.findOperator(splitText[i]).calculate(resultValue, stringToInt.apply(splitText[i + 1]));
+            resultValue = Calculator.findOperator(splitText[i]).calculate(resultValue, Double.parseDouble(splitText[i + 1]));
         }
         return resultValue;
     }
