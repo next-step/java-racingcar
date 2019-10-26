@@ -2,7 +2,6 @@ package calculator;
 
 import java.util.Arrays;
 import java.util.function.Function;
-import java.util.regex.Pattern;
 
 /**
  * @author : 김윤호
@@ -39,11 +38,11 @@ public class StringCalculator {
     }
 
     private static boolean checkValues(String... splitText) {
-        if (!RegxUtils.isNumeric(splitText[FIRST_VALUE]) || !RegxUtils.isNumeric(splitText[LAST_VALUE_INDEX.apply(splitText)])) {
+        if (!CheckUtil.isNumeric(splitText[FIRST_VALUE]) || !CheckUtil.isNumeric(splitText[LAST_VALUE_INDEX.apply(splitText)])) {
             return false;
         }
 
         return Arrays.stream(splitText)
-                .allMatch(value -> RegxUtils.isNumeric(value) || RegxUtils.isOperator(value));
+                .allMatch(value -> CheckUtil.isNumeric(value) || CheckUtil.isOperator(value));
     }
 }

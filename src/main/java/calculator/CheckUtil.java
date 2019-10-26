@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
  * @version :
  * @date : 2019-10-26 01:38
  */
-public class RegxUtils {
+public class CheckUtil {
     private static final Pattern NUMERIC = Pattern.compile("[-+]?\\d*\\.?\\d+");
     private static final Pattern OPERATOR = Pattern.compile("^([+\\-*/])$");
 
