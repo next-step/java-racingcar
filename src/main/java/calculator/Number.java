@@ -52,8 +52,8 @@ public class Number {
         return new Number(mValue.divide(number.mValue));
     }
 
-    public BigInteger getValue() {
-        return mValue;
+    public String toString() {
+        return mValue.toString();
     }
 
     public Number toNegative() {
