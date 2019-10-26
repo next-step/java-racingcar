@@ -5,52 +5,31 @@ import java.util.List;
 
 public class RacingGame {
 
-    private List<Car> cars = new ArrayList<>();
+    private List<RacingCycle> cycles = new ArrayList<>();
 
-    public static void main(String[] args) {
-
-        UserInput input = new InputView().getInput();
-
-        new RacingGame().run(input.getCarNumber(), input.getRunNumber());
-
+    public RacingGame(int carNumber, int runNumber) {
+        run(carNumber, runNumber);
     }
 
     private void run(int carNumber, int runNumber) {
 
-        createCars(carNumber);
-
         for (int i = 0; i < runNumber; i++) {
-            doCycle();
-            printStatus();
+            RacingCycle cycle = getRacingCycle(i, carNumber);
+            cycle.doCycle();
+            cycles.add(cycle);
         }
 
     }
 
-    private void createCars(int carNumber) {
-        for (int i = 0; i < carNumber; i++) {
-            cars.add(new Car());
+    private RacingCycle getRacingCycle(int i, int carNumber) {
+        if (i == 0) {
+            return new RacingCycle(carNumber);
         }
+
+        return new RacingCycle(cycles.get(i - 1).get());
     }
 
-    private void doCycle() {
-        for (Car car : cars) {
-            car.move();
-        }
-    }
-
-    private void printStatus() {
-        for (Car car : cars) {
-            System.out.println(drawLocation(car.getLocation()));
-        }
-
-        System.out.println();
-    }
-
-    private String drawLocation(int location) {
-        StringBuilder locationBuilder = new StringBuilder();
-        for (int i = 0; i < location; i++) {
-            locationBuilder.append("-");
-        }
-        return locationBuilder.toString();
+    public List<RacingCycle> getCycles() {
+        return cycles;
     }
 }

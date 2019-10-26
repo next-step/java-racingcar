@@ -1,26 +1,27 @@
 package racingcar;
 
-import java.util.Random;
-
 public class Car {
 
+    private static final int MOVE_CONDITION_NUMBER = 4;
     private int location;
-    private Random random;
 
-    Car() {
+    public Car() {
         this.location = 0;
-        this.random = new Random();
     }
 
-    void move() {
+    public Car(int location) {
+        this.location = location;
+    }
 
-        if (isPossibleMove()) {
+    void move(int number) {
+
+        if (isPossibleMove(number)) {
             this.location++;
         }
     }
 
-    private boolean isPossibleMove() {
-        return random.nextInt(10) >= 4;
+    private boolean isPossibleMove(int number) {
+        return number >= MOVE_CONDITION_NUMBER;
     }
 
     int getLocation() {
