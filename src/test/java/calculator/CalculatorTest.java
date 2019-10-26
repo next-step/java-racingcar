@@ -20,28 +20,28 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"5,5", "10,5"}, delimiter = ',')
+    @CsvSource(value = {"5,5", "10,5"})
     void plusTest(double value1, double value2) {
         Calculator calculator = Calculator.PLUS;
         assertThat(calculator.calculate(value1, value2)).isEqualTo(10);
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"10,5", "5,10"}, delimiter = ',')
+    @CsvSource(value = {"10,5", "5,10"})
     void minusTest(double value1, double value2) {
         Calculator calculator = Calculator.MINUS;
         assertThat(calculator.calculate(value1, value2)).isEqualTo(5);
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"10,5", "5,10"}, delimiter = ',')
+    @CsvSource(value = {"10,5", "5,10"})
     void multiplyTest(double value1, double value2) {
         Calculator calculator = Calculator.MULTIPLY;
         assertThat(calculator.calculate(value1, value2)).isEqualTo(50);
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"10,5", "10,2.5"}, delimiter = ',')
+    @CsvSource(value = {"10,5", "10,2.5"})
     void divideTest(double value1, double value2) {
         Calculator calculator = Calculator.DIVIDE;
         assertThat(calculator.calculate(value1, value2)).isEqualTo(2);
