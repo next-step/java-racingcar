@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,23 +20,18 @@ public class RacingTest {
 
     @ParameterizedTest
     @CsvSource(value = {"3, 5"}, delimiter = ',')
-    void initialize(int countOfCars, int countOfMovesAttemps) {
+    void initializeAndStartAndGetRecordingHistory(int countOfCars, int countOfMovesAttemps) {
         racing.initialize(countOfCars, countOfMovesAttemps);
-        Map<Car, Integer> currentSituation = racing.getCurrentSituation();
+        racing.start();
+        Racing.Recording recordingData = racing.getRecordingData();
 
-        // 등록된 자동차 이름 확인
-        assertThat(currentSituation).containsKeys(Car.of(CarName.get(0)), Car.of(CarName.get(1)), Car.of(CarName.get(2)));
-        // 등록된 자동차 이동 거리 확인
-        assertThat(currentSituation).containsValues(0, 0, 0);
-    }
+        List<Map<String, Integer>> racingHistory = recordingData.getRacingHistory();
 
-    @ParameterizedTest
-    @CsvSource(value = {"3, 5"}, delimiter = ',')
-    void progress(int countOfCars, int countOfMovesAttemps) {
-        racing.initialize(countOfCars, countOfMovesAttemps);
-
-        for (int i = 0; i < countOfMovesAttemps; i++) {
-            racing.progress();
-        }
+        racingHistory.forEach(
+                history -> assertThat(history).containsKeys(
+                        Car.of(CarName.get(0)).getName(),
+                        Car.of(CarName.get(1)).getName(),
+                        Car.of(CarName.get(2)).getName()
+                ));
     }
 }
