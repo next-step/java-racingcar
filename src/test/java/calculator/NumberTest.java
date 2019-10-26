@@ -58,4 +58,24 @@ public class NumberTest {
     void divideTestForDecimalNumber() {
         assertThat(twoPointFive.divide(twoPointFive).toString()).isEqualTo("1.0");
     }
+
+    @Test
+    void plusTestForIntegerNumber() {
+        assertThat(one.plus(ten).toString()).isEqualTo("11");
+    }
+
+    @Test
+    void minusTestForIntegerNumber() {
+        assertThat(one.minus(ten).toString()).isEqualTo("-9");
+    }
+
+    @Test
+    void multiplyTestForIntegerNumber() {
+        assertThat(one.multiply(two).toString()).isEqualTo("2");
+    }
+
+    @Test
+    void divideTestForIntegerNumber() {
+        assertThat(ten.divide(two).toString()).isEqualTo("5");
+    }
 }
