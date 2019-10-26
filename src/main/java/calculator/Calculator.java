@@ -1,6 +1,6 @@
 package calculator;
 
-import calculator.util.StringUtils;
+import util.StringUtils;
 
 /**
  * Created by kohyusik on 25/10/2019.
@@ -10,7 +10,7 @@ public class Calculator {
     private static final String DELIMITER = " ";
 
     public static int calculate(String input) {
-        if (StringUtils.isEmpty(input)) {
+        if (StringUtils.isBlank(input)) {
             throw new IllegalArgumentException("Input is required.");
         }
 
