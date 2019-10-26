@@ -4,6 +4,7 @@ import com.sun.istack.internal.NotNull;
 import com.sun.istack.internal.Nullable;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class DecimalNumber implements Number {
 
@@ -26,27 +27,42 @@ public class DecimalNumber implements Number {
     }
 
     @Override
-    public Number plus(Number number) {
-        return null;
+    public Number plus(@Nullable Number number) {
+        ValidationUtils.assertNull(number);
+        BigDecimal addResult = mValue.add(NumberManager.getBigDecimalFrom(number));
+        return new DecimalNumber(addResult);
     }
 
     @Override
-    public Number minus(Number number) {
-        return null;
+    public Number minus(@Nullable Number number) {
+        return plus(number.toNegative());
     }
 
     @Override
-    public Number multiply(Number number) {
-        return null;
+    public Number multiply(@Nullable Number number) {
+        ValidationUtils.assertNull(number);
+        BigDecimal multiplyResult = mValue.multiply(NumberManager.getBigDecimalFrom(number));
+        return new DecimalNumber(multiplyResult);
     }
 
     @Override
-    public Number divide(Number number) {
-        return null;
+    public Number divide(@Nullable Number number) {
+        ValidationUtils.assertNull(number);
+        BigDecimal divideResult = mValue.divide(NumberManager.getBigDecimalFrom(number), RoundingMode.HALF_UP);
+        return new DecimalNumber(divideResult);
+    }
+
+    BigDecimal getValue() {
+        return mValue;
+    }
+
+    @Override
+    public String toString() {
+        return mValue.toString();
     }
 
     @Override
     public Number toNegative() {
-        return null;
+        return new DecimalNumber(mValue.negate());
     }
 }
