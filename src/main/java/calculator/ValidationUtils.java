@@ -7,4 +7,8 @@ public class ValidationUtils {
             throw new NullPointerException();
         }
     }
+
+    public static boolean isNumeric(String strNum) {
+        return strNum.matches("-?\\d+(\\.\\d+)?");
+    }
 }

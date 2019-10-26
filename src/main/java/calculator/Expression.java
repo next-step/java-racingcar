@@ -2,7 +2,6 @@ package calculator;
 
 import com.sun.istack.internal.NotNull;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -29,7 +28,16 @@ public class Expression {
     }
 
     private void addToElement(String[] splitExpression, Queue<String> elements) {
-        elements.addAll(Arrays.asList(splitExpression));
+        for (String each : splitExpression) {
+            validate(each);
+            elements.add(each);
+        }
+    }
+
+    private void validate(String element) {
+        if (!ValidationUtils.isNumeric(element) || OperatorType.find(element) == null) {
+            throw new IllegalArgumentException("유효하지 않은 수식입니다. 입력 규칙을 지켜주세요.");
+        }
     }
 
     public Queue<String> getElements() {
