@@ -33,10 +33,13 @@ public class Racing {
         this.countOfMovesAttemps = countOfMovesAttemps;
     }
 
+    public void progress() {
+        for (Car car : cars) {
+            car.race();
+        }
+    }
+
     public Map<Car, Integer> getCurrentSituation() {
         return this.currentSituation;
     }
-
-
-
 }

@@ -29,4 +29,13 @@ public class RacingTest {
         assertThat(currentSituation).containsValues(0, 0, 0);
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {"3, 5"}, delimiter = ',')
+    void progress(int countOfCars, int countOfMovesAttemps) {
+        racing.initialize(countOfCars, countOfMovesAttemps);
+
+        for (int i = 0; i < countOfMovesAttemps; i++) {
+            racing.progress();
+        }
+    }
 }
