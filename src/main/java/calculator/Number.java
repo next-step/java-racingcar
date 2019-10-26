@@ -18,6 +18,10 @@ public class Number {
         return new Number(mValue.add(number.mValue));
     }
 
+    public Number minus(@NotNull Number number) {
+        return plus(number.toNegative());
+    }
+
     public BigInteger getValue() {
         return mValue;
     }
