@@ -29,6 +29,7 @@ public class DecimalNumber implements Number {
     @Override
     public Number plus(@Nullable Number number) {
         ValidationUtils.assertNull(number);
+
         BigDecimal addResult = mValue.add(NumberManager.getBigDecimalFrom(number));
         return new DecimalNumber(addResult);
     }
@@ -41,6 +42,7 @@ public class DecimalNumber implements Number {
     @Override
     public Number multiply(@Nullable Number number) {
         ValidationUtils.assertNull(number);
+
         BigDecimal multiplyResult = mValue.multiply(NumberManager.getBigDecimalFrom(number));
         return new DecimalNumber(multiplyResult);
     }
@@ -48,6 +50,7 @@ public class DecimalNumber implements Number {
     @Override
     public Number divide(@Nullable Number number) {
         ValidationUtils.assertNull(number);
+
         BigDecimal divideResult = mValue.divide(NumberManager.getBigDecimalFrom(number), RoundingMode.HALF_UP);
         return new DecimalNumber(divideResult);
     }
@@ -57,12 +60,12 @@ public class DecimalNumber implements Number {
     }
 
     @Override
-    public String toString() {
-        return mValue.toString();
+    public Number toNegative() {
+        return new DecimalNumber(mValue.negate());
     }
 
     @Override
-    public Number toNegative() {
-        return new DecimalNumber(mValue.negate());
+    public String toString() {
+        return mValue.toString();
     }
 }
