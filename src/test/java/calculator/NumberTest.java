@@ -25,9 +25,9 @@ public class NumberTest {
     @BeforeEach
     void setUp() {
         nullableNumber = null;
-        one = NumberManager.getNumberFrom(1);
-        two = NumberManager.getNumberFrom(2);
-        ten = NumberManager.getNumberFrom(10);
+        one = new IntegerNumber("1");
+        two = new IntegerNumber("2");
+        ten = new IntegerNumber("10");
         twoPointFive = NumberManager.getNumberFrom(2.5);
     }
 

@@ -11,38 +11,68 @@ public class Expression {
 
     private String mRawExpression;
     private NumberType mNumberType;
-    private Queue<String> mElements;
+    private Queue<Number> mNumbers;
+    private Queue<OperatorType> mOperators;
 
     public Expression(@NotNull String rawExpression, NumberType numberType) {
         this.mRawExpression = rawExpression;
         this.mNumberType = numberType;
-        this.mElements = new LinkedList<>();
+        this.mNumbers = new LinkedList<>();
+        this.mOperators = new LinkedList<>();
+
+        parse(mRawExpression);
     }
 
     private void parse(String rawExpression) {
         String[] splitExpression = splitFromSpace(rawExpression);
-        addToElement(splitExpression, mElements);
+        parseByElementType(splitExpression);
     }
 
     private String[] splitFromSpace(@NotNull String text) {
         return text.split(SPACE);
     }
 
-    private void addToElement(String[] splitExpression, Queue<String> elements) {
+    private void parseByElementType(String[] splitExpression) {
         for (String each : splitExpression) {
-            validate(each);
-            elements.add(each);
+            addElement(each);
         }
     }
 
-    private void validate(String element) {
-        if (!ValidationUtils.isNumeric(element) && OperatorType.find(element) == null) {
-            throw new IllegalArgumentException("유효하지 않은 수식입니다. 입력 규칙을 지켜주세요.");
+    private void addElement(String elementString) {
+        if (ValidationUtils.isNumeric(elementString)) {
+            addNumber(elementString);
+            return;
+        }
+
+        if (OperatorType.find(elementString) != null) {
+            addOperator(elementString);
+            return;
+        }
+
+        throw new IllegalArgumentException("유효하지 않은 수식입니다.");
+    }
+
+    private void addNumber(String numberString) {
+        switch (mNumberType) {
+            case INTEGER:
+                mNumbers.add(new IntegerNumber(numberString));
+                break;
+
+            case DECIMAL:
+                mNumbers.add(new DecimalNumber(numberString));
+                break;
         }
     }
 
-    public Queue<String> getElements() {
-        parse(mRawExpression);
-        return mElements;
+    private void addOperator(String operatorString) {
+        mOperators.add(OperatorType.find(operatorString));
+    }
+
+    public Number getNextNumber() {
+        return mNumbers.poll();
+    }
+
+    public OperatorType getNextOperator() {
+        return mOperators.poll();
     }
 }

@@ -2,28 +2,33 @@ package calculator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class ExpressionTest {
 
-    private Expression mInvalidExpression;
     private Expression mValidExpression;
 
     @BeforeEach
     void setUp() {
-        mInvalidExpression = new Expression("3 + 4 * 6 = 1 +7", NumberType.INTEGER);
         mValidExpression = new Expression("3 * 4 * 6 - 1 + 7", NumberType.INTEGER);
     }
 
     @Test
     void invalidExpressionTest() {
-        assertThatIllegalArgumentException().isThrownBy(() -> mInvalidExpression.getElements());
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            Expression invalidExpression = new Expression("3 + 4 * 6 = 1 +7", NumberType.INTEGER);
+        } );
     }
 
     @Test
-    void expressionResultTest() {
-        assertThat(mValidExpression.getElements()).contains("3", "4", "6", "1", "7");
-        assertThat(mValidExpression.getElements()).contains("*", "-", "+");
+    void expressionNumberTest() {
+        assertThat(mValidExpression.getNextNumber().toString().equals("3")).isTrue();
+        assertThat(mValidExpression.getNextNumber().toString().equals("4")).isTrue();
+        assertThat(mValidExpression.getNextNumber().toString().equals("6")).isTrue();
+        assertThat(mValidExpression.getNextNumber().toString().equals("1")).isTrue();
+        assertThat(mValidExpression.getNextNumber().toString().equals("7")).isTrue();
     }
 }

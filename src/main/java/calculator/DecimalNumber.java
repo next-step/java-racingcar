@@ -10,15 +10,15 @@ public class DecimalNumber implements Number {
 
     private BigDecimal mValue;
 
-    DecimalNumber(float value) {
+    public DecimalNumber(float value) {
         this(String.valueOf(value));
     }
 
-    DecimalNumber(double value) {
+    public DecimalNumber(double value) {
         this(String.valueOf(value));
     }
 
-    private DecimalNumber(@NotNull String value) {
+    public DecimalNumber(@NotNull String value) {
         this(new BigDecimal(value));
     }
 

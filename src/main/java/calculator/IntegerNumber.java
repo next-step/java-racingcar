@@ -8,15 +8,15 @@ public class IntegerNumber implements Number {
 
     private BigInteger mValue;
 
-    IntegerNumber(int value) {
+    public IntegerNumber(int value) {
         this(String.valueOf(value));
     }
 
-    IntegerNumber(long value) {
+    public IntegerNumber(long value) {
         this(String.valueOf(value));
     }
 
-    private IntegerNumber(@NotNull String value) {
+    public IntegerNumber(@NotNull String value) {
         this(new BigInteger(value));
     }
 
