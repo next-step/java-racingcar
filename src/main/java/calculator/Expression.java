@@ -9,13 +9,14 @@ public class Expression {
 
     private static final String SPACE = " ";
 
+    private String mRawExpression;
     private NumberType mNumberType;
     private Queue<String> mElements;
 
     public Expression(@NotNull String rawExpression, NumberType numberType) {
+        this.mRawExpression = rawExpression;
         this.mNumberType = numberType;
         this.mElements = new LinkedList<>();
-        parse(rawExpression);
     }
 
     private void parse(String rawExpression) {
@@ -35,12 +36,13 @@ public class Expression {
     }
 
     private void validate(String element) {
-        if (!ValidationUtils.isNumeric(element) || OperatorType.find(element) == null) {
+        if (!ValidationUtils.isNumeric(element) && OperatorType.find(element) == null) {
             throw new IllegalArgumentException("유효하지 않은 수식입니다. 입력 규칙을 지켜주세요.");
         }
     }
 
     public Queue<String> getElements() {
+        parse(mRawExpression);
         return mElements;
     }
 }
