@@ -4,11 +4,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static calculator.NumberUtils.isNumeric;
+import static calculator.NumberUtils.isNotInteger;
 import static calculator.OperatorType.isNotOperatorType;
 
 public class CalculatorItemCollection {
 
+    private static final String DELIMITER = " ";
+    private static final int VALID_SIZE = 3;
     private final List<String> item;
 
     public CalculatorItemCollection(String input) {
@@ -26,40 +28,54 @@ public class CalculatorItemCollection {
 
     private List<String> parsingItem(String input) {
 
-        String[] split = input.split(" ");
+        String[] split = input.split(DELIMITER);
 
         return Arrays.stream(split)
-                .filter(a -> !"".equals(a))
+                .filter(this::isNotEmpty)
                 .collect(Collectors.toList());
     }
 
+    private boolean isNotEmpty(String a) {
+        return !"".equals(a);
+    }
+
     private void validateItem() {
-        if (item.size() < 2 || item.size() % 2 == 0) {
+        if (item.size() < VALID_SIZE || isEven(item.size())) {
             throw new IllegalArgumentException("숫자와 연산자의 개수가 맞지 않습니다.");
         }
 
         for (int i = 0; i < item.size(); i++) {
-            checkNumeric(i, item.get(i));
-            checkOperator(i, item.get(i));
+            checkCharacter(i, item.get(i));
         }
     }
 
-    private void checkNumeric(int i, String s) {
-        if (i % 2 == 1) {
+    private void checkCharacter(int i, String s) {
+        if (isOdd(i)) {
+            checkOperator(s);
             return;
         }
-        if (!isNumeric(s)) {
+
+        checkNumeric(s);
+    }
+
+    private void checkNumeric(String s) {
+        if (isNotInteger(s)) {
             throw new IllegalArgumentException("입력이 올바르지 않습니다.");
         }
     }
 
-    private void checkOperator(int i, String s) {
-        if (i % 2 == 0) {
-            return;
-        }
+    private void checkOperator(String s) {
         if (isNotOperatorType(s)) {
             throw new IllegalArgumentException("입력이 올바르지 않습니다.");
         }
+    }
+
+    private boolean isOdd(int i) {
+        return i % 2 == 1;
+    }
+
+    private boolean isEven(int i) {
+        return i % 2 == 0;
     }
 
 }
