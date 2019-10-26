@@ -28,6 +28,11 @@ public class Number {
         return new Number(mValue.multiply(number.mValue));
     }
 
+    public Number divide(@Nullable Number number) {
+        ValidationUtils.assertNull(number);
+        return new Number(mValue.divide(number.mValue));
+    }
+
     public BigInteger getValue() {
         return mValue;
     }
