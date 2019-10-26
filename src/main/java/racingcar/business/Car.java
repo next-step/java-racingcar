@@ -16,8 +16,19 @@ public class Car {
         return new Car(name);
     }
 
-    public void move() {
+    public void race() {
+        if (isEnableToMove()) {
+            move();
+        }
+    }
+
+    private void move() {
         this.totalDistance++;
+    }
+
+    private boolean isEnableToMove() {
+        double randomValue = Math.random();
+        return (int) (randomValue * 10) > 3;
     }
 
     public int getTotalDistance() {
@@ -44,5 +55,4 @@ public class Car {
     public int hashCode() {
         return Objects.hash(name, totalDistance);
     }
-
 }

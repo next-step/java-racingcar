@@ -17,11 +17,23 @@ public class CarTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    void moveAndGetDistance(int distance) {
+    void raceAndGetDistance(int distance) {
         for (int i = 0; i < distance; i++) {
-            car.move();
+            car.race();
         }
         int result = car.getTotalDistance();
         assertThat(result).isEqualTo(distance);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {100})
+    void isEnableToMove(int count) {
+        for (int i = 0; i < count; i++) {
+            double randomValue = Math.random();
+            int result = (int) (randomValue * 10);
+
+            assertThat(result).isGreaterThanOrEqualTo(0);
+            assertThat(result).isLessThan(10);
+        }
     }
 }
