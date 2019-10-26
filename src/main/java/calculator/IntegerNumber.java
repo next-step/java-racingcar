@@ -2,7 +2,6 @@ package calculator;
 
 import com.sun.istack.internal.NotNull;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public class IntegerNumber implements Number {
@@ -25,28 +24,46 @@ public class IntegerNumber implements Number {
         mValue = value;
     }
 
+    BigInteger getValue() {
+        return mValue;
+    }
+
     @Override
     public Number plus(Number number) {
-        return null;
+        ValidationUtils.assertNull(number);
+
+        BigInteger addResult = mValue.add(NumberManager.getBigIntegerFrom(number));
+        return new IntegerNumber(addResult);
     }
 
     @Override
     public Number minus(Number number) {
-        return null;
+        return plus(number.toNegative());
     }
 
     @Override
     public Number multiply(Number number) {
-        return null;
+        ValidationUtils.assertNull(number);
+
+        BigInteger multiplyResult = mValue.multiply(NumberManager.getBigIntegerFrom(number));
+        return new IntegerNumber(multiplyResult);
     }
 
     @Override
     public Number divide(Number number) {
-        return null;
+        ValidationUtils.assertNull(number);
+
+        BigInteger divideResult = mValue.divide(NumberManager.getBigIntegerFrom(number));
+        return new IntegerNumber(divideResult);
     }
 
     @Override
     public Number toNegative() {
-        return null;
+        return new IntegerNumber(mValue.negate());
+    }
+
+    @Override
+    public String toString() {
+        return mValue.toString();
     }
 }
