@@ -75,4 +75,8 @@ public class Expression {
     public OperatorType getNextOperator() {
         return mOperators.poll();
     }
+
+    public boolean hasElement() {
+        return !mNumbers.isEmpty() || !mOperators.isEmpty();
+    }
 }
