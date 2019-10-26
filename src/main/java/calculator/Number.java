@@ -23,6 +23,11 @@ public class Number {
         return plus(number.toNegative());
     }
 
+    public Number multiply(@Nullable Number number) {
+        ValidationUtils.assertNull(number);
+        return new Number(mValue.multiply(number.mValue));
+    }
+
     public BigInteger getValue() {
         return mValue;
     }
