@@ -1,5 +1,7 @@
 package racingcar.business;
 
+import java.util.Objects;
+
 public class Car {
 
     private String name;
@@ -20,4 +22,26 @@ public class Car {
     public int getTotalDistance() {
         return this.totalDistance;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+
+        if (!(o instanceof Car)) {
+            return false;
+        }
+
+        Car car = (Car) o;
+
+        return Objects.equals(name, car.name) &&
+                totalDistance == car.totalDistance;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, totalDistance);
+    }
+
 }
