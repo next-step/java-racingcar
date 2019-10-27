@@ -17,7 +17,7 @@ public class RacingGame {
 
     private void initializeCars(int carCount) {
         for (int i = 0; i < carCount; i++) {
-            mCars.add(new Car(new RandomlyMoveRule(new RandomNumberProviderImpl(10))));
+            mCars.add(new RandomlyMoveCar());
         }
     }
 

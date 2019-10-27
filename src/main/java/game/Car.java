@@ -1,14 +1,16 @@
 package game;
 
-public class Car {
+public abstract class Car {
 
     private MoveRule mMoveRule;
 
-    public Car(MoveRule moveRule) {
-        mMoveRule = moveRule;
+    public Car() {
+        mMoveRule = getMoveRule();
     }
 
     public boolean canMove() {
         return mMoveRule.canMove();
     }
+
+    protected abstract MoveRule getMoveRule();
 }
