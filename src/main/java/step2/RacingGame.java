@@ -18,7 +18,7 @@ public class RacingGame {
         return carPositions;
     }
 
-    public int getTime(int time) {
+    public int setTime(int time) {
         this.time = time;
         return time;
     }
@@ -51,8 +51,5 @@ public class RacingGame {
     public void print() {
         resultView.printResultView();
     }
-
-
-
 
 }

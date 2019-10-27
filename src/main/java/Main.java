@@ -1,12 +1,21 @@
-import step1.StringCalculator;
 import step2.InputView;
+import step2.RacingGame;
 
 public class Main {
 
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        int a = inputView.createCarCount();
-        System.out.println(a);
+        racingGameStart();
+    }
 
+    public static void racingGameStart() {
+        InputView inputView = new InputView();
+        int carCount = inputView.createCarCount();
+        int time = inputView.moveCarCount();
+
+        RacingGame racingGame = new RacingGame();
+        racingGame.carPositionsInitiate(carCount);
+        racingGame.setTime(time);
+        racingGame.execute();
+        racingGame.print();
     }
 }

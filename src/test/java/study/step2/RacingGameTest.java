@@ -3,9 +3,6 @@ package study.step2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import step2.RacingGame;
-
-import java.util.Arrays;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
@@ -31,17 +28,15 @@ public class RacingGameTest {
 
     @Test
     void moveCarTest() {
-        racingGame.getTime(4);
-        racingGame.carPositionsInitiate(5);
-//        System.out.println(Arrays.toString(racingGame.move()));
+        assertThat(racingGame.setTime(4)).isEqualTo(4);
+        assertThat(racingGame.carPositionsInitiate(5)).hasSize(5);
     }
 
     @Test
     void resultViewTest() {
-        racingGame.getTime(5);
-        racingGame.carPositionsInitiate(3);
+        assertThat(racingGame.setTime(5)).isEqualTo(5);
+        assertThat(racingGame.carPositionsInitiate(3)).hasSize(3);
         racingGame.execute();
         racingGame.print();
-
     }
 }
