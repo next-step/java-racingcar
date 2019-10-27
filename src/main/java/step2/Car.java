@@ -18,20 +18,10 @@ public class Car {
         moveCountSet = new BitSet(turn);
     }
 
-    public void go(int turn) {
-        if (isPossibleToGo()) {
-            ahead(turn);
-        }
-    }
-
-    void ahead(int turn) {
+    void go(int turn) {
         moveCountSet.set(turn - 1);
     }
 
-    private boolean isPossibleToGo() {
-        int random = (int) (Math.random() * 10);
-        return random >= 4;
-    }
 
     public int getScore(int turn) {
         int score = moveCountSet.get(0,turn).cardinality();
