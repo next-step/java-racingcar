@@ -23,10 +23,6 @@ class CalculatorBufferTest {
     @ParameterizedTest
     @MethodSource("illegalOrderInputs")
     void validateOperateOrder_올바르지_않은_입력순서일때(String[] illegalOrderInputs, String message) {
-        //given
-
-        //when
-        //then
         assertThatThrownBy(() -> new CalculatorBuffer(illegalOrderInputs))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(message);
@@ -36,7 +32,7 @@ class CalculatorBufferTest {
     void validateOperate_계산_불가능한_입력시() {
         //given
         String[] illegalSizeInput = new String[]{"1", "-", "2", "+"};
-        //when
+
         //then
         assertThatThrownBy(() -> new CalculatorBuffer(illegalSizeInput))
                 .isInstanceOf(IllegalArgumentException.class)
