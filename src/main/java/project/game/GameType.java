@@ -1,4 +1,4 @@
-package game;
+package project.game;
 
 public enum GameType {
     RANDOM(new RandomlyMoveRule(new RandomNumberProviderImpl(10)));

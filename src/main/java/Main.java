@@ -1,6 +1,6 @@
-import calculator.Calculator;
-import calculator.InputTool;
-import calculator.NumberType;
+import project.InputTool;
+import project.calculator.Calculator;
+import project.calculator.NumberType;
 
 import java.util.Scanner;
 

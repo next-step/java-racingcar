@@ -1,4 +1,4 @@
-package game;
+package project.game;
 
 public class RandomlyMoveRule implements MoveRule {
 
