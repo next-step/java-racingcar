@@ -2,8 +2,10 @@ package game;
 
 public class Car {
 
+    private static final int START_POSITION = 1;
+
     private MoveRule mMoveRule;
-    private int mMovePosition = 0;
+    private int mMovePosition = START_POSITION;
 
     public Car(MoveRule moveRule) {
         mMoveRule = moveRule;
