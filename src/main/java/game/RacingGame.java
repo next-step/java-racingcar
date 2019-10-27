@@ -5,10 +5,12 @@ import java.util.List;
 
 public class RacingGame {
 
+    private RacingGameView mRacingGameView;
     private List<Car> mCars;
 
-    public RacingGame() {
-        mCars = new ArrayList<>();
+    public RacingGame(RacingGameView racingGameView) {
+        this.mRacingGameView = racingGameView;
+        this.mCars = new ArrayList<>();
     }
 
     public void start(GameType gameType, int carCount, int round) {
@@ -27,18 +29,23 @@ public class RacingGame {
 
     private void startRacingRound(int totalRound) {
         for (int i = 0; i < totalRound; i++) {
-            moveCars();
+            List<Integer> currentCarPositions = moveCars();
+            notifyCarPositionsChange(currentCarPositions);
         }
+    }
+    
+    private void notifyCarPositionsChange(List<Integer> currentCarPositions) {
+        mRacingGameView.onCarPositionsChange(currentCarPositions);
     }
 
     private List<Integer> moveCars() {
-        List<Integer> currentMovePosition = new ArrayList<>();
+        List<Integer> currentCarPositions = new ArrayList<>();
 
         for (int i = 0; i < mCars.size(); i++) {
-            currentMovePosition.add(i, mCars.get(i).moveIfPossible());
+            currentCarPositions.add(i, mCars.get(i).moveIfPossible());
         }
 
-        return currentMovePosition;
+        return currentCarPositions;
     }
 
     private static Car createCar(GameType gameType) {
