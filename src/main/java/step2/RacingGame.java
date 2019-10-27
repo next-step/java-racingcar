@@ -19,15 +19,34 @@ public class RacingGame {
         return carPositions;
     }
 
+    public int getTime(int time) {
+        this.time = time;
+        return time;
+    }
+
     public int getRandomNumber() {
         return new Random().nextInt(10);
     }
 
-    public boolean isMove() {
+    public int isMove() {
         if (getRandomNumber() >= 4) {
-            return true;
+            return 1;
         }
-        return false;
+        return 0;
+    }
+
+
+    public void updateCarPositions() {
+        for (int i = 0; i < carPositions.length; i++) {
+            carPositions[i] += isMove();
+        }
+    }
+
+    public int[] move() {
+        for (int i = 0; i < time; i++) {
+            updateCarPositions();
+        }
+        return carPositions;
     }
 
 

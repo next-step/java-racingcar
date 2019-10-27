@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import step2.RacingGame;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
@@ -27,4 +29,10 @@ public class RacingGameTest {
         assertThat(racingGame.getRandomNumber()).isBetween(0, 9);
     }
 
+    @Test
+    void moveCarTest() {
+        racingGame.getTime(4);
+        racingGame.carPositionsInitiate(5);
+        System.out.println(Arrays.toString(racingGame.move()));
+    }
 }
