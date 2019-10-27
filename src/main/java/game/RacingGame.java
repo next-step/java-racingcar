@@ -43,7 +43,8 @@ public class RacingGame {
         List<Integer> currentCarPositions = new ArrayList<>();
 
         for (int i = 0; i < mCars.size(); i++) {
-            currentCarPositions.add(i, mCars.get(i).moveIfPossible());
+            int currentPosition = mCars.get(i).moveIfPossible();
+            currentCarPositions.add(i, currentPosition);
         }
 
         return currentCarPositions;
