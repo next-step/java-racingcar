@@ -1,6 +1,7 @@
 package stringcalculator;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullSource;
@@ -86,10 +87,18 @@ public class StringCalculatorTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void calculate_ShouldReturnIllegalArgumentExceptionForNullExpression() {
+        assertThatThrownBy(() -> {
+            stringCalculator.calculate();
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
     @ParameterizedTest
     @ValueSource(strings = {"5 + 4 - 3 * 2 / 3"})
     void calculate(String expression) {
-        int result = stringCalculator.calculate(expression);
+        stringCalculator.validate(expression);
+        int result = stringCalculator.calculate();
         assertThat(result).isEqualTo(4);
     }
 }
