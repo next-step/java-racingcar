@@ -13,6 +13,14 @@ public class Car {
     public int score = 0;
 
     public void go(int size) {
-        score += size;
+        if (isPossibleToGo()) {
+            score += size;
+        }
     }
+
+    private boolean isPossibleToGo() {
+        int random = (int) (Math.random() * 10);
+        return random >= 4;
+    }
+
 }
