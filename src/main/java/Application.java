@@ -1,9 +1,11 @@
-import step2.Car;
 import step2.InputView;
+import step2.Racing;
 
 public class Application {
     public static void main(String[] args){
         InputView inputView = new InputView();
-        Car[] cars = inputView.input();
+        inputView.input();
+        Racing racing = new Racing(inputView);
+
     }
 }

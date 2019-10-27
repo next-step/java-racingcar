@@ -13,21 +13,22 @@ import java.util.Scanner;
  */
 public class InputView {
     private static Scanner scanner = new Scanner(System.in);
-    private static String CAR_COUNT_QUESTION = "자동차 대수는 몇 대 인가요?";
-    private static String TURN_COUNT_QUESTION = "시도할 회수는 몇 회 인가요?";
+    private static final String CAR_COUNT_QUESTION = "자동차 대수는 몇 대 인가요?";
+    private static final String TURN_COUNT_QUESTION = "시도할 회수는 몇 회 인가요?";
+    int carNum;
+    int turn;
 
-
-    public Car[] input() {
-        int num = getAnswerForQuestion(CAR_COUNT_QUESTION);
-        int turn = getAnswerForQuestion(TURN_COUNT_QUESTION);
-        return setCars(num, turn);
+    public int getCarNum() {
+        return carNum;
     }
 
-    public Car[] setCars(int carNum, int turn) {
-        Car[] cars = new Car[carNum];
-        Car car = new Car(turn);
-        Arrays.fill(cars, car);
-        return cars;
+    public int getTurn() {
+        return turn;
+    }
+
+    public void input() {
+        carNum = getAnswerForQuestion(CAR_COUNT_QUESTION);
+        turn = getAnswerForQuestion(TURN_COUNT_QUESTION);
     }
 
     private int getAnswerForQuestion(String question) {
