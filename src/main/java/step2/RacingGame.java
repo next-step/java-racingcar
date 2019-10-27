@@ -1,14 +1,16 @@
 package step2;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
 
     private int time;
     private int[] carPositions;
-
+    private ResultView resultView;
     public RacingGame() {
-
+        this.resultView = new ResultView();
     }
 
     public int[] carPositionsInitiate(int createCarCount) {
@@ -35,19 +37,25 @@ public class RacingGame {
         return 0;
     }
 
-
-    public void updateCarPositions() {
-        for (int i = 0; i < carPositions.length; i++) {
-            carPositions[i] += isMove();
+    public void execute() {
+        for (int i = 0; i < time; i++) {
+            int[] result = move().clone();
+            resultView.addResult(result);
         }
     }
 
     public int[] move() {
-        for (int i = 0; i < time; i++) {
-            updateCarPositions();
+        for (int i = 0; i < carPositions.length; i++) {
+            carPositions[i] += isMove();
         }
         return carPositions;
     }
+
+    public void print() {
+        resultView.printResultView();
+    }
+
+
 
 
 }
