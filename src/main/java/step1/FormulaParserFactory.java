@@ -1,7 +1,7 @@
 package step1;
 
-public class FormulaParserFactory {
-    public static FormulaParser sequential() {
-        return new SequentialFormulaParser();
+public final class FormulaParserFactory {
+    public static FormulaParser sequentialInteger() {
+        return new SequentialIntegerFormulaParser();
     }
 }

@@ -1,5 +1,5 @@
 package step1;
 
-public interface FormulaParser {
-    Formula parse(final String formula);
+public interface FormulaParser<T> {
+    Formula<T> parse(final String formula);
 }

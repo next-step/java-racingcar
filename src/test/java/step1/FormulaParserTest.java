@@ -3,31 +3,35 @@ package step1;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 @DisplayName("FormulaParser should")
 class FormulaParserTest {
 
     @Test
-    @DisplayName("throw IllegalArgumentException when input is empty formula string")
+    @DisplayName("throw exception when input is empty formula string")
     void shouldThrowExceptionWhenInputIsEmtpyString() {
         final String emtpyFormula = "";
-        final Formula formula = FormulaParserFactory.sequential().parse(emtpyFormula);
 
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            formula.calculate();
-        });
+        assertThatExceptionOfType(IllegalFormulaFormatException.class)
+                .isThrownBy(() -> FormulaParserFactory.sequentialInteger().parse(emtpyFormula));
     }
 
     @Test
-    @DisplayName("return as same as input when it has only one formula node")
-    void shouldReturnEqualValueWhenInputFormulaNodeIsOne() {
-        final String soloFormulaNode = "1";
-        final Formula formula = FormulaParserFactory.sequential().parse(soloFormulaNode);
+    @DisplayName("throw exception when input has just one operator")
+    void throwExceptionWhenDivideByZero() {
+        final String soloFormulaNode = "/";
 
-        final int actual = formula.calculate();
-        final int expected = Integer.parseInt(soloFormulaNode);
-        assertThat(actual).isEqualTo(expected);
+        assertThatExceptionOfType(IllegalFormulaFormatException.class)
+                .isThrownBy(() -> FormulaParserFactory.sequentialInteger().parse(soloFormulaNode));
+    }
+
+    @Test
+    @DisplayName("throw exception values and operators are not matched")
+    void throwExceptionValuesAndOperatorsAreNotMatched() {
+        final String invalidFormula = "1 + 2 + ";
+
+        assertThatExceptionOfType(IllegalFormulaFormatException.class)
+                .isThrownBy(() -> FormulaParserFactory.sequentialInteger().parse(invalidFormula));
     }
 }
