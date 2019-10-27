@@ -22,6 +22,9 @@ public class Car {
         moveCountSet.set(turn - 1);
     }
 
+    public boolean getMove(int turn) {
+        return moveCountSet.get(turn - 1);
+    }
 
     public int getScore(int turn) {
         int score = moveCountSet.get(0,turn).cardinality();
