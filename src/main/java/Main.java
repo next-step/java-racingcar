@@ -1,9 +1,12 @@
 import step1.StringCalculator;
+import step2.InputView;
 
 public class Main {
 
     public static void main(String[] args) {
-        String input = "2 + 3 * 4 / 2";
-        System.out.println(new StringCalculator(input).execute());
+        InputView inputView = new InputView();
+        int a = inputView.createCarCount();
+        System.out.println(a);
+
     }
 }
