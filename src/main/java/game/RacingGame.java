@@ -33,7 +33,7 @@ public class RacingGame {
             notifyCarPositionsChange(currentCarPositions);
         }
     }
-    
+
     private void notifyCarPositionsChange(List<Integer> currentCarPositions) {
         mRacingGameView.onCarPositionsChange(currentCarPositions);
     }
