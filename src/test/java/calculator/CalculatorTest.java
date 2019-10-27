@@ -1,5 +1,6 @@
 package calculator;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -11,56 +12,52 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 class CalculatorTest {
 
     @Test
-    void 덧셈() {
+    void add() {
 
         //given
         String inputString = "2 + 3";
-        Calculator calculator = new Calculator();
 
         //when
-        long result = calculator.calculate(inputString);
+        long result = Calculator.calculate(inputString);
 
         //then
         assertThat(result).isEqualTo(5);
     }
 
     @Test
-    void 뺄셈() {
+    void minus() {
 
         //given
         String inputString = "5 - 2";
-        Calculator calculator = new Calculator();
 
         //when
-        long result = calculator.calculate(inputString);
+        long result = Calculator.calculate(inputString);
 
         //then
         assertThat(result).isEqualTo(3);
     }
 
     @Test
-    void 곱셈() {
+    void multiply() {
 
         //given
         String inputString = "3 * 4";
-        Calculator calculator = new Calculator();
 
         //when
-        long result = calculator.calculate(inputString);
+        long result = Calculator.calculate(inputString);
 
         //then
         assertThat(result).isEqualTo(12);
     }
 
     @Test
-    void 나눗셈() {
+    void division() {
 
         //given
         String inputString = "20 / 2";
-        Calculator calculator = new Calculator();
 
         //when
-        long result = calculator.calculate(inputString);
+        long result = Calculator.calculate(inputString);
 
         //then
         assertThat(result).isEqualTo(10);
@@ -68,36 +65,40 @@ class CalculatorTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"", "  "})
-    void 입력_값이_빈_공백일_경우_IllegalArgumentException_throw(String input) {
-        Calculator calculator = new Calculator();
+    @DisplayName("입력값이 비었거나, 공백일 경우 에러를 뱉는다")
+    void isEmptyOrIsBlankThrowIllegalArgumentException(String input) {
+
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.calculate(input);
+            Calculator.calculate(input);
         });
     }
 
     @Test
-    void 입력_값이_null일_경우_IllegalArgumentException_throw() {
-        Calculator calculator = new Calculator();
+    @DisplayName("입력값이 null일 경우 에러를 뱉는다")
+    void ifNullThrowIllegalArgumentException() {
+
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.calculate(null);
+            Calculator.calculate(null);
         });
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"a", "1 b 2", "a b c"})
-    void 사칙연산_기호가_아닌_경우_IllegalArgumentException(String input) {
-        Calculator calculator = new Calculator();
+    @DisplayName("사칙연산 기호가 아닐 경우 에러를 뱉는다.")
+    void notValidCharacterThrowIllegalArgumentException(String input) {
+
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.calculate(input);
+            Calculator.calculate(input);
         });
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"2 2", "3 * 5 + 2 -", "+ 1"})
-    void 숫자_연산자가_올바르지_않을_경우_IllegalArgumentException(String input) {
-        Calculator calculator = new Calculator();
+    @DisplayName("입력이 올바르지 않을 경우(순서오류, 숫자와 연산자의 갯수 오류) 에러를 뱉는다.")
+    void isNotValidThrowIllegalArgumentException(String input) {
+
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.calculate(input);
+            Calculator.calculate(input);
         });
     }
 
@@ -107,9 +108,10 @@ class CalculatorTest {
             "100 - 10    / 3 + 5 * 2:70",
             "10 - 1 - 1 -       1 - 1 - 1:5"
     }, delimiter = ':')
-    void 사칙연산(String input, long result) {
-        Calculator calculator = new Calculator();
-        long number = calculator.calculate(input);
+    @DisplayName("사칙연산을 수행한다.(공백은 무시한다)")
+    void calculate(String input, long result) {
+
+        long number = Calculator.calculate(input);
         assertThat(number).isEqualTo(result);
     }
 

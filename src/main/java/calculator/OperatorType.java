@@ -43,6 +43,10 @@ public enum OperatorType {
 
     }
 
+    public long calculate(long a, long b) {
+        return expression.apply(a, b);
+    }
+
     public static boolean isOperatorType(String type) {
         return getOperatorCodes().contains(type);
     }
