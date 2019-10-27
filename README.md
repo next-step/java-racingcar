@@ -7,3 +7,11 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+
+___
+
+#기능목록 ( 요구사항 분석 )
+##step1
+* 사칙연산 기능 구현
+* 주어진 문자열을 연산하는 기능 구현
