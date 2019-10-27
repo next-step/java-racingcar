@@ -17,7 +17,21 @@ public class ResultView {
 
     public void printResultView() {
         for (int[] ints : results) {
-            System.out.println(Arrays.toString(ints));
+            carPositionView(ints);
+            System.out.println();
         }
+    }
+
+    public void carPositionView(int[] carPositions) {
+        for (int i = 0; i < carPositions.length; i++) {
+            printBar(carPositions[i]);
+        }
+    }
+
+    public void printBar(int count) {
+        for (int i = 0; i < count; i++) {
+            System.out.print("- ");
+        }
+        System.out.println();
     }
 }

@@ -33,13 +33,13 @@ public class RacingGameTest {
     void moveCarTest() {
         racingGame.getTime(4);
         racingGame.carPositionsInitiate(5);
-        System.out.println(Arrays.toString(racingGame.move()));
+//        System.out.println(Arrays.toString(racingGame.move()));
     }
 
     @Test
     void resultViewTest() {
-        racingGame.getTime(4);
-        racingGame.carPositionsInitiate(5);
+        racingGame.getTime(5);
+        racingGame.carPositionsInitiate(3);
         racingGame.execute();
         racingGame.print();
 
