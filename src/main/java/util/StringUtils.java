@@ -1,4 +1,4 @@
-package calculator.util;
+package util;
 
 /**
  * @author : yusik
@@ -6,7 +6,7 @@ package calculator.util;
  */
 public class StringUtils {
 
-    public static boolean isEmpty(String str) {
+    public static boolean isBlank(String str) {
         return str == null || "".equals(str.trim());
     }
 
