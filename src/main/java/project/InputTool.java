@@ -22,4 +22,8 @@ public class InputTool {
 
         return inputText;
     }
+
+    public Integer readLineToInt() throws NumberFormatException {
+        return Integer.valueOf(readLine());
+    }
 }
