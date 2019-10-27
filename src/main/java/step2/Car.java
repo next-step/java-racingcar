@@ -4,23 +4,28 @@
 package step2;
 
 
+import java.util.BitSet;
+
 /**
  * 자동차 게임의 대상인 자동차
  * @version 1.0.0
  * @author naheenosaur
  */
 public class Car {
-    public int score = 0;
+    BitSet moveCountSet = new BitSet();
 
-    public void go() {
-        boolean possibleToGo = isPossibleToGo();
-        ahead(possibleToGo);
+    Car(int turn) {
+        moveCountSet.set(turn);
     }
 
-    void ahead(boolean is) {
-        if (is) {
-            score++;
+    public void go(int turn) {
+        if (isPossibleToGo()) {
+            ahead(turn);
         }
+    }
+
+    void ahead(int turn) {
+        moveCountSet.set(turn);
     }
 
     private boolean isPossibleToGo() {
