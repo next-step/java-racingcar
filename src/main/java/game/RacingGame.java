@@ -15,14 +15,30 @@ public class RacingGame {
         initializeCars(gameType, carCount);
     }
 
+    public void end() {
+        mCars.clear();
+    }
+
     private void initializeCars(GameType gameType, int carCount) {
         for (int i = 0; i < carCount; i++) {
             mCars.add(createCar(gameType));
         }
     }
 
-    public void end() {
-        mCars.clear();
+    private void startRacingRound(int totalRound) {
+        for (int i = 0; i < totalRound; i++) {
+            moveCars();
+        }
+    }
+
+    private List<Integer> moveCars() {
+        List<Integer> currentMovePosition = new ArrayList<>();
+
+        for (int i = 0; i < mCars.size(); i++) {
+            currentMovePosition.add(i, mCars.get(i).moveIfPossible());
+        }
+
+        return currentMovePosition;
     }
 
     private static Car createCar(GameType gameType) {
