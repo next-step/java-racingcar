@@ -12,9 +12,14 @@ package step2;
 public class Car {
     public int score = 0;
 
-    public void go(int size) {
-        if (isPossibleToGo()) {
-            score += size;
+    public void go() {
+        boolean possibleToGo = isPossibleToGo();
+        ahead(possibleToGo);
+    }
+
+    void ahead(boolean is) {
+        if (is) {
+            score++;
         }
     }
 

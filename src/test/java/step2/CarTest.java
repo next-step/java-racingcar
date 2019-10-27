@@ -10,9 +10,9 @@ class CarTest {
     private static Car car = new Car();
 
     @ParameterizedTest
-    @CsvSource(value = {"1:1", "2:3", "4:7", "5:12"}, delimiter = ':')
-    void go(int size, int score) {
-        car.go(size);
-        assertThat(car.score).isEqualTo(score);
+    @CsvSource(value = {"true:1", "true:2", "false:2", "true:3"}, delimiter = ':')
+    void go(boolean is, int count) {
+        car.ahead(is);
+        assertThat(car.score).isEqualTo(count);
     }
 }
