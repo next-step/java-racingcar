@@ -12,6 +12,8 @@ public class RacingGame implements RacingGameController {
     public RacingGame(RacingGameView racingGameView) {
         this.mRacingGameView = racingGameView;
         this.mCars = new ArrayList<>();
+
+        mRacingGameView.setController(this);
     }
 
     @Override
