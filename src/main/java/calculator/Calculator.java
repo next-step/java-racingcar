@@ -22,9 +22,8 @@ public class Calculator {
         CalculatorItemCollection collection = new CalculatorItemCollection(inputString);
         List<String> items = collection.getItem();
 
-        int size = items.size();
         long result = Long.parseLong(items.get(FIRST_INDEX));
-        for (int i = 1; i < size - 1; i += 2) {
+        for (int i = 1, size = items.size(); i < size - 1; i += 2) {
             result = apply(result, items.get(i), items.get(i + NEXT_INDEX));
         }
         return result;

@@ -10,7 +10,8 @@ import static calculator.OperatorType.isNotOperatorType;
 public class CalculatorItemCollection {
 
     private static final String DELIMITER = " ";
-    private static final int VALID_SIZE = 3;
+    private static final int VALID_MINIMUM_SIZE = 3;
+
     private final List<String> item;
 
     public CalculatorItemCollection(String input) {
@@ -40,11 +41,11 @@ public class CalculatorItemCollection {
     }
 
     private void validateItem() {
-        if (item.size() < VALID_SIZE || isEven(item.size())) {
+        if (item.size() < VALID_MINIMUM_SIZE || isEven(item.size())) {
             throw new IllegalArgumentException("숫자와 연산자의 개수가 맞지 않습니다.");
         }
 
-        for (int i = 0; i < item.size(); i++) {
+        for (int i = 0, size = item.size(); i < size; i++) {
             checkCharacter(i, item.get(i));
         }
     }
