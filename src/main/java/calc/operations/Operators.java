@@ -22,11 +22,6 @@ public enum Operators {
         this.operation = operation;
     }
 
-    @Override
-    public String toString() {
-        return operator;
-    }
-
     public static boolean isOperator(String str) {
         return OP_LABEL.containsKey(str);
     }
@@ -37,5 +32,10 @@ public enum Operators {
 
     public double calculate(double op1, double op2) {
         return operation.calculate(op1, op2);
+    }
+
+    @Override
+    public String toString() {
+        return operator;
     }
 }
