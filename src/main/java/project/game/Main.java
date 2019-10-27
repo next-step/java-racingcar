@@ -5,7 +5,6 @@ public class Main {
         RacingGameView racingGameView = new RacingGameViewImpl();
         RacingGame racingGame = new RacingGame(racingGameView);
 
-        racingGame.start(GameType.RANDOM, 4, 5);
-        racingGame.end();
+        racingGame.start(GameType.RANDOM);
     }
 }

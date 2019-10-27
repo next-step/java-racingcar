@@ -3,8 +3,9 @@ package project.game;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingGame {
+public class RacingGame implements RacingGameController {
 
+    private GameType mGameType;
     private RacingGameView mRacingGameView;
     private List<Car> mCars;
 
@@ -13,12 +14,20 @@ public class RacingGame {
         this.mCars = new ArrayList<>();
     }
 
-    public void start(GameType gameType, int carCount, int round) {
-        initializeCars(gameType, carCount);
-        startRacing(round);
+    @Override
+    public void startGame(int carCount, int roundCount) {
+        initializeCars(mGameType, carCount);
+        startRacing(roundCount);
+        endRacing();
     }
 
-    public void end() {
+    public void start(GameType gameType) {
+        mGameType = gameType;
+        mRacingGameView.onStartGame();
+    }
+
+    private void endRacing() {
+        mRacingGameView.onEndGame();
         mCars.clear();
     }
 
@@ -53,4 +62,6 @@ public class RacingGame {
     private static Car createCar(GameType gameType) {
         return new Car(gameType.getMoveRule());
     }
+
+
 }
