@@ -1,5 +1,13 @@
+/*
+ * Racing.java  1.0.0   2019.10.27
+ */
 package step2;
 
+/**
+ * 자동차 게임 진행 부분
+ * @version 1.0.0
+ * @author naheenosaur
+ */
 public class Racing {
     Car[] cars;
     int turn;
