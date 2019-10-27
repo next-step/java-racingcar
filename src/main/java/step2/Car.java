@@ -12,10 +12,10 @@ import java.util.BitSet;
  * @author naheenosaur
  */
 public class Car {
-    BitSet moveCountSet = new BitSet();
+    BitSet moveCountSet;
 
     Car(int turn) {
-        moveCountSet.set(turn);
+        moveCountSet = new BitSet(turn);
     }
 
     public void go(int turn) {
@@ -25,12 +25,20 @@ public class Car {
     }
 
     void ahead(int turn) {
-        moveCountSet.set(turn);
+        moveCountSet.set(turn - 1);
     }
 
     private boolean isPossibleToGo() {
         int random = (int) (Math.random() * 10);
         return random >= 4;
+    }
+
+    public int getScore(int turn) {
+        int score = moveCountSet.get(0,turn).cardinality();
+        if (score < 0) {
+            return 0;
+        }
+        return score;
     }
 
 }
