@@ -21,4 +21,10 @@ public class RacingGameTest {
         assertThat(cars).contains(0);
         assertThat(cars).hasSize(3);
     }
+
+    @Test
+    void RandomCountTest() {
+        assertThat(racingGame.getRandomNumber()).isBetween(0, 9);
+    }
+
 }

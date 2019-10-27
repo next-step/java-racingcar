@@ -1,5 +1,7 @@
 package step2;
 
+import java.util.Random;
+
 public class RacingGame {
 
     private int time;
@@ -15,6 +17,17 @@ public class RacingGame {
             carPositions[i] = 0;
         }
         return carPositions;
+    }
+
+    public int getRandomNumber() {
+        return new Random().nextInt(10);
+    }
+
+    public boolean isMove() {
+        if (getRandomNumber() >= 4) {
+            return true;
+        }
+        return false;
     }
 
 
