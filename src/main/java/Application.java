@@ -1,9 +1,9 @@
-import step1.Calculator;
+import step2.Car;
+import step2.InputView;
 
 public class Application {
     public static void main(String[] args){
-        String input = "2 + 3 * 4 / 2";
-        int result = new Calculator().run(input);
-        System.out.println(result);
+        InputView inputView = new InputView();
+        Car[] cars = inputView.input();
     }
 }
