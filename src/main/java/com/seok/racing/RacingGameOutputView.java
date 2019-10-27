@@ -14,7 +14,6 @@ public class RacingGameOutputView {
             Arrays.stream(result)
                     .mapToObj(location -> String.join("", Collections.nCopies(location, CAR_LOCATION_SYMBOL)))
                     .forEach(System.out::println);
-            System.out.println("next");
         }
 
 
