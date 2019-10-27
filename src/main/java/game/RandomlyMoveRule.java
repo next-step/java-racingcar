@@ -2,6 +2,8 @@ package game;
 
 public class RandomlyMoveRule implements MoveRule {
 
+    private static final int MIN_VALID_RANDOM_NUMBER = 4;
+
     private RandomNumberProvider mRandomNumberProvider;
 
     public RandomlyMoveRule(RandomNumberProvider randomNumberProvider) {
@@ -14,6 +16,6 @@ public class RandomlyMoveRule implements MoveRule {
     }
 
     private boolean isValidRandomNumberForMove(int randomNumber) {
-        return randomNumber >= 4;
+        return randomNumber >= MIN_VALID_RANDOM_NUMBER;
     }
 }
