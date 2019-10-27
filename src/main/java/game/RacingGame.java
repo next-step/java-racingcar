@@ -15,6 +15,7 @@ public class RacingGame {
 
     public void start(GameType gameType, int carCount, int round) {
         initializeCars(gameType, carCount);
+        startRacing(round);
     }
 
     public void end() {
@@ -27,7 +28,7 @@ public class RacingGame {
         }
     }
 
-    private void startRacingRound(int totalRound) {
+    private void startRacing(int totalRound) {
         for (int i = 0; i < totalRound; i++) {
             List<Integer> currentCarPositions = moveCars();
             notifyCarPositionsChange(currentCarPositions);
