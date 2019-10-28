@@ -24,6 +24,10 @@ public class Racers {
         return cars.size();
     }
 
+    public String getRacerName(int index) {
+        return cars.get(index).getName();
+    }
+
     public int getPosition(int index) {
         return cars.get(index).position();
     }
