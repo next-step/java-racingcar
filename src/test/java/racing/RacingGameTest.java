@@ -33,7 +33,7 @@ class RacingGameTest {
 
     @Test
     void 레이싱_결과_테스트() {
-        int[] results = racingGame.getResults();
+        int[] results = racingGame.doRace();
 
         assertThat(results.length).isEqualTo(numberOfCars);
         assertThat(results[0]).isEqualTo(tries);

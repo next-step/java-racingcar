@@ -10,7 +10,7 @@ class RacingGame {
     private static final String ILLEGAL_TRIES = "경주할 거리를 정확히 입력하세요.";
 
     private final Car[] cars;
-    private int[] results;
+    private int tries;
 
     RacingGame(int numberOfCars, int tries) {
         if (numberOfCars <= 0) {
@@ -20,11 +20,11 @@ class RacingGame {
             throw new IllegalArgumentException(ILLEGAL_TRIES);
         }
         this.cars = createCars(numberOfCars);
-        this.results = raceAllSteps(tries);
+        this.tries = tries;
     }
 
-    int[] getResults() {
-        return results;
+    protected int[] doRace() {
+        return raceAllSteps(tries);
     }
 
     protected Car[] createCars(int numberOfCars) {

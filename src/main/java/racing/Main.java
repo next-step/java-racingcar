@@ -13,7 +13,7 @@ public class Main {
         System.out.println("시도할 회수는 몇 회 인가요?");
         int tries = scanner.nextInt();
 
-        RacingScoreView view = new RacingScoreView(new RacingGame(numberOfCars, tries).getResults());
+        RacingScoreView view = new RacingScoreView(new RacingGame(numberOfCars, tries).doRace());
         view.printResult();
 
     }
