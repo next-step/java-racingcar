@@ -29,11 +29,11 @@ public class RacingGame {
         return time;
     }
 
-    public int getRandomNumber() {
+    private int getRandomNumber() {
         return new Random().nextInt(10);
     }
 
-    public int isMove() {
+    public int moveCheck() {
         if (getRandomNumber() >= 4) {
             return 1;
         }
@@ -48,7 +48,7 @@ public class RacingGame {
 
     public void move() {
         for (Car car : cars) {
-            int position = car.getPosition() + isMove();
+            int position = car.getPosition() + moveCheck();
             car.setPosition(position);
         }
         resultView.printResultView(cars);

@@ -25,11 +25,6 @@ public class RacingGameTest {
     }
 
     @Test
-    void RandomCountTest() {
-        assertThat(racingGame.getRandomNumber()).isBetween(0, 9);
-    }
-
-    @Test
     void moveCarTest() {
         assertThat(racingGame.setTime(4)).isEqualTo(4);
         assertThat(racingGame.carPositionsInitiate(5)).hasSize(5);
