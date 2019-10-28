@@ -1,10 +1,12 @@
 package step2.race.domain;
 
-import step2.car.domain.car.Car;
+import step2.car.domain.Car;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class Race {
     private List<Car> cars;
@@ -15,7 +17,7 @@ public class Race {
     }
 
     public List<RaceHistory> getRaceHistories() {
-        return new ArrayList<>(raceHistories);
+        return Collections.unmodifiableList(this.raceHistories);
     }
 
     public void moveAll() {
@@ -31,6 +33,6 @@ public class Race {
     private List<Integer> getAllPosition() {
         return this.cars.stream()
                 .map(Car::getPosition)
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 }

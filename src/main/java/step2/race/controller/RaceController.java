@@ -1,7 +1,7 @@
 package step2.race.controller;
 
-import step2.car.domain.car.Car;
-import step2.car.domain.car.engine.RandomEngine;
+import step2.car.domain.Car;
+import step2.car.domain.engine.RandomEngine;
 import step2.race.domain.Race;
 import step2.race.domain.RaceHistory;
 import step2.race.service.RaceService;

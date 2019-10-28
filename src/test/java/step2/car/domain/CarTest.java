@@ -1,10 +1,10 @@
-package step2.car.domain.car;
+package step2.car.domain;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step2.car.domain.car.engine.Engine;
-import step2.car.domain.car.engine.FixedEngine;
+import step2.car.domain.engine.Engine;
+import step2.car.domain.engine.FixedEngine;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -3,9 +3,9 @@ package step2.race.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step2.car.domain.car.Car;
-import step2.car.domain.car.engine.Engine;
-import step2.car.domain.car.engine.RandomEngine;
+import step2.car.domain.Car;
+import step2.car.domain.engine.Engine;
+import step2.car.domain.engine.RandomEngine;
 import step2.race.domain.Race;
 
 import java.util.List;

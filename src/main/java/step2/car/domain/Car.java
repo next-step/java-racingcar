@@ -1,6 +1,6 @@
-package step2.car.domain.car;
+package step2.car.domain;
 
-import step2.car.domain.car.engine.Engine;
+import step2.car.domain.engine.Engine;
 
 public class Car {
     private static final Integer MINIMUM_POWER = 4;

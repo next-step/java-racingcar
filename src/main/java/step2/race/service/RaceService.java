@@ -1,7 +1,7 @@
 package step2.race.service;
 
-import step2.car.domain.car.Car;
-import step2.car.domain.car.engine.Engine;
+import step2.car.domain.Car;
+import step2.car.domain.engine.Engine;
 import step2.race.domain.Race;
 
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package step2.race.domain;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RaceHistory {
@@ -11,6 +11,6 @@ public class RaceHistory {
     }
 
     public List<Integer> getHistory() {
-        return new ArrayList<>(history);
+        return Collections.unmodifiableList(this.history);
     }
 }

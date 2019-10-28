@@ -1,4 +1,4 @@
-package step2.car.domain.car.engine;
+package step2.car.domain.engine;
 
 public interface Engine {
     int getPower();
