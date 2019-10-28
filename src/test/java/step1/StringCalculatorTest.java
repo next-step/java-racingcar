@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static step1.OperateCollection.validateProperOperation;
 import static step1.Utils.ValidationUtils.isBlankThrowException;
 import static step1.Utils.ValidationUtils.isNumeric;
 
@@ -29,6 +30,14 @@ public class StringCalculatorTest {
     }
 
     @ParameterizedTest
+    @ValueSource(strings = {"#", "$", "%"})
+    void validateProperOperationTest(String input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            validateProperOperation(input);
+        });
+    }
+
+    @ParameterizedTest
     @ValueSource(strings = {"", " ", "  "})
     void isBlankTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
@@ -40,5 +49,25 @@ public class StringCalculatorTest {
     @ValueSource(strings = {"3", "5"})
     void isNumericTest(String input) {
         assertThat(isNumeric(input)).isEqualTo(true);
+    }
+
+    @Test
+    void addTest() {
+        assertThat(stringCalculator.add(3, 5)).isEqualTo(8);
+    }
+
+    @Test
+    void substractTest() {
+        assertThat(stringCalculator.subtract(8, 3)).isEqualTo(5);
+    }
+
+    @Test
+    void multiplyTest() {
+        assertThat(stringCalculator.multiply(10, 3)).isEqualTo(30);
+    }
+
+    @Test
+    void divideTest() {
+        assertThat(stringCalculator.divide(10, 5)).isEqualTo(2);
     }
 }

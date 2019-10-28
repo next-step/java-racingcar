@@ -84,21 +84,21 @@ public class StringCalculator {
         }
     }
 
-    public void add(int a, int b) {
-        result = a + b;
+    public int add(int a, int b) {
+        return result = a + b;
     }
 
-    public void subtract(int a, int b) {
-        result = a - b;
+    public int subtract(int a, int b) {
+        return result = a - b;
     }
 
-    public void multiply(int a, int b) {
-        result = a * b;
+    public int multiply(int a, int b) {
+        return result = a * b;
     }
 
-    public void divide(int a, int b) {
+    public int divide(int a, int b) {
         try {
-            result = a / b;
+            return result = a / b;
         } catch (ArithmeticException e) {
             throw new IllegalArgumentException("0으로 나눌 수 없습니다.", e);
         }
