@@ -61,7 +61,7 @@ public class RacingGame implements RacingGameController {
         return currentCarPositions;
     }
 
-    private static Car createCar(GameType gameType) {
+    private Car createCar(GameType gameType) {
         return new Car(gameType.getMoveRule());
     }
 
