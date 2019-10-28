@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class NumberCollectionTest {
+class NumbersTest {
 
     @Test
     void getNumbers_숫자만_추출하기() {
@@ -12,10 +12,10 @@ class NumberCollectionTest {
         String[] parsedInputs = new String[]{"1", "+", "2"};
 
         //when
-        NumberCollection numberCollection = new NumberCollection(parsedInputs);
+        Numbers numbers = new Numbers(parsedInputs);
 
         //then
-        assertThat(numberCollection.getNumbers()).hasSize(2);
+        assertThat(numbers.getNumbers()).hasSize(2);
     }
 
 }

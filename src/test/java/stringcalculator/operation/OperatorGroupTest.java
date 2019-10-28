@@ -12,9 +12,6 @@ class OperatorGroupTest {
     @ParameterizedTest
     @CsvSource(value = {"+:PLUS", "-:MINUS", "*:MULTIPLY", "/:MODIFY"}, delimiter = ':')
     void findOperator_연산자_찾기(String operator, String answer) {
-        //given
-        //when
-        //then
         assertThat(OperatorGroup.findOperator(operator).name()).isEqualTo(answer);
     }
 
@@ -22,7 +19,7 @@ class OperatorGroupTest {
     void findOperator_정의되지않은_연산자_입렵시() {
         //given
         String unknownOperator = "@";
-        //when
+
         //then
         assertThatThrownBy(() -> OperatorGroup.findOperator(unknownOperator))
                 .isInstanceOf(IllegalArgumentException.class)

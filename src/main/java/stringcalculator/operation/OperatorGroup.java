@@ -8,12 +8,12 @@ public enum OperatorGroup {
     MULTIPLY("*", (x, y) -> x * y),
     MODIFY("/", (x, y) -> x / y);
 
-    private String operator;
-    private OperationInterface operationInterface;
+    private String type;
+    private Operator operator;
 
-    OperatorGroup(String operator, OperationInterface operationInterface) {
+    OperatorGroup(String type, Operator operator) {
+        this.type = type;
         this.operator = operator;
-        this.operationInterface = operationInterface;
     }
 
     public static OperatorGroup findOperator(String operator) {
@@ -24,10 +24,10 @@ public enum OperatorGroup {
     }
 
     public Double operate(Double x, Double y) {
-        return this.operationInterface.operate(x, y);
+        return this.operator.excute(x, y);
     }
 
     private boolean isEqual(String operator) {
-        return this.operator.equals(operator);
+        return this.type.equals(operator);
     }
 }

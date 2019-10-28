@@ -5,20 +5,24 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.stream.Collectors;
 
-public class OperatorCollection {
+public class Operators {
     private static final String NUMBER_FORMAT = "\\d+";
 
     private Queue<String> operators;
 
-    public OperatorCollection(String[] inputs) {
-        this.operators = collectOperators(inputs);
+    public Operators(String[] inputs) {
+        this.operators = collect(inputs);
     }
 
     public Queue<String> getOperators() {
         return new LinkedList<>(operators);
     }
 
-    private Queue<String> collectOperators(String[] inputs) {
+    public int getSize() {
+        return this.operators.size();
+    }
+
+    private Queue<String> collect(String[] inputs) {
         return Arrays.stream(inputs)
                 .filter(this::isNotNumber)
                 .collect(Collectors.toCollection(LinkedList::new));

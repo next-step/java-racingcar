@@ -15,7 +15,7 @@ public class StringParser {
 
     private static void checkLegal(String input) {
         if (isEmpty(input)) {
-            throw new IllegalArgumentException("입력이 올바르지 않습니다.");
+            throw new IllegalArgumentException(input + "입력이 올바르지 않습니다.");
         }
     }
 

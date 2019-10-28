@@ -18,20 +18,14 @@ class StringParserTest {
     @ParameterizedTest
     @MethodSource("illegalInput")
     void parse_빈문자열_혹은_널값_입력(String input) {
-        //given
-        //when
-        //then
         assertThatThrownBy(() -> StringParser.parse(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("입력이 올바르지 않습니다.");
+                .hasMessage(input + "입력이 올바르지 않습니다.");
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1:1", "1 + 2:3", "1 + 2 - 0:5", "1 + 2 - 0 * 2:7", "1 + 2 - 0 * 2 / 4:9"}, delimiter = ':')
     void parse_공백을_기준으로_분리시키기(String input, Integer answer) {
-        //given
-        //when
-        //then
         assertThat(StringParser.parse(input)).hasSize(answer);
     }
 }

@@ -5,22 +5,22 @@ import java.util.Queue;
 public class CalculatorBuffer {
     private static final String NUMBER_FORMAT = "\\d+";
 
-    private NumberCollection numberCollection;
-    private OperatorCollection operatorCollection;
+    private Numbers numbers;
+    private Operators operators;
 
     public CalculatorBuffer(String[] parsedInputs) {
         validateOperateOrder(parsedInputs);
-        this.numberCollection = new NumberCollection(parsedInputs);
-        this.operatorCollection = new OperatorCollection(parsedInputs);
-        validateOperationSize(numberCollection, operatorCollection);
+        this.numbers = new Numbers(parsedInputs);
+        this.operators = new Operators(parsedInputs);
+        validateOperationSize(numbers, operators);
     }
 
-    public Queue<Double> getNumberCollection() {
-        return numberCollection.getNumbers();
+    public Queue<Double> getNumbers() {
+        return numbers.getNumbers();
     }
 
-    public Queue<String> getOperatorCollection() {
-        return operatorCollection.getOperators();
+    public Queue<String> getOperators() {
+        return operators.getOperators();
     }
 
     private void validateOperateOrder(String[] parsedInputs) {
@@ -53,11 +53,9 @@ public class CalculatorBuffer {
         return input.matches(NUMBER_FORMAT);
     }
 
-    private void validateOperationSize(NumberCollection numberCollection, OperatorCollection operatorCollection) {
-        int numberSize = numberCollection.getNumbers()
-                .size();
-        int operatorSize = operatorCollection.getOperators()
-                .size();
+    private void validateOperationSize(Numbers numbers, Operators operators) {
+        int numberSize = numbers.getSize();
+        int operatorSize = operators.getSize();
         if (canOperate(numberSize, operatorSize)) {
             throw new IllegalArgumentException("연산할 수 없는 식 입니다.");
         }

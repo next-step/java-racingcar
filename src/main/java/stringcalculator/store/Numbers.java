@@ -5,20 +5,24 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.stream.Collectors;
 
-public class NumberCollection {
+public class Numbers {
     private static final String NUMBER_FORMAT = "\\d+";
 
     private Queue<Double> numbers;
 
-    public NumberCollection(String[] inputs) {
-        this.numbers = collectNumbers(inputs);
+    public Numbers(String[] inputs) {
+        this.numbers = collect(inputs);
     }
 
     public Queue<Double> getNumbers() {
         return new LinkedList<>(numbers);
     }
 
-    private Queue<Double> collectNumbers(String[] inputs) {
+    public int getSize() {
+        return this.numbers.size();
+    }
+
+    private Queue<Double> collect(String[] inputs) {
         return Arrays.stream(inputs)
                 .filter(this::isNumber)
                 .map(Double::parseDouble)

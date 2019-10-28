@@ -8,16 +8,13 @@ import java.util.Queue;
 public class StringCalculator {
 
     public static Double calculate(CalculatorBuffer calculatorBuffer) {
-        Queue<Double> numberCollection = calculatorBuffer.getNumberCollection();
-        Queue<String> operatorCollection = calculatorBuffer.getOperatorCollection();
+        Queue<Double> numbers = calculatorBuffer.getNumbers();
+        Queue<String> operators = calculatorBuffer.getOperators();
 
-        Double result = numberCollection.poll();
-        while (!operatorCollection.isEmpty()) {
-            Double x = result;
-            Double y = numberCollection.poll();
-            String inputOperator = operatorCollection.poll();
-            OperatorGroup operator = OperatorGroup.findOperator(inputOperator);
-            result = operator.operate(x, y);
+        Double result = numbers.poll();
+        while (!operators.isEmpty()) {
+            OperatorGroup operator = OperatorGroup.findOperator(operators.poll());
+            result = operator.operate(result, numbers.poll());
         }
         return result;
     }
