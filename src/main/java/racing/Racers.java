@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Racers {
-    private static final String POSITION_SIGNATURES = "-";
-
     private List<Car> cars = new ArrayList<>();
 
     public Racers(int size) {
@@ -18,20 +16,13 @@ public class Racers {
         for (Car car : cars) {
             car.move(CountGenerator.getRandomInt());
         }
-        result();
     }
 
-    private void result() {
-        for (Car car : cars) {
-            printPosition(car.position());
-        }
-        System.out.println();
+    public int size() {
+        return cars.size();
     }
 
-    private void printPosition(int position) {
-        for (int i = 0; i < position; i++) {
-            System.out.print(POSITION_SIGNATURES);
-        }
-        System.out.println();
+    public int getPosition(int index) {
+        return cars.get(index).position();
     }
 }
