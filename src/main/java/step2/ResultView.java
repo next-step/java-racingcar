@@ -41,7 +41,7 @@ public class ResultView {
     }
 
     private void draw(int carIndex, int turn) {
-        if (racing.getCar(carIndex).getMove(turn)) {
+        if (racing.getCar(carIndex).getMoveOfTurn(turn)) {
             carsGraph[carIndex].append("-");
         }
         System.out.println(carsGraph[carIndex]);

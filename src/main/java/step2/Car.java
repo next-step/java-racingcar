@@ -4,8 +4,6 @@
 package step2;
 
 
-import java.util.BitSet;
-
 /**
  * 자동차 게임의 대상인 자동차
  *
@@ -13,26 +11,17 @@ import java.util.BitSet;
  * @version 1.0.0
  */
 public class Car {
-    private BitSet moveCountSet;
+    private boolean[] move;
 
     public Car(int turn) {
-        moveCountSet = new BitSet(turn);
+        move = new boolean[turn];
     }
 
     public void go(int turn) {
-        moveCountSet.set(turn - 1);
+        move[turn - 1] = true;
     }
 
-    public boolean getMove(int turn) {
-        return moveCountSet.get(turn - 1);
+    public boolean getMoveOfTurn(int turn) {
+        return move[turn - 1];
     }
-
-    public int getScore(int turn) {
-        int score = moveCountSet.get(0, turn).cardinality();
-        if (score < 0) {
-            return 0;
-        }
-        return score;
-    }
-
 }

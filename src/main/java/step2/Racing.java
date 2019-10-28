@@ -10,7 +10,7 @@ package step2;
  * @version 1.0.0
  */
 public class Racing {
-    private static int MINIMUM_RANDOM_VALUE = 4;
+    private static int MINIMUM_RANDOM_VALUE = 0;
     private Car[] cars;
     private int turn;
 

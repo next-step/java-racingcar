@@ -5,37 +5,21 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
 
     private static Car car = new Car(5);
 
     @ParameterizedTest
-    @CsvSource(value = {"true:1:1", "true:2:2", "false:3:2", "true:4:3", "false:5:3"}, delimiter = ':')
-    void go(boolean is, int turn, int score) {
+    @CsvSource(value = {"true:1", "true:2", "false:3", "true:4", "false:5"}, delimiter = ':')
+    void go(boolean is, int turn) {
         if (is) {
             car.go(turn);
         }
-        assertThat(car.getScore(turn)).isEqualTo(score);
+        assertThat(car.getMoveOfTurn(turn)).isEqualTo(is);
     }
 
-
-    @Test
-    void getScoreTest() {
-        Car car = new Car(5);
-        car.go(2);
-        car.go(3);
-        car.go(5);
-        assertAll(
-                () -> assertEquals(0, car.getScore(1)),
-                () -> assertEquals(1, car.getScore(2)),
-                () -> assertEquals(2, car.getScore(3)),
-                () -> assertEquals(2, car.getScore(4)),
-                () -> assertEquals(3, car.getScore(5))
-        );
-    }
 
     @Test
     void getMove() {
@@ -44,11 +28,11 @@ class CarTest {
         car.go(3);
         car.go(5);
         assertAll(
-                () -> assertEquals(false, car.getMove(1)),
-                () -> assertEquals(true, car.getMove(2)),
-                () -> assertEquals(true, car.getMove(3)),
-                () -> assertEquals(false, car.getMove(4)),
-                () -> assertEquals(true, car.getMove(5))
+                () -> assertFalse(car.getMoveOfTurn(1)),
+                () -> assertTrue(car.getMoveOfTurn(2)),
+                () -> assertTrue(car.getMoveOfTurn(3)),
+                () -> assertFalse(car.getMoveOfTurn(4)),
+                () -> assertTrue(car.getMoveOfTurn(5))
         );
 
     }
