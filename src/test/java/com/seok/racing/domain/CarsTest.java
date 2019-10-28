@@ -3,8 +3,6 @@ package com.seok.racing.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.params.ParameterizedTest;
@@ -25,14 +23,14 @@ class CarsTest {
         Car jay = new Car("jay");
 
         return Stream.of(
-            Arguments.of(new Cars(Arrays.asList(tom, jay)), new String [] {"tom"}),
-            Arguments.of(new Cars(Arrays.asList(tom,leo, jay)), new String [] {"tom","leo"})
+            Arguments.of(new Cars(Arrays.asList(tom, jay)), new String[]{"tom"}),
+            Arguments.of(new Cars(Arrays.asList(tom, leo, jay)), new String[]{"tom", "leo"})
         );
     }
 
     @ParameterizedTest
     @MethodSource("cars")
-    void getWinner(Cars cars, String [] expected) {
+    void getWinner(Cars cars, String[] expected) {
         assertThat(cars.getWinner()).containsOnly(expected);
     }
 }

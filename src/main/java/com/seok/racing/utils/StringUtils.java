@@ -4,13 +4,14 @@ public class StringUtils {
 
     private final static String SEPARATOR = ",";
 
-    private StringUtils () {}
+    private StringUtils() {
+    }
 
-    public static String [] split(String text, String separator) {
+    public static String[] split(String text, String separator) {
         return text.split(separator);
     }
 
-    public static String [] split(String text) {
+    public static String[] split(String text) {
         return text.split(SEPARATOR);
     }
 
