@@ -10,8 +10,9 @@ public class RacingGame {
     private List<Car> cars;
     private ResultView resultView;
 
-    public RacingGame() {
+    public RacingGame(int time) {
         this.resultView = new ResultView();
+        this.time = time;
     }
 
     public List<Car> carPositionsInitiate(int createCarCount) {

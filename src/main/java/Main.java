@@ -12,9 +12,8 @@ public class Main {
         int carCount = inputView.createCarCount();
         int time = inputView.moveCarCount();
 
-        RacingGame racingGame = new RacingGame();
+        RacingGame racingGame = new RacingGame(time);
         racingGame.carPositionsInitiate(carCount);
-        racingGame.setTime(time);
         racingGame.execute();
     }
 }

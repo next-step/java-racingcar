@@ -15,7 +15,7 @@ public class RacingGameTest {
 
     @BeforeEach
     void setUp() {
-        racingGame = new RacingGame();
+        racingGame = new RacingGame(3);
     }
 
     @Test
@@ -26,13 +26,11 @@ public class RacingGameTest {
 
     @Test
     void moveCarTest() {
-        assertThat(racingGame.setTime(4)).isEqualTo(4);
         assertThat(racingGame.carPositionsInitiate(5)).hasSize(5);
     }
 
     @Test
     void resultViewTest() {
-        assertThat(racingGame.setTime(5)).isEqualTo(5);
         assertThat(racingGame.carPositionsInitiate(3)).hasSize(3);
         racingGame.execute();
     }
