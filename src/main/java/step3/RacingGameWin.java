@@ -35,7 +35,7 @@ public class RacingGameWin {
         return new Random().nextInt(10);
     }
 
-    private int moveCheck() {
+    public int moveCheck() {
         if (getRandomNumber() >= 4) {
             return 1;
         }
@@ -44,13 +44,13 @@ public class RacingGameWin {
 
     private void move() {
         for (Car car : cars) {
-            int position = updatePosition(car);
+            int position = updatePosition(car.getPosition());
             car.setPosition(position);
         }
         ResultView.printResultView(cars);
     }
 
-    public int updatePosition(Car car) {
-        return car.getPosition() + moveCheck();
+    public int updatePosition(int currentPosition) {
+        return currentPosition + moveCheck();
     }
 }
