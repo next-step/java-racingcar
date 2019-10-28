@@ -1,5 +1,7 @@
 package step3;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ResultView {
@@ -25,5 +27,15 @@ public class ResultView {
         System.out.println();
     }
 
+    public static void winner(List<Car> cars, int winnerPosition) {
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getPosition() == winnerPosition) {
+                winners.add(car.getName());
+            }
+        }
+
+        System.out.println(winners);
+    }
 
 }

@@ -53,4 +53,16 @@ public class RacingGameWin {
     public int updatePosition(int currentPosition) {
         return currentPosition + moveCheck();
     }
+
+    public void winner() {
+        int winnerPosition = 0;
+        for (Car car : cars) {
+            if (winnerPosition <= car.getPosition()) {
+                winnerPosition = car.getPosition();
+            }
+        }
+
+        ResultView.winner(cars, winnerPosition);
+
+    }
 }

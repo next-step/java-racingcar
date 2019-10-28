@@ -26,5 +26,6 @@ public class Main {
         RacingGameWin racingGameWin = new RacingGameWin(time, carName);
         racingGameWin.initiateCar();
         racingGameWin.execute();
+        racingGameWin.winner();
     }
 }
