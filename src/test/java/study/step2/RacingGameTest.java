@@ -3,6 +3,7 @@ package study.step2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import step2.RacingGame;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {

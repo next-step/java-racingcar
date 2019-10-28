@@ -1,4 +1,5 @@
 package step2;
+
 import java.util.Random;
 
 public class RacingGame {
@@ -6,6 +7,7 @@ public class RacingGame {
     private int time;
     private int[] carPositions;
     private ResultView resultView;
+
     public RacingGame() {
         this.resultView = new ResultView();
     }
