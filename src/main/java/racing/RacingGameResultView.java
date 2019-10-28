@@ -10,8 +10,8 @@ import java.util.Map;
  */
 public class RacingGameResultView {
 
-    private final String GO = "-";
-    private final String STOP = "";
+    private static final String GO = "-";
+    private static final String STOP = "";
 
     public void printResult(Map<Integer, List<CarNextStep>> carMap) {
         carMap.values().forEach(car -> {
@@ -23,7 +23,7 @@ public class RacingGameResultView {
         printEmptyLine();
     }
 
-    public void printLine(CarNextStep step) {
+    private void printLine(CarNextStep step) {
         if (step == CarNextStep.STOP) {
             System.out.print(STOP);
             return;
@@ -31,7 +31,7 @@ public class RacingGameResultView {
         System.out.print(GO);
     }
 
-    public void printEmptyLine() {
+    private void printEmptyLine() {
         System.out.println();
     }
 }
