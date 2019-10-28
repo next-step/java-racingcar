@@ -16,6 +16,5 @@ public class Main {
         racingGame.carPositionsInitiate(carCount);
         racingGame.setTime(time);
         racingGame.execute();
-        racingGame.print();
     }
 }
