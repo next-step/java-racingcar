@@ -10,23 +10,28 @@ import java.util.Map;
  */
 public class RacingGameResultView {
 
-    public static final String GO = "-";
+    private final String GO = "-";
+    private final String STOP = "";
 
-    public static void printResult(Map<Integer, List<RacingGame.MoveStatus>> carMap) {
-        carMap.entrySet().forEach(car -> {
-            car.getValue().stream().filter(status -> status == RacingGame.MoveStatus.GO).forEach(go -> {
-                printGoLine();
+    public void printResult(Map<Integer, List<CarNextStep>> carMap) {
+        carMap.values().forEach(car -> {
+            car.stream().forEach(step -> {
+                printLine(step);
             });
             printEmptyLine();
         });
         printEmptyLine();
     }
 
-    public static void printGoLine() {
+    public void printLine(CarNextStep step) {
+        if (step == CarNextStep.STOP) {
+            System.out.print(STOP);
+            return;
+        }
         System.out.print(GO);
     }
 
-    public static void printEmptyLine() {
+    public void printEmptyLine() {
         System.out.println();
     }
 }
