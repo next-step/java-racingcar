@@ -1,8 +1,5 @@
 package racing;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -19,14 +16,13 @@ import static org.assertj.core.api.Assertions.*;
 public class RacingGameTest {
 
     private final InputStream systemIn = System.in;
-    private RacingGame racingGame;
+    private CarRacingGame racingGame;
     private static final String CAR_AMOUNT = "3";
-    private static final String ROUND_AMOUNT = "5";
 
     void setInputAmount(String carAmount, String roundAmount) {
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(String.format("%s\n%s", carAmount, roundAmount).getBytes());
         System.setIn(byteArrayInputStream);
-        racingGame = new RacingGame(System.in);
+        racingGame = new CarRacingGame(System.in);
     }
 
     @Test
