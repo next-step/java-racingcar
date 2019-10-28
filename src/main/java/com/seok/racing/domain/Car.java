@@ -12,8 +12,9 @@ public class Car {
     private Queue<Integer> record = new LinkedList<>();
     private Movable movable;
 
+
     protected Car(String name) {
-        this(name,new RandomMovable());
+        this(name, new RandomMovable());
     }
 
     public Car(String name, Movable movable) {
@@ -22,8 +23,9 @@ public class Car {
     }
 
     protected void move() {
-        if(movable.isMovable())
+        if (movable.isMovable()) {
             location++;
+        }
         record.offer(location);
     }
 
