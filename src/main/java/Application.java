@@ -1,9 +1,15 @@
-import step1.Calculator;
+import step2.InputView;
+import step2.Racing;
+import step2.ResultView;
 
 public class Application {
     public static void main(String[] args){
-        String input = "2 + 3 * 4 / 2";
-        int result = new Calculator().run(input);
-        System.out.println(result);
+        InputView inputView = new InputView();
+        inputView.input();
+        Racing racing = new Racing(inputView);
+        racing.run();
+        ResultView resultView = new ResultView(racing);
+        resultView.show();
+
     }
 }
