@@ -105,7 +105,7 @@ public class StringCalculator {
         try {
             result = a / b;
         } catch(ArithmeticException e) {
-            System.out.println("0으로 나눌 수 없습니다.");
+            throw new IllegalArgumentException("0으로 나눌 수 없습니다.", e);
         }
     }
 }

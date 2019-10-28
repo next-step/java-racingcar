@@ -11,7 +11,7 @@ public class ValidationUtils {
         try {
             Double.parseDouble(s);
         } catch(NumberFormatException e) {
-            throw new IllegalArgumentException("it is not numeric");
+            throw new IllegalArgumentException("it is not numeric", e);
         }
     }
 }
