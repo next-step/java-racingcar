@@ -2,7 +2,7 @@ package step1.Utils;
 
 public class ValidationUtils {
     public static void isBlankThrowException(String input) {
-        if(input == null || input.isEmpty() || input.trim().equals("")) {
+        if (input == null || input.isEmpty() || input.trim().equals("")) {
             throw new IllegalArgumentException("it is blank");
         }
     }
@@ -11,7 +11,7 @@ public class ValidationUtils {
         try {
             Double.parseDouble(s);
             return true;
-        } catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             return false;
         }
     }

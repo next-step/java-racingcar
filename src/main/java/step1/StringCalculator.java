@@ -1,12 +1,8 @@
 package step1;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static step1.Utils.ValidationUtils.*;
 
 public class StringCalculator {
-
     private static final String PLUS = "+";
     private static final String MINUS = "-";
     private static final String MULTIPLY = "*";
@@ -17,7 +13,7 @@ public class StringCalculator {
     OperateCollection operates;
     OperandCollection operands;
 
-    StringCalculator(){
+    StringCalculator() {
         result = 0;
         operates = new OperateCollection();
         operands = new OperandCollection();
@@ -32,12 +28,12 @@ public class StringCalculator {
         return result;
     }
 
-    private String[] splitStringBySpace(String input){
+    private String[] splitStringBySpace(String input) {
         return input.split(SPACE_DELIMITER);
     }
 
     private void iterateClassification(String[] splitedStringArray) {
-        for(String splitedString: splitedStringArray) {
+        for (String splitedString : splitedStringArray) {
             classificateOperandAndOperate(splitedString);
         }
     }
@@ -53,7 +49,7 @@ public class StringCalculator {
 
     private void iterateCalculation() {
         int size = operates.size();
-        for(int i=0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             doCalculation(i, operates.get(i));
         }
     }
@@ -62,12 +58,12 @@ public class StringCalculator {
         int a, b;
 
         a = result;
-        b = operands.get(index+1);
-        if(index == 0){
+        b = operands.get(index + 1);
+        if (index == 0) {
             a = operands.get(index);
         }
 
-        switch(operate) {
+        switch (operate) {
             case PLUS:
                 add(a, b);
                 break;
@@ -92,6 +88,7 @@ public class StringCalculator {
     public void subtract(int a, int b) {
         result = a - b;
     }
+
     public void multiply(int a, int b) {
         result = a * b;
     }
@@ -99,7 +96,7 @@ public class StringCalculator {
     public void divide(int a, int b) {
         try {
             result = a / b;
-        } catch(ArithmeticException e) {
+        } catch (ArithmeticException e) {
             throw new IllegalArgumentException("0으로 나눌 수 없습니다.", e);
         }
     }
