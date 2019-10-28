@@ -8,12 +8,12 @@ public class StringCalculator {
 		validate(input);
 		inputArray = input.split(" ");
 
-		if(inputArray.length % 2 == 0) {
+		if (inputArray.length % 2 == 0) {
 			throw new IllegalArgumentException();
 		}
 
 		int result = 0;
-		for(int i=0, iLen=inputArray.length; i<iLen; i+=2) {
+		for (int i = 0, iLen = inputArray.length; i < iLen; i += 2) {
 			result = calc(result, i);
 		}
 
@@ -29,21 +29,26 @@ public class StringCalculator {
 			throw new IllegalArgumentException();
 		}
 
-		if(index == 0) {
+		if (index == 0) {
 			return num;
 		}
-		switch (inputArray[index-1]) {
-			case "+" : return add(result, num);
-			case "-" : return sub(result, num);
-			case "*" : return multiply(result, num);
-			case "/" : return divide(result, num);
-			default: throw new IllegalArgumentException();
+		switch (inputArray[index - 1]) {
+			case "+":
+				return add(result, num);
+			case "-":
+				return sub(result, num);
+			case "*":
+				return multiply(result, num);
+			case "/":
+				return divide(result, num);
+			default:
+				throw new IllegalArgumentException();
 		}
 	}
 
 	// 유효성 체크
 	private void validate(String input) {
-		if(input == null || input.trim().length() == 0) {
+		if (input == null || input.trim().length() == 0) {
 			throw new IllegalArgumentException();
 		}
 	}
