@@ -8,35 +8,35 @@ public class Main {
     private static final String RACING_GAME_END_TEXT = "레이싱 종료!";
 
     public static void main(String[] args) {
-        RacingGameView racingGameView = new RacingGameConsoleView();
+        View view = new ConsoleView();
 
-        racingGameView.drawText(RACING_GAME_START_TEXT);
+        view.drawText(RACING_GAME_START_TEXT);
 
         int carCount;
         int roundCount;
 
         try {
-            racingGameView.drawText(CAR_COUNT_INPUT_FORM_TEXT);
-            carCount = racingGameView.readInputToInt();
+            view.drawText(CAR_COUNT_INPUT_FORM_TEXT);
+            carCount = view.readInputToInt();
 
-            racingGameView.drawText(ROUND_COUNT_INPUT_FORM_TEXT);
-            roundCount = racingGameView.readInputToInt();
+            view.drawText(ROUND_COUNT_INPUT_FORM_TEXT);
+            roundCount = view.readInputToInt();
         } catch (NumberFormatException exception) {
-            racingGameView.drawText(String.format(INPUT_FORMAT_ERROR, exception.getMessage()));
+            view.drawText(String.format(INPUT_FORMAT_ERROR, exception.getMessage()));
             return;
         }
 
         RacingGameNotifier notifier = carPositions -> {
-            racingGameView.drawNewLine();
+            view.drawNewLine();
 
             for (Integer carPosition : carPositions) {
-                racingGameView.drawCharSequence(carPosition, RacingGame.CAR_POSITION_TEXT);
+                view.drawCharSequence(carPosition, RacingGame.CAR_POSITION_TEXT);
             }
         };
         RacingGame racingGame = new RacingGame(notifier);
         racingGame.start(GameType.RANDOM, carCount, roundCount);
 
-        racingGameView.drawText(RACING_GAME_END_TEXT);
+        view.drawText(RACING_GAME_END_TEXT);
     }
 
 }

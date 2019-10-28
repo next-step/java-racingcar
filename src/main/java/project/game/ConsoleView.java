@@ -2,11 +2,11 @@ package project.game;
 
 import project.InputTool;
 
-public class RacingGameConsoleView implements RacingGameView {
+public class ConsoleView implements View {
 
     private InputTool mInputTool;
 
-    public RacingGameConsoleView() {
+    public ConsoleView() {
         mInputTool = new InputTool();
     }
 
