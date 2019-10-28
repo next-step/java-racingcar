@@ -3,8 +3,7 @@ package step1;
 import java.util.ArrayList;
 import java.util.List;
 
-import static step1.Utils.ValidationUtils.isBlankThrowException;
-import static step1.Utils.ValidationUtils.isNotNumericThrowException;
+import static step1.Utils.ValidationUtils.*;
 
 public class StringCalculator {
 
@@ -14,14 +13,14 @@ public class StringCalculator {
     private static final String DIVIDE = "/";
     private static final String SPACE_DELIMITER = " ";
 
-    private List<String> operands;
-    private List<Integer> operates;
     private int result;
+    OperateCollection operates;
+    OperandCollection operands;
 
     StringCalculator(){
         result = 0;
-        operands = new ArrayList<>();
-        operates = new ArrayList<>();
+        operates = new OperateCollection();
+        operands = new OperandCollection();
     }
 
     public int calculate(String input) {
@@ -33,47 +32,42 @@ public class StringCalculator {
         return result;
     }
 
-    public String[] splitStringBySpace(String input){
+    private String[] splitStringBySpace(String input){
         return input.split(SPACE_DELIMITER);
     }
 
-    public void iterateClassification(String[] splitedStringArray) {
+    private void iterateClassification(String[] splitedStringArray) {
         for(String splitedString: splitedStringArray) {
             classificateOperandAndOperate(splitedString);
         }
     }
 
-    public void classificateOperandAndOperate(String splitedString) {
-        switch(splitedString) {
-            case PLUS:
-            case MINUS:
-            case MULTIPLY:
-            case DIVIDE:
-                operands.add(splitedString);
-                break;
-            default:
-                isNotNumericThrowException(splitedString);
-                operates.add(Integer.parseInt(splitedString));
-                break;
+    private void classificateOperandAndOperate(String splitedString) {
+        if (isNumeric(splitedString)) {
+            operands.add(splitedString);
+            return;
+        }
+
+        operates.add(splitedString);
+    }
+
+    private void iterateCalculation() {
+        int size = operates.size();
+        for(int i=0; i < size; i++) {
+            doCalculation(i, operates.get(i));
         }
     }
 
-    public void iterateCalculation() {
-        for(int i=0; i < operands.size(); i++) {
-            doCalculation(i, operands.get(i));
-        }
-    }
-
-    public void doCalculation(int index, String operand) {
+    private void doCalculation(int index, String operate) {
         int a, b;
 
         a = result;
-        b = operates.get(index+1);
+        b = operands.get(index+1);
         if(index == 0){
-            a = operates.get(index);
+            a = operands.get(index);
         }
 
-        switch(operand) {
+        switch(operate) {
             case PLUS:
                 add(a, b);
                 break;

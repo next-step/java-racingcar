@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static step1.Utils.ValidationUtils.isBlankThrowException;
-import static step1.Utils.ValidationUtils.isNotNumericThrowException;
+import static step1.Utils.ValidationUtils.isNumeric;
 
 public class StringCalculatorTest {
     StringCalculator stringCalculator = new StringCalculator();
@@ -37,10 +37,8 @@ public class StringCalculatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"#", "a"})
-    void isNotNumericTest(String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            isNotNumericThrowException(input);
-        });
+    @ValueSource(strings = {"3", "5"})
+    void isNumericTest(String input) {
+        assertThat(isNumeric(input)).isEqualTo(true);
     }
 }

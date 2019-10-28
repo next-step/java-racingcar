@@ -7,11 +7,12 @@ public class ValidationUtils {
         }
     }
 
-    public static void isNotNumericThrowException(String s) {
+    public static boolean isNumeric(String s) {
         try {
             Double.parseDouble(s);
+            return true;
         } catch(NumberFormatException e) {
-            throw new IllegalArgumentException("it is not numeric", e);
+            return false;
         }
     }
 }
