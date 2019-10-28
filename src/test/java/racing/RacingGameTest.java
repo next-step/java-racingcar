@@ -3,23 +3,26 @@ package racing;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class RacingGameTest {
 
     private RacingGame racingGame;
-    private Car[] cars;
+    private List<Car> cars = new ArrayList<>();
     private int numberOfCars = 2;
     private int tries = 3;
 
     @BeforeEach
     void setUp() {
-        cars = new Car[]{new Car(() -> true), new Car(() -> true)};
+        cars.add(new Car(() -> true));
+        cars.add(new Car(() -> true));
 
         racingGame = new RacingGame(numberOfCars, tries) {
             @Override
-            protected Car[] createCars(int numberOfCars) {
+            protected List<Car> createCars(int numberOfCars) {
                 return cars;
             }
         };
@@ -27,11 +30,12 @@ class RacingGameTest {
 
     @Test
     void 레이싱_결과_테스트() {
-        int[] results = racingGame.doRace();
+        racingGame.doRaces();
+        List<Car> finished_cars = racingGame.getCars();
 
-        assertThat(results.length).isEqualTo(numberOfCars);
-        assertThat(results[0]).isEqualTo(tries);
-        assertThat(results[1]).isEqualTo(tries);
+        assertThat(finished_cars.size()).isEqualTo(numberOfCars);
+        assertThat(finished_cars.get(0).getPosition()).isEqualTo(tries);
+        assertThat(finished_cars.get(1).getPosition()).isEqualTo(tries);
     }
 
     @Test

@@ -1,21 +1,24 @@
 package racing;
 
-import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 class RacingScoreView {
 
-    private static final char CAR_TOKEN = '-';
-    private final int[] raceResults;
+    private static final String CAR_TOKEN = "-";
+    private static final String DELIMITER = "";
+    private final RacingGame racingGame;
 
-    RacingScoreView(int[] racingResults) {
-        this.raceResults = racingResults;
+    RacingScoreView(RacingGame racingGame) {
+        this.racingGame = racingGame;
     }
 
     void printResult() {
-        for (int raceResult : raceResults) {
-            char[] result = new char[raceResult];
-            Arrays.fill(result, CAR_TOKEN);
-            System.out.println(result);
+        List<Car> cars = racingGame.getCars();
+        for (Car car : cars) {
+            int final_record = car.getPosition();
+            System.out
+                .println(String.join(DELIMITER, Collections.nCopies(final_record, CAR_TOKEN)));
         }
     }
 }
