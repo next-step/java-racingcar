@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Racers {
+    private static final String RACER_NAME_SEPARATOR = ",";
     private List<Car> cars = new ArrayList<>();
 
-    public Racers(int size) {
-        for (int i = 0; i < size; i++) {
-            cars.add(new Car());
+    public Racers(String racerNames) {
+        String[] racers = racerNames.split(RACER_NAME_SEPARATOR);
+        for (String racer : racers) {
+            cars.add(new Car(racer));
         }
     }
 
