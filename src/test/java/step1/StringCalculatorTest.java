@@ -19,6 +19,15 @@ public class StringCalculatorTest {
         assertThat(stringCalculator.calculate(input)).isEqualTo(10);
     }
 
+    @Test
+    void divideByZeroTest() {
+        String input = "2 + 3 * 4 / 0";
+
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            stringCalculator.calculate(input);
+        });
+    }
+
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "  "})
     void isBlankTest(String input) {
