@@ -16,8 +16,8 @@ class RaceTest {
     void moveAll_모든_자동차_움직이기() {
         //given
         Engine engine = new FixedEngine(10);
-        Car car1 = new Car(engine);
-        Car car2 = new Car(engine);
+        Car car1 = new Car("name1", engine);
+        Car car2 = new Car("name2", engine);
         Race race = new Race(Arrays.asList(car1, car2));
 
         //when

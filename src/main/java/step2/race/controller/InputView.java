@@ -1,12 +1,15 @@
 package step2.race.controller;
 
 import java.io.InputStream;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
 
+    private static final String DELIMITER = ",";
     private static final String EMPTY = "";
-    private static final int MINIMUM_CAR = 0;
+    private static final int MINIMUM_CAR = 1;
     private static final int MINIMUM_MOVE = 0;
 
     private final Scanner scanner;
@@ -15,16 +18,21 @@ public class InputView {
         this.scanner = new Scanner(inputStream);
     }
 
-    public Integer inputCarAmount() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
+    public List<String> inputCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 
         String input = scanner.nextLine();
         validateInput(input);
 
-        int carAmount = Integer.parseInt(input);
-        validateCarAmount(carAmount);
+        List<String> names = Arrays.asList(parseName(input));
 
-        return carAmount;
+        validateCarAmount(names.size());
+
+        return names;
+    }
+
+    private String[] parseName(String input) {
+        return input.split(DELIMITER);
     }
 
     public Integer inputMoveAmount() {
@@ -51,9 +59,9 @@ public class InputView {
         }
     }
 
-    private void validateInput(String amount) {
-        if (amount == null || amount.trim().equals(EMPTY)) {
-            throw new IllegalArgumentException(amount + "는 올바른 입력이 아닙니다.");
+    private void validateInput(String input) {
+        if (input == null || input.trim().equals(EMPTY)) {
+            throw new IllegalArgumentException(input + "는 올바른 입력이 아닙니다.");
         }
     }
 

@@ -14,11 +14,11 @@ public class RaceController {
     private static OutputView outputView = new OutputView();
 
     public static void main(String[] args) {
-        int carAmount = inputView.inputCarAmount();
+        List<String> names = inputView.inputCarNames();
         int moveAmount = inputView.inputMoveAmount();
 
         RaceService raceService = new RaceService();
-        List<Car> cars = raceService.makeRacingCars(carAmount, new RandomEngine());
+        List<Car> cars = raceService.makeRacingCars(names, new RandomEngine());
         Race race = new Race(cars);
 
         raceService.startRacing(race, moveAmount);

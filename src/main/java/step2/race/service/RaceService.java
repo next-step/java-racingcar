@@ -15,10 +15,10 @@ public class RaceService {
         }
     }
 
-    public List<Car> makeRacingCars(int carAmount, Engine engine) {
+    public List<Car> makeRacingCars(List<String> names, Engine engine) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carAmount; i++) {
-            Car car = new Car(engine);
+        for (String name : names) {
+            Car car = new Car(name, engine);
             cars.add(car);
         }
         return cars;
