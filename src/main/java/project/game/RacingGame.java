@@ -3,33 +3,27 @@ package project.game;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingGame implements RacingGameController {
+public class RacingGame {
+
+    public static final char CAR_POSITION_TEXT = '-';
 
     private GameType mGameType;
-    private RacingGameView mRacingGameView;
+    private RacingGameNotifier mRacingGameNotifier;
     private List<Car> mCars;
 
-    public RacingGame(RacingGameView racingGameView) {
-        this.mRacingGameView = racingGameView;
+    public RacingGame(RacingGameNotifier racingGameNotifier) {
+        this.mRacingGameNotifier = racingGameNotifier;
         this.mCars = new ArrayList<>();
-
-        mRacingGameView.setController(this);
     }
 
-    @Override
-    public void startGame(int carCount, int roundCount) {
+    public void start(GameType gameType, int carCount, int roundCount) {
+        mGameType = gameType;
         initializeCars(mGameType, carCount);
         startRacing(roundCount);
         endRacing();
     }
 
-    public void start(GameType gameType) {
-        mGameType = gameType;
-        mRacingGameView.onStartGame();
-    }
-
     private void endRacing() {
-        mRacingGameView.onEndGame();
         mCars.clear();
     }
 
@@ -47,7 +41,7 @@ public class RacingGame implements RacingGameController {
     }
 
     private void notifyCarPositionsChange(List<Integer> currentCarPositions) {
-        mRacingGameView.onCarPositionsChange(currentCarPositions);
+        mRacingGameNotifier.onResultRacingRound(currentCarPositions);
     }
 
     private List<Integer> moveCars() {
