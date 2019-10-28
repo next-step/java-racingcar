@@ -14,7 +14,6 @@ public class RacingGameViewImpl implements RacingGameView {
     private static final String RACING_GAME_START_TEXT = "레이싱 시작!";
     private static final String RACING_GAME_END_TEXT = "레이싱 종료!";
 
-    private static final String NEW_LINE_TEXT = "\n";
     private static final char CAR_POSITION_TEXT = '-';
 
     private InputTool mInputTool;
@@ -70,7 +69,7 @@ public class RacingGameViewImpl implements RacingGameView {
     }
 
     private void drawNewLine() {
-        drawText(NEW_LINE_TEXT);
+        drawText(System.lineSeparator());
     }
 
     private void drawCarPosition(int position) {
