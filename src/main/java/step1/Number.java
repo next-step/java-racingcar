@@ -4,16 +4,16 @@ public class Number {
 
     private int value;
 
-    public int getValue() {
-        return value;
-    }
-
     public Number(String num) {
         value = parseInt(num);
     }
 
+    public int getValue() {
+        return value;
+    }
+
     private void plus(int num) {
-         value += num;
+        value += num;
     }
 
     private void minus(int num) {

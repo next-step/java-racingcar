@@ -25,9 +25,9 @@ class CarTest {
     @Test
     void getScoreTest() {
         Car car = new Car(5);
-        car.moveCountSet.set(1);
-        car.moveCountSet.set(2);
-        car.moveCountSet.set(4);
+        car.go(2);
+        car.go(3);
+        car.go(5);
         assertAll(
                 () -> assertEquals(0, car.getScore(1)),
                 () -> assertEquals(1, car.getScore(2)),
@@ -40,9 +40,9 @@ class CarTest {
     @Test
     void getMove() {
         Car car = new Car(5);
-        car.moveCountSet.set(1);
-        car.moveCountSet.set(2);
-        car.moveCountSet.set(4);
+        car.go(2);
+        car.go(3);
+        car.go(5);
         assertAll(
                 () -> assertEquals(false, car.getMove(1)),
                 () -> assertEquals(true, car.getMove(2)),

@@ -13,6 +13,7 @@ class RacingTest {
 
     InputView inputView = new InputView();
     Racing racing;
+
     @BeforeEach
     void setUp() {
         inputView = new InputView();
@@ -22,7 +23,7 @@ class RacingTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value={
+    @CsvSource(value = {
             "3:5",
             "5:5"
     }, delimiter = ':')
@@ -30,29 +31,28 @@ class RacingTest {
         inputView.carNum = carNum;
         inputView.turn = turn;
         racing = new Racing(inputView);
-        assertThat(racing.cars.length).isEqualTo(carNum);
-        assertThat(racing.turn).isEqualTo(turn);
+        assertThat(racing.getCarsLength()).isEqualTo(carNum);
+        assertThat(racing.getTurn()).isEqualTo(turn);
     }
 
     @Test
     void race() {
         racing.race(1);
         assertAll(
-                () -> assertEquals(1, racing.cars[0].getScore(1)),
-                () -> assertEquals(1, racing.cars[0].getScore(1)),
-                () -> assertEquals(1, racing.cars[0].getScore(1)),
-                () -> assertEquals(1, racing.cars[0].getScore(1)),
-                () -> assertEquals(1, racing.cars[0].getScore(1))
+                () -> assertEquals(1, racing.getCar(0).getScore(1)),
+                () -> assertEquals(1, racing.getCar(0).getScore(1)),
+                () -> assertEquals(1, racing.getCar(0).getScore(1)),
+                () -> assertEquals(1, racing.getCar(0).getScore(1)),
+                () -> assertEquals(1, racing.getCar(0).getScore(1))
         );
     }
 
     @Test
     void moveTest() {
-        Car car = racing.cars[0];
+        Car car = racing.getCar(0);
         racing.move(car, 1);
         racing.move(car, 2);
         racing.move(car, 4);
-
         assertAll(
                 () -> assertEquals(1, car.getScore(1)),
                 () -> assertEquals(2, car.getScore(2)),

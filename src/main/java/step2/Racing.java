@@ -5,21 +5,33 @@ package step2;
 
 /**
  * 자동차 게임 진행 부분
- * @version 1.0.0
+ *
  * @author naheenosaur
+ * @version 1.0.0
  */
 public class Racing {
-    Car[] cars;
-    int turn;
-    public static int MINIMUM_RANDOM_VALUE = 4;
+    private static int MINIMUM_RANDOM_VALUE = 4;
+    private Car[] cars;
+    private int turn;
 
     public Racing(InputView inputView) {
         turn = inputView.getTurn();
-        int carNum = inputView.getCarNum();
-        cars = new Car[carNum];
-        for (int num = 0; num < carNum; num++) {
-            cars[num] = new Car(turn);
+        cars = new Car[inputView.getCarNum()];
+        for (int i = 0; i < cars.length; i++) {
+            cars[i] = new Car(turn);
         }
+    }
+
+    public int getTurn() {
+        return turn;
+    }
+
+    public int getCarsLength() {
+        return cars.length;
+    }
+
+    public Car getCar(int index) {
+        return cars[index];
     }
 
     public void run() {

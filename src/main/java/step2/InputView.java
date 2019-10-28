@@ -7,13 +7,14 @@ import java.util.Scanner;
 
 /**
  * 자동차 게임 사용자 입력 부분
- * @version 1.0.0
+ *
  * @author naheenosaur
+ * @version 1.0.0
  */
 public class InputView {
-    private static Scanner scanner = new Scanner(System.in);
     private static final String CAR_COUNT_QUESTION = "자동차 대수는 몇 대 인가요?";
     private static final String TURN_COUNT_QUESTION = "시도할 회수는 몇 회 인가요?";
+    private static Scanner scanner = new Scanner(System.in);
     int carNum;
     int turn;
 
