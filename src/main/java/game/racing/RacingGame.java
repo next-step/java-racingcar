@@ -10,7 +10,7 @@ import java.util.List;
  * @author : yusik
  * @date : 2019/10/26
  */
-public class RacingGame implements Game {
+public class RacingGame implements Game<TrackingLog> {
 
     private int numberOfCar;
     private int numberOfTimes;
@@ -41,7 +41,7 @@ public class RacingGame implements Game {
     }
 
     @Override
-    public Result getResult() {
+    public Result<TrackingLog> getResult() {
         return result;
     }
 }

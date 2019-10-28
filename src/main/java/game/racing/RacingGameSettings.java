@@ -1,32 +1,28 @@
 package game.racing;
 
+import game.GameSettings;
+import game.UserInput;
+
 /**
  * @author : yusik
  * @date : 2019/10/26
  */
-public class RacingGameSettings {
+public class RacingGameSettings extends GameSettings {
 
-    public static String TEXT_NUMBER_OF_CAR = "자동차 대수는 몇 대 인가요?";
-    public static String KEY_NUMBER_OF_CAR = "numberOfCar";
-    public static String TEXT_NUMBER_OF_TIMES = "시도할 회수는 몇 회 인가요?";
-    public static String KEY_NUMBER_OF_TIMES = "numberOfTimes";
-
-    private int numberOfCar;
-    private int numberOfTimes;
+    private static String KEY_NUMBER_OF_CAR = "numberOfCar";
+    private static String KEY_NUMBER_OF_TIMES = "numberOfTimes";
 
     public int getNumberOfCar() {
-        return numberOfCar;
-    }
-
-    public void setNumberOfCar(int numberOfCar) {
-        this.numberOfCar = numberOfCar;
+        return Integer.parseInt(userInput.getValue(KEY_NUMBER_OF_CAR));
     }
 
     public int getNumberOfTimes() {
-        return numberOfTimes;
+        return Integer.parseInt(userInput.getValue(KEY_NUMBER_OF_TIMES));
     }
 
-    public void setNumberOfTimes(int numberOfTimes) {
-        this.numberOfTimes = numberOfTimes;
+    @Override
+    public void setInputMessages(UserInput userInput) {
+        userInput.addInputMessage(KEY_NUMBER_OF_CAR, "자동차 대수는 몇 대 인가요?");
+        userInput.addInputMessage(KEY_NUMBER_OF_TIMES, "시도할 회수는 몇 회 인가요?");
     }
 }

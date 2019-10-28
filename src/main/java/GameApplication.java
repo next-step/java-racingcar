@@ -3,8 +3,8 @@ import game.InputView;
 import game.ResultView;
 import game.racing.RacingGame;
 import game.racing.RacingGameSettings;
-
-import static game.racing.RacingGameSettings.*;
+import game.racing.RacingResultView;
+import game.racing.TrackingLog;
 
 /**
  * @author : yusik
@@ -14,20 +14,15 @@ public class GameApplication {
 
     public static void main(String[] args) {
 
-        InputView inputView = new InputView();
-        inputView.addMessage(KEY_NUMBER_OF_CAR, TEXT_NUMBER_OF_CAR);
-        inputView.addMessage(KEY_NUMBER_OF_TIMES, TEXT_NUMBER_OF_TIMES);
+        RacingGameSettings settings = new RacingGameSettings();
+        InputView inputView = new InputView(settings);
         inputView.render();
 
-        RacingGameSettings settings = new RacingGameSettings();
-        settings.setNumberOfCar(inputView.getInput(KEY_NUMBER_OF_CAR));
-        settings.setNumberOfTimes(inputView.getInput(KEY_NUMBER_OF_TIMES));
-
-        Game game = new RacingGame(settings);
+        Game<TrackingLog> game = new RacingGame(settings);
         game.run();
 
-        ResultView resultView = new ResultView(game.getResult());
-        resultView.render();
+        ResultView<TrackingLog> resultView = new RacingResultView();
+        resultView.render(game.getResult());
 
     }
 

@@ -1,5 +1,6 @@
 package game;
 
+import java.io.InputStream;
 import java.util.*;
 
 /**
@@ -9,27 +10,23 @@ import java.util.*;
 public class InputView {
 
     private Scanner scanner;
-    private Map<String, UserInput<Integer>> inputs;
+    private UserInput userInput;
 
-    public InputView() {
-        scanner = new Scanner(System.in);
-        inputs = new HashMap<>();
+    public InputView(GameSettings settings) {
+        this(System.in, settings);
     }
 
-    public void addMessage(String key, String message) {
-        UserInput<Integer> input = new UserInput<>();
-        input.setMessage(message);
-        this.inputs.put(key, input);
+    public InputView(InputStream in, GameSettings settings) {
+        scanner = new Scanner(in);
+        settings.initialize();
+        userInput = settings.getUserInput();
+
     }
 
     public void render() {
-        for (UserInput<Integer> input : inputs.values()) {
+        for (Input input : userInput.getMessages()) {
             System.out.println(input.getMessage());
-            input.setValue(scanner.nextInt());
+            input.setValue(scanner.nextLine());
         }
-    }
-
-    public Integer getInput(String key) {
-        return inputs.get(key).getValue();
     }
 }

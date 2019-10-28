@@ -9,7 +9,7 @@ import java.util.List;
  * @author : yusik
  * @date : 2019/10/26
  */
-public class RacingResult implements Result {
+public class RacingResult implements Result<TrackingLog> {
 
     private List<TrackingLog> logs;
 
@@ -24,33 +24,8 @@ public class RacingResult implements Result {
     }
 
     @Override
-    public List<String> getExecutionResults() {
-
-        List<String> executionResults = new ArrayList<>();
-        int times = logs.get(0).getSize();
-        for (int i = 0; i < times; i++) {
-            executionResults.add(getResultString(i));
-        }
-        return executionResults;
+    public List<TrackingLog> getExecutionResults() {
+        return logs;
     }
 
-    private String getResultString(int i) {
-        StringBuilder sb = new StringBuilder();
-        for (TrackingLog log : logs) {
-            sb.append(log.getName())
-                    .append("\t")
-                    .append(getCarPositionLog(log.getPositionByTimes(i)))
-                    .append("\n");
-        }
-        sb.append("\n");
-        return sb.toString();
-    }
-
-    private String getCarPositionLog(int position) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            sb.append("-");
-        }
-        return sb.toString();
-    }
 }

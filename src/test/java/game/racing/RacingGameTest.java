@@ -1,8 +1,13 @@
 package game.racing;
 
 import game.Game;
+import game.GameSettings;
+import game.InputView;
+import game.UserInput;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayInputStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,20 +19,21 @@ public class RacingGameTest {
 
     @DisplayName("레이싱 게임 시작, 결과 반환")
     @Test
-    void name() {
+    void run() {
 
         // given
-        int expected = 5;
+        ByteArrayInputStream in = new ByteArrayInputStream("5\n5".getBytes());
         RacingGameSettings settings = new RacingGameSettings();
-        settings.setNumberOfCar(3);
-        settings.setNumberOfTimes(expected);
+        InputView inputView = new InputView(in, settings);
+        inputView.render();
+
         Game game = new RacingGame(settings);
 
         // when
         game.run();
 
         // then
-        assertThat(game.getResult().getExecutionResults().size()).isEqualTo(expected);
+        assertThat(game.getResult().getExecutionResults().size()).isEqualTo(5);
 
     }
 
