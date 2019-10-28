@@ -55,26 +55,29 @@ public class StringCalculator {
     }
 
     private void doCalculation(int index, String operate) {
-        int a, b;
+        int firstOperand;
+        int secondOperand;
+        int nextOperandIndex = index + 1;
 
-        a = result;
-        b = operands.get(index + 1);
+        firstOperand = result;
+        secondOperand = operands.get(nextOperandIndex);
+
         if (index == 0) {
-            a = operands.get(index);
+            firstOperand = operands.get(index);
         }
 
         switch (operate) {
             case PLUS:
-                add(a, b);
+                add(firstOperand, secondOperand);
                 break;
             case MINUS:
-                subtract(a, b);
+                subtract(firstOperand, secondOperand);
                 break;
             case MULTIPLY:
-                multiply(a, b);
+                multiply(firstOperand, secondOperand);
                 break;
             case DIVIDE:
-                divide(a, b);
+                divide(firstOperand, secondOperand);
                 break;
             default:
                 break;
