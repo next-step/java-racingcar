@@ -1,6 +1,7 @@
 package step1;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static step1.Utils.ValidationUtils.isBlankThrowException;
 import static step1.Utils.ValidationUtils.isNotNumericThrowException;
@@ -13,8 +14,8 @@ public class StringCalculator {
     private static final String DIVIDE = "/";
     private static final String SPACE_DELIMITER = " ";
 
-    private ArrayList<String> operands;
-    private ArrayList<Integer> operates;
+    private List<String> operands;
+    private List<Integer> operates;
     private int result;
 
     StringCalculator(){
