@@ -3,7 +3,6 @@ package step2.race.controller;
 import step2.car.domain.Car;
 import step2.car.domain.engine.RandomEngine;
 import step2.race.domain.Race;
-import step2.race.domain.RaceHistory;
 import step2.race.service.RaceService;
 
 import java.util.List;
@@ -23,8 +22,7 @@ public class RaceController {
 
         raceService.startRacing(race, moveAmount);
 
-        List<RaceHistory> raceHistories = race.getRaceHistories();
-        outputView.showResult(raceHistories);
+        outputView.showResult(race);
     }
 
 }

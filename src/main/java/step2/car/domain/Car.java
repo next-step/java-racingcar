@@ -21,6 +21,10 @@ public class Car {
         return this.status.getName();
     }
 
+    public Integer getPosition() {
+        return this.status.getPosition();
+    }
+
     public void move() {
         int power = engine.getPower();
         if (isEnough(power)) {

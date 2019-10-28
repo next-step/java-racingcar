@@ -5,7 +5,6 @@ public class Status {
     private String name;
     private Integer position = 0;
 
-
     public Status(String name) {
         this.name = name;
     }
@@ -30,4 +29,5 @@ public class Status {
     public void forward() {
         this.position++;
     }
+
 }

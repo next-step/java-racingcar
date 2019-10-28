@@ -10,6 +10,8 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 public class Race {
+    private static final int NOBODY_MOVE = 0;
+
     private List<Car> cars;
     private List<RaceHistory> raceHistories = new ArrayList<>();
 
@@ -35,5 +37,25 @@ public class Race {
         return this.cars.stream()
                 .map(Car::getStatus)
                 .collect(toList());
+    }
+
+    public RaceResult getResult() {
+        List<Car> winners = findWinners();
+        return new RaceResult(winners);
+    }
+
+    private List<Car> findWinners() {
+        int max = getMaxPosition();
+
+        return this.cars.parallelStream()
+                .filter(car -> car.getPosition() == max)
+                .collect(toList());
+    }
+
+    private Integer getMaxPosition() {
+        return this.cars.parallelStream()
+                .map(Car::getPosition)
+                .max(Integer::compareTo)
+                .orElse(NOBODY_MOVE);
     }
 }
