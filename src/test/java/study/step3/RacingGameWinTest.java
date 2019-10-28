@@ -27,4 +27,9 @@ public class RacingGameWinTest {
         assertThat(racingGameWin.initiateCar()).hasSize(3);
         assertThat(racingGameWin.updatePosition(1)).isBetween(1, 2);
     }
+
+    @Test
+    void moveCheckTest() {
+        assertThat(racingGameWin.moveCheck()).isBetween(0, 1);
+    }
 }

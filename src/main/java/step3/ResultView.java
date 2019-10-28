@@ -24,4 +24,6 @@ public class ResultView {
         }
         System.out.println();
     }
+
+
 }
