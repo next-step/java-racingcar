@@ -16,9 +16,9 @@ public class RacingGame {
         this.mCars = new ArrayList<>();
     }
 
-    public void start(GameType gameType, int carCount, int roundCount) {
+    public void start(GameType gameType, List<String> carNames, int roundCount) {
         mGameType = gameType;
-        initializeCars(mGameType, carCount);
+        initializeCars(mGameType, carNames);
         startRacing(roundCount);
         endRacing();
     }
@@ -27,9 +27,9 @@ public class RacingGame {
         mCars.clear();
     }
 
-    private void initializeCars(GameType gameType, int carCount) {
-        for (int i = 0; i < carCount; i++) {
-            mCars.add(createCar(gameType));
+    private void initializeCars(GameType gameType, List<String> carNames) {
+        for (String each : carNames) {
+            mCars.add(createCar(each, gameType));
         }
     }
 
@@ -55,8 +55,8 @@ public class RacingGame {
         return currentCarPositions;
     }
 
-    private Car createCar(GameType gameType) {
-        return new Car(gameType.getMoveRule());
+    private Car createCar(String name, GameType gameType) {
+        return new Car(name, gameType.getMoveRule());
     }
 
 
