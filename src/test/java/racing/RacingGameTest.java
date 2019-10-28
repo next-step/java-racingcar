@@ -2,12 +2,9 @@ package racing;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racing.movestrategies.RandomMoveStrategy;
 
 class RacingGameTest {
 
@@ -18,10 +15,7 @@ class RacingGameTest {
 
     @BeforeEach
     void setUp() {
-        RandomMoveStrategy randomMoveStrategy = mock(RandomMoveStrategy.class);
-        when(randomMoveStrategy.canIMove())
-            .thenReturn(true);
-        cars = new Car[]{new Car(randomMoveStrategy), new Car(randomMoveStrategy)};
+        cars = new Car[]{new Car(() -> true), new Car(() -> true)};
 
         racingGame = new RacingGame(numberOfCars, tries) {
             @Override
