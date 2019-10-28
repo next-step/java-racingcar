@@ -1,4 +1,4 @@
-package com.seok.racing;
+package com.seok.racing.view;
 
 import java.util.Scanner;
 
