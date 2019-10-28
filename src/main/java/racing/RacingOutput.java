@@ -1,9 +1,13 @@
 package racing;
 
+import java.util.List;
+
 public class RacingOutput {
     private static final String RESULT_MESSAGE = "실행결과";
-    private static final String POSITION_SIGNATURES = "-";
     private static final String DEFAULT_STATUS_OUTPUT_FORMAT = "%s : ";
+    private static final String POSITION_SIGNATURES = "-";
+    private static final String WINNER_MESSAGE_FORMAT = "%s가 최종 우승했습니다.";
+    private static final String WINNER_NAME_SEPARATOR = ", ";
 
     public static void printResultMessage() {
         System.out.println(RESULT_MESSAGE);
@@ -25,5 +29,10 @@ public class RacingOutput {
 
         System.out.println(stringBuilder);
         System.out.println();
+    }
+
+    public static void printWinner(List<String> racers) {
+        String winnerName = String.join(WINNER_NAME_SEPARATOR, racers);
+        System.out.println(String.format(WINNER_MESSAGE_FORMAT, winnerName));
     }
 }

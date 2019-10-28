@@ -13,7 +13,7 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        this.car = new Car(racers[i]);
+        this.car = new Car("dave");
     }
 
     @ParameterizedTest

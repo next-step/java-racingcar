@@ -2,16 +2,15 @@ package racing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Racers {
-    private static final String RACER_NAME_SEPARATOR = ",";
+    private static final int DEFAULT_MAX_POSITION = 0;
+
     private List<Car> cars = new ArrayList<>();
 
-    public Racers(String racerNames) {
-        String[] racers = racerNames.split(RACER_NAME_SEPARATOR);
-        for (String racer : racers) {
-            cars.add(new Car(racer));
-        }
+    public Racers(List<Car> cars) {
+        this.cars.addAll(cars);
     }
 
     public void moveAll() {
@@ -30,5 +29,21 @@ public class Racers {
 
     public int getPosition(int index) {
         return cars.get(index).position();
+    }
+
+    public List<String> winner() {
+        int maxPosition = getMaxPosition();
+
+        return this.cars.stream()
+                .filter(car -> car.position() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
+    private int getMaxPosition() {
+        return this.cars.stream()
+                .mapToInt(Car::position)
+                .max()
+                .orElse(DEFAULT_MAX_POSITION);
     }
 }
