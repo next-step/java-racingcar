@@ -1,5 +1,7 @@
 package com.seok2.calculator;
 
+import com.seok.racing.utils.StringUtils;
+
 public class StringCalculator {
 
     public void checkIsEmpty(String expression) {
@@ -14,11 +16,7 @@ public class StringCalculator {
 
     public int evaluate(String expression) {
         checkIsEmpty(expression);
-        return calculate(split(expression));
-    }
-
-    private String[] split(String expression) {
-        return expression.split(" ");
+        return calculate(StringUtils.split(expression, " "));
     }
 
     private int calculate(String[] array) {
