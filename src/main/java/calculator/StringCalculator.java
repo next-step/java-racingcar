@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
  */
 public class StringCalculator {
 
-    private static final int FIRST_VALUE = 0;
+    private static final int FIRST_VALUE_INDEX = 0;
     private static final Function<String[], Integer> LAST_VALUE_INDEX = str -> str.length - 1;
     private static final String EMPTY_STRING = "";
     private static final String BLANK_STRING = " ";
@@ -31,7 +31,7 @@ public class StringCalculator {
     }
 
     private static final double calculate(String... splitText) {
-        double resultValue = Double.parseDouble(splitText[FIRST_VALUE]);
+        double resultValue = Double.parseDouble(splitText[FIRST_VALUE_INDEX]);
         for (int i = 1; i < splitText.length; i += 2) {
             resultValue = Calculator.findOperator(splitText[i]).calculate(resultValue, Double.parseDouble(splitText[i + 1]));
         }
@@ -39,7 +39,7 @@ public class StringCalculator {
     }
 
      private static boolean checkValues(String... splitText) {
-        if (!CheckUtil.isNumeric(splitText[FIRST_VALUE]) || !CheckUtil.isNumeric(splitText[LAST_VALUE_INDEX.apply(splitText)])) {
+        if (!CheckUtil.isNumeric(splitText[FIRST_VALUE_INDEX]) || !CheckUtil.isNumeric(splitText[LAST_VALUE_INDEX.apply(splitText)])) {
             return false;
         }
 
