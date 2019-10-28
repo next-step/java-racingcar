@@ -23,13 +23,11 @@ public class RacingGameInputView {
     }
 
     public int getNumberOfCars() {
-        int cars = getInputValue(CAR_INPUT_QUESTION);
-        return cars;
+        return getInputValue(CAR_INPUT_QUESTION);
     }
 
     public int getNumberOfRound() {
-        int round = getInputValue(GAME_ATTEMPT_ROUND_QUESTION);
-        return round;
+        return getInputValue(GAME_ATTEMPT_ROUND_QUESTION);
     }
 
 
