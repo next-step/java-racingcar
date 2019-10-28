@@ -4,12 +4,17 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
-    RacingGame racingGame = new RacingGame(1);
+    private List<Integer> carFirstPositions = new ArrayList<>(Collections.nCopies(5, 0));
+    private int numberOfCars = 5;
+
+    private RacingGame racingGame = new RacingGame(numberOfCars, carFirstPositions);
 
     @Test
     void generateRandomTest() {
@@ -29,8 +34,8 @@ public class RacingGameTest {
 
     @Test
     void moveTest() {
-        RacingGame racingGameForMoveTest = new RacingGame(3);
-        assertThat(racingGameForMoveTest.move()).hasSize(3);
-        assertThat(racingGameForMoveTest.move()).isInstanceOf(List.class);
+        assertThat(racingGame.move()).hasSize(5);
+        assertThat(racingGame.move().get(0)).isLessThanOrEqualTo(racingGame.move().get(0));
+        assertThat(racingGame.move()).isInstanceOf(List.class);
     }
 }

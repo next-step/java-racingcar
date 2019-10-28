@@ -5,23 +5,24 @@ import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
-    private int time;
-    private int[] carPositions = {0, 0, 0};
+    private int numberOfCars;
+    private List<Integer> carPositions;
     private List<Integer> resultPositions;
 
-    public RacingGame(int time) {
-        this.time = time;
+    public RacingGame(int value, List<Integer> carPositions) {
+        this.numberOfCars = value;
+        this.carPositions = carPositions;
         resultPositions = new ArrayList<>();
     }
 
     public List<Integer> move() {
         // TODO 구현
-        int length = carPositions.length;
+        int length = carPositions.size();
         int position;
         int resultPosition;
 
-        for(int i = 0; i < length; i++) {
-            position = carPositions[i];
+        for (int i = 0; i < length; i++) {
+            position = carPositions.get(i);
             resultPosition = iterateCarMove(position);
             resultPositions.add(resultPosition);
         }
@@ -30,13 +31,10 @@ public class RacingGame {
     }
 
     public int iterateCarMove(int position) {
-        int randomNumber;
+        int randomNumber = generateRandom();
         int movedPosition = position;
 
-        for(int i = 0; i < time; i++) {
-            randomNumber = generateRandom();
-            movedPosition = moveForward(randomNumber, movedPosition);
-        }
+        movedPosition = moveForward(randomNumber, movedPosition);
 
         return movedPosition;
     }
