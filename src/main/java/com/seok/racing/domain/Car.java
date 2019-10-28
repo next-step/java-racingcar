@@ -12,7 +12,6 @@ public class Car {
     private Queue<Integer> record = new LinkedList<>();
     private Movable movable;
 
-
     protected Car(String name) {
         this(name, new RandomMovable());
     }
