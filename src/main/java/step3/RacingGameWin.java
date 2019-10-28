@@ -57,12 +57,15 @@ public class RacingGameWin {
     public void winner() {
         int winnerPosition = 0;
         for (Car car : cars) {
-            if (winnerPosition <= car.getPosition()) {
-                winnerPosition = car.getPosition();
-            }
+            winnerPosition = sortWinner(car, winnerPosition);
         }
-
         ResultView.winner(cars, winnerPosition);
+    }
 
+    private int sortWinner(Car car, int winnerPosition) {
+        if (winnerPosition <= car.getPosition()) {
+            return winnerPosition = car.getPosition();
+        }
+        return winnerPosition;
     }
 }

@@ -35,7 +35,7 @@ public class ResultView {
             }
         }
 
-        System.out.println(winners);
+        System.out.println(winners + "가 최종 우승했습니다.");
     }
 
 }
