@@ -17,7 +17,7 @@ public class SequentialCalculator {
 		validateOperandsAndOperators(numbers, operators);
 
 		// 초기값 설정 이후 연산할 값이 있는지 확인, 연산할 값이 없다면 계산 종료
-		this.result = numbers.get(0);
+		result = numbers.get(0);
 		if (operators.isEmpty()) {
 			return;
 		}
@@ -38,8 +38,7 @@ public class SequentialCalculator {
 	}
 
 	private void calculateFinalResult(List<BigDecimal> numbers, List<Operator> operators) {
-		int operatorSize = operators.size();
-		for (int i = 0; i < operatorSize; i++) {
+		for (int i = 0, end = operators.size(); i < end; i++) {
 			calculateOneStep(operators.get(i), numbers.get(i + NUMBER_OPERATOR_INDEX_DIFF));
 		}
 	}
@@ -49,7 +48,7 @@ public class SequentialCalculator {
 	}
 
 	public BigDecimal getResult() {
-		return this.result.setScale(FINAL_RESULT.getScale(), RoundingMode.HALF_UP);
+		return result.setScale(FINAL_RESULT.getScale(), RoundingMode.HALF_UP);
 	}
 
 }

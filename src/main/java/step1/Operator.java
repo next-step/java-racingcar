@@ -25,23 +25,23 @@ public enum Operator {
 		this.operate = operate;
 	}
 
-	private static Map<String, Operator> operatorCachingMap = new HashMap<>();
+	private static Map<String, Operator> cachedOperators = new HashMap<>();
 
 	static {
 		for (Operator operator : Operator.values()) {
-			operatorCachingMap.put(operator.operationExpression, operator);
+			cachedOperators.put(operator.operationExpression, operator);
 		}
 	}
 
 	public static Operator of(String operationExpression) {
-		if (operatorCachingMap.containsKey(operationExpression)) {
-			return operatorCachingMap.get(operationExpression);
+		if (cachedOperators.containsKey(operationExpression)) {
+			return cachedOperators.get(operationExpression);
 		}
 		throw new IllegalArgumentException(String.format("%s는 존재하지 않는 연산자입니다", operationExpression));
 	}
 
 	public BigDecimal calculate(BigDecimal leftNumber, BigDecimal rightNumber) {
-		return this.operate.apply(leftNumber, rightNumber);
+		return operate.apply(leftNumber, rightNumber);
 	}
 
 }

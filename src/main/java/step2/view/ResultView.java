@@ -1,11 +1,11 @@
 package step2.view;
 
-import java.util.List;
+import step2.domain.CarRaceSnapshot;
 
 public class ResultView {
 
-	public void printVisualizedCarRacing(List<Integer> carRaceSnapshot) {
-		for (int carStep : carRaceSnapshot) {
+	public void printVisualizedCarRacing(CarRaceSnapshot carRaceSnapshot) {
+		for (int carStep : carRaceSnapshot.getSnapshot()) {
 			System.out.println(visualizeCarStep(carStep));
 		}
 		System.out.println();

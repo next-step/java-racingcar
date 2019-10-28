@@ -12,7 +12,7 @@ public enum ScaleRule {
 	}
 
 	public int getScale() {
-		return this.scale;
+		return scale;
 	}
 
 }

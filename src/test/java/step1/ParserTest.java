@@ -9,12 +9,12 @@ import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@SuppressWarnings("NonAsciiCharacters")
 class ParserTest {
 
 	private Parser parser;
 
 	@Test
-	@SuppressWarnings("NonAsciiCharacters")
 	void 공백이_몇_개가_있건_파싱이_성공한다() {
 		// given
 		String inputString = "3    + 7";
@@ -29,7 +29,6 @@ class ParserTest {
 
 	@ParameterizedTest
 	@CsvSource({"+,PLUS", "-,MINUS", "*,MULTIPLY", "/,DIVIDE"})
-	@SuppressWarnings("NonAsciiCharacters")
 	void 네_종류의_사칙연산_파싱이_성공한다(String operatorExpression, Operator operator) {
 		// given
 		String inputString = String.format("1 %s 2", operatorExpression);
@@ -42,7 +41,6 @@ class ParserTest {
 	}
 
 	@Test
-	@SuppressWarnings("NonAsciiCharacters")
 	void 구분된_원소개수가_잘못되었으면_파싱이_실패한다() {
 		// given
 		String inputString = "3 + 7 -";
@@ -54,7 +52,6 @@ class ParserTest {
 	}
 
 	@Test
-	@SuppressWarnings("NonAsciiCharacters")
 	void 잘못된_숫자가_있으면_파싱이_실패한다() {
 		// given
 		String inputString = "three + 7";
@@ -66,7 +63,6 @@ class ParserTest {
 	}
 
 	@Test
-	@SuppressWarnings("NonAsciiCharacters")
 	void 잘못된_연산자가_있으면_파싱이_실패한다() {
 		// given
 		String inputString = "3 % 7";

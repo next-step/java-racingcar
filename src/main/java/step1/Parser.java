@@ -31,8 +31,7 @@ public class Parser {
 	}
 
 	private void insertAllStringIntoList(String[] separatedString) {
-		int separatedStringLength = separatedString.length;
-		for (int i = 0; i < separatedStringLength; i++) {
+		for (int i = 0, end = separatedString.length; i < end; i++) {
 			addNumberIfOrderIsEven(separatedString[i], i);
 			addOperatorIfOrderIsOdd(separatedString[i], i);
 		}
