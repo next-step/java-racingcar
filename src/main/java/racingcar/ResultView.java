@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
 
@@ -12,11 +13,25 @@ public class ResultView {
         this.cycles = cycles;
     }
 
-    public void print() {
+    public void printRace() {
         for (RacingCycle cars : cycles) {
             printCycle(cars);
         }
     }
+
+    public void printWinner() {
+        if(cycles == null || cycles.size() == 0) {
+            throw new IllegalArgumentException("실행된 cycle이 없습니다.");
+        }
+        RacingCycle finalRoundCycle = cycles.get(cycles.size() - 1);
+
+        List<String> winners = finalRoundCycle.getWinners().stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
+
+        System.out.println(String.format("%s가 최종 우승하였습니다.", String.join(",", winners)));
+    }
+
 
     private void printCycle(RacingCycle cycle) {
         for (Car car : cycle.get()) {
@@ -33,4 +48,5 @@ public class ResultView {
         }
         return locationBuilder.toString();
     }
+
 }

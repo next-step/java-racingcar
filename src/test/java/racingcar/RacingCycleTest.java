@@ -14,8 +14,8 @@ class RacingCycleTest {
     @DisplayName("첫 RacingCycle 생성 시 car 위치는 0이다.")
     void createFirstRacingCycle() {
         //given
-        int carNumber = 3;
-        RacingCycle racingCycle = new RacingCycle(carNumber);
+        List<Car> init = Arrays.asList(new Car("car1"), new Car("car2"), new Car("car3"));
+        RacingCycle racingCycle = new RacingCycle(init);
 
         //when
         List<Car> cars = racingCycle.get();
@@ -29,7 +29,7 @@ class RacingCycleTest {
     @DisplayName("두번째 RacingCycle 생성 후엔 이전 Cycle과 같은 위치를 가진다.")
     void createRacingCycle() {
         //given
-        List<Car> cars = Arrays.asList(new Car(1), new Car(1));
+        List<Car> cars = Arrays.asList(new Car("car1", 1), new Car("car2", 1));
         RacingCycle racingCycle = new RacingCycle(cars);
 
         //when
@@ -44,14 +44,35 @@ class RacingCycleTest {
     @DisplayName("cycle 실행하면 적어도 이전 위치보다 같거나 크다")
     void doCycle() {
         //given
-        int carNumber = 3;
-        RacingCycle racingCycle = new RacingCycle(carNumber);
+        List<Car> init = Arrays.asList(new Car("car1"), new Car("car2"), new Car("car3"));
+        RacingCycle racingCycle = new RacingCycle(init);
 
         //when
-        List<Car> result = racingCycle.get();
+        racingCycle.doCycle();
 
         //then
+        List<Car> result = racingCycle.get();
         assertThat(result).hasSize(3);
         assertThat(result.get(0).getLocation()).isGreaterThanOrEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("해당 cycle 실행 시 우승자를 기록한다.")
+    void findWinners() {
+        //given
+        List<Car> init = Arrays.asList(new Car("car1", 0),
+                new Car("car2", 5),
+                new Car("car3", 0));
+
+        RacingCycle racingCycle = new RacingCycle(init);
+
+        //when
+        racingCycle.doCycle();
+
+        //then
+        List<Car> winners = racingCycle.getWinners();
+        assertThat(winners).hasSize(1);
+        assertThat(winners.get(0).getName()).isEqualTo("car2");
+        assertThat(winners.get(0).getLocation()).isGreaterThanOrEqualTo(5);
     }
 }

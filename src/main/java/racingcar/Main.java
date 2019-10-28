@@ -11,10 +11,11 @@ public class Main {
 
         UserInput input = inputView.getInput();
 
-        RacingGame game = new RacingGame(input.getCarNumber(), input.getRunNumber());
+        RacingGame game = new RacingGame(input.getCarNameList(), input.getRunNumber());
         List<RacingCycle> cycles = game.getCycles();
 
         ResultView resultView = new ResultView(cycles);
-        resultView.print();
+        resultView.printRace();
+        resultView.printWinner();
     }
 }

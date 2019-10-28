@@ -3,6 +3,7 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -14,15 +15,15 @@ class RacingGameTest {
     void runRacingGame() {
 
         //given
-        int carNumber = 2;
+        List<String> carNameList = Arrays.asList("a","b");
         int runNumber = 3;
 
         //when
-        RacingGame racingGame = new RacingGame(carNumber, runNumber);
+        RacingGame racingGame = new RacingGame(carNameList, runNumber);
         List<RacingCycle> cycles = racingGame.getCycles();
 
         //then
         assertThat(cycles).hasSize(runNumber);
-        assertThat(cycles.get(0).get()).hasSize(carNumber);
+        assertThat(cycles.get(0).get()).hasSize(carNameList.size());
     }
 }
