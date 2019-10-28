@@ -12,6 +12,7 @@ public enum  CarNextStep {
     STOP;
 
     static Function<Integer, Boolean> moveStep = value -> value >= 4;
+
     public static CarNextStep isMoved(int value) {
         return moveStep.apply(value) ? GO : STOP;
     }
