@@ -8,4 +8,5 @@ package racing;
 public interface RacingGameImpl {
     public void start();
     public int getRandomIntValue();
+    public int getParticipantCarCount();
 }
