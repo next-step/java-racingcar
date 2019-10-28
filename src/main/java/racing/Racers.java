@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Racers {
+    private static final String POSITION_SIGNATURES = "-";
+
     private List<Car> cars = new ArrayList<>();
 
     public Racers(int size) {
@@ -28,7 +30,7 @@ public class Racers {
 
     private void printPosition(int position) {
         for (int i = 0; i < position; i++) {
-            System.out.print("-");
+            System.out.print(POSITION_SIGNATURES);
         }
         System.out.println();
     }
