@@ -1,6 +1,7 @@
 package step2.race.domain;
 
 import step2.car.domain.Car;
+import step2.car.domain.Status;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,13 +27,13 @@ public class Race {
     }
 
     private void noteHistory() {
-        RaceHistory raceHistory = new RaceHistory(getAllPosition());
+        RaceHistory raceHistory = new RaceHistory(getAllStatus());
         raceHistories.add(raceHistory);
     }
 
-    private List<Integer> getAllPosition() {
+    private List<Status> getAllStatus() {
         return this.cars.stream()
-                .map(Car::getPosition)
+                .map(Car::getStatus)
                 .collect(toList());
     }
 }

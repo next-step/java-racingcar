@@ -26,10 +26,10 @@ class CarTest {
         Car car = new Car("name", engine);
 
         //then
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getStatus().getPosition()).isEqualTo(0);
 
         car.move();
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getStatus().getPosition()).isEqualTo(1);
     }
 
     @ParameterizedTest
@@ -43,6 +43,6 @@ class CarTest {
         car.move();
 
         //then
-        assertThat(car.getPosition()).isEqualTo(answer);
+        assertThat(car.getStatus().getPosition()).isEqualTo(answer);
     }
 }

@@ -5,31 +5,31 @@ import step2.car.domain.engine.Engine;
 public class Car {
     private static final Integer MINIMUM_POWER = 4;
 
-    private String name;
+    private Status status;
     private Engine engine;
-    private Integer position = 0;
 
     public Car(String name, Engine engine) {
-        this.name = name;
+        this.status = new Status(name);
         this.engine = engine;
     }
 
-    public String getName() {
-        return name;
+    public Status getStatus() {
+        return this.status.cloneNow();
     }
 
-    public Integer getPosition() {
-        return this.position;
+    public String getName() {
+        return this.status.getName();
     }
 
     public void move() {
         int power = engine.getPower();
         if (isEnough(power)) {
-            this.position++;
+            this.status.forward();
         }
     }
 
     private boolean isEnough(int power) {
         return power >= MINIMUM_POWER;
     }
+
 }

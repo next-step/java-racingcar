@@ -21,10 +21,12 @@ class RaceTest {
         Race race = new Race(Arrays.asList(car1, car2));
 
         //when
+        assertThat(race.getRaceHistories()).hasSize(0);
         race.moveAll();
 
         //then
-        assertThat(race.getRaceHistories().get(FIRST_HISTORY).getHistory()).isEqualTo(Arrays.asList(1, 1));
+        assertThat(race.getRaceHistories()).hasSize(1);
+        assertThat(race.getRaceHistories().get(FIRST_HISTORY).getHistory()).hasSize(2);
     }
 
 }
