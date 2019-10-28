@@ -7,9 +7,9 @@ import static racingcar.RandomGenerator.getRandomInteger;
 
 public class RacingCycle {
 
-    private List<Car> cycle = new ArrayList<>();
-
     private static final int BOUND_NUMBER = 10;
+
+    private final List<Car> cycle = new ArrayList<>();
 
     public RacingCycle(List<Car> status) {
         for (Car car : status) {
@@ -23,7 +23,7 @@ public class RacingCycle {
         }
     }
 
-    public void doCycle() {
+    void doCycle() {
         for (Car car : cycle) {
             int number = getRandomInteger(BOUND_NUMBER);
             car.move(number);

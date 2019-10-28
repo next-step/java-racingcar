@@ -9,6 +9,9 @@ public class InputView {
 
     public InputView() {
         this.scanner = new Scanner(System.in);
+    }
+
+    void createInput() {
         this.input = new UserInput(enterCarNumber(), enterRunNumber());
     }
 

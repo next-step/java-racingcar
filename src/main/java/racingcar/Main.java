@@ -6,7 +6,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        UserInput input = new InputView().getInput();
+        InputView inputView = new InputView();
+        inputView.createInput();
+
+        UserInput input = inputView.getInput();
 
         RacingGame game = new RacingGame(input.getCarNumber(), input.getRunNumber());
         List<RacingCycle> cycles = game.getCycles();
