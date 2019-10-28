@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@SuppressWarnings("NonAsciiCharacters")
 class ParserTest {
 
 	private Parser parser;
