@@ -17,7 +17,7 @@ public class Cars {
         cars.stream().forEach(Car::move);
     }
 
-    public List<String> getWinner() {
+    public List<String> getWinners() {
         int max = stream()
             .max(Comparator.comparing(Car::getLocation))
             .map(Car::getLocation)
