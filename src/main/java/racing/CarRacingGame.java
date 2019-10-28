@@ -12,7 +12,7 @@ public class CarRacingGame implements RacingGame {
 
     private static final Random random = new Random();
     private static final int RANDOM_VALUE_AMOUNT = 0;
-    private static final Map<Integer, List<CarNextStep>> participantMap = new HashMap<>();
+    private static final Map<Integer, List<CarNextStep>> participantCar = new HashMap<>();
 
     private final int numberOfCars;
     private final int numberOfRound;
@@ -33,7 +33,7 @@ public class CarRacingGame implements RacingGame {
             for (int car = 0; car < numberOfCars; car++) {
                 move(car, CarNextStep.isMoved(getRandomIntValue()));
             }
-            racingGameResultView.printResult(participantMap);
+            racingGameResultView.printResult(participantCar);
         }
     }
 
@@ -49,11 +49,11 @@ public class CarRacingGame implements RacingGame {
 
     private void putParticipantCarMap(int numberOfCars) {
         for (int i = 0; i < numberOfCars; i++) {
-            participantMap.put(i, new ArrayList<>());
+            participantCar.put(i, new ArrayList<>());
         }
     }
 
     private void move(int carNumber, CarNextStep nextStep) {
-        participantMap.get(carNumber).add(nextStep);
+        participantCar.get(carNumber).add(nextStep);
     }
 }

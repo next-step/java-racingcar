@@ -13,9 +13,9 @@ public class RacingGameResultView {
     private static final String GO = "-";
     private static final String STOP = "";
 
-    public void printResult(Map<Integer, List<CarNextStep>> carMap) {
-        carMap.values().forEach(car -> {
-            car.stream().forEach(step -> {
+    public void printResult(Map<Integer, List<CarNextStep>> participant) {
+        participant.values().forEach(steps -> {
+            steps.stream().forEach(step -> {
                 printLine(step);
             });
             printEmptyLine();
