@@ -34,7 +34,7 @@ public class RacingGameInputView {
     private int getInputValue(String inputQuestion) {
         System.out.println(inputQuestion);
         String inputString = scanner.nextLine();
-        if (!checkInputIsNumber(inputString)) {
+        if (!isNumber(inputString)) {
             throw new InputMismatchException("숫자만 입력 가능합니다.");
         }
 
@@ -48,10 +48,6 @@ public class RacingGameInputView {
 
     private boolean isNumber(String str) {
         return str != null && NUMERIC.matcher(str).matches();
-    }
-
-    private boolean checkInputIsNumber(String numberOfCars) {
-        return isNumber(numberOfCars);
     }
 
     private boolean checkMinValue(int cars) {
