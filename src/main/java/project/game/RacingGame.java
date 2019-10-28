@@ -58,6 +58,4 @@ public class RacingGame {
     private Car createCar(String name, GameType gameType) {
         return new Car(name, gameType.getMoveRule());
     }
-
-
 }
