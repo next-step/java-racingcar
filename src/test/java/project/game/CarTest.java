@@ -21,7 +21,7 @@ public class CarTest {
 
     @Test
     void isMovingCarTest() {
-        assertThat(alwaysCanMoveCar.canMove()).isTrue();
-        assertThat(alwaysCannotMoveCar.canMove()).isFalse();
+        assertThat(alwaysCanMoveCar.moveIfPossible()).isGreaterThan(1);
+        assertThat(alwaysCannotMoveCar.moveIfPossible()).isEqualTo(1);
     }
 }
