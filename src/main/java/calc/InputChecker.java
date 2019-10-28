@@ -9,6 +9,7 @@ public class InputChecker {
     private static final String ILLEGAL_FORMULA = "입력한 식을 다시 한번 확인해주세요.";
     private static final String INPUT_DELIMETER = " ";
     private static final String INPUT_PATTERN = "^[\\d]+( [+|\\-|*|/] [\\d]+)*";
+    private static final Pattern input_pattern = Pattern.compile(INPUT_PATTERN);
     private String[] formula;
 
     public InputChecker(String input) {
@@ -32,6 +33,6 @@ public class InputChecker {
     }
 
     private boolean isValidFormula(String input) {
-        return Pattern.matches(INPUT_PATTERN, input);
+        return input_pattern.matcher(input).matches();
     }
 }
