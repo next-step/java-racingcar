@@ -25,11 +25,6 @@ public class RacingGame {
         return cars;
     }
 
-    public int setTime(int time) {
-        this.time = time;
-        return time;
-    }
-
     private int getRandomNumber() {
         return new Random().nextInt(10);
     }
