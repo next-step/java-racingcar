@@ -3,9 +3,8 @@ package project.game;
 import project.InputTool;
 
 import java.util.List;
-import java.util.Scanner;
 
-public class RacingGameViewImpl implements RacingGameView {
+public class RacingGameConsoleView implements RacingGameView {
 
     private static final String INPUT_FORMAT_ERROR = "숫자만 입력할 수 있습니다. 다시 입력해주세요. Error : %s";
 
@@ -19,7 +18,7 @@ public class RacingGameViewImpl implements RacingGameView {
     private InputTool mInputTool;
     private RacingGameController mController;
 
-    public RacingGameViewImpl() {
+    public RacingGameConsoleView() {
         mInputTool = new InputTool();
     }
 
