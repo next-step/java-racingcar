@@ -14,10 +14,8 @@ class CarsTest {
     static Stream<Arguments> cars() {
         Movable alwaysMovable = () -> true;
 
-        Car tom = new Car("tom");
-        Car leo = new Car("leo");
-        tom.setMoveAble(alwaysMovable);
-        leo.setMoveAble(alwaysMovable);
+        Car tom = new Car("tom", alwaysMovable);
+        Car leo = new Car("leo", alwaysMovable);
         tom.move();
         leo.move();
         Car jay = new Car("jay");

@@ -22,8 +22,7 @@ class CarTest {
     @ParameterizedTest
     @MethodSource("strategies")
     void move(Movable movable, int expected) {
-        Car car = new Car("tom");
-        car.setMoveAble(movable);
+        Car car = new Car("tom", movable);
         car.move();
         assertThat(car.getLocation()).isEqualTo(expected);
     }
