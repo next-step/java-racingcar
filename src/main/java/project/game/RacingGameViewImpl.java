@@ -21,7 +21,7 @@ public class RacingGameViewImpl implements RacingGameView {
     private RacingGameController mController;
 
     public RacingGameViewImpl() {
-        mInputTool = new InputTool(new Scanner(System.in));
+        mInputTool = new InputTool();
     }
 
     @Override

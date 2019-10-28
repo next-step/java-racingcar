@@ -8,8 +8,8 @@ public class InputTool {
 
     private Scanner mScanner;
 
-    public InputTool(Scanner scanner) {
-        mScanner = scanner;
+    public InputTool() {
+        mScanner = new Scanner(System.in);
     }
 
     @NotNull
