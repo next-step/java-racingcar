@@ -29,6 +29,6 @@ class CarsTest {
     @ParameterizedTest
     @MethodSource("cars")
     void getWinner(Cars cars, String[] expected) {
-        assertThat(cars.getWinner()).containsOnly(expected);
+        assertThat(cars.getWinners()).containsOnly(expected);
     }
 }
