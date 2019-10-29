@@ -1,4 +1,4 @@
-package study.first;
+package study.firstweek;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

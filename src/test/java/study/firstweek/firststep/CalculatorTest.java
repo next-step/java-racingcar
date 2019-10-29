@@ -1,4 +1,4 @@
-package study.first;
+package study.firstweek.firststep;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -25,13 +25,15 @@ public class CalculatorTest {
         assertThat(calculator.execute("   1   + 2 *    5")).isEqualTo(15);
     }
 
-    @DisplayName("invalid input 일 때")
+    @DisplayName("invalid input 일 때 1")
     @Test
     void wrongInputTest1() {
         assertThatIllegalArgumentException().isThrownBy(() -> calculator.execute("       "));
+    }
+
+    @DisplayName("invalid input 일 때 2")
+    @Test
+    void wrongInputTest2() {
         assertThatIllegalArgumentException().isThrownBy(() -> calculator.execute("  1 + + 2     "));
-        assertThatIllegalArgumentException().isThrownBy(() -> calculator.execute("  1 +  2  +    "));
-        assertThatIllegalArgumentException().isThrownBy(() -> calculator.execute(" 1 1 +  2  +    "));
-        assertThatIllegalArgumentException().isThrownBy(() -> calculator.execute("  1 (  2     "));
     }
 }
