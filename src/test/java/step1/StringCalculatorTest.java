@@ -6,12 +6,12 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static step1.OperateCollection.validateProperOperation;
 import static step1.Utils.ValidationUtils.isBlankThrowException;
 import static step1.Utils.ValidationUtils.isNumeric;
 
 public class StringCalculatorTest {
     StringCalculator stringCalculator = new StringCalculator();
+    OperateCollection operateCollection = new OperateCollection();
 
     @Test
     void calculatorTest() {
@@ -33,7 +33,7 @@ public class StringCalculatorTest {
     @ValueSource(strings = {"#", "$", "%"})
     void validateProperOperationTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            validateProperOperation(input);
+            operateCollection.validateProperOperation(input);
         });
     }
 

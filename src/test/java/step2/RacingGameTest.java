@@ -11,10 +11,10 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
-    private List<Integer> carFirstPositions = new ArrayList<>(Collections.nCopies(5, 0));
     private int numberOfCars = 5;
+    private List<Integer> carFirstPositions = new ArrayList<>(Collections.nCopies(numberOfCars, 0));
 
-    private RacingGame racingGame = new RacingGame(numberOfCars, carFirstPositions);
+    private RacingGame racingGame = new RacingGame(carFirstPositions);
 
     @Test
     void generateRandomTest() {

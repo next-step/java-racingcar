@@ -15,7 +15,7 @@ public class OperateCollection {
         operates.add(operate);
     }
 
-    public static void validateProperOperation(String operate) {
+    public void validateProperOperation(String operate) {
         if (!operate.equals("+") && !operate.equals("-") && !operate.equals("*") && !operate.equals("/")) {
             throw new IllegalArgumentException(operate);
         }
