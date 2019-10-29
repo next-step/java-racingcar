@@ -10,7 +10,7 @@ package step2;
  * @version 1.0.0
  */
 public class Racing {
-    private static int MINIMUM_RANDOM_VALUE = 0;
+
     private Car[] cars;
     private int turn;
 
@@ -47,14 +47,6 @@ public class Racing {
     }
 
     public void move(Car car, int turn) {
-        if (isPossibleToGo()) {
-            car.go(turn);
-        }
+        car.go(turn);
     }
-
-    private boolean isPossibleToGo() {
-        int random = (int) (Math.random() * 10);
-        return random >= MINIMUM_RANDOM_VALUE;
-    }
-
 }
