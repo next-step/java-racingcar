@@ -66,8 +66,8 @@ public class GameRunner {
             return this;
         }
 
-        public RacingGameRunnerBuilder carNames(final List<String> numberOfCars) {
-            this.carNames = numberOfCars;
+        public RacingGameRunnerBuilder carNames(final List<String> carNames) {
+            this.carNames = carNames;
             return this;
         }
 
