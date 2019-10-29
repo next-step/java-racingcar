@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class RaceHistory {
-    List<Status> history;
+    private final List<Status> history;
 
     public RaceHistory(List<Status> statuses) {
         this.history = statuses;

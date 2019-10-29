@@ -1,4 +1,4 @@
-package step2.race.controller;
+package step2.view;
 
 import step2.car.domain.Status;
 import step2.race.domain.Race;

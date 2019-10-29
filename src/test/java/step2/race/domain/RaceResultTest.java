@@ -7,27 +7,43 @@ import step2.car.domain.Car;
 import step2.car.domain.engine.Engine;
 import step2.car.domain.engine.FixedEngine;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RaceResultTest {
+
+    private static List<Car> getCarsHelper(int amount, Engine engine) {
+        String name = "carName";
+        return IntStream.range(0, amount)
+                .mapToObj(index -> String.format("%s%d", name, index))
+                .map(carName -> new Car(carName, engine))
+                .collect(toList());
+    }
+
+    private static List<Car> combineCarsHelper(List<Car> moveCars, List<Car> stopCars) {
+        List<Car> carList = new ArrayList<>();
+        carList.addAll(moveCars);
+        carList.addAll(stopCars);
+        return carList;
+    }
 
     private static Stream<Arguments> getCars() {
         Engine moveEngine = new FixedEngine(10);
         Engine stopEngine = new FixedEngine(0);
 
-        Car moveCar1 = new Car("moveOne", moveEngine);
-        Car moveCar2 = new Car("moveTwo", moveEngine);
-        Car moveCar3 = new Car("moveThree", moveEngine);
+        List<Car> moveCarList1 = getCarsHelper(1, moveEngine);
 
-        Car stopCar1 = new Car("stopOne", stopEngine);
+        List<Car> moveCarList2 = getCarsHelper(2, moveEngine);
+        List<Car> stopCarList1 = getCarsHelper(1, stopEngine);
 
         return Stream.of(
-                Arguments.of(Arrays.asList(moveCar1, stopCar1), new RaceResult(Arrays.asList(moveCar1))),
-                Arguments.of(Arrays.asList(moveCar2, moveCar3, stopCar1), new RaceResult(Arrays.asList(moveCar2, moveCar3)))
+                Arguments.of(combineCarsHelper(moveCarList1, stopCarList1), new RaceResult(moveCarList1)),
+                Arguments.of(combineCarsHelper(moveCarList2, stopCarList1), new RaceResult(moveCarList2))
         );
     }
 

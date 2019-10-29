@@ -12,8 +12,8 @@ import static java.util.stream.Collectors.toList;
 public class Race {
     private static final int NOBODY_MOVE = 0;
 
-    private List<Car> cars;
-    private List<RaceHistory> raceHistories = new ArrayList<>();
+    private final List<Car> cars;
+    private final List<RaceHistory> raceHistories = new ArrayList<>();
 
     public Race(List<Car> cars) {
         this.cars = cars;

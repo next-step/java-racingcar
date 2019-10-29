@@ -1,4 +1,4 @@
-package step2.race.controller;
+package step2.view;
 
 import java.io.InputStream;
 import java.util.Arrays;
