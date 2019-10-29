@@ -1,5 +1,6 @@
 package winner;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,8 +14,8 @@ public class CarRaceWinnerGame {
     private final List<Car> cars;
     private final int gameRound;
 
-    public CarRaceWinnerGame(List<Car> cars, int gameRound) {
-        this.cars = cars;
+    public CarRaceWinnerGame(String[] carNames, int gameRound) {
+        this.cars = createCars(carNames);
         this.gameRound = gameRound;
     }
 
@@ -22,6 +23,14 @@ public class CarRaceWinnerGame {
         for (int round = 0; round < gameRound; round++) {
             moveCar();
         }
+    }
+
+    private List<Car> createCars(String[] carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
+        }
+        return cars;
     }
 
     private void moveCar() {
