@@ -7,12 +7,10 @@ import java.util.Random;
 public class RacingGame {
     private int numberOfCars;
     private List<Integer> carPositions;
-    private List<Integer> resultPositions;
 
     public RacingGame(int value, List<Integer> carPositions) {
         this.numberOfCars = value;
         this.carPositions = carPositions;
-        resultPositions = new ArrayList<>();
     }
 
     public List<Integer> move() {
@@ -24,10 +22,10 @@ public class RacingGame {
         for (int i = 0; i < length; i++) {
             position = carPositions.get(i);
             resultPosition = iterateCarMove(position);
-            resultPositions.add(resultPosition);
+            carPositions.set(i, resultPosition);
         }
 
-        return resultPositions;
+        return carPositions;
     }
 
     public int iterateCarMove(int position) {
