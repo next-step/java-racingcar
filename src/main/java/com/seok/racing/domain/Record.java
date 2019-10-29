@@ -12,9 +12,10 @@ public class Record {
     }
 
     public int getLocation() {
-        if(record.isEmpty())
+        if (record.isEmpty()) {
             return 0;
-        return record.get(record.size()-1);
+        }
+        return record.get(record.size() - 1);
     }
 
     public int get(int idx) {

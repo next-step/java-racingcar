@@ -30,9 +30,4 @@ public class Car {
     public Record getRecord() {
         return record;
     }
-
-//    protected int getLocation() {
-//        return record.getLocation();
-//    }
-
 }
