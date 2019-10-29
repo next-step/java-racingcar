@@ -2,11 +2,7 @@ package com.seok.racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.LinkedList;
-import java.util.Optional;
-import java.util.Queue;
 import java.util.stream.Stream;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -28,7 +24,7 @@ class CarTest {
     void move(Movable movable, int expected) {
         Car car = new Car("tom", movable);
         car.move();
-        assertThat(car.getRecord().getLocation()).isEqualTo(expected);
+        assertThat(car.getRecord().getTotalDistance()).isEqualTo(expected);
     }
 
 }

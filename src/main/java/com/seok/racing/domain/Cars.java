@@ -19,11 +19,11 @@ public class Cars {
 
     public List<String> getWinners() {
         int max = stream()
-            .max(Comparator.comparing(car -> car.getRecord().getLocation()))
-            .map(car -> car.getRecord().getLocation())
+            .max(Comparator.comparing(car -> car.getRecord().getTotalDistance()))
+            .map(car -> car.getRecord().getTotalDistance())
             .get();
         return stream()
-            .filter(car -> car.getRecord().getLocation() == max)
+            .filter(car -> car.getRecord().getTotalDistance() == max)
             .map(Car::getName)
             .collect(Collectors.toList());
     }

@@ -7,18 +7,15 @@ public class Record {
 
     private List<Integer> record = new ArrayList<>();
 
-    protected void record(int movable) {
-        record.add(getLocation() + movable);
+    protected void record(int action) {
+        record.add(action);
     }
 
-    public int getLocation() {
-        if (record.isEmpty()) {
-            return 0;
-        }
-        return record.get(record.size() - 1);
+    public int getTotalDistance() {
+        return getCumulativeDistance(record.size());
     }
 
-    public int get(int idx) {
-        return record.get(idx);
+    public int getCumulativeDistance(int idx) {
+        return record.stream().limit(idx+1).mapToInt(i->i).sum();
     }
 }

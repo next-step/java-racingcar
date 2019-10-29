@@ -41,6 +41,6 @@ public class RacingGameOutputView {
 
     private String formatLocation(Car car, int idx) {
         return MessageFormat
-            .format(PRINT_LOCATION, car.getName(), StringUtils.repeat(LOCATION_SYMBOL, car.getRecord().get(idx)));
+            .format(PRINT_LOCATION, car.getName(), StringUtils.repeat(LOCATION_SYMBOL, car.getRecord().getCumulativeDistance(idx)));
     }
 }
