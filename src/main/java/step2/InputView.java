@@ -12,23 +12,38 @@ import java.util.Scanner;
  * @version 1.0.0
  */
 public class InputView {
-    private static final String CAR_COUNT_QUESTION = "자동차 대수는 몇 대 인가요?";
+    private static final String CARS_NAME_QUESTION = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String TURN_COUNT_QUESTION = "시도할 회수는 몇 회 인가요?";
     private static Scanner scanner = new Scanner(System.in);
-    int carNum;
-    int turn;
 
-    public int getCarNum() {
-        return carNum;
+    private String[] carsName;
+    private int turn;
+
+    public String[] getCarsName() {
+        return carsName;
     }
 
     public int getTurn() {
         return turn;
     }
 
+    public InputView(){}
+
+    public InputView(String[] carsName, int turn) {
+        this.carsName = carsName;
+        this.turn = turn;
+    }
+
     public void input() {
-        carNum = getAnswerForQuestion(CAR_COUNT_QUESTION);
+        carsName = getAnswerListForQuestion(CARS_NAME_QUESTION);
         turn = getAnswerForQuestion(TURN_COUNT_QUESTION);
+    }
+
+    private String[] getAnswerListForQuestion(String question) {
+        System.out.println(question);
+        String answer = scanner.nextLine();
+        String[] answerList = answer.trim().split(",");
+        return answerList;
     }
 
     private int getAnswerForQuestion(String question) {

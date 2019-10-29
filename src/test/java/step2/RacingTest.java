@@ -16,22 +16,19 @@ class RacingTest {
 
     @BeforeEach
     void setUp() {
-        inputView = new InputView();
-        inputView.carNum = 3;
-        inputView.turn = 5;
+        inputView = new InputView(new String[]{"car1", "car2", "car3"}, 5);
         racing = new Racing(inputView);
     }
 
     @ParameterizedTest
     @CsvSource(value = {
-            "3:5",
-            "5:5"
+            "car1, car2, car3:5",
+            "bus1, bus2, bus3, bus4, bus5:5"
     }, delimiter = ':')
-    void setRacingTest(int carNum, int turn) {
-        inputView.carNum = carNum;
-        inputView.turn = turn;
+    void setRacingTest(String answer, int turn) {
+        String[] carsName = answer.trim().split(",");
+        inputView = new InputView(carsName, turn);
         racing = new Racing(inputView);
-        assertThat(racing.getCarsLength()).isEqualTo(carNum);
         assertThat(racing.getTurn()).isEqualTo(turn);
     }
 
