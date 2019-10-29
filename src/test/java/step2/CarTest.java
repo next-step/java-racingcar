@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
 
-    private static Car car = new Car(5);
+    private static Car car = new Car("bus", 5);
 
     @ParameterizedTest
     @CsvSource(value = {"true:1", "true:2", "false:3", "true:4", "false:5"}, delimiter = ':')
@@ -23,7 +23,7 @@ class CarTest {
 
     @Test
     void getMove() {
-        Car car = new Car(5);
+        Car car = new Car("bus", 5);
         car.go(2);
         car.go(3);
         car.go(5);

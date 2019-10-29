@@ -11,14 +11,20 @@ package step2;
  * @version 1.0.0
  */
 public class Car {
+    private String name;
     private boolean[] move;
 
-    public Car(int turn) {
+    public Car(String name, int turn) {
+        this.name = name;
         move = new boolean[turn];
     }
 
     public void go(int turn) {
         move[turn - 1] = true;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public boolean getMoveOfTurn(int turn) {

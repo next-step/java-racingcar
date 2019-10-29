@@ -17,8 +17,9 @@ public class Racing {
     public Racing(InputView inputView) {
         turn = inputView.getTurn();
         cars = new Car[inputView.getCarsName().length];
+        String[] carNames = inputView.getCarsName();
         for (int i = 0; i < cars.length; i++) {
-            cars[i] = new Car(turn);
+            cars[i] = new Car(carNames[i], turn);
         }
     }
 
