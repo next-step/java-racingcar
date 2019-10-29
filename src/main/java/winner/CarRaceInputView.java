@@ -39,7 +39,7 @@ public class CarRaceInputView {
         System.out.println(INPUT_GAME_ROUND);
 
         String inputGameRound = scanner.nextLine();
-        if (CheckUtil.isNumber(inputGameRound)) {
+        if (!CheckUtil.isNumber(inputGameRound)) {
             throw new InputMismatchException("숫자만 입력 가능합니다.");
         }
 
