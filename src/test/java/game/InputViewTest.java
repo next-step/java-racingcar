@@ -1,7 +1,6 @@
 package game;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -18,7 +17,7 @@ public class InputViewTest {
 
     @DisplayName("입력 값 출력 테스트")
     @ParameterizedTest
-    @CsvSource(value = {"5:5", "111:111"}, delimiter = ':')
+    @CsvSource(value = {"test:test", "111:111"}, delimiter = ':')
     void getInput(String input, String output) {
 
         // given

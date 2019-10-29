@@ -12,12 +12,12 @@ import java.util.List;
  */
 public class RacingGame implements Game<TrackingLog> {
 
-    private int numberOfCar;
+    private String[] carNames;
     private int numberOfTimes;
     private RacingResult result;
 
     public RacingGame(RacingGameSettings settings) {
-        numberOfCar = settings.getNumberOfCar();
+        carNames = settings.getCarNames();
         numberOfTimes = settings.getNumberOfTimes();
         result = new RacingResult();
     }
@@ -32,8 +32,9 @@ public class RacingGame implements Game<TrackingLog> {
 
     private List<Car> createCars() {
         List<Car> cars = new ArrayList<>();
+        int numberOfCar = carNames.length;
         for (int i = 0; i < numberOfCar; i++) {
-            String name = "car-" + i;
+            String name = carNames[i];
             TrackingLog trackingLog = result.register(name);
             cars.add(new DefaultCar(name, trackingLog));
         }
@@ -41,7 +42,7 @@ public class RacingGame implements Game<TrackingLog> {
     }
 
     @Override
-    public Result<TrackingLog> getResult() {
+    public RacingResult getResult() {
         return result;
     }
 }

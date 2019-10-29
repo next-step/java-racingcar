@@ -4,7 +4,9 @@ import game.Result;
 import game.ResultView;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author : yusik
@@ -22,6 +24,20 @@ public class RacingResultView implements ResultView<TrackingLog> {
 
         System.out.println(MESSAGE_RESULT);
         results.forEach(System.out::println);
+        System.out.println(getChampionNames(logs) + "가 최종 우승했습니다.");
+    }
+
+    private String getChampionNames(List<TrackingLog> logs) {
+
+        // TODO: 29/10/2019 단일 반복으로 구하도록 고민해보기
+        int maxPosition = logs.stream()
+                .max(Comparator.comparingInt(TrackingLog::getLastPosition))
+                .map(TrackingLog::getLastPosition).get();
+
+        return logs.stream()
+                .filter(trackingLog -> trackingLog.getLastPosition() == maxPosition)
+                .map(TrackingLog::getName)
+                .collect(Collectors.joining(", "));
     }
 
     private List<String> getResults(List<TrackingLog> logs) {
