@@ -1,6 +1,5 @@
 package racingcar.business;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -11,17 +10,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingTest {
 
-    Racing racing;
-
-    @BeforeEach
-    void setUp() {
-        racing = new Racing();
-    }
-
     @ParameterizedTest
     @CsvSource(value = {"3, 5"}, delimiter = ',')
     void initializeAndStartAndGetRecordingHistory(int countOfCars, int countOfMovesAttemps) {
-        racing.initialize(countOfCars, countOfMovesAttemps);
+        Racing racing = Racing.of(countOfCars, countOfMovesAttemps);
         racing.start();
         Racing.Recording recordingData = racing.getRecordingData();
 

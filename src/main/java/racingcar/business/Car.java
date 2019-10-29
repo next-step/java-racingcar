@@ -12,6 +12,10 @@ public class Car {
         this.totalDistance = 0;
     }
 
+    public Car() {
+        this("");
+    }
+
     public static Car of(String name) {
         return new Car(name);
     }
@@ -19,6 +23,7 @@ public class Car {
     public String getName() {
         return this.name;
     }
+
     public int getTotalDistance() {
         return this.totalDistance;
     }

@@ -19,10 +19,11 @@ public class ResultView {
     }
 
     private void printDistance(Map<String, Integer> history, String carName) {
-        StringBuilder distance = new StringBuilder();
-        for (int i = 0; i < history.get(carName); i++) {
-            distance.append("-");
+        StringBuilder distanceIndicator = new StringBuilder();
+        int distance = history.get(carName);
+        for (int i = 0; i < distance; i++) {
+            distanceIndicator.append("-");
         }
-        System.out.println(distance);
+        System.out.println(distanceIndicator);
     }
 }

@@ -12,9 +12,8 @@ public class Main {
         inputView.inputCountOfCars();
         inputView.inputCountOfMovesAttemps();
 
-        Racing racing = new Racing();
+        Racing racing = Racing.of(inputView.getCountOfCars(), inputView.getCountOfMovesAttemps());
 
-        racing.initialize(inputView.getCountOfCars(), inputView.getCountOfMovesAttemps());
         racing.start();
 
         ResultView resultView = new ResultView();
