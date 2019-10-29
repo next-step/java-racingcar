@@ -4,9 +4,14 @@ public class RacingGame {
     private int time;
     private int[] carPositions;
 
-    public RacingGame(int time, int[] carPositions) {
-        this.time = time;
-        this.carPositions = carPositions;
+    public void startGame() {
+        setGameData();
+    }
+
+    private void setGameData() {
+        InputView inputView = new InputView();
+        this.time = inputView.getTrialNum();
+        this.carPositions = new int[inputView.getCarNum()];
     }
 
 
