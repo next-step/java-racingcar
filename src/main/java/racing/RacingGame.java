@@ -1,57 +1,56 @@
 package racing;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import racing.movestrategies.RandomMoveStrategy;
 
 class RacingGame {
 
-    private static final String ILLEGAL_CARS = "경주할 자동차 수를 정확히 입력하세요.";
-    private static final String ILLEGAL_TRIES = "경주할 거리를 정확히 입력하세요.";
+    private List<Car> cars = new ArrayList<>();
+    private int tries;
 
-    private final Car[] cars;
-    private int[] results;
-
-    RacingGame(int numberOfCars, int tries) {
-        if (numberOfCars <= 0) {
-            throw new IllegalArgumentException(ILLEGAL_CARS);
-        }
-        if (tries <= 0) {
-            throw new IllegalArgumentException(ILLEGAL_TRIES);
-        }
-        this.cars = createCars(numberOfCars);
-        this.results = raceAllSteps(tries);
+    RacingGame(List<String> names, int tries) {
+        this.cars = createCars(names);
+        this.tries = tries;
     }
 
-    int[] getResults() {
-        return results;
+    void doRaces() {
+        IntStream.range(0, tries)
+            .forEach(i -> doRace());
     }
 
-    protected Car[] createCars(int numberOfCars) {
-        Car[] cars = new Car[numberOfCars];
-        IntStream.range(0, numberOfCars)
-            .forEach(i -> cars[i] = new Car(new RandomMoveStrategy()));
+    private void doRace() {
+        cars.stream()
+            .forEach(car -> car.move());
+    }
 
+    protected List<Car> createCars(List<String> namesOfCars) {
+        namesOfCars.forEach(name -> cars.add(new Car(new RandomMoveStrategy(), name)));
         return cars;
     }
 
-    private int[] raceAllSteps(int tries) {
-        IntStream.range(0, tries)
-            .forEach(i -> race1Step());
-
-        return gatherResults();
+    List<Car> getCars() {
+        return cars;
     }
 
-    private void race1Step() {
-        for (Car car : cars) {
-            car.move();
-        }
+    int getTries() {
+        return tries;
     }
 
-    private int[] gatherResults() {
-        return Arrays.stream(cars)
-            .map(Car::getPosition)
-            .mapToInt(Integer::intValue)
-            .toArray();
+    List<String> getWinnerNames() {
+        int biggestPosition = getBiggestPosition();
+        return cars.stream()
+                .filter(car -> car.getPosition() == biggestPosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
+    private int getBiggestPosition() {
+        return cars.stream()
+            .mapToInt(Car::getPosition)
+            .max()
+            .getAsInt();
     }
 }

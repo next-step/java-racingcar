@@ -1,62 +1,49 @@
 package racing;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racing.movestrategies.RandomMoveStrategy;
 
 class RacingGameTest {
 
     private RacingGame racingGame;
-    private Car[] cars;
-    private int numberOfCars = 2;
+    private List<Car> cars = new ArrayList<>();
     private int tries = 3;
 
     @BeforeEach
     void setUp() {
-        RandomMoveStrategy randomMoveStrategy = mock(RandomMoveStrategy.class);
-        when(randomMoveStrategy.canIMove())
-            .thenReturn(true);
-        cars = new Car[]{new Car(randomMoveStrategy), new Car(randomMoveStrategy)};
+        cars.add(new Car(() -> true, "test1"));
+        cars.add(new Car(() -> false, "test2"));
+        cars.add(new Car(() -> false, "test2"));
 
-        racingGame = new RacingGame(numberOfCars, tries) {
+        racingGame = new RacingGame(Collections.emptyList(), tries) {
             @Override
-            protected Car[] createCars(int numberOfCars) {
+            protected List<Car> createCars(List<String> namesOfCars) {
                 return cars;
             }
         };
+
+        racingGame.doRaces();
     }
 
     @Test
     void 레이싱_결과_테스트() {
-        int[] results = racingGame.getResults();
+        List<Car> finished_cars = racingGame.getCars();
 
-        assertThat(results.length).isEqualTo(numberOfCars);
-        assertThat(results[0]).isEqualTo(tries);
-        assertThat(results[1]).isEqualTo(tries);
+        assertThat(finished_cars.size()).isEqualTo(cars.size());
+        assertThat(finished_cars.get(0).getPosition()).isEqualTo(tries);
+        assertThat(finished_cars.get(1).getPosition()).isEqualTo(0);
+        assertThat(finished_cars.get(2).getPosition()).isEqualTo(0);
     }
 
     @Test
-    void 자동차_수가_0_또는_음수_테스트() {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            new RacingGame(0, tries);
-        }).withMessage("경주할 자동차 수를 정확히 입력하세요.");
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            new RacingGame(-1, tries);
-        }).withMessage("경주할 자동차 수를 정확히 입력하세요.");
-    }
-
-    @Test
-    void 경주할_거리가_0_또는_음수_테스트() {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            new RacingGame(numberOfCars, 0);
-        }).withMessage("경주할 거리를 정확히 입력하세요.");
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            new RacingGame(numberOfCars, -1);
-        }).withMessage("경주할 거리를 정확히 입력하세요.");
+    void 우승자_테스트() {
+        List<String> winnerNames = racingGame.getWinnerNames();
+        assertThat(winnerNames).isEqualTo(Arrays.asList("test1"));
     }
 }
