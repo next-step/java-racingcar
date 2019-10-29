@@ -12,16 +12,27 @@ public class Main {
 
         view.drawText(RACING_GAME_START_TEXT);
 
-        view.drawText(CAR_COUNT_INPUT_FORM_TEXT);
-        int carCount = view.readInputToInt();
-        view.drawText(ROUND_COUNT_INPUT_FORM_TEXT);
+        view.drawText(CAR_NAME_INPUT_FORM_TEXT);
         List<String> carNames = StringUtils.splitStringToList(view.readInput(), ",");
+        view.drawText(ROUND_COUNT_INPUT_FORM_TEXT);
+        int carCount = view.readInputToInt();
 
-        RacingGameNotifier notifier = carPositions -> {
-            view.drawNewLine();
+        RacingGameNotifier notifier = new RacingGameNotifier() {
+            @Override
+            public void onResultRacingRound(List<Integer> carPositions) {
+                view.drawNewLine();
 
-            for (Integer carPosition : carPositions) {
-                view.drawCharSequence(carPosition, RacingGame.CAR_POSITION_TEXT);
+                for (Integer carPosition : carPositions) {
+                    view.drawCharSequence(carPosition, RacingGame.CAR_POSITION_TEXT);
+                }
+            }
+
+            @Override
+            public void onResultRacingWinnerNames(List<String> winnerNames) {
+                view.drawText(RACING_GAME_END_TEXT);
+
+                String winnerText = String.format(RACING_GAME_WINNERS, String.join(",", winnerNames));
+                view.drawText(winnerText);
             }
         };
 
