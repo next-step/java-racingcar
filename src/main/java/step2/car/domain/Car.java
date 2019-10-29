@@ -5,8 +5,8 @@ import step2.car.domain.engine.Engine;
 public class Car {
     private static final Integer MINIMUM_POWER = 4;
 
-    private Status status;
-    private Engine engine;
+    private final Status status;
+    private final Engine engine;
 
     public Car(String name, Engine engine) {
         this.status = new Status(name);
@@ -14,7 +14,7 @@ public class Car {
     }
 
     public Status getStatus() {
-        return this.status.cloneNow();
+        return new Status(this.status);
     }
 
     public String getName() {

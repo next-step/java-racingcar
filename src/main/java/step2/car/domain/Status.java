@@ -1,16 +1,17 @@
 package step2.car.domain;
 
 public class Status {
+    private static final int START_POSITION = 0;
 
-    private String name;
-    private Integer position = 0;
+    private final String name;
+    private Integer position = START_POSITION;
 
     public Status(String name) {
         this.name = name;
     }
 
-    private Status(Status status) {
-        this.name = status.getName();
+    public Status(Status status) {
+        this(status.getName());
         this.position = status.getPosition();
     }
 
@@ -20,10 +21,6 @@ public class Status {
 
     public Integer getPosition() {
         return position;
-    }
-
-    public Status cloneNow() {
-        return new Status(this);
     }
 
     public void forward() {
