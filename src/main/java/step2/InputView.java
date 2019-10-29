@@ -4,6 +4,7 @@
 package step2;
 
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 /**
  * 자동차 게임 사용자 입력 부분
@@ -42,7 +43,8 @@ public class InputView {
     private String[] getAnswerListForQuestion(String question) {
         System.out.println(question);
         String answer = scanner.nextLine();
-        String[] answerList = answer.trim().split(",");
+        String[] answerList = Stream.of(answer.trim().split(","))
+                .map(String::trim).toArray(String[]::new);
         return answerList;
     }
 
