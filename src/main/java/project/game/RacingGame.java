@@ -10,12 +10,12 @@ public class RacingGame {
 
     private RacingGameNotifier mRacingGameNotifier;
     private List<Car> mCars;
-    private int mMaxPostion;
+    private int mMaxPosition;
 
     public RacingGame(RacingGameNotifier racingGameNotifier) {
         this.mRacingGameNotifier = racingGameNotifier;
         this.mCars = new ArrayList<>();
-        this.mMaxPostion = NOT_SET_POSITION;
+        this.mMaxPosition = NOT_SET_POSITION;
     }
 
     public void start(GameType gameType, List<String> carNames, int roundCount) {
@@ -26,7 +26,7 @@ public class RacingGame {
 
     private void endRacing() {
         mCars.clear();
-        mMaxPostion = NOT_SET_POSITION;
+        mMaxPosition = NOT_SET_POSITION;
     }
 
     private void initializeCars(GameType gameType, List<String> carNames) {
@@ -58,7 +58,7 @@ public class RacingGame {
     }
 
     private void addWinnerNameIfPossible(List<String> winnerNames, Car car) {
-        if (car.canBeWinner(mMaxPostion)) {
+        if (car.canBeWinner(mMaxPosition)) {
             winnerNames.add(car.getName());
         }
     }
@@ -76,8 +76,8 @@ public class RacingGame {
     }
 
     private void updateMaxPositionIfPossible(int position) {
-        if (mMaxPostion < position) {
-            mMaxPostion = position;
+        if (mMaxPosition < position) {
+            mMaxPosition = position;
         }
     }
 
