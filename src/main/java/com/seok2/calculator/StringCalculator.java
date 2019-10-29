@@ -4,6 +4,7 @@ import com.seok.racing.utils.StringUtils;
 
 public class StringCalculator {
 
+    private final static String SEPARATOR = " ";
     public void checkIsEmpty(String expression) {
         if (isEmpty(expression)) {
             throw new IllegalArgumentException();
@@ -16,7 +17,7 @@ public class StringCalculator {
 
     public int evaluate(String expression) {
         checkIsEmpty(expression);
-        return calculate(StringUtils.split(expression, " "));
+        return calculate(StringUtils.split(expression, SEPARATOR));
     }
 
     private int calculate(String[] array) {
