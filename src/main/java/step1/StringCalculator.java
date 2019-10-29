@@ -1,26 +1,22 @@
 package step1;
 
-import java.util.ArrayList;
-
-import static step1.Utils.ValidationUtils.isBlankThrowException;
-import static step1.Utils.ValidationUtils.isNotNumericThrowException;
+import static step1.Utils.ValidationUtils.*;
 
 public class StringCalculator {
-
     private static final String PLUS = "+";
     private static final String MINUS = "-";
     private static final String MULTIPLY = "*";
     private static final String DIVIDE = "/";
     private static final String SPACE_DELIMITER = " ";
 
-    private ArrayList<String> operands;
-    private ArrayList<Integer> operates;
     private int result;
+    OperateCollection operates;
+    OperandCollection operands;
 
-    StringCalculator(){
+    StringCalculator() {
         result = 0;
-        operands = new ArrayList<>();
-        operates = new ArrayList<>();
+        operates = new OperateCollection();
+        operands = new OperandCollection();
     }
 
     public int calculate(String input) {
@@ -32,80 +28,79 @@ public class StringCalculator {
         return result;
     }
 
-    public String[] splitStringBySpace(String input){
+    private String[] splitStringBySpace(String input) {
         return input.split(SPACE_DELIMITER);
     }
 
-    public void iterateClassification(String[] splitedStringArray) {
-        for(String splitedString: splitedStringArray) {
+    private void iterateClassification(String[] splitedStrings) {
+        for (String splitedString : splitedStrings) {
             classificateOperandAndOperate(splitedString);
         }
     }
 
-    public void classificateOperandAndOperate(String splitedString) {
-        switch(splitedString) {
-            case PLUS:
-            case MINUS:
-            case MULTIPLY:
-            case DIVIDE:
-                operands.add(splitedString);
-                break;
-            default:
-                isNotNumericThrowException(splitedString);
-                operates.add(Integer.parseInt(splitedString));
-                break;
+    private void classificateOperandAndOperate(String splitedString) {
+        if (isNumeric(splitedString)) {
+            operands.add(splitedString);
+            return;
+        }
+
+        operates.add(splitedString);
+    }
+
+    private void iterateCalculation() {
+        int size = operates.size();
+        for (int i = 0; i < size; i++) {
+            doCalculation(i, operates.get(i));
         }
     }
 
-    public void iterateCalculation() {
-        for(int i=0; i < operands.size(); i++) {
-            doCalculation(i, operands.get(i));
-        }
-    }
+    private void doCalculation(int index, String operate) {
+        int firstOperand;
+        int secondOperand;
+        int nextOperandIndex = index + 1;
 
-    public void doCalculation(int index, String operand) {
-        int a, b;
+        firstOperand = result;
+        secondOperand = operands.get(nextOperandIndex);
 
-        a = result;
-        b = operates.get(index+1);
-        if(index == 0){
-            a = operates.get(index);
+        if (index == 0) {
+            firstOperand = operands.get(index);
         }
 
-        switch(operand) {
+        switch (operate) {
             case PLUS:
-                add(a, b);
+                add(firstOperand, secondOperand);
                 break;
             case MINUS:
-                subtract(a, b);
+                subtract(firstOperand, secondOperand);
                 break;
             case MULTIPLY:
-                multiply(a, b);
+                multiply(firstOperand, secondOperand);
                 break;
             case DIVIDE:
-                divide(a, b);
+                divide(firstOperand, secondOperand);
                 break;
             default:
                 break;
         }
     }
 
-    public void add(int a, int b) {
-        result = a + b;
+    public int add(int a, int b) {
+        return result = a + b;
     }
 
-    public void subtract(int a, int b) {
-        result = a - b;
-    }
-    public void multiply(int a, int b) {
-        result = a * b;
+    public int subtract(int a, int b) {
+        return result = a - b;
     }
 
-    public void divide(int a, int b) {
+    public int multiply(int a, int b) {
+        return result = a * b;
+    }
+
+    public int divide(int a, int b) {
         try {
-            result = a / b;
-        } catch(ArithmeticException e) {
-            System.out.println("0으로 나눌 수 없습니다.");
+            return result = a / b;
+        } catch (ArithmeticException e) {
+            throw new IllegalArgumentException("0으로 나눌 수 없습니다.", e);
         }
     }
 }
