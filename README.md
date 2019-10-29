@@ -49,3 +49,11 @@ ___
 * 기능을 구현하기 전에 README.md 파일에 구현할 기능 목록을 정리해 추가한다.
 * git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가한다.
     * 참고문서: AngularJS Commit Message Conventions [https://gist.github.com/stephenparish/9941e89d80e2bc58a153]
+    
+    
+## step3 - 자동차 경주 ( 우승자 )
+* 사용자가 자동차의 이름을 입력한다.
+* 입력된 자동차의 이름은 쉼표로 구분한다. 
+* 자동차는 이름을 소유한다
+* 자동차의 이름과 상태를 화면에 출력한다.
+* 자동차 게임의 우승자를 화면에 출력한다.
