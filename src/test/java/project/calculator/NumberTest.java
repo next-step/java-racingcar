@@ -1,4 +1,4 @@
-package calculator;
+package project.calculator;
 
 import com.sun.istack.internal.NotNull;
 import com.sun.istack.internal.Nullable;

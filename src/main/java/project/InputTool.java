@@ -1,4 +1,4 @@
-package calculator;
+package project;
 
 import com.sun.istack.internal.NotNull;
 
@@ -8,8 +8,8 @@ public class InputTool {
 
     private Scanner mScanner;
 
-    public InputTool(Scanner scanner) {
-        mScanner = scanner;
+    public InputTool() {
+        mScanner = new Scanner(System.in);
     }
 
     @NotNull
@@ -21,5 +21,9 @@ public class InputTool {
         }
 
         return inputText;
+    }
+
+    public Integer readLineToInt() throws NumberFormatException {
+        return Integer.valueOf(readLine());
     }
 }
