@@ -15,10 +15,11 @@ public class OperateCollection {
         operates.add(operate);
     }
 
-    public void validateProperOperation(String operate) {
-        if (!operate.equals("+") && !operate.equals("-") && !operate.equals("*") && !operate.equals("/")) {
+    public boolean validateProperOperation(String operate) {
+        if (!OperateEnum.validate(operate)) {
             throw new IllegalArgumentException(operate);
         }
+        return true;
     }
 
     public int size() {
@@ -27,5 +28,42 @@ public class OperateCollection {
 
     public String get(int index) {
         return operates.get(index);
+    }
+
+    public enum OperateEnum {
+        PLUS("+"),
+        MINUS("-"),
+        MULTIPLY("*"),
+        DIVIDE("/");
+
+        private String name;
+
+        OperateEnum(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return this.name;
+        }
+
+        public static boolean validate(String InputOperate) {
+            int properCount = 0;
+
+            for (OperateEnum type : OperateEnum.values()) {
+                properCount = compareOperate(type.getName(), InputOperate, properCount);
+            }
+
+            if (properCount > 0) {
+                return true;
+            }
+            return false;
+        }
+
+        private static int compareOperate(String type, String InputOperate, int properCount) {
+            if (type.equals(InputOperate)) {
+                properCount += 1;
+            }
+            return properCount;
+        }
     }
 }

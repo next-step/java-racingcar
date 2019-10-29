@@ -31,10 +31,16 @@ public class StringCalculatorTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"#", "$", "%"})
-    void validateProperOperationTest(String input) {
+    void validateNotProperOperationTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             operateCollection.validateProperOperation(input);
         });
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"+", "-", "*", "/"})
+    void validateProperOperationTest(String input) {
+        assertThat(operateCollection.validateProperOperation(input)).isEqualTo(true);
     }
 
     @ParameterizedTest

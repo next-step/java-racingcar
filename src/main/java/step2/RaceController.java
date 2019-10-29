@@ -16,7 +16,7 @@ public class RaceController {
 
         ResultView.printStartMessage();
 
-        for(int i = 0; i < tryCount; i++) {
+        for (int i = 0; i < tryCount; i++) {
             carPositions = racingGame.move();
             ResultView.print(carPositions);
         }
