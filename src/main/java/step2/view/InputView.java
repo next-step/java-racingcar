@@ -1,9 +1,6 @@
 package step2.view;
 
-import step2.domain.rules.CarNumberDefaultRule;
-import step2.domain.rules.CarNumberRule;
-import step2.domain.rules.RaceRoundDefaultRule;
-import step2.domain.rules.RaceRoundRule;
+import step2.domain.rules.*;
 
 import java.util.Scanner;
 
@@ -15,9 +12,9 @@ public class InputView {
 		scanner = new Scanner(System.in);
 	}
 
-	public CarNumberRule receiveNumberOfCarsParticipated() {
-		System.out.println("자동차 대수는 몇 대 인가요?");
-		return new CarNumberDefaultRule(scanner.nextInt());
+	public CarNameRule receiveNameOfCarsParticipated() {
+		System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+		return new CarNameDefaultRule(scanner.nextLine());
 	}
 
 	public RaceRoundRule receiveNumberOfMaxRound() {

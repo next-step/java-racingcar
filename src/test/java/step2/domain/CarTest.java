@@ -15,7 +15,7 @@ class CarTest {
 				"5,true",  "6,true",  "7,true",  "8,true",  "9,true"})
 	void 랜덤생성된_숫자에따라_자동차_전진_여부가_결정된다(int randomNumber, boolean carMoveResult) {
 		// given
-		Car car = new Car();
+		Car car = new Car("name", 0);
 
 		// when
 		car.moveIfLucky(randomNumber);
