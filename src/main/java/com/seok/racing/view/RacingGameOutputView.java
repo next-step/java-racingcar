@@ -29,18 +29,18 @@ public class RacingGameOutputView {
     }
 
     public void printRecords() {
-        IntStream.range(0, racingGame.getTimes()).forEach(i -> printRecord());
+        IntStream.range(0, racingGame.getTimes()).forEach(this::printRecord);
     }
 
-    private void printRecord() {
+    private void printRecord(final int idx) {
         racingGame.getCars()
             .stream()
-            .forEach(car -> System.out.println(formatLocation(car)));
+            .forEach(car -> System.out.println(formatLocation(car, idx)));
         System.out.println();
     }
 
-    private String formatLocation(Car car) {
+    private String formatLocation(Car car, int idx) {
         return MessageFormat
-            .format(PRINT_LOCATION, car.getName(), StringUtils.repeat(LOCATION_SYMBOL, car.getRecord().next()));
+            .format(PRINT_LOCATION, car.getName(), StringUtils.repeat(LOCATION_SYMBOL, car.getRecord().get(idx)));
     }
 }

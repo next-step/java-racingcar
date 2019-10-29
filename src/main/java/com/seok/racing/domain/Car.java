@@ -3,8 +3,10 @@ package com.seok.racing.domain;
 
 public class Car {
 
+    private static final int FORWARD = 1;
+    private static final int IN_PLACE = 0;
+
     private final String name;
-    private int location;
     private Record record = new Record();
     private Movable movable;
 
@@ -18,10 +20,7 @@ public class Car {
     }
 
     protected void move() {
-        if (movable.isMovable()) {
-            location++;
-        }
-        record.record(location);
+        record.record(movable.isMovable() ? FORWARD : IN_PLACE);
     }
 
     public String getName() {
@@ -32,8 +31,8 @@ public class Car {
         return record;
     }
 
-    protected int getLocation() {
-        return location;
-    }
+//    protected int getLocation() {
+//        return record.getLocation();
+//    }
 
 }

@@ -1,17 +1,23 @@
 package com.seok.racing.domain;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Record {
 
-    private Queue<Integer> record = new LinkedList<>();
+    private List<Integer> record = new ArrayList<>();
 
-    protected void record(int location) {
-        record.offer(location);
+    protected void record(int movable) {
+        record.add(getLocation() + movable);
     }
 
-    public int next() {
-        return record.poll();
+    public int getLocation() {
+        if(record.isEmpty())
+            return 0;
+        return record.get(record.size()-1);
+    }
+
+    public int get(int idx) {
+        return record.get(idx);
     }
 }

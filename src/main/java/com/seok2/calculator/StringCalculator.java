@@ -5,7 +5,7 @@ import com.seok.racing.utils.StringUtils;
 public class StringCalculator {
 
     private final static String SEPARATOR = " ";
-    
+
     public void checkIsEmpty(String expression) {
         if (isEmpty(expression)) {
             throw new IllegalArgumentException();
