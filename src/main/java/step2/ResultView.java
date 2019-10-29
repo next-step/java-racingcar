@@ -4,27 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ResultView {
-    private List<int[]> results;
 
-    public ResultView() {
-        this.results = new ArrayList<>();
-    }
 
-    public void addResult(int[] result) {
-        results.add(result);
-    }
+    public void printResultView(List<Car> cars) {
 
-    public void printResultView() {
-        for (int[] ints : results) {
-            carPositionView(ints);
-            System.out.println();
+        for (Car car : cars) {
+            printBar(car.getPosition());
         }
-    }
-
-    public void carPositionView(int[] carPositions) {
-        for (int i = 0; i < carPositions.length; i++) {
-            printBar(carPositions[i]);
-        }
+        System.out.println();
     }
 
     public void printBar(int count) {
