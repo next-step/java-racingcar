@@ -1,7 +1,7 @@
 package step2.race.service;
 
-import step2.car.domain.car.Car;
-import step2.car.domain.car.engine.Engine;
+import step2.car.domain.Car;
+import step2.car.domain.engine.Engine;
 import step2.race.domain.Race;
 
 import java.util.ArrayList;
@@ -15,10 +15,10 @@ public class RaceService {
         }
     }
 
-    public List<Car> makeRacingCars(int carAmount, Engine engine) {
+    public List<Car> makeRacingCars(List<String> names, Engine engine) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carAmount; i++) {
-            Car car = new Car(engine);
+        for (String name : names) {
+            Car car = new Car(name, engine);
             cars.add(car);
         }
         return cars;
