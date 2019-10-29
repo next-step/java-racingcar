@@ -23,10 +23,9 @@ public class RacingResultTest {
         result.register("test1");
 
         // when
-        List<String> executionResults = result.getExecutionResults();
+        List<TrackingLog> executionResults = result.getExecutionResults();
 
         // then
-        System.out.println(executionResults);
         assertThat(executionResults.size()).isEqualTo(expected);
     }
 }

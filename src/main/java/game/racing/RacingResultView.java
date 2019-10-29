@@ -24,7 +24,7 @@ public class RacingResultView implements ResultView<TrackingLog> {
         results.forEach(System.out::println);
     }
 
-    public List<String> getResults(List<TrackingLog> logs) {
+    private List<String> getResults(List<TrackingLog> logs) {
         List<String> executionResults = new ArrayList<>();
         int times = logs.get(0).getSize();
         for (int i = 0; i < times; i++) {
