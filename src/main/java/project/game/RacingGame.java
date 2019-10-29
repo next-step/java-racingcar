@@ -6,13 +6,16 @@ import java.util.List;
 public class RacingGame {
 
     public static final char CAR_POSITION_TEXT = '-';
+    private static final int NOT_SET_POSITION = Integer.MIN_VALUE;
 
     private RacingGameNotifier mRacingGameNotifier;
     private List<Car> mCars;
+    private int mMaxPostion;
 
     public RacingGame(RacingGameNotifier racingGameNotifier) {
         this.mRacingGameNotifier = racingGameNotifier;
         this.mCars = new ArrayList<>();
+        this.mMaxPostion = NOT_SET_POSITION;
     }
 
     public void start(GameType gameType, List<String> carNames, int roundCount) {
@@ -23,6 +26,7 @@ public class RacingGame {
 
     private void endRacing() {
         mCars.clear();
+        mMaxPostion = NOT_SET_POSITION;
     }
 
     private void initializeCars(GameType gameType, List<String> carNames) {
@@ -36,10 +40,27 @@ public class RacingGame {
             List<Integer> currentCarPositions = moveCars();
             notifyCarPositionsChange(currentCarPositions);
         }
+
+        mRacingGameNotifier.onResultRacingWinnerNames(findWinnerNames());
     }
 
     private void notifyCarPositionsChange(List<Integer> currentCarPositions) {
         mRacingGameNotifier.onResultRacingRound(currentCarPositions);
+    }
+
+    private List<String> findWinnerNames() {
+        List<String> winnerNames = new ArrayList<>();
+        for (Car each : mCars) {
+            addWinnerNameIfPossible(winnerNames, each);
+        }
+
+        return winnerNames;
+    }
+
+    private void addWinnerNameIfPossible(List<String> winnerNames, Car car) {
+        if (car.canBeWinner(mMaxPostion)) {
+            winnerNames.add(car.getName());
+        }
     }
 
     private List<Integer> moveCars() {
@@ -48,9 +69,16 @@ public class RacingGame {
         for (int i = 0; i < mCars.size(); i++) {
             int currentPosition = mCars.get(i).moveIfPossible();
             currentCarPositions.add(i, currentPosition);
+            updateMaxPositionIfPossible(currentPosition);
         }
 
         return currentCarPositions;
+    }
+
+    private void updateMaxPositionIfPossible(int position) {
+        if (mMaxPostion < position) {
+            mMaxPostion = position;
+        }
     }
 
     private Car createCar(String name, GameType gameType) {
