@@ -9,7 +9,7 @@ public class Car {
 
     private final String name;
     private int location;
-    private Queue<Integer> record = new LinkedList<>();
+    private Record record = new Record();
     private Movable movable;
 
     protected Car(String name) {
@@ -25,14 +25,14 @@ public class Car {
         if (movable.isMovable()) {
             location++;
         }
-        record.offer(location);
+        record.record(location);
     }
 
     public String getName() {
         return name;
     }
 
-    public Queue<Integer> getRecord() {
+    public Record getRecord() {
         return record;
     }
 
