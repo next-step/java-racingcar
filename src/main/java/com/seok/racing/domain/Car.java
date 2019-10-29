@@ -1,10 +1,6 @@
 package com.seok.racing.domain;
 
 
-import java.util.LinkedList;
-import java.util.Objects;
-import java.util.Queue;
-
 public class Car {
 
     private final String name;
