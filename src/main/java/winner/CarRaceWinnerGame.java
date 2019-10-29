@@ -2,6 +2,7 @@ package winner;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author : 김윤호
@@ -23,6 +24,7 @@ public class CarRaceWinnerGame {
         for (int round = 0; round < gameRound; round++) {
             moveCar();
         }
+        showWinner();
     }
 
     private List<Car> createCars(String[] carNames) {
@@ -39,5 +41,16 @@ public class CarRaceWinnerGame {
             CarRaceResultView.printCurrentCarPosition(car);
         });
         CarRaceResultView.printBlankLine();
+    }
+
+    private void showWinner() {
+        String winner = cars.stream()
+                            .filter(car -> car.getPosition() == getMaxPosition())
+                            .map(car -> car.getName()).collect(Collectors.joining(", "));
+        CarRaceResultView.printWinner(winner);
+    }
+
+    private int getMaxPosition() {
+        return cars.stream().map(car -> car.getPosition()).max(Integer::compareTo).get();
     }
 }
