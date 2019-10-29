@@ -1,5 +1,7 @@
 package step2;
 
+import java.util.Objects;
+
 public class Car {
     private final String name;
     private final Location location;
@@ -32,6 +34,20 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car)) return false;
+        final Car car = (Car) o;
+        return name.equals(car.name) &&
+                location.equals(car.location);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, location);
     }
 
     @Override
