@@ -9,15 +9,15 @@ public class Main {
     public static void main(String[] args) {
         InputView inputView = new InputView();
 
-        inputView.inputCountOfCars();
+        inputView.inputCarNames();
         inputView.inputCountOfMovesAttemps();
 
-        Racing racing = Racing.of(inputView.getCountOfCars(), inputView.getCountOfMovesAttemps());
+        Racing racing = Racing.of(inputView.getCarNames(), inputView.getCountOfMovesAttemps());
 
         racing.start();
 
-        ResultView resultView = new ResultView();
+        ResultView resultView = new ResultView(racing);
 
-        resultView.printRacingResult(racing);
+        resultView.printRacingResult();
     }
 }

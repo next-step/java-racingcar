@@ -11,19 +11,23 @@ public class Racing {
     private final Recording recording = new Recording();
     private int countOfMovesAttemps = 0;
 
+    private static final String DELIMITER = ",";
+
     private Racing(final int countOfMovesAttemps) {
         this.countOfMovesAttemps = countOfMovesAttemps;
     }
 
-    public static Racing of(final int countOfCars, final int countOfMovesAttemps) {
+    public static Racing of(final String carNames, final int countOfMovesAttemps) {
         Racing racing = new Racing(countOfMovesAttemps);
-        racing.registerCarsToParticipateInRace(countOfCars);
+        racing.registerCarsToParticipateInRace(carNames);
         return racing;
     }
 
-    private void registerCarsToParticipateInRace(int countOfCars) {
-        for (int i = 0; i < countOfCars; i++) {
-            cars.add(Car.of(CarName.get(i)));
+    private void registerCarsToParticipateInRace(String carNames) {
+        String[] carNamesArr = carNames.split(DELIMITER);
+
+        for (String carName : carNamesArr) {
+            cars.add(Car.of(carName));
         }
     }
 
