@@ -11,9 +11,9 @@ public class GameRunner {
     private final int tryTimes;
     private final CarDistanceGenerator carDistanceGenerator;
 
-    public GameRunner(final int tryTimes,
-                      final int numberOfCars,
-                      final CarDistanceGenerator carDistanceGenerator) {
+    private GameRunner(final int tryTimes,
+                       final int numberOfCars,
+                       final CarDistanceGenerator carDistanceGenerator) {
         if (tryTimes <= 0) {
             throw new IllegalArgumentException();
         }
@@ -46,10 +46,7 @@ public class GameRunner {
 
     private List<Car> generateCarSnapshot(List<Car> cars) {
         final List<Car> snapshot = cars.stream()
-                                       .map(car -> {
-                                           final int nextDistance = carDistanceGenerator.next();
-                                           return car.goForward(nextDistance);
-                                       })
+                                       .map(car -> car.goForward(carDistanceGenerator.next()))
                                        .collect(Collectors.toList());
 
         return Collections.unmodifiableList(snapshot);

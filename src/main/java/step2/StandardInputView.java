@@ -15,12 +15,6 @@ public class StandardInputView implements InputView {
         this.guideMessageToInputNumberOfTryTimes = "시도할 회수는 몇 회 인가요?";
     }
 
-    public StandardInputView(final String guideMessageToInputNumberOfCars,
-                             final String guideMessageToInputNumberOfTryTimes) {
-        this.guideMessageToInputNumberOfCars = guideMessageToInputNumberOfCars;
-        this.guideMessageToInputNumberOfTryTimes = guideMessageToInputNumberOfTryTimes;
-    }
-
     @Override
     public GameRunner makeGameRunner() {
         out.println(guideMessageToInputNumberOfCars);
