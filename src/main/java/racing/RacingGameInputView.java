@@ -18,15 +18,21 @@ public class RacingGameInputView {
     private static final int MIN_VALUE = 0;
     private final Scanner scanner;
 
+
+    public RacingGameInputView() {
+        this.scanner = new Scanner(System.in);
+    }
+
     public RacingGameInputView(InputStream inputStream) {
         this.scanner = new Scanner(inputStream);
     }
 
-    public int getNumberOfCars() {
+
+    public int inputNumberCars() {
         return getInputValue(CAR_INPUT_QUESTION);
     }
 
-    public int getNumberOfRound() {
+    public int inputNumberGameRound() {
         return getInputValue(GAME_ATTEMPT_ROUND_QUESTION);
     }
 
