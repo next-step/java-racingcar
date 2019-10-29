@@ -115,4 +115,12 @@ class CalculatorTest {
         assertThat(number).isEqualTo(result);
     }
 
+    @Test
+    @DisplayName("0으로 나누면 에러를 떨군다.")
+    void divisionZero() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            String input = "1 / 0";
+            Calculator.calculate(input);
+        }).withMessage("0으로 나눌 수 없습니다.");
+    }
 }

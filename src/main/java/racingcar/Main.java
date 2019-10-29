@@ -6,12 +6,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-        UserInput input = new InputView().getInput();
+        InputView inputView = new InputView();
+        inputView.createInput();
 
-        RacingGame game = new RacingGame(input.getCarNumber(), input.getRunNumber());
+        UserInput input = inputView.getInput();
+
+        RacingGame game = new RacingGame(input.getCarNameList(), input.getRunNumber());
         List<RacingCycle> cycles = game.getCycles();
 
         ResultView resultView = new ResultView(cycles);
-        resultView.print();
+        resultView.printRace();
+        resultView.printWinner();
     }
 }

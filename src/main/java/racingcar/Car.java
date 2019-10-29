@@ -2,16 +2,22 @@ package racingcar;
 
 public class Car {
 
-    private int location;
-
     private static final int INIT_LOCATION = 0;
     private static final int MOVE_CONDITION_NUMBER = 4;
 
-    public Car() {
-        this.location = INIT_LOCATION;
+    private String name;
+    private int location;
+
+    public Car(String name) {
+        initialize(name, INIT_LOCATION);
     }
 
-    public Car(int location) {
+    public Car(String name, int location) {
+        initialize(name, location);
+    }
+
+    private void initialize(String name, int location) {
+        this.name = name;
         this.location = location;
     }
 
@@ -28,5 +34,13 @@ public class Car {
 
     int getLocation() {
         return location;
+    }
+
+    String getName() {
+        return name;
+    }
+
+    boolean equalsLocation(int location) {
+        return this.getLocation() == location;
     }
 }

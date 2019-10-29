@@ -1,6 +1,7 @@
 package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -14,12 +15,27 @@ class CarTest {
     void move(int number, int result) {
 
         //given
-        Car car = new Car();
+        Car car = new Car("car1");
 
         //when
         car.move(number);
 
         //then
         assertThat(car.getLocation()).isEqualTo(result);
+    }
+
+    @Test
+    @DisplayName("location 이 같은지 판단한다.")
+    void name() {
+
+        //given
+        Car car = new Car("car1", 5);
+
+        //when
+        boolean equals = car.equalsLocation(5);
+
+        //then
+        assertThat(equals).isTrue();
+
     }
 }
