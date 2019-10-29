@@ -6,22 +6,18 @@ public class RacingGame {
     private int time;
     private int[] carPositions;
 
+    public RacingGame(int trialNum, int carNum) {
+        this.time = trialNum;
+        this.carPositions = new int[carNum];
+    }
+
     public void doGame() {
         ResultView resultView = new ResultView();
-
-        setGameData();
         resultView.printResultTitle();
-
         for (int i = 0; i < time; i++) {
             move();
             resultView.printCars(carPositions);
         }
-    }
-
-    private void setGameData() {
-        InputView inputView = new InputView();
-        this.time = inputView.getTrialNum();
-        this.carPositions = new int[inputView.getCarNum()];
     }
 
     private int[] move() {

@@ -3,6 +3,7 @@ package step2;
 public class ResultView {
 
     public void printResultTitle(){
+        System.out.println();
         System.out.println("실행 결과");
     }
 
