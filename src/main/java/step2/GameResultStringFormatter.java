@@ -26,13 +26,13 @@ public class GameResultStringFormatter implements GameResultFormatter<String> {
                          .collect(joining(DEFAULT_END_OF_LINE + DEFAULT_END_OF_LINE));
     }
 
-    private String formatPhase(final GameResult.Phase phase) {
+    protected String formatPhase(final GameResult.Phase phase) {
         return phase.getAllCars().stream()
                     .map(this::formatCar)
                     .collect(joining(DEFAULT_END_OF_LINE));
     }
 
-    private String formatCar(final Car car) {
+    protected String formatCar(final Car car) {
         return IntStream.range(0, car.current())
                         .mapToObj(i -> carSymbol)
                         .reduce(EMTPY, (acc, cur) -> acc + cur);

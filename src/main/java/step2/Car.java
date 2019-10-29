@@ -30,6 +30,10 @@ public class Car {
         return location.current();
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return String.format("%s-%s", name, location);
