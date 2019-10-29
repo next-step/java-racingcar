@@ -1,20 +1,16 @@
 package step2;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
-    private int numberOfCars;
     private List<Integer> carPositions;
 
-    public RacingGame(int value, List<Integer> carPositions) {
-        this.numberOfCars = value;
+    public RacingGame(List<Integer> carPositions) {
         this.carPositions = carPositions;
     }
 
     public List<Integer> move() {
-        // TODO 구현
         int length = carPositions.size();
         int position;
         int resultPosition;

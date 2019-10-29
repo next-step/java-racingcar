@@ -12,7 +12,7 @@ public class RaceController {
 
         List<Integer> carPositions = new ArrayList<>(Collections.nCopies(numberOfCars, 0));
 
-        RacingGame racingGame = new RacingGame(numberOfCars, carPositions);
+        RacingGame racingGame = new RacingGame(carPositions);
 
         ResultView.printStartMessage();
 
