@@ -7,7 +7,6 @@ public class RacingGame {
 
     public static final char CAR_POSITION_TEXT = '-';
 
-    private GameType mGameType;
     private RacingGameNotifier mRacingGameNotifier;
     private List<Car> mCars;
 
@@ -17,8 +16,7 @@ public class RacingGame {
     }
 
     public void start(GameType gameType, List<String> carNames, int roundCount) {
-        mGameType = gameType;
-        initializeCars(mGameType, carNames);
+        initializeCars(gameType, carNames);
         startRacing(roundCount);
         endRacing();
     }

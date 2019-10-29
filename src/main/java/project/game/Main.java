@@ -1,5 +1,7 @@
 package project.game;
 
+import java.util.List;
+
 import static project.game.StringConstant.*;
 
 public class Main {
@@ -10,19 +12,10 @@ public class Main {
 
         view.drawText(RACING_GAME_START_TEXT);
 
-        int carCount;
-        int roundCount;
-
-        try {
-            view.drawText(CAR_COUNT_INPUT_FORM_TEXT);
-            carCount = view.readInputToInt();
-
-            view.drawText(ROUND_COUNT_INPUT_FORM_TEXT);
-            roundCount = view.readInputToInt();
-        } catch (NumberFormatException exception) {
-            view.drawText(String.format(INPUT_FORMAT_ERROR, exception.getMessage()));
-            return;
-        }
+        view.drawText(CAR_COUNT_INPUT_FORM_TEXT);
+        int carCount = view.readInputToInt();
+        view.drawText(ROUND_COUNT_INPUT_FORM_TEXT);
+        List<String> carNames = StringUtils.splitStringToList(view.readInput(), ",");
 
         RacingGameNotifier notifier = carPositions -> {
             view.drawNewLine();
@@ -31,8 +24,9 @@ public class Main {
                 view.drawCharSequence(carPosition, RacingGame.CAR_POSITION_TEXT);
             }
         };
+
         RacingGame racingGame = new RacingGame(notifier);
-        racingGame.start(GameType.RANDOM, carCount, roundCount);
+        racingGame.start(GameType.RANDOM, carNames, carCount);
 
         view.drawText(RACING_GAME_END_TEXT);
     }
