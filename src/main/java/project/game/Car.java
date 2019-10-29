@@ -19,6 +19,10 @@ public class Car {
         return mMovePosition;
     }
 
+    public boolean canBeWinner(int winnerScore) {
+        return mMovePosition == winnerScore;
+    }
+
     private boolean canMove() {
         return mMoveRule.canMove();
     }
