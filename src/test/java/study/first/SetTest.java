@@ -1,4 +1,4 @@
-package study;
+package study.first;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,7 +28,7 @@ public class SetTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3})
+    @ValueSource(ints = {1, 2, 3})
     void contains(int no) {
         assertThat(numbers.contains(no)).isTrue();
     }
