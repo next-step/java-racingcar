@@ -13,14 +13,18 @@ public class ResultView {
         for (int moveResult : moveResults) {
             System.out.print(POSITION);
             iteratePrintDash(moveResult);
-            System.out.println();
+            newLine();
         }
-        System.out.println();
+        newLine();
     }
 
     private static void iteratePrintDash(int moveResult) {
         for (int i = 0; i < moveResult; i++) {
             System.out.print(POSITION);
         }
+    }
+
+    private static void newLine() {
+        System.out.println();
     }
 }
