@@ -23,7 +23,7 @@ public class RacingResultTest {
         result.register("test1");
 
         // when
-        List<TrackingLog> executionResults = result.getExecutionResults();
+        List<TrackingLog> executionResults = result.getTrackingLogs();
 
         // then
         assertThat(executionResults.size()).isEqualTo(expected);

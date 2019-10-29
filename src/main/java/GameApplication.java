@@ -3,8 +3,8 @@ import game.InputView;
 import game.ResultView;
 import game.racing.RacingGame;
 import game.racing.RacingGameSettings;
+import game.racing.RacingResult;
 import game.racing.RacingResultView;
-import game.racing.TrackingLog;
 
 /**
  * @author : yusik
@@ -18,11 +18,11 @@ public class GameApplication {
         InputView inputView = new InputView(settings);
         inputView.render();
 
-        Game<TrackingLog> game = new RacingGame(settings);
+        Game<RacingResult> game = new RacingGame(settings);
         game.run();
 
-        ResultView<TrackingLog> resultView = new RacingResultView();
-        resultView.render(game.getResult());
+        ResultView<RacingResult> resultView = new RacingResultView();
+        resultView.render(game.getResultEntity());
 
     }
 

@@ -1,7 +1,7 @@
 package game.racing;
 
 import game.Game;
-import game.Result;
+import game.ResultEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
  * @author : yusik
  * @date : 2019/10/26
  */
-public class RacingGame implements Game<TrackingLog> {
+public class RacingGame implements Game<RacingResult> {
 
     private String[] carNames;
     private int numberOfTimes;
@@ -42,7 +42,7 @@ public class RacingGame implements Game<TrackingLog> {
     }
 
     @Override
-    public RacingResult getResult() {
-        return result;
+    public ResultEntity<RacingResult> getResultEntity() {
+        return new ResultEntity<>(result);
     }
 }

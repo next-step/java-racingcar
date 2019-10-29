@@ -25,13 +25,13 @@ public class RacingGameTest {
         InputView inputView = new InputView(in, settings);
         inputView.render();
 
-        Game game = new RacingGame(settings);
+        Game<RacingResult> game = new RacingGame(settings);
 
         // when
         game.run();
 
         // then
-        assertThat(game.getResult().getExecutionResults().size()).isEqualTo(5);
+        assertThat(game.getResultEntity().getResult().getTrackingLogs().size()).isEqualTo(5);
 
     }
 

@@ -1,5 +1,6 @@
 package game.racing;
 
+import game.ResultEntity;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,6 +16,6 @@ public class RacingResultViewTest {
         TrackingLog log = result.register("test");
         log.add(5);
         RacingResultView resultView = new RacingResultView();
-        resultView.render(result);
+        resultView.render(new ResultEntity<>(result));
     }
 }

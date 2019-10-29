@@ -1,15 +1,15 @@
 package game.racing;
 
-import game.Result;
-
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author : yusik
  * @date : 2019/10/26
  */
-public class RacingResult implements Result<TrackingLog> {
+public class RacingResult {
 
     private List<TrackingLog> logs;
 
@@ -23,9 +23,25 @@ public class RacingResult implements Result<TrackingLog> {
         return trackingLog;
     }
 
-    @Override
-    public List<TrackingLog> getExecutionResults() {
+    public List<TrackingLog> getTrackingLogs() {
         return logs;
+    }
+
+    public String getChampionNames() {
+        return getChampionNames(", ");
+    }
+
+    public String getChampionNames(String delimiter) {
+        return logs.stream()
+                .filter(trackingLog -> trackingLog.getLastPosition() == getMaxPosition())
+                .map(TrackingLog::getName)
+                .collect(Collectors.joining(delimiter));
+    }
+
+    private int getMaxPosition() {
+        return logs.stream()
+                .max(Comparator.comparingInt(TrackingLog::getLastPosition))
+                .map(TrackingLog::getLastPosition).get();
     }
 
 }

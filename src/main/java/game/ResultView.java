@@ -5,5 +5,5 @@ package game;
  * @date : 2019/10/26
  */
 public interface ResultView<T> {
-    void render(Result<T> result);
+    void render(ResultEntity<T> entity);
 }

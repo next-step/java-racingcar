@@ -6,5 +6,5 @@ package game;
  */
 public interface Game<T> {
     void run();
-    Result<T> getResult();
+    ResultEntity<T> getResultEntity();
 }
