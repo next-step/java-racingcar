@@ -43,6 +43,7 @@
 - Input을 받는다
 - Valid 한지 check 한다
 - racingGame 을 시작한다
+- racing Car 를 만든다
 - random Number 를 만든다
 - racingCar 에 해당 정보를 넣는다
 - 게임이 끝난 후 racingResult 를 반환한다

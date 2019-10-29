@@ -1,4 +1,4 @@
-package study.first;
+package study.firstweek.firststep;
 
 import java.util.Arrays;
 import java.util.function.BiFunction;
@@ -23,7 +23,7 @@ public enum OperationMethod {
             .filter(operationMethod -> operationMethod.method.equals(method))
             .findFirst()
             .orElseThrow(() ->
-                new IllegalArgumentException("We only accept the methods in ( + , - * / )"));
+                new IllegalArgumentException("We only accept the methods in ( + , -,  * , / )"));
     }
 
     public int calculate(int a, int b) {
