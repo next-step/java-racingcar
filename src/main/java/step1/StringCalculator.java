@@ -32,8 +32,8 @@ public class StringCalculator {
         return input.split(SPACE_DELIMITER);
     }
 
-    private void iterateClassification(String[] splitedStringArray) {
-        for (String splitedString : splitedStringArray) {
+    private void iterateClassification(String[] splitedStrings) {
+        for (String splitedString : splitedStrings) {
             classificateOperandAndOperate(splitedString);
         }
     }
