@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class StringUtilsTest {
 
@@ -25,5 +26,11 @@ class StringUtilsTest {
     @MethodSource("strings")
     void repeat(String string, int count, String expected) {
         assertThat(StringUtils.repeat(string,count)).isEqualTo(expected);
+    }
+
+    @Test
+    void split() {
+        assertThat(StringUtils.split("1,2,3,4")).containsOnly("1","2","3","4");
+        assertThat(StringUtils.split("1/2/3/4","/")).containsOnly("1","2","3","4");
     }
 }
