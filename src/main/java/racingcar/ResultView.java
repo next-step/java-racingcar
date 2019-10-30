@@ -35,14 +35,15 @@ public class ResultView {
 
     private void printCycle(RacingCycle cycle) {
         for (Car car : cycle.getCycle()) {
-            System.out.println(drawLocation(car.getLocation()));
+            System.out.println(drawLocation(car.getName(), car.getLocation()));
         }
 
         System.out.println();
     }
 
-    private String drawLocation(int location) {
+    private String drawLocation(String name, int location) {
         StringBuilder locationBuilder = new StringBuilder();
+        locationBuilder.append(name).append(" : ");
         for (int i = 0; i < location; i++) {
             locationBuilder.append(LOCATION_EXPRESSION_STRING);
         }
