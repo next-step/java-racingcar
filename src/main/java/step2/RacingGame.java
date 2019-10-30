@@ -22,14 +22,14 @@ public class RacingGame {
 
     private int[] move() {
         for (int i = 0; i < this.carPositions.length; i++) {
-            if(getRandom() > 3){
+            if (getRandom() > 3) {
                 this.carPositions[i]++;
             }
         }
         return carPositions;
     }
 
-    private int getRandom(){
+    private int getRandom() {
         Random random = new Random();
         return random.nextInt(10);
     }
