@@ -1,12 +1,14 @@
-package racing;
+package racing.view;
 
 import java.text.MessageFormat;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
+import racing.domain.Car;
+import racing.domain.RacingGame;
 
-class RacingScoreView {
+public class RacingScoreView {
 
     private static final String CAR_TOKEN = "-";
     private static final String RESULT_DELIMITER = "";
@@ -17,13 +19,13 @@ class RacingScoreView {
     private final List<Car> cars;
     private final Map<String, Queue<Integer>> results;
 
-    RacingScoreView(RacingGame racingGame) {
+    public RacingScoreView(RacingGame racingGame) {
         this.racingGame = racingGame;
         this.cars = racingGame.getCars();
         this.results = racingGame.getResults();
     }
 
-    void printResults() {
+    public void printResults() {
         int tries = racingGame.getTries();
         for (int i = 0; i < tries; i++) {
             cars.stream().forEach(car -> System.out.println(printPosition(car)));
@@ -38,7 +40,7 @@ class RacingScoreView {
         );
     }
 
-    void printWinner() {
+    public void printWinner() {
         String winnerNames = String.join(WINNER_DELIMITER, racingGame.getWinnerNames());
         System.out.println(winnerNames + WINNER_TAIL);
     }

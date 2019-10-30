@@ -1,11 +1,11 @@
-package racing;
+package racing.domain;
 
 import java.util.ArrayDeque;
 import java.util.Iterator;
 import java.util.Queue;
-import racing.movestrategies.MoveStrategy;
+import racing.domain.movestrategies.MoveStrategy;
 
-class Car {
+public class Car {
 
     private final String name;
     private MoveStrategy moveStrategy;

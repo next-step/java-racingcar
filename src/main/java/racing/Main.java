@@ -1,6 +1,8 @@
 package racing;
 
 import java.util.Scanner;
+import racing.domain.RacingGame;
+import racing.view.RacingScoreView;
 
 public class Main {
 

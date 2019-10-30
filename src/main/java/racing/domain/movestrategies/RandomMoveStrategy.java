@@ -1,4 +1,4 @@
-package racing.movestrategies;
+package racing.domain.movestrategies;
 
 import java.util.Random;
 
