@@ -12,31 +12,35 @@ import java.util.regex.Pattern;
  */
 public class RacingGameInputView {
 
-    private final Scanner scanner;
     private static final String CAR_INPUT_QUESTION = "자동차 대수는 몇 대 인가요?";
     private static final String GAME_ATTEMPT_ROUND_QUESTION = "시도할 회수는 몇 회 인가요?";
     private static final Pattern NUMERIC = Pattern.compile("^[0-9]+$");
     private static final int MIN_VALUE = 0;
+    private final Scanner scanner;
+
+
+    public RacingGameInputView() {
+        this.scanner = new Scanner(System.in);
+    }
 
     public RacingGameInputView(InputStream inputStream) {
         this.scanner = new Scanner(inputStream);
     }
 
-    public int getNumberOfCars() {
-        int cars = getInputValue(CAR_INPUT_QUESTION);
-        return cars;
+
+    public int inputNumberCars() {
+        return getInputValue(CAR_INPUT_QUESTION);
     }
 
-    public int getNumberOfRound() {
-        int round = getInputValue(GAME_ATTEMPT_ROUND_QUESTION);
-        return round;
+    public int inputNumberGameRound() {
+        return getInputValue(GAME_ATTEMPT_ROUND_QUESTION);
     }
 
 
     private int getInputValue(String inputQuestion) {
         System.out.println(inputQuestion);
         String inputString = scanner.nextLine();
-        if (!checkInputIsNumber(inputString)) {
+        if (!isNumber(inputString)) {
             throw new InputMismatchException("숫자만 입력 가능합니다.");
         }
 
@@ -50,10 +54,6 @@ public class RacingGameInputView {
 
     private boolean isNumber(String str) {
         return str != null && NUMERIC.matcher(str).matches();
-    }
-
-    private boolean checkInputIsNumber(String numberOfCars) {
-        return isNumber(numberOfCars);
     }
 
     private boolean checkMinValue(int cars) {
