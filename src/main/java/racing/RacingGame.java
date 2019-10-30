@@ -42,7 +42,7 @@ class RacingGame {
     List<String> getWinnerNames() {
         int biggestPosition = getBiggestPosition();
         return cars.stream()
-                .filter(car -> car.getPosition() == biggestPosition)
+                .filter(car -> car.isPositioned(biggestPosition))
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }

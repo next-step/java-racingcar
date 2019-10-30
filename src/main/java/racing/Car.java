@@ -28,6 +28,10 @@ class Car {
         return records;
     }
 
+    boolean isPositioned(int position) {
+        return this.position == position;
+    }
+
     void move() {
         if (moveStrategy.canIMove()) {
             this.position += 1;
