@@ -7,6 +7,7 @@ import java.util.Random;
 public class Car {
 
     private final static int START_POSITION = 0;
+    private final static int FIRST_ROUND = 0;
     private final static int RANDOM_BOUND = 10;
     private final static int RANDOM_BASE = 3;
 
@@ -19,10 +20,10 @@ public class Car {
 
     public void move() {
         int position = START_POSITION;
+        int latestRound = positions.size() - 1;
 
-        if (isNotFirstRound()) {
-            int latestRound = positions.size();
-            position = getPosition(latestRound - 1);
+        if (isNotFirstRound(latestRound)) {
+            position = getPosition(latestRound);
         }
 
         if (getRandom() > RANDOM_BASE) {
@@ -40,8 +41,8 @@ public class Car {
         return name;
     }
 
-    private boolean isNotFirstRound() {
-        if (positions.size() > 0) {
+    private boolean isNotFirstRound(int latestRound) {
+        if (latestRound >= FIRST_ROUND) {
             return true;
         }
         return false;
