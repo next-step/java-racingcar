@@ -46,11 +46,11 @@ public class OperateCollection {
             return this.name;
         }
 
-        public static boolean validate(String InputOperate) {
+        public static boolean validate(String inputOperate) {
             int properCount = 0;
 
             for (OperateEnum type : OperateEnum.values()) {
-                properCount = compareOperate(type.getName(), InputOperate, properCount);
+                properCount = compareOperate(type.getName(), inputOperate, properCount);
             }
 
             if (properCount > 0) {
@@ -59,8 +59,8 @@ public class OperateCollection {
             return false;
         }
 
-        private static int compareOperate(String type, String InputOperate, int properCount) {
-            if (type.equals(InputOperate)) {
+        private static int compareOperate(String type, String inputOperate, int properCount) {
+            if (type.equals(inputOperate)) {
                 properCount += 1;
             }
             return properCount;
