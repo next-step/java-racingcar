@@ -6,10 +6,10 @@ import java.util.Random;
 
 public class Car implements Comparable<Car> {
 
-    private final static int START_POSITION = 0;
-    private final static int FIRST_ROUND = 0;
-    private final static int RANDOM_BOUND = 10;
-    private final static int RANDOM_BASE = 3;
+    static final int START_POSITION = 0;
+    static final int FIRST_ROUND = 0;
+    static final int RANDOM_BOUND = 10;
+    static final int RANDOM_BASE = 3;
 
     private List<Integer> positions = new ArrayList<>();
     private String name;
