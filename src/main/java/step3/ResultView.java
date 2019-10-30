@@ -1,12 +1,13 @@
-package step2;
+package step3;
 
 import java.util.List;
 
 public class ResultView {
 
-    public void printGame(List<Car> cars, int trialNum) {
+    public void printGame(List<Car> cars, int totalRound, List<String> winners) {
         printResultTitle();
-        printGameResult(cars, trialNum);
+        printGameResult(cars, totalRound);
+        printWinners(winners);
     }
 
     private void printResultTitle() {
@@ -14,8 +15,8 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    private void printGameResult(List<Car> cars, int trialNum) {
-        for (int i = 0; i < trialNum; i++) {
+    private void printGameResult(List<Car> cars, int totalRound) {
+        for (int i = 0; i < totalRound; i++) {
             printCarPositionByRound(cars, i);
             System.out.println();
         }
@@ -23,8 +24,10 @@ public class ResultView {
 
     private void printCarPositionByRound(List<Car> cars, int roundNum) {
         for (Car car : cars) {
-            int carPosition = car.getCarPosition(roundNum);
+            int carPosition = car.getPosition(roundNum);
             String carPositionBar = getCarPositionBar(carPosition);
+
+            System.out.print(car.getName() + " : ");
             System.out.println(carPositionBar);
         }
     }
@@ -37,5 +40,8 @@ public class ResultView {
         return carPositionBar.toString();
     }
 
+    private void printWinners(List<String> winners) {
+        System.out.print(String.join(",", winners) + "이(가) 최종 우승했습니다.");
+    }
 
 }

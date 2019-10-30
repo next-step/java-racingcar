@@ -11,11 +11,10 @@ public class GameMain {
         int trialNum = inputView.getTrialNum();
 
         RacingGame racingGame = new RacingGame(carNum, trialNum);
-        List<Car> carList = racingGame.doGame();
+        List<Car> cars = racingGame.doGame();
 
         ResultView resultView = new ResultView();
-        resultView.printGame(carList, trialNum);
-
+        resultView.printGame(cars, trialNum);
 
 
     }
