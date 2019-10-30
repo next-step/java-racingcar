@@ -1,7 +1,5 @@
 package step3.domain;
 
-import step3.view.ResultView;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -31,42 +29,35 @@ public class RacingGame {
         return cars;
     }
 
-    public void execute() {
-        for (int i = 0; i < time; i++) {
-            move();
-        }
+    public int getTime() {
+        return time;
     }
 
     private int getRandomNumber() {
         return new Random().nextInt(RANDOM_NUMBER_RANGE);
     }
 
-    public int moveCheck() {
+    private int moveCheck() {
         if (getRandomNumber() >= PIVOT) {
             return MOVING;
         }
         return STOP;
     }
 
-    private void move() {
+    public List<Car> move() {
         for (Car car : cars) {
             car.updatePosition(moveCheck());
         }
-        ResultView.printResultView(cars);
+        return cars;
     }
 
-    public int updatePosition(int currentPosition) {
-        return currentPosition + moveCheck();
-    }
-
-    public void winner() {
+    public List<String> winner() {
         winners = new ArrayList<>();
         int winnerPosition = 0;
         for (Car car : cars) {
             winnerPosition = sortWinnerPosition(car.getPosition(), winnerPosition);
         }
-        winners = sortWinners(winnerPosition);
-        printWinner();
+        return winners = sortWinners(winnerPosition);
     }
 
     private int sortWinnerPosition(int position, int winnerPosition) {
@@ -83,9 +74,5 @@ public class RacingGame {
             }
         }
         return winners;
-    }
-
-    public void printWinner() {
-        ResultView.printWinner(winners);
     }
 }
