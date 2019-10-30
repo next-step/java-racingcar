@@ -5,14 +5,14 @@ import java.util.List;
 
 public class RacingGame {
     private int time;
-    private List<Car> carList;
+    private List<Car> cars;
 
     public RacingGame(int carNum, int trialNum) {
         time = trialNum;
-        carList = new ArrayList<>();
+        cars = new ArrayList<>();
 
         for (int i = 0; i < carNum; i++) {
-            carList.add(new Car());
+            cars.add(new Car());
         }
     }
 
@@ -20,11 +20,11 @@ public class RacingGame {
         for (int i = 0; i < time; i++) {
             moveWholeCar();
         }
-        return carList;
+        return cars;
     }
 
     private void moveWholeCar() {
-        for (Car car : carList) {
+        for (Car car : cars) {
             car.move();
         }
     }

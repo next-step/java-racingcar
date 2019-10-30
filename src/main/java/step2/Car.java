@@ -5,25 +5,25 @@ import java.util.List;
 import java.util.Random;
 
 public class Car {
-    private List<Integer> positionList = new ArrayList<>();
+    private List<Integer> positions = new ArrayList<>();
 
     public void move() {
-        int lastTrial = positionList.size();
+        int lastTrial = positions.size();
         int position = 0;
 
         if (lastTrial > 0) {
-            position = positionList.get(lastTrial - 1);
+            position = positions.get(lastTrial - 1);
         }
 
         if (getRandom() > 3) {
             position += 1;
         }
 
-        positionList.add(position);
+        positions.add(position);
     }
 
     public int getCarPosition(int roundNum) {
-        return positionList.get(roundNum);
+        return positions.get(roundNum);
     }
 
     private int getRandom() {
