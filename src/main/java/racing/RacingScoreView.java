@@ -20,7 +20,8 @@ class RacingScoreView {
     }
 
     void printResults() {
-        for (int i = 0; i < racingGame.getTries(); i++) {
+        int tries = racingGame.getTries();
+        for (int i = 0; i < tries; i++) {
             cars.stream().forEach(car -> System.out.println(printPosition(car)));
             System.out.println();
         }
