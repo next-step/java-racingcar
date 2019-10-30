@@ -21,9 +21,9 @@ public class RacingTest {
 
         racingHistory.forEach(
                 history -> assertThat(history).containsKeys(
-                        Car.of("pobi").getName(),
-                        Car.of("crong").getName(),
-                        Car.of("honux").getName()
+                        Car.of("pobi", null).getName(),
+                        Car.of("crong", null).getName(),
+                        Car.of("honux", null).getName()
                 )
         );
     }

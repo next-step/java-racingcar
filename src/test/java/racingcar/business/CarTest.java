@@ -1,7 +1,6 @@
 package racingcar.business;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -9,20 +8,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    private Car car;
+    private Car carWithRandomDriveWay;
 
     @BeforeEach
     void setUp() {
-        car = Car.of(CarName.get(0));
+        carWithRandomDriveWay = Car.of("", new EnableToMoveDriveWay());
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void raceAndGetDistance(int distance) {
         for (int i = 0; i < distance; i++) {
-            car.race();
+            carWithRandomDriveWay.race();
         }
-        int result = car.getTotalDistance();
+        int result = carWithRandomDriveWay.getTotalDistance();
         assertThat(result).isLessThanOrEqualTo(distance);
     }
 
@@ -38,9 +37,11 @@ public class CarTest {
         }
     }
 
-    @Test
-    void race() {
+    private static class EnableToMoveDriveWay implements DriveWay {
 
+        @Override
+        public boolean isEnableToMove() {
+            return true;
+        }
     }
-
 }

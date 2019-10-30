@@ -25,9 +25,10 @@ public class Racing {
 
     private void registerCarsToParticipateInRace(String carNames) {
         String[] carNamesArr = carNames.split(DELIMITER);
+        DriveWay driveWay = new RandomValueDriveWay();
 
         for (String carName : carNamesArr) {
-            cars.add(Car.of(carName));
+            cars.add(Car.of(carName, driveWay));
         }
     }
 
