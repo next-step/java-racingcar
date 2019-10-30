@@ -1,27 +1,52 @@
 package step2;
 
-import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
-    private List<Integer> carPositions;
+    private static final String CAR_NAME_DELIMITER = ",";
 
-    public RacingGame(List<Integer> carPositions) {
-        this.carPositions = carPositions;
+    private int numberOfCars;
+    private Car[] cars;
+    private String[] carNames;
+
+    public RacingGame(String nameOfCars) {
+        this.carNames = splitCarNameInput(nameOfCars);
+        this.numberOfCars = getNumberOfCars(this.carNames);
+        System.out.println(this.numberOfCars);
+        this.cars = new Car[this.numberOfCars];
+        setCars(this.cars);
     }
 
-    public List<Integer> move() {
-        int length = carPositions.size();
+    public String[] splitCarNameInput(String nameOfCars) {
+        return nameOfCars.split(CAR_NAME_DELIMITER);
+    }
+
+    public int getNumberOfCars(String[] carNames) {
+        return carNames.length;
+    }
+
+    public void setCars(Car[] cars) {
+        for(int i = 0; i < numberOfCars; i++) {
+            cars[i] = new Car(1, carNames[i]);
+        }
+    }
+
+    public String[] getCarNames() {
+        return this.carNames;
+    }
+
+    public Car[] move() {
+        int length = numberOfCars;
         int position;
         int resultPosition;
 
         for (int i = 0; i < length; i++) {
-            position = carPositions.get(i);
+            position = this.cars[i].getPosition();
             resultPosition = iterateCarMove(position);
-            carPositions.set(i, resultPosition);
+            this.cars[i].setPosition(resultPosition);
         }
 
-        return carPositions;
+        return this.cars;
     }
 
     public int iterateCarMove(int position) {
