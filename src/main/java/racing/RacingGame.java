@@ -3,6 +3,7 @@ package racing;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private int totalRound;
@@ -28,19 +29,9 @@ public class RacingGame {
     }
 
     public List<String> getWinner() {
-        List<String> winners = new ArrayList<>();
 
-        Collections.sort(cars);
-        int winnerPosition = cars.get(0).getLatestPosition();
-
-        for (int i = 0; i < cars.size(); i++) {
-            if (cars.get(i).getLatestPosition() < winnerPosition) {
-                break;
-            }
-            winners.add(cars.get(i).getName());
-        }
-
-        return winners;
+        int winPosition = getWinPosition();
+        return filteringWinners(winPosition);
     }
 
     private void moveWholeCar() {
@@ -49,5 +40,21 @@ public class RacingGame {
         }
     }
 
+    private int getWinPosition() {
+        int winPosition = 0;
+        for (Car car : cars) {
+            winPosition = Math.max(winPosition, car.getLatestPosition());
+        }
+        return winPosition;
+    }
+
+    private List<String> filteringWinners(int winPosition) {
+        List<String> winners = cars.stream()
+                .filter(car -> car.getLatestPosition() == winPosition)
+                .map(car -> car.getName())
+                .collect(Collectors.toList());
+
+        return winners;
+    }
 
 }
