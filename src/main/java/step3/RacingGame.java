@@ -35,7 +35,7 @@ public class RacingGame {
         int winnerPosition = cars.get(0).getLatestPosition();
 
         for (int i = 0; i < cars.size(); i++) {
-            if (cars.get(i).getLatestPosition() < winnerPosition){
+            if (cars.get(i).getLatestPosition() < winnerPosition) {
                 break;
             }
             winners.add(cars.get(i).getName());

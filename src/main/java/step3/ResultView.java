@@ -4,9 +4,10 @@ import java.util.List;
 
 public class ResultView {
 
-    public void printGame(List<Car> cars, int totalRound) {
+    public void printGame(List<Car> cars, int totalRound, List<String> winners) {
         printResultTitle();
         printGameResult(cars, totalRound);
+        printWinners(winners);
     }
 
     private void printResultTitle() {
@@ -39,5 +40,8 @@ public class ResultView {
         return carPositionBar.toString();
     }
 
+    private void printWinners(List<String> winners) {
+        System.out.print(String.join(",", winners) + "이(가) 최종 우승했습니다.");
+    }
 
 }

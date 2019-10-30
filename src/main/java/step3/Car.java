@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Car implements Comparable<Car>{
+public class Car implements Comparable<Car> {
 
     private final static int START_POSITION = 0;
     private final static int FIRST_ROUND = 0;
@@ -36,7 +36,7 @@ public class Car implements Comparable<Car>{
         return positions.get(roundNum);
     }
 
-    public int getLatestPosition(){
+    public int getLatestPosition() {
         int latestRound = positions.size() - 1;
         if (isFirstRound(latestRound)) {
             return START_POSITION;
@@ -59,6 +59,6 @@ public class Car implements Comparable<Car>{
 
     @Override
     public int compareTo(Car c) {
-        return getLatestPosition() - c.getLatestPosition();
+        return c.getLatestPosition() - getLatestPosition();
     }
 }

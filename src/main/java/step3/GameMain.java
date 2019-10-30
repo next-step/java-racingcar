@@ -12,9 +12,10 @@ public class GameMain {
 
         RacingGame racingGame = new RacingGame(carNames, totalRound);
         List<Car> cars = racingGame.doGame();
+        List<String> winners = racingGame.getWinner();
 
         ResultView resultView = new ResultView();
-        resultView.printGame(cars, totalRound);
+        resultView.printGame(cars, totalRound, winners);
 
 
     }
