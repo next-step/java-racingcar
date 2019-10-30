@@ -3,6 +3,8 @@ package racing;
 import java.text.MessageFormat;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 
 class RacingScoreView {
 
@@ -13,10 +15,12 @@ class RacingScoreView {
     private static final String WINNER_TAIL = "가 최종 우승했습니다.";
     private final RacingGame racingGame;
     private final List<Car> cars;
+    private final Map<String, Queue<Integer>> results;
 
     RacingScoreView(RacingGame racingGame) {
         this.racingGame = racingGame;
         this.cars = racingGame.getCars();
+        this.results = racingGame.getResults();
     }
 
     void printResults() {
@@ -30,7 +34,7 @@ class RacingScoreView {
     private String printPosition(Car car) {
         return MessageFormat.format(RESULT_FORMAT, car.getName(),
             String.join(RESULT_DELIMITER,
-                Collections.nCopies(car.getRecords().poll(), CAR_TOKEN))
+                Collections.nCopies(results.get(car.getName()).poll(), CAR_TOKEN))
         );
     }
 

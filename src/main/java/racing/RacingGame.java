@@ -1,13 +1,17 @@
 package racing;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import racing.movestrategies.RandomMoveStrategy;
 
 class RacingGame {
 
+    private final Map<String, Queue<Integer>> results = new HashMap<>();
     private List<Car> cars = new ArrayList<>();
     private int tries;
 
@@ -42,9 +46,9 @@ class RacingGame {
     List<String> getWinnerNames() {
         int biggestPosition = getBiggestPosition();
         return cars.stream()
-                .filter(car -> car.isPositioned(biggestPosition))
-                .map(Car::getName)
-                .collect(Collectors.toList());
+            .filter(car -> car.isPositioned(biggestPosition))
+            .map(Car::getName)
+            .collect(Collectors.toList());
     }
 
     private int getBiggestPosition() {
@@ -52,5 +56,11 @@ class RacingGame {
             .mapToInt(Car::getPosition)
             .max()
             .getAsInt();
+    }
+
+    Map<String, Queue<Integer>> getResults() {
+        cars.stream()
+            .forEach(car -> this.results.put(car.getName(), car.getRecords()));
+        return results;
     }
 }

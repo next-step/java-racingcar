@@ -1,6 +1,7 @@
 package racing;
 
 import java.util.ArrayDeque;
+import java.util.Iterator;
 import java.util.Queue;
 import racing.movestrategies.MoveStrategy;
 
@@ -26,7 +27,16 @@ class Car {
     }
 
     Queue<Integer> getRecords() {
-        return records;
+        return getCopiedRecords();
+    }
+
+    private Queue<Integer> getCopiedRecords() {
+        Queue<Integer> copiedRecords = new ArrayDeque<>();
+        Iterator<Integer> it = records.iterator();
+        while (it.hasNext()) {
+            copiedRecords.add(it.next());
+        }
+        return copiedRecords;
     }
 
     boolean isPositioned(int position) {
