@@ -4,37 +4,36 @@ import java.util.Objects;
 
 public class Car {
 
+    private DriveWay driveWay;
     private String name;
     private int totalDistance;
 
-    private Car(String name) {
+    private Car(final String name, final DriveWay driveWay) {
         this.name = name;
         this.totalDistance = 0;
+        this.driveWay = driveWay;
     }
 
-    public static Car of(String name) {
-        return new Car(name);
+    public static Car of(final String name, final DriveWay driveWay) {
+        return new Car(name, driveWay);
     }
 
     public String getName() {
         return this.name;
     }
+
     public int getTotalDistance() {
         return this.totalDistance;
     }
 
     public void race() {
-        if (isEnableToMove()) {
+        if (driveWay.isEnableToMove()) {
             move();
         }
     }
 
     private void move() {
         this.totalDistance++;
-    }
-
-    private boolean isEnableToMove() {
-        return (int) (Math.random() * 10) > 3;
     }
 
     @Override

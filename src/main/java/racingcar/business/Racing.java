@@ -11,30 +11,32 @@ public class Racing {
     private final Recording recording = new Recording();
     private int countOfMovesAttemps = 0;
 
-    public void initialize(int countOfCars, int countOfMovesAttemps) {
-        registerCarsToParticipateInRace(countOfCars);
-        setCountOfMovesAttemps(countOfMovesAttemps);
-    }
+    private static final String DELIMITER = ",";
 
-    private void registerCarsToParticipateInRace(int carCount) {
-        for (int i = 0; i < carCount; i++) {
-            cars.add(Car.of(CarName.get(i)));
-        }
-    }
-
-    private void setCountOfMovesAttemps(int countOfMovesAttemps) {
+    private Racing(final int countOfMovesAttemps) {
         this.countOfMovesAttemps = countOfMovesAttemps;
+    }
+
+    public static Racing of(final String carNames, final int countOfMovesAttemps) {
+        Racing racing = new Racing(countOfMovesAttemps);
+        racing.registerCarsToParticipateInRace(carNames);
+        return racing;
+    }
+
+    private void registerCarsToParticipateInRace(String carNames) {
+        String[] carNamesArr = carNames.split(DELIMITER);
+        DriveWay driveWay = new RandomValueDriveWay();
+
+        for (String carName : carNamesArr) {
+            cars.add(Car.of(carName, driveWay));
+        }
     }
 
     public void start() {
         for (int i = 0; i < countOfMovesAttemps; i++) {
-            progress();
+            cars.forEach(Car::race);
+            recording.saveRacingHistory(cars);
         }
-    }
-
-    private void progress() {
-        cars.forEach(Car::race);
-        recording.saveRacingHistory(cars);
     }
 
     public Recording getRecordingData() {
