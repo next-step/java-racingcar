@@ -2,7 +2,7 @@ package step2.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import step2.domain.rules.CarNumberDefaultRule;
+import step2.domain.rules.CarNameDefaultRule;
 import step2.domain.rules.RaceRoundDefaultRule;
 import step2.util.RandomGenerator;
 
@@ -15,7 +15,8 @@ class CarRaceCourseTest {
 
 	@BeforeEach
 	void init() {
-		carRaceCourse = new CarRaceCourse(new CarNumberDefaultRule(1), new RaceRoundDefaultRule(3), new RandomGenerator());
+		carRaceCourse = new CarRaceCourse(new CarNameDefaultRule("tom,boy,amy"),
+				new RaceRoundDefaultRule(3), new RandomGenerator());
 	}
 
 	@Test
