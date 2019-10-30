@@ -1,40 +1,43 @@
 package project.game;
 
+import java.util.List;
+
+import static project.game.StringConstant.*;
+
 public class Main {
-    private static final String RACING_GAME_START_TEXT = "레이싱 시작!";
-    private static final String CAR_COUNT_INPUT_FORM_TEXT = "자동차 대수는 몇 대 인가요?";
-    private static final String ROUND_COUNT_INPUT_FORM_TEXT = "시도할 회수는 몇 회 인가요?";
-    private static final String INPUT_FORMAT_ERROR = "숫자만 입력할 수 있습니다. 다시 입력해주세요. Error : %s";
-    private static final String RACING_GAME_END_TEXT = "레이싱 종료!";
+
 
     public static void main(String[] args) {
         View view = new ConsoleView();
 
         view.drawText(RACING_GAME_START_TEXT);
 
-        int carCount;
-        int roundCount;
+        view.drawText(CAR_NAME_INPUT_FORM_TEXT);
+        List<String> carNames = StringUtils.splitStringToList(view.readInput(), ",");
+        view.drawText(ROUND_COUNT_INPUT_FORM_TEXT);
+        int carCount = view.readInputToInt();
 
-        try {
-            view.drawText(CAR_COUNT_INPUT_FORM_TEXT);
-            carCount = view.readInputToInt();
+        RacingGameNotifier notifier = new RacingGameNotifier() {
+            @Override
+            public void onResultRacingRound(List<Integer> carPositions) {
+                view.drawNewLine();
 
-            view.drawText(ROUND_COUNT_INPUT_FORM_TEXT);
-            roundCount = view.readInputToInt();
-        } catch (NumberFormatException exception) {
-            view.drawText(String.format(INPUT_FORMAT_ERROR, exception.getMessage()));
-            return;
-        }
+                for (Integer carPosition : carPositions) {
+                    view.drawCharSequence(carPosition, RacingGame.CAR_POSITION_TEXT);
+                }
+            }
 
-        RacingGameNotifier notifier = carPositions -> {
-            view.drawNewLine();
+            @Override
+            public void onResultRacingWinnerNames(List<String> winnerNames) {
+                view.drawText(RACING_GAME_END_TEXT);
 
-            for (Integer carPosition : carPositions) {
-                view.drawCharSequence(carPosition, RacingGame.CAR_POSITION_TEXT);
+                String winnerText = String.format(RACING_GAME_WINNERS, String.join(",", winnerNames));
+                view.drawText(winnerText);
             }
         };
+
         RacingGame racingGame = new RacingGame(notifier);
-        racingGame.start(GameType.RANDOM, carCount, roundCount);
+        racingGame.start(GameType.RANDOM, carNames, carCount);
 
         view.drawText(RACING_GAME_END_TEXT);
     }
