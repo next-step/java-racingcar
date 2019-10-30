@@ -4,9 +4,9 @@ import java.util.List;
 
 public class ResultView {
 
-    public void printGame(List<Car> cars, int trialNum) {
+    public void printGame(List<Car> cars, int totalRound) {
         printResultTitle();
-        printGameResult(cars, trialNum);
+        printGameResult(cars, totalRound);
     }
 
     private void printResultTitle() {
@@ -14,8 +14,8 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    private void printGameResult(List<Car> cars, int trialNum) {
-        for (int i = 0; i < trialNum; i++) {
+    private void printGameResult(List<Car> cars, int totalRound) {
+        for (int i = 0; i < totalRound; i++) {
             printCarPositionByRound(cars, i);
             System.out.println();
         }

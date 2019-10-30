@@ -8,13 +8,13 @@ public class GameMain {
 
         InputView inputView = new InputView();
         String carNames = inputView.getCarNames();
-        int trialNum = inputView.getTrialNum();
+        int totalRound = inputView.getTotalRound();
 
-        RacingGame racingGame = new RacingGame(carNames, trialNum);
+        RacingGame racingGame = new RacingGame(carNames, totalRound);
         List<Car> cars = racingGame.doGame();
 
         ResultView resultView = new ResultView();
-        resultView.printGame(cars, trialNum);
+        resultView.printGame(cars, totalRound);
 
 
     }

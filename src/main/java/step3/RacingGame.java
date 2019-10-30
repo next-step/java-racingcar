@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private int time;
+    private int totalRound;
     private List<Car> cars;
 
-    public RacingGame(String inputName, int trialNum) {
-        time = trialNum;
+    public RacingGame(String inputName, int totalRound) {
+        this.totalRound = totalRound;
         cars = new ArrayList<>();
 
         String[] carNames = inputName.split(",");
@@ -20,7 +20,7 @@ public class RacingGame {
     }
 
     public List<Car> doGame() {
-        for (int i = 0; i < time; i++) {
+        for (int i = 0; i < totalRound; i++) {
             moveWholeCar();
         }
         return cars;
