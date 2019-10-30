@@ -48,15 +48,18 @@ public class OperateCollection {
 
         public static boolean validate(String inputOperate) {
             int properCount = 0;
+            return isUsedOperator(inputOperate, properCount);
+        }
 
+        private static boolean isUsedOperator(String inputOperate, int properCount) {
+            return count(inputOperate, properCount) > 0;
+        }
+
+        private static int count(String inputOperate, int properCount) {
             for (OperateEnum type : OperateEnum.values()) {
                 properCount = compareOperate(type.getName(), inputOperate, properCount);
             }
-
-            if (properCount > 0) {
-                return true;
-            }
-            return false;
+            return properCount;
         }
 
         private static int compareOperate(String type, String inputOperate, int properCount) {
