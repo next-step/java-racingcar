@@ -23,8 +23,10 @@ public class ResultView {
 
     private void printCarPositionByRound(List<Car> cars, int roundNum) {
         for (Car car : cars) {
-            int carPosition = car.getCarPosition(roundNum);
+            int carPosition = car.getPosition(roundNum);
             String carPositionBar = getCarPositionBar(carPosition);
+
+            System.out.print(car.getName() + " : ");
             System.out.println(carPositionBar);
         }
     }

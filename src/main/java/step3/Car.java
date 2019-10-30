@@ -22,7 +22,7 @@ public class Car {
 
         if (isNotFirstRound()) {
             int latestRound = positions.size();
-            position = getCarPosition(latestRound - 1);
+            position = getPosition(latestRound - 1);
         }
 
         if (getRandom() > RANDOM_BASE) {
@@ -32,8 +32,12 @@ public class Car {
         positions.add(position);
     }
 
-    public int getCarPosition(int roundNum) {
+    public int getPosition(int roundNum) {
         return positions.get(roundNum);
+    }
+
+    public String getName() {
+        return name;
     }
 
     private boolean isNotFirstRound() {
