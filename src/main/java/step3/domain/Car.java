@@ -22,4 +22,3 @@ public class Car {
         this.position = position + movePosition;
     }
 }
-
