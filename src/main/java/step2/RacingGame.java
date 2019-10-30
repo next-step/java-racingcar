@@ -11,24 +11,23 @@ public class RacingGame {
         time = trialNum;
         carList = new ArrayList<>();
 
-        for(int i=0; i<carNum; i++){
+        for (int i = 0; i < carNum; i++) {
             carList.add(new Car());
         }
     }
 
-    public List<Car> doGame(){
-        for(int i=0; i<time; i++){
+    public List<Car> doGame() {
+        for (int i = 0; i < time; i++) {
             moveWholeCar();
         }
         return carList;
     }
 
-    private void moveWholeCar(){
-        for(Car car:carList){
+    private void moveWholeCar() {
+        for (Car car : carList) {
             car.move();
         }
     }
-
 
 
 }

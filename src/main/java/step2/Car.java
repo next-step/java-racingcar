@@ -11,18 +11,18 @@ public class Car {
         int lastTrial = positionList.size();
         int position = 0;
 
-        if(lastTrial > 0){
-            position = positionList.get(lastTrial-1);
+        if (lastTrial > 0) {
+            position = positionList.get(lastTrial - 1);
         }
 
-        if(getRandom()>3) {
+        if (getRandom() > 3) {
             position += 1;
         }
 
         positionList.add(position);
     }
 
-    public int getCarPosition(int roundNum){
+    public int getCarPosition(int roundNum) {
         return positionList.get(roundNum);
     }
 

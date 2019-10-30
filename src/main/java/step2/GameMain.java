@@ -17,6 +17,5 @@ public class GameMain {
         resultView.printGame(carList, trialNum);
 
 
-
     }
 }

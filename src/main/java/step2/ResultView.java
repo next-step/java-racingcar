@@ -14,7 +14,7 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    private void printGameResult(List<Car> carList, int trialNum){
+    private void printGameResult(List<Car> carList, int trialNum) {
         for (int i = 0; i < trialNum; i++) {
             printCarPositionByRound(carList, i);
             System.out.println();
@@ -29,7 +29,7 @@ public class ResultView {
         }
     }
 
-    private String getCarPositionBar(int carPosition){
+    private String getCarPositionBar(int carPosition) {
         StringBuffer carPositionBar = new StringBuffer();
         for (int i = 0; i < carPosition; i++) {
             carPositionBar.append("-");
