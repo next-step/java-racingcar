@@ -5,7 +5,7 @@ package game.racing;
  * @date : 2019/10/26
  */
 public class DefaultCar implements Car {
-
+    private static final int THRESHOLD = 4;
     private String name;
     private int position;
     private TrackingLog trackingLog;
@@ -21,7 +21,7 @@ public class DefaultCar implements Car {
 
     @Override
     public void move() {
-        if (CarMover.movable()) {
+        if (CarMover.movable(THRESHOLD)) {
             position++;
         }
         trackingLog.add(position);

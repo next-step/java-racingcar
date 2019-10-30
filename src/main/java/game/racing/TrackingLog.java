@@ -32,4 +32,8 @@ public class TrackingLog {
     public int getPositionByTimes(int times) {
         return log.get(times);
     }
+
+    public int getLastPosition() {
+        return getPositionByTimes(getSize() - 1);
+    }
 }

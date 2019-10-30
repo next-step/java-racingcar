@@ -1,27 +1,33 @@
 package game;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
 /**
  * @author : yusik
  * @date : 2019/10/26
  */
-public class UserInput<T> {
+public class UserInput {
 
-    private String message;
-    private T value;
+    private Map<String, Input> inputs;
 
-    public String getMessage() {
-        return message;
+    public UserInput() {
+        inputs = new HashMap<>();
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void addInputMessage(String key, String message) {
+        inputs.put(key, new Input(message));
     }
 
-    public T getValue() {
-        return value;
+    public Collection<Input> getMessages() {
+        return inputs.values();
     }
 
-    public void setValue(T value) {
-        this.value = value;
+    public String getValue(String key) {
+        return Optional.ofNullable(inputs.get(key))
+                .map(Input::getValue)
+                .orElse("");
     }
 }

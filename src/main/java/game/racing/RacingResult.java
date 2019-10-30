@@ -1,15 +1,15 @@
 package game.racing;
 
-import game.Result;
-
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author : yusik
  * @date : 2019/10/26
  */
-public class RacingResult implements Result {
+public class RacingResult {
 
     private List<TrackingLog> logs;
 
@@ -23,34 +23,25 @@ public class RacingResult implements Result {
         return trackingLog;
     }
 
-    @Override
-    public List<String> getExecutionResults() {
-
-        List<String> executionResults = new ArrayList<>();
-        int times = logs.get(0).getSize();
-        for (int i = 0; i < times; i++) {
-            executionResults.add(getResultString(i));
-        }
-        return executionResults;
+    public List<TrackingLog> getTrackingLogs() {
+        return logs;
     }
 
-    private String getResultString(int i) {
-        StringBuilder sb = new StringBuilder();
-        for (TrackingLog log : logs) {
-            sb.append(log.getName())
-                    .append("\t")
-                    .append(getCarPositionLog(log.getPositionByTimes(i)))
-                    .append("\n");
-        }
-        sb.append("\n");
-        return sb.toString();
+    public String getChampionNames() {
+        return getChampionNames(", ");
     }
 
-    private String getCarPositionLog(int position) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            sb.append("-");
-        }
-        return sb.toString();
+    public String getChampionNames(String delimiter) {
+        return logs.stream()
+                .filter(trackingLog -> trackingLog.getLastPosition() == getMaxPosition())
+                .map(TrackingLog::getName)
+                .collect(Collectors.joining(delimiter));
     }
+
+    private int getMaxPosition() {
+        return logs.stream()
+                .max(Comparator.comparingInt(TrackingLog::getLastPosition))
+                .map(TrackingLog::getLastPosition).get();
+    }
+
 }

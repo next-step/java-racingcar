@@ -1,10 +1,14 @@
 import game.Game;
 import game.InputView;
 import game.ResultView;
+import game.gambling.GamblingGame;
+import game.gambling.GamblingGameSettings;
+import game.gambling.GamblingResult;
+import game.gambling.GamblingResultView;
 import game.racing.RacingGame;
 import game.racing.RacingGameSettings;
-
-import static game.racing.RacingGameSettings.*;
+import game.racing.RacingResult;
+import game.racing.RacingResultView;
 
 /**
  * @author : yusik
@@ -13,22 +17,32 @@ import static game.racing.RacingGameSettings.*;
 public class GameApplication {
 
     public static void main(String[] args) {
+        startRacing();
+        startGamble();
+    }
 
-        InputView inputView = new InputView();
-        inputView.addMessage(KEY_NUMBER_OF_CAR, TEXT_NUMBER_OF_CAR);
-        inputView.addMessage(KEY_NUMBER_OF_TIMES, TEXT_NUMBER_OF_TIMES);
+    private static void startGamble() {
+        GamblingGameSettings settings = new GamblingGameSettings();
+        InputView inputView = new InputView(settings);
         inputView.render();
 
-        RacingGameSettings settings = new RacingGameSettings();
-        settings.setNumberOfCar(inputView.getInput(KEY_NUMBER_OF_CAR));
-        settings.setNumberOfTimes(inputView.getInput(KEY_NUMBER_OF_TIMES));
-
-        Game game = new RacingGame(settings);
+        Game<GamblingResult> game = new GamblingGame(settings);
         game.run();
 
-        ResultView resultView = new ResultView(game.getResult());
-        resultView.render();
+        ResultView<GamblingResult> resultView = new GamblingResultView();
+        resultView.render(game.getResultEntity());
+    }
 
+    private static void startRacing() {
+        RacingGameSettings settings = new RacingGameSettings();
+        InputView inputView = new InputView(settings);
+        inputView.render();
+
+        Game<RacingResult> game = new RacingGame(settings);
+        game.run();
+
+        ResultView<RacingResult> resultView = new RacingResultView();
+        resultView.render(game.getResultEntity());
     }
 
 }
