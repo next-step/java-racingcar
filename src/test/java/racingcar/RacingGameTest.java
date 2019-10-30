@@ -16,14 +16,14 @@ class RacingGameTest {
 
         //given
         List<String> carNameList = Arrays.asList("a","b");
-        int runNumber = 3;
+        int runCount = 3;
 
         //when
-        RacingGame racingGame = new RacingGame(carNameList, runNumber);
+        RacingGame racingGame = new RacingGame(carNameList, runCount);
         List<RacingCycle> cycles = racingGame.getCycles();
 
         //then
-        assertThat(cycles).hasSize(runNumber);
-        assertThat(cycles.get(0).get()).hasSize(carNameList.size());
+        assertThat(cycles).hasSize(runCount);
+        assertThat(cycles.get(0).getCycle()).hasSize(carNameList.size());
     }
 }

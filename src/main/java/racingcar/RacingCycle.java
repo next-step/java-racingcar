@@ -1,6 +1,8 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,15 +46,17 @@ public class RacingCycle {
     private int findMaxLocation() {
         return cycle.stream()
                 .map(Car::getLocation)
-                .max(Integer::compareTo).orElse(0);
+                .max(Integer::compareTo)
+                .orElse(0);
     }
 
 
-    public List<Car> get() {
-        return cycle;
+    public List<Car> getCycle() {
+        return Collections.unmodifiableList(cycle);
     }
 
     public List<Car> getWinners() {
-        return winners;
+        return Collections.unmodifiableList(winners);
     }
+
 }

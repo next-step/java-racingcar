@@ -8,22 +8,22 @@ public class UserInput {
     private static final String DELIMITER = ",";
 
     private String carNames;
-    private int runNumber;
+    private int runCount;
 
-    public UserInput(String carNames, int runNumber) {
+    public UserInput(String carNames, int runCount) {
         this.carNames = carNames;
-        this.runNumber = runNumber;
+        this.runCount = runCount;
     }
 
-    public List<String> getCarNameList() {
+    public List<String> getCarNames() {
         String[] split = carNames.split(DELIMITER);
         if(split.length == 0) {
-            throw new IllegalArgumentException("적어도 한개 이상의 자동차 이름을 입렬해주세요.");
+            throw new IllegalArgumentException("적어도 한개 이상의 자동차 이름을 입력해주세요.");
        }
         return Arrays.asList(split);
     }
 
-    public int getRunNumber() {
-        return runNumber;
+    public int getRunCount() {
+        return runCount;
     }
 }

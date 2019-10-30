@@ -11,7 +11,7 @@ public class Main {
 
         UserInput input = inputView.getInput();
 
-        RacingGame game = new RacingGame(input.getCarNameList(), input.getRunNumber());
+        RacingGame game = new RacingGame(input.getCarNames(), input.getRunCount());
         List<RacingCycle> cycles = game.getCycles();
 
         ResultView resultView = new ResultView(cycles);

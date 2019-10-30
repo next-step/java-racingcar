@@ -34,7 +34,7 @@ public class ResultView {
 
 
     private void printCycle(RacingCycle cycle) {
-        for (Car car : cycle.get()) {
+        for (Car car : cycle.getCycle()) {
             System.out.println(drawLocation(car.getLocation()));
         }
 

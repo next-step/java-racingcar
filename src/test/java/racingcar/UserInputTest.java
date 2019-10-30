@@ -19,7 +19,7 @@ class UserInputTest {
         UserInput input = new UserInput(names, runNunmber);
 
         //when
-        List<String> carNameList = input.getCarNameList();
+        List<String> carNameList = input.getCarNames();
 
         //then
         assertThat(carNameList).hasSize(3);

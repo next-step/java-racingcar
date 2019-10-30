@@ -9,32 +9,30 @@ public class RacingGame {
 
     private static final int FIRST_INDEX = 0;
 
-    public RacingGame(List<String> carNameList, int runNumber) {
-        run(carNameList, runNumber);
+    public RacingGame(List<String> carNames, int runCount) {
+        run(carNames, runCount);
     }
 
-    private void run(List<String> carNameList, int runNumber) {
-
-        for (int i = 0; i < runNumber; i++) {
-            RacingCycle cycle = getRacingCycle(i, carNameList);
+    private void run(List<String> carNames, int runCount) {
+        for (int i = 0; i < runCount; i++) {
+            RacingCycle cycle = getRacingCycle(i, carNames);
             cycle.doCycle();
             cycles.add(cycle);
         }
-
     }
 
-    private RacingCycle getRacingCycle(int i, List<String> carNameList) {
+    private RacingCycle getRacingCycle(int i, List<String> carNames) {
         if (i == FIRST_INDEX) {
-            return new RacingCycle(readyCars(carNameList));
+            return new RacingCycle(readyCars(carNames));
         }
 
-        List<Car> cars = cycles.get(i - 1).get();
+        List<Car> cars = cycles.get(i - 1).getCycle();
         return new RacingCycle(cars);
     }
 
-    private List<Car> readyCars(List<String> carNameList) {
+    private List<Car> readyCars(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
-        for (String s : carNameList) {
+        for (String s : carNames) {
             cars.add(new Car(s));
         }
         return cars;

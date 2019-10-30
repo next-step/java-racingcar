@@ -18,7 +18,7 @@ class RacingCycleTest {
         RacingCycle racingCycle = new RacingCycle(init);
 
         //when
-        List<Car> cars = racingCycle.get();
+        List<Car> cars = racingCycle.getCycle();
 
         //then
         assertThat(cars).hasSize(3);
@@ -33,7 +33,7 @@ class RacingCycleTest {
         RacingCycle racingCycle = new RacingCycle(cars);
 
         //when
-        List<Car> result = racingCycle.get();
+        List<Car> result = racingCycle.getCycle();
 
         //then
         assertThat(result).hasSize(2);
@@ -51,7 +51,7 @@ class RacingCycleTest {
         racingCycle.doCycle();
 
         //then
-        List<Car> result = racingCycle.get();
+        List<Car> result = racingCycle.getCycle();
         assertThat(result).hasSize(3);
         assertThat(result.get(0).getLocation()).isGreaterThanOrEqualTo(0);
     }
