@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Car {
+public class Car implements Comparable<Car>{
 
     private final static int START_POSITION = 0;
     private final static int FIRST_ROUND = 0;
@@ -19,12 +19,7 @@ public class Car {
     }
 
     public void move() {
-        int position = START_POSITION;
-        int latestRound = positions.size() - 1;
-
-        if (isNotFirstRound(latestRound)) {
-            position = getPosition(latestRound);
-        }
+        int position = getLatestPosition();
 
         if (getRandom() > RANDOM_BASE) {
             position++;
@@ -33,16 +28,24 @@ public class Car {
         positions.add(position);
     }
 
-    public int getPosition(int roundNum) {
-        return positions.get(roundNum);
-    }
-
     public String getName() {
         return name;
     }
 
-    private boolean isNotFirstRound(int latestRound) {
-        if (latestRound >= FIRST_ROUND) {
+    public int getPosition(int roundNum) {
+        return positions.get(roundNum);
+    }
+
+    public int getLatestPosition(){
+        int latestRound = positions.size() - 1;
+        if (isFirstRound(latestRound)) {
+            return START_POSITION;
+        }
+        return getPosition(latestRound);
+    }
+
+    private boolean isFirstRound(int latestRound) {
+        if (latestRound < FIRST_ROUND) {
             return true;
         }
         return false;
@@ -54,4 +57,8 @@ public class Car {
     }
 
 
+    @Override
+    public int compareTo(Car c) {
+        return getLatestPosition() - c.getLatestPosition();
+    }
 }
