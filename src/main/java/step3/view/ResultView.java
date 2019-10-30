@@ -1,7 +1,7 @@
-package step3;
+package step3.view;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import step3.domain.Car;
+
 import java.util.List;
 
 public class ResultView {

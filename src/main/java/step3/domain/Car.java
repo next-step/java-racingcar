@@ -1,4 +1,4 @@
-package step3;
+package step3.domain;
 
 public class Car {
     private final static int ZERO = 0;

@@ -1,5 +1,5 @@
 import step2.InputView;
-import step3.RacingGame;
+import step3.domain.RacingGame;
 
 public class Main {
 
@@ -18,7 +18,7 @@ public class Main {
     }
 
     public static void racingGameWinStart() {
-        step3.InputView inputView = new step3.InputView();
+        step3.view.InputView inputView = new step3.view.InputView();
         String carName = inputView.createCar();
         int time = inputView.moveCount();
 
