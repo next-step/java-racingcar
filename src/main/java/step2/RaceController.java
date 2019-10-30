@@ -7,9 +7,10 @@ import java.util.List;
 public class RaceController {
 
     public static void main(String[] args) {
-        int numberOfCars = InputView.getNumberOfCars();
+        String nameOfCars = InputView.getNameOfCars();
         int tryCount = InputView.getTryCount();
 
+        int numberOfCars = 1;
         List<Integer> carPositions = new ArrayList<>(Collections.nCopies(numberOfCars, 0));
 
         RacingGame racingGame = new RacingGame(carPositions);

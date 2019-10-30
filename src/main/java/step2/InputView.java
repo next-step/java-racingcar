@@ -5,11 +5,11 @@ import java.util.*;
 public class InputView {
     private static Scanner scanner = new Scanner(System.in);
 
-    public static int getNumberOfCars() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int numberOfCars = scanner.nextInt();
+    public static String getNameOfCars() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        String nameOfCars = scanner.nextLine();
 
-        return numberOfCars;
+        return nameOfCars;
     }
 
     public static int getTryCount() {
