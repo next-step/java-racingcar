@@ -1,6 +1,5 @@
 import step2.InputView;
-import step2.RacingGame;
-import step3.RacingGameWin;
+import step3.RacingGame;
 
 public class Main {
 
@@ -13,7 +12,7 @@ public class Main {
         int carCount = inputView.createCarCount();
         int time = inputView.moveCarCount();
 
-        RacingGame racingGame = new RacingGame(time);
+        step2.RacingGame racingGame = new step2.RacingGame(time);
         racingGame.carPositionsInitiate(carCount);
         racingGame.execute();
     }
@@ -23,9 +22,8 @@ public class Main {
         String carName = inputView.createCar();
         int time = inputView.moveCount();
 
-        RacingGameWin racingGameWin = new RacingGameWin(time, carName);
-        racingGameWin.initiateCar();
-        racingGameWin.execute();
-        racingGameWin.winner();
+        RacingGame racingGame = new RacingGame(time, carName);
+        racingGame.execute();
+        racingGame.winner();
     }
 }

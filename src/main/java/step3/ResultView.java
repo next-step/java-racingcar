@@ -27,15 +27,7 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void winner(List<Car> cars, int winnerPosition) {
-        List<String> winners = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.getPosition() == winnerPosition) {
-                winners.add(car.getName());
-            }
-        }
-
+    public static void printWinner(List<String> winners) {
         System.out.println(winners + "가 최종 우승했습니다.");
     }
-
 }

@@ -1,16 +1,30 @@
 package step1;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 public class StringCalculator2 {
 
     private final static String SEPARATOR = " ";
-    private final static String[] OPERATORS = {"+", "-", "*", "/"};
+    private int result = 0;
     private String[] requests;
+    private String currentOperator = null;
     private Stack<Integer> numberStack = new Stack<>();
     private Stack<String> operatorStack = new Stack<>();
-    private int result = 0;
-    private String currentOperator = null;
+    private Map<String, CalculatorType> operatorMap;
+
+    public StringCalculator2() {
+        operatorInit();
+    }
+
+    private void operatorInit() {
+        operatorMap = new HashMap<>();
+        operatorMap.put("+", CalculatorType.ADD);
+        operatorMap.put("-", CalculatorType.SUBTRACT);
+        operatorMap.put("*", CalculatorType.MULTIPLY);
+        operatorMap.put("/", CalculatorType.DIVIDE);
+    }
 
     public int execute(String input) {
         inputValidate(input);
@@ -29,10 +43,8 @@ public class StringCalculator2 {
     }
 
     public void operatorValidate(String operator) {
-        for (int i = 0; i < OPERATORS.length; i++) {
-            if (!OPERATORS[i].contains(operator)) {
-                throw new IllegalArgumentException();
-            }
+        if (!operatorMap.containsKey(operator)) {
+            throw new IllegalArgumentException();
         }
     }
 
@@ -41,53 +53,10 @@ public class StringCalculator2 {
         for (; !operatorStack.empty(); ) {
             currentOperator = operatorStack.pop();
             operatorValidate(currentOperator);
-            addOperatorCheck();
-            subtractOperatorCheck();
-            multiplyOperatorCheck();
-            divideOperatorCheck();
+            CalculatorType calculatorType = operatorMap.get(currentOperator);
+            result = calculatorType.calculate(result, numberStack.pop());
         }
         return result;
-    }
-
-    private void addOperatorCheck() {
-        if (currentOperator.equals("+")) {
-            result = add(result, numberStack.pop());
-        }
-    }
-
-    private void subtractOperatorCheck() {
-        if (currentOperator.equals("-")) {
-            result = subtract(result, numberStack.pop());
-        }
-    }
-
-    private void multiplyOperatorCheck() {
-        if (currentOperator.equals("*")) {
-            result = multiply(result, numberStack.pop());
-        }
-    }
-
-    private void divideOperatorCheck() {
-        if (currentOperator.equals("/")) {
-            result = divide(result, numberStack.pop());
-        }
-    }
-
-
-    public int add(int result, int num) {
-        return result + num;
-    }
-
-    public int subtract(int result, int num) {
-        return result - num;
-    }
-
-    public int multiply(int result, int num) {
-        return result * num;
-    }
-
-    public int divide(int result, int num) {
-        return result / num;
     }
 
     private void separate(int i) {
@@ -105,5 +74,4 @@ public class StringCalculator2 {
     private void operatorSeparate(int i) {
         operatorStack.push(requests[i]);
     }
-
 }
