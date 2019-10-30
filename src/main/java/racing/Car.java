@@ -1,14 +1,15 @@
 package racing;
 
-import java.util.LinkedList;
+import java.util.ArrayDeque;
 import java.util.Queue;
 import racing.movestrategies.MoveStrategy;
 
 class Car {
+
+    private final String name;
     private MoveStrategy moveStrategy;
     private int position;
-    private Queue<Integer> records = new LinkedList<>();
-    private final String name;
+    private Queue<Integer> records = new ArrayDeque<>();
 
     Car(MoveStrategy moveStrategy, String name) {
         this.moveStrategy = moveStrategy;
