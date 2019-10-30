@@ -4,20 +4,19 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.LongStream;
 
 public class GameRunner {
     private List<Car> cars;
     private final int tryTimes;
     private final CarDistanceGenerator carDistanceGenerator;
 
-    public GameRunner(final int tryTimes,
-                      final int numberOfCars,
-                      final CarDistanceGenerator carDistanceGenerator) {
+    private GameRunner(final int tryTimes,
+                       final List<Car> initialCars,
+                       final CarDistanceGenerator carDistanceGenerator) {
         if (tryTimes <= 0) {
             throw new IllegalArgumentException();
         }
-        if (numberOfCars <= 0) {
+        if (initialCars.size() <= 0) {
             throw new IllegalArgumentException();
         }
         if (Objects.isNull(carDistanceGenerator)) {
@@ -25,9 +24,7 @@ public class GameRunner {
         }
 
         this.tryTimes = tryTimes;
-        this.cars = Collections.unmodifiableList(LongStream.range(0, numberOfCars)
-                                                           .mapToObj(i -> new Car(String.format("car at %s", i)))
-                                                           .collect(Collectors.toList()));
+        this.cars = Collections.unmodifiableList(initialCars);
         this.carDistanceGenerator = carDistanceGenerator;
     }
 
@@ -46,10 +43,7 @@ public class GameRunner {
 
     private List<Car> generateCarSnapshot(List<Car> cars) {
         final List<Car> snapshot = cars.stream()
-                                       .map(car -> {
-                                           final int nextDistance = carDistanceGenerator.next();
-                                           return car.goForward(nextDistance);
-                                       })
+                                       .map(car -> car.goForward(carDistanceGenerator.next()))
                                        .collect(Collectors.toList());
 
         return Collections.unmodifiableList(snapshot);
@@ -61,7 +55,7 @@ public class GameRunner {
 
     public static final class RacingGameRunnerBuilder {
         private int tryTimes;
-        private int numberOfCars;
+        private List<String> carNames;
         private CarDistanceGenerator carDistanceGenerator;
 
         private RacingGameRunnerBuilder() {
@@ -72,8 +66,8 @@ public class GameRunner {
             return this;
         }
 
-        public RacingGameRunnerBuilder numberOfCars(final int numberOfCars) {
-            this.numberOfCars = numberOfCars;
+        public RacingGameRunnerBuilder carNames(final List<String> carNames) {
+            this.carNames = carNames;
             return this;
         }
 
@@ -83,7 +77,13 @@ public class GameRunner {
         }
 
         public GameRunner build() {
-            return new GameRunner(tryTimes, numberOfCars, carDistanceGenerator);
+            return new GameRunner(tryTimes, generateCars(), carDistanceGenerator);
+        }
+
+        private List<Car> generateCars() {
+            return carNames.stream()
+                           .map(Car::new)
+                           .collect(Collectors.toList());
         }
     }
 }

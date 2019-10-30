@@ -8,13 +8,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DisplayName("GameResultStringFormatter should")
-class GameResultStringFormatterTest {
+@DisplayName("GameResultNameStringFormatter should")
+class GameResultNamedStringFormatterTest {
     private GameResult gameResult;
 
     @BeforeEach
     void before() {
-        final String carNames = "pobi,crong,honux,me";
+        final String carNames = "pobi,crong,honux";
         final int tryTimes = 2;
         final CarDistanceGenerator generator = new EqualCarDistanceGenerator(5);
 
@@ -27,38 +27,34 @@ class GameResultStringFormatterTest {
     }
 
     @Test
-    @DisplayName("return formatted string")
+    @DisplayName("return named formatted string")
     void string() {
         final String expected = "" +
-                "-----\n" +
-                "-----\n" +
-                "-----\n" +
-                "-----\n" +
+                "pobi\t:\t-----\n" +
+                "crong\t:\t-----\n" +
+                "honux\t:\t-----\n" +
                 "\n" +
-                "----------\n" +
-                "----------\n" +
-                "----------\n" +
-                "----------";
-        final String formattedGameResult = new GameResultStringFormatter().format(gameResult);
+                "pobi\t:\t----------\n" +
+                "crong\t:\t----------\n" +
+                "honux\t:\t----------";
+        final String formattedGameResult = new GameResultNamedStringFormatter().format(gameResult);
 
         assertThat(formattedGameResult).isEqualTo(expected);
     }
 
 
     @Test
-    @DisplayName("return formatted string in custom delimiter")
+    @DisplayName("return named formatted string in custom delimiter")
     void handleCustomCarSymbol() {
         final String expected = "" +
-                ".....\n" +
-                ".....\n" +
-                ".....\n" +
-                ".....\n" +
+                "pobi\t:\t.....\n" +
+                "crong\t:\t.....\n" +
+                "honux\t:\t.....\n" +
                 "\n" +
-                "..........\n" +
-                "..........\n" +
-                "..........\n" +
-                "..........";
-        final String formattedGameResult = new GameResultStringFormatter(".").format(gameResult);
+                "pobi\t:\t..........\n" +
+                "crong\t:\t..........\n" +
+                "honux\t:\t..........";
+        final String formattedGameResult = new GameResultNamedStringFormatter(".").format(gameResult);
 
         assertThat(formattedGameResult).isEqualTo(expected);
     }

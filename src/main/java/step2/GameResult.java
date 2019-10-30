@@ -80,11 +80,6 @@ public final class GameResult {
             return cars;
         }
 
-        public Car getCar(final int at) {
-            // TODO: add validation
-            return cars.get(at);
-        }
-
         @Override
         public String toString() {
             return String.format("phase %s : %s", index, cars);

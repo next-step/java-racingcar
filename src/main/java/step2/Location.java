@@ -1,5 +1,7 @@
 package step2;
 
+import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.function.Function;
 
 public class Location {
@@ -9,6 +11,10 @@ public class Location {
 
     private Location(final int distance) {
         this.distance = distance;
+    }
+
+    public static Location of(final int distance) {
+        return new Location(distance);
     }
 
     public Location goForward() {
@@ -26,6 +32,19 @@ public class Location {
     @Override
     public String toString() {
         return String.valueOf(distance);
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Location)) return false;
+        final Location location = (Location) o;
+        return distance == location.distance;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(distance);
     }
 
     enum Unit {
