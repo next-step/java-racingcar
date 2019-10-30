@@ -27,6 +27,10 @@ public class Racing {
         return turn;
     }
 
+    public Car[] getCars() {
+        return this.cars;
+    }
+
     public int getCarsLength() {
         return cars.length;
     }
