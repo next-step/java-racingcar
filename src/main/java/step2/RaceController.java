@@ -1,5 +1,7 @@
 package step2;
 
+import java.util.List;
+
 public class RaceController {
 
     public static void main(String[] args) {
@@ -13,5 +15,8 @@ public class RaceController {
         for (int i = 0; i < tryCount; i++) {
             ResultView.print(racingGame.move());
         }
+
+        List<String> winners = racingGame.selectWinners();
+        ResultView.printWinner(winners);
     }
 }
