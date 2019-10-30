@@ -1,37 +1,34 @@
 package step2;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RacingGame {
     private int time;
-    private int[] carPositions;
+    private List<Car> carList;
 
-    public RacingGame(int trialNum, int carNum) {
-        this.time = trialNum;
-        this.carPositions = new int[carNum];
-    }
+    public RacingGame(int carNum, int trialNum) {
+        time = trialNum;
+        carList = new ArrayList<>();
 
-    public void doGame() {
-        ResultView resultView = new ResultView();
-        resultView.printResultTitle();
-        for (int i = 0; i < time; i++) {
-            move();
-            resultView.printCars(carPositions);
+        for(int i=0; i<carNum; i++){
+            carList.add(new Car());
         }
     }
 
-    private int[] move() {
-        for (int i = 0; i < this.carPositions.length; i++) {
-            if (getRandom() > 3) {
-                this.carPositions[i]++;
-            }
+    public List<Car> doGame(){
+        for(int i=0; i<time; i++){
+            moveWholeCar();
         }
-        return carPositions;
+        return carList;
     }
 
-    private int getRandom() {
-        Random random = new Random();
-        return random.nextInt(10);
+    private void moveWholeCar(){
+        for(Car car:carList){
+            car.move();
+        }
     }
+
+
 
 }

@@ -1,5 +1,7 @@
 package step2;
 
+import java.util.List;
+
 public class GameMain {
 
     public static void main(String[] args) {
@@ -9,7 +11,12 @@ public class GameMain {
         int trialNum = inputView.getTrialNum();
 
         RacingGame racingGame = new RacingGame(carNum, trialNum);
-        racingGame.doGame();
+        List<Car> carList = racingGame.doGame();
+
+        ResultView resultView = new ResultView();
+        resultView.printGame(carList, trialNum);
+
+
 
     }
 }
