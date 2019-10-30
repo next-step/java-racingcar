@@ -33,6 +33,21 @@ public class RacingInput {
 
     public String inputRacerNames() {
         System.out.println(RACER_NAMES_INPUT_MESSAGE);
-        return scanner.nextLine();
+        String racerNames = scanner.nextLine();
+
+        try {
+            checkRacerNamesInput(racerNames);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            return inputRacerNames();
+        }
+
+        return racerNames;
+    }
+
+    private void checkRacerNamesInput(String racerNames) {
+        if (StringUtils.isBlank(racerNames)) {
+            throw new IllegalArgumentException("자동차 이름은 공백이 될 수 없습니다.");
+        }
     }
 }

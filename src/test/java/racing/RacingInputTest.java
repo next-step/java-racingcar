@@ -19,4 +19,15 @@ public class RacingInputTest {
 
         assertThat(racingInput.inputTryCount()).isEqualTo(2);
     }
+
+    @Test
+    @DisplayName("자동차 이름 유저 입력 테스트")
+    void inputRacerNames() {
+        String expectString = "dave,pobi";
+        String input = "\n" + expectString;
+        Scanner scanner = new Scanner(new ByteArrayInputStream(input.getBytes()));
+        RacingInput racingInput = new RacingInput(scanner);
+
+        assertThat(racingInput.inputRacerNames()).isEqualTo(expectString);
+    }
 }
