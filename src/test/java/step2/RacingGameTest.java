@@ -4,17 +4,24 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
-    private int numberOfCars = 5;
-    private List<Integer> carFirstPositions = new ArrayList<>(Collections.nCopies(numberOfCars, 0));
+    private int numberOfCars = 3;
+    private String nameOfCars = "pobi,crong,honux";
 
-    private RacingGame racingGame = new RacingGame(carFirstPositions);
+    private RacingGame racingGame = new RacingGame(nameOfCars);
+
+    @Test
+    void splitCarNameInputTest() {
+        assertThat(racingGame.splitCarNameInput(this.nameOfCars)).containsExactly("pobi", "crong", "honux");
+    }
+
+    @Test
+    void getNumberOfCarsTest() {
+        String[] carNames = {"pobi", "crong", "honux"};
+        assertThat(racingGame.getNumberOfCars(carNames)).isEqualTo(3);
+    }
 
     @Test
     void generateRandomTest() {
@@ -34,8 +41,8 @@ public class RacingGameTest {
 
     @Test
     void moveTest() {
-        assertThat(racingGame.move()).hasSize(5);
-        assertThat(racingGame.move().get(0)).isLessThanOrEqualTo(racingGame.move().get(0));
-        assertThat(racingGame.move()).isInstanceOf(List.class);
+        assertThat(racingGame.move()).hasSize(3);
+        assertThat(racingGame.move()[0].getPosition()).isLessThanOrEqualTo(racingGame.move()[0].getPosition());
+        assertThat(racingGame.move()).isInstanceOf(Car[].class);
     }
 }
