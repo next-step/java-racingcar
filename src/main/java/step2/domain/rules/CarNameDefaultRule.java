@@ -2,7 +2,7 @@ package step2.domain.rules;
 
 public class CarNameDefaultRule extends CarNameRule {
 
-	private static int MIN_CAR_NUMBERS = 1;
+	private static final int MIN_CAR_NUMBERS = 1;
 
 	public CarNameDefaultRule(String carNamesBeforeParsed) {
 		super(carNamesBeforeParsed);

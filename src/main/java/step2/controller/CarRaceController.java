@@ -3,7 +3,7 @@ package step2.controller;
 import step2.domain.CarRaceCourse;
 import step2.domain.rules.CarNameRule;
 import step2.domain.rules.RaceRoundRule;
-import step2.util.RandomGenerator;
+import step2.domain.rules.RandomGenerator;
 import step2.view.InputView;
 import step2.view.ResultView;
 
