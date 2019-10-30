@@ -32,16 +32,16 @@ public class Car implements Comparable<Car> {
         return name;
     }
 
-    public int getPosition(int roundNum) {
-        return positions.get(roundNum);
-    }
-
     public int getLatestPosition() {
         int latestRound = positions.size() - 1;
         if (isFirstRound(latestRound)) {
             return START_POSITION;
         }
         return getPosition(latestRound);
+    }
+
+    public int getPosition(int roundNum) {
+        return positions.get(roundNum);
     }
 
     private boolean isFirstRound(int latestRound) {
