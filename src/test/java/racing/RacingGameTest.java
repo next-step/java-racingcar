@@ -39,7 +39,7 @@ class RacingGameTest {
         }).isInstanceOf(IndexOutOfBoundsException.class);
     }
 
-    @DisplayName("getWinnder 단일 우승 테스트")
+    @DisplayName("getWinner 단일 우승 테스트")
     @Test
     void getWinnerTest1() {
         List<Car> cars = new ArrayList<>();
@@ -63,7 +63,7 @@ class RacingGameTest {
         assertThat(racingGame.getWinner()).isEqualTo(Arrays.asList("aaa"));
     }
 
-    @DisplayName("getWinnder 복수 우승 테스트")
+    @DisplayName("getWinner 복수 우승 테스트")
     @Test
     void getWinnerTest2() {
         List<Car> cars = new ArrayList<>();
