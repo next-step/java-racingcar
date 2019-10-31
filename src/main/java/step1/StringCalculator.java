@@ -21,9 +21,9 @@ public class StringCalculator {
 
     public int calculate(String input) {
         isBlankThrowException(input);
-        String[] splitedStringArray = splitStringBySpace(input);
+        String[] splitedExpressions = splitStringBySpace(input);
 
-        iterateClassification(splitedStringArray);
+        iterateClassification(splitedExpressions);
         iterateCalculation();
         return result;
     }
@@ -32,19 +32,19 @@ public class StringCalculator {
         return input.split(SPACE_DELIMITER);
     }
 
-    private void iterateClassification(String[] splitedStrings) {
-        for (String splitedString : splitedStrings) {
-            classificateOperandAndOperate(splitedString);
+    private void iterateClassification(String[] splitedExpressions) {
+        for (String splitedExpression : splitedExpressions) {
+            classificateOperandAndOperate(splitedExpression);
         }
     }
 
-    private void classificateOperandAndOperate(String splitedString) {
-        if (isNumeric(splitedString)) {
-            operands.add(splitedString);
+    private void classificateOperandAndOperate(String splitedExpression) {
+        if (isNumeric(splitedExpression)) {
+            operands.add(splitedExpression);
             return;
         }
 
-        operates.add(splitedString);
+        operates.add(splitedExpression);
     }
 
     private void iterateCalculation() {

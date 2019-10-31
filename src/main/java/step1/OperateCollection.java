@@ -46,21 +46,24 @@ public class OperateCollection {
             return this.name;
         }
 
-        public static boolean validate(String InputOperate) {
+        public static boolean validate(String inputOperate) {
             int properCount = 0;
-
-            for (OperateEnum type : OperateEnum.values()) {
-                properCount = compareOperate(type.getName(), InputOperate, properCount);
-            }
-
-            if (properCount > 0) {
-                return true;
-            }
-            return false;
+            return isUsedOperator(inputOperate, properCount);
         }
 
-        private static int compareOperate(String type, String InputOperate, int properCount) {
-            if (type.equals(InputOperate)) {
+        private static boolean isUsedOperator(String inputOperate, int properCount) {
+            return count(inputOperate, properCount) > 0;
+        }
+
+        private static int count(String inputOperate, int properCount) {
+            for (OperateEnum type : OperateEnum.values()) {
+                properCount = compareOperate(type.getName(), inputOperate, properCount);
+            }
+            return properCount;
+        }
+
+        private static int compareOperate(String type, String inputOperate, int properCount) {
+            if (type.equals(inputOperate)) {
                 properCount += 1;
             }
             return properCount;
