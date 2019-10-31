@@ -30,18 +30,17 @@ class PositionSetterTest {
 
     @ParameterizedTest
     @MethodSource("provideTestArgs")
-    void check_position_actually_moved(List<RacingCar> lists) {
+    void check_position_after_moved(List<RacingCar> lists) {
         PositionSetter<Integer> sut = new PositionSetter(evaluator, "-1");
         List<Integer> evalList = Arrays.asList(3, 3, 3);
 
-        lists = sut.movePosition(lists, evalList);
-        lists = sut.movePosition(lists, evalList);
-        lists = sut.movePosition(lists, evalList);
-        lists = sut.movePosition(lists, evalList);
-        lists = sut.movePosition(lists, evalList);
+        sut.movePosition(lists, evalList);
+        sut.movePosition(lists, evalList);
+        sut.movePosition(lists, evalList);
+        sut.movePosition(lists, evalList);
+        sut.movePosition(lists, evalList);
 
         assertThat(lists.get(0).getPosition()).isEqualTo(5);
-        assertThat(sut.movePosition(lists, evalList).get(0).getPosition()).isEqualTo(6);
     }
 
     private static Stream<Arguments> provideTestArgs() {
