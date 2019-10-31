@@ -15,17 +15,16 @@ public class Racing {
     private int turn;
     private MoveStrategy moveStrategy;
 
-    public Racing(InputView inputView) {
-        this(inputView, new DefaultMove());
+    public Racing(String[] carsName, int turn) {
+        this(carsName, turn, new DefaultMove());
     }
 
-    public Racing(InputView inputView, MoveStrategy moveStrategy) {
-        turn = inputView.getTurn();
-        String[] carNames = inputView.getCarsName();
-        int length = carNames.length;
+    public Racing(String[] carsName, int turn, MoveStrategy moveStrategy) {
+        int length = carsName.length;
+        this.turn = turn;
         cars = new Car[length];
         for (int i = 0; i < length; i++) {
-            cars[i] = new Car(carNames[i], turn);
+            cars[i] = new Car(carsName[i], turn);
         }
         this.moveStrategy = moveStrategy;
     }

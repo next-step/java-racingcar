@@ -11,13 +11,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RacingTest {
 
-    InputView inputView = new InputView();
     Racing racing;
 
     @BeforeEach
     void setUp() {
-        inputView = new InputView(new String[]{"car1", "car2", "car3"}, 5);
-        racing = new Racing(inputView);
+        racing = new Racing(new String[]{"car1", "car2", "car3"}, 5);
     }
 
     @ParameterizedTest
@@ -27,8 +25,7 @@ class RacingTest {
     }, delimiter = ':')
     void setRacingTest(String answer, int turn) {
         String[] carsName = answer.trim().split(",");
-        inputView = new InputView(carsName, turn);
-        racing = new Racing(inputView);
+        racing = new Racing(carsName, turn);
         assertThat(racing.getTurn()).isEqualTo(turn);
     }
 

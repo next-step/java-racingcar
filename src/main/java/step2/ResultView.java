@@ -4,7 +4,6 @@
 package step2;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
 /**
  * 자동차 게임 그래프 출력 부분
@@ -47,15 +46,8 @@ public class ResultView {
     }
 
     private void getMax() {
-        Arrays.sort(carsGraph, new Comparator<Graph>() {
-            @Override
-            public int compare(Graph o1, Graph o2) {
-                if (o1.graph.length() < o2.graph.length()) {
-                    return 1;
-                }
-                return 0;
-            }
-        });
+        Arrays.sort(carsGraph, (o1, o2) ->
+                (o1.graph.length() < o2.graph.length()) ? 0 : 1);
         int max = carsGraph[0].graph.length();
         Arrays.stream(carsGraph).filter(carGraph -> carGraph.graph.length() == max)
                 .forEach(carGraph -> System.out.print(carGraph.name + " "));
