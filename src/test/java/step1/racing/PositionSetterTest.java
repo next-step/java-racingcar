@@ -1,5 +1,6 @@
 package step1.racing;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.Arrays;
@@ -20,4 +21,23 @@ class PositionSetterTest {
 
         assertThatThrownBy(() -> sut.movePosition(targetList, evalList)).isInstanceOf(IndexOutOfBoundsException.class);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = { "-1"})
+    void check_position_actually_moved(String threshold) {
+        PositionSetter<Integer> sut = new PositionSetter(evaluator, threshold);
+        List<Integer> targetList = Arrays.asList(0, 0, 0);
+        List<Integer> evalList = Arrays.asList(3, 3, 3);
+
+        targetList = sut.movePosition(targetList, evalList);
+        targetList = sut.movePosition(targetList, evalList);
+        targetList = sut.movePosition(targetList, evalList);
+        targetList = sut.movePosition(targetList, evalList);
+        targetList = sut.movePosition(targetList, evalList);
+
+        assertThat(targetList.get(0)).isEqualTo(5);
+        assertThat(sut.movePosition(targetList, evalList).get(0)).isEqualTo(6);
+    }
+
+
 }
