@@ -27,6 +27,11 @@ public class RacingGame {
         }
     }
 
+    public RacingGame(List<Car> cars, int totalRound) {
+        this.totalRound = totalRound;
+        this.cars = cars;
+    }
+
     public List<Car> doGame() {
         for (int i = 0; i < totalRound; i++) {
             moveWholeCar();
