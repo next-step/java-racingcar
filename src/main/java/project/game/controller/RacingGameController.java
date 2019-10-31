@@ -1,34 +1,47 @@
 package project.game.controller;
 
-import project.game.RacingGameNotifier;
+import project.game.StringUtils;
 import project.game.domain.Car;
 import project.game.domain.GameType;
+import project.game.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingGame {
+import static project.game.StringConstant.*;
+import static project.game.StringConstant.ROUND_COUNT_INPUT_FORM_TEXT;
+
+public class RacingGameController {
 
     public static final char CAR_POSITION_TEXT = '-';
     private static final int NOT_SET_POSITION = Integer.MIN_VALUE;
 
-    private RacingGameNotifier mRacingGameNotifier;
+    private View mView;
     private List<Car> mCars;
     private int mMaxPosition;
 
-    public RacingGame(RacingGameNotifier racingGameNotifier) {
-        this.mRacingGameNotifier = racingGameNotifier;
+    public RacingGameController(View view) {
+        this.mView = view;
         this.mCars = new ArrayList<>();
         this.mMaxPosition = NOT_SET_POSITION;
     }
 
-    public void start(GameType gameType, List<String> carNames, int roundCount) {
+    public void start(GameType gameType) {
+        mView.drawText(RACING_GAME_START_TEXT);
+
+        mView.drawText(CAR_NAME_INPUT_FORM_TEXT);
+        List<String> carNames = StringUtils.splitStringToList(mView.readInput(), COMMA_DELIMITER);
+        mView.drawText(ROUND_COUNT_INPUT_FORM_TEXT);
+        int roundCount = mView.readInputToInt();
+
         initializeCars(gameType, carNames);
         startRacing(roundCount);
         endRacing();
     }
 
     private void endRacing() {
+        mView.drawText(RACING_GAME_END_TEXT);
+
         mCars.clear();
         mMaxPosition = NOT_SET_POSITION;
     }
@@ -45,11 +58,19 @@ public class RacingGame {
             notifyCarPositionsChange(currentCarPositions);
         }
 
-        mRacingGameNotifier.onResultRacingWinnerNames(findWinnerNames());
+
+        mView.drawText(RACING_GAME_END_TEXT);
+
+        String winnerText = String.format(RACING_GAME_WINNERS, String.join(COMMA_DELIMITER, findWinnerNames()));
+        mView.drawText(winnerText);
     }
 
     private void notifyCarPositionsChange(List<Integer> currentCarPositions) {
-        mRacingGameNotifier.onResultRacingRound(currentCarPositions);
+        mView.drawNewLine();
+
+        for (Integer carPosition : currentCarPositions) {
+            mView.drawCharSequence(carPosition, RacingGameController.CAR_POSITION_TEXT);
+        }
     }
 
     private List<String> findWinnerNames() {
