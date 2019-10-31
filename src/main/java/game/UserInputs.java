@@ -9,11 +9,11 @@ import java.util.Optional;
  * @author : yusik
  * @date : 2019/10/26
  */
-public class UserInput {
+public class UserInputs {
 
     private Map<String, Input> inputs;
 
-    public UserInput() {
+    public UserInputs() {
         inputs = new HashMap<>();
     }
 

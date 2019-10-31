@@ -6,14 +6,14 @@ package game;
  */
 public abstract class GameSettings {
 
-    protected UserInput userInput;
+    protected UserInputs userInput;
 
     public void initialize() {
-        userInput = new UserInput();
+        userInput = new UserInputs();
         setInputMessages(userInput);
     }
 
-    public UserInput getUserInput() {
+    public UserInputs getUserInput() {
         return userInput;
     }
 
@@ -21,5 +21,5 @@ public abstract class GameSettings {
         return userInput.getValue(key);
     }
 
-    public abstract void setInputMessages(UserInput userInput);
+    public abstract void setInputMessages(UserInputs userInput);
 }

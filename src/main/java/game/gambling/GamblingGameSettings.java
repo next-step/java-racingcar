@@ -1,7 +1,7 @@
 package game.gambling;
 
 import game.GameSettings;
-import game.UserInput;
+import game.UserInputs;
 
 /**
  * Created by yusik on 2019/10/29.
@@ -18,7 +18,7 @@ public class GamblingGameSettings extends GameSettings {
     }
 
     @Override
-    public void setInputMessages(UserInput userInput) {
+    public void setInputMessages(UserInputs userInput) {
         userInput.addInputMessage("users", "도박할 사람 이름(,)");
         userInput.addInputMessage("numberOfRound", "시도 횟수");
     }

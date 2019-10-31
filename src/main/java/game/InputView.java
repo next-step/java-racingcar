@@ -10,7 +10,7 @@ import java.util.*;
 public class InputView {
 
     private Scanner scanner;
-    private UserInput userInput;
+    private UserInputs userInput;
 
     public InputView(GameSettings settings) {
         this(System.in, settings);

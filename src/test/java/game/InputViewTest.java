@@ -24,7 +24,7 @@ public class InputViewTest {
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
         GameSettings settings = new GameSettings() {
             @Override
-            public void setInputMessages(UserInput userInput) {
+            public void setInputMessages(UserInputs userInput) {
                 userInput.addInputMessage("testKey", "메시지 출력 테스트");
             }
         };
