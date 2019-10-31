@@ -10,6 +10,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import step2.domain.Car;
+import step2.domain.GameResult;
+import step2.domain.Location;
+import step2.view.format.GameResultNamedWinnerStringFormatter;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("GameResultNamedWinnerStringFormatter should")

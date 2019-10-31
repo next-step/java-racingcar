@@ -1,6 +1,9 @@
-package step2;
+package step2.view.format;
 
 import java.util.stream.IntStream;
+
+import step2.domain.GameResult;
+import step2.domain.Car;
 
 import static java.util.stream.Collectors.joining;
 

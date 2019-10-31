@@ -1,9 +1,12 @@
-package step2;
+package step2.view;
 
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+
+import step2.domain.GameRunner;
+import step2.domain.RandomCarDistanceGenerator;
 
 public class StandardInputView implements InputView {
     private static final String CAR_NAME_DELIMITER = ",";

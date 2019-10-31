@@ -1,4 +1,6 @@
-package step2;
+package step2.view.format;
+
+import step2.domain.Car;
 
 public class GameResultNamedStringFormatter extends GameResultStringFormatter {
     public GameResultNamedStringFormatter() {

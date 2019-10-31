@@ -4,6 +4,11 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
+import step2.domain.CarDistanceGenerator;
+import step2.domain.EqualCarDistanceGenerator;
+import step2.domain.GameResult;
+import step2.domain.GameRunner;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class GameRunnerTest {

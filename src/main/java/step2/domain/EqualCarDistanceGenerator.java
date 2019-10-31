@@ -1,4 +1,4 @@
-package step2;
+package step2.domain;
 
 public final class EqualCarDistanceGenerator implements CarDistanceGenerator {
     private final int value;

@@ -1,10 +1,13 @@
-package step2;
+package step2.view.format;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import step2.domain.GameResult;
+import step2.domain.Car;
 
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toMap;

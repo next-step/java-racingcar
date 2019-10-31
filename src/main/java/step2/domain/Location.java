@@ -1,6 +1,5 @@
-package step2;
+package step2.domain;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.function.Function;
 

@@ -3,6 +3,8 @@ package step2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import step2.domain.Car;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
