@@ -31,11 +31,6 @@ public class InputView {
 
     public InputView(){}
 
-    public InputView(String[] carsName, int turn) {
-        this.carsName = carsName;
-        this.turn = turn;
-    }
-
     public void input() {
         carsName = getAnswerListForQuestion(CARS_NAME_QUESTION);
         turn = getAnswerForQuestion(TURN_COUNT_QUESTION);

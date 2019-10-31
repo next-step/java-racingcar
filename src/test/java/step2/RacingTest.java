@@ -46,11 +46,11 @@ class RacingTest {
         racing.move(car, 2);
         racing.move(car, 4);
         assertAll(
+                () -> assertEquals(false, car.getMoveOfTurn(0)),
                 () -> assertEquals(true, car.getMoveOfTurn(1)),
                 () -> assertEquals(true, car.getMoveOfTurn(2)),
                 () -> assertEquals(false, car.getMoveOfTurn(3)),
-                () -> assertEquals(true, car.getMoveOfTurn(4)),
-                () -> assertEquals(false, car.getMoveOfTurn(5))
+                () -> assertEquals(true, car.getMoveOfTurn(4))
         );
     }
 

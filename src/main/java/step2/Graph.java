@@ -1,22 +1,31 @@
 package step2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Graph {
 
     public static final String CAR_LOG_SYMBOL = "_";
 
     public String name;
-    public StringBuilder graph;
+    public List<String> graphs;
 
     Graph(Car car) {
         this.name = car.getName();
-        this.graph = new StringBuilder();
+        graphs = new ArrayList<>();
     }
 
-    public void draw(boolean move) {
-        System.out.print(name + " : ");
-        if (move) {
+    public void setGraph(int score) {
+        StringBuilder graph = new StringBuilder();
+        for (int i = 0; i < score; i++) {
             graph.append(CAR_LOG_SYMBOL);
         }
-        System.out.println(graph);
+        graphs.add(graph.toString());
     }
+
+    public void draw(int turn) {
+        System.out.print(name + " : ");
+        System.out.println(graphs.get(turn - 1));
+    }
+
 }

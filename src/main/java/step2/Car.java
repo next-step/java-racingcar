@@ -20,7 +20,15 @@ public class Car {
     }
 
     public void go(int turn) {
-        move[turn - 1] = true;
+        move[turn] = true;
+    }
+
+    public int getScore(int turn) {
+        int sum = 0;
+        for (int i = 0; i <= turn; i++) {
+            sum += (move[i] ? 1 : 0);
+        }
+        return sum;
     }
 
     public String getName() {
@@ -28,6 +36,6 @@ public class Car {
     }
 
     public boolean getMoveOfTurn(int turn) {
-        return move[turn - 1];
+        return move[turn];
     }
 }
