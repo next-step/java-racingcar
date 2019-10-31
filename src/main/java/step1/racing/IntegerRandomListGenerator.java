@@ -17,7 +17,7 @@ public class IntegerRandomListGenerator implements RandomListGenerator<Integer> 
     }
 
     @Override
-    public List<Integer> gacha(int size, int bound) {
+    public List<Integer> gacha(Integer size, Integer bound) {
         return IntStream.range(0, size)
                  .map(num -> random.nextInt(bound))
                  .boxed()
