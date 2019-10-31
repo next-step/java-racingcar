@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class PositionSetter<T> {
+public class PositionSetter<T extends Number> {
     private final Evaluator<T> evaluator;
     private final T threshold;
 
