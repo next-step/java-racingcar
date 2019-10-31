@@ -13,7 +13,7 @@ public class RacingGame {
 
     public RacingGame(String nameOfCars) {
         this.carNames = splitCarNameInput(nameOfCars);
-        this.numberOfCars = getNumberOfCars(this.carNames);
+        this.numberOfCars = extractNumberOfCars(this.carNames);
         this.cars = new Car[this.numberOfCars];
         setCars(this.cars);
     }
@@ -22,7 +22,7 @@ public class RacingGame {
         return nameOfCars.split(CAR_NAME_DELIMITER);
     }
 
-    public int getNumberOfCars(String[] carNames) {
+    public int extractNumberOfCars(String[] carNames) {
         return carNames.length;
     }
 
