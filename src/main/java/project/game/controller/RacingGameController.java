@@ -30,10 +30,6 @@ public class RacingGameController {
         endRacing();
     }
 
-    private void endRacing() {
-        mCars.clear();
-    }
-
     private void initializeCars(GameType gameType) {
         List<String> carNames = getCarNames();
         MoveRule moveRule = gameType.getMoveRule();
@@ -45,7 +41,7 @@ public class RacingGameController {
 
     private List<String> getCarNames() {
         String rawCarNamesText = readInput(CAR_NAME_INPUT_FORM_TEXT);
-        return StringUtils.splitStringToList(rawCarNamesText, COMMA_DELIMITER);
+        return StringUtils.splitStringToList(rawCarNamesText.replace(" ", ""), COMMA_DELIMITER);
     }
 
     private void startRacing() {
@@ -64,6 +60,12 @@ public class RacingGameController {
         showWinners();
     }
 
+    private void moveCars() {
+        for (Car car : mCars) {
+            car.moveIfPossible();
+        }
+    }
+
     private int getRoundCount() {
         String rawRoundCount = readInput(ROUND_COUNT_INPUT_FORM_TEXT);
         try {
@@ -71,6 +73,10 @@ public class RacingGameController {
         } catch (NumberFormatException numberFormatException) {
             return INVALID_ROUND_COUNT;
         }
+    }
+
+    private void endRacing() {
+        mCars.clear();
     }
 
     private String readInput(String question) {
@@ -105,12 +111,6 @@ public class RacingGameController {
     private void addWinnerNameIfPossible(List<String> winnerNames, Car car, int maxPosition) {
         if (car.hasEqualPositionTo(maxPosition)) {
             winnerNames.add(car.getName());
-        }
-    }
-
-    private void moveCars() {
-        for (Car car : mCars) {
-            car.moveIfPossible();
         }
     }
 }
