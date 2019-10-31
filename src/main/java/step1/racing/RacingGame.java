@@ -3,22 +3,23 @@ package step1.racing;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import step1.racing.data.RacingCar;
+import step1.racing.view.CarPositionViewer;
+
 public class RacingGame {
     private static final String CAR_INDICATOR = "-";
     private final RandomListGenerator randomListGenerator;
     private final PositionSetter positionSetter;
-    private final int players;
     private final int playTimes;
     private final int boundary;
 
-    private List<Integer> carPositions;
+    private List<RacingCar> carPositions;
 
-    public RacingGame(RandomListGenerator randomListGenerator, PositionSetter positionSetter, int players, int playTimes, int boundary) {
+    public RacingGame(RandomListGenerator randomListGenerator, PositionSetter positionSetter, List<RacingCar> carPositions, int playTimes, int boundary) {
         this.randomListGenerator = randomListGenerator;
         this.positionSetter = positionSetter;
-        this.carPositions = Preparation.initRacingGame(players);
+        this.carPositions = carPositions;
         this.playTimes = playTimes;
-        this.players = players;
         this.boundary = boundary;
     }
 
@@ -32,7 +33,7 @@ public class RacingGame {
     }
 
     private <T extends Number> List<T> getGachaList() {
-        return randomListGenerator.gacha(players, boundary);
+        return randomListGenerator.gacha(carPositions.size(), boundary);
     }
 
     private void viewCurrentStatus() {

@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import step1.racing.data.RacingCar;
+
 public class PositionSetter<T extends Number> {
     private final Evaluator<T> evaluator;
     private final T threshold;
@@ -13,16 +15,16 @@ public class PositionSetter<T extends Number> {
         this.threshold = evaluator.parseValue(winningThreshold);
     }
 
-    public List<Integer> movePosition(List<Integer> target, List<T> evaluationFactors) {
+    public List<RacingCar> movePosition(List<RacingCar> target, List<T> evaluationFactors) {
         return IntStream.range(0, target.size())
-                 .map(index -> updatePositionIfWon(target, evaluationFactors, index))
-                 .boxed()
+                 .mapToObj(index -> updatePositionIfWon(target, evaluationFactors, index))
                  .collect(Collectors.toList());
     }
 
-    private int updatePositionIfWon(List<Integer> target, List<T> evaluationFactors, int index) {
+    private RacingCar updatePositionIfWon(List<RacingCar> target, List<T> evaluationFactors, int index) {
         if (evaluator.evaluate(evaluationFactors.get(index), threshold)) {
-            return target.get(index) + 1;
+            target.get(index).moveForward();
+            return target.get(index);
         }
         return target.get(index);
     }
