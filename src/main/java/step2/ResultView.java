@@ -5,11 +5,13 @@ import java.util.List;
 public class ResultView {
     private static final String POSITION = "-";
     private static final String COMMA = ",";
+    private static final String START_MESSAGE = "실행 결과";
+    private static final String END_MESSAGE = "가 최종 우승했습니다.";
 
     public static void printStartMessage(String[] carNames) {
-        System.out.println("실행 결과");
+        System.out.println(START_MESSAGE);
         for (String carName : carNames) {
-            printCarInfo(carName);
+            System.out.println(carName + " : " + POSITION);
         }
         newLine();
     }
@@ -24,26 +26,6 @@ public class ResultView {
         newLine();
     }
 
-    public static void printWinner(List<String> winners) {
-        int winnerSize = winners.size();
-
-        for (int i = 0; i < winnerSize; i++) {
-            System.out.print(winners.get(i));
-            printComma(i, winnerSize);
-        }
-        System.out.println("가 최종 우승했습니다.");
-    }
-
-    private static void printComma(int index, int maxSize) {
-        if (index < maxSize - 1) {
-            System.out.print(COMMA);
-        }
-    }
-
-    private static void printCarInfo(String carName) {
-        System.out.println(carName + " : " + POSITION);
-    }
-
     private static void iteratePrint(Car car) {
         int movedPosition = car.getPosition();
         printCarName(car.getName());
@@ -53,11 +35,31 @@ public class ResultView {
         }
     }
 
-    private static void printCarName(String carName) {
-        System.out.print(carName + " : ");
-    }
-
     private static void newLine() {
         System.out.println();
+    }
+
+    public static void printWinner(List<String> winners) {
+        int winnerSize = winners.size();
+
+        for (int i = 0; i < winnerSize; i++) {
+            System.out.print(winners.get(i));
+            printComma(i, winnerSize);
+        }
+        System.out.println(END_MESSAGE);
+    }
+
+    private static void printComma(int index, int maxSize) {
+        if (!isLastCar(index, maxSize)) {
+            System.out.print(COMMA);
+        }
+    }
+
+    private static boolean isLastCar(int index, int maxSize) {
+        return index < maxSize - 1;
+    }
+
+    private static void printCarName(String carName) {
+        System.out.print(carName + " : ");
     }
 }
