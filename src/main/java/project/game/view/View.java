@@ -1,4 +1,4 @@
-package project.game;
+package project.game.view;
 
 import java.util.List;
 

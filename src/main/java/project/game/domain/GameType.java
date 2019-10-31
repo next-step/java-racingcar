@@ -1,4 +1,4 @@
-package project.game;
+package project.game.domain;
 
 public enum GameType {
     RANDOM(new RandomlyMoveRule(new RandomNumberProviderImpl(10)));

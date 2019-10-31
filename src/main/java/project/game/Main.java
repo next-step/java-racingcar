@@ -1,5 +1,10 @@
 package project.game;
 
+import project.game.controller.RacingGame;
+import project.game.domain.GameType;
+import project.game.view.ConsoleView;
+import project.game.view.View;
+
 import java.util.List;
 
 import static project.game.StringConstant.*;

@@ -1,4 +1,8 @@
-package project.game;
+package project.game.controller;
+
+import project.game.RacingGameNotifier;
+import project.game.domain.Car;
+import project.game.domain.GameType;
 
 import java.util.ArrayList;
 import java.util.List;

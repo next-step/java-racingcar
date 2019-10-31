@@ -2,6 +2,9 @@ package project.game;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import project.game.domain.Car;
+import project.game.domain.MoveRule;
+import project.game.domain.RandomlyMoveRule;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
