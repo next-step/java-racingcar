@@ -10,7 +10,7 @@ public class RaceController {
 
         RacingGame racingGame = new RacingGame(nameOfCars);
 
-        ResultView.printStartMessage(racingGame.getCarNames());
+        ResultView.printStartMessage(racingGame.getCars().getCarNames());
 
         for (int i = 0; i < tryCount; i++) {
             ResultView.print(racingGame.move());

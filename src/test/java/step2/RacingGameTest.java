@@ -7,8 +7,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
-    private int numberOfCars = 3;
     private String nameOfCars = "pobi,crong,honux";
+    private String[] carNames = {"pobi", "crong", "honux"};
 
     private RacingGame racingGame = new RacingGame(nameOfCars);
 
@@ -18,9 +18,11 @@ public class RacingGameTest {
     }
 
     @Test
-    void getNumberOfCarsTest() {
-        String[] carNames = {"pobi", "crong", "honux"};
-        assertThat(racingGame.getNumberOfCars(carNames)).isEqualTo(3);
+    void extractNumberOfCarsTest() {
+        Cars cars = new Cars();
+        cars.createCars(carNames);
+
+        assertThat(cars.extractNumberOfCars()).isEqualTo(3);
     }
 
     @Test
@@ -41,8 +43,8 @@ public class RacingGameTest {
 
     @Test
     void moveTest() {
-        assertThat(racingGame.move()).hasSize(3);
-        assertThat(racingGame.move()[0].getPosition()).isLessThanOrEqualTo(racingGame.move()[0].getPosition());
-        assertThat(racingGame.move()).isInstanceOf(Car[].class);
+        assertThat(racingGame.move().getCars()).hasSize(3);
+        assertThat(racingGame.move().getCars().get(0).getPosition()).isLessThanOrEqualTo(racingGame.move().getCars().get(0).getPosition());
+        assertThat(racingGame.move()).isInstanceOf(Cars.class);
     }
 }

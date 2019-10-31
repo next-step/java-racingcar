@@ -8,32 +8,19 @@ public class RacingGame {
     private static final String CAR_NAME_DELIMITER = ",";
 
     private int numberOfCars;
-    private Car[] cars;
-    private String[] carNames;
+    private Cars cars;
 
     public RacingGame(String nameOfCars) {
-        this.carNames = splitCarNameInput(nameOfCars);
-        this.numberOfCars = extractNumberOfCars(this.carNames);
-        this.cars = new Car[this.numberOfCars];
-        setCars(this.cars);
+        String[] carNames = splitCarNameInput(nameOfCars);
+        cars = new Cars();
+
+        cars.createCars(carNames);
+
+        this.numberOfCars = cars.extractNumberOfCars();
     }
 
     public String[] splitCarNameInput(String nameOfCars) {
         return nameOfCars.split(CAR_NAME_DELIMITER);
-    }
-
-    public int extractNumberOfCars(String[] carNames) {
-        return carNames.length;
-    }
-
-    public void setCars(Car[] cars) {
-        for (int i = 0; i < numberOfCars; i++) {
-            cars[i] = new Car(1, carNames[i]);
-        }
-    }
-
-    public String[] getCarNames() {
-        return this.carNames;
     }
 
     public List<String> selectWinners() {
@@ -42,10 +29,12 @@ public class RacingGame {
         return getWinners(winners, this.cars);
     }
 
-    public List<String> getWinners(List<String> winners, Car[] cars) {
-        int maxPosition = getMaxPosition(cars);
+    public List<String> getWinners(List<String> winners, Cars cars) {
+        List<Car> carCollection = cars.getCars();
 
-        for (Car car : cars) {
+        int maxPosition = getMaxPosition(carCollection);
+
+        for (Car car : carCollection) {
             winners = exceptEmpty(winners, getWinner(car, maxPosition));
         }
 
@@ -59,10 +48,10 @@ public class RacingGame {
         return winners;
     }
 
-    public int getMaxPosition(Car[] cars) {
+    public int getMaxPosition(List<Car> carCollection) {
         int maxPosition = 0;
 
-        for (Car car : cars) {
+        for (Car car : carCollection) {
             if (car.getPosition() > maxPosition) {
                 maxPosition = car.getPosition();
             }
@@ -80,15 +69,17 @@ public class RacingGame {
     }
 
 
-    public Car[] move() {
+    public Cars move() {
         int length = numberOfCars;
         int position;
         int resultPosition;
 
+        List<Car> carCollection = cars.getCars();
+
         for (int i = 0; i < length; i++) {
-            position = this.cars[i].getPosition();
+            position = carCollection.get(i).getPosition();
             resultPosition = iterateCarMove(position);
-            this.cars[i].setPosition(resultPosition);
+            carCollection.get(i).setPosition(resultPosition);
         }
 
         return this.cars;
@@ -116,5 +107,9 @@ public class RacingGame {
         }
 
         return position;
+    }
+
+    public Cars getCars() {
+        return this.cars;
     }
 }

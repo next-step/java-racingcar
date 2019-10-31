@@ -14,8 +14,10 @@ public class ResultView {
         newLine();
     }
 
-    public static void print(Car[] cars) {
-        for (Car car : cars) {
+    public static void print(Cars cars) {
+        List<Car> carCollection = cars.getCars();
+
+        for (Car car : carCollection) {
             iteratePrint(car);
             newLine();
         }
