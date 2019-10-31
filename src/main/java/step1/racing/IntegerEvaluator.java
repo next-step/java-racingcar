@@ -5,4 +5,9 @@ public class IntegerEvaluator implements Evaluator<Integer> {
     public boolean evaluate(Integer evaluateFactor, Integer threshold) {
         return evaluateFactor >= threshold;
     }
+
+    @Override
+    public Integer parseValue(String value) {
+        return Integer.valueOf(value);
+    }
 }
