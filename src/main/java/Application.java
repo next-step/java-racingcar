@@ -1,13 +1,13 @@
 import step2.InputView;
 import step2.Racing;
-import step2.RandomRacing;
+import step2.RamdomMove;
 import step2.ResultView;
 
 public class Application {
     public static void main(String[] args) {
         InputView inputView = new InputView();
         inputView.input();
-        Racing racing = new RandomRacing(inputView);
+        Racing racing = new Racing(inputView, new RamdomMove());
         racing.run();
         ResultView resultView = new ResultView(racing);
         resultView.show();

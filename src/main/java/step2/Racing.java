@@ -13,14 +13,21 @@ public class Racing {
 
     private Car[] cars;
     private int turn;
+    private MoveStrategy moveStrategy;
 
     public Racing(InputView inputView) {
+        this(inputView, new DefaultMove());
+    }
+
+    public Racing(InputView inputView, MoveStrategy moveStrategy) {
         turn = inputView.getTurn();
-        cars = new Car[inputView.getCarsName().length];
         String[] carNames = inputView.getCarsName();
-        for (int i = 0; i < cars.length; i++) {
+        int length = carNames.length;
+        cars = new Car[length];
+        for (int i = 0; i < length; i++) {
             cars[i] = new Car(carNames[i], turn);
         }
+        this.moveStrategy = moveStrategy;
     }
 
     public int getTurn() {
@@ -29,10 +36,6 @@ public class Racing {
 
     public Car[] getCars() {
         return this.cars;
-    }
-
-    public int getCarsLength() {
-        return cars.length;
     }
 
     public Car getCar(int index) {
@@ -52,6 +55,8 @@ public class Racing {
     }
 
     public void move(Car car, int turn) {
-        car.go(turn);
+        if (moveStrategy.isPossibleToGo()) {
+            car.go(turn);
+        }
     }
 }
