@@ -2,15 +2,15 @@ package step2.domain.rules;
 
 public class CarNameDefaultRule extends CarNameRule {
 
-	private static int MIN_CAR_NUMBERS = 1;
+	private static final int MIN_CAR_NUMBERS = 1;
 
-	public CarNameDefaultRule(String carNamesBeforeParsed) {
-		super(carNamesBeforeParsed);
+	public CarNameDefaultRule(String carNamesBeforeParsed, String delimiter) {
+		super(carNamesBeforeParsed, delimiter);
 	}
 
 	@Override
-	public String[] parse(String carNamesBeforeParsed) {
-		return validateCarNumbers(carNamesBeforeParsed.split(","));
+	public String[] parse(String carNamesBeforeParsed, String delimiter) {
+		return validateCarNumbers(carNamesBeforeParsed.split(delimiter));
 	}
 
 	private String[] validateCarNumbers(String[] carNames) {

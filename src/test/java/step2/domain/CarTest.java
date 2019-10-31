@@ -18,7 +18,7 @@ class CarTest {
 		Car car = new Car("name", 0);
 
 		// when
-		car.moveIfLucky(randomNumber);
+		car.move(randomNumber);
 
 		// then
 		assertThat(doesCarMoveOneStep(car)).isEqualTo(carMoveResult);

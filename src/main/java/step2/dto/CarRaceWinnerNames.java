@@ -1,5 +1,6 @@
 package step2.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CarRaceWinnerNames {
@@ -19,7 +20,7 @@ public class CarRaceWinnerNames {
 	}
 
 	public List<String> get() {
-		return winnerNames;
+		return new ArrayList<>(winnerNames);
 	}
 
 }

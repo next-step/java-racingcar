@@ -1,7 +1,8 @@
 package step2.domain;
 
-import step2.util.RandomGenerator;
+import step2.domain.rules.NumberGenerator;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -9,15 +10,29 @@ import static java.util.stream.Collectors.toList;
 
 class RacingCars {
 
+	private static final int CAR_INITIAL_STEP = 0;
+
 	private final List<Car> cars;
+
+	RacingCars(String[] carNames) {
+		this.cars = prepareCars(carNames);
+	}
 
 	RacingCars(List<Car> cars) {
 		this.cars = cars;
 	}
 
-	void moveAllCars(RandomGenerator randomGenerator) {
+	private List<Car> prepareCars(String[] carNames) {
+		List<Car> cars = new ArrayList<>();
+		for (String carName : carNames) {
+			cars.add(new Car(carName, CAR_INITIAL_STEP));
+		}
+		return cars;
+	}
+
+	void moveAllCars(NumberGenerator numberGenerator) {
 		for (Car car : cars) {
-			car.moveIfLucky(randomGenerator.getRandomNumber());
+			car.move(numberGenerator.generate());
 		}
 	}
 
@@ -26,12 +41,16 @@ class RacingCars {
 	}
 
 	List<String> findWinnerNames() {
-		int maxStep = cars.stream().mapToInt(Car::getStep).max().orElse(0);
-		if (maxStep == 0) {
+		int maxStep = cars.stream()
+				.mapToInt(Car::getStep)
+				.max()
+				.orElse(CAR_INITIAL_STEP);
+		if (maxStep == CAR_INITIAL_STEP) {
 			return Collections.emptyList();
 		}
+
 		return cars.stream()
-				.filter(car -> car.getStep() == maxStep)
+				.filter(car -> car.hasSameStep(maxStep))
 				.map(Car::getName)
 				.collect(toList());
 	}

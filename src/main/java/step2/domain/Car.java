@@ -2,9 +2,9 @@ package step2.domain;
 
 public class Car {
 
-	private static final int LUCKY_THRESHOLD = 4;
+	private static final int THRESHOLD = 4;
 
-	private String name;
+	private final String name;
 	private int step;
 
 	public Car(String name, int step) {
@@ -12,14 +12,18 @@ public class Car {
 		this.step = step;
 	}
 
-	public void moveIfLucky(int randomNumber) {
-		if (isLuckyRound(randomNumber)) {
+	public void move(int number) {
+		if (isEnoughToMove(number)) {
 			step++;
 		}
 	}
 
-	private boolean isLuckyRound(int randomNumber) {
-		return randomNumber >= LUCKY_THRESHOLD;
+	private boolean isEnoughToMove(int number) {
+		return number >= THRESHOLD;
+	}
+
+	boolean hasSameStep(int step) {
+		return this.step == step;
 	}
 
 	public int getStep() {

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import step2.domain.rules.CarNameDefaultRule;
 import step2.domain.rules.RaceRoundDefaultRule;
-import step2.util.RandomGenerator;
+import step2.domain.rules.RandomGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,7 +15,7 @@ class CarRaceCourseTest {
 
 	@BeforeEach
 	void init() {
-		carRaceCourse = new CarRaceCourse(new CarNameDefaultRule("tom,boy,amy"),
+		carRaceCourse = new CarRaceCourse(new CarNameDefaultRule("tom,boy,amy", ","),
 				new RaceRoundDefaultRule(3), new RandomGenerator());
 	}
 
