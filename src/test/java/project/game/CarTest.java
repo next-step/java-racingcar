@@ -39,6 +39,6 @@ public class CarTest {
         alwaysCanMoveCar.moveIfPossible();
         alwaysCanMoveCar.moveIfPossible();
 
-        assertThat(alwaysCanMoveCar.canBeWinner(winnerScore)).isTrue();
+        assertThat(alwaysCanMoveCar.hasEqualPositionTo(winnerScore)).isTrue();
     }
 }

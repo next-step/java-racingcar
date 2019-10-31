@@ -82,7 +82,7 @@ public class RacingGameController {
     }
 
     private void addWinnerNameIfPossible(List<String> winnerNames, Car car) {
-        if (car.canBeWinner(mMaxPosition)) {
+        if (car.hasEqualPositionTo(mMaxPosition)) {
             winnerNames.add(car.getName());
         }
     }

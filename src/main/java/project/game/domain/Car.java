@@ -21,8 +21,8 @@ public class Car {
         return mMovePosition;
     }
 
-    public boolean canBeWinner(int winnerScore) {
-        return mMovePosition == winnerScore;
+    public boolean hasEqualPositionTo(int targetPosition) {
+        return mMovePosition == targetPosition;
     }
 
     public String getName() {
