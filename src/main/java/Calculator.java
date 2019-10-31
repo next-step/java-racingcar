@@ -5,6 +5,7 @@ public class Calculator {
 
     static final int ASCII_NUMBER_ONE = 48;
     static final int ASCII_NUMBER_NINE = 57;
+
     static final String WHITE_SPACE = " ";
     static final char PLUS_SIGN = '+';
     static final char MINUS_SIGN = '-';
@@ -29,6 +30,7 @@ public class Calculator {
     private String removeWhiteSpace(String expression) {
         StringBuffer sb = new StringBuffer();
         String[] tokens = expression.split(WHITE_SPACE);
+
         for (String s : tokens) {
             sb.append(s);
         }
