@@ -1,11 +1,13 @@
 package step1.racing.view;
 
-import java.util.List;
-
-import step1.racing.data.RacingCar;
+import step1.racing.RacingCarHandler;
 
 public class CarPositionViewer {
-    public static void rendering(List<RacingCar> carPositions, String flag) {
-        carPositions.forEach(car -> System.out.println(car.printStatus(flag)));
+    public static void rendering(RacingCarHandler carPositions, String flag) {
+        carPositions.racingCars().forEach(car -> System.out.println(car.printStatus(flag)));
+    }
+
+    public static void printWinner(RacingCarHandler racingCarHandler) {
+        racingCarHandler.getWinners().forEach(car -> System.out.println(car.getName()));
     }
 }
