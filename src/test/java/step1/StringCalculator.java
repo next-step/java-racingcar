@@ -14,4 +14,8 @@ public class StringCalculator {
 		return 0;
 	}
 
+	private int divide(int left, int right) {
+		return 0;
+	}
+
 }
