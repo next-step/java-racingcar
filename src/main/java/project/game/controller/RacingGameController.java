@@ -3,6 +3,7 @@ package project.game.controller;
 import project.game.StringUtils;
 import project.game.domain.Car;
 import project.game.domain.GameType;
+import project.game.domain.MoveRule;
 import project.game.view.View;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import static project.game.TextConstant.ROUND_COUNT_INPUT_FORM_TEXT;
 public class RacingGameController {
 
     private static final int NOT_SET_POSITION = Integer.MIN_VALUE;
+    private static final int INVALID_ROUND_COUNT = -1;
 
     private View mView;
     private List<Car> mCars;
@@ -39,17 +41,26 @@ public class RacingGameController {
     }
 
     private void initializeCars(GameType gameType) {
-        mView.drawText(CAR_NAME_INPUT_FORM_TEXT);
-        List<String> carNames = StringUtils.splitStringToList(mView.readInput(), COMMA_DELIMITER);
+        List<String> carNames = getCarNames();
+        MoveRule moveRule = gameType.getMoveRule();
 
         for (String each : carNames) {
-            mCars.add(new Car(each, gameType.getMoveRule()));
+            mCars.add(new Car(each, moveRule));
         }
     }
 
+    private List<String> getCarNames() {
+        String rawCarNamesText = readInput(CAR_NAME_INPUT_FORM_TEXT);
+        return StringUtils.splitStringToList(rawCarNamesText, COMMA_DELIMITER);
+    }
+
     private void startRacing() {
-        mView.drawText(ROUND_COUNT_INPUT_FORM_TEXT);
-        int roundCount = mView.readInputToInt();
+        int roundCount = getRoundCount();
+
+        if (roundCount == INVALID_ROUND_COUNT) {
+            mView.drawText(INPUT_FORMAT_ERROR);
+            return;
+        }
 
         for (int i = 0; i < roundCount; i++) {
             List<Integer> currentCarPositions = moveCars();
@@ -57,6 +68,20 @@ public class RacingGameController {
         }
 
         showWinners();
+    }
+
+    private int getRoundCount() {
+        String rawRoundCount = readInput(ROUND_COUNT_INPUT_FORM_TEXT);
+        try {
+            return Integer.valueOf(rawRoundCount);
+        } catch (NumberFormatException numberFormatException) {
+            return INVALID_ROUND_COUNT;
+        }
+    }
+
+    private String readInput(String question) {
+        mView.drawText(question);
+        return mView.readInput();
     }
 
     private void showWinners() {

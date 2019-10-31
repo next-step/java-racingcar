@@ -7,5 +7,4 @@ public interface View {
     void drawText(String text);
     void drawCharSequence(int position, char character);
     String readInput();
-    int readInputToInt();
 }
