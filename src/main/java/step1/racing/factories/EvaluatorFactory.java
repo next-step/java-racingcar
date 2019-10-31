@@ -1,4 +1,7 @@
-package step1.racing;
+package step1.racing.factories;
+
+import step1.racing.Evaluator;
+import step1.racing.IntegerEvaluator;
 
 public class EvaluatorFactory {
     public static Evaluator getEvaluator(Class type) {

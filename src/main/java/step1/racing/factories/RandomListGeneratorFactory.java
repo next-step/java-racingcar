@@ -1,4 +1,7 @@
-package step1.racing;
+package step1.racing.factories;
+
+import step1.racing.IntegerRandomListGenerator;
+import step1.racing.RandomListGenerator;
 
 public class RandomListGeneratorFactory {
     public static RandomListGenerator getRandomListGenerator(Class type) {
