@@ -1,14 +1,11 @@
 package calculator;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Calculator {
-
-
-  static List operatorList = Stream.of(Operator.values())
+  private static List operatorList = Stream.of(Operator.values())
       .map(m -> m.getName())
       .collect(Collectors.toList());
 
@@ -28,19 +25,19 @@ public class Calculator {
     return first / second;
   }
 
-  public static void validateTextFormatArgs(String[] args){
+  private static void validateTextFormatArgs(String[] args){
     if(args.length < 3 || (args.length % 2) == 0){
       throw new IllegalArgumentException("올바르지 않은 연산자가 입력되었습니다.");
     }
   }
 
 
-  public static long calculate(String operator, long first, long second){
+  private static long calculate(String operator, long first, long second){
     if(operatorList.indexOf(operator) == -1){
       throw new IllegalArgumentException("올바르지 않은 연산자가 입력되었습니다.");
     }
 
-    Long result = 0L;
+    long result = 0L;
     if(operator.equals(Operator.PLUS_OPERATOR.getName())){
       result = plus(first, second);
     }
@@ -65,7 +62,7 @@ public class Calculator {
     String[] args = arg.split(" ");
     validateTextFormatArgs(args);
     long result = Long.parseLong(args[0]);
-    Long target = 0L;
+    long target;
     for(int i=0; i<args.length-2; i++){
       if(i%2 != 0) i++;
       target = Long.parseLong(args[i+2]);
