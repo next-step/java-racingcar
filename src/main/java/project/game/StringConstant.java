@@ -7,4 +7,6 @@ public class StringConstant {
     public static final String INPUT_FORMAT_ERROR = "숫자만 입력할 수 있습니다. 다시 입력해주세요. Error : %s";
     public static final String RACING_GAME_END_TEXT = "레이싱 종료!";
     public static final String RACING_GAME_WINNERS = "%s 가 최종 우승했습니다.";
+
+    public static final String COMMA_DELIMITER = ",";
 }

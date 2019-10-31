@@ -13,7 +13,7 @@ public class Main {
         view.drawText(RACING_GAME_START_TEXT);
 
         view.drawText(CAR_NAME_INPUT_FORM_TEXT);
-        List<String> carNames = StringUtils.splitStringToList(view.readInput(), ",");
+        List<String> carNames = StringUtils.splitStringToList(view.readInput(), COMMA_DELIMITER);
         view.drawText(ROUND_COUNT_INPUT_FORM_TEXT);
         int carCount = view.readInputToInt();
 
@@ -31,7 +31,7 @@ public class Main {
             public void onResultRacingWinnerNames(List<String> winnerNames) {
                 view.drawText(RACING_GAME_END_TEXT);
 
-                String winnerText = String.format(RACING_GAME_WINNERS, String.join(",", winnerNames));
+                String winnerText = String.format(RACING_GAME_WINNERS, String.join(COMMA_DELIMITER, winnerNames));
                 view.drawText(winnerText);
             }
         };
