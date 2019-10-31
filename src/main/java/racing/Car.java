@@ -6,22 +6,22 @@ import java.util.Random;
 
 public class Car {
 
-    static final int START_POSITION = 0;
-    static final int FIRST_ROUND = 0;
-    static final int RANDOM_BOUND = 10;
-    static final int RANDOM_BASE = 3;
-
     private List<Integer> positions = new ArrayList<>();
     private String name;
+
+    static final int START_POSITION = 0;
+    static final int FIRST_ROUND = 0;
+    static final int MOVE_BASE = 3;
+
 
     public Car(String name) {
         this.name = name;
     }
 
-    public void move() {
+    public void move(int randomNum) {
         int position = getLatestPosition();
 
-        if (getRandom() > RANDOM_BASE) {
+        if (randomNum > MOVE_BASE) {
             position++;
         }
 
@@ -51,9 +51,5 @@ public class Car {
         return false;
     }
 
-    private int getRandom() {
-        Random random = new Random();
-        return random.nextInt(RANDOM_BOUND);
-    }
 
 }

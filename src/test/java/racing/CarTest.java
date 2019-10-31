@@ -11,18 +11,23 @@ class CarTest {
     @Test
     void moveAndGetCarPositionTest() {
         Car car = new Car("testCar");
-        car.move();
-        int position1 = car.getPosition(0);
-        assertThat(position1).isBetween(0, 1);
 
-        car.move();
-        int position2 = car.getPosition(1);
-        assertThat(position2).isBetween(position1, position1 + 1);
+        car.move(0);
+        assertThat(car.getPosition(0)).isEqualTo(0);
 
-        car.move();
-        int position3 = car.getPosition(2);
-        assertThat(position3).isBetween(position2, position2 + 1);
+        car.move(1);
+        assertThat(car.getPosition(1)).isEqualTo(0);
 
+        car.move(2);
+        assertThat(car.getPosition(2)).isEqualTo(0);
+
+        car.move(3);
+        assertThat(car.getPosition(3)).isEqualTo(0);
+
+        car.move(4);
+        assertThat(car.getPosition(4)).isEqualTo(1);
     }
+
+
 
 }

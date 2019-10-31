@@ -3,11 +3,17 @@ package racing;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class RacingGame {
+
     private int totalRound;
     private List<Car> cars;
+    private Random random = new Random();
+
+    static final int RANDOM_BOUND = 10;
+
 
     public RacingGame(String inputName, int totalRound) {
         this.totalRound = totalRound;
@@ -36,7 +42,8 @@ public class RacingGame {
 
     private void moveWholeCar() {
         for (Car car : cars) {
-            car.move();
+            int randomNum = random.nextInt(RANDOM_BOUND);
+            car.move(randomNum);
         }
     }
 
