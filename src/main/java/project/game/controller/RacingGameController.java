@@ -9,7 +9,6 @@ import project.game.view.View;
 import java.util.*;
 
 import static project.game.TextConstant.*;
-import static project.game.TextConstant.ROUND_COUNT_INPUT_FORM_TEXT;
 
 public class RacingGameController {
 
@@ -58,8 +57,8 @@ public class RacingGameController {
         }
 
         for (int i = 0; i < roundCount; i++) {
-            List<Integer> currentCarPositions = moveCars();
-            showCarPositions(currentCarPositions);
+            moveCars();
+            showCurrentCarPositions();
         }
 
         showWinners();
@@ -84,11 +83,11 @@ public class RacingGameController {
         mView.drawText(winnersText);
     }
 
-    private void showCarPositions(List<Integer> currentCarPositions) {
+    private void showCurrentCarPositions() {
         mView.drawNewLine();
 
-        for (Integer carPosition : currentCarPositions) {
-            mView.drawCharSequence(carPosition, CAR_POSITION_TEXT);
+        for (Car each : mCars) {
+            mView.drawText(each.getCurrentPositionText());
         }
     }
 
@@ -109,14 +108,9 @@ public class RacingGameController {
         }
     }
 
-    private List<Integer> moveCars() {
-        List<Integer> currentCarPositions = new ArrayList<>();
-
-        for (int i = 0; i < mCars.size(); i++) {
-            int currentPosition = mCars.get(i).moveIfPossible();
-            currentCarPositions.add(i, currentPosition);
+    private void moveCars() {
+        for (Car car : mCars) {
+            car.moveIfPossible();
         }
-
-        return currentCarPositions;
     }
 }

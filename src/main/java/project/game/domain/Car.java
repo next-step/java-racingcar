@@ -1,5 +1,10 @@
 package project.game.domain;
 
+import project.game.StringUtils;
+
+import static project.game.TextConstant.CAR_POSITION_TEXT;
+import static project.game.TextConstant.RACING_CAR_POSITION_TEXT;
+
 public class Car {
 
     private static final int START_POSITION = 1;
@@ -27,6 +32,11 @@ public class Car {
 
     public int getMovePosition() {
         return mMovePosition;
+    }
+
+    public String getCurrentPositionText() {
+        String carPositionLineText = StringUtils.createRepeatedCharacter(mMovePosition, CAR_POSITION_TEXT);
+        return (String.format(RACING_CAR_POSITION_TEXT, mName, carPositionLineText));
     }
 
     public String getName() {
