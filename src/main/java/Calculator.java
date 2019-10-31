@@ -5,6 +5,11 @@ public class Calculator {
 
     static final int ASCII_NUMBER_ONE = 48;
     static final int ASCII_NUMBER_NINE = 57;
+    static final String WHITE_SPACE = " ";
+    static final char PLUS_SIGN = '+';
+    static final char MINUS_SIGN = '-';
+    static final char ASTERISK = '*';
+    static final char SLASH = '/';
 
     private String expression;
     private List<Integer> values;
@@ -18,13 +23,12 @@ public class Calculator {
         this.expression = removeWhiteSpace(expression);
         values = new ArrayList<>();
         operators = new ArrayList<>();
-        operators.add('+');
         parse();
     }
 
-    public String removeWhiteSpace(String expression) {
+    private String removeWhiteSpace(String expression) {
         StringBuffer sb = new StringBuffer();
-        String[] tokens = expression.split(" ");
+        String[] tokens = expression.split(WHITE_SPACE);
         for (String s : tokens) {
             sb.append(s);
         }
@@ -50,13 +54,7 @@ public class Calculator {
     }
 
     public boolean isOperator(char c) {
-        if ('+' == c
-                || '-'  == c
-                || '*' == c
-                || '/' == c) {
-            return true;
-        }
-        return false;
+        return PLUS_SIGN == c || MINUS_SIGN  == c || ASTERISK == c || SLASH == c;
     }
 
     public boolean isUncheckedCharacter(char c) {
@@ -69,14 +67,15 @@ public class Calculator {
     }
 
     public int calculate() {
+        operators.add(0, PLUS_SIGN);
         for (int i=0; i<values.size(); i++) {
-            if (operators.get(i) == '+') {
+            if (operators.get(i) == PLUS_SIGN) {
                 result = add(result, values.get(i));
-            } else if (operators.get(i) == '-') {
+            } else if (operators.get(i) == MINUS_SIGN) {
                 result = subtract(result, values.get(i));
-            } else if (operators.get(i) == '*') {
+            } else if (operators.get(i) == ASTERISK) {
                 result = multiply(result, values.get(i));
-            } else if (operators.get(i) == '/') {
+            } else if (operators.get(i) == SLASH) {
                 result = divide(result, values.get(i));
             }
          }
