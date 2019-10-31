@@ -3,7 +3,7 @@ package project.game;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import project.game.domain.RandomNumberProvider;
-import project.game.domain.RandomNumberProviderImpl;
+import project.game.domain.RealRandomNumberProvider;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,7 +13,7 @@ public class RandomTest {
 
     @BeforeEach
     void setUp() {
-        mRandomNumberProvider = new RandomNumberProviderImpl(10);
+        mRandomNumberProvider = new RealRandomNumberProvider(10);
     }
 
     @RepeatedTest(1000)

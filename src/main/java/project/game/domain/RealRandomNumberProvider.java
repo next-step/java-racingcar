@@ -2,12 +2,12 @@ package project.game.domain;
 
 import java.util.Random;
 
-public class RandomNumberProviderImpl implements RandomNumberProvider {
+public class RealRandomNumberProvider implements RandomNumberProvider {
 
     private Random mRandom;
     private int mRandomBound;
 
-    public RandomNumberProviderImpl(int randomBound) {
+    public RealRandomNumberProvider(int randomBound) {
         this.mRandom = new Random();
         this.mRandomBound = randomBound;
     }
