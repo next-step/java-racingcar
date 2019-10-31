@@ -4,12 +4,9 @@ import java.util.List;
 
 public class GameController {
 
-    private InputView inputView = new InputView();
-    private ResultView resultView = new ResultView();
+    public static void main(String[] args) {
 
-
-    public void startGame() {
-
+        InputView inputView = new InputView();
         String carNames = inputView.getCarNames();
         int totalRound = inputView.getTotalRound();
 
@@ -17,8 +14,9 @@ public class GameController {
         List<Car> cars = racingGame.doGame();
         List<String> winners = racingGame.getWinner();
 
+        ResultView resultView = new ResultView();
         resultView.printGame(cars, totalRound, winners);
-    }
 
+    }
 
 }

@@ -8,11 +8,11 @@ import java.util.stream.Collectors;
 
 public class RacingGame {
 
+    static final int RANDOM_BOUND = 10;
+
     private int totalRound;
     private List<Car> cars;
     private Random random = new Random();
-
-    static final int RANDOM_BOUND = 10;
 
 
     public RacingGame(String inputName, int totalRound) {

@@ -6,12 +6,12 @@ import java.util.Random;
 
 public class Car {
 
-    private List<Integer> positions = new ArrayList<>();
-    private String name;
-
     static final int START_POSITION = 0;
     static final int FIRST_ROUND = 0;
     static final int MOVE_BASE = 3;
+
+    private List<Integer> positions = new ArrayList<>();
+    private String name;
 
 
     public Car(String name) {
