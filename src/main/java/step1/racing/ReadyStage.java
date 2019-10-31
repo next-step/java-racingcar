@@ -18,7 +18,7 @@ public class ReadyStage {
     private String winningThreshold;
     private Class type;
 
-    public ReadyStage(Scanner scanner) {
+    public ReadyStage() {
         this.scanner = new Scanner(System.in);
         initValues();
     }
