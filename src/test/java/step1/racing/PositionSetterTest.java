@@ -21,7 +21,7 @@ class PositionSetterTest {
     @ValueSource(strings = { "3", "4", "5" })
     void throw_exception_if_different_args_list_size(String threshold) {
         PositionSetter<Integer> sut = new PositionSetter(evaluator, threshold);
-        List<RacingCar> targetList = Arrays.asList(new RacingCar("a"), new RacingCar("b"));
+        RacingCarHandler targetList = new RacingCarHandler(Arrays.asList(new RacingCar("a"), new RacingCar("b")));
         List<Integer> evalList = Arrays.asList(3);
 
         assertThatThrownBy(() -> sut.movePosition(targetList, evalList)).isInstanceOf(
@@ -30,22 +30,18 @@ class PositionSetterTest {
 
     @ParameterizedTest
     @MethodSource("provideTestArgs")
-    void check_position_after_moved(List<RacingCar> lists) {
+    void check_position_after_moved(RacingCarHandler lists) {
         PositionSetter<Integer> sut = new PositionSetter(evaluator, "-1");
-        List<Integer> evalList = Arrays.asList(3, 3, 3);
+        List<Integer> evalList = Arrays.asList(3);
 
         sut.movePosition(lists, evalList);
-        sut.movePosition(lists, evalList);
-        sut.movePosition(lists, evalList);
-        sut.movePosition(lists, evalList);
-        sut.movePosition(lists, evalList);
 
-        assertThat(lists.get(0).getPosition()).isEqualTo(5);
+        assertThat(lists.racingCars().get(0).getPosition()).isEqualTo(2);
     }
 
     private static Stream<Arguments> provideTestArgs() {
         return Stream.of(
-                Arguments.of(Arrays.asList(new RacingCar("test")))
+                Arguments.of(new RacingCarHandler(Arrays.asList(new RacingCar("test"))))
         );
     }
 }
