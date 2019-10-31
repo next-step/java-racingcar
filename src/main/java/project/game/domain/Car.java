@@ -25,6 +25,10 @@ public class Car {
         return mMovePosition == targetPosition;
     }
 
+    public int getMovePosition() {
+        return mMovePosition;
+    }
+
     public String getName() {
         return mName;
     }

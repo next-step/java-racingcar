@@ -6,25 +6,21 @@ import project.game.domain.GameType;
 import project.game.domain.MoveRule;
 import project.game.view.View;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static project.game.TextConstant.*;
 import static project.game.TextConstant.ROUND_COUNT_INPUT_FORM_TEXT;
 
 public class RacingGameController {
 
-    private static final int NOT_SET_POSITION = Integer.MIN_VALUE;
     private static final int INVALID_ROUND_COUNT = -1;
 
     private View mView;
     private List<Car> mCars;
-    private int mMaxPosition;
 
     public RacingGameController(View view) {
         this.mView = view;
         this.mCars = new ArrayList<>();
-        this.mMaxPosition = NOT_SET_POSITION;
     }
 
     public void start(GameType gameType) {
@@ -37,7 +33,6 @@ public class RacingGameController {
 
     private void endRacing() {
         mCars.clear();
-        mMaxPosition = NOT_SET_POSITION;
     }
 
     private void initializeCars(GameType gameType) {
@@ -99,15 +94,17 @@ public class RacingGameController {
 
     private List<String> findWinnerNames() {
         List<String> winnerNames = new ArrayList<>();
+        int maxPosition = Collections.max(mCars, Comparator.comparingInt(Car::getMovePosition)).getMovePosition();
+
         for (Car each : mCars) {
-            addWinnerNameIfPossible(winnerNames, each);
+            addWinnerNameIfPossible(winnerNames, each, maxPosition);
         }
 
         return winnerNames;
     }
 
-    private void addWinnerNameIfPossible(List<String> winnerNames, Car car) {
-        if (car.hasEqualPositionTo(mMaxPosition)) {
+    private void addWinnerNameIfPossible(List<String> winnerNames, Car car, int maxPosition) {
+        if (car.hasEqualPositionTo(maxPosition)) {
             winnerNames.add(car.getName());
         }
     }
@@ -118,15 +115,8 @@ public class RacingGameController {
         for (int i = 0; i < mCars.size(); i++) {
             int currentPosition = mCars.get(i).moveIfPossible();
             currentCarPositions.add(i, currentPosition);
-            updateMaxPositionIfPossible(currentPosition);
         }
 
         return currentCarPositions;
-    }
-
-    private void updateMaxPositionIfPossible(int position) {
-        if (mMaxPosition < position) {
-            mMaxPosition = position;
-        }
     }
 }
