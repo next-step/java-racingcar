@@ -27,15 +27,10 @@ public class RacingResult {
         return logs;
     }
 
-    public String getChampionNames() {
-        return getChampionNames(", ");
-    }
-
-    public String getChampionNames(String delimiter) {
+    public List<TrackingLog> getMaxPositionLogs() {
         return logs.stream()
-                .filter(trackingLog -> trackingLog.getLastPosition() == getMaxPosition())
-                .map(TrackingLog::getName)
-                .collect(Collectors.joining(delimiter));
+                .filter(log -> log.isMaxPosition(getMaxPosition()))
+                .collect(Collectors.toList());
     }
 
     private int getMaxPosition() {
