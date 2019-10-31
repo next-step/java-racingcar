@@ -5,8 +5,6 @@ package step2;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * 자동차 게임 그래프 출력 부분
@@ -16,6 +14,7 @@ import java.util.Set;
  */
 public class ResultView {
     private static final String RESULT_MESSAGE = "실행결과";
+    private static final String END_OF_WINNER_ANNOUNCE = "가 최종 우승했습니다.";
 
     private Racing racing;
 
@@ -60,7 +59,7 @@ public class ResultView {
         int max = carsGraph[0].graph.length();
         Arrays.stream(carsGraph).filter(carGraph -> carGraph.graph.length() == max)
                 .forEach(carGraph -> System.out.print(carGraph.name + " "));
-        System.out.println("가 최종 우승했습니다.");
+        System.out.println(END_OF_WINNER_ANNOUNCE);
     }
 
 }
