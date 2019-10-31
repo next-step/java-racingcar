@@ -7,6 +7,7 @@ import project.game.domain.MoveRule;
 import project.game.domain.RandomlyMoveRule;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static project.game.TextConstant.RACING_CAR_POSITION_TEXT;
 
 public class CarTest {
 
@@ -20,8 +21,8 @@ public class CarTest {
         MoveRule mAlwaysCanMoveRule = new RandomlyMoveRule(() -> 4);
         MoveRule mAlwaysCannotMoveRule = new RandomlyMoveRule(() -> 3);
 
-        alwaysCanMoveCar = new Car("one", mAlwaysCanMoveRule);
-        alwaysCannotMoveCar = new Car("two", mAlwaysCannotMoveRule);
+        alwaysCanMoveCar = new Car("alwaysCanMoveCar", mAlwaysCanMoveRule);
+        alwaysCannotMoveCar = new Car("alwaysCannotMoveCar", mAlwaysCannotMoveRule);
 
         winnerScore = 5;
     }
@@ -40,5 +41,16 @@ public class CarTest {
         alwaysCanMoveCar.moveIfPossible();
 
         assertThat(alwaysCanMoveCar.hasEqualPositionTo(winnerScore)).isTrue();
+    }
+
+    @Test
+    void carPositionTest() {
+        int moveCount = 4;
+        for (int i = 0; i < moveCount; i++) {
+            alwaysCanMoveCar.moveIfPossible();
+        }
+
+        String positionLine = StringUtils.createRepeatedCharacter(moveCount + 1, '-');
+        assertThat(alwaysCanMoveCar.getCurrentPositionText()).isEqualTo(String.format(RACING_CAR_POSITION_TEXT, "alwaysCanMoveCar", positionLine));
     }
 }
