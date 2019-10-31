@@ -42,7 +42,7 @@ public class RacingGame {
     }
 
     public List<String> exceptEmpty(List<String> winners, String winner) {
-        if (!winner.equals("")) {
+        if (!"".equals(winner)) {
             winners.add(winner);
         }
         return winners;
