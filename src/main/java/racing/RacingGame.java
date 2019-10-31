@@ -2,18 +2,21 @@ package racing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class RacingGame {
     private static final String RACER_NAME_SEPARATOR = ",";
+    private static final RacingInput racingInput = new RacingInput(new Scanner(System.in));
+    private static final RacingOutput racingOutput = new RacingOutput();
 
     public void start() {
-        String racerNames = RacingInput.inputString(RacingInputType.CAR);
-        int tryCount = RacingInput.inputInt(RacingInputType.TRY);
+        String racerNames = racingInput.inputRacerNames();
+        int tryCount = racingInput.inputTryCount();
         Racers racers = signUp(racerNames);
 
-        RacingOutput.printResultMessage();
+        racingOutput.printResultMessage();
         race(racers, tryCount);
-        RacingOutput.printWinner(racers.winner());
+        racingOutput.printWinner(racers.winner());
     }
 
     private Racers signUp(String racerNames) {
@@ -30,7 +33,7 @@ public class RacingGame {
     private void race(Racers racers, int tryCount) {
         for (int i = 0; i < tryCount; i++) {
             racers.moveAll();
-            RacingOutput.printCurrentStatus(racers);
+            racingOutput.printCurrentStatus(racers);
         }
     }
 }

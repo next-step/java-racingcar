@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 public class Racers {
     private static final int DEFAULT_MAX_POSITION = 0;
+    private static final int RACE_MOVE_BOUND = 10;
 
     private List<Car> cars = new ArrayList<>();
 
@@ -15,7 +16,7 @@ public class Racers {
 
     public void moveAll() {
         for (Car car : cars) {
-            car.move(CountGenerator.getRandomInt());
+            car.move(CountGenerator.getRandomInt(RACE_MOVE_BOUND));
         }
     }
 

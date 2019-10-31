@@ -3,9 +3,8 @@ package racing;
 import java.util.Random;
 
 public class CountGenerator {
-    private static Random random = new Random(System.currentTimeMillis());
-
-    public static int getRandomInt() {
-        return random.nextInt();
+    public static int getRandomInt(int bound) {
+        Random random = new Random(System.currentTimeMillis());
+        return random.nextInt(bound);
     }
 }
