@@ -15,7 +15,7 @@ class CarRaceCourseTest {
 
 	@BeforeEach
 	void init() {
-		carRaceCourse = new CarRaceCourse(new CarNameDefaultRule("tom,boy,amy"),
+		carRaceCourse = new CarRaceCourse(new CarNameDefaultRule("tom,boy,amy", ","),
 				new RaceRoundDefaultRule(3), new RandomGenerator());
 	}
 

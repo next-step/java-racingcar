@@ -9,10 +9,12 @@ import step2.view.ResultView;
 
 public class CarRaceController {
 
+	private static final String delimiter = ",";
+
 	private CarRaceCourse carRaceCourse;
 
 	public CarRaceController() {
-		InputView inputView = new InputView();
+		InputView inputView = new InputView(delimiter);
 		try {
 			CarNameRule carNameRule = inputView.receiveNameOfCarsParticipated();
 			RaceRoundRule raceRoundRule = inputView.receiveNumberOfMaxRound();
@@ -23,7 +25,7 @@ public class CarRaceController {
 	}
 
 	public void proceedRaceUtilTheEnd() {
-		ResultView resultView = new ResultView();
+		ResultView resultView = new ResultView(delimiter);
 		while (carRaceCourse.isNotEndRace()) {
 			resultView.printVisualizedCarRacing(carRaceCourse.proceedOneRound());
 		}

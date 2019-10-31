@@ -6,6 +6,12 @@ import step2.dto.CarRaceWinnerNames;
 
 public class ResultView {
 
+	private final String delimiter;
+
+	public ResultView(String delimiter) {
+		this.delimiter = delimiter;
+	}
+
 	public void printVisualizedCarRacing(CarRaceSnapshot carRaceSnapshot) {
 		for (CarDto carDto : carRaceSnapshot.getSnapshot()) {
 			System.out.println(visualizeCarStep(carDto));
@@ -26,7 +32,7 @@ public class ResultView {
 			System.out.println("우승자가 없습니다!");
 			return;
 		}
-		String finalResult = String.join(",", carRaceWinnerNames.get());
+		String finalResult = String.join(delimiter, carRaceWinnerNames.get());
 		System.out.println(String.format("%s가 최종 우승했습니다.", finalResult));
 	}
 
