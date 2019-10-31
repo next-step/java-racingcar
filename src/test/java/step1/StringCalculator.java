@@ -6,4 +6,8 @@ public class StringCalculator {
 		return 0;
 	}
 
+	private int minus(int left, int right) {
+		return 0;
+	}
+
 }
