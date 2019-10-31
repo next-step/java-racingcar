@@ -12,9 +12,9 @@ class PositionSetterTest {
     private Evaluator<Integer> evaluator = new IntegerEvaluator();
 
     @ParameterizedTest
-    @ValueSource(ints = { 3, 4, 5 })
-    void throw_exception_if_different_args_list_size(int threshold) {
-        PositionSetter<Integer> sut = new PositionSetter<>(evaluator, threshold);
+    @ValueSource(strings = { "3", "4", "5" })
+    void throw_exception_if_different_args_list_size(String threshold) {
+        PositionSetter<Integer> sut = new PositionSetter(evaluator, threshold);
         List<Integer> targetList = Arrays.asList(1, 2, 3);
         List<Integer> evalList = Arrays.asList(3);
 
