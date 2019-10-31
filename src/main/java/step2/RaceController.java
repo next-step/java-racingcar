@@ -16,7 +16,7 @@ public class RaceController {
             ResultView.print(racingGame.move());
         }
 
-        List<String> winners = racingGame.selectWinners();
+        List<String> winners = racingGame.retrieveWinners();
         ResultView.printWinner(winners);
     }
 }

@@ -1,8 +1,11 @@
 package step2;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+
+import static java.util.stream.Collectors.toList;
 
 public class RacingGame {
     private static final String CAR_NAME_DELIMITER = ",";
@@ -23,29 +26,16 @@ public class RacingGame {
         return nameOfCars.split(CAR_NAME_DELIMITER);
     }
 
-    public List<String> selectWinners() {
+    public List<String> retrieveWinners() {
         List<String> winners = new ArrayList<>();
-
-        return getWinners(winners, this.cars);
-    }
-
-    public List<String> getWinners(List<String> winners, Cars cars) {
-        List<Car> carCollection = cars.getCars();
+        List<Car> carCollection = this.cars.getCars();
 
         int maxPosition = getMaxPosition(carCollection);
 
-        for (Car car : carCollection) {
-            winners = exceptEmpty(winners, getWinner(car, maxPosition));
-        }
-
-        return winners;
-    }
-
-    public List<String> exceptEmpty(List<String> winners, String winner) {
-        if (!"".equals(winner)) {
-            winners.add(winner);
-        }
-        return winners;
+        return carCollection.stream()
+                .map(car -> getWinner(car, maxPosition))
+                .filter(winner -> !winner.equals(""))
+                .collect(toList());
     }
 
     public int getMaxPosition(List<Car> carCollection) {
@@ -67,6 +57,7 @@ public class RacingGame {
 
     public String getWinner(Car car, int maxPosition) {
         String winnerName = "";
+
         if (car.getPosition() == maxPosition) {
             winnerName = car.getName();
         }
