@@ -7,7 +7,6 @@ public class Application {
         InputView inputView = new InputView();
         inputView.input();
         Racing racing = new Racing(inputView.getCarsName(), inputView.getTurn(), new RamdomMove());
-//        Racing racing = new Racing(inputView.getCarsName(), inputView.getTurn());
         List<Graph> graphList = racing.run();
 
         ResultView resultView = new ResultView(graphList);

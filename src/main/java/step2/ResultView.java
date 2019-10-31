@@ -4,6 +4,7 @@
 package step2;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 자동차 게임 그래프 출력 부분
@@ -13,6 +14,7 @@ import java.util.List;
  */
 public class ResultView {
     private static final String RESULT_MESSAGE = "실행결과";
+    private static final String DELIMITER = ", ";
     private static final String END_OF_WINNER_ANNOUNCE = "가 최종 우승했습니다.";
 
     private List<Graph> graphs;
@@ -20,7 +22,7 @@ public class ResultView {
 
     public ResultView(List<Graph> graphs) {
         this.graphs = graphs;
-        turn = graphs.get(0).graphs.size();
+        turn = graphs.get(0).graphs.size() - 1;
     }
 
     public void show() {
@@ -41,11 +43,16 @@ public class ResultView {
     }
 
     private void getMax() {
-//        Arrays.sort(carsGraph, (o1, o2) ->
-//                (o1.graphs.get(o1.graphs.size()).length() < o2.graphs.get(o2.graphs.size()).length()) ? 0 : 1);
-//        int max = carsGraph[0].graph.length();
-//        Arrays.stream(carsGraph).filter(carGraph -> carGraph.graph.length() == max)
-//                .forEach(carGraph -> System.out.print(carGraph.name + " "));
+
+        int max = graphs.stream().map(graph -> graph.graphs.get(turn).length()).max(Integer::compareTo).get();
+        List<String> winners = graphs.stream().filter(graph -> graph.graphs.get(turn).length() == max)
+                .map(graph -> graph.name).collect(Collectors.toList());
+
+        System.out.print(winners.get(0));
+        for (int index = 1; index < winners.size(); index++) {
+            System.out.print(DELIMITER);
+            System.out.print(winners.get(index));
+        }
         System.out.println(END_OF_WINNER_ANNOUNCE);
     }
 
