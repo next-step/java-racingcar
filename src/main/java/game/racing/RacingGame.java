@@ -12,29 +12,26 @@ import java.util.List;
  */
 public class RacingGame implements Game<RacingResult> {
 
-    private String[] carNames;
+    private List<Car> cars;
     private int numberOfTimes;
     private RacingResult result;
 
     public RacingGame(RacingGameSettings settings) {
-        carNames = settings.getCarNames();
-        numberOfTimes = settings.getNumberOfTimes();
         result = new RacingResult();
+        cars = createCars(settings.getCarNames());
+        numberOfTimes = settings.getNumberOfTimes();
     }
 
     @Override
     public void run() {
-        List<Car> cars = createCars();
         for (int i = 0; i < numberOfTimes; i++) {
             cars.parallelStream().forEach(Car::move);
         }
     }
 
-    private List<Car> createCars() {
+    private List<Car> createCars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
-        int numberOfCar = carNames.length;
-        for (int i = 0; i < numberOfCar; i++) {
-            String name = carNames[i];
+        for (String name : carNames) {
             TrackingLog trackingLog = result.register(name);
             cars.add(new DefaultCar(name, trackingLog));
         }
