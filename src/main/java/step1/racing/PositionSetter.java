@@ -8,9 +8,9 @@ public class PositionSetter<T> {
     private final Evaluator<T> evaluator;
     private final T threshold;
 
-    public PositionSetter(Evaluator<T> evaluator, T threshold) {
+    public PositionSetter(Evaluator<T> evaluator, String winningThreshold) {
         this.evaluator = evaluator;
-        this.threshold = threshold;
+        this.threshold = evaluator.parseValue(winningThreshold);
     }
 
     public List<Integer> movePosition(List<Integer> target, List<T> evaluationFactors) {
