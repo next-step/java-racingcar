@@ -50,13 +50,13 @@ public class ResultView {
     }
 
     private static void printComma(int index, int maxSize) {
-        if (!isLastCar(index, maxSize)) {
+        if (isCommaNeed(index, maxSize)) {
             System.out.print(COMMA);
         }
     }
 
-    private static boolean isLastCar(int index, int maxSize) {
-        return index < maxSize - 1;
+    private static boolean isCommaNeed(int index, int maxSize) {
+        return index < (maxSize - 1);
     }
 
     private static void printCarName(String carName) {

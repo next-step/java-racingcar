@@ -52,11 +52,16 @@ public class RacingGame {
         int maxPosition = 0;
 
         for (Car car : carCollection) {
-            if (car.getPosition() > maxPosition) {
-                maxPosition = car.getPosition();
-            }
+            maxPosition = findMaxPosition(car, maxPosition);
         }
 
+        return maxPosition;
+    }
+
+    public int findMaxPosition(Car car, int maxPosition) {
+        if (car.getPosition() > maxPosition) {
+            maxPosition = car.getPosition();
+        }
         return maxPosition;
     }
 
