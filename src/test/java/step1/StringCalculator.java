@@ -10,4 +10,8 @@ public class StringCalculator {
 		return 0;
 	}
 
+	private int multiply(int left, int right) {
+		return 0;
+	}
+
 }
