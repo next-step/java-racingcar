@@ -8,12 +8,11 @@ import project.game.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
-import static project.game.StringConstant.*;
-import static project.game.StringConstant.ROUND_COUNT_INPUT_FORM_TEXT;
+import static project.game.TextConstant.*;
+import static project.game.TextConstant.ROUND_COUNT_INPUT_FORM_TEXT;
 
 public class RacingGameController {
 
-    public static final char CAR_POSITION_TEXT = '-';
     private static final int NOT_SET_POSITION = Integer.MIN_VALUE;
 
     private View mView;
@@ -29,47 +28,47 @@ public class RacingGameController {
     public void start(GameType gameType) {
         mView.drawText(RACING_GAME_START_TEXT);
 
-        mView.drawText(CAR_NAME_INPUT_FORM_TEXT);
-        List<String> carNames = StringUtils.splitStringToList(mView.readInput(), COMMA_DELIMITER);
-        mView.drawText(ROUND_COUNT_INPUT_FORM_TEXT);
-        int roundCount = mView.readInputToInt();
-
-        initializeCars(gameType, carNames);
-        startRacing(roundCount);
+        initializeCars(gameType);
+        startRacing();
         endRacing();
     }
 
     private void endRacing() {
-        mView.drawText(RACING_GAME_END_TEXT);
-
         mCars.clear();
         mMaxPosition = NOT_SET_POSITION;
     }
 
-    private void initializeCars(GameType gameType, List<String> carNames) {
+    private void initializeCars(GameType gameType) {
+        mView.drawText(CAR_NAME_INPUT_FORM_TEXT);
+        List<String> carNames = StringUtils.splitStringToList(mView.readInput(), COMMA_DELIMITER);
+
         for (String each : carNames) {
-            mCars.add(createCar(each, gameType));
+            mCars.add(new Car(each, gameType.getMoveRule()));
         }
     }
 
-    private void startRacing(int totalRound) {
-        for (int i = 0; i < totalRound; i++) {
+    private void startRacing() {
+        mView.drawText(ROUND_COUNT_INPUT_FORM_TEXT);
+        int roundCount = mView.readInputToInt();
+
+        for (int i = 0; i < roundCount; i++) {
             List<Integer> currentCarPositions = moveCars();
-            notifyCarPositionsChange(currentCarPositions);
+            showCarPositions(currentCarPositions);
         }
 
-
-        mView.drawText(RACING_GAME_END_TEXT);
-
-        String winnerText = String.format(RACING_GAME_WINNERS, String.join(COMMA_DELIMITER, findWinnerNames()));
-        mView.drawText(winnerText);
+        showWinners();
     }
 
-    private void notifyCarPositionsChange(List<Integer> currentCarPositions) {
+    private void showWinners() {
+        String winnersText = String.format(RACING_GAME_WINNERS, String.join(COMMA_DELIMITER, findWinnerNames()));
+        mView.drawText(winnersText);
+    }
+
+    private void showCarPositions(List<Integer> currentCarPositions) {
         mView.drawNewLine();
 
         for (Integer carPosition : currentCarPositions) {
-            mView.drawCharSequence(carPosition, RacingGameController.CAR_POSITION_TEXT);
+            mView.drawCharSequence(carPosition, CAR_POSITION_TEXT);
         }
     }
 
@@ -104,9 +103,5 @@ public class RacingGameController {
         if (mMaxPosition < position) {
             mMaxPosition = position;
         }
-    }
-
-    private Car createCar(String name, GameType gameType) {
-        return new Car(name, gameType.getMoveRule());
     }
 }
