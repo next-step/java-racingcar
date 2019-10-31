@@ -14,7 +14,6 @@ public class RacingGame {
     public RacingGame(String nameOfCars) {
         this.carNames = splitCarNameInput(nameOfCars);
         this.numberOfCars = getNumberOfCars(this.carNames);
-        System.out.println(this.numberOfCars);
         this.cars = new Car[this.numberOfCars];
         setCars(this.cars);
     }
