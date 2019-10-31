@@ -26,9 +26,7 @@ public class RacingGame {
     public void move() {
         viewCurrentStatus();
         IntStream.range(0, playTimes)
-                 .forEach(count -> {
-                     carPositions = positionSetter.movePosition(carPositions, getGachaList());
-                 });
+                 .forEach(count -> positionSetter.movePosition(carPositions, getGachaList()));
         viewCurrentStatus();
     }
 
