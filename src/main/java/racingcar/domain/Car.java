@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class Car {
 
@@ -32,11 +32,11 @@ public class Car {
         return number >= MOVE_CONDITION_NUMBER;
     }
 
-    int getLocation() {
+    public int getLocation() {
         return location;
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 

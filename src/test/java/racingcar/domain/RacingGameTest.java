@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ class RacingGameTest {
     void runRacingGame() {
 
         //given
-        List<String> carNameList = Arrays.asList("a","b");
+        List<String> carNameList = Arrays.asList("a", "b");
         int runCount = 3;
 
         //when

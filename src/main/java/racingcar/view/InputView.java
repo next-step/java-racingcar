@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.domain.UserInput;
 
 import java.util.Scanner;
 
@@ -11,7 +13,7 @@ public class InputView {
         this.scanner = new Scanner(System.in);
     }
 
-    void createInput() {
+    public void createInput() {
         this.input = new UserInput(enterCarNames(), enterrunCount());
     }
 

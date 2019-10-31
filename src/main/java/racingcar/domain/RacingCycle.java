@@ -1,12 +1,11 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static racingcar.RandomGenerator.getRandomInteger;
+import static racingcar.util.RandomGenerator.getRandomInteger;
 
 public class RacingCycle {
 
