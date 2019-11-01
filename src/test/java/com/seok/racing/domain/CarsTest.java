@@ -11,24 +11,30 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 class CarsTest {
 
-    static Stream<Arguments> cars() {
-        Movable alwaysMovable = () -> true;
+    static Stream<Arguments> getWinners() {
+        Racer foo = new Racer("foo");
+        Racer bar = new Racer("bar");
+        Racer baz = new Racer("baz");
 
-        Car tom = new Car("tom", alwaysMovable);
-        Car leo = new Car("leo", alwaysMovable);
-        tom.move();
-        leo.move();
-        Car jay = new Car("jay");
+        Car carFoo = new Car(foo, new Position(1));
+        Car carBar= new Car(bar, new Position(1));
+        Car carBaz= new Car(baz, Position.ZERO);
+
 
         return Stream.of(
-            Arguments.of(new Cars(Arrays.asList(tom, jay)), new String[]{"tom"}),
-            Arguments.of(new Cars(Arrays.asList(tom, leo, jay)), new String[]{"tom", "leo"})
+            Arguments.of(new Cars(Arrays.asList(carFoo, carBar, carBaz))
+                    , new Winners(Arrays.asList(new Winner(foo), new Winner(bar)))),
+            Arguments.of(new Cars(Arrays.asList(carFoo, carBaz)),
+                    new Winners(Arrays.asList(new Winner(foo)))),
+                Arguments.of(new Cars(Arrays.asList(carBaz)),
+                    new Winners(Arrays.asList(new Winner(baz))))
         );
     }
-
     @ParameterizedTest
-    @MethodSource("cars")
-    void getWinner(Cars cars, String[] expected) {
-        assertThat(cars.getWinners()).containsOnly(expected);
+    @MethodSource("getWinners")
+    void getWinners(Cars cars, Winners expected) {
+        assertThat(cars.getWinners()).isEqualTo(expected);
     }
+
+
 }
