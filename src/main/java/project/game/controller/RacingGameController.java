@@ -12,6 +12,8 @@ import static project.game.TextConstant.*;
 public class RacingGameController {
 
     private static final int INVALID_ROUND_COUNT = -1;
+    private static final String SPACE_TEXT = " ";
+    private static final String EMPTY_TEXT = "";
 
     private View mView;
     private RacingGame mRacingGame;
@@ -37,7 +39,8 @@ public class RacingGameController {
 
     private List<String> getCarNames() {
         String rawCarNamesText = readInput(CAR_NAME_INPUT_FORM_TEXT);
-        return StringUtils.splitStringToList(rawCarNamesText.replace(" ", ""), COMMA_DELIMITER);
+        return StringUtils.splitStringToList(rawCarNamesText.replace(SPACE_TEXT, EMPTY_TEXT), COMMA_DELIMITER);
+
     }
 
     private void startRacing() {
