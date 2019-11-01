@@ -3,7 +3,6 @@ package racing.game;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.Strategy.MoveStrategy;
-import racing.game.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,7 +13,7 @@ class CarTest {
     void moveAndGetCarPositionTest() {
         Car car = new Car("testCar");
 
-        car.move(new MoveStrategy(){
+        car.move(new MoveStrategy() {
             @Override
             public boolean isMove() {
                 return false;
@@ -22,11 +21,12 @@ class CarTest {
         });
         assertThat(car.getPosition(0)).isEqualTo(0);
 
-        car.move(() ->{ return true;});
+        car.move(() -> {
+            return true;
+        });
         assertThat(car.getPosition(1)).isEqualTo(1);
 
     }
-
 
 
 }

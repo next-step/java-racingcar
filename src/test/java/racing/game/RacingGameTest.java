@@ -2,9 +2,6 @@ package racing.game;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.game.Car;
-import racing.game.RacingGame;
-
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,19 +35,27 @@ class RacingGameTest {
         }).isInstanceOf(IndexOutOfBoundsException.class);
     }
 
-   @DisplayName("getWinner 단일 우승 테스트")
+    @DisplayName("getWinner 단일 우승 테스트")
     @Test
     void getWinnerTest1() {
         List<Car> cars = new ArrayList<>();
 
         Car a = new Car("aaa");
-        a.move(() ->{ return true;});
-        a.move(() ->{ return true;});
+        a.move(() -> {
+            return true;
+        });
+        a.move(() -> {
+            return true;
+        });
         cars.add(a);
 
         Car b = new Car("bbb");
-        b.move(() ->{ return false;});
-        b.move(() ->{ return false;});
+        b.move(() -> {
+            return false;
+        });
+        b.move(() -> {
+            return false;
+        });
         cars.add(b);
 
         RacingGame racingGame = new RacingGame(cars, 2);
@@ -63,13 +68,21 @@ class RacingGameTest {
         List<Car> cars = new ArrayList<>();
 
         Car a = new Car("aaa");
-        a.move(() ->{ return true;});
-        a.move(() ->{ return true;});
+        a.move(() -> {
+            return true;
+        });
+        a.move(() -> {
+            return true;
+        });
         cars.add(a);
 
         Car b = new Car("bbb");
-        b.move(() ->{ return true;});
-        b.move(() ->{ return true;});
+        b.move(() -> {
+            return true;
+        });
+        b.move(() -> {
+            return true;
+        });
         cars.add(b);
 
         RacingGame racingGame = new RacingGame(cars, 2);
