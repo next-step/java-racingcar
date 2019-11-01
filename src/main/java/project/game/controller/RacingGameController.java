@@ -44,9 +44,11 @@ public class RacingGameController {
     }
 
     private void startRacing() {
-        int roundCount = getRoundCount();
+        int roundCount;
 
-        if (roundCount == INVALID_ROUND_COUNT) {
+        try {
+            roundCount = getRoundCount();
+        } catch (NumberFormatException exception) {
             mView.drawText(INPUT_FORMAT_ERROR);
             return;
         }
@@ -59,12 +61,7 @@ public class RacingGameController {
     }
 
     private int getRoundCount() {
-        String rawRoundCount = readInput(ROUND_COUNT_INPUT_FORM_TEXT);
-        try {
-            return Integer.parseInt(rawRoundCount);
-        } catch (NumberFormatException numberFormatException) {
-            return INVALID_ROUND_COUNT;
-        }
+        return Integer.parseInt(readInput(ROUND_COUNT_INPUT_FORM_TEXT));
     }
 
     private String readInput(String question) {
