@@ -11,28 +11,18 @@ public class RacingGameController {
     private RacingGameView mView;
     private RacingGame mRacingGame;
 
-    public RacingGameController(RacingGameView view) {
+    public RacingGameController(RacingGameView view, GameType gameType) {
         this.mView = view;
-        this.mRacingGame = new RacingGame();
+        mRacingGame = new RacingGame(gameType);
     }
 
-    // start 를 통해 시작할경우 동적으로 게임 타입을 바꿀 수 있고 시작할 수 있는 시점을 컨트롤할 수 있다.
-    // 이 방식에 단점은 무엇일까? 생성자 초기화 vs set 초기화
-    public void start(GameType gameType) {
+    public void startRacing() {
         mView.showStartGameMessage();
 
-        initializeCars(gameType);
-        startRacing();
-    }
-
-    private void initializeCars(GameType gameType) {
         List<String> carNames = mView.readCarNames();
-        mRacingGame.setNewGame(gameType, carNames);
-    }
+        mRacingGame.createCars(carNames);
 
-    private void startRacing() {
         int roundCount;
-
         try {
             roundCount = mView.readRoundCount();
         } catch (NumberFormatException exception) {

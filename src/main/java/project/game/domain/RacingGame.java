@@ -8,18 +8,18 @@ import java.util.List;
 public class RacingGame {
 
     private final List<Car> mCars;
+    private MoveRule mMoveRule;
 
-    public RacingGame() {
+    public RacingGame(GameType gameType) {
         this.mCars = new ArrayList<>();
+        this.mMoveRule = gameType.getMoveRule();
     }
 
-    public void setNewGame(GameType gameType, List<String> carNames) {
+    public void createCars(List<String> carNames) {
         clear();
 
-        MoveRule moveRule = gameType.getMoveRule();
-
         for (String each : carNames) {
-            mCars.add(new Car(each, moveRule));
+            mCars.add(new Car(each, mMoveRule));
         }
     }
 
