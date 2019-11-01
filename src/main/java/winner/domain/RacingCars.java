@@ -33,7 +33,7 @@ public class RacingCars {
     }
 
     private int findMaxPosition() {
-        return cars.stream().map(car -> car.getPosition()).max(Integer::compareTo).orElseThrow(() -> new NoSuchElementException());
+        return cars.stream().map(car -> car.getPositionToText()).max(Integer::compareTo).orElseThrow(() -> new NoSuchElementException());
     }
 
     @Override

@@ -13,7 +13,16 @@ public class Car {
     private CarPosition position;
 
     public Car(String name) {
+        this(name, 0);
+    }
+
+    public Car(String name, int position) {
         this.name = name;
+        this.position = new CarPosition(position);
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void move(MovableStrategy moveStrategy) {
@@ -21,18 +30,31 @@ public class Car {
             position.move();
         }
     }
+    public String currentPosition() {
+        return String.format("%s : %s", name, position.toText());
+    }
+
+    public boolean isMaxPosition(int maxPosition) {
+        return this.position.isMax(maxPosition);
+    }
+
+    public int getPositionToText() {
+        return position.toText().length();
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return position == car.position &&
-                Objects.equals(name, car.name);
+        return Objects.equals(name, car.name) &&
+                Objects.equals(position, car.position);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(name, position);
     }
+
+
 }
