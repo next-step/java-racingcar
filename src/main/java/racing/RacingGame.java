@@ -1,18 +1,14 @@
 package racing;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class RacingGame {
 
-    static final int RANDOM_BOUND = 10;
 
     private int totalRound;
     private List<Car> cars;
-    private Random random = new Random();
 
 
     public RacingGame(String inputName, int totalRound) {
@@ -40,15 +36,12 @@ public class RacingGame {
     }
 
     public List<String> getWinner() {
-
-        int winPosition = getWinPosition();
-        return filteringWinners(winPosition);
+        return filteringWinners(getWinPosition());
     }
 
     private void moveWholeCar() {
         for (Car car : cars) {
-            int randomNum = random.nextInt(RANDOM_BOUND);
-            car.move(randomNum);
+            car.move(new RandomMoveStrategy());
         }
     }
 

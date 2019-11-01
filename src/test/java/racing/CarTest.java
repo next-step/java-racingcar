@@ -7,25 +7,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    @DisplayName("move로 이동, getCarPosition으로 검증")
+    @DisplayName("move에서 t/f 에 따라 포지션 이동하는지")
     @Test
     void moveAndGetCarPositionTest() {
         Car car = new Car("testCar");
 
-        car.move(0);
+        car.move(new MoveStrategy(){
+            @Override
+            public boolean isMove() {
+                return false;
+            }
+        });
         assertThat(car.getPosition(0)).isEqualTo(0);
 
-        car.move(1);
-        assertThat(car.getPosition(1)).isEqualTo(0);
+        car.move(() ->{ return true;});
+        assertThat(car.getPosition(1)).isEqualTo(1);
 
-        car.move(2);
-        assertThat(car.getPosition(2)).isEqualTo(0);
-
-        car.move(3);
-        assertThat(car.getPosition(3)).isEqualTo(0);
-
-        car.move(4);
-        assertThat(car.getPosition(4)).isEqualTo(1);
     }
 
 

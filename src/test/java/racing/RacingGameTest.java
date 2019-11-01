@@ -25,39 +25,31 @@ class RacingGameTest {
     @DisplayName("doGame 후 position개수와 위치가 맞는지 확인")
     @Test
     void doGamePositionTest() {
-        RacingGame racingGame = new RacingGame("카1,카2", 5);
+        RacingGame racingGame = new RacingGame("카1,카2", 2);
         List<Car> carList = racingGame.doGame();
 
         assertThat(carList.get(0).getPosition(0)).isBetween(0, 1);
         assertThat(carList.get(0).getPosition(1)).isBetween(0, 2);
-        assertThat(carList.get(0).getPosition(2)).isBetween(0, 3);
-        assertThat(carList.get(0).getPosition(3)).isBetween(0, 4);
-        assertThat(carList.get(0).getPosition(4)).isBetween(0, 5);
 
         assertThatThrownBy(() -> {
-            carList.get(0).getPosition(5);
+            carList.get(0).getPosition(2);
         }).isInstanceOf(IndexOutOfBoundsException.class);
     }
 
-    @DisplayName("getWinner 단일 우승 테스트")
+   @DisplayName("getWinner 단일 우승 테스트")
     @Test
     void getWinnerTest1() {
         List<Car> cars = new ArrayList<>();
 
         Car a = new Car("aaa");
-        a.move(5);
-        a.move(5);
+        a.move(() ->{ return true;});
+        a.move(() ->{ return true;});
         cars.add(a);
 
         Car b = new Car("bbb");
-        b.move(2);
-        b.move(2);
+        b.move(() ->{ return false;});
+        b.move(() ->{ return false;});
         cars.add(b);
-
-        Car c = new Car("ccc");
-        c.move(2);
-        c.move(2);
-        cars.add(c);
 
         RacingGame racingGame = new RacingGame(cars, 2);
         assertThat(racingGame.getWinner()).isEqualTo(Arrays.asList("aaa"));
@@ -69,19 +61,14 @@ class RacingGameTest {
         List<Car> cars = new ArrayList<>();
 
         Car a = new Car("aaa");
-        a.move(5);
-        a.move(5);
+        a.move(() ->{ return true;});
+        a.move(() ->{ return true;});
         cars.add(a);
 
         Car b = new Car("bbb");
-        b.move(5);
-        b.move(5);
+        b.move(() ->{ return true;});
+        b.move(() ->{ return true;});
         cars.add(b);
-
-        Car c = new Car("ccc");
-        c.move(2);
-        c.move(2);
-        cars.add(c);
 
         RacingGame racingGame = new RacingGame(cars, 2);
         assertThat(racingGame.getWinner()).isEqualTo(Arrays.asList("aaa", "bbb"));
