@@ -1,4 +1,4 @@
-package winner;
+package winner.util;
 
 import java.util.regex.Pattern;
 

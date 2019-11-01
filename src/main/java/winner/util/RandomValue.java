@@ -1,4 +1,4 @@
-package winner;
+package winner.util;
 
 import java.util.Random;
 
@@ -8,6 +8,7 @@ import java.util.Random;
  * @date : 2019-10-29 01:20
  */
 public class RandomValue {
+
     private static final Random random = new Random();
 
     public static int getInt(int bound) {
