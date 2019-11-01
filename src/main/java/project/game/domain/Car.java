@@ -2,11 +2,10 @@ package project.game.domain;
 
 import project.game.StringUtils;
 
-import static project.game.TextConstant.CAR_POSITION_TEXT;
-import static project.game.TextConstant.RACING_CAR_POSITION_TEXT;
-
 public class Car {
 
+    private static final String RACING_CAR_POSITION_TEXT = "%s : %s";
+    private static final char CAR_POSITION_TEXT = '-';
     private static final int START_POSITION = 1;
 
     private String mName;
