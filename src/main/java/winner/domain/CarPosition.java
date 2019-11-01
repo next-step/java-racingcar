@@ -9,12 +9,32 @@ import java.util.Objects;
  */
 public class CarPosition {
 
+    private static final String POSITION_VIEW_TEXT = "-";
     private int position;
+
+    public CarPosition() {
+        this(0);
+    }
+
+    public CarPosition(int position) {
+        this.position = position;
+    }
 
     public void move() {
         position++;
     }
 
+    public String toText() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            stringBuilder.append(POSITION_VIEW_TEXT);
+        }
+        return stringBuilder.toString();
+    }
+
+    public boolean isMax(int maxPosition) {
+        return this.position == maxPosition;
+    }
 
     @Override
     public boolean equals(Object o) {
