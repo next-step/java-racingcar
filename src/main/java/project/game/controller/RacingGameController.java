@@ -58,7 +58,7 @@ public class RacingGameController {
     private int getRoundCount() {
         String rawRoundCount = readInput(ROUND_COUNT_INPUT_FORM_TEXT);
         try {
-            return Integer.valueOf(rawRoundCount);
+            return Integer.parseInt(rawRoundCount);
         } catch (NumberFormatException numberFormatException) {
             return INVALID_ROUND_COUNT;
         }
