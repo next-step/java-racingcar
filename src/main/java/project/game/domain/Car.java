@@ -36,7 +36,7 @@ public class Car {
 
     public String getCurrentPositionText() {
         String carPositionLineText = StringUtils.createRepeatedCharacter(mMovePosition, CAR_POSITION_TEXT);
-        return (String.format(RACING_CAR_POSITION_TEXT, mName, carPositionLineText));
+        return String.format(RACING_CAR_POSITION_TEXT, mName, carPositionLineText);
     }
 
     public String getName() {
