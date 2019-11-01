@@ -15,6 +15,6 @@ public class CarMoveStrategy implements MovableStrategy {
 
     @Override
     public boolean isMove() {
-        return random.nextInt(MAXIMUM_BOUND) <= MINIMUM_CAR_MOVE;
+        return random.nextInt(MAXIMUM_BOUND) >= MINIMUM_CAR_MOVE;
     }
 }
