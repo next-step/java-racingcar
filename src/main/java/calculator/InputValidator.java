@@ -4,6 +4,8 @@ import common.CommonConstant;
 
 public class InputValidator {
 
+    private final String CHECK_OPERATION_SYMBOL = "사칙연산 기호를 확인하세요.";
+
     public String valueToCalulateValidate(String valueToCalculate) throws IllegalArgumentException {
         if (valueToCalculate == null || "".equals(valueToCalculate.trim())) {
             throw new IllegalArgumentException(CommonConstant.CHECK_INPUT_VALUE);
@@ -13,7 +15,7 @@ public class InputValidator {
 
     public String operationSymbolValidate(String operationSymbol) throws IllegalArgumentException {
         if (!"+".equals(operationSymbol) && !"-".equals(operationSymbol) && !"*".equals(operationSymbol) && !"/".equals(operationSymbol)) {
-            throw new IllegalArgumentException(CommonConstant.CHECK_OPERATION_SYMBOL);
+            throw new IllegalArgumentException(CHECK_OPERATION_SYMBOL);
         }
         return operationSymbol;
     }
