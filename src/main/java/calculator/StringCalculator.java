@@ -1,33 +1,34 @@
 package calculator;
 
+import common.CommonConstant;
+
 public class StringCalculator {
 
-    public int calculate(int a, int b, String calculate) {
-        if ("+".equals(calculate)) {
-            return add(a, b);
+    private String valueToCalculate;
+    private InputValidator inputValidator;
+
+    public StringCalculator(String valueToCalculate) {
+        inputValidator = new InputValidator();
+        this.valueToCalculate = inputValidator.valueToCalulateValidate(valueToCalculate);
+    }
+
+    public int calculate() {
+        String[] values = valueToCalculate.split(CommonConstant.EMPTY_SPACE_CHARACTER);
+        int leftValue = 0;
+        int rightValue = 0;
+        String operationSymbol;
+        int maxI = values.length;
+        for (int i = 0; i < maxI; i++) {
+            if (i == 0) {
+                leftValue = Integer.parseInt(values[i]);
+            }
+            if (i % 2 == 1) {
+                operationSymbol = inputValidator.operationSymbolValidate(values[i]);
+                rightValue = Integer.parseInt(values[i + 1]);
+                leftValue = Calculator.calculators.get(operationSymbol).calculate(leftValue, rightValue);
+            }
         }
-        if ("-".equals(calculate)) {
-            return subtract(a, b);
-        }
-        if ("*".equals(calculate)) {
-            return multiply(a, b);
-        }
-        return division(a, b);
+        return leftValue;
     }
 
-    public int add(int a, int b) {
-        return a + b;
-    }
-
-    public int subtract(int a, int b) {
-        return a - b;
-    }
-
-    public int multiply(int a, int b) {
-        return a * b;
-    }
-
-    public int division(int a, int b) {
-        return a / b;
-    }
 }

@@ -1,34 +1,23 @@
-import calculator.InputValidator;
 import calculator.StringCalculator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class Main {
 
+    private static final Logger logger = LoggerFactory.getLogger(Main.class.getName());
+
     public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String inputStr = br.readLine();
-        InputValidator iv = new InputValidator();
-        StringCalculator sc = new StringCalculator();
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        String valueToCalculate = bufferedReader.readLine();
         try {
-            String[] data = iv.validate(inputStr).split(" ");
-            int leftData = 0;
-            int rightData = 0;
-            String calculate;
-            int maxI = data.length;
-            for (int i = 0; i < maxI; i++) {
-                if (i == 0) leftData = Integer.parseInt(data[i]);
-                if (i % 2 == 1) {
-                    calculate = iv.calculateValidate(data[i]);
-                    rightData = Integer.parseInt(data[i + 1]);
-                    leftData = sc.calculate(leftData, rightData, calculate);
-                }
-            }
-            System.out.println(leftData);
+            StringCalculator stringCalculator = new StringCalculator(valueToCalculate);
+            System.out.println(stringCalculator.calculate());
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            logger.error("Input value error.", e);
         }
-        br.close();
+        bufferedReader.close();
     }
 }

@@ -1,16 +1,20 @@
 package calculator;
 
+import common.CommonConstant;
+
 public class InputValidator {
 
-    public String validate(String inputStr) throws IllegalArgumentException {
-        if (inputStr == null || "".equals(inputStr.trim())) throw new IllegalArgumentException("입력한 값을 확인하세요.");
-
-        return inputStr;
+    public String valueToCalulateValidate(String valueToCalculate) throws IllegalArgumentException {
+        if (valueToCalculate == null || "".equals(valueToCalculate.trim())) {
+            throw new IllegalArgumentException(CommonConstant.CHECK_INPUT_VALUE);
+        }
+        return valueToCalculate;
     }
 
-    public String calculateValidate(String inputStr) throws IllegalArgumentException {
-        if (!"+".equals(inputStr) && !"-".equals(inputStr) && !"*".equals(inputStr) && !"/".equals(inputStr)) throw new IllegalArgumentException("사칙연산 기호를 확인하세요.");
-
-        return inputStr;
+    public String operationSymbolValidate(String operationSymbol) throws IllegalArgumentException {
+        if (!"+".equals(operationSymbol) && !"-".equals(operationSymbol) && !"*".equals(operationSymbol) && !"/".equals(operationSymbol)) {
+            throw new IllegalArgumentException(CommonConstant.CHECK_OPERATION_SYMBOL);
+        }
+        return operationSymbol;
     }
 }
