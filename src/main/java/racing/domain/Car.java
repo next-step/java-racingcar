@@ -27,16 +27,7 @@ public class Car {
     }
 
     Queue<Integer> getRecords() {
-        return getCopiedRecords();
-    }
-
-    private Queue<Integer> getCopiedRecords() {
-        Queue<Integer> copiedRecords = new ArrayDeque<>();
-        Iterator<Integer> it = records.iterator();
-        while (it.hasNext()) {
-            copiedRecords.add(it.next());
-        }
-        return copiedRecords;
+        return new ArrayDeque<>(records);
     }
 
     boolean isPositioned(int position) {

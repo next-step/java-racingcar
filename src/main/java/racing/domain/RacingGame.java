@@ -36,7 +36,7 @@ public class RacingGame {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return new ArrayList<>(cars);
     }
 
     public int getTries() {
