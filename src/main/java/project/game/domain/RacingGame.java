@@ -10,7 +10,7 @@ import static project.game.TextConstant.RACING_GAME_WINNERS;
 
 public class RacingGame {
 
-    private List<Car> mCars;
+    private final List<Car> mCars;
 
     public RacingGame() {
         this.mCars = new ArrayList<>();
