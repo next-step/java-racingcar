@@ -1,8 +1,11 @@
-package step3;
+package racing.game;
+
+import racing.View.InputView;
+import racing.View.ResultView;
 
 import java.util.List;
 
-public class GameMain {
+public class GameController {
 
     public static void main(String[] args) {
 
@@ -17,6 +20,6 @@ public class GameMain {
         ResultView resultView = new ResultView();
         resultView.printGame(cars, totalRound, winners);
 
-
     }
+
 }

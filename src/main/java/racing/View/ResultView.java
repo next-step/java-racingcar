@@ -1,4 +1,6 @@
-package step3;
+package racing.View;
+
+import racing.game.Car;
 
 import java.util.List;
 
