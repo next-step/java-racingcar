@@ -1,4 +1,7 @@
-package racing;
+package racing.game;
+
+import racing.View.InputView;
+import racing.View.ResultView;
 
 import java.util.List;
 

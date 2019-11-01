@@ -1,7 +1,9 @@
-package racing;
+package racing.game;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.game.Car;
+import racing.game.RacingGame;
 
 
 import java.util.ArrayList;

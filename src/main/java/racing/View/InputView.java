@@ -1,4 +1,4 @@
-package racing;
+package racing.View;
 
 import java.util.Scanner;
 

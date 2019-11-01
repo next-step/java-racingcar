@@ -1,4 +1,4 @@
-package racing;
+package racing.Strategy;
 
 import java.util.Random;
 

@@ -1,4 +1,6 @@
-package racing;
+package racing.game;
+
+import racing.Strategy.RandomMoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
