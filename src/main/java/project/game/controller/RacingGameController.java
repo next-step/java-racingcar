@@ -73,7 +73,8 @@ public class RacingGameController {
     }
 
     private void showWinners() {
-        mView.drawText(mRacingGame.getWinners());
+        String winnersText = String.join(COMMA_DELIMITER, mRacingGame.getWinners());
+        mView.drawText(String.format(RACING_GAME_WINNERS, winnersText));
     }
 
     private void showCurrentCarPositions(List<String> currentPositions) {

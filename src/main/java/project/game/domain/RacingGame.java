@@ -5,9 +5,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import static project.game.TextConstant.COMMA_DELIMITER;
-import static project.game.TextConstant.RACING_GAME_WINNERS;
-
 public class RacingGame {
 
     private final List<Car> mCars;
@@ -41,8 +38,8 @@ public class RacingGame {
         return currentPositionTexts;
     }
 
-    public String getWinners() {
-        return String.format(RACING_GAME_WINNERS, String.join(COMMA_DELIMITER, findWinnerNames()));
+    public List<String> getWinners() {
+        return findWinnerNames();
     }
 
     private List<String> findWinnerNames() {
