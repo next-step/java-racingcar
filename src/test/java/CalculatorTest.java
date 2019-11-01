@@ -8,34 +8,34 @@ class CalculatorTest {
 
     @Test
     void add() {
-        assertThat(Calculator.add(1,2)).isEqualTo(3);
+        assertThat(Calculator.add(1, 2)).isEqualTo(3);
     }
 
     @Test
     void subtract() {
-        assertThat(Calculator.subtract(2,1)).isEqualTo(1);
+        assertThat(Calculator.subtract(2, 1)).isEqualTo(1);
     }
 
     @Test
     void multiply() {
-        assertThat(Calculator.multiply(2,2)).isEqualTo(4);
+        assertThat(Calculator.multiply(2, 2)).isEqualTo(4);
     }
 
     @Test
     void divide() {
-        assertThat(Calculator.divide(4,2)).isEqualTo(2);
+        assertThat(Calculator.divide(4, 2)).isEqualTo(2);
     }
 
     @Test
     void isNull() {
-        assertThatThrownBy(()-> {
+        assertThatThrownBy(() -> {
             new Calculator(null);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void isEmpty() {
-        assertThatThrownBy(()-> {
+        assertThatThrownBy(() -> {
             new Calculator("");
         }).isInstanceOf(IllegalArgumentException.class);
     }

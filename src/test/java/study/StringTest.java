@@ -22,11 +22,10 @@ public class StringTest {
 
     @Test
     void charAt() {
-        assertThatThrownBy(()-> {
+        assertThatThrownBy(() -> {
             "123".charAt(3);
         }).isInstanceOf(StringIndexOutOfBoundsException.class);
     }
-
 
 
 }
