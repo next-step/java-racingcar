@@ -4,7 +4,7 @@ import project.game.StringUtils;
 
 public class Car {
 
-    private static final String RACING_CAR_POSITION_TEXT = "%s : %s";
+    public static final String RACING_CAR_POSITION_TEXT = "%s : %s";
     private static final char CAR_POSITION_TEXT = '-';
     private static final int START_POSITION = 1;
 

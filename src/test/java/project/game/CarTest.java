@@ -7,7 +7,7 @@ import project.game.domain.MoveRule;
 import project.game.domain.RandomlyMoveRule;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static project.game.TextConstant.RACING_CAR_POSITION_TEXT;
+import static project.game.domain.Car.RACING_CAR_POSITION_TEXT;
 
 public class CarTest {
 
