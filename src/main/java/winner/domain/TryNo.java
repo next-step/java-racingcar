@@ -1,5 +1,7 @@
 package winner.domain;
 
+import java.util.Objects;
+
 /**
  * @author : 김윤호
  * @version : 1.0
@@ -21,7 +23,20 @@ public class TryNo {
         return this.tryNo == 0;
     }
 
-    public void race() {
+    public void decrease() {
         this.tryNo--;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TryNo tryNo1 = (TryNo) o;
+        return tryNo == tryNo1.tryNo;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tryNo);
     }
 }
