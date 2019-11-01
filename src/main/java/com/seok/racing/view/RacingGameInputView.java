@@ -1,5 +1,8 @@
 package com.seok.racing.view;
 
+import com.seok.racing.domain.Racers;
+import com.seok.racing.domain.Trials;
+
 import java.util.Scanner;
 
 public class RacingGameInputView {
@@ -8,14 +11,14 @@ public class RacingGameInputView {
     private static final String NUMBER_OF_ATTEMPTS_MSG = "시도할 횟수는 몇 회 인가요 ?";
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static String getNamesOfCars() {
+    public static Racers getRacers() {
         System.out.println(NAMES_OF_CARS_MSG);
-        return scanner.nextLine();
+        return new Racers(scanner.nextLine());
     }
 
-    public static int getNumberOfAttempts() {
+    public static Trials getTrials() {
         System.out.println(NUMBER_OF_ATTEMPTS_MSG);
-        return scanner.nextInt();
+        return new Trials(scanner.nextInt());
     }
 
 }

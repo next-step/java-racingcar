@@ -18,11 +18,9 @@ public enum Operator {
     private BiFunction<Integer, Integer, Integer> expression;
     private static final Map<String, Operator> BY_OPERATOR;
 
-
     static {
         BY_OPERATOR = Arrays.stream(values()).collect(Collectors.toMap(o -> o.operator, Function.identity()));
     }
-
 
     Operator(String operator, BiFunction<Integer, Integer, Integer> expression) {
         this.operator = operator;
@@ -33,7 +31,7 @@ public enum Operator {
         return Optional.ofNullable(BY_OPERATOR.get(operator)).orElseThrow(IllegalArgumentException::new);
     }
 
-    public Integer calculator(int num1, int num2) {
+    public Integer calculate(int num1, int num2) {
         return this.expression.apply(num1, num2);
     }
 }

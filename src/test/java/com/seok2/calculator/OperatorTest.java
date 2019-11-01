@@ -76,37 +76,37 @@ public class OperatorTest {
     @ParameterizedTest
     @MethodSource("addTestValues")
     void plus(int num1, int num2, int expected) {
-        assertThat(Operator.PLUS.calculator(num1, num2)).isEqualTo(expected);
-        assertThat(Operator.find("+").calculator(num1, num2)).isEqualTo(expected);
+        assertThat(Operator.PLUS.calculate(num1, num2)).isEqualTo(expected);
+        assertThat(Operator.find("+").calculate(num1, num2)).isEqualTo(expected);
     }
 
     @ParameterizedTest
     @MethodSource("minusTestValues")
     void minus(int num1, int num2, int expected) {
-        assertThat(Operator.MINUS.calculator(num1, num2)).isEqualTo(expected);
-        assertThat(Operator.find("-").calculator(num1, num2)).isEqualTo(expected);
+        assertThat(Operator.MINUS.calculate(num1, num2)).isEqualTo(expected);
+        assertThat(Operator.find("-").calculate(num1, num2)).isEqualTo(expected);
 
     }
 
     @ParameterizedTest
     @MethodSource("multiplyTestValues")
     void multiply(int num1, int num2, int expected) {
-        assertThat(Operator.MULTIPLY.calculator(num1, num2)).isEqualTo(expected);
-        assertThat(Operator.find("*").calculator(num1, num2)).isEqualTo(expected);
+        assertThat(Operator.MULTIPLY.calculate(num1, num2)).isEqualTo(expected);
+        assertThat(Operator.find("*").calculate(num1, num2)).isEqualTo(expected);
 
     }
 
     @ParameterizedTest
     @MethodSource("divideTestValues")
     void divide(int num1, int num2, int expected) {
-        assertThat(Operator.DIVIDE.calculator(num1, num2)).isEqualTo(expected);
-        assertThat(Operator.find("/").calculator(num1, num2)).isEqualTo(expected);
+        assertThat(Operator.DIVIDE.calculate(num1, num2)).isEqualTo(expected);
+        assertThat(Operator.find("/").calculate(num1, num2)).isEqualTo(expected);
 
     }
 
     @Test
     void divideByZero() {
-        assertThatThrownBy(() -> Operator.DIVIDE.calculator(10, 0))
+        assertThatThrownBy(() -> Operator.DIVIDE.calculate(10, 0))
             .isInstanceOf(ArithmeticException.class)
             .hasMessageContaining("/ by zero");
     }

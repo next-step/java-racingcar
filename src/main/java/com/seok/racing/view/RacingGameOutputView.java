@@ -1,42 +1,30 @@
 package com.seok.racing.view;
 
-import com.seok.racing.domain.Car;
-import com.seok.racing.domain.Cars;
-import com.seok.racing.domain.RacingGame;
-import java.text.MessageFormat;
-import java.util.Collections;
-import java.util.stream.IntStream;
+import com.seok.racing.domain.*;
 
 public class RacingGameOutputView {
 
-    private final static String CAR_LOCATION_SYMBOL = "-";
-    private final static String DELIMITER = "";
-    private final static String PRINT_WINNER = "{0}가 최종 우승했습니다.";
-    private final static String PRINT_LOCATION = "{0} : {1}";
-
-
-    private final RacingGame racingGame;
-
-    public RacingGameOutputView(RacingGame racingGame) {
-        this.racingGame = racingGame;
+    public static void print(GameResult result) {
+        printRacingResult(result.getRacingResult());
+        printWinner(result.getWinners());
     }
 
-    public void printWinner() {
-        System.out.println(MessageFormat.format(PRINT_WINNER, String.join(", ", racingGame.getCars().getWinner())));
+    private static void printWinner(Winners winners) {
+        System.out.println(winners.toString());
     }
 
-    public void printRecords() {
-        IntStream.range(0,racingGame.getTimes()).forEach(i -> printRecord());
+    private static void printRacingResult(RacingResult result) {
+        for (Records records : result) {
+            printRecords(records);
+            System.out.println();
+        }
     }
 
-    private void printRecord() {
-        racingGame.getCars()
-            .stream()
-            .forEach(car -> System.out.println(formatLocation(car)));
-        System.out.println();
+    private static void printRecords(Records records) {
+        for (Record record : records) {
+            System.out.println(record.toString());
+        }
     }
 
-    private String formatLocation(Car car) {
-        return MessageFormat.format(PRINT_LOCATION, car.getName(),String.join(DELIMITER, Collections.nCopies(car.getRecord().poll(), CAR_LOCATION_SYMBOL)));
-    }
+
 }
