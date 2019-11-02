@@ -40,13 +40,8 @@ public class ResultView {
     }
 
     public static void printWinner(List<String> winners) {
-        int winnerSize = winners.size();
-
-        for (int i = 0; i < winnerSize; i++) {
-            System.out.print(winners.get(i));
-            printComma(i, winnerSize);
-        }
-        System.out.println(END_MESSAGE);
+        String mergedWinner = String.join(", ", winners);
+        System.out.println(mergedWinner + END_MESSAGE);
     }
 
     private static void printComma(int index, int maxSize) {

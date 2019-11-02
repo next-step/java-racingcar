@@ -48,11 +48,8 @@ public class RacingGame {
         return maxPosition;
     }
 
-    public int findMaxPosition(Car car, int maxPosition) {
-        if (car.getPosition() > maxPosition) {
-            maxPosition = car.getPosition();
-        }
-        return maxPosition;
+    private int findMaxPosition(Car car, int maxPosition) {
+        return (car.getPosition() > maxPosition) ? car.getPosition() : maxPosition;
     }
 
     public String getWinner(Car car, int maxPosition) {
