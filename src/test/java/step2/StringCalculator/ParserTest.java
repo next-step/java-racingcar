@@ -16,8 +16,8 @@ public class ParserTest {
         Parser sut1 = new Parser(rawInput1);
         Parser sut2 = new Parser(rawInput2);
 
-        assertThat(sut1.parse().get(0)).isEqualTo(0);
-        assertThat(sut2.parse().get(2)).isEqualTo(2);
+        assertThat(sut1.parse()).containsExactly(0, 1, 2);
+        assertThat(sut2.parse()).containsExactly(0, 1, 2);
     }
 
     @Test
