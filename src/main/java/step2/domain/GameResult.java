@@ -1,11 +1,17 @@
-package step2;
+package step2.domain;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toMap;
 
 public final class GameResult {
     private static final int INITIAL_PHASE_INDEX = 0;
@@ -42,6 +48,19 @@ public final class GameResult {
 
     public int getNumberOfCars() {
         return numberOfCars;
+    }
+
+    public List<Car> getWinners() {
+        return getPhase(getNumberOfPhases() - 1)
+                .getAllCars()
+                .stream()
+                .collect(toMap(Car::current,
+                               Arrays::asList,
+                               (l1, l2) -> Stream.concat(l1.stream(), l2.stream())
+                                                 .collect(toList()),
+                               TreeMap::new))
+                .lastEntry()
+                .getValue();
     }
 
     public static Builder builder(final int numberOfPhases, final int numberOfCars) {

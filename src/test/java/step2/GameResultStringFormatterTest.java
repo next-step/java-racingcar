@@ -6,6 +6,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import step2.domain.CarDistanceGenerator;
+import step2.domain.EqualCarDistanceGenerator;
+import step2.domain.GameResult;
+import step2.domain.GameRunner;
+import step2.view.format.GameResultStringFormatter;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("GameResultStringFormatter should")

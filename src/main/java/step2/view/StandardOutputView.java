@@ -1,4 +1,4 @@
-package step2;
+package step2.view;
 
 public class StandardOutputView implements OutputView {
     @Override

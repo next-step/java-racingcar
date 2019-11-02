@@ -5,6 +5,9 @@ import java.util.stream.IntStream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import step2.domain.CarDistanceGenerator;
+import step2.domain.EqualCarDistanceGenerator;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("EqualCarDistanceGenerator should")
