@@ -1,4 +1,7 @@
-package step2;
+package step2.view;
+
+import step2.domain.Car;
+import step2.domain.Cars;
 
 import java.util.List;
 
