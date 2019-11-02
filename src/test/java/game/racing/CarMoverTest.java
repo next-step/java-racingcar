@@ -11,10 +11,11 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class CarMoverTest {
 
-    @DisplayName("랜덤값과 threshold 값에 따른 움직임 결정")
+    @DisplayName("움짐임 전략에 따른 움직임 결정")
     @Test
     void random() {
-        assertThat(CarMover.movable(10, -1)).isTrue();
-        assertThat(CarMover.movable(10, 11)).isFalse();
+        MoveStrategy moveStrategy = (number, threshold) -> number >= threshold;
+        assertThat(CarMover.movable(moveStrategy, 10, 3)).isTrue();
+        assertThat(CarMover.movable(moveStrategy, -10, 3)).isFalse();
     }
 }
