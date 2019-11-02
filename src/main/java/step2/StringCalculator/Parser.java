@@ -1,6 +1,8 @@
 package step2.StringCalculator;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,9 +26,19 @@ public class Parser {
     }
 
     public List<Integer> parse() {
-        return Arrays.stream(getInputString().split(delimiter))
-                     .map(Integer::valueOf)
-                     .collect(Collectors.toList());
+        String parsedInput = getInputString();
+
+        if (parsedInput.equals(EMPTY_STRING)) {
+            return Collections.EMPTY_LIST;
+        }
+
+        return parseInteger(Arrays.asList(parsedInput.split(delimiter)));
+    }
+
+    private List<Integer> parseInteger(List<String> parsedInput) {
+        return parsedInput.stream()
+                   .map(Integer::valueOf)
+                   .collect(Collectors.toList());
     }
 
     private String getInputString() {
