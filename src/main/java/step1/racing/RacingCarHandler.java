@@ -8,10 +8,12 @@ import step1.racing.data.RacingCar;
 
 public class RacingCarHandler {
     private final List<RacingCar> racingCars;
+    private final int playTimes;
 
-    public RacingCarHandler(List<RacingCar> racingCars) {
+    public RacingCarHandler(List<RacingCar> racingCars, int playTimes) {
         this.racingCars = racingCars;
-        validate(this.racingCars);
+        this.playTimes = playTimes;
+        validate();
     }
 
     public List<RacingCar> getWinners() {
@@ -25,20 +27,20 @@ public class RacingCarHandler {
                            .collect(Collectors.toList());
     }
 
-    public int size() {
-        return racingCars.size();
-    }
-
-    public void moveForward(int index) {
-        racingCars.get(index).moveForward();
+    public void race(Moveable moveStrategy) {
+        racingCars.forEach(racingCar -> {
+            if (moveStrategy.isMoveable()) {
+                racingCar.moveForward();
+            }
+        });
     }
 
     public List<RacingCar> racingCars() {
         return Collections.unmodifiableList(racingCars);
     }
 
-    private void validate(List<RacingCar> racingCars) {
-        if (racingCars.size() < 1) {
+    private void validate() {
+        if (racingCars.size() < 1 || playTimes < 1) {
             throw new IllegalArgumentException();
         }
     }
