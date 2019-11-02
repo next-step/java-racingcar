@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingCycleTest {
 
     @Test
-    @DisplayName("첫 RacingCycle 생성 시 car 위치는 0이다.")
+    @DisplayName("첫 RacingCycle 생성 시 car 위치는 0 또는 1이다.")
     void createFirstRacingCycle() {
         //given
         List<Car> init = Arrays.asList(new Car("car1"), new Car("car2"), new Car("car3"));
@@ -22,33 +22,18 @@ class RacingCycleTest {
 
         //then
         assertThat(cars).hasSize(3);
-        assertThat(cars.get(0).getLocation()).isEqualTo(0);
+        assertThat(cars.get(0).getLocation()).isLessThanOrEqualTo(1);
     }
 
-    @Test
-    @DisplayName("두번째 RacingCycle 생성 후엔 이전 Cycle과 같은 위치를 가진다.")
-    void createRacingCycle() {
-        //given
-        List<Car> cars = Arrays.asList(new Car("car1", 1), new Car("car2", 1));
-        RacingCycle racingCycle = new RacingCycle(cars);
-
-        //when
-        List<Car> result = racingCycle.getCycle();
-
-        //then
-        assertThat(result).hasSize(2);
-        assertThat(result.get(0).getLocation()).isEqualTo(1);
-    }
 
     @Test
     @DisplayName("cycle 실행하면 적어도 이전 위치보다 같거나 크다")
     void doCycle() {
         //given
         List<Car> init = Arrays.asList(new Car("car1"), new Car("car2"), new Car("car3"));
-        RacingCycle racingCycle = new RacingCycle(init);
 
         //when
-        racingCycle.doCycle();
+        RacingCycle racingCycle = new RacingCycle(init);
 
         //then
         List<Car> result = racingCycle.getCycle();
@@ -64,15 +49,13 @@ class RacingCycleTest {
                 new Car("car2", 5),
                 new Car("car3", 0));
 
-        RacingCycle racingCycle = new RacingCycle(init);
 
         //when
-        racingCycle.doCycle();
+        RacingCycle racingCycle = new RacingCycle(init);
 
         //then
-        List<Car> winners = racingCycle.getWinners();
+        List<String> winners = racingCycle.findWinners();
         assertThat(winners).hasSize(1);
-        assertThat(winners.get(0).getName()).isEqualTo("car2");
-        assertThat(winners.get(0).getLocation()).isGreaterThanOrEqualTo(5);
+        assertThat(winners.get(0)).isEqualTo("car2");
     }
 }

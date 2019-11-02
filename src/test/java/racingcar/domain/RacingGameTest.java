@@ -20,10 +20,10 @@ class RacingGameTest {
 
         //when
         RacingGame racingGame = new RacingGame(carNameList, runCount);
-        List<RacingCycle> cycles = racingGame.getCycles();
+        Cycles cycles = racingGame.getCycles();
 
         //then
-        assertThat(cycles).hasSize(runCount);
-        assertThat(cycles.get(0).getCycle()).hasSize(carNameList.size());
+        assertThat(cycles.getCycles()).hasSize(runCount);
+        assertThat(cycles.getCycles().get(0).getCycle()).hasSize(carNameList.size());
     }
 }

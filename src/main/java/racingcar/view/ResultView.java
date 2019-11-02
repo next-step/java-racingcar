@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
+import racingcar.domain.Cycles;
 import racingcar.domain.RacingCycle;
 
 import java.util.List;
@@ -12,8 +13,8 @@ public class ResultView {
 
     private static final String LOCATION_EXPRESSION_STRING = "-";
 
-    public ResultView(List<RacingCycle> cycles) {
-        this.cycles = cycles;
+    public ResultView(Cycles cycles) {
+        this.cycles = cycles.getCycles();
     }
 
     public void printRace() {
@@ -23,15 +24,12 @@ public class ResultView {
     }
 
     public void printWinner() {
-        if(cycles == null || cycles.size() == 0) {
+        if (cycles == null || cycles.size() == 0) {
             throw new IllegalArgumentException("실행된 cycle이 없습니다.");
         }
         RacingCycle finalRoundCycle = cycles.get(cycles.size() - 1);
 
-        List<String> winners = finalRoundCycle.getWinners().stream()
-                .map(Car::getName)
-                .collect(Collectors.toList());
-
+        List<String> winners = finalRoundCycle.findWinners();
         System.out.println(String.format("%s가 최종 우승하였습니다.", String.join(",", winners)));
     }
 

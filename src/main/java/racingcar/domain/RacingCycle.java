@@ -12,34 +12,24 @@ public class RacingCycle {
     private static final int BOUND_NUMBER = 10;
 
     private final List<Car> cycle = new ArrayList<>();
-    private final List<Car> winners = new ArrayList<>();
+    private int winnerLocation;
 
     public RacingCycle(List<Car> status) {
         for (Car car : status) {
-            cycle.add(new Car(car.getName(), car.getLocation()));
-        }
-    }
+            Car newCar = new Car(car.getName(), car.getLocation());
 
-    void doCycle() {
-        moveCar();
-        findWinners();
-    }
-
-    private void moveCar() {
-        for (Car car : cycle) {
             int number = getRandomInteger(BOUND_NUMBER);
-            car.move(number);
+            newCar.move(number);
+            cycle.add(newCar);
         }
+        this.winnerLocation = findMaxLocation();
     }
 
-    private void findWinners() {
-        int maxLocation = findMaxLocation();
-
-        List<Car> winners = cycle.stream()
-                .filter(c -> c.equalsLocation(maxLocation))
+    public List<String> findWinners() {
+        return cycle.stream()
+                .filter(c -> c.equalsLocation(winnerLocation))
+                .map(Car::getName)
                 .collect(Collectors.toList());
-
-        this.winners.addAll(winners);
     }
 
     private int findMaxLocation() {
@@ -49,13 +39,8 @@ public class RacingCycle {
                 .orElse(0);
     }
 
-
     public List<Car> getCycle() {
         return Collections.unmodifiableList(cycle);
-    }
-
-    public List<Car> getWinners() {
-        return Collections.unmodifiableList(winners);
     }
 
 }
