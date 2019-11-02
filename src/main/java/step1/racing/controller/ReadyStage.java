@@ -8,7 +8,7 @@ import step1.racing.MoveStrategy;
 import step1.racing.Moveable;
 import step1.racing.RacingCarHandler;
 import step1.racing.RacingGame;
-import step1.racing.RandomIntegerGenerator;
+import step1.racing.common.RandomIntegerGenerator;
 import step1.racing.data.RacingCar;
 import step1.racing.view.CarPositionViewer;
 
