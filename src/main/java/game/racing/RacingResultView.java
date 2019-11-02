@@ -1,7 +1,7 @@
 package game.racing;
 
-import game.ResultEntity;
-import game.ResultView;
+import game.core.domain.ResultEntity;
+import game.core.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;

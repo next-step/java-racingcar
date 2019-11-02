@@ -1,7 +1,7 @@
 package game.gambling;
 
-import game.Game;
-import game.ResultEntity;
+import game.core.domain.Game;
+import game.core.domain.ResultEntity;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -17,9 +17,9 @@ public class GamblingGame implements Game<GamblingResult> {
     private final int numberOfRound;
     private GamblingResult result;
 
-    public GamblingGame(GamblingInputView inputView) {
-        userNames = inputView.getUserNames();
-        numberOfRound = inputView.getNumberOfRound();
+    public GamblingGame(String[] userNames, int numberOfRound) {
+        this.userNames = userNames;
+        this.numberOfRound = numberOfRound;
         result = new GamblingResult();
     }
 

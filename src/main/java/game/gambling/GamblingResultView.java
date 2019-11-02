@@ -1,7 +1,7 @@
 package game.gambling;
 
-import game.ResultEntity;
-import game.ResultView;
+import game.core.domain.ResultEntity;
+import game.core.view.ResultView;
 
 /**
  * Created by yusik on 2019/10/29.

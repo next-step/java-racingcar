@@ -1,5 +1,5 @@
-import game.Game;
-import game.ResultView;
+import game.core.domain.Game;
+import game.core.view.ResultView;
 import game.gambling.GamblingGame;
 import game.gambling.GamblingInputView;
 import game.gambling.GamblingResult;
@@ -24,7 +24,7 @@ public class GameApplication {
         GamblingInputView inputView = new GamblingInputView();
         inputView.renderAndAcceptInput();
 
-        Game<GamblingResult> game = new GamblingGame(inputView);
+        Game<GamblingResult> game = new GamblingGame(inputView.getUserNames(), inputView.getNumberOfRound());
         game.run();
 
         ResultView<GamblingResult> resultView = new GamblingResultView();
@@ -35,7 +35,7 @@ public class GameApplication {
         RacingInputView inputView = new RacingInputView();
         inputView.renderAndAcceptInput();
 
-        Game<RacingResult> game = new RacingGame(inputView);
+        Game<RacingResult> game = new RacingGame(inputView.getCarNames(), inputView.getNumberOfRound());
         game.run();
 
         ResultView<RacingResult> resultView = new RacingResultView();

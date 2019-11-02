@@ -1,7 +1,7 @@
 package game.racing;
 
-import game.Game;
-import game.ResultEntity;
+import game.core.domain.Game;
+import game.core.domain.ResultEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,18 +13,18 @@ import java.util.List;
 public class RacingGame implements Game<RacingResult> {
 
     private List<Car> cars;
-    private int numberOfRounds;
+    private int numberOfRound;
     private RacingResult result;
 
-    public RacingGame(RacingInputView inputView) {
+    public RacingGame(String[] carNames, int numberOfRound) {
         result = new RacingResult();
-        cars = createCars(inputView.getCarNames());
-        this.numberOfRounds = inputView.getNumberOfRounds();
+        this.cars = createCars(carNames);
+        this.numberOfRound = numberOfRound;
     }
 
     @Override
     public void run() {
-        for (int i = 0; i < numberOfRounds; i++) {
+        for (int i = 0; i < numberOfRound; i++) {
             cars.parallelStream().forEach(Car::move);
         }
     }

@@ -1,7 +1,7 @@
 package game.racing;
 
-import game.InputView;
-import game.UserInputs;
+import game.core.view.InputView;
+import game.core.view.UserInputs;
 
 import java.io.InputStream;
 
@@ -26,7 +26,7 @@ public class RacingInputView extends InputView {
         return carNames.split(NAME_DELIMITER);
     }
 
-    public int getNumberOfRounds() {
+    public int getNumberOfRound() {
         return Integer.parseInt(getInputValueByKey(KEY_NUMBER_OF_ROUNDS));
     }
 

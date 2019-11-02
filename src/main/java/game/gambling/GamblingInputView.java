@@ -1,7 +1,7 @@
 package game.gambling;
 
-import game.InputView;
-import game.UserInputs;
+import game.core.view.InputView;
+import game.core.view.UserInputs;
 
 /**
  * Created by yusik on 2019/11/02.

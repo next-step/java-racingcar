@@ -1,7 +1,6 @@
 package game.racing;
 
-import game.Game;
-import game.InputView;
+import game.core.domain.Game;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +23,7 @@ public class RacingGameTest {
         RacingInputView inputView = new RacingInputView(in);
         inputView.renderAndAcceptInput();
 
-        Game<RacingResult> game = new RacingGame(inputView);
+        Game<RacingResult> game = new RacingGame(inputView.getCarNames(), inputView.getNumberOfRound());
 
         // when
         game.run();

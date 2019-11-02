@@ -1,4 +1,4 @@
-package game;
+package game.core.view;
 
 import java.io.InputStream;
 import java.util.*;
