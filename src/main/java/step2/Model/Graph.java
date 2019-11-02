@@ -9,7 +9,7 @@ public class Graph {
 
     private Graph(String name) {
         this.name = name;
-        graphs = new ArrayList<>();
+        this.graphs = new ArrayList<>();
     }
 
     public static List<Graph> createList(List<Car> carList) {
@@ -21,7 +21,7 @@ public class Graph {
     }
 
     public void addGraph(String graph) {
-        this.graphs.add(graph);
+        graphs.add(graph);
     }
 
     public String draw(int turn) {
@@ -30,7 +30,7 @@ public class Graph {
 
     public void addWinner(List<String> winners, int max) {
         if (isWinner(max)) {
-            winners.add(this.name);
+            winners.add(name);
         }
     }
 

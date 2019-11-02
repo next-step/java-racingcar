@@ -10,10 +10,10 @@ public class RacingData {
     }
 
     public String[] getCarsName() {
-        return this.carsName;
+        return carsName;
     }
 
     public int getTurn() {
-        return this.turn;
+        return turn;
     }
 }

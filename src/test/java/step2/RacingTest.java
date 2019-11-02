@@ -10,8 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 class RacingTest {
-
-    Racing racing;
+    private static Racing racing;
 
     @BeforeEach
     void setUp() {

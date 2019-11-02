@@ -17,7 +17,7 @@ public class Car {
 
     public Car(String name, int turn) {
         this.name = name;
-        move = new boolean[turn];
+        this.move = new boolean[turn];
     }
 
     public String go(int turn) {

@@ -35,16 +35,15 @@ public class Racing {
     public ResultData run() {
         List<Graph> carResults = Graph.createList(carList);
         for (int race = 0; race < turn; race++) {
-            carResults = race(carResults, race);
+            race(carResults, race);
         }
         return new ResultData(carResults);
     }
 
-    public List<Graph> race(List<Graph> carResults, int turn) {
+    private void race(List<Graph> carResults, int turn) {
         for (int carIndex = 0; carIndex < carList.size(); carIndex++) {
             carResults.get(carIndex).addGraph(move(carIndex, turn));
         }
-        return carResults;
     }
 
     public String move(int carIndex, int turn) {
