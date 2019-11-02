@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -27,7 +28,7 @@ public class Racing {
     }
 
     public List<Car> getCars() {
-        return this.cars.get();
+        return Collections.unmodifiableList(this.cars.get());
     }
 
     @Override
