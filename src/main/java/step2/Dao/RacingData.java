@@ -1,8 +1,8 @@
 package step2.Dao;
 
 public class RacingData {
-    String[] carsName;
-    int turn;
+    private String[] carsName;
+    private int turn;
 
     public RacingData(String[] carsName, int turn) {
         this.carsName = carsName;

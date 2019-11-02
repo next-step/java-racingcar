@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Graph {
-    public String name;
-    public List<String> graphs;
+    private String name;
+    private List<String> graphs;
 
-    Graph(String name) {
+    private Graph(String name) {
         this.name = name;
         graphs = new ArrayList<>();
     }
@@ -20,13 +20,30 @@ public class Graph {
         return result;
     }
 
-    public List<String> addGraph(String graph) {
+    public void addGraph(String graph) {
         this.graphs.add(graph);
-        return graphs;
     }
 
     public String draw(int turn) {
         return name + " : " + graphs.get(turn);
+    }
+
+    public void addWinner(List<String> winners, int max) {
+        if (isWinner(max)) {
+            winners.add(this.name);
+        }
+    }
+
+    public int finalPosition() {
+        return getLength(graphs.size() - 1);
+    }
+
+    private boolean isWinner(int max) {
+        return finalPosition() == max;
+    }
+
+    private int getLength(int turn) {
+        return graphs.get(turn).length();
     }
 
 }

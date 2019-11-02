@@ -11,7 +11,7 @@ package step2.Model;
  * @version 1.0.0
  */
 public class Car {
-    public static final String CAR_LOG_SYMBOL = "_";
+    private static final String CAR_LOG_SYMBOL = "_";
     private String name;
     private boolean[] move;
 

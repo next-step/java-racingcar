@@ -16,15 +16,14 @@ import java.util.List;
  * @version 1.0.0
  */
 public class Racing {
-
-    public List<Car> carList = new ArrayList<>();
+    private List<Car> carList;
     private int turn;
     private MoveStrategy moveStrategy;
 
 
     public Racing(RacingData racingData, MoveStrategy moveStrategy) {
         this.turn = racingData.getTurn();
-
+        this.carList = new ArrayList<>();
         String[] carsName = racingData.getCarsName();
         for (String s : carsName) {
             Car car = new Car(s, turn);
@@ -32,11 +31,6 @@ public class Racing {
         }
         this.moveStrategy = moveStrategy;
     }
-
-    public Car getCar(int index) {
-        return carList.get(index);
-    }
-
 
     public ResultData run() {
         List<Graph> carResults = Graph.createList(carList);

@@ -2,12 +2,12 @@ package step2.Dao;
 
 import step2.Model.Graph;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ResultData {
     private static final String DELIMITER = ", ";
-    List<Graph> graphs;
+    private List<Graph> graphs;
 
     public ResultData(List<Graph> result) {
         this.graphs = result;
@@ -20,12 +20,8 @@ public class ResultData {
         System.out.println();
     }
 
-    public String getMax(int turn) {
-        int max = graphs.stream().map(graph -> graph.graphs.get(turn - 1).length())
-                .max(Integer::compareTo).get();
-        List<String> winners = graphs.stream()
-                .filter(graph -> graph.graphs.get(turn - 1).length() == max)
-                .map(graph -> graph.name).collect(Collectors.toList());
+    public String getMax() {
+        List<String> winners = getWinners(graphs);
 
         StringBuilder winner = new StringBuilder();
         winner.append(winners.get(0));
@@ -35,4 +31,13 @@ public class ResultData {
         }
         return winner.toString();
     }
+
+    private List<String> getWinners(List<Graph> graphs) {
+        int max = graphs.stream().map(Graph::finalPosition)
+                .max(Integer::compareTo).orElse(0);
+        List<String> winners = new ArrayList<>();
+        graphs.forEach(graph -> graph.addWinner(winners, max));
+        return winners;
+    }
+
 }

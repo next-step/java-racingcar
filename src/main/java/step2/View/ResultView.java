@@ -21,9 +21,7 @@ public class ResultView {
         for (int game = 0; game < turn; game++) {
             resultData.drawByTurn(game);
         }
-        System.out.print(resultData.getMax(turn));
+        System.out.print(resultData.getMax());
         System.out.println(END_OF_WINNER_ANNOUNCE);
     }
-
-
 }
