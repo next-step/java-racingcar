@@ -3,6 +3,9 @@ package project.game;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import project.game.domain.MoveRule;
+import project.game.domain.RandomNumberProvider;
+import project.game.domain.RandomlyMoveRule;
 
 import java.util.stream.Stream;
 

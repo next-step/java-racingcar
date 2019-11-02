@@ -1,7 +1,7 @@
-package project.game;
+package project.game.domain;
 
 public enum GameType {
-    RANDOM(new RandomlyMoveRule(new RandomNumberProviderImpl(10)));
+    RANDOM(new RandomlyMoveRule(new RealRandomNumberProvider(10)));
 
     private MoveRule mMoveRule;
 
