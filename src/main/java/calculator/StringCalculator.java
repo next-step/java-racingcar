@@ -9,7 +9,7 @@ public class StringCalculator {
 
     public StringCalculator(String valueToCalculate) {
         inputValidator = new InputValidator();
-        this.valueToCalculate = inputValidator.valueToCalulateValidate(valueToCalculate);
+        this.valueToCalculate = inputValidator.validateValueToCalulate(valueToCalculate);
     }
 
     public int calculate() {
@@ -23,7 +23,7 @@ public class StringCalculator {
                 leftValue = Integer.parseInt(values[i]);
             }
             if (i % 2 == 1) {
-                operationSymbol = inputValidator.operationSymbolValidate(values[i]);
+                operationSymbol = inputValidator.validateOperationSymbol(values[i]);
                 rightValue = Integer.parseInt(values[i + 1]);
                 leftValue = Calculator.calculators.get(operationSymbol).calculate(leftValue, rightValue);
             }

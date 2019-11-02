@@ -22,20 +22,20 @@ public class InputTest {
     @NullSource
     @DisplayName("null 입력 시 확인")
     void nullTest(String inputStr) {
-        assertThatIllegalArgumentException().isThrownBy(() -> inputValidator.valueToCalulateValidate(inputStr));
+        assertThatIllegalArgumentException().isThrownBy(() -> inputValidator.validateValueToCalulate(inputStr));
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "    "})
     @DisplayName("공백 문자 입력 시 확인")
     void emptyStringTest(String inputStr) {
-        assertThatIllegalArgumentException().isThrownBy(() -> inputValidator.valueToCalulateValidate(inputStr));
+        assertThatIllegalArgumentException().isThrownBy(() -> inputValidator.validateValueToCalulate(inputStr));
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"@", "$", "%"})
     @DisplayName("사칙연산 기호 정상여부 확인")
     void calcStringTest(String inputStr) {
-        assertThatIllegalArgumentException().isThrownBy(() -> inputValidator.operationSymbolValidate(inputStr));
+        assertThatIllegalArgumentException().isThrownBy(() -> inputValidator.validateOperationSymbol(inputStr));
     }
 }
