@@ -1,4 +1,4 @@
-package step2;
+package step2.Model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class Graph {
 
     public void draw(int turn) {
         System.out.print(name + " : ");
-        System.out.println(graphs.get(turn - 1));
+        System.out.println(graphs.get(turn));
     }
 
 }

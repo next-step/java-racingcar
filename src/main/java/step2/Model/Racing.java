@@ -1,7 +1,9 @@
 /*
  * Racing.java  1.0.0   2019.10.27
  */
-package step2;
+package step2.Model;
+
+import step2.Dao.RacingData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,23 +16,17 @@ import java.util.List;
  */
 public class Racing {
 
-    private int turn;
-    private MoveStrategy moveStrategy;
     public List<Car> carList = new ArrayList<>();
     public List<Graph> carGraph = new ArrayList<>();
+    private int turn;
+    private MoveStrategy moveStrategy;
 
-
-    public Racing(String[] carsName, int turn) {
-        this(carsName, turn, new DefaultMove());
-    }
 
     public Racing(RacingData racingData, MoveStrategy moveStrategy) {
-        this(racingData.carsName, racingData.turn, moveStrategy);
-    }
+        this.turn = racingData.getTurn();
 
-    public Racing(String[] carsName, int turn, MoveStrategy moveStrategy) {
+        String[] carsName = racingData.getCarsName();
         int length = carsName.length;
-        this.turn = turn;
         for (int i = 0; i < length; i++) {
             Car car = new Car(carsName[i], turn);
             carList.add(car);
@@ -38,6 +34,7 @@ public class Racing {
         }
         this.moveStrategy = moveStrategy;
     }
+
 
     public int getTurn() {
         return turn;

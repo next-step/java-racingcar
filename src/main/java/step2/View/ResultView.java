@@ -1,7 +1,9 @@
 /*
  * ResultView.java  1.0.0   2019.10.27
  */
-package step2;
+package step2.View;
+
+import step2.Model.Graph;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,32 +19,25 @@ public class ResultView {
     private static final String DELIMITER = ", ";
     private static final String END_OF_WINNER_ANNOUNCE = "가 최종 우승했습니다.";
 
-    private List<Graph> graphs;
-    private int turn;
-
-    public ResultView(List<Graph> graphs) {
-        this.graphs = graphs;
-        turn = graphs.get(0).graphs.size() - 1;
-    }
-
-    public void show() {
+    public static void show(List<Graph> graphs) {
         System.out.println();
         System.out.println(RESULT_MESSAGE);
+        int turn = graphs.get(0).graphs.size() - 1;
 
-        for (int game = 1; game <= turn; game++) {
-            draws(game);
+        for (int game = 0; game <= turn; game++) {
+            draws(graphs, game);
         }
-        getMax();
+        getMax(graphs, turn);
     }
 
-    private void draws(int turn) {
+    private static void draws(List<Graph> graphs, int turn) {
         for (int i = 0; i < graphs.size(); i++) {
             graphs.get(i).draw(turn);
         }
         System.out.println();
     }
 
-    private void getMax() {
+    private static void getMax(List<Graph> graphs, int turn) {
 
         int max = graphs.stream().map(graph -> graph.graphs.get(turn).length()).max(Integer::compareTo).get();
         List<String> winners = graphs.stream().filter(graph -> graph.graphs.get(turn).length() == max)

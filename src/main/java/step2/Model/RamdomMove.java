@@ -1,4 +1,4 @@
-package step2;
+package step2.Model;
 
 public class RamdomMove implements MoveStrategy {
 
