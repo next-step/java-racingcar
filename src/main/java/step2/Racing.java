@@ -24,6 +24,10 @@ public class Racing {
         this(carsName, turn, new DefaultMove());
     }
 
+    public Racing(RacingData racingData, MoveStrategy moveStrategy) {
+        this(racingData.carsName, racingData.turn, moveStrategy);
+    }
+
     public Racing(String[] carsName, int turn, MoveStrategy moveStrategy) {
         int length = carsName.length;
         this.turn = turn;

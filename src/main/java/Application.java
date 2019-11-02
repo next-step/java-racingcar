@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        inputView.input();
-        Racing racing = new Racing(inputView.getCarsName(), inputView.getTurn(), new RamdomMove());
+        RacingData racingData = InputView.input();
+
+        Racing racing = new Racing(racingData, new RamdomMove());
         List<Graph> graphList = racing.run();
 
         ResultView resultView = new ResultView(graphList);
