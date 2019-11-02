@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ResultView {
     private static final String POSITION = "-";
-    private static final String COMMA = ",";
+    private static final String COMMA_AND_SPACE = ", ";
     private static final String START_MESSAGE = "실행 결과";
     private static final String END_MESSAGE = "가 최종 우승했습니다.";
 
@@ -40,14 +40,8 @@ public class ResultView {
     }
 
     public static void printWinner(List<String> winners) {
-        String mergedWinner = String.join(", ", winners);
+        String mergedWinner = String.join(COMMA_AND_SPACE, winners);
         System.out.println(mergedWinner + END_MESSAGE);
-    }
-
-    private static void printComma(int index, int maxSize) {
-        if (isCommaNeed(index, maxSize)) {
-            System.out.print(COMMA);
-        }
     }
 
     private static boolean isCommaNeed(int index, int maxSize) {
