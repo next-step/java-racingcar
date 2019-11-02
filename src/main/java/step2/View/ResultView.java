@@ -3,10 +3,7 @@
  */
 package step2.View;
 
-import step2.Model.Graph;
-
-import java.util.List;
-import java.util.stream.Collectors;
+import step2.Dao.ResultData;
 
 /**
  * 자동차 게임 그래프 출력 부분
@@ -16,39 +13,17 @@ import java.util.stream.Collectors;
  */
 public class ResultView {
     private static final String RESULT_MESSAGE = "실행결과";
-    private static final String DELIMITER = ", ";
     private static final String END_OF_WINNER_ANNOUNCE = "가 최종 우승했습니다.";
 
-    public static void show(List<Graph> graphs) {
+    public static void show(ResultData resultData, int turn) {
         System.out.println();
         System.out.println(RESULT_MESSAGE);
-        int turn = graphs.get(0).graphs.size() - 1;
-
-        for (int game = 0; game <= turn; game++) {
-            draws(graphs, game);
+        for (int game = 0; game < turn; game++) {
+            resultData.drawByTurn(game);
         }
-        getMax(graphs, turn);
-    }
-
-    private static void draws(List<Graph> graphs, int turn) {
-        for (int i = 0; i < graphs.size(); i++) {
-            graphs.get(i).draw(turn);
-        }
-        System.out.println();
-    }
-
-    private static void getMax(List<Graph> graphs, int turn) {
-
-        int max = graphs.stream().map(graph -> graph.graphs.get(turn).length()).max(Integer::compareTo).get();
-        List<String> winners = graphs.stream().filter(graph -> graph.graphs.get(turn).length() == max)
-                .map(graph -> graph.name).collect(Collectors.toList());
-
-        System.out.print(winners.get(0));
-        for (int index = 1; index < winners.size(); index++) {
-            System.out.print(DELIMITER);
-            System.out.print(winners.get(index));
-        }
+        System.out.print(resultData.getMax(turn));
         System.out.println(END_OF_WINNER_ANNOUNCE);
     }
+
 
 }

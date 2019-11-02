@@ -4,6 +4,7 @@
 package step2.Model;
 
 import step2.Dao.RacingData;
+import step2.Dao.ResultData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,6 @@ import java.util.List;
 public class Racing {
 
     public List<Car> carList = new ArrayList<>();
-    public List<Graph> carGraph = new ArrayList<>();
     private int turn;
     private MoveStrategy moveStrategy;
 
@@ -26,37 +26,33 @@ public class Racing {
         this.turn = racingData.getTurn();
 
         String[] carsName = racingData.getCarsName();
-        int length = carsName.length;
-        for (int i = 0; i < length; i++) {
-            Car car = new Car(carsName[i], turn);
+        for (String s : carsName) {
+            Car car = new Car(s, turn);
             carList.add(car);
-            carGraph.add(new Graph(car));
         }
         this.moveStrategy = moveStrategy;
-    }
-
-
-    public int getTurn() {
-        return turn;
     }
 
     public Car getCar(int index) {
         return carList.get(index);
     }
 
-    public List<Graph> run() {
+
+    public ResultData run() {
+        List<Graph> carResults = Graph.createList(carList);
         for (int race = 0; race < turn; race++) {
-            race(race);
+            carResults = race(carResults, race);
         }
-        return carGraph;
+        return new ResultData(carResults);
     }
 
-    public void race(int turn) {
+    public List<Graph> race(List<Graph> carResults, int turn) {
         for (int i = 0; i < carList.size(); i++) {
             Car car = carList.get(i);
             move(car, turn);
-            carGraph.get(i).setGraph(car.getScore(turn));
+            carResults.get(i).addGraph(car.getStringScore(turn));
         }
+        return carResults;
     }
 
     public void move(Car car, int turn) {

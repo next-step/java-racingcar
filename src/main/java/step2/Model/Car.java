@@ -11,6 +11,7 @@ package step2.Model;
  * @version 1.0.0
  */
 public class Car {
+    public static final String CAR_LOG_SYMBOL = "_";
     private String name;
     private boolean[] move;
 
@@ -23,19 +24,18 @@ public class Car {
         move[turn] = true;
     }
 
-    public int getScore(int turn) {
-        int sum = 0;
+    public String getStringScore(int turn) {
+        StringBuilder graph = new StringBuilder();
         for (int i = 0; i <= turn; i++) {
-            sum += (move[i] ? 1 : 0);
+            if (move[i]) {
+                graph.append(CAR_LOG_SYMBOL);
+            }
         }
-        return sum;
+        return graph.toString();
     }
 
     public String getName() {
         return name;
     }
 
-    public boolean getMoveOfTurn(int turn) {
-        return move[turn];
-    }
 }

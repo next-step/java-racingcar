@@ -4,28 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Graph {
-
-    public static final String CAR_LOG_SYMBOL = "_";
-
     public String name;
     public List<String> graphs;
 
-    Graph(Car car) {
-        this.name = car.getName();
+    Graph(String name) {
+        this.name = name;
         graphs = new ArrayList<>();
     }
 
-    public void setGraph(int score) {
-        StringBuilder graph = new StringBuilder();
-        for (int i = 0; i < score; i++) {
-            graph.append(CAR_LOG_SYMBOL);
+    public static List<Graph> createList(List<Car> carList) {
+        List<Graph> result = new ArrayList<>();
+        for (Car car : carList) {
+            result.add(new Graph(car.getName()));
         }
-        graphs.add(graph.toString());
+        return result;
     }
 
-    public void draw(int turn) {
-        System.out.print(name + " : ");
-        System.out.println(graphs.get(turn));
+    public List<String> addGraph(String graph) {
+        this.graphs.add(graph);
+        return graphs;
+    }
+
+    public String draw(int turn) {
+        return name + " : " + graphs.get(turn);
     }
 
 }
