@@ -23,7 +23,7 @@ public class Car {
         this.position = tryMove(random);
     }
 
-    private int tryMove(int randomNumber) {
+    public int tryMove(int randomNumber) {
         int movedPosition = this.position;
 
         movedPosition = moveForward(randomNumber, movedPosition);
