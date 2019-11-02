@@ -19,7 +19,8 @@ public class ResultView {
 
     private static StringBuilder getDistanceIndicator(Car car) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < car.getDistance(); i++) {
+        int totalDistance = car.getDistance();
+        for (int i = 0; i < totalDistance; i++) {
             stringBuilder.append("-");
         }
         return stringBuilder;
@@ -27,7 +28,8 @@ public class ResultView {
 
     public static void printWinners(List<Car> winners) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < winners.size(); i++) {
+        int winnersCount = winners.size();
+        for (int i = 0; i < winnersCount; i++) {
             stringBuilder.append(winners.get(i).getName());
             addDelimiter(winners, stringBuilder, i);
         }
