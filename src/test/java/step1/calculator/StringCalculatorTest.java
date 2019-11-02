@@ -19,7 +19,7 @@ class StringCalculatorTest {
 
     @ParameterizedTest
     @MethodSource("inValidIntegerEquations")
-    void success_calculate_inValid_integer_cases(String equation) {
+    void success_calculate_invalid_integer_cases(String equation) {
         StringCalculator sut = new StringCalculator<>("Integer");
         assertThatThrownBy(() -> sut.calculate(equation)).isInstanceOf(IllegalArgumentException.class);
     }
