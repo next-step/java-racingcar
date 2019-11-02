@@ -1,4 +1,4 @@
-package step2;
+package step2.domain;
 
 public class Car {
     private int position;
