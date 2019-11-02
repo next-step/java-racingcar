@@ -14,7 +14,7 @@ public class Main {
 
         Racing racing = new Racing(carNames, tryCount, new RandomValueDriveWay());
 
-        System.out.println("\n실행 결과");
+        ResultView.printResult();
         while (!racing.isFinish()) {
             racing.race();
             ResultView.printCars(racing.getCars());
