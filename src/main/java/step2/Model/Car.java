@@ -12,11 +12,11 @@ package step2.Model;
  */
 public class Car {
     private static final String CAR_LOG_SYMBOL = "-";
-    private String name;
+    private String model;
     private boolean[] move;
 
-    public Car(String name, int turn) {
-        this.name = name;
+    public Car(String model, int turn) {
+        this.model = model;
         this.move = new boolean[turn];
     }
 
@@ -27,16 +27,16 @@ public class Car {
 
     public String getStringScore(int turn) {
         StringBuilder graph = new StringBuilder();
-        for (int i = 0; i <= turn; i++) {
-            if (move[i]) {
+        for (int game = 0; game <= turn; game++) {
+            if (move[game]) {
                 graph.append(CAR_LOG_SYMBOL);
             }
         }
         return graph.toString();
     }
 
-    public String getName() {
-        return name;
+    public String getModel() {
+        return model;
     }
 
 }

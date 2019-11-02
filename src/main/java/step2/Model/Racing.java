@@ -16,41 +16,41 @@ import java.util.List;
  * @version 1.0.0
  */
 public class Racing {
-    private List<Car> carList;
+    private List<Car> cars;
     private int turn;
     private MoveStrategy moveStrategy;
 
-
     public Racing(RacingData racingData, MoveStrategy moveStrategy) {
         this.turn = racingData.getTurn();
-        this.carList = new ArrayList<>();
-        String[] carsName = racingData.getCarsName();
-        for (String s : carsName) {
-            Car car = new Car(s, turn);
-            carList.add(car);
+        this.cars = new ArrayList<>();
+        String[] carModels = racingData.getCarModels();
+        for (String model : carModels) {
+            Car car = new Car(model, turn);
+            cars.add(car);
         }
         this.moveStrategy = moveStrategy;
     }
 
     public ResultData run() {
-        List<Graph> carResults = Graph.createList(carList);
-        for (int race = 0; race < turn; race++) {
-            race(carResults, race);
+        List<Graph> graphs = Graph.createList(cars);
+        for (int game = 0; game < turn; game++) {
+            race(graphs, game);
         }
-        return new ResultData(carResults);
+        return new ResultData(graphs);
     }
 
-    private void race(List<Graph> carResults, int turn) {
-        for (int carIndex = 0; carIndex < carList.size(); carIndex++) {
-            carResults.get(carIndex).addGraph(move(carIndex, turn));
+    private void race(List<Graph> graphs, int turn) {
+        for (int carIndex = 0; carIndex < cars.size(); carIndex++) {
+            Graph graph = graphs.get(carIndex);
+            graph.addScore(scoreAfterMove(carIndex, turn));
         }
     }
 
-    public String move(int carIndex, int turn) {
+    public String scoreAfterMove(int carIndex, int turn) {
         if (moveStrategy.isPossibleToGo()) {
-            return carList.get(carIndex).go(turn);
+            return cars.get(carIndex).go(turn);
         }
-        return carList.get(carIndex).getStringScore(turn);
+        return cars.get(carIndex).getStringScore(turn);
     }
 
 }

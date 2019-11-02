@@ -9,13 +9,13 @@ public class ResultData {
     private static final String DELIMITER = ", ";
     private List<Graph> graphs;
 
-    public ResultData(List<Graph> result) {
-        this.graphs = result;
+    public ResultData(List<Graph> graphs) {
+        this.graphs = graphs;
     }
 
     public void drawByTurn(int turn) {
-        for (Graph carResult : graphs) {
-            System.out.println(carResult.draw(turn));
+        for (Graph graph : graphs) {
+            System.out.println(graph.draw(turn));
         }
         System.out.println();
     }
@@ -33,7 +33,7 @@ public class ResultData {
     }
 
     private List<String> getWinners(List<Graph> graphs) {
-        int max = graphs.stream().map(Graph::finalPosition)
+        int max = graphs.stream().map(Graph::getFinalScore)
                 .max(Integer::compareTo).orElse(0);
         List<String> winners = new ArrayList<>();
         graphs.forEach(graph -> graph.addWinner(winners, max));

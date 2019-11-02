@@ -1,16 +1,16 @@
 package step2.Dao;
 
 public class RacingData {
-    private String[] carsName;
+    private String[] carModels;
     private int turn;
 
-    public RacingData(String[] carsName, int turn) {
-        this.carsName = carsName;
+    public RacingData(String[] carModels, int turn) {
+        this.carModels = carModels;
         this.turn = turn;
     }
 
-    public String[] getCarsName() {
-        return carsName;
+    public String[] getCarModels() {
+        return carModels;
     }
 
     public int getTurn() {
