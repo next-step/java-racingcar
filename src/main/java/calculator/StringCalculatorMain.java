@@ -12,7 +12,7 @@ public class StringCalculatorMain {
         String valueToCalculate = bufferedReader.readLine();
         try {
             StringCalculator stringCalculator = new StringCalculator(valueToCalculate);
-            System.out.println(stringCalculator.calculate());
+            System.out.println(stringCalculator.execute());
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("Input value error", e);
         }

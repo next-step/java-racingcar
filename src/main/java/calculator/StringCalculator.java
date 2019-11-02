@@ -12,23 +12,30 @@ public class StringCalculator {
         this.valueToCalculate = inputValidator.validateValueToCalulate(valueToCalculate);
     }
 
-    public int calculate() {
-        String[] values = valueToCalculate.split(CommonConstant.EMPTY_SPACE_CHARACTER);
-        int leftValue = 0;
-        int rightValue = 0;
-        String operationSymbol;
-        int maxI = values.length;
-        for (int i = 0; i < maxI; i++) {
-            if (i == 0) {
-                leftValue = Integer.parseInt(values[i]);
-            }
-            if (i % 2 == 1) {
-                operationSymbol = inputValidator.validateOperationSymbol(values[i]);
-                rightValue = Integer.parseInt(values[i + 1]);
-                leftValue = Calculator.calculators.get(operationSymbol).calculate(leftValue, rightValue);
-            }
+    public int execute() {
+        String[] inputValues = valueToCalculate.split(CommonConstant.EMPTY_SPACE_CHARACTER);
+        int leftValue = Integer.parseInt(inputValues[0]);
+        int maxI = inputValues.length;
+
+        for (int i = 1; i < maxI; i += 2) {
+            leftValue = calculate(inputValues, leftValue, i);
         }
         return leftValue;
+    }
+
+    public int calculate(String[] inputValues, int leftValue, int index) {
+        if(isPossibleCalculate(inputValues.length, index)) {
+            int rightValue = Integer.parseInt(inputValues[index + 1]);
+            String operationSymbol = inputValues[index];
+
+            leftValue = Calculator.execute(operationSymbol, leftValue, rightValue);
+            return leftValue;
+        }
+        return leftValue;
+    }
+
+    private boolean isPossibleCalculate(int maxIndex, int index) {
+        return (maxIndex > index + 1) ? true : false;
     }
 
 }
