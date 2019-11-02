@@ -20,9 +20,9 @@ public class Main {
         RacingGame racingGame = new RacingGame(inputChecker.getNames(), inputChecker.getTries());
         racingGame.doRaces();
 
-        RacingScoreView view = new RacingScoreView(racingGame);
+        RacingScoreView view = new RacingScoreView(racingGame.getTries(), racingGame.getResults());
         view.printResults();
-        view.printWinner();
+        view.printWinner(racingGame.getWinnerNames());
 
     }
 

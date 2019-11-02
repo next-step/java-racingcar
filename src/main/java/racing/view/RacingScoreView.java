@@ -5,8 +5,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
-import racing.domain.Car;
-import racing.domain.RacingGame;
 
 public class RacingScoreView {
 
@@ -15,33 +13,31 @@ public class RacingScoreView {
     private static final String WINNER_DELIMITER = ", ";
     private static final String RESULT_FORMAT = "{0} : {1}";
     private static final String WINNER_TAIL = "가 최종 우승했습니다.";
-    private final RacingGame racingGame;
-    private final List<Car> cars;
+    private final int tries;
     private final Map<String, Queue<Integer>> results;
 
-    public RacingScoreView(RacingGame racingGame) {
-        this.racingGame = racingGame;
-        this.cars = racingGame.getCars();
-        this.results = racingGame.getResults();
+    public RacingScoreView(int tries, Map results) {
+        this.tries = tries;
+        this.results = results;
     }
 
     public void printResults() {
-        int tries = racingGame.getTries();
         for (int i = 0; i < tries; i++) {
-            cars.stream().forEach(car -> System.out.println(printPosition(car)));
+            results.keySet().stream()
+                .forEach(carName -> System.out.println(printPosition(carName)));
             System.out.println();
         }
     }
 
-    private String printPosition(Car car) {
-        return MessageFormat.format(RESULT_FORMAT, car.getName(),
+    private String printPosition(String carName) {
+        return MessageFormat.format(RESULT_FORMAT, carName,
             String.join(RESULT_DELIMITER,
-                Collections.nCopies(results.get(car.getName()).poll(), CAR_TOKEN))
+                Collections.nCopies(results.get(carName).poll(), CAR_TOKEN))
         );
     }
 
-    public void printWinner() {
-        String winnerNames = String.join(WINNER_DELIMITER, racingGame.getWinnerNames());
+    public void printWinner(List<String> winners) {
+        String winnerNames = String.join(WINNER_DELIMITER, winners);
         System.out.println(winnerNames + WINNER_TAIL);
     }
 }
