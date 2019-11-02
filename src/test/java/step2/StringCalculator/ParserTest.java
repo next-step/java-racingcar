@@ -10,10 +10,14 @@ import org.junit.jupiter.api.Test;
 public class ParserTest {
 
     @Test
-    void split_single_delimiter() {
-        String rawInput = "0,1:2";
-        Parser sut = new Parser(rawInput);
-        assertThat(sut.parse(":").size()).isEqualTo(2);
+    void parse_input_as_integer_list() {
+        String rawInput1 = "0,1:2";
+        String rawInput2 = "//&\\n0&1&2";
+        Parser sut1 = new Parser(rawInput1);
+        Parser sut2 = new Parser(rawInput2);
+
+        assertThat(sut1.parse().get(0)).isEqualTo(0);
+        assertThat(sut2.parse().get(2)).isEqualTo(2);
     }
 
     @Test
