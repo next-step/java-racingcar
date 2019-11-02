@@ -1,12 +1,11 @@
 import game.Game;
-import game.InputView;
 import game.ResultView;
 import game.gambling.GamblingGame;
-import game.gambling.GamblingGameSettings;
+import game.gambling.GamblingInputView;
 import game.gambling.GamblingResult;
 import game.gambling.GamblingResultView;
 import game.racing.RacingGame;
-import game.racing.RacingGameSettings;
+import game.racing.RacingInputView;
 import game.racing.RacingResult;
 import game.racing.RacingResultView;
 
@@ -22,11 +21,10 @@ public class GameApplication {
     }
 
     private static void startGamble() {
-        GamblingGameSettings settings = new GamblingGameSettings();
-        InputView inputView = new InputView(settings);
-        inputView.render();
+        GamblingInputView inputView = new GamblingInputView();
+        inputView.renderAndAcceptInput();
 
-        Game<GamblingResult> game = new GamblingGame(settings);
+        Game<GamblingResult> game = new GamblingGame(inputView);
         game.run();
 
         ResultView<GamblingResult> resultView = new GamblingResultView();
@@ -34,11 +32,10 @@ public class GameApplication {
     }
 
     private static void startRacing() {
-        RacingGameSettings settings = new RacingGameSettings();
-        InputView inputView = new InputView(settings);
-        inputView.render();
+        RacingInputView inputView = new RacingInputView();
+        inputView.renderAndAcceptInput();
 
-        Game<RacingResult> game = new RacingGame(settings);
+        Game<RacingResult> game = new RacingGame(inputView);
         game.run();
 
         ResultView<RacingResult> resultView = new RacingResultView();

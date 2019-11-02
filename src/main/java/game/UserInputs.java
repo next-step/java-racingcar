@@ -1,9 +1,6 @@
 package game;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * @author : yusik
@@ -14,7 +11,7 @@ public class UserInputs {
     private Map<String, Input> inputs;
 
     public UserInputs() {
-        inputs = new HashMap<>();
+        inputs = new LinkedHashMap<>();
     }
 
     public void addInputMessage(String key, String message) {

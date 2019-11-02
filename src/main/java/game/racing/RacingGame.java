@@ -13,18 +13,18 @@ import java.util.List;
 public class RacingGame implements Game<RacingResult> {
 
     private List<Car> cars;
-    private int numberOfTimes;
+    private int numberOfRounds;
     private RacingResult result;
 
-    public RacingGame(RacingGameSettings settings) {
+    public RacingGame(RacingInputView inputView) {
         result = new RacingResult();
-        cars = createCars(settings.getCarNames());
-        numberOfTimes = settings.getNumberOfTimes();
+        cars = createCars(inputView.getCarNames());
+        this.numberOfRounds = inputView.getNumberOfRounds();
     }
 
     @Override
     public void run() {
-        for (int i = 0; i < numberOfTimes; i++) {
+        for (int i = 0; i < numberOfRounds; i++) {
             cars.parallelStream().forEach(Car::move);
         }
     }

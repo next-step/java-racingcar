@@ -1,24 +1,24 @@
 package game.gambling;
 
-import game.GameSettings;
+import game.InputView;
 import game.UserInputs;
 
 /**
- * Created by yusik on 2019/10/29.
+ * Created by yusik on 2019/11/02.
  */
-public class GamblingGameSettings extends GameSettings {
+public class GamblingInputView extends InputView {
 
     public String[] getUserNames() {
-        String carNames = userInput.getValue("users");
+        String carNames = getInputValueByKey("users");
         return carNames.split(",");
     }
 
     public int getNumberOfRound() {
-        return Integer.parseInt(userInput.getValue("numberOfRound"));
+        return Integer.parseInt(getInputValueByKey("numberOfRound"));
     }
 
     @Override
-    public void setInputMessages(UserInputs userInput) {
+    public void initialize(UserInputs userInput) {
         userInput.addInputMessage("users", "도박할 사람 이름(,)");
         userInput.addInputMessage("numberOfRound", "시도 횟수");
     }

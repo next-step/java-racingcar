@@ -17,9 +17,9 @@ public class GamblingGame implements Game<GamblingResult> {
     private final int numberOfRound;
     private GamblingResult result;
 
-    public GamblingGame(GamblingGameSettings settings) {
-        userNames = settings.getUserNames();
-        numberOfRound = settings.getNumberOfRound();
+    public GamblingGame(GamblingInputView inputView) {
+        userNames = inputView.getUserNames();
+        numberOfRound = inputView.getNumberOfRound();
         result = new GamblingResult();
     }
 
