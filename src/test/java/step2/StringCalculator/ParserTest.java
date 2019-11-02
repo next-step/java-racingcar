@@ -13,6 +13,7 @@ public class ParserTest {
     void parse_input_as_integer_list() {
         String rawInput1 = "0,1:2";
         String rawInput2 = "//&\\n0&1&2";
+
         Parser sut1 = new Parser(rawInput1);
         Parser sut2 = new Parser(rawInput2);
 
@@ -23,21 +24,35 @@ public class ParserTest {
     @Test
     void split_default_delimiter() {
         String rawInput = "0,1:2";
+
         Parser sut = new Parser(rawInput);
+
         assertThat(sut.parse().size()).isEqualTo(3);
     }
 
     @Test
     void split_custom_delimiter() {
         String rawInput = "//&\\n1&2&3";
+
         Parser sut = new Parser(rawInput);
+
         assertThat(sut.parse().size()).isEqualTo(3);
+    }
+
+    @Test
+    void returns_empty_list_if_input_empty() {
+        String rawInput = "";
+
+        Parser sut = new Parser(rawInput);
+
+        assertThat(sut.parse().size()).isEqualTo(0);
     }
 
     @Test
     void check_custom_delimiter_works() {
         String rawInput = "//&\\n1&2&3";
         String customDelimiter = "^//.+\\\\n";
+
         Pattern pattern = Pattern.compile(customDelimiter);
         assertThat(pattern.matcher(rawInput).find()).isTrue();
 
@@ -55,6 +70,7 @@ public class ParserTest {
     void matcher_replace_works() {
         String rawInput = "//&\\n1&2&3";
         String customDelimiter = "^//.+\\\\n";
+
         Pattern pattern = Pattern.compile(customDelimiter);
         assertThat(pattern.matcher(rawInput).find()).isTrue();
 
