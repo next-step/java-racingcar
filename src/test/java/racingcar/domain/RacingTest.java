@@ -19,9 +19,7 @@ public class RacingTest {
     void findWinners() {
         Racing racing = new Racing("a,b,c", 5, () -> true);
 
-        while (!racing.isFinish()) {
-            racing.race();
-        }
+        racing.race();
 
         List<Car> winners = racing.findWinners();
 
