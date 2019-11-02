@@ -24,7 +24,7 @@ public class RacingGameTest {
     @DisplayName("입력한 차량에서 차량 수 추출")
     @Test
     void extractNumberOfCarsTest() {
-        Cars cars = racingGame.getCars();;
+        Cars cars = racingGame.getCars();
         assertThat(cars.extractNumberOfCars()).isEqualTo(3);
     }
 
