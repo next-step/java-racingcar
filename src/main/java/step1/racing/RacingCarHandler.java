@@ -1,47 +1,35 @@
 package step1.racing;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
+import step1.racing.data.GameCount;
 import step1.racing.data.RacingCar;
+import step1.racing.data.RacingCars;
 
 public class RacingCarHandler {
-    private final List<RacingCar> racingCars;
-    private final int playTimes;
+    private final RacingCars racingCars;
+    private final GameCount gameCount;
 
-    public RacingCarHandler(List<RacingCar> racingCars, int playTimes) {
-        this.racingCars = racingCars;
-        this.playTimes = playTimes;
-        validate();
+    public RacingCarHandler(List<RacingCar> racingCarList, int playTimes) {
+        this.racingCars = new RacingCars(racingCarList);
+        this.gameCount = new GameCount(playTimes);
     }
 
     public List<RacingCar> getWinners() {
-        int max = racingCars.stream()
-                              .map(RacingCar::getPosition)
-                              .max(Integer::compareTo)
-                              .orElse(Integer.MAX_VALUE);
-
-        return racingCars.stream()
-                           .filter(car -> car.isGreaterThan(max))
-                           .collect(Collectors.toList());
+        return racingCars.getWinners();
     }
 
     public void race(Moveable moveStrategy) {
-        racingCars.forEach(racingCar -> {
-            if (moveStrategy.isMoveable()) {
-                racingCar.moveForward();
-            }
-        });
-    }
-
-    public List<RacingCar> racingCars() {
-        return Collections.unmodifiableList(racingCars);
-    }
-
-    private void validate() {
-        if (racingCars.size() < 1 || playTimes < 1) {
-            throw new IllegalArgumentException();
+        while (gameCount.isPlayable()) {
+            doRace(moveStrategy);
         }
+    }
+
+    private void doRace(Moveable moveStrategy) {
+        racingCars.race(moveStrategy);
+    }
+
+    public List<RacingCar> getRacingCars() {
+        return racingCars.getRacingCars();
     }
 }
