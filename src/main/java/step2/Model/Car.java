@@ -11,7 +11,7 @@ package step2.Model;
  * @version 1.0.0
  */
 public class Car {
-    private static final String CAR_LOG_SYMBOL = "_";
+    private static final String CAR_LOG_SYMBOL = "-";
     private String name;
     private boolean[] move;
 
@@ -20,8 +20,9 @@ public class Car {
         move = new boolean[turn];
     }
 
-    public void go(int turn) {
+    public String go(int turn) {
         move[turn] = true;
+        return getStringScore(turn);
     }
 
     public String getStringScore(int turn) {

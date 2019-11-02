@@ -6,35 +6,34 @@ import org.junit.jupiter.params.provider.CsvSource;
 import step2.Model.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 class CarTest {
 
     private static Car car = new Car("bus", 5);
 
     @ParameterizedTest
-    @CsvSource(value = {"true:0", "true:1", "false:2", "true:3", "false:4"}, delimiter = ':')
-    void go(boolean is, int turn) {
+    @CsvSource(value = {"0:true:-", "1:true:--", "2:false:--", "3:true:---", "4:false:---"}, delimiter = ':')
+    void go(int turn, boolean is, String graph) {
         if (is) {
             car.go(turn);
         }
-        assertThat(car.getMoveOfTurn(turn)).isEqualTo(is);
+        assertThat(car.getStringScore(turn)).isEqualTo(graph);
     }
 
 
     @Test
-    void getMove() {
+    void getStringScore() {
         Car car = new Car("bus", 6);
+        car.go(1);
         car.go(2);
-        car.go(3);
-        car.go(5);
+        car.go(4);
         assertAll(
-                () -> assertFalse(car.getMoveOfTurn(0)),
-                () -> assertFalse(car.getMoveOfTurn(1)),
-                () -> assertTrue(car.getMoveOfTurn(2)),
-                () -> assertTrue(car.getMoveOfTurn(3)),
-                () -> assertFalse(car.getMoveOfTurn(4)),
-                () -> assertTrue(car.getMoveOfTurn(5))
+                () -> assertThat(car.getStringScore(0)).isEqualTo(""),
+                () -> assertThat(car.getStringScore(1)).isEqualTo("-"),
+                () -> assertThat(car.getStringScore(2)).isEqualTo("--"),
+                () -> assertThat(car.getStringScore(3)).isEqualTo("--"),
+                () -> assertThat(car.getStringScore(4)).isEqualTo("---")
         );
 
     }

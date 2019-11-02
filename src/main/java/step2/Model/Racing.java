@@ -41,17 +41,17 @@ public class Racing {
     }
 
     public List<Graph> race(List<Graph> carResults, int turn) {
-        for (int i = 0; i < carList.size(); i++) {
-            Car car = carList.get(i);
-            move(car, turn);
-            carResults.get(i).addGraph(car.getStringScore(turn));
+        for (int carIndex = 0; carIndex < carList.size(); carIndex++) {
+            carResults.get(carIndex).addGraph(move(carIndex, turn));
         }
         return carResults;
     }
 
-    public void move(Car car, int turn) {
+    public String move(int carIndex, int turn) {
         if (moveStrategy.isPossibleToGo()) {
-            car.go(turn);
+            return carList.get(carIndex).go(turn);
         }
+        return carList.get(carIndex).getStringScore(turn);
     }
+
 }
