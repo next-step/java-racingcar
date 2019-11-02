@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -8,27 +7,32 @@ public class Racing {
 
     private final Cars cars;
     private int tryCount;
+    private History history;
 
     public Racing(final String inputCars, final int tryCount, final DriveWay driveWay) {
         this.cars = new Cars(inputCars, driveWay);
         this.tryCount = tryCount;
+        this.history = new History();
     }
 
     public void race() {
-        cars.race();
-        tryCount--;
+        while (!isFinish()) {
+            cars.race();
+            tryCount--;
+            history.add(this.cars.get());
+        }
     }
 
     public List<Car> findWinners() {
         return cars.findWinners();
     }
 
-    public boolean isFinish() {
+    private boolean isFinish() {
         return this.tryCount == 0;
     }
 
-    public List<Car> getCars() {
-        return Collections.unmodifiableList(this.cars.get());
+    public History getHistory() {
+        return this.history;
     }
 
     @Override

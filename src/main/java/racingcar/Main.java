@@ -13,12 +13,10 @@ public class Main {
         final int tryCount = InputView.inputTryCount();
 
         Racing racing = new Racing(carNames, tryCount, new RandomValueDriveWay());
+        racing.race();
 
         ResultView.printResult();
-        while (!racing.isFinish()) {
-            racing.race();
-            ResultView.printCars(racing.getCars());
-        }
+        ResultView.printCars(racing.getHistory());
 
         ResultView.printWinners(racing.findWinners());
     }
