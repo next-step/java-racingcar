@@ -20,6 +20,13 @@ public class Parser {
     public Parser(String rawInput) {
         this.matcher = CUSTOM_DELIMITER_PATTERN.matcher(rawInput);
         this.rawInput = rawInput;
+        this.delimiter = getDelimiter();
+    }
+
+    public List<Integer> parse() {
+        return Arrays.stream(getInputString().split(delimiter))
+                     .map(Integer::valueOf)
+                     .collect(Collectors.toList());
     }
 
     private String getInputString() {
