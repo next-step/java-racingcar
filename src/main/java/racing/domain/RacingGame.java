@@ -11,7 +11,6 @@ import racing.domain.movestrategies.RandomMoveStrategy;
 
 public class RacingGame {
 
-    private final Map<String, Queue<Integer>> results = new HashMap<>();
     private List<Car> cars = new ArrayList<>();
     private int tries;
 
@@ -59,8 +58,9 @@ public class RacingGame {
     }
 
     public Map<String, Queue<Integer>> getResults() {
+        Map<String, Queue<Integer>> results = new HashMap<>();
         cars.stream()
-            .forEach(car -> this.results.put(car.getName(), car.getRecords()));
+            .forEach(car -> results.put(car.getName(), car.getRecords()));
         return results;
     }
 }
