@@ -1,3 +1,5 @@
+package calculator;
+
 import calculator.StringCalculator;
 
 import java.io.BufferedReader;

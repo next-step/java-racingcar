@@ -1,3 +1,5 @@
+package racing;
+
 import racing.RacingGame;
 import racing.RacingInputView;
 import racing.RacingResultView;
