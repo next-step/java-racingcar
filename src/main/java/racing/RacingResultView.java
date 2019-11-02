@@ -4,6 +4,8 @@ import java.util.List;
 
 public class RacingResultView {
 
+    private static final String MOVE_CAR_EXPRESSION = "- ";
+
     private int carCount;
 
     public RacingResultView(int carCount) {
@@ -22,7 +24,7 @@ public class RacingResultView {
 
     private void move(int position) {
         for (int i = 0; i < position; i++) {
-            System.out.print("- ");
+            System.out.print(MOVE_CAR_EXPRESSION);
         }
         System.out.println();
     }
