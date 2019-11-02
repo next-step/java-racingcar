@@ -3,7 +3,7 @@ package step1.racing.view;
 import step1.racing.RacingCarHandler;
 
 public class CarPositionViewer {
-    public static void rendering(RacingCarHandler carPositions, String flag) {
+    public static void printStatus(RacingCarHandler carPositions, String flag) {
         carPositions.racingCars().forEach(car -> System.out.println(car.printStatus(flag)));
     }
 
