@@ -1,4 +1,7 @@
-package step2;
+package step2.domain;
+
+import step2.view.InputView;
+import step2.view.ResultView;
 
 import java.util.List;
 
@@ -13,7 +16,7 @@ public class RaceController {
         ResultView.printStartMessage(racingGame.getCars().getCarNames());
 
         for (int i = 0; i < tryCount; i++) {
-            ResultView.print(racingGame.move());
+            ResultView.print(racingGame.race());
         }
 
         List<String> winners = racingGame.retrieveWinners();
