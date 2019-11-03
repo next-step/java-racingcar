@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.domain.History;
 
 import java.util.List;
@@ -20,8 +21,9 @@ public class ResultView {
     }
 
     private static void getCarHistoryRow(History history, int i) {
-        List<Car> cars = history.get(i);
-        for (Car car : cars) {
+        Cars cars = history.get(i);
+        List<Car> carsForHistory = cars.get();
+        for (Car car : carsForHistory) {
             System.out.println(car.getName() + " : " + getDistanceIndicator(car));
         }
         System.out.println();

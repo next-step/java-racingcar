@@ -18,11 +18,8 @@ public class RacingTest {
     @Test
     void findWinners() {
         Racing racing = new Racing("a,b,c", 5, () -> true);
-
         racing.race();
-
         List<Car> winners = racing.findWinners();
-
         assertThat(winners.size()).isEqualTo(3);
     }
 }

@@ -6,11 +6,11 @@ import java.util.Objects;
 public class Racing {
 
     private final Cars cars;
+    private final History history;
     private int tryCount;
-    private History history;
 
     public Racing(final String inputCars, final int tryCount, final DriveWay driveWay) {
-        this.cars = new Cars(inputCars, driveWay);
+        this.cars = Cars.newInstance(inputCars, driveWay);
         this.tryCount = tryCount;
         this.history = new History();
     }
@@ -19,7 +19,7 @@ public class Racing {
         while (!isFinish()) {
             cars.race();
             tryCount--;
-            history.add(this.cars.get());
+            history.add(this.cars);
         }
     }
 

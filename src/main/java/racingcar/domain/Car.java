@@ -8,10 +8,24 @@ public class Car {
     private int distance;
     private final DriveWay driveWay;
 
-    Car(final String name, final DriveWay driveWay) {
+    private Car(final String name, final DriveWay driveWay) {
         this.name = name;
         this.distance = 0;
         this.driveWay = driveWay;
+    }
+
+    private Car(final Car car) {
+        this.name = car.name;
+        this.distance = car.distance;
+        this.driveWay = car.driveWay;
+    }
+
+    static Car newInstance(final String name, final DriveWay driveWay) {
+        return new Car(name, driveWay);
+    }
+
+    static Car valueOf(Car car) {
+        return new Car(car);
     }
 
     void race() {

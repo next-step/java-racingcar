@@ -9,13 +9,13 @@ public class CarsTest {
     @Test
     void 생성() {
         DriveWay driveWay = new RandomValueDriveWay();
-        Cars cars = new Cars("a,b,c", driveWay);
-        assertThat(cars).isEqualTo(new Cars("a,b,c", driveWay));
+        Cars cars = Cars.newInstance("a,b,c", driveWay);
+        assertThat(cars).isEqualTo(Cars.newInstance("a,b,c", driveWay));
     }
 
     @Test
     void race() {
-        Cars cars = new Cars("a,b,c", () -> true);
+        Cars cars = Cars.newInstance("a,b,c", () -> true);
         cars.race();
         assertThat(cars.findWinners().size()).isEqualTo(3);
     }

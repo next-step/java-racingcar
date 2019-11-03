@@ -11,12 +11,25 @@ public class Cars {
     private static final String DELIMITER = ",";
     private final List<Car> cars;
 
-    public Cars(final String inputCarNames, final DriveWay driveWay) {
+    private Cars(final String inputCarNames, final DriveWay driveWay) {
         this.cars = new ArrayList<>();
         String[] carNames = inputCarNames.split(DELIMITER);
         for (String carName : carNames) {
-            cars.add(new Car(carName, driveWay));
+            cars.add(Car.newInstance(carName, driveWay));
         }
+    }
+
+    private Cars(final List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public static Cars newInstance(final String inputCarNames, final DriveWay driveWay) {
+        return new Cars(inputCarNames, driveWay);
+    }
+
+    static Cars valueOf(final List<Car> cars) {
+        List<Car> carsForHistory = new ArrayList<>(cars);
+        return new Cars(carsForHistory);
     }
 
     public void race() {
@@ -41,7 +54,7 @@ public class Cars {
         return maxDistance;
     }
 
-    List<Car> get() {
+    public List<Car> get() {
         return Collections.unmodifiableList(this.cars);
     }
 
