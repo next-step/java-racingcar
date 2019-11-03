@@ -1,5 +1,6 @@
 package calculator;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiFunction;
@@ -19,19 +20,17 @@ public enum Calculator {
         this.operation = operation;
     }
 
-    public static Map<String, Calculator> calculators = new HashMap<>();
-
-    static {
-        for (Calculator calculator : Calculator.values()) {
-            calculators.put(calculator.operationSymbol, calculator);
-        }
-    }
-
     public static int execute (String operationSymbol, Integer leftValue, Integer rightValue) {
-        return calculators.get(operationSymbol).calculate(leftValue, rightValue);
+        return get(operationSymbol).calculate(leftValue, rightValue);
     }
 
     public Integer calculate(Integer leftValue, Integer rightValue) {
         return this.operation.apply(leftValue, rightValue);
+    }
+
+    private static Calculator get(String operationSymbol) {
+        return Arrays.stream(values())
+                .filter(value -> value.operationSymbol.equals(operationSymbol))
+                .findFirst().get();
     }
 }
