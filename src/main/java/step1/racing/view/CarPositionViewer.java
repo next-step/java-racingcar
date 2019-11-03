@@ -1,17 +1,19 @@
 package step1.racing.view;
 
-import step1.racing.RacingCarHandler;
+import step1.racing.RacingGame;
 import step1.racing.data.RacingCar;
 
 public class CarPositionViewer {
-    public static void printStatus(RacingCarHandler carPositions, String flag) {
-        for (RacingCar racingCar : carPositions.getRacingCars()) {
-            System.out.println(racingCar.getName() + " : " + printConcatenatedChar(flag, racingCar.getPosition()));
+    private static final String CAR_INDICATOR = "-";
+
+    public static void printStatus(RacingGame racingGame) {
+        for (RacingCar racingCar : racingGame.getRacingCars()) {
+            System.out.println(racingCar.getName() + " : " + printConcatenatedChar(CAR_INDICATOR, racingCar.getPosition()));
         }
     }
 
-    public static void printWinner(RacingCarHandler racingCarHandler) {
-        racingCarHandler.getWinners().forEach(car -> System.out.println(car.getName()));
+    public static void printWinner(RacingGame racingGame) {
+        racingGame.getWinners().forEach(car -> System.out.println(car.getName()));
     }
 
     private static String printConcatenatedChar(String flag, int num) {
