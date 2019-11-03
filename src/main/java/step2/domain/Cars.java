@@ -65,11 +65,6 @@ public class Cars {
     }
 
     private String getWinner(Car car, int maxPosition) {
-        String winnerName = "";
-
-        if (car.getPosition() == maxPosition) {
-            winnerName = car.getName();
-        }
-        return winnerName;
+        return car.getWinner(maxPosition);
     }
 }
