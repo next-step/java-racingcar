@@ -10,11 +10,17 @@ import org.junit.jupiter.api.Test;
 
 import step1.racing.data.RacingCar;
 
-class RacingCarHandlerTest {
+class RacingGameTest {
+    private Moveable moveable = new Moveable() {
+        @Override
+        public boolean isMoveable() {
+            return true;
+        }
+    };
 
     @Test
     void throw_exception_if_empty_args() {
-        assertThatThrownBy(() -> new RacingCarHandler(Collections.EMPTY_LIST, 1))
+        assertThatThrownBy(() -> new RacingGame(Collections.EMPTY_LIST, moveable, 1))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -23,7 +29,7 @@ class RacingCarHandlerTest {
         RacingCar c1 = new RacingCar("c1", 3);
         RacingCar c2 = new RacingCar("c2", 2);
 
-        RacingCarHandler sut = new RacingCarHandler(Arrays.asList(c1, c2), 1);
+        RacingGame sut = new RacingGame(Arrays.asList(c1, c2), moveable, 1);
 
         assertThat(sut.getWinners()).contains(c1);
     }
@@ -31,9 +37,9 @@ class RacingCarHandlerTest {
     @Test
     void check_car_position_moved_when_race() {
         RacingCar c1 = new RacingCar("c1", 1);
-        RacingCarHandler sut = new RacingCarHandler(Arrays.asList(c1), 1);
+        RacingGame sut = new RacingGame(Arrays.asList(c1), moveable, 1);
 
-        sut.race(() -> true);
+        sut.move();
 
         assertThat(c1.getPosition()).isEqualTo(2);
     }
