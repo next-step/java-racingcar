@@ -4,5 +4,4 @@ package racingcar.domain;
 public interface DriveWay {
 
     boolean isEnableToMove();
-
 }

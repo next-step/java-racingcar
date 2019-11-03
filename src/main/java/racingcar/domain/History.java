@@ -23,6 +23,4 @@ public class History {
     public List<Car> get(final int index) {
         return Collections.unmodifiableList(this.carsHistory.get(index));
     }
-
-
 }
