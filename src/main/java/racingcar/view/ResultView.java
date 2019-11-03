@@ -3,34 +3,32 @@ package racingcar.view;
 import racingcar.domain.Car;
 import racingcar.domain.Cycles;
 import racingcar.domain.RacingCycle;
+import racingcar.domain.RacingGame;
 
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static racingcar.domain.UserInput.DELIMITER;
 
 public class ResultView {
 
-    private List<RacingCycle> cycles;
+    private Cycles cycles;
 
     private static final String LOCATION_EXPRESSION_STRING = "-";
 
     public ResultView(Cycles cycles) {
-        this.cycles = cycles.getCycles();
+        this.cycles = cycles;
     }
 
     public void printRace() {
-        for (RacingCycle cars : cycles) {
+        for (RacingCycle cars : cycles.getCycles()) {
             printCycle(cars);
         }
     }
 
     public void printWinner() {
-        if (cycles == null || cycles.size() == 0) {
-            throw new IllegalArgumentException("실행된 cycle이 없습니다.");
-        }
-        RacingCycle finalRoundCycle = cycles.get(cycles.size() - 1);
 
-        List<String> winners = finalRoundCycle.findWinners();
-        System.out.println(String.format("%s가 최종 우승하였습니다.", String.join(",", winners)));
+        List<String> winners = cycles.findWinners();
+        System.out.println(String.format("%s가 최종 우승하였습니다.", String.join(DELIMITER, winners)));
     }
 
 
@@ -44,7 +42,8 @@ public class ResultView {
 
     private String drawLocation(String name, int location) {
         StringBuilder locationBuilder = new StringBuilder();
-        locationBuilder.append(name).append(" : ");
+        locationBuilder.append(name)
+                .append(" : ");
         for (int i = 0; i < location; i++) {
             locationBuilder.append(LOCATION_EXPRESSION_STRING);
         }

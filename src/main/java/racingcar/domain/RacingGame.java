@@ -7,17 +7,16 @@ public class RacingGame {
     private Cycles cycles;
 
     public RacingGame(List<String> carNames, int runCount) {
-        cycles = new Cycles();
-        run(carNames, runCount);
+        cycles = new Cycles(carNames);
+        run(runCount);
     }
 
-    private void run(List<String> carNames, int runCount) {
-        for (int i = 0; i < runCount; i++) {
-            cycles.doCycle(carNames);
-        }
+    private void run(int runCount) {
+        cycles.run(runCount);
     }
 
     public Cycles getCycles() {
         return cycles;
     }
+
 }

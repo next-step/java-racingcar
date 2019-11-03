@@ -5,7 +5,7 @@ import java.util.List;
 
 public class UserInput {
 
-    private static final String DELIMITER = ",";
+    public static final String DELIMITER = ",";
 
     private String carNames;
     private int runCount;

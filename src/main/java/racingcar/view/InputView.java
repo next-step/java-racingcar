@@ -14,7 +14,7 @@ public class InputView {
     }
 
     public void createInput() {
-        this.input = new UserInput(enterCarNames(), enterrunCount());
+        this.input = new UserInput(enterCarNames(), enterRunCount());
     }
 
     private String enterCarNames() {
@@ -27,7 +27,7 @@ public class InputView {
         return carNames;
     }
 
-    private int enterrunCount() {
+    private int enterRunCount() {
         System.out.println("시도할 회수는 몇 회 인가요?");
         return scanner.nextInt();
     }
