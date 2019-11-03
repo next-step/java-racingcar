@@ -11,16 +11,7 @@ public class Car {
         this.name = name;
     }
 
-    public int getPosition() {
-        return position;
-    }
-
-    public String getName() {
-        return name;
-    }
-
     public Car move(int random) {
-        //this.position = tryMove(random);
         return new Car(tryMove(random), this.name);
     }
 
@@ -42,5 +33,13 @@ public class Car {
 
     public boolean isBiggerThan(int maxPosition) {
         return this.position > maxPosition;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public String getName() {
+        return name;
     }
 }
