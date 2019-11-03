@@ -9,11 +9,13 @@ import java.util.stream.Collectors;
 
 public class ResultView {
 
-    public static void printResult() {
+    public static void printResult(final History history, final List<Car> winners) {
         System.out.println("\n실행 결과");
+        printCars(history);
+        printWinners(winners);
     }
 
-    public static void printCars(final History history) {
+    private static void printCars(final History history) {
         final int tryCount = history.size();
         for (int i = 0; i < tryCount; i++) {
             getCarHistoryRow(history, i);
@@ -38,7 +40,7 @@ public class ResultView {
         return stringBuilder;
     }
 
-    public static void printWinners(List<Car> winners) {
+    private static void printWinners(List<Car> winners) {
         List<String> winnerNames = winners.stream()
                 .map(Car::getName)
                 .collect(Collectors.toList());

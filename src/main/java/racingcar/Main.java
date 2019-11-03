@@ -15,9 +15,6 @@ public class Main {
         Racing racing = new Racing(carNames, tryCount, new RandomValueDriveWay());
         racing.race();
 
-        ResultView.printResult();
-        ResultView.printCars(racing.getHistory());
-
-        ResultView.printWinners(racing.findWinners());
+        ResultView.printResult(racing.getHistory(), racing.findWinners());
     }
 }
