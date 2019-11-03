@@ -36,13 +36,9 @@ public class Cars {
     }
 
     public String[] getCarNames() {
-        List<String> carNames = new ArrayList<>();
-
-        for (Car car : cars) {
-            carNames.add(car.getName());
-        }
-
-        return carNames.toArray(new String[carNames.size()]);
+        return cars.stream()
+                .map(Car::getName)
+                .toArray(String[]::new);
     }
 
     public List<String> retrieveWinners() {
