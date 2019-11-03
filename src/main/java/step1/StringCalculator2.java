@@ -1,7 +1,5 @@
 package step1;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Stack;
 
 public class StringCalculator2 {
@@ -12,18 +10,9 @@ public class StringCalculator2 {
     private String currentOperator = null;
     private Stack<Integer> numberStack = new Stack<>();
     private Stack<String> operatorStack = new Stack<>();
-    private Map<String, CalculatorType> operatorMap;
 
     public StringCalculator2() {
-        operatorInit();
-    }
 
-    private void operatorInit() {
-        operatorMap = new HashMap<>();
-        operatorMap.put("+", CalculatorType.ADD);
-        operatorMap.put("-", CalculatorType.SUBTRACT);
-        operatorMap.put("*", CalculatorType.MULTIPLY);
-        operatorMap.put("/", CalculatorType.DIVIDE);
     }
 
     public int execute(String input) {
@@ -43,7 +32,7 @@ public class StringCalculator2 {
     }
 
     public void operatorValidate(String operator) {
-        if (!operatorMap.containsKey(operator)) {
+        if (!Operator.operator.containsKey(operator)) {
             throw new IllegalArgumentException();
         }
     }
@@ -53,8 +42,8 @@ public class StringCalculator2 {
         for (; !operatorStack.empty(); ) {
             currentOperator = operatorStack.pop();
             operatorValidate(currentOperator);
-            CalculatorType calculatorType = operatorMap.get(currentOperator);
-            result = calculatorType.calculate(result, numberStack.pop());
+            Operator operator = Operator.operator.get(currentOperator);
+            result = operator.calculate(result, numberStack.pop());
         }
         return result;
     }

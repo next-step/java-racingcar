@@ -2,32 +2,46 @@ package step3.view;
 
 import step3.domain.Car;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ResultView {
+    private static final int POSITION = 1;
+    private static List<String> winners = new ArrayList<>();
 
-
-    public static void printResultView(List<Car> cars) {
+    public static void printCar(List<Car> cars) {
 
         for (Car car : cars) {
             printName(car.getName());
-            printBar(car.getPosition());
+            printPositionsView(car.getPosition());
         }
         System.out.println();
+    }
+
+
+    private static void printPositionsView(List<Integer> positions) {
+        for (int i = 0; i < positions.size(); i++) {
+            printBar(positions.get(i));
+        }
+        System.out.println();
+    }
+
+    private static void printBar(int position) {
+        if (position == POSITION) {
+            System.out.print("- ");
+        }
     }
 
     private static void printName(String name) {
         System.out.print(name + " : ");
     }
 
-    private static void printBar(int count) {
-        for (int i = 0; i < count; i++) {
-            System.out.print("- ");
-        }
-        System.out.println();
+    public static void getWinners(String winner) {
+        winners.add(winner);
     }
 
-    public static void printWinner(List<String> winners) {
+    public static void printWinner() {
         System.out.println(winners + "가 최종 우승했습니다.");
     }
 }

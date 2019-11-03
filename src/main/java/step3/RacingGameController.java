@@ -5,33 +5,42 @@ import step3.domain.RacingGame;
 import step3.view.InputView;
 import step3.view.ResultView;
 
-import java.util.List;
+import java.util.*;
 
 public class RacingGameController {
 
-    public void RacingGameStart() {
+    public void execute() {
         RacingGame racingGame = initiate();
         moveResultView(racingGame);
-        winnerView(racingGame);
+        printWinnerView(racingGame);
     }
 
-    public RacingGame initiate() {
+    private RacingGame initiate() {
         InputView inputView = new InputView();
         String carObject = inputView.createCar();
         int moveCount = inputView.moveCount();
         return new RacingGame(moveCount, carObject);
-
     }
 
-    public void moveResultView(RacingGame racingGame) {
-        for (int i = 0; i < racingGame.getTime(); i++) {
+    private void moveResultView(RacingGame racingGame) {
+        int time = racingGame.getTime();
+        for (int i = 0; i < time; i++) {
             List<Car> cars = racingGame.move();
-            ResultView.printResultView(cars);
+            ResultView.printCar(cars);
         }
     }
 
-    public void winnerView(RacingGame racingGame) {
-        List<String> winners = racingGame.winner();
-        ResultView.printWinner(winners);
+    private void printWinnerView(RacingGame racingGame) {
+        List<Car> cars = racingGame.getWinners();
+        for (Car car : cars) {
+            getWinner(car);
+        }
+        ResultView.printWinner();
+    }
+
+    private void getWinner(Car car) {
+        if (car.isWinner()) {
+            ResultView.getWinners(car.getName());
+        }
     }
 }
