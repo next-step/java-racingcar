@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Calculator {
 
-    private final SimpleParser parser;
+    private final Parser parser;
     private final Expression expression;
 
     public Calculator(final String input) {
