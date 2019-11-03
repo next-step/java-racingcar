@@ -1,17 +1,21 @@
 package racing;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Car {
 
-    private final int MIN_POSITION_NUMBER = 0;
     private final int MOVE_CONDITION_NUMBER = 4;
+    private final int MOVE_NUMBER = 1;
+    private final int STOP_NUMBER = 0;
 
-    private int position;
+    public int position = 0;
 
-    public Car() {
-        this.position = MIN_POSITION_NUMBER;
+    public void move(int movableValue) {
+        position += isMovable(movableValue);
     }
 
-    public int move(int conditionValue) {
-        return (conditionValue >= MOVE_CONDITION_NUMBER) ? position += 1 : position;
+    public int isMovable(int movableValue) {
+        return (movableValue >= MOVE_CONDITION_NUMBER) ? MOVE_NUMBER : STOP_NUMBER;
     }
 }

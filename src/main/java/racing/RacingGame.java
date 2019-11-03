@@ -1,37 +1,15 @@
 package racing;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 public class RacingGame {
 
-    private final int MAX_BOUND = 10;
-
-    private int time;
-    private int carCount;
-    private List<Car> cars = new ArrayList<>();
-    private List<Integer> carPositions = new ArrayList<>();
-    private Random random = new Random();
-
-    public RacingGame(RacingInputView racingInputView) {
-        this.time = racingInputView.time;
-        this.carCount = racingInputView.carCount;
-        for (int i = 0; i < this.carCount; i++) {
-            cars.add(new Car());
-        }
+    private Car car;
+    public RacingGame(Car car) {
+        this.car = car;
     }
 
-    public List<Integer> start() {
-        for (int i = 0; i < time; i++) {
-            move();
-        }
-        return carPositions;
+    public Car start(int movableCarValue) {
+        car.move(movableCarValue);
+        return car;
     }
 
-    private void move() {
-        for (Car car : cars) {
-            carPositions.add(car.move(random.nextInt(MAX_BOUND)));
-        }
-    }
 }

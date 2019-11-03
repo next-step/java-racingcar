@@ -6,23 +6,15 @@ public class RacingResultView {
 
     private static final String MOVE_CAR_EXPRESSION = "- ";
 
-    private int carCount;
-
-    public RacingResultView(int carCount) {
-        this.carCount = carCount;
-    }
-
-    public void print(List<Integer> carPositions) {
-        for (int i = 0; i < carPositions.size(); i++) {
-            int carPosition = carPositions.get(i);
-            if (i % carCount == 0) {
-                System.out.println();
-            }
-            move(carPosition);
+    public void print(List<Car> racingCars) {
+        for (Car racingCar : racingCars) {
+            int carPosition = racingCar.position;
+            execute(carPosition);
         }
+        System.out.println();
     }
 
-    private void move(int position) {
+    private void execute(int position) {
         for (int i = 0; i < position; i++) {
             System.out.print(MOVE_CAR_EXPRESSION);
         }
