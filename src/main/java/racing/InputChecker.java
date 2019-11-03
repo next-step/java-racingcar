@@ -8,8 +8,8 @@ class InputChecker {
 
     private static final String ILLEGAL_CARS = "자동차 이름을 정확히 입력하세요.";
     private static final String ILLEGAL_TRIES = "경주할 거리를 정확히 입력하세요.";
-    private static final String INPUT_PATTERN = "[\\w]+(,[\\w]+)*";
-    private static final Pattern input_pattern = Pattern.compile(INPUT_PATTERN);
+    private static final String INPUT_PATTERN_REGEX = "[\\w]+(,[\\w]+)*";
+    private static final Pattern INPUT_PATTERN = Pattern.compile(INPUT_PATTERN_REGEX);
     private static final String DELIMETER = ",";
     private final List<String> names;
     private final int tries;
@@ -35,7 +35,7 @@ class InputChecker {
     }
 
     private boolean isValidNames(String names) {
-        return input_pattern.matcher(names).matches();
+        return INPUT_PATTERN.matcher(names).matches();
     }
 
     private int getValidTries(int tries) {

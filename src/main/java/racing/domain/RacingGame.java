@@ -1,22 +1,25 @@
-package racing;
+package racing.domain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import racing.movestrategies.RandomMoveStrategy;
+import racing.domain.movestrategies.RandomMoveStrategy;
 
-class RacingGame {
+public class RacingGame {
 
     private List<Car> cars = new ArrayList<>();
     private int tries;
 
-    RacingGame(List<String> names, int tries) {
+    public RacingGame(List<String> names, int tries) {
         this.cars = createCars(names);
         this.tries = tries;
     }
 
-    void doRaces() {
+    public void doRaces() {
         IntStream.range(0, tries)
             .forEach(i -> doRace());
     }
@@ -31,20 +34,20 @@ class RacingGame {
         return cars;
     }
 
-    List<Car> getCars() {
-        return cars;
+    public List<Car> getCars() {
+        return new ArrayList<>(cars);
     }
 
-    int getTries() {
+    public int getTries() {
         return tries;
     }
 
-    List<String> getWinnerNames() {
+    public List<String> getWinnerNames() {
         int biggestPosition = getBiggestPosition();
         return cars.stream()
-                .filter(car -> car.getPosition() == biggestPosition)
-                .map(Car::getName)
-                .collect(Collectors.toList());
+            .filter(car -> car.isPositioned(biggestPosition))
+            .map(Car::getName)
+            .collect(Collectors.toList());
     }
 
     private int getBiggestPosition() {
@@ -52,5 +55,12 @@ class RacingGame {
             .mapToInt(Car::getPosition)
             .max()
             .getAsInt();
+    }
+
+    public Map<String, Queue<Integer>> getResults() {
+        Map<String, Queue<Integer>> results = new HashMap<>();
+        cars.stream()
+            .forEach(car -> results.put(car.getName(), car.getRecords()));
+        return results;
     }
 }

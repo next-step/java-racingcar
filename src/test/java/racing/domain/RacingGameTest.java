@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -33,12 +33,12 @@ class RacingGameTest {
 
     @Test
     void 레이싱_결과_테스트() {
-        List<Car> finished_cars = racingGame.getCars();
+        List<Car> finishedCars = racingGame.getCars();
 
-        assertThat(finished_cars.size()).isEqualTo(cars.size());
-        assertThat(finished_cars.get(0).getPosition()).isEqualTo(tries);
-        assertThat(finished_cars.get(1).getPosition()).isEqualTo(0);
-        assertThat(finished_cars.get(2).getPosition()).isEqualTo(0);
+        assertThat(finishedCars.size()).isEqualTo(cars.size());
+        assertThat(finishedCars.get(0).getPosition()).isEqualTo(tries);
+        assertThat(finishedCars.get(1).getPosition()).isEqualTo(0);
+        assertThat(finishedCars.get(2).getPosition()).isEqualTo(0);
     }
 
     @Test
