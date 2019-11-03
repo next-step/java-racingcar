@@ -12,10 +12,19 @@ public class Cars {
         this.cars = new ArrayList<>();
     }
 
+    public Cars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+
     public void createCars(String[] carNames) {
         for (String carName : carNames) {
             cars.add(new Car(1, carName));
         }
+    }
+
+    public Cars createCarsByCar(List<Car> carCollection) {
+        return new Cars(carCollection);
     }
 
     public int extractNumberOfCars() {
@@ -56,7 +65,7 @@ public class Cars {
     }
 
     private int findMaxPosition(Car car, int maxPosition) {
-        return (car.getPosition() > maxPosition) ? car.getPosition() : maxPosition;
+        return (car.isBiggerThan(maxPosition)) ? car.getPosition() : maxPosition;
     }
 
     private String getWinner(Car car, int maxPosition) {

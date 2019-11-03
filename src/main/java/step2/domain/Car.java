@@ -19,8 +19,9 @@ public class Car {
         return name;
     }
 
-    public void move(int random) {
-        this.position = tryMove(random);
+    public Car move(int random) {
+        //this.position = tryMove(random);
+        return new Car(tryMove(random), this.name);
     }
 
     public int tryMove(int randomNumber) {
@@ -37,5 +38,9 @@ public class Car {
         }
 
         return position;
+    }
+
+    public boolean isBiggerThan(int maxPosition) {
+        return this.position > maxPosition;
     }
 }

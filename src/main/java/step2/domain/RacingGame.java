@@ -1,5 +1,6 @@
 package step2.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -31,13 +32,15 @@ public class RacingGame {
         int random;
 
         List<Car> carCollection = cars.getCars();
+        List<Car> carAfterRace = new ArrayList<>();
 
         for (int i = 0; i < length; i++) {
             random = generateRandom();
             Car car = carCollection.get(i);
-            car.move(random);
+            carAfterRace.add(car.move(random));
         }
 
+        this.cars = cars.createCarsByCar(carAfterRace);
         return this.cars;
     }
 
