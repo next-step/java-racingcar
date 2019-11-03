@@ -46,7 +46,7 @@ public class Cars {
 
         return this.cars.stream()
                 .map(car -> getWinner(car, maxPosition))
-                .filter(winner -> !winner.equals(""))
+                .filter(winner -> !"".equals(winner))
                 .collect(toList());
     }
 
