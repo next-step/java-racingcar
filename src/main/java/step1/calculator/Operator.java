@@ -1,4 +1,4 @@
-package calculator;
+package step1.calculator;
 
 public enum Operator {
   PLUS_OPERATOR("+"),

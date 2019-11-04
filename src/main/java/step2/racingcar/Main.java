@@ -2,7 +2,7 @@
  * Description : 자동차경주 실행을 담당
  */
 
-package racingcar;
+package step2.racingcar;
 
 public class Main {
 
