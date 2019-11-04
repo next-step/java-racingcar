@@ -8,22 +8,21 @@ import java.util.Random;
 
 public class RacingGame {
 
-  private static ResultView resultView;
   private static int RANDOM_BOUND = 10;
   private static int MOVE_MIN_VALUE = 4;
 
-  public static int[] markCarOnTrack(int carCount) {
+  public int[] markCarOnTrack(int carCount) {
     return new int[carCount];
   }
 
-  public static void start(int[] carPositionArr, int maxLapCount) {
+  public void start(int[] carPositionArr, int maxLapCount) {
     for (int i = 0; i < maxLapCount; i++) { //시도수를 하나씩 올려가며
       moveAllCar(carPositionArr);
       System.out.println("");
     }
   }
 
-  private static void moveAllCar(int[] carPositionArr) {
+  private void moveAllCar(int[] carPositionArr) {
     for (int i = 0; i < carPositionArr.length; i++) { // 차들을 한번씩 랜덤으로 돌림
       move(carPositionArr, i, isMove());
     }
@@ -33,7 +32,7 @@ public class RacingGame {
     if (isMoved) {
       carPositionArr[targetPosition] += 1;
     }
-    resultView.printCarTrace(carPositionArr, targetPosition);
+    ResultView.printCarTrace(carPositionArr, targetPosition);
     System.out.println(""); //차를바꿈
   }
 
