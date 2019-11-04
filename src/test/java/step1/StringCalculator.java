@@ -1,21 +1,14 @@
 package step1;
 
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class StringCalculator {
 
-	private int plus(int left, int right) {
-		return 0;
-	}
-
-	private int minus(int left, int right) {
-		return 0;
-	}
-
-	private int multiply(int left, int right) {
-		return 0;
-	}
-
-	private int divide(int left, int right) {
-		return 0;
+	@Test
+	void plus() {
+		assertThat(3 + 4).isEqualTo(7);
 	}
 
 }
