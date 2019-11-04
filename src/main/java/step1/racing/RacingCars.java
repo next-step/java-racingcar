@@ -1,10 +1,9 @@
-package step1.racing.data;
+package step1.racing;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import step1.racing.Moveable;
 import step1.racing.data.RacingCar;
 
 public class RacingCars {

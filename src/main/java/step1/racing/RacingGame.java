@@ -4,7 +4,6 @@ import java.util.List;
 
 import step1.racing.data.GameCount;
 import step1.racing.data.RacingCar;
-import step1.racing.data.RacingCars;
 
 public class RacingGame {
     private final Moveable moveStrategy;
@@ -38,4 +37,6 @@ public class RacingGame {
     private void doRace(Moveable moveStrategy) {
         racingCars.race(moveStrategy);
     }
+
+
 }
