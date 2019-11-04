@@ -1,29 +1,19 @@
 package step1;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringCalculator {
 
-	@Test
-	void plus() {
-		assertThat(3 + 4).isEqualTo(7);
-	}
-
-	@Test
-	void minus() {
-		assertThat(6 - 2).isEqualTo(4);
-	}
-
-	@Test
-	void multiply() {
-		assertThat(5 * 3).isEqualTo(15);
-	}
-
-	@Test
-	void divide() {
-		assertThat(6 / 3).isEqualTo(2);
+	@ParameterizedTest
+	@CsvSource(value = {"1+2:3", "4+5:9"}, delimiter = ':')
+	void plus(String param, int result) {
+		String[] operands = param.split("\\+");
+		int left = Integer.parseInt(operands[0]);
+		int right = Integer.parseInt(operands[1]);
+		assertThat(left + right).isEqualTo(result);
 	}
 
 }
