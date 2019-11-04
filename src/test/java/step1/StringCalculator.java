@@ -21,4 +21,9 @@ public class StringCalculator {
 		assertThat(5 * 3).isEqualTo(15);
 	}
 
+	@Test
+	void divide() {
+		assertThat(6 / 3).isEqualTo(2);
+	}
+
 }
