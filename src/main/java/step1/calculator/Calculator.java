@@ -1,4 +1,4 @@
-package step1.calculator;
+package calculator;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -6,7 +6,6 @@ import java.util.stream.Stream;
 
 public class Calculator {
 
-  private static final String SPLIT_BLANK_REGEX = " ";
   private static List operatorList = Stream.of(Operator.values())
       .map(m -> m.getName())
       .collect(Collectors.toList());
@@ -33,6 +32,7 @@ public class Calculator {
     }
   }
 
+
   private static long calculate(String operator, long first, long second) {
     if (operatorList.indexOf(operator) == -1) {
       throw new IllegalArgumentException("올바르지 않은 연산자가 입력되었습니다.");
@@ -55,18 +55,12 @@ public class Calculator {
     return result;
   }
 
-  private static void isValidateOperator(String operator) {
-    if (operatorList.indexOf(operator) == -1) {
-      throw new IllegalArgumentException("올바르지 않은 연산자가 입력되었습니다.");
-    }
-  }
-
   public static long run(String arg) {
     if (arg == null || arg.equals("") || arg.length() == 0) {
       throw new IllegalArgumentException("문자열이 입력되지 않았습니다.");
     }
 
-    String[] args = arg.split(SPLIT_BLANK_REGEX);
+    String[] args = arg.split(" ");
     validateTextFormatArgs(args);
     long result = Long.parseLong(args[0]);
     long target;
