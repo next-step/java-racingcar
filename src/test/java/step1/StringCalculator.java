@@ -15,32 +15,26 @@ public class StringCalculator {
 	}
 
 	@ParameterizedTest
-	@CsvSource(value = {"1+2:3", "4+5:9"}, delimiter = ':')
-	void plus(String param, int result) {
-		param = param.replaceAll(" ", "");
-		String[] operands = param.split("\\+");
-		int left = Integer.parseInt(operands[0]);
-		int right = Integer.parseInt(operands[1]);
+	@CsvSource(value = {"5+2, 5, 2", "16-5, 16, 5", "4*3, 4, 3", "12/5, 12, 5"})
+	void splitString(String param, String result1, String result2) {
+		assertThat(param.split("\\+|-|\\*|/")).containsExactly(result1, result2);
+	}
+
+	@ParameterizedTest
+	@CsvSource(value = {"1,2,3", "9,8,17"})
+	void plus(int left, int right, int result) {
 		assertThat(left + right).isEqualTo(result);
 	}
 
 	@ParameterizedTest
-	@CsvSource(value = {"5-2:3", "13 -3:10"}, delimiter = ':')
-	void minus(String param, int result) {
-		param = param.replaceAll(" ", "");
-		String[] operands = param.split("-");
-		int left = Integer.parseInt(operands[0]);
-		int right = Integer.parseInt(operands[1]);
+	@CsvSource(value = {"5,2,3", "13,3,10"})
+	void minus(int left, int right, int result) {
 		assertThat(left - right).isEqualTo(result);
 	}
 
 	@ParameterizedTest
-	@CsvSource(value = {"7 * 4:28", "21 *3:63"}, delimiter = ':')
-	void multiply(String param, int result) {
-		param = param.replaceAll(" ", "");
-		String[] operands = param.split("\\*");
-		int left = Integer.parseInt(operands[0]);
-		int right = Integer.parseInt(operands[1]);
+	@CsvSource(value = {"7,4,28", "21,3,63"})
+	void multiply(int left, int right, int result) {
 		assertThat(left * right).isEqualTo(result);
 	}
 
