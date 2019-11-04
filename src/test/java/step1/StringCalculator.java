@@ -16,4 +16,9 @@ public class StringCalculator {
 		assertThat(6 - 2).isEqualTo(4);
 	}
 
+	@Test
+	void multiply() {
+		assertThat(5 * 3).isEqualTo(15);
+	}
+
 }
