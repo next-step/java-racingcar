@@ -1,4 +1,4 @@
-package game.racing;
+package game.racing.domain;
 
 /**
  * Created by yusik on 2019/11/02.

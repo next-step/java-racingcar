@@ -1,5 +1,7 @@
 package game.racing;
 
+import game.racing.domain.DefaultCar;
+import game.racing.domain.TrackingLog;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

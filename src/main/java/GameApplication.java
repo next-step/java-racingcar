@@ -1,13 +1,13 @@
 import game.core.domain.Game;
 import game.core.view.ResultView;
-import game.gambling.GamblingGame;
-import game.gambling.GamblingInputView;
-import game.gambling.GamblingResult;
-import game.gambling.GamblingResultView;
-import game.racing.RacingGame;
-import game.racing.RacingInputView;
-import game.racing.RacingResult;
-import game.racing.RacingResultView;
+import game.gambling.domain.GamblingGame;
+import game.gambling.view.GamblingInputView;
+import game.gambling.domain.GamblingResult;
+import game.gambling.view.GamblingResultView;
+import game.racing.domain.RacingGame;
+import game.racing.view.RacingInputView;
+import game.racing.domain.RacingResult;
+import game.racing.view.RacingResultView;
 
 /**
  * @author : yusik

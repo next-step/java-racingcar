@@ -1,6 +1,6 @@
 package game.core.domain;
 
-import game.racing.RacingResult;
+import game.racing.domain.RacingResult;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

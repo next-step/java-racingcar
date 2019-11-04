@@ -1,5 +1,7 @@
 package game.racing;
 
+import game.racing.domain.CarMover;
+import game.racing.domain.MoveStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

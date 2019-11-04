@@ -1,4 +1,4 @@
-package game.gambling;
+package game.gambling.domain;
 
 /**
  * Created by yusik on 2019/10/29.

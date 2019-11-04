@@ -1,4 +1,4 @@
-package game.racing;
+package game.racing.domain;
 
 import game.core.domain.Game;
 import game.core.domain.ResultEntity;

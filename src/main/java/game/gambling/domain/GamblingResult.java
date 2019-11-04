@@ -1,4 +1,4 @@
-package game.gambling;
+package game.gambling.domain;
 
 import java.util.ArrayList;
 import java.util.List;

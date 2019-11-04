@@ -1,4 +1,4 @@
-package game.racing;
+package game.racing.view;
 
 import game.core.view.InputView;
 import game.core.view.UserInputs;

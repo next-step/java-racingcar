@@ -1,6 +1,9 @@
 package game.racing;
 
 import game.core.domain.ResultEntity;
+import game.racing.domain.RacingResult;
+import game.racing.domain.TrackingLog;
+import game.racing.view.RacingResultView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

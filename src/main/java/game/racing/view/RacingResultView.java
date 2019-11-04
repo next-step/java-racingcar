@@ -1,7 +1,9 @@
-package game.racing;
+package game.racing.view;
 
 import game.core.domain.ResultEntity;
 import game.core.view.ResultView;
+import game.racing.domain.RacingResult;
+import game.racing.domain.TrackingLog;
 
 import java.util.ArrayList;
 import java.util.List;

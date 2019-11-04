@@ -1,4 +1,4 @@
-package game.gambling;
+package game.gambling.view;
 
 import game.core.view.InputView;
 import game.core.view.UserInputs;
