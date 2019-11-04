@@ -13,6 +13,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 public class CalculatorTest {
 
   private Calculator calculator;
+
   @BeforeEach
   void setUp() {
     calculator = new Calculator();

@@ -8,7 +8,11 @@ public enum Operator {
 
   private String name;
 
-  Operator(String name) {this.name = name;}
+  Operator(String name) {
+    this.name = name;
+  }
 
-  public String getName() {return name;}
+  public String getName() {
+    return name;
+  }
 }
