@@ -6,6 +6,7 @@ public class Car {
 
   private String name;
   private int position;
+  private boolean finalWinner = false;
 
   public Car(String name, int position) {
     this.name = name;
@@ -20,6 +21,18 @@ public class Car {
     return position;
   }
 
+  public boolean isFinalWinner() {
+    return finalWinner;
+  }
+
+  public void move() {
+    this.position++;
+  }
+
+  public void prizeWinner() {
+    this.finalWinner = true;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -30,15 +43,12 @@ public class Car {
     }
     Car car = (Car) o;
     return position == car.position &&
+        finalWinner == car.finalWinner &&
         Objects.equals(name, car.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, position);
-  }
-
-  public void move() {
-    this.position++;
+    return Objects.hash(name, position, finalWinner);
   }
 }
