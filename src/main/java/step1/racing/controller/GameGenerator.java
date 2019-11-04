@@ -16,9 +16,8 @@ public class GameGenerator {
 
     public static RacingGame getRacingGame() {
             String players = TerminalInput.readLine("참여할 플레이어 이름 입력 (,) : ");
-            int playTimes = TerminalInput.readInt("플레이 횟수 입력 : ");
 
-            return new RacingGame(initCarPositions(players), new MoveStrategy(RandomIntegerGenerator.getInstance()), playTimes);
+            return new RacingGame(initCarPositions(players), new MoveStrategy(RandomIntegerGenerator.getInstance()));
     }
 
     private static List<RacingCar> initCarPositions(String players) {
