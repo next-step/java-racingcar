@@ -9,9 +9,9 @@ import java.io.InputStream;
  * Created by yusik on 2019/11/02.
  */
 public class RacingInputView extends InputView {
-    private static String KEY_CAR_NAMES = "carNames";
-    private static String KEY_NUMBER_OF_ROUNDS = "numberOfTimes";
-    private static String NAME_DELIMITER = ",";
+    private static final String KEY_CAR_NAMES = "carNames";
+    private static final String KEY_NUMBER_OF_ROUNDS = "numberOfTimes";
+    private static final String NAME_DELIMITER = ",";
 
     public RacingInputView() {
         super();

@@ -15,9 +15,9 @@ import java.util.stream.Collectors;
  */
 public class RacingResultView implements ResultView<RacingResult> {
 
-    private static String MESSAGE_RESULT = "\n실행 결과";
-    private static String PRINTABLE_SYMBOL = "-";
-    private static String NAME_DELIMITER = ", ";
+    private static final String MESSAGE_RESULT = "\n실행 결과";
+    private static final String PRINTABLE_SYMBOL = "-";
+    private static final String NAME_DELIMITER = ", ";
 
     @Override
     public void render(ResultEntity<RacingResult> entity) {

@@ -10,8 +10,8 @@ public class CarMover {
 
     private static final int BOUND = 10;
     private static final int THRESHOLD = 4;
-    private static Random random = new Random();
-    private static MoveStrategy DEFAULT_STRATEGY = (number, threshold) -> number >= threshold;
+    private static final Random RANDOM = new Random();
+    private static final MoveStrategy DEFAULT_STRATEGY = (number, threshold) -> number >= threshold;
 
     public static boolean movable() {
         return movable(DEFAULT_STRATEGY, generateRandomNumber(), THRESHOLD);
@@ -26,7 +26,7 @@ public class CarMover {
     }
 
     public static int generateRandomNumber() {
-        return random.nextInt(BOUND);
+        return RANDOM.nextInt(BOUND);
     }
 
 }
