@@ -1,11 +1,25 @@
 package step1;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import java.io.IOException;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.*;
 
 public class StringCalculator {
+
+	@Test
+	void inputCheck() {
+		String input = null;
+		assertThatThrownBy(() -> {
+			if (input == null || input.equals("")) {
+				throw new IllegalArgumentException();
+			}
+		}).isInstanceOf(IllegalArgumentException.class);
+	}
 
 	@ParameterizedTest
 	@CsvSource(value = {"1 + 2:1+2", "5- 4:5-4"}, delimiter = ':')
