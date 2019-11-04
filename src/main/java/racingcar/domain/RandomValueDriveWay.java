@@ -1,4 +1,4 @@
-package racingcar.business;
+package racingcar.domain;
 
 public class RandomValueDriveWay implements DriveWay {
 

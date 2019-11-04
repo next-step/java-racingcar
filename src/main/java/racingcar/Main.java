@@ -1,23 +1,20 @@
 package racingcar;
 
-import racingcar.business.Racing;
-import racingcar.presentation.InputView;
-import racingcar.presentation.ResultView;
+import racingcar.domain.Racing;
+import racingcar.domain.RandomValueDriveWay;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 public class Main {
 
     public static void main(String[] args) {
-        InputView inputView = new InputView();
 
-        inputView.inputCarNames();
-        inputView.inputCountOfMovesAttemps();
+        final String carNames = InputView.inputCarNames();
+        final int tryCount = InputView.inputTryCount();
 
-        Racing racing = Racing.of(inputView.getCarNames(), inputView.getCountOfMovesAttemps());
+        Racing racing = new Racing(carNames, tryCount, new RandomValueDriveWay());
+        racing.race();
 
-        racing.start();
-
-        ResultView resultView = new ResultView(racing);
-
-        resultView.printRacingResult();
+        ResultView.printResult(racing.getHistory(), racing.findWinners());
     }
 }
