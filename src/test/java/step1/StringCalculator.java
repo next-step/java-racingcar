@@ -3,16 +3,14 @@ package step1;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import java.io.IOException;
-import java.util.List;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class StringCalculator {
+class StringCalculator {
 
 	@Test
-	void inputCheck() {
+	void inputValueCheck() {
 		String input = null;
 		assertThatThrownBy(() -> {
 			if (input == null || input.equals("")) {
@@ -28,10 +26,20 @@ public class StringCalculator {
 		assertThat(param).isEqualTo(result);
 	}
 
+	@Test
+	void operatorCheck() {
+		char ch = '&';
+		assertThatThrownBy(() -> {
+			if (ch != '+' && ch != '-' && ch != '*' && ch != '/' ) {
+				throw new IllegalArgumentException();
+			}
+		}).isInstanceOf(IllegalArgumentException.class);
+	}
+
 	@ParameterizedTest
-	@CsvSource(value = {"5+2, 5, 2", "16-5, 16, 5", "4*3, 4, 3", "12/5, 12, 5"})
-	void splitString(String param, String result1, String result2) {
-		assertThat(param.split("\\+|-|\\*|/")).containsExactly(result1, result2);
+	@ValueSource(strings = {"1+2-3*4/5"})
+	void splitInput(String param) {
+		assertThat(param.split("")).containsExactly("1", "+", "2", "-", "3", "*", "4", "/", "5");
 	}
 
 	@ParameterizedTest
