@@ -2,7 +2,7 @@
  * Description : 자동차경주에서 주행결과를 보여주는 기능을 담당
  */
 
-package racingcar;
+package step2.racingcar;
 
 public class ResultView {
 

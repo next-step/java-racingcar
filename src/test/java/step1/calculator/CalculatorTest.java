@@ -1,4 +1,4 @@
-package calculator;
+package step1.calculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;

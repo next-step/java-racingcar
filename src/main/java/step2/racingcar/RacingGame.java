@@ -2,7 +2,7 @@
  * Description : 자동차경주중 자동차들이 움직이는 기능을 담당
  */
 
-package racingcar;
+package step2.racingcar;
 
 import java.util.Random;
 
