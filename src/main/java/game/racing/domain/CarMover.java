@@ -25,7 +25,7 @@ public class CarMover {
         return strategy.movable(number, threshold);
     }
 
-    private static int generateRandomNumber() {
+    public static int generateRandomNumber() {
         return random.nextInt(BOUND);
     }
 

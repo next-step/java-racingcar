@@ -38,9 +38,41 @@ public class CarTest {
         DefaultCar car = new DefaultCar(name, log);
 
         // when
-        IntStream.range(0, expected).forEach(i -> car.move());
+        IntStream.range(0, expected).forEach(i -> car.move(4));
 
         // then
         assertThat(log.getSize()).isEqualTo(expected);
+    }
+
+    @DisplayName("자동차 움직이지 않음")
+    @Test
+    void defaultCarDontMove() {
+
+        // given
+        String name = "car1";
+        TrackingLog log = new TrackingLog(name);
+        DefaultCar car = new DefaultCar(name, log);
+
+        // when
+        car.move(3);
+
+        // then
+        assertThat(log.getLastPosition()).isEqualTo(0);
+    }
+
+    @DisplayName("자동차 움직임")
+    @Test
+    void defaultCarMove() {
+
+        // given
+        String name = "car1";
+        TrackingLog log = new TrackingLog(name);
+        DefaultCar car = new DefaultCar(name, log);
+
+        // when
+        car.move(4);
+
+        // then
+        assertThat(log.getLastPosition()).isEqualTo(1);
     }
 }

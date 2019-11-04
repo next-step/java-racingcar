@@ -5,5 +5,5 @@ package game.racing.domain;
  * @date : 2019/10/27
  */
 public interface Car {
-    void move();
+    void move(int number);
 }

@@ -19,8 +19,8 @@ public class DefaultCar implements Car {
     }
 
     @Override
-    public void move() {
-        if (CarMover.movable()) {
+    public void move(int number) {
+        if (CarMover.movable(number)) {
             position++;
         }
         trackingLog.add(position);

@@ -25,7 +25,7 @@ public class RacingGame implements Game<RacingResult> {
     @Override
     public void run() {
         for (int i = 0; i < numberOfRound; i++) {
-            cars.parallelStream().forEach(Car::move);
+            cars.parallelStream().forEach(car -> car.move(CarMover.generateRandomNumber()));
         }
     }
 
