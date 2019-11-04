@@ -1,5 +1,7 @@
 package step1.racing;
 
+import step1.racing.common.RandomNumberGenerator;
+
 public class MoveStrategy implements Moveable {
     private static final int RANDOM_NUMBER_BOUNDARY = 10;
     private static final int MOVE_NUMBER_BOUNDARY = 4;

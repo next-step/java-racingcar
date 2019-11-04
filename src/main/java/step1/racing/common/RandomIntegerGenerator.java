@@ -1,4 +1,4 @@
-package step1.racing;
+package step1.racing.common;
 
 import java.util.Random;
 
