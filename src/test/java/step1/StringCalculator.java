@@ -11,4 +11,9 @@ public class StringCalculator {
 		assertThat(3 + 4).isEqualTo(7);
 	}
 
+	@Test
+	void minus() {
+		assertThat(6 - 2).isEqualTo(4);
+	}
+
 }
