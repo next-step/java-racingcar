@@ -1,7 +1,5 @@
 package racingCar;
 
-import java.util.List;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -9,7 +7,7 @@ public class Main {
         int times = InputView.nextInt("시도할 회수는 몇 회 인가요?");
 
         RacingGame game = new RacingGame(cars, times);
-        List<Integer[]> result = game.start();
+        GameResult result = game.start();
 
         ResultView resultView = new ResultView();
         resultView.createResultView(result);
