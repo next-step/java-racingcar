@@ -11,8 +11,8 @@ public class RacingGameController {
 
     public void execute() {
         RacingGame racingGame = initiate();
-        moveResultView(racingGame);
-        printWinnerView(racingGame);
+        printResult(racingGame.getCars(), racingGame.getTime());
+        printWinner(racingGame.getCars(), racingGame.calculateWinnerPosition());
     }
 
     private RacingGame initiate() {
@@ -22,25 +22,11 @@ public class RacingGameController {
         return new RacingGame(moveCount, carObject);
     }
 
-    private void moveResultView(RacingGame racingGame) {
-        int time = racingGame.getTime();
-        for (int i = 0; i < time; i++) {
-            List<Car> cars = racingGame.move();
-            ResultView.printCar(cars);
-        }
+    private void printResult(List<Car> cars, int time) {
+        ResultView.printCar(cars, time);
     }
 
-    private void printWinnerView(RacingGame racingGame) {
-        List<Car> cars = racingGame.getWinners();
-        for (Car car : cars) {
-            getWinner(car);
-        }
-        ResultView.printWinner();
-    }
-
-    private void getWinner(Car car) {
-        if (car.isWinner()) {
-            ResultView.getWinners(car.getName());
-        }
+    private void printWinner(List<Car> cars, int winnerPosition) {
+        ResultView.printWinner(cars, winnerPosition);
     }
 }

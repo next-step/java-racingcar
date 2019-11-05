@@ -24,13 +24,13 @@ public class RacingGameTest {
     }
 
     @Test
-    void domainRacingGameCreateCarObjectTest() {
+    void racingGameCreateCarObjectTest() {
         assertThat(racingGame.initiateCar(INPUT)).hasSize(3);
     }
 
     @Test
-    void domainCarInitiatePositionTest() {
-        assertThat(car.currentPosition()).isEqualTo(0);
+    void calculateWinnerPositionTest() {
+        assertThat(racingGame.calculateWinnerPosition()).isGreaterThan(0);
     }
 
     @Test
@@ -38,28 +38,4 @@ public class RacingGameTest {
         assertThat(car.getName()).isEqualTo(TEST_NAME);
     }
 
-    @Test
-    void domainCarUpdatePositionTest() {
-        int currentPosition = car.currentPosition();
-        car.updatePosition(currentPosition);
-        assertThat(car.currentPosition()).isGreaterThanOrEqualTo(car.currentPosition());
-    }
-
-    @Test
-    void domainAllCarUpdatePositionTest() {
-        List<Car> cars = racingGame.move();
-        assertThat(cars).hasSize(3);
-        for (Car car : cars) {
-            int currentPosition = car.currentPosition();
-            car.updatePosition(currentPosition);
-            assertThat(car.currentPosition()).isGreaterThanOrEqualTo(currentPosition);
-        }
-    }
-
-    @Test
-    void racingGameWinnerTest() {
-        assertThat(car.isWinner()).isFalse();
-        car.updateWinner(0);
-        assertThat(car.isWinner()).isTrue();
-    }
 }
