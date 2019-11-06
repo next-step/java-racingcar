@@ -1,13 +1,17 @@
 package racing;
 
+import java.util.Scanner;
+
 public class RacingGameMain {
 
     public static void main(String[] args) {
-        RacingInputCarCountView racingInputCarCountView = new RacingInputCarCountView();
-        RacingInputTimeView racingInputTimeView = new RacingInputTimeView();
+        Scanner scanner = new Scanner(System.in);
+        RacingInputCarCountView racingInputCarCountView = new RacingInputCarCountView(scanner);
+        RacingInputTimeView racingInputTimeView = new RacingInputTimeView(scanner);
+        scanner.close();
 
-        RacingStadium racingStadium = new RacingStadium(racingInputCarCountView.carCount, racingInputTimeView.time);
-        racingStadium.open();
+        RacingGame racingGame = new RacingGame(racingInputCarCountView.carName, racingInputTimeView.time);
+        racingGame.open();
     }
 
 }

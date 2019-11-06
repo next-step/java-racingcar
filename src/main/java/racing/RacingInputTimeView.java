@@ -1,17 +1,17 @@
 package racing;
 
+import common.CommonConstant;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class RacingInputTimeView {
 
-    private static final String CHECK_RUN_TIME = "레이싱 진행 횟수는 몇 회 인가요?";
-    private static final String RETRY_INPUT_VALUE = "잘못된 입력 값입니다. 다시 입력하세요.";
+    private static final String CHECK_RUN_TIME = "시도할 회수는 몇회인가요?";
 
     public int time;
 
-    public RacingInputTimeView() {
-        Scanner scanner = new Scanner(System.in);
+    public RacingInputTimeView(Scanner scanner) {
         time = inputTime(scanner);
     }
 
@@ -24,8 +24,8 @@ public class RacingInputTimeView {
         try {
             return scanner.nextInt();
         } catch (InputMismatchException e) {
-            System.out.println(RETRY_INPUT_VALUE);
-            return validateInputValue(new Scanner(System.in));
+            scanner.close();
+            throw new InputMismatchException(CommonConstant.WRONG_INPUT_VALUE);
         }
     }
 }
