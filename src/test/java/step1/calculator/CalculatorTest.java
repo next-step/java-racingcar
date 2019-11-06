@@ -1,4 +1,4 @@
-package calculator;
+package step1.calculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -13,6 +13,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 public class CalculatorTest {
 
   private Calculator calculator;
+
   @BeforeEach
   void setUp() {
     calculator = new Calculator();

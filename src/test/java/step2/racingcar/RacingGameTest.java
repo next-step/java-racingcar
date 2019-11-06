@@ -2,7 +2,7 @@
  * Description :  자동차경주중 자동차들의 기능이 제대로 수행되는지 테스트
  */
 
-package racingcar;
+package step2.racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -11,6 +11,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class RacingGameTest {
+
   private RacingGame racingGame;
   private InputView inputView;
 
