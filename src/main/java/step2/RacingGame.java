@@ -22,8 +22,11 @@ public class RacingGame {
 	}
 
 	private void doRacing() {
+		ResultView resultView = new ResultView();
 		for (int i = 0; i < time; i++) {
 			move();
+			resultView.printCars(carPositions);
+			System.out.println();
 		}
 	}
 
