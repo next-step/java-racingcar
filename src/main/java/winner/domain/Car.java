@@ -31,7 +31,7 @@ public class Car {
         }
     }
 
-    public String currentPosition() {
+    public String getCurrentPositionText() {
         return String.format("%s : %s", name, position.toText());
     }
 
@@ -39,8 +39,8 @@ public class Car {
         return this.position.isMax(maxPosition);
     }
 
-    public int getPositionToText() {
-        return position.toText().length();
+    public int getCurrentPosition() {
+        return position.getCurrentPosition();
     }
 
     @Override
