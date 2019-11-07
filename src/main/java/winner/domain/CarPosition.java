@@ -10,6 +10,7 @@ import java.util.Objects;
 public class CarPosition {
 
     private static final String POSITION_VIEW_TEXT = "-";
+
     private int position;
 
     public CarPosition() {
