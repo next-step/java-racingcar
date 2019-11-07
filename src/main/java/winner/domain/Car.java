@@ -30,6 +30,7 @@ public class Car {
             position.move();
         }
     }
+
     public String currentPosition() {
         return String.format("%s : %s", name, position.toText());
     }
@@ -55,6 +56,4 @@ public class Car {
     public int hashCode() {
         return Objects.hash(name, position);
     }
-
-
 }
