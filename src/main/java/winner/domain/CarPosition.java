@@ -37,6 +37,10 @@ public class CarPosition {
         return this.position == maxPosition;
     }
 
+    public int getCurrentPosition() {
+        return this.position;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
