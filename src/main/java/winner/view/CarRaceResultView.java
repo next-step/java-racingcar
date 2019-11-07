@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class CarRaceResultView {
 
     public static void printCars(List<Car> cars) {
-        cars.forEach(car -> System.out.println(car.currentPosition()));
+        cars.forEach(car -> System.out.println(car.getCurrentPositionText()));
         printBlankLine();
     }
 
