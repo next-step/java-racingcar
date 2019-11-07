@@ -6,9 +6,9 @@ package step2.racingcar;
 
 public class ResultView {
 
-  public static void printCarTrace(int[] carPositionArr, int targetPosition) {
-    for (int j = 0; j < carPositionArr[targetPosition]; j++) { //차가 움직인 거리만큼 표시함
-      System.out.print("-");
+    public static void printCarTrace(int[] carPositionArr, int targetPosition) {
+        for (int j = 0; j < carPositionArr[targetPosition]; j++) { //차가 움직인 거리만큼 표시함
+            System.out.print("-");
+        }
     }
-  }
 }

@@ -6,13 +6,13 @@ package step2.racingcar;
 
 public class Main {
 
-  public static void main(String[] args) {
-    InputView inputView = new InputView();
-    RacingGame racingGame = new RacingGame();
+    public static void main(String[] args) {
+        InputView inputView = new InputView();
+        RacingGame racingGame = new RacingGame();
 
-    int[] carPositionArr = racingGame.markCarOnTrack(inputView.createCar());
-    int maxLapCount = inputView.createRacingLap();
+        int[] carPositionArr = racingGame.markCarOnTrack(inputView.createCar());
+        int maxLapCount = inputView.createRacingLap();
 
-    racingGame.start(carPositionArr, maxLapCount);
-  }
+        racingGame.start(carPositionArr, maxLapCount);
+    }
 }
