@@ -9,11 +9,13 @@ import java.util.Objects;
  */
 public class Car {
 
+    private static final int INIT_POSITION = 0;
+
     private final String name;
     private CarPosition position;
 
     public Car(String name) {
-        this(name, 0);
+        this(name, INIT_POSITION);
     }
 
     public Car(String name, int position) {
