@@ -22,8 +22,7 @@ public class CarRaceResultView {
         System.out.println();
     }
 
-    public static void printWinner(List<String> winners) {
-        String winnersText = winners.stream().collect(Collectors.joining(", "));
-        System.out.println(String.format("%s가 최종 우승했습니다.", winnersText));
+    public static void printWinner(String winners) {
+        System.out.println(String.format("%s가 최종 우승했습니다.", winners));
     }
 }

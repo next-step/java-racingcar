@@ -24,7 +24,7 @@ public class RacingGame {
     }
 
     private List<Car> createCars(String[] carNames) {
-        return Arrays.stream(carNames).map(carName -> new Car(carName)).collect(Collectors.toList());
+        return Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
     }
 
     public void start() {
@@ -40,7 +40,7 @@ public class RacingGame {
         return racingCars.getCars();
     }
 
-    public List<String> getWinner() {
-        return racingCars.findWinner();
+    public String getWinners() {
+        return racingCars.findWinners();
     }
 }

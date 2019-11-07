@@ -1,6 +1,9 @@
 package winner.domain;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -10,6 +13,7 @@ import java.util.stream.Collectors;
  */
 public class RacingCars {
 
+    private static final String DELIMITER = ", ";
     private List<Car> cars;
 
     public RacingCars(List<Car> cars) {
@@ -24,12 +28,12 @@ public class RacingCars {
         return Collections.unmodifiableList(cars);
     }
 
-    public List<String> findWinner() {
+    public String findWinners() {
         int maxPosition = findMaxPosition();
         return cars.stream()
                 .filter(car -> car.isMaxPosition(maxPosition))
                 .map(Car::getName)
-                .collect(Collectors.toList());
+                .collect(Collectors.joining(DELIMITER));
     }
 
     private int findMaxPosition() {
