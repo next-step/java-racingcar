@@ -9,9 +9,9 @@ import java.util.Random;
  */
 public class CarMoveStrategy implements MovableStrategy {
 
-    public final static Random random = new Random();
-    public final static int MAXIMUM_BOUND = 10;
-    public final static int MINIMUM_CAR_MOVE = 4;
+    private final static Random random = new Random();
+    private final static int MAXIMUM_BOUND = 10;
+    private final static int MINIMUM_CAR_MOVE = 4;
 
     @Override
     public boolean isMove() {
