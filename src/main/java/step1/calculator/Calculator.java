@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 public class Calculator {
 
     private static final String SPLIT_BLANK_REGEX = " ";
-    private static List operatorList = Stream.of(Operator.values())
+    private static List<String> operatorList = Stream.of(Operator.values())
             .map(m -> m.getName())
             .collect(Collectors.toList());
 
