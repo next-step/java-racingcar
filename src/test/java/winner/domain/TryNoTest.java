@@ -10,10 +10,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * @version : 1.0
  * @date : 2019-11-01 14:19
  */
-public class TryNoTest {@Test
-void tryNo_객체_생성() {
-    assertThat(new TryNo(3)).isEqualTo(new TryNo(3));
-}
+public class TryNoTest {
+    @Test
+    void tryNo_객체_생성() {
+        assertThat(new TryNo(3)).isEqualTo(new TryNo(3));
+    }
 
     @Test
     void tryNo_is_end_test() {
