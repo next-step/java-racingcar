@@ -10,4 +10,12 @@ public class UserInput {
 		this.CAR_COUNT = CAR_COUNT;
 		this.MOVE_COUNT = MOVE_COUNT;
 	}
+
+	public int getCAR_COUNT() {
+		return CAR_COUNT;
+	}
+
+	public int getMOVE_COUNT() {
+		return MOVE_COUNT;
+	}
 }
