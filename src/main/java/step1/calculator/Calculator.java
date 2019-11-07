@@ -34,9 +34,7 @@ public class Calculator {
     }
 
     private static long calculate(String operator, long first, long second) {
-        if (operatorList.indexOf(operator) == -1) {
-            throw new IllegalArgumentException("올바르지 않은 연산자가 입력되었습니다.");
-        }
+        isValidateOperator(operator);
 
         long result = 0L;
         if (operator.equals(Operator.PLUS_OPERATOR.getName())) {
