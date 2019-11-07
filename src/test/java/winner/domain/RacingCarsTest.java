@@ -15,7 +15,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class RacingCarsTest {
 
-    RacingCars racingCars;
+    private RacingCars racingCars;
+
     @BeforeEach
     void setUp() {
         racingCars = new RacingCars(Arrays.asList(new Car("pobi", 3), new Car("kim", 5)));
