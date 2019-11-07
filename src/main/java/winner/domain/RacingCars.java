@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
  */
 public class RacingCars {
 
+    private static final CarMoveStrategy CAR_MOVE_STRATEGY = new CarMoveStrategy();
     private static final String DELIMITER = ", ";
     private List<Car> cars;
 
@@ -21,7 +22,7 @@ public class RacingCars {
     }
 
     public void move() {
-        cars.forEach(car -> car.move(new CarMoveStrategy()));
+        cars.forEach(car -> car.move(CAR_MOVE_STRATEGY));
     }
 
     public List<Car> getCars() {
