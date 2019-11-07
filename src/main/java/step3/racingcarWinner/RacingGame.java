@@ -8,7 +8,7 @@ public class RacingGame {
 
     private static String inputName;
     private static int inputTryCount;
-    private static int DEFAULT_CAR_LOCATION = 0;
+    private static final int DEFAULT_CAR_LOCATION = 0;
     private static final int RANDOM_BOUND = 10;
     private static final int MOVE_MIN_VALUE = 4;
     private static final String SPLIT_REGX = ",";
