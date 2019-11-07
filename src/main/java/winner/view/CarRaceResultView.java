@@ -16,7 +16,7 @@ public class CarRaceResultView {
     private static final String WINNER_TEXT = "가 최종 우승했습니다.";
 
     public static void printCars(List<Car> cars) {
-        cars.stream().forEach(car -> System.out.println(car.currentPosition()));
+        cars.forEach(car -> System.out.println(car.currentPosition()));
         printBlankLine();
     }
 
