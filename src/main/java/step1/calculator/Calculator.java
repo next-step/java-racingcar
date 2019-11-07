@@ -27,10 +27,11 @@ public class Calculator {
         return first / second;
     }
 
-    private static void validateTextFormatArgs(String[] args) {
+    private static boolean isValidateTextFormatArgs(String[] args) {
         if (args.length < 3 || (args.length % 2) == 0) {
             throw new IllegalArgumentException("올바르지 않은 연산자가 입력되었습니다.");
         }
+        return true;
     }
 
     private static long calculate(String operator, long first, long second) {
@@ -53,19 +54,18 @@ public class Calculator {
         return result;
     }
 
-    private static void isValidateOperator(String operator) {
+    private static boolean isValidateOperator(String operator) {
         if (operatorList.indexOf(operator) == -1) {
             throw new IllegalArgumentException("올바르지 않은 연산자가 입력되었습니다.");
         }
+        return true;
     }
 
     public static long run(String arg) {
-        if (arg == null || arg.equals("") || arg.length() == 0) {
-            throw new IllegalArgumentException("문자열이 입력되지 않았습니다.");
-        }
+        isValidateInputArgument(arg);
 
         String[] args = arg.split(SPLIT_BLANK_REGEX);
-        validateTextFormatArgs(args);
+        isValidateTextFormatArgs(args);
         long result = Long.parseLong(args[0]);
         long target;
         for (int i = 0; i < args.length - 2; i++) {
@@ -76,6 +76,13 @@ public class Calculator {
             result = calculate(args[i + 1], result, target);
         }
         return result;
+    }
+
+    private static boolean isValidateInputArgument(String arg) {
+        if (arg == null || arg.equals("") || arg.length() == 0) {
+            throw new IllegalArgumentException("문자열이 입력되지 않았습니다.");
+        }
+        return true;
     }
 
 }
