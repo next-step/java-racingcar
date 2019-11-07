@@ -12,6 +12,9 @@ import java.util.List;
  */
 public class RacingGame implements Game<RacingResult> {
 
+    private static final int THRESHOLD = 4;
+    private static final MoveStrategy DEFAULT_STRATEGY = () -> RandomGenerator.generate() >= THRESHOLD;
+
     private List<Car> cars;
     private int numberOfRound;
     private RacingResult result;
@@ -25,7 +28,8 @@ public class RacingGame implements Game<RacingResult> {
     @Override
     public void run() {
         for (int i = 0; i < numberOfRound; i++) {
-            cars.parallelStream().forEach(car -> car.move(CarMover.generateRandomNumber()));
+            cars.parallelStream()
+                    .forEach(car -> car.move(DEFAULT_STRATEGY));
         }
     }
 

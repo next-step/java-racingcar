@@ -5,5 +5,5 @@ package game.racing.domain;
  */
 @FunctionalInterface
 public interface MoveStrategy {
-    boolean movable(int number, int threshold);
+    boolean movable();
 }

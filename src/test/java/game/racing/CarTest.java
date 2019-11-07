@@ -38,7 +38,7 @@ public class CarTest {
         DefaultCar car = new DefaultCar(name, log);
 
         // when
-        IntStream.range(0, expected).forEach(i -> car.move(4));
+        IntStream.range(0, expected).forEach(i -> car.move(() -> true));
 
         // then
         assertThat(log.getSize()).isEqualTo(expected);
@@ -54,7 +54,7 @@ public class CarTest {
         DefaultCar car = new DefaultCar(name, log);
 
         // when
-        car.move(3);
+        car.move(() -> false);
 
         // then
         assertThat(log.getLastPosition()).isEqualTo(0);
@@ -70,7 +70,7 @@ public class CarTest {
         DefaultCar car = new DefaultCar(name, log);
 
         // when
-        car.move(4);
+        car.move(() -> true);
 
         // then
         assertThat(log.getLastPosition()).isEqualTo(1);

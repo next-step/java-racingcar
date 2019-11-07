@@ -5,6 +5,7 @@ package game.racing.domain;
  * @date : 2019/10/26
  */
 public class DefaultCar implements Car {
+
     private String name;
     private int position;
     private TrackingLog trackingLog;
@@ -19,8 +20,8 @@ public class DefaultCar implements Car {
     }
 
     @Override
-    public void move(int number) {
-        if (CarMover.movable(number)) {
+    public void move(MoveStrategy strategy) {
+        if (strategy.movable()) {
             position++;
         }
         trackingLog.add(position);
