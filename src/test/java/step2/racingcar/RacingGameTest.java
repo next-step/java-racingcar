@@ -12,20 +12,20 @@ import org.junit.jupiter.api.Test;
 
 public class RacingGameTest {
 
-  private RacingGame racingGame;
-  private InputView inputView;
+    private RacingGame racingGame;
+    private InputView inputView;
 
-  @BeforeEach
-  void setUp() {
-    racingGame = new RacingGame();
-    inputView = new InputView();
-  }
+    @BeforeEach
+    void setUp() {
+        racingGame = new RacingGame();
+        inputView = new InputView();
+    }
 
-  @DisplayName("자동차개수를 입력하였을때, int배열이 return 되는지 확인")
-  @Test
-  void validateTrackSetting() {
-    int carCount = 1;
-    assertThat(racingGame.markCarOnTrack(1)).isInstanceOf(int[].class);
-  }
+    @DisplayName("자동차개수를 입력하였을때, int배열이 return 되는지 확인")
+    @Test
+    void validateTrackSetting() {
+        int carCount = 1;
+        assertThat(racingGame.markCarOnTrack(1)).isInstanceOf(int[].class);
+    }
 
 }
