@@ -13,8 +13,6 @@ import java.util.stream.Collectors;
  */
 public class CarRaceResultView {
 
-    private static final String WINNER_TEXT = "가 최종 우승했습니다.";
-
     public static void printCars(List<Car> cars) {
         cars.forEach(car -> System.out.println(car.currentPosition()));
         printBlankLine();
@@ -26,7 +24,6 @@ public class CarRaceResultView {
 
     public static void printWinner(List<String> winners) {
         String winnersText = winners.stream().collect(Collectors.joining(", "));
-        System.out.println(String.format("%s%s", winnersText, WINNER_TEXT));
+        System.out.println(String.format("%s가 최종 우승했습니다.", winnersText));
     }
-
 }
