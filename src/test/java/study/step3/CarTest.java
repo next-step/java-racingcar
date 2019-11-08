@@ -4,49 +4,39 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import step3.domain.Car;
 import step3.domain.Movable;
-import step3.domain.RacingGame;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
-    private static final String CAR_NAMES = "pobi,crong,honux";
-    private static final String DELIMITER = ",";
-    private static final String TEST_NAME = "car";
+    private static final String NAME = "test";
     private Car car;
 
     @BeforeEach
     void setUp() {
-        car = new Car(TEST_NAME);
+        car = new Car(NAME);
     }
 
     @Test
-    void createCarConstructorTest() {
-        Car car = new Car("joo");
-        Car newCar = new Car("joo");
-        assertThat(car).isEqualTo(newCar);
+    void nameTest() {
+        assertThat(car.getName()).contains("test");
     }
 
     @Test
-    void carSplitTest() {
-        String[] carNames = CAR_NAMES.split(DELIMITER);
-        assertThat(carNames).hasSize(3);
-        assertThat(carNames).contains("pobi", "crong", "honux");
+    void currentPositionTest() {
+        assertThat(car.currentPosition()).isEqualTo(0);
     }
 
     @Test
-    void moveConditionTest() {
-        assertThat(this.car.movePosition(new Movable() {
-            @Override
-            public boolean isMove() {
-                return false;
-            }
-        })).isEqualTo(0);
+    void moveTest() {
+        assertThat(car.move(() -> false)).isEqualTo(0);
+        assertThat(car.move(() -> true)).isEqualTo(1);
+    }
 
-        assertThat(this.car.movePosition(new Movable() {
-            @Override
-            public boolean isMove() {
-                return true;
-            }
-        })).isEqualTo(1);
+    @Test
+    void checkPositionsBoundException() {
+        assertThatThrownBy(() -> {
+            car.isPositionValue(1);
+        }).hasSameClassAs(IndexOutOfBoundsException.class);
     }
 }

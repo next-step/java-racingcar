@@ -2,55 +2,55 @@ package step3.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Random;
 
 public class Car {
-    private static final Integer MOVE_POSITION = 1;
-    private static final Integer ZERO_POSITION = 0;
-    private static final Integer RANDOM_BOUND = 10;
-    private static final Integer MOVE_CONDITION = 4;
+    private final static int SUM_INIT_NUMBER = 0;
+    private final static int POSITION_CHECK_NUMBER = 1;
+    private final static int RANDOM_NUMBER_RANGE = 10;
+    private final static int PIVOT = 4;
+    private final static int MOVING = 1;
+    private final static int STOP = 0;
     private String name;
-    private Integer position;
+    private List<Integer> position;
 
     public Car(String name) {
         this.name = name;
-        this.position = ZERO_POSITION;
+        this.position = new ArrayList<>();
     }
 
-    public Car(String name, Integer position) {
-        this.name = name;
-        this.position = position;
+    public String getName() {
+        return name;
+    }
+
+    public boolean isPositionValue(int index) {
+        return this.position.get(index) == POSITION_CHECK_NUMBER;
+    }
+
+    public boolean isWinner(int winnerPosition) {
+        return currentPosition() == winnerPosition;
+    }
+
+    public int currentPosition() {
+        int sum = SUM_INIT_NUMBER;
+        for (Integer integer : position) {
+            sum += integer;
+        }
+        return sum;
+    }
+
+    public int move(Movable movable) {
+        if (movable.isMove()) {
+            return MOVING;
+        }
+        return STOP;
     }
 
     public void updatePosition() {
-        this.position += movePosition(new Movable() {
-            @Override
-            public boolean isMove() {
-                int randomNumber = new Random().nextInt(RANDOM_BOUND);
-                return randomNumber >= MOVE_CONDITION;
-            }
-        });
+        this.position.add(move(() -> getRandomNumber() >= PIVOT));
     }
 
-    public Integer movePosition(Movable movable) {
-        if (movable.isMove()) {
-            return MOVE_POSITION;
-        }
-        return ZERO_POSITION;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return Objects.equals(name, car.name) &&
-                Objects.equals(position, car.position);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, position);
+    private int getRandomNumber() {
+        return new Random().nextInt(RANDOM_NUMBER_RANGE);
     }
 }
