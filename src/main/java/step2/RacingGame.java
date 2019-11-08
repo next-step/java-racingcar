@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class RacingGame {
 
-	private final int LIMIT_NUMBER = 10;
+	private static final int LIMIT_NUMBER = 10;
 
-	private final int DELIMITER_NUMBER = 4;
+	private static final int DELIMITER_NUMBER = 4;
 
 	private UserInput userInput;
 
