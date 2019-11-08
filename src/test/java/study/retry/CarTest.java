@@ -22,7 +22,7 @@ public class CarTest {
 
     @Test
     void getPositionDistanceForRandom() {
-        Car carWithPosition = car.move(() -> false);
+        Car carWithPosition = car.move(true);
         assertThat(carWithPosition).isEqualTo(car);
     }
 }

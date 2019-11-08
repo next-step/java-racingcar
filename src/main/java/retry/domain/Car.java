@@ -4,8 +4,6 @@ import java.util.Objects;
 import java.util.Random;
 
 public class Car {
-    private static final int PIVOT_NUMBER = 4;
-    private static final int RANDOM_BOUND_NUMBER = 9;
     private static final int INCREASING_DISTANCE = 1;
     private final String name;
     private final int position;
@@ -15,12 +13,8 @@ public class Car {
         this.position = position;
     }
 
-    private int getRandomNumber() {
-        return new Random().nextInt(RANDOM_BOUND_NUMBER);
-    }
-
-    public Car move(Movable movable) {
-        if (movable.isMove()) {
+    public Car move(boolean isMoving) {
+        if (isMoving) {
             return new Car(this.name, this.position + INCREASING_DISTANCE);
         }
         return this;
