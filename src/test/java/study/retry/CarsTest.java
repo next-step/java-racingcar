@@ -24,12 +24,4 @@ public class CarsTest {
         assertThat(racingCars.contains(new Car("test", 0))).isTrue();
         assertThat(racingCars.contains(new Car("test", 1))).isFalse();
     }
-
-    @Test
-    void racingCarsMoveTest() {
-        List<Car> cars = racingCars.moveCarsPositionByInterface(() -> true);
-        assertThat(cars.contains(new Car("test", 1))).isTrue();
-        assertThat(cars.contains(new Car("test1", 1))).isTrue();
-        assertThat(cars.contains(new Car("test2", 1))).isTrue();
-    }
 }
