@@ -25,14 +25,14 @@ public class StringCalculator2 {
         return calculate();
     }
 
-    public void inputValidate(String input) {
+    private void inputValidate(String input) {
         if (input == null || input.length() == 0) {
             throw new IllegalArgumentException();
         }
     }
 
-    public void operatorValidate(String operator) {
-        if (!Operator.operator.containsKey(operator)) {
+    private void operatorValidate(String operator) {
+        if (!Operator.containsKey(operator)) {
             throw new IllegalArgumentException();
         }
     }
@@ -42,8 +42,7 @@ public class StringCalculator2 {
         for (; !operatorStack.empty(); ) {
             currentOperator = operatorStack.pop();
             operatorValidate(currentOperator);
-            Operator operator = Operator.operator.get(currentOperator);
-            result = operator.calculate(result, numberStack.pop());
+            result = Operator.calculateOfOperator(currentOperator).calculate(result, numberStack.pop());
         }
         return result;
     }

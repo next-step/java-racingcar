@@ -1,5 +1,8 @@
 package step1;
+
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.BinaryOperator;
 
@@ -9,8 +12,10 @@ public enum Operator {
     MULTIPLY((num1, num2) -> num1 * num2),
     DIVIDE((num1, num2) -> num1 / num2);
 
+    private final static List<String> operators = Arrays.asList("+", "-", "*", "/");
     private BinaryOperator<Integer> expression;
-    static Map<String, Operator> operator;
+    private static Map<String, Operator> operator;
+
     Operator(BinaryOperator<Integer> expression) {
         this.expression = expression;
     }
@@ -23,7 +28,15 @@ public enum Operator {
         operator.put("/", Operator.DIVIDE);
     }
 
+    public static boolean containsKey(String operator) {
+        return operators.contains(operator);
+    }
+
     public int calculate(int result, int value) {
         return expression.apply(result, value);
+    }
+
+    public static Operator calculateOfOperator(String operatorInput) {
+        return operator.get(operatorInput);
     }
 }
