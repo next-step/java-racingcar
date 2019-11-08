@@ -6,9 +6,9 @@ public class UserInput {
 
 	private final int MOVE_COUNT;
 
-	public UserInput(int CAR_COUNT, int MOVE_COUNT) {
-		this.CAR_COUNT = CAR_COUNT;
-		this.MOVE_COUNT = MOVE_COUNT;
+	public UserInput(int carCount, int moveCount) {
+		this.CAR_COUNT = carCount;
+		this.MOVE_COUNT = moveCount;
 	}
 
 	public int getCAR_COUNT() {
@@ -18,4 +18,5 @@ public class UserInput {
 	public int getMOVE_COUNT() {
 		return MOVE_COUNT;
 	}
+
 }

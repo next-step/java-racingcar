@@ -3,41 +3,47 @@ package step2;
 import java.util.Random;
 
 public class RacingGame {
-	private int time;
+
+	private final int LIMIT_NUMBER = 10;
+
+	private final int DELIMITER_NUMBER = 4;
+
+	private UserInput userInput;
 
 	private int[] carPositions;
 
 	public static void main(String[] args) {
-		InputView inputView = new InputView();
-		UserInput userInput = inputView.getUserInput();
-
 		RacingGame racingGame = new RacingGame();
-		racingGame.initSetting(userInput);
+		racingGame.setting();
 		racingGame.doRacing();
 	}
 
-	private void initSetting(UserInput userInput) {
-		time = userInput.getMOVE_COUNT();
+	private void setting() {
+		InputView inputView = new InputView();
+		userInput = inputView.getUserInput();
 		carPositions = new int[userInput.getCAR_COUNT()];
 	}
 
 	private void doRacing() {
 		ResultView resultView = new ResultView();
-		for (int i = 0; i < time; i++) {
-			move();
+		for (int i = 0; i < userInput.getMOVE_COUNT(); i++) {
+			processRacingTurn();
 			resultView.printCars(carPositions);
-			System.out.println();
 		}
 	}
 
-	private void move() {
-		Random random = new Random();
+	private void processRacingTurn() {
 		for (int i = 0; i < carPositions.length; i++) {
-			int randomNumber = random.nextInt(10);
+			moveCar(i);
+		}
+	}
 
-			if (randomNumber >= 4) {
-				carPositions[i]++;
-			}
+	private void moveCar(int carNo) {
+		Random random = new Random();
+		int randomNumber = random.nextInt(LIMIT_NUMBER);
+
+		if (randomNumber >= DELIMITER_NUMBER) {
+			carPositions[carNo]++;
 		}
 	}
 }
