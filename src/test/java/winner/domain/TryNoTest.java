@@ -20,7 +20,7 @@ public class TryNoTest {
     void tryNo_is_end_test() {
         TryNo tryNo = new TryNo(1);
         tryNo.decrease();
-        assertThat(tryNo.isEnd()).isTrue();
+        assertThat(tryNo.isNotEnd()).isFalse();
     }
 
     @Test

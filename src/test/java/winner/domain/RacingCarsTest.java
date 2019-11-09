@@ -30,7 +30,7 @@ public class RacingCarsTest {
 
     @Test
     void 우승자_찾기() {
-        List<String> result = racingCars.findWinner();
-        assertThat(result.get(0)).isEqualTo("kim");
+        String result = racingCars.findWinners();
+        assertThat(result.split(",")[0]).isEqualTo("kim");
     }
 }

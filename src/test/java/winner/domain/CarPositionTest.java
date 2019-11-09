@@ -20,7 +20,6 @@ public class CarPositionTest {
     @Test
     void position_객체_이동() {
         CarPosition position = new CarPosition();
-        position.move();
-        assertThat(position).isEqualTo(new CarPosition());
+        assertThat(position.move()).isNotEqualTo(new CarPosition());
     }
 }
