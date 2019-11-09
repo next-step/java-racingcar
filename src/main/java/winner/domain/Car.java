@@ -29,7 +29,7 @@ public class Car {
 
     public void move(MovableStrategy moveStrategy) {
         if (moveStrategy.isMove()) {
-            position.move();
+            this.position = this.position.move();
         }
     }
 

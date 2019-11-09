@@ -11,8 +11,9 @@ public class CarPosition {
 
     private static final String POSITION_VIEW_TEXT = "-";
     private static final int INIT_CAR_POSITION = 0;
+    private static final int INCREASE = 1;
 
-    private int position;
+    private final int position;
 
     public CarPosition() {
         this(INIT_CAR_POSITION);
@@ -22,8 +23,8 @@ public class CarPosition {
         this.position = position;
     }
 
-    public void move() {
-        position++;
+    public CarPosition move() {
+        return new CarPosition(this.position + INCREASE);
     }
 
     public String toText() {
