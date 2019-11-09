@@ -17,5 +17,6 @@ public class RacingGameController {
         List<Cars> result = racingGame.execute(moveCount);
 
         ResultView.print(result);
+        ResultView.printWinner(racingGame.getWinners());
     }
 }

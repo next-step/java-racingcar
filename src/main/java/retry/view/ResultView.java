@@ -21,6 +21,21 @@ public class ResultView {
     }
 
     private static void printCar(Car car) {
-        System.out.println(car.getName() + " : " + car.getPosition());
+        System.out.print(car.getName() + " : ");
+        printPositionBar(car.getPosition());
+    }
+
+    private static void printPositionBar(int position) {
+        for (int i = 0; i < position; i++) {
+            System.out.print("- ");
+        }
+        System.out.println();
+    }
+
+    public static void printWinner(List<Car> winners) {
+        for (Car winner : winners) {
+            System.out.print(winner.getName() + " ");
+        }
+        System.out.println("가 최종 우승했습니다.");
     }
 }
