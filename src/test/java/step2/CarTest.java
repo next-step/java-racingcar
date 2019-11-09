@@ -30,22 +30,6 @@ class CarTest {
         car2.move(moveStrategy, 3);
     }
 
-//    @ParameterizedTest
-//    @CsvSource(value = {
-//            "0:true:-",
-//            "1:true:-",
-//            "2:false:",
-//            "3:true:-",
-//            "4:false:"
-//    }, delimiter = ':')
-//    void getStringScore(int turn, boolean is, String graph) {
-//        if (is) {
-//            car.move(moveStrategy, turn);
-//        }
-//        assertThat(car.getStringScore(turn)).isEqualTo(graph);
-//    }
-
-
     @Test
     void getScoreByTurn() {
         assertAll(

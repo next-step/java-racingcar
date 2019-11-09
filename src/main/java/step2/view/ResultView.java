@@ -5,7 +5,9 @@ package step2.view;
 
 import step2.dto.ResultData;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 자동차 게임 그래프 출력 부분
@@ -16,6 +18,7 @@ import java.util.List;
 public class ResultView {
     private static final String RESULT_MESSAGE = "실행결과";
     private static final String DELIMITER = ", ";
+    private static final String MODEL_AND_SCORE_FORMAT = "%s : %s";
     private static final String CAR_LOG_SYMBOL = "-";
     private static final String END_OF_WINNER_ANNOUNCE = "가 최종 우승했습니다.";
 
@@ -23,12 +26,19 @@ public class ResultView {
         System.out.println();
         System.out.println(RESULT_MESSAGE);
         for (int game = 0; game < turn; game++) {
-            drawGraphByTurn(resultData.scoreByTurn(game), turn);
+
+            Map<String, Integer> modelAndScoreByTurn = resultData.modelAndScoreByTurn(game);
+            drawGraph(modelAndScoreByTurn);
         }
     }
 
-    private static void drawGraphByTurn(List<Integer> carGraphsByTurn, int turn) {
+    private static void drawGraph(Map<String, Integer> modelAndScoreByTurn) {
         //todo 그래프 그리기
+        System.out.println();
+        modelAndScoreByTurn.forEach((model, score) -> {
+            String graph = String.join("", Collections.nCopies(score, CAR_LOG_SYMBOL));
+            System.out.println(String.format(MODEL_AND_SCORE_FORMAT, model, graph));
+        });
     }
 
 

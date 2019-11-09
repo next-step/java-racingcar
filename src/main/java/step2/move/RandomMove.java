@@ -1,6 +1,6 @@
 package step2.move;
 
-public class RamdomMove implements MoveStrategy {
+public class RandomMove implements MoveStrategy {
 
     private static final int MINIMUM_RANDOM_VALUE = 4;
 

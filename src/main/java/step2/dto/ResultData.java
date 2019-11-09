@@ -4,6 +4,7 @@ import step2.racing.Car;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * ResultView로 넘겨주기 위한 데이터
@@ -24,6 +25,11 @@ public class ResultData {
         });
         return carScores;
     }
+
+    public Map<String, Integer> modelAndScoreByTurn(int turn) {
+        return Car.scoreByTurn(cars, turn);
+    }
+
 
     public List<String> getWinners() {
         int max = cars.stream()
