@@ -25,13 +25,14 @@ public class RacingGameTest {
 
     @Test
     void racingCarsMoveTest() {
-        for (Cars cars1 : racingGame.racingGame()) {
+        for (Cars cars1 : racingGame.repeatRacingGame()) {
             assertThat(cars1.getCars()).hasSize(3);
         }
     }
 
     @Test
     void racingGameLoopTest() {
-        assertThat(racingGame.execute(5)).hasSize(5);
+        List<Cars> racingGames = racingGame.execute(5);
+        assertThat(racingGames).hasSize(5);
     }
 }

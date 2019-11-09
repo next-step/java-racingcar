@@ -40,10 +40,11 @@ public class Cars {
         return new Random().nextInt(RANDOM_BOUND_NUMBER);
     }
 
-    public int getWinnerPositionValue() {
-        int max = INITIAL_POSITION_VALUE;
+
+    public int getWinnerPositionValue(int maxPosition) {
+        int max = maxPosition;
         for (Car car : this.cars) {
-            max = Math.max(max, car.getPosition());
+            max = car.getMaxPositionValue(max);
         }
         return max;
     }

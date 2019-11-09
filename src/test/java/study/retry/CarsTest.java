@@ -45,6 +45,6 @@ public class CarsTest {
     @Test
     void getWinnerPositionValueTest() {
         Cars cars = new Cars(Arrays.asList(new Car("test", 1), new Car("test1", 3), new Car("test2", 2)));
-        assertThat(cars.getWinnerPositionValue()).isEqualTo(3);
+        assertThat(cars.getWinnerPositionValue(0)).isEqualTo(3);
     }
 }
