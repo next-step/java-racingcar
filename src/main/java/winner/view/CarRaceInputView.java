@@ -1,9 +1,9 @@
-package winner;
+package winner.view;
 
-import java.io.InputStream;
+import winner.util.CheckUtil;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 /**
  * @author : 김윤호
@@ -14,11 +14,12 @@ public class CarRaceInputView {
 
     private static final String DELIMITER = ",";
     private static final String INPUT_CAR_NAME = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
-    private static final String INPUT_GAME_ROUND = "시도할 회수는 몇 회 인가요?";
+    private static final String INPUT_TRY_NO = "시도할 회수는 몇 회 인가요?";
     private static final Scanner scanner = new Scanner(System.in);
 
     public static String[] inputCarName() {
         System.out.println(INPUT_CAR_NAME);
+
         final String names = scanner.nextLine();
         if (CheckUtil.stringNullOrEmpty(names)) {
             throw new InputMismatchException("null 이거나 공백 문자열은 입력이 불가능합니다.");
@@ -26,8 +27,8 @@ public class CarRaceInputView {
         return names.split(DELIMITER);
     }
 
-    public static int inputGameRound() {
-        System.out.println(INPUT_GAME_ROUND);
+    public static int inputTryNo() {
+        System.out.println(INPUT_TRY_NO);
 
         String inputGameRound = scanner.nextLine();
         if (!CheckUtil.isNumber(inputGameRound)) {

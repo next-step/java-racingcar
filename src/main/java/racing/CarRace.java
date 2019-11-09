@@ -12,23 +12,23 @@ public class CarRace {
 
     private static final int RANDOM_INT_VALUE_BOUND = 10;
 
-    public void start(Map<Integer, List<CarNextStep>> participant) {
+    public static void start(Map<Integer, List<CarNextStep>> participant) {
         playGame(participant, inputGameRound());
     }
 
-    private int inputGameRound() {
+    private static int inputGameRound() {
         RacingGameInputView racingGameInputView = new RacingGameInputView();
         return racingGameInputView.inputNumberGameRound();
     }
 
-    private void playGame(Map<Integer, List<CarNextStep>> participant, int gameRound) {
+    private static void playGame(Map<Integer, List<CarNextStep>> participant, int gameRound) {
         for (int round = 0; round < gameRound; round++) {
             moveCar(participant);
             RacingGameResultView.printResult(participant);
         }
     }
 
-    private void moveCar(Map<Integer, List<CarNextStep>> participant) {
+    private static void moveCar(Map<Integer, List<CarNextStep>> participant) {
         participant.values().forEach(steps -> {
             steps.add(CarNextStep.getGoOrStop(RandomValue.getInt(RANDOM_INT_VALUE_BOUND)));
         });

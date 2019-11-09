@@ -1,7 +1,12 @@
 package winner;
 
-import java.util.ArrayList;
+import winner.domain.Car;
+import winner.domain.RacingCars;
+import winner.domain.TryNo;
+
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author : 김윤호
@@ -9,8 +14,35 @@ import java.util.List;
  * @date : 2019-10-29 01:39
  */
 public class RacingGame {
-    public static void startCarRacingWinner() {
-        CarRaceWinnerGame carRaceWinnerGame = new CarRaceWinnerGame(CarRaceInputView.inputCarName(), CarRaceInputView.inputGameRound());
-        carRaceWinnerGame.play();
+
+    private RacingCars racingCars;
+    private TryNo tryNo;
+
+    public RacingGame(String[] careNames, int inputTryNo) {
+        this.racingCars = new RacingCars(createCars(careNames));
+        this.tryNo = new TryNo(inputTryNo);
+    }
+
+    private List<Car> createCars(String[] carNames) {
+        return Arrays.stream(carNames)
+                .map(Car::new)
+                .collect(Collectors.toList());
+    }
+
+    public void start() {
+        this.racingCars.move();
+        this.tryNo = this.tryNo.decrease();
+    }
+
+    public boolean isNotEnd() {
+        return this.tryNo.isNotEnd();
+    }
+
+    public List<Car> getRacingCars() {
+        return racingCars.getCars();
+    }
+
+    public String getWinners() {
+        return racingCars.findWinners();
     }
 }
