@@ -15,9 +15,13 @@ public class Car {
 
     public Car move(Movable movable) {
         if (movable.isMove()) {
-            return new Car(this.name, this.position + INCREASING_DISTANCE);
+            return new Car(this.name, increasePosition());
         }
         return this;
+    }
+
+    private int increasePosition() {
+        return this.position + INCREASING_DISTANCE;
     }
 
     boolean isWinner(int winnerPosition) {
