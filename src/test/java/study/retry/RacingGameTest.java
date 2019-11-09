@@ -32,7 +32,6 @@ public class RacingGameTest {
 
     @Test
     void racingGameLoopTest() {
-        racingGame.execute(5);
-        assertThat(racingGame.getRacingCars().size()).isEqualTo(5);
+        assertThat(racingGame.execute(5)).hasSize(5);
     }
 }
