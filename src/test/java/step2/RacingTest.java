@@ -30,12 +30,12 @@ class RacingTest {
     }
 
     @Test
-    void scoreByTurn() {
-        assertThat(resultData.scoreByTurn(0)).containsExactlyInAnyOrder(1, 1, 1);
-        assertThat(resultData.scoreByTurn(1)).containsExactlyInAnyOrder(2, 2, 2);
-        assertThat(resultData.scoreByTurn(2)).containsExactlyInAnyOrder(3, 3, 3);
-        assertThat(resultData.scoreByTurn(3)).containsExactlyInAnyOrder(4, 4, 4);
-        assertThat(resultData.scoreByTurn(4)).containsExactlyInAnyOrder(5, 5, 5);
+    void scoreByRound() {
+        assertThat(resultData.scoreByRound(0)).containsExactlyInAnyOrder(1, 1, 1);
+        assertThat(resultData.scoreByRound(1)).containsExactlyInAnyOrder(2, 2, 2);
+        assertThat(resultData.scoreByRound(2)).containsExactlyInAnyOrder(3, 3, 3);
+        assertThat(resultData.scoreByRound(3)).containsExactlyInAnyOrder(4, 4, 4);
+        assertThat(resultData.scoreByRound(4)).containsExactlyInAnyOrder(5, 5, 5);
     }
 
 

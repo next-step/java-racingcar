@@ -2,18 +2,18 @@ package step2.dto;
 
 public class RacingData {
     private String[] carModels;
-    private int turn;
+    private int round;
 
-    public RacingData(String[] carModels, int turn) {
+    public RacingData(String[] carModels, int round) {
         this.carModels = carModels;
-        this.turn = turn;
+        this.round = round;
     }
 
     public String[] getCarModels() {
         return carModels;
     }
 
-    public int getTurn() {
-        return turn;
+    public int getRound() {
+        return round;
     }
 }

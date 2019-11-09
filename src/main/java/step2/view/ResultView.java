@@ -24,18 +24,18 @@ public class ResultView {
     private static final String EMPTY = "";
     private static final String CAR_LOG_SYMBOL = "-";
 
-    public static void drawGraph(ResultData resultData, int turn) {
+    public static void drawGraph(ResultData resultData, int round) {
         System.out.println(EMPTY);
         System.out.println(RESULT_MESSAGE);
-        for (int game = 0; game < turn; game++) {
-            Map<Model, Integer> modelAndScoreByTurn = resultData.modelAndScoreByTurn(game);
-            drawGraph(modelAndScoreByTurn);
+        for (int game = 0; game < round; game++) {
+            Map<Model, Integer> modelAndScoreByRound = resultData.modelAndScoreByRound(game);
+            drawGraph(modelAndScoreByRound);
         }
     }
 
-    private static void drawGraph(Map<Model, Integer> modelAndScoreByTurn) {
+    private static void drawGraph(Map<Model, Integer> modelAndScoreByRound) {
         System.out.println(EMPTY);
-        modelAndScoreByTurn.forEach((model, score) -> {
+        modelAndScoreByRound.forEach((model, score) -> {
             String graph = String.join(EMPTY, Collections.nCopies(score, CAR_LOG_SYMBOL));
             System.out.println(String.format(MODEL_AND_SCORE_FORMAT, model, graph));
         });

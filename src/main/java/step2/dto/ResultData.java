@@ -20,16 +20,16 @@ public class ResultData {
         this.cars = cars;
     }
 
-    public List<Integer> scoreByTurn(int turn) {
+    public List<Integer> scoreByRound(int round) {
         List<Integer> carScores = new ArrayList<>();
         for (Car car : cars) {
-            carScores.add(car.checkScoreByTurn(turn));
+            carScores.add(car.checkScoreByRound(round));
         }
         return carScores;
     }
 
-    public Map<Model, Integer> modelAndScoreByTurn(int turn) {
-        return Car.checkScoreByTurn(cars, turn);
+    public Map<Model, Integer> modelAndScoreByRound(int round) {
+        return Car.checkScoreByRound(cars, round);
     }
 
     public Winners findWinner() {

@@ -23,15 +23,15 @@ public class Car {
     private Model model;
     private BitSet moveRecord;
 
-    public Car(String model, int turn) {
+    public Car(String model, int round) {
         this.model = new Model(model);
-        this.moveRecord = new BitSet(turn);
+        this.moveRecord = new BitSet(round);
     }
 
-    public static Map<Model, Integer> checkScoreByTurn(List<Car> cars, int turn) {
+    public static Map<Model, Integer> checkScoreByRound(List<Car> cars, int round) {
         Map<Model, Integer> carScores = new LinkedHashMap<>();
         for (Car car : cars) {
-            carScores.put(car.model, car.checkScoreByTurn(turn));
+            carScores.put(car.model, car.checkScoreByRound(round));
         }
         return carScores;
     }
@@ -54,12 +54,12 @@ public class Car {
         return moveRecord.cardinality();
     }
 
-    public void move(int turn) {
-        moveRecord.set(turn);
+    public void move(int round) {
+        moveRecord.set(round);
     }
 
-    public int checkScoreByTurn(int turn) {
-        return moveRecord.get(START_INDEX, turn + EXTRA_INDEX_FOR_OPEN_RANGE)
+    public int checkScoreByRound(int round) {
+        return moveRecord.get(START_INDEX, round + EXTRA_INDEX_FOR_OPEN_RANGE)
                 .cardinality();
     }
 }

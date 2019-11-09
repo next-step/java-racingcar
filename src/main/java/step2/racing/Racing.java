@@ -18,36 +18,36 @@ import java.util.List;
  */
 public class Racing {
     private List<Car> cars;
-    private int turn;
+    private int round;
     private MoveStrategy moveStrategy;
 
     public Racing(RacingData racingData, MoveStrategy moveStrategy) {
-        this.turn = racingData.getTurn();
+        this.round = racingData.getRound();
         this.cars = new ArrayList<>();
         String[] carModels = racingData.getCarModels();
         for (String model : carModels) {
-            Car car = new Car(model, turn);
+            Car car = new Car(model, round);
             cars.add(car);
         }
         this.moveStrategy = moveStrategy;
     }
 
     public ResultData race() {
-        for (int game = 0; game < turn; game++) {
+        for (int game = 0; game < round; game++) {
             raceRound(game);
         }
         return new ResultData(this.cars);
     }
 
-    private void raceRound(int turn) {
+    private void raceRound(int round) {
         for (Car car : this.cars) {
-            moveIfPossible(car, this.moveStrategy, turn);
+            moveIfPossible(car, this.moveStrategy, round);
         }
     }
 
-    private void moveIfPossible(Car car, MoveStrategy moveStrategy, int turn) {
+    private void moveIfPossible(Car car, MoveStrategy moveStrategy, int round) {
         if (moveStrategy.isPossibleToGo()) {
-            car.move(turn);
+            car.move(round);
         }
     }
 }

@@ -34,13 +34,13 @@ class CarTest {
     }
 
     @Test
-    void checkScoreByTurn() {
+    void checkScoreByRound() {
         assertAll(
-                () -> assertThat(car2.checkScoreByTurn(0)).isEqualTo(1),
-                () -> assertThat(car2.checkScoreByTurn(1)).isEqualTo(2),
-                () -> assertThat(car2.checkScoreByTurn(2)).isEqualTo(2),
-                () -> assertThat(car2.checkScoreByTurn(3)).isEqualTo(3),
-                () -> assertThat(car2.checkScoreByTurn(4)).isEqualTo(3)
+                () -> assertThat(car2.checkScoreByRound(0)).isEqualTo(1),
+                () -> assertThat(car2.checkScoreByRound(1)).isEqualTo(2),
+                () -> assertThat(car2.checkScoreByRound(2)).isEqualTo(2),
+                () -> assertThat(car2.checkScoreByRound(3)).isEqualTo(3),
+                () -> assertThat(car2.checkScoreByRound(4)).isEqualTo(3)
         );
     }
 

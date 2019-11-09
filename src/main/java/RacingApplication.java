@@ -12,7 +12,7 @@ public class RacingApplication {
         Racing racing = new Racing(racingData, new RandomMove());
         ResultData resultData = racing.race();
 
-        ResultView.drawGraph(resultData, racingData.getTurn());
+        ResultView.drawGraph(resultData, racingData.getRound());
         ResultView.announceWinner(resultData);
     }
 }
