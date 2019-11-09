@@ -41,4 +41,10 @@ public class CarsTest {
         assertThat(cars.contains(new Car("test2", 0))).isTrue();
         assertThat(cars.contains(new Car("test3", 0))).isTrue();
     }
+
+    @Test
+    void getWinnerPositionValueTest() {
+        Cars cars = new Cars(Arrays.asList(new Car("test", 1), new Car("test1", 3), new Car("test2", 2)));
+        assertThat(cars.getWinnerPositionValue()).isEqualTo(3);
+    }
 }

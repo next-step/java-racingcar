@@ -19,7 +19,7 @@ public class Cars {
         this.cars = createCars(carName);
     }
 
-    public List<Car> createCars(String carName) {
+    private List<Car> createCars(String carName) {
         List<Car> cars = new ArrayList<>();
         String[] carNames = carName.split(DELIMITER);
         for (String name : carNames) {
@@ -38,6 +38,14 @@ public class Cars {
 
     private int getRandomNumber() {
         return new Random().nextInt(RANDOM_BOUND_NUMBER);
+    }
+
+    public int getWinnerPositionValue() {
+        int max = INITIAL_POSITION_VALUE;
+        for (Car car : this.cars) {
+            max = Math.max(max, car.getPosition());
+        }
+        return max;
     }
 
     public boolean contains(Car car) {
