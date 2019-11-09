@@ -31,4 +31,14 @@ public class CarsTest {
         Cars newRacingCars = racingCars.moveCarsPositionByInterface();
         assertThat(racingCars).isNotEqualTo(newRacingCars);
     }
+
+    @Test
+    void initiateTest() {
+        String carNameWithComma = "test1,test2,test3";
+        Cars cars = new Cars(carNameWithComma);
+        assertThat(cars.getCars()).hasSize(3);
+        assertThat(cars.contains(new Car("test1", 0))).isTrue();
+        assertThat(cars.contains(new Car("test2", 0))).isTrue();
+        assertThat(cars.contains(new Car("test3", 0))).isTrue();
+    }
 }

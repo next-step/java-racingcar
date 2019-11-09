@@ -7,14 +7,25 @@ import java.util.Random;
 public class Cars {
     private static final int PIVOT_NUMBER = 4;
     private static final int RANDOM_BOUND_NUMBER = 9;
+    private static final String DELIMITER = ",";
+    private static final int INITIAL_POSITION_VALUE = 0;
     private List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
-    public boolean contains(Car car) {
-        return this.cars.contains(car);
+    public Cars(String carName) {
+        this.cars = createCars(carName);
+    }
+
+    public List<Car> createCars(String carName) {
+        List<Car> cars = new ArrayList<>();
+        String[] carNames = carName.split(DELIMITER);
+        for (String name : carNames) {
+            cars.add(new Car(name, INITIAL_POSITION_VALUE));
+        }
+        return cars;
     }
 
     public Cars moveCarsPositionByInterface() {
@@ -25,12 +36,16 @@ public class Cars {
         return new Cars(carsWithPosition);
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
     private int getRandomNumber() {
         return new Random().nextInt(RANDOM_BOUND_NUMBER);
+    }
+
+    public boolean contains(Car car) {
+        return this.cars.contains(car);
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 
 }
