@@ -10,7 +10,7 @@ public class Cars {
     private static final int RANDOM_BOUND_NUMBER = 9;
     private static final String DELIMITER = ",";
     private static final int INITIAL_POSITION_VALUE = 0;
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
@@ -61,7 +61,7 @@ public class Cars {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return new ArrayList<>(this.cars);
     }
 
 }

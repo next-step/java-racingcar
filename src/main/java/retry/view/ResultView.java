@@ -15,7 +15,8 @@ public class ResultView {
     }
 
     private static void printRacingCars(Cars racingCars) {
-        for (Car car : racingCars.getCars()) {
+        List<Car> cars = racingCars.getCars();
+        for (Car car : cars) {
             printCar(car);
         }
     }

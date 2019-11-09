@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RacingGame {
     private static final int MAX_POSITION_VALUE = 0;
-    private List<Cars> racingCars;
+    private final List<Cars> racingCars;
     private Cars cars;
 
     public RacingGame(Cars cars) {
