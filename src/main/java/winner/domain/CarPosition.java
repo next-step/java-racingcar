@@ -10,11 +10,12 @@ import java.util.Objects;
 public class CarPosition {
 
     private static final String POSITION_VIEW_TEXT = "-";
+    private static final int INIT_CAR_POSITION = 0;
 
     private int position;
 
     public CarPosition() {
-        this(0);
+        this(INIT_CAR_POSITION);
     }
 
     public CarPosition(int position) {
