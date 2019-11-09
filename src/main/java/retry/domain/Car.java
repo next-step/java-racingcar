@@ -20,11 +20,11 @@ public class Car {
         return this;
     }
 
-    public boolean isWinner(int winnerPosition) {
+    boolean isWinner(int winnerPosition) {
         return this.position == winnerPosition;
     }
 
-    public int getMaxPositionValue(int maxPosition) {
+    int getMaxPositionValue(int maxPosition) {
         return Math.max(maxPosition, this.position);
     }
 

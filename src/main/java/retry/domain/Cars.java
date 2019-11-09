@@ -3,6 +3,7 @@ package retry.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Cars {
     private static final int PIVOT_NUMBER = 4;
@@ -26,6 +27,15 @@ public class Cars {
             cars.add(new Car(name, INITIAL_POSITION_VALUE));
         }
         return cars;
+    }
+
+    public List<Car> getWinnerCars(int winnerPosition) {
+
+        List<Car> winnerCars = this.cars.stream()
+                .filter(car -> car.isWinner(winnerPosition))
+                .collect(Collectors.toList());
+
+        return winnerCars;
     }
 
     public Cars moveCarsPositionByInterface() {

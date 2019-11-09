@@ -27,12 +27,12 @@ public class RacingGame {
         return racingCars;
     }
 
-//    public Cars getWinnerCars() {
-//        int winnerPosition = getWinnerPositionValue();
-//
-//    }
+    public List<Car> getWinners() {
+        int winnerPosition = getWinnerPositionValue();
+        return this.cars.getWinnerCars(winnerPosition);
+    }
 
-    public int getWinnerPositionValue() {
+    private int getWinnerPositionValue() {
         int maxPositionValue = MAX_POSITION_VALUE;
         for (Cars racingCar : this.racingCars) {
             maxPositionValue = racingCar.getWinnerPositionValue(maxPositionValue);

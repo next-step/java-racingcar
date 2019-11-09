@@ -32,7 +32,8 @@ public class RacingGameTest {
 
     @Test
     void racingGameLoopTest() {
-        List<Cars> racingGames = racingGame.execute(5);
-        assertThat(racingGames).hasSize(5);
+        List<Cars> racingGames = racingGame.execute(1);
+        assertThat(racingGames).hasSize(1);
+        racingGame.getWinners();
     }
 }
