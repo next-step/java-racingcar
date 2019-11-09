@@ -32,8 +32,8 @@ public class RacingGame {
         this.tryNo.decrease();
     }
 
-    public boolean isEnd() {
-        return this.tryNo.isEnd();
+    public boolean isNotEnd() {
+        return this.tryNo.isNotEnd();
     }
 
     public List<Car> getRacingCars() {

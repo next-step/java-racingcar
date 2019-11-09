@@ -12,7 +12,7 @@ public class RacingGameMain {
 
     public static void main(String[] args) {
         RacingGame racingGame = new RacingGame(CarRaceInputView.inputCarName(), CarRaceInputView.inputTryNo());
-        while (!racingGame.isEnd()) {
+        while (racingGame.isNotEnd()) {
             racingGame.start();
             CarRaceResultView.printCars(racingGame.getRacingCars());
         }
