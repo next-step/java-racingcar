@@ -19,8 +19,8 @@ public class TryNo {
         this.tryNo = tryNo;
     }
 
-    public boolean isEnd() {
-        return this.tryNo == 0;
+    public boolean isNotEnd() {
+        return this.tryNo > 0;
     }
 
     public void decrease() {
