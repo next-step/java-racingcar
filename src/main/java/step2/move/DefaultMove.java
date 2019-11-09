@@ -1,4 +1,4 @@
-package step2.Model;
+package step2.move;
 
 public class DefaultMove implements MoveStrategy {
     @Override

@@ -1,10 +1,11 @@
 /*
  * Racing.java  1.0.0   2019.10.27
  */
-package step2.Model;
+package step2.racing;
 
-import step2.Dao.RacingData;
-import step2.Dao.ResultData;
+import step2.dto.RacingData;
+import step2.dto.ResultData;
+import step2.move.MoveStrategy;
 
 import java.util.ArrayList;
 import java.util.List;

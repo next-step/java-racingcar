@@ -1,9 +1,9 @@
 /*
  * InputView.java  1.0.0   2019.10.27
  */
-package step2.View;
+package step2.view;
 
-import step2.Dao.RacingData;
+import step2.dto.RacingData;
 
 import java.util.Scanner;
 import java.util.stream.Stream;

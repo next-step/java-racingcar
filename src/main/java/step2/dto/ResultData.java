@@ -1,6 +1,6 @@
-package step2.Dao;
+package step2.dto;
 
-import step2.Model.Graph;
+import step2.racing.Graph;
 
 import java.util.ArrayList;
 import java.util.List;

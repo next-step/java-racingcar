@@ -2,9 +2,9 @@ package step2;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import step2.Dao.RacingData;
-import step2.Model.DefaultMove;
-import step2.Model.Racing;
+import step2.dto.RacingData;
+import step2.move.DefaultMove;
+import step2.racing.Racing;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;

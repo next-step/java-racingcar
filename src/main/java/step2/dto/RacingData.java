@@ -1,4 +1,4 @@
-package step2.Dao;
+package step2.dto;
 
 public class RacingData {
     private String[] carModels;

@@ -1,7 +1,7 @@
 /*
  * Car.java  1.0.0   2019.10.27
  */
-package step2.Model;
+package step2.racing;
 
 
 /**

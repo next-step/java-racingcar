@@ -1,9 +1,9 @@
 /*
  * ResultView.java  1.0.0   2019.10.27
  */
-package step2.View;
+package step2.view;
 
-import step2.Dao.ResultData;
+import step2.dto.ResultData;
 
 /**
  * 자동차 게임 그래프 출력 부분
