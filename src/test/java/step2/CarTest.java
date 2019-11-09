@@ -5,8 +5,11 @@ import org.junit.jupiter.api.Test;
 import step2.move.DefaultMove;
 import step2.move.MoveStrategy;
 import step2.racing.Car;
+import step2.racing.Model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -49,10 +52,10 @@ class CarTest {
 
     @Test
     void addWinner() {
-        List<String> winners = new ArrayList<>();
-        car1.addWinner(winners, 4);
-        car2.addWinner(winners, 4);
-        assertThat(winners).containsExactly("bus");
+        List<Car> cars = new ArrayList<>(Arrays.asList(car1, car2));
+        assertThat(Car.winners(cars))
+                .isEqualTo(Collections.singletonList(new Model("bus")));
+
     }
 
 }
