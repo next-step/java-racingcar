@@ -17,13 +17,12 @@ class RacingTest {
     void setUp() {
         racing = new Racing(new RacingData(new String[]{"bus", "taxi", "tank"}, 5),
                 new DefaultMove());
-        resultData = racing.run();
+        resultData = racing.race();
     }
 
     @Test
-    void getWinners() {
-
-        String[] winners = resultData.getWinners().toString()
+    void findWinner() {
+        String[] winners = resultData.findWinner().toString()
                 .replace(" ", "")
                 .split("[,]");
         assertThat(winners)

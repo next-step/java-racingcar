@@ -5,12 +5,12 @@ import step2.racing.Racing;
 import step2.view.InputView;
 import step2.view.ResultView;
 
-public class Application {
+public class RacingApplication {
     public static void main(String[] args) {
         RacingData racingData = InputView.input();
 
         Racing racing = new Racing(racingData, new RandomMove());
-        ResultData resultData = racing.run();
+        ResultData resultData = racing.race();
 
         ResultView.drawGraph(resultData, racingData.getTurn());
         ResultView.announceWinner(resultData);

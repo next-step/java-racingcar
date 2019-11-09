@@ -28,7 +28,6 @@ public class ResultView {
         System.out.println(EMPTY);
         System.out.println(RESULT_MESSAGE);
         for (int game = 0; game < turn; game++) {
-
             Map<Model, Integer> modelAndScoreByTurn = resultData.modelAndScoreByTurn(game);
             drawGraph(modelAndScoreByTurn);
         }
@@ -44,7 +43,7 @@ public class ResultView {
 
 
     public static void announceWinner(ResultData resultData) {
-        Winners winners = resultData.getWinners();
+        Winners winners = resultData.findWinner();
         System.out.println(EMPTY);
         System.out.println(String.format(END_OF_WINNER_ANNOUNCE_FORMAT, winners));
     }

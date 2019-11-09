@@ -32,14 +32,22 @@ public class Racing {
         this.moveStrategy = moveStrategy;
     }
 
-    public ResultData run() {
+    public ResultData race() {
         for (int game = 0; game < turn; game++) {
-            for (int carIndex = 0; carIndex < this.cars.size(); carIndex++) {
-                Car car = this.cars.get(carIndex);
-                car.move(moveStrategy, game);
-            }
+            raceRound(game);
         }
-        return new ResultData(cars);
+        return new ResultData(this.cars);
     }
 
+    private void raceRound(int turn) {
+        for (Car car : this.cars) {
+            moveIfPossible(car, this.moveStrategy, turn);
+        }
+    }
+
+    private void moveIfPossible(Car car, MoveStrategy moveStrategy, int turn) {
+        if (moveStrategy.isPossibleToGo()) {
+            car.move(turn);
+        }
+    }
 }
