@@ -31,7 +31,7 @@ public class RacingGame {
 
     public void start() {
         this.racingCars.move();
-        this.tryNo.decrease();
+        this.tryNo = this.tryNo.decrease();
     }
 
     public boolean isNotEnd() {

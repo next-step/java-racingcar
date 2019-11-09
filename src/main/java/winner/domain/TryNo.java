@@ -9,10 +9,13 @@ import java.util.Objects;
  */
 public class TryNo {
 
-    private int tryNo;
+    private static final int DECREASE = 1;
+    private static final int MINIMUM_TRY_NO = 0;
+
+    private final int tryNo;
 
     public TryNo(int tryNo) {
-        if (tryNo <= 0) {
+        if (tryNo < MINIMUM_TRY_NO) {
             throw new IllegalArgumentException("0 이상의 숫자만 입력가능합니다.");
         }
 
@@ -23,8 +26,8 @@ public class TryNo {
         return this.tryNo > 0;
     }
 
-    public void decrease() {
-        this.tryNo--;
+    public TryNo decrease() {
+        return new TryNo(tryNo - DECREASE);
     }
 
     @Override

@@ -19,14 +19,14 @@ public class TryNoTest {
     @Test
     void tryNo_is_end_test() {
         TryNo tryNo = new TryNo(1);
-        tryNo.decrease();
+        tryNo = tryNo.decrease();
         assertThat(tryNo.isNotEnd()).isFalse();
     }
 
     @Test
-    void try_no_0_입력() {
+    void 음수_입력() {
         assertThatThrownBy(() -> {
-            TryNo tryNo = new TryNo(0);
+            TryNo tryNo = new TryNo(-1);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
