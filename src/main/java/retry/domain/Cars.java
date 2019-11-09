@@ -13,8 +13,8 @@ public class Cars {
         this.cars = cars;
     }
 
-    public boolean contains(Car test) {
-        return this.cars.contains(test);
+    public boolean contains(Car car) {
+        return this.cars.contains(car);
     }
 
     public Cars moveCarsPositionByInterface() {
@@ -23,6 +23,10 @@ public class Cars {
             carsWithPosition.add(car.move(() -> getRandomNumber() >= PIVOT_NUMBER));
         }
         return new Cars(carsWithPosition);
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 
     private int getRandomNumber() {

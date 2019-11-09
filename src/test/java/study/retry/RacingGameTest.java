@@ -6,22 +6,33 @@ import retry.domain.Car;
 import retry.domain.Cars;
 import retry.domain.RacingGame;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
     private RacingGame racingGame;
+    private Cars racingCars;
+    private List<Car> cars;
 
     @BeforeEach
     void setUp() {
-        racingGame = new RacingGame(null);
+        cars = Arrays.asList(new Car("test", 0), new Car("test1", 0), new Car("test2", 0));
+        racingCars = new Cars(cars);
+        racingGame = new RacingGame(racingCars);
     }
-
 
     @Test
     void racingCarsMoveTest() {
-        List<Cars> cars = racingGame.racingGame();
+        for (Cars cars1 : racingGame.racingGame()) {
+            assertThat(cars1.getCars()).hasSize(3);
+        }
+    }
 
+    @Test
+    void racingGameLoopTest() {
+        racingGame.execute(5);
+        assertThat(racingGame.getRacingCars().size()).isEqualTo(5);
     }
 }
