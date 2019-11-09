@@ -4,6 +4,11 @@
 package step2.racing;
 
 
+import step2.move.MoveStrategy;
+
+import java.util.BitSet;
+import java.util.List;
+
 /**
  * 자동차 게임의 대상인 자동차
  *
@@ -11,32 +16,37 @@ package step2.racing;
  * @version 1.0.0
  */
 public class Car {
-    private static final String CAR_LOG_SYMBOL = "-";
+
     private String model;
-    private boolean[] move;
+    private BitSet moveSet;
 
     public Car(String model, int turn) {
         this.model = model;
-        this.move = new boolean[turn];
+        this.moveSet = new BitSet(turn);
     }
 
-    public String go(int turn) {
-        move[turn] = true;
-        return getStringScore(turn);
+    public int getScoreByTurn(int turn) {
+        return moveSet.get(0, turn + 1).cardinality();
     }
 
-    public String getStringScore(int turn) {
-        StringBuilder graph = new StringBuilder();
-        for (int game = 0; game <= turn; game++) {
-            if (move[game]) {
-                graph.append(CAR_LOG_SYMBOL);
-            }
+    public int getFinalScore() {
+        return moveSet.cardinality();
+    }
+
+    private boolean isWinner(int max) {
+        return getFinalScore() == max;
+    }
+
+    public void addWinner(List<String> winners, int max) {
+        if (isWinner(max)) {
+            winners.add(model);
         }
-        return graph.toString();
     }
 
-    public String getModel() {
-        return model;
-    }
+    public void move(MoveStrategy moveStrategy, int turn) {
+        if (moveStrategy.isPossibleToGo()) {
+            moveSet.set(turn);
 
+        }
+    }
 }

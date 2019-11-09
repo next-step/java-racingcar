@@ -17,9 +17,9 @@ public class Application {
 
         // result view에서는
         // 레이싱 게임에서 나온 데이터들의 그래프를 그리는 기능과
-        // 우승자를 알려주는 기능만 한다.
-        ResultView.show(resultData, racingData.getTurn());
+        ResultView.drawGraph(resultData, racingData.getTurn());
         // ResultView.drawGraph();
-        // ResultView.announceWinner();
+        // 우승자를 알려주는 기능만 한다.
+        ResultView.announceWinner(resultData);
     }
 }

@@ -33,25 +33,13 @@ public class Racing {
     }
 
     public ResultData run() {
-        List<Graph> graphs = Graph.createList(cars);
         for (int game = 0; game < turn; game++) {
-            race(graphs, game);
+            for (int carIndex = 0; carIndex < this.cars.size(); carIndex++) {
+                Car car = this.cars.get(carIndex);
+                car.move(moveStrategy, game);
+            }
         }
-        return new ResultData(graphs);
-    }
-
-    private void race(List<Graph> graphs, int turn) {
-        for (int carIndex = 0; carIndex < cars.size(); carIndex++) {
-            Graph graph = graphs.get(carIndex);
-            graph.addScore(scoreAfterMove(carIndex, turn));
-        }
-    }
-
-    public String scoreAfterMove(int carIndex, int turn) {
-        if (moveStrategy.isPossibleToGo()) {
-            return cars.get(carIndex).go(turn);
-        }
-        return cars.get(carIndex).getStringScore(turn);
+        return new ResultData(cars);
     }
 
 }
