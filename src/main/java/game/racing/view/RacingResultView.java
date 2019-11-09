@@ -1,10 +1,13 @@
-package game.racing;
+package game.racing.view;
 
-import game.ResultEntity;
-import game.ResultView;
+import game.core.domain.ResultEntity;
+import game.core.view.ResultView;
+import game.racing.domain.RacingResult;
+import game.racing.domain.TrackingLog;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author : yusik
@@ -12,18 +15,26 @@ import java.util.List;
  */
 public class RacingResultView implements ResultView<RacingResult> {
 
-    private static String MESSAGE_RESULT = "\n실행 결과";
-    private static String PRINTABLE_SYMBOL = "-";
+    private static final String MESSAGE_RESULT = "\n실행 결과";
+    private static final String PRINTABLE_SYMBOL = "-";
+    private static final String NAME_DELIMITER = ", ";
 
     @Override
     public void render(ResultEntity<RacingResult> entity) {
 
         RacingResult result = entity.getResult();
         List<String> rounds = getRounds(result.getTrackingLogs());
+        String championNames = getChampionNames(result.getMaxPositionLogs());
 
         System.out.println(MESSAGE_RESULT);
         rounds.forEach(System.out::println);
-        System.out.println(result.getChampionNames() + "가 최종 우승했습니다.");
+        System.out.println(championNames + "가 최종 우승했습니다.");
+    }
+
+    private String getChampionNames(List<TrackingLog> maxPositionLogs) {
+        return maxPositionLogs.stream()
+                .map(TrackingLog::getName)
+                .collect(Collectors.joining(NAME_DELIMITER));
     }
 
     private List<String> getRounds(List<TrackingLog> logs) {

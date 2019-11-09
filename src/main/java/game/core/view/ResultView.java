@@ -1,4 +1,6 @@
-package game;
+package game.core.view;
+
+import game.core.domain.ResultEntity;
 
 /**
  * @author : yusik

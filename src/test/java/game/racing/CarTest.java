@@ -1,5 +1,7 @@
 package game.racing;
 
+import game.racing.domain.DefaultCar;
+import game.racing.domain.TrackingLog;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -36,9 +38,41 @@ public class CarTest {
         DefaultCar car = new DefaultCar(name, log);
 
         // when
-        IntStream.range(0, expected).forEach(i -> car.move());
+        IntStream.range(0, expected).forEach(i -> car.move(() -> true));
 
         // then
         assertThat(log.getSize()).isEqualTo(expected);
+    }
+
+    @DisplayName("자동차 움직이지 않음")
+    @Test
+    void defaultCarDontMove() {
+
+        // given
+        String name = "car1";
+        TrackingLog log = new TrackingLog(name);
+        DefaultCar car = new DefaultCar(name, log);
+
+        // when
+        car.move(() -> false);
+
+        // then
+        assertThat(log.getLastPosition()).isEqualTo(0);
+    }
+
+    @DisplayName("자동차 움직임")
+    @Test
+    void defaultCarMove() {
+
+        // given
+        String name = "car1";
+        TrackingLog log = new TrackingLog(name);
+        DefaultCar car = new DefaultCar(name, log);
+
+        // when
+        car.move(() -> true);
+
+        // then
+        assertThat(log.getLastPosition()).isEqualTo(1);
     }
 }

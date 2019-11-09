@@ -1,4 +1,4 @@
-package game;
+package game.core.view;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -22,19 +22,18 @@ public class InputViewTest {
 
         // given
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
-        GameSettings settings = new GameSettings() {
+        InputView inputView = new InputView(in) {
             @Override
-            public void setInputMessages(UserInput userInput) {
+            public void initialize(UserInputs userInput) {
                 userInput.addInputMessage("testKey", "메시지 출력 테스트");
             }
         };
 
         // when
-        InputView inputView = new InputView(in, settings);
-        inputView.render();
+        inputView.renderAndAcceptInput();
 
         //then
-        assertThat(settings.getSettingValue("testKey")).isEqualTo(output);
+        assertThat(inputView.getInputValueByKey("testKey")).isEqualTo(output);
 
     }
 }

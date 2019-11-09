@@ -1,20 +1,17 @@
-package game;
+package game.core.view;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * @author : yusik
  * @date : 2019/10/26
  */
-public class UserInput {
+public class UserInputs {
 
     private Map<String, Input> inputs;
 
-    public UserInput() {
-        inputs = new HashMap<>();
+    public UserInputs() {
+        inputs = new LinkedHashMap<>();
     }
 
     public void addInputMessage(String key, String message) {

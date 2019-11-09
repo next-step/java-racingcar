@@ -1,4 +1,4 @@
-package game.racing;
+package game.racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,5 +35,9 @@ public class TrackingLog {
 
     public int getLastPosition() {
         return getPositionByTimes(getSize() - 1);
+    }
+
+    public boolean isMaxPosition(int maxPosition) {
+        return maxPosition == getLastPosition();
     }
 }

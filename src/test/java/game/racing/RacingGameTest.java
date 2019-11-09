@@ -1,7 +1,9 @@
 package game.racing;
 
-import game.Game;
-import game.InputView;
+import game.core.domain.Game;
+import game.racing.domain.RacingGame;
+import game.racing.domain.RacingResult;
+import game.racing.view.RacingInputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -21,11 +23,10 @@ public class RacingGameTest {
 
         // given
         ByteArrayInputStream in = new ByteArrayInputStream("name1,2,3,4,5\n5".getBytes());
-        RacingGameSettings settings = new RacingGameSettings();
-        InputView inputView = new InputView(in, settings);
-        inputView.render();
+        RacingInputView inputView = new RacingInputView(in);
+        inputView.renderAndAcceptInput();
 
-        Game<RacingResult> game = new RacingGame(settings);
+        Game<RacingResult> game = new RacingGame(inputView.getCarNames(), inputView.getNumberOfRound());
 
         // when
         game.run();

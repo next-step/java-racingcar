@@ -1,6 +1,7 @@
-package game.racing;
+package game.racing.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,18 +25,13 @@ public class RacingResult {
     }
 
     public List<TrackingLog> getTrackingLogs() {
-        return logs;
+        return Collections.unmodifiableList(logs);
     }
 
-    public String getChampionNames() {
-        return getChampionNames(", ");
-    }
-
-    public String getChampionNames(String delimiter) {
+    public List<TrackingLog> getMaxPositionLogs() {
         return logs.stream()
-                .filter(trackingLog -> trackingLog.getLastPosition() == getMaxPosition())
-                .map(TrackingLog::getName)
-                .collect(Collectors.joining(delimiter));
+                .filter(log -> log.isMaxPosition(getMaxPosition()))
+                .collect(Collectors.toList());
     }
 
     private int getMaxPosition() {

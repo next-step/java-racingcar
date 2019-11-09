@@ -1,14 +1,13 @@
-import game.Game;
-import game.InputView;
-import game.ResultView;
-import game.gambling.GamblingGame;
-import game.gambling.GamblingGameSettings;
-import game.gambling.GamblingResult;
-import game.gambling.GamblingResultView;
-import game.racing.RacingGame;
-import game.racing.RacingGameSettings;
-import game.racing.RacingResult;
-import game.racing.RacingResultView;
+import game.core.domain.Game;
+import game.core.view.ResultView;
+import game.gambling.domain.GamblingGame;
+import game.gambling.view.GamblingInputView;
+import game.gambling.domain.GamblingResult;
+import game.gambling.view.GamblingResultView;
+import game.racing.domain.RacingGame;
+import game.racing.view.RacingInputView;
+import game.racing.domain.RacingResult;
+import game.racing.view.RacingResultView;
 
 /**
  * @author : yusik
@@ -18,15 +17,14 @@ public class GameApplication {
 
     public static void main(String[] args) {
         startRacing();
-        startGamble();
+//        startGamble();
     }
 
     private static void startGamble() {
-        GamblingGameSettings settings = new GamblingGameSettings();
-        InputView inputView = new InputView(settings);
-        inputView.render();
+        GamblingInputView inputView = new GamblingInputView();
+        inputView.renderAndAcceptInput();
 
-        Game<GamblingResult> game = new GamblingGame(settings);
+        Game<GamblingResult> game = new GamblingGame(inputView.getUserNames(), inputView.getNumberOfRound());
         game.run();
 
         ResultView<GamblingResult> resultView = new GamblingResultView();
@@ -34,11 +32,10 @@ public class GameApplication {
     }
 
     private static void startRacing() {
-        RacingGameSettings settings = new RacingGameSettings();
-        InputView inputView = new InputView(settings);
-        inputView.render();
+        RacingInputView inputView = new RacingInputView();
+        inputView.renderAndAcceptInput();
 
-        Game<RacingResult> game = new RacingGame(settings);
+        Game<RacingResult> game = new RacingGame(inputView.getCarNames(), inputView.getNumberOfRound());
         game.run();
 
         ResultView<RacingResult> resultView = new RacingResultView();
