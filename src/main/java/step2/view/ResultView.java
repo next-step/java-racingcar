@@ -4,9 +4,9 @@
 package step2.view;
 
 import step2.dto.ResultData;
+import step2.racing.Winners;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,10 +17,10 @@ import java.util.Map;
  */
 public class ResultView {
     private static final String RESULT_MESSAGE = "실행결과";
-    private static final String DELIMITER = ", ";
+
     private static final String MODEL_AND_SCORE_FORMAT = "%s : %s";
     private static final String CAR_LOG_SYMBOL = "-";
-    private static final String END_OF_WINNER_ANNOUNCE = "가 최종 우승했습니다.";
+    private static final String END_OF_WINNER_ANNOUNCE_FORMAT = "%s가 최종 우승했습니다.";
 
     public static void drawGraph(ResultData resultData, int turn) {
         System.out.println();
@@ -43,14 +43,7 @@ public class ResultView {
 
 
     public static void announceWinner(ResultData resultData) {
-        List<String> winners = resultData.getWinners();
-        StringBuilder winner = new StringBuilder();
-        winner.append(winners.get(0));
-        for (int index = 1; index < winners.size(); index++) {
-            winner.append(DELIMITER);
-            winner.append(winners.get(index));
-        }
-        System.out.println(winner.toString());
-        System.out.println(END_OF_WINNER_ANNOUNCE);
+        Winners winners = resultData.getWinners();
+        System.out.println(String.format(END_OF_WINNER_ANNOUNCE_FORMAT, winners));
     }
 }

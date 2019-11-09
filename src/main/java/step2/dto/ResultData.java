@@ -1,6 +1,7 @@
 package step2.dto;
 
 import step2.racing.Car;
+import step2.racing.Winners;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +31,7 @@ public class ResultData {
         return Car.scoreByTurn(cars, turn);
     }
 
-
-    public List<String> getWinners() {
+    public Winners getWinners() {
         int max = cars.stream()
                 .map(car -> car.getFinalScore())
                 .max(Integer::compareTo)
@@ -39,6 +39,6 @@ public class ResultData {
 
         List<String> winners = new ArrayList<>();
         cars.forEach(car -> car.addWinner(winners, max));
-        return winners;
+        return new Winners(winners);
     }
 }

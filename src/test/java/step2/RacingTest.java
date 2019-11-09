@@ -22,7 +22,12 @@ class RacingTest {
 
     @Test
     void getWinners() {
-        assertThat(resultData.getWinners()).containsExactlyInAnyOrder("bus", "taxi", "tank");
+
+        String[] winners = resultData.getWinners().toString()
+                .replace(" ", "")
+                .split("[,]");
+        assertThat(winners)
+                .containsExactlyInAnyOrder("bus", "taxi", "tank");
     }
 
     @Test
