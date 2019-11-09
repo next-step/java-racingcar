@@ -5,9 +5,6 @@ import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
-
-    private static final int PIVOT_NUMBER = 4;
-    private static final int RANDOM_BOUND_NUMBER = 9;
     private List<Cars> racingCars;
     private Cars cars;
     public RacingGame(Cars cars) {
@@ -16,12 +13,8 @@ public class RacingGame {
     }
 
     public List<Cars> racingGame() {
-        racingCars.add(cars.moveCarsPositionByInterface(() -> getRandomNumber() >= PIVOT_NUMBER));
+        racingCars.add(cars.moveCarsPositionByInterface());
         return racingCars;
-    }
-
-    private int getRandomNumber() {
-        return new Random().nextInt(RANDOM_BOUND_NUMBER);
     }
 
 }

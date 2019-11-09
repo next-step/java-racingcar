@@ -13,8 +13,8 @@ public class Car {
         this.position = position;
     }
 
-    public Car move(boolean isMoving) {
-        if (isMoving) {
+    public Car move(Movable movable) {
+        if (movable.isMove()) {
             return new Car(this.name, this.position + INCREASING_DISTANCE);
         }
         return this;
