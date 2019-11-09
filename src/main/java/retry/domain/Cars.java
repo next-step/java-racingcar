@@ -29,13 +29,10 @@ public class Cars {
         return cars;
     }
 
-    public List<Car> getWinnerCars(int winnerPosition) {
-
-        List<Car> winnerCars = this.cars.stream()
+    List<Car> getWinnerCars(int winnerPosition) {
+        return this.cars.stream()
                 .filter(car -> car.isWinner(winnerPosition))
                 .collect(Collectors.toList());
-
-        return winnerCars;
     }
 
     public Cars moveCarsPositionByInterface() {
