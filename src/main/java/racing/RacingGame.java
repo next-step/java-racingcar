@@ -1,12 +1,12 @@
 package racing;
 
-import common.CommonConstant;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
+
+    private static final String COMMA_CHARACTER = ",";
 
     private final int MAX_BOUND = 10;
 
@@ -21,7 +21,7 @@ public class RacingGame {
     }
 
     private void readyRacingCars() {
-        String[] carNames = carName.split(CommonConstant.COMMA_CHARACTER);
+        String[] carNames = carName.split(COMMA_CHARACTER);
         for (String carName : carNames) {
             racingCars.add(new Car(carName));
         }

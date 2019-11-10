@@ -1,7 +1,5 @@
 package racing;
 
-import common.CommonConstant;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -25,7 +23,7 @@ public class RacingInputCarCountView {
             return scanner.next();
         } catch (InputMismatchException e) {
             scanner.close();
-            throw new InputMismatchException(CommonConstant.WRONG_INPUT_VALUE);
+            throw new InputMismatchException(RacingConstant.WRONG_INPUT_VALUE);
         }
     }
 
