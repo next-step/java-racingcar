@@ -1,22 +1,43 @@
 package racingcar.domain;
 
+import racingcar.util.RandomGenerator;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
 
-    private Cycles cycles;
+    private static final int BOUND_NUMBER = 10;
 
-    public RacingGame(List<String> carNames, int runCount) {
-        cycles = new Cycles(carNames);
-        run(runCount);
+    public List<Records> run(List<String> carNames, int runCount) {
+
+        List<Records> records = new ArrayList<>();
+        List<Car> cars = readyCars(carNames);
+
+        for (int i = 0; i < runCount; i++) {
+            List<CarRecord> record = doCycle(cars);
+            records.add(new Records(record));
+        }
+        return records;
     }
 
-    private void run(int runCount) {
-        cycles.run(runCount);
+    private List<CarRecord> doCycle(List<Car> cars) {
+        List<CarRecord> carRecord = new ArrayList<>();
+        for (Car car : cars) {
+            car.move(RandomGenerator.getRandomInteger(BOUND_NUMBER));
+            carRecord.add(CarRecord.of(car));
+        }
+
+        return carRecord;
     }
 
-    public Cycles getCycles() {
-        return cycles;
+    private List<Car> readyCars(List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String carName : carNames) {
+
+            cars.add(new Car(carName));
+        }
+        return cars;
     }
 
 }

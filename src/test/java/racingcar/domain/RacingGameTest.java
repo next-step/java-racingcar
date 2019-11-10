@@ -19,11 +19,11 @@ class RacingGameTest {
         int runCount = 3;
 
         //when
-        RacingGame racingGame = new RacingGame(carNameList, runCount);
-        Cycles cycles = racingGame.getCycles();
+        RacingGame racingGame = new RacingGame();
+        List<Records> records = racingGame.run(carNameList, 3);
 
         //then
-        assertThat(cycles.getCycles()).hasSize(runCount);
-        assertThat(cycles.getCycles().get(0).getCycle()).hasSize(carNameList.size());
+        assertThat(records).hasSize(runCount);
+        assertThat(records.get(0).getCarRecords()).hasSize(carNameList.size());
     }
 }

@@ -1,9 +1,7 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
-import racingcar.domain.Cycles;
-import racingcar.domain.RacingCycle;
-import racingcar.domain.RacingGame;
+import racingcar.domain.CarRecord;
+import racingcar.domain.Records;
 
 import java.util.List;
 
@@ -11,43 +9,30 @@ import static racingcar.domain.UserInput.DELIMITER;
 
 public class ResultView {
 
-    private Cycles cycles;
+    private static final int LAST_INDEX = -1;
+    private List<Records> records;
 
-    private static final String LOCATION_EXPRESSION_STRING = "-";
-
-    public ResultView(Cycles cycles) {
-        this.cycles = cycles;
+    public ResultView(List<Records> records) {
+        this.records = records;
     }
 
     public void printRace() {
-        for (RacingCycle cars : cycles.getCycles()) {
-            printCycle(cars);
+        for (Records record : records) {
+            printRecord(record);
         }
+    }
+
+    private void printRecord(Records record) {
+        for (CarRecord carRecord : record.getCarRecords()) {
+            System.out.println(carRecord.getPrintRecordFormat());
+        }
+        System.out.println();
     }
 
     public void printWinner() {
 
-        List<String> winners = cycles.findWinners();
+        List<String> winners = records.get(records.size() + LAST_INDEX).findWinners();
         System.out.println(String.format("%s가 최종 우승하였습니다.", String.join(DELIMITER, winners)));
-    }
-
-
-    private void printCycle(RacingCycle cycle) {
-        for (Car car : cycle.getCycle()) {
-            System.out.println(drawLocation(car.getName(), car.getLocation()));
-        }
-
-        System.out.println();
-    }
-
-    private String drawLocation(String name, int location) {
-        StringBuilder locationBuilder = new StringBuilder();
-        locationBuilder.append(name)
-                .append(" : ");
-        for (int i = 0; i < location; i++) {
-            locationBuilder.append(LOCATION_EXPRESSION_STRING);
-        }
-        return locationBuilder.toString();
     }
 
 }
