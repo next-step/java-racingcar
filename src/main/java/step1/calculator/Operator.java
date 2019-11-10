@@ -15,4 +15,32 @@ public enum Operator {
     public String getName() {
         return name;
     }
+
+    public static boolean isEqualPlusOperator(String arg){
+        if(PLUS_OPERATOR.getName().equals(arg)){
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isEqualMinusOperator(String arg){
+        if(MINUS_OPERATOR.getName().equals(arg)){
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isEqualMultiplyOperator(String arg){
+        if(MULTIPLY_OPERATOR.getName().equals(arg)){
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isEqualDivideOperator(String arg){
+        if(DIVIDE_OPERATOR.getName().equals(arg)){
+            return true;
+        }
+        return false;
+    }
 }
