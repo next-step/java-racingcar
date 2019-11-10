@@ -1,4 +1,4 @@
-package step3.racingcarWinner;
+package step3.racingcarWinner.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +13,24 @@ public class RacingGame {
     private static String inputName;
     private static int inputTryCount;
     private int maxPosition;
+    private List<Car> carList;
 
     public RacingGame(String inputName, int inputTryCount) {
         this.inputName = inputName;
         this.inputTryCount = inputTryCount;
+        readyOnCarTrack();
+    }
+
+    private void readyOnCarTrack() {
+        String[] carNameArr = parseCarNameArr(inputName);
+        this.carList = createCarList(carNameArr);
+    }
+
+    public List<Car> run() {
+        for (Car car : this.carList) {
+            moveCar(car);
+        }
+        return this.carList;
     }
 
     public String[] parseCarNameArr(String inputName) {
@@ -35,24 +49,11 @@ public class RacingGame {
         return random.nextInt(RANDOM_BOUND);
     }
 
-    public List<Car> start() {
-        String[] carNameArr = parseCarNameArr(inputName);
-        List<Car> carList = createCarList(carNameArr);
-        return race(carList, inputTryCount);
-    }
-
-    private List<Car> race(List<Car> carList, int inputTryCount) {
-        for (int i = 0; i < inputTryCount; i++) {
-            moveCarList(carList);
-        }
-        prize(carList);
-        return carList;
-    }
-
-    private void prize(List<Car> carList) {
+    public List<Car> prize(List<Car> carList) {
         for (Car car : carList) {
             prizePerCar(car);
         }
+        return carList;
     }
 
     private void prizePerCar(Car car) {
@@ -62,18 +63,10 @@ public class RacingGame {
     }
 
     private boolean isWinner(Car car) {
-        if(car.isEqualPosition(maxPosition)){
+        if (car.isEqualPosition(maxPosition)) {
             return true;
         }
         return false;
-    }
-
-    private List<Car> moveCarList(List<Car> carList) {
-        for (Car car : carList) {
-            moveCar(car);
-        }
-        System.out.println("");
-        return carList;
     }
 
     private void moveCar(Car car) {
@@ -83,7 +76,6 @@ public class RacingGame {
         if (maxPosition < car.getPosition()) {
             maxPosition = car.getPosition();
         }
-        ResultView.printCurrentCarPosition(car);
     }
 
     public List<Car> createCarList(String[] carNameArr) {

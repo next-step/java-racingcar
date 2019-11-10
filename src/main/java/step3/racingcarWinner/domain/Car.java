@@ -1,4 +1,4 @@
-package step3.racingcarWinner;
+package step3.racingcarWinner.domain;
 
 import java.util.Objects;
 

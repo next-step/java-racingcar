@@ -2,11 +2,12 @@ package step3.racingcarWinner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.racingcarWinner.domain.Car;
+import step3.racingcarWinner.domain.RacingGame;
 
 class RacingGameTest {
 

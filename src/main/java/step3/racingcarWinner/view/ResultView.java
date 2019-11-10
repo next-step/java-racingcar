@@ -1,4 +1,7 @@
-package step3.racingcarWinner;
+package step3.racingcarWinner.view;
+
+import step3.racingcarWinner.domain.Car;
+import step3.racingcarWinner.domain.RacingGame;
 
 import java.util.List;
 
@@ -10,6 +13,14 @@ public class ResultView {
 
     public ResultView(RacingGame racingGame) {
         this.racingGame = racingGame;
+    }
+
+    public static List<Car> printCurrentCarListPosition(List<Car> carList) {
+        for (int i = 0; i < carList.size(); i++) {
+            printCurrentCarPosition(carList.get(i));
+        }
+        System.out.println("");
+        return carList;
     }
 
     public static void printCurrentCarPosition(Car car) {
