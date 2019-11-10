@@ -14,7 +14,7 @@ class CarTest {
     @DisplayName("자동차의 위치와 우승후보 위치를 비교하여 높은 값을 반환하는지 테스트")
     void getWinnerPositionTest(int position) {
         Car car = new Car("testCar");
-        assertThat(car.getWinnerPosition(position)).isEqualTo(position);
+        assertThat(car.comparePositionWith(position)).isEqualTo(position);
     }
 
     @Test

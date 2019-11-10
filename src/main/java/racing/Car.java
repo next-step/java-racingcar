@@ -4,7 +4,7 @@ public class Car {
 
     private final int MOVE_CONDITION_NUMBER = 4;
     private final int MOVE_NUMBER = 1;
-    private final int STOP_NUMBER = 0;
+    private final int ZERO_NUMBER = 0;
 
     public final String carName;
 
@@ -12,7 +12,7 @@ public class Car {
 
     public Car(String carName) {
         this.carName = carName;
-        this.position = STOP_NUMBER;
+        this.position = ZERO_NUMBER;
     }
 
     public int move(int movableValue) {
@@ -20,10 +20,10 @@ public class Car {
     }
 
     private int isMovable(int movableValue) {
-        return (movableValue >= MOVE_CONDITION_NUMBER) ? MOVE_NUMBER : STOP_NUMBER;
+        return (movableValue >= MOVE_CONDITION_NUMBER) ? MOVE_NUMBER : ZERO_NUMBER;
     }
 
-    public int getWinnerPosition(int winnerPosition) {
+    public int comparePositionWith(int winnerPosition) {
         return Math.max(this.position, winnerPosition);
     }
 
