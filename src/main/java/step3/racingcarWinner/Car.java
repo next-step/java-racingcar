@@ -33,6 +33,13 @@ public class Car {
         this.finalWinner = true;
     }
 
+    public boolean isEqualPosition(int inputPosition){
+        if(this.position != inputPosition){
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

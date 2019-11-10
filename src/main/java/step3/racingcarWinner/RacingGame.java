@@ -62,7 +62,7 @@ public class RacingGame {
     }
 
     private boolean isWinner(Car car) {
-        if (car.getPosition() == maxPosition) {
+        if(car.isEqualPosition(maxPosition)){
             return true;
         }
         return false;
