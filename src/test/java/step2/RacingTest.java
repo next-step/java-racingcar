@@ -2,56 +2,41 @@ package step2;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import step2.dto.RacingData;
+import step2.dto.ResultData;
+import step2.move.DefaultMove;
+import step2.racing.Racing;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RacingTest {
-
-    Racing racing;
+    private static Racing racing;
+    private static ResultData resultData;
 
     @BeforeEach
     void setUp() {
-        racing = new Racing(new String[]{"car1", "car2", "car3"}, 5);
-    }
-
-    @ParameterizedTest
-    @CsvSource(value = {
-            "car1, car2, car3:5",
-            "bus1, bus2, bus3, bus4, bus5:5"
-    }, delimiter = ':')
-    void setRacingTest(String answer, int turn) {
-        String[] carsName = answer.trim().split(",");
-        racing = new Racing(carsName, turn);
-        assertThat(racing.getTurn()).isEqualTo(turn);
+        racing = new Racing(new RacingData(new String[]{"bus", "taxi", "tank"}, 5),
+                new DefaultMove());
+        resultData = racing.race();
     }
 
     @Test
-    void race() {
-        racing.race(1);
-        assertAll(
-                () -> assertEquals(true, racing.getCar(0).getMoveOfTurn(1)),
-                () -> assertEquals(true, racing.getCar(1).getMoveOfTurn(1)),
-                () -> assertEquals(true, racing.getCar(2).getMoveOfTurn(1))
-        );
+    void findWinner() {
+        String[] winners = resultData.findWinner().toString()
+                .replace(" ", "")
+                .split("[,]");
+        assertThat(winners)
+                .containsExactlyInAnyOrder("bus", "taxi", "tank");
     }
 
     @Test
-    void moveTest() {
-        Car car = racing.getCar(0);
-        racing.move(car, 1);
-        racing.move(car, 2);
-        racing.move(car, 4);
-        assertAll(
-                () -> assertEquals(false, car.getMoveOfTurn(0)),
-                () -> assertEquals(true, car.getMoveOfTurn(1)),
-                () -> assertEquals(true, car.getMoveOfTurn(2)),
-                () -> assertEquals(false, car.getMoveOfTurn(3)),
-                () -> assertEquals(true, car.getMoveOfTurn(4))
-        );
+    void scoreByRound() {
+        assertThat(resultData.scoreByRound(0)).containsExactlyInAnyOrder(1, 1, 1);
+        assertThat(resultData.scoreByRound(1)).containsExactlyInAnyOrder(2, 2, 2);
+        assertThat(resultData.scoreByRound(2)).containsExactlyInAnyOrder(3, 3, 3);
+        assertThat(resultData.scoreByRound(3)).containsExactlyInAnyOrder(4, 4, 4);
+        assertThat(resultData.scoreByRound(4)).containsExactlyInAnyOrder(5, 5, 5);
     }
+
 
 }
