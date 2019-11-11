@@ -1,6 +1,10 @@
 package racingcar;
 
-import java.util.List;
+import racingcar.domain.GameResult;
+import racingcar.domain.RacingGame;
+import racingcar.domain.UserInput;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 public class Main {
 
@@ -11,10 +15,10 @@ public class Main {
 
         UserInput input = inputView.getInput();
 
-        RacingGame game = new RacingGame(input.getCarNameList(), input.getRunNumber());
-        List<RacingCycle> cycles = game.getCycles();
+        RacingGame game = new RacingGame();
+        GameResult gameResult = game.run(input.getCarNames(), input.getRunCount());
 
-        ResultView resultView = new ResultView(cycles);
+        ResultView resultView = new ResultView(gameResult);
         resultView.printRace();
         resultView.printWinner();
     }

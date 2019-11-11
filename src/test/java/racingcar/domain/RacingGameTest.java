@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,15 +15,15 @@ class RacingGameTest {
     void runRacingGame() {
 
         //given
-        List<String> carNameList = Arrays.asList("a","b");
-        int runNumber = 3;
+        List<String> carNameList = Arrays.asList("a", "b");
+        int runCount = 3;
 
         //when
-        RacingGame racingGame = new RacingGame(carNameList, runNumber);
-        List<RacingCycle> cycles = racingGame.getCycles();
+        RacingGame racingGame = new RacingGame();
+        GameResult gameResult = racingGame.run(carNameList, 3);
 
         //then
-        assertThat(cycles).hasSize(runNumber);
-        assertThat(cycles.get(0).get()).hasSize(carNameList.size());
+        assertThat(gameResult.getRecords()).hasSize(runCount);
+        assertThat(gameResult.getRecords().get(0).getCarRecords()).hasSize(carNameList.size());
     }
 }
