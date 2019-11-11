@@ -3,11 +3,21 @@ package racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.model.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
+
+    @ParameterizedTest
+    @CsvSource(value = {"3:0", "7:1"}, delimiter = ':')
+    @DisplayName("자동차 이동 테스트")
+    void moveTest(int randomValue, int position) {
+        Car car = new Car("testCar");
+        assertThat(car.move(randomValue)).isEqualTo(position);
+    }
 
     @ParameterizedTest
     @ValueSource(ints = {3, 4})
