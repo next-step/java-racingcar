@@ -12,24 +12,23 @@ public enum Operator {
     MULTIPLY((num1, num2) -> num1 * num2),
     DIVIDE((num1, num2) -> num1 / num2);
 
-    private final static List<String> operators = Arrays.asList("+", "-", "*", "/");
     private BinaryOperator<Integer> expression;
-    private static Map<String, Operator> operator;
+    private final static Map<String, Operator> OPERATOR;
 
     Operator(BinaryOperator<Integer> expression) {
         this.expression = expression;
     }
 
     static {
-        operator = new HashMap<>();
-        operator.put("+", Operator.ADD);
-        operator.put("-", Operator.SUBTRACT);
-        operator.put("*", Operator.MULTIPLY);
-        operator.put("/", Operator.DIVIDE);
+        OPERATOR = new HashMap<>();
+        OPERATOR.put("+", Operator.ADD);
+        OPERATOR.put("-", Operator.SUBTRACT);
+        OPERATOR.put("*", Operator.MULTIPLY);
+        OPERATOR.put("/", Operator.DIVIDE);
     }
 
     public static boolean containsKey(String operator) {
-        return operators.contains(operator);
+        return OPERATOR.containsKey(operator);
     }
 
     public int calculate(int result, int value) {
@@ -37,6 +36,6 @@ public enum Operator {
     }
 
     public static Operator calculateOfOperator(String operatorInput) {
-        return operator.get(operatorInput);
+        return OPERATOR.get(operatorInput);
     }
 }

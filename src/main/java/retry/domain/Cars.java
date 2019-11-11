@@ -13,7 +13,7 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
-        this.cars = cars;
+        this.cars = new ArrayList<>(cars);
     }
 
     public Cars(String carName) {
@@ -35,7 +35,7 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public Cars moveCarsPositionByInterface() {
+    public Cars moveCarWhenRandomNumberBetterThanPivotNumber() {
         List<Car> carsWithPosition = new ArrayList<>();
         for (Car car : this.cars) {
             carsWithPosition.add(car.move(() -> getRandomNumber() >= PIVOT_NUMBER));
@@ -46,7 +46,6 @@ public class Cars {
     private int getRandomNumber() {
         return new Random().nextInt(RANDOM_BOUND_NUMBER);
     }
-
 
     public int getWinnerPositionValue(int maxPosition) {
         int max = maxPosition;
