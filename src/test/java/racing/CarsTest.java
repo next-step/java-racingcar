@@ -2,6 +2,7 @@ package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.model.Cars;
 
@@ -24,5 +25,13 @@ class CarsTest {
     void createCarsTest(String inputCarNames) {
         Cars cars = new Cars();
         assertThat(cars.createCars(inputCarNames)).isEqualTo(new Cars().createCars("javajigi, cwpark, ironman"));
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"javajigi, cwpark, ironman:3"}, delimiter = ':')
+    @DisplayName("자동차 대수 확인 테스트")
+    void countOfCarsTest(String inputCarNames, int countOfCars) {
+        Cars cars = new Cars();
+        assertThat(cars.createCars(inputCarNames).countOfCars()).isEqualTo(countOfCars);
     }
 }
