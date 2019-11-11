@@ -1,14 +1,15 @@
 package racing;
 
-import common.CommonConstant;
-
 import java.util.List;
 
 public class RacingResultView {
 
-    private final String EXECUTE_RESULT_MESSAGE = "%n실행 결과%n" ;
-    private final String WINNER_RESULT_MESSAGE = "%s가 최종 우승했습니다.%n";
-    private final String MOVE_CAR_EXPRESSION = "- ";
+    private static final String EXECUTE_RESULT_MESSAGE = "%n실행 결과%n" ;
+    private static final String WINNER_RESULT_MESSAGE = "%s가 최종 우승했습니다.%n";
+    private static final String MOVE_CAR_EXPRESSION = "- ";
+    private static final String COMMA_CHARACTER = ",";
+    private static final String WRONG_INPUT_VALUE = "잘못된 입력 값입니다.";
+    private static final String EMPTY_SPACE_CHARACTER = " ";
 
     public RacingResultView() {
         System.out.printf(EXECUTE_RESULT_MESSAGE);
@@ -35,7 +36,7 @@ public class RacingResultView {
         int winnerPosition = -1;
         for (Car racingCar : racingCars) {
             winners = checkWinners(winners, winnerPosition, racingCar);
-            winnerPosition = racingCar.getWinnerPosition(winnerPosition);
+            winnerPosition = racingCar.comparePositionWith(winnerPosition);
         }
         System.out.printf(WINNER_RESULT_MESSAGE, winners.toString());
     }
@@ -48,7 +49,7 @@ public class RacingResultView {
             return new StringBuilder(currentRacingCar.carName);
         }
         if (currentRacingCar.isEqualWinnerPosition(winnerPosition)) {
-            return winners.append(CommonConstant.COMMA_CHARACTER).append(CommonConstant.EMPTY_SPACE_CHARACTER).append(currentRacingCar.carName);
+            return winners.append(COMMA_CHARACTER).append(EMPTY_SPACE_CHARACTER).append(currentRacingCar.carName);
 
         }
 

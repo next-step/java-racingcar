@@ -6,9 +6,9 @@ public class Car {
     private final int MOVE_NUMBER = 1;
     private final int ZERO_NUMBER = 0;
 
-    public final String carName;
+    private final String carName;
 
-    public int position;
+    private int position;
 
     public Car(String carName) {
         this.carName = carName;

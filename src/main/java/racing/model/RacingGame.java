@@ -14,7 +14,7 @@ public class RacingGame {
     private int time;
     private List<Car> racingCars = new ArrayList<>();
 
-    public RacingGame(String carName, int time) {
+    public RacingGame(Cars cars, int time) {
         this.carName = carName;
         this.time = time;
         readyRacingCars();
