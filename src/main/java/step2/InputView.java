@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 public class InputView {
 
-	private final int MINIMUM_CAR_COUNT = 2;
+	private static final int MINIMUM_CAR_COUNT = 2;
 
-	private final int MINIMUM_MOVE_COUNT = 1;
+	private static final int MINIMUM_MOVE_COUNT = 1;
 
-	public UserInput getUserInput() {
+	public static UserInput getUserInput() {
 		Scanner scanner = new Scanner(System.in);
 
 		System.out.println("자동차 대수는 몇 대인가요?");

@@ -2,17 +2,17 @@ package step2;
 
 public class ResultView {
 
-	public void printCars(int[] carPositions) {
-		for (int i = 0; i < carPositions.length; i++) {
-			printCar(carPositions[i]);
+	public static void printCars(Car[] cars) {
+		for (Car car : cars) {
+			printCar(car);
 		}
 		System.out.println();
 	}
 
-	private void printCar(int carPosition) {
+	private static void printCar(Car car) {
 		StringBuilder sb = new StringBuilder();
 
-		for (int i = 0; i < carPosition; i++) {
+		for (int i = 0, len = car.getPosition(); i < len; i++) {
 			sb.append("-");
 		}
 		System.out.println(sb.toString());

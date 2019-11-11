@@ -2,21 +2,21 @@ package step2;
 
 public class UserInput {
 
-	private final int CAR_COUNT;
+	private final int carCount;
 
-	private final int MOVE_COUNT;
+	private final int moveCount;
 
 	public UserInput(int carCount, int moveCount) {
-		this.CAR_COUNT = carCount;
-		this.MOVE_COUNT = moveCount;
+		this.carCount = carCount;
+		this.moveCount = moveCount;
 	}
 
-	public int getCAR_COUNT() {
-		return CAR_COUNT;
+	public int getCarCount() {
+		return carCount;
 	}
 
-	public int getMOVE_COUNT() {
-		return MOVE_COUNT;
+	public int getMoveCount() {
+		return moveCount;
 	}
 
 }

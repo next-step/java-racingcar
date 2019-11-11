@@ -8,42 +8,46 @@ public class RacingGame {
 
 	private static final int DELIMITER_NUMBER = 4;
 
-	private UserInput userInput;
-
-	private int[] carPositions;
-
 	public static void main(String[] args) {
-		RacingGame racingGame = new RacingGame();
-		racingGame.setting();
-		racingGame.doRacing();
+		UserInput userInput = RacingGame.getUserInput();
+		Car[] cars = RacingGame.initDataStructure(userInput.getCarCount());
+		RacingGame.doRacing(cars, userInput.getMoveCount());
 	}
 
-	private void setting() {
-		InputView inputView = new InputView();
-		userInput = inputView.getUserInput();
-		carPositions = new int[userInput.getCAR_COUNT()];
+	// 사용자 입력값 처리
+	static UserInput getUserInput() {
+		return InputView.getUserInput();
 	}
 
-	private void doRacing() {
-		ResultView resultView = new ResultView();
-		for (int i = 0; i < userInput.getMOVE_COUNT(); i++) {
-			processRacingTurn();
-			resultView.printCars(carPositions);
+	// Car 객체를 담을 배열 생성 및 초기화
+	static Car[] initDataStructure(int carCount) {
+		Car[] cars = new Car[carCount];
+		for (int i = 0, len = cars.length; i < len; i++) {
+			cars[i] = new Car();
 		}
+		return cars;
 	}
 
-	private void processRacingTurn() {
-		for (int i = 0; i < carPositions.length; i++) {
-			moveCar(i);
+	// 레이싱 전체를 진행
+	static int doRacing(Car[] cars, int moveCount) {
+		while (moveCount-- > 0) {
+			ResultView.printCars(processRacingTurn(cars));
 		}
+		return moveCount;
 	}
 
-	private void moveCar(int carNo) {
+	// 레이싱 한 턴을 진행
+	static Car[] processRacingTurn(Car[] cars) {
+		for (Car car : cars) {
+			car.move(isMove());
+		}
+		return cars;
+	}
+
+	// 이동 조건을 만족하는지 확인
+	static boolean isMove() {
 		Random random = new Random();
-		int randomNumber = random.nextInt(LIMIT_NUMBER);
-
-		if (randomNumber >= DELIMITER_NUMBER) {
-			carPositions[carNo]++;
-		}
+		return random.nextInt(LIMIT_NUMBER) >= DELIMITER_NUMBER;
 	}
+
 }
