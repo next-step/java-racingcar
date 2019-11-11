@@ -44,6 +44,22 @@ public class Cars {
         }
     }
 
+    public Car getCar(int i) {
+        return racingCars.get(i);
+    }
+
+    public String getWinners() {
+        int countOfCars = countOfCars();
+        int winnerPosition = -1;
+        StringBuilder winners = new StringBuilder();
+        for (int i = 0; i < countOfCars; i++) {
+            Car car = racingCars.get(i);
+            winners = car.printWinners(winners, winnerPosition);
+            winnerPosition = car.comparePositionWith(winnerPosition);
+        }
+        return winners.toString();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
