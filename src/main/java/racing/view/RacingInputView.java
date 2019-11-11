@@ -1,4 +1,6 @@
-package racing;
+package racing.view;
+
+import racing.model.RacingConstant;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -22,10 +24,18 @@ public class RacingInputView {
     public int inputCountOfTry() {
         System.out.println(CHECK_RUN_TIME);
         try {
-            return scanner.nextInt();
+            int countOfTry = scanner.nextInt();
+            return validateCount(countOfTry);
         } catch (InputMismatchException e) {
             throw new IllegalArgumentException(RacingConstant.WRONG_INPUT_VALUE, e);
         }
+    }
+
+    private int validateCount(int countOfTry) {
+        if (countOfTry == RacingConstant.ZERO_NUMBER) {
+            throw new IllegalArgumentException(RacingConstant.WRONG_INPUT_VALUE);
+        }
+        return 0;
     }
 
     public void close() {
