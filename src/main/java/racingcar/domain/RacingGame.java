@@ -9,7 +9,7 @@ public class RacingGame {
 
     private static final int BOUND_NUMBER = 10;
 
-    public List<Records> run(List<String> carNames, int runCount) {
+    public GameResult run(List<String> carNames, int runCount) {
 
         List<Records> records = new ArrayList<>();
         List<Car> cars = readyCars(carNames);
@@ -18,7 +18,7 @@ public class RacingGame {
             List<CarRecord> record = doCycle(cars);
             records.add(new Records(record));
         }
-        return records;
+        return new GameResult(records);
     }
 
     private List<CarRecord> doCycle(List<Car> cars) {

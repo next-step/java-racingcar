@@ -20,10 +20,10 @@ class RacingGameTest {
 
         //when
         RacingGame racingGame = new RacingGame();
-        List<Records> records = racingGame.run(carNameList, 3);
+        GameResult gameResult = racingGame.run(carNameList, 3);
 
         //then
-        assertThat(records).hasSize(runCount);
-        assertThat(records.get(0).getCarRecords()).hasSize(carNameList.size());
+        assertThat(gameResult.getRecords()).hasSize(runCount);
+        assertThat(gameResult.getRecords().get(0).getCarRecords()).hasSize(carNameList.size());
     }
 }
