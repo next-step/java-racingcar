@@ -5,36 +5,36 @@ import java.util.List;
 
 public class RacingGame {
     private static final int MAX_POSITION_VALUE = 0;
-    private final List<Cars> AllTimeLapRacingCars;
-    private Cars CurrentRacingCars;
+    private final List<Cars> allTimeLapRacingCars;
+    private Cars currentRacingCars;
 
     public RacingGame(Cars cars) {
-        this.AllTimeLapRacingCars = new ArrayList<>();
-        this.CurrentRacingCars = cars;
+        this.allTimeLapRacingCars = new ArrayList<>();
+        this.currentRacingCars = cars;
     }
 
     public List<Cars> execute(int time) {
         for (int i = 0; i < time; i++) {
             repeatRacingGame();
         }
-        return AllTimeLapRacingCars;
+        return allTimeLapRacingCars;
     }
 
     public List<Cars> repeatRacingGame() {
-        Cars movedCars = CurrentRacingCars.moveCarWhenRandomNumberBetterThanPivotNumber();
-        AllTimeLapRacingCars.add(movedCars);
-        this.CurrentRacingCars = movedCars;
-        return AllTimeLapRacingCars;
+        Cars movedCars = currentRacingCars.move();
+        allTimeLapRacingCars.add(movedCars);
+        this.currentRacingCars = movedCars;
+        return allTimeLapRacingCars;
     }
 
     public List<Car> getWinners() {
         int winnerPosition = getWinnerPositionValue();
-        return this.CurrentRacingCars.getWinnerCars(winnerPosition);
+        return this.currentRacingCars.getWinnerCars(winnerPosition);
     }
 
     private int getWinnerPositionValue() {
         int maxPositionValue = MAX_POSITION_VALUE;
-        for (Cars racingCar : this.AllTimeLapRacingCars) {
+        for (Cars racingCar : this.allTimeLapRacingCars) {
             maxPositionValue = racingCar.getWinnerPositionValue(maxPositionValue);
         }
         return maxPositionValue;

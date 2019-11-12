@@ -28,7 +28,7 @@ public class CarsTest {
 
     @Test
     void moveTest() {
-        Cars newRacingCars = racingCars.moveCarWhenRandomNumberBetterThanPivotNumber();
+        Cars newRacingCars = racingCars.move();
         assertThat(racingCars).isNotEqualTo(newRacingCars);
     }
 

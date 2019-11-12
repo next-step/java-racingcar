@@ -35,7 +35,7 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public Cars moveCarWhenRandomNumberBetterThanPivotNumber() {
+    public Cars move() {
         List<Car> carsWithPosition = new ArrayList<>();
         for (Car car : this.cars) {
             carsWithPosition.add(car.move(() -> getRandomNumber() >= PIVOT_NUMBER));
