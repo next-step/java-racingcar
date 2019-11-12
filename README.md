@@ -7,3 +7,9 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+
+#구현 기능 목록
+1. 사용자 입력 기능
+2. 자동차 위치 변경 기능
+3. 현재 자동차 위치 출력 기능
