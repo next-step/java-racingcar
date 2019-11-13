@@ -1,4 +1,4 @@
-package step1;
+package calculator;
 
 public class StringCalculator {
     private String inputRequest;

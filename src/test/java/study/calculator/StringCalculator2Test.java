@@ -1,12 +1,12 @@
-package study.step1;
+package study.calculator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
-import org.junit.jupiter.params.provider.ValueSource;
-import step1.StringCalculator2;
+import calculator.Operator;
+import calculator.StringCalculator2;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Java6Assertions.assertThat;
@@ -22,22 +22,22 @@ public class StringCalculator2Test {
 
     @Test
     void addTest() {
-        assertThat(stringCalculator2.add(1, 2)).isEqualTo(3);
+        assertThat(Operator.ADD.calculate(1, 2)).isEqualTo(3);
     }
 
     @Test
     void subtractTest() {
-        assertThat(stringCalculator2.subtract(1, 2)).isEqualTo(-1);
+        assertThat(Operator.SUBTRACT.calculate(1, 2)).isEqualTo(-1);
     }
 
     @Test
     void multiplyTest() {
-        assertThat(stringCalculator2.multiply(2, 3)).isEqualTo(6);
+        assertThat(Operator.MULTIPLY.calculate(2, 5)).isEqualTo(10);
     }
 
     @Test
     void divideTest() {
-        assertThat(stringCalculator2.divide(6, 2)).isEqualTo(3);
+        assertThat(Operator.DIVIDE.calculate(6, 3)).isEqualTo(2);
     }
 
     @ParameterizedTest
