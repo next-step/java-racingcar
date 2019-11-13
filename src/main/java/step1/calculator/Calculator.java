@@ -38,16 +38,16 @@ public class Calculator {
         isValidateOperator(operator);
 
         long result = 0L;
-        if(Operator.isEqualPlusOperator(operator)){
+        if (Operator.isEqualPlusOperator(operator)) {
             result = plus(first, second);
         }
-        if(Operator.isEqualMinusOperator(operator)){
+        if (Operator.isEqualMinusOperator(operator)) {
             result = minus(first, second);
         }
-        if(Operator.isEqualMultiplyOperator(operator)){
+        if (Operator.isEqualMultiplyOperator(operator)) {
             result = multiply(first, second);
         }
-        if(Operator.isEqualDivideOperator(operator)){
+        if (Operator.isEqualDivideOperator(operator)) {
             result = divide(first, second);
         }
 
