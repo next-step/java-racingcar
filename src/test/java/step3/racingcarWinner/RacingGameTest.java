@@ -12,9 +12,8 @@ import step3.racingcarWinner.domain.RacingGame;
 class RacingGameTest {
 
     private static String inputName = "pobi,crong,honux";
-    private static int inputTryCount = 5;
 
-    private RacingGame racingGame = new RacingGame(inputName, inputTryCount);
+    private RacingGame racingGame = new RacingGame(inputName);
 
     @DisplayName("입력받은 값만큼 자동차수가 생성되는지 확인")
     @Test

@@ -24,9 +24,10 @@ public class Controller {
         for (int i = 0; i < racingLap; i++) {
             lapPerCarMovedList.add(generateCarMovedHistory(racingGame.run()));
             lapPerCarList.add(racingGame.run());
+            racingGame.prizeCheck(lapPerCarList, racingLap);
         }
         resultView.printLapPerCarPositionList(lapPerCarMovedList);
-        resultView.printFinalWinner(lapPerCarList, racingLap);
+        resultView.printFinalWinner(lapPerCarList, racingLap - 1);
     }
 
     public static List<Car> generateCarMovedHistory(List<Car> carList) {

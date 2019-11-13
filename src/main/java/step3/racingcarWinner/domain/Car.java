@@ -34,7 +34,7 @@ public class Car {
     }
 
     public boolean isEqualPosition(int inputPosition){
-        return this.position != inputPosition;
+        return this.position == inputPosition;
     }
 
     @Override

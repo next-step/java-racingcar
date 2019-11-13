@@ -1,7 +1,6 @@
 package step3.racingcarWinner.view;
 
 import step3.racingcarWinner.domain.Car;
-import step3.racingcarWinner.domain.RacingGame;
 
 import java.util.List;
 
@@ -25,8 +24,9 @@ public class ResultView {
         }
     }
 
-    public void printFinalWinner(List<List<Car>> lapPerCarMovedList,int racingLap) {
-        List<Car> carList = lapPerCarMovedList.get(racingLap-1);
+    public void printFinalWinner(List<List<Car>> lapPerCarMovedList, int racingLap) {
+
+        List<Car> carList = lapPerCarMovedList.get(racingLap - 1);
         for (Car car : carList) {
             appendWinner(car);
         }
@@ -34,13 +34,17 @@ public class ResultView {
     }
 
     private void appendWinner(Car car) {
+        ;
         if (car.isFinalWinner()) {
             generateWinnerText(car.getName());
         }
     }
 
     private void generateWinnerText(String name) {
-        if (!winner.equals("")) {
+        if (name.isEmpty()) {
+            name = "";
+        }
+        if (winner != "") {
             winner += ", " + name;
         }
 
@@ -50,7 +54,7 @@ public class ResultView {
     }
 
     public void printLapPerCarPositionList(List<List<Car>> lapPerCarList) {
-        for(List<Car> carList : lapPerCarList){
+        for (List<Car> carList : lapPerCarList) {
             printCurrentCarListPosition(carList);
             System.out.println("  ");
         }

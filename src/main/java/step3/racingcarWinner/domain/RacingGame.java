@@ -45,6 +45,19 @@ public class RacingGame {
         return random.nextInt(RANDOM_BOUND);
     }
 
+    public void prizeCheck(List<List<Car>> lapPerCarList, int racingLap) {
+        if (lapPerCarList.size() == racingLap) {
+            prize(lapPerCarList.get(lapPerCarList.size() - 1));
+        }
+    }
+
+    public List<Car> prize(List<Car> carList) {
+        for (Car car : carList) {
+            prizePerCar(car);
+        }
+        return carList;
+    }
+
     private void prizePerCar(Car car) {
         if (isWinner(car)) {
             car.prizeWinner();
@@ -52,10 +65,7 @@ public class RacingGame {
     }
 
     private boolean isWinner(Car car) {
-        if (car.isEqualPosition(maxPosition)) {
-            return true;
-        }
-        return false;
+        return car.isEqualPosition(maxPosition);
     }
 
     private void moveCar(Car car) {
@@ -65,7 +75,6 @@ public class RacingGame {
         if (maxPosition < car.getPosition()) {
             maxPosition = car.getPosition();
         }
-        prizePerCar(car);
     }
 
     public List<Car> createCarList(String[] carNameArr) {
