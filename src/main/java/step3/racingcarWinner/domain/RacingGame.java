@@ -10,18 +10,16 @@ public class RacingGame {
     private static final int RANDOM_BOUND = 10;
     private static final int MOVE_MIN_VALUE = 4;
     private static final String SPLIT_REGX = ",";
-    private static String inputName;
     private static int inputTryCount;
     private int maxPosition;
     private List<Car> carList;
 
     public RacingGame(String inputName, int inputTryCount) {
-        this.inputName = inputName;
         this.inputTryCount = inputTryCount;
-        readyOnCarTrack();
+        readyOnCarTrack(inputName);
     }
 
-    private void readyOnCarTrack() {
+    private void readyOnCarTrack(String inputName) {
         String[] carNameArr = parseCarNameArr(inputName);
         this.carList = createCarList(carNameArr);
     }
