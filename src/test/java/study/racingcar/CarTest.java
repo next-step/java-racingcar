@@ -1,8 +1,8 @@
-package study.retry;
+package study.racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import retry.domain.Car;
+import racingCar.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

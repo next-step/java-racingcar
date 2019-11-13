@@ -1,12 +1,12 @@
-package study.step1;
+package study.calculator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
-import step1.Operator;
-import step1.StringCalculator2;
+import calculator.Operator;
+import calculator.StringCalculator2;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Java6Assertions.assertThat;

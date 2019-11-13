@@ -1,4 +1,4 @@
-package step1;
+package calculator;
 
 import java.util.Stack;
 

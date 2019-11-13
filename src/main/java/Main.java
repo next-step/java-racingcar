@@ -1,4 +1,4 @@
-import retry.controller.RacingGameController;
+import racingCar.controller.RacingGameController;
 
 public class Main {
 

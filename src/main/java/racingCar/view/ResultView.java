@@ -1,7 +1,7 @@
-package retry.view;
+package racingCar.view;
 
-import retry.domain.Car;
-import retry.domain.Cars;
+import racingCar.domain.Car;
+import racingCar.domain.Cars;
 
 import java.util.List;
 

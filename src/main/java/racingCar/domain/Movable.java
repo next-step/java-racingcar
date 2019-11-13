@@ -1,4 +1,4 @@
-package retry.domain;
+package racingCar.domain;
 
 @FunctionalInterface
 public interface Movable {

@@ -1,4 +1,4 @@
-package retry.domain;
+package racingCar.domain;
 
 import java.util.ArrayList;
 import java.util.List;

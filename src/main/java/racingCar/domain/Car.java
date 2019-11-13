@@ -1,7 +1,6 @@
-package retry.domain;
+package racingCar.domain;
 
 import java.util.Objects;
-import java.util.Random;
 
 public class Car {
     private static final int INCREASING_DISTANCE = 1;

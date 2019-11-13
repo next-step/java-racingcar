@@ -1,4 +1,4 @@
-package retry.view;
+package racingCar.view;
 
 import java.util.Scanner;
 

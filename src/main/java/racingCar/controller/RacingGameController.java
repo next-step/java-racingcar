@@ -1,9 +1,9 @@
-package retry.controller;
+package racingCar.controller;
 
-import retry.domain.Cars;
-import retry.domain.RacingGame;
-import retry.view.InputView;
-import retry.view.ResultView;
+import racingCar.domain.Cars;
+import racingCar.domain.RacingGame;
+import racingCar.view.InputView;
+import racingCar.view.ResultView;
 
 import java.util.List;
 
