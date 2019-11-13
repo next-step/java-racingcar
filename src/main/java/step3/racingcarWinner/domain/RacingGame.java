@@ -10,12 +10,10 @@ public class RacingGame {
     private static final int RANDOM_BOUND = 10;
     private static final int MOVE_MIN_VALUE = 4;
     private static final String SPLIT_REGX = ",";
-    private static int inputTryCount;
     private int maxPosition;
     private List<Car> carList;
 
-    public RacingGame(String inputName, int inputTryCount) {
-        this.inputTryCount = inputTryCount;
+    public RacingGame(String inputName) {
         readyOnCarTrack(inputName);
     }
 
@@ -45,13 +43,6 @@ public class RacingGame {
     private int getRandomNo() {
         Random random = new Random();
         return random.nextInt(RANDOM_BOUND);
-    }
-
-    public List<Car> prize(List<Car> carList) {
-        for (Car car : carList) {
-            prizePerCar(car);
-        }
-        return carList;
     }
 
     private void prizePerCar(Car car) {

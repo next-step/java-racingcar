@@ -13,12 +13,11 @@ public class Controller {
     public static void main(String[] args) {
         InputView inputView = new InputView();
 
-        String carNames = inputView.carNames();
-        int racingLap = inputView.racingLap();
-
-        RacingGame racingGame = new RacingGame(carNames, racingLap);
+        RacingGame racingGame = new RacingGame(inputView.carNames());
 
         ResultView resultView = new ResultView();
+
+        int racingLap = inputView.racingLap();
 
         List<List<Car>> lapPerCarList = new ArrayList<>();
         List<List<Car>> lapPerCarMovedList = new ArrayList<>();
