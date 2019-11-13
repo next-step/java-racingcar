@@ -7,19 +7,13 @@ import java.util.List;
 
 public class ResultView {
 
-    private RacingGame racingGame;
-
     private String winner = "";
 
-    public ResultView(RacingGame racingGame) {
-        this.racingGame = racingGame;
-    }
 
     public static List<Car> printCurrentCarListPosition(List<Car> carList) {
         for (int i = 0; i < carList.size(); i++) {
             printCurrentCarPosition(carList.get(i));
         }
-        System.out.println("");
         return carList;
     }
 
@@ -31,7 +25,8 @@ public class ResultView {
         }
     }
 
-    public void printFinalWinner(List<Car> carList) {
+    public void printFinalWinner(List<List<Car>> lapPerCarMovedList,int racingLap) {
+        List<Car> carList = lapPerCarMovedList.get(racingLap-1);
         for (Car car : carList) {
             appendWinner(car);
         }
@@ -53,4 +48,12 @@ public class ResultView {
             winner += name;
         }
     }
+
+    public void printLapPerCarPositionList(List<List<Car>> lapPerCarList) {
+        for(List<Car> carList : lapPerCarList){
+            printCurrentCarListPosition(carList);
+            System.out.println("  ");
+        }
+    }
+
 }

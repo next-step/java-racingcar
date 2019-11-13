@@ -13,17 +13,30 @@ public class Controller {
     public static void main(String[] args) {
         InputView inputView = new InputView();
 
-        int racingLap = inputView.racingLap();
         String carNames = inputView.carNames();
+        int racingLap = inputView.racingLap();
 
         RacingGame racingGame = new RacingGame(carNames, racingLap);
 
-        ResultView resultView = new ResultView(racingGame);
-        List<Car> carList = new ArrayList<>();
+        ResultView resultView = new ResultView();
+
+        List<List<Car>> lapPerCarList = new ArrayList<>();
+        List<List<Car>> lapPerCarMovedList = new ArrayList<>();
         for (int i = 0; i < racingLap; i++) {
-            carList = resultView.printCurrentCarListPosition(racingGame.run());
+            lapPerCarMovedList.add(generateCarMovedHistory(racingGame.run()));
+            lapPerCarList.add(racingGame.run());
         }
-        resultView.printFinalWinner(racingGame.prize(carList));
+        resultView.printLapPerCarPositionList(lapPerCarMovedList);
+        resultView.printFinalWinner(lapPerCarList, racingLap);
+    }
+
+    public static List<Car> generateCarMovedHistory(List<Car> carList) {
+        List<Car> returnCarList = new ArrayList<>();
+        for (Car cars : carList) {
+            Car car = new Car(cars.getName(), cars.getPosition());
+            returnCarList.add(car);
+        }
+        return returnCarList;
     }
 
 }

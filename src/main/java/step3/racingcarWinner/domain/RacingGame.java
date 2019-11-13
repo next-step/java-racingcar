@@ -76,6 +76,7 @@ public class RacingGame {
         if (maxPosition < car.getPosition()) {
             maxPosition = car.getPosition();
         }
+        prizePerCar(car);
     }
 
     public List<Car> createCarList(String[] carNameArr) {
