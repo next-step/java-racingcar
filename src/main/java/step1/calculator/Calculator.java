@@ -54,11 +54,10 @@ public class Calculator {
         return result;
     }
 
-    private static boolean isValidateOperator(String operator) {
+    private static void isValidateOperator(String operator) {
         if (operatorList.indexOf(operator) == -1) {
             throw new IllegalArgumentException("올바르지 않은 연산자가 입력되었습니다.");
         }
-        return true;
     }
 
     public static long run(String arg) {
