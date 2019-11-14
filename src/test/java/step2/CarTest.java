@@ -6,10 +6,10 @@ import step2.move.DefaultMove;
 import step2.move.MoveStrategy;
 import step2.racing.Car;
 import step2.racing.Model;
+import step2.racing.Winners;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -53,8 +53,8 @@ class CarTest {
     @Test
     void findWinner() {
         List<Car> cars = new ArrayList<>(Arrays.asList(car1, car2));
-        assertThat(Car.findWinner(cars))
-                .isEqualTo(Collections.singletonList(new Model("bus")));
+        assertThat(new Winners(cars).toString())
+                .isEqualTo(new Model("bus").toString());
 
     }
 
