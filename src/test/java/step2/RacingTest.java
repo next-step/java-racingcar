@@ -2,6 +2,8 @@ package step2;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import step2.dto.RacingData;
 import step2.dto.ResultData;
 import step2.move.DefaultMove;
@@ -29,14 +31,10 @@ class RacingTest {
                 .containsExactlyInAnyOrder("bus", "taxi", "tank");
     }
 
-    @Test
-    void scoreByRound() {
-        assertThat(resultData.scoreByRound(0)).containsExactlyInAnyOrder(1, 1, 1);
-        assertThat(resultData.scoreByRound(1)).containsExactlyInAnyOrder(2, 2, 2);
-        assertThat(resultData.scoreByRound(2)).containsExactlyInAnyOrder(3, 3, 3);
-        assertThat(resultData.scoreByRound(3)).containsExactlyInAnyOrder(4, 4, 4);
-        assertThat(resultData.scoreByRound(4)).containsExactlyInAnyOrder(5, 5, 5);
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4, 5})
+    void scoreByRound(int round) {
+        assertThat(resultData.modelAndScoreByRound(round - 1).values())
+                .containsExactlyInAnyOrder(round, round, round);
     }
-
-
 }

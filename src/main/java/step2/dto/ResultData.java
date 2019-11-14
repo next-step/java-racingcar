@@ -4,7 +4,7 @@ import step2.racing.Car;
 import step2.racing.Model;
 import step2.racing.Winners;
 
-import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,19 +20,15 @@ public class ResultData {
         this.cars = cars;
     }
 
-    public List<Integer> scoreByRound(int round) {
-        List<Integer> carScores = new ArrayList<>();
+    public Map<Model, Integer> modelAndScoreByRound(int round) {
+        Map<Model, Integer> carScores = new LinkedHashMap<>();
         for (Car car : cars) {
-            carScores.add(car.checkScoreByRound(round));
+            carScores.put(car.getModel(), car.checkScoreByRound(round));
         }
         return carScores;
     }
 
-    public Map<Model, Integer> modelAndScoreByRound(int round) {
-        return Car.checkScoreByRound(cars, round);
-    }
-
     public Winners findWinner() {
-        return new Winners(Car.findWinner(cars));
+        return new Winners(cars);
     }
 }
