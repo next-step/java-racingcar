@@ -4,12 +4,11 @@ import java.util.List;
 
 public class ResultView {
 
-	public static List<Car> printRacingStatus(List<Car> participants) {
+	public static void printRacingStatus(List<Car> participants) {
 		for (Car car : participants) {
 			car.printCarStatus();
 		}
 		System.out.println();
-		return participants;
 	}
 
 	public static void printWinner(List<String> winners) {

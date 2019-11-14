@@ -10,77 +10,80 @@ public class RacingGame {
 
 	private static final int MAX_NUMBER = 10;
 
-	private int turnCount;
-
-	private List<Car> participants;
-
-	private List<String> winners;
-
-	public RacingGame() {
-		this.participants = new ArrayList<>();
-	}
-
 	public static void main(String[] args) throws IOException {
 		RacingGame racingGame = new RacingGame();
 		racingGame.start();
 	}
 
-	private void start() throws IOException {
-		this.participants = registParticipants(InputView.getParticipantNames());
-		this.turnCount = InputView.getTurnCount();
-		int remainTurn =  doRacing();
+	void start() throws IOException {
+		RacingInfo racingInfo = setRacingInfo();
+		doRacing(racingInfo);
 	}
 
-	List<Car> registParticipants(String[] participantNames) {
+	RacingInfo setRacingInfo() throws IOException {
+		List<Car> participants = registerParticipants(InputView.getParticipantNames());
+
+		RacingInfo racingInfo = new RacingInfo();
+		racingInfo.setParticipants(participants);
+		racingInfo.setTurnCount(InputView.getTurnCount());
+
+		return racingInfo;
+	}
+
+	List<Car> registerParticipants(String[] participantNames) {
+		List<Car> participants = new ArrayList<>();
+
 		for (String name : participantNames) {
-			this.participants.add(new Car(name));
+			participants.add(new Car(name));
 		}
-		return this.participants;
+
+		return participants;
 	}
 
-	int doRacing() {
-		while (this.turnCount-- > 0) {
-			List<Car> present = doTurn();
-			present = ResultView.printRacingStatus(participants);
+	void doRacing(RacingInfo racingInfo) {
+		int turnCount = racingInfo.getTurnCount();
+
+		while (turnCount-- > 0) {
+			List<Car> present = doTurn(racingInfo.getParticipants());
+			ResultView.printRacingStatus(present);
 		}
-		findWinner();
+
+		List<String> winners = findWinner(racingInfo.getParticipants());
 		ResultView.printWinner(winners);
-
-		return this.turnCount;
 	}
 
-	List<Car> doTurn() {
-		for (Car car : this.participants) {
-			int position = car.move(isMove());
+	List<Car> doTurn(List<Car> participants) {
+		for (Car car : participants) {
+			car.move(isMove());
 		}
-		return this.participants;
+
+		return participants;
 	}
 
 	boolean isMove() {
 		return new Random().nextInt(MAX_NUMBER) >= BOUNDARY_NUMBER;
 	}
 
-	void findWinner() {
-		List<Car> sortedParticipants = sortParticipants();
-		int max = getMax();
-		List<String> winnerNames = getWinners(max);
+	List<String> findWinner(List<Car> participants) {
+		List<Car> sortedParticipants = sortParticipants(participants);
+		return getWinners(sortedParticipants);
 	}
 
-	List<Car> sortParticipants() {
-		this.participants.sort((o1, o2) -> o2.getPosition() - o1.getPosition());
-		return this.participants;
+	List<Car> sortParticipants(List<Car> participants) {
+		participants.sort((o1, o2) -> o2.getPosition() - o1.getPosition());
+		return participants;
 	}
 
-	int getMax() {
-		return this.participants.get(0).getPosition();
-	}
-
-	List<String> getWinners(int max) {
-		winners = participants.stream()
+	List<String> getWinners(List<Car> sortedParticipants) {
+		int max = getMax(sortedParticipants);
+		return sortedParticipants.stream()
 				.filter(car -> car.getPosition() == max)
 				.map(Car::getName)
 				.collect(Collectors.toList());
-		return winners;
+	}
+
+	int getMax(List<Car> sortedParticipants) {
+		return sortedParticipants.get(0).getPosition();
 	}
 
 }

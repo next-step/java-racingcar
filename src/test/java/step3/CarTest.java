@@ -10,13 +10,13 @@ class CarTest {
 	private Car car;
 
 	@BeforeEach
-	void 전처리() {
+	void before() {
 		car = new Car("aaa");
 		car.setPosition(5);
 	}
 
 	@Test
-	void 이동하기() {
+	void move() {
 		assertThat(car.move(true)).isEqualTo(6);
 	}
 
