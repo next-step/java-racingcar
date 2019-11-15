@@ -1,4 +1,4 @@
-package step3;
+package step3.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,8 +20,4 @@ class CarTest {
 		assertThat(car.move(true)).isEqualTo(6);
 	}
 
-	@Test
-	void printCarStatus() {
-		assertThat(car.printCarStatus()).isEqualTo(5);
-	}
 }

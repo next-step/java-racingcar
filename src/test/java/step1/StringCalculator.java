@@ -38,7 +38,7 @@ class StringCalculator {
 	@ParameterizedTest
 	@CsvSource(value = {"16,4,4", "21,3,7"})
 	void divide(int left, int right, int answer) {
-		assertThat(left * right).isEqualTo(answer);
+		assertThat(left / right).isEqualTo(answer);
 	}
 
 	@Test
