@@ -37,8 +37,10 @@ public class Car {
 		return position;
 	}
 
-	// Q) 테스트를 하기 위해서 Set 메서드를 추가했습니다.
-	// 가급적 Getter, Setter를 사용하지 말라고 하셨는데 이럴 때는 괜찮을까요?
+	/*
+		Q) 테스트를 하기 위해서 Set 메서드를 추가했습니다.
+	 	가급적 Getter, Setter를 사용하지 말라고 하셨는데 이럴 때는 괜찮을까요?
+	 */
 	public void setPosition(int position) {
 		this.position = position;
 	}

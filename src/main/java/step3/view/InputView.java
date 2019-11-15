@@ -11,6 +11,7 @@ public class InputView {
 	public static String[] getParticipantNames() throws IOException {
 		System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,)를 기준으로 구분)");
 		String[] participantNames = br.readLine().split(",");
+
 		if (participantNames.length < 2) {
 			throw new IllegalArgumentException();
 		}
