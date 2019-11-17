@@ -15,15 +15,18 @@ public class InputView {
 		if (participantNames.length < 2) {
 			throw new IllegalArgumentException();
 		}
+
 		return participantNames;
 	}
 
 	public static int getTurnCount() throws IOException {
 		System.out.println("시도할 회수는 몇회인가요?");
 		int turnCount = Integer.parseInt(br.readLine());
+
 		if (turnCount < 1) {
 			throw new IllegalArgumentException();
 		}
+
 		return turnCount;
 	}
 }

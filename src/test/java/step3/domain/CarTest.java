@@ -12,12 +12,11 @@ class CarTest {
 	@BeforeEach
 	void before() {
 		car = new Car("aaa");
-		car.setPosition(5);
 	}
 
 	@Test
 	void move() {
-		assertThat(car.move(true)).isEqualTo(6);
+		assertThat(car.move(true)).isEqualTo(1);
 	}
 
 }

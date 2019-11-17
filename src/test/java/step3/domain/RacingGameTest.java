@@ -13,8 +13,7 @@ class RacingGameTest {
 	@BeforeEach
 	void before() {
 		racingGame = new RacingGame();
-		participants = new Participants();
-		participants.register(new String[]{"a", "b", "c"});
+		participants = new Participants(new String[]{"a", "b", "c"});
 	}
 
 	@Test

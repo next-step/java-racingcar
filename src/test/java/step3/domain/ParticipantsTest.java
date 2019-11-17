@@ -12,13 +12,7 @@ class ParticipantsTest {
 
 	@BeforeEach
 	void before() {
-		participants = new Participants();
-	}
-
-	@Test
-	void register() {
-		assertThat(participants.register(new String[] {"a","b","c"}))
-				.contains(new Car("a"), new Car("b"), new Car("c"));
+		participants = new Participants(new String[] {"a","b","c"});
 	}
 
 	@Test
@@ -27,15 +21,4 @@ class ParticipantsTest {
 				.isEqualTo(participants.getParticipants());
 	}
 
-	@Test
-	void getWinners() {
-		participants.register(new String[] {"a","b","c"});
-		assertThat(participants.getWinners()).contains("a", "b", "c");
-	}
-
-	@Test
-	void getMax() {
-		participants.register(new String[] {"a","b","c"});
-		assertThat(participants.getMax()).isEqualTo(0);
-	}
 }
