@@ -1,9 +1,9 @@
-package step3.racingcarWinner;
+package racingcarWinner;
 
-import step3.racingcarWinner.domain.Car;
-import step3.racingcarWinner.domain.RacingGame;
-import step3.racingcarWinner.view.InputView;
-import step3.racingcarWinner.view.ResultView;
+import racingcarWinner.domain.Car;
+import racingcarWinner.domain.RacingGame;
+import racingcarWinner.view.InputView;
+import racingcarWinner.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;

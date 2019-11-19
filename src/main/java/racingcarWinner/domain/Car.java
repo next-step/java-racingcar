@@ -1,4 +1,4 @@
-package step3.racingcarWinner.domain;
+package racingcarWinner.domain;
 
 import java.util.Objects;
 
@@ -33,7 +33,7 @@ public class Car {
         this.finalWinner = true;
     }
 
-    public boolean isEqualPosition(int inputPosition){
+    public boolean isEqualPosition(int inputPosition) {
         return this.position == inputPosition;
     }
 

@@ -1,4 +1,4 @@
-package step1.calculator;
+package calculator;
 
 import java.util.List;
 import java.util.stream.Collectors;

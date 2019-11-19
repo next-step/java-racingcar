@@ -1,6 +1,6 @@
-package step3.racingcarWinner.view;
+package racingcarWinner.view;
 
-import step3.racingcarWinner.domain.Car;
+import racingcarWinner.domain.Car;
 
 import java.util.List;
 
@@ -34,7 +34,6 @@ public class ResultView {
     }
 
     private void appendWinner(Car car) {
-        ;
         if (car.isFinalWinner()) {
             generateWinnerText(car.getName());
         }

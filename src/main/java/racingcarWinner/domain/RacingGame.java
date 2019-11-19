@@ -1,4 +1,4 @@
-package step3.racingcarWinner.domain;
+package racingcarWinner.domain;
 
 import java.util.ArrayList;
 import java.util.List;

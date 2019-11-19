@@ -2,7 +2,7 @@
  * Description : 자동차경주에서 사용자에게 레이싱조건을 표시하고 입력받는 역할을 담당
  */
 
-package step3.racingcarWinner.view;
+package racingcarWinner.view;
 
 import java.util.Scanner;
 
