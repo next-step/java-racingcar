@@ -1,4 +1,4 @@
-package racingcarNew;
+package racingcarNew.domain;
 
 import racingcarNew.domain.Car;
 

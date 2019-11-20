@@ -2,6 +2,7 @@ package racingcarNew;
 
 import org.junit.jupiter.api.Test;
 import racingcarNew.domain.Car;
+import racingcarNew.domain.Cars;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,5 +24,6 @@ class RacingGameTest {
         Car car = new Car(carName);
         assertThat(car.getCarName()).isEqualTo(carName);
     }
+
 
 }
