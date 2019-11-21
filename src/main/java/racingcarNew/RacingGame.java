@@ -9,9 +9,11 @@ import java.util.List;
 public class RacingGame {
 
     private Cars cars;
+    private int racingLap;
 
     public RacingGame(String carNames, int racingLap) {
         cars = generateCars(carNames);
+        this.racingLap = racingLap;
     }
 
     private Cars generateCars(String carNames) {
@@ -24,7 +26,14 @@ public class RacingGame {
         return new Cars(cars);
     }
 
-    public Cars racingCars() {
+    public Cars getRacingCars() {
+        return cars;
+    }
+
+    public Cars race() {
+        for(int i=0; i< racingLap; i++){
+            cars.moveAll();
+        }
         return cars;
     }
 }

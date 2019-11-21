@@ -14,8 +14,8 @@ class RacingGameTest {
     @Test
     void 사용자가_입력한_이름의_숫자_만큼_자동차_대수를_생성() {
         RacingGame racingGame = new RacingGame(USER_INPUT_CAR_NAMES, USER_INPUT_RACING_LAP);
-        Cars cars = racingGame.racingCars();
-        assertThat(cars.getCount()).isEqualTo(3);
+        Cars cars = racingGame.getRacingCars();
+        assertThat(cars.getAll()).hasSize(3);
     }
 
     @Test
@@ -25,5 +25,12 @@ class RacingGameTest {
         assertThat(car.getCarName()).isEqualTo(carName);
     }
 
+    @Test
+    void 레이스_후_입력한_랩만큼_돌았는지_확인(){
+        RacingGame racingGame = new RacingGame(USER_INPUT_CAR_NAMES, USER_INPUT_RACING_LAP);
+        racingGame.getRacingCars();
+        Cars cars = racingGame.race();
+        assertThat(cars.getLapCount()).isEqualTo(USER_INPUT_RACING_LAP);
+    }
 
 }
