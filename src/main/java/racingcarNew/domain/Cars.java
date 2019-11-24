@@ -1,33 +1,42 @@
 package racingcarNew.domain;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
 
+    private int winnerMoveCount;
     private List<Car> cars;
-    private int lapCount = 0;
-    private static Utils utils;
 
-    public Cars(List<Car> cars) {
+    public Cars(List<Car> cars, int winnerMoveCount) {
         this.cars = cars;
+        this.winnerMoveCount = winnerMoveCount;
     }
 
-    public List<Car> getAll() {
-        return cars;
+    public Cars moveAll() {
+        List<Car> carHistory = new ArrayList<>();
+        for (Car car : cars) {
+            int carMoveCount = car.move(Utils.getRandomNo());
+            Car movedCar = new Car(car.getCarName(), carMoveCount);
+            checkWinnerMoveCount(carMoveCount);
+            carHistory.add(movedCar);
+        }
+        return new Cars(carHistory, winnerMoveCount);
     }
 
-    private void addLapCount(){
-        this.lapCount++;
-    }
-
-    public int getLapCount(){
-        return lapCount;
-    }
-
-    public void moveAll() {
-        addLapCount();
-        for(Car car : cars){
-            car.move(utils.getRandomNo());
+    private void checkWinnerMoveCount(int carMoveCount) {
+        if (this.winnerMoveCount < carMoveCount) {
+            this.winnerMoveCount = carMoveCount;
         }
     }
+
+    public List<Car> getWinners() {
+        return cars.stream().filter(car -> car.isWinner(this.winnerMoveCount)).collect(Collectors.toList());
+    }
+
+    public List<Car> getCars() {
+        return this.cars;
+    }
+
 }

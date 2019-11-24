@@ -2,14 +2,17 @@ package racingcarNew;
 
 import racingcarNew.domain.Car;
 import racingcarNew.domain.Cars;
+import racingcarNew.domain.RacingHistory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
 
-    private Cars cars;
+    private static final int DEFAULT_CAR_POSITION = 0;
+    private static final String INPUT_TEXT_SPLIT_REGEX = ",";
     private int racingLap;
+    private Cars cars;
 
     public RacingGame(String carNames, int racingLap) {
         cars = generateCars(carNames);
@@ -17,23 +20,25 @@ public class RacingGame {
     }
 
     private Cars generateCars(String carNames) {
-        String[] names = carNames.split(",");
+        String[] names = carNames.split(INPUT_TEXT_SPLIT_REGEX);
 
         List<Car> cars = new ArrayList<>();
         for (String name : names) {
-            cars.add(new Car(name));
+            cars.add(new Car(name, DEFAULT_CAR_POSITION));
         }
-        return new Cars(cars);
+        return new Cars(cars, DEFAULT_CAR_POSITION);
     }
 
     public Cars getRacingCars() {
         return cars;
     }
 
-    public Cars race() {
-        for(int i=0; i< racingLap; i++){
-            cars.moveAll();
+    public RacingHistory race() {
+
+        List<Cars> carsHistory = new ArrayList<>();
+        for (int i = 0; i < racingLap; i++) {
+            carsHistory.add(cars.moveAll());
         }
-        return cars;
+        return new RacingHistory(carsHistory);
     }
 }

@@ -8,6 +8,6 @@ class UtilsTest {
     @Test
     void 랜덤값이_10_보다_작은_숫자가_나오는지_확인() {
         Utils utils = new Utils();
-        assertThat(utils.getRandomNo()).isBetween(0,10);
+        assertThat(Utils.getRandomNo()).isBetween(0, 10);
     }
 }
