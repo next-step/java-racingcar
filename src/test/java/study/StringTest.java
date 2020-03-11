@@ -21,7 +21,6 @@ public class StringTest {
         assertThat(split).contains("1");
         assertThat(split).contains("2");
         assertThat(split.length).isEqualTo(2);
-
         assertThat(split).containsExactly("1", "2");
         assertThat(split).containsAnyOf("1");
         assertThat(split).doesNotContain("3");
@@ -45,6 +44,8 @@ public class StringTest {
     void substring2() {
         //when
         String substring = "(1,2,3)".substring(1, 6);
+
+        //then
         assertThat(substring).isEqualTo("1,2,3");
     }
 
@@ -67,6 +68,7 @@ public class StringTest {
     @DisplayName("요구사항3 : assertThatThrownBy 활용하기")
     @Test
     void charAt2() {
+        //when, then
         assertThatThrownBy(() -> {
             char result = "abc".charAt(3);
         }).isInstanceOf(IndexOutOfBoundsException.class)
@@ -77,6 +79,7 @@ public class StringTest {
     @DisplayName("요구사항3 : assertThatExceptionOfType 활용하기")
     @Test
     void charAt3() {
+        //when, then
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
                 .isThrownBy(() -> {
                     char result = "abc".charAt(3);
