@@ -21,4 +21,20 @@ public class StringTest {
         assertThat(split).doesNotContain("3");
         assertThat(split).endsWith("1", "2");
     }
+
+    @Test
+    void substring(){
+        //when
+        String substring = "(1,2)".substring(1, 4);
+
+        //then
+        assertThat(substring).isEqualTo("1,2");
+    }
+
+    @Test
+    void substring2(){
+        //when
+        String substring = "(1,2,3)".substring(1, 6);
+        assertThat(substring).isEqualTo("1,2,3");
+    }
 }
