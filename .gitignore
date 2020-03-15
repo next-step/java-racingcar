@@ -4,6 +4,7 @@
 !gradle/wrapper/gradle-wrapper.jar
 /out/
 /target/
+gradle
 
 ### STS ###
 .apt_generated
