@@ -11,7 +11,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Set Collection 학습 테스트")
 public class SetTest {
@@ -41,11 +40,10 @@ public class SetTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1,true", "4,false"})
+    @CsvSource(value = {"1,true", "2,true", "4,false"})
     @DisplayName("입력 값에 따라 결과 값이 다른 경우에 대한 테스트")
-    void csvInputAndExpected(String str, String expected) {
-        Boolean actual = numbers.contains(Integer.parseInt(str));
-        assertEquals(Boolean.valueOf(expected), actual);
+    void csvInputAndExpected(int num, boolean expected) {
+        assertThat(numbers.contains(num)).isEqualTo(expected);
     }
 
 }
