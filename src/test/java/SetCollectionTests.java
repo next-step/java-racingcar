@@ -25,14 +25,14 @@ public class SetCollectionTests {
     @DisplayName("요구사항 1. size() 테스트")
     @Test
     public void setSizeTest() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @DisplayName("요구사항 2. contains() 테스트")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     public void setContainsTest(int input) {
-        assertThat(numbers.contains(input)).isTrue();
+        assertThat(numbers).contains(input);
     }
 
     @DisplayName("요구사항 3. 예상 결과를 포함한 contains() 테스트")
