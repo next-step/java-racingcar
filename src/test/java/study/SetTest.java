@@ -3,11 +3,14 @@ package study;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+
 
 public class SetTest {
     private Set numbers;
@@ -23,8 +26,19 @@ public class SetTest {
 
     @DisplayName("요구사항 1: Set의 size를 확인한다.")
     @Test
-    public void set_size_test() {
+    public void setSizeTest() {
         assertThat(numbers.size())
                 .isEqualTo(3);
     }
+
+    @DisplayName("요구사항 2: Set Collection의 중복제거를 확인")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    public void duplicationTest(int i) {
+        //given
+        numbers.add(i);
+        //when & then
+        assertThat(numbers).hasSize(3);
+    }
+
 }
