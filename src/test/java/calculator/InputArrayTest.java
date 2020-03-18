@@ -11,20 +11,20 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class InputArrayTest {
     @DisplayName("split된 inputArray의 짝수 인덱스에 사칙연산 기호가 아닌 문자열이 오면 예외가 발생한다.")
     @ParameterizedTest
-    @ValueSource(strings ={"1", "%", "!", "&", "@"})
-    void validateInputArrayTest(String operator){
+    @ValueSource(strings = {"1", "%", "!", "&", "@"})
+    void validateInputArrayTest(String operator) {
         //given
         String[] inputArr = {"1", operator, "3"};
 
         //when, then
         assertThrows(IllegalArgumentException.class, () -> {
-           new InputArray(inputArr);
+            new InputArray(inputArr);
         });
     }
 
     @DisplayName("inputArray에서 숫자만 불러와 List를 만든다.")
     @Test
-    void extractNumberTest(){
+    void extractNumberTest() {
         //given
         String[] inputArr = {"1", "+", "2", "-", "5"};
 

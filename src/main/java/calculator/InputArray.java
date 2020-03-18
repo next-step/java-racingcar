@@ -9,9 +9,9 @@ public class InputArray {
     private List<String> operators = new ArrayList<>();
     private List<Integer> numbers = new ArrayList<>();
 
-    public InputArray(String[] inputArr) {
-        validateOperator(inputArr);
-        extractNumbers(inputArr);
+    public InputArray(InputView inputView) {
+        validateOperator(inputView.getInputArr());
+        extractNumbers(inputView.getInputArr());
     }
 
     private void validateOperator(String[] inputArr) {
