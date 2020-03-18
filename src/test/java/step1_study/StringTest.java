@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class SplitTest {
+public class StringTest {
 
     @Test
     public void 요구사항1_test() {
