@@ -1,5 +1,6 @@
 package study;
 
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +20,7 @@ public class StringTest {
         String result = "(1,2)".substring(1, 4);
         assertThat(result).isEqualTo("1,2");
     }
+
 
     @DisplayName("charAt() 테스트")
     @Test
