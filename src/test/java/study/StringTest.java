@@ -41,5 +41,4 @@ public class StringTest {
         .isInstanceOf(IndexOutOfBoundsException.class);
     }
 
-
 }
