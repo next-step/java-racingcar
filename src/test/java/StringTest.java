@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class StringTestToLearn {
+public class StringTest {
 
     @Test
-    public void requirements1() {
+    public void contains() {
         assertThat("1,2".split(","))
                 .contains("1", "2");
         assertThat("1,".split(",")).containsExactly("1");

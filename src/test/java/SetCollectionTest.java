@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class SetCollectionTestToLearn {
+public class SetCollectionTest {
 
     private Set numbers;
 
@@ -26,7 +26,8 @@ public class SetCollectionTestToLearn {
 
     @Test
     public void requirements1() {
-        assertThat(numbers.size()).isEqualTo(3);
+//        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
