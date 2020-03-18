@@ -22,6 +22,7 @@ public class InputArrayTest {
         });
     }
 
+    @DisplayName("inputArray에서 숫자만 불러와 List를 만든다.")
     @Test
     void extractNumberTest(){
         //given
@@ -29,7 +30,6 @@ public class InputArrayTest {
 
         //when
         InputArray inputArray = new InputArray(inputArr);
-
 
         //then
         assertThat(inputArray.getNumbers()).hasSize(3);
