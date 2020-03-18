@@ -70,7 +70,7 @@ public class StringTest {
     void charAt2() {
         //when, then
         assertThatThrownBy(() -> {
-            char result = "abc".charAt(3);
+            "abc".charAt(3);
         }).isInstanceOf(IndexOutOfBoundsException.class)
                 .hasMessageContaining("index");
     }
@@ -82,7 +82,7 @@ public class StringTest {
         //when, then
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
                 .isThrownBy(() -> {
-                    char result = "abc".charAt(3);
+                    "abc".charAt(3);
                 }).withMessageContaining("index");
     }
 }
