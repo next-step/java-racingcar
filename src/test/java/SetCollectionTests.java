@@ -13,6 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class SetCollectionTests {
     private Set numbers;
 
+    //Test Fixture - 테스트를 위한 데이터 생성.
     @BeforeEach
     void setUp() {
         numbers = new HashSet<>();
