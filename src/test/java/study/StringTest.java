@@ -11,7 +11,13 @@ public class StringTest {
         assertThat(result).contains("1");
         assertThat(result).containsExactly("1","2");
 
+        result = "1".split(",");
+        assertThat(result).contains("1");
+
+        String subStr = "(1,2)";
+        assertThat(subStr.substring(1, subStr.length()-1)).contains("1,2");
+
+
+        
     }
-
-
 }
