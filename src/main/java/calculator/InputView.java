@@ -3,11 +3,13 @@ package calculator;
 public class InputView {
     private static final String BLANK = " ";
     private String input;
+    private String[] inputArr;
 
     public InputView(String input) {
         validateNull(input);
         validateEmpty(input);
         this.input = input;
+        inputArr = split();
     }
 
     private void validateNull(String input) {
@@ -24,5 +26,9 @@ public class InputView {
 
     public String[] split() {
         return input.split(BLANK);
+    }
+
+    public String[] getInputArr() {
+        return inputArr;
     }
 }
