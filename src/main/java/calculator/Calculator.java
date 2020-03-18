@@ -12,15 +12,6 @@ public class Calculator {
         this.numbers = inputArray.getNumbers();
     }
 
-    public double calculateAll() {
-        double prev = numbers.get(0);
-        for (int i = 0; i < operators.size(); i++) {
-            prev = calculateOnePart(prev, i);
-        }
-        return prev;
-    }
-
-
     public double calculateOnePart(double prev, int indexOfOperator) {
         String operator = operators.get(indexOfOperator);
         double next = numbers.get(indexOfOperator + 1);
@@ -35,5 +26,9 @@ public class Calculator {
             return prev * next;
         }
         return prev / next;
+    }
+
+    public double calculateAll() {
+        return 0;
     }
 }
