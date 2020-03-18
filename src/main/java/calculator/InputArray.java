@@ -7,7 +7,7 @@ import java.util.List;
 public class InputArray {
     private static final List<String> OPERATORS = Arrays.asList("+", "-", "/", "*");
     private List<String> operators = new ArrayList<>();
-    private List<Integer> numbers = new ArrayList<>();
+    private List<Double> numbers = new ArrayList<>();
 
     public InputArray(InputView inputView) {
         validateOperator(inputView.getInputArr());
@@ -33,7 +33,7 @@ public class InputArray {
 
     private void extractNumbers(String[] inputArr) {
         for (int i = 0; i < inputArr.length; i += 2) {
-            numbers.add(Integer.parseInt(inputArr[i]));
+            numbers.add(Double.parseDouble(inputArr[i]));
         }
     }
 
@@ -41,7 +41,7 @@ public class InputArray {
         return operators;
     }
 
-    public List<Integer> getNumbers() {
+    public List<Double> getNumbers() {
         return numbers;
     }
 }

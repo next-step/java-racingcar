@@ -14,11 +14,12 @@ public class InputArrayTest {
     @ValueSource(strings = {"1", "%", "!", "&", "@"})
     void validateInputArrayTest(String operator) {
         //given
-        String[] inputArr = {"1", operator, "3"};
+        String input = "1 " + operator + " 3";
+        InputView inputView = new InputView(input);
 
         //when, then
         assertThrows(IllegalArgumentException.class, () -> {
-            new InputArray(inputArr);
+            new InputArray(inputView);
         });
     }
 
@@ -26,10 +27,11 @@ public class InputArrayTest {
     @Test
     void extractNumberTest() {
         //given
-        String[] inputArr = {"1", "+", "2", "-", "5"};
+        String input = "1 + 2 - 5";
+        InputView inputView = new InputView(input);
 
         //when
-        InputArray inputArray = new InputArray(inputArr);
+        InputArray inputArray = new InputArray(inputView);
 
         //then
         assertThat(inputArray.getNumbers()).hasSize(3);
