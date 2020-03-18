@@ -37,9 +37,9 @@ public class SetTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1","2","3","4","5"})
-    void isValue2(int input) {
-        assertTrue(numbers.contains(input));
+    @CsvSource(value = {"1:true","2:true","3:true","4:false","5:false"}, delimiter = ':')
+    void isValue2(int input, boolean expected) {
+        assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 
 
