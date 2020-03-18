@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
+@DisplayName("this is test")
 public class StringTest {
     @Test
     void split() {
@@ -29,7 +30,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("문자 가지고 오기 테스트")
+    @DisplayName("IS this?")
     void charAtMessageMatch() {
 
         assertThatExceptionOfType(IndexOutOfBoundsException.class)

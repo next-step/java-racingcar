@@ -10,10 +10,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class SetCollectionTest {
+public class SetTest {
     private Set numbers;
 
     @BeforeEach
@@ -27,8 +26,7 @@ public class SetCollectionTest {
 
     @Test
     void size() {
-        int result = numbers.size();
-        assertThat(result).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
 
@@ -47,9 +45,8 @@ public class SetCollectionTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"test:test", "tEst:test", "Java:java"}, delimiter = ':')
-    void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(String input, String expected) {
-        String actualValue = input.toLowerCase();
-        assertEquals(expected, actualValue);
+    @CsvSource(value = {"1:true", "2:true", "3:true, 4:false"}, delimiter = ':')
+    void isExpectedByCsv(int input, boolean expected) {
+        assertThat(expected).isEqualTo(expected);
     }
 }
