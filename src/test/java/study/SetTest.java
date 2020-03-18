@@ -28,7 +28,7 @@ public class SetTest {
     @DisplayName("numbers의 사이즈를 확인한다.")
     @Test
     void checkNumbersSize() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @DisplayName("인자로 들어온 값이 numbers에 존재하는지 확인한다.")
