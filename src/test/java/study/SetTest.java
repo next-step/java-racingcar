@@ -14,6 +14,8 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.in;
+import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.is;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SetTest {
     private Set numbers;
@@ -30,7 +32,7 @@ public class SetTest {
     @Test
     void getSizeTest() {
         int size = numbers.size();
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
@@ -40,10 +42,9 @@ public class SetTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1:1", "2:2", "3:3"}, delimiter = ':')
-    void contains(int input, int expected) {
-
-        //Assertions.assertEquals(expected, numbers[input]);
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    void contains(int number, boolean expected) {
+        assertThat(numbers.contains(number)).isEqualTo(expected);
     }
 
 

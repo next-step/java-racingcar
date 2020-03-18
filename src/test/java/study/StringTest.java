@@ -34,8 +34,7 @@ public class StringTest {
     void indexOutOfBoundExceptionTest() {
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
                 .isThrownBy(() -> {
-                    String target = "abc";
-                    char c = target.charAt(4);
+                    char c = "abc".charAt(4);
                 })
                 .withMessage("Index out of Bound Exception")
                 .withNoCause();
