@@ -27,11 +27,13 @@ public class StringCalculator {
 
             // 사칙연산
             if (operandStack.size() == 2 && operatorStack.size() == 1) {
-                Number number = operandStack.pop();
                 Number otherNumber = operandStack.pop();
+                Number number = operandStack.pop();
                 String operatorText = operatorStack.pop();
                 if ("+".equals(operatorText)) {
                     result = number.plus(otherNumber).getValue();
+                } else if ("-".equals(operatorText)) {
+                    result = number.minus(otherNumber).getValue();
                 }
             }
         }

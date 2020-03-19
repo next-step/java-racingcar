@@ -14,8 +14,13 @@ public final class Number {
     public Number plus(final Number otherNumber) {
         return new Number(this.value + otherNumber.value);
     }
+    public Number minus(final Number otherNumber) {
+        return new Number(this.value - otherNumber.value);
+    }
 
     public int getValue() {
         return this.value;
     }
+
+
 }
