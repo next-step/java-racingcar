@@ -1,5 +1,7 @@
 package racingcar;
 
+import static racingcar.InputType.*;
+
 public class InputView {
     private int carCount;
     private int tryCount;
@@ -7,7 +9,8 @@ public class InputView {
     public InputView(String input, InputType inputType) {
         validateNull(input);
         validateEmpty(input);
-        validateNumber(input);
+        int number = validateNumber(input);
+        convertStringToInt(number, inputType);
     }
 
     private void validateNull(String input) {
@@ -37,6 +40,15 @@ public class InputView {
             throw new IllegalArgumentException("0 이하의 숫자는 입력할 수 없습니다.");
         }
         return intInput;
+    }
+
+    private void convertStringToInt(int intInput, InputType inputType){
+        if(CAR.equals(inputType)){
+            this.carCount = intInput;
+        }
+        if(TRY.equals(inputType)){
+            this.tryCount = intInput;
+        }
     }
 
     public int getCarCount() {

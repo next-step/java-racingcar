@@ -40,11 +40,9 @@ public class InputViewTest {
     @CsvSource(value = {"5:5", "7:7"}, delimiter = ':')
     void insertValueToFieldTest(String input, int expected) {
         //when
-        InputView inputView_car = new InputView(input, InputType.CAR);
-        InputView inputView_try = new InputView(input, InputType.TRY);
+        InputView inputView = new InputView(input, InputType.TRY);
 
         //then
-        assertThat(inputView_car.getCarCount()).isEqualTo(expected);
-        assertThat(inputView_try.getTryCount()).isEqualTo(expected);
+        assertThat(inputView.getTryCount()).isEqualTo(expected);
     }
 }
