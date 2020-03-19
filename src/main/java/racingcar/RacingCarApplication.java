@@ -2,8 +2,7 @@ package racingcar;
 
 import java.util.Scanner;
 
-import static racingcar.InputType.CAR;
-import static racingcar.InputType.TRY;
+import static racingcar.InputType.*;
 
 public class RacingCarApplication {
     public static void main(String[] args) {

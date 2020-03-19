@@ -15,8 +15,10 @@ public class InputViewTest {
     @NullAndEmptySource
     void validInputTest(String input) {
         //when, then
-        assertThatIllegalArgumentException().isThrownBy(() -> new InputView(input, InputType.CAR));
-        assertThatIllegalArgumentException().isThrownBy(() -> new InputView(input, InputType.TRY));
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new InputView().insertNumberIntoField(input, InputType.CAR));
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new InputView().insertNumberIntoField(input, InputType.TRY));
     }
 
     @DisplayName("숫자가 아닌 문자열이 입력되면 예외가 발생한다.")
@@ -24,7 +26,8 @@ public class InputViewTest {
     @ValueSource(strings = {"@", "*", "A", "👍", "😱"})
     void validNumberTest(String input) {
         //when, then
-        assertThatIllegalArgumentException().isThrownBy(() -> new InputView(input, InputType.CAR));
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new InputView().insertNumberIntoField(input, InputType.CAR));
     }
 
     @DisplayName("음수가 입력되면 예외가 발생한다.")
@@ -32,7 +35,8 @@ public class InputViewTest {
     @ValueSource(strings = {"-20", "-1", "-77"})
     void validateNegativeTest(String input) {
         //when, then
-        assertThatIllegalArgumentException().isThrownBy(() -> new InputView(input, InputType.CAR));
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new InputView().insertNumberIntoField(input, InputType.CAR));
     }
 
     @DisplayName("입력값의 InputType에 따라 다른 InputView 필드에 저장된다.")
@@ -40,7 +44,8 @@ public class InputViewTest {
     @CsvSource(value = {"5:5", "7:7"}, delimiter = ':')
     void insertValueToFieldTest(String input, int expected) {
         //when
-        InputView inputView = new InputView(input, InputType.TRY);
+        InputView inputView = new InputView();
+        inputView.insertNumberIntoField(input, InputType.TRY);
 
         //then
         assertThat(inputView.getTryCount()).isEqualTo(expected);
