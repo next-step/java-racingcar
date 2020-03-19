@@ -3,11 +3,14 @@ package calculator.operator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.junit.jupiter.api.Assertions.assertAll;
 
 class OperatorTest {
 
@@ -35,31 +38,22 @@ class OperatorTest {
     }
 
     @DisplayName("사칙 연산자를 성공적으로 반환한다.")
-    @Test
-    void getOperator() {
-        // given
-        final String plusOperatorText = "+";
-        final String minusOperatorText = "-";
-        final String multipleOperatorText = "*";
-        final String divideOperatorText = "/";
-
-        final Operator plusExpect = Operator.PLUS;
-        final Operator minusExpect = Operator.MINUS;
-        final Operator multipleExpect = Operator.MULTIPLE;
-        final Operator divideExpect = Operator.DIVIDE;
-
+    @ParameterizedTest
+    @MethodSource("provideOperators")
+    void getOperator(String input, Operator expect) {
         // when
-        final Operator plusActual = Operator.getOperator(plusOperatorText);
-        final Operator minusActual = Operator.getOperator(minusOperatorText);
-        final Operator multipleActual = Operator.getOperator(multipleOperatorText);
-        final Operator divideActual = Operator.getOperator(divideOperatorText);
+        final Operator actual = Operator.getOperator(input);
 
         // then
-        assertAll(
-                () -> assertThat(plusActual).isEqualTo(plusExpect)
-                ,() -> assertThat(minusActual).isEqualTo(minusExpect)
-                ,() -> assertThat(multipleActual).isEqualTo(multipleExpect)
-                ,() -> assertThat(divideActual).isEqualTo(divideExpect)
+        assertThat(actual).isEqualTo(expect);
+    }
+
+    private static Stream<Arguments> provideOperators() {
+        return Stream.of(
+                Arguments.of("+", Operator.PLUS)
+                ,Arguments.of("-", Operator.MINUS)
+                ,Arguments.of("*", Operator.MULTIPLE)
+                ,Arguments.of("/", Operator.DIVIDE)
         );
     }
 }
