@@ -1,5 +1,6 @@
 package calculator;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,13 +11,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class StringCalculatorTest {
-    private StringCalculator stringCalculator = new StringCalculator();
+    private static StringCalculator stringCalculator;
 
-    @DisplayName("계산기 객체 생성을 성공한다.")
-    @Test
-    void create() {
+    @BeforeAll
+    static void setUp() {
         stringCalculator = new StringCalculator();
-        assertThat(stringCalculator).isNotNull();
     }
 
     @DisplayName("입력값이 null일 경우 예외 발생을 성공한다.")
