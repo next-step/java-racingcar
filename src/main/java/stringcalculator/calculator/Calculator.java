@@ -1,23 +1,35 @@
 package stringcalculator.calculator;
 
-import stringcalculator.Expression;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.BiFunction;
 
-public class Calculator {
+public enum Calculator {
+    ADDITION((leftNumber, rightNumber) -> leftNumber + rightNumber),
+    SUBTRACTION((leftNumber, rightNumber) -> leftNumber - rightNumber),
+    MULTIPLICATION((leftNumber, rightNumber) -> leftNumber * rightNumber),
+    DIVISION((leftNumber, rightNumber) -> leftNumber / rightNumber);
 
-    private static final String ADDITION = "+";
-    private static final String SUBTRACTION = "-";
-    private static final String MULTIPLICATION = "+";
-    private static final String DIVISION = "+";
+    private BiFunction<Double, Double, Double> operation;
 
-    Calculator() {
+    Calculator(BiFunction<Double, Double, Double> operation) {
+        this.operation = operation;
     }
 
-    public static Calculator getInstance() {
-        return new Calculator();
+    private static final Map<String, Calculator> OPERATORS;
+    static {
+        OPERATORS = new HashMap<>();
+        OPERATORS.put("+", Calculator.ADDITION);
+        OPERATORS.put("-", Calculator.SUBTRACTION);
+        OPERATORS.put("*", Calculator.MULTIPLICATION);
+        OPERATORS.put("/", Calculator.DIVISION);
     }
 
-    public int calculate(Expression expression) {
-        return 0;
-    };
+    public static Calculator getOperation(String operation) {
+        return OPERATORS.get(operation);
+    }
 
+    public Double calculate(Double leftNumber, Double rightNumber) {
+        return operation.apply(leftNumber, rightNumber);
+    }
 }
