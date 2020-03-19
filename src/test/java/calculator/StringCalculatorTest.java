@@ -2,6 +2,8 @@ package calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -56,6 +58,17 @@ class StringCalculatorTest {
 
         // when
         final boolean actual = stringCalculator.isNumber(input);
+
+        // then
+        assertThat(actual).isTrue();
+    }
+
+    @DisplayName("사칙연산자 체크를 성공한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"+", "-", "*", "/"})
+    void isOperator(String operator) {
+        // when
+        final boolean actual = stringCalculator.isOperator(operator);
 
         // then
         assertThat(actual).isTrue();
