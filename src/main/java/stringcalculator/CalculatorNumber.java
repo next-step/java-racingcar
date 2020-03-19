@@ -1,6 +1,7 @@
 package stringcalculator;
 
 public class CalculatorNumber {
+    private static final String OPERATOR_GROUP = "+-*/";
     private static final String PLUS_OPERATOR = "+";
     private static final String MINUS_OPERATOR = "-";
     private static final String MULTIPLY_OPERATOR = "*";
@@ -19,6 +20,8 @@ public class CalculatorNumber {
     }
 
     public double calculate() {
+        validateOperator();
+
         if (findOperator().equals(PLUS_OPERATOR)) {
             return plus();
         }
@@ -38,8 +41,14 @@ public class CalculatorNumber {
         throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
     }
 
-    public String findOperator() {
+    private String findOperator() {
         return inputDatas[index];
+    }
+
+    private void validateOperator() {
+        if (!OPERATOR_GROUP.contains(findOperator())) {
+            throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
+        }
     }
 
     private double plus() {

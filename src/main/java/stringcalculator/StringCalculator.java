@@ -8,7 +8,6 @@ import java.util.Objects;
  * 예를 들어 "2 + 3 * 4 / 2"와 같은 문자열을 입력할 경우 2 + 3 * 4 / 2 실행 결과인 10을 출력해야 한다.
  */
 public class StringCalculator {
-    private static final String OPERATOR_GROUP = "+-*/";
     private static final String DELIMITER = " ";
     private static final int INT_ZERO = 0;
 
@@ -32,21 +31,10 @@ public class StringCalculator {
         double sum = Double.parseDouble(inputDatas[INT_ZERO]);
 
         for (int index = 1; index < inputDatas.length; index += 2) {
-            sum = calculateInputData(new CalculatorNumber(inputDatas, index, sum));
+            CalculatorNumber calculatorNumber = new CalculatorNumber(inputDatas, index, sum);
+            sum = calculatorNumber.calculate();
         }
 
         return sum;
-    }
-
-    private double calculateInputData(CalculatorNumber calculatorNumber) {
-        validateOperator(calculatorNumber);
-
-        return calculatorNumber.calculate();
-    }
-
-    private void validateOperator(CalculatorNumber calculatorNumber) {
-        if (!OPERATOR_GROUP.contains(calculatorNumber.findOperator())) {
-            throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
-        }
     }
 }
