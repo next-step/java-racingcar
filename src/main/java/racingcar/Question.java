@@ -18,7 +18,7 @@ public class Question {
         printQuestion();
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
-        insertValueIntoView(input);
+        inputView.insertNumberIntoField(input, inputType);
         printBlankSpace();
     }
 
@@ -28,15 +28,6 @@ public class Question {
         }
         if (TRY.equals(inputType)) {
             System.out.println("몇 회를 시도하실 건가요?");
-        }
-    }
-
-    private void insertValueIntoView(String input) {
-        if (CAR.equals(inputType)) {
-            inputView.insertNumberIntoField(input, inputType);
-        }
-        if (TRY.equals(inputType)) {
-            inputView.insertNumberIntoField(input, inputType);
         }
     }
 
