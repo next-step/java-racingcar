@@ -14,7 +14,7 @@
     [ ] 연산자들
     [ ] 숫자들은 연산자들보다 1 커야 한다.
     [ ] 숫자는 적어도 하나 이상이어야 한다.
-    [ ] 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
+    [x] 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
 [ ] 계산기
     [ ] 사칙 연산을 모두 포함하는 기능 구현
         [ ] 덧셈
