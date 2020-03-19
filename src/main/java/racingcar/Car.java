@@ -1,7 +1,9 @@
 package racingcar;
 
 public class Car {
+    private static final String ONE_MOVE = "-";
     private int position = 0;
+    private StringBuilder strPosition = new StringBuilder();
 
     public boolean canRun(int randomNum) {
         if (randomNum >= 4) {
@@ -18,5 +20,9 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public StringBuilder getStrPosition() {
+        return strPosition;
     }
 }
