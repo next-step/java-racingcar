@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Operators {
 
+    private static final int FIRST_INDEX = 0;
     private List<Operator> operators = new ArrayList<>();
 
     Operators(Expression expression) {
@@ -22,8 +23,8 @@ public class Operators {
     }
 
     Operator getFirstOneAndRemove() {
-        Operator operator = operators.get(0);
-        operators.remove(0);
+        Operator operator = operators.get(FIRST_INDEX);
+        operators.remove(FIRST_INDEX);
         return operator;
     }
 
