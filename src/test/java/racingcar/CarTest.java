@@ -24,11 +24,10 @@ public class CarTest {
 
     @DisplayName("canRun의 값이 true이면 자동차의 position 값에 1을 추가한다.")
     @ParameterizedTest
-    @CsvSource(value = {"true:1", "false:0"})
-    void moveTest(boolean inputCanRun, int position) {
+    @CsvSource(value = {"true:1", "false:0"}, delimiter = ':')
+    void moveTest(boolean canRun, int position) {
         //given
         Car car = new Car();
-        boolean canRun = inputCanRun;
 
         //when
         car.move(canRun);
