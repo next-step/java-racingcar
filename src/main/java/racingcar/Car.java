@@ -19,6 +19,11 @@ public class Car {
         }
     }
 
+    public void printPosition() {
+        System.out.print("출발점 |");
+        System.out.println(strPosition);
+    }
+
     public int getPosition() {
         return position;
     }
