@@ -24,4 +24,12 @@ public class InputViewTest {
         //when, then
         assertThatIllegalArgumentException().isThrownBy(() -> new InputView(input, InputType.CAR));
     }
+
+    @DisplayName("음수가 입력되면 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(ints = {-20, -1, -77})
+    void validateNegativeTest(String input){
+        //when, then
+        assertThatIllegalArgumentException().isThrownBy(() -> new InputView(input, InputType.CAR));
+    }
 }
