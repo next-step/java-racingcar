@@ -73,4 +73,18 @@ class StringCalculatorTest {
         // then
         assertThat(actual).isTrue();
     }
+
+    @DisplayName("덧셈을 성공한다.")
+    @Test
+    void plus() {
+        // given
+        final String input = "2 + 3";
+        final int expect = 5;
+
+        // when
+        final int actual = stringCalculator.calculate(input);
+
+        // then
+        assertThat(actual).isEqualTo(expect);
+    }
 }
