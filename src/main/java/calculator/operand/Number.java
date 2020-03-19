@@ -23,6 +23,13 @@ public final class Number {
         return new Number(this.value * otherNumber.value);
     }
 
+    public Number divide(final Number otherNumber) {
+        if (this.value == 0 || otherNumber.value == 0) {
+            throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
+        }
+        return new Number(this.value / otherNumber.value);
+    }
+
     public int getValue() {
         return this.value;
     }

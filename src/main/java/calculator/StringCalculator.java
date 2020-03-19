@@ -36,6 +36,8 @@ public class StringCalculator {
                     result = number.minus(otherNumber).getValue();
                 } else if ("*".equals(operatorText)) {
                     result = number.multiple(otherNumber).getValue();
+                } else if ("/".equals(operatorText)) {
+                    result = number.divide(otherNumber).getValue();
                 }
             }
         }
