@@ -107,19 +107,18 @@ class StringCalculatorTest {
     void zero_Divide(String input) {
         // when then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> { stringCalculator.calculate(input); }
-                );
+            .isThrownBy(() -> { stringCalculator.calculate(input); }
+        );
     }
 
     @DisplayName("여러 사칙 연산을 수행한다.")
     @ParameterizedTest
-    @CsvSource(value = {"2 + 3 * 4 / 2,10", "1 + 1 * 2 / 2,2", "100 - 100 * 12 -1,-1"})
+    @CsvSource(value = {"2 + 3 * 4 / 2,10", "1 + 1 * 2 / 2,2", "100 - 100 * 12 - 1,-1"})
     void calculate(String input, int expect) {
         // when
         final int actual = stringCalculator.calculate(input);
 
         // then
         assertThat(actual).isEqualTo(expect);
-
     }
 }
