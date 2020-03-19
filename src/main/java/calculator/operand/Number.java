@@ -1,5 +1,7 @@
 package calculator.operand;
 
+import calculator.operator.Operator;
+
 public final class Number {
     private int value;
 
@@ -20,28 +22,11 @@ public final class Number {
         }
     }
 
-    public Number plus(final Number otherNumber) {
-        return new Number(this.value + otherNumber.value);
-    }
-
-    public Number minus(final Number otherNumber) {
-        return new Number(this.value - otherNumber.value);
-    }
-
-    public Number multiple(final Number otherNumber) {
-        return new Number(this.value * otherNumber.value);
-    }
-
-    public Number divide(final Number otherNumber) {
-        if (this.value == 0 || otherNumber.value == 0) {
-            throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
-        }
-        return new Number(this.value / otherNumber.value);
+    public Number calculate(final Operator operator, final Number otherNumber) {
+        return new Number(operator.operate(this.value, otherNumber.value));
     }
 
     public int getValue() {
         return this.value;
     }
-
-
 }
