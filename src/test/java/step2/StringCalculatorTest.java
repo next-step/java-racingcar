@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class StringCalculatorTest {
 
@@ -61,8 +62,17 @@ public class StringCalculatorTest {
 
     @DisplayName("최종 계산 테스트")
     @ParameterizedTest
-    @CsvSource(value = {"2 + 3 * 4 / 2:10", "1 + 3 * 2 / 4 / 1:2"}, delimiter = ':')
-    void calculate(String input, int expected) {
+    @CsvSource(value = {"2 + 3 * 4 / 2 * 9:90", "1 + 3 * 2 / 4 / 1:2"}, delimiter = ':')
+    void calculate(String input, String expected) {
         assertThat(Main.calculateString(input)).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("나누기 값이 0일 경우 실패 테스트")
+    void calculateDivisionException() {
+        String input = "2 + 3 - 5 / 0";
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            Main.calculateString(input);
+        });
     }
 }

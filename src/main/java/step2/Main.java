@@ -13,12 +13,12 @@ public class Main {
         String input = scan.nextLine();
         scan.close();
 
-        int result = calculateString(input);
+        String result = calculateString(input);
 
         System.out.println("result: " + result);
     }
 
-    public static int calculateString(String str) {
+    public static String calculateString(String str) {
 
         String[] splitedString = splitString(str);
 
@@ -30,12 +30,12 @@ public class Main {
             int firstNumber = result;
             int secondNumber = Integer.parseInt(splitedString[i+2]);
 
-            Validator.checkDivideIntoZero(operator, secondNumber);
+            Validator.checkDivideZero(operator, firstNumber);
 
             result = StringCalculator.calculate(operator, firstNumber, secondNumber);
         }
 
-        return result;
+        return Integer.toString(result);
     }
 
     public static String[] splitString(String str) {
