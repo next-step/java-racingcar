@@ -48,7 +48,13 @@ public class StringCalculatorTest {
     @DisplayName("입력받은 String이 정규식 패턴에 맞는지 테스트")
     void checkPattern() {
         String str = "2 + 3 * 4 / 2";
-        assertThat(StringCalculator.checkPattern(str)).isEqualTo(true);
+        assertThat(Validator.checkPattern(str)).isEqualTo(true);
+    }
+
+    @Test
+    @DisplayName("연산자와 숫자를 입력받아 계산이 잘 되는지 테스트")
+    void numberCalculate() {
+        assertThat(StringCalculator.calculate("*", 3, 2)).isEqualTo(6);
     }
 
     //    @Test

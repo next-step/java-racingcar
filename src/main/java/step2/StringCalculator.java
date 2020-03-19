@@ -14,28 +14,26 @@ public class StringCalculator {
 
     private static String BLANK = " ";
 
-    public Double calculate(String str) {
+    public static int calculate(String operator, int firstNum, int secondNum) {
 
-        double result = 0;
-
-        return result;
-    }
-
-    public static boolean checkPattern(String str) {
-
-        Pattern regExp = Pattern.compile("(^[0-9]*)\\s([^\\+|\\-|\\*|\\/])\\s([0-9]*)");
-        Matcher matcher = regExp.matcher(str);
-
-        if(!matcher.find()) {
-            return false;
+        if(Operator.ADD.getValue().equals(operator)) {
+            return Operator.ADD.calculate(firstNum, secondNum);
         }
-        return true;
+        else if(Operator.SUBTRACT.getValue().equals(operator)) {
+            return Operator.SUBTRACT.calculate(firstNum, secondNum);
+        }
+        else if(Operator.MULTIPLY.getValue().equals(operator)) {
+            return Operator.MULTIPLY.calculate(firstNum, secondNum);
+        }
+        else if(Operator.DIVISION.getValue().equals(operator)) {
+            return Operator.DIVISION.calculate(firstNum, secondNum);
+        }
+        return -1; //TODO
     }
 
     public static String[] splitString(String str) {
         return str.split(BLANK);
     }
-
 
 
 }
