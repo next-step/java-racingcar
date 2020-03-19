@@ -30,6 +30,6 @@ public class StringTest {
             String text = "abc";
             text.charAt(3);
         }).isInstanceOf(IndexOutOfBoundsException.class)
-                .hasMessageMatching("Index: \\d+, Size: \\d+");
+                .hasMessageMatching("String index out of range: \\d+");
     }
 }
