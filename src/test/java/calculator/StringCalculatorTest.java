@@ -101,4 +101,18 @@ class StringCalculatorTest {
         // then
         assertThat(actual).isEqualTo(expect);
     }
+
+    @DisplayName("곱셈을 성공한다.")
+    @Test
+    void multiple() {
+        // given
+        final String input = "2 * 3";
+        final int expect = 6;
+
+        // when
+        final int actual = stringCalculator.calculate(input);
+
+        // then
+        assertThat(actual).isEqualTo(expect);
+    }
 }
