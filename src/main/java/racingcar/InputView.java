@@ -4,7 +4,7 @@ public class InputView {
     private int carCount;
     private int tryCount;
 
-    public InputView(String input) {
+    public InputView(String input, InputType inputType) {
         validateNull(input);
         validateEmpty(input);
     }
