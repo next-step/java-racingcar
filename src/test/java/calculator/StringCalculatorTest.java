@@ -34,4 +34,18 @@ class StringCalculatorTest {
             .isThrownBy(() -> { stringCalculator.calculate(input); }
         );
     }
+
+    @DisplayName("입력값을 문자열 배열로 반환하는데 성공한다.")
+    @Test
+    void toStringArray() {
+        // given
+        final String input = "2 + 3 * 4 / 2";
+        final String[] expect = input.split(" ");
+
+        // when
+        final String[] actual = stringCalculator.toStringArray(input);
+
+        // then
+        assertThat(actual).containsExactly(expect);
+    }
 }
