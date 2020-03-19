@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.junit.jupiter.api.Assertions.*;
 
 class StringCalculatorTest {
     private StringCalculator stringCalculator = new StringCalculator();
@@ -47,5 +46,18 @@ class StringCalculatorTest {
 
         // then
         assertThat(actual).containsExactly(expect);
+    }
+
+    @DisplayName("숫자 형식 체크를 성공한다.")
+    @Test
+    void isNumber() {
+        // given
+        final String input = "2";
+
+        // when
+        final boolean actual = stringCalculator.isNumber(input);
+
+        // then
+        assertThat(actual).isTrue();
     }
 }
