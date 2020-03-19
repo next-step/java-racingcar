@@ -24,6 +24,16 @@ public class StringCalculator {
             if (isOperator(value)) {
                 operatorStack.push(value);
             }
+
+            // 사칙연산
+            if (operandStack.size() == 2 && operatorStack.size() == 1) {
+                Number number = operandStack.pop();
+                Number otherNumber = operandStack.pop();
+                String operatorText = operatorStack.pop();
+                if ("+".equals(operatorText)) {
+                    result = number.plus(otherNumber).getValue();
+                }
+            }
         }
         return result;
     }
