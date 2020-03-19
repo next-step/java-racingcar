@@ -9,10 +9,9 @@ public class CalculationOrder {
     private Stack<String> order = new Stack<>();
 
     public void init(String[] inputs) {
-        for (String input : inputs) {
-            order.push(input);
+        for(int i = inputs.length -1 ; i>=0; i--){
+            order.push(inputs[i]);
         }
-        order.sort(Collections.reverseOrder());
     }
 
     public String next() {
