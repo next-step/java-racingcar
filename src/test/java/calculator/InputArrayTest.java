@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class InputArrayTest {
     @DisplayName("split된 inputArray의 짝수 인덱스에 사칙연산 기호가 아닌 문자열이 오면 예외가 발생한다.")
@@ -18,9 +18,7 @@ public class InputArrayTest {
         InputView inputView = new InputView(input);
 
         //when, then
-        assertThrows(IllegalArgumentException.class, () -> {
-            new InputArray(inputView);
-        });
+        assertThatIllegalArgumentException().isThrownBy(() -> new InputArray(inputView));
     }
 
     @DisplayName("inputArray에서 숫자만 불러와 List를 만든다.")

@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class InputViewTest {
     @DisplayName("공백 또는 null을 입력받으면 예외가 발생한다.")
@@ -14,9 +14,7 @@ public class InputViewTest {
     @NullAndEmptySource
     void validateTest(String input) {
         //when, then
-        assertThrows(IllegalArgumentException.class, () -> {
-            new InputView(input);
-        });
+        assertThatIllegalArgumentException().isThrownBy(() -> new InputView(input));
     }
 
     @ParameterizedTest
