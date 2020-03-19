@@ -2,6 +2,8 @@ package step2;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -41,7 +43,7 @@ public class StringCalculatorTest {
     @DisplayName("입력받은 String이 split이 잘 되는지 테스트")
     void splitString() {
         String str = "2 + 3 * 4 / 2";
-        assertThat(StringCalculator.splitString(str)).containsExactly("2", "+", "3", "*", "4", "/", "2");
+        assertThat(Main.splitString(str)).containsExactly("2", "+", "3", "*", "4", "/", "2");
     }
 
     @Test
@@ -57,10 +59,10 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.calculate("*", 3, 2)).isEqualTo(6);
     }
 
-    //    @Test
-//    @DisplayName("최종 계산 테스트")
-//    @CsvSource(value = {"'2 + 3 * 4 / 2':10", "'1+3*2/4':2"}, delimiter = ':')
-//    void calculate(String str, Double expected) {
-//        assertThat(StringCalculator.calculate(str)).isEqualTo(expected);
-//    }
+    @DisplayName("최종 계산 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"2 + 3 * 4 / 2:10", "1 + 3 * 2 / 4 / 1:2"}, delimiter = ':')
+    void calculate(String input, int expected) {
+        assertThat(Main.calculateString(input)).isEqualTo(expected);
+    }
 }

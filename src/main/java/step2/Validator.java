@@ -16,5 +16,13 @@ public class Validator {
         return true;
     }
 
+    public static boolean checkDivideIntoZero(String operator, int secondNumber) {
+
+        if(Operator.DIVISION.getValue().equals(operator) && secondNumber == 0) {
+            return false;
+        }
+        return true;
+    }
+
 }
 

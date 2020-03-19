@@ -12,8 +12,6 @@ public class StringCalculator {
     //5. 값이 제대로 입력되지 않았을 경우 Exception을 도출한다.
     //6. 값이 제대로 입력되었을 경우, 앞에서 부터 계산을 수행한다.
 
-    private static String BLANK = " ";
-
     public static int calculate(String operator, int firstNum, int secondNum) {
 
         if(Operator.ADD.getValue().equals(operator)) {
@@ -30,10 +28,5 @@ public class StringCalculator {
         }
         return -1; //TODO
     }
-
-    public static String[] splitString(String str) {
-        return str.split(BLANK);
-    }
-
 
 }
