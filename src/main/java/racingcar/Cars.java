@@ -20,16 +20,11 @@ public class Cars {
     public void moveTryCount(InputView inputView, RandomNumGenerator rng) {
         int tryCount = inputView.getTryCount();
         for (int i = 0; i < tryCount; i++) {
-            printTryCount(i);
             moveOnce(rng);
+            printTryCount(i);
             printCarsAfterMoveOnce();
         }
         printBorderLine();
-    }
-
-    private void printTryCount(int currentTryCount) {
-        printBorderLine();
-        System.out.println(currentTryCount + 1 + "회차");
     }
 
     private void moveOnce(RandomNumGenerator rng) {
@@ -38,6 +33,11 @@ public class Cars {
             boolean canRun = car.canRun(randomNum);
             car.move(canRun);
         }
+    }
+
+    private void printTryCount(int currentTryCount) {
+        printBorderLine();
+        System.out.println(currentTryCount + 1 + "회차");
     }
 
     private void printCarsAfterMoveOnce() {
