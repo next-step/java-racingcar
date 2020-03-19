@@ -30,7 +30,7 @@ class OperatorTest {
 
         // when then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> { Operator.isOperator(wrongOperatorText); }
+                .isThrownBy(() -> { Operator.getOperator(wrongOperatorText); }
         );
     }
 
