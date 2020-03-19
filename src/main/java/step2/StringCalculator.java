@@ -26,7 +26,7 @@ public class StringCalculator {
         else if(Operator.DIVISION.getValue().equals(operator)) {
             return Operator.DIVISION.calculate(firstNum, secondNum);
         }
-        return -1; //TODO
+        return -1; // Enum에서 Exception으로 처리해주고 싶은데 어떡하면 좋을까?
     }
 
 }

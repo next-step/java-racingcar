@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringCalculatorTest {
 
@@ -50,8 +49,10 @@ public class StringCalculatorTest {
     @Test
     @DisplayName("입력받은 String이 정규식 패턴에 맞는지 테스트")
     void checkPattern() {
-        String str = "2 + 3 * 4 / 2";
-        assertThat(Validator.checkPattern(str)).isEqualTo(true);
+        String input = "2 + 3 # 5 / 0";
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            Main.calculateString(input);
+        });
     }
 
     @Test
@@ -74,5 +75,21 @@ public class StringCalculatorTest {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             Main.calculateString(input);
         });
+    }
+
+    @Test
+    @DisplayName("적절한 연산자가 입력되지 않았을 때의 테스트")
+    void OperatorException() {
+
+        //TODO: Enum을 제대로 활용해서 Exception 처리 할 수 있도록 개선 필요해보임
+        String input = "2 + 3 - 5 # 3";
+//        assertThatExceptionOfType(IllegalArgumentException.class)
+//                .isThrownBy(() -> {
+//            Main.calculateString(input);
+//        }).hasMessageContaining("연산자");
+
+//        assertThatIllegalArgumentException().isThrownBy(() -> {
+//            Main.calculateString(input);
+//        });
     }
 }

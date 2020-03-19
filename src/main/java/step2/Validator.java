@@ -5,15 +5,11 @@ import java.util.regex.Pattern;
 
 public class Validator {
 
-    public static boolean checkPattern(String str) {
+    public static void checkPattern(String str) {
 
-        Pattern regExp = Pattern.compile("(^[0-9]*)\\s([^\\+|\\-|\\*|\\/])\\s([0-9]*)");
-        Matcher matcher = regExp.matcher(str);
-
-        if(!matcher.find()) {
-            return false;
+        if(!str.matches("(^[0-9]*)\\s([^+|-|*|\\/])\\s([0-9]*)")) {
+            throw new IllegalArgumentException("입력값의 형식이 맞지 않습니다.");
         }
-        return true;
     }
 
     public static void checkDivideZero(String operator, int secondNumber) {
@@ -22,6 +18,14 @@ public class Validator {
             throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
         }
     }
+
+    public static void checkEmptyOrNullInput(String src) {
+
+        if(src.isEmpty() || src == null) {
+            throw new IllegalArgumentException("빈 값이 입력되었습니다.");
+        }
+    }
+    //TODO: 숫자가 아닌 경우 체크
 
 }
 

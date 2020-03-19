@@ -30,8 +30,7 @@ public enum Operator {
             case DIVISION:
                 return calculator.divide(firstNum, secondNum);
             default:
-                //Exception 처리??
-                return 0;
+                throw new IllegalArgumentException("적절한 연산자가 아닙니다.");
         }
     }
 }

@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class Main {
 
-
     private static String BLANK = " ";
+    private static Validator validator = new Validator();
 
     public static void main(String[] args) {
 
@@ -13,12 +13,16 @@ public class Main {
         String input = scan.nextLine();
         scan.close();
 
+        validator.checkEmptyOrNullInput(input);
+
         String result = calculateString(input);
 
         System.out.println("result: " + result);
     }
 
     public static String calculateString(String str) {
+
+        validator.checkPattern(str);
 
         String[] splitedString = splitString(str);
 
@@ -30,7 +34,7 @@ public class Main {
             int firstNumber = result;
             int secondNumber = Integer.parseInt(splitedString[i+2]);
 
-            Validator.checkDivideZero(operator, firstNumber);
+            validator.checkDivideZero(operator, firstNumber);
 
             result = StringCalculator.calculate(operator, firstNumber, secondNumber);
         }
