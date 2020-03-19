@@ -37,6 +37,15 @@ class StringCalculatorTest {
         );
     }
 
+    @DisplayName("입력값이 빈 문자열일 경우 예외 발생을 성공한다.")
+    @Test
+    void inputValue_IsEmptyString() {
+        final String input = "";
+        assertThatExceptionOfType(IllegalArgumentException.class)
+            .isThrownBy(() -> { stringCalculator.calculate(input); }
+        );
+    }
+
     @DisplayName("입력값을 문자열 배열로 반환하는데 성공한다.")
     @Test
     void toStringArray() {
