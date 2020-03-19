@@ -10,7 +10,7 @@ public class InputView {
         validateNull(input);
         validateEmpty(input);
         int number = validateNumber(input);
-        convertStringToInt(number, inputType);
+        insertNumberIntoField(number, inputType);
     }
 
     private void validateNull(String input) {
@@ -42,7 +42,7 @@ public class InputView {
         return intInput;
     }
 
-    private void convertStringToInt(int intInput, InputType inputType){
+    private void insertNumberIntoField(int intInput, InputType inputType){
         if(CAR.equals(inputType)){
             this.carCount = intInput;
         }
