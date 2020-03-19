@@ -7,6 +7,7 @@ import java.util.Stack;
 
 public class StringCalculator {
     private static final String BLANK = " ";
+    private static final String EMPTY_STRING = "";
     private static final int START_CALCULATE_OPERAND_SIZE = 2;
     private static final int START_CALCULATE_OPERATOR_SIZE = 1;
     public int calculate(String input) {
@@ -37,7 +38,7 @@ public class StringCalculator {
     }
 
     private void isEmpty(final String input) {
-        if (input == null || input.equals(BLANK)) {
+        if (input == null || input.trim().equals(EMPTY_STRING)) {
             throw new IllegalArgumentException("wrong input value");
         }
     }
