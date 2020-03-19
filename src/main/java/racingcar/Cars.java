@@ -21,7 +21,7 @@ public class Cars {
         int tryCount = inputView.getTryCount();
         for (int i = 0; i < tryCount; i++) {
             printTryCount(i);
-            moveOnce(inputView, rng);
+            moveOnce(rng);
             printCarsAfterMoveOnce();
         }
         printBorderLine();
@@ -32,7 +32,7 @@ public class Cars {
         System.out.println(currentTryCount + 1 + "회차");
     }
 
-    private void moveOnce(InputView inputView, RandomNumGenerator rng) {
+    private void moveOnce(RandomNumGenerator rng) {
         for (Car car : cars) {
             int randomNum = rng.generateNumberLessThanTen();
             boolean canRun = car.canRun(randomNum);

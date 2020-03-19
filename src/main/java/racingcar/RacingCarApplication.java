@@ -14,13 +14,20 @@ public class RacingCarApplication {
         Scanner scanner1 = new Scanner(System.in);
         String carCount = scanner1.nextLine();
         inputView.insertNumberIntoField(carCount, CAR);
+        printBlankSpace();
 
         System.out.println("몇 회를 시도하실 건가요?");
         Scanner scanner2 = new Scanner(System.in);
         String tryCount = scanner2.nextLine();
         inputView.insertNumberIntoField(tryCount, TRY);
+        printBlankSpace();
 
         Cars cars = new Cars(inputView);
+        System.out.println("실행결과");
         cars.moveTryCount(inputView, rng);
+    }
+
+    private static void printBlankSpace(){
+        System.out.println();
     }
 }
