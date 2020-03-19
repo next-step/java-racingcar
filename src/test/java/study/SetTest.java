@@ -28,25 +28,29 @@ public class SetTest {
     /**
      * collection을 테스트 할때는 contains(), hasSize() 같은 메서드를 활용
      */
-    @DisplayName("set의 size() 테스트 ")
+    @DisplayName("요구사항1 : size() 테스트 ")
     @Test
     void setSize() {
         assertThat(numbers).contains(1);
+        assertThat(numbers.size()).isEqualTo(3);
         assertThat(numbers).hasSize(3);
     }
 
-    @DisplayName("set의 contains() 테스트")
+    @DisplayName("요구사항2 : contains() 테스트")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void contains(int no) {
+        assertThat(numbers.contains(1)).isTrue();
+        assertThat(numbers.contains(2)).isTrue();
+        assertThat(numbers.contains(3)).isTrue();
         assertThat(numbers.contains(no)).isTrue();
     }
 
 
-    @DisplayName("set의 contains() 테스트")
+    @DisplayName("요구사항3 : contains() 테스트")
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false"}, delimiter = ':')
-    void contains2(int input, String expected) {
+    void contains2(int input, boolean expected) {
         assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 }
