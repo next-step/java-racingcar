@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.Stack;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
@@ -51,7 +53,7 @@ public class CalculatorTest {
     void input_validation() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    calculator.calculate("");
+                    calculator.calculate("  ");
                 });
 
         assertThatExceptionOfType(IllegalArgumentException.class)
@@ -75,5 +77,12 @@ public class CalculatorTest {
     void calculate_all(String input, long expected) {
         long result = calculator.calculate(input);
         assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void stack_pop() {
+        Stack<Object> objects = new Stack<>();
+        Object pop = objects.pop();
+        assertThat(pop).isNull();
     }
 }
