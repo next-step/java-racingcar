@@ -2,9 +2,11 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class InputViewTest {
@@ -28,8 +30,21 @@ public class InputViewTest {
     @DisplayName("음수가 입력되면 예외가 발생한다.")
     @ParameterizedTest
     @ValueSource(strings = {"-20", "-1", "-77"})
-    void validateNegativeTest(String input){
+    void validateNegativeTest(String input) {
         //when, then
         assertThatIllegalArgumentException().isThrownBy(() -> new InputView(input, InputType.CAR));
+    }
+
+    @DisplayName("입력값의 InputType에 따라 다른 InputView 필드에 저장된다.")
+    @ParameterizedTest
+    @CsvSource(value = {"5:5", "7:7"}, delimiter = ':')
+    void insertValueToFieldTest(String input, int expected) {
+        //when
+        InputView inputView_car = new InputView(input, InputType.CAR);
+        InputView inputView_try = new InputView(input, InputType.TRY);
+
+        //then
+        assertThat(inputView_car.getCarCount()).isEqualTo(expected);
+        assertThat(inputView_try.getTryCount()).isEqualTo(expected);
     }
 }
