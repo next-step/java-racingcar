@@ -11,25 +11,25 @@ public class StringCalculatorTest {
     @Test
     @DisplayName("덧셈 테스트")
     void add() {
-        assertThat(StringCalculator.add(2, 3)).isEqualTo(5);
+        assertThat(Calculator.add(2, 3)).isEqualTo(5);
     }
 
     @Test
     @DisplayName("뺄셈 테스트")
     void subtract() {
-        assertThat(StringCalculator.subtract(2, 3)).isEqualTo(-1);
+        assertThat(Calculator.subtract(2, 3)).isEqualTo(-1);
     }
 
     @Test
     @DisplayName("곱셈 테스트")
     void multiple() {
-        assertThat(StringCalculator.multiple(2, 3)).isEqualTo(6);
+        assertThat(Calculator.multiple(2, 3)).isEqualTo(6);
     }
 
     @Test
     @DisplayName("나눗셈 테스트")
     void divide() {
-        assertThat(StringCalculator.divide(4, 2)).isEqualTo(2);
+        assertThat(Calculator.divide(4, 2)).isEqualTo(2);
     }
 
     @Test
