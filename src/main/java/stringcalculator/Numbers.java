@@ -12,14 +12,20 @@ public class Numbers {
         }
     }
 
-    public List<Number> getNumbers() {
-        return numbers;
+    public int size() {
+        return numbers.size();
     }
 
     private void parseNumber(String expression) {
         try {
-            numbers.add(new Number(Integer.parseInt(expression)));
+            numbers.add(new Number(Long.parseLong(expression)));
         } catch (NumberFormatException e) {
         }
+    }
+
+    public Number getFirstOneAndRemove() {
+        Number number = numbers.get(0);
+        numbers.remove(0);
+        return number;
     }
 }

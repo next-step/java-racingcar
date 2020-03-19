@@ -42,12 +42,36 @@ public class ExpressionTest {
     @DisplayName("사용자가 입력한 문자열 중 숫자만 분리")
     @ParameterizedTest
     @CsvSource(value = {"1 + 3:2", "1 + 3 + 5:3", "1 + 3 + 5 - 7:4"}, delimiter = ':')
-    void distributeExpression(String source, int expectedSize) {
+    void distributeNumberOfExpression(String source, int expectedSize) {
         Expression expression = new Expression(source);
         Numbers numbers = new Numbers(expression);
 
-        assertThat(numbers.getNumbers())
-                .hasSize(expectedSize);
+        assertThat(numbers.size())
+                .isEqualTo(expectedSize);
+    }
 
+    @DisplayName("사용자가 입력한 문자열 중 연산자만 분리")
+    @ParameterizedTest
+    @CsvSource(value = {"1 - 3:1", "1 + 3 * 5:2", "1 + 3 + 5 - 7:3"}, delimiter = ':')
+    void distributeOperatorOfExpression(String source, int expectedSize) {
+        Expression expression = new Expression(source);
+        Operators operator = new Operators(expression);
+
+        assertThat(operator.size())
+                .isEqualTo(expectedSize);
+    }
+
+    @DisplayName("입력값 중 연산자가 사칙연산 기호가 아닌 경우")
+    @ParameterizedTest
+    @ValueSource(strings = {"1 A 3", "= !", "3 & 1"})
+    void isNotPermittedOperatorTest(String source) {
+        assertThatThrownBy(() -> new Operators(new Expression(source)));
+    }
+
+    @DisplayName("입력값은 반드시 숫자로 시작해야 한다")
+    @ParameterizedTest
+    @ValueSource(strings = {"A 1", "* 2", "$"})
+    void expressionMustStartIntegerTest(String source) {
+        assertThatThrownBy(() -> new Expression(source));
     }
 }
