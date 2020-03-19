@@ -1,5 +1,8 @@
 package racingcar;
 
+import static racingcar.InputType.CAR;
+import static racingcar.InputType.TRY;
+
 public class InputView {
     private int carCount;
     private int tryCount;
@@ -28,5 +31,13 @@ public class InputView {
         }catch (NumberFormatException nfe){
             throw new IllegalArgumentException("숫자만 입력 가능합니다.");
         }
+    }
+
+    public int getCarCount() {
+        return carCount;
+    }
+
+    public int getTryCount() {
+        return tryCount;
     }
 }
