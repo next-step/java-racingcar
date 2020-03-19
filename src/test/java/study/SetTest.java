@@ -28,6 +28,7 @@ public class SetTest {
     /**
      * collection을 테스트 할때는 contains(), hasSize() 같은 메서드를 활용
      */
+
     @DisplayName("요구사항1 : size() 테스트 ")
     @Test
     void setSize() {
@@ -43,8 +44,7 @@ public class SetTest {
         assertThat(numbers.contains(1)).isTrue();
         assertThat(numbers.contains(2)).isTrue();
         assertThat(numbers.contains(3)).isTrue();
-        assertThat(numbers.contains(no)).isTrue();
-    }
+
 
 
     @DisplayName("요구사항3 : contains() 테스트")
