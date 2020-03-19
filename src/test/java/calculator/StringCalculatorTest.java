@@ -115,4 +115,29 @@ class StringCalculatorTest {
         // then
         assertThat(actual).isEqualTo(expect);
     }
+
+    @DisplayName("나눗셈을 성공한다.")
+    @Test
+    void divide() {
+        // given
+        final String input = "3 / 2";
+        final int expect = 1;
+
+        // when
+        final int actual = stringCalculator.calculate(input);
+
+        // then
+        assertThat(actual).isEqualTo(expect);
+    }
+
+    @DisplayName("0을 나눴을때, 예외를 발생을 성공한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"0 / 2", "2 / 0"})
+    void zero_Divide(String input) {
+        // when then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+            .isThrownBy(() -> { stringCalculator.calculate(input); }
+         );
+
+    }
 }
