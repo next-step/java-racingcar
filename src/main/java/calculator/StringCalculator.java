@@ -1,19 +1,22 @@
 package calculator;
 
 import calculator.operand.Number;
+import calculator.operator.Operator;
 
 import java.util.Stack;
 
 public class StringCalculator {
     private static final String BLANK = " ";
+    private static final int START_CALCULATE_OPERAND_SIZE = 2;
+    private static final int START_CALCULATE_OPERATOR_SIZE = 1;
     public int calculate(String input) {
         isEmpty(input);
 
         String[] source = toStringArray(input);
         Stack<Number> operandStack = new Stack<>();
-        Stack<String> operatorStack = new Stack<>();
-        int result = 0;
+        Stack<Operator> operatorStack = new Stack<>();
 
+        // TODO : refactor INDENT 2
         for (String value : source) {
             // 피연산자
             if (Number.isNumber(value)) {
@@ -21,27 +24,16 @@ public class StringCalculator {
             }
 
             // 연산자
-            if (isOperator(value)) {
-                operatorStack.push(value);
+            if (Operator.isOperator(value)) {
+                operatorStack.push(Operator.getOperator(value));
             }
 
             // 사칙연산
-            if (operandStack.size() == 2 && operatorStack.size() == 1) {
-                Number otherNumber = operandStack.pop();
-                Number number = operandStack.pop();
-                String operatorText = operatorStack.pop();
-                if ("+".equals(operatorText)) {
-                    result = number.plus(otherNumber).getValue();
-                } else if ("-".equals(operatorText)) {
-                    result = number.minus(otherNumber).getValue();
-                } else if ("*".equals(operatorText)) {
-                    result = number.multiple(otherNumber).getValue();
-                } else if ("/".equals(operatorText)) {
-                    result = number.divide(otherNumber).getValue();
-                }
+            if (operandStack.size() == START_CALCULATE_OPERAND_SIZE && operatorStack.size() == START_CALCULATE_OPERATOR_SIZE) {
+                operandStack.push(operate(operandStack, operatorStack));
             }
         }
-        return result;
+        return operandStack.pop().getValue();
     }
 
     private void isEmpty(final String input) {
@@ -54,7 +46,9 @@ public class StringCalculator {
         return input.split(BLANK);
     }
 
-    public boolean isOperator(final String value) {
-        return "+".equals(value) || "-".equals(value) || "*".equals(value) || "/".equals(value);
+    private Number operate(final Stack<Number> operandStack, final Stack<Operator> operatorStack) {
+        Number otherNumber = operandStack.pop();
+        Number number = operandStack.pop();
+        return number.calculate(operatorStack.pop(), otherNumber);
     }
 }
