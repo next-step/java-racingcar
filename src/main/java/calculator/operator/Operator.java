@@ -32,10 +32,7 @@ public enum Operator {
     }
 
     public static boolean isOperator(final String value) {
-        if (PLUS.value.equals(value) || MINUS.value.equals(value) || MULTIPLE.value.equals(value) || DIVIDE.value.equals(value)) {
-            return true;
-        }
-        throw new IllegalArgumentException("사칙 연산자가 아닙니다.");
+        return PLUS.value.equals(value) || MINUS.value.equals(value) || MULTIPLE.value.equals(value) || DIVIDE.value.equals(value);
     }
 
     public static Operator getOperator(String operatorText) {
