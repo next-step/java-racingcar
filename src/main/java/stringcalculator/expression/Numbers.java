@@ -6,13 +6,13 @@ import java.util.List;
 public class Numbers {
     private List<Number> numbers = new ArrayList<>();
 
-    public Numbers(Expression expression) {
+    Numbers(Expression expression) {
         for (String item : expression.getExpression()) {
             parseNumber(item);
         }
     }
 
-    public int size() {
+    int size() {
         return numbers.size();
     }
 
@@ -23,9 +23,13 @@ public class Numbers {
         }
     }
 
-    public Number getFirstOneAndRemove() {
+    Number getFirstOneAndRemove() {
         Number number = numbers.get(0);
         numbers.remove(0);
         return number;
+    }
+
+    void add(Double number) {
+        numbers.add(0, new Number(number));
     }
 }

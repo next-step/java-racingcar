@@ -3,13 +3,13 @@ package stringcalculator.expression;
 import java.util.Objects;
 
 public class Number {
-    private final long number;
+    private final double number;
 
-    Number(long number) {
+    Number(double number) {
         this.number = number;
     }
 
-    public long getNumber() {
+    public Double getNumber() {
         return number;
     }
 

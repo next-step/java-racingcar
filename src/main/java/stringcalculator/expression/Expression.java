@@ -1,5 +1,7 @@
 package stringcalculator.expression;
 
+import stringcalculator.calculator.Calculator;
+
 import java.util.Arrays;
 import java.util.regex.Pattern;
 
@@ -10,7 +12,7 @@ public class Expression {
 
     private String[] expressions;
     private Numbers numbers;
-    private Operators operatos;
+    private Operators operators;
 
     public Expression(String source) {
         if (source == null || "".equals(source.trim())) {
@@ -21,7 +23,7 @@ public class Expression {
             throw new IllegalArgumentException("입력 값은 숫자부터 시작해야 합니다.");
         }
         this.numbers = new Numbers(this);
-        this.operatos = new Operators(this);
+        this.operators = new Operators(this);
     }
 
     String[] getExpression() {
@@ -39,5 +41,33 @@ public class Expression {
     @Override
     public int hashCode() {
         return Arrays.hashCode(expressions);
+    }
+
+    public Double calculate() {
+        while (hasNextOperator()) {
+            addNumber(Calculator.getOperation(
+                    nextOperator().getOperator()
+            ).calculate(
+                    nextNumber().getNumber(),
+                    nextNumber().getNumber()
+            ));
+        }
+        return nextNumber().getNumber();
+    }
+
+    private boolean hasNextOperator() {
+        return !operators.isEmpty();
+    }
+
+    private Operator nextOperator() {
+        return operators.getFirstOneAndRemove();
+    }
+
+    private Number nextNumber() {
+        return numbers.getFirstOneAndRemove();
+    }
+
+    private void addNumber(Double number) {
+        numbers.add(number);
     }
 }
