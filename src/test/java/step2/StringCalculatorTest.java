@@ -44,7 +44,14 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.splitString(str)).containsExactly("2", "+", "3", "*", "4", "/", "2");
     }
 
-//    @Test
+    @Test
+    @DisplayName("입력받은 String이 정규식 패턴에 맞는지 테스트")
+    void checkPattern() {
+        String str = "2 + 3 * 4 / 2";
+        assertThat(StringCalculator.checkPattern(str)).isEqualTo(true);
+    }
+
+    //    @Test
 //    @DisplayName("최종 계산 테스트")
 //    @CsvSource(value = {"'2 + 3 * 4 / 2':10", "'1+3*2/4':2"}, delimiter = ':')
 //    void calculate(String str, Double expected) {
