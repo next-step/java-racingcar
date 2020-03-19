@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Number {
     private final long number;
 
-    public Number(long number) {
+    Number(long number) {
         this.number = number;
     }
 

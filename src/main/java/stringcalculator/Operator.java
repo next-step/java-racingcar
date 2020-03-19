@@ -7,7 +7,7 @@ public class Operator {
     private static final Pattern OPERATOR_PATTERN = Pattern.compile("^(\\+)|(-)|(\\*)|(/)$");
     private final String operator;
 
-    public Operator(String operator) {
+    Operator(String operator) {
         if (!OPERATOR_PATTERN.matcher(operator).find()) {
             throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
         }
