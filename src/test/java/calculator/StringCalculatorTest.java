@@ -1,9 +1,9 @@
 package calculator;
 
-import calculator.operand.Number;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -49,17 +49,6 @@ class StringCalculatorTest {
 
         // then
         assertThat(actual).containsExactly(expect);
-    }
-
-    @DisplayName("사칙연산자 체크를 성공한다.")
-    @ParameterizedTest
-    @ValueSource(strings = {"+", "-", "*", "/"})
-    void isOperator(String operator) {
-        // when
-        final boolean actual = stringCalculator.isOperator(operator);
-
-        // then
-        assertThat(actual).isTrue();
     }
 
     @DisplayName("덧셈을 성공한다.")
@@ -124,7 +113,19 @@ class StringCalculatorTest {
     void zero_Divide(String input) {
         // when then
         assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> { stringCalculator.calculate(input); }
-         );
+                .isThrownBy(() -> { stringCalculator.calculate(input); }
+                );
+    }
+
+    @DisplayName("여러 사칙 연산을 수행한다.")
+    @ParameterizedTest
+    @CsvSource(value = {"2 + 3 * 4 / 2,10", "1 + 1 * 2 / 2,2", "100 - 100 * 12 -1,-1"})
+    void calculate(String input, int expect) {
+        // when
+        final int actual = stringCalculator.calculate(input);
+
+        // then
+        assertThat(actual).isEqualTo(expect);
+
     }
 }
