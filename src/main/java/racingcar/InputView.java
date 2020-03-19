@@ -7,6 +7,7 @@ public class InputView {
     public InputView(String input, InputType inputType) {
         validateNull(input);
         validateEmpty(input);
+        validateNumber(input);
     }
 
     private void validateNull(String input){
@@ -19,5 +20,13 @@ public class InputView {
         if(input.isEmpty()){
             throw new IllegalArgumentException("공백 문자열은 입력할 수 없습니다.");
        }
+    }
+
+    private void validateNumber(String input){
+        try {
+            Integer.parseInt(input);
+        }catch (NumberFormatException nfe){
+            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+        }
     }
 }
