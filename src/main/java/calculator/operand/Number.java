@@ -11,6 +11,15 @@ public final class Number {
         return new Number(Integer.parseInt(text));
     }
 
+    public static boolean isNumber(final String value) {
+        try {
+            Integer.parseInt(value);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
     public Number plus(final Number otherNumber) {
         return new Number(this.value + otherNumber.value);
     }

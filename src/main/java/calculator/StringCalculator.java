@@ -16,7 +16,7 @@ public class StringCalculator {
 
         for (String value : source) {
             // 피연산자
-            if (isNumber(value)) {
+            if (Number.isNumber(value)) {
                 operandStack.push(Number.intValueOf(value));
             }
 
@@ -52,15 +52,6 @@ public class StringCalculator {
 
     String[] toStringArray(final String input) {
         return input.split(BLANK);
-    }
-
-    public boolean isNumber(final String value) {
-        try {
-            Integer.parseInt(value);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
     }
 
     public boolean isOperator(final String value) {
