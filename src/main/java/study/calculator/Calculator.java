@@ -8,7 +8,7 @@ public class Calculator {
         operator = new Operator();
     }
 
-    public Integer calculate(String expression) throws IllegalArgumentException {
+    public Integer calculate(String expression) {
         validate(expression);
 
         String[] parts = expression.trim().split(DELIMITER);
@@ -23,7 +23,7 @@ public class Calculator {
         return result;
     }
 
-    private void validate(String expression) throws IllegalArgumentException {
+    private void validate(String expression) {
         if(expression == null) {
             throw new IllegalArgumentException();
         }
