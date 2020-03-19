@@ -1,10 +1,15 @@
 package calculator;
 
 public class StringCalculator {
+    private static final String BLANK = " ";
     public int calculate(String input) {
-        if (input == null || input.equals(" ")) {
-            throw new IllegalArgumentException("input value ");
-        }
+        isEmpty(input);
         return 0;
+    }
+
+    private void isEmpty(final String input) {
+        if (input == null || input.equals(BLANK)) {
+            throw new IllegalArgumentException("wrong input value");
+        }
     }
 }
