@@ -11,6 +11,12 @@ public class Cars {
         moveTryCount(inputView, rng);
     }
 
+    public void printCars(){
+        for(Car car:cars){
+            car.printPosition();
+        }
+    }
+
     private void createCars(InputView inputView) {
         int carCount = inputView.getCarCount();
         for (int i = 0; i < carCount; i++) {
