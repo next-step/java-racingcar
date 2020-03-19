@@ -1,6 +1,7 @@
 package stringcalculator;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -22,6 +23,16 @@ public class StringCalculator {
     @ParameterizedTest
     @ValueSource(strings = {"", " "})
     void nullOrEmptyStringThrowIllegalArgumentException(String source) {
+        assertThatThrownBy(() -> new Expression(source))
+                .isExactlyInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("입력 값은 null 이거나 빈 공백 문자일 수 없습니다.");
+    }
+
+    @DisplayName("입력값이 null일 경우 IllegalArgumentException throw")
+    @Test
+    void nullExpressionThrowIllegalArgumentException() {
+        String source = null;
+
         assertThatThrownBy(() -> new Expression(source))
                 .isExactlyInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력 값은 null 이거나 빈 공백 문자일 수 없습니다.");
