@@ -6,15 +6,8 @@ import java.util.List;
 public class Cars {
     List<Car> cars = new ArrayList<>();
 
-    public Cars(InputView inputView, RandomNumGenerator rng) {
+    public Cars(InputView inputView) {
         createCars(inputView);
-        moveTryCount(inputView, rng);
-    }
-
-    public void printCars(){
-        for(Car car:cars){
-            car.printPosition();
-        }
     }
 
     private void createCars(InputView inputView) {
@@ -24,11 +17,19 @@ public class Cars {
         }
     }
 
-    private void moveTryCount(InputView inputView, RandomNumGenerator rng) {
+    public void moveTryCount(InputView inputView, RandomNumGenerator rng) {
         int tryCount = inputView.getTryCount();
         for (int i = 0; i < tryCount; i++) {
+            printTryCount(i);
             moveOnce(inputView, rng);
+            printCarsAfterMoveOnce();
         }
+        printBorderLine();
+    }
+
+    private void printTryCount(int currentTryCount) {
+        printBorderLine();
+        System.out.println(currentTryCount + 1 + "회차");
     }
 
     private void moveOnce(InputView inputView, RandomNumGenerator rng) {
@@ -37,5 +38,14 @@ public class Cars {
             boolean canRun = car.canRun(randomNum);
             car.move(canRun);
         }
+    }
+
+    private void printCarsAfterMoveOnce() {
+        cars.stream()
+                .forEach(it -> it.printPosition());
+    }
+
+    private void printBorderLine() {
+        System.out.println("=====================================");
     }
 }
