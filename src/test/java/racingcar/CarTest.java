@@ -38,8 +38,8 @@ public class CarTest {
 
     @DisplayName("canRun의 값이 true이면 자동차의 string position 값에 -을 추가한다.")
     @ParameterizedTest
-    @CsvSource(value = {"true:-", "false:"}, delimiter = ':')
-    void moveTest_2(boolean canRun, String strPosition) {
+    @CsvSource(value = {"true:1", "false:0"}, delimiter = ':')
+    void moveTest_2(boolean canRun, int expectedLength) {
         //given
         Car car = new Car();
 
@@ -47,6 +47,6 @@ public class CarTest {
         car.move(canRun);
 
         //then
-        assertThat(car.getStrPosition()).isEqualTo(strPosition);
+        assertThat(car.getStrPosition().length()).isEqualTo(expectedLength);
     }
 }

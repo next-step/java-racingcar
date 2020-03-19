@@ -15,6 +15,7 @@ public class Car {
     public void move(boolean canRun) {
         if (canRun) {
             position++;
+            strPosition.append(ONE_MOVE);
         }
     }
 
