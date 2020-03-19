@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Calculator {
+    public static final String PLUS = "+";
+    public static final String MINUS = "-";
+    public static final String TIMES = "*";
+    public static final String DIVIDED_BY = "/";
+    private static final int INCREMENT_FOR_NEXT_NUMBER = 1;
+
     private List<String> operators = new ArrayList<>();
     private List<Double> numbers = new ArrayList<>();
 
@@ -22,15 +28,15 @@ public class Calculator {
 
     public double calculateOnePart(double prev, int indexOfOperator) {
         String operator = operators.get(indexOfOperator);
-        double next = numbers.get(indexOfOperator + 1);
+        double next = numbers.get(indexOfOperator + INCREMENT_FOR_NEXT_NUMBER);
 
-        if ("+".equals(operator)) {
+        if (PLUS.equals(operator)) {
             return prev + next;
         }
-        if ("-".equals(operator)) {
+        if (MINUS.equals(operator)) {
             return prev - next;
         }
-        if ("*".equals(operator)) {
+        if (TIMES.equals(operator)) {
             return prev * next;
         }
         return prev / next;
