@@ -50,5 +50,4 @@ public class StringTest {
                     "abc".charAt(5);
                 }).withMessageContaining("index");
     }
-
 }
