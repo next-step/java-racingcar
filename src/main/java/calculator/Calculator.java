@@ -8,7 +8,9 @@ import java.util.stream.Stream;
 
 public class Calculator {
 
-    public int calculate(String expression) {
+    public int calculate(String text) {
+        final String expression = getExpression(text);
+
         int[] numbers = getNumbers(expression);
 
         List<BiFunction<Integer, Integer, Integer>> operations = getOperations(expression);
@@ -16,33 +18,37 @@ public class Calculator {
         return calculateEachNumbers(numbers, operations);
     }
 
-    private int calculateEachNumbers(int[] numbers, List<BiFunction<Integer, Integer, Integer>> operations) {
-        int result = numbers[0];
+    private String getExpression(String text) {
+        if(!text.startsWith("-")) {
+            text = "+" + text;
+        }
+        return text;
+    }
 
+    private int calculateEachNumbers(int[] numbers, List<BiFunction<Integer, Integer, Integer>> operations) {
+        int result = 0;
         for(int i=0; i<operations.size(); i++) {
-            result = operations.get(i).apply(result, numbers[i+1]);
+            result = operations.get(i).apply(result, numbers[i + 1]);
         }
         return result;
     }
 
     private List<BiFunction<Integer, Integer, Integer>> getOperations(String expression) {
         List<String> operations = Arrays.stream(expression.split("[0-9]"))
-                .filter((item) -> !"".equals(item))
                 .collect(Collectors.toList());
 
         return operations.stream()
                 .map(op -> {
                     switch (op) {
-                        case "+":
-                            return (BiFunction<Integer, Integer, Integer>) (a, b) -> a + b;
                         case "-":
                             return (BiFunction<Integer, Integer, Integer>) (a, b) -> a - b;
                         case "*":
                             return (BiFunction<Integer, Integer, Integer>) (a, b) -> a * b;
                         case "/":
                             return (BiFunction<Integer, Integer, Integer>) (a, b) -> a / b;
+                        case "+":
                         default:
-                            throw new RuntimeException("구현되지 않은 연산자");
+                            return (BiFunction<Integer, Integer, Integer>) (a, b) -> a + b;
                     }
                 })
                 .collect(Collectors.toList());
@@ -51,7 +57,13 @@ public class Calculator {
     private int[] getNumbers(String expression) {
         String[] tokens = expression.split("[-+/*]", -1);
         return Stream.of(tokens)
-                .mapToInt(Integer::parseInt)
+                .mapToInt(item -> {
+                    try {
+                        return Integer.parseInt(item);
+                    } catch (NumberFormatException ex) {
+                        return 0;
+                    }
+                })
                 .toArray();
     }
 }
