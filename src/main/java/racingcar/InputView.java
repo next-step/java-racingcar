@@ -1,6 +1,7 @@
 package racingcar;
 
-import static racingcar.InputType.*;
+import static racingcar.InputType.CAR;
+import static racingcar.InputType.TRY;
 
 public class InputView {
     private int carCount;
@@ -42,11 +43,11 @@ public class InputView {
         return intInput;
     }
 
-    private void insertNumberIntoField(int intInput, InputType inputType){
-        if(CAR.equals(inputType)){
+    private void insertNumberIntoField(int intInput, InputType inputType) {
+        if (CAR.equals(inputType)) {
             this.carCount = intInput;
         }
-        if(TRY.equals(inputType)){
+        if (TRY.equals(inputType)) {
             this.tryCount = intInput;
         }
     }
