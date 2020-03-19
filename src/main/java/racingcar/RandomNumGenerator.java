@@ -1,8 +1,10 @@
 package racingcar;
 
-public class RandomNumGenerator {
+import java.util.Random;
 
+public class RandomNumGenerator {
     public int generateNumberLessThanTen() {
-        return 0;
+        Random random = new Random();
+        return random.nextInt(10);
     }
 }
