@@ -43,7 +43,7 @@ public class StringCalculator {
         }
     }
 
-    String[] toStringArray(final String input) {
+    private String[] toStringArray(final String input) {
         return input.split(BLANK);
     }
 
