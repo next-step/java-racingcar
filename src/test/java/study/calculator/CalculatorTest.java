@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.EmptySource;
+import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,7 +28,9 @@ public class CalculatorTest {
 
     @DisplayName("비정상적인 식을 테스트 한다.")
     @ParameterizedTest
-    @ValueSource(strings = {"1 + ", " ", "/ / /", "1 2 3", "45 ? 50", "* / 3"})
+    @NullSource
+    @EmptySource
+    @ValueSource(strings = {"1 + ", " ", "/ / /", "1 2 3", "45 ? 50", "** / 3"})
     void invalidFormula(String formula) {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
             calculator.calculate(formula);

@@ -1,6 +1,7 @@
 package study.calculator;
 
 public class Calculator {
+    private static final String DELIMITER = " ";
     private Operator operator;
 
     Calculator() {
@@ -8,11 +9,9 @@ public class Calculator {
     }
 
     public Integer calculate(String expression) throws IllegalArgumentException {
-        expression = expression.trim();
-        if(expression.isEmpty()) {
-            throw new IllegalArgumentException();
-        }
-        String[] parts = expression.split(" ");
+        validate(expression);
+
+        String[] parts = expression.trim().split(DELIMITER);
         if(parts.length < 3) {
             throw new IllegalArgumentException();
         }
@@ -22,6 +21,15 @@ public class Calculator {
         }
 
         return result;
+    }
+
+    private void validate(String expression) throws IllegalArgumentException {
+        if(expression == null) {
+            throw new IllegalArgumentException();
+        }
+        if(expression.trim().isEmpty()) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private Integer operate(String stringOperator, Integer leftSide, Integer rightSide) {
