@@ -13,7 +13,7 @@ class CalculatorTest {
     @Test
     void calculatorWorks() {
         Calculator calculator = new Calculator();
-        int sum = calculator.calc("1+3");
+        int sum = calculator.calculate("1+3");
         assertThat(sum).isEqualTo(4);
     }
 
@@ -22,7 +22,7 @@ class CalculatorTest {
     @CsvSource(value = {"1+3=4", "3+3=6", "1+1+1=3", "5+4+3=12"}, delimiter = '=')
     void calculatorCanSum(String expression, int expected) {
         Calculator calculator = new Calculator();
-        int sum = calculator.calc(expression);
+        int sum = calculator.calculate(expression);
         assertThat(sum).isEqualTo(expected);
     }
 
@@ -31,7 +31,7 @@ class CalculatorTest {
     @CsvSource(value = {"1+3-3=1", "4/2+3*2=10", "5-3+1*3+2=11", "5+4-3=6"}, delimiter = '=')
     void calculatorCanOperationsZ(String expression, int expected) {
         Calculator calculator = new Calculator();
-        int result = calculator.calc(expression);
+        int result = calculator.calculate(expression);
         assertThat(result).isEqualTo(expected);
     }
 }
