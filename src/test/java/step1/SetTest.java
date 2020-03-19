@@ -1,4 +1,4 @@
-package study;
+package step1;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -47,4 +47,5 @@ public class SetTest {
     void contains2(int no, boolean expected) {
         assertThat(numbers.contains(no)).isEqualTo(expected);
     }
+}
 
