@@ -25,7 +25,15 @@ public class CalculationOrder {
         return next;
     }
 
+    public boolean isComplete() {
+        return order.size() == 1;
+    }
+
     public void addCalculateResult(long result) {
         order.push(String.valueOf(result));
+    }
+
+    public long getCalculateTotalResult() {
+        return Long.parseLong(order.pop());
     }
 }

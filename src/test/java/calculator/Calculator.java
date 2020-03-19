@@ -12,8 +12,17 @@ public class Calculator {
     public long calculate(String input) {
         verifyInput(input);
         calculationOrder.init(input.split(Separator));
-        long x = stringToNumber(calculationOrder.next());
-        return 0;
+        return calculate();
+    }
+
+    private long calculate() {
+        while (!calculationOrder.isComplete()) {
+            long x = stringToNumber(calculationOrder.next());
+            Operator operator = Operator.findOperatorByValue(calculationOrder.next());
+            long y = stringToNumber(calculationOrder.next());
+            calculationOrder.addCalculateResult(operator.calculate(x, y));
+        }
+        return calculationOrder.getCalculateTotalResult();
     }
 
     private long stringToNumber(String value) {
