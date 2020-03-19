@@ -21,4 +21,19 @@ public class CarTest {
         //then
         assertThat(canRun).isEqualTo(expected);
     }
+
+    @DisplayName("canRun의 값이 true이면 자동차의 position 값에 1을 추가한다.")
+    @ParameterizedTest
+    @CsvSource(value = {"true:1", "false:0"})
+    void moveTest(boolean inputCanRun, int position) {
+        //given
+        Car car = new Car();
+        boolean canRun = inputCanRun;
+
+        //when
+        car.move(canRun);
+
+        //then
+        assertThat(car.getPosition()).isEqualTo(position);
+    }
 }
