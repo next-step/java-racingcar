@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.EmptyStackException;
 import java.util.Stack;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -35,7 +36,7 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"2 * 8 :16", "2 * 3 * 10:50", "3 * 8 * 5:120"}, delimiter = ':')
+    @CsvSource(value = {"2 * 8 :16", "2 * 3 * 10:60", "3 * 8 * 5:120"}, delimiter = ':')
     void multiple(String input, long expected) {
         long result = calculator.calculate(input);
         assertThat(result).isEqualTo(expected);
@@ -82,7 +83,11 @@ public class CalculatorTest {
     @Test
     void stack_pop() {
         Stack<Object> objects = new Stack<>();
-        Object pop = objects.pop();
-        assertThat(pop).isNull();
+        assertThatExceptionOfType(EmptyStackException.class)
+                .isThrownBy(() -> {
+                    Object pop = objects.pop();
+                });
     }
+
+
 }
