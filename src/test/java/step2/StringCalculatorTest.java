@@ -49,7 +49,7 @@ public class StringCalculatorTest {
     @Test
     @DisplayName("입력받은 String이 정규식 패턴에 맞는지 테스트")
     void checkPattern() {
-        String input = "2 + 3 # 5 / 0";
+        String input = "2 + 3 * 4 / 2";
         assertThatIllegalArgumentException().isThrownBy(() -> {
             Main.calculateString(input);
         });

@@ -22,7 +22,7 @@ public class Main {
 
     public static String calculateString(String str) {
 
-        validator.checkPattern(str);
+//        validator.checkPattern(str); TODO: 정규식
 
         String[] splitedString = splitString(str);
 

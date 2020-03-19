@@ -7,7 +7,7 @@ public class Validator {
 
     public static void checkPattern(String str) {
 
-        if(!str.matches("(^[0-9]*)\\s([^+|-|*|\\/])\\s([0-9]*)")) {
+        if(!str.matches("[0-9]*\\s[+|-|*|\\/]\\s[0-9]*")) {
             throw new IllegalArgumentException("입력값의 형식이 맞지 않습니다.");
         }
     }
