@@ -12,6 +12,7 @@ public class RacingGame {
 		for (int i = 0; i < carPositions.length; i++) {
 			carPositions[i] = moveCar(carPositions[i]);
 		}
+		time++;
 		return carPositions.clone();
 	}
 

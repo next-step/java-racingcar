@@ -36,7 +36,7 @@ class RacingGameTest {
 		}
 
 		assertThat(racingGame.getTime())
-				.isEqualTo(1);
+				.isEqualTo(moveTime);
 	}
 
 }
