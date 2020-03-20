@@ -9,11 +9,24 @@ public class RacingGame {
 	}
 
 	public int[] move() {
-		// TODO 구현
+		for (int i = 0; i < carPositions.length; i++) {
+			carPositions[i] = moveCar(carPositions[i]);
+		}
 		return null;
 	}
 
-	public int getTime(){
+	private int moveCar(int car) {
+		if (canGo()) {
+			car++;
+		}
+		return car;
+	}
+
+	private boolean canGo() {
+		return Math.random() * 10 > 4;
+	}
+
+	public int getTime() {
 		return time;
 	}
 
