@@ -1,23 +1,16 @@
 package calculator;
 
 public class InputVo {
-    /**
-     * 입력 값
-     */
-    private String input;
+
+    private static final String BLANK = " ";
     /**
      * this.input을 공백을 기준으로 split 한 배열
      */
     private String[] inputSplit;
 
-
-    public InputVo() {
-    }
-
     public InputVo(String input) {
-        this.input = input;
         validate(input);
-        splitInput();
+        splitInput(input);
     }
 
     /**
@@ -36,8 +29,8 @@ public class InputVo {
     /**
      * input값을 공백을 기준으로 나누어줌
      */
-    private void splitInput() {
-        this.inputSplit = this.input.split(" ");
+    private void splitInput(String input) {
+        this.inputSplit = input.split(BLANK);
     }
 
 
