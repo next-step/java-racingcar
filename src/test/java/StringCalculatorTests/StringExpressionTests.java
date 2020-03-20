@@ -1,5 +1,6 @@
 package StringCalculatorTests;
 
+import domain.StringExpression;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -9,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 @DisplayName("계산식 자체 검증을 위한 테스트")
-public class StringCalculationExpressionTests {
+public class StringExpressionTests {
 
     @DisplayName("정상 계산식")
     @ParameterizedTest
@@ -31,16 +32,25 @@ public class StringCalculationExpressionTests {
     @DisplayName("사칙연산 기호가 아닌 기호가 포함된 계산식")
     @ParameterizedTest
     @ValueSource(strings = {"2 ^ 3", "3 @ 1", "7 & 2"})
-    public void nullOrEmptyTests(String input) {
+    public void unKnownSignTests(String input) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> StringExpression.newInstance(input))
                 .withMessageMatching("Expression contains unknown operation.");
     }
 
+    @DisplayName("숫자 대신 다른 문자가 포함된 계산식")
+    @ParameterizedTest
+    @ValueSource(strings = {"a + 3", "031 - 2"})
+    public void notNumberExpressionTests(String input) {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> StringExpression.newInstance(input))
+                .withMessageMatching("Expression contains character (not number)");
+    }
+
     @DisplayName("기타 비정상 케이스")
     @ParameterizedTest
     @ValueSource(strings = {"2 + + 3", "2 +", "- 3", " 2 2 ", " 5 7 -", "2 + 3 3 -"})
-    public void nullOrEmptyTests(String input) {
+    public void etcTests(String input) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> StringExpression.newInstance(input))
                 .withMessageMatching("Expression is abnormal case. " + input);
