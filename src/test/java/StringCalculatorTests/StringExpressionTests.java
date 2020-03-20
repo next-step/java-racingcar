@@ -6,8 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("계산식 자체 검증을 위한 테스트")
 public class StringExpressionTests {
@@ -16,7 +15,7 @@ public class StringExpressionTests {
     @ParameterizedTest
     @ValueSource(strings = {"2 + 3", "6 - 4", "1 * 5", "8 / 2", "2 + 3 * 4 / 2"})
     public void normalExpressionTests(String input) {
-        assertThat(() -> StringExpression.newInstance(input)).doesNotThrowAnyException();
+        assertThatCode(() -> StringExpression.newInstance(input)).doesNotThrowAnyException();
     }
 
     @DisplayName("빈 계산식")

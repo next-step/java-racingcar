@@ -29,7 +29,7 @@ public class StringOperationTests {
 
     @DisplayName("곱셈 계산")
     @ParameterizedTest
-    @CsvSource(value = {"2,3,6", "1,0,0p", "5,1,5"})
+    @CsvSource(value = {"2,3,6", "1,0,0", "5,1,5"})
     public void stringAddTest(String firstNumber, String secondNumber, Integer expectedResult) {
         Integer actualResult = StringOperation.MULTIPLY.operate(firstNumber, secondNumber);
         assertThat(actualResult).isEqualTo(expectedResult);
