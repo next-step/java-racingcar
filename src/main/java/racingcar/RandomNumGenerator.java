@@ -6,7 +6,7 @@ public class RandomNumGenerator {
     public RandomNumGenerator() {
     }
 
-    public int generateNumberLessThanTen() {
-        return new Random().nextInt(10);
+    public int generateNumberLessThan(int bound) {
+        return new Random().nextInt(bound);
     }
 }

@@ -20,7 +20,7 @@ public class Cars {
 
     public void moveOnce(RandomNumGenerator rng) {
         for (Car car : cars) {
-            int randomNumber = rng.generateNumberLessThanTen();
+            int randomNumber = rng.generateNumberLessThan(10);
             boolean canRun = car.canRun(randomNumber);
             car.move(canRun);
         }

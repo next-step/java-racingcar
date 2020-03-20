@@ -13,7 +13,7 @@ public class RandomNumGeneratorTest {
         RandomNumGenerator generator = new RandomNumGenerator();
 
         //when
-        int random = generator.generateNumberLessThanTen();
+        int random = generator.generateNumberLessThan(10);
 
         //then
         assertThat(random).isLessThan(10);
