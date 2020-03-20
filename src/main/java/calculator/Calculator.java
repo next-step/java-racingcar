@@ -1,9 +1,13 @@
 package calculator;
 
+import java.util.regex.Pattern;
+
 public class Calculator {
 
     private static final String OPERAND_REGEX = "^[0-9]*$";
     private static final String OPERATOR_REGEX = "^[\\+\\-\\*\\/]{1}$";
+    private static final Pattern OPERAND_PATTERN = Pattern.compile(OPERAND_REGEX);
+    private static final Pattern OPERATOR_PATTERN = Pattern.compile(OPERATOR_REGEX);
 
     private String[] operandAndOperators;
 
@@ -15,7 +19,7 @@ public class Calculator {
      * 피연산자가 숫자인지 검증
      */
     public static void validateOperand(String operand) {
-        if (!operand.matches(OPERAND_REGEX)) {
+        if (!OPERAND_PATTERN.matcher(operand).find()) {
             throw new IllegalArgumentException("피연산자가 숫자가 아님");
         }
     }
@@ -24,7 +28,7 @@ public class Calculator {
      * 연산자가 사칙연산인지 체크 [+, -, *, /]
      */
     public static void validateOperator(String operator) {
-        if (!operator.matches(OPERATOR_REGEX)) {
+        if (!OPERATOR_PATTERN.matcher(operator).find()) {
             throw new IllegalArgumentException("연산자가 사칙연산이 아님");
         }
     }
