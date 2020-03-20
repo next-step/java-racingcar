@@ -1,5 +1,6 @@
 package StringCalculatorTests;
 
+import domain.StringOperation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -22,7 +23,7 @@ public class StringOperationTests {
     @DisplayName("뺄셈 계산")
     @ParameterizedTest
     @CsvSource(value = {"3,2,1", "5,0,5", "5,1,4"})
-    public void stringAddTest(String firstNumber, String secondNumber, Integer expectedResult) {
+    public void stringSubtractTest(String firstNumber, String secondNumber, Integer expectedResult) {
         Integer actualResult = StringOperation.SUBTRACT.operate(firstNumber, secondNumber);
         assertThat(actualResult).isEqualTo(expectedResult);
     }
@@ -30,7 +31,7 @@ public class StringOperationTests {
     @DisplayName("곱셈 계산")
     @ParameterizedTest
     @CsvSource(value = {"2,3,6", "1,0,0", "5,1,5"})
-    public void stringAddTest(String firstNumber, String secondNumber, Integer expectedResult) {
+    public void stringMultiplyTest(String firstNumber, String secondNumber, Integer expectedResult) {
         Integer actualResult = StringOperation.MULTIPLY.operate(firstNumber, secondNumber);
         assertThat(actualResult).isEqualTo(expectedResult);
     }
@@ -38,7 +39,7 @@ public class StringOperationTests {
     @DisplayName("나눗셈 계산")
     @ParameterizedTest
     @CsvSource(value = {"6,3,2", "2,1,2", "10,5,2"})
-    public void stringAddTest(String firstNumber, String secondNumber, Integer expectedResult) {
+    public void stringDivideTest(String firstNumber, String secondNumber, Integer expectedResult) {
         Integer actualResult = StringOperation.DIVIDE.operate(firstNumber, secondNumber);
         assertThat(actualResult).isEqualTo(expectedResult);
     }
@@ -46,9 +47,9 @@ public class StringOperationTests {
     @DisplayName("나눗셈 계산 - 0으로 나누었을 때")
     @ParameterizedTest
     @ValueSource(strings = {"3, 0"})
-    public void stringAddTest(String input) {
+    public void stringDivideByZeroTest(String input) {
         assertThatExceptionOfType(RuntimeException.class)
-                .isThrownBy(() -> StringOperation.DIVIDE.operate(input, 0))
+                .isThrownBy(() -> StringOperation.DIVIDE.operate(input, "0"))
                 .withMessageMatching("Can not divide by zero.");
     }
 
