@@ -51,4 +51,20 @@ public class InputViewTest {
         //then
         assertThat(inputView.getTryCount()).isEqualTo(expected);
     }
+
+
+    @DisplayName("자동차 대수를 문자열로 입력하면 자동차 객체의 대수를 반환한다.")
+    @ParameterizedTest
+    @CsvSource(value = {"pobi,crong,honux:3", "#1,#2,#3,#4,#5:5", "Mark,Jaehyun,Johnny:3"}, delimiter = ':')
+    void insertCarNamesTest(String carNames, int expectedCarCount) {
+        //give
+        InputView inputView = new InputView();
+
+        //when
+        int carCount = inputView.insertCarNames(carNames);
+
+        //then
+
+        assertThat(carCount).isEqualTo(expectedCarCount);
+    }
 }

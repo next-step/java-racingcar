@@ -7,6 +7,10 @@ public class InputView {
     public InputView() {
     }
 
+    public int insertCarNames(String carNames) {
+        return 0;
+    }
+
     public int insertCarCount(String stringCarCount) {
         this.carCount = validateInput(stringCarCount);
         return carCount;
