@@ -7,6 +7,7 @@ import racingcar.domain.Cars;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 public class OutputView {
@@ -57,10 +58,6 @@ public class OutputView {
         System.out.println(strPosition);
     }
 
-    private void printBorderLine() {
-        System.out.println("=====================================");
-    }
-
     private List<String> makeCarNamesPrettier(List<Car> cars) {
         List<String> carNames = new ArrayList<>();
         for (Car car : cars) {
@@ -86,5 +83,23 @@ public class OutputView {
                 .max(Comparator.comparingInt(Integer::intValue))
                 .orElseThrow(RuntimeException::new);
         return maxLength;
+    }
+
+    public void printWinners(List<Car> winners) {
+        System.out.println();
+        StringJoiner stringJoiner = makeWinnersNameInOneLine(winners);
+        System.out.println(">>>>>>>> "+stringJoiner + " 가 최종 우승했습니다. <<<<<<<<");
+    }
+
+    private StringJoiner makeWinnersNameInOneLine(List<Car> winners) {
+        StringJoiner stringJoiner = new StringJoiner(",");
+        for (Car car : winners) {
+            stringJoiner.add(car.getName());
+        }
+        return stringJoiner;
+    }
+
+    private void printBorderLine() {
+        System.out.println("=====================================");
     }
 }

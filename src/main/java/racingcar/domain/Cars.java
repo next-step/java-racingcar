@@ -22,6 +22,14 @@ public class Cars {
         }
     }
 
+    public void moveOnce(RandomNumGenerator rng) {
+        for (Car car : cars) {
+            int randomNumber = rng.generateNumberLessThan(10);
+            boolean canRun = car.canRun(randomNumber);
+            car.move(canRun);
+        }
+    }
+
     public List<Car> findWinner() {
         int highestPositionValue = findHighestPositionValue(cars);
         return cars.stream()
@@ -35,14 +43,6 @@ public class Cars {
                 .map(it -> it.getPosition())
                 .max(Comparator.comparingInt(Integer::intValue))
                 .orElseThrow(RuntimeException::new);
-    }
-
-    public void moveOnce(RandomNumGenerator rng) {
-        for (Car car : cars) {
-            int randomNumber = rng.generateNumberLessThan(10);
-            boolean canRun = car.canRun(randomNumber);
-            car.move(canRun);
-        }
     }
 
     public List<Car> getCars() {
