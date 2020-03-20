@@ -13,5 +13,7 @@ public class StringCalculatorTest {
         StringCalculator calculator = new StringCalculator();
 
         assertThat(calculator.add("1 + 2")).isEqualTo(3);
+        assertThat(calculator.add("1 + 5")).isEqualTo(6);
+        assertThat(calculator.add("1 + 3 + 5")).isEqualTo(9);
     }
 }

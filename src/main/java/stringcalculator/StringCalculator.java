@@ -1,10 +1,18 @@
 package stringcalculator;
 
-import java.util.Arrays;
-
 public class StringCalculator {
 
     public int add(String expression) {
-        return 3;
+        int acc = 0;
+
+        String[] values = expression.split(" ");
+
+        for (String s : values) {
+            if (!s.equals("+")) {
+                acc += Integer.parseInt(s);
+            }
+        }
+
+        return acc;
     }
 }
