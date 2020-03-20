@@ -34,8 +34,8 @@ public enum Operator {
         this.value = value;
     }
 
-    protected void divideByZero(long y) {
-        if (y == 0) {
+    protected void divideByZero(long inputNumber) {
+        if (inputNumber == 0) {
             throw new IllegalArgumentException();
         }
     }
