@@ -4,6 +4,7 @@ package calculator;
 import static calculator.NumberParser.*;
 
 public class StringCalculator {
+    private static final int START_NUMBER = 0;
 
     public long calculate(String inputText) {
         checkTextNullOrEmpty(inputText);
@@ -11,7 +12,6 @@ public class StringCalculator {
     }
 
     private long calculateText(String[] parseNumber) {
-        int START_NUMBER = 0;
         long calculateResult = parseText(parseNumber[START_NUMBER]);
         long nextInput;
         Operator operator;
