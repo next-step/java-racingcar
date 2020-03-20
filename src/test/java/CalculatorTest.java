@@ -10,42 +10,20 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class CalculatorTest {
 
 	Calculator calculator;
-	int left;
-	int right;
 
 	@BeforeEach
 	void setUp() {
-		left = 5;
-		right = 2;
 		calculator = new Calculator();
 	}
 
-	@Test
-	void plus() {
-		assertThat(calculator.plus(left, right))
-				.isEqualTo(left + right);
-	}
-
-	@Test
-	void minus() {
-		assertThat(calculator.minus(left, right))
-				.isEqualTo(left - right);
-	}
-
-	@Test
-	void mul() {
-		assertThat(calculator.mul(left, right))
-				.isEqualTo(left * right);
-	}
-
-	@Test
-	void division() {
-		assertThat(calculator.division(left, right))
-				.isEqualTo((double) left / right);
-	}
-
 	@ParameterizedTest
-	@CsvSource(value = {"2 + 3 * 4 / 2 :10"}, delimiter = ':')
+	@CsvSource(value = {
+			"2 + 3 :5",
+			"2 - 3 :-1",
+			"2 * 3 :6",
+			"5 / 2 :2.5",
+			"2 + 3 * 4 / 2 :10",
+	}, delimiter = ':')
 	void calculate(String expression, double expectedValue) {
 		assertThat(calculator.calculate(expression))
 				.isEqualTo(expectedValue);

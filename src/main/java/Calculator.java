@@ -1,18 +1,18 @@
 public class Calculator {
 
-	double plus(double left, int right) {
+	private double plus(double left, int right) {
 		return left + right;
 	}
 
-	double minus(double left, int right) {
+	private double minus(double left, int right) {
 		return left - right;
 	}
 
-	double mul(double left, int right) {
+	private double mul(double left, int right) {
 		return left * right;
 	}
 
-	double division(double left, int right) {
+	private double division(double left, int right) {
 		return left / right;
 	}
 
