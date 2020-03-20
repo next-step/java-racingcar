@@ -12,9 +12,9 @@ public class StringCalculatorTest {
     public void addOperationReturnsSumOfNumbers() {
         StringCalculator calculator = new StringCalculator();
 
-        assertThat(calculator.add("1 + 2")).isEqualTo(3);
-        assertThat(calculator.add("1 + 5")).isEqualTo(6);
-        assertThat(calculator.add("1 + 3 + 5")).isEqualTo(9);
+        assertThat(calculator.operate("1 + 2")).isEqualTo(3);
+        assertThat(calculator.operate("1 + 5")).isEqualTo(6);
+        assertThat(calculator.operate("1 + 3 + 5")).isEqualTo(9);
     }
 
     @Test
@@ -22,7 +22,7 @@ public class StringCalculatorTest {
     public void minusOperationReturnsSubtractionOfNumbers() {
         StringCalculator calculator = new StringCalculator();
 
-        assertThat(calculator.minus("1 - 2")).isEqualTo(-1);
-        assertThat(calculator.minus("1 - 2 - 3")).isEqualTo(-4);
+        assertThat(calculator.operate("1 - 2")).isEqualTo(-1);
+        assertThat(calculator.operate("1 - 2 - 3")).isEqualTo(-4);
     }
 }
