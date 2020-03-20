@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringTest {
+    String formula = "2 + 3 * 4 / 2";
 
     @Test
     void split() {
