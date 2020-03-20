@@ -1,32 +1,40 @@
 package racingcar.dto;
 
 public class InputView {
+    private static final String DELIMITER = ",";
+    private String[] carNames;
     private int carCount;
     private int tryCount;
 
     public InputView() {
     }
 
-    public int insertCarNames(String carNames) {
-        return 0;
-    }
-
-    public int insertCarCount(String stringCarCount) {
-        this.carCount = validateInput(stringCarCount);
+    public int insertCarNames(String carNameString) {
+        validateNullOrEmpty(carNameString);
+        this.carNames = splitCarNames(carNameString);
+        this.carCount = carNames.length;
         return carCount;
     }
 
     public int insertTryCount(String stringTryCount) {
-        this.tryCount = validateInput(stringTryCount);
+        validateNullOrEmpty(stringTryCount);
+        this.tryCount = validateNumberType(stringTryCount);
         return tryCount;
     }
 
-    private int validateInput(String stringInput) {
-        validateNull(stringInput);
-        validateEmpty(stringInput);
+    private String[] splitCarNames(String stringInput) {
+        return stringInput.split(DELIMITER);
+    }
+
+    private int validateNumberType(String stringInput) {
         int intInput = validateNumber(stringInput);
         validateNegative(intInput);
         return intInput;
+    }
+
+    private void validateNullOrEmpty(String stringInput) {
+        validateNull(stringInput);
+        validateEmpty(stringInput);
     }
 
     private void validateNull(String input) {

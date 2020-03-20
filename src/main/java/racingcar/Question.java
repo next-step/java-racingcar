@@ -28,7 +28,7 @@ public class Question {
         printQuestion(CAR);
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
-        int carCount = inputView.insertCarCount(input);
+        int carCount = inputView.insertCarNames(input);
         printBlankSpace();
         return carCount;
     }

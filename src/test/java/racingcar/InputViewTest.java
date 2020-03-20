@@ -18,8 +18,6 @@ public class InputViewTest {
         //when, then
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new InputView().insertTryCount(input));
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> new InputView().insertCarCount(input));
     }
 
     @DisplayName("숫자가 아닌 문자열이 입력되면 예외가 발생한다.")
@@ -28,7 +26,7 @@ public class InputViewTest {
     void validNumberTest(String input) {
         //when, then
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new InputView().insertCarCount(input));
+                .isThrownBy(() -> new InputView().insertTryCount(input));
     }
 
     @DisplayName("음수가 입력되면 예외가 발생한다.")
@@ -37,7 +35,7 @@ public class InputViewTest {
     void validateNegativeTest(String input) {
         //when, then
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new InputView().insertCarCount(input));
+                .isThrownBy(() -> new InputView().insertTryCount(input));
     }
 
     @DisplayName("입력값의 InputType에 따라 다른 InputView 필드에 저장된다.")
@@ -55,7 +53,7 @@ public class InputViewTest {
 
     @DisplayName("자동차 대수를 문자열로 입력하면 자동차 객체의 대수를 반환한다.")
     @ParameterizedTest
-    @CsvSource(value = {"pobi,crong,honux:3", "#1,#2,#3,#4,#5:5", "Mark,Jaehyun,Johnny:3"}, delimiter = ':')
+    @CsvSource(value = {"pobi,crong,honux:3", "1,2,3,4,5:5", "Mark,Jaehyun,Johnny:3"}, delimiter = ':')
     void insertCarNamesTest(String carNames, int expectedCarCount) {
         //give
         InputView inputView = new InputView();
