@@ -10,12 +10,6 @@ public enum Calculator {
     MULTIPLICATION((leftNumber, rightNumber) -> leftNumber * rightNumber),
     DIVISION((leftNumber, rightNumber) -> leftNumber / rightNumber);
 
-    private BiFunction<Double, Double, Double> operation;
-
-    Calculator(BiFunction<Double, Double, Double> operation) {
-        this.operation = operation;
-    }
-
     private static final Map<String, Calculator> OPERATORS;
     static {
         OPERATORS = new HashMap<>();
@@ -23,6 +17,12 @@ public enum Calculator {
         OPERATORS.put("-", Calculator.SUBTRACTION);
         OPERATORS.put("*", Calculator.MULTIPLICATION);
         OPERATORS.put("/", Calculator.DIVISION);
+    }
+
+    private BiFunction<Double, Double, Double> operation;
+
+    Calculator(BiFunction<Double, Double, Double> operation) {
+        this.operation = operation;
     }
 
     public static Calculator getOperation(String operation) {
