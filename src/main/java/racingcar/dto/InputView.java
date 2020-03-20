@@ -7,12 +7,14 @@ public class InputView {
     public InputView() {
     }
 
-    public void insertCarCount(String stringCarCount) {
+    public int insertCarCount(String stringCarCount) {
         this.carCount = validateInput(stringCarCount);
+        return carCount;
     }
 
-    public void insertTryCount(String stringTryCount) {
+    public int insertTryCount(String stringTryCount) {
         this.tryCount = validateInput(stringTryCount);
+        return tryCount;
     }
 
     private int validateInput(String stringInput) {

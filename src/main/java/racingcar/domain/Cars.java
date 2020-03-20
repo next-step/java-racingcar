@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import racingcar.RandomNumGenerator;
-import racingcar.dto.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,13 +8,11 @@ import java.util.List;
 public class Cars {
     private List<Car> cars = new ArrayList<>();
 
-    public Cars(InputView inputView) {
-        createCars(inputView);
+    public Cars(int carCount) {
+        createCars(carCount);
     }
 
-    private void createCars(InputView inputView) {
-        int carCount = inputView.getCarCount();
-
+    private void createCars(int carCount) {
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
         }
