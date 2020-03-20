@@ -16,6 +16,24 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest
+    @CsvSource(value = {"", " "})
+    @DisplayName("입력 값이 null 이거나 빈 공백 문자일 경우 IllegalArgumentException throw")
+    public void emptyInputThrowExceptionTest(String input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            calculator.splitInput(input);
+        });
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1 % 2", "1 | 2"})
+    @DisplayName("입력 값이 사칙연산 기호가 아닌 경우 IllegalArgumentException throw")
+    public void illegalOperatorInputThrowExceptionTest(String input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            calculator.splitInput(input);
+        });
+    }
+
+    @ParameterizedTest
     @CsvSource(value = {"1 + 2=3", "1 + 2 + 3=6"}, delimiter = '=')
     @DisplayName("덧셈 테스트")
     public void additionTest(String input, int expected) {
