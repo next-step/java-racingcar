@@ -1,23 +1,24 @@
 package calculator.domain;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Calculator {
-    public int calculate(String expression) {
+    public BigDecimal calculate(String expression) {
         validValue(expression);
 
         String[] value = expression.split(" ");
 
-        int result = Integer.valueOf(value[0]);
+        BigDecimal result = new BigDecimal(value[0]);
 
         for (int i = 1; i < value.length - 1; i += 2) {
-            result = apply(value[i], result, Integer.valueOf(value[i + 1]));
+            result = apply(value[i], result, new BigDecimal(value[i + 1]));
         }
 
         return result;
     }
 
-    public int apply(String symbol, int x, int y) {
+    public BigDecimal apply(String symbol, BigDecimal x, BigDecimal y) {
         switch (symbol) {
             case "+":
                 return Operator.addition(x, y);
@@ -34,7 +35,7 @@ public class Calculator {
     }
 
     private void validValue(String value) {
-        if(Objects.isNull(value) || value.trim().isEmpty()) {
+        if (Objects.isNull(value) || value.trim().isEmpty()) {
             throw new IllegalArgumentException("null 혹은 빈 값");
         }
     }
