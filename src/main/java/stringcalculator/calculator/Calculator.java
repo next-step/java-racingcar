@@ -29,7 +29,7 @@ public enum Calculator {
         return OPERATORS.get(operation);
     }
 
-    public Double calculate(Double leftNumber, Double rightNumber) {
+    public double calculate(Double leftNumber, Double rightNumber) {
         return operation.apply(leftNumber, rightNumber);
     }
 }

@@ -23,7 +23,7 @@ class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"3 + 4 : 7", "1 + 2 + 3 : 6", "2 + 3 + 11 : 16"}, delimiter = ':')
     void additionTest(String source, Double expectedResult) {
-        Double result = new Expression(source).calculate();
+        double result = new Expression(source).calculate();
         assertThat(result).isEqualTo(expectedResult);
     }
 
@@ -31,7 +31,7 @@ class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"3 - 4 : -1", "1 - 2 - 3 : -4", "11 - 3 - 2 : 6"}, delimiter = ':')
     void subtractionTest(String source, Double expectedResult) {
-        Double result = new Expression(source).calculate();
+        double result = new Expression(source).calculate();
         assertThat(result).isEqualTo(expectedResult);
     }
 
@@ -39,7 +39,7 @@ class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"3 * 4 : 12", "1 * 2 * 3 : 6", "11 * 3 * 2 : 66"}, delimiter = ':')
     void multiplicationTest(String source, Double expectedResult) {
-        Double result = new Expression(source).calculate();
+        double result = new Expression(source).calculate();
         assertThat(result).isEqualTo(expectedResult);
     }
 
@@ -47,14 +47,14 @@ class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"3 / 4 : 0.75", "1 / 2 / 3 : 0.17", "11 / 3 / 2 : 1.83"}, delimiter = ':')
     void divisionTest(String source, Double expectedResult) {
-        Double result = new Expression(source).calculate();
+        double result = new Expression(source).calculate();
         assertThat(result).isCloseTo(expectedResult, Offset.offset(0.01));
     }
 
     @DisplayName("[2 + 3 * 4 / 2] 연산 테스트")
     @Test
     void calculateTest() {
-        Double result = expression.calculate();
+        double result = expression.calculate();
         assertThat(result).isEqualTo(10);
     }
 
