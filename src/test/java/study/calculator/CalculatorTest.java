@@ -21,8 +21,8 @@ public class CalculatorTest {
 
     @DisplayName("정상적인 식을 테스트 한다.")
     @ParameterizedTest
-    @CsvSource(value={"1 + 1=2", "3 - 1=2", "6 / 3=2", "3 * 7=21", "2 + 3 * 4 / 2=10"}, delimiter = '=')
-    void validFormula(String formula, Integer expect) {
+    @CsvSource(value = {"1 + 1=2", "3 - 1=2", "6 / 3=2", "3 * 7=21", "2 + 3 * 4 / 2=10"}, delimiter = '=')
+    void validFormula(String formula, float expect) {
         assertThat(calculator.calculate(formula)).isEqualTo(expect);
     }
 

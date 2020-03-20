@@ -1,22 +1,41 @@
 package study.calculator;
 
-public class Operator {
-    public Integer plus(Integer leftSide, Integer rightSide) {
-        return leftSide + rightSide;
-    }
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Function;
 
-    public Integer minus(Integer leftSide, Integer rightSide) {
-        return leftSide - rightSide;
-    }
-
-    public Integer divide(Integer leftSide, Integer rightSide) {
-        if(rightSide == 0) {
+enum Operator {
+    PLUS("+", operand -> operand.getLeftSide() + operand.getRightSide()),
+    MINUS("-", operand -> operand.getLeftSide() - operand.getRightSide()),
+    DIVIDE("/", operand -> {
+        float rightSide = operand.getRightSide();
+        if (rightSide == 0) {
             throw new IllegalArgumentException();
         }
-        return leftSide / rightSide;
+        return operand.getLeftSide() / rightSide;
+    }),
+    MULTIPLY("*", operand -> operand.getLeftSide() * operand.getRightSide());
+
+    private static Map<String, Operator> map = new HashMap<>();
+    private String symbol;
+    private Function<Operand, Float> operate;
+
+    Operator(String symbol, Function<Operand, Float> operator) {
+        this.symbol = symbol;
+        this.operate = operator;
     }
 
-    public Integer multiply(Integer leftSide, Integer rightSide) {
-        return leftSide * rightSide;
+    static {
+        for (Operator operator : Operator.values()) {
+            map.put(operator.symbol, operator);
+        }
+    }
+
+    public static Operator symbolOf(String symbol) {
+        return map.get(symbol);
+    }
+
+    public float run(Operand operand) {
+        return this.operate.apply(operand);
     }
 }
