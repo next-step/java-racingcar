@@ -15,12 +15,12 @@ public class InputStringHandlerTest {
         inputStringHandler = new InputStringHandler();
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"", " "})
-    void emptyInputExceptionTest(String input) {
-
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            inputStringHandler.emptyInputException(input);
-        });
-    }
+//    @ParameterizedTest
+//    @ValueSource(strings = {"", " "})
+//    void emptyInputExceptionTest(String input) {
+//
+//        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+//            inputStringHandler.emptyInputException(input);
+//        });
+//    }
 }
