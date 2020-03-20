@@ -14,7 +14,7 @@ public class OutputView {
         this.randomNumGenerator = randomNumGenerator;
     }
 
-    public void print(int tryCount) {
+    public void printCarsAfterTryCountMove(int tryCount) {
         System.out.println("실행결과");
 
         for (int i = 0; i < tryCount; i++) {

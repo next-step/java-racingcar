@@ -15,6 +15,6 @@ public class RacingCarApplication {
 
         Cars cars = new Cars(carCount);
         OutputView outputView = new OutputView(cars, randomNumGenerator);
-        outputView.print(tryCount);
+        outputView.printCarsAfterTryCountMove(tryCount);
     }
 }

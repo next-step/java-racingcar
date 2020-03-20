@@ -54,10 +54,6 @@ public class InputView {
         return intInput;
     }
 
-    public int getCarCount() {
-        return carCount;
-    }
-
     public int getTryCount() {
         return tryCount;
     }
