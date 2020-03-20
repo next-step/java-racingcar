@@ -38,11 +38,12 @@ public class OutputView {
     }
 
     private void printCarsAfterMoveOnce() {
+        List<Car> allCars = cars.getCars();
         cars.moveOnce(randomNumGenerator);
-        List<String> carNames = convertCarNamesToPrint(cars.getCars());
+        List<String> carNames = makeCarNamesPrettier(allCars);
         for (int i = 0; i < carNames.size(); i++) {
             System.out.print(carNames.get(i) + " |");
-            printPosition(cars.getCars().get(i));
+            printPosition(allCars.get(i));
         }
     }
 
@@ -60,14 +61,15 @@ public class OutputView {
         System.out.println("=====================================");
     }
 
-    private List<String> convertCarNamesToPrint(List<Car> cars) {
+    private List<String> makeCarNamesPrettier(List<Car> cars) {
         List<String> carNames = new ArrayList<>();
         for (Car car : cars) {
             carNames.add(car.getName());
         }
-        return carNames.stream()
-                .map(it -> it + makeBlankSpace(findLongestNameLength(carNames) - it.length()))
-                .collect(Collectors.toList());
+        return cars.stream()
+                        .map(it -> it.getName())
+                        .map(it -> it + makeBlankSpace(findLongestNameLength(carNames) - it.length()))
+                        .collect(Collectors.toList());
     }
 
     private StringBuilder makeBlankSpace(int blankLength) {
@@ -84,5 +86,9 @@ public class OutputView {
                 .max(Comparator.comparingInt(Integer::intValue))
                 .orElseThrow(RuntimeException::new);
         return maxLength;
+    }
+
+    public List<Car> findWinner() {
+        return null;
     }
 }
