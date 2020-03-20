@@ -15,16 +15,12 @@ class RacingGameTest {
     private RacingGame racingGame;
     private ResultView resultView;
 
-    @BeforeEach
-    void newObject() {
-        inputView = new InputView();
-        racingGame = new RacingGame();
-    }
-
     @DisplayName("사용자에게 경주 할 자동차 개수를 입력받는다.")
     @Test
     void inputCarCount() {
-        int carCount = 3;
+        int carCount = 5;
+        int moveCount = 8;
+        inputView = new InputView(carCount, moveCount);
         inputView.inputCarCount(carCount);
         assertThat(inputView.getCarCount()).isEqualTo(carCount);
 
@@ -33,7 +29,9 @@ class RacingGameTest {
     @DisplayName("사용자에게 몇번 이동 할건지 입력 받는다.")
     @Test
     void inputMoveCount() {
+        int carCount = 3;
         int moveCount = 5;
+        inputView = new InputView(carCount, moveCount);
         inputView.inputMoveCount(moveCount);
         assertThat(inputView.getMoveCount()).isEqualTo(moveCount);
     }

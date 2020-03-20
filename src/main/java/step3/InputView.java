@@ -7,6 +7,11 @@ public class InputView {
     private int carCount;
     private int moveCount;
 
+    public InputView(int carCount, int moveCount) {
+        this.carCount = carCount;
+        this.moveCount = moveCount;
+    }
+
     public void inputCarInfoByUser() {
         System.out.println("자동차 대수는 몇 대 인가요?");
         int carCount = scanner.nextInt();
