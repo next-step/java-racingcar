@@ -13,25 +13,40 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
     private static final List<String> CAR_NAMES = Arrays.asList("Mark", "Jaehyun", "Johnny");
-
     private Cars cars;
-    private InputView inputView = new InputView();
+    private InputView inputView;
     private RandomNumGenerator randomNumGenerator = new RandomNumGenerator();
 
     @BeforeEach
     void setUp() {
+        inputView = new InputView();
         inputView.insertCarNames("Mark,Jaehyun,Johnny");
         inputView.insertTryCount("5");
         cars = new Cars(inputView);
+
+    }
+
+    @Test
+    void moveOnceTest() {
+        //given
+        int tryCount = inputView.getTryCount();
+
+        //when
         for (int i = 0; i < inputView.getTryCount(); i++) {
             cars.moveOnce(randomNumGenerator);
         }
+
+        //then
+        assertThat(cars.getCars().get(0).getPosition()).isBetween(0, tryCount);
     }
 
     @Test
     void findWinnerTest() {
         //given
         int tryCount = inputView.getTryCount();
+        for (int i = 0; i < inputView.getTryCount(); i++) {
+            cars.moveOnce(randomNumGenerator);
+        }
 
         //when
         List<Car> winners = cars.findWinner();
