@@ -1,7 +1,8 @@
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.EmptySource;
+import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,10 +31,26 @@ class CalculatorTest {
 	}
 
 	@ParameterizedTest
-	@ValueSource(strings = {"", "3 ^ 7"})
+	@NullSource
+	@EmptySource
+	@ValueSource(strings = {"3 8"})
 	void calculateIllegalArgumentException(String expectingIllegalArgumentExpression) {
 		assertThatThrownBy(() -> {
 			calculator.calculate(expectingIllegalArgumentExpression);
-		}).isInstanceOf(IllegalArgumentException.class);
+		}).isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining("validation check failed");
+	}
+
+	@ParameterizedTest
+	@ValueSource(strings = {
+			"3 ^ 7",
+			"3 & 7",
+			"3 = 7",
+			"3  7"})
+	void calculateIllegalOperator(String expectingIllegalArgumentExpression) {
+		assertThatThrownBy(() -> {
+			calculator.calculate(expectingIllegalArgumentExpression);
+		}).isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining("check operation failed");
 	}
 }
