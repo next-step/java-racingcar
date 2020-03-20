@@ -1,9 +1,11 @@
 package calculator;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CalculatorTest {
@@ -42,6 +44,40 @@ class CalculatorTest {
         assertThatThrownBy(() -> {
             Calculator.validateOperator(operator);
         }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+
+    /**
+     * input 2개와 결과값 1개 총 3개가 필요함
+     * CsvSource 를 이용할 경우 delimiter로 2개의 값으로 분리가 가능한데
+     * 3개의 값을 자동으로 테스트 하는 방법은 없을까요?
+     */
+    @DisplayName("덧셈 테스트")
+    @Test
+    public void plus() throws Exception {
+        assertThat(Calculator.plus(1, 2)).isEqualTo(3);
+        assertThat(Calculator.plus(1, 2)).isNotEqualTo(2);
+    }
+
+    @DisplayName("뺄셈 테스트")
+    @Test
+    public void minus() throws Exception {
+        assertThat(Calculator.minus(3, 2)).isEqualTo(1);
+        assertThat(Calculator.minus(3, 2)).isNotEqualTo(2);
+    }
+
+    @DisplayName("곱셈 테스트")
+    @Test
+    public void multiplication() throws Exception {
+        assertThat(Calculator.multiplication(3, 2)).isEqualTo(6);
+        assertThat(Calculator.multiplication(3, 2)).isNotEqualTo(7);
+    }
+
+    @DisplayName("나눗셈 테스트")
+    @Test
+    public void division() throws Exception {
+        assertThat(Calculator.division(4, 2)).isEqualTo(2);
+        assertThat(Calculator.division(4, 2)).isNotEqualTo(3);
     }
 
 

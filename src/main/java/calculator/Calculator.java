@@ -38,40 +38,39 @@ public class Calculator {
     /**
      * 피연산자 2개, 연산자 1개를 받아 계산후 리턴
      */
-    public double calculate(String operand1, String operand2, String operator) {
-        validateOperand(operand1);
-        validateOperand(operand2);
-        validateOperator(operator);
+    public double calculate(double operand1, double operand2, String operator) {
+        if (ArithmeticOperation.PLUS.isEqusls(operator)) {
+            return plus(operand1, operand2);
+        }
 
-//        if (ArithmeticOperation.PLUS.isEqusls(operator) {
-//
-//        }
-//        if (ArithmeticOperation.MINUS.isEqusls(operator) {
-//
-//        }
-//        if (ArithmeticOperation.MULTIPLICATION.isEqusls(operator) {
-//
-//        }
-//        if (ArithmeticOperation.DIVISION.isEqusls(operator) {
-//
-//        }
+        if (ArithmeticOperation.MINUS.isEqusls(operator)) {
+            return minus(operand1, operand2);
+        }
+
+        if (ArithmeticOperation.MULTIPLICATION.isEqusls(operator)) {
+            return multiplication(operand1, operand2);
+        }
+
+        if (ArithmeticOperation.DIVISION.isEqusls(operator)) {
+            return division(operand1, operand2);
+        }
 
         return 0;
     }
 
-    private double plus(double operand1, double operand2) {
+    public static double plus(double operand1, double operand2) {
         return operand1 + operand2;
     }
 
-    private double minus(double operand1, double operand2) {
+    public static double minus(double operand1, double operand2) {
         return operand1 - operand2;
     }
 
-    private double multiplication(double operand1, double operand2) {
+    public static double multiplication(double operand1, double operand2) {
         return operand1 * operand2;
     }
 
-    private double division(double operand1, double operand2) {
+    public static double division(double operand1, double operand2) {
         return operand1 / operand2;
     }
 }
