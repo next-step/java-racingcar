@@ -46,8 +46,6 @@ public class SetTest {
         assertThat(numbers.contains(3)).isTrue();
     }
 
-
-
     @DisplayName("요구사항3 : contains() 테스트")
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false"}, delimiter = ':')

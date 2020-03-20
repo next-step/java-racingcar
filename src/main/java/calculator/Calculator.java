@@ -2,10 +2,10 @@ package calculator;
 
 public class Calculator {
 
+    private static final String OPERAND_REGEX = "^[0-9]*$";
+    private static final String OPERATOR_REGEX = "^[\\+\\-\\*\\/]{1}$";
+
     private String[] operandAndOperators;
-    private double result;
-    private static final String operandRegex = "^[0-9]*$";
-    private static final String operatorRegex = "^[\\+\\-\\*\\/]{1}$";
 
     public Calculator(String[] operandAndOperators) {
         this.operandAndOperators = operandAndOperators;
@@ -15,7 +15,7 @@ public class Calculator {
      * 피연산자가 숫자인지 검증
      */
     public static void validateOperand(String operand) {
-        if (!operand.matches(operandRegex)) {
+        if (!operand.matches(OPERAND_REGEX)) {
             throw new IllegalArgumentException("피연산자가 숫자가 아님");
         }
     }
@@ -24,7 +24,7 @@ public class Calculator {
      * 연산자가 사칙연산인지 체크 [+, -, *, /]
      */
     public static void validateOperator(String operator) {
-        if (!operator.matches(operatorRegex)) {
+        if (!operator.matches(OPERATOR_REGEX)) {
             throw new IllegalArgumentException("연산자가 사칙연산이 아님");
         }
     }
