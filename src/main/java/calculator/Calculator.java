@@ -1,9 +1,5 @@
 package calculator;
 
-import jdk.internal.util.xml.impl.Input;
-
-import javax.xml.validation.Validator;
-
 public class Calculator {
     InputValidator validator;
     public int sum;
