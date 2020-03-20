@@ -8,7 +8,7 @@
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
-##Step3 구현 목록
+## Step3 구현 목록
 * 단위 테스트 추가
 * 자동차 대수와 시도할 회수를 입력받는 view class 구현
 * 결과를 출력하는 view class 구현
