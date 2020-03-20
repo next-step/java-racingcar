@@ -1,8 +1,22 @@
 # Step3 간단 자동차 경주 구현
 
-## 기능
+## 구조 개요
 
-### RacingGame 클래스
+1개의 진입점 클래스와 2개의 UIView 클래스, 1개의 메인 로직 클래스로 구성되어 있다.
+
+테스트는 메인 로직 클래스인 RacingGame 클래스만 수행한다.
+
+모든 의존성 진입점 클래스만 가지고 있다.
+
+- 진입점 클래스
+  - RacingGamePlayer
+- UI 클래스
+  - InputView
+  - ResultView
+- 메인 로직 클래스
+  - RacingGame
+
+### RacingGame 클래스 기능
 
 #### 1. constructor
 
