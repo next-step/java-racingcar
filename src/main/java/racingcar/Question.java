@@ -1,30 +1,41 @@
 package racingcar;
 
+import racingcar.dto.InputType;
+import racingcar.dto.InputView;
+
 import java.util.Scanner;
 
-import static racingcar.InputType.CAR;
-import static racingcar.InputType.TRY;
+import static racingcar.dto.InputType.CAR;
+import static racingcar.dto.InputType.TRY;
 
 public class Question {
     private InputView inputView;
-    private InputType inputType;
 
-    public Question(InputView inputView, InputType inputType) {
+    public Question(InputView inputView) {
         this.inputView = inputView;
-        this.inputType = inputType;
     }
 
-    public void generate() {
-        printQuestion();
+    public int generateForTryCount() {
+        printQuestion(TRY);
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
-        inputView.insertNumberIntoField(input, inputType);
+        int tryCount = inputView.insertTryCount(input);
         printBlankSpace();
+        return tryCount;
     }
 
-    private void printQuestion() {
+    public int generateForCarCount() {
+        printQuestion(CAR);
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        int carCount = inputView.insertCarNames(input);
+        printBlankSpace();
+        return carCount;
+    }
+
+    private void printQuestion(InputType inputType) {
         if (CAR.equals(inputType)) {
-            System.out.println("몇 대의 자동차로 게임을 진행하실 건가요?");
+            System.out.println("자동차 이름을 입력하세요, (단, 자동차 이름은 쉼표(,)로 구분해야 합니다.)");
         }
         if (TRY.equals(inputType)) {
             System.out.println("몇 회를 시도하실 건가요?");
