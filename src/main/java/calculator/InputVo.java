@@ -1,5 +1,7 @@
 package calculator;
 
+import java.util.Objects;
+
 public class InputVo {
 
     private static final String BLANK = " ";
@@ -17,11 +19,11 @@ public class InputVo {
      * validate
      */
     private void validate(String input) {
-        if (input == null) {
+        if (Objects.equals(input, null)) {
             throw new IllegalArgumentException("null 값 입력 됨");
         }
 
-        if (input.trim().equals("")) {
+        if (Objects.equals(input, " ")) {
             throw new IllegalArgumentException("공백 값 입력 됨");
         }
     }
