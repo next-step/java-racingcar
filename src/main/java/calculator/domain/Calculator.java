@@ -37,7 +37,7 @@ public class Calculator {
             case "/":
                 return Operator.division(x, y);
             default: {
-                throw new IllegalArgumentException("올바르지 않은 symbol");
+                throw new IllegalArgumentException(String.format("올바르지 않은 symbol : %s", symbol));
             }
         }
     }
