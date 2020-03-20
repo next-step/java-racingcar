@@ -10,17 +10,8 @@ public class Calculator {
 
         int result = Integer.valueOf(value[0]);
 
-        boolean isOperationSymbol = true;
-
-        for (int i = 1; i < value.length - 1; i++) {
-            if (isOperationSymbol) {
-                result = apply(value[i], result, Integer.valueOf(value[i + 1]));
-
-                isOperationSymbol = false;
-                continue;
-            }
-
-            isOperationSymbol = true;
+        for (int i = 1; i < value.length - 1; i += 2) {
+            result = apply(value[i], result, Integer.valueOf(value[i + 1]));
         }
 
         return result;
