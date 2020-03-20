@@ -17,7 +17,7 @@ public class InputValidationTest {
     @DisplayName("입력값이 null 또는 빈 공백일 경우 체크")
     @Test
     void inputCheckTest() {
-        String data = "1+2";
+        String data = "";
         assertThatThrownBy(() -> {
             validator.nullCheck(data);
         }).isInstanceOf(IllegalArgumentException.class);
@@ -26,7 +26,7 @@ public class InputValidationTest {
     @DisplayName("사칙연산 기호가 아닌 경우 IllegalArgumentException")
     @Test
     public void operatorCheckTest() {
-        String data = "*";
+        String data = "";
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(()->{
             validator.operatorCheck(data);
         });

@@ -4,8 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-
 import static org.assertj.core.api.Assertions.*;
 
 public class CalculatorTest {
@@ -42,13 +40,15 @@ public class CalculatorTest {
         assertThat(cal.divide(1,4)).isEqualTo(0);
         assertThat(cal.divide(5,4)).isEqualTo(1);
         assertThat(cal.divide(0,4)).isEqualTo(0);
-//        assertThat(cal.divide(5,0)).isEqualTo(0);   //ArithmeticException
+        assertThatThrownBy(()->{
+            cal.divide(5,0);
+        }).isInstanceOf(ArithmeticException.class);   //ArithmeticException
     }
     @DisplayName("구현한 계산기 테스트")
     @Test
     void calculatorTest(){
-//        String input = "5 + 4 * 6 / 2 - 5";
-        String input = "";
-        assertThat(cal.calculate(input)).isEqualTo(8);
+        String input = "5 + 4 * 6 / 2 - 5";
+//        String input = "1";
+        assertThat(cal.calculate(input)).isEqualTo(22);
     }
 }
