@@ -67,9 +67,9 @@ public class OutputView {
             carNames.add(car.getName());
         }
         return cars.stream()
-                        .map(it -> it.getName())
-                        .map(it -> it + makeBlankSpace(findLongestNameLength(carNames) - it.length()))
-                        .collect(Collectors.toList());
+                .map(it -> it.getName())
+                .map(it -> it + makeBlankSpace(findLongestNameLength(carNames) - it.length()))
+                .collect(Collectors.toList());
     }
 
     private StringBuilder makeBlankSpace(int blankLength) {
@@ -86,9 +86,5 @@ public class OutputView {
                 .max(Comparator.comparingInt(Integer::intValue))
                 .orElseThrow(RuntimeException::new);
         return maxLength;
-    }
-
-    public List<Car> findWinner() {
-        return null;
     }
 }

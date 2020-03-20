@@ -4,7 +4,9 @@ import racingcar.RandomNumGenerator;
 import racingcar.dto.InputView;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private List<Car> cars = new ArrayList<>();
@@ -18,6 +20,21 @@ public class Cars {
             List<String> carNames = inputView.getCarNames();
             cars.add(new Car(carNames.get(i)));
         }
+    }
+
+    public List<Car> findWinner() {
+        int highestPositionValue = findHighestPositionValue(cars);
+        return cars.stream()
+                .filter(it -> it.getPosition() == highestPositionValue)
+                .collect(Collectors.toList());
+    }
+
+
+    private int findHighestPositionValue(List<Car> cars) {
+        return cars.stream()
+                .map(it -> it.getPosition())
+                .max(Comparator.comparingInt(Integer::intValue))
+                .orElseThrow(RuntimeException::new);
     }
 
     public void moveOnce(RandomNumGenerator rng) {
