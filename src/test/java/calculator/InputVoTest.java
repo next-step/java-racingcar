@@ -30,7 +30,7 @@ public class InputVoTest {
     @DisplayName("공백을 구분자로 split")
     @ParameterizedTest
     @CsvSource(value = {"1 + 2:3", "1 + 3 / 2:5", "4 * 2 / 1 - 3:7"}, delimiter = ':')
-    public void splitInput(String input, int size)  {
+    public void splitInput(String input, int size) {
         //then
         assertThat(new InputVo(input).getInputSplit().length).isEqualTo(size);
     }
