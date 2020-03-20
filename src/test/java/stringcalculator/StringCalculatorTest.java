@@ -16,4 +16,12 @@ public class StringCalculatorTest {
         assertThat(calculator.add("1 + 5")).isEqualTo(6);
         assertThat(calculator.add("1 + 3 + 5")).isEqualTo(9);
     }
+
+    @Test
+    @DisplayName("주어진 문자열에서 숫자들의 뺄셈 결과를 리턴한다")
+    public void minusOperationReturnsSubtractionOfNumbers() {
+        StringCalculator calculator = new StringCalculator();
+
+        assertThat(calculator.minus("1 - 2")).isEqualTo(-1);
+    }
 }

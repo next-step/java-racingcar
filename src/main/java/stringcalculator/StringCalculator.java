@@ -15,4 +15,8 @@ public class StringCalculator {
 
         return acc;
     }
+
+    public int minus(String expression) {
+        return -1;
+    }
 }
