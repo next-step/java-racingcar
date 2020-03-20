@@ -1,6 +1,8 @@
 package racingGame;
 
 public class RacingGame {
+	private static int RANDOM_RANGE = 10;
+	private static int GO_THRESHOLD = 4;
 	private int time;
 	private int[] carPositions;
 
@@ -24,7 +26,7 @@ public class RacingGame {
 	}
 
 	private boolean canGo() {
-		return Math.random() * 10 > 4;
+		return Math.random() * RANDOM_RANGE > GO_THRESHOLD;
 	}
 
 	public int getTime() {
