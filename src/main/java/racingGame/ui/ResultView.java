@@ -1,7 +1,7 @@
 package racingGame.ui;
 
 public class ResultView {
-	private static String RESULT_MSG = "실행 결과";
+	private static final String RESULT_MSG = "실행 결과";
 
 	public void printResultStart(){
 		System.out.println(RESULT_MSG);

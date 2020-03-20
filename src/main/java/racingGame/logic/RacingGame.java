@@ -1,8 +1,8 @@
 package racingGame.logic;
 
 public class RacingGame {
-	private static int RANDOM_RANGE = 10;
-	private static int GO_THRESHOLD = 4;
+	private static final int RANDOM_RANGE = 10;
+	private static final int GO_THRESHOLD = 4;
 	private int time;
 	private int[] carPositions;
 
