@@ -13,6 +13,7 @@ class RacingGameTest {
 
     private InputView inputView;
     private RacingGame racingGame;
+    private ResultView resultView;
 
     @BeforeEach
     void newObject() {
@@ -54,7 +55,18 @@ class RacingGameTest {
         racingGame.moveByRepeatCount();
         int[] carPositions = racingGame.getCarPositions();
         assertThat(carPositions.length).isEqualTo(3);
-        assertThat(carPositions).containsAnyOf(0,1,2,3,4,5);
+        assertThat(carPositions).containsAnyOf(0, 1, 2, 3, 4, 5);
         System.out.println(Arrays.toString(carPositions));
+    }
+
+    @DisplayName("자동차 레이싱 결과를 출력한다.")
+    @Test
+    void name() {
+        int[] result = { 3, 2, 1 };
+        resultView = new ResultView(result);
+        resultView.settingresultCarPositions();
+        String[] resultCarPositions = resultView.getResultCarPositions();
+        assertThat(resultCarPositions).hasSize(result.length);
+        assertThat(resultCarPositions).containsExactly("---", "--", "-");
     }
 }
