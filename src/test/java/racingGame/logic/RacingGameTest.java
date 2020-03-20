@@ -3,7 +3,6 @@ package racingGame.logic;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingGame.logic.logic.RacingGame;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

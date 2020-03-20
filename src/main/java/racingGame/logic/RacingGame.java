@@ -1,4 +1,4 @@
-package racingGame.logic.logic;
+package racingGame.logic;
 
 public class RacingGame {
 	private static int RANDOM_RANGE = 10;
