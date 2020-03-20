@@ -43,7 +43,11 @@ public class CalculatorNumber {
     }
 
     private String findOperator() {
-        return inputDatas[index];
+        String operator = inputDatas[index];
+        if (Objects.isNull(operator)) {
+            throw new IllegalArgumentException("연산자는 null 이 될 수 없습니다.");
+        }
+        return operator;
     }
 
     private void validateOperator() {
