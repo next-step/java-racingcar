@@ -4,11 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RacingGameTest {
 
@@ -16,22 +12,22 @@ class RacingGameTest {
 	private RacingGame racingGame;
 
 	@BeforeEach
-	void setting(){
+	void setting() {
 		racingGame = new RacingGame(carCount);
 	}
 
 	@Test
 	@DisplayName("한번 움직였을 때의 결과값 테스트")
-	void moveTest(){
+	void moveTest() {
 		assertThat(racingGame.move())
-				.containsAnyOf(0,1);
+				.containsAnyOf(0, 1);
 		assertThat(racingGame.getTime())
 				.isEqualTo(1);
 	}
 
 	@Test
 	@DisplayName("여러번 움직였을 때의 움직인 횟수 확인 테스트")
-	void moveCountTest(){
+	void moveCountTest() {
 
 		int moveTime = 5;
 
