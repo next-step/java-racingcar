@@ -4,11 +4,17 @@ public class Calculator {
 
 	public double calculate(String expression) {
 		checkValidate(expression);
-
 		String[] expressions = parseExpression(expression);
-		double answer = Integer.parseInt(expressions[0]);
-		for (int i = 1; i < expressions.length - 1; i += 2) {
-			answer = calculate(expressions[i], answer, Integer.parseInt(expressions[i + 1]));
+
+		int firstNumberIdx = 0;
+		int firstOperatorIdx = 1;
+		int lastOperatorIdx = expressions.length - 1;
+		int nextNumberIdxInterval = 2;
+
+		double answer = Integer.parseInt(expressions[firstNumberIdx]);
+		for (int i = firstOperatorIdx; i < lastOperatorIdx; i += nextNumberIdxInterval) {
+			int operatorIdx = i + 1;
+			answer = calculate(expressions[i], answer, Integer.parseInt(expressions[operatorIdx]));
 		}
 		return answer;
 	}
