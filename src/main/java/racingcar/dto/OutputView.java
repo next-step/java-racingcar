@@ -88,7 +88,7 @@ public class OutputView {
     public void printWinners(List<Car> winners) {
         System.out.println();
         StringJoiner stringJoiner = makeWinnersNameInOneLine(winners);
-        System.out.println(">>>>>>>> "+stringJoiner + " 가 최종 우승했습니다. <<<<<<<<");
+        System.out.println(">>>>>>>> "+stringJoiner + " (이)가 최종 우승했습니다. <<<<<<<<");
     }
 
     private StringJoiner makeWinnersNameInOneLine(List<Car> winners) {
