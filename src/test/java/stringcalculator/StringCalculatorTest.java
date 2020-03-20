@@ -23,5 +23,6 @@ public class StringCalculatorTest {
         StringCalculator calculator = new StringCalculator();
 
         assertThat(calculator.minus("1 - 2")).isEqualTo(-1);
+        assertThat(calculator.minus("1 - 2 - 3")).isEqualTo(-4);
     }
 }
