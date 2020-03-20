@@ -101,10 +101,9 @@ class CalculatorTest {
         assertThat(Calculator.calculate(num2, num2, "/")).isNotEqualTo(2);
     }
 
-
     @DisplayName("사용자의 input을 계산")
     @ParameterizedTest
-    @CsvSource(value = {"1 + 2:3", "1 + 2 + 3:6", "5 / 2:2.5", "2 * 3 / 2:3"}, delimiter = ':')
+    @CsvSource(value = {"1 + 2:3", "1 + 2 + 3:6", "5 / 2:2.5", "2 * 3 / 2:3", "2 + 3 * 4 / 2:10"}, delimiter = ':')
     public void calculateUserInput(String input, double expect) throws Exception {
         //given
         String[] inputSplit = new InputVo(input).getInputSplit();
@@ -116,6 +115,4 @@ class CalculatorTest {
         //then
         assertThat(result).isEqualTo(expect);
     }
-
-
 }

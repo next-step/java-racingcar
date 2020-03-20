@@ -18,11 +18,8 @@ public class CalculatorApplication {
 
         String input = sc.nextLine();
         InputVo inputVo = new InputVo(input);
+        Calculator calculator = new Calculator(inputVo.getInputSplit());
 
-        System.out.println(inputVo);
-
-        System.out.println(input);
-
-
+        System.out.println("결과 : " + calculator.calculateUserInput());
     }
 }

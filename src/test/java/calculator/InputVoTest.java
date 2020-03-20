@@ -27,7 +27,7 @@ public class InputVoTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("aa")
+    @DisplayName("공백을 구분자로 split")
     @ParameterizedTest
     @CsvSource(value = {"1 + 2:3", "1 + 3 / 2:5", "4 * 2 / 1 - 3:7"}, delimiter = ':')
     public void splitInput(String input, int size)  {
