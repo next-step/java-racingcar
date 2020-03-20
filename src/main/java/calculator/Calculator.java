@@ -30,14 +30,7 @@ public class Calculator {
         if ("*".equals(operator)) {
             return multiple(leftNumber, rightNumber);
         }
-        if ("/".equals(operator)) {
-            return divide(leftNumber, rightNumber);
-        }
-        return 0;
-    }
-
-    private int parseInt(String input) {
-        return Integer.parseInt(input);
+        return divide(leftNumber, rightNumber);
     }
 
     public int add(int left, int right) {
