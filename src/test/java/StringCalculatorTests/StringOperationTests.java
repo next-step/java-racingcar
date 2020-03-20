@@ -46,7 +46,7 @@ public class StringOperationTests {
 
     @DisplayName("나눗셈 계산 - 0으로 나누었을 때")
     @ParameterizedTest
-    @ValueSource(strings = {"3, 0"})
+    @ValueSource(strings = {"3", "0"})
     public void stringDivideByZeroTest(String input) {
         assertThatExceptionOfType(RuntimeException.class)
                 .isThrownBy(() -> StringOperation.DIVIDE.operate(input, "0"))
