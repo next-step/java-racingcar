@@ -1,7 +1,4 @@
-package racingcar;
-
-import static racingcar.InputType.CAR;
-import static racingcar.InputType.TRY;
+package racingcar.dto;
 
 public class InputView {
     private int carCount;
@@ -10,16 +7,20 @@ public class InputView {
     public InputView() {
     }
 
-    public void insertNumberIntoField(String input, InputType inputType) {
-        validateNull(input);
-        validateEmpty(input);
-        int number = validateNumber(input);
-        if (CAR.equals(inputType)) {
-            this.carCount = number;
-        }
-        if (TRY.equals(inputType)) {
-            this.tryCount = number;
-        }
+    public void insertCarCount(String stringCarCount) {
+        this.carCount = validateInput(stringCarCount);
+    }
+
+    public void insertTryCount(String stringTryCount) {
+        this.tryCount = validateInput(stringTryCount);
+    }
+
+    private int validateInput(String stringInput) {
+        validateNull(stringInput);
+        validateEmpty(stringInput);
+        int intInput = validateNumber(stringInput);
+        validateNegative(intInput);
+        return intInput;
     }
 
     private void validateNull(String input) {

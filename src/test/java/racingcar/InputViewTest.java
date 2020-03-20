@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.dto.InputView;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -16,18 +17,18 @@ public class InputViewTest {
     void validInputTest(String input) {
         //when, then
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new InputView().insertNumberIntoField(input, InputType.CAR));
+                .isThrownBy(() -> new InputView().insertTryCount(input));
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new InputView().insertNumberIntoField(input, InputType.TRY));
+                .isThrownBy(() -> new InputView().insertCarCount(input));
     }
 
     @DisplayName("숫자가 아닌 문자열이 입력되면 예외가 발생한다.")
     @ParameterizedTest
-    @ValueSource(strings = {"@", "*", "A", "👍", "😱"})
+    @ValueSource(strings = {"@", "*", "A", "!", "J"})
     void validNumberTest(String input) {
         //when, then
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new InputView().insertNumberIntoField(input, InputType.CAR));
+                .isThrownBy(() -> new InputView().insertCarCount(input));
     }
 
     @DisplayName("음수가 입력되면 예외가 발생한다.")
@@ -36,7 +37,7 @@ public class InputViewTest {
     void validateNegativeTest(String input) {
         //when, then
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new InputView().insertNumberIntoField(input, InputType.CAR));
+                .isThrownBy(() -> new InputView().insertCarCount(input));
     }
 
     @DisplayName("입력값의 InputType에 따라 다른 InputView 필드에 저장된다.")
@@ -45,7 +46,7 @@ public class InputViewTest {
     void insertValueToFieldTest(String input, int expected) {
         //when
         InputView inputView = new InputView();
-        inputView.insertNumberIntoField(input, InputType.TRY);
+        inputView.insertTryCount(input);
 
         //then
         assertThat(inputView.getTryCount()).isEqualTo(expected);

@@ -1,21 +1,20 @@
 package racingcar;
 
-import static racingcar.InputType.CAR;
-import static racingcar.InputType.TRY;
+import racingcar.domain.Cars;
+import racingcar.dto.InputView;
+import racingcar.dto.OutputView;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        RandomNumGenerator rng = new RandomNumGenerator();
+        RandomNumGenerator randomNumGenerator = new RandomNumGenerator();
 
-        Question question_car = new Question(inputView, CAR);
-        question_car.generate();
-
-        Question question_try = new Question(inputView, TRY);
-        question_try.generate();
+        Question question = new Question(inputView);
+        question.generateForCarCount();
+        question.generateForTryCount();
 
         Cars cars = new Cars(inputView);
-        System.out.println("실행결과");
-        cars.moveTryCount(inputView, rng);
+        OutputView outputView = new OutputView(cars, randomNumGenerator);
+        outputView.print(inputView.getTryCount());
     }
 }
