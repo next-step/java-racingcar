@@ -1,20 +1,18 @@
 package domain;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public enum StringOperation {
     ADD("+", (first, second) -> first + second),
     SUBTRACT("-", (first, second) -> first - second),
     MULTIPLY("*", (first, second) -> first * second),
-    DIVIDE("/", (first, second) -> first / second)
-    ;
+    DIVIDE("/", (first, second) -> {
+        if (second.equals(0)) {
+            throw new RuntimeException("Can not divide by zero.");
+        }
+        return first / second;
+    });
 
     private final String operatorSign;
     private final BiFunction<Integer, Integer, Integer> operation;
