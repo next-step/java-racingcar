@@ -3,6 +3,8 @@ package calculator.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -16,9 +18,9 @@ public class CalculatorTest {
 
     @Test
     public void calculation() {
-        int result = calculator.calculate("2 + 3 * 4 / 2");
+        BigDecimal result = calculator.calculate("2 + 3 * 4 / 2");
 
-        assertThat(result).isEqualTo(10);
+        assertThat(result).isEqualTo(new BigDecimal(10));
 
         assertThatThrownBy(() -> calculator.calculate(" "))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -27,17 +29,17 @@ public class CalculatorTest {
 
     @Test
     public void apply() {
-        int result1 = calculator.apply("+", 1, 2);
-        int result2 = calculator.apply("-", 3, 1);
-        int result3 = calculator.apply("*", 2, 3);
-        int result4 = calculator.apply("/", 10, 2);
+        BigDecimal result1 = calculator.apply("+", new BigDecimal(1), new BigDecimal(2));
+        BigDecimal result2 = calculator.apply("-", new BigDecimal(3), new BigDecimal(1));
+        BigDecimal result3 = calculator.apply("*", new BigDecimal(2), new BigDecimal(3));
+        BigDecimal result4 = calculator.apply("/", new BigDecimal(10), new BigDecimal(2));
 
-        assertThat(result1).isEqualTo(3);
-        assertThat(result2).isEqualTo(2);
-        assertThat(result3).isEqualTo(6);
-        assertThat(result4).isEqualTo(5);
+        assertThat(result1).isEqualTo(new BigDecimal(3));
+        assertThat(result2).isEqualTo(new BigDecimal(2));
+        assertThat(result3).isEqualTo(new BigDecimal(6));
+        assertThat(result4).isEqualTo(new BigDecimal(5));
 
-        assertThatThrownBy(() -> calculator.apply("1", 1, 2))
+        assertThatThrownBy(() -> calculator.apply("1", new BigDecimal(1), new BigDecimal(2)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(String.format("올바르지 않은 symbol : %s", "1"));
     }
