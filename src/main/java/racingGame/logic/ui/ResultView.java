@@ -1,4 +1,4 @@
-package racingGame;
+package racingGame.logic.ui;
 
 public class ResultView {
 	private static String RESULT_MSG = "실행 결과";

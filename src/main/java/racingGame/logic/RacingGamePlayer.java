@@ -1,4 +1,8 @@
-package racingGame;
+package racingGame.logic;
+
+import racingGame.logic.logic.RacingGame;
+import racingGame.logic.ui.InputView;
+import racingGame.logic.ui.ResultView;
 
 public class RacingGamePlayer {
 	private InputView inputView;

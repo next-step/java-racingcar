@@ -1,4 +1,4 @@
-package racingGame;
+package racingGame.logic.ui;
 
 import java.util.Scanner;
 
