@@ -9,11 +9,9 @@ public class Calculator {
     public Calculator(String input) {
         InputStringHandler inputStringHandler = new InputStringHandler();
         this.inputStringList = inputStringHandler.work(input);
-
     }
 
     public Double work() {
-
         while (inputStringList.size() >= 3) {
             this.inputStringList = assembleFormula();
         }
