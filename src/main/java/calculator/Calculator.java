@@ -1,10 +1,19 @@
 package calculator;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Calculator {
-    public int calculate(String s) {
-        return Integer.MAX_VALUE;
+
+    public static void main(String[] args) {
+        String input = getInputList();
     }
 
-    public void splitInput(String input) {
+    private static String getInputList() {
+        return InputView.getInput();
+    }
+
+    public int calculate(String s) {
+        return Integer.MAX_VALUE;
     }
 }
