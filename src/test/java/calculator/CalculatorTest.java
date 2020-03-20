@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 class CalculatorTest {
 
@@ -91,14 +92,16 @@ class CalculatorTest {
         //when
 
         //then
-        assertThat(Calculator.calculate(num1, num2, "+")).isEqualTo(3);
-        assertThat(Calculator.calculate(num1, num2, "-")).isEqualTo(-1);
-        assertThat(Calculator.calculate(num2, num2, "*")).isEqualTo(4);
-        assertThat(Calculator.calculate(num2, num2, "/")).isEqualTo(1);
-        assertThat(Calculator.calculate(num2, num2, "+")).isNotEqualTo(1);
-        assertThat(Calculator.calculate(num2, num2, "_")).isNotEqualTo(1);
-        assertThat(Calculator.calculate(num2, num2, "*")).isNotEqualTo(1);
-        assertThat(Calculator.calculate(num2, num2, "/")).isNotEqualTo(2);
+        assertAll(
+                () -> assertThat(Calculator.calculate(num1, num2, "+")).isEqualTo(3),
+                () -> assertThat(Calculator.calculate(num1, num2, "-")).isEqualTo(-1),
+                () -> assertThat(Calculator.calculate(num2, num2, "*")).isEqualTo(4),
+                () -> assertThat(Calculator.calculate(num2, num2, "/")).isEqualTo(1),
+                () -> assertThat(Calculator.calculate(num2, num2, "+")).isNotEqualTo(1),
+                () -> assertThat(Calculator.calculate(num2, num2, "_")).isNotEqualTo(1),
+                () -> assertThat(Calculator.calculate(num2, num2, "*")).isNotEqualTo(1),
+                () -> assertThat(Calculator.calculate(num2, num2, "/")).isNotEqualTo(2)
+        );
     }
 
     @DisplayName("사용자의 input을 계산")
