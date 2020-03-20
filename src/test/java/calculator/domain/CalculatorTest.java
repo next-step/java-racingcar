@@ -39,6 +39,6 @@ public class CalculatorTest {
 
         assertThatThrownBy(() -> calculator.apply("1", 1, 2))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("올바르지 않은 symbol");
+                .hasMessageContaining(String.format("올바르지 않은 symbol : %s", "1"));
     }
 }
