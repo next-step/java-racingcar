@@ -33,6 +33,10 @@ public class Calculator {
         return divide(leftNumber, rightNumber);
     }
 
+    private int parseInt(String input) {
+        return Integer.parseInt(input);
+    }
+
     public int add(int left, int right) {
         return left + right;
     }
