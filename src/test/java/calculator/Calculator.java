@@ -17,15 +17,15 @@ public class Calculator {
 
     private long calculate() {
         while (!calculationOrder.isComplete()) {
-            long x = stringToNumber(calculationOrder.next());
+            long x = parseLong(calculationOrder.next());
             Operator operator = Operator.findOperatorByValue(calculationOrder.next());
-            long y = stringToNumber(calculationOrder.next());
+            long y = parseLong(calculationOrder.next());
             calculationOrder.addCalculateResult(operator.calculate(x, y));
         }
         return calculationOrder.getCalculateTotalResult();
     }
 
-    private long stringToNumber(String value) {
+    private long parseLong(String value) {
         try {
             return Long.parseLong(value);
         } catch (NumberFormatException e) {
