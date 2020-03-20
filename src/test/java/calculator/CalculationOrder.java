@@ -1,6 +1,5 @@
 package calculator;
 
-import java.util.Collections;
 import java.util.EmptyStackException;
 import java.util.Stack;
 
@@ -9,7 +8,7 @@ public class CalculationOrder {
     private Stack<String> order = new Stack<>();
 
     public void init(String[] inputs) {
-        for(int i = inputs.length -1 ; i>=0; i--){
+        for (int i = inputs.length - 1; i >= 0; i--) {
             order.push(inputs[i]);
         }
     }
