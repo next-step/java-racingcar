@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.domain.Car;
 import racingcar.dto.InputView;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -50,8 +51,7 @@ public class InputViewTest {
         assertThat(inputView.getTryCount()).isEqualTo(expected);
     }
 
-
-    @DisplayName("자동차 대수를 문자열로 입력하면 자동차 객체의 대수를 반환한다.")
+    @DisplayName("자동차 이름을 문자열로 입력하면 자동차 객체의 대수를 반환한다.")
     @ParameterizedTest
     @CsvSource(value = {"pobi,crong,honux:3", "1,2,3,4,5:5", "Mark,Jaehyun,Johnny:3"}, delimiter = ':')
     void insertCarNamesTest(String carNames, int expectedCarCount) {
@@ -62,7 +62,6 @@ public class InputViewTest {
         int carCount = inputView.insertCarNames(carNames);
 
         //then
-
         assertThat(carCount).isEqualTo(expectedCarCount);
     }
 }

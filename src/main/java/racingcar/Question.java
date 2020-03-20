@@ -35,7 +35,7 @@ public class Question {
 
     private void printQuestion(InputType inputType) {
         if (CAR.equals(inputType)) {
-            System.out.println("몇 대의 자동차로 게임을 진행하실 건가요?");
+            System.out.println("자동차 이름을 입력하세요, (단, 자동차 이름은 쉼표(,)로 구분해야 합니다.)");
         }
         if (TRY.equals(inputType)) {
             System.out.println("몇 회를 시도하실 건가요?");

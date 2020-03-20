@@ -4,7 +4,13 @@ import racingcar.RandomNumGenerator;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class OutputView {
+    private static final String BLANK = " ";
     private static final String ONE_MOVE = "-";
     private Cars cars;
     private RandomNumGenerator randomNumGenerator;
@@ -33,10 +39,10 @@ public class OutputView {
 
     private void printCarsAfterMoveOnce() {
         cars.moveOnce(randomNumGenerator);
-
-        for (Car car : cars.getCars()) {
-            System.out.print("출발점 |");
-            printPosition(car);
+        List<String> carNames = convertCarNamesToPrint(cars.getCars());
+        for (int i = 0; i < carNames.size(); i++) {
+            System.out.print(carNames.get(i) + " |");
+            printPosition(cars.getCars().get(i));
         }
     }
 
@@ -52,5 +58,31 @@ public class OutputView {
 
     private void printBorderLine() {
         System.out.println("=====================================");
+    }
+
+    private List<String> convertCarNamesToPrint(List<Car> cars) {
+        List<String> carNames = new ArrayList<>();
+        for (Car car : cars) {
+            carNames.add(car.getName());
+        }
+        return carNames.stream()
+                .map(it -> it + makeBlankSpace(findLongestNameLength(carNames) - it.length()))
+                .collect(Collectors.toList());
+    }
+
+    private StringBuilder makeBlankSpace(int blankLength) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < blankLength; i++) {
+            stringBuilder.append(BLANK);
+        }
+        return stringBuilder;
+    }
+
+    private int findLongestNameLength(List<String> carNames) {
+        int maxLength = carNames.stream()
+                .map(it -> it.length())
+                .max(Comparator.comparingInt(Integer::intValue))
+                .orElseThrow(RuntimeException::new);
+        return maxLength;
     }
 }

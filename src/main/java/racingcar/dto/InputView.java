@@ -1,8 +1,11 @@
 package racingcar.dto;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class InputView {
     private static final String DELIMITER = ",";
-    private String[] carNames;
+    private List<String> carNames;
     private int carCount;
     private int tryCount;
 
@@ -12,7 +15,7 @@ public class InputView {
     public int insertCarNames(String carNameString) {
         validateNullOrEmpty(carNameString);
         this.carNames = splitCarNames(carNameString);
-        this.carCount = carNames.length;
+        this.carCount = carNames.size();
         return carCount;
     }
 
@@ -22,8 +25,8 @@ public class InputView {
         return tryCount;
     }
 
-    private String[] splitCarNames(String stringInput) {
-        return stringInput.split(DELIMITER);
+    private List<String> splitCarNames(String stringInput) {
+        return Arrays.asList(stringInput.split(DELIMITER));
     }
 
     private int validateNumberType(String stringInput) {
@@ -68,5 +71,13 @@ public class InputView {
 
     public int getTryCount() {
         return tryCount;
+    }
+
+    public int getCarCount() {
+        return carCount;
+    }
+
+    public List<String> getCarNames() {
+        return carNames;
     }
 }

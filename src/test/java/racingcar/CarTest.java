@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.domain.Car;
-import racingcar.dto.InputView;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,7 +14,7 @@ public class CarTest {
     void canRunTest(int input, boolean expected) {
         //given
         int randomNum = input;
-        Car car = new Car();
+        Car car = new Car("Mark");
 
         //when
         boolean canRun = car.canRun(randomNum);
@@ -29,7 +28,7 @@ public class CarTest {
     @CsvSource(value = {"true:1", "false:0"}, delimiter = ':')
     void moveTest(boolean canRun, int position) {
         //given
-        Car car = new Car();
+        Car car = new Car("Mark");
 
         //when
         car.move(canRun);
