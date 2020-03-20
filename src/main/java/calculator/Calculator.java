@@ -29,16 +29,20 @@ public class Calculator {
         }
     }
 
-    public void calculateUserInput() {
-        for (String x : operandAndOperators) {
+    public double calculateUserInput() {
+        double result = Double.parseDouble(operandAndOperators[0]);
 
+        for (int i = 1; i < operandAndOperators.length; i += 2) {
+            result = calculate(result, Double.parseDouble(operandAndOperators[i + 1]), operandAndOperators[i]);
         }
+
+        return result;
     }
 
     /**
      * 피연산자 2개, 연산자 1개를 받아 계산후 리턴
      */
-    public double calculate(double operand1, double operand2, String operator) {
+    public static double calculate(double operand1, double operand2, String operator) {
         if (ArithmeticOperation.PLUS.isEqusls(operator)) {
             return plus(operand1, operand2);
         }

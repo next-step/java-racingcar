@@ -3,6 +3,7 @@ package calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -46,7 +47,6 @@ class CalculatorTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
-
     /**
      * input 2개와 결과값 1개 총 3개가 필요함
      * CsvSource 를 이용할 경우 delimiter로 2개의 값으로 분리가 가능한데
@@ -78,6 +78,43 @@ class CalculatorTest {
     public void division() throws Exception {
         assertThat(Calculator.division(4, 2)).isEqualTo(2);
         assertThat(Calculator.division(4, 2)).isNotEqualTo(3);
+    }
+
+    @DisplayName("사칙연산 테스트")
+    @Test
+    public void calculate() throws Exception {
+        //given
+        double num1 = 1;
+        double num2 = 2;
+        double num4 = 4;
+
+        //when
+
+        //then
+        assertThat(Calculator.calculate(num1, num2, "+")).isEqualTo(3);
+        assertThat(Calculator.calculate(num1, num2, "-")).isEqualTo(-1);
+        assertThat(Calculator.calculate(num2, num2, "*")).isEqualTo(4);
+        assertThat(Calculator.calculate(num2, num2, "/")).isEqualTo(1);
+        assertThat(Calculator.calculate(num2, num2, "+")).isNotEqualTo(1);
+        assertThat(Calculator.calculate(num2, num2, "_")).isNotEqualTo(1);
+        assertThat(Calculator.calculate(num2, num2, "*")).isNotEqualTo(1);
+        assertThat(Calculator.calculate(num2, num2, "/")).isNotEqualTo(2);
+    }
+
+
+    @DisplayName("사용자의 input을 계산")
+    @ParameterizedTest
+    @CsvSource(value = {"1 + 2:3", "1 + 2 + 3:6", "5 / 2:2.5", "2 * 3 / 2:3"}, delimiter = ':')
+    public void calculateUserInput(String input, double expect) throws Exception {
+        //given
+        String[] inputSplit = new InputVo(input).getInputSplit();
+        Calculator calculator = new Calculator(inputSplit);
+
+        //when
+        double result = calculator.calculateUserInput();
+
+        //then
+        assertThat(result).isEqualTo(expect);
     }
 
 
