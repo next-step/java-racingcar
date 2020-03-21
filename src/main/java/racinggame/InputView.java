@@ -40,6 +40,10 @@ public class InputView {
         }
     }
 
+    public int getGameCount() {
+        return gameCount;
+    }
+
     public ArrayList<Car> getCars() {
         return cars;
     }
