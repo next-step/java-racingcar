@@ -16,21 +16,11 @@ public class Calculator {
     }
 
     private long calculate() {
-        while (!calculationOrder.isComplete()) {
-            long x = parseLong(calculationOrder.next());
-            Operator operator = Operator.findOperatorByValue(calculationOrder.next());
-            long y = parseLong(calculationOrder.next());
-            calculationOrder.addCalculateResult(operator.calculate(x, y));
+        while (calculationOrder.isCalculate()) {
+            BinomialExpression binomialExpression = calculationOrder.nextBinomialExpression();
+            calculationOrder.addCalculateResult(binomialExpression.calculate());
         }
-        return calculationOrder.getCalculateTotalResult();
-    }
-
-    private long parseLong(String value) {
-        try {
-            return Long.parseLong(value);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
+        return calculationOrder.getCurrentNumber();
     }
 
     private void verifyInput(String input) {
