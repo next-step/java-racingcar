@@ -1,36 +1,31 @@
 package stringcalculator.calculator;
 
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.function.BiFunction;
+import java.util.stream.Collectors;
 
 public enum Calculator {
-    ADDITION((leftNumber, rightNumber) -> leftNumber + rightNumber),
-    SUBTRACTION((leftNumber, rightNumber) -> leftNumber - rightNumber),
-    MULTIPLICATION((leftNumber, rightNumber) -> leftNumber * rightNumber),
-    DIVISION((leftNumber, rightNumber) -> leftNumber / rightNumber);
+    ADDITION("+", (leftNumber, rightNumber) -> leftNumber + rightNumber),
+    SUBTRACTION("-", (leftNumber, rightNumber) -> leftNumber - rightNumber),
+    MULTIPLICATION("*", (leftNumber, rightNumber) -> leftNumber * rightNumber),
+    DIVISION("/", (leftNumber, rightNumber) -> leftNumber / rightNumber);
 
-    private static final Map<String, Calculator> OPERATORS;
-
-    static {
-        OPERATORS = new HashMap<>();
-        OPERATORS.put("+", Calculator.ADDITION);
-        OPERATORS.put("-", Calculator.SUBTRACTION);
-        OPERATORS.put("*", Calculator.MULTIPLICATION);
-        OPERATORS.put("/", Calculator.DIVISION);
-    }
-
+    private String operator;
     private BiFunction<Double, Double, Double> operation;
 
-    Calculator(BiFunction<Double, Double, Double> operation) {
+    private static Map<String, BiFunction<Double, Double, Double>> calculatorMap =
+            Arrays.asList(Calculator.values()).stream().collect(Collectors.toMap(i -> i.operator, i -> i.operation));
+
+    Calculator(String operator, BiFunction<Double, Double, Double> operation) {
+        this.operator = operator;
         this.operation = operation;
     }
 
-    public static Calculator getOperation(String operation) {
-        return OPERATORS.get(operation);
+    public static Double calculate(String operator, double leftNumber, double rightNumber) {
+        return Calculator.calculatorMap
+                .get(operator)
+                .apply(leftNumber, rightNumber);
     }
 
-    public double calculate(Double leftNumber, Double rightNumber) {
-        return operation.apply(leftNumber, rightNumber);
-    }
 }

@@ -2,72 +2,82 @@ package stringcalculator.expression;
 
 import stringcalculator.calculator.Calculator;
 
-import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Expression {
     private static final Pattern INTEGER_PATTERN = Pattern.compile("^\\d+$");
+    private static final Pattern OPERATOR_PATTERN = Pattern.compile("^(\\+)|(-)|(\\*)|(/)$");
+
     private static final int FIRST_INDEX = 0;
     private static final String DELIMITER = " ";
 
     private String[] expressions;
-    private Numbers numbers;
-    private Operators operators;
+
+    private List<String> numbers;
+    private List<String> operators;
 
     public Expression(String source) {
-        if (source == null || "".equals(source.trim())) {
+        if (isEmpty(source)) {
             throw new IllegalArgumentException("입력 값은 null 이거나 빈 공백 문자일 수 없습니다.");
         }
         this.expressions = source.split(DELIMITER);
-        if (!INTEGER_PATTERN.matcher(getExpression()[FIRST_INDEX]).find()) {
-            throw new IllegalArgumentException("입력 값은 숫자부터 시작해야 합니다.");
+        if (isNotValidOperator()) {
+            throw new IllegalArgumentException("입력 값은 숫자로만 시작해야 합니다.");
         }
-        this.numbers = new Numbers(this);
-        this.operators = new Operators(this);
+        numbers = collectNumber();
+        operators = collectOperator();
     }
 
-    String[] getExpression() {
-        return expressions;
+    public List<String> getNumbers() {
+        return numbers;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Expression)) return false;
-        Expression that = (Expression) o;
-        return Arrays.equals(expressions, that.expressions);
+    public List<String> getOperators() {
+        return operators;
     }
 
-    @Override
-    public int hashCode() {
-        return Arrays.hashCode(expressions);
+    private List<String> collectOperator() {
+        List<String> collect = Stream.of(expressions).filter(this::getOperator).collect(Collectors.toList());
+        if (Math.floor(expressions.length / 2) != collect.size()) {
+            throw new IllegalArgumentException("연산자는 사칙연산 기호만 사용할 수 있습니다.");
+        }
+        return collect;
+    }
+
+    private List<String> collectNumber() {
+        if (!INTEGER_PATTERN.matcher(expressions[FIRST_INDEX]).find()) {
+            throw new IllegalArgumentException("입력값은 반드시 숫자로 시작해야 한다");
+        }
+        return Stream.of(expressions).filter(this::getNumber).collect(Collectors.toList());
     }
 
     public Double calculate() {
-        while (hasNextOperator()) {
-            addNumber(Calculator.getOperation(
-                    nextOperator().getOperator()
-            ).calculate(
-                    nextNumber().getNumber(),
-                    nextNumber().getNumber()
-            ));
+        double leftNumber = Double.parseDouble(numbers.get(0));
+        for (int i = 1; i < operators.size() + 1; i++) {
+            String operator = operators.get(i - 1);
+            String rightNumber = numbers.get(i);
+            leftNumber = Calculator.calculate(operator, leftNumber, Double.parseDouble(rightNumber));
         }
-        return nextNumber().getNumber();
+        return leftNumber;
     }
 
-    private boolean hasNextOperator() {
-        return !operators.isEmpty();
+    private boolean getNumber(String expression) {
+        return INTEGER_PATTERN.matcher(expression).find();
     }
 
-    private Operator nextOperator() {
-        return operators.getFirstOneAndRemove();
+    private boolean getOperator(String expression) {
+        return OPERATOR_PATTERN.matcher(expression).find();
     }
 
-    private Number nextNumber() {
-        return numbers.getFirstOneAndRemove();
+    private boolean isEmpty(String source) {
+        return source == null || "".equals(source.trim());
     }
 
-    private void addNumber(Double number) {
-        numbers.add(number);
+    private boolean isNotValidOperator() {
+        return !INTEGER_PATTERN.matcher(expressions[FIRST_INDEX]).find();
     }
+
 }
