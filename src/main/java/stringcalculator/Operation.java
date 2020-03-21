@@ -1,6 +1,5 @@
 package stringcalculator;
 
-import java.util.Arrays;
 import java.util.stream.Stream;
 
 public enum Operation {
