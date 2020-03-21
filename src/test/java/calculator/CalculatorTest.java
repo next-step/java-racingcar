@@ -77,50 +77,6 @@ class CalculatorTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("덧셈 테스트")
-    @ParameterizedTest
-    @CsvSource(value = {"1:2:3", "1:3:4"}, delimiter = ':')
-    public void plus(double operand1, double operand2, double expect) throws Exception {
-        //given
-        Calculator calculator = new Calculator(inputDumy);
-
-        //then
-        assertThat(calculator.plus(operand1, operand2)).isEqualTo(expect);
-    }
-
-    @DisplayName("뺄셈 테스트")
-    @ParameterizedTest
-    @CsvSource(value = {"1:2:-1", "10:3:7"}, delimiter = ':')
-    public void minus(double operand1, double operand2, double expect) throws Exception {
-        //given
-        Calculator calculator = new Calculator(inputDumy);
-
-        //then
-        assertThat(calculator.minus(operand1, operand2)).isEqualTo(expect);
-    }
-
-    @DisplayName("곱셈 테스트")
-    @ParameterizedTest
-    @CsvSource(value = {"1:2:2", "10:3:30"}, delimiter = ':')
-    public void multiplication(double operand1, double operand2, double expect) throws Exception {
-        //given
-        Calculator calculator = new Calculator(inputDumy);
-
-        //then
-        assertThat(calculator.multiplication(operand1, operand2)).isEqualTo(expect);
-    }
-
-    @DisplayName("나눗셈 테스트")
-    @ParameterizedTest
-    @CsvSource(value = {"1:2:0.5", "30:3:10"}, delimiter = ':')
-    public void division(double operand1, double operand2, double expect) throws Exception {
-        //given
-        Calculator calculator = new Calculator(inputDumy);
-
-        //then
-        assertThat(calculator.division(operand1, operand2)).isEqualTo(expect);
-    }
-
     @DisplayName("사칙연산 테스트")
     @Test
     public void calculate() throws Exception {

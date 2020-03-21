@@ -48,37 +48,21 @@ public class Calculator {
      */
     public double calculate(double operand1, double operand2, String operator) {
         if (ArithmeticOperation.PLUS.isEqusls(operator)) {
-            return plus(operand1, operand2);
+            return ArithmeticOperation.PLUS.calculate(operand1, operand2);
         }
 
         if (ArithmeticOperation.MINUS.isEqusls(operator)) {
-            return minus(operand1, operand2);
+            return ArithmeticOperation.MINUS.calculate(operand1, operand2);
         }
 
         if (ArithmeticOperation.MULTIPLICATION.isEqusls(operator)) {
-            return multiplication(operand1, operand2);
+            return ArithmeticOperation.MULTIPLICATION.calculate(operand1, operand2);
         }
 
         if (ArithmeticOperation.DIVISION.isEqusls(operator)) {
-            return division(operand1, operand2);
+            return ArithmeticOperation.DIVISION.calculate(operand1, operand2);
         }
 
         return 0;
-    }
-
-    public double plus(double operand1, double operand2) {
-        return operand1 + operand2;
-    }
-
-    public double minus(double operand1, double operand2) {
-        return operand1 - operand2;
-    }
-
-    public double multiplication(double operand1, double operand2) {
-        return operand1 * operand2;
-    }
-
-    public double division(double operand1, double operand2) {
-        return operand1 / operand2;
     }
 }
