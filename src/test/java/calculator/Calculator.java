@@ -5,13 +5,13 @@ import org.junit.platform.commons.util.StringUtils;
 
 public class Calculator {
 
-    private static final String Separator = " ";
+    private static final String SEPARATOR = " ";
 
     private CalculationOrder calculationOrder = new CalculationOrder();
 
     public long calculate(String input) {
         verifyInput(input);
-        calculationOrder.init(input.split(Separator));
+        calculationOrder.init(input.split(SEPARATOR));
         return calculate();
     }
 
