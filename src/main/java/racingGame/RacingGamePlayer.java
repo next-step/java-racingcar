@@ -15,12 +15,13 @@ public class RacingGamePlayer {
 
 	public void racingStart(){
 		inputView.startInput();
-		RacingGame racingGame = new RacingGame(inputView.getCarCount());
+		RacingGame racingGame = new RacingGame(inputView.getRacers());
 		resultView.printResultStart();
 		for (int i = 0; i < inputView.getRacingTime(); i++) {
 			resultView.printResult(racingGame.move());
 			System.out.println();
 		}
+		resultView.printWinner(racingGame.getWinners());
 	}
 
 	public static void main(String[] args){

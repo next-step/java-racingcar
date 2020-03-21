@@ -1,16 +1,21 @@
 package racingGame.ui;
 
+import java.util.Map;
+
 public class ResultView {
 	private static final String RESULT_MSG = "실행 결과";
+	private static final String WINNER_MSG = "가 최종 우승했습니다.";
 
-	public void printResultStart(){
+	public void printResultStart() {
 		System.out.println(RESULT_MSG);
 	}
 
-	public void printResult(int[] cars) {
-		for (int i = 0; i < cars.length; i++) {
-			System.out.println(getCarMarkerString(cars[i]));
-		}
+	public void printResult(Map<String, Integer> cars) {
+		cars.forEach((racer, position) -> {
+			System.out.print(racer);
+			System.out.print(" : ");
+			System.out.println(getCarMarkerString(position));
+		});
 	}
 
 	private String getCarMarkerString(int car) {
@@ -19,5 +24,9 @@ public class ResultView {
 			carMarker.append("-");
 		}
 		return carMarker.toString();
+	}
+
+	public void printWinner(String[] winners) {
+		System.out.println(String.join(", ", winners) + WINNER_MSG);
 	}
 }
