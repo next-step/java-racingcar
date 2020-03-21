@@ -78,6 +78,8 @@ public class StringCalculatorTest {
         StringCalculator calculator = new StringCalculator();
 
         assertThatIllegalArgumentException().isThrownBy(() ->
-                calculator.operate(" "));
+                calculator.operate("    "));
+        assertThatIllegalArgumentException().isThrownBy(() ->
+                calculator.operate(null));
     }
 }

@@ -5,6 +5,8 @@ import static stringcalculator.Operation.*;
 public class StringCalculator {
 
     public double operate(String expression) {
+        validate(expression);
+
         double acc = 0;
         Operation operator = PLUS;
 
@@ -19,5 +21,11 @@ public class StringCalculator {
         }
 
         return acc;
+    }
+
+    private void validate(String input) {
+        if (input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException("입력 값은 null이거나 공백일 수 없습니다.");
+        }
     }
 }
