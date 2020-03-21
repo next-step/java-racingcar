@@ -13,11 +13,11 @@ public class CarPositions {
     }
 
     public String getResult() {
-        print(carPositions);
+        buildViewFromCarPositions(carPositions);
         return view.toString();
     }
 
-    private void print(List<int[]> carPositions) {
+    private void buildViewFromCarPositions(List<int[]> carPositions) {
         for (int i = 0; i < carPositions.size(); i++) {
             loopCars(carPositions.get(i));
         }
