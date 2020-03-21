@@ -19,7 +19,7 @@ class RacingGameTest {
 	@Test
 	@DisplayName("한번 움직였을 때의 결과값 테스트")
 	void moveTest() {
-		assertThat(racingGame.move())
+		assertThat(racingGame.move().values())
 				.containsAnyOf(0, 1);
 	}
 
@@ -30,7 +30,7 @@ class RacingGameTest {
 
 		int tmpPosition = 0;
 		for (int i = 0; i < moveTime; i++) {
-			int nextPosition = racingGame.move()[0];
+			int nextPosition = racingGame.move().get(racers[0]);
 			assertThat(nextPosition)
 					.isIn(tmpPosition,tmpPosition+1);
 			tmpPosition = nextPosition;
@@ -41,13 +41,12 @@ class RacingGameTest {
 	@DisplayName("우승자 확인 테스트")
 	void getWinnerTest() {
 		int moveTime = 5;
-		int tmpPosition = 0;
 		for (int i = 0; i < moveTime; i++) {
 			racingGame.move();
 		}
 
-		assertThat(racingGame.getWinner())
-				.isIn(racers);
+		assertThat(racingGame.getWinners())
+				.containsAnyOf(racers);
 	}
 
 }
