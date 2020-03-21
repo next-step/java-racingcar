@@ -3,8 +3,7 @@ package stringcalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringCalculatorTest {
 
@@ -47,7 +46,7 @@ public class StringCalculatorTest {
 
     @Test
     @DisplayName("나눗셈 연산에서 0으로 나눌 때 ArithmeticException이 발생한다")
-    public void divideByZeroThrowArithmeticException() {
+    public void divideByZeroThrowsArithmeticException() {
         StringCalculator calculator = new StringCalculator();
 
         assertThatExceptionOfType(ArithmeticException.class)
@@ -57,10 +56,19 @@ public class StringCalculatorTest {
     }
 
     @Test
-    @DisplayName("주어진 문자열의 연산 결과를 리턴한다")
+    @DisplayName("주어진 문자열의 사칙 연산 결과를 리턴한다")
     public void operateStringReturnsOperationOfNumbers() {
         StringCalculator calculator = new StringCalculator();
 
         assertThat(calculator.operate("1 + 3 / 4 * 3")).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("사칙 연산 기호가 아닌 기호가 포함된 경우 IllegalArgumentException가 발생한다")
+    public void operateByInvalidOperatorThrowsIllegalArgumentException() {
+        StringCalculator calculator = new StringCalculator();
+
+        assertThatIllegalArgumentException().isThrownBy(() ->
+                calculator.operate("1 & 3 ^ 3"));
     }
 }
