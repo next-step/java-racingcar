@@ -8,12 +8,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
 
-	private int carCount = 3;
+	private String[] racers ={"pobi","lannstark","teahyuk"};
 	private RacingGame racingGame;
 
 	@BeforeEach
 	void setting() {
-		racingGame = new RacingGame(carCount);
+		racingGame = new RacingGame(racers);
 	}
 
 	@Test
@@ -35,6 +35,19 @@ class RacingGameTest {
 					.isIn(tmpPosition,tmpPosition+1);
 			tmpPosition = nextPosition;
 		}
+	}
+
+	@Test
+	@DisplayName("우승자 확인 테스트")
+	void getWinnerTest() {
+		int moveTime = 5;
+		int tmpPosition = 0;
+		for (int i = 0; i < moveTime; i++) {
+			racingGame.move();
+		}
+
+		assertThat(racingGame.getWinner())
+				.isIn(racers);
 	}
 
 }
