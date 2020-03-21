@@ -1,5 +1,6 @@
 package RacingCarGameTests;
 
+import domain.RacingRound;
 import domain.StringOperation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,7 +18,8 @@ public class RacingRoundTests {
     @ParameterizedTest
     @MethodSource("carPositionCases")
     public void generateRacingRoundTest(int[] carPosition) {
-        assertThatCode(() -> RacingRound.newInstance(carPosition)).doesNotThrowAnyException();
+        assertThatCode(() -> RacingRound.newInstance(carPosition))
+                .doesNotThrowAnyException();
     }
 
     @DisplayName("레이싱 라운드 생성 테스트 - 비정상 케이스")
@@ -26,7 +28,7 @@ public class RacingRoundTests {
     public void generateRacingRoundAbnormalCasesTest(int[] carPosition) {
         assertThatExceptionOfType(RuntimeException.class)
                 .isThrownBy(() -> RacingRound.newInstance(carPosition))
-                .withMessageMatching("car position must be greater than zero.");
+                .withMessageMatching("car positions must be greater than zero.");
     }
 
     private static Stream<Arguments> carPositionCases() {
