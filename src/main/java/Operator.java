@@ -1,0 +1,40 @@
+public enum Operator {
+    PLUS("+") {
+        public double apply(double x, double y) {
+            return x + y;
+        }
+    }, MINUS("-") {
+        public double apply(double x, double y) {
+            return x - y;
+        }
+    }, MULTIPLY("*") {
+        public double apply(double x, double y) {
+            return x * y;
+        }
+    }, DIVIDE("/") {
+        public double apply(double x, double y) {
+            return x / y;
+        }
+    };
+
+    Operator(String symbol) {
+        this.symbol = symbol;
+    }
+
+    private String symbol;
+
+    public abstract double apply(double x, double y);
+
+    public static Operator findOperator(String str) {
+        for (Operator operator : values()) {
+            if (operator.symbol.equals(str))
+                return operator;
+        }
+        throw new IllegalArgumentException("invalid operator");
+    }
+
+    @Override
+    public String toString() {
+        return symbol;
+    }
+}
