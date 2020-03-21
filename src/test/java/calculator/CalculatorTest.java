@@ -1,7 +1,6 @@
 package calculator;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -12,7 +11,6 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertAll;
 
 class CalculatorTest {
 
@@ -24,7 +22,6 @@ class CalculatorTest {
                 Arguments.of("1 + 2")
         );
     }
-
 
     @DisplayName("피연산자가 숫자인지 체크 : success")
     @ParameterizedTest
@@ -75,28 +72,6 @@ class CalculatorTest {
         assertThatThrownBy(() -> {
             calculator.validateOperator(operator);
         }).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("사칙연산 테스트")
-    @Test
-    public void calculate() throws Exception {
-        //given
-        double num1 = 1;
-        double num2 = 2;
-        double num4 = 4;
-        Calculator calculator = new Calculator(inputDumy);
-
-        //then
-        assertAll(
-                () -> assertThat(calculator.calculate(num1, num2, "+")).isEqualTo(3),
-                () -> assertThat(calculator.calculate(num1, num2, "-")).isEqualTo(-1),
-                () -> assertThat(calculator.calculate(num2, num2, "*")).isEqualTo(4),
-                () -> assertThat(calculator.calculate(num2, num2, "/")).isEqualTo(1),
-                () -> assertThat(calculator.calculate(num2, num2, "+")).isNotEqualTo(1),
-                () -> assertThat(calculator.calculate(num2, num2, "_")).isNotEqualTo(1),
-                () -> assertThat(calculator.calculate(num2, num2, "*")).isNotEqualTo(1),
-                () -> assertThat(calculator.calculate(num2, num2, "/")).isNotEqualTo(2)
-        );
     }
 
     @DisplayName("사용자의 input을 계산")

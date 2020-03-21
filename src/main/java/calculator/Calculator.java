@@ -37,32 +37,9 @@ public class Calculator {
         double result = Double.parseDouble(operandAndOperators[0]);
 
         for (int i = 1; i < operandAndOperators.length; i += 2) {
-            result = calculate(result, Double.parseDouble(operandAndOperators[i + 1]), operandAndOperators[i]);
+            result = ArithmeticOperation.calculateInput(result, Double.parseDouble(operandAndOperators[i + 1]), operandAndOperators[i]);
         }
 
         return result;
-    }
-
-    /**
-     * 피연산자 2개, 연산자 1개를 받아 계산후 리턴
-     */
-    public double calculate(double operand1, double operand2, String operator) {
-        if (ArithmeticOperation.PLUS.isEqusls(operator)) {
-            return ArithmeticOperation.PLUS.calculate(operand1, operand2);
-        }
-
-        if (ArithmeticOperation.MINUS.isEqusls(operator)) {
-            return ArithmeticOperation.MINUS.calculate(operand1, operand2);
-        }
-
-        if (ArithmeticOperation.MULTIPLICATION.isEqusls(operator)) {
-            return ArithmeticOperation.MULTIPLICATION.calculate(operand1, operand2);
-        }
-
-        if (ArithmeticOperation.DIVISION.isEqusls(operator)) {
-            return ArithmeticOperation.DIVISION.calculate(operand1, operand2);
-        }
-
-        return 0;
     }
 }
