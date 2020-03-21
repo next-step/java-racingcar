@@ -15,8 +15,13 @@ public class CarTest {
 
     @Test
     void move() {
-        int position = car.move();
+        car.move();
+    }
 
-        assertThat(position).isGreaterThan(-1);
+    @Test
+    void printPosition() {
+        car.move();
+
+        car.printPosition();
     }
 }
