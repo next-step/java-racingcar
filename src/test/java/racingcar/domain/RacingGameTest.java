@@ -9,7 +9,8 @@ public class RacingGameTest {
 
     @BeforeEach
     void setUp() {
-        this.racingGame = new RacingGame(5, 3);
+        GameRole gameRole = new GameRole(1);
+        this.racingGame = new RacingGame(5, 3, gameRole);
     }
 
     @Test

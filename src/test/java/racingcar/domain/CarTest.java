@@ -15,13 +15,12 @@ public class CarTest {
 
     @Test
     void move() {
-        car.move();
+        car.move(1);
     }
 
     @Test
     void printPosition() {
-        car.move();
-
+        car.move(1);
         car.printPosition();
     }
 }
