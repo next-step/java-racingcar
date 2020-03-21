@@ -2,52 +2,55 @@ package calculator;
 
 import calculator.operator.OperatorEnum;
 
+import java.util.ArrayList;
+
 public class Calculator {
 
     private final static String FORMULA_SEPARATION_KEYWROD = " ";
 
-    private String[] formula;
+    private ArrayList<Double> numbers;
+    private ArrayList<OperatorEnum> operators;
 
     public Calculator(String input) {
+        this.numbers = new ArrayList<>();
+        this.operators = new ArrayList<>();
         validateEmpty(input);
-        this.formula = validateInvalidFormula(input);
+        separateFormula(input);
     }
 
     public Double calculate() {
-        double beforeNum = Double.parseDouble(formula[0]);
+        double result = this.numbers.get(0);
 
-        for (int i = 1; i < this.formula.length - 1; i = i + 2) {
-            OperatorEnum operator = OperatorEnum.getOperatorEnumFromKeyword(formula[i]);
-            double afterNum = Double.parseDouble(formula[i + 1]);
-            beforeNum = operator.calculate(beforeNum, afterNum);
+        for (int i = 0; i < operators.size(); i++) {
+            result = operators.get(i).calculate(result, this.numbers.get(i + 1));
         }
-        return beforeNum;
+        return result;
     }
 
-    private String[] validateInvalidFormula(String input) {
+    private void separateFormula(String input) {
         String[] splitInput = input.split(FORMULA_SEPARATION_KEYWROD);
-        for (int i = 1; i <= splitInput.length; i++) {
-            if (i % 2 == 1) {
-                checkNumber(splitInput[i - 1]);
+
+        for (int i = 0; i < splitInput.length; i++) {
+            if (i % 2 == 0) {
+                this.numbers.add(getNumberFromFormula(splitInput[i]));
                 continue;
             }
-            checkOperator(splitInput[i - 1]);
-        }
-        return splitInput;
-    }
-
-    private void checkOperator(String inputWord) {
-        if (!OperatorEnum.isKeyword(inputWord)) {
-            throw new IllegalArgumentException("수식 중 사칙연산 기호가 잘못되었습니다.");
+            this.operators.add(getOperatorFromFormula(splitInput[i]));
         }
     }
 
-    private void checkNumber(String inputWord) {
+    private OperatorEnum getOperatorFromFormula(String inputWord) {
+        return OperatorEnum.getOperatorEnumFromKeyword(inputWord);
+    }
+
+    private double getNumberFromFormula(String inputWord) {
+        double number;
         try {
-            double number = Double.parseDouble(inputWord);
+            number = Double.parseDouble(inputWord);
         } catch (NumberFormatException nfe) {
             throw new IllegalArgumentException("수식 중 숫자가 잘못되었습니다.");
         }
+        return number;
     }
 
     private void validateEmpty(String input) {
@@ -55,6 +58,4 @@ public class Calculator {
             throw new IllegalArgumentException("수식이 비워져 있습니다.");
         }
     }
-
-
 }
