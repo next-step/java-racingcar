@@ -1,29 +1,34 @@
 package calculator;
 
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.IntBinaryOperator;
 import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.toMap;
+
 public enum Operator {
-    PLUS("+", new Plus()),
-    MINUS("-", new Minus()),
-    MULTIPLY("*", new Multiply()),
-    DIVIDE("/", new Divide());
+    PLUS("+", Integer::sum),
+    MINUS("-", (left, right) -> left - right),
+    MULTIPLY("*", (left, right) -> left * right),
+    DIVIDE("/", (left, right) -> (left / right));
 
-    String symbol;
-    Operable operable;
+    private final IntBinaryOperator intBinaryOperator;
+    private final String symbol;
+    private static final Map<String, Operator> OPERATOR_MAP =
+            Stream.of(Operator.values()).collect(toMap(o -> o.symbol, o -> o));
 
-    Operator(String symbol, Operable operable) {
+    Operator(String symbol, IntBinaryOperator intBinaryOperator) {
         this.symbol = symbol;
-        this.operable = operable;
+        this.intBinaryOperator = intBinaryOperator;
     }
 
     public static Operator of(String symbol) {
-        return Stream.of(Operator.values())
-                .filter(operator -> operator.symbol.equals(symbol))
-                .findAny()
+        return Optional.ofNullable(OPERATOR_MAP.get(symbol))
                 .orElseThrow(() -> new IllegalArgumentException("부적절한 기호 입니다."));
     }
 
     public int operate(int leftOp, int rightOp) {
-        return operable.operate(leftOp, rightOp);
+        return intBinaryOperator.applyAsInt(leftOp, rightOp);
     }
 }
