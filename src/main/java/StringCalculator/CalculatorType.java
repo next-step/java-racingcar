@@ -36,7 +36,7 @@ public enum CalculatorType {
     }
 
     private static void validateNumberWhenDivideNumber(final Double number) {
-        if (number == 0) {
+        if (number == 0.0) {
             throw new IllegalArgumentException();
         }
     }
