@@ -1,8 +1,5 @@
 package racingGame.view;
 
-import racingGame.Position;
-import racingGame.Positions;
-
 import java.util.List;
 
 public class ResultView {
@@ -14,28 +11,27 @@ public class ResultView {
     private StringBuilder resultMessage = new StringBuilder(START_TEXT);
 
 
-    public ResultView(List<Positions> result) {
+    public ResultView(List<List<Integer>> result) {
         result.forEach(this::addPosition);
     }
 
-    private void addPosition(Positions positions) {
-        positions.getValue()
-                .forEach(position -> resultMessage
-                        .append(translatePositionText(position))
-                        .append(ENTER));
+    private void addPosition(List<Integer> positions) {
+        positions.forEach(position -> resultMessage
+                .append(translatePositionText(position))
+                .append(ENTER));
         resultMessage.append(ENTER);
     }
 
-    private String translatePositionText(Position position) {
+    private String translatePositionText(Integer position) {
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < position.getValue(); i++) {
+        for (int i = 0; i < position; i++) {
             builder.append(POSITION_TEXT);
         }
         return builder.toString();
     }
 
     public void print() {
-        System.out.println(resultMessage.toString());
+        System.out.print(resultMessage.toString());
     }
 }
 

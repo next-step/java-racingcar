@@ -3,8 +3,6 @@ package racingGame;
 import racingGame.view.InputView;
 import racingGame.view.ResultView;
 
-import java.util.List;
-
 public class RacingGameApplication {
 
     public static void main(String[] args) {
@@ -15,8 +13,7 @@ public class RacingGameApplication {
         racingGame.setParticipateCount(inputView.getParticipateCount());
         racingGame.setGameCount(inputView.getGameCount());
 
-        List<Positions> start = racingGame.start();
-        ResultView resultView = new ResultView(start);
+        ResultView resultView = new ResultView(racingGame.start());
         resultView.print();
     }
 }
