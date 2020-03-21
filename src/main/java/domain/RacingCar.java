@@ -3,7 +3,6 @@ package domain;
 import service.MoveRule;
 
 public class RacingCar {
-
     private Integer position;
     private final MoveRule moveRule;
 

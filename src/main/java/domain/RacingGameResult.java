@@ -7,7 +7,7 @@ public class RacingGameResult {
     private final List<RacingRound> racingRounds;
 
     public RacingGameResult(List<RacingRound> rounds) {
-        if(rounds == null) {
+        if (rounds == null) {
             throw new IllegalArgumentException("round list is null");
         }
         this.racingRounds = rounds;

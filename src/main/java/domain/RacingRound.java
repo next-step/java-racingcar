@@ -2,7 +2,6 @@ package domain;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class RacingRound {
@@ -35,7 +34,8 @@ public class RacingRound {
     private static void validatePositions(List<Integer> carPositions) {
         boolean hasNegativeNumber = carPositions.stream()
                 .anyMatch(position -> position < 0);
-        if(hasNegativeNumber) {
+
+        if (hasNegativeNumber) {
             throw new RuntimeException("car positions must be greater than zero.");
         }
     }

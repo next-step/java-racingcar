@@ -42,6 +42,7 @@ public class RacingCarTests {
         Random random = mock(Random.class);
         given(random.nextInt(anyInt())).willReturn(randomValue);
         RacingCar racingCar = RacingCar.newInstance(new RandomMoveRule(random));
+
         assertThat(racingCar.move()).isEqualTo(expectedPosition);
     }
 
@@ -58,6 +59,7 @@ public class RacingCarTests {
         }
 
         RacingCars racingCars = new RacingCars(cars);
+
         assertThat(racingCars.moveAll()).isEqualTo(expectedRound);
     }
 
