@@ -1,7 +1,5 @@
 package calculator;
 
-import calculator.Calculator.Operator;
-
 public class BinomialExpression {
     private long firstNumber;
     private long secondNumber;

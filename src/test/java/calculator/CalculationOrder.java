@@ -1,7 +1,5 @@
 package calculator;
 
-import calculator.Calculator.Operator;
-
 import java.util.Stack;
 
 public class CalculationOrder {
