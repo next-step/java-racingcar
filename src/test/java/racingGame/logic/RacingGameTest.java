@@ -21,22 +21,20 @@ class RacingGameTest {
 	void moveTest() {
 		assertThat(racingGame.move())
 				.containsAnyOf(0, 1);
-		assertThat(racingGame.getTime())
-				.isEqualTo(1);
 	}
 
 	@Test
-	@DisplayName("여러번 움직였을 때의 움직인 횟수 확인 테스트")
-	void moveCountTest() {
-
+	@DisplayName("여러번 움직였을 때 매번 움직일 때 마다 1칸 전진 또는 제자리 인지 확인 하는 테스트")
+	void moveRepeatTest() {
 		int moveTime = 5;
 
+		int tmpPosition = 0;
 		for (int i = 0; i < moveTime; i++) {
-			racingGame.move();
+			int nextPosition = racingGame.move()[0];
+			assertThat(nextPosition)
+					.isIn(tmpPosition,tmpPosition+1);
+			tmpPosition = nextPosition;
 		}
-
-		assertThat(racingGame.getTime())
-				.isEqualTo(moveTime);
 	}
 
 }

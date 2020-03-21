@@ -3,7 +3,6 @@ package racingGame.logic;
 public class RacingGame {
 	private static final int RANDOM_RANGE = 10;
 	private static final int GO_THRESHOLD = 4;
-	private int time;
 	private int[] carPositions;
 
 	public RacingGame(int cars) {
@@ -14,7 +13,6 @@ public class RacingGame {
 		for (int i = 0; i < carPositions.length; i++) {
 			carPositions[i] = moveCar(carPositions[i]);
 		}
-		time++;
 		return carPositions.clone();
 	}
 
@@ -27,10 +25,6 @@ public class RacingGame {
 
 	private boolean canGo() {
 		return Math.random() * RANDOM_RANGE > GO_THRESHOLD;
-	}
-
-	public int getTime() {
-		return time;
 	}
 
 }
