@@ -1,6 +1,6 @@
 package racingcar.ui;
 
-import racingcar.Constant;
+import racingcar.domain.RacingGameConstant;
 
 import java.util.Scanner;
 
@@ -23,12 +23,12 @@ public class InputView {
     }
 
     private int requestTotalCarCount() {
-        System.out.println(Constant.REQUEST_CAR_COUNT_MESSAGE);
+        System.out.println(RacingGameConstant.REQUEST_CAR_COUNT_MESSAGE);
         return scan();
     }
 
     private int requestTime() {
-        System.out.println(Constant.REQUEST_TRY_TIME_MESSAGE);
+        System.out.println(RacingGameConstant.REQUEST_TRY_TIME_MESSAGE);
         return scan();
     }
 
@@ -38,7 +38,7 @@ public class InputView {
         try {
             return Integer.parseInt(value);
         } catch (Exception e) {
-            throw new IllegalArgumentException(Constant.IS_NOT_A_NUMBER);
+            throw new IllegalArgumentException(RacingGameConstant.IS_NOT_A_NUMBER);
         }
     }
 

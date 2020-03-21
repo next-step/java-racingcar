@@ -11,6 +11,7 @@ public enum Calculator {
     DIVISION((leftNumber, rightNumber) -> leftNumber / rightNumber);
 
     private static final Map<String, Calculator> OPERATORS;
+
     static {
         OPERATORS = new HashMap<>();
         OPERATORS.put("+", Calculator.ADDITION);

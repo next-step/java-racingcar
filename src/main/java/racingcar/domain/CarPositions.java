@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.Constant;
-
 import java.util.List;
 
 public class CarPositions {
@@ -28,14 +26,14 @@ public class CarPositions {
     private void loopCars(int[] carPosition) {
         for (int i : carPosition) {
             writeCarPosition(i);
-            view.append(Constant.CARRIAGE_RETURN);
+            view.append(RacingGameConstant.CARRIAGE_RETURN);
         }
-        view.append(Constant.CARRIAGE_RETURN);
+        view.append(RacingGameConstant.CARRIAGE_RETURN);
     }
 
     private void writeCarPosition(int carPosition) {
         for (int i = 0; i < carPosition; i++) {
-            view.append(Constant.CAR_MARKER);
+            view.append(RacingGameConstant.CAR_MARKER);
         }
     }
 

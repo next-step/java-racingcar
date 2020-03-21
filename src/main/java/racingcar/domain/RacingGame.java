@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.Constant;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -33,7 +31,7 @@ public class RacingGame implements RacingGameRule {
     }
 
     private void forward(int carNumber) {
-        int condition = new Random().nextInt(Constant.RANDOM_LIMIT);
+        int condition = new Random().nextInt(RacingGameConstant.RANDOM_LIMIT);
         if (isForward(condition)) {
             carPosition[carNumber]++;
         }
@@ -41,6 +39,6 @@ public class RacingGame implements RacingGameRule {
 
     @Override
     public boolean isForward(int condition) {
-        return condition >= Constant.APPROVE_CONDITION;
+        return condition >= RacingGameConstant.APPROVE_CONDITION;
     }
 }
