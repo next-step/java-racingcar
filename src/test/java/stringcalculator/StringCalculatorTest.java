@@ -34,4 +34,13 @@ public class StringCalculatorTest {
         assertThat(calculator.operate("1 * 2")).isEqualTo(2);
         assertThat(calculator.operate("1 * 2 * 3")).isEqualTo(6);
     }
+
+    @Test
+    @DisplayName("주어진 문자열에서 숫자들의 곱셈 결과를 리턴한다")
+    public void divideOperationReturnsDivisionOfNumbers() {
+        StringCalculator calculator = new StringCalculator();
+
+        assertThat(calculator.operate("1 / 2")).isEqualTo(1 / 2);
+        assertThat(calculator.operate("1 / 2 / 3")).isEqualTo(1 / 2 / 3);
+    }
 }
