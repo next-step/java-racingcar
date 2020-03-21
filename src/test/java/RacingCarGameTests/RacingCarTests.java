@@ -5,10 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 
-@DisplayName("레이싱 카 객체 테스트")
+@DisplayName("레이싱 카 테스트")
 public class RacingCarTests {
 
     @DisplayName("차 생성 테스트")
