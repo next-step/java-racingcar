@@ -9,7 +9,7 @@ public class Positions {
         this.positions = positions;
     }
 
-    public List<Position> getPositions() {
+    public List<Position> getValue() {
         return positions;
     }
 }
