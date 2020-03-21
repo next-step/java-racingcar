@@ -4,13 +4,15 @@ import static stringcalculator.Operation.*;
 
 public class StringCalculator {
 
+    private static final String DELIMITER = " ";
+
     public double operate(String expression) {
         validate(expression);
 
         double acc = 0;
         Operation operator = PLUS;
 
-        String[] values = expression.split(" ");
+        String[] values = expression.split(DELIMITER);
 
         for (String s : values) {
             if (Operation.isOperator(s)) {
