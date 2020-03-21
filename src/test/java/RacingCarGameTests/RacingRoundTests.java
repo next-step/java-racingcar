@@ -1,7 +1,6 @@
 package RacingCarGameTests;
 
 import domain.RacingRound;
-import domain.StringOperation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -9,7 +8,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 @DisplayName("레이싱 게임 라운드 테스트")
 public class RacingRoundTests {
