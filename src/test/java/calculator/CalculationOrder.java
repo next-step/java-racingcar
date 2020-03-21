@@ -26,6 +26,12 @@ public class CalculationOrder {
 
     }
 
+    private void verifyInputs(String[] inputs) {
+        if ((inputs.length - BINOMIAL_EXPRESSION_SIZE) % ADDITIONAL_INPUT_SIZE != 0) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private void addOperationStack(String[] inputs) {
         for (int i = inputs.length - EVEN_NUMBER; i >= 0; i = i - INDEX_INTERVAL) {
             operatorStack.push(Operator.findOperatorByValue(inputs[i]));
@@ -42,12 +48,6 @@ public class CalculationOrder {
         try {
             return Long.parseLong(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void verifyInputs(String[] inputs) {
-        if ((inputs.length - BINOMIAL_EXPRESSION_SIZE) % ADDITIONAL_INPUT_SIZE != 0) {
             throw new IllegalArgumentException();
         }
     }
