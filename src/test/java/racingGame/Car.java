@@ -1,10 +1,14 @@
 package racingGame;
 
 public class Car {
+
+    private int position;
+
     public void move() {
+        position++;
     }
 
     public int getPosition() {
-        return 0;
+        return position;
     }
 }
