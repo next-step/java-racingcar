@@ -21,6 +21,10 @@ public enum Operation {
     },
     DIVISION("/") {
         public int operate(int operand1, int operand2) throws CalculateException {
+            if (operand2 == 0) {
+                throw new CalculateException();
+            }
+
             return operand1 / operand2;
         }
     };
