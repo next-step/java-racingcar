@@ -46,15 +46,6 @@ class StringCalculatorTest {
         assertThat(calculator.calculate(textInput)).isEqualTo(2);
     }
 
-    @DisplayName(value = "숫자를 0으로 나누었을때 IllegalArgumentException 이 발생")
-    @ParameterizedTest
-    @ValueSource(strings = {"4 / 0"})
-    void divideByZero(final String textInput) {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> calculator.calculate(textInput));
-        ;
-    }
-
     @DisplayName(value = "복합적으로 들어있는 수식의 결과를 반환한다.")
     @ParameterizedTest
     @ValueSource(strings = {"2 + 3 * 4 / 2"})
