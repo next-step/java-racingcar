@@ -55,4 +55,12 @@ public class StringCalculatorTest {
         assertThatExceptionOfType(ArithmeticException.class)
                 .isThrownBy(() -> calculator.operate("1.1 / 0.0"));
     }
+
+    @Test
+    @DisplayName("주어진 문자열의 연산 결과를 리턴한다")
+    public void operateStringReturnsOperationOfNumbers() {
+        StringCalculator calculator = new StringCalculator();
+
+        assertThat(calculator.operate("1 + 3 / 4 * 3")).isEqualTo(3);
+    }
 }
