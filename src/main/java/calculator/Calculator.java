@@ -12,7 +12,9 @@ public class Calculator {
     private String[] operandAndOperators;
 
     public Calculator(String[] operandAndOperators) {
+        validateOperrandAndOperator(operandAndOperators);
         this.operandAndOperators = operandAndOperators;
+
     }
 
     /**
@@ -30,6 +32,16 @@ public class Calculator {
     public void validateOperator(String operator) {
         if (!OPERATOR_PATTERN.matcher(operator).find()) {
             throw new IllegalArgumentException("연산자가 사칙연산이 아님");
+        }
+    }
+
+    private void validateOperrandAndOperator(String[] operandAndOperators) {
+        for (int i = 0; i < operandAndOperators.length; i++) {
+            if (i % 2 == 0) {
+                validateOperand(operandAndOperators[i]);
+            } else {
+                validateOperator(operandAndOperators[i]);
+            }
         }
     }
 
