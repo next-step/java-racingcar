@@ -9,12 +9,10 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOf
 class RacingGameTest {
 
     private RacingGame racingGame;
-    private RandomNumber randomNumber;
 
     @BeforeEach
     void setUp() {
         racingGame = new RacingGame();
-        randomNumber = new RandomNumber();
     }
 
     @Test
@@ -39,6 +37,6 @@ class RacingGameTest {
     void start() {
         racingGame.setParticipateCount(3);
         racingGame.setGameCount(5);
-        System.out.print(racingGame.start(randomNumber));
+        System.out.print(racingGame.start());
     }
 }

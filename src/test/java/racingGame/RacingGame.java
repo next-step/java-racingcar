@@ -32,7 +32,8 @@ public class RacingGame {
         }
     }
 
-    public String start(RandomNumber randomNumber) {
+    public String start() {
+        RandomNumber randomNumber = new RandomNumber();
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < gameCount; i++) {
             cars.start(randomNumber);
