@@ -3,6 +3,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CalculatorTest {
 
@@ -33,4 +34,19 @@ public class CalculatorTest {
     void divide(String str, double expected) {
         assertThat(Calculator.calculate(str)).isEqualTo(expected);
     }
+
+    @DisplayName("0으로 나눌 때 에러")
+    @ParameterizedTest
+    @CsvSource({"1 / 0"})
+    void divideZeroError(String str) {
+        assertThatIllegalArgumentException().isThrownBy(() -> Calculator.calculate(str));
+    }
+
+    @DisplayName("유효하지 않은 연산자")
+    @ParameterizedTest
+    @CsvSource({"1 ( 0", "1 @ 2", "1 2 3"})
+    void invalidOperator(String str) {
+        assertThatIllegalArgumentException().isThrownBy(() -> Calculator.calculate(str));
+    }
+
 }

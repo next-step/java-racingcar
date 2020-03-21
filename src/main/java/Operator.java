@@ -13,6 +13,9 @@ public enum Operator {
         }
     }, DIVIDE("/") {
         public double apply(double x, double y) {
+            if (y == 0) {
+                throw new IllegalArgumentException("cannot be divided zero");
+            }
             return x / y;
         }
     };
