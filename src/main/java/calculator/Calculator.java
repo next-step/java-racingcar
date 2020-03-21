@@ -18,7 +18,7 @@ public class Calculator {
     /**
      * 피연산자가 숫자인지 검증
      */
-    public static void validateOperand(String operand) {
+    public void validateOperand(String operand) {
         if (!OPERAND_PATTERN.matcher(operand).find()) {
             throw new IllegalArgumentException("피연산자가 숫자가 아님");
         }
@@ -27,7 +27,7 @@ public class Calculator {
     /**
      * 연산자가 사칙연산인지 체크 [+, -, *, /]
      */
-    public static void validateOperator(String operator) {
+    public void validateOperator(String operator) {
         if (!OPERATOR_PATTERN.matcher(operator).find()) {
             throw new IllegalArgumentException("연산자가 사칙연산이 아님");
         }
@@ -46,7 +46,7 @@ public class Calculator {
     /**
      * 피연산자 2개, 연산자 1개를 받아 계산후 리턴
      */
-    public static double calculate(double operand1, double operand2, String operator) {
+    public double calculate(double operand1, double operand2, String operator) {
         if (ArithmeticOperation.PLUS.isEqusls(operator)) {
             return plus(operand1, operand2);
         }
@@ -66,19 +66,19 @@ public class Calculator {
         return 0;
     }
 
-    public static double plus(double operand1, double operand2) {
+    public double plus(double operand1, double operand2) {
         return operand1 + operand2;
     }
 
-    public static double minus(double operand1, double operand2) {
+    public double minus(double operand1, double operand2) {
         return operand1 - operand2;
     }
 
-    public static double multiplication(double operand1, double operand2) {
+    public double multiplication(double operand1, double operand2) {
         return operand1 * operand2;
     }
 
-    public static double division(double operand1, double operand2) {
+    public double division(double operand1, double operand2) {
         return operand1 / operand2;
     }
 }
