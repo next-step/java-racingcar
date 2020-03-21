@@ -20,7 +20,7 @@ public class InputStringTest {
     @ParameterizedTest
     @MethodSource("blankStrings")
     void emptyStringCheckTest(final String str) {
-        assertThatThrownBy(()->{
+        assertThatThrownBy(() -> {
             new InputString(str);
         }).isInstanceOf(IllegalArgumentException.class);
     }
@@ -30,13 +30,13 @@ public class InputStringTest {
     void splitInputString() {
         final InputString inputString = new InputString("2 + 3");
         assertThat(inputString.getStringList())
-                .containsExactly("2","+","3");
+                .containsExactly("2", "+", "3");
     }
 
     @DisplayName("최소 연산 배열 개수 미만 에러 발생")
     @Test
     void checkMinimumArray() {
-        assertThatThrownBy(()->{
+        assertThatThrownBy(() -> {
             new InputString("2 +");
         }).isInstanceOf(IllegalArgumentException.class);
     }
