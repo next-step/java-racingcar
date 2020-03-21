@@ -22,9 +22,15 @@ public class RacingGame {
         ResultView.printResult();
 
         for (int i = 0; i < time; i++) {
-            cars.forEach(car -> ResultView.printPosition(car.move()));
-
-            ResultView.printNewLine();
+            moveCars();
         }
+    }
+
+    private void moveCars() {
+        for (Car car : cars) {
+            ResultView.printPosition(car.move());
+        }
+
+        ResultView.printNewLine();
     }
 }
