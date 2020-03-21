@@ -1,6 +1,5 @@
 package calculator;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,16 +11,17 @@ public class Calculator {
     private static final String EXCEPTION_MSG_INVALID_OPERATION = "잘못된 연산자를 입력하였습니다!";
     private static final String EXCEPTION_MSG_INVALID_OPERAND = "피연산자는 숫자여야 합니다!";
 
-    public int calculate(String s) {
-        return Integer.MAX_VALUE;
-    }
-
-    private List<String> getInputList() {
-        String input = InputView.getInput();
+    public int calculate(String input) {
         checkValidInput(input);
         checkValidInputFormat(input);
 
-        return Arrays.asList(input.split(INPUT_DELIMITER));
+        String[] inputs = input.split(INPUT_DELIMITER);
+        int result = Integer.parseInt(inputs[0]);
+        for (int operationIdx = 1; operationIdx <= inputs.length - 2; operationIdx+=2) {
+            result = Operation.getOperationByValue(inputs[operationIdx]).operate(result, Integer.parseInt(inputs[operationIdx + 1]));
+        }
+
+        return result;
     }
 
     public void checkValidInput(String input) {
@@ -44,10 +44,17 @@ public class Calculator {
     }
 
     private void checkValidFormat(String input, boolean isOperation) {
-        if (isOperation && !Operation.isSupportedOperation(input)) {
-            throw new IllegalArgumentException(EXCEPTION_MSG_INVALID_OPERATION);
+        if (!isOperation) {
+            checkValidOperand(input);
+            return;
         }
 
+        if (!Operation.isSupportedOperation(input)) {
+            throw new IllegalArgumentException(EXCEPTION_MSG_INVALID_OPERATION);
+        }
+    }
+
+    private void checkValidOperand(String input) {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
