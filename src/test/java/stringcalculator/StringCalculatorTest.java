@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class StringCalculatorTest {
 
@@ -40,7 +41,7 @@ public class StringCalculatorTest {
     public void divideOperationReturnsDivisionOfNumbers() {
         StringCalculator calculator = new StringCalculator();
 
-        assertThat(calculator.operate("1 / 2")).isEqualTo(1 / 2);
-        assertThat(calculator.operate("1 / 2 / 3")).isEqualTo(1 / 2 / 3);
+        assertThat(calculator.operate("1 / 2")).isEqualTo(1.0 / 2.0);
+        assertThat(calculator.operate("1 / 2 / 3")).isEqualTo(1.0 / 2.0 / 3.0);
     }
 }
