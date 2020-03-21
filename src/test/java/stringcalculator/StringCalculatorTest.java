@@ -71,4 +71,13 @@ public class StringCalculatorTest {
         assertThatIllegalArgumentException().isThrownBy(() ->
                 calculator.operate("1 & 3 ^ 3"));
     }
+
+    @Test
+    @DisplayName("입력 값이 공백이나 null일 경우 IllegalArgumentException가 발생한다")
+    public void inputIsInvalidThrowsIllegalArgumentException() {
+        StringCalculator calculator = new StringCalculator();
+
+        assertThatIllegalArgumentException().isThrownBy(() ->
+                calculator.operate(" "));
+    }
 }
