@@ -28,7 +28,8 @@ public class RacingGame {
 
     private void moveCars() {
         for (Car car : cars) {
-            ResultView.printPosition(car.move());
+            car.move();
+            car.printPosition();
         }
 
         ResultView.printNewLine();

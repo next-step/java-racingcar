@@ -1,5 +1,8 @@
 package racingcar.domain;
 
+import lombok.Getter;
+import racingcar.view.ResultView;
+
 import java.util.Random;
 
 public class Car {
@@ -8,12 +11,14 @@ public class Car {
 
     private int position;
 
-    public int move() {
+    public void move() {
         if (advance()) {
             this.position++;
         }
+    }
 
-        return position;
+    public void printPosition() {
+        ResultView.printPosition(position);
     }
 
     private boolean advance() {
