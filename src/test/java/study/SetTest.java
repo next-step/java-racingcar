@@ -53,3 +53,4 @@ public class SetTest {
         assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 }
+

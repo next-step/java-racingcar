@@ -32,6 +32,4 @@ class NumberVoTest {
         //then
         assertThat(vo.isGreaterThan4()).isEqualTo(expect);
     }
-
-
 }

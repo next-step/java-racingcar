@@ -30,6 +30,4 @@ public class NumberVo {
         }
         return false;
     }
-
-
 }
