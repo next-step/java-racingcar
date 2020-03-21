@@ -15,11 +15,10 @@ public class ResultView {
         resultCarPositions = new String[carPositions.length];
     }
 
-    public void settingresultCarPositions() {
-        int length = carPositions.length;
-        IntStream.range(0, length).forEach(i -> {
+    public void setCarPositions() {
+        for (int i = 0; i < carPositions.length; i++) {
             appendDash(i);
-        });
+        }
     }
 
     public void appendDash(int index) {

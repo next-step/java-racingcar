@@ -1,14 +1,13 @@
 package step3;
 
-import java.util.Arrays;
-import java.util.Random;
-import java.util.stream.IntStream;
-
 public class RacingGame {
 
     private int time;
     private int[] carPositions;
-    private Random random = new Random();
+
+    private static final int FORWARD_STATUS_VALUE = 4;
+    private static final int FORWARD_VALUE = 1;
+    private static final int STOP_VALUE = 0;
 
     public RacingGame() {
     }
@@ -18,31 +17,35 @@ public class RacingGame {
         carPositions = new int[carCount];
     }
 
-    public void moveByRepeatCount() {
-        IntStream.range(0, time).forEach(i -> {
-            carPositions = move();
-        });
+    public void moveByRepeatCount(int[] totalRandomNumber) {
+        int length = carPositions.length;
+        int[] randomNumber = new int[length];
+
+        for (int i = 0; i < totalRandomNumber.length; i++) {
+            randomNumber[i % length] = totalRandomNumber[i];
+            if ((i + 1) % length == 0) {
+                carPositions = move(randomNumber);
+                randomNumber = new int[length];
+            }
+        }
     }
 
-    public int[] move() {
-        IntStream carPositionsStream = Arrays.stream(carPositions);
-        return carPositionsStream.map(carPositions -> carPositions += findOutMove()).toArray();
+    public int[] move(int[] randomNumber) {
+        for (int i = 0; i < carPositions.length; i++) {
+            carPositions[i] += findOutMove(randomNumber[i]);
+        }
+        return carPositions;
     }
 
-    public int findOutMove() {
-        int randomNumber = randomNumber();
+    public int findOutMove(int randomNumber) {
         return forwardStatus(randomNumber);
     }
 
     public int forwardStatus(int randomNumber) {
-        if (randomNumber < 4) {
-            return 0;
+        if (randomNumber < FORWARD_STATUS_VALUE) {
+            return STOP_VALUE;
         }
-        return 1;
-    }
-
-    public int randomNumber() {
-        return random.nextInt(10);
+        return FORWARD_VALUE;
     }
 
     public int[] getCarPositions() {
