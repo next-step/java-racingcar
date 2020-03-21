@@ -4,9 +4,9 @@ public class ResultView {
     private static final String CAR_DISPLAY = "-";
     private RacingGame racingGame;
 
-    public ResultView(RacingGameVo racingGameData) {
+    public ResultView(RacingGameVo racingGameVo) {
         this.racingGame =
-                new RacingGame(racingGameData, new RandomMovableDistance());
+                new RacingGame(racingGameVo, new RandomMovableDistance());
     }
 
     public void printResult() {

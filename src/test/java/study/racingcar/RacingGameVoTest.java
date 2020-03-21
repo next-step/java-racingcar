@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-public class RacingGameDataTest {
+public class RacingGameVoTest {
     @DisplayName("차 댓수와 시도 횟수가 음수여서는 안된다.")
     @ParameterizedTest
     @CsvSource(value = {"-1,1", "1,-1"})
