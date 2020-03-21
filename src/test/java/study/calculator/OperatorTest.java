@@ -65,7 +65,7 @@ public class OperatorTest {
 
     private static Stream<Arguments> provideOperators() {
         return Stream.of(
-                Arguments.of("+", Operator.PLUS), // null strings should be
+                Arguments.of("+", Operator.PLUS),
                 Arguments.of("-", Operator.MINUS),
                 Arguments.of("/", Operator.DIVIDE),
                 Arguments.of("*", Operator.MULTIPLY),
