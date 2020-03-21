@@ -10,13 +10,13 @@ import java.util.List;
 public class ResultView {
     private static final char DASH = '-';
 
-    public static void racingGameStart(int gameCount, List<Car> cars) {
+    protected static void racingGameStart(int gameCount, List<Car> cars) {
         for (int i = 0; i < gameCount; i++) {
             playOneRound(cars);
         }
     }
 
-    public static void playOneRound(List<Car> cars) {
+    protected static void playOneRound(List<Car> cars) {
         for (Car car : cars) {
             car.moveCar();
             System.out.println(drawDash(car.getMoveRange()));
@@ -25,7 +25,7 @@ public class ResultView {
         System.out.println("");
     }
 
-    public static String drawDash(int repeat) {
+    protected static String drawDash(int repeat) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < repeat; i++) {
             sb.append(DASH);

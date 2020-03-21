@@ -14,7 +14,7 @@ public class InputView {
     private int gameCount;
     private ArrayList<Car> cars = new ArrayList<>();
 
-    public InputView(String carCount, String gameCount) {
+    protected InputView(String carCount, String gameCount) {
         validateInputData(carCount, gameCount);
         createRacingCarList();
     }
@@ -40,11 +40,11 @@ public class InputView {
         }
     }
 
-    public int getGameCount() {
+    protected int getGameCount() {
         return gameCount;
     }
 
-    public ArrayList<Car> getCars() {
+    protected ArrayList<Car> getCars() {
         return cars;
     }
 }

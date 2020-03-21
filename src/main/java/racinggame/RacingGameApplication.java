@@ -2,6 +2,9 @@ package racinggame;
 
 import java.util.Scanner;
 
+/**
+ * racing game 메인
+ */
 public class RacingGameApplication {
 
     public static void main(String[] args) {
@@ -15,9 +18,6 @@ public class RacingGameApplication {
         InputView inputView = new InputView(carCount, gameCount);
         ResultView.racingGameStart(inputView.getGameCount(), inputView.getCars());
 
-
         System.out.println(carCount + "  " + gameCount);
     }
-
-
 }

@@ -9,24 +9,24 @@ public class Car {
     private int carNumber;
     private int moveRange = 0;
 
-    public Car(int carNumber) {
+    protected Car(int carNumber) {
         this.carNumber = carNumber;
     }
 
     /**
      * 랜던값이 4보다 크면 자동차 한칸 이동
      */
-    public void moveCar() {
+    protected void moveCar() {
         if (NumberVo.isGreaterThan4((NumberVo.createRandomNumber()))) {
             this.moveRange++;
         }
     }
 
-    public int getCarNumber() {
+    protected int getCarNumber() {
         return carNumber;
     }
 
-    public int getMoveRange() {
+    protected int getMoveRange() {
         return moveRange;
     }
 }

@@ -16,14 +16,14 @@ public class NumberVo {
     /**
      * 0~9 사이의 random 값을 구하는 기능
      */
-    public static int createRandomNumber() {
+    protected static int createRandomNumber() {
         return new Random().nextInt(10);
     }
 
     /**
      * 값이 4 이상인치 체크
      */
-    public static boolean isGreaterThan4(int num) {
+    protected static boolean isGreaterThan4(int num) {
         if (num >= 4) {
             return true;
         }
@@ -33,7 +33,7 @@ public class NumberVo {
     /**
      * 값이 1 이상인치 체크
      */
-    public static boolean isGreaterThan1(int num) {
+    protected static boolean isGreaterThan1(int num) {
         if (num >= 1) {
             return true;
         }
@@ -43,7 +43,7 @@ public class NumberVo {
     /**
      * 값이 정수 인지 체크 및 반환
      */
-    public static int validateInteger(String s) {
+    protected static int validateInteger(String s) {
         try {
             return Integer.parseInt(s);
         } catch (NumberFormatException e) {
