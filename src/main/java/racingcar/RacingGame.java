@@ -5,6 +5,7 @@ import racingcar.car.MovingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class RacingGame {
     private static final int INT_ZERO = 0;
@@ -13,27 +14,29 @@ public class RacingGame {
     private List<Car> cars = new ArrayList<>();
     private MovingStrategy movingStrategy;
 
-    public RacingGame(int numberOfCar, MovingStrategy movingStrategy) {
-        createCar(numberOfCar);
+    public RacingGame(String[] names, MovingStrategy movingStrategy) {
+        createCar(names);
         this.movingStrategy = movingStrategy;
     }
 
-    private void createCar(int numberOfCar) {
-        if (numberOfCar <= INT_ZERO) {
+    private void createCar(String[] names) {
+        if (Objects.isNull(names) || names.length <= INT_ZERO) {
             throw new IllegalArgumentException("자동차의 개수는 1보다 커야 합니다.");
         }
-        for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car());
+        for (String name : names) {
+            cars.add(new Car(name));
         }
     }
 
-    public List<Car> execute() {
+    public RacingScore execute() {
+        List<Car> executedCars = new ArrayList<>();
         for (Car car : cars) {
             car.move(movingStrategy);
+            executedCars.add(car.clone());
         }
         time++;
 
-        return cars;
+        return new RacingScore(executedCars);
     }
 
     public int getTime() {
