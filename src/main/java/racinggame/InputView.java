@@ -12,10 +12,11 @@ import java.util.ArrayList;
 public class InputView {
     private int carCount;
     private int gameCount;
-    private ArrayList<Integer> cars = new ArrayList<>();
+    private ArrayList<Car> cars = new ArrayList<>();
 
     public InputView(String carCount, String gameCount) {
         validateInputData(carCount, gameCount);
+        createRacingCarList();
     }
 
     /**
@@ -30,7 +31,16 @@ public class InputView {
         }
     }
 
-    public ArrayList<Integer> getCars() {
+    /**
+     * 입력받은 자동차수 값을 기준으로 List<car> add
+     */
+    private void createRacingCarList() {
+        for (int i = 0; i < carCount; i++) {
+            cars.add(new Car(i));
+        }
+    }
+
+    public ArrayList<Car> getCars() {
         return cars;
     }
 }
