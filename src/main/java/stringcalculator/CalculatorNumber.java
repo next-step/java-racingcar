@@ -1,11 +1,11 @@
 package stringcalculator;
 
+import java.util.Objects;
+
+import static stringcalculator.OperatorType.*;
+
 public class CalculatorNumber {
     private static final String OPERATOR_GROUP = "+-*/";
-    private static final String PLUS_OPERATOR = "+";
-    private static final String MINUS_OPERATOR = "-";
-    private static final String MULTIPLY_OPERATOR = "*";
-    private static final String DIVIDE_OPERATOR = "/";
     private static final String ZERO_STRING = "0";
     private static final int NEXT_INDEX = 1;
 
@@ -21,20 +21,21 @@ public class CalculatorNumber {
 
     public double calculate() {
         validateOperator();
+        String operator = findOperator();
 
-        if (findOperator().equals(PLUS_OPERATOR)) {
+        if (PLUS_OPERATOR.isEqual(operator)) {
             return plus();
         }
 
-        if (findOperator().equals(MINUS_OPERATOR)) {
+        if (MINUS_OPERATOR.isEqual(operator)) {
             return minus();
         }
 
-        if (findOperator().equals(MULTIPLY_OPERATOR)) {
+        if (MULTIPLY_OPERATOR.isEqual(operator)) {
             return multiply();
         }
 
-        if (findOperator().equals(DIVIDE_OPERATOR)) {
+        if (DIVIDE_OPERATOR.isEqual(operator)) {
             return divide();
         }
 
@@ -42,7 +43,11 @@ public class CalculatorNumber {
     }
 
     private String findOperator() {
-        return inputDatas[index];
+        String operator = inputDatas[index];
+        if (Objects.isNull(operator)) {
+            throw new IllegalArgumentException("연산자는 null 이 될 수 없습니다.");
+        }
+        return operator;
     }
 
     private void validateOperator() {

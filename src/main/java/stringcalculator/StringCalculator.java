@@ -25,7 +25,7 @@ public class StringCalculator {
         }
     }
 
-    public Double calculate() {
+    public double calculate() {
         String[] inputDatas = input.split(DELIMITER);
 
         double sum = Double.parseDouble(inputDatas[INT_ZERO]);
