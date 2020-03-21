@@ -34,8 +34,8 @@ class RacingGameTest {
     @CsvSource(value = {"1 : false", "2 : false", "3 : false", "4 : true"}, delimiter = ':')
     void RacingCarForwardOnConditionGraterThanOrEqualForTest(int condition, boolean expected) {
 
-        FakeRacingGame fakeRacingGame = new FakeRacingGame();
-        boolean forwardCondition = fakeRacingGame.isForward(condition);
+        RacingGame racingGame = new RacingGame(1,1);
+        boolean forwardCondition = racingGame.isForward(condition);
 
         assertThat(forwardCondition).isEqualTo(expected);
     }
