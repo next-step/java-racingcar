@@ -47,6 +47,6 @@ public class SetTest {
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true, 4:false"}, delimiter = ':')
     void isExpectedByCsv(int input, boolean expected) {
-        assertThat(expected).isEqualTo(expected);
+        assertThat(input).isEqualTo(expected);
     }
 }
