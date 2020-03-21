@@ -11,8 +11,9 @@ public class RacingGameDataTest {
     @ParameterizedTest
     @CsvSource(value = {"-1,1", "1,-1"})
     void failToInit(int numberOfCar, int time) {
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            new RacingGameData(numberOfCar, time);
-        });
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    new RacingGameVo(numberOfCar, time);
+                }).withMessage("차 댓수와 시도 횟수는 0 이상이여야 합니다.");
     }
 }
