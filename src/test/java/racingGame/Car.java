@@ -3,7 +3,7 @@ package racingGame;
 public class Car {
 
     private Condition condition = new Condition();
-    private int position;
+    private Position position = new Position();
 
     public void start(RandomNumber randomNumber) {
         condition.init(randomNumber);
@@ -13,10 +13,10 @@ public class Car {
     }
 
     public void move() {
-        position++;
+        position.add();
     }
 
-    public int getPosition() {
-        return position;
+    public String getPositionView() {
+        return position.getView();
     }
 }
