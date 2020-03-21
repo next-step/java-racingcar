@@ -4,8 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class NumberVoTest {
 
@@ -31,5 +33,34 @@ class NumberVoTest {
 
         //then
         assertThat(result).isEqualTo(expect);
+    }
+
+    @DisplayName("값이 1 이상이면 true")
+    @ParameterizedTest
+    @CsvSource(value = {"-1:false", "0:false", "2:true", "4:true", "6:true", "10:true"}, delimiter = ':')
+    public void isGreaterThan1(int num, boolean expect) throws Exception {
+        //when
+        boolean result = NumberVo.isGreaterThan1(num);
+
+        //then
+        assertThat(result).isEqualTo(expect);
+    }
+
+    @DisplayName("입력값이 정수인지 : success")
+    @ParameterizedTest
+    @CsvSource(value = {"1:1", "2:2", "100:100"}, delimiter = ':')
+    public void validateInteger_success(String input, int expect) throws Exception {
+        //then
+        assertThat(NumberVo.validateInteger(input)).isEqualTo(expect);
+    }
+
+    @DisplayName("입력값이 정수인지 : fail")
+    @ParameterizedTest
+    @ValueSource(strings = {"a", "@", "3.3"})
+    public void validateInteger_fail(String input) throws Exception {
+        //then
+        assertThatThrownBy(() -> {
+            NumberVo.validateInteger(input);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 }
