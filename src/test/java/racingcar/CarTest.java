@@ -2,12 +2,15 @@ package racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.car.Car;
 import racingcar.car.RandomMovingStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class CarTest {
     private static final int ZERO = 0;
@@ -15,7 +18,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car("dongchul");
     }
 
     @DisplayName("자동차 항상 움직이는 경우")
@@ -46,5 +49,12 @@ class CarTest {
             car.move(new RandomMovingStrategy());
         }
         assertThat(car.getPosition()).isBetween(ZERO, movingCount);
+    }
+
+    @DisplayName("자동차의 이름이 Null이거나 없을때 생성 실패")
+    @ParameterizedTest
+    @NullAndEmptySource
+    void createFailByCarname(String name) {
+        assertThatIllegalArgumentException().isThrownBy(() -> new Car(name));
     }
 }
