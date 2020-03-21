@@ -9,7 +9,7 @@ public class ResultView {
 
     public static void printResultView(int carPosition) {
         for (int i = 0; i < carPosition; i++) {
-            System.out.printf("-");
+            System.out.printf(VIEW);
         }
     }
 }
