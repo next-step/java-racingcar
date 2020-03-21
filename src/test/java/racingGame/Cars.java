@@ -1,6 +1,7 @@
 package racingGame;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private List<Car> cars;
@@ -13,9 +14,10 @@ public class Cars {
         cars.forEach(car -> car.start(randomNumber));
     }
 
-    public String getPositionView() {
-        StringBuilder result = new StringBuilder();
-        cars.forEach(car -> result.append(car.getPositionView()).append("\n"));
-        return result.toString();
+    public Positions getPositions() {
+        List<Position> positionList = cars.stream()
+                .map(Car::getPosition)
+                .collect(Collectors.toList());
+        return new Positions(positionList);
     }
 }

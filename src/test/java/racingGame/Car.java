@@ -16,7 +16,7 @@ public class Car {
         position.add();
     }
 
-    public String getPositionView() {
-        return position.getView();
+    public Position getPosition() {
+        return position;
     }
 }

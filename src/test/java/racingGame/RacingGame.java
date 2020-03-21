@@ -32,13 +32,13 @@ public class RacingGame {
         }
     }
 
-    public String start() {
+    public List<Positions> start() {
         RandomNumber randomNumber = new RandomNumber();
-        StringBuilder result = new StringBuilder();
+        List<Positions> positionsList = new ArrayList<>();
         for (int i = 0; i < gameCount; i++) {
             cars.start(randomNumber);
-            result.append(cars.getPositionView()).append("\n");
+            positionsList.add(cars.getPositions());
         }
-        return result.toString();
+        return positionsList;
     }
 }
