@@ -1,6 +1,5 @@
 package calculator;
 
-import calculator.operator.Operator;
 import calculator.operator.OperatorEnum;
 
 public class Calculator {
@@ -18,7 +17,7 @@ public class Calculator {
         double beforeNum = Double.parseDouble(formula[0]);
 
         for (int i = 1; i < this.formula.length - 1; i = i + 2) {
-            Operator operator = OperatorEnum.getOperator(formula[i]);
+            OperatorEnum operator = OperatorEnum.getOperatorEnumFromKeyword(formula[i]);
             double afterNum = Double.parseDouble(formula[i + 1]);
             beforeNum = operator.calculate(beforeNum, afterNum);
         }
