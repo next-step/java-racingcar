@@ -1,14 +1,11 @@
 package calculator;
 
 import calculator.operator.Operator;
-import calculator.operator.OperatorFactory;
-
-import java.util.Arrays;
+import calculator.operator.OperatorEnum;
 
 public class Calculator {
 
     private final static String FORMULA_SEPARATION_KEYWROD = " ";
-    private final static String[] OPERATOR_KEWORDS = {"+", "-", "*", "/"};
 
     private String[] formula;
 
@@ -21,7 +18,7 @@ public class Calculator {
         double beforeNum = Double.parseDouble(formula[0]);
 
         for (int i = 1; i < this.formula.length - 1; i = i + 2) {
-            Operator operator = OperatorFactory.getOperator(formula[i]);
+            Operator operator = OperatorEnum.getOperator(formula[i]);
             double afterNum = Double.parseDouble(formula[i + 1]);
             beforeNum = operator.calculate(beforeNum, afterNum);
         }
@@ -41,7 +38,7 @@ public class Calculator {
     }
 
     private void checkOperator(String inputWord) {
-        if (!Arrays.stream(OPERATOR_KEWORDS).anyMatch(inputWord::equals)) {
+        if (!OperatorEnum.isKeyword(inputWord)) {
             throw new IllegalArgumentException("수식 중 사칙연산 기호가 잘못되었습니다.");
         }
     }
