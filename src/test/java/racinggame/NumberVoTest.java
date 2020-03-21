@@ -26,10 +26,10 @@ class NumberVoTest {
     @ParameterizedTest
     @CsvSource(value = {"-1:false", "0:false", "2:false", "4:true", "6:true", "10:true"}, delimiter = ':')
     public void isGreaterThan4(int num, boolean expect) throws Exception {
-        //given
-        NumberVo vo = new NumberVo(num);
+        //when
+        boolean result = NumberVo.isGreaterThan4(num);
 
         //then
-        assertThat(vo.isGreaterThan4()).isEqualTo(expect);
+        assertThat(result).isEqualTo(expect);
     }
 }
