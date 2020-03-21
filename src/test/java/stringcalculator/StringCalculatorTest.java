@@ -44,4 +44,13 @@ public class StringCalculatorTest {
         assertThat(calculator.operate("1 / 2")).isEqualTo(1.0 / 2.0);
         assertThat(calculator.operate("1 / 2 / 3")).isEqualTo(1.0 / 2.0 / 3.0);
     }
+
+    @Test
+    @DisplayName("나눗셈 연산에서 0으로 나눌 때 ArithmeticException이 발생한다")
+    public void divideByZeroThrowArithmeticException() {
+        StringCalculator calculator = new StringCalculator();
+
+        assertThatExceptionOfType(ArithmeticException.class)
+                .isThrownBy(() -> calculator.operate("1 / 0"));
+    }
 }
