@@ -16,13 +16,10 @@ public class RacingCar {
         return new RacingCar(0, moveRule);
     }
 
-    public void move() {
+    public Integer move() {
         if (moveRule.isMovable()) {
             position++;
         }
-    }
-
-    public Integer getPosition() {
         return position;
     }
 }

@@ -37,8 +37,7 @@ public class RacingCarTests {
     public void moveCarTest(int randomValue, int expectedPosition) {
         given(random.nextInt(anyInt())).willReturn(randomValue);
         RacingCar racingCar = RacingCar.newInstance(new RandomMoveRule(random));
-        racingCar.move();
-        assertThat(racingCar.getPosition()).isEqualTo(expectedPosition);
+        assertThat(racingCar.move()).isEqualTo(expectedPosition);
     }
 
 }
