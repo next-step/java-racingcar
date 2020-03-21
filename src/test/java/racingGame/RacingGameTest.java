@@ -35,8 +35,8 @@ class RacingGameTest {
 
     @Test
     void start() {
-        racingGame.setParticipateCount(3);
-        racingGame.setGameCount(5);
+        racingGame.setParticipateCount(1);
+        racingGame.setGameCount(3);
         System.out.print(racingGame.start());
     }
 }

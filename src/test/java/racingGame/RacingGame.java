@@ -32,13 +32,13 @@ public class RacingGame {
         }
     }
 
-    public List<Positions> start() {
+    public List<List<Integer>> start() {
         RandomNumber randomNumber = new RandomNumber();
-        List<Positions> positionsList = new ArrayList<>();
+        List<List<Integer>> result = new ArrayList<>();
         for (int i = 0; i < gameCount; i++) {
             cars.start(randomNumber);
-            positionsList.add(cars.getPositions());
+            result.add(cars.getPositions());
         }
-        return positionsList;
+        return result;
     }
 }

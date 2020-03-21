@@ -14,10 +14,9 @@ public class Cars {
         cars.forEach(car -> car.start(randomNumber));
     }
 
-    public Positions getPositions() {
-        List<Position> positionList = cars.stream()
+    public List<Integer> getPositions() {
+        return cars.stream()
                 .map(Car::getPosition)
                 .collect(Collectors.toList());
-        return new Positions(positionList);
     }
 }

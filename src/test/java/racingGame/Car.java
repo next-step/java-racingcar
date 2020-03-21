@@ -16,7 +16,7 @@ public class Car {
         position.add();
     }
 
-    public Position getPosition() {
-        return position;
+    public int getPosition() {
+        return position.getValue();
     }
 }
