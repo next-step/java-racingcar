@@ -30,26 +30,22 @@ class CarTest {
         car.move();
         car.move();
 
-        assertThat(car.getPositionView()).isEqualTo("---");
+        assertThat(car.getPosition().getValue()).isEqualTo(3);
 
         car.move();
         car.move();
 
-        assertThat(car.getPositionView()).isEqualTo("-----");
+        assertThat(car.getPosition().getValue()).isEqualTo(5);
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"2:", "4:-", "9:-", "3:"}, delimiter = ':')
+    @CsvSource(value = {"2:0", "4:1", "9:1", "3:0"}, delimiter = ':')
     @DisplayName("경주를 시작한다는 메시지를 받고 조건(랜덤)을 받아아 전진기능을 수행하는 기능")
-    void start(int input, String expected) {
-        if (expected == null) {
-            expected = "";
-        }
-
+    void start(int input, int expected) {
         when(randomNumber.generate()).thenReturn(input);
         car.start(randomNumber);
 
-        assertThat(car.getPositionView()).isEqualTo(expected);
+        assertThat(car.getPosition().getValue()).isEqualTo(expected);
     }
 
 }
