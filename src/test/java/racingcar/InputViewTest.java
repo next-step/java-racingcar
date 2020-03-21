@@ -5,7 +5,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.domain.Car;
 import racingcar.dto.InputView;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -59,9 +58,9 @@ public class InputViewTest {
         InputView inputView = new InputView();
 
         //when
-        int carCount = inputView.insertCarNames(carNames);
+        inputView.insertCarNames(carNames);
 
         //then
-        assertThat(carCount).isEqualTo(expectedCarCount);
+        assertThat(inputView.getCarCount()).isEqualTo(expectedCarCount);
     }
 }

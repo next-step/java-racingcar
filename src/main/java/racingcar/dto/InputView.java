@@ -12,17 +12,15 @@ public class InputView {
     public InputView() {
     }
 
-    public int insertCarNames(String carNameString) {
+    public void insertCarNames(String carNameString) {
         validateNullOrEmpty(carNameString);
         this.carNames = splitCarNames(carNameString);
         this.carCount = carNames.size();
-        return carCount;
     }
 
-    public int insertTryCount(String stringTryCount) {
+    public void insertTryCount(String stringTryCount) {
         validateNullOrEmpty(stringTryCount);
         this.tryCount = validateNumberType(stringTryCount);
-        return tryCount;
     }
 
     private List<String> splitCarNames(String stringInput) {

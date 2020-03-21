@@ -15,22 +15,20 @@ public class Question {
         this.inputView = inputView;
     }
 
-    public int generateForTryCount() {
+    public void generateForTryCount() {
         printQuestion(TRY);
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
-        int tryCount = inputView.insertTryCount(input);
+        inputView.insertTryCount(input);
         printBlankSpace();
-        return tryCount;
     }
 
-    public int generateForCarCount() {
+    public void generateForCarCount() {
         printQuestion(CAR);
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
-        int carCount = inputView.insertCarNames(input);
+        inputView.insertCarNames(input);
         printBlankSpace();
-        return carCount;
     }
 
     private void printQuestion(InputType inputType) {

@@ -7,12 +7,12 @@ import racingcar.domain.Cars;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 public class OutputView {
     private static final String BLANK = " ";
     private static final String ONE_MOVE = "-";
+    private static final String DELIMITER_FOR_WINNER = ",";
     private Cars cars;
     private RandomNumGenerator randomNumGenerator;
 
@@ -78,25 +78,22 @@ public class OutputView {
     }
 
     private int findLongestNameLength(List<String> carNames) {
-        int maxLength = carNames.stream()
+        return carNames.stream()
                 .map(it -> it.length())
                 .max(Comparator.comparingInt(Integer::intValue))
                 .orElseThrow(RuntimeException::new);
-        return maxLength;
     }
 
     public void printWinners(List<Car> winners) {
         System.out.println();
-        StringJoiner stringJoiner = makeWinnersNameInOneLine(winners);
-        System.out.println(">>>>>>>> "+stringJoiner + " (이)가 최종 우승했습니다. <<<<<<<<");
+        String winnerResult = makeWinnersNameInOneLine(winners);
+        System.out.println(">>>>>>>> " + winnerResult + " (이)가 최종 우승했습니다. <<<<<<<<");
     }
 
-    private StringJoiner makeWinnersNameInOneLine(List<Car> winners) {
-        StringJoiner stringJoiner = new StringJoiner(",");
-        for (Car car : winners) {
-            stringJoiner.add(car.getName());
-        }
-        return stringJoiner;
+    private String makeWinnersNameInOneLine(List<Car> winners) {
+        return winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(DELIMITER_FOR_WINNER));
     }
 
     private void printBorderLine() {

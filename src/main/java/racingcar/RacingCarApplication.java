@@ -11,12 +11,12 @@ public class RacingCarApplication {
 
         Question question = new Question(inputView);
         question.generateForCarCount();
-        int tryCount = question.generateForTryCount();
+        question.generateForTryCount();
 
         Cars cars = new Cars(inputView);
         OutputView outputView = new OutputView(cars, randomNumGenerator);
 
-        outputView.printCarsAfterTryCountMove(tryCount);
+        outputView.printCarsAfterTryCountMove(inputView.getTryCount());
         outputView.printWinners(cars.findWinner());
     }
 }
