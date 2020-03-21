@@ -12,17 +12,34 @@ public class StringCalc {
 
         String[] arr = formula.split(" ");
 
-        int before = 0;
+        int before = Integer.parseInt(arr[0]);
         int after = 0;
         String oper = "";
-        for (int i = 0; i < arr.length; i++) {
-             if (i == 0) {
-                 before = Integer.parseInt(arr[0]);
-             } /*else if ()*/
-
-
+        for (int i = 1; i < arr.length; i++) {
+            if ((i % 2) == 0) {
+                after = Integer.parseInt(arr[i]);
+                switch (oper) {
+                    case "+":
+                        before = calc.plus(before, after);
+                        break;
+                    case "-":
+                        before = calc.minus(before, after);
+                        break;
+                    case "*":
+                        before = calc.multiplication(before, after);
+                        break;
+                    case "/":
+                        before = calc.division(before, after);
+                        break;
+                    default:
+                        break;
+                }
+            } else if ((i % 2) == 1) {
+                oper = arr[i];
+            }
         }
 
+        System.out.println("result: " + before);
 
     }
 
