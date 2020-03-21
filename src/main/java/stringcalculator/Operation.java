@@ -24,6 +24,9 @@ public enum Operation {
     DIVIDE("/") {
         @Override
         public double apply(double x, double y) {
+            if (y == 0) {
+                throw new ArithmeticException("0으로 나눌 순 없습니다.");
+            }
             return x / y;
         }
     };

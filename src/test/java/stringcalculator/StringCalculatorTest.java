@@ -52,5 +52,7 @@ public class StringCalculatorTest {
 
         assertThatExceptionOfType(ArithmeticException.class)
                 .isThrownBy(() -> calculator.operate("1 / 0"));
+        assertThatExceptionOfType(ArithmeticException.class)
+                .isThrownBy(() -> calculator.operate("1.1 / 0.0"));
     }
 }
