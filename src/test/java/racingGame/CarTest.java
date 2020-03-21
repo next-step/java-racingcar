@@ -30,12 +30,12 @@ class CarTest {
         car.move();
         car.move();
 
-        assertThat(car.getPosition().getValue()).isEqualTo(3);
+        assertThat(car.getPosition()).isEqualTo(3);
 
         car.move();
         car.move();
 
-        assertThat(car.getPosition().getValue()).isEqualTo(5);
+        assertThat(car.getPosition()).isEqualTo(5);
     }
 
     @ParameterizedTest
@@ -45,7 +45,7 @@ class CarTest {
         when(randomNumber.generate()).thenReturn(input);
         car.start(randomNumber);
 
-        assertThat(car.getPosition().getValue()).isEqualTo(expected);
+        assertThat(car.getPosition()).isEqualTo(expected);
     }
 
 }
