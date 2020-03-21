@@ -9,17 +9,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private List<Car> cars = new ArrayList<>();
+    private List<Car> cars;
 
     public Cars(InputView inputView) {
-        createCars(inputView);
+        cars = createCars(inputView);
     }
 
-    private void createCars(InputView inputView) {
-        for (int i = 0; i < inputView.getCarCount(); i++) {
-            List<String> carNames = inputView.getCarNames();
-            cars.add(new Car(carNames.get(i)));
-        }
+    private List<Car> createCars(InputView inputView) {
+        List<String> carNames = inputView.getCarNames();
+        return carNames.stream()
+                .map(it -> new Car(it))
+                .collect(Collectors.toList());
     }
 
     public void moveOnce(RandomNumGenerator rng) {
@@ -41,8 +41,9 @@ public class Cars {
     private int findHighestPositionValue(List<Car> cars) {
         return cars.stream()
                 .map(it -> it.getPosition())
-                .max(Comparator.comparingInt(Integer::intValue))
-                .orElseThrow(RuntimeException::new);
+                .mapToInt(Integer::intValue)
+                .max()
+                .getAsInt();
     }
 
     public List<Car> getCars() {
