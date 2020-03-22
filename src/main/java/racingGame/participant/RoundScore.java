@@ -4,13 +4,13 @@ import java.util.List;
 
 public class RoundScore {
 
-    private List<CarScore> carScores;
+    private List<ParticipantScore> participantScores;
 
-    public RoundScore(List<CarScore> carScores) {
-        this.carScores = carScores;
+    public RoundScore(List<ParticipantScore> participantScores) {
+        this.participantScores = participantScores;
     }
 
-    public List<CarScore> getRecords() {
-        return carScores;
+    public List<ParticipantScore> getRecords() {
+        return participantScores;
     }
 }

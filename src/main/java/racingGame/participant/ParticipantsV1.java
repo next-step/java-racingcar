@@ -3,7 +3,6 @@ package racingGame.participant;
 import racingGame.car.Car;
 import racingGame.game.RacingGameRule;
 
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -24,7 +23,7 @@ public class ParticipantsV1 implements Participants {
     public RoundScore startRound(RacingGameRule carForwardRule) {
         cars.forEach(car -> checkCarForwardRule(car, carForwardRule));
         return new RoundScore(cars.stream()
-                .map(CarScore::new)
+                .map(ParticipantScore::new)
                 .collect(Collectors.toList()));
     }
 

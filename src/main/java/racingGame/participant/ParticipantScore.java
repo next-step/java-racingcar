@@ -2,11 +2,11 @@ package racingGame.participant;
 
 import racingGame.car.Car;
 
-public class CarScore {
+public class ParticipantScore {
     private String carName;
     private int position;
 
-    public CarScore(Car car) {
+    public ParticipantScore(Car car) {
         this.carName = car.getName();
         this.position = car.getPosition();
     }

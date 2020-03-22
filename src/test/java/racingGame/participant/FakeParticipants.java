@@ -18,7 +18,7 @@ public class FakeParticipants implements Participants {
     public RoundScore startRound(RacingGameRule carForwardRule) {
         cars.forEach(car -> checkCarForwardRule(car, carForwardRule));
         return new RoundScore(cars.stream()
-                .map(CarScore::new)
+                .map(ParticipantScore::new)
                 .collect(Collectors.toList()));
     }
 
