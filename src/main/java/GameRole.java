@@ -3,20 +3,17 @@ import java.util.Random;
 
 public class GameRole {
 
-    private int numberOfCars;
     private int numberOfAttempts;
     private List<Car> cars;
     private Random random;
+    private ResultView resultView;
 
 
     public GameRole(int numberOfCars, int numberOfAttempts) {
-        this.numberOfCars = numberOfCars;
+        this.cars = CarFactory.createCars(numberOfCars);
         this.numberOfAttempts = numberOfAttempts;
         this.random = new Random();
-    }
-
-    public void prepareGame() {
-        cars = CarFactory.createCars(numberOfCars);
+        this.resultView = new ResultView();
     }
 
     public void playGame() {
@@ -26,5 +23,11 @@ public class GameRole {
                 car.move(condition);
             }
         }
+
+        printResult();
+    }
+
+    private void printResult() {
+        resultView.printResult(cars, numberOfAttempts);
     }
 }
