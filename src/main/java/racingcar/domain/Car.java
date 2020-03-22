@@ -23,6 +23,10 @@ public class Car {
         ResultView.printPosition(name, position);
     }
 
+    public boolean equalPosition(int position) {
+        return this.position == position;
+    }
+
     public static List<Car> listOf(List<String> names) {
         return names.stream()
                 .map(name -> new Car(name))

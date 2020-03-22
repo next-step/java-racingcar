@@ -29,7 +29,7 @@ public class RacingGame {
     public List<Car> findWinner() {
         final int winnerPosition = findWinnerPosition();
         return cars.stream()
-                .filter(it -> it.getPosition() == winnerPosition)
+                .filter(car -> car.equalPosition(winnerPosition))
                 .collect(Collectors.toList());
     }
 
