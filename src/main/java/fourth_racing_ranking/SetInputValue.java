@@ -1,5 +1,4 @@
 package fourth_racing_ranking;
 
-class inputviewTest {
-
+public class SetInputValue {
 }
