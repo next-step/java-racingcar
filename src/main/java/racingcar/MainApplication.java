@@ -1,9 +1,6 @@
 package racingcar;
 
 import racingcar.controller.RacingCar;
-import racingcar.model.Cars;
-import racingcar.model.Results;
-import racingcar.model.Winners;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -13,14 +10,10 @@ public class MainApplication {
 
         String carNames = InputView.getCarNamesFromUser();
         String tryCounts = InputView.getTryCountsFromUser();
-        InputView inputView = new InputView(carNames, tryCounts);
 
-        RacingCar racingCar = new RacingCar(inputView);
-        Cars cars = racingCar.ready();
-        Results results = racingCar.start(randomNumGenerator);
-        Winners winners = racingCar.findWinners();
+        RacingCar racingCar = new RacingCar(new InputView(carNames, tryCounts));
+        racingCar.startGame(randomNumGenerator);
 
-        OutputView.printGame(cars, results);
-        OutputView.printWinners(winners);
+        OutputView.print(racingCar);
     }
 }

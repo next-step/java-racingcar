@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
 import racingcar.model.Cars;
-import racingcar.view.InputView;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,43 +13,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarsTest {
     private static final List<String> CAR_NAMES = Arrays.asList("Mark", "Jaehyun", "Johnny");
     private Cars cars;
-    private InputView inputView;
     private RandomNumGenerator randomNumGenerator = new RandomNumGenerator();
 
     @BeforeEach
     void setUp() {
-        inputView = new InputView("Mark,Jaehyun,Johnny", "5");
-        cars = new Cars(inputView);
+        Car car = new Car("Mark", 5);
+        Car car2 = new Car("Johnny", 2);
+        Car car3 = new Car("Jaehyun", 1);
+        cars = new Cars(Arrays.asList(car, car2, car3));
 
-    }
-
-    @Test
-    void moveOnceTest() {
-        //given
-        int tryCount = inputView.getTryCount();
-
-        //when
-        for (int i = 0; i < inputView.getTryCount(); i++) {
-            cars.moveOnce(randomNumGenerator);
-        }
-
-        //then
-        assertThat(cars.getCars().get(0).getPosition()).isBetween(0, tryCount);
     }
 
     @Test
     void findWinnerTest() {
-        //given
-        int tryCount = inputView.getTryCount();
-        for (int i = 0; i < inputView.getTryCount(); i++) {
-            cars.moveOnce(randomNumGenerator);
-        }
-
         //when
         List<Car> winners = cars.findWinner();
 
         //then
-        assertThat(winners.get(0).getPosition()).isBetween(0, tryCount);
-        assertThat(CAR_NAMES).contains(winners.get(0).getName());
+        assertThat(winners.size()).isEqualTo(1);
+        assertThat(winners.get(0).getName()).isEqualTo("Mark");
     }
 }

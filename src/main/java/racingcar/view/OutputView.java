@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.controller.RacingCar;
 import racingcar.model.*;
 
 import java.util.ArrayList;
@@ -12,13 +13,19 @@ public class OutputView {
     private static final String DELIMITER_FOR_WINNERS = ",";
     private static final int FIRST_TRY_COUNT = 1;
 
-    public static void printWinners(Winners winners) {
+    public static void print(RacingCar racingCar) {
+        printGame(racingCar.getCars(), racingCar.getResults());
+        printWinners(racingCar.getWinners());
+    }
+
+    private static void printWinners(Winners winners) {
         System.out.println();
         String winnersInOneLine = makeWinnersNameInOneLine(winners);
         System.out.println(">>>>>>>> " + winnersInOneLine + " (이)가 최종 우승했습니다. <<<<<<<<");
     }
 
-    public static void printGame(Cars cars, Results results) {
+    private static void printGame(Cars cars, Results results) {
+        System.out.println();
         printResultTitle();
         printGameResults(cars, results);
     }

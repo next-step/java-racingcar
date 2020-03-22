@@ -1,21 +1,29 @@
 package racingcar.view;
 
+import racingcar.model.Car;
+import racingcar.model.Cars;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class InputView {
     private static final String DELIMITER_FOR_INPUT = ",";
     private static final String QUESTION_FOR_CAR = "자동차 이름을 입력하세요, (단, 자동차 이름은 쉼표(,)로 구분해야 합니다.)";
     private static final String QUESTION_FOR_TRY = "몇 회를 시도하실 건가요?";
+    private static Scanner scanner = new Scanner(System.in);
+
     private List<String> carNames;
     private int carCount;
     private int tryCount;
-    private static Scanner scanner = new Scanner(System.in);
+    private Cars cars;
 
     public InputView(String carNames, String tryCounts) {
         insertCarNames(carNames);
         insertTryCount(tryCounts);
+        cars = new Cars(createCars());
     }
 
     public static String getCarNamesFromUser() {
@@ -26,6 +34,12 @@ public class InputView {
     public static String getTryCountsFromUser() {
         System.out.println(QUESTION_FOR_TRY);
         return scanner.nextLine();
+    }
+
+    public List<Car> createCars() {
+        return carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     private void insertCarNames(String carNameString) {
@@ -91,7 +105,7 @@ public class InputView {
         return carCount;
     }
 
-    public List<String> getCarNames() {
-        return carNames;
+    public Cars getCars() {
+        return cars;
     }
 }

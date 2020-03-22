@@ -11,28 +11,44 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCar {
-    private InputView inputView;
     private Cars cars;
+    private int tryCount;
+    private Results Results;
+    private Winners winners;
 
     public RacingCar(InputView inputView) {
-        this.inputView = inputView;
+        this.cars = inputView.getCars();
+        this.tryCount = inputView.getTryCount();
     }
 
-    public Cars ready() {
-        this.cars = new Cars(inputView);
-        return cars;
+    public void startGame(RandomNumGenerator randomNumGenerator){
+        start(randomNumGenerator);
     }
 
-    public Results start(RandomNumGenerator randomNumGenerator) {
+    private void start(RandomNumGenerator randomNumGenerator) {
         List<Result> results = new ArrayList<>();
-        for (int i = 0; i < inputView.getTryCount(); i++) {
+        for (int i = 0; i < tryCount; i++) {
             Result result = cars.moveOnce(randomNumGenerator);
             results.add(result);
         }
-        return new Results(results);
+        this.Results = new Results(results);
+
+        findWinners();
     }
 
-    public Winners findWinners() {
-        return new Winners(cars.findWinner());
+    private void findWinners() {
+        this.winners = new Winners(cars.findWinner());
+    }
+
+    public Cars getCars() {
+        return cars;
+    }
+
+    public racingcar.model.Results getResults() {
+        return Results;
+    }
+
+    public Winners getWinners() {
+        return winners;
     }
 }

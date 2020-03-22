@@ -10,15 +10,8 @@ import java.util.stream.Collectors;
 public class Cars {
     private List<Car> cars;
 
-    public Cars(InputView inputView) {
-        cars = createCars(inputView);
-    }
-
-    private List<Car> createCars(InputView inputView) {
-        List<String> carNames = inputView.getCarNames();
-        return carNames.stream()
-                .map(Car::new)
-                .collect(Collectors.toList());
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public Result moveOnce(RandomNumGenerator randomNumGenerator) {
