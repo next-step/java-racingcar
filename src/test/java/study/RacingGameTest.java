@@ -25,7 +25,7 @@ public class RacingGameTest {
         Random random = new Random();
 
         for (int i = 0; i < carPositions.length; i++) {
-            
+
             //int ranCount = random.nextInt(10);
             int ranCount = 4;
             if (ranCount >= 4) {
