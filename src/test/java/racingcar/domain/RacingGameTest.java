@@ -38,7 +38,7 @@ public class RacingGameTest {
     @Test
     void findWinner() {
         List<Car> winners = racingGame.findWinner();
-        List<String> winnerNames = winners.stream().map(it -> it.getName())
+        List<String> winnerNames = winners.stream().map(car -> car.getName())
                 .collect(Collectors.toList());
 
         assertThat(winners).hasSize(2);
