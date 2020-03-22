@@ -22,7 +22,10 @@ class RacingGameTest {
 				new Car(RACER3, COMMON_ENGINE));
 
 		assertThat(racingGame.move())
-				.allMatch(car -> car.getDistance() == 5);
+				.allMatch(car -> car.getDistance() == COMMON_ENGINE.moveDistanceForOneTime());
+
+		assertThat(racingGame.move())
+				.allMatch(car -> car.getDistance() == COMMON_ENGINE.moveDistanceForOneTime()*2);
 	}
 
 	@Test
@@ -31,6 +34,8 @@ class RacingGameTest {
 		RacingGame racingGame = new RacingGame(new Car(RACER1, COMMON_ENGINE),
 				new Car(RACE2, BOOST_ENGINE),
 				new Car(RACER3, BOOST_ENGINE));
+
+		racingGame.move();
 
 		assertThat(racingGame.getWinners())
 				.containsExactly(RACE2, RACER3);

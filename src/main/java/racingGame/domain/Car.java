@@ -7,6 +7,7 @@ public class Car {
 
 	public Car(String racer, Engine engine) {
 		this.racer = racer;
+		this.engine = engine;
 	}
 
 	public String getRacer() {
@@ -17,8 +18,8 @@ public class Car {
 		return distance;
 	}
 
-	int move(){
-		//todo 움직임 로직... 현재 distance 에 적용하고 리턴 할 것.
-		return distance++;
+	int move() {
+		distance += engine.moveDistanceForOneTime();
+		return distance;
 	}
 }
