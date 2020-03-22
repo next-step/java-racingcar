@@ -19,7 +19,7 @@ public class ResultView {
     }
 
     public static void printWinner(List<Car> winner) {
-        String winnerNames = winner.stream().map(it -> it.getName()).collect(Collectors.joining(","));
+        String winnerNames = winner.stream().map(car -> car.getName()).collect(Collectors.joining(","));
 
         System.out.println(winnerNames + WINNER_PRINT);
     }
