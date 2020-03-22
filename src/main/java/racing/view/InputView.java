@@ -11,4 +11,9 @@ public class InputView {
         return SCANNER.nextInt();
     }
 
+    public String input(String message) {
+        System.out.println(message);
+        return SCANNER.nextLine();
+    }
+
 }
