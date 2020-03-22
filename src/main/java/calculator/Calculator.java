@@ -3,13 +3,14 @@ package calculator;
 import calculator.operator.OperatorEnum;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Calculator {
 
     private final static String FORMULA_SEPARATION_KEYWROD = " ";
 
-    private ArrayList<Double> numbers;
-    private ArrayList<OperatorEnum> operators;
+    private List<Double> numbers;
+    private List<OperatorEnum> operators;
 
     public Calculator(String input) {
         this.numbers = new ArrayList<>();
