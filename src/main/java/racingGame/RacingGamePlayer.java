@@ -1,6 +1,6 @@
 package racingGame;
 
-import racingGame.logic.RacingGame;
+import racingGame.domain.RacingGame;
 import racingGame.ui.InputView;
 import racingGame.ui.ResultView;
 

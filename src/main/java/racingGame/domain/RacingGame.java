@@ -1,4 +1,4 @@
-package racingGame.logic;
+package racingGame.domain;
 
 import java.util.Arrays;
 import java.util.HashMap;
