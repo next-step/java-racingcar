@@ -2,21 +2,23 @@ package racingcar.view;
 
 import lombok.Getter;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 @Getter
 public class InputView {
-    final String QUESTIONS_NUMBER = "자동차 대수는 몇 대인가요?";
-    final String QUESTIONS_TIME = "시도할 횟수는 몇 회인가요?";
+    private static final String QUESTIONS_TIME = "시도할 횟수는 몇 회인가요?";
+    private static final String QUESTIONS_CAR_NAME = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
 
     private int time;
-    private int number;
+    private List<String> carNames;
 
     public void input() {
-        System.out.println(QUESTIONS_NUMBER);
-
         Scanner scanner = new Scanner(System.in);
-        number = Integer.valueOf(scanner.nextLine());
+
+        System.out.println(QUESTIONS_CAR_NAME);
+        carNames = Arrays.asList(scanner.nextLine().split(","));
 
         System.out.println(QUESTIONS_TIME);
         time = Integer.valueOf(scanner.nextLine());

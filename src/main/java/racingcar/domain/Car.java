@@ -1,24 +1,30 @@
 package racingcar.domain;
 
-import java.util.Random;
+import lombok.Getter;
+import racingcar.view.ResultView;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Getter
 public class Car {
-    private final int RANDOM_BOUND = 10;
-    private final int ADVANCE_CONDITION = 4;
-
+    private String name;
     private int position;
 
-    public int move() {
-        if (advance()) {
-            this.position++;
-        }
-
-        return position;
+    private Car(String name) {
+        this.name = name;
     }
 
-    private boolean advance() {
-        Random random = new Random();
+    public void move(int moveCount) {
+        position += moveCount;
+    }
 
-        return random.nextInt(RANDOM_BOUND) > ADVANCE_CONDITION;
+    public void printPosition() {
+        ResultView.printPosition(name, position);
+    }
+
+    public static List<Car> listOf(List<String> names) {
+        return names.stream().map(it -> new Car(it))
+                .collect(Collectors.toList());
     }
 }
