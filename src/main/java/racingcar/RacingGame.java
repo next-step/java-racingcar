@@ -41,18 +41,6 @@ public class RacingGame {
             if (randomValueGenerator.getRandomValue() > MORE_THAN_VALUE_FOR_CAR_MOVE) {
                 this.carPositions.set(i, this.carPositions.get(i) + 1);
             }
-            printCarPositions(i);
-        }
-    }
-
-    private void printCarPositions(int carPosition) {
-        for (int i = 0; i < this.carPositions.get(carPosition); i++) {
-            System.out.print("-");
-        }
-        System.out.println();
-
-        if (carPosition == this.carPositions.size() - 1) {
-            System.out.println();
         }
     }
 
