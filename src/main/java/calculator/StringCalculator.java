@@ -1,5 +1,8 @@
 package calculator;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class StringCalculator {
     String formula;
     String[] resultArr;
@@ -22,27 +25,17 @@ public class StringCalculator {
             return value;
         }
 
-        public static OperatorType valueOfOperator(String value) {
-            if (value == null)
-                throw new NullPointerException();
+        private static Map<String, OperatorType> operatorMap = new HashMap<>();
 
-            if ("+".equals(value)) {
-                return ADDTION;
-            }
+        public static OperatorType getOperator(String operator) {
+            return operatorMap.get(operator);
+        }
 
-            if ("-".equals(value)) {
-                return SUBTRACTION;
-            }
-
-            if ("*".equals(value)) {
-                return MULTIPLICATION;
-            }
-
-            if ("/".equals(value)) {
-                return DIVISION;
-            }
-
-            throw new IllegalArgumentException();
+        static {
+            operatorMap.put("+", OperatorType.ADDTION);
+            operatorMap.put("-", OperatorType.SUBTRACTION);
+            operatorMap.put("*", OperatorType.MULTIPLICATION);
+            operatorMap.put("/", OperatorType.DIVISION);
         }
 
     }
@@ -68,7 +61,7 @@ public class StringCalculator {
 
     public double operatorCalcualte(String symbol, double a, double b) {
 
-        OperatorType operatorType = OperatorType.valueOfOperator(symbol);
+        OperatorType operatorType = OperatorType.getOperator(symbol);
 
         switch (operatorType) {
             case ADDTION:
