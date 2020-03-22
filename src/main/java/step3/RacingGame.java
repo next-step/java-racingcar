@@ -8,7 +8,7 @@ public class RacingGame {
     private int carCount;
     private List<Car> carList = new ArrayList<Car>();
 
-    public void createCars(int carCount) {
+    private void _createCars(int carCount) {
         List<Car> carList = new ArrayList<Car>();
 
         for(int i = 0; i < carCount; i++) {
@@ -23,16 +23,16 @@ public class RacingGame {
         return car;
     }
 
-    public void move(int presentRoundTime) {
+    private void _move(int presentRoundTime) {
         for(Car car: this.carList) {
             car.playRound(presentRoundTime);
         }
     }
 
     public List<Car> play(int carCount, int roundTime) {
-        createCars(carCount);
+        _createCars(carCount);
         for(int i = 0; i < roundTime; i++) {
-            move(i);
+            _move(i);
         }
         return carList;
     }
