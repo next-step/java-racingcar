@@ -21,6 +21,16 @@ public class RacingGameView {
         }
     }
 
+    public void viewWinners(ArrayList<Car> winners) {
+        for (int i = 0; i < winners.size(); i++) {
+            System.out.print(winners.get(i).getName());
+            if (i != winners.size() - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("가 최종 우승했습니다.");
+    }
+
     private void printCarPosition(Car car) {
         System.out.print(car.getName() + " : ");
         for (int i = 0; i < car.getPosition(); i++) {

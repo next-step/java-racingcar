@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class RacingGameRun {
@@ -22,5 +23,8 @@ public class RacingGameRun {
             racingGame.startRacing(1);
             racingGameView.viewCarPositions();
         }
+
+        ArrayList<Car> winners = racingGame.getWinners(racingGame.getCurrentCars());
+        racingGameView.viewWinners(winners);
     }
 }

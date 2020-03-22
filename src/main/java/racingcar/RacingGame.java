@@ -1,8 +1,10 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -33,6 +35,20 @@ public class RacingGame {
         for (int i = 0; i < runCount; i++) {
             moveCar();
         }
+    }
+
+    public ArrayList<Car> getWinners(ArrayList<Car> cars) {
+        int maxPosition = getBestPosition(cars);
+
+        return (ArrayList<Car>) cars.stream()
+                .filter(c -> c.getPosition() == maxPosition)
+                .collect(Collectors.toList());
+    }
+
+    private int getBestPosition(ArrayList<Car> cars) {
+        return cars.stream()
+                .max(Comparator.comparing(Car::getPosition))
+                .get().getPosition();
     }
 
     public ArrayList<Car> getCurrentCars() {
