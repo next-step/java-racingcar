@@ -7,8 +7,8 @@ public class ValidationUtils {
             throw new IllegalArgumentException();
         }
     }
-    public static void validateRandomValue(int randomValue) {
-        if(randomValue < 0 || randomValue > 9) {
+    public static void isSingleDigitNumber(int value) {
+        if(value < 0 || value > 9) {
             throw new IllegalArgumentException();
         }
     }

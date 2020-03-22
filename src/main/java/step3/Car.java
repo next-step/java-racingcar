@@ -26,7 +26,7 @@ public class Car {
         Random generator = new Random();
 
         int randomValue = generator.nextInt(10);
-        ValidationUtils.validateRandomValue(randomValue);
+        ValidationUtils.isSingleDigitNumber(randomValue);
 
         return randomValue;
     }
