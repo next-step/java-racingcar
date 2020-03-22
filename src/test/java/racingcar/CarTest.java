@@ -1,15 +1,34 @@
 package racingcar;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    @DisplayName("자동차를 생성한다")
-    @Test
-    void create() {
+    private Car car;
 
+    @BeforeEach
+    void setUp() {
+        car = new Car();
+    }
+
+    @DisplayName("생성된 숫자가 4이상이면 움직일 수 있다 ")
+    @ParameterizedTest
+    @ValueSource(ints = {4, 8})
+    void carMove(int randomNumber) {
+        car.changeCarPosition(randomNumber);
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @DisplayName("생성된 숫자가 4보다 작으면 움직일 수 없다 ")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 3})
+    void carNotMove(int randomNumber) {
+        car.changeCarPosition(randomNumber);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 }

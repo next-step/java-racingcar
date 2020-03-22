@@ -1,9 +1,9 @@
 package racingcar;
 
-public class InputValidation {
+public class Number {
     private final int number;
 
-    public InputValidation(String number) {
+    public Number(String number) {
         checkInputNullOrEmpty(number);
         this.number = parseToNumber(number);
         checkPositiveNumber(this.number);
@@ -23,7 +23,7 @@ public class InputValidation {
         }
     }
 
-    private void checkPositiveNumber (int number) {
+    private void checkPositiveNumber(int number) {
         if (number <= 0) {
             throw new IllegalArgumentException("0보다 큰 값을 입력해야합니다.");
         }

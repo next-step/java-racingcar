@@ -8,13 +8,13 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-class InputValidationTest {
+class NumberTest {
 
     @DisplayName(value = "숫자를 입력할 수 있다")
     @ParameterizedTest
     @ValueSource(strings = {"1"})
     void numberCreate(final String textInput) {
-        assertThat(new InputValidation(textInput).getNumber()).isEqualTo(1);
+        assertThat(new Number(textInput).getNumber()).isEqualTo(1);
     }
 
     @DisplayName(value = "빈 문자열 또는 null 값을 입력할 경우 IllegalArgumentException 이 발생")
@@ -22,7 +22,7 @@ class InputValidationTest {
     @NullAndEmptySource
     void emptyOrNull(final String textInput) {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new InputValidation(textInput));
+                .isThrownBy(() -> new Number(textInput));
     }
 
     @DisplayName(value = "숫자가 아닌값 입력할 경우 IllegalArgumentException 이 발생")
@@ -30,7 +30,7 @@ class InputValidationTest {
     @ValueSource(strings = {"a", "B", "*"})
     void checkNotNumber(final String textInput) {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new InputValidation(textInput));
+                .isThrownBy(() -> new Number(textInput));
     }
 
     @DisplayName(value = "0보다 작은 값을 입력할 경우 IllegalArgumentException 이 발생")
@@ -38,7 +38,7 @@ class InputValidationTest {
     @ValueSource(strings = {"0", "-1"})
     void underZero(final String textInput) {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new InputValidation(textInput));
+                .isThrownBy(() -> new Number(textInput));
     }
 
 
