@@ -36,8 +36,8 @@ public class RacingGame {
         }
 
         int maxPosition = getMaxPosition();
-        return cars.stream().filter(car -> car.getPosition() == maxPosition).collect(
-                Collectors.toList());
+        return cars.stream().filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
     }
 
     private int getMaxPosition() {
