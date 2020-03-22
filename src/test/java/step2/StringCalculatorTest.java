@@ -58,7 +58,7 @@ public class StringCalculatorTest {
     @Test
     @DisplayName("연산자와 숫자를 입력받아 계산이 잘 되는지 테스트")
     void numberCalculate() {
-        assertThat(StringCalculator.calculate("*", 3, 2)).isEqualTo(6);
+        assertThat(Operator.calculateByOperator("*", 3, 2)).isEqualTo(6);
     }
 
     @DisplayName("최종 계산 테스트")
@@ -80,7 +80,6 @@ public class StringCalculatorTest {
     @Test
     @DisplayName("적절한 연산자가 입력되지 않았을 때의 테스트")
     void OperatorException() {
-
         //TODO: Enum을 제대로 활용해서 Exception 처리 할 수 있도록 개선 필요해보임
         String input = "2 + 3 - 5 # 3";
 //        assertThatExceptionOfType(IllegalArgumentException.class)
