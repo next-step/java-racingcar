@@ -9,6 +9,7 @@ public class RacingGame {
     private int raceTime;
     private Random random = new Random();
     private static final int MOVABLE_NUMBER = 3;
+    private static final int END_TIME = 0;
 
     public RacingGame(int carNumber, int raceTime) {
         this.carPositions = new int[carNumber];
