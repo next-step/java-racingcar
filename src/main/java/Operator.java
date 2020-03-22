@@ -28,10 +28,10 @@ public enum Operator {
 
     public abstract double apply(double x, double y);
 
-    public static Operator findOperator(String str) {
+    public static Operator getOperator(String str) {
         for (Operator operator : values()) {
             if (operator.symbol.equals(str))
-                return operator;
+                return operator; // TODO: indent
         }
         throw new IllegalArgumentException("invalid operator");
     }

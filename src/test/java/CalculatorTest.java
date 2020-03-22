@@ -42,11 +42,17 @@ public class CalculatorTest {
         assertThatIllegalArgumentException().isThrownBy(() -> Calculator.calculate(str));
     }
 
-    @DisplayName("유효하지 않은 연산자")
+    @DisplayName("유효하지 않은 계산식")
     @ParameterizedTest
-    @CsvSource({"1 ( 0", "1 @ 2", "1 2 3"})
+    @CsvSource({"1 ( 0", "1 @ 2", "1 2 3", "- - 1", "1 + 3 +"})
     void invalidOperator(String str) {
         assertThatIllegalArgumentException().isThrownBy(() -> Calculator.calculate(str));
     }
 
+    @DisplayName("삼항 이상 계산")
+    @ParameterizedTest
+    @CsvSource({"1 + 2 * 2 / 3 - 2, 0", "2 * 6 * 3 / 3 + 3 - 2, 13"})
+    void test(String str, double expected) {
+        assertThat(Calculator.calculate(str)).isEqualTo(expected);
+    }
 }
