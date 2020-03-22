@@ -1,6 +1,5 @@
 package racingGame.game;
 
-import org.junit.platform.commons.util.StringUtils;
 import racingGame.car.Car;
 
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ public class RacingGame {
     }
 
     private void verifyRegister(String participants, int gameCount) {
-        if (StringUtils.isBlank(participants)) {
+        if (participants == null || participants.isEmpty()) {
             throw new IllegalArgumentException();
         }
         if (gameCount < 0) {
