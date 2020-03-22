@@ -1,6 +1,7 @@
 package racingGame.view;
 
-import java.util.List;
+import racingGame.game.GameResult;
+import racingGame.game.TotalGameResult;
 
 public class ResultView {
 
@@ -11,14 +12,16 @@ public class ResultView {
     private StringBuilder resultMessage = new StringBuilder(START_TEXT);
 
 
-    public ResultView(List<List<Integer>> result) {
-        result.forEach(this::addPosition);
+    public ResultView(TotalGameResult totalGameResult) {
+        totalGameResult.getGameResults()
+                .forEach(this::analyzeGameResult);
     }
 
-    private void addPosition(List<Integer> positions) {
-        positions.forEach(position -> resultMessage
-                .append(translatePositionText(position))
-                .append(ENTER));
+    private void analyzeGameResult(GameResult gameResult) {
+        gameResult.getPositions().
+                forEach(position -> resultMessage
+                        .append(translatePositionText(position))
+                        .append(ENTER));
         resultMessage.append(ENTER);
     }
 

@@ -1,8 +1,11 @@
-package racingGame;
+package racingGame.test;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingGame.game.CarForwardRule;
+import racingGame.game.RacingGame;
+import racingGame.game.RacingGameRule;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
@@ -12,31 +15,21 @@ class RacingGameTest {
 
     @BeforeEach
     void setUp() {
-        racingGame = new RacingGame();
+        RacingGameRule gameRule = new CarForwardRule();
+        racingGame = new RacingGame(gameRule);
     }
 
     @Test
-    @DisplayName("참가자 설정 시 음수 값에 대한 Exception 테스트")
-    void setParticipateCount() {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    racingGame.setParticipateCount(-4);
-                });
-    }
-
-    @Test
-    @DisplayName("게임 수 설정 시 음수 값에 대한 Exception 테스트")
+    @DisplayName("참가자 설정 & 게임 수 설정 시 음수 값에 대한 Exception 테스트")
     void setGameCount() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    racingGame.setGameCount(-6);
+                    racingGame.participate(-3, 5);
                 });
-    }
 
-    @Test
-    void start() {
-        racingGame.setParticipateCount(1);
-        racingGame.setGameCount(3);
-        System.out.print(racingGame.start());
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    racingGame.participate(4,-5);
+                });
     }
 }
