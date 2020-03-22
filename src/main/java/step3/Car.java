@@ -12,9 +12,9 @@ public class Car {
         Round round = new Round();
 
         round.setTime(roundTime);
-        round.setRandomNumber(_generateRandomValue());
+        round.setRandomNumber(generateRandomValue());
 
-        if(_generateRandomValue() >=  4) {
+        if(generateRandomValue() >=  4) {
             this.position++;
         }
         round.setPosition(this.position);
@@ -22,7 +22,7 @@ public class Car {
         this.roundInfoList.add(round);
     }
 
-    private static int _generateRandomValue() {
+    private static int generateRandomValue() {
         Random generator = new Random();
 
         int randomValue = generator.nextInt(10);

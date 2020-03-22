@@ -16,15 +16,15 @@ public class InputView {
         return Integer.parseInt(input);
     }
 
-    private void _printLine(String line) {
+    private void printLine(String line) {
         System.out.println(line);
     }
 
     public void printCarCountInfo () {
-        _printLine(CAR_COUNT_INPUT_INFO);
+        printLine(CAR_COUNT_INPUT_INFO);
     }
 
     public void printRoundTimeInfo() {
-        _printLine(ROUND_TIME_INPUT_INFO);
+        printLine(ROUND_TIME_INPUT_INFO);
     }
 }

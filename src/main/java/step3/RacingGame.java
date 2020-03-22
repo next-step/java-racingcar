@@ -8,16 +8,16 @@ public class RacingGame {
     private int carCount;
     private List<Car> carList = new ArrayList<Car>();
 
-    private void _createCars(int carCount) {
+    private void createCars(int carCount) {
         List<Car> carList = new ArrayList<Car>();
 
         for(int i = 0; i < carCount; i++) {
-            carList.add(_createCar());
+            carList.add(createCar());
         }
         this.carList = carList;
     }
 
-    private Car _createCar() {
+    private Car createCar() {
         Car car = new Car();
 
         return car;
@@ -30,7 +30,7 @@ public class RacingGame {
     }
 
     public List<Car> play(int carCount, int roundTime) {
-        _createCars(carCount);
+        createCars(carCount);
         for(int i = 0; i < roundTime; i++) {
             _move(i);
         }
