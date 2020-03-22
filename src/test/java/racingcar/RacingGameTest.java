@@ -14,7 +14,7 @@ public class RacingGameTest {
 
     @Test
     @DisplayName("게임을 진행할 때마다 자동차들은 각각 랜덤하게 전진한다")
-    public void moveCarsReturnsCurrentCarPosition() {
+    public void progressGameMoveCarsByRandom() {
         Random random = mock(Random.class);
         when(random.nextInt(10))
                 .thenReturn(4);
