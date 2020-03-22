@@ -1,5 +1,7 @@
 package calculator.operator;
 
+import calculator.exception.OperatorNotFoundException;
+
 import java.util.Arrays;
 
 public enum OperatorEnum {
@@ -35,6 +37,6 @@ public enum OperatorEnum {
         return Arrays.stream(values())
                 .filter(operator -> operator.getKeyword().equals(operatorKeyword))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("수식 중 사칙연산 기호가 잘못되었습니다."));
+                .orElseThrow(() -> new OperatorNotFoundException("일치하는 연산자를 찾을 수 없습니다."));
     }
 }
