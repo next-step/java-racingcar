@@ -10,23 +10,22 @@ public class RacingGame {
     private static Random randomGenerator;
     private List<Car> cars;
 
-    public RacingGame(Random randomGenerator, int numberOfCar) {
+    public RacingGame(Random randomGenerator, int numberOfCars) {
         this.randomGenerator = randomGenerator;
-        generateCars(numberOfCar);
+        generateCars(numberOfCars);
     }
 
-    public List<Integer> move() {
-        cars.stream()
-                .forEach(car -> car.move());
-
-        return IntStream.range(0, cars.size())
-                .mapToObj(i -> cars.get(i).getMoveCount())
-                .collect(Collectors.toList());
+    public void progress() {
+        cars.forEach(car -> car.move());
     }
 
-    private void generateCars(int numberOfCar) {
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    private void generateCars(int numberOfCars) {
         cars = IntStream
-                .range(0, numberOfCar)
+                .range(0, numberOfCars)
                 .mapToObj(__ -> new Car(randomGenerator))
                 .collect(Collectors.toList());
     }
