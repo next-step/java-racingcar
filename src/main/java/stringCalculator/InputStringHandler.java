@@ -25,7 +25,7 @@ public class InputStringHandler {
     }
 
     private void emptyInputException() {
-        if(inputString == null || inputString.trim().isBlank()) throw new IllegalArgumentException();
+        if(inputString == null || inputString.trim().isEmpty()) throw new IllegalArgumentException();
     }
 
 }
