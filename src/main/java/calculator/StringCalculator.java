@@ -1,7 +1,5 @@
 package calculator;
 
-import static calculator.Operator.PLUS;
-
 public class StringCalculator {
 
     public int calculate(String input) {
@@ -9,28 +7,14 @@ public class StringCalculator {
 
         input = input.trim();
 
-        int acc = 0;
-        Operator operator = PLUS;
+        String[] expression = input.split(" ");
+        int acc = Integer.parseInt(expression[0]);
 
-        for (String s : input.split(" ")) {
-            if (isOperand(s)) {
-                acc = operator.operate(acc, Integer.parseInt(s));
-                continue;
-            }
-
-            operator = Operator.of(s);
+        for (int i = 1 ; i < expression.length ; i += 2) {
+            acc = Operator.of(expression[i]).operate(acc, Integer.parseInt(expression[i + 1]));
         }
 
         return acc;
-    }
-
-    private boolean isOperand(String operand) {
-        try {
-            Integer.parseInt(operand);
-            return true;
-        } catch (NumberFormatException nfe) {
-            return false;
-        }
     }
 
     private void checkInput(String input) {

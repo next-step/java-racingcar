@@ -21,20 +21,24 @@ class StringCalculatorTest {
     @ParameterizedTest
     @NullAndEmptySource
     @DisplayName("계산기에 null 이나 공백을 넣으면 IllegalArgumentException")
-    void input_zero_or_null_test(String input) {
+    void inputIsZeroOrNullTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> calculator.calculate(input));
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"2 + 3 * 4 / 2 = 10", "2 / 2 - 2 * 0 + 1 = 1", "1 = 1"}, delimiter = '=')
-    void calculate_test(String input, String expected) {
+    @CsvSource(value = {"2 + 3 * 4 / 2 = 10",
+                        "2 / 2 - 2 * 0 + 1 = 1",
+                        "1 = 1",
+                        "3 + 3 + 3 = 9",
+                        "0 / 1 = 0"}, delimiter = '=')
+    void calculateTest(String input, String expected) {
         assertThat(calculator.calculate(input)).isEqualTo(Integer.parseInt(expected));
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"2 + 3 * 4 & 2"})
     @DisplayName("사칙 연산 기호가 아닌 경우 IllegalArgumentException")
-    void calculate_exception_test(String input) {
+    void calculateExceptionTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> calculator.calculate(input));
     }
 }
