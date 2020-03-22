@@ -15,21 +15,17 @@ public class FakeParticipants implements Participants {
     }
 
     @Override
-    public void gameStart(RacingGameRule carForwardRule) {
+    public RoundScore startRound(RacingGameRule carForwardRule) {
         cars.forEach(car -> checkCarForwardRule(car, carForwardRule));
+        return new RoundScore(cars.stream()
+                .map(CarScore::new)
+                .collect(Collectors.toList()));
     }
 
     private void checkCarForwardRule(Car car, RacingGameRule carForwardRule) {
         if (carForwardRule.result()) {
             car.forward();
         }
-    }
-
-    @Override
-    public RoundScore getRoundScore() {
-        return new RoundScore(cars.stream()
-                .map(CarScore::new)
-                .collect(Collectors.toList()));
     }
 
     @Override

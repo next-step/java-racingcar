@@ -7,9 +7,7 @@ import java.util.List;
 
 public interface Participants {
 
-    void gameStart(RacingGameRule carForwardRule);
-
-    RoundScore getRoundScore();
+    RoundScore startRound(RacingGameRule carForwardRule);
 
     List<Car> getWinners();
 }

@@ -16,17 +16,17 @@ public class RacingGame {
         this.racingGameRule = racingGameRule;
     }
 
-    public void participate(Participants Participants, int gameCount) {
-        verifyParticipate(Participants, gameCount);
+    public void participate(Participants Participants, int round) {
+        verifyParticipate(Participants, round);
         this.participants = Participants;
-        this.round = gameCount;
+        this.round = round;
     }
 
-    private void verifyParticipate(Participants Participants, int gameCount) {
+    private void verifyParticipate(Participants Participants, int round) {
         if (Participants == null) {
             throw new IllegalArgumentException();
         }
-        if (gameCount < 0) {
+        if (round < 0) {
             throw new IllegalArgumentException();
         }
     }
@@ -35,8 +35,7 @@ public class RacingGame {
         verifyParticipate(participants, round);
         List<RoundScore> result = new ArrayList<>();
         for (int i = 0; i < round; i++) {
-            participants.gameStart(racingGameRule);
-            result.add(participants.getRoundScore());
+            result.add(participants.startRound(racingGameRule));
         }
         return integrateGameResult(result);
     }
