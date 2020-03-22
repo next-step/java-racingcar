@@ -31,7 +31,7 @@
   * 힌트: if 조건절에서 값을 return하는 방식으로 구현하면 else를 사용하지 않아도 된다.
   * else를 쓰지 말라고 하니 switch/case로 구현하는 경우가 있는데 switch/case도 허용하지 않는다.
   
-# Step 4. 자동차 경주 우승[car](./docs/image/car.png)
+# Step 4. 자동차 경주 우승![car](./docs/image/car.png)
 
 ## 기능 요구사항
 * 각 자동차에 이름을 부여할 수 있다. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
