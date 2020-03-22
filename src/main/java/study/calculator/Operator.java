@@ -2,25 +2,25 @@ package study.calculator;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Function;
+import java.util.Objects;
+import java.util.function.BiFunction;
 
 enum Operator {
-    PLUS("+", operand -> operand.getLeftSide() + operand.getRightSide()),
-    MINUS("-", operand -> operand.getLeftSide() - operand.getRightSide()),
-    DIVIDE("/", operand -> {
-        float rightSide = operand.getRightSide();
+    PLUS("+", (leftSide, rightSide) -> leftSide + rightSide),
+    MINUS("-", (leftSide, rightSide) -> leftSide - rightSide),
+    DIVIDE("/", (leftSide, rightSide) -> {
         if (rightSide == 0) {
             throw new IllegalArgumentException();
         }
-        return operand.getLeftSide() / rightSide;
+        return leftSide / rightSide;
     }),
-    MULTIPLY("*", operand -> operand.getLeftSide() * operand.getRightSide());
+    MULTIPLY("*", (leftSide, rightSide) -> leftSide * rightSide);
 
     private static Map<String, Operator> map = new HashMap<>();
     private String symbol;
-    private Function<Operand, Float> operate;
+    private BiFunction<Double, Double, Double> operate;
 
-    Operator(String symbol, Function<Operand, Float> operator) {
+    Operator(String symbol, BiFunction<Double, Double, Double> operator) {
         this.symbol = symbol;
         this.operate = operator;
     }
@@ -32,10 +32,15 @@ enum Operator {
     }
 
     public static Operator symbolOf(String symbol) {
-        return map.get(symbol);
+        Operator operator = map.get(symbol);
+        if (Objects.isNull(operator)) {
+            throw new IllegalArgumentException();
+        }
+
+        return operator;
     }
 
-    public float run(Operand operand) {
-        return this.operate.apply(operand);
+    public double run(Double leftSide, Double rightSide) {
+        return this.operate.apply(leftSide, rightSide);
     }
 }
