@@ -1,3 +1,5 @@
+package calculator;
+
 import java.util.stream.Stream;
 
 public enum Operator {
