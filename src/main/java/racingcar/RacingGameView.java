@@ -11,18 +11,19 @@ public class RacingGameView {
     }
 
     public void viewCarPositions() {
-        ArrayList<Integer> currentCarPositions = this.racingGame.getCurrentCarPositions();
+        ArrayList<Car> currentCars = this.racingGame.getCurrentCars();
 
-        for (int i = 0; i < currentCarPositions.size(); i++) {
-            printCarPosition(currentCarPositions.get(i));
-            if (i == currentCarPositions.size() - 1) {
+        for (int i = 0; i < currentCars.size(); i++) {
+            printCarPosition(currentCars.get(i));
+            if (i == currentCars.size() - 1) {
                 System.out.println();
             }
         }
     }
 
-    private void printCarPosition(int carPosition) {
-        for (int i = 0; i < carPosition; i++) {
+    private void printCarPosition(Car car) {
+        System.out.print(car.getName() + " : ");
+        for (int i = 0; i < car.getPosition(); i++) {
             System.out.print("-");
         }
         System.out.println();

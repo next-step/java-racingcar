@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
@@ -11,16 +12,19 @@ public class RacingGame {
     // 랜덤값이 해당 값 이상일때만 move
     private static final int MORE_THAN_VALUE_FOR_CAR_MOVE = 4;
 
-    private ArrayList<Integer> carPositions;
+    // 자동차 이름 구분자
+    private final static String SEPARATOR_CAR_NAMES = ",";
+
+    private List<Car> cars;
     private RandomValueGeneratable randomValueGenerator;
 
-    public RacingGame(int carTotalCount) {
-        this(carTotalCount, getRandomValueGenerator());
+    public RacingGame(String carNames) {
+        this(carNames, getRandomValueGenerator());
     }
 
-    public RacingGame(int carTotalCount, RandomValueGeneratable randomValueGenerator) {
-        validateInputCount(carTotalCount);
-        initCarPositions(carTotalCount);
+    public RacingGame(String carNames, RandomValueGeneratable randomValueGenerator) {
+        validateCarNames(carNames);
+        makeCars(carNames);
         this.randomValueGenerator = randomValueGenerator;
     }
 
@@ -31,29 +35,41 @@ public class RacingGame {
         }
     }
 
-    public ArrayList<Integer> getCurrentCarPositions() {
-        ArrayList<Integer> cloneCarPositoins = (ArrayList<Integer>) this.carPositions.clone();
-        return cloneCarPositoins;
+    public ArrayList<Car> getCurrentCars() {
+        ArrayList<Car> cloneCars = new ArrayList<>();
+
+        for (int i = 0; i < this.cars.size(); i++) {
+            cloneCars.add(this.cars.get(i).clone());
+        }
+        return cloneCars;
     }
 
     private void moveCar() {
-        for (int i = 0; i < this.carPositions.size(); i++) {
+        for (int i = 0; i < this.cars.size(); i++) {
             if (randomValueGenerator.getRandomValue() > MORE_THAN_VALUE_FOR_CAR_MOVE) {
-                this.carPositions.set(i, this.carPositions.get(i) + 1);
+                this.cars.get(i).move(1);
             }
         }
     }
 
-    private void initCarPositions(int carTotalCount) {
-        this.carPositions = new ArrayList<>();
-        for (int i = 0; i < carTotalCount; i++) {
-            this.carPositions.add(BASE_POSITION);
+    private void makeCars(String carNames) {
+        this.cars = new ArrayList<>();
+
+        String[] splitCarNames = carNames.split(SEPARATOR_CAR_NAMES);
+        for (int i = 0; i < splitCarNames.length; i++) {
+            this.cars.add(new Car(splitCarNames[i], BASE_POSITION));
         }
     }
 
     private void validateInputCount(int inputCount) {
         if (inputCount <= 0) {
             throw new IllegalArgumentException("0보다 큰 수를 입력해야 합니다.");
+        }
+    }
+
+    private void validateCarNames(String carNames) {
+        if (carNames.split(SEPARATOR_CAR_NAMES).length <= 1) {
+            throw new IllegalArgumentException("자동차가 두대이상은 있어야 경주가 가능합니다.");
         }
     }
 
