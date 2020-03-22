@@ -29,9 +29,9 @@ public class RacingGame {
         }
     }
 
-    public List<Car> play(int roundTime, int carCount) {
+    public List<Car> play(int carCount, int roundTime) {
         createCars(carCount);
-        for(int i = 1; i <= roundTime; i++) {
+        for(int i = 0; i < roundTime; i++) {
             move(i);
         }
         return carList;
