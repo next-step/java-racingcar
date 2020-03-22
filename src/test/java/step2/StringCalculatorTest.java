@@ -58,7 +58,7 @@ public class StringCalculatorTest {
     @Test
     @DisplayName("연산자와 숫자를 입력받아 계산이 잘 되는지 테스트")
     void numberCalculate() {
-        assertThat(StringCalculator.calculate("*", 3, 2)).isEqualTo(6);
+        assertThat(Operator.calculateByOperator("*", 3, 2)).isEqualTo(6);
     }
 
     @DisplayName("최종 계산 테스트")

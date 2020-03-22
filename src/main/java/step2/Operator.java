@@ -1,10 +1,20 @@
 package step2;
 
 public enum Operator {
-    ADD("+"),
-    SUBTRACT("-"),
-    MULTIPLY("*"),
-    DIVISION("/");
+    ADD("+") {
+        public int calculate(int firstNum, int secondNum) { return calculator.add(firstNum, secondNum); }
+    },
+    SUBTRACT("-") {
+        public int calculate(int firstNum, int secondNum) {return calculator.subtract(firstNum, secondNum); }
+    },
+    MULTIPLY("*") {
+        public int calculate(int firstNum, int secondNum) {return calculator.multiple(firstNum, secondNum); }
+    },
+    DIVISION("/") {
+        public int calculate(int firstNum, int secondNum) {return calculator.divide(firstNum, secondNum); }
+    };
+
+    Calculator calculator = new Calculator();
 
     private final String value;
 
@@ -16,20 +26,22 @@ public enum Operator {
         return value;
     }
 
-    public int calculate(int firstNum, int secondNum) {
-        Calculator calculator = new Calculator();
-        switch(this) {
-            case ADD:
-                return calculator.add(firstNum, secondNum);
-            case SUBTRACT:
-                return calculator.subtract(firstNum, secondNum);
-            case MULTIPLY:
-                return calculator.multiple(firstNum, secondNum);
-            case DIVISION:
-                return calculator.divide(firstNum, secondNum);
-            default:
-                throw new IllegalArgumentException("적절한 연산자가 아닙니다.");
+    public abstract int calculate(int firstNum, int secondNum);
+
+    public static int calculateByOperator(String operator, int firstNum, int secondNum) {
+        if(Operator.ADD.getValue().equals(operator)) {
+            return Operator.ADD.calculate(firstNum, secondNum);
         }
+        else if(Operator.SUBTRACT.getValue().equals(operator)) {
+            return Operator.SUBTRACT.calculate(firstNum, secondNum);
+        }
+        else if(Operator.MULTIPLY.getValue().equals(operator)) {
+            return Operator.MULTIPLY.calculate(firstNum, secondNum);
+        }
+        else if(Operator.DIVISION.getValue().equals(operator)) {
+            return Operator.DIVISION.calculate(firstNum, secondNum);
+        }
+        return -1; // Enum에서 Exception으로 처리해주고 싶은데 어떡하면 좋을까?
     }
 }
 

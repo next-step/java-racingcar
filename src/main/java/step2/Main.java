@@ -28,7 +28,7 @@ public class Main {
             int secondNumber = Integer.parseInt(splitedString[i+2]);
 
             validator.checkDivideZero(operator, firstNumber);
-            result = StringCalculator.calculate(operator, firstNumber, secondNumber);
+            result = Operator.calculateByOperator(operator, firstNumber, secondNumber);
         }
         return Integer.toString(result);
     }
