@@ -16,7 +16,7 @@ public class RacingGame {
         if (Objects.isNull(cars) || cars.isEmpty()) {
             throw new IllegalArgumentException("차 대수는 0 이상이야 합니다.");
         }
-        this.cars = cars;
+        this.cars = cars.stream().distinct().collect(Collectors.toList());
     }
 
     public void move() {
@@ -25,6 +25,24 @@ public class RacingGame {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public List<Car> getWinner() {
+        List<Car> orderedByPositions = cars.stream()
+                .sorted(Comparator.comparingInt(Car::getPosition).reversed())
+                .collect(Collectors.toList());
+
+        int winnerPosition = orderedByPositions.get(0).getPosition();
+
+        for (int i = 0 ; i < orderedByPositions.size() ; i++) {
+            if (winnerPosition == orderedByPositions.get(i).getPosition()) {
+                continue;
+            }
+
+            return orderedByPositions.subList(0, i);
+        }
+
+        return orderedByPositions;
     }
 
     public static void main(String[] args) {
@@ -47,6 +65,8 @@ public class RacingGame {
             racingGame.move();
             resultView.printPositions(racingGame.getCars());
         }
+
+        resultView.printWinner(racingGame.getWinner());
     }
 
 }

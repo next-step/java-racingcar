@@ -1,5 +1,7 @@
 package racing;
 
+import java.util.Objects;
+
 public class Car {
 
     private static final int MOVE_CONDITION_NUM = 4;
@@ -37,5 +39,18 @@ public class Car {
         if (rand < RAND_VALID_LOWER || rand > RAND_VALID_UPPER) {
             throw new IllegalArgumentException();
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return name.equals(car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }

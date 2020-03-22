@@ -3,8 +3,18 @@ package racing.view;
 import racing.Car;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
+
+    public void printWinner(List<Car> winners) {
+        String winnerMsg = winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+
+        System.out.printf("%s가 최종 우승했습니다.", winnerMsg);
+        printLineBreak();
+    }
 
     public void printPositions(List<Car> cars) {
         for (Car car : cars) {

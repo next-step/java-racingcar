@@ -1,12 +1,10 @@
-package racing.domain;
+package racing;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.Car;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 class CarTest {
 
@@ -31,6 +29,14 @@ class CarTest {
     @DisplayName("전진을 위한 random 값이 0 <= rand <= 9 이 아니면 IllegalArgumentException 이 발생한다.")
     public void moveForwardExceptionTest() {
         assertThatIllegalArgumentException().isThrownBy(() -> car.moveForward(-1));
+    }
+
+    @Test
+    @DisplayName("이름이 같은 자동차는 같은 자동차로 한다")
+    public void equalTest() {
+        Car car1 = new Car("test");
+        Car car2 = new Car("test");
+        assertThat(car1).isEqualTo(car2);
     }
 
 }
