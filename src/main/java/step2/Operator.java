@@ -1,7 +1,6 @@
 package step2;
 
 public enum Operator {
-
     ADD("+"),
     SUBTRACT("-"),
     MULTIPLY("*"),
@@ -18,7 +17,6 @@ public enum Operator {
     }
 
     public int calculate(int firstNum, int secondNum) {
-
         Calculator calculator = new Calculator();
         switch(this) {
             case ADD:

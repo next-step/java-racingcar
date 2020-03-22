@@ -80,7 +80,6 @@ public class StringCalculatorTest {
     @Test
     @DisplayName("적절한 연산자가 입력되지 않았을 때의 테스트")
     void OperatorException() {
-
         //TODO: Enum을 제대로 활용해서 Exception 처리 할 수 있도록 개선 필요해보임
         String input = "2 + 3 - 5 # 3";
 //        assertThatExceptionOfType(IllegalArgumentException.class)
