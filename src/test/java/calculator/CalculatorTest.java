@@ -51,7 +51,7 @@ public class CalculatorTest {
 
     @Test
     @DisplayName("입력 값이 null 이거나 빈 공백 문자일 경우 IllegalArgumentException throw")
-    void input_validation() {
+    void inputValidation() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
                     calculator.calculate("  ");
@@ -65,7 +65,7 @@ public class CalculatorTest {
 
     @Test
     @DisplayName("사칙연산 기호가 아닌 경우 IllegalArgumentException throw")
-    void not_operator() {
+    void operatorValidation() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
                     calculator.calculate("1 @ 3");
@@ -75,13 +75,13 @@ public class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"2 + 3 * 4 / 2:10", "2 * 3 + 10 / 4 - 3:1"}, delimiter = ':')
     @DisplayName("사칙 연산을 모두 포함하는 기능 구현")
-    void calculate_all(String input, long expected) {
+    void calculateAllOperator(String input, long expected) {
         long result = calculator.calculate(input);
         assertThat(result).isEqualTo(expected);
     }
 
     @Test
-    void stack_pop() {
+    void stackPop() {
         Stack<Object> objects = new Stack<>();
         assertThatExceptionOfType(EmptyStackException.class)
                 .isThrownBy(() -> {

@@ -1,38 +1,71 @@
 package calculator;
 
-import java.util.Collections;
-import java.util.EmptyStackException;
 import java.util.Stack;
 
 public class CalculationOrder {
 
-    private Stack<String> order = new Stack<>();
+    private static final int BINOMIAL_EXPRESSION_SIZE = 3;
+    private static final int ADDITIONAL_INPUT_SIZE = 2;
+    private static final int ODD_NUMBER = 1;
+    private static final int EVEN_NUMBER = 2;
+    private static final int INDEX_INTERVAL = 2;
+
+    private Stack<Long> numberStack = new Stack<>();
+    private Stack<Operator> operatorStack = new Stack<>();
 
     public void init(String[] inputs) {
-        for(int i = inputs.length -1 ; i>=0; i--){
-            order.push(inputs[i]);
+        addStackReverse(inputs);
+    }
+
+    private void addStackReverse(String[] inputs) {
+        verifyInputs(inputs);
+        addOperationStack(inputs);
+        addNumberStack(inputs);
+
+    }
+
+    private void verifyInputs(String[] inputs) {
+        if ((inputs.length - BINOMIAL_EXPRESSION_SIZE) % ADDITIONAL_INPUT_SIZE != 0) {
+            throw new IllegalArgumentException();
         }
     }
 
-    public String next() {
-        String next = "";
+    private void addOperationStack(String[] inputs) {
+        for (int i = inputs.length - EVEN_NUMBER; i >= 0; i = i - INDEX_INTERVAL) {
+            operatorStack.push(Operator.findOperatorByValue(inputs[i]));
+        }
+    }
+
+    private void addNumberStack(String[] inputs) {
+        for (int i = inputs.length - ODD_NUMBER; i >= 0; i = i - INDEX_INTERVAL) {
+            numberStack.push(parseLong(inputs[i]));
+        }
+    }
+
+    private long parseLong(String input) {
         try {
-            next = order.pop();
-        } catch (EmptyStackException e) {
-            return null;
+            return Long.parseLong(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
         }
-        return next;
     }
 
-    public boolean isComplete() {
-        return order.size() == 1;
+    public BinomialExpression nextBinomialExpression() {
+        if (isCalculate()) {
+            return new BinomialExpression(numberStack.pop(), numberStack.pop(), operatorStack.pop());
+        }
+        throw new IllegalArgumentException();
+    }
+
+    public boolean isCalculate() {
+        return operatorStack.size() > 0 && numberStack.size() > 1;
     }
 
     public void addCalculateResult(long result) {
-        order.push(String.valueOf(result));
+        numberStack.push(result);
     }
 
-    public long getCalculateTotalResult() {
-        return Long.parseLong(order.pop());
+    public long getCurrentNumber() {
+        return numberStack.pop();
     }
 }
