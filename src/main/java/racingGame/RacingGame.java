@@ -1,31 +1,35 @@
 package racingGame;
 
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
 public class RacingGame {
+    private int[] carPosition;
+    private int rounding;
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int cars = scanner.nextInt();
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int rounds = scanner.nextInt();
+    public RacingGame(int cars, int rounds) {
+        this.carPosition = new int[cars];
+        this.rounding = rounds;
+    }
 
-        String[] racingCars = new String[cars];
-        Arrays.fill(racingCars, "");
-
-        for (int idx = 0; idx < rounds; idx++) {
-            for (int idx2 = 0; idx2 < racingCars.length; idx2++) {
-                Random generator = new Random();
-                int randomInt = generator.nextInt(10);
-                if (randomInt > 4) {
-                    racingCars[idx2] += "-";
-                }
-                System.out.println(racingCars[idx2]);
-            }
-            System.out.println(" ");
+    public int[] racing() {
+        for (int idx = 0; idx < rounding; idx++) {
+            moveCar();
         }
+        return carPosition;
+    }
+
+    private void moveCar() {
+        for (int i = 0; i < carPosition.length; i++) {
+            Random random = new Random();
+            int randomNum = random.nextInt(10);
+
+            if (randomNum >= 4) {
+                carPosition[i]++;
+            }
+            ResultView.printResult(carPosition[i]);
+            System.out.println();
+        }
+        System.out.println();
     }
 }
