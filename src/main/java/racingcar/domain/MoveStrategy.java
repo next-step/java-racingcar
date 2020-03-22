@@ -2,14 +2,14 @@ package racingcar.domain;
 
 public class MoveStrategy {
 
-    private final boolean condition;
+    private final int randomValue;
 
     public MoveStrategy(int randomValue) {
-        condition = randomValue >= RacingGameConstant.MOVE_CONDITION;
+        this.randomValue = randomValue;
     }
 
     public boolean isMove() {
-        return condition;
+        return randomValue >= RacingGameConstant.MOVE_CONDITION;
     }
 
 }

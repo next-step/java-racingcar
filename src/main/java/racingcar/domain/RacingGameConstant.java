@@ -9,8 +9,8 @@ public class RacingGameConstant {
     public static final String CAR_MARKER = "-";
     public static final String CARRIAGE_RETURN = "\n";
 
-    public static final int RANDOM_LIMIT = 10;
-    public static final int APPROVE_CONDITION = 4;
+    public static final int RANDOM_LIMIT = 9;
+    public static final int MOVE_CONDITION = 4;
 
 }
 

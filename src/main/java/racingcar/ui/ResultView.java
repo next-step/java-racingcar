@@ -1,14 +1,13 @@
 package racingcar.ui;
 
+import racingcar.domain.RacingGameResults;
+
 public class ResultView {
 
-    private final String renderingView;
-
-    public ResultView(String renderingView) {
-        this.renderingView = renderingView;
+    public ResultView() {
     }
 
-    public void print() {
-        System.out.printf("실행 결과\n%s", renderingView);
+    public void print(RacingGameResults racingGameResults) {
+        System.out.printf("실행 결과\n%s", racingGameResults.getRenderedGameResults());
     }
 }

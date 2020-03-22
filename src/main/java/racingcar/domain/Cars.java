@@ -2,8 +2,6 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Random;
 
 public class Cars {
     private final List<Car> cars;
@@ -21,24 +19,29 @@ public class Cars {
     }
 
     public Cars moveAllCar() {
-        List<Car> carResults = new ArrayList<>();
         for (int carNumber = 0; carNumber < cars.size(); carNumber++) {
-            int randomValue = new Random().nextInt(RacingGameConstant.RANDOM_LIMIT);
-            carResults.add(cars.get(carNumber).move(new MoveStrategy(randomValue)));
+            cars.get(carNumber)
+                    .move(new MoveStrategy(
+                            new RandomCondition().getRandomCondition()))
+            ;
         }
-        return new Cars(carResults);
+        return new Cars(cars);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Cars)) return false;
-        Cars cars1 = (Cars) o;
-        return Objects.equals(cars, cars1.cars);
+    public String getResults() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Car car : cars) {
+            writeAllCarsPosition(stringBuilder, car);
+        }
+        stringBuilder.append(RacingGameConstant.CARRIAGE_RETURN);
+        return stringBuilder.toString();
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(cars);
+    private void writeAllCarsPosition(StringBuilder stringBuilder, Car car) {
+        for (int i = 0; i < car.getPosition(); i++) {
+            stringBuilder.append(RacingGameConstant.CAR_MARKER);
+        }
+        stringBuilder.append(RacingGameConstant.CARRIAGE_RETURN);
     }
+
 }

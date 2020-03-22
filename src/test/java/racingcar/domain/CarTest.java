@@ -19,22 +19,17 @@ class CarTest {
         assertThat(car).isNotNull();
     }
 
-    @DisplayName("자동차는 전진 조건이 4 이상일 때만 이동할 수 있다. 이동에 성공하면 자동차의 score는 1 이 된다.")
+    @DisplayName("자동차는 전진 조건이 4 이상일 때만 이동할 수 있다.")
     @ParameterizedTest
-    @CsvSource(value = {"4 : true,1", "3 : false,0", "5: true,1", "2 : false,0"}, delimiter = ':')
-    public void carMoveConditionOnTrue(int condition, String expected) {
+    @CsvSource(value = {"4 : true", "3 : false", "5: true", "2 : false"}, delimiter = ':')
+    public void carMoveConditionOnTrue(int condition, boolean expected) {
         //given
         MoveStrategy moveStrategy = new MoveStrategy(condition);
         Car car = new Car().move(moveStrategy);
 
         //when & then
-        String[] splitExpected = expected.split(",");
-
         assertThat(moveStrategy.isMove())
-                .isEqualTo(Boolean.parseBoolean(splitExpected[0]));
-
-        assertThat(car.getScore())
-                .isEqualTo(Integer.parseInt(splitExpected[1]));
+                .isEqualTo(expected); //splitExpected[0] = boolean
     }
 
 

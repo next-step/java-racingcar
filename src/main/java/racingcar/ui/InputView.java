@@ -6,16 +6,16 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private int totalCarCount;
+    private int numberOfCars;
     private int time;
 
     public InputView() {
-        this.totalCarCount = requestTotalCarCount();
+        this.numberOfCars = requestTotalCarCount();
         this.time = requestTime();
     }
 
-    public int getTotalCarCount() {
-        return totalCarCount;
+    public int getNumberOfCars() {
+        return numberOfCars;
     }
 
     public int getTime() {
