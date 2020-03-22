@@ -1,20 +1,19 @@
 package domain;
 
 public class RacingCarPosition {
-
     private String name;
-    private Integer position;
+    private Integer locationPoint;
 
-    public RacingCarPosition(String name, Integer position) {
+    public RacingCarPosition(String name, Integer locationPoint) {
         this.name = name;
-        this.position = position;
+        this.locationPoint = locationPoint;
     }
 
     public String getName() {
         return name;
     }
 
-    public Integer getPosition() {
-        return position;
+    public Integer getLocationPoint() {
+        return locationPoint;
     }
 }

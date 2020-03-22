@@ -16,10 +16,10 @@ public class RacingGame {
         this.roundNumber = roundNumber;
     }
 
-    public static RacingGame create(Integer carNumber, Integer roundNumber) {
+    public static RacingGame create(String carName, Integer carNumber, Integer roundNumber) {
         validate(carNumber, roundNumber);
         List<RacingCar> cars = IntStream.range(0, carNumber)
-                .mapToObj(i -> RacingCar.newInstance(new RandomMoveRule()))
+                .mapToObj(i -> RacingCar.newInstance(carName, new RandomMoveRule()))
                 .collect(Collectors.toList());
 
         return new RacingGame(new RacingCars(cars), roundNumber);

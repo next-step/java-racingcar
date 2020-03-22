@@ -13,9 +13,9 @@ public class RacingGameResult {
         this.racingRounds = rounds;
     }
 
-    public List<List<Integer>> getResult() {
+    public List<List<RacingCarPosition>> getResult() {
         return racingRounds.stream()
-                .map(round -> round.getCarPositions())
+                .map(RacingRound::getCarPositions)
                 .collect(Collectors.toList());
     }
 }

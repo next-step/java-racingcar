@@ -5,25 +5,24 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingRound {
-    private final List<Integer> carPositions;
+    private final List<RacingCarPosition> carPositions;
 
-    private RacingRound(List<Integer> carPositions) {
+    private RacingRound(List<RacingCarPosition> carPositions) {
         this.carPositions = carPositions;
     }
 
-    public static RacingRound newInstance(int[] carPositionArray) {
-        List<Integer> carPositions = Arrays.stream(carPositionArray)
-                .boxed()
+    public static RacingRound newInstance(RacingCarPosition[] carPositionArray) {
+        List<RacingCarPosition> carPositions = Arrays.stream(carPositionArray)
                 .collect(Collectors.toList());
         return newInstance(carPositions);
     }
 
-    public static RacingRound newInstance(List<Integer> carPositions) {
+    public static RacingRound newInstance(List<RacingCarPosition> carPositions) {
         validate(carPositions);
         return new RacingRound(carPositions);
     }
 
-    private static void validate(List<Integer> carPositions) {
+    private static void validate(List<RacingCarPosition> carPositions) {
         if (carPositions == null || carPositions.size() < 0) {
             throw new RuntimeException("car positions must be greater than zero.");
         }
@@ -31,16 +30,16 @@ public class RacingRound {
         validatePositions(carPositions);
     }
 
-    private static void validatePositions(List<Integer> carPositions) {
+    private static void validatePositions(List<RacingCarPosition> carPositions) {
         boolean hasNegativeNumber = carPositions.stream()
-                .anyMatch(position -> position < 0);
+                .anyMatch(position -> position.getLocationPoint() < 0);
 
         if (hasNegativeNumber) {
             throw new RuntimeException("car positions must be greater than zero.");
         }
     }
 
-    public List<Integer> getCarPositions() {
+    public List<RacingCarPosition> getCarPositions() {
         return this.carPositions;
     }
 

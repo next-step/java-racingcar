@@ -1,5 +1,6 @@
 package RacingCarGameTests;
 
+import domain.RacingCarPosition;
 import domain.RacingGame;
 import domain.RacingGameResult;
 import domain.RacingRound;
@@ -125,15 +126,15 @@ public class RacingGameTests {
     private static Stream<Arguments> racingGameWinnerTestCases() {
         return Stream.of(
                 Arguments.of(new ArrayList<>(Arrays.asList(
-                        new RacingRound(new RacingCarPosition[]{
+                        RacingRound.newInstance(new RacingCarPosition[]{
                                 new RacingCarPosition("sonata", 0),
                                 new RacingCarPosition("sorento", 0),
                                 new RacingCarPosition("tesla", 0)})
-                        , new RacingRound(new RacingCarPosition[]{
+                        , RacingRound.newInstance(new RacingCarPosition[]{
                                 new RacingCarPosition("sonata", 1),
                                 new RacingCarPosition("sorento", 1),
                                 new RacingCarPosition("tesla", 0)})
-                        , new RacingRound(new RacingCarPosition[]{
+                        , RacingRound.newInstance(new RacingCarPosition[]{
                                 new RacingCarPosition("sonata", 2),
                                 new RacingCarPosition("sorento", 2),
                                 new RacingCarPosition("tesla", 1)})
@@ -141,11 +142,11 @@ public class RacingGameTests {
                         new String[]{"sonata", "sorento"}
                 ),
                 Arguments.of(new ArrayList<>(Arrays.asList(
-                        new RacingRound(new RacingCarPosition[]{
+                        RacingRound.newInstance(new RacingCarPosition[]{
                                 new RacingCarPosition("sonata", 0),
                                 new RacingCarPosition("sorento", 0),
                                 new RacingCarPosition("tesla", 0)})
-                        , new RacingRound(new RacingCarPosition[]{
+                        , RacingRound.newInstance(new RacingCarPosition[]{
                                 new RacingCarPosition("sonata", 0),
                                 new RacingCarPosition("sorento", 1),
                                 new RacingCarPosition("tesla", 0)})
