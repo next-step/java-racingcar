@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.model;
 
 public class Car {
     private static final int MINIMUM_NUMBER_TO_RUN = 4;

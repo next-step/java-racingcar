@@ -1,12 +1,12 @@
 package racingcar;
 
-import racingcar.dto.InputType;
-import racingcar.dto.InputView;
+import racingcar.view.InputType;
+import racingcar.view.InputView;
 
 import java.util.Scanner;
 
-import static racingcar.dto.InputType.CAR;
-import static racingcar.dto.InputType.TRY;
+import static racingcar.view.InputType.CAR;
+import static racingcar.view.InputType.TRY;
 
 public class Question {
     private InputView inputView;

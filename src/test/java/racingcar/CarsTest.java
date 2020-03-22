@@ -2,9 +2,9 @@ package racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
-import racingcar.dto.InputView;
+import racingcar.model.Car;
+import racingcar.model.Cars;
+import racingcar.view.InputView;
 
 import java.util.Arrays;
 import java.util.List;
