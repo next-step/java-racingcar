@@ -24,8 +24,6 @@ public class InputView {
             message("숫자만 입력가능합니다.");
             e.printStackTrace();
             inputClose();
-        } finally {
-
         }
         return input;
     }
