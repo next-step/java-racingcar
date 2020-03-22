@@ -20,6 +20,8 @@ public class Application {
         System.out.println(RESULT_PRINT);
         racingGame.start();
 
+        ResultView.printCarRoundLogs(racingGame.getRoundLogs());
+
         ResultView.printWinner(racingGame.findWinner());
     }
 }

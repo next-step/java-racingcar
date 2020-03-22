@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import lombok.Getter;
-import racingcar.view.ResultView;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,10 +16,6 @@ public class Car {
 
     public void move(int moveCount) {
         position += moveCount;
-    }
-
-    public void printPosition() {
-        ResultView.printPosition(name, position);
     }
 
     public boolean equalPosition(int position) {
