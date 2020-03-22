@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Calculator {
 
-    private final static String FORMULA_SEPARATION_KEYWROD = " ";
+    private static final String FORMULA_SEPARATION_KEYWROD = " ";
 
     private List<Double> numbers;
     private List<OperatorEnum> operators;
