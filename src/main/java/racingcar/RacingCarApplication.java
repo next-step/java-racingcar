@@ -9,7 +9,7 @@ public class RacingCarApplication {
         InputView.inputClose();
 
         RacingGame racing = new RacingGame(carNumber,moveCount);
-        racing.racing();
+        racing.startRace();
 
     }
 }
