@@ -7,17 +7,17 @@ public class InputView {
     private static Scanner sc = new Scanner(System.in);
     private static int input;
 
-    public static int carNumber() {
-        message("자동차 대수는 몇 대 인가요?");
-        return inputValidator();
+    public static int insertCar() {
+        message("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        return checkNumberValidation();
     }
 
-    public static int moveCount() {
+    public static int insertMoveCount() {
         message("시도할 회수는 몇 회 인가요?");
-        return inputValidator();
+        return checkNumberValidation();
     }
 
-    private static int inputValidator() {
+    private static int checkNumberValidation() {
         try {
             input = checkNumber(sc.nextInt());
         } catch (InputMismatchException e) {
@@ -31,7 +31,7 @@ public class InputView {
     private static int checkNumber(int input) {
         if (input < 1) {
             message("1보다 큰 숫자를 입력해 주세요.\n");
-            carNumber();
+            insertCar();
         }
         return input;
     }
