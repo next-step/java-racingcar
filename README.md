@@ -7,3 +7,17 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+
+
+## 구현기능
+
+* InputView 구현 (자동차 대수 입력받기)
+* InputView 구현 (시도횟수 입력받기)
+* 입력값 validation
+* 자동차대수 만큼 자동차 객채생성
+* 자동차시도회수 만큼 움직임
+* 랜덤값(0~9) 값 생성
+* 랜던값(0~9) 4 이상인 경우 전진
+* ResulitView 구현 ("-" 구현, 타이틀 구현, 횟수당 구분값 구현)
+*
