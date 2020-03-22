@@ -8,6 +8,8 @@ public class ResultView {
     private static final int BOUND = 10;
     private static final int BASE_POINT = 4;
     private static final String CAR_DISPLAY = "-";
+    private static final String START_GAME_DISPLAY = "실행 결과";
+    private static final String WINNER_DISPLAY = "%s가 최종 우승했습니다.";
     private RacingGame racingGame;
 
     public ResultView(RacingGameData racingGameData) {
@@ -16,15 +18,15 @@ public class ResultView {
 
     public void printResult() {
         List<Car> carPositions;
-        System.out.println("실행 결과");
+        System.out.println(START_GAME_DISPLAY);
         while (racingGame.isMovable()) {
             carPositions = racingGame.move();
             print(carPositions);
         }
         String winners = racingGame.getWinner().stream()
-                .map(car -> car.getName())
+                .map(Car::getName)
                 .collect(Collectors.joining(","));
-        System.out.println(winners + "가 최종 우승했습니다.");
+        System.out.println(String.format(WINNER_DISPLAY, winners));
     }
 
     private void print(List<Car> carPositions) {
