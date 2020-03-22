@@ -22,7 +22,7 @@ public class RacingGameApplication {
         racingGame.participate(participants, gameCount);
         racingGame.start();
 
-        ResultView resultView = new ResultView(racingGame.getTotalGameResult());
+        ResultView resultView = new ResultView(racingGame.getGameResult());
         resultView.print();
     }
 }

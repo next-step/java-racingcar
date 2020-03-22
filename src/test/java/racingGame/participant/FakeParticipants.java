@@ -26,9 +26,9 @@ public class FakeParticipants implements Participants {
     }
 
     @Override
-    public GameResult getGameResult() {
-        return new GameResult(cars.stream()
-                .map(CarRecord::new)
+    public RoundScore getRoundScore() {
+        return new RoundScore(cars.stream()
+                .map(CarScore::new)
                 .collect(Collectors.toList()));
     }
 

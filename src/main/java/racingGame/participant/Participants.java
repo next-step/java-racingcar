@@ -6,9 +6,10 @@ import racingGame.game.RacingGameRule;
 import java.util.List;
 
 public interface Participants {
+
     void gameStart(RacingGameRule carForwardRule);
 
-    GameResult getGameResult();
+    RoundScore getRoundScore();
 
     List<Car> getWinners();
 }

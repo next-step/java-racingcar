@@ -1,8 +1,8 @@
 package racingGame.view;
 
 import racingGame.car.Car;
-import racingGame.participant.GameResult;
-import racingGame.game.TotalGameResult;
+import racingGame.game.GameResult;
+import racingGame.participant.RoundScore;
 
 import java.util.List;
 
@@ -17,10 +17,10 @@ public class ResultView {
     private StringBuilder resultMessage = new StringBuilder(START_TEXT);
 
 
-    public ResultView(TotalGameResult totalGameResult) {
-        totalGameResult.getGameResults()
+    public ResultView(GameResult gameResult) {
+        gameResult.getRoundScores()
                 .forEach(this::appendGameResult);
-        appendWinner(totalGameResult.getWinners());
+        appendWinner(gameResult.getWinners());
     }
 
     private void appendWinner(List<Car> winners) {
@@ -30,12 +30,12 @@ public class ResultView {
                 .append(WINNER_TEXT);
     }
 
-    private void appendGameResult(GameResult gameResult) {
-        gameResult.getRecords().
-                forEach(record -> resultMessage
-                        .append(record.getCar().getName())
+    private void appendGameResult(RoundScore roundScore) {
+        roundScore.getRecords().
+                forEach(carLog -> resultMessage
+                        .append(carLog.getCarName())
                         .append(" : ")
-                        .append(translatePositionText(record.getDistance()))
+                        .append(translatePositionText(carLog.getPosition()))
                         .append(ENTER));
         resultMessage.append(ENTER);
     }

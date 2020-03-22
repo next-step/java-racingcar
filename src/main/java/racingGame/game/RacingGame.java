@@ -1,6 +1,6 @@
 package racingGame.game;
 
-import racingGame.participant.GameResult;
+import racingGame.participant.RoundScore;
 import racingGame.participant.Participants;
 
 import java.util.ArrayList;
@@ -10,8 +10,8 @@ public class RacingGame {
 
     private final RacingGameRule racingGameRule;
     private Participants participants;
-    private TotalGameResult totalGameResult;
-    private int gameCount;
+    private GameResult gameResult;
+    private int round;
 
     public RacingGame(RacingGameRule racingGameRule) {
         this.racingGameRule = racingGameRule;
@@ -20,7 +20,7 @@ public class RacingGame {
     public void participate(Participants Participants, int gameCount) {
         verifyParticipate(Participants, gameCount);
         this.participants = Participants;
-        this.gameCount = gameCount;
+        this.round = gameCount;
     }
 
     private void verifyParticipate(Participants Participants, int gameCount) {
@@ -33,23 +33,23 @@ public class RacingGame {
     }
 
     public void start() {
-        verifyParticipate(participants, gameCount);
-        List<GameResult> result = new ArrayList<>();
-        for (int i = 0; i < gameCount; i++) {
+        verifyParticipate(participants, round);
+        List<RoundScore> result = new ArrayList<>();
+        for (int i = 0; i < round; i++) {
             participants.gameStart(racingGameRule);
-            result.add(participants.getGameResult());
+            result.add(participants.getRoundScore());
         }
         recordTotalGameResult(result);
     }
 
-    private void recordTotalGameResult(List<GameResult> result) {
-        totalGameResult = new TotalGameResult(participants.getWinners(), result);
+    private void recordTotalGameResult(List<RoundScore> result) {
+        gameResult = new GameResult(participants.getWinners(), result);
     }
 
-    public TotalGameResult getTotalGameResult() {
-        if (totalGameResult == null) {
+    public GameResult getGameResult() {
+        if (gameResult == null) {
             throw new IllegalArgumentException();
         }
-        return totalGameResult;
+        return gameResult;
     }
 }
