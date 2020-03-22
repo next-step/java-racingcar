@@ -20,10 +20,4 @@ public class CarTest {
     void move() {
         assertThat(car.getPosition()).isEqualTo(2);
     }
-
-    @Test
-    void printPosition() {
-        car.move(1);
-        car.printPosition();
-    }
 }

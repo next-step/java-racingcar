@@ -11,8 +11,7 @@ public class Calculator {
 
         BigDecimal result = new BigDecimal(value[0]);
 
-        int loop = value.length - 1;
-        for (int i = 1; i < loop; i += 2) {
+        for (int i = 1, end = value.length - 1; i < end; i += 2) {
             result = apply(value[i], result, new BigDecimal(value[i + 1]));
         }
 

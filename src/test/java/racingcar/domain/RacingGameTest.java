@@ -3,7 +3,7 @@ package racingcar.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,11 +14,7 @@ public class RacingGameTest {
 
     @BeforeEach
     void setUp() {
-        List<String> carNames = new ArrayList<>();
-        carNames.add("pobi");
-        carNames.add("crong");
-        carNames.add("honux");
-        carNames.add("seul");
+        List<String> carNames = Arrays.asList("pobi", "crong", "honux", "seul");
 
         List<Car> cars = Car.listOf(carNames);
         cars.get(0).move(1);
@@ -38,7 +34,7 @@ public class RacingGameTest {
     @Test
     void findWinner() {
         List<Car> winners = racingGame.findWinner();
-        List<String> winnerNames = winners.stream().map(it -> it.getName())
+        List<String> winnerNames = winners.stream().map(car -> car.getName())
                 .collect(Collectors.toList());
 
         assertThat(winners).hasSize(2);
