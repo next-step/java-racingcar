@@ -1,7 +1,5 @@
 package racingcar.model;
 
-import racingcar.RandomNumGenerator;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,21 +11,18 @@ public class Cars {
         this.cars = cars;
     }
 
-    public Result moveOnce(RandomNumGenerator randomNumGenerator) {
+    public Result moveOnce() {
         List<Integer> result = new ArrayList<>();
         for (Car car : cars) {
-            int randomNumber = randomNumGenerator.generateNumberLessThan(10);
-            boolean canRun = car.canRun(randomNumber);
-            car.move(canRun);
+            car.move();
             result.add(car.getPosition());
         }
         return new Result(result);
     }
 
     public List<Car> findWinner() {
-        int highestPositionValue = findHighestPositionValue();
         return cars.stream()
-                .filter(it -> it.getPosition() == highestPositionValue)
+                .filter(it -> it.isWinner(findHighestPositionValue()) == true)
                 .collect(Collectors.toList());
     }
 

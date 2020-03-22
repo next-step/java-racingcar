@@ -63,11 +63,11 @@ public class OutputView {
     }
 
     private static StringBuilder convertPositionToString(int position) {
-        StringBuilder strPosition = new StringBuilder();
+        StringBuilder stringPosition = new StringBuilder();
         for (int i = 0; i < position; i++) {
-            strPosition.append(ONE_MOVE);
+            stringPosition.append(ONE_MOVE);
         }
-        return strPosition;
+        return stringPosition;
     }
 
     private static String makeWinnersNameInOneLine(Winners winners) {

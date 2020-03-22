@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
-    private static final String DELIMITER_FOR_INPUT = ",";
+    private static final String DELIMITER_FOR_INPUT_CAR = ",";
     private static final Scanner scanner = new Scanner(System.in);
 
     private List<String> carNames;
@@ -39,7 +39,7 @@ public class InputView {
     }
 
     private List<String> splitCarNames(String stringInput) {
-        return Arrays.asList(stringInput.split(DELIMITER_FOR_INPUT));
+        return Arrays.asList(stringInput.split(DELIMITER_FOR_INPUT_CAR));
     }
 
     private int validateNumberType(String stringInput) {

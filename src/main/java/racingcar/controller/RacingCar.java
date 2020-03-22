@@ -1,6 +1,5 @@
 package racingcar.controller;
 
-import racingcar.RandomNumGenerator;
 import racingcar.model.*;
 import racingcar.view.InputView;
 
@@ -14,30 +13,28 @@ public class RacingCar {
     private Results Results;
     private Winners winners;
     private List<String> carNames;
-    private RandomNumGenerator randomNumGenerator;
 
     public RacingCar(InputView inputView) {
         this.carNames = inputView.getCarNames();
         this.tryCount = inputView.getTryCount();
     }
 
-    public void startGame(RandomNumGenerator randomNumGenerator) {
-        this.randomNumGenerator = randomNumGenerator;
+    public void start() {
         ready();
     }
 
-    private void ready(){
+    private void ready() {
         List<Car> allCars = carNames.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
         cars = new Cars(allCars);
-        start();
+        startGame();
     }
 
-    private void start() {
+    private void startGame() {
         List<Result> results = new ArrayList<>();
         for (int i = 0; i < tryCount; i++) {
-            Result result = cars.moveOnce(randomNumGenerator);
+            Result result = cars.moveOnce();
             results.add(result);
         }
         this.Results = new Results(results);
@@ -52,7 +49,7 @@ public class RacingCar {
         return cars;
     }
 
-    public racingcar.model.Results getResults() {
+    public Results getResults() {
         return Results;
     }
 
