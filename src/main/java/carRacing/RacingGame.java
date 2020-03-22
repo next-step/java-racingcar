@@ -24,6 +24,19 @@ public class RacingGame {
         checkCarPositions();
     }
 
+    public void move() {
+        for(int i=0; i<time; i++) {
+            rotate();
+        }
+    }
+
+    private void rotate() {
+        for(Car car : cars) {
+            car.move();
+        }
+        checkCarPositions();
+    }
+
     private void checkCarPositions() {
         carPositions = new ArrayList<>();
         int i=carPositions.size();
