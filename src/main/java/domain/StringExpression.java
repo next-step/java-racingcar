@@ -1,7 +1,6 @@
 package domain;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -12,6 +11,8 @@ public class StringExpression {
     private final List<StringOperation> operations;
 
     private static final String BLANK = " ";
+    private static final int EVEN_NUMBER_REMAIN_AFTER_MODULO = 0;
+    private static final int ODD_NUMBER_REMAIN_AFTER_MODULO = 1;
 
     private StringExpression(List<Integer> numbers, List<StringOperation> operations) {
         this.numbers = numbers;
@@ -24,22 +25,24 @@ public class StringExpression {
         }
 
         String[] splitExpression = splitExpression(expression);
-        List<Integer> stringNumbers = IntStream.range(0, splitExpression.length)
-                .filter(i -> i % 2 == 0)
+        List<Integer> stringNumbers = getTwoIntervalIntStream(splitExpression, EVEN_NUMBER_REMAIN_AFTER_MODULO)
                 .mapToObj(i -> parseNumber(splitExpression[i]))
                 .collect(Collectors.toList());
-        List<StringOperation> stringOperations = IntStream.range(0, splitExpression.length)
-                .filter(i -> i % 2 == 1)
+        List<StringOperation> stringOperations = getTwoIntervalIntStream(splitExpression, ODD_NUMBER_REMAIN_AFTER_MODULO)
                 .mapToObj(i -> StringOperation.of(splitExpression[i]))
                 .collect(Collectors.toList());
-        
+
         validate(stringNumbers, stringOperations);
 
         return new StringExpression(stringNumbers, stringOperations);
     }
 
-    private static String[] splitExpression(String expression) {
+    private static IntStream getTwoIntervalIntStream(String[] splitExpression, int remainAfterModulo) {
+        return IntStream.range(0, splitExpression.length)
+                .filter(i -> i % 2 == remainAfterModulo);
+    }
 
+    private static String[] splitExpression(String expression) {
         return expression.split(BLANK);
     }
 
@@ -59,12 +62,11 @@ public class StringExpression {
 
     public Integer solve() {
         Integer result = 0;
-        Iterator<Integer> numbersIterator = numbers.iterator();
-        Iterator<StringOperation> operationIterator = makeSolvingOperations().iterator();
+        List<StringOperation> solvingOperations = makeSolvingOperations();
 
-        while (numbersIterator.hasNext()) {
-            Integer nextNumber = numbersIterator.next();
-            StringOperation nextOperation = operationIterator.next();
+        for(int i = 0; i < numbers.size(); i++) {
+            Integer nextNumber = numbers.get(i);
+            StringOperation nextOperation = solvingOperations.get(i);
             result = nextOperation.operate(result, nextNumber);
         }
 

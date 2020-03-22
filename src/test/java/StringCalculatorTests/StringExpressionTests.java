@@ -32,7 +32,7 @@ public class StringExpressionTests {
     @ValueSource(strings = {"2 ^ 3", "3 @ 1", "7 & 2"})
     public void unKnownSignTests(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> StringExpression.newInstance(input))
-                .withMessageMatching("Expression contains unknown operation.");
+                .withMessageContaining("Expression contains unknown operation :");
     }
 
     @DisplayName("숫자 대신 다른 문자가 포함된 계산식")
