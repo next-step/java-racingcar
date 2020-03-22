@@ -1,10 +1,17 @@
 package step3;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class RacingGame {
 
-    private int time;
-    private int[] carPositions;
+    private int moveCount;
+    private int carCount;
+    private List<Integer> carPositions;
+    private Random random = new Random();
 
+    private static final int RANDOM_RANGE = 10;
     private static final int FORWARD_STATUS_VALUE = 4;
     private static final int FORWARD_VALUE = 1;
     private static final int STOP_VALUE = 0;
@@ -13,32 +20,35 @@ public class RacingGame {
     }
 
     public RacingGame(int moveCount, int carCount) {
-        time = moveCount;
-        carPositions = new int[carCount];
+        this.moveCount = moveCount;
+        this.carCount = carCount;
+        initCarPosition();
+
     }
 
-    public void moveByRepeatCount(int[] totalRandomNumber) {
-        int length = carPositions.length;
-        int[] randomNumber = new int[length];
-
-        for (int i = 0; i < totalRandomNumber.length; i++) {
-            randomNumber[i % length] = totalRandomNumber[i];
-            if ((i + 1) % length == 0) {
-                carPositions = move(randomNumber);
-                randomNumber = new int[length];
-            }
+    public void initCarPosition() {
+        carPositions = new ArrayList<>();
+        for (int i = 0; i < carCount; i++) {
+            carPositions.add(0);
         }
     }
 
-    public int[] move(int[] randomNumber) {
-        for (int i = 0; i < carPositions.length; i++) {
-            carPositions[i] += findOutMove(randomNumber[i]);
+    public void moveByRepeatCount() {
+        for (int i = 0; i < moveCount; i++) {
+            move();
         }
-        return carPositions;
     }
 
-    public int findOutMove(int randomNumber) {
-        return forwardStatus(randomNumber);
+    public void move() {
+        for (int i = 0; i < carPositions.size(); i++) {
+            Integer position = carPositions.get(i);
+            position += forwardStatus(getRandomNumber());
+            carPositions.set(i, position);
+        }
+    }
+
+    public int getRandomNumber() {
+        return random.nextInt(RANDOM_RANGE);
     }
 
     public int forwardStatus(int randomNumber) {
@@ -48,7 +58,7 @@ public class RacingGame {
         return FORWARD_VALUE;
     }
 
-    public int[] getCarPositions() {
+    public List<Integer> getCarPositions() {
         return carPositions;
     }
 }

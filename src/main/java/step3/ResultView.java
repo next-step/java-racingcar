@@ -1,42 +1,49 @@
 package step3;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class ResultView {
-    private int[] carPositions;
-    private String[] resultCarPositions;
+    private List<Integer> carPositions;
+    private List<String> resultCarPositions;
 
     public ResultView() {
     }
 
-    public ResultView(int[] carPositions) {
+    public ResultView(List<Integer> carPositions) {
         this.carPositions = carPositions;
-        resultCarPositions = new String[carPositions.length];
+        initResultcarPositions(carPositions);
+    }
+
+    private void initResultcarPositions(List<Integer> carPositions) {
+        resultCarPositions = new ArrayList<>();
+        for(int i=0; i<carPositions.size(); i++){
+            resultCarPositions.add("");
+        }
     }
 
     public void setCarPositions() {
-        for (int i = 0; i < carPositions.length; i++) {
+        for (int i = 0; i < carPositions.size(); i++) {
             appendDash(i);
         }
     }
 
     public void appendDash(int index) {
         StringBuilder builder = new StringBuilder();
-        int carPosition = carPositions[index];
+        int carPosition = carPositions.get(index);
         IntStream.range(0, carPosition).forEach(i -> {
             builder.append("-");
         });
 
-        resultCarPositions[index] = builder.toString();
+        resultCarPositions.set(index, builder.toString());
     }
 
     public void printRacingResult() {
-        Arrays.stream(resultCarPositions).forEach(System.out::println);
+        resultCarPositions.forEach(System.out::println);
     }
 
-    public String[] getResultCarPositions() {
+    public List<String> getResultCarPositions() {
         return resultCarPositions;
     }
-
 }
