@@ -1,51 +1,34 @@
 package racingGame.domain;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-	private static final int RANDOM_RANGE = 10;
-	private static final int GO_THRESHOLD = 4;
-	private List<Car> carPositions;
+	private List<Car> cars;
 
 	public RacingGame(Car... cars) {
-		this.carPositions = Arrays.stream(cars)
-				.collect(Collectors.toList());
+		this.cars = Arrays.asList(cars);
 	}
 
 	public List<Car> move() {
-		carPositions.replaceAll((r, v) -> moveCar(carPositions.get(r)));
-		return new HashMap<>(carPositions);
-	}
-
-	private int moveCar(int car) {
-		if (canGo()) {
-			car++;
-		}
-		return car;
-	}
-
-	private boolean canGo() {
-		return Math.random() * RANDOM_RANGE > GO_THRESHOLD;
+		cars.forEach(Car::move);
+		return cars;
 	}
 
 	public List<String> getWinners() {
-		return carPositions.entrySet()
-				.stream()
-				.filter(racer -> racer.getValue().equals(getWinnerPosition()))
-				.map(Map.Entry::getKey)
-				.toArray(String[]::new);
+		int winDistance = getWinnerDistance();
+		return cars.stream()
+				.filter(car -> car.getDistance() == winDistance)
+				.map(Car::getRacer)
+				.collect(Collectors.toList());
 	}
 
-	private int getWinnerPosition() {
+	private int getWinnerDistance() {
 		//noinspection OptionalGetWithoutIsPresent
-		return carPositions.values()
-				.stream()
+		return cars.stream()
+				.map(Car::getDistance)
 				.max(Integer::compareTo)
 				.get();
 	}

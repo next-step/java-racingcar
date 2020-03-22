@@ -1,5 +1,6 @@
 package racingGame.ui;
 
+import java.util.List;
 import java.util.Map;
 
 public class ResultView {
@@ -26,7 +27,7 @@ public class ResultView {
 		return carMarker.toString();
 	}
 
-	public void printWinner(String[] winners) {
+	public void printWinner(List<String> winners) {
 		System.out.println(String.join(", ", winners) + WINNER_MSG);
 	}
 }
