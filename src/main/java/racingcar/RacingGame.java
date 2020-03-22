@@ -15,21 +15,21 @@ public class RacingGame {
         this.raceTime = raceTime;
     }
 
-    public int[] racing() {
-        while (racingFlag()) {
+    public int[] startRace() {
+        while (canRace()) {
             moveCar();
             reduceCount();
         }
         return carPositions;
     }
 
-    private boolean racingFlag() {
-        return this.raceTime > 0;
+    private boolean canRace() {
+        return this.raceTime > END_TIME;
     }
 
     private void moveCar() {
         for (int i = 0; i < carPositions.length; i++) {
-            if (movable()) {
+            if (canMove()) {
                 carPositions[i]++;
             }
             ResultView.printResultView(carPositions[i]);
@@ -39,10 +39,10 @@ public class RacingGame {
     }
 
     private void reduceCount() {
-        this.raceTime = raceTime-1;
+        this.raceTime = raceTime - 1;
     }
 
-    private boolean movable() {
+    private boolean canMove() {
         return random.nextInt() > MOVABLE_NUMBER;
     }
 

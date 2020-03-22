@@ -26,7 +26,7 @@ public class RacingCarTest {
         int carNumber = 3;
         int moveCount = 5;
         RacingGame racingGame = new RacingGame(carNumber, moveCount);
-        assertThat(racingGame.racing().length).isEqualTo(carNumber);
+        assertThat(racingGame.startRace().length).isEqualTo(carNumber);
     }
 
     @DisplayName("자동차 대수, 이동횟수 테스트")
