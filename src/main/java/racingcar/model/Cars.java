@@ -14,14 +14,14 @@ public class Cars {
     }
 
     public Result moveOnce(RandomNumGenerator randomNumGenerator) {
-        List<Integer> resultOfOneRound = new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
         for (Car car : cars) {
             int randomNumber = randomNumGenerator.generateNumberLessThan(10);
             boolean canRun = car.canRun(randomNumber);
             car.move(canRun);
-            resultOfOneRound.add(car.getPosition());
+            result.add(car.getPosition());
         }
-        return new Result(resultOfOneRound);
+        return new Result(result);
     }
 
     public List<Car> findWinner() {

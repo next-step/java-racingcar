@@ -9,9 +9,9 @@ public class MainApplication {
         RandomNumGenerator randomNumGenerator = new RandomNumGenerator();
 
         String carNames = InputView.getCarNamesFromUser();
-        String tryCounts = InputView.getTryCountsFromUser();
+        String tryCount = InputView.getTryCountsFromUser();
 
-        RacingCar racingCar = new RacingCar(InputView.of(carNames, tryCounts));
+        RacingCar racingCar = new RacingCar(InputView.of(carNames, tryCount));
         racingCar.startGame(randomNumGenerator);
 
         OutputView.print(racingCar);

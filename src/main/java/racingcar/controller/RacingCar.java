@@ -1,38 +1,46 @@
 package racingcar.controller;
 
 import racingcar.RandomNumGenerator;
-import racingcar.model.Cars;
-import racingcar.model.Result;
-import racingcar.model.Results;
-import racingcar.model.Winners;
+import racingcar.model.*;
 import racingcar.view.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingCar {
-    private Cars cars;
     private int tryCount;
+    private Cars cars;
     private Results Results;
     private Winners winners;
+    private List<String> carNames;
+    private RandomNumGenerator randomNumGenerator;
 
     public RacingCar(InputView inputView) {
-        this.cars = inputView.getCars();
+        this.carNames = inputView.getCarNames();
         this.tryCount = inputView.getTryCount();
     }
 
     public void startGame(RandomNumGenerator randomNumGenerator) {
-        start(randomNumGenerator);
+        this.randomNumGenerator = randomNumGenerator;
+        ready();
     }
 
-    private void start(RandomNumGenerator randomNumGenerator) {
+    private void ready(){
+        List<Car> allCars = carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
+        cars = new Cars(allCars);
+        start();
+    }
+
+    private void start() {
         List<Result> results = new ArrayList<>();
         for (int i = 0; i < tryCount; i++) {
             Result result = cars.moveOnce(randomNumGenerator);
             results.add(result);
         }
         this.Results = new Results(results);
-
         findWinners();
     }
 

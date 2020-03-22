@@ -30,13 +30,6 @@ public class OutputView {
         printGameResults(cars, results);
     }
 
-    private static String makeWinnersNameInOneLine(Winners winners) {
-        return winners.getWinners()
-                .stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(DELIMITER_FOR_WINNERS));
-    }
-
     private static void printResultTitle() {
         System.out.println("실행결과");
     }
@@ -75,6 +68,13 @@ public class OutputView {
             strPosition.append(ONE_MOVE);
         }
         return strPosition;
+    }
+
+    private static String makeWinnersNameInOneLine(Winners winners) {
+        return winners.getWinners()
+                .stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(DELIMITER_FOR_WINNERS));
     }
 
     private static List<String> makeCarNamesPrettier(List<Car> cars) {

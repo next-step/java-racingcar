@@ -1,12 +1,8 @@
 package racingcar.view;
 
-import racingcar.model.Car;
-import racingcar.model.Cars;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class InputView {
     private static final String DELIMITER_FOR_INPUT = ",";
@@ -15,12 +11,10 @@ public class InputView {
     private List<String> carNames;
     private int carCount;
     private int tryCount;
-    private Cars cars;
 
     public InputView(String carNames, String tryCounts) {
         insertCarNames(carNames);
         insertTryCount(tryCounts);
-        cars = new Cars(createCars());
     }
 
     public static String getCarNamesFromUser() {
@@ -31,12 +25,6 @@ public class InputView {
     public static String getTryCountsFromUser() {
         System.out.println("몇 회를 시도하실 건가요?");
         return scanner.nextLine();
-    }
-
-    public List<Car> createCars() {
-        return carNames.stream()
-                .map(Car::new)
-                .collect(Collectors.toList());
     }
 
     private void insertCarNames(String carNameString) {
@@ -94,7 +82,7 @@ public class InputView {
         return intInput;
     }
 
-    public static InputView of(String carNames, String tryCount){
+    public static InputView of(String carNames, String tryCount) {
         return new InputView(carNames, tryCount);
     }
 
@@ -106,7 +94,7 @@ public class InputView {
         return carCount;
     }
 
-    public Cars getCars() {
-        return cars;
+    public List<String> getCarNames() {
+        return carNames;
     }
 }
