@@ -11,7 +11,7 @@ public class MainApplication {
         String carNames = InputView.getCarNamesFromUser();
         String tryCounts = InputView.getTryCountsFromUser();
 
-        RacingCar racingCar = new RacingCar(new InputView(carNames, tryCounts));
+        RacingCar racingCar = new RacingCar(InputView.of(carNames, tryCounts));
         racingCar.startGame(randomNumGenerator);
 
         OutputView.print(racingCar);

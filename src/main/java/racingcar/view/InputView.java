@@ -3,7 +3,6 @@ package racingcar.view;
 import racingcar.model.Car;
 import racingcar.model.Cars;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -11,9 +10,7 @@ import java.util.stream.Collectors;
 
 public class InputView {
     private static final String DELIMITER_FOR_INPUT = ",";
-    private static final String QUESTION_FOR_CAR = "자동차 이름을 입력하세요, (단, 자동차 이름은 쉼표(,)로 구분해야 합니다.)";
-    private static final String QUESTION_FOR_TRY = "몇 회를 시도하실 건가요?";
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     private List<String> carNames;
     private int carCount;
@@ -27,12 +24,12 @@ public class InputView {
     }
 
     public static String getCarNamesFromUser() {
-        System.out.println(QUESTION_FOR_CAR);
+        System.out.println("자동차 이름을 입력하세요, (단, 자동차 이름은 쉼표(,)로 구분해야 합니다.)");
         return scanner.nextLine();
     }
 
     public static String getTryCountsFromUser() {
-        System.out.println(QUESTION_FOR_TRY);
+        System.out.println("몇 회를 시도하실 건가요?");
         return scanner.nextLine();
     }
 
@@ -95,6 +92,10 @@ public class InputView {
             throw new IllegalArgumentException("0 이하의 숫자는 입력할 수 없습니다.");
         }
         return intInput;
+    }
+
+    public static InputView of(String carNames, String tryCount){
+        return new InputView(carNames, tryCount);
     }
 
     public int getTryCount() {

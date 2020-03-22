@@ -21,7 +21,7 @@ public class RacingCar {
         this.tryCount = inputView.getTryCount();
     }
 
-    public void startGame(RandomNumGenerator randomNumGenerator){
+    public void startGame(RandomNumGenerator randomNumGenerator) {
         start(randomNumGenerator);
     }
 

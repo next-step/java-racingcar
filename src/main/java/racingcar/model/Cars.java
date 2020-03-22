@@ -1,7 +1,6 @@
 package racingcar.model;
 
 import racingcar.RandomNumGenerator;
-import racingcar.view.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
