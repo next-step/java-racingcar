@@ -1,5 +1,8 @@
 package racinggame;
 
+import racinggame.expression.InputView;
+import racinggame.expression.ResultView;
+
 import java.util.Scanner;
 
 /**
@@ -15,8 +18,8 @@ public class RacingGameApplication {
         String gameCount = scanner.nextLine();
 
         System.out.println("실행 결과");
-        InputView inputView = new InputView(carCount, gameCount);
-        ResultView.racingGameStart(inputView.getGameCount(), inputView.getCars());
+//        InputView inputView = new InputView(carCount, gameCount);
+//        ResultView.racingGameStart(inputView.getGameCount(), inputView.getCars());
 
         System.out.println(carCount + "  " + gameCount);
     }
