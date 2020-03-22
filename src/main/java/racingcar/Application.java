@@ -4,7 +4,7 @@ import racingcar.domain.Cars;
 import racingcar.dto.InputView;
 import racingcar.dto.OutputView;
 
-public class RacingCarApplication {
+public class Application {
     public static void main(String[] args) {
         InputView inputView = new InputView();
         RandomNumGenerator randomNumGenerator = new RandomNumGenerator();

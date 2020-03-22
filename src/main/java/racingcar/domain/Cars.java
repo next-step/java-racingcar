@@ -3,8 +3,6 @@ package racingcar.domain;
 import racingcar.RandomNumGenerator;
 import racingcar.dto.InputView;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,23 +20,23 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public void moveOnce(RandomNumGenerator rng) {
+    public void moveOnce(RandomNumGenerator randomNumGenerator) {
         for (Car car : cars) {
-            int randomNumber = rng.generateNumberLessThan(10);
+            int randomNumber = randomNumGenerator.generateNumberLessThan(10);
             boolean canRun = car.canRun(randomNumber);
             car.move(canRun);
         }
     }
 
     public List<Car> findWinner() {
-        int highestPositionValue = findHighestPositionValue(cars);
+        int highestPositionValue = findHighestPositionValue();
         return cars.stream()
                 .filter(it -> it.getPosition() == highestPositionValue)
                 .collect(Collectors.toList());
     }
 
 
-    private int findHighestPositionValue(List<Car> cars) {
+    private int findHighestPositionValue() {
         return cars.stream()
                 .map(it -> it.getPosition())
                 .mapToInt(Integer::intValue)
