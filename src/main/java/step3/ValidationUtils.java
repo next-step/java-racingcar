@@ -13,4 +13,10 @@ public class ValidationUtils {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void validateRandomValue(int randomValue) {
+        if(randomValue < 0 || randomValue > 9) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
