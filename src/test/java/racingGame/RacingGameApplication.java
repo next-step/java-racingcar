@@ -14,7 +14,7 @@ public class RacingGameApplication {
 
         RacingGameRule gameRule = new CarForwardRule();
         RacingGame racingGame = new RacingGame(gameRule);
-        racingGame.participate(inputView.getParticipateCount(), inputView.getGameCount());
+        racingGame.participate(inputView.getParticipates(), inputView.getGameCount());
         racingGame.start();
 
         ResultView resultView = new ResultView(racingGame.getTotalGameResult());

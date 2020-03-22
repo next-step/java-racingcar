@@ -2,6 +2,7 @@ package racingGame.game;
 
 import racingGame.car.Car;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,7 +17,7 @@ public class GameParticipants {
         cars.forEach(car -> checkCarForwardRule(car, carForwardRule));
     }
 
-    public void checkCarForwardRule(Car car, RacingGameRule carForwardRule) {
+    private void checkCarForwardRule(Car car, RacingGameRule carForwardRule) {
         if (carForwardRule.result()) {
             car.forward();
         }
@@ -24,7 +25,17 @@ public class GameParticipants {
 
     public GameResult getGameResult() {
         return new GameResult(cars.stream()
-                .map(Car::getPosition)
+                .map(CarRecord::new)
                 .collect(Collectors.toList()));
+    }
+
+    public List<Car> getWinners() {
+        int winnerPosition = cars.stream()
+                .max(Comparator.comparing(Car::getPosition))
+                .get().getPosition();
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == winnerPosition)
+                .collect(Collectors.toList());
     }
 }

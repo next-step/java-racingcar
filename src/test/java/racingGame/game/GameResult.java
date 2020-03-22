@@ -3,13 +3,13 @@ package racingGame.game;
 import java.util.List;
 
 public class GameResult {
-    List<Integer> positions;
+    private List<CarRecord> records;
 
-    public GameResult(List<Integer> positions) {
-        this.positions = positions;
+    public GameResult(List<CarRecord> records) {
+        this.records = records;
     }
 
-    public List<Integer> getPositions() {
-        return positions;
+    public List<CarRecord> getRecords() {
+        return records;
     }
 }

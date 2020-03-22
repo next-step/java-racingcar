@@ -24,12 +24,12 @@ class RacingGameTest {
     void setGameCount() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    racingGame.participate(-3, 5);
+                    racingGame.participate("", 5);
                 });
 
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    racingGame.participate(4,-5);
+                    racingGame.participate("", -5);
                 });
     }
 }

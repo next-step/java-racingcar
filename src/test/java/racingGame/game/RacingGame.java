@@ -1,5 +1,6 @@
 package racingGame.game;
 
+import org.junit.platform.commons.util.StringUtils;
 import racingGame.car.Car;
 
 import java.util.ArrayList;
@@ -16,22 +17,26 @@ public class RacingGame {
         this.racingGameRule = racingGameRule;
     }
 
-    public void participate(int carCount, int gameCount) {
-        verifyRegister(carCount, gameCount);
-        this.gameParticipants = register(carCount);
+    public void participate(String participants, int gameCount) {
+        verifyRegister(participants, gameCount);
+        this.gameParticipants = register(participants);
         this.gameCount = gameCount;
     }
 
-    private void verifyRegister(int carCount, int gameCount) {
-        if (carCount < 0 || gameCount < 0) {
+    private void verifyRegister(String participants, int gameCount) {
+        if (StringUtils.isBlank(participants)) {
+            throw new IllegalArgumentException();
+        }
+        if (gameCount < 0) {
             throw new IllegalArgumentException();
         }
     }
 
-    private GameParticipants register(int carCount) {
+    private GameParticipants register(String participants) {
         List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            carList.add(new Car());
+        String[] names = participants.split(",");
+        for (String name : names) {
+            carList.add(new Car(name));
         }
         return new GameParticipants(carList);
     }
@@ -42,7 +47,11 @@ public class RacingGame {
             gameParticipants.gameStart(racingGameRule);
             result.add(gameParticipants.getGameResult());
         }
-        totalGameResult = new TotalGameResult(result);
+        recordTotalGameResult(result);
+    }
+
+    private void recordTotalGameResult(List<GameResult> result) {
+        totalGameResult = new TotalGameResult(gameParticipants.getWinners(), result);
     }
 
     public TotalGameResult getTotalGameResult() {
