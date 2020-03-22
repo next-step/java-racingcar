@@ -8,14 +8,10 @@ public class Car {
         this.position = 0;
     }
 
-    public boolean move(int condition) {
+    public void move(int condition) {
         if (condition >= MOVE_CONDITION) {
             this.position++;
-
-            return true;
         }
-
-        return false;
     }
 
     public int getCurrentPosition() {
