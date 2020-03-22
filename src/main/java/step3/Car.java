@@ -5,10 +5,23 @@ import java.util.List;
 import java.util.Random;
 
 public class Car {
-    private int position;
+    private int position = 0;
     private List<Round> roundInfoList = new ArrayList<Round>();
 
-    public static int generateRandomValue() {
+    public void playRound(int roundTime) {
+        Round round = new Round();
+
+        round.setTime(roundTime);
+        round.setRandomNumber(_generateRandomValue());
+
+        if(_generateRandomValue() >=  4) {
+            this.position++;
+        }
+
+        this.roundInfoList.add(round);
+    }
+
+    private static int _generateRandomValue() {
         Random generator = new Random();
 
         int randomValue = generator.nextInt(10);

@@ -22,6 +22,20 @@ public class RacingGame {
 
         return car;
     }
+
+    public void move(int presentRoundTime) {
+        for(Car car: this.carList) {
+            car.playRound(presentRoundTime);
+        }
+    }
+
+    public List<Car> play(int roundTime, int carCount) {
+        createCars(carCount);
+        for(int i = 1; i <= roundTime; i++) {
+            move(i);
+        }
+        return carList;
+    }
 }
 
 
