@@ -6,40 +6,36 @@ public class RacingGame {
     private int time;
     private int[] carPositions;
 
+    public RacingGame(int time, int count) {
+        this.time = time;
+        this.carPositions = new int[count];
+    }
+
+    public int getTime() {
+        return this.time;
+    }
+
+    public int[] getCarPosition() {
+        return this.carPositions;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        RacingGame game = new RacingGame();
         System.out.println("자동차 대수는 몇 대 인가요?");
         int count = scanner.nextInt();
-        game.carPositions = new int[count];
 
         System.out.println("시도할 회수는 몇 회 인가요?");
-        game.time = scanner.nextInt();
+        int time = scanner.nextInt();
 
-//      System.out.println("자동차 대수: " + count);
-//      System.out.println("시도할 횟수: " + game.time);
+        RacingGame game = new RacingGame(time, count);
+        GameProgress progress = new GameProgress();
 
-        for (int i = 0; i < game.time; i++) {
-            game.move();
-            game.resultView();
-            System.out.println("");
-        }
+        progress.progress(game);
 
     }
 
-    public int[] move() {
-        Random random = new Random();
 
-        for (int i = 0; i < carPositions.length; i++) {
-            int ranCount = random.nextInt(10);
-            if (ranCount >= 4) {
-                carPositions[i] = carPositions[i] + 1;
-            }
-        }
-
-        return carPositions;
-    }
 
     public void resultView() {
         for (int i = 0; i < carPositions.length; i++) {
