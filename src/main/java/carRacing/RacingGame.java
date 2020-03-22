@@ -1,5 +1,9 @@
 package carRacing;
 
+
+
+import carRacing.view.ResultView;
+
 import java.util.ArrayList;
 
 public class RacingGame {
@@ -9,11 +13,13 @@ public class RacingGame {
 
     ArrayList<Car> cars;
     ArrayList<Integer> carPositions;
+    ResultView resultView = new ResultView();
 
     public RacingGame(int numberOfCar, int time) {
         this.numberOfCar = numberOfCar;
         this.time = time;
         setCars();
+        resultView.showResult();
     }
 
     public void setCars() {
@@ -27,6 +33,7 @@ public class RacingGame {
     public void move() {
         for(int i=0; i<time; i++) {
             rotate();
+            resultView.showGameState(carPositions);
         }
     }
 
