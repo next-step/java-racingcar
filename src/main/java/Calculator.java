@@ -18,7 +18,7 @@ public class Calculator {
         return sum;
     }
 
-    public int calculate(String operator, int x, int y) {
+    private int calculate(String operator, int x, int y) {
         switch (operator) {
             case "+":
                 return plus(x, y);
@@ -30,30 +30,29 @@ public class Calculator {
                 return divide(x, y);
             default:
                 throw new IllegalArgumentException();
-
         }
     }
 
-    public void validate(String input) {
+    static void validate(String input) {
         if (input.isEmpty() || input.trim().equals("")) {
             throw new IllegalArgumentException();
         }
     }
 
 
-    public int plus(int x, int y) {
+    static int plus(int x, int y) {
         return x + y;
     }
 
-    public int minus(int x, int y) {
+    static int minus(int x, int y) {
         return x - y;
     }
 
-    public int multiple(int x, int y) {
+    static int multiple(int x, int y) {
         return x * y;
     }
 
-    public int divide(int x, int y) {
+    static int divide(int x, int y) {
         return x / y;
     }
 }
