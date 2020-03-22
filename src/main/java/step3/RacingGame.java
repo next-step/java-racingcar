@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private int time;
+    private int roundTime;
+    private int carCount;
     private List<Car> carList = new ArrayList<Car>();
 
     public void createCars(int carCount) {
