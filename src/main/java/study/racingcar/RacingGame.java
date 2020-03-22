@@ -3,7 +3,7 @@ package study.racingcar;
 public class RacingGame {
     private int time;
     private int[] carPositions;
-    MovableDistance movableDistance;
+    private MovableDistance movableDistance;
 
     public RacingGame(RacingGameVo racingGameVo,
                       MovableDistance movableDistance) {

@@ -1,12 +1,15 @@
 package study.racingcar;
 
+import java.util.Random;
+
 public class ResultView {
+    private static final int BOUND = 10;
+    private static final int BASE_POINT = 4;
     private static final String CAR_DISPLAY = "-";
     private RacingGame racingGame;
 
     public ResultView(RacingGameVo racingGameVo) {
-        this.racingGame =
-                new RacingGame(racingGameVo, new RandomMovableDistance());
+        this.racingGame = new RacingGame(racingGameVo, getMovableDistance());
     }
 
     public void printResult() {
@@ -24,5 +27,12 @@ public class ResultView {
                     .replace("\0", CAR_DISPLAY));
         }
         System.out.println();
+    }
+
+    private MovableDistance getMovableDistance() {
+        return () -> {
+            int random = (new Random()).nextInt(BOUND);
+            return (random >= BASE_POINT) ? 1 : 0;
+        };
     }
 }
