@@ -17,6 +17,7 @@ public class Car {
         if(_generateRandomValue() >=  4) {
             this.position++;
         }
+        round.setPosition(this.position);
 
         this.roundInfoList.add(round);
     }
@@ -28,5 +29,9 @@ public class Car {
         ValidationUtils.validateRandomValue(randomValue);
 
         return randomValue;
+    }
+
+    public List<Round> getRoundInfoList() {
+        return this.roundInfoList;
     }
 }

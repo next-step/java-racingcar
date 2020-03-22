@@ -29,11 +29,12 @@ public class RacingGame {
         }
     }
 
-    public void play(int roundTime, int carCount) {
+    public List<Car> play(int roundTime, int carCount) {
         createCars(carCount);
         for(int i = 1; i <= roundTime; i++) {
             move(i);
         }
+        return carList;
     }
 }
 
