@@ -12,12 +12,10 @@ import java.util.List;
 
 public class RacingCar {
     private InputView inputView;
-    private RandomNumGenerator randomNumGenerator;
     private Cars cars;
 
-    public RacingCar(InputView inputView, RandomNumGenerator randomNumGenerator) {
+    public RacingCar(InputView inputView) {
         this.inputView = inputView;
-        this.randomNumGenerator = randomNumGenerator;
     }
 
     public Cars ready() {
@@ -25,7 +23,7 @@ public class RacingCar {
         return cars;
     }
 
-    public Results start() {
+    public Results start(RandomNumGenerator randomNumGenerator) {
         List<Result> results = new ArrayList<>();
         for (int i = 0; i < inputView.getTryCount(); i++) {
             Result result = cars.moveOnce(randomNumGenerator);

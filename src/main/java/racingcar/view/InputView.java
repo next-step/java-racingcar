@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public class InputView {
     private static final String DELIMITER_FOR_INPUT = ",";
+    private static final String QUESTION_FOR_CAR = "자동차 이름을 입력하세요, (단, 자동차 이름은 쉼표(,)로 구분해야 합니다.)";
+    private static final String QUESTION_FOR_TRY = "몇 회를 시도하실 건가요?";
     private List<String> carNames;
     private int carCount;
     private int tryCount;
@@ -16,13 +18,13 @@ public class InputView {
         insertTryCount(tryCounts);
     }
 
-    public static String bringCarNames() {
-        System.out.println("자동차 이름을 입력하세요, (단, 자동차 이름은 쉼표(,)로 구분해야 합니다.)");
+    public static String getCarNamesFromUser() {
+        System.out.println(QUESTION_FOR_CAR);
         return scanner.nextLine();
     }
 
-    public static String bringTryCounts() {
-        System.out.println("몇 회를 시도하실 건가요?");
+    public static String getTryCountsFromUser() {
+        System.out.println(QUESTION_FOR_TRY);
         return scanner.nextLine();
     }
 

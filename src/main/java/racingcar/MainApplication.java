@@ -9,15 +9,15 @@ import racingcar.view.OutputView;
 
 public class MainApplication {
     public static void main(String[] args) {
-        String carNames = InputView.bringCarNames();
-        String tryCounts = InputView.bringTryCounts();
-
-        InputView inputView = new InputView(carNames, tryCounts);
         RandomNumGenerator randomNumGenerator = new RandomNumGenerator();
 
-        RacingCar racingCar = new RacingCar(inputView, randomNumGenerator);
+        String carNames = InputView.getCarNamesFromUser();
+        String tryCounts = InputView.getTryCountsFromUser();
+        InputView inputView = new InputView(carNames, tryCounts);
+
+        RacingCar racingCar = new RacingCar(inputView);
         Cars cars = racingCar.ready();
-        Results results = racingCar.start();
+        Results results = racingCar.start(randomNumGenerator);
         Winners winners = racingCar.findWinners();
 
         OutputView.printGame(cars, results);
