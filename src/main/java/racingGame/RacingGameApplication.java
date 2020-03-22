@@ -3,6 +3,8 @@ package racingGame;
 import racingGame.game.CarForwardRule;
 import racingGame.game.RacingGame;
 import racingGame.game.RacingGameRule;
+import racingGame.participant.Participants;
+import racingGame.participant.ParticipantsV2;
 import racingGame.view.InputView;
 import racingGame.view.ResultView;
 
@@ -12,9 +14,12 @@ public class RacingGameApplication {
         InputView inputView = new InputView();
         inputView.execute();
 
+        Participants participants = new ParticipantsV2(inputView.getParticipates());
+        int gameCount = inputView.getGameCount();
         RacingGameRule gameRule = new CarForwardRule();
         RacingGame racingGame = new RacingGame(gameRule);
-        racingGame.participate(inputView.getParticipates(), inputView.getGameCount());
+
+        racingGame.participate(participants, gameCount);
         racingGame.start();
 
         ResultView resultView = new ResultView(racingGame.getTotalGameResult());

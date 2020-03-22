@@ -18,12 +18,28 @@ public class InputView {
 
     private String receiveParticipates() {
         System.out.println(PARTICIPATE_REQUEST);
-        return scanner.nextLine();
+        String participants = scanner.nextLine();
+        verifyParticipates(participants);
+        return participants;
+    }
+
+    private void verifyParticipates(String participates) {
+        if (participates == null || participates.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private int receiveGameCount() {
         System.out.println(GAME_COUNT_REQUEST);
-        return scanner.nextInt();
+        int gameCount = scanner.nextInt();
+        verifyGameCount(gameCount);
+        return gameCount;
+    }
+
+    private void verifyGameCount(int gameCount) {
+        if (gameCount < 0) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public int getGameCount() {

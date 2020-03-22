@@ -1,6 +1,7 @@
 package racingGame.game;
 
-import racingGame.car.Car;
+import racingGame.participant.GameResult;
+import racingGame.participant.Participants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 public class RacingGame {
 
     private final RacingGameRule racingGameRule;
-    private GameParticipants gameParticipants;
+    private Participants participants;
     private TotalGameResult totalGameResult;
     private int gameCount;
 
@@ -16,14 +17,14 @@ public class RacingGame {
         this.racingGameRule = racingGameRule;
     }
 
-    public void participate(String participants, int gameCount) {
-        verifyRegister(participants, gameCount);
-        this.gameParticipants = register(participants);
+    public void participate(Participants Participants, int gameCount) {
+        verifyParticipate(Participants, gameCount);
+        this.participants = Participants;
         this.gameCount = gameCount;
     }
 
-    private void verifyRegister(String participants, int gameCount) {
-        if (participants == null || participants.isEmpty()) {
+    private void verifyParticipate(Participants Participants, int gameCount) {
+        if (Participants == null) {
             throw new IllegalArgumentException();
         }
         if (gameCount < 0) {
@@ -31,26 +32,18 @@ public class RacingGame {
         }
     }
 
-    private GameParticipants register(String participants) {
-        List<Car> carList = new ArrayList<>();
-        String[] names = participants.split(",");
-        for (String name : names) {
-            carList.add(new Car(name));
-        }
-        return new GameParticipants(carList);
-    }
-
     public void start() {
+        verifyParticipate(participants, gameCount);
         List<GameResult> result = new ArrayList<>();
         for (int i = 0; i < gameCount; i++) {
-            gameParticipants.gameStart(racingGameRule);
-            result.add(gameParticipants.getGameResult());
+            participants.gameStart(racingGameRule);
+            result.add(participants.getGameResult());
         }
         recordTotalGameResult(result);
     }
 
     private void recordTotalGameResult(List<GameResult> result) {
-        totalGameResult = new TotalGameResult(gameParticipants.getWinners(), result);
+        totalGameResult = new TotalGameResult(participants.getWinners(), result);
     }
 
     public TotalGameResult getTotalGameResult() {

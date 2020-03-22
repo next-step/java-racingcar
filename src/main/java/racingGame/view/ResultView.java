@@ -1,7 +1,7 @@
 package racingGame.view;
 
 import racingGame.car.Car;
-import racingGame.game.GameResult;
+import racingGame.participant.GameResult;
 import racingGame.game.TotalGameResult;
 
 import java.util.List;

@@ -1,6 +1,7 @@
 package racingGame.game;
 
 import racingGame.car.Car;
+import racingGame.participant.GameResult;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package racingGame;
+package racingGame.game;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -20,16 +20,11 @@ class RacingGameTest {
     }
 
     @Test
-    @DisplayName("참가자 설정 & 게임 수 설정 시 음수 값에 대한 Exception 테스트")
-    void setGameCount() {
+    @DisplayName("참가자 설정 & 게임 수 설정 시 값에 대한 Exception 테스트")
+    void participate() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    racingGame.participate("", 5);
-                });
-
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    racingGame.participate("", -5);
+                    racingGame.participate(null, 5);
                 });
     }
 }

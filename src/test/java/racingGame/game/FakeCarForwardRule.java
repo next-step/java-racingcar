@@ -1,6 +1,4 @@
-package racingGame;
-
-import racingGame.game.RacingGameRule;
+package racingGame.game;
 
 public class FakeCarForwardRule implements RacingGameRule {
 

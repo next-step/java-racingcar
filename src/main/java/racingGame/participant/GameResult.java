@@ -1,4 +1,4 @@
-package racingGame.game;
+package racingGame.participant;
 
 import java.util.List;
 
