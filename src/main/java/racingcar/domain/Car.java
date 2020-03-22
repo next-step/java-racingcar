@@ -24,7 +24,8 @@ public class Car {
     }
 
     public static List<Car> listOf(List<String> names) {
-        return names.stream().map(it -> new Car(it))
+        return names.stream()
+                .map(name -> new Car(name))
                 .collect(Collectors.toList());
     }
 }
