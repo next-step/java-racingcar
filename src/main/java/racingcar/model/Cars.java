@@ -39,7 +39,6 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-
     private int findHighestPositionValue() {
         return cars.stream()
                 .map(it -> it.getPosition())

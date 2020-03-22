@@ -17,7 +17,7 @@ public class InputViewTest {
     void validInputTest(String input) {
         //when, then
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new InputView().insertTryCount(input));
+                .isThrownBy(() -> new InputView(input, input));
     }
 
     @DisplayName("숫자가 아닌 문자열이 입력되면 예외가 발생한다.")
@@ -26,28 +26,16 @@ public class InputViewTest {
     void validNumberTest(String input) {
         //when, then
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new InputView().insertTryCount(input));
+                .isThrownBy(() -> new InputView(input, input));
     }
 
-    @DisplayName("음수가 입력되면 예외가 발생한다.")
+    @DisplayName("tryCount에 1보다 작은 수를 입력하면 예외가 발생한다.")
     @ParameterizedTest
-    @ValueSource(strings = {"-20", "-1", "-77"})
-    void validateNegativeTest(String input) {
+    @ValueSource(strings = {"-10", "0", "-1", "-100"})
+    void validateNegativeTest(String tryCount ) {
         //when, then
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new InputView().insertTryCount(input));
-    }
-
-    @DisplayName("입력값의 InputType에 따라 다른 InputView 필드에 저장된다.")
-    @ParameterizedTest
-    @CsvSource(value = {"5:5", "7:7"}, delimiter = ':')
-    void insertValueToFieldTest(String input, int expected) {
-        //when
-        InputView inputView = new InputView();
-        inputView.insertTryCount(input);
-
-        //then
-        assertThat(inputView.getTryCount()).isEqualTo(expected);
+                .isThrownBy(() -> new InputView("carNames", tryCount));
     }
 
     @DisplayName("자동차 이름을 문자열로 입력하면 자동차 객체의 대수를 반환한다.")
@@ -55,10 +43,7 @@ public class InputViewTest {
     @CsvSource(value = {"pobi,crong,honux:3", "1,2,3,4,5:5", "Mark,Jaehyun,Johnny:3"}, delimiter = ':')
     void insertCarNamesTest(String carNames, int expectedCarCount) {
         //give
-        InputView inputView = new InputView();
-
-        //when
-        inputView.insertCarNames(carNames);
+        InputView inputView = new InputView(carNames, "3");
 
         //then
         assertThat(inputView.getCarCount()).isEqualTo(expectedCarCount);

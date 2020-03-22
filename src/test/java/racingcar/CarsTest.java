@@ -19,9 +19,7 @@ public class CarsTest {
 
     @BeforeEach
     void setUp() {
-        inputView = new InputView();
-        inputView.insertCarNames("Mark,Jaehyun,Johnny");
-        inputView.insertTryCount("5");
+        inputView = new InputView("Mark,Jaehyun,Johnny", "5");
         cars = new Cars(inputView);
 
     }

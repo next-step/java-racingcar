@@ -14,8 +14,8 @@ public class OutputView {
 
     public static void printWinners(Winners winners) {
         System.out.println();
-        String winnerResult = makeWinnersNameInOneLine(winners);
-        System.out.println(">>>>>>>> " + winnerResult + " (이)가 최종 우승했습니다. <<<<<<<<");
+        String winnersInOneLine = makeWinnersNameInOneLine(winners);
+        System.out.println(">>>>>>>> " + winnersInOneLine + " (이)가 최종 우승했습니다. <<<<<<<<");
     }
 
     public static void printGame(Cars cars, Results results) {
@@ -38,7 +38,7 @@ public class OutputView {
         int currentTryCount = FIRST_TRY_COUNT;
         for (Result result : results.getResults()) {
             printTryCount(currentTryCount);
-            printCarsAfterMoveOnce(cars, result);
+            printGameAfterMoveOnce(cars, result);
             currentTryCount++;
         }
         printBorderLine();
@@ -50,7 +50,7 @@ public class OutputView {
         System.out.println();
     }
 
-    private static void printCarsAfterMoveOnce(Cars cars, Result result) {
+    private static void printGameAfterMoveOnce(Cars cars, Result result) {
         List<String> carNames = makeCarNamesPrettier(cars.getCars());
         for (int i = 0; i < carNames.size(); i++) {
             System.out.print(carNames.get(i) + " |");
@@ -77,11 +77,11 @@ public class OutputView {
         }
         return cars.stream()
                 .map(it -> it.getName())
-                .map(it -> it + makeBlankSpace(findLongestNameLength(carNames) - it.length()))
+                .map(it -> it + makeBlankSpaceForCarName(findLongestNameLength(carNames) - it.length()))
                 .collect(Collectors.toList());
     }
 
-    private static StringBuilder makeBlankSpace(int blankLength) {
+    private static StringBuilder makeBlankSpaceForCarName(int blankLength) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < blankLength; i++) {
             stringBuilder.append(BLANK);

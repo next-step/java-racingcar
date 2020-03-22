@@ -9,12 +9,11 @@ import racingcar.view.OutputView;
 
 public class MainApplication {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        RandomNumGenerator randomNumGenerator = new RandomNumGenerator();
+        String carNames = InputView.bringCarNames();
+        String tryCounts = InputView.bringTryCounts();
 
-        Question question = new Question(inputView);
-        question.generateForCarCount();
-        question.generateForTryCount();
+        InputView inputView = new InputView(carNames, tryCounts);
+        RandomNumGenerator randomNumGenerator = new RandomNumGenerator();
 
         RacingCar racingCar = new RacingCar(inputView, randomNumGenerator);
         Cars cars = racingCar.ready();
@@ -23,6 +22,5 @@ public class MainApplication {
 
         OutputView.printGame(cars, results);
         OutputView.printWinners(winners);
-
     }
 }

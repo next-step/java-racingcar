@@ -1,7 +1,10 @@
 package racingcar.controller;
 
 import racingcar.RandomNumGenerator;
-import racingcar.model.*;
+import racingcar.model.Cars;
+import racingcar.model.Result;
+import racingcar.model.Results;
+import racingcar.model.Winners;
 import racingcar.view.InputView;
 
 import java.util.ArrayList;
@@ -17,21 +20,21 @@ public class RacingCar {
         this.randomNumGenerator = randomNumGenerator;
     }
 
-    public Cars ready(){
+    public Cars ready() {
         this.cars = new Cars(inputView);
         return cars;
     }
 
     public Results start() {
         List<Result> results = new ArrayList<>();
-        for(int i=0;i<inputView.getTryCount();i++){
+        for (int i = 0; i < inputView.getTryCount(); i++) {
             Result result = cars.moveOnce(randomNumGenerator);
             results.add(result);
         }
         return new Results(results);
     }
 
-    public Winners findWinners(){
+    public Winners findWinners() {
         return new Winners(cars.findWinner());
     }
 }
