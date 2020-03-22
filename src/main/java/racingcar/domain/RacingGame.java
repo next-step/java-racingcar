@@ -8,11 +8,6 @@ public class RacingGame {
     private final int time;
     private final Cars cars;
 
-    public RacingGame(Cars cars) {
-        this.time = cars.size();
-        this.cars = cars;
-    }
-
     public RacingGame(int time, int numberOfCars) {
         this.time = time;
         this.cars = new Cars(numberOfCars);
