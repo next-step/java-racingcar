@@ -42,14 +42,14 @@ public class InputView {
     }
 
     public int getCarCount() {
-        return carCount;
+        return this.carCount;
     }
 
     public int getGameCount() {
-        return gameCount;
+        return this.gameCount;
     }
 
     public List<String> getCarNames() {
-        return carNames;
+        return this.carNames;
     }
 }

@@ -12,7 +12,7 @@
 
 **RacingCars**
 1. 레이싱을 진행하는 car들의 collection
-1. 입력받은 자동차 수 만큼 생성
+1. 모든 자동차를 이동
 
 **NumberUtil** (NumberVo > NumberUtil 로 이름 수정)
 1. 0~9 사이의 random 값을 구하는 기능

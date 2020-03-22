@@ -8,11 +8,16 @@ import racinggame.util.NumberUtil;
  * 1. 게임 진행시 자동차 이동
  */
 public class Car {
+    private final String carName;
     private int moveRange = 0;
-    private String carName;
 
     public Car(String carName) {
         this.carName = carName;
+    }
+
+    public Car(String carName, int moveRange) {
+        this.carName = carName;
+        this.moveRange = moveRange;
     }
 
     /**
@@ -25,10 +30,10 @@ public class Car {
     }
 
     public int getMoveRange() {
-        return moveRange;
+        return this.moveRange;
     }
 
     public String getCarName() {
-        return carName;
+        return this.carName;
     }
 }

@@ -11,21 +11,41 @@ import java.util.List;
  * 1. 전체 라운드 수 만큼 자동차 이동
  */
 public class Racing {
-    private List<Car> cars = new ArrayList<>();
+    private RacingCars racingCars;
+    private int gameCount;
+    private List<RoundResult> roundResult = new ArrayList<>();
 
-    public Racing(List<Car> cars) {
-        this.cars = cars;
+    public Racing(int carCount, int gameCount, List<String> carNames) {
+        this.gameCount = gameCount;
+        this.racingCars = createRacingCars(carCount, carNames);
     }
 
-//    public void racingGameStart(int gameCount, List<Car> cars) {
-//        for (int i = 0; i < gameCount; i++) {
-//            playOneRound(cars);
-//        }
-//    }
+    public RacingCars createRacingCars(int carCount, List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
 
-    public void playOneRound() {
-        for (Car car : cars) {
-            car.moveCar();
+        for (int i = 0; i < carCount; i++) {
+            cars.add(new Car(carNames.get(i)));
         }
+
+        return new RacingCars(cars);
+    }
+
+    private void playOneRound() {
+        this.racingCars.moveCarAll();
+        saveRoundResult();
+    }
+
+    private void saveRoundResult() {
+        this.roundResult.add(new RoundResult(this.racingCars));
+    }
+
+    public void playAllRound() {
+        for (int i = 0; i < this.gameCount; i++) {
+            playOneRound();
+        }
+    }
+
+    public List<RoundResult> getRoundResult() {
+        return this.roundResult;
     }
 }
