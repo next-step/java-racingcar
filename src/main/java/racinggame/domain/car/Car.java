@@ -1,4 +1,4 @@
-package racinggame.car;
+package racinggame.domain.car;
 
 import racinggame.util.NumberUtil;
 

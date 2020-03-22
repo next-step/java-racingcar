@@ -1,4 +1,4 @@
-package racinggame.expression;
+package racinggame.domain.expression;
 
 import racinggame.util.NumberUtil;
 

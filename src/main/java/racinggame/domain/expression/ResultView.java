@@ -1,4 +1,4 @@
-package racinggame.expression;
+package racinggame.domain.expression;
 
 /**
  * 1. "-" 상수

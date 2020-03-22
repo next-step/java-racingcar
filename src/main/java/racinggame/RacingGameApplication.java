@@ -1,8 +1,5 @@
 package racinggame;
 
-import racinggame.expression.InputView;
-import racinggame.expression.ResultView;
-
 import java.util.Scanner;
 
 /**
