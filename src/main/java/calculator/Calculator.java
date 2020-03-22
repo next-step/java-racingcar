@@ -15,7 +15,9 @@ public class Calculator {
     }
 
     public static int division(int left, int right) {
-        if(right == 0) throw new IllegalArgumentException("Can't divide by 0");
+        if (right == 0) {
+            throw new IllegalArgumentException("Can't divide by 0");
+        }
         return left / right;
     }
 }
