@@ -1,3 +1,5 @@
+import java.util.stream.Stream;
+
 public enum Operator {
     PLUS("+") {
         public double apply(double x, double y) {
@@ -29,11 +31,10 @@ public enum Operator {
     public abstract double apply(double x, double y);
 
     public static Operator getOperator(String str) {
-        for (Operator operator : values()) {
-            if (operator.symbol.equals(str))
-                return operator; // TODO: indent
-        }
-        throw new IllegalArgumentException("invalid operator");
+        return Stream.of(values())
+                .filter(operator -> operator.symbol.equals(str))
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException("invalid operator"));
     }
 
     @Override
