@@ -23,6 +23,8 @@ public class Main {
         resultView.printResultInfo();
 
         for(int i = 0; i < roundTime; i++) {
+            resultView.printRoundInfo(i + 1);
+
             for(Car car: carList) {
                 List<Round> roundList = car.getRoundInfoList();
 
