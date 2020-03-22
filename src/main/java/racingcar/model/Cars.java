@@ -26,7 +26,7 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    private int findHighestPositionValue() {
+    public int findHighestPositionValue() {
         return cars.stream()
                 .map(it -> it.getPosition())
                 .mapToInt(Integer::intValue)

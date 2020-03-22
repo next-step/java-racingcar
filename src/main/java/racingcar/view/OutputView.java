@@ -1,7 +1,8 @@
 package racingcar.view;
 
 import racingcar.controller.RacingCar;
-import racingcar.model.*;
+import racingcar.model.Car;
+import racingcar.model.Result;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,13 +19,13 @@ public class OutputView {
         printWinners(racingCar.getWinners());
     }
 
-    private static void printWinners(Winners winners) {
+    private static void printWinners(List<Car> winners) {
         System.out.println();
         String winnersInOneLine = makeWinnersNameInOneLine(winners);
         System.out.println(">>>>>>>> " + winnersInOneLine + " (이)가 최종 우승했습니다. <<<<<<<<");
     }
 
-    private static void printGame(Cars cars, Results results) {
+    private static void printGame(List<Car> cars, List<Result> results) {
         System.out.println();
         printResultTitle();
         printGameResults(cars, results);
@@ -34,9 +35,9 @@ public class OutputView {
         System.out.println("실행결과");
     }
 
-    private static void printGameResults(Cars cars, Results results) {
+    private static void printGameResults(List<Car> cars, List<Result> results) {
         int currentTryCount = FIRST_TRY_COUNT;
-        for (Result result : results.getResults()) {
+        for (Result result : results) {
             printTryCount(currentTryCount);
             printGameAfterMoveOnce(cars, result);
             currentTryCount++;
@@ -50,8 +51,8 @@ public class OutputView {
         System.out.println();
     }
 
-    private static void printGameAfterMoveOnce(Cars cars, Result result) {
-        List<String> carNames = makeCarNamesPrettier(cars.getCars());
+    private static void printGameAfterMoveOnce(List<Car> cars, Result result) {
+        List<String> carNames = makeCarNamesPrettier(cars);
         for (int i = 0; i < carNames.size(); i++) {
             System.out.print(carNames.get(i) + " |");
             printCurrentPosition(result.getResult().get(i));
@@ -70,9 +71,8 @@ public class OutputView {
         return stringPosition;
     }
 
-    private static String makeWinnersNameInOneLine(Winners winners) {
-        return winners.getWinners()
-                .stream()
+    private static String makeWinnersNameInOneLine(List<Car> winners) {
+        return winners.stream()
                 .map(Car::getName)
                 .collect(Collectors.joining(DELIMITER_FOR_WINNERS));
     }

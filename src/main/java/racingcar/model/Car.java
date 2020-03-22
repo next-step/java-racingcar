@@ -1,5 +1,9 @@
 package racingcar.model;
 
+import racingcar.random.RandomRunnable;
+
+import java.util.Objects;
+
 public class Car {
     private String name;
     private int position = 0;
@@ -14,11 +18,11 @@ public class Car {
     }
 
     public void move() {
-        move(new RandomRunnable());
+        move(new RandomRunnable().isRunnable());
     }
 
-    private void move(RandomRunnable randomRunnable) {
-        if (randomRunnable.isRunnable()) {
+    public void move(boolean isRunnable) {
+        if (isRunnable) {
             position++;
         }
     }
@@ -33,5 +37,19 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return position == car.position &&
+                Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position);
     }
 }

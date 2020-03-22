@@ -45,15 +45,15 @@ public class RacingCar {
         this.winners = new Winners(cars.findWinner());
     }
 
-    public Cars getCars() {
-        return cars;
+    public List<Car> getCars() {
+        return cars.getCars();
     }
 
-    public Results getResults() {
-        return Results;
+    public List<Result> getResults() {
+        return Results.getResults();
     }
 
-    public Winners getWinners() {
-        return winners;
+    public List<Car> getWinners() {
+        return winners.getWinners();
     }
 }
