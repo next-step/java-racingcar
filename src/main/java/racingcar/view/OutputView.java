@@ -19,12 +19,6 @@ public class OutputView {
         printWinners(racingCar.getWinners());
     }
 
-    private static void printWinners(List<Car> winners) {
-        System.out.println();
-        String winnersInOneLine = makeWinnersNameInOneLine(winners);
-        System.out.println(">>>>>>>> " + winnersInOneLine + " (이)가 최종 우승했습니다. <<<<<<<<");
-    }
-
     private static void printGame(List<Car> cars, List<Result> results) {
         System.out.println();
         printResultTitle();
@@ -71,12 +65,6 @@ public class OutputView {
         return stringPosition;
     }
 
-    private static String makeWinnersNameInOneLine(List<Car> winners) {
-        return winners.stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(DELIMITER_FOR_WINNERS));
-    }
-
     private static List<String> makeCarNamesPrettier(List<Car> cars) {
         List<String> carNames = new ArrayList<>();
         for (Car car : cars) {
@@ -102,6 +90,18 @@ public class OutputView {
                 .mapToInt(Integer::intValue)
                 .max()
                 .getAsInt();
+    }
+
+    private static void printWinners(List<Car> winners) {
+        System.out.println();
+        String winnersInOneLine = makeWinnersNameInOneLine(winners);
+        System.out.println(">>>>>>>> " + winnersInOneLine + " (이)가 최종 우승했습니다. <<<<<<<<");
+    }
+
+    private static String makeWinnersNameInOneLine(List<Car> winners) {
+        return winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(DELIMITER_FOR_WINNERS));
     }
 
     private static void printBorderLine() {
