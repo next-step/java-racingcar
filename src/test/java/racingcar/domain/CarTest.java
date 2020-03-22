@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.Arrays;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
@@ -55,6 +53,5 @@ class CarTest {
         assertThat(car2.getPosition()).isEqualTo(1);
         assertThat(car3.getPosition()).isEqualTo(0);
     }
-
 
 }
