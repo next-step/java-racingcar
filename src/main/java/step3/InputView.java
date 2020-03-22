@@ -1,5 +1,17 @@
 package step3;
 
-public class InputView {
+import java.util.Scanner;
 
+public class InputView {
+    private Scanner scanner;
+
+    public InputView() {
+        this.scanner = new Scanner(System.in);
+    }
+
+    public String readInput() {
+        String input = this.scanner.nextLine();
+
+        return input;
+    }
 }
