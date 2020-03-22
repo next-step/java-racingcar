@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Graph {
-
     private Car car;
-
     public Graph(Car car) {
         this.car = car;
     }
