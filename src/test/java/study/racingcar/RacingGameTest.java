@@ -17,42 +17,56 @@ public class RacingGameTest {
         movableDistance = () -> 1;
     }
 
-    @DisplayName("차 댓수와 시도 횟수가 1 이상이다.")
+    @DisplayName("입력한 수행 횟수만큼 게임을 진행할 수 있다.")
+    @Test
+    void moveByTheNumberOfTimes(){
+        RacingGame racingGame =
+                new RacingGame(new RacingGameData(EXAMPLE_CARS, 2),
+                        movableDistance);
+
+        assertThat(racingGame.isMovable()).isTrue();
+        racingGame.move();
+        assertThat(racingGame.isMovable()).isTrue();
+        racingGame.move();
+        assertThat(racingGame.isMovable()).isFalse();
+    }
+
+    @DisplayName("모든 차가 수행 횟수만큼 전진할 수 있다.")
     @Test
     void success() {
         RacingGame racingGame =
-                new RacingGame(new RacingGameData(EXAMPLE_CARS, 4),
+                new RacingGame(new RacingGameData(EXAMPLE_CARS, 3),
                         movableDistance);
-
+        racingGame.move();
+        racingGame.move();
         List<Car> cars = racingGame.move();
         assertThat(cars.size()).isEqualTo(3);
-        assertThat(racingGame.isMovable()).isTrue();
-        racingGame.move();
-        racingGame.move();
-        racingGame.move();
         assertThat(cars.stream().map(Car::getPosition))
-                .containsExactly(4, 4, 4);
-        assertThat(racingGame.isMovable()).isFalse();
+                .containsExactly(3, 3, 3);
     }
 
     @DisplayName("차 댓수와 시도 횟수가 0이여도 된다.")
     @Test
-    void nothingToDo() {
-        RacingGame racingGameWithNoCar =
+    void carsCanBeZero() {
+        RacingGame racingGame =
                 new RacingGame(new RacingGameData(new String[0], 2),
                         movableDistance);
-        List<Car> carPositionsWithNoCar = racingGameWithNoCar.move();
-        assertThat(carPositionsWithNoCar.size()).isEqualTo(0);
-        assertThat(racingGameWithNoCar.isMovable()).isTrue();
-        racingGameWithNoCar.move();
-        assertThat(racingGameWithNoCar.isMovable()).isFalse();
+        List<Car> cars = racingGame.move();
+        assertThat(cars.size()).isEqualTo(0);
+        assertThat(racingGame.isMovable()).isTrue();
+        racingGame.move();
+        assertThat(racingGame.isMovable()).isFalse();
+    }
 
-        RacingGame racingGameWithZeroTime =
+    @DisplayName("시도 횟수가 0이여도 된다.")
+    @Test
+    void timesCanBeZero() {
+        RacingGame racingGame =
                 new RacingGame(new RacingGameData(EXAMPLE_CARS, 0),
                         movableDistance);
-        assertThat(racingGameWithZeroTime.isMovable()).isFalse();
-        List<Car> carPositionsWithZeroTime = racingGameWithZeroTime.move();
-        assertThat(carPositionsWithZeroTime.size()).isEqualTo(3);
+        assertThat(racingGame.isMovable()).isFalse();
+        List<Car> cars = racingGame.move();
+        assertThat(cars.size()).isEqualTo(3);
     }
 
     @DisplayName("우승자는 두명 이상일 수 있다.")
