@@ -10,7 +10,6 @@ public class RacingGame {
 
     private final RacingGameRule racingGameRule;
     private Participants participants;
-    private GameResult gameResult;
     private int round;
 
     public RacingGame(RacingGameRule racingGameRule) {
@@ -32,24 +31,17 @@ public class RacingGame {
         }
     }
 
-    public void start() {
+    public GameResult start() {
         verifyParticipate(participants, round);
         List<RoundScore> result = new ArrayList<>();
         for (int i = 0; i < round; i++) {
             participants.gameStart(racingGameRule);
             result.add(participants.getRoundScore());
         }
-        recordTotalGameResult(result);
+        return integrateGameResult(result);
     }
 
-    private void recordTotalGameResult(List<RoundScore> result) {
-        gameResult = new GameResult(participants.getWinners(), result);
-    }
-
-    public GameResult getGameResult() {
-        if (gameResult == null) {
-            throw new IllegalArgumentException();
-        }
-        return gameResult;
+    private GameResult integrateGameResult(List<RoundScore> result) {
+        return new GameResult(participants.getWinners(), result);
     }
 }

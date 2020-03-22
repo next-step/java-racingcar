@@ -1,6 +1,7 @@
 package racingGame;
 
 import racingGame.game.CarForwardRule;
+import racingGame.game.GameResult;
 import racingGame.game.RacingGame;
 import racingGame.game.RacingGameRule;
 import racingGame.participant.Participants;
@@ -20,9 +21,9 @@ public class RacingGameApplication {
         RacingGame racingGame = new RacingGame(gameRule);
 
         racingGame.participate(participants, gameCount);
-        racingGame.start();
+        GameResult gameResult = racingGame.start();
 
-        ResultView resultView = new ResultView(racingGame.getGameResult());
+        ResultView resultView = new ResultView(gameResult);
         resultView.print();
     }
 }
