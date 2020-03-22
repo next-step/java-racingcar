@@ -11,9 +11,15 @@ public class InputView {
         this.scanner = new Scanner(System.in);
     }
 
-    public Integer readInput() {
-        String input = this.scanner.nextLine();
-        return Integer.parseInt(input);
+    public Integer readInputInt() {
+        int input = Integer.parseInt(this.scanner.nextLine());
+
+        validateIntegerInput(input);
+        return input;
+    }
+
+    private void validateIntegerInput(int input) {
+        ValidationUtils.isBiggerThanZero(input);
     }
 
     private void printLine(String line) {
@@ -27,4 +33,5 @@ public class InputView {
     public void printRoundTimeInfo() {
         printLine(ROUND_TIME_INPUT_INFO);
     }
+
 }

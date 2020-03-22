@@ -9,12 +9,10 @@ public class Main {
         InputView inputView = new InputView();
 
         inputView.printCarCountInfo();
-        int carCount = inputView.readInput();
-        ValidationUtils.validateCarCount(carCount);
+        int carCount = inputView.readInputInt();
 
         inputView.printRoundTimeInfo();
-        int roundTime = inputView.readInput();
-        ValidationUtils.validateRoundTime(roundTime);
+        int roundTime = inputView.readInputInt();
 
         RacingGame racingGame = new RacingGame();
         List<Car> carList = racingGame.play(carCount, roundTime);
