@@ -1,34 +1,29 @@
 package calculator;
 
+import java.util.Objects;
+
 public class InputVo {
-    /**
-     * 입력 값
-     */
-    private String input;
+
+    private static final String BLANK = " ";
     /**
      * this.input을 공백을 기준으로 split 한 배열
      */
     private String[] inputSplit;
 
-
-    public InputVo() {
-    }
-
     public InputVo(String input) {
-        this.input = input;
         validate(input);
-        splitInput();
+        splitInput(input);
     }
 
     /**
      * validate
      */
     private void validate(String input) {
-        if (input == null) {
+        if (Objects.equals(input, null)) {
             throw new IllegalArgumentException("null 값 입력 됨");
         }
 
-        if (input.trim().equals("")) {
+        if (Objects.equals(input, " ")) {
             throw new IllegalArgumentException("공백 값 입력 됨");
         }
     }
@@ -36,8 +31,8 @@ public class InputVo {
     /**
      * input값을 공백을 기준으로 나누어줌
      */
-    private void splitInput() {
-        this.inputSplit = this.input.split(" ");
+    private void splitInput(String input) {
+        this.inputSplit = input.split(BLANK);
     }
 
 
