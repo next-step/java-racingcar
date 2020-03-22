@@ -44,4 +44,7 @@ public class Cars {
         stringBuilder.append(RacingGameConstant.CARRIAGE_RETURN);
     }
 
+    public int size() {
+        return cars.size();
+    }
 }
