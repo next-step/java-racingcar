@@ -15,7 +15,6 @@ public class RacingGameApplication {
 
         ResultView resultView = new ResultView();
         resultView.print(gameResults);
-
     }
 
 }

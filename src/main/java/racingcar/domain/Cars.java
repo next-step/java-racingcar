@@ -19,13 +19,14 @@ public class Cars {
     }
 
     public Cars moveAllCar() {
+        List<Car> newCars = new ArrayList<>();
         for (int carNumber = 0; carNumber < cars.size(); carNumber++) {
-            cars.get(carNumber)
+            Car movedCar = cars.get(carNumber)
                     .move(new MoveStrategy(
-                            new RandomCondition().getRandomCondition()))
-            ;
+                            new RandomCondition().getRandomCondition()));
+            newCars.add(movedCar);
         }
-        return new Cars(cars);
+        return new Cars(newCars);
     }
 
     public String getResults() {
@@ -44,7 +45,4 @@ public class Cars {
         stringBuilder.append(RacingGameConstant.CARRIAGE_RETURN);
     }
 
-    public int size() {
-        return cars.size();
-    }
 }

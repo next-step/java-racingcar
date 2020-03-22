@@ -13,7 +13,11 @@ public class RacingGameResults {
         StringBuilder collectResult = new StringBuilder();
         racingGameHistory.entrySet()
                 .stream()
-                .forEach(e -> collectResult.append(e.getValue().getResults()));
+                .forEach(e ->{
+                    System.out.println(e.getKey() + ": " + e.getValue());
+                    collectResult.append(e.getValue().getResults());
+                });
+
         return collectResult.toString();
     }
 
