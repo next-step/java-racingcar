@@ -1,4 +1,4 @@
-package stringcalculator.expression;
+package stringcalculator.domain;
 
 public class NumbersMock extends Numbers {
     public NumbersMock() {

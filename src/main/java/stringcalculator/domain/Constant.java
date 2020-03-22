@@ -1,4 +1,4 @@
-package stringcalculator.expression;
+package stringcalculator.domain;
 
 import java.util.regex.Pattern;
 

@@ -1,6 +1,4 @@
-package stringcalculator.expression;
-
-import stringcalculator.calculator.Calculator;
+package stringcalculator.domain;
 
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
-package stringcalculator.expression;
+package stringcalculator.domain;
 
 import java.util.LinkedList;
 import java.util.stream.Collectors;
@@ -16,12 +16,12 @@ public class Numbers {
                 .collect(Collectors.toCollection(LinkedList::new));
     }
 
-    public double get() {
-        return Double.parseDouble(numbers.poll());
-    }
-
     private static boolean isNumberStart(String[] expressions) {
         return Constant.INTEGER_PATTERN.matcher(expressions[Constant.ZERO]).find();
+    }
+
+    public double get() {
+        return Double.parseDouble(numbers.poll());
     }
 
     public boolean isNumber(String expression) {

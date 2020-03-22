@@ -1,4 +1,4 @@
-package stringcalculator.expression;
+package stringcalculator.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
