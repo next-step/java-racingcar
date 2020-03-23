@@ -7,3 +7,24 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 기능 요구사항
+* 초간단 자동차 경주 게임을 구현한다.
+* 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
+* 사용자는 몇 대의 자동차로 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다.
+* 전진하는 조건은 0에서 9 사이에서 random 값을 구한 후 random 값이 4이상일 경우이다.
+* 자동차의 상태를 화면에 출력한다. 어느 시점에 출력할 것인지에 대한 제약은 없다.
+
+### InputView
+* cars : 자동차 대 리턴
+* rounds : 시도 횟수 리턴
+* inputValidator : 숫자 입력 확인
+* isGreaterThan0 : 0보다 큰 수인지 확인
+
+### RacingGame
+* RacingGame : 자동차 댓수와 시도 횟수 세팅
+* racing : rounding 횟수만큼 자동차 이동
+* moveCar : random 값에 의해 이동할지 말지 결정
+
+### ResultView
+* printResult : 현재 자동자 position에 따라 '-' 그림
