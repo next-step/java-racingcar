@@ -63,7 +63,7 @@ public class RacingGame {
     }
 
     public void getWinner() {
-        List<Integer> finalPositionList =getFinalPositionList();
+        List<Integer> finalPositionList = getFinalPositionList();
         int winnerPosition = gameRule.getMaxPosition(finalPositionList);
 
         for(Car car: carList) {
@@ -82,21 +82,16 @@ public class RacingGame {
         return finalPositionList;
     }
 
-    public Map<String, Integer> getFinalPositionMap() {
-        Map<String, Integer> finalPositionMap = new HashMap<>();
-
-        for(Car car: carList) {
-            finalPositionMap.put(car.getCarName(), car.getPosition());
-        }
-        return finalPositionMap;
-    }
-
     public int getRoundTime() {
         return roundTime;
     }
 
     public List<Car> getCarList() {
         return carList;
+    }
+
+    public List<String> getWinnerNameList() {
+        return winnerNameList;
     }
 }
 

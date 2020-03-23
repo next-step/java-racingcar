@@ -5,10 +5,11 @@ import java.util.List;
 
 public class ResultView {
 
-    private static String PLAY_RESULT = "실행 결과";
-    private static String POSITION_OUTPUT_CHARACTER = "-";
-    private static String PLAY_ROUND_INFO = "회차";
+    private final static String PLAY_RESULT = "실행 결과";
+    private final static String POSITION_OUTPUT_CHARACTER = "-";
+    private final static String PLAY_ROUND_INFO = "회차";
     private final static String EMPTY = "";
+    private final static String WINNER_NAME_INFO = "가 최종 우승했습니다.";
 
     public void printView(String line) {
         System.out.println(line);
@@ -33,6 +34,7 @@ public class ResultView {
             }
             printView(EMPTY);
         }
+        printWinner(racingGame.getWinnerNameList());
     }
 
     private void printMoveRecord(int position, String carName) {
@@ -54,6 +56,17 @@ public class ResultView {
         printView(roundOutputBuilder.toString());
     }
 
+    private void printWinner(List<String> winnerNameList) {
+        StringBuilder winnerOutputBuilder = new StringBuilder();
+
+        for(int i = 0; i < winnerNameList.size(); i++) {
+            if(i != 0) {
+                winnerOutputBuilder.append(",");
+            }
+            winnerOutputBuilder.append(winnerNameList.get(i));
+        }
+        winnerOutputBuilder.append(WINNER_NAME_INFO);
+    }
 
 
 }
