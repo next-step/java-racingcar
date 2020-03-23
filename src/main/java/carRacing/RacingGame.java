@@ -27,7 +27,11 @@ public class RacingGame {
         checkCarPositions();
     }
 
-    public void move() {
+    public void start() {
+        move();
+    }
+
+    private void move() {
         for(int i=0; i<time; i++) {
             rotate();
             resultView.showGameState(carPositions);

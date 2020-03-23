@@ -4,6 +4,6 @@ import carRacing.view.InputView;
 
 public class Main {
     public static void main(String[] args) {
-        InputView.gameStart();
+        Game.start();
     }
 }

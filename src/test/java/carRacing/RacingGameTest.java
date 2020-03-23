@@ -42,7 +42,7 @@ public class RacingGameTest {
             });
         });
 
-        racingGame.move();
+        racingGame.start();
         assertThat(racingGame.carPositions.stream().allMatch(i -> (i == (Integer.parseInt(expected)*time)))).isTrue();
     }
 
