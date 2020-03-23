@@ -12,9 +12,7 @@ public class RacingGame {
     private List<Car> cars = new ArrayList<>();
 
     public RacingGame(int numberOfCars, int tryCount) {
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
-        }
+        setCars(numberOfCars);
         this.tryCount = tryCount;
     }
 
@@ -26,6 +24,12 @@ public class RacingGame {
 
     public List<Car> getResult() {
         return cars;
+    }
+
+    private void setCars(int numberOfCars) {
+        for (int i = 0; i < numberOfCars; i++) {
+            cars.add(new Car());
+        }
     }
 
     private int getRandom() {

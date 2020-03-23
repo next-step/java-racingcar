@@ -21,6 +21,7 @@ public class Car {
         carPositions.add(position);
     }
 
+    // TODO: 규칙을 car에서 갖는게 맞는지?
     private boolean isMovable(int value) {
         return value >= MOVE_CONDITION;
     }

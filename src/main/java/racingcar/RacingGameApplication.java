@@ -12,9 +12,9 @@ public class RacingGameApplication {
 
         RacingGame racingGame = new RacingGame(inputView.getNumberOfCars(), inputView.getTryCount());
         racingGame.run();
-        List<Car> result = racingGame.getResult();
+        List<Car> cars = racingGame.getResult();
 
         ResultView resultView = new ResultView();
-        resultView.print(result);
+        resultView.print(cars, inputView.getTryCount());
     }
 }
