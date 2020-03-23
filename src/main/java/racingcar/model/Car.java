@@ -3,10 +3,11 @@ package racingcar.model;
 import racingcar.policy.MovingPolicy;
 
 public final class Car {
+    private static final int DEFAULT_DISTANCE = 0;
     private int distance;
 
     public Car() {
-        this(0);
+        this(DEFAULT_DISTANCE);
     }
 
     public Car(final int distance) {
