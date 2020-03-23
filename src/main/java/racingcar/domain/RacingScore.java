@@ -17,14 +17,12 @@ public class RacingScore {
         return new ArrayList<>(cars);
     }
 
-    public List<Car> getWinner() {
+    public List<Car> findWinners() {
         int maxPosition = calculateMaxPosition();
         List<Car> winners = new ArrayList<>();
-
         for (Car car : cars) {
             addWinner(maxPosition, winners, car);
         }
-
         return new ArrayList<>(winners);
     }
 

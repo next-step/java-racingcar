@@ -53,8 +53,8 @@ public class RacingGameService {
         return racingScores;
     }
 
-    public List<Car> selectWinners(List<RacingScore> racingScores) {
+    public List<Car> findWinnerInRacingScores(List<RacingScore> racingScores) {
         RacingScore lastRacingScore = racingScores.get(racingScores.size() - INT_ONE);
-        return lastRacingScore.getWinner();
+        return lastRacingScore.findWinners();
     }
 }

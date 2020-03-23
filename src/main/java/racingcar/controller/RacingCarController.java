@@ -17,7 +17,7 @@ public class RacingCarController {
         RacingGameService racingGameService = new RacingGameService(racingCarNames, new RandomMovingStrategy());
 
         List<RacingScore> racingScores = racingGameService.executeRacingGameNumberOfTimes(racingCarRequestDto.getNumberOfTime());
-        List<Car> winners = racingGameService.selectWinners(racingScores);
+        List<Car> winners = racingGameService.findWinnerInRacingScores(racingScores);
 
         return new RacingCarResponseDto(racingScores, winners);
     }
