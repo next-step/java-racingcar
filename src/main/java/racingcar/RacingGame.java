@@ -6,6 +6,8 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static java.util.stream.Collectors.toList;
+
 public class RacingGame {
 
     private int numberOfCars;
@@ -24,7 +26,9 @@ public class RacingGame {
     }
 
     public void progress() {
-        cars.forEach(car -> car.move());
+        for (Car c : cars) {
+            c.move();
+        }
         tryCount -= 1;
     }
 
@@ -40,7 +44,7 @@ public class RacingGame {
         cars = IntStream
                 .range(0, numberOfCars)
                 .mapToObj(__ -> new Car(randomGenerator))
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     private void validate(int numberOfCars, int tryCount) {
