@@ -2,6 +2,7 @@ package study.racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class RacingGameData {
     private static final int MIN = 1;
@@ -13,7 +14,7 @@ public class RacingGameData {
             throw new IllegalArgumentException(
                     String.format("시도 횟수는 %d 이상이여야 합니다.", MIN));
         }
-        if (carNames.isEmpty()) {
+        if (Objects.isNull(carNames) || carNames.isEmpty()) {
             throw new IllegalArgumentException("한대 이상의 차가 있어야 합니다.");
         }
 

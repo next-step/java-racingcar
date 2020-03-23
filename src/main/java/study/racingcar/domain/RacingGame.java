@@ -1,17 +1,12 @@
 package study.racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGame {
     private int time;
     private List<Car> cars;
     private MovableDistance movableDistance;
 
-    // todo racing game data 가 과연 필요할까?
     public RacingGame(RacingGameData racingGameData,
                       MovableDistance movableDistance) {
         this.cars = racingGameData.getCars();
@@ -29,23 +24,6 @@ public class RacingGame {
         }
     }
 
-    public List<Car> getWinner() {
-        if (isMovable()) {
-            return new ArrayList<>();
-        }
-
-        int maxPosition = getMaxPosition();
-        return cars.stream()
-                .filter(car -> car.isPositionEqualTo(maxPosition))
-                .collect(Collectors.toList());
-    }
-
-    private int getMaxPosition() {
-        return Collections
-                .max(cars, Comparator.comparing(Car::getPosition))
-                .getPosition();
-    }
-
     public List<Car> getCars() {
         return cars;
     }
@@ -56,5 +34,9 @@ public class RacingGame {
 
     public boolean isMovable() {
         return time != 0;
+    }
+
+    public boolean isFinished() {
+        return !isMovable();
     }
 }
