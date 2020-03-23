@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.policy.MovingPolicy;
+
 public final class Car {
     private int distance;
 
@@ -11,8 +13,10 @@ public final class Car {
         this.distance = distance;
     }
 
-    public void move() {
-        this.distance++;
+    public void move(final MovingPolicy movingPolicy) {
+        if (movingPolicy.isPossibleMove()) {
+            distance++;
+        }
     }
 
     public int getDistance() {
