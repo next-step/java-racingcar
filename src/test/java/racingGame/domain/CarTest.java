@@ -36,4 +36,10 @@ class CarTest {
 		assertThat(car.getDistance())
 				.isEqualTo(tmpDistance+engine.moveDistanceForOneTime());
 	}
+
+	@Test
+	void isSameDistance() {
+		assertThat(car.isSameDistance(0))
+				.isTrue();
+	}
 }

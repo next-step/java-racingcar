@@ -21,4 +21,8 @@ public class Car {
 	void move() {
 		distance += engine.moveDistanceForOneTime();
 	}
+
+	boolean isSameDistance(int expectedDistance){
+		return this.distance == expectedDistance;
+	}
 }

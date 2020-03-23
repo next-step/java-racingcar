@@ -22,7 +22,7 @@ public class RacingGame {
 	public List<String> getWinners() {
 		int winDistance = getWinnerDistance();
 		return cars.stream()
-				.filter(car -> car.getDistance() == winDistance)
+				.filter(car -> car.isSameDistance(winDistance))
 				.map(Car::getRacer)
 				.collect(Collectors.toList());
 	}
