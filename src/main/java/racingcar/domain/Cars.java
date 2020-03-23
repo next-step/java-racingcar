@@ -51,8 +51,4 @@ public class Cars {
                 .collect(joining(","));
     }
 
-    @Override
-    public String toString() {
-        return cars.toString();
-    }
 }
