@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class MovingPolicyTest {
 
     private RandomMovingPolicy movingPolicy;
+    private final int MOVE_CONDITION = 4;
     private final int IMPOSSIBLE_MOVE_MIN_RANGE = 0;
     private final int IMPOSSIBLE_MOVE_MAX_RANGE = 4;
     private final int POSSIBLE_MOVE_MIN_RANGE = 4;
@@ -18,14 +19,14 @@ class MovingPolicyTest {
     @Test
     void failMoveByPolicy() {
         // given
-        movingPolicy = new RandomMovingPolicy(IMPOSSIBLE_MOVE_MIN_RANGE, IMPOSSIBLE_MOVE_MAX_RANGE);
-        int distance = 0;
+        movingPolicy = new RandomMovingPolicy(IMPOSSIBLE_MOVE_MIN_RANGE, IMPOSSIBLE_MOVE_MAX_RANGE, MOVE_CONDITION);
+        int distance;
 
         // when then
         for (int i = 0; i < REPEAT_COUNT; i++) {
             distance = movingPolicy.distance();
             assertThat(distance).isLessThan(IMPOSSIBLE_MOVE_MAX_RANGE);
-            assertThat(movingPolicy.isPossibleMove(distance)).isTrue();
+            assertThat(movingPolicy.isPossibleMove(distance)).isFalse();
         }
     }
 
@@ -33,8 +34,8 @@ class MovingPolicyTest {
     @Test
     void successMoveByPolicy() {
         // given
-        movingPolicy = new RandomMovingPolicy(POSSIBLE_MOVE_MIN_RANGE, POSSIBLE_MOVE_MAX_RANGE);
-        int distance = 0;
+        movingPolicy = new RandomMovingPolicy(POSSIBLE_MOVE_MIN_RANGE, POSSIBLE_MOVE_MAX_RANGE, MOVE_CONDITION);
+        int distance;
 
         // when then
         for (int i = 0; i < REPEAT_COUNT; i++) {
