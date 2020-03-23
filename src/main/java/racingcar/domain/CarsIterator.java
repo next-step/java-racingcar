@@ -7,7 +7,7 @@ public class CarsIterator implements Iterator {
     private final Cars cars;
     private int index;
 
-    CarsIterator(Cars cars) {
+    public CarsIterator(Cars cars) {
         this.cars = cars;
         index = 0;
     }

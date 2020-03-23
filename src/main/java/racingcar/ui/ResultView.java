@@ -1,13 +1,39 @@
 package racingcar.ui;
 
-import racingcar.domain.RacingGameResultsBuilder;
+import racingcar.domain.*;
 
 public class ResultView {
 
     public ResultView() {
     }
 
-    public void print(RacingGameResultsBuilder racingGameResultsBuilder) {
-        System.out.printf("실행 결과\n%s", racingGameResultsBuilder.getRenderedGameResults());
+    public void print(RacingGameResults racingGameResults) {
+        System.out.printf("실행 결과\n%s", renderGameResultsToView(racingGameResults));
+    }
+
+    public String renderGameResultsToView(RacingGameResults racingGameResults) {
+        StringBuilder collectResult = new StringBuilder();
+        racingGameResults.getGameResultSet()
+                .stream()
+                .forEach(e -> collectResult.append(getResults(e.getValue())));
+
+        return collectResult.toString();
+    }
+
+    public String getResults(Cars cars) {
+        StringBuilder stringBuilder = new StringBuilder();
+        CarsIterator carsIterator = new CarsIterator(cars);
+        while (carsIterator.hasNext()) {
+            writeAllCarsPosition(stringBuilder, carsIterator.next());
+        }
+        stringBuilder.append(RacingGameConstant.CARRIAGE_RETURN);
+        return stringBuilder.toString();
+    }
+
+    private void writeAllCarsPosition(StringBuilder stringBuilder, Car car) {
+        for (int i = 0; i < car.getPosition(); i++) {
+            stringBuilder.append(RacingGameConstant.CAR_MARKER);
+        }
+        stringBuilder.append(RacingGameConstant.CARRIAGE_RETURN);
     }
 }

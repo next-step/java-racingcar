@@ -24,7 +24,7 @@ public class Car {
         return new Car(position);
     }
 
-    int getPosition() {
+    public int getPosition() {
         return position;
     }
 
