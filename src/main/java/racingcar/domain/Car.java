@@ -7,15 +7,16 @@ public class Car {
     private int position;
 
     public Car(String name) {
-        this.name = name;
-        this.position = START_POSITION;
+        this(name, START_POSITION);
     }
 
     Car(Car car) {
         this.position = car.getPosition();
+        this.name = car.getName();
     }
 
-    Car(Integer position) {
+    Car(String name, Integer position) {
+        this.name = name;
         this.position = position;
     }
 
@@ -23,7 +24,11 @@ public class Car {
         if (moveCondition) {
             position++;
         }
-        return new Car(position);
+        return new Car(name, position);
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getPosition() {
@@ -33,7 +38,8 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" +
-                "position=" + position +
+                "name='" + name + '\'' +
+                ", position=" + position +
                 '}';
     }
 }
