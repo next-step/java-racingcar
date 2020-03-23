@@ -18,16 +18,9 @@ public class RacingGame {
         this.movingPolicy = movingPolicy;
     }
 
-    // TODO : INDET 3
     public void play() {
-        int distance;
         for (int i = 0; i < time; i++) {
-            for (Car car : cars.getCars()) {
-                distance = movingPolicy.distance();
-                if (movingPolicy.isPossibleMove(distance)) {
-                    car.move();
-                }
-            }
+            cars.move(movingPolicy);
         }
     }
 
