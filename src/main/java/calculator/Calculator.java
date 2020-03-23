@@ -14,13 +14,12 @@ public class Calculator {
     public Calculator(String[] operandAndOperators) {
         validateOperrandAndOperator(operandAndOperators);
         this.operandAndOperators = operandAndOperators;
-
     }
 
     /**
      * 피연산자가 숫자인지 검증
      */
-    public void validateOperand(String operand) {
+    private void validateOperand(String operand) {
         if (!OPERAND_PATTERN.matcher(operand).find()) {
             throw new IllegalArgumentException("피연산자가 숫자가 아님");
         }
@@ -29,7 +28,7 @@ public class Calculator {
     /**
      * 연산자가 사칙연산인지 체크 [+, -, *, /]
      */
-    public void validateOperator(String operator) {
+    private void validateOperator(String operator) {
         if (!OPERATOR_PATTERN.matcher(operator).find()) {
             throw new IllegalArgumentException("연산자가 사칙연산이 아님");
         }

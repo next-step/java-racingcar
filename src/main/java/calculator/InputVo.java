@@ -15,9 +15,6 @@ public class InputVo {
         splitInput(input);
     }
 
-    /**
-     * validate
-     */
     private void validate(String input) {
         if (Objects.equals(input, null)) {
             throw new IllegalArgumentException("null 값 입력 됨");
