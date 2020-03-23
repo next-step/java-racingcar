@@ -29,8 +29,9 @@ public class RacingGamePlayer {
 
 		resultView.printResultStart();
 		for (int i = 0; i < inputView.getRacingTime(); i++) {
+			racingGame.move();
 			resultView.printResult(
-					racingGame.move()
+					racingGame.getCars()
 							.stream()
 							.collect(Collectors.toMap(Car::getRacer, Car::getDistance)));
 			System.out.println();

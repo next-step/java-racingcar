@@ -17,15 +17,18 @@ class RacingGameTest {
 	@Test
 	@DisplayName("움직임 테스트")
 	void moveTest() {
-		RacingGame racingGame = new RacingGame(new Car(RACER1, COMMON_ENGINE),
-				new Car(RACE2, COMMON_ENGINE),
-				new Car(RACER3, COMMON_ENGINE));
+		Car car = new Car(RACER1, COMMON_ENGINE);
+		RacingGame racingGame = new RacingGame(car);
 
-		assertThat(racingGame.move())
-				.allMatch(car -> car.getDistance() == COMMON_ENGINE.moveDistanceForOneTime());
+		racingGame.move();
 
-		assertThat(racingGame.move())
-				.allMatch(car -> car.getDistance() == COMMON_ENGINE.moveDistanceForOneTime()*2);
+		assertThat(car.getDistance())
+				.isEqualTo(COMMON_ENGINE.moveDistanceForOneTime());
+
+		racingGame.move();
+
+		assertThat(car.getDistance())
+				.isEqualTo(COMMON_ENGINE.moveDistanceForOneTime() * 2);
 	}
 
 	@Test

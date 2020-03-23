@@ -11,8 +11,11 @@ public class RacingGame {
 		this.cars = Arrays.asList(cars);
 	}
 
-	public List<Car> move() {
+	public void move() {
 		cars.forEach(Car::move);
+	}
+
+	public List<Car> getCars(){
 		return cars;
 	}
 
