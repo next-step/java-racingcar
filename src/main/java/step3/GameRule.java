@@ -1,7 +1,6 @@
 package step3;
 
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class GameRule {
 
@@ -15,8 +14,8 @@ public class GameRule {
         return randomValue >= NUMBER_CAN_MOVE;
     }
 
-    public List<Car> getWinner(List<Car> carList) {
-
+    public int getMaxPosition(List<Integer> finalPositionList) {
+        return Collections.max(finalPositionList);
     }
 
 }

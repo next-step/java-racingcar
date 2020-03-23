@@ -1,7 +1,9 @@
 package step3;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RacingGame {
     private int roundTime;
@@ -9,6 +11,7 @@ public class RacingGame {
     private String[] carNameList;
     private List<Car> carList = new ArrayList<Car>();
     private GameRule gameRule;
+    private List<String> winnerNameList;
 
     public RacingGame(int roundTime, GameRule gameRule, int carCount) {
         this.carCount = carCount;
@@ -26,6 +29,7 @@ public class RacingGame {
     public void start() {
         createCars(carCount, carNameList);
         play();
+        getWinner();
     }
 
     public void end() {
@@ -58,8 +62,33 @@ public class RacingGame {
         }
     }
 
-    public List<Car> getWinner() {
-        return gameRule.getWinner(carList);
+    public void getWinner() {
+        List<Integer> finalPositionList =getFinalPositionList();
+        int winnerPosition = gameRule.getMaxPosition(finalPositionList);
+
+        for(Car car: carList) {
+            if(winnerPosition == car.getPosition()) {
+                this.winnerNameList.add(car.getCarName());
+            }
+        }
+    }
+
+    public List<Integer> getFinalPositionList() {
+        List<Integer> finalPositionList = new ArrayList<>();
+
+        for(Car car: carList) {
+            finalPositionList.add(car.getPosition());
+        }
+        return finalPositionList;
+    }
+
+    public Map<String, Integer> getFinalPositionMap() {
+        Map<String, Integer> finalPositionMap = new HashMap<>();
+
+        for(Car car: carList) {
+            finalPositionMap.put(car.getCarName(), car.getPosition());
+        }
+        return finalPositionMap;
     }
 
     public int getRoundTime() {
