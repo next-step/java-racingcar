@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RacingGame {
-
     private final int time;
     private final Cars cars;
 

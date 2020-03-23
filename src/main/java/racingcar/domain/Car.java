@@ -2,9 +2,9 @@ package racingcar.domain;
 
 import java.util.Objects;
 
-public class Car {
-    public static final int START_POSITION = 0;
+import static racingcar.domain.RacingGameConstant.START_POSITION;
 
+public class Car {
     private String name;
     private int position;
 
@@ -38,7 +38,7 @@ public class Car {
     }
 
     public boolean isSamePosition(Car car) {
-        return getPosition() == car.getPosition();
+        return Objects.equals(getPosition(), car.getPosition());
     }
 
     @Override

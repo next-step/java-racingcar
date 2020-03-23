@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.regex.Pattern;
+
 public class RacingGameConstant {
     public static final String REQUEST_CAR_NAME_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분.";
     public static final String REQUEST_TRY_TIME_MESSAGE = "시도할 회수는 몇 회 인가요?";
@@ -21,6 +23,11 @@ public class RacingGameConstant {
 
     public static final int RANDOM_LIMIT = 9;
     public static final int MOVE_CONDITION = 4;
+
+    public static final int START_POSITION = 0;
+    public static final int NUMBER_ONE = 1;
+
+    public static final Pattern COMMA_PATTERN = Pattern.compile("(?:,|$)");
 
 }
 

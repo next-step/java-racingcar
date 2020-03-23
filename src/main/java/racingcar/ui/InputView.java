@@ -2,13 +2,10 @@ package racingcar.ui;
 
 import java.util.Objects;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 import static racingcar.domain.RacingGameConstant.*;
 
 public class InputView {
-
-    private static final Pattern COMMA_PATTERN = Pattern.compile("(?:,|$)");
 
     private String[] carNames;
     private int time;

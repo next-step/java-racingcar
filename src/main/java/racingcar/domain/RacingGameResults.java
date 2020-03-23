@@ -3,9 +3,9 @@ package racingcar.domain;
 import java.util.Map;
 import java.util.Set;
 
-public class RacingGameResults {
-    private static final int NUMBER_ONE = 1;
+import static racingcar.domain.RacingGameConstant.NUMBER_ONE;
 
+public class RacingGameResults {
     private final Map<Integer, Cars> racingGameResults;
 
     public RacingGameResults(Map<Integer, Cars> racingGameResults) {
