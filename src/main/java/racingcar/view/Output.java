@@ -4,6 +4,10 @@ public class Output {
     private static final String CAR_DISTANCE_BAR = "-";
     private StringBuilder bar;
 
+    public Output() {
+        this(new StringBuilder());
+    }
+
     public Output(final StringBuilder bar) {
         this.bar = bar;
     }
