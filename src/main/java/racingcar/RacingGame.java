@@ -17,9 +17,9 @@ public class RacingGame {
 
     public RacingGame(Random randomGenerator, InputData inputData) {
         this.randomGenerator = randomGenerator;
-        InputData gameOptions = new InputData(inputData.getNumberOfCars(), inputData.getTryCount());
-        numberOfCars = gameOptions.getNumberOfCars();
-        tryCount = gameOptions.getTryCount();
+        validate(inputData.getNumberOfCars(), inputData.getTryCount());
+        numberOfCars = inputData.getNumberOfCars();
+        tryCount = inputData.getTryCount();
         generateCars();
     }
 
@@ -41,5 +41,22 @@ public class RacingGame {
                 .range(0, numberOfCars)
                 .mapToObj(__ -> new Car(randomGenerator))
                 .collect(Collectors.toList());
+    }
+
+    private void validate(int numberOfCars, int tryCount) {
+        validateNumberOfCars(numberOfCars);
+        validateTryCount(tryCount);
+    }
+
+    private void validateNumberOfCars(int numberOfCars) {
+        if (numberOfCars < 1) {
+            throw new IllegalArgumentException("입력 가능한 자동차 대수가 1보다 작을 수 없습니다.");
+        }
+    }
+
+    private void validateTryCount(int tryCount) {
+        if (tryCount < 1) {
+            throw new IllegalArgumentException("입력 가능한 시도 횟수는 1보다 작을 수 없습니다.");
+        }
     }
 }
