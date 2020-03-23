@@ -38,13 +38,15 @@ public class RacingGame {
 
     public void play() {
         for(int i = 0; i < this.roundTime; i++) {
-            _move(i);
+            moveCars(i);
         }
     }
 
-    private void _move(int presentRoundTime) {
+    private void moveCars(int presentRoundTime) {
         for(Car car: this.carList) {
-            car.playRound(presentRoundTime);
+            if(gameRule.canMove()) {
+                car.move(presentRoundTime);
+            }
         }
     }
 
