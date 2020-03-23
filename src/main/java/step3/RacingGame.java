@@ -9,9 +9,9 @@ public class RacingGame {
     private List<Car> carList = new ArrayList<Car>();
     private GameRule gameRule;
 
-    public RacingGame(int roundTime, int carCount, GameRule gameRule) {
-        this.roundTime = roundTime;
+    public RacingGame(int carCount, int roundTime, GameRule gameRule) {
         this.carCount = carCount;
+        this.roundTime = roundTime;
         this.gameRule = gameRule;
     }
 
@@ -52,10 +52,6 @@ public class RacingGame {
 
     public int getRoundTime() {
         return roundTime;
-    }
-
-    public int getCarCount() {
-        return carCount;
     }
 
     public List<Car> getCarList() {
