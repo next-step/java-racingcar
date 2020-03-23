@@ -6,7 +6,6 @@ import java.util.List;
 
 public class ResultView {
 
-
     public void printResult(List<Car> cars, int numberOfAttempts) {
         System.out.println("실행 결과");
         for (int i = 0; i < numberOfAttempts; i++) {
