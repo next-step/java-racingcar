@@ -2,31 +2,30 @@ package racingcar.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.Test;
+import racingcar.policy.MovingPolicy;
+import racingcar.policy.fake.SuccessMovingPolicy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
-
-    private Car car;
     private final int DEFAULT_DISTANCE = 0;
+    private MovingPolicy movingPolicy;
+    private Car car;
 
     @BeforeEach
     void setUp() {
         car = new Car(DEFAULT_DISTANCE);
+        movingPolicy = new SuccessMovingPolicy();
     }
 
     @DisplayName("자동차 이동을 성공한다.")
-    @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3, 4, 5})
-    void move(int distance) {
+    @Test
+    void move() {
         // when
-        for (int i = 0; i < distance; i++) {
-            car.move();
-        }
+        car.move(movingPolicy);
 
         // then
-        assertThat(car.getDistance()).isEqualTo(distance);
+        assertThat(car.getDistance()).isEqualTo(1);
     }
 }
