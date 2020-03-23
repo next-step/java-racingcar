@@ -11,7 +11,7 @@ import java.util.Random;
  * 1. 값이 1 이상인치 체크
  * 1. 값이 4 이상인치 체크
  */
-final public class NumberUtil {
+public final class NumberUtil {
 
     private NumberUtil() {
         throw new ImpossibaleConstructionException("Util 객체 생성 금지");

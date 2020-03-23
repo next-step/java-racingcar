@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import racinggame.domain.expression.ResultView;
+import racinggame.domain.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,7 +27,7 @@ class RacingTest {
     @MethodSource("provideConstructParam")
     public void construct(int carCount, int gameCount, List<String> carNames) throws Exception {
         //then
-        new Racing(carCount, gameCount, carNames);
+        new Racing(gameCount, carNames);
     }
 
     @DisplayName("---------------------------test")
@@ -35,7 +35,7 @@ class RacingTest {
     @MethodSource("provideConstructParam")
     public void teset(int carCount, int gameCount, List<String> carNames) throws Exception {
         //given
-        Racing racing = new Racing(carCount, gameCount, carNames);
+        Racing racing = new Racing(gameCount, carNames);
         ResultView resultView = new ResultView(racing);
 
         //when
@@ -44,9 +44,7 @@ class RacingTest {
         //then
         resultView.drawAllRoundResult();
 
+        resultView.drawWinners();
         System.out.println("===============");
-
     }
-
-
 }

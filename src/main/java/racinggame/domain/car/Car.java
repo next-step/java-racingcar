@@ -6,8 +6,9 @@ import racinggame.util.NumberUtil;
  * 1. 움직이는 거리 필드
  * 1. 자동차 이름 필드
  * 1. 게임 진행시 자동차 이동
+ * 1. 정렬
  */
-public class Car {
+public class Car implements Comparable<Car> {
     private final String carName;
     private int moveRange = 0;
 
@@ -27,6 +28,11 @@ public class Car {
         if (NumberUtil.isGreaterThan4((NumberUtil.createRandomIntIn0to9()))) {
             this.moveRange++;
         }
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return Integer.compare(this.moveRange, o.getMoveRange());
     }
 
     public int getMoveRange() {

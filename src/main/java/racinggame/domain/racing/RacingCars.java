@@ -16,12 +16,12 @@ public class RacingCars {
     }
 
     public void moveCarAll() {
-        for (Car car : cars) {
+        for (Car car : this.cars) {
             car.moveCar();
         }
     }
 
     public List<Car> getCars() {
-        return cars;
+        return this.cars;
     }
 }

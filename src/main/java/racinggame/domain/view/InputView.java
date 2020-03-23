@@ -1,4 +1,4 @@
-package racinggame.domain.expression;
+package racinggame.domain.view;
 
 import racinggame.util.NumberUtil;
 
@@ -12,37 +12,25 @@ import java.util.List;
  */
 public class InputView {
     private static final String CAR_NAME_DELIMITER = ",";
-    private int carCount;
+    private static final String INPUT_ERROR_MESSAGE = "1이상의 값을 입력해야 합니다.";
     private int gameCount;
     private List<String> carNames = new ArrayList<>();
 
-    public InputView(String carCount, String gameCount, String carNames) {
-        this.carCount = validateInputData(carCount);
+    public InputView(String gameCount, String carNames) {
         this.gameCount = validateInputData(gameCount);
         this.carNames = careateCarNames(carNames);
-        validateCompareCarAndNameCount();
     }
 
     private int validateInputData(String input) {
         int num = NumberUtil.validateIntegerAndReturn(input);
         if (!NumberUtil.isGreaterThan1(num)) {
-            throw new IllegalArgumentException("1이상의 값을 입력해야 합니다.");
+            throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
         }
         return num;
     }
 
-    private void validateCompareCarAndNameCount() {
-        if (this.carCount != this.carNames.size()) {
-            throw new IllegalArgumentException("자동차와 자동차의 이름의 갯수가 서로 맞지 않습니다.");
-        }
-    }
-
     private List<String> careateCarNames(String carNames) {
         return Arrays.asList(carNames.split(CAR_NAME_DELIMITER));
-    }
-
-    public int getCarCount() {
-        return this.carCount;
     }
 
     public int getGameCount() {
@@ -50,6 +38,6 @@ public class InputView {
     }
 
     public List<String> getCarNames() {
-        return this.carNames;
+        return carNames;
     }
 }
