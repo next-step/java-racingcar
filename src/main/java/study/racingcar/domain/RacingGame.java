@@ -10,7 +10,8 @@ public class RacingGame {
     private int time;
     private List<Car> cars;
     private MovableDistance movableDistance;
-// todo racing game data 가 과연 필요할까?
+
+    // todo racing game data 가 과연 필요할까?
     public RacingGame(RacingGameData racingGameData,
                       MovableDistance movableDistance) {
         this.cars = racingGameData.getCars();
@@ -18,16 +19,14 @@ public class RacingGame {
         this.movableDistance = movableDistance;
     }
 
-    public List<Car> move() {
+    public void move() {
         if (!isMovable()) {
-            return cars;
+            return;
         }
         decreaseTime();
         for (Car car : cars) {
             car.addPosition(movableDistance.getDistance());
         }
-
-        return cars;
     }
 
     public List<Car> getWinner() {
@@ -48,7 +47,6 @@ public class RacingGame {
     }
 
     public List<Car> getCars() {
-        // todo copy 메서드를 이용하여 복사본을 넘긴다.
         return cars;
     }
 

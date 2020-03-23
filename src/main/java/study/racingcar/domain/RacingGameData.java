@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGameData {
-    private static final int MIN = 0;
+    private static final int MIN = 1;
     private List<Car> cars;
     private int time;
 
@@ -13,6 +13,10 @@ public class RacingGameData {
             throw new IllegalArgumentException(
                     String.format("시도 횟수는 %d 이상이여야 합니다.", MIN));
         }
+        if (carNames.isEmpty()) {
+            throw new IllegalArgumentException("한대 이상의 차가 있어야 합니다.");
+        }
+
         initCars(carNames);
         this.time = time;
     }

@@ -9,7 +9,6 @@ import study.racingcar.domain.RacingGame;
 import study.racingcar.domain.RacingGameData;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -44,36 +43,13 @@ public class RacingGameTest {
         RacingGame racingGame =
                 new RacingGame(new RacingGameData(EXAMPLE_CARS, 3),
                         movableDistance);
-        racingGame.move();
-        racingGame.move();
-        List<Car> cars = racingGame.move();
-        assertThat(cars.size()).isEqualTo(3);
-        assertThat(cars.stream().map(Car::getPosition))
+        for (int i = 0; i < 3; i++) {
+            racingGame.move();
+        }
+
+        assertThat(racingGame.getCars().size()).isEqualTo(3);
+        assertThat(racingGame.getCars().stream().map(Car::getPosition))
                 .containsExactly(3, 3, 3);
-    }
-
-    @DisplayName("차 댓수와 시도 횟수가 0이여도 된다.")
-    @Test
-    void carsCanBeZero() {
-        RacingGame racingGame =
-                new RacingGame(new RacingGameData(Collections.emptyList(), 2),
-                        movableDistance);
-        List<Car> cars = racingGame.move();
-        assertThat(cars.size()).isEqualTo(0);
-        assertThat(racingGame.isMovable()).isTrue();
-        racingGame.move();
-        assertThat(racingGame.isMovable()).isFalse();
-    }
-
-    @DisplayName("시도 횟수가 0이여도 된다.")
-    @Test
-    void timesCanBeZero() {
-        RacingGame racingGame =
-                new RacingGame(new RacingGameData(EXAMPLE_CARS, 0),
-                        movableDistance);
-        assertThat(racingGame.isMovable()).isFalse();
-        List<Car> cars = racingGame.move();
-        assertThat(cars.size()).isEqualTo(3);
     }
 
     @DisplayName("우승자는 두명 이상일 수 있다.")
@@ -93,9 +69,10 @@ public class RacingGameTest {
         RacingGame racingGame =
                 new RacingGame(new RacingGameData(EXAMPLE_CARS, 3),
                         movableDistance);
-        racingGame.move();
-        racingGame.move();
-        racingGame.move();
+        for (int i = 0; i < 3; i++) {
+            racingGame.move();
+        }
+
 
         List<Car> winner = racingGame.getWinner();
         assertThat(winner.size()).isEqualTo(2);

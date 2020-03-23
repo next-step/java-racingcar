@@ -10,13 +10,13 @@ import java.util.Arrays;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class RacingGameDataTest {
-    @DisplayName("시도 횟수가 음수여서는 안된다.")
+    @DisplayName("시도 횟수는 1 이상이여야 한다.")
     @ParameterizedTest
-    @CsvSource(value = {"pobi,crong,honux:-1"}, delimiter = ':')
+    @CsvSource(value = {"pobi,crong,honux:0"}, delimiter = ':')
     void failToInit(String carNames, int time) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
                     new RacingGameData(Arrays.asList(carNames.split(",")), time);
-                }).withMessage("시도 횟수는 0 이상이여야 합니다.");
+                }).withMessage("시도 횟수는 1 이상이여야 합니다.");
     }
 }
