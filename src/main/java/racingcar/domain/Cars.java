@@ -5,6 +5,8 @@ import java.util.List;
 
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
+import static racingcar.domain.RacingGameConstant.DELIMITER_COMMA;
+import static racingcar.domain.RacingGameConstant.NO_WINNER;
 
 public class Cars {
     private final List<Car> cars;
@@ -41,14 +43,14 @@ public class Cars {
     public String getWinners() {
         Car winner = cars.stream()
                 .reduce((car1, car2) -> car1.getPosition() > car2.getPosition() ? car1 : car2)
-                .orElseThrow(() -> new IllegalArgumentException(RacingGameConstant.NO_WINNER));
+                .orElseThrow(() -> new IllegalArgumentException(NO_WINNER));
 
         return cars.stream()
                 .filter(car -> car.isSamePosition(winner))
                 .collect(toList())
                 .stream()
                 .map(Car::getName)
-                .collect(joining(RacingGameConstant.DELIMITER_COMMA));
+                .collect(joining(DELIMITER_COMMA));
     }
 
 }

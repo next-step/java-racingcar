@@ -14,6 +14,7 @@ public class RacingGameConstant {
 
     public static final String DELIMITER_COMMA = ",";
 
+    public static final String NULL_BLANK = "";
     public static final String COLON = " : ";
     public static final String CAR_MARKER = "-";
     public static final String CARRIAGE_RETURN = "\n";

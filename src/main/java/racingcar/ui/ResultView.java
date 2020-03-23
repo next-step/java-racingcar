@@ -1,6 +1,11 @@
 package racingcar.ui;
 
-import racingcar.domain.*;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.CarsIterator;
+import racingcar.domain.RacingGameResults;
+
+import static racingcar.domain.RacingGameConstant.*;
 
 public class ResultView {
 
@@ -8,7 +13,7 @@ public class ResultView {
     }
 
     public void print(RacingGameResults racingGameResults) {
-        System.out.printf(RacingGameConstant.WINNER_COMMENT_PREFIX, renderGameResultsToView(racingGameResults));
+        System.out.printf(WINNER_COMMENT_PREFIX, renderGameResultsToView(racingGameResults));
     }
 
     public String renderGameResultsToView(RacingGameResults racingGameResults) {
@@ -19,7 +24,7 @@ public class ResultView {
 
         return collectResult
                 .append(racingGameResults.getWinners())
-                .append(RacingGameConstant.WINNER_COMMENT_SUFFIX)
+                .append(WINNER_COMMENT_SUFFIX)
                 .toString();
     }
 
@@ -30,16 +35,16 @@ public class ResultView {
         while (carsIterator.hasNext()) {
             writeAllCarsPosition(stringBuilder, carsIterator.next());
         }
-        stringBuilder.append(RacingGameConstant.CARRIAGE_RETURN);
+        stringBuilder.append(CARRIAGE_RETURN);
 
         return stringBuilder.toString();
     }
 
     private void writeAllCarsPosition(StringBuilder stringBuilder, Car car) {
-        stringBuilder.append(car.getName().concat(RacingGameConstant.COLON));
+        stringBuilder.append(car.getName().concat(COLON));
         for (int i = 0; i < car.getPosition(); i++) {
-            stringBuilder.append(RacingGameConstant.CAR_MARKER);
+            stringBuilder.append(CAR_MARKER);
         }
-        stringBuilder.append(RacingGameConstant.CARRIAGE_RETURN);
+        stringBuilder.append(CARRIAGE_RETURN);
     }
 }

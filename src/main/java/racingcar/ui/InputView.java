@@ -1,10 +1,10 @@
 package racingcar.ui;
 
-import racingcar.domain.RacingGameConstant;
-
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.regex.Pattern;
+
+import static racingcar.domain.RacingGameConstant.*;
 
 public class InputView {
 
@@ -27,12 +27,12 @@ public class InputView {
     }
 
     private String[] requestCarNames() {
-        System.out.println(RacingGameConstant.REQUEST_CAR_NAME_MESSAGE);
+        System.out.println(REQUEST_CAR_NAME_MESSAGE);
         return parseCarNames();
     }
 
     private int requestTime() {
-        System.out.println(RacingGameConstant.REQUEST_TRY_TIME_MESSAGE);
+        System.out.println(REQUEST_TRY_TIME_MESSAGE);
         return parseTime();
     }
 
@@ -40,13 +40,13 @@ public class InputView {
         Scanner scanner = new Scanner(System.in);
         String value = scanner.nextLine();
         if (isEmpty(value)) {
-            System.out.println(RacingGameConstant.IS_NOT_NULL);
+            System.out.println(IS_NOT_NULL);
             requestCarNames();
         }
         if (!COMMA_PATTERN.matcher(value).find()) {
-            throw new IllegalArgumentException(RacingGameConstant.IS_NOT_A_COMMA);
+            throw new IllegalArgumentException(IS_NOT_A_COMMA);
         }
-        String[] splitWithComma = value.split(RacingGameConstant.DELIMITER_COMMA);
+        String[] splitWithComma = value.split(DELIMITER_COMMA);
         return splitWithComma;
     }
 
@@ -56,12 +56,12 @@ public class InputView {
         try {
             return Integer.parseInt(value);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(RacingGameConstant.IS_NOT_A_NUMBER);
+            throw new IllegalArgumentException(IS_NOT_A_NUMBER);
         }
     }
 
     private boolean isEmpty(String value) {
-        return Objects.isNull(value) || "".equals(value);
+        return Objects.isNull(value) || NULL_BLANK.equals(value);
     }
 
 }
