@@ -10,7 +10,7 @@ public class GameRule {
         return isNumberCanMove(generateRandomValue());
     }
 
-    private boolean isNumberCanMove(int randomValue) {
+    public static boolean isNumberCanMove(int randomValue) {
         return randomValue >= NUMBER_CAN_MOVE;
     }
 
