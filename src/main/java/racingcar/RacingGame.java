@@ -27,25 +27,37 @@ public class RacingGame {
 
     public void startRace() {
         while (canRace()) {
-            moveCar();
+            moveCars();
             reduceCount();
+            ResultView.nextLine();
         }
-        return carPositions;
+        endRace();
+    }
+
+    private void endRace() {
+        ResultView.printWinnerName(RacingWinner.findWinnerName(cars));
     }
 
     private boolean canRace() {
         return this.raceTime > END_TIME;
     }
 
-    private void moveCar() {
-        for (int i = 0; i < carPositions.length; i++) {
-            if (canMove()) {
-                carPositions[i]++;
-            }
-            ResultView.printResultView(carPositions[i]);
-            ResultView.nextLine();
+    private void moveCars() {
+        for (int i = 0; i < cars.size(); i++) {
+            move(cars.get(i));
         }
-        ResultView.nextLine();
+    }
+
+    private void move(RacingCar car) {
+        if (canMove()) {
+            car.moveForward();
+        }
+        printRaceResult(car);
+    }
+
+    private void printRaceResult(RacingCar car) {
+        ResultView.printCarName(car.getName());
+        ResultView.printPosition(car.getPosition());
     }
 
     private void reduceCount() {
@@ -53,7 +65,7 @@ public class RacingGame {
     }
 
     private boolean canMove() {
-        return random.nextInt() > MOVABLE_NUMBER;
+        return random.nextInt(10) > MOVABLE_NUMBER;
     }
 
 }
