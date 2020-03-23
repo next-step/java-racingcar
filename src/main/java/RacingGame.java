@@ -5,10 +5,12 @@ public class RacingGame {
 
     private int time;
     private int[] carPositions;
+    private String[] carNames;
 
-    public RacingGame(int time, int count) {
+    public RacingGame(String[] carNames, int time) {
         this.time = time;
-        this.carPositions = new int[count];
+        this.carPositions = new int[carNames.length];
+        this.carNames = carNames;
     }
 
     public int getTime() {
@@ -20,12 +22,12 @@ public class RacingGame {
     }
 
     public static void main(String[] args) {
-        InputView input = new InputView();
+        InputView inputView = new InputView();
 
-        RacingGame game = input.input();
-        GameProgress progress = new GameProgress();
+        RacingGame racingGame = inputView.input();
+        GameProgress gameProgress = new GameProgress();
 
-        progress.progress(game);
+        gameProgress.progress(racingGame);
     }
 
 }

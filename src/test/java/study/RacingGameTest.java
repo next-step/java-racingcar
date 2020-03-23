@@ -12,6 +12,7 @@ public class RacingGameTest {
     int count;
     int time;
     int[] carPositions;
+    String[] carNameArr;
 
     private final int BASE_POINT = 4;
     private final int RANDOM_BOUND = 10;
