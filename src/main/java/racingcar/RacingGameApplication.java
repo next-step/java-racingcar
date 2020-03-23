@@ -1,7 +1,7 @@
 package racingcar;
 
 import racingcar.domain.RacingGame;
-import racingcar.domain.RacingGameResults;
+import racingcar.domain.RacingGameResultsBuilder;
 import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
 
@@ -11,7 +11,7 @@ public class RacingGameApplication {
         InputView inputView = new InputView();
 
         RacingGame racingGame = new RacingGame(inputView.getTime(), inputView.getNumberOfCars());
-        RacingGameResults gameResults = racingGame.game();
+        RacingGameResultsBuilder gameResults = racingGame.game();
 
         ResultView resultView = new ResultView();
         resultView.print(gameResults);

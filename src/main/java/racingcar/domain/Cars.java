@@ -6,7 +6,7 @@ import java.util.List;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(int numberOfCars) {
+    Cars(int numberOfCars) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
             cars.add(new Car());
@@ -14,35 +14,29 @@ public class Cars {
         this.cars = cars;
     }
 
-    public Cars(List<Car> cars) {
+    Cars(List<Car> cars) {
         this.cars = cars;
     }
 
-    public Cars moveAllCar() {
-        List<Car> newCars = new ArrayList<>();
-        for (int carNumber = 0; carNumber < cars.size(); carNumber++) {
-            Car movedCar = cars.get(carNumber)
-                    .move(new MoveStrategy(
-                            new RandomCondition().getRandomCondition()));
-            newCars.add(movedCar);
-        }
-        return new Cars(newCars);
-    }
-
-    public String getResults() {
-        StringBuilder stringBuilder = new StringBuilder();
+    Cars moveAllCar(MoveStrategy moveStrategy) {
+        List<Car> movedCars = new ArrayList<>();
         for (Car car : cars) {
-            writeAllCarsPosition(stringBuilder, car);
+            Car movedCar = car.move(moveStrategy.isMove());
+            movedCars.add(movedCar);
         }
-        stringBuilder.append(RacingGameConstant.CARRIAGE_RETURN);
-        return stringBuilder.toString();
+        return new Cars(movedCars);
     }
 
-    private void writeAllCarsPosition(StringBuilder stringBuilder, Car car) {
-        for (int i = 0; i < car.getPosition(); i++) {
-            stringBuilder.append(RacingGameConstant.CAR_MARKER);
-        }
-        stringBuilder.append(RacingGameConstant.CARRIAGE_RETURN);
+    boolean hasNextCar(int index) {
+        return cars.size() != index;
     }
 
+    Car getCar(int index) {
+        return new Car(cars.get(index));
+    }
+
+    @Override
+    public String toString() {
+        return cars.toString();
+    }
 }

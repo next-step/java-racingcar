@@ -22,11 +22,11 @@ class CarsTest {
     @Test
     public void makeAllCarsToMove() {
         //given
-        int numberOfCars = 5;
+        final int numberOfCars = 5; // 자동차 대수
         Cars cars = new Cars(numberOfCars);
 
         //when & then
-        assertThat(cars.moveAllCar()).isNotNull();
+        assertThat(cars.moveAllCar(() -> true)).isNotNull();
     }
 
 }

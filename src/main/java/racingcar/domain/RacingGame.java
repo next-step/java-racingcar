@@ -13,13 +13,13 @@ public class RacingGame {
         this.cars = new Cars(numberOfCars);
     }
 
-    public RacingGameResults game() {
+    public RacingGameResultsBuilder game() {
         Map<Integer, Cars> racingGameHistory = new HashMap<>();
         for (int i = 0; i < time; i++) {
-            Cars value = cars.moveAllCar();
+            Cars value = cars.moveAllCar(new DefaultMoveStrategy());
             racingGameHistory.put(i, value);
         }
-        return new RacingGameResults(racingGameHistory);
+        return new RacingGameResultsBuilder(racingGameHistory);
     }
 
 }

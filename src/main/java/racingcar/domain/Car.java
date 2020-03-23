@@ -9,18 +9,29 @@ public class Car {
         this.position = START_POSITION;
     }
 
+    Car(Car car) {
+        this.position = car.getPosition();
+    }
+
     Car(Integer position) {
         this.position = position;
     }
 
-    Car move(MoveStrategy moveStrategy) {
-        if (moveStrategy.isMove()) {
+    Car move(boolean moveCondition) {
+        if (moveCondition) {
             position++;
         }
         return new Car(position);
     }
 
-    public int getPosition() {
+    int getPosition() {
         return position;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "position=" + position +
+                '}';
     }
 }
