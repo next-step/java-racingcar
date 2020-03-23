@@ -10,9 +10,12 @@ public class MainApplication {
         String carNames = InputProcessor.getCarNamesFromUser();
         String tryCount = InputProcessor.getTryCountsFromUser();
 
-        RacingCar racingCar = new RacingCar(InputView.of(carNames, tryCount));
-        racingCar.start();
+        RacingCar racingCar = RacingCar.ready(InputView.of(carNames, tryCount));
+        while (racingCar.isNotEnd()) {
+            racingCar.start();
+            OutputView.printCurrentPosition(racingCar);
+        }
 
-        OutputView.print(racingCar);
+        OutputView.printWinners(racingCar.getWinners());
     }
 }

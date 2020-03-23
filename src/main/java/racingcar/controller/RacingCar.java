@@ -1,9 +1,11 @@
 package racingcar.controller;
 
-import racingcar.model.*;
+import racingcar.model.Car;
+import racingcar.model.Cars;
+import racingcar.model.Result;
+import racingcar.model.Winners;
 import racingcar.view.InputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.stream.Collectors.collectingAndThen;
@@ -11,50 +13,43 @@ import static java.util.stream.Collectors.toList;
 
 public class RacingCar {
     private int tryCount;
-    private Cars cars;
-    private Results Results;
-    private Winners winners;
+    private int currentCount = 0;
+    private static Cars cars;
+    private Result result;
 
     public RacingCar(InputView inputView) {
         this.tryCount = inputView.getTryCount();
-        ready(inputView.getCarNames());
     }
 
-    private void ready(List<String> carNames) {
-        cars = carNames.stream()
+    public static RacingCar ready(InputView inputView) {
+        cars = inputView.getCarNames().stream()
                 .map(Car::new)
                 .collect(collectingAndThen(toList(), Cars::new));
+        return new RacingCar(inputView);
     }
 
     public void start() {
-        startGame();
-        findWinners(this.getResults());
+        this.result = cars.moveOnce();
+        this.currentCount++;
     }
 
-    private void startGame() {
-        List<Result> results = new ArrayList<>();
-        for (int i = 0; i < tryCount; i++) {
-            Result result = cars.moveOnce();
-            results.add(result);
-        }
-        this.Results = new Results(results);
-    }
-
-    private void findWinners(List<Result> results) {
-        if (results != null) {
-            this.winners = new Winners(cars.findWinner());
-        }
+    public Winners findWinners() {
+        return new Winners(cars.findWinner());
     }
 
     public List<Car> getCars() {
         return cars.getCars();
     }
 
-    public List<Result> getResults() {
-        return Results.getResults();
+    public int getCurrentCount() {
+        return currentCount;
     }
 
     public List<Car> getWinners() {
-        return winners.getWinners();
+        return findWinners().getWinners();
+    }
+
+    public boolean isNotEnd() {
+        return this.tryCount > this.currentCount;
     }
 }

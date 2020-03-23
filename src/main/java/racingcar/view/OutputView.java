@@ -2,7 +2,6 @@ package racingcar.view;
 
 import racingcar.controller.RacingCar;
 import racingcar.model.Car;
-import racingcar.model.Result;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,29 +13,21 @@ public class OutputView {
     private static final String DELIMITER_FOR_WINNERS = ",";
     private static final int FIRST_TRY_COUNT = 1;
 
-    public static void print(RacingCar racingCar) {
-        printGame(racingCar.getCars(), racingCar.getResults());
-        printWinners(racingCar.getWinners());
-    }
-
-    private static void printGame(List<Car> cars, List<Result> results) {
-        System.out.println();
-        printResultTitle();
-        printGameResults(cars, results);
-    }
-
-    private static void printResultTitle() {
-        System.out.println("실행결과");
-    }
-
-    private static void printGameResults(List<Car> cars, List<Result> results) {
-        int currentTryCount = FIRST_TRY_COUNT;
-        for (Result result : results) {
-            printTryCount(currentTryCount);
-            printGameAfterMoveOnce(cars, result);
-            currentTryCount++;
+    public static void printCurrentPosition(RacingCar racingCar) {
+        printResultTitle(racingCar);
+        printTryCount(racingCar.getCurrentCount());
+        for (Car car : racingCar.getCars()) {
+            printPrettierName(car, racingCar);
+            printCurrentPositionOfOneCar(car.getPosition());
         }
-        printBorderLine();
+        printBottomLine(racingCar);
+    }
+
+    private static void printResultTitle(RacingCar racingCar) {
+        if (racingCar.getCurrentCount() == FIRST_TRY_COUNT) {
+            System.out.println();
+            System.out.println("실행결과");
+        }
     }
 
     private static void printTryCount(int currentTryCount) {
@@ -45,28 +36,13 @@ public class OutputView {
         System.out.println();
     }
 
-    private static void printGameAfterMoveOnce(List<Car> cars, Result result) {
-        for (int i = 0; i < cars.size(); i++) {
-            Car car = cars.get(i);
-            System.out.print(findPrettierName(car, cars) + " |");
-            printCurrentPosition(result.getCurrentPosition(car.getName()));
-        }
+    private static void printPrettierName(Car car, RacingCar racingCar) {
+        System.out.print(findPrettierName(car, racingCar.getCars()) + " |");
     }
+
 
     private static String findPrettierName(Car car, List<Car> cars) {
         return makeCarNamesPrettier(cars).get(cars.indexOf(car));
-    }
-
-    private static void printCurrentPosition(int currentPosition) {
-        System.out.println(convertPositionToString(currentPosition));
-    }
-
-    private static StringBuilder convertPositionToString(int position) {
-        StringBuilder stringPosition = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            stringPosition.append(ONE_MOVE);
-        }
-        return stringPosition;
     }
 
     private static List<String> makeCarNamesPrettier(List<Car> cars) {
@@ -96,7 +72,19 @@ public class OutputView {
                 .getAsInt();
     }
 
-    private static void printWinners(List<Car> winners) {
+    private static void printCurrentPositionOfOneCar(int currentPosition) {
+        System.out.println(convertPositionToString(currentPosition));
+    }
+
+    private static StringBuilder convertPositionToString(int position) {
+        StringBuilder stringPosition = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            stringPosition.append(ONE_MOVE);
+        }
+        return stringPosition;
+    }
+
+    public static void printWinners(List<Car> winners) {
         System.out.println();
         String winnersInOneLine = makeWinnersNameInOneLine(winners);
         System.out.println(">>>>>>>> " + winnersInOneLine + " (이)가 최종 우승했습니다. <<<<<<<<");
@@ -110,5 +98,11 @@ public class OutputView {
 
     private static void printBorderLine() {
         System.out.println("=====================================");
+    }
+
+    private static void printBottomLine(RacingCar racingCar) {
+        if (!racingCar.isNotEnd()) {
+            printBorderLine();
+        }
     }
 }
