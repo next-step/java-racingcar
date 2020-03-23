@@ -1,6 +1,6 @@
 package racingGame;
 
-import racingGame.logic.RacingGame;
+import racingGame.domain.RacingGame;
 import racingGame.ui.InputView;
 import racingGame.ui.ResultView;
 
@@ -13,18 +13,20 @@ public class RacingGamePlayer {
 		resultView = new ResultView();
 	}
 
-	public void racingStart(){
+	public void racingStart() {
 		inputView.startInput();
 		RacingGame racingGame = new RacingGame(inputView.getRacers());
+
 		resultView.printResultStart();
 		for (int i = 0; i < inputView.getRacingTime(); i++) {
-			resultView.printResult(racingGame.move());
+			racingGame.move();
+			resultView.printResult(racingGame.getTmpCarDistanceMap());
 			System.out.println();
 		}
 		resultView.printWinner(racingGame.getWinners());
 	}
 
-	public static void main(String[] args){
+	public static void main(String[] args) {
 		new RacingGamePlayer().racingStart();
 	}
 }

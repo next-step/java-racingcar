@@ -1,5 +1,6 @@
 package racingGame.ui;
 
+import java.util.List;
 import java.util.Map;
 
 public class ResultView {
@@ -10,11 +11,11 @@ public class ResultView {
 		System.out.println(RESULT_MSG);
 	}
 
-	public void printResult(Map<String, Integer> cars) {
-		cars.forEach((racer, position) -> {
+	public void printResult(Map<String, Integer> carPositions) {
+		carPositions.forEach((racer, distance) -> {
 			System.out.print(racer);
 			System.out.print(" : ");
-			System.out.println(getCarMarkerString(position));
+			System.out.println(getCarMarkerString(distance));
 		});
 	}
 
@@ -26,7 +27,7 @@ public class ResultView {
 		return carMarker.toString();
 	}
 
-	public void printWinner(String[] winners) {
+	public void printWinner(List<String> winners) {
 		System.out.println(String.join(", ", winners) + WINNER_MSG);
 	}
 }
