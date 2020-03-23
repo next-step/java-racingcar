@@ -6,11 +6,19 @@ import java.util.List;
 public class RacingGame {
     private int roundTime;
     private int carCount;
+    private String[] carNameList;
     private List<Car> carList = new ArrayList<Car>();
     private GameRule gameRule;
 
     public RacingGame(int carCount, int roundTime, GameRule gameRule) {
         this.carCount = carCount;
+        this.roundTime = roundTime;
+        this.gameRule = gameRule;
+    }
+
+    public RacingGame(String[] carNameList, int roundTime, GameRule gameRule) {
+        this.carNameList = carNameList;
+        this.carCount = carNameList.length;
         this.roundTime = roundTime;
         this.gameRule = gameRule;
     }

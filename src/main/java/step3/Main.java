@@ -7,15 +7,15 @@ public class Main {
     public static void main(String[] args) {
         InputView inputView = new InputView();
 
-        inputView.printCarCountInfo();
-        int carCount = inputView.readInputInt();
+        inputView.printCarNameListInfo();
+        String[] carNameList = inputView.readInputString();
 
         inputView.printRoundTimeInfo();
         int roundTime = inputView.readInputInt();
 
         GameRule gameRule = new GameRule();
 
-        RacingGame racingGame = new RacingGame(carCount, roundTime, gameRule);
+        RacingGame racingGame = new RacingGame(carNameList, roundTime, gameRule);
         racingGame.start();
 
         ResultView resultView = new ResultView();

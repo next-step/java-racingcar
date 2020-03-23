@@ -19,18 +19,21 @@ public class InputView {
         return input;
     }
 
+    public String[] readInputString() {
+        String input = this.scanner.nextLine();
+
+        validateStringInput(input);
+
+        String[] strList = input.split(",");
+        return strList;
+    }
+
     private void validateIntegerInput(int input) {
         ValidationUtils.isBiggerThanZero(input);
     }
 
-    public String readInputString() {
-        String input = this.scanner.nextLine();
-
-        return input;
-    }
-
     private void validateStringInput(String input) {
-
+        ValidationUtils.isNullOrEmpty(input);
     }
 
     private void printLine(String line) {
