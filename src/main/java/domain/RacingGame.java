@@ -30,19 +30,8 @@ public class RacingGame {
             throw new IllegalArgumentException("car number must be greater than zero.");
         }
 
-        validateEachCarName(carNames);
-
-        if (roundNumber == null || roundNumber < 0) {
+        if (roundNumber == null || roundNumber <= 0) {
             throw new IllegalArgumentException("round number must be greater than zero.");
-        }
-    }
-
-    private static void validateEachCarName(String[] carNames) {
-        boolean hasEmptyCarName = Arrays.stream(carNames)
-                .anyMatch(carName -> "".equals(carName.trim()));
-
-        if (hasEmptyCarName) {
-            throw new IllegalArgumentException("car names contains abnormal name.");
         }
     }
 

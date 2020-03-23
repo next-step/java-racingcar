@@ -2,6 +2,8 @@ package domain;
 
 import service.MoveRule;
 
+import static utils.RacingCarUtils.validateCarName;
+
 public class RacingCar {
     private String name;
     private Integer position;
@@ -14,6 +16,7 @@ public class RacingCar {
     }
 
     public static RacingCar newInstance(String name, MoveRule moveRule) {
+        validateCarName(name);
         return new RacingCar(name, 0, moveRule);
     }
 
@@ -21,6 +24,6 @@ public class RacingCar {
         if (moveRule.isMovable()) {
             position++;
         }
-        return new RacingCarPosition(name, position);
+        return RacingCarPosition.newInstance(name, position);
     }
 }
