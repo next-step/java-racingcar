@@ -34,7 +34,7 @@ public class RandomGameController {
 
     private void displayWinner(RacingGame racingGame) {
         RacingGameResult racingGameResult =
-                RacingGameResult.generate(racingGame);
+                new RacingGameResult(racingGame);
         List<Car> winners = racingGameResult.getWinner();
         String winnerNames = winners.stream()
                 .map(Car::getName)
