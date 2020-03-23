@@ -23,7 +23,8 @@ class OutputTest {
     @MethodSource("provideBars")
     void view(int distance, String expect) {
         // when
-        String bars = output.mappingToBar(distance);
+        output.mappingToBar(distance);
+        String bars = output.getBar();
 
         // then
         assertThat(bars).isEqualTo(expect);
