@@ -40,4 +40,8 @@ public class Car {
     public String getName() {
         return name;
     }
+
+    public boolean isWinner(int maxPosition) {
+        return maxPosition == position;
+    }
 }
