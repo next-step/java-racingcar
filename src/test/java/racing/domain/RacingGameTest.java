@@ -1,8 +1,10 @@
-package racing;
+package racing.domain;
 
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.domain.Car;
+import racing.domain.RacingGame;
 
 import java.util.Collections;
 import java.util.List;
