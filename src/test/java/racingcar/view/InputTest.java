@@ -1,12 +1,12 @@
 package racingcar.view;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class InputTest {
     private static final String COUNT = "3";
@@ -14,18 +14,24 @@ class InputTest {
     private Input input;
     private ByteArrayInputStream byteArrayInputStream;
 
-    @BeforeEach
-    void setUp() {
-        input = new Input(initInputStream(COUNT));
-    }
-
     @DisplayName("입력값을 검증을 성공한다.")
     @Test
     void read() {
+        input = new Input(initInputStream(COUNT));
         assertThat(input.read()).isEqualTo(COUNT);
 
         input = new Input(initInputStream(TIME));
         assertThat(input.read()).isEqualTo(TIME);
+    }
+
+    @DisplayName("입력값이 공백일 경우 예외 발생을 성공한다.")
+    @Test
+    void valid() {
+        final String BLANK = " ";
+        input = new Input(initInputStream(BLANK));
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(
+                () -> input.read()
+        );
     }
 
     private ByteArrayInputStream initInputStream(String input) {
