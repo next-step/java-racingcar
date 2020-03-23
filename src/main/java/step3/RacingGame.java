@@ -18,7 +18,6 @@ public class RacingGame {
     public void start() {
         createCars(carCount);
         play();
-        end();
     }
 
     public void end() {
@@ -47,6 +46,7 @@ public class RacingGame {
             if(gameRule.canMove()) {
                 car.move(presentRoundTime);
             }
+            car.completeRound(presentRoundTime);
         }
     }
 
