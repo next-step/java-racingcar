@@ -66,6 +66,7 @@ public class ResultView {
             winnerOutputBuilder.append(winnerNameList.get(i));
         }
         winnerOutputBuilder.append(WINNER_NAME_INFO);
+        printView(winnerOutputBuilder.toString());
     }
 
 
