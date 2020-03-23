@@ -1,6 +1,7 @@
 package carRacing;
 
-import carRacing.view.ResultView;
+import org.assertj.core.util.VisibleForTesting;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,15 +11,13 @@ public class RacingGame {
     int time;
 
     List<Car> cars;
-    List<Integer> carPositions;
-    ResultView resultView = new ResultView();
+    RacingObserver observe;
 
     public RacingGame(int numberOfCar, int time) {
         this.numberOfCar = numberOfCar;
         this.time = time;
-        cars = setCars();
-        checkCarPositions();
-        resultView.showResult();
+        cars = new ArrayList<>(setCars());
+        observe = new RacingObserver(cars);
     }
 
     public List<Car> setCars() {
@@ -30,13 +29,9 @@ public class RacingGame {
     }
 
     public void start() {
-        move();
-    }
-
-    private void move() {
         for(int i=0; i<time; i++) {
             rotate();
-            resultView.showGameState(carPositions);
+            observe.tracking(cars);
         }
     }
 
@@ -44,15 +39,11 @@ public class RacingGame {
         for(Car car : cars) {
             car.move();
         }
-        checkCarPositions();
     }
 
-    private void checkCarPositions() {
-        carPositions = new ArrayList<>();
-        int i=carPositions.size();
-        for(Car car : cars) {
-            carPositions.add(i++, car.inquiryPosition());
-        }
+    @VisibleForTesting
+    public List<Integer> observe() {
+        return observe.observe(cars);
     }
 
 }

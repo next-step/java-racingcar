@@ -22,6 +22,7 @@ public class RacingGameTest {
         int time = Integer.parseInt(inputs[1]);
         RacingGame racingGame = new RacingGame(numberOfCar, time);
 
+
         assertThat(racingGame.cars).hasSize(numberOfCar);
     }
 
@@ -44,7 +45,7 @@ public class RacingGameTest {
 
         racingGame.start();
 
-        assertThat(racingGame.observe(racingGame.cars).stream().allMatch(i -> (i == (Integer.parseInt(expected)*time)))).isTrue();
+        assertThat(racingGame.observe().stream().allMatch(i -> (i == (Integer.parseInt(expected)*time)))).isTrue();
     }
 
 }
