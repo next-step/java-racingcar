@@ -14,9 +14,9 @@ public class Car {
 
     public void move() {
         if (isMovable(getRandom())) {
-            // TODO: 랜덤 숫자가 작을 때는 position을 저장하지 않는 문제.
-            carPositions.add(++position);
+            position++;
         }
+        carPositions.add(position);
     }
 
     // TODO: private 메소드 단위 테스트 고민.

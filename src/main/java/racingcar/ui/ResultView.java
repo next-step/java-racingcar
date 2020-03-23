@@ -10,7 +10,6 @@ public class ResultView {
         System.out.println("실행 결과");
 
         for (Car car : cars) {
-            car.print();
             System.out.println();
         }
     }
