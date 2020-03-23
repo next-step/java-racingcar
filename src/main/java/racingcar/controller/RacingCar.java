@@ -24,11 +24,11 @@ public class RacingCar {
         cars = carNames.stream()
                 .map(Car::new)
                 .collect(collectingAndThen(toList(), Cars::new));
-        startGame();
     }
 
     public void start() {
-       startGame();
+        startGame();
+        findWinners(this.getResults());
     }
 
     private void startGame() {
@@ -38,11 +38,12 @@ public class RacingCar {
             results.add(result);
         }
         this.Results = new Results(results);
-        findWinners();
     }
 
-    private void findWinners() {
-        this.winners = new Winners(cars.findWinner());
+    private void findWinners(List<Result> results) {
+        if (results != null) {
+            this.winners = new Winners(cars.findWinner());
+        }
     }
 
     public List<Car> getCars() {
