@@ -26,7 +26,7 @@ class RacingGameTest {
         assertThat(racingGame.getCars()).hasSize(COUNT);
     }
 
-    @DisplayName("최소 한번은 자동차가 이동했음을 성공 한다.")
+    @DisplayName("최소 한번은 자동차가 이동했음을 성공한다.")
     @Test
     void play() {
         // when
@@ -36,5 +36,17 @@ class RacingGameTest {
         for (Car car : racingGame.getCars()) {
             assertThat(car.getDistance()).isGreaterThanOrEqualTo(1);
         }
+    }
+
+    @DisplayName("경주 게임 종료를 성공한다.")
+    @Test
+    void isGameOver() {
+        // when
+        while(!racingGame.isGameOver()) {
+            racingGame.play();
+        }
+
+        // then
+        assertThat(racingGame.isGameOver()).isTrue();
     }
 }
