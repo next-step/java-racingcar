@@ -3,13 +3,14 @@ package racingcar;
 import racingcar.car.Car;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingScore {
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public RacingScore(List<Car> cars) {
-        this.cars = new ArrayList<>(cars);
+        this.cars = Collections.unmodifiableList(cars);
     }
 
     public List<Car> getScore() {
