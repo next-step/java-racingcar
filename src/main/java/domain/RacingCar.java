@@ -5,7 +5,7 @@ import service.MoveRule;
 import static utils.RacingCarUtils.validateCarName;
 
 public class RacingCar {
-    private String name;
+    private final String name;
     private Integer position;
     private final MoveRule moveRule;
 

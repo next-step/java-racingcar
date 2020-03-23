@@ -15,7 +15,7 @@ public class RacingCars {
 
     public RacingRound moveAll() {
         List<RacingCarPosition> positions = cars.stream()
-                .map(car -> car.move())
+                .map(RacingCar::move)
                 .collect(Collectors.toList());
         return RacingRound.newInstance(positions);
     }

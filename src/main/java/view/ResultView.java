@@ -12,7 +12,6 @@ public class ResultView {
     public static void printGameResult(RacingGameResult racingGameResult) {
         System.out.println("\n실행 결과\n");
         racingGameResult.getRoundProgress()
-                .stream()
                 .forEach(ResultView::printRoundResult);
         printWinners(racingGameResult.getLastWinners());
     }

@@ -3,8 +3,8 @@ package domain;
 import static utils.RacingCarUtils.validateCarName;
 
 public class RacingCarPosition {
-    private String name;
-    private Integer locationPoint;
+    private final String name;
+    private final Integer locationPoint;
 
     private RacingCarPosition(String name, Integer locationPoint) {
         this.name = name;
