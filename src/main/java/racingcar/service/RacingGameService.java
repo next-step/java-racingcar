@@ -1,20 +1,22 @@
-package racingcar;
+package racingcar.service;
 
-import racingcar.car.Car;
-import racingcar.car.MovingStrategy;
+import racingcar.domain.RacingScore;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.MovingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class RacingGame {
+public class RacingGameService {
     private static final int INT_ZERO = 0;
+    private static final int INT_ONE = 1;
 
     private int time;
     private List<Car> cars = new ArrayList<>();
     private MovingStrategy movingStrategy;
 
-    public RacingGame(String[] names, MovingStrategy movingStrategy) {
+    public RacingGameService(String[] names, MovingStrategy movingStrategy) {
         createCar(names);
         this.movingStrategy = movingStrategy;
     }
@@ -28,7 +30,7 @@ public class RacingGame {
         }
     }
 
-    public RacingScore execute() {
+    private RacingScore execute() {
         List<Car> executedCars = new ArrayList<>();
         for (Car car : cars) {
             car.move(movingStrategy);
@@ -41,5 +43,18 @@ public class RacingGame {
 
     public int getTime() {
         return time;
+    }
+
+    public List<RacingScore> executeRacingGameNumberOfTimes(int numberOfTime) {
+        List<RacingScore> racingScores = new ArrayList<>();
+        for (int i = 0; i < numberOfTime; i++) {
+            racingScores.add(execute());
+        }
+        return racingScores;
+    }
+
+    public List<Car> selectWinners(List<RacingScore> racingScores) {
+        RacingScore lastRacingScore = racingScores.get(racingScores.size() - INT_ONE);
+        return lastRacingScore.getWinner();
     }
 }
