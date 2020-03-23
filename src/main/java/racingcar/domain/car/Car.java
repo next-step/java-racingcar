@@ -3,11 +3,12 @@ package racingcar.domain.car;
 import java.util.Objects;
 
 public class Car {
+    private static final int DEFAULT_POSITION = 0;
     private String name;
     private int position;
 
     public Car(String name) {
-        this(name, 0);
+        this(name, DEFAULT_POSITION);
     }
 
     private Car(String name, int position) {
