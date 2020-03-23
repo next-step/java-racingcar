@@ -14,7 +14,7 @@ public class AutoRacing {
 
     public AutoRacing(GameRole gameRole) {
         this.gameRole = gameRole;
-        this.cars = CarFactory.createCars(this.gameRole.getNumberOfCars());
+        this.cars = CarFactory.createCars(this.gameRole.getNames());
     }
 
     public static void main(String[] args) {

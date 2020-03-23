@@ -5,34 +5,39 @@ import java.util.List;
 
 public class Car {
 
+    private final int INITIAL_LOCATION = 1;
     private final int MOVE_CONDITION = 4;
 
-    private List<Integer> locationRecord;
-    private int position;
+    private String name;
+    private List<Integer> locationRecord = new ArrayList<>();
+    private int location;
 
-    public Car() {
-        this.position = 1;
-        this.locationRecord = new ArrayList<>();
+    public Car(String name) {
+        this.name = name;
+        this.location = INITIAL_LOCATION;
     }
 
     public void move(int condition) {
         if (condition >= MOVE_CONDITION) {
-            this.position++;
+            this.location++;
         }
-        saveCurrentPosition();
+        saveCurrentLocation();
     }
 
-    public int getCurrentPosition() {
-        return this.position;
+    private void saveCurrentLocation() {
+        locationRecord.add(getCurrentLocation());
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getCurrentLocation() {
+        return this.location;
     }
 
     public List<Integer> getLocationRecord() {
         return this.locationRecord;
     }
-
-    private void saveCurrentPosition() {
-        locationRecord.add(getCurrentPosition());
-    }
-
 
 }
