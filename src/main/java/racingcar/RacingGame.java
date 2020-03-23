@@ -1,15 +1,15 @@
 package racingcar;
 
 import racingcar.model.Car;
+import racingcar.model.Cars;
 import racingcar.policy.MovingPolicy;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
     private final int time;
-    private final List<Car> cars;
+    private final Cars cars;
     private final MovingPolicy movingPolicy;
 
     public RacingGame(final int time, final int count, final MovingPolicy movingPolicy) {
@@ -22,7 +22,7 @@ public class RacingGame {
     public void play() {
         int distance;
         for (int i = 0; i < time; i++) {
-            for (Car car : cars) {
+            for (Car car : cars.getCars()) {
                 distance = movingPolicy.distance();
                 if (movingPolicy.isPossibleMove(distance)) {
                     car.move();
@@ -32,10 +32,10 @@ public class RacingGame {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return cars.getCars();
     }
 
-    private List<Car> ready(final int count) {
+    private Cars ready(final int count) {
         if (count < 1) {
             throw new IllegalArgumentException("자동차 갯수가 잘못 되었습니다.");
         }
@@ -45,6 +45,6 @@ public class RacingGame {
             cars.add(new Car());
         }
 
-        return Collections.unmodifiableList(cars);
+        return new Cars(cars);
     }
 }
