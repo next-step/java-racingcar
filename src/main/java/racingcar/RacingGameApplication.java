@@ -1,7 +1,5 @@
 package racingcar;
 
-import java.util.Random;
-
 public class RacingGameApplication {
 
     public static void main(String[] args) {

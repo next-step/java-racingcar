@@ -4,6 +4,9 @@ import java.util.Random;
 
 public class RandomMoveStrategy implements MoveStrategy {
 
+    private static final int RANDOM_RANGE = 10;
+    private static final int MIN_MOVE_BOUNDARY = 4;
+
     private Random random;
 
     public RandomMoveStrategy() {
@@ -12,6 +15,6 @@ public class RandomMoveStrategy implements MoveStrategy {
 
     @Override
     public boolean isMovable() {
-        return random.nextInt(10) >= 4;
+        return random.nextInt(RANDOM_RANGE) >= MIN_MOVE_BOUNDARY;
     }
 }
