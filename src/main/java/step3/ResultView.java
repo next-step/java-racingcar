@@ -1,11 +1,15 @@
 package step3;
 
 
+import java.util.List;
+
 public class ResultView {
 
-    private static String PLAY_RESULT = "실행 결과";
-    private static String POSITION_OUTPUT_CHARACTER = "-";
-    private static String PLAY_ROUND_INFO = "회차";
+    private final static String PLAY_RESULT = "실행 결과";
+    private final static String POSITION_OUTPUT_CHARACTER = "-";
+    private final static String PLAY_ROUND_INFO = "회차";
+    private final static String EMPTY = "";
+    private final static String WINNER_NAME_INFO = "가 최종 우승했습니다.";
 
     public void printView(String line) {
         System.out.println(line);
@@ -14,23 +18,55 @@ public class ResultView {
     public void printResultInfo() {
         printView(PLAY_RESULT);
     }
-    public void printResult(int position) {
 
+    public void printResult(RacingGame racingGame) {
+        List<Car> carList = racingGame.getCarList();
+        int roundTime = racingGame.getRoundTime();
+
+        for(int i = 0; i < roundTime; i++) {
+            printRoundInfo(i + 1);
+
+            for(Car car: carList) {
+                List<Round> roundList = car.getRoundInfoList();
+
+                Round round = roundList.get(i);
+                printMoveRecord(round.getPosition(), car.getCarName());
+            }
+            printView(EMPTY);
+        }
+        printWinner(racingGame.getWinnerNameList());
+    }
+
+    private void printMoveRecord(int position, String carName) {
         StringBuilder positionOutputBuilder = new StringBuilder();
 
+        positionOutputBuilder.append(carName + ": ");
         for(int i = 0; i < position; i++) {
             positionOutputBuilder.append(POSITION_OUTPUT_CHARACTER);
         }
         printView(positionOutputBuilder.toString());
     }
 
-    public void printRoundInfo(int roundTime) {
+    private void printRoundInfo(int roundTime) {
         StringBuilder roundOutputBuilder = new StringBuilder();
 
         roundOutputBuilder.append(roundTime);
         roundOutputBuilder.append(PLAY_ROUND_INFO);
 
         printView(roundOutputBuilder.toString());
+    }
+
+    private void printWinner(List<String> winnerNameList) {
+        StringBuilder winnerOutputBuilder = new StringBuilder();
+
+        for(int i = 0; i < winnerNameList.size(); i++) {
+            if(i != 0) {
+                winnerOutputBuilder.append(",");
+            }
+            winnerOutputBuilder.append(winnerNameList.get(i));
+        }
+        winnerOutputBuilder.append(WINNER_NAME_INFO);
+        printView(winnerOutputBuilder.toString());
     }
 
 
