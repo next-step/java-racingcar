@@ -35,9 +35,10 @@ public class ResultView {
         }
     }
 
-    private void printMoveRecord(int position) {
+    private void printMoveRecord(int position, String carName) {
         StringBuilder positionOutputBuilder = new StringBuilder();
 
+        positionOutputBuilder.append(carName + ": ");
         for(int i = 0; i < position; i++) {
             positionOutputBuilder.append(POSITION_OUTPUT_CHARACTER);
         }
