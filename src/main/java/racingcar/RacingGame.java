@@ -14,6 +14,9 @@ public class RacingGame {
     // 랜덤값이 해당 값 이상일때만 move
     private static final int MORE_THAN_VALUE_FOR_CAR_MOVE = 4;
 
+    // 한번에 움직일 거리
+    private static final int BASE_MOVE_DISTANCE = 1;
+
     // 자동차 이름 구분자
     private final static String SEPARATOR_CAR_NAMES = ",";
 
@@ -63,7 +66,7 @@ public class RacingGame {
     private void moveCar() {
         for (int i = 0; i < this.cars.size(); i++) {
             if (randomValueGenerator.getRandomValue() > MORE_THAN_VALUE_FOR_CAR_MOVE) {
-                this.cars.get(i).move(1);
+                this.cars.get(i).move(BASE_MOVE_DISTANCE);
             }
         }
     }
