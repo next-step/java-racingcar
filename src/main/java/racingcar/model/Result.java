@@ -1,15 +1,19 @@
 package racingcar.model;
 
-import java.util.List;
+import java.util.Map;
 
 public class Result {
-    private List<Integer> result;
+    private Map<String, Integer> result;
 
-    public Result(List<Integer> result) {
+    public Result(Map<String, Integer> result) {
         this.result = result;
     }
 
-    public List<Integer> getResult() {
+    public Map<String, Integer> getResult() {
         return result;
+    }
+
+    public Integer getCurrentPosition(String carName) {
+        return this.getResult().get(carName);
     }
 }

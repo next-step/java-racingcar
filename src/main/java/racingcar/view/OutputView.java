@@ -5,6 +5,7 @@ import racingcar.model.Car;
 import racingcar.model.Result;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,11 +47,15 @@ public class OutputView {
     }
 
     private static void printGameAfterMoveOnce(List<Car> cars, Result result) {
-        List<String> carNames = makeCarNamesPrettier(cars);
-        for (int i = 0; i < carNames.size(); i++) {
-            System.out.print(carNames.get(i) + " |");
-            printCurrentPosition(result.getResult().get(i));
+        for (int i = 0; i < cars.size(); i++) {
+            Car car = cars.get(i);
+            System.out.print(findPrettierName(car, cars) + " |");
+            printCurrentPosition(result.getCurrentPosition(car.getName()));
         }
+    }
+
+    private static String findPrettierName(Car car, List<Car> cars){
+        return makeCarNamesPrettier(cars).get(cars.indexOf(car));
     }
 
     private static void printCurrentPosition(int currentPosition) {

@@ -1,7 +1,8 @@
 package racingcar.model;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -12,10 +13,10 @@ public class Cars {
     }
 
     public Result moveOnce() {
-        List<Integer> result = new ArrayList<>();
+        Map<String, Integer> result = new HashMap<>();
         for (Car car : cars) {
             car.move();
-            result.add(car.getPosition());
+            result.put(car.getName(), car.getPosition());
         }
         return new Result(result);
     }
