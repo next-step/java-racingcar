@@ -10,36 +10,56 @@ import java.util.regex.Pattern;
 public class Expression {
 
     private static final Pattern operationPattern = Pattern.compile("^[-+*/]");
-    private static final Pattern numberPattern = Pattern.compile("^\\d*");
+    private static final Pattern operandPattern = Pattern.compile("^\\d*");
+    private String expression;
+    private List<Token> tokens;
 
-    public List<Token> tokenize(String text) throws IllegalArgumentException {
+    public Expression() {
+        this.tokens = new ArrayList<>();
+    }
+
+    public List<Token> tokenize(final String text) throws IllegalArgumentException {
         if(StringUtils.isEmpty(text)) {
             throw new IllegalArgumentException("입력 값이 null 이거나 빈문자열");
         }
-        return parse(getExpression(text));
+
+        expression = getExpression(text);
+        return parseAll();
     }
 
-    private List<Token> parse(String expression) {
-        List<Token> tokens = new ArrayList<>();
-
+    private List<Token> parseAll() {
         while(expression.length() > 0) {
-            Matcher operationMatcher = operationPattern.matcher(expression);
-            String operation = "";
-            if(operationMatcher.find()) {
-                operation = operationMatcher.group();
-                expression = expression.substring(operation.length());
-            }
-
-            Matcher numberMatcher = numberPattern.matcher(expression);
-            String number = "";
-            if(numberMatcher.find()) {
-                number = numberMatcher.group();
-                expression = expression.substring(number.length());
-            }
-
-            tokens.add(new Token(operation, Integer.parseInt(number)));
+            parse();
         }
-        return tokens;
+        return new ArrayList<>(tokens);
+    }
+
+    private void parse() {
+        try {
+            tokens.add(new Token(extractOperation(), Integer.parseInt(extractOperand())));
+        } catch (RuntimeException ex) {
+            throw new IllegalArgumentException(ex.getCause());
+        }
+    }
+
+    private String extractOperand() {
+        Matcher operandMatcher = operandPattern.matcher(expression);
+        String operand = "";
+        if (operandMatcher.find()) {
+            operand = operandMatcher.group();
+            expression = expression.substring(operand.length());
+        }
+        return operand;
+    }
+
+    private String extractOperation() {
+        Matcher operationMatcher = operationPattern.matcher(expression);
+        String operation = "";
+        if(operationMatcher.find()) {
+            operation = operationMatcher.group();
+            expression = expression.substring(operation.length());
+        }
+        return operation;
     }
 
     private String getExpression(String text) {
