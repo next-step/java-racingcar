@@ -3,9 +3,9 @@ package domain;
 import service.impl.RandomMoveRule;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingGame {
     private final RacingCars racingCars;
@@ -16,21 +16,21 @@ public class RacingGame {
         this.roundNumber = roundNumber;
     }
 
-    public static RacingGame create(Integer carNumber, Integer roundNumber) {
-        validate(carNumber, roundNumber);
-        List<RacingCar> cars = IntStream.range(0, carNumber)
-                .mapToObj(i -> RacingCar.newInstance(new RandomMoveRule()))
+    public static RacingGame create(String[] carNames, Integer roundNumber) {
+        validate(carNames, roundNumber);
+        List<RacingCar> cars = Arrays.stream(carNames)
+                .map(carName -> RacingCar.newInstance(carName.trim(), new RandomMoveRule()))
                 .collect(Collectors.toList());
 
         return new RacingGame(new RacingCars(cars), roundNumber);
     }
 
-    private static void validate(Integer carNumber, Integer roundNumber) {
-        if (carNumber == null || carNumber <= 0) {
+    private static void validate(String[] carNames, Integer roundNumber) {
+        if (carNames == null || carNames.length <= 0) {
             throw new IllegalArgumentException("car number must be greater than zero.");
         }
 
-        if (roundNumber == null || roundNumber < 0) {
+        if (roundNumber == null || roundNumber <= 0) {
             throw new IllegalArgumentException("round number must be greater than zero.");
         }
     }

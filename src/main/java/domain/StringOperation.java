@@ -45,7 +45,7 @@ public enum StringOperation {
         return operation.apply(firstNumber, secondNumber);
     }
 
-    public String getOperatorSign() {
+    private String getOperatorSign() {
         return operatorSign;
     }
 }

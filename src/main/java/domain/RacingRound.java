@@ -1,47 +1,41 @@
 package domain;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingRound {
-    private final List<Integer> carPositions;
 
-    private RacingRound(List<Integer> carPositions) {
+    private final List<RacingCarPosition> carPositions;
+
+    private RacingRound(List<RacingCarPosition> carPositions) {
         this.carPositions = carPositions;
     }
 
-    public static RacingRound newInstance(int[] carPositionArray) {
-        List<Integer> carPositions = Arrays.stream(carPositionArray)
-                .boxed()
-                .collect(Collectors.toList());
-        return newInstance(carPositions);
-    }
-
-    public static RacingRound newInstance(List<Integer> carPositions) {
+    public static RacingRound newInstance(List<RacingCarPosition> carPositions) {
         validate(carPositions);
         return new RacingRound(carPositions);
     }
 
-    private static void validate(List<Integer> carPositions) {
-        if (carPositions == null || carPositions.size() < 0) {
-            throw new RuntimeException("car positions must be greater than zero.");
-        }
-
-        validatePositions(carPositions);
-    }
-
-    private static void validatePositions(List<Integer> carPositions) {
-        boolean hasNegativeNumber = carPositions.stream()
-                .anyMatch(position -> position < 0);
-
-        if (hasNegativeNumber) {
-            throw new RuntimeException("car positions must be greater than zero.");
+    private static void validate(List<RacingCarPosition> carPositions) {
+        if (carPositions == null || carPositions.size() == 0) {
+            throw new RuntimeException("car positions is null or empty.");
         }
     }
 
-    public List<Integer> getCarPositions() {
+    public List<RacingCarPosition> getCarPositions() {
         return this.carPositions;
+    }
+
+    public List<String> getWinners() {
+        Integer winnerScore = carPositions.stream()
+                .mapToInt(RacingCarPosition::getLocationPoint)
+                .max()
+                .orElseThrow(() -> new RuntimeException("Winner does not existed."));
+
+        return carPositions.stream()
+                .filter(carPosition -> winnerScore.equals(carPosition.getLocationPoint()))
+                .map(RacingCarPosition::getName)
+                .collect(Collectors.toList());
     }
 
     @Override

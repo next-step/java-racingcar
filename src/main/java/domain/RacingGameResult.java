@@ -7,15 +7,20 @@ public class RacingGameResult {
     private final List<RacingRound> racingRounds;
 
     public RacingGameResult(List<RacingRound> rounds) {
-        if (rounds == null) {
-            throw new IllegalArgumentException("round list is null");
+        if (rounds == null || rounds.size() == 0) {
+            throw new IllegalArgumentException("round list is null or empty");
         }
         this.racingRounds = rounds;
     }
 
-    public List<List<Integer>> getResult() {
+    public List<List<RacingCarPosition>> getRoundProgress() {
         return racingRounds.stream()
-                .map(round -> round.getCarPositions())
+                .map(RacingRound::getCarPositions)
                 .collect(Collectors.toList());
+    }
+
+    public List<String> getLastWinners() {
+        RacingRound lastRound = racingRounds.get(racingRounds.size() - 1);
+        return lastRound.getWinners();
     }
 }
