@@ -7,3 +7,11 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+# 작업내역
+## 1st
+* 입력부 생성
+* 랜덤함수 생성 및 move 구현
+
+## 2nd
+* 클래스별로 기능 분리
