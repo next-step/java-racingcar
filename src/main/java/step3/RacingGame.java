@@ -57,11 +57,15 @@ public class RacingGame {
 
     private void moveCars(int presentRoundTime) {
         for(Car car: this.carList) {
-            if(gameRule.canMove()) {
-                car.move(presentRoundTime);
-            }
-            car.completeRound(presentRoundTime);
+            moveCar(car, presentRoundTime);
         }
+    }
+
+    private void moveCar(Car car, int presentRoundTime) {
+        if(gameRule.canMove()) {
+            car.move(presentRoundTime);
+        }
+        car.completeRound(presentRoundTime);
     }
 
     private void getWinner() {
