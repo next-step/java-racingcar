@@ -4,13 +4,13 @@ import java.util.Objects;
 
 public class StringCalculator {
     public int stringCalculate(String input) {
-        if (Objects.isNull(input) || input.isEmpty()) {
+        if(Objects.isNull(input) || input.isEmpty()) {
             throw new IllegalArgumentException("입력값이 null이거나 빈 공백");
         }
 
-        String[] formula = input.split(" ");
+        String [] formula = input.split(" ");
         int result = Integer.valueOf(formula[0]);
-        for (int idx = 1; idx < formula.length - 1; idx += 2) {
+        for(int idx = 1; idx < formula.length - 1; idx += 2) {
             result = operate(formula[idx], result, Integer.valueOf(formula[idx + 1]));
         }
 
