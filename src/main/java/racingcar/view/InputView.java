@@ -16,7 +16,11 @@ public class InputView {
     }
 
     public int view(String message) {
-        System.out.println(message);
+        print(message);
         return Integer.parseInt(input.read());
+    }
+
+    public void print(String message) {
+        System.out.println(message);
     }
 }
