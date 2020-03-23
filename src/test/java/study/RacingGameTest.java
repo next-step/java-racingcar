@@ -23,6 +23,10 @@ public class RacingGameTest {
         count = 3;
         time = 5;
         carPositions = new int[count];
+
+        carPositions[0] = 2;
+        carPositions[1] = 4;
+        carPositions[2] = 1;
     }
 
     @Test
@@ -37,6 +41,16 @@ public class RacingGameTest {
         }
 
         assertThat(carPositions[0]).isEqualTo(1);
+    }
+
+    @Test
+    public void showWinner() {
+        int max = 0;
+        for (int i = 0; i < carPositions.length; i++) {
+            max = Math.max(carPositions[i], max);
+        }
+
+        assertThat(max).isEqualTo(4);
     }
 
 }

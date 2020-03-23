@@ -21,6 +21,8 @@ public class RacingGame {
         return this.carPositions;
     }
 
+    public String[] getCarNames() { return this.carNames; }
+
     public static void main(String[] args) {
         InputView inputView = new InputView();
 
