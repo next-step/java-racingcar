@@ -10,7 +10,7 @@
 
 ## 구현 기능 목록
 - CarRacing class
-   - proceedOnePeriod method 
+   - proceedOneRound method 
    - race method
 - Car class
    - move method 
