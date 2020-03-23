@@ -7,6 +7,12 @@ import java.util.stream.Collectors;
 public class RacingGame {
 	private List<Car> cars;
 
+	public RacingGame(List<String> racers){
+		this.cars = racers.stream()
+				.map(racer -> new Car(racer, new DefaultRandomEngine()))
+				.collect(Collectors.toList());
+	}
+
 	public RacingGame(Car... cars) {
 		this.cars = Arrays.asList(cars);
 	}

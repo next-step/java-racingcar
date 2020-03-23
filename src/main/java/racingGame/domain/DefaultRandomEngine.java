@@ -1,10 +1,8 @@
-package racingGame;
-
-import racingGame.domain.Engine;
+package racingGame.domain;
 
 import java.util.Random;
 
-class RandomEngine implements Engine {
+public class DefaultRandomEngine implements Engine {
 	private static final int RANDOM_RANGE = 10;
 	private static final int GO_THRESHOLD = 4;
 
