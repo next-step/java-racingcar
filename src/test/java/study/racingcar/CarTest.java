@@ -39,5 +39,4 @@ public class CarTest {
         car.addPosition(2);
         assertThat(car.isPositionEqualTo(2)).isTrue();
     }
-
 }

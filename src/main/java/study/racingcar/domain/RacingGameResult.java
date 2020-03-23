@@ -16,7 +16,6 @@ public class RacingGameResult {
         winner = getWinner(racingGame.getCars());
     }
 
-
     private List<Car> getWinner(List<Car> cars) {
         int maxPosition = getMaxPosition(cars);
         return cars.stream()

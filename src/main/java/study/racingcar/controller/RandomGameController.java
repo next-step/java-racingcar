@@ -7,6 +7,7 @@ import study.racingcar.view.ResultView;
 import java.util.List;
 
 public class RandomGameController {
+
     public void start() {
         RacingGameData racingGameData = getRacingGameData();
 
@@ -30,5 +31,4 @@ public class RandomGameController {
             ResultView.displayGameStatus(racingGame);
         }
     }
-
 }

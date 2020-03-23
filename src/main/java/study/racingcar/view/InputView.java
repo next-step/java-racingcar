@@ -19,6 +19,4 @@ public class InputView {
 
         return time;
     }
-
-
 }

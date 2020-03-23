@@ -42,6 +42,4 @@ public class SetCollectionTest {
     void containsWithMatchedValue(int item, boolean expect) {
         assertThat(numbers.contains(item)).isEqualTo(expect);
     }
-
-
 }
