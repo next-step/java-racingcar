@@ -10,11 +10,11 @@ public class ResultView {
     }
 
     public void view() {
-        int count = this.racingVO.getCount();
+        int count = racingVO.getCount();
         System.out.println("실행결과");
 
         for(int i = 0; i < count; ++i) {
-            this.viewResult(this.racingGame.move());
+            viewResult(racingGame.move());
         }
 
     }
@@ -25,7 +25,7 @@ public class ResultView {
 
         for(int var4 = 0; var4 < var3; ++var4) {
             int carPosition = var2[var4];
-            System.out.println(this.printCar(carPosition));
+            System.out.println(printCar(carPosition));
         }
 
         System.out.println("###############################################");

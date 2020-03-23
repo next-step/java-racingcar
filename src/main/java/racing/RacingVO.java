@@ -14,15 +14,15 @@ public class RacingVO {
     }
 
     public int[] getCarPositions() {
-        return this.carPositions;
+        return carPositions;
     }
 
     public int getCarNumber() {
-        return this.carNumber;
+        return carNumber;
     }
 
     public int getCount() {
-        return this.count;
+        return count;
     }
 
     public void setCarPositions(int[] carPositions) {

@@ -10,17 +10,17 @@ public class RacingGame {
     }
 
     public int[] move() {
-        int[] carPositions = this.racingVO.getCarPositions();
+        int[] carPositions = racingVO.getCarPositions();
 
         for(int j = 0; j < carPositions.length; ++j) {
             Random rand = new Random();
             int randomValue = rand.nextInt(10);
-            if (this.isMovable(randomValue)) {
+            if (isMovable(randomValue)) {
                 carPositions[j]++;
             }
         }
 
-        this.racingVO.setCarPositions(carPositions);
+        racingVO.setCarPositions(carPositions);
         return carPositions;
     }
 

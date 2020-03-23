@@ -9,23 +9,23 @@ public class InputView {
     int count;
 
     public InputView() {
-        this.scanner = new Scanner(System.in);
-        this.racingVO = RacingVO.getInstance();
+        scanner = new Scanner(System.in);
+        racingVO = RacingVO.getInstance();
     }
 
     public RacingVO inputValue() {
         System.out.println("자동차 대수는 몇 대 인가요?");
-        this.carNumber = this.validNumberCheck(this.scanner.nextInt());
+        carNumber = validNumberCheck(scanner.nextInt());
         System.out.println("시도할 회수는 몇 회 인가요?");
-        this.count = this.validNumberCheck(this.scanner.nextInt());
-        return this.settingRacingVO(this.carNumber, this.count);
+        count = validNumberCheck(scanner.nextInt());
+        return settingRacingVO(carNumber, count);
     }
 
     public RacingVO settingRacingVO(int carNumber, int count) {
-        this.racingVO.setCarNumber(carNumber);
-        this.racingVO.setCount(count);
-        this.racingVO.setCarPositions(new int[this.racingVO.getCarNumber()]);
-        return this.racingVO;
+        racingVO.setCarNumber(carNumber);
+        racingVO.setCount(count);
+        racingVO.setCarPositions(new int[racingVO.getCarNumber()]);
+        return racingVO;
     }
 
     public int validNumberCheck(int checkVal) {
