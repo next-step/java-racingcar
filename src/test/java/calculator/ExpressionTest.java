@@ -37,4 +37,23 @@ class ExpressionTest {
                 new Token("*", 12)
         );
     }
+
+    @DisplayName("Expression.tokenize()를 재사용할 때, 이전 기록은 초기화 되어야 한다")
+    @Test
+    void reuseExpression() {
+        Expression expression = new Expression();
+        List<Token> tokens = expression.tokenize("3+3");
+        assertThat(tokens.size()).isEqualTo(2);
+        assertThat(tokens).containsExactly(
+                new Token("+", 3),
+                new Token("+", 3)
+        );
+
+        tokens = expression.tokenize("44*2");
+        assertThat(tokens.size()).isEqualTo(2);
+        assertThat(tokens).containsExactly(
+                new Token("+", 44),
+                new Token("*", 2)
+        );
+    }
 }

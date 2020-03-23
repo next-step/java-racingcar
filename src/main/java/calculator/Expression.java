@@ -23,6 +23,7 @@ public class Expression {
             throw new IllegalArgumentException("입력 값이 null 이거나 빈문자열");
         }
 
+        tokens.clear();
         expression = getExpression(text);
         return parseAll();
     }
