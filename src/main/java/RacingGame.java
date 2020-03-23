@@ -20,31 +20,12 @@ public class RacingGame {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        InputView input = new InputView();
 
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int count = scanner.nextInt();
-
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int time = scanner.nextInt();
-
-        RacingGame game = new RacingGame(time, count);
+        RacingGame game = input.input();
         GameProgress progress = new GameProgress();
 
         progress.progress(game);
-
-    }
-
-
-
-    public void resultView() {
-        for (int i = 0; i < carPositions.length; i++) {
-            for (int j = 0; j < carPositions[i]; j++) {
-                System.out.print("-");
-            }
-            System.out.println("");
-        }
-
     }
 
 }

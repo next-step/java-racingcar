@@ -13,6 +13,10 @@ public class RacingGameTest {
     int time;
     int[] carPositions;
 
+    private final int BASE_POINT = 4;
+    private final int RANDOM_BOUND = 10;
+    private final int DISTANCE = 1;
+
     @BeforeEach
     void setUp() {
         count = 3;
@@ -28,9 +32,7 @@ public class RacingGameTest {
 
             //int ranCount = random.nextInt(10);
             int ranCount = 4;
-            if (ranCount >= 4) {
-                carPositions[i] = carPositions[i] + 1;
-            }
+            carPositions[i] = (ranCount >= BASE_POINT) ? carPositions[i] + DISTANCE : carPositions[i];
         }
 
         assertThat(carPositions[0]).isEqualTo(1);

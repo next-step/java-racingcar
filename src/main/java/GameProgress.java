@@ -7,9 +7,11 @@ public class GameProgress {
     private final int DISTANCE = 1;
 
     public void progress(RacingGame game) {
+
+        OutputView output = new OutputView();
         for (int i = 0; i < game.getTime(); i++) {
             move(game);
-            game.resultView();
+            output.resultView(game);
             System.out.println("");
         }
     }
@@ -19,9 +21,7 @@ public class GameProgress {
 
         for (int i = 0; i < game.getCarPosition().length; i++) {
             int ranCount = random.nextInt(RANDOM_BOUND);
-            if (ranCount >= BASE_POINT) {
-                game.getCarPosition()[i] = game.getCarPosition()[i] + DISTANCE;
-            }
+            game.getCarPosition()[i] = (ranCount >= BASE_POINT) ? game.getCarPosition()[i] + DISTANCE : game.getCarPosition()[i];
         }
 
         return game.getCarPosition();
