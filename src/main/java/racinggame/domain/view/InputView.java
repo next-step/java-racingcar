@@ -17,11 +17,11 @@ public class InputView {
     private List<String> carNames = new ArrayList<>();
 
     public InputView(String gameCount, String carNames) {
-        this.gameCount = validateInputData(gameCount);
+        this.gameCount = validateInputInteger(gameCount);
         this.carNames = careateCarNames(carNames);
     }
 
-    private int validateInputData(String input) {
+    private int validateInputInteger(String input) {
         int num = NumberUtil.validateIntegerAndReturn(input);
         if (!NumberUtil.isGreaterThan1(num)) {
             throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
