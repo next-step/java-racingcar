@@ -1,8 +1,5 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Car {
     private int carNumber;
     private int position;
