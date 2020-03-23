@@ -1,3 +1,7 @@
+package domain;
+
+import ui.ResultView;
+
 import java.util.List;
 import java.util.Random;
 

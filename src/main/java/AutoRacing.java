@@ -1,3 +1,6 @@
+import domain.GameRole;
+import ui.InputView;
+
 public class AutoRacing {
 
     public static void main(String[] args) {

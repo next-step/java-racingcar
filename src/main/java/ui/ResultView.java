@@ -1,3 +1,7 @@
+package ui;
+
+import domain.Car;
+
 import java.util.List;
 
 public class ResultView {

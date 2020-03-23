@@ -1,3 +1,7 @@
+package ui;
+
+import domain.GameRole;
+
 import java.util.Scanner;
 
 public class InputView {
@@ -16,6 +20,5 @@ public class InputView {
 
         return new GameRole(numberOfCars, numberOfAttempts);
     }
-
 
 }

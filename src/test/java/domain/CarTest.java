@@ -1,3 +1,5 @@
+package domain;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -32,7 +34,7 @@ public class CarTest {
         // When
         myCar.move(condition);
         // Then
-        assertThat(myCar.getCurrentPosition()).isEqualTo(currentPosition);
+        assertThat(myCar.getCurrentPosition()).isEqualTo(currentPosition + 1);
     }
 
 
