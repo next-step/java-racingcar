@@ -21,7 +21,7 @@ public class RacingGame {
 
     public void setCars() {
         cars = new ArrayList<>();
-        for(int i=0; i<numberOfCar; i++) {
+        for (int i = 0; i < numberOfCar; i++) {
             cars.add(new Car());
         }
         checkCarPositions();
