@@ -17,6 +17,7 @@ public class RacingGame {
         this.carCount = carCount;
         this.roundTime = roundTime;
         this.gameRule = gameRule;
+        this.winnerNameList = new ArrayList<String>();
     }
 
     public RacingGame(int roundTime, GameRule gameRule, String[] carNameList) {
@@ -24,6 +25,7 @@ public class RacingGame {
         this.carCount = carNameList.length;
         this.roundTime = roundTime;
         this.gameRule = gameRule;
+        this.winnerNameList = new ArrayList<String>();
     }
 
     public void start() {
