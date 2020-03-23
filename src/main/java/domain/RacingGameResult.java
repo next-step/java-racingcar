@@ -13,9 +13,14 @@ public class RacingGameResult {
         this.racingRounds = rounds;
     }
 
-    public List<List<RacingCarPosition>> getResult() {
+    public List<List<RacingCarPosition>> getRoundProgress() {
         return racingRounds.stream()
                 .map(RacingRound::getCarPositions)
                 .collect(Collectors.toList());
+    }
+
+    public List<String> getLastWinners() {
+        RacingRound lastRound = racingRounds.get(racingRounds.size() - 1);
+        return lastRound.getWinners();
     }
 }

@@ -67,7 +67,7 @@ public class RacingGameTests {
     public void startRacingGameTest(String[] carNames, int roundNumber) {
         RacingGame racingGame = RacingGame.create(carNames, roundNumber);
         RacingGameResult racingGameResult = racingGame.start();
-        List<List<Integer>> positionResult = racingGameResult.getResult();
+        List<List<Integer>> positionResult = racingGameResult.getRoundProgress();
         String[] winners = racingGameResult.getWinners();
 
         assertThat(positionResult).hasSize(roundNumber);

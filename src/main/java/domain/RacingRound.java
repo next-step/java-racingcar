@@ -5,10 +5,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingRound {
-    private final List<RacingCarPosition> carPositions;
 
-    private RacingRound(List<RacingCarPosition> carPositions) {
+    private final List<RacingCarPosition> carPositions;
+    private final List<String> winners;
+
+    private RacingRound(List<RacingCarPosition> carPositions, List<String> winners) {
         this.carPositions = carPositions;
+        this.winners = winners;
     }
 
     public static RacingRound newInstance(RacingCarPosition[] carPositionArray) {
@@ -19,7 +22,7 @@ public class RacingRound {
 
     public static RacingRound newInstance(List<RacingCarPosition> carPositions) {
         validate(carPositions);
-        return new RacingRound(carPositions);
+        return new RacingRound(carPositions, decideWinners(carPositions));
     }
 
     private static void validate(List<RacingCarPosition> carPositions) {
@@ -39,8 +42,24 @@ public class RacingRound {
         }
     }
 
+    private static List<String> decideWinners(List<RacingCarPosition> carPositions) {
+        Integer winnerScore = carPositions.stream()
+                .mapToInt(RacingCarPosition::getLocationPoint)
+                .max()
+                .orElseThrow(() -> new RuntimeException("Unexpected Error."));
+
+        return carPositions.stream()
+                .filter(carPosition -> winnerScore.equals(carPosition.getLocationPoint()))
+                .map(RacingCarPosition::getName)
+                .collect(Collectors.toList());
+    }
+
     public List<RacingCarPosition> getCarPositions() {
         return this.carPositions;
+    }
+
+    public List<String> getWinners() {
+        return this.winners;
     }
 
     @Override
