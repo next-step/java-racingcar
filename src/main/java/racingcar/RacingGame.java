@@ -1,49 +1,67 @@
 package racingcar;
 
+import racingcar.util.NumberUtils;
 import racingcar.view.ResultView;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RacingGame {
-    private int[] carPositions;
+    private List<RacingCar> cars = new ArrayList<>();
     private int raceTime;
-    private Random random = new Random();
-    private static final int MOVABLE_NUMBER = 3;
 
-    public RacingGame(int carNumber, int raceTime) {
-        this.carPositions = new int[carNumber];
+    public RacingGame(String[] carNames, int raceTime) {
+        createCar(carNames);
         this.raceTime = raceTime;
     }
 
-    public int[] racing() {
-        while (racingFlag()) {
-            moveCar();
-            reduceCount();
+    private void createCar(String[] carNames) {
+        for (String carName : carNames) {
+            cars.add(new RacingCar(carName));
         }
-        return carPositions;
     }
 
-    private boolean racingFlag() {
-        return this.raceTime > 0;
-    }
-
-    private void moveCar() {
-        for (int i = 0; i < carPositions.length; i++) {
-            if (movable()) {
-                carPositions[i]++;
-            }
-            ResultView.printResultView(carPositions[i]);
+    public void startRace() {
+        while (canRace()) {
+            moveCars();
+            reduceCount();
             ResultView.nextLine();
         }
-        ResultView.nextLine();
+        endRace();
+    }
+
+    private void endRace() {
+        ResultView.printWinnerName(RacingWinner.findWinnerName(cars));
+    }
+
+    private boolean canRace() {
+        return this.raceTime > NumberUtils.ZERO;
+    }
+
+    private void moveCars() {
+        for (int i = 0; i < cars.size(); i++) {
+            move(cars.get(i));
+        }
+    }
+
+    private void move(RacingCar car) {
+        if (canMove()) {
+            car.moveForward();
+        }
+        printRaceResult(car);
+    }
+
+    private void printRaceResult(RacingCar car) {
+        ResultView.printCarName(car.getName());
+        ResultView.printPosition(car.getPosition());
     }
 
     private void reduceCount() {
-        this.raceTime = raceTime-1;
+        this.raceTime = raceTime - 1;
     }
 
-    private boolean movable() {
-        return random.nextInt() > MOVABLE_NUMBER;
+    private boolean canMove() {
+        return NumberUtils.getRandom() > NumberUtils.MOVABLE_NUMBER;
     }
 
 }

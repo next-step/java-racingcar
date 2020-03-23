@@ -4,12 +4,12 @@ import racingcar.view.InputView;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
-        int carNumber = InputView.carNumber();
-        int moveCount = InputView.moveCount();
+        String[] carNames = InputView.insertCar();
+        int moveCount = InputView.insertMoveCount();
         InputView.inputClose();
 
-        RacingGame racing = new RacingGame(carNumber,moveCount);
-        racing.racing();
+        RacingGame racing = new RacingGame(carNames,moveCount);
+        racing.startRace();
 
     }
 }
