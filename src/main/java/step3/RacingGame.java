@@ -58,6 +58,10 @@ public class RacingGame {
         }
     }
 
+    public List<Car> getWinner() {
+        return gameRule.getWinner(carList);
+    }
+
     public int getRoundTime() {
         return roundTime;
     }

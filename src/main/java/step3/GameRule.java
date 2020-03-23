@@ -1,5 +1,6 @@
 package step3;
 
+import java.util.List;
 import java.util.Random;
 
 public class GameRule {
@@ -12,6 +13,10 @@ public class GameRule {
 
     public static boolean isNumberCanMove(int randomValue) {
         return randomValue >= NUMBER_CAN_MOVE;
+    }
+
+    public List<Car> getWinner(List<Car> carList) {
+
     }
 
 }
