@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 public class Expression {
 
     private static final Pattern operationPattern = Pattern.compile("^[-+*/]");
-    private static final Pattern numberPattern = Pattern.compile("^\\d");
+    private static final Pattern numberPattern = Pattern.compile("^\\d*");
 
     public List<String> tokenize(String text) {
         return parse(getExpression(text));
