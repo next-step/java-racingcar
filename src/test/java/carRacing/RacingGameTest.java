@@ -43,7 +43,8 @@ public class RacingGameTest {
         });
 
         racingGame.start();
-        assertThat(racingGame.carPositions.stream().allMatch(i -> (i == (Integer.parseInt(expected)*time)))).isTrue();
+        
+        assertThat(racingGame.observe(racingGame.cars).stream().allMatch(i -> (i == (Integer.parseInt(expected)*time)))).isTrue();
     }
 
 }

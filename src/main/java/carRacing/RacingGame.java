@@ -2,29 +2,31 @@ package carRacing;
 
 import carRacing.view.ResultView;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RacingGame {
 
     int numberOfCar;
     int time;
 
-    ArrayList<Car> cars;
-    ArrayList<Integer> carPositions;
+    List<Car> cars;
+    List<Integer> carPositions;
     ResultView resultView = new ResultView();
 
     public RacingGame(int numberOfCar, int time) {
         this.numberOfCar = numberOfCar;
         this.time = time;
-        setCars();
+        cars = setCars();
+        checkCarPositions();
         resultView.showResult();
     }
 
-    public void setCars() {
-        cars = new ArrayList<>();
+    public List<Car> setCars() {
+        List<Car> prepareCars = new ArrayList<>();
         for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car());
+            prepareCars.add(new Car());
         }
-        checkCarPositions();
+        return prepareCars;
     }
 
     public void start() {
