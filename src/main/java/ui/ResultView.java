@@ -6,17 +6,40 @@ import java.util.List;
 
 public class ResultView {
 
+    private static final String START_MESSAGE = "실행 결과";
+    private static final String ATTEMPTS_SEPARATOR = "";
+
     public void printResult(List<Car> cars, int numberOfAttempts) {
-        System.out.println("실행 결과");
-        for (int i = 0; i < numberOfAttempts; i++) {
-            for (int j = 0; j < cars.size(); j++) {
-                int position = cars.get(j).getLocationRecord().get(i);
-                for (int k = 0; k < position; k++) {
-                    System.out.print("=");
-                }
-                System.out.println("");
-            }
-            System.out.println("");
+        printStartMessage();
+        for (int time = 0; time < numberOfAttempts; time++) {
+            printTimeLocation(cars, time);
         }
+    }
+
+    private void printStartMessage() {
+        printMessage(START_MESSAGE);
+    }
+
+    private void printTimeLocation(List<Car> cars, int time) {
+        for (Car car : cars) {
+            printMessage(makeLocationMessageForTime(car, time));
+        }
+        printMessage(ATTEMPTS_SEPARATOR);
+    }
+
+    private String makeLocationMessageForTime(Car car, int time) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(car.getName());
+        stringBuilder.append(" : ");
+        int location = car.getLocationRecord().get(time);
+        for (int k = 0; k < location; k++) {
+            stringBuilder.append("=");
+        }
+
+        return stringBuilder.toString();
+    }
+
+    private void printMessage(String message) {
+        System.out.println(message);
     }
 }

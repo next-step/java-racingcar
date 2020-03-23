@@ -22,6 +22,7 @@ public class AutoRacing {
         GameRole gameRole = inputView.getGameRole();
         AutoRacing autoRacing = new AutoRacing(gameRole);
         autoRacing.playGame();
+        autoRacing.printResult();
     }
 
     public void playGame() {
@@ -33,8 +34,6 @@ public class AutoRacing {
                 car.move(condition);
             }
         }
-
-        printResult();
     }
 
     private void printResult() {
