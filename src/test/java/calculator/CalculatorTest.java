@@ -42,6 +42,4 @@ class CalculatorTest {
         int result = calculator.calculate("-3+2");
         assertThat(result).isEqualTo(-1);
     }
-
-
 }

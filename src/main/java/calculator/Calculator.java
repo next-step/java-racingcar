@@ -11,6 +11,8 @@ public class Calculator {
     public int calculate(String text) {
         final String expression = getExpression(text);
 
+        //tokenize(expression);
+
         int[] numbers = getNumbers(expression);
 
         List<BiFunction<Integer, Integer, Integer>> operations = getOperations(expression);
