@@ -5,7 +5,6 @@ import study.racingcar.view.InputView;
 import study.racingcar.view.ResultView;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RandomGameController {
     public void start() {
@@ -15,7 +14,7 @@ public class RandomGameController {
         RacingGame racingGame = new RacingGame(racingGameData, movableDistance);
         ResultView.displayStartGame();
         playRacingGame(racingGame);
-        displayWinner(racingGame);
+        ResultView.displayGameResult(new RacingGameResult(racingGame));
     }
 
     private RacingGameData getRacingGameData() {
@@ -32,13 +31,4 @@ public class RandomGameController {
         }
     }
 
-    private void displayWinner(RacingGame racingGame) {
-        RacingGameResult racingGameResult =
-                new RacingGameResult(racingGame);
-        List<Car> winners = racingGameResult.getWinner();
-        String winnerNames = winners.stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(","));
-        ResultView.displayWinners(winnerNames);
-    }
 }

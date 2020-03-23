@@ -2,6 +2,10 @@ package study.racingcar.view;
 
 import study.racingcar.domain.Car;
 import study.racingcar.domain.RacingGame;
+import study.racingcar.domain.RacingGameResult;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
     private static final String CAR_DISPLAY = "-";
@@ -18,7 +22,11 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void displayWinners(String winnerNames) {
+    public static void displayGameResult(RacingGameResult racingGameResult) {
+        List<Car> winners = racingGameResult.getWinner();
+        String winnerNames = winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(","));
         System.out.println(String.format(WINNER_MESSAGE, winnerNames));
     }
 
