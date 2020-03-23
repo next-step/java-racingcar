@@ -20,7 +20,7 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
-import static utils.RacingRoundTestUtil.makeRacingRoundTestCases;
+import static utils.TestUtil.makeRacingRoundTestCases;
 
 @DisplayName("레이싱 게임 테스트")
 public class RacingGameTests {
@@ -67,31 +67,29 @@ public class RacingGameTests {
     public void startRacingGameTest(String[] carNames, int roundNumber) {
         RacingGame racingGame = RacingGame.create(carNames, roundNumber);
         RacingGameResult racingGameResult = racingGame.start();
-        List<List<Integer>> positionResult = racingGameResult.getRoundProgress();
-        String[] winners = racingGameResult.getWinners();
+        List<List<RacingCarPosition>> positionResult = racingGameResult.getRoundProgress();
+        List<String> winners = racingGameResult.getLastWinners();
 
         assertThat(positionResult).hasSize(roundNumber);
-        positionResult.stream()
-                .forEach(round -> assertRound(round));
-        assertThat(winners.length).isGreaterThanOrEqualTo(0);
+        positionResult.forEach(round -> assertRoundPositions(round));
+        assertThat(winners.size()).isGreaterThanOrEqualTo(0);
     }
 
     @DisplayName("레이싱 게임 결과 - 우승자 테스트")
     @ParameterizedTest
     @MethodSource("racingGameWinnerTestCases")
     @ExtendWith(MockitoExtension.class)
-    public void racingGameWinnerTest(List<RacingRound> racingRounds, String[] expectedWinners) {
+    public void racingGameWinnerTest(List<RacingRound> racingRounds, List<String> expectedWinners) {
         RacingGame racingGame = mock(RacingGame.class);
         given(racingGame.start()).willReturn(new RacingGameResult(racingRounds));
         RacingGameResult racingGameResult = racingGame.start();
-        String[] winners = racingGameResult.getWinners();
+        List<String> winners = racingGameResult.getLastWinners();
 
         assertThat(winners).isEqualTo(expectedWinners);
     }
 
-    private void assertRound(List<Integer> round) {
-        round.stream()
-                .forEach(position -> assertThat(position).isGreaterThanOrEqualTo(0));
+    private void assertRoundPositions(List<RacingCarPosition> round) {
+        round.forEach(position -> assertThat(position.getLocationPoint()).isGreaterThanOrEqualTo(0));
     }
 
     private static Stream<Arguments> generateRacingGameTestCases() {
@@ -119,7 +117,7 @@ public class RacingGameTests {
     private static Stream<Arguments> startRacingGameTestCases() {
         return Stream.of(
                 Arguments.of(new String[]{"sonata", "sorento", "tesla", "truck"}, 1),
-                Arguments.of(new String[]{"truck", "bike", "sonata", "sorento", "tesla"}, 0),
+                Arguments.of(new String[]{"truck", "bike", "sonata", "sorento", "tesla"}, 2),
                 Arguments.of(new String[]{"sonata", "sorento", "tesla", "truck", "bike", "foot", "fly"}, 4)
         );
     }
@@ -127,33 +125,15 @@ public class RacingGameTests {
     private static Stream<Arguments> racingGameWinnerTestCases() {
         return Stream.of(
                 Arguments.of(new ArrayList<>(Arrays.asList(
-                        makeRacingRoundTestCases(testRacingCarNames, new int[]{0, 0, 0})
-                        RacingRound.newInstance(new RacingCarPosition[]{
-                                new RacingCarPosition("sonata", 0),
-                                new RacingCarPosition("sorento", 0),
-                                new RacingCarPosition("tesla", 0)})
-                        , RacingRound.newInstance(new RacingCarPosition[]{
-                                new RacingCarPosition("sonata", 1),
-                                new RacingCarPosition("sorento", 1),
-                                new RacingCarPosition("tesla", 0)})
-                        , RacingRound.newInstance(new RacingCarPosition[]{
-                                new RacingCarPosition("sonata", 2),
-                                new RacingCarPosition("sorento", 2),
-                                new RacingCarPosition("tesla", 1)})
-                        )),
-                        new String[]{"sonata", "sorento"}
+                        makeRacingRoundTestCases(testRacingCarNames, new Integer[]{0, 0, 0}),
+                        makeRacingRoundTestCases(testRacingCarNames, new Integer[]{1, 1, 0}),
+                        makeRacingRoundTestCases(testRacingCarNames, new Integer[]{2, 2, 1}))),
+                        Arrays.asList("sonata", "sorento")
                 ),
                 Arguments.of(new ArrayList<>(Arrays.asList(
-                        RacingRound.newInstance(new RacingCarPosition[]{
-                                new RacingCarPosition("sonata", 0),
-                                new RacingCarPosition("sorento", 0),
-                                new RacingCarPosition("tesla", 0)})
-                        , RacingRound.newInstance(new RacingCarPosition[]{
-                                new RacingCarPosition("sonata", 0),
-                                new RacingCarPosition("sorento", 1),
-                                new RacingCarPosition("tesla", 0)})
-                        )),
-                        new String[]{"sorento"}
+                        makeRacingRoundTestCases(testRacingCarNames, new Integer[]{0, 0, 0}),
+                        makeRacingRoundTestCases(testRacingCarNames, new Integer[]{0, 1, 0}))),
+                        Arrays.asList("sorento")
                 ));
     }
 }

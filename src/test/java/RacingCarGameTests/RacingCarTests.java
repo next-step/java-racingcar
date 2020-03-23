@@ -1,6 +1,7 @@
 package RacingCarGameTests;
 
 import domain.RacingCar;
+import domain.RacingCarPosition;
 import domain.RacingCars;
 import domain.RacingRound;
 import org.junit.jupiter.api.DisplayName;
@@ -23,7 +24,7 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
-import static utils.RacingRoundTestUtil.makeRacingRoundTestCases;
+import static utils.TestUtil.makeRacingRoundTestCases;
 
 @DisplayName("레이싱 카 테스트")
 public class RacingCarTests {
@@ -46,8 +47,7 @@ public class RacingCarTests {
         Random random = mock(Random.class);
         given(random.nextInt(anyInt())).willReturn(randomValue);
         RacingCar racingCar = RacingCar.newInstance(TEST_CAR_NAME, new RandomMoveRule(random));
-
-        assertThat(racingCar.move()).isEqualTo(expectedPosition);
+        assertThat(racingCar.move()).isEqualTo(new RacingCarPosition(TEST_CAR_NAME, expectedPosition));
     }
 
     @DisplayName("여러 차 이동 테스트")
@@ -67,11 +67,11 @@ public class RacingCarTests {
     }
 
     private static Stream<Arguments> racingCarsTestCases() {
-        String[] testRacingCarNames = new String[]{"sonata", "sorento", "tesla"};
+        //String[] testRacingCarNames = new String[]{"sonata", "sorento", "tesla"};
         return Stream.of(
-                Arguments.of(testRacingCarNames, new int[]{9, 1, 4}, makeRacingRoundTestCases(testRacingCarNames, new int[]{1, 0, 1})),
-                Arguments.of(testRacingCarNames, new int[]{5, 5, 5, 5}, makeRacingRoundTestCases(testRacingCarNames, new int[]{1, 1, 1, 1})),
-                Arguments.of(testRacingCarNames, new int[]{1, 9, 2, 8, 4}, makeRacingRoundTestCases(testRacingCarNames, new int[]{0, 1, 0, 1, 1}))
+                Arguments.of(new String[]{"sonata", "sorento", "tesla"}, new int[]{9, 1, 4}, makeRacingRoundTestCases(new String[]{"sonata", "sorento", "tesla"}, new Integer[]{1, 0, 1})),
+                Arguments.of(new String[]{"sonata", "sorento", "tesla", "truck"}, new int[]{5, 5, 5, 5}, makeRacingRoundTestCases(new String[]{"sonata", "sorento", "tesla", "truck"}, new Integer[]{1, 1, 1, 1})),
+                Arguments.of(new String[]{"sonata", "sorento", "tesla", "truck", "bike"}, new int[]{1, 9, 2, 8, 4}, makeRacingRoundTestCases(new String[]{"sonata", "sorento", "tesla", "truck", "bike"}, new Integer[]{0, 1, 0, 1, 1}))
         );
     }
 
