@@ -12,14 +12,9 @@ public final class Cars {
         this.cars = Collections.unmodifiableList(cars);
     }
 
-    // TODO : INDENT 2
     public void move(final MovingPolicy movingPolicy) {
-        int distance;
         for (Car car : cars) {
-            distance = movingPolicy.distance();
-            if (movingPolicy.isPossibleMove(distance)) {
-                car.move();
-            }
+            car.move(movingPolicy);
         }
     }
 
