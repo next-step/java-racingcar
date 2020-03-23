@@ -1,23 +1,21 @@
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Car {
 
     private static final int MAX_RANDOM_BOUND = 10;
-    private static final int CAN_MOVE_NUMBER = 4;
+    private static final int MOVE_CONDITION = 4;
 
+    private List<Integer> carPositions = new ArrayList<>();
     private int position = 0;
 
     public void move() {
-        if (canMove(getRandom())) {
-            position += 1;
-        }
-    }
-
-    public void print() {
-        for (int i = 0; i < position; i++) {
-            System.out.print("-");
+        if (isMovable(getRandom())) {
+            // TODO: 랜덤 숫자가 작을 때는 position을 저장하지 않는 문제.
+            carPositions.add(++position);
         }
     }
 
@@ -27,8 +25,8 @@ public class Car {
         return random.nextInt(MAX_RANDOM_BOUND);
     }
 
-    private boolean canMove(int value) {
-        return value >= CAN_MOVE_NUMBER;
+    private boolean isMovable(int value) {
+        return value >= MOVE_CONDITION;
     }
 
 }
