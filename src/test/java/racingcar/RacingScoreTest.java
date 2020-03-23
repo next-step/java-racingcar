@@ -2,13 +2,13 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.car.Car;
+import racingcar.domain.car.Car;
+import racingcar.domain.RacingScore;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RacingScoreTest {
     @DisplayName("레이싱 게임 우승자 검증")
