@@ -3,13 +3,20 @@ package study.racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import study.racingcar.domain.Car;
+import study.racingcar.domain.MovableDistance;
+import study.racingcar.domain.RacingGame;
+import study.racingcar.domain.RacingGameData;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
-    private final String[] EXAMPLE_CARS = {"pobi","crong","honux"};
+    private final List<String> EXAMPLE_CARS =
+            Arrays.asList("pobi", "crong", "honux");
     private MovableDistance movableDistance;
 
     @BeforeEach
@@ -19,7 +26,7 @@ public class RacingGameTest {
 
     @DisplayName("입력한 수행 횟수만큼 게임을 진행할 수 있다.")
     @Test
-    void moveByTheNumberOfTimes(){
+    void moveByTheNumberOfTimes() {
         RacingGame racingGame =
                 new RacingGame(new RacingGameData(EXAMPLE_CARS, 2),
                         movableDistance);
@@ -49,7 +56,7 @@ public class RacingGameTest {
     @Test
     void carsCanBeZero() {
         RacingGame racingGame =
-                new RacingGame(new RacingGameData(new String[0], 2),
+                new RacingGame(new RacingGameData(Collections.emptyList(), 2),
                         movableDistance);
         List<Car> cars = racingGame.move();
         assertThat(cars.size()).isEqualTo(0);

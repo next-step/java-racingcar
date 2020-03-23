@@ -1,4 +1,4 @@
-package study.racingcar;
+package study.racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ public class RacingGameData {
     private List<Car> cars;
     private int time;
 
-    public RacingGameData(String[] carNames, int time) {
+    public RacingGameData(List<String> carNames, int time) {
         if (time < MIN) {
             throw new IllegalArgumentException(
                     String.format("시도 횟수는 %d 이상이여야 합니다.", MIN));
@@ -17,7 +17,7 @@ public class RacingGameData {
         this.time = time;
     }
 
-    private void initCars(String[] carNames) {
+    private void initCars(List<String> carNames) {
         cars = new ArrayList<>();
         for (String carName : carNames) {
             cars.add(new Car(carName));

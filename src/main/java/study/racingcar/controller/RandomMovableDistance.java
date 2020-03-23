@@ -1,4 +1,6 @@
-package study.racingcar;
+package study.racingcar.controller;
+
+import study.racingcar.domain.MovableDistance;
 
 import java.util.Random;
 
