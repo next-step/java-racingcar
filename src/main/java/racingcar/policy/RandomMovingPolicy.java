@@ -22,12 +22,7 @@ public class RandomMovingPolicy implements MovingPolicy{
     }
 
     @Override
-    public boolean isPossibleMove(int distance) {
-        return condition <= distance && distance < maxRange;
-    }
-
-    @Override
-    public int distance() {
-        return random.nextInt(maxRange - minRange) + minRange;
+    public boolean isPossibleMove() {
+        return random.nextInt(maxRange - minRange) + minRange >= DEFAULT_MOVE_CONDITION;
     }
 }
