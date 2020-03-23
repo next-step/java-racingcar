@@ -24,7 +24,7 @@ public class RacingGameTest {
 
         InputData inputData = new InputData(3, 5);
 
-        RacingGame game = new RacingGame(random, inputData);
+        RacingGame game = new RacingGame(inputData);
 
         game.progress();
 
@@ -48,7 +48,7 @@ public class RacingGameTest {
         InputData inputData = new InputData(numberOfCars, tryCount);
 
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new RacingGame(random, inputData));
+                .isThrownBy(() -> new RacingGame(inputData));
     }
 
     @ParameterizedTest
@@ -62,6 +62,6 @@ public class RacingGameTest {
         InputData inputData = new InputData(numberOfCars, tryCount);
 
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new RacingGame(random, inputData));
+                .isThrownBy(() -> new RacingGame(inputData));
     }
 }

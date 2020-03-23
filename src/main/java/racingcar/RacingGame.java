@@ -3,7 +3,6 @@ package racingcar;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toList;
@@ -13,12 +12,9 @@ public class RacingGame {
     private int numberOfCars;
     private int tryCount;
 
-    private static Random randomGenerator;
-
     private List<Car> cars;
 
-    public RacingGame(Random randomGenerator, InputData inputData) {
-        this.randomGenerator = randomGenerator;
+    public RacingGame(InputData inputData) {
         validate(inputData.getNumberOfCars(), inputData.getTryCount());
         numberOfCars = inputData.getNumberOfCars();
         tryCount = inputData.getTryCount();
@@ -43,7 +39,7 @@ public class RacingGame {
     private void generateCars() {
         cars = IntStream
                 .range(0, numberOfCars)
-                .mapToObj(__ -> new Car(randomGenerator))
+                .mapToObj(__ -> new Car(new RandomMoveStrategy()))
                 .collect(toList());
     }
 

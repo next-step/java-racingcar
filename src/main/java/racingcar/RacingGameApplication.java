@@ -10,7 +10,7 @@ public class RacingGameApplication {
 
         inputView.input();
 
-        RacingGame game = new RacingGame(new Random(), inputView.getInputData());
+        RacingGame game = new RacingGame(inputView.getInputData());
 
         resultView.printGameResult();
 

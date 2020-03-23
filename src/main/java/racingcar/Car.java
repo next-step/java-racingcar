@@ -4,16 +4,17 @@ import java.util.Random;
 
 public class Car {
 
-    private Random randomGenerator;
     private int position;
 
-    public Car(Random randomGenerator) {
+    private MoveStrategy moveStrategy;
+
+    public Car(MoveStrategy moveStrategy) {
         position = 0;
-        this.randomGenerator = randomGenerator;
+        this.moveStrategy = moveStrategy;
     }
 
     public void move() {
-        if (randomGenerator.nextInt(10) >= 4) {
+        if (moveStrategy.isMovable()) {
             position += 1;
         }
     }
