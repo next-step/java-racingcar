@@ -1,11 +1,8 @@
 package racingGame;
 
-import racingGame.domain.Car;
 import racingGame.domain.RacingGame;
 import racingGame.ui.InputView;
 import racingGame.ui.ResultView;
-
-import java.util.stream.Collectors;
 
 public class RacingGamePlayer {
 	private InputView inputView;
@@ -23,10 +20,7 @@ public class RacingGamePlayer {
 		resultView.printResultStart();
 		for (int i = 0; i < inputView.getRacingTime(); i++) {
 			racingGame.move();
-			resultView.printResult(
-					racingGame.getCars()
-							.stream()
-							.collect(Collectors.toMap(Car::getRacer, Car::getDistance)));
+			resultView.printResult(racingGame.getCars());
 			System.out.println();
 		}
 		resultView.printWinner(racingGame.getWinners());
