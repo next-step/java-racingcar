@@ -69,9 +69,13 @@ public class RacingGame {
         int winnerPosition = gameRule.getMaxPosition(finalPositionList);
 
         for(Car car: carList) {
-            if(winnerPosition == car.getPosition()) {
-                this.winnerNameList.add(car.getCarName());
-            }
+            makeWinnerNameList(winnerPosition, car);
+        }
+    }
+
+    private void makeWinnerNameList(int winnerPosition, Car car) {
+        if(winnerPosition == car.getPosition()) {
+            this.winnerNameList.add(car.getCarName());
         }
     }
 
