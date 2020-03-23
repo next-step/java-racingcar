@@ -8,10 +8,13 @@ public class Output {
         this.bar = bar;
     }
 
-    public String mappingToBar(final int distance) {
+    public void mappingToBar(final int distance) {
         for (int i = 0; i < distance; i++) {
             bar.append(CAR_DISTANCE_BAR);
         }
+    }
+
+    public String getBar() {
         return bar.toString();
     }
 }
