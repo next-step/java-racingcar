@@ -49,7 +49,7 @@ public class RacingGame {
         return car;
     }
 
-    public void play() {
+    private void play() {
         for(int i = 0; i < this.roundTime; i++) {
             moveCars(i);
         }
@@ -64,7 +64,7 @@ public class RacingGame {
         }
     }
 
-    public void getWinner() {
+    private void getWinner() {
         List<Integer> finalPositionList = getFinalPositionList();
         int winnerPosition = gameRule.getMaxPosition(finalPositionList);
 
@@ -79,7 +79,7 @@ public class RacingGame {
         }
     }
 
-    public List<Integer> getFinalPositionList() {
+    private List<Integer> getFinalPositionList() {
         List<Integer> finalPositionList = new ArrayList<>();
 
         for(Car car: carList) {
