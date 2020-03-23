@@ -5,8 +5,15 @@ import java.util.List;
 import java.util.Random;
 
 public class Car {
-    private int position = 0;
+
+    private int position;
+    private String carName;
     private List<Round> roundInfoList = new ArrayList<Round>();
+
+    public Car(String carName) {
+        this.position = 0;
+        this.carName = carName;
+    }
 
     public void move(int roundTime) {
         this.position++;

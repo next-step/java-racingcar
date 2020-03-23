@@ -15,7 +15,7 @@ public class Main {
 
         GameRule gameRule = new GameRule();
 
-        RacingGame racingGame = new RacingGame(carNameList, roundTime, gameRule);
+        RacingGame racingGame = new RacingGame(roundTime, gameRule, carNameList);
         racingGame.start();
 
         ResultView resultView = new ResultView();
