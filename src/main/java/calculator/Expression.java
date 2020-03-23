@@ -10,12 +10,12 @@ public class Expression {
     private static final Pattern operationPattern = Pattern.compile("^[-+*/]");
     private static final Pattern numberPattern = Pattern.compile("^\\d*");
 
-    public List<String> tokenize(String text) {
+    public List<Token> tokenize(String text) {
         return parse(getExpression(text));
     }
 
-    private List<String> parse(String expression) {
-        List<String> tokens = new ArrayList<>();
+    private List<Token> parse(String expression) {
+        List<Token> tokens = new ArrayList<>();
 
         while(expression.length() > 0) {
             Matcher operationMatcher = operationPattern.matcher(expression);
@@ -32,7 +32,7 @@ public class Expression {
                 expression = expression.substring(number.length());
             }
 
-            tokens.add(operation + number);
+            tokens.add(new Token(operation, Integer.parseInt(number)));
         }
         return tokens;
     }
