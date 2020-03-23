@@ -3,52 +3,33 @@ package calculator;
 import calculator.operand.Number;
 import calculator.operator.Operator;
 
-import java.util.Stack;
-
 public class StringCalculator {
     private static final String BLANK = " ";
-    private static final int START_CALCULATE_OPERAND_SIZE = 2;
-    private static final int START_CALCULATE_OPERATOR_SIZE = 1;
+    private static final String EMPTY_STRING = "";
+    private static final int DEFAULT_OPERAND_INDEX = 0;
+    private static final int START_OPERATOR_INDEX = 1;
+    private static final int NEXT_OPERATOR_INDEX = 2;
+
     public int calculate(String input) {
         isEmpty(input);
 
         String[] source = toStringArray(input);
-        Stack<Number> operandStack = new Stack<>();
-        Stack<Operator> operatorStack = new Stack<>();
+        Number preOperand = Number.intValueOf(source[DEFAULT_OPERAND_INDEX]);
 
-        // TODO : refactor INDENT 2
-        for (String value : source) {
-            // 피연산자
-            if (Number.isNumber(value)) {
-                operandStack.push(Number.intValueOf(value));
-            }
-
-            // 연산자
-            if (Operator.isOperator(value)) {
-                operatorStack.push(Operator.getOperator(value));
-            }
-
-            // 사칙연산
-            if (operandStack.size() == START_CALCULATE_OPERAND_SIZE && operatorStack.size() == START_CALCULATE_OPERATOR_SIZE) {
-                operandStack.push(operate(operandStack, operatorStack));
-            }
+        for (int i = START_OPERATOR_INDEX; i < source.length; i += NEXT_OPERATOR_INDEX) {
+            Number nextOperand = Number.intValueOf(source[i + START_OPERATOR_INDEX]);
+            preOperand = preOperand.calculate(Operator.getOperator(source[i]), nextOperand);
         }
-        return operandStack.pop().getValue();
+        return preOperand.getValue();
     }
 
     private void isEmpty(final String input) {
-        if (input == null || input.equals(BLANK)) {
+        if (input == null || input.trim().equals(EMPTY_STRING)) {
             throw new IllegalArgumentException("wrong input value");
         }
     }
 
-    String[] toStringArray(final String input) {
+    private String[] toStringArray(final String input) {
         return input.split(BLANK);
-    }
-
-    private Number operate(final Stack<Number> operandStack, final Stack<Operator> operatorStack) {
-        Number otherNumber = operandStack.pop();
-        Number number = operandStack.pop();
-        return number.calculate(operatorStack.pop(), otherNumber);
     }
 }

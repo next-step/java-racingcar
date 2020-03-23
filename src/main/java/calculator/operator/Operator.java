@@ -1,5 +1,7 @@
 package calculator.operator;
 
+import java.util.Arrays;
+
 public enum Operator {
     PLUS("+") {
         public int operate(int number, int otherNumber) {
@@ -36,13 +38,10 @@ public enum Operator {
     }
 
     public static Operator getOperator(String operatorText) {
-        for (Operator operator : Operator.values()) {
-            // TODO : refactor INDENT 2
-            if (operator.value.equals(operatorText)) {
-                return operator;
-            }
-        }
-        throw new IllegalArgumentException("사칙 연산자가 아닙니다.");
+        return Arrays.stream(Operator.values())
+                     .filter(operator -> operator.value.equals(operatorText))
+                     .findFirst()
+                     .orElseThrow(() -> new IllegalArgumentException("사칙 연산자가 아닙니다."));
     }
 
     public abstract int operate(int number, int otherNumber);

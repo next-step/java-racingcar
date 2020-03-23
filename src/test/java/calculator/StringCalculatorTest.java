@@ -1,5 +1,6 @@
 package calculator;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,13 +11,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class StringCalculatorTest {
-    private StringCalculator stringCalculator = new StringCalculator();
+    private static StringCalculator stringCalculator;
 
-    @DisplayName("계산기 객체 생성을 성공한다.")
-    @Test
-    void create() {
+    @BeforeAll
+    static void setUp() {
         stringCalculator = new StringCalculator();
-        assertThat(stringCalculator).isNotNull();
     }
 
     @DisplayName("입력값이 null일 경우 예외 발생을 성공한다.")
@@ -37,18 +36,13 @@ class StringCalculatorTest {
         );
     }
 
-    @DisplayName("입력값을 문자열 배열로 반환하는데 성공한다.")
+    @DisplayName("입력값이 빈 문자열일 경우 예외 발생을 성공한다.")
     @Test
-    void toStringArray() {
-        // given
-        final String input = "2 + 3 * 4 / 2";
-        final String[] expect = input.split(" ");
-
-        // when
-        final String[] actual = stringCalculator.toStringArray(input);
-
-        // then
-        assertThat(actual).containsExactly(expect);
+    void inputValue_IsEmptyString() {
+        final String input = "";
+        assertThatExceptionOfType(IllegalArgumentException.class)
+            .isThrownBy(() -> { stringCalculator.calculate(input); }
+        );
     }
 
     @DisplayName("덧셈을 성공한다.")
@@ -113,19 +107,18 @@ class StringCalculatorTest {
     void zero_Divide(String input) {
         // when then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> { stringCalculator.calculate(input); }
-                );
+            .isThrownBy(() -> { stringCalculator.calculate(input); }
+        );
     }
 
     @DisplayName("여러 사칙 연산을 수행한다.")
     @ParameterizedTest
-    @CsvSource(value = {"2 + 3 * 4 / 2,10", "1 + 1 * 2 / 2,2", "100 - 100 * 12 -1,-1"})
+    @CsvSource(value = {"2 + 3 * 4 / 2,10", "1 + 1 * 2 / 2,2", "100 - 100 * 12 - 1,-1"})
     void calculate(String input, int expect) {
         // when
         final int actual = stringCalculator.calculate(input);
 
         // then
         assertThat(actual).isEqualTo(expect);
-
     }
 }
