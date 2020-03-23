@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import racingcar.util.Delimeters;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -7,9 +9,14 @@ public class InputView {
     private static Scanner sc = new Scanner(System.in);
     private static int input;
 
-    public static int insertCar() {
+    public static String[] insertCar() {
         message("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        return checkNumberValidation();
+        String[] carNames = split(sc.nextLine());
+        return carNames;
+    }
+
+    private static String[] split(String input) {
+        return input.split(Delimeters.COMMA);
     }
 
     public static int insertMoveCount() {
@@ -39,7 +46,6 @@ public class InputView {
     private static void message(String message) {
         System.out.println(message);
     }
-
 
     public static void inputClose() {
         sc.close();

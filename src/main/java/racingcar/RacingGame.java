@@ -2,21 +2,30 @@ package racingcar;
 
 import racingcar.view.ResultView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
-    private int[] carPositions;
+    private List<RacingCar> cars = new ArrayList<>();
     private int raceTime;
     private Random random = new Random();
+
     private static final int MOVABLE_NUMBER = 3;
     private static final int END_TIME = 0;
 
-    public RacingGame(int carNumber, int raceTime) {
-        this.carPositions = new int[carNumber];
+    public RacingGame(String[] carNames, int raceTime) {
+        createCar(carNames);
         this.raceTime = raceTime;
     }
 
-    public int[] startRace() {
+    private void createCar(String[] carNames) {
+        for (String carName : carNames) {
+            cars.add(new RacingCar(carName));
+        }
+    }
+
+    public void startRace() {
         while (canRace()) {
             moveCar();
             reduceCount();
