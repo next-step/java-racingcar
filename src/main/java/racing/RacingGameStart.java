@@ -13,6 +13,12 @@ public class RacingGameStart {
 
 		RacingGame game = new RacingGame(inputView.getCars(), inputView.getTimes());
 
-		ArrayList<Integer> carPositions = game.getCarPositions();
+		ArrayList<Integer> carPositions;
+
+		System.out.println("실행 결과");
+
+		for (int i = 0; i < game.getTime(); ++i) {
+			carPositions = game.move();
+		}
 	}
 }

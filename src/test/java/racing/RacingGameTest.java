@@ -60,4 +60,17 @@ public class RacingGameTest {
 		ArrayList<Integer> carPositions = game.getCarPositions();
 		assertThat(carPositions.stream().allMatch(carPos -> carPos == RacingGame.INIT_CAR_POSITION)).isTrue();
 	}
+
+	@ParameterizedTest
+	@MethodSource("getValidCase")
+	void checkMove(int cars, int times) {
+		RacingGame game = new RacingGame(cars, times);
+		ArrayList<Integer> carPositions;
+
+		System.out.println("실행 결과");
+
+		for (int i = 0; i < game.getTime(); ++i) {
+			carPositions = game.move();
+		}
+	}
 }
