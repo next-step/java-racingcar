@@ -20,6 +20,7 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
+import static utils.RacingRoundTestUtil.makeRacingRoundTestCases;
 
 @DisplayName("레이싱 게임 테스트")
 public class RacingGameTests {
@@ -126,6 +127,7 @@ public class RacingGameTests {
     private static Stream<Arguments> racingGameWinnerTestCases() {
         return Stream.of(
                 Arguments.of(new ArrayList<>(Arrays.asList(
+                        makeRacingRoundTestCases(testRacingCarNames, new int[]{0, 0, 0})
                         RacingRound.newInstance(new RacingCarPosition[]{
                                 new RacingCarPosition("sonata", 0),
                                 new RacingCarPosition("sorento", 0),

@@ -23,6 +23,7 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
+import static utils.RacingRoundTestUtil.makeRacingRoundTestCases;
 
 @DisplayName("레이싱 카 테스트")
 public class RacingCarTests {
@@ -68,9 +69,9 @@ public class RacingCarTests {
     private static Stream<Arguments> racingCarsTestCases() {
         String[] testRacingCarNames = new String[]{"sonata", "sorento", "tesla"};
         return Stream.of(
-                Arguments.of(testRacingCarNames, new int[]{9, 1, 4}, RacingRound.newInstance(new int[]{1, 0, 1})),
-                Arguments.of(testRacingCarNames, new int[]{5, 5, 5, 5}, RacingRound.newInstance(new int[]{1, 1, 1, 1})),
-                Arguments.of(testRacingCarNames, new int[]{1, 9, 2, 8, 4}, RacingRound.newInstance(new int[]{0, 1, 0, 1, 1}))
+                Arguments.of(testRacingCarNames, new int[]{9, 1, 4}, makeRacingRoundTestCases(testRacingCarNames, new int[]{1, 0, 1})),
+                Arguments.of(testRacingCarNames, new int[]{5, 5, 5, 5}, makeRacingRoundTestCases(testRacingCarNames, new int[]{1, 1, 1, 1})),
+                Arguments.of(testRacingCarNames, new int[]{1, 9, 2, 8, 4}, makeRacingRoundTestCases(testRacingCarNames, new int[]{0, 1, 0, 1, 1}))
         );
     }
 
