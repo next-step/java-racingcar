@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -16,8 +17,9 @@ public class RacingGame {
 
     public RacingGame(Random randomGenerator, InputData inputData) {
         this.randomGenerator = randomGenerator;
-        numberOfCars = inputData.getNumberOfCars();
-        tryCount = inputData.getTryCount();
+        InputData gameOptions = new InputData(inputData.getNumberOfCars(), inputData.getTryCount());
+        numberOfCars = gameOptions.getNumberOfCars();
+        tryCount = gameOptions.getTryCount();
         generateCars();
     }
 
@@ -31,7 +33,7 @@ public class RacingGame {
     }
 
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
     private void generateCars() {

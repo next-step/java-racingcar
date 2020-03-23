@@ -22,6 +22,6 @@ public class InputView {
     }
 
     public InputData getInputData() {
-        return inputData;
+        return new InputData(inputData.getNumberOfCars(), inputData.getTryCount());
     }
 }
