@@ -38,7 +38,7 @@ public class Cars {
         return new Car(cars.get(index));
     }
 
-    public String getWinner() {
+    public String getWinners() {
         Car winner = cars.stream()
                 .reduce((car1, car2) -> car1.getPosition() > car2.getPosition() ? car1 : car2)
                 .orElseThrow(() -> new IllegalArgumentException(RacingGameConstant.NO_WINNER));
@@ -48,7 +48,7 @@ public class Cars {
                 .collect(toList())
                 .stream()
                 .map(Car::getName)
-                .collect(joining(","));
+                .collect(joining(RacingGameConstant.DELIMITER_COMMA));
     }
 
 }

@@ -18,7 +18,7 @@ public class ResultView {
                 .forEach(e -> collectResult.append(getResults(e.getValue())));
 
         return collectResult
-                .append(racingGameResults.getWinner())
+                .append(racingGameResults.getWinners())
                 .append(RacingGameConstant.WINNER_COMMENT_SUFFIX)
                 .toString();
     }
