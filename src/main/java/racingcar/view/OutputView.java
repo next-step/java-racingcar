@@ -5,7 +5,6 @@ import racingcar.model.Car;
 import racingcar.model.Result;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -54,7 +53,7 @@ public class OutputView {
         }
     }
 
-    private static String findPrettierName(Car car, List<Car> cars){
+    private static String findPrettierName(Car car, List<Car> cars) {
         return makeCarNamesPrettier(cars).get(cars.indexOf(car));
     }
 
