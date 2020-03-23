@@ -10,7 +10,7 @@ public class RacingGame {
     private int time;
     private List<Car> cars;
     private MovableDistance movableDistance;
-
+// todo racing game data 가 과연 필요할까?
     public RacingGame(RacingGameData racingGameData,
                       MovableDistance movableDistance) {
         this.cars = racingGameData.getCars();
@@ -37,7 +37,7 @@ public class RacingGame {
 
         int maxPosition = getMaxPosition();
         return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
+                .filter(car -> car.isPositionEqualTo(maxPosition))
                 .collect(Collectors.toList());
     }
 
@@ -45,6 +45,11 @@ public class RacingGame {
         return Collections
                 .max(cars, Comparator.comparing(Car::getPosition))
                 .getPosition();
+    }
+
+    public List<Car> getCars() {
+        // todo copy 메서드를 이용하여 복사본을 넘긴다.
+        return cars;
     }
 
     private void decreaseTime() {
