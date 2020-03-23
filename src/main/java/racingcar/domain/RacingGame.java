@@ -8,9 +8,9 @@ public class RacingGame {
     private final int time;
     private final Cars cars;
 
-    public RacingGame(int time, int numberOfCars) {
+    public RacingGame(int time, String[] carNames) {
         this.time = time;
-        this.cars = new Cars(numberOfCars);
+        this.cars = new Cars(carNames);
     }
 
     public RacingGameResults game() {

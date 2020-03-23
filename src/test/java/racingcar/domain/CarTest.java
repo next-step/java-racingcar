@@ -11,7 +11,7 @@ class CarTest {
     @Test
     public void newCarWithNameTest() {
         //given
-        Car car = new Car();
+        Car car = new Car("정원");
 
         //when & then
         assertThat(car).isNotNull();
@@ -21,7 +21,7 @@ class CarTest {
     @Test
     public void carMoveConditionOnTrue() {
         //given
-        Car car = new Car().move(true);
+        Car car = new Car("정원").move(true);
 
         //when & then
         assertThat(car.getPosition()).isEqualTo(1);
@@ -35,14 +35,14 @@ class CarTest {
     @Test
     public void test() {
         //given
-        Car car1 = new Car().move(true).move(true).move(true);
-        Car car2 = new Car().move(true).move(false).move(false);
-        Car car3 = new Car().move(false).move(false).move(false);
+        Car 정원 = new Car("정원").move(true).move(true).move(true);
+        Car 자바 = new Car("자바").move(true).move(false).move(false);
+        Car 레이서 = new Car("레이서").move(false).move(false).move(false);
 
         //when & then
-        assertThat(car1.getPosition()).isEqualTo(3);
-        assertThat(car2.getPosition()).isEqualTo(1);
-        assertThat(car3.getPosition()).isEqualTo(0);
+        assertThat(정원.getPosition()).isEqualTo(3);
+        assertThat(자바.getPosition()).isEqualTo(1);
+        assertThat(레이서.getPosition()).isEqualTo(0);
     }
 
 }
