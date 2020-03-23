@@ -1,5 +1,6 @@
 package calculator;
 
+import calculator.exception.OperatorNotFoundException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -60,7 +61,7 @@ public class CalculatorTest {
         assertThatThrownBy(() -> {
                     Calculator calculator = new Calculator(input);
                 }
-        ).isInstanceOf(IllegalArgumentException.class);
+        ).isInstanceOf(OperatorNotFoundException.class);
     }
 
     @ParameterizedTest
