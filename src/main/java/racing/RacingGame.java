@@ -22,6 +22,7 @@ public class RacingGame {
 	public ArrayList<Integer> getCarPositions() {
 		return carPositions;
 	}
+
 	public int getTime() {
 		return time;
 	}

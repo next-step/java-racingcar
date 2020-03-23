@@ -6,6 +6,7 @@ import racing.UI.InputView;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racing.UI.ResultView;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -42,6 +43,7 @@ public class RacingGameTest {
 		List<Arguments> argumentsList = new ArrayList<>();
 		argumentsList.add(Arguments.of("1","1"));
 		argumentsList.add(Arguments.of("2","1"));
+		argumentsList.add(Arguments.of("3","5"));
 		return argumentsList.stream();
 	}
 
@@ -67,10 +69,12 @@ public class RacingGameTest {
 		RacingGame game = new RacingGame(cars, times);
 		ArrayList<Integer> carPositions;
 
-		System.out.println("실행 결과");
+		ResultView resultView = new ResultView();
+		resultView.printTitle();
 
 		for (int i = 0; i < game.getTime(); ++i) {
 			carPositions = game.move();
+			resultView.print(carPositions);
 		}
 	}
 }

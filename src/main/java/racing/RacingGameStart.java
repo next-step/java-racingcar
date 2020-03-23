@@ -1,6 +1,7 @@
 package racing;
 
 import racing.UI.InputView;
+import racing.UI.ResultView;
 
 import java.util.ArrayList;
 
@@ -15,10 +16,12 @@ public class RacingGameStart {
 
 		ArrayList<Integer> carPositions;
 
-		System.out.println("실행 결과");
+		ResultView resultView = new ResultView();
+		resultView.printTitle();
 
 		for (int i = 0; i < game.getTime(); ++i) {
 			carPositions = game.move();
+			resultView.print(carPositions);
 		}
 	}
 }
