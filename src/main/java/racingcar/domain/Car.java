@@ -35,11 +35,7 @@ public class Car {
         return position;
     }
 
-    @Override
-    public String toString() {
-        return "Car{" +
-                "name='" + name + '\'' +
-                ", position=" + position +
-                '}';
+    public boolean isSamePosition(Car car) {
+        return getPosition() == car.getPosition();
     }
 }

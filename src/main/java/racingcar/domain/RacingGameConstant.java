@@ -9,6 +9,9 @@ public class RacingGameConstant {
     public static final String IS_NOT_A_COMMA = "구분자는 쉼표(,)만 입력해 주세요.";
     public static final String NO_WINNER = "우승자를 구할 수 없습니다.";
 
+    public static final String WINNER_COMMENT_PREFIX = "실행 결과\n%s";
+    public static final String WINNER_COMMENT_SUFFIX = "가 최종 우승했습니다.";
+
     public static final String DELIMITER_COMMA = ",";
 
     public static final String COLON = " : ";

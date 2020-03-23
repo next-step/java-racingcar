@@ -8,7 +8,7 @@ public class ResultView {
     }
 
     public void print(RacingGameResults racingGameResults) {
-        System.out.printf("실행 결과\n%s", renderGameResultsToView(racingGameResults));
+        System.out.printf(RacingGameConstant.WINNER_COMMENT_PREFIX, renderGameResultsToView(racingGameResults));
     }
 
     public String renderGameResultsToView(RacingGameResults racingGameResults) {
@@ -17,7 +17,10 @@ public class ResultView {
                 .stream()
                 .forEach(e -> collectResult.append(getResults(e.getValue())));
 
-        return collectResult.toString();
+        return collectResult
+                .append(racingGameResults.getWinner())
+                .append(RacingGameConstant.WINNER_COMMENT_SUFFIX)
+                .toString();
     }
 
     public String getResults(Cars cars) {
@@ -27,8 +30,8 @@ public class ResultView {
         while (carsIterator.hasNext()) {
             writeAllCarsPosition(stringBuilder, carsIterator.next());
         }
-
         stringBuilder.append(RacingGameConstant.CARRIAGE_RETURN);
+
         return stringBuilder.toString();
     }
 
