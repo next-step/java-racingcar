@@ -13,6 +13,10 @@ import java.util.Random;
  */
 public final class NumberUtil {
 
+    private static final int RANDOM_BOUND = 10;
+    private static final int RACING_CAR_MOVING_BOUNDARY = 4;
+    private static final int RACING_MINIMUM_ROUND_COUNT = 1;
+
     private NumberUtil() {
         throw new ImpossibaleConstructionException("Util 객체 생성 금지");
     }
@@ -21,27 +25,21 @@ public final class NumberUtil {
      * 0~9 사이의 random 값을 구하는 기능
      */
     public static int createRandomIntIn0to9() {
-        return new Random().nextInt(10);
+        return new Random().nextInt(RANDOM_BOUND);
     }
 
     /**
      * 값이 4 이상인치 체크
      */
     public static boolean isGreaterThan4(int num) {
-        if (num >= 4) {
-            return true;
-        }
-        return false;
+        return num >= RACING_CAR_MOVING_BOUNDARY;
     }
 
     /**
      * 값이 1 이상인치 체크
      */
     public static boolean isGreaterThan1(int num) {
-        if (num >= 1) {
-            return true;
-        }
-        return false;
+        return num >= RACING_MINIMUM_ROUND_COUNT;
     }
 
     /**

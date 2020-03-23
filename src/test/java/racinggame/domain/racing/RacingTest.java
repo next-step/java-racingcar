@@ -29,22 +29,4 @@ class RacingTest {
         //then
         new Racing(gameCount, carNames);
     }
-
-    @DisplayName("---------------------------test")
-    @ParameterizedTest
-    @MethodSource("provideConstructParam")
-    public void teset(int carCount, int gameCount, List<String> carNames) throws Exception {
-        //given
-        Racing racing = new Racing(gameCount, carNames);
-        ResultView resultView = new ResultView(racing);
-
-        //when
-        racing.playAllRound();
-
-        //then
-        resultView.drawAllRoundResult();
-
-        resultView.drawWinners();
-        System.out.println("===============");
-    }
 }
