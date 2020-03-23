@@ -1,9 +1,6 @@
 package carRacing;
 
-
-
 import carRacing.view.ResultView;
-
 import java.util.ArrayList;
 
 public class RacingGame {

@@ -1,7 +1,5 @@
 package carRacing;
 
-
-
 import org.assertj.core.util.VisibleForTesting;
 
 import java.util.Random;
