@@ -29,7 +29,7 @@ public class ResultView {
                 List<Round> roundList = car.getRoundInfoList();
 
                 Round round = roundList.get(i);
-                printMoveRecord(round.getPosition());
+                printMoveRecord(round.getPosition(), car.getCarName());
             }
             printView(EMPTY);
         }

@@ -31,4 +31,8 @@ public class Car {
     public List<Round> getRoundInfoList() {
         return this.roundInfoList;
     }
+
+    public String getCarName() {
+        return carName;
+    }
 }
