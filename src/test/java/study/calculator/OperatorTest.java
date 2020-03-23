@@ -17,26 +17,23 @@ public class OperatorTest {
     @ParameterizedTest
     @CsvSource(value = {"1,1,2", "99999999,99999999,199999998", "-1,-1,-2",
             "-100,100,0", "0,0,0"})
-    void plus(float leftSide, float rightSide, float expect) {
-        assertThat(Operator.PLUS.run(new Operand(leftSide, rightSide)))
-                .isEqualTo(expect);
+    void plus(double leftSide, double rightSide, double expect) {
+        assertThat(Operator.PLUS.run(leftSide, rightSide)).isEqualTo(expect);
     }
 
     @DisplayName("뺄셈을 테스트한다.")
     @ParameterizedTest
     @CsvSource(value = {"5,3,2", "3,5,-2", "-100,100,-200", "0,0,0"})
-    void minus(float leftSide, float rightSide, float expect) {
-        assertThat(Operator.MINUS.run(new Operand(leftSide, rightSide)))
-                .isEqualTo(expect);
+    void minus(double leftSide, double rightSide, double expect) {
+        assertThat(Operator.MINUS.run(leftSide, rightSide)).isEqualTo(expect);
     }
 
     @DisplayName("나눗셈을 테스트한다.")
     @ParameterizedTest
     @CsvSource(value = {"6,3,2", "-6,3,-2", "-6,-3,2", "2,5,0.4", "5,2,2.5",
             "0,2,0"})
-    void divide(float leftSide, float rightSide, float expect) {
-        assertThat(Operator.DIVIDE.run(new Operand(leftSide, rightSide)))
-                .isEqualTo(expect);
+    void divide(double leftSide, double rightSide, double expect) {
+        assertThat(Operator.DIVIDE.run(leftSide, rightSide)).isEqualTo(expect);
     }
 
     @DisplayName("나눗셈 오류를 테스트한다.")
@@ -44,7 +41,7 @@ public class OperatorTest {
     void divideError() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    Operator.DIVIDE.run(new Operand(2, 0));
+                    Operator.DIVIDE.run(2d, 0d);
                 });
     }
 
@@ -52,15 +49,23 @@ public class OperatorTest {
     @ParameterizedTest
     @CsvSource(value = {"1,1,1", "5,6,30", "-3,6,-18", "-3,-6,18", "3,0,0",
             "0,0,0"})
-    void multiply(float leftSide, float rightSide, float expect) {
-        assertThat(Operator.MULTIPLY.run(new Operand(leftSide, rightSide)))
+    void multiply(double leftSide, double rightSide, double expect) {
+        assertThat(Operator.MULTIPLY.run(leftSide, rightSide))
                 .isEqualTo(expect);
     }
 
+    @DisplayName("연산자를 테스트한다.")
     @ParameterizedTest
     @MethodSource("provideOperators")
     void matchedOperator(String symbol, Operator operator) {
         assertThat(Operator.symbolOf(symbol)).isEqualTo(operator);
+    }
+
+    @DisplayName("잘못된 연산자는 오류가 발생한다.")
+    @Test
+    void invalidOperator() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> Operator.symbolOf("?"));
     }
 
     private static Stream<Arguments> provideOperators() {
@@ -68,8 +73,7 @@ public class OperatorTest {
                 Arguments.of("+", Operator.PLUS),
                 Arguments.of("-", Operator.MINUS),
                 Arguments.of("/", Operator.DIVIDE),
-                Arguments.of("*", Operator.MULTIPLY),
-                Arguments.of("?", null)
+                Arguments.of("*", Operator.MULTIPLY)
         );
     }
 }

@@ -5,14 +5,14 @@ import java.util.Objects;
 public class Calculator {
     private static final String DELIMITER = " ";
 
-    public float calculate(String expression) {
+    public double calculate(String expression) {
         validate(expression);
 
-        String[] parts = expression.trim().split(DELIMITER);
+        String[] parts = expression.split(DELIMITER);
         if (parts.length < 3) {
             throw new IllegalArgumentException();
         }
-        float result = Float.parseFloat(parts[0]);
+        double result = Float.parseFloat(parts[0]);
         for (int i = 2; i < parts.length; i = i + 2) {
             result = operate(parts[i - 1], result, Float.parseFloat(parts[i]));
         }
@@ -29,12 +29,8 @@ public class Calculator {
         }
     }
 
-    private float operate(String stringOperator, float leftSide, float rightSide) {
-        Operand operand = new Operand(leftSide, rightSide);
-        Operator operator = Operator.symbolOf(stringOperator);
-        if (Objects.isNull(operator)) {
-            throw new IllegalArgumentException();
-        }
-        return operator.run(operand);
+    private double operate(String stringOperator, double leftSide,
+                           double rightSide) {
+        return Operator.symbolOf(stringOperator).run(leftSide, rightSide);
     }
 }
