@@ -7,4 +7,7 @@ public class Constants {
 
     public static final String INFORMATION_MESSAGE_RESULT = "실행 결과";
 
+    public static final int MOVE_PERCENT_DENOMINATOR = 10;
+    public static final int MOVE_PERCENT_NUMERATOR = 4;
+
 }

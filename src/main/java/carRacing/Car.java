@@ -22,7 +22,7 @@ public class Car {
 
     @VisibleForTesting
     public boolean movable() {
-        return (random.nextInt(10) >= 4);
+        return (random.nextInt(Constants.MOVE_PERCENT_DENOMINATOR) >= Constants.MOVE_PERCENT_NUMERATOR);
     }
 
     public int inquiryPosition() {
