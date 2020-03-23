@@ -1,13 +1,12 @@
 package racingcar.controller;
 
+import racingcar.domain.RacingScore;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.RandomMovingStrategy;
 import racingcar.dto.RacingCarRequestDto;
 import racingcar.dto.RacingCarResponseDto;
 import racingcar.service.RacingGameService;
-import racingcar.domain.RacingScore;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCarController {
