@@ -1,20 +1,15 @@
-package third_racing;
-
-import java.util.List;
+package fourth_racing_ranking;
 
 public class Resultview {
     private static final String SIGN = "-";
     private static final String TITLE = "실행 결과";
-    private static final String DIVIDE_LINE = "";
-
-
 
     public Resultview() {
     }
 
     public void draw(Car car) {
         String sign = makeSign(car.getCarPosition());
-        System.out.println(sign);
+        System.out.println(car.getCarName() + ":\t" + sign);
     }
 
     String makeSign(int carPosition){
@@ -31,7 +26,7 @@ public class Resultview {
     }
 
     public void getDivideLine() {
-        System.out.println(DIVIDE_LINE);
+        System.out.println("");
         return;
     }
 }

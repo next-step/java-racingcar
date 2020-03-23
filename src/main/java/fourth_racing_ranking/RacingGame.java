@@ -1,21 +1,27 @@
-package third_racing;
+package fourth_racing_ranking;
 
 
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class RacingGame {
 
-
     public static void main(String[] args) {
-        Inputview inputview = new Inputview();
+        InputView inputView = new InputView();
+        SetInputValue setInputValue = new SetInputValue();
+        CarAction carAction = new CarAction();
+        RacingGameResult racingGameResult = new RacingGameResult();
 
-        int carNo = inputview.userCarNoInput();
+        String carName = inputView.askQuestion1();
 
-        inputview.userTryNoInput(carNo);
+        int tryNumber = inputView.askQuestion2();
+
+        List<Car> car = setInputValue.ready(carName);
+
+        carAction.start(car, tryNumber);
+
+        racingGameResult.announceRank(car);
+
     }
-
-
 }
 
 

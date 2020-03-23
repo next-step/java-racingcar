@@ -1,25 +1,31 @@
-package third_racing;
+package fourth_racing_ranking;
 
-public class Car {
-    private int carNo = 1;
+public class Car implements Comparable{
+    private String carName = "";
     private int carPosition = 1;
 
-    public Car() {
-    }
-
-    public int getCarNo() {
-        return this.carNo;
+    public String getCarName() {
+        return this.carName;
     }
 
     public int getCarPosition() {
         return this.carPosition;
     }
 
-    public void move(){
+    public void move() {
         this.carPosition++;
     }
 
-    public void carPartIn(int i){
-        this.carNo = i;
+    public void setCarName(String carName) {
+        this.carName = carName;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return this.carPosition - ((Car)o).carPosition;
+    }
+
+    public String toString(){
+        return carName;
     }
 }
