@@ -7,3 +7,13 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 구현 기능 목록
+- CarRacing class
+   - proceedOnePeriod method 
+   - race method
+- Car class
+   - move method 
+   - moveIf method
+- InputView class
+- ResultView class
