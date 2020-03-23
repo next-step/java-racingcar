@@ -21,6 +21,6 @@ public class TestUtil {
     }
 
     private static RacingCarPosition makeRacingCarPositionTestCases(String carName, Integer locationPoint) {
-        return new RacingCarPosition(carName, locationPoint);
+        return RacingCarPosition.newInstance(carName, locationPoint);
     }
 }

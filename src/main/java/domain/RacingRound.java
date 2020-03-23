@@ -17,8 +17,8 @@ public class RacingRound {
     }
 
     private static void validate(List<RacingCarPosition> carPositions) {
-        if (carPositions == null) {
-            throw new RuntimeException("car positions is null.");
+        if (carPositions == null || carPositions.size() == 0) {
+            throw new RuntimeException("car positions is null or empty.");
         }
     }
 

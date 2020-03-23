@@ -49,7 +49,7 @@ public class RacingGameTests {
     public void generateRacingGameAbnormalCarNamesTest(String[] carNames, int roundNumber) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> RacingGame.create(carNames, roundNumber))
-                .withMessageMatching("car names contains abnormal name.");
+                .withMessageMatching("car name is null or empty.");
     }
 
     @DisplayName("레이싱 게임 생성 테스트 - 라운드 갯수 비정상 케이스")
@@ -71,7 +71,7 @@ public class RacingGameTests {
         List<String> winners = racingGameResult.getLastWinners();
 
         assertThat(positionResult).hasSize(roundNumber);
-        positionResult.forEach(round -> assertRoundPositions(round));
+        positionResult.forEach(this::assertRoundPositions);
         assertThat(winners.size()).isGreaterThanOrEqualTo(0);
     }
 

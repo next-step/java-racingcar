@@ -20,11 +20,11 @@ public class RacingCarPosition {
 
     private static void validateLocationPoint(Integer locationPoint) {
         if (locationPoint == null) {
-            throw new RuntimeException("car location point is null.");
+            throw new IllegalArgumentException("car location point is null.");
         }
 
         if (locationPoint < 0) {
-            throw new RuntimeException("car location point must be greater than zero.");
+            throw new IllegalArgumentException("car location point must be greater than zero.");
         }
     }
 
