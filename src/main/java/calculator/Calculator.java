@@ -14,6 +14,7 @@ public class Calculator {
     public Calculator(String[] operandAndOperators) {
         validateOperrandAndOperator(operandAndOperators);
         this.operandAndOperators = operandAndOperators;
+
     }
 
     /**
