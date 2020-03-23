@@ -47,7 +47,7 @@
 ### 구현에 대한 구상  
 
 > **도출된 클래스**  
-> RacingGame, Car, InputView, ResultView, CarRound
+> RacingGame, Car, InputView, ResultView, CarRound, GameRule
 
 1. 자동차라는 클래스를 생성하여 랜덤 수와 전진 여부 값을 가지고 있도록 하자.  
 2. 그때 그때 출력해도 좋고, 자동차 자체에 전진 수를 가지고 있어서 마지막에 출력해줘도 좋을 듯 하다.  
