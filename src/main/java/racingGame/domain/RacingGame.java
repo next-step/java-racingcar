@@ -2,6 +2,7 @@ package racingGame.domain;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class RacingGame {
@@ -21,8 +22,9 @@ public class RacingGame {
 		cars.forEach(Car::move);
 	}
 
-	public List<Car> getCars() {
-		return cars;
+	public Map<String, Integer> getTmpCarDistanceMap() {
+		return cars.stream()
+				.collect(Collectors.toMap(Car::getRacer, Car::getDistance));
 	}
 
 	public List<String> getWinners() {

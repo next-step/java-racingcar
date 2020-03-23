@@ -14,7 +14,7 @@ public class Car {
 		return racer;
 	}
 
-	public int getDistance() {
+	int getDistance() {
 		return distance;
 	}
 

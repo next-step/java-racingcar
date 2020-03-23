@@ -20,7 +20,7 @@ public class RacingGamePlayer {
 		resultView.printResultStart();
 		for (int i = 0; i < inputView.getRacingTime(); i++) {
 			racingGame.move();
-			resultView.printResult(racingGame.getCars());
+			resultView.printResult(racingGame.getTmpCarDistanceMap());
 			System.out.println();
 		}
 		resultView.printWinner(racingGame.getWinners());

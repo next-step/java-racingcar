@@ -1,8 +1,7 @@
 package racingGame.ui;
 
-import racingGame.domain.Car;
-
 import java.util.List;
+import java.util.Map;
 
 public class ResultView {
 	private static final String RESULT_MSG = "실행 결과";
@@ -12,11 +11,11 @@ public class ResultView {
 		System.out.println(RESULT_MSG);
 	}
 
-	public void printResult(List<Car> cars) {
-		cars.forEach(car -> {
-			System.out.print(car.getRacer());
+	public void printResult(Map<String, Integer> carPositions) {
+		carPositions.forEach((racer, distance) -> {
+			System.out.print(racer);
 			System.out.print(" : ");
-			System.out.println(getCarMarkerString(car.getDistance()));
+			System.out.println(getCarMarkerString(distance));
 		});
 	}
 
