@@ -11,21 +11,26 @@ public class RacingGame {
     private final int time;
     private final Cars cars;
     private final MovingPolicy movingPolicy;
+    private int round;
 
     public RacingGame(final int time, final int count, final MovingPolicy movingPolicy) {
         this.time = time;
         this.cars = ready(count);
         this.movingPolicy = movingPolicy;
+        round = 0;
     }
 
     public void play() {
-        for (int i = 0; i < time; i++) {
-            cars.move(movingPolicy);
-        }
+        cars.move(movingPolicy);
+        round++;
     }
 
     public List<Car> getCars() {
         return cars.getCars();
+    }
+
+    public boolean isGameOver() {
+        return round == time;
     }
 
     private Cars ready(final int count) {
