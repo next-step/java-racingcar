@@ -21,8 +21,9 @@ public class Cars {
     }
 
     public List<Car> findWinner() {
+        int highestPositionValue = findHighestPositionValue();
         return cars.stream()
-                .filter(it -> it.isWinner(findHighestPositionValue()) == true)
+                .filter(it -> it.isWinner(highestPositionValue))
                 .collect(Collectors.toList());
     }
 

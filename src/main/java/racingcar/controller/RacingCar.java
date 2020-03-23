@@ -5,30 +5,30 @@ import racingcar.view.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toList;
 
 public class RacingCar {
     private int tryCount;
     private Cars cars;
     private Results Results;
     private Winners winners;
-    private List<String> carNames;
 
     public RacingCar(InputView inputView) {
-        this.carNames = inputView.getCarNames();
         this.tryCount = inputView.getTryCount();
+        ready(inputView.getCarNames());
+    }
+
+    private void ready(List<String> carNames) {
+        cars = carNames.stream()
+                .map(Car::new)
+                .collect(collectingAndThen(toList(), Cars::new));
+        startGame();
     }
 
     public void start() {
-        ready();
-    }
-
-    private void ready() {
-        List<Car> allCars = carNames.stream()
-                .map(Car::new)
-                .collect(Collectors.toList());
-        cars = new Cars(allCars);
-        startGame();
+       startGame();
     }
 
     private void startGame() {
