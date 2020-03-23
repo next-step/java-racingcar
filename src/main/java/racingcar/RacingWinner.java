@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class RacingWinner {
     private static List<RacingCar> winners;
-    private static int HIGH_SCORE =0;
+    private static int HIGH_SCORE = 0;
 
     public static List<String> findWinnerName(List<RacingCar> cars) {
         makeWinners(cars);
@@ -25,8 +25,8 @@ public class RacingWinner {
     }
 
     private static void postHighScore(List<RacingCar> cars) {
-        for(RacingCar car: cars) {
-            HIGH_SCORE = Math.max(car.getPosition(),HIGH_SCORE);
+        for (RacingCar car : cars) {
+            HIGH_SCORE = Math.max(car.getPosition(), HIGH_SCORE);
         }
     }
 

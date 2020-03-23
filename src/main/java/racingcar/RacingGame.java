@@ -1,18 +1,14 @@
 package racingcar;
 
+import racingcar.util.NumberUtils;
 import racingcar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
     private List<RacingCar> cars = new ArrayList<>();
     private int raceTime;
-    private Random random = new Random();
-
-    private static final int MOVABLE_NUMBER = 3;
-    private static final int END_TIME = 0;
 
     public RacingGame(String[] carNames, int raceTime) {
         createCar(carNames);
@@ -39,7 +35,7 @@ public class RacingGame {
     }
 
     private boolean canRace() {
-        return this.raceTime > END_TIME;
+        return this.raceTime > NumberUtils.ZERO;
     }
 
     private void moveCars() {
@@ -65,7 +61,7 @@ public class RacingGame {
     }
 
     private boolean canMove() {
-        return random.nextInt(10) > MOVABLE_NUMBER;
+        return NumberUtils.getRandom() > NumberUtils.MOVABLE_NUMBER;
     }
 
 }

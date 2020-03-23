@@ -1,13 +1,13 @@
 package racingcar;
 
+import racingcar.util.NumberUtils;
+
 public class RacingCar {
     private String name;
     private int position;
 
-    private static int DEFAULT_POSITION = 0;
-
     public RacingCar(String name) {
-        this(name, DEFAULT_POSITION);
+        this(name, NumberUtils.ZERO);
     }
 
     public RacingCar(String name, int position) {
