@@ -14,6 +14,10 @@ class RacingGameTest {
 
         int[][] result = racingGame.run();
 
-        assertThat(result[0][0]).isEqualTo(0);
+        assertThat(result[0][0]).isEqualTo(1);
+        assertThat(result[1][0]).isEqualTo(2);
+        assertThat(result[2][0]).isEqualTo(3);
+        assertThat(result[3][0]).isEqualTo(4);
+        assertThat(result[4][0]).isEqualTo(5);
     }
 }

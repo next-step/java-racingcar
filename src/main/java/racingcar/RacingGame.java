@@ -13,6 +13,19 @@ public class RacingGame {
     }
 
     public int[][] run() {
+        drive();
         return result.clone();
+    }
+
+    public void drive() {
+        for(int i=0; i<result.length; i++) {
+            carPositions[0]++;
+            carPositions[1]++;
+            carPositions[2]++;
+
+            result[i][0] = carPositions[0];
+            result[i][1] = carPositions[1];
+            result[i][2] = carPositions[2];
+        }
     }
 }
