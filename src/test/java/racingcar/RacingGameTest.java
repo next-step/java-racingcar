@@ -5,7 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,12 +22,12 @@ public class RacingGameTest {
         RacingGame racingGame = new RacingGame(BASE_CAR_NAMES);
         String[] splitMoveCount = carsMoveCount.split(",");
 
-        ArrayList<Car> cars = racingGame.getCurrentCars();
+        List<Car> cars = racingGame.getCurrentCars();
         for (int i = 0; i < cars.size(); i++) {
             cars.get(i).move(Integer.valueOf(splitMoveCount[i]));
         }
 
-        ArrayList<Car> winners = racingGame.getWinners(cars);
+        List<Car> winners = racingGame.getWinners(cars);
 
         assertThat(winners.stream()
                 .map(Car::getName)
@@ -40,10 +40,10 @@ public class RacingGameTest {
     @CsvSource(value = {"5:1", "6:2", "7:3", "8:4", "9:4"}, delimiter = ':')
     void startRacingAllSuccessTest(int randomValue, int runCount) {
         RacingGame racingGame = new RacingGame(BASE_CAR_NAMES, () -> randomValue);
-        ArrayList<Car> carsAtInit = racingGame.getCurrentCars();
+        List<Car> carsAtInit = racingGame.getCurrentCars();
 
         racingGame.startRacing(runCount);
-        ArrayList<Car> carsAtEnd = racingGame.getCurrentCars();
+        List<Car> carsAtEnd = racingGame.getCurrentCars();
 
         for (int i = 0; i < carsAtEnd.size(); i++) {
             assertThat(carsAtEnd.get(i).getPosition()).isEqualTo(carsAtInit.get(i).getPosition() + runCount);
@@ -55,9 +55,9 @@ public class RacingGameTest {
     @CsvSource(value = {"0:1", "1:2", "2:3", "3:4", "4:4"}, delimiter = ':')
     void startRacingAllFailTest(int randomValue, int runCount) {
         RacingGame racingGame = new RacingGame(BASE_CAR_NAMES, () -> randomValue);
-        ArrayList<Car> carsAtInit = racingGame.getCurrentCars();
+        List<Car> carsAtInit = racingGame.getCurrentCars();
         racingGame.startRacing(runCount);
-        ArrayList<Car> carsAtEnd = racingGame.getCurrentCars();
+        List<Car> carsAtEnd = racingGame.getCurrentCars();
 
         for (int i = 0; i < carsAtEnd.size(); i++) {
             assertThat(carsAtEnd.get(i).getPosition()).isEqualTo(carsAtInit.get(i).getPosition());

@@ -37,22 +37,22 @@ public class RacingGame {
         }
     }
 
-    public ArrayList<Car> getWinners(ArrayList<Car> cars) {
+    public List<Car> getWinners(List<Car> cars) {
         int maxPosition = getBestPosition(cars);
 
-        return (ArrayList<Car>) cars.stream()
+        return cars.stream()
                 .filter(c -> c.getPosition() == maxPosition)
                 .collect(Collectors.toList());
     }
 
-    private int getBestPosition(ArrayList<Car> cars) {
+    private int getBestPosition(List<Car> cars) {
         return cars.stream()
                 .max(Comparator.comparing(Car::getPosition))
                 .get().getPosition();
     }
 
-    public ArrayList<Car> getCurrentCars() {
-        ArrayList<Car> cloneCars = new ArrayList<>();
+    public List<Car> getCurrentCars() {
+        List<Car> cloneCars = new ArrayList<>();
 
         for (int i = 0; i < this.cars.size(); i++) {
             cloneCars.add(this.cars.get(i).clone());

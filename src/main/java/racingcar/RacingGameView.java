@@ -1,6 +1,6 @@
 package racingcar;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class RacingGameView {
 
@@ -11,7 +11,7 @@ public class RacingGameView {
     }
 
     public void viewCarPositions() {
-        ArrayList<Car> currentCars = this.racingGame.getCurrentCars();
+        List<Car> currentCars = this.racingGame.getCurrentCars();
 
         for (int i = 0; i < currentCars.size(); i++) {
             printCarPosition(currentCars.get(i));
@@ -21,7 +21,7 @@ public class RacingGameView {
         }
     }
 
-    public void viewWinners(ArrayList<Car> winners) {
+    public void viewWinners(List<Car> winners) {
         for (int i = 0; i < winners.size(); i++) {
             System.out.print(winners.get(i).getName());
             if (i != winners.size() - 1) {
