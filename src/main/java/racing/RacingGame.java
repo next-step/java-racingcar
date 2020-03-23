@@ -16,7 +16,16 @@ public class RacingGame {
         if (Objects.isNull(cars) || cars.isEmpty()) {
             throw new IllegalArgumentException("차 대수는 0 이상이야 합니다.");
         }
-        this.cars = cars.stream().distinct().collect(Collectors.toList());
+
+        this.cars = cars.stream()
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
+    public RacingGame(String[] carNames) {
+        this(Stream.of(carNames)
+                .map(Car::new)
+                .collect(Collectors.toList()));
     }
 
     public void move() {
@@ -27,22 +36,14 @@ public class RacingGame {
         return cars;
     }
 
-    public List<Car> getWinner() {
-        List<Car> orderedByPositions = cars.stream()
-                .sorted(Comparator.comparingInt(Car::getPosition).reversed())
+    public List<Car> getWinners() {
+        Car winner = cars.stream()
+                .max(Comparator.comparingInt(Car::getPosition))
+                .orElseThrow(IllegalStateException::new);
+
+        return cars.stream()
+                .filter(car -> car.isSamePosition(winner))
                 .collect(Collectors.toList());
-
-        int winnerPosition = orderedByPositions.get(0).getPosition();
-
-        for (int i = 0 ; i < orderedByPositions.size() ; i++) {
-            if (winnerPosition == orderedByPositions.get(i).getPosition()) {
-                continue;
-            }
-
-            return orderedByPositions.subList(0, i);
-        }
-
-        return orderedByPositions;
     }
 
     public static void main(String[] args) {
@@ -50,12 +51,7 @@ public class RacingGame {
         ResultView resultView = new ResultView();
 
         String carNames = inputView.input("경주할 자동차 이름을 입력하세요(이름은 쉼표를(,) 기준으로 구분).");
-
-        List<Car> cars = Stream.of(carNames.split(","))
-                .map(Car::new)
-                .collect(Collectors.toList());
-
-        RacingGame racingGame = new RacingGame(cars);
+        RacingGame racingGame = new RacingGame(carNames.split(","));
 
         int time = inputView.inputInt("시도할 회수는 몇 회 인가요?");
 
@@ -66,7 +62,7 @@ public class RacingGame {
             resultView.printPositions(racingGame.getCars());
         }
 
-        resultView.printWinner(racingGame.getWinner());
+        resultView.printWinner(racingGame.getWinners());
     }
 
 }
