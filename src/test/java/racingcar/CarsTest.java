@@ -1,10 +1,10 @@
 package racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
-import racingcar.dto.InputView;
+import racingcar.model.Car;
+import racingcar.model.Cars;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,47 +12,35 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
-    private static final List<String> CAR_NAMES = Arrays.asList("Mark", "Jaehyun", "Johnny");
     private Cars cars;
-    private InputView inputView;
-    private RandomNumGenerator randomNumGenerator = new RandomNumGenerator();
 
     @BeforeEach
     void setUp() {
-        inputView = new InputView();
-        inputView.insertCarNames("Mark,Jaehyun,Johnny");
-        inputView.insertTryCount("5");
-        cars = new Cars(inputView);
-
+        Car car = new Car("Mark", 5);
+        Car car2 = new Car("Johnny", 5);
+        Car car3 = new Car("Jaehyun", 1);
+        cars = new Cars(Arrays.asList(car, car2, car3));
     }
 
+    @DisplayName("자동차 객체 중 가장 높은 position 값을 리턴한다.")
     @Test
-    void moveOnceTest() {
-        //given
-        int tryCount = inputView.getTryCount();
-
+    void findHighestPositionValueTest() {
         //when
-        for (int i = 0; i < inputView.getTryCount(); i++) {
-            cars.moveOnce(randomNumGenerator);
-        }
+        int highestPositionValue = cars.findHighestPositionValue();
 
         //then
-        assertThat(cars.getCars().get(0).getPosition()).isBetween(0, tryCount);
+        assertThat(highestPositionValue).isEqualTo(5);
     }
 
+    @DisplayName("position 값이 가장 높은 사람이 우승자이다.")
     @Test
     void findWinnerTest() {
-        //given
-        int tryCount = inputView.getTryCount();
-        for (int i = 0; i < inputView.getTryCount(); i++) {
-            cars.moveOnce(randomNumGenerator);
-        }
-
         //when
         List<Car> winners = cars.findWinner();
 
         //then
-        assertThat(winners.get(0).getPosition()).isBetween(0, tryCount);
-        assertThat(CAR_NAMES).contains(winners.get(0).getName());
+        assertThat(winners.size()).isEqualTo(2);
+        assertThat(winners).contains(new Car("Mark", 5));
+        assertThat(winners).contains(new Car("Johnny", 5));
     }
 }

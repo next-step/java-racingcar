@@ -1,32 +1,33 @@
-package racingcar.dto;
+package racingcar.view;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class InputView {
-    private static final String DELIMITER = ",";
+    private static final String DELIMITER_FOR_INPUT_CAR = ",";
+
     private List<String> carNames;
     private int carCount;
     private int tryCount;
 
-    public InputView() {
+    public InputView(String carNames, String tryCounts) {
+        insertCarNames(carNames);
+        insertTryCount(tryCounts);
     }
 
-    public int insertCarNames(String carNameString) {
+    private void insertCarNames(String carNameString) {
         validateNullOrEmpty(carNameString);
         this.carNames = splitCarNames(carNameString);
         this.carCount = carNames.size();
-        return carCount;
     }
 
-    public int insertTryCount(String stringTryCount) {
+    private void insertTryCount(String stringTryCount) {
         validateNullOrEmpty(stringTryCount);
         this.tryCount = validateNumberType(stringTryCount);
-        return tryCount;
     }
 
     private List<String> splitCarNames(String stringInput) {
-        return Arrays.asList(stringInput.split(DELIMITER));
+        return Arrays.asList(stringInput.split(DELIMITER_FOR_INPUT_CAR));
     }
 
     private int validateNumberType(String stringInput) {
@@ -67,6 +68,10 @@ public class InputView {
             throw new IllegalArgumentException("0 이하의 숫자는 입력할 수 없습니다.");
         }
         return intInput;
+    }
+
+    public static InputView of(String carNames, String tryCount) {
+        return new InputView(carNames, tryCount);
     }
 
     public int getTryCount() {

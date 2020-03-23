@@ -1,39 +1,49 @@
 package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import racingcar.domain.Car;
+import org.junit.jupiter.api.Test;
+import racingcar.model.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
-    @DisplayName("4이상의 랜덤한 숫자가 주어지면, 자동차는 이동여부를 반환한다.")
-    @ParameterizedTest
-    @CsvSource(value = {"4:true", "1:false", "9:true", "0:false"}, delimiter = ':')
-    void canRunTest(int input, boolean expected) {
+    @DisplayName("isRunnable이 true이면 자동차의 position 값에 1을 추가한다.")
+    @Test
+    void moveTestWhenRunnableTrue() {
         //given
-        int randomNum = input;
         Car car = new Car("Mark");
 
         //when
-        boolean canRun = car.canRun(randomNum);
+        car.move(true);
 
         //then
-        assertThat(canRun).isEqualTo(expected);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
-    @DisplayName("canRun의 값이 true이면 자동차의 position 값에 1을 추가한다.")
-    @ParameterizedTest
-    @CsvSource(value = {"true:1", "false:0"}, delimiter = ':')
-    void moveTest(boolean canRun, int position) {
+    @DisplayName("isRunnable이 false이면 자동차의 position 값은 변하지 않는다.")
+    @Test
+    void moveTestWhenRunnableFalse() {
         //given
-        Car car = new Car("Mark");
+        Car car = new Car("Mark", 0);
 
         //when
-        car.move(canRun);
+        car.move(false);
 
         //then
-        assertThat(car.getPosition()).isEqualTo(position);
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @DisplayName("가장 큰 position 값과 자동차의 position 값이 같다면 winner이다.")
+    @Test
+    void isWinnerTest() {
+        //given
+        Car car = new Car("Mark", 5);
+        int maxPositionValue = 5;
+
+        //when
+        boolean isWinner = car.isWinner(maxPositionValue);
+
+        //then
+        assertThat(isWinner).isTrue();
     }
 }
