@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class RacingCarApplication {
     private static final String DELIMITER = ",";
+    private static final int ONE = 1;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -21,12 +22,15 @@ public class RacingCarApplication {
 
         ResultView resultView = new ResultView();
         RacingGame racingGame = new RacingGame(names.split(DELIMITER), new RandomMovingStrategy());
-        List<RacingScore> results = new ArrayList<>();
+        RacingScore racingScore = null;
+        List<RacingScore> racingScores = new ArrayList<>();
 
         for(int i = 0; i < numberOfTime; i++) {
-            results.add(racingGame.execute());
+            racingScore = racingGame.execute();
+            racingScores.add(racingScore);
         }
 
-        resultView.print(results);
+        resultView.print(racingScores);
+        resultView.printWinner(racingScore.getWinner());
     }
 }

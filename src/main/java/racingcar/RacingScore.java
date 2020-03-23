@@ -7,7 +7,6 @@ import java.util.List;
 
 public class RacingScore {
     private List<Car> cars;
-    private int maxPosition;
 
     public RacingScore(List<Car> cars) {
         this.cars = new ArrayList<>(cars);
@@ -18,32 +17,27 @@ public class RacingScore {
     }
 
     public List<Car> getWinner() {
-        getMaxPosition();
+        int maxPosition = calculateMaxPosition();
         List<Car> winners = new ArrayList<>();
 
         for (Car car : cars) {
-            addWinners(winners, car);
+            addWinner(maxPosition, winners, car);
         }
 
         return new ArrayList<>(winners);
     }
 
-    private void addWinners(List<Car> winners, Car car) {
-        if (car.getPosition() == maxPosition) {
+    private void addWinner(int maxPosition, List<Car> winners, Car car) {
+        if (car.isWinner(maxPosition)) {
             winners.add(car);
         }
     }
 
-    private void getMaxPosition() {
+    private int calculateMaxPosition() {
+        int maxPosition = 0;
         for (Car car : cars) {
-            maxPosition = comparePosition(maxPosition, car);
+            maxPosition = Math.max(maxPosition, car.getPosition());
         }
-    }
-
-    private int comparePosition(int position, Car car) {
-        if (position < car.getPosition()) {
-            position = car.getPosition();
-        }
-        return position;
+        return maxPosition;
     }
 }

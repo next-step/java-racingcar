@@ -2,24 +2,18 @@ package racingcar;
 
 import racingcar.car.Car;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ResultView {
     private static final String HYPHEN = "-";
-    private static final String WHITE_SPACE = " ";
+    private static final String COMMA = ",";
     private static final String COLON = " : ";
-    private static final int ONE = 1;
 
     public void print(List<RacingScore> racingScores) {
         for (RacingScore racingScore : racingScores) {
             printScore(racingScore.getScore());
         }
-
-        printWinner(racingScores.get(lastScore(racingScores)));
-    }
-
-    private int lastScore(List<RacingScore> racingScores) {
-        return racingScores.size() - ONE;
     }
 
     private void printScore(List<Car> cars) {
@@ -38,13 +32,11 @@ public class ResultView {
         System.out.println(stringBuilder.toString());
     }
 
-    private void printWinner(RacingScore racingScore) {
-        List<Car> winner = racingScore.getWinner();
-        StringBuilder stringBuilder = new StringBuilder();
+    public void printWinner(List<Car> winner) {
+        List<String> winnerNames = new ArrayList<>();
         for (Car car : winner) {
-            stringBuilder.append(car.getName());
-            stringBuilder.append(WHITE_SPACE);
+            winnerNames.add(car.getName());
         }
-        System.out.println(stringBuilder.toString() + "가 최종 우승했습니다.");
+        System.out.println(String.join(COMMA, winnerNames) + "가 최종 우승했습니다.");
     }
 }
