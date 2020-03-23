@@ -6,29 +6,29 @@ public class InputView {
     public static final String CAR_COUNT_QUESTION = "자동차 대수는 몇 대 인가요?";
     public static final String TRY_COUNT_QUESTION = "시도할 회수는 몇 회 인가요?";
     private static Scanner scanner = new Scanner(System.in);
-    private int numberOfCars;
-    private int numberOfTries;
+    private Number carCount;
+    private Number tryCount;
 
     public InputView() {
-        this.numberOfCars = getUserCarCount();
-        this.numberOfTries = getUserTries();
+        this.carCount = getUserCarCount();
+        this.tryCount = getUserTries();
     }
 
-    private int getUserCarCount() {
+    private Number getUserCarCount() {
         System.out.println(CAR_COUNT_QUESTION);
-        return new Number(scanner.nextLine()).getNumber();
+        return new Number(scanner.nextLine());
     }
 
-    private int getUserTries() {
+    private Number getUserTries() {
         System.out.println(TRY_COUNT_QUESTION);
-        return new Number(scanner.nextLine()).getNumber();
+        return new Number(scanner.nextLine());
     }
 
-    public int getNumberOfCars() {
-        return numberOfCars;
+    public int getCarCount() {
+        return carCount.getNumber();
     }
 
-    public int getNumberOfTries() {
-        return numberOfTries;
+    public int getTryCount() {
+        return tryCount.getNumber();
     }
 }

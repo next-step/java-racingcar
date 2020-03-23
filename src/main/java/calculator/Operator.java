@@ -31,11 +31,4 @@ public enum Operator {
     public long calculate(long x, long y) {
         return operator.apply(x, y);
     }
-//    abstract long calculate(long x, long y);
-//
-//    protected void divideByZero(long inputNumber) {
-//        if (inputNumber == 0) {
-//            throw new IllegalArgumentException();
-//        }
-//    }
 }
