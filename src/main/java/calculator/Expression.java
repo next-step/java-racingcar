@@ -1,5 +1,7 @@
 package calculator;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -10,7 +12,10 @@ public class Expression {
     private static final Pattern operationPattern = Pattern.compile("^[-+*/]");
     private static final Pattern numberPattern = Pattern.compile("^\\d*");
 
-    public List<Token> tokenize(String text) {
+    public List<Token> tokenize(String text) throws IllegalArgumentException {
+        if(StringUtils.isEmpty(text)) {
+            throw new IllegalArgumentException("입력 값이 null 이거나 빈문자열");
+        }
         return parse(getExpression(text));
     }
 

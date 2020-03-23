@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 class CalculatorTest {
 
@@ -41,5 +41,36 @@ class CalculatorTest {
         Calculator calculator = new Calculator();
         int result = calculator.calculate("-3+2");
         assertThat(result).isEqualTo(-1);
+    }
+
+    @DisplayName("0으로 나누어지는 경우 ArithmeticException 을 throw 한다")
+    @Test
+    void throwExceptionIfDividedByZero() {
+        Calculator calculator = new Calculator();
+        assertThatThrownBy(() -> {
+            calculator.calculate("3/0");
+        }).isInstanceOf(ArithmeticException.class);
+    }
+
+    @DisplayName("입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException 을 throw 한다")
+    @Test
+    void throwExceptionIfNullOfEmptyInput() {
+        Calculator calculator = new Calculator();
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            calculator.calculate(null);
+        });
+
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            calculator.calculate("");
+        });
+    }
+
+    @DisplayName("사칙연산 기호가 아닌 경우 IllegalArgumentException 을 throw 한다")
+    @Test
+    void throwExceptionIfUnknownOperation() {
+        Calculator calculator = new Calculator();
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            calculator.calculate("3+4$3");
+        });
     }
 }
