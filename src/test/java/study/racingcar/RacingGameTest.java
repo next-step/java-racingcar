@@ -35,6 +35,7 @@ public class RacingGameTest {
         assertThat(racingGame.isMovable()).isTrue();
         racingGame.move();
         assertThat(racingGame.isMovable()).isFalse();
+        assertThat(racingGame.isFinished()).isTrue();
     }
 
     @DisplayName("모든 차가 수행 횟수만큼 전진할 수 있다.")
@@ -50,32 +51,5 @@ public class RacingGameTest {
         assertThat(racingGame.getCars().size()).isEqualTo(3);
         assertThat(racingGame.getCars().stream().map(Car::getPosition))
                 .containsExactly(3, 3, 3);
-    }
-
-    @DisplayName("우승자는 두명 이상일 수 있다.")
-    @Test
-    void winnerCanOverTwo() {
-        MovableDistance movableDistance = new MovableDistance() {
-            int i = -1;
-
-            @Override public int getDistance() {
-                i++;
-                if ((i % 3 == 0) || (i % 3 == 1)) {
-                    return 1;
-                }
-                return 0;
-            }
-        };
-        RacingGame racingGame =
-                new RacingGame(new RacingGameData(EXAMPLE_CARS, 3),
-                        movableDistance);
-        for (int i = 0; i < 3; i++) {
-            racingGame.move();
-        }
-
-
-        List<Car> winner = racingGame.getWinner();
-        assertThat(winner.size()).isEqualTo(2);
-        assertThat(winner.stream().map(Car::getName)).contains("pobi", "crong");
     }
 }

@@ -33,4 +33,11 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(2);
     }
 
+    @DisplayName("차가 해당하는 위치에 있는지 확인한다.")
+    @Test
+    void checkCarPositionIsEqualTo() {
+        car.addPosition(2);
+        assertThat(car.isPositionEqualTo(2)).isTrue();
+    }
+
 }
