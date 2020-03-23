@@ -7,3 +7,12 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+
+
+## 구현기능
+* inputView 구현 (이름입력부분, split으로 객체에 set하는 부분, 시도횟수 입력부분)
+* 입력값 벨리데이션 구현
+* 랜덤값 생성
+* move로직 생성
+* 최종 순위 생성
