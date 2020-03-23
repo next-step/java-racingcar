@@ -26,12 +26,14 @@ class CarTest {
 	@Test
 	@DisplayName("움직인 후에 거리 측정")
 	void move() {
-		assertThat(car.move())
+		car.move();
+		assertThat(car.getDistance())
 				.isEqualTo(engine.moveDistanceForOneTime());
 
 		int tmpDistance = car.getDistance();
 
-		assertThat(car.move())
+		car.move();
+		assertThat(car.getDistance())
 				.isEqualTo(tmpDistance+engine.moveDistanceForOneTime());
 	}
 }

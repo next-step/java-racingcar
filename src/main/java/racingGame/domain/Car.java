@@ -18,8 +18,7 @@ public class Car {
 		return distance;
 	}
 
-	int move() {
+	void move() {
 		distance += engine.moveDistanceForOneTime();
-		return distance;
 	}
 }
