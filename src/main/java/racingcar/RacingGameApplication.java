@@ -8,16 +8,14 @@ public class RacingGameApplication {
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
 
-        int numberOfCars = inputView.getNumberOfCars();
-        int tryCount = inputView.getTryCount();
+        inputView.input();
 
-        RacingGame game = new RacingGame(new Random(), numberOfCars);
+        RacingGame game = new RacingGame(new Random(), inputView.getInputData());
 
         resultView.printGameResult();
 
-        while (tryCount != 0) {
+        while (!game.isFinish()) {
             game.progress();
-            tryCount -= 1;
 
             resultView.printCarsPositions(game.getCars());
         }

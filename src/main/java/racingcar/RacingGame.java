@@ -7,23 +7,34 @@ import java.util.stream.IntStream;
 
 public class RacingGame {
 
+    private int numberOfCars;
+    private int tryCount;
+
     private static Random randomGenerator;
+
     private List<Car> cars;
 
-    public RacingGame(Random randomGenerator, int numberOfCars) {
+    public RacingGame(Random randomGenerator, InputData inputData) {
         this.randomGenerator = randomGenerator;
-        generateCars(numberOfCars);
+        numberOfCars = inputData.getNumberOfCars();
+        tryCount = inputData.getTryCount();
+        generateCars();
     }
 
     public void progress() {
         cars.forEach(car -> car.move());
+        tryCount -= 1;
+    }
+
+    public boolean isFinish() {
+        return tryCount == 0;
     }
 
     public List<Car> getCars() {
         return cars;
     }
 
-    private void generateCars(int numberOfCars) {
+    private void generateCars() {
         cars = IntStream
                 .range(0, numberOfCars)
                 .mapToObj(__ -> new Car(randomGenerator))

@@ -19,7 +19,9 @@ public class RacingGameTest {
         when(random.nextInt(10))
                 .thenReturn(4);
 
-        RacingGame game = new RacingGame(random, 3);
+        InputData inputData = new InputData(3, 5);
+
+        RacingGame game = new RacingGame(random, inputData);
 
         game.progress();
 

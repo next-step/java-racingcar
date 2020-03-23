@@ -15,7 +15,7 @@ public class ResultView {
                             .collect(Collectors.joining())
             );
         }
-        System.out.println("");
+        System.out.println();
     }
 
     public void printGameResult() {
