@@ -16,10 +16,10 @@ class InputViewTest {
     @Test
     void validInput() {
         inputView = new InputView(initInputStream("3"));
-        assertThat(inputView.insertCarCount()).isEqualTo(3);
+        assertThat(inputView.view("test count")).isEqualTo(3);
 
         inputView = new InputView(initInputStream("5"));
-        assertThat(inputView.insertTime()).isEqualTo(5);
+        assertThat(inputView.view("test time")).isEqualTo(5);
     }
 
     private ByteArrayInputStream initInputStream(String input) {
