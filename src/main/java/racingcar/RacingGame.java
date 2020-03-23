@@ -11,19 +11,20 @@ public class RacingGame {
     private int carCount;
     private int tryCount;
     private static List<Car> cars;
-    List<Integer> positions;
     private final RandomNumber randomNumber = new RandomNumber();
+    private Map<Integer, List<Integer>> record;
 
     public RacingGame(InputView inputView) {
         carCount = inputView.getCarCount();
         tryCount = inputView.getTryCount();
         cars = new ArrayList<>();
-        positions = new ArrayList<>();
+        record = new HashMap<>();
     }
 
     public void startGame() {
         createCar();
         tryMoveCar();
+        resultShow();
     }
 
     private void createCar() {
@@ -33,16 +34,17 @@ public class RacingGame {
     }
 
     private void tryMoveCar() {
-        Map<Integer, List<Integer>> record = new HashMap<>();
-
         for (int count = FIRST; count <= tryCount; count++) {
-            record.put(count,  startMove());
+            record.put(count, changePosition());
         }
-        Graph graph = new Graph(record);
+    }
+
+    private void resultShow() {
+        Graph graph = new Graph(this.record);
         graph.show();
     }
 
-    private List<Integer> startMove() {
+    private List<Integer> changePosition() {
         List<Integer> position = new ArrayList<>();
 
         for (Car car : getCars()) {
@@ -50,10 +52,6 @@ public class RacingGame {
             position.add(car.getPosition());
         }
         return position;
-    }
-
-    public List<Integer> getPositions() {
-        return new ArrayList<>(positions);
     }
 
     public static List<Car> getCars() {
