@@ -12,12 +12,13 @@ class RacingGameTest {
     private RacingGame racingGame;
     private final int TIME = 3;
     private final int COUNT = 5;
+    private final int MOVE_CONDITION = 4;
     private final int POSSIBLE_MOVE_MIN_RANGE = 4;
     private final int POSSIBLE_MOVE_MAX_RANGE = 10;
 
     @BeforeEach
     void setUp() {
-        racingGame = new RacingGame(TIME, COUNT, new RandomMovingPolicy(POSSIBLE_MOVE_MIN_RANGE, POSSIBLE_MOVE_MAX_RANGE));
+        racingGame = new RacingGame(TIME, COUNT, new RandomMovingPolicy(POSSIBLE_MOVE_MIN_RANGE, POSSIBLE_MOVE_MAX_RANGE, MOVE_CONDITION));
     }
 
     @DisplayName("count 만큼 자동차 객체 생성을 성공한다.")
