@@ -9,7 +9,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
-    private final String[] EXAMPLE_CARS = "pobi,crong,honux".split(",");
+    private final String[] EXAMPLE_CARS = {"pobi","crong","honux"};
     private MovableDistance movableDistance;
 
     @BeforeEach
