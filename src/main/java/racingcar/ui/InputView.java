@@ -55,7 +55,7 @@ public class InputView {
         String value = scanner.nextLine();
         try {
             return Integer.parseInt(value);
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(RacingGameConstant.IS_NOT_A_NUMBER);
         }
     }
