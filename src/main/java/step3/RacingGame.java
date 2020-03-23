@@ -7,20 +7,39 @@ public class RacingGame {
     private int roundTime;
     private int carCount;
     private List<Car> carList = new ArrayList<Car>();
+    private GameRule gameRule;
+
+    public RacingGame(int roundTime, int carCount, GameRule gameRule) {
+        this.roundTime = roundTime;
+        this.carCount = carCount;
+        this.gameRule = gameRule;
+    }
+
+    public void start() {
+        createCars(carCount);
+        play();
+        end();
+    }
+
+    public void end() {
+        this.carList.clear();
+    }
 
     private void createCars(int carCount) {
-        List<Car> carList = new ArrayList<Car>();
-
         for(int i = 0; i < carCount; i++) {
-            carList.add(createCar());
+            this.carList.add(createCar());
         }
-        this.carList = carList;
     }
 
     private Car createCar() {
         Car car = new Car();
-
         return car;
+    }
+
+    public void play() {
+        for(int i = 0; i < this.roundTime; i++) {
+            _move(i);
+        }
     }
 
     private void _move(int presentRoundTime) {
@@ -29,11 +48,15 @@ public class RacingGame {
         }
     }
 
-    public List<Car> play(int carCount, int roundTime) {
-        createCars(carCount);
-        for(int i = 0; i < roundTime; i++) {
-            _move(i);
-        }
+    public int getRoundTime() {
+        return roundTime;
+    }
+
+    public int getCarCount() {
+        return carCount;
+    }
+
+    public List<Car> getCarList() {
         return carList;
     }
 }

@@ -18,7 +18,10 @@ public class ResultView {
         printView(PLAY_RESULT);
     }
 
-    public void printResult(List<Car> carList, int roundTime) {
+    public void printResult(RacingGame racingGame) {
+        List<Car> carList = racingGame.getCarList();
+        int roundTime = racingGame.getRoundTime();
+
         for(int i = 0; i < roundTime; i++) {
             printRoundInfo(i + 1);
 

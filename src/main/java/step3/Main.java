@@ -13,11 +13,13 @@ public class Main {
         inputView.printRoundTimeInfo();
         int roundTime = inputView.readInputInt();
 
-        RacingGame racingGame = new RacingGame();
-        List<Car> carList = racingGame.play(carCount, roundTime);
+        GameRule gameRule = new GameRule();
+
+        RacingGame racingGame = new RacingGame(carCount, roundTime, gameRule);
+        racingGame.start();
 
         ResultView resultView = new ResultView();
         resultView.printResultInfo();
-        resultView.printResult(carList, roundTime);
+        resultView.printResult(racingGame);
     }
 }
