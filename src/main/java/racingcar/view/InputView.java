@@ -15,13 +15,8 @@ public class InputView {
         input = new Input(inputStream);
     }
 
-    public int insertCarCount() {
-        System.out.println(INPUT_CAR_COUNT_MESSAGE);
-        return Integer.parseInt(input.read());
-    }
-
-    public int insertTime() {
-        System.out.println(INPUT_TIME_MESSAGE);
+    public int view(String message) {
+        System.out.println(message);
         return Integer.parseInt(input.read());
     }
 }
