@@ -8,6 +8,7 @@ import java.util.List;
 public class Cars {
 
     private List<Car> cars;
+    private List<String> winnerNames;
 
     public Cars(String[] carNames) {
         List<Car> cars = new ArrayList<Car>();
@@ -16,6 +17,8 @@ public class Cars {
             cars.add(createCar(carNames[i]));
         }
         this.cars = cars;
+
+        winnerNames = new ArrayList<String>();
     }
 
     private Car createCar(String carName) {
@@ -35,18 +38,6 @@ public class Cars {
         return cars.get(index);
     }
 
-    public List<String> getWinner() {
-        List<String> winnerNames = new ArrayList<String>();
-        int winnerPosition = getMaxPosition(getFinalPositionList());
-
-        for(Car car: cars) {
-            if(isWinner(winnerPosition, car)) {
-                winnerNames.add(car.getCarName());
-            }
-        }
-        return winnerNames;
-    }
-
     public List<Integer> getFinalPositionList() {
         List<Integer> finalPositionList = new ArrayList<>();
 
@@ -60,11 +51,29 @@ public class Cars {
         return Collections.max(finalPositions);
     }
 
+    public List<String> getWinner() {
+        List<String> winnerNames = new ArrayList<String>();
+        int winnerPosition = getMaxPosition(getFinalPositionList());
+
+        for(Car car: cars) {
+            addWinnerName(winnerPosition, car);
+        }
+        return winnerNames;
+    }
+
+    public void addWinnerName(int winnerPosition, Car car) {
+        if(isWinner(winnerPosition, car)) {
+            winnerNames.add(car.getCarName());
+        }
+    }
+
     private boolean isWinner(int winnerPosition, Car car) {
         if(winnerPosition == car.getPosition()) {
             return true;
         }
         return false;
     }
+
+
 
 }
