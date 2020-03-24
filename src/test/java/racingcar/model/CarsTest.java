@@ -29,7 +29,7 @@ class CarsTest {
         cars.move(new SuccessMovingPolicy());
 
         // then
-        for (Car car : cars.getCars()) {
+        for (Car car : cars.toList()) {
             assertThat(car.getDistance()).isEqualTo(1);
         }
     }
