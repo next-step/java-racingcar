@@ -1,7 +1,5 @@
-package racingcar;
+package racingcar.model;
 
-import racingcar.model.Car;
-import racingcar.model.Cars;
 import racingcar.policy.MovingPolicy;
 
 import java.util.ArrayList;
