@@ -8,8 +8,9 @@ public class Car {
         position = DEFAULT_POSITION;
     }
 
-    public Car setPosition(int defaultStateForTest) {
-        return new Car();
+    public Car setPosition(int inputPosition) {
+        position = inputPosition;
+        return this;
     }
 
     public int moveByCondition(int condition) {

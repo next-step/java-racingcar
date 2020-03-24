@@ -28,7 +28,7 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"5:2", "2:1", "4:2"}, delimiter = ':')
+    @CsvSource(value = {"5:4", "2:3", "4:4"}, delimiter = ':')
     @DisplayName("이동 조건에 부합 하는 경우만 전진하는지 테스트")
     void moveByCondition(int input, int expected) {
         car.setPosition(DEFAULT_POSITION_FOR_TEST);
