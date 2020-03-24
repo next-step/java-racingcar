@@ -3,8 +3,10 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Cars {
+    private static final int MAX_RANDOM_VALUE = 10;
     private List<Car> cars;
 
     public Cars(int carNum) {
@@ -35,5 +37,13 @@ public class Cars {
         }
 
         return positionList;
+    }
+
+    public void playRound() {
+        Random random = new Random(System.currentTimeMillis());
+
+        for (Car car : cars) {
+            car.moveByCondition(random.nextInt(MAX_RANDOM_VALUE));
+        }
     }
 }
