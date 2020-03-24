@@ -1,7 +1,8 @@
 package racing.domain;
 
 public class Car {
-    public void setPosition(int defaultStateForTest) {
+    public Car setPosition(int defaultStateForTest) {
+        return new Car();
     }
 
     public int moveByCondition(int condition) {
