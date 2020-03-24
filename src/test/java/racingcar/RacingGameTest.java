@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
-import racingcar.policy.RandomMovingPolicy;
+import racingcar.policy.fake.SuccessMovingPolicy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -12,13 +12,10 @@ class RacingGameTest {
     private RacingGame racingGame;
     private final int TIME = 3;
     private final int COUNT = 5;
-    private final int MOVE_CONDITION = 4;
-    private final int POSSIBLE_MOVE_MIN_RANGE = 4;
-    private final int POSSIBLE_MOVE_MAX_RANGE = 10;
 
     @BeforeEach
     void setUp() {
-        racingGame = new RacingGame(TIME, COUNT, new RandomMovingPolicy(POSSIBLE_MOVE_MIN_RANGE, POSSIBLE_MOVE_MAX_RANGE, MOVE_CONDITION));
+        racingGame = new RacingGame(TIME, COUNT, new SuccessMovingPolicy());
     }
 
     @DisplayName("count 만큼 자동차 객체 생성을 성공한다.")
