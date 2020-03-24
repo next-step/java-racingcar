@@ -14,7 +14,6 @@ public class Cars {
         for(int i = 0; i < carNames.length; i++) {
             cars.add(createCar(carNames[i]));
         }
-
         this.cars = cars;
     }
 
