@@ -5,6 +5,7 @@ import racingcar.domain.car.Car;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingScore {
     private final List<Car> cars;
@@ -19,17 +20,10 @@ public class RacingScore {
 
     public List<Car> findWinners() {
         int maxPosition = calculateMaxPosition();
-        List<Car> winners = new ArrayList<>();
-        for (Car car : cars) {
-            addWinner(maxPosition, winners, car);
-        }
+        List<Car> winners = cars.stream()
+                .filter(car -> car.isWinner(maxPosition))
+                .collect(Collectors.toList());
         return new ArrayList<>(winners);
-    }
-
-    private void addWinner(int maxPosition, List<Car> winners, Car car) {
-        if (car.isWinner(maxPosition)) {
-            winners.add(car);
-        }
     }
 
     private int calculateMaxPosition() {
