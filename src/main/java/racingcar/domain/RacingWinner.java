@@ -1,33 +1,19 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingWinner {
-    private static List<RacingCar> winners;
-    private static int HIGH_SCORE = 0;
-
-    public static List<String> findWinnerName(List<RacingCar> cars) {
-        makeWinners(cars);
-        List<String> winnerName = new ArrayList<>();
-        for (RacingCar winner : winners) {
-            winnerName.add(winner.getName());
-        }
-        return winnerName;
-    }
-
-    private static void makeWinners(List<RacingCar> cars) {
-        postHighScore(cars);
-        winners = cars.stream()
-                .filter(racingCar -> racingCar.getPosition() == HIGH_SCORE)
+    public static List<String> findWinnerNames(List<RacingCar> cars) {
+        int highScore = getHighScore(cars);
+        return cars.stream().filter(score -> score.getPosition()==highScore)
+                .map(RacingCar::getName)
                 .collect(Collectors.toList());
     }
 
-    private static void postHighScore(List<RacingCar> cars) {
-        for (RacingCar car : cars) {
-            HIGH_SCORE = Math.max(car.getPosition(), HIGH_SCORE);
-        }
+    private static int getHighScore(List<RacingCar> cars) {
+        return cars.stream().mapToInt(RacingCar::getPosition).max().getAsInt();
+
     }
 
 }
