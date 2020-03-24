@@ -1,4 +1,4 @@
-package fifth_refactoring;
+package fifth_refactoring.domain;
 
 import fifth_refactoring.domain.CarAction;
 import org.junit.jupiter.api.DisplayName;
@@ -26,7 +26,7 @@ public class CarActionTest{
 
     @Test
     void moveTest(){
-        Car car = new Car();
+        Car car = new Car("test");
         car.move();
         assertThat(car.getCarPosition()).isEqualTo(2);
     }

@@ -1,4 +1,4 @@
-package fifth_refactoring;
+package fifth_refactoring.view;
 
 import fifth_refactoring.view.CheckValidation;
 import org.junit.jupiter.api.DisplayName;
