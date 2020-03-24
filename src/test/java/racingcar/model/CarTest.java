@@ -15,7 +15,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car(DEFAULT_DISTANCE);
+        car = new Car("pobi", DEFAULT_DISTANCE);
         movingPolicy = new SuccessMovingPolicy();
     }
 
