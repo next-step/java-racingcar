@@ -48,7 +48,7 @@ public class CarsTest {
 
     @Test
     @DisplayName("게임동안 Car들이 전진한 수만큼의 position을 가져올 수 있다.")
-    void getFinalPositionTest() {
+    void getFinalPosition() {
         assertThat(cars.getFinalPositionList()).containsExactly(2,1);
     }
     
@@ -66,5 +66,13 @@ public class CarsTest {
         int winnerPosition = cars.getMaxPosition(cars.getFinalPositionList());
 
         assertThat(cars.isWinner(winnerPosition, cars.getCar(0))).isTrue();
+    }
+
+    @Test
+    @DisplayName("최종 Position이 가장 높지 않은 Car를 승자가 아니라는 의미의 false로 받아야 한다.")
+    void isNotWinner() {
+        int winnerPosition = cars.getMaxPosition(cars.getFinalPositionList());
+
+        assertThat(cars.isWinner(winnerPosition, cars.getCar(1))).isFalse();
     }
 }

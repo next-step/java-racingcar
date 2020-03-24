@@ -18,7 +18,7 @@ public class CarTest {
 
     @Test
     @DisplayName("Car 객체가 잘 생성되는 지 테스트")
-    void newCarTest() {
+    void newCar() {
         assertThat(car).isNotNull();
     }
 
@@ -36,7 +36,7 @@ public class CarTest {
 
     @Test
     @DisplayName("Car 객체는 한번 전진하면 position이 1씩 증가해야 한다.")
-    void moveCarTest() {
+    void moveCar() {
         int roundTime = 1;
         car.move(1);
         car.move(2);
