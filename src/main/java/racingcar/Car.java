@@ -14,11 +14,17 @@ public class Car {
         this.position = ZERO;
     }
 
-    public void changeCarPosition(int randomNumber) {
+    public Car(int carNumber, int position) {
+        this.carNumber = carNumber;
+        this.position = position;
+    }
+
+    public Car changeCarPosition(Car car, int randomNumber) {
         MovingStrategy movingStrategy = new MovingStrategy();
         if (movingStrategy.movable(randomNumber)) {
-            position++;
+            return new Car(car.carNumber, car.position + 1);
         }
+        return car;
     }
 
     public int getPosition() {

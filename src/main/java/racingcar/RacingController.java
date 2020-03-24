@@ -45,13 +45,13 @@ public class RacingController {
     }
 
     private List<Integer> changePosition() {
-        List<Integer> position = new ArrayList<>();
+        List<Integer> positions = new ArrayList<>();
 
         for (Car car : getCars()) {
-            car.changeCarPosition(randomNumber.getRandomNumber());
-            position.add(car.getPosition());
+            Car movedCar = car.changeCarPosition(car, randomNumber.getRandomNumber());
+            positions.add(movedCar.getPosition());
         }
-        return position;
+        return positions;
     }
 
     public static List<Car> getCars() {
