@@ -14,19 +14,18 @@ public class RacingGameView {
         this.racingGame = racingGame;
     }
 
-    public void viewCarPositions() {
-        List<Car> currentCars = this.racingGame.getCurrentCars();
-        for (int i = 0; i < currentCars.size(); i++) {
-            printCarPosition(currentCars.get(i));
+
+    public void viewResult(List<Cars> carLogs) {
+        for (Cars cars : carLogs) {
+            printCarPositions(cars);
         }
-        System.out.println();
     }
 
-    public void viewWinners(List<Car> winners) {
-        String names = winners.stream()
-                .map(Car::getName)
-                .collect(joining(SEPARATOR_WINNER_NAMES));
-        System.out.println(names + " 가 최종 우승했습니다.");
+    public void printCarPositions(Cars cars) {
+        for (Car car : cars.getCarsToList()) {
+            printCarPosition(car);
+        }
+        System.out.println();
     }
 
     private void printCarPosition(Car car) {
@@ -35,5 +34,12 @@ public class RacingGameView {
             System.out.print("-");
         }
         System.out.println();
+    }
+
+    public void viewWinners(Cars cars) {
+        String names = cars.getWinners().stream()
+                .map(Car::getName)
+                .collect(joining(SEPARATOR_WINNER_NAMES));
+        System.out.println(names + " 가 최종 우승했습니다.");
     }
 }
