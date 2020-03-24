@@ -18,7 +18,7 @@ public final class Cars {
         }
     }
 
-    public List<Car> getCars() {
+    public List<Car> toList() {
         return cars;
     }
 }
