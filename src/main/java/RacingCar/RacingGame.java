@@ -13,7 +13,6 @@ public class RacingGame {
     private static final int LIMIT = 10;
     private static final int THRESHOLD = 4;
     private static final int ZERO = 0;
-    private static final int INIT = 0;
 
     private int car = 0;
     private int stage = 0;
