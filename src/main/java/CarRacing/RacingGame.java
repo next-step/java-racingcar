@@ -6,9 +6,9 @@ public class RacingGame {
     final private RacingCars racingCars;
     final private int racingTime;
 
-    public RacingGame(final int carCount, final int racingTime) {
+    public RacingGame(final String[] carNameArr, final int racingTime) {
         this.racingTime = racingTime;
-        this.racingCars = new RacingCars(carCount);
+        this.racingCars = new RacingCars(carNameArr);
         this.racingStrategy = new MovingStrategy();
     }
 
