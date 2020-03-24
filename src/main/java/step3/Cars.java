@@ -28,6 +28,7 @@ public class Cars {
 
     public void clear() {
         this.cars.clear();
+        this.winnerNames.clear();
     }
 
     public int getCarsLength() {
@@ -67,7 +68,7 @@ public class Cars {
         }
     }
 
-    private boolean isWinner(int winnerPosition, Car car) {
+    public boolean isWinner(int winnerPosition, Car car) {
         if(winnerPosition == car.getPosition()) {
             return true;
         }
