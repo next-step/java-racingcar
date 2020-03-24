@@ -9,8 +9,7 @@ public class RacingGameApplication {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-
-        RacingGame racingGame = new RacingGame(inputView.getTime(), inputView.getNumberOfCars());
+        RacingGame racingGame = new RacingGame(inputView.getTime(), inputView.getCarNames());
         RacingGameResults gameResults = racingGame.game();
 
         ResultView resultView = new ResultView();

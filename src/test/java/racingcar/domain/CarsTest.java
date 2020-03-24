@@ -7,12 +7,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
 
-    @DisplayName("자동차 대수를 입력하면 자동차 컬렉션을 생성할 수 있다")
+    @DisplayName("게임에 참여할 자동차 이름들을 입력하면 자동차 컬렉션을 생성할 수 있다")
     @Test
     public void newCarsWithNumberOfCars() {
         //given
-        int numberOfCars = 5;
-        Cars cars = new Cars(numberOfCars);
+        String[] carNames = new String[]{"정원", "자바", "레이서"};
+
+        Cars cars = new Cars(carNames);
 
         //when & then
         assertThat(cars).isNotNull();
@@ -22,11 +23,11 @@ class CarsTest {
     @Test
     public void makeAllCarsToMove() {
         //given
-        int numberOfCars = 5;
-        Cars cars = new Cars(numberOfCars);
+        String[] carNames = new String[]{"정원", "자바", "레이서"};
+        Cars cars = new Cars(carNames);
 
         //when & then
-        assertThat(cars.moveAllCar()).isNotNull();
+        assertThat(cars.moveAllCar(() -> true)).isNotNull();
     }
 
 }

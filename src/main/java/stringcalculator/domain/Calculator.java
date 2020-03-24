@@ -3,7 +3,8 @@ package stringcalculator.domain;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.function.BiFunction;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toMap;
 
 public enum Calculator {
     ADDITION("+", (leftNumber, rightNumber) -> leftNumber + rightNumber),
@@ -14,8 +15,8 @@ public enum Calculator {
     private static Map<String, BiFunction<Double, Double, Double>> operators =
             Arrays.asList(Calculator.values())
                     .stream()
-                    .collect(Collectors
-                            .toMap(i -> i.operator, i -> i.operation));
+                    .collect(toMap(i -> i.operator, i -> i.operation));
+
     private String operator;
     private BiFunction<Double, Double, Double> operation;
 

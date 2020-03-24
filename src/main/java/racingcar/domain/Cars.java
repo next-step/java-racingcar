@@ -3,46 +3,54 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+import static racingcar.domain.RacingGameConstant.DELIMITER_COMMA;
+import static racingcar.domain.RacingGameConstant.NO_WINNER;
+
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(int numberOfCars) {
+    Cars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
+        for (int i = 0; i < carNames.length; i++) {
+            cars.add(new Car(carNames[i]));
         }
         this.cars = cars;
     }
 
-    public Cars(List<Car> cars) {
+    Cars(List<Car> cars) {
         this.cars = cars;
     }
 
-    public Cars moveAllCar() {
-        List<Car> newCars = new ArrayList<>();
-        for (int carNumber = 0; carNumber < cars.size(); carNumber++) {
-            Car movedCar = cars.get(carNumber)
-                    .move(new MoveStrategy(
-                            new RandomCondition().getRandomCondition()));
-            newCars.add(movedCar);
-        }
-        return new Cars(newCars);
-    }
-
-    public String getResults() {
-        StringBuilder stringBuilder = new StringBuilder();
+    Cars moveAllCar(MoveStrategy moveStrategy) {
+        List<Car> movedCars = new ArrayList<>();
         for (Car car : cars) {
-            writeAllCarsPosition(stringBuilder, car);
+            Car movedCar = car.move(moveStrategy.isMove());
+            movedCars.add(movedCar);
         }
-        stringBuilder.append(RacingGameConstant.CARRIAGE_RETURN);
-        return stringBuilder.toString();
+        return new Cars(movedCars);
     }
 
-    private void writeAllCarsPosition(StringBuilder stringBuilder, Car car) {
-        for (int i = 0; i < car.getPosition(); i++) {
-            stringBuilder.append(RacingGameConstant.CAR_MARKER);
-        }
-        stringBuilder.append(RacingGameConstant.CARRIAGE_RETURN);
+    boolean hasNextCar(int index) {
+        return cars.size() != index;
+    }
+
+    Car getCar(int index) {
+        return new Car(cars.get(index));
+    }
+
+    public String getWinners() {
+        Car winner = cars.stream()
+                .reduce((car1, car2) -> car1.getPosition() > car2.getPosition() ? car1 : car2)
+                .orElseThrow(() -> new IllegalArgumentException(NO_WINNER));
+
+        return cars.stream()
+                .filter(car -> car.isSamePosition(winner))
+                .collect(toList())
+                .stream()
+                .map(Car::getName)
+                .collect(joining(DELIMITER_COMMA));
     }
 
 }

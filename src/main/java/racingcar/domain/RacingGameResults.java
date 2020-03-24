@@ -1,24 +1,25 @@
 package racingcar.domain;
 
 import java.util.Map;
+import java.util.Set;
+
+import static racingcar.domain.RacingGameConstant.NUMBER_ONE;
 
 public class RacingGameResults {
-    private final Map<Integer, Cars> racingGameHistory;
+    private final Map<Integer, Cars> racingGameResults;
 
-    public RacingGameResults(Map<Integer, Cars> racingGameHistory) {
-        this.racingGameHistory = racingGameHistory;
+    public RacingGameResults(Map<Integer, Cars> racingGameResults) {
+        this.racingGameResults = racingGameResults;
     }
 
-    public String getRenderedGameResults() {
-        StringBuilder collectResult = new StringBuilder();
-        racingGameHistory.entrySet()
-                .stream()
-                .forEach(e ->{
-                    System.out.println(e.getKey() + ": " + e.getValue());
-                    collectResult.append(e.getValue().getResults());
-                });
-
-        return collectResult.toString();
+    public Set<Map.Entry<Integer, Cars>> getGameResultSet() {
+        return racingGameResults.entrySet();
     }
+
+    public String getWinners() {
+        int lastGameRound = Math.subtractExact(racingGameResults.size(), NUMBER_ONE);
+        return racingGameResults.get(lastGameRound).getWinners();
+    }
+
 
 }
