@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarsTest {
@@ -52,7 +50,6 @@ class CarsTest {
 
         //when
         List<String> winners = cars.getWinners();
-        System.out.println(winners);
 
         //then
         assertThat(winners).containsExactly(car1.getName());
@@ -69,7 +66,6 @@ class CarsTest {
 
         //when
         List<String> winners = cars.getWinners();
-        System.out.println(winners);
 
         //then
         assertThat(winners).containsExactly(car1.getName(), car3.getName());
