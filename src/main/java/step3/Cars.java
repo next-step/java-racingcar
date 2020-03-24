@@ -1,5 +1,7 @@
 package step3;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
@@ -7,9 +9,13 @@ public class Cars {
     private List<Car> cars;
 
     public Cars(String[] carNames) {
+        List<Car> cars = new ArrayList<Car>();
+
         for(int i = 0; i < carNames.length; i++) {
-            this.cars.add(createCar(carNames[i]));
+            cars.add(createCar(carNames[i]));
         }
+
+        this.cars = cars;
     }
 
     private Car createCar(String carName) {
