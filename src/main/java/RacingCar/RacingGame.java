@@ -1,5 +1,8 @@
 package RacingCar;
 
+import RacingCar.model.Car;
+import RacingCar.model.Result;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -15,7 +18,8 @@ public class RacingGame {
     private int car = 0;
     private int stage = 0;
 
-    private RacingGame() {}
+    private RacingGame() {
+    }
 
     private static class InnerRacingGame {
         private static final RacingGame INSTANCE = new RacingGame();
@@ -26,29 +30,32 @@ public class RacingGame {
     }
 
 
-    List<List<Integer>> start() {
+    List<Result> start() {
         return start(car, stage);
     }
 
-    List<List<Integer>> start(int car, int stage) {
-        List<Integer> cars = new ArrayList<>();
+    List<Result> start(int car, int stage) {
+        List<Car> cars = new ArrayList<>();
+
         for (int i = 0; i < car; i++) {
-            cars.add(INIT);
+            cars.add(new Car(i));
         }
 
 
-        List<List<Integer>> results = new ArrayList<>();
+        List<Result> results = new ArrayList<>();
         for (int i = 0; i < stage; i++) {
             cars = move(cars);
-            results.add(cars);
+
+            results.add(new Result(cars));
         }
 
         return results;
     }
 
-    private static List<Integer> move(List<Integer> cars) {
+    private static List<Car> move(List<Car> cars) {
         return cars.stream().map(car -> {
-            car += getMoveCount();
+            int count = car.getMove() + getMoveCount();
+            car.setMove(count);
             return car;
         }).collect(Collectors.toList());
     }
@@ -67,16 +74,8 @@ public class RacingGame {
         return moveCount >= THRESHOLD;
     }
 
-    public int getCar() {
-        return car;
-    }
-
     void setCar(int car) {
         this.car = car;
-    }
-
-    public int getStage() {
-        return stage;
     }
 
     void setStage(int stage) {

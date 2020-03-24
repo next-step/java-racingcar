@@ -1,15 +1,17 @@
 package RacingCar;
 
+import RacingCar.model.Car;
+import RacingCar.model.Result;
+
 import java.util.List;
 
 public class ResultView {
 
 
-    static void print(List<List<Integer>> results) {
-
+    static void print(List<Result> results) {
         results.forEach(stage -> {
-            stage.forEach(count -> {
-                System.out.println(getMoveString(count));
+            stage.getCars().forEach(count -> {
+                System.out.println(getMoveString(count.getMove()));
             });
             System.out.println();
         });
