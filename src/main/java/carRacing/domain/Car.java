@@ -1,19 +1,16 @@
-package carRacing;
+package carRacing.domain;
 
-
-import java.util.Random;
 
 public class Car implements Vehicle {
-
-    Random random;
     int position;
+    MoveStrategy moveStrategy;
 
-    public Car() {
-        random = new Random();
+    public Car(MoveStrategy moveStrategy) {
         this.position = 0;
+        this.moveStrategy = moveStrategy;
     }
 
-    public void move(MoveStrategy moveStrategy) {
+    public void move() {
         if (moveStrategy.movable()) {
             position++;
         }

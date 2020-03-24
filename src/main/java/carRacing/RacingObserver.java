@@ -1,5 +1,6 @@
 package carRacing;
 
+import carRacing.domain.Vehicle;
 import carRacing.view.ResultView;
 
 import java.util.ArrayList;

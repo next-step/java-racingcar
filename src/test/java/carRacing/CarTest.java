@@ -1,6 +1,9 @@
 package carRacing;
 
 
+import carRacing.domain.Car;
+import carRacing.domain.MoveRandom;
+import carRacing.domain.MoveStrategy;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -33,9 +36,9 @@ public class CarTest {
                 return Integer.parseInt(input);
             }
         });
-        Car car = new Car();
+        Car car = new Car(moveRandom);
 
-        car.move(moveRandom);
+        car.move();
 
         assertThat(car.inquiryPosition()).isEqualTo(Integer.parseInt(expected));
     }

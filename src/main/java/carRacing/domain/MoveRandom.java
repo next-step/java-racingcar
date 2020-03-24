@@ -1,4 +1,7 @@
-package carRacing;
+package carRacing.domain;
+
+import carRacing.Constants;
+import carRacing.domain.MoveStrategy;
 
 import java.util.Random;
 

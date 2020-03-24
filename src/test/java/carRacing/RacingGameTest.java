@@ -1,12 +1,12 @@
 package carRacing;
 
+import carRacing.domain.MoveRandom;
+import carRacing.domain.MoveStrategy;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,7 +18,7 @@ public class RacingGameTest {
     @ValueSource(ints = {1, 2, 3, 4})
     void setCars(int input) {
         MoveStrategy moveRandom = new MoveRandom(new Random());
-        RacingGame racingGame = new RacingGame(input, VehicleType.Car, moveRandom);
+        RacingGame racingGame = new RacingGame(input, VehicleType.CAR, moveRandom);
 
 
         assertThat(racingGame.vehicles).hasSize(input);
@@ -37,7 +37,7 @@ public class RacingGameTest {
                 return Integer.parseInt(inputs[2]);
             }
         });
-        RacingGame racingGame = new RacingGame(input, VehicleType.Car, moveRandom);
+        RacingGame racingGame = new RacingGame(numberOfCar, VehicleType.CAR, moveRandom);
 
         racingGame.start(time);
 

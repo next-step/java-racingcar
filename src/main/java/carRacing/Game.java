@@ -1,5 +1,6 @@
 package carRacing;
 
+import carRacing.domain.MoveRandom;
 import carRacing.view.InputView;
 
 import java.util.Random;
@@ -11,7 +12,7 @@ public class Game {
 
     private Game() {
         userInteraction();
-        new RacingGame(numberOfCar, time).start(new MoveRandom(new Random()));
+        new RacingGame(numberOfCar, VehicleType.CAR, new MoveRandom(new Random())).start(time);
     }
 
     public static void start() {
