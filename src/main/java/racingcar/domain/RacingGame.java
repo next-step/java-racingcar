@@ -4,10 +4,12 @@ import racingcar.util.NumberUtils;
 import racingcar.view.ResultView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
-    private List<RacingCar> cars = new ArrayList<>();
+    private List<RacingCar> cars;
     private int raceTime;
 
     public RacingGame(String[] carNames, int raceTime) {
@@ -16,9 +18,9 @@ public class RacingGame {
     }
 
     private void createCar(String[] carNames) {
-        for (String carName : carNames) {
-            cars.add(new RacingCar(carName));
-        }
+        cars = Arrays.stream(carNames)
+                .map(carName -> new RacingCar(carName))
+                .collect(Collectors.toList());
     }
 
     public void startRace() {
@@ -34,29 +36,27 @@ public class RacingGame {
         ResultView.printWinnerName(RacingWinner.findWinnerName(cars));
     }
 
-    private boolean canRace() {
+    public boolean canRace() {
         return this.raceTime > NumberUtils.ZERO;
     }
 
-    private void moveCars() {
+    private List<RacingResult> moveCars() {
+        List<RacingResult> racingResults = new ArrayList<>();
+
         for (int i = 0; i < cars.size(); i++) {
-            move(cars.get(i));
+            racingResults.add(move(cars.get(i)));
         }
+        return racingResults;
     }
 
-    private void move(RacingCar car) {
+    private RacingResult move(RacingCar car) {
         if (canMove()) {
             car.moveForward();
         }
-        printRaceResult(car);
+        return new RacingResult(car);
     }
 
-    private void printRaceResult(RacingCar car) {
-        ResultView.printCarName(car.getName());
-        ResultView.printPosition(car.getPosition());
-    }
-
-    private void reduceCount() {
+    public void reduceCount() {
         this.raceTime = raceTime - 1;
     }
 
