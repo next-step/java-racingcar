@@ -3,14 +3,25 @@ package racingGame.game;
 public class FakeCarForwardRule implements RacingGameRule {
 
     private static final int CAR_FORWARD_STANDARD = 4;
-    private int randomNumber;
+    private int[] values;
+    private int index;
 
     @Override
     public boolean result() {
-        return randomNumber >= CAR_FORWARD_STANDARD;
+        verifyIndex();
+        boolean s = values[index] >= CAR_FORWARD_STANDARD;
+        index++;
+        return s;
     }
 
-    public void injectionRandomNumber(int randomNumber) {
-        this.randomNumber = randomNumber;
+    private void verifyIndex() {
+        if (index == values.length) {
+            index = 0;
+        }
+    }
+
+    public FakeCarForwardRule(int[] values) {
+        this.values = values;
+        this.index = 0;
     }
 }
