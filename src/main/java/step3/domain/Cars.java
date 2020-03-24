@@ -16,7 +16,6 @@ public class Cars {
             cars.add(createCar(carNames[i]));
         }
         this.cars = cars;
-
         winnerNames = new ArrayList<String>();
     }
 
@@ -30,12 +29,25 @@ public class Cars {
         this.winnerNames.clear();
     }
 
+    public Car getCar(int index) {
+        return cars.get(index);
+    }
+
     public int getCarsLength() {
         return cars.size();
     }
 
-    public Car getCar(int index) {
-        return cars.get(index);
+    public List<String> getWinnerNames() {
+        return this.winnerNames;
+    }
+
+    public void setWinnerNames() {
+        int winnerPosition = getMaxPosition(getFinalPositionList());
+
+        for(Car car: cars) {
+            addWinnerName(winnerPosition, car);
+        }
+        this.winnerNames = winnerNames;
     }
 
     public List<Integer> getFinalPositionList() {
@@ -51,15 +63,6 @@ public class Cars {
         return Collections.max(finalPositions);
     }
 
-    public void setWinnerNames() {
-        int winnerPosition = getMaxPosition(getFinalPositionList());
-
-        for(Car car: cars) {
-            addWinnerName(winnerPosition, car);
-        }
-        this.winnerNames = winnerNames;
-    }
-
     private void addWinnerName(int winnerPosition, Car car) {
         if(isWinner(winnerPosition, car)) {
             winnerNames.add(car.getCarName());
@@ -72,10 +75,4 @@ public class Cars {
         }
         return false;
     }
-
-    public List<String> getWinnerNames() {
-        return this.winnerNames;
-    }
-
-
 }
