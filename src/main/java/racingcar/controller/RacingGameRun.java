@@ -1,4 +1,8 @@
-package racingcar;
+package racingcar.controller;
+
+import racingcar.domain.RacingGame;
+import racingcar.domain.Cars;
+import racingcar.view.RacingGameView;
 
 import java.util.List;
 import java.util.Scanner;
