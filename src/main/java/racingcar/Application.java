@@ -1,8 +1,8 @@
 package racingcar;
 
-import racingcar.model.RacingGame;
-import racingcar.model.RacingGameSetting;
-import racingcar.model.Winner;
+import racingcar.controller.RacingGame;
+import racingcar.domain.RacingGameSetting;
+import racingcar.domain.Winner;
 import racingcar.policy.RandomMovingPolicy;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
