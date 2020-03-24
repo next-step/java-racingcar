@@ -1,4 +1,6 @@
-import org.junit.jupiter.api.BeforeEach;
+package RacingCar;
+
+import RacingCar.RacingGame;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
