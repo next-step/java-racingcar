@@ -20,7 +20,6 @@ public class RacingGame {
                 carPositions[j]++;
             }
         }
-        racingVO.setCarPositions(carPositions);
         return carPositions;
     }
 
