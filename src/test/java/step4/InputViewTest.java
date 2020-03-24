@@ -44,7 +44,9 @@ class InputViewTest {
         String carNames = "pobi,crong,honux";
         int moveCount = 5;
         inputView = new InputView(carNames, moveCount);
-        List<Car> cars = inputView.getCars();
+        String[] carsNames = inputView.getCars();
+        CarAssembler carAssembler = new CarAssembler(carsNames);
+        List<Car> cars = carAssembler.getCars();
 
         assertAll(() -> assertThat(cars).hasSameSizeAs(compareCars),
                   () -> assertThat(cars.get(0).getName()).isEqualTo(compareCars.get(0).getName()),

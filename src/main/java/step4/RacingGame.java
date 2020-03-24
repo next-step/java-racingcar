@@ -45,13 +45,14 @@ public class RacingGame {
     }
 
     public List<Car> winUsers() {
-        String max = FindMaxRacingResult();
         return carPositions.stream().
-                filter(carPosition -> max.equals(carPosition.getRacingResult()))
+                filter(carPosition ->
+                               findMaxRacingResult()
+                                       .equals(carPosition.getRacingResult()))
                            .collect(Collectors.toList());
     }
 
-    public String FindMaxRacingResult() {
+    public String findMaxRacingResult() {
         return carPositions.stream()
                            .max(Comparator.comparing(Car::getRacingResult))
                            .get()

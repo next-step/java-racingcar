@@ -26,7 +26,7 @@ class RacingGameTest {
     @DisplayName("자동차 경주 중 가장 많이 전진한 값을 확인한다.")
     @Test
     void findMaxRacingResult() {
-        String maxResult = racingGame.FindMaxRacingResult();
+        String maxResult = racingGame.findMaxRacingResult();
         assertThat(maxResult).isEqualTo("-----");
     }
 
