@@ -6,7 +6,7 @@ import java.util.List;
 
 public class RacingGame {
     private final Cars cars;
-    private int round;
+    private final int round;
 
     public RacingGame(List<String> carNames, int round) {
         this.cars = new Cars(carNames);
