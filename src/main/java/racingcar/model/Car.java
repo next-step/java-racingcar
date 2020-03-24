@@ -3,14 +3,16 @@ package racingcar.model;
 import racingcar.policy.MovingPolicy;
 
 public final class Car {
-    private static final int DEFAULT_DISTANCE = 0;
+    public static final int DEFAULT_DISTANCE = 0;
+    private String name;
     private int distance;
 
-    public Car() {
-        this(DEFAULT_DISTANCE);
+    public Car(String name) {
+        this(name, DEFAULT_DISTANCE);
     }
 
-    public Car(final int distance) {
+    public Car(final String name, final int distance) {
+        this.name = name;
         this.distance = distance;
     }
 
@@ -18,6 +20,10 @@ public final class Car {
         if (movingPolicy.isPossibleMove()) {
             distance++;
         }
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getDistance() {
