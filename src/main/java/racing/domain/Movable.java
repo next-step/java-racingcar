@@ -1,7 +1,9 @@
 package racing.domain;
 
 public class Movable {
-    public static Boolean isMovable(int condition) {
-        return false;
+    public static final int MOVE_CONDITION = 4;
+
+    public static boolean isMovable(int randomVal) {
+        return randomVal >= MOVE_CONDITION;
     }
 }
