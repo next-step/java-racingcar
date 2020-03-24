@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import racingcar.util.NumberUtils;
 import racingcar.view.ResultView;
