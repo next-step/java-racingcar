@@ -13,9 +13,16 @@ public class RacingGame {
     private final MovableStrategy movableStrategy;
 
     public RacingGame(MovableStrategy movableStrategy, int numberOfCars, int tryCount) {
+        validateNumberAndCount(numberOfCars, tryCount);
         this.movableStrategy = movableStrategy;
         createCars(numberOfCars);
         this.tryCount = tryCount;
+    }
+
+    private void validateNumberAndCount(int numberOfCars, int tryCount) {
+        if (numberOfCars <= 0 || tryCount <= 0) {
+            throw new IllegalArgumentException("차량 수와 라운드 수는 0 이상이어야 합니다.");
+        }
     }
 
     private void createCars(int numberOfCars) {

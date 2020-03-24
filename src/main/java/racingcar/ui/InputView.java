@@ -30,7 +30,6 @@ public class InputView {
         return getUserInput();
     }
 
-    // TODO: input 예외처리
     private int getUserInput() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
