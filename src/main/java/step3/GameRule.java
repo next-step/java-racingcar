@@ -6,7 +6,7 @@ public class GameRule {
 
     private static final int NUMBER_CAN_MOVE = 4;
 
-    public boolean canMove() {
+    public static boolean canMove() {
         return isNumberCanMove(RandomNumberGenerator.generateRandomValue());
     }
 

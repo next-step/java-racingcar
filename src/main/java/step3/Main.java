@@ -13,9 +13,7 @@ public class Main {
         inputView.printRoundTimeInfo();
         int roundTime = inputView.readInputInt();
 
-        GameRule gameRule = new GameRule();
-
-        RacingGame racingGame = new RacingGame(roundTime, gameRule, carNameList);
+        RacingGame racingGame = new RacingGame(roundTime, carNameList);
         racingGame.start();
 
         ResultView resultView = new ResultView();
