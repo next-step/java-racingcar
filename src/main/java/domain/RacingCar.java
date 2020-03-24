@@ -1,5 +1,6 @@
 package domain;
 
+import domain.dto.RacingCarPosition;
 import service.MoveRule;
 
 public class RacingCar {

@@ -1,6 +1,6 @@
 package RacingCarGameTests;
 
-import domain.RacingCarPosition;
+import domain.dto.RacingCarPosition;
 import domain.RacingRound;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;

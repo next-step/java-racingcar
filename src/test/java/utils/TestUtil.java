@@ -1,6 +1,6 @@
 package utils;
 
-import domain.RacingCarPosition;
+import domain.dto.RacingCarPosition;
 import domain.RacingRound;
 
 import java.util.ArrayList;

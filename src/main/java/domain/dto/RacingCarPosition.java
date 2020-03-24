@@ -1,4 +1,6 @@
-package domain;
+package domain.dto;
+
+import domain.RacingCarName;
 
 public class RacingCarPosition {
     private final RacingCarName name;
