@@ -12,12 +12,6 @@ public class RacingGame {
     private List<Car> cars = new ArrayList<Car>();
     private List<String> winnerNames;
 
-    public RacingGame(int roundTime, int carCount) {
-        this.carCount = carCount;
-        this.roundTime = roundTime;
-        this.winnerNames = new ArrayList<String>();
-    }
-
     public RacingGame(int roundTime, String[] carNameList) {
         this.carNames = carNameList;
         this.carCount = carNameList.length;
@@ -28,7 +22,7 @@ public class RacingGame {
     public void start() {
         createCars(carCount, carNames);
         play();
-        getWinner();
+        setWinner();
     }
 
     public void end() {
@@ -65,16 +59,16 @@ public class RacingGame {
         car.completeRound(presentRoundTime);
     }
 
-    private void getWinner() {
+    private void setWinner() {
         List<Integer> finalPositionList = getFinalPositionList();
         int winnerPosition = GameRule.getMaxPosition(finalPositionList);
 
         for(Car car: cars) {
-            makeWinnerNames(winnerPosition, car);
+            addWinnerNames(winnerPosition, car);
         }
     }
 
-    private void makeWinnerNames(int winnerPosition, Car car) {
+    private void addWinnerNames(int winnerPosition, Car car) {
         if(winnerPosition == car.getPosition()) {
             this.winnerNames.add(car.getCarName());
         }
