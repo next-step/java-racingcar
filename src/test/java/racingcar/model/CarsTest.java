@@ -16,9 +16,9 @@ class CarsTest {
     @BeforeEach
     void setUp() {
         List<Car> carList = new ArrayList<>();
-        carList.add(new Car());
-        carList.add(new Car());
-        carList.add(new Car());
+        carList.add(new Car("pobi"));
+        carList.add(new Car("crong"));
+        carList.add(new Car("honux"));
         cars = new Cars(carList);
     }
 
