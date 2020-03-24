@@ -40,8 +40,8 @@ public class RacingController {
     }
 
     private void resultShow() {
-        Graph graph = new Graph(this.record);
-        graph.show();
+        ResultView resultView = new ResultView(this.record);
+        resultView.show();
     }
 
     private List<Integer> changePosition() {

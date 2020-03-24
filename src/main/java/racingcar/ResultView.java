@@ -3,12 +3,12 @@ package racingcar;
 import java.util.List;
 import java.util.Map;
 
-public class Graph {
+public class ResultView {
 
     private Map<Integer, List<Integer>> record;
     private int tryCount;
 
-    public Graph(Map<Integer, List<Integer>> record) {
+    public ResultView(Map<Integer, List<Integer>> record) {
         this.record = record;
         tryCount = record.size();
     }
@@ -17,12 +17,12 @@ public class Graph {
         System.out.println("실행결과");
 
         for (int count = 1; count <= this.tryCount; count++) {
-            getCarPositions(record.get(count));
+            showCarPositions(record.get(count));
             System.out.println();
         }
     }
 
-    private void getCarPositions(List<Integer> positions) {
+    private void showCarPositions(List<Integer> positions) {
         for (Object position : positions) {
             showGraph((Integer) position);
         }
