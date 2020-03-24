@@ -13,6 +13,7 @@ public class OutputView {
         Output output;
         for (Car car : cars) {
             output = new Output();
+            System.out.print(car.getName() + " : ");
             output.mappingToBar(car.getDistance());
             print(output.getBar());
         }
@@ -23,7 +24,7 @@ public class OutputView {
         System.out.println(message);
     }
 
-    private void nextLine() {
+    public void nextLine() {
         System.out.println();
     }
 }
