@@ -1,25 +1,30 @@
 package fifth_refactoring;
 
 
+import fifth_refactoring.domain.Car;
+import fifth_refactoring.domain.CarAction;
+import fifth_refactoring.view.InputView;
+import fifth_refactoring.view.ResultView;
+
 import java.util.*;
 
 public class RacingGame {
 
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        SetInputValue setInputValue = new SetInputValue();
-        CarAction carAction = new CarAction();
-        RacingGameResult racingGameResult = new RacingGameResult();
+        String carName = InputView.askCarName();
 
-        String carName = inputView.askCarName();
+        int tryNumber = InputView.askTryNumber();
 
-        int tryNumber = inputView.askTryNumber();
+        List<Car> carList = CarAction.ready(carName);
 
-        List<Car> car = setInputValue.ready(carName);
+        ResultView.getTitle();
 
-        carAction.startCar(car, tryNumber);
+        for (int i = 0; i < tryNumber; i++) {
+            ResultView.draw(carList);
+            CarAction.moveCar(carList);
+        }
 
-        racingGameResult.announceRank(car);
+        ResultView.announceRank(carList);
 
     }
 }

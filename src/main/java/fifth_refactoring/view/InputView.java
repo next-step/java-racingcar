@@ -1,4 +1,4 @@
-package fifth_refactoring;
+package fifth_refactoring.view;
 
 import java.util.Scanner;
 
@@ -9,10 +9,10 @@ public class InputView {
     private static final String ASK_CAR_SPLIT_OPTION = "(이름은 " + CAR_NAME_SPLIT_NAME + "("
             + CAR_NAME_SPLIT_SIGN + ")를 기준으로 구분).";
     private static final String ASK_TRY_NUMBER = "시도할 회수는 몇 회 인가요?";
-    private static Scanner scanner;
+    private static Scanner scanner = new Scanner(System.in);
     private static CheckValidation checkValidation = new CheckValidation();
 
-    public String askCarName() {
+    public static String askCarName() {
         System.out.println(ASK_CAR_NAME + ASK_CAR_SPLIT_OPTION);
         String carName = inputCarName();
         if (!checkValidation.validateCarName(carName)) {
@@ -22,12 +22,11 @@ public class InputView {
         return carName;
     }
 
-    public String inputCarName() {
-        scanner = new Scanner(System.in);
+    public static String inputCarName() {
         return scanner.nextLine();
     }
 
-    public int askTryNumber() {
+    public static int askTryNumber() {
         System.out.println(ASK_TRY_NUMBER);
         int tryNumber = inputTryNumber();
         if (!checkValidation.validateTryNumber(tryNumber)) {
@@ -37,8 +36,7 @@ public class InputView {
         return tryNumber;
     }
 
-    public int inputTryNumber() {
-        scanner = new Scanner(System.in);
+    public static int inputTryNumber() {
         return scanner.nextInt();
     }
 }

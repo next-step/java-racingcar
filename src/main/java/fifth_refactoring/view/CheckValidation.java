@@ -1,4 +1,6 @@
-package fifth_refactoring;
+package fifth_refactoring.view;
+
+import fifth_refactoring.domain.CarAction;
 
 public class CheckValidation {
     private static final int RACING_CAR_MIN_NO = 1;
@@ -23,18 +25,10 @@ public class CheckValidation {
     }
 
     public boolean checkNull(String input){
-        if (input == null || "".equals(input.replace(" ", ""))){
-            return false;
-        }
-
-        return true;
+        return input != null && !"".equals(input.replace(" ", ""));
     }
 
     public boolean checkSplit(String input){
-        if (SetInputValue.splitCarName(input).length == 1){
-            return false;
-        }
-
-        return true;
+        return CarAction.splitCarName(input).length != 1;
     }
 }

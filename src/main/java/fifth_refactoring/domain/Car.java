@@ -1,8 +1,13 @@
-package fifth_refactoring;
+package fifth_refactoring.domain;
 
 public class Car implements Comparable{
-    private String carName = "";
-    private int carPosition = 1;
+    private String carName;
+    private int carPosition;
+
+    public Car(String carName) {
+        this.carName = carName;
+        this.carPosition = 1;
+    }
 
     public String getCarName() {
         return this.carName;

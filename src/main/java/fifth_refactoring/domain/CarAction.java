@@ -1,5 +1,8 @@
-package fifth_refactoring;
+package fifth_refactoring.domain;
 
+import fifth_refactoring.view.InputView;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -9,25 +12,31 @@ public class CarAction {
     private static final int RANDOM_MAX_NUMBER = 9;
     private static final int RANDOM_MIN_NUMBER = 0;
 
-    public List<Car> startCar(List<Car> carList, int tryNumber) {
-        for (int i = 0; i < tryNumber - 1; i++) {
-            moveCar(carList);
+
+    public static List<Car> ready(String carName){
+        String[] carNameArray = splitCarName(carName);
+
+        return setCar(carNameArray);
+    }
+
+    public static String[] splitCarName(String carName) {
+        return carName.split(InputView.CAR_NAME_SPLIT_SIGN);
+    }
+
+    public static List<Car> setCar(String[] carNameArray) {
+        List<Car> carList = new ArrayList<>();
+
+        for (String carName : carNameArray) {
+            Car car = new Car(carName);
+            carList.add(car);
         }
 
         return carList;
     }
 
-    private void moveCar(List<Car> carList) {
-        ResultView resultView = new ResultView();
-
-        resultView.getDivideLine();
-
-        for (int i = 0; i < carList.size(); i++) {
-            Car car = carList.get(i);
-
+    public static void moveCar(List<Car> carList) {
+        for (Car car : carList) {
             isMove(car);
-
-            resultView.draw(car);
         }
     }
 
@@ -35,8 +44,6 @@ public class CarAction {
         if (random() < ALLOW_MOVE_NUMBER) {
             car.move();
         }
-
-        return;
     }
 
     public static int random() {
@@ -48,4 +55,5 @@ public class CarAction {
 
         return randomValue;
     }
+
 }
