@@ -3,7 +3,6 @@ package carracing.model;
 import carracing.util.ProbabilityUtil;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class CarRacing {
 

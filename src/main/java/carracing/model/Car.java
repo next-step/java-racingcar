@@ -25,6 +25,9 @@ public class Car {
   public List<Integer> getPositions() {
     return positions;
   }
+  public Integer getFinalPosition() {
+    return positions.get(positions.size() - 1);
+  }
 
   public void move(BooleanSupplier canMove) {
     Integer nextPosition = positions.get(positions.size() - 1);
