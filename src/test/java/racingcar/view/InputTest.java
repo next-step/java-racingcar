@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class InputTest {
-    private static final String COUNT = "3";
+    private static final String CAR_NAMES = "pobi,crong,honux";
     private static final String TIME = "5";
     private Input input;
     private ByteArrayInputStream byteArrayInputStream;
@@ -17,8 +17,8 @@ class InputTest {
     @DisplayName("입력값을 검증을 성공한다.")
     @Test
     void read() {
-        input = new Input(initInputStream(COUNT));
-        assertThat(input.read()).isEqualTo(COUNT);
+        input = new Input(initInputStream(CAR_NAMES));
+        assertThat(input.read()).isEqualTo(CAR_NAMES);
 
         input = new Input(initInputStream(TIME));
         assertThat(input.read()).isEqualTo(TIME);
