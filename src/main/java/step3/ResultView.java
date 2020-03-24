@@ -20,7 +20,7 @@ public class ResultView {
     }
 
     public void printResult(RacingGame racingGame) {
-        List<Car> carList = racingGame.getCarList();
+        List<Car> carList = racingGame.getCars();
         int roundTime = racingGame.getRoundTime();
 
         for(int i = 0; i < roundTime; i++) {
@@ -34,7 +34,7 @@ public class ResultView {
             }
             printView(EMPTY);
         }
-        printWinner(racingGame.getWinnerNameList());
+        printWinner(racingGame.getWinnerNames());
     }
 
     private void printMoveRecord(int position, String carName) {

@@ -8,36 +8,36 @@ import java.util.Map;
 public class RacingGame {
     private int roundTime;
     private int carCount;
-    private String[] carNameList;
-    private List<Car> carList = new ArrayList<Car>();
-    private List<String> winnerNameList;
+    private String[] carNames;
+    private List<Car> cars = new ArrayList<Car>();
+    private List<String> winnerNames;
 
     public RacingGame(int roundTime, int carCount) {
         this.carCount = carCount;
         this.roundTime = roundTime;
-        this.winnerNameList = new ArrayList<String>();
+        this.winnerNames = new ArrayList<String>();
     }
 
     public RacingGame(int roundTime, String[] carNameList) {
-        this.carNameList = carNameList;
+        this.carNames = carNameList;
         this.carCount = carNameList.length;
         this.roundTime = roundTime;
-        this.winnerNameList = new ArrayList<String>();
+        this.winnerNames = new ArrayList<String>();
     }
 
     public void start() {
-        createCars(carCount, carNameList);
+        createCars(carCount, carNames);
         play();
         getWinner();
     }
 
     public void end() {
-        this.carList.clear();
+        this.cars.clear();
     }
 
     private void createCars(int carCount, String[] carNameList) {
         for(int i = 0; i < carCount; i++) {
-            this.carList.add(createCar(carNameList[i]));
+            this.cars.add(createCar(carNameList[i]));
         }
     }
 
@@ -53,7 +53,7 @@ public class RacingGame {
     }
 
     private void moveCars(int presentRoundTime) {
-        for(Car car: this.carList) {
+        for(Car car: this.cars) {
             moveCar(car, presentRoundTime);
         }
     }
@@ -69,21 +69,21 @@ public class RacingGame {
         List<Integer> finalPositionList = getFinalPositionList();
         int winnerPosition = GameRule.getMaxPosition(finalPositionList);
 
-        for(Car car: carList) {
-            makeWinnerNameList(winnerPosition, car);
+        for(Car car: cars) {
+            makeWinnerNames(winnerPosition, car);
         }
     }
 
-    private void makeWinnerNameList(int winnerPosition, Car car) {
+    private void makeWinnerNames(int winnerPosition, Car car) {
         if(winnerPosition == car.getPosition()) {
-            this.winnerNameList.add(car.getCarName());
+            this.winnerNames.add(car.getCarName());
         }
     }
 
     private List<Integer> getFinalPositionList() {
         List<Integer> finalPositionList = new ArrayList<>();
 
-        for(Car car: carList) {
+        for(Car car: cars) {
             finalPositionList.add(car.getPosition());
         }
         return finalPositionList;
@@ -93,12 +93,12 @@ public class RacingGame {
         return roundTime;
     }
 
-    public List<Car> getCarList() {
-        return carList;
+    public List<Car> getCars() {
+        return cars;
     }
 
-    public List<String> getWinnerNameList() {
-        return winnerNameList;
+    public List<String> getWinnerNames() {
+        return winnerNames;
     }
 }
 

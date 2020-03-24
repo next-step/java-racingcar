@@ -8,7 +8,7 @@ public class Car {
 
     private int position;
     private String carName;
-    private List<Round> roundInfoList = new ArrayList<Round>();
+    private List<Round> roundInformations = new ArrayList<Round>();
 
     public Car(String carName) {
         this.position = 0;
@@ -25,11 +25,11 @@ public class Car {
         round.setPosition(this.position);
         round.setTime(roundTime);
 
-        this.roundInfoList.add(round);
+        this.roundInformations.add(round);
     }
 
     public List<Round> getRoundInfoList() {
-        return this.roundInfoList;
+        return this.roundInformations;
     }
 
     public String getCarName() {
