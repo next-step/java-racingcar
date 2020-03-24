@@ -25,6 +25,7 @@ public class RacingGameConstant {
     public static final int MOVE_CONDITION = 4;
 
     public static final int START_POSITION = 0;
+    public static final int NUMBER_ZERO = 0;
     public static final int NUMBER_ONE = 1;
 
     public static final Pattern COMMA_PATTERN = Pattern.compile("(?:,|$)");
