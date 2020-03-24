@@ -10,16 +10,16 @@ public class InputView {
     private Number tryCount;
 
     public InputView() {
-        this.carCount = getUserCarCount();
-        this.tryCount = getUserTries();
+        this.carCount = askNumberOfCars();
+        this.tryCount = askNumberOfTries();
     }
 
-    private Number getUserCarCount() {
+    private Number askNumberOfCars() {
         System.out.println(CAR_COUNT_QUESTION);
         return new Number(scanner.nextLine());
     }
 
-    private Number getUserTries() {
+    private Number askNumberOfTries() {
         System.out.println(TRY_COUNT_QUESTION);
         return new Number(scanner.nextLine());
     }
