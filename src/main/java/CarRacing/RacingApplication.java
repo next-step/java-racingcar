@@ -11,14 +11,14 @@ public class RacingApplication {
     final private RacingGame racingGame;
 
     public RacingApplication() {
-        this.racingGame = new RacingGame(getCarCount(), getRacingTime());
+        this.racingGame = new RacingGame(StringUtils.splitStringToStringArr(getCarName()), getRacingTime());
         System.out.println(RESULT_SENTENCE);
         this.racingGame.raceStart();
     }
 
-    private int getCarCount() {
+    private String getCarName() {
         System.out.println(FIRST_SENTENCE);
-        return INPUT_SCANNER.nextInt();
+        return INPUT_SCANNER.next();
     }
 
     private int getRacingTime() {
