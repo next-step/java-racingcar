@@ -12,7 +12,7 @@ public class GameRuleTest {
     @Test
     @DisplayName("입력 받은 숫자가 게임 규칙에 맞아 이동 여부가 True인지 테스트")
     void isNumberCanMoveTrue() {
-        assertThat(GameRule.isNumberCanMove(NUMBER_CAN_MOVE)).isTrue();
+        assertThat(GameRule.isNumberCanMove(GameRule.NUMBER_CAN_MOVE)).isTrue();
     }
 
     @Test
