@@ -1,9 +1,7 @@
 package step3;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class RacingGame {
     private int roundTime;
@@ -53,7 +51,7 @@ public class RacingGame {
     }
 
     private void moveCar(Car car, int presentRoundTime) {
-        if(GameRule.canMove()) {
+        if(RandomMoveRule.canMove()) {
             car.move(presentRoundTime);
         }
         car.completeRound(presentRoundTime);
@@ -61,7 +59,7 @@ public class RacingGame {
 
     private void setWinner() {
         List<Integer> finalPositionList = getFinalPositionList();
-        int winnerPosition = GameRule.getMaxPosition(finalPositionList);
+        int winnerPosition = RandomMoveRule.getMaxPosition(finalPositionList);
 
         for(Car car: cars) {
             addWinnerNames(winnerPosition, car);
