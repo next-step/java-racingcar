@@ -4,6 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.domain.RacingCar;
+import racingcar.domain.RacingGame;
+import racingcar.domain.RacingResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +15,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
 
+    @Test
+    void startTest() {
+        String[] names = {"광유","재"};
+        RacingGame racingGame= new RacingGame(names,3);
+        List<RacingResult> results = racingGame.start();
+        assertThat(racingGame.start()).isNotNull();
+    }
 
     @DisplayName("생성된 RacingCar를 전진하게 하는 단위 테스트")
     @ParameterizedTest()

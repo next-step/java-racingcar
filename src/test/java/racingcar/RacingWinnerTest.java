@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.RacingCar;
+import racingcar.domain.RacingWinner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,6 @@ public class RacingWinnerTest {
 
     @Test
     void findWinnerNameTest() {
-        assertThat(new RacingWinner().findWinnerName(racers)).contains("재석","포비");  //updateBoard
+        assertThat(new RacingWinner().findWinnerNames(racers)).contains("재석","포비");  //updateBoard
     }
 }
