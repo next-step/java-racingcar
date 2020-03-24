@@ -2,7 +2,7 @@ package racingcar.model;
 
 import racingcar.policy.MovingPolicy;
 
-public final class Car {
+public final class Car implements Comparable<Car> {
     public static final int DEFAULT_DISTANCE = 0;
     private String name;
     private int distance;
@@ -28,5 +28,10 @@ public final class Car {
 
     public int getDistance() {
         return distance;
+    }
+
+    @Override
+    public int compareTo(final Car car) {
+        return this.distance - car.distance;
     }
 }
