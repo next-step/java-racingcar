@@ -1,9 +1,7 @@
 package fifth_refactoring.domain;
 
-import fifth_refactoring.domain.CarAction;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import fifth_refactoring.domain.Car;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
