@@ -1,8 +1,10 @@
-package racing;
+package racing.domain;
 
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.domain.Car;
+import racing.domain.RacingGame;
 
 import java.util.Collections;
 import java.util.List;
@@ -22,7 +24,16 @@ class RacingGameTest {
     @DisplayName("이름이 같은 자동차는 중복 제거가 되어야 한다.")
     void distinctTest() {
         RacingGame racingGame = new RacingGame(Lists.list(new Car("test"), new Car("test")));
+
         assertThat(racingGame.getCars()).hasSize(1);
+    }
+
+    @Test
+    @DisplayName("String[] 으로 RacingGame 객체를 생성할 수 있다.")
+    void constructorTest() {
+        RacingGame racingGame = new RacingGame(new String[] {"testCar1", "testCar2"});
+
+        assertThat(racingGame.getCars()).hasSize(2);
     }
 
     @Test
@@ -33,7 +44,8 @@ class RacingGameTest {
         Car car3 = makeTestCar("car3", 3);
         RacingGame racingGame = new RacingGame(Lists.list(car1, car2, car3));
 
-        List<Car> winners = racingGame.getWinner();
+        List<Car> winners = racingGame.getWinners();
+
         assertThat(winners).containsOnly(car3);
     }
 
@@ -42,8 +54,10 @@ class RacingGameTest {
     void multipleWinnerTest() {
         Car car1 = makeTestCar("car1", 1);
         Car car2 = makeTestCar("car2", 1);
+
         RacingGame racingGame = new RacingGame(Lists.list(car1, car2));
-        assertThat(racingGame.getWinner()).hasSize(2);
+
+        assertThat(racingGame.getWinners()).hasSize(2);
     }
 
     private Car makeTestCar(String name, int position) {

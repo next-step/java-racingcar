@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 import java.util.Objects;
 
@@ -29,6 +29,10 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    public boolean isSamePosition(Car other) {
+        return this.getPosition() == other.getPosition();
     }
 
     private boolean canMove(int rand) {
