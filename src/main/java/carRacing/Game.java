@@ -2,6 +2,8 @@ package carRacing;
 
 import carRacing.view.InputView;
 
+import java.util.Random;
+
 public class Game {
 
     int numberOfCar;
@@ -9,7 +11,7 @@ public class Game {
 
     private Game() {
         userInteraction();
-        new RacingGame(numberOfCar, time).start();
+        new RacingGame(numberOfCar, time).start(new MoveRandom(new Random()));
     }
 
     public static void start() {

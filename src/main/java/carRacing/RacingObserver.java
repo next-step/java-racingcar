@@ -1,7 +1,6 @@
 package carRacing;
 
 import carRacing.view.ResultView;
-import org.assertj.core.util.VisibleForTesting;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,24 +8,24 @@ import java.util.List;
 public class RacingObserver {
 
     ResultView resultView;
-    List<Integer> carPositions;
+    List<Integer> vehiclePositions;
 
-    public RacingObserver(List<Car> cars) {
+    public RacingObserver(List<Vehicle> vehicles) {
         resultView = new ResultView();
-        carPositions = observe(cars);
+        vehiclePositions = observe(vehicles);
     }
 
-    public void tracking(List<Car> car) {
-        carPositions = observe(car);
-        resultView.showGameState(carPositions);
+    public void tracking(List<Vehicle> vehicles) {
+        vehiclePositions = observe(vehicles);
+        resultView.showGameState(vehiclePositions);
     }
 
-    public List<Integer> observe(List<Car> cars) {
+    public List<Integer> observe(List<Vehicle> vehicles) {
         ArrayList<Integer> positions = new ArrayList<>();
 
         int i = positions.size();
-        for(Car car : cars) {
-            positions.add(i++, car.inquiryPosition());
+        for (Vehicle vehicle : vehicles) {
+            positions.add(i++, vehicle.inquiryPosition());
         }
         return positions;
     }

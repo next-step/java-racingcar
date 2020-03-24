@@ -7,43 +7,43 @@ import java.util.List;
 
 public class RacingGame {
 
-    int numberOfCar;
+    int numberOfVehicle;
     int time;
 
-    List<Car> cars;
+    List<Vehicle> vehicles;
     RacingObserver observe;
 
     public RacingGame(int numberOfCar, int time) {
-        this.numberOfCar = numberOfCar;
+        this.numberOfVehicle = numberOfCar;
         this.time = time;
-        cars = new ArrayList<>(setCars());
-        observe = new RacingObserver(cars);
+        vehicles = setVehicles();
+        observe = new RacingObserver(vehicles);
     }
 
-    public List<Car> setCars() {
-        List<Car> prepareCars = new ArrayList<>();
-        for (int i = 0; i < numberOfCar; i++) {
-            prepareCars.add(new Car());
+    public List<Vehicle> setVehicles() {
+        List<Vehicle> prepareVehicles = new ArrayList<>();
+        for (int i = 0; i < numberOfVehicle; i++) {
+            prepareVehicles.add(new Car());
         }
-        return prepareCars;
+        return prepareVehicles;
     }
 
-    public void start() {
-        for(int i=0; i<time; i++) {
-            rotate();
-            observe.tracking(cars);
+    public void start(MoveStrategy moveStrategy) {
+        for (int i = 0; i < time; i++) {
+            rotate(moveStrategy);
+            observe.tracking(vehicles);
         }
     }
 
-    private void rotate() {
-        for(Car car : cars) {
-            car.move();
+    private void rotate(MoveStrategy moveStrategy) {
+        for (Vehicle vehicle : vehicles) {
+            vehicle.move(moveStrategy);
         }
     }
 
     @VisibleForTesting
     public List<Integer> observe() {
-        return observe.observe(cars);
+        return observe.observe(vehicles);
     }
 
 }

@@ -1,10 +1,9 @@
 package carRacing;
 
-import org.assertj.core.util.VisibleForTesting;
 
 import java.util.Random;
 
-public class Car {
+public class Car implements Vehicle {
 
     Random random;
     int position;
@@ -14,23 +13,13 @@ public class Car {
         this.position = 0;
     }
 
-    public void move() {
-        if(movable()) {
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.movable()) {
             position++;
         }
     }
 
-    @VisibleForTesting
-    public boolean movable() {
-        return (random.nextInt(Constants.MOVE_PERCENT_DENOMINATOR) >= Constants.MOVE_PERCENT_NUMERATOR);
-    }
-
     public int inquiryPosition() {
         return position;
-    }
-
-    @VisibleForTesting
-    public void setRandom(Random random) {
-        this.random = random;
     }
 }

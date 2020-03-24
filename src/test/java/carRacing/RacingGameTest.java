@@ -23,7 +23,7 @@ public class RacingGameTest {
         RacingGame racingGame = new RacingGame(numberOfCar, time);
 
 
-        assertThat(racingGame.cars).hasSize(numberOfCar);
+        assertThat(racingGame.vehicles).hasSize(numberOfCar);
     }
 
 
@@ -34,16 +34,15 @@ public class RacingGameTest {
         int numberOfCar = Integer.parseInt(inputs[0]);
         int time = Integer.parseInt(inputs[1]);
         RacingGame racingGame = new RacingGame(numberOfCar, time);
-        racingGame.cars.forEach(car -> {
-            car.setRandom(new Random() {
-                @Override
-                public int nextInt(int bound) {
-                    return Integer.parseInt(inputs[2]);
-                }
-            });
+
+        MoveStrategy moveRandom = new MoveRandom(new Random() {
+            @Override
+            public int nextInt(int bound) {
+                return Integer.parseInt(inputs[2]);
+            }
         });
 
-        racingGame.start();
+        racingGame.start(moveRandom);
 
         assertThat(racingGame.observe().stream().allMatch(i -> (i == (Integer.parseInt(expected)*time)))).isTrue();
     }
