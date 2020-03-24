@@ -1,12 +1,12 @@
 package carracing.view;
 
 import carracing.model.Car;
-import carracing.model.CarRacing;
 import java.util.List;
 
 public class ResultView {
   private static String RESULT = "실행 결과";
   private static String POSITION_CHARACTER = "_";
+  private static String CAR_NAME_FORMAT = "%s : ";
 
   private Integer totalRound;
   private List<Car> cars;
@@ -21,12 +21,13 @@ public class ResultView {
     for (int i = 0; i < totalRound; i++) {
       int presentRound = i;
 
-      cars.forEach(car -> visualizePosition(car.getPositions().get(presentRound)));
+      cars.forEach(car -> visualizeCarPosition(car.getName(), car.getPositions().get(presentRound)));
       System.out.println();
     }
   }
 
-  private void visualizePosition(Integer position) {
+  private void visualizeCarPosition(String name, Integer position) {
+    System.out.print(String.format(CAR_NAME_FORMAT, name));
     for (int i = 0; i < position; i++) {
       System.out.print(POSITION_CHARACTER);
     }

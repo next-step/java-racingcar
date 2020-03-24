@@ -11,10 +11,10 @@ public class CarRacing {
   private Integer presentRound;
   private List<Car> cars;
 
-  public CarRacing(Integer carCount, Integer totalRound) {
+  public CarRacing(List<String> carNames, Integer totalRound) {
     this.totalRound = totalRound;
     this.presentRound = 0;
-    this.cars = Stream.generate(Car::new).limit(carCount).collect(Collectors.toList());
+    this.cars = carNames.stream().map(Car::new).collect(Collectors.toList());
   }
 
   public List<Car> getCars() {

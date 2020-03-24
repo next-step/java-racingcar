@@ -7,9 +7,9 @@ import java.util.List;
 
 public class CarRacingController {
 
-  public ResultView race(Integer carCount, Integer totalRound) {
+  public ResultView race(List<String> carNames, Integer totalRound) {
 
-    List<Car> cars = new CarRacing(carCount, totalRound).race();
+    List<Car> cars = new CarRacing(carNames, totalRound).race();
 
     return new ResultView(cars, totalRound);
   }

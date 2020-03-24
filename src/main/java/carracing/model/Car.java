@@ -9,14 +9,19 @@ import java.util.function.Supplier;
 
 public class Car {
 
-  public static final Integer INITIAL_POSITION = 1;
+  public static final int INITIAL_POSITION = 1;
 
+  private String name;
   private List<Integer> positions;
 
-  public Car() {
-    positions = new ArrayList<>(Arrays.asList(INITIAL_POSITION));
+  public Car(String name) {
+    this.name = name;
+    this.positions = new ArrayList<>(Arrays.asList(INITIAL_POSITION));
   }
 
+  public String getName() {
+    return name;
+  }
   public List<Integer> getPositions() {
     return positions;
   }

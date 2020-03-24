@@ -12,10 +12,11 @@ public class CarTest {
   private static final int INITIAL_ROUND = 0;
   private static final int TOTAL_ROUND = 10;
   private static final int MOVED_ONCE = 1;
+  private static final String CAR_NAME = "Audi";
 
   @Test
   public void moveTest() {
-    Car car = new Car();
+    Car car = new Car(CAR_NAME);
 
     for (int currentRound = INITIAL_ROUND; currentRound < TOTAL_ROUND;) {
       car.move(ProbabilityUtil.FOURTY_PERCENT);
@@ -28,7 +29,7 @@ public class CarTest {
 
   @Test
   public void moveCertainlyTest() {
-    Car car = new Car();
+    Car car = new Car(CAR_NAME);
     Integer currentRound = INITIAL_ROUND;
     car.move(ProbabilityUtil.ZERO_PERCENT);
     assertThat(car.getPositions().get(++currentRound)).isEqualTo(INITIAL_POSITION);
