@@ -15,15 +15,13 @@ public class RacingGameTest {
 
 
     @ParameterizedTest
-    @ValueSource(strings = {"1 2", "2 3", "3 4", "4 5"})
-    void setCars(String input) {
-        String[] inputs = input.split(" ");
-        int numberOfCar = Integer.parseInt(inputs[0]);
-        int time = Integer.parseInt(inputs[1]);
-        RacingGame racingGame = new RacingGame(numberOfCar, time);
+    @ValueSource(ints = {1, 2, 3, 4})
+    void setCars(int input) {
+        MoveStrategy moveRandom = new MoveRandom(new Random());
+        RacingGame racingGame = new RacingGame(input, VehicleType.Car, moveRandom);
 
 
-        assertThat(racingGame.vehicles).hasSize(numberOfCar);
+        assertThat(racingGame.vehicles).hasSize(input);
     }
 
 
@@ -33,16 +31,15 @@ public class RacingGameTest {
         String[] inputs = input.split(" ");
         int numberOfCar = Integer.parseInt(inputs[0]);
         int time = Integer.parseInt(inputs[1]);
-        RacingGame racingGame = new RacingGame(numberOfCar, time);
-
         MoveStrategy moveRandom = new MoveRandom(new Random() {
             @Override
             public int nextInt(int bound) {
                 return Integer.parseInt(inputs[2]);
             }
         });
+        RacingGame racingGame = new RacingGame(input, VehicleType.Car, moveRandom);
 
-        racingGame.start(moveRandom);
+        racingGame.start(time);
 
         assertThat(racingGame.observe().stream().allMatch(i -> (i == (Integer.parseInt(expected)*time)))).isTrue();
     }
