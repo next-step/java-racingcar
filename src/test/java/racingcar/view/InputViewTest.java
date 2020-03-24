@@ -8,6 +8,8 @@ import java.io.ByteArrayInputStream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class InputViewTest {
+    private final String CAR_NAMES = "pobi,crong,honux";
+    private final String TIME = "5";
     private InputView inputView;
     private ByteArrayInputStream byteArrayInputStream;
 
@@ -15,11 +17,11 @@ class InputViewTest {
     @DisplayName("자동차 경주 게임에 필요한 입력값을 성공적으로 받는다.")
     @Test
     void validInput() {
-        inputView = new InputView(initInputStream("3"));
-        assertThat(inputView.view("test count")).isEqualTo(3);
+        inputView = new InputView(initInputStream(CAR_NAMES));
+        assertThat(inputView.inputCarNames()).isEqualTo(CAR_NAMES);
 
-        inputView = new InputView(initInputStream("5"));
-        assertThat(inputView.view("test time")).isEqualTo(5);
+        inputView = new InputView(initInputStream(TIME));
+        assertThat(inputView.inputCarCount()).isEqualTo(5);
     }
 
     private ByteArrayInputStream initInputStream(String input) {
