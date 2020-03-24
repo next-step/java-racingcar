@@ -5,16 +5,34 @@ import java.util.stream.Collectors;
 
 public class RacingGame {
 
-    private static final Integer LIMIT = 10;
-    private static final Integer THRESHOLD = 4;
-    private static final Integer ZERO = 0;
+    private static final int LIMIT = 10;
+    private static final int THRESHOLD = 4;
+    private static final int ZERO = 0;
+    private static final int INIT = 0;
 
-    static List<List<Integer>> start(int car, int stage) {
+    private int car = 0;
+    private int stage = 0;
 
-//        init cars
+    private RacingGame() {}
+
+    private static class InnerRacingGame {
+        private static final RacingGame INSTANCE = new RacingGame();
+
+    }
+
+    static RacingGame getInstance() {
+        return InnerRacingGame.INSTANCE;
+    }
+
+
+    List<List<Integer>> start() {
+        return start(car, stage);
+    }
+
+    List<List<Integer>> start(int car, int stage) {
         List<Integer> cars = new ArrayList<>();
         for (int i = 0; i < car; i++) {
-            cars.add(0);
+            cars.add(INIT);
         }
 
 
@@ -45,8 +63,24 @@ public class RacingGame {
         return new Random().nextInt(LIMIT);
     }
 
-    public static boolean isMovable(int moveCount) {
+    static boolean isMovable(int moveCount) {
         return moveCount >= THRESHOLD;
+    }
+
+    public int getCar() {
+        return car;
+    }
+
+    void setCar(int car) {
+        this.car = car;
+    }
+
+    public int getStage() {
+        return stage;
+    }
+
+    void setStage(int stage) {
+        this.stage = stage;
     }
 }
 
