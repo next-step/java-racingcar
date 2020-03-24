@@ -4,24 +4,19 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private InputData inputData;
-    private Scanner scanner;
+    private static Scanner scanner = new Scanner(System.in);
 
-    public InputView() {
-        scanner = new Scanner(System.in);
+    public static InputData getInputData() {
+        return new InputData(getNumberOfCars(), getTryCount());
     }
 
-    public void input() {
+    private static int getNumberOfCars() {
         System.out.println("자동차 대수는 몇 대 인가요?");
-        int numberOfCars = scanner.nextInt();
-
-        System.out.println("시도할 횟수는 몇 회 인가요?");
-        int tryCount = scanner.nextInt();
-
-        inputData = new InputData(numberOfCars, tryCount);
+        return scanner.nextInt();
     }
 
-    public InputData getInputData() {
-        return new InputData(inputData.getNumberOfCars(), inputData.getTryCount());
+    private static int getTryCount() {
+        System.out.println("시도할 횟수는 몇 회 인가요?");
+        return scanner.nextInt();
     }
 }

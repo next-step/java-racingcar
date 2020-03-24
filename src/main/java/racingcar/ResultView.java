@@ -8,15 +8,15 @@ public class ResultView {
 
     private static final String CAR_MOVEMENT_MARKER = "-";
 
-    public void printGameResult() {
+    public static void printGameResult() {
         print("실행 결과");
     }
 
-    private void print(String result) {
+    private static void print(String result) {
         System.out.println(result);
     }
 
-    public void renderCarMovement(List<Car> cars) {
+    public static void renderCarMovement(List<Car> cars) {
         for (Car c : cars) {
             print(Stream
                     .generate(() -> CAR_MOVEMENT_MARKER)

@@ -3,19 +3,14 @@ package racingcar;
 public class RacingGameApplication {
 
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        ResultView resultView = new ResultView();
+        RacingGame game = new RacingGame(InputView.getInputData());
 
-        inputView.input();
-
-        RacingGame game = new RacingGame(inputView.getInputData());
-
-        resultView.printGameResult();
+        ResultView.printGameResult();
 
         while (!game.isFinish()) {
             game.progress();
 
-            resultView.renderCarMovement(game.getCars());
+            ResultView.renderCarMovement(game.getCars());
         }
     }
 }
