@@ -1,5 +1,7 @@
-package step3;
+package step3.view;
 
+
+import step3.domain.*;
 
 import java.util.List;
 

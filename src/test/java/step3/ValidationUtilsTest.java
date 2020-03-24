@@ -2,6 +2,7 @@ package step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.utility.ValidationUtils;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 

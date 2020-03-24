@@ -1,6 +1,9 @@
 package step3;
 
-import java.util.List;
+import step3.domain.RacingGame;
+import step3.domain.RandomMoveRule;
+import step3.view.InputView;
+import step3.view.ResultView;
 
 public class Main {
 

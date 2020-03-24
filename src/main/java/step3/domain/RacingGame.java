@@ -1,8 +1,4 @@
-package step3;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+package step3.domain;
 
 public class RacingGame {
     private int roundTime;

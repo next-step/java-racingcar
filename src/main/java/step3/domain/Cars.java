@@ -1,6 +1,5 @@
-package step3;
+package step3.domain;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -61,11 +60,7 @@ public class Cars {
         this.winnerNames = winnerNames;
     }
 
-    public List<String> getWinnerNames() {
-        return this.winnerNames;
-    }
-
-    public void addWinnerName(int winnerPosition, Car car) {
+    private void addWinnerName(int winnerPosition, Car car) {
         if(isWinner(winnerPosition, car)) {
             winnerNames.add(car.getCarName());
         }
@@ -78,6 +73,9 @@ public class Cars {
         return false;
     }
 
+    public List<String> getWinnerNames() {
+        return this.winnerNames;
+    }
 
 
 }

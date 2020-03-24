@@ -1,6 +1,4 @@
-package step3;
-
-import java.util.*;
+package step3.domain;
 
 public class RandomMoveRule implements MoveRule {
 
