@@ -18,20 +18,8 @@ public class Car {
         this.racingResult = racingResult;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getRacingResult() {
-        return racingResult;
-    }
-
     public void move() {
-        racingResult += forwardStatus(getRandomNumber());
-    }
-
-    public int getRandomNumber() {
-        return random.nextInt(RANDOM_RANGE);
+        racingResult += forwardStatus(createRandomNumber());
     }
 
     public String forwardStatus(int randomNumber) {
@@ -39,6 +27,19 @@ public class Car {
             return STOP_VALUE;
         }
         return FORWARD_VALUE;
+    }
+
+    private int createRandomNumber() {
+        return random.nextInt(RANDOM_RANGE);
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public String getRacingResult() {
+        return racingResult;
     }
 
 }

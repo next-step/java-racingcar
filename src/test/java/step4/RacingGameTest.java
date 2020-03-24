@@ -25,22 +25,22 @@ class RacingGameTest {
 
     @DisplayName("자동차 경주 중 가장 많이 전진한 값을 확인한다.")
     @Test
-    void maxRacingResult() {
-        String maxResult = racingGame.maxRacingResult();
+    void findMaxRacingResult() {
+        String maxResult = racingGame.FindMaxRacingResult();
         assertThat(maxResult).isEqualTo("-----");
     }
 
     @DisplayName("자동자 경주 우승자 수를 확인한다.")
     @Test
     void getWinnerCount() {
-        List<Car> cars = racingGame.winUsers(racingGame.maxRacingResult());
+        List<Car> cars = racingGame.winUsers();
         assertThat(cars).hasSize(2);
     }
 
     @DisplayName("자동차 경주 우승자의 이름 목록을 확인한다.")
     @Test
     void getWinnerNameList() {
-        List<Car> cars = racingGame.winUsers(racingGame.maxRacingResult());
+        List<Car> cars = racingGame.winUsers();
         List<String> winnerNames = racingGame.getWinnerNames(cars);
         assertThat(winnerNames).containsExactly("pobi", "honux");
     }

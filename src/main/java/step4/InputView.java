@@ -1,24 +1,25 @@
 package step4;
 
+import static java.util.stream.Collectors.toList;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class InputView {
-    private String carNames;
+
     private int moveCount;
     private List<Car> cars;
+    private static final String DILIMITER_COMMA = ",";
+    private static final String DEFAULT_RACING_RESULT = "";
 
     public InputView() {
     }
 
     public InputView(String carNames, int moveCount) {
-        this.carNames = carNames;
+        validateInput(carNames);
         this.moveCount = moveCount;
-        setCars();
-    }
-
-    public void setCars() {
-        cars = createUsers(splitCarName());
+        this.cars = createUsers(splitCarName(carNames));
     }
 
     public void validateInput(String carNames) {
@@ -27,21 +28,14 @@ public class InputView {
         }
     }
 
-    public String[] splitCarName() {
-        return carNames.split(",");
+    public String[] splitCarName(String carNames) {
+        return carNames.split(DILIMITER_COMMA);
     }
 
-    public ArrayList<Car> createUsers(String[] splitCarName) {
-        ArrayList<Car> cars = new ArrayList<>();
-        for (int i = 0; i < splitCarName.length; i++) {
-            addCar(splitCarName[i], cars);
-        }
-        return cars;
-    }
-
-    public void addCar(String carName, List<Car> cars) {
-        Car car = new Car(carName, "");
-        cars.add(car);
+    public List<Car> createUsers(String[] splitCarName) {
+        return Arrays.stream(splitCarName)
+                     .map(carName -> new Car(carName, DEFAULT_RACING_RESULT))
+                     .collect(toList());
     }
 
     public int getMoveCount() {

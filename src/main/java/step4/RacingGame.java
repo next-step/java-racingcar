@@ -16,10 +16,15 @@ public class RacingGame {
     private List<List<Car>> moveCarPositions;
     private String winnerNames;
 
+    private static final int MOVE_COUNT_NUMBER = 0;
+    private static final int CAR_POSITIONS_SIZE = 0;
+
     public RacingGame() {
     }
 
     public RacingGame(int moveCount, List<Car> carPositions) {
+        validateMoveCount(moveCount);
+        validateCarPositions(carPositions);
         this.moveCount = moveCount;
         this.carPositions = carPositions;
     }
@@ -33,7 +38,27 @@ public class RacingGame {
         this.moveCarPositions = moveCarPositions;
     }
 
-    public List<Car> racing() {
+    public List<String> getWinnerNames(List<Car> winners) {
+        return winners.stream().
+                flatMap(car -> Stream.of(car.getName()))
+                      .collect(Collectors.toList());
+    }
+
+    public List<Car> winUsers() {
+        String max = FindMaxRacingResult();
+        return carPositions.stream().
+                filter(carPosition -> max.equals(carPosition.getRacingResult()))
+                           .collect(Collectors.toList());
+    }
+
+    public String FindMaxRacingResult() {
+        return carPositions.stream()
+                           .max(Comparator.comparing(Car::getRacingResult))
+                           .get()
+                           .getRacingResult();
+    }
+
+    private List<Car> racing() {
         List<Car> resultCars = new ArrayList<>();
         for (Car car : carPositions) {
             car.move();
@@ -42,24 +67,20 @@ public class RacingGame {
         return resultCars;
     }
 
-    public List<String> getWinnerNames(List<Car> winners) {
-        return winners.stream().flatMap(car -> Stream.of(car.getName())).collect(
-                Collectors.toList());
+    private void validateMoveCount(int moveCount) {
+        if (moveCount <= MOVE_COUNT_NUMBER) {
+            throw new IllegalArgumentException("움직이는 횟수는 최소 1번 이상이어야 합니다");
+        }
     }
 
-    public List<Car> winUsers(String max) {
-        return carPositions.stream().filter(
-                carPosition -> max.equals(carPosition.getRacingResult())).collect(
-                Collectors.toList());
-    }
-
-    public String maxRacingResult() {
-        return carPositions.stream().max(Comparator.comparing(Car::getRacingResult)).get()
-                           .getRacingResult();
+    private void validateCarPositions(List<Car> carPositions) {
+        if (carPositions.size() <= CAR_POSITIONS_SIZE) {
+            throw new IllegalArgumentException("자동차의 개수는 최소 1대 이상이어야 합니다.");
+        }
     }
 
     public void setWinnerNames() {
-        List<String> winnerNames = getWinnerNames(winUsers(maxRacingResult()));
+        List<String> winnerNames = getWinnerNames(winUsers());
         this.winnerNames = StringUtils.join(winnerNames, ",");
     }
 
