@@ -14,8 +14,8 @@ public class GameRule {
         return randomValue >= NUMBER_CAN_MOVE;
     }
 
-    public static int getMaxPosition(List<Integer> finalPositionList) {
-        return Collections.max(finalPositionList);
+    public static int getMaxPosition(List<Integer> finalPositions) {
+        return Collections.max(finalPositions);
     }
 
 }
