@@ -3,7 +3,7 @@ package racingcar;
 import racingcar.application.RacingGameManager;
 import racingcar.domain.RacingGame;
 import racingcar.domain.RacingGameRepository;
-import racingcar.domain.RacingGameResults;
+import racingcar.domain.RacingGameResultsDto;
 import racingcar.infrastructure.InMemoryRacingGameRepository;
 import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
@@ -17,7 +17,7 @@ public class RacingGameApplication {
 
         InputView inputView = new InputView();
         RacingGame racingGame = new RacingGame(inputView.getCarNames(), inputView.getTime());
-        RacingGameResults gameResults = racingGameManager.game(racingGame);
+        RacingGameResultsDto gameResults = racingGameManager.game(racingGame);
 
         ResultView resultView = new ResultView();
         resultView.print(gameResults);

@@ -3,7 +3,7 @@ package racingcar.ui;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.CarsIterator;
-import racingcar.domain.RacingGameResults;
+import racingcar.domain.RacingGameResultsDto;
 
 import java.util.Map;
 
@@ -14,19 +14,19 @@ public class ResultView {
     public ResultView() {
     }
 
-    public void print(RacingGameResults racingGameResults) {
-        System.out.printf(WINNER_COMMENT_PREFIX, renderGameResultsToView(racingGameResults));
+    public void print(RacingGameResultsDto racingGameResultsDto) {
+        System.out.printf(WINNER_COMMENT_PREFIX, renderGameResultsToView(racingGameResultsDto));
     }
 
-    public String renderGameResultsToView(RacingGameResults racingGameResults) {
-        Map<Integer, Cars> gameResults = racingGameResults.getGameResultSet();
+    public String renderGameResultsToView(RacingGameResultsDto racingGameResultsDto) {
+        Map<Integer, Cars> gameResults = racingGameResultsDto.get();
         StringBuilder collectResult = new StringBuilder();
         gameResults.entrySet()
                 .stream()
                 .forEach(e -> collectResult.append(getResults(e.getValue())));
 
         return collectResult
-                .append(racingGameResults.getWinners())
+                .append(racingGameResultsDto.getWinners())
                 .append(WINNER_COMMENT_SUFFIX)
                 .toString();
     }
