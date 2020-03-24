@@ -33,6 +33,6 @@ class RacingGameSettingTest {
     void carCount() {
         final int length = CAR_NAMES.split(",").length;
         RacingGameSetting setting = new RacingGameSetting(null, CAR_NAMES, 0);
-        assertThat(setting.getCars().getCars()).hasSize(length);
+        assertThat(setting.getCars().toList()).hasSize(length);
     }
 }
