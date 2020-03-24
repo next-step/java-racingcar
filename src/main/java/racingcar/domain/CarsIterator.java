@@ -19,6 +19,6 @@ public class CarsIterator implements Iterator {
 
     @Override
     public Car next() {
-        return cars.getCar(index++);
+        return cars.get(index++);
     }
 }

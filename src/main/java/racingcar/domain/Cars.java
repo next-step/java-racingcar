@@ -1,22 +1,20 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.joining;
+import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
-import static racingcar.domain.RacingGameConstant.DELIMITER_COMMA;
 import static racingcar.domain.RacingGameConstant.NO_WINNER;
 
 public class Cars {
     private final List<Car> cars;
 
-    Cars(String[] carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carNames.length; i++) {
-            cars.add(new Car(carNames[i]));
-        }
-        this.cars = cars;
+    Cars(Collection<String> carNames) {
+        this.cars = carNames.stream()
+                .map(Car::new)
+                .collect(toList());
     }
 
     Cars(List<Car> cars) {
@@ -24,11 +22,10 @@ public class Cars {
     }
 
     Cars moveAllCar(MoveStrategy moveStrategy) {
-        List<Car> movedCars = new ArrayList<>();
-        for (Car car : cars) {
-            Car movedCar = car.move(moveStrategy.isMove());
-            movedCars.add(movedCar);
-        }
+        List<Car> movedCars = cars.stream()
+                .map(car -> car.move(moveStrategy.isMove()))
+                .collect(toList());
+
         return new Cars(movedCars);
     }
 
@@ -36,13 +33,14 @@ public class Cars {
         return cars.size() != index;
     }
 
-    Car getCar(int index) {
+    Car get(int index) {
         return new Car(cars.get(index));
     }
 
-    public String getWinners() {
+    public List<String> getWinners() {
         Car winner = cars.stream()
-                .reduce((car1, car2) -> car1.getPosition() > car2.getPosition() ? car1 : car2)
+                .sorted(comparing(Car::getPosition).reversed())
+                .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(NO_WINNER));
 
         return cars.stream()
@@ -50,7 +48,7 @@ public class Cars {
                 .collect(toList())
                 .stream()
                 .map(Car::getName)
-                .collect(joining(DELIMITER_COMMA));
+                .collect(Collectors.toList());
     }
 
 }

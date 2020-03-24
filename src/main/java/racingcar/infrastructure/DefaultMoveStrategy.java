@@ -1,4 +1,6 @@
-package racingcar.domain;
+package racingcar.infrastructure;
+
+import racingcar.domain.MoveStrategy;
 
 import java.util.Random;
 
