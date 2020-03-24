@@ -1,5 +1,6 @@
 package RacingCar;
 
+import RacingCar.model.Result;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +18,7 @@ public class RacingGameTest {
     @DisplayName("결과 테스트")
     @Test
     void start() {
-        List<List<Integer>> results = RacingGame.getInstance().start(CAR_COUNT, STAGE_COUNT);
+        List<Result> results = RacingGame.getInstance().start(CAR_COUNT, STAGE_COUNT);
         assertThat(results.size()).isEqualTo(STAGE_COUNT);
     }
 
