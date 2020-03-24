@@ -5,11 +5,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Scanner;
 
-public class RacingTest {
+public class RacingViewTest {
+
     InputView inputView;
     Scanner scanner;
     RacingVO racingVO;
@@ -26,22 +26,13 @@ public class RacingTest {
         resultView = new ResultView(racingVO, racingGame);
     }
 
-    @DisplayName("차 대수 및 횟수 0이상 테스트")
+    @DisplayName("자신의 위치만큼 '-' 출력 테스트 ")
     @ParameterizedTest
-    @CsvSource({"0"})
-    void symbolValidTest(int param) {
-        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> {
-            inputView.validNumberCheck(param);
-        });
-    }
-
-    @DisplayName("값이 4이상일 때 움직이는지 테스트")
-    @ParameterizedTest
-    @ValueSource(
-            ints = {4,7,10}
+    @CsvSource(
+            value = {"1:-", "4:----", "5:-----"},
+            delimiter = ':'
     )
-    void movableTest(int param) {
-        Assertions.assertThat(racingGame.isMovable(param)).isEqualTo(true);
+    void printTest(int param, String result) {
+        Assertions.assertThat(resultView.printCar(param)).isEqualTo(result);
     }
-
 }

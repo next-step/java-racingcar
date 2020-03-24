@@ -2,7 +2,7 @@ package racing;
 
 import java.util.Random;
 
-public class RacingGame {
+public class RacingGame implements RandomValue{
     private static final int NUMBER_OF_MOVEMENT_POSSIBLE = 4;
     private static final int NUMBER_OF_RANDOM_RANGE = 10;
     private RacingVO racingVO;
@@ -16,7 +16,7 @@ public class RacingGame {
         int[] carPositions = racingVO.getCarPositions();
 
         for(int j = 0; j < carPositions.length; ++j) {
-            if (isMovable(getRandomNumber())) {
+            if (isMovable(getRandomValue())) {
                 carPositions[j]++;
             }
         }
@@ -31,7 +31,9 @@ public class RacingGame {
         return isMove;
     }
 
-    public int getRandomNumber() {
+
+    @Override
+    public int getRandomValue() {
         return rand.nextInt(NUMBER_OF_RANDOM_RANGE);
     }
 }
