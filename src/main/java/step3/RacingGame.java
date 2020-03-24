@@ -9,6 +9,7 @@ public class RacingGame {
     private String[] carNames;
     private List<Car> cars = new ArrayList<Car>();
     private List<String> winnerNames;
+    private MoveRule moveRule;
 
     public RacingGame(int roundTime, String[] carNameList) {
         this.carNames = carNameList;
@@ -51,7 +52,7 @@ public class RacingGame {
     }
 
     private void moveCar(Car car, int presentRoundTime) {
-        if(RandomMoveRule.canMove()) {
+        if(moveRule.canMove()) {
             car.move(presentRoundTime);
         }
         car.completeRound(presentRoundTime);
@@ -91,6 +92,10 @@ public class RacingGame {
 
     public List<String> getWinnerNames() {
         return winnerNames;
+    }
+
+    public void setMoveRule(MoveRule moveRule) {
+        this.moveRule = moveRule;
     }
 }
 

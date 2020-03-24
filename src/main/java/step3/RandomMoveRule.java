@@ -10,7 +10,7 @@ public class RandomMoveRule implements MoveRule {
         return isNumberCanMove(RandomNumberGenerator.generateRandomValue());
     }
 
-    private static boolean isNumberCanMove(int randomValue) {
+    public static boolean isNumberCanMove(int randomValue) {
         return randomValue >= NUMBER_CAN_MOVE;
     }
 

@@ -14,6 +14,7 @@ public class Main {
         int roundTime = inputView.readInputInt();
 
         RacingGame racingGame = new RacingGame(roundTime, carNameList);
+        racingGame.setMoveRule(new RandomMoveRule());
         racingGame.start();
 
         ResultView resultView = new ResultView();
