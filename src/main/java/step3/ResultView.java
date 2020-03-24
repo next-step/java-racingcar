@@ -20,17 +20,19 @@ public class ResultView {
     }
 
     public void printResult(RacingGame racingGame) {
-        List<Car> carList = racingGame.getCars();
+        Cars cars = racingGame.getCars();
         int roundTime = racingGame.getRoundTime();
 
         for(int i = 0; i < roundTime; i++) {
             printRoundInfo(i + 1);
 
-            for(Car car: carList) {
-                List<Round> roundList = car.getRoundInfoList();
+            CarsIterator carsIterator = new CarsIterator(cars);
+
+            while(carsIterator.hasNext()) {
+                List<Round> roundList = carsIterator.next().getRoundInfoList();
 
                 Round round = roundList.get(i);
-                printMoveRecord(round.getPosition(), car.getCarName());
+                printMoveRecord(round.getPosition(), carsIterator.next().getCarName());
             }
             printView(EMPTY);
         }

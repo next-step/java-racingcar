@@ -8,7 +8,7 @@ public class Cars {
 
     public Cars(String[] carNames) {
         for(int i = 0; i < carNames.length; i++) {
-            cars.add(createCar(carNames[i]));
+            this.cars.add(createCar(carNames[i]));
         }
     }
 
@@ -20,4 +20,13 @@ public class Cars {
     public void clear() {
         this.cars.clear();
     }
+
+    public int getCarsLength() {
+        return cars.size();
+    }
+
+    public Car getCar(int index) {
+        return cars.get(index);
+    }
+
 }
