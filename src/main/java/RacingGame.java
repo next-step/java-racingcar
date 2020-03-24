@@ -17,7 +17,6 @@ public class RacingGame {
 
     private static class InnerRacingGame {
         private static final RacingGame INSTANCE = new RacingGame();
-
     }
 
     static RacingGame getInstance() {
@@ -43,7 +42,6 @@ public class RacingGame {
         }
 
         return results;
-
     }
 
     private static List<Integer> move(List<Integer> cars) {
