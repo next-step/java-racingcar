@@ -15,7 +15,7 @@ public class RacingGameApplication {
         while (!game.isFinish()) {
             game.progress();
 
-            resultView.printCarsPositions(game.getCars());
+            resultView.renderCarMovement(game.getCars());
         }
     }
 }
