@@ -1,4 +1,8 @@
-package racingcar.model;
+package racingcar.controller;
+
+import racingcar.domain.Cars;
+import racingcar.domain.RacingGameSetting;
+import racingcar.domain.Round;
 
 public class RacingGame {
     private final RacingGameSetting setting;
