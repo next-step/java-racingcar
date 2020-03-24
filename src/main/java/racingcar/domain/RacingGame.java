@@ -26,8 +26,8 @@ public class RacingGame {
             return moveCars();
     }
 
-    private void endRace() {
-        ResultView.printWinnerName(RacingWinner.findWinnerName(cars));
+    public List<String> findWinnerNames() {
+        return RacingWinner.findWinnerNames(cars);
     }
 
     public boolean canRace() {
