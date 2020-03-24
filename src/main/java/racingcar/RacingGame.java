@@ -15,11 +15,12 @@ public class RacingGame {
     private List<Car> cars;
 
     public RacingGame(InputData inputData, MoveStrategy moveStrategy) {
-        this.moveStrategy = moveStrategy;
-
         validate(inputData.getNumberOfCars(), inputData.getTryCount());
+
+        this.moveStrategy = moveStrategy;
         numberOfCars = inputData.getNumberOfCars();
         tryCount = inputData.getTryCount();
+
         generateCars();
     }
 

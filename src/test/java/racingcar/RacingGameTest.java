@@ -6,28 +6,31 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class RacingGameTest {
 
     @Test
-    @DisplayName("게임을 진행할 때마다 자동차들은 각각 랜덤하게 전진한다")
+    @DisplayName("게임을 진행해서 자동차가 전진한다면 자동차의 위치가 변화한다")
     public void progressGameMoveCarsByRandom() {
         InputData inputData = new InputData(3, 5);
+        RacingGame game = new RacingGame(inputData, () -> true);
 
-        RacingGame game = new RacingGame(inputData, new RandomMoveStrategy());
+        assertThat(getCarPositions(game.getCars())).contains(0, 0, 0);
 
         game.progress();
+        assertThat(getCarPositions(game.getCars())).contains(1, 1, 1);
+    }
 
-        List<Car> cars = game.getCars();
-
-        assertThat(
-                cars
-                        .stream()
-                        .map(c -> c.getPosition())
-        ).containsExactly(1, 1, 1);
+    private List<Integer> getCarPositions(List<Car> cars) {
+        return cars
+                .stream()
+                .map(c -> c.getPosition())
+                .collect(toList());
     }
 
     @ParameterizedTest
