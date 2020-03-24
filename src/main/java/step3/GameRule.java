@@ -4,7 +4,7 @@ import java.util.*;
 
 public class GameRule {
 
-    private static final int NUMBER_CAN_MOVE = 4;
+    public static final int NUMBER_CAN_MOVE = 4;
 
     public static boolean canMove() {
         return isNumberCanMove(RandomNumberGenerator.generateRandomValue());
