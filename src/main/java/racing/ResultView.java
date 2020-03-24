@@ -20,11 +20,10 @@ public class ResultView {
     }
 
     public void viewResult(int[] carPositions) {
-        int[] var2 = carPositions;
-        int var3 = carPositions.length;
+        int length = carPositions.length;
 
-        for(int var4 = 0; var4 < var3; ++var4) {
-            int carPosition = var2[var4];
+        for(int i = 0; i < length; i++) {
+            int carPosition = carPositions[i];
             System.out.println(printCar(carPosition));
         }
 
