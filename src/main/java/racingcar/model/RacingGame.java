@@ -1,46 +1,28 @@
 package racingcar.model;
 
-import racingcar.policy.MovingPolicy;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class RacingGame {
-    private final int time;
-    private final Cars cars;
-    private final MovingPolicy movingPolicy;
-    private int round;
+    private final RacingGameSetting setting;
+    private Round round;
 
-    public RacingGame(final int time, final int count, final MovingPolicy movingPolicy) {
-        this.time = time;
-        this.cars = ready(count);
-        this.movingPolicy = movingPolicy;
-        round = 0;
+    public RacingGame(final RacingGameSetting racingGameSetting) {
+        this.setting = racingGameSetting;
+        this.round = new Round();
     }
 
     public void play() {
-        cars.move(movingPolicy);
-        round++;
+        moveCars();
+        round = round.next();
     }
 
-    public List<Car> getCars() {
-        return cars.getCars();
+    public Cars getCars() {
+        return setting.getCars();
     }
 
     public boolean isGameOver() {
-        return round == time;
+        return round.getRound() == setting.getTime();
     }
 
-    private Cars ready(final int count) {
-        if (count < 1) {
-            throw new IllegalArgumentException("자동차 갯수가 잘못 되었습니다.");
-        }
-
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            cars.add(new Car());
-        }
-
-        return new Cars(cars);
+    private void moveCars() {
+        getCars().move(setting.getMovingPolicy());
     }
 }
