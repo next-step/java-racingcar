@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import racingcar.util.NumberUtils;
-import racingcar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,13 +22,8 @@ public class RacingGame {
                 .collect(Collectors.toList());
     }
 
-    public void startRace() {
-        while (canRace()) {
-            moveCars();
-            reduceCount();
-            ResultView.nextLine();
-        }
-        endRace();
+    public List<RacingResult> start() {
+            return moveCars();
     }
 
     private void endRace() {
