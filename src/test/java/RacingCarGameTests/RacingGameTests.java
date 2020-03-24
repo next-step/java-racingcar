@@ -1,6 +1,6 @@
 package RacingCarGameTests;
 
-import domain.RacingCarPosition;
+import domain.dto.RacingCarPosition;
 import domain.RacingGame;
 import domain.RacingGameResult;
 import domain.RacingRound;

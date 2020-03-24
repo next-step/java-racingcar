@@ -1,12 +1,16 @@
 package utils;
 
-import domain.RacingCarPosition;
+import domain.dto.RacingCarPosition;
 import domain.RacingRound;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TestUtil {
+    private TestUtil() {
+        throw new AssertionError();
+    }
+
     public static RacingRound makeRacingRoundTestCases(String[] carNames, Integer[] locationPoints) {
         List<RacingCarPosition> racingCarPositions = makeRacingCarPositionsTestCases(carNames, locationPoints);
         return RacingRound.newInstance(racingCarPositions);

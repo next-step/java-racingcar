@@ -1,6 +1,6 @@
 package view;
 
-import domain.RacingCarPosition;
+import domain.dto.RacingCarPosition;
 import domain.RacingGameResult;
 
 import java.util.List;

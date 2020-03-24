@@ -1,20 +1,22 @@
-package domain;
+package domain.dto;
 
-import static utils.RacingCarUtils.validateCarName;
+import domain.RacingCarName;
 
 public class RacingCarPosition {
-    private final String name;
+    private final RacingCarName name;
     private final Integer locationPoint;
 
-    private RacingCarPosition(String name, Integer locationPoint) {
+    private RacingCarPosition(RacingCarName name, Integer locationPoint) {
         this.name = name;
         this.locationPoint = locationPoint;
     }
 
     public static RacingCarPosition newInstance(String name, Integer locationPoint) {
-        validateCarName(name);
-        validateLocationPoint(locationPoint);
+        return newInstance(RacingCarName.newInstance(name), locationPoint);
+    }
 
+    public static RacingCarPosition newInstance(RacingCarName name, Integer locationPoint) {
+        validateLocationPoint(locationPoint);
         return new RacingCarPosition(name, locationPoint);
     }
 
@@ -29,7 +31,7 @@ public class RacingCarPosition {
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     public Integer getLocationPoint() {
