@@ -1,8 +1,8 @@
 package racing;
 
 public class ResultView {
-    RacingVO racingVO;
-    RacingGame racingGame;
+    private RacingVO racingVO;
+    private RacingGame racingGame;
 
     public ResultView(RacingVO racingVO, RacingGame racingGame) {
         this.racingVO = racingVO;

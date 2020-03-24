@@ -3,10 +3,10 @@ package racing;
 import java.util.Scanner;
 
 public class InputView {
-    Scanner scanner;
-    RacingVO racingVO;
-    int carNumber;
-    int count;
+    private Scanner scanner;
+    private RacingVO racingVO;
+    private int carNumber;
+    private int count;
 
     public InputView() {
         scanner = new Scanner(System.in);
