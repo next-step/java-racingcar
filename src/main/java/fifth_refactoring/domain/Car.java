@@ -1,6 +1,6 @@
 package fifth_refactoring.domain;
 
-public class Car implements Comparable{
+public class Car extends Moving implements Comparable{
     private String carName;
     private int carPosition;
 
@@ -17,12 +17,10 @@ public class Car implements Comparable{
         return this.carPosition;
     }
 
-    public void move() {
-        this.carPosition++;
-    }
-
-    public void setCarName(String carName) {
-        this.carName = carName;
+    public void moveCar(boolean ismove) {
+        if (ismove) {
+            this.carPosition++;
+        }
     }
 
     @Override

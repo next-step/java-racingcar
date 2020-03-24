@@ -15,14 +15,6 @@ public class CarActionTest{
     private String systemInStringValue = "";
 
     @Test
-    @DisplayName("랜덤 값 확인")
-    void randomTest(){
-        assertThatThrownBy(() -> {
-            CarAction.random();
-        }).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("0~9만 허용");
-    }
-
-    @Test
     void moveTest(){
         Car car = new Car("test");
         car.move();

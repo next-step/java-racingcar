@@ -14,7 +14,6 @@ public class ResultViewTest {
 
     @Test
     void makeSignTest(){
-        List<Car> carList = new ArrayList();
         Car car = new Car("test1");
         car.move();
         car.move();
