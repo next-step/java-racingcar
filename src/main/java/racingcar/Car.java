@@ -4,15 +4,12 @@ public class Car {
 
     private int position;
 
-    private MoveStrategy moveStrategy;
-
-    public Car(MoveStrategy moveStrategy) {
+    public Car() {
         position = 0;
-        this.moveStrategy = moveStrategy;
     }
 
-    public void move() {
-        if (moveStrategy.isMovable()) {
+    public void move(boolean isMovable) {
+        if (isMovable) {
             position += 1;
         }
     }

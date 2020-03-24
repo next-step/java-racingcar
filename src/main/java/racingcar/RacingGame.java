@@ -8,12 +8,15 @@ import static java.util.stream.Collectors.toList;
 
 public class RacingGame {
 
+    private MoveStrategy moveStrategy;
     private int numberOfCars;
     private int tryCount;
 
     private List<Car> cars;
 
-    public RacingGame(InputData inputData) {
+    public RacingGame(InputData inputData, MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
+
         validate(inputData.getNumberOfCars(), inputData.getTryCount());
         numberOfCars = inputData.getNumberOfCars();
         tryCount = inputData.getTryCount();
@@ -22,7 +25,7 @@ public class RacingGame {
 
     public void progress() {
         for (Car c : cars) {
-            c.move();
+            c.move(moveStrategy.isMovable());
         }
         tryCount -= 1;
     }
@@ -38,7 +41,7 @@ public class RacingGame {
     private void generateCars() {
         cars = IntStream
                 .range(0, numberOfCars)
-                .mapToObj(__ -> new Car(new RandomMoveStrategy()))
+                .mapToObj(__ -> new Car())
                 .collect(toList());
     }
 
