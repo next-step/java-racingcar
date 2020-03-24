@@ -8,6 +8,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class StringUtilsTest {
     @Test
     void gaugeMakerTest() {
-        assertThat(StringUtils.gaugeMaker(4)).isEqualTo("----\n");
+        assertThat(StringUtils.makeGauge(4)).isEqualTo("----\n");
     }
 }
