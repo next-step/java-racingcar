@@ -71,8 +71,8 @@ public class RacingGame {
     private void addWinnerNames(int winnerPosition, Car car) {
         if(winnerPosition == car.getPosition()) {
             this.winnerNames.add(car.getCarName());
-        }
     }
+}
 
     private List<Integer> getFinalPositionList() {
         List<Integer> finalPositionList = new ArrayList<>();
