@@ -24,7 +24,7 @@ class RacingScoreTest {
         charlie.move(() -> true);
 
         RacingScore racingScore = new RacingScore(Arrays.asList(alpha, beta, charlie));
-        List<Car> winner = racingScore.getWinner();
+        List<Car> winner = racingScore.findWinners();
 
         assertThat(winner).containsExactly(alpha, charlie);
     }
