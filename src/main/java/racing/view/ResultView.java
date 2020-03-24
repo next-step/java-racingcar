@@ -4,9 +4,10 @@ import java.util.List;
 
 public class ResultView {
     private static String CAR_STATE_STR = "-";
+    private static String RESULT_INFO_COMMENT = "\n실행 결과";
 
-    public static void printString(String string) {
-        System.out.println(string);
+    public static void printResultInfoComment() {
+        System.out.println(RESULT_INFO_COMMENT);
     }
 
     public static void printCarsState(List<Integer> states) {

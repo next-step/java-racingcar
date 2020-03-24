@@ -11,6 +11,7 @@ public class RacingGame {
 
         Cars cars = new Cars(carCnt);
 
+        ResultView.printResultInfoComment();
         for (int i = 0; i < tryCnt; i++) {
             cars.playRound();
             ResultView.printCarsState(cars.getCarsPositionList());
