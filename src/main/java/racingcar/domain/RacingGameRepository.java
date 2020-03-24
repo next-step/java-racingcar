@@ -5,7 +5,7 @@ import java.util.Map;
 
 public interface RacingGameRepository {
 
-    int save(Cars cars);
+    int saveAll(List<Cars> cars);
 
     Map<Integer, Cars> getGameResultSet();
 

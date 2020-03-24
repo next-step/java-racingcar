@@ -16,8 +16,11 @@ public class InMemoryRacingGameRepository implements RacingGameRepository {
     private int index = RacingGameConstant.NUMBER_ZERO;
 
     @Override
-    public int save(Cars cars) {
-        racingGameResults.putIfAbsent(index++, cars);
+    public int saveAll(List<Cars> allRoundResults) {
+        for (Cars cars : allRoundResults) {
+            racingGameResults.putIfAbsent(index++, cars);
+        }
+
         return index;
     }
 

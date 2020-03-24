@@ -11,10 +11,7 @@ public class RacingGameManager {
     }
 
     public RacingGameResults game(RacingGame racingGame) {
-        for (int i = RacingGameConstant.NUMBER_ZERO; i < racingGame.getRound(); i++) {
-            Cars game = racingGame.roundStart();
-            racingGameRepository.save(game);
-        }
+        racingGameRepository.saveAll(racingGame.start());
 
         return new RacingGameResults(
                 racingGameRepository.getWinners(),
