@@ -11,12 +11,17 @@ import java.util.List;
 
 public class RacingCarController {
     private static final String DELIMITER = ",";
+    private RacingGameService racingGameService;
+
+    public RacingCarController(RacingGameService racingGameService) {
+        this.racingGameService = racingGameService;
+    }
 
     public RacingCarResponseDto startRacingGame(RacingCarRequestDto racingCarRequestDto) {
         String[] racingCarNames = racingCarRequestDto.getRacingCarNames().split(DELIMITER);
-        RacingGameService racingGameService = new RacingGameService(racingCarNames, new RandomMovingStrategy());
-
-        List<RacingScore> racingScores = racingGameService.executeRacingGameNumberOfTimes(racingCarRequestDto.getNumberOfTime());
+        racingGameService.createRacingCar(racingCarNames);
+        List<RacingScore> racingScores = racingGameService
+                .executeRacingGameNumberOfTimes(racingCarRequestDto.getNumberOfTime(), new RandomMovingStrategy());
         List<Car> winners = racingGameService.findWinnerInRacingScores(racingScores);
 
         return new RacingCarResponseDto(racingScores, winners);
