@@ -3,6 +3,7 @@ package racing;
 import java.util.Random;
 
 public class RacingGame {
+    private static final int NUMBER_OF_MOVEMENT_POSSIBLE = 4;
     RacingVO racingVO;
 
     public RacingGame(RacingVO racingVO) {
@@ -19,17 +20,15 @@ public class RacingGame {
                 carPositions[j]++;
             }
         }
-
         racingVO.setCarPositions(carPositions);
         return carPositions;
     }
 
     public boolean isMovable(int randomValue) {
         boolean isMove = false;
-        if (randomValue >= 4) {
+        if (randomValue >= NUMBER_OF_MOVEMENT_POSSIBLE) {
             isMove = true;
         }
-
         return isMove;
     }
 }
