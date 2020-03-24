@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.RacingScore;
-import racingcar.domain.car.RandomMovingStrategy;
 import racingcar.service.RacingGameService;
 
 import java.util.List;

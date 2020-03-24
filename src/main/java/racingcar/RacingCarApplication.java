@@ -7,8 +7,6 @@ import racingcar.service.RacingGameService;
 import racingcar.view.OutputView;
 import racingcar.view.ResultView;
 
-import java.util.Scanner;
-
 public class RacingCarApplication {
 
     public static void main(String[] args) {

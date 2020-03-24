@@ -3,7 +3,6 @@ package racingcar.service;
 import racingcar.domain.RacingScore;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.MovingStrategy;
-import racingcar.domain.car.RandomMovingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
