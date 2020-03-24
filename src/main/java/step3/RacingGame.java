@@ -7,36 +7,26 @@ public class RacingGame {
     private int roundTime;
     private int carCount;
     private String[] carNames;
-    private List<Car> cars = new ArrayList<Car>();
+    private Cars cars;
     private List<String> winnerNames;
     private MoveRule moveRule;
 
-    public RacingGame(int roundTime, String[] carNameList) {
-        this.carNames = carNameList;
-        this.carCount = carNameList.length;
+    public RacingGame(int roundTime, String[] carNames) {
+        this.carNames = carNames;
+        this.carCount = carNames.length;
         this.roundTime = roundTime;
         this.winnerNames = new ArrayList<String>();
+
+        this.cars = new Cars(carNames);
     }
 
     public void start() {
-        createCars(carCount, carNames);
         play();
         setWinner();
     }
 
     public void end() {
         this.cars.clear();
-    }
-
-    private void createCars(int carCount, String[] carNameList) {
-        for(int i = 0; i < carCount; i++) {
-            this.cars.add(createCar(carNameList[i]));
-        }
-    }
-
-    private Car createCar(String carName) {
-        Car car = new Car(carName);
-        return car;
     }
 
     private void play() {
