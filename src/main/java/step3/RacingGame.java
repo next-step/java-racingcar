@@ -8,19 +8,17 @@ public class RacingGame {
     private int roundTime;
     private int carCount;
     private Cars cars;
-    private List<String> winnerNames;
     private MoveRule moveRule;
 
     public RacingGame(int roundTime, String[] carNames) {
         this.cars = new Cars(carNames);
         this.carCount = carNames.length;
         this.roundTime = roundTime;
-        this.winnerNames = new ArrayList<String>();
     }
 
     public void start() {
         play();
-        this.winnerNames = cars.getWinner();
+        cars.setWinnerNames();
     }
 
     public void end() {
@@ -54,11 +52,6 @@ public class RacingGame {
     public Cars getCars() {
         return cars;
     }
-
-    public List<String> getWinnerNames() {
-        return winnerNames;
-    }
-
     public void setMoveRule(MoveRule moveRule) {
         this.moveRule = moveRule;
     }

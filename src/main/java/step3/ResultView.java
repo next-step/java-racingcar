@@ -29,14 +29,16 @@ public class ResultView {
             CarsIterator carsIterator = new CarsIterator(cars);
 
             while(carsIterator.hasNext()) {
-                List<Round> roundList = carsIterator.next().getRoundInfoList();
+                Car car = carsIterator.next();
+
+                List<Round> roundList = car.getRoundInfoList();
 
                 Round round = roundList.get(i);
-                printMoveRecord(round.getPosition(), carsIterator.next().getCarName());
+                printMoveRecord(round.getPosition(), car.getCarName());
             }
             printView(EMPTY);
         }
-        printWinner(racingGame.getWinnerNames());
+        printWinner(cars.getWinnerNames());
     }
 
     private void printMoveRecord(int position, String carName) {

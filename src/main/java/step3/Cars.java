@@ -52,14 +52,17 @@ public class Cars {
         return Collections.max(finalPositions);
     }
 
-    public List<String> getWinner() {
-        List<String> winnerNames = new ArrayList<String>();
+    public void setWinnerNames() {
         int winnerPosition = getMaxPosition(getFinalPositionList());
 
         for(Car car: cars) {
             addWinnerName(winnerPosition, car);
         }
-        return winnerNames;
+        this.winnerNames = winnerNames;
+    }
+
+    public List<String> getWinnerNames() {
+        return this.winnerNames;
     }
 
     public void addWinnerName(int winnerPosition, Car car) {
