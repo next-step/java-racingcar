@@ -21,26 +21,25 @@ public class GameProgress {
         showWinner(racingGame);
     }
 
-    public int[] move(RacingGame racingGame) {
+    public void move(RacingGame racingGame) {
         Random random = new Random();
 
-        for (int i = 0; i < racingGame.getCarPosition().length; i++) {
+        for (int i = 0; i < racingGame.getCars().length; i++) {
             int ranCount = random.nextInt(RANDOM_BOUND);
-            racingGame.getCarPosition()[i] += (ranCount >= BASE_POINT) ? DISTANCE : ZERO;
+            int position = racingGame.getCars()[i].getPosition();
+            racingGame.getCars()[i].setPosition( position += (ranCount >= BASE_POINT) ? DISTANCE : ZERO);
         }
-
-        return racingGame.getCarPosition();
     }
 
     public void showWinner(RacingGame racingGame) {
         int max = 0;
-        for (int i = 0; i < racingGame.getCarPosition().length; i++) {
-            max = Math.max(racingGame.getCarPosition()[i], max);
+        for (int i = 0; i < racingGame.getCars().length; i++) {
+            max = Math.max(racingGame.getCars()[i].getPosition(), max);
         }
 
         String winners = "";
-        for (int i = 0; i < racingGame.getCarPosition().length; i++) {
-            winners += (racingGame.getCarPosition()[i] == max) ? racingGame.getCarNames()[i] + SPLIT_CHAR : "";
+        for (int i = 0; i < racingGame.getCars().length; i++) {
+            winners += (racingGame.getCars()[i].getPosition() == max) ? racingGame.getCars()[i].getName() + SPLIT_CHAR : "";
         }
 
         winners = winners.substring(0, winners.length() - 1);
