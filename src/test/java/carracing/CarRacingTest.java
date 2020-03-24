@@ -27,7 +27,7 @@ public class CarRacingTest {
   @Test
   public void raceTest() {
     CarRacing carRacing = new CarRacing(ROUND, CAR_COUNT);
-    carRacing.race(false);
+    carRacing.race();
 
     assertThat(carRacing.getCars()).hasSize(CAR_COUNT);
     carRacing.getCars()

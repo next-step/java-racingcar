@@ -11,9 +11,9 @@ public class ResultView {
   private Integer totalRound;
   private List<Car> cars;
 
-  public ResultView(CarRacing carRacing) {
-    cars = carRacing.getCars();
-    totalRound = carRacing.getTotalRound();
+  public ResultView(List<Car> cars, Integer totalRound) {
+    this.cars = cars;
+    this.totalRound = totalRound;
   }
 
   public void show() {

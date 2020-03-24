@@ -1,6 +1,7 @@
 package carracing;
 
 import carracing.model.Car;
+import carracing.util.ProbabilityUtil;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +18,7 @@ public class CarTest {
     Car car = new Car();
 
     for (int currentRound = INITIAL_ROUND; currentRound < TOTAL_ROUND;) {
-      car.move();
+      car.move(ProbabilityUtil.FOURTY_PERCENT);
       List<Integer> positions = car.getPositions();
       Integer beforePosition = positions.get(currentRound);
       Integer afterPosition = positions.get(++currentRound);
@@ -26,12 +27,12 @@ public class CarTest {
   }
 
   @Test
-  public void moveIfTest() {
+  public void moveCertainlyTest() {
     Car car = new Car();
     Integer currentRound = INITIAL_ROUND;
-    car.moveIf(false);
+    car.move(ProbabilityUtil.ZERO_PERCENT);
     assertThat(car.getPositions().get(++currentRound)).isEqualTo(INITIAL_POSITION);
-    car.moveIf(true);
+    car.move(ProbabilityUtil.HUNDRED_PRECENT);
     assertThat(car.getPositions().get(++currentRound)).isEqualTo(INITIAL_POSITION + MOVED_ONCE);
   }
 }

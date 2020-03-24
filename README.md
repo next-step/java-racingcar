@@ -14,6 +14,5 @@
    - race method
 - Car class
    - move method 
-   - moveIf method
 - InputView class
 - ResultView class

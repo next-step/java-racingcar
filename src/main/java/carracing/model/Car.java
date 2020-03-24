@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.function.BooleanSupplier;
+import java.util.function.Supplier;
 
 public class Car {
 
-  private static final Integer RANDOM_RANGE = 10;
-  private static final Integer MOVE_CRITERION = 3;
   public static final Integer INITIAL_POSITION = 1;
 
   private List<Integer> positions;
@@ -21,19 +21,11 @@ public class Car {
     return positions;
   }
 
-  public void move() {
-    moveIf(canMove());
-  }
-
-  public void moveIf(boolean canMove) {
+  public void move(BooleanSupplier canMove) {
     Integer nextPosition = positions.get(positions.size() - 1);
-    if (canMove) {
+    if (canMove.getAsBoolean()) {
       nextPosition++;
     }
     positions.add(nextPosition);
-  }
-
-  private boolean canMove() {
-    return new Random().nextInt(RANDOM_RANGE) > MOVE_CRITERION;
   }
 }
