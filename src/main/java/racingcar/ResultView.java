@@ -6,6 +6,8 @@ import java.util.stream.Stream;
 
 public class ResultView {
 
+    private static final String CAR_MOVEMENT_MARKER = "-";
+
     public void printGameResult() {
         print("실행 결과");
     }
@@ -17,7 +19,7 @@ public class ResultView {
     public void renderCarMovement(List<Car> cars) {
         for (Car c : cars) {
             print(Stream
-                    .generate(() -> "-")
+                    .generate(() -> CAR_MOVEMENT_MARKER)
                     .limit(c.getPosition())
                     .collect(Collectors.joining()));
         }
