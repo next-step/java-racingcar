@@ -10,7 +10,6 @@ public class InputView {
 
     public InputView() {
         scanner = new Scanner(System.in);
-        racingVO = RacingVO.getInstance();
     }
 
     public RacingVO inputValue() {
@@ -22,9 +21,7 @@ public class InputView {
     }
 
     public RacingVO settingRacingVO(int carNumber, int count) {
-        racingVO.setCarNumber(carNumber);
-        racingVO.setCount(count);
-        racingVO.setCarPositions(new int[racingVO.getCarNumber()]);
+        racingVO = new RacingVO(carNumber,count,new int[carNumber]);
         return racingVO;
     }
 
