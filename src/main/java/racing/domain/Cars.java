@@ -1,27 +1,39 @@
 package racing.domain;
 
-import org.assertj.core.util.Lists;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    public Cars(int carNum) {
+    private List<Car> cars;
 
+    public Cars(int carNum) {
+        cars = new ArrayList<>();
+
+        for (int i = 0; i < carNum; i++) {
+            cars.add(new Car());
+        }
     }
 
     public Cars(List<Car> carsList) {
-
+        cars = carsList;
     }
 
     public int size() {
-        return -1;
+        return cars.size();
     }
 
     public List<Car> getList() {
-        return null;
+        return cars;
     }
 
     public List<Integer> getCarsPositionList() {
-        return Lists.emptyList();
+        List<Integer> positionList = new ArrayList<>();
+
+        for (Car car : cars) {
+            positionList.add(car.getPosition());
+        }
+
+        return positionList;
     }
 }
