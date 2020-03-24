@@ -2,6 +2,8 @@ package racingcar.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Cars;
+import racingcar.domain.RacingGameSetting;
 import racingcar.policy.MovingPolicy;
 import racingcar.policy.RandomMovingPolicy;
 

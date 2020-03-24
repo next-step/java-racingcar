@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.domain;
 
 public final class Round {
     private static final int DEFAULT_ROUND = 0;

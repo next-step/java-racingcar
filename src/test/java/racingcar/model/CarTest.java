@@ -3,6 +3,7 @@ package racingcar.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
 import racingcar.policy.MovingPolicy;
 import racingcar.policy.fake.SuccessMovingPolicy;
 
