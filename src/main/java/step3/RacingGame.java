@@ -47,7 +47,7 @@ public class RacingGame {
     }
 
     private void setWinner() {
-        List<Integer> finalPositionList = getFinalPositionList();
+        List<Integer> finalPositionList = cars.getFinalPositionList();
         int winnerPosition = RandomMoveRule.getMaxPosition(finalPositionList);
         CarsIterator carsIterator = new CarsIterator(this.cars);
 
@@ -60,17 +60,6 @@ public class RacingGame {
         if(winnerPosition == car.getPosition()) {
             this.winnerNames.add(car.getCarName());
         }
-    }
-
-
-    private List<Integer> getFinalPositionList() {
-        List<Integer> finalPositionList = new ArrayList<>();
-        CarsIterator carsIterator = new CarsIterator(this.cars);
-
-        while(carsIterator.hasNext()) {
-            finalPositionList.add(carsIterator.next().getPosition());
-        }
-        return finalPositionList;
     }
 
     public int getRoundTime() {

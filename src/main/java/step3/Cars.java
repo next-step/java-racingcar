@@ -34,4 +34,13 @@ public class Cars {
         return cars.get(index);
     }
 
+    public List<Integer> getFinalPositionList() {
+        List<Integer> finalPositionList = new ArrayList<>();
+
+        for(Car car: cars) {
+            finalPositionList.add(car.getPosition());
+        }
+        return finalPositionList;
+    }
+
 }
