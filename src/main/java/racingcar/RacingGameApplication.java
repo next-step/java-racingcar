@@ -10,11 +10,11 @@ public class RacingGameApplication {
     public static void main(String[] args) {
         InputView inputView = new InputView();
 
-        RacingGame racingGame = new RacingGame(inputView.getNumberOfCars(), inputView.getTryCount());
-        racingGame.run();
-        List<Car> cars = racingGame.getResult();
+        RacingGame racingGame = new RacingGame(new RacingCarMovableStrategy(), inputView.getNumberOfCars(), inputView.getTryCount());
+        List<List<Integer>> raceResult = racingGame.run();
+//        List<Car> cars = racingGame.getResult();
 
         ResultView resultView = new ResultView();
-        resultView.print(cars, inputView.getTryCount());
+        resultView.print(raceResult);
     }
 }

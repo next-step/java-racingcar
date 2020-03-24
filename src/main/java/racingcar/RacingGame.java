@@ -10,37 +10,40 @@ public class RacingGame {
 
     private int tryCount;
     private List<Car> cars = new ArrayList<>();
+    private final MovableStrategy movableStrategy;
 
-    public RacingGame(int numberOfCars, int tryCount) {
-        setCars(numberOfCars);
+    public RacingGame(MovableStrategy movableStrategy, int numberOfCars, int tryCount) {
+        this.movableStrategy = movableStrategy;
+        createCars(numberOfCars);
         this.tryCount = tryCount;
     }
 
-    public void run() {
-        for (int i = 0; i < tryCount; i++) {
-            moveAll();
-        }
-    }
-
-    public List<Car> getResult() {
-        return cars;
-    }
-
-    private void setCars(int numberOfCars) {
+    private void createCars(int numberOfCars) {
         for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
+            Car car = new Car(movableStrategy);
+            cars.add(car);
         }
+    }
+
+    public List<List<Integer>> run() {
+        List<List<Integer>> roundPositions = new ArrayList<>();
+        for (int i = 0; i < tryCount; i++) {
+            roundPositions.add(moveAll());
+        }
+        return roundPositions;
+    }
+
+    private List<Integer> moveAll() {
+        List<Integer> positions = new ArrayList<>();
+        for (Car car : cars) {
+            positions.add(car.moveIfPossible(getRandom()));
+        }
+        return positions;
     }
 
     private int getRandom() {
         Random random = new Random();
         return random.nextInt(MAX_RANDOM_BOUND);
-    }
-
-    private void moveAll() {
-        for (Car car : cars) {
-            car.move(getRandom());
-        }
     }
 
 }

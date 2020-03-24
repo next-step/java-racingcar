@@ -1,31 +1,31 @@
 package racingcar.ui;
 
-import racingcar.Car;
-
 import java.util.List;
 
 public class ResultView {
 
-    public void print(List<Car> cars, int tryCount) {
+    public void print(List<List<Integer>> result) {
         System.out.println("\n실행 결과");
 
-        for (int round = 0; round < tryCount; round++) {
-            printByRound(cars, round);
+        int round = 1;
+        for (List<Integer> positions : result) {
+            System.out.println("=== ROUND " + round++ + "===");
+            printRoundResult(positions);
         }
     }
 
-    private void printByRound(List<Car> cars, int round) {
-        System.out.println("== ROUND " + (round+1) + " ==");
-        for (Car car : cars) {
-            printPosition(car.getCarPositions().get(round));
-            System.out.println();
+    private void printRoundResult(List<Integer> positions) {
+        for (Integer position : positions) {
+            printPosition(position);
         }
     }
 
     private void printPosition(int position) {
+        StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < position; i++) {
-            System.out.print("-");
+            stringBuilder.append("-");
         }
+        System.out.println(stringBuilder.toString());
     }
 
 }

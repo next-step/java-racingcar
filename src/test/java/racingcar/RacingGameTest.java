@@ -10,9 +10,4 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RacingGameTest {
 
-    @Test
-    void create() {
-        RacingGame racingGame = new RacingGame(3, 4);
-        assertThat(racingGame.getResult().size()).isEqualTo(3);
-    }
 }
