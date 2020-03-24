@@ -31,8 +31,7 @@ public class InputView {
     public int validNumberCheck(int checkVal) {
         if (checkVal <= 0) {
             throw new IllegalArgumentException("자동차 대수 및 시도할 회수는 1 이상이어야 합니다.");
-        } else {
-            return checkVal;
         }
+        return checkVal;
     }
 }
