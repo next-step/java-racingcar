@@ -1,6 +1,7 @@
 package step3;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
@@ -11,15 +12,15 @@ public class RacingGame {
     private MoveRule moveRule;
 
     public RacingGame(int roundTime, String[] carNames) {
+        this.cars = new Cars(carNames);
         this.carCount = carNames.length;
         this.roundTime = roundTime;
         this.winnerNames = new ArrayList<String>();
-        this.cars = new Cars(carNames);
     }
 
     public void start() {
         play();
-        setWinner();
+        this.winnerNames = cars.getWinner();
     }
 
     public void end() {
@@ -44,22 +45,6 @@ public class RacingGame {
             car.move(presentRoundTime);
         }
         car.completeRound(presentRoundTime);
-    }
-
-    private void setWinner() {
-        List<Integer> finalPositionList = cars.getFinalPositionList();
-        int winnerPosition = RandomMoveRule.getMaxPosition(finalPositionList);
-        CarsIterator carsIterator = new CarsIterator(this.cars);
-
-        while(carsIterator.hasNext()) {
-            addWinnerNames(winnerPosition, carsIterator.next());
-        }
-    }
-
-    private void addWinnerNames(int winnerPosition, Car car) {
-        if(winnerPosition == car.getPosition()) {
-            this.winnerNames.add(car.getCarName());
-        }
     }
 
     public int getRoundTime() {

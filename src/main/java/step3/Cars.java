@@ -2,6 +2,7 @@ package step3;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -34,6 +35,18 @@ public class Cars {
         return cars.get(index);
     }
 
+    public List<String> getWinner() {
+        List<String> winnerNames = new ArrayList<String>();
+        int winnerPosition = getMaxPosition(getFinalPositionList());
+
+        for(Car car: cars) {
+            if(isWinner(winnerPosition, car)) {
+                winnerNames.add(car.getCarName());
+            }
+        }
+        return winnerNames;
+    }
+
     public List<Integer> getFinalPositionList() {
         List<Integer> finalPositionList = new ArrayList<>();
 
@@ -41,6 +54,17 @@ public class Cars {
             finalPositionList.add(car.getPosition());
         }
         return finalPositionList;
+    }
+
+    public static int getMaxPosition(List<Integer> finalPositions) {
+        return Collections.max(finalPositions);
+    }
+
+    private boolean isWinner(int winnerPosition, Car car) {
+        if(winnerPosition == car.getPosition()) {
+            return true;
+        }
+        return false;
     }
 
 }

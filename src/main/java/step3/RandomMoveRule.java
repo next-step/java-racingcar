@@ -14,9 +14,4 @@ public class RandomMoveRule implements MoveRule {
         return randomValue >= NUMBER_CAN_MOVE;
     }
 
-    //TODO: Move와 상관없음. 이관 대상.
-    public static int getMaxPosition(List<Integer> finalPositions) {
-        return Collections.max(finalPositions);
-    }
-
 }
