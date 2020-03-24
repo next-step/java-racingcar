@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class RacingGame {
+public class RacingController {
 
     public static final int FIRST = 1;
     private int carCount;
@@ -14,7 +14,7 @@ public class RacingGame {
     private final RandomNumber randomNumber = new RandomNumber();
     private Map<Integer, List<Integer>> record;
 
-    public RacingGame(InputView inputView) {
+    public RacingController(InputView inputView) {
         carCount = inputView.getCarCount();
         tryCount = inputView.getTryCount();
         cars = new ArrayList<>();
