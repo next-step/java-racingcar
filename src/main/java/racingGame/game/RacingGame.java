@@ -8,33 +8,21 @@ import java.util.List;
 
 public class RacingGame {
 
-    private final MovingRule movingRule;
     private Participants participants;
-    private int round;
+    private Round round;
 
-    public RacingGame(MovingRule movingRule) {
-        this.movingRule = movingRule;
+    public RacingGame(String participants, int round) {
+        this(new Participants(participants), round);
     }
 
-    public void participate(Participants participants, int round) {
-        verifyParticipate(participants, round);
+    public RacingGame(Participants participants, int round) {
         this.participants = participants;
-        this.round = round;
+        this.round = new Round(round);
     }
 
-    private void verifyParticipate(Participants Participants, int round) {
-        if (Participants == null) {
-            throw new IllegalArgumentException();
-        }
-        if (round < 0) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public GameResult start() {
-        verifyParticipate(participants, round);
+    public GameResult start(MovingRule movingRule) {
         List<RoundScore> result = new ArrayList<>();
-        for (int i = 0; i < round; i++) {
+        for (int i = 0; i < round.getRound(); i++) {
             result.add(participants.startRound(movingRule));
         }
         return integrateGameResult(result);
