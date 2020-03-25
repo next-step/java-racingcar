@@ -15,7 +15,6 @@ public class RacingGame {
     public void raceStart() {
         for (int i = 0; i < this.racingTime; i++){
             this.racingCars.race(this.racingStrategy);
-            this.racingCars.showCurrentStatus();
         }
     }
 }

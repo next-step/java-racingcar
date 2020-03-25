@@ -1,6 +1,5 @@
 package CarRacing;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,14 +21,5 @@ public class RacingCars {
         for (Car car : racingCars) {
             car.move(racingStrategy);
         }
-    }
-
-    public void showCurrentStatus() {
-        final StringBuilder sb = new StringBuilder();
-        for (Car car : racingCars) {
-            sb.append(StringUtils.makeGauge(car.getCurrentPosition()));
-        }
-
-        System.out.println(sb.toString());
     }
 }

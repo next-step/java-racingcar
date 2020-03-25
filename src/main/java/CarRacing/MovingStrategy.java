@@ -1,5 +1,7 @@
 package CarRacing;
 
+import CarRacing.Utils.RandomUtils;
+
 public class MovingStrategy implements RacingStrategy {
     static final int WINNING_POINT = 4;
 

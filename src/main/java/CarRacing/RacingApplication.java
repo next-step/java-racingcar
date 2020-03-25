@@ -1,5 +1,7 @@
 package CarRacing;
 
+import CarRacing.Utils.StringUtils;
+
 import java.util.Scanner;
 
 public class RacingApplication {

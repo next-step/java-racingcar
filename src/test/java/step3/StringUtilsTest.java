@@ -1,6 +1,6 @@
 package step3;
 
-import CarRacing.StringUtils;
+import CarRacing.Utils.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

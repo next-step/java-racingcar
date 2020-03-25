@@ -1,4 +1,4 @@
-package CarRacing;
+package CarRacing.Utils;
 
 public class StringUtils {
     static private final String BAR = "-";
