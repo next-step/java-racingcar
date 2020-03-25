@@ -40,6 +40,6 @@ public class RacingGame {
     }
 
     private void moveCars() {
-        getCars().move(new RandomMovingPolicy());
+        cars.move(new RandomMovingPolicy());
     }
 }
