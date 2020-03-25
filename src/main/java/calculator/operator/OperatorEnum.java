@@ -8,14 +8,8 @@ public enum OperatorEnum {
 
     PLUS("+", (operand1, operand2) -> operand1 + operand2),
     MINUS("-", (operand1, operand2) -> operand1 - operand2),
-    MULTIPLY("*", (operand1, operand2) -> {
-        double result = operand1 * operand2;
-        return Math.round(result * 100) / 100.0;
-    }),
-    DIVISION("/", (operand1, operand2) -> {
-        double result = operand1 / operand2;
-        return Math.round(result * 100) / 100.0;
-    });
+    MULTIPLY("*", (operand1, operand2) -> round(operand1 * operand2)),
+    DIVISION("/", (operand1, operand2) -> round(operand1 / operand2));
 
     private String keyword;
     Calculatable calculatable;
@@ -38,5 +32,9 @@ public enum OperatorEnum {
                 .filter(operator -> operator.getKeyword().equals(operatorKeyword))
                 .findFirst()
                 .orElseThrow(() -> new OperatorNotFoundException("일치하는 연산자를 찾을 수 없습니다."));
+    }
+
+    public static double round(double number) {
+        return Math.round(number * 100) / 100.0;
     }
 }

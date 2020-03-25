@@ -1,6 +1,10 @@
-package racingcar;
+package racingcar.controller;
 
-import java.util.ArrayList;
+import racingcar.domain.RacingGame;
+import racingcar.domain.Cars;
+import racingcar.view.RacingGameView;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class RacingGameRun {
@@ -17,14 +21,10 @@ public class RacingGameRun {
         System.out.println("시도할 회수는 몇 회 인가요?");
         int runCount = scanner.nextInt();
 
+        List<Cars> carLoos = racingGame.startRacing(runCount);
         System.out.println("실행 결과");
 
-        for (int i = 0; i < runCount; i++) {
-            racingGame.startRacing(1);
-            racingGameView.viewCarPositions();
-        }
-
-        ArrayList<Car> winners = racingGame.getWinners(racingGame.getCurrentCars());
-        racingGameView.viewWinners(winners);
+        racingGameView.viewResult(carLoos);
+        racingGameView.viewWinners(carLoos.get(carLoos.size() - 1));
     }
 }
