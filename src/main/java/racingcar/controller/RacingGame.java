@@ -24,7 +24,7 @@ public class RacingGame {
     }
 
     public boolean isGameOver() {
-        return round.getRound() == setting.getTime();
+        return round.isEnd(setting.getTime());
     }
 
     private void moveCars() {
