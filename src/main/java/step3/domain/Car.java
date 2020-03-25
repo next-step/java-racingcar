@@ -21,7 +21,7 @@ public class Car {
         completeRound(presentRoundTime);
     }
 
-    public void completeRound(int roundTime) {
+    private void completeRound(int roundTime) {
         Round round = new Round();
 
         round.setPosition(this.position);
