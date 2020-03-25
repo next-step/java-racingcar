@@ -50,7 +50,7 @@ public class Cars {  //TODO: 일급콜렉션화 시키기
         return winnerNames;
     }
 
-    public boolean isWinner(int position) {
+    private boolean isWinner(int position) {
         int winnerPosition = getMaxPosition(getFinalPositionList());
 
         if(winnerPosition == position) {
@@ -59,11 +59,11 @@ public class Cars {  //TODO: 일급콜렉션화 시키기
         return false;
     }
 
-    public static int getMaxPosition(List<Integer> finalPositions) {
+    private static int getMaxPosition(List<Integer> finalPositions) {
         return Collections.max(finalPositions);
     }
 
-    public List<Integer> getFinalPositionList() {
+    private List<Integer> getFinalPositionList() {
         List<Integer> finalPositionList = new ArrayList<>();
 
         for(Car car: cars) {

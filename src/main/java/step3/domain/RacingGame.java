@@ -1,16 +1,12 @@
 package step3.domain;
 
-import java.util.List;
-
 public class RacingGame {
     private int roundTime;
-    private int carCount;
     private Cars cars;
     private MoveRule moveRule;
 
     public RacingGame(int roundTime, String[] carNames) {
         this.cars = new Cars(carNames);
-        this.carCount = carNames.length;
         this.roundTime = roundTime;
     }
 
