@@ -11,12 +11,12 @@ public class Main {
         InputView inputView = new InputView();
 
         inputView.printCarNameListInfo();
-        String[] carNameList = inputView.readInputString();
+        String[] carNames = inputView.readInputString();
 
         inputView.printRoundTimeInfo();
         int roundTime = inputView.readInputInt();
 
-        RacingGame racingGame = new RacingGame(roundTime, carNameList);
+        RacingGame racingGame = new RacingGame(roundTime, carNames);
         racingGame.setMoveRule(new RandomMoveRule());
         racingGame.start();
 
