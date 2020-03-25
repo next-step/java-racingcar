@@ -13,7 +13,8 @@ public class OutputView {
         Output output;
         for (Car car : cars) {
             output = new Output();
-            System.out.print(car.getName() + " : ");
+            // TODO : 디미터법칙
+            System.out.print(car.getName().toString() + " : ");
             output.mappingToBar(car.getDistance());
             print(output.getBar());
         }
