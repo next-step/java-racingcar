@@ -49,6 +49,16 @@ public class RacingGameTest {
     }
 
     @Test
+    @DisplayName("자동차 경주가 끝나면 우승자를 구할 수 있다")
+    public void raceEndGetWinners() {
+        Cars cars = new Cars(Arrays.asList(new Car("수형", 2), new Car("재성", 3), new Car("성현", 4)));
+
+        List<String> winners = cars.getWinners();
+
+        assertThat(winners).containsExactly("성현");
+    }
+
+    @Test
     @DisplayName("입력된 차 대수가 1보다 작을 때 IllegalArgumentException이 발생한다")
     public void inputInvalidNumberOfCarsThrowIllegalArgumentException() {
         InputData inputData = new InputData(Arrays.asList(), 3);
