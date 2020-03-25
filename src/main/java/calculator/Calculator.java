@@ -1,64 +1,36 @@
 package calculator;
 
-import java.util.List;
-import java.util.Objects;
-
 public class Calculator {
     private static final String INPUT_DELIMITER = " ";
 
-    private static final String EXCEPTION_MSG_NULL_INPUT = "문자열을 입력해 주세요!";
-    private static final String EXCEPTION_MSG_EMPTY_INPUT = "사칙연산을 위한 문자열에는 3개 이상의 인자가 필요합니다!";
-    private static final String EXCEPTION_MSG_INVALID_OPERATION = "잘못된 연산자를 입력하였습니다!";
-    private static final String EXCEPTION_MSG_INVALID_OPERAND = "피연산자는 숫자여야 합니다!";
-
     public int calculate(String input) {
-        checkValidInput(input);
-        checkValidInputFormat(input);
+        ValidChecker.checkValidInput(input);
 
         String[] inputs = input.split(INPUT_DELIMITER);
+        ValidChecker.checkInputCountComputable(inputs);
+
         int result = Integer.parseInt(inputs[0]);
-        for (int operationIdx = 1; operationIdx <= inputs.length - 2; operationIdx+=2) {
+        int maxOperationIdx = inputs.length - 2;
+        checkValidFormatForOperate(inputs, 0);
+
+        for (int operationIdx = 1; operationIdx <= maxOperationIdx; operationIdx+=2) {
+            checkValidFormatForOperate(inputs, operationIdx);
             result = Operation.getOperationByValue(inputs[operationIdx]).operate(result, Integer.parseInt(inputs[operationIdx + 1]));
         }
 
         return result;
     }
 
-    public void checkValidInput(String input) {
-        if (Objects.isNull(input)) {
-            throw new IllegalArgumentException(EXCEPTION_MSG_NULL_INPUT);
-        }
+    private void checkValidFormatForOperate(String[] inputs, int idx) {
+        ValidChecker.checkValidFormat(inputs[idx], isOperationIdx(idx));
 
-        if (input.split(INPUT_DELIMITER).length < 3) {
-            throw new IllegalArgumentException(EXCEPTION_MSG_EMPTY_INPUT);
-        }
-    }
-
-
-    public void checkValidInputFormat(String input) {
-        int idx = 0;
-        for (String string : input.split(INPUT_DELIMITER)) {
-            checkValidFormat(string, idx % 2 == 1);
-            ++idx;
+        // index 가 연산자의 index 값일 경우 다음에 오는 피연산자의 유효성도 확인 해 주어야 한다.
+        if (isOperationIdx(idx)) {
+            ValidChecker.checkValidFormat(inputs[idx + 1], isOperationIdx(idx + 1));
         }
     }
 
-    private void checkValidFormat(String input, boolean isOperation) {
-        if (!isOperation) {
-            checkValidOperand(input);
-            return;
-        }
-
-        if (!Operation.isSupportedOperation(input)) {
-            throw new IllegalArgumentException(EXCEPTION_MSG_INVALID_OPERATION);
-        }
-    }
-
-    private void checkValidOperand(String input) {
-        try {
-            Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(EXCEPTION_MSG_INVALID_OPERAND);
-        }
+    public static boolean isOperationIdx(int idx) {
+        return idx % 2 == 1;
     }
 }

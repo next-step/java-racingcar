@@ -15,38 +15,11 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"", " ", "   "})
-    @DisplayName("입력 값이 null 이거나 빈 공백 문자일 경우 IllegalArgumentException throw 테스트")
-    public void emptyInputThrowExceptionTest(String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.checkValidInput(input);
-        });
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"1", "1 + "})
-    @DisplayName("입력 값의 갯수가 연산이 불가능한 문자일 경우 IllegalArgumentException throw 테스트")
-    public void invalidInputThrowExceptionTest(String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.checkValidInput(input);
-        });
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"a + 3"})
-    @DisplayName("입력 값이 숫자가 아닌 문자가 있는 경우 IllegalArgumentException throw 테스트")
-    public void IllegalValueInputThrowExceptionTest(String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.checkValidInputFormat(input);
-        });
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"1 % 2", "1 | 2"})
-    @DisplayName("입력 값이 사칙연산 기호가 아닌 경우 IllegalArgumentException throw 테스트")
+    @ValueSource(strings = {"a + 3", "1 % 2", "1 | 2"})
+    @DisplayName("입력받은 값에 연산이 불가능 한 문자 조합이 있는 경우 IllegalArgumentException throw 테스트")
     public void illegalOperatorInputThrowExceptionTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.checkValidInputFormat(input);
+            calculator.calculate(input);
         });
     }
 
