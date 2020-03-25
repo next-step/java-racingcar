@@ -26,7 +26,7 @@ public class RacingGameSetting {
         String[] names = carNames.split(CAR_NAME_SEPARATOR);
         List<Car> cars = new ArrayList<>();
         for (String name : names) {
-            cars.add(new Car(new CarName(name), Car.DEFAULT_DISTANCE));
+            cars.add(new Car(new CarName(name), new Distance()));
         }
         return new Cars(cars);
     }

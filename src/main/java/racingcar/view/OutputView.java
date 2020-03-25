@@ -15,7 +15,7 @@ public class OutputView {
             output = new Output();
             // TODO : 디미터법칙
             System.out.print(car.getName().toString() + " : ");
-            output.mappingToBar(car.getDistance());
+            output.mappingToBar(car.currentDistance().toInt());
             print(output.getBar());
         }
         nextLine();

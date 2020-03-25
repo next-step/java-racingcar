@@ -7,6 +7,7 @@ public class Winner {
     private final String WIN_MESSAGE = "가 최종 우승했습니다.";
     private final String WINNER_JOIN_EXPRESSION = ", ";
     private final String NOT_EXIST_WINNER = "";
+
     private Cars cars;
 
     public Winner(final Cars cars) {
@@ -38,7 +39,7 @@ public class Winner {
     }
 
     private String getSameRank(final Car winner, final Car car) {
-        if (winner.getDistance() == car.getDistance()) {
+        if (winner.currentDistance().equals(car.currentDistance())) {
             return WINNER_JOIN_EXPRESSION + car.getName();
         }
         return NOT_EXIST_WINNER;
