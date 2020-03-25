@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
+import racingcar.domain.CarName;
 import racingcar.policy.MovingPolicy;
 import racingcar.policy.fake.SuccessMovingPolicy;
 
@@ -16,7 +17,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car("pobi", DEFAULT_DISTANCE);
+        car = new Car(new CarName("pobi"), DEFAULT_DISTANCE);
         movingPolicy = new SuccessMovingPolicy();
     }
 
