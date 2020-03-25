@@ -51,8 +51,8 @@ public class RacingGame {
         return new RacingResult(car);
     }
 
-    public void reduceCount() {
-        this.raceTime = raceTime - 1;
+    private void reduceCount() {
+        this.raceTime = raceTime - NumberUtils.REDUCE_STEP;
     }
 
     private boolean canMove() {
