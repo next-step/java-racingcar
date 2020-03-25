@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.controller.RacingGame;
-import racingcar.domain.RacingGameSetting;
+import racingcar.domain.Round;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,12 +13,10 @@ class RacingGameTest {
     private final int TIME = 3;
     private final int COUNT = 3;
     private RacingGame racingGame;
-    private RacingGameSetting setting;
 
     @BeforeEach
     void setUp() {
-        setting = new RacingGameSetting(CAR_NAMES, TIME);
-        racingGame = new RacingGame(setting);
+        racingGame = new RacingGame(CAR_NAMES, new Round(TIME));
     }
 
     @DisplayName("count 만큼 자동차 객체 생성을 성공한다.")
