@@ -1,8 +1,21 @@
 package CarRacing;
 
 public class StringUtils {
-    static final private String BAR = "-";
-    static final private String LINE_BREAK = "\n";
+    static private final String BAR = "-";
+    static private final String LINE_BREAK = "\n";
+    static private final String EMPTY_STRING = "";
+
+    private static void validateInputString(final String inputStr) {
+        if (inputStr == null || inputStr.trim().equals(EMPTY_STRING)) {
+            throw new IllegalArgumentException("Empty string not allowed in this function");
+        }
+    }
+
+    private static void validateStringArray(final String[] strArray) {
+        if (strArray.length == 0) {
+            throw new IllegalArgumentException("Array length must be greater than zero");
+        }
+    }
 
     public static String makeGauge(final int count) {
         final StringBuilder sb = new StringBuilder();
@@ -15,6 +28,9 @@ public class StringUtils {
     }
 
     public static String[] splitStringToStringArr(final String inputString) {
-        return inputString.split(",");
+        validateInputString(inputString);
+        final String[] strArray = inputString.split(",");
+        validateStringArray(strArray);
+        return strArray;
     }
 }
