@@ -11,7 +11,6 @@ class InputView {
         String STAGE_INPUT_MESSAGE = "시도할 회수는 몇 회 인가요?";
 
 
-
         System.out.println(CAR_INPUT_MESSAGE);
         RacingGame.getInstance().setCar(scanner.nextInt());
 
@@ -19,4 +18,3 @@ class InputView {
         RacingGame.getInstance().setStage(scanner.nextInt());
     }
 }
-

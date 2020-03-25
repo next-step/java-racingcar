@@ -81,4 +81,3 @@ public class RacingGame {
         this.stage = stage;
     }
 }
-
