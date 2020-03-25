@@ -1,21 +1,24 @@
 package RacingCar;
 
-import RacingCar.model.Car;
 import RacingCar.model.Result;
 
 import java.util.List;
 
 public class ResultView {
 
-
     static void print(List<Result> results) {
         results.forEach(stage -> {
-            stage.getCars().forEach(count -> {
-                System.out.println(getMoveString(count.getMove()));
-            });
-            System.out.println();
+            printStageResult(stage);
         });
     }
+
+    private static void printStageResult(Result result) {
+        result.getCars().forEach(car -> {
+            System.out.println(getMoveString(car.getMove()));
+        });
+        System.out.println();
+    }
+
 
     private static String getMoveString(int count) {
         StringBuilder stringBuilder = new StringBuilder();
@@ -26,4 +29,3 @@ public class ResultView {
     }
 
 }
-
