@@ -1,24 +1,25 @@
 package racingcar.domain;
 
-import java.util.HashMap;
-import java.util.Map;
+import racingcar.infrastructure.DefaultMoveStrategy;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RacingGame {
-    private final int time;
     private final Cars cars;
+    private final int round;
 
-    public RacingGame(int time, String[] carNames) {
-        this.time = time;
+    public RacingGame(List<String> carNames, int round) {
         this.cars = new Cars(carNames);
+        this.round = round;
     }
 
-    public RacingGameResults game() {
-        Map<Integer, Cars> racingGameHistory = new HashMap<>();
-        for (int i = 0; i < time; i++) {
-            Cars value = cars.moveAllCar(new DefaultMoveStrategy());
-            racingGameHistory.put(i, value);
+    public List<Cars> start() {
+        List<Cars> roundResults = new ArrayList<>();
+        for (int i = RacingGameConstant.NUMBER_ZERO; i < round; i++) {
+            roundResults.add(cars.moveAllCar(new DefaultMoveStrategy()));
         }
-        return new RacingGameResults(racingGameHistory);
+        return roundResults;
     }
 
 }
