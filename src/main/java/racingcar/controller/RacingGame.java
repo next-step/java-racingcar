@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.domain.Cars;
 import racingcar.domain.RacingGameSetting;
 import racingcar.domain.Round;
+import racingcar.policy.RandomMovingPolicy;
 
 public class RacingGame {
     private final RacingGameSetting setting;
@@ -27,6 +28,6 @@ public class RacingGame {
     }
 
     private void moveCars() {
-        getCars().move(setting.getMovingPolicy());
+        getCars().move(new RandomMovingPolicy());
     }
 }
