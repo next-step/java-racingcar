@@ -6,7 +6,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingGame;
-import racingcar.domain.RacingResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +18,7 @@ public class RacingCarTest {
     void startTest() {
         String[] names = {"광유","재"};
         RacingGame racingGame= new RacingGame(names,3);
-        List<RacingResult> results = racingGame.start();
-        assertThat(racingGame.start()).isNotNull();
+        assertThat(racingGame.startRaceAndReduceCount()).isNotNull();
     }
 
     @DisplayName("생성된 RacingCar를 전진하게 하는 단위 테스트")
@@ -32,7 +30,7 @@ public class RacingCarTest {
         for (RacingCar car : cars) {
             car.moveForward();
         }
-        assertThat(cars.get(1).getPosition()).isEqualTo(1);
+        assertThat(cars.get(1).getDistance()).isEqualTo(1);
     }
 
     @DisplayName("입력받은 자동차 대수, 이동횟수로 객체 생성 테스트")
