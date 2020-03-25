@@ -11,17 +11,13 @@ public class RacingGame {
     }
 
     public void start() {
-        play();
+        for(int i = 0; i < this.roundTime; i++) {
+            cars.moveCars(i, moveRule);
+        };
     }
 
     public void end() {
         this.cars.clear();
-    }
-
-    private void play() {
-        for(int i = 0; i < this.roundTime; i++) {
-            cars.moveCars(i, moveRule);
-        }
     }
 
     public int getRoundTime() {
