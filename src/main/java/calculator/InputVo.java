@@ -15,15 +15,12 @@ public class InputVo {
         splitInput(input);
     }
 
-    /**
-     * validate
-     */
     private void validate(String input) {
-        if (Objects.equals(input, null)) {
+        if (Objects.isNull(input)) {
             throw new IllegalArgumentException("null 값 입력 됨");
         }
 
-        if (Objects.equals(input, " ")) {
+        if (Objects.equals(input.trim(), "")) {
             throw new IllegalArgumentException("공백 값 입력 됨");
         }
     }

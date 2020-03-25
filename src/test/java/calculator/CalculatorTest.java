@@ -2,82 +2,21 @@ package calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.stream.Stream;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class CalculatorTest {
 
-    private String[] inputDumy = {"1", "+", "2"};
+    private static final String OPERATOR_INVALID_MESSAGE = "연산자가 사칙연산이 아님";
+    private static final String OPERAND_INVALID_MESSAGE = "피연산자가 숫자가 아님";
 
-    static Stream<Arguments> provide() {
-        return Stream.of(
-                Arguments.of("1 + 2"),
-                Arguments.of("1 + 2")
-        );
-    }
-
-    @DisplayName("피연산자가 숫자인지 체크 : success")
-    @ParameterizedTest
-    @MethodSource("provide")
-    public void validateOperand_success(String operand) throws Exception {
-        //given
-        InputVo inputVo = new InputVo(operand);
-
-        //when
-        Calculator calculator = new Calculator(inputVo.getInputSplit());
-
-        //then
-        calculator.validateOperand("10");
-    }
-
-    @DisplayName("피연산자가 숫자인지 체크 - fail 체크")
-    @ParameterizedTest
-    @ValueSource(strings = {"1ㅁ", "2d", "d", "-", "29`", "100~00", "^"})
-    public void validateOperand2(String operand) throws Exception {
-        //given
-        Calculator calculator = new Calculator(inputDumy);
-
-        //then
-        assertThatThrownBy(() -> {
-            calculator.validateOperand(operand);
-        }).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("연산자가 사칙연산인지 체크")
-    @ParameterizedTest
-    @ValueSource(strings = {"+", "-", "*", "/"})
-    public void validateOperator1(String operator) throws Exception {
-        //given
-        Calculator calculator = new Calculator(inputDumy);
-
-        //then
-        calculator.validateOperator(operator);
-    }
-
-    @DisplayName("연산자가 사칙연산인지 체크")
-    @ParameterizedTest
-    @ValueSource(strings = {"++", "/-", "--", "***", "1", "ㅁ", "a"})
-    public void validateOperator2(String operator) throws Exception {
-        //given
-        Calculator calculator = new Calculator(inputDumy);
-
-        //then
-        assertThatThrownBy(() -> {
-            calculator.validateOperator(operator);
-        }).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("사용자의 input을 계산")
+    @DisplayName("사용자의 input을 계산 : success")
     @ParameterizedTest
     @CsvSource(value = {"1 + 2:3", "1 + 2 + 3:6", "5 / 2:2.5", "2 * 3 / 2:3", "2 + 3 * 4 / 2:10"}, delimiter = ':')
-    public void calculateUserInput(String input, double expect) throws Exception {
+    public void calculateUserInput_success(String input, double expect) throws Exception {
         //given
         String[] inputSplit = new InputVo(input).getInputSplit();
         Calculator calculator = new Calculator(inputSplit);
@@ -87,5 +26,47 @@ class CalculatorTest {
 
         //then
         assertThat(result).isEqualTo(expect);
+    }
+
+    @DisplayName("사칙연산이 아닌 문자가 input 됐을 때 : fail")
+    @ParameterizedTest
+    @ValueSource(strings = {"1 @ 2", "1 1 2 1", "5 a 2"})
+    public void validateOperator_fail(String input) throws Exception {
+        //given
+        String[] inputSplit = new InputVo(input).getInputSplit();
+
+        //then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    new Calculator(inputSplit);
+                }).withMessageContaining(OPERATOR_INVALID_MESSAGE);
+    }
+
+    @DisplayName("연산자가 사칙연산이 아닌 문자 일때")
+    @ParameterizedTest
+    @ValueSource(strings = {"1 @ 2", "1 1 2 1", "5 a 2"})
+    public void validateOperator(String input) throws Exception {
+        //given
+        String[] inputSplit = new InputVo(input).getInputSplit();
+
+        //then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    new Calculator(inputSplit);
+                }).withMessageContaining(OPERATOR_INVALID_MESSAGE);
+    }
+
+    @DisplayName("피연산자가 숫자가 아닐때")
+    @ParameterizedTest
+    @ValueSource(strings = {"a - 1", "1 * 2 - -", "+ + +"})
+    public void validateOperand(String input) throws Exception {
+        //given
+        String[] inputSplit = new InputVo(input).getInputSplit();
+
+        //then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    new Calculator(inputSplit);
+                }).withMessageContaining(OPERAND_INVALID_MESSAGE);
     }
 }
