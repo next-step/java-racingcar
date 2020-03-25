@@ -1,80 +1,54 @@
 package racing;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import racing.UI.InputView;
-import org.junit.jupiter.api.AfterEach;
+import racing.object.Car;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import racing.UI.ResultView;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class RacingGameTest {
 
-	private final InputStream systemIn = System.in;
-
-	void provideInput(String cars, String times) {
-		ByteArrayInputStream in = new ByteArrayInputStream( (cars + "\n" + times).getBytes() );
-		System.setIn(in);
-	}
-
-	@AfterEach
-	void restoreInput() {
-		System.setIn(systemIn);
-	}
-
-	@ParameterizedTest
-	@CsvSource(value = {"-1,-1", "0,0", "2,0", "0,3"})
-	void checkValidationInputDataWithInvalidCase(String cars, String times) {
-		provideInput(cars, times);
-		InputView inputView = new InputView();
-		assertThatIllegalArgumentException().isThrownBy(inputView::input);
-	}
-
 	private static Stream<Arguments> getValidCase() {
 		List<Arguments> argumentsList = new ArrayList<>();
-		argumentsList.add(Arguments.of("1","1"));
-		argumentsList.add(Arguments.of("2","1"));
-		argumentsList.add(Arguments.of("3","5"));
+		argumentsList.add(Arguments.of(new String[]{"test1","test2","test3"},"5"));
 		return argumentsList.stream();
 	}
 
+	@DisplayName("1. 자동차 객체 생성 확인")
 	@ParameterizedTest
 	@MethodSource("getValidCase")
-	void checkValidationInputDataWithValidCase(String cars, String times) {
-		provideInput(cars, times);
-		InputView inputView = new InputView();
-		inputView.input();
-	}
-
-	@ParameterizedTest
-	@MethodSource("getValidCase")
-	void checkInitializationCarPositions(int cars, int times) {
+	void checkInitialization(String[] cars, int times) {
+		final int INIT_POS = 0;
 		RacingGame game = new RacingGame(cars, times);
-		ArrayList<Integer> carPositions = game.getCarPositions();
-		assertThat(carPositions.stream().allMatch(carPos -> carPos == RacingGame.INIT_CAR_POSITION)).isTrue();
-	}
-
-	@ParameterizedTest
-	@MethodSource("getValidCase")
-	void checkMove(int cars, int times) {
-		RacingGame game = new RacingGame(cars, times);
-		ArrayList<Integer> carPositions;
-
-		ResultView resultView = new ResultView();
-		resultView.printTitle();
-
-		for (int i = 0; i < game.getTime(); ++i) {
-			carPositions = game.move();
-			resultView.print(carPositions);
+		Car car = null;
+		for (int i = 0; i < cars.length; ++i) {
+			car = game.getCarList().get(i);
+			assertThat(car.getName()).isEqualTo(cars[i]);
+			assertThat(car.getPosition()).isEqualTo(INIT_POS);
 		}
+	}
+
+	@DisplayName("2. 자동차 경주 진행 확인")
+	@ParameterizedTest
+	@MethodSource("getValidCase")
+	void checkMove(String[] cars, int times) {
+		RacingGame game = new RacingGame(cars, times);
+		for ( int i = 0; game.isInTime(i); ++i ) {
+			assertThat(game.move().stream().map(Car::getPosition)).isNotEqualTo(0);
+		}
+	}
+	
+	@DisplayName("3. 최종 우승자 확인")
+	@ParameterizedTest
+	@MethodSource("getValidCase")
+	void checkWinner(String[] cars, int times) {
+		RacingGame game = new RacingGame(cars, times);
+		assertThat(game.getWinner().size()).isGreaterThan(0);
 	}
 }
