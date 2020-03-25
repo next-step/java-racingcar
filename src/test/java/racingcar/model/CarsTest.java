@@ -33,7 +33,7 @@ class CarsTest {
 
         // then
         for (Car car : cars.toList()) {
-            assertThat(car.getDistance()).isEqualTo(1);
+            assertThat(car.currentDistance().toInt()).isEqualTo(1);
         }
     }
 }

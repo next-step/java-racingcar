@@ -3,10 +3,7 @@ package racingcar.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Car;
-import racingcar.domain.CarName;
-import racingcar.domain.Cars;
-import racingcar.domain.Winner;
+import racingcar.domain.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +18,9 @@ class WinnerTest {
     @BeforeEach
     void setUp() {
         List<Car> carList = new ArrayList<>();
-        carList.add(new Car(new CarName("pobi"), 3));
-        carList.add(new Car(new CarName("crong"), 2));
-        carList.add(new Car(new CarName("honux"), 2));
+        carList.add(new Car(new CarName("pobi"), new Distance(3)));
+        carList.add(new Car(new CarName("crong"), new Distance(2)));
+        carList.add(new Car(new CarName("honux"), new Distance(2)));
         cars = new Cars(carList);
 
         winner = new Winner(cars);
