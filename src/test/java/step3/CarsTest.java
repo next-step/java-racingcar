@@ -50,20 +50,6 @@ public class CarsTest {
     }
 
     @Test
-    @DisplayName("게임동안 Car들이 전진한 수만큼의 position을 가져올 수 있다.")
-    void getFinalPosition() {
-        assertThat(cars.getFinalPositionList()).containsExactly(3, 2);
-    }
-    
-    @Test
-    @DisplayName("입력받은 숫자 List 중 최대 숫자를 잘 고르는 지 테스트")
-    void getMaxPosition() {
-        List numberList = Arrays.asList(3, 4, 9);
-
-        assertThat(cars.getMaxPosition(numberList)).isEqualTo(9);
-    }
-
-    @Test
     @DisplayName("Position이 가장 높은 Car의 이름을 승자로 받는다.")
     void getWinnerNames() {
         assertThat(cars.getWinnerNames()).containsExactly("jihoon");
