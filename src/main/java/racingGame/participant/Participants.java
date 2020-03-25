@@ -27,15 +27,19 @@ public class Participants {
 
     public RoundScore startRound(MovingRule movingRule) {
         cars.forEach(car -> applyMovingRule(car, movingRule));
-        return new RoundScore(cars.stream()
-                .map(ParticipantScore::new)
-                .collect(Collectors.toList()));
+        return createRoundScore();
     }
 
     private void applyMovingRule(Car car, MovingRule carForwardRule) {
         if (carForwardRule.isMove()) {
             car.forward();
         }
+    }
+
+    private RoundScore createRoundScore() {
+        return new RoundScore(cars.stream()
+                .map(ParticipantScore::new)
+                .collect(Collectors.toList()));
     }
 
     public List<Car> getWinners() {
@@ -50,8 +54,8 @@ public class Participants {
 
     private int getWinnerPosition() {
         return cars.stream()
-                    .max(Comparator.comparing(Car::getPosition))
-                    .orElseThrow(IllegalArgumentException::new)
-                    .getPosition();
+                .max(Comparator.comparing(Car::getPosition))
+                .orElseThrow(IllegalArgumentException::new)
+                .getPosition();
     }
 }

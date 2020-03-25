@@ -2,6 +2,8 @@ package racingGame.participant;
 
 import racingGame.car.Car;
 
+import java.util.Objects;
+
 public class ParticipantScore {
     private String carName;
     private int position;
@@ -17,5 +19,19 @@ public class ParticipantScore {
 
     public int getPosition() {
         return position;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ParticipantScore)) return false;
+        ParticipantScore that = (ParticipantScore) o;
+        return position == that.position &&
+                Objects.equals(carName, that.carName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carName, position);
     }
 }
