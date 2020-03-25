@@ -13,6 +13,7 @@ public class Participants {
     private final List<Car> cars;
 
     public Participants(String participates) {
+        verifyParticipates(participates);
         List<Car> carList = new ArrayList<>();
         String[] names = participates.split(",");
         for (String name : names) {
@@ -22,7 +23,20 @@ public class Participants {
     }
 
     public Participants(List<Car> cars) {
+        verifyCars(cars);
         this.cars = Collections.unmodifiableList(cars);
+    }
+
+    private void verifyCars(List<Car> cars) {
+        if (cars == null || cars.isEmpty()) {
+            throw new IllegalArgumentException("참가자가 올바르지 않습니다.");
+        }
+    }
+
+    private void verifyParticipates(String participates) {
+        if (participates == null || participates.isEmpty()) {
+            throw new IllegalArgumentException("참가자가 올바르지 않습니다.");
+        }
     }
 
     public RoundScore startRound(MovingRule movingRule) {
