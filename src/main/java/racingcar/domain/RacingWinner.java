@@ -5,22 +5,22 @@ import java.util.stream.Collectors;
 
 public class RacingWinner {
 
-    private final List<RacingCar> winner;
+    private final List<RacingCar> winners;
     public Integer score;
 
-    public RacingWinner(List<RacingCar> winner) {
-        this.winner = winner;
+    public RacingWinner(List<RacingCar> winners) {
+        this.winners = winners;
         this.score = getHighScore();
     }
 
     public List<String> findWinnerNames() {
-        return winner.stream().filter(w -> w.getPosition() == score)
+        return winners.stream().filter(w -> w.getPosition() == score)
                 .map(RacingCar::getName)
                 .collect(Collectors.toList());
     }
 
     private int getHighScore() {
-        return winner.stream()
+        return winners.stream()
                 .mapToInt(RacingCar::getPosition)
                 .max()
                 .getAsInt();
