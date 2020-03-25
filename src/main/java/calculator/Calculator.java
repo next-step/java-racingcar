@@ -13,7 +13,7 @@ public class Calculator {
         int maxOperationIdx = inputs.length - 2;
         checkValidFormatForOperate(inputs, 0);
 
-        for (int operationIdx = 1; operationIdx <= maxOperationIdx; operationIdx+=2) {
+        for (int operationIdx = 1; operationIdx <= maxOperationIdx; operationIdx += 2) {
             checkValidFormatForOperate(inputs, operationIdx);
             result = Operation.getOperationByValue(inputs[operationIdx]).operate(result, Integer.parseInt(inputs[operationIdx + 1]));
         }
@@ -22,10 +22,11 @@ public class Calculator {
     }
 
     private void checkValidFormatForOperate(String[] inputs, int idx) {
-        ValidChecker.checkValidFormat(inputs[idx], isOperationIdx(idx));
+        boolean isOperationIdx = isOperationIdx(idx);
+        ValidChecker.checkValidFormat(inputs[idx], isOperationIdx);
 
         // index 가 연산자의 index 값일 경우 다음에 오는 피연산자의 유효성도 확인 해 주어야 한다.
-        if (isOperationIdx(idx)) {
+        if (isOperationIdx) {
             ValidChecker.checkValidFormat(inputs[idx + 1], isOperationIdx(idx + 1));
         }
     }
