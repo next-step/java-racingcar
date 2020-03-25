@@ -27,6 +27,7 @@ public class RacingGame {
     public Cars getCars() {
         return cars;
     }
+
     public void setMoveRule(MoveRule moveRule) {
         this.moveRule = moveRule;
     }
