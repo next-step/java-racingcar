@@ -4,14 +4,15 @@ import racingcar.policy.MovingPolicy;
 
 public final class Car implements Comparable<Car> {
     public static final int DEFAULT_DISTANCE = 0;
-    private String name;
+
+    private CarName name;
     private int distance;
 
-    public Car(String name) {
+    public Car(CarName name) {
         this(name, DEFAULT_DISTANCE);
     }
 
-    public Car(final String name, final int distance) {
+    public Car(final CarName name, final int distance) {
         this.name = name;
         this.distance = distance;
     }
@@ -22,7 +23,7 @@ public final class Car implements Comparable<Car> {
         }
     }
 
-    public String getName() {
+    public CarName getName() {
         return name;
     }
 
