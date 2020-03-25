@@ -32,7 +32,6 @@ public class RacingCarsTest {
             racingCars.race(racingStrategy);
         }
 
-        racingCars.showCurrentStatus();
         assertThat(racingCars).isNotNull();
     }
 }
