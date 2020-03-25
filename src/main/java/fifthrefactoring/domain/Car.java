@@ -1,4 +1,4 @@
-package fifth_refactoring.domain;
+package fifthrefactoring.domain;
 
 public class Car extends Moving implements Comparable{
     private String carName;

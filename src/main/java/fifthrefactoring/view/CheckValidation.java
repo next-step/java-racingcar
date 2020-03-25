@@ -1,6 +1,6 @@
-package fifth_refactoring.view;
+package fifthrefactoring.view;
 
-import fifth_refactoring.domain.CarAction;
+import fifthrefactoring.domain.CarAction;
 
 public class CheckValidation {
     private static final int RACING_CAR_MIN_NO = 1;

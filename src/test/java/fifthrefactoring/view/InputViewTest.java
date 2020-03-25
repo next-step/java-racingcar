@@ -1,4 +1,4 @@
-package fifth_refactoring.view;
+package fifthrefactoring.view;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,10 +12,10 @@ class InputViewTest {
 
     private InputView inputview = new InputView();
     private String systemInStringValue = "";
-    private int systemInIntValue= 0;
+    private int systemInIntValue = 0;
 
     @ParameterizedTest
-    @ValueSource( strings = "pobi" )
+    @ValueSource(strings = "pobi")
     @DisplayName("자동차 입력값 테스트")
     void carNameInputTest(String testInput) {
         systemInStringValue = "pobi";
@@ -26,7 +26,7 @@ class InputViewTest {
     }
 
     @ParameterizedTest
-    @ValueSource( ints = 5 )
+    @ValueSource(ints = 5)
     @DisplayName("시도회수 입력값 테스트")
     void tryNoInputTest(int testInput) {
         systemInIntValue = 5;

@@ -1,10 +1,8 @@
-package fifth_refactoring.view;
+package fifthrefactoring.view;
 
-import fifth_refactoring.domain.Car;
+import fifthrefactoring.domain.Car;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ResultView {
     private static final String SIGN = "-";
@@ -22,7 +20,7 @@ public class ResultView {
         }
     }
 
-    public static String makeSign(int carPosition){
+    public static String makeSign(int carPosition) {
         String finalSign = "";
         for (int i = 0; i < carPosition; i++) {
             finalSign = finalSign.concat(SIGN);
@@ -30,19 +28,7 @@ public class ResultView {
         return finalSign;
     }
 
-    public static void announceRank(List<Car> car) {
-        String firstCarName = setRank(car);
+    public static void announceRank(String firstCarName) {
         System.out.println(firstCarName + "가 최종 우승했습니다.");
-    }
-
-    public static String setRank(List<Car> car) {
-        Collections.sort(car);
-
-        int maxPosition = car.get(car.size()-1).getCarPosition();
-
-        return car.stream()
-                .filter(d -> d.getCarPosition() == maxPosition)
-                .map(Car::getCarName)
-                .collect(Collectors.joining(", "));
     }
 }

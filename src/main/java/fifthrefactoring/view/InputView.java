@@ -1,4 +1,4 @@
-package fifth_refactoring.view;
+package fifthrefactoring.view;
 
 import java.util.Scanner;
 

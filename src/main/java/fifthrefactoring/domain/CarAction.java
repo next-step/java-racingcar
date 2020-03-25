@@ -1,9 +1,11 @@
-package fifth_refactoring.domain;
+package fifthrefactoring.domain;
 
-import fifth_refactoring.view.InputView;
+import fifthrefactoring.view.InputView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarAction {
 
@@ -22,6 +24,7 @@ public class CarAction {
 
         for (String carName : carNameArray) {
             Car car = new Car(carName);
+            car.setStrategy(new RandomStrategy());
             carList.add(car);
         }
 
@@ -30,8 +33,18 @@ public class CarAction {
 
     public static void moveCar(List<Car> carList) {
         for (Car car : carList) {
-            car.setStrategy(new RandomStrategy());
             car.moveCar(car.move());
         }
+    }
+
+    public static String setRank(List<Car> carList) {
+        Collections.sort(carList);
+
+        int maxPosition = carList.get(carList.size()-1).getCarPosition();
+
+        return carList.stream()
+                .filter(d -> d.getCarPosition() == maxPosition)
+                .map(Car::getCarName)
+                .collect(Collectors.joining(", "));
     }
 }

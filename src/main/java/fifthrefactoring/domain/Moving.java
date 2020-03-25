@@ -1,4 +1,4 @@
-package fifth_refactoring.domain;
+package fifthrefactoring.domain;
 
 public class Moving {
     private Strategy strategy;
