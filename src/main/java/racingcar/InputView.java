@@ -4,12 +4,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
 public class InputView {
 
+    public static final String NAME_DELIMITER = ",";
     private static Scanner scanner = new Scanner(System.in);
 
     public static InputData getInputData() {
@@ -25,7 +25,7 @@ public class InputView {
             getCarNames();
         }
 
-        return Arrays.stream(value.split(","))
+        return Arrays.stream(value.split(NAME_DELIMITER))
                 .collect(toList());
 
     }
