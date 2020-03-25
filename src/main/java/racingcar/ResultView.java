@@ -18,11 +18,15 @@ public class ResultView {
 
     public static void renderCarMovement(List<Car> cars) {
         for (Car c : cars) {
-            print(Stream
-                    .generate(() -> CAR_MOVEMENT_MARKER)
-                    .limit(c.getPosition())
-                    .collect(Collectors.joining()));
+            print(c.getName() + " : " + generateMarker(c));
         }
         print("");
+    }
+
+    private static String generateMarker(Car c) {
+        return Stream
+                .generate(() -> CAR_MOVEMENT_MARKER)
+                .limit(c.getPosition())
+                .collect(Collectors.joining());
     }
 }
