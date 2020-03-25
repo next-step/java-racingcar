@@ -4,9 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.controller.RacingGame;
-import racingcar.domain.Car;
 import racingcar.domain.RacingGameSetting;
-import racingcar.policy.fake.SuccessMovingPolicy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,7 +17,7 @@ class RacingGameTest {
 
     @BeforeEach
     void setUp() {
-        setting = new RacingGameSetting(new SuccessMovingPolicy(), CAR_NAMES, TIME);
+        setting = new RacingGameSetting(CAR_NAMES, TIME);
         racingGame = new RacingGame(setting);
     }
 
@@ -27,18 +25,6 @@ class RacingGameTest {
     @Test
     void ready() {
         assertThat(racingGame.getCars().toList()).hasSize(COUNT);
-    }
-
-    @DisplayName("최소 한번은 자동차가 이동했음을 성공한다.")
-    @Test
-    void play() {
-        // when
-        racingGame.play();
-
-        // then
-        for (Car car : racingGame.getCars().toList()) {
-            assertThat(car.getDistance()).isGreaterThanOrEqualTo(1);
-        }
     }
 
     @DisplayName("경주 게임 종료를 성공한다.")
