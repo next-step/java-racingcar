@@ -3,41 +3,40 @@ package racingGame.game;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import racingGame.car.Car;
 import racingGame.participant.Participants;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
 
-    private RacingGame racingGame;
+    private Car lyh;
+    private Car khm;
+    private Car khg;
+    private Participants participants;
 
     @BeforeEach
     void setUp() {
-        MovingRule gameRule = new RandomStrategy();
-        racingGame = new RacingGame(gameRule);
+        lyh = new Car("lyh", 5);
+        khm = new Car("khm", 3);
+        khg = new Car("khg", 4);
+        participants = new Participants(Arrays.asList(lyh, khm, khg));
     }
 
     @Test
-    @DisplayName("참가자 설정 & 게임 수 설정 시 값에 대한 Exception 테스트")
-    void participate() {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    racingGame.participate(null, 5);
-                });
-    }
+    @DisplayName("RacingGame start()를 통한 우승자 테스트")
+    void start() {
+        RacingGame racingGame = new RacingGame(participants, 5);
 
-    @ParameterizedTest
-    @DisplayName("랜덤 반환 값을 재정의(메소드 호출마다 다르게 지정) 하여 레이싱 게임 테스트 시작 & 우승자 검증")
-    @CsvSource(value = {"2:3,5,2,6,7,9:jo", "2:2,7,8,5,1,3:yohan,jo,jayden", "2:7,6,4,2,3,8:jayden"}, delimiter = ':')
-    void start(int round, String input, String expectedWinner) {
+        GameResult result = racingGame.start(new MovingRule() {
+            @Override
+            public boolean isMove() {
+                return true;
+            }
+        });
+
+        assertThat(result.getWinners()).containsExactly(lyh);
     }
 }
