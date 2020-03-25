@@ -48,6 +48,10 @@ public class Racing {
         }
     }
 
+    public List<String> findWinner() {
+        return racingCars.findWinner();
+    }
+
     public List<RoundResult> getRoundResult() {
         return this.roundResult;
     }

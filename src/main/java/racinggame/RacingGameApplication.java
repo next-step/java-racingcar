@@ -21,10 +21,12 @@ public class RacingGameApplication {
         String gameCount = scanner.nextLine();
 
         InputView inputView = new InputView(gameCount, carNames);
+
         Racing racing = new Racing(inputView.getGameCount(), inputView.getCarNames());
         racing.playAllRound();
-        ResultView resultView = new ResultView(racing);
-        resultView.drawAllRoundResult();
-        resultView.drawWinners();
+
+        ResultView resultView = new ResultView();
+        resultView.drawAllRoundResult(racing.getRoundResult());
+        resultView.drawWinners(racing);
     }
 }

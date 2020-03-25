@@ -17,10 +17,9 @@ public class ResultView {
     private static final char MOVE_RANGE_MARK = '-';
     private static final String CAR_NAME_AND_MOVE_RANGE_DELIMITER = " : ";
     private static final String WINNER_ANNOUNCE = "가 최종 우승했습니다.";
-    private Racing racing;
+//    private Racing racing;
 
-    public ResultView(Racing racing) {
-        this.racing = racing;
+    public ResultView() {
     }
 
     private void drawCarMovingRange(String carName, int repeat) {
@@ -35,27 +34,25 @@ public class ResultView {
     }
 
     private void drawOneRoundResult(RoundResult roundResult) {
-        List<Car> result = roundResult.getResult();
-        int size = roundResult.getResult().size();
 
-        for (int i = 0; i < size; i++) {
-            drawCarMovingRange(result.get(i).getCarName(), result.get(i).getMoveRange());
+        for (Car car : roundResult.getResult()) {
+            drawCarMovingRange(car.getCarName(), car.getMoveRange());
         }
 
         System.out.println();
     }
 
-    public void drawAllRoundResult() {
-        int size = this.racing.getRoundResult().size();
+    public void drawAllRoundResult(List<RoundResult> roundResult) {
+        int size = roundResult.size();
 
         for (int i = 0; i < size; i++) {
-            drawOneRoundResult(this.racing.getRoundResult().get(i));
+            drawOneRoundResult(roundResult.get(i));
         }
     }
 
-    public void drawWinners() {
+    public void drawWinners(Racing racing) {
         StringBuffer sb = new StringBuffer();
-        List<String> winner = this.racing.getRacingCars().findWinner();
+        List<String> winner = racing.findWinner();
 
         System.out.println(String.join(", ", winner) + WINNER_ANNOUNCE);
     }
