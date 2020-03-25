@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racinggame.util.NumberUtil;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class NumberUtilTest {
 
@@ -19,21 +19,11 @@ class NumberUtilTest {
 
         //then
         while (i < 100) {
-            assertThat(NumberUtil.createRandomIntIn0to9()).isBetween(0, 9);
+            assertThat(NumberUtil.createRandomInt(9)).isBetween(0, 9);
             i++;
         }
     }
 
-    @DisplayName("값이 4 이상이면 true")
-    @ParameterizedTest
-    @CsvSource(value = {"-1:false", "0:false", "2:false", "4:true", "6:true", "10:true"}, delimiter = ':')
-    public void isGreaterThan4(int num, boolean expect) throws Exception {
-        //when
-        boolean result = NumberUtil.isGreaterThan4(num);
-
-        //then
-        assertThat(result).isEqualTo(expect);
-    }
 
     @DisplayName("값이 1 이상이면 true")
     @ParameterizedTest

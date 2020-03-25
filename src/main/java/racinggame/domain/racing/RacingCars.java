@@ -1,6 +1,7 @@
 package racinggame.domain.racing;
 
 import racinggame.domain.car.Car;
+import racinggame.util.NumberUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,6 +12,7 @@ import java.util.List;
  * 1. 모든 자동차를 이동
  */
 public class RacingCars {
+    private static final int RANDOM_BOUND = 10;
     private final List<Car> cars;
 
     public RacingCars(List<Car> cars) {
@@ -19,7 +21,7 @@ public class RacingCars {
 
     public void moveCarAll() {
         for (Car car : this.cars) {
-            car.moveCar();
+            car.moveCar(NumberUtil.createRandomInt(RANDOM_BOUND));
         }
     }
 
