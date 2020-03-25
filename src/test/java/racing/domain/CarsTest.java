@@ -33,10 +33,12 @@ public class CarsTest {
     void getCarsPositionListTest() {
         List<Car> carsList = generateCarsList();
         Cars cars = new Cars(carsList);
-        List<Integer> resultCarList = cars.getCarsPositionList();
 
-        for (int idx = 0; idx < resultCarList.size(); idx++) {
-            assertThat(resultCarList.get(idx)).isEqualTo(carsList.get(idx).getPosition());
+        List<Integer> result = cars.getCarsPositionList();
+        int resultSize = result.size();
+
+        for (int idx = 0; idx < resultSize; idx++) {
+            assertThat(result.get(idx)).isEqualTo(carsList.get(idx).getPosition());
         }
     }
 
