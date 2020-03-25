@@ -1,6 +1,6 @@
 package step3;
 
-import CarRacing.RandomUtils;
+import CarRacing.Utils.RandomUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
