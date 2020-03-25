@@ -1,10 +1,9 @@
 package racingcar;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 
-import static java.util.Comparator.comparingInt;
+import static java.util.stream.Collectors.toList;
 
 public class Cars {
     private final List<Car> cars;
@@ -14,11 +13,16 @@ public class Cars {
     }
 
     public List<String> getWinners() {
-        Car winner = cars.stream()
-                .sorted(comparingInt(Car::getPosition).reversed())
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("우승자가 없습니다"));
+        int winnerPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
 
-        return Arrays.asList(winner.getName());
+        List<String> winners = cars.stream()
+                .filter(car -> car.getPosition() == winnerPosition)
+                .map(Car::getName)
+                .collect(toList());
+
+        return winners;
     }
 }
