@@ -5,6 +5,7 @@ import java.util.List;
 
 public class RacingGameSetting {
     private static final String CAR_NAME_SEPARATOR = ",";
+
     private Cars cars;
     private int time;
 
@@ -25,7 +26,7 @@ public class RacingGameSetting {
         String[] names = carNames.split(CAR_NAME_SEPARATOR);
         List<Car> cars = new ArrayList<>();
         for (String name : names) {
-            cars.add(new Car(name, Car.DEFAULT_DISTANCE));
+            cars.add(new Car(new CarName(name), Car.DEFAULT_DISTANCE));
         }
         return new Cars(cars);
     }
