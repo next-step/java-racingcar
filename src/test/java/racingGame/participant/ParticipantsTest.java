@@ -6,10 +6,12 @@ import org.junit.jupiter.api.Test;
 import racingGame.car.Car;
 import racingGame.game.MovingRule;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 class ParticipantsTest {
 
@@ -22,6 +24,22 @@ class ParticipantsTest {
         lyh = new Car("lyh", 3);
         khm = new Car("khm", 3);
         khg = new Car("khg", 1);
+    }
+
+    @Test
+    void verifyConstructByString() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    new Participants("");
+                });
+    }
+
+    @Test
+    void verifyConstructByList() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    new Participants(new ArrayList<>());
+                });
     }
 
     @Test
