@@ -49,7 +49,7 @@ public class CarsTest {
     @Test
     @DisplayName("게임동안 Car들이 전진한 수만큼의 position을 가져올 수 있다.")
     void getFinalPosition() {
-        assertThat(cars.getFinalPositionList()).containsExactly(2,1);
+        assertThat(cars.getFinalPositionList()).containsExactly(2, 1);
     }
     
     @Test
