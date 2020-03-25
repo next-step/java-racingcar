@@ -25,8 +25,9 @@ public class Car {
     Car move(boolean moveCondition) {
         if (moveCondition) {
             position++;
+            return new Car(name, position);
         }
-        return new Car(name, position);
+        return this;
     }
 
     public String getName() {
