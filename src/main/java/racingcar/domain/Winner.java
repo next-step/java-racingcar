@@ -18,7 +18,8 @@ public class Winner {
         Car winner = rankedCars.poll();
 
         StringBuilder builder = new StringBuilder();
-        builder.append(winner.getName());
+        // todo 디미터 법칙..
+        builder.append(winner.getName().toString());
 
         while (!rankedCars.isEmpty()) {
             builder.append(getSameRank(winner, rankedCars.poll()));
