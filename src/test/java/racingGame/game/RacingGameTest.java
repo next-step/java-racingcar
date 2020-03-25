@@ -7,7 +7,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingGame.car.Car;
 import racingGame.participant.Participants;
-import racingGame.participant.ParticipantsV2;
 
 import java.util.Arrays;
 import java.util.List;
@@ -45,7 +44,7 @@ class RacingGameTest {
         FakeCarForwardRule fakeCarForwardRule = new FakeCarForwardRule(Stream.of(split)
                 .mapToInt(Integer::parseInt)
                 .toArray());
-        Participants participants = new ParticipantsV2("yohan,jo,jayden");
+        Participants participants = new Participants("yohan,jo,jayden");
 
         // when
         RacingGame racingGame = new RacingGame(fakeCarForwardRule);

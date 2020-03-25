@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racingGame.car.Car;
-import racingGame.game.CarForwardRule;
 import racingGame.game.FakeCarForwardRule;
 
 import java.util.Arrays;
@@ -22,7 +21,7 @@ class ParticipantsTest {
 
     @BeforeEach
     void setUp() {
-        participants = new ParticipantsV2("yohan,jo,jayden");
+        participants = new Participants("yohan,jo,jayden");
     }
 
     @ParameterizedTest
