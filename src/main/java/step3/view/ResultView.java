@@ -21,10 +21,7 @@ public class ResultView {
         printView(PLAY_RESULT);
     }
 
-    public void printResult(RacingGame racingGame) {
-        Cars cars = racingGame.getCars();
-        int roundTime = racingGame.getRoundTime();
-
+    public void printResult(Cars cars, int roundTime) {
         for(int i = 0; i < roundTime; i++) {
             printRoundInfo(i + 1);
 

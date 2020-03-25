@@ -22,7 +22,7 @@ public class Main {
 
         ResultView resultView = new ResultView();
         resultView.printResultInfo();
-        resultView.printResult(racingGame);
+        resultView.printResult(racingGame.getCars(), racingGame.getRoundTime());
 
         racingGame.end();
     }

@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Cars {
+public class Cars {  //TODO: 일급콜렉션화 시키기
 
     private List<Car> cars;
-    private List<String> winnerNames;
+    private List<String> winnerNames; //TODO:  중복 인스턴스 변수. 필요한 시점에만 구하면 되므로 삭제 대상
 
     public Cars(String[] carNames) {
         List<Car> cars = new ArrayList<Car>();
