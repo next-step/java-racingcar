@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.domain;
 
 import racingcar.policy.MovingPolicy;
 
@@ -9,16 +9,16 @@ public final class Cars {
     private final List<Car> cars;
 
     public Cars(final List<Car> cars) {
-        this.cars = Collections.unmodifiableList(cars);
+        this.cars = cars;
     }
 
-    public void move(final MovingPolicy movingPolicy) {
+    public void move(MovingPolicy movingPolicy) {
         for (Car car : cars) {
             car.move(movingPolicy);
         }
     }
 
     public List<Car> toList() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 }

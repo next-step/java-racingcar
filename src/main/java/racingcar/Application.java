@@ -1,9 +1,8 @@
 package racingcar;
 
-import racingcar.model.RacingGame;
-import racingcar.model.RacingGameSetting;
-import racingcar.model.Winner;
-import racingcar.policy.RandomMovingPolicy;
+import racingcar.controller.RacingGame;
+import racingcar.domain.Round;
+import racingcar.domain.Winner;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -13,10 +12,9 @@ public class Application {
         OutputView outputView = new OutputView();
 
         String carNames = inputView.inputCarNames();
-        int time = inputView.inputCarCount();
+        int round = inputView.inputCarCount();
 
-        RacingGameSetting setting = new RacingGameSetting(new RandomMovingPolicy(), carNames, time);
-        RacingGame racingGame = new RacingGame(setting);
+        RacingGame racingGame = new RacingGame(carNames, new Round(round));
 
         outputView.nextLine();
         outputView.print(OutputView.GAME_RESULT_MESSAGE);

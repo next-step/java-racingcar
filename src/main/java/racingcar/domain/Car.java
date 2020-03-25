@@ -1,37 +1,36 @@
-package racingcar.model;
+package racingcar.domain;
 
 import racingcar.policy.MovingPolicy;
 
 public final class Car implements Comparable<Car> {
-    public static final int DEFAULT_DISTANCE = 0;
-    private String name;
-    private int distance;
+    private final CarName name;
+    private Distance distance;
 
-    public Car(String name) {
-        this(name, DEFAULT_DISTANCE);
+    public Car(CarName name) {
+        this(name, new Distance());
     }
 
-    public Car(final String name, final int distance) {
+    public Car(final CarName name, final Distance distance) {
         this.name = name;
         this.distance = distance;
     }
 
     public void move(final MovingPolicy movingPolicy) {
         if (movingPolicy.isPossibleMove()) {
-            distance++;
+            distance.increase();
         }
     }
 
-    public String getName() {
+    public CarName getName() {
         return name;
     }
 
-    public int getDistance() {
+    public Distance currentDistance() {
         return distance;
     }
 
     @Override
     public int compareTo(final Car car) {
-        return this.distance - car.distance;
+        return distance.toInt() - car.distance.toInt();
     }
 }

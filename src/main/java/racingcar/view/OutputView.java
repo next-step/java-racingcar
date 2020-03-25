@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.model.Car;
+import racingcar.domain.Car;
 
 import java.util.List;
 
@@ -13,8 +13,9 @@ public class OutputView {
         Output output;
         for (Car car : cars) {
             output = new Output();
-            System.out.print(car.getName() + " : ");
-            output.mappingToBar(car.getDistance());
+            // TODO : 디미터법칙
+            System.out.print(car.getName().toString() + " : ");
+            output.mappingToBar(car.currentDistance().toInt());
             print(output.getBar());
         }
         nextLine();

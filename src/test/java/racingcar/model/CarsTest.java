@@ -3,6 +3,9 @@ package racingcar.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.CarName;
+import racingcar.domain.Cars;
 import racingcar.policy.fake.SuccessMovingPolicy;
 
 import java.util.ArrayList;
@@ -16,9 +19,9 @@ class CarsTest {
     @BeforeEach
     void setUp() {
         List<Car> carList = new ArrayList<>();
-        carList.add(new Car("pobi"));
-        carList.add(new Car("crong"));
-        carList.add(new Car("honux"));
+        carList.add(new Car(new CarName("pobi")));
+        carList.add(new Car(new CarName("crong")));
+        carList.add(new Car(new CarName("honux")));
         cars = new Cars(carList);
     }
 
@@ -30,7 +33,7 @@ class CarsTest {
 
         // then
         for (Car car : cars.toList()) {
-            assertThat(car.getDistance()).isEqualTo(1);
+            assertThat(car.currentDistance().toInt()).isEqualTo(1);
         }
     }
 }
