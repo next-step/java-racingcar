@@ -3,9 +3,7 @@ package racinggame.domain.racing;
 import racinggame.domain.car.Car;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * 1. Car의 List 필드
@@ -26,8 +24,9 @@ public class Racing {
 
     private RacingCars createRacingCars(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
+        int carNamesListSize = carNames.size();
 
-        for (int i = 0; i < carNames.size(); i++) {
+        for (int i = 0; i < carNamesListSize; i++) {
             cars.add(new Car(carNames.get(i)));
         }
 
@@ -49,17 +48,11 @@ public class Racing {
         }
     }
 
-    public List<Car> findWinner() {
-        List<Car> cars = this.racingCars.getCars();
-        Collections.sort(cars);
-        int range = cars.get(cars.size() - 1).getMoveRange();
-
-        return cars.stream()
-                .filter(i -> i.getMoveRange() >= range)
-                .collect(Collectors.toList());
-    }
-
     public List<RoundResult> getRoundResult() {
         return this.roundResult;
+    }
+
+    public RacingCars getRacingCars() {
+        return racingCars;
     }
 }

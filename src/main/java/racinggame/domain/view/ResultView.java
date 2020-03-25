@@ -4,7 +4,6 @@ import racinggame.domain.car.Car;
 import racinggame.domain.racing.Racing;
 import racinggame.domain.racing.RoundResult;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,35 +25,38 @@ public class ResultView {
 
     private void drawCarMovingRange(String carName, int repeat) {
         StringBuffer sb = new StringBuffer();
-        sb.append(carName + CAR_NAME_AND_MOVE_RANGE_DELIMITER);
+        sb.append(carName).append(CAR_NAME_AND_MOVE_RANGE_DELIMITER);
+
         for (int i = 0; i < repeat; i++) {
             sb.append(MOVE_RANGE_MARK);
         }
+
         System.out.println(sb.toString());
     }
 
     private void drawOneRoundResult(RoundResult roundResult) {
-        for (int i = 0; i < roundResult.getResult().size(); i++) {
-            drawCarMovingRange(roundResult.getResult().get(i).getCarName(), roundResult.getResult().get(i).getMoveRange());
+        List<Car> result = roundResult.getResult();
+        int size = roundResult.getResult().size();
+
+        for (int i = 0; i < size; i++) {
+            drawCarMovingRange(result.get(i).getCarName(), result.get(i).getMoveRange());
         }
+
         System.out.println();
     }
 
     public void drawAllRoundResult() {
-        for (int i = 0; i < this.racing.getRoundResult().size(); i++) {
+        int size = this.racing.getRoundResult().size();
+
+        for (int i = 0; i < size; i++) {
             drawOneRoundResult(this.racing.getRoundResult().get(i));
         }
     }
 
     public void drawWinners() {
         StringBuffer sb = new StringBuffer();
-        List<Car> winner = this.racing.findWinner();
-        List<String> winnerNames = new ArrayList<>();
+        List<String> winner = this.racing.getRacingCars().findWinner();
 
-        for (Car car : winner) {
-            winnerNames.add(car.getCarName());
-        }
-
-        System.out.println(String.join(", ", winnerNames) + WINNER_ANNOUNCE);
+        System.out.println(String.join(", ", winner) + WINNER_ANNOUNCE);
     }
 }

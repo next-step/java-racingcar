@@ -30,6 +30,10 @@ public class Car implements Comparable<Car> {
         }
     }
 
+    public boolean isMovedFarThan(int compare) {
+        return this.moveRange >= compare;
+    }
+
     @Override
     public int compareTo(Car o) {
         return Integer.compare(this.moveRange, o.getMoveRange());
