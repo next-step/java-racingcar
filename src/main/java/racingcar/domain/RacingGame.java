@@ -27,7 +27,8 @@ public class RacingGame {
     }
 
     public List<String> findWinnerNames() {
-        return RacingWinner.findWinnerNames(cars);
+        RacingWinner winners = new RacingWinner(cars);
+        return winners.findWinnerNames();
     }
 
     public boolean canRace() {
