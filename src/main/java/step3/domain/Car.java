@@ -14,7 +14,7 @@ public class Car {
         this.carName = carName;
     }
 
-    public void moveCar(int presentRoundTime, boolean canMove) {
+    public void move(int presentRoundTime, boolean canMove) {
         if(canMove) {
             this.position++;
         }

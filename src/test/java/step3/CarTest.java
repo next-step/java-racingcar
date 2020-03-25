@@ -38,8 +38,8 @@ public class CarTest {
     @DisplayName("Car 객체는 한번 전진하면 position이 1씩 증가해야 한다.")
     void moveCar() {
         int roundTime = 1;
-        car.move(1);
-        car.move(2);
+        car.move(1, true);
+        car.move(2, true);
 
         assertThat(car.getPosition()).isEqualTo(2);
     }

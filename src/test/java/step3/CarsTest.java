@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarsTest {
 
     private Cars cars;
-    private String[] carNames = {"jihoon","yeoseon"};
+    private String[] carNames = {"jihoon", "yeoseon"};
 
     @BeforeEach
     void setUp() {
@@ -23,9 +23,12 @@ public class CarsTest {
         Car car1 = cars.getCar(0);
         Car car2 = cars.getCar(1);
 
-        car1.move(1);
-        car2.move(1);
-        car1.move(2);
+        car1.move(1, true);
+        car2.move(1, true);
+        car1.move(2, true);
+        car2.move(2, true);
+        car1.move(3, true);
+        car2.move(3, false);
     }
 
     @Test
@@ -49,7 +52,7 @@ public class CarsTest {
     @Test
     @DisplayName("게임동안 Car들이 전진한 수만큼의 position을 가져올 수 있다.")
     void getFinalPosition() {
-        assertThat(cars.getFinalPositionList()).containsExactly(2, 1);
+        assertThat(cars.getFinalPositionList()).containsExactly(3, 2);
     }
     
     @Test
@@ -60,20 +63,9 @@ public class CarsTest {
         assertThat(cars.getMaxPosition(numberList)).isEqualTo(9);
     }
 
-
     @Test
-    @DisplayName("최종 Position이 가장 높은 Car를 승자로서 true로 받아야 한다.")
-    void isWinner() {
-        int winnerPosition = cars.getMaxPosition(cars.getFinalPositionList());
-
-        assertThat(cars.isWinner(winnerPosition, cars.getCar(0))).isTrue();
-    }
-
-    @Test
-    @DisplayName("최종 Position이 가장 높지 않은 Car를 승자가 아니라는 의미의 false로 받아야 한다.")
-    void isNotWinner() {
-        int winnerPosition = cars.getMaxPosition(cars.getFinalPositionList());
-
-        assertThat(cars.isWinner(winnerPosition, cars.getCar(1))).isFalse();
+    @DisplayName("Position이 가장 높은 Car의 이름을 승자로 받는다.")
+    void getWinnerNames() {
+        assertThat(cars.getWinnerNames()).containsExactly("jihoon");
     }
 }

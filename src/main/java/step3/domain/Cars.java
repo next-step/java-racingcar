@@ -36,7 +36,7 @@ public class Cars {  //TODO: 일급콜렉션화 시키기
 
     public void moveCars(int presentRoundTime, MoveRule moveRule) {
         for(Car car: cars) {
-            car.moveCar(presentRoundTime, moveRule.canMove());
+            car.move(presentRoundTime, moveRule.canMove());
         }
     }
 
@@ -56,7 +56,7 @@ public class Cars {  //TODO: 일급콜렉션화 시키기
         return winnerNames;
     }
 
-    private boolean isWinner(int position) {
+    public boolean isWinner(int position) {
         int winnerPosition = getMaxPosition(getFinalPositionList());
 
         if(winnerPosition == position) {
@@ -65,11 +65,11 @@ public class Cars {  //TODO: 일급콜렉션화 시키기
         return false;
     }
 
-    private static int getMaxPosition(List<Integer> finalPositions) {
+    public static int getMaxPosition(List<Integer> finalPositions) {
         return Collections.max(finalPositions);
     }
 
-    private List<Integer> getFinalPositionList() {
+    public List<Integer> getFinalPositionList() {
         List<Integer> finalPositionList = new ArrayList<>();
 
         for(Car car: cars) {
