@@ -2,18 +2,18 @@ package racingcar.domain;
 
 public class RacingResult {
     private String name;
-    private int position;
+    private int distance;
 
     public RacingResult(RacingCar car) {
         this.name = car.getName();
-        this.position = car.getPosition();
+        this.distance = car.getDistance();
     }
 
     public String getName() {
         return name;
     }
 
-    public int getPosition() {
-        return position;
+    public int getDistance() {
+        return distance;
     }
 }

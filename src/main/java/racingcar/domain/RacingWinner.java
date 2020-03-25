@@ -6,22 +6,22 @@ import java.util.stream.Collectors;
 public class RacingWinner {
 
     private final List<RacingCar> winners;
-    public Integer score;
+    public Integer distance;
 
     public RacingWinner(List<RacingCar> winners) {
         this.winners = winners;
-        this.score = getHighScore();
+        this.distance = getWinningDistance();
     }
 
     public List<String> findWinnerNames() {
-        return winners.stream().filter(w -> w.getPosition() == score)
+        return winners.stream().filter(w -> w.getDistance() == distance)
                 .map(RacingCar::getName)
                 .collect(Collectors.toList());
     }
 
-    private int getHighScore() {
+    private int getWinningDistance() {
         return winners.stream()
-                .mapToInt(RacingCar::getPosition)
+                .mapToInt(RacingCar::getDistance)
                 .max()
                 .getAsInt();
     }

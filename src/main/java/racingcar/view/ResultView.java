@@ -11,7 +11,7 @@ public class ResultView {
     public static void printRaceResult(List<RacingResult> cars) {
         for(RacingResult car: cars){
             printCarName(car.getName());
-            printPosition(car.getPosition());
+            printPosition(car.getDistance());
             nextLine();
         }
         nextLine();
