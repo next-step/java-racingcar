@@ -23,7 +23,7 @@ public class CarsTest {
         Car car1 = cars.getCar(0);
         Car car2 = cars.getCar(1);
 
-        car1.move(1);           //TODO: 생성자를 이용해서 이런 코드 필요 없게 개선해보자.
+        car1.move(1);
         car2.move(1);
         car1.move(2);
     }
@@ -59,6 +59,7 @@ public class CarsTest {
 
         assertThat(cars.getMaxPosition(numberList)).isEqualTo(9);
     }
+
 
     @Test
     @DisplayName("최종 Position이 가장 높은 Car를 승자로서 true로 받아야 한다.")

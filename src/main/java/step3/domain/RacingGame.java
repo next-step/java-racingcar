@@ -20,22 +20,8 @@ public class RacingGame {
 
     private void play() {
         for(int i = 0; i < this.roundTime; i++) {
-            moveCars(i);
+            cars.moveCars(i, moveRule);
         }
-    }
-
-    private void moveCars(int presentRoundTime) {
-        CarsIterator carsIterator = new CarsIterator(this.cars);
-        while(carsIterator.hasNext()) {
-            moveCar(carsIterator.next(), presentRoundTime);
-        }
-    }
-
-    private void moveCar(Car car, int presentRoundTime) {
-        if(moveRule.canMove()) {
-            car.move(presentRoundTime);
-        }
-        car.completeRound(presentRoundTime);
     }
 
     public int getRoundTime() {

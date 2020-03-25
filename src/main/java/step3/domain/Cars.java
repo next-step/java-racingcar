@@ -34,6 +34,12 @@ public class Cars {  //TODO: 일급콜렉션화 시키기
         return cars.size();
     }
 
+    public void moveCars(int presentRoundTime, MoveRule moveRule) {
+        for(Car car: cars) {
+            car.moveCar(presentRoundTime, moveRule.canMove());
+        }
+    }
+
     public List<String> getWinnerNames() {
         List<String> winnerNames = new ArrayList<String>();
 

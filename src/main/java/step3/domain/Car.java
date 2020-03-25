@@ -14,8 +14,11 @@ public class Car {
         this.carName = carName;
     }
 
-    public void move(int roundTime) {
-        this.position++;
+    public void moveCar(int presentRoundTime, boolean canMove) {
+        if(canMove) {
+            this.position++;
+        }
+        completeRound(presentRoundTime);
     }
 
     public void completeRound(int roundTime) {
