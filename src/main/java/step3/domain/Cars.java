@@ -7,7 +7,6 @@ import java.util.List;
 public class Cars {  //TODO: 일급콜렉션화 시키기
 
     private List<Car> cars;
-    private List<String> winnerNames; //TODO:  중복 인스턴스 변수. 필요한 시점에만 구하면 되므로 삭제 대상
 
     public Cars(String[] carNames) {
         List<Car> cars = new ArrayList<Car>();
@@ -16,7 +15,6 @@ public class Cars {  //TODO: 일급콜렉션화 시키기
             cars.add(createCar(carNames[i]));
         }
         this.cars = cars;
-        winnerNames = new ArrayList<String>();
     }
 
     private Car createCar(String carName) {
@@ -26,7 +24,6 @@ public class Cars {  //TODO: 일급콜렉션화 시키기
 
     public void clear() {
         this.cars.clear();
-        this.winnerNames.clear();
     }
 
     public Car getCar(int index) {
@@ -38,16 +35,13 @@ public class Cars {  //TODO: 일급콜렉션화 시키기
     }
 
     public List<String> getWinnerNames() {
-        return this.winnerNames;
-    }
-
-    public void setWinnerNames() {
+        List<String> winnerNames = new ArrayList<String>();
         int winnerPosition = getMaxPosition(getFinalPositionList());
 
         for(Car car: cars) {
-            addWinnerName(winnerPosition, car);
+            addWinnerName(winnerNames, winnerPosition, car);
         }
-        this.winnerNames = winnerNames;
+        return winnerNames;
     }
 
     public List<Integer> getFinalPositionList() {
@@ -63,14 +57,15 @@ public class Cars {  //TODO: 일급콜렉션화 시키기
         return Collections.max(finalPositions);
     }
 
-    private void addWinnerName(int winnerPosition, Car car) {
-        if(isWinner(winnerPosition, car)) {
+    private List<String> addWinnerName(List<String> winnerNames, int winnerPosition, Car car) {
+        if(isWinner(winnerPosition, car.getPosition())) {
             winnerNames.add(car.getCarName());
         }
+        return winnerNames;
     }
 
-    public boolean isWinner(int winnerPosition, Car car) {
-        if(winnerPosition == car.getPosition()) {
+    public boolean isWinner(int winnerPosition, int position) {
+        if(winnerPosition == position) {
             return true;
         }
         return false;
