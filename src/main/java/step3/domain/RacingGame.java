@@ -1,5 +1,7 @@
 package step3.domain;
 
+import java.util.List;
+
 public class RacingGame {
     private int roundTime;
     private int carCount;
