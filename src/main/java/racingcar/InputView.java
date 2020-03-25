@@ -1,18 +1,26 @@
 package racingcar;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class InputView {
 
     private static Scanner scanner = new Scanner(System.in);
 
     public static InputData getInputData() {
-        return new InputData(getNumberOfCars(), getTryCount());
+        return new InputData(getCarNames(), getTryCount());
     }
 
-    private static int getNumberOfCars() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return scanner.nextInt();
+    private static List<String> getCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,)를 기준으로 구분)");
+        String value = scanner.nextLine();
+        return Arrays.stream(value.split(","))
+                .collect(toList());
+
     }
 
     private static int getTryCount() {
