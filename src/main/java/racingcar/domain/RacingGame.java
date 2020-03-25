@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import racingcar.util.NumberUtils;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,13 +35,10 @@ public class RacingGame {
         return this.raceTime > NumberUtils.ZERO;
     }
 
-    private List<RacingResult> moveCars() {
-        List<RacingResult> racingResults = new ArrayList<>();
-
-        for (int i = 0; i < cars.size(); i++) {
-            racingResults.add(move(cars.get(i)));
-        }
-        return racingResults;
+    private List<RacingResult> startRace() {
+        return cars.stream()
+                .map(i -> move(i))
+                .collect(Collectors.toList());
     }
 
     private RacingResult move(RacingCar car) {
