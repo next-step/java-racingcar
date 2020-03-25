@@ -14,7 +14,6 @@ public class RacingGame {
 
     public void start() {
         play();
-        cars.setWinnerNames();
     }
 
     public void end() {

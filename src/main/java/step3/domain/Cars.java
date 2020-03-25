@@ -36,12 +36,31 @@ public class Cars {  //TODO: 일급콜렉션화 시키기
 
     public List<String> getWinnerNames() {
         List<String> winnerNames = new ArrayList<String>();
-        int winnerPosition = getMaxPosition(getFinalPositionList());
 
         for(Car car: cars) {
-            addWinnerName(winnerNames, winnerPosition, car);
+            addWinnerName(winnerNames, car);
         }
         return winnerNames;
+    }
+
+    private List<String> addWinnerName(List<String> winnerNames, Car car) {
+        if(isWinner(car.getPosition())) {
+            winnerNames.add(car.getCarName());
+        }
+        return winnerNames;
+    }
+
+    public boolean isWinner(int position) {
+        int winnerPosition = getMaxPosition(getFinalPositionList());
+
+        if(winnerPosition == position) {
+            return true;
+        }
+        return false;
+    }
+
+    public static int getMaxPosition(List<Integer> finalPositions) {
+        return Collections.max(finalPositions);
     }
 
     public List<Integer> getFinalPositionList() {
@@ -53,21 +72,4 @@ public class Cars {  //TODO: 일급콜렉션화 시키기
         return finalPositionList;
     }
 
-    public static int getMaxPosition(List<Integer> finalPositions) {
-        return Collections.max(finalPositions);
-    }
-
-    private List<String> addWinnerName(List<String> winnerNames, int winnerPosition, Car car) {
-        if(isWinner(winnerPosition, car.getPosition())) {
-            winnerNames.add(car.getCarName());
-        }
-        return winnerNames;
-    }
-
-    public boolean isWinner(int winnerPosition, int position) {
-        if(winnerPosition == position) {
-            return true;
-        }
-        return false;
-    }
 }
