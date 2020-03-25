@@ -22,8 +22,9 @@ public class RacingGame {
                 .collect(Collectors.toList());
     }
 
-    public List<RacingResult> start() {
-            return moveCars();
+    public List<RacingResult> startRaceAndReduceCount() {
+        reduceCount();
+        return this.startRace();
     }
 
     public List<String> findWinnerNames() {

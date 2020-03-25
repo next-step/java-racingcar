@@ -10,10 +10,9 @@ public class RacingCarApplication {
         int moveCount = InputView.insertMoveCount();
         InputView.inputClose();
 
-        RacingGame racing = new RacingGame(carNames,moveCount);
-        while(racing.canRace()){
-            ResultView.printRaceResult(racing.start());
-            racing.reduceCount();
+        RacingGame racing = new RacingGame(carNames, moveCount);
+        while (racing.canRace()) {
+            ResultView.printRaceResult(racing.startRaceAndReduceCount());
         }
         ResultView.printWinnerName(racing.findWinnerNames());
     }
