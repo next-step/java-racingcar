@@ -1,4 +1,4 @@
-package racingGame.game;
+package racingGame.domain.game;
 
 class Round {
     private int round;

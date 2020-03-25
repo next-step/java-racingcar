@@ -1,7 +1,7 @@
-package racingGame.participant;
+package racingGame.domain.participant;
 
-import racingGame.car.Car;
-import racingGame.game.MovingRule;
+import racingGame.domain.car.Car;
+import racingGame.domain.game.MovingRule;
 
 import java.util.ArrayList;
 import java.util.Collections;

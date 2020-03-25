@@ -1,4 +1,4 @@
-package racingGame.car;
+package racingGame.domain.car;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
