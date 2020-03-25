@@ -1,7 +1,11 @@
+package calculator;
+
 public class Calculator {
 
-    public static double calculate(String str) {
-        String[] split = str.split(" ");
+    private static final String REGEX = " ";
+
+    public static double calculate(String input) {
+        String[] split = input.split(REGEX);
 
         checkFormulaLength(split.length);
         double result = stringToDouble(split[0]);
