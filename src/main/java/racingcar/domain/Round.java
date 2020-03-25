@@ -17,6 +17,10 @@ public final class Round {
         return new Round(round + NEXT);
     }
 
+    public boolean isEnd(int time) {
+        return round == time;
+    }
+
     public int getRound() {
         return round;
     }
