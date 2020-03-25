@@ -13,6 +13,7 @@ import java.util.List;
 public class InputView {
     private static final String CAR_NAME_DELIMITER = ",";
     private static final String INPUT_ERROR_MESSAGE = "1이상의 값을 입력해야 합니다.";
+    private static final int RACING_MINIMUM_ROUND_COUNT = 1;
     private int gameCount;
     private List<String> carNames = new ArrayList<>();
 
@@ -23,7 +24,7 @@ public class InputView {
 
     private int validateInputInteger(String input) {
         int num = NumberUtil.validateIntegerAndReturn(input);
-        if (!NumberUtil.isGreaterThan1(num)) {
+        if (!NumberUtil.isGreaterThan(num, RACING_MINIMUM_ROUND_COUNT)) {
             throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
         }
         return num;

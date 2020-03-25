@@ -36,14 +36,6 @@ class NumberUtilTest {
         assertThat(result).isEqualTo(expect);
     }
 
-    @DisplayName("입력값이 정수인지")
-    @ParameterizedTest
-    @CsvSource(value = {"1:true", "2:true", "100:true", "a:false", "2.2:false"}, delimiter = ':')
-    public void isIntPrimitiver(String input, boolean expect) throws Exception {
-        //then
-        assertThat(NumberUtil.isIntPrimitive(input)).isEqualTo(expect);
-    }
-
     @DisplayName("String을 int로 변환, 반환, 검증 : success")
     @ParameterizedTest
     @CsvSource(value = {"1:1", "2:2", "10:10"}, delimiter = ':')
