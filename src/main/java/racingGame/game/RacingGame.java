@@ -8,17 +8,17 @@ import java.util.List;
 
 public class RacingGame {
 
-    private final RacingGameRule racingGameRule;
+    private final MovingRule movingRule;
     private Participants participants;
     private int round;
 
-    public RacingGame(RacingGameRule racingGameRule) {
-        this.racingGameRule = racingGameRule;
+    public RacingGame(MovingRule movingRule) {
+        this.movingRule = movingRule;
     }
 
-    public void participate(Participants Participants, int round) {
-        verifyParticipate(Participants, round);
-        this.participants = Participants;
+    public void participate(Participants participants, int round) {
+        verifyParticipate(participants, round);
+        this.participants = participants;
         this.round = round;
     }
 
@@ -35,7 +35,7 @@ public class RacingGame {
         verifyParticipate(participants, round);
         List<RoundScore> result = new ArrayList<>();
         for (int i = 0; i < round; i++) {
-            result.add(participants.startRound(racingGameRule));
+            result.add(participants.startRound(movingRule));
         }
         return integrateGameResult(result);
     }

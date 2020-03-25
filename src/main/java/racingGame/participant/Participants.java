@@ -1,15 +1,16 @@
 package racingGame.participant;
 
 import racingGame.car.Car;
-import racingGame.game.RacingGameRule;
+import racingGame.game.MovingRule;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Participants {
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Participants(String participates) {
         List<Car> carList = new ArrayList<>();
@@ -17,22 +18,22 @@ public class Participants {
         for (String name : names) {
             carList.add(new Car(name));
         }
-        new Participants(carList);
+        this.cars = Collections.unmodifiableList(carList);
     }
 
     public Participants(List<Car> cars) {
-        this.cars = cars;
+        this.cars = Collections.unmodifiableList(cars);
     }
 
-    public RoundScore startRound(RacingGameRule carForwardRule) {
-        cars.forEach(car -> checkCarForwardRule(car, carForwardRule));
+    public RoundScore startRound(MovingRule movingRule) {
+        cars.forEach(car -> applyMovingRule(car, movingRule));
         return new RoundScore(cars.stream()
                 .map(ParticipantScore::new)
                 .collect(Collectors.toList()));
     }
 
-    private void checkCarForwardRule(Car car, RacingGameRule carForwardRule) {
-        if (carForwardRule.result()) {
+    private void applyMovingRule(Car car, MovingRule carForwardRule) {
+        if (carForwardRule.isMove()) {
             car.forward();
         }
     }

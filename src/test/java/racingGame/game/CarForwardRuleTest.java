@@ -10,19 +10,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarForwardRuleTest {
 
     @Mock
-    private CarForwardRule carForwardRule;
+    private RandomStrategy randomStrategy;
 
     @ParameterizedTest
     @CsvSource(value = {"5:true", "2:false", "8:true", "3:false"}, delimiter = ':')
     @DisplayName("랜덤 숫자 생성 메소드를 재정의 함으로써 result() 메소드 테스트")
     void result(int randomNumber, boolean expected) {
-        carForwardRule = new CarForwardRule() {
+        randomStrategy = new RandomStrategy() {
             @Override
             public int generateRandomNumber() {
                 return randomNumber;
             }
         };
 
-        assertThat(carForwardRule.result()).isEqualTo(expected);
+        assertThat(randomStrategy.isMove()).isEqualTo(expected);
     }
 }

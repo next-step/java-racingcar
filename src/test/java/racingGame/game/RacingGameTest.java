@@ -22,7 +22,7 @@ class RacingGameTest {
 
     @BeforeEach
     void setUp() {
-        RacingGameRule gameRule = new CarForwardRule();
+        MovingRule gameRule = new RandomStrategy();
         racingGame = new RacingGame(gameRule);
     }
 

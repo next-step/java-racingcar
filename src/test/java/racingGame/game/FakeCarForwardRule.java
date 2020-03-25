@@ -1,13 +1,13 @@
 package racingGame.game;
 
-public class FakeCarForwardRule implements RacingGameRule {
+public class FakeCarForwardRule implements MovingRule {
 
     private static final int CAR_FORWARD_STANDARD = 4;
     private int[] values;
     private int index;
 
     @Override
-    public boolean result() {
+    public boolean isMove() {
         verifyIndex();
         boolean s = values[index] >= CAR_FORWARD_STANDARD;
         index++;
