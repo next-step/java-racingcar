@@ -23,9 +23,7 @@ public class ResultView {
     System.out.println();
     System.out.println(RESULT);
     for (int i = 0; i <= totalRound; i++) {
-      int presentRound = i;
-
-      cars.forEach(car -> visualizeCarPosition(car.getName(), car.getPositions().get(presentRound)));
+      cars.forEach(car -> visualizeCarPosition(car.getName(), car.getPositions().getFinalPosition()));
       System.out.println();
     }
     announceTheWinner();
@@ -42,12 +40,12 @@ public class ResultView {
   private void announceTheWinner() {
     int distance = 0;
     for (Car car : cars) {
-      distance = Math.max(distance, car.getFinalPosition());
+      distance = Math.max(distance, car.getPositions().getFinalPosition());
     }
 
     int winnerDistance = distance;
     List<String> winners = cars.stream()
-        .filter(car -> car.getFinalPosition() == winnerDistance)
+        .filter(car -> car.getPositions().getFinalPosition() == winnerDistance)
         .map(Car::getName)
         .collect(Collectors.toList());
 

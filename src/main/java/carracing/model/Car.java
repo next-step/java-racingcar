@@ -9,31 +9,27 @@ import java.util.function.Supplier;
 
 public class Car {
 
-  public static final int INITIAL_POSITION = 1;
-
   private String name;
-  private List<Integer> positions;
+  private Positions positions;
 
   public Car(String name) {
     this.name = name;
-    this.positions = new ArrayList<>(Arrays.asList(INITIAL_POSITION));
+    this.positions = new Positions();
   }
 
   public String getName() {
     return name;
   }
-  public List<Integer> getPositions() {
+
+  public Positions getPositions() {
     return positions;
   }
+
   public Integer getFinalPosition() {
-    return positions.get(positions.size() - 1);
+    return positions.getFinalPosition();
   }
 
   public void move(BooleanSupplier canMove) {
-    Integer nextPosition = positions.get(positions.size() - 1);
-    if (canMove.getAsBoolean()) {
-      nextPosition++;
-    }
-    positions.add(nextPosition);
+    positions.move(canMove.getAsBoolean());
   }
 }

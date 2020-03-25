@@ -1,6 +1,7 @@
 package carracing;
 
 import carracing.controller.CarRacingController;
+import carracing.model.CarRacing;
 import carracing.view.InputView;
 import carracing.view.ResultView;
 import java.util.List;
@@ -12,7 +13,8 @@ public class Main {
     List<String> carNames = inputView.getCarNames();
     Integer totalRound = inputView.getTotalRound();
 
-    ResultView resultView = new CarRacingController().race(carNames, totalRound);
-    resultView.show();
+    CarRacing carRacing = new CarRacingController().race(carNames, totalRound);
+
+    new ResultView(carRacing.getCars(), carRacing.getTotalRound()).show();
   }
 }

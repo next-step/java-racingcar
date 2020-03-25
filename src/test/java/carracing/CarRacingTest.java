@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-import static carracing.model.Car.INITIAL_POSITION;
+import static carracing.model.Positions.INITIAL_POSITION;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarRacingTest {
@@ -21,10 +21,8 @@ public class CarRacingTest {
 
     assertThat(carRacing.getCars()).hasSize(CAR_NAMES.size());
     carRacing.getCars()
-        .forEach(car -> car.getPositions()
-            .forEach(position -> assertThat(position)
-                .isBetween(INITIAL_POSITION, INITIAL_POSITION + MOVED_ONCE))
-        );
+        .forEach(car -> assertThat(car.getFinalPosition())
+            .isBetween(INITIAL_POSITION, INITIAL_POSITION + MOVED_ONCE));
   }
 
   @Test
@@ -34,8 +32,7 @@ public class CarRacingTest {
 
     assertThat(carRacing.getCars()).hasSize(CAR_NAMES.size());
     carRacing.getCars()
-        .forEach(car -> car.getPositions()
-            .forEach(position -> assertThat(position).isBetween(INITIAL_POSITION, INITIAL_POSITION + ROUND))
-        );
+        .forEach(car -> assertThat(car.getFinalPosition())
+            .isBetween(INITIAL_POSITION, INITIAL_POSITION + ROUND));
   }
 }
