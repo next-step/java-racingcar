@@ -39,13 +39,19 @@ public class Participants {
     }
 
     public List<Car> getWinners() {
-        int winnerPosition = cars.stream()
-                .max(Comparator.comparing(Car::getPosition))
-                .orElseThrow(IllegalArgumentException::new)
-                .getPosition();
+        return getWinners(getWinnerPosition());
+    }
 
+    private List<Car> getWinners(int winnerPosition) {
         return cars.stream()
                 .filter(car -> car.getPosition() == winnerPosition)
                 .collect(Collectors.toList());
+    }
+
+    private int getWinnerPosition() {
+        return cars.stream()
+                    .max(Comparator.comparing(Car::getPosition))
+                    .orElseThrow(IllegalArgumentException::new)
+                    .getPosition();
     }
 }
