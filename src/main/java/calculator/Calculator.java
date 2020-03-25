@@ -1,8 +1,6 @@
 package calculator;
 
 
-import org.junit.platform.commons.util.StringUtils;
-
 public class Calculator {
 
     private static final String SEPARATOR = " ";
@@ -24,7 +22,7 @@ public class Calculator {
     }
 
     private void verifyInput(String input) {
-        if (StringUtils.isBlank(input)) {
+        if (input == null || input.isEmpty()) {
             throw new IllegalArgumentException();
         }
     }

@@ -5,6 +5,7 @@ import java.util.Random;
 public class CarForwardRule implements RacingGameRule {
 
     private static final int CAR_FORWARD_STANDARD = 4;
+    private static final int NUMBER_RANGE = 10;
 
     @Override
     public boolean result() {
@@ -13,6 +14,6 @@ public class CarForwardRule implements RacingGameRule {
 
     public int generateRandomNumber() {
         Random random = new Random();
-        return random.nextInt(10);
+        return random.nextInt(NUMBER_RANGE);
     }
 }

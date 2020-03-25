@@ -1,4 +1,4 @@
-package racingGame.test;
+package racingGame.car;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,7 +14,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car("yohan");
     }
 
     @Test
@@ -29,5 +29,10 @@ class CarTest {
         car.forward();
 
         assertThat(car.getPosition()).isEqualTo(5);
+    }
+
+    @Test
+    void name() {
+        assertThat(car.getName()).isEqualTo("yohan");
     }
 }
