@@ -18,7 +18,7 @@ public class RacingGame {
 
     private void createCar(String[] carNames) {
         cars = Arrays.stream(carNames)
-                .map(carName -> new RacingCar(carName))
+                .map(RacingCar::new)
                 .collect(Collectors.toList());
     }
 
