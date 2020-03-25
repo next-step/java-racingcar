@@ -8,9 +8,9 @@ public class Car {
         position = DEFAULT_POSITION;
     }
 
-    public Car setPosition(int inputPosition) {
+
+    public Car(int inputPosition) {
         position = inputPosition;
-        return this;
     }
 
     public int moveByCondition(int condition) {
@@ -18,7 +18,7 @@ public class Car {
             return moveForward();
         }
 
-        return getPosition();
+        return position;
     }
 
     private int moveForward() {

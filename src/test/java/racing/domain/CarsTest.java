@@ -42,10 +42,10 @@ public class CarsTest {
 
     private List<Car> generateCarsList() {
         List<Car> carList = new ArrayList<Car>();
-        carList.add(new Car().setPosition(2));
-        carList.add(new Car().setPosition(3));
-        carList.add(new Car().setPosition(4));
-        carList.add(new Car().setPosition(5));
+        carList.add(new Car(2));
+        carList.add(new Car(3));
+        carList.add(new Car(4));
+        carList.add(new Car(5));
 
         return carList;
     }
