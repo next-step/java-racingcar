@@ -3,8 +3,6 @@ package racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Arrays;
 import java.util.List;
@@ -50,21 +48,19 @@ public class RacingGameTest {
         assertThat(game.getCars()).hasSize(3);
     }
 
-    @ParameterizedTest
-    @CsvSource({"-1, 2", "0, 3", "-3, 5"})
+    @Test
     @DisplayName("입력된 차 대수가 1보다 작을 때 IllegalArgumentException이 발생한다")
-    public void inputInvalidNumberOfCarsThrowIllegalArgumentException(int numberOfCars, int tryCount) {
-        InputData inputData = new InputData(carNames, tryCount);
+    public void inputInvalidNumberOfCarsThrowIllegalArgumentException() {
+        InputData inputData = new InputData(Arrays.asList(), 3);
 
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new RacingGame(inputData, new RandomMoveStrategy()));
     }
 
-    @ParameterizedTest
-    @CsvSource({"2, -1", "3, 0", "5, -3"})
+    @Test
     @DisplayName("입력된 시도 횟수가 1보다 작을 때 IllegalArgumentException이 발생한다")
-    public void inputInvalidTryCountThrowIllegalArgumentException(int numberOfCars, int tryCount) {
-        InputData inputData = new InputData(carNames, tryCount);
+    public void inputInvalidTryCountThrowIllegalArgumentException() {
+        InputData inputData = new InputData(carNames, 0);
 
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new RacingGame(inputData, new RandomMoveStrategy()));
