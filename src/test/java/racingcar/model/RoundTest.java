@@ -29,4 +29,15 @@ class RoundTest {
         assertThat(actual).isNotNull();
         assertThat(actual.getRound()).isEqualTo(1);
     }
+
+    @DisplayName("라운드 종료 확인을 성공한다.")
+    @Test
+    void isEnd() {
+        // when
+        final boolean actual = round.isEnd(0);
+
+        // then
+        assertThat(actual).isNotNull();
+        assertThat(actual).isTrue();
+    }
 }
