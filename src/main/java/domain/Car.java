@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Car {
 
     private static final int INITIAL_LOCATION = 1;
+    private static final int MOVE_CONDITION = 4;
 
     private final String name;
     private int location = 0;
@@ -19,9 +20,10 @@ public class Car {
         this.location = location;
     }
 
-    // 숫자 확인 로직은 어디에서 구현하는게 맞을까?
-    public void move() {
-        this.location++;
+    public void move(int condition) {
+        if (condition >= MOVE_CONDITION) {
+            this.location++;
+        }
     }
 
     public String getName() {
@@ -45,4 +47,5 @@ public class Car {
     public int hashCode() {
         return Objects.hash(name, location);
     }
+
 }
