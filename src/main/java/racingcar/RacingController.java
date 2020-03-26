@@ -10,7 +10,7 @@ public class RacingController {
     public static final int FIRST = 1;
     private int carCount;
     private int tryCount;
-    private static List<Car> cars;
+    private List<Car> cars;
     private final RandomNumber randomNumber = new RandomNumber();
     private Map<Integer, List<Integer>> record;
 
@@ -54,7 +54,7 @@ public class RacingController {
         return positions;
     }
 
-    public static List<Car> getCars() {
+    public List<Car> getCars() {
         return new ArrayList<>(cars);
     }
 }
