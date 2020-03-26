@@ -9,11 +9,11 @@ public class InputView {
 
     private Scanner scanner = new Scanner(System.in);
     private String participates;
-    private int gameCount;
+    private int round;
 
     public void execute() {
         participates = receiveParticipates();
-        gameCount = receiveGameCount();
+        round = receiveRound();
     }
 
     private String receiveParticipates() {
@@ -29,7 +29,7 @@ public class InputView {
         }
     }
 
-    private int receiveGameCount() {
+    private int receiveRound() {
         System.out.println(GAME_COUNT_REQUEST);
         int gameCount = scanner.nextInt();
         verifyGameCount(gameCount);
@@ -42,11 +42,7 @@ public class InputView {
         }
     }
 
-    public int getGameCount() {
-        return gameCount;
-    }
-
-    public String getParticipates() {
-        return participates;
+    public RacingGameRequestDto getRequest() {
+        return new RacingGameRequestDto(participates, round);
     }
 }
