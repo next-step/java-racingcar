@@ -32,11 +32,11 @@ public class RacingController {
     }
 
     private Cars createCar(int carCount) {
-        List<Car> temp = new ArrayList<>();
+        List<Car> tempCars = new ArrayList<>();
         for (int carNumber = 1; carNumber <= carCount; carNumber++) {
-            temp.add(new Car(carNumber));
+            tempCars.add(new Car(carNumber));
         }
-        return new Cars(temp);
+        return new Cars(tempCars);
     }
 
     private int getRandomNUmber() {
@@ -49,7 +49,6 @@ public class RacingController {
             record.put(count, changePosition(getRandomNUmber()));
         }
     }
-
 
     private void showResult() {
         ResultView resultView = new ResultView(this.record);

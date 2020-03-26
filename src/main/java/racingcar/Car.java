@@ -6,6 +6,7 @@ public class Car {
     private final int position;
     private static final int ZERO = 0;
 
+
     public Car() {
         this(ZERO);
     }
@@ -19,12 +20,13 @@ public class Car {
         if (movingStrategy.movable(randomNumber)) {
             return new Car(car.position + 1);
         }
-        return new Car();
+        return new Car(car.position);
     }
 
     public int getPosition() {
         return position;
     }
+
 
     @Override
     public boolean equals(Object o) {
