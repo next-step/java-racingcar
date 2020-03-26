@@ -18,7 +18,11 @@ public class Cars {
     }
 
     public Cars(List<Car> carsList) {
-        cars = carsList;
+        cars = new ArrayList<>();
+
+        for (Car car : carsList) {
+            cars.add(car.copy());
+        }
     }
 
     public int size() {

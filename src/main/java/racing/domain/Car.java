@@ -25,6 +25,10 @@ public class Car {
         return ++position;
     }
 
+    public Car copy() {
+        return new Car(position);
+    }
+
     public int getPosition() {
         return position;
     }
