@@ -1,4 +1,5 @@
-import java.util.Map;
+package study;
+
 import java.util.Scanner;
 
 public class InputView {

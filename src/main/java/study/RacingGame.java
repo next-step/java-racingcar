@@ -1,3 +1,5 @@
+package study;
+
 public class RacingGame {
 
     private int time;

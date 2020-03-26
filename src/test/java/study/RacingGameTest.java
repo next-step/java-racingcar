@@ -13,37 +13,13 @@ public class RacingGameTest {
     int time;
     Car[] cars;
 
+    String[] carNames;
+
     private final int BASE_POINT = 4;
     private final int RANDOM_BOUND = 10;
     private final int DISTANCE = 1;
     private final int ZERO = 0;
     private final String SPLIT_CHAR = ",";
-
-    public class Car {
-
-        private int position;
-        private String name;
-        public Car(int position, String name) {
-            this.position = position;
-            this.name = name;
-        }
-
-        public int getPosition() {
-            return position;
-        }
-
-        public void setPosition(int position) {
-            this.position = position;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-    }
 
     @BeforeEach
     void setUp() {
@@ -55,6 +31,10 @@ public class RacingGameTest {
         for (int i = 0; i < 3; i++) {
             cars[i] = new Car(i, i+"번째");
         }
+        carNames = new String[3];
+        carNames[0] = "pobi";
+        carNames[1] = "crong";
+        carNames[2] = "hox";
     }
 
     @Test
@@ -62,10 +42,7 @@ public class RacingGameTest {
         Random random = new Random();
 
         for (int i = 0; i < cars.length; i++) {
-            //int ranCount = random.nextInt(RANDOM_BOUND);
-            int ranCount = 4;
-            int position = cars[i].getPosition();
-            cars[i].setPosition( position += (ranCount >= BASE_POINT) ? DISTANCE : ZERO);
+            cars[i].moveForward();
         }
 
         assertThat(cars[0].getPosition()).isEqualTo(1);
@@ -73,18 +50,7 @@ public class RacingGameTest {
 
     @Test
     public void showWinner() {
-        int max = 0;
-        for (int i = 0; i < cars.length; i++) {
-            max = Math.max(cars[i].getPosition(), max);
-        }
-
-        String winners = "";
-        for (int i = 0; i < cars.length; i++) {
-            winners += (cars[i].getPosition() == max) ? cars[i].getName() + SPLIT_CHAR : "";
-        }
-
-        winners = winners.substring(0, winners.length() - 1);
-        assertThat(winners).isEqualTo("2번째");
+        assertThat(new GameProgress().showWinner(new RacingGame(carNames, 3))).isEqualTo("pobi,crong,hox");
     }
 
 

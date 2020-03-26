@@ -1,9 +1,9 @@
+package study;
+
 import java.util.Random;
 
 public class GameProgress {
 
-    private final int BASE_POINT = 4;
-    private final int RANDOM_BOUND = 10;
     private final int DISTANCE = 1;
     private final int ZERO = 0;
     private final String SPLIT_CHAR = ",";
@@ -22,16 +22,12 @@ public class GameProgress {
     }
 
     public void move(RacingGame racingGame) {
-        Random random = new Random();
-
         for (int i = 0; i < racingGame.getCars().length; i++) {
-            int ranCount = random.nextInt(RANDOM_BOUND);
-            int position = racingGame.getCars()[i].getPosition();
-            racingGame.getCars()[i].setPosition( position += (ranCount >= BASE_POINT) ? DISTANCE : ZERO);
+            racingGame.getCars()[i].moveForward();
         }
     }
 
-    public void showWinner(RacingGame racingGame) {
+    public String showWinner(RacingGame racingGame) {
         int max = 0;
         for (int i = 0; i < racingGame.getCars().length; i++) {
             max = Math.max(racingGame.getCars()[i].getPosition(), max);
@@ -45,5 +41,7 @@ public class GameProgress {
         winners = winners.substring(0, winners.length() - 1);
 
         System.out.println(winners + "가 최종 우승했습니다.");
+
+        return winners;
     }
 }
