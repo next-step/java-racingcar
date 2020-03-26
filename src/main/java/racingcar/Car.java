@@ -2,22 +2,30 @@ package racingcar;
 
 public class Car {
 
+    private final String name;
     private int position;
 
-    private MoveStrategy moveStrategy;
-
-    public Car(MoveStrategy moveStrategy) {
+    public Car(String name) {
+        this.name = name;
         position = 0;
-        this.moveStrategy = moveStrategy;
     }
 
-    public void move() {
-        if (moveStrategy.isMovable()) {
+    public Car(String name, int position) {
+        this.name = name;
+        this.position = position;
+    }
+
+    public void move(boolean isMovable) {
+        if (isMovable) {
             position += 1;
         }
     }
 
     public int getPosition() {
         return position;
+    }
+
+    public String getName() {
+        return name;
     }
 }

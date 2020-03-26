@@ -1,16 +1,18 @@
 package racingcar;
 
+import java.util.List;
+
 public class InputData {
-    private int numberOfCars;
+    private List<String> carNames;
     private int tryCount;
 
-    public InputData(int numberOfCars, int tryCount) {
-        this.numberOfCars = numberOfCars;
+    public InputData(List<String> carNames, int tryCount) {
+        this.carNames = carNames;
         this.tryCount = tryCount;
     }
 
-    public int getNumberOfCars() {
-        return numberOfCars;
+    public List<String> getCarNames() {
+        return carNames;
     }
 
     public int getTryCount() {
