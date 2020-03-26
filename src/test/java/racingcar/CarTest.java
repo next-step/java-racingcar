@@ -3,6 +3,7 @@ package racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.car.Car;
@@ -55,5 +56,12 @@ class CarTest {
     @NullAndEmptySource
     void createFailByCarname(String name) {
         assertThatIllegalArgumentException().isThrownBy(() -> new Car(name));
+    }
+
+    @DisplayName("자동차의 위치가 0보다 작을때 생성 실패")
+    @ParameterizedTest
+    @CsvSource(value = {"alpha:-1", "beta:-999"}, delimiter = ':')
+    void createFailByCarPosition(String name, int position) {
+        assertThatIllegalArgumentException().isThrownBy(() -> new Car(name, position));
     }
 }
