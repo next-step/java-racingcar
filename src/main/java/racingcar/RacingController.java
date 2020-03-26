@@ -1,60 +1,60 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class RacingController {
-
     public static final int FIRST = 1;
-    private int carCount;
+    public static final int NUMBER_GENERATE_RANGE = 10;
+
     private int tryCount;
-    private List<Car> cars;
-    private final RandomNumber randomNumber = new RandomNumber();
-    private Map<Integer, List<Integer>> record;
+    private Cars cars;
+    Map<Integer, List<Integer>> record;
 
     public RacingController(InputView inputView) {
-        carCount = inputView.getCarCount();
+        this.cars = createCar(inputView.getCarCount());
         tryCount = inputView.getTryCount();
-        cars = new ArrayList<>();
         record = new HashMap<>();
     }
 
     public void startGame() {
-        createCar();
-        tryMoveCar();
-        resultShow();
+        gameStart();
+        showResult();
     }
 
-    private void createCar() {
-        for (int carNumber = 1; carNumber <= carCount; carNumber++) {
-            cars.add(new Car(carNumber));
-        }
-    }
-
-    private void tryMoveCar() {
-        for (int count = FIRST; count <= tryCount; count++) {
-            record.put(count, changePosition());
-        }
-    }
-
-    private void resultShow() {
-        ResultView resultView = new ResultView(this.record);
-        resultView.show();
-    }
-
-    private List<Integer> changePosition() {
+    private List<Integer> changePosition(int randomRumber) {
         List<Integer> positions = new ArrayList<>();
 
-        for (Car car : getCars()) {
-            Car movedCar = car.changeCarPosition(car, randomNumber.getRandomNumber());
+        for (Car car : cars.getCars()) {
+            Car movedCar = car.changeCarPosition(car, randomRumber);
             positions.add(movedCar.getPosition());
         }
         return positions;
     }
 
-    public List<Car> getCars() {
-        return new ArrayList<>(cars);
+    private Cars createCar(int carCount) {
+        List<Car> temp = new ArrayList<>();
+        for (int carNumber = 1; carNumber <= carCount; carNumber++) {
+            temp.add(new Car(carNumber));
+        }
+        return new Cars(temp);
     }
+
+    private int getRandomNUmber() {
+        Random random = new Random();
+        return random.nextInt(NUMBER_GENERATE_RANGE);
+    }
+
+    private void gameStart() {
+        for (int count = FIRST; count <= tryCount; count++) {
+            record.put(count, changePosition(getRandomNUmber()));
+        }
+    }
+
+
+    private void showResult() {
+        ResultView resultView = new ResultView(this.record);
+        resultView.show();
+    }
+
+
 }

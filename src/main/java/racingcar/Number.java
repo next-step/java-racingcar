@@ -3,29 +3,23 @@ package racingcar;
 public class Number {
     private final int number;
 
-    public Number(String number) {
-        checkInputNullOrEmpty(number);
-        this.number = parseToNumber(number);
-        checkPositiveNumber(this.number);
+    public Number(String input) {
+        this.number = validate(parse(input));
     }
 
-    private void checkInputNullOrEmpty(String inputText) {
-        if (inputText == null || inputText.trim().isEmpty()) {
-            throw new IllegalArgumentException("빈값이 입력되었습니다.");
+    private int validate(int number) {
+        if (number > 0) {
+            return number;
         }
+
+        throw new IllegalArgumentException("0보다 큰 값을 입력해야합니다.");
     }
 
-    private int parseToNumber(String textNumber) {
+    private int parse(String textNumber) {
         try {
             return (Integer.parseInt(textNumber));
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자가 아닙니다.");
-        }
-    }
-
-    private void checkPositiveNumber(int number) {
-        if (number <= 0) {
-            throw new IllegalArgumentException("0보다 큰 값을 입력해야합니다.");
+            throw new IllegalArgumentException("숫자가 아닙니다." + e.getMessage());
         }
     }
 
