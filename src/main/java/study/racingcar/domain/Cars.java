@@ -12,7 +12,7 @@ public class Cars implements Iterable<Car> {
     }
 
     public Cars(List<String> carNames) {
-        if (Objects.isNull(carNames) || carNames.isEmpty()) {
+        if (Objects.isNull(carNames)) {
             throw new IllegalArgumentException("null을 차로 입력할 수 없습니다.");
         }
 
@@ -21,8 +21,8 @@ public class Cars implements Iterable<Car> {
                 .collect(Collectors.toList());
     }
 
-    public void add(Car car) {
-        cars.add(car);
+    public void add(Car... cars) {
+        this.cars.addAll(Arrays.asList(cars));
     }
 
     public int size() {

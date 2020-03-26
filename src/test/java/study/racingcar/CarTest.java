@@ -28,8 +28,14 @@ public class CarTest {
 
     @DisplayName("현재 위치에 이동할 거리값을 더한 결과를 얻는다.")
     @Test
-    void checkCarPosition() {
+    void addCarPosition() {
         int newPosition = car.addPosition(2);
         assertThat(newPosition).isEqualTo(4);
+    }
+
+    @DisplayName("차가 해당 위치에 있는지 체크한다.")
+    @Test
+    void checkCarPosition() {
+        assertThat(car.isPositionEqualTo(2)).isTrue();
     }
 }
