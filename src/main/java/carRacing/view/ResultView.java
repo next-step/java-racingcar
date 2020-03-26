@@ -2,6 +2,8 @@ package carRacing.view;
 
 
 import carRacing.Constants;
+import carRacing.Domain.Car;
+import carRacing.Domain.Vehicle;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,14 +18,15 @@ public class ResultView {
         System.out.print(Constants.INFORMATION_MESSAGE_RESULT);
     }
 
-    public void showGameState(List<Integer> gameState) {
+    public void showGameState(List<Vehicle> gameState) {
         System.out.println();
-        new ArrayList<>(gameState).forEach(position -> {
-            System.out.println(shoCarState(position));
+
+        gameState.stream().map(Vehicle::inquiryPosition).forEach(position -> {
+            System.out.println(showCarState(position));
         });
     }
 
-    private String shoCarState(Integer position) {
+    private String showCarState(Integer position) {
         String[] result = new String[position];
         Arrays.fill(result, "-");
 

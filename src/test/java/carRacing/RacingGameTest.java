@@ -27,21 +27,20 @@ public class RacingGameTest {
 
 
     @ParameterizedTest
-    @CsvSource(value = {"1 2 4:2", "2 3 0:0", "3 4 2:0", "4 5 9:5"}, delimiter = ':')
+    @CsvSource(value = {"1 4:1", "2 0:0", "3 2:0", "4 9:1"}, delimiter = ':')
     void moveTest(String input, String expected) {
         String[] inputs = input.split(" ");
         int numberOfCar = Integer.parseInt(inputs[0]);
-        int time = Integer.parseInt(inputs[1]);
         MoveStrategy moveRandom = new MoveRandom(new Random() {
             @Override
             public int nextInt(int bound) {
-                return Integer.parseInt(inputs[2]);
+                return Integer.parseInt(inputs[1]);
             }
         });
         RacingGame racingGame = new RacingGame(numberOfCar, VehicleType.CAR);
 
-        racingGame.registerVehicles(moveRandom);
-        List<Vehicle> cars = racingGame.start(time);
+        List<Vehicle> cars = racingGame.registerVehicles(moveRandom);
+        cars = racingGame.rotate(cars);
 
         assertThat(cars).extracting(Vehicle::inquiryPosition).allSatisfy(position -> {
             assertThat(position).isEqualTo(Integer.parseInt(expected));

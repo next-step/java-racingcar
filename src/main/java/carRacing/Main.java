@@ -1,15 +1,17 @@
 package carRacing;
 
 import carRacing.Controller.InGameController;
-import carRacing.Domain.Vehicle;
-import carRacing.view.InputView;
-
-import java.util.List;
+import carRacing.Controller.ResultGameController;
 
 
 public class Main {
     public static void main(String[] args) {
-        List<Vehicle> raceVehicle = InGameController.run(InputView.readyToInteraction());
+        InGameController inGameController = InGameController.run();
+        ResultGameController resultGameController = ResultGameController.init();
+
+        for (int i = 0; i < inGameController.getTime(); i++) {
+            resultGameController.showGameState(inGameController.move());
+        }
 
 
     }

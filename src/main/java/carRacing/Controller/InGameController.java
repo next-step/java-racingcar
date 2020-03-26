@@ -20,24 +20,31 @@ public class InGameController {
     int numberOfCar;
     int time;
 
-    private InGameController(InputView inputView) {
-        this.inputView = inputView;
-        racingGame = new RacingGame(numberOfCar, VehicleType.CAR);
+    private InGameController() {
+        this.inputView = InputView.readyToInteraction();
         registerVehicles();
+        this.racingGame = new RacingGame(numberOfCar, VehicleType.CAR);
+        raceVehicle = racingGame.registerVehicles(new MoveRandom(new Random()));
         moveVehicles();
     }
 
-    public static List<Vehicle> run(InputView inputView) {
-        return new InGameController(inputView).raceVehicle;
+    public static InGameController run() {
+        return new InGameController();
+    }
+
+    public List<Vehicle> move() {
+        return racingGame.rotate(raceVehicle);
+    }
+
+    public int getTime() {
+        return time;
     }
 
     void registerVehicles() {
         this.numberOfCar = inputView.userInteraction(Constants.INFORMATION_MESSAGE_GET_NUMBER_OF_CAR);
-        raceVehicle = racingGame.registerVehicles(new MoveRandom(new Random()));
     }
 
     void moveVehicles() {
         this.time = inputView.userInteraction(Constants.INFORMATION_MESSAGE_GET_GAME_TIME);
-        raceVehicle = racingGame.start(time);
     }
 }

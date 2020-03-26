@@ -9,31 +9,25 @@ public class RacingGame {
     int numberOfVehicle;
 
     VehicleType vehicleType;
-    List<Vehicle> racingVehicles;
 
     public RacingGame(int numberOfCar, VehicleType vehicleType) {
         this.numberOfVehicle = numberOfCar;
         this.vehicleType = vehicleType;
-        this.racingVehicles = new ArrayList<>();
     }
 
     public List<Vehicle> registerVehicles(MoveStrategy moveStrategy) {
+        List<Vehicle> racingVehicles = new ArrayList<>();
         for (int i = 0; i < numberOfVehicle; i++) {
             racingVehicles.add(vehicleType.init(moveStrategy));
         }
         return racingVehicles;
     }
 
-    public List<Vehicle> start(int time) {
-        for (int i = 0; i < time; i++) {
-            rotate();
-        }
-        return racingVehicles;
-    }
-
-    private void rotate() {
+    public List<Vehicle> rotate(List<Vehicle> vehicles) {
+        List<Vehicle> racingVehicles = new ArrayList<>(vehicles);
         for (Vehicle vehicle : racingVehicles) {
             vehicle.move();
         }
+        return racingVehicles;
     }
 }
