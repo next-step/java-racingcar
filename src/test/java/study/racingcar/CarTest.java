@@ -14,7 +14,7 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car("luvram");
+        car = new Car("luvram", 2);
     }
 
     @DisplayName("설정한 차의 정보를 체크해본다.")
@@ -22,21 +22,14 @@ public class CarTest {
     void checkCarInfo() {
         assertAll(
                 () -> assertEquals("luvram", car.getName()),
-                () -> assertEquals(0, car.getPosition())
+                () -> assertEquals(2, car.getPosition())
         );
     }
 
-    @DisplayName("차가 앞으로 잘 가는지 확인한다.")
+    @DisplayName("현재 위치에 이동할 거리값을 더한 결과를 얻는다.")
     @Test
     void checkCarPosition() {
-        car.addPosition(2);
-        assertThat(car.getPosition()).isEqualTo(2);
-    }
-
-    @DisplayName("차가 해당하는 위치에 있는지 확인한다.")
-    @Test
-    void checkCarPositionIsEqualTo() {
-        car.addPosition(2);
-        assertThat(car.isPositionEqualTo(2)).isTrue();
+        int newPosition = car.addPosition(2);
+        assertThat(newPosition).isEqualTo(4);
     }
 }

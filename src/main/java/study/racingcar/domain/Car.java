@@ -2,15 +2,19 @@ package study.racingcar.domain;
 
 public class Car {
     private String name;
-    private int position;
+    private Position position;
 
     public Car(String name) {
-        this.name = name;
-        position = 0;
+        this(name, 0);
     }
 
-    public void addPosition(int distance) {
-        position += distance;
+    public Car(String name, int position) {
+        this.name = name;
+        this.position = new Position(position);
+    }
+
+    public int addPosition(int distance) {
+        return position.getPosition() + distance;
     }
 
     public String getName() {
@@ -18,10 +22,10 @@ public class Car {
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 
     public boolean isPositionEqualTo(int position) {
-        return this.position == position;
+        return this.position.getPosition() == position;
     }
 }

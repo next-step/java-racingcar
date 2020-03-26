@@ -1,10 +1,10 @@
 package study.racingcar;
 
-import study.racingcar.controller.RandomGameController;
+import study.racingcar.controller.RacingGameController;
 
 public class MainApplication {
     public static void main(String[] args) {
-        RandomGameController randomGameController = new RandomGameController();
+        RacingGameController randomGameController = new RacingGameController();
         randomGameController.start();
     }
 }

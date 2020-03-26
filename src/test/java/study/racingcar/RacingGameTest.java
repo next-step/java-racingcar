@@ -3,10 +3,7 @@ package study.racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import study.racingcar.domain.Car;
-import study.racingcar.domain.MovableDistance;
-import study.racingcar.domain.RacingGame;
-import study.racingcar.domain.RacingGameData;
+import study.racingcar.domain.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,41 +12,38 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
     private final List<String> EXAMPLE_CARS =
-            Arrays.asList("pobi", "crong", "honux");
+            Arrays.asList("luvram", "boram", "rambo");
     private MovableDistance movableDistance;
+    private Cars cars;
 
     @BeforeEach
     void setUp() {
         movableDistance = () -> 1;
+        cars = new Cars(EXAMPLE_CARS);
     }
 
     @DisplayName("입력한 수행 횟수만큼 게임을 진행할 수 있다.")
     @Test
     void moveByTheNumberOfTimes() {
+        int time = 3;
         RacingGame racingGame =
-                new RacingGame(new RacingGameData(EXAMPLE_CARS, 2),
-                        movableDistance);
+                new RacingGame(cars, movableDistance);
 
-        assertThat(racingGame.isMovable()).isTrue();
-        racingGame.move();
-        assertThat(racingGame.isMovable()).isTrue();
-        racingGame.move();
-        assertThat(racingGame.isMovable()).isFalse();
-        assertThat(racingGame.isFinished()).isTrue();
+        RacingGameResult racingGameResult = racingGame.play(time);
+        assertThat(racingGameResult.getGameEvents().size()).isEqualTo(time);
     }
 
     @DisplayName("모든 차가 수행 횟수만큼 전진할 수 있다.")
     @Test
     void success() {
+        int time = 3;
         RacingGame racingGame =
-                new RacingGame(new RacingGameData(EXAMPLE_CARS, 3),
-                        movableDistance);
-        for (int i = 0; i < 3; i++) {
-            racingGame.move();
-        }
+                new RacingGame(cars, movableDistance);
 
-        assertThat(racingGame.getCars().size()).isEqualTo(3);
-        assertThat(racingGame.getCars().stream().map(Car::getPosition))
+        RacingGameResult racingGameResult = racingGame.play(time);
+
+        assertThat(racingGameResult.getWinners().stream()
+                .map(Car::getPosition))
                 .containsExactly(3, 3, 3);
     }
 }

@@ -1,42 +1,40 @@
 package study.racingcar.domain;
 
-import java.util.List;
-
 public class RacingGame {
-    private int time;
-    private List<Car> cars;
+    private static final int MIN_TRY = 1;
+    private Cars cars;
     private MovableDistance movableDistance;
 
-    public RacingGame(RacingGameData racingGameData,
+    public RacingGame(Cars cars,
                       MovableDistance movableDistance) {
-        this.cars = racingGameData.getCars();
-        this.time = racingGameData.getTime();
+        this.cars = cars;
         this.movableDistance = movableDistance;
     }
 
-    public void move() {
-        if (!isMovable()) {
-            return;
+    public RacingGameResult play(int time) {
+        if (time < MIN_TRY) {
+            throw new IllegalArgumentException(
+                    String.format("시도 횟수는 %d 이상이여야 합니다.", MIN_TRY));
         }
-        decreaseTime();
+        RacingGameResult racingGameResult = new RacingGameResult();
+        Cars event;
+        for (int i = 0; i < time; i++) {
+            event = move();
+            racingGameResult.addGameEvent(event);
+            cars = event;
+        }
+        racingGameResult.getWinners();
+
+        return racingGameResult;
+    }
+
+    public Cars move() {
+        Cars event = new Cars();
+        int newPosition;
         for (Car car : cars) {
-            car.addPosition(movableDistance.getDistance());
+            newPosition = car.addPosition(movableDistance.getDistance());
+            event.add(new Car(car.getName(), newPosition));
         }
-    }
-
-    public List<Car> getCars() {
-        return cars;
-    }
-
-    private void decreaseTime() {
-        time--;
-    }
-
-    public boolean isMovable() {
-        return time != 0;
-    }
-
-    public boolean isFinished() {
-        return !isMovable();
+        return event;
     }
 }
