@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 public class ResultView {
 
     public void showResult() {
@@ -18,11 +19,11 @@ public class ResultView {
     public void showGameState(List<Integer> gameState) {
         System.out.println();
         new ArrayList<>(gameState).forEach(position -> {
-            System.out.println(carState(position));
+            System.out.println(shoCarState(position));
         });
     }
 
-    private String carState(Integer position) {
+    private String shoCarState(Integer position) {
         String[] result = new String[position];
         Arrays.fill(result, "-");
 

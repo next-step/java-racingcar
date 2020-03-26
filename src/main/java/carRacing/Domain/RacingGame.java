@@ -1,10 +1,8 @@
-package carRacing;
-
-import carRacing.domain.MoveStrategy;
-import carRacing.domain.Vehicle;
+package carRacing.Domain;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class RacingGame {
 
@@ -37,15 +35,5 @@ public class RacingGame {
         for (Vehicle vehicle : racingVehicles) {
             vehicle.move();
         }
-    }
-
-    List<Integer> observe() {
-        List<Integer> positions = new ArrayList<>();
-
-        int i = positions.size();
-        for (Vehicle vehicle : racingVehicles) {
-            positions.add(i++, vehicle.inquiryPosition());
-        }
-        return positions;
     }
 }

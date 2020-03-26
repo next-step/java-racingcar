@@ -1,9 +1,9 @@
-package carRacing.domain;
+package carRacing.Domain;
 
 import carRacing.Constants;
-import carRacing.domain.MoveStrategy;
 
 import java.util.Random;
+
 
 public class MoveRandom implements MoveStrategy {
 

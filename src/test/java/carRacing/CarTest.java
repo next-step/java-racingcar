@@ -1,9 +1,9 @@
 package carRacing;
 
 
-import carRacing.domain.Car;
-import carRacing.domain.MoveRandom;
-import carRacing.domain.MoveStrategy;
+import carRacing.Domain.Car;
+import carRacing.Domain.MoveRandom;
+import carRacing.Domain.MoveStrategy;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 

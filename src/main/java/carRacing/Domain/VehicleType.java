@@ -1,9 +1,5 @@
-package carRacing;
+package carRacing.Domain;
 
-
-import carRacing.domain.Car;
-import carRacing.domain.MoveStrategy;
-import carRacing.domain.Vehicle;
 
 public enum VehicleType {
 

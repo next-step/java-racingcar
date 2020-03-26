@@ -1,4 +1,4 @@
-package carRacing.domain;
+package carRacing.Domain;
 
 
 public class Car implements Vehicle {

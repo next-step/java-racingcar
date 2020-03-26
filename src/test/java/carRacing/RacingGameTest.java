@@ -1,17 +1,11 @@
 package carRacing;
 
-import carRacing.domain.Car;
-import carRacing.domain.MoveRandom;
-import carRacing.domain.MoveStrategy;
-import carRacing.domain.Vehicle;
-import org.assertj.core.api.IntArrayAssert;
+import carRacing.Domain.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
