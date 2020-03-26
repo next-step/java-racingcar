@@ -36,7 +36,7 @@ public class CarTest {
                 return Integer.parseInt(input);
             }
         });
-        Car car = new Car(moveRandom);
+        Car car = new Car("player", moveRandom);
 
         car.move();
 
