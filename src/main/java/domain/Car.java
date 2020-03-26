@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Car {
@@ -64,4 +65,16 @@ public class Car {
         return stringBuilder.toString();
     }
 
+    public int isMaxLocation(int maxLocation) {
+        if (location > maxLocation) {
+            return location;
+        }
+        return maxLocation;
+    }
+
+    public void isWinner(List<String> winners, int maxLocation) {
+        if (location == maxLocation) {
+            winners.add(name);
+        }
+    }
 }

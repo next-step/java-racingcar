@@ -1,6 +1,7 @@
 package controller;
 
 import domain.Car;
+import domain.Cars;
 import domain.RacingGame;
 import ui.InputView;
 import ui.ResultView;
@@ -16,7 +17,7 @@ public class RacingGameController {
         String names = inputView.getName();
         int tryCount = inputView.getTryCount();
         List<Car> cars = CarFactory.createCars(names);
-        RacingGame racingGame = new RacingGame(cars);
+        RacingGame racingGame = new RacingGame(new Cars(cars));
         ResultView resultView = new ResultView();
         resultView.printStartMessage();
         for (int i = 0; i < tryCount; i++) {

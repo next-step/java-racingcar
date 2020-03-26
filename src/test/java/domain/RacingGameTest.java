@@ -5,22 +5,22 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
 
+    private Cars cars;
     private RacingGame racingGame;
-    private List<Car> cars;
 
     @BeforeEach
     public void setup() {
-        cars = new ArrayList<>();
-        cars.add(new Car("kks"));
-        cars.add(new Car("kjm"));
-        cars.add(new Car("bjs"));
-        cars.add(new Car("honux"));
+        cars = new Cars(Arrays.asList(new Car("kks"),
+                new Car("kjm"),
+                new Car("bjs"),
+                new Car("honux")));
         racingGame = new RacingGame(cars);
     }
 
@@ -35,10 +35,24 @@ public class RacingGameTest {
 
         racingGame.playGame(randomNumbers);
 
-        assertThat(cars.get(0)).isEqualTo(new Car("kks", 1));
-        assertThat(cars.get(1)).isEqualTo(new Car("kjm", 1));
-        assertThat(cars.get(2)).isEqualTo(new Car("bjs", 2));
-        assertThat(cars.get(3)).isEqualTo(new Car("honux", 2));
+        assertThat(cars).isEqualTo(new Cars(Arrays.asList(new Car("kks", 0),
+                new Car("kjm", 0),
+                new Car("bjs", 1),
+                new Car("honux", 1))));
+    }
+
+    @Test
+    public void getWinnerTest() {
+        List<Integer> randomNumbers = new ArrayList<>();
+        randomNumbers.add(0);
+        randomNumbers.add(3);
+        randomNumbers.add(4);
+        randomNumbers.add(9);
+
+        racingGame.playGame(randomNumbers);
+
+        assertThat(racingGame.getWinners()).hasSize(2);
+        assertThat(racingGame.getWinners()).contains("bjs", "honux");
     }
 
 
