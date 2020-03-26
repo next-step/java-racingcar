@@ -8,12 +8,12 @@ public class RacingController {
 
     private int tryCount;
     private Cars cars;
-    Map<Integer, List<Integer>> record;
+    private Map<Integer, List<Integer>> record;
 
     public RacingController(InputView inputView) {
         this.cars = createCar(inputView.getCarCount());
         tryCount = inputView.getTryCount();
-        record = new HashMap<>();
+        record = new HashMap<Integer, List<Integer>>();
     }
 
     public void startGame() {
