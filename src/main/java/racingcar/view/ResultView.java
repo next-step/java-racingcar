@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.domain.RacingScore;
+import racingcar.domain.Cars;
 import racingcar.domain.car.Car;
 
 import java.util.ArrayList;
@@ -11,10 +11,10 @@ public class ResultView {
     private static final String COMMA = ",";
     private static final String COLON = " : ";
 
-    public void print(List<RacingScore> racingScores) {
+    public void print(List<Cars> cars) {
         System.out.println("실행 결과");
-        for (RacingScore racingScore : racingScores) {
-            printScore(racingScore.getScore());
+        for (Cars score : cars) {
+            printScore(score.getCars());
         }
     }
 

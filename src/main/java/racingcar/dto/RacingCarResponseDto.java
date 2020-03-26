@@ -1,22 +1,22 @@
 package racingcar.dto;
 
-import racingcar.domain.RacingScore;
+import racingcar.domain.Cars;
 import racingcar.domain.car.Car;
 
 import java.util.Collections;
 import java.util.List;
 
 public class RacingCarResponseDto {
-    private final List<RacingScore> racingScores;
+    private final List<Cars> cars;
     private final List<Car> winners;
 
-    public RacingCarResponseDto(List<RacingScore> racingScores, List<Car> winners) {
-        this.racingScores = Collections.unmodifiableList(racingScores);
+    public RacingCarResponseDto(List<Cars> cars, List<Car> winners) {
+        this.cars = Collections.unmodifiableList(cars);
         this.winners = Collections.unmodifiableList(winners);
     }
 
-    public List<RacingScore> getRacingScores() {
-        return racingScores;
+    public List<Cars> getCars() {
+        return cars;
     }
 
     public List<Car> getWinners() {
