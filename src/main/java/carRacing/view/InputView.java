@@ -15,8 +15,13 @@ public class InputView {
         return new InputView();
     }
 
-    public int userInteraction(String Message) {
+    public int userInteractionNumber(String Message) {
         System.out.println(Message);
         return scanner.nextInt();
+    }
+
+    public String userInteractionString(String Message) {
+        System.out.println(Message);
+        return scanner.nextLine();
     }
 }

@@ -1,13 +1,9 @@
 package carRacing.Controller;
 
 import carRacing.Constants;
-import carRacing.Domain.MoveRandom;
-import carRacing.Domain.RacingGame;
-import carRacing.Domain.Vehicle;
-import carRacing.Domain.VehicleType;
+import carRacing.Domain.*;
 import carRacing.view.InputView;
 
-import java.util.List;
 import java.util.Random;
 
 
@@ -15,24 +11,26 @@ public class InGameController {
 
     private InputView inputView;
     private RacingGame racingGame;
-    private List<Vehicle> raceVehicle;
 
-    int numberOfCar;
+    String players;
     int time;
 
     private InGameController() {
         this.inputView = InputView.readyToInteraction();
-        registerVehicles();
-        this.racingGame = new RacingGame(numberOfCar, VehicleType.CAR);
-        raceVehicle = racingGame.registerVehicles(new MoveRandom(new Random()));
-        moveVehicles();
+        this.players = registerPlayers();
+        this.racingGame = new RacingGame(players, VehicleType.CAR);
+        this.time = moveVehicles();
     }
 
-    public static InGameController run() {
+    public static InGameController init() {
         return new InGameController();
     }
 
-    public List<Vehicle> move() {
+    public Vehicles register() {
+        return racingGame.registerVehicles(new MoveRandom(new Random()));
+    }
+
+    public Vehicles move(Vehicles raceVehicle) {
         return racingGame.rotate(raceVehicle);
     }
 
@@ -40,11 +38,11 @@ public class InGameController {
         return time;
     }
 
-    void registerVehicles() {
-        this.numberOfCar = inputView.userInteraction(Constants.INFORMATION_MESSAGE_GET_NUMBER_OF_CAR);
+    String registerPlayers() {
+        return inputView.userInteractionString(Constants.INFORMATION_MESSAGE_GET_PLAYERS);
     }
 
-    void moveVehicles() {
-        this.time = inputView.userInteraction(Constants.INFORMATION_MESSAGE_GET_GAME_TIME);
+    int moveVehicles() {
+        return inputView.userInteractionNumber(Constants.INFORMATION_MESSAGE_GET_GAME_TIME);
     }
 }

@@ -1,14 +1,13 @@
 package carRacing.Controller;
 
 
-import carRacing.Domain.Vehicle;
+import carRacing.Domain.Vehicles;
 import carRacing.view.ResultView;
 
-import java.util.List;
 
 public class ResultGameController {
 
-    private  ResultView resultView;
+    private ResultView resultView;
 
     private ResultGameController() {
         resultView = new ResultView();
@@ -19,7 +18,11 @@ public class ResultGameController {
         return new ResultGameController();
     }
 
-    public void showGameState(List<Vehicle> vehicles) {
+    public void showGameState(Vehicles vehicles) {
         resultView.showGameState(vehicles);
+    }
+
+    public void showWinner(Vehicles vehicles) {
+        resultView.showWinner(vehicles);
     }
 }

@@ -1,33 +1,40 @@
 package carRacing.Domain;
 
+import carRacing.Constants;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
 public class RacingGame {
 
-    int numberOfVehicle;
-
+    List<String> players;
     VehicleType vehicleType;
 
-    public RacingGame(int numberOfCar, VehicleType vehicleType) {
-        this.numberOfVehicle = numberOfCar;
+    public RacingGame(String players, VehicleType vehicleType) {
+        this.players = registerPlayer(players);
         this.vehicleType = vehicleType;
     }
 
-    public List<Vehicle> registerVehicles(MoveStrategy moveStrategy) {
-        List<Vehicle> racingVehicles = new ArrayList<>();
-        for (int i = 0; i < numberOfVehicle; i++) {
-            racingVehicles.add(vehicleType.init(moveStrategy));
-        }
-        return racingVehicles;
+    private List<String> registerPlayer(String players) {
+        emptyInputException(players);
+        return new ArrayList<>(Arrays.asList(players.split(Constants.INPUT_PLAYERS_SEPARATE_SYMBOL)));
     }
 
-    public List<Vehicle> rotate(List<Vehicle> vehicles) {
-        List<Vehicle> racingVehicles = new ArrayList<>(vehicles);
-        for (Vehicle vehicle : racingVehicles) {
-            vehicle.move();
+    private void emptyInputException(String players) {
+        if (players == null || players.trim().isEmpty()) throw new IllegalArgumentException();
+    }
+
+    public Vehicles registerVehicles(MoveStrategy moveStrategy) {
+        List<Vehicle> racingVehicles = new ArrayList<>();
+        for (int i = 0; i < players.size(); i++) {
+            racingVehicles.add(vehicleType.init(players.get(i), moveStrategy));
         }
-        return racingVehicles;
+        return Vehicles.create(racingVehicles);
+    }
+
+    public Vehicles rotate(Vehicles vehicles) {
+        return vehicles.move();
     }
 }

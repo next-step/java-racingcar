@@ -15,19 +15,19 @@ public class RacingGameTest {
 
 
     @ParameterizedTest
-    @ValueSource(strings = {"pobi,crong,honux", "pobi,crong", "pobi"})
-    void setCars(int input) {
+    @CsvSource(value = {"pobi,crong,honux:3", "pobi,crong:2", "pobi:1"}, delimiter = ':')
+    void setCars(String input, String expected) {
         MoveStrategy moveRandom = new MoveRandom(new Random());
 
         RacingGame racingGame = new RacingGame(input, VehicleType.CAR);
-        List<Vehicle> cars = racingGame.registerVehicles(moveRandom);
+        Vehicles cars = racingGame.registerVehicles(moveRandom);
 
-        assertThat(cars).hasSize(input);
+        assertThat(cars.getVehicles()).hasSize(Integer.parseInt(expected));
     }
 
 
     @ParameterizedTest
-    @CsvSource(value = {"pobi,crong,honux 4:1", "pobi,crong 0:0", "pobi 2:0", "pobi 9:1"}, delimiter = ':')
+    @CsvSource(value = {"pobi,crong,honux 4:2", "pobi,crong 0:1", "pobi 2:1", "pobi 9:2"}, delimiter = ':')
     void moveTest(String input, String expected) {
         String[] inputs = input.split(" ");
         String player = inputs[0];
@@ -39,10 +39,10 @@ public class RacingGameTest {
         });
         RacingGame racingGame = new RacingGame(player, VehicleType.CAR);
 
-        List<Vehicle> cars = racingGame.registerVehicles(moveRandom);
+        Vehicles cars = racingGame.registerVehicles(moveRandom);
         cars = racingGame.rotate(cars);
 
-        assertThat(cars).extracting(Vehicle::inquiryPosition).allSatisfy(position -> {
+        assertThat(cars.getVehicles()).extracting(Vehicle::inquiryPosition).allSatisfy(position -> {
             assertThat(position).isEqualTo(Integer.parseInt(expected));
         });
     }
