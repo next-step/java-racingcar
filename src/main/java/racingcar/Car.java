@@ -7,7 +7,7 @@ public class Car {
     private static final int ZERO = 0;
 
     public Car() {
-        this.position = ZERO;
+        this(ZERO);
     }
 
     public Car(final int position) {
