@@ -21,11 +21,11 @@ public class RacingController {
         showResult();
     }
 
-    private List<Integer> changePosition(int randomRumber) {
+    private List<Integer> changePosition(int randomNumber) {
         List<Integer> positions = new ArrayList<>();
 
         for (Car car : cars.getCars()) {
-            Car movedCar = car.changeCarPosition(car, randomRumber);
+            Car movedCar = car.changeCarPosition(car, randomNumber);
             positions.add(movedCar.getPosition());
         }
         return positions;
