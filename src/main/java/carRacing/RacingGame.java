@@ -2,7 +2,6 @@ package carRacing;
 
 import carRacing.domain.MoveStrategy;
 import carRacing.domain.Vehicle;
-import org.assertj.core.util.VisibleForTesting;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,39 +10,42 @@ public class RacingGame {
 
     int numberOfVehicle;
 
-    List<Vehicle> vehicles;
-    RacingObserver observe;
+    VehicleType vehicleType;
+    List<Vehicle> racingVehicles;
 
-    public RacingGame(int numberOfCar, VehicleType vehicleType, MoveStrategy moveStrategy) {
+    public RacingGame(int numberOfCar, VehicleType vehicleType) {
         this.numberOfVehicle = numberOfCar;
-        vehicles = setVehicles(vehicleType, moveStrategy);
-        observe = new RacingObserver(vehicles);
+        this.vehicleType = vehicleType;
+        this.racingVehicles = new ArrayList<>();
     }
 
-    public List<Vehicle> setVehicles(VehicleType vehicleType, MoveStrategy moveStrategy) {
-        List<Vehicle> prepareVehicles = new ArrayList<>();
+    public List<Vehicle> registerVehicles(MoveStrategy moveStrategy) {
         for (int i = 0; i < numberOfVehicle; i++) {
-            prepareVehicles.add(vehicleType.init(moveStrategy));
+            racingVehicles.add(vehicleType.init(moveStrategy));
         }
-        return prepareVehicles;
+        return racingVehicles;
     }
 
-    public void start(int time) {
+    public List<Vehicle> start(int time) {
         for (int i = 0; i < time; i++) {
             rotate();
-            observe.tracking(vehicles);
         }
+        return racingVehicles;
     }
 
     private void rotate() {
-        for (Vehicle vehicle : vehicles) {
+        for (Vehicle vehicle : racingVehicles) {
             vehicle.move();
         }
     }
 
-    @VisibleForTesting
-    public List<Integer> observe() {
-        return observe.observe(vehicles);
-    }
+    List<Integer> observe() {
+        List<Integer> positions = new ArrayList<>();
 
+        int i = positions.size();
+        for (Vehicle vehicle : racingVehicles) {
+            positions.add(i++, vehicle.inquiryPosition());
+        }
+        return positions;
+    }
 }

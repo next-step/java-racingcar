@@ -1,8 +1,11 @@
 package carRacing;
 
+import carRacing.domain.Car;
 import carRacing.domain.MoveRandom;
+import carRacing.domain.Vehicle;
 import carRacing.view.InputView;
 
+import java.util.List;
 import java.util.Random;
 
 public class Game {
@@ -12,7 +15,9 @@ public class Game {
 
     private Game() {
         userInteraction();
-        new RacingGame(numberOfCar, VehicleType.CAR, new MoveRandom(new Random())).start(time);
+        RacingGame racingGame = new RacingGame(numberOfCar, VehicleType.CAR);
+        List<Vehicle> cars = racingGame.registerVehicles(new MoveRandom(new Random()));
+        racingGame.start(time);
     }
 
     public static void start() {
