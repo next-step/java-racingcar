@@ -2,6 +2,7 @@ package domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -21,7 +22,6 @@ public class CarTest {
     @ValueSource(ints = {0, 3})
     public void getSmallerThanFourCarDoesNotMoveTest(int condition) {
         myCar.move(condition);
-        // Then
         assertThat(myCar).isEqualTo(new Car("myCar", 1));
     }
 
@@ -30,9 +30,15 @@ public class CarTest {
     @ValueSource(ints = {4, 5, 9})
     public void getGreaterThanFourCarMoveTest(int condition) {
         myCar.move(condition);
-        // Then
         assertThat(myCar).isEqualTo(new Car("myCar", 2));
     }
 
+    @Test
+    public void toStringTest() {
+        myCar.move(4);
+        myCar.move(4);
+        myCar.move(4);
+        assertThat(myCar.toString()).isEqualTo("myCar : ---");
+    }
 
 }
