@@ -15,7 +15,7 @@ public class RacingGameTest {
 
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4})
+    @ValueSource(strings = {"pobi,crong,honux", "pobi,crong", "pobi"})
     void setCars(int input) {
         MoveStrategy moveRandom = new MoveRandom(new Random());
 
@@ -27,17 +27,17 @@ public class RacingGameTest {
 
 
     @ParameterizedTest
-    @CsvSource(value = {"1 4:1", "2 0:0", "3 2:0", "4 9:1"}, delimiter = ':')
+    @CsvSource(value = {"pobi,crong,honux 4:1", "pobi,crong 0:0", "pobi 2:0", "pobi 9:1"}, delimiter = ':')
     void moveTest(String input, String expected) {
         String[] inputs = input.split(" ");
-        int numberOfCar = Integer.parseInt(inputs[0]);
+        String player = inputs[0];
         MoveStrategy moveRandom = new MoveRandom(new Random() {
             @Override
             public int nextInt(int bound) {
                 return Integer.parseInt(inputs[1]);
             }
         });
-        RacingGame racingGame = new RacingGame(numberOfCar, VehicleType.CAR);
+        RacingGame racingGame = new RacingGame(player, VehicleType.CAR);
 
         List<Vehicle> cars = racingGame.registerVehicles(moveRandom);
         cars = racingGame.rotate(cars);
