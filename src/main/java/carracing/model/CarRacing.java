@@ -1,51 +1,33 @@
 package carracing.model;
 
-import carracing.view.InputView;
-import carracing.view.ResultView;
-import java.util.ArrayList;
-import java.util.Collections;
+import carracing.util.ProbabilityUtil;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class CarRacing {
 
   private final Integer totalRound;
-  private Integer presentRound;
   private List<Car> cars;
 
-  public CarRacing(Integer totalRound, Integer carCount) {
+  public CarRacing(List<String> carNames, Integer totalRound) {
     this.totalRound = totalRound;
-    this.presentRound = 0;
-    this.cars = Stream.generate(Car::new).limit(carCount).collect(Collectors.toList());
+    this.cars = carNames.stream().map(Car::new).collect(Collectors.toList());
   }
 
-  public CarRacing(InputView inputView) {
-    Integer carCount = inputView.getCarCount();
-    this.cars = Stream.generate(Car::new).limit(carCount).collect(Collectors.toList());
-    this.totalRound = inputView.getTotalRound();
-    this.presentRound = 0;
+  public Integer getTotalRound() {
+      return totalRound;
   }
-
   public List<Car> getCars() {
     return cars;
   }
 
-  public Integer getTotalRound() {
-    return totalRound;
-  }
-
   public void proceedOneRound() {
-    cars.forEach(Car::move);
+    cars.forEach(car -> car.move(ProbabilityUtil.FOURTY_PERCENT));
   }
 
-  public void race(boolean showResult) {
-    for (; presentRound < totalRound; presentRound++) {
+  public void race() {
+    for (int presentRound = 0; presentRound < totalRound; presentRound++) {
       proceedOneRound();
-    }
-
-    if (showResult) {
-      new ResultView(this).show();
     }
   }
 }
