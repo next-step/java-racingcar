@@ -7,14 +7,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RacingScore {
+public class Cars {
     private final List<Car> cars;
 
-    public RacingScore(List<Car> cars) {
+    public Cars(List<Car> cars) {
         this.cars = Collections.unmodifiableList(cars);
     }
 
-    public List<Car> getScore() {
+    public List<Car> getCars() {
         return new ArrayList<>(cars);
     }
 
