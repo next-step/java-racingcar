@@ -1,5 +1,7 @@
-package step3;
+package step3.view;
 
+
+import step3.domain.*;
 
 import java.util.List;
 
@@ -19,14 +21,15 @@ public class ResultView {
         printView(PLAY_RESULT);
     }
 
-    public void printResult(RacingGame racingGame) {
-        List<Car> carList = racingGame.getCarList();
-        int roundTime = racingGame.getRoundTime();
-
+    public void printResult(Cars cars, int roundTime) {
         for(int i = 0; i < roundTime; i++) {
             printRoundInfo(i + 1);
 
-            for(Car car: carList) {
+            CarsIterator carsIterator = new CarsIterator(cars);
+
+            while(carsIterator.hasNext()) {
+                Car car = carsIterator.next();
+
                 List<Round> roundList = car.getRoundInfoList();
 
                 Round round = roundList.get(i);
@@ -34,7 +37,7 @@ public class ResultView {
             }
             printView(EMPTY);
         }
-        printWinner(racingGame.getWinnerNameList());
+        printWinner(cars.getWinnerNames());
     }
 
     private void printMoveRecord(int position, String carName) {

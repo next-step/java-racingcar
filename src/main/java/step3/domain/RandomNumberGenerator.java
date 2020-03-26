@@ -1,4 +1,6 @@
-package step3;
+package step3.domain;
+
+import step3.utility.ValidationUtils;
 
 import java.util.Random;
 

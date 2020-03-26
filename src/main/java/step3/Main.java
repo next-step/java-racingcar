@@ -1,6 +1,9 @@
 package step3;
 
-import java.util.List;
+import step3.domain.RacingGame;
+import step3.domain.RandomMoveRule;
+import step3.view.InputView;
+import step3.view.ResultView;
 
 public class Main {
 
@@ -8,19 +11,18 @@ public class Main {
         InputView inputView = new InputView();
 
         inputView.printCarNameListInfo();
-        String[] carNameList = inputView.readInputString();
+        String[] carNames = inputView.readInputString();
 
         inputView.printRoundTimeInfo();
         int roundTime = inputView.readInputInt();
 
-        GameRule gameRule = new GameRule();
-
-        RacingGame racingGame = new RacingGame(roundTime, gameRule, carNameList);
+        RacingGame racingGame = new RacingGame(roundTime, carNames);
+        racingGame.setMoveRule(new RandomMoveRule());
         racingGame.start();
 
         ResultView resultView = new ResultView();
         resultView.printResultInfo();
-        resultView.printResult(racingGame);
+        resultView.printResult(racingGame.getCars(), racingGame.getRoundTime());
 
         racingGame.end();
     }

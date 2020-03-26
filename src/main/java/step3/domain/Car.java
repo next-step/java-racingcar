@@ -1,35 +1,37 @@
-package step3;
+package step3.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Car {
 
     private int position;
     private String carName;
-    private List<Round> roundInfoList = new ArrayList<Round>();
+    private List<Round> roundInformations = new ArrayList<Round>();
 
     public Car(String carName) {
         this.position = 0;
         this.carName = carName;
     }
 
-    public void move(int roundTime) {
-        this.position++;
+    public void move(int presentRoundTime, boolean canMove) {
+        if(canMove) {
+            this.position++;
+        }
+        completeRound(presentRoundTime);
     }
 
-    public void completeRound(int roundTime) {
+    private void completeRound(int roundTime) {
         Round round = new Round();
 
         round.setPosition(this.position);
         round.setTime(roundTime);
 
-        this.roundInfoList.add(round);
+        this.roundInformations.add(round);
     }
 
     public List<Round> getRoundInfoList() {
-        return this.roundInfoList;
+        return this.roundInformations;
     }
 
     public String getCarName() {
