@@ -24,6 +24,15 @@ public class RacingCars {
         this.cars = result;
     }
 
+    public RacingCars(RacingCars cars) {
+        List<Car> result = new ArrayList<>();
+
+        for (Car car : cars.getCars()) {
+            result.add(new Car(car));
+        }
+        this.cars = result;
+    }
+
     public void moveCarAll() {
         for (Car car : this.cars) {
             car.moveCar(NumberUtil.createRandomInt(RANDOM_BOUND));

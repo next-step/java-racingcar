@@ -34,7 +34,7 @@ public class ResultView {
 
     private void drawOneRoundResult(RoundResult roundResult) {
 
-        for (Car car : roundResult.getResult()) {
+        for (Car car : roundResult.getResult().getCars()) {
             drawCarMovingRange(car.getCarName(), car.getMoveRange());
         }
 
