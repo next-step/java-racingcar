@@ -1,17 +1,25 @@
 package domain;
 
+import java.util.Objects;
+
 public class Car {
 
-    private final int INITIAL_LOCATION = 1;
+    private static final int INITIAL_LOCATION = 1;
 
-    private String name;
-    private int location;
+    private final String name;
+    private int location = 0;
 
-    public Car(String name) {
-        this.name = name;
-        this.location = INITIAL_LOCATION;
+    public Car(final String name) {
+        this(name, INITIAL_LOCATION);
     }
 
+    public Car(String name, int location) {
+        // TODO: validation check
+        this.name = name;
+        this.location = location;
+    }
+
+    // 숫자 확인 로직은 어디에서 구현하는게 맞을까?
     public void move() {
         this.location++;
     }
@@ -24,4 +32,17 @@ public class Car {
         return this.location;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return location == car.location &&
+                Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, location);
+    }
 }
