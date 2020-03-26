@@ -30,7 +30,7 @@ public class RacingGameTest {
         RacingGame racingGame =
                 new RacingGame(cars, movableDistance);
 
-        RacingGameResult racingGameResult = racingGame.play(time);
+        RacingGameResult racingGameResult = racingGame.play(new Time(time));
         assertThat(racingGameResult.getGameEvents().size()).isEqualTo(time);
     }
 
@@ -41,21 +41,10 @@ public class RacingGameTest {
         RacingGame racingGame =
                 new RacingGame(cars, movableDistance);
 
-        RacingGameResult racingGameResult = racingGame.play(time);
+        RacingGameResult racingGameResult = racingGame.play(new Time(time));
 
         assertThat(racingGameResult.getWinners().stream()
                 .map(Car::getPosition))
                 .containsExactly(3, 3, 3);
-    }
-
-    @DisplayName("수행 횟수는 0 이하일 수 없다.")
-    @Test
-    void canNotBeLessThenOne() {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> {
-                    RacingGame racingGame =
-                            new RacingGame(cars, movableDistance);
-                    racingGame.play(0);
-                });
     }
 }

@@ -15,7 +15,7 @@ public class RacingGameController {
         RacingGame racingGame =
                 new RacingGame(new Cars(carNames), movableDistance);
         ResultView.displayStartGame();
-        RacingGameResult racingGameResult = racingGame.play(time);
+        RacingGameResult racingGameResult = racingGame.play(new Time(time));
         ResultView.displayGameResult(racingGameResult);
     }
 }

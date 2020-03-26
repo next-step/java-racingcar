@@ -1,7 +1,6 @@
 package study.racingcar.domain;
 
 public class RacingGame {
-    private static final int MIN_TRY = 1;
     private Cars cars;
     private MovableDistance movableDistance;
 
@@ -11,14 +10,11 @@ public class RacingGame {
         this.movableDistance = movableDistance;
     }
 
-    public RacingGameResult play(int time) {
-        if (time < MIN_TRY) {
-            throw new IllegalArgumentException(
-                    String.format("시도 횟수는 %d 이상이여야 합니다.", MIN_TRY));
-        }
+    public RacingGameResult play(Time time) {
+
         RacingGameResult racingGameResult = new RacingGameResult();
         Cars event;
-        for (int i = 0; i < time; i++) {
+        for (int i = 0; i < time.getTime(); i++) {
             event = move();
             racingGameResult.addGameEvent(event);
             cars = event;
