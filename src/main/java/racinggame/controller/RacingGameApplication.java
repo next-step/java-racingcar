@@ -1,8 +1,8 @@
-package racinggame;
+package racinggame.controller;
 
 import racinggame.domain.racing.Racing;
-import racinggame.domain.view.InputView;
-import racinggame.domain.view.ResultView;
+import racinggame.view.InputView;
+import racinggame.view.ResultView;
 
 import java.util.Scanner;
 

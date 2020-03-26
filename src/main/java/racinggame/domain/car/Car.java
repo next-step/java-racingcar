@@ -22,6 +22,12 @@ public class Car implements Comparable<Car> {
         this.moveRange = moveRange;
     }
 
+    //객체 복사
+    public Car(Car car) {
+        this.carName = car.getCarName();
+        this.moveRange = car.getMoveRange();
+    }
+
     /**
      * 랜던값이 4보다 크면 자동차 한칸 이동
      */

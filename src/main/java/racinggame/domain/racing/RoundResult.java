@@ -3,7 +3,6 @@ package racinggame.domain.racing;
 import racinggame.domain.car.Car;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class RoundResult {

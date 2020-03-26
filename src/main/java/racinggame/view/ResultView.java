@@ -1,4 +1,4 @@
-package racinggame.domain.view;
+package racinggame.view;
 
 import racinggame.domain.car.Car;
 import racinggame.domain.racing.Racing;
@@ -17,7 +17,6 @@ public class ResultView {
     private static final char MOVE_RANGE_MARK = '-';
     private static final String CAR_NAME_AND_MOVE_RANGE_DELIMITER = " : ";
     private static final String WINNER_ANNOUNCE = "가 최종 우승했습니다.";
-//    private Racing racing;
 
     public ResultView() {
     }

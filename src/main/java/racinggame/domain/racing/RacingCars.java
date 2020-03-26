@@ -16,7 +16,12 @@ public class RacingCars {
     private final List<Car> cars;
 
     public RacingCars(List<Car> cars) {
-        this.cars = cars;
+        List<Car> result = new ArrayList<>();
+
+        for (Car car : cars) {
+            result.add(new Car(car));
+        }
+        this.cars = result;
     }
 
     public void moveCarAll() {
