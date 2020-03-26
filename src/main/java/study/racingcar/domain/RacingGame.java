@@ -11,7 +11,6 @@ public class RacingGame {
     }
 
     public RacingGameResult play(Time time) {
-
         RacingGameResult racingGameResult = new RacingGameResult();
         Cars event;
         for (int i = 0; i < time.getTime(); i++) {
@@ -19,7 +18,6 @@ public class RacingGame {
             racingGameResult.addGameEvent(event);
             cars = event;
         }
-        racingGameResult.getWinners();
 
         return racingGameResult;
     }
