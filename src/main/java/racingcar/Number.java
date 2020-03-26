@@ -1,10 +1,10 @@
 package racingcar;
 
 public class Number {
-    private final int number;
+    private final int postiveNumber;
 
     public Number(String input) {
-        this.number = validate(parse(input));
+        this.postiveNumber = validate(parse(input));
     }
 
     private int validate(int number) {
@@ -24,6 +24,6 @@ public class Number {
     }
 
     public int getNumber() {
-        return number;
+        return postiveNumber;
     }
 }
