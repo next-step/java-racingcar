@@ -1,12 +1,15 @@
 package carRacing;
 
+import carRacing.domain.Car;
 import carRacing.domain.MoveRandom;
 import carRacing.domain.MoveStrategy;
+import carRacing.domain.Vehicle;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 
+import java.util.List;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,10 +21,11 @@ public class RacingGameTest {
     @ValueSource(ints = {1, 2, 3, 4})
     void setCars(int input) {
         MoveStrategy moveRandom = new MoveRandom(new Random());
-        RacingGame racingGame = new RacingGame(input, VehicleType.CAR, moveRandom);
 
+        RacingGame racingGame = new RacingGame(input, VehicleType.CAR);
+        List<Vehicle> cars = racingGame.registerVehicles(VehicleType.CAR, moveRandom);
 
-        assertThat(racingGame.vehicles).hasSize(input);
+        assertThat(cars).hasSize(input);
     }
 
 
@@ -31,17 +35,19 @@ public class RacingGameTest {
         String[] inputs = input.split(" ");
         int numberOfCar = Integer.parseInt(inputs[0]);
         int time = Integer.parseInt(inputs[1]);
+        int randomResultNum = Integer.parseInt(inputs[2]);
         MoveStrategy moveRandom = new MoveRandom(new Random() {
             @Override
             public int nextInt(int bound) {
-                return Integer.parseInt(inputs[2]);
+                return randomResultNum;
             }
         });
-        RacingGame racingGame = new RacingGame(numberOfCar, VehicleType.CAR, moveRandom);
+        RacingGame racingGame = new RacingGame(numberOfCar, VehicleType.CAR);
 
-        racingGame.start(time);
+        List<Vehicle> cars = racingGame.registerVehicles(VehicleType.CAR, moveRandom);
+        cars = racingGame.start(cars, time);
 
-        assertThat(racingGame.observe().stream().allMatch(i -> (i == (Integer.parseInt(expected)*time)))).isTrue();
+        assertThat(cars).extracting(Vehicle::inquiryPosition).isEqualTo(randomResultNum*time);
     }
 
 }
