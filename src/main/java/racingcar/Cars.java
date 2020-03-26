@@ -11,15 +11,14 @@ public class Cars {
         this.cars = cars;
     }
 
-    public List<String> getWinners() {
+    public List<Car> getWinners() {
         int winnerPosition = cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElse(0);
 
-        List<String> winners = cars.stream()
+        List<Car> winners = cars.stream()
                 .filter(car -> car.getPosition() == winnerPosition)
-                .map(Car::getName)
                 .collect(toList());
 
         return winners;

@@ -18,9 +18,9 @@ public class CarsTest {
         Car boorownie = new Car("boorownie", 4);
         Cars cars = new Cars(Arrays.asList(wholeman, pobi, boorownie));
 
-        List<String> winners = cars.getWinners();
+        List<Car> winners = cars.getWinners();
 
-        assertThat(winners).containsExactly("boorownie");
+        assertThat(winners).contains(boorownie);
     }
 
     @Test
@@ -31,8 +31,8 @@ public class CarsTest {
         Car boorownie = new Car("boorownie", 3);
         Cars cars = new Cars(Arrays.asList(wholeman, pobi, boorownie));
 
-        List<String> winners = cars.getWinners();
+        List<Car> winners = cars.getWinners();
 
-        assertThat(winners).containsExactly("pobi", "boorownie");
+        assertThat(winners).containsExactly(pobi, boorownie);
     }
 }
