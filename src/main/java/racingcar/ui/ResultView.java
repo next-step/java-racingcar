@@ -1,7 +1,9 @@
-package racingcar;
+package racingcar.ui;
+
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.joining;

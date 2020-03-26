@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.ui;
+
+import racingcar.domain.InputData;
 
 import java.util.Arrays;
 import java.util.List;

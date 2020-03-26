@@ -3,6 +3,10 @@ package racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.InputData;
+import racingcar.domain.RacingGame;
+import racingcar.domain.RandomMoveStrategy;
 
 import java.util.Arrays;
 import java.util.List;

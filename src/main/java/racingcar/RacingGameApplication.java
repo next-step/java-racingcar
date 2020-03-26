@@ -1,5 +1,10 @@
 package racingcar;
 
+import racingcar.domain.RacingGame;
+import racingcar.domain.RandomMoveStrategy;
+import racingcar.ui.InputView;
+import racingcar.ui.ResultView;
+
 public class RacingGameApplication {
 
     public static void main(String[] args) {
