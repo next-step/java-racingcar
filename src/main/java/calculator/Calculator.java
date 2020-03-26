@@ -11,7 +11,6 @@ public class Calculator {
 
         int result = Integer.parseInt(inputs[0]);
         int maxOperationIdx = inputs.length - 2;
-        checkValidFormatForOperate(inputs, 0);
 
         for (int operationIdx = 1; operationIdx <= maxOperationIdx; operationIdx += 2) {
             checkValidFormatForOperate(inputs, operationIdx);
