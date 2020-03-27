@@ -2,6 +2,7 @@ package carRacing.view;
 
 import java.util.Scanner;
 
+
 public class InputView {
 
     Scanner scanner;
@@ -14,8 +15,13 @@ public class InputView {
         return new InputView();
     }
 
-    public int userInteraction(String Message) {
+    public int userInteractionNumber(String Message) {
         System.out.println(Message);
         return scanner.nextInt();
+    }
+
+    public String userInteractionString(String Message) {
+        System.out.println(Message);
+        return scanner.nextLine();
     }
 }

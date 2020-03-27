@@ -1,4 +1,5 @@
-package carRacing.domain;
+package carRacing.Domain;
+
 
 public interface MoveStrategy {
     boolean movable();

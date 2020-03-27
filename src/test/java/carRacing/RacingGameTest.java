@@ -1,12 +1,12 @@
 package carRacing;
 
-import carRacing.domain.MoveRandom;
-import carRacing.domain.MoveStrategy;
+import carRacing.Domain.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 
+import java.util.List;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,33 +15,36 @@ public class RacingGameTest {
 
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4})
-    void setCars(int input) {
+    @CsvSource(value = {"pobi,crong,honux:3", "pobi,crong:2", "pobi:1"}, delimiter = ':')
+    void setCars(String input, String expected) {
         MoveStrategy moveRandom = new MoveRandom(new Random());
-        RacingGame racingGame = new RacingGame(input, VehicleType.CAR, moveRandom);
 
+        RacingGame racingGame = new RacingGame(input, VehicleType.CAR);
+        Vehicles cars = racingGame.registerVehicles(moveRandom);
 
-        assertThat(racingGame.vehicles).hasSize(input);
+        assertThat(cars.getVehicles()).hasSize(Integer.parseInt(expected));
     }
 
 
     @ParameterizedTest
-    @CsvSource(value = {"1 2 4:1", "2 3 0:0", "3 4 2:0", "4 5 9:1"}, delimiter = ':')
+    @CsvSource(value = {"pobi,crong,honux 4:2", "pobi,crong 0:1", "pobi 2:1", "pobi 9:2"}, delimiter = ':')
     void moveTest(String input, String expected) {
         String[] inputs = input.split(" ");
-        int numberOfCar = Integer.parseInt(inputs[0]);
-        int time = Integer.parseInt(inputs[1]);
+        String player = inputs[0];
         MoveStrategy moveRandom = new MoveRandom(new Random() {
             @Override
             public int nextInt(int bound) {
-                return Integer.parseInt(inputs[2]);
+                return Integer.parseInt(inputs[1]);
             }
         });
-        RacingGame racingGame = new RacingGame(numberOfCar, VehicleType.CAR, moveRandom);
+        RacingGame racingGame = new RacingGame(player, VehicleType.CAR);
 
-        racingGame.start(time);
+        Vehicles cars = racingGame.registerVehicles(moveRandom);
+        cars = racingGame.rotate(cars);
 
-        assertThat(racingGame.observe().stream().allMatch(i -> (i == (Integer.parseInt(expected)*time)))).isTrue();
+        assertThat(cars.getVehicles()).extracting(Vehicle::inquiryPosition).allSatisfy(position -> {
+            assertThat(position).isEqualTo(Integer.parseInt(expected));
+        });
     }
 
 }

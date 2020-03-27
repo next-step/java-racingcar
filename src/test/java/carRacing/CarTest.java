@@ -1,9 +1,9 @@
 package carRacing;
 
 
-import carRacing.domain.Car;
-import carRacing.domain.MoveRandom;
-import carRacing.domain.MoveStrategy;
+import carRacing.Domain.Car;
+import carRacing.Domain.MoveRandom;
+import carRacing.Domain.MoveStrategy;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -24,11 +24,13 @@ public class CarTest {
             }
         });
 
-        assertThat(String.valueOf(moveRandom.movable())).isEqualTo(expected);
+        String result = String.valueOf(moveRandom.movable());
+
+        assertThat(result).isEqualTo(expected);
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"0:0", "3:0", "4:1", "9:1"}, delimiter = ':')
+    @CsvSource(value = {"0:1", "3:1", "4:2", "9:2"}, delimiter = ':')
     void moveTest(String input, String expected) {
         MoveStrategy moveRandom = new MoveRandom(new Random() {
             @Override
@@ -36,10 +38,11 @@ public class CarTest {
                 return Integer.parseInt(input);
             }
         });
-        Car car = new Car(moveRandom);
+        Car car = new Car("player", moveRandom);
 
         car.move();
+        int result = car.inquiryPosition();
 
-        assertThat(car.inquiryPosition()).isEqualTo(Integer.parseInt(expected));
+        assertThat(result).isEqualTo(Integer.parseInt(expected));
     }
 }
