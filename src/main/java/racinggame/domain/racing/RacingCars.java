@@ -56,14 +56,17 @@ public class RacingCars {
     public List<String> findWinner() {
         int range = getFarthestCarMoveRange();
         List<String> result = new ArrayList<>();
+        getWinner(range, result);
 
+        return result;
+    }
+
+    private void getWinner(int range, List<String> result) {
         for (Car car : this.cars) {
             if (car.isMovedFarThan(range)) {
                 result.add(car.getCarName());
             }
         }
-
-        return result;
     }
 
     public List<Car> getCars() {
