@@ -4,27 +4,19 @@ import java.util.List;
 
 public class ResultView {
     private static String CAR_STATE_STR = "-";
-    private static String RESULT_INFO_COMMENT = "\n실행 결과";
 
-    public static void printResultInfoComment() {
-        System.out.println(RESULT_INFO_COMMENT);
+    public static void printRacingResult(String result) {
+        System.out.println(result);
     }
 
-    public static void printCarsState(List<Integer> states) {
-        for (int state : states) {
-            printStringAsManyAsGiven(state);
-        }
-
-        System.out.println("");
-    }
-
-    private static void printStringAsManyAsGiven(int times) {
-        StringBuffer sb = new StringBuffer();
+    public static String positionToString(int times) {
+        StringBuilder stringBuilder = new StringBuilder();
 
         for (int i = 0; i < times; i++) {
-            sb.append(CAR_STATE_STR);
+            stringBuilder.append(CAR_STATE_STR);
         }
+        stringBuilder.append("\n");
 
-        System.out.println(sb.toString());
+        return stringBuilder.toString();
     }
 }
