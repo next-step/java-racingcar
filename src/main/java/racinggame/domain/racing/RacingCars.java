@@ -21,6 +21,7 @@ public class RacingCars {
         for (Car car : cars) {
             result.add(new Car(car));
         }
+
         this.cars = result;
     }
 
@@ -30,18 +31,25 @@ public class RacingCars {
         for (Car car : cars.getCars()) {
             result.add(new Car(car));
         }
+
         this.cars = result;
     }
 
-    public void moveCarAll() {
+    public RacingCars moveCarAll() {
+        List<Car> cars = new ArrayList<>();
         for (Car car : this.cars) {
-            car.moveCar(NumberUtil.createRandomInt(RANDOM_BOUND));
+            cars.add(car.moveCar(NumberUtil.createRandomInt(RANDOM_BOUND)));
         }
+        return new RacingCars(cars);
     }
 
     private int getFarthestCarMoveRange() {
         Collections.sort(this.cars);
-        return this.cars.get(this.cars.size() - 1).getMoveRange();
+        return this.cars.get(getCarsLastIndex()).getMoveRange();
+    }
+
+    private int getCarsLastIndex() {
+        return cars.size() - 1;
     }
 
     public List<String> findWinner() {

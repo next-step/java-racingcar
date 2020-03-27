@@ -34,7 +34,7 @@ public class Racing {
     }
 
     private void playOneRound() {
-        this.racingCars.moveCarAll();
+        this.racingCars = this.racingCars.moveCarAll();
         saveRoundResult();
     }
 

@@ -11,10 +11,10 @@ public class Car implements Comparable<Car> {
     private static final int RACING_CAR_MOVING_BOUNDARY = 4;
 
     private final String carName;
-    private int moveRange = 0;
+    private final int moveRange;
 
     public Car(String carName) {
-        this.carName = carName;
+        this(carName, 0);
     }
 
     public Car(String carName, int moveRange) {
@@ -28,13 +28,11 @@ public class Car implements Comparable<Car> {
         this.moveRange = car.moveRange;
     }
 
-    /**
-     * 랜던값이 4보다 크면 자동차 한칸 이동
-     */
-    public void moveCar(int num) {
+    public Car moveCar(int num) {
         if (num >= RACING_CAR_MOVING_BOUNDARY) {
-            this.moveRange++;
+            return new Car(this.carName, this.moveRange + 1);
         }
+        return this;
     }
 
     public boolean isMovedFarThan(int compare) {
