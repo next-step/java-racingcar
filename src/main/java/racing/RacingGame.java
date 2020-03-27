@@ -5,9 +5,17 @@ import racing.view.InputView;
 import racing.view.ResultView;
 
 public class RacingGame {
+    private static final String INVALID_INPUT_MSG = "양의 정수 값을 입력 해 주세요!";
+
     public static void playGame() {
-        int carCnt = InputView.getCarCnt();
-        int tryCnt = InputView.getTryCnt();
+        int carCnt, tryCnt;
+        while ((carCnt = InputView.getCarCnt()) < 0) {
+            System.out.println(INVALID_INPUT_MSG);
+        }
+
+        while ((tryCnt = InputView.getTryCnt()) < 0) {
+            System.out.println(INVALID_INPUT_MSG);
+        };
 
         Cars cars = new Cars(carCnt);
 
