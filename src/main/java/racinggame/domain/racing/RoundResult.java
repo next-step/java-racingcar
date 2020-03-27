@@ -1,9 +1,5 @@
 package racinggame.domain.racing;
 
-import racinggame.domain.car.Car;
-
-import java.util.List;
-
 public class RoundResult {
     private RacingCars result;
 

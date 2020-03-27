@@ -16,7 +16,7 @@ class CarTest {
         Car car = new Car("car");
 
         //when
-        car.moveCar(randNum);
+        car = car.moveCar(randNum);
 
         //then
         assertThat(car.getMoveRange()).isEqualTo(expect);

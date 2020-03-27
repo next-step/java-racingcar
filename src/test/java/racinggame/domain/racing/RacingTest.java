@@ -35,11 +35,11 @@ class RacingTest {
 
     @DisplayName("레이싱 실행시 라운드수 와 레이싱 진행으로 인해 생긴 result의 크기를 비교")
     @ParameterizedTest
-    @CsvSource(value = {"1:a:1", "3:a,b,c:3", "5:a,b,c,d,e:5"}, delimiter = ':')
-    public void playAllRound(int gameCount, String carNames, int expect) throws Exception {
+    @CsvSource(value = {"1:1", "3:3", "5:5"}, delimiter = ':')
+    public void playAllRound(int gameCount, int expect) throws Exception {
         //given
-        UserInput userInput = new UserInput(carNames, gameCount);
-        Racing racing = new Racing(userInput.getCarNames(), userInput.getGameCount());
+        List<String> carNames = new ArrayList<>(Arrays.asList("a", "b"));
+        Racing racing = new Racing(carNames, gameCount);
 
         //when
         racing.playAllRound();

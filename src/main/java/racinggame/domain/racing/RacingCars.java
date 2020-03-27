@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class RacingCars {
     private static final int RANDOM_BOUND = 10;
+
     private final List<Car> cars;
 
     public RacingCars(List<Car> cars) {

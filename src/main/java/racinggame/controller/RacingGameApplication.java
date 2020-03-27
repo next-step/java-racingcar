@@ -5,9 +5,6 @@ import racinggame.domain.racing.Racing;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;
 
-/**
- * racing game 메인
- */
 public class RacingGameApplication {
 
     public static void main(String[] args) {
