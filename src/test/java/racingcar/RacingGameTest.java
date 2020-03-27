@@ -3,6 +3,10 @@ package racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.InputData;
+import racingcar.domain.RacingGame;
+import racingcar.domain.RandomMoveStrategy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -47,27 +51,6 @@ public class RacingGameTest {
 
         assertThat(game.getCars()).hasSize(3);
     }
-
-    @Test
-    @DisplayName("자동차 경주가 끝나면 우승자를 구할 수 있다")
-    public void raceEndGetWinner() {
-        Cars cars = new Cars(Arrays.asList(new Car("수형", 2), new Car("재성", 3), new Car("성현", 4)));
-
-        List<String> winners = cars.getWinners();
-
-        assertThat(winners).containsExactly("성현");
-    }
-
-    @Test
-    @DisplayName("우승자는 1명 이상 존재할 수 있다")
-    public void raceEndGetWinners() {
-        Cars cars = new Cars(Arrays.asList(new Car("수형", 2), new Car("재성", 3), new Car("성현", 3)));
-
-        List<String> winners = cars.getWinners();
-
-        assertThat(winners).containsExactly("재성", "성현");
-    }
-
 
     @Test
     @DisplayName("입력된 차 대수가 1보다 작을 때 IllegalArgumentException이 발생한다")

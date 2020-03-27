@@ -1,9 +1,13 @@
-package racingcar;
+package racingcar.ui;
+
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 import java.util.List;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
 
 public class ResultView {
 
@@ -26,8 +30,12 @@ public class ResultView {
     }
 
     public static void printWinners(List<Car> cars) {
-        List<String> winners = new Cars(cars).getWinners();
-        print(winners.stream().collect(joining(WINNER_NAME_DELIMITER)) + "가 최종 우승했습니다.");
+        List<Car> winners = new Cars(cars).getWinners();
+        List<String> nameOfWinners = winners.stream()
+                .map(Car::getName)
+                .collect(toList());
+
+        print(nameOfWinners.stream().collect(joining(WINNER_NAME_DELIMITER)) + "가 최종 우승했습니다.");
     }
 
     private static String generateMarker(Car c) {

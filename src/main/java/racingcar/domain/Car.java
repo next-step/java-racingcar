@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class Car {
 
@@ -28,4 +28,6 @@ public class Car {
     public String getName() {
         return name;
     }
+
+
 }
