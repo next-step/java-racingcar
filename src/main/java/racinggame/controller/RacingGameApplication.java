@@ -20,7 +20,6 @@ public class RacingGameApplication {
         racing.playAllRound();
 
         ResultView resultView = new ResultView();
-        resultView.drawAllRoundResult(racing.getRoundResult());
-        resultView.drawWinners(racing);
+        resultView.drawResult(racing.getRoundResult(), racing);
     }
 }

@@ -41,7 +41,7 @@ public class ResultView {
         System.out.println();
     }
 
-    public void drawAllRoundResult(List<RoundResult> roundResult) {
+    private void drawAllRoundResult(List<RoundResult> roundResult) {
         int size = roundResult.size();
 
         for (int i = 0; i < size; i++) {
@@ -49,10 +49,15 @@ public class ResultView {
         }
     }
 
-    public void drawWinners(Racing racing) {
+    private void drawWinners(Racing racing) {
         StringBuffer sb = new StringBuffer();
         List<String> winner = racing.findWinner();
 
         System.out.println(String.join(", ", winner) + WINNER_ANNOUNCE);
+    }
+
+    public void drawResult(List<RoundResult> roundResult, Racing racing) {
+        drawAllRoundResult(roundResult);
+        drawWinners(racing);
     }
 }
