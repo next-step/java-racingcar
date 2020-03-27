@@ -24,18 +24,6 @@ class NumberUtilTest {
         }
     }
 
-
-    @DisplayName("값이 1 이상이면 true")
-    @ParameterizedTest
-    @CsvSource(value = {"-1:false", "0:false", "2:true", "4:true", "6:true", "10:true"}, delimiter = ':')
-    public void isGreaterThan1(int num, boolean expect) throws Exception {
-        //when
-        boolean result = NumberUtil.isGreaterThan1(num);
-
-        //then
-        assertThat(result).isEqualTo(expect);
-    }
-
     @DisplayName("String을 int로 변환, 반환, 검증 : success")
     @ParameterizedTest
     @CsvSource(value = {"1:1", "2:2", "10:10"}, delimiter = ':')
