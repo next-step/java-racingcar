@@ -2,43 +2,37 @@ package racinggame.view;
 
 import racinggame.util.NumberUtil;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * 1. 입력값 validate
  * 1. Racing에서 사용 가능 하도록 입력값 변환 및 저장
  */
 public class InputView {
-    private static final String CAR_NAME_DELIMITER = ",";
-    private static final String INPUT_ERROR_MESSAGE = "1이상의 값을 입력해야 합니다.";
-    private static final int RACING_MINIMUM_ROUND_COUNT = 1;
+    private static final String INPUT_REQUEST_CAR_NAMES_ANNOUNCE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    private static final String INPUT_REQUEST_ROUND_ANNOUNCE = "시도할 회수는 몇 회 인가요?";
+
+    private String carNames;
     private int gameCount;
-    private List<String> carNames = new ArrayList<>();
 
-    public InputView(String gameCount, String carNames) {
-        this.gameCount = validateInputInteger(gameCount);
-        this.carNames = careateCarNames(carNames);
+    public InputView() {
     }
 
-    private int validateInputInteger(String input) {
-        int num = NumberUtil.validateIntegerAndReturn(input);
-        if (!NumberUtil.isGreaterThan(num, RACING_MINIMUM_ROUND_COUNT)) {
-            throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
-        }
-        return num;
+    public void readUserInput() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(INPUT_REQUEST_CAR_NAMES_ANNOUNCE);
+        this.carNames = scanner.nextLine();
+        System.out.println(INPUT_REQUEST_ROUND_ANNOUNCE);
+        this.gameCount = scanner.nextInt();
     }
 
-    private List<String> careateCarNames(String carNames) {
-        return Arrays.asList(carNames.split(CAR_NAME_DELIMITER));
+    public String getCarNames() {
+        return carNames;
     }
 
     public int getGameCount() {
-        return this.gameCount;
-    }
-
-    public List<String> getCarNames() {
-        return carNames;
+        return gameCount;
     }
 }

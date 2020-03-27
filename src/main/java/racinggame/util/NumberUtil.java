@@ -11,21 +11,14 @@ import java.util.Random;
  */
 public final class NumberUtil {
 
-
     private NumberUtil() {
         throw new ImpossibaleConstructionException("Util 객체 생성 금지");
     }
 
-    /**
-     * 0~9 사이의 random 값을 구하는 기능
-     */
     public static int createRandomInt(int bound) {
         return new Random().nextInt(bound);
     }
 
-    /**
-     * 값이 1 이상인치 체크
-     */
     public static boolean isGreaterThan(int num, int compare) {
         return num >= compare;
     }

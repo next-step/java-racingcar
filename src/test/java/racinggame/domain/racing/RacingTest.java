@@ -5,7 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
-import racinggame.view.InputView;
+import racinggame.domain.UserInput;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,16 +30,16 @@ class RacingTest {
     @MethodSource("provideConstructParam")
     public void construct(int carCount, int gameCount, List<String> carNames) throws Exception {
         //then
-        new Racing(gameCount, carNames);
+        new Racing(carNames, gameCount);
     }
 
     @DisplayName("레이싱 실행시 라운드수 와 레이싱 진행으로 인해 생긴 result의 크기를 비교")
     @ParameterizedTest
     @CsvSource(value = {"1:a:1", "3:a,b,c:3", "5:a,b,c,d,e:5"}, delimiter = ':')
-    public void playAllRound(String gameCount, String carNames, int expect) throws Exception {
+    public void playAllRound(int gameCount, String carNames, int expect) throws Exception {
         //given
-        InputView inputView = new InputView(gameCount, carNames);
-        Racing racing = new Racing(inputView.getGameCount(), inputView.getCarNames());
+        UserInput userInput = new UserInput(carNames, gameCount);
+        Racing racing = new Racing(userInput.getCarNames(), userInput.getGameCount());
 
         //when
         racing.playAllRound();

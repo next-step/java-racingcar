@@ -17,7 +17,7 @@ public class Racing {
     private int gameCount;
     private List<RoundResult> roundResult = new ArrayList<>();
 
-    public Racing(int gameCount, List<String> carNames) {
+    public Racing(List<String> carNames, int gameCount) {
         this.gameCount = gameCount;
         this.racingCars = createRacingCars(carNames);
     }
