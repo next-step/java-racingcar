@@ -24,8 +24,8 @@ public class Car implements Comparable<Car> {
 
     //객체 복사
     public Car(Car car) {
-        this.carName = car.getCarName();
-        this.moveRange = car.getMoveRange();
+        this.carName = car.carName;
+        this.moveRange = car.moveRange;
     }
 
     /**
