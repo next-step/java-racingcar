@@ -28,10 +28,10 @@ public class RacingGameTest {
 
         racingGame.playGame(cars, falseMovableStrategy);
 
-        assertThat(cars).isEqualTo(new Cars(Arrays.asList(new Car("kks", 0),
-                new Car("kjm", 0),
-                new Car("bjs", 0),
-                new Car("honux", 0))));
+        assertThat(cars).isEqualTo(new Cars(Arrays.asList(new Car("kks", new Location()),
+                new Car("kjm", new Location()),
+                new Car("bjs", new Location()),
+                new Car("honux", new Location()))));
     }
 
     @Test
@@ -40,10 +40,10 @@ public class RacingGameTest {
 
         racingGame.playGame(cars, trueMovableStrategy);
 
-        assertThat(cars).isEqualTo(new Cars(Arrays.asList(new Car("kks", 1),
-                new Car("kjm", 1),
-                new Car("bjs", 1),
-                new Car("honux", 1))));
+        assertThat(cars).isEqualTo(new Cars(Arrays.asList(new Car("kks", new Location(1)),
+                new Car("kjm", new Location(1)),
+                new Car("bjs", new Location(1)),
+                new Car("honux", new Location(1)))));
     }
 
 }

@@ -36,19 +36,19 @@ public class Cars {
     }
 
     public List<String> getWinners() {
-        int maxLocation = getMaxLocation();
+        Location maxLocation = getMaxLocation();
         return filterWinners(maxLocation);
     }
 
-    private int getMaxLocation() {
-        int maxLocation = 0;
+    private Location getMaxLocation() {
+        Location maxLocation = new Location();
         for (Car car : cars) {
-            maxLocation = car.isMaxLocation(maxLocation);
+            maxLocation = car.max(maxLocation);
         }
         return maxLocation;
     }
 
-    private List<String> filterWinners(int maxLocation) {
+    private List<String> filterWinners(Location maxLocation) {
         List<String> winners = new ArrayList<>();
         for (Car car : cars) {
             car.isWinner(winners, maxLocation);

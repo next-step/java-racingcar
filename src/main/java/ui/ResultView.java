@@ -16,7 +16,7 @@ public class ResultView {
 
     public static void printCurrentLocation(Cars cars) {
         for (Car car : cars.getCars()) {
-            System.out.println(car.toString());
+            System.out.println(car.toStringForPrint());
         }
         System.out.println();
     }

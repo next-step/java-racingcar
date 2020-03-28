@@ -26,16 +26,16 @@ public class CarsTest {
         cars.moveAll(trueMovableStrategy);
 
         assertThat(cars.getCars()).hasSize(3);
-        assertThat(cars.getCars()).contains(new Car("a", 1),
-                new Car("b", 1),
-                new Car("c", 1));
+        assertThat(cars.getCars()).contains(new Car("a", new Location(1)),
+                new Car("b", new Location(1)),
+                new Car("c", new Location(1)));
     }
 
     @Test
     public void getWinnersTest() {
-        Cars cars = new Cars(Arrays.asList(new Car("kks", 0),
-                new Car("kjm", 0),
-                new Car("bjs", 4)));
+        Cars cars = new Cars(Arrays.asList(new Car("kks", new Location()),
+                new Car("kjm", new Location()),
+                new Car("bjs", new Location(4))));
 
         assertThat(cars.getWinners()).hasSize(1);
         assertThat(cars.getWinners()).contains("bjs");
@@ -43,9 +43,9 @@ public class CarsTest {
 
     @Test
     public void canGetGreaterThanTwoWinnersTest() {
-        Cars cars = new Cars(Arrays.asList(new Car("kks", 0),
-                new Car("kjm", 4),
-                new Car("bjs", 4)));
+        Cars cars = new Cars(Arrays.asList(new Car("kks", new Location(0)),
+                new Car("kjm", new Location(4)),
+                new Car("bjs", new Location(4))));
 
         assertThat(cars.getWinners()).hasSize(2);
         assertThat(cars.getWinners()).contains("bjs", "kjm");

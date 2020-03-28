@@ -19,7 +19,7 @@ public class CarTest {
         MovableStrategy falseMovableStrategy = () -> false;
 
         myCar.move(falseMovableStrategy);
-        assertThat(myCar).isEqualTo(new Car("myCar", 0));
+        assertThat(myCar).isEqualTo(new Car("myCar", new Location()));
     }
 
     @Test
@@ -27,16 +27,23 @@ public class CarTest {
         MovableStrategy trueMovableStrategy = () -> true;
 
         myCar.move(trueMovableStrategy);
-        assertThat(myCar).isEqualTo(new Car("myCar", 1));
+        assertThat(myCar).isEqualTo(new Car("myCar", new Location(1)));
     }
 
     @Test
-    public void toStringTest() {
+    public void toStringForPrintTest() {
         MovableStrategy trueMovableStrategy = () -> true;
         myCar.move(trueMovableStrategy);
         myCar.move(trueMovableStrategy);
         myCar.move(trueMovableStrategy);
-        assertThat(myCar.toString()).isEqualTo("myCar : ---");
+        assertThat(myCar.toStringForPrint()).isEqualTo("myCar : ---");
+    }
+
+    @Test
+    public void equalTest() {
+        assertThat(new Car("myCar")).isEqualTo(new Car("myCar"));
+        assertThat(new Car("myCar")).isEqualTo(new Car("myCar", new Location()));
+        assertThat(new Car("myCar")).isEqualTo(new Car("myCar", new Location(0)));
     }
 
 }
