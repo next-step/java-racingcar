@@ -1,43 +1,23 @@
 package calculator;
 
 import java.util.Arrays;
+import java.util.function.BiFunction;
 
 import static calculator.NumberParser.checkMathOperator;
 
 public enum Operator {
 
-    ADDITION("+") {
-        long calculate(long x, long y) {
-            return x + y;
-        }
-    },
-    SUBTRACTION("-") {
-        long calculate(long x, long y) {
-            return x - y;
-        }
-    },
-    MULTIPLY("*") {
-        long calculate(long x, long y) {
-            return x * y;
-        }
-    },
-    DIVIDE("/") {
-        long calculate(long x, long y) {
-            divideByZero(y);
-            return x / y;
-        }
-    };
+    ADDITION("+", (x, y) -> x + y),
+    SUBTRACTION("-", (x, y) -> x - y),
+    MULTIPLY("*", (x, y) -> x * y),
+    DIVIDE("/", (x, y) ->   x / y);
 
     private String value;
+    private BiFunction<Long, Long, Long> operator;
 
-    Operator(String value) {
+    Operator(String value, BiFunction<Long, Long, Long> operator) {
         this.value = value;
-    }
-
-    protected void divideByZero(long inputNumber) {
-        if (inputNumber == 0) {
-            throw new IllegalArgumentException();
-        }
+        this.operator = operator;
     }
 
     static Operator findOperator(String input) {
@@ -45,8 +25,10 @@ public enum Operator {
 
         return Arrays.stream(Operator.values())
                 .filter(operator -> operator.value.equals(input))
-                .findAny().orElseThrow(IllegalArgumentException::new);
+                .findAny().orElseThrow(() -> new IllegalArgumentException("연산자가 아닙니다."));
     }
 
-    abstract long calculate(long x, long y);
+    public long calculate(long x, long y) {
+        return operator.apply(x, y);
+    }
 }
