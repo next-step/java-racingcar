@@ -1,5 +1,7 @@
 package domain;
 
+import strategy.MovableStrategy;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -28,8 +30,8 @@ public class Car {
         return location;
     }
 
-    public void move(int condition) {
-        if (condition >= MOVE_CONDITION) {
+    public void move(MovableStrategy movableStrategy) {
+        if (movableStrategy.isMove()) {
             location++;
         }
     }
