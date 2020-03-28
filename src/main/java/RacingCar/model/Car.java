@@ -1,23 +1,22 @@
 package RacingCar.model;
 
 public class Car {
-    private static final int INIT = 0;
 
-    private int id;
     private int move;
+    private String name;
 
-    public Car(int id) {
-        this.id = id;
-        this.move = INIT;
-    }
 
-    public Car(int id, int move) {
-        this.id = id;
+    public Car(String name, int move) {
+        this.name = name;
         this.move = move;
     }
 
-    public int getId() {
-        return id;
+    public Car(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getMove() {
