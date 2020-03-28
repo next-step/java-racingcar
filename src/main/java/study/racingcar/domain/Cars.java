@@ -36,13 +36,13 @@ public class Cars implements Iterable<Car> {
     }
 
     public Cars getByPosition(int position) {
-        Cars matchedCars = new Cars();
-        cars.stream()
+        List<Car> matchedCars = cars.stream()
                 .filter(car -> car.isPositionEqualTo(position))
-                .forEach(car -> matchedCars
-                        .add(new Car(car.getName(), car.getPosition()))
-                );
-        return matchedCars;
+                .map(Car::clone)
+                .collect(Collectors.toList());
+        Cars newCars = new Cars();
+        newCars.cars = matchedCars;
+        return newCars;
     }
 
     public Stream<Car> stream() {

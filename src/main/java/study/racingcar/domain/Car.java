@@ -28,4 +28,8 @@ public class Car {
     public boolean isPositionEqualTo(int position) {
         return this.position.getPosition() == position;
     }
+
+    public Car clone() {
+        return new Car(name, position.getPosition());
+    }
 }
