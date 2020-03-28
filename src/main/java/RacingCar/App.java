@@ -12,6 +12,7 @@ public class App {
 
         List<Result> results = RacingGame.getInstance().start(inputView.getNames(), inputView.getStage());
 
-        ResultView.print(results);
+        ResultView resultView = new ResultView();
+        resultView.print(results);
     }
 }
