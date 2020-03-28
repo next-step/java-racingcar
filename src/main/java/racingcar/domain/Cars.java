@@ -20,10 +20,9 @@ public class Cars {
 
     public List<Car> findWinners() {
         int maxPosition = calculateMaxPosition();
-        List<Car> winners = cars.stream()
+        return cars.stream()
                 .filter(car -> car.isWinner(maxPosition))
                 .collect(Collectors.toList());
-        return new ArrayList<>(winners);
     }
 
     private int calculateMaxPosition() {
