@@ -25,18 +25,16 @@ public class RacingGame {
         return InnerRacingGame.INSTANCE;
     }
 
-    List<Result> start(int car, int stage) {
+    List<Result> start(List<String> names, int stage) {
         List<Car> cars = new ArrayList<>();
 
-        for (int i = 0; i < car; i++) {
-            cars.add(new Car(i));
+        for (String name : names) {
+            cars.add(new Car(name));
         }
-
 
         List<Result> results = new ArrayList<>();
         for (int i = 0; i < stage; i++) {
             cars = move(cars);
-
             results.add(new Result(cars));
         }
 
@@ -46,7 +44,7 @@ public class RacingGame {
     private List<Car> move(List<Car> cars) {
         return cars.stream().map(car -> {
             int count = car.getMove() + getMoveCount();
-            return new Car(car.getId(), count);
+            return new Car(car.getName(), count);
         }).collect(Collectors.toList());
     }
 
