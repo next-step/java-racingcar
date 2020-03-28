@@ -4,7 +4,6 @@ import racinggame.domain.car.Car;
 import racinggame.util.NumberUtil;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -44,17 +43,17 @@ public class RacingCars {
         return new RacingCars(cars);
     }
 
-    private int getFarthestCarMoveRange() {
-        Collections.sort(this.cars);
-        return this.cars.get(getCarsLastIndex()).getMoveRange();
-    }
+    private int sortCarsAndGetMaxMoveRange() {
+        int range = 0;
+        for (Car car : cars) {
+            range = car.compareMoveRange(range);
+        }
 
-    private int getCarsLastIndex() {
-        return cars.size() - 1;
+        return range;
     }
 
     public List<String> findWinner() {
-        int range = getFarthestCarMoveRange();
+        int range = sortCarsAndGetMaxMoveRange();
         List<String> result = new ArrayList<>();
         getWinner(range, result);
 
