@@ -22,7 +22,7 @@ public class CarTest {
     @ValueSource(ints = {0, 3})
     public void getSmallerThanFourCarDoesNotMoveTest(int condition) {
         myCar.move(condition);
-        assertThat(myCar).isEqualTo(new Car("myCar", 1));
+        assertThat(myCar).isEqualTo(new Car("myCar", 0));
     }
 
     @DisplayName("4이상의 숫자를 입력 받았을 때는 전진하지 않음")
@@ -30,7 +30,7 @@ public class CarTest {
     @ValueSource(ints = {4, 5, 9})
     public void getGreaterThanFourCarMoveTest(int condition) {
         myCar.move(condition);
-        assertThat(myCar).isEqualTo(new Car("myCar", 2));
+        assertThat(myCar).isEqualTo(new Car("myCar", 1));
     }
 
     @Test

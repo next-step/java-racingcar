@@ -1,14 +1,10 @@
 package controller;
 
-import domain.Car;
 import domain.Cars;
 import domain.RacingGame;
 import ui.InputView;
 import ui.ResultView;
-import util.CarFactory;
 import util.RandomNumberFactory;
-
-import java.util.List;
 
 public class RacingGameController {
 
@@ -16,14 +12,14 @@ public class RacingGameController {
         InputView inputView = new InputView();
         String names = inputView.getName();
         int tryCount = inputView.getTryCount();
-        List<Car> cars = CarFactory.createCars(names);
-        RacingGame racingGame = new RacingGame(new Cars(cars));
+        Cars cars = new Cars(names);
+        RacingGame racingGame = new RacingGame();
         ResultView resultView = new ResultView();
         resultView.printStartMessage();
         for (int i = 0; i < tryCount; i++) {
-            racingGame.playGame(RandomNumberFactory.getRandomNumbers(cars.size()));
+            racingGame.playGame(cars, RandomNumberFactory.getRandomNumbers(cars.getCars().size()));
             resultView.printCurrentLocation(cars);
         }
-        resultView.printWinners(racingGame.getWinners());
+        resultView.printWinners(cars.getWinners());
     }
 }

@@ -1,16 +1,30 @@
 package domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Cars {
+    private static final String NAME_DELIMITER = ",";
 
     private List<Car> cars;
 
+    public Cars(String names) {
+        this.cars = createCars(names);
+    }
+
     public Cars(List<Car> cars) {
         this.cars = Collections.unmodifiableList(cars);
+    }
+
+    private List<Car> createCars(String names) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : Arrays.asList(names.split(NAME_DELIMITER))) {
+            cars.add(new Car(name));
+        }
+        return Collections.unmodifiableList(cars);
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 
     public void move(List<Integer> randomNumbers) {
@@ -19,7 +33,7 @@ public class Cars {
         }
     }
 
-    List<String> getWinner() {
+    public List<String> getWinners() {
         int maxLocation = getMaxLocation();
         return filterWinners(maxLocation);
     }

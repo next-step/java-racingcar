@@ -1,6 +1,7 @@
 package ui;
 
 import domain.Car;
+import domain.Cars;
 
 import java.util.List;
 
@@ -13,8 +14,8 @@ public class ResultView {
         System.out.println(START_MESSAGE);
     }
 
-    public void printCurrentLocation(List<Car> cars) {
-        for (Car car : cars) {
+    public void printCurrentLocation(Cars cars) {
+        for (Car car : cars.getCars()) {
             System.out.println(car.toString());
         }
         System.out.println();
