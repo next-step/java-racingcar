@@ -10,7 +10,7 @@ public class App {
         InputView inputView = new InputView();
         inputView.showInput();
 
-        List<Result> results = RacingGame.getInstance().start(inputView.getCar(), inputView.getStage());
+        List<Result> results = RacingGame.getInstance().start(inputView.getNames(), inputView.getStage());
 
         ResultView.print(results);
     }
