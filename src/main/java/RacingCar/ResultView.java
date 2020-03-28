@@ -53,7 +53,7 @@ public class ResultView {
         map.put(car.getName(), car.getMove());
     }
 
-    private int getMaxMove(Map<String, Integer> map) {
+    int getMaxMove(Map<String, Integer> map) {
         int max = Integer.MIN_VALUE;
         for (int move: map.values()) {
             if (move > max) {
@@ -63,7 +63,7 @@ public class ResultView {
         return max;
     }
 
-    private String getMoveString(int count) {
+     String getMoveString(int count) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < count; i++) {
             stringBuilder.append('-');
