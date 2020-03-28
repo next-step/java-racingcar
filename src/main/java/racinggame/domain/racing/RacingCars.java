@@ -43,7 +43,7 @@ public class RacingCars {
         return new RacingCars(cars);
     }
 
-    private int sortCarsAndGetMaxMoveRange() {
+    private int getMaxMoveRange() {
         int range = 0;
         for (Car car : cars) {
             range = car.compareMoveRange(range);
@@ -53,7 +53,7 @@ public class RacingCars {
     }
 
     public List<String> findWinner() {
-        int range = sortCarsAndGetMaxMoveRange();
+        int range = getMaxMoveRange();
         List<String> result = new ArrayList<>();
         getWinner(range, result);
 
