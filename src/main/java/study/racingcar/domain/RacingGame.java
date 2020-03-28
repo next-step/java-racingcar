@@ -1,5 +1,7 @@
 package study.racingcar.domain;
 
+import java.util.List;
+
 public class RacingGame {
     private Cars cars;
     private MovableDistance movableDistance;
@@ -8,6 +10,10 @@ public class RacingGame {
                       MovableDistance movableDistance) {
         this.cars = cars;
         this.movableDistance = movableDistance;
+    }
+
+    public RacingGame(List<String> carNames, MovableDistance movableDistance) {
+        this(new Cars(carNames), movableDistance);
     }
 
     public RacingGameResult play(Time time) {
