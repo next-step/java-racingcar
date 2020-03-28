@@ -8,7 +8,6 @@ import java.util.Objects;
 public class Car {
 
     private static final int INITIAL_LOCATION = 0;
-    private static final int MOVE_CONDITION = 4;
 
     private final String name;
     private int location;
@@ -20,14 +19,6 @@ public class Car {
     public Car(String name, int location) {
         this.name = name;
         this.location = location;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getLocation() {
-        return location;
     }
 
     public void move(MovableStrategy movableStrategy) {
@@ -68,10 +59,7 @@ public class Car {
     }
 
     public int isMaxLocation(int maxLocation) {
-        if (location > maxLocation) {
-            return location;
-        }
-        return maxLocation;
+        return Math.max(location, maxLocation);
     }
 
     public void isWinner(List<String> winners, int maxLocation) {
