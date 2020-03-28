@@ -1,13 +1,29 @@
 package racinggame.domain.racing;
 
-public class RoundResult {
-    private RacingCars result;
+import java.util.ArrayList;
+import java.util.List;
 
-    public RoundResult(RacingCars racingCars) {
-        this.result = new RacingCars(racingCars);
+public class RoundResult {
+    private List<RacingCars> results;
+
+    public RoundResult() {
+        results = new ArrayList<>();
     }
 
-    public RacingCars getResult() {
-        return result;
+    public RoundResult(List<RacingCars> racingCars) {
+        List<RacingCars> cars = new ArrayList<>();
+        cars.addAll(racingCars);
+        this.results = cars;
+    }
+
+    public RoundResult addResult(RacingCars other) {
+        List<RacingCars> cars = new ArrayList<>();
+        cars.addAll(this.results);
+        cars.add(other);
+        return new RoundResult(cars);
+    }
+
+    public List<RacingCars> getResults() {
+        return results;
     }
 }

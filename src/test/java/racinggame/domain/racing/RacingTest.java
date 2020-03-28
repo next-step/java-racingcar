@@ -5,7 +5,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
-import racinggame.domain.UserInput;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,6 +44,6 @@ class RacingTest {
         racing.playAllRound();
 
         //then
-        assertThat(racing.getRoundResult().size()).isEqualTo(expect);
+        assertThat(racing.getRoundResult().getResults().size()).isEqualTo(expect);
     }
 }

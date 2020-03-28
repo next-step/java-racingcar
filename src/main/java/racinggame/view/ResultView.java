@@ -2,6 +2,7 @@ package racinggame.view;
 
 import racinggame.domain.car.Car;
 import racinggame.domain.racing.Racing;
+import racinggame.domain.racing.RacingCars;
 import racinggame.domain.racing.RoundResult;
 
 import java.util.List;
@@ -32,20 +33,17 @@ public class ResultView {
         System.out.println(sb.toString());
     }
 
-    private void drawOneRoundResult(RoundResult roundResult) {
-
-        for (Car car : roundResult.getResult().getCars()) {
+    private void drawOneRoundResult(RacingCars cars) {
+        for (Car car : cars.getCars()) {
             drawCarMovingRange(car.getCarName(), car.getMoveRange());
         }
 
         System.out.println();
     }
 
-    private void drawAllRoundResult(List<RoundResult> roundResult) {
-        int size = roundResult.size();
-
-        for (int i = 0; i < size; i++) {
-            drawOneRoundResult(roundResult.get(i));
+    private void drawAllRoundResult(RoundResult roundResult) {
+        for (RacingCars cars : roundResult.getResults()) {
+            drawOneRoundResult(cars);
         }
     }
 
@@ -56,7 +54,7 @@ public class ResultView {
         System.out.println(String.join(", ", winner) + WINNER_ANNOUNCE);
     }
 
-    public void drawResult(List<RoundResult> roundResult, Racing racing) {
+    public void drawResult(RoundResult roundResult, Racing racing) {
         drawAllRoundResult(roundResult);
         drawWinners(racing);
     }
