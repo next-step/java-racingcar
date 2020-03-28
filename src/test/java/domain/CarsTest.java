@@ -1,6 +1,7 @@
 package domain;
 
 import org.junit.jupiter.api.Test;
+import strategy.MovableStrategy;
 
 import java.util.Arrays;
 
@@ -14,6 +15,20 @@ public class CarsTest {
         Cars cars = new Cars(names);
         assertThat(cars.getCars()).hasSize(3);
         assertThat(cars.getCars()).contains(new Car("a"), new Car("b"), new Car("c"));
+    }
+
+    @Test
+    public void moveAllTest() {
+        String names = "a,b,c";
+        Cars cars = new Cars(names);
+        MovableStrategy trueMovableStrategy = () -> true;
+
+        cars.moveAll(trueMovableStrategy);
+
+        assertThat(cars.getCars()).hasSize(3);
+        assertThat(cars.getCars()).contains(new Car("a", 1),
+                new Car("b", 1),
+                new Car("c", 1));
     }
 
     @Test
@@ -35,6 +50,5 @@ public class CarsTest {
         assertThat(cars.getWinners()).hasSize(2);
         assertThat(cars.getWinners()).contains("bjs", "kjm");
     }
-
 
 }
