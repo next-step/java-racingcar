@@ -14,12 +14,11 @@ public class RacingGameController {
         int tryCount = inputView.getTryCount();
         Cars cars = new Cars(names);
         RacingGame racingGame = new RacingGame();
-        ResultView resultView = new ResultView();
-        resultView.printStartMessage();
+        ResultView.printStartMessage();
         for (int i = 0; i < tryCount; i++) {
             racingGame.playGame(cars, RandomNumberFactory.getRandomNumbers(cars.getCars().size()));
-            resultView.printCurrentLocation(cars);
+            ResultView.printCurrentLocation(cars);
         }
-        resultView.printWinners(cars.getWinners());
+        ResultView.printWinners(cars.getWinners());
     }
 }
