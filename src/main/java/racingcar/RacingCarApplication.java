@@ -14,21 +14,19 @@ import java.util.List;
 public class RacingCarApplication {
 
     public static void main(String[] args) {
-        RacingGameService racingGameService = new RacingGameService();
-        ResultView resultView = new ResultView();
-
         String racingCarNames = InputView.inputRacingCars();
         int numberOfTime = InputView.inputRacingGameTimes();
 
         RacingCarRequestDto racingCarRequestDto = new RacingCarRequestDto(racingCarNames, numberOfTime);
+        RacingGameService racingGameService = new RacingGameService();
 
         List<Cars> cars = racingGameService
                 .executeRacingGameNumberOfTimes(racingCarRequestDto, new RandomMovingStrategy());
         List<Car> winners = racingGameService.findWinnerInRacingScores(cars);
 
         RacingCarResponseDto racingCarResponseDto = new RacingCarResponseDto(cars, winners);
+        ResultView resultView = new ResultView();
 
-        resultView.print(racingCarResponseDto.getCars());
-        resultView.printWinner(racingCarResponseDto.getWinners());
+        resultView.printResult(racingCarResponseDto);
     }
 }
