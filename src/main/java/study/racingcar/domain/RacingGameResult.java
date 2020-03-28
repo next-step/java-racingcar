@@ -21,7 +21,13 @@ public class RacingGameResult {
     }
 
     public List<Cars> getGameEvents() {
-        return gameEvents;
+        List<Cars> clonedGameEvents = new ArrayList<>();
+
+        for (Cars cars : gameEvents) {
+            clonedGameEvents.add(cars.clone());
+        }
+
+        return clonedGameEvents;
     }
 
     private Cars getLastEvent() {
