@@ -1,12 +1,10 @@
 package domain;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import strategy.MovableStrategy;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -24,19 +22,26 @@ public class RacingGameTest {
         racingGame = new RacingGame();
     }
 
-    @DisplayName("4이상의 숫자를 받은 차만 1칸 전진")
     @Test
-    public void playGameTest() {
-        List<Integer> randomNumbers = new ArrayList<>();
-        randomNumbers.add(0);
-        randomNumbers.add(3);
-        randomNumbers.add(4);
-        randomNumbers.add(9);
+    public void playGameWithFalseMovableStrategyGameCarsDoesNotMoveTest() {
+        MovableStrategy falseMovableStrategy = () -> false;
 
-        racingGame.playGame(cars, randomNumbers);
+        racingGame.playGame(cars, falseMovableStrategy);
 
         assertThat(cars).isEqualTo(new Cars(Arrays.asList(new Car("kks", 0),
                 new Car("kjm", 0),
+                new Car("bjs", 0),
+                new Car("honux", 0))));
+    }
+
+    @Test
+    public void playGameWithTrueMovableStrategyGameCarsMoveTest() {
+        MovableStrategy trueMovableStrategy = () -> true;
+
+        racingGame.playGame(cars, trueMovableStrategy);
+
+        assertThat(cars).isEqualTo(new Cars(Arrays.asList(new Car("kks", 1),
+                new Car("kjm", 1),
                 new Car("bjs", 1),
                 new Car("honux", 1))));
     }

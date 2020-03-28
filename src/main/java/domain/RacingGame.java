@@ -1,11 +1,11 @@
 package domain;
 
-import java.util.List;
+import strategy.MovableStrategy;
 
 public class RacingGame {
 
-    public void playGame(Cars cars, List<Integer> randomNumbers) {
-        cars.move(randomNumbers);
+    public void playGame(Cars cars, MovableStrategy randomNumbers) {
+        cars.moveAll(randomNumbers);
     }
 
 }
