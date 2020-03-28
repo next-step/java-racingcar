@@ -16,17 +16,18 @@ public class RacingGameService {
 
     public List<Cars> executeRacingGameNumberOfTimes(RacingCarRequestDto racingCarRequestDto, MovingStrategy movingStrategy) {
         String[] racingCarNames = racingCarRequestDto.getRacingCarNames().split(DELIMITER);
-        List<Car> cars = createCars(racingCarNames);
+        Cars cars = createCars(racingCarNames);
         List<Cars> racingScores = new ArrayList<>();
+        int numberOfTime = racingCarRequestDto.getNumberOfTime();
 
-        for (int i = 0; i < racingCarRequestDto.getNumberOfTime(); i++) {
-            racingScores.add(executeRacingGame(cars, movingStrategy));
+        for (int i = 0; i < numberOfTime; i++) {
+            racingScores.add(executeRacingGame(cars.getCars(), movingStrategy));
         }
 
         return racingScores;
     }
 
-    private List<Car> createCars(String[] names) {
+    private Cars createCars(String[] names) {
         if (Objects.isNull(names) || names.length <= INT_ZERO) {
             throw new IllegalArgumentException("자동차의 개수는 1보다 커야 합니다.");
         }
@@ -37,7 +38,7 @@ public class RacingGameService {
             cars.add(new Car(name));
         }
 
-        return cars;
+        return new Cars(cars);
     }
 
     private Cars executeRacingGame(List<Car> cars, MovingStrategy movingStrategy) {
