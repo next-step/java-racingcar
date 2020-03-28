@@ -13,7 +13,7 @@ public class RacingGame {
     public RacingGameResult play(Time time) {
         RacingGameResult racingGameResult = new RacingGameResult();
         Cars event;
-        for (int i = 0; i < time.getTime(); i++) {
+        for (int i = 0, count = time.getTime(); i < count; i++) {
             event = move();
             racingGameResult.addGameEvent(event);
             cars = event;

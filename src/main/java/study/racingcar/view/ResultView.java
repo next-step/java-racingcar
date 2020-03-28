@@ -9,15 +9,29 @@ import java.util.List;
 
 public class ResultView {
     private static final String CAR_DISPLAY = "-";
-
     private static final String WINNER_MESSAGE = "%s가 최종 우승했습니다.";
     private static final String START_GAME_MESSAGE = "실행 결과";
 
     private ResultView() {
-
     }
 
-    public static void displayGameStatus(Cars cars) {
+    public static void displayGameResult(RacingGameResult racingGameResult) {
+        displayStartGame();
+
+        List<Cars> gameEvents = racingGameResult.getGameEvents();
+        displayGameEvents(gameEvents);
+
+        Cars winners = racingGameResult.getWinners();
+        displayGameWinners(winners);
+    }
+
+    private static void displayGameEvents(List<Cars> gameEvents) {
+        for (Cars cars : gameEvents) {
+            displayGameStatus(cars);
+        }
+    }
+
+    private static void displayGameStatus(Cars cars) {
         for (Car car : cars) {
             String displayCar = new String(new char[car.getPosition()])
                     .replace("\0", CAR_DISPLAY);
@@ -26,12 +40,7 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void displayGameResult(RacingGameResult racingGameResult) {
-        List<Cars> gameEvents = racingGameResult.getGameEvents();
-        for (Cars cars : gameEvents) {
-            displayGameStatus(cars);
-        }
-        Cars winners = racingGameResult.getWinners();
+    private static void displayGameWinners(Cars winners) {
         List<String> winnerNames = new ArrayList<>();
         for (Car winner : winners) {
             winnerNames.add(winner.getName());
@@ -41,7 +50,7 @@ public class ResultView {
                 String.join(",", winnerNames)));
     }
 
-    public static void displayStartGame() {
+    private static void displayStartGame() {
         System.out.println(START_GAME_MESSAGE);
     }
 }
