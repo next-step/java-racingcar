@@ -13,8 +13,8 @@ public class Car {
         this.position = new Position(position);
     }
 
-    public int addPosition(int distance) {
-        return position.getPosition() + distance;
+    public void move(int distance) {
+        this.position.add(distance);
     }
 
     public String getName() {

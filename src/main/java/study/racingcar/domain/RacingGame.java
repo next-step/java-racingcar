@@ -30,11 +30,12 @@ public class RacingGame {
 
     public Cars move() {
         Cars event = new Cars();
-        int newPosition;
+
         for (Car car : cars) {
-            newPosition = car.addPosition(movableDistance.getDistance());
-            event.add(new Car(car.getName(), newPosition));
+            car.move(movableDistance.getDistance());
+            event.add(car.clone());
         }
+
         return event;
     }
 }

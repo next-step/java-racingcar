@@ -13,6 +13,11 @@ public class Position {
         return position;
     }
 
+    public int add(int value) {
+        this.position = this.position + value;
+        return this.position;
+    }
+
     @Override public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
