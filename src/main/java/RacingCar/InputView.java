@@ -18,25 +18,33 @@ class InputView {
 
 
         System.out.println(CAR_NAME_INPUT_MESSAGE);
-        String expression = scanner.nextLine();
-        String[] splitedNames = expression.split(",");
 
-        setNames(splitedNames);
+        String input = scanner.nextLine();
 
-        System.out.println(getNames());
+        validateName(input);
+        setNames(splitInputName(input));
 
         System.out.println(STAGE_INPUT_MESSAGE);
-        setStage(scanner.nextInt());
+
+        int stage = scanner.nextInt();
+        validateStage(stage);
+        setStage(stage);
     }
 
-
-    private void setStage(int stage) {
-        this.stage = stage;
+    private List<String> splitInputName(String input) {
+        return Arrays.asList(input.trim().split(","));
     }
 
+    private void validateName(String input) {
+        if (!input.contains(",")) {
+            throw new IllegalArgumentException("최소 2개의 자동차가 있어야 합니다.");
+        }
+    }
 
-    private void setNames(String[] names) {
-        this.names = new ArrayList<>(Arrays.asList(names));
+    private void validateStage(int stage) {
+        if (!(stage > 0)) {
+            throw new IllegalArgumentException("최소 1번 이상 시도해야 합니다.");
+        }
     }
 
     List<String> getNames() {
@@ -45,4 +53,14 @@ class InputView {
     int getStage() {
         return stage;
     }
+
+    private void setStage(int stage) {
+        this.stage = stage;
+    }
+
+    private void setNames(List<String> names) {
+        this.names = names;
+    }
+
+
 }
