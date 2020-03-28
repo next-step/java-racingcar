@@ -49,7 +49,7 @@ public class Car {
         return name;
     }
 
-    public boolean isWinner(int maxPosition) {
+    public boolean isEqualPosition(int maxPosition) {
         return maxPosition == position;
     }
 

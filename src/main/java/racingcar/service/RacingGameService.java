@@ -21,7 +21,7 @@ public class RacingGameService {
         int numberOfTime = racingCarRequestDto.getNumberOfTime();
 
         for (int i = 0; i < numberOfTime; i++) {
-            racingScores.add(executeRacingGame(cars.getCars(), movingStrategy));
+            racingScores.add(executeRacingGame(cars, movingStrategy));
         }
 
         return racingScores;
@@ -33,7 +33,6 @@ public class RacingGameService {
         }
 
         List<Car> cars = new ArrayList<>();
-
         for (String name : names) {
             cars.add(new Car(name));
         }
@@ -41,15 +40,8 @@ public class RacingGameService {
         return new Cars(cars);
     }
 
-    private Cars executeRacingGame(List<Car> cars, MovingStrategy movingStrategy) {
-        List<Car> executedCars = new ArrayList<>();
-
-        for (Car car : cars) {
-            car.move(movingStrategy);
-            executedCars.add(car.clone());
-        }
-
-        return new Cars(executedCars);
+    private Cars executeRacingGame(Cars cars, MovingStrategy movingStrategy) {
+        return cars.moveAll(movingStrategy);
     }
 
     public List<Car> findWinnerInRacingScores(List<Cars> cars) {
