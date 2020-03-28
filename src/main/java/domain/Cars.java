@@ -1,5 +1,7 @@
 package domain;
 
+import strategy.MovableStrategy;
+
 import java.util.*;
 
 public class Cars {
@@ -27,9 +29,9 @@ public class Cars {
         return cars;
     }
 
-    public void move(List<Integer> randomNumbers) {
+    public void moveAll(MovableStrategy movableStrategy) {
         for (int i = 0; i < cars.size(); i++) {
-            cars.get(i).move(randomNumbers.get(i));
+            cars.get(i).move(movableStrategy);
         }
     }
 
