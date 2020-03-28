@@ -11,6 +11,11 @@ public class Car {
         this.move = INIT;
     }
 
+    public Car(int id, int move) {
+        this.id = id;
+        this.move = move;
+    }
+
     public int getId() {
         return id;
     }
@@ -19,7 +24,4 @@ public class Car {
         return move;
     }
 
-    public void setMove(int move) {
-        this.move = move;
-    }
 }

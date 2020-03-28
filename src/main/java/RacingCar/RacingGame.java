@@ -14,9 +14,6 @@ public class RacingGame {
     private static final int THRESHOLD = 4;
     private static final int ZERO = 0;
 
-    private int car = 0;
-    private int stage = 0;
-
     private RacingGame() {
     }
 
@@ -26,11 +23,6 @@ public class RacingGame {
 
     static RacingGame getInstance() {
         return InnerRacingGame.INSTANCE;
-    }
-
-
-    List<Result> start() {
-        return start(car, stage);
     }
 
     List<Result> start(int car, int stage) {
@@ -51,11 +43,10 @@ public class RacingGame {
         return results;
     }
 
-    private static List<Car> move(List<Car> cars) {
+    private List<Car> move(List<Car> cars) {
         return cars.stream().map(car -> {
             int count = car.getMove() + getMoveCount();
-            car.setMove(count);
-            return car;
+            return new Car(car.getId(), count);
         }).collect(Collectors.toList());
     }
 
@@ -71,13 +62,5 @@ public class RacingGame {
 
     static boolean isMovable(int moveCount) {
         return moveCount >= THRESHOLD;
-    }
-
-    void setCar(int car) {
-        this.car = car;
-    }
-
-    void setStage(int stage) {
-        this.stage = stage;
     }
 }
