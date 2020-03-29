@@ -9,6 +9,7 @@ public class StageView {
 
     private List<StageResult> stageResults;
 
+    public StageView() {}
     public StageView(List<StageResult> stageResults) {
         this.stageResults = stageResults;
     }
@@ -29,7 +30,7 @@ public class StageView {
         System.out.println();
     }
 
-    String getMoveString(int count) {
+    public String getMoveString(int count) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < count; i++) {
             stringBuilder.append('-');

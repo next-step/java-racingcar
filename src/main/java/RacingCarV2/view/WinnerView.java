@@ -10,6 +10,8 @@ import java.util.Map;
 
 public class WinnerView {
 
+    private static final String END_MESSAGE = " 최중 우승하였습니다.";
+
     private List<StageResult> stageResults;
 
     public WinnerView(List<StageResult> stageResults) {
@@ -18,7 +20,7 @@ public class WinnerView {
 
     void print() {
         List<String> winners = getWinners(stageResults);
-        System.out.println(winners.toString() + " 최종 우승하였습니다.");
+        System.out.println(winners.toString() + END_MESSAGE);
     }
 
     List<String> getWinners(List<StageResult> stageResults) {
@@ -46,7 +48,7 @@ public class WinnerView {
         map.put(car.getName(), car.getPosition());
     }
 
-    int getMaxPosition(Map<String, Integer> map) {
+    public int getMaxPosition(Map<String, Integer> map) {
         int max = Integer.MIN_VALUE;
         for (int position: map.values()) {
             max = getBigInteger(position, max);

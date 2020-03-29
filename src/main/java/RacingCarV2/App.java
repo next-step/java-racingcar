@@ -1,5 +1,6 @@
 package RacingCarV2;
 
+import RacingCarV2.domain.RacingGame;
 import RacingCarV2.model.StageResult;
 import RacingCarV2.view.InputView;
 import RacingCarV2.view.ResultView;

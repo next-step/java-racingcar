@@ -1,4 +1,4 @@
-package RacingCarV2;
+package RacingCarV2.domain;
 
 import RacingCarV2.model.Car;
 import RacingCarV2.model.StageResult;
@@ -15,7 +15,7 @@ public class RacingGame {
     private static final int THRESHOLD = 4;
 
 
-    List<StageResult> start(List<String> names, int stage) {
+    public List<StageResult> start(List<String> names, int stage) {
         List<Car> cars = initCars(names);
         List<StageResult> stageResults = new ArrayList<>();
 
@@ -36,7 +36,7 @@ public class RacingGame {
     }
 
 
-    boolean isMovable(int moveCount) {
+    public boolean isMovable(int moveCount) {
         return moveCount >= THRESHOLD;
     }
 
