@@ -61,11 +61,7 @@ public class RacingCars {
     }
 
     private void getWinner(int range, List<String> result) {
-        for (Car car : this.cars) {
-            if (car.isMovedFarThan(range)) {
-                result.add(car.getCarName());
-            }
-        }
+        this.cars.stream().filter(car -> car.isMovedFarThan(range)).map(Car::getCarName).forEach(result::add);
     }
 
     public List<Car> getCars() {
