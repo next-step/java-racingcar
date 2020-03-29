@@ -11,7 +11,13 @@ class CarTest {
 
     @DisplayName("자동차 이동 테스트")
     @ParameterizedTest
-    @CsvSource(value = {"0:0", "1:0", "3:0", "4:1", "7:1", "9:1"}, delimiter = ':')
+    @CsvSource(value = {
+            "0:0",
+            "1:0",
+            "3:0",
+            "4:1",
+            "7:1",
+            "9:1"}, delimiter = ':')
     void moveCar(int randNum, int expect) {
         //given
         Car car = new Car("car");
@@ -34,5 +40,25 @@ class CarTest {
 
         //then
         assertThat(range).isEqualTo(10);
+    }
+
+    @DisplayName("이동 거리를 비교하여 더 멀리 갔는지 비교 한다")
+    @ParameterizedTest
+    @CsvSource(value = {
+            "1:false"
+            , "5:false"
+            , "9:false"
+            , "10:true"
+            , "15:true"}, delimiter = ':')
+    public void howIsFar(int move, boolean expect) throws Exception {
+        //given
+        Car car = new Car("a", move);
+        final int compare = 10;
+
+        //when
+        boolean movedFarThan = car.isMovedFarThan(compare);
+
+        //then
+        assertThat(movedFarThan).isEqualTo(expect);
     }
 }
