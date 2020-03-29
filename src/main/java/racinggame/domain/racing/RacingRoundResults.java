@@ -3,24 +3,22 @@ package racinggame.domain.racing;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingRoundResult {
+public class RacingRoundResults {
     private List<RacingCars> results;
 
-    public RacingRoundResult() {
+    public RacingRoundResults() {
         results = new ArrayList<>();
     }
 
-    public RacingRoundResult(List<RacingCars> racingCars) {
-        List<RacingCars> cars = new ArrayList<>();
-        cars.addAll(racingCars);
-        this.results = cars;
+    public RacingRoundResults(List<RacingCars> racingCars) {
+        this.results = new ArrayList<>(racingCars);
     }
 
-    public RacingRoundResult addResult(RacingCars other) {
+    public RacingRoundResults addResult(RacingCars other) {
         List<RacingCars> cars = new ArrayList<>();
         cars.addAll(this.results);
         cars.add(other);
-        return new RacingRoundResult(cars);
+        return new RacingRoundResults(cars);
     }
 
     public List<RacingCars> getResults() {
