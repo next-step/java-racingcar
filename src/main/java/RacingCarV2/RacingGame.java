@@ -1,7 +1,7 @@
-package RcingCarV2;
+package RacingCarV2;
 
-import RcingCarV2.model.Car;
-import RcingCarV2.model.StageResult;
+import RacingCarV2.model.Car;
+import RacingCarV2.model.StageResult;
 
 import java.util.ArrayList;
 import java.util.List;
