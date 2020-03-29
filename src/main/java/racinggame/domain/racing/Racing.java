@@ -1,6 +1,7 @@
 package racinggame.domain.racing;
 
 import racinggame.domain.car.Car;
+import racinggame.util.NumberUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,14 +14,25 @@ import java.util.List;
  * 1. 우승자 찾기
  */
 public class Racing {
+
+    private static final String INPUT_ERROR_MESSAGE = "1이상의 값을 입력해야 합니다.";
+    private static final int RACING_MINIMUM_ROUND_COUNT = 1;
+
     private RacingCars racingCars;
     private int gameCount;
     private RacingRoundResults racingRoundResults;
 
     public Racing(List<String> carNames, int gameCount) {
+        validateGameCount(gameCount);
         this.gameCount = gameCount;
         this.racingCars = createRacingCars(carNames);
         this.racingRoundResults = new RacingRoundResults();
+    }
+
+    private void validateGameCount(int gameCount) {
+        if (!NumberUtil.isGreaterThan(gameCount, RACING_MINIMUM_ROUND_COUNT)) {
+            throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
+        }
     }
 
     private RacingCars createRacingCars(List<String> carNames) {
