@@ -13,9 +13,8 @@ class Position {
         return position;
     }
 
-    public int add(int value) {
+    public void add(int value) {
         this.position = this.position + value;
-        return this.position;
     }
 
     public Position clone() {
