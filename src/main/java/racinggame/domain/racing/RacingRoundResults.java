@@ -1,17 +1,18 @@
 package racinggame.domain.racing;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingRoundResults {
     private List<RacingCars> results;
 
     public RacingRoundResults() {
-        results = new ArrayList<>();
+        results = Collections.unmodifiableList(new ArrayList<>());
     }
 
     public RacingRoundResults(List<RacingCars> racingCars) {
-        this.results = new ArrayList<>(racingCars);
+        this.results = Collections.unmodifiableList(new ArrayList<>(racingCars));
     }
 
     public RacingRoundResults addResult(RacingCars other) {
