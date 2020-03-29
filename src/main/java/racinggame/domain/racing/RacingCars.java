@@ -24,6 +24,16 @@ public class RacingCars {
         this(Collections.unmodifiableList(new ArrayList<>(cars.getCars())));
     }
 
+    public static RacingCars newRacingCarsFrom(List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
+
+        for (String name : carNames) {
+            cars.add(new Car(name));
+        }
+
+        return new RacingCars(cars);
+    }
+
     public RacingCars moveCarAll() {
         List<Car> cars = new ArrayList<>();
         for (Car car : this.cars) {

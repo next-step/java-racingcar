@@ -33,4 +33,13 @@ class RacingCarsTest {
         );
     }
 
+    @DisplayName("RacingCars의 정적 팩토리 메서드 ")
+    @Test
+    public void factory() throws Exception {
+        //given
+        RacingCars racingCars = RacingCars.newRacingCarsFrom(Arrays.asList("a", "b", "c"));
+
+        //then
+        assertThat(racingCars.getCars().size()).isEqualTo(3);
+    }
 }

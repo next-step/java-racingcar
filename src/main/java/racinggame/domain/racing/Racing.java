@@ -1,9 +1,7 @@
 package racinggame.domain.racing;
 
-import racinggame.domain.car.Car;
 import racinggame.util.NumberUtil;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,7 +23,7 @@ public class Racing {
     public Racing(List<String> carNames, int gameCount) {
         validateGameCount(gameCount);
         this.gameCount = gameCount;
-        this.racingCars = createRacingCars(carNames);
+        this.racingCars = RacingCars.newRacingCarsFrom(carNames);
         this.racingRoundResults = new RacingRoundResults();
     }
 
@@ -33,16 +31,6 @@ public class Racing {
         if (!NumberUtil.isGreaterThan(gameCount, RACING_MINIMUM_ROUND_COUNT)) {
             throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
         }
-    }
-
-    private RacingCars createRacingCars(List<String> carNames) {
-        List<Car> cars = new ArrayList<>();
-
-        for (String name : carNames) {
-            cars.add(new Car(name));
-        }
-
-        return new RacingCars(cars);
     }
 
     private void playOneRound() {
