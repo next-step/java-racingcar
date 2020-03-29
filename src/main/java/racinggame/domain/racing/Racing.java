@@ -25,10 +25,9 @@ public class Racing {
 
     private RacingCars createRacingCars(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
-        int carNamesListSize = carNames.size();
 
-        for (int i = 0; i < carNamesListSize; i++) {
-            cars.add(new Car(carNames.get(i)));
+        for (String name : carNames) {
+            cars.add(new Car(name));
         }
 
         return new RacingCars(cars);
