@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 public class Cars implements Iterable<Car> {
     private List<Car> cars;
 
-    public Cars() {
+    Cars() {
         this.cars = new ArrayList<>();
     }
 
@@ -21,11 +21,11 @@ public class Cars implements Iterable<Car> {
                 .collect(Collectors.toList());
     }
 
-    public void add(Car car) {
+    void add(Car car) {
         this.cars.add(car);
     }
 
-    public void add(Car... cars) {
+    void add(Car... cars) {
         this.cars.addAll(Arrays.asList(cars));
     }
 
