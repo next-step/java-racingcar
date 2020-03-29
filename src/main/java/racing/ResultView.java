@@ -1,8 +1,10 @@
 package racing;
 
 public class ResultView {
-    RacingVO racingVO;
-    RacingGame racingGame;
+
+    private RacingVO racingVO;
+    private RacingGame racingGame;
+
 
     public ResultView(RacingVO racingVO, RacingGame racingGame) {
         this.racingVO = racingVO;
@@ -16,15 +18,12 @@ public class ResultView {
         for(int i = 0; i < count; ++i) {
             viewResult(racingGame.move());
         }
-
     }
 
     public void viewResult(int[] carPositions) {
-        int[] var2 = carPositions;
-        int var3 = carPositions.length;
-
-        for(int var4 = 0; var4 < var3; ++var4) {
-            int carPosition = var2[var4];
+        int length = carPositions.length;
+        for(int i = 0; i < length; i++) {
+            int carPosition = carPositions[i];
             System.out.println(printCar(carPosition));
         }
 

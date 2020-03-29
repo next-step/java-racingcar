@@ -16,6 +16,7 @@ public class RacingTest {
     RacingGame racingGame;
     ResultView resultView;
 
+<<<<<<< HEAD
     public RacingTest() {
     }
 
@@ -27,6 +28,16 @@ public class RacingTest {
         this.racingVO = RacingVO.getInstance();
         this.racingGame = new RacingGame(this.racingVO);
         this.resultView = new ResultView(this.racingVO, this.racingGame);
+=======
+
+    @BeforeEach
+    void setUp() {
+        inputView = new InputView();
+        scanner = new Scanner(System.in);
+        racingVO = new RacingVO(4,10,new int[4]);
+        racingGame = new RacingGame(racingVO);
+        resultView = new ResultView(racingVO, racingGame);
+>>>>>>> rkdvnfma90
     }
 
     @DisplayName("차 대수 및 횟수 0이상 테스트")
@@ -34,13 +45,18 @@ public class RacingTest {
     @CsvSource({"0"})
     void symbolValidTest(int param) {
         Assertions.assertThatIllegalArgumentException().isThrownBy(() -> {
+<<<<<<< HEAD
             this.inputView.validNumberCheck(param);
+=======
+            inputView.validNumberCheck(param);
+>>>>>>> rkdvnfma90
         });
     }
 
     @DisplayName("값이 4이상일 때 움직이는지 테스트")
     @ParameterizedTest
     @ValueSource(
+<<<<<<< HEAD
             ints = {1, 2, 3, 4, 5, 6}
     )
     void movableTest(int param) {
@@ -56,4 +72,12 @@ public class RacingTest {
     void printTest(int param, String result) {
         Assertions.assertThat(this.resultView.printCar(param)).isEqualTo(result);
     }
+=======
+            ints = {4,7,10}
+    )
+    void movableTest(int param) {
+        Assertions.assertThat(racingGame.isMovable(param)).isEqualTo(true);
+    }
+
+>>>>>>> rkdvnfma90
 }
