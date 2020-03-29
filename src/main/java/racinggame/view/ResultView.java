@@ -3,7 +3,7 @@ package racinggame.view;
 import racinggame.domain.car.Car;
 import racinggame.domain.racing.Racing;
 import racinggame.domain.racing.RacingCars;
-import racinggame.domain.racing.RoundResult;
+import racinggame.domain.racing.RacingRoundResult;
 
 import java.util.List;
 
@@ -41,8 +41,8 @@ public class ResultView {
         System.out.println();
     }
 
-    private void drawAllRoundResult(RoundResult roundResult) {
-        for (RacingCars cars : roundResult.getResults()) {
+    private void drawAllRoundResult(RacingRoundResult racingRoundResult) {
+        for (RacingCars cars : racingRoundResult.getResults()) {
             drawOneRoundResult(cars);
         }
     }
@@ -54,8 +54,8 @@ public class ResultView {
         System.out.println(String.join(", ", winner) + WINNER_ANNOUNCE);
     }
 
-    public void drawResult(RoundResult roundResult, Racing racing) {
-        drawAllRoundResult(roundResult);
+    public void drawResult(RacingRoundResult racingRoundResult, Racing racing) {
+        drawAllRoundResult(racingRoundResult);
         drawWinners(racing);
     }
 }

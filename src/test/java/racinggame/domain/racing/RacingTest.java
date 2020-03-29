@@ -44,6 +44,6 @@ class RacingTest {
         racing.playAllRound();
 
         //then
-        assertThat(racing.getRoundResult().getResults().size()).isEqualTo(expect);
+        assertThat(racing.getRacingRoundResult().getResults().size()).isEqualTo(expect);
     }
 }

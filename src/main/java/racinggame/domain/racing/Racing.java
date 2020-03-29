@@ -15,12 +15,12 @@ import java.util.List;
 public class Racing {
     private RacingCars racingCars;
     private int gameCount;
-    private RoundResult roundResult;
+    private RacingRoundResult racingRoundResult;
 
     public Racing(List<String> carNames, int gameCount) {
         this.gameCount = gameCount;
         this.racingCars = createRacingCars(carNames);
-        this.roundResult = new RoundResult();
+        this.racingRoundResult = new RacingRoundResult();
     }
 
     private RacingCars createRacingCars(List<String> carNames) {
@@ -39,7 +39,7 @@ public class Racing {
     }
 
     private void saveRoundResult() {
-        this.roundResult = this.roundResult.addResult(this.racingCars);
+        this.racingRoundResult = this.racingRoundResult.addResult(this.racingCars);
     }
 
     public void playAllRound() {
@@ -52,7 +52,7 @@ public class Racing {
         return racingCars.findWinner();
     }
 
-    public RoundResult getRoundResult() {
-        return this.roundResult;
+    public RacingRoundResult getRacingRoundResult() {
+        return this.racingRoundResult;
     }
 }
