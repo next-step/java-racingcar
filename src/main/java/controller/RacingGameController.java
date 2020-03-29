@@ -15,10 +15,10 @@ public class RacingGameController {
 
         Cars cars = new Cars(names);
         RandomMovableStrategy randomMovableStrategy = new RandomMovableStrategy();
-        RacingGame racingGame = new RacingGame();
+        RacingGame racingGame = new RacingGame(randomMovableStrategy);
         ResultView.printStartMessage();
         for (int i = 0; i < tryCount; i++) {
-            racingGame.playGame(cars, randomMovableStrategy);
+            racingGame.playGame(cars);
             ResultView.printCurrentLocation(cars);
         }
 

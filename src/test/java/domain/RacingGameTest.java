@@ -9,9 +9,7 @@ import java.util.Arrays;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
-
     private Cars cars;
-    private RacingGame racingGame;
 
     @BeforeEach
     public void setup() {
@@ -19,14 +17,14 @@ public class RacingGameTest {
                 new Car("kjm"),
                 new Car("bjs"),
                 new Car("honux")));
-        racingGame = new RacingGame();
     }
 
     @Test
     public void playGameWithFalseMovableStrategyGameCarsDoesNotMoveTest() {
         MovableStrategy falseMovableStrategy = () -> false;
+        RacingGame racingGame = new RacingGame(falseMovableStrategy);
 
-        racingGame.playGame(cars, falseMovableStrategy);
+        racingGame.playGame(cars);
 
         assertThat(cars).isEqualTo(new Cars(Arrays.asList(new Car("kks", new Location()),
                 new Car("kjm", new Location()),
@@ -37,8 +35,9 @@ public class RacingGameTest {
     @Test
     public void playGameWithTrueMovableStrategyGameCarsMoveTest() {
         MovableStrategy trueMovableStrategy = () -> true;
+        RacingGame racingGame = new RacingGame(trueMovableStrategy);
 
-        racingGame.playGame(cars, trueMovableStrategy);
+        racingGame.playGame(cars);
 
         assertThat(cars).isEqualTo(new Cars(Arrays.asList(new Car("kks", new Location(1)),
                 new Car("kjm", new Location(1)),
