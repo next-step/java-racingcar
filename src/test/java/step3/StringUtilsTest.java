@@ -1,6 +1,6 @@
 package step3;
 
-import CarRacing.view.DisplayUtils;
+import CarRacing.view.RacingView;
 import CarRacing.Utils.StringUtils;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class StringUtilsTest {
     @Test
     void makeGaugeTest() {
-        assertThat(DisplayUtils.makeGauge(4)).isEqualTo("----\n");
+        assertThat(RacingView.makeGauge(4)).isEqualTo("----\n");
     }
 
     @Test

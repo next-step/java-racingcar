@@ -3,7 +3,7 @@ package CarRacing.view;
 import CarRacing.domain.Car;
 import CarRacing.domain.RacingCars;
 
-public class DisplayUtils {
+public class RacingView {
     static private final String BAR = "-";
     static private final String LINE_BREAK = "\n";
     static private final String COLON =" : ";
