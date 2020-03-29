@@ -1,6 +1,7 @@
 package racinggame.util;
 
-import racinggame.exception.ImpossibaleConstructionException;
+import racinggame.exception.ImpossibleConstructionException;
+import racinggame.exception.NegativeNumberException;
 
 import java.util.Random;
 
@@ -12,7 +13,7 @@ import java.util.Random;
 public final class NumberUtil {
 
     private NumberUtil() {
-        throw new ImpossibaleConstructionException("Util 객체 생성 금지");
+        throw new ImpossibleConstructionException(getClass().getName());
     }
 
     public static int createRandomInt(int bound) {
@@ -23,16 +24,11 @@ public final class NumberUtil {
         return num >= compare;
     }
 
-    /**
-     * 값이 정수 인지 체크
-     * <p>
-     * 이 메서드는 indent를 어떻게 1로 줄일수 있을까요?
-     */
     public static int validateIntegerAndReturn(String s) {
         try {
             return Integer.parseInt(s);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("정수가 아닌 값이 입력 되었습니다.");
+            throw new NegativeNumberException("정수가 아닌 값이 입력 되었습니다.");
         }
     }
 }
