@@ -7,7 +7,10 @@ import strategy.RandomMovableStrategy;
 import ui.InputView;
 import ui.ResultView;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class RacingGameController {
     private static final String NAME_DELIMITER = ",";
@@ -22,7 +25,7 @@ public class RacingGameController {
         ResultView.printStartMessage();
         for (int i = 0; i < tryCount; i++) {
             racingGame.playGame(cars);
-            ResultView.printCurrentLocation(cars);
+            printCurrentLocation(cars);
         }
 
         ResultView.printWinners(cars.getWinners());
@@ -35,4 +38,11 @@ public class RacingGameController {
         }
         return Collections.unmodifiableList(cars);
     }
+
+    private static void printCurrentLocation(Cars cars) {
+        for (Car car : cars.getCars()) {
+            ResultView.printCurrentLocation(car.getName(), car.getLocation());
+        }
+    }
+
 }
