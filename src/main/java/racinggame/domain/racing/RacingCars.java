@@ -4,6 +4,7 @@ import racinggame.domain.car.Car;
 import racinggame.util.NumberUtil;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -16,23 +17,11 @@ public class RacingCars {
     private final List<Car> cars;
 
     public RacingCars(List<Car> cars) {
-        List<Car> result = new ArrayList<>();
-
-        for (Car car : cars) {
-            result.add(new Car(car));
-        }
-
-        this.cars = result;
+        this.cars = Collections.unmodifiableList(new ArrayList<>(cars));
     }
 
     public RacingCars(RacingCars cars) {
-        List<Car> result = new ArrayList<>();
-
-        for (Car car : cars.getCars()) {
-            result.add(new Car(car));
-        }
-
-        this.cars = result;
+        this(Collections.unmodifiableList(new ArrayList<>(cars.getCars())));
     }
 
     public RacingCars moveCarAll() {
