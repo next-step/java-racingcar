@@ -1,7 +1,6 @@
 package step3;
 
-import CarRacing.domain.Car;
-import CarRacing.domain.RacingCars;
+import CarRacing.domain.*;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -11,8 +10,9 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RacingCarsTest {
-    private RacingCars racingCars;
+public class RacingGameTest {
+
+    private RacingGame racingGame;
 
     @BeforeEach
     void setUp() {
@@ -21,12 +21,13 @@ public class RacingCarsTest {
         carList.add(new Car("minho", 2));
         carList.add(new Car("charse",1));
 
-        racingCars = new RacingCars(carList);
+        racingGame = new RacingGame(carList, 0);
     }
 
-    @DisplayName("차 3대가 잘 만들어졌는지 확인")
+
+    @DisplayName("레이싱 게임의 우승자를 확인한다.")
     @Test
-    void createRacingCarsTest() {
-        assertThat(racingCars.getRacingCars().size()).isEqualTo(3);
+    void racingCarsRaceTest() {
+        assertThat(racingGame.getRacingWinner().contains("jinwoo")).isTrue();
     }
 }
