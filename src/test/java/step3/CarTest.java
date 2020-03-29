@@ -1,8 +1,8 @@
 package step3;
 
-import CarRacing.Car;
-import CarRacing.MovingStrategy;
-import CarRacing.RacingStrategy;
+import CarRacing.domain.Car;
+import CarRacing.domain.MovingStrategy;
+import CarRacing.domain.RacingStrategy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

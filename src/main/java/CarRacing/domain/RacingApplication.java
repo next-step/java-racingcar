@@ -1,4 +1,4 @@
-package CarRacing;
+package CarRacing.domain;
 
 import CarRacing.Utils.StringUtils;
 
@@ -18,7 +18,7 @@ public class RacingApplication {
         this.racingGame = new RacingGame(StringUtils.splitStringToStringArr(getCarName()), getRacingTime());
         System.out.println(RESULT_SENTENCE);
         this.racingGame.raceStart();
-        getLastWinner();
+        showLastWinner();
     }
 
     private String getCarName() {
@@ -31,7 +31,7 @@ public class RacingApplication {
         return INPUT_SCANNER.nextInt();
     }
 
-    private void getLastWinner() {
+    private void showLastWinner() {
         final StringBuilder sb = new StringBuilder();
         final List<String> winnerList = this.racingGame.getRacingWinner();
         sb.append(String.join(",", winnerList)).append(WINNER_SENCTENCE);

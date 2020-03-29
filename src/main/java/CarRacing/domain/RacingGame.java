@@ -1,6 +1,6 @@
-package CarRacing;
+package CarRacing.domain;
 
-import CarRacing.Utils.DisplayUtils;
+import CarRacing.view.DisplayUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,12 +25,18 @@ public class RacingGame {
     }
 
     public List<String> getRacingWinner() {
-        final int maxPosition = this.racingCars.getRacingCars()
+        return getWinnerWithMaxPosition(getMaxPosition());
+    }
+
+    private int getMaxPosition() {
+        return this.racingCars.getRacingCars()
                 .stream()
                 .mapToInt(Car::getCurrentPosition)
                 .max()
                 .orElseThrow(() -> new RuntimeException("Winner does not exist"));
+    }
 
+    private List<String> getWinnerWithMaxPosition(final int maxPosition) {
         return this.racingCars.getRacingCars()
                 .stream()
                 .filter(car -> car.getCurrentPosition() == maxPosition)

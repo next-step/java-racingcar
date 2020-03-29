@@ -1,7 +1,7 @@
-package CarRacing.Utils;
+package CarRacing.view;
 
-import CarRacing.Car;
-import CarRacing.RacingCars;
+import CarRacing.domain.Car;
+import CarRacing.domain.RacingCars;
 
 public class DisplayUtils {
     static private final String BAR = "-";
