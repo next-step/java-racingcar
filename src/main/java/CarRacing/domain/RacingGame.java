@@ -1,6 +1,6 @@
 package CarRacing.domain;
 
-import CarRacing.view.DisplayUtils;
+import CarRacing.view.RacingView;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,16 +11,16 @@ public class RacingGame {
     final private RacingCars racingCars;
     final private int racingTime;
 
-    public RacingGame(final String[] carNameArr, final int racingTime) {
+    public RacingGame(final List<Car> carList, final int racingTime) {
         this.racingTime = racingTime;
-        this.racingCars = new RacingCars(carNameArr);
+        this.racingCars = new RacingCars(carList);
         this.racingStrategy = new MovingStrategy();
     }
 
     public void raceStart() {
         for (int i = 0; i < this.racingTime; i++) {
             this.racingCars.race(this.racingStrategy);
-            DisplayUtils.makeCarsCurrentStatusToString(this.racingCars);
+            RacingView.makeCarsCurrentStatusToString(this.racingCars);
         }
     }
 

@@ -2,8 +2,10 @@ package CarRacing.domain;
 
 import CarRacing.Utils.StringUtils;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class RacingApplication {
     static final private Scanner INPUT_SCANNER = new Scanner(System.in);
@@ -15,7 +17,10 @@ public class RacingApplication {
     final private RacingGame racingGame;
 
     public RacingApplication() {
-        this.racingGame = new RacingGame(StringUtils.splitStringToStringArr(getCarName()), getRacingTime());
+        this.racingGame = new RacingGame(
+                Arrays.stream(StringUtils.splitStringToStringArr(getCarName()))
+                        .map(Car::new)
+                        .collect(Collectors.toList()), getRacingTime());
         System.out.println(RESULT_SENTENCE);
         this.racingGame.raceStart();
         showLastWinner();
