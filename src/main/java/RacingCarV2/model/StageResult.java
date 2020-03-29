@@ -1,6 +1,5 @@
-package RcingCarV2.model;
+package RacingCarV2.model;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
