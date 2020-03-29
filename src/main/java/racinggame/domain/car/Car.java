@@ -36,11 +36,7 @@ public class Car implements Comparable<Car> {
     }
 
     public int compareMoveRange(int range) {
-        if (this.moveRange < range) {
-            return range;
-        }
-
-        return this.moveRange;
+        return Math.max(this.moveRange, range);
     }
 
     public boolean isMovedFarThan(int compare) {
