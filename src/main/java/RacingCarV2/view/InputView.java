@@ -1,4 +1,4 @@
-package RcingCarV2.view;
+package RacingCarV2.view;
 
 import java.util.Arrays;
 import java.util.List;
