@@ -48,9 +48,9 @@ public class WinnerView {
 
     int getMaxPosition(Map<String, Integer> map) {
         int max = Integer.MIN_VALUE;
-        for (int move: map.values()) {
-            if (move > max) {
-                max = move;
+        for (int position: map.values()) {
+            if (position > max) {
+                max = position;
             }
         }
         return max;
