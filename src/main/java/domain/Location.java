@@ -21,20 +21,16 @@ public class Location {
         }
     }
 
+    int getLocation() {
+        return location;
+    }
+
     public void moveToForward() {
         this.location++;
     }
 
     public Location max(Location location, Location maxLocation) {
         return location.location >= maxLocation.location ? location : maxLocation;
-    }
-
-    public String toStringForPrint() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < location; i++) {
-            stringBuilder.append("-");
-        }
-        return stringBuilder.toString();
     }
 
     @Override

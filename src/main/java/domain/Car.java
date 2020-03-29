@@ -18,9 +18,27 @@ public class Car {
         this.location = location;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getLocation() {
+        return location.getLocation();
+    }
+
     public void move(MovableStrategy movableStrategy) {
         if (movableStrategy.isMove()) {
             location.moveToForward();
+        }
+    }
+
+    public Location max(Location maxLocation) {
+        return location.max(location, maxLocation);
+    }
+
+    public void isWinner(List<String> winners, Location maxLocation) {
+        if (location.equals(maxLocation)) {
+            winners.add(name);
         }
     }
 
@@ -36,24 +54,6 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(name, location);
-    }
-
-    public String toStringForPrint() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(name);
-        stringBuilder.append(" : ");
-        stringBuilder.append(location.toStringForPrint());
-        return stringBuilder.toString();
-    }
-
-    public Location max(Location maxLocation) {
-        return location.max(location, maxLocation);
-    }
-
-    public void isWinner(List<String> winners, Location maxLocation) {
-        if (location.equals(maxLocation)) {
-            winners.add(name);
-        }
     }
 
 }

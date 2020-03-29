@@ -31,15 +31,6 @@ public class CarTest {
     }
 
     @Test
-    public void toStringForPrintTest() {
-        MovableStrategy trueMovableStrategy = () -> true;
-        myCar.move(trueMovableStrategy);
-        myCar.move(trueMovableStrategy);
-        myCar.move(trueMovableStrategy);
-        assertThat(myCar.toStringForPrint()).isEqualTo("myCar : ---");
-    }
-
-    @Test
     public void equalTest() {
         assertThat(new Car("myCar")).isEqualTo(new Car("myCar"));
         assertThat(new Car("myCar")).isEqualTo(new Car("myCar", new Location()));

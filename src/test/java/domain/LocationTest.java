@@ -32,4 +32,5 @@ public class LocationTest {
         assertThat(new Location()).isEqualTo(new Location());
         assertThat(new Location()).isEqualTo(new Location(0));
     }
+
 }
