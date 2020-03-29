@@ -1,10 +1,9 @@
-package study;
+package domain;
 
 import java.util.Random;
 
 public class Car {
 
-    private final int RANDOM_BOUND = 10;
     private final int BASE_POINT = 4;
 
     private int position;
@@ -27,10 +26,8 @@ public class Car {
         return name;
     }
 
-    public void moveForward() {
-        Random random = new Random();
-        int ranCount = random.nextInt(RANDOM_BOUND);
-        if (ranCount >= BASE_POINT) {
+    public void moveForward(int randomCount) {
+        if (randomCount >= BASE_POINT) {
             this.position++;
         }
     }
