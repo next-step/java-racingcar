@@ -33,10 +33,10 @@ public class WinnerView {
 
     private void sumStageResult(StageResult result, Map<String, Integer> map) {
         for (Car car : result.getCars()) {
-            sumStageMove(map, car);
+            sumStagePosition(map, car);
         }
     }
-    private void sumStageMove(Map<String, Integer> map, Car car) {
+    private void sumStagePosition(Map<String, Integer> map, Car car) {
         if (map.containsKey(car.getName())) {
             int count = map.get(car.getName()) + car.getPosition();
             map.put(car.getName(), count);
@@ -56,7 +56,7 @@ public class WinnerView {
         return max;
     }
 
-    private List<String> getKeysFromValue(Map map, int value) {
+    private List<String> getKeysFromValue(Map<String, Integer> map, int value) {
         List<String> list = new ArrayList<>();
         for (Object key : map.keySet()) {
             if (map.get(key).equals(value)) {
