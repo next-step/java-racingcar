@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class RacingRoundResults {
-    private List<RacingCars> results;
+    private final List<RacingCars> results;
 
     public RacingRoundResults() {
         results = Collections.unmodifiableList(new ArrayList<>());
