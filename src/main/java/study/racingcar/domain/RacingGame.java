@@ -21,14 +21,14 @@ public class RacingGame {
     }
 
     public RacingGameResult play(Time time) {
-        RacingGameResult racingGameResult = new RacingGameResult();
+        GameEvent gameEvent = new GameEvent();
 
         for (int i = 0, count = time.getTime(); i < count; i++) {
-            Cars event = cars.move(movableDistance);
-            racingGameResult.addGameEvent(event);
-            cars = event;
+            gameEvent.add(cars.clone());
+            cars = gameEvent.getLastEvent();
+            cars.move(movableDistance);
         }
 
-        return racingGameResult;
+        return new RacingGameResult(gameEvent);
     }
 }

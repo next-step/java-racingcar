@@ -4,18 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGameResult {
-    private List<Cars> gameEvents;
+    private GameEvent gameEvent;
 
-    public RacingGameResult() {
-        gameEvents = new ArrayList<>();
+    public RacingGameResult(GameEvent gameEvent) {
+        this.gameEvent = gameEvent;
+    }
+
+    RacingGameResult() {
+        gameEvent = new GameEvent();
     }
 
     public void addGameEvent(Cars cars) {
-        gameEvents.add(cars);
+        gameEvent.add(cars);
     }
 
     public Cars getWinners() {
-        Cars cars = getLastEvent();
+        Cars cars = gameEvent.getLastEvent();
         int maxPosition = cars.getMaxPosition();
         return cars.getByPosition(maxPosition);
     }
@@ -30,17 +34,7 @@ public class RacingGameResult {
         return winnerNames;
     }
 
-    public List<Cars> getGameEvents() {
-        List<Cars> clonedGameEvents = new ArrayList<>();
-
-        for (Cars cars : gameEvents) {
-            clonedGameEvents.add(cars.clone());
-        }
-
-        return clonedGameEvents;
-    }
-
-    private Cars getLastEvent() {
-        return gameEvents.get(gameEvents.size() - 1);
+    public GameEvent getGameEvent() {
+        return gameEvent.clone();
     }
 }

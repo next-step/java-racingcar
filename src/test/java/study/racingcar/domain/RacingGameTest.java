@@ -3,7 +3,6 @@ package study.racingcar.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import study.racingcar.domain.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +29,7 @@ public class RacingGameTest {
                 new RacingGame(cars, movableDistance);
 
         RacingGameResult racingGameResult = racingGame.play(time);
-        assertThat(racingGameResult.getGameEvents().size()).isEqualTo(time);
+        assertThat(racingGameResult.getGameEvent().size()).isEqualTo(time);
     }
 
     @DisplayName("모든 차가 수행 횟수만큼 전진할 수 있다.")

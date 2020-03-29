@@ -2,6 +2,7 @@ package study.racingcar.view;
 
 import study.racingcar.domain.Car;
 import study.racingcar.domain.Cars;
+import study.racingcar.domain.GameEvent;
 import study.racingcar.domain.RacingGameResult;
 
 import java.util.List;
@@ -17,14 +18,14 @@ public class ResultView {
     public static void displayGameResult(RacingGameResult racingGameResult) {
         displayStartGame();
 
-        List<Cars> gameEvents = racingGameResult.getGameEvents();
-        displayGameEvents(gameEvents);
+        GameEvent gameEvent = racingGameResult.getGameEvent();
+        displayGameEvent(gameEvent);
 
         displayGameWinners(racingGameResult.getWinnerNames());
     }
 
-    private static void displayGameEvents(List<Cars> gameEvents) {
-        for (Cars cars : gameEvents) {
+    private static void displayGameEvent(GameEvent gameEvent) {
+        for (Cars cars : gameEvent) {
             displayGameStatus(cars);
         }
     }
