@@ -1,9 +1,7 @@
-package study.racingcar;
+package study.racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import study.racingcar.domain.Position;
-import study.racingcar.domain.Time;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;

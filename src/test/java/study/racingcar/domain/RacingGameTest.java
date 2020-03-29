@@ -1,4 +1,4 @@
-package study.racingcar;
+package study.racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

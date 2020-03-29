@@ -1,9 +1,10 @@
-package study.racingcar;
+package study.racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import study.racingcar.domain.Car;
+import study.racingcar.domain.Position;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -22,7 +23,7 @@ public class CarTest {
     void checkCarInfo() {
         assertAll(
                 () -> assertEquals("luvram", car.getName()),
-                () -> assertEquals(2, car.getPosition())
+                () -> assertEquals(new Position(2), car.getPosition())
         );
     }
 
