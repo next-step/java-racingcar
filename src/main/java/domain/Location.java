@@ -26,7 +26,6 @@ public class Location {
     }
 
     public Location max(Location location, Location maxLocation) {
-        Math.max(1, 2);
         return location.location >= maxLocation.location ? location : maxLocation;
     }
 
