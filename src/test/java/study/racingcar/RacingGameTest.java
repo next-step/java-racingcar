@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class RacingGameTest {
     private final List<String> EXAMPLE_CARS =
@@ -30,7 +29,7 @@ public class RacingGameTest {
         RacingGame racingGame =
                 new RacingGame(cars, movableDistance);
 
-        RacingGameResult racingGameResult = racingGame.play(new Time(time));
+        RacingGameResult racingGameResult = racingGame.play(time);
         assertThat(racingGameResult.getGameEvents().size()).isEqualTo(time);
     }
 
@@ -41,7 +40,7 @@ public class RacingGameTest {
         RacingGame racingGame =
                 new RacingGame(cars, movableDistance);
 
-        RacingGameResult racingGameResult = racingGame.play(new Time(time));
+        RacingGameResult racingGameResult = racingGame.play(time);
 
         assertThat(racingGameResult.getWinners().stream()
                 .map(Car::getPosition))

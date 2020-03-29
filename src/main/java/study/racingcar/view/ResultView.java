@@ -4,7 +4,6 @@ import study.racingcar.domain.Car;
 import study.racingcar.domain.Cars;
 import study.racingcar.domain.RacingGameResult;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ResultView {
@@ -21,8 +20,7 @@ public class ResultView {
         List<Cars> gameEvents = racingGameResult.getGameEvents();
         displayGameEvents(gameEvents);
 
-        Cars winners = racingGameResult.getWinners();
-        displayGameWinners(winners);
+        displayGameWinners(racingGameResult.getWinnerNames());
     }
 
     private static void displayGameEvents(List<Cars> gameEvents) {
@@ -40,12 +38,7 @@ public class ResultView {
         System.out.println();
     }
 
-    private static void displayGameWinners(Cars winners) {
-        List<String> winnerNames = new ArrayList<>();
-        for (Car winner : winners) {
-            winnerNames.add(winner.getName());
-        }
-
+    private static void displayGameWinners(List<String> winnerNames) {
         System.out.println(String.format(WINNER_MESSAGE,
                 String.join(",", winnerNames)));
     }

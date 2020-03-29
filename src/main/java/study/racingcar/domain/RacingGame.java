@@ -16,6 +16,10 @@ public class RacingGame {
         this(new Cars(carNames), movableDistance);
     }
 
+    public RacingGameResult play(int time) {
+        return this.play(new Time(time));
+    }
+
     public RacingGameResult play(Time time) {
         RacingGameResult racingGameResult = new RacingGameResult();
 

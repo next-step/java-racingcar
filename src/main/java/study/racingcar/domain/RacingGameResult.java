@@ -20,6 +20,16 @@ public class RacingGameResult {
         return cars.getByPosition(maxPosition);
     }
 
+    public List<String> getWinnerNames() {
+        List<String> winnerNames = new ArrayList<>();
+        Cars winners = getWinners();
+        for (Car winner : winners) {
+            winnerNames.add(winner.getName());
+        }
+
+        return winnerNames;
+    }
+
     public List<Cars> getGameEvents() {
         List<Cars> clonedGameEvents = new ArrayList<>();
 
