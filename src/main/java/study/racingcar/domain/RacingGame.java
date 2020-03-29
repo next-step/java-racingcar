@@ -24,22 +24,11 @@ public class RacingGame {
         RacingGameResult racingGameResult = new RacingGameResult();
 
         for (int i = 0, count = time.getTime(); i < count; i++) {
-            Cars event = move();
+            Cars event = cars.move(movableDistance);
             racingGameResult.addGameEvent(event);
             cars = event;
         }
 
         return racingGameResult;
-    }
-
-    public Cars move() {
-        Cars event = new Cars();
-
-        for (Car car : cars) {
-            car.move(movableDistance.getDistance());
-            event.add(car.clone());
-        }
-
-        return event;
     }
 }

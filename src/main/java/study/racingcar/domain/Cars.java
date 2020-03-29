@@ -51,6 +51,14 @@ public class Cars implements Iterable<Car> {
         return newCars;
     }
 
+    public Cars move(MovableDistance movableDistance) {
+      for (Car car : cars) {
+            car.move(movableDistance.getDistance());
+        }
+
+        return clone();
+    }
+
     public Stream<Car> stream() {
         return cars.stream();
     }
