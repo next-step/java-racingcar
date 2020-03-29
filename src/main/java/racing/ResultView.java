@@ -1,8 +1,10 @@
 package racing;
 
 public class ResultView {
+
     private RacingVO racingVO;
     private RacingGame racingGame;
+
 
     public ResultView(RacingVO racingVO, RacingGame racingGame) {
         this.racingVO = racingVO;
@@ -12,6 +14,7 @@ public class ResultView {
     public void view() {
         int count = racingVO.getCount();
         System.out.println("실행결과");
+
         for(int i = 0; i < count; ++i) {
             viewResult(racingGame.move());
         }
@@ -23,14 +26,17 @@ public class ResultView {
             int carPosition = carPositions[i];
             System.out.println(printCar(carPosition));
         }
+
         System.out.println("###############################################");
     }
 
     public String printCar(int carPosition) {
         StringBuffer sb = new StringBuffer();
+
         for(int i = 0; i < carPosition; ++i) {
             sb.append("-");
         }
+
         return sb.toString();
     }
 }

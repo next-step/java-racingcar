@@ -8,6 +8,7 @@ public class RacingGame implements RandomValue{
     private RacingVO racingVO;
     private Random rand = new Random();
 
+
     public RacingGame(RacingVO racingVO) {
         this.racingVO = racingVO;
     }
@@ -20,11 +21,13 @@ public class RacingGame implements RandomValue{
                 carPositions[j]++;
             }
         }
+
         return carPositions;
     }
 
     public boolean isMovable(int randomValue) {
         boolean isMove = false;
+
         if (randomValue >= NUMBER_OF_MOVEMENT_POSSIBLE) {
             isMove = true;
         }
@@ -36,4 +39,5 @@ public class RacingGame implements RandomValue{
     public int getRandomValue() {
         return rand.nextInt(NUMBER_OF_RANDOM_RANGE);
     }
+
 }

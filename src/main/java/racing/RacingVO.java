@@ -1,14 +1,18 @@
 package racing;
 
 public class RacingVO {
+
+
     private int[] carPositions;
     private int carNumber;
     private int count;
+
 
     public RacingVO(int carNumber, int count, int[] carPositions) {
         this.carNumber = carNumber;
         this.count = count;
         this.carPositions = carPositions;
+
     }
 
     public int[] getCarPositions() {
@@ -22,5 +26,6 @@ public class RacingVO {
     public int getCount() {
         return count;
     }
+
 
 }
