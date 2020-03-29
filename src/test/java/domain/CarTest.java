@@ -1,13 +1,14 @@
-package study;
+package domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import domain.Car;
 
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RacingGameTest {
+public class CarTest {
 
     int count;
     int time;
@@ -28,9 +29,9 @@ public class RacingGameTest {
 
         cars = new Car[3];
 
-        for (int i = 0; i < 3; i++) {
-            cars[i] = new Car(i, i+"번째");
-        }
+        cars[0] = new Car("pobi");
+        cars[1] = new Car("crong");
+        cars[2] = new Car("hox");
         carNames = new String[3];
         carNames[0] = "pobi";
         carNames[1] = "crong";
@@ -38,19 +39,9 @@ public class RacingGameTest {
     }
 
     @Test
-    public void move() {
-        Random random = new Random();
-
-        for (int i = 0; i < cars.length; i++) {
-            cars[i].moveForward();
-        }
-
+    void moveForwardTest() {
+        cars[0].moveForward(4);
         assertThat(cars[0].getPosition()).isEqualTo(1);
-    }
-
-    @Test
-    public void showWinner() {
-        assertThat(new GameProgress().showWinner(new RacingGame(carNames, 3))).isEqualTo("pobi,crong,hox");
     }
 
 
