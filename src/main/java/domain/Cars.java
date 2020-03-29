@@ -5,24 +5,10 @@ import strategy.MovableStrategy;
 import java.util.*;
 
 public class Cars {
-    private static final String NAME_DELIMITER = ",";
-
-    private List<Car> cars;
-
-    public Cars(String names) {
-        this.cars = createCars(names);
-    }
+    private final List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = Collections.unmodifiableList(cars);
-    }
-
-    private List<Car> createCars(String names) {
-        List<Car> cars = new ArrayList<>();
-        for (String name : Arrays.asList(names.split(NAME_DELIMITER))) {
-            cars.add(new Car(name));
-        }
-        return Collections.unmodifiableList(cars);
     }
 
     public List<Car> getCars() {

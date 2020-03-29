@@ -1,5 +1,6 @@
 package controller;
 
+import domain.Car;
 import domain.Cars;
 import domain.RacingGame;
 import strategy.RandomMovableStrategy;
@@ -9,11 +10,9 @@ import ui.ResultView;
 public class RacingGameController {
 
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        String names = inputView.getName();
-        int tryCount = inputView.getTryCount();
+        Cars cars = new Cars(InputView.getCars());
+        int tryCount = InputView.getTryCount();
 
-        Cars cars = new Cars(names);
         RandomMovableStrategy randomMovableStrategy = new RandomMovableStrategy();
         RacingGame racingGame = new RacingGame(randomMovableStrategy);
         ResultView.printStartMessage();
