@@ -2,7 +2,7 @@ package study.racingcar.domain;
 
 import java.util.Objects;
 
-public class Position {
+class Position {
     private int position;
 
     public Position(int position) {
@@ -16,6 +16,10 @@ public class Position {
     public int add(int value) {
         this.position = this.position + value;
         return this.position;
+    }
+
+    public Position clone() {
+        return new Position(position);
     }
 
     @Override public boolean equals(Object o) {

@@ -13,6 +13,11 @@ public class Car {
         this.position = new Position(position);
     }
 
+    private Car(String name, Position position) {
+        this.name = name;
+        this.position = position;
+    }
+
     public void move(int distance) {
         this.position.add(distance);
     }
@@ -30,6 +35,6 @@ public class Car {
     }
 
     public Car clone() {
-        return new Car(name, position.getPosition());
+        return new Car(name, position.clone());
     }
 }

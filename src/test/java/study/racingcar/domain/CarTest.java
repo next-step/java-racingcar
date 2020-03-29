@@ -23,7 +23,7 @@ public class CarTest {
     void checkCarInfo() {
         assertAll(
                 () -> assertEquals("luvram", car.getName()),
-                () -> assertEquals(new Position(2), car.getPosition())
+                () -> assertEquals(2, car.getPosition())
         );
     }
 
