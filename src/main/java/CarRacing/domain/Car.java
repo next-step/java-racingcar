@@ -26,4 +26,5 @@ public class Car {
             this.currentPosition++;
         }
     }
+
 }
