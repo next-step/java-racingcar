@@ -1,4 +1,4 @@
-package RcingCarV2;
+package RcingCarV2.view;
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,19 +31,17 @@ public class InputView {
         }
     }
 
-    List<String> getNames() {
+    public List<String> getNames() {
         System.out.println(CAR_NAME_INPUT_MESSAGE);
-//        String input = scanner.nextLine();
-        String input = "a,b";
+        String input = scanner.nextLine();
         validateName(input);
         System.out.println(input);
         return Arrays.asList(splitInputName(input));
     }
 
-    int getStage() {
+    public int getStage() {
         System.out.println(STAGE_INPUT_MESSAGE);
-//        int stage = scanner.nextInt();
-        int stage = 5;
+        int stage = scanner.nextInt();
         validateStage(stage);
         System.out.println(stage);
         return stage;

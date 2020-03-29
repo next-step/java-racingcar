@@ -1,4 +1,4 @@
-package RcingCarV2;
+package RcingCarV2.view;
 
 import RcingCarV2.model.Car;
 import RcingCarV2.model.StageResult;

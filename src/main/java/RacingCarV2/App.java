@@ -1,8 +1,8 @@
-package RcingCarV2;
+package RacingCarV2;
 
-import RcingCarV2.model.StageResult;
-import RcingCarV2.view.InputView;
-import RcingCarV2.view.ResultView;
+import RacingCarV2.model.StageResult;
+import RacingCarV2.view.InputView;
+import RacingCarV2.view.ResultView;
 
 import java.util.List;
 
