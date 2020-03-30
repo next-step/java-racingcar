@@ -20,10 +20,6 @@ public class RacingCars {
         this.cars = Collections.unmodifiableList(new ArrayList<>(cars));
     }
 
-    public RacingCars(RacingCars cars) {
-        this(Collections.unmodifiableList(new ArrayList<>(cars.getCars())));
-    }
-
     public static RacingCars newRacingCarsFrom(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
 

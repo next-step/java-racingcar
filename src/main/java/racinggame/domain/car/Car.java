@@ -22,12 +22,6 @@ public class Car implements Comparable<Car> {
         this.moveRange = moveRange;
     }
 
-    //객체 복사
-    public Car(Car car) {
-        this.carName = car.carName;
-        this.moveRange = car.moveRange;
-    }
-
     public Car moveCar(int num) {
         if (num >= RACING_CAR_MOVING_BOUNDARY) {
             return new Car(this.carName, this.moveRange + 1);
@@ -43,16 +37,16 @@ public class Car implements Comparable<Car> {
         return this.moveRange >= compare;
     }
 
-    @Override
-    public int compareTo(Car o) {
-        return Integer.compare(this.moveRange, o.getMoveRange());
-    }
-
     public int getMoveRange() {
         return this.moveRange;
     }
 
     public String getCarName() {
         return this.carName;
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return Integer.compare(this.moveRange, o.getMoveRange());
     }
 }
