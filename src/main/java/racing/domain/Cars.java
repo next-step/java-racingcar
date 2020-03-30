@@ -1,6 +1,5 @@
 package racing.domain;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -15,6 +14,10 @@ public class Cars {
         for (int i = 0; i < carNum; i++) {
             cars.add(new Car());
         }
+    }
+
+    public Cars(String input) {
+
     }
 
     public Cars(List<Car> carsList) {

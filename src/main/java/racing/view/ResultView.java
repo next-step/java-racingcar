@@ -1,7 +1,5 @@
 package racing.view;
 
-import java.util.List;
-
 public class ResultView {
     private static String CAR_STATE_STR = "-";
 

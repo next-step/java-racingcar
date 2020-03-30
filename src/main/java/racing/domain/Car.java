@@ -9,8 +9,12 @@ public class Car {
     }
 
 
-    public Car(int inputPosition) {
+    public Car(String name, int inputPosition) {
         position = inputPosition;
+    }
+
+    public Car(String name) {
+
     }
 
     public int moveByCondition(int condition) {
@@ -26,10 +30,18 @@ public class Car {
     }
 
     public Car copy() {
-        return new Car(position);
+        return new Car("", position);
     }
 
     public int getPosition() {
         return position;
+    }
+
+    public String getName() {
+        return new String();
+    }
+
+    public boolean isSameName(String input) {
+        return false;
     }
 }
