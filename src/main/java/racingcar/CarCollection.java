@@ -10,7 +10,7 @@ public class CarCollection {
     public CarCollection(int numberOfCars) {
         cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
+            cars.add(new Car(new RandomEngine()));
         }
     }
 

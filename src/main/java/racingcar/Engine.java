@@ -1,8 +1,5 @@
 package racingcar;
 
-public class Engine {
-
-    public int generateNumber() {
-        return 9;
-    }
+public interface Engine {
+    int generateNumber();
 }

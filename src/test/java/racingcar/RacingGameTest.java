@@ -25,13 +25,20 @@ class RacingGameTest {
         assertThat(record.get(4)).isEqualTo(5);
     }
 
-    @DisplayName("Car 의 이동 여부를 결정지을 객체는 항상 9를 반환한다.")
+    @DisplayName("Car 의 이동 여부를 결정지을 AlwaysNineEngine 객체는 항상 9를 반환한다")
     @Test
     void generateNumberNine() {
-        Engine engine = new Engine();
+        Engine engine = new AlwaysNineEngine();
 
         assertThat(engine.generateNumber()).isEqualTo(9);
         assertThat(engine.generateNumber()).isEqualTo(9);
         assertThat(engine.generateNumber()).isEqualTo(9);
+    }
+
+    @DisplayName("Car 의 이동 여부를 결정지을 RandomEngine 객체는 0~9 사이 임의의 값을 반환한다")
+    @Test
+    void generateNumberRandom() {
+        Engine engine = new RandomEngine();
+        assertThat(engine.generateNumber()).isEqualTo(1);
     }
 }

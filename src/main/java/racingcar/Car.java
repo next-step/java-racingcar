@@ -8,10 +8,10 @@ public class Car {
     private final List<Integer> record;
     private final Engine engine;
 
-    public Car() {
+    public Car(Engine engine) {
         position = 0;
         record = new ArrayList<>();
-        engine = new Engine();
+        this.engine = engine;
     }
 
     public void move() {
