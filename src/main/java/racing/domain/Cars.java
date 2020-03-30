@@ -2,28 +2,23 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.StringJoiner;
 
 public class Cars {
-    private static final int MAX_RANDOM_VALUE = 10;
-    private static final String CARS_NAME_DELIMITER = ",";
-
     private List<Car> cars;
-    private int maxPosition;
 
-    public Cars(String input) {
+    public Cars(String[] nameList) {
         cars = new ArrayList<>();
 
-        for (String name : input.split(CARS_NAME_DELIMITER)) {
+        for (String name : nameList) {
             cars.add(new Car(name));
         }
     }
 
-    public Cars(List<Car> carsList) {
+    public Cars(List<Car> carList) {
         cars = new ArrayList<>();
 
-        for (Car car : carsList) {
+        for (Car car : carList) {
             cars.add(car.copy());
         }
     }
@@ -47,26 +42,26 @@ public class Cars {
     }
 
     public void playRound() {
-        Random random = new Random(System.currentTimeMillis());
+        RandomGenerator randomGenerator = new RandomGenerator(System.currentTimeMillis());
 
         for (Car car : cars) {
-            car.moveByCondition(random.nextInt(MAX_RANDOM_VALUE));
+            car.moveByCondition(randomGenerator.nextInt());
         }
     }
 
-    public String getWinnersName() {
-        maxPosition = maxPosition();
+    public String getWinnersName(String delimiter) {
+        int maxPosition = maxPosition();
 
-        StringJoiner stringJoiner = new StringJoiner(CARS_NAME_DELIMITER);
+        StringJoiner stringJoiner = new StringJoiner(delimiter);
 
         for (Car car : cars) {
-            addMaxCarName(stringJoiner, car);
+            addMaxCarName(maxPosition, stringJoiner, car);
         }
 
         return stringJoiner.toString();
     }
 
-    private void addMaxCarName(StringJoiner stringJoiner, Car car) {
+    private void addMaxCarName(int maxPosition, StringJoiner stringJoiner, Car car) {
         if (car.isSamePosition(maxPosition)) {
             stringJoiner.add(car.getName());
         }

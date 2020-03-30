@@ -7,6 +7,7 @@ import racing.view.InputView;
 import racing.view.ResultView;
 
 public class RacingGame {
+    private static final String CARS_NAME_DELIMITER = ",";
     private static final String RESULT_INFO_COMMENT = "\n실행 결과\n";
 
     private static String carNames;
@@ -23,17 +24,15 @@ public class RacingGame {
     }
 
     public static void playGame() {
-        Cars cars = new Cars(carNames);
-
+        Cars cars = new Cars(carNames.split(CARS_NAME_DELIMITER));
         StringBuilder stringBuilder = new StringBuilder(RESULT_INFO_COMMENT);
-        stringBuilder.append(positionsToString(cars));
 
+        stringBuilder.append(positionsToString(cars));
         for (int i = 0; i < tryCnt; i++) {
             cars.playRound();
             stringBuilder.append(positionsToString(cars));
         }
-
-        stringBuilder.append(ResultView.getRacingWinnersFormat(cars.getWinnersName()));
+        stringBuilder.append(ResultView.getRacingWinnersFormat(cars.getWinnersName(CARS_NAME_DELIMITER)));
 
         ResultView.printRacingResult(stringBuilder.toString());
     }
