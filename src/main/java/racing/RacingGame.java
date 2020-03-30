@@ -33,6 +33,8 @@ public class RacingGame {
             stringBuilder.append(positionsToString(cars));
         }
 
+        stringBuilder.append(ResultView.getRacingWinnersFormat(cars.getWinnersName()));
+
         ResultView.printRacingResult(stringBuilder.toString());
     }
 
