@@ -75,12 +75,10 @@ public class CarsTest {
 
 
     private List<Car> generateCarList() {
-        List<Car> carList = new ArrayList<Car>();
+        List<Car> carList = new ArrayList<>();
         carList.add(new Car(DEFAULT_CAR_NAME, MAX_POSITION - 3));
         carList.add(new Car(DEFAULT_CAR_NAME, MAX_POSITION - 2));
         carList.add(new Car(DEFAULT_CAR_NAME, MAX_POSITION - 1));
-        carList.add(new Car("bcd", MAX_POSITION));
-        carList.add(new Car("cde", MAX_POSITION));
 
         return carList;
     }

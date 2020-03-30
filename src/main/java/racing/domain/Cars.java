@@ -3,6 +3,7 @@ package racing.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.StringJoiner;
 
 public class Cars {
     private static final int MAX_RANDOM_VALUE = 10;
@@ -55,10 +56,25 @@ public class Cars {
     public String getWinnersName() {
         int maxPosition = maxPosition();
 
-        return new String();
+        StringJoiner stringJoiner = new StringJoiner(CARS_NAME_DELIMITER);
+
+        for (Car car : cars) {
+            if (car.isSamePosition(maxPosition)) {
+                stringJoiner.add(car.getName());
+            }
+        }
+
+        return stringJoiner.toString();
     }
 
     public int maxPosition() {
-        return Integer.MIN_VALUE;
+        int maxPosition = Integer.MIN_VALUE;
+
+        for (Car car : cars) {
+            int position = car.getPosition();
+            maxPosition = Math.max(maxPosition, position);
+        }
+
+        return maxPosition;
     }
 }

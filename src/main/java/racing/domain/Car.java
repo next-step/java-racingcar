@@ -32,7 +32,7 @@ public class Car {
     }
 
     public Car copy() {
-        return new Car("", position);
+        return new Car(name, position);
     }
 
     public int getPosition() {
@@ -41,5 +41,13 @@ public class Car {
 
     public boolean isSameName(String name) {
         return this.name.equals(name);
+    }
+
+    public boolean isSamePosition(int position) {
+        return this.position == position;
+    }
+
+    public String getName() {
+        return this.name;
     }
 }
