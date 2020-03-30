@@ -1,38 +1,40 @@
 package domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import strategy.MovableStrategy;
+
+import java.util.*;
 
 public class Cars {
-
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = Collections.unmodifiableList(cars);
     }
 
-    public void move(List<Integer> randomNumbers) {
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public void moveAll(MovableStrategy movableStrategy) {
         for (int i = 0; i < cars.size(); i++) {
-            cars.get(i).move(randomNumbers.get(i));
+            cars.get(i).move(movableStrategy);
         }
     }
 
-    List<String> getWinner() {
-        int maxLocation = getMaxLocation();
+    public List<String> getWinners() {
+        Location maxLocation = getMaxLocation();
         return filterWinners(maxLocation);
     }
 
-    private int getMaxLocation() {
-        int maxLocation = 0;
+    private Location getMaxLocation() {
+        Location maxLocation = new Location();
         for (Car car : cars) {
-            maxLocation = car.isMaxLocation(maxLocation);
+            maxLocation = car.max(maxLocation);
         }
         return maxLocation;
     }
 
-    private List<String> filterWinners(int maxLocation) {
+    private List<String> filterWinners(Location maxLocation) {
         List<String> winners = new ArrayList<>();
         for (Car car : cars) {
             car.isWinner(winners, maxLocation);

@@ -1,20 +1,16 @@
 package domain;
 
-import java.util.List;
+import strategy.MovableStrategy;
 
 public class RacingGame {
+    private MovableStrategy movableStrategy;
 
-    private Cars cars;
-
-    public RacingGame(Cars cars) {
-        this.cars = cars;
+    public RacingGame(MovableStrategy movableStrategy) {
+        this.movableStrategy = movableStrategy;
     }
 
-    public void playGame(List<Integer> randomNumbers) {
-        cars.move(randomNumbers);
+    public void playGame(Cars cars) {
+        cars.moveAll(movableStrategy);
     }
 
-    public List<String> getWinners() {
-        return cars.getWinner();
-    }
 }

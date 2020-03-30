@@ -3,27 +3,46 @@ package controller;
 import domain.Car;
 import domain.Cars;
 import domain.RacingGame;
+import strategy.RandomMovableStrategy;
 import ui.InputView;
 import ui.ResultView;
-import util.CarFactory;
-import util.RandomNumberFactory;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingGameController {
+    private static final String NAME_DELIMITER = ",";
 
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        String names = inputView.getName();
-        int tryCount = inputView.getTryCount();
-        List<Car> cars = CarFactory.createCars(names);
-        RacingGame racingGame = new RacingGame(new Cars(cars));
-        ResultView resultView = new ResultView();
-        resultView.printStartMessage();
+        String names = InputView.getNames();
+        int tryCount = InputView.getTryCount();
+
+        Cars cars = new Cars(createCars(names));
+        RandomMovableStrategy randomMovableStrategy = new RandomMovableStrategy();
+        RacingGame racingGame = new RacingGame(randomMovableStrategy);
+        ResultView.printStartMessage();
         for (int i = 0; i < tryCount; i++) {
-            racingGame.playGame(RandomNumberFactory.getRandomNumbers(cars.size()));
-            resultView.printCurrentLocation(cars);
+            racingGame.playGame(cars);
+            printCurrentLocation(cars);
         }
-        resultView.printWinners(racingGame.getWinners());
+
+        ResultView.printWinners(cars.getWinners());
     }
+
+    static List<Car> createCars(String names) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : Arrays.asList(names.split(NAME_DELIMITER))) {
+            cars.add(new Car(name));
+        }
+        return Collections.unmodifiableList(cars);
+    }
+
+    private static void printCurrentLocation(Cars cars) {
+        for (Car car : cars.getCars()) {
+            ResultView.printCurrentLocation(car.getName(), car.getLocation());
+        }
+    }
+
 }

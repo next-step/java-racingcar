@@ -1,15 +1,12 @@
 package domain;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import strategy.MovableStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
-
     private Car myCar;
 
     @BeforeEach
@@ -17,28 +14,27 @@ public class CarTest {
         myCar = new Car("myCar");
     }
 
-    @DisplayName("4미만의 숫자를 입력 받았을 때는 전진하지 않음")
-    @ParameterizedTest
-    @ValueSource(ints = {0, 3})
-    public void getSmallerThanFourCarDoesNotMoveTest(int condition) {
-        myCar.move(condition);
-        assertThat(myCar).isEqualTo(new Car("myCar", 1));
-    }
+    @Test
+    public void isMoveFalseCarDoesNotMoveTest() {
+        MovableStrategy falseMovableStrategy = () -> false;
 
-    @DisplayName("4이상의 숫자를 입력 받았을 때는 전진하지 않음")
-    @ParameterizedTest
-    @ValueSource(ints = {4, 5, 9})
-    public void getGreaterThanFourCarMoveTest(int condition) {
-        myCar.move(condition);
-        assertThat(myCar).isEqualTo(new Car("myCar", 2));
+        myCar.move(falseMovableStrategy);
+        assertThat(myCar).isEqualTo(new Car("myCar", new Location()));
     }
 
     @Test
-    public void toStringTest() {
-        myCar.move(4);
-        myCar.move(4);
-        myCar.move(4);
-        assertThat(myCar.toString()).isEqualTo("myCar : ---");
+    public void isMoveTrueCarMoveTest() {
+        MovableStrategy trueMovableStrategy = () -> true;
+
+        myCar.move(trueMovableStrategy);
+        assertThat(myCar).isEqualTo(new Car("myCar", new Location(1)));
+    }
+
+    @Test
+    public void equalTest() {
+        assertThat(new Car("myCar")).isEqualTo(new Car("myCar"));
+        assertThat(new Car("myCar")).isEqualTo(new Car("myCar", new Location()));
+        assertThat(new Car("myCar")).isEqualTo(new Car("myCar", new Location(0)));
     }
 
 }
