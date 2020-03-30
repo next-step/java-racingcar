@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
 
-    @DisplayName("Racing Game 은 시작되고 난후에 결과를 반환한다.")
+    @DisplayName("Racing Game 은 시작되고 난후에 결과를 반환한다")
     @Test
     void makeGame() {
         RacingGame racingGame = new RacingGame(5, 3);
@@ -23,5 +23,15 @@ class RacingGameTest {
         assertThat(record.get(2)).isEqualTo(3);
         assertThat(record.get(3)).isEqualTo(4);
         assertThat(record.get(4)).isEqualTo(5);
+    }
+
+    @DisplayName("Car 의 이동 여부를 결정지을 객체는 항상 9를 반환한다.")
+    @Test
+    void generateNumberNine() {
+        Engine engine = new Engine();
+
+        assertThat(engine.generateNumber()).isEqualTo(9);
+        assertThat(engine.generateNumber()).isEqualTo(9);
+        assertThat(engine.generateNumber()).isEqualTo(9);
     }
 }
