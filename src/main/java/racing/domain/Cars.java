@@ -6,18 +6,16 @@ import java.util.Random;
 
 public class Cars {
     private static final int MAX_RANDOM_VALUE = 10;
+    private static final String CARS_NAME_DELIMITER = ",";
+
     private List<Car> cars;
 
-    public Cars(int carNum) {
+    public Cars(String input) {
         cars = new ArrayList<>();
 
-        for (int i = 0; i < carNum; i++) {
-            cars.add(new Car());
+        for (String name : input.split(CARS_NAME_DELIMITER)) {
+            cars.add(new Car(name));
         }
-    }
-
-    public Cars(String input) {
-
     }
 
     public Cars(List<Car> carsList) {

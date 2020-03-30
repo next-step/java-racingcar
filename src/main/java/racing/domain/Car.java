@@ -2,19 +2,21 @@ package racing.domain;
 
 public class Car {
     private static final int DEFAULT_POSITION = 1;
+    private String name;
     private int position;
 
     public Car() {
         position = DEFAULT_POSITION;
     }
 
-
-    public Car(String name, int inputPosition) {
-        position = inputPosition;
+    public Car(String name) {
+        this.name  = name;
+        this.position = DEFAULT_POSITION;
     }
 
-    public Car(String name) {
-
+    public Car(String name, int position) {
+        this.name = name;
+        this.position = position;
     }
 
     public int moveByCondition(int condition) {
@@ -37,11 +39,7 @@ public class Car {
         return position;
     }
 
-    public String getName() {
-        return new String();
-    }
-
-    public boolean isSameName(String input) {
-        return false;
+    public boolean isSameName(String name) {
+        return this.name.equals(name);
     }
 }
