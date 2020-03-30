@@ -24,10 +24,6 @@ public class CarCollection {
         }
     }
 
-    public CarCollection(List<Car> cars) {
-        this.cars = new ArrayList<>(cars);
-    }
-
     public void move() {
         cars.forEach(Car::move);
     }

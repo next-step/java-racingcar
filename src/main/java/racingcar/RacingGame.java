@@ -3,8 +3,6 @@ package racingcar;
 import racingcar.car.CarCollection;
 import racingcar.car.RandomEngine;
 
-import java.util.List;
-
 public class RacingGame {
 
     private int numberOfTry;
@@ -20,8 +18,8 @@ public class RacingGame {
         return cars.getResult();
     }
 
-    public void drive() {
-        for(int i=0; i<numberOfTry; i++) {
+    private void drive() {
+        for(int i = 0; i < numberOfTry; i++) {
             cars.move();
         }
     }

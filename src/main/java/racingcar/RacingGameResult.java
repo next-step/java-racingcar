@@ -17,4 +17,8 @@ public class RacingGameResult {
     public List<Integer> getRecordOfCar(int index) {
         return result.get(index);
     }
+
+    public List<List<Integer>> getRecords() {
+        return new ArrayList<>(result);
+    }
 }
