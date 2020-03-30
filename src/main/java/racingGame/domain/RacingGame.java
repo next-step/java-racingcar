@@ -23,11 +23,11 @@ public class RacingGame {
 
     public List<Car> racing() {
         return allCars.stream()
-                .map(i -> moveCar(i))
+                .map(i -> moveNowCar(i))
                 .collect(Collectors.toList());
     }
 
-    private Car moveCar(Car nowCar) {
+    private Car moveNowCar(Car nowCar) {
         if (this.moveOrNot(this.getRandomNum())) {
             nowCar.moveCar();
         }
