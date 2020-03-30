@@ -18,13 +18,28 @@
 ### InputView
 * cars : 자동차 대 리턴
 * rounds : 시도 횟수 리턴
-* inputValidator : 숫자 입력 확인
+* inputCarsValidator : 입력된 문자 ','로 split
+* inputRoundValidator : 숫자 입력 확인
 * isGreaterThan0 : 0보다 큰 수인지 확인
+
+### ResultView
+* printResult : 매 라운드별 이름과 위치 프린트
+* printPosition : 포지션만큼 위치 프린트
+* printWinner : 우승자 이름 프린트
+
+### Car
+* Car : 자동차 객체 생성
+* moveCar : 위치 이동
 
 ### RacingGame
 * RacingGame : 자동차 댓수와 시도 횟수 세팅
-* racing : rounding 횟수만큼 자동차 이동
-* moveCar : random 값에 의해 이동할지 말지 결정
+* racing : 자동차 이동
+* moveNowCar : 현재 해당 자동차 이동 여부 확인 후 이동
+* getRandomNum : 이동여부 확인을 위한 랜덤 값 생성
+* moveOrNot : 이동여부 return
+* findWinners : 우승자 찾기
 
-### ResultView
-* printResult : 현재 자동자 position에 따라 '-' 그림
+### Winner
+* Winner : 우승자 객체 생성
+* findWinnerNames : 최대 position과 동일한 Car의 name 구하기
+* maxPosition : 최대 position값 구하기
