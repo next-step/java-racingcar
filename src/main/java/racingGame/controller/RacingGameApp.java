@@ -20,7 +20,7 @@ public class RacingGameApp {
 
         RacingGame racingGame = new RacingGame(carNames);
 
-        for(int round = 0; round < roundNumber; round++) {
+        for (int round = 0; round < roundNumber; round++) {
             ResultView.printResult(racingGame.racing());
         }
         ResultView.printWinner(racingGame.findWinners());

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ResultView {
     public static void printResult(List<Car> allCars) {
-        for(Car car : allCars) {
+        for (Car car : allCars) {
             System.out.print(car.getName() + " : ");
             printPosition(car.getPosition());
             System.out.println();
@@ -15,7 +15,7 @@ public class ResultView {
     }
 
     public static void printPosition(int position) {
-        for(int posIdx = 0; posIdx < position; posIdx++) {
+        for (int posIdx = 0; posIdx < position; posIdx++) {
             System.out.print("-");
         }
     }
