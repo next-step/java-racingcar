@@ -3,7 +3,6 @@ package CarRacing.domain;
 import CarRacing.view.RacingView;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -25,22 +24,6 @@ public class RacingGame {
     }
 
     public List<String> getRacingWinner() {
-        return getWinnerWithMaxPosition(getMaxPosition());
-    }
-
-    private int getMaxPosition() {
-        return this.racingCars.getRacingCars()
-                .stream()
-                .mapToInt(Car::getCurrentPosition)
-                .max()
-                .orElseThrow(() -> new RuntimeException("Winner does not exist"));
-    }
-
-    private List<String> getWinnerWithMaxPosition(final int maxPosition) {
-        return this.racingCars.getRacingCars()
-                .stream()
-                .filter(car -> car.getCurrentPosition() == maxPosition)
-                .map(Car::getName)
-                .collect(Collectors.toList());
+        return racingCars.getWinnerWithMaxPosition(racingCars.getMaxPosition());
     }
 }
