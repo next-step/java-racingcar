@@ -10,6 +10,7 @@ public class Cars {
     private static final String CARS_NAME_DELIMITER = ",";
 
     private List<Car> cars;
+    private int maxPosition;
 
     public Cars(String input) {
         cars = new ArrayList<>();
@@ -54,17 +55,21 @@ public class Cars {
     }
 
     public String getWinnersName() {
-        int maxPosition = maxPosition();
+        maxPosition = maxPosition();
 
         StringJoiner stringJoiner = new StringJoiner(CARS_NAME_DELIMITER);
 
         for (Car car : cars) {
-            if (car.isSamePosition(maxPosition)) {
-                stringJoiner.add(car.getName());
-            }
+            addMaxCarName(stringJoiner, car);
         }
 
         return stringJoiner.toString();
+    }
+
+    private void addMaxCarName(StringJoiner stringJoiner, Car car) {
+        if (car.isSamePosition(maxPosition)) {
+            stringJoiner.add(car.getName());
+        }
     }
 
     public int maxPosition() {
