@@ -27,6 +27,7 @@ public class RacingGame {
 
         StringBuilder stringBuilder = new StringBuilder(RESULT_INFO_COMMENT);
         stringBuilder.append(positionsToString(cars));
+
         for (int i = 0; i < tryCnt; i++) {
             cars.playRound();
             stringBuilder.append(positionsToString(cars));
@@ -39,7 +40,7 @@ public class RacingGame {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (Car car : cars.getList()) {
-            stringBuilder.append(ResultView.positionToString(car.getPosition()));
+            stringBuilder.append(ResultView.positionToString(car));
         }
         stringBuilder.append("\n");
 
