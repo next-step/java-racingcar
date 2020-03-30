@@ -7,8 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CarTest {
     private static final int DEFAULT_POSITION = 1;
@@ -33,9 +32,20 @@ public class CarTest {
     @ParameterizedTest
     @CsvSource(value = {"5:4", "2:3", "4:4"}, delimiter = ':')
     @DisplayName("이동 조건에 부합 하는 경우만 전진하는지 테스트")
-    void moveByCondition(int input, int expected) {
+    void moveByConditionTest(int input, int expected) {
         Car car = new Car(DEFAULT_CAR_NAME, DEFAULT_POSITION_FOR_TEST);
 
         assertThat(car.moveByCondition(input)).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("Car 객체의 copy 여부 확인 테스트")
+    void deepCopyTest() {
+        Car car = new Car("a", 4);
+
+        Car copiedCar = car.copy();
+
+        assertEquals(car, copiedCar);
+        assertEquals(car.getPosition(), copiedCar.getPosition());
     }
 }
