@@ -1,4 +1,4 @@
-package racingwinner;
+package racingGame.view;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -39,5 +39,4 @@ public class InputView {
         }
         return rounds;
     }
-
 }

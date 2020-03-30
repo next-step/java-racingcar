@@ -1,19 +1,34 @@
 package racingGameTest;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingGame.RacingGame;
+import racingGame.domain.RacingGame;
+import racingGame.domain.Winner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
-    @DisplayName("Test for 'RacingGame', 'moveCar'")
-    @Test
-    void racingTest() {
-        int cars = 3;
-        int rounds = 5;
+    private RacingGame racingGame;
 
-        RacingGame racingGame = new RacingGame(cars, rounds);
-        assertThat(racingGame.racing().length).isEqualTo(cars);
+    @BeforeEach
+    void setUp() {
+        racingGame = new RacingGame(new String[]{"pobi", "crong", "honux"});
+    }
+
+    @Test
+    void createCarsTest() {
+        String data = "pobi,crong,honux";
+        assertThat(data.split(",").length).isEqualTo(3);    //길이 확인
+        assertThat(data.split(",")).containsExactly("pobi", "crong", "honux");
+    }
+
+    @DisplayName("Test for 'moveOrNot'")
+    @Test
+    void moveOrNotTest() {
+        assertThat(racingGame.moveOrNot(0)).isEqualTo(false);
+        assertThat(racingGame.moveOrNot(3)).isEqualTo(false);
+        assertThat(racingGame.moveOrNot(4)).isEqualTo(true);
+        assertThat(racingGame.moveOrNot(9)).isEqualTo(true);
     }
 }

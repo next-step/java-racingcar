@@ -1,4 +1,8 @@
-package racingwinner;
+package racingGame.controller;
+
+import racingGame.view.InputView;
+import racingGame.domain.RacingGame;
+import racingGame.view.ResultView;
 
 public class RacingGameApp {
 
@@ -14,10 +18,11 @@ public class RacingGameApp {
             roundNumber = InputView.rounds();
         }
 
-        if (roundNumber > 0) {
-            RacingGame racingGame = new RacingGame(carNames, roundNumber);
-            racingGame.racing();
-        }
+        RacingGame racingGame = new RacingGame(carNames);
 
+        for(int round = 0; round < roundNumber; round++) {
+            ResultView.printResult(racingGame.racing());
+        }
+        ResultView.printWinner(racingGame.findWinners());
     }
 }
