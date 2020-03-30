@@ -3,6 +3,8 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
@@ -12,12 +14,14 @@ class RacingGameTest {
     void makeGame() {
         RacingGame racingGame = new RacingGame(5, 3);
 
-        int[][] result = racingGame.run();
+        List<List<Integer>> result = racingGame.run();
 
-        assertThat(result[0][0]).isEqualTo(1);
-        assertThat(result[1][0]).isEqualTo(2);
-        assertThat(result[2][0]).isEqualTo(3);
-        assertThat(result[3][0]).isEqualTo(4);
-        assertThat(result[4][0]).isEqualTo(5);
+        List<Integer> record = result.get(0);
+
+        assertThat(record.get(0)).isEqualTo(1);
+        assertThat(record.get(1)).isEqualTo(2);
+        assertThat(record.get(2)).isEqualTo(3);
+        assertThat(record.get(3)).isEqualTo(4);
+        assertThat(record.get(4)).isEqualTo(5);
     }
 }

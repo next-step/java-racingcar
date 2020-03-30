@@ -1,31 +1,25 @@
 package racingcar;
 
+import java.util.List;
+
 public class RacingGame {
 
-    private int time;
-    private int[] carPositions;
-    private int[][] result;
+    private int numberOfTry;
+    private CarCollection cars;
 
     public RacingGame(int numberOfTry, int numberOfCars) {
-        this.time = numberOfTry;
-        this.carPositions = new int[numberOfCars];
-        this.result = new int[numberOfTry][numberOfCars];
+        this.numberOfTry = numberOfTry;
+        this.cars = new CarCollection(numberOfCars);
     }
 
-    public int[][] run() {
+    public List<List<Integer>> run() {
         drive();
-        return result.clone();
+        return cars.getResult();
     }
 
     public void drive() {
-        for(int i=0; i<result.length; i++) {
-            carPositions[0]++;
-            carPositions[1]++;
-            carPositions[2]++;
-
-            result[i][0] = carPositions[0];
-            result[i][1] = carPositions[1];
-            result[i][2] = carPositions[2];
+        for(int i=0; i<numberOfTry; i++) {
+            cars.move();
         }
     }
 }
