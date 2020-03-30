@@ -39,12 +39,8 @@ public class RacingCars {
     }
 
     private int getMaxMoveRange() {
-        int range = 0;
-        for (Car car : cars) {
-            range = car.compareMoveRange(range);
-        }
-
-        return range;
+        Car car = Collections.max(cars);
+        return car.getMoveRange();
     }
 
     public List<String> findWinner() {

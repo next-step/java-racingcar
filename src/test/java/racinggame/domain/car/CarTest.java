@@ -29,19 +29,6 @@ class CarTest {
         assertThat(car.getMoveRange()).isEqualTo(expect);
     }
 
-    @DisplayName("자동차의 거리 이동 비교")
-    @Test
-    public void compareMoveRange() throws Exception {
-        //given
-        Car car = new Car("a", 1);
-
-        //when
-        int range = car.compareMoveRange(10);
-
-        //then
-        assertThat(range).isEqualTo(10);
-    }
-
     @DisplayName("이동 거리를 비교하여 더 멀리 갔는지 비교 한다")
     @ParameterizedTest
     @CsvSource(value = {
