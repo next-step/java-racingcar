@@ -15,7 +15,7 @@ public class RacingGame {
         this.cars = new CarCollection(numberOfCars, RandomEngine.class);
     }
 
-    public List<List<Integer>> run() {
+    public RacingGameResult run() {
         drive();
         return cars.getResult();
     }

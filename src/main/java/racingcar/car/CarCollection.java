@@ -1,5 +1,7 @@
 package racingcar.car;
 
+import racingcar.RacingGameResult;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,9 +32,10 @@ public class CarCollection {
         cars.forEach(Car::move);
     }
 
-    public List<List<Integer>> getResult() {
-        return cars.stream()
+    public RacingGameResult getResult() {
+        List<List<Integer>> result = cars.stream()
                 .map(Car::getRecord)
                 .collect(Collectors.toList());
+        return new RacingGameResult(result);
     }
 }
