@@ -1,5 +1,8 @@
 package racingcar;
 
+import racingcar.car.CarCollection;
+import racingcar.car.RandomEngine;
+
 import java.util.List;
 
 public class RacingGame {
@@ -9,7 +12,7 @@ public class RacingGame {
 
     public RacingGame(int numberOfTry, int numberOfCars) {
         this.numberOfTry = numberOfTry;
-        this.cars = new CarCollection(numberOfCars);
+        this.cars = new CarCollection(numberOfCars, RandomEngine.class);
     }
 
     public List<List<Integer>> run() {

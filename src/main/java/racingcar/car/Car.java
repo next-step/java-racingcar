@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.car;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +12,10 @@ public class Car {
         position = 0;
         record = new ArrayList<>();
         this.engine = engine;
+    }
+
+    public static Car createRandomEngineCar() {
+        return new Car(new RandomEngine());
     }
 
     public void move() {

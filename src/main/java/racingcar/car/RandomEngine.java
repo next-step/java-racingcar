@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.car;
 
 import java.util.Random;
 
@@ -20,5 +20,10 @@ public class RandomEngine implements Engine {
     @Override
     public int getPreviousNumber() {
         return previousNumber;
+    }
+
+    @Override
+    public boolean isMoved() {
+        return previousNumber >= 4;
     }
 }

@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.car;
 
 public class AlwaysNineEngine implements Engine {
 
@@ -12,5 +12,10 @@ public class AlwaysNineEngine implements Engine {
     @Override
     public int getPreviousNumber() {
         return NINE;
+    }
+
+    @Override
+    public boolean isMoved() {
+        return true;
     }
 }
