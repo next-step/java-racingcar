@@ -51,4 +51,14 @@ public class Cars {
             car.moveByCondition(random.nextInt(MAX_RANDOM_VALUE));
         }
     }
+
+    public String getWinnersName() {
+        int maxPosition = maxPosition();
+
+        return new String();
+    }
+
+    public int maxPosition() {
+        return Integer.MIN_VALUE;
+    }
 }
