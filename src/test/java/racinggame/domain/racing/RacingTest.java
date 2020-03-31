@@ -29,7 +29,7 @@ class RacingTest {
     @DisplayName("생성자 테스트")
     @ParameterizedTest
     @MethodSource("provideConstructParam")
-    public void construct(int carCount, int gameCount, List<String> carNames) throws Exception {
+    public void construct_success(int carCount, int gameCount, List<String> carNames) throws Exception {
         //then
         new Racing(carNames, gameCount);
     }
@@ -37,7 +37,7 @@ class RacingTest {
     @DisplayName("유효 하지 않은 게임 수 를 입력 하면 exception이 발생한다.")
     @ParameterizedTest
     @ValueSource(ints = {-50, -1, 0})
-    public void validGameCountInput(int count) throws Exception {
+    public void construct_fail_validParam(int count) throws Exception {
         //given
         final ArrayList<String> names = new ArrayList<>(Arrays.asList("a", "b", "c"));
 
@@ -51,7 +51,7 @@ class RacingTest {
     @DisplayName("레이싱 실행시 라운드수 와 레이싱 진행으로 인해 생긴 result의 크기를 비교")
     @ParameterizedTest
     @CsvSource(value = {"1:1", "3:3", "5:5"}, delimiter = ':')
-    public void playAllRound(int gameCount, int expect) throws Exception {
+    public void playAllRound_success(int gameCount, int expect) throws Exception {
         //given
         List<String> carNames = new ArrayList<>(Arrays.asList("a", "b"));
         Racing racing = new Racing(carNames, gameCount);

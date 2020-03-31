@@ -12,9 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 class RacingCarsTest {
 
-    @DisplayName("우승자 찾기")
+    @DisplayName("우승자 찾기 테스트")
     @Test
-    public void winner() throws Exception {
+    public void findWinner_success() throws Exception {
         //given
         List<Car> cars = Arrays.asList(new Car("a", 1)
                 , new Car("b", 2)
@@ -33,9 +33,9 @@ class RacingCarsTest {
         );
     }
 
-    @DisplayName("RacingCars의 정적 팩토리 메서드 ")
+    @DisplayName("RacingCars의 정적 팩토리 메서드의 동작을 확인한다.")
     @Test
-    public void factory() throws Exception {
+    public void newRacingCarsFrom_success_factoryMethod() throws Exception {
         //given
         RacingCars racingCars = RacingCars.newRacingCarsFrom(Arrays.asList("a", "b", "c"));
 
