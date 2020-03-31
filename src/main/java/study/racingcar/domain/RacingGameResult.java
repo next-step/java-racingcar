@@ -14,10 +14,6 @@ public class RacingGameResult {
         setWinnerNames();
     }
 
-    RacingGameResult() {
-        gameEvent = new GameEvent();
-    }
-
     public void addGameEvent(Cars cars) {
         gameEvent.add(cars);
     }
