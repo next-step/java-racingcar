@@ -21,6 +21,13 @@ public class Cars implements Iterable<Car> {
                 .collect(Collectors.toList());
     }
 
+    public Cars(Cars cars) {
+        this();
+        for (Car car : cars) {
+            add(new Car(car));
+        }
+    }
+
     void add(Car car) {
         this.cars.add(car);
     }
@@ -42,7 +49,7 @@ public class Cars implements Iterable<Car> {
     public Cars getByPosition(int position) {
         List<Car> matchedCars = cars.stream()
                 .filter(car -> car.isPositionEqualTo(position))
-                .map(Car::clone)
+                .map(Car::new)
                 .collect(Collectors.toList());
 
         Cars newCars = new Cars();
@@ -59,15 +66,6 @@ public class Cars implements Iterable<Car> {
 
     public Stream<Car> stream() {
         return cars.stream();
-    }
-
-    public Cars clone() {
-        Cars clonedCars = new Cars();
-        for (Car car : this) {
-            clonedCars.add(car.clone());
-        }
-
-        return clonedCars;
     }
 
     @Override public Iterator<Car> iterator() {

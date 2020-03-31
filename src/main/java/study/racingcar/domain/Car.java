@@ -17,6 +17,11 @@ public class Car {
         this.position = position;
     }
 
+    public Car(Car car) {
+        name = car.getName();
+        position = new Position(car.position);
+    }
+
     public void move(int distance) {
         this.position.add(distance);
     }
@@ -31,9 +36,5 @@ public class Car {
 
     public boolean isPositionEqualTo(int position) {
         return this.position.getPosition() == position;
-    }
-
-    public Car clone() {
-        return new Car(name, position.clone());
     }
 }

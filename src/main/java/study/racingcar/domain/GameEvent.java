@@ -11,22 +11,20 @@ public class GameEvent implements Iterable<Cars> {
         gameEvent = new ArrayList<>();
     }
 
+    public GameEvent(GameEvent gameEvent) {
+        this();
+
+        for (Cars cars : gameEvent) {
+            add(new Cars(cars));
+        }
+    }
+
     public void add(Cars cars) {
         gameEvent.add(cars);
     }
 
     public Cars getLastEvent() {
         return gameEvent.get(gameEvent.size() - 1);
-    }
-
-    public GameEvent clone() {
-        GameEvent clonedGameEvent = new GameEvent();
-
-        for (Cars cars : gameEvent) {
-            clonedGameEvent.add(cars.clone());
-        }
-
-        return clonedGameEvent;
     }
 
     public int size() {

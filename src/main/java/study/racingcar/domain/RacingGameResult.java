@@ -35,6 +35,6 @@ public class RacingGameResult {
     }
 
     public GameEvent getGameEvent() {
-        return gameEvent.clone();
+        return new GameEvent(gameEvent);
     }
 }

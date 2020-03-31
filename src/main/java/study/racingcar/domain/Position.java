@@ -10,16 +10,16 @@ class Position {
         this.position = position;
     }
 
+    public Position(Position position) {
+        this.position = position.getPosition();
+    }
+
     public int getPosition() {
         return position;
     }
 
     public void add(int value) {
         this.position = this.position + value;
-    }
-
-    public Position clone() {
-        return new Position(position);
     }
 
     @Override public boolean equals(Object o) {

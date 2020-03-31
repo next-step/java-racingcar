@@ -24,7 +24,7 @@ public class RacingGame {
         GameEvent gameEvent = new GameEvent();
 
         for (int i = 0, count = time.getTime(); i < count; i++) {
-            gameEvent.add(cars.clone());
+            gameEvent.add(new Cars(cars));
             cars = gameEvent.getLastEvent();
             cars.move(movableDistance);
         }

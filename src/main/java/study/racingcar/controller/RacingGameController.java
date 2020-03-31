@@ -14,7 +14,7 @@ public class RacingGameController {
         MovableDistance movableDistance = new RandomMovableDistance();
         RacingGame racingGame =
                 new RacingGame(carNames, movableDistance);
-        RacingGameResult racingGameResult = racingGame.play(new Time(time));
+        RacingGameResult racingGameResult = racingGame.play(time);
         ResultView.displayGameResult(racingGameResult);
     }
 }

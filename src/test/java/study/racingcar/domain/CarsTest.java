@@ -6,6 +6,7 @@ import study.racingcar.domain.Car;
 import study.racingcar.domain.Cars;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -16,7 +17,8 @@ public class CarsTest {
     void canNotBeNull() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    new Cars(null);
+                    List<String> carNames = null;
+                    new Cars(carNames);
                 });
     }
 
