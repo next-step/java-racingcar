@@ -11,6 +11,7 @@ import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 class RacingRoundResultsTest {
 
@@ -74,5 +75,23 @@ class RacingRoundResultsTest {
         assertThatThrownBy(
                 () -> assertThat(modify.add(addCars))
         ).isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @DisplayName("외부로 전달된 값이 변화되어도 도메인에는 영항이 없어야 한다")
+    @Test
+    public void getResults_fail_modify() throws Exception {
+        //given
+        RacingRoundResults result = new RacingRoundResults();
+        result.addResult(cars1);
+
+        //when
+        List<RacingCars> modify = result.getResults();
+        modify.add(addCars);
+
+        //then
+        assertAll(
+                () -> assertThat(result.getResults().size()).isEqualTo(0),
+                () -> assertThat(modify.size()).isEqualTo(1)
+        );
     }
 }

@@ -29,6 +29,6 @@ public class RacingRoundResults {
     }
 
     public List<RacingCars> getResults() {
-        return results;
+        return new ArrayList<>(this.results);
     }
 }
