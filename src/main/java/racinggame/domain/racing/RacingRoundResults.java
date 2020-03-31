@@ -8,7 +8,7 @@ public class RacingRoundResults {
     private final List<RacingCars> results;
 
     public RacingRoundResults() {
-        results = Collections.unmodifiableList(new ArrayList<>());
+        this(new ArrayList<>());
     }
 
     public RacingRoundResults(List<RacingCars> racingCars) {
