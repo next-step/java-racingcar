@@ -27,18 +27,14 @@ class NumberUtilTest {
 
     @DisplayName("입력된 2개의 숫자 크기를 비교한다.")
     @ParameterizedTest
-    @CsvSource(value = {
-            "1:2:false"
-            , "2:1:true"}, delimiter = ':')
+    @CsvSource(value = {"1:2:false", "2:1:true"}, delimiter = ':')
     public void compare(int num1, int num2, boolean expect) throws Exception {
         assertThat(NumberUtil.isGreaterThan(num1, num2)).isEqualTo(expect);
     }
 
     @DisplayName("String을 int로 변환한다")
     @ParameterizedTest
-    @CsvSource(value = {"1:1"
-            , "2:2"
-            , "10:10"}, delimiter = ':')
+    @CsvSource(value = {"1:1", "2:2", "10:10"}, delimiter = ':')
     public void validateIntegerAndReturn_success(String input, int expect) throws Exception {
         //then
         assertThat(NumberUtil.validateIntegerAndReturn(input)).isEqualTo(expect);
@@ -46,10 +42,7 @@ class NumberUtilTest {
 
     @DisplayName("숫자가 아닌 값을 숫자로 변환 하면 exception이 발생한다")
     @ParameterizedTest
-    @ValueSource(strings = {"a"
-            , "---"
-            , "?"
-            , ","})
+    @ValueSource(strings = {"a", "---", "?", ","})
     public void validateIntegerAndReturn_fail(String input) throws Exception {
         //then
         assertThatThrownBy(() -> {

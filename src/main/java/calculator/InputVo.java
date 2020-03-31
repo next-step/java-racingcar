@@ -32,7 +32,6 @@ public class InputVo {
         this.inputSplit = input.split(BLANK);
     }
 
-
     public String[] getInputSplit() {
         return inputSplit;
     }

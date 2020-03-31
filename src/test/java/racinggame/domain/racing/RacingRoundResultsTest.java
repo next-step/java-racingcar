@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 class RacingRoundResultsTest {
 
-
     private RacingCars cars1;
     private RacingCars cars2;
     private RacingCars addCars;

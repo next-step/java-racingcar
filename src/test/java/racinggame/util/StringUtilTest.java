@@ -21,7 +21,5 @@ class StringUtilTest {
 
         //then
         assertThat(result.size()).isEqualTo(4);
-
     }
-
 }
