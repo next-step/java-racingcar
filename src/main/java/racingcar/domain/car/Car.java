@@ -4,8 +4,9 @@ import java.util.Objects;
 
 public class Car {
     private static final int DEFAULT_POSITION = 0;
-    private String name;
-    private int position;
+
+    private final String name;
+    private final int position;
 
     public Car(String name) {
         this(name, DEFAULT_POSITION);
@@ -31,10 +32,15 @@ public class Car {
         }
     }
 
-    public void move(MovingStrategy movingStrategy) {
+    public Car move(MovingStrategy movingStrategy) {
         if (movingStrategy.isMovable()) {
-            position++;
+            return new Car(name, increasePosition());
         }
+        return this;
+    }
+
+    private int increasePosition() {
+        return position + 1;
     }
 
     public Car clone() {
