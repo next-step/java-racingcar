@@ -1,8 +1,9 @@
 package step3;
 
-import CarRacing.Car;
-import CarRacing.MovingStrategy;
-import CarRacing.RacingStrategy;
+import CarRacing.domain.Car;
+import CarRacing.domain.MustMovingStrategy;
+import CarRacing.domain.NonMovingStrategy;
+import CarRacing.domain.RacingStrategy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,19 +11,28 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
-    private RacingStrategy racingStrategy;
+    private RacingStrategy mustMovingStrategy;
+    private RacingStrategy nonMovingStrategy;
     private Car car;
 
     @BeforeEach
     void setUp() {
-        racingStrategy = new MovingStrategy();
-        car = new Car("jinwoo");
+        mustMovingStrategy = new MustMovingStrategy();
+        nonMovingStrategy = new NonMovingStrategy();
+        car = new Car("jinwoo", 4);
     }
 
     @Test
-    @DisplayName("움직이는 테스트 진행 움직인다면 1, 움직이지 않으면 1이 나옴")
+    @DisplayName("움직이는 테스트")
     void carMoveTest() {
-        car.move(racingStrategy);
-        assertThat(car.getCurrentPosition()).isIn(0, 1);
+        car.move(mustMovingStrategy);
+        assertThat(car.getCurrentPosition()).isEqualTo(5);
+    }
+
+    @Test
+    @DisplayName("움직이지 않는 테스트")
+    void carStopTest() {
+        car.move(nonMovingStrategy);
+        assertThat(car.getCurrentPosition()).isEqualTo(4);
     }
 }
