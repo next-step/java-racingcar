@@ -35,7 +35,7 @@ class CarTest {
     @Test
     void singleCarRace() {
         Engine engine = new RandomEngine();
-        Car car = new Car(engine);
+        Car car = new Car("pobi", engine);
 
         int record = 0;
         car.move();

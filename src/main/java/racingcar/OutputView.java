@@ -19,13 +19,16 @@ public class OutputView {
         List<Car> records = result.getRecords();
 
         for (int carIndex = 0; carIndex < numberOfCars; carIndex++) {
-            int count = records.get(carIndex).getRecord().get(timeLab);
-            printDash(count);
+            Car car = records.get(carIndex);
+            printDash(car, timeLab);
         }
         System.out.println();
     }
 
-    private static void printDash(int count) {
+    private static void printDash(Car car, int timeLab) {
+        int count = car.getRecord().get(timeLab);
+
+        System.out.print(car.getName() + " ");
         for (int i = 0; i < count; i++) {
             System.out.print("-");
         }

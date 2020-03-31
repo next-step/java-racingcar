@@ -14,7 +14,7 @@ class InputOutputTest {
     @DisplayName("사용자는 몇 대의 자동차로 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다")
     @Test
     void input() {
-        RacingGame game = new RacingGame(5, 3);
+        RacingGame game = new RacingGame(5, "pobi,crong,honux");
         RacingGameResult result = game.run();
 
         assertThat(result.getNumberOfCars()).isEqualTo(3);
@@ -25,9 +25,9 @@ class InputOutputTest {
     @Test
     void output() {
         List<Car> sample = Arrays.asList(
-                new Car(Arrays.asList(1, 2, 2, 3, 3)),
-                new Car(Arrays.asList(1, 1, 1, 2, 2)),
-                new Car(Arrays.asList(1, 2, 3, 4, 4))
+                new Car("pobi", Arrays.asList(1, 2, 2, 3, 3)),
+                new Car("crong", Arrays.asList(1, 1, 1, 2, 2)),
+                new Car("honux", Arrays.asList(1, 2, 3, 4, 4))
         );
         RacingGameResult result = new RacingGameResult(sample);
 

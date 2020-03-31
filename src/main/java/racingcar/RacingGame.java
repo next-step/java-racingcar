@@ -8,9 +8,9 @@ public class RacingGame {
     private int numberOfTry;
     private CarCollection cars;
 
-    public RacingGame(int numberOfTry, int numberOfCars) {
+    public RacingGame(int numberOfTry, String carNames) {
         this.numberOfTry = numberOfTry;
-        this.cars = new CarCollection(numberOfCars, RandomEngine.class);
+        this.cars = new CarCollection(carNames, RandomEngine.class);
     }
 
     public RacingGameResult run() {
