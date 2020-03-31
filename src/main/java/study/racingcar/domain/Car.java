@@ -5,12 +5,11 @@ public class Car {
     private Position position;
 
     public Car(String name) {
-        this(name, 0);
+        this(name, Position.ZERO);
     }
 
     public Car(String name, int position) {
-        this.name = name;
-        this.position = new Position(position);
+        this(name, new Position(position));
     }
 
     private Car(String name, Position position) {
