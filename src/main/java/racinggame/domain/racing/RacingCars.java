@@ -6,6 +6,7 @@ import racinggame.util.NumberUtil;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 1. 레이싱을 진행하는 car들의 collection
@@ -45,14 +46,14 @@ public class RacingCars {
 
     public List<String> findWinner() {
         int range = getMaxMoveRange();
-        List<String> result = new ArrayList<>();
-        getWinner(range, result);
-
-        return result;
+        return getWinner(range);
     }
 
-    private void getWinner(int range, List<String> result) {
-        this.cars.stream().filter(car -> car.isMovedFarThan(range)).map(Car::getCarName).forEach(result::add);
+    private List<String> getWinner(int range) {
+        return cars.stream()
+                .filter(car -> car.isMovedFarThan(range))
+                .map(Car::getCarName)
+                .collect(Collectors.toList());
     }
 
     public List<Car> getCars() {
