@@ -1,54 +1,48 @@
 package racing;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
-import racing.object.Car;
-import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.api.Test;
+import racing.domain.object.Car;
+import racing.vo.Cars;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
 
-	private static Stream<Arguments> getValidCase() {
-		List<Arguments> argumentsList = new ArrayList<>();
-		argumentsList.add(Arguments.of(new String[]{"test1","test2","test3"},"5"));
-		return argumentsList.stream();
+	@Test
+	void A_자동차_객체_생성_테스트() {
+		// given
+		final String name = "test";
+		final int position = 3;
+		// when
+		Car car = new Car(name, position);
+		// then
+		assertThat(car.getName()).isEqualTo(name);
+		assertThat(car.getPosition()).isEqualTo(position);
 	}
 
-	@DisplayName("1. 자동차 객체 생성 확인")
-	@ParameterizedTest
-	@MethodSource("getValidCase")
-	void checkInitialization(String[] cars, int times) {
-		final int INIT_POS = 0;
-		RacingGame game = new RacingGame(cars, times);
-		Car car = null;
-		for (int i = 0; i < cars.length; ++i) {
-			car = game.getCarList().get(i);
-			assertThat(car.getName()).isEqualTo(cars[i]);
-			assertThat(car.getPosition()).isEqualTo(INIT_POS);
-		}
+	@Test
+	void B_자동차_이동_테스트() {
+		// given
+		final String name = "test";
+		final Car car = new Car(name);
+		// when
+		car.move(1);
+		// then
+		assertThat(car.getPosition()).isEqualTo(1);
 	}
 
-	@DisplayName("2. 자동차 경주 진행 확인")
-	@ParameterizedTest
-	@MethodSource("getValidCase")
-	void checkMove(String[] cars, int times) {
-		RacingGame game = new RacingGame(cars, times);
-		for ( int i = 0; game.isInTime(i); ++i ) {
-			assertThat(game.move().stream().map(Car::getPosition)).isNotEqualTo(0);
-		}
-	}
-	
-	@DisplayName("3. 최종 우승자 확인")
-	@ParameterizedTest
-	@MethodSource("getValidCase")
-	void checkWinner(String[] cars, int times) {
-		RacingGame game = new RacingGame(cars, times);
-		assertThat(game.getWinner().size()).isGreaterThan(0);
+	@Test
+	void C_최종_우승자_테스트() {
+		// given
+		final Car car1 = new Car("test1", 2);
+		final Car car2 = new Car("test2", 5);
+		final Car car3 = new Car("test3", 3);
+		final Cars cars = new Cars(Arrays.asList(car1, car2, car3));
+		// when
+		final Cars winner = cars.getWinner();
+		// then
+		assertThat(winner).isEqualTo( new Cars(Arrays.asList(car2)) );
 	}
 }
