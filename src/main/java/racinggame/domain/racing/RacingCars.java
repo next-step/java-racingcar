@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
  * 1. 모든 자동차를 이동
  */
 public class RacingCars {
+
     private static final int RANDOM_BOUND = 10;
 
     private final List<Car> cars;

@@ -15,6 +15,7 @@ import java.util.List;
  * 1. 우승자 표기
  */
 public class ResultView {
+
     private static final char MOVE_RANGE_MARK = '-';
     private static final String CAR_NAME_AND_MOVE_RANGE_DELIMITER = " : ";
     private static final String WINNER_ANNOUNCE = "가 최종 우승했습니다.";

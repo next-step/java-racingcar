@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class RacingRoundResults {
+
     private final List<RacingCars> results;
 
     public RacingRoundResults() {
