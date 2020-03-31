@@ -26,7 +26,7 @@ class CarTest {
     @ValueSource(ints = {1, 2, 3})
     void successMovingStrategy(int movingCount) {
         for(int i = 0; i < movingCount; i++) {
-            car.move(() -> true);
+            car = car.move(() -> true);
         }
         assertThat(car.getPosition()).isEqualTo(movingCount);
     }
