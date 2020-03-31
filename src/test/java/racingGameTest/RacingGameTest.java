@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingGame.domain.RacingGame;
-import racingGame.domain.Winner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -26,9 +25,9 @@ public class RacingGameTest {
     @DisplayName("Test for 'moveOrNot'")
     @Test
     void moveOrNotTest() {
-        assertThat(racingGame.moveOrNot(0)).isEqualTo(false);
-        assertThat(racingGame.moveOrNot(3)).isEqualTo(false);
-        assertThat(racingGame.moveOrNot(4)).isEqualTo(true);
-        assertThat(racingGame.moveOrNot(9)).isEqualTo(true);
+        assertThat(racingGame.moveOrNot(0)).isFalse();
+        assertThat(racingGame.moveOrNot(3)).isFalse();
+        assertThat(racingGame.moveOrNot(4)).isTrue();
+        assertThat(racingGame.moveOrNot(9)).isTrue();
     }
 }

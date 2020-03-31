@@ -15,16 +15,12 @@ public class ResultView {
     }
 
     public static void printPosition(int position) {
-        for (int posIdx = 0; posIdx < position; posIdx++) {
+        for (int roundPosition = 0; roundPosition < position; roundPosition++) {
             System.out.print("-");
         }
     }
 
     public static void printWinner(List<String> winners) {
-        System.out.print(winners.get(0));
-        for (int i = 1; i < winners.size(); i++) {
-            System.out.print(", " + winners.get(i));
-        }
-        System.out.print("가 최종 우승했습니다");
+        System.out.println(String.join(", ", winners) + "가 최종 우승했습니다");
     }
 }

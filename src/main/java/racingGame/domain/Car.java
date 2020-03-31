@@ -1,9 +1,9 @@
 package racingGame.domain;
 
 public class Car {
-    private final int MOVE_CONDITION = 4;
-    String name;
-    int position;
+    private static final int MOVE_CONDITION = 4;
+    private String name;
+    private int position;
 
     public Car(String name) {
         this(name, 0);

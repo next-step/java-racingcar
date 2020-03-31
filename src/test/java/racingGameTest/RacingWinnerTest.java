@@ -1,10 +1,8 @@
 package racingGameTest;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingGame.domain.Car;
-import racingGame.domain.RacingGame;
 import racingGame.domain.Winner;
 
 
