@@ -11,6 +11,10 @@ public class GameEvent implements Iterable<Cars> {
         gameEvent = new ArrayList<>();
     }
 
+    public GameEvent(List<Cars> gameEvent) {
+        this.gameEvent = gameEvent;
+    }
+
     public GameEvent(GameEvent gameEvent) {
         this();
 
@@ -24,11 +28,15 @@ public class GameEvent implements Iterable<Cars> {
     }
 
     public Cars getLastEvent() {
-        return gameEvent.get(gameEvent.size() - 1);
+        return gameEvent.get(lastGameEventIndex());
     }
 
     public int size() {
         return gameEvent.size();
+    }
+
+    private int lastGameEventIndex() {
+        return gameEvent.size() - 1;
     }
 
     @Override public Iterator<Cars> iterator() {

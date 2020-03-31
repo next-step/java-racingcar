@@ -1,5 +1,7 @@
 package study.racingcar.domain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RacingGame {
@@ -21,14 +23,13 @@ public class RacingGame {
     }
 
     public RacingGameResult play(Time time) {
-        GameEvent gameEvent = new GameEvent();
+        List<Cars> results = new ArrayList<>();
 
         for (int i = 0, count = time.getTime(); i < count; i++) {
-            gameEvent.add(new Cars(cars));
-            cars = gameEvent.getLastEvent();
             cars.move(movableDistance);
+            results.add(new Cars(cars));
         }
 
-        return new RacingGameResult(gameEvent);
+        return new RacingGameResult(results);
     }
 }

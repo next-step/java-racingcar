@@ -10,6 +10,10 @@ public class RacingGameResult {
         this.gameEvent = gameEvent;
     }
 
+    public RacingGameResult(List<Cars> gameEvent) {
+        this.gameEvent = new GameEvent(gameEvent);
+    }
+
     RacingGameResult() {
         gameEvent = new GameEvent();
     }
