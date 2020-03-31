@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.car.Car;
+
 import java.util.List;
 
 public class OutputView {
@@ -14,10 +16,10 @@ public class OutputView {
 
     private static void printDashInTimeLab(RacingGameResult result, int timeLab) {
         int numberOfCars = result.getNumberOfCars();
-        List<List<Integer>> records = result.getRecords();
+        List<Car> records = result.getRecords();
 
         for (int carIndex = 0; carIndex < numberOfCars; carIndex++) {
-            int count = records.get(carIndex).get(timeLab);
+            int count = records.get(carIndex).getRecord().get(timeLab);
             printDash(count);
         }
         System.out.println();

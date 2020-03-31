@@ -1,12 +1,14 @@
 package racingcar;
 
+import racingcar.car.Car;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGameResult {
-    private final List<List<Integer>> result;
+    private final List<Car> result;
 
-    public RacingGameResult(List<List<Integer>> result) {
+    public RacingGameResult(List<Car> result) {
         this.result = new ArrayList<>(result);
     }
 
@@ -15,10 +17,10 @@ public class RacingGameResult {
     }
 
     public List<Integer> getRecordOfCar(int index) {
-        return result.get(index);
+        return result.get(index).getRecord();
     }
 
-    public List<List<Integer>> getRecords() {
+    public List<Car> getRecords() {
         return new ArrayList<>(result);
     }
 }

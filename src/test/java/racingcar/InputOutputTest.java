@@ -2,6 +2,7 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.car.Car;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,10 +24,10 @@ class InputOutputTest {
     @DisplayName("레이싱 결과 데이터를 온전히 읽어들일 수 있어야 한다")
     @Test
     void output() {
-        List<List<Integer>> sample = Arrays.asList(
-                Arrays.asList(1, 2, 2, 3, 3),
-                Arrays.asList(1, 1, 1, 2, 2),
-                Arrays.asList(1, 2, 3, 4, 4)
+        List<Car> sample = Arrays.asList(
+                new Car(Arrays.asList(1, 2, 2, 3, 3)),
+                new Car(Arrays.asList(1, 1, 1, 2, 2)),
+                new Car(Arrays.asList(1, 2, 3, 4, 4))
         );
         RacingGameResult result = new RacingGameResult(sample);
 

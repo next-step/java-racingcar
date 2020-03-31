@@ -29,8 +29,8 @@ public class CarCollection {
     }
 
     public RacingGameResult getResult() {
-        List<List<Integer>> result = cars.stream()
-                .map(Car::getRecord)
+        List<Car> result = cars.stream()
+                .map(car -> new Car(car.getRecord()))
                 .collect(Collectors.toList());
         return new RacingGameResult(result);
     }

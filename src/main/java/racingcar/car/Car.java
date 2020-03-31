@@ -14,8 +14,10 @@ public class Car {
         this.engine = engine;
     }
 
-    public static Car createRandomEngineCar() {
-        return new Car(new RandomEngine());
+    public Car(List<Integer> record) {
+        this.record = new ArrayList<>(record);
+        position = this.record.get(this.record.size() - 1);
+        this.engine = new RandomEngine();
     }
 
     public void move() {
