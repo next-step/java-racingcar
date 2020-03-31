@@ -53,6 +53,6 @@ public class RacingCars {
     }
 
     public List<Car> getCars() {
-        return this.cars;
+        return new ArrayList<>(this.cars);
     }
 }
