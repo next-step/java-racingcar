@@ -5,11 +5,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.car.Car;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
@@ -30,9 +28,9 @@ class RacingRoundResultsTest {
                 Arrays.asList(new Car("1"), new Car("2")));
     }
 
-    @DisplayName("getResults()로 반환된 List는 수정 불가능 해야 한다. : addResult() 이용했을때")
+    @DisplayName("getResults()로 반환된 List는 수정 가능 해야 한다.")
     @Test
-    public void getResults_fail_addResult() throws Exception {
+    public void getResults_success_addElement() throws Exception {
         //given
         RacingRoundResults result = new RacingRoundResults();
         result.addResult(cars1);
@@ -41,40 +39,7 @@ class RacingRoundResultsTest {
         List<RacingCars> modify = result.getResults();
 
         //then
-        assertThatThrownBy(
-                () -> assertThat(modify.add(addCars))
-        ).isInstanceOf(UnsupportedOperationException.class);
-    }
-
-    @DisplayName("getResults()로 반환된 List는 수정 불가능 해야 한다. : 생성자에서 이미 초기화 했을때")
-    @Test
-    public void getResults_fail_constructUseList() throws Exception {
-        //given
-        List<RacingCars> racingCars = new ArrayList<>(Arrays.asList(cars1, cars2));
-        RacingRoundResults results = new RacingRoundResults(racingCars);
-
-        //when
-        List<RacingCars> modify = results.getResults();
-
-        //then
-        assertThatThrownBy(
-                () -> assertThat(modify.add(addCars))
-        ).isInstanceOf(UnsupportedOperationException.class);
-    }
-
-    @DisplayName("getResults()로 반환된 List는 수정 불가능 해야 한다. : 생성자에서 이미 초기화 했을때")
-    @Test
-    public void getResults_fail_constructUseOne() throws Exception {
-        //given
-        RacingRoundResults results = new RacingRoundResults(cars1);
-
-        //when
-        List<RacingCars> modify = results.getResults();
-
-        //then
-        assertThatThrownBy(
-                () -> assertThat(modify.add(addCars))
-        ).isInstanceOf(UnsupportedOperationException.class);
+        assertThat(modify.add(addCars)).isTrue();
     }
 
     @DisplayName("외부로 전달된 값이 변화되어도 도메인에는 영항이 없어야 한다")
