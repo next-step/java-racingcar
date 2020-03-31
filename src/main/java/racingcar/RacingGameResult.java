@@ -20,7 +20,7 @@ public class RacingGameResult {
         return result.get(index).getRecord();
     }
 
-    public List<Car> getRecords() {
+    public List<Car> getCars() {
         return new ArrayList<>(result);
     }
 }

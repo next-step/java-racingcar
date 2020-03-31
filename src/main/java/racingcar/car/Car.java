@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Car {
+    private static final int THRESHOLD = 4;
     private String name;
     private int position;
     private final List<Integer> record;
@@ -28,7 +29,7 @@ public class Car {
     }
 
     public void move() {
-        if (engine.generateNumber() >= 4) {
+        if (engine.generateNumber() >= THRESHOLD) {
             position++;
         }
         record.add(position);

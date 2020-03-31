@@ -8,18 +8,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CarCollection {
+    private static final String CAR_NAME_DELIMITER = "[,]";
     private List<Car> cars;
 
     public CarCollection(String carNames, Class engineClass) {
         cars = new ArrayList<>();
-        List<String> carNameList = getCarNameList(carNames);
-        for (int i = 0; i < carNameList.size(); i++) {
-            cars.add(createCar(carNameList.get(i), engineClass));
+
+        for (String carName : getCarNameList(carNames)) {
+            cars.add(createCar(carName, engineClass));
         }
     }
 
     private List<String> getCarNameList(String carNames) {
-        List<String> carNameList = Arrays.asList(carNames.split(","));
+        List<String> carNameList = Arrays.asList(carNames.split(CAR_NAME_DELIMITER));
 
         if(carNameList.size() == 0) {
             throw new RuntimeException("자동차 이름을 입력해 주세요");
