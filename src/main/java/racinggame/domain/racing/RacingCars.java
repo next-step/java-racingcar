@@ -46,10 +46,6 @@ public class RacingCars {
 
     public List<String> findWinner() {
         int range = getMaxMoveRange();
-        return getWinner(range);
-    }
-
-    private List<String> getWinner(int range) {
         return cars.stream()
                 .filter(car -> car.isMovedFarThan(range))
                 .map(Car::getCarName)
