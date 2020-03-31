@@ -26,7 +26,8 @@ public class RacingGameService {
         int numberOfTime = racingCarRequestDto.getNumberOfTime();
 
         for (int i = 0; i < numberOfTime; i++) {
-            racingScores.add(executeRacingGame(cars, movingStrategy));
+            cars = executeRacingGame(cars, movingStrategy);
+            racingScores.add(cars);
         }
         return racingScores;
     }

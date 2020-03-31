@@ -43,10 +43,6 @@ public class Car {
         return position + 1;
     }
 
-    public Car clone() {
-        return new Car(name, position);
-    }
-
     public int getPosition() {
         return position;
     }
