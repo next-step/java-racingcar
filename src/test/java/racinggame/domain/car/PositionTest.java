@@ -17,5 +17,19 @@ class PositionTest {
         //then
         assertThat(position1.equals(position2)).isTrue();
     }
+
+    @DisplayName("거리를 한칸 이동 한다")
+    @Test
+    public void move() throws Exception {
+        //given
+        Position position = new Position(0);
+        Position compare = new Position(1);
+
+        //when
+        position.move();
+
+        //then
+        assertThat(position.equals(compare)).isTrue();
+    }
 }
 
