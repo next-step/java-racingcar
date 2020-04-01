@@ -26,7 +26,7 @@ public class InputView {
     }
 
     private void validateStage(int stage) {
-        if (!(stage > 0)) {
+        if (stage <= 0) {
             throw new IllegalArgumentException(MIN_STAGE_COUNT_ERROR_MESSAGE);
         }
     }
