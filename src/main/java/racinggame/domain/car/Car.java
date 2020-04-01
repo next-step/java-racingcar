@@ -11,7 +11,7 @@ public class Car implements Comparable<Car> {
     private static final int RACING_CAR_MOVING_BOUNDARY = 4;
 
     private final String carName;
-    private final int moveRange;
+    private final Position moveRange;
 
     public Car(String carName) {
         this(carName, 0);
@@ -19,22 +19,23 @@ public class Car implements Comparable<Car> {
 
     public Car(String carName, int moveRange) {
         this.carName = carName;
-        this.moveRange = moveRange;
+        this.moveRange = new Position(moveRange);
     }
 
     public Car moveCar(int num) {
         if (num >= RACING_CAR_MOVING_BOUNDARY) {
-            return new Car(this.carName, this.moveRange + 1);
+
+            return new Car(this.carName, this.moveRange.getPosition() + 1);
         }
         return this;
     }
 
     public boolean isMovedFarThan(int compare) {
-        return this.moveRange >= compare;
+        return this.moveRange.getPosition() >= compare;
     }
 
     public int getMoveRange() {
-        return this.moveRange;
+        return this.moveRange.getPosition();
     }
 
     public String getCarName() {
@@ -43,6 +44,6 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car o) {
-        return Integer.compare(this.moveRange, o.getMoveRange());
+        return Integer.compare(this.moveRange.getPosition(), o.getMoveRange());
     }
 }
