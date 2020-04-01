@@ -42,10 +42,9 @@ public class Cars {
 
     public Cars findWinners() {
         int maxPosition = calculateMaxPosition();
-        List<Car> winners = cars.stream()
+        return cars.stream()
                 .filter(car -> car.isEqualPosition(maxPosition))
-                .collect(Collectors.toList());
-        return new Cars(winners);
+                .collect(Collectors.collectingAndThen(Collectors.toList(), Cars::new));
     }
 
     private int calculateMaxPosition() {
