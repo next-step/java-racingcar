@@ -18,6 +18,10 @@ public class RacingRoundResults {
         this.results = Collections.unmodifiableList(new ArrayList<>(cars));
     }
 
+    public RacingRoundResults(RacingRoundResults results) {
+        this(new ArrayList<>(results.results));
+    }
+
     public RacingRoundResults addResult(Cars other) {
         List<Cars> cars = new ArrayList<>();
         cars.addAll(this.results);

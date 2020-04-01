@@ -56,6 +56,6 @@ public class Racing {
     }
 
     public RacingRoundResults getRacingRoundResults() {
-        return this.racingRoundResults;
+        return new RacingRoundResults(this.racingRoundResults);
     }
 }
