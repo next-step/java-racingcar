@@ -1,6 +1,7 @@
 package RacingCarV2.view;
 
 import RacingCarV2.model.Car;
+import RacingCarV2.model.CarDTO;
 import RacingCarV2.model.StageResult;
 
 import java.util.List;
@@ -17,13 +18,13 @@ public class StageView {
     void print() {
 
         for (StageResult stageResult : stageResults) {
-            List<Car> cars = stageResult.getCars();
+            List<CarDTO> cars = stageResult.getCars();
             printStageResult(cars);
         }
     }
 
-    void printStageResult(List<Car> cars) {
-        for (Car car : cars) {
+    void printStageResult(List<CarDTO> cars) {
+        for (CarDTO car : cars) {
             System.out.print(car.getName() + " : ");
             System.out.println(getMoveString(car.getPosition()));
         }
