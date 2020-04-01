@@ -2,8 +2,6 @@ package stringcalculator;
 
 import java.util.Objects;
 
-import static stringcalculator.OperatorType.createOperator;
-
 public class CalculatorNumber {
     private static final String OPERATOR_GROUP = "+-*/";
     private static final int NEXT_INDEX = 1;
@@ -21,9 +19,7 @@ public class CalculatorNumber {
     public double calculate() {
         validateOperator();
         String operator = findOperator();
-        OperatorType operatorType = createOperator(operator);
-
-        return operatorType.calculate(sum, nextNumber());
+        return OperatorType.findOperator(operator).calculate(sum, nextNumber());
     }
 
     private String findOperator() {

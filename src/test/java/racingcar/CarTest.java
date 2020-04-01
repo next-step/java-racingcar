@@ -2,12 +2,12 @@ package racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.car.Car;
-import racingcar.car.RandomMovingStrategy;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.RandomMovingStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -26,7 +26,7 @@ class CarTest {
     @ValueSource(ints = {1, 2, 3})
     void successMovingStrategy(int movingCount) {
         for(int i = 0; i < movingCount; i++) {
-            car.move(() -> true);
+            car = car.move(() -> true);
         }
         assertThat(car.getPosition()).isEqualTo(movingCount);
     }
@@ -56,5 +56,12 @@ class CarTest {
     @NullAndEmptySource
     void createFailByCarname(String name) {
         assertThatIllegalArgumentException().isThrownBy(() -> new Car(name));
+    }
+
+    @DisplayName("자동차의 위치가 0보다 작을때 생성 실패")
+    @ParameterizedTest
+    @CsvSource(value = {"alpha:-1", "beta:-999"}, delimiter = ':')
+    void createFailByCarPosition(String name, int position) {
+        assertThatIllegalArgumentException().isThrownBy(() -> new Car(name, position));
     }
 }
