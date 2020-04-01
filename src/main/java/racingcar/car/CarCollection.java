@@ -11,6 +11,10 @@ public class CarCollection {
     private static final String CAR_NAME_DELIMITER = "[,]";
     private List<Car> cars;
 
+    public CarCollection(List<Car> cars) {
+        this.cars = new ArrayList<>(cars);
+    }
+
     public CarCollection(String carNames, Class engineClass) {
         cars = new ArrayList<>();
 
@@ -41,10 +45,27 @@ public class CarCollection {
         cars.forEach(Car::move);
     }
 
-    public RacingGameResult getResult() {
-        List<Car> result = cars.stream()
-                .map(car -> new Car(car.getName(), car.getRecord()))
+    public int size() {
+        return cars.size();
+    }
+
+    public List<Car> getCars() {
+        return new ArrayList<>(cars);
+    }
+
+    public String getNames() {
+        List<String> carNames = cars.stream()
+                .map(Car::getName)
                 .collect(Collectors.toList());
-        return new RacingGameResult(result);
+
+        return String.join(", ", carNames);
+    }
+
+    public RacingGameResult getResult() {
+        return new RacingGameResult(new ArrayList<>(cars));
+    }
+
+    public List<Integer> getRecordOfCar(int index) {
+        return cars.get(index).getRecord();
     }
 }

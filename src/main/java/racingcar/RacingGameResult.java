@@ -1,15 +1,15 @@
 package racingcar;
 
 import racingcar.car.Car;
+import racingcar.car.CarCollection;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGameResult {
-    private final List<Car> result;
+    private final CarCollection result;
 
     public RacingGameResult(List<Car> result) {
-        this.result = new ArrayList<>(result);
+        this.result = new CarCollection(result);
     }
 
     public int getNumberOfCars() {
@@ -17,10 +17,19 @@ public class RacingGameResult {
     }
 
     public List<Integer> getRecordOfCar(int index) {
-        return result.get(index).getRecord();
+        return result.getRecordOfCar(index);
     }
 
     public List<Car> getCars() {
-        return new ArrayList<>(result);
+        return result.getCars();
+    }
+
+    public CarCollection getWinners() {
+        int max = 0;
+        for (Car car : result.getCars()) {
+            Math.max(max, car.getFinalRecord());
+        }
+
+        return null;
     }
 }

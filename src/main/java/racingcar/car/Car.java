@@ -42,4 +42,8 @@ public class Car {
     public Integer getRecord(int index) {
         return record.get(index);
     }
+
+    public int getFinalRecord() {
+        return record.get(record.size() - 1);
+    }
 }
