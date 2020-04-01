@@ -10,6 +10,7 @@ public class OutputView {
 
     public static void print(RacingGameResult result) {
         System.out.println(TEXT_OUTPUT_RESULT);
+
         int numberOfTry = result.getRecordOfCar(0).size();
         for (int timeLab = 0; timeLab < numberOfTry; timeLab++) {
             printDashInTimeLab(result, timeLab);
