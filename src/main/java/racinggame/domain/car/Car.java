@@ -6,7 +6,7 @@ package racinggame.domain.car;
  * 1. 게임 진행시 자동차 이동
  * 1. 정렬
  */
-public class Car implements Comparable<Car> {
+public class Car {
 
     private static final int RACING_CAR_MOVING_BOUNDARY = 4;
 
@@ -44,10 +44,5 @@ public class Car implements Comparable<Car> {
 
     public String getCarName() {
         return this.carName;
-    }
-
-    @Override
-    public int compareTo(Car o) {
-        return Integer.compare(this.position.getPosition(), o.getPosition());
     }
 }
