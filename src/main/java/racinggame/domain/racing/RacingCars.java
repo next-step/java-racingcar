@@ -23,20 +23,16 @@ public class RacingCars {
     }
 
     public static RacingCars newRacingCarsFrom(List<String> carNames) {
-        List<Car> cars = new ArrayList<>();
-
-        for (String name : carNames) {
-            cars.add(new Car(name));
-        }
-
+        List<Car> cars = carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
         return new RacingCars(cars);
     }
 
     public RacingCars moveCarAll() {
-        List<Car> cars = new ArrayList<>();
-        for (Car car : this.cars) {
-            cars.add(car.moveCar(NumberUtil.createRandomInt(RANDOM_BOUND)));
-        }
+        List<Car> cars = this.cars.stream()
+                .map(car -> car.moveCar(NumberUtil.createRandomInt(RANDOM_BOUND)))
+                .collect(Collectors.toList());
         return new RacingCars(cars);
     }
 
