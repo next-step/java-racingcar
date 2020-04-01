@@ -4,6 +4,7 @@ import racinggame.domain.car.Cars;
 import racinggame.domain.racing.RacingRoundResults;
 import racinggame.util.NumberUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -51,7 +52,7 @@ public class Racing {
     }
 
     public List<String> findWinner() {
-        return cars.findWinner();
+        return new ArrayList<>(cars.findWinner());
     }
 
     public RacingRoundResults getRacingRoundResults() {
