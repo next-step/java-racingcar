@@ -31,7 +31,7 @@ class CarTest {
         assertThat(randomEngine.generateNumber()).isEqualTo(randomEngine.getPreviousNumber());
     }
 
-    @DisplayName("한대의 Car가 random 한 값에 따라 정상적으로 이동하는지 확인한다")
+    @DisplayName("Car의 이동 여부가 잘 기록되는지 확인한다.")
     @Test
     void singleCarRace() {
         Engine engine = new RandomEngine();

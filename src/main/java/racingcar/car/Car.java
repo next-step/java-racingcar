@@ -38,4 +38,8 @@ public class Car {
     public List<Integer> getRecord() {
         return new ArrayList<>(record);
     }
+
+    public Integer getRecord(int index) {
+        return record.get(index);
+    }
 }

@@ -3,9 +3,11 @@ package racingcar;
 import racingcar.car.Car;
 
 public class OutputView {
+    private static final String TEXT_OUTPUT_RESULT = "실행 결과";
+    private static final String TEXT_RACE_DISTANCE_TOKEN = "-";
 
     public static void print(RacingGameResult result) {
-        System.out.println("실행 결과");
+        System.out.println(TEXT_OUTPUT_RESULT);
         int numberOfTry = result.getRecordOfCar(0).size();
         for (int timeLab = 0; timeLab < numberOfTry; timeLab++) {
             printDashInTimeLab(result, timeLab);
@@ -21,11 +23,11 @@ public class OutputView {
     }
 
     private static void printDash(Car car, int timeLab) {
-        int count = car.getRecord().get(timeLab);
+        int count = car.getRecord(timeLab);
 
         System.out.print(car.getName() + " ");
         for (int i = 0; i < count; i++) {
-            System.out.print("-");
+            System.out.print(TEXT_RACE_DISTANCE_TOKEN);
         }
         System.out.println();
     }

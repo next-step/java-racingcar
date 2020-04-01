@@ -23,7 +23,7 @@ public class CarCollection {
         List<String> carNameList = Arrays.asList(carNames.split(CAR_NAME_DELIMITER));
 
         if(carNameList.size() == 0) {
-            throw new RuntimeException("자동차 이름을 입력해 주세요");
+            throw new IllegalArgumentException("자동차 이름을 입력해 주세요");
         }
 
         return carNameList;
