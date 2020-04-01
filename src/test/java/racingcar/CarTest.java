@@ -73,6 +73,6 @@ class CarTest {
         RacingGameResult result = new RacingGameResult(sample);
 
         CarCollection winners = result.getWinners();
-        assertThat(winners.getNames()).isEqualTo("crong,honux");
+        assertThat(winners.getNames()).isEqualTo("crong, honux");
     }
 }

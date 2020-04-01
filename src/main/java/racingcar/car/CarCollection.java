@@ -68,4 +68,11 @@ public class CarCollection {
     public List<Integer> getRecordOfCar(int index) {
         return cars.get(index).getRecord();
     }
+
+    public CarCollection isWin(int max) {
+        List<Car> winners = cars.stream()
+                .filter(car -> car.isWin(max))
+                .collect(Collectors.toList());
+        return new CarCollection(winners);
+    }
 }

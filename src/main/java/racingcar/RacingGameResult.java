@@ -6,30 +6,30 @@ import racingcar.car.CarCollection;
 import java.util.List;
 
 public class RacingGameResult {
-    private final CarCollection result;
+    private final CarCollection cars;
 
     public RacingGameResult(List<Car> result) {
-        this.result = new CarCollection(result);
+        this.cars = new CarCollection(result);
     }
 
     public int getNumberOfCars() {
-        return result.size();
+        return cars.size();
     }
 
     public List<Integer> getRecordOfCar(int index) {
-        return result.getRecordOfCar(index);
+        return cars.getRecordOfCar(index);
     }
 
     public List<Car> getCars() {
-        return result.getCars();
+        return cars.getCars();
     }
 
     public CarCollection getWinners() {
         int max = 0;
-        for (Car car : result.getCars()) {
-            Math.max(max, car.getFinalRecord());
+        for (Car car : cars.getCars()) {
+            max = Math.max(max, car.getFinalRecord());
         }
 
-        return null;
+        return cars.isWin(max);
     }
 }

@@ -6,7 +6,7 @@ import racingcar.car.CarCollection;
 public class OutputView {
     private static final String TEXT_OUTPUT_RESULT = "실행 결과";
     private static final String TEXT_RACE_DISTANCE_TOKEN = "-";
-    private static final String TEXT_OUTPUT_WINNER_NAMES = "{}가 최종 우승했습니다.";
+    private static final String TEXT_OUTPUT_WINNER_NAMES = "%s가 최종 우승했습니다.";
 
     public static void print(RacingGameResult result) {
         System.out.println(TEXT_OUTPUT_RESULT);
@@ -14,7 +14,6 @@ public class OutputView {
         for (int timeLab = 0; timeLab < numberOfTry; timeLab++) {
             printDashInTimeLab(result, timeLab);
         }
-
 
         CarCollection winners = result.getWinners();
         System.out.println(String.format(TEXT_OUTPUT_WINNER_NAMES, winners.getNames()));

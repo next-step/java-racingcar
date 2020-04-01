@@ -46,4 +46,8 @@ public class Car {
     public int getFinalRecord() {
         return record.get(record.size() - 1);
     }
+
+    public boolean isWin(int maxRecord) {
+        return getFinalRecord() == maxRecord;
+    }
 }
