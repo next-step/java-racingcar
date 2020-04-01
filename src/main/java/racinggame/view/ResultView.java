@@ -6,13 +6,6 @@ import racinggame.domain.racing.RacingRoundResults;
 
 import java.util.List;
 
-/**
- * 1. "-" 상수
- * 1. 입력 크기 만큼 '-' 표기
- * 1. 한 라운드의 이동 거리 표기
- * 1. 전체 라운드의 이동거리 표기
- * 1. 우승자 표기
- */
 public class ResultView {
 
     private static final char MOVE_RANGE_MARK = '-';

@@ -7,10 +7,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * 1. 레이싱을 진행하는 car들의 collection
- * 1. 모든 자동차를 이동
- */
 public class Cars {
 
     private static final int RANDOM_BOUND = 10;

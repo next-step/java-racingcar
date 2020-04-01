@@ -7,13 +7,6 @@ import racinggame.util.NumberUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 1. Car의 List 필드
- * 1. 레이싱 1 라운드를 진행
- * 1. 전체 라운드 수 만큼 자동차 이동
- * 1. 라운드 결과 저장
- * 1. 우승자 찾기
- */
 public class Racing {
 
     private static final String INPUT_ERROR_MESSAGE = "1이상의 값을 입력해야 합니다.";

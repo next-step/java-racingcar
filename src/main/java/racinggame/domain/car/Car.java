@@ -1,11 +1,5 @@
 package racinggame.domain.car;
 
-/**
- * 1. 움직이는 거리 필드
- * 1. 자동차 이름 필드
- * 1. 게임 진행시 자동차 이동
- * 1. 정렬
- */
 public class Car {
 
     private static final int RACING_CAR_MOVING_BOUNDARY = 4;

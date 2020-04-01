@@ -5,11 +5,6 @@ import racinggame.exception.NegativeNumberException;
 
 import java.util.Random;
 
-/**
- * 1. 0~9 사이의 random 값을 구하는 기능
- * 1. 값이 정수 인지 체크
- * 1. String을 int로 변환, 반환, 검증
- */
 public final class NumberUtil {
 
     private NumberUtil() {
