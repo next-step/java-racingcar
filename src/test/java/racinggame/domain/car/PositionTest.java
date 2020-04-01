@@ -2,6 +2,8 @@ package racinggame.domain.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
@@ -33,17 +35,18 @@ class PositionTest {
     }
 
     @DisplayName("멤버 변수를 이용하여 크기를 비교 한다")
-    @Test
-    public void compare_success() throws Exception {
+    @ParameterizedTest
+    @CsvSource(value = {"10:20:-1", "20:10:1", "10:10:0"}, delimiter = ':')
+    public void compare_success(int range1, int range2, int expect) throws Exception {
         //given
-        Position position1 = new Position(10);
-        Position position2 = new Position(20);
+        Position position1 = new Position(range1);
+        Position position2 = new Position(range2);
 
         //when
-        int i = position1.compareTo(position2);
+        int compare = position1.compareTo(position2);
 
         //then
-        assertThat(i).isEqualTo(-1);
+        assertThat(compare).isEqualTo(expect);
     }
 }
 
