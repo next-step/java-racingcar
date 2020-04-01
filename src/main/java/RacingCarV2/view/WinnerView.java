@@ -1,6 +1,7 @@
 package RacingCarV2.view;
 
 import RacingCarV2.model.Car;
+import RacingCarV2.model.CarDTO;
 import RacingCarV2.model.StageResult;
 
 import java.util.ArrayList;
@@ -34,11 +35,11 @@ public class WinnerView {
     }
 
     private void sumStageResult(StageResult result, Map<String, Integer> map) {
-        for (Car car : result.getCars()) {
+        for (CarDTO car : result.getCars()) {
             sumStagePosition(map, car);
         }
     }
-    private void sumStagePosition(Map<String, Integer> map, Car car) {
+    private void sumStagePosition(Map<String, Integer> map, CarDTO car) {
         if (map.containsKey(car.getName())) {
             int count = map.get(car.getName()) + car.getPosition();
             map.put(car.getName(), count);
