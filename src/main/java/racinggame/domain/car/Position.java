@@ -4,6 +4,9 @@ import java.util.Objects;
 
 public class Position implements Comparable<Position> {
 
+    private static final int MIN_POSITION = 0;
+    private static final String GREATER_THAN_ZERO = "0 이상의 숫자만 가능 합니다.";
+
     private final int position;
 
     public Position() {
@@ -11,11 +14,14 @@ public class Position implements Comparable<Position> {
     }
 
     public Position(int position) {
+        validatePosition(position);
         this.position = position;
     }
 
-    public Position(Position position) {
-        this(position.getPosition());
+    private void validatePosition(int position) {
+        if (position < MIN_POSITION) {
+            throw new IllegalArgumentException(GREATER_THAN_ZERO);
+        }
     }
 
     public Position move() {
