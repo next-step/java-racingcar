@@ -26,7 +26,7 @@ class PositionTest {
         Position compare = new Position(1);
 
         //when
-        position.move();
+        position = position.move();
 
         //then
         assertThat(position.equals(compare)).isTrue();
