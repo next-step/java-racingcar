@@ -1,22 +1,22 @@
 package racing;
 
-import racing.ui.InputView;
-import racing.ui.ResultView;
+import racing.domain.RacingGame;
+import racing.view.InputView;
+import racing.view.ResultView;
 
 public class RacingGameStart {
 
 	public static void main(String[] args) {
 
 		InputView inputView = new InputView();
-		inputView.input();
-
-		RacingGame game = new RacingGame(inputView.getCars(), inputView.getTimes());
+		
+		RacingGame game = inputView.createNewGame();
 		
 		ResultView resultView = new ResultView();
 		resultView.printTitle();
 		
-		for ( int i = 0; game.isInTime(i); ++i ) {
-			resultView.print(game.move());
+		for (int i = 1; !game.isEnd(i) ; ++i ) {
+			resultView.printProgress(game.move());
 		}
 		
 		resultView.printWinner(game.getWinner());
