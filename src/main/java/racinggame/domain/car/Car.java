@@ -22,10 +22,14 @@ public class Car implements Comparable<Car> {
         this.position = new Position(position);
     }
 
+    public Car(String carName, Position position) {
+        this.carName = carName;
+        this.position = position;
+    }
+
     public Car moveCar(int num) {
         if (num >= RACING_CAR_MOVING_BOUNDARY) {
-
-            return new Car(this.carName, this.position.getPosition() + 1);
+            return new Car(this.carName, this.position.move());
         }
         return this;
     }
