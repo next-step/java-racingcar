@@ -1,7 +1,7 @@
 package racinggame.view;
 
 import racinggame.domain.car.Car;
-import racinggame.domain.racing.Racing;
+import racinggame.servcie.Racing;
 import racinggame.domain.car.Cars;
 import racinggame.domain.racing.RacingRoundResults;
 
