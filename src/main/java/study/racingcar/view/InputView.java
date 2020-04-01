@@ -15,8 +15,7 @@ public class InputView {
     public static int getTime() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("시도할 회수는 몇 회 인가요?");
-        int time = scanner.nextInt();
 
-        return time;
+        return scanner.nextInt();
     }
 }
