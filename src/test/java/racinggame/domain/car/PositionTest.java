@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 class PositionTest {
@@ -47,6 +48,14 @@ class PositionTest {
 
         //then
         assertThat(compare).isEqualTo(expect);
+    }
+
+    @DisplayName("0 이하의 포지션으로 초기화 하면 exception")
+    @Test
+    public void constructor_fail() throws Exception {
+        assertThatThrownBy(
+                () -> assertThat(new Position(-1))
+        ).isInstanceOf(IllegalArgumentException.class);
     }
 }
 
