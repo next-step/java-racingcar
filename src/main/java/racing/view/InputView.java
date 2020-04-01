@@ -1,32 +1,28 @@
 package racing.view;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
-    private static String GET_CAR_CNT_MESSAGE = "자동차 대수는 몇 대 인가요?";
+    private static String GET_CARS_NAME_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static String GET_GAME_CNT_MESSAGE = "시도할 회수는 몇 회 인가요?";
-    private static String INTEGER_INPUT_MISMATCH_EXCEPTION_MESSAGE = "숫자 값을 입력 해 주세요!";
 
-    public static int getCarCnt() {
-        try {
-            System.out.println(GET_CAR_CNT_MESSAGE);
-            return scanner.nextInt();
-        } catch (InputMismatchException e) {
-            System.out.println(INTEGER_INPUT_MISMATCH_EXCEPTION_MESSAGE);
-            return getCarCnt();
-        }
+    public static String getCarNames() {
+        System.out.println(GET_CARS_NAME_MESSAGE);
+        return scanner.nextLine();
     }
 
     public static int getTryCnt() {
+        int result;
+
         try {
             System.out.println(GET_GAME_CNT_MESSAGE);
-            return scanner.nextInt();
-        } catch (InputMismatchException e) {
-            System.out.println(INTEGER_INPUT_MISMATCH_EXCEPTION_MESSAGE);
-            return getTryCnt();
+            result = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            result = Integer.MIN_VALUE;
         }
+
+        return result;
     }
 }

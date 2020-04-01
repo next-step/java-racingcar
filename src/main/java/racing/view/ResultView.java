@@ -1,30 +1,28 @@
 package racing.view;
 
-import java.util.List;
+import racing.domain.Car;
 
 public class ResultView {
     private static String CAR_STATE_STR = "-";
-    private static String RESULT_INFO_COMMENT = "\n실행 결과";
+    private static String CAR_STATE_FORMAT = "%s : %s\n";
+    private static String RACING_WINNERS_FORMAT = "%s가 최종 우승했습니다.";
 
-    public static void printResultInfoComment() {
-        System.out.println(RESULT_INFO_COMMENT);
+    public static void printRacingResult(String result) {
+        System.out.println(result);
     }
 
-    public static void printCarsState(List<Integer> states) {
-        for (int state : states) {
-            printStringAsManyAsGiven(state);
-        }
+    public static String positionToString(Car car) {
+        StringBuilder stringBuilder = new StringBuilder();
 
-        System.out.println("");
-    }
-
-    private static void printStringAsManyAsGiven(int times) {
-        StringBuffer sb = new StringBuffer();
-
+        int times = car.getPosition();
         for (int i = 0; i < times; i++) {
-            sb.append(CAR_STATE_STR);
+            stringBuilder.append(CAR_STATE_STR);
         }
 
-        System.out.println(sb.toString());
+        return String.format(CAR_STATE_FORMAT, car.getName(), stringBuilder.toString());
+    }
+
+    public static String getRacingWinnersFormat(String winners) {
+        return String.format(RACING_WINNERS_FORMAT, winners);
     }
 }

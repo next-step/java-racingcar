@@ -1,24 +1,26 @@
 package racing.domain;
 
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.StringJoiner;
 
 public class Cars {
-    private static final int MAX_RANDOM_VALUE = 10;
     private List<Car> cars;
 
-    public Cars(int carNum) {
+    public Cars(String[] nameList) {
         cars = new ArrayList<>();
 
-        for (int i = 0; i < carNum; i++) {
-            cars.add(new Car());
+        for (String name : nameList) {
+            cars.add(new Car(name));
         }
     }
 
-    public Cars(List<Car> carsList) {
-        cars = carsList;
+    public Cars(List<Car> carList) {
+        cars = new ArrayList<>();
+
+        for (Car car : carList) {
+            cars.add(car.copy());
+        }
     }
 
     public int size() {
@@ -40,10 +42,39 @@ public class Cars {
     }
 
     public void playRound() {
-        Random random = new Random(System.currentTimeMillis());
+        RandomGenerator randomGenerator = new RandomGenerator(System.currentTimeMillis());
 
         for (Car car : cars) {
-            car.moveByCondition(random.nextInt(MAX_RANDOM_VALUE));
+            car.moveByCondition(randomGenerator.nextInt());
         }
+    }
+
+    public String getWinnersName(String delimiter) {
+        int maxPosition = maxPosition();
+
+        StringJoiner stringJoiner = new StringJoiner(delimiter);
+
+        for (Car car : cars) {
+            addMaxCarName(maxPosition, stringJoiner, car);
+        }
+
+        return stringJoiner.toString();
+    }
+
+    private void addMaxCarName(int maxPosition, StringJoiner stringJoiner, Car car) {
+        if (car.isSamePosition(maxPosition)) {
+            stringJoiner.add(car.getName());
+        }
+    }
+
+    public int maxPosition() {
+        int maxPosition = Integer.MIN_VALUE;
+
+        for (Car car : cars) {
+            int position = car.getPosition();
+            maxPosition = Math.max(maxPosition, position);
+        }
+
+        return maxPosition;
     }
 }
