@@ -18,7 +18,7 @@ public class RacingGameTest {
     @BeforeEach
     void setUp() {
         movableDistance = () -> 1;
-        cars = new Cars(EXAMPLE_CARS);
+        cars = Cars.valueOf(EXAMPLE_CARS);
     }
 
     @DisplayName("입력한 수행 횟수만큼 게임을 진행할 수 있다.")

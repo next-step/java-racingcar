@@ -2,8 +2,6 @@ package study.racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import study.racingcar.domain.Car;
-import study.racingcar.domain.Cars;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,14 +16,14 @@ public class CarsTest {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
                     List<String> carNames = null;
-                    new Cars(carNames);
+                    Cars.valueOf(carNames);
                 });
     }
 
     @DisplayName("차를 추가할 수 있다.")
     @Test
     void addCar() {
-        Cars cars = new Cars(Arrays.asList("luvram", "boram"));
+        Cars cars = Cars.valueOf(Arrays.asList("luvram", "boram"));
         assertThat(cars.size()).isEqualTo(2);
         cars.add(new Car("rambo"));
         assertThat(cars.size()).isEqualTo(3);

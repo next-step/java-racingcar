@@ -1,7 +1,6 @@
 package study.racingcar.domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class RacingGame {
@@ -15,7 +14,7 @@ public class RacingGame {
     }
 
     public RacingGame(List<String> carNames, MovableDistance movableDistance) {
-        this(new Cars(carNames), movableDistance);
+        this(Cars.valueOf(carNames), movableDistance);
     }
 
     public RacingGameResult play(int time) {

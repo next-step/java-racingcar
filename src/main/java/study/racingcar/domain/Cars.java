@@ -7,18 +7,24 @@ import java.util.stream.Stream;
 public class Cars implements Iterable<Car> {
     private List<Car> cars;
 
-    Cars() {
-        this.cars = new ArrayList<>();
-    }
-
-    public Cars(List<String> carNames) {
+    public static Cars valueOf(List<String> carNames) {
         if (Objects.isNull(carNames)) {
             throw new IllegalArgumentException("null을 차로 입력할 수 없습니다.");
         }
 
-        this.cars = carNames.stream()
+        Cars newCars = new Cars();
+        newCars.cars = carNames.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
+        return newCars;
+    }
+
+    private Cars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    Cars() {
+        this(new ArrayList<>());
     }
 
     public Cars(Cars cars) {
@@ -52,10 +58,7 @@ public class Cars implements Iterable<Car> {
                 .map(Car::new)
                 .collect(Collectors.toList());
 
-        Cars newCars = new Cars();
-        newCars.cars = matchedCars;
-
-        return newCars;
+        return new Cars(matchedCars);
     }
 
     public void move(MovableDistance movableDistance) {
