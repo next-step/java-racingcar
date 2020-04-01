@@ -1,5 +1,7 @@
 package RacingCarV2.model;
 
+import RacingCarV2.dto.CarDTO;
+
 import java.util.List;
 import java.util.stream.Collectors;
 

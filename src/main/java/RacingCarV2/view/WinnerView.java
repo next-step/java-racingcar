@@ -1,7 +1,6 @@
 package RacingCarV2.view;
 
-import RacingCarV2.model.Car;
-import RacingCarV2.model.CarDTO;
+import RacingCarV2.dto.CarDTO;
 import RacingCarV2.model.StageResult;
 
 import java.util.ArrayList;
