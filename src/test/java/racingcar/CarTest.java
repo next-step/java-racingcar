@@ -2,10 +2,10 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.car.AlwaysNineEngine;
-import racingcar.car.Car;
-import racingcar.car.Engine;
-import racingcar.car.RandomEngine;
+import racingcar.car.*;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -60,5 +60,19 @@ class CarTest {
         }
 
         assertThat(car.getRecord().get(4)).isEqualTo(record);
+    }
+
+    @DisplayName("우승자를 잘 반환하는지 확인한다.")
+    @Test
+    void winners() {
+        List<Car> sample = Arrays.asList(
+                new Car("pobi", Arrays.asList(1, 2, 2, 3, 3)),
+                new Car("crong", Arrays.asList(1, 1, 2, 3, 4)),
+                new Car("honux", Arrays.asList(1, 2, 3, 4, 4))
+        );
+        RacingGameResult result = new RacingGameResult(sample);
+
+        CarCollection winners = result.getWinners();
+        assertThat(winners.getNames()).isEqualTo("crong,honux");
     }
 }
