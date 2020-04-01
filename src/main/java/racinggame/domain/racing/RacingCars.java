@@ -41,8 +41,11 @@ public class RacingCars {
     }
 
     private int getMaxMoveRange() {
-        Car car = Collections.max(cars);
-        return car.getPosition();
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .filter(car -> car >= 0)
+                .max()
+                .orElse(0);
     }
 
     public List<String> findWinner() {
