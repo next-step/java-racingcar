@@ -1,7 +1,6 @@
 package racinggame.domain.car;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -30,13 +29,22 @@ class CarTest {
     }
 
     @DisplayName("10을 기준으로이동 거리를 비교하여 더 멀리 갔는지 확인 한다")
-    @Test
-    public void isMovedFarThan_success() throws Exception {
+    @ParameterizedTest
+    @CsvSource(value = {
+            "1:false"
+            , "5:false"
+            , "9:false"
+            , "10:true"
+            , "15:true"}, delimiter = ':')
+    public void isMovedFarThan_success(int move, boolean expect) throws Exception {
         //given
-        Car car = new Car("a", 1);
-        Car car2 = new Car("b", 2);
+        Car car = new Car("a", move);
+        final int compare = 10;
+
+        //when
+        boolean movedFarThan = car.isMovedFarThan(compare);
 
         //then
-        assertThat(car.compareTo(car2)).isEqualTo(-1);
+        assertThat(movedFarThan).isEqualTo(expect);
     }
 }

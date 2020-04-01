@@ -46,12 +46,11 @@ public class RacingCars {
     }
 
     public List<String> findWinner() {
-//        int range = getMaxMoveRange();
-//        return cars.stream()
-//                .filter(car -> car.isMovedFarThan(range))
-//                .map(Car::getCarName)
-//                .collect(Collectors.toList());
-        return new ArrayList<>();
+        int range = getMaxMoveRange();
+        return cars.stream()
+                .filter(car -> car.isMovedFarThan(range))
+                .map(Car::getCarName)
+                .collect(Collectors.toList());
     }
 
     public List<Car> getCars() {
