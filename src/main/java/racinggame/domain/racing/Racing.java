@@ -1,5 +1,6 @@
 package racinggame.domain.racing;
 
+import racinggame.domain.car.Cars;
 import racinggame.util.NumberUtil;
 
 import java.util.List;
@@ -16,14 +17,14 @@ public class Racing {
     private static final String INPUT_ERROR_MESSAGE = "1이상의 값을 입력해야 합니다.";
     private static final int RACING_MINIMUM_ROUND_COUNT = 1;
 
-    private RacingCars racingCars;
+    private Cars cars;
     private int gameCount;
     private RacingRoundResults racingRoundResults;
 
     public Racing(List<String> carNames, int gameCount) {
         validateGameCount(gameCount);
         this.gameCount = gameCount;
-        this.racingCars = RacingCars.newRacingCarsFrom(carNames);
+        this.cars = Cars.newRacingCarsFrom(carNames);
         this.racingRoundResults = new RacingRoundResults();
     }
 
@@ -34,12 +35,12 @@ public class Racing {
     }
 
     private void playOneRound() {
-        this.racingCars = this.racingCars.moveCarAll();
+        this.cars = this.cars.moveCarAll();
         saveRoundResult();
     }
 
     private void saveRoundResult() {
-        this.racingRoundResults = this.racingRoundResults.addResult(this.racingCars);
+        this.racingRoundResults = this.racingRoundResults.addResult(this.cars);
     }
 
     public void playAllRound() {
@@ -49,7 +50,7 @@ public class Racing {
     }
 
     public List<String> findWinner() {
-        return racingCars.findWinner();
+        return cars.findWinner();
     }
 
     public RacingRoundResults getRacingRoundResults() {

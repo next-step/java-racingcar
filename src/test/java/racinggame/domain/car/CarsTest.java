@@ -1,8 +1,7 @@
-package racinggame.domain.racing;
+package racinggame.domain.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racinggame.domain.car.Car;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,7 +9,7 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-class RacingCarsTest {
+class CarsTest {
 
     @DisplayName("우승자 찾기 테스트")
     @Test
@@ -21,7 +20,7 @@ class RacingCarsTest {
                 , new Car("c", 3)
                 , new Car("d", 4)
                 , new Car("e", 4));
-        RacingCars racingCars = new RacingCars(cars);
+        Cars racingCars = new Cars(cars);
 
         //when
         List<String> winner = racingCars.findWinner();
@@ -37,9 +36,9 @@ class RacingCarsTest {
     @Test
     public void newRacingCarsFrom_success_factoryMethod() throws Exception {
         //given
-        RacingCars racingCars = RacingCars.newRacingCarsFrom(Arrays.asList("a", "b", "c"));
+        Cars cars = Cars.newRacingCarsFrom(Arrays.asList("a", "b", "c"));
 
         //then
-        assertThat(racingCars.getCars().size()).isEqualTo(3);
+        assertThat(cars.getCars().size()).isEqualTo(3);
     }
 }

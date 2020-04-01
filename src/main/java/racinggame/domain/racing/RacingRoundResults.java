@@ -1,5 +1,7 @@
 package racinggame.domain.racing;
 
+import racinggame.domain.car.Cars;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -7,29 +9,29 @@ import java.util.List;
 
 public class RacingRoundResults {
 
-    private final List<RacingCars> results;
+    private final List<Cars> results;
 
     public RacingRoundResults() {
         this(new ArrayList<>());
     }
 
-    public RacingRoundResults(RacingCars racingCars) {
+    public RacingRoundResults(Cars cars) {
         this.results = Collections.unmodifiableList(
-                new ArrayList<>(Arrays.asList(racingCars)));
+                new ArrayList<>(Arrays.asList(cars)));
     }
 
-    public RacingRoundResults(List<RacingCars> racingCars) {
-        this.results = Collections.unmodifiableList(new ArrayList<>(racingCars));
+    public RacingRoundResults(List<Cars> cars) {
+        this.results = Collections.unmodifiableList(new ArrayList<>(cars));
     }
 
-    public RacingRoundResults addResult(RacingCars other) {
-        List<RacingCars> cars = new ArrayList<>();
+    public RacingRoundResults addResult(Cars other) {
+        List<Cars> cars = new ArrayList<>();
         cars.addAll(this.results);
         cars.add(other);
         return new RacingRoundResults(cars);
     }
 
-    public List<RacingCars> getResults() {
+    public List<Cars> getResults() {
         return new ArrayList<>(this.results);
     }
 }

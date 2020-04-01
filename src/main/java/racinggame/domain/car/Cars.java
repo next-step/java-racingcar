@@ -1,6 +1,5 @@
-package racinggame.domain.racing;
+package racinggame.domain.car;
 
-import racinggame.domain.car.Car;
 import racinggame.util.NumberUtil;
 
 import java.util.ArrayList;
@@ -12,28 +11,28 @@ import java.util.stream.Collectors;
  * 1. 레이싱을 진행하는 car들의 collection
  * 1. 모든 자동차를 이동
  */
-public class RacingCars {
+public class Cars {
 
     private static final int RANDOM_BOUND = 10;
 
     private final List<Car> cars;
 
-    public RacingCars(List<Car> cars) {
+    public Cars(List<Car> cars) {
         this.cars = Collections.unmodifiableList(new ArrayList<>(cars));
     }
 
-    public static RacingCars newRacingCarsFrom(List<String> carNames) {
+    public static Cars newRacingCarsFrom(List<String> carNames) {
         List<Car> cars = carNames.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
-        return new RacingCars(cars);
+        return new Cars(cars);
     }
 
-    public RacingCars moveCarAll() {
+    public Cars moveCarAll() {
         List<Car> cars = this.cars.stream()
                 .map(car -> car.moveCar(NumberUtil.createRandomInt(RANDOM_BOUND)))
                 .collect(Collectors.toList());
-        return new RacingCars(cars);
+        return new Cars(cars);
     }
 
     private int getMaxMoveRange() {

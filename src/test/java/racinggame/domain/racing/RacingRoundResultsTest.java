@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.car.Car;
+import racinggame.domain.car.Cars;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,17 +14,17 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 class RacingRoundResultsTest {
 
-    private RacingCars cars1;
-    private RacingCars cars2;
-    private RacingCars addCars;
+    private Cars cars1;
+    private Cars cars2;
+    private Cars addCars;
 
     @BeforeEach
     void setUp() {
-        cars1 = new RacingCars(
+        cars1 = new Cars(
                 Arrays.asList(new Car("a"), new Car("b")));
-        cars2 = new RacingCars(
+        cars2 = new Cars(
                 Arrays.asList(new Car("c"), new Car("d")));
-        addCars = new RacingCars(
+        addCars = new Cars(
                 Arrays.asList(new Car("1"), new Car("2")));
     }
 
@@ -35,7 +36,7 @@ class RacingRoundResultsTest {
         result.addResult(cars1);
 
         //when
-        List<RacingCars> modify = result.getResults();
+        List<Cars> modify = result.getResults();
 
         //then
         assertThat(modify.add(addCars)).isTrue();
@@ -49,7 +50,7 @@ class RacingRoundResultsTest {
         result.addResult(cars1);
 
         //when
-        List<RacingCars> modify = result.getResults();
+        List<Cars> modify = result.getResults();
         modify.add(addCars);
 
         //then

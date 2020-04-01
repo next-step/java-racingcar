@@ -2,7 +2,7 @@ package racinggame.view;
 
 import racinggame.domain.car.Car;
 import racinggame.domain.racing.Racing;
-import racinggame.domain.racing.RacingCars;
+import racinggame.domain.car.Cars;
 import racinggame.domain.racing.RacingRoundResults;
 
 import java.util.List;
@@ -34,7 +34,7 @@ public class ResultView {
         System.out.println(sb.toString());
     }
 
-    private void drawOneRoundResult(RacingCars cars) {
+    private void drawOneRoundResult(Cars cars) {
         for (Car car : cars.getCars()) {
             drawCarMovingRange(car.getCarName(), car.getPosition());
         }
@@ -43,7 +43,7 @@ public class ResultView {
     }
 
     private void drawAllRoundResult(RacingRoundResults racingRoundResults) {
-        for (RacingCars cars : racingRoundResults.getResults()) {
+        for (Cars cars : racingRoundResults.getResults()) {
             drawOneRoundResult(cars);
         }
     }
