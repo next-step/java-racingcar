@@ -11,7 +11,7 @@ class Position {
     }
 
     public Position(Position position) {
-        this.position = position.getPosition();
+        this.position = position.position;
     }
 
     public int getPosition() {
