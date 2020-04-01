@@ -18,8 +18,7 @@ public class Car {
     }
 
     public Car(Car car) {
-        name = car.getName();
-        position = new Position(car.position);
+        this(car.name, new Position(car.position));
     }
 
     public void move(int distance) {

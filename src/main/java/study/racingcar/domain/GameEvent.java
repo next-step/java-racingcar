@@ -8,7 +8,7 @@ public class GameEvent implements Iterable<Cars> {
     private List<Cars> gameEvent;
 
     public GameEvent() {
-        gameEvent = new ArrayList<>();
+        this(new ArrayList<>());
     }
 
     public GameEvent(List<Cars> gameEvent) {
