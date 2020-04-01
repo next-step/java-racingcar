@@ -22,7 +22,7 @@ class PositionTest {
     @Test
     public void move() throws Exception {
         //given
-        Position position = new Position(0);
+        Position position = new Position();
         Position compare = new Position(1);
 
         //when
