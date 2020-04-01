@@ -34,10 +34,6 @@ public class Car implements Comparable<Car> {
         return this;
     }
 
-    public boolean isMovedFarThan(int compare) {
-        return this.position.getPosition() >= compare;
-    }
-
     public int getPosition() {
         return this.position.getPosition();
     }
