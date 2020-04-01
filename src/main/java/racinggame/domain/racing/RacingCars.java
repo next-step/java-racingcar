@@ -42,7 +42,7 @@ public class RacingCars {
 
     private int getMaxMoveRange() {
         Car car = Collections.max(cars);
-        return car.getMoveRange();
+        return car.getPosition();
     }
 
     public List<String> findWinner() {

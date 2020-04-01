@@ -25,7 +25,7 @@ class CarTest {
         car = car.moveCar(randNum);
 
         //then
-        assertThat(car.getMoveRange()).isEqualTo(expect);
+        assertThat(car.getPosition()).isEqualTo(expect);
     }
 
     @DisplayName("10을 기준으로이동 거리를 비교하여 더 멀리 갔는지 확인 한다")
