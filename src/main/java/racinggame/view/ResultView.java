@@ -1,7 +1,6 @@
 package racinggame.view;
 
 import racinggame.domain.car.Car;
-import racinggame.servcie.Racing;
 import racinggame.domain.car.Cars;
 import racinggame.domain.racing.RacingRoundResults;
 
@@ -19,6 +18,7 @@ public class ResultView {
     private static final char MOVE_RANGE_MARK = '-';
     private static final String CAR_NAME_AND_MOVE_RANGE_DELIMITER = " : ";
     private static final String WINNER_ANNOUNCE = "가 최종 우승했습니다.";
+    private static final String WINNER_NAME_DELIMITER = ", ";
 
     public ResultView() {
     }
@@ -50,7 +50,7 @@ public class ResultView {
 
     private void drawWinners(List<String> winners) {
         StringBuffer sb = new StringBuffer();
-        System.out.println(String.join(", ", winners) + WINNER_ANNOUNCE);
+        System.out.println(String.join(WINNER_NAME_DELIMITER, winners) + WINNER_ANNOUNCE);
     }
 
     public void drawResult(RacingRoundResults racingRoundResults, List<String> winners) {
