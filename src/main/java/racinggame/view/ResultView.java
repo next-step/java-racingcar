@@ -48,15 +48,13 @@ public class ResultView {
         }
     }
 
-    private void drawWinners(Racing racing) {
+    private void drawWinners(List<String> winners) {
         StringBuffer sb = new StringBuffer();
-        List<String> winner = racing.findWinner();
-
-        System.out.println(String.join(", ", winner) + WINNER_ANNOUNCE);
+        System.out.println(String.join(", ", winners) + WINNER_ANNOUNCE);
     }
 
-    public void drawResult(RacingRoundResults racingRoundResults, Racing racing) {
+    public void drawResult(RacingRoundResults racingRoundResults, List<String> winners) {
         drawAllRoundResult(racingRoundResults);
-        drawWinners(racing);
+        drawWinners(winners);
     }
 }

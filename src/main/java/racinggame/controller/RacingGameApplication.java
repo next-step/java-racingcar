@@ -19,6 +19,6 @@ public class RacingGameApplication {
         racing.playAllRound();
 
         ResultView resultView = new ResultView();
-        resultView.drawResult(racing.getRacingRoundResults(), racing);
+        resultView.drawResult(racing.getRacingRoundResults(), racing.findWinner());
     }
 }
