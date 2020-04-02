@@ -31,6 +31,10 @@ public class Cars {
         return new Cars(cars);
     }
 
+    /**
+     * 0은 크기를 비교하기 위해 의미 없이 임시로 사용하는 값인데
+     * 이런 매직 넘버까지 위에서 상수로 선언 해야 할까요?
+     */
     private int getMaxMoveRange() {
         return cars.stream()
                 .mapToInt(Car::getPosition)

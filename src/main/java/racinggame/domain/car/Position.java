@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Position implements Comparable<Position> {
 
+    private static final int MOVEABLE_POSITION = 1;
     private static final int MIN_POSITION = 0;
     private static final String GREATER_THAN_ZERO = "0 이상의 숫자만 가능 합니다.";
 
@@ -25,7 +26,7 @@ public class Position implements Comparable<Position> {
     }
 
     public Position move() {
-        return new Position(this.position + 1);
+        return new Position(this.position + MOVEABLE_POSITION);
     }
 
     public int getPosition() {
