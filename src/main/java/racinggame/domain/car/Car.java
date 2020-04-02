@@ -17,7 +17,7 @@ public class Car {
 
     public Car(String carName, Position position) {
         this.carName = carName;
-        this.position = new Position(position);
+        this.position = position;
     }
 
     public Car moveCar(int num) {
