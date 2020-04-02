@@ -10,16 +10,21 @@ public class Position implements Comparable<Position> {
      */
     public static final int ZERO = 0;
     private static final String GREATER_THAN_ZERO = "0 이상의 숫자만 가능 합니다.";
+    private static final Position INSTANCE = new Position(ZERO);
 
     private final int position;
-
-    public Position() {
-        this(ZERO);
-    }
 
     public Position(int position) {
         validatePosition(position);
         this.position = position;
+    }
+
+    public Position(Position position) {
+        this.position = position.position;
+    }
+
+    public static Position getInstance() {
+        return INSTANCE;
     }
 
     private void validatePosition(int position) {

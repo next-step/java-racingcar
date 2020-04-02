@@ -25,7 +25,7 @@ class PositionTest {
     @Test
     public void move_success() throws Exception {
         //given
-        Position position = new Position();
+        Position position = Position.getInstance();
         Position compare = new Position(1);
 
         //when

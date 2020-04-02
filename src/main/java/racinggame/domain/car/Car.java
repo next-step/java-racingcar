@@ -9,7 +9,7 @@ public class Car {
     private final Position position;
 
     public Car(String carName) {
-        this(carName, ZERO);
+        this(carName, Position.getInstance());
     }
 
     public Car(String carName, int position) {
@@ -18,7 +18,7 @@ public class Car {
 
     public Car(String carName, Position position) {
         this.carName = carName;
-        this.position = position;
+        this.position = new Position(position);
     }
 
     public Car moveCar(int num) {
