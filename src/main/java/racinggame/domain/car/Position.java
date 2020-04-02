@@ -5,10 +5,7 @@ import java.util.Objects;
 public class Position implements Comparable<Position> {
 
     private static final int MOVEABLE_POSITION = 1;
-    /**
-     * Cars-getMaxMoveRange()에서 상수를 불러오다 보니 public으로 선언 되었습니다
-     */
-    public static final int ZERO = 0;
+    static final int ZERO = 0;
     private static final String GREATER_THAN_ZERO = "0 이상의 숫자만 가능 합니다.";
     private static final Position INSTANCE = new Position(ZERO);
 
