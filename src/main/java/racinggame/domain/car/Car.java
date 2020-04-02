@@ -8,7 +8,7 @@ public class Car {
     private final Position position;
 
     public Car(String carName) {
-        this(carName, Position.getInstance());
+        this(carName, Position.getZeroPosition());
     }
 
     public Car(String carName, int position) {

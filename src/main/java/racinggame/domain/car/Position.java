@@ -7,7 +7,7 @@ public class Position implements Comparable<Position> {
     private static final int MOVEABLE_POSITION = 1;
     static final int ZERO = 0;
     private static final String GREATER_THAN_ZERO = "0 이상의 숫자만 가능 합니다.";
-    private static final Position INSTANCE = new Position(ZERO);
+    private static final Position ZERO_POSITION = new Position(ZERO);
 
     private final int position;
 
@@ -20,8 +20,8 @@ public class Position implements Comparable<Position> {
         this.position = position.position;
     }
 
-    public static Position getInstance() {
-        return INSTANCE;
+    public static Position getZeroPosition() {
+        return ZERO_POSITION;
     }
 
     private void validatePosition(int position) {
