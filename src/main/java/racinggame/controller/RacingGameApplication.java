@@ -1,6 +1,6 @@
 package racinggame.controller;
 
-import racinggame.servcie.Racing;
+import racinggame.domain.racing.Racing;
 import racinggame.util.StringUtil;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;

@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racinggame.servcie.Racing;
+import racinggame.domain.racing.Racing;
 
 import java.util.ArrayList;
 import java.util.Arrays;
