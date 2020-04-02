@@ -3,12 +3,13 @@ package racinggame.domain.car;
 public class Car {
 
     private static final int RACING_CAR_MOVING_BOUNDARY = 4;
+    private static final int ZERO = 0;
 
     private final String carName;
     private final Position position;
 
     public Car(String carName) {
-        this(carName, 0);
+        this(carName, ZERO);
     }
 
     public Car(String carName, int position) {
