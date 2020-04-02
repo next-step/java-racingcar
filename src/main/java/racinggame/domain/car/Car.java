@@ -3,7 +3,6 @@ package racinggame.domain.car;
 public class Car {
 
     private static final int RACING_CAR_MOVING_BOUNDARY = 4;
-    private static final int ZERO = 0;
 
     private final String carName;
     private final Position position;
