@@ -42,7 +42,6 @@ public class ResultView {
     }
 
     private void drawWinners(List<String> winners) {
-        StringBuffer sb = new StringBuffer();
         System.out.println(String.join(WINNER_NAME_DELIMITER, winners) + WINNER_ANNOUNCE);
     }
 
