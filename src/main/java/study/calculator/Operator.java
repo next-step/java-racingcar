@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.function.BiFunction;
 
 enum Operator {
-    PLUS("+", (leftSide, rightSide) -> leftSide + rightSide),
+    PLUS("+", Double::sum),
     MINUS("-", (leftSide, rightSide) -> leftSide - rightSide),
     DIVIDE("/", (leftSide, rightSide) -> {
         if (rightSide == 0) {
@@ -40,7 +40,7 @@ enum Operator {
         return operator;
     }
 
-    public double run(Double leftSide, Double rightSide) {
+    public double run(double leftSide, double rightSide) {
         return this.operate.apply(leftSide, rightSide);
     }
 }

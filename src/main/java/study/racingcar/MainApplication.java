@@ -1,9 +1,10 @@
 package study.racingcar;
 
+import study.racingcar.controller.RacingGameController;
+
 public class MainApplication {
     public static void main(String[] args) {
-        RacingGameData racingGameData = InputView.getUserInput();
-        ResultView resultView = new ResultView(racingGameData);
-        resultView.printResult();
+        RacingGameController randomGameController = new RacingGameController();
+        randomGameController.start();
     }
 }
