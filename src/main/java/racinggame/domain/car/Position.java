@@ -10,7 +10,7 @@ public class Position implements Comparable<Position> {
     private final int position;
 
     public Position() {
-        this(0);
+        this(MIN_POSITION);
     }
 
     public Position(int position) {
