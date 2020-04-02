@@ -28,7 +28,6 @@ public class SetTest {
     /**
      * collection을 테스트 할때는 contains(), hasSize() 같은 메서드를 활용
      */
-
     @DisplayName("요구사항1 : size() 테스트 ")
     @Test
     void setSize() {

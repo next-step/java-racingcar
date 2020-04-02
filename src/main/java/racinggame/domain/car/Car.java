@@ -1,42 +1,38 @@
 package racinggame.domain.car;
 
-import racinggame.util.NumberUtil;
+public class Car {
 
-/**
- * 1. 움직이는 거리 필드
- * 1. 자동차 이름 필드
- * 1. 게임 진행시 자동차 이동
- * 1. 정렬
- */
-public class Car implements Comparable<Car> {
+    private static final int RACING_CAR_MOVING_BOUNDARY = 4;
+
     private final String carName;
-    private int moveRange = 0;
+    private final Position position;
 
     public Car(String carName) {
-        this.carName = carName;
+        this(carName, Position.getZeroPosition());
     }
 
-    public Car(String carName, int moveRange) {
-        this.carName = carName;
-        this.moveRange = moveRange;
+    public Car(String carName, int position) {
+        this(carName, new Position(position));
     }
 
-    /**
-     * 랜던값이 4보다 크면 자동차 한칸 이동
-     */
-    public void moveCar() {
-        if (NumberUtil.isGreaterThan4((NumberUtil.createRandomIntIn0to9()))) {
-            this.moveRange++;
+    public Car(String carName, Position position) {
+        this.carName = carName;
+        this.position = position;
+    }
+
+    public Car moveCar(int num) {
+        if (num >= RACING_CAR_MOVING_BOUNDARY) {
+            return new Car(this.carName, this.position.move());
         }
+        return this;
     }
 
-    @Override
-    public int compareTo(Car o) {
-        return Integer.compare(this.moveRange, o.getMoveRange());
+    public boolean isMovedFarThan(int compare) {
+        return this.position.getPosition() >= compare;
     }
 
-    public int getMoveRange() {
-        return this.moveRange;
+    public int getPosition() {
+        return this.position.getPosition();
     }
 
     public String getCarName() {
