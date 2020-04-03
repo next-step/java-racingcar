@@ -8,9 +8,8 @@ import java.util.List;
 public class RacingGameApplication {
 
     public static void main(String[] args) {
-        RacingGame racingGame = new RacingGame(new RacingCarMovableStrategy(), InputView.inputNumberOfCars(), InputView.inputTryCount());
-        List<List<Integer>> raceResult = racingGame.run();
+        int numberOfCars = InputView.inputNumberOfCars();
+        int tryCount = InputView.inputTryCount();
 
-        ResultView.print(raceResult);
     }
 }
