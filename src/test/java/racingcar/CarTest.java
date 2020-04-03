@@ -15,4 +15,21 @@ class CarTest {
         Car car = new Car(new RacingCarMovableStrategy());
         assertThat(car.moveIfPossible(condition)).isEqualTo(position);
     }
+
+    // TODO
+    @DisplayName("항상 position + 1")
+    @ParameterizedTest
+    @CsvSource({"4, 1", "3, 1", "2, 1", "5, 1"})
+    void moveAlways(int condition, int position) {
+        Car car = new Car(value -> true);
+        assertThat(car.moveIfPossible(condition)).isEqualTo(position);
+    }
+
+    @DisplayName("항상 position 그대로")
+    @ParameterizedTest
+    @CsvSource({"4, 0", "3, 0", "2, 0", "5, 0"})
+    void notMove(int condition, int position) {
+        Car car = new Car(value -> false);
+        assertThat(car.moveIfPossible(condition)).isEqualTo(position);
+    }
 }

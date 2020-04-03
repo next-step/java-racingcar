@@ -4,6 +4,8 @@ import java.util.List;
 
 public class ResultView {
 
+    private static final String POSITION_DISPLAY = "-";
+
     public static void print(List<List<Integer>> result) {
         System.out.println("\n실행 결과");
 
@@ -23,7 +25,7 @@ public class ResultView {
     private static void printPosition(int position) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < position; i++) {
-            stringBuilder.append("-");
+            stringBuilder.append(POSITION_DISPLAY);
         }
         System.out.println(stringBuilder.toString());
     }
