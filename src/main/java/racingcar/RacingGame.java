@@ -6,8 +6,6 @@ import java.util.Random;
 
 public class RacingGame {
 
-    private static final int MAX_RANDOM_BOUND = 10;
-
     private int tryCount;
     private List<Car> cars = new ArrayList<>();
     private final MovableStrategy movableStrategy;
@@ -43,14 +41,9 @@ public class RacingGame {
     private List<Integer> moveAll() {
         List<Integer> positions = new ArrayList<>();
         for (Car car : cars) {
-            positions.add(car.moveIfPossible(getRandom()));
+            positions.add(car.moveIfPossible());
         }
         return positions;
-    }
-
-    private int getRandom() {
-        Random random = new Random();
-        return random.nextInt(MAX_RANDOM_BOUND);
     }
 
 }

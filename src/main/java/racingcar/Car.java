@@ -10,8 +10,8 @@ public class Car {
         this.movableStrategy = movableStrategy;
     }
 
-    public int moveIfPossible(int condition) {
-        if (movableStrategy.isMovable(condition)) {
+    public int moveIfPossible() {
+        if (movableStrategy.isMovable()) {
             position++;
         }
         return position;
