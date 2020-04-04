@@ -27,20 +27,6 @@ public class CarsTest {
     }
 
     @Test
-    @DisplayName("모든 자동차의 position list를 return 하는지 테스트")
-    void getCarsPositionListTest() {
-        List<Car> carsList = generateCarList();
-        Cars cars = new Cars(carsList);
-
-        List<Integer> result = cars.getCarsPositionList();
-        int resultSize = result.size();
-
-        for (int idx = 0; idx < resultSize; idx++) {
-            assertThat(result.get(idx)).isEqualTo(carsList.get(idx).getPosition());
-        }
-    }
-
-    @Test
     @DisplayName("우승자의 위치 확인 테스트")
     void getMaxPositionTest() {
         List<Car> carsList = generateCarListOneWinner();

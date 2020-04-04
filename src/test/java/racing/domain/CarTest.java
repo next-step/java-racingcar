@@ -17,8 +17,8 @@ public class CarTest {
     @Test
     @DisplayName("자동차 위치의 초기값이 1로 설정되는지 테스트")
     void defaultCarPositionTest() {
-        Car car = new Car();
-        assertEquals(DEFAULT_POSITION, car.getPosition());
+        Car car = new Car(DEFAULT_CAR_NAME);
+        assertTrue(car.isSamePosition(DEFAULT_POSITION));
     }
 
     @ParameterizedTest
@@ -36,16 +36,5 @@ public class CarTest {
         Car car = new Car(DEFAULT_CAR_NAME, DEFAULT_POSITION_FOR_TEST);
 
         assertThat(car.moveByCondition(input)).isEqualTo(expected);
-    }
-
-    @Test
-    @DisplayName("Car 객체의 copy 여부 확인 테스트")
-    void deepCopyTest() {
-        Car car = new Car("a", 4);
-
-        Car copiedCar = car.copy();
-
-        assertEquals(car, copiedCar);
-        assertEquals(car.getPosition(), copiedCar.getPosition());
     }
 }

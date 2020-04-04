@@ -31,16 +31,6 @@ public class Cars {
         return cars;
     }
 
-    public List<Integer> getCarsPositionList() {
-        List<Integer> positionList = new ArrayList<>();
-
-        for (Car car : cars) {
-            positionList.add(car.getPosition());
-        }
-
-        return positionList;
-    }
-
     public void playRound() {
         RandomGenerator randomGenerator = new RandomGenerator(System.currentTimeMillis());
 
@@ -68,11 +58,10 @@ public class Cars {
     }
 
     public int maxPosition() {
-        int maxPosition = Integer.MIN_VALUE;
+        int maxPosition = 0;
 
         for (Car car : cars) {
-            int position = car.getPosition();
-            maxPosition = Math.max(maxPosition, position);
+            maxPosition = car.getMaxPosition(maxPosition);
         }
 
         return maxPosition;

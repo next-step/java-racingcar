@@ -4,16 +4,12 @@ import java.util.Objects;
 
 public class Car {
     private static final int DEFAULT_POSITION = 1;
+
     private String name;
     private int position;
 
-    public Car() {
-        position = DEFAULT_POSITION;
-    }
-
     public Car(String name) {
-        this.name  = name;
-        this.position = DEFAULT_POSITION;
+        this(name, DEFAULT_POSITION);
     }
 
     public Car(String name, int position) {
@@ -33,7 +29,7 @@ public class Car {
         return ++position;
     }
 
-    public Car copy() {
+    Car copy() {
         return new Car(name, position);
     }
 
@@ -41,11 +37,15 @@ public class Car {
         return position;
     }
 
+    int getMaxPosition(int maxPosition) {
+        return Math.max(maxPosition, position);
+    }
+
     public boolean isSameName(String name) {
         return this.name.equals(name);
     }
 
-    public boolean isSamePosition(int position) {
+    boolean isSamePosition(int position) {
         return this.position == position;
     }
 
@@ -66,4 +66,5 @@ public class Car {
     public int hashCode() {
         return Objects.hash(name, position);
     }
+
 }
