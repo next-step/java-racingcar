@@ -1,17 +1,16 @@
-package racingGameTest;
+package racinggametest.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingGame.domain.Car;
-import racingGame.domain.Winner;
-
+import racinggame.domain.Car;
+import racinggame.domain.Winner;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RacingWinnerTest {
+public class WinnerTest {
     List<Car> racingCars;
 
     @BeforeEach
@@ -28,6 +27,7 @@ public class RacingWinnerTest {
 
     @Test
     void findWinnerNamesTest() {
-        assertThat(new Winner(racingCars).findWinnerNames()).containsExactly("pobi", "honux");
+        assertThat(new Winner(racingCars).findWinnerNames()).hasSize(2);
+        assertThat(new Winner(racingCars).findWinnerNames()).containsExactly(racingCars.get(0), racingCars.get(2));
     }
 }

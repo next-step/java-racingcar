@@ -1,7 +1,6 @@
-package racingGame.domain;
+package racinggame.domain;
 
 public class Car {
-    private static final int MOVE_CONDITION = 4;
     private String name;
     private int position;
 
@@ -24,5 +23,14 @@ public class Car {
 
     public void moveCar() {
         this.position++;
+    }
+
+    public boolean isWinner(int maxPosition) {
+        return maxPosition == this.position;
+    }
+
+    @Override
+    public Car clone() {
+        return new Car(this.name, this.position);
     }
 }

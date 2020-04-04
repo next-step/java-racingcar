@@ -1,8 +1,9 @@
-package racingGame.view;
+package racinggame.view;
 
-import racingGame.domain.Car;
+import racinggame.domain.Car;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
     public static void printResult(List<Car> allCars) {
@@ -20,7 +21,12 @@ public class ResultView {
         }
     }
 
-    public static void printWinner(List<String> winners) {
-        System.out.println(String.join(", ", winners) + "가 최종 우승했습니다");
+    public static void printWinner(List<Car> winners) {
+        StringBuilder winnerResult = new StringBuilder();
+        winnerResult.append(winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", ")));
+        winnerResult.append("가 최종 우승했습니다");
+        System.out.println(winnerResult);
     }
 }
