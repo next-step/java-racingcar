@@ -6,9 +6,11 @@ import java.util.Map;
 public class ResultView {
     public static final String DASH = "-";
     private Map<Integer, List<Integer>> record;
+    private Cars cars;
 
-    public ResultView(Map<Integer, List<Integer>> record) {
+    public ResultView(Map<Integer, List<Integer>> record, Cars cars) {
         this.record = record;
+        this.cars = cars;
     }
 
     public void show() {
@@ -18,9 +20,10 @@ public class ResultView {
             showCarPositions(record.get(count));
             System.out.println();
         }
+        showWinner();
     }
 
-    public String showGraph(int position) {
+    private String showGraph(int position) {
         StringBuilder sb = new StringBuilder();
         for (int j = 0; j < position; j++) {
             sb.append(DASH);
@@ -32,6 +35,16 @@ public class ResultView {
         positions.stream()
                 .map(this::showGraph)
                 .forEach(System.out::println);
+    }
+
+    private void showWinner() {
+        List<Car> winners = Winners.findWinners(cars.getCars());
+        StringBuilder sb = new StringBuilder();
+        for (Car car : winners) {
+            sb.append(car.getName() + ",");
+        }
+
+        System.out.println(sb.toString().substring(0, sb.length() - 1) + " 가 최종 우승했습니다.");
     }
 
 
