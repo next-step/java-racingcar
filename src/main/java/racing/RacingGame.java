@@ -51,5 +51,4 @@ public class RacingGame {
         gameSetting();
         playGame();
     }
-
 }
