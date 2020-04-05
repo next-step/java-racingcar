@@ -8,12 +8,11 @@ import racing.view.ResultView;
 
 public class RacingGame {
     private static final String CARS_NAME_DELIMITER = ",";
-    private static final String RESULT_INFO_COMMENT = "\n실행 결과\n";
 
     private static String carNames;
     private static int tryCnt;
 
-    public static void gameSetting() {
+    private static void gameSetting() {
         do {
             carNames = InputView.getCarNames();
         } while(!ValidChecker.checkInput(carNames));
@@ -23,9 +22,9 @@ public class RacingGame {
         } while (!ValidChecker.checkInput(tryCnt));
     }
 
-    public static void playGame() {
+    private static void playGame() {
         Cars cars = new Cars(carNames.split(CARS_NAME_DELIMITER));
-        StringBuilder stringBuilder = new StringBuilder(RESULT_INFO_COMMENT);
+        StringBuilder stringBuilder = ResultView.getResultViewBuilder();
 
         stringBuilder.append(positionsToString(cars));
         for (int i = 0; i < tryCnt; i++) {
@@ -52,4 +51,5 @@ public class RacingGame {
         gameSetting();
         playGame();
     }
+
 }

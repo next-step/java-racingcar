@@ -1,15 +1,15 @@
 package racing.domain;
 
+import racing.view.InputView;
+
 import java.util.Objects;
 
 public class ValidChecker {
-    private static final String INVALID_STRING_INPUT_MSG = "양의 정수 값을 입력 해 주세요!";
-    private static final String INVALID_INT_INPUT_MSG = "양의 정수 값을 입력 해 주세요!";
     private static final int VALID_INT_CONDITION = 0;
 
     public static boolean checkInput(String input) {
         if (Objects.isNull(input) || input.isEmpty()) {
-            System.out.println(INVALID_STRING_INPUT_MSG);
+            InputView.printInvalidStringMessage();
             return false;
         }
 
@@ -18,7 +18,7 @@ public class ValidChecker {
 
     public static boolean checkInput(int input) {
         if (input <= VALID_INT_CONDITION) {
-            System.out.println(INVALID_INT_INPUT_MSG);
+            InputView.printInvalidIntMessage();
             return false;
         }
 
