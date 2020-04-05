@@ -16,11 +16,7 @@ public class Cars {
     }
 
     public Cars(List<Car> carList) {
-        cars = new ArrayList<>();
-
-        for (Car car : carList) {
-            cars.add(car.copy());
-        }
+        cars = new ArrayList<>(carList);
     }
 
     public int size() {
@@ -31,11 +27,9 @@ public class Cars {
         return cars;
     }
 
-    public void playRound() {
-        RandomGenerator randomGenerator = new RandomGenerator(System.currentTimeMillis());
-
+    public void playRound(Movable movable) {
         for (Car car : cars) {
-            car.moveByCondition(randomGenerator.nextInt());
+            car.moveByCondition(movable.isMovable());
         }
     }
 

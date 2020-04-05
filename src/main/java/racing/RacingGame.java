@@ -1,12 +1,14 @@
 package racing;
 
-import racing.domain.Car;
-import racing.domain.Cars;
-import racing.domain.ValidChecker;
+import racing.domain.*;
 import racing.view.InputView;
 import racing.view.ResultView;
 
+import java.util.Random;
+
 public class RacingGame {
+    private static final int RANDOM_VALUE_MAX = 10;
+    public static final int MOVE_CONDITION = 4;
     private static final String CARS_NAME_DELIMITER = ",";
 
     private static String carNames;
@@ -28,7 +30,7 @@ public class RacingGame {
 
         stringBuilder.append(positionsToString(cars));
         for (int i = 0; i < tryCnt; i++) {
-            cars.playRound();
+            cars.playRound(getMovable());
             stringBuilder.append(positionsToString(cars));
         }
         stringBuilder.append(ResultView.getRacingWinnersFormat(cars.getWinnersName(CARS_NAME_DELIMITER)));
@@ -45,6 +47,15 @@ public class RacingGame {
         stringBuilder.append("\n");
 
         return stringBuilder.toString();
+    }
+
+    private static Movable getMovable() {
+        return new Movable() {
+            @Override
+            public boolean isMovable() {
+                return new Random().nextInt(RANDOM_VALUE_MAX) >= MOVE_CONDITION;
+            }
+        };
     }
 
     public static void main(String[] args) {

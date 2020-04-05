@@ -17,8 +17,8 @@ public class Car {
         this.position = position;
     }
 
-    public int moveByCondition(int condition) {
-        if (Movable.isMovable(condition)) {
+    public int moveByCondition(boolean condition) {
+        if (condition) {
             return moveForward();
         }
 
@@ -27,10 +27,6 @@ public class Car {
 
     private int moveForward() {
         return ++position;
-    }
-
-    Car copy() {
-        return new Car(name, position);
     }
 
     public int getPosition() {

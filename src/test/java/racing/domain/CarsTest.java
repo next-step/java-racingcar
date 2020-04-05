@@ -59,6 +59,37 @@ public class CarsTest {
         assertThat(result).isEqualTo(String.join(",", Arrays.asList(WINNER_CAR_NAME1, WINNER_CAR_NAME2)));
     }
 
+    @Test
+    @DisplayName("무조건 이동 가능 조건인 경우 모든 Car 이동 테스트")
+    void checkEveryCarMoveTest() {
+        List<Car> carsList = generateSameCarList();
+        Cars cars = new Cars(carsList);
+
+        cars.playRound(() -> true);
+
+        assertThat(cars.maxPosition()).isEqualTo(MAX_POSITION + 1);
+    }
+
+    @Test
+    @DisplayName("무조건 이동 불가능 조건인 경우 모든 Car 이동 테스트")
+    void checkEveryCarDoNotMoveTest() {
+        List<Car> carsList = generateSameCarList();
+        Cars cars = new Cars(carsList);
+
+        cars.playRound(() -> false);
+
+        assertThat(cars.maxPosition()).isEqualTo(MAX_POSITION);
+    }
+
+    private List<Car> generateSameCarList() {
+        List<Car> carList = new ArrayList<>();
+        carList.add(new Car(DEFAULT_CAR_NAME, MAX_POSITION));
+        carList.add(new Car(DEFAULT_CAR_NAME, MAX_POSITION));
+        carList.add(new Car(DEFAULT_CAR_NAME, MAX_POSITION));
+
+        return carList;
+    }
+
     private List<Car> generateCarList() {
         List<Car> carList = new ArrayList<>();
         carList.add(new Car(DEFAULT_CAR_NAME, MAX_POSITION - 3));
