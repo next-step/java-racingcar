@@ -6,12 +6,20 @@ import java.util.List;
 
 public class ResultView {
 
-    private static final String POSITION_DISPLAY = "-";
+    private static final String POSITION_DISPLAY_CHARACTER = "-";
 
     public static void printResult(List<Car> cars) {
-        cars.stream()
-                .map(Car::getPosition)
-                .forEach(System.out::println);
+        for (Car car : cars) {
+            printPosition(car);
+        }
+    }
+
+    private static void printPosition(Car car) {
+        StringBuilder builder = new StringBuilder(car.getName() + " : ");
+        for (int i = 0; i < car.getPosition(); i++) {
+            builder.append(POSITION_DISPLAY_CHARACTER);
+        }
+        System.out.println(builder.toString());
     }
 
 }

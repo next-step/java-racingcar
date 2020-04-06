@@ -1,9 +1,11 @@
 package racingcar;
 
-import racingcar.domain.Cars;
+import racingcar.domain.Car;
 import racingcar.domain.RacingGame;
 import racingcar.ui.InputView;
 import racingcar.ui.ResultView;
+
+import java.util.List;
 
 public class RacingGameApplication {
 
@@ -11,13 +13,12 @@ public class RacingGameApplication {
         String carNames = InputView.inputCarNames();
         int tryCount = InputView.inputTryCount();
 
-        System.out.println(carNames);
-        System.out.println(tryCount);
-
         RacingGame racingGame = new RacingGame(carNames, tryCount);
-        Cars raceResult = racingGame.race();
-
-        ResultView.printResult(raceResult.getCars());
+        while (!racingGame.isRaceEnd()) {
+            System.out.println("===== RACE =====");
+            List<Car> race = racingGame.race();
+            ResultView.printResult(race);
+        }
 
     }
 }

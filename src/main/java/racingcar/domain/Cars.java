@@ -10,11 +10,9 @@ public class Cars {
         this.cars = Collections.unmodifiableList(cars);
     }
 
-    public void moveAll() {
+    public List<Car> moveAll() {
         cars.forEach(Car::moveIfPossible);
-    }
-
-    public List<Car> getCars() {
         return cars;
     }
+
 }

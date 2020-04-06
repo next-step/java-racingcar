@@ -21,13 +21,17 @@ public class Car {
 
     public int moveIfPossible() {
         if (movableStrategy.isMovable()) {
-            this.position = position.increase();
+            position = position.increase();
         }
         return position.getPosition();
     }
 
     public int getPosition() {
         return position.getPosition();
+    }
+
+    public String getName() {
+        return name;
     }
 
 }

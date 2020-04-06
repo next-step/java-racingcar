@@ -30,12 +30,13 @@ public class RacingGame {
         }
     }
 
-    public Cars race() {
-        for (int i = 0; i < tryCount; i++) {
-            cars.moveAll();
-        }
-        return cars;
+    public List<Car> race() {
+        tryCount--;
+        return cars.moveAll();
     }
 
-    // TODO:
+    public boolean isRaceEnd() {
+        return tryCount <= 0;
+    }
+
 }
