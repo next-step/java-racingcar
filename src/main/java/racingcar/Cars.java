@@ -23,12 +23,13 @@ public class Cars {
 
     public Cars move() {
         List<Car> tempCars = new ArrayList<>();
+        List<Integer> tempPosition = new ArrayList<>();
         for (Car car : cars) {
             Car movedCar = car.move();
-            positions.add(movedCar.getPosition());
+            tempPosition.add(movedCar.getPosition());
             tempCars.add(movedCar);
         }
-        return new Cars(tempCars, positions);
+        return new Cars(tempCars, tempPosition);
     }
 
     public List<Integer> getPositions() {
