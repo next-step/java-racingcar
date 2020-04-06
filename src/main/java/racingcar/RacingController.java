@@ -27,9 +27,9 @@ public class RacingController {
         List<Integer> positions = new ArrayList<>();
 
         for (Car car : cars.getCars()) {
-            Car movedCar = car.changeCarPosition(car, getRandomNUmber());
+            Car movedCar = car.move();
             positions.add(movedCar.getPosition());
-            tempCars.add(new Car(movedCar.getName(), movedCar.getPosition()));
+            tempCars.add(movedCar);
         }
         cars = new Cars(tempCars);
         return positions;
