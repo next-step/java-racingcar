@@ -23,16 +23,9 @@ public class RacingController {
     }
 
     private List<Integer> changePosition() {
-        List<Car> tempCars = new ArrayList<>();
-        List<Integer> positions = new ArrayList<>();
-
-        for (Car car : cars.getCars()) {
-            Car movedCar = car.move();
-            positions.add(movedCar.getPosition());
-            tempCars.add(movedCar);
-        }
-        cars = new Cars(tempCars);
-        return positions;
+        Cars move = cars.move();
+        cars = move;
+        return move.getPositions();
     }
 
     private Cars createCar(String carNames) {
@@ -47,11 +40,6 @@ public class RacingController {
             tempCars.add(new Car(name));
         }
         return new Cars(tempCars);
-    }
-
-    private int getRandomNUmber() {
-        Random random = new Random();
-        return random.nextInt(NUMBER_GENERATE_RANGE);
     }
 
     private void gameStart() {
