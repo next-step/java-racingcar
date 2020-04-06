@@ -1,5 +1,8 @@
 package racingcar.domain;
 
+import java.util.List;
+import java.util.Objects;
+
 public class Car {
 
     private Position position;
@@ -19,11 +22,10 @@ public class Car {
         }
     }
 
-    public int moveIfPossible() {
+    public void moveIfPossible() {
         if (movableStrategy.isMovable()) {
             position = position.increase();
         }
-        return position.getPosition();
     }
 
     public int getMaxPosition(int maxPosition) {
@@ -33,15 +35,36 @@ public class Car {
         return maxPosition;
     }
 
-    public boolean isWinner(int maxPosition) {
-        return maxPosition == position.getPosition();
-    }
-
     public int getPosition() {
         return position.getPosition();
     }
 
     public String getName() {
         return name;
+    }
+
+    public void addWhenWinner(List<Car> winners, int maxPosition) {
+        if (isWinner(maxPosition)) {
+            winners.add(this);
+        }
+    }
+
+    private boolean isWinner(int maxPosition) {
+        return maxPosition == position.getPosition();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(position, car.position) &&
+                Objects.equals(name, car.name) &&
+                Objects.equals(movableStrategy, car.movableStrategy);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position, name, movableStrategy);
     }
 }

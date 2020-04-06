@@ -20,9 +20,7 @@ public class Cars {
         List<Car> winners = new ArrayList<>();
         int maxPosition = getMaxPosition();
         for (Car car : cars) {
-            if (car.isWinner(maxPosition)) {
-                winners.add(car);
-            }
+            car.addWhenWinner(winners, maxPosition);
         }
         return winners;
     }
