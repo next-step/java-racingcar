@@ -11,7 +11,7 @@ public class Winner {
     public Winner(List<Car> allCars) {
         this.allCars = allCars.stream()
                 .map(Car::clone)
-                .collect(Collectors.toList());;
+                .collect(Collectors.toList());
     }
 
     private int maxPosition() {
