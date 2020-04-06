@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class PositionTest {
 
@@ -22,6 +22,11 @@ class PositionTest {
         Position newPosition = position.increase();
 
         assertThat(newPosition.getPosition()).isEqualTo(1);
+    }
 
+    @DisplayName("음수 포지션 생성시 에러")
+    @Test
+    void negativePosition() {
+        assertThatIllegalArgumentException().isThrownBy(() -> new Position(-1));
     }
 }
