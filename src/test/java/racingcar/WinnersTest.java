@@ -20,7 +20,7 @@ class WinnersTest {
 
         List<Car> winners = Winners.findWinners(cars);
 
-        assertThat(winners).hasSize(2);
-        assertThat(winners).contains(car1, car3);
+        assertThat(winners).hasSize(1);
+        assertThat(winners).contains(car1);
     }
 }

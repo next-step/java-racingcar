@@ -2,8 +2,10 @@ package racingcar;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 public class Car {
+    private static final int NUMBER_GENERATE_RANGE = 10;
 
     private final int position;
     private final String name;
@@ -20,8 +22,8 @@ public class Car {
 
     public Car changeCarPosition(Car car, int randomNumber) {
         MovingStrategy movingStrategy = new MovingStrategy();
-        if (movingStrategy.movable(randomNumber)) {
-            return new Car(this.name, car.position + 1);
+        if (movingStrategy.movable(getRandomNumber())) {
+            return new Car(this.name, this.position + 1);
         }
         return new Car(this.name, car.position);
     }
@@ -55,6 +57,11 @@ public class Car {
         if (position < 0) {
             throw new IllegalArgumentException("위치 값이 0보다 작을 수 없습니다.");
         }
+    }
+
+    private int getRandomNumber() {
+        Random random = new Random();
+        return random.nextInt(NUMBER_GENERATE_RANGE);
     }
 
     @Override

@@ -5,6 +5,7 @@ import java.util.*;
 public class RacingController {
     public static final int FIRST = 1;
     public static final int NUMBER_GENERATE_RANGE = 10;
+    private static final String CAR_NAME_REQUIRED_ERROR = "자동차 이름은 값이 존재해야 합니다.";
 
     private int tryCount;
     private Cars cars;
@@ -13,7 +14,7 @@ public class RacingController {
     public RacingController(InputView inputView) {
         this.cars = createCar(inputView.getCarNames());
         tryCount = inputView.getTryCount();
-        record = new HashMap<Integer, List<Integer>>();
+        record = new HashMap<>();
     }
 
     public void startGame() {
@@ -38,7 +39,7 @@ public class RacingController {
         List<Car> tempCars = new ArrayList<>();
 
         if (StringUtils.isBlank(carNames)) {
-            throw new IllegalArgumentException("자동차 이름은 값이 존재해야 합니다.");
+            throw new IllegalArgumentException(CAR_NAME_REQUIRED_ERROR);
         }
         String[] names = carNames.split(",");
 
