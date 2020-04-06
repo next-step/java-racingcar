@@ -2,15 +2,16 @@ package racinggame.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Winner {
     private final List<Car> allCars;
-    private int maxPosition;
     private List<Car> winners = new ArrayList<>();
 
     public Winner(List<Car> allCars) {
-        this.allCars = allCars;
-        this.maxPosition = maxPosition();
+        this.allCars = allCars.stream()
+                .map(Car::clone)
+                .collect(Collectors.toList());;
     }
 
     private int maxPosition() {
@@ -22,8 +23,9 @@ public class Winner {
     }
 
     public List<Car> findWinnerNames() {
+        int maxPosition = maxPosition();
         for (Car car : allCars) {
-            this.addWinners(car, this.maxPosition);
+            this.addWinners(car, maxPosition);
         }
         return winners;
     }
