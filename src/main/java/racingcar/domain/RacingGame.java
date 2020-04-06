@@ -5,6 +5,8 @@ import java.util.List;
 
 public class RacingGame {
 
+    private static final String NAME_SPLIT_REGEX = ",";
+
     private Cars cars;
 
     private int tryCount;
@@ -16,7 +18,7 @@ public class RacingGame {
 
     private Cars initializeCars(String carNames) {
         validateCarNames(carNames);
-        String[] names = carNames.split(",");
+        String[] names = carNames.split(NAME_SPLIT_REGEX);
         List<Car> cars = new ArrayList<>();
         for (String name : names) {
             cars.add(new Car(new RacingCarMovableStrategy(), name));
@@ -37,6 +39,10 @@ public class RacingGame {
 
     public boolean isRaceEnd() {
         return tryCount <= 0;
+    }
+
+    public List<Car> getWinners() {
+        return cars.findWinners();
     }
 
 }

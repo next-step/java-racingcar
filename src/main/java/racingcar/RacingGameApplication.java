@@ -17,8 +17,9 @@ public class RacingGameApplication {
         while (!racingGame.isRaceEnd()) {
             System.out.println("===== RACE =====");
             List<Car> race = racingGame.race();
-            ResultView.printResult(race);
+            ResultView.printRoundResult(race);
         }
 
+        ResultView.printWinner(racingGame.getWinners());
     }
 }
