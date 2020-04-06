@@ -9,12 +9,13 @@ public class RacingController {
 
     private int tryCount;
     private Cars cars;
-    private Map<Integer, List<Integer>> record;
+//    private Map<Integer, List<Integer>> record;
+    private Record record;
 
     public RacingController(InputView inputView) {
         this.cars = createCar(inputView.getCarNames());
         tryCount = inputView.getTryCount();
-        record = new HashMap<>();
+        record = new Record();
     }
 
     public void startGame() {
@@ -44,12 +45,12 @@ public class RacingController {
 
     private void gameStart() {
         for (int count = FIRST; count <= tryCount; count++) {
-            record.put(count, changePosition());
+            record.add(count, changePosition());
         }
     }
 
     private void showResult() {
-        ResultView resultView = new ResultView(this.record, this.cars);
+        ResultView resultView = new ResultView(record, this.cars);
         resultView.show();
     }
 

@@ -1,23 +1,23 @@
 package racingcar;
 
 import java.util.List;
-import java.util.Map;
 
 public class ResultView {
     public static final String DASH = "-";
-    private Map<Integer, List<Integer>> record;
+    public static final String GAME_RESULT = "실행결과";
+    private Record record;
     private Cars cars;
 
-    public ResultView(Map<Integer, List<Integer>> record, Cars cars) {
+    public ResultView(Record record, Cars cars) {
         this.record = record;
         this.cars = cars;
     }
 
     public void show() {
-        System.out.println("실행결과");
+        System.out.println(GAME_RESULT);
 
         for (int count = 1; count <= record.size(); count++) {
-            showCarPositions(record.get(count));
+            showCarPositions(record.getRecord(count));
             System.out.println();
         }
         showWinner();

@@ -9,7 +9,7 @@ public class Cars {
     List<Integer> positions = new ArrayList<>();
 
     public Cars(List<Car> cars) {
-        this.cars = new ArrayList<>(cars);
+        this(cars, new ArrayList<>());
     }
 
     public Cars(List<Car> cars, List<Integer> positions) {

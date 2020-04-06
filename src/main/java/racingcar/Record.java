@@ -19,7 +19,11 @@ public class Record {
         this.record.put(count, positions);
     }
 
-    public Map<Integer, List<Integer>> getRecord() {
-        return record;
+    public List<Integer> getRecord(int key) {
+        return record.get(key);
+    }
+
+    public Integer size() {
+        return record.size();
     }
 }

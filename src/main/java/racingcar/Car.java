@@ -20,14 +20,6 @@ public class Car {
         this.position = position;
     }
 
-//    public Car changeCarPosition(Car car, int randomNumber) {
-//        MovingStrategy movingStrategy = new MovingStrategy();
-//        if (movingStrategy.movable(getRandomNumber())) {
-//            return new Car(this.name, this.position + 1);
-//        }
-//        return new Car(this.name, car.position);
-//    }
-
     public Car move() {
         MovingStrategy movingStrategy = new MovingStrategy();
         if (movingStrategy.movable(getRandomNumber())) {
