@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.utils.StringUtils;
 
 import java.util.List;
 import java.util.Objects;
@@ -6,6 +8,8 @@ import java.util.Random;
 
 public class Car {
     private static final int NUMBER_GENERATE_RANGE = 10;
+    private static final String CAR_NAME_REQUIRED = "자동차 이름은 값이 존재해야 합니다.";
+    private static final String POSITION_SHOULD_OVER_ZERO = "위치 값이 0보다 작을 수 없습니다.";
 
     private final int position;
     private final String name;
@@ -51,11 +55,11 @@ public class Car {
 
     private void validate(String name, int position) {
         if (StringUtils.isBlank(name)) {
-            throw new IllegalArgumentException("자동차 이름은 값이 존재해야 합니다.");
+            throw new IllegalArgumentException(CAR_NAME_REQUIRED);
         }
 
         if (position < 0) {
-            throw new IllegalArgumentException("위치 값이 0보다 작을 수 없습니다.");
+            throw new IllegalArgumentException(POSITION_SHOULD_OVER_ZERO);
         }
     }
 
