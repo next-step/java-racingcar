@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.utils;
 
 public class StringUtils {
     public static boolean isBlank(String value) {

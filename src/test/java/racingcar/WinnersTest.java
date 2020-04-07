@@ -2,6 +2,8 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.Winners;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +22,7 @@ class WinnersTest {
 
         List<Car> winners = Winners.findWinners(cars);
 
-        assertThat(winners).hasSize(2);
-        assertThat(winners).contains(car1, car3);
+        assertThat(winners).hasSize(1);
+        assertThat(winners).contains(car1);
     }
 }
