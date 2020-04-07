@@ -34,7 +34,7 @@ public class AssertjTest {
     @Test
     @DisplayName("as 에러메시지 테스트")
     void asErrorMessage() {
-        assertThat(result).as("error message test").contains("junit");
+        assertThat(result).as("error message test").contains("assertj");
     }
 
 }
