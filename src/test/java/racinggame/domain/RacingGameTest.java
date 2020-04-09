@@ -5,6 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racinggame.domain.RacingGame;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
@@ -12,7 +14,7 @@ public class RacingGameTest {
 
     @BeforeEach
     void setUp() {
-        racingGame = new RacingGame(new String[]{"pobi", "crong", "honux"}, 5);
+        racingGame = new RacingGame(Arrays.asList(new String[]{"pobi", "crong", "honux"}), 5);
     }
 
     @Test
