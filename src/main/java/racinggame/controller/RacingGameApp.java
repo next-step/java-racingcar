@@ -4,11 +4,13 @@ import racinggame.domain.RacingGame;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;
 
+import java.util.List;
+
 public class RacingGameApp {
 
     public static void main(String[] args) {
 
-        String[] carNames = InputView.cars();
+        List<String> carNames = InputView.cars();
         int roundNumber = InputView.rounds();
 
         RacingGame racingGame = new RacingGame(carNames, roundNumber);

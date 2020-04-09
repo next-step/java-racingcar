@@ -12,8 +12,8 @@ public class RacingGame {
     private int rounds;
     private List<Car> moveResult = new ArrayList<>();
 
-    public RacingGame(String[] carNames, int rounds) {
-        this.allCars = new ArrayList<>(carNames.length);
+    public RacingGame(List<String> carNames, int rounds) {
+        this.allCars = new ArrayList<>(carNames.size());
         this.rounds = rounds;
         for (String carName : carNames) {
             Car racingCar = new Car(carName);

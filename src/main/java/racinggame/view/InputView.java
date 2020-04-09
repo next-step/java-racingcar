@@ -1,18 +1,20 @@
 package racinggame.view;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class InputView {
     private static Scanner scanner = new Scanner(System.in);
 
-    public static String[] cars() {
+    public static List<String> cars() {
         String carNames;
         do {
             System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
             carNames = scanner.nextLine();
         } while (!isValidCarNames(carNames));
-        return carNames.split(",");
+        return Arrays.asList(carNames.split(","));
     }
 
     private static boolean isValidCarNames(String carNames) {
