@@ -6,19 +6,23 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ResultView {
+
     public static void printResult(List<Car> allCars) {
         for (Car car : allCars) {
-            System.out.print(car.getName() + " : ");
-            printPosition(car.getPosition());
-            System.out.println();
+            StringBuilder resultString = new StringBuilder(car.getName());
+            resultString.append(" : ");
+            resultString.append(generatePositionString(car.getPosition()));
+            System.out.println(resultString.toString());
         }
         System.out.println();
     }
 
-    public static void printPosition(int position) {
+    private static String generatePositionString(int position) {
+        StringBuilder positionString = new StringBuilder();
         for (int roundPosition = 0; roundPosition < position; roundPosition++) {
-            System.out.print("-");
+            positionString.append("-");
         }
+        return positionString.toString();
     }
 
     public static void printWinner(List<Car> winners) {
