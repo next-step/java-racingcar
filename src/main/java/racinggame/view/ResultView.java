@@ -7,8 +7,13 @@ import java.util.stream.Collectors;
 
 public class ResultView {
 
-    public static void printResult(List<Car> allCars) {
-        for (Car car : allCars) {
+    public static void printRacingResult(List<Car> allResults, List<Car> winners) {
+        printRoundResult(allResults);
+        printWinner(winners);
+    }
+
+    private static void printRoundResult(List<Car> allResults) {
+        for (Car car : allResults) {
             StringBuilder resultString = new StringBuilder(car.getName());
             resultString.append(" : ");
             resultString.append(generatePositionString(car.getPosition()));
@@ -25,7 +30,7 @@ public class ResultView {
         return positionString.toString();
     }
 
-    public static void printWinner(List<Car> winners) {
+    private static void printWinner(List<Car> winners) {
         StringBuilder winnerResult = new StringBuilder();
         winnerResult.append(winners.stream()
                 .map(Car::getName)

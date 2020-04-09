@@ -13,7 +13,6 @@ public class RacingGameApp {
 
         RacingGame racingGame = new RacingGame(carNames, roundNumber);
 
-        ResultView.printResult(racingGame.allRounds());
-        ResultView.printWinner(racingGame.findWinners());
+        ResultView.printRacingResult(racingGame.allRounds(), racingGame.findWinners());
     }
 }
