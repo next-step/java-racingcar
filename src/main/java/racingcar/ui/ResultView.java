@@ -10,6 +10,7 @@ public class ResultView {
     private static final String POSITION_DISPLAY_CHARACTER = "-";
 
     public static void printRoundResult(List<Car> cars) {
+        System.out.println("===== RACE =====");
         for (Car car : cars) {
             printPosition(car);
         }

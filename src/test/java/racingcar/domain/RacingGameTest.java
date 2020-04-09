@@ -8,7 +8,8 @@ class RacingGameTest {
 
     @Test
     void isRaceEnd() {
-        RacingGame racingGame = new RacingGame("a,b,c", 0);
+        String[] names = {"a", "b", "c"};
+        RacingGame racingGame = new RacingGame(names, 0);
         assertThat(racingGame.isRaceEnd()).isTrue();
     }
 

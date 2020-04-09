@@ -43,13 +43,7 @@ public class Car {
         return name;
     }
 
-    public void addWhenWinner(List<Car> winners, int maxPosition) {
-        if (isWinner(maxPosition)) {
-            winners.add(this);
-        }
-    }
-
-    private boolean isWinner(int maxPosition) {
+    public boolean isWinner(int maxPosition) {
         return maxPosition == position.getPosition();
     }
 
