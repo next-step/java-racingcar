@@ -2,8 +2,6 @@ package racinggame.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racinggame.domain.Car;
-import racinggame.domain.Winner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +25,13 @@ public class WinnerTest {
 
     @Test
     void findWinnerNamesTest() {
+        List<Car> winner = new ArrayList<>();
+        winner.add(racingCars.get(0).clone());
+        winner.add(racingCars.get(2).clone());
+
         assertThat(new Winner(racingCars).findWinnerNames()).hasSize(2);
-        assertThat(new Winner(racingCars).findWinnerNames()).containsExactly(racingCars.get(0), racingCars.get(2));
+        assertThat(new Winner(racingCars).findWinnerNames().contains(racingCars.get(0)));
+        assertThat(new Winner(racingCars).findWinnerNames().contains(racingCars.get(2)));
+        assertThat(new Winner(racingCars).findWinnerNames().containsAll(winner));
     }
 }
