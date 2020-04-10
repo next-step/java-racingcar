@@ -41,13 +41,13 @@ public class RacingGame {
         }
     }
 
+    private boolean moveOrNot() {
+        return this.getRandomNum() >= MOVE_CONDITION;
+    }
+
     private int getRandomNum() {
         Random random = new Random();
         return random.nextInt(BOUND);
-    }
-
-    private boolean moveOrNot() {
-        return this.getRandomNum() >= MOVE_CONDITION;
     }
 
     public List<Car> findWinners() {
