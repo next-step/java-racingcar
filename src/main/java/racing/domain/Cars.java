@@ -3,20 +3,30 @@ package racing.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
+import java.util.stream.Collectors;
 
 public class Cars {
+    private static final String CARS_NAME_DELIMITER = ",";
+
     private List<Car> cars;
 
-    public Cars(String[] nameList) {
+    public Cars(String carNames) {
         cars = new ArrayList<>();
 
+        String[] nameList = carNames.split(CARS_NAME_DELIMITER);
         for (String name : nameList) {
             cars.add(new Car(name));
         }
     }
 
+    public Cars (Cars cars) {
+        this(cars.getList());
+    }
+
     public Cars(List<Car> carList) {
-        cars = new ArrayList<>(carList);
+        cars = carList.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public int size() {
@@ -33,10 +43,10 @@ public class Cars {
         }
     }
 
-    public String getWinnersName(String delimiter) {
+    public String getWinnersName() {
         int maxPosition = maxPosition();
 
-        StringJoiner stringJoiner = new StringJoiner(delimiter);
+        StringJoiner stringJoiner = new StringJoiner(CARS_NAME_DELIMITER);
 
         for (Car car : cars) {
             addMaxCarName(maxPosition, stringJoiner, car);
@@ -60,4 +70,5 @@ public class Cars {
 
         return maxPosition;
     }
+
 }
