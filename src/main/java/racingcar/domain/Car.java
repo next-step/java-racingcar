@@ -1,13 +1,12 @@
 package racingcar.domain;
 
-import java.util.List;
 import java.util.Objects;
 
 public class Car {
 
     private Position position;
-    private String name;
-    private MovableStrategy movableStrategy;
+    private final String name;
+    private final MovableStrategy movableStrategy;
 
     public Car(MovableStrategy movableStrategy, String name) {
         validateName(name);
@@ -16,8 +15,15 @@ public class Car {
         this.position = new Position();
     }
 
+    public Car(MovableStrategy movableStrategy, String name, int position) {
+        validateName(name);
+        this.movableStrategy = movableStrategy;
+        this.name = name.trim();
+        this.position = new Position(position);
+    }
+
     private void validateName(String name) {
-        if (name == null || "".equals(name.trim())) {
+        if (Objects.isNull(name) || "".equals(name.trim())) {
             throw new IllegalArgumentException("자동차 이름이 비어있습니다");
         }
     }
@@ -52,13 +58,12 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return Objects.equals(position, car.position) &&
-                Objects.equals(name, car.name) &&
-                Objects.equals(movableStrategy, car.movableStrategy);
+        return position.equals(car.position) &&
+                name.equals(car.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position, name, movableStrategy);
+        return Objects.hash(position, name);
     }
 }
