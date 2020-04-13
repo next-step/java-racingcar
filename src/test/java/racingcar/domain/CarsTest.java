@@ -33,15 +33,15 @@ class CarsTest {
         assertThat(carC.getPosition()).isEqualTo(0);
     }
 
-    @DisplayName("position이 가장 큰 차량 리스트 리턴")
-    @Test
-    void findWinners() {
-        Cars cars = new Cars(Arrays.asList(carA, carB, carC));
-
-        cars.moveAll();
-        List<Car> winners = cars.findWinners();
-        assertThat(winners.contains(carA)).isTrue();
-        assertThat(winners.contains(carB)).isTrue();
-        assertThat(winners.contains(carC)).isFalse();
-    }
+//    @DisplayName("position이 가장 큰 차량 리스트 리턴")
+//    @Test
+//    void findWinners() {
+//        Cars cars = new Cars(Arrays.asList(carA, carB, carC));
+//
+//        cars.moveAll();
+//        List<Car> winners = cars.findWinners();
+//        assertThat(winners.contains(carA)).isTrue();
+//        assertThat(winners.contains(carB)).isTrue();
+//        assertThat(winners.contains(carC)).isFalse();
+//    }
 }

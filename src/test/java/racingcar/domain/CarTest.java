@@ -7,9 +7,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
@@ -54,28 +51,6 @@ class CarTest {
         car.moveIfPossible();
 
         assertThat(car.getMaxPosition(position)).isEqualTo(expected);
-    }
-
-    @DisplayName("maxPosition이 같을 때 위너 리스트에 추가")
-    @Test
-    public void addWhenWinner() {
-        car.moveIfPossible();
-
-        List<Car> winners = new ArrayList<>();
-        car.addWhenWinner(winners, 1);
-
-        assertThat(winners.contains(car)).isTrue();
-    }
-
-    @DisplayName("maxPosition이 다를 때 위너 리스트에 추가 안됨")
-    @Test
-    public void notAddWinner() {
-        car.moveIfPossible();
-
-        List<Car> winners = new ArrayList<>();
-        car.addWhenWinner(winners, 2);
-
-        assertThat(winners.contains(car)).isFalse();
     }
 
     @DisplayName("잘못된 이름으로 생성시 에러")
