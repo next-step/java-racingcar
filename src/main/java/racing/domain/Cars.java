@@ -20,7 +20,7 @@ public class Cars {
     }
 
     public Cars (Cars cars) {
-        this(cars.getList());
+        this(cars.cars);
     }
 
     public Cars(List<Car> carList) {
