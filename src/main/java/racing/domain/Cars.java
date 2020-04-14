@@ -40,22 +40,13 @@ public class Cars {
         }
     }
 
-    public String getWinnersName(String delimiter) {
+    public List<String> getWinnersName() {
         int maxPosition = maxPosition();
 
-        StringJoiner stringJoiner = new StringJoiner(delimiter);
-
-        for (Car car : cars) {
-            addMaxCarName(maxPosition, stringJoiner, car);
-        }
-
-        return stringJoiner.toString();
-    }
-
-    private void addMaxCarName(int maxPosition, StringJoiner stringJoiner, Car car) {
-        if (car.isSamePosition(maxPosition)) {
-            stringJoiner.add(car.getName());
-        }
+        return cars.stream()
+                .filter(car -> car.isSamePosition(maxPosition))
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 
     public int maxPosition() {

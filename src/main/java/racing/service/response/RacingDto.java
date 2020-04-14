@@ -7,6 +7,7 @@ import java.util.List;
 
 public class RacingDto {
     private List<Cars> roundResults;
+    private List<String> winnerNames;
 
     public RacingDto(Cars cars) {
         this.roundResults = new ArrayList<>();
@@ -24,5 +25,13 @@ public class RacingDto {
 
     public Cars getLastRound() {
         return roundResults.get(roundResults.size() - 1);
+    }
+
+    public void addWinnerNames(List<String> winnerNames) {
+        this.winnerNames = winnerNames;
+    }
+
+    public List<String> getWinnerNames() {
+        return winnerNames;
     }
 }

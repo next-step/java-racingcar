@@ -6,14 +6,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
-    private static final String CARS_NAME_DELIMITER = ",";
-
     private static final String DEFAULT_CAR_NAME = "abc";
     private static final String WINNER_CAR_NAME1 = "bcd";
     private static final String WINNER_CAR_NAME2 = "cde";
@@ -45,9 +42,9 @@ public class CarsTest {
         List<Car> carsList = generateCarListOneWinner();
         Cars cars = new Cars(carsList);
 
-        String result = cars.getWinnersName(CARS_NAME_DELIMITER);
+        List<String> result = cars.getWinnersName();
 
-        assertThat(result).isEqualTo(WINNER_CAR_NAME1);
+        assertThat(result.size()).isEqualTo(1);
     }
 
     @Test
@@ -56,9 +53,9 @@ public class CarsTest {
         List<Car> carsList = generateCarListMultiWinner();
         Cars cars = new Cars(carsList);
 
-        String result = cars.getWinnersName(CARS_NAME_DELIMITER);
+        List<String> result = cars.getWinnersName();
 
-        assertThat(result).isEqualTo(String.join(",", Arrays.asList(WINNER_CAR_NAME1, WINNER_CAR_NAME2)));
+        assertThat(result.size()).isEqualTo(2);
     }
 
     @Test

@@ -5,6 +5,7 @@ import racing.domain.Cars;
 import racing.service.response.RacingDto;
 
 import java.util.List;
+import java.util.StringJoiner;
 
 public class ResultView {
     private static final String CARS_NAME_DELIMITER = ",";
@@ -14,15 +15,15 @@ public class ResultView {
     private static final String RACING_WINNERS_FORMAT = "%s가 최종 우승했습니다.";
     private static final String RESULT_INFO_COMMENT = "\n실행 결과\n";
 
-    public static void printRacingResult(RacingDto racingDTO) {
-        List<Cars> results = racingDTO.getRoundResults();
+    public static void printRacingResult(RacingDto racingDto) {
+        List<Cars> results = racingDto.getRoundResults();
 
         StringBuilder stringBuilder = new StringBuilder(RESULT_INFO_COMMENT);
         for (Cars cars : results) {
             positionToView(cars, stringBuilder);
         }
 
-        winnersToView(racingDTO.getLastRound(), stringBuilder);
+        winnersToView(racingDto.getWinnerNames(), stringBuilder);
 
         System.out.println(stringBuilder.toString());
     }
@@ -46,7 +47,13 @@ public class ResultView {
         return String.format(CAR_STATE_FORMAT, car.getName(), stringBuilder.toString());
     }
 
-    public static void winnersToView(Cars cars, StringBuilder stringBuilder) {
-        stringBuilder.append(String.format(RACING_WINNERS_FORMAT, cars.getWinnersName(CARS_NAME_DELIMITER)));
+    public static void winnersToView(List<String> winnerNames, StringBuilder stringBuilder) {
+        StringJoiner stringJoiner = new StringJoiner(CARS_NAME_DELIMITER);
+
+        for (String name : winnerNames) {
+            stringJoiner.add(name);
+        }
+
+        stringBuilder.append(String.format(RACING_WINNERS_FORMAT, stringJoiner.toString()));
     }
 }

@@ -8,8 +8,8 @@ import racing.view.ResultView;
 public class RacingController {
 
     public static void play() {
-        RacingDto racingDTO = RacingService.playGame(InputView.getCarNames(), InputView.getTryCnt());
+        RacingDto racingDto = RacingService.playGame(InputView.getCarNames(), InputView.getTryCnt());
 
-        ResultView.printRacingResult(racingDTO);
+        ResultView.printRacingResult(racingDto);
     }
 }
