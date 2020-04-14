@@ -7,6 +7,7 @@ import racing.service.response.RacingDto;
 import java.util.List;
 
 public class ResultView {
+    private static final String CARS_NAME_DELIMITER = ",";
     private static final String CAR_STATE_STR = "-";
 
     private static final String CAR_STATE_FORMAT = "%s : %s\n";
@@ -46,6 +47,6 @@ public class ResultView {
     }
 
     public static void winnersToView(Cars cars, StringBuilder stringBuilder) {
-        stringBuilder.append(String.format(RACING_WINNERS_FORMAT, cars.getWinnersName()));
+        stringBuilder.append(String.format(RACING_WINNERS_FORMAT, cars.getWinnersName(CARS_NAME_DELIMITER)));
     }
 }

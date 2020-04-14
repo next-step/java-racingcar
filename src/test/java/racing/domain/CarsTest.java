@@ -12,6 +12,8 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
+    private static final String CARS_NAME_DELIMITER = ",";
+
     private static final String DEFAULT_CAR_NAME = "abc";
     private static final String WINNER_CAR_NAME1 = "bcd";
     private static final String WINNER_CAR_NAME2 = "cde";
@@ -22,7 +24,7 @@ public class CarsTest {
     @CsvSource(value = {"a,b,c:3", "a,b,123,a2b:4"}, delimiter = ':')
     @DisplayName("주어진 자동차들의 이름을 가진 차들의 배열 생성 테스트")
     void generateCarsListTest(String input, int expected) {
-        Cars cars = new Cars(input);
+        Cars cars = new Cars(input.split(","));
         assertThat(cars.size()).isEqualTo(expected);
     }
 
@@ -43,7 +45,7 @@ public class CarsTest {
         List<Car> carsList = generateCarListOneWinner();
         Cars cars = new Cars(carsList);
 
-        String result = cars.getWinnersName();
+        String result = cars.getWinnersName(CARS_NAME_DELIMITER);
 
         assertThat(result).isEqualTo(WINNER_CAR_NAME1);
     }
@@ -54,7 +56,7 @@ public class CarsTest {
         List<Car> carsList = generateCarListMultiWinner();
         Cars cars = new Cars(carsList);
 
-        String result = cars.getWinnersName();
+        String result = cars.getWinnersName(CARS_NAME_DELIMITER);
 
         assertThat(result).isEqualTo(String.join(",", Arrays.asList(WINNER_CAR_NAME1, WINNER_CAR_NAME2)));
     }

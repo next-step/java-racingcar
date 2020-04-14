@@ -7,7 +7,7 @@ import racing.service.response.RacingDto;
 
 public class RacingService {
 
-    public RacingDto playGame(String carNames, int tryCnt) {
+    public static RacingDto playGame(String[] carNames, int tryCnt) {
         Cars cars = new Cars(carNames);
         Movable movable = new DefaultMovable();
         RacingDto racingDTO = new RacingDto(cars);

@@ -8,10 +8,8 @@ import racing.view.ResultView;
 public class RacingController {
 
     public static void play() {
-        String carNames = InputView.getCarNames();
-        int tryCnt = InputView.getTryCnt();
+        RacingDto racingDTO = RacingService.playGame(InputView.getCarNames(), InputView.getTryCnt());
 
-        RacingDto racingDTO = new RacingService().playGame(carNames, tryCnt);
         ResultView.printRacingResult(racingDTO);
     }
 }

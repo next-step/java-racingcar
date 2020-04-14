@@ -6,15 +6,12 @@ import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private static final String CARS_NAME_DELIMITER = ",";
-
     private List<Car> cars;
 
-    public Cars(String carNames) {
+    public Cars(String[] carNames) {
         cars = new ArrayList<>();
 
-        String[] nameList = carNames.split(CARS_NAME_DELIMITER);
-        for (String name : nameList) {
+        for (String name : carNames) {
             cars.add(new Car(name));
         }
     }
@@ -43,10 +40,10 @@ public class Cars {
         }
     }
 
-    public String getWinnersName() {
+    public String getWinnersName(String delimiter) {
         int maxPosition = maxPosition();
 
-        StringJoiner stringJoiner = new StringJoiner(CARS_NAME_DELIMITER);
+        StringJoiner stringJoiner = new StringJoiner(delimiter);
 
         for (Car car : cars) {
             addMaxCarName(maxPosition, stringJoiner, car);

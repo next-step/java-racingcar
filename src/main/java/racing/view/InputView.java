@@ -5,6 +5,7 @@ import racing.domain.ValidChecker;
 import java.util.Scanner;
 
 public class InputView {
+    private static final String CARS_NAME_DELIMITER = ",";
     private static final int DEFAULT_TRY_CNT = 0;
     private static final String GET_CARS_NAME_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String GET_GAME_CNT_MESSAGE = "시도할 회수는 몇 회 인가요?";
@@ -13,7 +14,7 @@ public class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static String getCarNames() {
+    public static String[] getCarNames() {
         String carNames;
 
         do {
@@ -22,7 +23,7 @@ public class InputView {
             carNames = scanner.nextLine();
         } while(!ValidChecker.checkInput(carNames));
 
-        return carNames;
+        return carNames.split(CARS_NAME_DELIMITER);
     }
 
     public static int getTryCnt() {
