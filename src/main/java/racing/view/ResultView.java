@@ -2,7 +2,7 @@ package racing.view;
 
 import racing.domain.Car;
 import racing.domain.Cars;
-import racing.service.response.RacingDTO;
+import racing.service.response.RacingDto;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class ResultView {
     private static final String RACING_WINNERS_FORMAT = "%s가 최종 우승했습니다.";
     private static final String RESULT_INFO_COMMENT = "\n실행 결과\n";
 
-    public static void printRacingResult(RacingDTO racingDTO) {
+    public static void printRacingResult(RacingDto racingDTO) {
         List<Cars> results = racingDTO.getRoundResults();
 
         StringBuilder stringBuilder = new StringBuilder(RESULT_INFO_COMMENT);

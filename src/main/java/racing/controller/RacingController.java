@@ -1,6 +1,6 @@
 package racing.controller;
 
-import racing.service.response.RacingDTO;
+import racing.service.response.RacingDto;
 import racing.service.RacingService;
 import racing.view.InputView;
 import racing.view.ResultView;
@@ -11,7 +11,7 @@ public class RacingController {
         String carNames = InputView.getCarNames();
         int tryCnt = InputView.getTryCnt();
 
-        RacingDTO racingDTO = new RacingService().playGame(carNames, tryCnt);
+        RacingDto racingDTO = new RacingService().playGame(carNames, tryCnt);
         ResultView.printRacingResult(racingDTO);
     }
 }

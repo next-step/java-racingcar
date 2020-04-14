@@ -5,10 +5,10 @@ import racing.domain.Cars;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingDTO {
+public class RacingDto {
     private List<Cars> roundResults;
 
-    public RacingDTO(Cars cars) {
+    public RacingDto(Cars cars) {
         this.roundResults = new ArrayList<>();
 
         this.roundResults.add(new Cars(cars));
