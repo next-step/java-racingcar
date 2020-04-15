@@ -7,7 +7,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class CarTest {
     private static final int DEFAULT_POSITION = 1;
@@ -18,7 +17,7 @@ public class CarTest {
     @DisplayName("자동차 위치의 초기값이 1로 설정되는지 테스트")
     void defaultCarPositionTest() {
         Car car = new Car(DEFAULT_CAR_NAME);
-        assertTrue(car.isSamePosition(DEFAULT_POSITION));
+        assertThat(car.isSamePosition(DEFAULT_POSITION)).isTrue();
     }
 
     @ParameterizedTest
@@ -26,7 +25,7 @@ public class CarTest {
     @DisplayName("자동차의 이름 세팅 테스트")
     void initializeCarNameTest(String input) {
         Car car = new Car(input);
-        assertTrue(car.isSameName(input));
+        assertThat(car.isSameName(input)).isTrue();
     }
 
     @ParameterizedTest
