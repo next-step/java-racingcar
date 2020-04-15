@@ -6,7 +6,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,21 +22,7 @@ public class CarsTest {
     @DisplayName("주어진 자동차들의 이름을 가진 차들의 배열 생성 테스트")
     void generateCarsListTest(String input, int expected) {
         Cars cars = new Cars(input.split(","));
-        assertThat(cars.size()).isEqualTo(expected);
-    }
-
-    @Test
-    @DisplayName("모든 자동차의 position list를 return 하는지 테스트")
-    void getCarsPositionListTest() {
-        List<Car> carsList = generateCarList();
-        Cars cars = new Cars(carsList);
-
-        List<Integer> result = cars.getCarsPositionList();
-        int resultSize = result.size();
-
-        for (int idx = 0; idx < resultSize; idx++) {
-            assertThat(result.get(idx)).isEqualTo(carsList.get(idx).getPosition());
-        }
+        assertThat(cars.getList()).hasSize(expected);
     }
 
     @Test
@@ -57,9 +42,9 @@ public class CarsTest {
         List<Car> carsList = generateCarListOneWinner();
         Cars cars = new Cars(carsList);
 
-        String result = cars.getWinnersName(",");
+        List<String> result = cars.getWinnersName();
 
-        assertThat(result).isEqualTo(WINNER_CAR_NAME1);
+        assertThat(result).hasSize(1);
     }
 
     @Test
@@ -68,9 +53,40 @@ public class CarsTest {
         List<Car> carsList = generateCarListMultiWinner();
         Cars cars = new Cars(carsList);
 
-        String result = cars.getWinnersName(",");
+        List<String> result = cars.getWinnersName();
 
-        assertThat(result).isEqualTo(String.join(",", Arrays.asList(WINNER_CAR_NAME1, WINNER_CAR_NAME2)));
+        assertThat(result).hasSize(2);
+    }
+
+    @Test
+    @DisplayName("무조건 이동 가능 조건인 경우 모든 Car 이동 테스트")
+    void checkEveryCarMoveTest() {
+        List<Car> carsList = generateSameCarList();
+        Cars cars = new Cars(carsList);
+
+        cars.playRound(() -> true);
+
+        assertThat(cars.maxPosition()).isEqualTo(MAX_POSITION + 1);
+    }
+
+    @Test
+    @DisplayName("무조건 이동 불가능 조건인 경우 모든 Car 이동 테스트")
+    void checkEveryCarDoNotMoveTest() {
+        List<Car> carsList = generateSameCarList();
+        Cars cars = new Cars(carsList);
+
+        cars.playRound(() -> false);
+
+        assertThat(cars.maxPosition()).isEqualTo(MAX_POSITION);
+    }
+
+    private List<Car> generateSameCarList() {
+        List<Car> carList = new ArrayList<>();
+        carList.add(new Car(DEFAULT_CAR_NAME, MAX_POSITION));
+        carList.add(new Car(DEFAULT_CAR_NAME, MAX_POSITION));
+        carList.add(new Car(DEFAULT_CAR_NAME, MAX_POSITION));
+
+        return carList;
     }
 
     private List<Car> generateCarList() {
