@@ -9,7 +9,7 @@ public class Car {
     private int position;
 
     public Car(Car car) {
-        this(car.getName(), car.getPosition());
+        this(car.name, car.position);
     }
 
     public Car(String name) {
