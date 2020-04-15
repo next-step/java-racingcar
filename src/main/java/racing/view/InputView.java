@@ -1,7 +1,5 @@
 package racing.view;
 
-import racing.domain.ValidChecker;
-
 import java.util.Scanner;
 
 public class InputView {
@@ -16,26 +14,42 @@ public class InputView {
 
     public static String[] getCarNames() {
         String carNames;
-
         do {
             System.out.println(GET_CARS_NAME_MESSAGE);
 
             carNames = scanner.nextLine();
-        } while(!ValidChecker.checkInput(carNames));
+        } while(isCarNameValid(carNames));
 
         return carNames.split(CARS_NAME_DELIMITER);
     }
 
+    private static boolean isCarNameValid(String carNames) {
+        if (!ValidChecker.isInputValid(carNames)) {
+            printInvalidStringMessage();
+            return false;
+        }
+
+        return true;
+    }
+
     public static int getTryCnt() {
         int tryCnt;
-
         do {
             System.out.println(GET_GAME_CNT_MESSAGE);
 
             tryCnt = parseTryCnt();
-        } while (!ValidChecker.checkInput(tryCnt));
+        } while (!isTryCountValid(tryCnt));
 
         return tryCnt;
+    }
+
+    private static boolean isTryCountValid(int tryCnt) {
+        if (!ValidChecker.isInputValid(tryCnt)) {
+            printInvalidIntMessage();
+            return false;
+        }
+
+        return true;
     }
 
     private static int parseTryCnt() {
