@@ -5,7 +5,6 @@ import racing.domain.Cars;
 import racing.service.response.RacingDto;
 
 import java.util.List;
-import java.util.StringJoiner;
 
 public class ResultView {
     private static final String CARS_NAME_DELIMITER = ",";
@@ -22,8 +21,7 @@ public class ResultView {
         for (Cars cars : results) {
             positionToView(cars, stringBuilder);
         }
-
-        winnersToView(racingDto.getWinnerNames(), stringBuilder);
+        stringBuilder.append(winnersToView(racingDto.getWinnerNames()));
 
         System.out.println(stringBuilder.toString());
     }
@@ -47,13 +45,7 @@ public class ResultView {
         return String.format(CAR_STATE_FORMAT, car.getName(), stringBuilder.toString());
     }
 
-    public static void winnersToView(List<String> winnerNames, StringBuilder stringBuilder) {
-        StringJoiner stringJoiner = new StringJoiner(CARS_NAME_DELIMITER);
-
-        for (String name : winnerNames) {
-            stringJoiner.add(name);
-        }
-
-        stringBuilder.append(String.format(RACING_WINNERS_FORMAT, stringJoiner.toString()));
+    public static String winnersToView(List<String> winnerNames) {
+        return String.format(RACING_WINNERS_FORMAT, String.join(CARS_NAME_DELIMITER, winnerNames));
     }
 }

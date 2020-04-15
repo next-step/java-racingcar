@@ -18,7 +18,7 @@ public class InputView {
             System.out.println(GET_CARS_NAME_MESSAGE);
 
             carNames = scanner.nextLine();
-        } while(isCarNameValid(carNames));
+        } while(!isCarNameValid(carNames));
 
         return carNames.split(CARS_NAME_DELIMITER);
     }
