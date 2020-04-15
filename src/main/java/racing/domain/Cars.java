@@ -26,10 +26,6 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public int size() {
-        return cars.size();
-    }
-
     public List<Car> getList() {
         return cars;
     }

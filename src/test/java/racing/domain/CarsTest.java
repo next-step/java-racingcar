@@ -22,7 +22,7 @@ public class CarsTest {
     @DisplayName("주어진 자동차들의 이름을 가진 차들의 배열 생성 테스트")
     void generateCarsListTest(String input, int expected) {
         Cars cars = new Cars(input.split(","));
-        assertThat(cars.size()).isEqualTo(expected);
+        assertThat(cars.getList()).hasSize(expected);
     }
 
     @Test
@@ -44,7 +44,7 @@ public class CarsTest {
 
         List<String> result = cars.getWinnersName();
 
-        assertThat(result.size()).isEqualTo(1);
+        assertThat(result).hasSize(1);
     }
 
     @Test
@@ -55,7 +55,7 @@ public class CarsTest {
 
         List<String> result = cars.getWinnersName();
 
-        assertThat(result.size()).isEqualTo(2);
+        assertThat(result).hasSize(2);
     }
 
     @Test

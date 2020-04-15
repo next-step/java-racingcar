@@ -23,10 +23,6 @@ public class RacingDto {
         return roundResults;
     }
 
-    public Cars getLastRound() {
-        return roundResults.get(roundResults.size() - 1);
-    }
-
     public void addWinnerNames(List<String> winnerNames) {
         this.winnerNames = winnerNames;
     }
