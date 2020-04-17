@@ -2,12 +2,9 @@ package racinggame.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-    private static final int BOUND = 10;
-    private static final int MOVE_CONDITION = 4;
     private List<Car> allCars;
     private int rounds;
     private List<Car> moveResult = new ArrayList<>();
@@ -42,12 +39,7 @@ public class RacingGame {
     }
 
     private boolean moveOrNot() {
-        return this.getRandomNum() >= MOVE_CONDITION;
-    }
-
-    private int getRandomNum() {
-        Random random = new Random();
-        return random.nextInt(BOUND);
+        return new RandomBasedMoveStrategy().moveOrNot();
     }
 
     public List<Car> findWinners() {
