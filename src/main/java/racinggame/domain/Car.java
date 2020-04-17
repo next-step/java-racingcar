@@ -25,8 +25,8 @@ public class Car {
         this.position++;
     }
 
-    public boolean isWinner(int maxPosition) {
-        return maxPosition == this.position;
+    public boolean isInPsition(final int position) {
+        return position == this.position;
     }
 
     @Override

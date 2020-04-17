@@ -21,8 +21,8 @@ public class CarTest {
     }
 
     @Test
-    void isWinnerTest() {
-        assertThat(testCar.isWinner(6)).isFalse();
-        assertThat(testCar.isWinner(5)).isTrue();
+    void isInPositionTest() {
+        assertThat(testCar.isInPsition(6)).isFalse();
+        assertThat(testCar.isInPsition(5)).isTrue();
     }
 }
