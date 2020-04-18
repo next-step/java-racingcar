@@ -18,28 +18,18 @@ public class RacingGame {
         }
     }
 
-    public List<Car> allRounds() {
+    public List<Car> allRounds(MoveStrategy moveStrategy) {
         for (int round = 0; round < rounds; round++) {
-            this.racing();
+            this.racing(moveStrategy);
         }
         return moveResult;
     }
 
-    private void racing() {
+    private void racing(MoveStrategy moveStrategy) {
         for (Car car : allCars) {
-            moveNowCar(car);
+            car.moveCar(moveStrategy);
             moveResult.add(car.clone());
         }
-    }
-
-    private void moveNowCar(Car nowCar) {
-        if (this.moveOrNot()) {
-            nowCar.moveCar();
-        }
-    }
-
-    private boolean moveOrNot() {
-        return new RandomBasedMoveStrategy().moveOrNot();
     }
 
     public List<Car> findWinners() {

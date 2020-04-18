@@ -1,6 +1,8 @@
 package racinggame.controller;
 
+import racinggame.domain.MoveStrategy;
 import racinggame.domain.RacingGame;
+import racinggame.domain.RandomBasedMoveStrategy;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;
 
@@ -13,8 +15,9 @@ public class RacingGameApp {
         List<String> carNames = InputView.cars();
         int roundNumber = InputView.rounds();
 
+        MoveStrategy moveStrategy = new RandomBasedMoveStrategy();
         RacingGame racingGame = new RacingGame(carNames, roundNumber);
 
-        ResultView.printRacingResult(racingGame.allRounds(), racingGame.findWinners());
+        ResultView.printRacingResult(racingGame.allRounds(moveStrategy), racingGame.findWinners());
     }
 }

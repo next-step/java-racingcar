@@ -21,11 +21,13 @@ public class Car {
         return position;
     }
 
-    public void moveCar() {
-        this.position++;
+    public void moveCar(MoveStrategy moveStrategy) {
+        if (moveStrategy.moveOrNot()) {
+            this.position++;
+        }
     }
 
-    public boolean isInPsition(final int position) {
+    public boolean isInPosition(final int position) {
         return position == this.position;
     }
 
