@@ -24,7 +24,7 @@ public class Winner {
         int maxPosition = maxPosition();
 
         return allCars.stream()
-                .filter(x -> x.isInPsition(maxPosition))
+                .filter(x -> x.isInPosition(maxPosition))
                 .map(Car::clone)
                 .collect(Collectors.toList());
     }
