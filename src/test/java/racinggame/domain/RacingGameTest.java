@@ -11,6 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
     private RacingGame racingGame;
+    MoveStrategy moveStrategy = new RandomBasedMoveStrategy();
 
     @BeforeEach
     void setUp() {
@@ -27,6 +28,6 @@ public class RacingGameTest {
     @DisplayName("3대의 Car, 5번의 Round -> 15줄의 moveResult 생성")
     @Test
     void racingTest() {
-        assertThat(racingGame.allRounds()).hasSize(15);
+        assertThat(racingGame.allRounds(moveStrategy)).hasSize(15);
     }
 }
