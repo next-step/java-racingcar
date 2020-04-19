@@ -9,7 +9,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class WinnerTest {
-    List<Car> racingCars;
+    private List<Car> racingCars;
 
     @BeforeEach
     void setUp() {
