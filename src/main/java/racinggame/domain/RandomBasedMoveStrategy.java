@@ -5,6 +5,7 @@ import java.util.Random;
 public class RandomBasedMoveStrategy implements MoveStrategy {
     private static final int BOUND = 10;
     private static final int MOVE_CONDITION = 4;
+    private static final Random random = new Random();
 
     @Override
     public boolean moveOrNot() {
@@ -12,7 +13,6 @@ public class RandomBasedMoveStrategy implements MoveStrategy {
     }
 
     private int getRandomNum() {
-        Random random = new Random();
         return random.nextInt(BOUND);
     }
 }
