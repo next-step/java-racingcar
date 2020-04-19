@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -26,12 +27,9 @@ public class WinnerTest {
     @Test
     void findWinnerNamesTest() {
         List<Car> winner = new ArrayList<>();
-        winner.add(racingCars.get(0).clone());
-        winner.add(racingCars.get(2).clone());
+        winner.add(racingCars.get(0));
+        winner.add(racingCars.get(2));
 
-        assertThat(new Winner(racingCars).findWinnerNames()).hasSize(2);
-        assertThat(new Winner(racingCars).findWinnerNames().contains(racingCars.get(0)));
-        assertThat(new Winner(racingCars).findWinnerNames().contains(racingCars.get(2)));
-        assertThat(new Winner(racingCars).findWinnerNames().containsAll(winner));
+        assertThat(new Winner(racingCars).findWinnerNames()).containsExactlyInAnyOrderElementsOf(winner);
     }
 }
