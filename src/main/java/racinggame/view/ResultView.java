@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ResultView {
+    private static final String POSITION_DISPLAY = "-";
 
     public static void printRacingResult(List<Car> allResults, List<Car> winners) {
         printRoundResult(allResults);
@@ -25,7 +26,7 @@ public class ResultView {
     private static String generatePositionString(int position) {
         StringBuilder positionString = new StringBuilder();
         for (int roundPosition = 0; roundPosition < position; roundPosition++) {
-            positionString.append("-");
+            positionString.append(POSITION_DISPLAY);
         }
         return positionString.toString();
     }
