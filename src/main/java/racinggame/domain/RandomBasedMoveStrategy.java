@@ -12,6 +12,7 @@ public class RandomBasedMoveStrategy implements MoveStrategy {
     }
 
     private int getRandomNum() {
-        return new Random().nextInt(BOUND);
+        Random random = new Random();
+        return random.nextInt(BOUND);
     }
 }
