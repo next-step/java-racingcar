@@ -9,9 +9,10 @@ repositories {
 }
 
 dependencies {
-    compile('com.sparkjava:spark-core:2.8.0')
-    compile('com.sparkjava:spark-template-handlebars:2.7.1')
-    compile('ch.qos.logback:logback-classic:1.2.3')
-    testCompile('junit:junit:4.12')
+    testCompile('org.junit.jupiter:junit-jupiter:5.4.2')
     testCompile('org.assertj:assertj-core:3.11.1')
+}
+
+test {
+    useJUnitPlatform()
 }
