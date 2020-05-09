@@ -18,4 +18,10 @@ public class SetCollectionTests {
         numbers.add(2);
         numbers.add(3);
     }
+
+    @DisplayName("Set의 size 메소드를 통해 크기 확인가능한지 테스트")
+    @Test
+    void setSizeMethodTest() {
+        assertThat(numbers.size()).isEqualTo(3);
+    }
 }
