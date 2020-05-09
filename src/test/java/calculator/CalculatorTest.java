@@ -76,4 +76,10 @@ class CalculatorTest {
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("연산하기위해 숫자를 입력해주세요.");
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"2 + 3 * 4 / 2=10", "2 * 12=24", "1 + 2 - 4=-1", "8 / 2 + 3 * 6 - 1=41"}, delimiter = '=')
+    void 사칙_연산을_모두_포함하는_기능(String input, int result) {
+        assertThat(Calculator.runCalculator(input)).isEqualTo(result);
+    }
 }
