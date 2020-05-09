@@ -1,6 +1,7 @@
 package study;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -31,12 +32,14 @@ public class SetTest {
     }
 
     @ParameterizedTest
+    @DisplayName("set contains parameterized test")
     @ValueSource(ints = {1,2,3})
     void setContainsParameterizedTest(int testNumbers) {
         assertThat(numbers.contains(testNumbers)).isTrue();
     }
 
     @ParameterizedTest
+    @DisplayName("set contains parameterized test with csv")
     @CsvSource({"1,true", "2,true", "3,true", "4,false"})
     void setContainsParameterizedTestWithCsv(int input, boolean expected) {
         assertThat(numbers.contains(input)).isEqualTo(expected);
