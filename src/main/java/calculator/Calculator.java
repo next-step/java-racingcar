@@ -3,7 +3,7 @@ package calculator;
 @FunctionalInterface
 public interface Calculator {
 
-    double calculate(String input) throws IllegalArgumentException;
+    double calculate(String input);
 
     default double plus(double a, double b) {
         return a + b;
