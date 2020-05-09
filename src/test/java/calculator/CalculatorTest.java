@@ -31,7 +31,13 @@ class CalculatorTest {
 
     @ParameterizedTest
     @CsvSource(value = {"1=2", "2=1"}, delimiter = '=')
-    void 나눗셈(int endNumber, int result){
+    void 나눗셈(int endNumber, int result) {
         assertThat(Calculator.divide(defaultNumber, endNumber)).isEqualTo(result);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1=2", "2=4", "3=6"}, delimiter = '=')
+    void 곱셈(int endNumber, int result) {
+        assertThat(Calculator.multiple(defaultNumber, endNumber)).isEqualTo(result);
     }
 }

@@ -12,4 +12,8 @@ class Calculator {
     static int divide(int startNumber, int endNumber) {
         return startNumber / endNumber;
     }
+
+    static int multiple(int startNumber, int endNumber) {
+        return startNumber * endNumber;
+    }
 }
