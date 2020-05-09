@@ -24,4 +24,12 @@ public class StringTests {
     void stringSubstring() {
         assertThat("(1,2)".substring(1,4)).isEqualTo("1,2");
     }
+
+    @DisplayName("String 'abc' 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오는지 확인")
+    @Test
+    void charAtTestWithinValidIndexNumber() {
+        assertThat("abc".charAt(0)).isEqualTo('a');
+        assertThat("abc".charAt(1)).isEqualTo('b');
+        assertThat("abc".charAt(2)).isEqualTo('c');
+    }
 }
