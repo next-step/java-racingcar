@@ -7,21 +7,21 @@ import org.junit.jupiter.api.Test;
 public class StringTest {
 
   @Test
-  void split() {
+  void doSplit() {
     String[] data = "1,2".split(",");
     assertThat(data).contains("1");
     assertThat(data).containsExactly("1", "2");
   }
 
   @Test
-  void substring() {
+  void doSubstring() {
     String data = "(1,2)".substring(1, 4);
     assertThat(data).isEqualTo("1,2");
   }
 
   @Test
   @DisplayName("특정 위치의 문자 가져오기, 문자열 범위 밖의 위치 탐색 시 익셉션 확인을 위한 테스트")
-  void charAt() {
+  void doCharAt() {
     String data = "abc";
     assertThat(data.charAt(0)).isEqualTo('a');
     assertThatThrownBy(() -> {
