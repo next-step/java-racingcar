@@ -16,4 +16,14 @@ class Calculator {
     static int multiple(int startNumber, int endNumber) {
         return startNumber * endNumber;
     }
+
+    static boolean isOperator(String operation) {
+        return operation.matches("[\\*\\+-/]");
+    }
+
+    static void checkOperationSign(String operation) {
+        if(!isOperator(operation)){
+            throw new IllegalArgumentException("입력값이 잘못되었습니다. 사칙연산부호를 입력해주세요.");
+        }
+    }
 }
