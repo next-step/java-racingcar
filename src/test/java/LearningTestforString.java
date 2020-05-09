@@ -24,4 +24,17 @@ public class LearningTestforString {
                 .hasSize(1)
                 .contains("1");
     }
+
+    @DisplayName("remove parentheses and split two numbers")
+    @Test
+    void testRemoveParenthesesAndSplit() {
+        String testString = "(1,2)";
+        String[] splitResult = testString
+                .substring(1, testString.length() - 1)
+                .split(",");
+
+        assertThat(splitResult)
+                .contains("1", "2")
+                .containsExactly("1", "2");
+    }
 }
