@@ -6,7 +6,6 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 
 public class Argument {
@@ -26,6 +25,13 @@ public class Argument {
 
 
     private static boolean isValidArgument(String arg){
-        return !StringUtils.isEmpty(arg) && arg.matches(REGEX);
+        return !StringUtils.isEmpty(arg) && arg.matches(REGEX) && existAllSymbol(arg);
+    }
+
+    private static boolean existAllSymbol(String arg) {
+        return arg.contains(Operator.PLUS.getSymbol()) &&
+                arg.contains(Operator.MINUS.getSymbol()) &&
+                arg.contains(Operator.DIVIDE.getSymbol()) &&
+                arg.contains(Operator.MULTIPLY.getSymbol());
     }
 }
