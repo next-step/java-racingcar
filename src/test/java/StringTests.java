@@ -2,6 +2,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringTests {
     @DisplayName("String '1,2'를 ','로 split 했을 때 1과 2로 잘 분리되는지 확인")
@@ -31,5 +32,14 @@ public class StringTests {
         assertThat("abc".charAt(0)).isEqualTo('a');
         assertThat("abc".charAt(1)).isEqualTo('b');
         assertThat("abc".charAt(2)).isEqualTo('c');
+    }
+
+    @DisplayName(
+            "String의 charAt()를 사용해서 특정 위치의 문자를 가져올 때" +
+            "위치 값을 벗어나면 StringIndexOutOfBoundsException이 발생하는지 확인"
+    )
+    @Test
+    public void charAtTestWithInvalidIndexNumber() {
+        assertThatThrownBy(() -> "abc".charAt(3)).isInstanceOf(StringIndexOutOfBoundsException.class);
     }
 }
