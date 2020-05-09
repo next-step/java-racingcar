@@ -57,4 +57,13 @@ class CalculatorTest {
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력값이 잘못되었습니다. 사칙연산부호를 입력해주세요.");
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", "  "})
+    void 입력_값이_null이거나_빈_공백_문자일_경우_IllegalArgumentException(String input) {
+        assertThatThrownBy(() -> {
+            Calculator.isBlack(input);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("값을 입력해주세요.");
+    }
 }
