@@ -11,6 +11,17 @@ public class LearningTestforString {
         String testString = "1,2";
         String[] splitResult = testString.split(",");
         assertThat(splitResult)
-                .containsExactly("1","2");
+                .contains("1", "2")
+                .containsExactly("1", "2");
+    }
+
+    @DisplayName("split \"1\" with \",\"")
+    @Test
+    void testSplitOneNumber() {
+        String testString = "1";
+        String[] splitResult = testString.split(",");
+        assertThat(splitResult)
+                .hasSize(1)
+                .contains("1");
     }
 }
