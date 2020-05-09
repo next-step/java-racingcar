@@ -1,6 +1,7 @@
 package stringsplitter;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -39,5 +40,12 @@ public class StringSplitterTest {
     assertThat("abc".charAt(0)).isEqualTo('a');
     assertThat("abc".charAt(1)).isEqualTo('b');
     assertThat("abc".charAt(2)).isEqualTo('c');
+  }
+
+  //요구사항 3-2
+  @DisplayName("Throwing StringIndexOutOfBoundesException when pointing invalid index using charAt() method")
+  @Test
+  void claimingCharacterInvalidIndexFromGivenString() {
+    assertThatThrownBy(() -> "abc".charAt(999)).isInstanceOf(IndexOutOfBoundsException.class);
   }
 }
