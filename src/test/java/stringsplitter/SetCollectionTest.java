@@ -7,6 +7,8 @@ import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class SetCollectionTest {
   private Set<Integer> numbers;
@@ -21,8 +23,9 @@ public class SetCollectionTest {
   }
 
   @DisplayName("Test size method of Set")
-  @Test
-  void checkSetSizeMethod() {
-    assertThat(numbers.size()).isEqualTo(3);
+  @ParameterizedTest
+  @ValueSource(ints = {1, 2, 3})
+  void checkSetSizeMethod(int targetNumber) {
+    assertThat(numbers.contains(targetNumber)).isTrue();
   }
 }
