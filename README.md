@@ -7,3 +7,14 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 문자열 계산기
+- TDD 목록
+  - Null인 경우 IllegalArgumentException
+  - 사칙연산 기호가 아닌 경우 IllegalArgumentException
+  - 덧셈
+  - 뺄셈
+  - 나눗셈
+  - 곱셈
+  - 구분자 split 하기
+  - 사칙 연산을 모두 포함하는 기능
