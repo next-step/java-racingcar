@@ -22,4 +22,10 @@ class CalculatorTest {
     void 덧셈(int startNumber, int result) {
         assertThat(Calculator.add(startNumber, defaultNumber)).isEqualTo(result);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1=-1", "2=0", "-1=-3", "-3=-5"}, delimiter = '=')
+    void 뺄셈(int startNumber, int result) {
+        assertThat(Calculator.subtract(startNumber, defaultNumber)).isEqualTo(result);
+    }
 }
