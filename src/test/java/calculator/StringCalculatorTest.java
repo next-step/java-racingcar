@@ -12,9 +12,9 @@ public class StringCalculatorTest {
     private Calculator calculator = new StringCalculator();
 
     @ParameterizedTest
-    @CsvSource(value = {"1 * 2 + 3 / 4:2.5", "10 * 3 / 2 + 5:20"}, delimiter = ':')
+    @CsvSource(value = {"1 * 2 + 3 / 4:1.25", "10 * 3 / 2 + 5:20"}, delimiter = ':')
     @DisplayName("StringCalculator 계산 테스트")
-    public void calculateTest(String arg, String expected){
+    public void calculateTest(String arg, double expected){
         assertThat(calculator.calculate(arg)).isEqualTo(expected);
     }
 
