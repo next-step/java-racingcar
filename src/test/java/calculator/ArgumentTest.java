@@ -30,7 +30,7 @@ public class ArgumentTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1 * 2 + 3 / 4:7"}, delimiter = ':')
+    @CsvSource(value = {"1 * 2 + 3 - 1 / 4:9"}, delimiter = ':')
     @DisplayName("argument toList 테스트")
     public void toListTest(String arg, int expected){
         assertThat(Argument.toList(arg).size()).isEqualTo(expected);
