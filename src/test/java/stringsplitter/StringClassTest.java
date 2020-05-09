@@ -41,8 +41,8 @@ public class StringClassTest {
   @CsvSource(value = {"0: a", "1: b", "2: c"}, delimiter = ':')
   void claimingCharacterIndexFromGivenString(int targetIndex, String targetCharacter) {
     String GIVEN_STRING = "abc";
-    char GIVEN_TARGET_CHARCTER = targetCharacter.charAt(0);
-    assertThat(GIVEN_STRING.charAt(targetIndex)).isEqualTo(GIVEN_TARGET_CHARCTER);
+    char GIVEN_TARGET_CHARACTER = targetCharacter.charAt(0);
+    assertThat(GIVEN_STRING.charAt(targetIndex)).isEqualTo(GIVEN_TARGET_CHARACTER);
   }
 
   //요구사항 3-2
