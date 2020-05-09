@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 //String 클래스에 대한 학습 테스트
 public class StringClassTest {
@@ -35,11 +37,12 @@ public class StringClassTest {
 
   //요구사항 3-1
   @DisplayName("Claiming the index of specific character when `abc` is given, utilizing charAt() method from String")
-  @Test
-  void claimingCharacterIndexFromGivenString() {
-    assertThat("abc".charAt(0)).isEqualTo('a');
-    assertThat("abc".charAt(1)).isEqualTo('b');
-    assertThat("abc".charAt(2)).isEqualTo('c');
+  @ParameterizedTest
+  @CsvSource(value = {"0: a", "1: b", "2: c"}, delimiter = ':')
+  void claimingCharacterIndexFromGivenString(int targetIndex, String targetCharacter) {
+    String GIVEN_STRING = "abc";
+    char GIVEN_TARGET_CHARCTER = targetCharacter.charAt(0);
+    assertThat(GIVEN_STRING.charAt(targetIndex)).isEqualTo(GIVEN_TARGET_CHARCTER);
   }
 
   //요구사항 3-2
