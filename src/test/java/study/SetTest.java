@@ -44,7 +44,7 @@ public class SetTest {
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false"}, delimiter = ':')
     @ParameterizedTest
     @DisplayName("파라미터에 값과 예상 결과를 설정하고, hashSet의 포함된 값을 검증한다.")
-    void containsTest(String value, String expected) {
-        assertThat(numbers.contains(Integer.valueOf(value))).isEqualTo(Boolean.valueOf(expected));
+    void containsTest(int value, boolean expected) {
+        assertThat(numbers.contains(value)).isEqualTo(expected);
     }
 }
