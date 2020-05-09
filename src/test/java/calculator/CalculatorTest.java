@@ -28,4 +28,10 @@ class CalculatorTest {
     void 뺄셈(int endNumber, int result) {
         assertThat(Calculator.subtract(defaultNumber, endNumber)).isEqualTo(result);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1=2", "2=1"}, delimiter = '=')
+    void 나눗셈(int endNumber, int result){
+        assertThat(Calculator.divide(defaultNumber, endNumber)).isEqualTo(result);
+    }
 }
