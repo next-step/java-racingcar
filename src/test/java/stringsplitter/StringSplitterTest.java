@@ -31,4 +31,13 @@ public class StringSplitterTest {
   void trimBracketsFromString() {
     assertThat("(1,2)".substring(1, 4)).isEqualTo("1,2");
   }
+
+  //요구사항 3-1
+  @DisplayName("Claiming the index of specific character when `abc` is given, utilizing charAt() method from String")
+  @Test
+  void claimingCharacterIndexFromGivenString() {
+    assertThat("abc".charAt(0)).isEqualTo('a');
+    assertThat("abc".charAt(1)).isEqualTo('b');
+    assertThat("abc".charAt(2)).isEqualTo('c');
+  }
 }
