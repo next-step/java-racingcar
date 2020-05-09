@@ -1,11 +1,8 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -34,16 +31,9 @@ public class StringTests {
 
     @DisplayName("String 'abc' 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오는지 확인")
     @ParameterizedTest
-    @MethodSource("validCases")
+    @CsvSource(value = {"0:a", "1:b", "2:c"}, delimiter = ':')
     void charAtTestWithinValidIndexNumber(int indexNumber, char targetValue) {
         assertThat("abc".charAt(indexNumber)).isEqualTo(targetValue);
-    }
-    static Stream<Arguments> validCases() {
-        return Stream.of(
-                Arguments.of(0, 'a'),
-                Arguments.of(1, 'b'),
-                Arguments.of(2, 'c')
-        );
     }
 
     @DisplayName(
