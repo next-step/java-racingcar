@@ -7,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 //String 클래스에 대한 학습 테스트
-public class StringSplitterTest {
+public class StringClassTest {
 
   //요구사항 1
   @DisplayName("Verify the feature of splitting the string `String '1,2'` according to the spliter `:`")
@@ -43,7 +43,7 @@ public class StringSplitterTest {
   }
 
   //요구사항 3-2
-  @DisplayName("Throwing StringIndexOutOfBoundesException when pointing invalid index using charAt() method")
+  @DisplayName("Throwing StringIndexOutOfBoundsException when pointing invalid index using charAt() method")
   @Test
   void claimingCharacterInvalidIndexFromGivenString() {
     assertThatThrownBy(() -> "abc".charAt(999)).isInstanceOf(IndexOutOfBoundsException.class);
