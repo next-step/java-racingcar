@@ -2,6 +2,7 @@ package calculator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -65,5 +66,14 @@ class CalculatorTest {
             Calculator.isBlack(input);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("값을 입력해주세요.");
+    }
+
+    @Test
+    void 숫자로형변환이안되면_NumberFormatException() {
+        String input = "t";
+        assertThatThrownBy(() -> {
+            Calculator.stringConvertToInt(input);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("연산하기위해 숫자를 입력해주세요.");
     }
 }

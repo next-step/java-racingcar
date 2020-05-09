@@ -32,4 +32,12 @@ class Calculator {
             throw new IllegalArgumentException("값을 입력해주세요.");
         }
     }
+
+    static int stringConvertToInt(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("연산하기위해 숫자를 입력해주세요.");
+        }
+    }
 }
