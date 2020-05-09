@@ -40,9 +40,7 @@ public class SetTest {
     @DisplayName("true 인 경우만 테스트 가능하다")
     @ParameterizedTest
     @CsvSource({"1,true", "2,true", "3,true", "4,false", "5,false"})
-    public void lowerCaseTest(String inputStr, String expectedStr){
-        Integer input = Integer.parseInt(inputStr);
-        Boolean expected = Boolean.parseBoolean(expectedStr);
+    public void lowerCaseTest(int input, boolean expected){
         assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 }
