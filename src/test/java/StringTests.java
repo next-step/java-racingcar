@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
 
@@ -49,8 +50,9 @@ public class StringTests {
             "String의 charAt()를 사용해서 특정 위치의 문자를 가져올 때" +
             "위치 값을 벗어나면 StringIndexOutOfBoundsException이 발생하는지 확인"
     )
-    @Test
-    public void charAtTestWithInvalidIndexNumber() {
-        assertThatThrownBy(() -> "abc".charAt(3)).isInstanceOf(StringIndexOutOfBoundsException.class);
+    @ParameterizedTest
+    @ValueSource(ints = {3, 300, 3000})
+    public void charAtTestWithInvalidIndexNumber(int invalidIndexNumber) {
+        assertThatThrownBy(() -> "abc".charAt(invalidIndexNumber)).isInstanceOf(StringIndexOutOfBoundsException.class);
     }
 }
