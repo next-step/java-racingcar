@@ -14,7 +14,7 @@ public class OperatorTest {
     @CsvSource(value = {"*:true", "/:true", "-:true", "/:true", "!:false"}, delimiter = ':')
     @ParameterizedTest
     @DisplayName("isContains 메소드를 검증한다.")
-    void isAllowOperatorTest(String symbol, boolean expected){
+    void isContainsOperatorTest(String symbol, boolean expected){
         assertThat(Operator.isContains(symbol)).isEqualTo(expected);
     }
 
