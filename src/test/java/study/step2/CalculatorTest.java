@@ -2,10 +2,13 @@ package study.step2;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import study.step2.common.StringUtil;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -72,5 +75,15 @@ public class CalculatorTest {
         });
     }
 
+    @Test
+    void test1(){
+        //String [] ttt = StringUtil.seperateNumberAndOperator("2 + 3 * 4 / 2");
+        //List<Integer> list = new Number(StringUtil.seperateNumberAndOperator("2 + 3 * 4 / 2")).getNumbers();
+        List<String> operatorList = new Operators(StringUtil.seperateNumberAndOperator("2 + 3 * 4 / 2")).getOperators();
+        System.out.println("<><>"+operatorList.size());
+       /* for(String b : operatorList){
+
+        }*/
+    }
 
 }
