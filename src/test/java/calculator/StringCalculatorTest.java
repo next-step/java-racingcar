@@ -3,7 +3,10 @@ package calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -29,10 +32,18 @@ class StringCalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = { "2 + 3 * 4 / 2,10", "4 + 1 * 2 / 5,2", "6 - 1 * 8 / 2,20" })
+    @MethodSource("provideStringsForCalculate")
     @DisplayName("사칙 연산 모두 포함한 계산 테스트")
     void calculate(String input, double result) {
         assertThat(stringCalculator.run(input)).isEqualTo(result);
+    }
+
+    private static Stream<Arguments> provideStringsForCalculate() {
+        return Stream.of(
+                Arguments.of("2 + 3 * 4 / 2", "10"),
+                Arguments.of("4 + 1 * 2 / 5", "2"),
+                Arguments.of("6 - 1 * 8 / 2", "20")
+        );
     }
 
     @Test
