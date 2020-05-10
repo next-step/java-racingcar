@@ -33,6 +33,10 @@ public class Number {
         return new Number(this.value * number.value());
     }
 
+    public Number divide(Number number) {
+        return new Number(this.value / number.value());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

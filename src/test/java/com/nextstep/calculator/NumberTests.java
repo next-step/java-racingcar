@@ -54,4 +54,16 @@ class NumberTests {
     void multiplyTest() {
         assertThat(three.multiply(five)).isEqualTo(Number.stringToNumber("15"));
     }
+
+    @DisplayName("Number끼리 나눗셈 연산 실행")
+    @Test
+    void divideTest() {
+        assertThat(three.divide(five)).isEqualTo(Number.stringToNumber("0"));
+    }
+
+    @DisplayName("0으로 나누는 경우 에러 발생")
+    @Test
+    void divideZeroTest() {
+        assertThatThrownBy(() -> three.divide(Number.stringToNumber("0"))).isInstanceOf(ArithmeticException.class);
+    }
 }
