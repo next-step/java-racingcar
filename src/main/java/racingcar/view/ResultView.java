@@ -19,6 +19,7 @@ public class ResultView {
                 .mapToObj(ResultView::convertStringPosition)
                 .forEach(System.out::println);
 
+        System.out.println("");
     }
 
     private static String convertStringPosition(int position){
