@@ -16,10 +16,10 @@ public class Calculator {
         validateNotEmpty(input);
         String[] elements = parseInput(input);
 
-        Number firstOperand = new Number(elements[0]);
+        OperandNumber firstOperand = new OperandNumber(elements[0]);
         for (int i = 1; i < elements.length; i+=2) {
             String operatorElement = elements[i];
-            Number secondOperand = new Number(elements[i+1]);
+            OperandNumber secondOperand = new OperandNumber(elements[i+1]);
             Operator operator =Operator.find(operatorElement).orElseThrow(() -> new IllegalArgumentException(String.format("not supported operator : %s", operatorElement)));
             firstOperand = operator.operate(firstOperand, secondOperand);
         }
