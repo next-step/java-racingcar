@@ -45,7 +45,7 @@ public class CalculatorTest {
 
     @ParameterizedTest
     @DisplayName("나눗셈 테스트")
-    @CsvSource(value ={"3 / 2 = 1.5", "4 / 2 = 2", "5 / 5 = 1"}, delimiter = '=')
+    @CsvSource(value ={"6 / 2 = 3", "4 / 2 = 2", "5 / 5 = 1"}, delimiter = '=')
     void divisionTest(String input, String result){
         assertThat(Calculator.cal(input)).isEqualTo(result);
     }
@@ -73,17 +73,6 @@ public class CalculatorTest {
         assertThatIllegalArgumentException().isThrownBy(()->{
             Calculator.cal(input);
         });
-    }
-
-    @Test
-    void test1(){
-        //String [] ttt = StringUtil.seperateNumberAndOperator("2 + 3 * 4 / 2");
-        //List<Integer> list = new Number(StringUtil.seperateNumberAndOperator("2 + 3 * 4 / 2")).getNumbers();
-        List<String> operatorList = new Operators(StringUtil.seperateNumberAndOperator("2 + 3 * 4 / 2")).getOperators();
-        System.out.println("<><>"+operatorList.size());
-       /* for(String b : operatorList){
-
-        }*/
     }
 
 }

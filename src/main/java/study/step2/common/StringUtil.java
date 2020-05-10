@@ -12,7 +12,7 @@ public class StringUtil {
     }
 
     public static boolean isBlank(String input) {
-        if (input == null || input.isEmpty()){
+        if (input == null || input.trim().isEmpty()){
             return true;
         }
         return false;

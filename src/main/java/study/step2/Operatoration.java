@@ -35,6 +35,8 @@ public enum Operatoration {
         }
     };
 
+    private static List<Integer> numberList;
+    private static List<String> operatorList;
     private final String symbol;
 
 
@@ -46,15 +48,18 @@ public enum Operatoration {
 
     public static String calculate(String input){
 
-        List<Integer> numberList = new Number(StringUtil.seperateNumberAndOperator(input)).getNumbers();
-        List<String> operatorList = new Operators(StringUtil.seperateNumberAndOperator(input)).getOperators();
-
+        numberList = new Number(StringUtil.seperateNumberAndOperator(input)).getNumbers();
+        operatorList = new Operators(StringUtil.seperateNumberAndOperator(input)).getOperators();
+        int result = 0;
         for(int i = 0; i <= operatorList.size()-1; i++){
-            System.out.println("i>>>"+i);
-            System.out.println(Operatoration.findSymbol(operatorList.get(i)).apply(numberList.get(i), numberList.get(i+1)));
+            result = Integer.parseInt(Operatoration.findSymbol(operatorList.get(i)).apply(numberList.get(0), numberList.get(1)));
+
+            numberList.remove(0);
+            numberList.remove(0);
+            numberList.add(0, result);
         }
 
-        return null;//Operatoration.findSymbol(operatorList.get(0)).apply(numberList.get(0),numberList.get(1));
+        return String.valueOf(result);
     }
 
     private static Operatoration findSymbol(String symbol){
