@@ -5,7 +5,7 @@ public class Calculator {
     private final String splitter;
 
     public Calculator(){
-        this.splitter = " ";
+        this(" ");
     }
 
     public Calculator(String splitter){
@@ -35,7 +35,7 @@ public class Calculator {
 
     private String[] parseInput(String input){
         input = input.trim();
-        String[] elements = input.split(" ");
+        String[] elements = input.split(splitter);
 
         if(elements.length < 3 || (elements.length % 2 ==0)){
             throw new IllegalArgumentException("invalid input");
