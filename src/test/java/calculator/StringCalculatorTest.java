@@ -34,4 +34,10 @@ class StringCalculatorTest {
     void calculate(String input, double result) {
         assertThat(stringCalculator.run(input)).isEqualTo(result);
     }
+
+    @Test
+    @DisplayName("불완전한 계산식일 경우 IllegalArgumentException 발생")
+    void calculateInvalidExpression() {
+        assertThatThrownBy(() -> stringCalculator.run("2 + 3 * 4 / 2 +")).isInstanceOf(IllegalArgumentException.class);
+    }
 }

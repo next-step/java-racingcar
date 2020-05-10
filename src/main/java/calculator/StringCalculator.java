@@ -6,7 +6,7 @@ public class StringCalculator {
         isBlank(input);
         String[] inputTokens = input.split(" ");
 
-        double result = convertStringToDouble(inputTokens[0]);
+        double result = validateInputTokens(inputTokens);
         for (int i = 1; i < inputTokens.length; i += 2) {
             OperationSymbol operationSymbol = OperationSymbol.getOperationSymbol(inputTokens[i]);
             result = operationSymbol.calculate(result, convertStringToDouble(inputTokens[i + 1]));
@@ -26,5 +26,17 @@ public class StringCalculator {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("연산하기 위해 숫자를 입력해주세요. " + value);
         }
+    }
+
+    private double validateInputTokens(String[] inputTokens) {
+        if (inputTokens.length % 2 == 0) {
+            throw new IllegalArgumentException("계산식이 올바르지 않습니다.");
+        }
+
+        return validateFirstTokenIsNumber(inputTokens[0]);
+    }
+
+    private double validateFirstTokenIsNumber(String firstToken) {
+        return convertStringToDouble(firstToken);
     }
 }
