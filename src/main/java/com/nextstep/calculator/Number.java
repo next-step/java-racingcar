@@ -22,15 +22,15 @@ public class Number {
     }
 
     public Number plus(Number number) {
-        int resultValue = this.value + number.value();
-
-        return new Number(resultValue);
+        return new Number(this.value + number.value());
     }
 
     public Number minus(Number number) {
-        int resultValue = this.value - number.value();
+        return new Number(this.value - number.value());
+    }
 
-        return new Number(resultValue);
+    public Number multiply(Number number) {
+        return new Number(this.value * number.value());
     }
 
     @Override

@@ -40,16 +40,18 @@ class NumberTests {
     @DisplayName("Number끼리 덧셈 연산 실행")
     @Test
     void plusTest() {
-        Number eight = Number.stringToNumber("8");
-
-        assertThat(three.plus(five)).isEqualTo(eight);
+        assertThat(three.plus(five)).isEqualTo(Number.stringToNumber("8"));
     }
 
     @DisplayName("Number끼리 뺄셈 연산 실행")
     @Test
     void minusTest() {
-        Number negativeTwo = Number.stringToNumber("-2");
+        assertThat(three.minus(five)).isEqualTo(Number.stringToNumber("-2"));
+    }
 
-        assertThat(three.minus(five)).isEqualTo(negativeTwo);
+    @DisplayName("Number끼리 곱셈 연산 실행")
+    @Test
+    void multiplyTest() {
+        assertThat(three.multiply(five)).isEqualTo(Number.stringToNumber("15"));
     }
 }
