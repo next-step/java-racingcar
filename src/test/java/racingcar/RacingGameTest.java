@@ -15,7 +15,7 @@ public class RacingGameTest {
 
     @BeforeEach
     void setUp(){
-        cars = new Car[1];
+        cars = new Car[3];
         cars[0] = new Car(0, movableStrategy);
         cars[1] = new Car(0, movableStrategy);
         cars[2] = new Car(0, movableStrategy);
@@ -23,10 +23,9 @@ public class RacingGameTest {
 
     @ValueSource(ints = {3})
     @ParameterizedTest
-    @DisplayName("")
-    public void moveTest(int round) {
+    @DisplayName("RacingGame play 메소드의 결과 크기는 car의 크기와 같다.")
+    public void playTest(int round) {
         int[] result = new RacingGame(round, cars).play();
         assertThat(result).hasSameSizeAs(cars);
-
     }
 }
