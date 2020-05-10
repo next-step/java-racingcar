@@ -2,10 +2,11 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class StringTest {
 
@@ -37,20 +38,17 @@ public class StringTest {
     }
 
     @DisplayName("문자열의 범위를 벗어나는 위치를 가져오려고 할 때 익셉션이 발생한다")
-    @Test
-    void charAtIndexError() {
+    @ValueSource(ints = {3, -1})
+    @ParameterizedTest
+    void charAtIndexError(int index) {
         //given
         String input = "abc";
 
         //when
         //then
-        assertAll(
-                () -> assertThatThrownBy(() -> input.charAt(input.length()))
-                        .isInstanceOf(IndexOutOfBoundsException.class),
-                () -> assertThatThrownBy(() -> input.charAt(-1))
-                        .isInstanceOf(IndexOutOfBoundsException.class)
-
-        );
+        assertThatThrownBy(() -> input.charAt(index))
+                .isInstanceOf(IndexOutOfBoundsException.class)
+                .hasMessage("String index out of range: %d", index);
     }
 
 }
