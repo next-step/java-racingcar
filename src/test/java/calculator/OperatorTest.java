@@ -3,8 +3,11 @@ package calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
@@ -40,10 +43,11 @@ class OperatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"+", "-", "*", "/"})
+    @MethodSource("provideOperator")
     @DisplayName("연산자 찾기 테스트")
-    void findOperator(String operator) {
+    void findOperator(String operator, Operator operatorEnum) {
         assertThat(Operator.findOperator(operator)).isNotNull();
+        assertThat(Operator.findOperator(operator)).isEqualTo(operatorEnum);
     }
 
     @Test
@@ -60,5 +64,14 @@ class OperatorTest {
         assertThatThrownBy(() -> {
             Operator.DIVISION.calculate(1.0, 0);
         }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    private static Stream<Arguments> provideOperator() {
+        return Stream.of(
+                Arguments.of("+", Operator.PLUS),
+                Arguments.of("-", Operator.MINIS),
+                Arguments.of("*", Operator.MULTIPLY),
+                Arguments.of("/", Operator.DIVISION)
+        );
     }
 }
