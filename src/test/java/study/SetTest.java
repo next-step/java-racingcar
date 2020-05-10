@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.HashSet;
 import java.util.Set;
 
-public class setTest {
+public class SetTest {
     private Set<Integer> numbers;
 
     @BeforeEach
