@@ -37,7 +37,7 @@ public class Caculator {
     }
 
     private static void validateInputString(String inputString) {
-        if (inputString == null && inputString.trim().equals("")) {
+        if (inputString == null || inputString.trim().equals("")) {
             throw new IllegalArgumentException("null과 공백 문자 사용 할 수 없습니다");
         }
     }
