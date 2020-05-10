@@ -27,8 +27,6 @@ public class SetTest {
     }
 
     // Test Case 구현
-
-    //  요구사항 1
     @DisplayName("Set 크기 확인 테스트")
     @Test
     void checkSetSize(){
@@ -36,19 +34,17 @@ public class SetTest {
         assertThat(numbers.size()).isEqualTo(size);
     }
 
-    //  요구사항 2
     @DisplayName("Set 원소들이 input값과 동일한지 확인하는 테스트")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    void containTargetNumbers(int input) {
+    void compareSetValuesToInputs(int input) {
         assertThat(numbers.contains(input)).isTrue();
     }
 
-    //  요구사항 3
     @DisplayName("")
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void checkContainValues(int input, boolean expected) {
-        assertThat(numbers.contains(input)).isEqualTo(expected);
+    void checkNumberBooleanPairValues(int inputNumber, boolean expectedResult) {
+        assertThat(numbers.contains(inputNumber)).isEqualTo(expectedResult);
     }
 }
