@@ -4,12 +4,12 @@ public class StringCalculator {
 
     public double run(String input) {
         isBlank(input);
-        String[] splits = input.split(" ");
+        String[] inputTokens = input.split(" ");
 
-        double result = convertStringToDouble(splits[0]);
-        for (int i = 1; i < splits.length; i += 2) {
-            OperationSymbol operationSymbol = OperationSymbol.getOperationSymbol(splits[i]);
-            result = operationSymbol.calculate(result, convertStringToDouble(splits[i + 1]));
+        double result = convertStringToDouble(inputTokens[0]);
+        for (int i = 1; i < inputTokens.length; i += 2) {
+            OperationSymbol operationSymbol = OperationSymbol.getOperationSymbol(inputTokens[i]);
+            result = operationSymbol.calculate(result, convertStringToDouble(inputTokens[i + 1]));
         }
         return result;
     }
