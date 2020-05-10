@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.view.ResultView;
+
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
@@ -14,7 +16,8 @@ public class RacingGame {
 
     public int[] play() {
         IntStream.range(0, round)
-                .forEach(value -> moveAll());
+                .mapToObj(value -> moveAll())
+                .forEach(ResultView::printCarPositionPerRound);
 
         return Arrays.stream(cars)
                 .mapToInt(Car::getPosition)
