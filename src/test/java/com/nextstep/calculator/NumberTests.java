@@ -1,6 +1,7 @@
 package com.nextstep.calculator;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -24,5 +25,15 @@ class NumberTests {
     @ValueSource(strings = {"hello", "can't parse", "   "})
     void createNumberFromInvalidStrings(String invalidInput) {
         assertThatThrownBy(() -> Number.stringToNumber(invalidInput)).isInstanceOf(NumberFormatException.class);
+    }
+
+    @DisplayName("Number끼리 덧셈 연산 실행")
+    @Test
+    void plusTest() {
+        Number three = Number.stringToNumber("3");
+        Number five = Number.stringToNumber("5");
+        Number eight = Number.stringToNumber("8");
+        
+        assertThat(three.plus(five)).isEqualTo(eight);
     }
 }
