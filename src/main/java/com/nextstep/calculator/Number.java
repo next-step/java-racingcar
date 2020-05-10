@@ -27,6 +27,12 @@ public class Number {
         return new Number(resultValue);
     }
 
+    public Number minus(Number number) {
+        int resultValue = this.value - number.value();
+
+        return new Number(resultValue);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
