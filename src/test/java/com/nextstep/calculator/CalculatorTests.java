@@ -11,7 +11,7 @@ class CalculatorTests {
     @ParameterizedTest
     @CsvSource(value = { "2 + 3:5", "2 - 3:-1", "2 * 3:6", "2 / 3:0" }, delimiter = ':')
     void calculatorTest(String input, int result) {
-        int number = Calculator.calculate(input);
+        int number = Calculator.run(input);
 
         assertThat(number).isEqualTo(result);
     }

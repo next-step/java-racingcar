@@ -3,29 +3,30 @@ package com.nextstep.calculator;
 import java.util.List;
 
 public class Calculator {
-    public static int calculate(String input) {
+    public static int run(String input) {
         List<String> parsed = InputParser.parse(input);
 
         Number firstNumber = Number.stringToNumber(parsed.get(0));
         Number secondNumber = Number.stringToNumber(parsed.get(2));
+        String operator = parsed.get(1);
 
-        return operateDivider(firstNumber, secondNumber, parsed.get(1));
+        return calculate(firstNumber, secondNumber, operator).value();
     }
 
-    private static int operateDivider(Number firstNumber, Number secondNumber, String operator) {
+    private static Number calculate(Number firstNumber, Number secondNumber, String operator) {
         if (operator.equals("+")) {
-            return firstNumber.plus(secondNumber).value();
+            return firstNumber.plus(secondNumber);
         }
         if (operator.equals("-")) {
-            return firstNumber.minus(secondNumber).value();
+            return firstNumber.minus(secondNumber);
         }
         if (operator.equals("*")) {
-            return firstNumber.multiply(secondNumber).value();
+            return firstNumber.multiply(secondNumber);
         }
         if (operator.equals("/")) {
-            return firstNumber.divide(secondNumber).value();
+            return firstNumber.divide(secondNumber);
         }
 
-        return 0;
+        throw new IllegalArgumentException("Please give valid operator");
     }
 }
