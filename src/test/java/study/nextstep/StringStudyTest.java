@@ -14,4 +14,11 @@ public class StringStudyTest {
     public void Req1_testStringSplitWithNoComma(){
         assertThat("1".split(",")).containsExactly("1");
     }
+
+    @Test
+    public void Req2_testRemoveOutsideParenthesis(){
+        assertThat("(1,2)".substring(1, 4)).isEqualTo("1,2");
+    }
+
+
 }
