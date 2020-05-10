@@ -1,18 +1,24 @@
 package racingcar;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    @Test
-    void moveTest(){
-        Car car = new Car();
-        int expected = 1;
+    private MovableStrategy movableStrategy = new RandomMovableStrategy();
 
-        car.move();
+    @ValueSource(ints = {0})
+    @ParameterizedTest
+    @DisplayName("차가 움직이면 값이 현재위치와 같거나 이상의 값을 가질 수 있다.")
+    void moveTest(int position){
 
-        assertThat(car.getPosition()).isEqualTo(expected);
+        Car car = new Car(position, movableStrategy);
+
+        int result = car.move();
+
+        assertThat(result).isGreaterThanOrEqualTo(position);
     }
 }
