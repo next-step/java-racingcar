@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class NumberTests {
-    @DisplayName("문자열 형태의 숫자로 Number 객체 생성")
+    @DisplayName("문자열 형태의 int 타입 값을 속성으로 갖는 Number 객체 생성")
     @ParameterizedTest
     @ValueSource(strings = {"3", "0", "-3"})
     void createNumberFromString(String inputString) {
