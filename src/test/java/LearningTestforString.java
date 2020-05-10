@@ -2,6 +2,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("step 01 - Learning test for String class")
 public class LearningTestforString {
@@ -36,5 +37,13 @@ public class LearningTestforString {
         assertThat(splitResult)
                 .contains("1", "2")
                 .containsExactly("1", "2");
+    }
+
+    @DisplayName("String index out of range: 3")
+    @Test
+    void testCharAt() {
+        assertThatThrownBy(() -> "abc".charAt(3))
+                .isInstanceOf(StringIndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: 3");
     }
 }
