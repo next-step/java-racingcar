@@ -24,4 +24,13 @@ class CalculatorTests {
     void calculatorTestWithInvalidOperator(String invalidOperator) {
         assertThatThrownBy(() -> Calculator.run(invalidOperator)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("여러항 사칙연산 계산하기")
+    @ParameterizedTest
+    @CsvSource(value = { "2 + 3 - 1:4", "3 + 5 - 2 / 3 * 2:4" }, delimiter = ':')
+    void calculateMulti(String input, int result) {
+        int number = Calculator.run(input);
+
+        assertThat(number).isEqualTo(result);
+    }
 }
