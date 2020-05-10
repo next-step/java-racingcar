@@ -3,6 +3,8 @@ import static org.assertj.core.api.Java6Assertions.catchThrowable;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class StringClassTest {
 
@@ -47,21 +49,16 @@ class StringClassTest {
         assertThat(result).isEqualTo("1,2");
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource({"0,a", "1,b", "2,c"})
     @DisplayName("\"abc\" 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오는 학습 테스트를 구현")
-    public void chatAtTest() {
+    public void chatAtTest(String input, String expected) {
         //given
         String testParameter = "abc";
 
-        //when
-        char index0Character = testParameter.charAt(0);
-        char index1Character = testParameter.charAt(1);
-        char index2Character = testParameter.charAt(2);
-
-        //then
-        assertThat(index0Character).isEqualTo('a');
-        assertThat(index1Character).isEqualTo('b');
-        assertThat(index2Character).isEqualTo('c');
+        //when, then
+        assertThat(testParameter.charAt(Integer.valueOf(input)))
+            .isEqualByComparingTo(expected.charAt(0));
     }
 
     @Test
