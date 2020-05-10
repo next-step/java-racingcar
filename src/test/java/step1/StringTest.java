@@ -20,23 +20,17 @@ public class StringTest {
     assertThat(result).contains("1,2");
   }
 
-  //@DisplayName("String.charAt(n) 에서 n이 String의 범위를 벗어나는 경우 StringIndexOutOfBoundsException 발생")
+  @DisplayName("String.charAt(n) 에서 n이 String의 범위를 벗어나는 경우 StringIndexOutOfBoundsException 발생")
   @Test
   void requirement03 () {
     String input = "abc";
-    System.out.println(input);
-    //assertThat(input.charAt(0)).isEqualTo('a');
-//    assertThat(input.charAt(1)).isEqualTo('b');
-//    assertThat(input.charAt(2)).isEqualTo('c');
+    assertThat(input.charAt(0)).isEqualTo('a');
+    assertThat(input.charAt(1)).isEqualTo('b');
+    assertThat(input.charAt(2)).isEqualTo('c');
 
-//    assertThatThrownBy(() -> {
-//      input.charAt(3);
-//    }).isInstanceOf(StringIndexOutOfBoundsException.class)
-//      .hasMessageContaining("index -1은 abc의 범위에 해당되지 않습니다.");
-//
-//    assertThatThrownBy(() -> {
-//      input.charAt(-1);
-//    }).isInstanceOf(StringIndexOutOfBoundsException.class)
-//      .hasMessageContaining("index -1은 abc의 범위를 벗어납니다.");
+    assertThatThrownBy(() -> {
+      input.charAt(3);
+    }).isInstanceOf(StringIndexOutOfBoundsException.class)
+      .hasMessageContaining("index -1은 abc의 범위에 해당되지 않습니다.");
   }
 }
