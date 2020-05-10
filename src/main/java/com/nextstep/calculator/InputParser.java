@@ -5,8 +5,7 @@ import java.util.List;
 
 public class InputParser {
     protected static void validate(String input) {
-        if (input == null) throw new IllegalArgumentException();
-        if (input.trim().isEmpty()) throw new IllegalArgumentException();
+        if (input == null || input.trim().isEmpty()) throw new IllegalArgumentException();
     }
 
     public static List<String> parse(String input) {
