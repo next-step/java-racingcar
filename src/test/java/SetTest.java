@@ -3,6 +3,9 @@ import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class SetTest {
@@ -29,5 +32,12 @@ public class SetTest {
 
         //then
         assertThat(size).isEqualTo(3);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    @DisplayName("Set의 contains() 메소드를 활용해 1, 2, 3의 값이 존재하는지를 확인하는 학습테스트")
+    public void containsTest(Integer input) {
+        assertThat(numbers.contains(input)).isTrue();
     }
 }
