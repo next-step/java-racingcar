@@ -22,5 +22,10 @@ public class CalculatorTest {
         assertThat(Calculator.cal(input)).isEqualTo(result);
     }
 
+    @ParameterizedTest
+    @CsvSource(value ={"3 - 2 = 1", "4 - 2 = 2", "5 - 5 = 0"}, delimiter = '=')
+    void subtractTest(String input, String result){
+        assertThat(Calculator.cal(input)).isEqualTo(result);
+    }
 
 }
