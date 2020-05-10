@@ -36,4 +36,12 @@ public class SetTest {
         assertThat(numbers.size()).isEqualTo(size);
     }
 
+    //  요구사항 2
+    @DisplayName("Set 원소들이 input값과 동일한지 확인하는 테스트")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void containTargetNumbers(int input) {
+        assertThat(numbers.contains(input)).isTrue();
+    }
+
 }
