@@ -16,7 +16,7 @@ public class StringTestClass {
 
         String[] resultString = givenString.split(SPLIT_REGEX_STRING);
 
-        Assertions.assertThat(resultString).containsExactly("1","2");
+        assertThat(resultString).containsExactly("1","2");
     }
 
     @DisplayName(",가 없는 1을 ,로 split 했을 때 1만을 포함하는 배열이 반환되는 지 테스트")
@@ -26,7 +26,7 @@ public class StringTestClass {
 
         String[] resultString = givenString.split(SPLIT_REGEX_STRING);
 
-        Assertions.assertThat(resultString).containsExactly("1");
+        assertThat(resultString).containsExactly("1");
     }
 
     @DisplayName("주어진 문자열 abc 의 length 내에서 chartAt 할 때 정상적으로 char 를 가져오는 지 테스트")
@@ -39,9 +39,9 @@ public class StringTestClass {
             pickChars[i] = givenString.charAt(i);
         }
 
-        Assertions.assertThat(pickChars[0]).isEqualTo('a');
-        Assertions.assertThat(pickChars[1]).isEqualTo('b');
-        Assertions.assertThat(pickChars[2]).isEqualTo('c');
+        assertThat(pickChars[0]).isEqualTo('a');
+        assertThat(pickChars[1]).isEqualTo('b');
+        assertThat(pickChars[2]).isEqualTo('c');
     }
 
     @DisplayName("주어진 문자열 abc 의 length를 벗어나서 charAt 할 때 StringIndexOutOfBoundsException 발생하는 지 테스트")
