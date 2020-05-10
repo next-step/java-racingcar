@@ -17,8 +17,10 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value ={"1+2=3", "2+2=4", "3+5=8"}, delimiter = '=')
+    @CsvSource(value ={"1 + 2 = 3", "2 + 2 = 4", "3 + 5 = 8"}, delimiter = '=')
     void addTest(String input, String result){
         assertThat(Calculator.cal(input)).isEqualTo(result);
     }
+
+
 }
