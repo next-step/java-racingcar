@@ -20,5 +20,18 @@ class StringClassTest {
 		String[] result = "1".split(",");
 		assertThat(result).containsExactly("1");
 	}
-
+	
+	@Test
+	void subStringRemoveParenthesis() {
+		// 요구사항 2 : "(1,2)" 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 "1,2"를 반환하도록 구현한다.
+		String targetString = "(1,2)";
+		assertThat(
+				targetString.substring(
+						targetString.indexOf("(") + 1
+						, targetString.indexOf(")")
+						)
+				)
+		.isEqualTo("1,2");
+		;
+	}
 }
