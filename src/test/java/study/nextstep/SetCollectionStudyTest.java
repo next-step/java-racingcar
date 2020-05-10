@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
@@ -35,5 +36,12 @@ public class SetCollectionStudyTest {
     @DisplayName("contains() 메소드를 활용해 1,2,3 값이 존재하는지 확인하는 테스트")
     public void Req2_testContainsMethod2ExistsOfNumbers(int number){
         assertThat(numbers.contains(number)).isTrue();
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"})
+    @DisplayName("contains() 메소드 테스트에서 결과 값이 다른 경우도 존재하는 테스트")
+    public void Req3_testContainsMethod2ExistsOfNumbersOrNot(String input, String expected){
+        assertThat(Boolean.toString(numbers.contains(Integer.parseInt(input)))).isEqualTo(expected);
     }
 }
