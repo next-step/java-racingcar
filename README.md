@@ -33,7 +33,11 @@
 - 계산기
     - [X] 단항 연산에 대한 사칙 연산 수행
     - [X] 다항 연산에 대한 사칙 연산 수행
+    - [ ] String 연산자에 따라 알맞는 Operator 고르는 책임을 위임
+- OperatorSelector
+    - [X] 입력된 String 연산자에 따라 알맞는 Operator 반환
+    - [X] 연산자 외의 문자열 입력 시 IllegalArgument 예외 발생
 - Operator
     - [X] 사칙연산을 enum 타입으로 분리
     - [X] Operator enum에서 동작을 모두 갖도록 덧셈 구현
-    - [X] 같은 방식으로 뺄셈, 나눗셈, 곱셈 구현
+    - [X] 같은 방식으로뺄셈, 나눗셈, 곱셈 구현
