@@ -1,5 +1,5 @@
 package racingcar;
 
-public interface Movable {
+public interface MovableStrategy {
     int move();
 }

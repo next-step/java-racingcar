@@ -2,7 +2,7 @@ package racingcar;
 
 import java.util.Random;
 
-public class RandomMovable implements Movable {
+public class RandomMovableStrategy implements MovableStrategy {
 
     private final int DEFAULT_RANDOM_RANGE = 10;
     private final int MINIMUM_MOVABLE_VALUE = 4;

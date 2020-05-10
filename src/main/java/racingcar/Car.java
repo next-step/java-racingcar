@@ -3,11 +3,11 @@ package racingcar;
 public class Car {
 
     private int position;
-    private Movable movable;
+    private MovableStrategy movableStrategy;
 
-    public Car(int position, Movable movable) {
+    public Car(int position, MovableStrategy movableStrategy) {
         this.position = position;
-        this.movable = movable;
+        this.movableStrategy = movableStrategy;
     }
 
     public int getPosition() {
@@ -15,6 +15,6 @@ public class Car {
     }
 
     public void move() {
-        this.position += movable.move();
+        this.position += movableStrategy.move();
     }
 }
