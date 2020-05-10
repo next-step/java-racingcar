@@ -3,8 +3,10 @@ package com.nextstep.calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CalculatorTests {
     @DisplayName("단항 사칙연산 계산하기")
@@ -14,5 +16,12 @@ class CalculatorTests {
         int number = Calculator.run(input);
 
         assertThat(number).isEqualTo(result);
+    }
+
+    @DisplayName("사칙연산이 아닌 연산자 입력 시 IllegalArgumentException 발생")
+    @ParameterizedTest
+    @ValueSource(strings = { "2 f 3", "2 2 3", "2 호 3", "2 하 3" })
+    void calculatorTestWithInvalidOperator(String invalidOperator) {
+        assertThatThrownBy(() -> Calculator.run(invalidOperator)).isInstanceOf(IllegalArgumentException.class);
     }
 }

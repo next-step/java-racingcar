@@ -10,10 +10,10 @@ public class Calculator {
         Number secondNumber = Number.stringToNumber(parsed.get(2));
         String operator = parsed.get(1);
 
-        return calculate(firstNumber, secondNumber, operator).value();
+        return numberCalculate(firstNumber, secondNumber, operator).value();
     }
 
-    private static Number calculate(Number firstNumber, Number secondNumber, String operator) {
+    private static Number numberCalculate(Number firstNumber, Number secondNumber, String operator) {
         if (operator.equals("+")) {
             return firstNumber.plus(secondNumber);
         }
@@ -26,7 +26,6 @@ public class Calculator {
         if (operator.equals("/")) {
             return firstNumber.divide(secondNumber);
         }
-
-        throw new IllegalArgumentException("Please give valid operator");
+        throw new IllegalArgumentException();
     }
 }
