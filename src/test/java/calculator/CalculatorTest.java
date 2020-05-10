@@ -7,8 +7,6 @@ import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
 
-
-
     @DisplayName("입력 값이 null이거나 빈 공백 문자열로 연산을 하면 IllegalArgumentException 발생")
     @Test
     void emptyString_thenThrowIllegalArgumentException(){
@@ -58,8 +56,8 @@ public class CalculatorTest {
     void divide(){
         Calculator calculator = new Calculator();
         assertThat(calculator.calculate("2 / 1")).isEqualTo(2);
-        assertThat(calculator.calculate("2 / 3")).isEqualTo(0);
-        assertThat(calculator.calculate("10 / 1 / -3")).isEqualTo(-3);
+        assertThat(calculator.calculate("2 / 3")).isEqualTo(2.0/3);
+        assertThat(calculator.calculate("10 / 1 / -3")).isEqualTo(10 / 1 / -3.0);
     }
 
     @DisplayName("사직연산을 지원한다.")
@@ -68,6 +66,4 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
         assertThat(calculator.calculate("2 + 3 * 4 / 2")).isEqualTo(10);
     }
-
-
 }
