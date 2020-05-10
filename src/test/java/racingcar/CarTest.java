@@ -1,6 +1,7 @@
 package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -20,5 +21,15 @@ public class CarTest {
         int result = car.move();
 
         assertThat(result).isGreaterThanOrEqualTo(position);
+    }
+
+    @ValueSource(ints = {0})
+    @ParameterizedTest
+    @DisplayName("기본 Car 생성 메소드 테스트")
+    void makeDefaultInstanceTest(int expected){
+        Car car = Car.makeDefaultInstance();
+
+        assertThat(car.getPosition()).isEqualTo(expected);
+        assertThat(car.getMovableStrategy()).isExactlyInstanceOf(RandomMovableStrategy.class);
     }
 }
