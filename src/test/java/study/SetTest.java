@@ -41,10 +41,11 @@ public class SetTest {
         assertThat(numbers.contains(input)).isTrue();
     }
 
+    //  요구사항 3
     @DisplayName("")
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void checkNumberBooleanPairValues(int inputNumber, boolean expectedResult) {
-        assertThat(numbers.contains(inputNumber)).isEqualTo(expectedResult);
+    void checkContainValues(int input, boolean expected) {
+        assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 }
