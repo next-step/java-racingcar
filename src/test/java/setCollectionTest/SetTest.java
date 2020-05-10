@@ -28,4 +28,11 @@ public class SetTest {
     void setCollectionSizeTest() {
     	assertThat(numbers.size()).isEqualTo(4);
     }
+    
+    @ParameterizedTest
+    @ValueSource(ints = {1,2,3})
+    @DisplayName("요구사항 2 : jUnit ParameterizedTest를 활용한 Set")
+    void setCollectionContainsTest(int inputValue) {
+    	assertThat(numbers.contains(inputValue)).isTrue();
+    }
 }
