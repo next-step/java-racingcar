@@ -28,4 +28,16 @@ public class CalculatorTest {
         assertThat(Calculator.cal(input)).isEqualTo(result);
     }
 
+    @ParameterizedTest
+    @CsvSource(value ={"3 * 2 = 6", "4 * 2 = 8", "5 * 5 = 25"}, delimiter = '=')
+    void multiplyTest(String input, String result){
+        assertThat(Calculator.cal(input)).isEqualTo(result);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value ={"3 / 2 = 1.5", "4 / 2 = 2", "5 / 5 = 1"}, delimiter = '=')
+    void divisionTest(String input, String result){
+        assertThat(Calculator.cal(input)).isEqualTo(result);
+    }
+
 }
