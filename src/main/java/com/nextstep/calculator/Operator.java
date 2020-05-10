@@ -3,13 +3,13 @@ package com.nextstep.calculator;
 public enum Operator {
     PLUS(Number::plus);
 
-    private Calculate calculate;
+    private Calculator calculator;
 
-    Operator(Calculate calculate) {
-        this.calculate = calculate;
+    Operator(Calculator calculator) {
+        this.calculator = calculator;
     }
 
     public Number operate(Number firstValue, Number secondValue) {
-        return this.calculate.calculate(firstValue, secondValue);
+        return this.calculator.calculate(firstValue, secondValue);
     }
 }
