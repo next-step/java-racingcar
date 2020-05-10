@@ -1,7 +1,10 @@
 package com.nextstep.calculator;
 
 public enum Operator {
-    PLUS(Number::plus);
+    PLUS(Number::plus),
+    MINUS(Number::minus),
+    MULTIPLY(Number::multiply),
+    DIVIDE(Number::divide);
 
     private Calculator calculator;
 
