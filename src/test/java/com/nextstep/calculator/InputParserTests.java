@@ -29,4 +29,12 @@ class InputParserTests {
         assertThat(parsed).containsExactly("3", "+", "2", "/", "4", "*", "5");
         assertThat(parsed).doesNotContain(" ");
     }
+
+    @DisplayName("이상한 값으로 parse 시도 시 IllegalException 발생")
+    @ParameterizedTest
+    @NullSource
+    @ValueSource(strings = "   ")
+    void parseWithValidation(String invalidInput) {
+        assertThatThrownBy(() -> InputParser.parse(invalidInput)).isInstanceOf(IllegalArgumentException.class);
+    }
 }
