@@ -9,16 +9,20 @@ public class Calculator {
         Number firstNumber = Number.stringToNumber(parsed.get(0));
         Number secondNumber = Number.stringToNumber(parsed.get(2));
 
-        if (parsed.get(1).equals("+")) {
+        return operateDivider(firstNumber, secondNumber, parsed.get(1));
+    }
+
+    private static int operateDivider(Number firstNumber, Number secondNumber, String operator) {
+        if (operator.equals("+")) {
             return firstNumber.plus(secondNumber).value();
         }
-        if (parsed.get(1).equals("-")) {
+        if (operator.equals("-")) {
             return firstNumber.minus(secondNumber).value();
         }
-        if (parsed.get(1).equals("*")) {
+        if (operator.equals("*")) {
             return firstNumber.multiply(secondNumber).value();
         }
-        if (parsed.get(1).equals("/")) {
+        if (operator.equals("/")) {
             return firstNumber.divide(secondNumber).value();
         }
 
