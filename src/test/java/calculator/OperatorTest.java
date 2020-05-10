@@ -53,17 +53,15 @@ class OperatorTest {
     @Test
     @DisplayName("사칙 연산자가 아닌경우 Exception")
     void notExistsOperator() {
-        assertThatThrownBy(() -> {
-            Operator.findOperator("&");
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Operator.findOperator("&"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     @DisplayName("0으로 나누기 시도시 Exception")
     void divisionByZero() {
-        assertThatThrownBy(() -> {
-            Operator.DIVISION.calculate(1.0, 0);
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Operator.DIVISION.calculate(1.0, 0))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     private static Stream<Arguments> provideOperator() {

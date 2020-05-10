@@ -25,9 +25,8 @@ class CalculatorTest {
     @NullAndEmptySource
     @DisplayName("입력 값이 null이거나 빈 공백일 경우 Exception")
     void validationExpression(String expression) {
-        assertThatThrownBy(() -> {
-            new Calculator(expression);
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Calculator(expression))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     private static Stream<Arguments> provideExpression() {
