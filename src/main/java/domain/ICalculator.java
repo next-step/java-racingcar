@@ -1,4 +1,4 @@
-package stringCalculator;
+package domain;
 
 public interface ICalculator {
 	
