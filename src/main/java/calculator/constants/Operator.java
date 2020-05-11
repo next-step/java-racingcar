@@ -37,7 +37,7 @@ public enum Operator {
     }
 
     private static double divide(double left, double right) {
-        if(left == 0) {
+        if(right == 0) {
             throw new ArithmeticException("division with zero is not allowed.");
         }
         return left / right;
