@@ -3,6 +3,8 @@ package step1;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -28,5 +30,10 @@ public class SetCollectionTest {
     assertThat(numbers.size()).isEqualTo(3);
   }
 
-
+  @DisplayName("Set Collection 값 확인")
+  @ParameterizedTest
+  @ValueSource(ints = { 1, 2, 3 })
+  void 요구사항_02 (int n) {
+    assertThat(numbers.contains(n)).isTrue();
+  }
 }
