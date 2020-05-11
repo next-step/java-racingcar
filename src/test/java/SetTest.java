@@ -28,6 +28,7 @@ public class SetTest {
     @Test
     public void sizeTest() {
         assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @DisplayName("contains 테스트")
@@ -40,7 +41,7 @@ public class SetTest {
     @DisplayName("true 인 경우만 테스트 가능하다")
     @ParameterizedTest
     @CsvSource({"1,true", "2,true", "3,true", "4,false", "5,false"})
-    public void lowerCaseTest(int input, boolean expected){
+    public void trueOnlyTest(int input, boolean expected){
         assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 }
