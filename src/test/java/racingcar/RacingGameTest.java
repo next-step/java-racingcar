@@ -1,39 +1,41 @@
 package racingcar;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 
 public class RacingGameTest {
 
-    private Car[] cars;
-    private MovableStrategy movableStrategy = new RandomMovableStrategy();
-
-    @BeforeEach
-    void setUp(){
-        cars = new Car[3];
-        cars[0] = new Car(0, movableStrategy);
-        cars[1] = new Car(0, movableStrategy);
-        cars[2] = new Car(0, movableStrategy);
-    }
-
-    @ValueSource(ints = {3})
+    @CsvSource(value = {"3:3", "3:4", "4:4", "1:2"}, delimiter = ':')
     @ParameterizedTest
     @DisplayName("RacingGame 객체 생성 테스트")
-    public void generateRacingGameTest(int round){
-        assertThat(new RacingGame(round, cars)).isExactlyInstanceOf(RacingGame.class);
+    public void generateRacingGameTest(int round, int carCount){
+        assertThat(new RacingGame(round, carCount)).isExactlyInstanceOf(RacingGame.class);
     }
 
+    @CsvSource(value = {"3:3", "3:4", "4:4", "1:2"}, delimiter = ':')
+    @ParameterizedTest
+    @DisplayName("RacingGame 생성 인자 값 검증 테스트")
+    public void generateRacingGameArgumentTest(int round, int carCount) {
+        assertThatCode(() -> new RacingGame(round, carCount)).doesNotThrowAnyException();
+    }
 
-    @ValueSource(ints = {3})
+    @CsvSource(value = {"1:0", "0:1", "1:1", "-1:2", "2:-1", "0:2"}, delimiter = ':')
+    @ParameterizedTest
+    @DisplayName("RacingGame 생성 Car 인자 값 예외 테스트")
+    public void generateRacingGameArgumentExceptionTest(int round, int carCount){
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new RacingGame(round, carCount));
+    }
+
+    @CsvSource(value = {"3:3", "3:4", "4:4", "1:2"}, delimiter = ':')
     @ParameterizedTest
     @DisplayName("RacingGame play 메소드의 결과 크기는 car의 크기와 같다.")
-    public void playTest(int round) {
-        int[] result = new RacingGame(round, cars).play();
-        assertThat(result).hasSameSizeAs(cars);
+    public void playTest(int round, int carCount) {
+        int[] result = new RacingGame(round, carCount).play();
+        assertThat(result).hasSize(carCount);
     }
 }

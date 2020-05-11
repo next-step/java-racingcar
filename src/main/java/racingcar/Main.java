@@ -11,12 +11,9 @@ public class Main {
         int carCount = InputView.getCarCount();
         int gameRound = InputView.getGameRound();
 
-        Car[] cars = new Car[carCount];
-        for (int i = 0; i < carCount; i++) {
-            cars[i] = Car.newInstance();
-        }
+        RacingGame racingGame = new RacingGame(carCount, gameRound);
 
         ResultView.printBanner();
-        new RacingGame(gameRound, cars).play();
+        racingGame.play();
     }
 }
