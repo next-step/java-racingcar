@@ -19,14 +19,6 @@ public enum Operation {
         this.computationStrategy = computationStrategy;
     }
 
-    private static Operand divide(Operand o1, Operand o2) {
-        if (o2.equals(ZERO)) {
-            throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
-        }
-
-        return new Operand(o1.getValue() / o2.getValue());
-    }
-
     public static Operation findByType(String type) {
         return Arrays.stream(values())
                 .filter(value -> value.type.equals(type))
@@ -36,6 +28,14 @@ public enum Operation {
 
     public Operand operate(Operand input, Operand operand) {
         return computationStrategy.apply(input, operand);
+    }
+
+    private static Operand divide(Operand o1, Operand o2) {
+        if (o2.equals(ZERO)) {
+            throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
+        }
+
+        return new Operand(o1.getValue() / o2.getValue());
     }
 
 }
