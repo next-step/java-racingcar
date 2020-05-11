@@ -3,6 +3,7 @@ package calculator;
 public class Calculator {
 
     private final String splitter;
+    private final StringValidator stringValidator;
 
     public Calculator(){
         this(" ");
@@ -10,27 +11,24 @@ public class Calculator {
 
     public Calculator(String splitter){
         this.splitter = splitter;
+        this.stringValidator = new StringValidator();
     }
 
     public Double calculate(String input) {
-        validateNotEmpty(input);
+        stringValidator.validateNotEmpty(input);
+
         String[] elements = parseInput(input);
 
         OperandNumber firstOperand = new OperandNumber(elements[0]);
-        for (int i = 1; i < elements.length; i+=2) {
+        int elementSize = elements.length;
+        for (int i = 1; i < elementSize; i+=2) {
             String operatorElement = elements[i];
             OperandNumber secondOperand = new OperandNumber(elements[i+1]);
-            Operator operator =Operator.find(operatorElement).orElseThrow(() -> new IllegalArgumentException(String.format("not supported operator : %s", operatorElement)));
+            Operator operator = Operator.find(operatorElement).orElseThrow(() -> new IllegalArgumentException(String.format("not supported operator : %s", operatorElement)));
             firstOperand = operator.operate(firstOperand, secondOperand);
         }
 
         return firstOperand.doubleValue();
-    }
-
-    private void validateNotEmpty(String input) {
-        if (input == null || input.trim().length() == 0) {
-            throw new IllegalArgumentException("empty string");
-        }
     }
 
     private String[] parseInput(String input){

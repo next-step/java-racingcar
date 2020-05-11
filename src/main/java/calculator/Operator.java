@@ -6,22 +6,22 @@ import java.util.Optional;
 public enum Operator {
     PLUS("+") {
         OperandNumber operate(OperandNumber operand1, OperandNumber operand2) {
-            return operand1.plus(operand2);
+            return new OperandNumber(operand1.doubleValue() + operand2.doubleValue());
         }
     },
     MINUS("-") {
         OperandNumber operate(OperandNumber operand1, OperandNumber operand2) {
-            return operand1.minus(operand2);
+            return new OperandNumber(operand1.doubleValue() - operand2.doubleValue());
         }
     },
     MULTIPLY("*") {
         OperandNumber operate(OperandNumber operand1, OperandNumber operand2) {
-            return operand1.multiple(operand2);
+            return new OperandNumber(operand1.doubleValue() * operand2.doubleValue());
         }
     },
     DIVIDE("/") {
         OperandNumber operate(OperandNumber operand1, OperandNumber operand2) {
-            return operand1.divide(operand2);
+            return new OperandNumber(operand1.doubleValue() / operand2.doubleValue());
         }
     },
     ;

@@ -9,23 +9,7 @@ public class OperandNumber {
     }
 
     public OperandNumber(double number) {
-        this.value =number;
-    }
-
-    OperandNumber plus(OperandNumber operandNumber){
-       return new OperandNumber(this.value + operandNumber.value);
-    }
-
-    OperandNumber minus(OperandNumber operandNumber){
-        return new OperandNumber(this.value - operandNumber.value);
-    }
-
-    OperandNumber multiple(OperandNumber operandNumber){
-        return new OperandNumber(this.value * operandNumber.value);
-    }
-
-    OperandNumber divide(OperandNumber operandNumber){
-        return new OperandNumber(this.value / operandNumber.value);
+        this.value = number;
     }
 
     double doubleValue(){
