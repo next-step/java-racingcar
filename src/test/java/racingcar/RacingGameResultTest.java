@@ -37,14 +37,16 @@ public class RacingGameResultTest {
         assertThatIllegalArgumentException().isThrownBy(() -> result.add(positions));
     }
 
-    @MethodSource("provideCarArgument")
+    @MethodSource("winnerArgument")
     @ParameterizedTest
     @DisplayName("RacingResult 우승자 계산 테스트")
-    public void GetWinnerTest(int[] positions, Car[] cars) {
+    public void GetWinnerTest(int[] positions, Car[] cars, String expected) {
+
         RacingGameResult result = new RacingGameResult(cars);
         result.add(positions);
 
         assertThatCode(() -> result.getWinner()).doesNotThrowAnyException();
+        assertThat(result.getWinner()).isEqualTo(expected);
     }
 
     private static Stream<Arguments> provideCarArgument() {
@@ -58,6 +60,22 @@ public class RacingGameResultTest {
         return Stream.of(
                 Arguments.of(new int[]{0, 0}, new Car[]{Car.newInstance("k5"), Car.newInstance("sonata"), Car.newInstance("genesis")}),
                 Arguments.of(new int[]{1, 2, 3, 4}, new Car[]{Car.newInstance("k9"), Car.newInstance("ray"), Car.newInstance("genesis")})
+        );
+    }
+
+    private static Stream<Arguments> winnerArgument() {
+
+        Car winner1 = Car.newInstance("genesis");
+        winner1.setPosition(2);
+
+        Car winner2 = Car.newInstance("ray");
+        winner2.setPosition(2);
+
+        return Stream.of(
+                Arguments.of(new int[]{0, winner1.getPosition(), winner2.getPosition()},
+                        new Car[]{Car.newInstance("k5"), winner1, winner2}, winner1.getName() + "," + winner2.getName()),
+                Arguments.of(new int[]{1, 1, winner2.getPosition()},
+                        new Car[]{Car.newInstance("k9"), Car.newInstance("sonata"), winner2}, winner2.getName())
         );
     }
 }

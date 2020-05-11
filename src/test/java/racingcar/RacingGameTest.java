@@ -30,10 +30,10 @@ public class RacingGameTest {
 
     @MethodSource("provideValidArgument")
     @ParameterizedTest
-    @DisplayName("RacingGame play 결과의 크기는 라운드의 결과와 같다.")
+    @DisplayName("RacingGame play 결과의 크기는 라운드의 결과와 초기 위치를 합친 값과 같다.")
     public void playTest(int round, String[] carNames) {
         RacingGameResult racingGameResult = new RacingGame(round, carNames).play();
-        assertThat(racingGameResult.getSize()).isEqualTo(round);
+        assertThat(racingGameResult.getSize()).isEqualTo(round + 1);
     }
 
     @MethodSource("provideValidArgument")
