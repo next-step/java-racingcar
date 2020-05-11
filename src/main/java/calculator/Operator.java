@@ -1,6 +1,8 @@
 package calculator;
 
+import java.util.Arrays;
 import java.util.function.DoubleBinaryOperator;
+import java.util.stream.Collectors;
 
 public enum Operator {
     PLUS("+", Operator::add),
@@ -36,6 +38,17 @@ public enum Operator {
 
     private static double multiply(double startNumber, double endNumber) {
         return startNumber * endNumber;
+    }
+
+    public static boolean isContains(String symbol){
+        return Arrays.stream(Operator.values())
+                .map(Operator::getSymbol)
+                .collect(Collectors.toList())
+                .contains(symbol);
+    }
+
+    private String getSymbol() {
+        return symbol;
     }
 
     public double apply(int startNumber, int endNumber) {

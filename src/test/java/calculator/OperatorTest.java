@@ -14,6 +14,12 @@ class OperatorTest {
         defaultNumber = 2;
     }
 
+    @CsvSource(value = {"*:true", "/:true", "-:true", "/:true", "!:false"}, delimiter = ':')
+    @ParameterizedTest
+    void isContains_메소드를_검증한다(String symbol, boolean expected) {
+        assertThat(Operator.isContains(symbol)).isEqualTo(expected);
+    }
+
     @ParameterizedTest
     @CsvSource(value = {"1=3", "2=4", "-1=1", "-3=-1"}, delimiter = '=')
     void 덧셈(int endNumber, int result) {
