@@ -16,12 +16,8 @@ public class Car {
     }
 
     public void move(int value) {
-        if(isMoveable(value)) {
+        if(MoveStrategy.isMoveable(value)) {
             this.moveLength += 1;
         }
-    }
-
-    protected boolean isMoveable(int value) {
-        return value >= 4;
     }
 }
