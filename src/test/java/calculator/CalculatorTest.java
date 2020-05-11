@@ -5,10 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.*;
 
 import java.util.stream.Stream;
 
@@ -86,5 +83,14 @@ public class CalculatorTest {
                 Arguments.of("-1000 * 2 / 2 + 1000", 0),
                 Arguments.of("2 + 3 * 4 / 2", 10)
         );
+    }
+
+    @DisplayName("나눗셈 실패: 분모에 0이 들어간 경우 ArithmeticException 발생")
+    @ParameterizedTest
+    @ValueSource(strings = {"1 / 0", "0 / 0", "10 * 7 / 0"})
+    void failureDivide(final String value) {
+        assertThatThrownBy(() -> calculator.run(value))
+                .isInstanceOf(ArithmeticException.class)
+                .hasMessage(ErrorMessage.ZERO_ON_DENOMINATOR);
     }
 }
