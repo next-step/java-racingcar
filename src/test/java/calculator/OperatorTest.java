@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -62,5 +63,14 @@ class OperatorTest {
             Operator.checkZeroDivide(endNumber);
         }).isInstanceOf(ArithmeticException.class)
                 .hasMessageContaining("제로로 나누는건 허용되지 않습니다.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"2", "#"})
+    void 연산자연산기호가아닌경우_IllegalArgumentException(String operation) {
+        assertThatThrownBy(() -> {
+            Operator.checkOperationSign(operation);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("입력값이 잘못되었습니다. 사칙연산부호를 입력해주세요.");
     }
 }

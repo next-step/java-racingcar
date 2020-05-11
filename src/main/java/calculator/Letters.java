@@ -7,8 +7,16 @@ import java.util.stream.Collectors;
 public class Letters {
     private static final String DELIMITER = " ";
 
-    public static List<String> convertStringToStrings(String input){
-        return Arrays.stream(input.split(DELIMITER))
+    static void checkBlack(String inputData) {
+        if (inputData == null || inputData.trim().isEmpty()) {
+            throw new IllegalArgumentException("값을 입력해주세요.");
+        }
+    }
+
+    public static List<String> convertStringToStrings(String inputData){
+        checkBlack(inputData);
+
+        return Arrays.stream(inputData.split(DELIMITER))
                 .collect(Collectors.toList());
     }
 }

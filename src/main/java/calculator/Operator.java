@@ -11,6 +11,7 @@ public enum Operator {
     MULTIPLY("*", Operator::multiply),
     DIVIDE("/", Operator::divide);
 
+    private static final int ZERO_NUMBER = 0;
     private static final String REGEX_OPERATOR = "[\\*\\+-/]";
     private static final Pattern pattern = Pattern.compile(REGEX_OPERATOR);
     private String symbol;
@@ -34,7 +35,7 @@ public enum Operator {
     }
 
     public static void checkZeroDivide(double endNumber) {
-        if (endNumber == Calculator.ZERO_NUMBER)
+        if (endNumber == ZERO_NUMBER)
             throw new ArithmeticException("제로로 나누는건 허용되지 않습니다.");
     }
 
