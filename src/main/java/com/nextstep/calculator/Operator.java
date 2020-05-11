@@ -1,22 +1,40 @@
 package com.nextstep.calculator;
 
 public enum Operator {
-    PLUS((firstNumber, secondNumber) -> Number.intToNumber(firstNumber.value() + secondNumber.value())),
-    MINUS((firstNumber, secondNumber) -> Number.intToNumber(firstNumber.value() - secondNumber.value())),
-    MULTIPLY((firstNumber, secondNumber) -> Number.intToNumber(firstNumber.value() * secondNumber.value())),
-    DIVIDE((firstNumber, secondNumber) -> Number.intToNumber(firstNumber.value() / secondNumber.value()));
+    PLUS(
+            "+",
+            (firstNumber, secondNumber) -> Number.intToNumber(firstNumber.value() + secondNumber.value())
+    ),
+    MINUS(
+            "-",
+            (firstNumber, secondNumber) -> Number.intToNumber(firstNumber.value() - secondNumber.value())
+    ),
+    MULTIPLY(
+            "*",
+            (firstNumber, secondNumber) -> Number.intToNumber(firstNumber.value() * secondNumber.value())
+    ),
+    DIVIDE(
+            "/",
+            (firstNumber, secondNumber) -> Number.intToNumber(firstNumber.value() / secondNumber.value())
+    );
 
+    private String operator;
     private Calculator calculator;
 
-    Operator(Calculator calculator) {
+    Operator(String operator, Calculator calculator) {
+        this.operator = operator;
         this.calculator = calculator;
     }
 
+    private String getStringOperator() {
+        return this.operator;
+    }
+
     public static Operator select(String stringOperator) {
-        if ("+".equals(stringOperator)) return PLUS;
-        if ("-".equals(stringOperator)) return MINUS;
-        if ("*".equals(stringOperator)) return MULTIPLY;
-        if ("/".equals(stringOperator)) return DIVIDE;
+        if (PLUS.getStringOperator().equals(stringOperator)) return PLUS;
+        if (MINUS.getStringOperator().equals(stringOperator)) return MINUS;
+        if (MULTIPLY.getStringOperator().equals(stringOperator)) return MULTIPLY;
+        if (DIVIDE.getStringOperator().equals(stringOperator)) return DIVIDE;
         throw new IllegalArgumentException();
     }
 

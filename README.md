@@ -45,3 +45,6 @@
     - [X] Number 객체의 계산 책임을 모두 Operator enum으로 이관
     - [X] OperatorSelector 객체의 책임도 Operator enum으로 이관
     - [X] Runner 클래스에서 OperatorSelector 대신 Operator enum으로 책임 이관
+- 리뷰 반영(String까지 enum화 시키기)
+    - [X] Operator enum에 String operator 속성 추가
+    - [ ] Operator select 함수 if 걷어내기
