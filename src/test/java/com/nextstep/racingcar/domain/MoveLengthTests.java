@@ -35,4 +35,12 @@ class MoveLengthTests {
         MoveLength one = MoveLength.createZero().increase();
         assertThat(one.toInt()).isEqualTo(1);
     }
+
+    @DisplayName("동등성 비교 수행 여부 확인")
+    @Test
+    void equalTest() {
+        MoveLength zero1 = MoveLength.createZero();
+        MoveLength zero2 = MoveLength.createZero();
+        assertThat(zero1.equals(zero2)).isTrue();
+    }
 }

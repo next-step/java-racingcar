@@ -1,5 +1,7 @@
 package com.nextstep.racingcar.domain;
 
+import java.util.Objects;
+
 public class MoveLength {
     private static final int MIN_VALUE = 0;
     private final int value;
@@ -27,5 +29,18 @@ public class MoveLength {
 
     public MoveLength increase() {
         return new MoveLength(this.value + 1);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MoveLength that = (MoveLength) o;
+        return value == that.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }
