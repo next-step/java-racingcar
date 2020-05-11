@@ -4,7 +4,6 @@ import study.step2.common.StringUtil;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 public enum Operatoration {
     ADD("+"){
@@ -47,19 +46,29 @@ public enum Operatoration {
     public abstract String apply(int x, int y);
 
     public static String calculate(String input){
-
-        numberList = new Number(StringUtil.seperateNumberAndOperator(input)).getNumbers();
-        operatorList = new Operators(StringUtil.seperateNumberAndOperator(input)).getOperators();
         int result = 0;
+        getSeparatelyExpression(input);
+        result = getResult(result);
+        return String.valueOf(result);
+    }
+
+    private static int getResult(int result) {
         for(int i = 0; i <= operatorList.size()-1; i++){
             result = Integer.parseInt(Operatoration.findSymbol(operatorList.get(i)).apply(numberList.get(0), numberList.get(1)));
-
-            numberList.remove(0);
-            numberList.remove(0);
-            numberList.add(0, result);
+            initNumberList(result);
         }
+        return result;
+    }
 
-        return String.valueOf(result);
+    private static void getSeparatelyExpression(String input) {
+        numberList = new Number(StringUtil.seperateNumberAndOperator(input)).getNumbers();
+        operatorList = new Operators(StringUtil.seperateNumberAndOperator(input)).getOperators();
+    }
+
+    private static void initNumberList(int result) {
+        numberList.remove(0);
+        numberList.remove(0);
+        numberList.add(0, result);
     }
 
     private static Operatoration findSymbol(String symbol){
