@@ -9,7 +9,7 @@ public class StringStudy {
 	 * @param delimiter : String, 구분자
 	 * @return String[], 구분자로 나뉘어진 문자를 배열로 반환한다.
 	 */
-	public String[] split(String param, String delimiter) {
+	public String[] splitTest(String param, String delimiter) {
 		return param.split(delimiter);
 	}
 
@@ -47,5 +47,4 @@ public class StringStudy {
 		
 		return param;
 	}
-
 }

@@ -11,9 +11,9 @@ public class StringStudyTest {
 	StringStudy StringStudy = new StringStudy();
 
 	@Test
-	public void splitTest() {
-		String[] result1 = StringStudy.split("1,2", ",");
-		String[] result2 = StringStudy.split("1", ",");
+	public void testSplitTest() {
+		String[] result1 = StringStudy.splitTest("1,2", ",");
+		String[] result2 = StringStudy.splitTest("1", ",");
 
 		assertThat(result1).contains(new String[] { "1", "2" });
 		assertThat(result1).containsExactly(new String[] { "1", "2" });
@@ -22,14 +22,14 @@ public class StringStudyTest {
 	}
 
 	@Test
-	public void removeBracketTest() {
+	public void testRemoveBracket() {
 		String result = StringStudy.removeBracket("(1,2)");
 		
 		assertThat(result).isEqualTo("1,2");
 	}
 
 	@Test
-	public void charAtTest() {
+	public void testCharAtTest() {
 
 	}
 }
