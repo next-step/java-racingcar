@@ -1,16 +1,16 @@
 package step2;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class StringCalculator {
 
   private final static List<Character> operators = "+-*/".chars().mapToObj(c -> (char) c).collect(Collectors.toList());
   private final static char numberStart = '0';
   private final static char numberEnd = '9';
-  private final List<String> stack = new ArrayList();
+  private final Stack<Integer> numberStack = new Stack();
+  private final Stack<Character> operatorStack = new Stack();
   private final String expression;
   private int pointer = 0;
   private int lastPoint;
@@ -24,14 +24,17 @@ public class StringCalculator {
     calculate();
   }
 
-  public void getNextToken () {
+  public int getResult () {
+    return this.numberStack.pop();
+  }
+
+  private void getNextToken () {
     if (this.pointer >= this.lastPoint) return;
 
     char token = this.expression.charAt(this.pointer);
 
     if (StringCalculator.operators.contains(token)) {
-      calculate();
-      operatorPush(token);
+      calculate(token);
       this.pointer += 1;
       getNextToken();
     } else if (StringCalculator.isNumber(token)) {
@@ -42,13 +45,25 @@ public class StringCalculator {
 
   }
 
-  public void operatorPush (char token) {
+  private void calculate (char nextOperator) {
+    calculate();
+    operatorStack.push(nextOperator);
+    this.numberToken = "";
   }
 
-  public void calculate () {
-    if (this.numberToken.equals("")) return;
-
-    numberToken = "";
+  private void calculate () {
+    int x = Integer.parseInt(this.numberToken);
+    if (numberStack.size() > 0) {
+      int y = numberStack.pop();
+      char operator = operatorStack.pop();
+      switch (operator) {
+        case '+': x += y; break;
+        case '-': x -= y; break;
+        case '*': x *= y; break;
+        case '/': x /= y; break;
+      }
+    }
+    numberStack.push(x);
   }
 
   private static boolean isNumber (char token) {
