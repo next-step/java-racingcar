@@ -16,7 +16,9 @@ public class StringStudyTest {
 		String[] result2 = StringStudy.split("1", ",");
 
 		assertThat(result1).contains(new String[] { "1", "2" });
+		assertThat(result1).containsExactly(new String[] { "1", "2" });
 		assertThat(result2).contains(new String[] { "1" });
+		assertThat(result2).containsExactly(new String[] { "1" });
 	}
 
 	@Test
