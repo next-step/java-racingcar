@@ -1,6 +1,5 @@
 package domain;
 
-import domain.operation.Operation;
 import util.Splitter;
 
 import java.util.List;
