@@ -5,10 +5,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
-import static org.assertj.core.api.Assertions.assertThatCode;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import java.util.stream.Stream;
+
+import static org.assertj.core.api.Assertions.*;
 
 public class CalculatorTest {
 
@@ -29,8 +33,58 @@ public class CalculatorTest {
     @ParameterizedTest
     @NullAndEmptySource
     void isNullOrEmpty(final String value) {
-        assertThatExceptionOfType(RuntimeException.class)
+        assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> calculator.run(value))
                 .withMessageContaining(ErrorMessage.IS_NULL_OR_EMPTY);
+    }
+
+    @DisplayName("0을 입력하면 0을 반환")
+    @Test
+    void zeroValue() {
+        assertThat(calculator.run("0")).isZero();
+    }
+
+    @DisplayName("덧셈 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"2 + 3=5", "1 + 1 + 10000=10002", "0 + 999=999", "1=1"}, delimiter = '=')
+    void plus(final String value, final int expected) {
+        assertThat(calculator.run(value)).isEqualTo(expected);
+    }
+
+    @DisplayName("뺄셈 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"3 - 2=1", "10000 - 9999=1", "-100 - -50=-50", "3 - 100=-97"}, delimiter = '=')
+    void minus(final String value, final int expected) {
+        assertThat(calculator.run(value)).isEqualTo(expected);
+    }
+
+    @DisplayName("곱셈 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"3 * 2=6", "-1 * 2=-2", "-100 * -50=5000"}, delimiter = '=')
+    void times(final String value, final int expected) {
+        assertThat(calculator.run(value)).isEqualTo(expected);
+    }
+
+    @DisplayName("나눗셈 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"4 / 2=2", "40000 / 1=40000", "0 / 20=0"}, delimiter = '=')
+    void divide(final String value, final int expected) {
+        assertThat(calculator.run(value)).isEqualTo(expected);
+    }
+
+    @DisplayName("기본적인 복합 연산 확인")
+    @ParameterizedTest
+    @MethodSource("basicCase")
+    void success(final String value, final int expected) {
+        assertThat(calculator.run(value)).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> basicCase() {
+        return Stream.of(
+                Arguments.of("30 + 10 / 2", 20),
+                Arguments.of("-100 - -50 * 3", -150),
+                Arguments.of("-1000 * 2 / 2 + 1000", 0),
+                Arguments.of("2 + 3 * 4 / 2", 10)
+        );
     }
 }
