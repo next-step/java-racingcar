@@ -1,5 +1,8 @@
 package com.nextstep.calculator;
 
+import java.util.Arrays;
+import java.util.Optional;
+
 public enum Operator {
     PLUS(
             "+",
@@ -31,11 +34,11 @@ public enum Operator {
     }
 
     public static Operator select(String stringOperator) {
-        if (PLUS.getStringOperator().equals(stringOperator)) return PLUS;
-        if (MINUS.getStringOperator().equals(stringOperator)) return MINUS;
-        if (MULTIPLY.getStringOperator().equals(stringOperator)) return MULTIPLY;
-        if (DIVIDE.getStringOperator().equals(stringOperator)) return DIVIDE;
-        throw new IllegalArgumentException();
+        Optional<Operator> selected = Arrays.stream(Operator.values())
+                .filter(op -> op.getStringOperator().equals(stringOperator))
+                .findFirst();
+
+        return selected.orElseThrow(IllegalArgumentException::new);
     }
 
     public Number operate(Number firstValue, Number secondValue) {

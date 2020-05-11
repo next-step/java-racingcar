@@ -72,4 +72,17 @@ class OperatorTests {
     void selectOperatorTestWithInvalidInputs(String invalidInput) {
         assertThatThrownBy(() -> Operator.select(invalidInput)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("Operator enum values 메서드 학습 테스트 - Enum.values()는 enum에 있는 값 객체를 배열 형태로 반환")
+    @Test
+    void enumValuesMethodEduTest() {
+        Operator[] values = Operator.values();
+
+        assertThat(values).containsExactly(
+                Operator.select("+"),
+                Operator.select("-"),
+                Operator.select("*"),
+                Operator.select("/")
+        );
+    }
 }
