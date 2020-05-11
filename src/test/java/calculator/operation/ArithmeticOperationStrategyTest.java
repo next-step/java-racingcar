@@ -1,7 +1,6 @@
-package operation;
+package calculator.operation;
 
 import calculator.exception.ErrorMessage;
-import calculator.operation.ArithmeticOperationStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
