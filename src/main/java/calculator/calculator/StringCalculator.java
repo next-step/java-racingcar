@@ -6,12 +6,12 @@ import calculator.operation.ArithmeticOperationStrategy;
 import calculator.operation.OperationStrategy;
 import calculator.util.StringUtil;
 
-public class Calculator {
+public class StringCalculator {
 
     private static final String DELIMITER = " ";
 
-    public static Calculator of() {
-        return new Calculator();
+    public static StringCalculator of() {
+        return new StringCalculator();
     }
 
     public Integer run(final String input) {

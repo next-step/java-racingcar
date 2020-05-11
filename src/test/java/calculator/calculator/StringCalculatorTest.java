@@ -1,6 +1,5 @@
 package calculator.calculator;
 
-import calculator.calculator.Calculator;
 import calculator.exception.ErrorMessage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,19 +11,19 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class CalculatorTest {
+public class StringCalculatorTest {
 
-    private Calculator calculator;
+    private StringCalculator stringCalculator;
 
     @BeforeEach
     void setUp() {
-        calculator = Calculator.of();
+        stringCalculator = StringCalculator.of();
     }
 
     @DisplayName("Calculator 생성 확인")
     @Test
     void create() {
-        assertThatCode(Calculator::of).doesNotThrowAnyException();
+        assertThatCode(StringCalculator::of).doesNotThrowAnyException();
     }
 
     @DisplayName("입력 값이 null 이거나 빈 공백 문자일 경우 IllegalArgumentException 에러 발생")
@@ -32,49 +31,49 @@ public class CalculatorTest {
     @NullAndEmptySource
     void isNullOrEmpty(final String value) {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> calculator.run(value))
+                .isThrownBy(() -> stringCalculator.run(value))
                 .withMessageContaining(ErrorMessage.IS_NULL_OR_EMPTY);
     }
 
     @DisplayName("0을 입력하면 0을 반환")
     @Test
     void zeroValue() {
-        assertThat(calculator.run("0")).isZero();
+        assertThat(stringCalculator.run("0")).isZero();
     }
 
     @DisplayName("덧셈 테스트")
     @ParameterizedTest
     @CsvSource(value = {"2 + 3=5", "1 + 1 + 10000=10002", "0 + 999=999", "1=1"}, delimiter = '=')
     void plus(final String value, final int expected) {
-        assertThat(calculator.run(value)).isEqualTo(expected);
+        assertThat(stringCalculator.run(value)).isEqualTo(expected);
     }
 
     @DisplayName("뺄셈 테스트")
     @ParameterizedTest
     @CsvSource(value = {"3 - 2=1", "10000 - 9999=1", "-100 - -50=-50", "3 - 100=-97"}, delimiter = '=')
     void minus(final String value, final int expected) {
-        assertThat(calculator.run(value)).isEqualTo(expected);
+        assertThat(stringCalculator.run(value)).isEqualTo(expected);
     }
 
     @DisplayName("곱셈 테스트")
     @ParameterizedTest
     @CsvSource(value = {"3 * 2=6", "-1 * 2=-2", "-100 * -50=5000"}, delimiter = '=')
     void times(final String value, final int expected) {
-        assertThat(calculator.run(value)).isEqualTo(expected);
+        assertThat(stringCalculator.run(value)).isEqualTo(expected);
     }
 
     @DisplayName("나눗셈 테스트")
     @ParameterizedTest
     @CsvSource(value = {"4 / 2=2", "40000 / 1=40000", "0 / 20=0"}, delimiter = '=')
     void divide(final String value, final int expected) {
-        assertThat(calculator.run(value)).isEqualTo(expected);
+        assertThat(stringCalculator.run(value)).isEqualTo(expected);
     }
 
     @DisplayName("기본적인 복합 연산 확인")
     @ParameterizedTest
     @MethodSource("basicCase")
     void success(final String value, final int expected) {
-        assertThat(calculator.run(value)).isEqualTo(expected);
+        assertThat(stringCalculator.run(value)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> basicCase() {
@@ -90,7 +89,7 @@ public class CalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"1 / 0", "0 / 0", "10 * 7 / 0"})
     void failureDivide(final String value) {
-        assertThatThrownBy(() -> calculator.run(value))
+        assertThatThrownBy(() -> stringCalculator.run(value))
                 .isInstanceOf(ArithmeticException.class)
                 .hasMessage(ErrorMessage.ZERO_ON_DENOMINATOR);
     }
@@ -99,7 +98,7 @@ public class CalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"+", "* 3 *", "* 4", "* 4 4", "1+2", "+3-2", "4.5 + 5.5", "4 - 2 *"})
     void failureByNotMatchedFormat(final String value) {
-        assertThatThrownBy(() -> calculator.run(value))
+        assertThatThrownBy(() -> stringCalculator.run(value))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessage.NOT_SUPPORTED_FORMAT);
     }
