@@ -8,18 +8,20 @@ import java.util.stream.Stream;
 public class StringCalculator {
 
   private final static List<Character> operators = "+-*/".chars().mapToObj(c -> (char) c).collect(Collectors.toList());
-  private final static int numberStart = '0';
-  private final static int numberEnd = '9';
+  private final static char numberStart = '0';
+  private final static char numberEnd = '9';
   private final List<String> stack = new ArrayList();
   private final String expression;
   private int pointer = 0;
   private int lastPoint;
+  private String numberToken = "";
 
   public StringCalculator(String expression) {
     if (expression == null) throw new IllegalArgumentException();
     this.expression = expression.replaceAll(" ", ""); // 빈칸 제거
     this.lastPoint = this.expression.length();
-    // getNextToken();
+    getNextToken();
+    calculate();
   }
 
   public void getNextToken () {
@@ -28,26 +30,25 @@ public class StringCalculator {
     char token = this.expression.charAt(this.pointer);
 
     if (StringCalculator.operators.contains(token)) {
+      calculate();
       operatorPush(token);
       this.pointer += 1;
       getNextToken();
-    }
-
-    if (StringCalculator.isNumber(token)) {
-      this.pointer += numberPush();
+    } else if (StringCalculator.isNumber(token)) {
+      this.numberToken += token;
+      this.pointer += 1;
       getNextToken();
-    }
-
-    throw new IllegalArgumentException(); // 숫자도 아니고, 사칙 연산 기호도 아닐 경우
+    } else throw new IllegalArgumentException(); // 숫자도 아니고, 사칙 연산 기호도 아닐 경우
 
   }
 
-  void operatorPush (char operator) {
-
+  public void operatorPush (char token) {
   }
 
-  int numberPush () {
-    while ()
+  public void calculate () {
+    if (this.numberToken.equals("")) return;
+
+    numberToken = "";
   }
 
   private static boolean isNumber (char token) {
