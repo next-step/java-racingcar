@@ -10,7 +10,7 @@ class ValidationUtilsTest {
 
 	@DisplayName("입력 값 공백 검증")
 	@ParameterizedTest
-	@ValueSource(strings = {""})
+	@ValueSource(strings = {"", " "})
 	public void isEmptyTest(String inputValue) {
 		assertThatThrownBy(() -> {
 			ValidationUtils.isEmpty(inputValue);
