@@ -8,6 +8,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
 
-        System.out.println("-> " + input);
+        float result = new StringCalculator().calculate(input);
+
+        System.out.println("-> " + result);
     }
 }
