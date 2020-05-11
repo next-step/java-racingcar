@@ -47,4 +47,14 @@ public class StringStudy {
 		
 		return param;
 	}
+	
+	/**
+	 * 문자열(param)에서 특정 위치(index)의 문자를 가져온다.
+	 * @param param : String, 문자를 가져올 문자열
+	 * @param index : int, 문자를 가져올 위치
+	 * @return String 특정 위치의 문자
+	 */
+	public char charAtTest(String param, int index) {
+		return param.charAt(index);
+	}
 }
