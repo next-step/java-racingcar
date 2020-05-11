@@ -10,13 +10,14 @@ import org.junit.jupiter.params.provider.ValueSource;
 class OperatorTest {
 
     private static final String DIVIDE = "/";
+    private static final String ZERO = "0";
 
     @DisplayName("나누기 연산일 때, 오른쪽 피연산자가 0이면 0으로 나누었을 때, throw IllegalArgumentException 를 실행")
     @ParameterizedTest
     @ValueSource(strings = {"1", "4", "77"})
     void throwExceptionIfDivideByZero (final String value) {
         Operator operator = Operator.findOperator(DIVIDE);
-        assertThatThrownBy(() -> operator.operate(Operand.of(value), Operand.of("0")))
+        assertThatThrownBy(() -> operator.operate(Operand.of(value), Operand.of(ZERO)))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("0으로 나눌 수 없습니다.");
     }
