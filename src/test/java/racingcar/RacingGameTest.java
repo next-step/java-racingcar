@@ -30,10 +30,18 @@ public class RacingGameTest {
 
     @MethodSource("provideValidArgument")
     @ParameterizedTest
-    @DisplayName("RacingGame play 메소드의 결과 크기는 car의 크기와 같다.")
+    @DisplayName("RacingGame play 결과의 크기는 라운드의 결과와 같다.")
     public void playTest(int round, String[] carNames) {
-        int[] result = new RacingGame(round, carNames).play();
-        assertThat(result).hasSize(carNames.length);
+        RacingGameResult racingGameResult = new RacingGame(round, carNames).play();
+        assertThat(racingGameResult.getSize()).isEqualTo(round);
+    }
+
+    @MethodSource("provideValidArgument")
+    @ParameterizedTest
+    @DisplayName("RacingGame play 결과의 크기는 라운드의 결과와 같다.")
+    public void getWinnerTest(int round, String[] carNames) {
+        RacingGameResult racingGameResult = new RacingGame(round, carNames).play();
+        assertThatCode(() -> racingGameResult.getWinner()).doesNotThrowAnyException();
     }
 
     @MethodSource("provideValidArgument")
