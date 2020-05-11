@@ -11,6 +11,10 @@ public class MoveLength {
         return new MoveLength(0);
     }
 
+    protected static MoveLength createByInt(int value) {
+        return new MoveLength(value);
+    }
+
     public int toInt() {
         return this.value;
     }
