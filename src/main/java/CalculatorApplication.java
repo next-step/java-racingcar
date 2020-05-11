@@ -4,6 +4,7 @@ import view.InputView;
 import view.OutputView;
 
 public class CalculatorApplication {
+
     public static void main(String[] args) {
         String inputEquation = InputView.askEquation();
 

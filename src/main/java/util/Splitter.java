@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Splitter {
-
     private static final String EXPRESSION_DELIMITER = " ";
 
     private Splitter() {

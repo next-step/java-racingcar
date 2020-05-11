@@ -6,9 +6,9 @@ import java.util.function.BinaryOperator;
 import static domain.Operand.ZERO;
 
 public enum Operation {
-    PLUS("+", (o1, o2) -> new Operand(o1.getValue() + o2.getValue())),
-    SUBTRACT("-", (o1, o2) -> new Operand(o1.getValue() - o2.getValue())),
-    MULTIPLICATION("*", (o1, o2) -> new Operand(o1.getValue() * o2.getValue())),
+    PLUS("+", (input, operand) -> new Operand(input.getValue() + operand.getValue())),
+    SUBTRACT("-", (input, operand) -> new Operand(input.getValue() - operand.getValue())),
+    MULTIPLICATION("*", (input, operand) -> new Operand(input.getValue() * operand.getValue())),
     DIVISION("/", Operation::divide);
 
     private final String type;
@@ -30,12 +30,12 @@ public enum Operation {
         return computationStrategy.apply(input, operand);
     }
 
-    private static Operand divide(Operand o1, Operand o2) {
-        if (o2.equals(ZERO)) {
+    private static Operand divide(Operand input, Operand operand) {
+        if (operand.equals(ZERO)) {
             throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
         }
 
-        return new Operand(o1.getValue() / o2.getValue());
+        return new Operand(input.getValue() / operand.getValue());
     }
 
 }
