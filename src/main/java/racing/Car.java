@@ -12,7 +12,7 @@ public class Car {
     }
 
     public void move() {
-        boolean isRun = this.carMovement.run();
+        boolean isRun = this.carMovement.isMove();
         if (isRun) {
             this.position++;
         }

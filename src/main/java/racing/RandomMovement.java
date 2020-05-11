@@ -13,7 +13,7 @@ public class RandomMovement implements CarMovement {
     }
 
     @Override
-    public boolean run() {
+    public boolean isMove() {
         return this.random.nextInt(RANDOM_VALUE) >= this.MOVEMENT_CONDITION;
     }
 }
