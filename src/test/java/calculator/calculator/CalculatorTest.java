@@ -1,5 +1,6 @@
-package calculator;
+package calculator.calculator;
 
+import calculator.calculator.Calculator;
 import calculator.exception.ErrorMessage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
