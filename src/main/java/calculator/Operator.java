@@ -18,6 +18,20 @@ public enum Operator {
         this.binaryOperator = binaryOperator;
     }
 
+    public static Operator getOperator(String symbol) {
+        switch (symbol) {
+            case "*":
+                return MULTIPLY;
+            case "/":
+                return DIVIDE;
+            case "+":
+                return PLUS;
+            case "-":
+                return MINUS;
+        }
+        return null;
+    }
+
     private static double add(double startNumber, double endNumber) {
         return startNumber + endNumber;
     }
@@ -40,7 +54,7 @@ public enum Operator {
         return startNumber * endNumber;
     }
 
-    public static boolean isContains(String symbol){
+    public static boolean isContains(String symbol) {
         return Arrays.stream(Operator.values())
                 .map(Operator::getSymbol)
                 .collect(Collectors.toList())

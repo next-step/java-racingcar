@@ -20,6 +20,12 @@ class OperatorTest {
         assertThat(Operator.isContains(symbol)).isEqualTo(expected);
     }
 
+    @CsvSource(value = {"*:true", "/:true", "-:true", "/:true", "!:false"}, delimiter = ':')
+    @ParameterizedTest
+    void getOperator_메소드를_통해_Operator가_null이_아닌지_검증한다(String symbol, boolean expected) {
+        assertThat(Operator.isContains(symbol)).isEqualTo(expected);
+    }
+
     @ParameterizedTest
     @CsvSource(value = {"1=3", "2=4", "-1=1", "-3=-1"}, delimiter = '=')
     void 덧셈(int endNumber, int result) {
