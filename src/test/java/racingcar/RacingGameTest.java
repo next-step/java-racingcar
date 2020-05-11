@@ -23,6 +23,14 @@ public class RacingGameTest {
 
     @ValueSource(ints = {3})
     @ParameterizedTest
+    @DisplayName("RacingGame 객체 생성 테스트")
+    public void generateRacingGameTest(int round){
+        assertThat(new RacingGame(round, cars)).isExactlyInstanceOf(RacingGame.class);
+    }
+
+
+    @ValueSource(ints = {3})
+    @ParameterizedTest
     @DisplayName("RacingGame play 메소드의 결과 크기는 car의 크기와 같다.")
     public void playTest(int round) {
         int[] result = new RacingGame(round, cars).play();
