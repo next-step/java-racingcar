@@ -22,17 +22,21 @@ class CarTests {
         assertThat(newCar.getMoveLength()).isEqualTo(0);
     }
 
-    @DisplayName("움직인 차량은 거리가 1씩 증가한다")
-    @Test
-    void moveCarTest() {
-        newCar.move(4);
+    @DisplayName("4 이상의 값을 입력받은 차량은 움직이고 움직인 거리가 1증가한다.")
+    @ParameterizedTest
+    @ValueSource(ints = { 4, 5, 6, 7, 8 })
+    void moveCarTest(int value) {
+        assertThat(newCar.getMoveLength()).isEqualTo(0);
+        newCar.move(value);
         assertThat(newCar.getMoveLength()).isEqualTo(1);
     }
 
-    @DisplayName("차량의 이동 가능여부를 판단한다. 입력값이 4 이상일 때만 움직일 수 있다.")
+    @DisplayName("4 미만의 값을 입력받은 차량은 움직이지 않고 움직인 거리가 변하지 않는다..")
     @ParameterizedTest
-    @ValueSource(ints = { 4, 5, 6 })
-    void moveableTest(int value) {
-        assertThat(newCar.isMoveable(value)).isTrue();
+    @ValueSource(ints = { 0, 1, 2, 3 })
+    void moveCarFailTest(int value) {
+        assertThat(newCar.getMoveLength()).isEqualTo(0);
+        newCar.move(value);
+        assertThat(newCar.getMoveLength()).isEqualTo(0);
     }
 }
