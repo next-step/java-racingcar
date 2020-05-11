@@ -10,6 +10,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CalcTest {
     Calculator calculator = new Calculator();
 
+    @DisplayName("조건에 맞는 문자열인지 체크")
+    @ParameterizedTest
+    @CsvSource(value = {":false", "\"\":false", "2 + 3 * 4 / 2:true"}, delimiter = ':')
+    void testCondition(String v, boolean expected) {
+        assertEquals(calculator.conditionCheck(v), expected);
+    }
+
     @DisplayName("조건에 맞는 문자열을 입력 받았을 때")
     @ParameterizedTest
     @CsvSource(value = {"1 + 2 + 3 = 6.0", "4 + 2 / 3 = 2", "2 + 3 * 4 / 2 = 10"}, delimiter = '=')

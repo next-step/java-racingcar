@@ -3,14 +3,40 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Calculator {
-    double accumulated;
+    private double accumulated;
+
+    // 1. 공백만 들어왔는지
+    private boolean blankCheck(String testStr) {
+        return (testStr != null && !testStr.equals(""));
+    }
+
+    // 2. 숫자와 사칙연산 기호만 허용
+    private boolean numArithmeticalOperationsCheck(String testStr) {
+        String regx = "^[0-9\\+\\-\\*/\\s]+$";
+        return testStr.trim().matches(regx);
+    }
+
+    // 3. 처음과 끝이 숫자가 맞는지
+    private boolean isNumbers(String testStr) {
+        return (testStr.charAt(0) - '0' < 10 && testStr.charAt(0) - '0' >= 0);
+    }
+
+    private boolean startEndIsNumCheck(String testStr) {
+        String startStr = testStr.substring(0, 1);
+        String endStr = testStr.substring(testStr.length() - 1);
+
+        return isNumbers(startStr) && isNumbers(endStr);
+    }
+
+    // 조건 체크하는 함수
+    public boolean conditionCheck(String testStr) {
+        return blankCheck(testStr) && numArithmeticalOperationsCheck(testStr) && startEndIsNumCheck(testStr);
+    }
 
     // 연산
     public double calculate(String testStr) {
         // 조건 체크
-            // 1. 공백 안 됨
-            // 2. 숫자, 사칙연산 문자만 허용
-            // 3. 앞, 뒤는 숫자
+        conditionCheck(testStr);
 
         // 쪼개고
         String[] splitUp = testStr.split(" ");
