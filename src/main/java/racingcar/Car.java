@@ -32,6 +32,10 @@ public class Car {
         this.position = position;
     }
 
+    public void clearPosition(){
+        this.setPosition(DEFAULT_POSITION);
+    }
+
     public String getName() {
         return name;
     }

@@ -56,4 +56,9 @@ public class RacingGame {
             throw new IllegalArgumentException("최소 게임 라운드 입력 값은 " + MINIMUM_ROUND + " 입니다.");
         }
     }
+
+    public void clear() {
+        Arrays.stream(cars)
+                .forEach(car -> car.clearPosition());
+    }
 }
