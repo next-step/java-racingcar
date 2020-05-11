@@ -12,6 +12,14 @@ public enum Operator {
         this.calculator = calculator;
     }
 
+    public static Operator select(String stringOperator) {
+        if ("+".equals(stringOperator)) return PLUS;
+        if ("-".equals(stringOperator)) return MINUS;
+        if ("*".equals(stringOperator)) return MULTIPLY;
+        if ("/".equals(stringOperator)) return DIVIDE;
+        throw new IllegalArgumentException();
+    }
+
     public Number operate(Number firstValue, Number secondValue) {
         return this.calculator.calculate(firstValue, secondValue);
     }

@@ -2,6 +2,9 @@ package com.nextstep.calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -52,5 +55,21 @@ class OperatorTests {
         Operator divide = Operator.DIVIDE;
 
         assertThatThrownBy(() -> divide.operate(four, zero)).isInstanceOf(ArithmeticException.class);
+    }
+
+    @DisplayName("들어오는 문자열에 따라 알맞는 연산 Operator 객체 반환")
+    @ParameterizedTest
+    @CsvSource(value = {"+=PLUS", "-=MINUS", "*=MULTIPLY", "/=DIVIDE"}, delimiter = '=')
+    void selectOperatorTest(String stringValue, String operatorName) {
+        Operator operator = Operator.select(stringValue);
+
+        assertThat(operator.name()).isEqualTo(operatorName);
+    }
+
+    @DisplayName("사칙 연산으로 변환 불가능한 String 입력 시 IllegalArgumentException 발생")
+    @ParameterizedTest
+    @ValueSource(strings = {"hello", " ", "no"})
+    void selectOperatorTestWithInvalidInputs(String invalidInput) {
+        assertThatThrownBy(() -> Operator.select(invalidInput)).isInstanceOf(IllegalArgumentException.class);
     }
 }
