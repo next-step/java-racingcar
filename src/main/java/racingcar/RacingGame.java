@@ -1,7 +1,5 @@
 package racingcar;
 
-import racingcar.view.ResultView;
-
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.stream.IntStream;
@@ -32,15 +30,29 @@ public class RacingGame {
         return cars;
     }
 
-    public int[] play() {
-        IntStream.range(0, round)
-                .mapToObj(value -> moveAll())
-                .forEach(ResultView::printCarPositionPerRound);
+    public RacingGameResult play() {
 
-        return Arrays.stream(cars)
+        clear();
+
+        RacingGameResult racingGameResult = new RacingGameResult(cars);
+
+        int[] positions = Arrays.stream(cars)
                 .mapToInt(Car::getPosition)
                 .toArray();
-    };
+
+        racingGameResult.add(positions);
+
+         IntStream.range(0, round)
+                .mapToObj(value -> moveAll())
+                .forEach(racingGameResult::add);
+
+        return racingGameResult;
+    }
+
+    public void clear() {
+        Arrays.stream(cars)
+                .forEach(car -> car.clearPosition());
+    }
 
     private int[] moveAll() {
       return Arrays.stream(cars)
@@ -55,10 +67,5 @@ public class RacingGame {
         if(gameRound < MINIMUM_ROUND){
             throw new IllegalArgumentException("최소 게임 라운드 입력 값은 " + MINIMUM_ROUND + " 입니다.");
         }
-    }
-
-    public void clear() {
-        Arrays.stream(cars)
-                .forEach(car -> car.clearPosition());
     }
 }
