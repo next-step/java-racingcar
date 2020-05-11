@@ -16,6 +16,7 @@ class Calculator {
     }
 
     static int divide(int startNumber, int endNumber) {
+        checkZeroDivide(endNumber);
         return startNumber / endNumber;
     }
 
@@ -31,6 +32,11 @@ class Calculator {
         if (!isOperator(operation)) {
             throw new IllegalArgumentException("입력값이 잘못되었습니다. 사칙연산부호를 입력해주세요.");
         }
+    }
+
+    static void checkZeroDivide(int endNumber) {
+        if (endNumber == 0)
+            throw new ArithmeticException("ArithmeticException occured!");
     }
 
     static void isBlack(String inputData) {

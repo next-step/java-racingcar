@@ -78,6 +78,15 @@ class CalculatorTest {
     }
 
     @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void 연산시_Zero로_나누게되면_ArithmeticException(int startNumber) {
+        assertThatThrownBy(() -> {
+            Calculator.divide(startNumber, 0);
+        }).isInstanceOf(ArithmeticException.class)
+                .hasMessageContaining("ArithmeticException occured!");
+    }
+
+    @ParameterizedTest
     @CsvSource(value = {"2 + 3 * 4 / 2=10", "2 * 12=24", "1 + 2 - 4=-1", "8 / 2 + 3 * 6 - 1=41"}, delimiter = '=')
     void 사칙_연산을_모두_포함하는_기능(String input, int result) {
         assertThat(Calculator.runCalculator(input)).isEqualTo(result);
