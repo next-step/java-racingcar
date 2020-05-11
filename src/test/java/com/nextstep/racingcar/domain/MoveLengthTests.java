@@ -28,4 +28,11 @@ class MoveLengthTests {
     void newMoveLengthFailWithNegativeNumberTest(int negativeNumber) {
         assertThatThrownBy(() -> MoveLength.createByInt(negativeNumber)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("증가 연산 수행 시 1씩 값이 증가함")
+    @Test
+    void increaseTest() {
+        MoveLength one = MoveLength.createZero().increase();
+        assertThat(one.toInt()).isEqualTo(1);
+    }
 }

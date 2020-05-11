@@ -24,4 +24,8 @@ public class MoveLength {
     private void validation(int value) {
         if (value < MIN_VALUE) throw new IllegalArgumentException();
     }
+
+    public MoveLength increase() {
+        return new MoveLength(this.value + 1);
+    }
 }
