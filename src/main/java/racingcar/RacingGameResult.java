@@ -33,9 +33,8 @@ public class RacingGameResult {
                 .orElseThrow(() -> new NoSuchElementException());
 
         Arrays.stream(cars)
-                .map(Car::getPosition)
-                .filter(position -> position == max)
-                .map(String::valueOf)
+                .filter(car -> car.getPosition() == max)
+                .map(Car::getName)
                 .forEach(joiner::add);
 
         return joiner.toString();
