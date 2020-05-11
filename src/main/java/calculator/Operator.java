@@ -33,7 +33,7 @@ public enum Operator {
         return startNumber - endNumber;
     }
 
-    private static void checkZeroDivide(double endNumber) {
+    public static void checkZeroDivide(double endNumber) {
         if (endNumber == Calculator.ZERO_NUMBER)
             throw new ArithmeticException("제로로 나누는건 허용되지 않습니다.");
     }
@@ -54,11 +54,31 @@ public enum Operator {
                 .contains(symbol);
     }
 
+    static void checkOperationSign(String operation) {
+        if (!Operator.isOperator(operation)) {
+            throw new IllegalArgumentException("입력값이 잘못되었습니다. 사칙연산부호를 입력해주세요.");
+        }
+    }
+
+    public static Operator getOperator(String letter) {
+        switch (letter) {
+            case "+":
+                return PLUS;
+            case "-":
+                return MINUS;
+            case "*":
+                return MULTIPLY;
+            case "/":
+                return DIVIDE;
+        }
+        return null;
+    }
+
     private String getSymbol() {
         return symbol;
     }
 
-    public double apply(int startNumber, int endNumber) {
+    public double apply(double startNumber, double endNumber) {
         return binaryOperator.applyAsDouble(startNumber, endNumber);
     }
 }

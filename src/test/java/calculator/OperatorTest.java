@@ -1,11 +1,15 @@
 package calculator;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+@DisplayName("사칙 연산")
 class OperatorTest {
     private int defaultNumber;
 
@@ -48,5 +52,15 @@ class OperatorTest {
     @CsvSource(value = {"1=2", "2=4", "3=6"}, delimiter = '=')
     void 곱셈(int endNumber, int result) {
         assertThat(Operator.MULTIPLY.apply(defaultNumber, endNumber)).isEqualTo(result);
+    }
+
+    @Test
+    void 연산시_Zero로_나누게되면_ArithmeticException() {
+        int endNumber = 0;
+
+        assertThatThrownBy(() -> {
+            Operator.checkZeroDivide(endNumber);
+        }).isInstanceOf(ArithmeticException.class)
+                .hasMessageContaining("제로로 나누는건 허용되지 않습니다.");
     }
 }
