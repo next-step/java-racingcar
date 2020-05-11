@@ -1,12 +1,8 @@
 package stringCalculator;
 
 public class Index {
-    public static void main(String[] args) {
-        String input =  "2 + 3 * 4 / 2";
-
+    public int main(String input) {
         Calculator calculator = new Calculator();
-        int result = calculator.main(input);
-
-        System.out.println(result);
+        return calculator.main(input);
     }
 }
