@@ -25,25 +25,4 @@ public class StringCalculator extends Calculator{
 		
 		return result;
 	}
-
-	private int calculate(CalculateInfo calculateInfo) {
-		
-		if("+".equals(calculateInfo.getOperator())) {
-			return add(calculateInfo.getNum1(), calculateInfo.getNum2());
-		}
-		
-		if("-".equals(calculateInfo.getOperator())) {
-			return subStract(calculateInfo.getNum1(), calculateInfo.getNum2());
-		}
-		
-		if("*".equals(calculateInfo.getOperator())) {
-			return multifly(calculateInfo.getNum1(), calculateInfo.getNum2());
-		}
-		
-		if("/".equals(calculateInfo.getOperator())) {
-			return devide(calculateInfo.getNum1(), calculateInfo.getNum2());
-		}
-		
-		return 0;
-	}
 }
