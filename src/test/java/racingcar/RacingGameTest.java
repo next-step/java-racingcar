@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
@@ -40,6 +41,20 @@ public class RacingGameTest {
     @DisplayName("RacingGame 객체 생성 후 생성된 차의 크기는 입력 된 차 이름의 크기와 같다.")
     public void generateCarsTest(int round, String[] carNames) {
         assertThat(new RacingGame(round, carNames).getCars().length).isEqualTo(carNames.length);
+    }
+
+    @MethodSource("provideValidArgument")
+    @ParameterizedTest
+    @DisplayName("clear를 수행하면 차의 위치 값들이 초기화 된다.")
+    public void clearTest(int round, String[] carNames) {
+        RacingGame racingGame = new RacingGame(round, carNames);
+        Arrays.stream(racingGame.getCars()).forEach(car -> car.setPosition(car.getPosition() + 1));
+
+        racingGame.clear();
+
+        Arrays.stream(racingGame.getCars()).forEach(car -> {
+            assertThat(car.getPosition()).isZero();
+        });
     }
 
 
