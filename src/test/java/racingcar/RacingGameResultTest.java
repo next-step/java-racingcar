@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 
 public class RacingGameResultTest {
@@ -21,6 +22,7 @@ public class RacingGameResultTest {
         RacingGameResult result = new RacingGameResult();
         assertThatCode(() -> result.add(cars)).doesNotThrowAnyException();
 
+        assertThat(result.getSize()).isEqualTo(1);
     }
 
     private static Stream<Arguments> provideCarArgument() {
