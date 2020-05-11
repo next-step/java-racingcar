@@ -1,23 +1,23 @@
 package com.nextstep.racingcar.domain;
 
 public class Car {
-    private int moveLength;
+    private MoveLength moveLength;
 
-    private Car(int moveLength) {
+    private Car(MoveLength moveLength) {
         this.moveLength = moveLength;
     }
 
     public Car() {
-        this(0);
+        this(MoveLength.createZero());
     }
 
-    public int getMoveLength() {
-        return moveLength;
+    public MoveLength getMoveLength() {
+        return this.moveLength;
     }
 
     public void move(int value) {
         if(MoveStrategy.isMoveable(value)) {
-            this.moveLength += 1;
+            this.moveLength = this.moveLength.increase();
         }
     }
 }
