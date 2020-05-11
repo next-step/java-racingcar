@@ -5,8 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
@@ -31,4 +30,14 @@ class CalculatorTest {
                 });
     }
 
+    @DisplayName("비정상적인 input에 대한 calculate 메소드 에러 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"1 + + 2, 369, 1 * 30 -- 1, 8 * * 8"})
+    public void throwExceptionWhenInputIsWrong(String input) {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    Calculator calculator = new Calculator();
+                    calculator.calculate(input);
+                });
+    }
 }
