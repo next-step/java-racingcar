@@ -41,3 +41,6 @@
     - [X] 사칙연산을 enum 타입으로 분리
     - [X] Operator enum에서 동작을 모두 갖도록 덧셈 구현
     - [X] 같은 방식으로뺄셈, 나눗셈, 곱셈 구현
+- 리뷰 반영(enum 활용도 높이기)
+    - [ ] Number 객체의 계산 책임을 모두 Operator enum으로 이관
+    - [ ] OperatorSelector 객체의 책임도 Operator enum으로 이관

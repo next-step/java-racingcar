@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class OperatorTests {
     @DisplayName("Operator PLUS로 Number 객체 두개의 덧셈을 수행")
@@ -41,5 +42,15 @@ class OperatorTests {
         Operator divide = Operator.DIVIDE;
 
         assertThat(divide.operate(four, two)).isEqualTo(two);
+    }
+
+    @DisplayName("Operator DIVIDE에서 0으로 나눌 경우 에러 발생")
+    @Test
+    void divideOperatorByZeroTest() {
+        Number four = Number.stringToNumber("4");
+        Number zero = Number.stringToNumber("0");
+        Operator divide = Operator.DIVIDE;
+
+        assertThatThrownBy(() -> divide.operate(four, zero)).isInstanceOf(ArithmeticException.class);
     }
 }

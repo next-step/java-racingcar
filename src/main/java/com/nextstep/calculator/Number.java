@@ -17,24 +17,12 @@ public class Number {
         return new Number(inputString);
     }
 
+    public static Number intToNumber(int inputInt) {
+        return new Number(inputInt);
+    }
+
     public int value() {
         return this.value;
-    }
-
-    public Number plus(Number number) {
-        return new Number(this.value + number.value());
-    }
-
-    public Number minus(Number number) {
-        return new Number(this.value - number.value());
-    }
-
-    public Number multiply(Number number) {
-        return new Number(this.value * number.value());
-    }
-
-    public Number divide(Number number) {
-        return new Number(this.value / number.value());
     }
 
     @Override
