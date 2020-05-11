@@ -1,4 +1,4 @@
-package study;
+package study.step1;
 
 
 import org.junit.jupiter.api.BeforeEach;
@@ -41,7 +41,7 @@ public class SetTest {
         assertThat(numbers.contains(input)).isTrue();
     }
 
-    @DisplayName("")
+    @DisplayName("입력 값에 따라 결과 값이 다른 경우 테스트")
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
     void checkNumberBooleanPairValues(int inputNumber, boolean expectedResult) {
