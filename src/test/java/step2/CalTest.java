@@ -50,6 +50,7 @@ public class CalTest {
         assertThat(result).isEqualTo(3);
     }
 
+
     @ParameterizedTest
     @ValueSource(strings = { "", " ", "  " })
     @DisplayName("Null 체크")
@@ -63,7 +64,7 @@ public class CalTest {
 
     @ParameterizedTest
     @ValueSource(strings = { "1 ^ 2", "2 ^ 2", "2 % 2" })
-    @DisplayName("사칙연산 기호가 아닌 경우")
+    @DisplayName("사칙연산이 기호가 아닌 경우")
     void arithmeticOperationsCheck(String input) {
         assertThatIllegalArgumentException().isThrownBy(() ->
                 {
