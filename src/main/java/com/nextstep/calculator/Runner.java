@@ -10,7 +10,7 @@ public class Runner {
 
         for (int i = 1; i < parsed.size() - 1; i += 2) {
             Number secondNumber = Number.stringToNumber(parsed.get(i + 1));
-            Operator operator = OperatorSelector.select(parsed.get(i));
+            Operator operator = Operator.select(parsed.get(i));
 
             result = operator.operate(result, secondNumber);
         }

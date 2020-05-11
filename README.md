@@ -43,5 +43,5 @@
     - [X] 같은 방식으로뺄셈, 나눗셈, 곱셈 구현
 - 리뷰 반영(enum 활용도 높이기)
     - [X] Number 객체의 계산 책임을 모두 Operator enum으로 이관
-    - [ ] OperatorSelector 객체의 책임도 Operator enum으로 이관
-    - [ ] Runner 클래스에서 OperatorSelector 대신 Operator enum으로 책임 이관
+    - [X] OperatorSelector 객체의 책임도 Operator enum으로 이관
+    - [X] Runner 클래스에서 OperatorSelector 대신 Operator enum으로 책임 이관
