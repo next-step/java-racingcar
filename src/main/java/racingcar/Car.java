@@ -11,6 +11,10 @@ public class Car {
         this.movableStrategy = movableStrategy;
     }
 
+    public static Car newInstance() {
+        return new Car(DEFAULT_POSITION, new RandomMovableStrategy());
+    }
+
     public int getPosition() {
         return position;
     }
@@ -22,9 +26,5 @@ public class Car {
     public int move() {
         this.position += movableStrategy.move();
         return position;
-    }
-
-    public static Car makeDefaultInstance(){
-        return new Car(DEFAULT_POSITION, new RandomMovableStrategy());
     }
 }

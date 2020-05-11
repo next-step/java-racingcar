@@ -13,7 +13,7 @@ public class Main {
 
         Car[] cars = new Car[carCount];
         for (int i = 0; i < carCount; i++) {
-            cars[i] = Car.makeDefaultInstance();
+            cars[i] = Car.newInstance();
         }
 
         ResultView.printBanner();
