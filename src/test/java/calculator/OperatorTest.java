@@ -26,12 +26,6 @@ class OperatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"+:true", "-:true", "*:true", "/:true", "&:false"}, delimiter = ':')
-    void 연산자일경우(String operation, boolean isExpected) {
-        assertThat(Operator.isOperator(operation)).isEqualTo(isExpected);
-    }
-
-    @ParameterizedTest
     @CsvSource(value = {"1=3", "2=4", "-1=1", "-3=-1"}, delimiter = '=')
     void 덧셈(int endNumber, int result) {
         assertThat(Operator.PLUS.apply(defaultNumber, endNumber)).isEqualTo(result);

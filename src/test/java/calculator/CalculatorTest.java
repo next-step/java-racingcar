@@ -23,6 +23,6 @@ class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"2 + 3 * 4 / 2=10", "2 * 12=24", "1 + 2 - 4=-1", "8 / 2 + 3 * 6 - 1=41"}, delimiter = '=')
     void 사칙_연산을_모두_포함하는_기능(String input, int result) {
-        assertThat(Calculator.runCalculator(input)).isEqualTo(result);
+        assertThat(new Calculator(input).runCalculator()).isEqualTo(result);
     }
 }

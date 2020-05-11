@@ -22,7 +22,7 @@ public enum Operator {
         this.binaryOperator = binaryOperator;
     }
 
-    static boolean isOperator(String operation) {
+    private static boolean isOperator(String operation) {
         return pattern.matcher(operation).matches();
     }
 
@@ -55,13 +55,15 @@ public enum Operator {
                 .contains(symbol);
     }
 
-    static void checkOperationSign(String operation) {
-        if (!Operator.isOperator(operation)) {
+    public static void checkOperationSign(String operation) {
+        if (!isOperator(operation)) {
             throw new IllegalArgumentException("입력값이 잘못되었습니다. 사칙연산부호를 입력해주세요.");
         }
     }
 
     public static Operator getOperator(String letter) {
+        checkOperationSign(letter);
+
         switch (letter) {
             case "+":
                 return PLUS;
