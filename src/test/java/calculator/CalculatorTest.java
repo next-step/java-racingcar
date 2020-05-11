@@ -93,4 +93,13 @@ public class CalculatorTest {
                 .isInstanceOf(ArithmeticException.class)
                 .hasMessage(ErrorMessage.ZERO_ON_DENOMINATOR);
     }
+
+    @DisplayName("형식에 맞지 않는 문자열의 경우 IllegalArgumentException 발생")
+    @ParameterizedTest
+    @ValueSource(strings = {"+", "* 3 *", "* 4", "* 4 4", "1+2", "+3-2", "4.5 + 5.5", "4 - 2 *"})
+    void failureByNotMatchedFormat(final String value) {
+        assertThatThrownBy(() -> calculator.run(value))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessage.NOT_SUPPORTED_FORMAT);
+    }
 }
