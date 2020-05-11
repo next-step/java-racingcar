@@ -1,5 +1,8 @@
 package StringCalculator;
 
+import java.util.Arrays;
+import java.util.Optional;
+
 public class StringCalculator {
 
     //주어진 문자열을 계산한다.
@@ -8,19 +11,25 @@ public class StringCalculator {
         double preNumber = 0;
         double nextNumber = 0;
         double sum = 0;
-        OperationRegex operationRegex = new OperationRegex();
+
+        arithmeticExpressionValidation(arithmeticExpression);
+
+        Validator operationValidator = new OperationValidator();
 
         String [] expressionArr = this.splitString(arithmeticExpression.toString());
         preNumber = Double.parseDouble(expressionArr[0]);
 
         for(int i=0 ; i < expressionArr.length ; i++) {
             //연산 문자의 경우
-            if(operationRegex.isValidate(expressionArr[i])){
-                //연산
-                nextNumber = Double.parseDouble(expressionArr[i+1]);
-                sum = operate(preNumber, expressionArr[i], nextNumber);
-                preNumber = sum;
-                continue;
+            if(operationValidator.isValidate(expressionArr[i])){
+                Optional<Operation> operation = getProperOperation(expressionArr[i]);
+                if(operation.isPresent()) {
+                    //연산
+                    nextNumber = Double.parseDouble(expressionArr[i+1]);
+                    sum = operation.get().operate(preNumber, nextNumber);
+                    preNumber = sum;
+                    continue;
+                }
             }
         }
         return sum;
@@ -30,45 +39,22 @@ public class StringCalculator {
         return arithmeticExpression.split(" ");
     }
 
-    private double operate(double preNumber, String operation, double nextNumber) {
-        double operationValue = 0;
-        switch (operation) {
-            case "+" :
-                operationValue = plusOperation(preNumber, nextNumber);
-                break;
-            case "-" :
-                operationValue = minusOperation(preNumber, nextNumber);
-                break;
-            case "*" :
-                operationValue = multiplyOperation(preNumber, nextNumber);
-                break;
-            case "/" :
-                operationValue = divisionOperation(preNumber, nextNumber);
-                break;
-        }
-        return operationValue;
+    public void arithmeticExpressionValidation(ArithmeticExpression arithmeticExpression) {
+        String expression = arithmeticExpression.toString();
+        Validator nullValidator = new NullValidator();
+        Validator arithmeticValidator = new ArithmeticValidator();
+
+        //Null Validation Check
+        nullValidator.validate(expression);
+
+        //Arithmetic Validation Check
+        arithmeticValidator.validate(expression);
     }
 
-    //더하기 연산
-    private double plusOperation(double preNumber, double nextNumber){
-        return preNumber + nextNumber;
+    private Optional<Operation> getProperOperation(String operationString) {
+        return Arrays.stream(Operation.values())
+                .filter(operation -> {return operation.toString().equals(operationString);})
+                .findFirst();
     }
-
-    //빼기 연산
-    private double minusOperation(double preNumber, double nextNumber){
-        return preNumber - nextNumber;
-    }
-
-    //곱하기 연산
-    private double multiplyOperation(double preNumber, double nextNumber){
-        return preNumber * nextNumber;
-    }
-
-    //나누기 연산
-    private double divisionOperation(double preNumber, double nextNumber){
-        return preNumber / nextNumber;
-    }
-
-
 
 }
