@@ -1,6 +1,7 @@
 package calculator.operation;
 
 import calculator.exception.ErrorMessage;
+import calculator.util.IntegerUtil;
 
 import java.util.Arrays;
 
@@ -27,6 +28,9 @@ public enum ArithmeticOperationStrategy implements OperationStrategy {
     DIVIDE("/") {
         @Override
         public int operate(int operandA, int operandB) {
+            if (IntegerUtil.isZero(operandB)) {
+                throw new ArithmeticException(ErrorMessage.ZERO_ON_DENOMINATOR);
+            }
             return operandA / operandB;
         }
     };
