@@ -6,9 +6,19 @@ import org.junit.jupiter.api.Test;
 
 public class StringCalculatorTest {
 
-    @DisplayName("더하기 계산 테스")
+    @DisplayName("입력값이 null 예외처리")
     @Test
-    void plusTest() {
+    void inputNullTest() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            new StringCalculator(null);
+        });
+    }
 
+    @DisplayName("입력값이 공백 예외처")
+    @Test
+    void inputEmptyTest() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            new StringCalculator("");
+        });
     }
 }
