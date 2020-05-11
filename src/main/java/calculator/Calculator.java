@@ -2,8 +2,10 @@ package calculator;
 
 class Calculator {
     private static final String DELIMITER = " ";
-    private static final int FIRST_INDEX_FOR_CALCULATOR = 0;
     private static final int STEP_FOR_CALCULATOR = 2;
+    private static final int INITIAL_FIRST_INDEX_FOR_CALCULATOR = 0;
+    private static final int INITIAL_OPERATOR_FOR_CALCULATOR = 1;
+    private static final int INCREMENT_SECOND_INDEX_NUMBER_FOR_CALCULATOR = 1;
 
     static int add(int startNumber, int endNumber) {
         return startNumber + endNumber;
@@ -49,12 +51,12 @@ class Calculator {
         isBlack(input);
         String[] splits = input.split(DELIMITER);
 
-        int totalNumber = convertStringToInt(splits[FIRST_INDEX_FOR_CALCULATOR]);
-        for (int i = 1; i < splits.length; i += STEP_FOR_CALCULATOR) {
+        int totalNumber = convertStringToInt(splits[INITIAL_FIRST_INDEX_FOR_CALCULATOR]);
+        for (int i = INITIAL_OPERATOR_FOR_CALCULATOR; i < splits.length; i += STEP_FOR_CALCULATOR) {
             String operation = splits[i];
             checkOperationSign(operation);
 
-            int endNumber = convertStringToInt(splits[i + 1]);
+            int endNumber = convertStringToInt(splits[i + INCREMENT_SECOND_INDEX_NUMBER_FOR_CALCULATOR]);
 
             totalNumber = getTotalNumber(totalNumber, operation, endNumber);
         }
