@@ -39,13 +39,14 @@ public enum Operator implements OperatorService {
     }
 
     static Operator getOperator(String inputOperator) {
-        OperatorValidator.checkValidOperator(inputOperator);
         if (inputOperator.equals("+"))
             return Operator.PlUS;
         if (inputOperator.equals("-"))
             return Operator.MINUS;
         if (inputOperator.equals("*"))
             return Operator.MULTIPLE;
-        return Operator.DIVIDE;
+        if (inputOperator.equals("/"))
+            return Operator.DIVIDE;
+        throw new IllegalArgumentException();
     }
 }

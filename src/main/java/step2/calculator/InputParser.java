@@ -27,12 +27,4 @@ public class InputParser {
         if (parsedInputLength % 2 == 0)
             throw new IllegalArgumentException();
     }
-
-    static int parseInt(String argument) {
-        try {
-            return Integer.parseInt(argument);
-        } catch (Exception e) {
-            throw new IllegalArgumentException();
-        }
-    }
 }
