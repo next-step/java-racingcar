@@ -12,10 +12,10 @@ public class Operand {
         return new Operand(value);
     }
 
-    public Operand(String value) {
+    public static Operand of(String value) {
         validateNullOrEmpty(value);
         try {
-            this.value = Integer.parseInt(value);
+            return new Operand(Integer.parseInt(value));
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("피연산자는 숫자로 입력해주세요." + value);
         }
@@ -25,7 +25,7 @@ public class Operand {
         return value;
     }
 
-    private void validateNullOrEmpty(String value) {
+    private static void validateNullOrEmpty(String value) {
         if(Objects.isNull(value) || value.isEmpty()) {
             throw new IllegalArgumentException("Null 또는 공백 문자는 피연산자가 될 수 없습니다.");
         }

@@ -13,10 +13,10 @@ public class StringCalculator {
     public int calculate(String expression) {
         String[] values = expression.split(DELIMITER);
 
-        Operand result = new Operand(values[IntegerUtil.ZERO]);
+        Operand result = Operand.of(values[IntegerUtil.ZERO]);
         for(int i = 1; i < values.length; i += 2) {
             Operator operator = Operator.findOperator(values[i]);
-            Operand operand = new Operand(values[i + 1]);
+            Operand operand = Operand.of(values[i + 1]);
             result = operator.operate(result, operand);
         }
 
