@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class InputView {
 
-    public Integer requestNumberOfCar() {
+    public int requestNumberOfCar() {
         System.out.println("자동차 대수는 몇 대 인가요?");
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
