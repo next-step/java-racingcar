@@ -1,12 +1,12 @@
 package calculator;
 
 public class Calculator {
+    public static final int ZERO_NUMBER = 0;
     private static final String DELIMITER = " ";
     private static final int STEP_FOR_CALCULATOR = 2;
     private static final int INITIAL_FIRST_INDEX_FOR_CALCULATOR = 0;
     private static final int INITIAL_OPERATOR_FOR_CALCULATOR = 1;
     private static final int INCREMENT_SECOND_INDEX_NUMBER_FOR_CALCULATOR = 1;
-    public static final int ZERO_NUMBER = 0;
 
     static int add(int startNumber, int endNumber) {
         return startNumber + endNumber;
@@ -25,12 +25,9 @@ public class Calculator {
         return startNumber * endNumber;
     }
 
-    static boolean isOperator(String operation) {
-        return operation.matches("[\\*\\+-/]");
-    }
 
     static void checkOperationSign(String operation) {
-        if (!isOperator(operation)) {
+        if (!Operator.isOperator(operation)) {
             throw new IllegalArgumentException("입력값이 잘못되었습니다. 사칙연산부호를 입력해주세요.");
         }
     }

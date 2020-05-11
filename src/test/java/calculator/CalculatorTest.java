@@ -44,11 +44,6 @@ class CalculatorTest {
         assertThat(Calculator.multiple(defaultNumber, endNumber)).isEqualTo(result);
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"+", "-", "*", "/"})
-    void 연산자일경우(String operation) {
-        assertThat(Calculator.isOperator(operation)).isTrue();
-    }
 
     @ParameterizedTest
     @ValueSource(strings = {"2", "#"})

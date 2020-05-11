@@ -2,6 +2,7 @@ package calculator;
 
 import java.util.Arrays;
 import java.util.function.DoubleBinaryOperator;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public enum Operator {
@@ -10,6 +11,8 @@ public enum Operator {
     MULTIPLY("*", Operator::multiply),
     DIVIDE("/", Operator::divide);
 
+    private static final String REGEX_OPERATOR = "[\\*\\+-/]";
+    private static final Pattern pattern = Pattern.compile(REGEX_OPERATOR);
     private String symbol;
     private DoubleBinaryOperator binaryOperator;
 
@@ -18,18 +21,8 @@ public enum Operator {
         this.binaryOperator = binaryOperator;
     }
 
-    public static Operator getOperator(String symbol) {
-        switch (symbol) {
-            case "*":
-                return MULTIPLY;
-            case "/":
-                return DIVIDE;
-            case "+":
-                return PLUS;
-            case "-":
-                return MINUS;
-        }
-        return null;
+    static boolean isOperator(String operation) {
+        return pattern.matcher(operation).matches();
     }
 
     private static double add(double startNumber, double endNumber) {
