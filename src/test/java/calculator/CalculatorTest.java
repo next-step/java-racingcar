@@ -3,8 +3,6 @@ package calculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -26,13 +24,5 @@ public class CalculatorTest {
         double result = calculator.calculate(input);
 
         assertThat(result).isEqualTo(expected);
-    }
-
-    @CsvSource(value = {"2:0"}, delimiter = ':')
-    @ParameterizedTest
-    @DisplayName("0으로 나누면 ArithmeticException 예외를 던진다.")
-    void divisionWithZeroTest(double a, double b) {
-        assertThatExceptionOfType(ArithmeticException.class)
-                .isThrownBy(() -> calculator.divide(a, b));
     }
 }

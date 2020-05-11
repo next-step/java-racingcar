@@ -5,27 +5,33 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 
 public class Argument {
 
     private static final String REGEX = "^(\\d+)(?:\\s+[\\+\\-\\*\\/]\\s+(\\d+))+$";
+    private static final Pattern pattern = Pattern.compile(REGEX);
     private static final String SEPARATOR = " ";
 
-    public static List<String> toList(String arg) throws IllegalArgumentException {
+    private Argument(){
+        throw new AssertionError();
+    }
 
-        if(!isValidArgument(arg)){
-            throw new IllegalArgumentException("invalid argument format => " + arg);
+    public static List<String> stringExpressionToList(String expression) throws IllegalArgumentException {
+
+        if(!isValidArgument(expression)){
+            throw new IllegalArgumentException("invalid argument format => " + expression);
         }
 
-        return Arrays.stream(arg.split(SEPARATOR))
+        return Arrays.stream(expression.split(SEPARATOR))
                 .collect(Collectors.toList());
     }
 
 
     private static boolean isValidArgument(String arg){
-        return !StringUtils.isEmpty(arg) && arg.matches(REGEX) && existAllSymbol(arg);
+        return !StringUtils.isEmpty(arg) && pattern.matcher(arg).matches() && existAllSymbol(arg);
     }
 
     private static boolean existAllSymbol(String arg) {
