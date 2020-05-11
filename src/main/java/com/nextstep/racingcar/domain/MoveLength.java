@@ -1,9 +1,11 @@
 package com.nextstep.racingcar.domain;
 
 public class MoveLength {
+    private static final int MIN_VALUE = 0;
     private final int value;
 
     private MoveLength(int value) {
+        validation(value);
         this.value = value;
     }
 
@@ -17,5 +19,9 @@ public class MoveLength {
 
     public int toInt() {
         return this.value;
+    }
+
+    private void validation(int value) {
+        if (value < MIN_VALUE) throw new IllegalArgumentException();
     }
 }
