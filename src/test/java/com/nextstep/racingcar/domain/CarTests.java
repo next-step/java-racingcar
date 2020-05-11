@@ -19,4 +19,11 @@ class CarTests {
     void newCarTest() {
         assertThat(newCar.getMoveLength()).isEqualTo(0);
     }
+
+    @DisplayName("움직인 차량은 거리가 1씩 증가한다")
+    @Test
+    void moveCarTest() {
+        newCar.move();
+        assertThat(newCar.getMoveLength()).isEqualTo(1);
+    }
 }

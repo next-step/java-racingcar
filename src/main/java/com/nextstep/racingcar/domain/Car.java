@@ -14,4 +14,8 @@ public class Car {
     public int getMoveLength() {
         return moveLength;
     }
+
+    public void move() {
+        this.moveLength += 1;
+    }
 }
