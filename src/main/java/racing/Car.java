@@ -1,17 +1,19 @@
 package racing;
 
-import java.util.Random;
-
 public class Car {
     private int position = 0;
-    private Random random;
+    private CarMovement carMovement;
 
-    public Car() {
-        random = new Random();
+    public Car(CarMovement carMovement) {
+        if (carMovement == null) {
+            throw new IllegalArgumentException();
+        }
+        this.carMovement = carMovement;
     }
 
     public void move() {
-        if (this.random.nextInt(10) <= 4) {
+        boolean isRun = this.carMovement.run();
+        if (isRun) {
             this.position++;
         }
     }
