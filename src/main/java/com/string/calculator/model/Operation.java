@@ -8,26 +8,26 @@ public enum Operation {
 
     PLUS('+') {
         @Override
-        public Double operate(Double total, Double value) {
-            return total + value;
+        public Double operate(Double left, Double right) {
+            return left + right;
         }
     },
     MINUS('-') {
         @Override
-        public Double operate(Double total, Double value) {
-            return total - value;
+        public Double operate(Double left, Double right) {
+            return left - right;
         }
     },
     MULTIPLY('*') {
         @Override
-        public Double operate(Double total, Double value) {
-            return total * value;
+        public Double operate(Double left, Double right) {
+            return left * right;
         }
     },
     DIVISION('/') {
         @Override
-        public Double operate(Double total, Double value) {
-            return total / value;
+        public Double operate(Double left, Double right) {
+            return left / right;
         }
     };
 
@@ -37,7 +37,7 @@ public enum Operation {
         this.operation = operation;
     }
 
-    public abstract Double operate(Double total, Double value);
+    public abstract Double operate(Double left, Double right);
 
     public static Operation getExactOperation(Character input) {
         return Arrays.stream(Operation.values())
