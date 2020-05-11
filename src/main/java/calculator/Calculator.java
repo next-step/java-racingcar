@@ -1,11 +1,12 @@
 package calculator;
 
-class Calculator {
+public class Calculator {
     private static final String DELIMITER = " ";
     private static final int STEP_FOR_CALCULATOR = 2;
     private static final int INITIAL_FIRST_INDEX_FOR_CALCULATOR = 0;
     private static final int INITIAL_OPERATOR_FOR_CALCULATOR = 1;
     private static final int INCREMENT_SECOND_INDEX_NUMBER_FOR_CALCULATOR = 1;
+    private static final int ZERO_NUMBER = 0;
 
     static int add(int startNumber, int endNumber) {
         return startNumber + endNumber;
@@ -15,7 +16,7 @@ class Calculator {
         return startNumber - endNumber;
     }
 
-    static int divide(int startNumber, int endNumber) {
+    private static int divide(int startNumber, int endNumber) {
         checkZeroDivide(endNumber);
         return startNumber / endNumber;
     }
@@ -35,7 +36,7 @@ class Calculator {
     }
 
     static void checkZeroDivide(int endNumber) {
-        if (endNumber == 0)
+        if (endNumber == ZERO_NUMBER)
             throw new ArithmeticException("제로로 나누는건 허용되지 않습니다.");
     }
 
