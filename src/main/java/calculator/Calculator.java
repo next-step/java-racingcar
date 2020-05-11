@@ -36,7 +36,7 @@ class Calculator {
 
     static void checkZeroDivide(int endNumber) {
         if (endNumber == 0)
-            throw new ArithmeticException("ArithmeticException occured!");
+            throw new ArithmeticException("제로로 나누는건 허용되지 않습니다.");
     }
 
     static void isBlack(String inputData) {

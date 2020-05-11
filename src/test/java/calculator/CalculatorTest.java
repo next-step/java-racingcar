@@ -83,7 +83,7 @@ class CalculatorTest {
         assertThatThrownBy(() -> {
             Calculator.divide(startNumber, 0);
         }).isInstanceOf(ArithmeticException.class)
-                .hasMessageContaining("ArithmeticException occured!");
+                .hasMessageContaining("제로로 나누는건 허용되지 않습니다.");
     }
 
     @ParameterizedTest
