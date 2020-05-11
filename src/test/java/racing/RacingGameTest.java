@@ -3,11 +3,13 @@ package racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import racing.domain.RacingGame;
+import racing.domain.RandomMovement;
+import racing.dto.RacingCreateDto;
+import racing.dto.RacingResultDto;
 
-import java.util.List;
+import java.util.Random;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,36 +18,48 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class RacingGameTest {
 
     @ParameterizedTest
-    @MethodSource("provideNotValidRacingGameArguments")
-    @DisplayName("RacingGame 유효성 검사")
-    void validationTest(int time, int cars) {
-        assertThatThrownBy(() -> new RacingGame(time, cars))
+    @MethodSource("provideNotValidTotalRacingGameCount")
+    @DisplayName("RacingGame racing 횟수 유효성 검사")
+    void validateTotalRacingGameCount(RacingCreateDto racingCreateDto) {
+        assertThatThrownBy(() -> new RacingGame(racingCreateDto, new RandomMovement(new Random())))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
-    @MethodSource("provideRAcingGameArguments")
-    @DisplayName("RacingGame StartRacing 테스트")
-    void startRacing(int time, int carCount) {
-        RacingGame racingGame = new RacingGame(time, carCount);
-        List<Car> cars = racingGame.startRacing();
-        assertThat(cars.size()).isEqualTo(carCount);
-        assertThat(racingGame.racingCount()).isEqualTo(time);
+    @MethodSource("provideNotValidCarCount")
+    @DisplayName("RacingGame 자동차 유효성 검사")
+    void validationTest(RacingCreateDto racingCreateDto) {
+        assertThatThrownBy(() -> new RacingGame(racingCreateDto, new RandomMovement(new Random())))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
-    private static Stream<Arguments> provideNotValidRacingGameArguments() {
+    @ParameterizedTest
+    @MethodSource("provideRacingGameArguments")
+    @DisplayName("RacingGame StartRacing 테스트")
+    void startRacing(RacingCreateDto racingCreateDto) {
+        RacingGame racingGame = new RacingGame(racingCreateDto, new RandomMovement(new Random()));
+        RacingResultDto racingResultDto = racingGame.racingResult();
+        assertThat(racingResultDto.result()).hasSize(racingCreateDto.carCount());
+    }
+
+    private static Stream<Arguments> provideNotValidCarCount() {
         return Stream.of(
-                Arguments.of(0, 1),
-                Arguments.of(1, 0),
-                Arguments.of(0, 0)
+                Arguments.of(new RacingCreateDto(1, 0)),
+                Arguments.of(new RacingCreateDto(1, -1))
         );
     }
 
-    private static Stream<Arguments> provideRAcingGameArguments() {
+    private static Stream<Arguments> provideNotValidTotalRacingGameCount() {
         return Stream.of(
-                Arguments.of(1, 1),
-                Arguments.of(3, 10),
-                Arguments.of(5, 1)
+                Arguments.of(new RacingCreateDto(0, 1)),
+                Arguments.of(new RacingCreateDto(-1, 1))
+        );
+    }
+    private static Stream<Arguments> provideRacingGameArguments() {
+        return Stream.of(
+                Arguments.of(new RacingCreateDto(1, 1)),
+                Arguments.of(new RacingCreateDto(3, 10)),
+                Arguments.of(new RacingCreateDto(5, 1))
         );
     }
 }
