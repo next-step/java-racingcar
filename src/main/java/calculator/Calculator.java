@@ -19,7 +19,11 @@ public class Calculator {
             throw new IllegalArgumentException(ErrorMessage.IS_NULL_OR_EMPTY);
         }
         String[] values = input.split(DELIMITER);
-        return this.calculate(values);
+        try {
+            return calculate(values);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_SUPPORTED_FORMAT);
+        }
     }
 
     private int calculate(final String[] values) {
