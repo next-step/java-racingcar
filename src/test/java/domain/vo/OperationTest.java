@@ -11,12 +11,19 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
 
-import static domain.Operation.DIVISION;
+import static domain.Operation.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 @DisplayName("연산자 테스트")
 class OperationTest {
+
+    @DisplayName("+, -, *, / 에따라 입력값, 피연산자에 대한 계산결과를 반환한다.")
+    @MethodSource("operations")
+    @ParameterizedTest
+    void operation(Operand input, Operation operation, Operand operand, Operand expected) {
+        assertThat(operation.operate(input, operand)).isEqualTo(expected);
+    }
 
     static Stream<Arguments> operations() {
         return Stream.of(
@@ -25,13 +32,6 @@ class OperationTest {
                 Arguments.of(new Operand(2), Operation.MULTIPLICATION, new Operand(3), new Operand(6)),
                 Arguments.of(new Operand(6), DIVISION, new Operand(3), new Operand(2))
         );
-    }
-
-    @DisplayName("+, -, *, / 에따라 입력값, 피연산자에 대한 계산결과를 반환한다.")
-    @MethodSource("operations")
-    @ParameterizedTest
-    void operation(Operand input, Operation operation, Operand operand, Operand expected) {
-        assertThat(operation.operate(input, operand)).isEqualTo(expected);
     }
 
     @DisplayName("0으로 나누기를 시도하면 익셉션을 던진다")
@@ -54,6 +54,22 @@ class OperationTest {
         assertThatThrownBy(() -> Operation.findByType(wrongInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("%s는 올바른 연산자가 아닙니다.", wrongInput);
+    }
+
+    @DisplayName("+, -, /, * 가 들어오면 올바른 Enum 상수를 반환한다")
+    @MethodSource("enumValues")
+    @ParameterizedTest
+    void findByType(String type, Operation expected){
+        assertThat(Operation.findByType(type)).isEqualTo(expected);
+    }
+
+    static Stream<Arguments> enumValues(){
+        return Stream.of(
+                Arguments.of("+", PLUS),
+                Arguments.of("-", SUBTRACT),
+                Arguments.of("*", MULTIPLICATION),
+                Arguments.of("/", DIVISION)
+        );
     }
 
 }

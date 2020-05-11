@@ -13,15 +13,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 class OperandTest {
 
-    static Stream<Arguments> nullOrBlank() {
-        return Stream.of(
-                Arguments.of((Object) null),
-                Arguments.of(""),
-                Arguments.of(" "),
-                Arguments.of("  ")
-        );
-    }
-
     @DisplayName("숫자가 아닌 값으로 Operand 생성을 시도하면 익셉션을 던진다")
     @ValueSource(strings = {"@", ",", "aaaa", "ㄱㅏ", "-"})
     @ParameterizedTest
@@ -38,5 +29,14 @@ class OperandTest {
         assertThatThrownBy(() -> new Operand((String) input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("null또는 빈 공백문자는 Operand로 변환할 수 없습니다");
+    }
+
+    static Stream<Arguments> nullOrBlank() {
+        return Stream.of(
+                Arguments.of((Object) null),
+                Arguments.of(""),
+                Arguments.of(" "),
+                Arguments.of("  ")
+        );
     }
 }
