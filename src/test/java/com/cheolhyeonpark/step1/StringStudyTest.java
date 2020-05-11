@@ -13,11 +13,23 @@ class StringStudyTest {
         String inputText = "1,2";
 
         //when
-        String[] splitedText = inputText.split(",");
+        String[] splitText = inputText.split(",");
 
         //then
-        assertThat(splitedText)
+        assertThat(splitText)
                 .contains("1", "2")
                 .containsExactly("1", "2");
+    }
+
+    @Test
+    void removeBracket() {
+        //given
+        String inputText = "(1,2)";
+
+        //when
+        String resultText = inputText.substring(1, inputText.length() - 1);
+
+        //then
+        assertThat(resultText).isEqualTo("1,2");
     }
 }
