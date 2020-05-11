@@ -16,7 +16,7 @@ public class Calculator {
         return startNumber - endNumber;
     }
 
-    private static int divide(int startNumber, int endNumber) {
+    static int divide(int startNumber, int endNumber) {
         checkZeroDivide(endNumber);
         return startNumber / endNumber;
     }
@@ -40,7 +40,7 @@ public class Calculator {
             throw new ArithmeticException("제로로 나누는건 허용되지 않습니다.");
     }
 
-    static void isBlack(String inputData) {
+    static void checkBlack(String inputData) {
         if (inputData == null || inputData.trim().isEmpty()) {
             throw new IllegalArgumentException("값을 입력해주세요.");
         }
@@ -55,7 +55,7 @@ public class Calculator {
     }
 
     static int runCalculator(String input) {
-        isBlack(input);
+        checkBlack(input);
         String[] splits = input.split(DELIMITER);
 
         int totalNumber = convertStringToInt(splits[INITIAL_FIRST_INDEX_FOR_CALCULATOR]);

@@ -63,7 +63,7 @@ class CalculatorTest {
     @ValueSource(strings = {"", "  "})
     void 입력_값이_null이거나_빈_공백_문자일_경우_IllegalArgumentException(String input) {
         assertThatThrownBy(() -> {
-            Calculator.isBlack(input);
+            Calculator.checkBlack(input);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("값을 입력해주세요.");
     }
