@@ -7,6 +7,9 @@ public class RandomMovableStrategy implements MovableStrategy {
     private final int DEFAULT_RANDOM_RANGE = 10;
     private final int MINIMUM_MOVABLE_VALUE = 4;
 
+    private final int GO = 1;
+    private final int STOP = 0;
+
     private final Random randomGenerator = new Random();
 
     @Override
@@ -14,11 +17,11 @@ public class RandomMovableStrategy implements MovableStrategy {
         return movedByNumberFourOrMore();
     }
 
-    public int movedByNumberFourOrMore() {
+    private int movedByNumberFourOrMore() {
         int value = randomGenerator.nextInt(DEFAULT_RANDOM_RANGE);
         if(value >= MINIMUM_MOVABLE_VALUE) {
-            return 1;
+            return GO;
         }
-        return 0;
+        return STOP;
     }
 }

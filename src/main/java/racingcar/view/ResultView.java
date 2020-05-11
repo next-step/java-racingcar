@@ -7,6 +7,7 @@ import java.util.Arrays;
 public class ResultView {
 
     private static final String BANNER = "실행 결과";
+    private static final String OUTPUT_CHARACTER = "-";
 
     private ResultView() {
         throw new AssertionError();
@@ -25,7 +26,7 @@ public class ResultView {
     }
 
     private static String convertStringPosition(int position) {
-        String result = "-";
+        String result = OUTPUT_CHARACTER;
         for (int i = 0; i < position; i++) {
             result += result;
         }
