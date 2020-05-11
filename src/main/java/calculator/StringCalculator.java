@@ -5,10 +5,10 @@ import java.util.Queue;
 
 public class StringCalculator {
 
-    Queue<Float> operands = new ArrayDeque<>();
-    Queue<Operator> operators = new ArrayDeque<>();
+    private Queue<Float> operands = new ArrayDeque<>();
+    private Queue<Operator> operators = new ArrayDeque<>();
 
-    Float beforeNumber = null;
+    private Float beforeNumber = null;
 
     public float calculate(String formula) {
         checkNullOrEmpty(formula);
