@@ -8,8 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.*;
 
 public class RacingGameResultTest {
 
@@ -30,6 +29,14 @@ public class RacingGameResultTest {
         assertThat(result.getSize()).isEqualTo(1);
     }
 
+    @MethodSource("provideInvalidCarArgument")
+    @ParameterizedTest
+    @DisplayName("RacingResult 추가 테스트")
+    public void racingGameResultAddExceptionTest(int[] positions, Car[] cars) {
+        RacingGameResult result = new RacingGameResult(cars);
+        assertThatIllegalArgumentException().isThrownBy(() -> result.add(positions));
+    }
+
     @MethodSource("provideCarArgument")
     @ParameterizedTest
     @DisplayName("RacingResult 우승자 계산 테스트")
@@ -44,6 +51,13 @@ public class RacingGameResultTest {
         return Stream.of(
                 Arguments.of(new int[]{0, 0, 1}, new Car[]{Car.newInstance("k5"), Car.newInstance("sonata"), Car.newInstance("genesis")}),
                 Arguments.of(new int[]{1, 1, 2}, new Car[]{Car.newInstance("k9"), Car.newInstance("ray"), Car.newInstance("genesis")})
+        );
+    }
+
+    private static Stream<Arguments> provideInvalidCarArgument() {
+        return Stream.of(
+                Arguments.of(new int[]{0, 0}, new Car[]{Car.newInstance("k5"), Car.newInstance("sonata"), Car.newInstance("genesis")}),
+                Arguments.of(new int[]{1, 2, 3, 4}, new Car[]{Car.newInstance("k9"), Car.newInstance("ray"), Car.newInstance("genesis")})
         );
     }
 }

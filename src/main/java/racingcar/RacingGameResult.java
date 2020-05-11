@@ -15,6 +15,9 @@ public class RacingGameResult {
     }
 
     public void add(int[] records) {
+        if (records.length != cars.length) {
+            throw new IllegalArgumentException();
+        }
         results.add(records);
     }
 
