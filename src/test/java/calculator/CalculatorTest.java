@@ -72,7 +72,7 @@ class CalculatorTest {
     void 숫자로형변환이안되면_NumberFormatException() {
         String input = "t";
         assertThatThrownBy(() -> {
-            Calculator.stringConvertToInt(input);
+            Calculator.convertStringToInt(input);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("연산하기위해 숫자를 입력해주세요.");
     }

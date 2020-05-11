@@ -37,7 +37,7 @@ class Calculator {
         }
     }
 
-    static int stringConvertToInt(String input) {
+    static int convertStringToInt(String input) {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
@@ -49,12 +49,12 @@ class Calculator {
         isBlack(input);
         String[] splits = input.split(DELIMITER);
 
-        int totalNumber = stringConvertToInt(splits[FIRST_INDEX_FOR_CALCULATOR]);
+        int totalNumber = convertStringToInt(splits[FIRST_INDEX_FOR_CALCULATOR]);
         for (int i = 1; i < splits.length; i += STEP_FOR_CALCULATOR) {
             String operation = splits[i];
             checkOperationSign(operation);
 
-            int endNumber = stringConvertToInt(splits[i + 1]);
+            int endNumber = convertStringToInt(splits[i + 1]);
 
             totalNumber = getTotalNumber(totalNumber, operation, endNumber);
         }
