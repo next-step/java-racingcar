@@ -7,16 +7,10 @@ import java.util.stream.IntStream;
 
 public class RacingGame {
 
-    private static final int MINIMUM_CAR_COUNT = 2;
-    private static final int MINIMUM_ROUND = 1;
-
     private int round;
     private Car[] cars;
 
     public RacingGame(int round, int carCount) {
-
-        validate(round, carCount);
-
         this.round = round;
         this.cars = generateCars(carCount);
     }
@@ -43,11 +37,5 @@ public class RacingGame {
       return Arrays.stream(cars)
                 .mapToInt(Car::move)
                 .toArray();
-    }
-
-    private static void validate(int round, int carCount) {
-        if (round < MINIMUM_ROUND || carCount < MINIMUM_CAR_COUNT) {
-            throw new IllegalArgumentException();
-        }
     }
 }

@@ -23,14 +23,6 @@ public class RacingGameTest {
         assertThatCode(() -> new RacingGame(round, carCount)).doesNotThrowAnyException();
     }
 
-    @CsvSource(value = {"1:0", "0:1", "1:1", "-1:2", "2:-1", "0:2"}, delimiter = ':')
-    @ParameterizedTest
-    @DisplayName("RacingGame 생성 Car 인자 값 예외 테스트")
-    public void generateRacingGameArgumentExceptionTest(int round, int carCount){
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> new RacingGame(round, carCount));
-    }
-
     @CsvSource(value = {"3:3", "3:4", "4:4", "1:2"}, delimiter = ':')
     @ParameterizedTest
     @DisplayName("RacingGame play 메소드의 결과 크기는 car의 크기와 같다.")
