@@ -11,13 +11,13 @@ public class StringCalculator {
   private final static char numberEnd = '9';
   private final Stack<Integer> numberStack = new Stack();
   private final Stack<Character> operatorStack = new Stack();
-  private final String expression;
-  private final int lastPoint;
-  private final int result;
+  private String expression;
+  private int lastPoint;
+  private int result;
   private int pointer = 0;
   private String numberToken = "";
 
-  public StringCalculator(String expression) {
+  public void getExpression (String expression) {
     if (expression == null) throw new IllegalArgumentException();
     this.expression = expression.replaceAll(" ", ""); // 빈칸 제거
     this.lastPoint = this.expression.length();
