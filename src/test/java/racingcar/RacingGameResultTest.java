@@ -30,9 +30,19 @@ public class RacingGameResultTest {
         assertThat(result.getSize()).isEqualTo(1);
     }
 
+    @MethodSource("provideCarArgument")
+    @ParameterizedTest
+    @DisplayName("RacingResult 우승자 계산 테스트")
+    public void GetWinnerTest(int[] positions, Car[] cars) {
+        RacingGameResult result = new RacingGameResult(cars);
+        result.add(positions);
+
+        assertThatCode(() -> result.getWinner()).doesNotThrowAnyException();
+    }
+
     private static Stream<Arguments> provideCarArgument() {
         return Stream.of(
-                Arguments.of(new int[]{0, 0, 1}, new Car[]{Car.newInstance("k5"), Car.newInstance("sonata")}),
+                Arguments.of(new int[]{0, 0, 1}, new Car[]{Car.newInstance("k5"), Car.newInstance("sonata"), Car.newInstance("genesis")}),
                 Arguments.of(new int[]{1, 1, 2}, new Car[]{Car.newInstance("k9"), Car.newInstance("ray"), Car.newInstance("genesis")})
         );
     }
