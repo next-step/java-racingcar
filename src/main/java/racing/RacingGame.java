@@ -9,11 +9,11 @@ public class RacingGame {
     private int racingCount = 0;
     private List<Car> cars = new ArrayList<>();
 
-    public RacingGame(int time, int cars) {
-        this.validateRacingCar(time, cars);
+    public RacingGame(int time, int carCount) {
+        this.validateRacingCar(time, carCount);
         this.time = time;
         CarMovement carMovement = new RandomMovement(new Random());
-        for (int i = 0; i < cars; i++) {
+        for (int i = 0; i < carCount; i++) {
             this.cars.add(new Car(carMovement));
         }
     }
