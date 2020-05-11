@@ -12,8 +12,9 @@ public class StringCalculator {
   private final Stack<Integer> numberStack = new Stack();
   private final Stack<Character> operatorStack = new Stack();
   private final String expression;
+  private final int lastPoint;
+  private final int result;
   private int pointer = 0;
-  private int lastPoint;
   private String numberToken = "";
 
   public StringCalculator(String expression) {
@@ -22,10 +23,11 @@ public class StringCalculator {
     this.lastPoint = this.expression.length();
     getNextToken();
     calculate();
+    this.result = this.numberStack.pop();
   }
 
   public int getResult () {
-    return this.numberStack.pop();
+    return this.result;
   }
 
   private void getNextToken () {
@@ -57,10 +59,10 @@ public class StringCalculator {
       int y = numberStack.pop();
       char operator = operatorStack.pop();
       switch (operator) {
-        case '+': x += y; break;
-        case '-': x -= y; break;
-        case '*': x *= y; break;
-        case '/': x /= y; break;
+        case '+': x = y + x; break;
+        case '-': x = y - x; break;
+        case '*': x = y * x; break;
+        case '/': x = y / x; break;
       }
     }
     numberStack.push(x);

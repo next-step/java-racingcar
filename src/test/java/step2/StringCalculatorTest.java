@@ -7,6 +7,6 @@ public class StringCalculatorTest {
   @Test
   void ScanTest () {
     String input = "2 + 3 * 4 / 2";
-    new StringCalculator(input);
+    StringCalculator calculator = new StringCalculator(input);
   }
 }
