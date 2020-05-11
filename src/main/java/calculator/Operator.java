@@ -24,7 +24,7 @@ public enum Operator {
         return Stream.of(Operator.values())
             .filter(operator -> operator.symbol.equals(symbol))
             .findFirst()
-            .orElseThrow(() -> new IllegalArgumentException("사칙 연산 기호을 입력해주세요. " + symbol));
+            .orElseThrow(() -> new IllegalArgumentException("잘못된 기호입니다. 사칙 연산 기호을 입력해주세요. " + symbol));
     }
 
     private static void validateNullOrEmpty(String value) {
