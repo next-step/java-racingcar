@@ -32,7 +32,7 @@ public class ArithmeticOperationStrategyTest {
 
     @DisplayName("Enum 클래스에 없는 인자의 경우 IllegalArgumentException 발생")
     @ParameterizedTest
-    @ValueSource(strings = {"#", "%", "s", "test"})
+    @ValueSource(strings = { "#", "%", "s", "test" })
     void failureOf(final String value) {
         assertThatThrownBy(() -> ArithmeticOperationStrategy.of(value))
                 .isInstanceOf(IllegalArgumentException.class)
