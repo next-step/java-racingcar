@@ -23,7 +23,11 @@ class InputParserTest {
                 });
     }
 
-    @DisplayName("String input이 parse됬을 때 길이가 3미만이거나 짝수인 경우 IllegalArgumentException 발생")
+    /*
+    string input이 split됬을 때 최소 필요조건인 "숫자1", "연산자", "숫자2"  == 배열 길이 3이상
+    항상 split된 string 배열은 길이가 홀수여야 함.
+     */
+    @DisplayName("String input이 split됬을 때 배열 길이가 3미만이거나 짝수인 경우 IllegalArgumentException 발생")
     @ParameterizedTest
     @ValueSource(strings = {"1 + 2 + 2 +", "1 + / 2", "1", "2 +"})
     public void throwExceptionWhenStringLengthIsInvalid(String input) {

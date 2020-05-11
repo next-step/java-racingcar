@@ -1,30 +1,28 @@
 package step2.calculator;
 
+import java.util.Arrays;
+
 public enum Operator implements OperatorService {
     PlUS("+") {
         @Override
-        public int calculate(int num1, int num2) {
-            return num1 + num2;
-        }
+        public int operate(int firstNumber, int nextNumber) { return firstNumber + nextNumber; }
     },
     MINUS("-") {
         @Override
-        public int calculate(int num1, int num2) {
-            return num1 - num2;
+        public int operate(int firstNumber, int nextNumber) {
+            return firstNumber - nextNumber;
         }
     },
     MULTIPLE("*") {
         @Override
-        public int calculate(int num1, int num2) {
-            return num1 * num2;
-        }
+        public int operate(int firstNumber, int nextNumber) { return firstNumber * nextNumber; }
     },
     DIVIDE("/") {
         @Override
-        public int calculate(int num1, int num2) {
-            if (num2 == 0)
+        public int operate(int firstNumber, int nextNumber) {
+            if (nextNumber == 0)
                 throw new ArithmeticException();
-            return num1 / num2;
+            return firstNumber / nextNumber;
         }
     };
 
@@ -34,19 +32,12 @@ public enum Operator implements OperatorService {
         this.value = value;
     }
 
-    String getValue() {
-        return this.value;
-    }
+    String getValue() { return this.value; }
 
     static Operator getOperator(String inputOperator) {
-        if (inputOperator.equals("+"))
-            return Operator.PlUS;
-        if (inputOperator.equals("-"))
-            return Operator.MINUS;
-        if (inputOperator.equals("*"))
-            return Operator.MULTIPLE;
-        if (inputOperator.equals("/"))
-            return Operator.DIVIDE;
-        throw new IllegalArgumentException();
+        return (Operator)Arrays.stream(Operator.values())
+                .filter(target -> target.getValue().equals(inputOperator))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
     }
 }

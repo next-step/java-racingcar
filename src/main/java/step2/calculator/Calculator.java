@@ -10,7 +10,7 @@ public class Calculator {
         for (int i = 1; i < length; i += 2) {
             Operator operator = Operator.getOperator(parsedInput[i]);
             int nextNumber = Integer.parseInt(parsedInput[i + 1]);
-            result = operator.calculate(result, nextNumber);
+            result = operator.operate(result, nextNumber);
         }
         return result;
     }
