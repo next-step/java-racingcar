@@ -32,4 +32,21 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(expected);
         assertThat(car.getMovableStrategy()).isExactlyInstanceOf(RandomMovableStrategy.class);
     }
+
+    @Test
+    @DisplayName("Car의 movableStrategy가 NULL 일 때 IllegalArgumentException이 발생한다.")
+    void carMovableStrategyNullTest(){
+        Car car = new Car(0, null);
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> car.move());
+    }
+
+    @ValueSource(ints = {-1})
+    @ParameterizedTest
+    @DisplayName("Car의 위치가 0보다 작다면 IllegalArgumentException이 발생한다. ")
+    void carPositionIsLessThanZeroTest(int position){
+        Car car = new Car(position, new RandomMovableStrategy());
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> car.move());
+    }
 }

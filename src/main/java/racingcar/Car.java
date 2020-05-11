@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.Objects;
+
 public class Car {
     private static final int DEFAULT_POSITION = 0;
 
@@ -24,7 +26,14 @@ public class Car {
     }
 
     public int move() {
+        validate();
         this.position += movableStrategy.move();
         return position;
+    }
+
+    private void validate(){
+        if(position < DEFAULT_POSITION || Objects.isNull(movableStrategy)) {
+            throw new IllegalArgumentException();
+        }
     }
 }
