@@ -1,0 +1,82 @@
+package step2;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Calculator {
+
+    Queue<Integer> numQu = new LinkedList<Integer>();
+    Queue<String> calQu = new LinkedList<String>();
+
+    boolean valCheck(String[] input) {
+
+        for(String s : input)
+        {
+            if(isNumeric(s))
+            {
+                numQu.add(Integer.parseInt(s));
+                continue;
+            }
+
+            if(!s.equals("+") && !s.equals("-") && !s.equals("*") && !s.equals("/")) throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
+
+            calQu.add(s);
+        }
+
+        if(numQu.size() < 1 || calQu.size() ==0 || numQu.size() - calQu.size() != 1 )
+        {
+            throw new IllegalArgumentException("입력값에 문제가 있습니다.");
+        }
+
+        return true;
+    }
+
+    public static boolean isNumeric(String s) {
+        try {
+            Double.parseDouble(s);
+            return true;
+        } catch(NumberFormatException e) {
+            return false;
+        }
+    }
+
+    int calculator(String input)
+    {
+        int result = 0;
+
+        String[] splitInput = input.split(" ");
+        valCheck(splitInput);
+        result = numQu.poll();
+
+        while(numQu.size() != 0)
+        {
+            int a = result;
+            int b = numQu.poll();
+
+            String c = calQu.poll();
+
+            if("+".equals(c)) {
+                result = (a + b);
+                continue;
+            }
+
+            if("-".equals(c)) {
+                result = (a - b);
+                continue;
+            }
+
+            if("*".equals(c)) {
+                result = (a * b);
+                continue;
+            }
+
+            if("/".equals(c)) {
+                if(b == 0) throw new IllegalArgumentException("0으로 나눌수 없습니다.");
+                result = (a / b);
+                continue;
+            }
+        }
+
+        return result;
+    }
+}
