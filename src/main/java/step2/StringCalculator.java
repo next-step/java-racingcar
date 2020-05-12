@@ -16,6 +16,7 @@ public class StringCalculator {
   private int result;
   private int pointer = 0;
   private String numberToken = "";
+  private TokenType tokenType = TokenType.NUMBER;
 
   public void getExpression (String expression) {
     if (expression == null) throw new IllegalArgumentException();
@@ -35,15 +36,22 @@ public class StringCalculator {
 
     char token = this.expression.charAt(this.pointer);
 
-    if (StringCalculator.operators.contains(token)) {
+    if (this.tokenType.equals(TokenType.NUMBER)) {
+      do {
+        this.numberToken += token;
+        this.pointer += 1;
+        token = this.expression.charAt(this.pointer);
+      } while (StringCalculator.isNumber(token));
+      this.tokenType = TokenType.OPERATOR;
+    } else {
+      if (!StringCalculator.operators.contains(token)) {
+        throw new IllegalArgumentException(); // 숫자도 아니고, 사칙 연산 기호도 아닐 경우
+      }
       calculate(token);
       this.pointer += 1;
-      getNextToken();
-    } else if (StringCalculator.isNumber(token)) {
-      this.numberToken += token;
-      this.pointer += 1;
-      getNextToken();
-    } else throw new IllegalArgumentException(); // 숫자도 아니고, 사칙 연산 기호도 아닐 경우
+      this.tokenType = TokenType.NUMBER;
+    }
+    getNextToken();
 
   }
 

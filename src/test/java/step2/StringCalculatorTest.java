@@ -32,7 +32,9 @@ public class StringCalculatorTest {
     "2 + 3 + 4 + 5,14",
     "2 - 3 - 4 - 5,-10",
     "2 * 3 * 4 * 5,120",
-    "6 / 6,1"
+    "6 / 6,1",
+    "10 * -1,-10",
+    "-1 * 10,-10",
   })
   void 사칙연산_테스트 (String expression, int expected) {
     calculator.getExpression(expression);
