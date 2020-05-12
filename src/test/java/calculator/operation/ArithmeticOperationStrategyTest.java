@@ -18,7 +18,7 @@ public class ArithmeticOperationStrategyTest {
     @ParameterizedTest
     @MethodSource("existValueCase")
     void of(final String value, final ArithmeticOperationStrategy expected) {
-        assertThat(ArithmeticOperationStrategy.of(value)).isEqualTo(expected);
+        assertThat(ArithmeticOperationStrategy.fromExpression(value)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> existValueCase() {
@@ -33,8 +33,8 @@ public class ArithmeticOperationStrategyTest {
     @DisplayName("Enum 클래스에 없는 인자의 경우 IllegalArgumentException 발생")
     @ParameterizedTest
     @ValueSource(strings = { "#", "%", "s", "test" })
-    void failureOf(final String value) {
-        assertThatThrownBy(() -> ArithmeticOperationStrategy.of(value))
+    void failureFromExpression(final String value) {
+        assertThatThrownBy(() -> ArithmeticOperationStrategy.fromExpression(value))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessage.NOT_SUPPORTED_OPERATOR);
     }
