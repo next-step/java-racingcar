@@ -3,6 +3,8 @@ package step2;
 public class Calculator {
 
     private static final String BLANK = " ";
+    private static final int FIRST_INDEX = 0;
+    private static final int SECOND_INDEX = 1;
 
     public int calculate(String input){
 
@@ -10,9 +12,9 @@ public class Calculator {
 
         String[] split = input.split(BLANK);
 
-        int result = Integer.parseInt(split[0]);
+        int result = Integer.parseInt(split[FIRST_INDEX]);
 
-        for (int i = 1; i < split.length; i++) {
+        for (int i = SECOND_INDEX; i < split.length; i++) {
             String operation = split[i];
             String nextValue = null;
 
@@ -20,10 +22,12 @@ public class Calculator {
                 continue;
             }
 
-            nextValue = split[i + 1];
+            nextValue = split[i + SECOND_INDEX];
             int nextNum = Integer.parseInt(nextValue);
 
-            result = Operation.calculate(operation, result, nextNum);
+            Operator operator = Operator.findOperator(operation);
+
+            result = operator.operate(result, nextNum);
         }
 
         return result;
