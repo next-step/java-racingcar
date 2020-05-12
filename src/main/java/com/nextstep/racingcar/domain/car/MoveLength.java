@@ -43,4 +43,15 @@ public class MoveLength {
     public int hashCode() {
         return Objects.hash(value);
     }
+
+    public String toStringLength() {
+        String stringLength = "";
+        if (this.value == MIN_VALUE) {
+            return stringLength;
+        }
+        for (int i = 0; i < this.value; i++) {
+            stringLength += "-";
+        }
+        return stringLength;
+    }
 }

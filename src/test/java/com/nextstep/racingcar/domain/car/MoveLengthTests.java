@@ -1,9 +1,9 @@
 package com.nextstep.racingcar.domain.car;
 
-import com.nextstep.racingcar.domain.car.MoveLength;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -43,5 +43,13 @@ class MoveLengthTests {
         MoveLength zero1 = MoveLength.createZero();
         MoveLength zero2 = MoveLength.createZero();
         assertThat(zero1.equals(zero2)).isTrue();
+    }
+
+    @DisplayName("현재 거리를 '-'로 표현하는지지 확인")
+    @ParameterizedTest
+    @CsvSource(value = { "0:''", "1:-", "2:--"} ,delimiter = ':')
+    void toStringTest(int value, String result) {
+        MoveLength moveLength = MoveLength.createByInt(value);
+        assertThat(moveLength.toStringLength()).isEqualTo(result);
     }
 }
