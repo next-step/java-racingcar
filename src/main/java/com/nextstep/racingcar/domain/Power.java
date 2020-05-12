@@ -14,6 +14,10 @@ public class Power {
         return new Power(random.nextInt(10));
     }
 
+    public static Power generateByInt(int value) {
+        return new Power(value);
+    }
+
     public int toInt() {
         return this.value;
     }
