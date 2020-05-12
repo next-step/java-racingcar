@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class PowerTests {
     @DisplayName("Power는 생성되면 0 ~ 9 사이의 값을 랜덤으로 갖게 됨")
@@ -22,5 +23,12 @@ class PowerTests {
     void generatePowerByInt(int value) {
         Power power = Power.generateByInt(value);
         assertThat(power.toInt()).isEqualTo(value);
+    }
+
+    @DisplayName("0 ~ 9를 벗어난 값으로 Power 생성 시 IllegalArgumentException 발생")
+    @ParameterizedTest
+    @ValueSource(ints = { -4, -100, 10, 15 })
+    void generateByIntFailTest(int invalidValue) {
+        assertThatThrownBy(() -> Power.generateByInt(invalidValue)).isInstanceOf(IllegalArgumentException.class);
     }
 }
