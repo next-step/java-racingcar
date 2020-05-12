@@ -3,10 +3,13 @@ package step2;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import step1.StringCalculator;
 
 class StringCalculatorTest {
@@ -81,14 +84,30 @@ class StringCalculatorTest {
         assertThatIllegalArgumentException().isThrownBy(() -> stringCalculator.assertValidParameter(parameter));
     }
 
-    @Test
-    @DisplayName("정상적인 parameter 확인")
-    void isValidParameter() {
-        //given
-        String[] parameter = {"1","+","23","*","456","/","78"};
+//    @Test
+//    @DisplayName("정상적인 parameter 확인")
+//    void isValidParameter() {
+//        //given
+//        String[] parameter = {"1","+","23","*","456","/","78"};
+//
+//        //when&then
+//        assertThat(stringCalculator.assertValidParameter(parameter))
+//            .isTrue();
+//    }
 
+    private static Stream<Arguments> invalidParameter() {
+        return Stream.of(
+            Arguments.of(new String[]{"1","+","23","*","456","/","78"}, "true"),
+            Arguments.of(new String[]{"123","/","45","*","6","/","7"}, "true")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("invalidParameter")
+    @DisplayName("MethodSource를 이용한 assertValidParameter 테스트")
+    void isValidParameter(String[] input, String expected) {
         //when&then
-        assertThat(stringCalculator.assertValidParameter(parameter))
+        assertThat(stringCalculator.assertValidParameter(input))
             .isTrue();
     }
 }
