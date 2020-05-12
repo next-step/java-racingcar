@@ -19,8 +19,8 @@ public class StringCalculator {
   private TokenType tokenType = TokenType.NUMBER;
 
   public void getExpression (String expression) {
-    if (expression == null) throw new IllegalArgumentException();
-    this.expression = expression.replaceAll(" ", ""); // 빈칸 제거
+    if (expression == null || expression.trim().equals("")) throw new IllegalArgumentException();
+    this.expression = expression.trim().replaceAll(" ", ""); // 빈칸 제거
     this.lastPoint = this.expression.length();
     getNextToken();
     calculate();
