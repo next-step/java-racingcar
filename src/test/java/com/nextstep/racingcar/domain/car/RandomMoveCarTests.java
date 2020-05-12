@@ -9,13 +9,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RandomMoveCarTests {
     private RandomMoveCar newRandomMoveCar;
     private MoveLength zero;
-    private MoveLength one;
 
     @BeforeEach
     public void setup() {
         newRandomMoveCar = new RandomMoveCar();
         zero = MoveLength.createZero();
-        one = MoveLength.createByInt(1);
     }
 
     @DisplayName("처음 만들어진 차량은 움직인 거리가 0이다.")

@@ -21,9 +21,12 @@ class RoundTests {
     @DisplayName("모든 차량을 1회씩 출발시킨다.")
     @Test
     void moveAllCar() {
-        // TODO: 테스트 용이성을 위해 강제로 움직일 수 있는 가짜 차량을 만들고 돌아오자
         List<Car> cars = Arrays.asList(new ForceMoveCar(), new ForceMoveCar());
         Round round = Round.newRound(cars);
         round.moveAll();
+
+        List<Integer> result = round.getResult();
+        assertThat(result.get(0)).isEqualTo(1);
+        assertThat(result.get(1)).isEqualTo(1);
     }
 }

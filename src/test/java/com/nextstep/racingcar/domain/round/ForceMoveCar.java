@@ -14,4 +14,9 @@ public class ForceMoveCar implements Car {
     public void move() {
         this.moveLength = this.moveLength.increase();
     }
+
+    @Override
+    public MoveLength getMoveLength() {
+        return this.moveLength;
+    }
 }
