@@ -34,25 +34,25 @@ public class StringCalculator {
         int i = 0;
         result = Integer.valueOf(parsedParameter[i]);
 
-        while (i+2 <= parsedParameter.length) {
-            int variable = Integer.valueOf(parsedParameter[i+2]);
-            Character operator = parsedParameter[i+1].charAt(0);
+        while (i + 2 <= parsedParameter.length) {
+            int variable = Integer.valueOf(parsedParameter[i + 2]);
+            Character operator = parsedParameter[i + 1].charAt(0);
 
             switch (operator) {
-                case '+' :
+                case '+':
                     result = doAddition(result, variable);
                     break;
-                case '-' :
+                case '-':
                     result = doSubtraction(result, variable);
                     break;
-                case '*' :
+                case '*':
                     result = doMultiplication(result, variable);
                     break;
-                case '/' :
+                case '/':
                     result = doDivision(result, variable);
                     break;
             }
-            i+=2;
+            i += 2;
         }
 
         return result;
@@ -66,11 +66,11 @@ public class StringCalculator {
             }
 
             String current = parsedParameter[i];
-            if ((i+2)%2 == 0 && (!StringUtils.isNumeric(current))) {
+            if ((i + 2) % 2 == 0 && (!StringUtils.isNumeric(current))) {
                 throw new IllegalArgumentException();
             }
 
-            if ((i+2)%2 == 1 && (!isValidFourArithmeticOperator(current))) {
+            if ((i + 2) % 2 == 1 && (!isValidFourArithmeticOperator(current))) {
                 throw new IllegalArgumentException();
             }
         }
@@ -91,11 +91,11 @@ public class StringCalculator {
         }
 
         switch (operator) {
-            case '+' :
-            case '-' :
-            case '*' :
-            case '/' :
-                    return true;
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+                return true;
         }
 
         return false;
