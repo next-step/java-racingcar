@@ -1,4 +1,4 @@
-package stringCalculator.exception;
+package calculator.exception;
 
 public class EmptyInputException extends IllegalArgumentException{
     public EmptyInputException() {

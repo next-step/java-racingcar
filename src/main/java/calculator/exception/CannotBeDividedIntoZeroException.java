@@ -1,4 +1,4 @@
-package stringCalculator.exception;
+package calculator.exception;
 
 public class CannotBeDividedIntoZeroException extends RuntimeException {
     public CannotBeDividedIntoZeroException() {
