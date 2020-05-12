@@ -3,7 +3,6 @@ package calculator.calculator;
 
 import calculator.exception.ErrorMessage;
 import calculator.operation.ArithmeticOperationStrategy;
-import calculator.operation.OperationStrategy;
 import calculator.util.StringUtil;
 
 public class StringCalculator {
@@ -30,7 +29,7 @@ public class StringCalculator {
         int operandA = StringUtil.toInt(values[0]);
 
         for (int i = 1; i < values.length; i += 2) {
-            OperationStrategy operator = ArithmeticOperationStrategy.of(values[i]);
+            ArithmeticOperationStrategy operator = ArithmeticOperationStrategy.fromExpression(values[i]);
             int operandB = StringUtil.toInt(values[i + 1]);
 
             operandA = operator.operate(operandA, operandB);
