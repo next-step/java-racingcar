@@ -4,22 +4,18 @@ import org.apache.commons.lang3.StringUtils;
 
 public class StringCalculator {
 
-    // 덧셈
     private int doAddition(int first, int second) {
         return first + second;
     }
 
-    // 뺄셈
     private int doSubtraction(int first, int second) {
         return first - second;
     }
 
-    // 곱셈
     private int doMultiplication(int first, int second) {
         return first * second;
     }
 
-    // 나눗셈
     private int doDivision(int first, int second) {
         return first / second;
     }
@@ -28,13 +24,10 @@ public class StringCalculator {
 
         int result;
 
-        // parse parameter
         String[] parsedParameter = parseParameter(parameter);
 
-        // check parameter validation
         assertValidParameter(parsedParameter);
 
-        // calculate
         int i = 0;
         result = Integer.valueOf(parsedParameter[i]);
 
@@ -62,7 +55,6 @@ public class StringCalculator {
         return result;
     }
 
-    // 입력값 체크
     public Boolean assertValidParameter(String[] parsedParameter) {
 
         for (int i = 0; i < parsedParameter.length; ++i) {
@@ -87,17 +79,14 @@ public class StringCalculator {
         return parameter.split(" ");
     }
 
-    // 사칙연산 기호 체크
     public Boolean isValidFourArithmeticOperator(String character) {
 
         Character operator = character.charAt(0);
 
-        // 문자인지 체크
         if (Character.isDigit(operator)) {
             return false;
         }
 
-        // 사칙연산 operator가 맞는지 체크
         switch (operator) {
             case '+' :
             case '-' :
