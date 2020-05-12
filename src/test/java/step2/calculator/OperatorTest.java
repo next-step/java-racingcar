@@ -15,7 +15,7 @@ class OperatorTest {
     @ParameterizedTest
     @CsvSource({"*, *", "+, +", "-, -", "/, /"})
     public void acceptProperOperators(String inputOperator, String expectedOperator) {
-        assertEquals(Operator.getOperator(inputOperator).getValue(), expectedOperator);
+        assertEquals(Operator.getOperator(inputOperator).getOperatorValue(), expectedOperator);
     }
 
     @DisplayName("비정상적인 사칙연산자는 IllegalArgumentException이 발생하는 Test")
@@ -27,5 +27,4 @@ class OperatorTest {
                     Operator.getOperator(inputOperator);
                 });
     }
-
 }

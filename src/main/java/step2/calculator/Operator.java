@@ -1,43 +1,35 @@
 package step2.calculator;
 
 import java.util.Arrays;
+import java.util.function.BiFunction;
 
-public enum Operator implements OperatorService {
-    PlUS("+") {
-        @Override
-        public int operate(int firstNumber, int nextNumber) { return firstNumber + nextNumber; }
-    },
-    MINUS("-") {
-        @Override
-        public int operate(int firstNumber, int nextNumber) {
-            return firstNumber - nextNumber;
-        }
-    },
-    MULTIPLE("*") {
-        @Override
-        public int operate(int firstNumber, int nextNumber) { return firstNumber * nextNumber; }
-    },
-    DIVIDE("/") {
-        @Override
-        public int operate(int firstNumber, int nextNumber) {
-            if (nextNumber == 0)
-                throw new ArithmeticException();
-            return firstNumber / nextNumber;
-        }
-    };
+public enum Operator {
+    PlUS("+", (firstNumber, nextNumber) -> firstNumber + nextNumber),
+    MINUS("-", (firstNumber, nextNumber) -> firstNumber - nextNumber),
+    MULTIPLE("*", (firstNumber, nextNumber) -> firstNumber * nextNumber),
+    DIVIDE("/", (firstNumber, nextNumber) -> firstNumber / nextNumber);
 
-    private final String value;
+    private final String operatorValue;
 
-    private Operator(String value) {
-        this.value = value;
+    private final BiFunction<Integer, Integer, Integer> expression;
+
+    private Operator(String operatorValue, BiFunction<Integer, Integer, Integer> expression) {
+        this.operatorValue = operatorValue;
+        this.expression = expression;
     }
 
-    String getValue() { return this.value; }
+    Integer calculate(Integer firstNumber, Integer nextNumber) {
+        return this.expression.apply(firstNumber, nextNumber);
+    }
+
+    String getOperatorValue() {
+        return this.operatorValue;
+    }
 
     static Operator getOperator(String inputOperator) {
-        return (Operator)Arrays.stream(Operator.values())
-                .filter(target -> target.getValue().equals(inputOperator))
+        return Arrays.stream(Operator.values())
+                .filter(target -> target.getOperatorValue().equals(inputOperator))
                 .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.INVALID_OPERATOR));
     }
 }
