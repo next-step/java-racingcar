@@ -1,19 +1,21 @@
-import java.net.CacheRequest;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class Calculator {
     private double accumulated;
 
     // 1. 공백만 들어왔는지
-    private boolean blankCheck(String testStr) {
-        return (testStr != null && !testStr.equals(""));
+    public boolean blankCheck(String testStr) {
+        if (testStr == null || testStr.trim().equals("")) {
+            throw new IllegalArgumentException("this is empty string");
+        }
+        return true;
     }
 
     // 2. 숫자와 사칙연산 기호만 허용
-    private boolean numArithmeticalOperationsCheck(String testStr) {
+    private boolean numOperationsCheck(String testStr) {
         String regx = "^[0-9\\+\\-\\*/\\s]+$";
-        return testStr.trim().matches(regx);
+        if (!testStr.trim().matches(regx)) {
+            throw new IllegalArgumentException("you are allow to use only number or arithmetic operation");
+        }
+        return true;
     }
 
     // 3. 처음과 끝이 숫자가 맞는지
@@ -25,12 +27,15 @@ public class Calculator {
         String startStr = testStr.substring(0, 1);
         String endStr = testStr.substring(testStr.length() - 1);
 
-        return isNumbers(startStr) && isNumbers(endStr);
+        if (!isNumbers(startStr) || !isNumbers(endStr)) {
+            throw new IllegalArgumentException("start and end char must be number to calculate");
+        }
+        return true;
     }
 
     // 조건 체크하는 함수
     public boolean conditionCheck(String testStr) {
-        return blankCheck(testStr) && numArithmeticalOperationsCheck(testStr) && startEndIsNumCheck(testStr);
+        return blankCheck(testStr) && numOperationsCheck(testStr) && startEndIsNumCheck(testStr);
     }
 
     // 연산
@@ -44,24 +49,31 @@ public class Calculator {
 
         // 계산
         for(int i = 1; i < splitUp.length; i += 2) {
-            // 연산자 체크하고 계산
-            if(splitUp[i].equals("+")) {
-                accumulated = plusOperation(accumulated, Double.parseDouble(splitUp[i + 1]));
-            }
-
-            if(splitUp[i].equals("-")) {
-                accumulated = minusOperation(accumulated, Double.parseDouble(splitUp[i + 1]));
-            }
-
-            if(splitUp[i].equals("*")) {
-                accumulated = multiplicationOperation(accumulated, Double.parseDouble(splitUp[i + 1]));
-            }
-
-            if(splitUp[i].equals("/")) {
-                accumulated = divisionOperation(accumulated, Double.parseDouble(splitUp[i + 1]));
-            }
+            operation(splitUp[i], accumulated, Double.parseDouble(splitUp[i + 1]));
         }
+
         return accumulated;
+    }
+
+    private void operation(String operation, double firstNum, double secondNum) {
+        switch (operation) {
+            case "+":
+                accumulated = plusOperation(firstNum, secondNum);
+                break;
+            case "-":
+                accumulated = minusOperation(firstNum, secondNum);
+                break;
+            case "*":
+                accumulated = multiplicationOperation(firstNum, secondNum);
+                break;
+            case "/":
+                try {
+                    accumulated = divisionOperation(firstNum, secondNum);
+                } catch (IllegalArgumentException e) {
+                    e.printStackTrace();
+                }
+                break;
+        }
     }
 
     private double plusOperation(double accumulated, double operand) {
@@ -76,7 +88,10 @@ public class Calculator {
         return accumulated * operand;
     }
 
-    private double divisionOperation(double accumulated, double operand) {
+    public double divisionOperation(double accumulated, double operand) throws IllegalArgumentException {
+        if(operand == 0) {
+            throw new IllegalArgumentException("you can't divide by 0");
+        }
         return accumulated / operand;
     }
 }
