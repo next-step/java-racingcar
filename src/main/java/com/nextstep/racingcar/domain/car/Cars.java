@@ -3,6 +3,7 @@ package com.nextstep.racingcar.domain.car;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private List<Car> cars;
@@ -18,5 +19,13 @@ public class Cars {
 
     public int size() {
         return this.cars.size();
+    }
+
+    public List<MoveLength> getMoveLengths() {
+        List<MoveLength> moveLengths = cars.stream()
+                .map(Car::getMoveLength)
+                .collect(Collectors.toList());
+
+        return Collections.unmodifiableList(moveLengths);
     }
 }

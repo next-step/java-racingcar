@@ -30,4 +30,16 @@ class CarsTests {
 
         assertThat(cars.size()).isNotEqualTo(2);
     }
+
+    @DisplayName("내부 차량들의 주행 거리를 알 수 있음")
+    @Test
+    void readMoveLength() {
+        List<Car> carCollection = Arrays.asList(new ForceMoveCar(), new ForceMoveCar());
+        Cars cars = Cars.create(carCollection);
+
+        List<MoveLength> moveLengths = cars.getMoveLengths();
+
+        assertThat(moveLengths.get(0)).isEqualTo(MoveLength.createZero());
+        assertThat(moveLengths.get(0)).isEqualTo(MoveLength.createZero());
+    }
 }
