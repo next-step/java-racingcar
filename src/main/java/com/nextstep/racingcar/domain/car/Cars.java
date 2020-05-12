@@ -28,4 +28,8 @@ public class Cars {
 
         return Collections.unmodifiableList(moveLengths);
     }
+
+    public void moveAll() {
+        cars.forEach(Car::move);
+    }
 }
