@@ -7,7 +7,7 @@ public class Calculator {
 
     private static final String DELIMETER = " ";
 
-    public boolean valCheck(String[] input) {
+    public static boolean valCheck(String[] input) {
 
         if (input == null || input.length == 0) {
             throw new IllegalArgumentException("계산식을 입력해주세요.");
@@ -28,7 +28,7 @@ public class Calculator {
         }
     }
 
-    public double calculator(String input)
+    public static double calculator(String input)
     {
 
         String[] splitInput = input.split(DELIMETER);

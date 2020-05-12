@@ -3,8 +3,12 @@ package step2;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -74,15 +78,28 @@ public class CalTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = { "1", "0", "1 +", "4 *", "*", "/", "- 23424", "555 -", "999", "9 /", "1 1",
-            "2233 3434", "6 *", "* 54", "45 54", "23123 3432423 34", "1 2 3", "+ 1", "1 + 2 3 + 4", "8 * * 3",
-            "555 - 22 234", "999 999 - 1", "9 / 4 4", "5 + 2 + 3 + 4 + + 5" })
-    @DisplayName("잘못된 입력값 체크")
-    void badInputCheck(String input) {
+    @ValueSource(strings = { "1 + a", "3 + &"})
+    @DisplayName("숫자가 아닌 경우")
+    void NumCheck(String input) {
         assertThatIllegalArgumentException().isThrownBy(() ->
                 {
                     cal.calculator(input);
                 }
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideStringsForCalculate")
+    @DisplayName("다수의 사칙 연산 체크")
+    void calculate(String input, double result) {
+        assertThat(Calculator.calculator(input)).isEqualTo(result);
+    }
+
+    private static Stream<Arguments> provideStringsForCalculate() {
+        return Stream.of(
+                Arguments.of("2 + 3 - 4 * 2", "2"),
+                Arguments.of("4 * 1 / 2 + 5", "7"),
+                Arguments.of("6 + 1 * 8 - 2", "54")
         );
     }
 
