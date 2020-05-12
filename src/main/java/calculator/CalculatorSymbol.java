@@ -1,17 +1,19 @@
-public class Calculator {
-    public Long add(Long firstNum, Long secondNum) {
+package calculator;
+
+public class CalculatorSymbol {
+    public int add(int firstNum, int secondNum) {
         return firstNum + secondNum;
     }
 
-    public Long subtract(Long firstNum, Long secondNum) {
+    public int subtract(int firstNum, int secondNum) {
         return firstNum - secondNum;
     }
 
-    public Long multiply(Long firstNum, Long secondNum) {
+    public int multiply(int firstNum, int secondNum) {
         return firstNum * secondNum;
     }
 
-    public Long division(Long firstNum, Long secondNum) {
+    public int division(int firstNum, int secondNum) {
         if (firstNum == 0) {
             throw new ArithmeticException("분모가 0일수 없습니다.");
         }
