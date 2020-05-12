@@ -39,16 +39,16 @@ public class StringCalculator {
             Character operator = parsedParameter[i + 1].charAt(0);
 
             switch (operator) {
-                case '+':
+                case Constants.ADDITION:
                     result = doAddition(result, variable);
                     break;
-                case '-':
+                case Constants.SUBTRACTION:
                     result = doSubtraction(result, variable);
                     break;
-                case '*':
+                case Constants.MULTIPLICATION:
                     result = doMultiplication(result, variable);
                     break;
-                case '/':
+                case Constants.DIVISION:
                     result = doDivision(result, variable);
                     break;
             }
@@ -79,7 +79,7 @@ public class StringCalculator {
     }
 
     public String[] parseParameter(String parameter) throws IllegalArgumentException {
-        return parameter.split(" ");
+        return parameter.split(Constants.WHITE_SPACE);
     }
 
     public Boolean isValidFourArithmeticOperator(String character) {
@@ -91,10 +91,10 @@ public class StringCalculator {
         }
 
         switch (operator) {
-            case '+':
-            case '-':
-            case '*':
-            case '/':
+            case Constants.ADDITION:
+            case Constants.SUBTRACTION:
+            case Constants.MULTIPLICATION:
+            case Constants.DIVISION:
                 return true;
         }
 
