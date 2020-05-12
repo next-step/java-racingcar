@@ -5,6 +5,8 @@ public class Calculator {
     private Double result = 0.0;
     private int tempNumber = 0;
 
+    private String SEPARATOR = " ";
+
     public Calculator(String input) {
         validate(input);
         this.values = splitValue(input);
@@ -51,26 +53,23 @@ public class Calculator {
             default:
                 throw new IllegalArgumentException("input value is invalid operator");
         }
+        resetTemp();
     }
 
     private void add() {
         this.result += tempNumber;
-        resetTemp();
     }
 
     private void minus() {
         this.result -= tempNumber;
-        resetTemp();
     }
 
     private void multiplication() {
         this.result *= tempNumber;
-        resetTemp();
     }
 
     private void division() {
         this.result /= tempNumber;
-        resetTemp();
     }
 
     private void resetTemp() {
@@ -78,16 +77,13 @@ public class Calculator {
     }
 
     private String[] splitValue(String input) {
-        String[] values = input.split(" ");
+        String[] values = input.split(SEPARATOR);
         return values;
     }
 
     private boolean isNumeric(String value) {
         String regExp = "^[0-9]+";
-        if (value.matches(regExp)) {
-            return true;
-        }
-        return false;
+        return value.matches(regExp);
     }
 
     public Double getResult() {
