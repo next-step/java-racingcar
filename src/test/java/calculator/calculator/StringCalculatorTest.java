@@ -90,8 +90,7 @@ public class StringCalculatorTest {
     @ValueSource(strings = {"1 / 0", "0 / 0", "10 * 7 / 0"})
     void failureDivide(final String value) {
         assertThatThrownBy(() -> stringCalculator.run(value))
-                .isInstanceOf(ArithmeticException.class)
-                .hasMessage(ErrorMessage.ZERO_ON_DENOMINATOR);
+                .isInstanceOf(ArithmeticException.class);
     }
 
     @DisplayName("형식에 맞지 않는 문자열의 경우 IllegalArgumentException 발생")
