@@ -20,6 +20,9 @@ class StringCalculatorTest {
 	@Test
 	@DisplayName("뺄셈 테스트")
 	void minus() {
+	    String result = stringCalculator.minus(2,3);
+	    
+	    Assertions.assertThat(result).isEqualTo("-1");
 	}
 
 	@Test
