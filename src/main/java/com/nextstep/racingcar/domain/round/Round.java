@@ -1,18 +1,18 @@
 package com.nextstep.racingcar.domain.round;
 
-import com.nextstep.racingcar.domain.car.Car;
+import com.nextstep.racingcar.domain.car.Cars;
+import com.nextstep.racingcar.domain.car.MoveLength;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Round {
-    private List<Car> cars;
+    private Cars cars;
 
-    private Round(List<Car> cars) {
+    private Round(Cars cars) {
         this.cars = cars;
     }
 
-    public static Round newRound(List<Car> cars) {
+    public static Round newRound(Cars cars) {
         return new Round(cars);
     }
 
@@ -21,12 +21,10 @@ public class Round {
     }
 
     public void moveAll() {
-        this.cars.forEach(Car::move);
+        this.cars.moveAll();
     }
 
-    public List<Integer> getResult() {
-        return cars.stream()
-                .map(car -> car.getMoveLength().toInt())
-                .collect(Collectors.toList());
+    public List<MoveLength> getResult() {
+        return this.cars.getMoveLengths();
     }
 }

@@ -1,6 +1,8 @@
 package com.nextstep.racingcar.domain.round;
 
-import com.nextstep.racingcar.domain.car.Car;
+import com.nextstep.racingcar.domain.car.Cars;
+import com.nextstep.racingcar.domain.car.MoveLength;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,23 +12,34 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RoundTests {
+    private Cars cars;
+
+    @BeforeEach
+    public void setup() {
+        cars = Cars.create(Arrays.asList(new ForceMoveCar(), new ForceMoveCar()));
+    }
+
     @DisplayName("차량들을 입력받아 Round에서 진행할 차량들을 등록한다.")
     @Test
     void createRoundTest() {
-        List<Car> cars = Arrays.asList(new ForceMoveCar(), new ForceMoveCar());
         Round round = Round.newRound(cars);
+
         assertThat(round.getCarNumber()).isEqualTo(2);
     }
 
     @DisplayName("모든 차량을 1회씩 출발시킨다.")
     @Test
     void moveAllCar() {
-        List<Car> cars = Arrays.asList(new ForceMoveCar(), new ForceMoveCar());
         Round round = Round.newRound(cars);
+
+        List<MoveLength> beforeResult = round.getResult();
+        assertThat(beforeResult.get(0).toInt()).isEqualTo(0);
+        assertThat(beforeResult.get(1).toInt()).isEqualTo(0);
+
         round.moveAll();
 
-        List<Integer> result = round.getResult();
-        assertThat(result.get(0)).isEqualTo(1);
-        assertThat(result.get(1)).isEqualTo(1);
+        List<MoveLength> afterResult = round.getResult();
+        assertThat(afterResult.get(0).toInt()).isEqualTo(1);
+        assertThat(afterResult.get(1).toInt()).isEqualTo(1);
     }
 }
