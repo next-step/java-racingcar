@@ -5,7 +5,10 @@ import java.util.Arrays;
 public class StringCalculator {
 
     public int calculate(String input) {
-        String expression = input.replace(" ", "");
+        if (input == null || input.replaceAll(" ", "").length() < 1) {
+            throw new IllegalArgumentException("There is no input. Please check your input data.");
+        }
+        String expression = input.replaceAll(" ", "");
         String[] numberStrings = expression.split("[\\+\\-\\*\\/]");
         String[] operators = expression.replaceAll("[0-9]", "").split("");
 
