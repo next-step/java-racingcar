@@ -1,5 +1,7 @@
 package com.nextstep.racingcar.domain.car;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -10,6 +12,11 @@ public class Cars {
     }
 
     public static Cars create(List<Car> cars) {
-        return new Cars(cars);
+        List<Car> unmodifiableCars = Collections.unmodifiableList(new ArrayList<>(cars));
+        return new Cars(unmodifiableCars);
+    }
+
+    public int size() {
+        return this.cars.size();
     }
 }
