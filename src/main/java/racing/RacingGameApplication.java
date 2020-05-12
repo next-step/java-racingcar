@@ -21,7 +21,8 @@ public class RacingGameApplication {
 
         RacingResultDto racingResultDto;
         for (int i = 0; i < racingCreateDto.totalRacingCount(); i++) {
-            racingResultDto = racingGame.racingResult();
+            racingGame.executeRacing();
+            racingResultDto = new RacingResultDto(racingGame);
             outPutView.printRacingResult(racingResultDto);
         }
     }
