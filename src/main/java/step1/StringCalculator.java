@@ -4,19 +4,22 @@ import org.apache.commons.lang3.StringUtils;
 
 public class StringCalculator {
 
-    private int doAddition(int leftOperand, int rightOperand) {
+    public int doAddition(int leftOperand, int rightOperand) {
         return leftOperand + rightOperand;
     }
 
-    private int doSubtraction(int leftOperand, int rightOperand) {
+    public int doSubtraction(int leftOperand, int rightOperand) {
         return leftOperand - rightOperand;
     }
 
-    private int doMultiplication(int leftOperand, int rightOperand) {
+    public int doMultiplication(int leftOperand, int rightOperand) {
         return leftOperand * rightOperand;
     }
 
-    private int doDivision(int leftOperand, int rightOperand) {
+    public int doDivision(int leftOperand, int rightOperand) {
+        if (leftOperand == 0 || rightOperand == 0) {
+            return 0;
+        }
         return leftOperand / rightOperand;
     }
 
