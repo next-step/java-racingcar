@@ -18,7 +18,7 @@ class StringCalculatorTest {
         String expression = input;
 
         //when
-        int result = stringCalculator.carculate(expression);
+        int result = stringCalculator.calculate(expression);
 
         //then
         assertThat(result).isEqualTo(answer);

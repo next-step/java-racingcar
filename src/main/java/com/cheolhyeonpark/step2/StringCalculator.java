@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class StringCalculator {
 
-    public int carculate(String input) {
+    public int calculate(String input) {
         String expression = input.replace(" ", "");
         String[] numberStrings = expression.split("[\\+\\-\\*\\/]");
         String[] operators = expression.replaceAll("[0-9]", "").split("");
