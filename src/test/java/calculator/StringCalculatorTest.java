@@ -38,7 +38,7 @@ class StringCalculatorTest {
         assertThat(throwable).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("정상적인 입력으로 계산이 되는지 확인하는 테스트")
+    @DisplayName("지원하지 않는 Operator 입력시  IllegalArgumentException 발생 여부 테스트")
     @ParameterizedTest
     @CsvSource(value = {"1 & 2 + 3:6" , "1 ! 2 / 3:1", "3 % 4:-1"}, delimiter = ':')
     void calculateNotOperatorSymbolTest(String formula, float calculatedValue) {
