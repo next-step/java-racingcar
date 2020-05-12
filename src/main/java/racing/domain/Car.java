@@ -5,9 +5,6 @@ import java.util.Objects;
 public class Car {
     private int position = 0;
 
-    public Car() {
-    }
-
     public void move(CarMovement carMovement) {
         this.validateCarMovement(carMovement);
 
@@ -22,7 +19,7 @@ public class Car {
         }
     }
 
-    public int currentPosition() {
+    public int findCurrentPosition() {
         return this.position;
     }
 }
