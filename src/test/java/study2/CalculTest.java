@@ -19,11 +19,12 @@ class CalculTest {
 	}
 	
 	@DisplayName("split test")
+	@ValueSource(strings = {"a,b,c"})
 	@Test
 	void SplitTest(String input) {
 		String[] result = input.split(",");
 		
-		assertThat(result).contains("+");  
+		assertThat(result).contains("a");  
 			
 	}
 	@DisplayName("add test")
@@ -34,8 +35,10 @@ class CalculTest {
 	}
 	@DisplayName("sub test")
 	@Test
-	void subTest(int a, int b) {
-		assertEquals(a-b, a-b);
+	void subTest(int a, int b, String str) {
+		if(str.equals("+")) {
+			
+		}
 	}
 	@DisplayName("multi test")
 	@Test
@@ -62,8 +65,9 @@ class CalculTest {
 	    assertTrue(Strings.isBlank(input));
 	}
 	@DisplayName("공백이거나 null인 경우 test")
-	@CsvSource(value = {" 2 + 3 * 4 /2 "}, delimiter = ':')
+	@ValueSource(strings = {" 2 + 3 * 4 /2 "})
 	void runTest(String str) {
+		String[] result = str.split("+");
 		
 	}
 	
