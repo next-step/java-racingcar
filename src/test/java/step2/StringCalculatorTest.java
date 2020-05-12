@@ -84,16 +84,16 @@ class StringCalculatorTest {
         assertThatIllegalArgumentException().isThrownBy(() -> stringCalculator.assertValidParameter(parameter));
     }
 
-//    @Test
-//    @DisplayName("정상적인 parameter 확인")
-//    void isValidParameter() {
-//        //given
-//        String[] parameter = {"1","+","23","*","456","/","78"};
-//
-//        //when&then
-//        assertThat(stringCalculator.assertValidParameter(parameter))
-//            .isTrue();
-//    }
+    @Test
+    @DisplayName("정상적인 parameter 확인")
+    void isValidParameter() {
+        //given
+        String[] parameter = {"1","+","23","*","456","/","78"};
+
+        //when&then
+        assertThat(stringCalculator.assertValidParameter(parameter))
+            .isTrue();
+    }
 
     private static Stream<Arguments> invalidParameter() {
         return Stream.of(
