@@ -10,22 +10,56 @@ public class StringCalculator {
         double calculate(double land, double rand);
     }
 
-    static Map<String, OperatorHandle> operatorMap = new HashMap<String, OperatorHandle>() {{
-        put("+", (land, rand) -> land + rand);
-        put("-", (land, rand) -> land - rand);
-        put("*", (land, rand) -> land * rand);
-        put("/", (land, rand) -> land / rand);
-    }};
+    enum Operator{
+        PLUS("+", (land,rand) -> land + rand),
+        MINUS("-", (land, rand) -> land - rand),
+        MULTIPLY("*", (land, rand) -> land * rand),
+        DIVIDE("/", (land, rand) -> land / rand);
+
+        private String operator;
+        private OperatorHandle handle;
+
+        Operator(String operator, OperatorHandle handle){
+            this.operator = operator;
+            this.handle = handle;
+        }
+
+        public static double calculate(double land, String operator, double rand){
+            for( Operator op : Operator.values() ){
+                if( op.operator.equals(operator) ){
+                    return op.handle.calculate(land, rand);
+                }
+            }
+            throw new IllegalArgumentException();
+        }
+    }
+
+    static class StringCalculatorValidator {
+        String expression;
+
+        public StringCalculatorValidator(final String expression){
+            if( expression == null )
+                throw new IllegalArgumentException();
+            this.expression = expression;
+        }
+
+        public Matcher validateAndMatch(){
+            String expr = expression.replaceAll("\\s", "");
+
+            Pattern pattern = Pattern.compile("\\d+(\\.\\d+)?");
+            Matcher matcher = pattern.matcher(expr);
+
+            if( !matcher.find() )
+                throw new IllegalArgumentException();
+
+            return matcher;
+        }
+    }
 
     public static double calculate(final String expression) throws IllegalArgumentException {
-        if( expression == null )
-            throw new IllegalArgumentException();
-        String expr = expression.replaceAll("\\s", ""); // eliminate space character
-
-        Pattern pattern = Pattern.compile("\\d+(\\.\\d+)?");
-        Matcher matcher = pattern.matcher(expr);
-        if( !matcher.find() )
-            throw new IllegalArgumentException();
+        StringCalculatorValidator validator = new StringCalculatorValidator(expression);
+        String expr = expression.replaceAll("\\s", "");
+        Matcher matcher = validator.validateAndMatch();
 
         double exp = Double.parseDouble(matcher.group());
         int endIndex = matcher.end();
@@ -35,10 +69,7 @@ public class StringCalculator {
             double operand = Double.parseDouble(matcher.group());
             endIndex = matcher.end();
 
-            if( !operatorMap.containsKey(operator) )
-                throw new IllegalArgumentException();
-
-            exp = operatorMap.get(operator).calculate(exp, operand);
+            exp = Operator.calculate(exp, operator, operand);
         }
         return exp;
     }
