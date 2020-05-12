@@ -8,7 +8,7 @@ public class Calculator {
     Queue<Integer> numQu = new LinkedList<Integer>();
     Queue<String> calQu = new LinkedList<String>();
 
-    boolean valCheck(String[] input) {
+    public boolean valCheck(String[] input) {
 
         for(String s : input)
         {
@@ -38,7 +38,7 @@ public class Calculator {
         }
     }
 
-    int calculator(String input)
+    public int calculator(String input)
     {
         int result = 0;
 
