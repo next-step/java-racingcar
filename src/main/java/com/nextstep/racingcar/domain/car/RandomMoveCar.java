@@ -15,8 +15,8 @@ public class RandomMoveCar implements Car {
         return this.moveLength;
     }
 
-    public void move(Power power) {
-        if(MoveStrategy.isMoveable(power)) {
+    public void move() {
+        if(MoveStrategy.isMoveable(Power.generate())) {
             this.moveLength = this.moveLength.increase();
         }
     }

@@ -2,7 +2,6 @@ package com.nextstep.racingcar.domain.round;
 
 import com.nextstep.racingcar.domain.car.Car;
 import com.nextstep.racingcar.domain.car.MoveLength;
-import com.nextstep.racingcar.domain.car.Power;
 
 public class ForceMoveCar implements Car {
     private MoveLength moveLength;
@@ -12,7 +11,7 @@ public class ForceMoveCar implements Car {
     }
 
     @Override
-    public void move(Power power) {
+    public void move() {
         this.moveLength = this.moveLength.increase();
     }
 }
