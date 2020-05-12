@@ -6,35 +6,12 @@ import java.util.regex.Pattern;
 public class InputCheck {
 
     private final static Pattern pattern = Pattern.compile("^[0-9]*$");
-    public static final String SEPARATOR = " ";
-    public static String input;
-    public static String[] inputArray;
 
-    public InputCheck(String input) throws IllegalArgumentException {
-
-        if (null == input) {
-            throw new IllegalArgumentException("Null Or Empty.");
-        }
-
-        this.input = input;
-        this.inputArray = input.split(SEPARATOR);
-    }
-
-    public void inputCheck() {
-        emptyCheck(input);
-        minimumExpressionCheck(inputArray);
-        matchingNumbersAndOperators(inputArray);
-        numberStringCheck(inputArray);
-        calculateSymbolCheck(inputArray);
-    }
-
-    public static void emptyCheck(String input) throws IllegalArgumentException {
-
+    public static void emptyCheck(String input, String separator) throws IllegalArgumentException {
         // null , empty
-        if (input == null || input.length() == 0 || input.replaceAll(SEPARATOR, "").isEmpty()) {
+        if (input == null || input.length() == 0 || input.replaceAll(separator, "").isEmpty()) {
             throw new IllegalArgumentException("Null Or Empty.");
         }
-
     }
 
     public static void minimumExpressionCheck(String[] inputArray) throws IllegalArgumentException {
