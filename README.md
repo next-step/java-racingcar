@@ -7,3 +7,16 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+
+
+## 기능 구현 목록
+
+1. 자동차 대수와 시도할 회수를 입력받는 Input 뷰 클래스
+2. 실행 결과를 받아 출력하는 Output 뷰 클래스
+3. Input으로 받은 정보로 게임을 시작하는 RacingGame 클래스
+4. 자신의 위치를 가지고 있는 Car 클래스
+5. 경주에 참여하는 Car를 관리하는 ParticipatedCars 클래스
+6. 각 시도 결과를 관리하는 RacingPhase 클래스
+7. 전체 게임 결과를 관리하는 RacingResult 클래스
+
