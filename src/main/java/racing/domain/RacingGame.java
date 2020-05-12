@@ -29,13 +29,13 @@ public class RacingGame {
     }
 
     private void validateRacingTotalRound(int racingTotalRound) {
-        if (racingTotalRound < this.MIN_RACING_COUNT) {
+        if (racingTotalRound < MIN_RACING_COUNT) {
             throw new IllegalArgumentException();
         }
     }
 
     private void validateCarCount(int carCount) {
-        if (carCount < this.MIN_CAR_COUNT) {
+        if (carCount < MIN_CAR_COUNT) {
             throw new IllegalArgumentException();
         }
     }
@@ -46,17 +46,18 @@ public class RacingGame {
         }
     }
 
-    public RacingResultDto racingResult() {
-        List<Integer> result = new ArrayList<>();
+    public void executeRacing() {
         if (this.racingTotalRound > this.currentRacingCount) {
-            this.cars.forEach(car -> {
-                car.move(this.carMovement);
-                result.add(car.currentPosition());
-            });
+            this.cars.forEach(car -> car.move(this.carMovement));
 
             this.currentRacingCount++;
         }
 
-        return new RacingResultDto(result);
+    }
+
+    public List<Integer> calculateRacingScore() {
+        List<Integer> result = new ArrayList<>();
+        this.cars.forEach(car -> result.add(car.findCurrentPosition()));
+        return result;
     }
 }
