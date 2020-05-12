@@ -4,34 +4,33 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 class StringCalculatorTest {
-
-    private StringCalculator stringCalculator = new StringCalculator();
 
     @DisplayName("Arguments check / Null or Empty")
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "   "})
     void inputCheckByEmpty(String input) {
+        InputCheck inputCheck = new InputCheck(input);
         assertThatIllegalArgumentException().isThrownBy(() ->
                 {
-                    //stringCalculator.calculate("2 + 3 * 4 / 2");
-                    stringCalculator.calculate(input);
+                    inputCheck.emptyCheck(inputCheck.input);
                 }
         );
     }
 
     @DisplayName("Arguments check / Null")
     @Test
-    void inputCheckByNull() {
+    @NullAndEmptySource
+    void inputCheckByNull(String input) {
+        InputCheck inputCheck = new InputCheck(input);
         assertThatIllegalArgumentException().isThrownBy(() ->
                 {
-                    //stringCalculator.calculate("2 + 3 * 4 / 2");
-                    stringCalculator.calculate(null);
+                    inputCheck.emptyCheck(inputCheck.input);
                 }
         );
     }
@@ -42,9 +41,10 @@ class StringCalculatorTest {
     @ValueSource(strings = {"1", "0", "1 +", "4 *", "*", "/", "- 23424", "555 -", "999", "9 /", "1 1",
             "2233 3434", "6 *", "* 54", "45 54", "23123 3432423 34", "1 2 3"})
     void lessExpression(String input) {
+        InputCheck inputCheck = new InputCheck(input);
         assertThatIllegalArgumentException().isThrownBy(() ->
                 {
-                    stringCalculator.calculate(input);
+                    inputCheck.minimumExpressionCheck(inputCheck.inputArray);
                 }
         );
     }
@@ -55,19 +55,50 @@ class StringCalculatorTest {
     @ValueSource(strings = {"1 1 * 1", "0 0 + 134 +", "1 + 1 123", "4 * + 1", "+ 1", "1 + 2 3 + 4", "8 * * 3",
             "555 - 22 234", "999 999 - 1", "9 / 4 4", "5 + 2 + 3 + 4 + + 5"})
     void positionCheck(String input) {
+        InputCheck inputCheck = new InputCheck(input);
         assertThatIllegalArgumentException().isThrownBy(() ->
                 {
-                    stringCalculator.calculate(input);
+                    inputCheck.matchingNumbersAndOperators(inputCheck.inputArray);
                 }
         );
     }
+
+
+    @DisplayName("Arguments check / Number Position")
+    @ParameterizedTest
+    @ValueSource(strings = {"1 1 * 1", "0 0 + 134 +", "1 + 1 123", "4 * + 1", "+ 1", "1 + 2 3 + 4", "8 * * 3",
+            "555 - 22 234", "999 999 - 1", "9 / 4 4", "5 + 2 + 3 + 4 + + 5"})
+    void numberStringCheck(String input) {
+        InputCheck inputCheck = new InputCheck(input);
+        assertThatIllegalArgumentException().isThrownBy(() ->
+                {
+                    inputCheck.numberStringCheck(inputCheck.inputArray);
+                }
+        );
+    }
+
+    @DisplayName("Arguments check / Symbol Position")
+    @ParameterizedTest
+    @ValueSource(strings = {"1 1 * 1", "0 0 + 134 +", "1 + 1 123", "4 * + 1", "+ 1", "1 + 2 3 + 4", "8 * * 3",
+            "555 - 22 234", "999 999 - 1", "9 / 4 4", "5 + 2 + 3 + 4 + + 5"})
+    void calculateSymbolCheck(String input) {
+        InputCheck inputCheck = new InputCheck(input);
+        assertThatIllegalArgumentException().isThrownBy(() ->
+                {
+                    inputCheck.calculateSymbolCheck(inputCheck.inputArray);
+                }
+        );
+    }
+
 
     @DisplayName("Calculte Check")
     @ParameterizedTest
     @CsvSource(value = {"1 + 1:2", "2 * 3 + 3:9", "3 * 3 + 2 + 3 / 2:7", "2 + 3 * 4 / 2:10", "500 / 2 / 10 * 2:50"},
             delimiter = ':')
-    void calculteCheck(String input, String expeted) {
-        assertThat(stringCalculator.calculate(input)).isEqualTo(Integer.parseInt(expeted));
+    void calculteCheck(String input, int expeted) {
+        InputCheck inputCheck = new InputCheck(input);
+        StringCalculator stringCalculator = new StringCalculator(inputCheck);
+        assertThat(stringCalculator.calculate()).isEqualTo(expeted);
     }
 
 
