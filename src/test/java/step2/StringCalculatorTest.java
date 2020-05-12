@@ -2,7 +2,6 @@ package step2;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -71,6 +70,7 @@ public class StringCalculatorTest {
     "-2 + 3 * -4 / 5 = " + (((-2 + 3) * -4) / 5),
     "-2 / 3 * -4 + 5 = " + (((-2 / 3) * -4) + 5),
     "200 + 300 * 40 / 5 = " + (((200 + 300) * 40) / 5),
+    "1 = " + 1,
   }, delimiter = '=')
   void 사칙연산_테스트 (String expression, int expected) {
     calculator.getExpression(expression);
