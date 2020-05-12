@@ -1,6 +1,7 @@
 package com.nextstep.racingcar.domain.round;
 
 import com.nextstep.racingcar.domain.car.Car;
+import com.nextstep.racingcar.domain.car.Power;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,5 +22,9 @@ public class Round {
 
     public int getCarNumber() {
         return this.cars.size();
+    }
+
+    public void moveAll() {
+        this.cars.forEach(car -> car.move(Power.generate()));
     }
 }
