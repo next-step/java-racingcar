@@ -38,8 +38,9 @@ public class ResultView {
 
     private static void printCarPositionPerRound(Car[] cars, int[] positions) {
         for (int i = 0; i < positions.length; i++) {
-            System.out.println(cars[i].getName() + COLON + convertStringPosition(positions[i]) + NEW_LINE);
+            System.out.println(cars[i].getName() + COLON + convertStringPosition(positions[i]));
         }
+        System.out.println();
     }
 
     private static String convertStringPosition(int position) {
