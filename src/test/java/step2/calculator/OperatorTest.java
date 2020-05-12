@@ -3,6 +3,7 @@ package step2.calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,7 +16,8 @@ class OperatorTest {
     @ParameterizedTest
     @CsvSource({"*, *", "+, +", "-, -", "/, /"})
     public void acceptProperOperators(String inputOperator, String expectedOperator) {
-        assertEquals(Operator.getOperator(inputOperator).getOperatorValue(), expectedOperator);
+        assertThat(Operator.getOperator(inputOperator).getOperatorValue())
+                .isEqualTo(expectedOperator);
     }
 
     @DisplayName("비정상적인 사칙연산자는 IllegalArgumentException이 발생하는 Test")
