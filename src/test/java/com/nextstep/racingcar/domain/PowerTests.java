@@ -39,4 +39,14 @@ class PowerTests {
         Power power2 = Power.generateByInt(1);
         assertThat(power1.equals(power2)).isTrue();
     }
+
+    @DisplayName("대소 비교")
+    @Test
+    public void greaterSmallerTest() {
+        Power powerOne = Power.generateByInt(1);
+        Power powerTwo = Power.generateByInt(2);
+        assertThat(powerOne.compareTo(powerTwo)).isEqualTo(-1);
+        assertThat(powerOne.compareTo(powerOne)).isEqualTo(0);
+        assertThat(powerTwo.compareTo(powerOne)).isEqualTo(1);
+    }
 }

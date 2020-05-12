@@ -1,12 +1,14 @@
 package com.nextstep.racingcar.domain;
 
+import java.util.Comparator;
 import java.util.Objects;
 import java.util.Random;
 
-public class Power {
+public class Power implements Comparable {
     private static final int MIN_VALUE = 0;
     private static final int MAX_VALUE = 9;
-    private static final Random random = new Random();
+    private static final Random RANDOM = new Random();
+    private static final Comparator<Power> COMPARATOR = Comparator.comparingInt((Power power) -> power.value);
     private final int value;
 
     private Power(int value) {
@@ -19,7 +21,7 @@ public class Power {
     }
 
     public static Power generate() {
-        return new Power(random.nextInt(10));
+        return new Power(RANDOM.nextInt(10));
     }
 
     protected static Power generateByInt(int value) {
@@ -41,5 +43,10 @@ public class Power {
     @Override
     public int hashCode() {
         return Objects.hash(value);
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return COMPARATOR.compare(this, (Power) o);
     }
 }
