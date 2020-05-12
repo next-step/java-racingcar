@@ -5,6 +5,8 @@ import java.util.Queue;
 
 public class Calculator {
 
+    private static final String DELIMETER = " ";
+
     Queue<Integer> numQu = new LinkedList<Integer>();
     Queue<String> calQu = new LinkedList<String>();
 
@@ -42,7 +44,7 @@ public class Calculator {
     {
         int result = 0;
 
-        String[] splitInput = input.split(" ");
+        String[] splitInput = input.split(DELIMETER);
         valCheck(splitInput);
         result = numQu.poll();
 
