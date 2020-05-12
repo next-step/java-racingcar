@@ -41,6 +41,14 @@ public class CalculatorTest {
     }
 
     @Test
+    @DisplayName("조합된 사칙연산 테스트")
+    void calculatorMultiOperatorTest() {
+        String input = "100 / 5 * 2 + 5 - 10";
+        Calculator calculator = new Calculator(input);
+        assertThat(35.0).isEqualTo(calculator.getResult());
+    }
+
+    @Test
     @DisplayName("입력 값이 null일 경우")
     void calculatorInputNullTest() {
         String input = null;
