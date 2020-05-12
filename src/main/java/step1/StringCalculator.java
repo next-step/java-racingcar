@@ -4,20 +4,20 @@ import org.apache.commons.lang3.StringUtils;
 
 public class StringCalculator {
 
-    private int doAddition(int first, int second) {
-        return first + second;
+    private int doAddition(int leftOperand, int rightOperand) {
+        return leftOperand + rightOperand;
     }
 
-    private int doSubtraction(int first, int second) {
-        return first - second;
+    private int doSubtraction(int leftOperand, int rightOperand) {
+        return leftOperand - rightOperand;
     }
 
-    private int doMultiplication(int first, int second) {
-        return first * second;
+    private int doMultiplication(int leftOperand, int rightOperand) {
+        return leftOperand * rightOperand;
     }
 
-    private int doDivision(int first, int second) {
-        return first / second;
+    private int doDivision(int leftOperand, int rightOperand) {
+        return leftOperand / rightOperand;
     }
 
     public int calculate(String parameter) {
