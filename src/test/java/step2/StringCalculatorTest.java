@@ -11,30 +11,33 @@ class StringCalculatorTest {
     @Test
     @DisplayName("덧셈 테스트")
     void plus() {
-        String result = stringCalculator.plus(2, 3);
+        String result = stringCalculator.plus(2.0, 3);
 
-        assertThat(result).isEqualTo("5");
+        assertThat(result).isEqualTo("5.0");
     }
 
     @Test
     @DisplayName("뺄셈 테스트")
     void minus() {
-        String result = stringCalculator.minus(2, 3);
+        String result = stringCalculator.minus(2.0, 3);
 
-        assertThat(result).isEqualTo("-1");
+        assertThat(result).isEqualTo("-1.0");
     }
 
     @Test
     @DisplayName("곱셈 테스트")
     void multiply() {
-        String result = stringCalculator.multiply(2, 3);
+        String result = stringCalculator.multiply(2.0, 3);
 
-        assertThat(result).isEqualTo("6");
+        assertThat(result).isEqualTo("6.0");
     }
 
     @Test
     @DisplayName("나눗셈 테스트")
     void division() {
+        String result = stringCalculator.division(2.0, 4);
+
+        assertThat(result).isEqualTo("0.5");
     }
 
     @Test
