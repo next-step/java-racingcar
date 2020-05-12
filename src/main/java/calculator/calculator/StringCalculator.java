@@ -14,6 +14,8 @@ public class StringCalculator {
         return new StringCalculator();
     }
 
+    private StringCalculator() {}
+
     public Integer run(final String input) {
         this.validateNullOrEmpty(input);
         String[] values = input.split(DELIMITER);
