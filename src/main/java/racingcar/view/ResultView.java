@@ -12,7 +12,6 @@ public class ResultView {
     private static final String BANNER = "실행 결과";
     private static final String OUTPUT_CHARACTER = "-";
     private static final String COLON = " : ";
-    private static final String NEW_LINE = "\n";
 
     private static final String SUFFIX_WINNER_PRINT = "가 최종 우승하였습니다.";
 
@@ -46,7 +45,7 @@ public class ResultView {
     private static String convertStringPosition(int position) {
         String result = OUTPUT_CHARACTER;
         for (int i = 0; i < position; i++) {
-            result += result;
+            result += OUTPUT_CHARACTER;
         }
         return result;
     }
