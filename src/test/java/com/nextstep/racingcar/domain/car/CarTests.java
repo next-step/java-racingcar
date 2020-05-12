@@ -1,4 +1,4 @@
-package com.nextstep.racingcar.domain;
+package com.nextstep.racingcar.domain.car;
 
 import com.nextstep.racingcar.domain.car.Car;
 import com.nextstep.racingcar.domain.car.MoveLength;

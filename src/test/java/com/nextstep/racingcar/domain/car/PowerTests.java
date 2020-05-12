@@ -1,6 +1,5 @@
-package com.nextstep.racingcar.domain;
+package com.nextstep.racingcar.domain.car;
 
-import com.nextstep.racingcar.domain.car.Power;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
