@@ -1,15 +1,17 @@
 package racing.dto;
 
+import racing.domain.RacingGame;
+
 import java.util.List;
 
 public class RacingResultDto {
-    private List<Integer> result;
+    private RacingGame racingGame;
 
-    public RacingResultDto(List<Integer> result) {
-        this.result = result;
+    public RacingResultDto(RacingGame racingGame) {
+        this.racingGame = racingGame;
     }
 
-    public List<Integer> result() {
-        return this.result;
+    public List<Integer> calculateRacingResult() {
+        return racingGame.calculateRacingScore();
     }
 }
