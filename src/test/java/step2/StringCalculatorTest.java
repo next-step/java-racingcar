@@ -43,11 +43,17 @@ class StringCalculatorTest {
     @Test
     @DisplayName("입력값이 null이거나 빈 공백 문자일 경우")
     void nullOrEmpty() {
+        // null인경우
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            stringCalculator.calculate(null);
+            stringCalculator.checkNull(null);
         });
+        // 빈 몬자열인경우
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            stringCalculator.calculate("");
+            stringCalculator.checkEmpty("");
+        });
+        // 빈 공백 문자열일경우
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+            stringCalculator.checkEmpty("        ");
         });
     }
 

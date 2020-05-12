@@ -34,7 +34,7 @@ public class StringCalculator {
     public String multiply(double left, double right) {
         return String.valueOf(left * right);
     }
-    
+
     /**
      * left에서 right를 나눈다.
      * 
@@ -43,13 +43,30 @@ public class StringCalculator {
      * @return String, 나눈 값을 반환
      */
     public String division(double left, double right) {
-        return String.valueOf(left/right);
+        return String.valueOf(left / right);
     }
 
-    public void calculate(String param) {
-        if(param == null || param.isEmpty()) {
-            throw new IllegalArgumentException("입력값이 null이거나 빈 문자열 입니다(입력값 : "+param+" ).");
+    public String calculate(String param) {
+
+        return null;
+    }
+
+    public void checkNull(String param) {
+        if (param == null) {
+            throw new IllegalArgumentException("입력값이 null입니다.");
         }
+    }
+
+    public void checkEmpty(String param) {
+        String[] splitedStringsBySpace = param.split(" ");
+
+        for (String splitedString : splitedStringsBySpace) {
+            if (!splitedString.isEmpty()) {
+                return;
+            }
+        }
+
+        throw new IllegalArgumentException("입력값이 빈 문자열 입니다. 입력값 : (" + param + ")");
     }
 
 }
