@@ -1,12 +1,15 @@
 package racingcar;
 
+import java.util.ArrayList;
+
 public class RacingGame {
     private int time;
-    private int[] carPositions = {0, 0, 0};
+    private ArrayList<Integer> carPositions = new ArrayList<Integer>();
 
-    public int[] move() {
+    public ArrayList<Integer> move() {
 
         return null;
     }
+
 
 }
