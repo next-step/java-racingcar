@@ -25,19 +25,4 @@ public class StringCalculatorTest {
      calculator.getExpression("2 + 3 + 4 + 5");
      assertThat(2 + 3 + 4 + 5).isEqualTo(calculator.getResult());
   }
-
-  @DisplayName("문자열 계산기 멀티 테스트")
-  @ParameterizedTest
-  @CsvSource(value = {
-    "2 + 3 + 4 + 5,14",
-    "2 - 3 - 4 - 5,-10",
-    "2 * 3 * 4 * 5,120",
-    "6 / 6,1",
-    "10 * -1,-10",
-    "-1 * 10,-10",
-  })
-  void 사칙연산_테스트 (String expression, int expected) {
-    calculator.getExpression(expression);
-    assertThat(expected).isEqualTo(calculator.getResult());
-  }
 }

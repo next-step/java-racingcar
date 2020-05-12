@@ -32,19 +32,25 @@ public class StringCalculator {
   }
 
   private void getNextToken () {
+
     if (this.pointer >= this.lastPoint) return;
 
     char token = this.expression.charAt(this.pointer);
 
     if (this.tokenType.equals(TokenType.NUMBER)) {
-      do {
+      this.numberToken += token;
+      int acc = 1;
+      while (true) {
+        if (this.pointer + acc >= this.lastPoint) break;
+        token = this.expression.charAt(this.pointer + acc);
+        if (!isNumber(token)) break;
         this.numberToken += token;
-        this.pointer += 1;
-        token = this.expression.charAt(this.pointer);
-      } while (StringCalculator.isNumber(token));
+        acc += 1;
+      }
+      this.pointer += acc;
       this.tokenType = TokenType.OPERATOR;
     } else {
-      if (!StringCalculator.operators.contains(token)) {
+      if (!operators.contains(token)) {
         throw new IllegalArgumentException(); // 숫자도 아니고, 사칙 연산 기호도 아닐 경우
       }
       calculate(token);
