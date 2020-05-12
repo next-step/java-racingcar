@@ -18,6 +18,10 @@ public enum Operator {
         this.expression = expression;
     }
 
+    public String getSymbol() {
+        return symbol;
+    }
+
     public static Operator findOperator(String symbol) {
         validateNullOrEmpty(symbol);
 

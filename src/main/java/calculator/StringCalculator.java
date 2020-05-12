@@ -1,9 +1,8 @@
 package calculator;
 
-import utils.IntegerUtil;
-
 public class StringCalculator {
     private static final String DELIMITER = " ";
+    private static final int FIRST_INDEX = 0;
 
     private StringCalculator() {}
     public static StringCalculator of() {
@@ -13,7 +12,7 @@ public class StringCalculator {
     public int calculate(String expression) {
         String[] values = expression.split(DELIMITER);
 
-        Operand result = Operand.of(values[IntegerUtil.ZERO]);
+        Operand result = Operand.of(values[FIRST_INDEX]);
         for(int i = 1; i < values.length; i += 2) {
             Operator operator = Operator.findOperator(values[i]);
             Operand operand = Operand.of(values[i + 1]);
