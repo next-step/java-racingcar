@@ -26,11 +26,6 @@ public class Calculator {
             calQu.add(s);
         }
 
-        if(numQu.size() < 1 || calQu.size() ==0 || numQu.size() - calQu.size() != 1 )
-        {
-            throw new IllegalArgumentException("입력하신 값에 문제가 있습니다.");
-        }
-
         return true;
     }
 
