@@ -2,14 +2,19 @@ package step2;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class StringCalculatorTest {
+    StringCalculator stringCalculator = new StringCalculator();
 
 	@Test
 	@DisplayName("덧셈 테스트")
 	void plus() {
+	    String result = stringCalculator.plus(2,3);
+	    
+	    Assertions.assertThat(result).isEqualTo("5");
 	}
 
 	@Test
