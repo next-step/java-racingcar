@@ -18,11 +18,7 @@ public class StringCalculator {
         this.validateNullOrEmpty(input);
         String[] values = input.split(DELIMITER);
         this.validateInputValues(values);
-        try {
-            return calculate(values);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_SUPPORTED_FORMAT);
-        }
+        return this.calculate(values);
     }
 
     private void validateNullOrEmpty(final String input) {
@@ -38,14 +34,19 @@ public class StringCalculator {
     }
 
     private int calculate(final String[] values) {
-        int operandA = StringUtil.toInt(values[0]);
-
+        int result = StringUtil.toInt(values[0]);
         for (int i = 1; i < values.length; i += 2) {
-            ArithmeticOperationStrategy operator = ArithmeticOperationStrategy.fromExpression(values[i]);
-            int operandB = StringUtil.toInt(values[i + 1]);
-
-            operandA = operator.operate(operandA, operandB);
+            ArithmeticOperationStrategy operator = ArithmeticOperationStrategy.fromExpression(getToken(values, i, 0));
+            result = operator.operate(result, StringUtil.toInt(getToken(values, i, 1)));
         }
-        return operandA;
+        return result;
+    }
+
+    private String getToken(final String[] values, final int index, final int offset) {
+        try {
+            return values[index + offset];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_SUPPORTED_FORMAT);
+        }
     }
 }
