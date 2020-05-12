@@ -14,14 +14,18 @@ public class StringCalculator {
     }
 
     public Integer run(final String input) {
-        if (StringUtil.isEmpty(input)) {
-            throw new IllegalArgumentException(ErrorMessage.IS_NULL_OR_EMPTY);
-        }
+        this.validateNullOrEmpty(input);
         String[] values = input.split(DELIMITER);
         try {
             return calculate(values);
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new IllegalArgumentException(ErrorMessage.NOT_SUPPORTED_FORMAT);
+        }
+    }
+
+    private void validateNullOrEmpty(final String input) {
+        if (StringUtil.isEmpty(input)) {
+            throw new IllegalArgumentException(ErrorMessage.IS_NULL_OR_EMPTY);
         }
     }
 
