@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class StringCalculatorTest {
     StringCalculator stringCalculator = new StringCalculator();
@@ -57,9 +59,20 @@ class StringCalculatorTest {
         });
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(strings = {"+","-","*","/"})
+    @DisplayName("사칙연산 기호인 경우")
+    void correctSign(String sign) {
+        stringCalculator.checkSign(sign);
+    }
+    
+    @ParameterizedTest
+    @ValueSource(strings = {" ","1","a","%"})
     @DisplayName("사칙연산 기호가 아닌 경우")
-    void notSign() {
+    void notCorrectSign(String sign) {
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+            stringCalculator.checkSign(sign);
+        });
     }
 
     @Test

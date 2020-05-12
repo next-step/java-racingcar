@@ -80,4 +80,22 @@ public class StringCalculator {
         throw new IllegalArgumentException("입력값이 빈 문자열 입니다.");
     }
 
+    /**
+     * 입력받은 문자열(param)이 사칙연산 기호가 아니면 IllegalArgumentException
+     * 
+     * @param param : String, 판단할 문자열
+     * @throws IllegalArgumentException
+     */
+    public void checkSign(String param) throws IllegalArgumentException {
+        String[] correctSigns = { "+", "-", "*", "/" };
+
+        for (String correctSign : correctSigns) {
+            if (correctSign.equals(param)) {
+                return;
+            }
+        }
+
+        throw new IllegalArgumentException("올바른 사칙연산 기호가 아닙니다.");
+    }
+
 }
