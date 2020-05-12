@@ -46,4 +46,10 @@ public class StringCalculator {
         return String.valueOf(left/right);
     }
 
+    public void calculate(String param) {
+        if(param == null || param.isEmpty()) {
+            throw new IllegalArgumentException("입력값이 null이거나 빈 문자열 입니다(입력값 : "+param+" ).");
+        }
+    }
+
 }
