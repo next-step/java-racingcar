@@ -10,7 +10,7 @@ public class StringCalculator {
     }
 
     public int calculate(String expression) {
-        String[] values = expression.split(DELIMITER);
+        String[] values = splitExpressionByDelimiter(expression);
 
         Operand result = Operand.of(values[FIRST_INDEX]);
         for(int i = 1; i < values.length; i += 2) {
@@ -20,5 +20,14 @@ public class StringCalculator {
         }
 
         return result.getValue();
+    }
+
+    private String[] splitExpressionByDelimiter(String expression) {
+        String[] values = expression.split(DELIMITER);
+        if(values.length < 3 || values.length % 2 == 0) {
+            throw new IllegalArgumentException("연산자와 피연산자는 공백을 기준으로 정확하게 입력해주세요. EX) 2 + 3 * 4 / 2");
+        }
+
+        return values;
     }
 }
