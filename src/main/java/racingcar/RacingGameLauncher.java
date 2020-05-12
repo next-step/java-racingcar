@@ -1,36 +1,35 @@
 package racingcar;
 
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 import racingcar.view.ResultView;
 
 public class RacingGameLauncher {
-    private final InputView inputView = new InputView();
 
-    public void play(){
+    private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
+
+    public void play() {
         int numberOfCar = inputView.requestNumberOfCar();
         int time = inputView.requestTime();
 
         RacingGame racingGame = RacingGameFactory.newRacingGame(numberOfCar);
-        print(racingGame, time);
+
+        outputView.print(createResultViews(racingGame, time));
     }
 
-    private void print(RacingGame racingGame, int time) {
-        System.out.println("실행 결과");
-        System.out.println(createResult(racingGame, time));
-    }
-
-    private String createResult(RacingGame racingGame, int time) {
+    private List<ResultView> createResultViews(RacingGame racingGame, int time) {
         return IntStream.range(0, time)
             .mapToObj(value -> {
-                racingGame.tryMove();;
-                return new ResultView(racingGame.getPositions()).print();
-            })
-            .collect(Collectors.joining("\n\n"));
+                racingGame.tryMove();
+                return new ResultView(racingGame.getPositions());
+            }).collect(Collectors.toList());
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         new RacingGameLauncher().play();
     }
 }
