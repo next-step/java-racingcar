@@ -1,5 +1,8 @@
 package com.nextstep.racingcar.domain;
 
+import com.nextstep.racingcar.domain.car.Car;
+import com.nextstep.racingcar.domain.car.MoveLength;
+import com.nextstep.racingcar.domain.car.Power;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
