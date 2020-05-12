@@ -1,11 +1,7 @@
 package racingcar;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
-import racingcar.view.ResultView;
 
 public class RacingGameLauncher {
 
@@ -17,16 +13,15 @@ public class RacingGameLauncher {
         int time = inputView.requestTime();
 
         RacingGame racingGame = RacingGameFactory.newRacingGame(numberOfCar);
-
-        outputView.print(createResultViews(racingGame, time));
+        startRacing(racingGame, time);
     }
 
-    private List<ResultView> createResultViews(RacingGame racingGame, int time) {
-        return IntStream.range(0, time)
-            .mapToObj(value -> {
-                racingGame.tryMove();
-                return new ResultView(racingGame.getPositions());
-            }).collect(Collectors.toList());
+    private void startRacing(RacingGame racingGame, int time) {
+        outputView.printStart();
+        for (int i = 0; i < time; i++) {
+            racingGame.tryMove();
+            outputView.printRound(racingGame.getPositions());
+        }
     }
 
     public static void main(String[] args) {
