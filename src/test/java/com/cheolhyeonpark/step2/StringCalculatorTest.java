@@ -35,4 +35,14 @@ class StringCalculatorTest {
         //when, then
         assertThatIllegalArgumentException().isThrownBy(() -> stringCalculator.calculate(expression));
     }
+
+    @Test
+    @DisplayName("입력값이 공백이면 예외를 출력")
+    public void throwIllegalArgumentExceptionWhenInputIsBlank() {
+        // given
+        String expression = " ";
+
+        //when, then
+        assertThatIllegalArgumentException().isThrownBy(() -> stringCalculator.calculate(expression));
+    }
 }
