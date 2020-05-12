@@ -1,43 +1,23 @@
 package calculator.operation;
 
 import calculator.exception.ErrorMessage;
-import calculator.util.IntegerUtil;
 
 import java.util.Arrays;
+import java.util.function.BiFunction;
 
-public enum ArithmeticOperationStrategy implements OperationStrategy {
+public enum ArithmeticOperationStrategy {
 
-    PLUS("+") {
-        @Override
-        public int operate(int operandA, int operandB) {
-            return operandA + operandB;
-        }
-    },
-    MINUS("-") {
-        @Override
-        public int operate(int operandA, int operandB) {
-            return operandA - operandB;
-        }
-    },
-    TIMES("*") {
-        @Override
-        public int operate(int operandA, int operandB) {
-            return operandA * operandB;
-        }
-    },
-    DIVIDE("/") {
-        @Override
-        public int operate(int operandA, int operandB) {
-            if (IntegerUtil.isZero(operandB)) {
-                throw new ArithmeticException(ErrorMessage.ZERO_ON_DENOMINATOR);
-            }
-            return operandA / operandB;
-        }
-    };
-    private String expression;
+    PLUS("+", Math::addExact),
+    MINUS("-", Math::subtractExact),
+    TIMES("*", Math::multiplyExact),
+    DIVIDE("/", Math::floorDiv);
 
-    ArithmeticOperationStrategy(final String expression) {
+    private final String expression;
+    private final BiFunction<Integer, Integer, Integer> function;
+
+    ArithmeticOperationStrategy(final String expression, final BiFunction<Integer, Integer, Integer> function) {
         this.expression = expression;
+        this.function = function;
     }
 
     public static ArithmeticOperationStrategy of(final String expression) {
@@ -45,5 +25,9 @@ public enum ArithmeticOperationStrategy implements OperationStrategy {
                 .filter(operator -> expression.equals(operator.expression))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(String.format(ErrorMessage.NOT_SUPPORTED_ARITHMETIC, expression)));
+    }
+
+    public Integer operate(final Integer operandX, final Integer operandY) {
+        return function.apply(operandX, operandY);
     }
 }
