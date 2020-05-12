@@ -36,12 +36,6 @@ public class RacingGame {
 
         RacingGameResult racingGameResult = new RacingGameResult(cars);
 
-        int[] positions = Arrays.stream(cars)
-                .mapToInt(Car::getPosition)
-                .toArray();
-
-        racingGameResult.add(positions);
-
          IntStream.range(0, round)
                 .mapToObj(value -> moveAll())
                 .forEach(racingGameResult::add);

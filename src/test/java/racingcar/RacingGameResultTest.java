@@ -21,12 +21,19 @@ public class RacingGameResultTest {
 
     @MethodSource("provideCarArgument")
     @ParameterizedTest
+    @DisplayName("RacingResult 객체 생성 시 레이싱 게임 결과에는 시작 위치 1개가 존재한다.")
+    public void resultSizeTest(int[] positions, Car[] cars) {
+        assertThat(new RacingGameResult(cars).getResults()).hasSize(1);
+    }
+
+    @MethodSource("provideCarArgument")
+    @ParameterizedTest
     @DisplayName("RacingResult 추가 테스트")
     public void racingGameResultAddTest(int[] positions, Car[] cars) {
         RacingGameResult result = new RacingGameResult(cars);
         assertThatCode(() -> result.add(positions)).doesNotThrowAnyException();
 
-        assertThat(result.getSize()).isEqualTo(1);
+        assertThat(result.getSize()).isEqualTo(2);
     }
 
     @MethodSource("provideInvalidCarArgument")

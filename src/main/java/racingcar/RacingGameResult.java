@@ -10,8 +10,16 @@ public class RacingGameResult {
     private final List<int[]> results = new ArrayList<>();
     private Car[] cars;
 
+    private int[] startPosition;
+
     public RacingGameResult(Car[] cars) {
         this.cars = cars;
+
+        startPosition = Arrays.stream(cars)
+                .mapToInt(Car::getPosition)
+                .toArray();
+
+        add(startPosition);
     }
 
     public void add(int[] records) {
@@ -23,6 +31,14 @@ public class RacingGameResult {
 
     public int getSize() {
         return results.size();
+    }
+
+    public List<int[]> getResults() {
+        return results;
+    }
+
+    public Car[] getCars() {
+        return cars;
     }
 
     public String getWinner() {
