@@ -50,23 +50,25 @@ public class StringCalculator {
 
         return null;
     }
-    
+
     /**
      * null일경우 IllegalArgumentException throw
-     * @param param, String 판단할 문자열
+     * 
+     * @param param : String 판단할 문자열
      */
     public void checkNull(String param) {
         if (param == null) {
             throw new IllegalArgumentException("입력값이 null입니다.");
         }
     }
-    
+
     /**
      * 빈 문자열이거나 빈 공백 문자열일 경우 IllegalArgumentException throw
-     * @param param
+     * 
+     * @param param : String 판단할 문자열
      * @throws IllegalArgumentException
      */
-    public void checkEmpty(String param) throws IllegalArgumentException{
+    public void checkEmpty(String param) throws IllegalArgumentException {
         String[] splitedStringsBySpace = param.split(" ");
 
         for (String splitedString : splitedStringsBySpace) {
