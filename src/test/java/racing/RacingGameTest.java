@@ -21,14 +21,17 @@ class RacingGameTest {
     @MethodSource("provideNotValidTotalRacingGameCount")
     @DisplayName("RacingGame racing 횟수 유효성 검사")
     void validateTotalRacingGameCount(RacingCreateDto racingCreateDto) {
-        assertThatThrownBy(() -> new RacingGame(racingCreateDto, new RandomMovement(new Random())))
-                .isInstanceOf(IllegalArgumentException.class);
+        this.createRacingGame(racingCreateDto);
     }
 
     @ParameterizedTest
     @MethodSource("provideNotValidCarCount")
-    @DisplayName("RacingGame 자동차 유효성 검사")
+    @DisplayName("RacingGame 자동차 대수 유효성 검사")
     void validationTest(RacingCreateDto racingCreateDto) {
+        this.createRacingGame(racingCreateDto);
+    }
+
+    private void createRacingGame(RacingCreateDto racingCreateDto) {
         assertThatThrownBy(() -> new RacingGame(racingCreateDto, new RandomMovement(new Random())))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -38,8 +41,9 @@ class RacingGameTest {
     @DisplayName("RacingGame StartRacing 테스트")
     void startRacing(RacingCreateDto racingCreateDto) {
         RacingGame racingGame = new RacingGame(racingCreateDto, new RandomMovement(new Random()));
-        RacingResultDto racingResultDto = racingGame.racingResult();
-        assertThat(racingResultDto.result()).hasSize(racingCreateDto.carCount());
+        racingGame.executeRacing();
+        RacingResultDto racingResultDto = new RacingResultDto(racingGame);
+        assertThat(racingResultDto.calculateRacingResult()).hasSize(racingCreateDto.carCount());
     }
 
     private static Stream<Arguments> provideNotValidCarCount() {
