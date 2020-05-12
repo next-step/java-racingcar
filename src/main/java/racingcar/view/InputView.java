@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class InputView {
@@ -16,7 +17,7 @@ public class InputView {
     public static String[] getCarNames() {
         System.out.println(CAR_NAME_MESSAGE);
         String line = scanner.nextLine();
-        return line.split(SEPARATOR);
+        return Arrays.stream(line.split(SEPARATOR)).map(String::trim).toArray(String[]::new);
     }
 
     public static int getGameRound() {
