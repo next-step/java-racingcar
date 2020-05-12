@@ -50,11 +50,11 @@ public class StringCalculator {
     }
 
     public void inputCheck() {
-        InputCheck.emptyCheck(input, SEPARATOR);
-        InputCheck.minimumExpressionCheck(inputArray);
-        InputCheck.matchingNumbersAndOperators(inputArray);
-        InputCheck.numberStringCheck(inputArray);
-        InputCheck.calculateSymbolCheck(inputArray);
+        InputCheck.checkEmpty(input, SEPARATOR);
+        InputCheck.checkMinimumExpression(inputArray);
+        InputCheck.checkMatchingNumbersAndOperators(inputArray);
+        InputCheck.checkNumberString(inputArray);
+        InputCheck.checkCalculateSymbol(inputArray);
     }
 
     public int calculate() {

@@ -14,14 +14,14 @@ class StringCalculatorTest {
     @DisplayName("Arguments check / Null or Empty")
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "   "})
-    void inputCheckByEmpty(String input) {
+    void testInputCheckByEmpty(String input) {
 
         StringCalculator stringCalculator = new StringCalculator(input);
 
         assertThatIllegalArgumentException().isThrownBy(() ->
                 {
-                    //stringCalculator.inputCheck();
-                    InputCheck.emptyCheck(stringCalculator.getInput(), stringCalculator.getSEPARATOR());
+                    stringCalculator.inputCheck();
+                    InputCheck.checkEmpty(stringCalculator.getInput(), stringCalculator.getSEPARATOR());
 
                 }
         );
@@ -30,13 +30,13 @@ class StringCalculatorTest {
     @DisplayName("Arguments check / Null")
     @ParameterizedTest
     @NullAndEmptySource
-    void inputCheckByNull(String input) {
+    void testInputCheckByNull(String input) {
         assertThatIllegalArgumentException().isThrownBy(() ->
                 {
                     StringCalculator stringCalculator = new StringCalculator(input);
 
                     stringCalculator.inputCheck();
-                    InputCheck.emptyCheck(stringCalculator.getInput(), stringCalculator.getSEPARATOR());
+                    InputCheck.checkEmpty(stringCalculator.getInput(), stringCalculator.getSEPARATOR());
                 }
         );
     }
@@ -45,12 +45,12 @@ class StringCalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"1", "0", "1 +", "4 *", "*", "/", "- 23424", "555 -", "999", "9 /", "1 1",
             "2233 3434", "6 *", "* 54", "45 54", "23123 3432423 34", "1 2 3"})
-    void lessExpression(String input) {
+    void testLessExpression(String input) {
         StringCalculator stringCalculator = new StringCalculator(input);
         assertThatIllegalArgumentException().isThrownBy(() ->
                 {
                     stringCalculator.inputCheck();
-                    InputCheck.minimumExpressionCheck(stringCalculator.getInputArray());
+                    InputCheck.checkMinimumExpression(stringCalculator.getInputArray());
                 }
         );
     }
@@ -60,12 +60,12 @@ class StringCalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"1 1 * 1", "0 0 + 134 +", "1 + 1 123", "4 * + 1", "+ 1", "1 + 2 3 + 4", "8 * * 3",
             "555 - 22 234", "999 999 - 1", "9 / 4 4", "5 + 2 + 3 + 4 + + 5"})
-    void positionCheck(String input) {
+    void testPosition(String input) {
         StringCalculator stringCalculator = new StringCalculator(input);
         assertThatIllegalArgumentException().isThrownBy(() ->
                 {
                     stringCalculator.inputCheck();
-                    InputCheck.matchingNumbersAndOperators(stringCalculator.getInputArray());
+                    InputCheck.checkMatchingNumbersAndOperators(stringCalculator.getInputArray());
                 }
         );
     }
@@ -75,12 +75,12 @@ class StringCalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"1 1 * 1", "0 0 + 134 +", "1 + 1 123", "4 * + 1", "+ 1", "1 + 2 3 + 4", "8 * * 3",
             "555 - 22 234", "999 999 - 1", "9 / 4 4", "5 + 2 + 3 + 4 + + 5"})
-    void numberStringCheck(String input) {
+    void testNumberString(String input) {
         StringCalculator stringCalculator = new StringCalculator(input);
         assertThatIllegalArgumentException().isThrownBy(() ->
                 {
                     stringCalculator.inputCheck();
-                    InputCheck.numberStringCheck(stringCalculator.getInputArray());
+                    InputCheck.checkNumberString(stringCalculator.getInputArray());
                 }
         );
     }
@@ -89,12 +89,12 @@ class StringCalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"1 1 * 1", "0 0 + 134 +", "1 + 1 123", "4 * + 1", "+ 1", "1 + 2 3 + 4", "8 * * 3",
             "555 - 22 234", "999 999 - 1", "9 / 4 4", "5 + 2 + 3 + 4 + + 5"})
-    void calculateSymbolCheck(String input) {
+    void testCalculateSymbol(String input) {
         StringCalculator stringCalculator = new StringCalculator(input);
         assertThatIllegalArgumentException().isThrownBy(() ->
                 {
                     stringCalculator.inputCheck();
-                    InputCheck.numberStringCheck(stringCalculator.getInputArray());
+                    InputCheck.checkNumberString(stringCalculator.getInputArray());
                 }
         );
     }
@@ -104,7 +104,7 @@ class StringCalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"1 + 1:2", "2 * 3 + 3:9", "3 * 3 + 2 + 3 / 2:7", "2 + 3 * 4 / 2:10", "500 / 2 / 10 * 2:50"},
             delimiter = ':')
-    void calculteCheck(String input, int expeted) {
+    void testCalculate(String input, int expeted) {
 
         StringCalculator stringCalculator = new StringCalculator(input);
         assertThat(stringCalculator.calculate()).isEqualTo(expeted);

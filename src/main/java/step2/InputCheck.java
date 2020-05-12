@@ -6,36 +6,38 @@ import java.util.regex.Pattern;
 public class InputCheck {
 
     private final static Pattern pattern = Pattern.compile("^[0-9]*$");
+    private final static int MINIMUM_EXPRESSION_SIZE = 3;
+    private final static int CONDITION_OF_EXPRESSION = 2;
+    private final static int STEP_OF_NUMBER_AND_SYMBOL = 2;
 
-    public static void emptyCheck(String input, String separator) throws IllegalArgumentException {
+    public static void checkEmpty(String input, String separator) throws IllegalArgumentException {
         // null , empty
         if (input == null || input.length() == 0 || input.replaceAll(separator, "").isEmpty()) {
             throw new IllegalArgumentException("Null Or Empty.");
         }
     }
 
-    public static void minimumExpressionCheck(String[] inputArray) throws IllegalArgumentException {
-
-        if (inputArray.length < 3) {
+    public static void checkMinimumExpression(String[] inputArray) throws IllegalArgumentException {
+        if (inputArray.length < MINIMUM_EXPRESSION_SIZE) {
             throw new IllegalArgumentException("Less of Minimum Calculate Expression.");
         }
 
     }
 
-    public static void matchingNumbersAndOperators(String[] inputArray) throws IllegalArgumentException {
-        if (inputArray.length % 2 == 0) {
+    public static void checkMatchingNumbersAndOperators(String[] inputArray) throws IllegalArgumentException {
+        if (inputArray.length % CONDITION_OF_EXPRESSION == 0) {
             throw new IllegalArgumentException("Unmatched Numbers with Operators");
         }
     }
 
-    public static void numberStringCheck(String[] inputArray) {
-        for (int i = 0; i < inputArray.length; i += 2) {
+    public static void checkNumberString(String[] inputArray) {
+        for (int i = 0; i < inputArray.length; i += STEP_OF_NUMBER_AND_SYMBOL) {
             checkNumberString(inputArray[i]);
         }
     }
 
-    public static void calculateSymbolCheck(String[] inputArray) {
-        for (int i = 1; i < inputArray.length; i += 2) {
+    public static void checkCalculateSymbol(String[] inputArray) {
+        for (int i = 1; i < inputArray.length; i += STEP_OF_NUMBER_AND_SYMBOL) {
             checkCalculateSymbol(inputArray[i]);
         }
     }
