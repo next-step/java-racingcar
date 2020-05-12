@@ -6,15 +6,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import domain.Calculator;
+import domain.CommonCalculator;
 
 class CalculatorTest {
 
-    private Calculator calculator;
+    private CommonCalculator calculator;
 
     @BeforeEach
     void setUp() {
-        calculator = new Calculator();
+        calculator = new CommonCalculator();
     }
     
 	@Test

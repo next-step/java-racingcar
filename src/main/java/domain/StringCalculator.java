@@ -3,7 +3,7 @@ package domain;
 import dto.CalculateInfo;
 import util.ValidationUtils;
 
-public class StringCalculator extends Calculator{
+public class StringCalculator extends CommonCalculator{
 	
 	public int stringCalculate(String operation) {
 		
