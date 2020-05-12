@@ -2,60 +2,31 @@ package step2;
 
 public class Calculator {
 
-    private int num1;
-    private int num2;
-
-    public Calculator() {
-    }
-
-    public int plus() {
-        return num1 + num2;
-    }
-
-    public int minus() {
-        return num1 - num2;
-    }
-
-    public int multiple() {
-        return num1 * num2;
-    }
-
-    public int divide() {
-        return num1 / num2;
-    }
+    private static final String BLANK = " ";
 
     public int calculate(String input){
 
         nullOrEmptyCheck(input);
 
-        String[] split = input.split(" ");
+        String[] split = input.split(BLANK);
 
         int result = Integer.parseInt(split[0]);
 
         for (int i = 1; i < split.length; i++) {
             String operation = split[i];
+            String nextValue = null;
 
             if (isNumber(operation)) {
                 continue;
             }
 
-            setNumbers(split[i + 1], result);
+            nextValue = split[i + 1];
+            int nextNum = Integer.parseInt(nextValue);
 
-            result = Operation.calculate(operation, this);
+            result = Operation.calculate(operation, result, nextNum);
         }
 
         return result;
-    }
-
-    private void setNumbers(String nextNum, int result) {
-        int num = Integer.parseInt(nextNum);
-
-        setCalculatorNumbers(result, num);
-    }
-
-    private void setCalculatorNumbers(int num1, int num2){
-        this.num1 = num1;
-        this.num2 = num2;
     }
 
     private void nullOrEmptyCheck(String input){
