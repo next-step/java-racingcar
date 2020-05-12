@@ -19,7 +19,7 @@ public enum Operator {
     }
 
 
-    public static Operator getOperationSymbol(String operator) {
+    public static Operator getOperation(String operator) {
         return Arrays.stream(values())
                 .filter(op -> op.operator.equals(operator))
                 .findFirst()

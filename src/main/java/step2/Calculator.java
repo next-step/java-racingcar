@@ -7,70 +7,37 @@ public class Calculator {
 
     private static final String DELIMETER = " ";
 
-    Queue<Integer> numQu = new LinkedList<Integer>();
-    Queue<String> calQu = new LinkedList<String>();
-
     public boolean valCheck(String[] input) {
 
-        for(String s : input) {
-            if(isNumeric(s)) {
-                numQu.add(Integer.parseInt(s));
-                continue;
-            }
+        if (input == null || input.length == 0) {
+            throw new IllegalArgumentException("계산식을 입력해주세요.");
+        }
 
-            if(!"+".equals(s) && !"-".equals(s) && !"*".equals(s) && !"/".equals(s)) {
-                throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
-            }
-
-            calQu.add(s);
+        if (input.length % 2 == 0) {
+            throw new IllegalArgumentException("계산식이 올바르지 않습니다.");
         }
 
         return true;
     }
 
-    public static boolean isNumeric(String s) {
+    public static double isNumeric(String s) {
         try {
-            Double.parseDouble(s);
-            return true;
+            return Double.parseDouble(s);
         } catch(NumberFormatException e) {
-            return false;
+            throw new IllegalArgumentException("숫자가 아닙니다. " + s);
         }
     }
 
-    public int calculator(String input)
+    public double calculator(String input)
     {
-        int result = 0;
 
         String[] splitInput = input.split(DELIMETER);
         valCheck(splitInput);
-        result = numQu.poll();
 
-        while(numQu.size() != 0) {
-            int a = result;
-            int b = numQu.poll();
-
-            String c = calQu.poll();
-
-            if("+".equals(c)) {
-                result = (a + b);
-                continue;
-            }
-
-            if("-".equals(c)) {
-                result = (a - b);
-                continue;
-            }
-
-            if("*".equals(c)) {
-                result = (a * b);
-                continue;
-            }
-
-            if("/".equals(c)) {
-                if(b == 0) throw new IllegalArgumentException("0으로 나눌수 없습니다.");
-                result = (a / b);
-                continue;
-            }
+        double result = isNumeric(splitInput[0]);
+        for(int i = 1; i < splitInput.length; i += 2) {
+            Operator operator = Operator.getOperation(splitInput[i]);
+            result = operator.operate(result, isNumeric(splitInput[i+1]));
         }
 
         return result;

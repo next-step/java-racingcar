@@ -18,7 +18,7 @@ public class CalTest {
     void plus(){
         String input = "1 + 2 + 5";
 
-        int result = cal.calculator(input);
+        double result = cal.calculator(input);
 
         assertThat(result).isEqualTo(8);
     }
@@ -27,7 +27,7 @@ public class CalTest {
     void minu(){
         String input = "5 - 2 - 2";
 
-        int result = cal.calculator(input);
+        double result = cal.calculator(input);
 
         assertThat(result).isEqualTo(1);
     }
@@ -36,7 +36,7 @@ public class CalTest {
     void mul(){
         String input = "2 * 2 * 5";
 
-        int result = cal.calculator(input);
+        double result = cal.calculator(input);
 
         assertThat(result).isEqualTo(20);
     }
@@ -45,7 +45,7 @@ public class CalTest {
     void div(){
         String input = "6 / 2";
 
-        int result = cal.calculator(input);
+        double result = cal.calculator(input);
 
         assertThat(result).isEqualTo(3);
     }
