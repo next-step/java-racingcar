@@ -18,7 +18,10 @@ public class Calculator {
                 continue;
             }
 
-            if(!s.equals("+") && !s.equals("-") && !s.equals("*") && !s.equals("/")) throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
+            if(!"+".equals(s) && !"-".equals(s) && !"*".equals(s) && !"/".equals(s))
+            {
+                throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
+            }
 
             calQu.add(s);
         }
