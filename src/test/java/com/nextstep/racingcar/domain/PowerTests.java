@@ -31,4 +31,12 @@ class PowerTests {
     void generateByIntFailTest(int invalidValue) {
         assertThatThrownBy(() -> Power.generateByInt(invalidValue)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("동등성 비교")
+    @Test
+    public void equalTest() {
+        Power power1 = Power.generateByInt(1);
+        Power power2 = Power.generateByInt(1);
+        assertThat(power1.equals(power2)).isTrue();
+    }
 }

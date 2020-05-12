@@ -1,5 +1,6 @@
 package com.nextstep.racingcar.domain;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Power {
@@ -21,11 +22,24 @@ public class Power {
         return new Power(random.nextInt(10));
     }
 
-    public static Power generateByInt(int value) {
+    protected static Power generateByInt(int value) {
         return new Power(value);
     }
 
     public int toInt() {
         return this.value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Power power = (Power) o;
+        return value == power.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }
