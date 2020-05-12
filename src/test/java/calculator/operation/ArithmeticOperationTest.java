@@ -12,21 +12,21 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class ArithmeticOperationStrategyTest {
+public class ArithmeticOperationTest {
 
     @DisplayName("인자로 들어온 값에 해당하는 Enum 클래스 반환")
     @ParameterizedTest
     @MethodSource("existValueCase")
-    void of(final String value, final ArithmeticOperationStrategy expected) {
-        assertThat(ArithmeticOperationStrategy.fromExpression(value)).isEqualTo(expected);
+    void of(final String value, final ArithmeticOperation expected) {
+        assertThat(ArithmeticOperation.fromExpression(value)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> existValueCase() {
         return Stream.of(
-                Arguments.of("+", ArithmeticOperationStrategy.PLUS),
-                Arguments.of("-", ArithmeticOperationStrategy.MINUS),
-                Arguments.of("*", ArithmeticOperationStrategy.TIMES),
-                Arguments.of("/", ArithmeticOperationStrategy.DIVIDE)
+                Arguments.of("+", ArithmeticOperation.PLUS),
+                Arguments.of("-", ArithmeticOperation.MINUS),
+                Arguments.of("*", ArithmeticOperation.TIMES),
+                Arguments.of("/", ArithmeticOperation.DIVIDE)
         );
     }
 
@@ -34,7 +34,7 @@ public class ArithmeticOperationStrategyTest {
     @ParameterizedTest
     @ValueSource(strings = { "#", "%", "s", "test" })
     void failureFromExpression(final String value) {
-        assertThatThrownBy(() -> ArithmeticOperationStrategy.fromExpression(value))
+        assertThatThrownBy(() -> ArithmeticOperation.fromExpression(value))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessage.NOT_SUPPORTED_OPERATOR);
     }

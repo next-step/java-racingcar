@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiFunction;
 
-public enum ArithmeticOperationStrategy {
+public enum ArithmeticOperation {
 
     PLUS("+", Math::addExact),
     MINUS("-", Math::subtractExact),
@@ -17,18 +17,18 @@ public enum ArithmeticOperationStrategy {
     private final String expression;
     private final BiFunction<Integer, Integer, Integer> function;
 
-    public static final Map<String, ArithmeticOperationStrategy> map = new HashMap<>();
+    public static final Map<String, ArithmeticOperation> map = new HashMap<>();
     static {
-        Arrays.stream(ArithmeticOperationStrategy.values())
+        Arrays.stream(ArithmeticOperation.values())
                 .forEach(value -> map.put(value.expression, value));
     }
 
-    ArithmeticOperationStrategy(final String expression, final BiFunction<Integer, Integer, Integer> function) {
+    ArithmeticOperation(final String expression, final BiFunction<Integer, Integer, Integer> function) {
         this.expression = expression;
         this.function = function;
     }
 
-    public static ArithmeticOperationStrategy fromExpression(final String expression) {
+    public static ArithmeticOperation fromExpression(final String expression) {
         if (map.containsKey(expression)) {
             return map.get(expression);
         }

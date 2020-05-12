@@ -2,7 +2,7 @@ package calculator.calculator;
 
 
 import calculator.exception.ErrorMessage;
-import calculator.operation.ArithmeticOperationStrategy;
+import calculator.operation.ArithmeticOperation;
 import calculator.util.IntegerUtil;
 import calculator.util.StringUtil;
 
@@ -38,7 +38,7 @@ public class StringCalculator {
     private int calculate(final String[] values) {
         int result = StringUtil.toInt(values[0]);
         for (int i = 1; i < values.length; i += 2) {
-            ArithmeticOperationStrategy operator = ArithmeticOperationStrategy.fromExpression(getToken(values, i, 0));
+            ArithmeticOperation operator = ArithmeticOperation.fromExpression(getToken(values, i, 0));
             result = operator.operate(result, StringUtil.toInt(getToken(values, i, 1)));
         }
         return result;
