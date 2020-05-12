@@ -1,3 +1,5 @@
+package step1;
+
 import org.apache.commons.lang3.StringUtils;
 
 public class StringCalculator {
