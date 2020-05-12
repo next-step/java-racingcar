@@ -2,12 +2,14 @@ package step2.calculator;
 
 public class InputParser {
 
+    public static final String SEPARATOR = " ";
+
     private InputParser() {
     }
 
     static String[] parseInput(String input) {
         checkNullOrEmpty(input);
-        String[] parsedInput = input.split(" ");
+        String[] parsedInput = input.split(SEPARATOR);
         checkValidLength(parsedInput);
         return parsedInput;
     }
