@@ -4,9 +4,9 @@ import dto.CalculateInfo;
 
 public interface Calculator {
 	
-	public int add(int num1, int num2);
-	public int subStract(int num1, int num2);
-	public int multifly(int num1, int num2);
-	public int devide(int num1, int num2);
-	public int calculate(CalculateInfo calculateInfo);
+	int add(int num1, int num2);
+	int subtract(int num1, int num2);
+	int multiply(int num1, int num2);
+	int divide(int num1, int num2);
+	int calculate(CalculateInfo calculateInfo);
 }

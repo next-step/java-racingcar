@@ -25,19 +25,19 @@ class CalculatorTest {
 
 	@Test
 	@DisplayName("»¬¼À ±â´É ´ëÇÑ Å×½ºÆ®")
-	public void subStract() {
-		assertThat(calculator.subStract(2, 1)).isEqualTo(1);
+	public void subtract() {
+		assertThat(calculator.subtract(2, 1)).isEqualTo(1);
 	}
 	
 	@Test
 	@DisplayName("°ö¼À ±â´É ´ëÇÑ Å×½ºÆ®")
-	public void multifly() {
-		assertThat(calculator.multifly(2, 3)).isEqualTo(6);
+	public void multiply() {
+		assertThat(calculator.multiply(2, 3)).isEqualTo(6);
 	}
 	
 	@Test
 	@DisplayName("³ª´°¼À ±â´É ´ëÇÑ Å×½ºÆ®")
-	public void devide() {
-		assertThat(calculator.devide(4, 2)).isEqualTo(2);
+	public void divide() {
+		assertThat(calculator.divide(4, 2)).isEqualTo(2);
 	}
 }
