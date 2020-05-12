@@ -1,7 +1,5 @@
 package com.string.calculator.model;
 
-import org.apache.commons.lang3.ObjectUtils;
-
 import java.util.Arrays;
 
 public enum Operation {
@@ -37,11 +35,15 @@ public enum Operation {
         this.operation = operation;
     }
 
+    public Character getOperation() {
+        return operation;
+    }
+
     public abstract Double operate(Double left, Double right);
 
     public static Operation getExactOperation(Character input) {
         return Arrays.stream(Operation.values())
-                .filter(ch -> ObjectUtils.equals(ch, input))
+                .filter(ch -> ch.getOperation() == input)
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
     }
