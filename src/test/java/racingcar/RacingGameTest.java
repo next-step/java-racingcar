@@ -38,7 +38,7 @@ public class RacingGameTest {
 
     @MethodSource("provideValidArgument")
     @ParameterizedTest
-    @DisplayName("RacingGame play 결과의 크기는 라운드의 결과와 같다.")
+    @DisplayName("RacingGame play 이후 우승자를 가져올 때 에러가 발생하지 않는다.")
     public void getWinnerTest(int round, String[] carNames) {
         RacingGameResult racingGameResult = new RacingGame(round, carNames).play();
         assertThatCode(() -> racingGameResult.getWinner()).doesNotThrowAnyException();
