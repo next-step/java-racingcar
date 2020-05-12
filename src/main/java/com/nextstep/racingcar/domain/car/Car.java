@@ -16,7 +16,8 @@ public class Car {
     }
 
     public void move(Power power) {
-        if(MoveStrategy.isMoveable(power)) {
+        MoveStartegy moveStartegy = new PowerOverFourStrategy();
+        if(moveStartegy.isMoveable(power)) {
             this.moveLength = this.moveLength.increase();
         }
     }
