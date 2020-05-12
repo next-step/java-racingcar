@@ -1,7 +1,9 @@
 package com.nextstep.racingcar.domain;
 
 public class MoveStrategy {
-    public static boolean isMoveable(int value) {
-        return value >= 4;
+    private static final Power MIN_POWER = Power.generateByInt(4);
+
+    public static boolean isMoveable(Power power) {
+        return MIN_POWER.compareTo(power) <= 0;
     }
 }

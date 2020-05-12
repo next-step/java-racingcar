@@ -11,13 +11,13 @@ class MoveStrategyTests {
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     void canMoveWhenExceedPowerFour(int value) {
-        assertThat(MoveStrategy.isMoveable(value)).isTrue();
+        assertThat(MoveStrategy.isMoveable(Power.generateByInt(value))).isTrue();
     }
 
     @DisplayName("전달된 값이 4이하일 때는 움직일 수 없다.")
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3})
     void cantMoveWhenBeneathPowerFour(int value) {
-        assertThat(MoveStrategy.isMoveable(value)).isFalse();
+        assertThat(MoveStrategy.isMoveable(Power.generateByInt(value))).isFalse();
     }
 }

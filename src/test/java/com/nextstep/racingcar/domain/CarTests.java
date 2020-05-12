@@ -31,7 +31,7 @@ class CarTests {
     @ValueSource(ints = { 4, 5, 6, 7, 8 })
     void moveCarTest(int value) {
         assertThat(newCar.getMoveLength()).isEqualTo(zero);
-        newCar.move(value);
+        newCar.move(Power.generateByInt(value));
         assertThat(newCar.getMoveLength()).isEqualTo(one);
     }
 
@@ -40,7 +40,7 @@ class CarTests {
     @ValueSource(ints = { 0, 1, 2, 3 })
     void moveCarFailTest(int value) {
         assertThat(newCar.getMoveLength()).isEqualTo(zero);
-        newCar.move(value);
+        newCar.move(Power.generateByInt(value));
         assertThat(newCar.getMoveLength()).isEqualTo(zero);
     }
 }

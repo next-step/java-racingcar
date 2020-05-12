@@ -15,8 +15,8 @@ public class Car {
         return this.moveLength;
     }
 
-    public void move(int value) {
-        if(MoveStrategy.isMoveable(value)) {
+    public void move(Power power) {
+        if(MoveStrategy.isMoveable(power)) {
             this.moveLength = this.moveLength.increase();
         }
     }
