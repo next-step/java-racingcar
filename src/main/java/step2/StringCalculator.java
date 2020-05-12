@@ -1,8 +1,6 @@
 package step2;
 
-import java.util.List;
 import java.util.Stack;
-import java.util.stream.Collectors;
 
 public class StringCalculator {
 
@@ -18,7 +16,8 @@ public class StringCalculator {
   private TokenType tokenType = TokenType.NUMBER;
 
   public void getExpression (String expression) {
-    if (expression == null || expression.trim().equals("")) throw new IllegalArgumentException();
+    if (expression == null) throw new IllegalArgumentException(CalculatorError.ARGS_NULL);
+    if (expression.trim().equals("")) throw new IllegalArgumentException(CalculatorError.ARGS_EMPTY);
     this.expression = expression.trim().replaceAll(" ", ""); // 빈칸 제거
     this.lastPoint = this.expression.length();
     getNextToken();
@@ -38,26 +37,30 @@ public class StringCalculator {
 
     if (this.tokenType.equals(TokenType.NUMBER)) {
       this.numberToken += token;
-      int acc = 1;
-      while (true) {
-        if (this.pointer + acc >= this.lastPoint) break;
-        token = this.expression.charAt(this.pointer + acc);
-        if (!isNumber(token)) break;
-        this.numberToken += token;
-        acc += 1;
-      }
-      this.pointer += acc;
-      this.tokenType = TokenType.OPERATOR;
+      this.pointer += scanNumber();
     } else {
       if (!Operation.contains(token)) {
-        throw new IllegalArgumentException(); // 숫자도 아니고, 사칙 연산 기호도 아닐 경우
+        // 연산자 오류
+        throw new IllegalArgumentException(CalculatorError.INVALID_OPERATOR);
       }
       calculate(token);
       this.pointer += 1;
-      this.tokenType = TokenType.NUMBER;
     }
+    toggleTokenType();
     getNextToken();
 
+  }
+
+  private int scanNumber () {
+    int acc = 1;
+    char token;
+    while (this.pointer + acc >= this.lastPoint) {
+      token = this.expression.charAt(this.pointer + acc);
+      if (!isNumber(token)) break;
+      this.numberToken += token;
+      acc += 1;
+    }
+    return acc;
   }
 
   private void calculate (char nextOperator) {
@@ -72,6 +75,10 @@ public class StringCalculator {
       x = Operation.execute(operatorStack.pop(), numberStack.pop(), x);
     }
     numberStack.push(x);
+  }
+
+  private void toggleTokenType () {
+    this.tokenType = this.tokenType.equals(TokenType.NUMBER) ? TokenType.OPERATOR : TokenType.NUMBER;
   }
 
   private static boolean isNumber (char token) {
