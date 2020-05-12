@@ -28,8 +28,7 @@ public class Calculator {
         }
     }
 
-    public static double calculator(String input)
-    {
+    public static double calculator(String input) {
 
         String[] splitInput = input.split(DELIMETER);
         valCheck(splitInput);
