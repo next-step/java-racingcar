@@ -2,8 +2,9 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -13,30 +14,54 @@ public class RacingGameTest {
 
     @DisplayName("n대의 자동차는 전진 또는 멈출 수 있다.")
     @ParameterizedTest
-    @CsvSource(value = {"5,true", "5,false"})
-    void canMoveRacingCar(int numberOfCar, boolean canMove) {
-        RacingGame racingGame = new RacingGame(
-            getRacingCars(numberOfCar, canMove)
-        );
+    @CsvSource(value = {"true", "false"})
+    void canMoveRacingCar(boolean canMove) {
+        List<String> names = Arrays.asList("car1","car2","car3");
+
+        RacingGame racingGame = new RacingGame(getRacingCars(names, canMove));
 
         racingGame.tryMove();
 
-        racingGame.getPositions()
-            .forEach(integer -> assertThat(integer).isEqualTo(canMove ? 1 : 0));
+        racingGame.getCars()
+            .forEach(car -> assertThat(car.getPosition()).isEqualTo(canMove ? 1 : 0));
     }
 
-    @DisplayName("n개의 자동차의 위치를 알수 있다.")
+    @DisplayName("n개의 자동차의 이름과 위치를 알수 있다.")
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3})
-    void getPositions(int numberOfCar) {
-        RacingGame racingGame = RacingGameFactory.newRacingGame(numberOfCar);
-        assertThat(racingGame.getPositions().size()).isEqualTo(numberOfCar);
+    @ValueSource(strings = {"car1,car2,car3"})
+    void getPositions(String carNames) {
+        List<String> names = Arrays.asList(carNames.split(","));
+        RacingGame racingGame = RacingGameFactory.newRacingGame(names);
+
+        List<Car> cars = racingGame.getCars();
+        for (int i = 0; i < names.size() ; i++){
+            assertThat(cars.get(i).getName()).isEqualTo(names.get(i));
+            assertThat(cars.get(i).getPosition()).isEqualTo(0);
+        }
+
+        assertThat(racingGame.getCars().size()).isEqualTo(names.size());
     }
 
-    private RacingCars getRacingCars(int numberOfCar, boolean canMove) {
+    @DisplayName("우승자를 조회 할수 있다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"car1,car2,car3"})
+    void getWinners(String carNames) {
+        List<String> names = Arrays.asList(carNames.split(","));
+        RacingGame racingGame = RacingGameFactory.newRacingGame(names);
+        racingGame.tryMove();
+
+
+        int max= racingGame.getCars().stream().map(Car::getPosition).max(Integer::compareTo).orElse(0);
+
+        racingGame.getWinners().forEach(car -> assertThat(car.getPosition()).isEqualTo(max));
+
+
+    }
+
+    private RacingCars getRacingCars(List<String> names, boolean canMove) {
         return new RacingCars(
-            IntStream.range(0, numberOfCar)
-                .mapToObj(value -> new Car(() -> canMove))
+            names.stream()
+                .map(s -> new Car(() -> canMove))
                 .collect(Collectors.toList())
         );
     }
