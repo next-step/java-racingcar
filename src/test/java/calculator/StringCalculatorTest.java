@@ -11,14 +11,9 @@ public class StringCalculatorTest {
 
     private StringCalculator stringCalculator;
 
-    @BeforeEach
-    public void setup() {
-        stringCalculator = new StringCalculator();
-    }
-
     @ParameterizedTest
     @DisplayName("연산 테스트 입니다.")
-    @CsvSource(value = {"2 + 3 * 4 / 2 = 10", "1 + 0 = 1", "1 - 2 = -1",}, delimiter = '=')
+    @CsvSource(value = {"2 + 3 * 4 / 2 = 10", "1 + 0 = 1", "1 - 2 = -1", "1 2 2"}, delimiter = '=')
     void calculateTest(String value, String expected){
         assertThat(stringCalculator.calculate(value)).isEqualTo(Integer.parseInt(expected));
     }

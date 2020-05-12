@@ -1,9 +1,6 @@
 package calculator;
 
 public class Operator {
-    public Operator(){
-
-    }
 
     public static int add(int left, int right){
         return left + right;
@@ -18,7 +15,8 @@ public class Operator {
     }
 
     public static int divide(int left, int right){
-        //0으로 나눌때 예외처리 해야됨
+        if(right == 0)
+            throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
         return left / right;
     }
 
