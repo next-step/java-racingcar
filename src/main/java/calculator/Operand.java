@@ -34,4 +34,21 @@ public class Operand {
     public int getValue() {
         return value;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Operand)) {
+            return false;
+        }
+        Operand operand = (Operand) o;
+        return getValue() == operand.getValue();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getValue());
+    }
 }

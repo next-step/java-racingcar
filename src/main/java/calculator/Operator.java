@@ -11,6 +11,7 @@ public enum Operator {
     MULTIPLY("*", (leftOperand, rightOperand) -> leftOperand * rightOperand),
     DIVIDE("/", (leftOperand, rightOperand) -> leftOperand / rightOperand);
 
+    private static final Operand ZERO = Operand.of(0);
     private final String symbol;
     private final BiFunction<Integer, Integer, Integer> expression;
     Operator(String symbol, BiFunction<Integer, Integer, Integer> expression) {
@@ -45,7 +46,7 @@ public enum Operator {
     }
 
     private void validateDivideByZero(Operand rightOperand) {
-        if (this == Operator.DIVIDE & IntegerUtil.isZero(rightOperand.getValue())) {
+        if (this == Operator.DIVIDE && ZERO.equals(rightOperand)) {
             throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
         }
     }
