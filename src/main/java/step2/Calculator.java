@@ -12,16 +12,13 @@ public class Calculator {
 
     public boolean valCheck(String[] input) {
 
-        for(String s : input)
-        {
-            if(isNumeric(s))
-            {
+        for(String s : input) {
+            if(isNumeric(s)) {
                 numQu.add(Integer.parseInt(s));
                 continue;
             }
 
-            if(!"+".equals(s) && !"-".equals(s) && !"*".equals(s) && !"/".equals(s))
-            {
+            if(!"+".equals(s) && !"-".equals(s) && !"*".equals(s) && !"/".equals(s)) {
                 throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
             }
 
@@ -48,8 +45,7 @@ public class Calculator {
         valCheck(splitInput);
         result = numQu.poll();
 
-        while(numQu.size() != 0)
-        {
+        while(numQu.size() != 0) {
             int a = result;
             int b = numQu.poll();
 
