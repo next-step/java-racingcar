@@ -1,7 +1,4 @@
-package com.nextstep.racingcar.domain.round;
-
-import com.nextstep.racingcar.domain.car.Car;
-import com.nextstep.racingcar.domain.car.MoveLength;
+package com.nextstep.racingcar.domain.car;
 
 public class ForceMoveCar implements Car {
     private MoveLength moveLength;

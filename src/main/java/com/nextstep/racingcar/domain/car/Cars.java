@@ -17,6 +17,10 @@ public class Cars {
         return new Cars(unmodifiableCars);
     }
 
+    public static Cars createRandomCarsByNumber(int carNumber, CarFactory carFactory) {
+        return new Cars(carFactory.createByNumber(carNumber));
+    }
+
     public int size() {
         return this.cars.size();
     }

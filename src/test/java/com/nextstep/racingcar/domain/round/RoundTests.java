@@ -1,6 +1,7 @@
 package com.nextstep.racingcar.domain.round;
 
 import com.nextstep.racingcar.domain.car.Cars;
+import com.nextstep.racingcar.domain.car.ForceMoveCar;
 import com.nextstep.racingcar.domain.car.MoveLength;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -41,5 +42,16 @@ class RoundTests {
         List<MoveLength> afterResult = round.getResult();
         assertThat(afterResult.get(0).toInt()).isEqualTo(1);
         assertThat(afterResult.get(1).toInt()).isEqualTo(1);
+    }
+
+    @DisplayName("String으로 된 통합 결과를 확인한다.")
+    @Test
+    void checkStringResult() {
+        Round round = Round.newRound(cars);
+        round.moveAll();
+
+        String totalResult = round.getTotalResult();
+
+        assertThat(totalResult).isEqualTo("-\n-\n");
     }
 }

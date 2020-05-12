@@ -27,4 +27,12 @@ public class Round {
     public List<MoveLength> getResult() {
         return this.cars.getMoveLengths();
     }
+
+    public String getTotalResult() {
+        StringBuilder result = new StringBuilder();
+        for (MoveLength moveLength: this.cars.getMoveLengths()) {
+            result.append(moveLength.toStringLength()).append("\n");
+        }
+        return result.toString();
+    }
 }
