@@ -7,16 +7,16 @@ import java.util.stream.IntStream;
 public class RacingGameManager {
 
     private List<RacingCar> racingCarList;
+    private final InputView inputView = new InputView();
 
     public RacingGameManager() {
-        // TODO: InputView,ResultView 생성
     }
 
-    public void start(int carCount, int moveCount) {
-        // TODO: InputView를 통해서 자동차 대수와 시도할 횟수를 가져온다.
+    public void start() {
+        inputView.show();
 
-        generateRaceingCar(carCount);
-        moveRacingCar(moveCount);
+        generateRaceingCar(inputView.getRacingCarCount());
+        moveRacingCar(inputView.getMoveCount());
     }
 
     private void generateRaceingCar(int generateCount) {
