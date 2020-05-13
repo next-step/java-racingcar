@@ -16,29 +16,9 @@ public class StringCalculator {
         }
 
         for (int i = firstOperatorIndex; i < parsed.length; i += 2) {
-            String operator = parsed[i];
             double operand = Double.parseDouble(parsed[i + 1]);
-
-            switch (operator) {
-                case "+":
-                    result += operand;
-                    break;
-
-                case "-":
-                    result -= operand;
-                    break;
-
-                case "*":
-                    result *= operand;
-                    break;
-
-                case "/":
-                    result /= operand;
-                    break;
-
-                default:
-                    throw new IllegalArgumentException("사칙연산 기호가 아닙니다 : " + operator);
-            }
+            Operator operator = Operator.findBySymbol(parsed[i]);
+            result = operator.calculate(result, operand);
         }
 
         return result;
