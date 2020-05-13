@@ -20,7 +20,7 @@ public class StringCalculator {
             operands.add(inputArr[i+1]);
         }
 
-        checkOperandAndOperator(operands, operators);
+        checkOperators(operators);
 
 
         int result = Integer.parseInt(operands.get(0)); //첫번째 피연산자로 시작
@@ -88,17 +88,11 @@ public class StringCalculator {
     }
 
     /**
-     * 연산자와 피연산자를 검증하는 메소드
-     * @param numbers 피연산자 arrayList
+     * 연산자를 검증하는 메소드
      * @param operators 연산자 arrayList
      *
      */
-    private static void checkOperandAndOperator(List<String> numbers, List<String> operators) {
-
-        for (String number : numbers) {
-            if (checkOperator(number))
-                throw new IllegalArgumentException("피연산자를 제대로 입력해주세요.");
-        }
+    private static void checkOperators(List<String> operators) {
 
         for (String operator : operators) {
             if (!checkOperator(operator))

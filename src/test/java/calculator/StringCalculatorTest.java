@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
+@DisplayName("사칙 연산 문자열 계산기 테스트")
 class StringCalculatorTest {
 
     @ParameterizedTest
