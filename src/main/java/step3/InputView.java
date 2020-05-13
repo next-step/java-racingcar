@@ -8,6 +8,14 @@ public class InputView {
     private int time;
     private Scanner scanner;
 
+    public int getCarCount() {
+        return carCount;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
     public InputView() {
         scanner = new Scanner(System.in);
     }

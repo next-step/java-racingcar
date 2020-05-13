@@ -10,4 +10,3 @@
 - Input view
 - Result view
 - 자동차 전진 기능 (random 값에 의한)
-- 자동차 상태 출력 기능
