@@ -1,4 +1,4 @@
-package step3;
+package step3.view;
 
 import java.util.List;
 
@@ -15,7 +15,6 @@ public class ResultView {
 
     private void printResult(int[] positions) {
         for (int position : positions) {
-
             for (int i = 0; i < position; i++) {
                 System.out.print("-");
             }
