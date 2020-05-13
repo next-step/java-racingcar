@@ -1,7 +1,9 @@
 package racingcar.domain;
 
+import racingcar.domain.common.NumberGenerator;
+import racingcar.domain.common.RandomNumberGenerator;
+
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
     private GameInfo gameInfo;
@@ -12,12 +14,12 @@ public class RacingGame {
         this.participateCars = new ParticipateCars(gameInfo.getNumberOfCar());
     }
 
-    public GameResult startGame() {
+    public GameResult startGame(NumberGenerator numberGenerator) {
         int numberOfPhase = gameInfo.getNumberOfPhase();
         GameResult gameResult = new GameResult(numberOfPhase);
 
         for (int i = 0; i < numberOfPhase; i++) {
-            List<Integer> raceResult = participateCars.tryMove(new Random());
+            List<Integer> raceResult = participateCars.tryMove(numberGenerator);
             gameResult.addPhaseResult(new PhaseResult(raceResult));
         }
 

@@ -3,6 +3,7 @@ package racingcar;
 import racingcar.domain.GameInfo;
 import racingcar.domain.GameResult;
 import racingcar.domain.RacingGame;
+import racingcar.domain.common.RandomNumberGenerator;
 import racingcar.dto.InputValueDto;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -18,7 +19,7 @@ public class RacingCarApplication {
 
         RacingGame racingGame = new RacingGame(gameInfo);
 
-        GameResult gameResult = racingGame.startGame();
+        GameResult gameResult = racingGame.startGame(new RandomNumberGenerator());
 
         OutputView.printGameResult(gameResult);
     }
