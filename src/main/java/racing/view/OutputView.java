@@ -1,21 +1,17 @@
 package racing.view;
 
-import racing.dto.RacingResultDto;
+import racing.dto.RacingGameResult;
 
 import java.util.List;
 
 public class OutputView {
 
-    public OutputView() {
-        this.printGuidance();
-    }
-
-    private void printGuidance() {
+    public void printGuidance() {
         System.out.println("실행 결과");
     }
 
-    public void printRacingResult(RacingResultDto racingResultDto) {
-        List<Integer> racingPositions = racingResultDto.calculateRacingResult();
+    public void printRacingResult(RacingGameResult racingGameResult) {
+        List<Integer> racingPositions = racingGameResult.getRacingResult();
         racingPositions.forEach(position -> this.outputCarPosition(position));
         System.out.println();
     }
