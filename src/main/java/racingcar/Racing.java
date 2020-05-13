@@ -33,12 +33,15 @@ public class Racing {
                 .collect(Collectors.toList());
     }
 
-    List<Car> run() {
+    void run() {
         cars.forEach(this::moveCar);
-        return cars;
     }
 
     private void moveCar(final Car car) {
         car.move(movingStrategy);
+    }
+
+    public List<Car> getCars() {
+        return this.cars;
     }
 }

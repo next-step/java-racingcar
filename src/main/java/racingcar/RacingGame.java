@@ -18,7 +18,8 @@ public class RacingGame {
         Racing racing = Racing.of(numOfCar, new RandomMovingStrategy());
         ResultView.printResultMessage();
         for (int i = 0; i < loopCount; i++) {
-            List<Car> cars = racing.run();
+            racing.run();
+            List<Car> cars = racing.getCars();
             ResultView.printResult(cars);
         }
     }
