@@ -24,17 +24,17 @@ public class StringCalculator {
         }
     }
 
-    private static int operate(String s, int left, int right) {
-        if(s.equals("+")){
+    private static int operate(String sign, int left, int right) {
+        if(sign.equals("+")){
             return Operator.add(left,right);
         }
-        if(s.equals("-")){
+        if(sign.equals("-")){
             return Operator.subtract(left,right);
         }
-        if(s.equals("*")){
+        if(sign.equals("*")){
             return Operator.multiply(left,right);
         }
-        if(s.equals("/")){
+        if(sign.equals("/")){
             return Operator.divide(left,right);
         }
         throw new IllegalArgumentException("사칙 연산 기호가 아닙니다.");
