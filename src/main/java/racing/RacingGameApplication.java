@@ -20,11 +20,13 @@ public class RacingGameApplication {
         OutputView outPutView = new OutputView();
         outPutView.printGuidance();
 
-        RacingGameResult racingGameResult;
-        for (int i = 0; i < racingCreateValueObject.totalRacingCount(); i++) {
+        RacingGameResult racingGameResult = null;
+        for (int i = 0; i < racingCreateValueObject.getTotalRacingCount(); i++) {
             racingGame.executeRacing();
-            racingGameResult = new RacingGameResult(racingGame);
+            racingGameResult = racingGame.calculateRacingGameResult();
             outPutView.printRacingResult(racingGameResult);
         }
+
+        outPutView.printRacingWinners(racingGameResult);
     }
 }
