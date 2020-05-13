@@ -17,15 +17,11 @@ public enum Operation {
     this.operation = operation;
   }
 
-  public static boolean contains (char operator) {
-    return Arrays.stream(Operation.values())
-      .filter(v -> v.operator == operator)
-      .count() > 0;
-  }
-
   public static int execute (char operator, int x, int y) {
     return Arrays.stream(Operation.values())
             .filter(v -> v.operator == operator)
-            .findFirst().get().operation.apply(x, y);
+            .findFirst()
+            .orElseThrow(() -> new IllegalArgumentException(CalculatorError.INVALID_OPERATOR))
+            .operation.apply(x, y);
   }
 }

@@ -98,6 +98,6 @@ public class StringCalculatorTest {
   })
   void 유효하지_않은_연산_테스트 (String expression) {
     assertThatIllegalArgumentException()
-      .isThrownBy(() -> calculator.expressionScan(expression));
+      .isThrownBy(() -> calculator.expressionScan(expression).calculate());
   }
 }
