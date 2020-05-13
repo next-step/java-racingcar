@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import racingcar.exception.ErrorMessage;
+
 import java.util.Scanner;
 
 public class InputView {
@@ -8,6 +10,13 @@ public class InputView {
 
     public static int input(String content) {
         System.out.println(content);
-        return SCANNER.nextInt();
+        return validatedInput(SCANNER.nextInt());
+    }
+
+    private static int validatedInput(final int input) {
+        if (input < 0) {
+            throw new IllegalArgumentException(ErrorMessage.MORE_THAN_ZERO);
+        }
+        return input;
     }
 }
