@@ -8,7 +8,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
 
-        float result = new StringCalculator().calculate(input);
+        float result = new StringCalculator(input).calculate();
 
         System.out.println("-> " + result);
     }
