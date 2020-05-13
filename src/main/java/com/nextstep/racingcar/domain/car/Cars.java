@@ -21,6 +21,10 @@ public class Cars {
         return new Cars(carFactory.createByNumber(carNumber));
     }
 
+    public static Cars createRandomCarsByDriverNames(List<String> driverNames, CarFactory carFactory) {
+        return new Cars(carFactory.createByStringList(driverNames));
+    }
+
     public int size() {
         return this.cars.size();
     }

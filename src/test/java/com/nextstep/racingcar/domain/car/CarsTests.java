@@ -59,4 +59,13 @@ class CarsTests {
         assertThat(moveLengths.get(0)).isEqualTo(MoveLength.createByInt(1));
         assertThat(moveLengths.get(1)).isEqualTo(MoveLength.createByInt(1));
     }
+
+    @DisplayName("운전자이름(String) 리스트를 입력받아서 객체를 생성할 수 있음")
+    @Test
+    void createCarsByDriverNames() {
+        List<String> driverNames = Arrays.asList("poppo", "ita");
+        CarFactory carFactory = new CarFactory();
+        Cars cars = Cars.createRandomCarsByDriverNames(driverNames, carFactory);
+        assertThat(cars).isNotNull();
+    }
 }
