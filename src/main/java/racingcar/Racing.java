@@ -21,8 +21,8 @@ public class Racing {
         createCars(numOfCar);
     }
 
-    private void validateInput(final int input, final MovingStrategy movingStrategy) {
-        if (input <= 0 || movingStrategy == null) {
+    private void validateInput(final int numOfCar, final MovingStrategy movingStrategy) {
+        if (numOfCar <= 0 || movingStrategy == null) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_PARAMETER);
         }
     }
