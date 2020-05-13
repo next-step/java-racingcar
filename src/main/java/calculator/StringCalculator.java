@@ -53,14 +53,21 @@ public class StringCalculator {
      */
     private static int doFourOperate(String operator, int firstOperand, int secondOperand) {
 
-        if ("+".equals(operator))
+        if ("+".equals(operator)) {
             return firstOperand + secondOperand;
-        if ("-".equals(operator))
+        }
+
+        if ("-".equals(operator)) {
             return firstOperand - secondOperand;
-        if ("*".equals(operator))
+        }
+
+        if ("*".equals(operator)) {
             return firstOperand * secondOperand;
-        if ("/".equals(operator))
+        }
+
+        if ("/".equals(operator)) {
             return firstOperand / secondOperand;
+        }
 
         //이미 validation 해주었기 때문에 return 0;이 될리가 없음..
         return 0;
