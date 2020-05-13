@@ -5,39 +5,36 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static calculator.Operator.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OperatorTest {
 
     @ParameterizedTest
-    @DisplayName("add 테스트 입니다.")
+    @DisplayName("add 연산 테스트")
     @CsvSource(value = {"-1:2:1", "1:0:1"}, delimiter = ':')
-    void addTest(String value, String value2, String expected){
-        assertThat(Operator.add(Integer.parseInt(value),Integer.parseInt(value2)))
-                .isEqualTo(Integer.parseInt(expected));
+    void addTest(Double value, Double value2, Double expected){
+        assertThat(ADD.operate(value, value2)).isEqualTo(expected);
     }
 
     @ParameterizedTest
-    @DisplayName("subtract 테스트 입니다.")
+    @DisplayName("subtract 연산 테스트")
     @CsvSource(value = {"1:2:-1", "1:0:1"}, delimiter = ':')
-    void subtractTest(String value, String value2, String expected){
-        assertThat(Operator.subtract(Integer.parseInt(value),Integer.parseInt(value2)))
-                .isEqualTo(Integer.parseInt(expected));
+    void subTractTest(Double value, Double value2, Double expected){
+        assertThat(SUBTRACT.operate(value, value2)).isEqualTo(expected);
     }
 
     @ParameterizedTest
-    @DisplayName("multiply 테스트 입니다.")
+    @DisplayName("multiply 연산 테스트")
     @CsvSource(value = {"1:2:2", "1:0:0"}, delimiter = ':')
-    void multiplyTest(String value, String value2, String expected){
-        assertThat(Operator.multiply(Integer.parseInt(value),Integer.parseInt(value2)))
-                .isEqualTo(Integer.parseInt(expected));
+    void multiplyTest(Double value, Double value2, Double expected){
+        assertThat(MULTIPLY.operate(value, value2)).isEqualTo(expected);
     }
 
     @ParameterizedTest
-    @DisplayName("divide 테스트 입니다.")
-    @CsvSource(value = {"4:2:2", "1:1:1", "0:1:0", "1:0:0"}, delimiter = ':')
-    void divideTest(String value, String value2, String expected){
-        assertThat(Operator.divide(Integer.parseInt(value),Integer.parseInt(value2)))
-                .isEqualTo(Integer.parseInt(expected));
+    @DisplayName("divide 연산 테스트")
+    @CsvSource(value = {"4:2:2", "1:1:1", "0:1:0"}, delimiter = ':')
+    void divideTest(Double value, Double value2, Double expected){
+        assertThat(DIVIDE.operate(value, value2)).isEqualTo(expected);
     }
 }

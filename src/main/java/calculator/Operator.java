@@ -1,23 +1,24 @@
 package calculator;
 
-public class Operator {
+import java.util.function.BiFunction;
 
-    public static int add(int left, int right){
-        return left + right;
+public enum Operator {
+
+    ADD("+", (num1, num2) -> (num1 + num2)),
+    SUBTRACT("-", (num1, num2) -> (num1 - num2)),
+    MULTIPLY("*", (num1, num2) -> (num1 * num2)),
+    DIVIDE("/", (num1, num2) -> (num1 / num2));
+
+    private String sign;
+    private BiFunction<Double, Double, Double> biFunction;
+
+    Operator(String sign, BiFunction<Double, Double, Double> biFunction) {
+        this.sign = sign;
+        this.biFunction = biFunction;
     }
 
-    public static int subtract(int left, int right){
-        return left - right;
-    }
-
-    public static int multiply(int left, int right){
-        return left * right;
-    }
-
-    public static int divide(int left, int right){
-        if(right == 0)
-            throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
-        return left / right;
+    public Double operate(Double num1, Double num2) {
+        return this.biFunction.apply(num1, num2);
     }
 
 }
