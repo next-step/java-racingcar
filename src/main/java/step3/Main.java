@@ -1,20 +1,31 @@
 package step3;
 
+import step3.car.CarFactory;
+import step3.car.RacingGame;
+import step3.generator.GenerateNumberStrategy;
+import step3.generator.RandomNumberGenerator;
+import step3.view.InputView;
+import step3.view.ResultView;
+
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-        // given
         InputView inputView = new InputView();
         inputView.input();
 
-        RacingGame racingGame = new RacingGame();
-        racingGame.setInputValues(inputView.getNumberOfCars(), inputView.getMoveCount());
+        CarFactory carFactory = CarFactory.of(inputView.getNumberOfCars());
+        RacingGame racingGame = RacingGame.of(inputView.getMoveCount(), carFactory);
 
-        // when
-        List<int[]> result = racingGame.getResult();
+        GenerateNumberStrategy numberGenerator = new RandomNumberGenerator();
+
+        List<int[]> result = racingGame.start(numberGenerator);
+        List<int[]> result2 = racingGame.start(numberGenerator);
+
         ResultView resultView = new ResultView();
         resultView.print(result);
+        System.out.println("========================================");
+        resultView.print(result2);
     }
 }
