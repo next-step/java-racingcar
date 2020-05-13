@@ -2,7 +2,7 @@ public class Calculator {
     private double accumulatedCalcResult;
 
     // 1. 공백만 들어왔는지
-    public boolean isBlank(String strForCalc) {
+    private boolean isBlank(String strForCalc) {
         if (strForCalc == null || strForCalc.trim().equals("")) {
             throw new IllegalArgumentException("this is empty string");
         }
