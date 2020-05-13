@@ -1,6 +1,7 @@
 package racing.domain;
 
 import racing.dto.RacingCreateValueObject;
+import racing.dto.RacingGameResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,14 +17,15 @@ public class RacingGame {
     private CarMovement carMovement;
 
     public RacingGame(RacingCreateValueObject racingCreateValueObject, CarMovement carMovement) {
-        this.validateRacingTotalRound(racingCreateValueObject.totalRacingCount());
-        this.validateCarCount(racingCreateValueObject.carCount());
+        this.validateRacingTotalRound(racingCreateValueObject.getTotalRacingCount());
+        this.validateCarNames(racingCreateValueObject.getCarNames());
         this.validateCarMovement(carMovement);
 
         this.carMovement = carMovement;
-        this.racingTotalRound = racingCreateValueObject.totalRacingCount();
-        for (int i = 0; i < racingCreateValueObject.carCount(); i++) {
-            this.cars.add(new Car());
+        this.racingTotalRound = racingCreateValueObject.getTotalRacingCount();
+        String[] carNames = racingCreateValueObject.getCarNames();
+        for (String carName: carNames) {
+            this.cars.add(new Car(carName));
         }
     }
 
@@ -33,8 +35,22 @@ public class RacingGame {
         }
     }
 
-    private void validateCarCount(int carCount) {
-        if (carCount < MIN_CAR_COUNT) {
+    private void validateCarNames(String[] carNames) {
+        if (Objects.isNull(carNames)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (carNames.length < MIN_CAR_COUNT) {
+            throw new IllegalArgumentException();
+        }
+
+        for (String carName: carNames) {
+            this.validateCarNameEmptyCheck(carName);
+        }
+    }
+
+    private void validateCarNameEmptyCheck(String carName) {
+        if (Objects.isNull(carName) || carName.isEmpty()) {
             throw new IllegalArgumentException();
         }
     }
@@ -51,12 +67,9 @@ public class RacingGame {
 
             this.currentRacingCount++;
         }
-
     }
 
-    public List<Integer> calculateRacingScore() {
-        List<Integer> result = new ArrayList<>();
-        this.cars.forEach(car -> result.add(car.findCurrentPosition()));
-        return result;
+    public RacingGameResult calculateRacingGameResult() {
+        return new RacingGameResult(this.cars);
     }
 }
