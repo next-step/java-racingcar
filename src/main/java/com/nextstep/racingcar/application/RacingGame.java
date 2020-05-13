@@ -28,7 +28,7 @@ public class RacingGame {
         });
     }
 
-    public List<String> checkResults() {
+    public List<String> getResults() {
         return this.results;
     }
 }

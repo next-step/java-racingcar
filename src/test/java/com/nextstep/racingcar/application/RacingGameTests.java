@@ -27,7 +27,7 @@ class RacingGameTests {
 
         racingGame.run(new ForceMoveCarFactory());
 
-        List<String> results = racingGame.checkResults();
+        List<String> results = racingGame.getResults();
         assertThat(results.get(0)).isEqualTo("-\n-\n-\n");
         assertThat(results.get(1)).isEqualTo("--\n--\n--\n");
     }

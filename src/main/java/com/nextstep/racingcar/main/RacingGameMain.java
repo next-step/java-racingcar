@@ -17,7 +17,7 @@ public class RacingGameMain {
         CarFactory randomFactory = new RandomMoveCarFactory();
         racingGame.run(randomFactory);
 
-        OutputView outputView = new OutputView(racingGame.checkResults());
+        OutputView outputView = new OutputView(racingGame.getResults());
         outputView.printResults();
     }
 }
