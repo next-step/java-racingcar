@@ -22,7 +22,7 @@ public class Racing {
     }
 
     private void validateInput(final int input, final MovingStrategy movingStrategy) {
-        if (input < 0 || movingStrategy == null) {
+        if (input <= 0 || movingStrategy == null) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_PARAMETER);
         }
     }
@@ -41,7 +41,7 @@ public class Racing {
         car.move(movingStrategy);
     }
 
-    public List<Car> getCars() {
+    List<Car> getCars() {
         return this.cars;
     }
 }

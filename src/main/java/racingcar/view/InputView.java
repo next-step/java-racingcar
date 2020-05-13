@@ -28,7 +28,7 @@ public class InputView {
     }
 
     private static void validateInput(final int input) {
-        if (input < 0) {
+        if (input <= 0) {
             throw new IllegalArgumentException(ErrorMessage.MORE_THAN_ZERO);
         }
     }
