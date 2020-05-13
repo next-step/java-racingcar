@@ -4,7 +4,6 @@ import java.util.Random;
 
 public class RandomMovingStrategy implements MovingStrategy {
 
-    private static final int MIN_NUM = 0;
     private static final int MAX_NUM = 9;
     private static final int BASE_LINE_NUM = 4;
 
@@ -14,6 +13,6 @@ public class RandomMovingStrategy implements MovingStrategy {
     }
 
     private int random() {
-        return new Random().nextInt(RandomMovingStrategy.MAX_NUM) + RandomMovingStrategy.MIN_NUM;
+        return new Random().nextInt(MAX_NUM + 1);
     }
 }
