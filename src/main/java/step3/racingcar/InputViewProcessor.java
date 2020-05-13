@@ -30,7 +30,7 @@ public class InputViewProcessor {
         return userInput;
     }
 
-    private static void validateUserInput(int userInput) {
+    public static void validateUserInput(int userInput) {
         if (userInput <= 0)
             throw new IllegalArgumentException(ERROR_MESSAGE);
     }
