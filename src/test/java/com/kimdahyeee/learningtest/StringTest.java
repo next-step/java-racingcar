@@ -35,7 +35,12 @@ public class StringTest {
         assertEquals('a', value.charAt(0));
         assertEquals('b', value.charAt(1));
         assertEquals('c', value.charAt(2));
+    }
 
+    @DisplayName("charAt()메서드의 예외 발생 학습 테스트 (charAt 메서드는 문자열 길이 이상의 값을 가져오려고할 때 예외 발생)")
+    @ParameterizedTest
+    @ValueSource(strings = "abc")
+    void charAtException(String value) {
         assertThrows(StringIndexOutOfBoundsException.class, () -> {
             value.charAt(value.length());
         });
