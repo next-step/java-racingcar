@@ -15,14 +15,14 @@ public class CarTest {
     @DisplayName("Car 생성 시 distance 를 0으로 초기화")
     @Test
     void create() {
-        assertThat(Car.of().getPosition()).isEqualTo(Car.DEFAULT_DISTANCE);
+        assertThat(Car.newInstance().getPosition()).isEqualTo(Car.DEFAULT_DISTANCE);
     }
 
     @DisplayName("Car 는 이동 또는 정지")
     @ParameterizedTest
     @MethodSource("moveCase")
     void move(final boolean moveOrNot, final int distance) {
-        Car car = Car.of();
+        Car car = Car.newInstance();
         car.move(() -> moveOrNot);
         assertThat(car.getPosition()).isEqualTo(Car.DEFAULT_DISTANCE + distance);
     }

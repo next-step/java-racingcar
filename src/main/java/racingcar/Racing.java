@@ -28,7 +28,7 @@ public class Racing {
     }
 
     private void createCars(final int numOfCar) {
-        cars = Stream.generate(Car::of)
+        cars = Stream.generate(Car::newInstance)
                 .limit(numOfCar)
                 .collect(Collectors.toList());
     }
