@@ -14,7 +14,7 @@ public class StringCalculator {
         Operand result = Operand.ZERO;
         int firstOperatorIndex = 0;
 
-        if (isNumeric(parsed[0])) {
+        if (NumberUtil.isNumeric(parsed[0])) {
             result = new Operand(parsed[0]);
             firstOperatorIndex = 1;
         }
@@ -26,15 +26,6 @@ public class StringCalculator {
         }
 
         return result;
-    }
-
-    private boolean isNumeric(String str) {
-        try {
-            Double.parseDouble(str);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
     }
 
 }
