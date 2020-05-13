@@ -110,6 +110,6 @@
     - [X] 주어진 차량 대수와 Round 수만큼 경주를 진행하고 결과를 저장한다.
     - [X] 경기 결과를 출력한다.
 - 1차 리뷰 반영
-    - [ ] RacingGame의 checkResults 메서드명 수정
+    - [X] RacingGame의 checkResults 메서드명 수정
     - [ ] MoveStrategy를 인터페이스화 시키고 관련 기능 및 테스트 수정
-    - [ ] `:` 컨벤션 확인 및 수정
+    - [X] `:` 컨벤션 확인 및 수정

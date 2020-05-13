@@ -30,7 +30,7 @@ public class Round {
 
     public String getTotalResult() {
         StringBuilder result = new StringBuilder();
-        for (MoveLength moveLength: this.cars.getMoveLengths()) {
+        for (MoveLength moveLength : this.cars.getMoveLengths()) {
             result.append(moveLength.toStringLength()).append("\n");
         }
         return result.toString();
