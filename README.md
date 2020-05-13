@@ -8,10 +8,10 @@
 
 ### 3. 기능 분리 힌트
 *테스트 단위*
-- [ ]  덧셈
-- [ ]  뺄셈
-- [ ]  곱셈
-- [ ]  나눗셈
+- [X]  덧셈
+- [X]  뺄셈
+- [X]  곱셈
+- [X]  나눗셈
 - [ ]  입력 값이 *null*이거나 *빈 공백* 문자일 경우 IllegalArgumentException throw
 - [ ]  사칙연산 기호가 아닌 경우 IllegalArgumentException throw
 - [ ]  사칙연산을 모두 포함하는 기능 구현
