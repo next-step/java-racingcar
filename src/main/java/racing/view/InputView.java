@@ -6,19 +6,20 @@ import java.util.Scanner;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
+    private static final String DELIMITER = ",";
 
-    private int carCount;
+    private String[] carNames;
     private int totalRacingCount;
 
     public RacingCreateValueObject createByUserInput() {
         this.inputCarCount();
         this.inputTotalRacingCount();
-        return new RacingCreateValueObject(this.totalRacingCount, this.carCount);
+        return new RacingCreateValueObject(this.totalRacingCount, this.carNames);
     }
 
     private void inputCarCount() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        this.carCount = this.scanner.nextInt();
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        this.carNames = this.scanner.nextLine().split(DELIMITER);
     }
 
     private void inputTotalRacingCount() {

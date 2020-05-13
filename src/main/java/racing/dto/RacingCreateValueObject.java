@@ -2,18 +2,18 @@ package racing.dto;
 
 public class RacingCreateValueObject {
     private int totalRacingCount;
-    private int carCount;
+    private String[] carNames;
 
-    public RacingCreateValueObject(int totalRacingCount, int carCount) {
+    public RacingCreateValueObject(int totalRacingCount, String[] carNames) {
         this.totalRacingCount = totalRacingCount;
-        this.carCount = carCount;
+        this.carNames = carNames;
     }
 
-    public int totalRacingCount() {
+    public int getTotalRacingCount() {
         return this.totalRacingCount;
     }
 
-    public int carCount() {
-        return this.carCount;
+    public String[] getCarNames() {
+        return this.carNames;
     }
 }
