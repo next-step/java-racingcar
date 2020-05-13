@@ -16,8 +16,9 @@ public class RacingGame {
         return this.racingCarList;
     }
 
-    public void startGame() {
+    public void run() {
         setGameInformation();
+        startGame();
     }
 
     public void setGameInformation() {
@@ -34,8 +35,28 @@ public class RacingGame {
         }
     }
 
-    public void move(int randomNumber) {
-        if (randomNumber > 4)
-            this.getRacingCarList().get(0).movePosition();
+    public void startGame() {
+        List<RacingCar> racingCars = getRacingCarList();
+        for (int i = 0; i < this.gameTryCounts; i++) {
+            moveByRandomNumber(racingCars);
+            ResultViewProcessor.printResult(racingCars);
+        }
+    }
+
+    public void moveByRandomNumber(List<RacingCar> racingCarList) {
+        for (int i = 0; i < racingCarList.size(); i++) {
+            int randomNumber = (int)(Math.random() * 10);
+            validateMove(i, randomNumber);
+        }
+    }
+
+    public void validateMove(int i, int randomNumber) {
+        if (randomNumber >= 4)
+            this.getRacingCarList().get(i).movePosition();
+    }
+
+    public static void main(String[] args) {
+        RacingGame racingGame = new RacingGame();
+        racingGame.run();
     }
 }

@@ -29,8 +29,8 @@ public class RacingGameTest {
     public void moveRacingCarObjectWhenInputIsOver4(int randomNumber) {
         RacingGame racingGame = new RacingGame();
         racingGame.setRacingCarList(1);
-        racingGame.move(randomNumber);
+        racingGame.validateMove(0, randomNumber);
         assertThat(racingGame.getRacingCarList().get(0).getPosition())
-                .isEqualTo(2);
+                .isEqualTo(1);
     }
 }
