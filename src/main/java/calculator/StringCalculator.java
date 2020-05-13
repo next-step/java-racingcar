@@ -13,13 +13,13 @@ public class StringCalculator {
 
     public double calculate(String inputData) {
         if (inputData == null || inputData.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("input data is invalid");
         }
 
         String[] inputArray = inputData.split(SEPARATOR);
 
         if (isInValidLength(inputArray)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("input data is invalid");
         }
 
         double result = calculate(inputArray);
@@ -33,9 +33,8 @@ public class StringCalculator {
         }
 
         Operator operator= Operator.find(inputArray[CALCULATE_COUNT-1]);
-      //  Calculator calculator = operator.calculate(operator);
+
         try {
-            //double result = calculator.calculator(Double.parseDouble(inputArray[CALCULATE_COUNT-2]), Double.parseDouble(inputArray[CALCULATE_COUNT]));
             double result = operator.calculate(Double.parseDouble(inputArray[CALCULATE_COUNT-2]), Double.parseDouble(inputArray[CALCULATE_COUNT]));
             inputArray[CALCULATE_COUNT] = Double.toString(result);
             String[] _inputArray = Arrays.copyOfRange(inputArray, CALCULATE_COUNT, inputArray.length);
