@@ -1,5 +1,6 @@
 package calculator;
 
+import static calculator.Operand.ZERO;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
@@ -12,8 +13,6 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class OperatorTest {
-
-    private static final String ZERO = "0";
 
     @DisplayName("Symbol 에 맞는 Operator 를 찾는지 확인 하는 테스트")
     @ParameterizedTest
@@ -44,7 +43,7 @@ class OperatorTest {
     @ValueSource(strings = {"1", "4", "77"})
     void throwExceptionIfDivideByZero (final String value) {
         Operator operator = Operator.findOperator(Operator.DIVIDE.getSymbol());
-        assertThatThrownBy(() -> operator.operate(Operand.of(value), Operand.of(ZERO)))
+        assertThatThrownBy(() -> operator.operate(Operand.of(value), ZERO))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("0으로 나눌 수 없습니다.");
     }

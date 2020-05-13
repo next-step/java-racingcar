@@ -3,6 +3,8 @@ package calculator;
 import java.util.Objects;
 
 public class Operand {
+    public static final Operand ZERO = Operand.of(0);
+
     private final int value;
 
     private Operand(int value) {

@@ -1,5 +1,7 @@
 package calculator;
 
+import static calculator.Operand.ZERO;
+
 import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.stream.Stream;
@@ -11,7 +13,6 @@ public enum Operator {
     MULTIPLY("*", (leftOperand, rightOperand) -> leftOperand * rightOperand),
     DIVIDE("/", (leftOperand, rightOperand) -> leftOperand / rightOperand);
 
-    private static final Operand ZERO = Operand.of(0);
     private final String symbol;
     private final BiFunction<Integer, Integer, Integer> expression;
     Operator(String symbol, BiFunction<Integer, Integer, Integer> expression) {
