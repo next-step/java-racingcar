@@ -17,7 +17,8 @@ public class RacingGame {
     }
 
     public void run() {
-        setGameInformation();
+        Map<String, Integer> userInputMap = InputViewProcessor.getUserInputMap();
+        setGameInformation(userInputMap);
         startGame();
     }
 

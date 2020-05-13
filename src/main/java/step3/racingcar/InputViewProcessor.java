@@ -25,7 +25,6 @@ public class InputViewProcessor {
         System.out.println(instructionMessage);
         Scanner scanner = new Scanner(System.in);
         int userInput = scanner.nextInt();
-
         validateUserInput(userInput);
         return userInput;
     }
