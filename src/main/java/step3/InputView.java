@@ -1,5 +1,7 @@
 package step3;
 
+import static java.lang.System.exit;
+
 import java.util.Scanner;
 
 public class InputView {
@@ -45,16 +47,20 @@ public class InputView {
     public void inputCarCount() {
         printCarCountRequest();
         int count = this.scanner.nextInt();
-        if (validateCarCount(count)) {
-            this.carCount = count;
+        if (false == validateCarCount(count)) {
+            System.out.println("invalid count (between 2 and 9)");
+            exit(0);
         }
+        this.carCount = count;
     }
 
     public void inputTime() {
         printTimeRequest();
         int time = this.scanner.nextInt();
-        if (validateTime(time)) {
-            this.time = time;
+        if (false == validateTime(time)) {
+            System.out.println("invalid time (between 2 and 9)");
+            exit(0);
         }
+        this.time = time;
     }
 }

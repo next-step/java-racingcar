@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class RacingGame {
+
     private int time;
     private int[] carPositions;
 
@@ -11,6 +12,7 @@ public class RacingGame {
         this.time = time;
         this.carPositions = new int[carCount];
     }
+
     public int[] move() {
         for (int i = 0; i < this.carPositions.length; ++i) {
             if (getRandomPosition() >= 4) {
