@@ -5,6 +5,7 @@ import com.nextstep.racingcar.domain.car.CarFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -31,5 +32,14 @@ class RacingGameTests {
         List<String> results = racingGame.getResults();
         assertThat(results.get(0)).isEqualTo("-\n-\n-\n");
         assertThat(results.get(1)).isEqualTo("--\n--\n--\n");
+    }
+
+    @DisplayName("진행할 라운드 수와 String 리스트를 입력 받아서 객체 생성")
+    @Test
+    void createByStringListTest() {
+        List<String> driverNames = Arrays.asList("poppo", "saul", "ita");
+        int round = 5;
+        RacingGame racingGame = new RacingGame(driverNames, round);
+        assertThat(racingGame).isNotNull();
     }
 }

@@ -12,11 +12,21 @@ import java.util.stream.IntStream;
 public class RacingGame {
     private int carNumber;
     private int roundNumber;
+    private List<String> driverNames;
     private List<String> results = new ArrayList<>();
 
-    public RacingGame(int carNumber, int roundNumber) {
+    private RacingGame(int carNumber, int roundNumber, List<String> driverNames) {
         this.carNumber = carNumber;
         this.roundNumber = roundNumber;
+        this.driverNames = driverNames;
+    }
+
+    public RacingGame(int carNumber, int roundNumber) {
+        this(carNumber, roundNumber, null);
+    }
+
+    public RacingGame(List<String> driverNames, int roundNumber) {
+        this(0, roundNumber, driverNames);
     }
 
     public void run(CarFactory carFactory, MoveStrategy moveStrategy) {
