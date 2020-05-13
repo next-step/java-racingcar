@@ -1,5 +1,5 @@
 public class Calculator {
-    private double accumulated;
+    private double accumulatedCalcResult;
 
     // 1. 공백만 들어왔는지
     public boolean isBlank(String strForCalc) {
@@ -45,30 +45,30 @@ public class Calculator {
 
         // 쪼개고
         String[] splitUp = strForCalc.split(" ");
-        accumulated = Double.parseDouble(splitUp[0]);
+        accumulatedCalcResult = Double.parseDouble(splitUp[0]);
 
         // 계산
-        for(int i = 1; i < splitUp.length; i += 2) {
-            operation(splitUp[i], accumulated, Double.parseDouble(splitUp[i + 1]));
+        for (int i = 1; i < splitUp.length; i += 2) {
+            operation(splitUp[i], accumulatedCalcResult, Double.parseDouble(splitUp[i + 1]));
         }
 
-        return accumulated;
+        return accumulatedCalcResult;
     }
 
     private void operation(String operation, double firstNum, double secondNum) {
         switch (operation) {
             case "+":
-                accumulated = plusOperation(firstNum, secondNum);
+                accumulatedCalcResult = plusOperation(firstNum, secondNum);
                 break;
             case "-":
-                accumulated = minusOperation(firstNum, secondNum);
+                accumulatedCalcResult = minusOperation(firstNum, secondNum);
                 break;
             case "*":
-                accumulated = multiplicationOperation(firstNum, secondNum);
+                accumulatedCalcResult = multiplicationOperation(firstNum, secondNum);
                 break;
             case "/":
                 try {
-                    accumulated = divisionOperation(firstNum, secondNum);
+                    accumulatedCalcResult = divisionOperation(firstNum, secondNum);
                 } catch (IllegalArgumentException e) {
                     e.printStackTrace();
                 }
@@ -89,7 +89,7 @@ public class Calculator {
     }
 
     public double divisionOperation(double accumulated, double operand) throws IllegalArgumentException {
-        if(operand == 0) {
+        if (operand == 0) {
             throw new IllegalArgumentException("you can't divide by 0");
         }
         return accumulated / operand;
