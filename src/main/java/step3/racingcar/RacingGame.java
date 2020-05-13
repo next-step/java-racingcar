@@ -6,54 +6,62 @@ import java.util.Map;
 
 public class RacingGame {
     private int gameTryCounts;
-    private final List<RacingCar> racingCarList = new ArrayList<>();
+    private List<RacingCar> racingCars;
 
     public int getGameTryCounts() {
         return this.gameTryCounts;
     }
 
-    public List<RacingCar> getRacingCarList() {
-        return this.racingCarList;
+    public List<RacingCar> getRacingCars() {
+        return this.racingCars;
     }
 
     public void run() {
         Map<String, Integer> userInputMap = InputViewProcessor.getUserInputMap();
         setGameInformation(userInputMap);
-        startGame();
+        List<RacingCar> racingCars = getRacingCars();
+        int gameTryCounts = getGameTryCounts();
+        startGame(racingCars, gameTryCounts);
     }
 
-    public void setGameInformation() {
-        Map<String, Integer> userInputMap = InputViewProcessor.getUserInputMap();
+    public void setGameInformation(Map<String, Integer> userInputMap) {
         int carCounts = userInputMap.get(UserInputMapKey.CAR_COUNTS.getKey());
-        this.gameTryCounts = userInputMap.get(UserInputMapKey.GAME_TRY_COUNTS.getKey());
-        setRacingCarList(carCounts);
+        int gameTryCounts = userInputMap.get(UserInputMapKey.GAME_TRY_COUNTS.getKey());
+        setGameTryCounts(gameTryCounts);
+        setRacingCars(carCounts);
     }
 
-    public void setRacingCarList(int carCounts) {
+    public void setGameTryCounts(int gameTryCounts) {
+        this.gameTryCounts = gameTryCounts;
+    }
+
+    public void setRacingCars(int carCounts) {
+        this.racingCars = new ArrayList<>();
         for (int i = 0; i < carCounts; i++) {
             RacingCar racingCar = new RacingCar();
-            this.racingCarList.add(racingCar);
+            this.racingCars.add(racingCar);
         }
     }
 
-    public void startGame() {
-        List<RacingCar> racingCars = getRacingCarList();
-        for (int i = 0; i < this.gameTryCounts; i++) {
-            moveByRandomNumber(racingCars);
+    public void startGame(List<RacingCar> racingCars, int gameTryCounts) {
+        for (int i = 0; i < gameTryCounts; i++) {
+            makeRandomNumber(racingCars);
             ResultViewProcessor.printResult(racingCars);
         }
     }
 
-    public void moveByRandomNumber(List<RacingCar> racingCarList) {
-        for (int i = 0; i < racingCarList.size(); i++) {
+    public void makeRandomNumber(List<RacingCar> racingCars) {
+        int carCounts = racingCars.size();
+        for (int i = 0; i < carCounts; i++) {
             int randomNumber = (int)(Math.random() * 10);
-            validateMove(i, randomNumber);
+            RacingCar racingCar = racingCars.get(i);
+            moveRacingCarByRandomNumber(racingCar, randomNumber);
         }
     }
 
-    public void validateMove(int i, int randomNumber) {
+    public void moveRacingCarByRandomNumber(RacingCar racingCar, int randomNumber) {
         if (randomNumber >= 4)
-            this.getRacingCarList().get(i).movePosition();
+            racingCar.movePosition();
     }
 
     public static void main(String[] args) {

@@ -23,7 +23,7 @@ public class RacingGameTest {
         racingGame.setGameInformation(userInputMap);
         assertThat(racingGame.getGameTryCounts())
                 .isEqualTo(userInputMap.get(UserInputMapKey.GAME_TRY_COUNTS.getKey()));
-        assertThat(racingGame.getRacingCarList().size())
+        assertThat(racingGame.getRacingCars().size())
                 .isEqualTo(userInputMap.get(UserInputMapKey.CAR_COUNTS.getKey()));
     }
 
@@ -41,8 +41,8 @@ public class RacingGameTest {
     @ValueSource(ints = {5, 10, 3})
     public void makeRacingCarObjectInAccordanceWithInput(int carCounts) {
         RacingGame racingGame = new RacingGame();
-        racingGame.setRacingCarList(carCounts);;
-        assertThat(racingGame.getRacingCarList().size()).isEqualTo(carCounts);
+        racingGame.setRacingCars(carCounts);;
+        assertThat(racingGame.getRacingCars().size()).isEqualTo(carCounts);
     }
 
     @DisplayName("조건에 맞으면 RacingCar 객체가 움직이는 테스트")
@@ -50,9 +50,9 @@ public class RacingGameTest {
     @ValueSource(ints = {7, 9, 5, 6})
     public void moveRacingCarObjectWhenInputIsOver4(int randomNumber) {
         RacingGame racingGame = new RacingGame();
-        racingGame.setRacingCarList(1);
-        racingGame.validateMove(0, randomNumber);
-        assertThat(racingGame.getRacingCarList().get(0).getPosition())
+        racingGame.setRacingCars(1);
+        racingGame.moveRacingCarByRandomNumber(racingGame.getRacingCars().get(0), randomNumber);
+        assertThat(racingGame.getRacingCars().get(0).getPosition())
                 .isEqualTo(1);
     }
 }
