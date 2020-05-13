@@ -4,6 +4,7 @@ import racingcar.domain.GameResult;
 import racingcar.domain.PhaseResult;
 
 public class OutputView {
+    private static final String MARK = "-";
     private OutputView() {
     }
 
@@ -29,7 +30,7 @@ public class OutputView {
         StringBuilder builder = new StringBuilder();
 
         for (int i = 0; i < location; i++) {
-            builder.append("-");
+            builder.append(MARK);
         }
 
         return builder.toString();
