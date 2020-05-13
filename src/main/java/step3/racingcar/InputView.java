@@ -9,7 +9,7 @@ public class InputView {
         HashMap<String, Integer> userInputMap = new HashMap<>();
         Scanner sc = new Scanner(System.in);
         System.out.println("자동차 대수는 몇 대 인가요?");
-        userInputMap.put("numberOfCar", sc.nextInt());
+        userInputMap.put("numberOfCars", sc.nextInt());
         System.out.println("시도할 회수는 몇 회 인가요?");
         userInputMap.put("gameTryCounts", sc.nextInt());
         return userInputMap;
