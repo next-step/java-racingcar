@@ -8,23 +8,18 @@ public class Calculator {
         if(splitInput.length < 3 || splitInput.length % 2 != 1)
             throw new IllegalArgumentException();
 
-        String result;
-        result = _calculate(splitInput[0], splitInput[1], splitInput[2]);
+        String result = splitInput[0];
 
-        for(int i=3; i<splitInput.length; i+=2)
+        for(int i=1; i<splitInput.length; i+=2)
             result = _calculate(result, splitInput[i], splitInput[i+1]);
 
         return result;
     }
 
-    private int convertToInteger(String str) {
-        return Integer.parseInt(str);
-    }
-
     private String _calculate(String strNum1, String symbol, String strNum2) {
         int result;
-        int num1 = convertToInteger(strNum1);
-        int num2 = convertToInteger(strNum2);
+        int num1 = Integer.parseInt(strNum1);
+        int num2 = Integer.parseInt(strNum2);
 
         switch (symbol) {
             case "+":
