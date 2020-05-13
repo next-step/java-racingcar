@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.List;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -9,10 +10,10 @@ public class RacingGameLauncher {
     private final OutputView outputView = new OutputView();
 
     public void play() {
-        int numberOfCar = inputView.requestNumberOfCar();
+        List<String> carNames = inputView.requestCarNames();
         int time = inputView.requestTime();
 
-        RacingGame racingGame = RacingGameFactory.newRacingGame(numberOfCar);
+        RacingGame racingGame = RacingGameFactory.newRacingGame(carNames);
         startRacing(racingGame, time);
     }
 
@@ -20,8 +21,9 @@ public class RacingGameLauncher {
         outputView.printStart();
         for (int i = 0; i < time; i++) {
             racingGame.tryMove();
-            outputView.printRound(racingGame.getPositions());
+            outputView.printRound(racingGame.getCars());
         }
+        outputView.printEnd(racingGame.getWinners());
     }
 
     public static void main(String[] args) {

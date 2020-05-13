@@ -1,6 +1,8 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,7 +18,17 @@ public class RacingCars {
         cars.stream().forEach(Car::tryMove);
     }
 
-    public List<Integer> getPositions() {
-        return cars.stream().map(Car::getPosition).collect(Collectors.toList());
+    public List<Car> getWinners() {
+        return cars.stream()
+            .max(Comparator.comparingInt(Car::getPosition))
+            .map(car -> cars.stream()
+                .filter(target->target.getPosition() == car.getPosition())
+                .collect(Collectors.toList())
+            )
+            .orElse(Collections.EMPTY_LIST);
+    }
+
+    public List<Car> getCars(){
+        return new ArrayList<>(cars);
     }
 }

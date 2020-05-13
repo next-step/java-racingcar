@@ -14,7 +14,11 @@ public class RacingGame {
         racingCars.tryMove();
     }
 
-    public List<Integer> getPositions(){
-        return racingCars.getPositions();
+    public List<Car> getWinners(){
+        return racingCars.getWinners();
+    }
+
+    public List<Car> getCars() {
+        return racingCars.getCars();
     }
 }

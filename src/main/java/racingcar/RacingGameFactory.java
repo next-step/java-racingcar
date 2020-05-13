@@ -1,23 +1,17 @@
 package racingcar;
 
+import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingGameFactory {
 
     private RacingGameFactory() {
     }
 
-    public static RacingGame newRacingGame(int numberOfCar){
+    public static RacingGame newRacingGame(List<String> carNames){
         CarMovingCondition carMovingCondition = new RandomCarMovingCondition(new TimeBaseRandomGenerator(), 10, 4);
-
-        RacingCars racingCars =  new RacingCars(
-            IntStream.range(0, numberOfCar)
-                .mapToObj(value -> new Car(carMovingCondition))
-                .collect(Collectors.toList())
-        );
-
-        return new RacingGame(racingCars);
+        List<Car> cars = carNames.stream().map(name -> new Car(name, carMovingCondition)).collect(Collectors.toList());
+        return new RacingGame(new RacingCars(cars));
     }
 
 }
