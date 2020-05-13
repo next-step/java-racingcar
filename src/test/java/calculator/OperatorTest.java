@@ -51,21 +51,21 @@ class OperatorTest {
     @DisplayName("연산기호애 맞게 계산이 되는지 테스트")
     @ParameterizedTest
     @CsvSource(value = {"1,2", "1,4", "1.5, 2.5", "400, 200"})
-    public void calculateTest(float operand1, float operand2) {
+    public void calculateTest(float beforeOperand, float nextOperand) {
         Operator plusOperator = Operator.getOperator("+");
         Operator minusOperator = Operator.getOperator("-");
         Operator divideOperator = Operator.getOperator("/");
         Operator multiplyOperator = Operator.getOperator("*");
 
-        float plusCalculated = plusOperator.calculate(operand1, operand2);
-        float minusCalculated = minusOperator.calculate(operand1, operand2);
-        float divideCalculated = divideOperator.calculate(operand1, operand2);
-        float multiplyCalculated = multiplyOperator.calculate(operand1, operand2);
+        float plusCalculated = plusOperator.calculate(beforeOperand, nextOperand);
+        float minusCalculated = minusOperator.calculate(beforeOperand, nextOperand);
+        float divideCalculated = divideOperator.calculate(beforeOperand, nextOperand);
+        float multiplyCalculated = multiplyOperator.calculate(beforeOperand, nextOperand);
 
-        assertThat(plusCalculated).isEqualTo(operand1 + operand2);
-        assertThat(minusCalculated).isEqualTo(operand1 - operand2);
-        assertThat(divideCalculated).isEqualTo(operand1 / operand2);
-        assertThat(multiplyCalculated).isEqualTo(operand1 * operand2);
+        assertThat(plusCalculated).isEqualTo(beforeOperand + nextOperand);
+        assertThat(minusCalculated).isEqualTo(beforeOperand - nextOperand);
+        assertThat(divideCalculated).isEqualTo(beforeOperand / nextOperand);
+        assertThat(multiplyCalculated).isEqualTo(beforeOperand * nextOperand);
     }
 
 }

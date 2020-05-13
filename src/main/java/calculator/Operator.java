@@ -4,39 +4,25 @@ import java.util.Arrays;
 
 public enum Operator {
 
-    PLUS("+"),
-    MINUS("-"),
-    DIVIDE("/"),
-    MULTIPLY("*");
+    PLUS("+", (beforeOperand, nextOperand) -> beforeOperand + nextOperand),
+    MINUS("-", (beforeOperand, nextOperand) -> beforeOperand - nextOperand),
+    DIVIDE("/", (beforeOperand, nextOperand) -> beforeOperand / nextOperand),
+    MULTIPLY("*", (beforeOperand, nextOperand) -> beforeOperand * nextOperand);
 
     private String symbol;
+    private Calculator calculator;
 
-    Operator(String symbol) {
+    Operator(String symbol, Calculator calculator) {
         this.symbol = symbol;
+        this.calculator = calculator;
     }
 
     public String getSymbol() {
         return symbol;
     }
 
-    public float calculate(float operand1, float operand2) {
-        Calculator calculator = getCalculator(name());
-        return calculator.calculate(operand1, operand2);
-    }
-
-    private Calculator getCalculator(String name) {
-        switch (valueOf(name)) {
-            case PLUS:
-                return new PlusCalculator();
-            case MINUS:
-                return new MinusCalculator();
-            case DIVIDE:
-                return new DivideCalculator();
-            case MULTIPLY:
-                return new MultiplyCalculator();
-            default:
-                throw new IllegalArgumentException();
-        }
+    public float calculate(float beforeOperand, float nextOperand) {
+        return calculator.calculate(beforeOperand, nextOperand);
     }
 
     public static Operator getOperator(String symbol) {
