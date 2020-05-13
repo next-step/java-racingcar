@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 public class GameInfo {
+    private static final int GAME_INFO_NUMBER_BOUND = 0;
     private final int numberOfCar;
     private final int numberOfPhase;
 
@@ -19,11 +20,11 @@ public class GameInfo {
     }
 
     private void validateInputValue(int numberOfCar, int numberOfPhase) {
-        if (numberOfCar <= 0) {
+        if (numberOfCar <= GAME_INFO_NUMBER_BOUND) {
             throw new IllegalArgumentException("참여할 자동차의 대수는 0 보다 커야합니다.");
         }
 
-        if (numberOfPhase <= 0) {
+        if (numberOfPhase <= GAME_INFO_NUMBER_BOUND) {
             throw new IllegalArgumentException("시도할 횟수는 0 보다 커야합니다.");
         }
     }

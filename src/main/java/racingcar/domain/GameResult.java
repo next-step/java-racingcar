@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameResult {
+    private static final int PHASE_NUMBER_UNDER_BOUND = 1;
     private final int numberOfPhase;
     private List<PhaseResult> phaseResults;
 
@@ -28,7 +29,7 @@ public class GameResult {
     }
 
     private void validatePhaseNumber(int phaseNumber) {
-        if (phaseNumber < 1 || phaseNumber > numberOfPhase) {
+        if (phaseNumber < PHASE_NUMBER_UNDER_BOUND || phaseNumber > numberOfPhase) {
             throw new IllegalArgumentException(String.format("잘못된 시도 번호입니다. - %d\n", phaseNumber));
         }
     }
