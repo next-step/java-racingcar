@@ -6,4 +6,8 @@ public class CarSnapShot {
     public CarSnapShot(int location) {
         this.location = location;
     }
+
+    public int getLocation() {
+        return location;
+    }
 }
