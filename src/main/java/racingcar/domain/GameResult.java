@@ -17,9 +17,8 @@ public class GameResult {
         return numberOfPhase;
     }
 
-    public int addPhaseResult(PhaseResult phaseResult) {
+    public void addPhaseResult(PhaseResult phaseResult) {
         this.phaseResults.add(phaseResult);
-        return this.phaseResults.size();
     }
 
     public PhaseResult findByPhaseNumber(int phaseNumber) {

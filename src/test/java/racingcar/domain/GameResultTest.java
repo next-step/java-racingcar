@@ -15,17 +15,6 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameResultTest {
-
-    @DisplayName("시도 결과를 GameResult에 추가하고 그 번호를 반환한다.")
-    @Test
-    void addPhaseResult() {
-        GameResult gameResult = new GameResult(1);
-        PhaseResult phaseResult = new PhaseResult(Arrays.asList(1, 0, 1));
-
-        int actualResult = gameResult.addPhaseResult(phaseResult);
-        assertThat(actualResult).isEqualTo(1);
-    }
-
     @DisplayName("시도 번호에 맞는 PhaseResult를 반환받는다.")
     @Test
     void findByPhaseNumber() {
