@@ -1,5 +1,7 @@
 package step3.racingcar;
 
+import jdk.internal.util.xml.impl.Input;
+
 import java.util.Map;
 
 public class RacingGame {
@@ -7,20 +9,21 @@ public class RacingGame {
     private int[] carPositions;
 
     public int getGameTryCounts() {
-        return gameTryCounts;
+        return this.gameTryCounts;
     }
 
     public int[] getCarPositions() {
-        return carPositions;
+        return this.carPositions;
     }
 
     public void startGame() {
-        Map<String, Integer> userInputMap = InputViewProcessor.getUserInputMap();
-        saveUserInput(userInputMap);
+        setGameInformation();
     }
 
-    public void saveUserInput(Map<String, Integer> userInputMap) {
-        this.gameTryCounts = userInputMap.get("gameTryCounts");
-        this.carPositions = new int[userInputMap.get("numberOfCars")];
+    public void setGameInformation() {
+        Map<String, Integer> userInputMap = InputViewProcessor.getUserInputMap();
+        int carCounts = userInputMap.get(UserInputMapKey.CAR_COUNTS.getKey());
+        this.gameTryCounts = userInputMap.get(UserInputMapKey.GAME_TRY_COUNTS.getKey());
+        this.carPositions = new int[carCounts];
     }
 }
