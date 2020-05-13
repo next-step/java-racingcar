@@ -1,5 +1,6 @@
 package calculator;
 
+@FunctionalInterface
 public interface Calculator {
-    float calculate(float operand1, float operand2);
+    float calculate(float beforeOperand, float nextOperand);
 }
