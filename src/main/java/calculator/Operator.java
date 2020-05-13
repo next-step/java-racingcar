@@ -1,6 +1,9 @@
 package calculator;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public enum Operator {
 
@@ -11,6 +14,15 @@ public enum Operator {
 
     private String symbol;
     private Calculator calculator;
+
+    private static final Map<String, Operator> operators;
+    static {
+        Map<String, Operator> map = new HashMap<>();
+        for(Operator op : values()) {
+            map.put(op.getSymbol(), op);
+        }
+        operators = Collections.unmodifiableMap(map);
+    }
 
     Operator(String symbol, Calculator calculator) {
         this.symbol = symbol;
@@ -26,13 +38,11 @@ public enum Operator {
     }
 
     public static Operator getOperator(String symbol) {
-        Operator[] operators = values();
-        for(Operator op : operators) {
-            if(op.getSymbol().equals(symbol)) {
-                return op;
-            }
+        Operator operator = operators.get(symbol);
+        if(operator == null) {
+            throw new IllegalArgumentException("This operation is not supported :  " + symbol);
         }
-        throw new IllegalArgumentException("This operation is not supported :  " + symbol);
+        return operator;
     }
 
     public static boolean isOperatorSymbol(String symbol) {
