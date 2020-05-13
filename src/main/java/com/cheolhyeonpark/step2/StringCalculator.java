@@ -79,9 +79,7 @@ public class StringCalculator {
     private int getAnswer(List<Integer> numbers, List<String> operators) {
         int result = numbers.get(0);
         for (int i = 0; i < operators.size(); i++) {
-            int a = result;
-            int b = numbers.get(i + 1);
-            result = operate(operators.get(i), a, b);
+            result = operate(operators.get(i), result, numbers.get(i + 1));
         }
         return result;
     }
