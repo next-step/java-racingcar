@@ -1,22 +1,25 @@
 package calculator;
 
+import java.util.Objects;
+
 public class StringCalculator {
 
     public static int calculate(String input) {
-        nullCheck(input);
+        checkNull(input);
 
         String[] splitInput = input.split(" ");
-        int sum = Integer.parseInt(splitInput[0]);
+        int result = Integer.parseInt(splitInput[0]);
 
         for (int i = 1; i < splitInput.length; i += 2) {
-            sum = operate(splitInput[i], sum, Integer.parseInt(splitInput[i+1]));
+            result = operate(splitInput[i], result, Integer.parseInt(splitInput[i+1]));
         }
 
-        return sum;
+        return result;
     }
 
-    private static void nullCheck(String input) {
-        if (input == null) {
+    private static void checkNull(String input) {
+        boolean check = Objects.isNull(input);
+        if (check) {
             throw new IllegalArgumentException("입력 값이 공백입니다.");
         }
     }
