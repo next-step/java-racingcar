@@ -19,22 +19,6 @@ public class CalculatorTest {
     }
 
     @Test
-    public void operatorTest() {
-        int num1 = 6;
-        int num2 = 3;
-
-        int plusResult = Operator.PLUS.operate(num1, num2);
-        int minusResult = Operator.MINUS.operate(num1, num2);
-        int multipleResult = Operator.MULTIPLE.operate(num1, num2);
-        int divideResult = Operator.DIVIDE.operate(num1, num2);
-
-        assertThat(plusResult).isEqualTo(9);
-        assertThat(minusResult).isEqualTo(3);
-        assertThat(multipleResult).isEqualTo(18);
-        assertThat(divideResult).isEqualTo(2);
-    }
-
-    @Test
     public void plusTest(){
 
         // given
