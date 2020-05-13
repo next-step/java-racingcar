@@ -1,23 +1,31 @@
 package step2;
 
+import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public enum Operation {
 
-    PLUS("+",(firstNumber, secondNumber) -> firstNumber + secondNumber),
-    MINUS("-",(firstNumber, secondNumber) -> firstNumber - secondNumber),
-    MULTIPLY("*",(firstNumber, secondNumber) -> firstNumber * secondNumber),
-    DIVIDE("/",(firstNumber, secondNumber) -> firstNumber / secondNumber);
+    PLUS(Symbol.PLUS,(firstNumber, secondNumber) -> firstNumber + secondNumber),
+    MINUS(Symbol.MINUS,(firstNumber, secondNumber) -> firstNumber - secondNumber),
+    MULTIPLY(Symbol.MULTIPLY,(firstNumber, secondNumber) -> firstNumber * secondNumber),
+    DIVIDE(Symbol.DIVIDE,(firstNumber, secondNumber) -> firstNumber / secondNumber);
 
-    private String symbol;
-    private BiFunction<Double, Double, Double> biFunction;
+    private Symbol symbol;
+    private BiFunction<Double, Double, Double> calculation;
 
-    Operation(String symbol, BiFunction<Double, Double, Double> biFunction) {
+    Operation(Symbol symbol, BiFunction<Double, Double, Double> calculation) {
         this.symbol = symbol;
-        this.biFunction = biFunction;
+        this.calculation = calculation;
+    }
+
+    public static Operation getOperation(String symbol) {
+        return Arrays.stream(values())
+                .filter(operation -> operation.symbol.isEqualTo(symbol))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
     }
 
     public Double calculate(Double firstNumber, Double secondNumber) {
-        return biFunction.apply(firstNumber, secondNumber);
+        return calculation.apply(firstNumber, secondNumber);
     }
 }
