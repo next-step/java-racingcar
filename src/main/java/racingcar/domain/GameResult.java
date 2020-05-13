@@ -12,6 +12,10 @@ public class GameResult {
         phaseResults = new ArrayList<>();
     }
 
+    public int getNumberOfPhase() {
+        return numberOfPhase;
+    }
+
     public int addPhaseResult(PhaseResult phaseResult) {
         this.phaseResults.add(phaseResult);
         return this.phaseResults.size();
