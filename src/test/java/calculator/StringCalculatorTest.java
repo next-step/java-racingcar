@@ -12,7 +12,8 @@ public class StringCalculatorTest {
     @Test
     void inputNullTest() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            new StringCalculator(null);
+            StringCalculator calculator = new StringCalculator();
+            calculator.setInput(null);
         });
     }
 
@@ -20,14 +21,22 @@ public class StringCalculatorTest {
     @Test
     void inputEmptyTest() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            new StringCalculator("");
+            StringCalculator calculator = new StringCalculator();
+            calculator.setInput("");
         });
     }
 
     @DisplayName("4칙 연산 테스트")
     @ParameterizedTest
-    @CsvSource(value = { "2 + 3 * 4 / 2:10", "10 / 2 - 5:0", "10 * 2 - 3:17", "5 + 5 / 2 * 1:5" }, delimiter = ':')
+    @CsvSource(value = {
+            "2 + 3 * 4 / 2:10",
+            "10 / 2 - 5:0",
+            "10 * 2 - 3:17",
+            "5 + 5 / 2 * 1:5" },
+            delimiter = ':')
     void arithmeticTest(String testString, double result) {
-        assertThat(new StringCalculator(testString).calculate()).isEqualTo(result);
+        StringCalculator calculator = new StringCalculator();
+        calculator.setInput(testString);
+        assertThat(calculator.calculate()).isEqualTo(result);
     }
 }
