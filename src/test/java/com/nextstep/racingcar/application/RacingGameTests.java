@@ -42,4 +42,16 @@ class RacingGameTests {
         RacingGame racingGame = new RacingGame(driverNames, round);
         assertThat(racingGame).isNotNull();
     }
+
+    @DisplayName("주어진 회수만큼 라운드를 진행하고 라운드 리스트를 반환하는지 확인")
+    @Test
+    void runByCarWithDriverNameTest() {
+        // TODO: Cars 일급 컬렉션 구현 후 재구현
+//        List<String> driverNames = Arrays.asList("poppo", "saul", "ita");
+//        int round = 5;
+//        RacingGame racingGame = new RacingGame(driverNames, round);
+//        racingGame.runByCarWithDriver(new CarFactory(), new ForceMoveStrategy());
+//
+//        assertThat(racingGame.getRounds().size).isEqualTo(5);
+    }
 }

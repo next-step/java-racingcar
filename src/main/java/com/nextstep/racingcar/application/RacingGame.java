@@ -39,6 +39,9 @@ public class RacingGame {
         });
     }
 
+    public void runByCarWithDriver(CarFactory carFactory, MoveStrategy moveStrategy) {
+    }
+
     public List<String> getResults() {
         return this.results;
     }
