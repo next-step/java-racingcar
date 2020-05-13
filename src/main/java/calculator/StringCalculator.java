@@ -31,15 +31,24 @@ public class StringCalculator {
     static double run(String input) {
         validateIsNull(input);
 
-        String[] s = input.split(" ");
-        double first = Double.parseDouble(s[0]);
+        String[] splitFormula = input.split(" ");
+        validateLength(splitFormula.length);
+
+        double first = Double.parseDouble(splitFormula[0]);
         double sum = first;
-        for (int i = 1; i < s.length; i += 2) {
-            validateCalc(s[i]);
-            int second = Integer.parseInt(s[i+1]);
-            sum = operate(first,second,s[i]);
+        for (int i = 1; i < splitFormula.length; i += 2) {
+            validateCalc(splitFormula[i]);
+
+            double second = Double.parseDouble(splitFormula[i+1]);
+            sum = operate(first,second,splitFormula[i]);
             first = sum;
         }
         return sum;
+    }
+
+    static void validateLength(int length) {
+        if(length % 2 == 0) {
+            throw new ArrayIndexOutOfBoundsException("계산을 할 수가 없습니다.");
+        }
     }
 }

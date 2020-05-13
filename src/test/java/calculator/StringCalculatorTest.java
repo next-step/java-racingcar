@@ -6,8 +6,7 @@ import org.junit.jupiter.params.provider.*;
 
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 class StringCalculatorTest {
 
@@ -32,11 +31,28 @@ class StringCalculatorTest {
         assertThat(result).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @MethodSource("provideExceptionFormula")
+    @DisplayName("식이 연산으로 끝날 경우")
+    void runException(String input) {
+        assertThatExceptionOfType(ArrayIndexOutOfBoundsException.class).isThrownBy(() -> {
+            StringCalculator.run(input);
+        }).withMessageMatching("계산을 할 수가 없습니다.");
+    }
+
     private static Stream<Arguments> provideFormula() {
         return Stream.of(
                 Arguments.of("2 + 3 * 4 / 2", 10),
                 Arguments.of("6 + 3 * 4 / 3", 12),
                 Arguments.of("1 + 1 * 4 / 8", 1)
+        );
+    }
+
+    private static Stream<Arguments> provideExceptionFormula() {
+        return Stream.of(
+                Arguments.of("2 + 3 * "),
+                Arguments.of("7 /"),
+                Arguments.of("3 * 2 -")
         );
     }
 }
