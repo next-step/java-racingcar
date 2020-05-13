@@ -10,14 +10,14 @@ import racingcar.view.OutputView;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
-        String numberOfCar = InputView.inputNumberOfCar();
-        String numberOfPhase = InputView.inputNumberOfPhase();
+        int numberOfCar = InputView.inputNumberOfCar();
+        int numberOfPhase = InputView.inputNumberOfPhase();
 
         InputValueDto inputValueDto = new InputValueDto(numberOfCar, numberOfPhase);
 
-        GameInfo gameInfo = new GameInfo(inputValueDto.getNumberOfCar(), inputValueDto.getNumberOfPhase());
+//        GameInfo gameInfo = new GameInfo(inputValueDto.getNumberOfCar(), inputValueDto.getNumberOfPhase());
 
-        RacingGame racingGame = new RacingGame(gameInfo);
+        RacingGame racingGame = new RacingGame(inputValueDto);
 
         GameResult gameResult = racingGame.startGame(new RandomNumberGenerator());
 

@@ -2,20 +2,20 @@ package racingcar.domain;
 
 import racingcar.domain.car.NumberGenerator;
 import racingcar.domain.car.ParticipateCars;
+import racingcar.dto.InputValueDto;
 
 import java.util.List;
 
 public class RacingGame {
-    private GameInfo gameInfo;
+    private int numberOfPhase;
     private ParticipateCars participateCars;
 
-    public RacingGame(GameInfo gameInfo) {
-        this.gameInfo = gameInfo;
-        this.participateCars = new ParticipateCars(gameInfo.getNumberOfCar());
+    public RacingGame(InputValueDto inputValueDto) {
+        this.numberOfPhase = inputValueDto.getNumberOfPhase();
+        this.participateCars = new ParticipateCars(inputValueDto.getNumberOfCar());
     }
 
     public GameResult startGame(NumberGenerator numberGenerator) {
-        int numberOfPhase = gameInfo.getNumberOfPhase();
         GameResult gameResult = new GameResult(numberOfPhase);
 
         for (int i = 0; i < numberOfPhase; i++) {

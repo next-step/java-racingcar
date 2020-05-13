@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import java.util.Objects;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputView {
@@ -9,27 +9,23 @@ public class InputView {
     private InputView() {
     }
 
-    public static String inputNumberOfCar() {
+    public static int inputNumberOfCar() {
         System.out.println("자동차 대수는 몇 대 인가요?");
-        String numberOfCar = SCANNER.nextLine();
 
-        validateNullOrEmpty(numberOfCar);
-
-        return numberOfCar;
+        try {
+            return SCANNER.nextInt();
+        } catch (InputMismatchException e) {
+            throw new IllegalArgumentException("숫자를 입력해주세요.");
+        }
     }
 
-    public static String inputNumberOfPhase() {
+    public static int inputNumberOfPhase() {
         System.out.println("시도할 회수는 몇 회 인가요?");
-        String numberOfPhase = SCANNER.nextLine();
 
-        validateNullOrEmpty(numberOfPhase);
-
-        return numberOfPhase;
-    }
-
-    private static void validateNullOrEmpty(String inputString) {
-        if (Objects.isNull(inputString) || inputString.trim().isEmpty()) {
-            throw new IllegalArgumentException("입력값은 Null 또는 빈 문자열이 될 수 없습니다.");
+        try {
+            return SCANNER.nextInt();
+        } catch (InputMismatchException e) {
+            throw new IllegalArgumentException("숫자를 입력해주세요.");
         }
     }
 }

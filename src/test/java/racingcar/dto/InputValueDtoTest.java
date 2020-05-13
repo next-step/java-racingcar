@@ -11,12 +11,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class InputValueDtoTest {
 
-    @DisplayName("InputView에서 입력받은 값이 숫자가 아니면 IllegalArgumentException Throw")
+    @DisplayName("InputView에서 입력받은 값이 1보다 작으면 IllegalArgumentException Throw")
     @ParameterizedTest
-    @CsvSource({"가,1", "1,나", "가,나"})
-    void ThrowException(String numberOfCar, String numberOfPhase) {
+    @CsvSource({"-1,1", "1,-1", "-1,-1"})
+    void ThrowException(int numberOfCar, int numberOfPhase) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new InputValueDto(numberOfCar, numberOfPhase))
-                .withMessage("자동차 대수와 시도 회수는 숫자여야 합니다.");
+                .withMessageContaining("0 보다 커야합니다.");
     }
 }

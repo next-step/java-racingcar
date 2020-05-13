@@ -1,16 +1,14 @@
 package racingcar.dto;
 
 public class InputValueDto {
+    private static final int GAME_INFO_NUMBER_BOUND = 0;
     private int numberOfCar;
     private int numberOfPhase;
 
-    public InputValueDto(String numberOfCar, String numberOfPhase) {
-        try {
-            this.numberOfCar = Integer.parseInt(numberOfCar);
-            this.numberOfPhase = Integer.parseInt(numberOfPhase);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("자동차 대수와 시도 회수는 숫자여야 합니다.");
-        }
+    public InputValueDto(int numberOfCar, int numberOfPhase) {
+        validateInputValue(numberOfCar, numberOfPhase);
+        this.numberOfCar = numberOfCar;
+        this.numberOfPhase = numberOfPhase;
     }
 
     public int getNumberOfCar() {
@@ -19,5 +17,15 @@ public class InputValueDto {
 
     public int getNumberOfPhase() {
         return numberOfPhase;
+    }
+
+    private void validateInputValue(int numberOfCar, int numberOfPhase) {
+        if (numberOfCar <= GAME_INFO_NUMBER_BOUND) {
+            throw new IllegalArgumentException("참여할 자동차의 대수는 0 보다 커야합니다.");
+        }
+
+        if (numberOfPhase <= GAME_INFO_NUMBER_BOUND) {
+            throw new IllegalArgumentException("시도할 횟수는 0 보다 커야합니다.");
+        }
     }
 }
