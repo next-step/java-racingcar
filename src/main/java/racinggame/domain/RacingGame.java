@@ -1,6 +1,6 @@
 package racinggame.domain;
 
-import racinggame.vo.RacingGameInfo;
+import racinggame.dto.RacingGameInfo;
 
 import java.util.ArrayList;
 import java.util.List;

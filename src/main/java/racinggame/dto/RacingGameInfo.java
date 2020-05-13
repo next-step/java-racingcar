@@ -1,4 +1,4 @@
-package racinggame.vo;
+package racinggame.dto;
 
 public class RacingGameInfo {
     private final int numberOfCar;

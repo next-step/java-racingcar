@@ -3,9 +3,9 @@ package racinggame;
 import racinggame.domain.DefaultEngine;
 import racinggame.domain.RacingGame;
 import racinggame.domain.RacingGameSnapshot;
+import racinggame.dto.RacingGameInfo;
 import racinggame.view.InputView;
 import racinggame.view.OutputView;
-import racinggame.vo.RacingGameInfo;
 
 import java.util.List;
 
