@@ -1,7 +1,5 @@
 package step3.racingcar;
 
-
-
 import java.util.Map;
 
 public class RacingGame {

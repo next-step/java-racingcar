@@ -18,5 +18,4 @@ class InputViewProcessorTest {
                     InputViewProcessor.validateUserInput(input);
                 });
     }
-
 }
