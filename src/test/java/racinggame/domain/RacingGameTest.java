@@ -2,6 +2,7 @@ package racinggame.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racinggame.vo.RacingGameInfo;
 
 import java.util.List;
 
@@ -14,9 +15,9 @@ class RacingGameTest {
     @Test
     void racingGame() {
         //given
-        int numberOfCar = 5;
-        int numberOfAttempt = 3;
-        RacingGame racingGame = new RacingGame(numberOfCar, numberOfAttempt);
+        String numberOfCar = "5";
+        String numberOfAttempt = "3";
+        RacingGame racingGame = new RacingGame(new RacingGameInfo(numberOfCar, numberOfAttempt));
         Engine engine = () -> true;
 
         //when

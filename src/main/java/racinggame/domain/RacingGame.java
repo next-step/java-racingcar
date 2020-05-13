@@ -1,5 +1,7 @@
 package racinggame.domain;
 
+import racinggame.vo.RacingGameInfo;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,9 +9,9 @@ public class RacingGame {
     private final RacingCars racingCars;
     private final int numberOfAttempt;
 
-    public RacingGame(int numberOfCar, int numberOfAttempt) {
-        this.racingCars = new RacingCars(numberOfCar);
-        this.numberOfAttempt = numberOfAttempt;
+    public RacingGame(RacingGameInfo racingGameInfo) {
+        this.racingCars = new RacingCars(racingGameInfo.getNumberOfCar());
+        this.numberOfAttempt = racingGameInfo.getNumberOfAttempt();
     }
 
     public List<RacingGameSnapshot> raceWith(Engine engine) {
