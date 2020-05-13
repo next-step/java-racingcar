@@ -4,11 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class StringCalculatorTest {
 
@@ -16,7 +13,7 @@ public class StringCalculatorTest {
 
     @BeforeEach
     void setUp() {
-        calculator = new StringCalculator();
+        calculator = new StringCalculator(new EquationParser());
     }
 
     @DisplayName("덧셈 테스트")
@@ -59,11 +56,4 @@ public class StringCalculatorTest {
         assertThat(calculator.calculate(input)).isEqualTo(new Operand(expected));
     }
 
-    @DisplayName("입력값이 null 또는 공백일 경우 IllegalArgumentException")
-    @ParameterizedTest
-    @NullAndEmptySource
-    @ValueSource(strings = {"  "})
-    void nullOrEmptyInput_Then_IllegalArgumentException(String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> calculator.calculate(input));
-    }
 }

@@ -2,10 +2,14 @@ package study;
 
 public class StringCalculator {
 
-    public Operand calculate(String equation) {
-        validate(equation);
+    private EquationParser parser;
 
-        String[] parsed = equation.trim().split(" ");
+    public StringCalculator(EquationParser parser) {
+        this.parser = parser;
+    }
+
+    public Operand calculate(String equation) {
+        String[] parsed = parser.parse(equation);
 
         Operand result = Operand.ZERO;
         int firstOperatorIndex = 0;
@@ -33,9 +37,4 @@ public class StringCalculator {
         }
     }
 
-    private void validate(String equation) {
-        if (equation == null || equation.trim().isEmpty()) {
-            throw new IllegalArgumentException("입력값은 null이거나 빈 공백일 수 없습니다.");
-        }
-    }
 }
