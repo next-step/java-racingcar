@@ -7,7 +7,7 @@ public class StringCalculator {
   private String expression;
   private int result;
 
-  public StringCalculator expressionScan (String expression) {
+  public StringCalculator scanExpression (String expression) {
     nullValidation(expression);
     blankValidation(expression);
     this.expression = expression;

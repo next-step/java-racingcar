@@ -24,7 +24,7 @@ public class StringCalculatorTest {
     "-2 + -3 + -4 = "+(-2 + -3 + -4),
   }, delimiter = '=')
   void 덧셈_테스트 (String expression, int expected) {
-     calculator.expressionScan(expression).calculate();
+     calculator.scanExpression(expression).calculate();
      assertThat(expected).isEqualTo(calculator.getResult());
   }
 
@@ -35,7 +35,7 @@ public class StringCalculatorTest {
     "2 - -3 - -4 = " + (2 - -3 - -4),
   }, delimiter = '=')
   void 뺄셈_테스트 (String expression, int expected) {
-     calculator.expressionScan(expression).calculate();
+     calculator.scanExpression(expression).calculate();
      assertThat(expected).isEqualTo(calculator.getResult());
   }
 
@@ -46,7 +46,7 @@ public class StringCalculatorTest {
     "-2 * -3 * -4 = " + (-2 * -3 * -4),
   }, delimiter = '=')
   void 곱셈_테스트 (String expression, int expected) {
-    calculator.expressionScan(expression).calculate();
+    calculator.scanExpression(expression).calculate();
     assertThat(expected).isEqualTo(calculator.getResult());
   }
 
@@ -58,7 +58,7 @@ public class StringCalculatorTest {
     "-20 / -12 = " + (-20 / -12),
   }, delimiter = '=')
   void 나눗셈_테스트 (String expression, int expected) {
-    calculator.expressionScan(expression).calculate();
+    calculator.scanExpression(expression).calculate();
     assertThat(expected).isEqualTo(calculator.getResult());
   }
 
@@ -73,7 +73,7 @@ public class StringCalculatorTest {
     "1 = " + 1,
   }, delimiter = '=')
   void 사칙연산_테스트 (String expression, int expected) {
-    calculator.expressionScan(expression).calculate();
+    calculator.scanExpression(expression).calculate();
     assertThat(expected).isEqualTo(calculator.getResult());
   }
 
@@ -82,7 +82,7 @@ public class StringCalculatorTest {
   @ValueSource(strings = { "", "null", "    " })
   void NULL_혹은_공백_테스트 (String expression) {
     assertThatIllegalArgumentException()
-      .isThrownBy(() -> calculator.expressionScan(expression.equals("null") ? null : expression));
+      .isThrownBy(() -> calculator.scanExpression(expression.equals("null") ? null : expression));
   }
 
   @DisplayName("사칙연산을 포함한 기호가 아닐 경우")
@@ -98,6 +98,6 @@ public class StringCalculatorTest {
   })
   void 유효하지_않은_연산_테스트 (String expression) {
     assertThatIllegalArgumentException()
-      .isThrownBy(() -> calculator.expressionScan(expression).calculate());
+      .isThrownBy(() -> calculator.scanExpression(expression).calculate());
   }
 }
