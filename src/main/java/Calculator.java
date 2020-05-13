@@ -10,7 +10,7 @@ public class Calculator {
     }
 
     // 2. 숫자와 사칙연산 기호만 허용
-    private boolean numOperationsCheck(String strForCalc) {
+    private boolean allowOnlyNumOperations(String strForCalc) {
         String regx = "^[0-9\\+\\-\\*/\\s]+$";
         if (!strForCalc.trim().matches(regx)) {
             throw new IllegalArgumentException("you are allow to use only number or arithmetic operation");
@@ -35,7 +35,7 @@ public class Calculator {
 
     // 조건 체크하는 함수
     public boolean conditionCheck(String strForCalc) {
-        return isBlank(strForCalc) && numOperationsCheck(strForCalc) && isFirstEndNum(strForCalc);
+        return isBlank(strForCalc) && allowOnlyNumOperations(strForCalc) && isFirstEndNum(strForCalc);
     }
 
     // 연산
