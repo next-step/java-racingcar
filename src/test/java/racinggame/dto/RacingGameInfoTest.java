@@ -17,4 +17,13 @@ class RacingGameInfoTest {
                 .hasMessage("자동차 대수와 시도횟수는 숫자로 입력해야합니다");
     }
 
+    @DisplayName("자동차 수와 시도횟수에 0이하의 수를 입력하면 익셉션을 던진다")
+    @CsvSource({"1, -1", "-1, 1", "-1, -1", "0,0"})
+    @ParameterizedTest
+    void gameinfo(String numberOfCar, String numberOfAttempt) {
+        assertThatThrownBy(() -> new RacingGameInfo(numberOfCar, numberOfAttempt))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("0이하의 수는 입력할 수 없습니다");
+    }
+
 }
