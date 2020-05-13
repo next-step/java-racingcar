@@ -5,6 +5,8 @@ import java.util.Optional;
 
 public class StringCalculator {
 
+    private final String STRING_SPLIT_DELIMETER = " ";
+
     //주어진 문자열을 계산한다.
     public double calculate(ArithmeticExpression arithmeticExpression){
 
@@ -36,7 +38,7 @@ public class StringCalculator {
     }
 
     public String [] splitString(String arithmeticExpression) {
-        return arithmeticExpression.split(" ");
+        return arithmeticExpression.split(STRING_SPLIT_DELIMETER);
     }
 
     public void arithmeticExpressionValidation(ArithmeticExpression arithmeticExpression) {
