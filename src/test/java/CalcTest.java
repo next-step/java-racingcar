@@ -13,8 +13,8 @@ public class CalcTest {
     @DisplayName("조건에 맞는 문자열을 입력 받았을 때")
     @ParameterizedTest
     @CsvSource(value = {"1 + 2 + 3 = 6.0", "4 + 2 / 3 = 2", "2 + 3 * 4 / 2 = 10"}, delimiter = '=')
-    void testCalcRight(String v, String expected) {
-        assertEquals(calculator.calculate(v), Double.parseDouble(expected));
+    void testCalcRight(String testStr, String expected) {
+        assertEquals(calculator.calculate(testStr), Double.parseDouble(expected));
     }
 
     @DisplayName("공백인 문자열을 입력 받았을 때")

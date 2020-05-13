@@ -2,49 +2,49 @@ public class Calculator {
     private double accumulated;
 
     // 1. 공백만 들어왔는지
-    public boolean blankCheck(String testStr) {
-        if (testStr == null || testStr.trim().equals("")) {
+    public boolean isBlank(String strForCalc) {
+        if (strForCalc == null || strForCalc.trim().equals("")) {
             throw new IllegalArgumentException("this is empty string");
         }
         return true;
     }
 
     // 2. 숫자와 사칙연산 기호만 허용
-    private boolean numOperationsCheck(String testStr) {
+    private boolean numOperationsCheck(String strForCalc) {
         String regx = "^[0-9\\+\\-\\*/\\s]+$";
-        if (!testStr.trim().matches(regx)) {
+        if (!strForCalc.trim().matches(regx)) {
             throw new IllegalArgumentException("you are allow to use only number or arithmetic operation");
         }
         return true;
     }
 
     // 3. 처음과 끝이 숫자가 맞는지
-    private boolean isNumbers(String testStr) {
-        return (testStr.charAt(0) - '0' < 10 && testStr.charAt(0) - '0' >= 0);
+    private boolean isNumber(String strForCalc) {
+        return (strForCalc.charAt(0) - '0' < 10 && strForCalc.charAt(0) - '0' >= 0);
     }
 
-    private boolean startEndIsNumCheck(String testStr) {
-        String startStr = testStr.substring(0, 1);
-        String endStr = testStr.substring(testStr.length() - 1);
+    private boolean isFirstEndNum(String strForCalc) {
+        String startStr = strForCalc.substring(0, 1);
+        String endStr = strForCalc.substring(strForCalc.length() - 1);
 
-        if (!isNumbers(startStr) || !isNumbers(endStr)) {
+        if (!isNumber(startStr) || !isNumber(endStr)) {
             throw new IllegalArgumentException("start and end char must be number to calculate");
         }
         return true;
     }
 
     // 조건 체크하는 함수
-    public boolean conditionCheck(String testStr) {
-        return blankCheck(testStr) && numOperationsCheck(testStr) && startEndIsNumCheck(testStr);
+    public boolean conditionCheck(String strForCalc) {
+        return isBlank(strForCalc) && numOperationsCheck(strForCalc) && isFirstEndNum(strForCalc);
     }
 
     // 연산
-    public double calculate(String testStr) {
+    public double calculate(String strForCalc) {
         // 조건 체크
-        conditionCheck(testStr);
+        conditionCheck(strForCalc);
 
         // 쪼개고
-        String[] splitUp = testStr.split(" ");
+        String[] splitUp = strForCalc.split(" ");
         accumulated = Double.parseDouble(splitUp[0]);
 
         // 계산
