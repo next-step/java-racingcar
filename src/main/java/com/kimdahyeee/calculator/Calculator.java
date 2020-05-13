@@ -21,17 +21,18 @@ public class Calculator {
     }
 
     private int execute(String[] values) {
-        int result = 0;
-        for (int i = 0; i < values.length; i++) {
-            if (i == 0) {
-                result = Integer.parseInt(values[i]);
-                continue;
-            }
+        int index = 0;
+        int result = firstValueMustBeNumber(values[index++]);
 
+        for (int i = index; i < values.length; i++) {
             result = Operator.operation(values[i], Integer.parseInt(values[++i]), result);
         }
 
         return result;
+    }
+
+    private int firstValueMustBeNumber(String value) {
+        return Integer.parseInt(value);
     }
 
 }
