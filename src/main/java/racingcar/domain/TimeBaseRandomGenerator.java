@@ -1,7 +1,7 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Random;
-import racingcar.RandomCarMovingCondition.RandomGenerator;
+import racingcar.domain.RandomCarMovingCondition.RandomGenerator;
 
 public class TimeBaseRandomGenerator implements RandomGenerator {
 
