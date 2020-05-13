@@ -5,7 +5,7 @@ public class Car {
     private static final int DEFAULT_DISTANCE = 0;
     private int position;
 
-    public static Car of() {
+    static Car of() {
         return new Car();
     }
 
