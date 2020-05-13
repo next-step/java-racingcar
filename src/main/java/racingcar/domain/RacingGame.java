@@ -4,15 +4,16 @@ import java.util.List;
 import java.util.Random;
 
 public class RacingGame {
-    private int numberOfPhase;
+    private GameInfo gameInfo;
     private ParticipateCars participateCars;
 
-    public RacingGame(int numberOfPhase, int numberOfCar) {
-        this.numberOfPhase = numberOfPhase;
-        this.participateCars = new ParticipateCars(numberOfCar);
+    public RacingGame(GameInfo gameInfo) {
+        this.gameInfo = gameInfo;
+        this.participateCars = new ParticipateCars(gameInfo.getNumberOfCar());
     }
 
     public GameResult startGame() {
+        int numberOfPhase = gameInfo.getNumberOfPhase();
         GameResult gameResult = new GameResult(numberOfPhase);
 
         for (int i = 0; i < numberOfPhase; i++) {
