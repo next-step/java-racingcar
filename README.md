@@ -14,7 +14,7 @@
 - Random Value Maker [랜덤 값 생성 Method]
   - _Make Random Value [1~9] 랜덤 숫자 생성_
   
-- Game Class [게임 시작 클래스]
+- CarRacingGame Class [게임 시작 클래스]
   - Car Count [자동차 수]
   - Game Count [게임 횟수]
   - _Game Start_ [게임시작 Method]
