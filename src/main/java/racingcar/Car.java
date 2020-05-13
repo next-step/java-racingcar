@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.moving.MovingStrategy;
+
 public class Car {
 
     private static final int DEFAULT_DISTANCE = 0;
@@ -13,7 +15,9 @@ public class Car {
         this.position = DEFAULT_DISTANCE;
     }
 
-    void move() {
-        this.position++;
+    void move(final MovingStrategy movingStrategy) {
+        if (movingStrategy.move()) {
+            position++;
+        }
     }
 }
