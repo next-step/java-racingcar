@@ -15,7 +15,7 @@ class StringCalculatorTest {
     @NullAndEmptySource
     @DisplayName("입력 값이 null이거나 빈 공백 문자일 경우")
     void validateIsNull(String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> StringCalculator.run(input));
+        assertThatIllegalArgumentException().isThrownBy(() -> StringCalculator.validateIsNull(input));
     }
 
     @ParameterizedTest
@@ -28,15 +28,15 @@ class StringCalculatorTest {
     @ParameterizedTest
     @CsvSource(value={"2 + 3,5","5 * 4,20","20 / 2,10"})
     @DisplayName("사칙연산 동작 확인")
-    void calc(String input, int expected) {
-        int result = StringCalculator.run(input);
-        assertEquals(expected,result);
+    void calc(String input, double expected) {
+        double result = StringCalculator.run(input);
+        assertEquals(expected, result);
     }
 
     @ParameterizedTest
-    @CsvSource(value={"2 + 3 * 4 / 2,10"})
-    void run(String input,int expected) {
-        int result = StringCalculator.run(input);
-        assertEquals(expected,result);
+    @CsvSource(value = {"2 + 3 * 4 / 2,10"})
+    void run(String input, double expected) {
+        double result = StringCalculator.run(input);
+        assertEquals(expected, result);
     }
 }

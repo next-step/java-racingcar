@@ -13,27 +13,27 @@ public class StringCalculator {
         }
     }
 
-    static int operate(int a,int b,String calc) {
+    static double operate(double a, double b, String calc) {
         switch (calc) {
             case "+":
-                return Calculator.add(a,b);
+                return Calculator.add(a, b);
             case "-":
-                return Calculator.sub(a,b);
+                return Calculator.sub(a, b);
             case "*":
-                return Calculator.mul(a,b);
+                return Calculator.mul(a, b);
             case "/":
-                return Calculator.div(a,b);
+                return Calculator.div(a, b);
             default:
                 return a;
         }
     }
 
-    static int run(String input) {
+    static double run(String input) {
         validateIsNull(input);
 
         String[] s = input.split(" ");
-        int first = Integer.parseInt(s[0]);
-        int sum = first;
+        double first = Double.parseDouble(s[0]);
+        double sum = first;
         for (int i = 1; i < s.length; i += 2) {
             validateCalc(s[i]);
             int second = Integer.parseInt(s[i+1]);
