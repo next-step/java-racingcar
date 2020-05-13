@@ -1,8 +1,10 @@
 package calculator.constants;
 
-import java.util.Arrays;
+import java.util.Collections;
+import java.util.Map;
 import java.util.function.DoubleBinaryOperator;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public enum Operator {
     MULTIPLY("*", ((left, right) -> left * right)),
@@ -12,6 +14,15 @@ public enum Operator {
 
     private String symbol;
     private DoubleBinaryOperator doubleBinaryOperator;
+
+    private static final Map<String, Operator> operatorCash;
+
+    static {
+        Map<String, Operator> map = Stream.of(Operator.values())
+                .collect(Collectors.toMap(Operator::getSymbol, operator -> operator));
+
+        operatorCash = Collections.unmodifiableMap(map);
+    }
 
     Operator(String symbol, DoubleBinaryOperator doubleBinaryOperator) {
         this.symbol = symbol;
@@ -44,10 +55,7 @@ public enum Operator {
     }
 
     public static boolean isContains(String symbol) {
-        return Arrays.stream(Operator.values())
-                .map(Operator::getSymbol)
-                .collect(Collectors.toList())
-                .contains(symbol);
+        return operatorCash.containsKey(symbol);
     }
 
     public double apply(double firstValue, double secondValue) {
