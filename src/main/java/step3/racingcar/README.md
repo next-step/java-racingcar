@@ -6,10 +6,10 @@
     * 안내를 통해 사용자의 입력값을 저장하는 UI 기능.
     * 입력값이 잘못된 경우 예외 처리를 해주는 기능.
 * RacingGame
-    * 입력값(자동차 대수 등)을 토대로 게임을 실행시키는 기능.
+    * 입력값(자동차 대수 등)을 토대로 인스턴스 변수 초기화
+        * gameTryCounts 및 RacingCar 객체 리스트
     * 난수 생성을 통해 car들의 position을 변경시키는 기능.
-    * 입력값(시도할 회수) 갱신 및 입력값(차량 대수)만큼 RacingCar 객체 리스트 생성
 * RacingCar
-
+    * 자동차의 position을 이동시키는 기능.
 * ResultViewProcessor
     * car position을 바탕으로 게임 실행 결과를 출력시키는 기능.
