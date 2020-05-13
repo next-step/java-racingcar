@@ -2,8 +2,8 @@ package racing;
 
 import racing.domain.RacingGame;
 import racing.domain.RandomMovement;
-import racing.dto.RacingCreateDto;
-import racing.dto.RacingResultDto;
+import racing.dto.RacingCreateValueObject;
+import racing.dto.RacingGameResult;
 import racing.view.InputView;
 import racing.view.OutputView;
 
@@ -13,17 +13,18 @@ public class RacingGameApplication {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        RacingCreateDto racingCreateDto = inputView.input();
+        RacingCreateValueObject racingCreateValueObject = inputView.createByUserInput();
 
-        RacingGame racingGame = new RacingGame(racingCreateDto, new RandomMovement(new Random()));
+        RacingGame racingGame = new RacingGame(racingCreateValueObject, new RandomMovement(new Random()));
 
         OutputView outPutView = new OutputView();
+        outPutView.printGuidance();
 
-        RacingResultDto racingResultDto;
-        for (int i = 0; i < racingCreateDto.totalRacingCount(); i++) {
+        RacingGameResult racingGameResult;
+        for (int i = 0; i < racingCreateValueObject.totalRacingCount(); i++) {
             racingGame.executeRacing();
-            racingResultDto = new RacingResultDto(racingGame);
-            outPutView.printRacingResult(racingResultDto);
+            racingGameResult = new RacingGameResult(racingGame);
+            outPutView.printRacingResult(racingGameResult);
         }
     }
 }

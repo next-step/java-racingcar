@@ -1,6 +1,6 @@
 package racing.view;
 
-import racing.dto.RacingCreateDto;
+import racing.dto.RacingCreateValueObject;
 
 import java.util.Scanner;
 
@@ -10,10 +10,10 @@ public class InputView {
     private int carCount;
     private int totalRacingCount;
 
-    public RacingCreateDto input() {
+    public RacingCreateValueObject createByUserInput() {
         this.inputCarCount();
         this.inputTotalRacingCount();
-        return new RacingCreateDto(this.totalRacingCount, this.carCount);
+        return new RacingCreateValueObject(this.totalRacingCount, this.carCount);
     }
 
     private void inputCarCount() {

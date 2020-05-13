@@ -1,7 +1,6 @@
 package racing.domain;
 
-import racing.dto.RacingCreateDto;
-import racing.dto.RacingResultDto;
+import racing.dto.RacingCreateValueObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,14 +15,14 @@ public class RacingGame {
     private List<Car> cars = new ArrayList<>();
     private CarMovement carMovement;
 
-    public RacingGame(RacingCreateDto racingCreateDto, CarMovement carMovement) {
-        this.validateRacingTotalRound(racingCreateDto.totalRacingCount());
-        this.validateCarCount(racingCreateDto.carCount());
+    public RacingGame(RacingCreateValueObject racingCreateValueObject, CarMovement carMovement) {
+        this.validateRacingTotalRound(racingCreateValueObject.totalRacingCount());
+        this.validateCarCount(racingCreateValueObject.carCount());
         this.validateCarMovement(carMovement);
 
         this.carMovement = carMovement;
-        this.racingTotalRound = racingCreateDto.totalRacingCount();
-        for (int i = 0; i < racingCreateDto.carCount(); i++) {
+        this.racingTotalRound = racingCreateValueObject.totalRacingCount();
+        for (int i = 0; i < racingCreateValueObject.carCount(); i++) {
             this.cars.add(new Car());
         }
     }

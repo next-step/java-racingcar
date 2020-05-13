@@ -1,10 +1,10 @@
 package racing.dto;
 
-public class RacingCreateDto {
+public class RacingCreateValueObject {
     private int totalRacingCount;
     private int carCount;
 
-    public RacingCreateDto(int totalRacingCount, int carCount) {
+    public RacingCreateValueObject(int totalRacingCount, int carCount) {
         this.totalRacingCount = totalRacingCount;
         this.carCount = carCount;
     }
