@@ -15,8 +15,9 @@ public class ExpressionParser {
     }
 
     private List<Integer> getNumbers(String input) {
-        String[] numberStrings = getNumberStrings(getExpression(input));
-        return Arrays.stream(numberStrings).map(this::getNumber).collect(Collectors.toList());
+        return Arrays.stream(getNumberStrings(getExpression(input)))
+                .map(this::getNumber)
+                .collect(Collectors.toList());
     }
 
     private String[] getNumberStrings(String expression) {
