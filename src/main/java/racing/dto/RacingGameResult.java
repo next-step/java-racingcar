@@ -7,12 +7,21 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGameResult {
+    private static final int MIN_CAR_COUNT = 1;
+
     private List<Car> cars;
     private int maxPosition;
 
     public RacingGameResult(List<Car> cars) {
+        this.validateCars(cars);
         this.cars = cars;
         this.calculateMaxPosition();
+    }
+
+    private void validateCars(List<Car> cars) {
+        if (cars == null || cars.size() < MIN_CAR_COUNT) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void calculateMaxPosition() {
