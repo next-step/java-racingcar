@@ -25,11 +25,12 @@ public class RacingGameTest {
 
     @DisplayName("조건에 맞으면 RacingCar 객체가 움직이는 테스트")
     @ParameterizedTest
-    @ValueSource(ints = {4, 9, 5, 6})
+    @ValueSource(ints = {7, 9, 5, 6})
     public void moveRacingCarObjectWhenInputIsOver4(int randomNumber) {
         RacingGame racingGame = new RacingGame();
         racingGame.setRacingCarList(1);
-        assertThat(racingGame.move(randomNumber))
-                .isTrue(racingGame.getRacingCarList().get(0).getPosition() == 2);
+        racingGame.move(randomNumber);
+        assertThat(racingGame.getRacingCarList().get(0).getPosition())
+                .isEqualTo(2);
     }
 }

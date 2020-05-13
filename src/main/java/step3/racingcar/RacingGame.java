@@ -33,4 +33,9 @@ public class RacingGame {
             this.racingCarList.add(racingCar);
         }
     }
+
+    public void move(int randomNumber) {
+        if (randomNumber > 4)
+            this.getRacingCarList().get(0).movePosition();
+    }
 }
