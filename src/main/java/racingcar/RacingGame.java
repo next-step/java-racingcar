@@ -6,7 +6,7 @@ import racingcar.view.ResultView;
 
 import java.util.List;
 
-public class RacingCarApplication {
+public class RacingGame {
 
     private static final String NUM_OF_CAR_MESSAGE = "자동차 대수는 몇 대 인가요?";
     private static final String LOOP_COUNT = "시도할 횟수는 몇 회 인가요?";
