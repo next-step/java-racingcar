@@ -22,6 +22,9 @@
 **레이싱게임**
 - 참가 자동차들이 경기를 하도록 한다.
 
+#### 경주자동차그룹 
+- 자동차들에게 경주를 명령한다.(o)
+
 **자동차**
 - 자동차는 Engine Output에 따라 움직이거나 움직이지 않는다. (o)
 - 랜덤값이 4 이상이면 움직이고, 그렇지 않으면 멈춘다 --> Engine 으로 위임 (o)
@@ -30,4 +33,24 @@
 - 랜덤값을 0에서 9사이로 반환한다 (o)
 -> 랜덤값을 0 이상 매개변수 사이로 반환한다.
 -> 고민) Random 클래스 자체적으로 0이하가 들어올 때 RuntimeException. RandomUtil에서 처리를 해줘야할까?
+
+
+## 질문사항 
  
+테스트의 범위 -> RacingCars 테스트 
+Q. 경기 후 반환되는 스냅샷이 제대로 저장되어있는지까지 확인하면 
+```java
+assertAll(
+                () -> assertThat(snapshot.getCarSnapShots().get(0)).isEqualToComparingFieldByField(new CarSnapShot(1)),
+                () -> assertThat(snapshot.getCarSnapShots().get(1)).isEqualToComparingFieldByField(new CarSnapShot(0)),
+                () -> assertThat(snapshot.getCarSnapShots().get(2)).isEqualToComparingFieldByField(new CarSnapShot(1))
+);
+```
+
+
+위와같이 매우 더러워짐.
+
+RacingCars는 경기 후 RacingGameShot을 반환하는 책임이 있는데, 그럼 테스트의 범위는? 
+일단 현 시점에서 모든 자동차들의 기록을 반환한다는 의미로 사이즈체크만 ,, 
+제대로 저장하는지는 RacingGameSnapshot 테스트에서만 해도 되는건가 ,, --> RacingGameSnapshot은 단순 List만물고 검증로직도 없는 일급컬렉션이라
+테스트를 해도 List 테스트에 불과한 것 같다. 그럼 그냥 믿고써야하는건가, 명시적으로 해야하는건가 .. 
