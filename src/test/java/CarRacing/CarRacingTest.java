@@ -16,4 +16,14 @@ public class CarRacingTest {
        assertThat(RandomValue.getRandomValue()).isBetween(0,9);
     }
 
+    @Test
+    @DisplayName("CarRacing Test")
+    public void carRacingTest() {
+        int carCount = 2;
+        int gameCount = 2;
+        CarRacingOption carRacingOption = new CarRacingOption(carCount, gameCount);
+        CarRacingGame carRacingGame = new CarRacingGame(carRacingOption);
+        carRacingGame.gameInit();
+        carRacingGame.gameStart();
+    }
 }
