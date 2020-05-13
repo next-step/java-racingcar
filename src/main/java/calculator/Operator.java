@@ -2,8 +2,9 @@ package calculator;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public enum Operator {
 
@@ -15,14 +16,10 @@ public enum Operator {
     private String symbol;
     private Calculator calculator;
 
-    private static final Map<String, Operator> operators;
-    static {
-        Map<String, Operator> map = new HashMap<>();
-        for(Operator op : values()) {
-            map.put(op.getSymbol(), op);
-        }
-        operators = Collections.unmodifiableMap(map);
-    }
+    private static final Map<String, Operator> operators =
+        Collections.unmodifiableMap(
+            Arrays.stream(values()).collect(Collectors.toMap(Operator::getSymbol, Function.identity()))
+        );
 
     Operator(String symbol, Calculator calculator) {
         this.symbol = symbol;
