@@ -19,9 +19,17 @@ public class RacingGameTest {
     @ValueSource(ints = {5, 10, 3})
     public void makeRacingCarObjectInAccordanceWithInput(int carCounts) {
         RacingGame racingGame = new RacingGame();
-        racingGame.makeRacingCars();
-        assertThat(racingGame.getRacingCars().size()).isEqualTo(carCounts);
+        racingGame.setRacingCarList(carCounts);;
+        assertThat(racingGame.getRacingCarList().size()).isEqualTo(carCounts);
     }
 
-
+    @DisplayName("조건에 맞으면 RacingCar 객체가 움직이는 테스트")
+    @ParameterizedTest
+    @ValueSource(ints = {4, 9, 5, 6})
+    public void moveRacingCarObjectWhenInputIsOver4(int randomNumber) {
+        RacingGame racingGame = new RacingGame();
+        racingGame.setRacingCarList(1);
+        assertThat(racingGame.move(randomNumber))
+                .isTrue(racingGame.getRacingCarList().get(0).getPosition() == 2);
+    }
 }
