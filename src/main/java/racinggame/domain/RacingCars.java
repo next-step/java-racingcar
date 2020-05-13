@@ -14,8 +14,8 @@ public class RacingCars {
         RacingGameSnapshot snapshot = new RacingGameSnapshot();
 
         for (Car racingCar : cars) {
-            int currentPosition = racingCar.move(engine);
-            snapshot.record(new CarSnapshot(currentPosition));
+            CarSnapshot currentSnapshot = racingCar.move(engine);
+            snapshot.record(currentSnapshot);
         }
 
         return snapshot;

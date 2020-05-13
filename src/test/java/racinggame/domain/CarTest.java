@@ -8,19 +8,19 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 class CarTest {
 
-    @DisplayName("자동차는 Engine이 움직일 수 있으면 움직이고 그렇지 않으면 움직이지 않는다")
+    @DisplayName("자동차는 Engine이 true이면 이동하고, 그렇지 않으면 이동하지 않는다")
     @CsvSource({"true,1", "false,0"})
     @ParameterizedTest
-    void moveCar(boolean engineOutput, int distance) {
+    void moveCar(boolean engineOutput, int expected) {
         //given
         Car car = new Car();
         Engine engine = () -> engineOutput;
 
         //when
-        int location = car.move(engine);
+        CarSnapshot snapshot = car.move(engine);
 
         //then
-        assertThat(location).isEqualTo(distance);
+        assertThat(snapshot).isEqualToComparingFieldByField(new CarSnapshot(expected));
     }
 
 }
