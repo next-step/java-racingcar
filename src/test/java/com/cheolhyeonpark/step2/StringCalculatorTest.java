@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 class StringCalculatorTest {
 
-    private StringCalculator stringCalculator = new StringCalculator();
+    private StringCalculator stringCalculator = new StringCalculator(new ExpressionParser());
 
     @ParameterizedTest
     @DisplayName("문자열로 이루어진 수식이 입력되면 정수 해답을 출력")
@@ -41,36 +41,6 @@ class StringCalculatorTest {
     public void throwIllegalArgumentExceptionWhenInputIsBlank() {
         // given
         String expression = " ";
-
-        //when, then
-        assertThatIllegalArgumentException().isThrownBy(() -> stringCalculator.calculate(expression));
-    }
-
-    @Test
-    @DisplayName("0으로 나누면 예외를 출력")
-    public void throwIllegalArgumentExceptionWhenDividedByZero() {
-        // given
-        String expression = "1/0";
-
-        //when, then
-        assertThatIllegalArgumentException().isThrownBy(() -> stringCalculator.calculate(expression));
-    }
-
-    @Test
-    @DisplayName("사칙연산 연산자가 아니면 예외를 출력")
-    public void throwIllegalArgumentExceptionWhenUsedWrongOperator() {
-        // given
-        String expression = "5^5";
-
-        //when, then
-        assertThatIllegalArgumentException().isThrownBy(() -> stringCalculator.calculate(expression));
-    }
-
-    @Test
-    @DisplayName("숫자가 아니면 예외를 출력")
-    public void throwIllegalArgumentExceptionWhenUsedNotNumber() {
-        // given
-        String expression = "a*b";
 
         //when, then
         assertThatIllegalArgumentException().isThrownBy(() -> stringCalculator.calculate(expression));
