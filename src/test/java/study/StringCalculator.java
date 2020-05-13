@@ -2,21 +2,21 @@ package study;
 
 public class StringCalculator {
 
-    public double calculate(String equation) {
+    public Operand calculate(String equation) {
         validate(equation);
 
         String[] parsed = equation.trim().split(" ");
 
-        double result = 0;
+        Operand result = Operand.ZERO;
         int firstOperatorIndex = 0;
 
         if (isNumeric(parsed[0])) {
-            result = Double.parseDouble(parsed[0]);
+            result = new Operand(parsed[0]);
             firstOperatorIndex = 1;
         }
 
         for (int i = firstOperatorIndex; i < parsed.length; i += 2) {
-            double operand = Double.parseDouble(parsed[i + 1]);
+            Operand operand = new Operand(parsed[i + 1]);
             Operator operator = Operator.findBySymbol(parsed[i]);
             result = operator.calculate(result, operand);
         }

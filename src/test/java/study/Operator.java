@@ -6,26 +6,26 @@ public enum Operator {
 
     PLUS("+") {
         @Override
-        double calculate(double operand1, double operand2) {
-            return operand1 + operand2;
+        Operand calculate(Operand operand1, Operand operand2) {
+            return new Operand(operand1.getValue() + operand2.getValue());
         }
     },
     MINUS("-") {
         @Override
-        double calculate(double operand1, double operand2) {
-            return operand1 - operand2;
+        Operand calculate(Operand operand1, Operand operand2) {
+            return new Operand(operand1.getValue() - operand2.getValue());
         }
     },
     MULTIPLY("*") {
         @Override
-        double calculate(double operand1, double operand2) {
-            return operand1 * operand2;
+        Operand calculate(Operand operand1, Operand operand2) {
+            return new Operand(operand1.getValue() * operand2.getValue());
         }
     },
     DIVIDE("/") {
         @Override
-        double calculate(double operand1, double operand2) {
-            return operand1 / operand2;
+        Operand calculate(Operand operand1, Operand operand2) {
+            return new Operand(operand1.getValue() / operand2.getValue());
         }
     };
 
@@ -42,5 +42,5 @@ public enum Operator {
                 .orElseThrow(() -> new IllegalArgumentException("사칙연산 기호가 아닙니다 : " + symbol));
     }
 
-    abstract double calculate(double operand1, double operand2);
+    abstract Operand calculate(Operand operand1, Operand operand2);
 }
