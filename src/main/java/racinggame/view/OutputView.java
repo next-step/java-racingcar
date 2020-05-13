@@ -8,20 +8,20 @@ import java.util.List;
 public class OutputView {
     private static final String TRACK_SIGNATURE = "-";
 
-    public static void announceResult(List<RacingGameSnapshot> racingGameSnapshots) {
+    public static void printTrackOf(List<RacingGameSnapshot> racingGameSnapshots) {
         for (RacingGameSnapshot snapshot : racingGameSnapshots) {
-            announceResult(snapshot);
+            printTrackOf(snapshot);
             System.out.println();
         }
     }
 
-    private static void announceResult(RacingGameSnapshot snapshot) {
+    private static void printTrackOf(RacingGameSnapshot snapshot) {
         for (CarSnapShot carSnapshot : snapshot.getCarSnapShots()) {
-            System.out.println(announceResult(carSnapshot));
+            System.out.println(printTrackOf(carSnapshot));
         }
     }
 
-    private static String announceResult(CarSnapShot carSnapshot) {
+    private static String printTrackOf(CarSnapShot carSnapshot) {
         StringBuilder track = new StringBuilder();
 
         for (int i = 0; i < carSnapshot.getLocation(); i++) {

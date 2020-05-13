@@ -20,6 +20,6 @@ public class RacingGameApplication {
 
         List<RacingGameSnapshot> racingGameSnapshots = racingGame.raceWith(new DefaultEngine());
 
-        OutputView.announceResult(racingGameSnapshots);
+        OutputView.printTrackOf(racingGameSnapshots);
     }
 }
