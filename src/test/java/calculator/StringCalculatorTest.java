@@ -1,6 +1,5 @@
 package calculator;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -11,18 +10,11 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 
 class StringCalculatorTest {
 
-    private StringCalculator stringCalculator;
-
-    @BeforeEach
-    void setUp() {
-        stringCalculator = new StringCalculator();
-    }
-
     @DisplayName("정상적인 입력으로 계산이 되는지 확인하는 테스트")
     @ParameterizedTest
     @CsvSource(value = {"1 + 2 + 3:6" , "1 + 2 / 3:1", "3 - 4:-1"}, delimiter = ':')
     void calculate(String formula, float calculatedValue) {
-        Float result = stringCalculator.calculate(formula);
+        Float result = new StringCalculator(formula).calculate();
 
         assertThat(result).isEqualTo(calculatedValue);
     }
@@ -32,7 +24,7 @@ class StringCalculatorTest {
     @NullAndEmptySource
     void calculateNullAndEmptyTest(String formula) {
         Throwable throwable = catchThrowable(() -> {
-            Float result = stringCalculator.calculate(formula);
+            Float result = new StringCalculator(formula).calculate();
         });
 
         assertThat(throwable).isInstanceOf(IllegalArgumentException.class);
@@ -43,10 +35,22 @@ class StringCalculatorTest {
     @CsvSource(value = {"1 & 2 + 3:6" , "1 ! 2 / 3:1", "3 % 4:-1"}, delimiter = ':')
     void calculateNotOperatorSymbolTest(String formula, float calculatedValue) {
         Throwable throwable = catchThrowable(() -> {
-            Float result = stringCalculator.calculate(formula);
+            Float result = new StringCalculator(formula).calculate();
         });
 
         assertThat(throwable).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("잘못된 입력 문자열에 대한 IllegalArgumentException 발생 여부 테스트")
+    @ParameterizedTest
+    @CsvSource({"1 + 2 + - 1", "2 - 2 +", "2+3/4", "- 2 + 1"})
+    void calculateWrongFormula(String formula) {
+
+        Throwable throwable = catchThrowable(() -> {
+            StringCalculator stringCalculator = new StringCalculator(formula);
+            Float result = stringCalculator.calculate();
+        });
+
+        assertThat(throwable).isInstanceOf(IllegalArgumentException.class);
+    }
 }
