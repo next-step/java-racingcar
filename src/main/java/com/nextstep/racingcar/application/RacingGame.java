@@ -2,6 +2,7 @@ package com.nextstep.racingcar.application;
 
 import com.nextstep.racingcar.domain.car.CarFactory;
 import com.nextstep.racingcar.domain.car.Cars;
+import com.nextstep.racingcar.domain.car.MoveStrategy;
 import com.nextstep.racingcar.domain.round.Round;
 
 import java.util.ArrayList;
@@ -18,12 +19,12 @@ public class RacingGame {
         this.roundNumber = roundNumber;
     }
 
-    public void run(CarFactory carFactory) {
+    public void run(CarFactory carFactory, MoveStrategy moveStrategy) {
         Cars cars = Cars.createRandomCarsByNumber(carNumber, carFactory);
 
         IntStream.range(0, roundNumber).forEach(num -> {
             Round round = Round.newRound(cars);
-            round.moveAll();
+            round.moveAll(moveStrategy);
             results.add(round.getTotalResult());
         });
     }

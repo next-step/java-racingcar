@@ -2,7 +2,9 @@ package com.nextstep.racingcar.main;
 
 import com.nextstep.racingcar.application.RacingGame;
 import com.nextstep.racingcar.domain.car.CarFactory;
+import com.nextstep.racingcar.domain.car.MoveStrategy;
 import com.nextstep.racingcar.domain.car.RandomMoveCarFactory;
+import com.nextstep.racingcar.domain.car.RandomMoveStrategy;
 import com.nextstep.racingcar.ui.InputView;
 import com.nextstep.racingcar.ui.OutputView;
 
@@ -15,7 +17,8 @@ public class RacingGameMain {
 
         RacingGame racingGame = new RacingGame(inputView.getCarNumber(), inputView.getRoundNumber());
         CarFactory randomFactory = new RandomMoveCarFactory();
-        racingGame.run(randomFactory);
+        MoveStrategy moveStrategy = new RandomMoveStrategy();
+        racingGame.run(randomFactory, moveStrategy);
 
         OutputView outputView = new OutputView(racingGame.getResults());
         outputView.printResults();

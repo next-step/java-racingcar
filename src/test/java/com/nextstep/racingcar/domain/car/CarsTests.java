@@ -15,7 +15,7 @@ class CarsTests {
 
     @BeforeEach
     public void setup() {
-        carCollection = Arrays.asList(new ForceMoveCar(), new ForceMoveCar());
+        carCollection = Arrays.asList(new Car(), new Car());
     }
 
     @DisplayName("Car 객체 리스트를 입력 받아서 일급 콜렉션 객체 생성")
@@ -29,10 +29,10 @@ class CarsTests {
     @Test
     void cantModifyCarCollection() {
         List<Car> carCollection = new ArrayList<>();
-        carCollection.add(new ForceMoveCar());
+        carCollection.add(new Car());
 
         Cars cars = Cars.create(carCollection);
-        carCollection.add(new ForceMoveCar());
+        carCollection.add(new Car());
 
         assertThat(cars.size()).isNotEqualTo(2);
     }
@@ -52,7 +52,7 @@ class CarsTests {
     @Test
     void moveAllTest() {
         Cars cars = Cars.create(carCollection);
-        cars.moveAll();
+        cars.moveAll(new ForceMoveStrategy());
 
         List<MoveLength> moveLengths = cars.getMoveLengths();
 

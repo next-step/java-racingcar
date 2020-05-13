@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 public class RandomMoveCarFactory implements CarFactory{
     public List<Car> createByNumber(int number) {
         List<Car> randomMoveCars = new ArrayList<>();
-        IntStream.range(0, number).forEach(num -> randomMoveCars.add(new RandomMoveCar()));
+        IntStream.range(0, number).forEach(num -> randomMoveCars.add(new Car()));
         return new ArrayList<>(randomMoveCars);
     }
 }

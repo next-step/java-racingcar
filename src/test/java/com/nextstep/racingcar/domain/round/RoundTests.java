@@ -1,7 +1,8 @@
 package com.nextstep.racingcar.domain.round;
 
+import com.nextstep.racingcar.domain.car.Car;
 import com.nextstep.racingcar.domain.car.Cars;
-import com.nextstep.racingcar.domain.car.ForceMoveCar;
+import com.nextstep.racingcar.domain.car.ForceMoveStrategy;
 import com.nextstep.racingcar.domain.car.MoveLength;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -17,7 +18,7 @@ class RoundTests {
 
     @BeforeEach
     public void setup() {
-        cars = Cars.create(Arrays.asList(new ForceMoveCar(), new ForceMoveCar()));
+        cars = Cars.create(Arrays.asList(new Car(), new Car()));
     }
 
     @DisplayName("차량들을 입력받아 Round에서 진행할 차량들을 등록한다.")
@@ -37,7 +38,7 @@ class RoundTests {
         assertThat(beforeResult.get(0).toInt()).isEqualTo(0);
         assertThat(beforeResult.get(1).toInt()).isEqualTo(0);
 
-        round.moveAll();
+        round.moveAll(new ForceMoveStrategy());
 
         List<MoveLength> afterResult = round.getResult();
         assertThat(afterResult.get(0).toInt()).isEqualTo(1);
@@ -48,7 +49,7 @@ class RoundTests {
     @Test
     void checkStringResult() {
         Round round = Round.newRound(cars);
-        round.moveAll();
+        round.moveAll(new ForceMoveStrategy());
 
         String totalResult = round.getTotalResult();
 

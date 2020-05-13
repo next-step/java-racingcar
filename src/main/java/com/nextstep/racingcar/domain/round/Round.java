@@ -2,6 +2,7 @@ package com.nextstep.racingcar.domain.round;
 
 import com.nextstep.racingcar.domain.car.Cars;
 import com.nextstep.racingcar.domain.car.MoveLength;
+import com.nextstep.racingcar.domain.car.MoveStrategy;
 
 import java.util.List;
 
@@ -20,8 +21,8 @@ public class Round {
         return this.cars.size();
     }
 
-    public void moveAll() {
-        this.cars.moveAll();
+    public void moveAll(MoveStrategy moveStrategy) {
+        this.cars.moveAll(moveStrategy);
     }
 
     public List<MoveLength> getResult() {

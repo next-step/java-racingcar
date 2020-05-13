@@ -8,7 +8,7 @@ public class ForceMoveCarFactory implements CarFactory {
     @Override
     public List<Car> createByNumber(int number) {
         List<Car> randomMoveCars = new ArrayList<>();
-        IntStream.range(0, number).forEach(num -> randomMoveCars.add(new ForceMoveCar()));
+        IntStream.range(0, number).forEach(num -> randomMoveCars.add(new Car()));
         return new ArrayList<>(randomMoveCars);
     }
 }
