@@ -24,7 +24,7 @@ public class ParticipateCars {
         return cars;
     }
 
-    public List<Integer> tryMove(NumberGenerator numberGenerator) {
+    public List<Integer> moveCars(NumberGenerator numberGenerator) {
         return this.cars.stream()
                 .map(car -> car.move(numberGenerator.generateNumber()))
                 .collect(Collectors.toList());

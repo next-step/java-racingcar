@@ -4,8 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import racingcar.domain.car.FixedNumberGenerator;
-import racingcar.domain.car.ParticipateCars;
 
 import java.util.Arrays;
 import java.util.List;
@@ -28,7 +26,7 @@ public class ParticipateCarsTest {
     @MethodSource("provideParticipateCarsInformation")
     void tryMove(int numberOfCar, List<Integer> moveResult) {
         ParticipateCars participateCars = new ParticipateCars(numberOfCar);
-        List<Integer> actualResult = participateCars.tryMove(new FixedNumberGenerator());
+        List<Integer> actualResult = participateCars.moveCars(new FixedNumberGenerator());
 
         assertThat(actualResult).isEqualTo(moveResult);
 

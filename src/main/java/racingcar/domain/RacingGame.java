@@ -19,7 +19,7 @@ public class RacingGame {
         GameResult gameResult = new GameResult(numberOfPhase);
 
         for (int i = 0; i < numberOfPhase; i++) {
-            List<Integer> raceResult = participateCars.tryMove(numberGenerator);
+            List<Integer> raceResult = participateCars.moveCars(numberGenerator);
             gameResult.addPhaseResult(new PhaseResult(raceResult));
         }
 
