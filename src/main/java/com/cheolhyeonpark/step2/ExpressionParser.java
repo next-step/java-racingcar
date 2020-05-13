@@ -10,12 +10,12 @@ public class ExpressionParser {
         return new Expression(getNumbers(input), getOperators(input));
     }
 
-    private String getRemovedBlankString(String input) {
+    private String getBlankRemovedString(String input) {
         return input.replaceAll(" ", "");
     }
 
     private List<Integer> getNumbers(String input) {
-        return Arrays.stream(getNumberStrings(getRemovedBlankString(input)))
+        return Arrays.stream(getNumberStrings(getBlankRemovedString(input)))
                 .map(this::getNumber)
                 .collect(Collectors.toList());
     }
@@ -33,7 +33,7 @@ public class ExpressionParser {
     }
 
     private List<Operator> getOperators(String input) {
-        return Arrays.stream(getOperatorArray(getRemovedBlankString(input)))
+        return Arrays.stream(getOperatorArray(getBlankRemovedString(input)))
                 .map(Operator::getOperator)
                 .collect(Collectors.toList());
     }
