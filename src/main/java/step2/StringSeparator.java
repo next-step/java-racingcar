@@ -8,9 +8,9 @@ import java.util.List;
 
 public class StringSeparator {
 
-  private String[] expression;
-  private List<Integer> numbers;
-  private List<String> symbols;
+  private final String[] expression;
+  private final List<Integer> numbers;
+  private final List<String> symbols;
 
   StringSeparator(String[] expression) {
     this.expression = expression;
