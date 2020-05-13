@@ -7,6 +7,8 @@ import java.util.Map;
 public class RacingGame {
     private int gameTryCounts;
     private List<RacingCar> racingCars;
+    private static final int RANDOM_NUMBER_RANGE_MAX = 10;
+    private static final int RANDOM_NUMBER_LIMIT = 4;
 
     public int getGameTryCounts() {
         return this.gameTryCounts;
@@ -53,19 +55,14 @@ public class RacingGame {
     public void makeRandomNumber(List<RacingCar> racingCars) {
         int carCounts = racingCars.size();
         for (int i = 0; i < carCounts; i++) {
-            int randomNumber = (int)(Math.random() * 10);
+            int randomNumber = (int)(Math.random() * RANDOM_NUMBER_RANGE_MAX);
             RacingCar racingCar = racingCars.get(i);
             moveRacingCarByRandomNumber(racingCar, randomNumber);
         }
     }
 
     public void moveRacingCarByRandomNumber(RacingCar racingCar, int randomNumber) {
-        if (randomNumber >= 4)
+        if (randomNumber >= RANDOM_NUMBER_LIMIT)
             racingCar.movePosition();
-    }
-
-    public static void main(String[] args) {
-        RacingGame racingGame = new RacingGame();
-        racingGame.run();
     }
 }
