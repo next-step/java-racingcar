@@ -2,10 +2,10 @@ package racinggame.domain.support;
 
 import racinggame.domain.Engine;
 
-public class TestSwitchEngine implements Engine {
+public class SwitchEngine implements Engine {
     private boolean flag;
 
-    public TestSwitchEngine(boolean flag) {
+    public SwitchEngine(boolean flag) {
         this.flag = flag;
     }
 

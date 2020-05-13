@@ -2,7 +2,7 @@ package racinggame.domain;
 
 import racinggame.utils.RandomGenerator;
 
-public class DefaultEngine implements Engine {
+public class RandomEngine implements Engine {
     private static final int STANDARD_OUTPUT_LIMIT = 10;
     private static final int MOVEMENT_CONDITION = 4;
 

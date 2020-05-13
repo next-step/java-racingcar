@@ -1,8 +1,8 @@
 package racinggame;
 
-import racinggame.domain.DefaultEngine;
 import racinggame.domain.RacingGame;
 import racinggame.domain.RacingGameSnapshot;
+import racinggame.domain.RandomEngine;
 import racinggame.dto.RacingGameInfo;
 import racinggame.view.InputView;
 import racinggame.view.OutputView;
@@ -18,7 +18,7 @@ public class RacingGameApplication {
         RacingGameInfo racingGameInfo = new RacingGameInfo(numberOfCar, numberOfAttempt);
         RacingGame racingGame = new RacingGame(racingGameInfo);
 
-        List<RacingGameSnapshot> racingGameSnapshots = racingGame.raceWith(new DefaultEngine());
+        List<RacingGameSnapshot> racingGameSnapshots = racingGame.raceWith(new RandomEngine());
 
         OutputView.printTrackOf(racingGameSnapshots);
     }
