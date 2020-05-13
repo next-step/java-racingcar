@@ -12,9 +12,10 @@ class StringCalculatorTest {
 
     @ParameterizedTest
     @NullAndEmptySource
+    @ValueSource(strings = {"", " "})
     @DisplayName("입력 값이 null이거나 빈 공백 문자일 경우")
-    void validateIsNull(String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> StringCalculator.validateIsNull(input));
+    void validateNullOrEmpty(String input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> StringCalculator.validateNullOrEmpty(input));
     }
 
     @ParameterizedTest

@@ -1,7 +1,7 @@
 package calculator;
 
 public class StringCalculator {
-    static void validateIsNull(String input) {
+    static void validateNullOrEmpty(String input) {
         if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException("Input is Null");
         }
@@ -29,7 +29,7 @@ public class StringCalculator {
     }
 
     static double run(String input) {
-        validateIsNull(input);
+        validateNullOrEmpty(input);
 
         String[] splitFormula = input.split(" ");
         validateLength(splitFormula.length);
