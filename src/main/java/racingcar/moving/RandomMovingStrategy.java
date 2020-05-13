@@ -9,7 +9,7 @@ public class RandomMovingStrategy implements MovingStrategy {
     private static final int BASE_LINE_NUM = 4;
 
     @Override
-    public boolean move() {
+    public boolean isMovable() {
         return random() >= BASE_LINE_NUM;
     }
 

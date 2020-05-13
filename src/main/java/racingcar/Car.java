@@ -16,7 +16,7 @@ public class Car {
     }
 
     void move(final MovingStrategy movingStrategy) {
-        if (movingStrategy.move()) {
+        if (movingStrategy.isMovable()) {
             position++;
         }
     }
