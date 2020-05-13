@@ -1,6 +1,6 @@
 package step3.racingcar;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class RacingGame {
     private int gameTryCounts;
@@ -10,17 +10,16 @@ public class RacingGame {
         return gameTryCounts;
     }
 
-
     public int[] getCarPositions() {
         return carPositions;
     }
 
     public void startGame() {
-        HashMap<String, Integer> userInputMap = InputView.processUserInput();
+        Map<String, Integer> userInputMap = InputViewProcessor.getUserInputMap();
         saveUserInput(userInputMap);
     }
 
-    public void saveUserInput(HashMap<String, Integer> userInputMap) {
+    public void saveUserInput(Map<String, Integer> userInputMap) {
         this.gameTryCounts = userInputMap.get("gameTryCounts");
         this.carPositions = new int[userInputMap.get("numberOfCars")];
     }
