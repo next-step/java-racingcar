@@ -2,12 +2,12 @@ package calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.*;
 
+import java.util.stream.Stream;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.junit.jupiter.api.Assertions.*;
 
 class StringCalculatorTest {
 
@@ -26,17 +26,17 @@ class StringCalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value={"2 + 3,5","5 * 4,20","20 / 2,10"})
-    @DisplayName("사칙연산 동작 확인")
-    void calc(String input, double expected) {
-        double result = StringCalculator.run(input);
-        assertEquals(expected, result);
-    }
-
-    @ParameterizedTest
-    @CsvSource(value = {"2 + 3 * 4 / 2,10"})
+    @MethodSource("provideFormula")
     void run(String input, double expected) {
         double result = StringCalculator.run(input);
-        assertEquals(expected, result);
+        assertThat(result).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> provideFormula() {
+        return Stream.of(
+                Arguments.of("2 + 3 * 4 / 2", 10),
+                Arguments.of("6 + 3 * 4 / 3", 12),
+                Arguments.of("1 + 1 * 4 / 8", 1)
+        );
     }
 }
