@@ -7,7 +7,7 @@ public class StringCalculator {
         }
     }
 
-    static void validateCalc(String calc) {
+    static void validateOperator(String calc) {
         if (!"+".equals(calc) && !"-".equals(calc) && !"*".equals(calc) && !"/".equals(calc)) {
             throw new IllegalArgumentException("This is not Calculate");
         }
@@ -37,7 +37,7 @@ public class StringCalculator {
         double first = Double.parseDouble(splitFormula[0]);
         double sum = first;
         for (int i = 1; i < splitFormula.length; i += 2) {
-            validateCalc(splitFormula[i]);
+            validateOperator(splitFormula[i]);
 
             double second = Double.parseDouble(splitFormula[i+1]);
             sum = operate(first,second,splitFormula[i]);

@@ -20,7 +20,7 @@ class StringCalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"2 + 3 & 2"})
     @DisplayName("사칙연산 기호가 아닌 경우")
-    void validateCalc(String input) {
+    void validateOperator(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> StringCalculator.run(input));
     }
 
