@@ -1,7 +1,7 @@
 package com.nextstep.racingcar.application;
 
 import com.nextstep.racingcar.domain.car.ForceMoveStrategy;
-import com.nextstep.racingcar.domain.car.RandomMoveCarFactory;
+import com.nextstep.racingcar.domain.car.CarFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -26,7 +26,7 @@ class RacingGameTests {
         int round = 2;
         RacingGame racingGame = new RacingGame(carNumber, round);
 
-        racingGame.run(new RandomMoveCarFactory(), new ForceMoveStrategy());
+        racingGame.run(new CarFactory(), new ForceMoveStrategy());
 
         List<String> results = racingGame.getResults();
         assertThat(results.get(0)).isEqualTo("-\n-\n-\n");

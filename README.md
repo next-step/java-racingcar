@@ -111,13 +111,13 @@
     - [X] 경기 결과를 출력한다.
 - 1차 리뷰 반영
     - [X] RacingGame의 checkResults 메서드명 수정
-    - [ ] MoveStrategy를 인터페이스화 시키고 관련 기능 및 테스트 수정
+    - [X] MoveStrategy를 인터페이스화 시키고 관련 기능 및 테스트 수정
         - [X] MoveStratey 인터페이스 추출
         - [X] 동작을 strategy로 제어할 수 있기 때문에 Car 인터페이스 제거
         - [X] MoveStrategy 의존성 주입 구현(Car를 움직일 때 주입받도록 구현 -> UI 단에서부터 받도록 변경)
         - [X] ForceMoveCarFactory 삭제(이제 차량이 아닌 정책 객체가 움직임을 제어함)
-        - [ ] CarFactory 인터페이스 제거
-        - [ ] RandomMoveCarFactory를 CarFactory 구체 클래스로 변경
+        - [X] CarFactory 인터페이스 제거
+        - [X] RandomMoveCarFactory를 CarFactory 구체 클래스로 변경
     - [X] `:` 컨벤션 확인 및 수정
     
 #### 1차 리뷰 질문사항
