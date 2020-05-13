@@ -46,28 +46,28 @@ class RacingGameTest {
     void startRacing(RacingCreateValueObject racingCreateValueObject) {
         RacingGame racingGame = this.createRacingGame(racingCreateValueObject);
         racingGame.executeRacing();
-        RacingGameResult racingGameResult = new RacingGameResult(racingGame);
-        assertThat(racingGameResult.getRacingResult()).hasSize(racingCreateValueObject.carCount());
+        RacingGameResult racingGameResult = racingGame.calculateRacingGameResult();
+        assertThat(racingGameResult.getCars()).hasSize(racingCreateValueObject.getCarNames().length);
     }
 
     private static Stream<Arguments> provideNotValidCarCount() {
         return Stream.of(
-                Arguments.of(new RacingCreateValueObject(1, 0)),
-                Arguments.of(new RacingCreateValueObject(1, -1))
+                Arguments.of(new RacingCreateValueObject(1, new String[]{})),
+                Arguments.of(new RacingCreateValueObject(1, null))
         );
     }
 
     private static Stream<Arguments> provideNotValidTotalRacingGameCount() {
         return Stream.of(
-                Arguments.of(new RacingCreateValueObject(0, 1)),
-                Arguments.of(new RacingCreateValueObject(-1, 1))
+                Arguments.of(new RacingCreateValueObject(0, new String[]{"a","b"})),
+                Arguments.of(new RacingCreateValueObject(-1, new String[]{"a","b"}))
         );
     }
     private static Stream<Arguments> provideRacingGameArguments() {
         return Stream.of(
-                Arguments.of(new RacingCreateValueObject(1, 1)),
-                Arguments.of(new RacingCreateValueObject(3, 10)),
-                Arguments.of(new RacingCreateValueObject(5, 1))
+                Arguments.of(new RacingCreateValueObject(1, new String[]{"a","b"})),
+                Arguments.of(new RacingCreateValueObject(3, new String[]{"a","b"})),
+                Arguments.of(new RacingCreateValueObject(5, new String[]{"a","b"}))
         );
     }
 }
