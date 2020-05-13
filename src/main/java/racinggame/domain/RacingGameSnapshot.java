@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGameSnapshot {
-    private final List<CarSnapShot> carSnapShots = new ArrayList<>();
+    private final List<CarSnapshot> carSnapshots = new ArrayList<>();
 
-    public void record(CarSnapShot snapShot) {
-        carSnapShots.add(snapShot);
+    public void record(CarSnapshot snapShot) {
+        carSnapshots.add(snapShot);
     }
 
-    public List<CarSnapShot> getCarSnapShots() {
-        return carSnapShots;
+    public List<CarSnapshot> getCarSnapshots() {
+        return carSnapshots;
     }
 }

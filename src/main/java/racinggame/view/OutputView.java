@@ -1,6 +1,6 @@
 package racinggame.view;
 
-import racinggame.domain.CarSnapShot;
+import racinggame.domain.CarSnapshot;
 import racinggame.domain.RacingGameSnapshot;
 
 import java.util.List;
@@ -16,12 +16,12 @@ public class OutputView {
     }
 
     private static void printTrackOf(RacingGameSnapshot snapshot) {
-        for (CarSnapShot carSnapshot : snapshot.getCarSnapShots()) {
+        for (CarSnapshot carSnapshot : snapshot.getCarSnapshots()) {
             System.out.println(printTrackOf(carSnapshot));
         }
     }
 
-    private static String printTrackOf(CarSnapShot carSnapshot) {
+    private static String printTrackOf(CarSnapshot carSnapshot) {
         StringBuilder track = new StringBuilder();
 
         for (int i = 0; i < carSnapshot.getLocation(); i++) {

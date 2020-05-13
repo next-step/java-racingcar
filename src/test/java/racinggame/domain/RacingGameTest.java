@@ -27,10 +27,10 @@ class RacingGameTest {
         //then
         assertAll(
                 () -> assertThat(snapshots.size()).isEqualTo(numberOfAttempt),
-                () -> assertThat(snapshots.get(0).getCarSnapShots().size()).isEqualTo(numberOfCar),
-                () -> assertThat(snapshots.get(0).getCarSnapShots().get(0).getLocation()).isEqualTo(1),
-                () -> assertThat(snapshots.get(1).getCarSnapShots().get(0).getLocation()).isEqualTo(2),
-                () -> assertThat(snapshots.get(2).getCarSnapShots().get(0).getLocation()).isEqualTo(3)
+                () -> assertThat(snapshots.get(0).getCarSnapshots().size()).isEqualTo(numberOfCar),
+                () -> assertThat(snapshots.get(0).getCarSnapshots().get(0).getLocation()).isEqualTo(1),
+                () -> assertThat(snapshots.get(1).getCarSnapshots().get(0).getLocation()).isEqualTo(2),
+                () -> assertThat(snapshots.get(2).getCarSnapshots().get(0).getLocation()).isEqualTo(3)
         );
     }
 

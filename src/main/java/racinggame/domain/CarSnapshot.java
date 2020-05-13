@@ -1,9 +1,9 @@
 package racinggame.domain;
 
-public class CarSnapShot {
+public class CarSnapshot {
     private final int location;
 
-    public CarSnapShot(int location) {
+    public CarSnapshot(int location) {
         this.location = location;
     }
 

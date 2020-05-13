@@ -11,7 +11,7 @@ public class InputView {
         return SCANNER.nextLine();
     }
 
-    public static String askAttemptOfMovement() {
+    public static String askNumberOfAttempt() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         return SCANNER.nextLine();
     }

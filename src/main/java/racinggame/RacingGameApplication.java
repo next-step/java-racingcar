@@ -13,7 +13,7 @@ public class RacingGameApplication {
 
     public static void main(String[] args) {
         String numberOfCar = InputView.askNumberOfCar();
-        String numberOfAttempt = InputView.askAttemptOfMovement();
+        String numberOfAttempt = InputView.askNumberOfAttempt();
 
         RacingGameInfo racingGameInfo = new RacingGameInfo(numberOfCar, numberOfAttempt);
         RacingGame racingGame = new RacingGame(racingGameInfo);

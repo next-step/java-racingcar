@@ -19,7 +19,7 @@ class RacingCarsTest {
         RacingGameSnapshot snapshot = racingCars.race(engine);
 
         //then
-        assertThat(snapshot.getCarSnapShots().size()).isEqualTo(3);
+        assertThat(snapshot.getCarSnapshots().size()).isEqualTo(3);
     }
 
 }
