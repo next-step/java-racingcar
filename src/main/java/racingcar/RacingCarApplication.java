@@ -4,6 +4,7 @@ import racingcar.domain.GameInfo;
 import racingcar.domain.GameResult;
 import racingcar.domain.RacingGame;
 import racingcar.domain.car.RandomNumberGenerator;
+import racingcar.domain.car.RandomPower;
 import racingcar.dto.InputValueDto;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -17,7 +18,7 @@ public class RacingCarApplication {
 
         RacingGame racingGame = new RacingGame(gameInfo);
 
-        racingGame.startGame(new RandomNumberGenerator());
+        racingGame.startGame(new RandomPower());
 
         GameResult gameResult = racingGame.getGameResult();
 

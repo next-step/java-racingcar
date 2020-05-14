@@ -1,8 +1,7 @@
 package racingcar.domain;
 
-import racingcar.domain.car.NumberGenerator;
 import racingcar.domain.car.ParticipateCars;
-import racingcar.dto.InputValueDto;
+import racingcar.domain.car.Power;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +17,9 @@ public class RacingGame {
         this.phaseResults = new ArrayList<>();
     }
 
-    public void startGame(NumberGenerator numberGenerator) {
+    public void startGame(Power power) {
         for (int phase = 0; phase < numberOfPhase; phase++) {
-            PhaseResult phaseResult = new PhaseResult(participateCars.moveCars(numberGenerator));
+            PhaseResult phaseResult = new PhaseResult(participateCars.moveCars(power));
             phaseResults.add(phaseResult);
         }
     }

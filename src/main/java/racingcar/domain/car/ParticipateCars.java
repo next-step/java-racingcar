@@ -1,7 +1,6 @@
 package racingcar.domain.car;
 
 import racingcar.domain.car.Car;
-import racingcar.domain.car.NumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +23,9 @@ public class ParticipateCars {
         return cars;
     }
 
-    public List<Integer> moveCars(NumberGenerator numberGenerator) {
+    public List<Integer> moveCars(Power power) {
         return this.cars.stream()
-                .map(car -> car.move(numberGenerator.generateNumber()))
+                .map(car -> car.move(power))
                 .collect(Collectors.toList());
     }
 }

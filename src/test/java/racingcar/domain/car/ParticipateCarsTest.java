@@ -26,7 +26,7 @@ public class ParticipateCarsTest {
     @MethodSource("provideParticipateCarsInformation")
     void tryMove(int numberOfCar, List<Integer> moveResult) {
         ParticipateCars participateCars = new ParticipateCars(numberOfCar);
-        List<Integer> actualResult = participateCars.moveCars(new FixedNumberGenerator());
+        List<Integer> actualResult = participateCars.moveCars(() -> true);
 
         assertThat(actualResult).isEqualTo(moveResult);
 

@@ -10,24 +10,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    @DisplayName("자동차는 4 이상인 값이 들어왔을때 움직인다.")
+    @DisplayName("자동차는 Power가 true 면 이동하고 false 면 이동하지 않는다.")
     @ParameterizedTest
-    @CsvSource({"5,1", "4,1", "7,1"})
-    void move(int randomNumber, int location) {
+    @CsvSource({"true,1", "false,0"})
+    void move(boolean power, int location) {
         Car car = new Car();
 
-        int actualLocation = car.move(randomNumber);
-
-        assertThat(actualLocation).isEqualTo(location);
-    }
-
-    @DisplayName("자동차는 4 미만이 값이 들어오면 움직이지 않는다.")
-    @ParameterizedTest
-    @CsvSource({"0, 0", "1, 0", "2, 0", "3, 0"})
-    void doNotMove(int randomNumber, int location) {
-        Car car = new Car();
-
-        int actualLocation = car.move(randomNumber);
+        int actualLocation = car.move(() -> power);
 
         assertThat(actualLocation).isEqualTo(location);
     }
