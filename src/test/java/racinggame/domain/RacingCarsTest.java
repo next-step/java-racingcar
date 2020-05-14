@@ -2,7 +2,6 @@ package racinggame.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racinggame.domain.support.SwitchEngine;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -13,7 +12,7 @@ class RacingCarsTest {
     void race() {
         //given
         RacingCars racingCars = new RacingCars(3);
-        Engine engine = new SwitchEngine(true);
+        Engine engine = () -> true;
 
         //when
         RacingGameSnapshot snapshot = racingCars.race(engine);
