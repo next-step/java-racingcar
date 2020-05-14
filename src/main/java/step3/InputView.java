@@ -10,7 +10,7 @@ public class InputView {
     private final int racingCarCount;
     private final int gameRound;
 
-    public InputView() {
+    private InputView() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println(RACING_CAR_COUNT_QUESTION);

@@ -12,7 +12,7 @@ public class RacingGameManager {
     private int progressRound;
     private List<Integer> carPositions;
 
-    public RacingGameManager(int carCount, int gameRound) {
+    private RacingGameManager(int carCount, int gameRound) {
         this.gameRound = gameRound;
         this.racingCarList = IntStream.range(0, carCount)
                 .mapToObj(RacingCar::create)
