@@ -22,6 +22,11 @@ public class StrCalcCondition {
     }
 
     private boolean isNumber(String strForCalc) {
-        return (strForCalc.charAt(0) - '0' < 10 && strForCalc.charAt(0) - '0' >= 0);
+        try {
+            Double.parseDouble(strForCalc);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }
