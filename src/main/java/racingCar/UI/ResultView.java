@@ -5,19 +5,12 @@ import racingCar.Entity.RacingCar;
 import java.util.List;
 
 public class ResultView {
-
-    public void printResult(List<RacingCar> racingCarList, int time) {
-        System.out.println("실행 결과");
-        for (int idx = 0; idx < time; idx++) {
-            printCarsPosition(racingCarList);
-            System.out.println();
-        }
-    }
-
-    private void printCarsPosition(List<RacingCar> racingCarList) {
+    public void printCarsPosition(List<RacingCar> racingCarList) {
         for (RacingCar racingCar : racingCarList) {
             printPosition(racingCar);
+            System.out.println();
         }
+        System.out.println();
     }
 
     private void printPosition(RacingCar racingCar) {

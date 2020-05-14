@@ -10,13 +10,19 @@ public class Main {
         InputView inputView = new InputView();
         RacingGame racingGame = inputView.setStartInput();
 
-        // Racing Game
+        // Init Position RacingCar
         racingGame.initRacingCars();
-        racingGame.move();
 
-        //Output
+        //OutPut
         ResultView resultView = new ResultView();
-        resultView.printResult(racingGame.getRacingCarList(), racingGame.getTime());
+        System.out.println("실행 결과");
+
+        //실행 & 출력
+        int time = racingGame.getTime();
+        for (int idx = 0; idx < time; idx++) {
+            racingGame.move();
+            resultView.printCarsPosition(racingGame.getRacingCarList());
+        }
     }
 }
 

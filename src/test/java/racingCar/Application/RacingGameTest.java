@@ -18,7 +18,7 @@ class RacingGameTest {
         racingGame.initRacingCars();
         for (int idx = 0; idx < racingGame.getCarCount(); idx++) {
             int position = racingGame.getRacingCarList().get(idx).getPosition();
-            assertThat(position).isEqualTo(0);
+            assertThat(position).isEqualTo(1);
         }
     }
 }
