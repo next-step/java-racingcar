@@ -6,10 +6,21 @@ public class RacingGameInfo {
 
     public RacingGameInfo(String numberOfCar, String numberOfAttempt) {
         try {
-            this.numberOfCar = Integer.parseInt(numberOfCar);
-            this.numberOfAttempt = Integer.parseInt(numberOfAttempt);
+            int inputNumberOfCar = Integer.parseInt(numberOfCar);
+            int inputNumberOfAttempt = Integer.parseInt(numberOfAttempt);
+
+            validate(inputNumberOfCar, inputNumberOfAttempt);
+
+            this.numberOfCar = inputNumberOfCar;
+            this.numberOfAttempt = inputNumberOfAttempt;
         } catch (NumberFormatException exception) {
             throw new IllegalArgumentException("자동차 대수와 시도횟수는 숫자로 입력해야합니다");
+        }
+    }
+
+    private void validate(int inputNumberOfCar, int inputNumberOfAttempt) {
+        if (inputNumberOfAttempt < 0 || inputNumberOfCar < 0) {
+            throw new IllegalArgumentException("0이하의 수는 입력할 수 없습니다");
         }
     }
 
