@@ -10,7 +10,6 @@ public class OutputView {
         System.out.println("\n실행 결과");
     }
 
-
     public void printRound(List<Car> cars) {
         cars.stream().forEach(car -> {
             StringBuilder builder = new StringBuilder();
