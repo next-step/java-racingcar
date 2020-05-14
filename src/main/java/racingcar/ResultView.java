@@ -1,24 +1,41 @@
 package racingcar;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ResultView {
 
-    private String POSITION_BAR = "-";
+    private static final String POSITION_BAR = "-";
+    private static final int START_ROUND_NUMBER = 0;
 
-    public void printResult(ArrayList<Racingcar> carPositions) {
+    private int saveRound = 0;
+    private Map<Integer, List<Racingcar>> roundResult = new HashMap<>();
+
+    public void printResult() {
+        for (int i = START_ROUND_NUMBER; i <= saveRound; i++) {
+            printResultByRound(i);
+        }
+    }
+
+    public void printResultByRound(int round) {
+        try {
+            List<Racingcar> carPositions = this.roundResult.get(round);
+            printRacingCarPosition(round, carPositions);
+        } catch (NullPointerException e) {
+            throw new NullPointerException("실행되지 않은 라운드를 선택하였습니다.");
+        }
+    }
+
+    private void printRacingCarPosition(int round, List<Racingcar> carPositions) {
         for (Racingcar racingcar : carPositions) {
-            int position = racingcar.getCarMovePosition();
-            printPositionBar(position);
+            racingcar.printCarPrintRoundPosition(round, POSITION_BAR);
         }
         System.out.println();
     }
 
-    private void printPositionBar(int position) {
-        StringBuffer resultBar = new StringBuffer();
-        for (int i = 0; i < position; i++) {
-            resultBar.append(POSITION_BAR);
-        }
-        System.out.println(resultBar.toString());
+    public void saveRoundResult(int round, List<Racingcar> carPositions) {
+        this.roundResult.put(round, carPositions);
+        this.saveRound = round;
     }
 }
