@@ -35,7 +35,10 @@ public class RacingTest {
     @DisplayName("게임을 한 번 수행할 때마다 만들어진 Car 는 이동 또는 정지")
     @Test
     void move() {
-        assertThat(Racing.of(3, new RandomMovingStrategy()).run()
+        Racing racing = Racing.of(3, new RandomMovingStrategy());
+        racing.run();
+
+        assertThat(racing.getCars()
                 .stream()
                 .map(Car::getPosition)).contains(Car.DEFAULT_DISTANCE, Car.DEFAULT_DISTANCE + 1);
     }
