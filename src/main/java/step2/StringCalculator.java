@@ -55,6 +55,7 @@ public class StringCalculator {
         InputCheck.checkMatchingNumbersAndOperators(inputArray);
         InputCheck.checkNumberString(inputArray);
         InputCheck.checkCalculateSymbol(inputArray);
+
     }
 
     public int calculate() {

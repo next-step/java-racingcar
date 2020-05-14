@@ -21,7 +21,7 @@ class StringCalculatorTest {
         assertThatIllegalArgumentException().isThrownBy(() ->
                 {
                     stringCalculator.inputCheck();
-                    InputCheck.checkEmpty(stringCalculator.getInput(), stringCalculator.getSEPARATOR());
+                    //InputCheck.checkEmpty(stringCalculator.getInput(), stringCalculator.getSEPARATOR());
 
                 }
         );
@@ -36,7 +36,7 @@ class StringCalculatorTest {
                     StringCalculator stringCalculator = new StringCalculator(input);
 
                     stringCalculator.inputCheck();
-                    InputCheck.checkEmpty(stringCalculator.getInput(), stringCalculator.getSEPARATOR());
+                    //InputCheck.checkEmpty(stringCalculator.getInput(), stringCalculator.getSEPARATOR());
                 }
         );
     }
@@ -50,7 +50,7 @@ class StringCalculatorTest {
         assertThatIllegalArgumentException().isThrownBy(() ->
                 {
                     stringCalculator.inputCheck();
-                    InputCheck.checkMinimumExpression(stringCalculator.getInputArray());
+                    //InputCheck.checkMinimumExpression(stringCalculator.getInputArray());
                 }
         );
     }
@@ -65,7 +65,7 @@ class StringCalculatorTest {
         assertThatIllegalArgumentException().isThrownBy(() ->
                 {
                     stringCalculator.inputCheck();
-                    InputCheck.checkMatchingNumbersAndOperators(stringCalculator.getInputArray());
+                    //InputCheck.checkMatchingNumbersAndOperators(stringCalculator.getInputArray());
                 }
         );
     }
@@ -80,7 +80,7 @@ class StringCalculatorTest {
         assertThatIllegalArgumentException().isThrownBy(() ->
                 {
                     stringCalculator.inputCheck();
-                    InputCheck.checkNumberString(stringCalculator.getInputArray());
+                    //InputCheck.checkNumberString(stringCalculator.getInputArray());
                 }
         );
     }
@@ -94,7 +94,7 @@ class StringCalculatorTest {
         assertThatIllegalArgumentException().isThrownBy(() ->
                 {
                     stringCalculator.inputCheck();
-                    InputCheck.checkNumberString(stringCalculator.getInputArray());
+                    //InputCheck.checkNumberString(stringCalculator.getInputArray());
                 }
         );
     }
