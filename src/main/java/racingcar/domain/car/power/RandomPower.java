@@ -1,4 +1,4 @@
-package racingcar.domain.car;
+package racingcar.domain.car.power;
 
 public class RandomPower implements Power {
     private static final int MOVE_CONDITION = 4;

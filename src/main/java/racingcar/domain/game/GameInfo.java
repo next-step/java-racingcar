@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.game;
 
 public class GameInfo {
     private static final int GAME_INFO_NUMBER_BOUND = 0;

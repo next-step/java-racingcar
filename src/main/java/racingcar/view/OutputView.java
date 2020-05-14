@@ -1,7 +1,7 @@
 package racingcar.view;
 
-import racingcar.domain.GameResult;
-import racingcar.domain.PhaseResult;
+import racingcar.domain.game.GameResult;
+import racingcar.domain.game.PhaseResult;
 
 public class OutputView {
     private static final String MARK = "-";

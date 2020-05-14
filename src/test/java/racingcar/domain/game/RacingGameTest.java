@@ -1,14 +1,17 @@
-package racingcar.domain;
+package racingcar.domain.game;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.car.FixedPower;
+import racingcar.domain.car.power.FixedPower;
+import racingcar.domain.game.GameInfo;
+import racingcar.domain.game.GameResult;
+import racingcar.domain.game.PhaseResult;
+import racingcar.domain.game.RacingGame;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RacingGameTest {
     @DisplayName("getGameResult는 startGame을 하고나서 게임결과를 반환한다.")

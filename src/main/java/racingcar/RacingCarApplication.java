@@ -1,9 +1,9 @@
 package racingcar;
 
-import racingcar.domain.GameInfo;
-import racingcar.domain.GameResult;
-import racingcar.domain.RacingGame;
-import racingcar.domain.car.RandomPower;
+import racingcar.domain.game.GameInfo;
+import racingcar.domain.game.GameResult;
+import racingcar.domain.game.RacingGame;
+import racingcar.domain.car.power.RandomPower;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 

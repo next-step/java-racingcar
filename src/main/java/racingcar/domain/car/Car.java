@@ -1,5 +1,7 @@
 package racingcar.domain.car;
 
+import racingcar.domain.car.power.Power;
+
 public class Car {
     private int location;
 

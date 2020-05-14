@@ -1,4 +1,6 @@
-package racingcar.domain.car;
+package racingcar.domain.car.power;
+
+import racingcar.domain.car.power.Power;
 
 public class FixedPower implements Power {
     private boolean movable;
