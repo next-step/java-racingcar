@@ -2,7 +2,9 @@ package calculator;
 import java.util.Optional;
 
 public class CalculatorString {
+
     private static final String WHITESPACE= " ";
+
     public int stringCalculator(String input) {
         String[] strings = stringParser(input);
         int total = Integer.parseInt(strings[0]);
