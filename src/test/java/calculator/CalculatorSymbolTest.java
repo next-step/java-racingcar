@@ -17,10 +17,11 @@ class CalculatorSymbolTest {
     void setUp() {
         calculatorSymbol = new CalculatorSymbol();
     }
+
     @DisplayName("계산 테스트")
     @ParameterizedTest
-    @CsvSource(value = {"+:6","-:2","/:2","*:8"}, delimiter = ':')
-    void findTypeAndCalculator(String input,int expected) {
+    @CsvSource(value = {"+:6", "-:2", "/:2", "*:8"}, delimiter = ':')
+    void findTypeAndCalculator(String input, int expected) {
         int result = calculatorSymbol.findTypeAndCalculator(4, 2, input);
         assertThat(result).isEqualTo(expected);
     }

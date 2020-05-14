@@ -19,12 +19,16 @@ public class CalculatorString {
     }
 
     public int parserInt(String[] words, int index) {
-        String regex = "^[0-9]+$";
-        if (words.length < index + 1 || !words[index].matches(regex)) {
+
+        if (hasSizeAndIsNumber(words, index)) {
             throw new IllegalArgumentException("입력 문자 열이 잘못되었습니다.");
         }
         return Integer.parseInt(words[index]);
 
+    }
+
+    private boolean hasSizeAndIsNumber(String[] words, int index) {
+        return words.length < index + 1 || !words[index].matches("^[0-9]+$");
     }
 
     public String[] stringParser(String input) {
