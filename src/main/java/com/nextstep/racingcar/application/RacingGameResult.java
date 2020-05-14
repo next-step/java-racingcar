@@ -2,6 +2,8 @@ package com.nextstep.racingcar.application;
 
 import com.nextstep.racingcar.domain.round.RoundResult;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingGameResult {
@@ -12,6 +14,11 @@ public class RacingGameResult {
     }
 
     public static RacingGameResult create(List<RoundResult> roundResults) {
-        return new RacingGameResult(roundResults);
+        List<RoundResult> unmodifiableList = Collections.unmodifiableList(new ArrayList<>(roundResults));
+        return new RacingGameResult(unmodifiableList);
+    }
+
+    public int size() {
+        return roundResults.size();
     }
 }
