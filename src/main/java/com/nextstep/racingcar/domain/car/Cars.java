@@ -40,4 +40,8 @@ public class Cars {
     public void moveAll(MoveStrategy moveStrategy) {
         cars.forEach(car -> car.move(moveStrategy));
     }
+
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(new ArrayList<>(this.cars));
+    }
 }

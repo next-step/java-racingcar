@@ -5,6 +5,7 @@ import com.nextstep.racingcar.domain.car.MoveLength;
 import com.nextstep.racingcar.domain.car.MoveStrategy;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Round {
     private Cars cars;
@@ -35,5 +36,12 @@ public class Round {
             result.append(moveLength.toStringLength()).append("\n");
         }
         return result.toString();
+    }
+
+    public List<RoundResult> getRoundResults() {
+        return cars.getCars()
+                .stream()
+                .map(car -> RoundResult.create(car.getDriverName(), car.getMoveLength()))
+                .collect(Collectors.toList());
     }
 }

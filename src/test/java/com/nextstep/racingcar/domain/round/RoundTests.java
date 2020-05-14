@@ -54,4 +54,12 @@ class RoundTests {
 
         assertThat(totalResult).isEqualTo("-\n-\n");
     }
+
+    @DisplayName("해당 라운드에 참가한 차량들의 정보를 확인한다")
+    @Test
+    void getCarsInfo() {
+        Round round = Round.newRound(cars);
+        assertThat(round.getRoundResults().size()).isEqualTo(2);
+        assertThat(round.getRoundResults().get(0)).isInstanceOf(RoundResult.class);
+    }
 }
