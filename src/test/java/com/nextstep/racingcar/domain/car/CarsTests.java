@@ -65,7 +65,7 @@ class CarsTests {
     void createCarsByDriverNames() {
         List<String> driverNames = Arrays.asList("poppo", "ita");
         CarFactory carFactory = new CarFactory();
-        Cars cars = Cars.createRandomCarsByDriverNames(driverNames, carFactory);
+        Cars cars = Cars.createCarsByDriverNames(driverNames, carFactory);
         assertThat(cars).isNotNull();
     }
 }
