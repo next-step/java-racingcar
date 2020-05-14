@@ -29,33 +29,12 @@ public class StringCalculator {
                 op = null;
                 continue;
             }
-            op = matchOperator(i);
+            op = Operator.matchOperator(inputArray[i]);
         }
     }
 
     private void checkLenghthIsOdd() {
         if (inputArray.length == 1 || inputArray.length % 2 == 0)
             throw new IllegalStateException("You need to enter a string to complete the calculation.");
-    }
-
-    private Operator matchOperator(int index) {
-        Operator op;
-        switch (inputArray[index]) {
-            case "+":
-                op = Operator.ADD;
-                break;
-            case "-":
-                op = Operator.MINUS;
-                break;
-            case "*":
-                op = Operator.MULTIPLY;
-                break;
-            case "/":
-                op = Operator.DEVIDE;
-                break;
-            default:
-                throw new IllegalArgumentException("This is Disabled character.");
-        }
-        return op;
     }
 }

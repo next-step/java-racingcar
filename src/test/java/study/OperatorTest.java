@@ -39,4 +39,9 @@ public class OperatorTest {
                     assertThat(operator.calculate(2,0)).isEqualTo(0);
                 });
     }
+
+    @Test
+    void matchOperatorTest() {
+        assertThat(Operator.matchOperator("+")).isEqualTo(Operator.ADD);
+    }
 }

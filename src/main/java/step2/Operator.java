@@ -32,5 +32,26 @@ public enum Operator {
         this.operator = operator;
     }
 
+    public static Operator matchOperator(String str) {
+        Operator op;
+        switch (str) {
+            case "+":
+                op = Operator.ADD;
+                break;
+            case "-":
+                op = Operator.MINUS;
+                break;
+            case "*":
+                op = Operator.MULTIPLY;
+                break;
+            case "/":
+                op = Operator.DEVIDE;
+                break;
+            default:
+                throw new IllegalArgumentException("This is Disabled character.");
+        }
+        return op;
+    }
+
     public abstract double calculate(double num1, double num2);
 }
