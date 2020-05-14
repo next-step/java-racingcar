@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 public class Racing {
 
-    static final int MIN_NUM_OF_CARS = 0;
+    private static final int MIN_NUM_OF_CARS = 0;
 
     private List<Car> cars;
     private MovingStrategy movingStrategy;
