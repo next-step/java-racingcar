@@ -32,7 +32,7 @@ public class CalcTest {
     @DisplayName("사칙 연산자만 허용")
     @ParameterizedTest
     @CsvSource(value = {"(, 3, 5", " ., 3, 5", "n, 3, 5"}, delimiter = ',')
-    void testCalcWrong(String testOperator, double firstNum, double secondNum) {
+    void testArithmeticOperationOnly(String testOperator, double firstNum, double secondNum) {
         assertThatThrownBy(() -> operation.operator(testOperator, firstNum, secondNum))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("you are allow to use only number or arithmetic operation");

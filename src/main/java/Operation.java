@@ -20,7 +20,7 @@ public class Operation {
                 }
                 break;
             default:
-                throw new IllegalArgumentException("you are allow to use only number or arithmetic operation");
+                throw new IllegalArgumentException("you are allow to use only arithmetic operation");
         }
 
         return accumulatedCalcResult;
