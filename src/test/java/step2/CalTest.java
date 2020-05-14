@@ -103,4 +103,19 @@ public class CalTest {
         );
     }
 
+    @Test
+    void checkOperator(){
+        double plusResult = Operator.PLUS.operate(1,2);
+        assertThat(plusResult).isEqualTo(3);
+
+        double minusResult = Operator.MINUS.operate(2, 1);
+        assertThat(minusResult).isEqualTo(1);
+
+        double multiplyResult = Operator.MULTIPLY.operate(1, 2);
+        assertThat(multiplyResult).isEqualTo(2);
+
+        double divideResult = Operator.DIVIDE.operate(4, 2);
+        assertThat(divideResult).isEqualTo(2);
+    }
+
 }
