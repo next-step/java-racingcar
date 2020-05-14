@@ -61,6 +61,7 @@ class RacingGameTests {
         List<String> driverNames = Arrays.asList("poppo", "saul", "ita");
         int round = 2;
         RacingGame racingGame = new RacingGame(driverNames, round);
+        racingGame.runByDriversName(new CarFactory(), new ForceMoveStrategy());
 
         assertThat(racingGame.getRacingGameResult()).isInstanceOf(RacingGameResult.class);
     }
