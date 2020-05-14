@@ -6,6 +6,7 @@ import java.util.Queue;
 public class Calculator {
 
     private static final String DELIMETER = " ";
+    private static final int LENGTHCHECK = 2;
 
     public static boolean isVarified(String[] input) {
 
@@ -13,7 +14,7 @@ public class Calculator {
             throw new IllegalArgumentException("계산식을 입력해주세요.");
         }
 
-        if (input.length % 2 == 0) {
+        if (input.length % LENGTHCHECK == 0) {
             throw new IllegalArgumentException("계산식이 올바르지 않습니다.");
         }
 
