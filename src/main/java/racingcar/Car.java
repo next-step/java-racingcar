@@ -5,6 +5,7 @@ import racingcar.moving.MovingStrategy;
 public class Car {
 
     static final int DEFAULT_DISTANCE = 0;
+
     private int position;
 
     static Car newInstance() {

@@ -9,6 +9,8 @@ import java.util.stream.Stream;
 
 public class Racing {
 
+    static final int MIN_NUM_OF_CARS = 0;
+
     private List<Car> cars;
     private MovingStrategy movingStrategy;
 
@@ -22,7 +24,7 @@ public class Racing {
     }
 
     private void validateInput(final int numOfCar, final MovingStrategy movingStrategy) {
-        if (numOfCar <= 0 || movingStrategy == null) {
+        if (numOfCar <= MIN_NUM_OF_CARS || movingStrategy == null) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_PARAMETER);
         }
     }
