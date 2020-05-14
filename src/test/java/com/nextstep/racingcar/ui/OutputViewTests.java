@@ -20,4 +20,12 @@ class OutputViewTests {
                 "ita : -\n" +
                 "saul : --\n\n");
     }
+
+    @DisplayName("우승자를 제대로 보여주는지 확인")
+    @Test
+    void printWinnerTest() {
+        OutputView outputView = new OutputView(FakeRacingGameResultFactory.getFakeRacingGameResult());
+        String stringWinner = outputView.toStringWinner();
+        assertThat(stringWinner).isEqualTo("poppo, saul가 최종 우승했습니다.");
+    }
 }

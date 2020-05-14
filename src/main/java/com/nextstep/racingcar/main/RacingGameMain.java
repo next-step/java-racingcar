@@ -21,5 +21,6 @@ public class RacingGameMain {
 
         OutputView outputView = new OutputView(racingGame.getRacingGameResult());
         System.out.println(outputView.toStringResult());
+        System.out.println(outputView.toStringWinner());
     }
 }
