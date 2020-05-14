@@ -1,21 +1,22 @@
 package racinggame;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RacingGame {
 
-    private RacingCar[] racingCars;
+    private List<RacingCar> racingCars;
     private int round;
-    private List<int[]> roundCarPositions;
+    private List<int[]> resultCarPositions;
 
-    public RacingGame(int carCount, int round) {
+    public RacingGame(int carCount, int round, MovableStrategy movableStrategy) {
         validateRacingGame(carCount, round);
 
-        createRacingCars(carCount);
+        createRacingCars(carCount, movableStrategy);
         this.round = round;
-        this.roundCarPositions = new ArrayList<>();
+        this.resultCarPositions = new ArrayList<>();
     }
 
     private void validateRacingGame(int carCount, int round) {
@@ -24,35 +25,34 @@ public class RacingGame {
         }
     }
 
-    private void createRacingCars(int carCount) {
-        this.racingCars = new RacingCar[carCount];
-        for (int i = 0; i < carCount; i++) {
-            this.racingCars[i] = RacingCar.newRacingCar();
-        }
+    private void createRacingCars(int carCount, MovableStrategy movableStrategy) {
+        this.racingCars = Stream.generate(() -> RacingCar.newInstance(movableStrategy))
+                .limit(carCount)
+                .collect(Collectors.toList());
     }
 
     public void start() {
         for (int i = 0; i < this.round; i++) {
             moveRacingCars();
-            addRoundCarPositions();
+            addResultCarPositions();
         }
     }
 
     private void moveRacingCars() {
-        Arrays.stream(this.racingCars).forEach(RacingCar::move);
+        this.racingCars.forEach(RacingCar::move);
     }
 
-    private void addRoundCarPositions() {
-        this.roundCarPositions.add(getCurrentRacingCarPositions());
+    private void addResultCarPositions() {
+        this.resultCarPositions.add(getCurrentRacingCarPositions());
     }
 
     private int[] getCurrentRacingCarPositions() {
-        return Arrays.stream(this.racingCars)
+        return this.racingCars.stream()
                 .mapToInt(RacingCar::currentPosition)
                 .toArray();
     }
 
-    public List<int[]> getRoundCarPositions() {
-        return this.roundCarPositions;
+    public ResultCarPositions getResultCarPositions() {
+        return ResultCarPositions.newInstance(this.resultCarPositions);
     }
 }
