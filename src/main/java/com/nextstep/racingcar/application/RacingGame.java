@@ -42,4 +42,8 @@ public class RacingGame {
     public List<String> getResults() {
         return this.results;
     }
+
+    public RacingGameResult getRacingGameResult() {
+        return new RacingGameResult();
+    }
 }

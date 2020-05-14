@@ -52,4 +52,14 @@ class RacingGameTests {
 
         assertThat(racingGame).isNotNull();
     }
+
+    @DisplayName("레이싱 게임 종료 후 RacingGameResult를 반환받을 수 있음")
+    @Test
+    void getRacingGameResult() {
+        List<String> driverNames = Arrays.asList("poppo", "saul", "ita");
+        int round = 2;
+        RacingGame racingGame = new RacingGame(driverNames, round);
+
+        assertThat(racingGame.getRacingGameResult()).isInstanceOf(RacingGameResult.class);
+    }
 }
