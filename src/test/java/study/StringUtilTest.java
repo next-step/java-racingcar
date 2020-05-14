@@ -13,6 +13,11 @@ public class StringUtilTest {
     }
 
     @Test
+    void isNumEmptyTest() {
+        assertThat(StringUtil.isNumber("")).isEqualTo(false);
+    }
+
+    @Test
     void doSplitTest() {
         assertThat(StringUtil.doSplit("a-b-c0d","-")).containsExactly("a","b","c0d");
     }
