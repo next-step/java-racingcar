@@ -12,9 +12,9 @@ public class RacingGame {
     private ParticipateCars participateCars;
     private List<PhaseResult> phaseResults;
 
-    public RacingGame(InputValueDto inputValueDto) {
-        this.numberOfPhase = inputValueDto.getNumberOfPhase();
-        this.participateCars = new ParticipateCars(inputValueDto.getNumberOfCar());
+    public RacingGame(GameInfo gameInfo) {
+        this.numberOfPhase = gameInfo.getNumberOfPhase();
+        this.participateCars = new ParticipateCars(gameInfo.getNumberOfCar());
         this.phaseResults = new ArrayList<>();
     }
 

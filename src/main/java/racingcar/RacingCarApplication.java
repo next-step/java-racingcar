@@ -13,9 +13,9 @@ public class RacingCarApplication {
         int numberOfCar = InputView.inputNumberOfCar();
         int numberOfPhase = InputView.inputNumberOfPhase();
 
-        InputValueDto inputValueDto = new InputValueDto(numberOfCar, numberOfPhase);
+        GameInfo gameInfo = new GameInfo(numberOfCar, numberOfPhase);
 
-        RacingGame racingGame = new RacingGame(inputValueDto);
+        RacingGame racingGame = new RacingGame(gameInfo);
 
         racingGame.startGame(new RandomNumberGenerator());
 
