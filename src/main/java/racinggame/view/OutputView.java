@@ -8,7 +8,7 @@ import java.util.List;
 public class OutputView {
     private static final String TRACK_SIGNATURE = "-";
 
-    public static void printTrackOf(List<RacingGameSnapshot> racingGameSnapshots) {
+    public static void announceResult(List<RacingGameSnapshot> racingGameSnapshots) {
         for (RacingGameSnapshot snapshot : racingGameSnapshots) {
             printTrackOf(snapshot);
             System.out.println();

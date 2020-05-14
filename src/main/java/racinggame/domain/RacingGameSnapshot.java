@@ -6,7 +6,7 @@ import java.util.List;
 public class RacingGameSnapshot {
     private final List<CarSnapshot> carSnapshots = new ArrayList<>();
 
-    public void record(CarSnapshot snapShot) {
+    public void record(final CarSnapshot snapShot) {
         carSnapshots.add(snapShot);
     }
 
