@@ -7,7 +7,7 @@ public class Calculator {
 
     private static final String DELIMETER = " ";
 
-    public static boolean valCheck(String[] input) {
+    public static boolean isVarified(String[] input) {
 
         if (input == null || input.length == 0) {
             throw new IllegalArgumentException("계산식을 입력해주세요.");
@@ -20,25 +20,25 @@ public class Calculator {
         return true;
     }
 
-    public static double isNumeric(String s) {
+    public static double calculator(String input) {
+
+        String[] splitInput = input.split(DELIMETER);
+        isVarified(splitInput);
+
+        double result = convertNumeric(splitInput[0]);
+        for(int i = 1; i < splitInput.length; i += 2) {
+            Operator operator = Operator.getOperation(splitInput[i]);
+            result = operator.operate(result, convertNumeric(splitInput[i+1]));
+        }
+
+        return result;
+    }
+
+    private static double convertNumeric(String s) {
         try {
             return Double.parseDouble(s);
         } catch(NumberFormatException e) {
             throw new IllegalArgumentException("숫자가 아닙니다. " + s);
         }
-    }
-
-    public static double calculator(String input) {
-
-        String[] splitInput = input.split(DELIMETER);
-        valCheck(splitInput);
-
-        double result = isNumeric(splitInput[0]);
-        for(int i = 1; i < splitInput.length; i += 2) {
-            Operator operator = Operator.getOperation(splitInput[i]);
-            result = operator.operate(result, isNumeric(splitInput[i+1]));
-        }
-
-        return result;
     }
 }
