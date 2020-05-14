@@ -18,18 +18,14 @@ public class CarTest {
     @DisplayName("자동차는 전진한다")
     @Test
     void move() {
-        int beforePosition = car.getPosition();
-        car.move();
-
-        assertThat(car.getPosition()).isEqualTo(beforePosition + 1);
+        int position = car.move();
+        assertThat(position).isEqualTo(1);
     }
 
     @DisplayName("자동차는 멈춰있는다")
     @Test
     void stay() {
-        int beforePosition = car.getPosition();
-        car.stay();
-
-        assertThat(car.getPosition()).isEqualTo(beforePosition);
+        int position = car.stay();
+        assertThat(position).isEqualTo(0);
     }
 }
