@@ -1,15 +1,15 @@
 package racingcar.domain.car;
 
 public class FixedPower implements Power {
-    private boolean swtich;
+    private boolean movable;
 
     public FixedPower() {
-        this.swtich = false;
+        this.movable = false;
     }
 
     @Override
     public boolean isMovable() {
-        swtich = !swtich;
-        return swtich;
+        movable = !movable;
+        return movable;
     }
 }
