@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class RoundResults {
-    private List<RoundResult> values;
+    private final List<RoundResult> values;
 
     private RoundResults(List<RoundResult> roundResultList) {
         this.values = roundResultList;
