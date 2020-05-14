@@ -30,7 +30,7 @@ class StringCalculatorTest {
     @DisplayName("error test")
     void errorTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            System.out.println(StringCalculator.calculate(input));
+            StringCalculator.calculate(input);
         });
     }
 
