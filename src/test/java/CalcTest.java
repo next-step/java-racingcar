@@ -10,10 +10,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CalcTest {
     Calculator calculator = new Calculator();
+    Operation operation = new Operation();
 
     @DisplayName("조건에 맞는 문자열을 입력 받았을 때")
     @ParameterizedTest
-    @CsvSource(value = {"1 + 2 + 3 = 6.0", "4 + 2 / 3 = 2", "2 + 3 * 4 / 2 = 10"}, delimiter = '=')
+    @CsvSource(value = {"1.1 + 2 + 3 = 6.1", "4 + 2 / 3 = 2", "2 + 3 * 4 / 2 = 10"}, delimiter = '=')
     void testCalcRight(String testStr, String expected) {
         assertEquals(calculator.calculate(testStr), Double.parseDouble(expected));
     }
@@ -28,11 +29,11 @@ public class CalcTest {
                 .hasMessage("this is empty string");
     }
 
-    @DisplayName("숫자나 사칙연산 외에 다른 문자가 들어온 경우 ")
+    @DisplayName("사칙 연산자만 허용")
     @ParameterizedTest
-    @ValueSource(strings = {"a b c", " 2 + 3 * # 4 / ( 2", "4 % b + c"})
-    void testCalcWrong(String testStr) {
-        assertThatThrownBy(() -> calculator.calculate(testStr))
+    @CsvSource(value = {"(, 3, 5", " ., 3, 5", "n, 3, 5"}, delimiter = ',')
+    void testCalcWrong(String testOperator, double firstNum, double secondNum) {
+        assertThatThrownBy(() -> operation.operator(testOperator, firstNum, secondNum))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("you are allow to use only number or arithmetic operation");
     }
@@ -46,9 +47,10 @@ public class CalcTest {
                 .hasMessage("start and end char must be number to calculate");
     }
 
+    @DisplayName("0으로 나누는 경우")
     @Test
     void testDivideBy0() {
-        assertThatThrownBy(() -> calculator.divisionOperation(1, 0))
+        assertThatThrownBy(() -> operation.divisionOperation(1, 0))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("you can't divide by 0");
     }
