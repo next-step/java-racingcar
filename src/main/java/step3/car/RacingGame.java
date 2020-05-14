@@ -18,9 +18,10 @@ public class RacingGame {
 
     public List<int[]> start(GenerateNumberStrategy numberGenerator){
         List<int[]> carPositionList = new ArrayList<>();
+        List<Car> cars = carFactory.createCars();
 
         for (int i = 0; i < time; i++) {
-            int[] positions = move(numberGenerator, carFactory.createCars());
+            int[] positions = move(numberGenerator, cars);
             carPositionList.add(positions);
         }
         return carPositionList;
