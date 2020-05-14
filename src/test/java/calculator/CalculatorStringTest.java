@@ -27,6 +27,15 @@ class CalculatorStringTest {
         assertEquals(expected, result);
     }
 
+    @DisplayName("이상 문자열에 대한 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"25 + 5 *:60"}, delimiter = ':')
+    void calculatorEven(String input, int expected) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            calculator.stringCalculator(input);
+        });
+    }
+
     @DisplayName("null 또는 빈 문자열 입력시 에러 테스트")
     @ParameterizedTest
     @NullAndEmptySource
@@ -53,14 +62,15 @@ class CalculatorStringTest {
     void divisionWithZero(String input, int expected) {
         assertThatExceptionOfType(ArithmeticException.class).isThrownBy(() -> {
             calculator.stringCalculator(input);
-        });
+        }).withMessage("분모가 0일수 없습니다.");
     }
 
     @DisplayName("숫자 입력이 아닐시 에러 발생")
     @Test
     void parserIntTest() {
+        String[] strings = {"a"};
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.parserInt("a");
+            calculator.parserInt(strings,0);
         });
     }
 }

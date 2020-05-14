@@ -1,50 +1,29 @@
 package calculator;
-import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 
 import java.util.Optional;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class CalculatorString {
 
-    private static final String WHITESPACE= " ";
+    private static final String WHITESPACE = " ";
 
     public int stringCalculator(String input) {
 
+        CalculatorSymbol calculatorSymbol = new CalculatorSymbol();
         String[] strings = stringParser(input);
-        int total = parserInt(strings[0]);
+        int total = parserInt(strings, 0);
 
         for (int index = 1; index < strings.length; index += 2) {
-
-            CalculatorSymbol calculatorSymbol = new CalculatorSymbol();
-            int secondNum = parserInt(strings[index + 1]);
-
-            switch (strings[index]) {
-                case "+":
-                     total  = calculatorSymbol.add(total, secondNum);
-                     break;
-                case "-":
-                    total =   calculatorSymbol.subtract(total, secondNum);
-                    break;
-                case "*":
-                    total =   calculatorSymbol.multiply(total, secondNum);
-                    break;
-                case "/":
-                    total =   calculatorSymbol.division(total, secondNum);
-                    break;
-                default :
-                    throw new IllegalArgumentException("calculatorsymbol is error");
-            }
+            total = calculatorSymbol.findTypeAndCalculator(total, parserInt(strings, index + 1), strings[index]);
         }
         return total;
     }
 
-    public int parserInt(String word) {
-
-        if(!word.matches("^[0-9]+$")) {
-            throw new IllegalArgumentException("해당 문자는 숫자가 아닙니다.");
+    public int parserInt(String[] words, int index) {
+        String regex = "^[0-9]+$";
+        if (words.length < index + 1 || !words[index].matches(regex)) {
+            throw new IllegalArgumentException("입력 문자 열이 잘못되었습니다.");
         }
-        return Integer.parseInt(word);
+        return Integer.parseInt(words[index]);
 
     }
 
