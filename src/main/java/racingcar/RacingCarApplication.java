@@ -15,11 +15,11 @@ public class RacingCarApplication {
 
         InputValueDto inputValueDto = new InputValueDto(numberOfCar, numberOfPhase);
 
-//        GameInfo gameInfo = new GameInfo(inputValueDto.getNumberOfCar(), inputValueDto.getNumberOfPhase());
-
         RacingGame racingGame = new RacingGame(inputValueDto);
 
-        GameResult gameResult = racingGame.startGame(new RandomNumberGenerator());
+        racingGame.startGame(new RandomNumberGenerator());
+
+        GameResult gameResult = racingGame.getGameResult();
 
         OutputView.printGameResult(gameResult);
     }

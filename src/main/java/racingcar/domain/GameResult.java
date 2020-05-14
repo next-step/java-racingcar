@@ -8,17 +8,13 @@ public class GameResult {
     private final int numberOfPhase;
     private List<PhaseResult> phaseResults;
 
-    public GameResult(int numberOfPhase) {
+    public GameResult(int numberOfPhase, List<PhaseResult> phaseResults) {
         this.numberOfPhase = numberOfPhase;
-        phaseResults = new ArrayList<>();
+        this.phaseResults = phaseResults;
     }
 
     public int getNumberOfPhase() {
         return numberOfPhase;
-    }
-
-    public void addPhaseResult(PhaseResult phaseResult) {
-        this.phaseResults.add(phaseResult);
     }
 
     public PhaseResult findByPhaseNumber(int phaseNumber) {
