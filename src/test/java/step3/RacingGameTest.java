@@ -29,7 +29,7 @@ public class RacingGameTest {
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
             racingGame.start();
-        }).withMessageContaining("value is small than zero");
+        }).withMessageContaining("carCount is small than zero");
     }
 
     @Test
@@ -39,7 +39,7 @@ public class RacingGameTest {
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
             racingGame.start();
-        }).withMessageContaining("value is small than zero");
+        }).withMessageContaining("time is small than zero");
     }
 
 }
