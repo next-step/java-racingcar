@@ -14,7 +14,7 @@ public class CalculatorSymbol {
     }
 
     protected int division(int firstNum, int secondNum) {
-        if (firstNum == 0) {
+        if (secondNum == 0) {
             throw new ArithmeticException("분모가 0일수 없습니다.");
         }
         return firstNum / secondNum;
