@@ -44,7 +44,7 @@ class StringCalculatorTest {
 
     @DisplayName("잘못된 입력 문자열에 대한 IllegalArgumentException 발생 여부 테스트")
     @ParameterizedTest
-    @CsvSource({"1 + 2 + - 1", "2 - 2 +", "2 + 3 / 0", "- 2 + 1", "1"})
+    @CsvSource({"1 + 2 + - 1", "2 - 2 +", "2 + 3/", "- 2 + 1", "1"})
     void calculateWrongFormula(String formula) {
 
         Throwable throwable = catchThrowable(() -> {
