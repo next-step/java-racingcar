@@ -1,16 +1,13 @@
 package racingcar.view;
 
-public class OutputView {
-    private static final String OUTPUT_CHARACTERS = "-";
+import racingcar.domain.GameResult;
 
-    public OutputView() {
+public class OutputView {
+    public static void printMessage() {
         System.out.println("\n실행 결과");
     }
-
-    public void printOut(int position) {
-        for (int i = 0; i < position; i++) {
-            System.out.print(OUTPUT_CHARACTERS);
-        }
+    public static void printOut(GameResult gameResult) {
+        gameResult.getResult().forEach(System.out::println);
         System.out.println();
     }
 }
