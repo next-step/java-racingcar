@@ -4,6 +4,7 @@ import com.nextstep.racingcar.domain.car.CarFactory;
 import com.nextstep.racingcar.domain.car.Cars;
 import com.nextstep.racingcar.domain.car.MoveStrategy;
 import com.nextstep.racingcar.domain.round.Round;
+import com.nextstep.racingcar.domain.round.RoundResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,7 @@ public class RacingGame {
     private int roundNumber;
     private List<String> driverNames;
     private List<String> results = new ArrayList<>();
+    private List<RoundResult> roundResults = new ArrayList<>();
 
     private RacingGame(int carNumber, int roundNumber, List<String> driverNames) {
         this.carNumber = carNumber;
@@ -44,6 +46,6 @@ public class RacingGame {
     }
 
     public RacingGameResult getRacingGameResult() {
-        return new RacingGameResult();
+        return RacingGameResult.create(roundResults);
     }
 }
