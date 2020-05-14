@@ -5,10 +5,10 @@ public class Main {
         int carCount = InputView.enterCarCount();
         int round = InputView.enterRound();
 
-        RacingGame racingGame = new RacingGame(carCount, round);
+        RacingGame racingGame = new RacingGame(carCount, round, new RandomMovableStrategy());
         racingGame.start();
 
-        ResultView resultView = new ResultView(racingGame.getRoundCarPositions());
-        resultView.showResult();
+        ResultView resultView = new ResultView(racingGame.getResultCarPositions());
+        resultView.show();
     }
 }
