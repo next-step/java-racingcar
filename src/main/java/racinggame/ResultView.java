@@ -1,38 +1,27 @@
 package racinggame;
 
-import java.util.List;
+import java.util.stream.IntStream;
 
 public class ResultView {
 
     private static final String POSITION_BAR = "-";
     private static final String NEW_LINE = "\n";
 
-    private List<int[]> roundCarPositions;
+    private final ResultCarPositions resultCarPositions;
     private StringBuilder result;
     private String[] prevCarPositions;
 
-    public ResultView(List<int[]> roundCarPositions) {
-        validateResultPositions(roundCarPositions);
-
-        this.roundCarPositions = roundCarPositions;
+    public ResultView(ResultCarPositions resultCarPositions) {
+        this.resultCarPositions = resultCarPositions;
         this.result = new StringBuilder();
-        this.prevCarPositions = new String[roundCarPositions.get(0).length];
+        this.prevCarPositions = new String[resultCarPositions.getCarCount()];
     }
 
-    private void validateResultPositions(List<int[]> roundCarPositions) {
-        if (roundCarPositions == null) {
-            throw new IllegalArgumentException("결과 집합이 존재해야 합니다.");
-        }
-
-        if (roundCarPositions.size() == 0) {
-            throw new IllegalArgumentException("결과 횟수가 한 건 이상 존재해야 합니다.");
-        }
-    }
-
-    public void showResult() {
+    public void show() {
         System.out.println("실행 결과");
 
-        this.roundCarPositions.forEach(this::recordRoundCarPositions);
+        IntStream.range(0, this.resultCarPositions.getTotalRound())
+                .forEach(round -> recordRoundCarPositions(this.resultCarPositions.getPositions(round)));
 
         System.out.println(result);
     }
@@ -51,29 +40,25 @@ public class ResultView {
         }
 
         String previousPosition = prevCarPositions[carNo];
-        if (initializeCarPositionBar(carNo, previousPosition)) {
+        if (previousPosition == null) {
+            initializeCarPositionBar(carNo);
             return;
         }
 
-        result.append(previousPosition);
+        this.result.append(previousPosition);
         addPositionBar(carNo, position, previousPosition);
     }
 
     private void addPositionBar(int carNo, int position, String previousPosition) {
         if (hasMoved(previousPosition.length(), position)) {
-            result.append(POSITION_BAR);
-            prevCarPositions[carNo] += POSITION_BAR;
+            this.result.append(POSITION_BAR);
+            this.prevCarPositions[carNo] += POSITION_BAR;
         }
     }
 
-    private boolean initializeCarPositionBar(int carNo, String previousPosition) {
-        if (previousPosition != null) {
-            return false;
-        }
-
-        result.append(POSITION_BAR);
-        prevCarPositions[carNo] = POSITION_BAR;
-        return true;
+    private void initializeCarPositionBar(int carNo) {
+        this.result.append(POSITION_BAR);
+        this.prevCarPositions[carNo] = POSITION_BAR;
     }
 
     private boolean hasMoved(int previousPosition, int currentPosition) {
@@ -81,6 +66,6 @@ public class ResultView {
     }
 
     private void addNewLine() {
-        result.append(NEW_LINE);
+        this.result.append(NEW_LINE);
     }
 }
