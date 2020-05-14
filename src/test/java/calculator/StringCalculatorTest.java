@@ -83,4 +83,41 @@ class StringCalculatorTest {
         );
     }
 
+    @DisplayName("0으로 나눌 경우 ArithmeticException throw")
+    @ParameterizedTest
+    @MethodSource("source_calculate_zeroDivide_shouldFail")
+    public void calculate_zeroDivide_shouldFail(String input) {
+        assertThatThrownBy(() -> {
+            stringCalculator.calculate(input);
+        }).isInstanceOf(ArithmeticException.class);
+    }
+
+    private static Stream<Arguments> source_calculate_zeroDivide_shouldFail() {
+        return Stream.of(
+                Arguments.of("2 / 0"),
+                Arguments.of("2 + 1 / 0")
+        );
+    }
+
+    @DisplayName("계산식이 유효하지 않으면 IllegalArgumentException throw")
+    @ParameterizedTest
+    @MethodSource("source_calculate_invalidInput_shouldFail")
+    public void calculate_invalidInput_shouldFail(String input) {
+        assertThatThrownBy(() -> {
+            stringCalculator.calculate(input);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    private static Stream<Arguments> source_calculate_invalidInput_shouldFail() {
+        return Stream.of(
+                Arguments.of("! + 3 * 4 / 2"),
+                Arguments.of("2 + "),
+                Arguments.of("2 + 1 + *"),
+                Arguments.of("2 - 1 -5"),
+                Arguments.of("2 * 1 * 55&"),
+                Arguments.of("2 / 1 / 2 = "),
+                Arguments.of("12 + 100 - ten * 21 / 3")
+        );
+    }
+
 }

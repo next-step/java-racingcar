@@ -1,60 +1,71 @@
 package calculator;
 
-import java.util.Arrays;
-
 public class StringCalculator {
 
-    private static final String supportOperator = "+-*/";
+    private static final String SUPPORT_OPERATOR = "+-*/";
+    private static final String DELIMITER = " ";
 
     public int calculate(String input) {
-        if (input == null || input.isEmpty() || input.trim().isEmpty()) {
-            throw new IllegalArgumentException();
-        }
+        validateInput(input);
 
         String[] splitInput = input.split(" ");
 
-        int result = Integer.parseInt(splitInput[0]);
+        int answer = Integer.parseInt(splitInput[0]);
+        for (int i = 1; i < splitInput.length; i += 2) {
+            String operator = splitInput[i];
+            int number = Integer.parseInt(splitInput[i + 1]);
 
-        if (splitInput.length == 1) {
-            return result;
+            validateOperator(operator);
+
+            if (operator.equals("+")) {
+                answer = add(answer, number);
+            }
+            if (operator.equals("-")) {
+                answer = subtract(answer, number);
+            }
+            if (operator.equals("*")) {
+                answer = multiply(answer, number);
+            }
+            if (operator.equals("/")) {
+                answer = division(answer, number);
+            }
         }
 
-        if (splitInput.length == 2) {
-            throw new IllegalArgumentException();
-        }
-
-        return calculate(splitInput[0], splitInput[1], splitInput[2], Arrays.copyOfRange(splitInput, 3, splitInput.length));
+        return answer;
     }
 
-    private int calculate(String number1, String operator, String number2, String[] other) {
-        if (!supportOperator.contains(operator)) {
+    private void validateInput(String input) {
+        if (input == null || input.isEmpty() || input.trim().isEmpty()) {
             throw new IllegalArgumentException();
         }
-
-        if (other.length == 1) {
+        if (input.split(DELIMITER).length % 2 == 0) {
             throw new IllegalArgumentException();
         }
+    }
 
-        int result = Integer.parseInt(number1);
+    private void validateOperator(String operator) {
+        if (!SUPPORT_OPERATOR.contains(operator)) {
+            throw new IllegalArgumentException();
+        }
+    }
 
-        if (operator.equals("+")) {
-            result += Integer.parseInt(number2);
-        }
-        if (operator.equals("-")) {
-            result -= Integer.parseInt(number2);
-        }
-        if (operator.equals("*")) {
-            result *= Integer.parseInt(number2);
-        }
-        if (operator.equals("/")) {
-            result /= Integer.parseInt(number2);
-        }
+    public int add(int number1, int number2) {
+        return number1 + number2;
+    }
 
-        if (other == null || other.length == 0) {
-            return result;
-        }
+    public int subtract(int number1, int number2) {
+        return number1 - number2;
+    }
 
-        return calculate(String.valueOf(result), other[0], other[1], Arrays.copyOfRange(other, 2, other.length));
+    public int multiply(int number1, int number2) {
+        return number1 * number2;
+    }
+
+    public int division(int number1, int number2) {
+        if (number2 == 0) {
+            throw new ArithmeticException();
+        }
+        return number1 / number2;
     }
 
 }
