@@ -17,6 +17,7 @@ public class Racing {
     static Racing of(final int numOfCar, final MovingStrategy movingStrategy) {
         return new Racing(numOfCar, movingStrategy);
     }
+    
     private Racing(final int numOfCar, final MovingStrategy movingStrategy) {
         validateInput(numOfCar, movingStrategy);
         this.movingStrategy = movingStrategy;

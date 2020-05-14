@@ -11,6 +11,9 @@ public class InputView {
 
     private static final Scanner SCANNER = new Scanner(System.in);
 
+    private InputView() {
+    }
+
     public static int inputNumOfCar() {
         return input(NUM_OF_CAR_MESSAGE);
     }
