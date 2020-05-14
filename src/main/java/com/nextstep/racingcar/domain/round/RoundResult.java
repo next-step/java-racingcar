@@ -1,41 +1,26 @@
 package com.nextstep.racingcar.domain.round;
 
-import com.nextstep.racingcar.domain.car.MoveLength;
-
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class RoundResult {
-    private final String driverName;
-    private final MoveLength moveLength;
+    private final List<CarRoundResult> values;
 
-    private RoundResult(String driverName, MoveLength moveLength) {
-        this.driverName = driverName;
-        this.moveLength = moveLength;
+    private RoundResult(List<CarRoundResult> carRoundResultList) {
+        this.values = carRoundResultList;
     }
 
-    public static RoundResult create(String driverName, MoveLength moveLength) {
-        return new RoundResult(driverName, moveLength);
+    public static RoundResult create(List<CarRoundResult> carRoundResultList) {
+        List<CarRoundResult> unmodifiableList = Collections.unmodifiableList(new ArrayList<>(carRoundResultList));
+        return new RoundResult(unmodifiableList);
     }
 
-    public String getDriverName() {
-        return driverName;
+    public int size() {
+        return this.values.size();
     }
 
-    public MoveLength getMoveLength() {
-        return moveLength;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        RoundResult that = (RoundResult) o;
-        return Objects.equals(driverName, that.driverName) &&
-                Objects.equals(moveLength, that.moveLength);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(driverName, moveLength);
+    public List<CarRoundResult> getValues() {
+        return Collections.unmodifiableList(new ArrayList<>(values));
     }
 }

@@ -38,10 +38,10 @@ public class Round {
         return result.toString();
     }
 
-    public List<RoundResult> getRoundResults() {
+    public List<CarRoundResult> getRoundResults() {
         return cars.getCars()
                 .stream()
-                .map(car -> RoundResult.create(car.getDriverName(), car.getMoveLength()))
+                .map(car -> CarRoundResult.create(car.getDriverName(), car.getMoveLength()))
                 .collect(Collectors.toList());
     }
 }

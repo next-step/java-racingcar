@@ -2,6 +2,8 @@ package com.nextstep.racingcar.application;
 
 import com.nextstep.racingcar.domain.car.ForceMoveStrategy;
 import com.nextstep.racingcar.domain.car.CarFactory;
+import com.nextstep.racingcar.domain.round.CarRoundResult;
+import com.nextstep.racingcar.domain.round.RoundResult;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -71,5 +73,13 @@ class RacingGameTests {
         RacingGame racingGame = new RacingGame(driverNames, round);
         racingGame.runByDriversName(new CarFactory(), new ForceMoveStrategy());
 
+        RacingGameResult racingGameResult = racingGame.getRacingGameResult();
+        List<RoundResult> roundResults = racingGameResult.getRoundResults();
+        RoundResult firstRound = roundResults.get(0);
+        RoundResult secondRound = roundResults.get(1);
+        List<CarRoundResult> firstRoundValues = firstRound.getValues();
+        List<CarRoundResult> secondRoundValues = secondRound.getValues();
+        assertThat(firstRoundValues.get(0).getMoveLength().toInt()).isEqualTo(1);
+        assertThat(secondRoundValues.get(0).getMoveLength().toInt()).isEqualTo(2);
     }
 }

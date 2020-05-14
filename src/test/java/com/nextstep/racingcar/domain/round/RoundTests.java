@@ -60,6 +60,6 @@ class RoundTests {
     void getCarsInfo() {
         Round round = Round.newRound(cars);
         assertThat(round.getRoundResults().size()).isEqualTo(2);
-        assertThat(round.getRoundResults().get(0)).isInstanceOf(RoundResult.class);
+        assertThat(round.getRoundResults().get(0)).isInstanceOf(CarRoundResult.class);
     }
 }

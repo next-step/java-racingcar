@@ -15,7 +15,7 @@ public class RacingGame {
     private int roundNumber;
     private List<String> driverNames;
     private List<String> results = new ArrayList<>();
-    private List<RoundResult> roundResults = new ArrayList<>();
+    private RacingGameResult racingGameResult;
 
     private RacingGame(int carNumber, int roundNumber, List<String> driverNames) {
         this.carNumber = carNumber;
@@ -44,12 +44,14 @@ public class RacingGame {
     public void runByDriversName(CarFactory carFactory, MoveStrategy moveStrategy) {
         Cars cars = Cars.createCarsByDriverNames(driverNames, carFactory);
 
+        List<RoundResult> roundResultList = new ArrayList<>();
         IntStream.range(0, roundNumber).forEach(num -> {
             Round round = Round.newRound(cars);
             round.moveAll(moveStrategy);
-            // TODO: RoundResults 일급콜렉션 구현 후 되돌아오자
-//            roundResults.add(round.getRoundResults());
+            roundResultList.add(RoundResult.create(round.getRoundResults()));
         });
+
+        racingGameResult = RacingGameResult.create(roundResultList);
     }
 
     public List<String> getResults() {
@@ -57,6 +59,6 @@ public class RacingGame {
     }
 
     public RacingGameResult getRacingGameResult() {
-        return RacingGameResult.create(roundResults);
+        return this.racingGameResult;
     }
 }
