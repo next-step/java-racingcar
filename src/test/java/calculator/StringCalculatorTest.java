@@ -1,6 +1,7 @@
 package calculator;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -43,7 +44,7 @@ class StringCalculatorTest {
 
     @DisplayName("잘못된 입력 문자열에 대한 IllegalArgumentException 발생 여부 테스트")
     @ParameterizedTest
-    @CsvSource({"1 + 2 + - 1", "2 - 2 +", "2+3/4", "- 2 + 1"})
+    @CsvSource({"1 + 2 + - 1", "2 - 2 +", "2 + 3 / 0", "- 2 + 1", "1"})
     void calculateWrongFormula(String formula) {
 
         Throwable throwable = catchThrowable(() -> {
@@ -52,5 +53,16 @@ class StringCalculatorTest {
         });
 
         assertThat(throwable).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("0으로 나눌 때 ArithmeticException 발생하는 지 확인")
+    @Test
+    public void calculateDivideZeroTest() {
+        Throwable throwable = catchThrowable(() -> {
+            StringCalculator stringCalculator = new StringCalculator("5 / 0");
+            Float result = stringCalculator.calculate();
+        });
+
+        assertThat(throwable).isInstanceOf(ArithmeticException.class);
     }
 }

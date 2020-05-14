@@ -68,4 +68,14 @@ class OperatorTest {
         assertThat(multiplyCalculated).isEqualTo(beforeOperand * nextOperand);
     }
 
+    @DisplayName("0으로 나눌 때 ArithmeticException 발생하는 지 확인")
+    @Test
+    public void calculateDivideZeroTest() {
+        Throwable throwable = catchThrowable(() -> {
+            Operator divideOperator = Operator.getOperator("/");
+            divideOperator.calculate(5, 0);
+        });
+
+        assertThat(throwable).isInstanceOf(ArithmeticException.class);
+    }
 }
