@@ -7,3 +7,28 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+***
+## 구현목록
+* 테스트 단위
+  - 덧셈
+  - 뺄셈
+  - 곱셈
+  - 나눗셈
+  - 입력값이 null 이거나 빈 공백 문자열일 경우  IllegalArgumentException throw
+  - 사칙연산 기호가 아닌 경우 IllegalArgumentException throw
+  - 사칙 연산을 모두 포함하는 기능 구현
+  - 공백 문자열을 빈 공백 문자로 분리하려면 String 클래스의 split(" ") 메소드를 활용한다.
+  - 반복적인 패턴을 찾아 반복문으로 구현한다.
+
+***
+## step3 기능 구현목록  
+* 요구사항
+  - 참가 자동차 수 지정
+  - 경주 진행 시도 횟수 지정
+  - 자동차는 전진, 멈춤 가능
+  - 전진 조건 random 값 0 ~ 9 중에서  4 이상
+  - 자동차 상태 출력(출력 시점 제약 없음)
+- 모든 단위 테스트 구현(UI로직 제외)
+- 코드 컨벤션 지키기
+- else 예약어 미사용 
