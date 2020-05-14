@@ -2,12 +2,12 @@ package calculator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CalculatorStringTest {
@@ -53,6 +53,14 @@ class CalculatorStringTest {
     void divisionWithZero(String input, int expected) {
         assertThatExceptionOfType(ArithmeticException.class).isThrownBy(() -> {
             calculator.stringCalculator(input);
+        });
+    }
+
+    @DisplayName("숫자 입력이 아닐시 에러 발생")
+    @Test
+    void parserIntTest() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            calculator.parserInt("a");
         });
     }
 }
