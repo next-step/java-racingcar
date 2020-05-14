@@ -10,7 +10,12 @@ public enum Operator {
 
     PLUS("+", (beforeOperand, nextOperand) -> beforeOperand + nextOperand),
     MINUS("-", (beforeOperand, nextOperand) -> beforeOperand - nextOperand),
-    DIVIDE("/", (beforeOperand, nextOperand) -> beforeOperand / nextOperand),
+    DIVIDE("/", (beforeOperand, nextOperand) -> {
+        if(nextOperand == 0) {
+            throw new ArithmeticException("It cannot be divided by zero.");
+        }
+        return beforeOperand / nextOperand;
+    }),
     MULTIPLY("*", (beforeOperand, nextOperand) -> beforeOperand * nextOperand);
 
     private String symbol;
