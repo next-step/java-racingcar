@@ -35,7 +35,7 @@ public class CalcTest {
     void testArithmeticOperationOnly(String testOperator, double firstNum, double secondNum) {
         assertThatThrownBy(() -> operation.operator(testOperator, firstNum, secondNum))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("you are allow to use only number or arithmetic operation");
+                .hasMessage("you are allow to use only arithmetic operation");
     }
 
     @DisplayName("처음과 끝이 숫자가 아닌 경우 ")
