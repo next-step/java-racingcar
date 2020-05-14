@@ -20,8 +20,7 @@ public class RacingGame {
 
     public void startGame(NumberGenerator numberGenerator) {
         for (int phase = 0; phase < numberOfPhase; phase++) {
-            List<Integer> carsLocationAfterMove = participateCars.moveCars(numberGenerator);
-            PhaseResult phaseResult = new PhaseResult(carsLocationAfterMove);
+            PhaseResult phaseResult = new PhaseResult(participateCars.moveCars(numberGenerator));
             phaseResults.add(phaseResult);
         }
     }
