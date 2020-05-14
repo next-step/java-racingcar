@@ -22,20 +22,6 @@ class RacingGameTests {
         assertThat(racingGame).isNotNull();
     }
 
-    @DisplayName("게임을 1라운드 진행하고 결과 확인")
-    @Test
-    void checkResultTest() {
-        int carNumber = 3;
-        int round = 2;
-        RacingGame racingGame = new RacingGame(carNumber, round);
-
-        racingGame.run(new CarFactory(), new ForceMoveStrategy());
-
-        List<String> results = racingGame.getResults();
-        assertThat(results.get(0)).isEqualTo("-\n-\n-\n");
-        assertThat(results.get(1)).isEqualTo("--\n--\n--\n");
-    }
-
     @DisplayName("진행할 라운드 수와 String 리스트를 입력 받아서 객체 생성")
     @Test
     void createByStringListTest() {

@@ -31,16 +31,6 @@ public class RacingGame {
         this(0, roundNumber, driverNames);
     }
 
-    public void run(CarFactory carFactory, MoveStrategy moveStrategy) {
-        Cars cars = Cars.createRandomCarsByNumber(carNumber, carFactory);
-
-        IntStream.range(0, roundNumber).forEach(num -> {
-            Round round = Round.newRound(cars);
-            round.moveAll(moveStrategy);
-            results.add(round.getTotalResult());
-        });
-    }
-
     public void runByDriversName(CarFactory carFactory, MoveStrategy moveStrategy) {
         Cars cars = Cars.createCarsByDriverNames(driverNames, carFactory);
 
