@@ -12,4 +12,11 @@ class CarRoundResultTests {
     void createTest() {
         assertThat(CarRoundResult.create("poppo", MoveLength.createZero())).isNotNull();
     }
+
+    @DisplayName("현재 상태를 형식에 맞춰서 String으로 바꿀 수 있어야 한다.")
+    @Test
+    void toStringStatusTest() {
+        CarRoundResult roundResult = CarRoundResult.create("poppo", MoveLength.createByValue(1));
+        assertThat(roundResult.toStringStatus()).isEqualTo("poppo : -");
+    }
 }

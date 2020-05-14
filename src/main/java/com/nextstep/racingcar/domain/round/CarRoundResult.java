@@ -38,4 +38,8 @@ public class CarRoundResult {
     public int hashCode() {
         return Objects.hash(driverName, moveLength);
     }
+
+    public String toStringStatus() {
+        return this.driverName + " : " + this.moveLength.toStringLength();
+    }
 }

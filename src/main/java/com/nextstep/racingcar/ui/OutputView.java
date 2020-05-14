@@ -1,18 +1,19 @@
 package com.nextstep.racingcar.ui;
 
-import java.util.List;
+import com.nextstep.racingcar.application.RacingGameResult;
+
+import java.util.stream.Collectors;
 
 public class OutputView {
-    private List<String> results;
+    private RacingGameResult racingGameResult;
 
-    public OutputView(List<String> results) {
-        this.results = results;
+    public OutputView(RacingGameResult racingGameResult) {
+        this.racingGameResult = racingGameResult;
     }
 
-    public void printResults() {
-        System.out.println("\n실행 결과");
-        for (String result : this.results) {
-            System.out.println(result);
-        }
+    public String toStringResult() {
+        return racingGameResult.getRoundResults().stream()
+                .map(roundResult -> roundResult.toStringResult() + "\n")
+                .collect(Collectors.joining());
     }
 }

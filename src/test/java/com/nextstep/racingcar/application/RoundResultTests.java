@@ -13,7 +13,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class CarRoundResultTests {
+class RoundResultTests {
     @DisplayName("RoundResult 리스트로 일급 콜렉션 생성 가능")
     @Test
     void createTest() {
@@ -49,5 +49,16 @@ class CarRoundResultTests {
         List<CarRoundResult> values = roundResult.getValues();
         assertThatThrownBy(() -> values.add(CarRoundResult.create("ita", MoveLength.createZero())))
                 .isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @DisplayName("형식에 맞춰서 현재의 결과를 String으로 표현해야 한다.")
+    @Test
+    void toStringResult() {
+        List<CarRoundResult> carRoundResultList = new ArrayList<>();
+        carRoundResultList.add(CarRoundResult.create("poppo", MoveLength.createByValue(1)));
+        carRoundResultList.add(CarRoundResult.create("ita", MoveLength.createByValue(2)));
+        RoundResult roundResult = RoundResult.create(carRoundResultList);
+
+        assertThat(roundResult.toStringResult()).isEqualTo("poppo : -\nita : --\n");
     }
 }

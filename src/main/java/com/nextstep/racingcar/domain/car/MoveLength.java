@@ -15,6 +15,10 @@ public class MoveLength {
         return new MoveLength(0);
     }
 
+    public static MoveLength createByValue(int value) {
+        return new MoveLength(value);
+    }
+
     protected static MoveLength createByInt(int value) {
         return new MoveLength(value);
     }

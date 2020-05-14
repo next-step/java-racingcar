@@ -1,8 +1,7 @@
 package com.nextstep.racingcar.domain.round;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class RoundResult {
     private final List<CarRoundResult> values;
@@ -22,5 +21,24 @@ public class RoundResult {
 
     public List<CarRoundResult> getValues() {
         return Collections.unmodifiableList(new ArrayList<>(values));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RoundResult that = (RoundResult) o;
+        return Objects.equals(values, that.values);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(values);
+    }
+
+    public String toStringResult() {
+        return this.values.stream()
+                .map(carRoundResult -> carRoundResult.toStringStatus() + "\n")
+                .collect(Collectors.joining());
     }
 }
