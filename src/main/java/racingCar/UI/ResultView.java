@@ -14,13 +14,13 @@ public class ResultView {
         }
     }
 
-    public void printCarsPosition(List<RacingCar> racingCarList) {
+    private void printCarsPosition(List<RacingCar> racingCarList) {
         for (RacingCar racingCar : racingCarList) {
             printPosition(racingCar);
         }
     }
 
-    public void printPosition(RacingCar racingCar) {
+    private void printPosition(RacingCar racingCar) {
         for (int idx = 0; idx < racingCar.getPosition(); idx++) {
             System.out.print("-");
         }
