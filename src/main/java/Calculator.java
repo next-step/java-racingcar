@@ -82,6 +82,5 @@ public class Calculator {
         public static Symbol find(String symbol) {
             return Optional.ofNullable(symbols.get(symbol)).orElseThrow(IllegalArgumentException::new);
         }
-
     }
 }
