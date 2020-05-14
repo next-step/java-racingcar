@@ -24,10 +24,14 @@ public class StringCalculator {
 
     private String[] splitExpressionByDelimiter(String expression) {
         String[] values = expression.split(DELIMITER);
-        if(values.length < 3 || values.length % 2 == 0) {
+        if(isInValidExpression(values)) {
             throw new IllegalArgumentException("연산자와 피연산자는 공백을 기준으로 정확하게 입력해주세요. EX) 2 + 3 * 4 / 2");
         }
 
         return values;
+    }
+
+    private boolean isInValidExpression(String[] values) {
+        return values.length < 3 || values.length % 2 == 0;
     }
 }
