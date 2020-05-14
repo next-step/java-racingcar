@@ -43,15 +43,13 @@ class RacingGameTests {
         assertThat(racingGame).isNotNull();
     }
 
-    @DisplayName("주어진 회수만큼 라운드를 진행하고 라운드 리스트를 반환하는지 확인")
+    @DisplayName("운전자이름 리스트, 라운드 횟수를 전달해서 레이싱 게임 객체 생성 가능")
     @Test
     void runByCarWithDriverNameTest() {
-        // TODO: Cars 일급 컬렉션 구현 후 재구현
-//        List<String> driverNames = Arrays.asList("poppo", "saul", "ita");
-//        int round = 5;
-//        RacingGame racingGame = new RacingGame(driverNames, round);
-//        racingGame.runByCarWithDriver(new CarFactory(), new ForceMoveStrategy());
-//
-//        assertThat(racingGame.getRounds().size).isEqualTo(5);
+        List<String> driverNames = Arrays.asList("poppo", "saul", "ita");
+        int round = 2;
+        RacingGame racingGame = new RacingGame(driverNames, round);
+
+        assertThat(racingGame).isNotNull();
     }
 }
