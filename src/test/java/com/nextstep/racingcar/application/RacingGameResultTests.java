@@ -42,6 +42,7 @@ class RacingGameResultTests {
     @DisplayName("우승자 명단을 얻을 수 있음")
     @Test
     void getWinnersTest() {
-
+        RacingGameResult fakeRacingGameResult = FakeRacingGameResultFactory.getFakeRacingGameResult();
+        assertThat(fakeRacingGameResult.getWinners()).containsExactly("poppo", "saul");
     }
 }

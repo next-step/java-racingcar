@@ -1,10 +1,11 @@
 package com.nextstep.racingcar.application;
 
+import com.nextstep.racingcar.domain.car.MoveLength;
+import com.nextstep.racingcar.domain.round.CarRoundResult;
 import com.nextstep.racingcar.domain.round.RoundResult;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class RacingGameResult {
     private final List<RoundResult> roundResultList;
@@ -24,5 +25,25 @@ public class RacingGameResult {
 
     public List<RoundResult> getRoundResults() {
         return new ArrayList<>(this.roundResultList);
+    }
+
+    public List<String> getWinners() {
+        RoundResult lastRound = this.roundResultList.get(this.roundResultList.size() - 1);
+        MoveLength longestMoveLength = getLongestMoveLength(lastRound);
+        List<CarRoundResult> winnerInfo = lastRound.getValues().stream()
+                .filter(carRoundResult -> carRoundResult.getMoveLength().equals(longestMoveLength))
+                .collect(Collectors.toList());
+
+        return winnerInfo.stream()
+                .map(CarRoundResult::getDriverName)
+                .collect(Collectors.toList());
+    }
+
+    private MoveLength getLongestMoveLength(RoundResult lastRound) {
+        CarRoundResult maxCarRoundResult = lastRound.getValues().stream()
+                .max(Comparator.comparing((CarRoundResult carRoundResult) -> carRoundResult.getMoveLength().toInt()))
+                .get();
+
+        return MoveLength.createByValue(maxCarRoundResult.getMoveLength().toInt());
     }
 }

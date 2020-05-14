@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FakeRacingGameResultFactory {
+    /*
+        참석자: poppo, ita, saul
+        라운드수: 2회
+        우승자: poppo, saul
+    */
     public static RacingGameResult getFakeRacingGameResult() {
         List<RoundResult> roundResultList = new ArrayList<>();
         List<CarRoundResult> carRoundOneResultList = new ArrayList<>();
