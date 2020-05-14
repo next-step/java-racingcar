@@ -12,7 +12,6 @@ public class StringTest {
         String given = "1,2";
         String[] actual = given.split(",");
         assertThat(actual).containsExactly("1", "2");
-
     }
 
     @Test

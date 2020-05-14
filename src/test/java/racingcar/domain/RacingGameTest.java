@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,7 +19,6 @@ public class RacingGameTest {
         List<String> names = Arrays.asList("car1","car2","car3");
 
         RacingGame racingGame = new RacingGame(getRacingCars(names, canMove));
-
         racingGame.tryMove();
 
         racingGame.getCars()
@@ -31,7 +30,7 @@ public class RacingGameTest {
     @ValueSource(strings = {"car1,car2,car3"})
     void getPositions(String carNames) {
         List<String> names = Arrays.asList(carNames.split(","));
-        RacingGame racingGame = RacingGameFactory.newRacingGame(names);
+        RacingGame racingGame = createRacingGame(carNames);
 
         List<Car> cars = racingGame.getCars();
         for (int i = 0; i < names.size() ; i++){
@@ -46,16 +45,12 @@ public class RacingGameTest {
     @ParameterizedTest
     @ValueSource(strings = {"car1,car2,car3"})
     void getWinners(String carNames) {
-        List<String> names = Arrays.asList(carNames.split(","));
-        RacingGame racingGame = RacingGameFactory.newRacingGame(names);
+        RacingGame racingGame = createRacingGame(carNames);
         racingGame.tryMove();
-
 
         int max= racingGame.getCars().stream().map(Car::getPosition).max(Integer::compareTo).orElse(0);
 
         racingGame.getWinners().forEach(car -> assertThat(car.getPosition()).isEqualTo(max));
-
-
     }
 
     private RacingCars getRacingCars(List<String> names, boolean canMove) {
@@ -64,6 +59,11 @@ public class RacingGameTest {
                 .map(s -> new Car(() -> canMove))
                 .collect(Collectors.toList())
         );
+    }
+
+    private RacingGame createRacingGame(String carNames){
+        List<String> names = Arrays.asList(carNames.split(","));
+        return  RacingGameFactory.newRacingGame(names);
     }
 
 

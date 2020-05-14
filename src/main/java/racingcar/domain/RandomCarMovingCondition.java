@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class RandomCarMovingCondition implements CarMovingCondition {
 
@@ -21,7 +21,7 @@ public class RandomCarMovingCondition implements CarMovingCondition {
         return randomGenerator.nextInt(bound) >= threshold;
     }
 
-    interface RandomGenerator {
+    public interface RandomGenerator {
         int nextInt(int bound);
     }
 }

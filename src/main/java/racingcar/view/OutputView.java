@@ -2,14 +2,13 @@ package racingcar.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.Car;
+import racingcar.domain.Car;
 
 public class OutputView {
 
     public void printStart() {
         System.out.println("\n실행 결과");
     }
-
 
     public void printRound(List<Car> cars) {
         cars.stream().forEach(car -> {
