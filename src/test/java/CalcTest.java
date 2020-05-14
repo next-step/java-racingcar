@@ -2,6 +2,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
@@ -19,7 +20,8 @@ public class CalcTest {
 
     @DisplayName("공백인 문자열을 입력 받았을 때")
     @ParameterizedTest
-    @ValueSource(strings = {"", "   "})
+    @NullSource
+    @ValueSource(strings = {"", "   ", "\t", "\n"})
     void testEmptyString(String testStr) {
         assertThatThrownBy(() -> calculator.calculate(testStr))
                 .isInstanceOf(IllegalArgumentException.class)
