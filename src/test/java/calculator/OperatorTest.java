@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -38,11 +39,7 @@ class OperatorTest {
         );
     }
 
-    @DisplayName("나누기 연산일 때, 오른쪽 피연산자가 0이면 0으로 나누었을 때, throw IllegalArgumentException 를 실행")
-    @ParameterizedTest
-    @ValueSource(strings = {"1", "4", "77"})
-    void throwExceptionIfDivideByZero (final String value) {
-        Operator operator = Operator.findOperator(Operator.DIVIDE.getSymbol());
+
         assertThatThrownBy(() -> operator.operate(Operand.of(value), ZERO))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining("0으로 나눌 수 없습니다.");

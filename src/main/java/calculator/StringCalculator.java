@@ -24,6 +24,7 @@ public class StringCalculator {
 
     private String[] splitExpressionByDelimiter(String expression) {
         String[] values = expression.split(DELIMITER);
+
         if(isInValidExpression(values)) {
             throw new IllegalArgumentException("연산자와 피연산자는 공백을 기준으로 정확하게 입력해주세요. EX) 2 + 3 * 4 / 2");
         }
