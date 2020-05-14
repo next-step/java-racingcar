@@ -19,7 +19,7 @@ public class RacingGameInfo {
     }
 
     private void validate(int inputNumberOfCar, int inputNumberOfAttempt) {
-        if (inputNumberOfAttempt < 0 || inputNumberOfCar < 0) {
+        if (inputNumberOfAttempt <= 0 || inputNumberOfCar <= 0) {
             throw new IllegalArgumentException("0이하의 수는 입력할 수 없습니다");
         }
     }
