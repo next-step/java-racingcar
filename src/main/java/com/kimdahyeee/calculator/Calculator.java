@@ -22,16 +22,16 @@ public class Calculator {
 
     private int execute(String[] values) {
         int index = 0;
-        int result = firstValueMustBeNumber(values[index++]);
+        int result = convertStringToInt(values[index++]);
 
         for (int i = index; i < values.length; i++) {
-            result = Operator.operation(values[i], Integer.parseInt(values[++i]), result);
+            result = Operator.operation(values[i], convertStringToInt(values[++i]), result);
         }
 
         return result;
     }
 
-    private int firstValueMustBeNumber(String value) {
+    private int convertStringToInt(String value) {
         return Integer.parseInt(value);
     }
 
