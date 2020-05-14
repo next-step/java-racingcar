@@ -3,9 +3,7 @@ package racingcar;
 import racingcar.domain.GameInfo;
 import racingcar.domain.GameResult;
 import racingcar.domain.RacingGame;
-import racingcar.domain.car.RandomNumberGenerator;
 import racingcar.domain.car.RandomPower;
-import racingcar.dto.InputValueDto;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 

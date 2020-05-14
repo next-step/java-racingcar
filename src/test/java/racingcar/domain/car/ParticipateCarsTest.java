@@ -16,8 +16,8 @@ public class ParticipateCarsTest {
     private static Stream<Arguments> provideParticipateCarsInformation() {
         return Stream.of(
                 Arguments.of(1, Arrays.asList(1)),
-                Arguments.of(2, Arrays.asList(1, 1)),
-                Arguments.of(3, Arrays.asList(1, 1, 1))
+                Arguments.of(2, Arrays.asList(1, 0)),
+                Arguments.of(3, Arrays.asList(1, 0, 1))
         );
     }
 
@@ -26,7 +26,7 @@ public class ParticipateCarsTest {
     @MethodSource("provideParticipateCarsInformation")
     void tryMove(int numberOfCar, List<Integer> moveResult) {
         ParticipateCars participateCars = new ParticipateCars(numberOfCar);
-        List<Integer> actualResult = participateCars.moveCars(() -> true);
+        List<Integer> actualResult = participateCars.moveCars(new FixedPower());
 
         assertThat(actualResult).isEqualTo(moveResult);
 
