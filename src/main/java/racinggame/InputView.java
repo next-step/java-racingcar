@@ -4,9 +4,12 @@ import java.util.Scanner;
 
 public final class InputView {
 
+    private static final int MIN_INPUT_VALUE = 1;
+
     private static Scanner scanner = new Scanner(System.in);
 
-    private InputView() { }
+    private InputView() {
+    }
 
     public static int enterCarCount() {
         return enterInputValue("자동차 대수는 몇 대 인가요?");
@@ -26,7 +29,7 @@ public final class InputView {
     }
 
     private static void validateInputValue(int value) {
-        if (value <= 0) {
+        if (value < MIN_INPUT_VALUE) {
             throw new InputValueException();
         }
     }
