@@ -1,33 +1,32 @@
 package racinggame;
 
-import java.util.Random;
-
 public class RacingCar {
 
-    private static final int MIN_MOVABLE_VALUE = 4;
-
+    private final MovableStrategy movableStrategy;
     private int position;
-    private Random random = new Random();
 
-    public static RacingCar newRacingCar() {
-        return new RacingCar();
+    private RacingCar(MovableStrategy movableStrategy) {
+        validateRacingCar(movableStrategy);
+        this.movableStrategy = movableStrategy;
+    }
+
+    public static RacingCar newInstance(MovableStrategy movableStrategy) {
+        return new RacingCar(movableStrategy);
+    }
+
+    private void validateRacingCar(MovableStrategy movableStrategy) {
+        if (movableStrategy == null) {
+            throw new IllegalArgumentException("이동 전략이 존재하지 않습니다.");
+        }
     }
 
     public void move() {
-        if (isMovable(getMovableRandomValue())) {
+        if (movableStrategy.isMovable()) {
             this.position++;
         }
     }
 
     public int currentPosition() {
         return this.position;
-    }
-
-    private int getMovableRandomValue() {
-        return random.nextInt(10);
-    }
-
-    private boolean isMovable(int movableRandomValue) {
-        return movableRandomValue >= MIN_MOVABLE_VALUE;
     }
 }
