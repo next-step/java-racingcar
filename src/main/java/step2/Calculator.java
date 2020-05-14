@@ -1,6 +1,5 @@
 package step2;
 
-import java.util.Arrays;
 import java.util.Objects;
 
 public class Calculator {
@@ -18,8 +17,11 @@ public class Calculator {
     }
 
     private double parseDouble(String number) {
-        // TODO : Exception Handling
-        return Double.parseDouble(number);
+        try {
+            return Double.parseDouble(number);
+        } catch (Exception ex) {
+            throw new IllegalArgumentException("숫자가 아닙니다");
+        }
     }
 
     public String[] validateEquation(String equation){
