@@ -3,8 +3,8 @@ package racingcar.view;
 import java.util.Scanner;
 
 public class InputView {
-    private int carCount;
-    private int moveCount;
+    private final int carCount;
+    private final int moveCount;
 
     public InputView(int carCount, int moveCount) {
         this.carCount = carCount;
