@@ -19,6 +19,10 @@ public class RacingGameResult {
     }
 
     public int size() {
-        return roundResults.size();
+        return this.roundResults.size();
+    }
+
+    public List<RoundResult> getRoundResults() {
+        return new ArrayList<>(this.roundResults);
     }
 }

@@ -41,6 +41,17 @@ public class RacingGame {
         });
     }
 
+    public void runByDriversName(CarFactory carFactory, MoveStrategy moveStrategy) {
+        Cars cars = Cars.createCarsByDriverNames(driverNames, carFactory);
+
+        IntStream.range(0, roundNumber).forEach(num -> {
+            Round round = Round.newRound(cars);
+            round.moveAll(moveStrategy);
+            // TODO: RoundResults 일급콜렉션 구현 후 되돌아오자
+//            roundResults.add(round.getRoundResults());
+        });
+    }
+
     public List<String> getResults() {
         return this.results;
     }

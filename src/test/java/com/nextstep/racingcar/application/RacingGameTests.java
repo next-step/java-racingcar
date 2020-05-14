@@ -62,4 +62,14 @@ class RacingGameTests {
 
         assertThat(racingGame.getRacingGameResult()).isInstanceOf(RacingGameResult.class);
     }
+
+    @DisplayName("운전자 이름으로 게임 생성해서 2회 진행 후 진행거리가 잘 표기되는지 확인")
+    @Test
+    void runRacingGameByDriverNameTest() {
+        List<String> driverNames = Arrays.asList("poppo", "saul", "ita");
+        int round = 2;
+        RacingGame racingGame = new RacingGame(driverNames, round);
+        racingGame.runByDriversName(new CarFactory(), new ForceMoveStrategy());
+
+    }
 }
