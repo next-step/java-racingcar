@@ -4,6 +4,9 @@ public class FormulaValidation {
 
     private final String[] formula;
 
+    private final int MINIMUM_COUNT_FORMULA_ELEMENT = 3;
+    private final int NUMBER_DETERMINE_ODD_OR_EVEN = 2;
+
     public FormulaValidation(String[] str) {
         formula = str;
     }
@@ -40,14 +43,14 @@ public class FormulaValidation {
 
     private boolean isElementCountOfInvalid(String[] formulaElements) {
         int length = formulaElements.length;
-        return (length < 3 || length % 2 == 0);
+        return (length < MINIMUM_COUNT_FORMULA_ELEMENT || length % NUMBER_DETERMINE_ODD_OR_EVEN == 0);
     }
 
     private boolean isOrderOfInvalidOperand(int index, String element) {
-        return index % 2 == 0 && !Operand.isOperand(element);
+        return index % NUMBER_DETERMINE_ODD_OR_EVEN == 0 && !Operand.isOperand(element);
     }
 
     private boolean isOrderOfInvalidOperator(int index, String element) {
-        return index % 2 == 1 && !Operator.isOperatorSymbol(element);
+        return index % NUMBER_DETERMINE_ODD_OR_EVEN == 1 && !Operator.isOperatorSymbol(element);
     }
 }
