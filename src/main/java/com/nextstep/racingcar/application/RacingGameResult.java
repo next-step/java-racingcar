@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class RacingGameResult {
-    List<RoundResult> roundResults;
+    private final List<RoundResult> roundResults;
 
     private RacingGameResult(List<RoundResult> roundResults) {
         this.roundResults = roundResults;
