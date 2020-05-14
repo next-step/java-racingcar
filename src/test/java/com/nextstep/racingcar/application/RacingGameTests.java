@@ -65,6 +65,9 @@ class RacingGameTests {
         assertThat(racingGame.getRacingGameResult()).isInstanceOf(RacingGameResult.class);
     }
 
+    // 너무 지나치게 구현적인 관점이 아닌지 고민해보자
+    // 이미 각각의 객체는 상태를 변환하는 역할을 충실히 잘 수행하고 있다.
+    // 여기서는 그냥 RacingGameResult 타입을 잘 반환하는지만 생각하면 되지 않을까?
     @DisplayName("운전자 이름으로 게임 생성해서 2회 진행 후 진행거리가 잘 표기되는지 확인")
     @Test
     void runRacingGameByDriverNameTest() {
