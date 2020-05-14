@@ -1,6 +1,5 @@
 package racingcar;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,36 +9,29 @@ import static org.assertj.core.api.Assertions.*;
 
 class RacingGameTest {
 
-    private RacingGame game;
-
-    @BeforeEach
-    void setUp() {
-        game = new RacingGame();
-    }
-
     @DisplayName("자동차 수가 1 미만이면 IllegalArgumentException")
     @ParameterizedTest
     @CsvSource({"5, 0", "10, 0", "100, 0"})
     void readyGame_CarCountLessThan0_Then_IllegalArgumentException(int time, int carCount) {
-        assertThatIllegalArgumentException().isThrownBy(() -> game.ready(time, carCount));
+        assertThatIllegalArgumentException().isThrownBy(() -> new RacingGame(time, carCount));
     }
 
     @DisplayName("이동 횟수가 1 미만이면 IllegalArgumentException")
     @ParameterizedTest
     @CsvSource({"0, 5", "0, 10", "0, 100"})
     void readyGame_timeLessThan0_Then_IllegalArgumentException(int time, int carCount) {
-        assertThatIllegalArgumentException().isThrownBy(() -> game.ready(time, carCount));
+        assertThatIllegalArgumentException().isThrownBy(() -> new RacingGame(time, carCount));
     }
 
     @DisplayName("지정 횟수보다 많이 자동차를 이동시키면 IllegalStateException")
     @Test
     void move_timeIs0_Then_IllegalStateException() {
         int time = 1, carCount = 5;
-        game.ready(time, carCount);
+        RacingGame game = new RacingGame(time, carCount);
 
         game.move();
 
-        assertThatThrownBy(() -> game.move())
+        assertThatThrownBy(game::move)
                 .isInstanceOf(IllegalStateException.class);
     }
 
@@ -47,7 +39,7 @@ class RacingGameTest {
     @Test
     void readyGame() {
         int time = 5, carCount = 5;
-        game.ready(time, carCount);
+        RacingGame game = new RacingGame(time, carCount);
 
         int[] positions = game.move();
 
