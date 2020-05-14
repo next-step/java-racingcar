@@ -25,21 +25,17 @@ public class RacingGameTest {
     @Test
     @DisplayName("자동차 대수 음수 입력시 레이싱 게임 실패 테스트")
     void carCountInputMinusTest() {
-        RacingGame racingGame = new RacingGame(-3, 4);
-
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            racingGame.start();
-        }).withMessageContaining("carCount is small than zero");
+            RacingGame racingGame = new RacingGame(-3, 4);
+        }).withMessageContaining("value is small than zero");
     }
 
     @Test
     @DisplayName("회 수 음수 입력시 레이싱 게임 실패 테스트")
     void timeInputMinusTest() {
-        RacingGame racingGame = new RacingGame(3, -4);
-
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            racingGame.start();
-        }).withMessageContaining("time is small than zero");
+            RacingGame racingGame = new RacingGame(3, -4);
+        }).withMessageContaining("value is small than zero");
     }
 
 }

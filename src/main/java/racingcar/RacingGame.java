@@ -19,7 +19,8 @@ public class RacingGame {
     private List<Racingcar> carPositions = new ArrayList<>();
 
     public RacingGame(int carCount, int time) {
-        validate();
+        validate(carCount);
+        validate(time);
         this.time = time;
         this.carCount = carCount;
     }
@@ -37,13 +38,9 @@ public class RacingGame {
         return resultView;
     }
 
-    private void validate() {
-        if (this.time < INPUT_ERROR_MIN_NUMBER) {
-            throw new IllegalArgumentException("time is small than zero");
-        }
-
-        if (this.carCount < INPUT_ERROR_MIN_NUMBER) {
-            throw new IllegalArgumentException("carCount is small than zero");
+    private void validate(int value) {
+        if (value < INPUT_ERROR_MIN_NUMBER) {
+            throw new IllegalArgumentException("value is small than zero");
         }
     }
 
