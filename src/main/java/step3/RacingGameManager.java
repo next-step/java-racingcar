@@ -6,31 +6,39 @@ import java.util.stream.IntStream;
 
 public class RacingGameManager {
 
-    private List<RacingCar> racingCarList;
-    private final InputView inputView = new InputView();
+    private final int gameRound;
+    private final List<RacingCar> racingCarList;
 
-    public RacingGameManager() {
-    }
+    private int progressRound;
+    private List<Integer> carPositions;
 
-    public void start() {
-        inputView.show();
-
-        generateRaceingCar(inputView.getRacingCarCount());
-        moveRacingCar(inputView.getMoveCount());
-    }
-
-    private void generateRaceingCar(int generateCount) {
-        this.racingCarList = IntStream.range(0, generateCount)
-                .mapToObj(i -> new RacingCar())
+    public RacingGameManager(int carCount, int gameRound) {
+        this.gameRound = gameRound;
+        this.racingCarList = IntStream.range(0, carCount)
+                .mapToObj(RacingCar::create)
                 .collect(Collectors.toList());
     }
 
-    private void moveRacingCar(int moveCount) {
-        IntStream.range(0, moveCount).forEach(i ->
-                this.racingCarList.forEach(racingCar -> racingCar.move(RandomMoveFactory.getInstance())));
+    public static RacingGameManager start(int carCount, int gameRound) {
+        return new RacingGameManager(carCount, gameRound);
     }
 
-    public void end() {
-        // TODO: ResultView를 통해서 결과를 출력
+    public void nextRound() {
+        if (!this.hasNextRound()) {
+            throw new IllegalStateException("진행 할 라운드가 없습니다.");
+        }
+
+        this.progressRound++;
+        this.carPositions = this.racingCarList.stream()
+                .map(racingCar -> racingCar.move(RandomMoveFactory.getInstance()))
+                .collect(Collectors.toList());
+    }
+
+    public boolean hasNextRound() {
+        return this.progressRound < this.gameRound;
+    }
+
+    public List<Integer> getCarPosition() {
+        return this.carPositions;
     }
 }
