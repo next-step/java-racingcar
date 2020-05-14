@@ -14,7 +14,7 @@ public class CalculatorTest {
     void stringCalculatorTest() {
         StringCalculator calculator = new StringCalculator("2 + 3 * 4 / 2");
         calculator.run();
-        assertThat(10.0).isEqualTo(calculator.getResult());
+        assertThat(calculator.getResult()).isEqualTo(10.0);
     }
 
     @Test
