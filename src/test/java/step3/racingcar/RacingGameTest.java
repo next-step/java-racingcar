@@ -20,8 +20,7 @@ public class RacingGameTest {
     @ParameterizedTest
     @ValueSource(ints = {3, 5, 8, 10})
     public void makeRacingCarObjectsInAccordanceWithInput(int carCounts) {
-        CarFactory carFactory = new CarFactory();
-        List<RacingCar> racingCars = carFactory.makeCars(carCounts);
+        List<RacingCar> racingCars = CarFactory.makeCars(carCounts);
         assertThat(racingCars.size()).isEqualTo(carCounts);
     }
 
