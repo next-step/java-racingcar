@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import racingcar.exception.ErrorMessage;
 import racingcar.moving.MovingStrategy;
+import racingcar.util.StringUtil;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,14 +10,14 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
+    private static final String DELIMITER = ",";
+
     private List<Car> cars;
 
-    public static Cars of(final String[] carNames) {
+    public static Cars of(final String carNames) {
         validateCarNames(carNames);
-        List<Car> cars = Arrays.stream(carNames)
-                .map(Car::of)
-                .collect(Collectors.toList());
-        return new Cars(cars);
+        String[] splitCarNames = splitCarNames(carNames);
+        return new Cars(toList(splitCarNames));
     }
 
     private Cars() {
@@ -26,10 +27,22 @@ public class Cars {
         this.cars = cars;
     }
 
-    private static void validateCarNames(final String[] carNames) {
-        if (carNames == null || carNames.length == 0) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_PARAMETER);
+    private static void validateCarNames(final String carNames) {
+        if (StringUtil.isEmpty(carNames)) {
+            throw new IllegalArgumentException(ErrorMessage.IS_NULL_OR_EMPTY);
         }
+    }
+
+    private static String[] splitCarNames(final String carNames) {
+        return Arrays.stream(carNames.split(DELIMITER))
+                .map(String::trim)
+                .toArray(String[]::new);
+    }
+
+    private static List<Car> toList(final String[] carNames) {
+        return Arrays.stream(carNames)
+                .map(Car::of)
+                .collect(Collectors.toList());
     }
 
     public void moveCars(final MovingStrategy movingStrategy) {

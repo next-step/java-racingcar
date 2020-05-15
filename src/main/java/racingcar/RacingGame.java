@@ -11,7 +11,7 @@ import racingcar.view.ResultView;
 public class RacingGame {
 
     public static void main(String[] args) {
-        String[] carNames = InputView.inputNameOfCars();
+        String carNames = InputView.inputNameOfCars();
         int round = InputView.inputLoopCount();
 
         Racing racing = Racing.of(Cars.of(carNames), Round.of(round));
