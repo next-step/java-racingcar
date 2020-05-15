@@ -38,7 +38,7 @@ public class InputView {
 
     private static void validateArrayValue(final String value) {
         if (StringUtil.isEmpty(value)) {
-            throw new IllegalArgumentException("aa");
+            throw new IllegalArgumentException(ErrorMessage.IS_NULL_OR_EMPTY);
         }
     }
 
