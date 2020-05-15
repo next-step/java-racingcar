@@ -2,12 +2,12 @@ package step2;
 
 public enum Operator {
 
-    PLUS("+", (result, nextNumber, operator) -> result + nextNumber),
-    MINUS("-", (result, nextNumber, operator) -> result - nextNumber),
-    MULTIPLY("*", (result, nextNumber, operator) -> result * nextNumber),
-    DIVIDE("/", (result, nextNumber, operator) -> result / nextNumber);
+    PLUS("+", (result, nextNumber) -> result + nextNumber),
+    MINUS("-", (result, nextNumber) -> result - nextNumber),
+    MULTIPLY("*", (result, nextNumber) -> result * nextNumber),
+    DIVIDE("/", (result, nextNumber) -> result / nextNumber);
 
-    private String operator;
+    public String operator;
     public Calculator calculator;
 
     private Operator() {
@@ -19,14 +19,19 @@ public enum Operator {
         this.calculator = calculator;
     }
 
-    static int calculate(int result, int nextNumber, String operator) {
+    static Operator of(String operator) {
         for (Operator op : Operator.values()) {
             if (op.operator.equals(operator)) {
-                return op.calculator.calculate(result, nextNumber, operator);
+                return op;
             }
         }
         throw new IllegalArgumentException();
     }
+
+    int calculate(int result, int nextNumber) {
+        return calculator.calculate(result, nextNumber);
+    }
+
 
 }
 

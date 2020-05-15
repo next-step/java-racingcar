@@ -27,13 +27,16 @@ public class StringCalculator {
     public int calculate() {
 
         int result = Integer.parseInt(inputArray[0]);
+        Operator op = null;
 
         // calculate
         for (int i = 0; i < inputArray.length - 1; i += 2) {
-            result = Operator.calculate(result, Integer.parseInt(inputArray[i + 2]), inputArray[i + 1]);
+            op = Operator.of(inputArray[i + 1]);
+            result = op.calculate(result, Integer.parseInt(inputArray[i + 2]));
         }
 
         return result;
-
     }
+
+
 }
