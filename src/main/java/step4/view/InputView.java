@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class InputView {
 
     private String[] names;
-    private int moveCount;
+    private int tryCount;
 
     public void input(){
         Scanner scanner = new Scanner(System.in);
@@ -14,7 +14,7 @@ public class InputView {
         names = splitNames(scanner.nextLine());
 
         System.out.println("시도할 횟수는 몇 회 인가요?");
-        moveCount = scanner.nextInt();
+        tryCount = scanner.nextInt();
     }
 
     private String[] splitNames(String input) {
@@ -25,7 +25,7 @@ public class InputView {
         return names;
     }
 
-    public int getMoveCount() {
-        return moveCount;
+    public int getTryCount() {
+        return tryCount;
     }
 }
