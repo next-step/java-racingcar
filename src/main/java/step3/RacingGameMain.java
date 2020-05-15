@@ -25,7 +25,7 @@ public class RacingGameMain {
 
                 racingGame = new RacingGame(time, carCount);
 
-                System.out.println("실행결과");
+                resultView.printTitle();
                 for (int i = 0; i < racingGame.getTime(); ++i) {
                     resultView.printResult(racingGame.move());
                     Thread.sleep(1000);
