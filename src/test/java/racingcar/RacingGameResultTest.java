@@ -41,7 +41,7 @@ public class RacingGameResultTest {
         result.add("ray", 2);
         result.add("sonata", 2);
 
-        assertThat(result.getSize()).isEqualTo(2);
+        assertThat(result.getResults().size()).isEqualTo(2);
     }
 
     @Test
