@@ -1,3 +1,5 @@
+package mission1.stringCalculator;
+
 public class StrCalcCondition {
 
     public boolean checkCondition(String strForCalc) {

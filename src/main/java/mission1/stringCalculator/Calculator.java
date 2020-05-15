@@ -1,3 +1,5 @@
+package mission1.stringCalculator;
+
 public class Calculator {
     private StrCalcCondition condition;
     private Operation operation;
