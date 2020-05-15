@@ -20,24 +20,35 @@ import java.util.ArrayList;
  */
 public class ResultView {
 
-
+    /**
+     * 레이싱 게임 객체를 받아 횟수별 iterator
+     * @param racingGame
+     */
     public void displayRacingResult(RacingGame racingGame) {
         int time = racingGame.getTime();
 
         System.out.println("결과 출력");
         for (int i = 0; i < time; i++) {
-            this.displayCarPosition(racingGame.move());
+            this.carPositionIterator(racingGame.move());
             System.out.println();
         }
     }
 
-    private void displayCarPosition(ArrayList<Car> cars) {
+    /**
+     * 자동차 객체 리스트 iterator
+     * @param cars
+     */
+    private void carPositionIterator(ArrayList<Car> cars) {
         for (Car car : cars) {
             this.displayCarLine(car.getPosition());
             System.out.println();
         }
     }
 
+    /**
+     * 자동차 움직인 라인 출력
+     * @param position
+     */
     private void displayCarLine(int position) {
         for (int i = 0; i < position; i++) {
             System.out.print("-");
