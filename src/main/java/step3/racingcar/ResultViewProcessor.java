@@ -1,23 +1,21 @@
 package step3.racingcar;
 
 import java.util.List;
+import java.util.function.Function;
 
 public class ResultViewProcessor {
-    private static boolean isFirst = true;
-
     private ResultViewProcessor() {
     }
 
     public static void printResult(List<Car> cars) {
-        int carCounts = cars.size();
-        if (isFirst == true) {
-            System.out.println(RESULT);
-            isFirst = false;
-        }
-        for (int i = 0; i < carCounts; i++) {
-            printCurrentPosition(cars.get(i));
+        for (Car car : cars) {
+            printCurrentPosition(car);
         }
         System.out.println();
+    }
+
+    public static void printResultHeader(String headerMessage) {
+        System.out.println(headerMessage);
     }
 
     private static void printCurrentPosition(Car car) {
