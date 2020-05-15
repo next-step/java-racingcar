@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
 
@@ -54,6 +55,14 @@ public class RacingGameResultTest {
 
         assertThatCode(() -> result.getWinner()).doesNotThrowAnyException();
         assertThat(result.getWinner()).isEqualTo(expected);
+    }
+
+    @ValueSource(strings = {"ray,genesis", "ray, sonata"})
+    @ParameterizedTest
+    @DisplayName("RacingGame play 이후 우승자를 가져올 때 에러가 발생하지 않는다.")
+    public void getWinnerTest(String cars) {
+        RacingGameResult racingGameResult = new RacingGame(1, cars.split(",")).play();
+        assertThatCode(() -> racingGameResult.getWinner()).doesNotThrowAnyException();
     }
 
     private static Stream<Arguments> provideCarArgument() {
