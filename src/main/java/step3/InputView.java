@@ -44,7 +44,7 @@ public class InputView {
         return true;
     }
 
-    public void inputCarCount() {
+    public void enterCarCount() {
         printCarCountRequest();
         int count = this.scanner.nextInt();
         if (false == validateCarCount(count)) {

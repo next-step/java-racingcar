@@ -5,7 +5,7 @@ public class RacingGameMain {
     public static void main(String[] args) throws InterruptedException {
 
         InputView inputView = new InputView();
-        inputView.inputCarCount();
+        inputView.enterCarCount();
         inputView.inputTime();
 
         ResultView resultView = new ResultView();
