@@ -12,12 +12,12 @@ public class InputView {
     private int totalRacingCount;
 
     public RacingCreateValueObject createByUserInput() {
-        this.inputCarCount();
+        this.inputCarNames();
         this.inputTotalRacingCount();
         return new RacingCreateValueObject(this.totalRacingCount, this.carNames);
     }
 
-    private void inputCarCount() {
+    private void inputCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         this.carNames = this.scanner.nextLine().split(DELIMITER);
     }
