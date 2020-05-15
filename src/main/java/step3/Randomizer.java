@@ -14,12 +14,4 @@ public class Randomizer {
     public int generateNumber() {
         return random.nextInt(10);
     }
-
-    public List<Integer> generateNumberList(int size) {
-        List<Integer> numbers = new ArrayList<>();
-        for (int i = 0; i < size; i++)
-            numbers.add(generateNumber());
-        return numbers;
-    }
-
 }
