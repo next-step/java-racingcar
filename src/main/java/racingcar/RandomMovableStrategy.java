@@ -10,7 +10,13 @@ public class RandomMovableStrategy implements MovableStrategy {
     private final int GO = 1;
     private final int STOP = 0;
 
-    private final Random randomGenerator = new Random();
+    private Random randomGenerator = new Random();
+
+    public RandomMovableStrategy() {}
+
+    public RandomMovableStrategy(Random randomGenerator) {
+        this.randomGenerator = randomGenerator;
+    }
 
     @Override
     public int move() {
