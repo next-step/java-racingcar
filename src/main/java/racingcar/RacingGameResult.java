@@ -1,58 +1,47 @@
 package racingcar;
 
-
 import java.util.*;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toList;
 
 public class RacingGameResult {
 
-    private final String SEPARATOR = ",";
+    private final Map<String, List<Integer>> results = new HashMap<>();
 
-    private final List<int[]> results = new ArrayList<>();
-    private Car[] cars;
-
-    private int[] startPosition;
-
-    public RacingGameResult(Car[] cars) {
-        this.cars = cars;
-
-        startPosition = Arrays.stream(cars)
-                .mapToInt(Car::getPosition)
-                .toArray();
-
-        add(startPosition);
-    }
-
-    public void add(int[] records) {
-        if (records.length != cars.length) {
-            throw new IllegalArgumentException();
+    public List<Integer> add(String carName, Integer record) {
+        if (results.containsKey(carName)) {
+            List<Integer> records = results.get(carName);
+            records.addAll(Arrays.asList(record));
+            return records;
         }
-        results.add(records);
+        return results.put(carName, new ArrayList<>(Arrays.asList(record)));
     }
 
     public int getSize() {
         return results.size();
     }
 
-    public List<int[]> getResults() {
+    public Map<String, List<Integer>>  getResults() {
         return results;
     }
 
-    public Car[] getCars() {
-        return cars;
+    public List<String> getWinner() {
+        return results.values()
+                .stream()
+                .flatMap(list -> Stream.of(list.get(list.size()-1)))
+                .max(Comparator.comparing(Integer::valueOf))
+                .map(max -> getWinnerNames(max))
+                .orElse(Collections.EMPTY_LIST);
     }
 
-    public String getWinner() {
-        StringJoiner joiner = new StringJoiner(SEPARATOR);
 
-        int max = Arrays.stream(results.get(results.size() - 1))
-                .max()
-                .orElseThrow(() -> new NoSuchElementException());
-
-        Arrays.stream(cars)
-                .filter(car -> car.getPosition() == max)
-                .map(Car::getName)
-                .forEach(joiner::add);
-
-        return joiner.toString();
+    private List<String> getWinnerNames(Integer max){
+        return results.entrySet()
+                .stream()
+                .filter(entry -> entry.getValue().contains(max))
+                .map(Map.Entry::getKey)
+                .collect(toList());
     }
+
 }
