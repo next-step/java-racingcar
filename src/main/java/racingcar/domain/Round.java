@@ -31,8 +31,4 @@ public class Round {
     public boolean isEndRound() {
         return round == END_ROUND;
     }
-
-    public Round getRound() {
-        return new Round(round);
-    }
 }
