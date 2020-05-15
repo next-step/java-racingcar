@@ -4,6 +4,8 @@ import java.util.List;
 
 public class ResultViewProcessor {
 
+    private static final String POSITION_MARK = "-";
+
     private ResultViewProcessor() {
     }
 
@@ -21,7 +23,7 @@ public class ResultViewProcessor {
     private static void printCurrentPosition(Car car) {
         int currentPosition = car.getPosition();
         for (int i = 0; i < currentPosition; i++) {
-            System.out.print("-");
+            System.out.print(POSITION_MARK);
         }
         System.out.println();
     }

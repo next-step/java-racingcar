@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class InputViewProcessor {
 
     private static final Scanner scanner = new Scanner(System.in);
+    private static final int INPUT_LIMIT = 1;
 
     private InputViewProcessor() {
     }
@@ -21,7 +22,7 @@ public class InputViewProcessor {
     }
 
     private static void validateUserInput(int userInput) {
-        if (userInput <= 0)
+        if (userInput < INPUT_LIMIT)
             throw new IllegalArgumentException(Message.ERROR);
     }
 }
