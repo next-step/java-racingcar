@@ -49,4 +49,13 @@ public class CarTest {
                 Arguments.of(false, 0)
         );
     }
+
+    @DisplayName("Car 의 위치가 인자로 들어온 위치값과 같은 경우 true 반환")
+    @ParameterizedTest
+    @MethodSource("moveCase")
+    void isSamePosition(final boolean moveOrNot, final int distance) {
+        Car winnerCar = Car.of("name");
+        winnerCar.move(() -> moveOrNot);
+        assertThat(winnerCar.isSamePosition(Car.DEFAULT_DISTANCE + distance)).isTrue();
+    }
 }
