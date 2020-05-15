@@ -5,7 +5,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
@@ -30,17 +29,18 @@ public class RacingGameTest {
 
     @MethodSource("provideValidArgument")
     @ParameterizedTest
-    @DisplayName("RacingGame play 결과의 크기는 라운드의 결과와 초기 위치를 합친 값과 같다.")
+    @DisplayName("RacingGame play 결과의 크기는 검증한다.")
     public void playTest(int round, String[] carNames) {
         RacingGameResult racingGameResult = new RacingGame(round, carNames).play();
-        assertThat(racingGameResult.getSize()).isEqualTo(round + 1);
+        assertThat(racingGameResult.getResults().keySet().size()).isEqualTo(carNames.length);
+        assertThat(racingGameResult.getResults().entrySet().contains(null)).isFalse();
     }
 
     @MethodSource("provideValidArgument")
     @ParameterizedTest
     @DisplayName("RacingGame 객체 생성 후 생성된 차의 크기는 입력 된 차 이름의 크기와 같다.")
     public void generateCarsTest(int round, String[] carNames) {
-        assertThat(new RacingGame(round, carNames).getCars().length).isEqualTo(carNames.length);
+        assertThat(new RacingGame(round, carNames).getCars().getCars()).hasSize(carNames.length);
     }
 
 
