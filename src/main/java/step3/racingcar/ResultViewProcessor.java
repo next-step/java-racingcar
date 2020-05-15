@@ -1,7 +1,6 @@
 package step3.racingcar;
 
 import java.util.List;
-import java.util.function.Function;
 
 public class ResultViewProcessor {
     private ResultViewProcessor() {
