@@ -3,7 +3,6 @@ package racingcar.domain;
 import racingcar.exception.ErrorMessage;
 import racingcar.moving.MovingStrategy;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -48,6 +47,6 @@ public class Cars {
                 .map(winnerCar -> cars.stream()
                         .filter(car -> car.isSamePosition(winnerCar.getPosition()))
                         .collect(Collectors.toList())
-                ).orElseGet(ArrayList::new);
+                ).orElseThrow(RuntimeException::new);
     }
 }
