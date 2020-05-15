@@ -30,7 +30,7 @@ public class StringCalculator {
                 answer = multiply(answer, number);
             }
             if (operator.equals("/")) {
-                answer = division(answer, number);
+                answer = divide(answer, number);
             }
         }
 
@@ -64,7 +64,7 @@ public class StringCalculator {
         return number1 * number2;
     }
 
-    public int division(int number1, int number2) {
+    public int divide(int number1, int number2) {
         if (number2 == 0) {
             throw new ArithmeticException();
         }
