@@ -12,6 +12,7 @@ public class InputView {
     private static final String NUM_OF_CAR_MESSAGE = "자동차 대수는 몇 대 인가요?";
     private static final String LOOP_COUNT_MESSAGE = "시도할 횟수는 몇 회 인가요?";
     private static final String DELIMITER = ",";
+    private static final int MIN_NUM_OF_CARS = 0;
 
     private static final Scanner SCANNER = new Scanner(System.in);
 
@@ -55,7 +56,7 @@ public class InputView {
     }
 
     private static void validateInput(final int input) {
-        if (input <= 0) {
+        if (input <= MIN_NUM_OF_CARS) {
             throw new IllegalArgumentException(ErrorMessage.MORE_THAN_ZERO);
         }
     }
