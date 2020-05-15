@@ -3,6 +3,7 @@ package calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static calculator.Operator.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -38,14 +39,14 @@ public class OperatorTest {
         assertThat(DIVIDE.operate(value, value2)).isEqualTo(expected);
     }
 
-    @ParameterizedTest
-    @DisplayName("나눗셈 몫이 0인 경우 연산 테스트")
-    @CsvSource(value = {"2:0"}, delimiter = ':')
-    void divideZeroTest(Double value, Double value2) {
-        assertThatThrownBy(() -> DIVIDE.operate(value, value2))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("0으로 나눌 수 없습니다.");
-
-    }
+//    @ParameterizedTest
+//    @DisplayName("나눗셈 몫이 0인 경우 연산 테스트")
+//    @ValueSource(strings = {"2","0"})
+//    void divideZeroTest(Double value, Double value2) {
+//        assertThatThrownBy(() -> DIVIDE.operate(value, value2))
+//                .isInstanceOf(IllegalArgumentException.class)
+//                .hasMessage("0으로 나눌 수 없습니다.");
+//
+//    }
 
 }
