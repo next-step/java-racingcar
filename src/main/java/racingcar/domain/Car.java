@@ -15,16 +15,16 @@ public class Car {
     }
 
     private Car(final String name) {
+        validateName(name);
         this.position = DEFAULT_DISTANCE;
         this.name = name;
     }
 
     public static Car of(final String name) {
-        validateName(name);
         return new Car(name);
     }
 
-    private static void validateName(String name) {
+    private static void validateName(final String name) {
         if (StringUtil.isEmpty(name)) {
             throw new IllegalArgumentException(ErrorMessage.IS_NULL_OR_EMPTY);
         }
