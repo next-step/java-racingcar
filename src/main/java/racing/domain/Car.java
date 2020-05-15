@@ -1,5 +1,7 @@
 package racing.domain;
 
+import racing.utils.EmptyCheckUtil;
+
 import java.util.Objects;
 
 public class Car {
@@ -12,9 +14,7 @@ public class Car {
     }
 
     private void validationName(String name) {
-        if (Objects.isNull(name) || name.isEmpty()) {
-            throw new IllegalArgumentException();
-        }
+        EmptyCheckUtil.emptyCheck(name);
     }
 
     public void move(CarMovement carMovement) {

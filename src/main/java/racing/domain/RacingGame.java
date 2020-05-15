@@ -2,6 +2,7 @@ package racing.domain;
 
 import racing.dto.RacingCreateValueObject;
 import racing.dto.RacingGameResult;
+import racing.utils.EmptyCheckUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,9 +51,7 @@ public class RacingGame {
     }
 
     private void validateCarNameEmptyCheck(String carName) {
-        if (Objects.isNull(carName) || carName.isEmpty()) {
-            throw new IllegalArgumentException();
-        }
+        EmptyCheckUtil.emptyCheck(carName);
     }
 
     private void validateCarMovement(CarMovement carMovement) {
