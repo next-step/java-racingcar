@@ -1,5 +1,7 @@
 package step3;
 
+import static step3.Constants.POSITION_MARKER;
+
 public class ResultView {
 
     public void printResult(int[] carPositions) {
@@ -10,7 +12,7 @@ public class ResultView {
 
     public void printCarPosition(int position) {
         for (int i = 0; i < position; ++i) {
-            System.out.print("-");
+            System.out.print(POSITION_MARKER);
         }
         System.out.println();
     }
