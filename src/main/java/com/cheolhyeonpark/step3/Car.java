@@ -19,5 +19,6 @@ public class Car {
         for (int i = 0; i < position; i++) {
             System.out.print(POSITION_BAR);
         }
+        System.out.println();
     }
 }
