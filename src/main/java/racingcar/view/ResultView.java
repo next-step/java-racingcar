@@ -24,7 +24,7 @@ public class ResultView {
         System.out.println(BANNER);
     }
 
-    public static void startPosition(Cars cars){
+    public static void printStartPosition(Cars cars){
         cars.getCars().sort(Comparator.comparing(Car::getName));
 
         cars.getCars()

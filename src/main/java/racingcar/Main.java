@@ -13,7 +13,7 @@ public class Main {
         RacingGame racingGame = new RacingGame(gameRoundCount, carNames);
 
         ResultView.printBanner();
-        ResultView.startPosition(racingGame.getCars());
+        ResultView.printStartPosition(racingGame.getCars());
 
         RacingGameResult racingGameResult = racingGame.play();
 
