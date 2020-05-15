@@ -26,6 +26,14 @@ public class CalculatorTest {
                     calculator.run();
                 });
     }
+    @Test
+    void wrongMisallignedStringTest() {
+        assertThatExceptionOfType(NumberFormatException.class)
+                .isThrownBy(() -> {
+                    StringCalculator calculator = new StringCalculator("2 * - * *");
+                    calculator.run();
+                });
+    }
 
     @ParameterizedTest
     @NullAndEmptySource
