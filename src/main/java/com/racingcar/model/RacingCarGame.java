@@ -32,10 +32,6 @@ public class RacingCarGame {
     }
 
     public void playRacingGame() {
-        IntStream.range(0, this.countOfAttempt).forEach(i -> moveEachRacingCar());
-    }
-
-    private void moveEachRacingCar() {
         for (RacingCar racingCar : this.racingRacingCars) {
             racingCar.movingRacingCar();
         }
@@ -43,5 +39,9 @@ public class RacingCarGame {
 
     public List<RacingCar> getRacingRacingCars() {
         return racingRacingCars;
+    }
+
+    public Integer getCountOfAttempt() {
+        return countOfAttempt;
     }
 }

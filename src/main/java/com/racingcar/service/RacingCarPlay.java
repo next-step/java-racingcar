@@ -2,6 +2,8 @@ package com.racingcar.service;
 
 import com.racingcar.model.RacingCarGame;
 
+import java.util.stream.IntStream;
+
 public class RacingCarPlay {
 
     private RacingCarInput racingCarInput;
@@ -14,7 +16,9 @@ public class RacingCarPlay {
 
     public void playRacingCarGame() {
         RacingCarGame racingCarGame = racingCarInput.inputRacingCarData();
-        racingCarGame.playRacingGame();
-        racingCarPrinter.printRacingCar(racingCarGame.getRacingRacingCars());
+        IntStream.range(0, racingCarGame.getCountOfAttempt()).forEach(i -> {
+            racingCarGame.playRacingGame();
+            racingCarPrinter.printRacingCar(racingCarGame.getRacingRacingCars());
+        });
     }
 }
