@@ -8,9 +8,9 @@ public class Main {
     public static void main(String[] args) {
 
         String[] carNames = InputView.getCarNames();
-        int gameRound = InputView.getGameRound();
+        int gameRoundCount = InputView.getGameRoundCount();
 
-        RacingGame racingGame = new RacingGame(gameRound, carNames);
+        RacingGame racingGame = new RacingGame(gameRoundCount, carNames);
         RacingGameResult racingGameResult = racingGame.play();
 
         ResultView.printBanner();

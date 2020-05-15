@@ -20,7 +20,7 @@ public class InputView {
         return Arrays.stream(line.split(SEPARATOR)).map(String::trim).toArray(String[]::new);
     }
 
-    public static int getGameRound() {
+    public static int getGameRoundCount() {
         System.out.println(GAME_ROUND_MESSAGE);
         return scanner.nextInt();
     }
