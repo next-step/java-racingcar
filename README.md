@@ -15,9 +15,11 @@
 1. 자동차 대수와 시도할 회수를 입력받는 Input 뷰 클래스
 2. 실행 결과를 받아 출력하는 Output 뷰 클래스
 3. 자신의 위치를 가지고 있는 Car 클래스
-4. 자동차가 움직일 수 있는지 판단하는 Power 인터페이스
+4. 자동차가 움직일 수 있는지 판단하는 MovementStrategy 인터페이스
 5. 경주에 참여하는 Car를 관리하는 ParticipateCars 클래스
 6. 각 시도 결과를 관리하는 PhaseResult 클래스
 7. 전체 게임 결과를 관리하는 GameResult 클래스
 8. Input으로 받은 정보로 게임을 시작하는 RacingGame 클래스
 9. 게임 정보를 가지고있는 GameInfo 클래스
+10. 각 자동차가 한번 움직이고 난 뒤의 상황을 가지고있는 CarMoveResult 클래스
+11. 각 시도에서 현재 선두를 계산하는 getPhaseLeads 메소드
