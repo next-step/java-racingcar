@@ -2,7 +2,9 @@ package racingcar;
 
 import racingcar.moving.MovingStrategy;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,5 +32,14 @@ public class Cars {
 
     List<Car> getCars() {
         return this.cars;
+    }
+
+    List<Car> getWinnerCars() {
+        return cars.stream()
+                .max(Comparator.comparingInt(Car::getPosition))
+                .map(winnerCar -> cars.stream()
+                        .filter(car -> car.isSamePosition(winnerCar.getPosition()))
+                        .collect(Collectors.toList())
+                ).orElseGet(ArrayList::new);
     }
 }

@@ -28,6 +28,6 @@ public class Racing {
     }
 
     List<Car> getWinnerCars() {
-        return null;
+        return this.cars.getWinnerCars();
     }
 }
