@@ -6,17 +6,7 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private int carCount;
-    private int time;
     private Scanner scanner;
-
-    public int getCarCount() {
-        return carCount;
-    }
-
-    public int getTime() {
-        return time;
-    }
 
     public InputView() {
         scanner = new Scanner(System.in);
@@ -44,23 +34,23 @@ public class InputView {
         return true;
     }
 
-    public void enterCarCount() {
+    public int enterCarCount() {
         printCarCountRequest();
         int count = this.scanner.nextInt();
         if (false == validateCarCount(count)) {
             System.out.println("invalid count (between 2 and 9)");
             exit(0);
         }
-        this.carCount = count;
+        return count;
     }
 
-    public void inputTime() {
+    public int enterTime() {
         printTimeRequest();
         int time = this.scanner.nextInt();
         if (false == validateTime(time)) {
             System.out.println("invalid time (between 2 and 9)");
             exit(0);
         }
-        this.time = time;
+        return time;
     }
 }
