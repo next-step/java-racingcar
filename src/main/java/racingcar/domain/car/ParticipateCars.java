@@ -13,6 +13,10 @@ public class ParticipateCars {
         this.cars = createCars(numberOfCar);
     }
 
+    public ParticipateCars(String[] nameOfCars) {
+        this.cars = createCars(nameOfCars);
+    }
+
     private List<Car> createCars(int numberOfCar) {
         List<Car> cars = new ArrayList<>();
 
@@ -23,9 +27,24 @@ public class ParticipateCars {
         return cars;
     }
 
-    public List<Integer> moveCars(MovementStrategy movementStrategy) {
-        return this.cars.stream()
-                .map(car -> car.move(movementStrategy))
-                .collect(Collectors.toList());
+    private List<Car> createCars(String[] nameOfCars) {
+        List<Car> cars = new ArrayList<>();
+
+        for (int i = 0; i < nameOfCars.length; i++) {
+            cars.add(new Car(nameOfCars[i]));
+        }
+
+        return cars;
+    }
+
+    public List<CarMoveResult> moveCars(MovementStrategy movementStrategy) {
+        List<CarMoveResult> carMoveResults = new ArrayList<>();
+
+        for (Car car : cars) {
+            int afterLocation = car.move(movementStrategy);
+            carMoveResults.add(new CarMoveResult(car.getName(), afterLocation));
+        }
+
+        return carMoveResults;
     }
 }

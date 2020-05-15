@@ -9,10 +9,7 @@ import racingcar.view.OutputView;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
-        int numberOfCar = InputView.inputNumberOfCar();
-        int numberOfPhase = InputView.inputNumberOfPhase();
-
-        GameInfo gameInfo = new GameInfo(numberOfCar, numberOfPhase);
+        GameInfo gameInfo = InputView.inputGameInfo();
 
         RacingGame racingGame = new RacingGame(gameInfo);
 

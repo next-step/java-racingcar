@@ -22,6 +22,10 @@ public class GameResult {
         return phaseResults.get(phaseNumber - 1);
     }
 
+    public List<String> findWinners() {
+        return phaseResults.get(numberOfPhase - 1).findPhaseLeads();
+    }
+
     private void validatePhaseNumber(int phaseNumber) {
         if (phaseNumber < PHASE_NUMBER_UNDER_BOUND || phaseNumber > numberOfPhase) {
             throw new IllegalArgumentException(String.format("잘못된 시도 번호입니다. - %d\n", phaseNumber));

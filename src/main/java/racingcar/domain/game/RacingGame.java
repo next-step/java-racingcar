@@ -13,7 +13,7 @@ public class RacingGame {
 
     public RacingGame(GameInfo gameInfo) {
         this.numberOfPhase = gameInfo.getNumberOfPhase();
-        this.participateCars = new ParticipateCars(gameInfo.getNumberOfCar());
+        this.participateCars = new ParticipateCars(gameInfo.getNameOfCars());
         this.phaseResults = new ArrayList<>();
     }
 
