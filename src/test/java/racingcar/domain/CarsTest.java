@@ -2,30 +2,33 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
 import racingcar.moving.MovingStrategy;
 import racingcar.moving.RandomMovingStrategy;
 
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class CarsTest {
 
-    private List<String[]> carNames = Arrays.asList(
-            new String[] { "", "name" },
-            new String[] { null, "name" },
-            new String[] { "name1", "name2" },
-            new String[] { "name1", "name2", "name3" }
-    );
+    private enum CASE {
+        INCLUDED_EMPTY_VALUE, NULL_VALUE, THREE_VALUES, TWO_VALUES
+    }
+    private static final Map<CASE, String> carNames = new HashMap<>();
+    static {
+        carNames.put(CASE.INCLUDED_EMPTY_VALUE, ",name");
+        carNames.put(CASE.NULL_VALUE, null);
+        carNames.put(CASE.THREE_VALUES, "name1,name2,name3");
+        carNames.put(CASE.TWO_VALUES, "name1,name2");
+    }
 
     @DisplayName("Cars 생성: Car 의 이름 배열을 생성자의 인자로 받아 생성")
     @Test
     void create() {
-        assertThatCode(() -> Cars.of(carNames.get(3)))
+        assertThatCode(() -> Cars.of(carNames.get(CASE.THREE_VALUES)))
                 .doesNotThrowAnyException();
     }
 
@@ -33,15 +36,15 @@ public class CarsTest {
     @Test
     void createByThrown() {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> Cars.of(carNames.get(0)));
+                .isThrownBy(() -> Cars.of(carNames.get(CASE.INCLUDED_EMPTY_VALUE)));
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> Cars.of(carNames.get(1)));
+                .isThrownBy(() -> Cars.of(carNames.get(CASE.NULL_VALUE)));
     }
 
     @DisplayName("모든 Car 는 이동 또는 정지")
     @Test
     void moveCars() {
-        Cars cars = Cars.of(carNames.get(3));
+        Cars cars = Cars.of(carNames.get(CASE.THREE_VALUES));
         cars.moveCars(new RandomMovingStrategy());
 
         assertThat(cars.getCars()
@@ -52,7 +55,7 @@ public class CarsTest {
     @DisplayName("우승한(가장 멀리간) Cars 의 이름 배열 반환")
     @Test
     void getWinnerCars() {
-        Cars cars = Cars.of(carNames.get(3));
+        Cars cars = Cars.of(carNames.get(CASE.THREE_VALUES));
         cars.moveCars(new SuccessMovingStrategy());
 
         List<String> winnerNames = cars.getWinnerCars()
@@ -60,7 +63,7 @@ public class CarsTest {
                 .map(Car::getName)
                 .collect(Collectors.toList());
 
-        assertThat(winnerNames).containsExactly(carNames.get(3));
+        assertThat(winnerNames).containsExactly("name1", "name2", "name3");
     }
 
     public static class SuccessMovingStrategy implements MovingStrategy {
