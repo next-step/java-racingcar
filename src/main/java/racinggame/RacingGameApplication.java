@@ -10,7 +10,7 @@ import racinggame.view.OutputView;
 public class RacingGameApplication {
 
     public static void main(String[] args) {
-        String listOfRacingCars = InputView.askNumberOfCar();
+        String listOfRacingCars = InputView.askListOfRacingCars();
         String numberOfAttempt = InputView.askNumberOfAttempt();
 
         RacingGameInfo racingGameInfo = new RacingGameInfo(listOfRacingCars, numberOfAttempt);
