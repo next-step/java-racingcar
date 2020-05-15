@@ -1,6 +1,6 @@
 package racing.domain;
 
-import racing.dto.RacingCreateValueObject;
+import racing.dto.RaceInformation;
 import racing.dto.RacingGameResult;
 import racing.utils.EmptyCheckUtil;
 
@@ -18,15 +18,15 @@ public class RacingGame {
     private List<Car> cars = new ArrayList<>();
     private CarMovement carMovement;
 
-    public RacingGame(RacingCreateValueObject racingCreateValueObject, CarMovement carMovement) {
-        this.validateRacingTotalRound(racingCreateValueObject.getTotalRacingCount());
-        this.validateCarNames(racingCreateValueObject.getCarNames());
+    public RacingGame(RaceInformation raceInformation, CarMovement carMovement) {
+        this.validateRacingTotalRound(raceInformation.getTotalRacingCount());
+        this.validateCarNames(raceInformation.getCarNames());
         this.validateCarMovement(carMovement);
 
         this.carMovement = carMovement;
-        this.racingTotalRound = racingCreateValueObject.getTotalRacingCount();
+        this.racingTotalRound = raceInformation.getTotalRacingCount();
 
-        String[] carNames = racingCreateValueObject.getCarNames();
+        String[] carNames = raceInformation.getCarNames();
         this.createCars(carNames);
     }
 
