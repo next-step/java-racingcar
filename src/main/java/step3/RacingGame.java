@@ -5,7 +5,6 @@ import java.util.Random;
 public class RacingGame {
 
     private int time;
-    private int carCount;
     private int[] carPositions;
 
     public RacingGame(int time, int carCount) {
@@ -29,9 +28,5 @@ public class RacingGame {
 
     public int getTime() {
         return this.time;
-    }
-
-    public int getCarCount() {
-        return this.carCount;
     }
 }
