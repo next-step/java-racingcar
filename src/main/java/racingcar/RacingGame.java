@@ -11,7 +11,7 @@ public class RacingGame {
         String[] carNames = InputView.inputNameOfCars();
         int loopCount = InputView.inputLoopCount();
 
-        Racing racing = Racing.of(carNames);
+        Racing racing = Racing.of(Cars.of(carNames));
         MovingStrategy movingStrategy = new RandomMovingStrategy();
 
         ResultView.printResultMessage();
