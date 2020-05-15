@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class InputView {
 
     private static final String NAME_ARRAY_OF_CARS_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
-    private static final String NUM_OF_CAR_MESSAGE = "자동차 대수는 몇 대 인가요?";
     private static final String LOOP_COUNT_MESSAGE = "시도할 횟수는 몇 회 인가요?";
     private static final String DELIMITER = ",";
     private static final int MIN_NUM_OF_CARS = 0;
@@ -21,10 +20,6 @@ public class InputView {
 
     public static String[] inputNameOfCars() {
         return inputArray(NAME_ARRAY_OF_CARS_MESSAGE);
-    }
-
-    public static int inputNumOfCar() {
-        return input(NUM_OF_CAR_MESSAGE);
     }
 
     public static int inputLoopCount() {
