@@ -1,10 +1,19 @@
+package step2;
+
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.platform.commons.util.ReflectionUtils;
+import step1.StringCalculator;
 
 class StringCalculatorTest {
 
@@ -88,4 +97,31 @@ class StringCalculatorTest {
         assertThat(stringCalculator.assertValidParameter(parameter))
             .isTrue();
     }
+
+    private static Stream<Arguments> invalidParameter() {
+        return Stream.of(
+            Arguments.of(new String[]{"1","+","23","*","456","/","78"}, "true"),
+            Arguments.of(new String[]{"123","/","45","*","6","/","7"}, "true")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("invalidParameter")
+    @DisplayName("MethodSource를 이용한 assertValidParameter 테스트")
+    void isValidParameter(String[] input, String expected) {
+        //when&then
+        assertThat(stringCalculator.assertValidParameter(input))
+            .isTrue();
+    }
+
+    @ParameterizedTest
+    @CsvSource({"4,2,2","1,1,1","0,1,0","1,0,0"})
+    @DisplayName("나눗셈 함수 테스트")
+    void doDivision(String leftOperand, String rightOperand, String expected) {
+        //when&then
+        assertThat(stringCalculator
+            .doDivision(Integer.valueOf(leftOperand),Integer.valueOf(rightOperand)))
+            .isEqualTo(Integer.valueOf(expected));
+    }
+
 }

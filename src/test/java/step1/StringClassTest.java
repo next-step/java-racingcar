@@ -1,3 +1,5 @@
+package step1;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.Java6Assertions.catchThrowable;
 
