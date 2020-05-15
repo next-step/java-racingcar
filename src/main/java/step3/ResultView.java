@@ -8,7 +8,7 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public void printResult(List<Car> carList) {
+    public void print(List<Car> carList) {
         for (Car car : carList)
             System.out.println("-".repeat(car.getPosition()));
     }
