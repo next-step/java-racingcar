@@ -3,9 +3,9 @@ package racingcar;
 import racingcar.exception.ErrorMessage;
 import racingcar.moving.MovingStrategy;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Racing {
 
@@ -13,25 +13,22 @@ public class Racing {
 
     private List<Car> cars;
 
-    static Racing of(final int numOfCar) {
-        return new Racing(numOfCar);
-    }
-    
-    private Racing(final int numOfCar) {
-        validateInput(numOfCar);
-        createCars(numOfCar);
+    public static Racing of(final String[] carNames) {
+        List<Car> cars = Arrays.stream(carNames)
+                .map(Car::of)
+                .collect(Collectors.toList());
+        return new Racing(cars);
     }
 
-    private void validateInput(final int numOfCar) {
-        if (numOfCar <= MIN_NUM_OF_CARS) {
+    private Racing(final List<Car> cars) {
+        validateCars(cars);
+        this.cars = cars;
+    }
+
+    private void validateCars(final List<Car> cars) {
+        if (cars == null || cars.size() == MIN_NUM_OF_CARS) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_PARAMETER);
         }
-    }
-
-    private void createCars(final int numOfCar) {
-        cars = Stream.generate(Car::newInstance)
-                .limit(numOfCar)
-                .collect(Collectors.toList());
     }
 
     void run(final MovingStrategy movingStrategy) {

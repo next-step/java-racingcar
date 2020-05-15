@@ -1,5 +1,6 @@
 package racingcar;
 
+import calculator.util.StringUtil;
 import racingcar.exception.ErrorMessage;
 import racingcar.moving.MovingStrategy;
 
@@ -7,14 +8,26 @@ public class Car {
 
     static final int DEFAULT_DISTANCE = 0;
 
+    private String name;
     private int position;
 
-    static Car newInstance() {
-        return new Car();
+    private Car() {
     }
 
-    private Car() {
+    private Car(final String name) {
         this.position = DEFAULT_DISTANCE;
+        this.name = name;
+    }
+
+    public static Car of(final String name) {
+        validateName(name);
+        return new Car(name);
+    }
+
+    private static void validateName(String name) {
+        if (StringUtil.isEmpty(name)) {
+            throw new IllegalArgumentException(ErrorMessage.IS_NULL_OR_EMPTY);
+        }
     }
 
     void move(final MovingStrategy movingStrategy) {
