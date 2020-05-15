@@ -2,7 +2,6 @@ package racingcar;
 
 import java.util.List;
 import java.util.Objects;
-import static java.util.stream.Collectors.toList;
 
 public class Cars {
 
@@ -15,9 +14,12 @@ public class Cars {
         this.cars = cars;
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     public void moveAll() {
-        cars.stream()
-                .forEach(Car::move);
+        cars.forEach(Car::move);
     }
 
     public void clearAll(){
