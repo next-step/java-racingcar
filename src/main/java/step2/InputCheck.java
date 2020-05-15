@@ -10,6 +10,16 @@ public class InputCheck {
     private final static int CONDITION_OF_EXPRESSION = 2;
     private final static int STEP_OF_NUMBER_AND_SYMBOL = 2;
 
+    public static void inputCheck(String input, String[] inputArray) {
+
+        checkEmpty(input, StringCalculator.SEPARATOR);
+        checkMinimumExpression(inputArray);
+        checkMatchingNumbersAndOperators(inputArray);
+        checkNumberString(inputArray);
+        checkCalculateSymbol(inputArray);
+
+    }
+
     public static void checkEmpty(String input, String separator) throws IllegalArgumentException {
         // null , empty
         if (input == null || input.length() == 0 || input.replaceAll(separator, "").isEmpty()) {
