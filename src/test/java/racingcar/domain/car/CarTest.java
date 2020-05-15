@@ -13,10 +13,10 @@ public class CarTest {
     @DisplayName("자동차는 Power가 true 면 이동하고 false 면 이동하지 않는다.")
     @ParameterizedTest
     @CsvSource({"true,1", "false,0"})
-    void move(boolean power, int location) {
-        Car car = new Car();
+    void move(boolean movementStrategy, int location) {
+        Car car = new Car("pobi");
 
-        int actualLocation = car.move(() -> power);
+        int actualLocation = car.move(() -> movementStrategy);
 
         assertThat(actualLocation).isEqualTo(location);
     }
