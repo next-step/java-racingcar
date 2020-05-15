@@ -38,7 +38,7 @@ public class StringCalculator {
     }
 
     private void validateInput(String input) {
-        if (input == null || input.isEmpty() || input.trim().isEmpty()) {
+        if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException();
         }
         if (input.split(DELIMITER).length % 2 == 0) {
