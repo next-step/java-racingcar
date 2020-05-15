@@ -9,23 +9,18 @@ public class RacingGame {
     public void run() {
         setGameInformation();
         List<Car> cars = CarFactory.makeCars(this.carCounts);
-        startGame(cars);
+        startRacing(cars);
     }
 
-    public void setGameInformation() {
+    private void setGameInformation() {
         this.carCounts = InputViewProcessor.getUserInput(Message.CAR_COUNTS);
         this.gameTryCounts = InputViewProcessor.getUserInput(Message.GAME_TRY_COUNTS);
     }
 
-    public void startGame(List<Car> cars) {
+    private void startRacing(List<Car> cars) {
         for (int i = 0; i < gameTryCounts; i++) {
-            makeRandomNumber(cars);
+            cars.forEach(Car::moveCarPosition);
             ResultViewProcessor.printResult(cars);
         }
-    }
-
-    public void moveRacingCarByRandomNumber(Car car, int randomNumber) {
-        if (randomNumber >= RANDOM_NUMBER_LIMIT)
-            car.movePosition();
     }
 }

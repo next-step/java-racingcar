@@ -10,13 +10,9 @@ public class Car {
         this.movingStrategy = movingStrategy;
     }
 
-    public void startRacing() {
+    public void moveCarPosition() {
         boolean isMovable = this.movingStrategy.isMovable();
         if (isMovable == true)
-            movePosition();
-    }
-
-    private void movePosition() {
-        this.position++;
+            this.position++;
     }
 }

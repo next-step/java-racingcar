@@ -3,6 +3,8 @@ package step3.racingcar;
 import java.util.Scanner;
 
 public class InputViewProcessor {
+    private static final Scanner scanner = new Scanner(System.in);
+
     private InputViewProcessor() {
     }
 
@@ -14,7 +16,6 @@ public class InputViewProcessor {
     }
 
     private static int scanUserInput() {
-        Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
 
