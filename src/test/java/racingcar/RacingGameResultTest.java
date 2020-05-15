@@ -58,31 +58,40 @@ public class RacingGameResultTest {
 
     private static Stream<Arguments> provideCarArgument() {
         return Stream.of(
-                Arguments.of(new int[]{0, 0, 1}, new Car[]{Car.newInstance("k5"), Car.newInstance("sonata"), Car.newInstance("genesis")}),
-                Arguments.of(new int[]{1, 1, 2}, new Car[]{Car.newInstance("k9"), Car.newInstance("ray"), Car.newInstance("genesis")})
+                Arguments.of(
+                        new int[]{0, 0, 1},
+                        new Car[]{Car.newInstance(CarName.of("k5")), Car.newInstance(CarName.of("sonata")), Car.newInstance(CarName.of("genesis"))}
+                ),
+                Arguments.of(
+                        new int[]{1, 1, 2},
+                        new Car[]{Car.newInstance(CarName.of("k5")), Car.newInstance(CarName.of("sonata")), Car.newInstance(CarName.of("genesis"))}
+                )
         );
     }
 
     private static Stream<Arguments> provideInvalidCarArgument() {
         return Stream.of(
-                Arguments.of(new int[]{0, 0}, new Car[]{Car.newInstance("k5"), Car.newInstance("sonata"), Car.newInstance("genesis")}),
-                Arguments.of(new int[]{1, 2, 3, 4}, new Car[]{Car.newInstance("k9"), Car.newInstance("ray"), Car.newInstance("genesis")})
+                Arguments.of(
+                        new int[]{0, 0},
+                        new Car[]{Car.newInstance(CarName.of("k5")), Car.newInstance(CarName.of("sonata")), Car.newInstance(CarName.of("genesis"))}
+                ),
+                Arguments.of(
+                        new int[]{1, 1, 2, 3},
+                        new Car[]{Car.newInstance(CarName.of("k5")), Car.newInstance(CarName.of("sonata")), Car.newInstance(CarName.of("genesis"))}
+                )
         );
     }
 
     private static Stream<Arguments> winnerArgument() {
 
-        Car winner1 = Car.newInstance("genesis");
-        winner1.setPosition(2);
-
-        Car winner2 = Car.newInstance("ray");
-        winner2.setPosition(2);
+        Car winner1 = Car.newInstance(CarPosition.of(2), CarName.of("genesis"), new RandomMovableStrategy());
+        Car winner2 = Car.newInstance(CarPosition.of(2), CarName.of("ray"), new RandomMovableStrategy());
 
         return Stream.of(
                 Arguments.of(new int[]{0, winner1.getPosition(), winner2.getPosition()},
-                        new Car[]{Car.newInstance("k5"), winner1, winner2}, winner1.getName() + "," + winner2.getName()),
+                        new Car[]{Car.newInstance(CarName.of("k5")), winner1, winner2}, winner1.getName() + "," + winner2.getName()),
                 Arguments.of(new int[]{1, 1, winner2.getPosition()},
-                        new Car[]{Car.newInstance("k9"), Car.newInstance("sonata"), winner2}, winner2.getName())
+                        new Car[]{Car.newInstance(CarName.of("k5")), Car.newInstance(CarName.of("sonata")), winner2}, winner2.getName())
         );
     }
 }

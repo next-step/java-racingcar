@@ -51,20 +51,6 @@ public class RacingGameTest {
         assertThat(new RacingGame(round, carNames).getCars().length).isEqualTo(carNames.length);
     }
 
-    @MethodSource("provideValidArgument")
-    @ParameterizedTest
-    @DisplayName("clear를 수행하면 차의 위치 값들이 초기화 된다.")
-    public void clearTest(int round, String[] carNames) {
-        RacingGame racingGame = new RacingGame(round, carNames);
-        Arrays.stream(racingGame.getCars()).forEach(car -> car.setPosition(car.getPosition() + 1));
-
-        racingGame.clear();
-
-        Arrays.stream(racingGame.getCars()).forEach(car -> {
-            assertThat(car.getPosition()).isZero();
-        });
-    }
-
 
     private static Stream<Arguments> provideValidArgument() {
         return Stream.of(
