@@ -1,8 +1,7 @@
-package com.racingcar;
+package com.racingcar.service;
 
 import com.racingcar.model.Player;
 import com.racingcar.model.RacingCar;
-import com.racingcar.service.*;
 
 import java.util.List;
 import java.util.stream.IntStream;
