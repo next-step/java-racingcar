@@ -3,8 +3,6 @@ package step3.car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step3.generator.TestNumberGenerator;
-import step3.generator.GenerateNumberStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,10 +15,10 @@ public class CarTest {
 
         // given
         Car car = new Car();
-        GenerateNumberStrategy generator = new TestNumberGenerator(input);
+        int movingNum = 4;
 
         // when
-        int position = car.move(generator);
+        int position = car.move(() -> input >= movingNum);
 
         // then
         assertThat(position).isEqualTo(expected);
