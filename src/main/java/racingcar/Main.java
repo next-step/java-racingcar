@@ -7,8 +7,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String[] carNames = InputView.getCarNames();
-        int gameRoundCount = InputView.getGameRoundCount();
+        String[] carNames = InputView.inputCarNames();
+        int gameRoundCount = InputView.inputGameRoundCount();
 
         RacingGame racingGame = new RacingGame(gameRoundCount, carNames);
         RacingGameResult racingGameResult = racingGame.play();

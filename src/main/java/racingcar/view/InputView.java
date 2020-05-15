@@ -14,13 +14,15 @@ public class InputView {
         throw new AssertionError();
     }
 
-    public static String[] getCarNames() {
+    public static String[] inputCarNames() {
         System.out.println(CAR_NAME_MESSAGE);
         String line = scanner.nextLine();
-        return Arrays.stream(line.split(SEPARATOR)).map(String::trim).toArray(String[]::new);
+        return Arrays.stream(line.split(SEPARATOR))
+                .map(String::trim)
+                .toArray(String[]::new);
     }
 
-    public static int getGameRoundCount() {
+    public static int inputGameRoundCount() {
         System.out.println(GAME_ROUND_MESSAGE);
         return scanner.nextInt();
     }
