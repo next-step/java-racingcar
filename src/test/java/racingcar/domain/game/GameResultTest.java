@@ -8,7 +8,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.car.CarMoveResult;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;

@@ -9,10 +9,6 @@ import java.util.stream.Collectors;
 public class ParticipateCars {
     private List<Car> cars;
 
-    public ParticipateCars(int numberOfCar) {
-        this.cars = createCars(numberOfCar);
-    }
-
     public ParticipateCars(String[] nameOfCars) {
         this.cars = createCars(nameOfCars);
     }
