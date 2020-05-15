@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.moving.MovingStrategy;
 import racingcar.moving.RandomMovingStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
@@ -12,10 +13,12 @@ public class RacingGame {
         int numOfCar = InputView.inputNumOfCar();
         int loopCount = InputView.inputLoopCount();
 
-        Racing racing = Racing.of(numOfCar, new RandomMovingStrategy());
+        MovingStrategy movingStrategy = new RandomMovingStrategy();
+        Racing racing = Racing.of(numOfCar);
+
         ResultView.printResultMessage();
         for (int i = 0; i < loopCount; i++) {
-            racing.run();
+            racing.run(movingStrategy);
             List<Car> cars = racing.getCars();
             ResultView.printResult(cars);
         }

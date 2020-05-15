@@ -12,20 +12,18 @@ public class Racing {
     private static final int MIN_NUM_OF_CARS = 0;
 
     private List<Car> cars;
-    private MovingStrategy movingStrategy;
 
-    static Racing of(final int numOfCar, final MovingStrategy movingStrategy) {
-        return new Racing(numOfCar, movingStrategy);
+    static Racing of(final int numOfCar) {
+        return new Racing(numOfCar);
     }
     
-    private Racing(final int numOfCar, final MovingStrategy movingStrategy) {
-        validateInput(numOfCar, movingStrategy);
-        this.movingStrategy = movingStrategy;
+    private Racing(final int numOfCar) {
+        validateInput(numOfCar);
         createCars(numOfCar);
     }
 
-    private void validateInput(final int numOfCar, final MovingStrategy movingStrategy) {
-        if (numOfCar <= MIN_NUM_OF_CARS || movingStrategy == null) {
+    private void validateInput(final int numOfCar) {
+        if (numOfCar <= MIN_NUM_OF_CARS) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_PARAMETER);
         }
     }
@@ -36,12 +34,8 @@ public class Racing {
                 .collect(Collectors.toList());
     }
 
-    void run() {
-        cars.forEach(this::moveCar);
-    }
-
-    private void moveCar(final Car car) {
-        car.move(movingStrategy);
+    void run(final MovingStrategy movingStrategy) {
+        cars.forEach(car -> car.move(movingStrategy));
     }
 
     List<Car> getCars() {
