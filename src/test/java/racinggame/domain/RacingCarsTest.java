@@ -2,8 +2,13 @@ package racinggame.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racinggame.domain.car.RacingCars;
+import racinggame.domain.result.RacingGameSnapshot;
+
+import java.util.Arrays;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 class RacingCarsTest {
 
@@ -11,14 +16,15 @@ class RacingCarsTest {
     @Test
     void race() {
         //given
-        RacingCars racingCars = new RacingCars(3);
-        Engine engine = () -> true;
+        RacingCars racingCars = new RacingCars(Arrays.asList("a", "b", "c"));
 
         //when
-        RacingGameSnapshot snapshot = racingCars.race(engine);
+        RacingGameSnapshot snapshot = racingCars.race(new TestSwitchEngine());
 
         //then
-        assertThat(snapshot.getCarSnapshots().size()).isEqualTo(3);
+        assertAll(
+                () -> assertThat(snapshot.size()).isEqualTo(3),
+                () -> assertThat(snapshot.findWinner()).isEqualTo(Arrays.asList("a", "c"))
+        );
     }
-
 }

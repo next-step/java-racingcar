@@ -1,5 +1,8 @@
 package racinggame.domain;
 
+import racinggame.domain.car.RacingCars;
+import racinggame.domain.result.RacingGameResult;
+import racinggame.domain.result.RacingGameSnapshot;
 import racinggame.dto.RacingGameInfo;
 
 import java.util.ArrayList;
@@ -10,17 +13,17 @@ public class RacingGame {
     private final int numberOfAttempt;
 
     public RacingGame(RacingGameInfo racingGameInfo) {
-        this.racingCars = new RacingCars(racingGameInfo.getNumberOfCar());
+        this.racingCars = new RacingCars(racingGameInfo.getParticipantCars());
         this.numberOfAttempt = racingGameInfo.getNumberOfAttempt();
     }
 
-    public List<RacingGameSnapshot> raceWith(Engine engine) {
+    public RacingGameResult raceWith(Engine engine) {
         List<RacingGameSnapshot> snapshots = new ArrayList<>();
 
         for (int round = 0; round < numberOfAttempt; round++) {
             snapshots.add(racingCars.race(engine));
         }
 
-        return snapshots;
+        return new RacingGameResult(snapshots);
     }
 }

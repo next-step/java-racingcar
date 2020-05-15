@@ -2,35 +2,32 @@ package racinggame.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racinggame.domain.result.RacingGameResult;
 import racinggame.dto.RacingGameInfo;
 
-import java.util.List;
+import java.util.Arrays;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 class RacingGameTest {
 
-    @DisplayName("레이싱게임을 수행하면 모든 경기의 게임결과 스냅샷리스트를 반환한다")
+    @DisplayName("레이싱게임을 수행하면 모든 경기의 게임결과 스냅샷리스트와 우승자를 반환한다")
     @Test
     void racingGame() {
         //given
-        int numberOfCar = 5;
+        String participantsCars = "a, b, c";
         int numberOfAttempt = 3;
-        RacingGameInfo racingGameInfo = new RacingGameInfo(String.valueOf(numberOfCar), String.valueOf(numberOfAttempt));
+        RacingGameInfo racingGameInfo = new RacingGameInfo(participantsCars, String.valueOf(numberOfAttempt));
         RacingGame racingGame = new RacingGame(racingGameInfo);
-        Engine engine = () -> true;
 
         //when
-        List<RacingGameSnapshot> snapshots = racingGame.raceWith(engine);
+        RacingGameResult racingGameResult = racingGame.raceWith(new TestSwitchEngine());
 
         //then
         assertAll(
-                () -> assertThat(snapshots.size()).isEqualTo(numberOfAttempt),
-                () -> assertThat(snapshots.get(0).getCarSnapshots().size()).isEqualTo(numberOfCar),
-                () -> assertThat(snapshots.get(0).getCarSnapshots().get(0).getLocation()).isEqualTo(1),
-                () -> assertThat(snapshots.get(1).getCarSnapshots().get(0).getLocation()).isEqualTo(2),
-                () -> assertThat(snapshots.get(2).getCarSnapshots().get(0).getLocation()).isEqualTo(3)
+                () -> assertThat(racingGameResult.size()).isEqualTo(numberOfAttempt),
+                () -> assertThat(racingGameResult.findFinalWinners()).isEqualTo(Arrays.asList("a", "c"))
         );
     }
 
