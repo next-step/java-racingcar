@@ -18,4 +18,12 @@ public class RacingGameTest {
         List<Car> cars = CarFactory.makeCars(carCounts);
         assertThat(cars.size()).isEqualTo(carCounts);
     }
+
+    @DisplayName("차량이 움직이는지 확인하는 테스트")
+    @Test
+    public void testIfCarHasMoved() {
+        Car car = new Car(new RandomMovingStrategy());
+        car.moveCarPosition();
+        assertThat(car.getPosition()).isGreaterThanOrEqualTo(0);
+    }
 }
