@@ -7,6 +7,7 @@ import racing.dto.RacingGameResult;
 import racing.view.InputView;
 import racing.view.OutputView;
 
+import java.util.List;
 import java.util.Random;
 
 public class RacingGameApplication {
@@ -20,13 +21,14 @@ public class RacingGameApplication {
         OutputView outPutView = new OutputView();
         outPutView.printGuidance();
 
-        RacingGameResult racingGameResult = null;
+        List<RacingGameResult> racingGameResults = null;
         for (int i = 0; i < racingCreateValueObject.getTotalRacingCount(); i++) {
             racingGame.executeRacing();
-            racingGameResult = racingGame.calculateRacingGameResult();
-            outPutView.printRacingResult(racingGameResult);
+            racingGameResults = racingGame.calculateRacingGameResults();
+            outPutView.printRacingResult(racingGameResults);
         }
 
-        outPutView.printRacingWinners(racingGameResult);
+        int maxPosition = racingGame.calculateMaxPosition();
+        outPutView.printRacingWinners(racingGameResults, maxPosition);
     }
 }

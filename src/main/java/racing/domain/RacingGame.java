@@ -7,6 +7,7 @@ import racing.utils.EmptyCheckUtil;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private static final int MIN_RACING_COUNT = 1;
@@ -24,7 +25,12 @@ public class RacingGame {
 
         this.carMovement = carMovement;
         this.racingTotalRound = racingCreateValueObject.getTotalRacingCount();
+
         String[] carNames = racingCreateValueObject.getCarNames();
+        this.createCars(carNames);
+    }
+
+    private void createCars(String[] carNames) {
         for (String carName: carNames) {
             this.cars.add(new Car(carName));
         }
@@ -68,7 +74,16 @@ public class RacingGame {
         }
     }
 
-    public RacingGameResult calculateRacingGameResult() {
-        return new RacingGameResult(this.cars);
+    public List<RacingGameResult> calculateRacingGameResults() {
+        return this.cars.stream()
+                .map(car -> new RacingGameResult(car.getName(), car.findCurrentPosition()))
+                .collect(Collectors.toList());
+    }
+
+    public int calculateMaxPosition() {
+        return this.cars.stream()
+                .map(car -> car.findCurrentPosition())
+                .max(Integer::compareTo)
+                .orElse(0);
     }
 }
