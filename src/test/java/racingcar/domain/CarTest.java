@@ -1,12 +1,12 @@
 package racingcar.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
-import racingcar.domain.Car;
 
 import java.util.stream.Stream;
 
@@ -15,10 +15,17 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 public class CarTest {
 
+    private Car car;
+
+    @BeforeEach
+    void setUp() {
+        car = Car.of("name");
+    }
+
     @DisplayName("Car 생성 시 distance 를 0으로 초기화")
     @Test
     void create() {
-        assertThat(Car.of("name").getPosition()).isEqualTo(Car.DEFAULT_DISTANCE);
+        assertThat(car.getPosition()).isEqualTo(Car.DEFAULT_DISTANCE);
     }
 
     @DisplayName("Car 생성 실패: name 이 빈 문자열이나 null 인 경우 예외 발생")
@@ -31,7 +38,6 @@ public class CarTest {
     @DisplayName("Car 이동 실패: 전략이 null 인 경우")
     @Test
     void failureMove() {
-        Car car = Car.of("name");
         assertThatIllegalArgumentException().isThrownBy(() -> car.move(null));
     }
 
@@ -39,7 +45,6 @@ public class CarTest {
     @ParameterizedTest
     @MethodSource("moveCase")
     void move(final boolean moveOrNot, final int distance) {
-        Car car = Car.of("name");
         car.move(() -> moveOrNot);
         assertThat(car.getPosition()).isEqualTo(Car.DEFAULT_DISTANCE + distance);
     }
@@ -55,8 +60,7 @@ public class CarTest {
     @ParameterizedTest
     @MethodSource("moveCase")
     void isSamePosition(final boolean moveOrNot, final int distance) {
-        Car winnerCar = Car.of("name");
-        winnerCar.move(() -> moveOrNot);
-        assertThat(winnerCar.isSamePosition(Car.DEFAULT_DISTANCE + distance)).isTrue();
+        car.move(() -> moveOrNot);
+        assertThat(car.isSamePosition(Car.DEFAULT_DISTANCE + distance)).isTrue();
     }
 }
