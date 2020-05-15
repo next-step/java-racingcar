@@ -11,10 +11,14 @@ public class Main {
         int gameRoundCount = InputView.inputGameRoundCount();
 
         RacingGame racingGame = new RacingGame(gameRoundCount, carNames);
-        RacingGameResult racingGameResult = racingGame.play();
 
         ResultView.printBanner();
-        ResultView.printResult(racingGameResult);
+        ResultView.startPosition(racingGame.getCars());
+
+        RacingGameResult racingGameResult = racingGame.play();
+
+
+        ResultView.printResult(gameRoundCount, racingGameResult);
         ResultView.printWinner(racingGameResult.getWinner());
     }
 }

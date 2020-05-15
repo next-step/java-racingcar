@@ -38,7 +38,6 @@ public class RacingGame {
         cars.clearAll();
 
         RacingGameResult racingGameResult = new RacingGameResult();
-        racingGameResult.addFromCars(cars);
         IntStream.range(0, round)
                 .forEach(value -> {
                     cars.moveAll();

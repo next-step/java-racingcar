@@ -1,17 +1,18 @@
 package racingcar.view;
 
 import racingcar.Car;
+import racingcar.Cars;
 import racingcar.RacingGameResult;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.IntStream;
+import java.util.*;
 
 public class ResultView {
 
     private static final String BANNER = "실행 결과";
     private static final String OUTPUT_CHARACTER = "-";
     private static final String COLON = " : ";
+
+    private static final String DELIMITER = ",";
 
     private static final String SUFFIX_WINNER_PRINT = "가 최종 우승하였습니다.";
 
@@ -23,22 +24,36 @@ public class ResultView {
         System.out.println(BANNER);
     }
 
-    public static void printResult(RacingGameResult racingGameResult){
-        Car[] cars = racingGameResult.getCars();
-        List<int[]> results = racingGameResult.getResults();
+    public static void startPosition(Cars cars){
+        cars.getCars().sort(Comparator.comparing(Car::getName));
 
-        results.stream()
-                .forEach(positions -> printCarPositionPerRound(cars, positions));
+        cars.getCars()
+                .forEach(car -> System.out.println(car.getName() + COLON + convertStringPosition(car.getPosition())));
+        System.out.println();
     }
 
-    public static void printWinner(String winner){
-        System.out.println(winner + SUFFIX_WINNER_PRINT);
-    }
-
-    private static void printCarPositionPerRound(Car[] cars, int[] positions) {
-        for (int i = 0; i < positions.length; i++) {
-            System.out.println(cars[i].getName() + COLON + convertStringPosition(positions[i]));
+    public static void printResult(int gameRoundCount, RacingGameResult racingGameResult){
+        Map<String, List<Integer>> results = racingGameResult.getResults();
+        for (int i = 0; i < gameRoundCount; i++) {
+            printCarPositionPerRound(results, i);
         }
+    }
+
+    public static void printWinner(List<String> winners){
+        StringJoiner joiner = new StringJoiner(DELIMITER);
+        winners.forEach(joiner::add);
+        System.out.println(joiner.toString() + SUFFIX_WINNER_PRINT);
+    }
+
+    private static void printCarPositionPerRound(Map<String, List<Integer>> results, int round) {
+        results.entrySet()
+                .stream()
+                .sorted(Comparator.comparing(Map.Entry::getKey))
+                .forEach(entry -> {
+                    String carName = entry.getKey();
+                    int position = entry.getValue().get(round);
+                    System.out.println(carName + COLON + convertStringPosition(position));
+                });
         System.out.println();
     }
 
