@@ -2,6 +2,8 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import step2.StringCalculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,6 +24,15 @@ public class CalculatorTest {
                 .isThrownBy(() -> {
                     StringCalculator calculator = new StringCalculator("2 * - 3");
                     calculator.run();
+                });
+    }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    void invalidInputTest(String input) {
+        assertThatExceptionOfType(RuntimeException.class)
+                .isThrownBy(() -> {
+                    StringCalculator calculator = new StringCalculator(input);
                 });
     }
 
