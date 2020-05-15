@@ -19,6 +19,6 @@ public class ScannerRacingCarInput implements RacingCarInput {
         System.out.println(COUNT_OF_ATTEMPT_MESSAGE);
         Integer countOfAttempt = scanner.nextInt();
 
-        return new RacingGameFactory().racingGame(countOfRacingCar, countOfAttempt);
+        return new RacingCarGameFactory().racingGame(countOfRacingCar, countOfAttempt);
     }
 }

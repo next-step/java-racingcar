@@ -1,11 +1,11 @@
 package com.racingcar;
 
-import com.racingcar.service.RacingCarPlay;
+import com.racingcar.service.RacingCarGamePlay;
 
 public class Main {
 
     public static void main(String[] args) {
-        RacingCarPlay racingCarPlay = new RacingCarPlay();
-        racingCarPlay.playRacingCarGame();
+        RacingCarGamePlay racingCarGamePlay = new RacingCarGamePlay();
+        racingCarGamePlay.playRacingCarGame();
     }
 }

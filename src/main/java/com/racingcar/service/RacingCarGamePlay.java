@@ -4,12 +4,12 @@ import com.racingcar.model.RacingCarGame;
 
 import java.util.stream.IntStream;
 
-public class RacingCarPlay {
+public class RacingCarGamePlay {
 
     private RacingCarInput racingCarInput;
     private RacingCarPrinter racingCarPrinter;
 
-    public RacingCarPlay() {
+    public RacingCarGamePlay() {
         this.racingCarInput = new ScannerRacingCarInput();
         this.racingCarPrinter = new DefaultRacingCarPrinter();
     }
