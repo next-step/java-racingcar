@@ -4,7 +4,6 @@ import racingcar.exception.ErrorMessage;
 import racingcar.moving.MovingStrategy;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,11 +41,16 @@ public class Cars {
     }
 
     public List<Car> getWinnerCars() {
+        int winnerPosition = this.getWinnerPosition();
         return cars.stream()
-                .max(Comparator.comparingInt(Car::getPosition))
-                .map(winnerCar -> cars.stream()
-                        .filter(car -> car.isSamePosition(winnerCar.getPosition()))
-                        .collect(Collectors.toList())
-                ).orElseThrow(RuntimeException::new);
+                .filter(car -> car.isSamePosition(winnerPosition))
+                .collect(Collectors.toList());
+    }
+
+    private int getWinnerPosition() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(RuntimeException::new);
     }
 }
