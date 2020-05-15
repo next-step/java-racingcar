@@ -10,7 +10,7 @@ public class CarFactory {
     }
 
     public static List<Car> makeCars(int carCounts) {
-        return Stream.generate(Car::new)
+        return Stream.generate(() -> new Car(new RandomMovingStrategy()))
                 .limit(carCounts)
                 .collect(Collectors.toList());
     }

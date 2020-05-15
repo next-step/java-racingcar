@@ -5,8 +5,6 @@ import java.util.List;
 public class RacingGame {
     private int carCounts;
     private int gameTryCounts;
-    private static final int RANDOM_NUMBER_RANGE_MAX = 10;
-    private static final int RANDOM_NUMBER_LIMIT = 4;
 
     public void run() {
         setGameInformation();
@@ -23,15 +21,6 @@ public class RacingGame {
         for (int i = 0; i < gameTryCounts; i++) {
             makeRandomNumber(cars);
             ResultViewProcessor.printResult(cars);
-        }
-    }
-
-    public void makeRandomNumber(List<Car> cars) {
-        int carCounts = cars.size();
-        for (int i = 0; i < carCounts; i++) {
-            int randomNumber = (int)(Math.random() * RANDOM_NUMBER_RANGE_MAX);
-            Car car = cars.get(i);
-            moveRacingCarByRandomNumber(car, randomNumber);
         }
     }
 

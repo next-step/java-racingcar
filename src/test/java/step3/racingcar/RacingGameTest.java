@@ -17,11 +17,4 @@ public class RacingGameTest {
         List<Car> cars = CarFactory.makeCars(carCounts);
         assertThat(cars.size()).isEqualTo(carCounts);
     }
-
-    @DisplayName("MovingStrategy가 정상 작동하면 자동차의 position이 전진한다")
-    @ParameterizedTest
-    @ValueSource(ints = {4, 5, 6, 7, 8})
-    public void carMovesWhenMovingStrategyWorks() {
-        
-    }
 }
