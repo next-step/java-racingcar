@@ -2,8 +2,6 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Cars;
-import racingcar.domain.Racing;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -15,7 +13,7 @@ public class RacingTest {
     void create() {
         String[] carNames = new String[]{"name1", "name2"};
 
-        assertThatCode(() -> Racing.of(Cars.of(carNames)))
+        assertThatCode(() -> Racing.of(Cars.of(carNames), Round.of(1)))
                 .doesNotThrowAnyException();
     }
 
@@ -26,6 +24,6 @@ public class RacingTest {
         Cars cars = Cars.of(carNames);
 
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> Racing.of(cars).run(null));
+                .isThrownBy(() -> Racing.of(cars, Round.of(1)).run(null));
     }
 }
