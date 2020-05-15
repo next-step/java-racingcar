@@ -35,7 +35,6 @@ public class CarsTest {
     void moveAllTest(List<Car> cars){
         Cars racingCars = new Cars(cars);
         assertThatCode(() -> racingCars.moveAll()).doesNotThrowAnyException();
-        assertThat(racingCars.moveAll()).hasSize(cars.size());
     }
 
     private static Stream<Arguments> generateCarList() {

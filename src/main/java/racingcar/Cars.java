@@ -15,10 +15,12 @@ public class Cars {
         this.cars = cars;
     }
 
-    public List<Integer> moveAll(){
-        return cars.stream()
-                .map(Car::move)
-                .collect(toList());
+    public void moveAll() {
+        cars.stream()
+                .forEach(Car::move);
     }
 
+    public void clearAll(){
+        cars.forEach(Car::clearPosition);
+    }
 }
