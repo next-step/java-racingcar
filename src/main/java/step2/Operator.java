@@ -6,8 +6,13 @@ import java.util.function.IntBinaryOperator;
 public enum Operator {
     PLUS("+", (a, b) -> a + b),
     MINUS("-", (a, b) -> a - b),
-    DIVIDE("/", (a, b) -> b == 0 ? 0 : a / b),
-    MULTIPLY("*", (a, b) -> a * b);
+    MULTIPLY("*", (a, b) -> a * b),
+    DIVIDE("/", (a, b) -> {
+        if (b == 0) {
+            throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
+        }
+        return a / b;
+    });
 
     private final String expression;
     private final IntBinaryOperator operator;
@@ -25,11 +30,11 @@ public enum Operator {
                         String.format("'%s'사칙연산 기호가 올바르지 않습니다.", expression)));
     }
 
-    public int result(String left, String right) {
-        return this.result(Integer.parseInt(left), Integer.parseInt(right));
+    public int getResult(String leftOperand, String rightOperand) {
+        return this.getResult(Integer.parseInt(leftOperand), Integer.parseInt(rightOperand));
     }
 
-    public int result(int left, int right) {
-        return this.operator.applyAsInt(left, right);
+    public int getResult(int leftOperand, int rightOperand) {
+        return this.operator.applyAsInt(leftOperand, rightOperand);
     }
 }

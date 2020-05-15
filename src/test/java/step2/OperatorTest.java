@@ -43,27 +43,34 @@ public class OperatorTest {
     @ParameterizedTest
     @CsvSource(value = {"1,1,2", "2,3,5", "3,4,7"})
     void plusTest(int a, int b, int result) {
-        assertThat(Operator.PLUS.result(a, b)).isEqualTo(result);
+        assertThat(Operator.PLUS.getResult(a, b)).isEqualTo(result);
     }
 
     @DisplayName("Operation.MINUS는 첫번째 인자에서 두번째 인자의 값을 뺀 값을 반환한다")
     @ParameterizedTest
     @CsvSource(value = {"4,3,1", "3,2,1", "1,2,-1"})
     void minusTest(int a, int b, int result) {
-        assertThat(Operator.MINUS.result(a, b)).isEqualTo(result);
+        assertThat(Operator.MINUS.getResult(a, b)).isEqualTo(result);
     }
 
     @DisplayName("Operation.DIVIDE 첫번째 인자를 두번째 인자로 나눗셈 한 값을 반환한다")
     @ParameterizedTest
-    @CsvSource(value = {"0,1,0", "1,0,0", "1,2,0", "10,2,5"})
+    @CsvSource(value = {"0,1,0", "1,2,0", "10,2,5"})
     void divideTest(int a, int b, int result) {
-        assertThat(Operator.DIVIDE.result(a, b)).isEqualTo(result);
+        assertThat(Operator.DIVIDE.getResult(a, b)).isEqualTo(result);
+    }
+
+    @DisplayName("Operation.DIVIDE 두번쨰 인자로 0을 사용할 수 없다")
+    @ParameterizedTest
+    @CsvSource(value = {"1,0", "2,0", "3,0"})
+    void divideWithZeroTest(int a, int b) {
+        assertThatIllegalArgumentException().isThrownBy(() -> Operator.DIVIDE.getResult(a, b));
     }
 
     @DisplayName("Operation.MULTIPLY 첫번째 인자와 두번째 인자를 곱셈 한 값을 반환한다")
     @ParameterizedTest
     @CsvSource(value = {"1,1,1", "0,0,0", "10,10,100"})
     void multiplyTest(int a, int b, int result) {
-        assertThat(Operator.MULTIPLY.result(a, b)).isEqualTo(result);
+        assertThat(Operator.MULTIPLY.getResult(a, b)).isEqualTo(result);
     }
 }
