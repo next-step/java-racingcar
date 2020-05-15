@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import calculator.util.StringUtil;
 import racingcar.exception.ErrorMessage;
@@ -6,7 +6,7 @@ import racingcar.moving.MovingStrategy;
 
 public class Car {
 
-    static final int DEFAULT_DISTANCE = 0;
+    public static final int DEFAULT_DISTANCE = 0;
 
     private String name;
     private int position;
@@ -30,7 +30,7 @@ public class Car {
         }
     }
 
-    void move(final MovingStrategy movingStrategy) {
+    public void move(final MovingStrategy movingStrategy) {
         validateMovingStrategy(movingStrategy);
         if (movingStrategy.isMovable()) {
             position++;
@@ -43,7 +43,7 @@ public class Car {
         }
     }
 
-    boolean isSamePosition(final int position) {
+    public boolean isSamePosition(final int position) {
         return this.position == position;
     }
 

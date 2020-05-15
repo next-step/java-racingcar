@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import racingcar.moving.MovingStrategy;
 
@@ -26,15 +26,15 @@ public class Cars {
         this.cars = cars;
     }
 
-    void moveCars(final MovingStrategy movingStrategy) {
+    public void moveCars(final MovingStrategy movingStrategy) {
         cars.forEach(car -> car.move(movingStrategy));
     }
 
-    List<Car> getCars() {
+    public List<Car> getCars() {
         return this.cars;
     }
 
-    List<Car> getWinnerCars() {
+    public List<Car> getWinnerCars() {
         return cars.stream()
                 .max(Comparator.comparingInt(Car::getPosition))
                 .map(winnerCar -> cars.stream()

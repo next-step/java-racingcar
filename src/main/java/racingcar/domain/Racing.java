@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import racingcar.moving.MovingStrategy;
 
@@ -19,15 +19,15 @@ public class Racing {
         this.cars = cars;
     }
 
-    void run(final MovingStrategy movingStrategy) {
+    public void run(final MovingStrategy movingStrategy) {
         cars.moveCars(movingStrategy);
     }
 
-    List<Car> getCars() {
+    public List<Car> getCars() {
         return this.cars.getCars();
     }
 
-    List<Car> getWinnerCars() {
+    public List<Car> getWinnerCars() {
         return this.cars.getWinnerCars();
     }
 }
