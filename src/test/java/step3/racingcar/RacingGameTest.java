@@ -24,18 +24,6 @@ public class RacingGameTest {
         assertThat(racingCars.size()).isEqualTo(carCounts);
     }
 
-    /*
-    @DisplayName("차량 대수 Input을 입력받으면 RacingCar 객체를 Input 개수만큼 생성하는 테스트")
-    @ParameterizedTest
-    @ValueSource(ints = {5, 10, 3})
-    public void makeRacingCarObjectInAccordanceWithInput(int carCounts) {
-        RacingGame racingGame = new RacingGame();
-        racingGame.setRacingCars(carCounts);;
-        assertThat(racingGame.getRacingCars().size()).isEqualTo(carCounts);
-    }
-
-     */
-
     @DisplayName("조건에 맞으면 RacingCar 객체가 움직이는 테스트")
     @ParameterizedTest
     @ValueSource(ints = {7, 9, 5, 6})

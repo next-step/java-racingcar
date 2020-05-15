@@ -13,24 +13,12 @@ public class RacingGame {
     public void run() {
         setGameInformation();
         List<RacingCar> racingCars = CarFactory.makeCars(this.carCounts);
-        startGame(racingCars, gameTryCounts);
+        startGame(racingCars);
     }
 
     public void setGameInformation() {
         this.carCounts = InputViewProcessor.getUserInput(Message.CAR_COUNTS);
         this.gameTryCounts = InputViewProcessor.getUserInput(Message.GAME_TRY_COUNTS);
-    }
-
-    public void setGameTryCounts(int gameTryCounts) {
-        this.gameTryCounts = gameTryCounts;
-    }
-
-    public void setRacingCars(int carCounts) {
-        this.racingCars = new ArrayList<>();
-        for (int i = 0; i < carCounts; i++) {
-            RacingCar racingCar = new RacingCar();
-            this.racingCars.add(racingCar);
-        }
     }
 
     public void startGame(List<RacingCar> racingCars, int gameTryCounts) {
