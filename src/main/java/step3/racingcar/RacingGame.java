@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 public class RacingGame {
+    private int carCounts;
     private int gameTryCounts;
     private List<RacingCar> racingCars;
     private static final int RANDOM_NUMBER_RANGE_MAX = 10;
@@ -19,18 +20,15 @@ public class RacingGame {
     }
 
     public void run() {
-        Map<String, Integer> userInputMap = InputViewProcessor.getUserInputMap();
-        setGameInformation(userInputMap);
+        setGameInformation();
         List<RacingCar> racingCars = getRacingCars();
         int gameTryCounts = getGameTryCounts();
         startGame(racingCars, gameTryCounts);
     }
 
-    public void setGameInformation(Map<String, Integer> userInputMap) {
-        int carCounts = userInputMap.get(UserInputMapKey.CAR_COUNTS.getKey());
-        int gameTryCounts = userInputMap.get(UserInputMapKey.GAME_TRY_COUNTS.getKey());
-        setGameTryCounts(gameTryCounts);
-        setRacingCars(carCounts);
+    public void setGameInformation() {
+        this.carCounts = InputViewProcessor.getUserInput(Message.CAR_COUNTS);
+        this.gameTryCounts = InputViewProcessor.getUserInput(Message.GAME_TRY_COUNTS);
     }
 
     public void setGameTryCounts(int gameTryCounts) {
