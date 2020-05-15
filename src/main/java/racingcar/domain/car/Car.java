@@ -1,12 +1,12 @@
 package racingcar.domain.car;
 
-import racingcar.domain.car.power.Power;
+import racingcar.domain.car.strategy.MovementStrategy;
 
 public class Car {
     private int location;
 
-    public int move(Power power) {
-        if (power.isMovable()) {
+    public int move(MovementStrategy movementStrategy) {
+        if (movementStrategy.isMovable()) {
             location++;
         }
 

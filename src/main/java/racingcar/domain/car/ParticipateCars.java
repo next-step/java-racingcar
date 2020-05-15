@@ -1,6 +1,6 @@
 package racingcar.domain.car;
 
-import racingcar.domain.car.power.Power;
+import racingcar.domain.car.strategy.MovementStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +23,9 @@ public class ParticipateCars {
         return cars;
     }
 
-    public List<Integer> moveCars(Power power) {
+    public List<Integer> moveCars(MovementStrategy movementStrategy) {
         return this.cars.stream()
-                .map(car -> car.move(power))
+                .map(car -> car.move(movementStrategy))
                 .collect(Collectors.toList());
     }
 }

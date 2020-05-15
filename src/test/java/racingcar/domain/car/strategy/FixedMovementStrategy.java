@@ -1,11 +1,9 @@
-package racingcar.domain.car.power;
+package racingcar.domain.car.strategy;
 
-import racingcar.domain.car.power.Power;
-
-public class FixedPower implements Power {
+public class FixedMovementStrategy implements MovementStrategy {
     private boolean movable;
 
-    public FixedPower() {
+    public FixedMovementStrategy() {
         this.movable = false;
     }
 

@@ -1,7 +1,7 @@
 package racingcar.domain.game;
 
 import racingcar.domain.car.ParticipateCars;
-import racingcar.domain.car.power.Power;
+import racingcar.domain.car.strategy.MovementStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +17,9 @@ public class RacingGame {
         this.phaseResults = new ArrayList<>();
     }
 
-    public void startGame(Power power) {
+    public void startGame(MovementStrategy movementStrategy) {
         for (int phase = 0; phase < numberOfPhase; phase++) {
-            PhaseResult phaseResult = new PhaseResult(participateCars.moveCars(power));
+            PhaseResult phaseResult = new PhaseResult(participateCars.moveCars(movementStrategy));
             phaseResults.add(phaseResult);
         }
     }

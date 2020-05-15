@@ -2,11 +2,7 @@ package racingcar.domain.game;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.car.power.FixedPower;
-import racingcar.domain.game.GameInfo;
-import racingcar.domain.game.GameResult;
-import racingcar.domain.game.PhaseResult;
-import racingcar.domain.game.RacingGame;
+import racingcar.domain.car.strategy.FixedMovementStrategy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +15,7 @@ class RacingGameTest {
     void getGameResult() {
         GameInfo gameInfo = new GameInfo(3, 2);
         RacingGame racingGame = new RacingGame(gameInfo);
-        racingGame.startGame(new FixedPower());
+        racingGame.startGame(new FixedMovementStrategy());
 
         GameResult gameResult = racingGame.getGameResult();
         assertThat(gameResult).isEqualToComparingFieldByFieldRecursively(expectedGameResult());

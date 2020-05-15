@@ -1,6 +1,6 @@
-package racingcar.domain.car.power;
+package racingcar.domain.car.strategy;
 
-public class RandomPower implements Power {
+public class RandomMovementStrategy implements MovementStrategy {
     private static final int MOVE_CONDITION = 4;
 
     @Override
