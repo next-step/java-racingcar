@@ -14,10 +14,6 @@ public class RandomMovableStrategy implements MovableStrategy {
 
     @Override
     public int move() {
-        return movedByNumberFourOrMore();
-    }
-
-    private int movedByNumberFourOrMore() {
         int value = randomGenerator.nextInt(DEFAULT_RANDOM_RANGE);
         if(value >= MINIMUM_MOVABLE_VALUE) {
             return GO;
