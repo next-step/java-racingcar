@@ -9,8 +9,8 @@ public class CarFactory {
     private CarFactory() {
     }
 
-    public static List<RacingCar> makeCars(int carCounts) {
-        return Stream.generate(RacingCar::new)
+    public static List<Car> makeCars(int carCounts) {
+        return Stream.generate(Car::new)
                 .limit(carCounts)
                 .collect(Collectors.toList());
     }

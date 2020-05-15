@@ -1,8 +1,6 @@
 package step3.racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class RacingGame {
     private int carCounts;
@@ -12,8 +10,8 @@ public class RacingGame {
 
     public void run() {
         setGameInformation();
-        List<RacingCar> racingCars = CarFactory.makeCars(this.carCounts);
-        startGame(racingCars);
+        List<Car> cars = CarFactory.makeCars(this.carCounts);
+        startGame(cars);
     }
 
     public void setGameInformation() {
@@ -21,24 +19,24 @@ public class RacingGame {
         this.gameTryCounts = InputViewProcessor.getUserInput(Message.GAME_TRY_COUNTS);
     }
 
-    public void startGame(List<RacingCar> racingCars, int gameTryCounts) {
+    public void startGame(List<Car> cars) {
         for (int i = 0; i < gameTryCounts; i++) {
-            makeRandomNumber(racingCars);
-            ResultViewProcessor.printResult(racingCars);
+            makeRandomNumber(cars);
+            ResultViewProcessor.printResult(cars);
         }
     }
 
-    public void makeRandomNumber(List<RacingCar> racingCars) {
-        int carCounts = racingCars.size();
+    public void makeRandomNumber(List<Car> cars) {
+        int carCounts = cars.size();
         for (int i = 0; i < carCounts; i++) {
             int randomNumber = (int)(Math.random() * RANDOM_NUMBER_RANGE_MAX);
-            RacingCar racingCar = racingCars.get(i);
-            moveRacingCarByRandomNumber(racingCar, randomNumber);
+            Car car = cars.get(i);
+            moveRacingCarByRandomNumber(car, randomNumber);
         }
     }
 
-    public void moveRacingCarByRandomNumber(RacingCar racingCar, int randomNumber) {
+    public void moveRacingCarByRandomNumber(Car car, int randomNumber) {
         if (randomNumber >= RANDOM_NUMBER_LIMIT)
-            racingCar.movePosition();
+            car.movePosition();
     }
 }
