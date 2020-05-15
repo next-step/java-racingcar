@@ -2,14 +2,10 @@
 
 * 모든 로직에 단위 테스트를 구현한다.
     * UI(System.in, System.out) 로직은 제외함.
-* InputViewProcessor
-    * 안내를 통해 사용자의 입력값을 저장하는 UI 기능.
-    * 입력값이 잘못된 경우 예외 처리를 해주는 기능.
-* RacingGame
-    * 입력값(자동차 대수 등)을 토대로 인스턴스 변수 초기화
-        * gameTryCounts 및 RacingCar 객체 리스트
-    * 난수 생성을 통해 car들의 position을 변경시키는 기능.
-* RacingCar
-    * 자동차의 position을 이동시키는 기능.
-* ResultViewProcessor
-    * car position을 바탕으로 게임 실행 결과를 출력시키는 기능.
+* 안내를 통해 사용자의 입력값을 저장하는 UI.
+* 입력값이 잘못된 경우 예외 처리.
+* 입력값(자동차 대수 등)을 토대로 자동차 객체 생성.
+* 입력값(시도 회수)만큼 게임을 진행.
+* 난수 생성.
+* 자동차 객체의 Position을 이동시키기는 기능.
+* car position을 바탕으로 게임 실행 결과를 출력시키는 기능.
