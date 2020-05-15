@@ -1,3 +1,5 @@
+package step1;
+
 public class Number {
 
     public boolean isOdd(int input) {
