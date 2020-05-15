@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import racingcar.exception.ErrorMessage;
 import racingcar.moving.MovingStrategy;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ public class Cars {
     private List<Car> cars;
 
     public static Cars of(final String[] carNames) {
+        validateCarNames(carNames);
         List<Car> cars = Arrays.stream(carNames)
                 .map(Car::of)
                 .collect(Collectors.toList());
@@ -24,6 +26,12 @@ public class Cars {
 
     private Cars(final List<Car> cars) {
         this.cars = cars;
+    }
+
+    private static void validateCarNames(final String[] carNames) {
+        if (carNames == null || carNames.length == 0) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_PARAMETER);
+        }
     }
 
     public void moveCars(final MovingStrategy movingStrategy) {
