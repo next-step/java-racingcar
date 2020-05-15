@@ -15,7 +15,7 @@ public class RacingCarApplication {
 
         racingGame.startGame(new RandomMovementStrategy());
 
-        GameResult gameResult = racingGame.getGameResult();
+        GameResult gameResult = racingGame.createGameResult();
 
         OutputView.printGameResult(gameResult);
     }

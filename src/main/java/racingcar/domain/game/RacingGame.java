@@ -24,7 +24,7 @@ public class RacingGame {
         }
     }
 
-    public GameResult getGameResult() {
+    public GameResult createGameResult() {
         return new GameResult(numberOfPhase, phaseResults);
     }
 }

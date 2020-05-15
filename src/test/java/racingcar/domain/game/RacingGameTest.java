@@ -19,7 +19,7 @@ class RacingGameTest {
         RacingGame racingGame = new RacingGame(gameInfo);
         racingGame.startGame(new FixedMovementStrategy());
 
-        GameResult gameResult = racingGame.getGameResult();
+        GameResult gameResult = racingGame.createGameResult();
         assertThat(gameResult).isEqualToComparingFieldByFieldRecursively(expectedGameResult());
     }
 
