@@ -1,6 +1,5 @@
 package calculator;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -9,8 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class OperandTest {
 
@@ -19,7 +17,8 @@ class OperandTest {
     void getNumberStringTest() {
         String givenString = "5";
 
-        Float valueOfNumber = new Operand(givenString).getNumber();
+        Operand operand = Operand.valueOf(givenString);
+        Float valueOfNumber = operand.getNumber();
 
         assertThat(valueOfNumber).isEqualTo(5);
     }
@@ -41,7 +40,7 @@ class OperandTest {
         final float givenValue = (float) 128.5;
         Operand givenOperand = new Operand(givenValue);
 
-        Operand calculatedOperand = givenOperand.calculate(operator, new Operand(afterValue));
+        Operand calculatedOperand = givenOperand.calculate(operator, Operand.valueOf(afterValue));
         final Float calculateValue = calculatedOperand.getNumber();
 
         final Float expectedValue = getExpectedValue(givenValue, Float.valueOf(afterValue), operator);

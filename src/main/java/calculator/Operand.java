@@ -7,8 +7,9 @@ public class Operand {
         this.number = number;
     }
 
-    public Operand(String number) {
-        this.number = Float.valueOf(number);
+    public static Operand valueOf(String number) {
+        Float numberFloat = Float.valueOf(number);
+        return new Operand(numberFloat);
     }
 
     public Float getNumber() {

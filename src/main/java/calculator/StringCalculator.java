@@ -14,10 +14,10 @@ public class StringCalculator {
     }
 
     public float calculate() throws ArithmeticException {
-        Operand result = new Operand(formulaElements[0]);
+        Operand result = Operand.valueOf(formulaElements[0]);
         for(int i = 1 ; i < formulaElements.length ; i += 2) {
             Operator operator = Operator.getOperator(formulaElements[i]);
-            result = result.calculate(operator, new Operand(formulaElements[i+1]));
+            result = result.calculate(operator, Operand.valueOf(formulaElements[i+1]));
         }
         return result.getNumber();
     }
