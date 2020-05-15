@@ -14,12 +14,12 @@ public class StringUtilTest {
     @ParameterizedTest
     @ValueSource(strings = {"1", "122", "32346"})
     void isNumTest(String str) {
-        assertThat(StringUtil.isNumber(str)).isEqualTo(true);
+        assertThat(StringUtil.isNumber(str)).isTrue();
     }
 
     @Test
     void isNumEmptyTest() {
-        assertThat(StringUtil.isNumber("")).isEqualTo(false);
+        assertThat(StringUtil.isNumber("")).isFalse();
     }
 
     @Test
