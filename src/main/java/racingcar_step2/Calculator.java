@@ -6,12 +6,12 @@ public class Calculator {
     private int result = 0;
 
     public Calculator(String input) {
-        validateInput(input);
+        inputValid(input);
         this.splitValue = splitInputString(input);
         runCalculator(this.splitValue);
     }
 
-    private void validateInput(String input) {
+    private void inputValid(String input) throws IllegalArgumentException {
         if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException("Input Value Error");
         }
