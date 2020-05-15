@@ -33,8 +33,8 @@ class StringCalculatorTest {
 
     @DisplayName("지원하지 않는 Operator 입력시  IllegalArgumentException 발생 여부 테스트")
     @ParameterizedTest
-    @CsvSource(value = {"1 & 2 + 3:6" , "1 ! 2 / 3:1", "3 % 4:-1"}, delimiter = ':')
-    void calculateNotOperatorSymbolTest(String formula, float calculatedValue) {
+    @CsvSource(value = {"1 & 2 + 3" , "1 ! 2 / 3", "3 % 4", "1 + 1 1 1", "1 + 1 + 2 + -", "+ 1 + 2 -", "1 1 1"})
+    void calculateNotOperatorSymbolTest(String formula) {
         Throwable throwable = catchThrowable(() -> {
             Float result = new StringCalculator(formula).calculate();
         });
@@ -64,5 +64,18 @@ class StringCalculatorTest {
         });
 
         assertThat(throwable).isInstanceOf(ArithmeticException.class);
+    }
+
+    @DisplayName("식의 항이 3개 미만 이거나 식의 항이 짝수개 이면 IllegalArgumentException 발생")
+    @ParameterizedTest
+    @CsvSource({"1", "1 + ", "+ +", "1 + 1 +", "1 + 1 3"})
+    public void validationCheckElementCount(String formula) {
+        Throwable throwable = catchThrowable(() -> {
+            StringCalculator stringCalculator = new StringCalculator(formula);
+            stringCalculator.calculate();
+        });
+
+        assertThat(throwable).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("There are errors in the number of operators and operands.");
     }
 }

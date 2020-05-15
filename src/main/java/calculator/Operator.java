@@ -47,8 +47,4 @@ public enum Operator {
         return operator;
     }
 
-    public static boolean isOperatorSymbol(String symbol) {
-        return Arrays.stream(values())
-                .anyMatch(operator -> operator.getSymbol().equals(symbol));
-    }
 }

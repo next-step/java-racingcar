@@ -71,10 +71,4 @@ class OperandTest {
         );
     }
 
-    @DisplayName("문자열로 주어지는 값이 Operand로 변경가능한 지 여부가 정상적으로 되는 지 확인 테스트")
-    @Test
-    void isValueOf() {
-        assertThat(Operand.isOperand("-5")).isTrue();
-        assertThat(Operand.isOperand("-5$")).isFalse();
-    }
 }
