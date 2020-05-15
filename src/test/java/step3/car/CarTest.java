@@ -16,13 +16,13 @@ public class CarTest {
     public void moveTest(int input, int expected){
 
         // given
-        Car car = Car.of();
+        Car car = new Car();
         GenerateNumberStrategy generator = new TestNumberGenerator(input);
 
         // when
-        car.move(generator);
+        int position = car.move(generator);
 
         // then
-        assertThat(car.getPosition()).isEqualTo(expected);
+        assertThat(position).isEqualTo(expected);
     }
 }

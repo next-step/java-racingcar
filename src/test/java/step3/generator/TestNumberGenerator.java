@@ -1,9 +1,5 @@
 package step3.generator;
 
-import step3.generator.GenerateNumberStrategy;
-
-import java.util.Random;
-
 public class TestNumberGenerator implements GenerateNumberStrategy {
 
     private final int num;
@@ -13,7 +9,7 @@ public class TestNumberGenerator implements GenerateNumberStrategy {
     }
 
     @Override
-    public int generateNumber() {
-        return num;
+    public boolean isMove() {
+        return num >= 4;
     }
 }
