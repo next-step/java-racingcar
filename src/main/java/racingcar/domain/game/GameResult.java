@@ -1,5 +1,6 @@
 package racingcar.domain.game;
 
+import java.util.Collections;
 import java.util.List;
 
 public class GameResult {
@@ -9,7 +10,7 @@ public class GameResult {
 
     public GameResult(int numberOfPhase, List<PhaseResult> phaseResults) {
         this.numberOfPhase = numberOfPhase;
-        this.phaseResults = phaseResults;
+        this.phaseResults = Collections.unmodifiableList(phaseResults);
     }
 
     public int getNumberOfPhase() {
@@ -18,8 +19,7 @@ public class GameResult {
 
     public PhaseResult findByPhaseNumber(int phaseNumber) {
         validatePhaseNumber(phaseNumber);
-        PhaseResult findPhaseResult = phaseResults.get(phaseNumber - 1);
-        return new PhaseResult(findPhaseResult.getRaceResult());
+        return phaseResults.get(phaseNumber - 1);
     }
 
     private void validatePhaseNumber(int phaseNumber) {
