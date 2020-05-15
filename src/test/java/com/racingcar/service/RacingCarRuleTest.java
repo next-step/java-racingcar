@@ -18,21 +18,19 @@ public class RacingCarRuleTest {
     @DisplayName("자동차 경주에서 이동하는 규칙 중 4이상이 나오면 상태가 1 증가하는지 테스트")
     @ParameterizedTest
     @MethodSource("provideRacingStatusValue")
-    void defaultRacingCarRuleTest(final Integer racingStatusValue, final Integer expected) {
+    void defaultRacingCarRuleTest(final Integer racingStatusValue, final Boolean expected) {
 
         TestDefaultRacingCarRule rule = new TestDefaultRacingCarRule(racingStatusValue);
-        RacingCar racingCar = new RacingCar(1);
+        Boolean isMoving = rule.isRacingCarMove();
 
-        rule.moveRacingCar(racingCar);
-
-        assertEquals(racingCar.getRacingStatus(), expected);
+        assertEquals(isMoving, expected);
     }
 
     private static Stream<Arguments> provideRacingStatusValue() {
         return Stream.of(
-                Arguments.of(3, 1),
-                Arguments.of(5, 2),
-                Arguments.of(4, 2)
+                Arguments.of(3, Boolean.FALSE),
+                Arguments.of(5, Boolean.TRUE),
+                Arguments.of(4, Boolean.TRUE)
         );
     }
 

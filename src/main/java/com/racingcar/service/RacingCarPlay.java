@@ -1,41 +1,20 @@
 package com.racingcar.service;
 
-import com.racingcar.model.Player;
-import com.racingcar.model.RacingCar;
-
-import java.util.List;
-import java.util.stream.IntStream;
+import com.racingcar.model.RacingCarGame;
 
 public class RacingCarPlay {
 
-    private RacingCarPlayerAccessor racingCarPlayerAccessor;
-    private RacingCarPlayRule racingCarPlayRule;
-    private PrintRacingCar printRacingCar;
+    private RacingCarInput racingCarInput;
+    private RacingCarPrinter racingCarPrinter;
 
     public RacingCarPlay() {
-        this.racingCarPlayerAccessor = new ScannerRacingCarPlayerAccessor();
-        this.racingCarPlayRule = new DefaultRacingCarRule();
-        this.printRacingCar = new DefaultPrintRacingCar();
+        this.racingCarInput = new ScannerRacingCarInput();
+        this.racingCarPrinter = new DefaultRacingCarPrinter();
     }
 
-    public void playRacingCar() {
-
-        Player player = racingCarPlayerAccessor.accessRacingCarPlayer();
-
-        Integer countOfAttempt = player.getCountOfAttempt();
-        IntStream.range(0, countOfAttempt).forEach(i -> {
-            List<RacingCar> racingCars = player.getRacingRacingCars();
-            doEachRacingCarPlay(racingCars);
-        });
-    }
-
-    private void doEachRacingCarPlay(List<RacingCar> racingCars) {
-
-        for (RacingCar racingCar : racingCars) {
-            racingCarPlayRule.moveRacingCar(racingCar);
-            printRacingCar.printRacingCar(racingCar);
-        }
-
-        System.out.println();
+    public void playRacingCarGame() {
+        RacingCarGame racingCarGame = racingCarInput.inputRacingCarData();
+        racingCarGame.playRacingGame();
+        racingCarPrinter.printRacingCar(racingCarGame.getRacingRacingCars());
     }
 }

@@ -6,13 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class Player {
+public class RacingCarGame {
 
     private Integer countOfAttempt;
     private List<RacingCar> racingRacingCars;
 
-    public Player(Integer countOfCar, Integer countOfAttempt) {
-
+    public RacingCarGame(Integer countOfCar, Integer countOfAttempt) {
         if (countOfCar <= 0) {
             throw new IllegalArgumentException("플레이할 자동차의 개수는 0개 이상입력해주세요.");
         }
@@ -22,7 +21,6 @@ public class Player {
     }
 
     private void initRacingCar(Integer countOfCar) {
-
         if (CollectionUtils.isEmpty(this.racingRacingCars)) {
             this.racingRacingCars = new ArrayList<>();
         }
@@ -33,11 +31,17 @@ public class Player {
         });
     }
 
-    public List<RacingCar> getRacingRacingCars() {
-        return racingRacingCars;
+    public void playRacingGame() {
+        IntStream.range(0, this.countOfAttempt).forEach(i -> moveEachRacingCar());
     }
 
-    public Integer getCountOfAttempt() {
-        return countOfAttempt;
+    private void moveEachRacingCar() {
+        for (RacingCar racingCar : this.racingRacingCars) {
+            racingCar.movingRacingCar();
+        }
+    }
+
+    public List<RacingCar> getRacingRacingCars() {
+        return racingRacingCars;
     }
 }
