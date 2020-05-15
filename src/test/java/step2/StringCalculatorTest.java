@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class StringCalculatorTest {
 
@@ -60,23 +61,20 @@ class StringCalculatorTest {
                 {
                     StringCalculator stringCalculator = new StringCalculator(input);
                     //InputCheck.checkMatchingNumbersAndOperators(stringCalculator.getInputArray());
-                }
-        );
-    }
-
-
-    @DisplayName("Arguments check / Number Position")
-    @ParameterizedTest
-    @ValueSource(strings = {"1 1 * 1", "0 0 + 134 +", "1 + 1 123", "4 * + 1", "+ 1", "1 + 2 3 + 4", "8 * * 3",
-            "555 - 22 234", "999 999 - 1", "9 / 4 4", "5 + 2 + 3 + 4 + + 5"})
-    void testNumberString(String input) {
-        assertThatIllegalArgumentException().isThrownBy(() ->
-                {
-                    StringCalculator stringCalculator = new StringCalculator(input);
                     //InputCheck.checkNumberString(stringCalculator.getInputArray());
                 }
         );
     }
+
+
+    @DisplayName("Divive with Zero Check")
+    @ParameterizedTest
+    @ValueSource(strings = {"2 / 0", "1 / 0", "0 / 0", "34324324 / 0"})
+    void testNumberString(String input) {
+        // StringCalculator stringCalculator = new StringCalculator(input);
+        assertThrows(ArithmeticException.class, () -> new StringCalculator(input));
+    }
+
 
     @DisplayName("Arguments check / Symbol Position")
     @ParameterizedTest

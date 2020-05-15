@@ -8,22 +8,25 @@ public enum Operator {
     DIVIDE("/", (result, nextNumber, operator) -> result / nextNumber);
 
     private String operator;
-    private Calculator calculator;
+    public Calculator calculator;
+
+    private Operator() {
+        // block
+    }
 
     Operator(String operator, Calculator calculator) {
         this.operator = operator;
         this.calculator = calculator;
     }
 
-    public static int calculate(int result, int nextNumber, String operator) {
+    static int calculate(int result, int nextNumber, String operator) {
         for (Operator op : Operator.values()) {
             if (op.operator.equals(operator)) {
-                return Calculator.calculate(result, nextNumber, operator);
+                return op.calculator.calculate(result, nextNumber, operator);
             }
         }
         throw new IllegalArgumentException();
     }
-
 
 }
 

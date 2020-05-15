@@ -17,6 +17,7 @@ public class InputCheck {
         checkMatchingNumbersAndOperators(inputArray);
         checkNumberString(inputArray);
         checkCalculateSymbol(inputArray);
+        checkDivideWithZero(inputArray);
 
     }
 
@@ -49,6 +50,15 @@ public class InputCheck {
     public static void checkCalculateSymbol(String[] inputArray) {
         for (int i = 1; i < inputArray.length; i += STEP_OF_NUMBER_AND_SYMBOL) {
             checkCalculateSymbol(inputArray[i]);
+        }
+    }
+
+    private static void checkDivideWithZero(String[] inputArray) throws ArithmeticException {
+
+        for (int i = 1; i < inputArray.length; i += STEP_OF_NUMBER_AND_SYMBOL) {
+            if (inputArray[i].equals("/") && inputArray[i + 1].equals("0")) {
+                throw new ArithmeticException("Can't divide With zero.");
+            }
         }
     }
 

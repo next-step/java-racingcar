@@ -3,10 +3,12 @@ package step2;
 public class StringCalculator {
 
     public static final String SEPARATOR = " ";
+
     private String input;
     private String[] inputArray;
 
     private StringCalculator() {
+        // block
     }
 
     public StringCalculator(String input) {
@@ -19,6 +21,7 @@ public class StringCalculator {
         this.inputArray = input.split(SEPARATOR);
 
         InputCheck.inputCheck(input, inputArray);
+
     }
 
     public int calculate() {
@@ -31,6 +34,6 @@ public class StringCalculator {
         }
 
         return result;
-    }
 
+    }
 }
