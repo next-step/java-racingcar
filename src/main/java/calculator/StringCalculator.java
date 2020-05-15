@@ -39,16 +39,16 @@ public class StringCalculator {
 
     private void validateInput(String input) {
         if (input == null || input.trim().isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Parameter `input` must not be empty ");
         }
         if (input.split(DELIMITER).length % 2 == 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Result `input.split(DELIMITER).length` must be odd number");
         }
     }
 
     private void validateOperator(String operator) {
         if (!SUPPORT_OPERATOR.contains(operator)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Parameter `operator` must be valid");
         }
     }
 
@@ -66,7 +66,7 @@ public class StringCalculator {
 
     public int divide(int number1, int number2) {
         if (number2 == 0) {
-            throw new ArithmeticException();
+            throw new ArithmeticException("`number1` cannot be divided by zero(`number2`)");
         }
         return number1 / number2;
     }
