@@ -10,14 +10,19 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static racingcar.domain.car.strategy.FixedMovementStrategy.MOVE;
+import static racingcar.domain.car.strategy.FixedMovementStrategy.STOP;
 
 class RacingGameTest {
+
     @DisplayName("getGameResult는 startGame을 하고나서 게임결과를 반환한다.")
     @Test
     void getGameResult() {
+        List<Boolean> expectedMovements = new ArrayList<>(Arrays.asList(MOVE, STOP, MOVE, STOP, MOVE, STOP, MOVE, STOP));
+
         GameInfo gameInfo = new GameInfo("pobi,crong,horox", 2);
         RacingGame racingGame = new RacingGame(gameInfo);
-        racingGame.startGame(new FixedMovementStrategy());
+        racingGame.startGame(new FixedMovementStrategy(expectedMovements));
 
         GameResult gameResult = racingGame.createGameResult();
         assertThat(gameResult).isEqualToComparingFieldByFieldRecursively(expectedGameResult());
