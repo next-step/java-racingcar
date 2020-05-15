@@ -14,32 +14,34 @@ public class RacingTest {
     @ParameterizedTest
     @ValueSource(ints = { 0, -1, -10000 })
     void failureCreateByLessThanZeroValue(final int value) {
-        assertThatThrownBy(() -> Racing.of(value, new RandomMovingStrategy()))
+        assertThatThrownBy(() -> Racing.of(value))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("생성 실패: Car 의 이동 전략이 null 인 경우 IllegalArgumentException 발생")
-    @Test
-    void failureCreateByStrategyIsNull() {
-        assertThatThrownBy(() -> Racing.of(1, null))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("게임에 필요한 Car 를 생성자의 인자로 받아 생성")
+    @DisplayName("게임에 필요한 Car 의 개수를 생성자의 인자로 받아 생성")
     @ParameterizedTest
     @ValueSource(ints = { 1, 10000 })
     void create(final int value) {
-        assertThatCode(() -> Racing.of(value, new RandomMovingStrategy())).doesNotThrowAnyException();
+        assertThatCode(() -> Racing.of(value)).doesNotThrowAnyException();
+    }
+
+    @DisplayName("run 실패: Car 의 이동 전략이 null 인 경우 IllegalArgumentException 발생")
+    @Test
+    void failureRunByStrategyIsNull() {
+        Racing racing = Racing.of(3);
+
+        assertThatThrownBy(() -> racing.run(null))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("게임을 한 번 수행할 때마다 만들어진 Car 는 이동 또는 정지")
     @Test
     void move() {
-        Racing racing = Racing.of(3, new RandomMovingStrategy());
-        racing.run();
+        Racing racing = Racing.of(3);
+        racing.run(new RandomMovingStrategy());
 
         assertThat(racing.getCars()
                 .stream()
-                .map(Car::getPosition)).contains(Car.DEFAULT_DISTANCE, Car.DEFAULT_DISTANCE + 1);
+                .map(Car::getPosition)).containsAnyOf(Car.DEFAULT_DISTANCE, Car.DEFAULT_DISTANCE + 1);
     }
 }
