@@ -8,7 +8,7 @@ public class StringCalculator {
     public int calculate(String input) {
         validateInput(input);
 
-        String[] splitInput = input.split(" ");
+        String[] splitInput = input.split(DELIMITER);
 
         int answer = Integer.parseInt(splitInput[0]);
         for (int i = 1; i < splitInput.length; i += 2) {
