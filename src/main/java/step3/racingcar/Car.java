@@ -1,6 +1,7 @@
 package step3.racingcar;
 
 public class Car {
+
     private static final int DEFAULT_POSITION = 0;
     private int position;
     private final MovingStrategy movingStrategy;

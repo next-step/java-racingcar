@@ -3,6 +3,7 @@ package step3.racingcar;
 import java.util.List;
 
 public class ResultViewProcessor {
+
     private ResultViewProcessor() {
     }
 

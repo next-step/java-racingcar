@@ -3,6 +3,7 @@ package step3.racingcar;
 import java.util.Random;
 
 public class RandomMovingStrategy implements MovingStrategy{
+
     private static final int RANDOM_NUMBER_RANGE_MAX = 10;
     private static final int RANDOM_NUMBER_LIMIT = 4;
     private static final Random randomNumberGenerator = new Random();
