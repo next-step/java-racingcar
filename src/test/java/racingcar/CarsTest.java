@@ -2,10 +2,12 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.moving.MovingStrategy;
 import racingcar.moving.RandomMovingStrategy;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -13,8 +15,8 @@ public class CarsTest {
 
     private List<String[]> carNames = Arrays.asList(
             new String[] { "", "name" },
-            new String[] { },
             new String[] { null, "name" },
+            new String[] { "name1", "name2" },
             new String[] { "name1", "name2", "name3" }
     );
 
@@ -32,18 +34,37 @@ public class CarsTest {
                 .isThrownBy(() -> Cars.of(carNames.get(0)));
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> Cars.of(carNames.get(1)));
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> Cars.of(carNames.get(2)));
     }
 
     @DisplayName("모든 Car 는 이동 또는 정지")
     @Test
     void moveCars() {
-        Cars racingCars = Cars.of(carNames.get(3));
-        racingCars.moveCars(new RandomMovingStrategy());
+        Cars cars = Cars.of(carNames.get(3));
+        cars.moveCars(new RandomMovingStrategy());
 
-        assertThat(racingCars.getCars()
+        assertThat(cars.getCars()
                 .stream()
-                .map(Car::getPosition)).contains(Car.DEFAULT_DISTANCE, Car.DEFAULT_DISTANCE + 1);
+                .map(Car::getPosition)).containsAnyOf(Car.DEFAULT_DISTANCE, Car.DEFAULT_DISTANCE + 1);
+    }
+
+    @DisplayName("우승한(가장 멀리간) Cars 의 이름 배열 반환")
+    @Test
+    void getWinnerCars() {
+        Cars cars = Cars.of(carNames.get(3));
+        cars.moveCars(new SuccessMovingStrategy());
+
+        List<String> winnerNames = cars.getWinnerCars()
+                .stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
+
+        assertThat(winnerNames).containsExactly(carNames.get(3));
+    }
+
+    public static class SuccessMovingStrategy implements MovingStrategy {
+        @Override
+        public boolean isMovable() {
+            return true;
+        }
     }
 }
