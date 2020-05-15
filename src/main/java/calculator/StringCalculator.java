@@ -4,6 +4,9 @@ public class StringCalculator {
 
     private static final String SUPPORT_OPERATOR = "+-*/";
     private static final String DELIMITER = " ";
+    private static final int LOOP_INITIAL_NUMBER = 1;
+    private static final int LOOP_COUNTER = 2;
+    private static final int NEXT_NUMBER_OFFSET = 1;
 
     public int calculate(String input) {
         validateInput(input);
@@ -11,9 +14,9 @@ public class StringCalculator {
         String[] splitInput = input.split(DELIMITER);
 
         int answer = Integer.parseInt(splitInput[0]);
-        for (int i = 1; i < splitInput.length; i += 2) {
+        for (int i = LOOP_INITIAL_NUMBER; i < splitInput.length; i += LOOP_COUNTER) {
             String operator = splitInput[i];
-            int number = Integer.parseInt(splitInput[i + 1]);
+            int number = Integer.parseInt(splitInput[i + NEXT_NUMBER_OFFSET]);
 
             validateOperator(operator);
 
