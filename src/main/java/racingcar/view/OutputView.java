@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 public class OutputView {
     private static final String MARK = "-";
+    private static final String WINNER_JOINING_DELIMETER = ",";
 
     private OutputView() {
     }
@@ -27,7 +28,7 @@ public class OutputView {
 
     public static void printWinners(List<String> winners) {
         String winner = winners.stream()
-                .collect(Collectors.joining(","));
+                .collect(Collectors.joining(WINNER_JOINING_DELIMETER));
 
         System.out.println(winner + "가 최종 우승했습니다.");
     }

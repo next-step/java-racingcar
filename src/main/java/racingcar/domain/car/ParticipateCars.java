@@ -13,16 +13,6 @@ public class ParticipateCars {
         this.cars = createCars(nameOfCars);
     }
 
-    private List<Car> createCars(int numberOfCar) {
-        List<Car> cars = new ArrayList<>();
-
-        for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car());
-        }
-
-        return cars;
-    }
-
     private List<Car> createCars(String[] nameOfCars) {
         List<Car> cars = new ArrayList<>();
 
