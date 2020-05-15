@@ -33,24 +33,18 @@ public enum Operator {
     }
 
     public static Operator matchOperator(String str) {
-        Operator op;
         switch (str) {
             case "+":
-                op = Operator.ADD;
-                break;
+                return Operator.ADD;
             case "-":
-                op = Operator.MINUS;
-                break;
+                return Operator.MINUS;
             case "*":
-                op = Operator.MULTIPLY;
-                break;
+                return Operator.MULTIPLY;
             case "/":
-                op = Operator.DEVIDE;
-                break;
+                return Operator.DEVIDE;
             default:
                 throw new IllegalArgumentException("This is Disabled character.");
         }
-        return op;
     }
 
     public abstract double calculate(double num1, double num2);

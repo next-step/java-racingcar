@@ -44,4 +44,11 @@ public class OperatorTest {
     void matchOperatorTest() {
         assertThat(Operator.matchOperator("+")).isEqualTo(Operator.ADD);
     }
+
+    @Test
+    void matchOperatorExceptionTest() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() ->
+                    Operator.matchOperator("^"));
+    }
 }

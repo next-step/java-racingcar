@@ -22,8 +22,7 @@ public class StringTest {
     @DisplayName("StringIndexOutOfBoundsException Test")
     @Test
     void charAt() {
-        assertThatThrownBy(() -> {
-            "abc".charAt(4);
-        }).isInstanceOf(IndexOutOfBoundsException.class);
+        assertThatThrownBy(() ->
+            "abc".charAt(4)).isInstanceOf(IndexOutOfBoundsException.class);
     }
 }

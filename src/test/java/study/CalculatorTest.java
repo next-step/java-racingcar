@@ -2,7 +2,6 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step2.Operator;
 import step2.StringCalculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,6 +14,15 @@ public class CalculatorTest {
         StringCalculator calculator = new StringCalculator("2 + 3 * 4 / 2");
         calculator.run();
         assertThat(calculator.getResult()).isEqualTo(10.0);
+    }
+
+    @Test
+    void wrongValueStringCalculatorTest() {
+        assertThatExceptionOfType(IllegalStateException.class)
+                .isThrownBy(() -> {
+                    StringCalculator calculator = new StringCalculator("2 * - 3");
+                    calculator.run();
+                });
     }
 
     @Test

@@ -5,20 +5,17 @@ public class StringCalculator {
     private double result;
 
     public StringCalculator(String input, String splitKeyword) {
-        initialize(input, splitKeyword);
+        this.inputArray = StringUtil.doSplit(input, splitKeyword);
     }
 
     public StringCalculator(String input) {
-        initialize(input, " ");
+        this(input," ");
     }
 
     public double getResult() {
         return result;
     }
 
-    private void initialize(String input, String key) {
-        this.inputArray = StringUtil.doSplit(input, key);
-    }
 
     public void run() {
         checkLenghthIsOdd();

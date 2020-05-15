@@ -13,13 +13,12 @@ public final class StringUtil {
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("check the text you entered, input String :"+ input+
                     " split keyword: "+key);
-        } catch (NullPointerException e) {
-            throw new NullPointerException("check the text you entered, input String :"+ input+
-                    " split keyword: "+key);
         }
     }
 
     private static void checkCanSplit(String input, String key) {
+        if(input == null || key == null)
+            throw new NullPointerException("you entered null, input:"+input+", key:"+key);
         if (input.length() < key.length())
             throw new IllegalArgumentException("Can't split short String as long String , input String :" + input +
                     " split keyword: " + key);
