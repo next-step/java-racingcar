@@ -1,7 +1,11 @@
 package step3;
 
 public class Car {
-    private int position = 0;
+    private int position;
+
+    Car() {
+        position = 1;
+    }
 
     public int move() {
         return position++;
