@@ -2,33 +2,44 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.moving.RandomMovingStrategy;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class RacingTest {
 
-    @DisplayName("생성 실패: 생성할 Car 의 개수가 0보다 작거나 같으면 IllegalArgumentException 발생")
-    @ParameterizedTest
-    @ValueSource(ints = { 0, -1, -10000 })
-    void failureCreateByLessThanZeroValue(final int value) {
-        assertThatThrownBy(() -> Racing.of(value))
-                .isInstanceOf(IllegalArgumentException.class);
+    private List<String[]> carNames = Arrays.asList(
+            new String[] { "", "name" },
+            new String[] { },
+            new String[] { null, "name" },
+            new String[] { "name1", "name2", "name3" }
+    );
+
+    @DisplayName("Racing 생성: Car 의 이름 배열을 생성자의 인자로 받아 생성")
+    @Test
+    void create() {
+        assertThatCode(() -> Racing.of(carNames.get(3)))
+                .doesNotThrowAnyException();
     }
 
-    @DisplayName("게임에 필요한 Car 의 개수를 생성자의 인자로 받아 생성")
-    @ParameterizedTest
-    @ValueSource(ints = { 1, 10000 })
-    void create(final int value) {
-        assertThatCode(() -> Racing.of(value)).doesNotThrowAnyException();
+    @DisplayName("Racing 생성 실패: name 이 빈 문자열이나 null 인 경우 예외 발생")
+    @Test
+    void createByThrown() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> Racing.of(carNames.get(0)));
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> Racing.of(carNames.get(1)));
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> Racing.of(carNames.get(2)));
     }
 
     @DisplayName("run 실패: Car 의 이동 전략이 null 인 경우 IllegalArgumentException 발생")
     @Test
     void failureRunByStrategyIsNull() {
-        Racing racing = Racing.of(3);
+        Racing racing = Racing.of(carNames.get(3));
 
         assertThatThrownBy(() -> racing.run(null))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -37,7 +48,7 @@ public class RacingTest {
     @DisplayName("게임을 한 번 수행할 때마다 만들어진 Car 는 이동 또는 정지")
     @Test
     void move() {
-        Racing racing = Racing.of(3);
+        Racing racing = Racing.of(carNames.get(3));
         racing.run(new RandomMovingStrategy());
 
         assertThat(racing.getCars()
