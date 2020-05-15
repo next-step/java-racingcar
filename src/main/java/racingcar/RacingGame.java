@@ -19,5 +19,6 @@ public class RacingGame {
             racing.run(movingStrategy);
             ResultView.printResult(racing.getCars());
         }
+        ResultView.printWinner(racing.getWinnerCars());
     }
 }

@@ -26,4 +26,8 @@ public class Racing {
     List<Car> getCars() {
         return this.cars.getCars();
     }
+
+    List<Car> getWinnerCars() {
+        return null;
+    }
 }
