@@ -2,6 +2,7 @@ package step3;
 
 import static java.lang.System.exit;
 
+import java.security.spec.InvalidParameterSpecException;
 import java.util.Scanner;
 
 public class InputView {
@@ -34,22 +35,20 @@ public class InputView {
         return true;
     }
 
-    public int enterCarCount() {
+    public int enterCarCount() throws InvalidParameterSpecException {
         printCarCountRequest();
         int count = this.scanner.nextInt();
         if (false == validateCarCount(count)) {
-            System.out.println("invalid count (between 2 and 9)");
-            exit(0);
+            throw new InvalidParameterSpecException("invalid count (between 2 and 9)");
         }
         return count;
     }
 
-    public int enterTime() {
+    public int enterTime() throws InvalidParameterSpecException {
         printTimeRequest();
         int time = this.scanner.nextInt();
         if (false == validateTime(time)) {
-            System.out.println("invalid time (between 2 and 9)");
-            exit(0);
+            throw new InvalidParameterSpecException("invalid time (between 2 and 9)");
         }
         return time;
     }
