@@ -5,9 +5,17 @@ import java.util.Random;
 public class RandomMovingStrategy implements MovingStrategy {
 
     private static final int MAX_NUM = 9;
-    private static final int BASE_LINE_NUM = 4;
+    public static final int BASE_LINE_NUM = 4;
 
-    private Random random = new Random();
+    private final Random random;
+
+    public RandomMovingStrategy() {
+        this(new Random());
+    }
+
+    public RandomMovingStrategy(Random random) {
+        this.random = random;
+    }
 
     @Override
     public boolean isMovable() {
