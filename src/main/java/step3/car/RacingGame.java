@@ -8,17 +8,17 @@ import java.util.List;
 public class RacingGame {
 
     private final int time;
-    private final CarFactory carFactory;
+    private final int numOfCar;
 
-    private RacingGame(int moveCount, CarFactory carFactory)  {
-        validationCheck(moveCount);
+    private RacingGame(int moveCount, int numOfCar)  {
+        validationCheck(moveCount, numOfCar);
         this.time = moveCount;
-        this.carFactory = carFactory;
+        this.numOfCar = numOfCar;
     }
 
     public List<int[]> start(GenerateNumberStrategy numberGenerator){
         List<int[]> carPositionList = new ArrayList<>();
-        List<Car> cars = carFactory.createCars();
+        List<Car> cars = CarFactory.createCars(numOfCar);
 
         for (int i = 0; i < time; i++) {
             int[] positions = move(numberGenerator, cars);
@@ -32,19 +32,22 @@ public class RacingGame {
 
         for (int j = 0; j < cars.size(); j++) {
             Car car = cars.get(j);
-            car.move(numberGenerator);
-            positions[j] = car.getPosition();
+            positions[j] = car.move(numberGenerator);
         }
         return positions;
     }
 
-    public static RacingGame of(int moveCount, CarFactory carFactory){
-        return new RacingGame(moveCount, carFactory);
+    public static RacingGame of(int moveCount, int numOfCar){
+        return new RacingGame(moveCount, numOfCar);
     }
 
-    private void validationCheck(int moveCount) {
-        if (moveCount < 0) {
-            throw new IllegalArgumentException("시도 회수는 음수를 입력할 수 없습니다.");
+    private void validationCheck(int moveCount, int numberOfCars) {
+        if (moveCount < 1) {
+            throw new IllegalArgumentException("시도 회수는 1보다 작은 수를 입력할 수 없습니다.");
+        }
+
+        if (numberOfCars < 1) {
+            throw new IllegalArgumentException("자동차 대수는 1보다 작은 수를 입력할 수 없습니다.");
         }
     }
 }
