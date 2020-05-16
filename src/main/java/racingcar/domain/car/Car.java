@@ -24,7 +24,7 @@ public class Car {
     }
 
     public static Car newInstance(CarName carName, MovableStrategy movableStrategy) {
-        return newInstance(CarPosition.of(CarPosition.DEFAULT_POSITION), carName, movableStrategy);
+        return newInstance(CarPosition.newInstance(), carName, movableStrategy);
     }
 
     public static Car newInstance(CarPosition carPosition, CarName carName, MovableStrategy movableStrategy) {
