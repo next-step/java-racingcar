@@ -21,25 +21,18 @@ public class CalculatorSymbol {
     }
 
     public int findTypeAndCalculator(int firstNum, int secondNum, String symbol) {
-        int result = 0;
         switch (symbol) {
             case "+":
-                result = add(firstNum, secondNum);
-                break;
+                return add(firstNum, secondNum);
             case "-":
-                result = subtract(firstNum, secondNum);
-                break;
+                return subtract(firstNum, secondNum);
             case "*":
-                result = multiply(firstNum, secondNum);
-                break;
+                return multiply(firstNum, secondNum);
             case "/":
-                result = division(firstNum, secondNum);
-                break;
+                return division(firstNum, secondNum);
             default:
                 throw new IllegalArgumentException("calculatorsymbol is error");
-
         }
-        return result;
     }
 
 }
