@@ -1,5 +1,6 @@
 package racing.utils;
 
+import java.util.List;
 import java.util.Objects;
 
 public class EmptyCheckUtil {
@@ -9,4 +10,15 @@ public class EmptyCheckUtil {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void emptyCheck(List arguments) {
+        if (Objects.isNull(arguments)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (arguments.size() < 1) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }

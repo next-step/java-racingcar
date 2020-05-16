@@ -2,21 +2,31 @@ package racing.dto;
 
 import racing.utils.EmptyCheckUtil;
 
+import java.util.Collections;
+import java.util.List;
+
 public class RacingGameResult {
-    private String carName;
-    private int position;
+    private final List<CarRaceResult> carRaceResults;
+    private final int round;
 
-    public RacingGameResult(String carName, int position) {
-        this.carName = carName;
-        this.position = position;
-        EmptyCheckUtil.emptyCheck(carName);
+    public RacingGameResult(List<CarRaceResult> carRaceResults, int round) {
+        EmptyCheckUtil.emptyCheck(carRaceResults);
+        this.validateRound(round);
+        this.carRaceResults = Collections.unmodifiableList(carRaceResults);
+        this.round = round;
     }
 
-    public String getCarName() {
-        return this.carName;
+    private void validateRound(int round) {
+        if (round < 1) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    public int getPosition() {
-        return this.position;
+    public int getRound() {
+        return this.round;
+    }
+
+    public List<CarRaceResult> getCarRaceResults() {
+        return this.carRaceResults;
     }
 }

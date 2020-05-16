@@ -1,7 +1,7 @@
 package racing.domain;
 
+import racing.dto.CarRaceResult;
 import racing.dto.RaceInformation;
-import racing.dto.RacingGameResult;
 import racing.utils.EmptyCheckUtil;
 
 import java.util.ArrayList;
@@ -74,9 +74,9 @@ public class RacingGame {
         }
     }
 
-    public List<RacingGameResult> calculateRacingGameResults() {
+    public List<CarRaceResult> calculateCarRaceResults() {
         return this.cars.stream()
-                .map(car -> new RacingGameResult(car.getName(), car.findCurrentPosition()))
+                .map(car -> new CarRaceResult(car.getName(), car.findCurrentPosition()))
                 .collect(Collectors.toList());
     }
 
