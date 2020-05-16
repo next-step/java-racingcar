@@ -8,11 +8,11 @@ public class RacingGameApplication {
 
     public static void main(String[] args) {
         RacingGameController racingGameController = RacingGameController
-                .start(InputView.getRacingCarCount(), InputView.getGameRound());
+                .start(InputView.getRacingCarNames(), InputView.getGameRound());
 
         while (racingGameController.hasNextRound()) {
             racingGameController.nextRound();
-            ResultView.printPosition(racingGameController.getCarPosition());
+            ResultView.printPosition(racingGameController.getRacingCars());
         }
     }
 }

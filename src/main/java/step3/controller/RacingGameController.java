@@ -4,9 +4,9 @@ import step3.domain.RacingCar;
 import step3.domain.RandomMoveFactory;
 import step3.exception.RoundNotFoundException;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingGameController {
 
@@ -14,17 +14,16 @@ public class RacingGameController {
     private final List<RacingCar> racingCars;
 
     private int progressRound;
-    private List<Integer> carPositions;
 
-    private RacingGameController(int carCount, int gameRound) {
+    private RacingGameController(String[] carNames, int gameRound) {
         this.gameRound = gameRound;
-        this.racingCars = IntStream.range(0, carCount)
-                .mapToObj(RacingCar::create)
+        this.racingCars = Arrays.stream(carNames)
+                .map(RacingCar::create)
                 .collect(Collectors.toList());
     }
 
-    public static RacingGameController start(int carCount, int gameRound) {
-        return new RacingGameController(carCount, gameRound);
+    public static RacingGameController start(String[] carNames, int gameRound) {
+        return new RacingGameController(carNames, gameRound);
     }
 
     public void nextRound() {
@@ -33,16 +32,14 @@ public class RacingGameController {
         }
 
         this.progressRound++;
-        this.carPositions = this.racingCars.stream()
-                .map(racingCar -> racingCar.move(RandomMoveFactory.getInstance()))
-                .collect(Collectors.toList());
+        this.racingCars.forEach(racingCar -> racingCar.move(RandomMoveFactory.getInstance()));
     }
 
     public boolean hasNextRound() {
         return this.progressRound < this.gameRound;
     }
 
-    public List<Integer> getCarPosition() {
-        return this.carPositions;
+    public List<RacingCar> getRacingCars() {
+        return this.racingCars;
     }
 }

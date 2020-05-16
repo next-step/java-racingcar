@@ -1,16 +1,21 @@
 package step3.domain;
 
+import java.util.Collections;
+
 public class RacingCar {
 
-    private int carNumber;
+    private static final String POSITION_INDICATOR = "-";
+    private static final String POSITION_DELEMETER = "";
+
+    private final String name;
     private int position;
 
-    private RacingCar(int carNumber) {
-        this.carNumber = carNumber;
+    private RacingCar(String name) {
+        this.name = name;
     }
 
-    public static RacingCar create(int carNumber) {
-        return new RacingCar(carNumber);
+    public static RacingCar create(String name) {
+        return new RacingCar(name);
     }
 
     public int move(MoveStrategy moveStrategy) {
@@ -23,5 +28,10 @@ public class RacingCar {
 
     private void moveCurrentPosition() {
         this.position += 1;
+    }
+
+    @Override
+    public String toString() {
+        return this.name + " : " + String.join(POSITION_DELEMETER, Collections.nCopies(position, POSITION_INDICATOR));
     }
 }
