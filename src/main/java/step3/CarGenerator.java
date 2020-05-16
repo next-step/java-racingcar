@@ -3,14 +3,14 @@ package step3;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameInitializer {
+public class CarGenerator {
     private final List<Car> carList;
 
-    GameInitializer() {
+    CarGenerator() {
         carList = new ArrayList<>();
     }
 
-    public void generateCar(int carCount) {
+    public void generate(int carCount) {
         for (int i = 0; i < carCount; i++)
             carList.add(new Car());
     }
