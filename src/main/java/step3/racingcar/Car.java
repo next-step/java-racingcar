@@ -17,10 +17,6 @@ public class Car {
 
     public void move() {
         boolean isMovable = this.movingStrategy.isMovable();
-        moveCarForward(isMovable);
-    }
-
-    public void moveCarForward(boolean isMovable) {
         if (isMovable == true)
             this.position++;
     }
