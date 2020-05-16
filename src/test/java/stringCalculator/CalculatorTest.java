@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import domain.CalculateInfo;
+import stringCalculator.domain.CalculateInfo;
 
 class CalculatorTest {
 

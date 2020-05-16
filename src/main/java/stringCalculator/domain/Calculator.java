@@ -1,4 +1,4 @@
-package domain;
+package stringCalculator.domain;
 
 public class Calculator{
 	public int calculate(CalculateInfo calculateInfo) {

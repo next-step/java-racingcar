@@ -1,6 +1,6 @@
-package domain;
+package stringCalculator.domain;
 
-import util.ValidationUtils;
+import stringCalculator.util.ValidationUtils;
 
 public class StringCalculator extends Calculator{
 

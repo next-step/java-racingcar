@@ -6,6 +6,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import stringCalculator.util.ValidationUtils;
+
 class ValidationUtilsTest {
 
 	@DisplayName("입력 값 공백 검증")

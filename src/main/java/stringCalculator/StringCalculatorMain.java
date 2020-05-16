@@ -2,7 +2,7 @@ package stringCalculator;
 
 import java.util.Scanner;
 
-import domain.StringCalculator;
+import stringCalculator.domain.StringCalculator;
 
 public class StringCalculatorMain {
 	
