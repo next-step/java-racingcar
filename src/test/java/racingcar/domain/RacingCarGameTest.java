@@ -3,7 +3,6 @@ package racingcar.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -12,17 +11,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingCarGameTest {
 
     @Test
-    @DisplayName("execute 메소드는 레이싱 게임을 실행하고 GameResult 클래스를 리턴한다.")
+    @DisplayName("execute 메소드는 레이싱 게임을 실행한다.")
     void execute() {
         // given
-        List<Car> cars = Arrays.asList(new Car(), new Car());
-        RacingCarGame racingCarGame = new RacingCarGame(cars);
+        int carCount = 3;
+        RacingCarGame racingCarGame = new RacingCarGame();
+        racingCarGame.createCars(carCount);
 
         // when
-        GameResult actual = racingCarGame.execute();
+        racingCarGame.execute();
+        List<Car> cars = racingCarGame.getCars();
 
         // then
-        assertThat(actual).isNotNull();
-        assertThat(actual.getResult()).hasSize(cars.size());
+        assertThat(cars).isNotNull();
+        assertThat(cars.size()).isEqualTo(carCount);
     }
 }

@@ -16,7 +16,8 @@ public class GameResultTest {
     void getResult() {
         // given
         Car car = new Car();
-        car.move();
+        int moveNumber = 5;
+        car.move(moveNumber);
 
         List<Car> cars = Arrays.asList(car, new Car());
         GameResult gameResult = new GameResult(cars);
