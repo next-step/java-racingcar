@@ -1,9 +1,6 @@
 package com.nextstep.racingcar.domain.round;
 
-import com.nextstep.racingcar.domain.car.Car;
-import com.nextstep.racingcar.domain.car.Cars;
-import com.nextstep.racingcar.domain.car.ForceMoveStrategy;
-import com.nextstep.racingcar.domain.car.MoveLength;
+import com.nextstep.racingcar.domain.car.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,7 +15,9 @@ class RoundTests {
 
     @BeforeEach
     public void setup() {
-        cars = Cars.create(Arrays.asList(new Car(), new Car()));
+        CarFactory carFactory = new CarFactory();
+        List<String> driverNames = Arrays.asList("poppo", "ita");
+        cars = Cars.createCarsByDriverNames(driverNames, carFactory);
     }
 
     @DisplayName("차량들을 입력받아 Round에서 진행할 차량들을 등록한다.")
@@ -54,5 +53,13 @@ class RoundTests {
         String totalResult = round.getTotalResult();
 
         assertThat(totalResult).isEqualTo("-\n-\n");
+    }
+
+    @DisplayName("해당 라운드에 참가한 차량들의 정보를 확인한다")
+    @Test
+    void getCarsInfo() {
+        Round round = Round.newRound(cars);
+        assertThat(round.getRoundResults().size()).isEqualTo(2);
+        assertThat(round.getRoundResults().get(0)).isInstanceOf(CarRoundResult.class);
     }
 }

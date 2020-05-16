@@ -12,13 +12,17 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars create(List<Car> cars) {
+    protected static Cars create(List<Car> cars) {
         List<Car> unmodifiableCars = Collections.unmodifiableList(new ArrayList<>(cars));
         return new Cars(unmodifiableCars);
     }
 
     public static Cars createRandomCarsByNumber(int carNumber, CarFactory carFactory) {
         return new Cars(carFactory.createByNumber(carNumber));
+    }
+
+    public static Cars createCarsByDriverNames(List<String> driverNames, CarFactory carFactory) {
+        return new Cars(carFactory.createByStringList(driverNames));
     }
 
     public int size() {
@@ -35,5 +39,9 @@ public class Cars {
 
     public void moveAll(MoveStrategy moveStrategy) {
         cars.forEach(car -> car.move(moveStrategy));
+    }
+
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(new ArrayList<>(this.cars));
     }
 }

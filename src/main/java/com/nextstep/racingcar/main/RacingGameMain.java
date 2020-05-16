@@ -14,12 +14,13 @@ public class RacingGameMain {
         Scanner scanner = new Scanner(System.in);
         InputView inputView = InputView.create(scanner);
 
-        RacingGame racingGame = new RacingGame(inputView.getCarNumber(), inputView.getRoundNumber());
+        RacingGame racingGame = new RacingGame(inputView.getDriverNames(), inputView.getRoundNumber());
         CarFactory randomFactory = new CarFactory();
         MoveStrategy moveStrategy = new RandomMoveStrategy();
-        racingGame.run(randomFactory, moveStrategy);
+        racingGame.runByDriversName(randomFactory, moveStrategy);
 
-        OutputView outputView = new OutputView(racingGame.getResults());
-        outputView.printResults();
+        OutputView outputView = new OutputView(racingGame.getRacingGameResult());
+        System.out.println(outputView.toStringResult());
+        System.out.println(outputView.toStringWinner());
     }
 }
