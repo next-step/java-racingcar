@@ -5,7 +5,7 @@ import java.util.List;
 public class Calculation implements Calculator{
 
     private static final int INIT_INDEX = 0;
-    private static final int INCREASE_INDEX = 1;
+    private static final int NEXT_NUMBER_INDEX = 1;
 
     private List<Double> numbers;
     private List<String> operators;
@@ -20,7 +20,7 @@ public class Calculation implements Calculator{
         int size = operators.size() - 1;
 
         for (int i = INIT_INDEX; i <= size; i++){
-            result = Operator.calculate(operators.get(i), result, numbers.get(INCREASE_INDEX));
+            result = Operator.calculate(operators.get(i), result, numbers.get(NEXT_NUMBER_INDEX));
             numbers.removeIf(value -> isConsumeNumbers(value));
             numbers.set(INIT_INDEX,result);
         }
