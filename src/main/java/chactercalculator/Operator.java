@@ -2,7 +2,7 @@ package chactercalculator;
 
 import java.util.Arrays;
 
-public enum Operation {
+public enum Operator {
 
   PLUS("+") {
     @Override
@@ -37,7 +37,7 @@ public enum Operation {
 
   private final String operator;
 
-  private Operation(String operator) {
+  private Operator(String operator) {
     this.operator = operator;
   }
 
@@ -47,7 +47,10 @@ public enum Operation {
     return operator;
   }
 
-  public Operation findOperatorByGivenSign(String sign) {
-    return Arrays.stream(Op)
+  public static Operator findOperatorTypeByGivenOperator(String givenOperator) {
+    return Arrays.stream(Operator.values())
+        .filter(operatorType -> operatorType.getOperator().equals(givenOperator))
+        .findFirst()
+        .orElseThrow(IllegalArgumentException::new);
   }
 }
