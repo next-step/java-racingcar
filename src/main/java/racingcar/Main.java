@@ -3,20 +3,22 @@ package racingcar;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
-
 public class Main {
 
     public static void main(String[] args) {
 
-        int carCount = InputView.getCarCount();
-        int gameRound = InputView.getGameRound();
+        String[] carNames = InputView.inputCarNames();
+        int gameRoundCount = InputView.inputGameRoundCount();
 
-        Car[] cars = new Car[carCount];
-        for (int i = 0; i < carCount; i++) {
-            cars[i] = Car.makeDefaultInstance();
-        }
+        RacingGame racingGame = new RacingGame(gameRoundCount, carNames);
 
         ResultView.printBanner();
-        new RacingGame(gameRound, cars).play();
+        ResultView.printStartPosition(racingGame.getCars());
+
+        RacingGameResult racingGameResult = racingGame.play();
+
+
+        ResultView.printResult(gameRoundCount, racingGameResult);
+        ResultView.printWinner(racingGameResult.getWinner());
     }
 }

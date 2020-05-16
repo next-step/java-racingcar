@@ -11,6 +11,7 @@ repositories {
 dependencies {
     compile('org.apache.commons:commons-lang3:3.10')
     testCompile('org.junit.jupiter:junit-jupiter:5.4.2')
+    testCompile('org.mockito:mockito-junit-jupiter:2.23.4')
     testCompile('org.assertj:assertj-core:3.11.1')
 }
 

@@ -1,30 +1,47 @@
 package racingcar;
 
+import java.util.Objects;
+
 public class Car {
-    private static final int DEFAULT_POSITION = 0;
-
     private int position;
-    private MovableStrategy movableStrategy;
+    private String name;
+    private final MovableStrategy movableStrategy;
 
-    public Car(int position, MovableStrategy movableStrategy) {
-        this.position = position;
+    private Car(CarPosition position, CarName carName, MovableStrategy movableStrategy) {
+        if(Objects.isNull(movableStrategy)){
+            throw new NullPointerException();
+        }
+        this.position = position.getPosition();
+        this.name = carName.getName();
         this.movableStrategy = movableStrategy;
+    }
+
+    public static Car newInstance(CarName carName) {
+        return newInstance(carName, new RandomMovableStrategy());
+    }
+
+    public static Car newInstance(CarName carName, MovableStrategy movableStrategy) {
+        return newInstance(CarPosition.of(CarPosition.DEFAULT_POSITION), carName, movableStrategy);
+    }
+
+    public static Car newInstance(CarPosition carPosition, CarName carName, MovableStrategy movableStrategy) {
+        return new Car(carPosition, carName, movableStrategy);
     }
 
     public int getPosition() {
         return position;
     }
 
-    public MovableStrategy getMovableStrategy() {
-        return movableStrategy;
+    public void clearPosition() {
+        this.position = CarPosition.DEFAULT_POSITION;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int move() {
         this.position += movableStrategy.move();
         return position;
-    }
-
-    public static Car makeDefaultInstance(){
-        return new Car(DEFAULT_POSITION, new RandomMovableStrategy());
     }
 }
