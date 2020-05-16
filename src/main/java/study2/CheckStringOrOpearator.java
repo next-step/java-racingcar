@@ -14,12 +14,19 @@ public class CheckStringOrOpearator {
 	}
 	
 	public void notOperator(String str) {
-		if( !(str.equals(Operator.ADD))
-				&& !(str.equals(Operator.SUB)) 
-				&& !(str.equals(Operator.MULTI))
-				&& !(str.equals(Operator.DIV))) {
-			throw new IllegalArgumentException("연산자를 확인하세요");
+		if( !(str.equals(Operator.ADD))) {
+			return;
 		}
+		if (!(str.equals(Operator.SUB))) {
+			return;
+		}
+		if (!(str.equals(Operator.MULTI))) {
+			return;
+		}
+		if (!(str.equals(Operator.DIV))) { 
+			return;
+		}
+		throw new IllegalArgumentException("연산자를 확인하세요");
 	}
 	
 	public void allOperatorIncludeCheck(String str) {
