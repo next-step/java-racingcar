@@ -22,9 +22,12 @@ public class RacingCar {
     this.startRace();
   }
 
-  public static int going () {
-    Random random = new Random();
-    return random.nextInt(10) > 4 ? 1 : 0;
+  public static int getRandom () {
+    return new Random().nextInt(10);
+  }
+
+  public static int going (int randomNumber) {
+    return randomNumber > 4 ? 1 : 0;
   }
 
   public void startRace () {
@@ -32,7 +35,7 @@ public class RacingCar {
     int len = this.carPositions.length;
     for (int i = 0; i < time; i++) {
       for (int j = 0; j < len; j++) {
-        this.carPositions[j] += going();
+        this.carPositions[j] += going(getRandom());
       }
       ResultView.print(this.carPositions);
     }
