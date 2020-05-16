@@ -3,23 +3,19 @@ package domain;
 import dto.CalculateInfo;
 import util.ValidationUtils;
 
-public class StringCalculator extends CommonCalculator{
-	
-	public int stringCalculate(String operation) {
+public class StringCalculator extends Calculator{
+
+	public int stringCalculate(String operations) {
 		
-		ValidationUtils.isEmpty(operation);
+		ValidationUtils.isEmpty(operations);
 		
-		String[] targetStringS = operation.split(" ");
-		int result = Integer.parseInt(targetStringS[0]);
-		CalculateInfo calculateInfo = new CalculateInfo();
+		String[] targetStrings = operations.split(" ");
+		int result = Integer.parseInt(targetStrings[0]);
 		
-		for(int i=1;i<targetStringS.length;i+=2) {
-			ValidationUtils.isOperator(targetStringS[i]);
+		for(int i=1;i<targetStrings.length;i+=2) {
+			ValidationUtils.isOperator(targetStrings[i]);
 			
-			calculateInfo.setNum1(result);
-			calculateInfo.setNum2(Integer.parseInt(targetStringS[i+1]));
-			calculateInfo.setOperator(targetStringS[i]);
-			
+			CalculateInfo calculateInfo = new CalculateInfo(result, Integer.parseInt(targetStrings[i+1]), targetStrings[i]); 
 			result = calculate(calculateInfo);
 		}
 		

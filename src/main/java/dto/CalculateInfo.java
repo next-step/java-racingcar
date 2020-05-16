@@ -1,26 +1,36 @@
 package dto;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import domain.Operator;
+
 public class CalculateInfo {
-	private int num1;
-	private int num2;
+	private int number;
 	private String operator;
+	private int result;
 	
-	public int getNum1() {
-		return num1;
+	private static Map<String, Operator> operatorMap = new HashMap<>();
+	
+	static {
+		operatorMap.put("+", Operator.ADD);
+		operatorMap.put("-", Operator.SUBTRACT);
+		operatorMap.put("*", Operator.MULTIPLY);
+		operatorMap.put("/", Operator.DIVIDE);
+		
 	}
-	public void setNum1(int num1) {
-		this.num1 = num1;
-	}
-	public int getNum2() {
-		return num2;
-	}
-	public void setNum2(int num2) {
-		this.num2 = num2;
-	}
-	public String getOperator() {
-		return operator;
-	}
-	public void setOperator(String operator) {
+	
+	public CalculateInfo(int result, int number, String operator) {
+		this.result = result;
+		this.number = number;
 		this.operator = operator;
+	}
+
+	public Operator findOperator(String operator) {
+		return operatorMap.get(operator);
+	}
+	
+	public int calculate() {
+		return findOperator(operator).calculate(result, number);
 	}
 }
