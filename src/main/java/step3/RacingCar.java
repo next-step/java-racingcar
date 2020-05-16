@@ -12,35 +12,53 @@ import java.util.Scanner;
  */
 public class RacingCar {
 
+  private int time;
+  private int[] carPositions = {0, 0, 0};
+
   public RacingCar () {
-    startRace(
-      inputCars(),
-      inputTryCount()
-    );
+    this.inputCars();
+    this.inputTime();
+    this.startRace();
   }
 
-  public int[] inputCars () {
+  public void inputCars () {
     Scanner scan = new Scanner(System.in);
     System.out.println("자동차 대수는 몇 대 인가요?");
     int size = Integer.parseInt(scan.nextLine());
-    int[] cars = new int[size];
-    for (int i = 0; i < size; i++) cars[i] = 0;
-    return cars;
+    this.carPositions = new int[size];
+    for (int i = 0; i < size; i++) this.carPositions[i] = 0;
   }
 
-  public int inputTryCount () {
+  public void inputTime () {
     Scanner scan = new Scanner(System.in);
     System.out.println("시도할 회수는 몇 회 인가요?");
-    return Integer.parseInt(scan.nextLine());
+    this.time = Integer.parseInt(scan.nextLine());
   }
 
-  public static int getRandom () {
+  public static int going () {
     Random random = new Random();
-    return random.nextInt(10);
+    return random.nextInt(10) > 4 ? 1 : 0;
   }
 
-  public void startRace (int[] cars, int tryCount) {
-    System.out.println(getRandom());
+  public void startRace () {
+    System.out.println("\n실행 결과");
+    int len = this.carPositions.length;
+    for (int i = 0; i < time; i++) {
+      for (int j = 0; j < len; j++) {
+        this.carPositions[j] += going();
+      }
+      this.resultRace();
+    }
+  }
+
+  public void resultRace () {
+    String result = "";
+    for (int n : this.carPositions) {
+      for (int i = 0; i < n; i++)
+        result += "-";
+      result += "\n";
+    }
+    System.out.println(result);
   }
 
   public static void main(String[] args) {
