@@ -9,8 +9,8 @@ public class RacingGame {
 
     private static final int BOUND = 10;
     private static final int FORWARD_POSSIBLE_NUMBER = 4;
+    private static final Random GENERATOR = new Random();
 
-    private Random random = new Random();
     private int time;
     private List<RacingCar> racingCars;
     private int[] carPositions;
@@ -33,7 +33,7 @@ public class RacingGame {
 
     public int[] move() {
         for(int i = 0; i < racingCars.size(); i++) {
-            if (isMoveForward()){
+            if (isMoveForward()) {
                 carPositions[i] = racingCars.get(i).forward();
                 continue;
             }
@@ -45,7 +45,7 @@ public class RacingGame {
     }
 
     private boolean isMoveForward() {
-        return random.nextInt(BOUND) >= FORWARD_POSSIBLE_NUMBER;
+        return GENERATOR.nextInt(BOUND) >= FORWARD_POSSIBLE_NUMBER;
     }
 
     public int getTime() {
