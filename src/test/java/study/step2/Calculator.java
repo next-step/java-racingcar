@@ -6,19 +6,20 @@ public class Calculator {
 
     private String inputExpression;
     //  먼저 계산기 본체 만들기 최대한 단순하게 만들자 생성자
-    public Calculator(String input){
-        this.inputExpression = input;
+    //public Calculator(String input){
+    public Calculator(){
+        //this.inputExpression = input;
     }
 
     //  연산식으로 만들기
-    public void trimInputExpression(String targetExpression){
+    public double trimInputExpression(String targetExpression){
         //  일단
-        String trimmedExpression = targetExpression.trim();
-        String operators[] = trimmedExpression.replaceAll("[^0-9]","").split("");  //  연산자 리스트
-        String operands[] = trimmedExpression.replaceAll("[0-9]","").split("");;       //  피연산자 리스트
+        String trimmedExpression = targetExpression.replace(" ", "");
+        String operands[] = trimmedExpression.replaceAll("[^0-9]","").split("");  //  연산자 리스트
+        String operators[] = trimmedExpression.replaceAll("[0-9]", "").split("");       //  피연산자 리스트
 
         //  계산
-        calculate(operators, operands);
+        return calculate(operators, operands);
     }
 
 
