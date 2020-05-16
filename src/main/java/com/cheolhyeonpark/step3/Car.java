@@ -5,11 +5,7 @@ public class Car {
     public static final int START_POSITION = 0;
     public static final String POSITION_BAR = "-";
 
-    private int position;
-
-    public Car() {
-        this.position = START_POSITION;
-    }
+    private int position = START_POSITION;
 
     public void move() {
         this.position++;
