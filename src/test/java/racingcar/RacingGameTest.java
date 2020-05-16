@@ -23,17 +23,6 @@ class RacingGameTest {
         assertThatIllegalArgumentException().isThrownBy(() -> new RacingGame(time, carCount));
     }
 
-    @DisplayName("자동차를 이동시키면 설정한 자동차 개수만큼의 위치 정보를 담은 목록을 리턴한다")
-    @Test
-    void readyGame() {
-        int time = 5, carCount = 5;
-        RacingGame game = new RacingGame(time, carCount);
-
-        int[] positions = game.move();
-
-        assertThat(positions.length).isEqualTo(carCount);
-    }
-
     @DisplayName("게임이 실행되면 설정한 실행 횟수만큼의 결과 목록을 리턴한다")
     @Test
     void run() {

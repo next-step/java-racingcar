@@ -7,12 +7,14 @@ public class RacingGame {
 
     private int time;
     private List<Car> cars;
+    private CarMover mover;
 
     public RacingGame(int time, int carCount) {
         validate(time, carCount);
 
         this.time = time;
         this.cars = new ArrayList<>();
+        this.mover = new CarMover();
 
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
@@ -29,25 +31,13 @@ public class RacingGame {
         RacingResult result = new RacingResult();
 
         while (time > 0) {
-            int[] positions = move();
+            canMove();
+            int[] positions = mover.move(cars);
             result.add(positions);
             time--;
         }
 
         return result;
-    }
-
-    public int[] move() {
-        canMove();
-        int[] carPositions = new int[cars.size()];
-
-        for (int i = 0; i < cars.size(); i++) {
-            Car car = cars.get(i);
-            int position = car.move();
-            carPositions[i] = position;
-        }
-
-        return carPositions;
     }
 
     private void canMove() {
