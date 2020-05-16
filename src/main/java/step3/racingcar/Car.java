@@ -15,7 +15,7 @@ public class Car {
         return position;
     }
 
-    public void moveCar() {
+    public void move() {
         boolean isMovable = this.movingStrategy.isMovable();
         moveCarForward(isMovable);
     }

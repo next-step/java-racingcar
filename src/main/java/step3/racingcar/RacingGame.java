@@ -21,7 +21,7 @@ public class RacingGame {
     private void startRacing(List<Car> cars) {
         ResultViewProcessor.printResultHeader(Message.RESULT_HEADER);
         for (int i = 0; i < gameTryCounts; i++) {
-            cars.forEach(Car::moveCar);
+            cars.forEach(Car::move);
             ResultViewProcessor.printResult(cars);
         }
     }
