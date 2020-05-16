@@ -54,7 +54,7 @@ public class RacingCarTest {
   @DisplayName("랜덤 넘버 테스트 : 10 이하의 수만 할당해야 함")
   @Test
   void 랜덤_넘버_테스트 () {
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 20000000; i++) {
       assertThat(getRandomNumber() < 10).isEqualTo(true);
     }
   }
