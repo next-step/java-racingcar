@@ -1,8 +1,16 @@
 package step3;
 
-import javax.xml.transform.Result;
-import java.util.Random;
-import java.util.Scanner;
+import step3.view.ConsoleInputView;
+import step3.view.ConsoleResultView;
+import step3.view.InputView;
+import step3.view.ResultView;
+
+import java.io.Console;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static step3.Utils.getRandomNumber;
 
 /**
  * 초간단 자동차 경주 게임을 구현한다.
@@ -12,36 +20,39 @@ import java.util.Scanner;
  * 자동차의 상태를 화면에 출력한다. 어느 시점에 출력할 것인지에 대한 제약은 없다.
  */
 public class RacingCar {
+  private final ResultView resultView;
 
-  private int time;
-  private int[] carPositions;
-
-  public RacingCar () {
-    this.carPositions = InputView.inputCars();
-    this.time = InputView.inputTime();
-    this.startRace();
+  public RacingCar (final InputView inputView, final ResultView resultView) {
+    this.resultView = resultView;
+    this.startRace(
+      Arrays.stream(new int[inputView.inputCars()])
+        .boxed()
+        .map(v -> Car.of(0))
+        .collect(Collectors.toList()),
+      inputView.inputTime()
+    );
   }
 
-  public static int getRandom () {
-    return new Random().nextInt(10);
-  }
-
-  public static int going (int randomNumber) {
+  public static int moving (int randomNumber) {
     return randomNumber > 4 ? 1 : 0;
   }
 
-  public void startRace () {
+  public void startRace (List<Car> cars, int time) {
     System.out.println("\n실행 결과");
-    int len = this.carPositions.length;
     for (int i = 0; i < time; i++) {
-      for (int j = 0; j < len; j++) {
-        this.carPositions[j] += going(getRandom());
-      }
-      ResultView.print(this.carPositions);
+      cars.forEach(car -> car.going(moving(getRandomNumber())));
+      this.resultView.print(cars);
     }
   }
 
+  public static RacingCar of (InputView inputView, ResultView resultView) {
+    return new RacingCar(inputView, resultView);
+  }
+
   public static void main(String[] args) {
-    new RacingCar();
+    RacingCar.of(
+      ConsoleInputView.of(),
+      ConsoleResultView.of()
+    );
   }
 }
