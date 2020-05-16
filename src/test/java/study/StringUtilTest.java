@@ -2,7 +2,6 @@ package study;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import step2.StringUtil;
@@ -12,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class StringUtilTest {
     @ParameterizedTest
-    @ValueSource(strings = {"1", "122", "32346"})
+    @ValueSource(strings = {"1", "122", "32346","1.1"})
     void isNumTest(String str) {
         assertThat(StringUtil.isNumber(str)).isTrue();
     }
@@ -20,6 +19,12 @@ public class StringUtilTest {
     @Test
     void isNumEmptyTest() {
         assertThat(StringUtil.isNumber("")).isFalse();
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"*",")","."})
+    void isNumCharTest(String str) {
+        assertThat(StringUtil.isNumber(str)).isFalse();
     }
 
     @Test

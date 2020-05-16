@@ -43,7 +43,7 @@ public enum Operator {
             case "/":
                 return Operator.DEVIDE;
             default:
-                throw new IllegalArgumentException("This is Disabled character.");
+                throw new IllegalArgumentException("This is Disabled character: "+ str);
         }
     }
 
