@@ -1,6 +1,5 @@
 package domain;
 
-import dto.CalculateInfo;
 import util.ValidationUtils;
 
 public class StringCalculator extends Calculator{

@@ -1,9 +1,7 @@
-package dto;
+package domain;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import domain.Operator;
 
 public class CalculateInfo {
 	private int number;
@@ -17,7 +15,6 @@ public class CalculateInfo {
 		operatorMap.put("-", Operator.SUBTRACT);
 		operatorMap.put("*", Operator.MULTIPLY);
 		operatorMap.put("/", Operator.DIVIDE);
-		
 	}
 	
 	public CalculateInfo(int result, int number, String operator) {
