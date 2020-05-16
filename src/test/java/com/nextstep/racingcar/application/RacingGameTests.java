@@ -1,9 +1,7 @@
 package com.nextstep.racingcar.application;
 
-import com.nextstep.racingcar.domain.car.ForceMoveStrategy;
 import com.nextstep.racingcar.domain.car.CarFactory;
-import com.nextstep.racingcar.domain.round.CarRoundResult;
-import com.nextstep.racingcar.domain.round.RoundResult;
+import com.nextstep.racingcar.domain.car.ForceMoveStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -66,10 +64,7 @@ class RacingGameTests {
         assertThat(racingGame.getRacingGameResult()).isInstanceOf(RacingGameResult.class);
     }
 
-    // 너무 지나치게 구현적인 관점이 아닌지 고민해보자
-    // 이미 각각의 객체는 상태를 변환하는 역할을 충실히 잘 수행하고 있다.
-    // 여기서는 그냥 RacingGameResult 타입을 잘 반환하는지만 생각하면 되지 않을까?
-    @DisplayName("운전자 이름으로 게임 생성해서 2회 진행 후 진행거리가 잘 표기되는지 확인")
+    @DisplayName("운전자 이름으로 게임 생성해서 2회 진행 후 우승자가 잘 나오는지 확인")
     @Test
     void runRacingGameByDriverNameTest() {
         List<String> driverNames = Arrays.asList("poppo", "saul", "ita");
@@ -77,13 +72,6 @@ class RacingGameTests {
         RacingGame racingGame = new RacingGame(driverNames, round);
         racingGame.runByDriversName(new CarFactory(), new ForceMoveStrategy());
 
-        RacingGameResult racingGameResult = racingGame.getRacingGameResult();
-        List<RoundResult> roundResults = racingGameResult.getRoundResults();
-        RoundResult firstRound = roundResults.get(0);
-        RoundResult secondRound = roundResults.get(1);
-        List<CarRoundResult> firstRoundValues = firstRound.getValues();
-        List<CarRoundResult> secondRoundValues = secondRound.getValues();
-        assertThat(firstRoundValues.get(0).getMoveLength().toInt()).isEqualTo(1);
-        assertThat(secondRoundValues.get(0).getMoveLength().toInt()).isEqualTo(2);
+        assertThat(racingGame.getRacingGameResult().getWinners()).containsExactly("poppo", "saul", "ita");
     }
 }

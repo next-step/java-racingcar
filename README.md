@@ -157,4 +157,5 @@
     - [X] RacingGameResult에서 Stream을 중복으로 돌지 않도록 코드 개선
         - 객체로 감쌌다면 최대한 활용할 방법을 찾아볼 것
         - 처음에 이걸 다시 일급객체로 감싸서 뺄 생각을 함..
-    - [ ] RacingGameTests 에서 Input, Output 형식을 정의해서 코드 개선
+    - [X] RacingGameTests 에서 Input, Output 형식을 정의해서 코드 개선
+        - RacingGameResult가 이미 Output 형식을 보증하고 있고, 그 안의 단위 테스트들도 검증이 됐으니 현재 정책에 의한 결과만 확인하도록 변경
