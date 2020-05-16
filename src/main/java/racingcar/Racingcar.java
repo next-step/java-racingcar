@@ -6,10 +6,20 @@ import java.util.Map;
 public class Racingcar {
 
     private int carNumber;
+    private String carName;
     private int carMovePosition = 0;
     private Map<Integer, Integer> saveRoundResultPosition = new HashMap<>();
 
-    public Racingcar(int carNumber) {
+    public String getCarName() {
+        return carName;
+    }
+
+    public void setCarName(String carName) {
+        this.carName = carName;
+    }
+
+    public Racingcar(int carNumber, String carName) {
+        this.carName = carName;
         this.carNumber = carNumber;
     }
 
@@ -36,6 +46,6 @@ public class Racingcar {
         for (int i = 0; i < roundPosition; i++) {
             carPosition.append(expressionWord);
         }
-        System.out.println(carPosition.toString());
+        System.out.println(carName + " : " + carPosition.toString());
     }
 }

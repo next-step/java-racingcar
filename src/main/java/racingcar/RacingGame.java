@@ -3,6 +3,7 @@ package racingcar;
 import util.CommonUtil;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RacingGame {
@@ -13,20 +14,21 @@ public class RacingGame {
     private static final int START_ROUND = 0;
     private static final int GO = 1;
     private static final int STOP = 0;
+    private static final String CAR_NAME_SPLITER = ",";
 
     private int time;
-    private int carCount;
+    private List<String> carNames = new ArrayList<>();
     private List<Racingcar> carPositions = new ArrayList<>();
 
-    public RacingGame(int carCount, int time) {
-        validate(carCount);
-        validate(time);
+    public RacingGame(String carNames, int time) {
+        validateTime(time);
+        String[] splitCarNames = carNames.split(CAR_NAME_SPLITER);
         this.time = time;
-        this.carCount = carCount;
+        this.carNames = Arrays.asList(splitCarNames);
     }
 
     public ResultView start() {
-        createCar();
+        prepareToRace();
 
         ResultView resultView = new ResultView();
 
@@ -38,8 +40,16 @@ public class RacingGame {
         return resultView;
     }
 
-    private void validate(int value) {
-        if (value < INPUT_ERROR_MIN_NUMBER) {
+    private void prepareToRace() {
+        for (int i = 0; i < carNames.size(); i++) {
+            System.out.println(carNames.get(i));
+            Racingcar racingcar = createCar(i, carNames.get(i));
+            participateRace(racingcar);
+        }
+    }
+
+    private void validateTime(int time) {
+        if (time < INPUT_ERROR_MIN_NUMBER) {
             throw new IllegalArgumentException("value is small than zero");
         }
     }
@@ -55,11 +65,12 @@ public class RacingGame {
         return CommonUtil.randomNumber(RANDOM_BOUNDARY) > GO_CONDITION_COUNT ? GO : STOP;
     }
 
-    private void createCar() {
-        for (int i = 0; i < carCount; i++) {
-            Racingcar racingcar = new Racingcar(i);
-            carPositions.add(racingcar);
-        }
+    private void participateRace(Racingcar racingcar) {
+        carPositions.add(racingcar);
+    }
+
+    private Racingcar createCar(int number, String carName) {
+        return new Racingcar(number, carName);
     }
 
 }

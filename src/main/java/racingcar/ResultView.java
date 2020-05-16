@@ -18,6 +18,10 @@ public class ResultView {
         }
     }
 
+    public void printRacingGameWinner() {
+
+    }
+
     public void printResultByRound(int round) {
         try {
             List<Racingcar> carPositions = this.roundResult.get(round);
