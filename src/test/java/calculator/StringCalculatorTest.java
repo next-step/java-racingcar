@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
+@DisplayName("StringCalculator 테스트 클래스")
 class StringCalculatorTest {
 
     @ParameterizedTest

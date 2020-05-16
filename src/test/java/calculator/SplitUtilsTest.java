@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-@DisplayName("SplitUtils 클래스 테스트")
+@DisplayName("SplitUtils 테스트 클래스")
 public class SplitUtilsTest {
 
     @ParameterizedTest
