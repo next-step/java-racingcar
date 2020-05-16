@@ -49,10 +49,11 @@ public class CarsTest {
 
         assertThat(cars.getCars()
                 .stream()
-                .map(Car::getPosition)).containsAnyOf(Car.DEFAULT_DISTANCE, Car.DEFAULT_DISTANCE + 1);
+                .map(Car::getPosition))
+                .containsAnyOf(Car.DEFAULT_DISTANCE, Car.DEFAULT_DISTANCE + 1);
     }
 
-    @DisplayName("우승한(가장 멀리간) Cars 의 이름 배열 반환")
+    @DisplayName("우승한(가장 멀리간) Cars 의 이름 배열 반환 - 짝수번째 자동자가 우승")
     @Test
     void getWinnerCars() {
         Cars cars = Cars.of(carNames.get(CASE.FOUR_VALUES));
