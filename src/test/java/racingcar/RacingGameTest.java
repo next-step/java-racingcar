@@ -23,18 +23,6 @@ class RacingGameTest {
         assertThatIllegalArgumentException().isThrownBy(() -> new RacingGame(time, carCount));
     }
 
-    @DisplayName("지정 횟수보다 많이 자동차를 이동시키면 IllegalStateException")
-    @Test
-    void move_timeIs0_Then_IllegalStateException() {
-        int time = 1, carCount = 5;
-        RacingGame game = new RacingGame(time, carCount);
-
-        game.move();
-
-        assertThatThrownBy(game::move)
-                .isInstanceOf(IllegalStateException.class);
-    }
-
     @DisplayName("자동차를 이동시키면 설정한 자동차 개수만큼의 위치 정보를 담은 목록을 리턴한다")
     @Test
     void readyGame() {
@@ -43,6 +31,17 @@ class RacingGameTest {
 
         int[] positions = game.move();
 
-        assertThat(positions.length).isEqualTo(time);
+        assertThat(positions.length).isEqualTo(carCount);
+    }
+
+    @DisplayName("게임이 실행되면 설정한 실행 횟수만큼의 결과 목록을 리턴한다")
+    @Test
+    void run() {
+        int time = 5, carCount = 3;
+        RacingGame game = new RacingGame(time, carCount);
+
+        RacingResult result = game.run();
+
+        assertThat(result.size()).isEqualTo(time);
     }
 }
