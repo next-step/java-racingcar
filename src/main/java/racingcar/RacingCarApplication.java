@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.domain.game.GameInfo;
+import racingcar.vo.game.GameInfo;
 import racingcar.domain.game.GameResult;
 import racingcar.domain.game.RacingGame;
 import racingcar.domain.car.strategy.RandomMovementStrategy;

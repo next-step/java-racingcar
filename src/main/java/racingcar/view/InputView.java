@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.domain.game.GameInfo;
+import racingcar.vo.game.GameInfo;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

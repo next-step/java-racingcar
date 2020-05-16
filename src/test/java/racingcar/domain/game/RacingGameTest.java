@@ -2,8 +2,9 @@ package racingcar.domain.game;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.car.CarMoveResult;
+import racingcar.vo.car.CarMoveResult;
 import racingcar.domain.car.strategy.FixedMovementStrategy;
+import racingcar.vo.game.GameInfo;
 
 import java.util.ArrayList;
 import java.util.Arrays;

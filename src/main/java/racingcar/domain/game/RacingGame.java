@@ -2,6 +2,7 @@ package racingcar.domain.game;
 
 import racingcar.domain.car.ParticipateCars;
 import racingcar.domain.car.strategy.MovementStrategy;
+import racingcar.vo.game.GameInfo;
 
 import java.util.ArrayList;
 import java.util.List;

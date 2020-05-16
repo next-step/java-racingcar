@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.domain.car.CarMoveResult;
+import racingcar.vo.car.CarMoveResult;
 import racingcar.domain.game.GameResult;
 import racingcar.domain.game.PhaseResult;
 

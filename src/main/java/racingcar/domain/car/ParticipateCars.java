@@ -1,10 +1,10 @@
 package racingcar.domain.car;
 
 import racingcar.domain.car.strategy.MovementStrategy;
+import racingcar.vo.car.CarMoveResult;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ParticipateCars {
     private List<Car> cars;

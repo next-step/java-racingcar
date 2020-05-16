@@ -1,4 +1,4 @@
-package racingcar.domain.car;
+package racingcar.vo.car;
 
 public class CarMoveResult {
     private final String name;
