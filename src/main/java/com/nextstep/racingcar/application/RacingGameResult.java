@@ -30,11 +30,8 @@ public class RacingGameResult {
     public List<String> getWinners() {
         RoundResult lastRound = this.roundResultList.get(this.roundResultList.size() - 1);
         MoveLength longestMoveLength = getLongestMoveLength(lastRound);
-        List<CarRoundResult> winnerInfo = lastRound.getValues().stream()
+        return lastRound.getValues().stream()
                 .filter(carRoundResult -> carRoundResult.getMoveLength().equals(longestMoveLength))
-                .collect(Collectors.toList());
-
-        return winnerInfo.stream()
                 .map(CarRoundResult::getDriverName)
                 .collect(Collectors.toList());
     }
