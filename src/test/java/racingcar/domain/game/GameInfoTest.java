@@ -2,20 +2,10 @@ package racingcar.domain.game;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class GameInfoTest {
-
-    @DisplayName("이름이 입력되지 않으면 IllegalArgumentException을 throw 한다.")
-    @ParameterizedTest
-    @NullAndEmptySource
-    void nullOrEmptyNameThrowsException(String nameOfCars) {
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> new GameInfo(nameOfCars, 3))
-                .withMessageContaining("자동차 이름을 입력해주세요.");
-    }
 
     @DisplayName("시도 회수 0 보다 작을 경우 IllegalArgumentException을 throw 한다.")
     @ParameterizedTest

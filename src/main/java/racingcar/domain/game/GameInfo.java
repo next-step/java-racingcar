@@ -9,7 +9,7 @@ public class GameInfo {
     private String[] nameOfCars;
 
     public GameInfo(String nameOfCars, int numberOfPhase) {
-        validateInputValue(nameOfCars, numberOfPhase);
+        validateInputValue(numberOfPhase);
         this.nameOfCars = nameOfCars.split(CAR_SPLIT_DELIMITER);
         this.numberOfPhase = numberOfPhase;
     }
@@ -22,11 +22,7 @@ public class GameInfo {
         return nameOfCars;
     }
 
-    private void validateInputValue(String nameOfCars, int numberOfPhase) {
-        if (Objects.isNull(nameOfCars) || nameOfCars.isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름을 입력해주세요.");
-        }
-
+    private void validateInputValue(int numberOfPhase) {
         if (numberOfPhase <= GAME_INFO_NUMBER_BOUND) {
             throw new IllegalArgumentException("시도할 횟수는 0 보다 커야합니다.");
         }
