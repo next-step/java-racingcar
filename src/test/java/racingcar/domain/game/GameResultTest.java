@@ -56,7 +56,7 @@ class GameResultTest {
 
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> gameResult.findByPhaseNumber(wrongPhaseNumber))
-                .withMessage(String.format("잘못된 시도 번호입니다. - %d\n", wrongPhaseNumber));
+                .withMessage(String.format("잘못된 시도 번호입니다. - %d", wrongPhaseNumber));
     }
 
     @DisplayName("게임 우승자의 이름 List를 반환한다.")
