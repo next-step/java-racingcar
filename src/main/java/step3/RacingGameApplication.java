@@ -1,16 +1,18 @@
 package step3;
 
+import step3.controller.RacingGameController;
+import step3.view.InputView;
+import step3.view.ResultView;
+
 public class RacingGameApplication {
 
     public static void main(String[] args) {
-        InputView inputView = InputView.create();
+        RacingGameController racingGameController = RacingGameController
+                .start(InputView.getRacingCarCount(), InputView.getGameRound());
 
-        RacingGameManager racingGameManager = RacingGameManager
-                .start(inputView.getRacingCarCount(), inputView.getGameRound());
-
-        while (racingGameManager.hasNextRound()) {
-            racingGameManager.nextRound();
-            ResultView.printPosition(racingGameManager.getCarPosition());
+        while (racingGameController.hasNextRound()) {
+            racingGameController.nextRound();
+            ResultView.printPosition(racingGameController.getCarPosition());
         }
     }
 }

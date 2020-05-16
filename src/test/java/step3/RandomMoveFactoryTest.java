@@ -2,6 +2,8 @@ package step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.domain.MoveStrategy;
+import step3.domain.RandomMoveFactory;
 
 import java.util.stream.IntStream;
 

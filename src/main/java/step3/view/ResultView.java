@@ -1,4 +1,4 @@
-package step3;
+package step3.view;
 
 import java.util.Collections;
 import java.util.List;
@@ -9,6 +9,9 @@ public class ResultView {
     private static final String PROGRESS_INDICATOR = "-";
 
     private static final String RESULT_TITLE = "======= 실행 결과 =======";
+
+    private ResultView() {
+    }
 
     public static void printPosition(List<Integer> carPosition) {
         System.out.println(RESULT_TITLE);

@@ -2,8 +2,9 @@ package step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.stream.IntStream;
+import step3.domain.ForwardMoveStrategy;
+import step3.domain.RacingCar;
+import step3.domain.StopMoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -27,21 +28,5 @@ class RacingCarTest {
         assertThat(racingCar.move(new StopMoveStrategy())).isEqualTo(0);
         assertThat(racingCar.move(new StopMoveStrategy())).isEqualTo(0);
         assertThat(racingCar.move(new StopMoveStrategy())).isEqualTo(0);
-    }
-
-    @DisplayName("RandomMoveFactory에서 랜덤으로 생성된 인스턴스에 따라서 자동차의 포지션이 변경된다")
-    @Test
-    void carMovingTest() {
-        IntStream.range(0, 100).forEach(i -> {
-            RacingCar racingCar = RacingCar.create(i);
-
-            MoveStrategy moveStrategy = RandomMoveFactory.getInstance();
-
-            if (moveStrategy instanceof ForwardMoveStrategy) {
-                assertThat(racingCar.move(moveStrategy)).isEqualTo(1);
-            } else {
-                assertThat(racingCar.move(moveStrategy)).isEqualTo(0);
-            }
-        });
     }
 }
