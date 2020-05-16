@@ -23,7 +23,7 @@ public class PhaseResult {
                 .orElseThrow(IllegalAccessError::new);
 
         return raceResult.stream()
-                .filter(raceResult -> raceResult.getLocation() == leadLocation)
+                .filter(raceResult -> raceResult.isSameLocation(leadLocation))
                 .map(CarMoveResult::getName)
                 .collect(Collectors.toList());
     }

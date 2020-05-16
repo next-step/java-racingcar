@@ -16,4 +16,8 @@ public class CarMoveResult {
     public int getLocation() {
         return location;
     }
+
+    public boolean isSameLocation(final int targetLocation) {
+        return this.location == targetLocation;
+    }
 }
