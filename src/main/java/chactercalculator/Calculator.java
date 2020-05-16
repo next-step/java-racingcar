@@ -19,15 +19,12 @@ public class Calculator {
     return formula.split(SEPARATOR);
   }
 
-  private Integer execute(String[] values) {
-    int result = 0;
-    int increaseForOperatorIndex = 1;
-    int increaseForSecondNumberIndex = 2;
+  private Integer execute(String[] splitedList) {
+    int result = Integer.parseInt(splitedList[0]);
 
-    for (int firstNumberIndex = 0; firstNumberIndex < values.length; firstNumberIndex = firstNumberIndex + 3) {
-      result = Integer.parseInt(values[firstNumberIndex]);
-      String nowOperator = values[firstNumberIndex + increaseForOperatorIndex];
-      String nextValue = values[firstNumberIndex + increaseForSecondNumberIndex];
+    for (int index = 1; index < splitedList.length; index = index + 2) {
+      String nowOperator = splitedList[index];
+      String nextValue = splitedList[index + 1];
       Operator nowOperatorType = Operator.findOperatorTypeByGivenOperator(nowOperator);
       result = nowOperatorType.calculate(result, Integer.parseInt(nextValue));
     }
