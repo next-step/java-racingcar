@@ -10,6 +10,10 @@ public class CarPosition {
         this.position = position;
     }
 
+    public static CarPosition newInstance() {
+        return of(DEFAULT_POSITION);
+    }
+
     public static CarPosition of(int position) {
         return new CarPosition(position);
     }

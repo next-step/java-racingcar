@@ -33,7 +33,7 @@ public class RacingGameTest {
     public void playTest(int round, String[] carNames) {
         RacingGameResult racingGameResult = new RacingGame(round, carNames).play();
         assertThat(racingGameResult.getResults().keySet().size()).isEqualTo(carNames.length);
-        assertThat(racingGameResult.getResults().entrySet().contains(null)).isFalse();
+        assertThat(racingGameResult.getResults().values().size()).isEqualTo(carNames.length);
     }
 
     @MethodSource("provideValidArgument")
