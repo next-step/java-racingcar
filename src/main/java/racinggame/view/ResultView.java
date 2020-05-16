@@ -2,8 +2,7 @@ package racinggame.view;
 
 import racinggame.car.RacingCars;
 
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Collections;
 
 public final class ResultView {
 
@@ -38,8 +37,6 @@ public final class ResultView {
     }
 
     private static String getCarPositionBar(int position) {
-        return Stream.generate(() -> POSITION_BAR)
-                .limit(position)
-                .collect(Collectors.joining());
+        return String.join("", Collections.nCopies(position, POSITION_BAR));
     }
 }
