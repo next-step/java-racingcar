@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain.car;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -11,12 +11,12 @@ public class CarName {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public static CarName of(String name) {
         return new CarName(name);
+    }
+
+    public String getName() {
+        return name;
     }
 
     private void validate(String name) {

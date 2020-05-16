@@ -1,4 +1,8 @@
-package racingcar;
+package racingcar.domain.game;
+
+import racingcar.domain.car.Car;
+import racingcar.domain.car.CarName;
+import racingcar.domain.car.Cars;
 
 import java.util.Arrays;
 import java.util.List;
@@ -48,11 +52,11 @@ public class RacingGame {
     }
 
     private void validate(int gameRound, String[] carNames) {
-        if (Objects.isNull(carNames) || carNames.length < MINIMUM_CAR_COUNT) {
-            throw new IllegalArgumentException("최소 자동차 대수 입력 값은 " + MINIMUM_CAR_COUNT + " 입니다.");
-        }
         if (gameRound < MINIMUM_ROUND) {
             throw new IllegalArgumentException("최소 게임 라운드 입력 값은 " + MINIMUM_ROUND + " 입니다.");
+        }
+        if (Objects.isNull(carNames) || carNames.length < MINIMUM_CAR_COUNT) {
+            throw new IllegalArgumentException("최소 자동차 대수 입력 값은 " + MINIMUM_CAR_COUNT + " 입니다.");
         }
     }
 }

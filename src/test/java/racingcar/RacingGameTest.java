@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import racingcar.domain.game.RacingGame;
+import racingcar.domain.game.RacingGameResult;
 
 import java.util.stream.Stream;
 
@@ -33,7 +35,7 @@ public class RacingGameTest {
     public void playTest(int round, String[] carNames) {
         RacingGameResult racingGameResult = new RacingGame(round, carNames).play();
         assertThat(racingGameResult.getResults().keySet().size()).isEqualTo(carNames.length);
-        assertThat(racingGameResult.getResults().entrySet().contains(null)).isFalse();
+        assertThat(racingGameResult.getResults().values().size()).isEqualTo(carNames.length);
     }
 
     @MethodSource("provideValidArgument")

@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain.car;
 
 public class CarPosition {
 
@@ -8,6 +8,10 @@ public class CarPosition {
     private CarPosition(int position) {
         validate(position);
         this.position = position;
+    }
+
+    public static CarPosition newInstance() {
+        return of(DEFAULT_POSITION);
     }
 
     public static CarPosition of(int position) {

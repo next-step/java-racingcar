@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.domain.car;
+
+import racingcar.domain.strategy.MovableStrategy;
+import racingcar.domain.strategy.RandomMovableStrategy;
 
 import java.util.Objects;
 
@@ -21,7 +24,7 @@ public class Car {
     }
 
     public static Car newInstance(CarName carName, MovableStrategy movableStrategy) {
-        return newInstance(CarPosition.of(CarPosition.DEFAULT_POSITION), carName, movableStrategy);
+        return newInstance(CarPosition.newInstance(), carName, movableStrategy);
     }
 
     public static Car newInstance(CarPosition carPosition, CarName carName, MovableStrategy movableStrategy) {

@@ -15,13 +15,13 @@ public enum Operator {
     private String symbol;
     private DoubleBinaryOperator doubleBinaryOperator;
 
-    private static final Map<String, Operator> operatorCash;
+    private static final Map<String, Operator> OPERATOR_CASH;
 
     static {
-        Map<String, Operator> map = Stream.of(Operator.values())
-                .collect(Collectors.toMap(Operator::getSymbol, operator -> operator));
-
-        operatorCash = Collections.unmodifiableMap(map);
+        OPERATOR_CASH = Collections.unmodifiableMap(
+                Stream.of(Operator.values())
+                        .collect(Collectors.toMap(Operator::getSymbol, operator -> operator))
+        );
     }
 
     Operator(String symbol, DoubleBinaryOperator doubleBinaryOperator) {
@@ -55,7 +55,7 @@ public enum Operator {
     }
 
     public static boolean isContains(String symbol) {
-        return operatorCash.containsKey(symbol);
+        return OPERATOR_CASH.containsKey(symbol);
     }
 
     public double apply(double firstValue, double secondValue) {

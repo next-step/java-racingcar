@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain.game;
+
+import racingcar.domain.car.Cars;
 
 import java.util.*;
 import java.util.stream.Stream;
