@@ -19,7 +19,7 @@ public class Round {
     }
 
     private void validateRound(final int round) {
-        if (round <= END_ROUND) {
+        if (round < END_ROUND) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_PARAMETER);
         }
     }
