@@ -18,14 +18,7 @@ public class CarTest {
     @DisplayName("자동차는 전진한다")
     @Test
     void move() {
-        int position = car.move();
-        assertThat(position).isEqualTo(1);
-    }
-
-    @DisplayName("자동차는 멈춰있는다")
-    @Test
-    void stay() {
-        int position = car.stay();
-        assertThat(position).isEqualTo(0);
+        car.move();
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 }

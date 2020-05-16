@@ -14,6 +14,7 @@ public class ResultView {
 
     private static void print(int[] result) {
         for (int position : result) {
+            System.out.print(":");
             print(position);
         }
 

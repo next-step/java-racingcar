@@ -3,12 +3,11 @@ package racingcar;
 public class Car {
     private int position;
 
-    public int move() {
+    public void move() {
         position++;
-        return position;
     }
 
-    public int stay() {
+    public int getPosition() {
         return position;
     }
 }

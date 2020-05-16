@@ -13,7 +13,7 @@ class CarMoverTest {
     @Test
     void move() {
         List<Car> cars = getCars(5);
-        CarMover mover = new CarMover();
+        CarMover mover = new CarMover(new RandomMoveStrategy());
         mover.move(cars);
     }
 

@@ -14,7 +14,7 @@ public class RacingGame {
 
         this.time = time;
         this.cars = new ArrayList<>();
-        this.mover = new CarMover();
+        this.mover = new CarMover(new RandomMoveStrategy());
 
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
