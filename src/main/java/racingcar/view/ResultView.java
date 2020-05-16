@@ -4,6 +4,9 @@ import racingcar.RacingResult;
 
 public class ResultView {
 
+    private ResultView() {
+    }
+
     public static void print(RacingResult racingResult) {
         int size = racingResult.size();
 

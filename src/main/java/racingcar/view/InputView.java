@@ -6,6 +6,9 @@ public class InputView {
 
     private static Scanner SCANNER = new Scanner(System.in);
 
+    private InputView() {
+    }
+
     public static int askTime() {
         System.out.println("이동 횟수?");
         return SCANNER.nextInt();
