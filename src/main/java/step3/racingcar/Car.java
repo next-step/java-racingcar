@@ -15,8 +15,12 @@ public class Car {
         return position;
     }
 
-    public void moveCarPosition() {
+    public void moveCar() {
         boolean isMovable = this.movingStrategy.isMovable();
+        moveCarForward(isMovable);
+    }
+
+    public void moveCarForward(boolean isMovable) {
         if (isMovable == true)
             this.position++;
     }
