@@ -1,19 +1,19 @@
 package calculator;
 
 public class CalculatorSymbol {
-    protected int add(int firstNum, int secondNum) {
+    private int add(int firstNum, int secondNum) {
         return firstNum + secondNum;
     }
 
-    protected int subtract(int firstNum, int secondNum) {
+    private int subtract(int firstNum, int secondNum) {
         return firstNum - secondNum;
     }
 
-    protected int multiply(int firstNum, int secondNum) {
+    private int multiply(int firstNum, int secondNum) {
         return firstNum * secondNum;
     }
 
-    protected int division(int firstNum, int secondNum) {
+    private int division(int firstNum, int secondNum) {
         if (secondNum == 0) {
             throw new ArithmeticException("분모가 0일수 없습니다.");
         }
