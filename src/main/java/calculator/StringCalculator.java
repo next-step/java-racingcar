@@ -9,7 +9,7 @@ public class StringCalculator {
 
         checkInputValue(input);
 
-        StringCalculatorEntity entity = new StringCalculatorEntity(SplitUtils.split(input, " "));
+        StringCalculatorEntity entity = new StringCalculatorEntity(SplitUtils.split(input));
 
         int result = entity.getOperandItem(0); //첫번째 피연산자로 시작
         int operatorIndex = 0; //연산자 시작 index
