@@ -6,9 +6,11 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.car.CarMoveResult;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
 
 class PhaseResultTest {
     List<CarMoveResult> carMoveResults;
@@ -37,5 +39,14 @@ class PhaseResultTest {
         PhaseResult phaseResult = new PhaseResult(carMoveResults);
 
         assertThat(phaseResult.findPhaseLeads()).contains("pobi", "horox");
+    }
+
+    @DisplayName("경기 기록이 없을때 우승자를 구하면 IllegalStatementException throw")
+    @Test
+    void whenNoPhaseFindLeadsThrowException() {
+        PhaseResult phaseResult = new PhaseResult(new ArrayList<>());
+        assertThatIllegalStateException()
+                .isThrownBy(phaseResult::findPhaseLeads)
+                .withMessage("경기 기록이 존재하지않습니다.");
     }
 }
