@@ -6,25 +6,22 @@ public class RacingGame {
     final int WIN_CONDITION = 4;
 
     public static void main(String[] args) {
-        // 입력
+
         InputView inputView = new InputView();
         inputView.initInput();
         int carCount = inputView.getCarCount();
         int repeatCount = inputView.getRepeatCount();
 
-        // 레이싱 게임 초기화 - car 생성
-        GameInitializer initializer = new GameInitializer();
-        initializer.generateCar(carCount);
-        List<Car> carList = initializer.getCarList();
+        CarGenerator generator = new CarGenerator();
+        generator.generate(carCount);
+        List<Car> carList = generator.getCarList();
 
-        // 게임 실행, 결과 출력
         RacingGame racingGame = new RacingGame();
-        ResultView resultView = new ResultView();
-
         for (int i = 0; i < repeatCount; i++) {
             racingGame.run(carList);
-            resultView.print(carList);
+            ResultView.print(carList);
         }
+
     }
 
     void run(List<Car> carList) {
