@@ -1,4 +1,3 @@
-import calculator.Calculator;
 import racingcar.RacingGame;
 import racingcar.ResultView;
 

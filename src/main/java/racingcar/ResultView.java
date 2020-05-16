@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,12 +14,13 @@ public class ResultView {
     private Map<Integer, List<Racingcar>> roundResult = new HashMap<>();
 
     public void printResult() {
+        System.out.println("실행 결과");
         for (int i = START_ROUND_NUMBER; i <= saveRound; i++) {
             printResultByRound(i);
         }
     }
 
-    public void printRacingGameWinner() {
+    public void printRacingGameWinner(int round, List<Racingcar> carPositions) {
 
     }
 

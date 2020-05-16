@@ -42,7 +42,6 @@ public class RacingGame {
 
     private void prepareToRace() {
         for (int i = 0; i < carNames.size(); i++) {
-            System.out.println(carNames.get(i));
             Racingcar racingcar = createCar(i, carNames.get(i));
             participateRace(racingcar);
         }

@@ -14,10 +14,10 @@ public class AppMainTest {
         Scanner scanner = new Scanner("count");
         assertThatExceptionOfType(InputMismatchException.class).isThrownBy(() ->{
             print("자동차 대수는 몇 대 인가요?");
-            int carCount = scanner.nextInt();
+            String carNames = scanner.nextLine();
             print("시도할 회수는 몇 회 인가요?");
             int time = scanner.nextInt();
-        }).describedAs("숫자입력");
+        }).describedAs("시도할 회수는 숫자를 입력하세요");
     }
 
     public static void print(String text) {
