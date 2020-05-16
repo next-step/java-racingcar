@@ -5,7 +5,7 @@ import racingcar.exception.ErrorMessage;
 public class Round {
 
     private static final int END_ROUND = 0;
-    private static final int DO_NEXT_ROUND = 1;
+    private static final int ROUND_STEP = 1;
 
     private int round;
 
@@ -25,7 +25,7 @@ public class Round {
     }
 
     public Round nextRound() {
-        return Round.of(round - DO_NEXT_ROUND);
+        return Round.of(round - ROUND_STEP);
     }
 
     public boolean isEndRound() {

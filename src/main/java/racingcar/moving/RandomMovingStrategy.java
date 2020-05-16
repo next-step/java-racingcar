@@ -5,7 +5,7 @@ import java.util.Random;
 public class RandomMovingStrategy implements MovingStrategy {
 
     private static final int MAX_NUM = 9;
-    public static final int BASE_LINE_NUM = 4;
+    static final int BASE_LINE_NUM = 4;
 
     private final Random random;
 

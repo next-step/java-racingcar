@@ -15,7 +15,7 @@ public class Car {
     }
 
     private Car(final String name) {
-        validateName(name);
+        validate(name);
         this.position = DEFAULT_DISTANCE;
         this.name = name;
     }
@@ -24,8 +24,8 @@ public class Car {
         return new Car(name);
     }
 
-    private static void validateName(final String name) {
-        if (StringUtil.isEmpty(name)) {
+    private static void validate(final String value) {
+        if (StringUtil.isEmpty(value)) {
             throw new IllegalArgumentException(ErrorMessage.IS_NULL_OR_EMPTY);
         }
     }
