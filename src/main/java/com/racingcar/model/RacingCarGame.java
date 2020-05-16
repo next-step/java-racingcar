@@ -15,15 +15,6 @@ public class RacingCarGame {
     private Integer countOfAttempt;
     private List<RacingCar> racingRacingCars;
 
-    public RacingCarGame(Integer countOfCar, Integer countOfAttempt) {
-        if (countOfCar <= 0) {
-            throw new IllegalArgumentException("플레이할 자동차의 개수는 0개 이상입력해주세요.");
-        }
-
-        initRacingCar(countOfCar);
-        this.countOfAttempt = countOfAttempt;
-    }
-
     public RacingCarGame(List<String> racingCarNames, Integer countOfAttempt) {
         if (CollectionUtils.isEmpty(racingCarNames)) {
             throw new IllegalArgumentException("플레이할 자동차의 개수는 0개 이상입력해주세요.");
@@ -31,17 +22,6 @@ public class RacingCarGame {
 
         initRacingCarWithName(racingCarNames);
         this.countOfAttempt = countOfAttempt;
-    }
-
-    private void initRacingCar(Integer countOfCar) {
-        if (CollectionUtils.isEmpty(this.racingRacingCars)) {
-            this.racingRacingCars = new ArrayList<>();
-        }
-
-        IntStream.range(0, countOfCar).forEach(i -> {
-            RacingCar racingCar = new RacingCar(1);
-            racingRacingCars.add(racingCar);
-        });
     }
 
     private void initRacingCarWithName(List<String> racingCarNames) {
