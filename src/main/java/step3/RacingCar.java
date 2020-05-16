@@ -1,5 +1,6 @@
 package step3;
 
+import javax.xml.transform.Result;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -13,26 +14,12 @@ import java.util.Scanner;
 public class RacingCar {
 
   private int time;
-  private int[] carPositions = {0, 0, 0};
+  private int[] carPositions;
 
   public RacingCar () {
-    this.inputCars();
-    this.inputTime();
+    this.carPositions = InputView.inputCars();
+    this.time = InputView.inputTime();
     this.startRace();
-  }
-
-  public void inputCars () {
-    Scanner scan = new Scanner(System.in);
-    System.out.println("자동차 대수는 몇 대 인가요?");
-    int size = Integer.parseInt(scan.nextLine());
-    this.carPositions = new int[size];
-    for (int i = 0; i < size; i++) this.carPositions[i] = 0;
-  }
-
-  public void inputTime () {
-    Scanner scan = new Scanner(System.in);
-    System.out.println("시도할 회수는 몇 회 인가요?");
-    this.time = Integer.parseInt(scan.nextLine());
   }
 
   public static int going () {
@@ -47,18 +34,8 @@ public class RacingCar {
       for (int j = 0; j < len; j++) {
         this.carPositions[j] += going();
       }
-      this.resultRace();
+      ResultView.print(this.carPositions);
     }
-  }
-
-  public void resultRace () {
-    String result = "";
-    for (int n : this.carPositions) {
-      for (int i = 0; i < n; i++)
-        result += "-";
-      result += "\n";
-    }
-    System.out.println(result);
   }
 
   public static void main(String[] args) {
