@@ -1,11 +1,13 @@
 package racing.domain;
 
-import racing.dto.RacingCreateDto;
-import racing.dto.RacingResultDto;
+import racing.dto.RaceInformation;
+import racing.dto.RacingGameResult;
+import racing.utils.EmptyCheckUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private static final int MIN_RACING_COUNT = 1;
@@ -16,15 +18,21 @@ public class RacingGame {
     private List<Car> cars = new ArrayList<>();
     private CarMovement carMovement;
 
-    public RacingGame(RacingCreateDto racingCreateDto, CarMovement carMovement) {
-        this.validateRacingTotalRound(racingCreateDto.totalRacingCount());
-        this.validateCarCount(racingCreateDto.carCount());
+    public RacingGame(RaceInformation raceInformation, CarMovement carMovement) {
+        this.validateRacingTotalRound(raceInformation.getTotalRacingCount());
+        this.validateCarNames(raceInformation.getCarNames());
         this.validateCarMovement(carMovement);
 
         this.carMovement = carMovement;
-        this.racingTotalRound = racingCreateDto.totalRacingCount();
-        for (int i = 0; i < racingCreateDto.carCount(); i++) {
-            this.cars.add(new Car());
+        this.racingTotalRound = raceInformation.getTotalRacingCount();
+
+        String[] carNames = raceInformation.getCarNames();
+        this.createCars(carNames);
+    }
+
+    private void createCars(String[] carNames) {
+        for (String carName: carNames) {
+            this.cars.add(new Car(carName));
         }
     }
 
@@ -34,10 +42,22 @@ public class RacingGame {
         }
     }
 
-    private void validateCarCount(int carCount) {
-        if (carCount < MIN_CAR_COUNT) {
+    private void validateCarNames(String[] carNames) {
+        if (Objects.isNull(carNames)) {
             throw new IllegalArgumentException();
         }
+
+        if (carNames.length < MIN_CAR_COUNT) {
+            throw new IllegalArgumentException();
+        }
+
+        for (String carName: carNames) {
+            this.validateCarNameEmptyCheck(carName);
+        }
+    }
+
+    private void validateCarNameEmptyCheck(String carName) {
+        EmptyCheckUtil.emptyCheck(carName);
     }
 
     private void validateCarMovement(CarMovement carMovement) {
@@ -52,12 +72,18 @@ public class RacingGame {
 
             this.currentRacingCount++;
         }
-
     }
 
-    public List<Integer> calculateRacingScore() {
-        List<Integer> result = new ArrayList<>();
-        this.cars.forEach(car -> result.add(car.findCurrentPosition()));
-        return result;
+    public List<RacingGameResult> calculateRacingGameResults() {
+        return this.cars.stream()
+                .map(car -> new RacingGameResult(car.getName(), car.findCurrentPosition()))
+                .collect(Collectors.toList());
+    }
+
+    public int calculateMaxPosition() {
+        return this.cars.stream()
+                .map(car -> car.findCurrentPosition())
+                .max(Integer::compareTo)
+                .orElse(0);
     }
 }

@@ -9,11 +9,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
+    private static final String CAR_NAME = "iljun";
+
     private Car car;
 
     @BeforeEach
     void setup() {
-        car = new Car();
+        car = new Car(CAR_NAME);
         assertThat(car.findCurrentPosition()).isEqualTo(0);
     }
 

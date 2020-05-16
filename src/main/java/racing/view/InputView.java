@@ -1,24 +1,25 @@
 package racing.view;
 
-import racing.dto.RacingCreateDto;
+import racing.dto.RaceInformation;
 
 import java.util.Scanner;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
+    private static final String DELIMITER = ",";
 
-    private int carCount;
+    private String[] carNames;
     private int totalRacingCount;
 
-    public RacingCreateDto input() {
-        this.inputCarCount();
+    public RaceInformation createByUserInput() {
+        this.inputCarNames();
         this.inputTotalRacingCount();
-        return new RacingCreateDto(this.totalRacingCount, this.carCount);
+        return new RaceInformation(this.totalRacingCount, this.carNames);
     }
 
-    private void inputCarCount() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        this.carCount = this.scanner.nextInt();
+    private void inputCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        this.carNames = this.scanner.nextLine().split(DELIMITER);
     }
 
     private void inputTotalRacingCount() {
