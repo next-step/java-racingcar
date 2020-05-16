@@ -7,6 +7,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.CarName;
+import racingcar.domain.car.CarPosition;
+import racingcar.domain.game.RacingGameResult;
+import racingcar.domain.strategy.RandomMovableStrategy;
 
 import java.util.Arrays;
 import java.util.List;

@@ -4,6 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.CarName;
+import racingcar.domain.car.CarPosition;
+import racingcar.domain.strategy.RandomMovableStrategy;
 
 import java.util.stream.Stream;
 

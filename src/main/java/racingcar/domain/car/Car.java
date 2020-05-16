@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.domain.car;
+
+import racingcar.domain.strategy.MovableStrategy;
+import racingcar.domain.strategy.RandomMovableStrategy;
 
 import java.util.Objects;
 
