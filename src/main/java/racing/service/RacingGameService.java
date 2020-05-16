@@ -5,6 +5,7 @@ import racing.domain.RandomMovement;
 import racing.dto.CarRaceResult;
 import racing.dto.RaceInformation;
 import racing.dto.RacingGameResult;
+import racing.utils.EmptyCheckUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,8 @@ import java.util.Random;
 
 public class RacingGameService {
 
-    public List<RacingGameResult> startRacingGame(RaceInformation raceInformation) {
+    public List<RacingGameResult> executeRace(RaceInformation raceInformation) {
+        EmptyCheckUtil.emptyCheck(raceInformation);
         RacingGame racingGame = new RacingGame(raceInformation, new RandomMovement(new Random()));
         List<CarRaceResult> carRaceResults;
         List<RacingGameResult> racingGameResults = new ArrayList<>();

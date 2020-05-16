@@ -21,4 +21,9 @@ public class EmptyCheckUtil {
         }
     }
 
+    public static void emptyCheck(Object arguments) {
+        if (Objects.isNull(arguments)) {
+            throw new IllegalArgumentException();
+        }
+    }
 }

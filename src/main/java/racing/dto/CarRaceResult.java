@@ -7,9 +7,16 @@ public class CarRaceResult {
     private int position;
 
     public CarRaceResult(String carName, int position) {
+        EmptyCheckUtil.emptyCheck(carName);
+        this.validatePosition(position);
         this.carName = carName;
         this.position = position;
-        EmptyCheckUtil.emptyCheck(carName);
+    }
+
+    private void validatePosition(int position) {
+        if (position < 0) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public String getCarName() {

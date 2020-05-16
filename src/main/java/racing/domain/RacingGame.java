@@ -19,6 +19,8 @@ public class RacingGame {
     private CarMovement carMovement;
 
     public RacingGame(RaceInformation raceInformation, CarMovement carMovement) {
+        EmptyCheckUtil.emptyCheck(raceInformation);
+        EmptyCheckUtil.emptyCheck(carMovement);
         this.validateRacingTotalRound(raceInformation.getTotalRacingCount());
         this.validateCarNames(raceInformation.getCarNames());
         this.validateCarMovement(carMovement);
@@ -78,12 +80,5 @@ public class RacingGame {
         return this.cars.stream()
                 .map(car -> new CarRaceResult(car.getName(), car.findCurrentPosition()))
                 .collect(Collectors.toList());
-    }
-
-    public int calculateMaxPosition() {
-        return this.cars.stream()
-                .map(car -> car.findCurrentPosition())
-                .max(Integer::compareTo)
-                .orElse(0);
     }
 }
