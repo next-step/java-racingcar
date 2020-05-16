@@ -20,7 +20,7 @@ class CarTest {
 
     @DisplayName("car 객체가 움직이는지 확인하는 테스트")
     @ParameterizedTest
-    @ValueSource(ints = {5, 10, 15})
+    @ValueSource(ints = {5, 10, 15, 8, 6, 3, 21, 9})
     public void checkWhetherCarObjectMoves(int carCounts) {
         List<Car> cars = CarFactory.makeCars(carCounts);
         cars.forEach(Car::move);
