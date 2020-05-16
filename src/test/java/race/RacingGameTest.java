@@ -7,7 +7,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class RacingGameTest {
-    public static final int DEFAULT_TIME = 3;
+
+    private static final int DEFAULT_TIME = 3;
 
     @DisplayName("자동차 생성 테스트")
     @ParameterizedTest
