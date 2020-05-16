@@ -16,7 +16,7 @@ public class Cars {
 
     public static Cars of(final String carNames) {
         validateCarNames(carNames);
-        String[] splitCarNames = splitCarNames(carNames);
+        String[] splitCarNames = StringUtil.splitValues(carNames, DELIMITER);
         return new Cars(toList(splitCarNames));
     }
 
@@ -31,12 +31,6 @@ public class Cars {
         if (StringUtil.isEmpty(carNames)) {
             throw new IllegalArgumentException(ErrorMessage.IS_NULL_OR_EMPTY);
         }
-    }
-
-    private static String[] splitCarNames(final String carNames) {
-        return Arrays.stream(carNames.split(DELIMITER))
-                .map(String::trim)
-                .toArray(String[]::new);
     }
 
     private static List<Car> toList(final String[] carNames) {
