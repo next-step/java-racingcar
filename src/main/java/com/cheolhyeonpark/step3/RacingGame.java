@@ -28,6 +28,5 @@ public class RacingGame {
     private void runStage() {
         stage.run();
         stage.printResult();
-        System.out.println();
     }
 }

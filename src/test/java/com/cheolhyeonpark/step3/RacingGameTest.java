@@ -9,6 +9,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.*;
 
 class RacingGameTest {
 
@@ -40,5 +41,18 @@ class RacingGameTest {
 
         //then
         assertThat(cars.size()).isEqualTo(numberOfCars);
+    }
+
+    @Test
+    @DisplayName("입력받은만큼 스테이지가 실행된다")
+    public void runStage() throws NoSuchMethodException {
+        //given
+        RacingGame racingGame = spy(new RacingGame(3, 5));
+
+        //when
+        racingGame.play();
+
+        //then
+        verify(racingGame, times(1)).play();
     }
 }
