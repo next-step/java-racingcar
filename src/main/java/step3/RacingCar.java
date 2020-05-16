@@ -5,7 +5,6 @@ import step3.view.ConsoleResultView;
 import step3.view.InputView;
 import step3.view.ResultView;
 
-import java.io.Console;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,9 +19,9 @@ import static step3.Utils.getRandomNumber;
  * 자동차의 상태를 화면에 출력한다. 어느 시점에 출력할 것인지에 대한 제약은 없다.
  */
 public class RacingCar {
-  private final ResultView resultView;
+  private ResultView resultView;
 
-  public RacingCar (final InputView inputView, final ResultView resultView) {
+  public void setGame (InputView inputView, ResultView resultView) {
     this.resultView = resultView;
     this.startRace(
       Arrays.stream(new int[inputView.inputCars()])
@@ -33,11 +32,8 @@ public class RacingCar {
     );
   }
 
-  public static int moving (int randomNumber) {
-    return randomNumber > 4 ? 1 : 0;
-  }
-
   public void startRace (List<Car> cars, int time) {
+    validateTime(time);
     System.out.println("\n실행 결과");
     for (int i = 0; i < time; i++) {
       cars.forEach(car -> car.going(moving(getRandomNumber())));
@@ -45,12 +41,20 @@ public class RacingCar {
     }
   }
 
-  public static RacingCar of (InputView inputView, ResultView resultView) {
-    return new RacingCar(inputView, resultView);
+  public static int moving (int randomNumber) {
+    return randomNumber > 4 ? 1 : 0;
+  }
+
+  public static RacingCar of () {
+    return new RacingCar();
+  }
+
+  public static void validateTime (int time) {
+    if (time < 1) throw new IllegalArgumentException("시도 횟수는 1 이상만 가능합니다.");
   }
 
   public static void main(String[] args) {
-    RacingCar.of(
+    RacingCar.of().setGame(
       ConsoleInputView.of(),
       ConsoleResultView.of()
     );
