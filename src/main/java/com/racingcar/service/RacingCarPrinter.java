@@ -7,4 +7,6 @@ import java.util.List;
 public interface RacingCarPrinter {
 
     void printRacingCar(List<RacingCar> racingCars);
+
+    void printWinner(List<RacingCar> racingCars);
 }

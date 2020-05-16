@@ -1,7 +1,9 @@
 package com.racingcar.service;
 
+import com.racingcar.model.RacingCar;
 import com.racingcar.model.RacingCarGame;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class RacingCarGamePlay {
@@ -20,5 +22,8 @@ public class RacingCarGamePlay {
             racingCarGame.playRacingGame();
             racingCarPrinter.printRacingCar(racingCarGame.getRacingRacingCars());
         });
+
+        List<RacingCar> racingCars = racingCarGame.extractWinner();
+        racingCarPrinter.printWinner(racingCars);
     }
 }
