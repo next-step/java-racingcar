@@ -1,4 +1,4 @@
-package calculator.utils;
+package calculator;
 
 import org.apache.commons.lang3.StringUtils;
 
