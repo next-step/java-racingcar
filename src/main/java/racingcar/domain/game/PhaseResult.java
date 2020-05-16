@@ -2,6 +2,7 @@ package racingcar.domain.game;
 
 import racingcar.domain.car.CarMoveResult;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,7 +10,7 @@ public class PhaseResult {
     private List<CarMoveResult> raceResult;
 
     public PhaseResult(List<CarMoveResult> raceResult) {
-        this.raceResult = raceResult;
+        this.raceResult = Collections.unmodifiableList(raceResult);
     }
 
     public List<CarMoveResult> getRaceResult() {
