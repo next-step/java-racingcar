@@ -9,7 +9,7 @@ public class ConsoleInputView implements InputView {
   @Override
   public int inputCars () {
     Scanner scan = new Scanner(System.in);
-    System.out.println("자동차 대수는 몇 대 인가요?");;
+    System.out.println("자동차 수는 몇 대 인가요?");;
     return Integer.parseInt(scan.nextLine());
   }
 

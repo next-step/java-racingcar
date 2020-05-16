@@ -1,21 +1,15 @@
 package step3;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class Car {
   private int position;
 
   private Car (int position) {
+    validatePosition(position);
     this.position = position;
   }
 
   public void going (int n) {
     this.position += n;
-  }
-
-  public int getPosition () {
-    return this.position;
   }
 
   public String toString () {
@@ -26,5 +20,9 @@ public class Car {
 
   public static Car of (int position) {
     return new Car(position);
+  }
+
+  public static void validatePosition (int position) {
+    if (position < 0) throw new IllegalArgumentException("자동차의 위치는 0 이상만 가능합니다.");
   }
 }
