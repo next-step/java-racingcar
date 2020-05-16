@@ -27,4 +27,9 @@ public class Stage {
     private boolean isMovable() {
         return dice.rollDice() >= MINIMUM_MOVABLE_DICE_NUMBER;
     }
+
+    public void printResult() {
+        cars.forEach(Car::printPosition);
+        System.out.println();
+    }
 }

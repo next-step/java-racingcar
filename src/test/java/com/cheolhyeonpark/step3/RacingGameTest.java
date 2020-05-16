@@ -12,19 +12,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
 
-    RacingGame racingGame = new RacingGame();
-
     @Test
     @DisplayName("스테이지 객체를 생성한다")
-    public void generateStage() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
+    public void generateStage() throws NoSuchFieldException {
         //given
-        Method method = racingGame.getClass().getDeclaredMethod("generateStage", int.class);
-        method.setAccessible(true);
+        RacingGame racingGame = new RacingGame(3, 5);
+
+        //given
         Field field = racingGame.getClass().getDeclaredField("stage");
         field.setAccessible(true);
-
-        //when
-        method.invoke(racingGame, 3);
 
         //then
         assertThat(field.getType()).isEqualTo(Stage.class);
@@ -34,6 +30,7 @@ class RacingGameTest {
     @DisplayName("입렫받은 차의 대수 만큼 Car객체를 생성해야한다")
     public void getCars() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         //given
+        RacingGame racingGame = new RacingGame(0, 0);
         int numberOfCars = 3;
         Method method = racingGame.getClass().getDeclaredMethod("getCars", int.class);
         method.setAccessible(true);
