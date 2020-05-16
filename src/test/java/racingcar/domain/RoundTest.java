@@ -13,15 +13,15 @@ public class RoundTest {
 
     @DisplayName("Round 생성 시 round 를 해당 값으로 초기화")
     @ParameterizedTest
-    @ValueSource(ints = { 0, 1, 10000 })
+    @ValueSource(ints = { 1, 10000 })
     void create(final int value) {
         assertThatCode(() -> Round.of(value))
                 .doesNotThrowAnyException();
     }
 
-    @DisplayName("Round 생성 실패: round 가 0보다 작은 경우 예외 발생")
+    @DisplayName("Round 생성 실패: round 가 0보다 작거나 같은 경우 예외 발생")
     @ParameterizedTest
-    @ValueSource(ints = { -1, -10000 })
+    @ValueSource(ints = { 0, -1, -10000 })
     void failureCreate(final int value) {
         assertThatIllegalArgumentException().isThrownBy(() -> Round.of(value));
     }
@@ -36,6 +36,6 @@ public class RoundTest {
     @DisplayName("마지막 라운드면 true 를 반환한다.")
     @Test
     void isEndRound() {
-        assertThat(Round.of(FINAL_ROUND).isEndRound()).isTrue();
+        assertThat(new Round().isEndRound()).isTrue();
     }
 }
