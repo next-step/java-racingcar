@@ -10,9 +10,7 @@ public class ResultViewProcessor {
     }
 
     public static void printResult(List<Car> cars) {
-        for (Car car : cars) {
-            printCurrentPosition(car);
-        }
+        cars.forEach(ResultViewProcessor::printCurrentPosition);
         System.out.println();
     }
 
