@@ -39,7 +39,7 @@ class GameResultTest {
         List<PhaseResult> phaseResults = new ArrayList<>();
         phaseResults.add(phaseResult);
 
-        GameResult gameResult = new GameResult(1, phaseResults);
+        GameResult gameResult = new GameResult(phaseResults);
 
         PhaseResult findPhaseResult = gameResult.findByPhaseNumber(1);
         assertThat(findPhaseResult.getRaceResult()).isEqualTo(phaseResult.getRaceResult());
@@ -52,7 +52,7 @@ class GameResultTest {
         List<PhaseResult> phaseResults = new ArrayList<>();
         phaseResults.add(phaseResult);
 
-        GameResult gameResult = new GameResult(1, phaseResults);
+        GameResult gameResult = new GameResult(phaseResults);
 
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> gameResult.findByPhaseNumber(wrongPhaseNumber))
@@ -62,7 +62,7 @@ class GameResultTest {
     @DisplayName("게임 우승자의 이름 List를 반환한다.")
     @Test
     void findWinners() {
-        GameResult gameResult = new GameResult(1, phaseResults);
+        GameResult gameResult = new GameResult(phaseResults);
 
         assertThat(gameResult.findWinners()).contains("pobi", "horox");
     }

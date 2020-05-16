@@ -4,16 +4,10 @@ import java.util.Collections;
 import java.util.List;
 
 public class GameResult {
-    private final int numberOfPhase;
     private final List<PhaseResult> phaseResults;
 
-    public GameResult(int numberOfPhase, List<PhaseResult> phaseResults) {
-        this.numberOfPhase = numberOfPhase;
+    public GameResult(List<PhaseResult> phaseResults) {
         this.phaseResults = Collections.unmodifiableList(phaseResults);
-    }
-
-    public int getNumberOfPhase() {
-        return numberOfPhase;
     }
 
     public PhaseResult findByPhaseNumber(int phaseNumber) {
@@ -24,8 +18,12 @@ public class GameResult {
         }
     }
 
-    public List<String> findWinners() {
+    public List<PhaseResult> getPhaseResults() {
+        return phaseResults;
+    }
 
-        return phaseResults.get(numberOfPhase - 1).findPhaseLeads();
+    public List<String> findWinners() {
+        int lastPhase = phaseResults.size() - 1;
+        return phaseResults.get(lastPhase).findPhaseLeads();
     }
 }

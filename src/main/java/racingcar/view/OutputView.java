@@ -15,13 +15,10 @@ public class OutputView {
     }
 
     public static void printGameResult(GameResult gameResult) {
-        int numberOfPhase = gameResult.getNumberOfPhase();
         System.out.println("실행 결과");
 
-        for (int phase = 1; phase <= numberOfPhase; phase++) {
-            printPhaseResult(gameResult.findByPhaseNumber(phase), phase);
-            System.out.println();
-        }
+        gameResult.getPhaseResults().stream()
+                .forEach(OutputView::printPhaseResult);
 
         printWinners(gameResult.findWinners());
     }
@@ -33,8 +30,7 @@ public class OutputView {
         System.out.println(winner + "가 최종 우승했습니다.");
     }
 
-    public static void printPhaseResult(PhaseResult phaseResult, int phase) {
-        System.out.println("시도 번호 - " + phase);
+    public static void printPhaseResult(PhaseResult phaseResult) {
         phaseResult.getRaceResult().stream()
                 .map(OutputView::mappingNameAndLocation)
                 .forEach(System.out::println);

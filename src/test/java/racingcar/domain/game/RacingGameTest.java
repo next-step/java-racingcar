@@ -36,7 +36,7 @@ class RacingGameTest {
 
         List<PhaseResult> phaseResults = Arrays.asList(firstPhaseResult, secondPhaseResult);
 
-        return new GameResult(2, phaseResults);
+        return new GameResult(phaseResults);
     }
 
     private PhaseResult makePhaseResult(String[] names, int[] locations) {
