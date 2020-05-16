@@ -14,6 +14,7 @@ public class ParticipateCars {
     }
 
     private List<Car> createCars(String[] nameOfCars) {
+        validateNamesSize(nameOfCars);
         List<Car> cars = new ArrayList<>();
 
         for (int i = 0; i < nameOfCars.length; i++) {
@@ -32,5 +33,11 @@ public class ParticipateCars {
         }
 
         return carMoveResults;
+    }
+
+    private void validateNamesSize(String[] names) {
+        if (names.length == 0) {
+            throw new IllegalStateException("이름이 입력되지 않았습니다.");
+        }
     }
 }

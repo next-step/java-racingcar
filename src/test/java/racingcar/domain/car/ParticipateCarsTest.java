@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
 import static racingcar.domain.car.strategy.FixedMovementStrategy.MOVE;
 import static racingcar.domain.car.strategy.FixedMovementStrategy.STOP;
 
@@ -39,5 +40,14 @@ public class ParticipateCarsTest {
         assertThat(actualResult).usingFieldByFieldElementComparator()
                 .containsAll(expectedResult);
 
+    }
+
+    @DisplayName("생성자의 매개값으로 들어오는 이름 배열의 크기가 0 이면 IllegalStatementException Throw")
+    @Test
+    void whenNamesSizeZeroThrowException() {
+        String[] names = {};
+        assertThatIllegalStateException()
+                .isThrownBy(() -> new ParticipateCars(names))
+                .withMessage("이름이 입력되지 않았습니다.");
     }
 }
