@@ -20,11 +20,15 @@ public class Calculator {
   }
 
   private Integer execute(String[] splitedList) {
-    int result = Integer.parseInt(splitedList[0]);
+    int firstNumberIndex = 0;
+    int operatorIndex = 1;
+    int turnIndex = 2;
+    int increaseIndexForNumber = 1;
+    int result = Integer.parseInt(splitedList[firstNumberIndex]);
 
-    for (int index = 1; index < splitedList.length; index = index + 2) {
-      String nowOperator = splitedList[index];
-      String nextValue = splitedList[index + 1];
+    for (; operatorIndex < splitedList.length; operatorIndex = operatorIndex + turnIndex) {
+      String nowOperator = splitedList[operatorIndex];
+      String nextValue = splitedList[operatorIndex + increaseIndexForNumber];
       Operator nowOperatorType = Operator.findOperatorTypeByGivenOperator(nowOperator);
       result = nowOperatorType.calculate(result, Integer.parseInt(nextValue));
     }
