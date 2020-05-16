@@ -1,5 +1,7 @@
 package chactercalculator;
 
+import java.util.Arrays;
+
 public enum Operation {
 
   PLUS("+") {
@@ -43,5 +45,9 @@ public enum Operation {
 
   public String getOperator() {
     return operator;
+  }
+
+  public Operation findOperatorByGivenSign(String sign) {
+    return Arrays.stream(Op)
   }
 }
