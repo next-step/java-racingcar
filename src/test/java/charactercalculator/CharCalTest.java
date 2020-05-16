@@ -22,7 +22,7 @@ public class CharCalTest {
 
   @DisplayName("두 개 이상의 연산자를 활용한 계산 테스트")
   @ParameterizedTest
-  @CsvSource({"'2 + 3 * 4 / 2', 10"})
+  @CsvSource({"'2 + 3 * 4 / 2', 10", "'3 + 3 * 4 / 2', 12", "'2 * 9 * 2 / 3 + 3', 15"})
   void 복수_연산자로_계산된다(String given, Integer expected) {
     assertThat(calculator.calculate(given)).isEqualTo(expected);
   }
