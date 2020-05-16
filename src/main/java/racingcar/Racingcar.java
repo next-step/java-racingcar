@@ -1,9 +1,14 @@
 package racingcar;
 
+import util.CommonUtil;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Racingcar {
+
+    private static final int GO_CONDITION_COUNT = 4;
+    private static final int RANDOM_BOUNDARY = 10;
 
     private int carNumber;
     private String carName;
@@ -16,6 +21,10 @@ public class Racingcar {
 
     public void setCarName(String carName) {
         this.carName = carName;
+    }
+
+    public void setCarMovePosition(int carMovePosition) {
+        this.carMovePosition = carMovePosition;
     }
 
     public Racingcar(int carNumber, String carName) {
@@ -35,8 +44,10 @@ public class Racingcar {
         return carMovePosition;
     }
 
-    public void setCarMovePosition(int round, int carMovePosition) {
-        this.carMovePosition = carMovePosition;
+    public void moveCarMovePosition(int round) {
+        if (CommonUtil.randomNumber(RANDOM_BOUNDARY) > GO_CONDITION_COUNT) {
+            this.carMovePosition++;
+        }
         saveRoundResultPosition.put(round, this.carMovePosition);
     }
 

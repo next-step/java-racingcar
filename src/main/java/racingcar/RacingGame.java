@@ -1,30 +1,41 @@
 package racingcar;
 
-import util.CommonUtil;
+import util.RacingCarComparator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
-    private static final int GO_CONDITION_COUNT = 4;
-    private static final int RANDOM_BOUNDARY = 10;
     private static final int INPUT_ERROR_MIN_NUMBER = 0;
     private static final int START_ROUND = 0;
-    private static final int GO = 1;
-    private static final int STOP = 0;
     private static final String CAR_NAME_SPLITER = ",";
 
     private int time;
-    private List<String> carNames = new ArrayList<>();
+    private List<String> carNames;
     private List<Racingcar> carPositions = new ArrayList<>();
 
     public RacingGame(String carNames, int time) {
+        validateCarName(carNames);
         validateTime(time);
         String[] splitCarNames = carNames.split(CAR_NAME_SPLITER);
         this.time = time;
         this.carNames = Arrays.asList(splitCarNames);
+    }
+
+    private void validateTime(int time) {
+        if (time < INPUT_ERROR_MIN_NUMBER) {
+            throw new IllegalArgumentException("value is small than zero");
+        }
+    }
+
+    private void validateCarName(String carName) {
+        if (carName.isEmpty()) {
+            throw new IllegalArgumentException("carName is Empty");
+        }
     }
 
     public ResultView start() {
@@ -37,7 +48,17 @@ public class RacingGame {
             resultView.saveRoundResult(i, this.carPositions);
         }
 
+        resultView.saveWinner(getWinners());
         return resultView;
+    }
+
+    private List<Racingcar> getWinners() {
+        List<Racingcar> racingcars = this.carPositions;
+        Collections.sort(racingcars, new RacingCarComparator());
+        Racingcar winRacingcar = racingcars.get(0);
+        int winnerPosition = winRacingcar.getCarMovePosition();
+        List<Racingcar> winRacingcars = racingcars.stream().filter(car -> car.getCarMovePosition() == winnerPosition).collect(Collectors.toList());
+        return winRacingcars;
     }
 
     private void prepareToRace() {
@@ -47,21 +68,10 @@ public class RacingGame {
         }
     }
 
-    private void validateTime(int time) {
-        if (time < INPUT_ERROR_MIN_NUMBER) {
-            throw new IllegalArgumentException("value is small than zero");
-        }
-    }
-
     private void move(int round) {
         for (Racingcar racingcar : this.carPositions) {
-            int getPosition = racingcar.getCarMovePosition();
-            racingcar.setCarMovePosition(round, getPosition + roundMoveResult());
+            racingcar.moveCarMovePosition(round);
         }
-    }
-
-    private int roundMoveResult() {
-        return CommonUtil.randomNumber(RANDOM_BOUNDARY) > GO_CONDITION_COUNT ? GO : STOP;
     }
 
     private void participateRace(Racingcar racingcar) {

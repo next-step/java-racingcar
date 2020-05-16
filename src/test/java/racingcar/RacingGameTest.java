@@ -23,6 +23,14 @@ public class RacingGameTest {
 
     @Test
     @DisplayName("회 수 음수 입력시 레이싱 게임 실패 테스트")
+    void carNameInputEmptyTest() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            RacingGame racingGame = new RacingGame("", 10);
+        }).withMessageContaining("carName is Empty");
+    }
+
+    @Test
+    @DisplayName("회 수 음수 입력시 레이싱 게임 실패 테스트")
     void timeInputMinusTest() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             RacingGame racingGame = new RacingGame("A, B, C", -4);

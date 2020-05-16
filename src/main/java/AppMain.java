@@ -19,6 +19,7 @@ public class AppMain {
             RacingGame racingGame = new RacingGame(cars, time);
             ResultView resultView = racingGame.start();
             resultView.printResult();
+            resultView.printRacingGameWinner();
 
         } catch (InputMismatchException e) {
             System.out.println("숫자를 입력하세요");
