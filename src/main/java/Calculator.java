@@ -1,37 +1,28 @@
-
-import java.util.Scanner;
+import util.Operator;
 
 public class Calculator {
     public double calRes =0;
-    private final String regExp = "^[0-9]+";
-private static final Scanner SCANNER = new Scanner(System.in);
+    private static final String regExp = "^[0-9]+";
     public Double getcalRes() {
         return this.calRes;
     }
     public Calculator() {
-        String input = getInput();
-        String[] inputArray = split(input);
-        double calRes=calculate(inputArray);
     }
     public Calculator(String input) {
-        String[] inputArray = split(input);
+        String[] inputArray = input.split(" ");
         double calRes=calculate(inputArray);
-    }
-    public double Calculator(String input) {
-        String[] inputArray = split(input);
-        double calcuRes=calculate(inputArray);
-        return calcuRes;
     }
     private double calculate(String[] inputArray) {
         double tempResult= Double.parseDouble(inputArray[0]);
+        Operator operator=new Operator();
         for (int i = 1; i < inputArray.length; i++) {
             if (!inputArray[i].matches(regExp)) {
-                tempResult = operateArithmetic(tempResult,inputArray[i],Integer.parseInt(inputArray[i + 1]));
+                tempResult = Operator.operateArithmetic(tempResult,inputArray[i],Integer.parseInt(inputArray[i + 1]));
             }
         }
         Double result=tempResult;
         return result;
-    }
+    }/*
     public double operateArithmetic(double res, String operator, double temp){
         switch (operator) {
             case "+":
@@ -59,15 +50,5 @@ private static final Scanner SCANNER = new Scanner(System.in);
     }
     double divide(double res, double temp){
         return res+temp;
-    }
-
-    public String[] split(String input) {
-        String[] arr = input.split(" ");
-        return arr;
-    }
-
-    public static String getInput() {
-        System.out.println("-----------");
-        return SCANNER.nextLine();
-    }
+    }*/
 }
