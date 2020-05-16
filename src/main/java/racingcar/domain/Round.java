@@ -13,22 +13,30 @@ public class Round {
         return new Round(round);
     }
 
+    Round() {
+        this.round = END_ROUND;
+    }
+
     private Round(final int round) {
         validateRound(round);
         this.round = round;
     }
 
     private void validateRound(final int round) {
-        if (round < END_ROUND) {
+        if (round <= END_ROUND) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_PARAMETER);
         }
     }
 
     public Round nextRound() {
-        return Round.of(round - ROUND_STEP);
+        int nextRound = round - ROUND_STEP;
+        if (nextRound == END_ROUND) {
+            return new Round();
+        }
+        return Round.of(nextRound);
     }
 
     public boolean isEndRound() {
-        return round == END_ROUND;
+        return round <= END_ROUND;
     }
 }
