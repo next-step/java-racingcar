@@ -1,23 +1,27 @@
 package racingcar;
 
+import racingcar.domain.Cars;
+import racingcar.domain.Racing;
+import racingcar.domain.Round;
+import racingcar.moving.MovingStrategy;
 import racingcar.moving.RandomMovingStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
-import java.util.List;
-
 public class RacingGame {
 
     public static void main(String[] args) {
-        int numOfCar = InputView.inputNumOfCar();
-        int loopCount = InputView.inputLoopCount();
+        String carNames = InputView.inputNameOfCars();
+        int round = InputView.inputLoopCount();
 
-        Racing racing = Racing.of(numOfCar, new RandomMovingStrategy());
+        Racing racing = Racing.of(Cars.of(carNames), Round.of(round));
+        MovingStrategy movingStrategy = new RandomMovingStrategy();
+
         ResultView.printResultMessage();
-        for (int i = 0; i < loopCount; i++) {
-            racing.run();
-            List<Car> cars = racing.getCars();
-            ResultView.printResult(cars);
+        while (!racing.isGameOver()) {
+            racing.run(movingStrategy);
+            ResultView.printResult(racing.getCars());
         }
+        ResultView.printWinner(racing.getWinnerCars());
     }
 }
