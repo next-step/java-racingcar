@@ -20,7 +20,7 @@ public class RacingGamePresenter implements RacingGameContract.Presenter {
 
 	@Override
 	public void start() {
-		view.print(MessageType.GAME.message(GAME_START_MSG));
+		view.print(MessageType.INFO.message(GAME_START_MSG));
 
 		while (!racingGame.isEnd()) {
 			racingGame.play();
