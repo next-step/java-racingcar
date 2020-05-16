@@ -16,7 +16,6 @@ class FourOperationTest {
     @DisplayName("1, 1로 사칙 연산 결과 비교 테스트")
     void operatorTest(String input, int expected) {
         assertThat(FourOperation.valueOfOperator(input).apply(1, 1)).isEqualTo(expected);
-
     }
 
     @Test
