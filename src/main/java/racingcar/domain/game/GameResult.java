@@ -10,14 +10,6 @@ public class GameResult {
         this.phaseResults = Collections.unmodifiableList(phaseResults);
     }
 
-    public PhaseResult findByPhaseNumber(int phaseNumber) {
-        try {
-            return phaseResults.get(phaseNumber - 1);
-        } catch (IndexOutOfBoundsException e) {
-            throw new IllegalArgumentException("잘못된 시도 번호입니다. - " + phaseNumber);
-        }
-    }
-
     public List<PhaseResult> getPhaseResults() {
         return phaseResults;
     }
