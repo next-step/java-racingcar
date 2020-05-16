@@ -1,30 +1,58 @@
 package race;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 public class RacingGame {
-    private int time;
-    private int countOfCar;
-    private int[] carPositions;
-    private Random random = new Random();
 
-    private RacingGame(int countOfCar, int time) {
-        this.countOfCar = countOfCar;
+    private static final int BOUND = 10;
+    private static final int FORWARD_POSSIBLE_NUMBER = 4;
+
+    private Random random = new Random();
+    private int time;
+    private List<RacingCar> racingCars;
+    private int[] carPositions;
+
+    private RacingGame(int countOfCar, int time, List<RacingCar> racingCars) {
         this.time = time;
+        this.racingCars = racingCars;
         this.carPositions = new int[countOfCar];
     }
 
     public static RacingGame of(int countOfCar, int time) {
-        return new RacingGame(countOfCar, time);
+        return new RacingGame(countOfCar, time, readyRacingCars(countOfCar));
+    }
+
+    private static List<RacingCar> readyRacingCars(int racingCarCount) {
+        return new ArrayList<RacingCar>(){{
+            IntStream.range(0, racingCarCount).forEach(v -> add(RacingCar.ready()));
+        }};
     }
 
     public int[] move() {
-        for (int i = 0; i < carPositions.length; i++) {
-            if(random.nextInt() >= 4) {
-                carPositions[i] = carPositions[i] + 1;
+        for(int i = 0; i < racingCars.size(); i++) {
+            if (isMoveForward()){
+                carPositions[i] = racingCars.get(i).forward();
+                continue;
             }
+
+            carPositions[i] = racingCars.get(i).stop();
         }
 
+        return carPositions;
+    }
+
+    private boolean isMoveForward() {
+        return random.nextInt(BOUND) >= FORWARD_POSSIBLE_NUMBER;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public int[] getCarPositions() {
         return carPositions;
     }
 }
