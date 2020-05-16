@@ -9,19 +9,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 
-class FourOperationTest {
+@DisplayName("Operator 테스트 클래스")
+class OperatorTest {
 
     @ParameterizedTest
     @CsvSource(value = {"+:2", "-:0", "*:1", "/:1"}, delimiter = ':')
     @DisplayName("1, 1로 사칙 연산 결과 비교 테스트")
     void operatorTest(String input, int expected) {
-        assertThat(FourOperation.valueOfOperator(input).apply(1, 1)).isEqualTo(expected);
+        assertThat(Operator.valueOfOperator(input).apply(1, 1)).isEqualTo(expected);
     }
 
     @Test
-    @DisplayName("사칙연산이 아닌 부호 테스트")
+    @DisplayName("사칙 연산 외 부호 비교 테스트")
     void operatorFaultTest() {
-        assertThatIllegalArgumentException().isThrownBy(() ->FourOperation.valueOfOperator("^"));
+        assertThatIllegalArgumentException().isThrownBy(() -> Operator.valueOfOperator("^"));
     }
 
 }
