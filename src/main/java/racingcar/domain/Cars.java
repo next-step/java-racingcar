@@ -17,7 +17,7 @@ public class Cars {
     public static Cars of(final String carNames) {
         validateCarNames(carNames);
         String[] splitCarNames = StringUtil.splitValues(carNames, DELIMITER);
-        return new Cars(toList(splitCarNames));
+        return new Cars(initCars(splitCarNames));
     }
 
     private Cars() {
@@ -33,7 +33,7 @@ public class Cars {
         }
     }
 
-    private static List<Car> toList(final String[] carNames) {
+    private static List<Car> initCars(final String[] carNames) {
         return Arrays.stream(carNames)
                 .map(Car::of)
                 .collect(Collectors.toList());
