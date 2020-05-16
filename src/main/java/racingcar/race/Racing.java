@@ -6,14 +6,14 @@ import java.util.stream.Collectors;
 
 public class Racing {
 
-    private List<Car> carList = new ArrayList<>();
-    private Dice dice;
-    private int gameCount = 0;
+    private final List<Car> carList = new ArrayList<>();
+    private final Dice dice;
+    private int raceTime = 0;
 
-    public Racing(Dice dice, int racingCount) {
-        checkRacingCount(racingCount);
+    public Racing(Dice dice, int raceTime) {
+        checkRacingCount(raceTime);
 
-        this.gameCount = racingCount;
+        this.raceTime = raceTime;
         this.dice = dice;
     }
 
@@ -24,7 +24,7 @@ public class Racing {
     }
 
     public void start(GameResultReceiver receiver) {
-        for(int i = 0 ; i < gameCount ; i++) {
+        for(int i = 0 ; i < raceTime ; i++) {
             race();
             receiver.notifyFinishRace(getRaceResult());
         }
