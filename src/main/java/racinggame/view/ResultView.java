@@ -1,6 +1,6 @@
 package racinggame.view;
 
-import racinggame.car.RacingCars;
+import racinggame.domain.car.RacingCars;
 
 import java.util.Collections;
 

@@ -1,4 +1,6 @@
-package racinggame.car;
+package racinggame.domain.car;
+
+import racinggame.domain.strategy.MovableStrategy;
 
 import java.util.Arrays;
 import java.util.Comparator;
