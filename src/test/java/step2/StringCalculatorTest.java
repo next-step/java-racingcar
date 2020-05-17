@@ -3,9 +3,9 @@ package step2;
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Collection;
 
-import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -117,8 +117,7 @@ class StringCalculatorTest {
         ArrayDeque<String> calculatorDequeue = new ArrayDeque<>();
         
         // 뭐 틀렸는지
-        ArrayDeque<String> expected = new ArrayDeque<>(
-                (Collection) Arrays.asList(expectedStr.split(" ")));
+        ArrayDeque<String> expected = new ArrayDeque<>((Collection<String>) Arrays.asList(expectedStr.split(" ")));
 
         stringCalculator.initCalculatorDequeue(param, calculatorDequeue);
 
