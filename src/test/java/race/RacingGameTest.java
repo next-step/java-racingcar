@@ -15,6 +15,7 @@ class RacingGameTest {
     @ValueSource(ints = {1, 3, 5})
     void initRacingCarTest(int racingCarCount) {
         RacingGame racingGame = RacingGame.of(racingCarCount, DEFAULT_TIME);
-        assertThat(racingGame.move().length).isEqualTo(racingCarCount);
+        racingGame.readyRacingCars(racingCarCount);
+        assertThat(racingGame.start().size()).isEqualTo(racingCarCount);
     }
 }
