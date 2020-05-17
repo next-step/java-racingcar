@@ -1,28 +1,30 @@
 package step3;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class Car {
   private int position;
 
-  private Car (int position) {
-    validatePosition(position);
-    this.position = position;
+  private Car () {
+    this.position = 0;
   }
 
-  public void going (int n) {
+  public void move () {
+    this.position += 1;
+  }
+
+  public void move (int n) {
     this.position += n;
   }
 
-  public String toString () {
-    String str = "";
-    for (int i = 0; i < this.position; i++) str += "-";
-    return str;
+  public String getPositionString () {
+    return Arrays.stream(new String[this.position])
+                 .map(v -> "-")
+                 .collect(Collectors.joining(""));
   }
 
-  public static Car of (int position) {
-    return new Car(position);
-  }
-
-  public static void validatePosition (int position) {
-    if (position < 0) throw new IllegalArgumentException("자동차의 위치는 0 이상만 가능합니다.");
+  public static Car of () {
+    return new Car();
   }
 }
