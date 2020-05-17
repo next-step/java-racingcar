@@ -1,5 +1,6 @@
 package racing.domain;
 
+import racing.dto.CarRaceResult;
 import racing.utils.EmptyCheckUtil;
 
 import java.util.Objects;
@@ -37,5 +38,9 @@ public class Car {
 
     public String getName() {
         return this.name;
+    }
+
+    public CarRaceResult createCarRaceResult() {
+        return new CarRaceResult(this.name, this.position);
     }
 }

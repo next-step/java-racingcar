@@ -3,6 +3,8 @@ package racing.dto;
 import racing.utils.EmptyCheckUtil;
 
 public class CarRaceResult {
+    private static final int MIN_POSITION = 0;
+
     private String carName;
     private int position;
 
@@ -14,7 +16,7 @@ public class CarRaceResult {
     }
 
     private void validatePosition(int position) {
-        if (position < 0) {
+        if (position < MIN_POSITION) {
             throw new IllegalArgumentException();
         }
     }
