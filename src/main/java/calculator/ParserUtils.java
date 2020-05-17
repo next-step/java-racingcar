@@ -33,7 +33,7 @@ public class ParserUtils {
         return Optional.ofNullable(input)
                 .filter(text -> !text.trim().isEmpty())
                 .map(text -> text.split(WHITESPACE))
-                .filter(text -> text.length % 2 != 0)
+                .filter(array -> array.length % 2 != 0)
                 .orElseThrow(IllegalArgumentException::new);
     }
 
