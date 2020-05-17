@@ -16,7 +16,7 @@ public class MoveStrategyTest {
   @DisplayName("전진 조건 테스트: Random에 대한 입력값이 4 이상일 때 전진")
   @ParameterizedTest
   @MethodSource("provideNumberForIsMoved")
-  void 전진_조건_테스트 (int number, int expected) {
+  void 전진_조건_테스트 (int number, boolean expected) {
     assertThat(moveStrategy.isMoved(number)).isEqualTo(expected);
   }
 
