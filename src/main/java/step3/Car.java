@@ -28,10 +28,10 @@ public class Car {
         return this.position;
     }
 
-    public int getPosition() {
-        return position;
+    public String makePositionStatus(){
+        String result = "-".repeat(position);
+        return result;
     }
-
     boolean checkPass(int number) {
         return number >= WIN_CONDITION;
     }
