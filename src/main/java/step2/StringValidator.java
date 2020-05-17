@@ -45,24 +45,6 @@ public class StringValidator {
     }
 
     /**
-     * 입력받은 문자열(param)이 사칙연산 기호가 아니면 IllegalArgumentException
-     * 
-     * @param param : String, 판단할 문자열
-     * @throws IllegalArgumentException
-     */
-    public static void checkOperator(String param) throws IllegalArgumentException {
-        String[] correctOperators = { "+", "-", "*", "/" };
-
-        for (String correctOperator : correctOperators) {
-            if (correctOperator.equals(param)) {
-                return;
-            }
-        }
-
-        throw new IllegalArgumentException("올바른 사칙연산 기호가 아닙니다.");
-    }
-
-    /**
      * 문자열이 숫자인지 확인한다
      * 
      * @param param : String, 확인할 문자열
