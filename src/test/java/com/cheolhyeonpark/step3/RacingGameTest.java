@@ -2,15 +2,25 @@ package com.cheolhyeonpark.step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.mockito.Mockito.*;
 
 class RacingGameTest {
+
+    @ParameterizedTest
+    @CsvSource(value = {"-1, 0", "0, -1", "-1, -1"})
+    @DisplayName("음수 입력시 예외 발생")
+    public void throwExceptionWhenThereIsNegativeInput(int numberOfCars, int stageLeft) {
+        assertThatIllegalArgumentException().isThrownBy(() -> new RacingGame(numberOfCars, stageLeft));
+    }
 
     @Test
     @DisplayName("스테이지 객체를 생성한다")

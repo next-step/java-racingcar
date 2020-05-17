@@ -10,8 +10,19 @@ public class RacingGame {
     private int stageLeft;
 
     public RacingGame(int numberOfCars, int stageLeft) {
+        validate(numberOfCars, stageLeft);
         this.stage = new Stage(new Dice(), getCars(numberOfCars));
         this.stageLeft = stageLeft;
+    }
+
+    private void validate(int numberOfCars, int stageLeft) {
+        if (isNegativeInput(numberOfCars, stageLeft)) {
+            throw new IllegalArgumentException("Only positive input is allowed. Please check your input data.");
+        }
+    }
+
+    private boolean isNegativeInput(int numberOfCars, int stageLeft) {
+        return numberOfCars < 0 || stageLeft < 0;
     }
 
     private List<Car> getCars(int numberOfCars) {
