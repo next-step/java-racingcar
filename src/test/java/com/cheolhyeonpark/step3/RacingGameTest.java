@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -31,13 +30,11 @@ class RacingGameTest {
     @DisplayName("입렫받은 차의 대수 만큼 Car객체를 생성해야한다")
     public void getCars() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         //given
-        RacingGame racingGame = new RacingGame(0, 0);
         int numberOfCars = 3;
-        Method method = racingGame.getClass().getDeclaredMethod("getCars", int.class);
-        method.setAccessible(true);
+        RacingGame racingGame = new RacingGame(numberOfCars, 0);
 
         //when
-        List<Car> cars = (List<Car>) method.invoke(racingGame, numberOfCars);
+        List<Car> cars = racingGame.getResultOfStage();
 
         //then
         assertThat(cars.size()).isEqualTo(numberOfCars);
@@ -45,14 +42,30 @@ class RacingGameTest {
 
     @Test
     @DisplayName("입력받은만큼 스테이지가 실행된다")
-    public void runStage() throws NoSuchMethodException {
+    public void runStage() {
         //given
         RacingGame racingGame = spy(new RacingGame(3, 5));
 
         //when
-        racingGame.play();
+        racingGame.playStage();
 
         //then
-        verify(racingGame, times(1)).play();
+        verify(racingGame, times(1)).playStage();
+    }
+
+    @Test
+    @DisplayName("스테이지가 남아있는지 검사한다.")
+    public void checkStageLeft() {
+        //given
+        RacingGame racingGame = new RacingGame(3, 1);
+        boolean hasStageLeftBeforePlay = racingGame.hasNextStage();
+
+        //when
+        racingGame.playStage();
+        boolean hasStageLeftAfterPlay = racingGame.hasNextStage();
+
+        //then
+        assertThat(hasStageLeftBeforePlay).isTrue();
+        assertThat(hasStageLeftAfterPlay).isFalse();
     }
 }

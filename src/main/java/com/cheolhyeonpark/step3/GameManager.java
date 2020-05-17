@@ -4,10 +4,18 @@ import java.util.Scanner;
 
 public class GameManager {
 
+    private final ResultView resultView = new ResultView();
+
     public void run() {
         Scanner scanner = new Scanner(System.in);
-        new RacingGame(inputNumberOfCars(scanner), inputNumberOfStages(scanner)).play();
+        RacingGame racingGame = new RacingGame(inputNumberOfCars(scanner), inputNumberOfStages(scanner));
         scanner.close();
+
+        resultView.printResultTitle();
+        while (racingGame.hasNextStage()) {
+            racingGame.playStage();
+            resultView.printStageResult(racingGame.getResultOfStage());
+        }
     }
 
     private int inputNumberOfCars(Scanner scanner) {

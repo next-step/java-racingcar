@@ -28,8 +28,7 @@ public class Stage {
         return dice.rollDice() >= MINIMUM_MOVABLE_DICE_NUMBER;
     }
 
-    public void printResult() {
-        cars.forEach(Car::printPosition);
-        System.out.println();
+    public List<Car> getStageResult() {
+        return this.cars;
     }
 }
