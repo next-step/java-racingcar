@@ -15,6 +15,12 @@ public class CarTest {
         car = new Car();
     }
 
+    @DisplayName("막 생성된 자동차의 위치는 0이다")
+    @Test
+    void newCar_Then_positionIs0() {
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
+
     @DisplayName("자동차는 전진한다")
     @Test
     void move() {
