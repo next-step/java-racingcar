@@ -4,7 +4,7 @@ public class Calculator {
 
   public int calculate(String formula) {
     checkValidation(formula);
-    String[] valuesAfterSeparation = separateValuesFromFormula(formula);
+    String[] valuesAfterSeparation = StringTrimmer.separateValuesFromFormula(formula);
     return execute(valuesAfterSeparation);
   }
 
@@ -12,11 +12,6 @@ public class Calculator {
     if (formula.trim().isEmpty()) {
       throw new IllegalArgumentException("this is wrong.");
     }
-  }
-
-  private String[] separateValuesFromFormula(String formula) {
-    final String SEPARATOR = " ";
-    return formula.split(SEPARATOR);
   }
 
   private Integer execute(String[] splitedList) {
