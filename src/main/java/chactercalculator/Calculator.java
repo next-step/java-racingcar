@@ -21,12 +21,11 @@ public class Calculator {
 
   private Integer execute(String[] splitedList) {
     int firstNumberIndex = 0;
-    int operatorIndex = 1;
     int turnIndex = 2;
     int increaseIndexForNumber = 1;
     int result = Integer.parseInt(splitedList[firstNumberIndex]);
 
-    for (; operatorIndex < splitedList.length; operatorIndex = operatorIndex + turnIndex) {
+    for (int operatorIndex = 1; operatorIndex < splitedList.length; operatorIndex = operatorIndex + turnIndex) {
       String nowOperator = splitedList[operatorIndex];
       String nextValue = splitedList[operatorIndex + increaseIndexForNumber];
       Operator nowOperatorType = Operator.findOperatorTypeByGivenOperator(nowOperator);
