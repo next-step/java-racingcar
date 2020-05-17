@@ -15,13 +15,7 @@ public class Stage {
     }
 
     public void run() {
-        cars.forEach(this::moveCar);
-    }
-
-    private void moveCar(Car car) {
-        if (isMovable()) {
-            car.move();
-        }
+        cars.forEach(car -> car.move(isMovable()));
     }
 
     private boolean isMovable() {

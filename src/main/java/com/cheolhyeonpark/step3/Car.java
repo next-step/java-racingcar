@@ -6,8 +6,10 @@ public class Car {
 
     private int position = START_POSITION;
 
-    public void move() {
-        this.position++;
+    public void move(boolean isMovable) {
+        if (isMovable) {
+            this.position++;
+        }
     }
 
     public int getPosition() {

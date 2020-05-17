@@ -14,7 +14,7 @@ class CarTest {
         Car car = new Car();
 
         //when
-        car.move();
+        car.move(true);
 
         //then
         assertThat(car.getPosition()).isEqualTo(1);
