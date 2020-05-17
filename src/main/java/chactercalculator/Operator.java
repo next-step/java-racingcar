@@ -2,7 +2,7 @@ package chactercalculator;
 
 import java.util.Arrays;
 
-public enum Operator {
+public enum Operator implements OperatorInterface {
 
   PLUS("+") {
     @Override
@@ -40,8 +40,6 @@ public enum Operator {
   private Operator(String operator) {
     this.operator = operator;
   }
-
-  public abstract Integer calculate(int first, int second);
 
   public String getOperator() {
     return operator;
