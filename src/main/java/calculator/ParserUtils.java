@@ -18,7 +18,6 @@ public class ParserUtils {
         return Optional.ofNullable(input)
                 .filter(text -> !text.trim().isEmpty())
                 .map(text -> text.split(WHITESPACE))
-                .filter(array -> array.length % 2 != 0)
                 .orElseThrow(IllegalArgumentException::new);
     }
 
@@ -30,4 +29,9 @@ public class ParserUtils {
         return !words[index].matches("^[0-9]+$");
     }
 
+    public static void checkArraySize(String[] list) {
+        if(list.length % 2 == 0){
+            new IllegalArgumentException("리스트 사이즈 오류");
+        }
+    }
 }

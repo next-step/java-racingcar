@@ -7,6 +7,8 @@ public class CalculatorString {
     public int calculate(String input) {
 
         String[] strings = ParserUtils.toArray(input);
+        ParserUtils.checkArraySize(strings);
+
         int total = ParserUtils.getNumber(strings, 0);
 
         for (int index = 1; index < strings.length; index += 2) {
