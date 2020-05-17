@@ -21,7 +21,7 @@ public class ParserUtils {
 
     public int getNumber(String[] words, int index) {
 
-        if (hasSize(words, index) && IsNumber(words, index)) {
+        if (hasSize(words, index) && isNumber(words, index)) {
             throw new IllegalArgumentException("입력 문자 열이 잘못되었습니다.");
         }
         return Integer.parseInt(words[index]);
@@ -41,7 +41,7 @@ public class ParserUtils {
         return words.length < index + 1;
     }
 
-    private boolean IsNumber(String[] words, int index) {
+    private boolean isNumber(String[] words, int index) {
         return !words[index].matches("^[0-9]+$");
     }
 
