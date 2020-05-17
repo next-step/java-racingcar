@@ -4,9 +4,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorSymbolTest {
@@ -51,5 +56,19 @@ class CalculatorSymbolTest {
 
         int result = calculatorSymbol.findTypeAndCalculator(firstNum, secondNum, "*");
         assertThat(result).isEqualTo(8);
+    }
+
+    @DisplayName("잘못된 계산식 테스트")
+    @ParameterizedTest
+    @MethodSource
+    void findTypeAndErrorInput(int firstNum, int secondNum, String symbol) {
+        assertThatIllegalArgumentException().isThrownBy(() -> calculatorSymbol.findTypeAndCalculator(firstNum, secondNum, symbol));
+    }
+
+    private static Stream<Arguments> findTypeAndErrorInput() {
+        return Stream.of(
+                Arguments.of(8, 4, ")"),
+                Arguments.of(4, 0, "/")
+        );
     }
 }
