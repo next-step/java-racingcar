@@ -7,3 +7,12 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+#### Step3 자동차 경주
+
+1. ADD - 기본적인 클래스나 junit files 생성
+2. ADD - input result테스트
+3. ADD - random함수 구현 후 적용
+4. Fix - 오류사항 발생 시 수정
+5. Simply - 코드 단순화 적용(선택)
+6. Refactor - 코드리뷰 후 적용
