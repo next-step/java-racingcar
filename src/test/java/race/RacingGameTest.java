@@ -21,7 +21,7 @@ class RacingGameTest {
     void initRacingCarTest(int racingCarCount) {
         RacingGame racingGame = RacingGame.of(racingCarCount, DEFAULT_TIME, new RandomMovingStrategy());
         racingGame.readyRacingCars(racingCarCount);
-        assertThat(racingGame.start().size()).isEqualTo(racingCarCount);
+        assertThat(racingGame.start()).hasSize(racingCarCount);
     }
 
     @DisplayName("자동차의 start 메소드 테스트")
