@@ -1,4 +1,4 @@
-package com.nextstep.racingcar.ui;
+package com.nextstep.racingcar.view;
 
 import com.nextstep.racingcar.application.RacingGameResult;
 

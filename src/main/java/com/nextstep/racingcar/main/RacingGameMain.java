@@ -4,8 +4,8 @@ import com.nextstep.racingcar.application.RacingGame;
 import com.nextstep.racingcar.domain.car.MoveStrategy;
 import com.nextstep.racingcar.domain.car.CarFactory;
 import com.nextstep.racingcar.domain.car.RandomMoveStrategy;
-import com.nextstep.racingcar.ui.InputView;
-import com.nextstep.racingcar.ui.OutputView;
+import com.nextstep.racingcar.view.InputView;
+import com.nextstep.racingcar.view.OutputView;
 
 import java.util.Scanner;
 
