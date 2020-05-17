@@ -8,6 +8,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -34,8 +36,30 @@ public class RacingCarWinnerTest {
     "2,Car : --",
     "3,Car : ---",
   })
-  void 포지션_테스트 (int position, String expected) {
+  void Car_포지션_테스트 (int position, String expected) {
     assertThat(Car.of(position).toString()).isEqualTo(expected);
+  }
+
+  @DisplayName("Car 객체의 이름 테스트 : 이름이 정상적으로 할당 되는지 확인하는 테스")
+  @ParameterizedTest
+  @CsvSource({
+    "Car1,Car1 : -",
+    "Car2,Car2 : -",
+    "Car3,Car3 : -",
+  })
+  void Car_이름_테스트 (String name, String expected) {
+    assertThat(Car.of(name, 1).toString()).isEqualTo(expected);
+  }
+
+  @DisplayName("Car 객체의 이름 및 위치에 대한 테스트")
+  @ParameterizedTest
+  @CsvSource({
+    "Car1,10,Car1 : ----------",
+    "자동차,2,자동차 : --",
+    "넥스트 스텝,5,넥스트 스텝 : -----",
+  })
+  void Car_객체_테스트 (String name, int position, String expected) {
+    assertThat(Car.of(name, position).toString()).isEqualTo(expected);
   }
 
   @DisplayName("전진 테스트 : 자동차가 정상적으로 전진 되었는지 확인")
@@ -75,5 +99,29 @@ public class RacingCarWinnerTest {
     cars.add(Car.of(0));
     assertThatIllegalArgumentException()
       .isThrownBy(() -> RacingCar.of().racing(cars, time));
+  }
+
+  @DisplayName("단일 우승자의 경우에 대한 테스트")
+  @Test
+  void 단일_우승자_테스트 () {
+    RacingCar racingCar = RacingCar.of();
+    racingCar.setCars(Stream.of(
+      Car.of("ExpectedWinner", 10),
+      Car.of("runner", 0),
+      Car.of("runner", 0)
+    ).collect(Collectors.toList()));
+    assertThat(racingCar.getWinners()).isEqualTo("ExpectedWinner");
+  }
+
+  @DisplayName("우승자가 여러 명일 경우에 대한 테스트")
+  @Test
+  void 다중_우승자_테스트 () {
+    RacingCar racingCar = RacingCar.of();
+    racingCar.setCars(Stream.of(
+      Car.of("ExpectedWinner1", 10),
+      Car.of("ExpectedWinner2", 10),
+      Car.of("runner", 0)
+    ).collect(Collectors.toList()));
+    assertThat(racingCar.getWinners()).isEqualTo("ExpectedWinner1, ExpectedWinner2");
   }
 }
