@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class MoveStrategyTest {
 
-  private static MoveStrategy moveStrategy = RandomNumberMoveStrategy.of();
+  private static MoveStrategy moveStrategy = new RandomNumberMoveStrategy();
 
   @DisplayName("전진 조건 테스트: Random에 대한 입력값이 4 이상일 때 전진")
   @ParameterizedTest
