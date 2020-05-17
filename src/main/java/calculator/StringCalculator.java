@@ -3,21 +3,15 @@ package calculator;
 
 public class StringCalculator {
 
-    private String input;
     private static final String delimiter = " ";
 
-    public StringCalculator() {  }
+    public double calculate(String input) {
 
-    public void setInput(String input) {
         if(!validator(input)) {
             throw new IllegalArgumentException();
         }
-        this.input = input;
-    }
 
-    public double calculate() {
-
-        String[] calcStringArray = this.input.split(delimiter);
+        String[] calcStringArray = input.split(delimiter);
         double result = Double.parseDouble(calcStringArray[0]);
         String operatorString = "";
 
@@ -39,12 +33,6 @@ public class StringCalculator {
 
     private boolean isOperatorString(int number) {
         return (number % 2 == 1);
-    }
-
-    public static void main(String[] args) {
-        StringCalculator calculator = new StringCalculator();
-        calculator.setInput("2 + 3 * 4 / 2");
-        System.out.println(calculator.calculate());
     }
 
 }

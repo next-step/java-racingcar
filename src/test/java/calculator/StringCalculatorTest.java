@@ -13,7 +13,7 @@ public class StringCalculatorTest {
     void inputNullTest() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             StringCalculator calculator = new StringCalculator();
-            calculator.setInput(null);
+            calculator.calculate(null);
         });
     }
 
@@ -22,7 +22,7 @@ public class StringCalculatorTest {
     void inputEmptyTest() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             StringCalculator calculator = new StringCalculator();
-            calculator.setInput("");
+            calculator.calculate("");
         });
     }
 
@@ -36,7 +36,6 @@ public class StringCalculatorTest {
             delimiter = ':')
     void arithmeticTest(String testString, double result) {
         StringCalculator calculator = new StringCalculator();
-        calculator.setInput(testString);
-        assertThat(calculator.calculate()).isEqualTo(result);
+        assertThat(calculator.calculate(testString)).isEqualTo(result);
     }
 }
