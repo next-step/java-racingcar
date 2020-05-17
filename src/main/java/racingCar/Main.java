@@ -1,17 +1,14 @@
 package racingCar;
 
-import racingCar.Application.RacingGame;
-import racingCar.UI.InputView;
-import racingCar.UI.ResultView;
+import racingCar.application.RacingGame;
+import racingCar.ui.InputView;
+import racingCar.ui.ResultView;
 
 public class Main {
     public static void main(String[] args) {
         //Input
         InputView inputView = new InputView();
         RacingGame racingGame = inputView.setStartInput();
-
-        // Init Position RacingCar
-        racingGame.initRacingCars();
 
         //OutPut
         ResultView resultView = new ResultView();

@@ -1,21 +1,26 @@
-package racingCar.UI;
+package racingCar.ui;
 
-import racingCar.Entity.RacingCar;
+import org.omg.CORBA.Environment;
+import racingCar.domain.RacingCar;
 
 import java.util.List;
 
 public class ResultView {
+    private StringBuilder stringBuilder;
+
     public void printCarsPosition(List<RacingCar> racingCarList) {
+        stringBuilder = new StringBuilder();
+
         for (RacingCar racingCar : racingCarList) {
             printPosition(racingCar);
-            System.out.println();
+            stringBuilder.append("\n");
         }
-        System.out.println();
+        System.out.println(stringBuilder.toString());
     }
 
     private void printPosition(RacingCar racingCar) {
         for (int idx = 0; idx < racingCar.getPosition(); idx++) {
-            System.out.print("-");
+            stringBuilder.append("-");
         }
     }
 }

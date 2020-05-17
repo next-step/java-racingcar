@@ -13,6 +13,7 @@ class RacingGameTest {
     @DisplayName("자동차 Position 초기값 설정")
     void initRacingCars(int carCount, int time) {
         RacingGame racingGame = new RacingGame(carCount, time);
+
         for (int idx = 0; idx < carCount; idx++) {
             int position = racingGame.getRacingCarList().get(idx).getPosition();
             assertThat(position).isEqualTo(0);
