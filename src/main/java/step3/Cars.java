@@ -14,11 +14,11 @@ public class Cars {
     this.cars = cars;
   }
 
-  public Stream<Car> move (MoveStrategy moveStrategy) {
+  public Cars move (MoveStrategy moveStrategy) {
     this.cars.stream()
              .filter(car -> moveStrategy.isMoved())
              .forEach(car -> car.move());
-    return this.stream();
+    return this;
   }
 
   public Stream<Car> stream () {
