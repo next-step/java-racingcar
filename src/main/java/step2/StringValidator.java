@@ -6,6 +6,16 @@ public class StringValidator {
     private static final Pattern PATTERN_CHECK_NUMBER = Pattern.compile("\\d");
 
     /**
+     * null 혹은 빈 문자열이거나 빈 공백 문자열일 경우 IllegalArgumentException throw
+     * 
+     * @param param : String 판단할 문자열
+     */
+    public static void checkNullAndEmpty(String param) {
+        checkNull(param);
+        checkEmpty(param);
+    }
+
+    /**
      * null일경우 IllegalArgumentException throw
      * 
      * @param param : String 판단할 문자열
