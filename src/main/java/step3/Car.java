@@ -8,7 +8,8 @@ public class Car {
     }
 
     public int move() {
-        return position++;
+        this.position = this.position + 1;
+        return this.position 
     }
 
     public int getPosition() {
