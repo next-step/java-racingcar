@@ -58,17 +58,16 @@ class CalculatorSymbolTest {
         assertThat(result).isEqualTo(8);
     }
 
-    @DisplayName("잘못된 계산식 테스트")
-    @ParameterizedTest
-    @MethodSource
-    void findTypeAndErrorInput(int firstNum, int secondNum, String symbol) {
-        assertThatIllegalArgumentException().isThrownBy(() -> calculatorSymbol.findTypeAndCalculator(firstNum, secondNum, symbol));
+    @DisplayName("잘못된 연산부호 테스트")
+    @Test
+    void findTypeAndSymbolErrorInput() {
+        assertThatIllegalArgumentException().isThrownBy(() -> calculatorSymbol.findTypeAndCalculator(firstNum, secondNum, ")"));
     }
 
-    private static Stream<Arguments> findTypeAndErrorInput() {
-        return Stream.of(
-                Arguments.of(8, 4, ")"),
-                Arguments.of(4, 0, "/")
-        );
+    @DisplayName("잘못된 분모 값 나누셈 테스트")
+    @Test
+    void findTypeAndDivisiondwithZero() {
+        assertThatIllegalArgumentException().isThrownBy(() -> calculatorSymbol.findTypeAndCalculator(firstNum, 0, "/"));
     }
+
 }
