@@ -20,6 +20,7 @@ public class RacingGame {
     public void move() {
         for(int i = 0; i < carPositions.length; i++) {
             carPositions[i] += moveCondition();
+            showGameStatus(i);
         }
     }
 
@@ -45,5 +46,12 @@ public class RacingGame {
         int randomNum = rand.nextInt(10);
 
         return randomNum;
+    }
+
+    private void showGameStatus(int i) {
+        for(int j = 0; j < carPositions[i]; j++) {
+            System.out.print("-");
+        }
+        System.out.print("\n");
     }
 }
