@@ -3,7 +3,7 @@ package step3;
 import java.util.List;
 
 public class RacingGame {
-
+    private static final int WIN_CONDITION = 4;
 
     public static void main(String[] args) {
 
@@ -23,7 +23,12 @@ public class RacingGame {
 
     }
 
-    void run(List<Car> carList) {
+    public static boolean checkPass(int number) {
+        boolean result = number >= WIN_CONDITION;
+        return result;
+    }
+
+    public void run(List<Car> carList) {
         Randomizer randomizer = new Randomizer();
         for (Car car : carList) {
             int fuel = randomizer.generateNumber();
