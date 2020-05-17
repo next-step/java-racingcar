@@ -12,11 +12,13 @@ public class CarTest {
     @Nested
     @DisplayName("move 메소드 호출 시")
     class Describe_move {
+        private final String carName = "테스터";
+
         @DisplayName("차의 위치를 증가 시킬 수 있다.")
         @Test
         void it_does_move() {
             // given
-            Car car = new Car();
+            Car car = new Car(carName);
             int moveNumber = 5;
             int before = car.getPosition();
 
@@ -31,7 +33,7 @@ public class CarTest {
         @Test
         void it_does_not_move() {
             // given
-            Car car = new Car();
+            Car car = new Car(carName);
             int moveNumber = 3;
             int before = car.getPosition();
 
