@@ -6,8 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 public class CalculatorTest {
 
@@ -78,6 +77,29 @@ public class CalculatorTest {
         assertThatIllegalArgumentException().isThrownBy(()->{
             calculator.calculate(input);
         });
+    }
+
+    @ParameterizedTest
+    @DisplayName("사칙연산 기호 제대로 찾는지 메소드 체크 테스트")
+    @CsvSource(value ={"+=ADD", "-=SUBTRACT", "*=MULTIPLY", "/=DIVISION"}, delimiter = '=')
+    void findOperatorMethodCheck(String input, String expected) {
+        assertThat(Operator.findOperator(input)).isEqualByComparingTo(Operator.valueOf(expected));
+    }
+
+    @ParameterizedTest
+    @DisplayName("사칙연산 기호 없는 것 요청시 IllegalArgumentException 발생여부 체크 테스트")
+    @ValueSource(strings = {"&", "%", "$$", "#", " "})
+    void cantfindOperatorMethodCheck(String input) {
+        assertThatIllegalArgumentException().isThrownBy(()->{
+            Operator.findOperator(input);
+        });
+    }
+
+    @ParameterizedTest
+    @DisplayName("isOperator 메소드 테스트")
+    @ValueSource(strings = {"+", "-", "*", "/"})
+    void isOperatorMethodTest(String input) {
+        assertThat(Operator.isOperator(input)).isTrue();
     }
 
 }
