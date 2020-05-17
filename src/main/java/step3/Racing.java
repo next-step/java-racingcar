@@ -19,15 +19,16 @@ public class Racing {
 
   public Racing(final ResultView resultView, final InputView inputView) {
     this.RESULT_VIEW = resultView;
-    this.CARS = Cars.of(inputView.inputCars(), RandomNumberMoveStrategy.of());
+    this.CARS = Cars.of(inputView.inputCars());
     this.TIME = inputView.inputTime();
     validateTime();
   }
 
   public void race () {
     RESULT_VIEW.printResultText();
+    MoveStrategy moveStrategy = RandomNumberMoveStrategy.of();
     Arrays.stream(new int[TIME])
-          .forEach(v -> RESULT_VIEW.printRace(CARS.move()));
+          .forEach(v -> RESULT_VIEW.printRace(CARS.move(moveStrategy)));
   }
 
   public static Racing of (final ResultView resultView, final InputView inputView) {
