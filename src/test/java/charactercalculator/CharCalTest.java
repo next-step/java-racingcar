@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 import chactercalculator.Calculator;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -12,7 +13,12 @@ import org.junit.jupiter.params.provider.EmptySource;
 @DisplayName("2단계 문자열 계산기 테스트")
 public class CharCalTest {
 
-  Calculator calculator = new Calculator();
+  Calculator calculator;
+
+  @BeforeEach
+  void setUp() {
+    calculator = new Calculator();
+  }
 
   @DisplayName("하나의 연산자를 활용한 계산 테스트")
   @ParameterizedTest
