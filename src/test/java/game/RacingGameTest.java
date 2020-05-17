@@ -1,5 +1,6 @@
 package game;
 
+import game.ui.RacingGameInputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -18,7 +19,11 @@ class RacingGameTest {
     @MethodSource("source_verify_numberOfMove_shouldSucceed")
     public void verify_numberOfMove_shouldSucceed(int time, int numberOfCar, int expected) {
         MovePolicy movePolicy = mock(MovePolicy.class);
-        RacingGame racingGame = new RacingGame(time, numberOfCar, movePolicy);
+        RacingGameInputView racingGameInputView = mock(RacingGameInputView.class);
+        RacingGame racingGame = new RacingGame(movePolicy, racingGameInputView);
+
+        when(racingGameInputView.getTime()).thenReturn(time);
+        when(racingGameInputView.getNumberOfCar()).thenReturn(numberOfCar);
 
         racingGame.play();
 
