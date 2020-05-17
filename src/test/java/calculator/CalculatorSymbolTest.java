@@ -22,7 +22,7 @@ class CalculatorSymbolTest {
 
     @BeforeEach
     void setUp() {
-        calculatorSymbol = new CalculatorSymbol();
+        calculatorSymbol = CalculatorSymbol.getInstance();
     }
 
     @DisplayName("더하기 테스트")

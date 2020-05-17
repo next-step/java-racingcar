@@ -1,6 +1,21 @@
 package calculator;
 
 public class CalculatorSymbol {
+
+    private static CalculatorSymbol calculatorSymbol = null;
+
+    private CalculatorSymbol() {
+    }
+
+    public static CalculatorSymbol getInstance() {
+
+        if (calculatorSymbol == null) {
+            calculatorSymbol = new CalculatorSymbol();
+        }
+        return calculatorSymbol;
+    }
+
+
     private int add(int firstNum, int secondNum) {
         return firstNum + secondNum;
     }
