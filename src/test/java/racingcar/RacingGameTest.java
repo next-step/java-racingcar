@@ -1,8 +1,7 @@
-package step3;
+package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.RacingGame;
 
 import java.util.Random;
 
@@ -23,19 +22,32 @@ public class RacingGameTest {
     }
 
     @Test
-    @DisplayName("자동차 대수 음수 입력시 레이싱 게임 실패 테스트")
-    void carCountInputMinusTest() {
+    @DisplayName("회 수 음수 입력시 레이싱 게임 실패 테스트")
+    void carNameInputEmptyTest() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            RacingGame racingGame = new RacingGame(-3, 4);
-        }).withMessageContaining("value is small than zero");
+            RacingGame racingGame = new RacingGame("", 10);
+        }).withMessageContaining("carName is Empty");
     }
 
     @Test
     @DisplayName("회 수 음수 입력시 레이싱 게임 실패 테스트")
     void timeInputMinusTest() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            RacingGame racingGame = new RacingGame(3, -4);
+            RacingGame racingGame = new RacingGame("A, B, C", -4);
         }).withMessageContaining("value is small than zero");
+    }
+
+    @Test
+    @DisplayName("정상적인 게임 실행 테스트")
+    void successRacingGameTest() {
+        String carNames = "일번,이번,삼번";
+        int time = 5;
+        try {
+            RacingGame racingGame = new RacingGame(carNames, time);
+            racingGame.start();
+        } catch (Exception e) {
+            assertThat(e).isNotNull();
+        }
     }
 
 }

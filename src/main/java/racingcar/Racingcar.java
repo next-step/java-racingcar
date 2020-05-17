@@ -1,15 +1,38 @@
 package racingcar;
 
+import util.CommonUtil;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class Racingcar {
+public class Racingcar implements Comparable<Racingcar> {
+
+    private static final int GO_CONDITION_COUNT = 4;
+    private static final int RANDOM_BOUNDARY = 10;
 
     private int carNumber;
+    private String carName;
     private int carMovePosition = 0;
     private Map<Integer, Integer> saveRoundResultPosition = new HashMap<>();
 
-    public Racingcar(int carNumber) {
+    @Override
+    public int compareTo(Racingcar racingcar) {
+        return Integer.compare(racingcar.getCarMovePosition(), this.carMovePosition);
+    }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public void setCarName(String carName) {
+        this.carName = carName;
+    }
+
+    protected Racingcar() {
+    }
+
+    public Racingcar(int carNumber, String carName) {
+        this.carName = carName;
         this.carNumber = carNumber;
     }
 
@@ -25,8 +48,10 @@ public class Racingcar {
         return carMovePosition;
     }
 
-    public void setCarMovePosition(int round, int carMovePosition) {
-        this.carMovePosition = carMovePosition;
+    public void moveCarMovePosition(int round) {
+        if (CommonUtil.randomNumber(RANDOM_BOUNDARY) > GO_CONDITION_COUNT) {
+            this.carMovePosition++;
+        }
         saveRoundResultPosition.put(round, this.carMovePosition);
     }
 
@@ -36,6 +61,6 @@ public class Racingcar {
         for (int i = 0; i < roundPosition; i++) {
             carPosition.append(expressionWord);
         }
-        System.out.println(carPosition.toString());
+        System.out.println(carName + " : " + carPosition.toString());
     }
 }
