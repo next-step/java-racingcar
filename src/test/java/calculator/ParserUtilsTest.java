@@ -12,20 +12,19 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.junit.jupiter.api.Assertions.*;
 
 class ParserUtilsTest {
-    ParserUtils parserUtils = ParserUtils.getInstance();
 
     @DisplayName("입력값이 숫자가 아닐때 에러 발생 테스트ㄴ")
     @Test
     void getNumberError() {
         String[] strings = {"a"};
-        assertThatIllegalArgumentException().isThrownBy(() -> parserUtils.getNumber(strings, 0));
+        assertThatIllegalArgumentException().isThrownBy(() -> ParserUtils.getNumber(strings[0]));
     }
 
     @DisplayName("입력값이 정상적일때 동작 테스트")
     @Test
     void getNumberSuccess() {
         String[] strings = {"1", "*", "3", "+", "7"};
-        int result = parserUtils.getNumber(strings, 0);
+        int result = ParserUtils.getNumber(strings[0]);
         assertThat(result).isEqualTo(1);
     }
 
@@ -33,7 +32,7 @@ class ParserUtilsTest {
     @Test
     void toArraySuccess() {
         String input = "2 + 3 + 4 / 3";
-        String[] result = parserUtils.toArray(input);
+        String[] result = ParserUtils.toArray(input);
         assertThat(result.length).isEqualTo(7);
     }
 
@@ -41,14 +40,14 @@ class ParserUtilsTest {
     @Test
     void toArrayError() {
         String input = "2 + 3 * 4 / ";
-        assertThatIllegalArgumentException().isThrownBy(() -> parserUtils.toArray(input));
+        assertThatIllegalArgumentException().isThrownBy(() -> ParserUtils.toArray(input));
     }
 
     @DisplayName("null 또는 공백이 입력된 문자를 배열로 변환 테스트 ")
     @ParameterizedTest
     @NullAndEmptySource
     void toArrayNullOrEmpty(String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> parserUtils.toArray(input));
+        assertThatIllegalArgumentException().isThrownBy(() -> ParserUtils.toArray(input));
     }
 
 
