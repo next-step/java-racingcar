@@ -4,6 +4,8 @@ import step3.view.InputView;
 import step3.view.ResultView;
 
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.stream.Stream;
 
 /**
  * 초간단 자동차 경주 게임을 구현한다.
@@ -13,29 +15,35 @@ import java.util.Arrays;
  * 자동차의 상태를 화면에 출력한다. 어느 시점에 출력할 것인지에 대한 제약은 없다.
  */
 public class Racing {
-  private final ResultView RESULT_VIEW;
-  private final Cars CARS;
-  private final int TIME;
+  private final MoveStrategy moveStrategy;
+  private final Cars cars;
+  private Iterator<Integer> time;
 
-  public Racing(final ResultView resultView, final InputView inputView) {
-    this.RESULT_VIEW = resultView;
-    this.CARS = Cars.of(inputView.inputCars());
-    this.TIME = inputView.inputTime();
-    validateTime();
+  private Racing(final int time, final Cars cars, final MoveStrategy moveStrategy) {
+    validateTime(time);
+    this.moveStrategy = moveStrategy;
+    this.time = Arrays.stream(new int[time]).boxed().iterator();
+    this.cars = cars;
   }
 
-  public void race () {
-    RESULT_VIEW.printResultText();
-    MoveStrategy moveStrategy = RandomNumberMoveStrategy.of();
-    Arrays.stream(new int[TIME])
-          .forEach(v -> RESULT_VIEW.printRace(CARS.move(moveStrategy).stream()));
+  public Stream<Car> race () {
+    if (time.hasNext()) {
+      time.next();
+      return cars.move(moveStrategy).stream();
+    }
+    return null;
   }
 
-  public static Racing of (final ResultView resultView, final InputView inputView) {
-    return new Racing(resultView, inputView);
+  public boolean isRaceEnd () {
+    return !time.hasNext();
   }
 
-  public void validateTime () {
-    if (TIME < 1) throw new IllegalArgumentException("시도 횟수는 1 이상만 가능합니다.");
+  public void validateTime (int time) {
+    if (time < 1) throw new IllegalArgumentException("시도 횟수는 1 이상만 가능합니다.");
   }
+
+  public static Racing of(final int time, final Cars cars, final MoveStrategy moveStrategy) {
+    return new Racing(time, cars, moveStrategy);
+  }
+
 }
