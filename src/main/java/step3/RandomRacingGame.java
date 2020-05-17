@@ -13,18 +13,34 @@ import java.util.Arrays;
  * 자동차의 상태를 화면에 출력한다. 어느 시점에 출력할 것인지에 대한 제약은 없다.
  */
 public class RandomRacingGame {
+  private final ResultView RESULT_VIEW;
+  private final Cars CARS;
 
-  public static void main(String[] args) {
-    Racing racing = Racing.of(
-      InputView.inputTime(),
-      Cars.of(InputView.inputCars()),
-      new RandomNumberMoveStrategy()
-    );
+  public RandomRacingGame (final ResultView resultView, final InputView inputView) {
+    this.RESULT_VIEW = resultView;
+    this.CARS = Cars.of(inputView.inputCars(), RandomNumberMoveStrategy.of());
+    int time = inputView.inputTime();
+    validateTime(time);
 
-    ResultView.printResultText();
-    while (!racing.isRaceEnd()) {
-      ResultView.printRace(racing.race());
-    }
+    this.race(time);
   }
 
+  public void race (int time) {
+    System.out.println("\n실행 결과");
+    Cars cars = this.CARS;
+    ResultView resultView = this.RESULT_VIEW;
+    Arrays.stream(new int[time])
+          .forEach(v -> {
+            cars.move();
+            resultView.print(cars);
+          });
+  }
+
+  public static RandomRacingGame of (final ResultView resultView, final InputView inputView) {
+    return new RandomRacingGame(resultView, inputView);
+  }
+
+  public static void validateTime (int time) {
+    if (time < 1) throw new IllegalArgumentException("시도 횟수는 1 이상만 가능합니다.");
+  }
 }
