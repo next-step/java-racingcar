@@ -1,6 +1,7 @@
 package race;
 
-import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public final class OutputView {
@@ -9,31 +10,24 @@ public final class OutputView {
     private static final int START_POSITION= 0;
     private OutputView() {}
 
-    public static void print(RacingGame racingGame) {
+    public static void printResult() {
         System.out.println();
         System.out.println("실행 결과");
-
-        startRacing(racingGame);
     }
 
-    private static void startRacing(RacingGame racingGame) {
-        final int time = racingGame.getTime();
-        final int[] carPositions = racingGame.getCarPositions();
-
-        for (int i = 0; i < time; i++) {
-            racingGame.move();
-            startRacingCars(carPositions);
-            System.out.println();
-        }
+    public static void printRacing(List<RacingCar> racingCars) {
+        printRacingCars(racingCars);
+        System.out.println();
     }
 
-    private static void startRacingCars(int[] carPositions) {
-        Arrays.stream(carPositions).forEach(OutputView::startRacingCar);
+    private static void printRacingCars(List<RacingCar> racingCars) {
+        racingCars.forEach(OutputView::printRacingCar);
     }
 
-    private static void startRacingCar(int carPosition) {
-        final StringBuilder sb = new StringBuilder();
-        IntStream.range(START_POSITION, carPosition).forEach(position -> sb.append(PATH));
-        System.out.println(sb.toString());
+    private static void printRacingCar(RacingCar racingCar) {
+        String result = IntStream.range(START_POSITION, racingCar.getPosition())
+                        .mapToObj(position -> PATH)
+                        .collect(Collectors.joining());
+        System.out.println(result);
     }
 }
