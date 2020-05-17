@@ -31,13 +31,13 @@
       * random 값을 통해 전진,정지를 결정한다. MovePolicy 구현체
    * 랜덤 값은 자바 java.util.Random 클래스의 nextInt(10) 메소드를 활용한다.
 3. 사용자는 몇 대의 자동차로 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다.
-   * interface.InputView
-      * int setup(Comment): comment 출력 후 입력받은 변수를 반환
-   * class.FileReaderInputView
-      * InputView 구현체
-      * InputStream in = new FileInputStream("") 으로 System.in 을 대체
+   * interface.RacingGameInputView
+      * int getTime(): comment 출력 후 게임 횟수를 반환
+      * int getNumberOfCar(): comment 출력 후 자동차 수를 반환
+   * class.ConsoleRacingGameInputView
+      * RacingGameInputView 구현체
 4. 자동차의 상태를 화면에 출력한다. 어느 시점에 출력할 것인지에 대한 제약은 없다.
-   * interface.ResultView
-      * void print(int): 인자를 출력
-   * class.ConsoleResultView
-      * ResultView 구현체
+   * interface.RacingGameResultView
+      * void print(int): 자동차의 position을 받아서 출력
+   * class.ConsoleRacingGameResultView
+      * RacingGameResultView 구현체
