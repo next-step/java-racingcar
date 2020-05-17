@@ -43,7 +43,8 @@ public class StringCalculator {
         } catch (IllegalArgumentException e) {
             // 메인로직에서 예외 처리 시 테스트 코드의 expecting이 throwable이라고 나오는데, 이렇게 하는게 잘못 된 방식인건지
             System.out.println("StringCalculator.calculate(String param) : " + e.getMessage() + "\nparam : " + param);
-        } 
+            return "error";
+        }
 
         return String.valueOf(result);
     }
