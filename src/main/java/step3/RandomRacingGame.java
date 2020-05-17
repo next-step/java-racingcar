@@ -15,10 +15,16 @@ import java.util.Arrays;
 public class RandomRacingGame {
 
   public static void main(String[] args) {
-    Racing.of(
-      ResultView.of(),
-      InputView.of()
-    ).race();
+    Racing racing = Racing.of(
+      InputView.inputTime(),
+      Cars.of(InputView.inputCars()),
+      new RandomNumberMoveStrategy()
+    );
+
+    ResultView.printResultText();
+    while (!racing.isRaceEnd()) {
+      ResultView.printRace(racing.race());
+    }
   }
 
 }

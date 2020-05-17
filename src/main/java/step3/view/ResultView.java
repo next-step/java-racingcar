@@ -9,17 +9,15 @@ public class ResultView {
 
   private ResultView() {};
 
-  public void printResultText () {
+  public static void printResultText () {
     System.out.println("실행 결과");
   }
 
-  public void printRace (Stream<Car> stream) {
+  public static void printRace (Stream<Car> stream) {
     System.out.println(
       stream.map(car -> car.getPositionString()).collect(Collectors.joining("\n"))
       + "\n"
     );
   }
-
-  public static ResultView of () { return new ResultView(); }
 
 }
