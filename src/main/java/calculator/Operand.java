@@ -7,8 +7,14 @@ public class Operand {
         this.number = number;
     }
 
-    public Operand(String number) {
-        this.number = Float.valueOf(number);
+    public static Operand valueOf(String number) {
+        try {
+            Float numberFloat = Float.valueOf(number);
+            return new Operand(numberFloat);
+        }
+        catch (NumberFormatException e) {
+            throw new IllegalArgumentException(number + " cannot be converted to a number. Probably not a numeric string.");
+        }
     }
 
     public Float getNumber() {
@@ -20,13 +26,4 @@ public class Operand {
         return new Operand(calculatedValue);
     }
 
-    public static boolean isOperand(String number) {
-        try {
-            Float.valueOf(number);
-            return true;
-        }
-        catch (NumberFormatException e){
-            return false;
-        }
-    }
 }

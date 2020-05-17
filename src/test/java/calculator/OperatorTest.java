@@ -41,13 +41,6 @@ class OperatorTest {
         );
     }
 
-    @DisplayName("문자열이 operator 인지 아닌지 판별 테스트")
-    @ParameterizedTest
-    @CsvSource(value = {"+,true", "-,true", "*,true", "/,true", "&,false", "$,false"})
-    public void isOperatorTest(String symbol, boolean isOperator) {
-        assertThat(Operator.isOperatorSymbol(symbol)).isEqualTo(isOperator);
-    }
-
     @DisplayName("연산기호애 맞게 계산이 되는지 테스트")
     @ParameterizedTest
     @CsvSource(value = {"1,2", "1,4", "1.5, 2.5", "400, 200"})

@@ -21,7 +21,7 @@ public enum Operator {
     private String symbol;
     private Calculator calculator;
 
-    private static final Map<String, Operator> operators =
+    private static final Map<String, Operator> OPERATORS =
         Collections.unmodifiableMap(
             Arrays.stream(values()).collect(Collectors.toMap(Operator::getSymbol, Function.identity()))
         );
@@ -40,15 +40,11 @@ public enum Operator {
     }
 
     public static Operator getOperator(String symbol) {
-        Operator operator = operators.get(symbol);
+        Operator operator = OPERATORS.get(symbol);
         if(operator == null) {
             throw new IllegalArgumentException("This operation is not supported :  " + symbol);
         }
         return operator;
     }
 
-    public static boolean isOperatorSymbol(String symbol) {
-        return Arrays.stream(values())
-                .anyMatch(operator -> operator.getSymbol().equals(symbol));
-    }
 }
