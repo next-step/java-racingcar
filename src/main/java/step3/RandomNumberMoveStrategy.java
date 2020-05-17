@@ -16,7 +16,12 @@ public class RandomNumberMoveStrategy implements MoveStrategy {
 
   @Override
   public boolean isMoved () {
-    return 4 >= RANDOM.nextInt(10);
+    return this.isMoved(RANDOM.nextInt(10));
+  }
+
+  @Override
+  public boolean isMoved (int number) {
+    return number >= 4;
   }
 
   public static MoveStrategy of () {
