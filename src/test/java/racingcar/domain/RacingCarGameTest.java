@@ -14,9 +14,9 @@ public class RacingCarGameTest {
     @DisplayName("execute 메소드는 레이싱 게임을 실행한다.")
     void execute() {
         // given
-        int carCount = 1;
+        String carName = "테스터";
         int moveCount = 2;
-        RacingCarGame racingCarGame = new RacingCarGame(carCount, moveCount);
+        RacingCarGame racingCarGame = new RacingCarGame(carName, moveCount);
 
         // when
         racingCarGame.execute(new FixedNumberStrategy());
@@ -24,7 +24,7 @@ public class RacingCarGameTest {
 
         // then
         assertThat(cars).isNotNull();
-        assertThat(cars.size()).isEqualTo(carCount);
+        assertThat(cars.size()).isEqualTo(carName.split(",").length);
         assertThat(cars.get(0).getPosition()).isEqualTo(moveCount);
     }
 
