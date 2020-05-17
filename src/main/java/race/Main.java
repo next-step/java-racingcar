@@ -9,7 +9,7 @@ public class Main {
 
         int count = inputView.getCountOfCar();
         int time = inputView.getTime();
-        RacingGame racingGame = RacingGame.of(count, time);
+        RacingGame racingGame = RacingGame.of(count, time, new RandomMovingStrategy());
         racingGame.readyRacingCars(count);
 
         OutputView.printResult();

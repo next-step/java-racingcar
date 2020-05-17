@@ -1,27 +1,24 @@
 package race;
 
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class RacingGame {
 
-    private static final int BOUND = 10;
-    private static final int FORWARD_POSSIBLE_NUMBER = 4;
-    private static final Random GENERATOR = new Random();
-
     private int time;
     private List<RacingCar> racingCars;
     private int[] carPositions;
+    private final MovingStrategy movingStrategy;
 
-    private RacingGame(int countOfCar, int time) {
+    private RacingGame(int countOfCar, int time, MovingStrategy movingStrategy) {
         this.time = time;
         this.carPositions = new int[countOfCar];
+        this.movingStrategy = movingStrategy;
     }
 
-    public static RacingGame of(int countOfCar, int time) {
-        return new RacingGame(countOfCar, time);
+    public static RacingGame of(int countOfCar, int time, MovingStrategy movingStrategy) {
+        return new RacingGame(countOfCar, time, movingStrategy);
     }
 
     public void readyRacingCars(int countOfCar) {
@@ -34,7 +31,7 @@ public class RacingGame {
 
     public List<RacingCar> start() {
         for(RacingCar racingCar : racingCars) {
-            if (isMoveForward()) {
+            if (movingStrategy.isMovable()) {
                 racingCar.forward();
                 continue;
             }
@@ -43,10 +40,6 @@ public class RacingGame {
         }
 
         return racingCars;
-    }
-
-    private boolean isMoveForward() {
-        return GENERATOR.nextInt(BOUND) >= FORWARD_POSSIBLE_NUMBER;
     }
 
     public int getTime() {

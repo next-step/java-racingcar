@@ -30,4 +30,6 @@ class RacingCarTest {
 
         assertThat(racingCar.stop()).isEqualTo(1);
     }
+
+
 }
