@@ -17,7 +17,8 @@ public class GameResult {
     public List<String> getResult() {
         return cars.stream().map(car -> {
             int carPosition = car.getPosition();
-            return replacePositionToOutputCharacters(carPosition);
+            String carName = car.getName();
+            return carName + " : " + replacePositionToOutputCharacters(carPosition);
         }).collect(Collectors.toList());
     }
 
