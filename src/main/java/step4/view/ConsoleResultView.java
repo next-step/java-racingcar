@@ -17,6 +17,11 @@ public class ConsoleResultView implements ResultView {
     System.out.println(result);
   }
 
+  @Override
+  public void winner(String winners) {
+    System.out.println(winners + "가 최종 우승했습니다.");
+  }
+
   public static ResultView of () { return new ConsoleResultView(); }
 
 }
