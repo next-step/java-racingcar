@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private static Scanner SCANNER = new Scanner(System.in);
+    private static final Scanner SCANNER = new Scanner(System.in);
+    private static final String NAME_DELIMITER = ",";
 
     private InputView() {
     }
@@ -14,9 +15,10 @@ public class InputView {
         return SCANNER.nextInt();
     }
 
-    public static int askCarCount() {
-        System.out.println("자동차 수?");
-        return SCANNER.nextInt();
+    public static String[] askCarNames() {
+        System.out.println("자동차 이름?");
+        String names = SCANNER.next();
+        return names.split(NAME_DELIMITER);
     }
 
 }

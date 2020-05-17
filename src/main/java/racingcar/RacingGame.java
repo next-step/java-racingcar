@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
@@ -9,16 +8,12 @@ public class RacingGame {
     private List<Car> cars;
     private CarMover mover;
 
-    public RacingGame(int time, int carCount) {
-        validate(time, carCount);
+    public RacingGame(int time, List<Car> cars) {
+        validate(time, cars.size());
 
         this.time = time;
-        this.cars = new ArrayList<>();
+        this.cars = cars;
         this.mover = new CarMover(new RandomMoveStrategy());
-
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
     }
 
     private void validate(int time, int carCount) {
