@@ -6,12 +6,12 @@ public class ParserUtils {
 
     private static final String WHITESPACE = " ";
 
-    public static int getNumber(String[] words, int index) {
+    public static int getNumber(String word) {
 
-        if (hasSize(words, index) && isNumber(words, index)) {
-            throw new IllegalArgumentException("입력 문자 열이 잘못되었습니다.");
+        if (!word.matches("^[0-9]+$")) {
+            throw new IllegalArgumentException("입력 문자가 숫자가 아닙니다.");
         }
-        return Integer.parseInt(words[index]);
+        return Integer.parseInt(word);
     }
 
     public static String[] toArray(String input) {
@@ -21,16 +21,8 @@ public class ParserUtils {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
-    private static boolean hasSize(String[] words, int index) {
-        return words.length < index + 1;
-    }
-
-    private static boolean isNumber(String[] words, int index) {
-        return !words[index].matches("^[0-9]+$");
-    }
-
     public static void checkArraySize(String[] list) {
-        if(list.length % 2 == 0){
+        if(list.length % 2 == 0 && list.length != 1){
             new IllegalArgumentException("리스트 사이즈 오류");
         }
     }
