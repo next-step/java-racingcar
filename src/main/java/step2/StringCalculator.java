@@ -126,23 +126,6 @@ public class StringCalculator {
             calculatorDequeue.add(temp.toString());
         }
     }
-
-    /**
-     * 문자열이 숫자인지 확인한다
-     * 
-     * @param param : String, 확인할 문자열
-     * @return boolean, 숫자일 경우 true, 아닐 경우 false 반환
-     */
-    public boolean isNumber(String param) {
-        // try-catch 비용이 큰 것으로 알고 있는데 이런식으로 판단하는 로직을 사용해도 괜찮은건지
-        try {
-            Double.parseDouble(param);
-        } catch (NumberFormatException e) {
-            return false;
-        }
-        return true;
-    }
-
     /**
      * left와 right를 더해준다.
      * 
