@@ -1,15 +1,13 @@
-package com.nextstep.racingcar.main;
+package com.nextstep.racingcar.view;
 
 import com.nextstep.racingcar.application.RacingGame;
-import com.nextstep.racingcar.domain.car.MoveStrategy;
 import com.nextstep.racingcar.domain.car.CarFactory;
+import com.nextstep.racingcar.domain.car.MoveStrategy;
 import com.nextstep.racingcar.domain.car.RandomMoveStrategy;
-import com.nextstep.racingcar.view.InputView;
-import com.nextstep.racingcar.view.OutputView;
 
 import java.util.Scanner;
 
-public class RacingGameMain {
+public class UiController {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         InputView inputView = InputView.create(scanner);
