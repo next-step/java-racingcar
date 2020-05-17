@@ -3,11 +3,6 @@ package stringcalculator;
 public class Calculator {
 
     private String inputExpression;
-    //  먼저 계산기 본체 만들기 최대한 단순하게 만들자 생성자
-    //public Calculator(String input){
-    public Calculator(){
-        //this.inputExpression = input;
-    }
 
     //  연산식으로 만들기
     public double trimInputExpression(String targetExpression){
