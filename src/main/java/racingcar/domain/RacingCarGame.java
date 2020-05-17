@@ -1,8 +1,8 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+
+import static java.util.stream.Collectors.toList;
 
 public class RacingCarGame {
 
@@ -33,6 +33,9 @@ public class RacingCarGame {
             GameResult result = carRacing(strategy);
             result.displayResult();
         }
+
+        List<Car> winners = findWinners();
+        GameResult.displayWinner(winners);
     }
 
     private GameResult carRacing(Strategy strategy) {
@@ -42,6 +45,17 @@ public class RacingCarGame {
         });
 
         return new GameResult(cars);
+    }
+
+    private List<Car> findWinners() {
+        int largest = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == largest)
+                .collect(toList());
     }
 }
 
