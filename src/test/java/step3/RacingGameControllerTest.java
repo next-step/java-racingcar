@@ -35,14 +35,14 @@ class RacingGameControllerTest {
         assertThat(racingGameController.hasNextRound()).isTrue();
     }
 
-    @DisplayName("RacingCars List의 size는 입력한 자동차의 개수와 동일하다")
+    @DisplayName("RacingpPostion에서 관리되는 자동차는 입력한 자동차의 개수와 동일하다")
     @ParameterizedTest
     @MethodSource("provideSourceForRacingCarsSize")
     void racingCarsSizeTest(String[] carNames) {
         RacingGameController racingGameController = RacingGameController.start(carNames, 1);
         racingGameController.nextRound();
 
-        assertThat(racingGameController.getRacingCars()).hasSize(carNames.length);
+        assertThat(racingGameController.getRacingPosition().getPositions()).hasSize(carNames.length);
     }
 
     private static Stream<Arguments> provideSourceForRacingCarsSize() {
@@ -71,6 +71,6 @@ class RacingGameControllerTest {
         RacingGameController racingGameController = RacingGameController.start(carNames, 1);
         racingGameController.nextRound();
 
-        assertThat(racingGameController.getWinners().size()).isGreaterThanOrEqualTo(1);
+        assertThat(racingGameController.getWinners().getNames().size()).isGreaterThanOrEqualTo(1);
     }
 }

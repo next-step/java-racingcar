@@ -12,7 +12,7 @@ public class RacingGameApplication {
 
         while (racingGameController.hasNextRound()) {
             racingGameController.nextRound();
-            ResultView.printPosition(racingGameController.getRacingCars());
+            ResultView.printPosition(racingGameController.getRacingPosition());
         }
 
         ResultView.printWinner(racingGameController.getWinners());

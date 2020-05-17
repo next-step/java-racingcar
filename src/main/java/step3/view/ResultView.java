@@ -1,29 +1,22 @@
 package step3.view;
 
-import step3.domain.RacingCar;
-
-import java.util.List;
-import java.util.stream.Collectors;
+import step3.domain.RacingPosition;
+import step3.domain.RacingWinner;
 
 public class ResultView {
 
     private static final String RESULT_TITLE = "==============";
+    private static final String WINNER_NAME_DELIMITER = ",";
 
     private ResultView() {
     }
 
-    public static void printPosition(List<RacingCar> racingCars) {
+    public static void printPosition(RacingPosition racingPosition) {
         System.out.println(RESULT_TITLE);
-        racingCars.stream()
-                .map(RacingCar::toString)
-                .forEach(System.out::println);
+        racingPosition.getPositions().forEach(System.out::println);
     }
 
-    public static void printWinner(List<RacingCar> racingCars) {
-        String winnerName = racingCars.stream()
-                .map(RacingCar::getName)
-                .collect(Collectors.joining(" ,"));
-
-        System.out.println(winnerName + "가 최종 우승했습니다.");
+    public static void printWinner(RacingWinner racingWinner) {
+        System.out.println(String.join(WINNER_NAME_DELIMITER, racingWinner.getNames()) + "가 최종 우승했습니다.");
     }
 }

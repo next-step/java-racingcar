@@ -1,13 +1,17 @@
 package step3.controller;
 
 import step3.domain.RacingCar;
+import step3.domain.RacingPosition;
+import step3.domain.RacingWinner;
 import step3.domain.RandomMoveFactory;
 import step3.exception.RoundNotFinishedException;
 import step3.exception.RoundNotFoundException;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toList;
 
 public class RacingGameController {
 
@@ -20,7 +24,7 @@ public class RacingGameController {
         this.gameRound = gameRound;
         this.racingCars = Arrays.stream(carNames)
                 .map(RacingCar::create)
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     public static RacingGameController start(String[] carNames, int gameRound) {
@@ -40,11 +44,12 @@ public class RacingGameController {
         return this.progressRound < this.gameRound;
     }
 
-    public List<RacingCar> getRacingCars() {
-        return this.racingCars;
+    public RacingPosition getRacingPosition() {
+        return this.racingCars.stream()
+                .collect(collectingAndThen(toList(), RacingPosition::new));
     }
 
-    public List<RacingCar> getWinners() {
+    public RacingWinner getWinners() {
         if (this.hasNextRound()) {
             throw new RoundNotFinishedException();
         }
@@ -56,6 +61,6 @@ public class RacingGameController {
 
         return racingCars.stream()
                 .filter(racingCar -> racingCar.getPosition() == maxPosition)
-                .collect(Collectors.toList());
+                .collect(collectingAndThen(toList(), RacingWinner::new));
     }
 }
