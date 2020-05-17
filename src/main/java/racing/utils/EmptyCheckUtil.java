@@ -5,24 +5,24 @@ import java.util.Objects;
 
 public class EmptyCheckUtil {
 
-    public static void emptyCheck(String arguments) {
-        if (Objects.isNull(arguments) || arguments.isEmpty()) {
+    public static void emptyCheck(String argument) {
+        if (Objects.isNull(argument) || argument.isEmpty()) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static void emptyCheck(List arguments) {
-        if (Objects.isNull(arguments)) {
+    public static void emptyCheck(List argument) {
+        if (Objects.isNull(argument)) {
             throw new IllegalArgumentException();
         }
 
-        if (arguments.size() < 1) {
+        if (argument.size() < 1) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static void emptyCheck(Object arguments) {
-        if (Objects.isNull(arguments)) {
+    public static void emptyCheck(Object argument) {
+        if (Objects.isNull(argument)) {
             throw new IllegalArgumentException();
         }
     }
