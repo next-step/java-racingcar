@@ -2,7 +2,6 @@ package racingCar.application;
 
 import racingCar.domain.RacingCar;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -28,20 +27,15 @@ public class RacingGame {
     // TODO 구현
     public void move() {
         Random random = new Random();
-        int randomNum = 0;
 
         for (int idx = 0; idx < carCount; idx++) {
-            randomNum = random.nextInt(10);
-            //MoveUtils.setPosition(racingCarList.get(idx), randomNum);
+            int randomNum = random.nextInt(10);
+            racingCarList.get(idx).move(randomNum);
         }
     }
 
     public int getTime() {
         return time;
-    }
-
-    public int getCarCount() {
-        return carCount;
     }
 
     public List<RacingCar> getRacingCarList() {
