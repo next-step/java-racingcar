@@ -24,7 +24,7 @@ public class RacingCarTest {
     "9,1",
   })
   void 전진_조건_테스트 (int n, int expected) {
-    assertThat(RacingCar.moving(n)).isEqualTo(expected);
+    assertThat(Cars.moving(n)).isEqualTo(expected);
   }
 
   @DisplayName("포지션 테스트 : 현재 포지션을 문자열로 표현")
@@ -47,7 +47,7 @@ public class RacingCarTest {
   })
   void 전진_테스트 (int initPosition, int moving, String expected) {
     Car car = Car.of(initPosition);
-    car.going(moving);
+    car.go(moving);
     assertThat(car.toString()).isEqualTo(expected);
   }
 
@@ -74,6 +74,6 @@ public class RacingCarTest {
     List<Car> cars = new ArrayList<>();
     cars.add(Car.of(0));
     assertThatIllegalArgumentException()
-      .isThrownBy(() -> RacingCar.of().startRace(cars, time));
+      .isThrownBy(() -> Cars.of().startRace(cars, time));
   }
 }
