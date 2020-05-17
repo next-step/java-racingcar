@@ -20,24 +20,39 @@ import static step3.Utils.getRandomNumber;
  */
 public class RacingCar {
   private ResultView resultView;
+  private List<Car> cars;
 
   public void setGame (InputView inputView, ResultView resultView) {
     this.resultView = resultView;
-    this.startRace(
-      Arrays.stream(inputView.inputCars().split(","))
-        .map(v -> Car.of(v))
-        .collect(Collectors.toList()),
-      inputView.inputTime()
-    );
+    this.setCars(inputView.inputCars());
+    this.racing(cars, inputView.inputTime());
   }
 
-  public void startRace (List<Car> cars, int time) {
+  public void racing (List<Car> cars, int time) {
     validateTime(time);
     System.out.println("\n실행 결과");
     for (int i = 0; i < time; i++) {
       cars.forEach(car -> car.going(moving(getRandomNumber())));
       this.resultView.print(cars);
     }
+    this.resultView.winner(this.getWinners());
+  }
+
+  public void setCars (String cars) {
+    this.cars = Arrays.stream(cars.split(","))
+                      .map(v -> Car.of(v))
+                      .collect(Collectors.toList());
+  }
+
+  public String getWinners () {
+    List<Car> cars = this.cars;
+    int max = cars.stream()
+                  .map(v -> v.getPosition())
+                  .reduce(0, (before, v) -> Math.max(before, v));
+    return cars.stream()
+               .filter(v -> v.getPosition() == max)
+               .map(v -> v.getName())
+               .collect(Collectors.joining(", "));
   }
 
   public static int moving (int randomNumber) {
