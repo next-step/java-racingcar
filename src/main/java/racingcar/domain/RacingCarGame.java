@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RacingCarGame {
@@ -8,8 +9,8 @@ public class RacingCarGame {
     private List<Car> cars;
     private final int moveCount;
 
-    public RacingCarGame(int carCount, int moveCount) {
-        this.cars = createCars(carCount);
+    public RacingCarGame(String carNames, int moveCount) {
+        this.cars = createCars(carNames);
         this.moveCount = moveCount;
     }
 
@@ -17,12 +18,12 @@ public class RacingCarGame {
         return cars;
     }
 
-    private List<Car> createCars(int carCount) {
+    private List<Car> createCars(String carNames) {
+        String[] names = carNames.split(",");
+
         cars = new ArrayList<>();
 
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
+        Arrays.stream(names).forEach(name -> cars.add(new Car(name)));
 
         return cars;
     }
