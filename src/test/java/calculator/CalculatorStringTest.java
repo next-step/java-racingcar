@@ -28,7 +28,7 @@ class CalculatorStringTest {
     @MethodSource
     void calculatorSuccess(String input, int expected) {
         int result = calculator.stringCalculator(input);
-        assertEquals(expected, result);
+        assertThat(result).isEqualTo(expected);
     }
 
     private static Stream<Arguments> calculatorSuccess() {
