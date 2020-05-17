@@ -28,7 +28,7 @@ public class Racing {
     RESULT_VIEW.printResultText();
     MoveStrategy moveStrategy = RandomNumberMoveStrategy.of();
     Arrays.stream(new int[TIME])
-          .forEach(v -> RESULT_VIEW.printRace(CARS.move(moveStrategy)));
+          .forEach(v -> RESULT_VIEW.printRace(CARS.move(moveStrategy).stream()));
   }
 
   public static Racing of (final ResultView resultView, final InputView inputView) {
