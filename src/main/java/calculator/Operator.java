@@ -1,25 +1,27 @@
 package calculator;
 
+import java.util.Arrays;
+
 public enum Operator implements Operable {
-    ADD() {
+    ADD("+") {
         @Override
         public int operate(int number1, int number2) {
             return number1 + number2;
         }
     },
-    SUBTRACT() {
+    SUBTRACT("-") {
         @Override
         public int operate(int number1, int number2) {
             return number1 - number2;
         }
     },
-    MULTIPLY() {
+    MULTIPLY("*") {
         @Override
         public int operate(int number1, int number2) {
             return number1 * number2;
         }
     },
-    DIVIDE() {
+    DIVIDE("/") {
         @Override
         public int operate(int number1, int number2) {
             if (number2 == 0) {
@@ -29,22 +31,16 @@ public enum Operator implements Operable {
         }
     };
 
-    Operator() {
+    private final String symbol;
+
+    Operator(String symbol) {
+        this.symbol = symbol;
     }
 
-    public static Operator OperatorFactory(String operator) {
-        if (operator.equals("+")) {
-            return ADD;
-        }
-        if (operator.equals("-")) {
-            return SUBTRACT;
-        }
-        if (operator.equals("*")) {
-            return MULTIPLY;
-        }
-        if (operator.equals("/")) {
-            return DIVIDE;
-        }
-        throw new IllegalArgumentException("Parameter `operator` must be valid");
+    public static Operator OperatorFactory(String symbol) {
+        return Arrays.stream(values())
+                .filter(operator -> operator.symbol.equals(symbol))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(String.format("Parameter `symbol(%s)` must be valid", symbol)));
     }
 }

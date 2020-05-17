@@ -34,15 +34,15 @@ public class SetTest {
     @DisplayName("Set::contains 함수는 item을 포함하고 있으면 True를 반환한다")
     @ParameterizedTest(name = "{0} should be True")
     @ValueSource(ints = {1, 2, 3})
-    public void contatins_Set_shouldSucceedAndReturnTrue(Integer item) {
+    public void contatins_Set_shouldSucceedAndReturnTrue(int item) {
         assertThat(numbers.contains(item)).isTrue();
     }
 
     @DisplayName("Set::contains 함수는 item의 포함 여부를 반환한다")
     @ParameterizedTest(name = "{0} should be {1}")
-    @CsvSource(value = {"1:True", "2:True", "3:True", "4:False", "5:False"}, delimiter = ':')
-    public void contatins_Set_shouldSucceed(String input, String expected) {
-        assertThat(numbers.contains(Integer.getInteger(input))).isEqualTo(Boolean.getBoolean(expected));
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    public void contatins_Set_shouldSucceed(int input, boolean expected) {
+        assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 
 }
