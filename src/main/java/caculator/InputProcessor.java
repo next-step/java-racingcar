@@ -21,13 +21,13 @@ public class InputProcessor {
         if (StringUtils.isBlank(input)) throw new IllegalArgumentException();
     }
 
-    private void validateNumber(String[] splitInput) {
+    private void validateNumber(final String[] splitInput) {
         for(int i = 0; i < splitInput.length; i += 2) {
             if (Double.isNaN(Double.parseDouble(splitInput[i]))) throw new IllegalArgumentException();
         }
     }
 
-    private void validateOperator(String[] splitInput) {
+    private void validateOperator(final String[] splitInput) {
         List<String> operatorList = Arrays.asList("+", "-", "*", "/");
         for(int i = 1; i < splitInput.length; i += 2) {
             if (!operatorList.contains(splitInput[i])) throw new IllegalArgumentException();
