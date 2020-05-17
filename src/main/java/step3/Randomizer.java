@@ -5,7 +5,7 @@ import java.util.Random;
 public class Randomizer {
     private Random random;
 
-    Randomizer() {
+    public Randomizer() {
         random = new Random();
     }
 
