@@ -1,4 +1,4 @@
-package racinggame.game;
+package racinggame.domain.game;
 
 import racinggame.domain.car.MovableStrategy;
 import racinggame.domain.car.RacingCars;
