@@ -1,5 +1,7 @@
 package racinggame.domain.car;
 
+import racinggame.domain.strategy.MovableStrategy;
+
 public class RacingCar {
 
     private MovableStrategy movableStrategy;
