@@ -38,4 +38,5 @@ public enum Operator {
     public static double calculate(String operator, double currentNumber, double nextNumber){
         return getOperationType(operator).apply(currentNumber, nextNumber);
     }
+
 }
