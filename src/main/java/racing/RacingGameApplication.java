@@ -1,5 +1,6 @@
 package racing;
 
+import racing.domain.PositionWinner;
 import racing.domain.RacingGame;
 import racing.domain.RandomMovement;
 import racing.dto.RaceInformation;
@@ -16,19 +17,12 @@ public class RacingGameApplication {
         InputView inputView = new InputView();
         RaceInformation raceInformation = inputView.createByUserInput();
 
-        RacingGame racingGame = new RacingGame(raceInformation, new RandomMovement(new Random()));
+        RacingGame racingGame = new RacingGame(raceInformation, new RandomMovement(new Random()), new PositionWinner());
+        List<RacingGameResult> racingGameResults = racingGame.executeRacing();
 
         OutputView outPutView = new OutputView();
         outPutView.printGuidance();
-
-        List<RacingGameResult> racingGameResults = null;
-        for (int i = 0; i < raceInformation.getTotalRacingCount(); i++) {
-            racingGame.executeRacing();
-            racingGameResults = racingGame.calculateRacingGameResults();
-            outPutView.printRacingResult(racingGameResults);
-        }
-
-        int maxPosition = racingGame.calculateMaxPosition();
-        outPutView.printRacingWinners(racingGameResults, maxPosition);
+        outPutView.printRacingResult(racingGameResults);
+        outPutView.printRacingWinners(racingGame.calculateWinners());
     }
 }

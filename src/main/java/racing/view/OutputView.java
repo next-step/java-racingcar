@@ -1,5 +1,6 @@
 package racing.view;
 
+import racing.dto.RaceWinnerResult;
 import racing.dto.RacingGameResult;
 
 import java.util.List;
@@ -14,43 +15,44 @@ public class OutputView {
     }
 
     public void printRacingResult(List<RacingGameResult> racingGameResults) {
-        racingGameResults.forEach(racingGameResult -> this.outputCarPosition(racingGameResult.getCarName(), racingGameResult.getPosition()));
+        racingGameResults.forEach(racingGameResult -> this.outputCarPosition(racingGameResult));
         System.out.println();
     }
 
-    private void outputCarPosition(String name, int position) {
-        StringBuilder stringBuilder = this.appendCarPosition(name, position);
+    private void outputCarPosition(RacingGameResult racingGameResult) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder = this.appendCarPositions(stringBuilder, racingGameResult);
         System.out.println(stringBuilder);
     }
 
-    private StringBuilder appendCarPosition(String name, int position) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(name);
-        stringBuilder.append(COLON);
-        for (int i = 0; i < position; i++) {
-            stringBuilder.append(HYPHEN);
+    private StringBuilder appendCarPositions(StringBuilder stringBuilder, RacingGameResult racingGameResult) {
+        for (int i = 0; i < racingGameResult.getCarRaceResultSize(); i++) {
+            stringBuilder = this.appendCarName(stringBuilder, racingGameResult.getCarName(i));
+            stringBuilder = this.appendHyphen(stringBuilder, racingGameResult.getCarPosition(i));
         }
         return stringBuilder;
     }
 
-    public void printRacingWinners(List<RacingGameResult> racingGameResults, int maxPosition) {
-        List<RacingGameResult> winners = this.findWinners(racingGameResults, maxPosition);
-        StringBuilder stringBuilder = this.appendWinnerNames(winners);
-        System.out.println(stringBuilder);
+    private StringBuilder appendCarName(StringBuilder stringBuilder, String carName) {
+        stringBuilder.append(carName);
+        stringBuilder.append(COLON);
+        return stringBuilder;
     }
 
-    private List<RacingGameResult> findWinners(List<RacingGameResult> racingGameResults, int maxPosition) {
-        return racingGameResults.stream()
-                .filter(racingGameResult -> racingGameResult.getPosition() == maxPosition)
-                .collect(Collectors.toList());
+    private StringBuilder appendHyphen(StringBuilder stringBuilder, int position) {
+        for (int i = 0; i < position; i++) {
+            stringBuilder.append(HYPHEN);
+        }
+        stringBuilder.append(System.lineSeparator());
+        return stringBuilder;
     }
 
-    private StringBuilder appendWinnerNames(List<RacingGameResult> winners) {
-        String winnerNames = winners.stream()
-                .map(winner -> winner.getCarName())
+    public void printRacingWinners(RaceWinnerResult raceWinnerResult) {
+        String winnerNames = raceWinnerResult.getWinnerNames()
+                .stream()
                 .collect(Collectors.joining(", "));
         StringBuilder stringBuilder = new StringBuilder(winnerNames);
-        stringBuilder.append( "가 최종 우승했습니다.");
-        return stringBuilder;
+        stringBuilder.append("가 최종 우승했습니다.");
+        System.out.println(stringBuilder);
     }
 }
