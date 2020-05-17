@@ -35,4 +35,12 @@ public class GameResult {
     public void displayResult() {
         OutputView.printOut(this);
     }
+
+    public static void displayWinner(List<Car> winners) {
+        String winnerNames = winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(","));
+        
+        OutputView.printOutWinner(winnerNames);
+    }
 }
