@@ -11,7 +11,7 @@
 #### Step3 자동차 경주
 
 1. ADD - 기본적인 클래스나 junit files 생성
-2. ADD - input result테스트
+2. TEST - 테스트 files 생성 및 테스트
 3. ADD - random함수 구현 후 적용
 4. Fix - 오류사항 발생 시 수정
 5. Simply - 코드 단순화 적용(선택)
