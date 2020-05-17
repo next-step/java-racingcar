@@ -1,5 +1,7 @@
 package chactercalculator;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Calculator {
 
   public int calculate(String formula) {
@@ -9,7 +11,7 @@ public class Calculator {
   }
 
   private void checkValidation(String formula) {
-    if (formula.trim().isEmpty()) {
+    if (StringUtils.isBlank(formula)) {
       throw new IllegalArgumentException("this is wrong.");
     }
   }
