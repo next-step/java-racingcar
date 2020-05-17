@@ -6,21 +6,20 @@ public class RandomNumberMoveStrategy implements MoveStrategy {
 
   private final Random RANDOM;
 
-  public RandomNumberMoveStrategy() {
+  private RandomNumberMoveStrategy() {
     this(new Random());
   }
 
-  public RandomNumberMoveStrategy(final Random RANDOM) {
+  private RandomNumberMoveStrategy(final Random RANDOM) {
     this.RANDOM = RANDOM;
   }
 
   @Override
   public boolean isMoved () {
-    return this.isMoved(RANDOM.nextInt(10));
+    return 4 >= RANDOM.nextInt(10);
   }
 
-  @Override
-  public boolean isMoved (int number) {
-    return number >= 4;
+  public static MoveStrategy of () {
+    return new RandomNumberMoveStrategy();
   }
 }
