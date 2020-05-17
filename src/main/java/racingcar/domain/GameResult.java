@@ -18,7 +18,7 @@ public class GameResult {
         return cars.stream().map(car -> {
             int carPosition = car.getPosition();
             String carName = car.getName();
-            return carName + " : " + replacePositionToOutputCharacters(carPosition);
+            return carName.concat(" : ").concat(replacePositionToOutputCharacters(carPosition));
         }).collect(Collectors.toList());
     }
 
