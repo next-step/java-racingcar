@@ -1,9 +1,9 @@
 package race;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.IntStream;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RacingGame {
 
@@ -15,33 +15,34 @@ public class RacingGame {
     private List<RacingCar> racingCars;
     private int[] carPositions;
 
-    private RacingGame(int countOfCar, int time, List<RacingCar> racingCars) {
+    private RacingGame(int countOfCar, int time) {
         this.time = time;
-        this.racingCars = racingCars;
         this.carPositions = new int[countOfCar];
     }
 
     public static RacingGame of(int countOfCar, int time) {
-        return new RacingGame(countOfCar, time, readyRacingCars(countOfCar));
+        return new RacingGame(countOfCar, time);
     }
 
-    private static List<RacingCar> readyRacingCars(int racingCarCount) {
-        return new ArrayList<RacingCar>(){{
-            IntStream.range(0, racingCarCount).forEach(v -> add(RacingCar.ready()));
-        }};
+    public void readyRacingCars(int countOfCar) {
+        initRacingCars(countOfCar);
     }
 
-    public int[] move() {
-        for(int i = 0; i < racingCars.size(); i++) {
+    private void initRacingCars(int racingCarCount) {
+        this.racingCars = Stream.generate(RacingCar::ready).limit(racingCarCount).collect(Collectors.toList());
+    }
+
+    public List<RacingCar> start() {
+        for(RacingCar racingCar : racingCars) {
             if (isMoveForward()) {
-                carPositions[i] = racingCars.get(i).forward();
+                racingCar.forward();
                 continue;
             }
 
-            carPositions[i] = racingCars.get(i).stop();
+            racingCar.stop();
         }
 
-        return carPositions;
+        return racingCars;
     }
 
     private boolean isMoveForward() {
