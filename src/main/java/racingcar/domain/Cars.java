@@ -6,6 +6,7 @@ import racingcar.util.StringUtil;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -58,6 +59,6 @@ public class Cars {
         return cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(NoSuchElementException::new);
     }
 }
