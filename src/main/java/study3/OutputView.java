@@ -13,7 +13,6 @@ public class OutputView {
 
 	// 1회 끝난 int배열 값을 "-"개수로 변환하는 메소드
 	public int[] OutputView(int[] in) {
-
 		for (int i = 0; i < in.length; i++) {
 			for (int j = 1; j <= in[i]; j++) {
 				defaultString += mov;

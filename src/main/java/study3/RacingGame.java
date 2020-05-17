@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public class RacingGame {
 
-	RandomGenerate rg = new RandomGenerate();
+	RandomGenerator rg = new RandomGenerator();
 	OutputView rv = new OutputView();
 
 	private int[] carPositions = { 0, 0, 0 }; // 자동차들의 초기 위치

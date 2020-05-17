@@ -7,7 +7,6 @@ import java.util.Scanner;
  *  author : choi 
  */
 public class InputView {
-
 	RacingGame rg = new RacingGame();
 
 	public InputView() {
