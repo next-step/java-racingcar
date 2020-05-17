@@ -51,10 +51,7 @@ class CalculatorStringTest {
     @ParameterizedTest
     @NullAndEmptySource
     void nullAndEmptyCalculatorTest(String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.stringParser(input);
-        });
-
+        assertThatIllegalArgumentException().isThrownBy(() -> calculator.stringParser(input));
     }
 
     @DisplayName("정상적이지 않은 사칙연산 부호에 대한 테스트")
@@ -70,7 +67,6 @@ class CalculatorStringTest {
     @DisplayName("분자를 0으로 나누려 할때")
     @Test
     void divisionWithZero() {
-
         assertThatExceptionOfType(ArithmeticException.class).isThrownBy(() -> {
             String input = "2 + 3 * 4 / 0";
             calculator.stringCalculator(input);
@@ -81,8 +77,6 @@ class CalculatorStringTest {
     @Test
     void parserIntTest() {
         String[] strings = {"a"};
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            calculator.parserInt(strings, 0);
-        });
+        assertThatIllegalArgumentException().isThrownBy(() -> calculator.parserInt(strings, 0));
     }
 }

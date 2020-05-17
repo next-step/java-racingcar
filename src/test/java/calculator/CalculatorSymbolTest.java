@@ -31,6 +31,7 @@ class CalculatorSymbolTest {
     @DisplayName("빼기 테스트")
     @Test
     void findTypeAndSubtract() {
+
         int result = calculatorSymbol.findTypeAndCalculator(firstNum, secondNum, "-");
         assertThat(result).isEqualTo(2);
     }
@@ -38,13 +39,16 @@ class CalculatorSymbolTest {
     @DisplayName("나눗셈 테스트")
     @Test
     void findTypeAndDivision() {
+
         int result = calculatorSymbol.findTypeAndCalculator(firstNum, secondNum, "/");
         assertThat(result).isEqualTo(2);
+
     }
 
-    @DisplayName("계산 테스트")
+    @DisplayName("곱셈 테스트")
     @Test
     void findTypeAndMultiply() {
+
         int result = calculatorSymbol.findTypeAndCalculator(firstNum, secondNum, "*");
         assertThat(result).isEqualTo(8);
     }
