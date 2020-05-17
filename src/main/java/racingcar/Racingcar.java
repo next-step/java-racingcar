@@ -2,11 +2,10 @@ package racingcar;
 
 import util.CommonUtil;
 
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Racingcar implements Comparator<Racingcar> {
+public class Racingcar implements Comparable<Racingcar> {
 
     private static final int GO_CONDITION_COUNT = 4;
     private static final int RANDOM_BOUNDARY = 10;
@@ -17,8 +16,8 @@ public class Racingcar implements Comparator<Racingcar> {
     private Map<Integer, Integer> saveRoundResultPosition = new HashMap<>();
 
     @Override
-    public int compare(Racingcar racingcar1, Racingcar racingcar2) {
-        return Integer.compare(racingcar2.getCarMovePosition(), racingcar1.getCarMovePosition());
+    public int compareTo(Racingcar racingcar) {
+        return Integer.compare(racingcar.getCarMovePosition(), this.carMovePosition);
     }
 
     public String getCarName() {
@@ -27,10 +26,6 @@ public class Racingcar implements Comparator<Racingcar> {
 
     public void setCarName(String carName) {
         this.carName = carName;
-    }
-
-    public void setCarMovePosition(int carMovePosition) {
-        this.carMovePosition = carMovePosition;
     }
 
     protected Racingcar() {
