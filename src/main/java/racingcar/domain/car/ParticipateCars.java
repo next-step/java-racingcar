@@ -1,31 +1,43 @@
 package racingcar.domain.car;
 
-import racingcar.domain.car.power.Power;
+import racingcar.domain.car.strategy.MovementStrategy;
+import racingcar.vo.car.CarMoveResult;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ParticipateCars {
     private List<Car> cars;
 
-    public ParticipateCars(int numberOfCar) {
-        this.cars = createCars(numberOfCar);
+    public ParticipateCars(String[] nameOfCars) {
+        this.cars = createCars(nameOfCars);
     }
 
-    private List<Car> createCars(int numberOfCar) {
+    private List<Car> createCars(String[] nameOfCars) {
+        validateNamesSize(nameOfCars);
         List<Car> cars = new ArrayList<>();
 
-        for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car());
+        for (int i = 0; i < nameOfCars.length; i++) {
+            cars.add(new Car(nameOfCars[i]));
         }
 
         return cars;
     }
 
-    public List<Integer> moveCars(Power power) {
-        return this.cars.stream()
-                .map(car -> car.move(power))
-                .collect(Collectors.toList());
+    public List<CarMoveResult> moveCars(MovementStrategy movementStrategy) {
+        List<CarMoveResult> carMoveResults = new ArrayList<>();
+
+        for (Car car : cars) {
+            int afterLocation = car.move(movementStrategy);
+            carMoveResults.add(new CarMoveResult(car.getName(), afterLocation));
+        }
+
+        return carMoveResults;
+    }
+
+    private void validateNamesSize(String[] names) {
+        if (names.length == 0) {
+            throw new IllegalStateException("이름이 입력되지 않았습니다.");
+        }
     }
 }

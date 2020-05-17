@@ -1,16 +1,35 @@
 package racingcar.domain.game;
 
-import java.util.ArrayList;
+import racingcar.vo.car.CarMoveResult;
+
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PhaseResult {
-    private List<Integer> raceResult;
+    private List<CarMoveResult> raceResult;
 
-    public PhaseResult(List<Integer> raceResult) {
-        this.raceResult = new ArrayList<>(raceResult);
+    public PhaseResult(List<CarMoveResult> raceResult) {
+        this.raceResult = Collections.unmodifiableList(raceResult);
     }
 
-    public List<Integer> getRaceResult() {
+    public List<CarMoveResult> getRaceResult() {
         return raceResult;
+    }
+
+    public List<String> findPhaseLeads() {
+        int leadLocation = findLeadLocation();
+
+        return raceResult.stream()
+                .filter(raceResult -> raceResult.isSameLocation(leadLocation))
+                .map(CarMoveResult::getName)
+                .collect(Collectors.toList());
+    }
+
+    private int findLeadLocation() {
+        return raceResult.stream()
+                .mapToInt(CarMoveResult::getLocation)
+                .max()
+                .orElseThrow(() -> new IllegalStateException("경기 기록이 존재하지않습니다."));
     }
 }
