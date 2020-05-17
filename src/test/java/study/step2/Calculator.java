@@ -50,4 +50,16 @@ public class Calculator {
         return result;
     }
 
+    public boolean isNotValidOperator(String inputExpression){
+        String trimmedExpression = inputExpression.replace(" ", "").replaceAll("[0-9]", "");
+        String operators = "+-*/";
+        for(int i=0; i< trimmedExpression.length(); i++){
+            if(!operators.contains(trimmedExpression.substring(i, i+1))){
+                throw new IllegalArgumentException("잘못된 연산자 기호: "+ trimmedExpression.substring(i, i+1));
+            }
+        }
+
+        return true;
+    }
+
 }
