@@ -3,6 +3,7 @@ package step4.view;
 import step4.Car;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ConsoleResultView implements ResultView {
 
@@ -10,11 +11,9 @@ public class ConsoleResultView implements ResultView {
 
   @Override
   public void print (List<Car> cars) {
-    String result = "";
-    for (Car car : cars) {
-      result += car.toString() + "\n";
-    }
-    System.out.println(result);
+    System.out.println(
+      cars.stream().map(v -> v.toString()).collect(Collectors.joining("\n"))
+    );
   }
 
   @Override
