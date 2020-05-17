@@ -13,14 +13,15 @@ public class ResultView {
     public static void print(List<Integer> carPositions) {
         for (Integer carPosition : carPositions) {
             printByOneCar(carPosition);
-            System.out.println();
         }
+        System.out.println();
     }
 
     private static void printByOneCar(Integer position) {
-        for (int i = 0; i < position; i++) {
+        for (int i = 0; i <= position; i++) {
             System.out.print(CAR_POSITION_DISPLAY);
         }
+        System.out.println();
     }
 
 }

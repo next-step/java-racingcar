@@ -1,35 +1,55 @@
 package com.kimdahyeee.racing;
 
+import com.kimdahyeee.racing.view.InputView;
+import com.kimdahyeee.racing.view.ResultView;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class RacingGame {
-    private int time;
+    private static final int TIME_TO_SLEEP = 1;
+    private int tryCount;
     private List<Integer> carPositions;
-    private static final int GO_STRAIGHT_LIMIT = 4;
 
-    public List<Integer> move(List<Integer> carPositions) {
-        List<Integer> newPositions = new ArrayList<>();
-
-        for (Integer carPosition : carPositions) {
-            newPositions.add(moveOrStop(carPosition));
-        }
-
-        return newPositions;
+    public RacingGame() {
+        initCarCountAndPositions();
+        initTryCount();
     }
 
-    public Integer moveOrStop(Integer carPosition) {
-        Integer position = carPosition;
-        boolean canMove = getRandomNumber() >= GO_STRAIGHT_LIMIT;
-
-        if (canMove) {
-            return ++position;
+    private void initCarCountAndPositions() {
+        int carCount = InputView.getCarCount();
+        carPositions = new ArrayList<>();
+        for (int i = 0; i < carCount; i++) {
+            carPositions.add(0);
         }
-
-        return position;
     }
 
-    protected int getRandomNumber() {
-        return (int) ((Math.random() * 10) - 1);
+    private void initTryCount() {
+        tryCount = InputView.getTryCount();
+    }
+
+    public void start() {
+        Car car = new Car();
+        ResultView.printHeader();
+
+        for (int i = 0; i < tryCount; i++) {
+            carPositions = car.move(carPositions);
+            ResultView.print(carPositions);
+            sleepOneSecondForPrint();
+        }
+    }
+
+    private void sleepOneSecondForPrint() {
+        try {
+            TimeUnit.SECONDS.sleep(TIME_TO_SLEEP);
+        } catch (InterruptedException e) {
+            throw new RuntimeException("timeUnit 오류 : ", e);
+        }
+    }
+
+    public static void main(String[] args) {
+        RacingGame racingGame = new RacingGame();
+        racingGame.start();
     }
 }
