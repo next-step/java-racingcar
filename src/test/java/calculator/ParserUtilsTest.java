@@ -36,18 +36,25 @@ class ParserUtilsTest {
         assertThat(result.length).isEqualTo(7);
     }
 
-    @DisplayName("잘못 입력된 문자를 배열로 변환 테스트 ")
-    @Test
-    void toArrayError() {
-        String input = "2 + 3 * 4 / ";
-        assertThatIllegalArgumentException().isThrownBy(() -> ParserUtils.toArray(input));
-    }
-
     @DisplayName("null 또는 공백이 입력된 문자를 배열로 변환 테스트 ")
     @ParameterizedTest
     @NullAndEmptySource
     void toArrayNullOrEmpty(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> ParserUtils.toArray(input));
+    }
+
+    @DisplayName("string 배열이 짝수일때 에러")
+    @Test
+    void checkArraySizeEvenError(){
+        String[] input = {"1","*","2","/"};
+        assertThatIllegalArgumentException().isThrownBy(() -> ParserUtils.checkArraySize(input));
+    }
+
+    @DisplayName("string 배열사이즈가 1일때 에러")
+    @Test
+    void checkArraySizeArraySizeOne(){
+        String[] input = {"1"};
+        assertThatIllegalArgumentException().isThrownBy(() -> ParserUtils.checkArraySize(input));
     }
 
 

@@ -22,8 +22,8 @@ public class ParserUtils {
     }
 
     public static void checkArraySize(String[] list) {
-        if(list.length % 2 == 0 && list.length != 1){
-            new IllegalArgumentException("리스트 사이즈 오류");
+        if(list.length % 2 == 0 || list.length < 2){
+            throw new IllegalArgumentException("리스트 사이즈 오류");
         }
     }
 }

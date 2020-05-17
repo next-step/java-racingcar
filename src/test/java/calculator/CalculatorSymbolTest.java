@@ -10,8 +10,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorSymbolTest {
@@ -67,7 +66,9 @@ class CalculatorSymbolTest {
     @DisplayName("잘못된 분모 값 나누셈 테스트")
     @Test
     void findTypeAndDivisiondwithZero() {
-        assertThatIllegalArgumentException().isThrownBy(() -> calculatorSymbol.findTypeAndCalculator(firstNum, 0, "/"));
+        assertThatExceptionOfType(ArithmeticException.class)
+                .isThrownBy(() -> calculatorSymbol.findTypeAndCalculator(firstNum, 0, "/"))
+                .withMessage("분모가 0일수 없습니다.");
     }
 
 }
