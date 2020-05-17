@@ -1,7 +1,5 @@
 package racingcar;
 
-import util.RacingCarComparator;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -54,7 +52,7 @@ public class RacingGame {
 
     private List<Racingcar> getWinners() {
         List<Racingcar> racingcars = this.carPositions;
-        Collections.sort(racingcars, new RacingCarComparator());
+        Collections.sort(racingcars, new Racingcar());
         Racingcar winRacingcar = racingcars.get(0);
         int winnerPosition = winRacingcar.getCarMovePosition();
         List<Racingcar> winRacingcars = racingcars.stream().filter(car -> car.getCarMovePosition() == winnerPosition).collect(Collectors.toList());
