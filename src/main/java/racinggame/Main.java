@@ -1,16 +1,15 @@
 package racinggame;
 
-import racinggame.car.RandomMovableStrategy;
 import racinggame.game.RacingGame;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;
 
 public class Main {
     public static void main(String[] args) {
-        String[] carNames = InputView.enterCarNames();
-        int round = InputView.enterRound();
+        String[] carNames = InputView.inputCarNames();
+        int round = InputView.inputRound();
 
-        RacingGame racingGame = new RacingGame(carNames, new RandomMovableStrategy());
+        RacingGame racingGame = new RacingGame(carNames);
 
         ResultView.showTitle();
 
