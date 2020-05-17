@@ -33,7 +33,8 @@ class CalculatorStringTest {
     private static Stream<Arguments> calculatorSuccess() {
         return Stream.of(
                 Arguments.of("3 + 2 * 4 / 5", 4),
-                Arguments.of("4 + 6 * 2 / 10", 2)
+                Arguments.of("4 * 6 / 2 + 10", 22),
+                Arguments.of("200 / 50 / 2 + 1", 3)
         );
     }
 
