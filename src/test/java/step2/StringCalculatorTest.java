@@ -7,82 +7,11 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 class StringCalculatorTest {
     StringCalculator stringCalculator = new StringCalculator();
-
-    @ParameterizedTest
-    @CsvSource(value = { "2, 3, 5.0" })
-    @DisplayName("덧셈 테스트")
-    void plus(double left, double right, String excepted) {
-        String acutal = stringCalculator.plus(left, right);
-
-        assertThat(acutal).isEqualTo(excepted);
-    }
-
-    @ParameterizedTest
-    @CsvSource(value = { "2, 3, -1.0" })
-    @DisplayName("뺄셈 테스트")
-    void minus(double left, double right, String excepted) {
-        String acutal = stringCalculator.minus(left, right);
-
-        assertThat(acutal).isEqualTo(excepted);
-    }
-
-    @ParameterizedTest
-    @CsvSource(value = { "2, 3, 6.0" })
-    @DisplayName("곱셈 테스트")
-    void multiply(double left, double right, String excepted) {
-        String acutal = stringCalculator.multiply(left, right);
-
-        assertThat(acutal).isEqualTo(excepted);
-    }
-
-    @ParameterizedTest
-    @CsvSource(value = { "2, 4, 0.5" })
-    @DisplayName("나눗셈 테스트")
-    void division(double left, double right, String excepted) {
-        String acutal = stringCalculator.division(left, right);
-
-        assertThat(acutal).isEqualTo(excepted);
-    }
-
-    @Test
-    @DisplayName("입력값이 null이거나 빈 공백 문자일 경우")
-    void checkNull() {
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            StringValidator.checkNull(null);
-        });
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = { "", "  " })
-    @DisplayName("입력값이 null이거나 빈 공백 문자일 경우")
-    void checkEmpty(String param) {
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            StringValidator.checkEmpty(param);
-        });
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = { "+", "-", "*", "/" })
-    @DisplayName("사칙연산 기호인 경우")
-    void correctOperator(String operator) {
-        StringValidator.checkOperator(operator);
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = { " ", "1", "a", "%" })
-    @DisplayName("사칙연산 기호가 아닌 경우")
-    void notCorrectOperator(String operator) {
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            StringValidator.checkOperator(operator);
-        });
-    }
 
     @ParameterizedTest
     @CsvSource(value = { "2 + 3 * 4 / 2, 2+3*4/2", " a     a   a , aaa" })

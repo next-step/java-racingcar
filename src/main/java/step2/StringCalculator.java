@@ -3,7 +3,7 @@ package step2;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class StringCalculator {
+public class StringCalculator extends Calculator {
     /**
      * 문자열 안의 숫자와 연산자를 분리하여 계산한다.
      * 
@@ -30,7 +30,7 @@ public class StringCalculator {
                 operator = calculatorDequeue.poll();
                 right = Double.parseDouble(calculatorDequeue.poll());
 
-                temp = calculate(operator, left, right);
+                temp = String.valueOf(calculate(operator, left, right));
 
                 calculatorDequeue.push(temp);
             }
@@ -41,41 +41,11 @@ public class StringCalculator {
                 return String.valueOf((int) result);
             }
         } catch (IllegalArgumentException e) {
-            // 메인로직에서 예외 처리 시 테스트 코드의 expecting이 throwable이라고 나오는데, 이렇게 하는게 잘못 된 방식인건지
             System.out.println("StringCalculator.calculate(String param) : " + e.getMessage() + "\nparam : " + param);
             return "error";
         }
 
         return String.valueOf(result);
-    }
-
-    /**
-     * 연산자에 맞게 left와 right를 계산한다.
-     * 
-     * @param operator : String, 연산자
-     * @param left     : double, 좌항
-     * @param right    : double, 우항
-     * @return String, 계산 결과 반환
-     */
-    public String calculate(String operator, double left, double right) {
-        StringValidator.checkOperator(operator);
-
-        // else 없애라는게 이렇게 하는게 맞는지
-        // return문이 하나가 되는게 좋다고 알고있었는데 어떻게 해야 하는지
-        if (operator.equals("+")) {
-            return plus(left, right);
-        }
-        if (operator.equals("-")) {
-            return minus(left, right);
-        }
-        if (operator.equals("*")) {
-            return multiply(left, right);
-        }
-        if (operator.equals("/")) {
-            return division(left, right);
-        }
-
-        return null;
     }
 
     /**
@@ -107,11 +77,11 @@ public class StringCalculator {
         for (int i = 0; i < splitedParamArr.length; i++) {
             StringValidator.checkEmpty(splitedParamArr[i]);
 
-            if (isNumber(splitedParamArr[i])) {
+            if (StringValidator.isNumber(splitedParamArr[i])) {
                 temp.append(splitedParamArr[i]);
                 afterOperator = false;
             }
-            if (!isNumber(splitedParamArr[i])) {
+            if (!StringValidator.isNumber(splitedParamArr[i])) {
                 if (afterOperator) {
                     throw new IllegalArgumentException("수식이 잘못되었습니다.");
                 }
@@ -126,48 +96,4 @@ public class StringCalculator {
             calculatorDequeue.add(temp.toString());
         }
     }
-    /**
-     * left와 right를 더해준다.
-     * 
-     * @param left  : double, 더할 값
-     * @param right : double, 더할 값
-     * @return String, 더한 값을 반환
-     */
-    public String plus(double left, double right) {
-        return String.valueOf(left + right);
-    }
-
-    /**
-     * left에서 right를 뺀다.
-     * 
-     * @param left  : double, 뺄셈 대상
-     * @param right : double, left에서 빼줄 값
-     * @return String, left에서 right를 뺀 값을 반환
-     */
-    public String minus(double left, double right) {
-        return String.valueOf(left - right);
-    }
-
-    /**
-     * left와 right를 곱한다.
-     * 
-     * @param left  : double, 곱할 값
-     * @param right : double, 곱할 값
-     * @return String, 곱한 값을 반환
-     */
-    public String multiply(double left, double right) {
-        return String.valueOf(left * right);
-    }
-
-    /**
-     * left에서 right를 나눈다.
-     * 
-     * @param left  : double, 나눌 대상
-     * @param right : double, 나눌 값
-     * @return String, 나눈 값을 반환
-     */
-    public String division(double left, double right) {
-        return String.valueOf(left / right);
-    }
-
 }
