@@ -28,12 +28,14 @@ public class Car {
         return this.position;
     }
 
-    public String makePositionStatus(){
+    public String makePositionStatus() {
         String result = "-".repeat(position);
         return result;
     }
+
     boolean checkPass(int number) {
-        return number >= WIN_CONDITION;
+        boolean result = number >= WIN_CONDITION;
+        return result;
     }
 
 }
