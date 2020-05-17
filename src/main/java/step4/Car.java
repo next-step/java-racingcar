@@ -36,6 +36,10 @@ public class Car {
     return new Car(name, 0);
   }
 
+  public static Car of (int position) {
+    return new Car("Car", position);
+  }
+
   public static void validatePosition (int position) {
     if (position < 0) throw new IllegalArgumentException("자동차의 위치는 0 이상만 가능합니다.");
   }
