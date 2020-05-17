@@ -10,12 +10,14 @@ public class Car {
     this.position = 0;
   }
 
-  public void move () {
+  public Car move () {
     this.position += 1;
+    return this;
   }
 
-  public void move (int n) {
+  public Car move (int n) {
     this.position += n;
+    return this;
   }
 
   public String getPositionString () {
