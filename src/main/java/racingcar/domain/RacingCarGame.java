@@ -2,17 +2,22 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingCarGame {
-    private static final int BOUND = 10;
+
     private List<Car> cars;
+    private final int moveCount;
+
+    public RacingCarGame(int carCount, int moveCount) {
+        this.cars = createCars(carCount);
+        this.moveCount = moveCount;
+    }
 
     public List<Car> getCars() {
         return cars;
     }
 
-    public List<Car> createCars(int carCount) {
+    private List<Car> createCars(int carCount) {
         cars = new ArrayList<>();
 
         for (int i = 0; i < carCount; i++) {
@@ -22,10 +27,17 @@ public class RacingCarGame {
         return cars;
     }
 
-    public GameResult execute() {
+    public void execute(Strategy strategy) {
+        for (int i = 0; i < moveCount; i++) {
+            GameResult result = carRacing(strategy);
+            result.displayResult();
+        }
+    }
+
+    private GameResult carRacing(Strategy strategy) {
         cars.forEach(car -> {
-            int random = new Random().nextInt(BOUND);
-            car.move(random);
+            int randomNumber = strategy.getNumber();
+            car.move(randomNumber);
         });
 
         return new GameResult(cars);

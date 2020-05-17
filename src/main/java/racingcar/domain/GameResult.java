@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.view.OutputView;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,5 +29,9 @@ public class GameResult {
         }
 
         return sb.toString();
+    }
+
+    public void displayResult() {
+        OutputView.printOut(this);
     }
 }

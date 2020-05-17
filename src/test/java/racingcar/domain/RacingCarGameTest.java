@@ -14,16 +14,24 @@ public class RacingCarGameTest {
     @DisplayName("execute 메소드는 레이싱 게임을 실행한다.")
     void execute() {
         // given
-        int carCount = 3;
-        RacingCarGame racingCarGame = new RacingCarGame();
-        racingCarGame.createCars(carCount);
+        int carCount = 1;
+        int moveCount = 2;
+        RacingCarGame racingCarGame = new RacingCarGame(carCount, moveCount);
 
         // when
-        racingCarGame.execute();
+        racingCarGame.execute(new FixedNumberStrategy());
         List<Car> cars = racingCarGame.getCars();
 
         // then
         assertThat(cars).isNotNull();
         assertThat(cars.size()).isEqualTo(carCount);
+        assertThat(cars.get(0).getPosition()).isEqualTo(moveCount);
+    }
+
+    private static class FixedNumberStrategy implements Strategy {
+        @Override
+        public int getNumber() {
+            return 5;
+        }
     }
 }
