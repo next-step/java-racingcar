@@ -6,11 +6,11 @@ public class RandomNumberMoveStrategy implements MoveStrategy {
 
   private final Random RANDOM;
 
-  private RandomNumberMoveStrategy() {
+  public RandomNumberMoveStrategy() {
     this(new Random());
   }
 
-  private RandomNumberMoveStrategy(final Random RANDOM) {
+  public RandomNumberMoveStrategy(final Random RANDOM) {
     this.RANDOM = RANDOM;
   }
 
@@ -22,9 +22,5 @@ public class RandomNumberMoveStrategy implements MoveStrategy {
   @Override
   public boolean isMoved (int number) {
     return number >= 4;
-  }
-
-  public static MoveStrategy of () {
-    return new RandomNumberMoveStrategy();
   }
 }
