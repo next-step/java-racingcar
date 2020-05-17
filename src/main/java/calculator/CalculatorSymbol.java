@@ -7,7 +7,7 @@ public class CalculatorSymbol {
     private CalculatorSymbol() {
     }
 
-    public static CalculatorSymbol getInstance() {
+    public static final CalculatorSymbol getInstance() {
 
         if (calculatorSymbol == null) {
             calculatorSymbol = new CalculatorSymbol();
