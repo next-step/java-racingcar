@@ -12,17 +12,40 @@ import static org.junit.jupiter.api.Assertions.*;
 class CalculatorSymbolTest {
 
     private CalculatorSymbol calculatorSymbol;
+    private int firstNum = 4;
+    private int secondNum = 2;
 
     @BeforeEach
     void setUp() {
         calculatorSymbol = new CalculatorSymbol();
     }
 
+    @DisplayName("더하기 테스트")
+    @Test
+    void findTypeAndAdd() {
+
+        int result = calculatorSymbol.findTypeAndCalculator(firstNum, secondNum, "+");
+        assertThat(result).isEqualTo(6);
+    }
+
+    @DisplayName("빼기 테스트")
+    @Test
+    void findTypeAndSubtract() {
+        int result = calculatorSymbol.findTypeAndCalculator(firstNum, secondNum, "-");
+        assertThat(result).isEqualTo(2);
+    }
+
+    @DisplayName("나눗셈 테스트")
+    @Test
+    void findTypeAndDivision() {
+        int result = calculatorSymbol.findTypeAndCalculator(firstNum, secondNum, "/");
+        assertThat(result).isEqualTo(2);
+    }
+
     @DisplayName("계산 테스트")
-    @ParameterizedTest
-    @CsvSource(value = {"+:6", "-:2", "/:2", "*:8"}, delimiter = ':')
-    void findTypeAndCalculator(String input, int expected) {
-        int result = calculatorSymbol.findTypeAndCalculator(4, 2, input);
-        assertThat(result).isEqualTo(expected);
+    @Test
+    void findTypeAndMultiply() {
+        int result = calculatorSymbol.findTypeAndCalculator(firstNum, secondNum, "*");
+        assertThat(result).isEqualTo(8);
     }
 }
