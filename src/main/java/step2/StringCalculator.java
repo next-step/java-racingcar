@@ -19,7 +19,7 @@ public class StringCalculator {
         String temp = "";
 
         try {
-            checkNull(param);
+            StringValidator.checkNull(param);
 
             param = removeWhiteSpace(param);
 
@@ -57,7 +57,7 @@ public class StringCalculator {
      * @return String, 계산 결과 반환
      */
     public String calculate(String operator, double left, double right) {
-        checkOperator(operator);
+        StringValidator.checkOperator(operator);
 
         // else 없애라는게 이렇게 하는게 맞는지
         // return문이 하나가 되는게 좋다고 알고있었는데 어떻게 해야 하는지
@@ -104,7 +104,7 @@ public class StringCalculator {
         boolean afterOperator = true;
 
         for (int i = 0; i < splitedParamArr.length; i++) {
-            checkEmpty(splitedParamArr[i]);
+            StringValidator.checkEmpty(splitedParamArr[i]);
 
             if (isNumber(splitedParamArr[i])) {
                 temp.append(splitedParamArr[i]);
@@ -184,53 +184,6 @@ public class StringCalculator {
      */
     public String division(double left, double right) {
         return String.valueOf(left / right);
-    }
-
-    /**
-     * null일경우 IllegalArgumentException throw
-     * 
-     * @param param : String 판단할 문자열
-     */
-    public void checkNull(String param) {
-        if (param == null) {
-            throw new IllegalArgumentException("입력값이 null입니다.");
-        }
-    }
-
-    /**
-     * 빈 문자열이거나 빈 공백 문자열일 경우 IllegalArgumentException throw
-     * 
-     * @param param : String 판단할 문자열
-     * @throws IllegalArgumentException
-     */
-    public void checkEmpty(String param) throws IllegalArgumentException {
-        String[] splitedStringsBySpace = param.split(" ");
-
-        for (String splitedString : splitedStringsBySpace) {
-            if (!splitedString.isEmpty()) {
-                return;
-            }
-        }
-
-        throw new IllegalArgumentException("입력값이 빈 문자열 입니다.");
-    }
-
-    /**
-     * 입력받은 문자열(param)이 사칙연산 기호가 아니면 IllegalArgumentException
-     * 
-     * @param param : String, 판단할 문자열
-     * @throws IllegalArgumentException
-     */
-    public void checkOperator(String param) throws IllegalArgumentException {
-        String[] correctOperators = { "+", "-", "*", "/" };
-
-        for (String correctOperator : correctOperators) {
-            if (correctOperator.equals(param)) {
-                return;
-            }
-        }
-
-        throw new IllegalArgumentException("올바른 사칙연산 기호가 아닙니다.");
     }
 
 }

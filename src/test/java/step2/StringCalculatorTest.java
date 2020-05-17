@@ -55,7 +55,7 @@ class StringCalculatorTest {
     @DisplayName("입력값이 null이거나 빈 공백 문자일 경우")
     void checkNull() {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            stringCalculator.checkNull(null);
+            StringValidator.checkNull(null);
         });
     }
 
@@ -64,7 +64,7 @@ class StringCalculatorTest {
     @DisplayName("입력값이 null이거나 빈 공백 문자일 경우")
     void checkEmpty(String param) {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            stringCalculator.checkEmpty(param);
+            StringValidator.checkEmpty(param);
         });
     }
 
@@ -72,7 +72,7 @@ class StringCalculatorTest {
     @ValueSource(strings = { "+", "-", "*", "/" })
     @DisplayName("사칙연산 기호인 경우")
     void correctOperator(String operator) {
-        stringCalculator.checkOperator(operator);
+        StringValidator.checkOperator(operator);
     }
 
     @ParameterizedTest
@@ -80,7 +80,7 @@ class StringCalculatorTest {
     @DisplayName("사칙연산 기호가 아닌 경우")
     void notCorrectOperator(String operator) {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            stringCalculator.checkOperator(operator);
+            StringValidator.checkOperator(operator);
         });
     }
 
