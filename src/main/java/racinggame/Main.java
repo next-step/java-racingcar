@@ -1,14 +1,22 @@
 package racinggame;
 
+import racinggame.game.RacingGame;
+import racinggame.view.InputView;
+import racinggame.view.ResultView;
+
 public class Main {
     public static void main(String[] args) {
-        int carCount = InputView.enterCarCount();
-        int round = InputView.enterRound();
+        String[] carNames = InputView.inputCarNames();
+        int round = InputView.inputRound();
 
-        RacingGame racingGame = new RacingGame(carCount, round, new RandomMovableStrategy());
-        racingGame.start();
+        RacingGame racingGame = new RacingGame(carNames);
 
-        ResultView resultView = new ResultView(racingGame.getResultCarPositions());
-        resultView.show();
+        ResultView.showTitle();
+
+        for (int i = 0; i < round; i++) {
+            ResultView.showCarPositions(racingGame.start());
+        }
+
+        ResultView.showWinnerMessage(racingGame.getWinnerCarNames());
     }
 }
