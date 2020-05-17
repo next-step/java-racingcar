@@ -48,4 +48,20 @@ class EmptyCheckUtilTest {
         assertThatThrownBy(() -> EmptyCheckUtil.emptyCheck(argument))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("null Array 객체 테스트")
+    @Test
+    void emptyCheckUtilsTestByNullArray() {
+        Object[] argument = null;
+        assertThatThrownBy(() -> EmptyCheckUtil.emptyCheck(argument))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("비어있는 Array 객체 테스트")
+    @Test
+    void emptyCheckUtilsTestByEmptyArray() {
+        Object[] argument = new Object[]{};
+        assertThatThrownBy(() -> EmptyCheckUtil.emptyCheck(argument))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
