@@ -1,8 +1,8 @@
 package racinggame.game;
 
-import racinggame.car.MovableStrategy;
-import racinggame.car.RacingCars;
-import racinggame.car.RandomMovableStrategy;
+import racinggame.domain.car.MovableStrategy;
+import racinggame.domain.car.RacingCars;
+import racinggame.domain.car.RandomMovableStrategy;
 
 public class RacingGame {
 

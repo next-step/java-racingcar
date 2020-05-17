@@ -1,4 +1,4 @@
-package racinggame.car;
+package racinggame.domain.car;
 
 import java.util.Arrays;
 import java.util.Comparator;
