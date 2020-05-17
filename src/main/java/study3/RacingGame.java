@@ -12,11 +12,14 @@ public class RacingGame {
 	RandomGenerator rg = new RandomGenerator();
 	OutputView rv = new OutputView();
 
-	private int[] carPositions = { 0, 0, 0 }; // 자동차들의 초기 위치
+	private int[] carPositions; // 자동차들의 초기 위치
 
 	// move 로직 start
 	// 이동한 값을 int 배열에 저장
 	public int[] move(int value, int number) {
+		
+		carPositions = new int[value]; // 자동차 개수 생성
+		
 		for (int j = 0; j < number; j++) { // 시도할 횟수만큼 for문
 			for (int i = 0; i < value; i++) { // 자동차개수만큼 for문
 

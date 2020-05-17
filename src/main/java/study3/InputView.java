@@ -16,7 +16,7 @@ public class InputView {
 
 		System.out.println("시도할 횟수는 몇 회 인가요?");
 		int number = scanner.nextInt();
-
+				
 		System.out.println("실행 결과");
 
 		rg.move(value, number); // 자동차개수, 시도할 횟수전달
