@@ -23,6 +23,10 @@ public class RacingCars {
         this.racingCars.forEach(RacingCar::move);
     }
 
+    public void changeMovableStrategy(MovableStrategy movableStrategy) {
+        this.racingCars.forEach(racingCar -> racingCar.setMovableStrategy(movableStrategy));
+    }
+
     public List<RacingCar> getRacingCars() {
         return this.racingCars;
     }
