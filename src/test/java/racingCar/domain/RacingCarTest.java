@@ -9,7 +9,7 @@ class RacingCarTest {
     @Test
     void move() {
         // Given
-        RacingCar racingCar = new RacingCar(1);
+        RacingCar racingCar = new RacingCar();
 
         // When
         racingCar.move(3);
@@ -19,6 +19,6 @@ class RacingCarTest {
         racingCar.move(4);
 
         //Then
-        assertThat(racingCar.getPosition()).isEqualTo(4);
+        assertThat(racingCar.getPosition()).isEqualTo(3);
     }
 }

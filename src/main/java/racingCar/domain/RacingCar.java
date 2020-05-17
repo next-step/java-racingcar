@@ -4,10 +4,6 @@ public class RacingCar implements Movable {
     private static final int MOVABLE_MIN = 4;
     private int position;
 
-    public RacingCar(int position) {
-        this.position = position;
-    }
-
     public int getPosition() {
         return position;
     }

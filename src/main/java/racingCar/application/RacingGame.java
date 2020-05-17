@@ -1,11 +1,12 @@
-package racingCar.Application;
+package racingCar.application;
 
-import racingCar.Entity.RacingCar;
-import racingCar.Utils.MoveUtils;
+import racingCar.domain.RacingCar;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RacingGame {
     private final int carCount;
@@ -15,14 +16,13 @@ public class RacingGame {
     public RacingGame(int carCount, int time) {
         this.carCount = carCount;
         this.time = time;
+        initRacingCars();
     }
 
-    // 자동차 Position 초기값 설정
-    public void initRacingCars() {
-        racingCarList = new ArrayList<>();
-        for (int idx = 0; idx < carCount; idx++) {
-            racingCarList.add(new RacingCar(1));
-        }
+    private void initRacingCars() {
+        racingCarList = Stream.generate(RacingCar::new)
+                            .limit(carCount)
+                            .collect(Collectors.toList());
     }
 
     // TODO 구현
@@ -32,7 +32,7 @@ public class RacingGame {
 
         for (int idx = 0; idx < carCount; idx++) {
             randomNum = random.nextInt(10);
-            MoveUtils.setPosition(racingCarList.get(idx), randomNum);
+            //MoveUtils.setPosition(racingCarList.get(idx), randomNum);
         }
     }
 
