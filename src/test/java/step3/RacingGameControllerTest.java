@@ -7,10 +7,12 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import step3.controller.RacingGameController;
+import step3.exception.RoundNotFinishedException;
 
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class RacingGameControllerTest {
 
@@ -49,5 +51,26 @@ class RacingGameControllerTest {
                 Arguments.of((Object) new String[]{"TEST1", "TEST2", "TEST2"}),
                 Arguments.of((Object) new String[]{"TEST1", "TEST2", "TEST3", "TEST4"})
         );
+    }
+
+    @DisplayName("GameRound가 종료되지 않았을 때 우승자를 조회하면 RoundNotFinishedException 예외가 발생한다")
+    @Test
+    void notFinishedGameWinnerTest() {
+        RacingGameController racingGameController = RacingGameController.start(new String[]{"TEST1"}, 10);
+        racingGameController.nextRound();
+
+        assertThatExceptionOfType(RoundNotFinishedException.class)
+                .isThrownBy(racingGameController::getWinners)
+                .withMessageMatching(new RoundNotFinishedException().getMessage());
+    }
+
+    @DisplayName("GameRound가 종료되었을 때 우승자는 1명 이상이다")
+    @MethodSource("provideSourceForRacingCarsSize")
+    @ParameterizedTest
+    void finishedGameWinnerTest(String[] carNames) {
+        RacingGameController racingGameController = RacingGameController.start(carNames, 1);
+        racingGameController.nextRound();
+
+        assertThat(racingGameController.getWinners().size()).isGreaterThanOrEqualTo(1);
     }
 }

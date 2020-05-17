@@ -2,6 +2,7 @@ package step3.controller;
 
 import step3.domain.RacingCar;
 import step3.domain.RandomMoveFactory;
+import step3.exception.RoundNotFinishedException;
 import step3.exception.RoundNotFoundException;
 
 import java.util.Arrays;
@@ -41,5 +42,20 @@ public class RacingGameController {
 
     public List<RacingCar> getRacingCars() {
         return this.racingCars;
+    }
+
+    public List<RacingCar> getWinners() {
+        if (this.hasNextRound()) {
+            throw new RoundNotFinishedException();
+        }
+
+        int maxPosition = this.racingCars.stream()
+                .map(RacingCar::getPosition)
+                .max(Integer::compare)
+                .orElse(0);
+
+        return racingCars.stream()
+                .filter(racingCar -> racingCar.getPosition() == maxPosition)
+                .collect(Collectors.toList());
     }
 }

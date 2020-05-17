@@ -14,5 +14,7 @@ public class RacingGameApplication {
             racingGameController.nextRound();
             ResultView.printPosition(racingGameController.getRacingCars());
         }
+
+        ResultView.printWinner(racingGameController.getWinners());
     }
 }

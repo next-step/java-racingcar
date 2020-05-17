@@ -18,6 +18,14 @@ public class RacingCar {
         return new RacingCar(name);
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public int getPosition() {
+        return this.position;
+    }
+
     public int move(MoveStrategy moveStrategy) {
         if (moveStrategy.isMovable()) {
             this.moveCurrentPosition();

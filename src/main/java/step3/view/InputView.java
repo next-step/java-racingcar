@@ -1,5 +1,6 @@
 package step3.view;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class InputView {
@@ -16,8 +17,10 @@ public class InputView {
 
     public static String[] getRacingCarNames() {
         System.out.println(RACING_CAR_NAME_QUESTION);
-        String inputCarName = scanner.next();
-        return inputCarName.split(CAR_NAME_DELEMETER);
+        String inputCarName = scanner.nextLine();
+        return Arrays.stream(inputCarName.split(CAR_NAME_DELEMETER))
+                .map(String::trim)
+                .toArray(String[]::new);
     }
 
     public static int getGameRound() {
