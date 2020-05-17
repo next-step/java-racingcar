@@ -44,6 +44,10 @@ public class RacingCar {
                       .collect(Collectors.toList());
   }
 
+  public void setCars (List<Car> cars) {
+    this.cars = cars;
+  }
+
   public String getWinners () {
     List<Car> cars = this.cars;
     int max = cars.stream()
