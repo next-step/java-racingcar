@@ -7,6 +7,7 @@ import com.nextstep.racingcar.domain.round.Round;
 import com.nextstep.racingcar.domain.round.RoundResult;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -15,7 +16,7 @@ public class RacingGame {
     private int roundNumber;
     private List<String> driverNames;
     private List<String> results = new ArrayList<>();
-    private RacingGameResult racingGameResult;
+    private List<RoundResult> racingGameResult = new ArrayList<>();
 
     private RacingGame(int carNumber, int roundNumber, List<String> driverNames) {
         this.carNumber = carNumber;
@@ -44,21 +45,18 @@ public class RacingGame {
     public void runByDriversName(CarFactory carFactory, MoveStrategy moveStrategy) {
         Cars cars = Cars.createCarsByDriverNames(driverNames, carFactory);
 
-        List<RoundResult> roundResultList = new ArrayList<>();
         IntStream.range(0, roundNumber).forEach(num -> {
             Round round = Round.newRound(cars);
             round.moveAll(moveStrategy);
-            roundResultList.add(RoundResult.create(round.getRoundResults()));
+            this.racingGameResult.add(RoundResult.create(round.getRoundResults()));
         });
-
-        racingGameResult = RacingGameResult.create(roundResultList);
     }
 
     public List<String> getResults() {
         return this.results;
     }
 
-    public RacingGameResult getRacingGameResult() {
-        return this.racingGameResult;
+    public List<RoundResult> getRacingGameResult() {
+        return Collections.unmodifiableList(new ArrayList<>(this.racingGameResult));
     }
 }
