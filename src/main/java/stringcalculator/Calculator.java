@@ -1,6 +1,4 @@
-package study.step2;
-
-import java.util.List;
+package stringcalculator;
 
 public class Calculator {
 
