@@ -78,11 +78,13 @@ public enum Operator {
      */
     public static Operator findOperatorBySymbol(String symbol) throws IllegalArgumentException {
         Operator result = null;
+        Operator[] operators = null;
 
         StringValidator.checkNullAndEmpty(symbol);
+        operators = Operator.values();
 
-        for (Operator operator : Operator.values()) {
-            result = getOperatorBySymbol(symbol, operator);
+        for (int i = 0; i < operators.length && result == null; i++) {
+            result = getOperatorBySymbol(symbol, operators[i]);
         }
 
         if (result == null) {
