@@ -21,4 +21,7 @@ public class RacingCar {
         return position;
     }
 
+    public int getPosition() {
+        return position;
+    }
 }
