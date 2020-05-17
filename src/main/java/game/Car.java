@@ -1,9 +1,9 @@
 package game;
 
 public class Car {
-    int id;
-    int position;
-    MovePolicy movePolicy;
+    private final int id;
+    private int position;
+    private final MovePolicy movePolicy;
 
     public Car(int id, int position, MovePolicy movePolicy) {
         this.id = id;
@@ -13,5 +13,9 @@ public class Car {
 
     public void move() {
         position = movePolicy.getPosition(position);
+    }
+
+    public int getPosition() {
+        return position;
     }
 }
