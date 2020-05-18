@@ -45,7 +45,9 @@ public class GameStatus {
         return status.size();
     }
 
-    public int renderCarPostion(int car) {
+    public int renderCarPosition(int car) {
+        if( car >= size() )
+            throw new IllegalArgumentException();
         return status.get(car);
     }
 }

@@ -12,7 +12,7 @@ public class RacingGame {
         @Override
         public void render(GameStatus status) {
             for(int i = 0; i < status.size(); i ++){
-                System.out.println(CAR_PATH_CHARACTER.repeat(status.renderCarPostion(i)));
+                System.out.println(CAR_PATH_CHARACTER.repeat(status.renderCarPosition(i)));
             }
             System.out.println();
         }

@@ -33,7 +33,7 @@ public class RacingGameTest {
         });
         game.run();
         for( int i = 0 ; i < game.gameStatus.size() ; i ++ ) {
-            assertThat(game.gameStatus.renderCarPostion(i)).isEqualTo(5);
+            assertThat(game.gameStatus.renderCarPosition(i)).isEqualTo(5);
         }
     }
 
@@ -62,7 +62,24 @@ public class RacingGameTest {
             }
         });
         game.gameStatus.turn();
-        assertThat(game.gameStatus.renderCarPostion(0)).isEqualTo(1);
-        assertThat(game.gameStatus.renderCarPostion(1)).isEqualTo(2);
+        assertThat(game.gameStatus.renderCarPosition(0)).isEqualTo(1);
+        assertThat(game.gameStatus.renderCarPosition(1)).isEqualTo(2);
+    }
+
+    @Test
+    public void racingGameInvalidTurn() {
+        RacingGame game = new RacingGame(new InputView() {
+            @Override
+            public int getCars() {
+                return 0;
+            }
+
+            @Override
+            public int getCount() {
+                return 0;
+            }
+        });
+        game.run();
+        assertThatIllegalArgumentException().isThrownBy(() -> game.gameStatus.renderCarPosition(0));
     }
 }
