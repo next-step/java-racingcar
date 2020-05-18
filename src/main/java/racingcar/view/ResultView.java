@@ -17,7 +17,6 @@ public class ResultView {
 
     private static void print(CarPositions carPositions) {
         for (int i = 0; i < carPositions.size(); i++) {
-            System.out.print(":");
             print(carPositions.get(i));
         }
 
@@ -25,6 +24,8 @@ public class ResultView {
     }
 
     private static void print(CarPosition carPosition) {
+        System.out.print(String.format("%s:", carPosition.getName()));
+
         for (int i = 0; i < carPosition.getPosition(); i++) {
             System.out.print("-");
         }
