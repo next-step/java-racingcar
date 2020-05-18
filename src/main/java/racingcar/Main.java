@@ -12,7 +12,7 @@ public class Main {
         int carCount = inputView.inputCarCountJoinRace();
         int raceTime = inputView.inputRaceTime();
 
-        Dice dice = new RacingDice(RacingDice.RACING_MAX_BOUND);
+        Dice dice = RacingDice.newInstance();
         Racing race = new Racing(dice, raceTime);
         race.joinRace(carCount);
 

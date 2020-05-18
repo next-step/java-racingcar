@@ -24,7 +24,7 @@ class RacingDiceTest {
 
     public static Stream<Arguments> getGenerateNumbers() {
         List<Integer> numbers = new ArrayList<>();
-        Dice dice = new RacingDice(RacingDice.RACING_MAX_BOUND);
+        Dice dice = RacingDice.newInstance();
         for(int i = 0 ; i < 100 ; i++) {
             numbers.add(dice.generate());
         }
