@@ -2,7 +2,7 @@ package step3;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+
 
 public class RacingGame {
 
@@ -11,26 +11,25 @@ public class RacingGame {
 
     public RacingGame() {
         // set new car
-        int carsCnt = Input.setCarsCount();
+        int carsCnt = InputView.setCarsCount();
         for (int i = 0; i < carsCnt; i++) {
             cars.add(new Car(i));
         }
-        tryTimes = Input.setPlayCounts();
+        tryTimes = InputView.setPlayCounts();
     }
 
     public void play() {
-
-        Random random = new Random();
-        System.out.println(tryTimes + 1 + " Try.. ");
+        System.out.println(tryTimes + 1 + " th Try.. ");
+        ResultView resultView = new ResultView(cars);
         for (int i = 0; i < tryTimes; i++) {
             for (Car car : cars) {
                 car.move();
-                car.printCurrentLocation();
             }
+            resultView.viewResult();
         }
-
-
     }
+
+
 
 
 }

@@ -24,27 +24,16 @@ public class Car {
     }
 
     public void move() {
+
         int movingCnt = random.nextInt(MAX_MOVE_LIMIT);
-        if (movingCnt > MOVE_START_AT) {
-            location += movingCnt;
-        }
+        location += movingCnt > MOVE_START_AT ? movingCnt : 0;
+
     }
 
     public void printCurrentLocation() {
         //System.out.print(CAR_NO);
         System.out.println(new String(new char[location]).replace("\0", "-"));
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

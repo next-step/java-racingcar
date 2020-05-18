@@ -2,7 +2,7 @@ package step3;
 
 import java.util.Scanner;
 
-public class Input {
+public class InputView {
 
     private static Scanner scanner;
 
