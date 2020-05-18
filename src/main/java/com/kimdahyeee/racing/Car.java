@@ -2,6 +2,7 @@ package com.kimdahyeee.racing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Car {
     private static final int GO_STRAIGHT_LIMIT = 4;
@@ -28,6 +29,6 @@ public class Car {
     }
 
     protected int getRandomNumber() {
-        return (int) ((Math.random() * 10) - 1);
+        return new Random().nextInt(10);
     }
 }
