@@ -18,7 +18,7 @@ public class InputView {
         System.out.println("자동차 대수는 몇 대 인가요?");
         try{
             return scanner.nextInt();
-        }catch (InputMismatchException e) {
+        } catch (InputMismatchException e) {
             throw new InputMismatchException("숫자가 아닙니다.");
         }
     }
@@ -27,7 +27,7 @@ public class InputView {
         System.out.println("시도할 회수는 몇 회 인가요?");
         try{
             return scanner.nextInt();
-        }catch (InputMismatchException e) {
+        } catch (InputMismatchException e) {
             throw new InputMismatchException("숫자가 아닙니다.");
         }
     }

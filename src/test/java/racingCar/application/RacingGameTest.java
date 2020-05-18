@@ -3,6 +3,7 @@ package racingCar.application;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racingCar.domain.MoveBehavior;
 import racingCar.domain.RacingCar;
 
 import java.util.List;
@@ -32,7 +33,8 @@ class RacingGameTest {
         RacingGame racingGame = new RacingGame(3, 3);
         List<RacingCar> racingCarList = racingGame.getRacingCarList();
 
-        racingCarList.forEach(racingCar -> racingCar.move(isMove));
+        MoveBehavior moveBehavior = () -> isMove;
+        racingGame.move(moveBehavior);
 
         racingCarList = racingCarList.stream()
                                     .filter(racingCar -> racingCar.getPosition() == expected)

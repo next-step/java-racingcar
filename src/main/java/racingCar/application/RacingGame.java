@@ -33,8 +33,7 @@ public class RacingGame {
     }
 
     // TODO 구현
-    public void move() {
-        MoveBehavior moveBehavior = new RandomMove();
+    public void move(MoveBehavior moveBehavior) {
         racingCarList.forEach(racingCar -> racingCar.move(moveBehavior.isMove()));
     }
 

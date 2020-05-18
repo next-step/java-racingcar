@@ -1,6 +1,7 @@
 package racingCar;
 
 import racingCar.application.RacingGame;
+import racingCar.domain.RandomMove;
 import racingCar.ui.InputView;
 import racingCar.ui.ResultView;
 
@@ -17,7 +18,7 @@ public class Main {
         //실행 & 출력
         int time = racingGame.getTime();
         for (int idx = 0; idx < time; idx++) {
-            racingGame.move();
+            racingGame.move(new RandomMove());
             resultView.printCarsPosition(racingGame.getRacingCarList());
         }
     }
