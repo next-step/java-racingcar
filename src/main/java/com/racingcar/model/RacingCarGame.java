@@ -6,43 +6,40 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toList;
 
 public class RacingCarGame {
 
     private Integer countOfAttempt;
-    private List<RacingCar> racingRacingCars;
+    private List<RacingCar> racingCars;
 
     public RacingCarGame(List<String> racingCarNames, Integer countOfAttempt) {
         if (CollectionUtils.isEmpty(racingCarNames)) {
             throw new IllegalArgumentException("플레이할 자동차의 개수는 0개 이상입력해주세요.");
         }
 
-        initRacingCarWithName(racingCarNames);
+
+        this.racingCars = new ArrayList<>();
         this.countOfAttempt = countOfAttempt;
+        initRacingCarWithName(racingCarNames);
     }
 
     private void initRacingCarWithName(List<String> racingCarNames) {
-        if (CollectionUtils.isEmpty(this.racingRacingCars)) {
-            this.racingRacingCars = new ArrayList<>();
-        }
-
         for (String racingCarName : racingCarNames) {
             RacingCar racingCar = new RacingCar(1, racingCarName);
-            racingRacingCars.add(racingCar);
+            racingCars.add(racingCar);
         }
     }
 
     public void playRacingGame() {
-        for (RacingCar racingCar : this.racingRacingCars) {
+        for (RacingCar racingCar : this.racingCars) {
             racingCar.movingRacingCar();
         }
     }
 
-    public List<RacingCar> getRacingRacingCars() {
-        return racingRacingCars;
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
     }
 
     public Integer getCountOfAttempt() {
@@ -50,7 +47,7 @@ public class RacingCarGame {
     }
 
     public List<RacingCar> extractWinner() {
-        return CollectionUtils.emptyIfNull(this.racingRacingCars)
+        return CollectionUtils.emptyIfNull(this.racingCars)
                 .stream()
                 .collect(Collectors.groupingBy(
                         RacingCar::getRacingStatus,

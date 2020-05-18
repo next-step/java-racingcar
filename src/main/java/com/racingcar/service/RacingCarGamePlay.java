@@ -12,15 +12,15 @@ public class RacingCarGamePlay {
     private RacingCarPrinter racingCarPrinter;
 
     public RacingCarGamePlay() {
-        this.racingCarInput = new ScannerRacingCarInput();
-        this.racingCarPrinter = new DefaultRacingCarPrinter();
+        this.racingCarInput = new RacingCarInput();
+        this.racingCarPrinter = new RacingCarPrinter();
     }
 
     public void playRacingCarGame() {
         RacingCarGame racingCarGame = racingCarInput.inputRacingCarData();
         IntStream.range(0, racingCarGame.getCountOfAttempt()).forEach(i -> {
             racingCarGame.playRacingGame();
-            racingCarPrinter.printRacingCar(racingCarGame.getRacingRacingCars());
+            racingCarPrinter.printRacingCar(racingCarGame.getRacingCars());
         });
 
         List<RacingCar> racingCars = racingCarGame.extractWinner();
