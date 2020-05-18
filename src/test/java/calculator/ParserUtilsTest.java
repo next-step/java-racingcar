@@ -14,13 +14,13 @@ class ParserUtilsTest {
     @Test
     void getNumberError() {
         String[] strings = {"a"};
-        assertThatIllegalArgumentException().isThrownBy(() -> ParserUtils.getNumber(strings[0]));
+        assertThatIllegalArgumentException().isThrownBy(() -> ParserUtils.stringConvertNumber(strings[0]));
     }
 
     @DisplayName("입력값이 정상적일때 동작 테스트")
     @Test
     void getNumberSuccess() {
-        int result = ParserUtils.getNumber("1");
+        int result = ParserUtils.stringConvertNumber("1");
         assertThat(result).isEqualTo(1);
     }
 

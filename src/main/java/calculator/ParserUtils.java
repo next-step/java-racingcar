@@ -6,7 +6,7 @@ public class ParserUtils {
 
     private static final String WHITESPACE = " ";
 
-    public static int getNumber(String word) {
+    public static int stringConvertNumber(String word) {
 
         if (!word.matches("^[0-9]+$")) {
             throw new IllegalArgumentException("입력 문자가 숫자가 아닙니다.");

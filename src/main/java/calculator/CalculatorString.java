@@ -9,10 +9,10 @@ public class CalculatorString {
         String[] strings = ParserUtils.toArray(input);
         ParserUtils.checkArraySize(strings);
 
-        int total = ParserUtils.getNumber(strings[0]);
+        int total = ParserUtils.stringConvertNumber(strings[0]);
 
         for (int index = 1; index < strings.length; index += 2) {
-            total = calculatorSymbol.findTypeAndCalculator(total, ParserUtils.getNumber(strings[index + 1]), strings[index]);
+            total = calculatorSymbol.findTypeAndCalculator(total, ParserUtils.stringConvertNumber(strings[index + 1]), strings[index]);
         }
         return total;
     }
