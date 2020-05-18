@@ -13,8 +13,7 @@ public class Main {
         int raceTime = inputView.inputRaceTime();
 
         Dice dice = RacingDice.newInstance();
-        Racing race = new Racing(dice, raceTime);
-        race.joinRace(carCount);
+        Racing race = new Racing(dice, carCount, raceTime);
 
         OutputView outputView = new OutputView();
         outputView.printTitle();
