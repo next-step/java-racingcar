@@ -5,7 +5,7 @@ public class RacingCar {
     private static final int DEFAULT_POSITION = 0;
     private int position;
 
-    private RacingCar(int position) {
+    public RacingCar(int position) {
         this.position = position;
     }
 
@@ -18,6 +18,10 @@ public class RacingCar {
     }
 
     public int currentPosition() {
+        return position;
+    }
+
+    public int getPosition() {
         return position;
     }
 }

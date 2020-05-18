@@ -26,9 +26,10 @@ public class RacingGame {
     }
 
     public List<RacingCar> startRacing() {
-        List<RacingCar> newRacingCars = start();
-
-        return newRacingCars;
+        start();
+        return racingCars.stream()
+            .map(car -> new RacingCar(car.getPosition()))
+            .collect(Collectors.toList());
     }
 
     private List<RacingCar> start() {
