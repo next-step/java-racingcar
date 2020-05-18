@@ -1,4 +1,4 @@
-package racingGameMain.utils;
+package racingGame.utils;
 
 public class StringUtils {
 	public static int parseInt(String targetString) {

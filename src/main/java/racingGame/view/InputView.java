@@ -1,8 +1,8 @@
-package racingGameMain.view;
+package racingGame.view;
 
 import java.util.Scanner;
 
-import racingGameMain.utils.StringUtils;
+import racingGame.utils.StringUtils;
 
 public class InputView {
 	public static int inputCountOfCars(Scanner sc) {
@@ -10,7 +10,7 @@ public class InputView {
 		return StringUtils.parseInt(sc.nextLine());
 	}
 	
-	public static int inputCountOfGames(Scanner sc) {
+	public static int inputCountOfTimes(Scanner sc) {
 		System.out.println("시도할 횟수는 몇 회 인가요");
 		return  StringUtils.parseInt(sc.nextLine());
 	}
