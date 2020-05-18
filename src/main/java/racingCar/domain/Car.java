@@ -1,5 +1,5 @@
 package racingCar.domain;
 
-public interface Movable {
+public interface Car {
     public void move(int randomNumber);
 }

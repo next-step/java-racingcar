@@ -13,9 +13,16 @@ public class RacingGame {
     private List<RacingCar> racingCarList;
 
     public RacingGame(int carCount, int time) {
+        validateRange(carCount, time);
         this.carCount = carCount;
         this.time = time;
         initRacingCars();
+    }
+
+    private void validateRange(int carCount, int time) {
+        if (carCount <= 0 || time <= 0) {
+            throw new IllegalArgumentException("0이하는 경기를 진행할 수가 없습니다.");
+        }
     }
 
     private void initRacingCars() {
@@ -27,11 +34,7 @@ public class RacingGame {
     // TODO 구현
     public void move() {
         Random random = new Random();
-
-        for (int idx = 0; idx < carCount; idx++) {
-            int randomNum = random.nextInt(10);
-            racingCarList.get(idx).move(randomNum);
-        }
+        racingCarList.forEach(racingCar -> racingCar.move(random.nextInt(10)));
     }
 
     public int getTime() {

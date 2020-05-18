@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         //Input
         InputView inputView = new InputView();
-        RacingGame racingGame = inputView.setStartInput();
+        RacingGame racingGame = inputView.settingRacingGame();
 
         //OutPut
         ResultView resultView = new ResultView();

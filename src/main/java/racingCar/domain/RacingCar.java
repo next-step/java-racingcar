@@ -1,6 +1,6 @@
 package racingCar.domain;
 
-public class RacingCar implements Movable {
+public class RacingCar implements Car {
     private static final int MOVABLE_MIN = 4;
     private int position;
 
