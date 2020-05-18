@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.Random;
 
 public class RacingGame {
-    private Random random = new Random();
+    private Random random;
     private String[] names;
     private int tryCount;
     private int[] carPositions;
@@ -30,10 +30,25 @@ public class RacingGame {
         return this.carPositions;
     }
 
-    public void goCar(int[] carPositions) {
-        for(int i = 0; i < carPositions.length; ++i) {
-            if (random.nextInt() > 4) {
-                carPositions[i]++;
+    public void setRandom(Random random) {
+        this.random = random;
+    }
+
+    public Random getRandom() {
+        return random;
+    }
+
+    public RacingGame() {
+        this.random = new Random();
+    }
+
+    public void goCar() {
+        if (this.random == null) {
+            this.random = new Random();
+        }
+        for(int i = 0; i < this.carPositions.length; ++i) {
+            if (this.random.nextInt() >= 4) {
+                this.carPositions[i]++;
             }
         }
     }

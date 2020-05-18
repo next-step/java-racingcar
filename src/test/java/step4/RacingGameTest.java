@@ -2,7 +2,10 @@ package step4;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Java6Assertions.catchThrowable;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
+import java.util.Random;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -109,5 +112,21 @@ class RacingGameTest {
         assertThat(racingGame.getTryCount()).isEqualTo(tryCount);
         assertThat(racingGame.getCarPositions()).hasSize(4);
         assertThat(racingGame.getCarPositions()).containsOnly(0);
+    }
+
+    @Test
+    void goCar() {
+        //given
+        racingGame.initialize("a,b,c",3);
+        Random random = mock(Random.class);
+        racingGame.setRandom(random);
+        when(random.nextInt())
+            .thenReturn(5);
+
+        //when
+        racingGame.goCar();
+
+        //then
+        assertThat(racingGame.getCarPositions()).containsOnly(1);
     }
 }

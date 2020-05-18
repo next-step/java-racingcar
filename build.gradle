@@ -15,6 +15,8 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+
+    testCompile group: 'org.mockito', name: 'mockito-all', version: '1.8.4'
 }
 
 
