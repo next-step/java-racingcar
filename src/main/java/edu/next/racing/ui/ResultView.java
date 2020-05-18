@@ -11,6 +11,7 @@ import edu.next.racing.model.Car;
 import edu.next.racing.model.RacingGame;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 레이싱 게임 결과값 출력 ui 클래스
@@ -20,38 +21,10 @@ import java.util.ArrayList;
  */
 public class ResultView {
 
-    /**
-     * 레이싱 게임 객체를 받아 횟수별 iterator
-     * @param racingGame
-     */
-    public void displayRacingResult(RacingGame racingGame) {
-        int time = racingGame.getTime();
-
+    public void displayRacingResult(String[] resultString) {
         System.out.println("결과 출력");
-        for (int i = 0; i < time; i++) {
-            this.carPositionIterator(racingGame.move());
-            System.out.println();
-        }
-    }
-
-    /**
-     * 자동차 객체 리스트 iterator
-     * @param cars
-     */
-    private void carPositionIterator(ArrayList<Car> cars) {
-        for (Car car : cars) {
-            this.displayCarLine(car.getPosition());
-            System.out.println();
-        }
-    }
-
-    /**
-     * 자동차 움직인 라인 출력
-     * @param position
-     */
-    private void displayCarLine(int position) {
-        for (int i = 0; i < position; i++) {
-            System.out.print("-");
+        for (String result : resultString){
+            System.out.println(result);
         }
     }
 

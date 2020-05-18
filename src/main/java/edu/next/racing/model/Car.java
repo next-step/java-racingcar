@@ -23,7 +23,7 @@ public class Car {
      * @param position 위치 설정
      */
     public void setPosition(int position) {
-        this.position += position;
+        this.position = position;
     }
 
     /**
@@ -31,6 +31,10 @@ public class Car {
      */
     public int getPosition() {
         return position;
+    }
+
+    public void move(int distance) {
+        this.position += distance;
     }
 
 }

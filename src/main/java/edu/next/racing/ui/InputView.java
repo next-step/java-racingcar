@@ -7,6 +7,8 @@
 
 package edu.next.racing.ui;
 
+import java.util.Scanner;
+
 /**
  * 레이싱게임 입력 ui 클래스
  *
@@ -15,14 +17,22 @@ package edu.next.racing.ui;
  */
 public class InputView {
 
-    /** 자동차 객체 생성 사용자 안내 ui */
-    public void displayCarCountInputUi() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
+    public static final String CAR_INPUT_MESSAGE = "자동차 대수는 몇 대 인가요?";
+    public static final String GAME_TIME_INPUT_MESSAGE = "시도할 회수는 몇 회 인가요?";
+    private Scanner sc = new Scanner(System.in);
+
+    public int displayCreateCarCountUi() {
+        printString(CAR_INPUT_MESSAGE);
+        return sc.nextInt();
     }
 
-    /** 자동차 게임 횟수 사용자 안내 ui */
-    public void displayRacingLoopInputUi() {
-        System.out.println("시도할 회수는 몇 회 인가요?");
+    public int displayGameTimeInputUi() {
+        printString(GAME_TIME_INPUT_MESSAGE);
+        return sc.nextInt();
+    }
+
+    private void printString(String message) {
+        System.out.println(message);
     }
 
 }

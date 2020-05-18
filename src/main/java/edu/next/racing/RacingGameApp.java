@@ -20,28 +20,20 @@ import java.util.Scanner;
  * @version 1.0.0
  * @author GwangJunChoi
  */
-public class MainView {
+public class RacingGameApp {
 
     /** 자동차 경주 메인 */
     public static void main(String[] args) {
-
         /** input ui */
         InputView inputView = new InputView();
         /** racingGame model */
         RacingGame racingGame = new RacingGame();
         /** result ui */
         ResultView resultView = new ResultView();
-        /** car list */
-        ArrayList<Car> cars = new ArrayList<>();
-        Scanner sc = new Scanner(System.in);
 
-        inputView.displayCarCountInputUi();     /** racingGame objects execute */
-        racingGame.setCars(sc.nextInt());       /** racingGame objects execute */
-        inputView.displayRacingLoopInputUi();   /** racingGame objects execute */
-        racingGame.setTime(sc.nextInt());       /** racingGame objects execute */
-
-        /** 자동차 레이싱 결과 출력 */
-        resultView.displayRacingResult(racingGame);
+        racingGame.setCars(inputView.displayCreateCarCountUi());
+        racingGame.setTime(inputView.displayGameTimeInputUi());
+        resultView.displayRacingResult(racingGame.execute());
 
     }
 

@@ -10,12 +10,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class RacingTest {
 
     private RacingGame racingGame = new RacingGame();
-    ArrayList<Car> cars;
+    String[] cars;
 
     private Car car = new Car();
     private int carPostion = 0;
@@ -23,7 +23,8 @@ public class RacingTest {
     @BeforeEach
     void setRacing() {
         racingGame.setCars(3);
-        cars = racingGame.move();
+        racingGame.setTime(3);
+        cars = racingGame.execute();
     }
 
     @DisplayName("자동차 객체 생성 테스트")
@@ -37,7 +38,7 @@ public class RacingTest {
     @ValueSource(ints = { 1,0,1,0,1 })
     void carPositionTest(int i) {
         carPostion += i;
-        car.setPosition(i);
+        car.move(i);
         assertThat(car.getPosition()).isEqualTo(carPostion);
     }
 }
