@@ -13,7 +13,7 @@ public class Car {
     // 구분
     private int CAR_NO;
     // 위치
-    private int location = 0;
+    private int location = 1;
 
     private Car() {
         // CAR_NO = 0;
