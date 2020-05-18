@@ -18,7 +18,7 @@ public class Car {
     return name;
   }
 
-  public int updatePosition(int random) {
+  protected int updatePosition(int random) {
     if (random >= 4) {
       this.position = this.position + 1;
     }
