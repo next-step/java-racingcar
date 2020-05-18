@@ -9,19 +9,29 @@ import static org.assertj.core.api.Assertions.*;
 public class RacingGameTest {
     @Test
     public void stdRacingGameTest(){
-        RacingGame game = new RacingGame();
-        game.game();
+        RacingGame game = new RacingGame(StandardInputView.create());
+        game.run();
     }
 
     @Test
     public void racingGameTestWithKeepRun(){
-        RacingGame game = new RacingGame(3, 5).setRandomModule(new Random(){
+        RacingGame game = new RacingGame(new InputView() {
+            @Override
+            public int getCars() {
+                return 3;
+            }
+
+            @Override
+            public int getCount() {
+                return 5;
+            }
+        }).randomModule(new Random(){
             @Override
             public int nextInt(int bound) {
                 return bound - 1;
             }
         });
-        game.game();
+        game.run();
         for( int i = 0 ; i < game.gameStatus.size() ; i ++ ) {
             assertThat(game.gameStatus.renderCarPostion(i)).isEqualTo(5);
         }
@@ -29,7 +39,17 @@ public class RacingGameTest {
 
     @Test
     public void racingGameTestWithFirstCarStopSecondCarRun() {
-        RacingGame game = new RacingGame(2, 4).setRandomModule(new Random(){
+        RacingGame game = new RacingGame(new InputView() {
+            @Override
+            public int getCars() {
+                return 2;
+            }
+
+            @Override
+            public int getCount() {
+                return 4;
+            }
+        }).randomModule(new Random(){
             int status = 0;
             @Override
             public int nextInt(int bound) {
