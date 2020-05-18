@@ -5,7 +5,7 @@ public class Calculator {
     private final InputProcessor inputProcessor = new InputProcessor();
 
     public double calculate(final String input) {
-        return execute(inputProcessor.processInput(input));
+        return execute(inputProcessor.process(input));
     }
 
     private double execute(final String[] parsedInput) {
