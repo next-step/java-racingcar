@@ -11,14 +11,14 @@ class CarTest {
     @Test
     void drive() {
         Car car = new Car();
+
         car.drive(5);
         int firstDrivePosition = car.getPosition();
+        assertThat(firstDrivePosition).isEqualTo(5);
+
         car.drive(3);
         int secDrivePosition = car.getPosition();
-
-        assertThat(firstDrivePosition).isEqualTo(5);
         assertThat(secDrivePosition).isEqualTo(8);
-
     }
 
     @DisplayName("drive를 호출하지 않고, 최초 position 이 0 인지 확인")
