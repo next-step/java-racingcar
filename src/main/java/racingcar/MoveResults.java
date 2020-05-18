@@ -5,17 +5,17 @@ import java.util.List;
 
 public class MoveResults {
 
-    private List<int[]> results = new ArrayList<>();
+    private List<CarPositions> results = new ArrayList<>();
 
-    public void add(int[] result) {
-        results.add(result);
+    public void add(CarPositions positions) {
+        results.add(positions);
     }
 
     public int size() {
         return results.size();
     }
 
-    public int[] get(int index) {
+    public CarPositions get(int index) {
         return results.get(index);
     }
 }

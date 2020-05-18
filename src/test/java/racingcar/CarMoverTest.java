@@ -17,9 +17,10 @@ class CarMoverTest {
     void move(int carCount) {
         List<Car> cars = TestCarFactory.createList(carCount);
         CarMover mover = new CarMover(new RandomMoveStrategy());
-        int[] positions = mover.move(cars);
 
-        assertThat(positions.length).isEqualTo(carCount);
+        CarPositions positions = mover.move(cars);
+
+        assertThat(positions.size()).isEqualTo(carCount);
     }
 
     @DisplayName("자동차를 이동시키면 자동차의 위치는 이동 전과 같거나 크다")
@@ -27,10 +28,11 @@ class CarMoverTest {
     void move_Then_positionIsEqualOrGreaterThanBeforePosition() {
         List<Car> cars = TestCarFactory.createList(5);
         CarMover mover = new CarMover(new RandomMoveStrategy());
-        int[] positions = mover.move(cars);
 
-        for (int position : positions) {
-            assertThat(position >= 0).isTrue();
+        CarPositions positions = mover.move(cars);
+
+        for (int i = 0; i < positions.size(); i++) {
+            assertThat(positions.get(i).getPosition() >= 0).isTrue();
         }
     }
 }

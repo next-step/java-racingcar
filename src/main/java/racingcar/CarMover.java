@@ -10,13 +10,12 @@ public class CarMover {
         this.moveStrategy = moveStrategy;
     }
 
-    public int[] move(List<Car> cars) {
-        int[] carPositions = new int[cars.size()];
+    public CarPositions move(List<Car> cars) {
+        CarPositions carPositions = new CarPositions();
 
-        for (int i = 0; i < cars.size(); i++) {
-            Car car = cars.get(i);
+        for (Car car : cars) {
             move(car);
-            carPositions[i] = car.getPosition();
+            carPositions.add(new CarPosition(car));
         }
 
         return carPositions;

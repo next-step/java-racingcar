@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import racingcar.CarPosition;
+import racingcar.CarPositions;
 import racingcar.MoveResults;
 
 public class ResultView {
@@ -8,24 +10,22 @@ public class ResultView {
     }
 
     public static void print(MoveResults moveResults) {
-        int size = moveResults.size();
-
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < moveResults.size(); i++) {
             print(moveResults.get(i));
         }
     }
 
-    private static void print(int[] result) {
-        for (int position : result) {
+    private static void print(CarPositions carPositions) {
+        for (int i = 0; i < carPositions.size(); i++) {
             System.out.print(":");
-            print(position);
+            print(carPositions.get(i));
         }
 
         System.out.println();
     }
 
-    private static void print(int position) {
-        for (int i = 0; i < position; i++) {
+    private static void print(CarPosition carPosition) {
+        for (int i = 0; i < carPosition.getPosition(); i++) {
             System.out.print("-");
         }
 

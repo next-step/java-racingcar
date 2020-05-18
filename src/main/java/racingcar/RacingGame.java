@@ -27,7 +27,7 @@ public class RacingGame {
 
         while (time > 0) {
             canMove();
-            int[] positions = mover.move(cars);
+            CarPositions positions = mover.move(cars);
             results.add(positions);
             time--;
         }
