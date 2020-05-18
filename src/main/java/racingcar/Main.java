@@ -9,18 +9,14 @@ import racingcar.view.OutputView;
 public class Main {
 
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        int carCount = inputView.inputCarCountJoinRace();
-        int raceTime = inputView.inputRaceTime();
+        int carCount = InputView.inputCarCountJoinRace();
+        int raceTime = InputView.inputRaceTime();
 
         Dice dice = RacingDice.newInstance();
         RacingRule racingRule = new DiceRacingRule(dice);
         Racing race = new Racing(racingRule, carCount, raceTime);
 
-        OutputView outputView = new OutputView();
-        outputView.printTitle();
-        race.start(gameResults -> {
-            outputView.printRaceResult(gameResults);
-        });
+        OutputView.printTitle();
+        race.start(OutputView::printRaceResult);
     }
 }

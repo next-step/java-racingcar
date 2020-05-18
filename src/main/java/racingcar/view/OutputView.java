@@ -4,10 +4,17 @@ import java.util.List;
 
 public class OutputView {
 
-    public void printTitle() {
-        System.out.println("\n실행결과");
+    private static final String TEXT_TITLE = "\n실행결과";
+
+    private OutputView() {
+
     }
-    public void printRaceResult(List<Integer> raceResults) {
+
+    public static void printTitle() {
+        System.out.println(TEXT_TITLE);
+    }
+
+    public static void printRaceResult(List<Integer> raceResults) {
         for (int position : raceResults) {
             draw(position);
         }
@@ -15,7 +22,7 @@ public class OutputView {
 
     }
 
-    private void draw(int position) {
+    private static void draw(int position) {
         for (int i = 0 ; i < position ; i++) {
             System.out.print("-");
         }
