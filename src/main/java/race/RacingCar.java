@@ -17,11 +17,7 @@ public class RacingCar {
         return ++position;
     }
 
-    public int stop() {
-        return position;
-    }
-
-    public int getPosition() {
+    public int currentPosition() {
         return position;
     }
 }

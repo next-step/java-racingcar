@@ -8,45 +8,37 @@ public class RacingGame {
 
     private int time;
     private List<RacingCar> racingCars;
-    private int[] carPositions;
     private final MovingStrategy movingStrategy;
 
-    private RacingGame(int countOfCar, int time, MovingStrategy movingStrategy) {
+    private RacingGame(int time, MovingStrategy movingStrategy) {
         this.time = time;
-        this.carPositions = new int[countOfCar];
         this.movingStrategy = movingStrategy;
     }
 
-    public static RacingGame of(int countOfCar, int time, MovingStrategy movingStrategy) {
-        return new RacingGame(countOfCar, time, movingStrategy);
+    public static RacingGame create(int time, MovingStrategy movingStrategy) {
+        return new RacingGame(time, movingStrategy);
     }
 
     public void readyRacingCars(int countOfCar) {
-        initRacingCars(countOfCar);
+        this.racingCars = Stream.generate(RacingCar::ready)
+            .limit(countOfCar)
+            .collect(Collectors.toList());
     }
 
-    private void initRacingCars(int racingCarCount) {
-        this.racingCars = Stream.generate(RacingCar::ready).limit(racingCarCount).collect(Collectors.toList());
+    public void startRacing() {
+        System.out.println();
+        System.out.println("실행 결과");
+        for (int i = 0; i < time; i++) {
+            start();
+            OutputView.printRacingCars(racingCars);
+        }
     }
 
-    public List<RacingCar> start() {
-        for(RacingCar racingCar : racingCars) {
+    private void start() {
+         racingCars.forEach(racingCar -> {
             if (movingStrategy.isMovable()) {
                 racingCar.forward();
-                continue;
             }
-
-            racingCar.stop();
-        }
-
-        return racingCars;
-    }
-
-    public int getTime() {
-        return time;
-    }
-
-    public int[] getCarPositions() {
-        return carPositions;
+        });
     }
 }

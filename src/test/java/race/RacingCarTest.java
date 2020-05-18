@@ -20,16 +20,4 @@ class RacingCarTest {
     public void forward() {
         assertThat(racingCar.forward()).isEqualTo(1);
     }
-
-    @DisplayName("Stop 메소드 테스트")
-    @Test
-    public void stop() {
-        assertThat(racingCar.stop()).isEqualTo(0);
-
-        racingCar.forward();
-
-        assertThat(racingCar.stop()).isEqualTo(1);
-    }
-
-
 }
