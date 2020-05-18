@@ -1,6 +1,8 @@
 package step4;
 
-import static step4.Constants.*;
+import static step4.Constants.COMMA;
+import static step4.Constants.POSITION_MARKER;
+import static step4.Constants.RESULT_TITLE;
 
 import java.util.ArrayList;
 
@@ -29,11 +31,20 @@ public class ResultView {
     public void printWinners(RacingGame racingGame) {
         StringBuilder stringBuilder = new StringBuilder();
         for (String winner : racingGame.getWinners()) {
-            if (stringBuilder.length() >= 1) {
-                stringBuilder.append(COMMA);
-            }
-            stringBuilder.append(winner);
+            stringBuilder = appendWinner(winner, stringBuilder);
         }
         System.out.printf("%s가 최종 우승했습니다.\n", stringBuilder.toString());
+    }
+
+    public StringBuilder appendWinner(String winner, StringBuilder winnerStringBuilder) {
+        if (winnerStringBuilder == null) {
+            winnerStringBuilder = new StringBuilder();
+        }
+
+        if (winnerStringBuilder.length() >= 1) {
+            winnerStringBuilder.append(COMMA);
+        }
+        winnerStringBuilder.append(winner);
+        return winnerStringBuilder;
     }
 }

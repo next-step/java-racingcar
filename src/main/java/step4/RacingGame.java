@@ -1,10 +1,11 @@
 package step4;
 
-import static step4.ErrorMessages.*;
+import static step4.ErrorMessages.DUPLICATED_CAR_NAMES_MESSAGE;
+import static step4.ErrorMessages.INVALID_CAR_NAMES_MESSAGE;
+import static step4.ErrorMessages.INVALID_TRY_COUNT_MESSAGE;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.Objects;
 import java.util.Random;
 
@@ -110,11 +111,16 @@ public class RacingGame {
         int farthestPosition = -1;
 
         for (Car car : cars) {
-            if (farthestPosition <= car.getPosition()) {
-                this.winners.add(car.getName());
-                farthestPosition = car.getPosition();
-            }
+            farthestPosition = chooseWinners(car, farthestPosition);
         }
+    }
+
+    public int chooseWinners(Car car, int farthestPosition) {
+        if (farthestPosition <= car.getPosition()) {
+            this.winners.add(car.getName());
+            farthestPosition = car.getPosition();
+        }
+        return farthestPosition;
     }
 
 }

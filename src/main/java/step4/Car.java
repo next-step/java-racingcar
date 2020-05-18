@@ -1,6 +1,7 @@
 package step4;
 
 public class Car implements Comparable<Car> {
+
     private String name;
     private int position;
 
