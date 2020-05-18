@@ -1,7 +1,10 @@
 package racingcar;
 
+import racingcar.exception.NotYetMovedException;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarPositions {
 
@@ -20,24 +23,18 @@ public class CarPositions {
     }
 
     public List<String> getLeaders() {
-        List<String> names = new ArrayList<>();
-        int maxPosition = 0;
+        Integer maxPosition = getMaxPosition();
 
-        for (CarPosition carPosition : positions) {
-            int position = carPosition.getPosition();
+        return positions.stream()
+                .filter(p -> p.getPosition() == maxPosition)
+                .map(CarPosition::getName)
+                .collect(Collectors.toList());
+    }
 
-            if (position > maxPosition) {
-                maxPosition = position;
-                names.clear();
-                names.add(carPosition.getName());
-                continue;
-            }
-
-            if (position == maxPosition) {
-                names.add(carPosition.getName());
-            }
-        }
-
-        return names;
+    private Integer getMaxPosition() {
+        return positions.stream()
+                    .map(CarPosition::getPosition)
+                    .max(Integer::compareTo)
+                    .orElseThrow(NotYetMovedException::new);
     }
 }

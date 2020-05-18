@@ -1,18 +1,15 @@
 package racingcar;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarFactory {
 
     public static List<Car> create(String[] names) {
-        List<Car> cars = new ArrayList<>();
-
-        for (String name : names) {
-            cars.add(create(name));
-        }
-
-        return cars;
+        return Arrays.stream(names)
+                .map(CarFactory::create)
+                .collect(Collectors.toList());
     }
 
     public static Car create(String name) {
