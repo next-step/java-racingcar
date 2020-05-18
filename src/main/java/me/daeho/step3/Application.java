@@ -12,10 +12,5 @@ public class Application {
         int time = inputView.getTime();
 
         RacingGame game = RacingGame.init(time, carCount);
-
-        while(game.hasNext()) {
-            resultView.showResult(game.move());
-            game.next();
-        }
     }
 }
