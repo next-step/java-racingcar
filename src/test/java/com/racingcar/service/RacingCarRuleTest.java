@@ -1,26 +1,31 @@
 package com.racingcar.service;
 
 import com.racingcar.model.RacingCar;
+import com.racingcar.model.RacingCarGame;
+import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class RacingCarRuleTest {
+class RacingCarRuleTest {
 
     @DisplayName("자동차 경주에서 이동하는 규칙 중 4이상이 나오면 상태가 1 증가하는지 테스트")
     @ParameterizedTest
     @MethodSource("provideRacingStatusValue")
     void defaultRacingCarRuleTest(final Integer racingStatusValue, final Boolean expected) {
 
-        TestDefaultRacingCarRule rule = new TestDefaultRacingCarRule(racingStatusValue);
+        TestRacingCarRule rule = new TestRacingCarRule(racingStatusValue);
         Boolean isMoving = rule.isRacingCarMove();
 
         assertEquals(isMoving, expected);
@@ -39,7 +44,7 @@ public class RacingCarRuleTest {
     @ValueSource(ints = 10)
     void generateRandomRacingStatusValueTest(final Integer count) {
 
-        DefaultRacingCarRule rule = new DefaultRacingCarRule();
+        RacingCarRule rule = new RacingCarRule();
 
         IntStream.range(0, count).forEach(i -> {
             Integer statusValue = rule.generateRandomRacingStatusValue();
@@ -47,11 +52,11 @@ public class RacingCarRuleTest {
         });
     }
 
-    private static class TestDefaultRacingCarRule extends DefaultRacingCarRule {
+    private static class TestRacingCarRule extends RacingCarRule {
 
         private Integer racingStatus;
 
-        TestDefaultRacingCarRule(Integer racingStatus) {
+        TestRacingCarRule(Integer racingStatus) {
             this.racingStatus = racingStatus;
         }
 
@@ -59,5 +64,64 @@ public class RacingCarRuleTest {
         protected Integer generateRandomRacingStatusValue() {
             return this.racingStatus;
         }
+    }
+
+    @DisplayName("우승자 테스트")
+    @ParameterizedTest
+    @MethodSource("provideRacingCarGame")
+    void extractWinnerTest(final RacingCarGame racingCarGame, final List<RacingCar> expectedRacingCars) {
+        List<RacingCar> winnerRacingCars = racingCarGame.extractWinner();
+
+        assertEquals(winnerRacingCars.size(), expectedRacingCars.size());
+        assertEquals(CollectionUtils.containsAll(winnerRacingCars, expectedRacingCars), Boolean.TRUE);
+    }
+
+    private static Stream<Arguments> provideRacingCarGame() {
+
+        RacingCarGame racingCarGame1 = dummyRacingCarGame1();
+        RacingCarGame racingCarGame2 = dummyRacingCarGame2();
+
+        RacingCar racingCarGame1ExpectedWinner = racingCarGame1.getRacingCars().get(1);
+        RacingCar racingCarGame2ExpectedWinner1 = racingCarGame2.getRacingCars().get(0);
+        RacingCar racingCarGame2ExpectedWinner2 = racingCarGame2.getRacingCars().get(1);
+
+        return Stream.of(
+                Arguments.of(racingCarGame1, Collections.singletonList(racingCarGame1ExpectedWinner)),
+                Arguments.of(racingCarGame2, Arrays.asList(racingCarGame2ExpectedWinner1, racingCarGame2ExpectedWinner2))
+        );
+    }
+
+    private static RacingCarGame dummyRacingCarGame1() {
+        RacingCarGame racingCarGame = new RacingCarGame(
+                Arrays.asList("carA", "carB", "carC"), 5
+        );
+
+        RacingCar carA = racingCarGame.getRacingCars().get(0);
+        RacingCar carB = racingCarGame.getRacingCars().get(1);
+        RacingCar carC = racingCarGame.getRacingCars().get(2);
+
+        carA.setRacingStatus(3);
+        carB.setRacingStatus(4);
+        carC.setRacingStatus(1);
+
+        return racingCarGame;
+    }
+
+    private static RacingCarGame dummyRacingCarGame2() {
+        RacingCarGame racingCarGame = new RacingCarGame(
+                Arrays.asList("carA", "carB", "carC", "carD"), 3
+        );
+
+        RacingCar carA = racingCarGame.getRacingCars().get(0);
+        RacingCar carB = racingCarGame.getRacingCars().get(1);
+        RacingCar carC = racingCarGame.getRacingCars().get(2);
+        RacingCar carD = racingCarGame.getRacingCars().get(3);
+
+        carA.setRacingStatus(3);
+        carB.setRacingStatus(3);
+        carC.setRacingStatus(2);
+        carD.setRacingStatus(1);
+
+        return racingCarGame;
     }
 }

@@ -2,7 +2,7 @@ package com.racingcar.service;
 
 import java.util.Random;
 
-public class DefaultRacingCarRule implements RacingCarMoveStrategy {
+public class RacingCarRule implements RacingCarMoveStrategy {
 
     private static Integer RACING_CAR_MOVE_CONDITION_VALUE = 4;
     private static Integer RACING_CAR_STATUS_ADDING_VALUE = 1;
