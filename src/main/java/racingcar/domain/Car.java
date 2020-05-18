@@ -3,7 +3,7 @@ package racingcar.domain;
 public class Car {
     private static final int MOVABLE_CONDITION = 4;
     private int position = 0;
-    private String name;
+    private final String name;
 
     public Car(String name) {
         this.name = name;
