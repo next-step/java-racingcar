@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
@@ -19,5 +19,12 @@ public class Cars {
                 .collect(Collectors.toList());
 
         return new Cars(collect);
+    }
+
+    public void carRacing(Strategy strategy) {
+        cars.forEach(car -> {
+            int randomNumber = strategy.getNumber();
+            car.move(randomNumber);
+        });
     }
 }
