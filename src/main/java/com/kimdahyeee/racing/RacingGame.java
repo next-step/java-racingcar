@@ -5,51 +5,41 @@ import com.kimdahyeee.racing.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class RacingGame {
-    private static final int TIME_TO_SLEEP = 1;
     private int tryCount;
-    private List<Integer> carPositions;
+    private List<Car> racingCars;
 
     public RacingGame() {
-        initCarCountAndPositions();
-        initTryCount();
-    }
-
-    private void initCarCountAndPositions() {
         int carCount = InputView.getCarCount();
-        carPositions = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            carPositions.add(0);
-        }
-    }
-
-    private void initTryCount() {
+        setRacingCars(carCount);
         tryCount = InputView.getTryCount();
     }
 
-    public void start() {
-        Car car = new Car();
-        ResultView.printHeader();
-
-        for (int i = 0; i < tryCount; i++) {
-            carPositions = car.move(carPositions);
-            ResultView.print(carPositions);
-            sleepOneSecondForPrint();
+    private void setRacingCars(int carCount) {
+        racingCars = new ArrayList<>();
+        for (int i = 0; i < carCount; i++) {
+            racingCars.add(new Car());
         }
     }
 
-    private void sleepOneSecondForPrint() {
-        try {
-            TimeUnit.SECONDS.sleep(TIME_TO_SLEEP);
-        } catch (InterruptedException e) {
-            throw new RuntimeException("timeUnit 오류 : ", e);
+    public void move() {
+        ResultView.printHeader();
+
+        for (int i = 0; i < tryCount; i++) {
+            carMove();
+            ResultView.print(racingCars);
+        }
+    }
+
+    protected void carMove() {
+        for (Car car : racingCars) {
+            car.move();
         }
     }
 
     public static void main(String[] args) {
         RacingGame racingGame = new RacingGame();
-        racingGame.start();
+        racingGame.move();
     }
 }

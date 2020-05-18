@@ -1,31 +1,26 @@
 package com.kimdahyeee.racing;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class Car {
     private static final int GO_STRAIGHT_LIMIT = 4;
+    private static final int DEFAULT_POSITION = 0;
+    private Integer position;
 
-    public List<Integer> move(List<Integer> carPositions) {
-        List<Integer> newPositions = new ArrayList<>();
-
-        for (Integer carPosition : carPositions) {
-            newPositions.add(moveOrStop(carPosition));
-        }
-
-        return newPositions;
+    public Car() {
+        position = DEFAULT_POSITION;
     }
 
-    protected Integer moveOrStop(Integer carPosition) {
-        Integer position = carPosition;
+    public Integer getPosition() {
+        return position;
+    }
+
+    protected void move() {
         boolean canMove = getRandomNumber() >= GO_STRAIGHT_LIMIT;
 
         if (canMove) {
-            return ++position;
+            position = position + 1;
         }
-
-        return position;
     }
 
     protected int getRandomNumber() {
