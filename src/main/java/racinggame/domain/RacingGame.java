@@ -1,26 +1,31 @@
 package racinggame.domain;
 
+import racinggame.domain.car.RacingCars;
+import racinggame.domain.result.RacingGameResult;
 import racinggame.dto.RacingGameInfo;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class RacingGame {
     private final RacingCars racingCars;
-    private final int numberOfAttempt;
+    private final int totalRound;
 
     public RacingGame(RacingGameInfo racingGameInfo) {
-        this.racingCars = new RacingCars(racingGameInfo.getNumberOfCar());
-        this.numberOfAttempt = racingGameInfo.getNumberOfAttempt();
+        this.racingCars = new RacingCars(racingGameInfo.getCarNames());
+        this.totalRound = racingGameInfo.getTotalRound();
     }
 
-    public List<RacingGameSnapshot> raceWith(Engine engine) {
-        List<RacingGameSnapshot> snapshots = new ArrayList<>();
+    public RacingGameResult raceWith(Engine engine) {
+        RacingGameResult racingGameResult = new RacingGameResult(totalRound);
+        int currentRound = 1;
 
-        for (int round = 0; round < numberOfAttempt; round++) {
-            snapshots.add(racingCars.race(engine));
+        while (isRemainingRacingGame(currentRound)) {
+            racingGameResult.record(currentRound, racingCars.race(engine));
+            currentRound++;
         }
 
-        return snapshots;
+        return racingGameResult;
+    }
+
+    private boolean isRemainingRacingGame(int currentRound) {
+        return currentRound <= totalRound;
     }
 }

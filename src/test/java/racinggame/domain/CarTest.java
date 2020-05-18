@@ -3,6 +3,8 @@ package racinggame.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racinggame.domain.car.Car;
+import racinggame.domain.result.CarSnapshot;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
@@ -13,14 +15,15 @@ class CarTest {
     @ParameterizedTest
     void moveCar(boolean engineOutput, int expected) {
         //given
-        Car car = new Car();
+        String nameOfCar = "NEXT";
+        Car car = new Car(nameOfCar);
         Engine engine = () -> engineOutput;
 
         //when
         CarSnapshot snapshot = car.move(engine);
 
         //then
-        assertThat(snapshot).isEqualToComparingFieldByField(new CarSnapshot(expected));
+        assertThat(snapshot).isEqualToComparingFieldByField(CarSnapshot.of(nameOfCar, expected));
     }
 
 }

@@ -1,34 +1,67 @@
 package racinggame.dto;
 
+import racinggame.domain.exception.RacingGameInputException;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static java.util.stream.Collectors.toList;
+
 public class RacingGameInfo {
-    private final int numberOfCar;
-    private final int numberOfAttempt;
+    private static final String RACING_CAR_DELIMITER = ",";
 
-    public RacingGameInfo(String numberOfCar, String numberOfAttempt) {
+    private final List<String> carNames;
+    private final int totalRound;
+
+    public RacingGameInfo(final String carNames, final String totalRound) {
+        this.carNames = parse(carNames);
+        this.totalRound = toNumber(totalRound);
+    }
+
+    private List<String> parse(final String carNames) {
+        String[] inputCars = carNames.split(RACING_CAR_DELIMITER);
+        List<String> listOfCarNames = toArray(inputCars);
+
+        if (isNotValidCarNames(inputCars, listOfCarNames)) {
+            throw RacingGameInputException.ofCarNames();
+        }
+
+        return listOfCarNames;
+    }
+
+    private List<String> toArray(String[] inputCars) {
+        return Arrays.stream(inputCars)
+                .map(String::trim)
+                .filter(name -> !name.isEmpty())
+                .distinct()
+                .collect(toList());
+    }
+
+    private boolean isNotValidCarNames(String[] inputCars, List<String> listOfCarNames) {
+        return inputCars.length != listOfCarNames.size();
+    }
+
+    private int toNumber(String numberOfAttempt) {
         try {
-            int inputNumberOfCar = Integer.parseInt(numberOfCar);
             int inputNumberOfAttempt = Integer.parseInt(numberOfAttempt);
-
-            validate(inputNumberOfCar, inputNumberOfAttempt);
-
-            this.numberOfCar = inputNumberOfCar;
-            this.numberOfAttempt = inputNumberOfAttempt;
-        } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException("자동차 대수와 시도횟수는 숫자로 입력해야합니다");
+            validate(Integer.parseInt(numberOfAttempt));
+            return inputNumberOfAttempt;
+        } catch (NumberFormatException numberFormatException) {
+            throw RacingGameInputException.ofAttemptParsing(numberOfAttempt);
         }
     }
 
-    private void validate(int inputNumberOfCar, int inputNumberOfAttempt) {
-        if (inputNumberOfAttempt <= 0 || inputNumberOfCar <= 0) {
-            throw new IllegalArgumentException("0이하의 수는 입력할 수 없습니다");
+    private void validate(int inputNumberOfAttempt) {
+        if (inputNumberOfAttempt <= 0) {
+            throw RacingGameInputException.ofAttemptBound();
         }
     }
 
-    public int getNumberOfCar() {
-        return numberOfCar;
+    public List<String> getCarNames() {
+        return carNames;
     }
 
-    public int getNumberOfAttempt() {
-        return numberOfAttempt;
+    public int getTotalRound() {
+        return totalRound;
     }
 }
