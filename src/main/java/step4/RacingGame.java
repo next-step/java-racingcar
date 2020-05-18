@@ -1,8 +1,6 @@
 package step4;
 
-import static step4.ErrorMessages.DUPLICATED_CAR_NAMES_MESSAGE;
-import static step4.ErrorMessages.INVALID_CAR_NAMES_MESSAGE;
-import static step4.ErrorMessages.INVALID_TRY_COUNT_MESSAGE;
+import static step4.ErrorMessages.*;
 
 import java.util.Objects;
 import java.util.Random;
