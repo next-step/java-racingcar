@@ -13,7 +13,7 @@ public class RacingGame {
     private final int numberOfAttempt;
 
     public RacingGame(RacingGameInfo racingGameInfo) {
-        this.racingCars = new RacingCars(racingGameInfo.getParticipantCars());
+        this.racingCars = new RacingCars(racingGameInfo.getCarNames());
         this.numberOfAttempt = racingGameInfo.getNumberOfAttempt();
     }
 
