@@ -11,25 +11,25 @@ class CarTest {
     @DisplayName("true값을 매개변수로 move 메서드를 실행하면 car의 position이 1 증가한다")
     void moveWhenParameterIsTrue() {
         //given
-        Car car = new Car();
+        Car car = new Car(0);
 
         //when
         car.move(true);
 
         //then
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car).isEqualTo(new Car(1));
     }
 
     @Test
     @DisplayName("false값을 매개변수로 move 메서드를 실행하면 car의 position이 증가하지 않는다")
     void moveWhenParameterIsFalse() {
         //given
-        Car car = new Car();
+        Car car = new Car(0);
 
         //when
         car.move(false);
 
         //then
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car).isEqualTo(new Car(0));
     }
 }

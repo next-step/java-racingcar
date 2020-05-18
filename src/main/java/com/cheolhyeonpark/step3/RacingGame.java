@@ -6,6 +6,8 @@ import java.util.stream.IntStream;
 
 public class RacingGame {
 
+    public static final int CAR_START_POSITION = 0;
+
     private final Stage stage;
     private int stageLeft;
 
@@ -26,7 +28,7 @@ public class RacingGame {
     }
 
     private List<Car> getCars(int numberOfCars) {
-        return IntStream.range(0, numberOfCars).mapToObj(i -> new Car()).collect(Collectors.toList());
+        return IntStream.range(0, numberOfCars).mapToObj(i -> new Car(CAR_START_POSITION)).collect(Collectors.toList());
     }
 
     public void playStage() {
