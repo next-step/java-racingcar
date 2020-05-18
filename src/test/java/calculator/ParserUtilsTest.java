@@ -20,8 +20,7 @@ class ParserUtilsTest {
     @DisplayName("입력값이 정상적일때 동작 테스트")
     @Test
     void getNumberSuccess() {
-        String[] strings = {"1", "*", "3", "+", "7"};
-        int result = ParserUtils.getNumber(strings[0]);
+        int result = ParserUtils.getNumber("1");
         assertThat(result).isEqualTo(1);
     }
 
