@@ -48,4 +48,8 @@ public class Cars {
     public List<Car> getCars() {
         return Collections.unmodifiableList(new ArrayList<>(this.cars));
     }
+
+    public int getSize() {
+        return cars.size();
+    }
 }
