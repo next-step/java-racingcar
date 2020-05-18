@@ -24,4 +24,15 @@ public class ResultView {
         }
         return stringBuilder.toString();
     }
+
+    public void printWinners(String[] winners) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String winner : winners) {
+            if (stringBuilder.length() > 1) {
+                stringBuilder.append(COMMA);
+            }
+            stringBuilder.append(winner);
+        }
+        System.out.printf("%s가 최종 우승했습니다.\n", stringBuilder.toString());
+    }
 }
