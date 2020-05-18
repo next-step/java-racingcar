@@ -1,7 +1,8 @@
 package study.step2_1;
 
-import java.util.Optional;
-import java.util.function.BinaryOperator;
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.function.ToDoubleBiFunction;
 import java.util.stream.Stream;
 
 public enum Operator {
@@ -9,34 +10,36 @@ public enum Operator {
     SUBTRACT("-", (currentNumber, nextNumber) -> currentNumber - nextNumber),
     MULTIPLY("*", (currentNumber, nextNumber) -> currentNumber * nextNumber),
     DIVISION("/", (currentNumber, nextNumber) -> {
-        if (nextNumber == 0) throw new IllegalArgumentException("0값으로 나눌 수 없습니다.");
-            return currentNumber / nextNumber;
+        if (nextNumber == 0) {
+            throw new IllegalArgumentException("0값으로 나눌 수 없습니다.");
+        }
+        return currentNumber / nextNumber;
     });
 
     private String operatorType;
-    private BinaryOperator<Double> operation;
+    private ToDoubleBiFunction operation;
 
-    Operator(String operatorType, BinaryOperator<Double> operation){
-            this.operatorType = operatorType;
-            this.operation = operation;
+    Operator(String operatorType, ToDoubleBiFunction<Double,Double> operation){
+        this.operatorType = operatorType;
+        this.operation = operation;
     }
 
-    public static Optional<Operator> findOperator(String operator){
+    public static Operator findOperator(String operator){
         return Stream.of(Operator.values())
-                        .filter(value -> value.operatorType.equals(operator))
-                        .findAny();
+                .filter(value -> value.operatorType.equals(operator))
+                .findAny()
+                .orElseThrow(()->new IllegalArgumentException());
     }
 
-    private static Operator getOperation(String operator){
-        return findOperator(operator).orElseThrow(()->new IllegalArgumentException());
+    public static boolean isOperator(String value){
+        if (!Objects.isNull(value)){
+            return Arrays.stream(Operator.values()).anyMatch(v -> v.operatorType.equals(value));
+        }
+        return false;
     }
 
-    public static BinaryOperator<Double> getOperationType(String operator) {
-        return getOperation(operator).operation;
-    }
-
-    public static double calculate(String operator, double currentNumber, double nextNumber){
-        return getOperationType(operator).apply(currentNumber, nextNumber);
+    public double calculate(Double currentNumber, Double nextNumber){
+        return operation.applyAsDouble(currentNumber, nextNumber);
     }
 
 }
