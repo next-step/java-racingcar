@@ -21,9 +21,10 @@ public class ParserUtils {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
-    public static void checkArraySize(String[] list) {
-        if(list.length % 2 == 0 || list.length < 2){
-            throw new IllegalArgumentException("리스트 사이즈 오류");
-        }
+    public static void checkArraySize(String[] InputList) {
+        Optional.ofNullable(InputList).filter(list -> list.length % 2 != 0)
+                .filter(list -> list.length > 2)
+                .orElseThrow(() -> new IllegalArgumentException("리스트 사이즈 오류"));
+
     }
 }

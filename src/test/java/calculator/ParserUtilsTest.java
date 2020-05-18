@@ -53,5 +53,11 @@ class ParserUtilsTest {
         assertThatIllegalArgumentException().isThrownBy(() -> ParserUtils.checkArraySize(input));
     }
 
+    @DisplayName("string 배열이 null 일때 에러")
+    @Test
+    void checkArraySizeArraySizeNull(){
+        assertThatIllegalArgumentException().isThrownBy(() -> ParserUtils.checkArraySize(null));
+    }
+
 
 }
