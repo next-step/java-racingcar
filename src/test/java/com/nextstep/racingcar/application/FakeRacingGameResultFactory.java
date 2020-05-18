@@ -13,7 +13,7 @@ public class FakeRacingGameResultFactory {
         라운드수: 2회
         우승자: poppo, saul
     */
-    public static RacingGameResult getFakeRacingGameResult() {
+    public static List<RoundResult> getFakeRacingGameResult() {
         List<RoundResult> roundResultList = new ArrayList<>();
         List<CarRoundResult> carRoundOneResultList = new ArrayList<>();
         List<CarRoundResult> carRoundTwoResultList = new ArrayList<>();
@@ -42,6 +42,6 @@ public class FakeRacingGameResultFactory {
         roundResultList.add(RoundResult.create(carRoundOneResultList));
         roundResultList.add(RoundResult.create(carRoundTwoResultList));
 
-        return RacingGameResult.create(roundResultList);
+        return roundResultList;
     }
 }

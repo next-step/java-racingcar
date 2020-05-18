@@ -159,3 +159,8 @@
         - 처음에 이걸 다시 일급객체로 감싸서 뺄 생각을 함..
     - [X] RacingGameTests 에서 Input, Output 형식을 정의해서 코드 개선
         - RacingGameResult가 이미 Output 형식을 보증하고 있고, 그 안의 단위 테스트들도 검증이 됐으니 현재 정책에 의한 결과만 확인하도록 변경
+
+- [ ] view, domain 분리 리팩토링
+    - [X] view 담당 객체들을 view 패키지로 구성한다.
+    - [X] Ui Controller에서 입출력을 담당하도록 변경한다.
+    - [ ] RacingGameResult와 OutputView에 역할이 겹치는 부분이 많기 때문에 중복을 제거한다.

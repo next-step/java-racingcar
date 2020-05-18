@@ -1,6 +1,7 @@
 package com.nextstep.racingcar.ui;
 
 import com.nextstep.racingcar.application.FakeRacingGameResultFactory;
+import com.nextstep.racingcar.view.OutputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

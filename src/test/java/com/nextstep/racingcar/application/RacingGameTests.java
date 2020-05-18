@@ -2,6 +2,7 @@ package com.nextstep.racingcar.application;
 
 import com.nextstep.racingcar.domain.car.CarFactory;
 import com.nextstep.racingcar.domain.car.ForceMoveStrategy;
+import com.nextstep.racingcar.domain.round.RoundResult;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -53,7 +54,7 @@ class RacingGameTests {
         assertThat(racingGame).isNotNull();
     }
 
-    @DisplayName("레이싱 게임 종료 후 RacingGameResult를 반환받을 수 있음")
+    @DisplayName("레이싱 게임 종료 후 진행한 라운드별로 게임 결과를 받을 수 있음 반환받을 수 있음")
     @Test
     void getRacingGameResult() {
         List<String> driverNames = Arrays.asList("poppo", "saul", "ita");
@@ -61,17 +62,7 @@ class RacingGameTests {
         RacingGame racingGame = new RacingGame(driverNames, round);
         racingGame.runByDriversName(new CarFactory(), new ForceMoveStrategy());
 
-        assertThat(racingGame.getRacingGameResult()).isInstanceOf(RacingGameResult.class);
-    }
-
-    @DisplayName("운전자 이름으로 게임 생성해서 2회 진행 후 우승자가 잘 나오는지 확인")
-    @Test
-    void runRacingGameByDriverNameTest() {
-        List<String> driverNames = Arrays.asList("poppo", "saul", "ita");
-        int round = 2;
-        RacingGame racingGame = new RacingGame(driverNames, round);
-        racingGame.runByDriversName(new CarFactory(), new ForceMoveStrategy());
-
-        assertThat(racingGame.getRacingGameResult().getWinners()).containsExactly("poppo", "saul", "ita");
+        assertThat(racingGame.getRacingGameResult().size()).isEqualTo(round);
+        assertThat(racingGame.getRacingGameResult().get(0)).isInstanceOf(RoundResult.class);
     }
 }
