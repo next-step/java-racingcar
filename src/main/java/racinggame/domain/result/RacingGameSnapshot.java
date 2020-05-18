@@ -1,5 +1,7 @@
 package racinggame.domain.result;
 
+import racinggame.domain.exception.RacingGameException;
+
 import java.util.List;
 
 import static java.util.Comparator.comparingInt;
@@ -12,24 +14,24 @@ public class RacingGameSnapshot {
         this.carSnapshots = carSnapshots;
     }
 
-    public static RacingGameSnapshot of(List<CarSnapshot> carSnapshots) {
-        return new RacingGameSnapshot(carSnapshots);
-    }
-
     public List<CarSnapshot> getCarSnapshots() {
         return carSnapshots;
     }
 
     public List<String> findWinner() {
-        int maxPosition = carSnapshots.stream()
-                .max(comparingInt(CarSnapshot::getLocation))
-                .orElseThrow(() -> new IllegalStateException("경기기록이 없어 우승자를 찾을 수 없습니다"))
-                .getLocation();
+        int maxPosition = getMaxLocation();
 
         return carSnapshots.stream()
                 .filter(carSnapshot -> carSnapshot.getLocation() == maxPosition)
                 .map(CarSnapshot::getName)
                 .collect(toList());
+    }
+
+    private int getMaxLocation() {
+        return carSnapshots.stream()
+                .max(comparingInt(CarSnapshot::getLocation))
+                .orElseThrow(RacingGameException::ofNotExistSnapshots)
+                .getLocation();
     }
 
 }

@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racinggame.exception.RacingGameInputException;
+import racinggame.domain.exception.RacingGameInputException;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -52,7 +52,7 @@ class RacingGameInfoTest {
 
         //when
         List<String> carNamesResult = racingGameInfo.getCarNames();
-        int numberOfAttemptResult = racingGameInfo.getNumberOfAttempt();
+        int numberOfAttemptResult = racingGameInfo.getTotalRound();
 
         //then
         assertAll(

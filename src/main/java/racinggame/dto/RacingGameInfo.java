@@ -1,6 +1,6 @@
 package racinggame.dto;
 
-import racinggame.exception.RacingGameInputException;
+import racinggame.domain.exception.RacingGameInputException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,27 +11,30 @@ public class RacingGameInfo {
     private static final String RACING_CAR_DELIMITER = ",";
 
     private final List<String> carNames;
-    private final int numberOfAttempt;
+    private final int totalRound;
 
-    public RacingGameInfo(final String carNames, final String numberOfAttempt) {
+    public RacingGameInfo(final String carNames, final String totalRound) {
         this.carNames = parse(carNames);
-        this.numberOfAttempt = toNumber(numberOfAttempt);
+        this.totalRound = toNumber(totalRound);
     }
 
     private List<String> parse(final String carNames) {
         String[] inputCars = carNames.split(RACING_CAR_DELIMITER);
-
-        List<String> listOfCarNames = Arrays.stream(inputCars)
-                .map(String::trim)
-                .filter(name -> !name.isEmpty())
-                .distinct()
-                .collect(toList());
+        List<String> listOfCarNames = toArray(inputCars);
 
         if (isNotValidCarNames(inputCars, listOfCarNames)) {
             throw RacingGameInputException.ofCarNames();
         }
 
         return listOfCarNames;
+    }
+
+    private List<String> toArray(String[] inputCars) {
+        return Arrays.stream(inputCars)
+                .map(String::trim)
+                .filter(name -> !name.isEmpty())
+                .distinct()
+                .collect(toList());
     }
 
     private boolean isNotValidCarNames(String[] inputCars, List<String> listOfCarNames) {
@@ -58,7 +61,7 @@ public class RacingGameInfo {
         return carNames;
     }
 
-    public int getNumberOfAttempt() {
-        return numberOfAttempt;
+    public int getTotalRound() {
+        return totalRound;
     }
 }

@@ -1,4 +1,4 @@
-package racinggame.exception;
+package racinggame.domain.exception;
 
 public class RacingGameInputException extends IllegalArgumentException {
     private static final String CAR_NAME_EXCEPTION_MESSAGE = "자동차 이름은 공백, 중복이 존재해서는 안됩니다";

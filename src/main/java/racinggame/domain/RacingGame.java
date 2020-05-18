@@ -10,7 +10,7 @@ public class RacingGame {
 
     public RacingGame(RacingGameInfo racingGameInfo) {
         this.racingCars = new RacingCars(racingGameInfo.getCarNames());
-        this.totalRound = racingGameInfo.getNumberOfAttempt();
+        this.totalRound = racingGameInfo.getTotalRound();
     }
 
     public RacingGameResult raceWith(Engine engine) {

@@ -5,6 +5,7 @@ import racinggame.domain.RandomEngine;
 import racinggame.domain.result.RacingGameResult;
 import racinggame.dto.RacingGameInfo;
 import racinggame.view.InputView;
+import racinggame.view.OutputView;
 
 public class RacingGameApplication {
 
@@ -17,6 +18,6 @@ public class RacingGameApplication {
 
         RacingGameResult racingGameResult = racingGame.raceWith(new RandomEngine());
 
-//        OutputView.announceResult(racingGameResult);
+        OutputView.announceResult(racingGameResult);
     }
 }

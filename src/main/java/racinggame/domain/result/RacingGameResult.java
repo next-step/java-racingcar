@@ -1,5 +1,6 @@
 package racinggame.domain.result;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +22,13 @@ public class RacingGameResult {
                 .findWinner();
     }
 
-    public Map<Integer, RacingGameSnapshot> getResults() {
-        return results;
+    public List<RacingGameSnapshot> findAllSnapshots() {
+        List<RacingGameSnapshot> racingGameResults = new ArrayList<>();
+
+        for (int i = 1; i <= totalRound; i++) {
+            racingGameResults.add(results.get(i));
+        }
+
+        return racingGameResults;
     }
 }
