@@ -7,19 +7,17 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import step3.controller.RacingGameController;
-import step3.exception.RoundNotFinishedException;
 
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class RacingGameControllerTest {
 
     @DisplayName("진행 할 라운드가 없으면 hasNextRound()는 false를 반환한다")
     @Test
     void finishedGameRoundTest() {
-        RacingGameController racingGameController = RacingGameController.start(new String[]{"TEST1"}, 1);
+        RacingGameController racingGameController = RacingGameController.newInstance(new String[]{"TEST1"}, 1);
         racingGameController.nextRound();
 
         assertThat(racingGameController.hasNextRound()).isFalse();
@@ -29,7 +27,7 @@ class RacingGameControllerTest {
     @ParameterizedTest
     @CsvSource(value = {"2", "3", "4"})
     void progressGameRoundTest(int gameRound) {
-        RacingGameController racingGameController = RacingGameController.start(new String[]{"TEST1"}, gameRound);
+        RacingGameController racingGameController = RacingGameController.newInstance(new String[]{"TEST1"}, gameRound);
         racingGameController.nextRound();
 
         assertThat(racingGameController.hasNextRound()).isTrue();
@@ -39,10 +37,10 @@ class RacingGameControllerTest {
     @ParameterizedTest
     @MethodSource("provideSourceForRacingCarsSize")
     void racingCarsSizeTest(String[] carNames) {
-        RacingGameController racingGameController = RacingGameController.start(carNames, 1);
+        RacingGameController racingGameController = RacingGameController.newInstance(carNames, 1);
         racingGameController.nextRound();
 
-        assertThat(racingGameController.getRacingPosition().getPositions()).hasSize(carNames.length);
+        assertThat(racingGameController.getRacingCars().getAll()).hasSize(carNames.length);
     }
 
     private static Stream<Arguments> provideSourceForRacingCarsSize() {
@@ -53,24 +51,13 @@ class RacingGameControllerTest {
         );
     }
 
-    @DisplayName("GameRound가 종료되지 않았을 때 우승자를 조회하면 RoundNotFinishedException 예외가 발생한다")
-    @Test
-    void notFinishedGameWinnerTest() {
-        RacingGameController racingGameController = RacingGameController.start(new String[]{"TEST1"}, 10);
-        racingGameController.nextRound();
-
-        assertThatExceptionOfType(RoundNotFinishedException.class)
-                .isThrownBy(racingGameController::getWinners)
-                .withMessageMatching(new RoundNotFinishedException().getMessage());
-    }
-
     @DisplayName("GameRound가 종료되었을 때 우승자는 1명 이상이다")
     @MethodSource("provideSourceForRacingCarsSize")
     @ParameterizedTest
     void finishedGameWinnerTest(String[] carNames) {
-        RacingGameController racingGameController = RacingGameController.start(carNames, 1);
+        RacingGameController racingGameController = RacingGameController.newInstance(carNames, 1);
         racingGameController.nextRound();
 
-        assertThat(racingGameController.getWinners().getNames().size()).isGreaterThanOrEqualTo(1);
+        assertThat(racingGameController.getRacingCars().getWinners().size()).isGreaterThanOrEqualTo(1);
     }
 }

@@ -8,13 +8,13 @@ public class RacingGameApplication {
 
     public static void main(String[] args) {
         RacingGameController racingGameController = RacingGameController
-                .start(InputView.getRacingCarNames(), InputView.getGameRound());
+                .newInstance(InputView.getRacingCarNames(), InputView.getGameRound());
 
         while (racingGameController.hasNextRound()) {
             racingGameController.nextRound();
-            ResultView.printPosition(racingGameController.getRacingPosition());
+            ResultView.printPosition(racingGameController.getRacingCars());
         }
 
-        ResultView.printWinner(racingGameController.getWinners());
+        ResultView.printWinner(racingGameController.getRacingCars());
     }
 }
