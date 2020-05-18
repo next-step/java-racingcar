@@ -1,52 +1,30 @@
 package study.step3;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 public class Car {
-    private static final int INIT_INDEX = 0;
-    private static final int GO_CONDITION_LIMIT_NUMBER = 4;
-    private static RandomGenerator random = new RacingRandomGenerator();
+    private final static int INIT_ZERO = 0;
+    private final static int INT_ONE = 1;
+    private final int carPosition;
 
-    private String carName ="";
-    private int carPosition = 0;
-
-    private List<Integer> carPositions;
-
-    public Car(String carName) {
-        this.carName = carName;
-        carPositions = new ArrayList<>();
+    public Car() {
+        this.carPosition = INIT_ZERO;
     }
 
-    public Car move(int moveTime){
-        for (int i = INIT_INDEX; i < moveTime; i++){
-            if (goOrStop(random.getRandomInt()) && i > 0){
-                this.carPosition++;
-            }
-            carPositions.add(carPosition);
+    public Car(int carPosition) {
+        this.carPosition = carPosition;
+    }
+
+    public Car move(CarMoveCondition moveCondition){
+        if (moveCondition.isCarMoveCondition()){
+            return new Car(increasecarPosition());
         }
         return this;
     }
 
-    public String carNameToString() {
-        return "["+carName +"]번 차";
+    public int getCarPosition(){
+        return carPosition;
     }
 
-    public int nowCarPostion(){
-        return this.carPosition;
+    private int increasecarPosition() {
+        return carPosition + INT_ONE;
     }
-
-    public Integer pointInTimeCarPostion(int round){
-        return carPositions.get(round);
-    }
-
-    public int rounds(){
-        return carPositions.size();
-    }
-
-    public boolean goOrStop(int randomNumber){
-        return randomNumber >=  GO_CONDITION_LIMIT_NUMBER;
-    }
-
 }
