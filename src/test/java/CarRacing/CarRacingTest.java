@@ -23,7 +23,6 @@ public class CarRacingTest {
         int gameCount = 2;
         CarRacingOption carRacingOption = new CarRacingOption(carCount, gameCount);
         CarRacingGame carRacingGame = new CarRacingGame(carRacingOption);
-        carRacingGame.gameInit();
         carRacingGame.gameStart();
     }
 }

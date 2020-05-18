@@ -12,7 +12,7 @@ public class CarTest {
     @DisplayName("Car Init")
     public void carInitTest() {
         Car car = new Car("1", new Position());
-        assertThat(car.getPosition().location).isEqualTo(0);
+        assertThat(car.isLocationAt(0)).isTrue();
     }
 
     @Test
@@ -20,17 +20,17 @@ public class CarTest {
     public void carForwardMoveTest() {
         Car car = new Car("1", new Position());
         car.move(Direction.FORWARD);
-        assertThat(car.getPosition().location).isEqualTo(1);
+        assertThat(car.isLocationAt(1)).isTrue();
     }
 
     @Test
     @DisplayName("Car Back Move")
     public void carBackMoveTest() {
         Position position = new Position();
-        position.location = 1;
+        position.setLocation(1);
         Car car = new Car("1", position);
         car.move(Direction.BACK);
-        assertThat(car.getPosition().location).isEqualTo(0);
+        assertThat(car.isLocationAt(0)).isTrue();
     }
 
     @Test
