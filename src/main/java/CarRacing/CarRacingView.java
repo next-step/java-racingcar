@@ -2,7 +2,7 @@ package CarRacing;
 
 import java.util.List;
 
-public class CarRacingView extends View{
+public class CarRacingView implements View{
 
     private final String POSITION_STRING = "-";
 
@@ -13,12 +13,14 @@ public class CarRacingView extends View{
 
     public void view(List<Car> carList) {
         initView();
+        StringBuffer resultString = new StringBuffer();
         carList.stream().forEach( car -> {
-            for(int i=0 ; i <= car.getPosition().location; i++) {
-                System.out.print(POSITION_STRING);
+            for(int i=0 ; i <= car.getLocation(); i++) {
+                resultString.append("-");
             }
-            System.out.println("");
+            resultString.append("\n");
         });
+        System.out.println(resultString.toString());
         endView();
     }
 

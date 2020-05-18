@@ -1,6 +1,7 @@
 package CarRacing;
 
-public class ScannerView extends View {
+public class ScannerView implements View {
+
     @Override
     public void view() {
         System.out.println("Scanner View");

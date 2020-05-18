@@ -2,18 +2,12 @@ package CarRacing;
 
 import java.util.List;
 
-public class View {
+public interface View {
 
-    public void view() {
-        System.out.println("Main View");
-    }
+    public void view();
 
-    public void initView() {
-        System.out.println("Init View");
-    }
+    public void initView();
 
-    public void endView() {
-        System.out.println("End View");
-    }
+    public void endView();
 
 }

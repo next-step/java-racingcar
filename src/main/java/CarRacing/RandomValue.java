@@ -1,9 +1,12 @@
 package CarRacing;
 
+import java.util.Random;
+
 public class RandomValue {
 
     public static int getRandomValue() {
-        return (int) (Math.random() * 10);
+        Random random = new Random();
+        return random.nextInt(10);
     }
 
 }

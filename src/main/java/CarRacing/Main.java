@@ -8,14 +8,15 @@ public class Main {
         String ASK_ATTEMPT_NUMBER = "시도할 회수는 몇 회 인가요?";
 
         ScannerView scannerView = new ScannerView();
+        NumberInputScanner numberInputScanner = new NumberInputScanner();
 
         scannerView.textView(ASK_CAR_NUMBER);
-        NumberInputScanner carNumberScanner = new NumberInputScanner();
+        int carNumber = numberInputScanner.getNumber();
 
         scannerView.textView(ASK_ATTEMPT_NUMBER);
-        NumberInputScanner gameCountScanner = new NumberInputScanner();
+        int gameCount = numberInputScanner.getNumber();
 
-        CarRacingGame carRacingGame = new CarRacingGame(new CarRacingOption(carNumberScanner.getNumber(), gameCountScanner.getNumber()));
+        CarRacingGame carRacingGame = new CarRacingGame(new CarRacingOption(carNumber, gameCount));
 
         carRacingGame.gameStart();
     }

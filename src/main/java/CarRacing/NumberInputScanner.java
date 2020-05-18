@@ -4,11 +4,17 @@ import java.util.Scanner;
 
 public class NumberInputScanner {
 
-    Scanner scanner = new Scanner(System.in);
-    int number = scanner.nextInt();
+    private int MIN_INPUT_VALUE = 0;
+    private int number;
+
+    private void getInputStream() {
+        Scanner scanner = new Scanner(System.in);
+        this.number  = scanner.nextInt();
+    }
 
     public int getNumber() {
-        if(number <= 0) {
+        getInputStream();
+        if(number <= MIN_INPUT_VALUE) {
             throw new IllegalArgumentException("Input number should be more than 0");
         }
         return number;
