@@ -26,10 +26,9 @@ public class RacingGame {
     }
 
     public List<RacingCar> startRacing() {
-        List<RacingCar> racingCars;
-        racingCars = start();
+        List<RacingCar> newRacingCars = start();
 
-        return racingCars;
+        return newRacingCars;
     }
 
     private List<RacingCar> start() {
