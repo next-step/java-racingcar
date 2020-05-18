@@ -7,12 +7,23 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.controller.GameController;
 import racingcar.domain.Car;
 import racingcar.domain.Game;
 import racingcar.util.RandomUtil;
 
 @DisplayName("자동차 경주의 핵심 로직을 테스트한다.")
 public class RacingCarTest {
+
+  GameController gameController;
+
+  @BeforeEach
+  void setUp() {
+    int carNum = 4;
+    int attemptNum = 3;
+    gameController = GameController.create(carNum, attemptNum);
+  }
+
 
   @Test
   void 랜덤값이_0과_9_사이이다() {
@@ -48,5 +59,17 @@ public class RacingCarTest {
     assertThat(game.doRace(4).get(0).getPosition())
         //then
         .isGreaterThan(previousPositionOfCar1);
+  }
+
+  @Test
+  void 입력한_대수만큼_자동차가_생성된다() {
+    int carNum = 4;
+    assertThat(gameController.getGame().getCars().size()).isEqualTo(carNum);
+  }
+
+  @Test
+  void 입력한_횟수만큼_자동차가_경주된다() {
+    int attemptNum = 3;
+    assertThat(gameController.proceedGame()).isEqualTo(attemptNum);
   }
 }
