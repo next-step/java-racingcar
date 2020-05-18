@@ -13,6 +13,9 @@ public class ResultView {
         for (int i = 0; i < moveResults.size(); i++) {
             print(moveResults.get(i));
         }
+
+        String winners = String.join(",", moveResults.getWinners());
+        System.out.println(winners + "가 최종 우승했습니다.");
     }
 
     private static void print(CarPositions carPositions) {

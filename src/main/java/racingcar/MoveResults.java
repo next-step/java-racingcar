@@ -18,4 +18,9 @@ public class MoveResults {
     public CarPositions get(int index) {
         return results.get(index);
     }
+
+    public List<String> getWinners() {
+        CarPositions finalCarPositions = results.get(results.size() - 1);
+        return finalCarPositions.getLeaders();
+    }
 }

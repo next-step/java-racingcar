@@ -18,4 +18,26 @@ public class CarPositions {
     public CarPosition get(int index) {
         return positions.get(index);
     }
+
+    public List<String> getLeaders() {
+        List<String> names = new ArrayList<>();
+        int maxPosition = 0;
+
+        for (CarPosition carPosition : positions) {
+            int position = carPosition.getPosition();
+
+            if (position > maxPosition) {
+                maxPosition = position;
+                names.clear();
+                names.add(carPosition.getName());
+                continue;
+            }
+
+            if (position == maxPosition) {
+                names.add(carPosition.getName());
+            }
+        }
+
+        return names;
+    }
 }
