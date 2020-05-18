@@ -6,11 +6,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racinggame.exception.RacingGameInputException;
 
 import java.util.List;
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -30,7 +30,7 @@ class RacingGameInfoTest {
     @ParameterizedTest
     void wrongInput(String participantsCar, String numberOfAttempt, String expectedErrorMessage) {
         assertThatThrownBy(() -> new RacingGameInfo(participantsCar, numberOfAttempt))
-                .isInstanceOf(IllegalArgumentException.class)
+                .isInstanceOf(RacingGameInputException.class)
                 .hasMessage(expectedErrorMessage);
     }
 
@@ -38,9 +38,8 @@ class RacingGameInfoTest {
     @ValueSource(strings = {"a,b,c,c", " ,a,b"})
     @ParameterizedTest
     void duplicateOrEmpty(String carNames) {
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> new RacingGameInfo(carNames, "2"))
-                .withMessage("자동차 이름은 공백, 중복이 존재해서는 안됩니다");
+        assertThatThrownBy(() -> new RacingGameInfo(carNames, "2"))
+                .hasMessage("자동차 이름은 공백, 중복이 존재해서는 안됩니다");
     }
 
     @DisplayName("자동차 이름은 중복, 공백이 없고, 시도횟수는 0이상의 숫자이면 정상적으로 생성된다")

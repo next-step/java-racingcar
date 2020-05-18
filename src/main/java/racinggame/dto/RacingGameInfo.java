@@ -1,5 +1,7 @@
 package racinggame.dto;
 
+import racinggame.exception.RacingGameInputException;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,11 +27,15 @@ public class RacingGameInfo {
                 .distinct()
                 .collect(toList());
 
-        if (inputCars.length != listOfCarNames.size()) {
-            throw new IllegalArgumentException("자동차 이름은 공백, 중복이 존재해서는 안됩니다");
+        if (isNotValidCarNames(inputCars, listOfCarNames)) {
+            throw RacingGameInputException.ofCarNames();
         }
 
         return listOfCarNames;
+    }
+
+    private boolean isNotValidCarNames(String[] inputCars, List<String> listOfCarNames) {
+        return inputCars.length != listOfCarNames.size();
     }
 
     private int toNumber(String numberOfAttempt) {
@@ -38,13 +44,13 @@ public class RacingGameInfo {
             validate(Integer.parseInt(numberOfAttempt));
             return inputNumberOfAttempt;
         } catch (NumberFormatException numberFormatException) {
-            throw new IllegalArgumentException("시도횟수는 숫자로 입력해야합니다. : " + numberOfAttempt);
+            throw RacingGameInputException.ofAttemptParsing(numberOfAttempt);
         }
     }
 
     private void validate(int inputNumberOfAttempt) {
         if (inputNumberOfAttempt <= 0) {
-            throw new IllegalArgumentException("시도횟수는 0보다 커야합니다");
+            throw RacingGameInputException.ofAttemptBound();
         }
     }
 
