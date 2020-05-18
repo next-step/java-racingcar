@@ -1,14 +1,9 @@
 package study.step3;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
-=======
->>>>>>> d1896fdcab2eb83ee20138f031ab12d323e07844
 import java.util.List;
-import java.util.Scanner;
 
 public class RacingGameLauncher {
-<<<<<<< HEAD
     private final static int INIT_ZERO = 0;
 
     private static List<Round> gameStartAllrounds(RacingGame racingGame, RandomCarMoveCondition moveCondition) {
@@ -41,21 +36,4 @@ public class RacingGameLauncher {
         ResultView resultView = new ResultView(rounds);
         resultView.print();
     }
-=======
-    private final static Scanner scanner = new Scanner(System.in);
-
-    public static void main(String[] args) {
-        InputView inputView = new InputView(scanner);
-
-        RacingGame racingGame = new RacingGame.RacingGameBuilder()
-                .setCarNumbers(inputView.inputCarNumber())
-                .setTime(inputView.inputTryTime())
-                .build();
-
-        List<Car> result = racingGame.gameStart();
-        ResultView resultView = new ResultView(result);
-        resultView.print();
-    }
-
->>>>>>> d1896fdcab2eb83ee20138f031ab12d323e07844
 }
