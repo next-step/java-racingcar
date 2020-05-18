@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 @DisplayName("RacingCarGameTest 클래스 테스트")
 public class RacingCarGameTest {
@@ -26,9 +27,12 @@ public class RacingCarGameTest {
         List<Car> cars = racingCarGame.getCars();
 
         // then
-        assertThat(cars).isNotNull();
-        assertThat(cars.size()).isEqualTo(carName.split(",").length);
-        assertThat(cars.get(0).getPosition()).isEqualTo(moveCount);
+        assertAll(
+                () -> assertThat(cars).isNotNull(),
+                () -> assertThat(cars.size()).isEqualTo(carName.split(",").length),
+                () -> assertThat(cars.get(0).getPosition()).isEqualTo(moveCount)
+        );
+
     }
 
     @Test
