@@ -7,16 +7,26 @@ public class RacingGame {
     private final InputView inputView;
     private final ResultView resultView;
 
-    private int time;
     private int[] carPositions;
+    private int time;
 
     public RacingGame() {
         inputView = new InputView();
         resultView = new ResultView();
     }
 
+    public RacingGame(int numOfCars, int time) {
+        inputView = new InputView();
+        resultView = new ResultView();
+
+        carPositions = new int[numOfCars];
+        this.time = time;
+    }
+
     public void play() {
-        configureGameSettings();
+        if(carPositions == null) {
+            configureGameSettings();
+        }
 
         System.out.println("실행 결과");
 
