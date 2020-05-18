@@ -18,8 +18,9 @@ public class InputView {
 		int number = scanner.nextInt();
 				
 		System.out.println("실행 결과");
-
-		rg.move(value, number); // 자동차개수, 시도할 횟수전달
+		
+		// 계산 시작
+		rg.move(value, number); // 자동차개수, 시도할 횟수전달 
 	}
 
 }

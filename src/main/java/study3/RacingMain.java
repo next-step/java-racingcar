@@ -8,7 +8,6 @@ import java.util.Scanner;
  */
 public class RacingMain {
 	public static void main(String[] args) {
-
 		InputView iv = new InputView(); // Racing start
 	}
 }
