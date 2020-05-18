@@ -22,17 +22,17 @@ public class RacingGame {
         }
     }
 
-    public RacingResult run() {
-        RacingResult result = new RacingResult();
+    public MoveResults run() {
+        MoveResults results = new MoveResults();
 
         while (time > 0) {
             canMove();
             int[] positions = mover.move(cars);
-            result.add(positions);
+            results.add(positions);
             time--;
         }
 
-        return result;
+        return results;
     }
 
     private void canMove() {

@@ -38,8 +38,8 @@ class RacingGameTest {
         List<Car> cars = TestCarFactory.createList(carCount);
         RacingGame game = new RacingGame(time, cars);
 
-        RacingResult result = game.run();
+        MoveResults results = game.run();
 
-        assertThat(result.size()).isEqualTo(time);
+        assertThat(results.size()).isEqualTo(time);
     }
 }

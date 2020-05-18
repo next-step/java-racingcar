@@ -1,17 +1,17 @@
 package racingcar.view;
 
-import racingcar.RacingResult;
+import racingcar.MoveResults;
 
 public class ResultView {
 
     private ResultView() {
     }
 
-    public static void print(RacingResult racingResult) {
-        int size = racingResult.size();
+    public static void print(MoveResults moveResults) {
+        int size = moveResults.size();
 
         for (int i = 0; i < size; i++) {
-            print(racingResult.get(i));
+            print(moveResults.get(i));
         }
     }
 

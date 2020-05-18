@@ -13,8 +13,8 @@ public class Application {
 
         List<Car> cars = CarFactory.create(carNames);
         RacingGame game = new RacingGame(time, cars);
-        RacingResult result = game.run();
+        MoveResults results = game.run();
 
-        ResultView.print(result);
+        ResultView.print(results);
     }
 }
