@@ -2,62 +2,73 @@ package step4;
 
 import static step4.ErrorMessages.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.Objects;
 import java.util.Random;
 
 public class RacingGame {
-    private Random random;
-    private String[] names;
-    private int tryCount;
-    private int[] carPositions;
-    private String[] winners;
 
-    public String[] getNames() {
-        return this.names;
+    private Random random;
+    private int tryCount;
+    private ArrayList<Car> cars;
+    private ArrayList<String> winners;
+
+    public void setCars(ArrayList<Car> cars) {
+        this.cars = cars;
+    }
+
+    public ArrayList<String> getWinners() {
+        return winners;
+    }
+
+    public void setWinners(ArrayList<String> winners) {
+        this.winners = winners;
+    }
+
+    public ArrayList<Car> getCars() {
+        return cars;
     }
 
     public int getTryCount() {
         return this.tryCount;
     }
 
-    public String[] getWinners() {
-        return this.winners;
-    }
-
-    public int[] getCarPositions() {
-        return this.carPositions;
-    }
-
     public void setRandom(Random random) {
         this.random = random;
-    }
-
-    public Random getRandom() {
-        return random;
     }
 
     public RacingGame() {
         this.random = new Random();
     }
 
-    public void goCar() {
+    public void goCars() {
         if (this.random == null) {
             this.random = new Random();
         }
-        for(int i = 0; i < this.carPositions.length; ++i) {
-            if (this.random.nextInt() >= 4) {
-                this.carPositions[i]++;
-            }
+
+        for (Car car : cars) {
+            goCar(car);
+        }
+    }
+
+    public void goCar(Car car) {
+        if (this.random.nextInt() >= 4) {
+            car.go();
         }
     }
 
     public void initialize(String names, int tryCount) throws IllegalArgumentException {
         validateCarNames(names);
         validateTryCount(tryCount);
-
-        this.names = parseCarNames(names);
-        this.carPositions = new int[this.names.length];
+        this.cars = new ArrayList<>();
+        String[] carNames = parseCarNames(names);
+        for (int i = 0; i < carNames.length; ++i) {
+            this.cars.add(new Car(carNames[i]));
+        }
         this.tryCount = tryCount;
+        this.winners = new ArrayList<>();
     }
 
     public void validateCarNames(String names) throws IllegalArgumentException {
@@ -88,4 +99,22 @@ public class RacingGame {
             throw new IllegalArgumentException(INVALID_TRY_COUNT_MESSAGE);
         }
     }
+
+    public void chooseWinners() {
+        if (this.getCars() == null) {
+            throw new ExceptionInInitializerError(ErrorMessages.NOT_INITIALIZE_MESSAGE);
+        }
+
+        Collections.sort(this.cars);
+
+        int farthestPosition = -1;
+
+        for (Car car : cars) {
+            if (farthestPosition <= car.getPosition()) {
+                this.winners.add(car.getName());
+                farthestPosition = car.getPosition();
+            }
+        }
+    }
+
 }

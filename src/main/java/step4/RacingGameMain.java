@@ -12,8 +12,11 @@ public class RacingGameMain {
 
         resultView.printResultTitle();
         for (int i = 0; i < racingGame.getTryCount(); ++i) {
-            racingGame.goCar();
+            racingGame.goCars();
             resultView.printCurrentResult(racingGame);
         }
+
+        racingGame.chooseWinners();
+        resultView.printWinners(racingGame);
     }
 }

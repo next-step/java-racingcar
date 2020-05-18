@@ -2,6 +2,8 @@ package step4;
 
 import static step4.Constants.*;
 
+import java.util.ArrayList;
+
 public class ResultView {
 
     public void printResultTitle() {
@@ -9,10 +11,9 @@ public class ResultView {
     }
 
     public void printCurrentResult(RacingGame racingGame) {
-        String[] carNames = racingGame.getNames();
-        int[] carPosition = racingGame.getCarPositions();
-        for (int i = 0; i < carNames.length; ++i) {
-            System.out.printf("%s : %s\n", carNames[i], makeCarPosition(carPosition[i]));
+        ArrayList<Car> cars = racingGame.getCars();
+        for (Car car : cars) {
+            System.out.printf("%s : %s\n", car.getName(), makeCarPosition(car.getPosition()));
         }
         System.out.println();
     }
@@ -25,10 +26,10 @@ public class ResultView {
         return stringBuilder.toString();
     }
 
-    public void printWinners(String[] winners) {
+    public void printWinners(RacingGame racingGame) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (String winner : winners) {
-            if (stringBuilder.length() > 1) {
+        for (String winner : racingGame.getWinners()) {
+            if (stringBuilder.length() >= 1) {
                 stringBuilder.append(COMMA);
             }
             stringBuilder.append(winner);

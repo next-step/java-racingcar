@@ -5,6 +5,7 @@ import static org.assertj.core.api.Java6Assertions.catchThrowable;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
@@ -107,15 +108,14 @@ class RacingGameTest {
 
         racingGame.initialize(names, tryCount);
 
-        assertThat(racingGame.getNames()).containsExactly("a","b","c","d");
-        assertThat(racingGame.getNames()).hasSize(4);
+        assertThat(racingGame.getCars()).hasSize(4);
+        assertThat(racingGame.getCars()).extracting("name").contains("a", "b","c","d");
         assertThat(racingGame.getTryCount()).isEqualTo(tryCount);
-        assertThat(racingGame.getCarPositions()).hasSize(4);
-        assertThat(racingGame.getCarPositions()).containsOnly(0);
+        assertThat(racingGame.getCars()).extracting("position").containsOnly(0);
     }
 
     @Test
-    void goCar() {
+    void goCars() {
         //given
         racingGame.initialize("a,b,c",3);
         Random random = mock(Random.class);
@@ -124,9 +124,49 @@ class RacingGameTest {
             .thenReturn(5);
 
         //when
-        racingGame.goCar();
+        racingGame.goCars();
 
         //then
-        assertThat(racingGame.getCarPositions()).containsOnly(1);
+        assertThat(racingGame.getCars()).extracting("position").containsOnly(1);
+    }
+
+    @Test
+    void goCar() {
+        //given
+        racingGame.initialize("a,b,c",3);
+        Random random = mock(Random.class);
+        racingGame.setRandom(random);
+        Car car = new Car("a");
+        when(random.nextInt())
+            .thenReturn(5);
+
+        //when
+        racingGame.goCar(car);
+
+        //then
+        assertThat(car).extracting("position").containsOnly(1);
+    }
+
+    @Test
+    void chooseWinners() {
+        //given
+        racingGame.initialize("a,b,c", 3);
+        ArrayList<Car> cars = new ArrayList<>();
+        Car aCar = new Car("a");
+        aCar.setPosition(10);
+        cars.add(aCar);
+        Car bCar = new Car("b");
+        bCar.setPosition(5);
+        cars.add(bCar);
+        Car cCar = new Car("c");
+        cCar.setPosition(10);
+        cars.add(cCar);
+        racingGame.setCars(cars);
+
+        //when
+        racingGame.chooseWinners();
+
+        //then
+        assertThat(racingGame.getWinners()).containsExactly("a","c");
     }
 }
