@@ -9,7 +9,6 @@ repositories {
 }
 
 dependencies {
-    compile 'org.apache.commons:commons-lang3:3.4'
     testCompile('org.junit.jupiter:junit-jupiter:5.4.2')
     testCompile('org.assertj:assertj-core:3.11.1')
 }
