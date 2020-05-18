@@ -10,6 +10,11 @@ public final class OutputView {
     private static final int START_POSITION= 0;
     private OutputView() {}
 
+    public static void printResult() {
+        System.out.println();
+        System.out.println("실행 결과");
+    }
+
     public static void printRacingCars(List<RacingCar> racingCars) {
         racingCars.forEach(OutputView::printRacingCar);
         System.out.println();

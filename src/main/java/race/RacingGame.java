@@ -25,20 +25,20 @@ public class RacingGame {
             .collect(Collectors.toList());
     }
 
-    public void startRacing() {
-        System.out.println();
-        System.out.println("실행 결과");
-        for (int i = 0; i < time; i++) {
-            start();
-            OutputView.printRacingCars(racingCars);
-        }
+    public List<RacingCar> startRacing() {
+        List<RacingCar> racingCars;
+        racingCars = start();
+
+        return racingCars;
     }
 
-    private void start() {
+    private List<RacingCar> start() {
          racingCars.forEach(racingCar -> {
             if (movingStrategy.isMovable()) {
                 racingCar.forward();
             }
         });
+
+        return racingCars;
     }
 }
