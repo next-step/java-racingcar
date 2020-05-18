@@ -12,6 +12,10 @@ public class RacingGameSnapshot {
         this.carSnapshots = carSnapshots;
     }
 
+    public static RacingGameSnapshot of(List<CarSnapshot> carSnapshots) {
+        return new RacingGameSnapshot(carSnapshots);
+    }
+
     public List<CarSnapshot> getCarSnapshots() {
         return carSnapshots;
     }
@@ -28,7 +32,4 @@ public class RacingGameSnapshot {
                 .collect(toList());
     }
 
-    public int size() {
-        return carSnapshots.size();
-    }
 }

@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 class RacingGameTest {
 
-    @DisplayName("레이싱게임을 수행하면 모든 경기의 게임결과 스냅샷리스트와 우승자를 반환한다")
+    @DisplayName("레이싱게임을 수행하면 모든 경기의 게임결과 스냅샷리스트를 반환한다")
     @Test
     void racingGame() {
         //given
@@ -26,7 +26,7 @@ class RacingGameTest {
 
         //then
         assertAll(
-                () -> assertThat(racingGameResult.size()).isEqualTo(numberOfAttempt),
+                () -> assertThat(racingGameResult.getResults()).containsKeys(1, 2, 3),
                 () -> assertThat(racingGameResult.findFinalWinners()).isEqualTo(Arrays.asList("a", "c"))
         );
     }

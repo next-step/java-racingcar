@@ -23,7 +23,7 @@ class CarTest {
         CarSnapshot snapshot = car.move(engine);
 
         //then
-        assertThat(snapshot).isEqualToComparingFieldByField(new CarSnapshot(nameOfCar, expected));
+        assertThat(snapshot).isEqualToComparingFieldByField(CarSnapshot.of(nameOfCar, expected));
     }
 
 }

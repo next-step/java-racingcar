@@ -15,6 +15,6 @@ public class Car {
         if (engine.isMovable()) {
             location++;
         }
-        return new CarSnapshot(name, location);
+        return CarSnapshot.of(name, location);
     }
 }

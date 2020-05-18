@@ -1,29 +1,27 @@
 package racinggame.domain.result;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RacingGameResult {
-    private final List<RacingGameSnapshot> results;
+    private final int totalRound;
+    private final Map<Integer, RacingGameSnapshot> results = new HashMap<>();
 
-    public RacingGameResult(List<RacingGameSnapshot> results) {
-        this.results = results;
+    public RacingGameResult(int totalRound) {
+        this.totalRound = totalRound;
     }
 
-    public List<RacingGameSnapshot> getResults() {
-        return results;
+    public void record(int round, RacingGameSnapshot gameSnapshot) {
+        results.put(round, gameSnapshot);
     }
 
     public List<String> findFinalWinners() {
-        int finalRound = results.size() - 1;
-        return findWinnersOfRound(finalRound);
-    }
-
-    private List<String> findWinnersOfRound(final int round) {
-        return results.get(round)
+        return results.get(totalRound)
                 .findWinner();
     }
 
-    public int size() {
-        return results.size();
+    public Map<Integer, RacingGameSnapshot> getResults() {
+        return results;
     }
 }
