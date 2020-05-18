@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -7,11 +8,12 @@ public class Game {
   private List<Car> cars;
 
   private Game(List<Car> cars) {
-    this.cars = cars;
+    this.cars = new ArrayList<>(cars);
   }
 
-  public void doRace(int random) {
+  public List<Car> doRace(int random) {
     this.cars.forEach(element -> element.updatePosition(random));
+    return this.cars;
   }
 
   public List<Car> getCars() {
