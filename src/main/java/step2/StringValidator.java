@@ -4,6 +4,7 @@ import java.util.regex.Pattern;
 
 public class StringValidator {
     private static final Pattern PATTERN_CHECK_NUMBER = Pattern.compile("^-?\\d*\\.{0,1}\\d+$");
+    private static final Pattern PATTERN_WHITESPACE = Pattern.compile("\\s");
 
     /**
      * null 혹은 빈 문자열이거나 빈 공백 문자열일 경우 IllegalArgumentException throw
@@ -32,16 +33,10 @@ public class StringValidator {
      * @param param : String 판단할 문자열
      * @throws IllegalArgumentException
      */
-    public static void checkEmpty(String param) throws IllegalArgumentException {
-        String[] splitedStringsBySpace = param.split(" ");
-
-        for (String splitedString : splitedStringsBySpace) {
-            if (!splitedString.isEmpty()) {
-                return;
-            }
+    public static void checkEmpty(String param) {
+        if (PATTERN_WHITESPACE.matcher(param).replaceAll("").isEmpty()) {
+            throw new IllegalArgumentException("입력값이 빈 문자열 입니다.");
         }
-
-        throw new IllegalArgumentException("입력값이 빈 문자열 입니다.");
     }
 
     /**
@@ -51,12 +46,10 @@ public class StringValidator {
      * @return boolean, 숫자일 경우 true, 아닐 경우 false 반환
      */
     public static boolean isNumber(String param) {
-        boolean result = false;
-
         if (param != null) {
-            result = PATTERN_CHECK_NUMBER.matcher(param).matches();
+            return PATTERN_CHECK_NUMBER.matcher(param).matches();
         }
 
-        return result;
+        return false;
     }
 }
