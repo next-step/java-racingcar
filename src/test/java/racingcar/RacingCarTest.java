@@ -1,5 +1,7 @@
 package racingcar;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +10,8 @@ public class RacingCarTest {
 
   @Test
   void 랜덤값이_0과_9_사이이다() {
-    //
+    RandomUtil randomUtil = new RandomUtil();
+    assertThat(randomUtil.getRandomValue()).isBetween(0, 9);
   }
 
   @Test
