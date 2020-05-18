@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingGameTest {
 
     @ParameterizedTest
-    @CsvSource(value={"2,2", "2,5"})
+    @CsvSource(value = {"2,2","2,5"})
     @DisplayName("자동차 Position 초기값 설정")
     void initRacingCars(int carCount, int time) {
         RacingGame racingGame = new RacingGame(carCount, time);
@@ -22,7 +22,22 @@ class RacingGameTest {
         racingCarList = racingCarList.stream()
                                     .filter(racingCar -> racingCar.getPosition() == 0)
                                     .collect(Collectors.toList());
-        
+
         assertThat(racingCarList.size()).isEqualTo(carCount);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"true,1", "false,0"})
+    void move(boolean isMove, int expected) {
+        RacingGame racingGame = new RacingGame(3, 3);
+        List<RacingCar> racingCarList = racingGame.getRacingCarList();
+
+        racingCarList.forEach(racingCar -> racingCar.move(isMove));
+
+        racingCarList = racingCarList.stream()
+                                    .filter(racingCar -> racingCar.getPosition() == expected)
+                                    .collect(Collectors.toList());
+
+        assertThat(racingCarList.size()).isEqualTo(3);
     }
 }

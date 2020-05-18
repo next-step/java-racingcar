@@ -1,9 +1,10 @@
 package racingCar.application;
 
+import racingCar.domain.MoveBehavior;
 import racingCar.domain.RacingCar;
+import racingCar.domain.RandomMove;
 
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -33,8 +34,8 @@ public class RacingGame {
 
     // TODO 구현
     public void move() {
-        Random random = new Random();
-        racingCarList.forEach(racingCar -> racingCar.move(random.nextInt(10)));
+        MoveBehavior moveBehavior = new RandomMove();
+        racingCarList.forEach(racingCar -> racingCar.move(moveBehavior.isMove()));
     }
 
     public int getTime() {

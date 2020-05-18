@@ -1,6 +1,5 @@
 package racingCar.ui;
 
-import org.omg.CORBA.Environment;
 import racingCar.domain.RacingCar;
 
 import java.util.List;
