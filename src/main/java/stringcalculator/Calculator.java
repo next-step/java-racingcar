@@ -5,25 +5,27 @@ import java.util.ArrayList;
 //  enum 만들기
 enum Operators{
     PLUS {
-        double calculate(double operand1, double operand2){
+        public double calculate(double operand1, double operand2){
             return operand1 + operand2;
         }
     },
     MINUS {
-        double calculate(double operand1, double operand2){
+        public double calculate(double operand1, double operand2){
             return operand1 - operand2;
         }
     },
     MULTIPLE {
-        double calculate(double operand1, double operand2){
+        public double calculate(double operand1, double operand2){
             return operand1 * operand2;
         }
     },
     DIVIDE {
-        double calculate(double operand1, double operand2){
+        public double calculate(double operand1, double operand2){
             return operand1 / operand2;
         }
-    }
+    };
+
+    public abstract double calculate(double operand1, double operand2);
 }
 
 public class Calculator {
