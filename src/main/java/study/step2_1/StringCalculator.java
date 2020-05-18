@@ -1,5 +1,6 @@
 package study.step2_1;
 
+<<<<<<< HEAD
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -42,6 +43,9 @@ public class StringCalculator{
                 .filter(value -> Operator.isOperator(value))
                 .collect(Collectors.toList());
     }
+=======
+public class StringCalculator{
+>>>>>>> d1896fdcab2eb83ee20138f031ab12d323e07844
 
     public double calculate(String expression) {
 

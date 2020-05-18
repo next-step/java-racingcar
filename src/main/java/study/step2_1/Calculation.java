@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Calculation implements Calculator{
+<<<<<<< HEAD
     private static final int INIT_INDEX = 0;
     private static final int NEXT_NUMBER_INDEX = 1;
 
@@ -33,6 +34,14 @@ public class Calculation implements Calculator{
         }
         throw new IllegalArgumentException();
     }
+=======
+
+    private static final int INIT_INDEX = 0;
+    private static final int NEXT_NUMBER_INDEX = 1;
+
+    private List<Double> numbers;
+    private List<String> operators;
+>>>>>>> d1896fdcab2eb83ee20138f031ab12d323e07844
 
     private boolean isNaturalOperator(List<String> separateOperator) {
         return !Objects.isNull(separateOperator) && (inputValues.length - NUMBER_ONE) / NUMBER_TWO == separateOperator.size();
@@ -47,7 +56,11 @@ public class Calculation implements Calculator{
         int size = operators.size() - 1;
 
         for (int i = INIT_INDEX; i <= size; i++){
+<<<<<<< HEAD
             result = Operator.findOperator(operators.get(i)).calculate(result, numbers.get(NEXT_NUMBER_INDEX));
+=======
+            result = Operator.calculate(operators.get(i), result, numbers.get(NEXT_NUMBER_INDEX));
+>>>>>>> d1896fdcab2eb83ee20138f031ab12d323e07844
             numbers.removeIf(value -> isConsumeNumbers(value));
             numbers.set(INIT_INDEX,result);
         }

@@ -79,6 +79,7 @@ public class CalculatorTest {
         });
     }
 
+<<<<<<< HEAD
     @ParameterizedTest
     @DisplayName("사칙연산 기호 제대로 찾는지 메소드 체크 테스트")
     @CsvSource(value ={"+=ADD", "-=SUBTRACT", "*=MULTIPLY", "/=DIVISION"}, delimiter = '=')
@@ -102,4 +103,6 @@ public class CalculatorTest {
         assertThat(Operator.isOperator(input)).isTrue();
     }
 
+=======
+>>>>>>> d1896fdcab2eb83ee20138f031ab12d323e07844
 }

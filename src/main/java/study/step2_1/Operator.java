@@ -1,7 +1,12 @@
 package study.step2_1;
 
+<<<<<<< HEAD
 import java.util.Arrays;
 import java.util.Objects;
+=======
+import java.util.Optional;
+import java.util.function.BinaryOperator;
+>>>>>>> d1896fdcab2eb83ee20138f031ab12d323e07844
 import java.util.function.ToDoubleBiFunction;
 import java.util.stream.Stream;
 
@@ -27,6 +32,7 @@ public enum Operator {
     public static Operator findOperator(String operator){
         return Stream.of(Operator.values())
                 .filter(value -> value.operatorType.equals(operator))
+<<<<<<< HEAD
                 .findAny()
                 .orElseThrow(()->new IllegalArgumentException());
     }
@@ -43,3 +49,23 @@ public enum Operator {
     }
 
 }
+=======
+                .findAny();
+    }
+
+    public static ToDoubleBiFunction<Double,Double> getOperationType(String operator) {
+        return findOperator(operator).orElseThrow(()->new IllegalArgumentException()).operation;
+    }
+
+    public static boolean isOperator(String value){
+        if (!Validator.isBlank(value)){
+            return Operator.findOperator(value).isPresent();
+        }
+        return false;
+    }
+
+    public static double calculate(String operator, Double currentNumber, Double nextNumber){
+        return getOperationType(operator).applyAsDouble(currentNumber, nextNumber);
+    }
+}
+>>>>>>> d1896fdcab2eb83ee20138f031ab12d323e07844
