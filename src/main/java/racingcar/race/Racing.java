@@ -7,14 +7,14 @@ import java.util.stream.Collectors;
 public class Racing {
 
     private final List<Car> carList;
-    private final Dice dice;
+    private final RacingRule racingRule;
     private int raceTime = 0;
 
-    public Racing(Dice dice, int carCount, int raceTime) {
+    public Racing(RacingRule racingRule, int carCount, int raceTime) {
         checkRacingCount(raceTime);
 
         this.raceTime = raceTime;
-        this.dice = dice;
+        this.racingRule = racingRule;
         this.carList = createCarList(carCount);
     }
 
@@ -45,15 +45,8 @@ public class Racing {
 
     private void race() {
         for(Car car : carList) {
-            car.drive(getMoveForwardCount());
+            car.drive(racingRule.getMoveForward());
         }
     }
 
-    private int getMoveForwardCount() {
-        int forwardCount = 1;
-        if( dice.generate() < 4) {
-            forwardCount = 0;
-        }
-        return forwardCount;
-    }
 }

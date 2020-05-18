@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.race.Dice;
+import racingcar.race.RacingRule;
 import racingcar.race.Racing;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -13,7 +14,8 @@ public class Main {
         int raceTime = inputView.inputRaceTime();
 
         Dice dice = RacingDice.newInstance();
-        Racing race = new Racing(dice, carCount, raceTime);
+        RacingRule racingRule = new DiceRacingRule(dice);
+        Racing race = new Racing(racingRule, carCount, raceTime);
 
         OutputView outputView = new OutputView();
         outputView.printTitle();
