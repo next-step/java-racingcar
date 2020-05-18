@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class InputView {
 
-    Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
 
     public static int setCarsCount() {
         // input
@@ -21,7 +21,7 @@ public class InputView {
     }
 
     private static int inputIntNumber() {
-        int result = new Scanner(System.in).nextInt();
+        int result = scanner.nextInt();
         inputCheck(result);
         return result;
     }
