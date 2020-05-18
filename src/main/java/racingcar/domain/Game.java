@@ -4,10 +4,14 @@ import java.util.List;
 
 public class Game {
 
-  List<Car> cars;
+  private List<Car> cars;
 
   private Game(List<Car> cars) {
     this.cars = cars;
+  }
+
+  public void doRace(int random) {
+    this.cars.forEach(element -> element.updatePosition(random));
   }
 
   public List<Car> getCars() {
