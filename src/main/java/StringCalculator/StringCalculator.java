@@ -16,22 +16,20 @@ public class StringCalculator {
 
         arithmeticExpressionValidation(arithmeticExpression);
 
-        Validator operationValidator = new OperationValidator();
+//        Validator operationValidator = new OperationValidator();
 
         String [] expressionArr = this.splitString(arithmeticExpression.toString());
         preNumber = Double.parseDouble(expressionArr[0]);
 
         for(int i=0 ; i < expressionArr.length ; i++) {
+            Optional<Operation> operation = getProperOperation(expressionArr[i]);
             //연산 문자의 경우
-            if(operationValidator.isValidate(expressionArr[i])){
-                Optional<Operation> operation = getProperOperation(expressionArr[i]);
-                if(operation.isPresent()) {
-                    //연산
-                    nextNumber = Double.parseDouble(expressionArr[i+1]);
-                    sum = operation.get().operate(preNumber, nextNumber);
-                    preNumber = sum;
-                    continue;
-                }
+            if(operation.isPresent()) {
+                //연산
+                nextNumber = Double.parseDouble(expressionArr[i+1]);
+                sum = operation.get().operate(preNumber, nextNumber);
+                preNumber = sum;
+                continue;
             }
         }
         return sum;

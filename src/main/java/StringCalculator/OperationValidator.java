@@ -10,12 +10,4 @@ public class OperationValidator implements Validator {
             throw new IllegalArgumentException("Literal is Not Operation Character");
         };
     }
-
-    @Override
-    public boolean isValidate(String checkStr) {
-        if(checkStr.matches(regExp)){
-            return true;
-        };
-        return false;
-    }
 }
