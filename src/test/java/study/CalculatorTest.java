@@ -28,9 +28,9 @@ public class CalculatorTest {
     }
     @Test
     void wrongMisallignedStringTest() {
-        assertThatExceptionOfType(NumberFormatException.class)
+        assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    StringCalculator calculator = new StringCalculator("2 * - * *");
+                    StringCalculator calculator = new StringCalculator("2 * - * 3");
                     calculator.run();
                 });
     }

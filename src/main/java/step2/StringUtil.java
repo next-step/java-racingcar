@@ -3,7 +3,7 @@ package step2;
 public final class StringUtil {
     public static boolean isNumber(String str) {
         if(str.isEmpty()) return false;
-        return str.matches("(^[0-9]*.$)");
+        return str.matches("(^[0-9]+(\\.[0-9])*$)");
     }
 
     public static String[] doSplit(String input, String key) {

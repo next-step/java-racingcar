@@ -26,6 +26,8 @@ public class StringCalculator {
                 op = null;
                 continue;
             }
+            if(op != null) throw new IllegalArgumentException(
+                    "Check the operator order you entered");
             op = Operator.matchOperator(inputArray[i]);
         }
     }
