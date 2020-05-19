@@ -15,8 +15,9 @@ public class GameResultBoard {
     }
 
     public void recordRound(List<Car> cars, int roundNumber) {
-        for (int i = 0; i < cars.size(); i++) {
-            this.gameResultBoard[i][roundNumber] = cars.get(i).getPosition();
+        int row = cars.size();
+        for (int carNumber = 0; carNumber < row; carNumber++) {
+            this.gameResultBoard[carNumber][roundNumber] = cars.get(carNumber).getPosition();
         }
     }
 
