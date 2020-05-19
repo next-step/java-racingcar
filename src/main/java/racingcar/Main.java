@@ -1,20 +1,19 @@
 package racingcar;
 
-import racingcar.race.Dice;
-import racingcar.race.RacingRule;
-import racingcar.race.Racing;
+import racingcar.race.*;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
+
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-        int carCount = InputView.inputCarCountJoinRace();
+        String name = "벤츠, 아우디, 제네시스";
         int raceTime = InputView.inputRaceTime();
 
-        Dice dice = RacingDice.newInstance();
-        RacingRule racingRule = new DiceRacingRule(dice);
-        Racing race = new Racing(racingRule, carCount, raceTime);
+        List<Car> carList = RacingRegistry.getCarList(name);
+        Racing race = Racing.applyRacing(carList, raceTime);
 
         OutputView.printTitle();
         race.start(OutputView::printRaceResult);

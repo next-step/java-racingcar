@@ -1,29 +1,33 @@
 package racingcar.race;
 
-import java.util.ArrayList;
+import racingcar.DiceRacingRule;
+import racingcar.RacingDice;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Racing {
 
+    private static final RacingRule DEFAULT_RACING_RULE = new DiceRacingRule(RacingDice.newInstance());
+
     private final List<Car> carList;
     private final RacingRule racingRule;
     private int raceTime = 0;
 
-    public Racing(RacingRule racingRule, int carCount, int raceTime) {
+    private Racing(RacingRule racingRule, List<Car> carList, int raceTime) {
         checkRacingCount(raceTime);
 
         this.raceTime = raceTime;
         this.racingRule = racingRule;
-        this.carList = createCarList(carCount);
+        this.carList = carList;
     }
 
-    private List<Car> createCarList(int carCount) {
-        List<Car> carListJoinRace = new ArrayList<>();
-        for(int i = 0 ; i < carCount ; i++) {
-            carListJoinRace.add(new Car());
-        }
-        return carListJoinRace;
+    public static Racing applyRacing(List<Car> carList, int raceTime) {
+        return applyRacing(DEFAULT_RACING_RULE, carList, raceTime);
+    }
+
+    public static Racing applyRacing(RacingRule racingRule, List<Car> carList, int raceTime) {
+        return new Racing(racingRule == null ? DEFAULT_RACING_RULE : racingRule, carList, raceTime);
     }
 
     public void start(GameResultReceiver receiver) {
@@ -48,5 +52,4 @@ public class Racing {
             car.drive(racingRule.getMoveForward());
         }
     }
-
 }

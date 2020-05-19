@@ -8,6 +8,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.DiceRacingRule;
 import racingcar.RacingDice;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,16 +19,15 @@ class RacingTest {
 
     private final Dice DEFAULT_DICE = RacingDice.newInstance();
     private final RacingRule DEFAULT_RACING_RULE = new DiceRacingRule(DEFAULT_DICE);
-    private final int DEFAULT_CAR_COUNT = 10;
+    private final List<Car> DEFAULT_CAR_LIST = new ArrayList<>();
 
-    @DisplayName("입력한 자동차의 수 만큼 Race 결과가 나오는 지 테스트")
+    @DisplayName("입력한 자동차의 이름만큼 Race 결과가 나오는 지 테스트")
     @Test
     public void joinRaceTest() {
-        int carCount = 10;
-        Racing race = new Racing(DEFAULT_RACING_RULE, DEFAULT_CAR_COUNT, 3);
+        Racing race = Racing.applyRacing(DEFAULT_RACING_RULE, DEFAULT_CAR_LIST, 3);
 
         race.start(gameResults ->
-                assertThat(gameResults.size()).isEqualTo(carCount));
+                assertThat(gameResults.size()).isEqualTo(DEFAULT_CAR_LIST.size()));
     }
 
     @DisplayName("입력한 Race 시도 횟수만큼 race가 진행되는 지 테스트")
@@ -34,7 +35,7 @@ class RacingTest {
     @CsvSource({"3", "4"})
     public void  raceGameSetCountTest(int racingCount) {
         AtomicInteger actualRacingCount = new AtomicInteger();
-        Racing race = new Racing(DEFAULT_RACING_RULE, DEFAULT_CAR_COUNT, racingCount);
+        Racing race = Racing.applyRacing(DEFAULT_CAR_LIST, racingCount);
 
         race.start(carPositions -> actualRacingCount.getAndIncrement());
 
@@ -46,7 +47,7 @@ class RacingTest {
     @ValueSource(ints = {0, 1, 2, 3})
     public void doNotMoveTest(int diceNumber) {
         RacingRule racingRule = new DiceRacingRule(() -> diceNumber);
-        Racing race = new Racing(racingRule, DEFAULT_CAR_COUNT, 10 );
+        Racing race = Racing.applyRacing(racingRule, DEFAULT_CAR_LIST, 10 );
 
         race.start(results -> {
             assertThat(results.stream().allMatch(result -> result == 0)).isTrue();
@@ -58,7 +59,7 @@ class RacingTest {
     @ValueSource(ints = {4, 5, 6, 7})
     public void moveTest(int diceNumber) {
         RacingRule racingRule = new DiceRacingRule(() -> diceNumber);
-        Racing race = new Racing(racingRule, DEFAULT_CAR_COUNT,1);
+        Racing race = Racing.applyRacing(racingRule, DEFAULT_CAR_LIST,1);
 
         race.start(results -> {
             assertThat(results.stream().allMatch(result -> result > 0)).isTrue();
@@ -69,7 +70,7 @@ class RacingTest {
     @Test
     public void raceGameSetCountZeroTest() {
         Throwable throwable = catchThrowable(() -> {
-            Racing race = new Racing(DEFAULT_RACING_RULE, DEFAULT_CAR_COUNT, 0);
+            Racing race = Racing.applyRacing(DEFAULT_RACING_RULE, DEFAULT_CAR_LIST, 0);
             race.start(System.out::println);
         });
 
@@ -80,7 +81,7 @@ class RacingTest {
     @Test
     public void moveSumTest() {
         RacingRule racingRule = new DiceRacingRule(() -> 9);
-        Racing race = new Racing(racingRule, DEFAULT_CAR_COUNT, 3);
+        Racing race = Racing.applyRacing(racingRule, DEFAULT_CAR_LIST, 3);
         AtomicInteger racedCount = new AtomicInteger();
 
         race.start(results -> {
@@ -88,4 +89,5 @@ class RacingTest {
             assertThat(results.stream().allMatch(result -> result == racedCount.get())).isTrue();
         });
     }
+
 }
