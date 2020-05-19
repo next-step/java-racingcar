@@ -12,12 +12,12 @@ public class RacingCar {
     }
 
     public void move(int power) {
-        if(inputPowerCehck(power)) {
+        if(checkPowerThreshold(power)) {
             this.currentPosition += MOVE_DISTANCE;
         }
     }
 
-    private boolean inputPowerCehck(int power) {
+    private boolean checkPowerThreshold(int power) {
         return power >= POWER_THRESHOLD;
     }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-class RacingGame {
+class RacingGameTest {
 
     @Test
     @DisplayName("RacingGameTest 초기화 테스")

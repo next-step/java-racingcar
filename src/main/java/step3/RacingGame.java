@@ -13,7 +13,7 @@ public class RacingGame {
     }
 
     public void moveCars(List<RacingCar> racingCarList) {
-        for(RacingCar car : racingCarList) {
+        for (RacingCar car : racingCarList) {
             RacingRandom racingRandom = new RacingRandom();
             int power = racingRandom.getRandomNumber();
             car.move(power);
