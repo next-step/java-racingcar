@@ -5,9 +5,10 @@ import java.util.Scanner;
 public final class InputView {
 
     private final static Scanner scanner = new Scanner(System.in);
+
     private InputView() {}
 
-    public static InputView of() {
+    public static InputView create() {
         return new InputView();
     }
 

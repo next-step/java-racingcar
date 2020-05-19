@@ -8,6 +8,7 @@ public class RacingGame {
 
     private List<RacingCar> racingCars;
     private final MovingStrategy movingStrategy;
+    private static final String DELIMITER = ",";
 
     private RacingGame(MovingStrategy movingStrategy) {
         this.movingStrategy = movingStrategy;
@@ -18,7 +19,7 @@ public class RacingGame {
     }
 
     public void readyRacingCars(String carName) {
-        String[] carNames = carName.split(",");
+        String[] carNames = carName.split(DELIMITER);
         this.racingCars = Arrays.stream(carNames)
             .map(RacingCar::ready)
             .collect(Collectors.toList());
@@ -41,5 +42,9 @@ public class RacingGame {
         if (movingStrategy.isMovable()) {
            racingCar.forward();
         }
+    }
+
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
     }
 }
