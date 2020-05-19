@@ -6,5 +6,6 @@ public class Application {
         String[] carNames = InputViewProcessor.getCarNames(Message.CAR_NAMES);
         int gameTryCounts = InputViewProcessor.getGameTryCounts(Message.GAME_TRY_COUNTS);
 
+        RacingGame racingGame = new RacingGame(carNames, gameTryCounts);
     }
 }
