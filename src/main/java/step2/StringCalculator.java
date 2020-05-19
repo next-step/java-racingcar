@@ -1,99 +1,68 @@
 package step2;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringCalculator extends Calculator {
+    private static final Pattern PATTERN_FIND_NUMBER = Pattern.compile("-?\\d*\\.{0,1}\\d+");
+
     /**
      * 문자열 안의 숫자와 연산자를 분리하여 계산한다.
      * 
      * @param param : String, '숫자 연산자 숫자' 의 순서로 이루어진 문자열 e.g."2 + 3 + 4"
      * @return 계산 결과 값을 반환한다.
      */
-    public String calculate(String param) {
-        Deque<String> calculatorDequeue = new ArrayDeque<>();
-        double left = 0;
-        double right = 0;
-        double result = 0;
+    public String calculateString(String param) {
+        String left = "";
+        String right = "";
         String operator = "";
-        String temp = "";
 
         try {
             StringValidator.checkNull(param);
+            param = StringCalculatorUtils.removeWhiteSpace(param);
 
-            param = removeWhiteSpace(param);
+            Matcher matcher = PATTERN_FIND_NUMBER.matcher(param);
+            matcher.find();
 
-            initCalculatorDequeue(param, calculatorDequeue);
+            left = matcher.group();
+            StringValidator.checkNumber(left);
 
-            while (2 < calculatorDequeue.size()) {
-                left = Double.parseDouble(calculatorDequeue.poll());
-                operator = calculatorDequeue.poll();
-                right = Double.parseDouble(calculatorDequeue.poll());
+            for (int i = matcher.end(); i < param.length(); i = matcher.end()) {
+                matcher.find(i);
 
-                temp = String.valueOf(calculate(operator, left, right));
+                right = matcher.group();
+                StringValidator.checkNumber(right);
 
-                calculatorDequeue.push(temp);
+                operator = param.substring(i, matcher.start());
+                operator = StringCalculatorUtils.getNegativeCheckedOperator(operator, right);
+                StringValidator.checkOperator(operator);
+
+                left = String.valueOf(calculate(operator, Double.parseDouble(left), Double.parseDouble(right)));
             }
 
-            result = Double.parseDouble(calculatorDequeue.poll());
+            return getCheckedResult(left);
 
-            if (result % 1 == 0) {
-                return String.valueOf((int) result);
-            }
+        } catch (IllegalStateException e) {
+            throw new IllegalArgumentException("잘못된 연산식" + "\nparam : " + param);
         } catch (IllegalArgumentException e) {
-            System.out.println("StringCalculator.calculate(String param) : " + e.getMessage() + "\nparam : " + param);
-            return "error";
+            throw new IllegalArgumentException(e.getMessage() + "\nparam : " + param);
         }
 
-        return String.valueOf(result);
     }
 
     /**
-     * 공백을 모두 제거
+     * 연산 결과가 int면 소수점을 빼고 반환
      * 
-     * @param param : String, 공백을 제거할 문자열
-     * @return String, 공백이 제거된 문자열
+     * @param result : String, 연산 결과
+     * @return String, double 혹은 int 모양의 숫자 문자열 반환
      */
-    public String removeWhiteSpace(String param) {
-        return param.replaceAll(" ", "");
-    }
+    private String getCheckedResult(String result) {
+        double doubleResult = Double.parseDouble(result);
 
-    /**
-     * 계산기 덱(dequeue) 초기화
-     * <li>문자열(param)의 숫자와 연산자를 분리하여 덱에 삽입한다.</li>
-     * <li>문자열(param)은 '숫자 연산자 숫자'의 순서로 이루어져야 한다. e.g. "2+3+4"</li>
-     * 
-     * @param param             : String, 덱에 넣을 문자열
-     * @param calculatorDequeue : Dequeue, 계산할 문자열을 담을 덱
-     * @throws IllegalArgumentException '숫자 연산자 숫자' 의 순서가 아닌 경우 e.g. "2++3+4"
-     */
-    public void initCalculatorDequeue(String param, Deque<String> calculatorDequeue) throws IllegalArgumentException {
-        // private으로 감춰야할것같은데 그럴 경우 테스트는?
-        // 새로운 객체를 생성할 필요가 없기 때문에 타입을 void로 했는데, 이런 메소드 같은 경우도 return을 명시해주는것이 좋은 것인지
-        String[] splitedParamArr = param.split("");
-        StringBuffer temp = new StringBuffer();
-        boolean afterOperator = true;
-
-        for (int i = 0; i < splitedParamArr.length; i++) {
-            StringValidator.checkEmpty(splitedParamArr[i]);
-
-            if (StringValidator.isNumber(splitedParamArr[i])) {
-                temp.append(splitedParamArr[i]);
-                afterOperator = false;
-            }
-            if (!StringValidator.isNumber(splitedParamArr[i])) {
-                if (afterOperator) {
-                    throw new IllegalArgumentException("수식이 잘못되었습니다.");
-                }
-                calculatorDequeue.add(temp.toString());
-                calculatorDequeue.add(splitedParamArr[i]);
-                temp.setLength(0);
-                afterOperator = true;
-            }
+        if (doubleResult % 1 == 0) {
+            return String.valueOf((int) doubleResult);
         }
 
-        if (temp.length() != 0) {
-            calculatorDequeue.add(temp.toString());
-        }
+        return result;
     }
 }
