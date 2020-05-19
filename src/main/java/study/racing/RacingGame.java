@@ -29,6 +29,8 @@ public class RacingGame {
             move();
             resultView.printCarPositions(cars);
         }
+
+        resultView.printWinners(cars);
     }
 
     private void configureGameSettings() {

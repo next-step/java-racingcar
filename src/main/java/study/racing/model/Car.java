@@ -2,7 +2,7 @@ package study.racing.model;
 
 import java.util.Random;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private static final int MOVE_THRESHOLD = 4;
     private static final int MAX_RANDOM_NUM = 10;
 
@@ -33,5 +33,15 @@ public class Car {
 
     private int getRandomNumber() {
         return new Random().nextInt(MAX_RANDOM_NUM);
+    }
+
+    @Override
+    public int compareTo(Car car) {
+        return this.count - car.getCount();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof Car && this.count == ((Car) o).getCount();
     }
 }
