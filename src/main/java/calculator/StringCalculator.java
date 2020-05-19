@@ -3,51 +3,36 @@ package calculator;
 
 public class StringCalculator {
 
-    private String calcString;
+    private static final String delimiter = " ";
 
-    public StringCalculator(String calcString) {
-        if(!_validator(calcString)) {
+    public double calculate(String input) {
+
+        if(!validator(input)) {
             throw new IllegalArgumentException();
         }
-        this.calcString = calcString;
-    }
 
-    public double calculate() {
-
-        String[] calcStringArray = this.calcString.split(" ");
+        String[] calcStringArray = input.split(delimiter);
         double result = Double.parseDouble(calcStringArray[0]);
-        double tempNumber;
         String operatorString = "";
 
-        for(int i = 0; i < calcStringArray.length; i++) {
+        for(int i = 1; i < calcStringArray.length; i++) {
 
-            if(_isOperatorString(i)) {
-                operatorString = calcStringArray[i];
-                continue;
-            }
-
-            if(!_validator(operatorString)) {
-                continue;
-            }
-
-            tempNumber = Double.parseDouble(calcStringArray[i]);
-            result = Operator.getOperatorFunc(operatorString).calculate(result, tempNumber);
+            operatorString = (isOperatorString(i)) ? calcStringArray[i] : operatorString ;
+            result = (isOperatorString(i)) ?
+                    result :
+                    Operator.getOperatorFunc(operatorString).calculate(result, Double.parseDouble(calcStringArray[i]));
 
         }
 
         return result;
     }
 
-    private boolean _validator(String input) {
+    private boolean validator(String input) {
         return !(input == null || input.equals(""));
     }
 
-    private boolean _isOperatorString(int number) {
-        return !(number == 0 || number % 2 == 0);
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new StringCalculator("2 + 3 * 4 / 2").calculate());
+    private boolean isOperatorString(int number) {
+        return (number % 2 == 1);
     }
 
 }
