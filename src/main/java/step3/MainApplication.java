@@ -6,7 +6,6 @@ public class MainApplication {
 
         // set new car
         int carCount = InputView.setCarsCount();
-
         // set play times.
         int tryTimes = InputView.setPlayCounts();
 

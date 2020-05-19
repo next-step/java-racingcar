@@ -5,49 +5,84 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class RacingGameTest {
 
     // Test
 
-    @DisplayName("check only")
+    @DisplayName("randomless Test upper 4")
     @ParameterizedTest
-    @CsvSource(value = {"3:5"}, delimiter = ':')
-    void testNormal(int carsCount, int tryTimes) {
+    @ValueSource(ints = {5, 9, 7})
+    void testRandomlessUpper(int input) {
 
-        RacingGame racingGame = new RacingGame(carsCount, tryTimes);
-        racingGame.play();
+        // ready
+        final int moveCountTestValueInsteadOfRandom = input;
 
-        // 상태 변화 값이나 반환값이 없는 경우 오류 확인을 어떻게 해야 될까요....
+        // set
+        Car car = new Car(0) {
+            @Override
+            public int getMoveCount() {
+                return moveCountTestValueInsteadOfRandom;
+            }
+        };
+
+        // test
+        int before = car.getLocation();
+        car.move();
+        int after = car.getLocation();
+
+        assertThat(after - before).isEqualTo(moveCountTestValueInsteadOfRandom);
+    }
+
+    @DisplayName("randomless Test under 4")
+    @ParameterizedTest
+    @ValueSource(ints = {4, 3, 2, 1})
+    void testRandomlessUnder(int input) {
+
+        // ready
+        final int moveCountTestValueInsteadOfRandom = input;
+
+        // set
+        Car car = new Car(0) {
+            @Override
+            public int getMoveCount() {
+                return moveCountTestValueInsteadOfRandom;
+            }
+        };
+
+        // test
+        int before = car.getLocation();
+        car.move();
+        int after = car.getLocation();
+
+        // not move
+        assertThat(after).isEqualTo(before);
 
     }
 
+
     @DisplayName("Arguments check / input negative number to cars count.")
     @ParameterizedTest
-    @CsvSource(value = {"-1:2", "-100:3"}, delimiter = ':')
+    @CsvSource(value = {"-1:2", "-100:3", "2:-1", "3:-100"}, delimiter = ':')
     void testInputCarsCountNegativeNumber(int carsCount, int tryTimes) {
         assertThatIllegalArgumentException().isThrownBy(() ->
                 {
                     RacingGame racingGame = new RacingGame(carsCount, tryTimes);
+                    // racingGame.play();
                 }
         );
     }
 
-    @DisplayName("Arguments check / input negative number to play times count.")
-    @ParameterizedTest
-    @CsvSource(value = {"2:-1", "3:-100"}, delimiter = ':')
-    void testInputPlayTimesNegativeNumber(int carsCount, int tryTimes) {
-        assertThatIllegalArgumentException().isThrownBy(() ->
-                {
-                    RacingGame racingGame = new RacingGame(carsCount, tryTimes);
-                }
-        );
-    }
 
+
+
+
+
+
+
+/*
 
     @DisplayName("scanner test")
     @ParameterizedTest
@@ -62,6 +97,7 @@ class RacingGameTest {
         racingGame.play();
 
     }
+*/
 
 
 }
