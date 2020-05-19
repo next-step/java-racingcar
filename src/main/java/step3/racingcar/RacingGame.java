@@ -4,18 +4,17 @@ import java.util.List;
 
 public class RacingGame {
 
-    private int carCounts;
+    private String[] carNames;
     private int gameTryCounts;
 
-    public void run() {
-        setGameInformation();
-        List<Car> cars = CarFactory.makeCars(this.carCounts);
-        startRacing(cars);
+    public RacingGame(String[] carNames, int gameTryCounts) {
+        this.carNames = carNames;
+        this.gameTryCounts = gameTryCounts;
     }
 
-    private void setGameInformation() {
-        this.carCounts = InputViewProcessor.getUserInput(Message.CAR_COUNTS);
-        this.gameTryCounts = InputViewProcessor.getUserInput(Message.GAME_TRY_COUNTS);
+    public void run() {
+        //List<Car> cars = CarFactory.makeCars(this.carCounts);
+        //startRacing(cars);
     }
 
     private void startRacing(List<Car> cars) {
@@ -24,5 +23,13 @@ public class RacingGame {
             cars.forEach(Car::move);
             ResultViewProcessor.printResult(cars);
         }
+    }
+
+    public String[] getCarNames() {
+        return carNames;
+    }
+
+    public int getGameTryCounts() {
+        return gameTryCounts;
     }
 }
