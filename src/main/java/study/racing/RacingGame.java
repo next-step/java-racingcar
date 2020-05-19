@@ -11,13 +11,13 @@ public class RacingGame {
     private final InputView inputView;
     private final ResultView resultView;
 
-    private List<Car> cars;
+    private List<Car> carList;
     private int time;
 
     public RacingGame() {
         inputView = new InputView();
         resultView = new ResultView();
-        cars = new ArrayList<>();
+        carList = new ArrayList<>();
     }
 
     public void play() {
@@ -27,10 +27,10 @@ public class RacingGame {
 
         for(int i=0; i<time; i++) {
             move();
-            resultView.printCarPositions(cars);
+            resultView.printCarPositions(carList);
         }
 
-        resultView.printWinners(cars);
+        resultView.printWinners(carList);
     }
 
     private void configureGameSettings() {
@@ -38,12 +38,12 @@ public class RacingGame {
         time = inputView.scanTime();
 
         for(String carName : carNames) {
-            cars.add(new Car(carName));
+            carList.add(new Car(carName));
         }
     }
 
     private void move() {
-        for(Car car : cars) {
+        for(Car car : carList) {
             car.move();
         }
     }
