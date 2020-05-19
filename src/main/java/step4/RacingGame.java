@@ -115,7 +115,7 @@ public class RacingGame {
         }
     }
 
-    public int chooseWinners(Car car, int farthestPosition) {
+    private int chooseWinners(Car car, int farthestPosition) {
         if (farthestPosition <= car.getPosition()) {
             this.winners.add(car.getName());
             farthestPosition = car.getPosition();
