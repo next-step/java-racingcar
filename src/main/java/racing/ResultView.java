@@ -1,22 +1,33 @@
 package racing;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ResultView {
-    private final List<String> messageList;
+    private String message;
 
-    public ResultView() {
-        this.messageList = new ArrayList<>();
+    public ResultView(String message) {
+        this.message = message;
     }
 
-    public void addMessage(String message) {
-        this.messageList.add(message);
+    public void init() {
+        System.out.println(message);
     }
 
-    public void print() {
-        for (String message : messageList) {
-            System.out.println(message);
+    public void print(List<Car> carList) {
+        for (Car car : carList) {
+            drawCarPosition(car.showMyPosition());
         }
+
+        System.out.println();
+    }
+
+    private void drawCarPosition(int position) {
+        StringBuilder paper = new StringBuilder();
+
+        for (int i = 0; i < position; i++) {
+            paper.append("-");
+        }
+
+        System.out.println(paper.toString());
     }
 }
