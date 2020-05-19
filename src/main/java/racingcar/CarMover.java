@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarMover {
 
@@ -11,14 +12,14 @@ public class CarMover {
     }
 
     public CarPositions move(List<Car> cars) {
-        CarPositions carPositions = new CarPositions();
+        List<CarPosition> positions = cars.stream()
+                .map(c -> {
+                    move(c);
+                    return new CarPosition(c.getName(), c.getPosition());
+                })
+                .collect(Collectors.toList());
 
-        for (Car car : cars) {
-            move(car);
-            carPositions.add(new CarPosition(car));
-        }
-
-        return carPositions;
+        return new CarPositions(positions);
     }
 
     private void move(Car car) {

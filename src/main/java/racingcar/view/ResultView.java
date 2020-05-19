@@ -2,19 +2,20 @@ package racingcar.view;
 
 import racingcar.CarPosition;
 import racingcar.CarPositions;
-import racingcar.MoveResults;
+
+import java.util.List;
 
 public class ResultView {
 
     private ResultView() {
     }
 
-    public static void print(MoveResults moveResults) {
-        for (int i = 0; i < moveResults.size(); i++) {
-            print(moveResults.get(i));
+    public static void print(List<CarPositions> results) {
+        for (CarPositions result : results) {
+            print(result);
         }
 
-        String winners = String.join(",", moveResults.getWinners());
+        String winners = String.join(",", results.get(results.size() - 1).getLeaders());
         System.out.println(winners + "가 최종 우승했습니다.");
     }
 

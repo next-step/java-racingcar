@@ -13,7 +13,7 @@ public class Application {
 
         List<Car> cars = CarFactory.create(carNames);
         RacingGame game = new RacingGame(time, cars);
-        MoveResults results = game.run();
+        List<CarPositions> results = game.run();
 
         ResultView.print(results);
     }

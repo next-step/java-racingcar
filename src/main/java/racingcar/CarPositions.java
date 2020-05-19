@@ -2,16 +2,15 @@ package racingcar;
 
 import racingcar.exception.NotYetMovedException;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class CarPositions {
 
-    private List<CarPosition> positions = new ArrayList<>();
+    private List<CarPosition> positions;
 
-    public void add(CarPosition carPosition) {
-        positions.add(carPosition);
+    public CarPositions(List<CarPosition> positions) {
+        this.positions = positions;
     }
 
     public int size() {
@@ -33,8 +32,9 @@ public class CarPositions {
 
     private Integer getMaxPosition() {
         return positions.stream()
-                    .map(CarPosition::getPosition)
-                    .max(Integer::compareTo)
-                    .orElseThrow(NotYetMovedException::new);
+                .sorted()
+                .findFirst()
+                .orElseThrow(NotYetMovedException::new)
+                .getPosition();
     }
 }

@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
@@ -22,8 +23,8 @@ public class RacingGame {
         }
     }
 
-    public MoveResults run() {
-        MoveResults results = new MoveResults();
+    public List<CarPositions> run() {
+        List<CarPositions> results = new ArrayList<>();
 
         while (time > 0) {
             canMove();

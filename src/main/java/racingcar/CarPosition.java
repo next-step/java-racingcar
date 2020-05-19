@@ -1,13 +1,13 @@
 package racingcar;
 
-public class CarPosition {
+public class CarPosition implements Comparable<CarPosition> {
 
     private String name;
     private int position;
 
-    public CarPosition(Car car) {
-        this.name = car.getName();
-        this.position = car.getPosition();
+    public CarPosition(String name, int position) {
+        this.name = name;
+        this.position = position;
     }
 
     public String getName() {
@@ -16,5 +16,10 @@ public class CarPosition {
 
     public int getPosition() {
         return position;
+    }
+
+    @Override
+    public int compareTo(CarPosition o) {
+        return Integer.compare(o.position, position);
     }
 }
