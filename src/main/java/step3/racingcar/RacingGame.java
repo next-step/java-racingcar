@@ -7,7 +7,7 @@ public class RacingGame {
     private String[] carNames;
     private int gameTryCounts;
     private static final String BLANK_NAME = "";
-    private static final int MINIMUM_GAME_TRY_COUNTS = 1;
+    private static final int MINIMUM_LIMIT = 1;
     private static final int INDEX_ZERO = 0;
 
     public RacingGame(String[] carNames, int gameTryCounts) {
@@ -17,9 +17,9 @@ public class RacingGame {
     }
 
     private void validateConstructors(String[] carNames, int gameTryCounts) {
-        if (carNames[INDEX_ZERO].equals(BLANK_NAME))
+        if (carNames.length < MINIMUM_LIMIT || carNames[INDEX_ZERO].equals(BLANK_NAME))
             throw new IllegalArgumentException();
-        if (gameTryCounts < MINIMUM_GAME_TRY_COUNTS)
+        if (gameTryCounts < MINIMUM_LIMIT)
             throw new IllegalArgumentException();
     }
 
