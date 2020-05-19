@@ -9,7 +9,6 @@ public final class Dice {
     private Dice() {
     }
 
-    private static Dice dice = null;
     private static Random random = new Random();
     private static int randomNumber;
 
