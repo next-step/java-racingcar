@@ -7,7 +7,6 @@ import static step4.ErrorMessages.INVALID_TRY_COUNT_MESSAGE;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
-import java.util.Random;
 
 public class RacingGame {
 
@@ -15,9 +14,9 @@ public class RacingGame {
     private ArrayList<Car> cars;
     private ArrayList<String> winners;
 
-    public void setCars(ArrayList<Car> cars) {
-        this.cars = cars;
-    }
+//    public void setCars(ArrayList<Car> cars) {
+//        this.cars = cars;
+//    }
 
     public ArrayList<String> getWinners() {
         return winners;

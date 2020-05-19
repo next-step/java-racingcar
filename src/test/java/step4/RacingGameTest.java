@@ -2,11 +2,8 @@ package step4;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Java6Assertions.catchThrowable;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -134,22 +131,13 @@ class RacingGameTest {
     void chooseWinners() {
         //given
         racingGame.initialize("a,b,c", 3);
-        ArrayList<Car> cars = new ArrayList<>();
-        Car aCar = new Car("a");
-        aCar.setPosition(10);
-        cars.add(aCar);
-        Car bCar = new Car("b");
-        bCar.setPosition(5);
-        cars.add(bCar);
-        Car cCar = new Car("c");
-        cCar.setPosition(10);
-        cars.add(cCar);
-        racingGame.setCars(cars);
+        racingGame.getCars().get(0).setMovableStrategy(() -> true);
+        racingGame.getCars().get(0).go();
 
         //when
         racingGame.chooseWinners();
 
         //then
-        assertThat(racingGame.getWinners()).containsExactly("a","c");
+        assertThat(racingGame.getWinners()).containsExactly("a");
     }
 }

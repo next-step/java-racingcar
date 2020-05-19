@@ -13,10 +13,6 @@ public class Car extends Moving implements Comparable<Car> {
         return position;
     }
 
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
     public Car(String name) {
         this.name = name;
         this.position = 0;
