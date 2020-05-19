@@ -1,7 +1,4 @@
-package com.racingcar.model;
-
-import com.racingcar.service.RacingCarMoveStrategy;
-import com.racingcar.service.RacingCarRule;
+package com.racingcar.domain;
 
 public class RacingCar {
 

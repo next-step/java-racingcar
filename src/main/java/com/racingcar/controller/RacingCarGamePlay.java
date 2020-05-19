@@ -1,7 +1,9 @@
-package com.racingcar.service;
+package com.racingcar.controller;
 
-import com.racingcar.model.RacingCar;
-import com.racingcar.model.RacingCarGame;
+import com.racingcar.domain.RacingCar;
+import com.racingcar.domain.RacingCarGame;
+import com.racingcar.view.RacingCarInput;
+import com.racingcar.view.RacingCarPrinter;
 
 import java.util.List;
 import java.util.stream.IntStream;

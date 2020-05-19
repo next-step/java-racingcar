@@ -1,7 +1,5 @@
-package com.racingcar.service;
+package com.racingcar.domain;
 
-import com.racingcar.model.RacingCar;
-import com.racingcar.model.RacingCarGame;
 import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;

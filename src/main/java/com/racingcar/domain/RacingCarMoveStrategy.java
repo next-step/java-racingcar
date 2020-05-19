@@ -1,4 +1,4 @@
-package com.racingcar.service;
+package com.racingcar.domain;
 
 public interface RacingCarMoveStrategy {
 

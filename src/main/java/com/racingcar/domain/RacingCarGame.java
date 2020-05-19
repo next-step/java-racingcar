@@ -1,4 +1,4 @@
-package com.racingcar.model;
+package com.racingcar.domain;
 
 import org.apache.commons.collections4.CollectionUtils;
 

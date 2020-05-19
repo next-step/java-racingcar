@@ -1,6 +1,6 @@
 package com.racingcar;
 
-import com.racingcar.service.RacingCarGamePlay;
+import com.racingcar.controller.RacingCarGamePlay;
 
 public class Main {
 
