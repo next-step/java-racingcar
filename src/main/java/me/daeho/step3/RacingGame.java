@@ -3,47 +3,50 @@ package me.daeho.step3;
 import me.daeho.step3.rule.DefaultForwardRule;
 import me.daeho.step3.rule.ForwardRule;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.stream.IntStream;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class RacingGame {
-    private static final ForwardRule forwardRule = new DefaultForwardRule();
-
+    private int firstGradePosition;
     private int time;
-    private int[] carPositions;
     private List<Car> cars;
 
-    private RacingGame(int time, List<Car> cars, int[] carPositions) {
-        this.time = time;
-        this.carPositions = carPositions;
+    private RacingGame(List<Car> cars, int time) {
         this.cars = cars;
+        this.time = time;
     }
 
-    public static RacingGame init(int time, int carCount) {
-        return new RacingGame(time, readyCars(carCount), new int[carCount]);
+    public static RacingGame init(ForwardRule forwardRule, String[] carNames, int time) {
+        return new RacingGame(readyCars(forwardRule, carNames), time);
     }
 
-    private static List<Car> readyCars(int carCount) {
+    private static List<Car> readyCars(ForwardRule forwardRule, String[] carNames) {
         return new ArrayList<Car>(){{
-            IntStream.range(0, carCount).forEach(v -> add(Car.ready(forwardRule)));
+            Arrays.stream(carNames).forEach(name -> add(Car.ready(forwardRule, name)));
         }};
     }
 
-    public int[] move() {
-        for (int i = 0; i < cars.size(); i++) {
-            carPositions[i] =cars.get(i).move();
-        }
-        return carPositions;
-    }
-
-    public void next() {
-        time--;
+    public List<Car> move() {
+        cars.forEach(car -> setFirstGradePosition(car.move()));
+        time --;
+        return cars;
     }
 
     public boolean hasNext() {
         return time > 0;
+    }
+
+    public List<Car> winningCars() {
+        return cars.stream().filter(car -> car.getCurrentPosition() == firstGradePosition).collect(Collectors.toList());
+    }
+
+    private boolean isFirstGrade(int position) {
+        return position > firstGradePosition;
+    }
+
+    private void setFirstGradePosition(int position) {
+        if(isFirstGrade(position))
+            firstGradePosition = position;
     }
 }
 
