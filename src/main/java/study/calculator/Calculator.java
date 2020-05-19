@@ -1,3 +1,5 @@
+package study.calculator;
+
 public class Calculator {
     public String calculate(String input) {
         if(input == null || input.equalsIgnoreCase(""))

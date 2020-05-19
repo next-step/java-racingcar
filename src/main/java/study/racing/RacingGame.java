@@ -1,13 +1,21 @@
 package study.racing;
 
+import study.racing.model.Car;
 import study.racing.ui.InputView;
 import study.racing.ui.ResultView;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class RacingGame {
+    private static final int MOVE_THRESHOLD = 4;
+    private static final int MAX_RANDOM_NUM = 10;
+
     private final InputView inputView;
     private final ResultView resultView;
 
-    private int[] carPositions;
+    private List<Car> cars;
     private int time;
 
     public RacingGame() {
@@ -19,20 +27,24 @@ public class RacingGame {
         inputView = new InputView();
         resultView = new ResultView();
 
-        carPositions = new int[numOfCars];
+        cars = new ArrayList<>();
+        for(int i=0; i<numOfCars; i++) {
+            cars.add(new Car());
+        }
+
         this.time = time;
     }
 
     public void play() {
-        if(carPositions == null) {
+        if(cars == null) {
             configureGameSettings();
         }
 
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과\n");
 
         for(int i=0; i<time; i++) {
             move();
-            resultView.printCarPositions(carPositions);
+            resultView.printCarPositions(cars);
         }
     }
 
@@ -40,30 +52,26 @@ public class RacingGame {
         int numOfCars = inputView.scanIntWithQuestion("자동차 대수는 몇 대 인가요?");
         this.time = inputView.scanIntWithQuestion("시도할 회수는 몇 회 인가요?");
 
-        carPositions = new int[numOfCars];
+        cars = new ArrayList<>();
+        for(int i=0; i<numOfCars; i++) {
+            cars.add(new Car());
+        }
     }
 
     private void move() {
-        for(int i=0; i<carPositions.length; i++) {
+        for(Car car : cars) {
             if(canMove()) {
-                carPositions[i]++;
+                car.move();
             }
         }
     }
 
     private boolean canMove() {
-        boolean result = false;
-
-        if(getRandomNumber() >= 4) {
-            result = true;
-        }
-
-        return result;
+        return getRandomNumber() >= MOVE_THRESHOLD;
     }
 
     private int getRandomNumber() {
-        double tmp = Math.random();
-        return (int)(tmp * 10);
+        return new Random().nextInt(MAX_RANDOM_NUM);
     }
 
     public static void main(String[] args) {
