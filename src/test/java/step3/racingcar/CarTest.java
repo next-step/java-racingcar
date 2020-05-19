@@ -45,12 +45,19 @@ class CarTest {
     @ParameterizedTest
     @MethodSource("mockCarFactory")
     public void getWinnerCars(String[] carNames) {
+        //Given
         List<Car> cars = CarFactory.makeCars(carNames);
+
+        //When
         for (int i = 0; i < 10; i++) {
             cars.forEach(Car::move);
         }
         List<Car> winnerCars = Car.getWinnerCars(cars);
-        assertThat(winnerCars.forEach(Car::getPosition)).isEqualTo(winnerCars.get(0).getPosition());
+
+        //Then
         assertThat(winnerCars.size()).isBetween(1, carNames.length);
+        for (Car car : winnerCars) {
+            assertThat(car.getPosition() == winnerCars.get(0).getPosition()).isTrue();
+        }
     }
 }

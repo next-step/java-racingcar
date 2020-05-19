@@ -1,5 +1,13 @@
 package step3.racingcar;
 
+import java.util.Comparator;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class Car {
 
     private static final int DEFAULT_POSITION = 0;
@@ -23,5 +31,19 @@ public class Car {
         boolean isMovable = this.movingStrategy.isMovable();
         if (isMovable == true)
             this.position++;
+    }
+
+    public static List<Car> getWinnerCars(List<Car> cars) {
+        int maxPosition = getMaxPosition(cars);
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
+    }
+
+    private static int getMaxPosition(List<Car> cars) {
+        Car car = cars.stream()
+                .max(Comparator.comparing(Car::getPosition))
+                .orElseThrow(() -> new NoSuchElementException(Message.ERROR_MAX_POSITION));
+        return car.getPosition();
     }
 }
