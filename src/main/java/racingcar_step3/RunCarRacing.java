@@ -8,10 +8,11 @@ public class RunCarRacing {
         InputView inputView = new InputView();
         inputView.input();
 
-        CarRacingGame racingGame = new CarRacingGame(inputView.getRacingCarCount(), inputView.getRacingCount());
-        racingGame.initValue();
-        racingGame.move();
-        List<Integer> result = racingGame.getCarPositions();
+        Car car = new Car(inputView.getRacingCarCount(), inputView.getRacingCount());
+
+        CarRacingGame racingGame = new CarRacingGame(car);
+        racingGame.runRacing();
+        List<Integer> result = racingGame.getRacingPositions();
 
         ResultView resultView = new ResultView();
         resultView.print(result);
