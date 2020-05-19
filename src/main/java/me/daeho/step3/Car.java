@@ -7,15 +7,17 @@ public class Car {
 
     private ForwardRule forwardRule;
     private int currentPosition;
+    private String name;
 
 
-    private Car(ForwardRule forwardRule, int currentPosition) {
+    private Car(ForwardRule forwardRule, int currentPosition, String name) {
         this.forwardRule = forwardRule;
         this.currentPosition = currentPosition;
+        this.name = name;
     }
 
-    public static Car ready(ForwardRule forwardRule) {
-        return new Car(forwardRule, INITIAL_POSITION);
+    public static Car ready(ForwardRule forwardRule, String name) {
+        return new Car(forwardRule, INITIAL_POSITION, name);
     }
 
     public int move() {
@@ -31,6 +33,14 @@ public class Car {
     }
 
     private int stop() {
+        return currentPosition;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getCurrentPosition() {
         return currentPosition;
     }
 }
