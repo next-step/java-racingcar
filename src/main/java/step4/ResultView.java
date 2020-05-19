@@ -3,6 +3,7 @@ package step4;
 import static step4.Constants.COMMA;
 import static step4.Constants.POSITION_MARKER;
 import static step4.Constants.RESULT_TITLE;
+import static step4.Constants.RESULT_WINNER_MESSAGE;
 
 import java.util.ArrayList;
 
@@ -33,7 +34,7 @@ public class ResultView {
         for (String winner : racingGame.getWinners()) {
             stringBuilder = appendWinner(winner, stringBuilder);
         }
-        System.out.printf("%s가 최종 우승했습니다.\n", stringBuilder.toString());
+        System.out.printf(RESULT_WINNER_MESSAGE, stringBuilder.toString());
     }
 
     public StringBuilder appendWinner(String winner, StringBuilder winnerStringBuilder) {
