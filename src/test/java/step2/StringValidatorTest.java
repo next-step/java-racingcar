@@ -34,4 +34,20 @@ class StringValidatorTest {
     void isNumber(String param, boolean expected) {
         assertThat(StringValidator.isNumber(param)).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = { "+", "-", "*", "/" })
+    @DisplayName("사칙연산 기호 확인")
+    void checkOperator(String operator) {
+        StringValidator.checkOperator(operator);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = { "a", "0", " ", " asd" })
+    @DisplayName("사칙연산 기호가 아닌것 확인")
+    void checkOperator_withNonOperator(String operator) {
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+            StringValidator.checkOperator(operator);
+        });
+    }
 }
