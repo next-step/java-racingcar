@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -12,6 +12,7 @@ public class RacingGame {
     private int time;
     private List<String> carNames;
     private List<Racingcar> carPositions = new ArrayList<>();
+    private Map<Integer, List<Racingcar>> roundResult = new HashMap<>();
 
     public RacingGame(String carNames, int time) {
         validateCarName(carNames);
@@ -33,28 +34,30 @@ public class RacingGame {
         }
     }
 
-    public ResultView start() {
+    public void start() {
         prepareToRace();
-
-        ResultView resultView = new ResultView();
-
         for (int i = START_ROUND; i < time; i++) {
             move();
-            resultView.saveRoundResult(this.carPositions);
+            saveRoundResult(i, this.carPositions);
             System.out.println();
         }
-
-        resultView.saveWinner(getWinners());
-        return resultView;
     }
 
-    private List<Racingcar> getWinners() {
+    public List<Racingcar> getWinners() {
         List<Racingcar> racingcars = this.carPositions;
         Collections.sort(racingcars);
         Racingcar winRacingcar = racingcars.get(0);
         int winnerPosition = winRacingcar.getCarMovePosition();
         List<Racingcar> winRacingcars = racingcars.stream().filter(car -> car.getCarMovePosition() == winnerPosition).collect(Collectors.toList());
         return winRacingcars;
+    }
+
+    public Map<Integer, List<Racingcar>> getRoundResult() {
+        return this.roundResult;
+    }
+
+    private void saveRoundResult(int round, List<Racingcar> racingcars) {
+        this.roundResult.put(round, racingcars);
     }
 
     private void prepareToRace() {
