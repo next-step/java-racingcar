@@ -1,5 +1,6 @@
 package step4;
 
+import step4.car.CarFactory;
 import step4.car.RacingGame;
 import step4.car.ResultRecorder;
 import step4.view.InputView;
@@ -11,8 +12,7 @@ public class Main {
         InputView inputView = new InputView();
         inputView.input();
 
-        RacingGame racingGame = RacingGame.of(inputView.getTryCount());
-        racingGame.registerCars(inputView.getNames());
+        RacingGame racingGame = RacingGame.of(inputView.getTryCount(), CarFactory.createCars(inputView.getNames()));
         racingGame.startGame();
 
         ResultRecorder recorder = racingGame.getResultRecorder();
