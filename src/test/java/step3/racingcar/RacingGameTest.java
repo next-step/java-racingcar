@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RacingGameTest {
@@ -23,6 +24,24 @@ class RacingGameTest {
     }
 
     private static Stream<Arguments> mockRacingGameBuilder() {
+        return Stream.of(
+                Arguments.of("a,b,c,d".split(" "), 5),
+                Arguments.of("java,c,js,sql".split(" "), 7),
+                Arguments.of("pizza,hamburger,chicken".split(" "), 13)
+        );
+    }
+
+    @DisplayName("Racing Game 객체 생성되지 않고 IllegalArgumentException 발생 테스트")
+    @ParameterizedTest
+    @MethodSource("mockRacingGameExceptionBuilder")
+    public void throwExceptionWhenBuildingRacingGameObject(String[] carNames, int gameTryCounts) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> {
+                    RacingGame racingGame = new RacingGame(carNames, gameTryCounts);
+                });
+    }
+
+    private static Stream<Arguments> mockRacingGameExceptionBuilder() {
         return Stream.of(
                 Arguments.of("a,b,c,d".split(" "), 5),
                 Arguments.of("java,c,js,sql".split(" "), 7),
