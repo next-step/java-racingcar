@@ -19,7 +19,6 @@ public class RacingGame {
 
     public void playGame() {
         ResultView resultView = new ResultView("실행 결과");
-        resultView.init();
 
         for (int i = 0; i < time; i++) {
             playRound();

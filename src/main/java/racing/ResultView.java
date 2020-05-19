@@ -7,9 +7,10 @@ public class ResultView {
 
     public ResultView(String message) {
         this.message = message;
+        init();
     }
 
-    public void init() {
+    private void init() {
         System.out.println(message);
     }
 
