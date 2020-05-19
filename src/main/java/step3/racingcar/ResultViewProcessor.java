@@ -5,6 +5,8 @@ import java.util.List;
 public class ResultViewProcessor {
 
     private static final String POSITION_MARK = "-";
+    private static final String DELIMITER = " : ";
+    private static final int INDEX_ZERO = 0;
 
     private ResultViewProcessor() {
     }
@@ -20,8 +22,9 @@ public class ResultViewProcessor {
 
     private static void printCurrentPosition(Car car) {
         int currentPosition = car.getPosition();
-        System.out.print(car.getName() + " : ");
-        for (int i = 0; i < currentPosition; i++) {
+        String carName = car.getName();
+        System.out.print(carName + DELIMITER);
+        for (int i = INDEX_ZERO; i < currentPosition; i++) {
             System.out.print(POSITION_MARK);
         }
         System.out.println();
