@@ -9,7 +9,7 @@ public class Calculator {
      * @param right    : double, 우항
      * @return double, 계산 결과 반환
      */
-    public double calculate(String operator, double left, double right) {
-        return Operator.findOperatorBySymbol(operator).calculate(left, right);
+    protected double calculate(String operator, double left, double right) {
+        return OperatorMapper.getInstance().getOperator(operator).calculate(left, right);
     }
 }
