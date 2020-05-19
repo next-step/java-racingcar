@@ -30,6 +30,8 @@ public class RacingGame {
             cars.forEach(Car::move);
             ResultViewProcessor.printResult(cars);
         }
+        List<Car> winnerCars = Car.getWinnerCars(cars);
+        ResultViewProcessor.printWinnerNames(winnerCars);
     }
 
     public String[] getCarNames() {

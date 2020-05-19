@@ -8,6 +8,7 @@ public class Message {
     public static final String ERROR_GAME_TRY_COUNTS = "ERROR : 입력 숫자는 1 이상이어야 합니다.";
     public static final String ERROR_MAX_POSITION = "ERROR : 우승 차량을 찾을 수 없습니다.";
     public static final String RESULT_HEADER = "실행 결과";
+    public static final String RESULT_FOOTER = "가 최종 우승했습니다.";
 
     private Message() {
     }

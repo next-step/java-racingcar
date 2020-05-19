@@ -5,11 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
-
 import java.util.List;
 import java.util.stream.Stream;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
@@ -20,7 +17,6 @@ class CarTest {
         Car car = new Car("abc", new RandomMovingStrategy());
         assertThat(car.getPosition()).isEqualTo(0);
     }
-
 
     @DisplayName("car 객체가 움직이는지 확인하는 테스트")
     @ParameterizedTest
@@ -47,15 +43,18 @@ class CarTest {
     public void getWinnerCars(String[] carNames) {
         //Given
         List<Car> cars = CarFactory.makeCars(carNames);
+        List<Car> cars2 = CarFactory.makeCars(carNames);
 
         //When
         for (int i = 0; i < 10; i++) {
             cars.forEach(Car::move);
         }
         List<Car> winnerCars = Car.getWinnerCars(cars);
+        List<Car> winnerCars2 = Car.getWinnerCars(cars2);
 
         //Then
         assertThat(winnerCars.size()).isBetween(1, carNames.length);
+        assertThat(winnerCars2.size()).isEqualTo(cars2.size());
         for (Car car : winnerCars) {
             assertThat(car.getPosition() == winnerCars.get(0).getPosition()).isTrue();
         }

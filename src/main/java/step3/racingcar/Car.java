@@ -3,17 +3,14 @@ package step3.racingcar;
 import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Car {
 
     private static final int DEFAULT_POSITION = 0;
     private int position;
+    private final String name;
     private final MovingStrategy movingStrategy;
-    private String name;
 
     public Car(String name, MovingStrategy movingStrategy) {
         this.position = DEFAULT_POSITION;
@@ -21,9 +18,7 @@ public class Car {
         this.movingStrategy = movingStrategy;
     }
 
-    public int getPosition() {
-        return position;
-    }
+    public int getPosition() { return position; }
 
     public String getName() { return name; }
 
