@@ -13,14 +13,6 @@ public final class Dice {
     private static Random random = new Random();
     private static int randomNumber;
 
-    public static Dice getInstance() {
-
-        if (dice == null) {
-            dice = new Dice();
-        }
-        return dice;
-    }
-
     private static void makeRandomNumber(){
         randomNumber = random.nextInt(10);
     }
