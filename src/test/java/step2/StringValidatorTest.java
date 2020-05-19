@@ -9,6 +9,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import step2.StringValidator;
+
 class StringValidatorTest {
 
     @Test
@@ -20,7 +22,7 @@ class StringValidatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = { "", "  " })
+    @ValueSource(strings = { "", "  ", "      " })
     @DisplayName("입력값이 null이거나 빈 공백 문자일 경우")
     void checkEmpty(String param) {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
@@ -33,6 +35,22 @@ class StringValidatorTest {
     @DisplayName("String 값이 숫자인지 확인")
     void isNumber(String param, boolean expected) {
         assertThat(StringValidator.isNumber(param)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource({ "1", "-3.123", "3123123" })
+    @DisplayName("String 값이 숫자인지 확인")
+    void checkNumber(String param) {
+        StringValidator.checkNumber(param);
+    }
+
+    @ParameterizedTest
+    @CsvSource({ "true", "-", "3.123123+", "--123" })
+    @DisplayName("String 값이 숫자가 아닌 경우 ")
+    void checkNumber_withNaN(String param) {
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+            StringValidator.checkNumber(param);
+        });
     }
 
     @ParameterizedTest

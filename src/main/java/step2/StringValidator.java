@@ -34,7 +34,6 @@ public class StringValidator {
      * 빈 문자열이거나 빈 공백 문자열일 경우 IllegalArgumentException throw
      * 
      * @param param : String 판단할 문자열
-     * @throws IllegalArgumentException
      */
     public static void checkEmpty(String param) {
         if (PATTERN_WHITESPACE.matcher(param).replaceAll("").isEmpty()) {
@@ -55,6 +54,18 @@ public class StringValidator {
 
         return false;
     }
+
+    /**
+     * 문자열이 숫자가 아닐 경우 IllegalArgumentException throw
+     * 
+     * @param param : String, 확인할 문자열
+     */
+    public static void checkNumber(String param) {
+        if (!PATTERN_CHECK_NUMBER.matcher(param).matches()) {
+            throw new IllegalArgumentException("입력값이 숫자가 아닙니다.");
+        }
+    }
+
     /**
      * 입력받은 문자열(param)이 사칙연산 기호가 아니면 IllegalArgumentException
      * 
