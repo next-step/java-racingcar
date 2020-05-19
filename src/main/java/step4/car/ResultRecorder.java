@@ -4,37 +4,38 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class ResultRecorder {
-    private final List<Map<String, Integer>> result;
+    private final List<Record> result;
 
     public ResultRecorder() {
         this.result = new ArrayList<>();
     }
 
     public void recordCurrentPosition(List<Car> cars){
-        Map<String, Integer> currentPositions = new LinkedHashMap<>(cars.size());
+        List<Trace> records = new ArrayList<>();
         for (Car car : cars) {
-            currentPositions.put(car.getName(), car.getPosition());
+            records.add(new Trace(car.getName(), car.getPosition()));
         }
-        result.add(currentPositions);
+        result.add(new Record(records));
     }
 
     public List<String> findWinners(){
         resultCheck();
-        Map<String, Integer> last = result.get(result.size() - 1);
+        List<Trace> last = result.get(result.size() - 1).getTraces();
+        int maxPosition = findMaxPosition(last);
 
-        return last.entrySet().stream()
-                .filter(entry -> entry.getValue().equals(findMaxPosition(last)))
-                .map(Map.Entry::getKey)
+        return last.stream()
+                .filter(trace -> trace.getPosition() == maxPosition)
+                .map(Trace::getName)
                 .collect(Collectors.toList());
     }
 
-    public List<Map<String, Integer>> getResult() {
+    public List<Record> getResult() {
         return result;
     }
 
-    private int findMaxPosition(Map<String, Integer> last) {
-        return last.values().stream()
-                .mapToInt(Integer::intValue)
+    private int findMaxPosition(List<Trace> last) {
+        return last.stream()
+                .mapToInt(Trace::getPosition)
                 .max().getAsInt();
     }
 
