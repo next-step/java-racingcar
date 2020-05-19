@@ -7,6 +7,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class GameResultBoardTest {
 
     @DisplayName("GameResultBoard 객체가 정상 생성되는지 확인하는 테스트")
