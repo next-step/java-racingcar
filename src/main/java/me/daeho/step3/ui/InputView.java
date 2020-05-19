@@ -1,8 +1,15 @@
 package me.daeho.step3.ui;
 
+import me.daeho.utils.StringUtils;
+
 import java.util.Scanner;
 
 public class InputView {
+    private final static String CAR_NAME_DELIMITER = ",";
+
+    private String[] carNames;
+    private int time;
+
     private InputView() {
     }
 
@@ -10,13 +17,31 @@ public class InputView {
         return new InputView();
     }
 
-    public int getCarCount() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return new Scanner(System.in).nextInt();
+    public InputView inputCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        String inputName = new Scanner(System.in).nextLine();
+
+        if(StringUtils.isEmpty(inputName))
+            throw new IllegalArgumentException();
+
+        this.carNames = inputName.split(CAR_NAME_DELIMITER);
+
+        return this;
+    }
+
+    public InputView inputTime() {
+        System.out.println("시도할 회수는 몇 회 인가요?");
+        this.time = new Scanner(System.in).nextInt();
+
+        return this;
+    }
+
+
+    public String[] getCarNames() {
+        return carNames;
     }
 
     public int getTime() {
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        return new Scanner(System.in).nextInt();
+        return time;
     }
 }
