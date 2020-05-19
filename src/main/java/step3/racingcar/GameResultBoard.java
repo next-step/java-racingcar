@@ -1,5 +1,7 @@
 package step3.racingcar;
 
+import java.util.List;
+
 public class GameResultBoard {
 
     private int[][] gameResultBoard;
@@ -10,6 +12,12 @@ public class GameResultBoard {
         int column = gameTryCounts;
         this.gameResultBoard = new int[row][column];
         this.carNames = carNames;
+    }
+
+    public void recordRound(List<Car> cars, int roundNumber) {
+        for (int i = 0; i < cars.size(); i++) {
+            this.gameResultBoard[i][roundNumber] = cars.get(i).getPosition();
+        }
     }
 
     public int[][] getGameResultBoard() {
