@@ -14,8 +14,7 @@ public class Cars {
 
   public Cars move (MoveStrategy moveStrategy) {
     this.cars.stream()
-             .filter(car -> moveStrategy.isMoved())
-             .forEach(car -> car.move());
+             .forEach(car -> car.move(moveStrategy));
     return this;
   }
 

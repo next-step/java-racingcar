@@ -11,8 +11,9 @@ public class Car {
     this.name = name;
   }
 
-  public Car move () {
-    this.position += 1;
+  public Car move (MoveStrategy strategy) {
+    if (strategy.isMoved())
+      this.position += 1;
     return this;
   }
 
