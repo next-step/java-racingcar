@@ -4,16 +4,16 @@ import java.util.List;
 
 public class ResultView {
 
-    private static List<Car> cars;
 
-    public ResultView(List<Car> cars) {
-        this.cars = cars;
-    }
-
-    public static void viewResult() {
+    public static void viewResult(List<Car> cars) {
         for (Car car : cars) {
-            car.printCurrentLocation();
+            printCurrentLocation(car.getLocation());
         }
     }
+
+    private static void printCurrentLocation(int location) {
+        System.out.println(new String(new char[location]).replace("\0", "-"));
+    }
+
 
 }

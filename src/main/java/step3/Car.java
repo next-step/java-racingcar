@@ -10,7 +10,9 @@ public class Car {
     private static final Random random = new Random();
 
     // 구분
-    private int CAR_NO;
+    private int carNumber;
+
+
     // 위치
     private int location = 1;
 
@@ -18,8 +20,8 @@ public class Car {
         // CAR_NO = 0;
     }
 
-    public Car(int car_no) {
-        CAR_NO = car_no;
+    public Car(int carNumber) {
+        this.carNumber = carNumber;
     }
 
     public void move() {
@@ -27,9 +29,11 @@ public class Car {
         location += movingCnt > MOVE_START_AT ? movingCnt : 0;
     }
 
-    public void printCurrentLocation() {
-        System.out.println(new String(new char[location]).replace("\0", "-"));
+    public int getLocation() {
+        return location;
     }
+
+
 
 
 }

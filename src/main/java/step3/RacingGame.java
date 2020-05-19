@@ -7,13 +7,10 @@ import java.util.List;
 public class RacingGame {
 
     private List<Car> cars = new ArrayList<>();
+
     private int tryTimes;
 
-    public RacingGame() {
-        // set new car
-        setupCars(InputView.setCarsCount());
-        // set play times.
-        this.tryTimes = InputView.setPlayCounts();
+    private RacingGame() {
     }
 
     public RacingGame(int carsCount, int tryTimes) {
@@ -30,13 +27,12 @@ public class RacingGame {
     }
 
     public void play() {
-        ResultView resultView = new ResultView(cars);
         for (int i = 0; i < tryTimes; i++) {
             System.out.println(i + 1 + " th Try.. ");
             for (Car car : cars) {
                 car.move();
             }
-            resultView.viewResult();
+            ResultView.viewResult(cars);
         }
     }
 
