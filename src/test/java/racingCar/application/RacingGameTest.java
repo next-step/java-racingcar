@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class RacingGameTest {
 
@@ -20,12 +19,13 @@ class RacingGameTest {
     void initRacingCars() {
         String[] names = {"pobi", "crong", "lion"};
         RacingGame racingGame = new RacingGame(names, 3);
-        List<RacingCar> racingCarList = racingGame.getRacingCarList();
 
-        assertTrue(racingCarList.stream()
-                .map(RacingCar::getName)
-                .collect(Collectors.toList())
-                .containsAll(Arrays.asList(names)));
+        List<String> racingCarNames = racingGame.getRacingCarList().stream()
+                                                .map(RacingCar::getName)
+                                                .collect(Collectors.toList());
+
+        assertThat(racingCarNames).hasSize(names.length)
+                                .containsAll(Arrays.asList(names));
     }
 
     @ParameterizedTest
@@ -38,8 +38,8 @@ class RacingGameTest {
         racingGame.move(() -> isMove);
 
         racingCarList = racingCarList.stream()
-                .filter(racingCar -> racingCar.getPosition() == expected)
-                .collect(Collectors.toList());
+                                    .filter(racingCar -> racingCar.getPosition() == expected)
+                                    .collect(Collectors.toList());
 
         assertThat(racingCarList.size()).isEqualTo(3);
     }

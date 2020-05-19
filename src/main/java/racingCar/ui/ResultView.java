@@ -11,9 +11,21 @@ public class ResultView {
         stringBuilder = new StringBuilder();
 
         for (RacingCar racingCar : racingCarList) {
+            stringBuilder.append(racingCar.getName()).append(" : ");
             printPosition(racingCar);
             stringBuilder.append("\n");
         }
+        System.out.println(stringBuilder.toString());
+    }
+
+    public void printWinnerNames(List<String> winnerNames) {
+        stringBuilder = new StringBuilder();
+
+        for (String name : winnerNames) {
+            stringBuilder.append(name).append(", ");
+        }
+        stringBuilder.delete(stringBuilder.length()-2, stringBuilder.length());
+        stringBuilder.append("가 최종 우승했습니다.");
         System.out.println(stringBuilder.toString());
     }
 

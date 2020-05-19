@@ -1,11 +1,12 @@
 package racingCar.domain;
 
-public class RacingCar {
+public class RacingCar implements Comparable<RacingCar> {
     private final String name;
     private int position;
 
-    public RacingCar(String name) {
+    public RacingCar(String name,int position) {
         this.name = name;
+        this.position = position;
     }
 
     public String getName() {
@@ -20,5 +21,10 @@ public class RacingCar {
         if(isMove) {
             position++;
         }
+    }
+
+    @Override
+    public int compareTo(RacingCar o) {
+        return Integer.compare(o.getPosition(), this.getPosition());
     }
 }
