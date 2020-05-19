@@ -2,6 +2,8 @@
 
 * 모든 로직에 단위 테스트를 구현한다.
     * UI(System.in, System.out) 로직은 제외함.
+* 게임을 실행하는 별도의 클래스에서 System.in, System.out을 처리.
+    * 기존은 RacingGame 내부에서 System.in과 System.out을 처리함.
 * 안내를 통해 사용자의 입력값을 저장하는 UI.
 * 입력값이 잘못된 경우 예외 처리.
 * 입력값(자동차 대수 등)을 토대로 자동차 객체 생성.
