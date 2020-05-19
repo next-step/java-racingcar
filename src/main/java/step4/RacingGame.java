@@ -19,7 +19,7 @@ public class RacingGame {
     }
 
     public void readyRacingCars(String carName) {
-        String[] carNames = carName.split(DELIMITER);
+        String[] carNames = carName.trim().split(DELIMITER);
         this.racingCars = Arrays.stream(carNames)
             .map(RacingCar::ready)
             .collect(Collectors.toList());
