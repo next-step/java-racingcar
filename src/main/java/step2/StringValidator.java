@@ -6,6 +6,9 @@ public class StringValidator {
     private static final Pattern PATTERN_CHECK_NUMBER = Pattern.compile("^-?\\d*\\.{0,1}\\d+$");
     private static final Pattern PATTERN_WHITESPACE = Pattern.compile("\\s");
 
+    private StringValidator() {
+    }
+
     /**
      * null 혹은 빈 문자열이거나 빈 공백 문자열일 경우 IllegalArgumentException throw
      * 
