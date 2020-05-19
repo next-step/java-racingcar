@@ -13,8 +13,7 @@ public class ResultView {
         System.out.println(RESULT_TITLE);
     }
 
-    public void printCurrentResult(RacingGame racingGame) {
-        ArrayList<Car> cars = racingGame.getCars();
+    public void printCurrentResult(ArrayList<Car> cars) {
         for (Car car : cars) {
             System.out.printf("%s : %s\n", car.getName(), makeCarPosition(car.getPosition()));
         }

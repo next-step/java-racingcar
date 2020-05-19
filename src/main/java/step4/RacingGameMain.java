@@ -13,7 +13,7 @@ public class RacingGameMain {
         resultView.printResultTitle();
         for (int i = 0; i < racingGame.getTryCount(); ++i) {
             racingGame.goCars();
-            resultView.printCurrentResult(racingGame);
+            resultView.printCurrentResult(racingGame.getCars());
         }
 
         racingGame.chooseWinners();
