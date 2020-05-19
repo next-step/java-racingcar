@@ -23,17 +23,14 @@ public class RacingGame {
             throw new IllegalArgumentException(Message.ERROR_GAME_TRY_COUNTS);
     }
 
-    public void run() {
+    public GameResultBoard run() {
         List<Car> cars = CarFactory.makeCars(this.carNames);
-        //startRacing(cars);
-    }
-
-    private void startRacing(List<Car> cars) {
-        ResultViewProcessor.printResultHeader(Message.RESULT_HEADER);
+        GameResultBoard gameResultBoard = new GameResultBoard(carNames, gameTryCounts);
         for (int i = 0; i < gameTryCounts; i++) {
             cars.forEach(Car::move);
-            ResultViewProcessor.printResult(cars);
+            gameResultBoard.recordRound(cars, i);
         }
+        return gameResultBoard;
     }
 
     public String[] getCarNames() {
