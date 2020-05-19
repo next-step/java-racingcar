@@ -29,10 +29,10 @@ class CarFactoryTest {
 
     private static Stream<Arguments> mockCarFactory() {
         return Stream.of(
-                Arguments.of("a,b,c,d,e".split(",")),
-                Arguments.of("j,a,k".split(",")),
-                Arguments.of("a".split(",")),
-                Arguments.of("java,js,python,r".split(","))
+                Arguments.of((Object) "a,b,c,d,e".split(",")),
+                Arguments.of((Object) "j,a,k".split(",")),
+                Arguments.of((Object) "a".split(",")),
+                Arguments.of((Object) "java,js,python,r".split(","))
                 );
     }
 }
