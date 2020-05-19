@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class RacingGame {
     private List<RacingCar> racingCarList = new ArrayList<>();
+    RacingRandom racingRandom = new RacingRandom();
 
     public List<RacingCar> getRacingCarList() {
         return racingCarList;
@@ -19,7 +20,6 @@ public class RacingGame {
 
     public void moveCars() {
         for (RacingCar car : racingCarList) {
-            RacingRandom racingRandom = new RacingRandom();
             int power = racingRandom.getRandomNumber();
             car.move(power);
         }
