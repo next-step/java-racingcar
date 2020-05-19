@@ -1,6 +1,8 @@
 package stringcalculator;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.BiFunction;
 
 public class Calculator {
@@ -26,6 +28,17 @@ public class Calculator {
         }
     }
 
+    private static Map<String, Operator> operators = new HashMap<>();
+
+    static {
+        for (Operator value: Operator.values()){
+            operators.put(value.operator, value);
+        }
+    }
+
+    public static double calculate(String operator, double operand1, double operand2){
+        return operators.get(operator).calculate(operand1, operand2);
+    }
 
     //  연산식으로 만들기
     public String trimInputExpression(String targetExpression){
