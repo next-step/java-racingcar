@@ -1,8 +1,9 @@
-package race;
+package step3;
 
 public class StubMovingStrategyTest implements MovingStrategy {
 
     private boolean isMovable;
+
     public StubMovingStrategyTest(boolean isMovable) {
         this.isMovable = isMovable;
     }

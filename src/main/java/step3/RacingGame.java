@@ -1,4 +1,4 @@
-package race;
+package step3;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,17 +28,19 @@ public class RacingGame {
     public List<RacingCar> startRacing() {
         start();
         return racingCars.stream()
-            .map(car -> new RacingCar(car.getPosition()))
+            .map(car -> new RacingCar(car.currentPosition()))
             .collect(Collectors.toList());
     }
 
     private List<RacingCar> start() {
-         racingCars.forEach(racingCar -> {
-            if (movingStrategy.isMovable()) {
-                racingCar.forward();
-            }
-        });
+        racingCars.forEach(this::forwardRacingCar);
 
         return racingCars;
+    }
+
+    private void forwardRacingCar(RacingCar racingCar) {
+        if (movingStrategy.isMovable()) {
+           racingCar.forward();
+        }
     }
 }

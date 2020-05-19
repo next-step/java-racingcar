@@ -1,4 +1,4 @@
-package race;
+package step3;
 
 public class RacingCar {
 
@@ -18,10 +18,6 @@ public class RacingCar {
     }
 
     public int currentPosition() {
-        return position;
-    }
-
-    public int getPosition() {
         return position;
     }
 }
