@@ -14,10 +14,6 @@ public class RacingGame {
     private ArrayList<Car> cars;
     private ArrayList<String> winners;
 
-//    public void setCars(ArrayList<Car> cars) {
-//        this.cars = cars;
-//    }
-
     public ArrayList<String> getWinners() {
         return winners;
     }
@@ -51,7 +47,7 @@ public class RacingGame {
         this.winners = new ArrayList<>();
     }
 
-    public void validateCarNames(String names) throws IllegalArgumentException {
+    private void validateCarNames(String names) throws IllegalArgumentException {
         if (Objects.isNull(names)) {
             throw new IllegalArgumentException(INVALID_CAR_NAMES_MESSAGE);
         }
@@ -63,7 +59,7 @@ public class RacingGame {
 
     }
 
-    public void validateDuplicatedCarNames(String[] names) throws IllegalArgumentException {
+    private void validateDuplicatedCarNames(String[] names) throws IllegalArgumentException {
         DistinctNameSet distinctNameSet = new DistinctNameSet();
         for (String name : names) {
             distinctNameSet.assertDistinctName(name, DUPLICATED_CAR_NAMES_MESSAGE);
@@ -74,7 +70,7 @@ public class RacingGame {
         return names.split(Constants.COMMA);
     }
 
-    public void validateTryCount(int tryCount) {
+    private void validateTryCount(int tryCount) {
         if (tryCount < 1 || tryCount > 10) {
             throw new IllegalArgumentException(INVALID_TRY_COUNT_MESSAGE);
         }

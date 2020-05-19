@@ -35,9 +35,8 @@ class RacingGameTest {
     @ParameterizedTest
     @MethodSource({"provideCarNamesTestCase"})
     void validateCarNames(String input, Class exception) {
-
         //when
-        Throwable thrown = catchThrowable(() -> racingGame.validateCarNames(input));
+        Throwable thrown = catchThrowable(() -> racingGame.initialize(input, 2));
 
         //then
         if (exception != null) {
@@ -52,7 +51,7 @@ class RacingGameTest {
     @CsvSource({"1,true","2,true","3,true","9,true","10,true","11,false","-1,false","0,false"})
     void validateTryCount(String input, String expected) {
         //when
-        Throwable thrown = catchThrowable(() -> racingGame.validateTryCount(Integer.valueOf(input)));
+        Throwable thrown = catchThrowable(() -> racingGame.initialize("a,b,c", Integer.valueOf(input)));
 
         //then
         if (false == Boolean.valueOf(expected)) {
@@ -63,20 +62,20 @@ class RacingGameTest {
         }
     }
 
+
     private static Stream<Arguments> provideDuplicateCarNames() {
         return Stream.of(
-            Arguments.of(new String[]{"a","a"}, false),
-            Arguments.of(new String[]{"a","b","c","d","d"}, false),
-            Arguments.of(new String[]{"a"}, true),
-            Arguments.of(new String[]{"a","b","c","d","e"}, true)
+            Arguments.of("a,a", false),
+            Arguments.of("a,b,c,d,d", false),
+            Arguments.of("a,b,c,d,e", true)
             );
     }
 
     @ParameterizedTest
     @MethodSource("provideDuplicateCarNames")
-    void validateDuplicatedCarNames(String[] input, Boolean expected) {
+    void validateDuplicatedCarNames(String input, Boolean expected) {
         //when
-        Throwable thrown = catchThrowable(() -> racingGame.validateDuplicatedCarNames(input));
+        Throwable thrown = catchThrowable(() -> racingGame.initialize(input, 2));
 
         //then
         if (expected == false ) {
