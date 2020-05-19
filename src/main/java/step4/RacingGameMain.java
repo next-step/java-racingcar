@@ -17,6 +17,6 @@ public class RacingGameMain {
         }
 
         racingGame.chooseWinners();
-        resultView.printWinners(racingGame);
+        resultView.printWinners(racingGame.getWinners());
     }
 }

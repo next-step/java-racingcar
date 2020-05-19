@@ -28,9 +28,9 @@ public class ResultView {
         return stringBuilder.toString();
     }
 
-    public void printWinners(RacingGame racingGame) {
+    public void printWinners(ArrayList<String> winners) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (String winner : racingGame.getWinners()) {
+        for (String winner : winners) {
             stringBuilder = appendWinner(winner, stringBuilder);
         }
         System.out.printf(RESULT_WINNER_MESSAGE, stringBuilder.toString());
