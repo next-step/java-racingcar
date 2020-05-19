@@ -118,33 +118,16 @@ class RacingGameTest {
     void goCars() {
         //given
         racingGame.initialize("a,b,c",3);
-        Random random = mock(Random.class);
-        racingGame.setRandom(random);
-        when(random.nextInt())
-            .thenReturn(5);
+        ArrayList<Car> cars = racingGame.getCars();
+        for (Car car : cars) {
+            car.setMovableStrategy(() -> true);
+        }
 
         //when
         racingGame.goCars();
 
         //then
         assertThat(racingGame.getCars()).extracting("position").containsOnly(1);
-    }
-
-    @Test
-    void goCar() {
-        //given
-        racingGame.initialize("a,b,c",3);
-        Random random = mock(Random.class);
-        racingGame.setRandom(random);
-        Car car = new Car("a");
-        when(random.nextInt())
-            .thenReturn(5);
-
-        //when
-        racingGame.goCar(car);
-
-        //then
-        assertThat(car).extracting("position").containsOnly(1);
     }
 
     @Test

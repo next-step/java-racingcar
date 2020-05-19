@@ -1,6 +1,6 @@
 package step4;
 
-public class Car implements Comparable<Car> {
+public class Car extends Moving implements Comparable<Car> {
 
     private String name;
     private int position;
@@ -13,10 +13,6 @@ public class Car implements Comparable<Car> {
         return position;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setPosition(int position) {
         this.position = position;
     }
@@ -27,7 +23,9 @@ public class Car implements Comparable<Car> {
     }
 
     public void go() {
-        this.position++;
+        if (isMovable()) {
+            this.position++;
+        }
     }
 
     @Override

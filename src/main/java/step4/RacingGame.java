@@ -11,7 +11,6 @@ import java.util.Random;
 
 public class RacingGame {
 
-    private Random random;
     private int tryCount;
     private ArrayList<Car> cars;
     private ArrayList<String> winners;
@@ -24,10 +23,6 @@ public class RacingGame {
         return winners;
     }
 
-    public void setWinners(ArrayList<String> winners) {
-        this.winners = winners;
-    }
-
     public ArrayList<Car> getCars() {
         return cars;
     }
@@ -36,26 +31,8 @@ public class RacingGame {
         return this.tryCount;
     }
 
-    public void setRandom(Random random) {
-        this.random = random;
-    }
-
-    public RacingGame() {
-        this.random = new Random();
-    }
-
     public void goCars() {
-        if (this.random == null) {
-            this.random = new Random();
-        }
-
         for (Car car : cars) {
-            goCar(car);
-        }
-    }
-
-    public void goCar(Car car) {
-        if (this.random.nextInt() >= 4) {
             car.go();
         }
     }
@@ -66,7 +43,10 @@ public class RacingGame {
         this.cars = new ArrayList<>();
         String[] carNames = parseCarNames(names);
         for (int i = 0; i < carNames.length; ++i) {
-            this.cars.add(new Car(carNames[i]));
+            Car car = new Car(carNames[i]);
+            car.setMovableStrategy(new RandomMovableStrategy());
+            this.cars.add(car);
+
         }
         this.tryCount = tryCount;
         this.winners = new ArrayList<>();
