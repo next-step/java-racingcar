@@ -28,7 +28,7 @@ public class RacingGame {
         GameResultBoard gameResultBoard = new GameResultBoard(carNames, gameTryCounts);
         for (int i = 0; i < gameTryCounts; i++) {
             cars.forEach(Car::move);
-            gameResultBoard.recordRound(cars, i);
+            //gameResultBoard.recordRound(cars, i);
         }
         return gameResultBoard;
     }
