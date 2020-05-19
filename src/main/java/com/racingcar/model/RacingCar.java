@@ -20,8 +20,8 @@ public class RacingCar {
         this.racingCarMoveStrategy = new RacingCarRule();
     }
 
-    public void setRacingStatus(Integer racingStatus) {
-        this.racingStatus = racingStatus;
+    public void setRacingCarMoveStrategy(RacingCarMoveStrategy racingCarMoveStrategy) {
+        this.racingCarMoveStrategy = racingCarMoveStrategy;
     }
 
     public Integer getRacingStatus() {

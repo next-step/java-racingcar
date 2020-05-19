@@ -73,7 +73,7 @@ class RacingCarRuleTest {
         List<RacingCar> winnerRacingCars = racingCarGame.extractWinner();
 
         assertEquals(winnerRacingCars.size(), expectedRacingCars.size());
-        assertEquals(CollectionUtils.containsAll(winnerRacingCars, expectedRacingCars), Boolean.TRUE);
+        assertTrue(CollectionUtils.containsAll(winnerRacingCars, expectedRacingCars));
     }
 
     private static Stream<Arguments> provideRacingCarGame() {
@@ -92,36 +92,53 @@ class RacingCarRuleTest {
     }
 
     private static RacingCarGame dummyRacingCarGame1() {
+        Integer countOfAttempt = 5;
         RacingCarGame racingCarGame = new RacingCarGame(
-                Arrays.asList("carA", "carB", "carC"), 5
+                Arrays.asList("carA", "carB", "carC"), countOfAttempt
         );
 
         RacingCar carA = racingCarGame.getRacingCars().get(0);
-        RacingCar carB = racingCarGame.getRacingCars().get(1);
-        RacingCar carC = racingCarGame.getRacingCars().get(2);
+        makeRacingCarStatusForRequirement(carA, countOfAttempt, 3);
 
-        carA.setRacingStatus(3);
-        carB.setRacingStatus(4);
-        carC.setRacingStatus(1);
+        RacingCar carB = racingCarGame.getRacingCars().get(1);
+        makeRacingCarStatusForRequirement(carB, countOfAttempt, 4);
+
+        RacingCar carC = racingCarGame.getRacingCars().get(2);
+        makeRacingCarStatusForRequirement(carC, countOfAttempt, 1);
 
         return racingCarGame;
     }
 
     private static RacingCarGame dummyRacingCarGame2() {
+        Integer countOfAttempt = 3;
         RacingCarGame racingCarGame = new RacingCarGame(
                 Arrays.asList("carA", "carB", "carC", "carD"), 3
         );
 
         RacingCar carA = racingCarGame.getRacingCars().get(0);
-        RacingCar carB = racingCarGame.getRacingCars().get(1);
-        RacingCar carC = racingCarGame.getRacingCars().get(2);
-        RacingCar carD = racingCarGame.getRacingCars().get(3);
+        makeRacingCarStatusForRequirement(carA, countOfAttempt, 3);
 
-        carA.setRacingStatus(3);
-        carB.setRacingStatus(3);
-        carC.setRacingStatus(2);
-        carD.setRacingStatus(1);
+        RacingCar carB = racingCarGame.getRacingCars().get(1);
+        makeRacingCarStatusForRequirement(carB, countOfAttempt, 3);
+
+        RacingCar carC = racingCarGame.getRacingCars().get(2);
+        makeRacingCarStatusForRequirement(carC, countOfAttempt, 2);
+
+        RacingCar carD = racingCarGame.getRacingCars().get(3);
+        makeRacingCarStatusForRequirement(carD, countOfAttempt, 1);
 
         return racingCarGame;
+    }
+
+    private static void makeRacingCarStatusForRequirement(RacingCar racingCar, Integer countOfAttempt, Integer expectedStatus) {
+        TestRacingCarRule testRacingCarRule = new TestRacingCarRule(4);
+        IntStream.range(0, countOfAttempt).forEach(i -> {
+            if (racingCar.getRacingStatus().equals(expectedStatus)) {
+                return;
+            }
+
+            racingCar.setRacingCarMoveStrategy(testRacingCarRule);
+            racingCar.movingRacingCar();
+        });
     }
 }
