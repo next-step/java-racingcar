@@ -42,4 +42,8 @@ public class Car {
   public static Car of (String name) {
     return new Car(name);
   }
+
+  public static Car of () {
+    return new Car("Car");
+  }
 }
