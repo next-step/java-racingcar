@@ -3,6 +3,7 @@ package step3;
 import java.util.Random;
 
 public class RacingRandom {
+    private static final int BOUND_NUMBER = 4;
 
     private Random random;
 
@@ -11,7 +12,7 @@ public class RacingRandom {
     }
 
     public int getRandomNumber() {
-        return random.nextInt(10);
+        return random.nextInt(BOUND_NUMBER);
     }
 }
 
