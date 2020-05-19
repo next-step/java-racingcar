@@ -1,9 +1,6 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RacingGame {
@@ -42,8 +39,9 @@ public class RacingGame {
         ResultView resultView = new ResultView();
 
         for (int i = START_ROUND; i < time; i++) {
-            move(i);
-            resultView.saveRoundResult(i, this.carPositions);
+            move();
+            resultView.saveRoundResult(this.carPositions);
+            System.out.println();
         }
 
         resultView.saveWinner(getWinners());
@@ -52,7 +50,7 @@ public class RacingGame {
 
     private List<Racingcar> getWinners() {
         List<Racingcar> racingcars = this.carPositions;
-        Collections.sort(racingcars, new Racingcar());
+        Collections.sort(racingcars);
         Racingcar winRacingcar = racingcars.get(0);
         int winnerPosition = winRacingcar.getCarMovePosition();
         List<Racingcar> winRacingcars = racingcars.stream().filter(car -> car.getCarMovePosition() == winnerPosition).collect(Collectors.toList());
@@ -66,9 +64,9 @@ public class RacingGame {
         }
     }
 
-    private void move(int round) {
+    private void move() {
         for (Racingcar racingcar : this.carPositions) {
-            racingcar.moveCarMovePosition(round);
+            racingcar.moveCarMovePosition(new Random());
         }
     }
 

@@ -7,7 +7,6 @@ import java.util.Map;
 
 public class ResultView {
 
-    private static final String POSITION_BAR = "-";
     private static final int START_ROUND_NUMBER = 0;
 
     private int saveRound = 0;
@@ -16,7 +15,7 @@ public class ResultView {
 
     public void printResult() {
         System.out.println("실행 결과");
-        for (int i = START_ROUND_NUMBER; i <= saveRound; i++) {
+        for (int i = START_ROUND_NUMBER; i < saveRound; i++) {
             printResultByRound(i);
         }
     }
@@ -34,6 +33,10 @@ public class ResultView {
         this.winner = winner;
     }
 
+    public void printRealRacingTrack() {
+
+    }
+
     public void printResultByRound(int round) {
         try {
             List<Racingcar> carPositions = this.roundResult.get(round);
@@ -45,13 +48,12 @@ public class ResultView {
 
     private void printRacingCarPosition(int round, List<Racingcar> carPositions) {
         for (Racingcar racingcar : carPositions) {
-            racingcar.printCarPrintRoundPosition(round, POSITION_BAR);
+            racingcar.printCarRoundPosition(round);
         }
         System.out.println();
     }
 
-    protected void saveRoundResult(int round, List<Racingcar> carPositions) {
-        this.roundResult.put(round, carPositions);
-        this.saveRound = round;
+    protected void saveRoundResult(List<Racingcar> carPositions) {
+        this.roundResult.put(this.saveRound++, carPositions);
     }
 }
