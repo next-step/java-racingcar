@@ -26,6 +26,6 @@ public enum OperatorEnum {
         return Arrays.stream(values())
                 .filter(v -> operator.equals(v.operator))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException());
+                .orElseThrow(() -> new IllegalArgumentException("처리 불가능한 사칙연산 기호가 포함되어있습니다."));
     }
 }

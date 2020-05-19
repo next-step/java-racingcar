@@ -1,6 +1,10 @@
 package step2;
 
 public class StringCalculator {
+    public static void main(String[] args) {
+
+    }
+
     public int calculate(String input) {
         CalculatorUtils.inputValidator(input);
         String[] strArray = input.split(CalculatorUtils.DELIMITER);
