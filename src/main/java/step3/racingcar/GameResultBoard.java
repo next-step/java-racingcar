@@ -8,9 +8,9 @@ public class GameResultBoard {
     private String[] carNames;
 
     public GameResultBoard(String[] carNames, int gameTryCounts) {
-        int row = carNames.length;
-        int column = gameTryCounts;
-        this.gameResultBoard = new int[row][column];
+        int row = gameTryCounts;
+        int column = carNames.length;
+        this.gameResultBoard = new int[gameTryCounts][column];
         this.carNames = carNames;
     }
 

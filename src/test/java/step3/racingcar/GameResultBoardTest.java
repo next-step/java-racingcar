@@ -21,8 +21,8 @@ public class GameResultBoardTest {
     @MethodSource("mockGameResultBoardBuilder")
     public void getGameResultBoardObject(String[] carNames, int gameTryCounts) {
         GameResultBoard gameResultBoard = new GameResultBoard(carNames, gameTryCounts);
-        assertThat(gameResultBoard.getGameResultBoard().length).isEqualTo(carNames.length);
-        assertThat(gameResultBoard.getGameResultBoard()[0].length).isEqualTo(gameTryCounts);
+        assertThat(gameResultBoard.getGameResultBoard().length).isEqualTo(gameTryCounts);
+        assertThat(gameResultBoard.getGameResultBoard()[0].length).isEqualTo(carNames.length);
     }
 
     private static Stream<Arguments> mockGameResultBoardBuilder() {
