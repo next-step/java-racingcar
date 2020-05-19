@@ -9,20 +9,20 @@ public class ResultViewProcessor {
     private ResultViewProcessor() {
     }
 
-    public static void printResult(GameResultBoard gameResultBoard) {
-        System.out.println(Message.RESULT_HEADER);
-        int[][] parsedGameResultBoard = gameResultBoard.getGameResultBoard();
-        String[] carNames = gameResultBoard.getCarNames();
-        int column = parsedGameResultBoard[0].length;
-        for (int i = 0; i < column; i++) {
-           // printCurrentPosition(row, i, parsedGameResultBoard, carNames);
-        }
+    public static void printResult(List<Car> cars) {
+        cars.forEach(ResultViewProcessor::printCurrentPosition);
         System.out.println();
     }
 
-    private static void printCurrentPosition(int row, int column, int[][] board, String[] carNames) {
-        for (int i = 0; i < row; i++) {
-            System.out.println(carNames[i] + " : " + board[row][column]);
+    public static void printResultHeader(String headerMessage) {
+        System.out.println(headerMessage);
+    }
+
+    private static void printCurrentPosition(Car car) {
+        int currentPosition = car.getPosition();
+        System.out.print(car.getName() + " : ");
+        for (int i = 0; i < currentPosition; i++) {
+            System.out.print(POSITION_MARK);
         }
         System.out.println();
     }

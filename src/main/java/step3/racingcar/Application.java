@@ -7,7 +7,6 @@ public class Application {
         int gameTryCounts = InputViewProcessor.getGameTryCounts(Message.GAME_TRY_COUNTS);
 
         RacingGame racingGame = new RacingGame(carNames, gameTryCounts);
-        GameResultBoard gameResultBoard = racingGame.run();
-        ResultViewProcessor.printResult(gameResultBoard);
+        racingGame.run();
     }
 }
