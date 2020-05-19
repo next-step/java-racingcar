@@ -24,7 +24,6 @@ class CarFactoryTest {
         for (int i = 0; i < carNamesLength; i++) {
             assertThat(cars.get(i).getName()).isEqualTo(carNames[i]);
         }
-
     }
 
     private static Stream<Arguments> mockCarFactory() {

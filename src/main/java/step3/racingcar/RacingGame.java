@@ -24,7 +24,7 @@ public class RacingGame {
     }
 
     public void run() {
-        //List<Car> cars = CarFactory.makeCars(this.carCounts);
+        List<Car> cars = CarFactory.makeCars(this.carNames);
         //startRacing(cars);
     }
 
