@@ -18,7 +18,7 @@ public class RacingCar {
     }
 
     private boolean inputPowerCehck(int power) {
-        return power >= POWER_THRESHOLD ? true : false;
+        return power >= POWER_THRESHOLD;
     }
 }
 
