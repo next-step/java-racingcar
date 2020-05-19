@@ -68,46 +68,4 @@ public enum Operator {
      * @return double, 계산한 값을 반환
      */
     public abstract double calculate(double left, double right);
-
-    /**
-     * 문자열(symbol)로 어떤 연산자인지 찾아서 반환
-     * 
-     * @param symbol : String 연산자 e.g."+"
-     * @return Operator, 찾은 enum 객체
-     * @throws IllegalArgumentException 사칙연산 기호(+, -, *, /) 가 아닐 경우
-     */
-    public static Operator findOperatorBySymbol(String symbol) throws IllegalArgumentException {
-        Operator result = null;
-        Operator[] operators = null;
-
-        StringValidator.checkNullAndEmpty(symbol);
-        operators = Operator.values();
-
-        for (int i = 0; i < operators.length && result == null; i++) {
-            result = getOperatorBySymbol(symbol, operators[i]);
-        }
-
-        if (result == null) {
-            throw new IllegalArgumentException("올바른 사칙연산 기호가 아닙니다.");
-        }
-
-        return result;
-    }
-
-    /**
-     * 문자열(symbol)과 operator의 기호가 일치하면 해당 opeartor 반환
-     * 
-     * @param symbol   : String 연산자 e.g."+"
-     * @param operator : Operator enum 객체
-     * @return Operator, 일치하는 operator 반환 없을 시 null 반호나
-     */
-    private static Operator getOperatorBySymbol(String symbol, Operator operator) {
-        Operator result = null;
-
-        if (operator.symbol.equals(symbol)) {
-            result = operator;
-        }
-
-        return result;
-    }
 }
