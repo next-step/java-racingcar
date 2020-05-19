@@ -55,4 +55,15 @@ public class StringValidator {
 
         return false;
     }
+    /**
+     * 입력받은 문자열(param)이 사칙연산 기호가 아니면 IllegalArgumentException
+     * 
+     * @param param : String, 판단할 문자열
+     * @throws IllegalArgumentException
+     */
+    public static void checkOperator(String param) throws IllegalArgumentException {
+        if (OperatorMapper.getInstance().getOperator(param) == null) {
+            throw new IllegalArgumentException("올바른 사칙연산 기호가 아닙니다.");
+        }
+    }
 }
