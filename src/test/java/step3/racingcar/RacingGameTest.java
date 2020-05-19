@@ -43,9 +43,11 @@ class RacingGameTest {
 
     private static Stream<Arguments> mockRacingGameExceptionBuilder() {
         return Stream.of(
-                Arguments.of("a,b,c,d".split(" "), 5),
-                Arguments.of("java,c,js,sql".split(" "), 7),
-                Arguments.of("pizza,hamburger,chicken".split(" "), 13)
+                Arguments.of("a,b,c,d".split(" "), 1),
+                Arguments.of("java,c,js,sql".split(" "), 0),
+                Arguments.of("pizza,hamburger,chicken".split(" "), -3),
+                Arguments.of("javacjssql".split(" "), 10),
+                Arguments.of("".split(" "), 8)
         );
     }
 }

@@ -8,8 +8,16 @@ public class RacingGame {
     private int gameTryCounts;
 
     public RacingGame(String[] carNames, int gameTryCounts) {
+        validateConstructors(carNames, gameTryCounts);
         this.carNames = carNames;
         this.gameTryCounts = gameTryCounts;
+    }
+
+    private void validateConstructors(String[] carNames, int gameTryCounts) {
+        if (carNames.length <= 1)
+            throw new IllegalArgumentException();
+        if (gameTryCounts < 1)
+            throw new IllegalArgumentException();
     }
 
     public void run() {
