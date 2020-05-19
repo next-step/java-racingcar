@@ -20,20 +20,20 @@ class OperatorTest {
     @CsvSource({ "2, 3, -1" })
     @DisplayName("뺴기")
     void minus(double left, double right, double expected) {
-        assertThat(Operator.PLUS.calculate(left, right)).isEqualTo(expected);
+        assertThat(Operator.MINUS.calculate(left, right)).isEqualTo(expected);
     }
 
     @ParameterizedTest
     @CsvSource({ "2, 3, 6" })
     @DisplayName("곱하기")
     void multiply(double left, double right, double expected) {
-        assertThat(Operator.PLUS.calculate(left, right)).isEqualTo(expected);
+        assertThat(Operator.MULTIPLY.calculate(left, right)).isEqualTo(expected);
     }
 
     @ParameterizedTest
     @CsvSource({ "2, 4, 0.5" })
     @DisplayName("나누기")
     void division(double left, double right, double expected) {
-        assertThat(Operator.PLUS.calculate(left, right)).isEqualTo(expected);
+        assertThat(Operator.DIVISION.calculate(left, right)).isEqualTo(expected);
     }
 }
