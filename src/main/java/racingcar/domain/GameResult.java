@@ -8,17 +8,22 @@ import java.util.stream.Collectors;
 public class GameResult {
     private static final String OUTPUT_CHARACTERS = "-";
 
-    private final List<Car> cars;
+    private final Cars cars;
 
-    public GameResult(List<Car> cars) {
+    public GameResult(Cars cars) {
         this.cars = cars;
     }
 
     public List<String> getResult() {
-        return cars.stream().map(car -> {
-            int carPosition = car.getPosition();
-            return replacePositionToOutputCharacters(carPosition);
-        }).collect(Collectors.toList());
+        return cars.getCars()
+                .stream()
+                .map(car -> {
+                    int carPosition = car.getPosition();
+                    String carName = car.getName();
+
+                    return carName.concat(" : ").concat(replacePositionToOutputCharacters(carPosition));
+                })
+                .collect(Collectors.toList());
     }
 
     private String replacePositionToOutputCharacters(int carPosition) {
@@ -33,5 +38,14 @@ public class GameResult {
 
     public void displayResult() {
         OutputView.printOut(this);
+    }
+
+    public void displayWinner(Cars winners) {
+        String winnerNames = winners.getCars()
+                .stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(","));
+
+        OutputView.printOutWinner(winnerNames);
     }
 }

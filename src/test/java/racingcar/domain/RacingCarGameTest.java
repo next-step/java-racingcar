@@ -3,9 +3,8 @@ package racingcar.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 @DisplayName("RacingCarGameTest 클래스 테스트")
 public class RacingCarGameTest {
@@ -14,24 +13,20 @@ public class RacingCarGameTest {
     @DisplayName("execute 메소드는 레이싱 게임을 실행한다.")
     void execute() {
         // given
-        int carCount = 1;
+        String carName = "테스터";
         int moveCount = 2;
-        RacingCarGame racingCarGame = new RacingCarGame(carCount, moveCount);
+        RacingCarGame racingCarGame = new RacingCarGame(carName, moveCount);
 
         // when
         racingCarGame.execute(new FixedNumberStrategy());
-        List<Car> cars = racingCarGame.getCars();
+        Cars cars = racingCarGame.getCars();
 
         // then
-        assertThat(cars).isNotNull();
-        assertThat(cars.size()).isEqualTo(carCount);
-        assertThat(cars.get(0).getPosition()).isEqualTo(moveCount);
-    }
+        assertAll(
+                () -> assertThat(cars).isNotNull(),
+                () -> assertThat(cars.getSize()).isEqualTo(carName.split(",").length),
+                () -> assertThat(cars.getCars().get(0).getPosition()).isEqualTo(moveCount)
+        );
 
-    private static class FixedNumberStrategy implements Strategy {
-        @Override
-        public int getNumber() {
-            return 5;
-        }
     }
 }

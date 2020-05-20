@@ -1,46 +1,29 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RacingCarGame {
 
-    private List<Car> cars;
+    private final Cars cars;
     private final int moveCount;
 
-    public RacingCarGame(int carCount, int moveCount) {
-        this.cars = createCars(carCount);
+    public RacingCarGame(String carNames, int moveCount) {
+        this.cars = Cars.createCars(carNames);
         this.moveCount = moveCount;
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
-    private List<Car> createCars(int carCount) {
-        cars = new ArrayList<>();
-
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
-
+    public Cars getCars() {
         return cars;
     }
 
     public void execute(Strategy strategy) {
+        GameResult gameResult = new GameResult(cars);
+
         for (int i = 0; i < moveCount; i++) {
-            GameResult result = carRacing(strategy);
-            result.displayResult();
+            cars.carRacing(strategy);
+            gameResult.displayResult();
         }
-    }
 
-    private GameResult carRacing(Strategy strategy) {
-        cars.forEach(car -> {
-            int randomNumber = strategy.getNumber();
-            car.move(randomNumber);
-        });
-
-        return new GameResult(cars);
+        Cars winners = cars.getWinners();
+        gameResult.displayWinner(winners);
     }
 }
 

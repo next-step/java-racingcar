@@ -9,12 +9,12 @@ public class Main {
     public static void main(String[] args) {
         InputView input = InputView.create();
 
-        int carCount = input.getCarCount();
+        String carNames = input.getCarNames();
         int moveCount = input.getMoveCount();
 
         OutputView.printMessage();
 
-        RacingCarGame racingCarGame = new RacingCarGame(carCount, moveCount);
+        RacingCarGame racingCarGame = new RacingCarGame(carNames, moveCount);
         racingCarGame.execute(new RandomStrategy());
     }
 }

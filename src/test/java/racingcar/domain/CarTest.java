@@ -12,16 +12,17 @@ public class CarTest {
     @Nested
     @DisplayName("move 메소드 호출 시")
     class Describe_move {
+        private final String carName = "테스터";
+
         @DisplayName("차의 위치를 증가 시킬 수 있다.")
         @Test
         void it_does_move() {
             // given
-            Car car = new Car();
-            int moveNumber = 5;
+            Car car = new Car(carName);
             int before = car.getPosition();
 
             // when
-            car.move(moveNumber);
+            car.move(new FixedNumberStrategy());
 
             // then
             assertThat(car.getPosition()).isEqualTo(before + 1);
@@ -31,15 +32,21 @@ public class CarTest {
         @Test
         void it_does_not_move() {
             // given
-            Car car = new Car();
-            int moveNumber = 3;
+            Car car = new Car(carName);
             int before = car.getPosition();
 
             // when
-            car.move(moveNumber);
+            car.move(new LowNumberStrategy());
 
             // then
             assertThat(car.getPosition()).isEqualTo(before);
+        }
+    }
+
+    private static class LowNumberStrategy implements Strategy {
+        @Override
+        public int getNumber() {
+            return 3;
         }
     }
 }
