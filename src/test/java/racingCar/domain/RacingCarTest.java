@@ -10,7 +10,7 @@ class RacingCarTest {
 
     @Test
     void initRacingCarPosition() {
-        RacingCar racingCar = new RacingCar("lion", 0);
+        RacingCar racingCar = new RacingCar("lion");
         int position = racingCar.getPosition();
         assertThat(position).isEqualTo(0);
     }
@@ -19,7 +19,7 @@ class RacingCarTest {
     @CsvSource(value = {"true,1","false,0"})
     void move(boolean isMove, int expected) {
         // Given
-        RacingCar racingCar = new RacingCar("lion", 0);
+        RacingCar racingCar = new RacingCar("lion");
 
         // When
         racingCar.move(isMove);
@@ -31,8 +31,10 @@ class RacingCarTest {
     @Test
     void compareTo() {
         // Given
-        RacingCar racingCar = new RacingCar("lion", 4);
-        RacingCar compareRacingCar = new RacingCar("cat", 2);
+        RacingCar racingCar = new RacingCar("lion");
+        racingCar.move(true);
+
+        RacingCar compareRacingCar = new RacingCar("cat");
 
         // When
         int result = racingCar.compareTo(compareRacingCar);

@@ -24,11 +24,11 @@ class RacingGameWinnersTest {
 
     private static Stream<Arguments> provideRacingData() {
         List<RacingCar> racingCarList = new ArrayList<>();
-        racingCarList.add(new RacingCar("Ape", 4));
-        racingCarList.add(new RacingCar("Frodo", 6));
-        racingCarList.add(new RacingCar("Tube", 6));
-        racingCarList.add(new RacingCar("Con", 1));
-        racingCarList.add(new RacingCar("Ryan", 3));
+        racingCarList.add(new RacingCar("Ape"));
+        racingCarList.add(new RacingCar("Frodo"));
+        racingCarList.add(new RacingCar("Tube"));
+        racingCarList.add(new RacingCar("Con"));
+        racingCarList.add(new RacingCar("Ryan"));
 
         return Stream.of(Arguments.of(racingCarList, new String[]{"Frodo","Tube"}));
     }

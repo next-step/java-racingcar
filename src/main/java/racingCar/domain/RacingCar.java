@@ -4,9 +4,8 @@ public class RacingCar implements Comparable<RacingCar> {
     private final String name;
     private int position;
 
-    public RacingCar(String name,int position) {
+    public RacingCar(String name) {
         this.name = name;
-        this.position = position;
     }
 
     public String getName() {

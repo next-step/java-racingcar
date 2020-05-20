@@ -24,7 +24,7 @@ public class RacingGame {
     }
 
     private void initRacingCars() {
-        Arrays.stream(carNames).forEach(name -> racingCarList.add(new RacingCar(name, 0)));
+        Arrays.stream(carNames).forEach(name -> racingCarList.add(new RacingCar(name)));
     }
 
     // TODO 구현
