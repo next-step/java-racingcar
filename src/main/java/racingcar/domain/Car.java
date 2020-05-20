@@ -9,14 +9,14 @@ public class Car {
         this.name = name;
     }
 
-    public void move(int moveNumber) {
-        if (isMove(moveNumber)) {
+    public void move(Strategy strategy) {
+        if (isMove(strategy)) {
             position++;
         }
     }
 
-    private boolean isMove(int moveNumber) {
-        return moveNumber >= MOVABLE_CONDITION;
+    private boolean isMove(Strategy strategy) {
+        return strategy.getNumber() >= MOVABLE_CONDITION;
     }
 
     public int getPosition() {
