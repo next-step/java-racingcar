@@ -2,9 +2,8 @@ package step3.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.domain.ForwardMoveStrategy;
-import step3.domain.RacingCar;
-import step3.domain.StopMoveStrategy;
+
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,9 +16,10 @@ class RacingCarTest {
     void carForwardMovingTest() {
         RacingCar racingCar = RacingCar.create(TEST_CAR_NAME);
 
-        assertThat(racingCar.move(new ForwardMoveStrategy())).isEqualTo(1);
-        assertThat(racingCar.move(new ForwardMoveStrategy())).isEqualTo(2);
-        assertThat(racingCar.move(new ForwardMoveStrategy())).isEqualTo(3);
+        IntStream.range(1, 10).forEach(i -> {
+            racingCar.move(new MoveForwardStrategy());
+            assertThat(racingCar.getPosition()).isEqualTo(i);
+        });
     }
 
     @DisplayName("StopMoveStrategy는 자동차의 position이 증가하지 않는다")
@@ -27,9 +27,10 @@ class RacingCarTest {
     void carStopMovingTest() {
         RacingCar racingCar = RacingCar.create(TEST_CAR_NAME);
 
-        assertThat(racingCar.move(new StopMoveStrategy())).isEqualTo(0);
-        assertThat(racingCar.move(new StopMoveStrategy())).isEqualTo(0);
-        assertThat(racingCar.move(new StopMoveStrategy())).isEqualTo(0);
+        IntStream.range(1, 10).forEach(i -> {
+            racingCar.move(new MoveStopStrategy());
+            assertThat(racingCar.getPosition()).isEqualTo(0);
+        });
     }
 
 }

@@ -21,15 +21,7 @@ public class RacingCar {
         return this.position;
     }
 
-    public int move(MoveStrategy moveStrategy) {
-        if (moveStrategy.isMovable()) {
-            this.moveCurrentPosition();
-        }
-
-        return position;
-    }
-
-    private void moveCurrentPosition() {
-        this.position += 1;
+    public void move(MoveStrategy moveStrategy) {
+        this.position += moveStrategy.getDistance();
     }
 }

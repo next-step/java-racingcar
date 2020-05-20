@@ -6,8 +6,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
-import step3.controller.RacingGameController;
+import step3.domain.GameRandomRule;
+import step3.domain.GameRule;
 
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,7 +19,8 @@ class RacingGameControllerTest {
     @DisplayName("진행 할 라운드가 없으면 hasNextRound()는 false를 반환한다")
     @Test
     void finishedGameRoundTest() {
-        RacingGameController racingGameController = RacingGameController.newInstance(new String[]{"TEST1"}, 1);
+        RacingGameController racingGameController =
+                RacingGameController.newInstance(new GameRandomRule(), new String[]{"TEST1"}, 1);
         racingGameController.nextRound();
 
         assertThat(racingGameController.hasNextRound()).isFalse();
@@ -27,7 +30,8 @@ class RacingGameControllerTest {
     @ParameterizedTest
     @CsvSource(value = {"2", "3", "4"})
     void progressGameRoundTest(int gameRound) {
-        RacingGameController racingGameController = RacingGameController.newInstance(new String[]{"TEST1"}, gameRound);
+        RacingGameController racingGameController =
+                RacingGameController.newInstance(new GameRandomRule(), new String[]{"TEST1"}, gameRound);
         racingGameController.nextRound();
 
         assertThat(racingGameController.hasNextRound()).isTrue();
@@ -37,7 +41,8 @@ class RacingGameControllerTest {
     @ParameterizedTest
     @MethodSource("provideSourceForRacingCarsSize")
     void racingCarsSizeTest(String[] carNames) {
-        RacingGameController racingGameController = RacingGameController.newInstance(carNames, 1);
+        RacingGameController racingGameController =
+                RacingGameController.newInstance(new GameRandomRule(), carNames, 1);
         racingGameController.nextRound();
 
         assertThat(racingGameController.getRacingCars().getAll()).hasSize(carNames.length);
@@ -55,9 +60,56 @@ class RacingGameControllerTest {
     @MethodSource("provideSourceForRacingCarsSize")
     @ParameterizedTest
     void finishedGameWinnerTest(String[] carNames) {
-        RacingGameController racingGameController = RacingGameController.newInstance(carNames, 1);
+        RacingGameController racingGameController =
+                RacingGameController.newInstance(new GameRandomRule(), carNames, 1);
         racingGameController.nextRound();
 
         assertThat(racingGameController.getRacingCars().getWinners().size()).isGreaterThanOrEqualTo(1);
+    }
+
+    @DisplayName("isMovable()이 true를 반환하면 자동차 position이 1씩 증가한다")
+    @MethodSource("provideSourceForRacingCarsSize")
+    @ParameterizedTest
+    void immovableGameTest(String[] carNames) {
+        RacingGameController racingGameController =
+                RacingGameController.newInstance(new ForwardGameRule(), carNames, 10);
+
+        IntStream.range(0, 10).forEach(i -> {
+            racingGameController.nextRound();
+            racingGameController.getRacingCars().getAll().forEach(racingCar -> {
+                assertThat(racingCar.getPosition()).isEqualTo(i + 1);
+            });
+        });
+    }
+
+    @DisplayName("isMovable()이 false를 반환하면 자동차 position이 1씩 증가한다")
+    @MethodSource("provideSourceForRacingCarsSize")
+    @ParameterizedTest
+    void movableGameTest(String[] carNames) {
+        RacingGameController racingGameController =
+                RacingGameController.newInstance(new StopGameRule(), carNames, 10);
+
+        IntStream.range(0, 10).forEach(i -> {
+            racingGameController.nextRound();
+            racingGameController.getRacingCars().getAll().forEach(racingCar -> {
+                assertThat(racingCar.getPosition()).isEqualTo(0);
+            });
+        });
+    }
+
+    public static class ForwardGameRule implements GameRule {
+
+        @Override
+        public boolean isMovable() {
+            return true;
+        }
+    }
+
+    public static class StopGameRule implements GameRule {
+
+        @Override
+        public boolean isMovable() {
+            return false;
+        }
     }
 }
