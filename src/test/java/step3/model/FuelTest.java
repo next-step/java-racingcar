@@ -20,4 +20,6 @@ class FuelTest {
         // Then
         assertThat(isOverFour);
     }
+
+    // TODO : Random 테스트
 }
