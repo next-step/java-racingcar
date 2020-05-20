@@ -1,27 +1,33 @@
 package racingGame.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RacingGameCenter {
-	private int countOfCar;
 	private int countOfTime;
-	private String[][] scoreBoard;
+	private List<RacingCar> racingCars;
+	private ScoreBoard scoreBoard;
 	
 	public RacingGameCenter(int countOfCar, int countOfTime) {
 		this.countOfTime = countOfTime;
-		this.countOfCar = countOfCar;
+		racingCars = new ArrayList<RacingCar>();
+		
+		for(int i = 0 ; i < countOfCar ; i++) {
+			racingCars.add(new RacingCar(countOfTime));
+		}
+		scoreBoard = new ScoreBoard(countOfCar, countOfTime);
 	}
 
 	public String[][] gameStart() {
-		scoreBoard = new String[countOfTime][countOfCar];
-		for(int i=0;i<countOfTime;i++) {
+		for(int i = 0 ; i < countOfTime ; i++) {
 			gameNRound(i);
 		}
-		return scoreBoard;
+		return scoreBoard.registScore(racingCars);
 	}
 
 	private void gameNRound(int round) {
-		RacingCar racingCar = new RacingCar();
-		for(int j=0;j<countOfCar;j++) {
-			scoreBoard[round][j] = racingCar.move();
+		for(int j = 0 ; j < racingCars.size() ; j++) {
+			racingCars.get(j).move(round);
 		}
 	}
 }

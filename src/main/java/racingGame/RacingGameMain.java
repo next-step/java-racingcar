@@ -1,7 +1,9 @@
 package racingGame;
 
+import java.util.List;
 import java.util.Scanner;
 
+import racingGame.domain.RacingCar;
 import racingGame.domain.RacingGameCenter;
 import racingGame.view.InputView;
 import racingGame.view.OutputView;

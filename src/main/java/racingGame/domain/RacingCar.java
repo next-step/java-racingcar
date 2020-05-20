@@ -4,12 +4,22 @@ public class RacingCar {
 
 	private String MOVE = "-";
 	private String STOP = "";
+	private String[] positions;
+	
+	public RacingCar(int countOfTime) {
+		positions = new String[countOfTime];
+	}
 
-	public String move() {
+	public void move(int round) {
 		DriveOnRacingCar movable = new RandomDriveOnRacingCar();
 		if(movable.checkDriveOnRacingCar()) {
-			return MOVE;
+			positions[round] = MOVE;
+			return;
 		}
-		return STOP;
+		positions[round] = STOP;
+	}
+	
+	public String[] getRoundPositions() {
+		return positions;
 	}
 }
