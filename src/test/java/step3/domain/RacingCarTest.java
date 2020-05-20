@@ -1,4 +1,4 @@
-package step3;
+package step3.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

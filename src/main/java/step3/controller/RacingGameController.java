@@ -8,7 +8,6 @@ import step3.exception.RoundNotFoundException;
 import java.util.Arrays;
 import java.util.List;
 
-import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
 
 public class RacingGameController {
@@ -43,7 +42,6 @@ public class RacingGameController {
     }
 
     public RacingCars getRacingCars() {
-        return this.racingCars.stream()
-                .collect(collectingAndThen(toList(), RacingCars::new));
+        return new RacingCars(this.racingCars);
     }
 }
