@@ -27,19 +27,4 @@ class RacingCarTest {
         //Then
         assertThat(racingCar.getPosition()).isEqualTo(expected);
     }
-
-    @Test
-    void compareTo() {
-        // Given
-        RacingCar racingCar = new RacingCar("lion");
-        racingCar.move(true);
-
-        RacingCar compareRacingCar = new RacingCar("cat");
-
-        // When
-        int result = racingCar.compareTo(compareRacingCar);
-
-        // Then
-        assertThat(result).isEqualTo(-1);
-    }
 }
