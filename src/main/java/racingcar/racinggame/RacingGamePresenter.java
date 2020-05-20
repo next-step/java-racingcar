@@ -25,8 +25,7 @@ public class RacingGamePresenter implements RacingGameContract.Presenter {
 		while (!racingGame.isEnd()) {
 			racingGame.play();
 			view.print(MessageType.INFO.message(racingGame.getPlayCount()+PLAY_START_MSG));
-			racingGame.getCars().forEach((car) ->
-					view.print(MessageType.GAME.message(racingGame.getCarTraceSymbolByCar(car)))
+			racingGame.getCars().forEach((car) -> view.printCarPositionBySymbol(car.getPosition())
 			);
 			view.print(MessageType.INFO.message(racingGame.getPlayCount() + PLAY_END_MSG));
 			view.print(MessageType.EMPTY.message(""));
