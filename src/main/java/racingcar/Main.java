@@ -9,7 +9,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        String name = "벤츠, 아우디, 제네시스";
+        String name = InputView.inputCarCountJoinRace();
         int raceTime = InputView.inputRaceTime();
 
         List<Car> carList = RacingRegistry.getCarList(name);
