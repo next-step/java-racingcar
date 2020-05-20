@@ -31,4 +31,11 @@ public class CarTest {
         car.move(Car.DecideMode.FALSE_RETURN_MODE);
         assertThat(car.getDistance()).isEqualTo(0);
     }
+
+    @Test
+    void getNameTest() {
+        String name = "java";
+        Car car = new Car(name);
+        assertThat(car.getName()).isEqualTo(name);
+    }
 }

@@ -1,5 +1,6 @@
 package racing;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -41,5 +42,12 @@ public class RacingGameTest {
                 arguments(1,20),
                 arguments(9,3),
                 arguments(10,22));
+    }
+
+    @Test
+    void racingGameWithNameTest() {
+        RacingGame racingGame = new RacingGame("dayun,kk", 3);
+        racingGame.racingStart();
+        assertThat(racingGame.getCarPositions()).doesNotContain(4);
     }
 }
