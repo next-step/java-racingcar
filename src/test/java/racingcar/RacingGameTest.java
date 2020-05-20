@@ -21,16 +21,6 @@ class RacingGameTest {
                 .isThrownBy(() -> new RacingGame(time, cars));
     }
 
-    @DisplayName("이동 횟수가 1 미만이면 IllegalArgumentException")
-    @ParameterizedTest
-    @CsvSource({"0, 5", "0, 10", "0, 100"})
-    void readyGame_timeLessThan0_Then_IllegalArgumentException(int time, int carCount) {
-        List<Car> cars = TestCarFactory.createList(carCount);
-
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> new RacingGame(time, cars));
-    }
-
     @DisplayName("게임이 실행되면 설정한 실행 횟수만큼의 결과 목록을 리턴한다")
     @Test
     void run() {

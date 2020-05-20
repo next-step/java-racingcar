@@ -9,7 +9,7 @@ public class RacingGame {
     private CarMover mover;
 
     public RacingGame(int time, List<Car> cars) {
-        validate(time, cars.size());
+        validate(cars.size());
 
         this.time = time;
         this.cars = new Cars(cars);
@@ -29,11 +29,7 @@ public class RacingGame {
         return results;
     }
 
-    private void validate(int time, int carSize) {
-        if (time < 1) {
-            throw new IllegalArgumentException(String.format("이동 횟수는 1 이상이어야 합니다. : %d", time));
-        }
-
+    private void validate(int carSize) {
         if (carSize < 1) {
             throw new IllegalArgumentException(String.format("자동차 수는 1 이상이어야 합니다. : %d", carSize));
         }

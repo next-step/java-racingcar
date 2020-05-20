@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingResult {
@@ -20,6 +21,10 @@ public class RacingResult {
     }
 
     public List<String> getWinners() {
+        if (size() < 1) {
+            return Collections.emptyList();
+        }
+
         Cars finalCars = results.get(results.size() - 1);
         return finalCars.getLeaders();
     }
