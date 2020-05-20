@@ -22,7 +22,7 @@ public class Cars {
     }
 
     public List<String> getLeaders() {
-        Integer maxPosition = getMaxPosition();
+        int maxPosition = getMaxPosition();
 
         return cars.stream()
                 .filter(p -> p.getPosition() == maxPosition)
@@ -30,7 +30,7 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    private Integer getMaxPosition() {
+    private int getMaxPosition() {
         return cars.stream()
                 .sorted()
                 .findFirst()
