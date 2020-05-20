@@ -1,7 +1,4 @@
-package com.racingcar.model;
-
-import com.racingcar.service.RacingCarMoveStrategy;
-import com.racingcar.service.RacingCarRule;
+package com.racingcar.domain;
 
 public class RacingCar {
 
@@ -20,8 +17,8 @@ public class RacingCar {
         this.racingCarMoveStrategy = new RacingCarRule();
     }
 
-    public void setRacingStatus(Integer racingStatus) {
-        this.racingStatus = racingStatus;
+    public void setRacingCarMoveStrategy(RacingCarMoveStrategy racingCarMoveStrategy) {
+        this.racingCarMoveStrategy = racingCarMoveStrategy;
     }
 
     public Integer getRacingStatus() {

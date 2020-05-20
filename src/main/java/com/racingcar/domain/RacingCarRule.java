@@ -1,12 +1,12 @@
-package com.racingcar.service;
+package com.racingcar.domain;
 
 import java.util.Random;
 
 public class RacingCarRule implements RacingCarMoveStrategy {
 
-    private static Integer RACING_CAR_MOVE_CONDITION_VALUE = 4;
-    private static Integer RACING_CAR_STATUS_ADDING_VALUE = 1;
-    private static Integer RANDOM_DICE_VALUE = 10;
+    private static final Integer RACING_CAR_MOVE_CONDITION_VALUE = 4;
+    private static final Integer RACING_CAR_STATUS_ADDING_VALUE = 1;
+    private static final Integer RANDOM_DICE_VALUE = 10;
 
     @Override
     public Boolean isRacingCarMove() {

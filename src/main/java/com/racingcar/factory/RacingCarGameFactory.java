@@ -1,6 +1,6 @@
-package com.racingcar.service;
+package com.racingcar.factory;
 
-import com.racingcar.model.RacingCarGame;
+import com.racingcar.domain.RacingCarGame;
 
 import java.util.List;
 
