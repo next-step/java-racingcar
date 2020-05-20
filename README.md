@@ -16,3 +16,4 @@
     - if 조건절에서 값을 return하는 방식으로 구현하면 else를 사용하지 않아도 된다.
     - else를 쓰지 말라고 하니 switch/case로 구현하는 경우가 있는데 switch/case도 허용하지 않는다.
 
+
