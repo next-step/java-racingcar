@@ -9,11 +9,18 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 class RacingCarTest {
 
     @Test
-    @DisplayName("움직였을 때 +1값을 출력한다.")
-    void move() {
-        RacingCar car = new RacingCar();
+    @DisplayName("power가 4이상 일 때 +1 값을 출력한다.")
+    public void moveOverPower() {
+        RacingCar car = new RacingCar("pobi");
+        car.move(4);
+        assertThat(car.getCurrentPosition()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("power가 4잇아이 아닐 때 +0 값을 출력한다.")
+    public void moveNotOverPower() {
+        RacingCar car = new RacingCar("pobi");
         car.move(3);
-        int preValue = car.getCurrentPosition();
-        assertThat(preValue).isEqualTo(1);
+        assertThat(car.getCurrentPosition()).isEqualTo(0);
     }
 }
