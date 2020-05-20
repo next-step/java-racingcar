@@ -30,6 +30,7 @@ public class RacingGame {
         for (int i = 0; i < carPositions.size(); i++) {
             carPositions.get(i).move(RandomNumber.getRandomNumber());
 
+            ResultView.resultGame(carPositions.get(i).position);
         }
     }
 }

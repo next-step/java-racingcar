@@ -8,4 +8,10 @@ public class ResultView {
         System.out.println();
     }
 
+    public static void resultGame(int carPosition) {
+        for (int i = 0; i < carPosition; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
 }
