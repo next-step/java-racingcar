@@ -1,6 +1,7 @@
 package racing;
 
 import racing.view.InputView;
+import racing.view.ResultView;
 
 import java.util.ArrayList;
 
@@ -13,10 +14,11 @@ public class RacingGame {
         car = InputView.inputCar();
         time = InputView.inputTime();
 
-        for(int i=0; i<car; i++){
-            carPositions.add(new Car(i,1));
+        for (int i = 0; i < car; i++) {
+            carPositions.add(new Car(i, 1));
         }
+
+        ResultView.startPosition(carPositions.size());
+
     }
-
-
 }
