@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
+    private static final int MOVE_THRESHOLD = 4;
+
     private final InputView inputView;
     private final ResultView resultView;
 
@@ -45,6 +47,12 @@ public class RacingGame {
 
     private void move() {
         for(Car car : carList) {
+            tryToMove(car);
+        }
+    }
+
+    private void tryToMove(Car car) {
+        if(RacingUtils.getRandomNumber() >= MOVE_THRESHOLD) {
             car.move();
         }
     }
