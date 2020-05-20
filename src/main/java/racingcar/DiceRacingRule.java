@@ -17,10 +17,9 @@ public class DiceRacingRule implements RacingRule {
 
     @Override
     public int getMoveForward() {
-        int forwardCount = MOVE_FORWARD_COUNT;
         if(dice.generate() < STOP_MOVE_BOUNDS) {
-            forwardCount = STOP_MOVE;
+            return STOP_MOVE;
         }
-        return forwardCount;
+        return MOVE_FORWARD_COUNT;
     }
 }
