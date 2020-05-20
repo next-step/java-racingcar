@@ -2,9 +2,12 @@ package study.racing;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import study.racing.model.Car;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -24,21 +27,30 @@ public class RacingGameTest {
     @Test
     void move() {
         for(Car car : carList) {
-            car.move();
-            assertThat(car.getPosition()).isBetween(0, 1);
+            for(int i=0; i<5; i++) {
+                car.move();
+            }
+
+            assertThat(car.getPosition()).isEqualTo(5);
         }
     }
 
+
     @Test
     void sort() {
-        for(int i=0; i<10; i++) {
-            for(Car car : carList) {
-                car.move();
+        List<Integer> moves = Arrays.asList(1, 5, 4);
+
+        for(int i=0; i<carList.size(); i++) {
+            for(int j=0; j<moves.get(i); j++) {
+                carList.get(i).move();
             }
         }
 
         Collections.sort(carList);
+        Collections.sort(moves);
 
-        assertThat(carList.get(0).getPosition()).isLessThanOrEqualTo(carList.get(carList.size()-1).getPosition());
+        for(int i=0; i<carList.size(); i++) {
+            assertThat(carList.get(i).getPosition()).isEqualTo(moves.get(i));
+        }
     }
 }
