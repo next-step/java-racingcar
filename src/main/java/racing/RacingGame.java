@@ -11,11 +11,6 @@ public class RacingGame {
         initGame(carCount, round);
     }
 
-    public void initGame(int carCount, int round) {
-        this.round = round;
-        settingCar(carCount);
-    }
-
     public void playGame() {
         ResultView resultView = new ResultView("실행 결과");
 
@@ -23,6 +18,11 @@ public class RacingGame {
             playRound();
             resultView.print(carList);
         }
+    }
+
+    private void initGame(int carCount, int round) {
+        this.round = round;
+        settingCar(carCount);
     }
 
     private void settingCar(int count) {
