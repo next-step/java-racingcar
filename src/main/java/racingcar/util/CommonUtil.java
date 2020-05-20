@@ -13,4 +13,10 @@ public class CommonUtil {
         }
     }
 
+    public static void checkZeroOrMore(int number) {
+        if(number < 0) {
+            throw new IllegalArgumentException("The number is less than zero. Please enter a number greater than 0.");
+        }
+    }
+
 }

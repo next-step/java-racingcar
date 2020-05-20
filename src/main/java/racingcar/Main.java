@@ -16,6 +16,7 @@ public class Main {
         Racing race = Racing.applyRacing(carList, raceTime);
 
         OutputView.printTitle();
-        race.start(OutputView::printRaceResult);
+        race.start(OutputView::printRaceResultByTime);
+        OutputView.printWinner(race.getWinnerAfterFinalRacing());
     }
 }

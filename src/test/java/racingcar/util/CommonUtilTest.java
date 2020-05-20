@@ -1,6 +1,7 @@
 package racingcar.util;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
@@ -27,6 +28,15 @@ class CommonUtilTest {
             CommonUtil.checkNullEmpty(source, message);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(message);
+    }
+
+    @DisplayName("0 미만의 숫자가 입력될 경우 IllegalArgumentException 이 나는 지 확인")
+    @Test
+    public void checkZeroOrMoreNegativeTest() {
+        final int number = -1;
+        assertThatThrownBy(() -> {
+            CommonUtil.checkZeroOrMore(number);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
 }

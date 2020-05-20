@@ -3,6 +3,7 @@ package racingcar.race;
 import racingcar.DiceRacingRule;
 import racingcar.RacingDice;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,8 +44,20 @@ public class Racing {
         }
     }
 
-    private List<Integer> getRaceResult() {
-        return carList.stream().map(Car::getPosition).collect(Collectors.toList());
+    private List<RacingScorecard> getRaceResult() {
+        return carList.stream().map(car ->
+                new RacingScorecard(car.getName(), car.getPosition())).collect(Collectors.toList());
+    }
+
+    public List<RacingScorecard> getWinnerAfterFinalRacing() {
+        final int maxPosition = carList.stream()
+                .max(Comparator.comparingInt(Car::getPosition))
+                .map(Car::getPosition).get();
+        List<RacingScorecard> winners = carList.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(car -> new RacingScorecard(car.getName(), car.getPosition()))
+                .collect(Collectors.toList());
+        return winners;
     }
 
     private void race() {
