@@ -23,7 +23,7 @@ public class Champion {
     public List<String> getChampitions() {
         Round lastRound = rounds.get(rounds.size()-1);
         int lastMaxPosition = maxCarPostion(lastRound.getCars());
-        
+
         return lastRound.getCars()
                 .stream()
                 .filter(car -> car.isMyCurrentPosition(lastMaxPosition))
