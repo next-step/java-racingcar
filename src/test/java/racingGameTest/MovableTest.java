@@ -7,20 +7,19 @@ import org.junit.jupiter.api.Test;
 
 import racingGame.domain.FixedMovable;
 import racingGame.domain.Movable;
-import stringCalculator.domain.CalculateInfo;
 
 class MovableTest {
 	Movable movable;
 	
 	@Test
-	@DisplayName("ÀÌµ¿ °¡´É ¿©ºÎ Å×½ºÆ®(false)")
+	@DisplayName("ì´ë™ ê°€ëŠ¥ ì—¬ë¶€ í…ŒìŠ¤íŠ¸(false)")
 	public void immovableTest() {
 		movable = new FixedMovable(3);
 		assertThat(movable.checkMovable()).isEqualTo(false);
 	}
 
 	@Test
-	@DisplayName("ÀÌµ¿ °¡´É ¿©ºÎ Å×½ºÆ®(false)")
+	@DisplayName("ì´ë™ ê°€ëŠ¥ ì—¬ë¶€ í…ŒìŠ¤íŠ¸(true)")
 	public void movableTest() {
 		movable = new FixedMovable(4);
 		assertThat(movable.checkMovable()).isEqualTo(true);
