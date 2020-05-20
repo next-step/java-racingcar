@@ -6,6 +6,10 @@ import java.util.stream.Collectors;
 
 public class CarFactory {
 
+    private CarFactory() {
+
+    }
+
     public static List<Car> create(String[] names) {
         return Arrays.stream(names)
                 .map(Car::new)
