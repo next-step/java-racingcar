@@ -18,13 +18,12 @@ public class ResultView {
         System.out.println(stringBuilder.toString());
     }
 
-    public void printWinnerNames(List<String> winnerNames) {
+    public void printWinnerNames(List<RacingCar> winners) {
         stringBuilder = new StringBuilder();
 
-        for (String name : winnerNames) {
-            stringBuilder.append(name).append(", ");
-        }
-        stringBuilder.delete(stringBuilder.length()-2, stringBuilder.length());
+        winners.stream().map(RacingCar::getName).forEach(value -> stringBuilder.append(value).append(", "));
+
+        stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
         stringBuilder.append("가 최종 우승했습니다.");
         System.out.println(stringBuilder.toString());
     }

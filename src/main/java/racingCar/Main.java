@@ -1,7 +1,7 @@
 package racingCar;
 
 import racingCar.application.RacingGame;
-import racingCar.domain.RacingGameWinners;
+import racingCar.domain.RacingGameResult;
 import racingCar.domain.RandomMove;
 import racingCar.ui.InputView;
 import racingCar.ui.ResultView;
@@ -24,8 +24,8 @@ public class Main {
         }
 
         // Winner
-        RacingGameWinners racingGameWinners = new RacingGameWinners(racingGame.getRacingCarList());
-        resultView.printWinnerNames(racingGameWinners.getWinnerNames());
+        RacingGameResult racingGameResult = new RacingGameResult(racingGame.getRacingCarList());
+        resultView.printWinnerNames(racingGameResult.findWinners());
     }
 }
 

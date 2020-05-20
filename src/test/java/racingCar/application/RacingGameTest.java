@@ -25,7 +25,7 @@ class RacingGameTest {
                                                 .collect(Collectors.toList());
 
         assertThat(racingCarNames).hasSize(names.length)
-                                .containsAll(Arrays.asList(names));
+                                .hasSameElementsAs(Arrays.asList(names));
     }
 
     @ParameterizedTest

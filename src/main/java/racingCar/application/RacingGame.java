@@ -8,7 +8,7 @@ import java.util.*;
 public class RacingGame {
     private final String[] carNames;
     private final int time;
-    private final List<RacingCar> racingCarList = new ArrayList<>();
+    private List<RacingCar> racingCarList;
 
     public RacingGame(String[] carNames, int time) {
         validateRange(carNames.length, time);
@@ -24,6 +24,7 @@ public class RacingGame {
     }
 
     private void initRacingCars() {
+        racingCarList = new ArrayList<>();
         Arrays.stream(carNames).forEach(name -> racingCarList.add(new RacingCar(name)));
     }
 
