@@ -9,7 +9,7 @@ public class RacingDice implements Dice {
 
     int bound;
 
-    private RacingDice(int bound) {
+    public RacingDice(int bound) {
         this.bound = bound;
     }
 
