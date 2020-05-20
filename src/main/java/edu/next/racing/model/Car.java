@@ -7,24 +7,26 @@
 
 package edu.next.racing.model;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 /**
- * 자동차 객체
- *
+ * 자동차 추 객체
+ *상
  * @version 1.0.0
  * @author GwangJunChoi
  */
-public class Car {
+public abstract class Car {
 
     /** 자동차 현재 위치 */
     private int position = 1;
-
-    /**
-     * position setter
-     * @param position 위치 설정
-     */
-    public void setPosition(int position) {
-        this.position = position;
-    }
+    /** random int range */
+    private static final int MAX_RANDOM_COUNT = 10;
+    /** MOVEABLE NUMBER */
+    private static final int MOVEABLE_NUMBER = 4;
+    private List<Integer> record = new ArrayList<Integer>();
+    private Random rand = new Random();
 
     /**
      * @return position 위치 리턴
@@ -33,8 +35,17 @@ public class Car {
         return position;
     }
 
-    public void move(int distance) {
-        this.position += distance;
+    public int getRecord(int i) {
+        return record.get(i);
+    }
+
+    public void move() {
+        this.position += (isMoveable()) ? 1 : 0;
+        this.record.add(this.position);
+    }
+
+    protected boolean isMoveable() {
+        return (MOVEABLE_NUMBER <= rand.nextInt(MAX_RANDOM_COUNT));
     }
 
 }

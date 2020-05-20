@@ -14,16 +14,14 @@ import java.util.List;
 
 public class RacingTest {
 
-    private RacingGame racingGame = new RacingGame();
-    String[] cars;
+    private RacingGame racingGame = new RacingGame(3, 2);
+    private List<Car> cars;
 
-    private Car car = new Car();
-    private int carPostion = 0;
+    private Car car = new TestCar();
+    private int carPostion = 1;
 
     @BeforeEach
     void setRacing() {
-        racingGame.setCars(3);
-        racingGame.setTime(3);
         cars = racingGame.execute();
     }
 
@@ -35,10 +33,11 @@ public class RacingTest {
 
     @DisplayName("자동차 위치 포지션 테스트")
     @ParameterizedTest
-    @ValueSource(ints = { 1,0,1,0,1 })
-    void carPositionTest(int i) {
+    @ValueSource(ints = { 1,1,1,1,1 })
+    void carOnlyMovePositionTest(int i) {
         carPostion += i;
-        car.move(i);
+        car.move();
         assertThat(car.getPosition()).isEqualTo(carPostion);
     }
+
 }

@@ -21,11 +21,41 @@ import java.util.List;
  */
 public class ResultView {
 
-    public void displayRacingResult(String[] resultString) {
+    private final static String LINE = "-";
+    private List<Car> resultCars;
+    private int resultTime;
+
+    public ResultView(List<Car> ResultCars, int time) {
+        this.resultCars = ResultCars;
+        this.resultTime = time;
+    }
+
+    public void displayRacingResult() {
         System.out.println("결과 출력");
-        for (String result : resultString){
-            System.out.println(result);
+        drawStartLine(this.resultCars.size());
+        for (int i = 0; i < this.resultTime; i++) {
+            System.out.println();
+            displayCarLine(i);
         }
+    }
+
+    private void drawStartLine(int carsCount) {
+        for (int i = 0; i < carsCount; i++) {
+            drawLine(1);
+        }
+    }
+
+    private void displayCarLine(int recordNumber) {
+        for (Car car : this.resultCars){
+            drawLine(car.getRecord(recordNumber));
+        }
+    }
+
+    private void drawLine(int lineNumber) {
+        for (int i = 0; i < lineNumber; i++) {
+            System.out.print(LINE);
+        }
+        System.out.println();
     }
 
 }
