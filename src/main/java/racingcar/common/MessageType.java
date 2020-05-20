@@ -4,8 +4,7 @@ import java.util.function.Function;
 
 public enum MessageType {
     INFO(msg -> "[ " + msg + " ]") ,
-    EMPTY(msg -> "") ,
-    GAME (msg -> "게임 :: " +msg );
+    EMPTY(msg -> "");
 
     Function<String , String> expression;
 

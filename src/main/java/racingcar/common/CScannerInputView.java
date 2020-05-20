@@ -24,10 +24,6 @@ public class CScannerInputView {
 		this.label = label;
 	}
 
-	public int getValue() {
-		return this.value;
-	}
-	
 	public void layout() {
 		System.out.println(label);
 		value = scan.nextInt();
