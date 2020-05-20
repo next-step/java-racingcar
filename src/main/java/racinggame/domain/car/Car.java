@@ -17,4 +17,8 @@ public class Car {
         }
         return CarSnapshot.of(name, location);
     }
+
+    public String getName() {
+        return name;
+    }
 }
