@@ -1,3 +1,5 @@
+package step1;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,7 +12,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DisplayName("Set Collection에 대한 학습 테스트")
+@DisplayName("Step1 - Set Collection에 대한 학습 테스트")
 public class SetTest {
 
     private Set<Integer> numbers;
