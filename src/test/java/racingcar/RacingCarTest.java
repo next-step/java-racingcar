@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,7 @@ import racingcar.controller.GameController;
 import racingcar.domain.Car;
 import racingcar.domain.Game;
 import racingcar.util.RandomUtil;
+import racingcar.view.ResultView;
 
 @DisplayName("자동차 경주의 핵심 로직을 테스트한다.")
 public class RacingCarTest {
@@ -51,12 +53,12 @@ public class RacingCarTest {
     Game game = Game.create(carList);
 
     //when
-    assertThat(game.doRace(3).get(0).getPosition())
+    assertThat(game.doRace().get(0).getPosition())
         //then
         .isEqualTo(previousPositionOfCar1);
 
     //when
-    assertThat(game.doRace(4).get(0).getPosition())
+    assertThat(game.doRace().get(0).getPosition())
         //then
         .isGreaterThan(previousPositionOfCar1);
   }
@@ -70,6 +72,25 @@ public class RacingCarTest {
   @Test
   void 입력한_횟수만큼_자동차가_경주된다() {
     int attemptNum = 3;
-    assertThat(gameController.proceedGame()).isEqualTo(attemptNum);
+    assertThat(gameController.proceedGame().getRaceNum()).isEqualTo(attemptNum);
+  }
+
+  @Test
+  void 입력된_횟수만큼_자동차가_표시된다() {
+    Game game = gameController.proceedGame();
+    ResultView resultView = gameController.getResults();
+    assertThat(game.getCars()
+        .stream()
+        .map(Car::getPosition))
+        .isEqualTo(resultView.getResultListSize());
+  }
+
+  @Test
+  void 자동차마다_생성되는_레이싱_수가_다르다() {
+    Game game = gameController.proceedGame();
+    IntStream.range(0, game.getCars().size() - 1).forEach(i -> {
+      assertThat(game.getCars().get(i).getPosition())
+          .isNotEqualTo(game.getCars().get(i + 1).getPosition());
+    });
   }
 }
