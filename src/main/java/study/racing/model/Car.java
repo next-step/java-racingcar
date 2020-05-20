@@ -7,7 +7,7 @@ public class Car implements Comparable<Car> {
     private static final int MAX_RANDOM_NUM = 10;
 
     private String name;
-    private int count = 0;
+    private int position = 0;
 
     public Car(String name) {
         this.name = name;
@@ -17,13 +17,13 @@ public class Car implements Comparable<Car> {
         return name;
     }
 
-    public int getCount() {
-        return count;
+    public int getPosition() {
+        return position;
     }
 
     public void move() {
         if(canMove()) {
-            count++;
+            position++;
         }
     }
 
@@ -37,11 +37,6 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car car) {
-        return this.count - car.getCount();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        return o instanceof Car && this.count == ((Car) o).getCount();
+        return this.position - car.getPosition();
     }
 }

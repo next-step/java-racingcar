@@ -3,7 +3,6 @@ package study.racing;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import study.racing.model.Car;
-import study.racing.ui.ResultView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,7 +25,7 @@ public class RacingGameTest {
     void move() {
         for(Car car : carList) {
             car.move();
-            assertThat(car.getCount()).isBetween(0, 1);
+            assertThat(car.getPosition()).isBetween(0, 1);
         }
     }
 
@@ -40,6 +39,6 @@ public class RacingGameTest {
 
         Collections.sort(carList);
 
-        assertThat(carList.get(0).getCount()).isLessThanOrEqualTo(carList.get(carList.size()-1).getCount());
+        assertThat(carList.get(0).getPosition()).isLessThanOrEqualTo(carList.get(carList.size()-1).getPosition());
     }
 }

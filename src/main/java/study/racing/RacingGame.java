@@ -3,6 +3,7 @@ package study.racing;
 import study.racing.model.Car;
 import study.racing.ui.InputView;
 import study.racing.ui.ResultView;
+import study.racing.utils.RacingUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,7 @@ public class RacingGame {
             resultView.printCarPositions(carList);
         }
 
-        resultView.printWinners(carList);
+        resultView.printWinners(RacingUtils.getWinners(carList));
     }
 
     private void configureGameSettings() {
