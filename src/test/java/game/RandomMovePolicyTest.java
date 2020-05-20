@@ -21,7 +21,7 @@ class RandomMovePolicyTest {
         Random random = mock(Random.class);
         when(random.nextInt(anyInt())).thenReturn(randomNumber);
 
-        Car car = new Car(anyInt(), position, new RandomMovePolicy(random));
+        Car car = new Car(position, new RandomMovePolicy(random));
         car.move();
         assertThat(car.getPosition()).isEqualTo(expected);
     }

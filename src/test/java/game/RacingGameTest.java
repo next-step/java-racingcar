@@ -29,7 +29,7 @@ class RacingGameTest {
 
         racingGame.play();
 
-        verify(movePolicy, times(expected)).getPosition(anyInt());
+        verify(movePolicy, times(expected)).isMovable();
     }
 
     private static Stream<Arguments> source_verify_numberOfMove_shouldSucceed() {

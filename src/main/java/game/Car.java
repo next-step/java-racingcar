@@ -1,18 +1,20 @@
 package game;
 
 public class Car {
-    private final int id;
     private int position;
     private final MovePolicy movePolicy;
 
-    public Car(int id, int position, MovePolicy movePolicy) {
-        this.id = id;
+    private static final int MOVING_RANGE = 1;
+
+    public Car(int position, MovePolicy movePolicy) {
         this.position = position;
         this.movePolicy = movePolicy;
     }
 
     public void move() {
-        position = movePolicy.getPosition(position);
+        if (movePolicy.isMovable()) {
+            position += MOVING_RANGE;
+        }
     }
 
     public int getPosition() {

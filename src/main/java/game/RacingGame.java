@@ -22,7 +22,7 @@ public class RacingGame {
         int numberOfCar = racingGameInputView.getNumberOfCar();
         int time = racingGameInputView.getTime();
         List<Car> carList = new ArrayList<>();
-        IntStream.range(0, numberOfCar).forEach(i -> carList.add(new Car(i, 0, movePolicy)));
+        IntStream.range(0, numberOfCar).forEach(i -> carList.add(new Car(0, movePolicy)));
 
         for (int i = 0; i < time; i++) {
             racingGameResultView.printRound(i+1);
