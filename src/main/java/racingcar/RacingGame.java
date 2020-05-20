@@ -17,23 +17,27 @@ public class RacingGame {
         this.mover = new CarMover(new RandomMoveStrategy());
     }
 
-    private void validate(int time, int carCount) {
-        if (time < 1 || carCount < 1) {
-            throw new IllegalArgumentException(String.format("이동 횟수와 자동차 수는 1 이상이어야 합니다. : %d, %d", time, carCount));
-        }
-    }
-
-    public List<CarPositions> run() {
-        List<CarPositions> results = new ArrayList<>();
+    public List<Cars> run() {
+        List<Cars> results = new ArrayList<>();
 
         while (time > 0) {
             canMove();
-            CarPositions positions = mover.move(cars);
-            results.add(positions);
+            cars = mover.move(cars);
+            results.add(new Cars(cars));
             time--;
         }
 
         return results;
+    }
+
+    private void validate(int time, int carSize) {
+        if (time < 1) {
+            throw new IllegalArgumentException(String.format("이동 횟수는 1 이상이어야 합니다. : %d", time));
+        }
+
+        if (carSize < 1) {
+            throw new IllegalArgumentException(String.format("자동차 수는 1 이상이어야 합니다. : %d", carSize));
+        }
     }
 
     private void canMove() {

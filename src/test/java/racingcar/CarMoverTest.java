@@ -18,7 +18,7 @@ class CarMoverTest {
         List<Car> cars = TestCarFactory.createList(carCount);
         CarMover mover = new CarMover(new RandomMoveStrategy());
 
-        CarPositions positions = mover.move(cars);
+        List<Car> positions = mover.move(cars);
 
         assertThat(positions.size()).isEqualTo(carCount);
     }
@@ -29,10 +29,10 @@ class CarMoverTest {
         List<Car> cars = TestCarFactory.createList(5);
         CarMover mover = new CarMover(new RandomMoveStrategy());
 
-        CarPositions positions = mover.move(cars);
+        List<Car> positions = mover.move(cars);
 
-        for (int i = 0; i < positions.size(); i++) {
-            assertThat(positions.get(i).getPosition() >= 0).isTrue();
+        for (Car position : positions) {
+            assertThat(position.getPosition() >= 0).isTrue();
         }
     }
 }

@@ -11,20 +11,19 @@ public class CarMover {
         this.moveStrategy = moveStrategy;
     }
 
-    public CarPositions move(List<Car> cars) {
-        List<CarPosition> positions = cars.stream()
-                .map(c -> {
-                    move(c);
-                    return new CarPosition(c.getName(), c.getPosition());
-                })
+    public List<Car> move(List<Car> cars) {
+        cars = cars.stream()
+                .map(this::move)
                 .collect(Collectors.toList());
 
-        return new CarPositions(positions);
+        return cars;
     }
 
-    private void move(Car car) {
+    private Car move(Car car) {
         if (moveStrategy.canMove()) {
-            car.move();
+            return car.move();
         }
+
+        return car;
     }
 }

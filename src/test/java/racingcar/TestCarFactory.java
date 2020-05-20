@@ -4,10 +4,6 @@ import java.util.List;
 
 public class TestCarFactory {
 
-    public static Car createOne() {
-        return CarFactory.create(generateName(1));
-    }
-
     public static List<Car> createList(int count) {
         String[] names = new String[count];
 
