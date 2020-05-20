@@ -29,9 +29,9 @@ public class StringCalculator {
         for (String contents : calculatorArrayList) {
             if (isNumber(contents)) {
                 tempInteger = Integer.parseInt(contents);
-                if(operator.equals("")){
+                if (operator.equals("")) {
                     result = tempInteger;
-                }else {
+                } else {
                     Operation operation = Operation.findOperation(operator);
                     switch (operation) {
                         case PULS:
@@ -144,8 +144,8 @@ public class StringCalculator {
     boolean isOperator(String str) {
         return str.matches("^[+-/*]$");
     }
-
-    public static StringCalculator create(){
+    
+    public static StringCalculator create() {
         return new StringCalculator();
     }
 }
