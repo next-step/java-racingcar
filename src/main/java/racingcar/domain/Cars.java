@@ -24,15 +24,14 @@ public class Cars {
     }
 
     public void carRacing(Strategy strategy) {
-        cars.forEach(car -> {
-            int randomNumber = strategy.getNumber();
-            car.move(randomNumber);
-        });
+        cars.forEach(car -> car.move(strategy));
     }
 
     public Cars getWinners() {
+        int largestCarsPosition = getLargestCarsPosition();
+
         List<Car> cars = this.cars.stream()
-                .filter(car -> car.getPosition() == getLargestCarsPosition())
+                .filter(car -> car.getPosition() == largestCarsPosition)
                 .collect(Collectors.toList());
 
         return new Cars(cars);
