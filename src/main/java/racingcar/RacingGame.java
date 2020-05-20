@@ -1,7 +1,9 @@
 package racingcar;
 
 import racingcar.controller.GameController;
-import view.InputView;
+import racingcar.domain.Game;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 public class RacingGame {
 
@@ -14,6 +16,8 @@ public class RacingGame {
     int attemptNum = InputView.getUserInput(InputView.attemptInputMessage);
 
     GameController gameController = GameController.create(carNum, attemptNum);
-    gameController.proceedGame();
+    Game playedGame = gameController.proceedGame();
+    ResultView resultView = ResultView.create(playedGame);
+    resultView.printView();
   }
 }
