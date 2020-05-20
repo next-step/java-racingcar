@@ -4,12 +4,8 @@ import java.util.Random;
 
 public class Car {
     private static final int GO_STRAIGHT_LIMIT = 4;
-    private static final int DEFAULT_POSITION = 0;
-    private Integer position;
-
-    public Car() {
-        position = DEFAULT_POSITION;
-    }
+    private static final int RANDOM_BOUND = 10;
+    private int position;
 
     public Integer getPosition() {
         return position;
@@ -24,6 +20,6 @@ public class Car {
     }
 
     protected int getRandomNumber() {
-        return new Random().nextInt(10);
+        return new Random().nextInt(RANDOM_BOUND);
     }
 }

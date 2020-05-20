@@ -27,12 +27,12 @@ public class RacingGame {
         ResultView.printHeader();
 
         for (int i = 0; i < tryCount; i++) {
-            carMove();
+            moveCar();
             ResultView.print(racingCars);
         }
     }
 
-    protected void carMove() {
+    protected void moveCar() {
         for (Car car : racingCars) {
             car.move();
         }
