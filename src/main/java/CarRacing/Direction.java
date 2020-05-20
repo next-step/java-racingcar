@@ -5,14 +5,14 @@ public enum Direction {
     FORWARD{
         @Override
         public Position exec(Position position) {
-            position.setLocation(position.getLocation()+ONE_STEP_VALUE);
+            position.move(ONE_STEP_VALUE);
             return  position;
         }
     },
     BACK{
         @Override
         public Position exec(Position position) {
-            position.setLocation(position.getLocation()-ONE_STEP_VALUE);
+            position.move(-ONE_STEP_VALUE);
             PositionValidator.validate(position);
             return position;
         }

@@ -15,8 +15,8 @@ public class Car {
             direction.exec(this.position);
     }
 
-    public void progress() {
-        if (this.moveCheck()) {
+    public void progress(RandomValue randomValue) {
+        if (this.moveCheck(randomValue)) {
             this.move(Direction.FORWARD);
         }
     }
@@ -29,7 +29,7 @@ public class Car {
         return this.getLocation() == location;
     }
 
-    private boolean moveCheck() {
-        return RandomValue.getRandomValue() >= MOVE_CHECK_VALUE;
+    private boolean moveCheck(RandomValue randomValue) {
+        return randomValue.getRandomValue() >= MOVE_CHECK_VALUE;
     }
 }

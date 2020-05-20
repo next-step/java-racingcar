@@ -17,7 +17,7 @@ public class CarRacingGame {
         gameInit();
         for(int i=0 ; i < carRacingOption.getGameCount() ; i++) {
             carList.stream().forEach( car -> {
-                car.progress();
+                car.progress(new RandomValue());
             });
             carRacingView.view(carList);
         }
