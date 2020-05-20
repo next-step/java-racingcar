@@ -19,7 +19,7 @@ public class RacingRegistry {
         String[] splitCars = nameString.split(SPLIT_REGEX);
 
         return Arrays.stream(splitCars)
-                .map(Car::new)
+                .map(name -> new Car(name.trim()))
                 .collect(Collectors.toList());
     }
 
