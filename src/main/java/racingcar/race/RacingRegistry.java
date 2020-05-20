@@ -2,9 +2,9 @@ package racingcar.race;
 
 import racingcar.util.CommonUtil;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingRegistry {
     private static final String SPLIT_REGEX = ",";
@@ -16,12 +16,11 @@ public class RacingRegistry {
     public static List<Car> getCarList(String nameString) {
         CommonUtil.checkNullEmpty(nameString);
 
-        List<Car> carListJoinRace = new ArrayList<>();
         String[] splitCars = nameString.split(SPLIT_REGEX);
 
-        Arrays.stream(splitCars).forEach(carName ->
-                carListJoinRace.add(new Car(carName.trim())));
-        return carListJoinRace;
+        return Arrays.stream(splitCars)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
 }
