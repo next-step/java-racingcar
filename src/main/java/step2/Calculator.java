@@ -6,21 +6,22 @@ import java.util.Queue;
 public class Calculator {
 
     private static final String DELIMETER = " ";
+    private static final int LENGHT_CHECK = 2;
 
-    public static boolean valCheck(String[] input) {
+    private static boolean CheckValudation(String[] input) {
 
         if (input == null || input.length == 0) {
             throw new IllegalArgumentException("계산식을 입력해주세요.");
         }
 
-        if (input.length % 2 == 0) {
+        if (input.length % LENGHT_CHECK == 0) {
             throw new IllegalArgumentException("계산식이 올바르지 않습니다.");
         }
 
         return true;
     }
 
-    public static double isNumeric(String s) {
+    private static double checkNumber(String s) {
         try {
             return Double.parseDouble(s);
         } catch(NumberFormatException e) {
@@ -31,12 +32,12 @@ public class Calculator {
     public static double calculator(String input) {
 
         String[] splitInput = input.split(DELIMETER);
-        valCheck(splitInput);
+        CheckValudation(splitInput);
 
-        double result = isNumeric(splitInput[0]);
+        double result = checkNumber(splitInput[0]);
         for(int i = 1; i < splitInput.length; i += 2) {
             Operator operator = Operator.getOperation(splitInput[i]);
-            result = operator.operate(result, isNumeric(splitInput[i+1]));
+            result = operator.operate(result, checkNumber(splitInput[i+1]));
         }
 
         return result;

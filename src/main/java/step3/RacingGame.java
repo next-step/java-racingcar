@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class RacingGame {
     private List<RacingCar> racingCarList = new ArrayList<>();
-    RacingRandom racingRandom = new RacingRandom();
+    private RacingRandom racingRandom = new RacingRandom();
 
     public List<RacingCar> getRacingCarList() {
         return racingCarList;

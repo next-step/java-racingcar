@@ -16,7 +16,7 @@ class RacingGameTest {
     void move() {
 
         List<RacingCar> racingCarList = new ArrayList<>();
-        RacingGame racingGameTest = new RacingGame(2, racingCarList);
+        RacingGame racingGameTest = new RacingGame(2);
 
         assertThat(racingCarList.size()).isEqualTo(2);
     }

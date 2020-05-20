@@ -12,7 +12,7 @@ class RacingCarTest {
     @DisplayName("움직였을 때 +1값을 출력한다.")
     void move() {
         RacingCar car = new RacingCar();
-        car.move(9);
+        car.move(3);
         int preValue = car.getCurrentPosition();
         assertThat(preValue).isEqualTo(1);
     }
