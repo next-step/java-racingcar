@@ -3,6 +3,7 @@ package racingcar.view;
 import racingcar.race.RacingScoreCard;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OutputView {
 
@@ -33,14 +34,10 @@ public class OutputView {
     }
 
     public static void printWinner(List<RacingScoreCard> winner) {
-        StringBuilder printString = new StringBuilder();
-        for (RacingScoreCard result : winner) {
-            printString.append(result.getName()).append(TEXT_SEPARATOR_BETWEEN_NAMES);
-        }
-
-        final int endIndex = printString.length();
-        printString.delete(endIndex - TEXT_SEPARATOR_BETWEEN_NAMES.length(), endIndex).append(TEXT_WINNER);
-        System.out.println(printString);
+        String winnerName = winner.stream()
+                .map(RacingScoreCard::getName)
+                .collect(Collectors.joining(TEXT_SEPARATOR_BETWEEN_NAMES));
+        System.out.println(winnerName + TEXT_WINNER);
     }
 
 }
