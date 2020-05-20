@@ -1,15 +1,20 @@
 package step3;
 
+import step2.StringUtil;
+
 import java.util.*;
 
 public class RacingGame {
     private int carCnt;
     private int time;
     private int[] carPositions;
+    private String[] carNames;
     private List<Car> cars = new ArrayList<>();
     private Map<Integer, int[]> record = new HashMap<>();
     private final static int CAR_CNT_MIN = 1;
     private final static int TIME_CNT_MIN = 1;
+    private int maxPosition = 0;
+    private Map<Integer, List<String>> recordOfName = new HashMap<>();
 
     public RacingGame(int carCnt, int time) {
         this.carCnt = carCnt;
@@ -18,6 +23,15 @@ public class RacingGame {
 
         this.carPositions = new int[carCnt];
         initializeCars();
+    }
+
+    public RacingGame(String carName, int time) {
+        carNames = StringUtil.doSplit(carName, ",");
+        this.carCnt = carNames.length;
+        this.time = time;
+        validCarCnt();
+        this.carPositions = new int[carCnt];
+        initializeCarsWithName();
     }
 
     public void racingStart() {
@@ -42,6 +56,12 @@ public class RacingGame {
     private void initializeCars(){
         for (int i = 0; i < carCnt; i++) {
             cars.add(new Car());
+        }
+    }
+
+    private void initializeCarsWithName() {
+        for (int i = 0; i < carCnt; i++) {
+            cars.add(new Car(carNames[i]));
         }
     }
 
