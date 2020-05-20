@@ -19,11 +19,10 @@ public class CarTest {
         void it_does_move() {
             // given
             Car car = new Car(carName);
-            int moveNumber = 5;
             int before = car.getPosition();
 
             // when
-            car.move(moveNumber);
+            car.move(new FixedNumberStrategy());
 
             // then
             assertThat(car.getPosition()).isEqualTo(before + 1);
@@ -34,14 +33,20 @@ public class CarTest {
         void it_does_not_move() {
             // given
             Car car = new Car(carName);
-            int moveNumber = 3;
             int before = car.getPosition();
 
             // when
-            car.move(moveNumber);
+            car.move(new LowNumberStrategy());
 
             // then
             assertThat(car.getPosition()).isEqualTo(before);
+        }
+    }
+
+    private static class LowNumberStrategy implements Strategy {
+        @Override
+        public int getNumber() {
+            return 3;
         }
     }
 }
