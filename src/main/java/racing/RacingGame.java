@@ -20,5 +20,16 @@ public class RacingGame {
 
         ResultView.startPosition(carPositions.size());
 
+        for (int i = 0; i < time - 1; i++) {
+            moveCar();
+            System.out.println();
+        }
+    }
+
+    public void moveCar() {
+        for (int i = 0; i < carPositions.size(); i++) {
+            carPositions.get(i).move(RandomNumber.getRandomNumber());
+
+        }
     }
 }
