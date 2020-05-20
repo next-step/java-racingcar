@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarMover {
 
@@ -10,19 +11,19 @@ public class CarMover {
         this.moveStrategy = moveStrategy;
     }
 
-    public int[] move(List<Car> cars) {
-        int[] carPositions = new int[cars.size()];
+    public List<Car> move(List<Car> cars) {
+        cars = cars.stream()
+                .map(this::move)
+                .collect(Collectors.toList());
 
-        for (int i = 0; i < cars.size(); i++) {
-            Car car = cars.get(i);
+        return cars;
+    }
 
-            if (moveStrategy.canMove()) {
-                car.move();
-            }
-
-            carPositions[i] = car.getPosition();
+    private Car move(Car car) {
+        if (moveStrategy.canMove()) {
+            return car.move();
         }
 
-        return carPositions;
+        return car;
     }
 }

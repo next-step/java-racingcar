@@ -9,35 +9,35 @@ public class RacingGame {
     private List<Car> cars;
     private CarMover mover;
 
-    public RacingGame(int time, int carCount) {
-        validate(time, carCount);
+    public RacingGame(int time, List<Car> cars) {
+        validate(time, cars.size());
 
         this.time = time;
-        this.cars = new ArrayList<>();
+        this.cars = cars;
         this.mover = new CarMover(new RandomMoveStrategy());
-
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
     }
 
-    private void validate(int time, int carCount) {
-        if (time < 1 || carCount < 1) {
-            throw new IllegalArgumentException(String.format("이동 횟수와 자동차 수는 1 이상이어야 합니다. : %d, %d", time, carCount));
-        }
-    }
-
-    public RacingResult run() {
-        RacingResult result = new RacingResult();
+    public List<Cars> run() {
+        List<Cars> results = new ArrayList<>();
 
         while (time > 0) {
             canMove();
-            int[] positions = mover.move(cars);
-            result.add(positions);
+            cars = mover.move(cars);
+            results.add(new Cars(cars));
             time--;
         }
 
-        return result;
+        return results;
+    }
+
+    private void validate(int time, int carSize) {
+        if (time < 1) {
+            throw new IllegalArgumentException(String.format("이동 횟수는 1 이상이어야 합니다. : %d", time));
+        }
+
+        if (carSize < 1) {
+            throw new IllegalArgumentException(String.format("자동차 수는 1 이상이어야 합니다. : %d", carSize));
+        }
     }
 
     private void canMove() {

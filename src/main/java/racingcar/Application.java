@@ -3,15 +3,18 @@ package racingcar;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
+import java.util.List;
+
 public class Application {
 
     public static void main(String[] args) {
         int time = InputView.askTime();
-        int carCount = InputView.askCarCount();
+        String[] carNames = InputView.askCarNames();
 
-        RacingGame game = new RacingGame(time, carCount);
-        RacingResult result = game.run();
+        List<Car> cars = CarFactory.create(carNames);
+        RacingGame game = new RacingGame(time, cars);
+        List<Cars> results = game.run();
 
-        ResultView.print(result);
+        ResultView.print(results);
     }
 }
