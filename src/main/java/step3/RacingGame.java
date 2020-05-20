@@ -2,7 +2,7 @@ package step3;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private List<RacingCar> racingCarList = new ArrayList<>();
@@ -12,9 +12,9 @@ public class RacingGame {
         return racingCarList;
     }
 
-    public RacingGame(int carNumber) {
-        for(int i=0; i<carNumber; i++) {
-            racingCarList.add(new RacingCar());
+    public RacingGame(String[] carNameList) {
+        for(String carName : carNameList) {
+            racingCarList.add(new RacingCar(carName));
         }
     }
 
@@ -23,6 +23,22 @@ public class RacingGame {
             int power = racingRandom.getRandomNumber();
             car.move(power);
         }
+    }
+
+    public int getMaxPosition() {
+        return racingCarList.stream()
+                    .mapToInt(RacingCar::getCurrentPosition)
+                    .max()
+                    .getAsInt();
+    }
+
+    public List<String> findWinner() {
+        int maxPosition = getMaxPosition();
+
+        return racingCarList.stream()
+                .filter(RacingCar -> RacingCar.getCurrentPosition() == maxPosition)
+                .map(RacingCar::getCarName)
+                .collect(Collectors.toList());
     }
 }
 
