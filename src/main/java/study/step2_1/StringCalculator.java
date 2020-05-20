@@ -12,15 +12,14 @@ public class StringCalculator{
     private final static Pattern PATTERN_COMPILE = Pattern.compile(NUMBERPATTERN);
 
     private String [] separateByDelimiter(String expression){
-        isBlank(expression);
+        validateBlank(expression);
         return expression.split(DELIMITER);
     }
 
-    private boolean isBlank(String input){
+    private void validateBlank(String input){
         if (Objects.isNull(input)  || input.trim().isEmpty()){
             throw new IllegalArgumentException("값이 비어있습니다.");
         }
-        return false;
     }
 
     private static boolean isNumber(String value) {
