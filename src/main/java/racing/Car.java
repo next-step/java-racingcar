@@ -4,21 +4,17 @@ public class Car {
     private static final int MOVE_MIN_NUMBER = 4;
     private int position;
 
-    public void drive() {
-        if (isMoveTime(Dice.cast())) {
-            move();
-        }
-    }
-
     public int showMyPosition() {
         return position;
     }
 
-    private void move() {
-        this.position++;
+    public void move() {
+        if (isMoveTime()) {
+            this.position++;
+        }
     }
 
-    private boolean isMoveTime(int castNumber) {
-        return castNumber >= MOVE_MIN_NUMBER;
+    private boolean isMoveTime() {
+        return Dice.cast() >= MOVE_MIN_NUMBER;
     }
 }

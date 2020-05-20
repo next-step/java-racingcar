@@ -35,7 +35,7 @@ public class RacingGame {
 
     private void playRound() {
         for (Car car : carList) {
-            car.drive();
+            car.move();
         }
     }
 
