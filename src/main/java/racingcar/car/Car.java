@@ -5,29 +5,23 @@ import java.util.Random;
 public class Car {
 	private int position;
 	private int moveAbility;
-	private String positionSymbol;
-	private String name;
+	public static final int DEFAULT_CAR_POSITION = 1;
+	public static final int DEFAULT_CAR_ABILITY = 1;
+	public static final int DEFAULT_VALID_MOVING_NUMBER = 4;
 
-	public Car(String name) {
-		this(1, 1, name);
+	public Car() {
+		this(DEFAULT_CAR_POSITION, DEFAULT_CAR_ABILITY);
 	}
 	
-	public Car(int position , int ability , String name) {
+	public Car(int position , int ability) {
 		this.position = position;
 		this.moveAbility = ability;
-		this.positionSymbol ="";
-		this.name = name;
 	}
 	
 	public void move(int power) {
-
-		Random random = new Random();
-		int randomCount = random.nextInt(10);
-		
-		if (randomCount > power) {
+		if (power > DEFAULT_VALID_MOVING_NUMBER) {
 			position += moveAbility;
 		}
-
 	}
 
 	public int getPosition() {
