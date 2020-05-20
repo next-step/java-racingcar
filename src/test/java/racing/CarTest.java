@@ -19,6 +19,16 @@ class CarTest {
         car.move();
 
         assertThat(car.showMyPosition()).isBetween(stopPosition, movePosition);
-
     }
+
+    @Test
+    @DisplayName("자동차의 위치를 확인하는 테스트")
+    void showPositionTest() {
+        int currentPosition = 0;
+
+        Car car = new Car();
+
+        assertThat(car.showMyPosition()).isEqualTo(currentPosition);
+    }
+
 }
