@@ -1,16 +1,16 @@
 package racingGame.domain;
 
-public class FixedMovable implements Movable {
+public class FixedDriveOnRacingCar implements DriveOnRacingCar {
 
 	private int moveNumber;
 	private int MOVABLENUMBER = 4;
 	
-	public FixedMovable(int moveNumber) {
+	public FixedDriveOnRacingCar(int moveNumber) {
 		this.moveNumber = moveNumber;
 	}
 
 	@Override
-	public boolean checkMovable() {
+	public boolean checkDriveOnRacingCar() {
 		return moveNumber >= MOVABLENUMBER;
 	}
 }

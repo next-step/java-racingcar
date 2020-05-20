@@ -6,8 +6,8 @@ public class RacingCar {
 	private String STOP = "";
 
 	public String move() {
-		Movable movable = new RandomMovable();
-		if(movable.checkMovable()) {
+		DriveOnRacingCar movable = new RandomDriveOnRacingCar();
+		if(movable.checkDriveOnRacingCar()) {
 			return MOVE;
 		}
 		return STOP;

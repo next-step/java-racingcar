@@ -5,23 +5,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import racingGame.domain.FixedMovable;
-import racingGame.domain.Movable;
+import racingGame.domain.FixedDriveOnRacingCar;
+import racingGame.domain.DriveOnRacingCar;
 
 class MovableTest {
-	Movable movable;
+	DriveOnRacingCar movable;
 	
 	@Test
 	@DisplayName("이동 가능 여부 테스트(false)")
 	public void immovableTest() {
-		movable = new FixedMovable(3);
-		assertThat(movable.checkMovable()).isEqualTo(false);
+		movable = new FixedDriveOnRacingCar(3);
+		assertThat(movable.checkDriveOnRacingCar()).isEqualTo(false);
 	}
 
 	@Test
 	@DisplayName("이동 가능 여부 테스트(true)")
 	public void movableTest() {
-		movable = new FixedMovable(4);
-		assertThat(movable.checkMovable()).isEqualTo(true);
+		movable = new FixedDriveOnRacingCar(4);
+		assertThat(movable.checkDriveOnRacingCar()).isEqualTo(true);
 	}
 }
