@@ -28,7 +28,7 @@ public class RacingGame {
         for (int i = 0; i < time; i++) {
             racingGameResultView.printRound(i + 1);
             carList.forEach(Car::move);
-            carList.forEach(car -> racingGameResultView.printResult(car.getPosition()));
+            carList.forEach(racingGameResultView::printResult);
         }
     }
 }

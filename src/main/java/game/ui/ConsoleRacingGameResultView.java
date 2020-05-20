@@ -1,5 +1,7 @@
 package game.ui;
 
+import game.Car;
+
 import java.util.Arrays;
 
 public class ConsoleRacingGameResultView implements RacingGameResultView {
@@ -8,13 +10,13 @@ public class ConsoleRacingGameResultView implements RacingGameResultView {
 
     @Override
     public void printRound(int round) {
-        System.out.println(String.format("ROUND -%d-", round));
+        System.out.println(String.format("-ROUND %d-", round));
     }
 
     @Override
-    public void printResult(int result) {
-        char[] chars = new char[result];
+    public void printResult(Car car) {
+        char[] chars = new char[car.getPosition()];
         Arrays.fill(chars, FOOTPRINT);
-        System.out.println(new String(chars));
+        System.out.println(String.format("%s : %s", car.getCarNameValue(), new String(chars)));
     }
 }
