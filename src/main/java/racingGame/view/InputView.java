@@ -6,12 +6,12 @@ import racingGame.utils.StringUtils;
 
 public class InputView {
 	public static int inputCountOfCars(Scanner sc) {
-		System.out.println("ÀÚµ¿Â÷ÀÇ ´ë¼ö´Â ¸î ´ë ÀÎ°¡¿ä?");
+		System.out.println("ìë™ì°¨ì˜ ëŒ€ìˆ˜ëŠ” ëª‡ ëŒ€ ì¸ê°€ìš”?");
 		return StringUtils.parseInt(sc.nextLine());
 	}
 	
 	public static int inputCountOfTimes(Scanner sc) {
-		System.out.println("½ÃµµÇÒ È½¼ö´Â ¸î È¸ ÀÎ°¡¿ä");
+		System.out.println("ì‹œë„í•  íšŸìˆ˜ëŠ” ëª‡ íšŒ ì¸ê°€ìš”?");
 		return  StringUtils.parseInt(sc.nextLine());
 	}
 }

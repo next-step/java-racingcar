@@ -4,7 +4,7 @@ public class OutputView {
 	private static String[] result;
 	
 	public static void printGameScore(String[][] gameScore) {
-		System.out.println("½ÇÇà °á°ú");
+		System.out.println("ì‹¤í–‰ ê²°ê³¼");
 		
 		result = new String[gameScore[0].length];
 		initializeResult();
