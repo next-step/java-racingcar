@@ -6,6 +6,14 @@ public class Car {
     private final Random random = new Random();
     private final int DECIDE_NUM = 4;
     private int distance = 0;
+    private String name;
+
+    public Car() {
+    }
+
+    public Car(String name) {
+        this.name = name;
+    }
 
     public void move(DecideMode mode) {
         moveSelectMode(mode);
@@ -13,12 +21,6 @@ public class Car {
 
     public void move() {
         moveSelectMode(DecideMode.RANDOM_MODE);
-    }
-
-    private void moveSelectMode(DecideMode mode) {
-        if(decideForward(mode)) {
-            distance++;
-        }
     }
 
     public boolean decideForward(DecideMode mode) {
@@ -30,6 +32,16 @@ public class Car {
 
     public int getDistance() {
         return distance;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    private void moveSelectMode(DecideMode mode) {
+        if(decideForward(mode)) {
+            distance++;
+        }
     }
 
     public enum DecideMode {
