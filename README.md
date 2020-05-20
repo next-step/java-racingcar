@@ -13,4 +13,13 @@
 2. inputView
 3. outputView
 4. Car Class 만들기
-5. 모든 로직 단위테스트 만들기
+5. 모든 로직 단위 테스트 만들기
+
+
+### Step4 구현 기능 목록
+1. Car 객체에 name 필드 추가
+2. StringUtil에 doSplit(String, ",") 호출하기
+3. 우승자 추출하는 method 만들기
+4. inputView 에 이름 넣는 메소드 넣기
+5. inputView에서 받은 값을 Split 한 결과 배열의 크기로 carCnt 전달하기
+6. 신규 로직 단위 테스트 만들기
