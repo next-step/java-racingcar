@@ -49,15 +49,14 @@ public class Racing {
                 new RacingScoreCard(car.getName(), car.getPosition())).collect(Collectors.toList());
     }
 
-    public List<RacingScoreCard> getWinnerAfterFinalRacing() {
+    public List<RacingScoreCard> getWinner() {
         final int maxPosition = carList.stream()
                 .max(Comparator.comparingInt(Car::getPosition))
                 .map(Car::getPosition).get();
-        List<RacingScoreCard> winners = carList.stream()
+        return carList.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .map(car -> new RacingScoreCard(car.getName(), car.getPosition()))
                 .collect(Collectors.toList());
-        return winners;
     }
 
     private void race() {

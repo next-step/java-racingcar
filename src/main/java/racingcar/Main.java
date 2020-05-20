@@ -17,6 +17,6 @@ public class Main {
 
         OutputView.printTitle();
         race.start(OutputView::printRaceResultByTime);
-        OutputView.printWinner(race.getWinnerAfterFinalRacing());
+        OutputView.printWinner(race.getWinner());
     }
 }
