@@ -53,7 +53,56 @@ public class RacingGame {
         return carPositions;
     }
 
-    private void initializeCars(){
+    public List<String> getWinner() {
+        getMaxPosition();
+        sortSaveRecord();
+        return recordOfName.get(maxPosition);
+    }
+
+    public void printRacingWithName() {
+        ResultView resultView = new ResultView();
+        resultView.printTitle();
+        for (int i = 0; i < time; i++) {
+            resultView.printRoundCarPositionWithName(cars, record.get(i));
+        }
+    }
+
+    public void printRacingWinner() {
+        ResultView resultView = new ResultView();
+        resultView.printRacingWinner(getWinner());
+    }
+
+    private void getMaxPosition() {
+        for(int position : carPositions) {
+            maxPosition = Math.max(position, maxPosition);
+        }
+    }
+
+    private void sortSaveRecord() {
+        for (Car car : cars) {
+            int position = car.getDistance();
+            String name = car.getName();
+            addRecordOfName(position, name);
+        }
+    }
+
+    private boolean checkMapIsEmpty(int position) {
+        return recordOfName.get(position) == null;
+    }
+
+    private void addRecordOfName(int position, String name) {
+        if (checkMapIsEmpty(position)) {
+            List<String> namelist = new ArrayList<>();
+            namelist.add(name);
+            recordOfName.put(position, namelist);
+            return;
+        }
+        List<String> namelist = recordOfName.get(position);
+        namelist.add(name);
+        recordOfName.put(position, namelist);
+    }
+
+    private void initializeCars() {
         for (int i = 0; i < carCnt; i++) {
             cars.add(new Car());
         }
@@ -72,13 +121,13 @@ public class RacingGame {
     }
 
     private void move() {
-        for(Car car : cars) {
+        for (Car car : cars) {
             car.move();
         }
     }
 
     private void saveRecord(int round) {
-        for (int i = 0; i< carCnt; i++) {
+        for (int i = 0; i < carCnt; i++) {
             carPositions[i] = cars.get(i).getDistance();
         }
         int[] currentPosition = Arrays.copyOf(carPositions, carPositions.length);
