@@ -21,7 +21,7 @@ public class RacingUtils {
 
         winners.add(cars.get(index));
 
-        for(index=1; (cars.get(index).getPosition()==winnerPosition) && (index<cars.size()); index++) {
+        for(index=1; (index<cars.size()) && (cars.get(index).getPosition()==winnerPosition); index++) {
             winners.add(cars.get(index));
         }
 
