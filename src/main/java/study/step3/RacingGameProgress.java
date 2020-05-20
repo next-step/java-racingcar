@@ -9,7 +9,7 @@ public class RacingGameProgress {
     public static List<Round> gameStart(RacingGame racingGame, CarMoveCondition moveCondition) {
         List<Round> rounds = new ArrayList<>();
         Round round = initRound(racingGame.getCarEntries());
-        rounds.add(round); 
+        rounds.add(round);
 
         int tryTimes = racingGame.getTryTime();
 
