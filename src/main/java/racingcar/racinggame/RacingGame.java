@@ -1,13 +1,11 @@
 package racingcar.racinggame;
 
 import racingcar.car.Car;
-
+import racingcar.common.RandomHelper;
 import java.util.ArrayList;
 
 public class RacingGame {
-    public final static int DEFAULT_VALID_MOVING_NUMBER = 4;
-    public final static String DEFAULT_CAR_POSITION_SYMBOL = "-";
-
+    public final static int DEFAULT_RANDOM_RANGE = 10;
     private ArrayList<Car> carList;
     private int gameCount;
     private int playCount;
@@ -24,7 +22,7 @@ public class RacingGame {
         }
 
         for(int i = 0; i < carCount; i++) {
-            carList.add(new Car(i+"번 자동차"));
+            carList.add(new Car());
         }
 
         return true;
@@ -43,16 +41,8 @@ public class RacingGame {
     }
 
     public void play(){
-        this.carList.forEach(car -> car.move(DEFAULT_VALID_MOVING_NUMBER));
+        this.carList.forEach(car -> car.move(RandomHelper.getRandomNumber(DEFAULT_RANDOM_RANGE)));
         playCount++;
-    }
-
-    public String getCarTraceSymbolByCar(Car car){
-        String result ="";
-        for (int i = 0; i < car.getPosition(); i++) {
-            result = result.concat(DEFAULT_CAR_POSITION_SYMBOL);
-        }
-        return result;
     }
 
     public boolean isEnd(){
