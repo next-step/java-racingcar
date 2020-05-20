@@ -2,11 +2,11 @@ package racingcar.race;
 
 import racingcar.util.CommonUtil;
 
-public class RacingScorecard {
+public class RacingScoreCard {
     private final String name;
     private final int position;
 
-    public RacingScorecard(String name, int position) {
+    public RacingScoreCard(String name, int position) {
         CommonUtil.checkNullEmpty(name);
         CommonUtil.checkZeroOrMore(position);
 

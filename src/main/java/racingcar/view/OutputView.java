@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.race.RacingScorecard;
+import racingcar.race.RacingScoreCard;
 
 import java.util.List;
 
@@ -17,8 +17,8 @@ public class OutputView {
         System.out.println(TEXT_TITLE);
     }
 
-    public static void printRaceResultByTime(List<RacingScorecard> raceResults) {
-        for (RacingScorecard result : raceResults) {
+    public static void printRaceResultByTime(List<RacingScoreCard> raceResults) {
+        for (RacingScoreCard result : raceResults) {
             draw(result.getName(), result.getPosition());
         }
         System.out.println();
@@ -32,9 +32,9 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printWinner(List<RacingScorecard> winner) {
+    public static void printWinner(List<RacingScoreCard> winner) {
         StringBuilder printString = new StringBuilder();
-        for (RacingScorecard result : winner) {
+        for (RacingScoreCard result : winner) {
             printString.append(result.getName()).append(TEXT_SEPARATOR_BETWEEN_NAMES);
         }
 

@@ -6,15 +6,15 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
-class RacingScorecardTest {
+class RacingScoreCardTest {
 
     private static String DEFAULT_NAME = "TEST";
     private static int DEFAULT_POSITION = 1;
-    private RacingScorecard racingScorecard;
+    private RacingScoreCard racingScorecard;
 
     @BeforeEach
     void setUp() {
-        racingScorecard = new RacingScorecard(DEFAULT_NAME, DEFAULT_POSITION);
+        racingScorecard = new RacingScoreCard(DEFAULT_NAME, DEFAULT_POSITION);
     }
 
     @DisplayName("만들어진 객체의 name을 정상적으로 얻을 수 있는 지 확인")

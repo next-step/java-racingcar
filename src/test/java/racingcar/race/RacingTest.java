@@ -108,9 +108,9 @@ class RacingTest {
     public void getWinnerAfterFinalRacingTest() {
         Racing racing = Racing.applyRacing(() -> 1, getDefaultCarListWinnerTest(), 1);
         racing.start(racingScorecards -> {});
-        List<RacingScorecard> list = racing.getWinnerAfterFinalRacing();
+        List<RacingScoreCard> list = racing.getWinnerAfterFinalRacing();
 
-        List<String> winnerNames = list.stream().map(RacingScorecard::getName).collect(Collectors.toList());
+        List<String> winnerNames = list.stream().map(RacingScoreCard::getName).collect(Collectors.toList());
         assertThat(winnerNames.size()).isEqualTo(2);
         assertThat(winnerNames).contains("TEST03", "TEST04");
 

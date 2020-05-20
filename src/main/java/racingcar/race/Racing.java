@@ -44,18 +44,18 @@ public class Racing {
         }
     }
 
-    private List<RacingScorecard> getRaceResult() {
+    private List<RacingScoreCard> getRaceResult() {
         return carList.stream().map(car ->
-                new RacingScorecard(car.getName(), car.getPosition())).collect(Collectors.toList());
+                new RacingScoreCard(car.getName(), car.getPosition())).collect(Collectors.toList());
     }
 
-    public List<RacingScorecard> getWinnerAfterFinalRacing() {
+    public List<RacingScoreCard> getWinnerAfterFinalRacing() {
         final int maxPosition = carList.stream()
                 .max(Comparator.comparingInt(Car::getPosition))
                 .map(Car::getPosition).get();
-        List<RacingScorecard> winners = carList.stream()
+        List<RacingScoreCard> winners = carList.stream()
                 .filter(car -> car.getPosition() == maxPosition)
-                .map(car -> new RacingScorecard(car.getName(), car.getPosition()))
+                .map(car -> new RacingScoreCard(car.getName(), car.getPosition()))
                 .collect(Collectors.toList());
         return winners;
     }
