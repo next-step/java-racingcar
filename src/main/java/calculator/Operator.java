@@ -37,7 +37,7 @@ public enum Operator implements Operable {
         this.symbol = symbol;
     }
 
-    public static Operator OperatorFactory(String symbol) {
+    public static Operator generateOperatorBySymbol(String symbol) {
         return Arrays.stream(values())
                 .filter(operator -> operator.symbol.equals(symbol))
                 .findFirst()
