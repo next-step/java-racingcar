@@ -11,16 +11,16 @@ public class Racing {
 
     private static final RacingRule DEFAULT_RACING_RULE = new DiceRacingRule(RacingDice.newInstance());
 
-    private final List<Car> carList;
+    private final List<Car> cars;
     private final RacingRule racingRule;
-    private int raceTime = 0;
+    private int raceTime;
 
     private Racing(RacingRule racingRule, List<Car> carList, int raceTime) {
         checkRacingCount(raceTime);
 
         this.raceTime = raceTime;
         this.racingRule = racingRule;
-        this.carList = carList;
+        this.cars = carList;
     }
 
     public static Racing applyRacing(List<Car> carList, int raceTime) {
@@ -45,22 +45,22 @@ public class Racing {
     }
 
     private List<RacingScoreCard> getRaceResult() {
-        return carList.stream().map(car ->
+        return cars.stream().map(car ->
                 new RacingScoreCard(car.getName(), car.getPosition())).collect(Collectors.toList());
     }
 
     public List<RacingScoreCard> getWinner() {
-        final int maxPosition = carList.stream()
+        final int maxPosition = cars.stream()
                 .max(Comparator.comparingInt(Car::getPosition))
                 .map(Car::getPosition).get();
-        return carList.stream()
+        return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .map(car -> new RacingScoreCard(car.getName(), car.getPosition()))
                 .collect(Collectors.toList());
     }
 
     private void race() {
-        for(Car car : carList) {
+        for(Car car : cars) {
             car.drive(racingRule.getMoveForward());
         }
     }
