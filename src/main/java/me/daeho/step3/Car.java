@@ -1,21 +1,46 @@
 package me.daeho.step3;
 
+import me.daeho.step3.rule.ForwardRule;
+
 public class Car {
+    private static final int INITIAL_POSITION = 0;
+
+    private ForwardRule forwardRule;
     private int currentPosition;
+    private String name;
 
-    private Car(int currentPosition) {
+
+    private Car(ForwardRule forwardRule, int currentPosition, String name) {
+        this.forwardRule = forwardRule;
         this.currentPosition = currentPosition;
+        this.name = name;
     }
 
-    public static Car ready() {
-        return new Car(0);
+    public static Car ready(ForwardRule forwardRule, String name) {
+        return new Car(forwardRule, INITIAL_POSITION, name);
     }
 
-    public int forward() {
+    public int move() {
+        if(forwardRule.isForward()) {
+            return forward();
+        }
+
+        return stop();
+    }
+
+    private int forward() {
         return ++currentPosition;
     }
 
-    public int stop() {
+    private int stop() {
+        return currentPosition;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getCurrentPosition() {
         return currentPosition;
     }
 }
