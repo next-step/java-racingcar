@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.Game;
-import racingcar.util.RandomUtil;
+import racingcar.view.ResultView;
 
 public class GameController {
 
@@ -26,13 +26,16 @@ public class GameController {
     return carList;
   }
 
-  public Integer proceedGame() {
-    int index = 0;
-    for (; index < this.attemptNum; index++) {
-      int random = RandomUtil.getRandomValue();
-      game.doRace(random);
+  public Game proceedGame() {
+    for (int index = 0; index < this.attemptNum; index++) {
+      game.doRace();
     }
-    return index;
+    return this.game;
+  }
+
+  public ResultView getResults() {
+    ResultView resultView = ResultView.create(this.game);
+    return resultView.printView();
   }
 
   public int getCarNum() {
