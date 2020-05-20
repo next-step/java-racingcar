@@ -4,7 +4,7 @@ import racingcar.util.CommonUtil;
 
 public class Car {
     private int position = 0;
-    private String name;
+    private final String name;
 
     public Car(String name) {
         CommonUtil.checkNullEmpty(name, "CarName is null or Empty");
