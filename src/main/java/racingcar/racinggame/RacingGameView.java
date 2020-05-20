@@ -1,14 +1,16 @@
 package racingcar.racinggame;
 
+import racingcar.common.CPrintOutputView;
 import racingcar.common.CScannerInputView;
 import racingcar.common.Message;
-import racingcar.common.MessageType;
 
 public class RacingGameView implements RacingGameContract.View {	
 	private RacingGameContract.Presenter presenter;
 	private CScannerInputView carQuestionInputView;
 	private CScannerInputView gameTryQuestionInputView;
-	
+	private CPrintOutputView cPrintOutputView;
+	public final static String DEFAULT_CAR_POSITION_SYMBOL = "-";
+
 	@Override
 	public void init() {
 		presenter = new RacingGamePresenter();
@@ -16,6 +18,7 @@ public class RacingGameView implements RacingGameContract.View {
 
 		carQuestionInputView = new CScannerInputView();
 		gameTryQuestionInputView = new CScannerInputView();
+		cPrintOutputView = new CPrintOutputView();
 
 		carQuestionInputView.setLabel(Message.CAR_QUESTION_MSG);
 		gameTryQuestionInputView.setLabel(Message.GAME_TRY_QUESTION_MSG);
@@ -34,7 +37,17 @@ public class RacingGameView implements RacingGameContract.View {
 	}
 
 	@Override
-	public void print(String printMsg ) {
-		System.out.println(printMsg);
+	public void print(String printMsg) {
+		cPrintOutputView.layout(printMsg);
+	}
+
+	@Override
+	public void printCarPositionBySymbol(int position) {
+		String result = "";
+
+		for (int i = 0; i < position; i++) {
+			result = result.concat(DEFAULT_CAR_POSITION_SYMBOL);
+		}
+		cPrintOutputView.layout(result);
 	}
 }

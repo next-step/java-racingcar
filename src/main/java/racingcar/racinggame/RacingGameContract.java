@@ -1,11 +1,10 @@
 package racingcar.racinggame;
 
-import racingcar.common.MessageType;
-
 public interface RacingGameContract {
 	interface View {
 		void init();
 		void print(String msg);
+		void printCarPositionBySymbol(int position);
 	}
 
 	interface Presenter {
