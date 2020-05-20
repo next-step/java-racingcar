@@ -6,14 +6,14 @@ import java.util.List;
 public class RacingGame {
 
     private int time;
-    private List<Car> cars;
+    private Cars cars;
     private CarMover mover;
 
     public RacingGame(int time, List<Car> cars) {
         validate(time, cars.size());
 
         this.time = time;
-        this.cars = cars;
+        this.cars = new Cars(cars);
         this.mover = new CarMover(new RandomMoveStrategy());
     }
 
@@ -23,7 +23,7 @@ public class RacingGame {
         while (time > 0) {
             canMove();
             cars = mover.move(cars);
-            results.add(new Cars(cars));
+            results.add(cars);
             time--;
         }
 
