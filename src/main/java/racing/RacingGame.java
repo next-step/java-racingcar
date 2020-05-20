@@ -4,23 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private int time;
+    private int round;
     private List<Car> carList;
 
-    public void initGame() {
-        InputView firstQuestion = new InputView("자동차 대수는 몇 대 인가요?");
-        int carCount = firstQuestion.play();
+    public RacingGame(int carCount, int round) {
+        initGame(carCount, round);
+    }
 
+    public void initGame(int carCount, int round) {
+        this.round = round;
         settingCar(carCount);
-
-        InputView secondQuestion = new InputView("시도할 회수는 몇 회 인가요?");
-        this.time = secondQuestion.play();
     }
 
     public void playGame() {
         ResultView resultView = new ResultView("실행 결과");
 
-        for (int i = 0; i < time; i++) {
+        for (int i = 0; i < round; i++) {
             playRound();
             resultView.print(carList);
         }
