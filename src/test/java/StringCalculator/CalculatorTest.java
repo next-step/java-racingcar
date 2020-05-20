@@ -21,6 +21,7 @@ public class CalculatorTest {
     void WhiteSpaceExceptionTest() {
         assertThatThrownBy(() -> {
             ArithmeticExpression arithmeticExpression = new ArithmeticExpression("         ");
+            stringCalculator.arithmeticExpressionValidation(arithmeticExpression);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -29,7 +30,8 @@ public class CalculatorTest {
     void NullExceptionTest() {
         assertThatThrownBy(() -> {
             ArithmeticExpression arithmeticExpression = new ArithmeticExpression(null);
-        }).isInstanceOf(IllegalArgumentException.class);
+            stringCalculator.arithmeticExpressionValidation(arithmeticExpression);
+        }).isInstanceOf(NullPointerException.class);
     }
 
     @Test
@@ -37,6 +39,7 @@ public class CalculatorTest {
     void LiteralExceptionTest() {
         assertThatThrownBy(() -> {
             ArithmeticExpression arithmeticExpression = new ArithmeticExpression("2 + 3 + r + ㄱ");
+            stringCalculator.arithmeticExpressionValidation(arithmeticExpression);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -45,6 +48,7 @@ public class CalculatorTest {
     void NotProperExceptionTest() {
         assertThatThrownBy(() -> {
             ArithmeticExpression arithmeticExpression = new ArithmeticExpression("+ 2 + 3 + 4");
+            stringCalculator.arithmeticExpressionValidation(arithmeticExpression);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -82,5 +86,4 @@ public class CalculatorTest {
         ArithmeticExpression arithmeticExpression = new ArithmeticExpression("2 + 3 * 4 / 2");
         assertThat(stringCalculator.calculate(arithmeticExpression)).isEqualTo(10);
     }
-
 }
