@@ -1,4 +1,4 @@
-package step4.domain;
+package step5.domain;
 
 public interface MovingStrategy {
 

@@ -1,4 +1,4 @@
-package step4.domain;
+package step5.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;

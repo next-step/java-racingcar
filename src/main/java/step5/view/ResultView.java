@@ -1,7 +1,7 @@
-package step4.view;
+package step5.view;
 
-import step4.car.Record;
-import step4.car.Trace;
+import step5.domain.Record;
+import step5.domain.Trace;
 
 import java.util.List;
 
