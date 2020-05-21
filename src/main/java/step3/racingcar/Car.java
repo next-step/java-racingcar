@@ -27,18 +27,4 @@ public class Car {
         if (isMovable == true)
             this.position++;
     }
-
-    public static List<Car> getWinnerCars(List<Car> cars) {
-        int maxPosition = getMaxPosition(cars);
-        return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
-                .collect(Collectors.toList());
-    }
-
-    private static int getMaxPosition(List<Car> cars) {
-        Car car = cars.stream()
-                .max(Comparator.comparing(Car::getPosition))
-                .orElseThrow(() -> new NoSuchElementException(Message.ERROR_MAX_POSITION));
-        return car.getPosition();
-    }
 }

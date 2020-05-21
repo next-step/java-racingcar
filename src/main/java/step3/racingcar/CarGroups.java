@@ -1,6 +1,8 @@
 package step3.racingcar;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class CarGroups {
@@ -9,6 +11,10 @@ public class CarGroups {
 
     public CarGroups(List<Car> carGroups) {
         this.carGroups = carGroups;
+    }
+
+    public void move() {
+        this.carGroups.forEach(Car::move);
     }
 
     public List<String> getCarNames() {
@@ -23,7 +29,18 @@ public class CarGroups {
                 .collect(Collectors.toList());
     }
 
-    public void move() {
-        this.carGroups.forEach(Car::move);
+    public List<String> getWinnerCarNames() {
+        int maxPosition = getMaxPosition();
+        return carGroups.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
+    private int getMaxPosition() {
+        Car car = this.carGroups.stream()
+                .max(Comparator.comparing(Car::getPosition))
+                .orElseThrow(() -> new NoSuchElementException(Message.ERROR_MAX_POSITION));
+        return car.getPosition();
     }
 }
