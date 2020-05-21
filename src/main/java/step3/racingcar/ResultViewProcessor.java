@@ -16,15 +16,18 @@ public class ResultViewProcessor {
         System.out.println(headerMessage);
     }
 
-    public static void printResult(List<Car> cars) {
-        cars.forEach(ResultViewProcessor::printCurrentPosition);
+    public static void printResult(CarGroups carGroups) {
+        List<String> carNames = carGroups.getCarNames();
+        List<Integer> carPositions = carGroups.getCarPositions();
+        int carCounts = carNames.size();
+        for (int i = 0; i < carCounts; i++) {
+            System.out.print(carNames.get(i) + DELIMITER);
+            printCurrentPosition(carPositions.get(i));
+        }
         System.out.println();
     }
 
-    private static void printCurrentPosition(Car car) {
-        int currentPosition = car.getPosition();
-        String carName = car.getName();
-        System.out.print(carName + DELIMITER);
+    private static void printCurrentPosition(int currentPosition) {
         for (int i = INDEX_ZERO; i < currentPosition; i++) {
             System.out.print(POSITION_MARK);
         }

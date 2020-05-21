@@ -1,5 +1,6 @@
 package step3.racingcar;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -20,18 +21,17 @@ public class CarGroupsTest {
     @ParameterizedTest
     @MethodSource("mockCarNamesBuilder")
     public void getNewCarGroupUsingCarFactory(String[] carNames) {
-        CarGroups racingCars = new CarGroups(CarFactory.makeCars(carNames));
-
+        CarGroups carGroups = new CarGroups(CarFactory.makeCars(carNames));
         int carCounts = carNames.length;
-        assertThat(racingCars.getCarNames().size())
+        assertThat(carGroups.getCarNames().size())
                 .isEqualTo(carCounts);
 
-        boolean isPositionsDefaultZero = racingCars.getCarPositions().stream()
+        boolean isPositionsDefaultZero = carGroups.getCarPositions().stream()
                 .allMatch(position -> position == 0);
         assertThat(isPositionsDefaultZero)
                 .isEqualTo(true);
 
-        List<String> testTargetCarNames = racingCars.getCarNames();
+        List<String> testTargetCarNames = carGroups.getCarNames();
         List<String> originCarNames = Arrays.asList(carNames);
         List<String> filteredList = testTargetCarNames.stream()
                 .filter(target -> originCarNames.stream().allMatch(Predicate.isEqual(target)))
@@ -50,6 +50,17 @@ public class CarGroupsTest {
                 .stream()
                 .allMatch(position -> position >= 0);
         assertThat(isCarGroupsMoved).isEqualTo(true);
+    }
+    
+    @DisplayName("경주에서 이긴 winnerCarsName을 얻어오는 테스트")
+    @ParameterizedTest
+    @MethodSource("mockCarNamesBuilder")
+    public void getWinnerCarsName(String[] carNames) {
+        CarGroups carGroups = new CarGroups(CarFactory.makeCars(carNames));
+        carGroups.move();
+        List<String> getWinnerCarNames = carGroups.getWinnerCarNames();
+        assertThat(getWinnerCarNames.size())
+                .isGreaterThanOrEqualTo(1);
     }
 
     private static Stream<Arguments> mockCarNamesBuilder() {

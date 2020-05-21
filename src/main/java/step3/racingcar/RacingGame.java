@@ -28,7 +28,7 @@ public class RacingGame {
         ResultViewProcessor.printResultHeader(Message.RESULT_HEADER);
         for (int i = INDEX_ZERO; i < gameTryCounts; i++) {
             playerCars.move();
-            //ResultViewProcessor.printResult(playerCars);
+            ResultViewProcessor.printResult(playerCars);
         }
         //List<Car> winnerCars = Car.getWinnerCars(cars);
         //ResultViewProcessor.printWinnerNames(winnerCars);
