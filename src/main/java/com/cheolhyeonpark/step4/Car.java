@@ -1,5 +1,7 @@
 package com.cheolhyeonpark.step4;
 
+import java.util.Objects;
+
 public class Car {
 
     private int position;
@@ -24,5 +26,10 @@ public class Car {
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
         return position == car.position;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position);
     }
 }
