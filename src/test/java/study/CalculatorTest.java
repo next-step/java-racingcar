@@ -1,3 +1,6 @@
+package study;
+
+import main.Calculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,17 +19,26 @@ public class CalculatorTest {
     @ParameterizedTest
     @NullAndEmptySource
     void inputNullTest(String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            Calculator calculator = new Calculator(input);
-        });
+        try{
+            calculator.calculate(input);
+        }catch (NullPointerException ie){
+
+        }catch(NumberFormatException ne){
+
+        }
     }
-    @DisplayName("특수 문자 예외")
+    @DisplayName("disabledTEST")
     @ParameterizedTest
     @CsvSource("1 + 2 , 3")
     void inputDisabledCharacterTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            Calculator calculator = new Calculator(input);
             calculator.getcalRes();
         });
+    }
+
+    public static void main(String[] args) {
+        System.out.println("-----");
+        new Calculator().calculate("1 + 2");
+        System.out.println("-----");
     }
 }
