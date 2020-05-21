@@ -20,7 +20,7 @@ public class ResultViewProcessor {
         List<String> carNames = carGroups.getCarNames();
         List<Integer> carPositions = carGroups.getCarPositions();
         int carCounts = carNames.size();
-        for (int i = 0; i < carCounts; i++) {
+        for (int i = INDEX_ZERO; i < carCounts; i++) {
             System.out.print(carNames.get(i) + DELIMITER);
             printCurrentPosition(carPositions.get(i));
         }
