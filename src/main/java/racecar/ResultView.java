@@ -1,4 +1,4 @@
-package step3;
+package racecar;
 
 public class ResultView {
 
