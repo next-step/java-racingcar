@@ -1,8 +1,5 @@
 package racingcar.domain;
 
-import racingcar.view.OutputView;
-
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class GameResult {
@@ -14,7 +11,7 @@ public class GameResult {
         this.cars = cars;
     }
 
-    public List<String> getResult() {
+    public String getResult() {
         return cars.getCars()
                 .stream()
                 .map(car -> {
@@ -23,7 +20,7 @@ public class GameResult {
 
                     return carName.concat(" : ").concat(replacePositionToOutputCharacters(carPosition));
                 })
-                .collect(Collectors.toList());
+                .collect(Collectors.joining("\n"));
     }
 
     private String replacePositionToOutputCharacters(int carPosition) {
@@ -34,18 +31,5 @@ public class GameResult {
         }
 
         return sb.toString();
-    }
-
-    public void displayResult() {
-        OutputView.printOut(this);
-    }
-
-    public void displayWinner(Cars winners) {
-        String winnerNames = winners.getCars()
-                .stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(","));
-
-        OutputView.printOutWinner(winnerNames);
     }
 }
