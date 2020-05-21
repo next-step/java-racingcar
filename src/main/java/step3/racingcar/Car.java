@@ -1,10 +1,5 @@
 package step3.racingcar;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
-
 public class Car {
 
     private static final int DEFAULT_POSITION = 0;
