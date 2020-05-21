@@ -1,6 +1,7 @@
 package racecar;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -31,13 +32,26 @@ public class Car {
         return carList;
     }
 
+    public static int getMaxPosition() {
+        List<Integer> positions = new ArrayList<>();
+        for (Car car : carList)
+            positions.add(car.position);
+        int max = Collections.max(positions);
+        return max;
+    }
 
-    public static List<Car> getCarList() {
-        return carList;
+    public static List<String> selectWinner(int max) {
+        List<String> winners = new ArrayList<>();
+        for (Car car : carList) {
+            if (car.position == max)
+                winners.add(car.name);
+        }
+        return winners;
     }
 
     public int move(Random random) {
-        if (random.nextInt(Rules.BOUND) >= Rules.WIN_CONDITION)
+        int number = random.nextInt(Rules.BOUND);
+        if (number >= Rules.WIN_CONDITION)
             this.position += 1;
         return this.position;
     }
@@ -46,9 +60,5 @@ public class Car {
         String status = "-".repeat(position);
         String result = name + " : " + status;
         return result;
-    }
-
-    public String getName() {
-        return name;
     }
 }
