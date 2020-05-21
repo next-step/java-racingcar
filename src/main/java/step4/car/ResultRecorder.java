@@ -10,12 +10,8 @@ public class ResultRecorder {
         this.result = new ArrayList<>();
     }
 
-    public void recordCurrentPosition(List<Car> cars){
-        List<Trace> records = new ArrayList<>();
-        for (Car car : cars) {
-            records.add(new Trace(car.getName(), car.getPosition()));
-        }
-        result.add(new Record(records));
+    public void recordCurrentPosition(List<Trace> traces){
+        result.add(new Record(traces));
     }
 
     public List<String> findWinners(){

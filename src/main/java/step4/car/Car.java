@@ -9,22 +9,15 @@ public class Car {
         this.name = name;
     }
 
-    public void move(MovingStrategy strategy) {
+    public Trace move(MovingStrategy strategy) {
         if (strategy.canMove()) {
             this.position++;
         }
+        return new Trace(this.name, this.position);
     }
 
     public static Car of(String name) {
         return new Car(name);
-    }
-
-    public void initPosition(){
-        this.position = 0;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public int getPosition() {
