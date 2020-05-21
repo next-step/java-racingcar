@@ -1,10 +1,8 @@
 package racingcar;
 
-import racingcar.race.*;
+import racingcar.race.Racing;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
-
-import java.util.List;
 
 public class Main {
 
@@ -12,8 +10,7 @@ public class Main {
         String name = InputView.inputCarCountJoinRace();
         int raceTime = InputView.inputRaceTime();
 
-        List<Car> carList = RacingRegistry.getCarList(name);
-        Racing race = Racing.applyRacing(carList, raceTime);
+        Racing race = Racing.applyRacing(name, raceTime);
 
         OutputView.printTitle();
         race.start(OutputView::printRaceResultByTime);
