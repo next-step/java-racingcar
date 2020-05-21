@@ -1,69 +1,60 @@
 package study.racing;
 
+import study.racing.model.Car;
 import study.racing.ui.InputView;
 import study.racing.ui.ResultView;
+import study.racing.utils.RacingUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RacingGame {
+    private static final int MOVE_THRESHOLD = 4;
+
     private final InputView inputView;
     private final ResultView resultView;
 
-    private int[] carPositions;
+    private List<Car> carList;
     private int time;
 
     public RacingGame() {
         inputView = new InputView();
         resultView = new ResultView();
-    }
-
-    public RacingGame(int numOfCars, int time) {
-        inputView = new InputView();
-        resultView = new ResultView();
-
-        carPositions = new int[numOfCars];
-        this.time = time;
+        carList = new ArrayList<>();
     }
 
     public void play() {
-        if(carPositions == null) {
-            configureGameSettings();
-        }
+        configureGameSettings();
 
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과\n");
 
         for(int i=0; i<time; i++) {
             move();
-            resultView.printCarPositions(carPositions);
+            resultView.printCarPositions(carList);
         }
+
+        resultView.printWinners(RacingUtils.getWinners(carList));
     }
 
     private void configureGameSettings() {
-        int numOfCars = inputView.scanIntWithQuestion("자동차 대수는 몇 대 인가요?");
-        this.time = inputView.scanIntWithQuestion("시도할 회수는 몇 회 인가요?");
+        String[] carNames = inputView.scanCarNames();
+        time = inputView.scanTime();
 
-        carPositions = new int[numOfCars];
+        for(String carName : carNames) {
+            carList.add(new Car(carName));
+        }
     }
 
     private void move() {
-        for(int i=0; i<carPositions.length; i++) {
-            if(canMove()) {
-                carPositions[i]++;
-            }
+        for(Car car : carList) {
+            tryToMove(car);
         }
     }
 
-    private boolean canMove() {
-        boolean result = false;
-
-        if(getRandomNumber() >= 4) {
-            result = true;
+    private void tryToMove(Car car) {
+        if(RacingUtils.getRandomNumber() >= MOVE_THRESHOLD) {
+            car.move();
         }
-
-        return result;
-    }
-
-    private int getRandomNumber() {
-        double tmp = Math.random();
-        return (int)(tmp * 10);
     }
 
     public static void main(String[] args) {
