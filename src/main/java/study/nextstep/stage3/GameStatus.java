@@ -11,8 +11,8 @@ public class GameStatus {
     private int totalGameTurn;
     private int currentGameTurn;
 
-    public GameStatus(int cars, int count) {
-        randomModule = new Random();
+    public GameStatus(int cars, int count, Random randomModule) {
+        this.randomModule = randomModule;
         status = new ArrayList<>();
         for(int i = 0; i < cars; i ++ ){
             status.add(1);
@@ -22,20 +22,16 @@ public class GameStatus {
         this.currentGameTurn = 0;
     }
 
-    public void setRandomModule(Random randomModule){
-        this.randomModule = randomModule;
-    }
-
     public boolean isTurnEnd() {
         return currentGameTurn >= totalGameTurn;
     }
 
     public void turn() {
         currentGameTurn++;
-        if( isTurnEnd() ) return;
+        if (isTurnEnd()) return;
 
         for(int i = 0; i < status.size(); i ++ ){
-            if( THRESHOLD_CAR_MOVE_RANDOM_VAL <= randomModule.nextInt(CAR_MOVE_RANDOM_GENERATE_VAL) ){
+            if (THRESHOLD_CAR_MOVE_RANDOM_VAL <= randomModule.nextInt(CAR_MOVE_RANDOM_GENERATE_VAL)){
                 status.set(i, status.get(i) + 1);
             }
         }
@@ -46,7 +42,7 @@ public class GameStatus {
     }
 
     public int renderCarPosition(int car) {
-        if( car >= size() )
+        if (car >= size())
             throw new IllegalArgumentException();
         return status.get(car);
     }

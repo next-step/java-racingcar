@@ -6,34 +6,12 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class RacingGame {
-    private static final String CAR_PATH_CHARACTER = "-";
-
-    class DefaultStandardIORenderer implements Renderer {
-        @Override
-        public void render(GameStatus status) {
-            for(int i = 0; i < status.size(); i ++){
-                System.out.println(CAR_PATH_CHARACTER.repeat(status.renderCarPosition(i)));
-            }
-            System.out.println();
-        }
-
-        @Override
-        public void renderFirstStatus(GameStatus status) {
-            System.out.println("실행 결과");
-            render(status);
-        }
-    }
-
     public GameStatus gameStatus;
     private Renderer renderModule;
 
-    public RacingGame(InputView view) {
-        gameStatus = new GameStatus(view.getCars(), view.getCount());
-    }
-
-    public RacingGame randomModule(Random randomModule){
-        gameStatus.setRandomModule(randomModule);
-        return this;
+    public RacingGame(InputView view, Random randomModule) {
+        gameStatus = new GameStatus(view.getCars(), view.getCount(), randomModule);
+        renderModule = new DefaultStandardIORenderer();
     }
 
     public void run(){
