@@ -8,6 +8,10 @@ public class Car {
     private int position;
     private String name;
 
+    public Car(String name) {
+        this.name = name;
+    }
+
     public Integer getPosition() {
         return position;
     }

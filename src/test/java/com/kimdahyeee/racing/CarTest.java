@@ -4,6 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
@@ -15,7 +18,7 @@ class CarTest {
     @DisplayName("자동차는 랜덤 값이 4 미만이면 전진하지 않는다.")
     @ValueSource(ints = {1, 3})
     void stop(int randomValue) {
-        Car car = spy(Car.class);
+        Car car = spy(new Car("name"));
         when(car.getRandomNumber()).thenReturn(randomValue);
 
         car.move();
@@ -27,7 +30,7 @@ class CarTest {
     @DisplayName("자동차는 랜덤 값이 4 이상이면 전진한다.")
     @ValueSource(ints = {4, 5, 9})
     void move(int randomValue) {
-        Car car = spy(Car.class);
+        Car car = spy(new Car("name"));
         when(car.getRandomNumber()).thenReturn(randomValue);
 
         car.move();
