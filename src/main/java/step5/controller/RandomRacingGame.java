@@ -23,9 +23,7 @@ public class RandomRacingGame {
     );
 
     printResultText();
-    while (!racing.isRaceEnd()) {
-      printRace(racing.race());
-    }
+    while (!racing.isRaceEnd()) printRace(racing.race());
     printWinner(racing.getWinners());
   }
 

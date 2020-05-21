@@ -22,7 +22,7 @@ public class Racing {
   private Racing(final Cars cars, final int time, final MoveStrategy moveStrategy) {
     validateTime(time);
     this.moveStrategy = moveStrategy;
-    this.time = Arrays.stream(new int[time]).boxed().iterator();
+    this.time = Arrays.stream(new int[time]).iterator();
     this.cars = cars;
   }
 
