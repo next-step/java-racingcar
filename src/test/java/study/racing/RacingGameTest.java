@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import study.racing.model.Car;
+import study.racing.utils.RacingUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -52,5 +53,20 @@ public class RacingGameTest {
         for(int i=0; i<carList.size(); i++) {
             assertThat(carList.get(i).getPosition()).isEqualTo(moves.get(i));
         }
+    }
+
+    @Test
+    void get_winners() {
+        List<Integer> moves = Arrays.asList(1, 5, 4);
+
+        for(int i=0; i<carList.size(); i++) {
+            for(int j=0; j<moves.get(i); j++) {
+                carList.get(i).move();
+            }
+        }
+
+        assertThat(RacingUtils.getWinners(carList).size()).isEqualTo(1);
+        assertThat(RacingUtils.getWinners(carList).get(0).getName()).isEqualTo("car2");
+        assertThat(RacingUtils.getWinners(carList).get(0).getPosition()).isEqualTo(5);
     }
 }
