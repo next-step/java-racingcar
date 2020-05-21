@@ -11,7 +11,7 @@ public class Racing {
 
     private final CarsJoinRacing racingCar;
     private final RacingRule racingRule;
-    private int raceTime;
+    private final int raceTime;
 
     private Racing(RacingRule racingRule, String carNames, int raceTime) {
         checkRacingCount(raceTime);
