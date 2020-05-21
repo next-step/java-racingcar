@@ -10,19 +10,9 @@ public class Car {
     private String name;
     private int position;
 
-    public Car() {
-        this.position = 1;
-    }
-
     public Car(String name) {
         this.name = name;
         this.position = 1;
-    }
-
-    public static void ready(int carCount) {
-        carList = new ArrayList<>();
-        for (int i = 0; i < carCount; i++)
-            carList.add(new Car());
     }
 
     public static List<Car> ready(String[] carName) {
