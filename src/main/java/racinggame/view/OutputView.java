@@ -9,7 +9,7 @@ public class OutputView {
     private static final String WINNER_COMBINER = ",";
 
     public static void announceResult(RacingGameResult racingGameResult) {
-        racingGameResult.findAllSnapshots()
+        racingGameResult.getResults()
                 .forEach(OutputView::printTrackOf);
 
         System.out.printf("%s가 최종우승하였습니다.", String.join(WINNER_COMBINER, racingGameResult.findFinalWinners()));

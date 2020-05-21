@@ -18,7 +18,7 @@ public class RacingGame {
         int currentRound = 1;
 
         while (isRemainingRacingGame(currentRound)) {
-            racingGameResult.record(currentRound, racingCars.race(engine));
+            racingGameResult.record(racingCars.race(engine));
             currentRound++;
         }
 

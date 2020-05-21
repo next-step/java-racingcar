@@ -24,7 +24,7 @@ class RacingCarsTest {
         //then
         assertAll(
                 () -> assertThat(snapshot.getCarSnapshots().size()).isEqualTo(3),
-                () -> assertThat(snapshot.findWinner()).isEqualTo(Arrays.asList("a", "c"))
+                () -> assertThat(snapshot.findWinners()).isEqualTo(Arrays.asList("a", "c"))
         );
     }
 }

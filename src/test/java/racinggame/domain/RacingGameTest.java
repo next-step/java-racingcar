@@ -26,7 +26,7 @@ class RacingGameTest {
 
         //then
         assertAll(
-                () -> assertThat(racingGameResult.findAllSnapshots().size()).isEqualTo(numberOfAttempt),
+                () -> assertThat(racingGameResult.getResults().size()).isEqualTo(numberOfAttempt),
                 () -> assertThat(racingGameResult.findFinalWinners()).isEqualTo(Arrays.asList("a", "c"))
         );
     }
