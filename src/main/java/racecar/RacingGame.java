@@ -34,7 +34,7 @@ public class RacingGame {
         Random random = new Random();
         for (Car car : carList) {
             car.move(random);
-            ResultView.print(car);
+            ResultView.printStatus(car);
         }
         System.out.println();
     }

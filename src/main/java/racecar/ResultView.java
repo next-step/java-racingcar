@@ -8,7 +8,7 @@ public class ResultView {
         System.out.println("\n실행 결과");
     }
 
-    public static void print(Car car) {
+    public static void printStatus(Car car) {
         System.out.println(car.printStatus());
     }
 
