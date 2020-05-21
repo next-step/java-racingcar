@@ -23,17 +23,15 @@ public class CarGroupsTest {
         CarGroups racingCars = new CarGroups(CarFactory.makeCars(carNames));
 
         int carCounts = carNames.length;
-        assertThat(racingCars.getCarGroups().size())
+        assertThat(racingCars.getCarNames().size())
                 .isEqualTo(carCounts);
 
-        boolean isPositionsDefaultZero = racingCars.getCarGroups().stream()
-                .allMatch(car -> car.getPosition() == 0);
+        boolean isPositionsDefaultZero = racingCars.getCarPositions().stream()
+                .allMatch(position -> position == 0);
         assertThat(isPositionsDefaultZero)
                 .isEqualTo(true);
 
-        List<String> testTargetCarNames = racingCars.getCarGroups().stream()
-                .map(Car::getName)
-                .collect(Collectors.toList());
+        List<String> testTargetCarNames = racingCars.getCarNames();
         List<String> originCarNames = Arrays.asList(carNames);
         List<String> filteredList = testTargetCarNames.stream()
                 .filter(target -> originCarNames.stream().allMatch(Predicate.isEqual(target)))
@@ -42,15 +40,15 @@ public class CarGroupsTest {
                 .isEqualTo(0);
     }
 
-    @DisplayName("CarGroups에 Move를 요청함")
+    @DisplayName("CarGroups에 Move 요청 뒤 position 테스트")
     @ParameterizedTest
     @MethodSource("mockCarNamesBuilder")
     public void moveCarGroups(String[] carNames) {
         CarGroups carGroups = new CarGroups(CarFactory.makeCars(carNames));
         carGroups.move();
-        boolean isCarGroupsMoved = carGroups.getCarGroups()
+        boolean isCarGroupsMoved = carGroups.getCarPositions()
                 .stream()
-                .allMatch(car -> car.getPosition() >= 0);
+                .allMatch(position -> position >= 0);
         assertThat(isCarGroupsMoved).isEqualTo(true);
     }
 

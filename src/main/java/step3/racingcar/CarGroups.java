@@ -1,6 +1,7 @@
 package step3.racingcar;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarGroups {
 
@@ -10,8 +11,16 @@ public class CarGroups {
         this.carGroups = carGroups;
     }
 
-    public List<Car> getCarGroups() {
-        return carGroups;
+    public List<String> getCarNames() {
+        return this.carGroups.stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
+    public List<Integer> getCarPositions() {
+        return this.carGroups.stream()
+                .map(Car::getPosition)
+                .collect(Collectors.toList());
     }
 
     public void move() {
