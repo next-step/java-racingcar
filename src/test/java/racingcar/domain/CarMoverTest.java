@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.domain.strategy.FalseMoveStrategy;
+import racingcar.domain.strategy.TrueMoveStrategy;
 
 import java.util.List;
 
@@ -23,9 +25,9 @@ class CarMoverTest {
         assertThat(positions.size()).isEqualTo(carCount);
     }
 
-    @DisplayName("자동차를 이동시키면 자동차의 위치는 이동 전과 같거나 크다")
+    @DisplayName("랜덤하게 자동차를 움직이는 strategy를 사용할 때 자동차를 이동시키면 자동차의 위치는 이동 전과 같거나 크다")
     @Test
-    void move_Then_positionIsEqualOrGreaterThanBeforePosition() {
+    void moveWithRandomMoveStrategy_Then_positionIsEqualOrGreaterThanBeforePosition() {
         List<Car> cars = TestCarFactory.createList(5);
         CarMover mover = new CarMover(new RandomMoveStrategy());
 
@@ -34,5 +36,27 @@ class CarMoverTest {
         for (int i = 0; i < positions.size(); i++) {
             assertThat(positions.get(i).getPosition() >= 0).isTrue();
         }
+    }
+
+    @DisplayName("자동차를 움직이는 strategy을 사용할 때 자동차를 이동시키면 자동차의 위치는 이동 전보다 1 크다")
+    @Test
+    void moveWithTrueMoveStrategy_Then_positionIs1GreaterThanBeforePosition() {
+        Cars cars = new Cars(TestCarFactory.createList(1));
+        CarMover mover = new CarMover(new TrueMoveStrategy());
+
+        Cars moved = mover.move(cars);
+
+        assertThat(moved.get(0).getPosition()).isEqualTo(cars.get(0).getPosition() + 1);
+    }
+
+    @DisplayName("자동차를 안 움직이는 strategy을 사용할 때 자동차를 이동시키면 자동차의 위치는 이동 전과 같다")
+    @Test
+    void moveWithFalseMoveStrategy_Then_positionIs1GreaterThanBeforePosition() {
+        Cars cars = new Cars(TestCarFactory.createList(1));
+        CarMover mover = new CarMover(new FalseMoveStrategy());
+
+        Cars moved = mover.move(cars);
+
+        assertThat(moved.get(0).getPosition()).isEqualTo(cars.get(0).getPosition());
     }
 }
