@@ -41,19 +41,23 @@ public class RacingGame {
     }
 
     public List<RacingCar> startRacing() {
-        start();
+        moveForwardRacingCars();
+        return convertToRacingCarList();
+    }
+
+    private List<RacingCar> convertToRacingCarList() {
         return racingCars.stream()
             .map(car -> new RacingCar(car.getName(), car.currentPosition()))
             .collect(Collectors.toList());
     }
 
-    private List<RacingCar> start() {
-        racingCars.forEach(this::forwardRacingCar);
+    private List<RacingCar> moveForwardRacingCars() {
+        racingCars.forEach(this::moveForward);
 
         return racingCars;
     }
 
-    private void forwardRacingCar(RacingCar racingCar) {
+    private void moveForward(RacingCar racingCar) {
         if (movingStrategy.isMovable()) {
            racingCar.forward();
         }
