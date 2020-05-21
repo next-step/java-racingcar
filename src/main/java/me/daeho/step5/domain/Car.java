@@ -1,6 +1,4 @@
-package me.daeho.step3;
-
-import me.daeho.step3.rule.ForwardRule;
+package me.daeho.step5.domain;
 
 public class Car {
     private static final int INITIAL_POSITION = 0;
