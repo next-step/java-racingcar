@@ -5,9 +5,11 @@ import game.ui.RacingGameResultView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
+import java.util.stream.Collectors;
 
 public class RacingGame {
+    private static final int INIT_POSITION = 0;
+
     private final MovePolicy movePolicy;
     private final RacingGameInputView racingGameInputView;
     private final RacingGameResultView racingGameResultView;
@@ -19,16 +21,18 @@ public class RacingGame {
     }
 
     public void play() {
-        int numberOfCar = racingGameInputView.getNumberOfCar();
+        List<CarName> carNameList = racingGameInputView.getCarNameList();
         int time = racingGameInputView.getTime();
         List<Car> carList = new ArrayList<>();
-        IntStream.range(0, numberOfCar).forEach(i -> carList.add(new Car(i, 0, movePolicy)));
+        carNameList.forEach(carName -> carList.add(new Car(carName, INIT_POSITION, movePolicy)));
 
         for (int i = 0; i < time; i++) {
-            racingGameResultView.printRound(i+1);
+            racingGameResultView.printRound(i + 1);
             carList.forEach(Car::move);
-            carList.forEach(car -> racingGameResultView.printResult(car.getPosition()));
+            carList.forEach(racingGameResultView::printResult);
         }
 
+        int winScore = carList.stream().max((o1, o2) -> o1.getPosition() - o2.getPosition()).map(Car::getPosition).orElse(INIT_POSITION);
+        racingGameResultView.announceWinner(carList.stream().filter(c -> c.getPosition() >= winScore).map(Car::getCarName).collect(Collectors.toList()));
     }
 }

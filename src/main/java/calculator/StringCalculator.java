@@ -16,7 +16,7 @@ public class StringCalculator {
         for (int i = LOOP_INITIAL_NUMBER; i < splitInput.length; i += LOOP_COUNTER) {
             int number = Integer.parseInt(splitInput[i + NEXT_NUMBER_OFFSET]);
 
-            Operator operator = Operator.OperatorFactory(splitInput[i]);
+            Operator operator = Operator.generateOperatorBySymbol(splitInput[i]);
             answer = operator.operate(answer, number);
         }
 

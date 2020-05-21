@@ -17,7 +17,7 @@ class OperatorTest {
     @ParameterizedTest
     @MethodSource("source_calculate_validOperator_shouldSucceed")
     public void calculate_validOperator_shouldSucceed(String operator, Operator expected) {
-        assertThat(Operator.OperatorFactory(operator)).isEqualTo(expected);
+        assertThat(Operator.generateOperatorBySymbol(operator)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> source_calculate_validOperator_shouldSucceed() {
@@ -34,7 +34,7 @@ class OperatorTest {
     @ValueSource(strings = {"(", "@", "a", "1234"})
     public void calculate_invalidOperator_shouldFail(String operator) {
         assertThatThrownBy(() -> {
-            Operator.OperatorFactory(operator);
+            Operator.generateOperatorBySymbol(operator);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }

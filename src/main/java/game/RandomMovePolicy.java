@@ -6,19 +6,14 @@ public class RandomMovePolicy implements MovePolicy {
 
     private static final int RANDOM_BOUND = 10;
     private static final int MOVE_THRESH_HOLD = 4;
-    private static final int MOVING_RANGE = 1;
-    private final Random rand;
-
-    public RandomMovePolicy(Random rand) {
-        this.rand = rand;
-    }
+    private final Random rand = new Random();
 
     @Override
-    public int getPosition(int currentPosition) {
+    public boolean isMovable() {
         int randomNumber = rand.nextInt(RANDOM_BOUND);
         if (randomNumber < MOVE_THRESH_HOLD) {
-            return currentPosition;
+            return false;
         }
-        return currentPosition + MOVING_RANGE;
+        return true;
     }
 }

@@ -7,10 +7,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class RacingGameTest {
@@ -25,11 +26,12 @@ class RacingGameTest {
         RacingGame racingGame = new RacingGame(movePolicy, racingGameInputView, racingGameResultView);
 
         when(racingGameInputView.getTime()).thenReturn(time);
-        when(racingGameInputView.getNumberOfCar()).thenReturn(numberOfCar);
+        List<CarName> carNameList = IntStream.range(0, numberOfCar).mapToObj(i -> new CarName("")).collect(Collectors.toList());
+        when(racingGameInputView.getCarNameList()).thenReturn(carNameList);
 
         racingGame.play();
 
-        verify(movePolicy, times(expected)).getPosition(anyInt());
+        verify(movePolicy, times(expected)).isMovable();
     }
 
     private static Stream<Arguments> source_verify_numberOfMove_shouldSucceed() {
