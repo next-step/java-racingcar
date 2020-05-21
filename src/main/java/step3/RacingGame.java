@@ -5,14 +5,14 @@ import step2.StringUtil;
 import java.util.*;
 
 public class RacingGame {
+    private final static int CAR_CNT_MIN = 1;
+    private final static int TIME_CNT_MIN = 1;
     private int carCnt;
     private int time;
     private int[] carPositions;
     private String[] carNames;
     private List<Car> cars = new ArrayList<>();
     private Map<Integer, int[]> record = new HashMap<>();
-    private final static int CAR_CNT_MIN = 1;
-    private final static int TIME_CNT_MIN = 1;
     private int maxPosition = 0;
     private Map<Integer, List<String>> recordOfName = new HashMap<>();
 
