@@ -18,6 +18,6 @@ public class Main {
             OutputView.printRacingCars(racingCars);
         }
 
-        OutputView.printRacingGameWinner(racingGame.getRacingCars());
+        OutputView.printRacingGameWinner(racingGame.getWinners());
     }
 }
