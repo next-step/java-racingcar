@@ -7,6 +7,6 @@ public class ResultView {
     }
 
     public static void print(Car car) {
-        System.out.println(car.makePositionStatus());
+        System.out.println(car.printStatus());
     }
 }

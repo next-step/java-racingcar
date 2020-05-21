@@ -27,7 +27,7 @@ public class Car {
     public static List<Car> ready(String[] carName) {
         carList = new ArrayList<>();
         for (int i = 0, carSize = carName.length; i < carSize; i++)
-            carList.add(new Car(carName[i]));
+            carList.add(new Car(carName[i].trim()));
         return carList;
     }
 
@@ -42,9 +42,13 @@ public class Car {
         return this.position;
     }
 
-    public String makePositionStatus() {
-        String result = "-".repeat(position);
+    public String printStatus() {
+        String status = "-".repeat(position);
+        String result = name + " : " + status;
         return result;
     }
 
+    public String getName() {
+        return name;
+    }
 }
