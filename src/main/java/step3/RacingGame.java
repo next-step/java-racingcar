@@ -15,7 +15,7 @@ public class RacingGame {
 
         for (int time = 0; time < inputView.getInputTime(); time++) {
             cars.playGame();
-            System.out.println("");
+            System.out.println("============"+(time +1) +"실행 끝==================");
         }
     }
 
