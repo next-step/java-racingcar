@@ -1,4 +1,4 @@
-package step4.car;
+package step4.domain;
 
 import java.util.Random;
 
