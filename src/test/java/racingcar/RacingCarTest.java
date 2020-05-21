@@ -21,9 +21,10 @@ public class RacingCarTest {
 
   @BeforeEach
   void setUp() {
-    int carNum = 4;
     int attemptNum = 3;
-    gameController = GameController.create(carNum, attemptNum);
+    String line = "honux, pobi, crong";
+    String[] names = line.split(", ");
+    gameController = GameController.create(attemptNum, names);
   }
 
 
@@ -92,5 +93,12 @@ public class RacingCarTest {
       assertThat(game.getCars().get(i).getPosition())
           .isNotEqualTo(game.getCars().get(i + 1).getPosition());
     });
+  }
+
+  @Test
+  void 입력한_이름이_자동차_이름이_된다() {
+    assertThat(gameController.getGame().getCars().get(0).getName()).isEqualTo("honux");
+    assertThat(gameController.getGame().getCars().get(1).getName()).isEqualTo("pobi");
+    assertThat(gameController.getGame().getCars().get(2).getName()).isEqualTo("crong");
   }
 }
