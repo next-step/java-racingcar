@@ -1,4 +1,4 @@
-package step4.car;
+package step5.domain;
 
 import java.util.*;
 import java.util.stream.Collectors;

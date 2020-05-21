@@ -1,4 +1,4 @@
-package step4.car;
+package step5.domain;
 
 public class Trace {
     private final String name;
