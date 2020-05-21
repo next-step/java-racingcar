@@ -1,18 +1,15 @@
 package step3;
 
-import com.sun.tools.javac.util.StringUtils;
-
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
-public class outPutView {
+public class OutputView {
     private static String MARK = "-";
-    public void resultPrint(ArrayList<Integer> cars){
-        for (Integer position : cars){
-            drawRepeat(position);
+    public void resultPrint(List<Car> cars){
+        for (Car car : cars){
+            drawRepeat(car.getPosition());
         }
     }
-
     private void drawRepeat(int times){
         String join = String.join("", Collections.nCopies(times, MARK));
         System.out.println(join);
