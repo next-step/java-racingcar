@@ -2,20 +2,23 @@ package step3;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGame {
-    private ArrayList<Car> carpositions = new ArrayList<>();
-    private OutputView outputView = new OutputView();
-    public RacingGame(int carCount) {
-        for (int i = 0; i < carCount; i++) {
-            this.carpositions.add(new Car());
+
+    public static void main(String[] args) {
+
+        InputView inputView = new InputView();
+        Cars cars = new Cars();
+
+        inputView.scanner();
+        cars.makeCars(inputView.getCarCount());
+
+        for (int time = 0; time < inputView.getInputTime(); time++) {
+            cars.playGame();
+            System.out.println("");
         }
     }
-    public void playGame() {
-        for (Car car:carpositions) {
-            car.canGo();
-        }
-        outputView.resultPrint(carpositions);
-    }
+
+
+
 }
