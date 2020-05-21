@@ -1,26 +1,13 @@
 package step3;
 
+import step3.domain.RacingGame;
+import step3.view.InputView;
+
 public class RacingMain {
     public static void main(String[] args) {
-        callRacingGameWithName();
-    }
-
-    private static void callRacingGame() {
-        InputView inputView = new InputView();
-        int carCnt = inputView.inputCarCount();
-        int time = inputView.inputTimeCount();
-        RacingGame racingGame = new RacingGame(carCnt, time);
-        racingGame.racingStart();
-        racingGame.printRacing();
-    }
-
-    private static void callRacingGameWithName() {
-        InputView inputView = new InputView();
-        String carsName = inputView.inputCarsName();
-        int time = inputView.inputTimeCount();
-        RacingGame racingGame = new RacingGame(carsName, time);
-        racingGame.racingStart();
-        racingGame.printRacingWithName();
-        racingGame.printRacingWinner();
+        RacingGameController racingGameController = new RacingGameController();
+        racingGameController.racingStart();
+        racingGameController.printRacingWithName();
+        racingGameController.printWinner();
     }
 }
