@@ -7,3 +7,10 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 구현할 기능 목록
+* 주사위: 1~9 랜덤숫자
+* 유저로부터 값을 입력받을 inputView Class
+* 현재 Position에 따른 출력 outputView Class
+* 해당 말(car)을 표현할 수 있는 car객체
+* car List를 다룰 Cars클래스 및 내부에 게임 시작 기능
