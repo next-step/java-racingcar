@@ -1,4 +1,4 @@
-package step3;
+package step3.domain;
 
 import step2.StringUtil;
 
@@ -41,14 +41,6 @@ public class RacingGame {
         }
     }
 
-    public void printRacing() {
-        ResultView resultView = new ResultView();
-        resultView.printTitle();
-        for (int i = 0; i < time; i++) {
-            resultView.printRoundCarPosition(record.get(i));
-        }
-    }
-
     public int[] getCarPositions() {
         return carPositions;
     }
@@ -59,17 +51,12 @@ public class RacingGame {
         return recordOfName.get(maxPosition);
     }
 
-    public void printRacingWithName() {
-        ResultView resultView = new ResultView();
-        resultView.printTitle();
-        for (int i = 0; i < time; i++) {
-            resultView.printRoundCarPositionWithName(cars, record.get(i));
-        }
+    public List<Car> getCars() {
+        return cars;
     }
 
-    public void printRacingWinner() {
-        ResultView resultView = new ResultView();
-        resultView.printRacingWinner(getWinner());
+    public Map<Integer, int[]> getRecord() {
+        return record;
     }
 
     private void getMaxPosition() {
