@@ -1,4 +1,4 @@
-package me.daeho.step3.rule;
+package me.daeho.step5.domain;
 
 import java.util.Random;
 
