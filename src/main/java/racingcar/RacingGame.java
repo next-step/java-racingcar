@@ -12,10 +12,10 @@ public class RacingGame {
   }
 
   private static void playGame() {
-    int carNum = InputView.getUserInput(InputView.carInputMessage);
-    int attemptNum = InputView.getUserInput(InputView.attemptInputMessage);
+    String[] names = InputView.getUserStringInput(InputView.carInputMessage).split(", ");
+    int attemptNum = InputView.getUserNumInput(InputView.attemptInputMessage);
 
-    GameController gameController = GameController.create(carNum, attemptNum);
+    GameController gameController = GameController.create(attemptNum, names);
     Game playedGame = gameController.proceedGame();
     ResultView resultView = ResultView.create(playedGame);
     resultView.printView();
