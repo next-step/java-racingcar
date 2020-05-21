@@ -21,13 +21,18 @@ public abstract class Car {
 
     /** 자동차 현재 위치 */
     private int position = 1;
+    private String name = "";
     /** random int range */
     private static final int MAX_RANDOM_COUNT = 10;
     /** MOVEABLE NUMBER */
     private static final int MOVEABLE_NUMBER = 4;
-    private List<Integer> record = new ArrayList<Integer>();
+    private List<Integer> record = new ArrayList<>();
     private Random rand = new Random();
 
+    public Car(String name) {
+        this.name = name;
+        this.record.add(this.position);
+    }
     /**
      * @return position 위치 리턴
      */
@@ -37,6 +42,10 @@ public abstract class Car {
 
     public int getRecord(int i) {
         return record.get(i);
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public void move() {

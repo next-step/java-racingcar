@@ -9,6 +9,7 @@ package edu.next.racing.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 레이싱게임 클래스
@@ -20,21 +21,20 @@ public class RacingGame {
 
     /** repetition count */
     private int time = 0;
+    private int winnerPosition = 0;
     /** car object list */
     private List<Car> cars = new ArrayList<>();
+    private List<Car> winner = new ArrayList<>();
 
-    public RacingGame(int carCounts, int time) {
-        this.setCars(carCounts);
+    public RacingGame(String[] inputCars, int time) {
+        for (String name : inputCars) {
+            this.setCars(name);
+        }
         this.time = time;
     }
-    /**
-     * 자동차 객체 리스트 생성
-     * @param carCounts 사용자 입력한 숫자
-     */
-    private void setCars(int carCounts) {
-        for (int i = 0; i < carCounts; i++) {
-            cars.add(new RacingCar());
-        }
+
+    private void setCars(String name) {
+        cars.add(new RacingCar(name));
     }
 
     public int getTime() {
@@ -44,7 +44,16 @@ public class RacingGame {
     public void move() {
         cars.forEach(car -> {
             car.move();
+            winnerPosition = (car.getPosition() > winnerPosition)
+                                ? car.getPosition()
+                                : winnerPosition;
         });
+    }
+
+    public List<Car> getWinner() {
+        return cars.stream()
+                .filter(car -> car.getPosition() == winnerPosition)
+                .collect(Collectors.toList());
     }
 
     public List<Car> execute() {

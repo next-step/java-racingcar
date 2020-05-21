@@ -26,9 +26,10 @@ public class RacingGameApp {
         RacingGame racingGame = new RacingGame(inputView.displayCreateCarCountUi(),
                                                 inputView.displayGameTimeInputUi());
         /** result ui */
-        ResultView resultView = new ResultView(racingGame.execute(), racingGame.getTime());
+        ResultView resultView = new ResultView(racingGame.execute(),
+                                                racingGame.getTime(),
+                                                racingGame.getWinner());
         resultView.displayRacingResult();
-
     }
 
 }
