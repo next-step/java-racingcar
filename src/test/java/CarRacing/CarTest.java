@@ -27,7 +27,7 @@ public class CarTest {
     @DisplayName("Car Back Move")
     public void carBackMoveTest() {
         Position position = new Position();
-        position.setLocation(1);
+        position.move(1);
         Car car = new Car("1", position);
         car.move(Direction.BACK);
         assertThat(car.isLocationAt(0)).isTrue();
@@ -40,5 +40,21 @@ public class CarTest {
             Car car = new Car("1", new Position());
             car.move(Direction.BACK);
         }).isInstanceOf(IllegalStateException.class);
+    }
+
+    @Test
+    @DisplayName("Car Progress Test With True Value")
+    public void carProgressTestWithTrueValue() {
+        Car car = new Car("1", new Position());
+        car.progress(new RandomMinValue());
+        assertThat(car.isLocationAt(1)).isTrue();
+    }
+
+    @Test
+    @DisplayName("Car Progress Test With False Value")
+    public void carProgressTestWithFalseValue() {
+        Car car = new Car("1", new Position());
+        car.progress(new RandomMaxValue());
+        assertThat(car.isLocationAt(0)).isTrue();
     }
 }

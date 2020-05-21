@@ -15,6 +15,7 @@ public class CarRacingView implements View{
         initView();
         StringBuffer resultString = new StringBuffer();
         carList.stream().forEach( car -> {
+            resultString.append(car.getName()).append(" : ");
             for(int i=0 ; i <= car.getLocation(); i++) {
                 resultString.append("-");
             }
@@ -24,7 +25,6 @@ public class CarRacingView implements View{
         endView();
     }
 
-    @Override
     public void initView() {
         System.out.println("");
         System.out.println("실행결과");
@@ -33,6 +33,15 @@ public class CarRacingView implements View{
     @Override
     public void endView() {
         System.out.println("");
+    }
+
+    public void resultView(List<Car> winnerList) {
+        StringBuffer resultString = new StringBuffer();
+        winnerList.stream().forEach( car -> {
+            resultString.append(car.getName()).append(", ");
+        });
+        resultString.append("가 최종 우승했습니다.");
+        System.out.println(resultString.toString());
     }
 
 }

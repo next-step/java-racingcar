@@ -8,8 +8,17 @@ public class Position {
         return location;
     }
 
-    public void setLocation(int location) {
+    public void move(int moveValue) {
+        this.setLocation(this.location + moveValue);
+    }
+
+    private void setLocation(int location) {
         this.location = location;
     }
+
+    public boolean validate() {
+        return this.location < 0;
+    }
+
 
 }

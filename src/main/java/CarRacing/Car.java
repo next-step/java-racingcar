@@ -2,6 +2,7 @@ package CarRacing;
 
 public class Car {
 
+    private String name;
     private String number;
     private Position position;
     private final int  MOVE_CHECK_VALUE = 4;
@@ -11,25 +12,35 @@ public class Car {
         this.position = position;
     }
 
-    public void move(Direction direction) {
-            direction.exec(this.position);
+    public Car(String name, String number, Position position) {
+        this.name = name;
+        this.number = number;
+        this.position = position;
     }
 
-    public void progress() {
-        if (this.moveCheck()) {
-            this.move(Direction.FORWARD);
-        }
+    public String getName() {
+        return name;
+    }
+
+    public void move(Direction direction) {
+        direction.exec(this.position);
     }
 
     public int getLocation() {
         return position.getLocation();
     }
 
+    public void progress(RandomValue randomValue) {
+        if (this.moveCheck(randomValue)) {
+            this.move(Direction.FORWARD);
+        }
+    }
+
     public boolean isLocationAt(int location) {
         return this.getLocation() == location;
     }
 
-    private boolean moveCheck() {
-        return RandomValue.getRandomValue() >= MOVE_CHECK_VALUE;
+    private boolean moveCheck(RandomValue randomValue) {
+        return randomValue.getRandomValue() >= MOVE_CHECK_VALUE;
     }
 }
