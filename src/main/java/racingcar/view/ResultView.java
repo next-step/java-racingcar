@@ -3,6 +3,7 @@ package racingcar.view;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.domain.Car;
 import racingcar.domain.Game;
 
 public class ResultView {
@@ -18,8 +19,9 @@ public class ResultView {
     for (int carSizeIndex = 0; carSizeIndex < game.getCars().size(); carSizeIndex++) {
       String currentView = makeView(carSizeIndex);
       resultList.add(currentView);
-      System.out.println(currentView);
+      System.out.println(game.getCars().get(carSizeIndex).getName() + " " + currentView);
     }
+    winnerView(this.game.getCars()).forEach(element -> System.out.println("우승자: " + element.getName()));
     return this;
   }
 
@@ -32,12 +34,15 @@ public class ResultView {
     return stringBuilder.toString();
   }
 
-  public Game getGame() {
-    return game;
-  }
+  public List<Car> winnerView(List<Car> cars) {
+    int longest = cars.stream()
+        .mapToInt(Car::getPosition)
+        .max()
+        .orElseThrow(() -> new RuntimeException("무엇인가 이상하네요."));
 
-  public List<String> getResultList() {
-    return resultList;
+    return cars.stream()
+        .filter(car -> car.getPosition() == longest)
+        .collect(Collectors.toList());
   }
 
   public List<Integer> getResultListSize() {
