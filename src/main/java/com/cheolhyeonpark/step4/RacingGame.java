@@ -1,34 +1,26 @@
 package com.cheolhyeonpark.step4;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingGame {
-
-    public static final int CAR_START_POSITION = 0;
 
     private final Stage stage;
     private int stageLeft;
 
-    public RacingGame(int numberOfCars, int stageLeft) {
-        validate(numberOfCars, stageLeft);
-        this.stage = new Stage(new Dice(), getCars(numberOfCars));
+    public RacingGame(String namesOfCars, int stageLeft) {
+        validate(stageLeft);
+        this.stage = new Stage(new Dice(), new CarMaker().getCars(namesOfCars));
         this.stageLeft = stageLeft;
     }
 
-    private void validate(int numberOfCars, int stageLeft) {
-        if (isNegativeInput(numberOfCars, stageLeft)) {
+    private void validate(int stageLeft) {
+        if (isNegativeInput(stageLeft)) {
             throw new IllegalArgumentException("Only positive input is allowed. Please check your input data.");
         }
     }
 
-    private boolean isNegativeInput(int numberOfCars, int stageLeft) {
-        return numberOfCars < 0 || stageLeft < 0;
-    }
-
-    private List<Car> getCars(int numberOfCars) {
-        return IntStream.range(0, numberOfCars).mapToObj(i -> new Car("carName", CAR_START_POSITION)).collect(Collectors.toList());
+    private boolean isNegativeInput(int number) {
+        return number < 0;
     }
 
     public void playStage() {

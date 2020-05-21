@@ -14,31 +14,32 @@ import static org.mockito.Mockito.*;
 class RacingGameTest {
 
     @ParameterizedTest
-    @CsvSource(value = {"-1, 0", "0, -1", "-1, -1"})
+    @CsvSource(value = {"test1, -1", "test2, -2", "test3, -3"})
     @DisplayName("음수 입력시 예외 발생")
-    public void throwExceptionWhenThereIsNegativeInput(int numberOfCars, int stageLeft) {
-        assertThatIllegalArgumentException().isThrownBy(() -> new RacingGame(numberOfCars, stageLeft));
+    public void throwExceptionWhenThereIsNegativeInput(String namesOfCars, int stageLeft) {
+        assertThatIllegalArgumentException().isThrownBy(() -> new RacingGame(namesOfCars, stageLeft));
     }
 
     @Test
     @DisplayName("입렫받은 차의 대수 만큼 Car객체를 생성해야한다")
     public void getCars() {
         //given
-        int numberOfCars = 3;
-        RacingGame racingGame = new RacingGame(numberOfCars, 0);
+        String namesOfCars = "testCar1,testCar2,testCar3";
+        RacingGame racingGame = new RacingGame(namesOfCars, 0);
 
         //when
         List<Car> cars = racingGame.getResultOfStage();
 
         //then
-        assertThat(cars.size()).isEqualTo(numberOfCars);
+        assertThat(cars.size()).isEqualTo(3);
     }
 
     @Test
     @DisplayName("스테이지 실행 확인")
     public void runStage() {
         //given
-        RacingGame racingGame = spy(new RacingGame(3, 5));
+        String namesOfCars = "testCar1,testCar2,testCar3";
+        RacingGame racingGame = spy(new RacingGame(namesOfCars, 5));
 
         //when
         racingGame.playStage();
@@ -51,7 +52,8 @@ class RacingGameTest {
     @DisplayName("스테이지가 남아있는지 검사")
     public void checkStageLeft() {
         //given
-        RacingGame racingGame = new RacingGame(3, 1);
+        String namesOfCars = "testCar1,testCar2,testCar3";
+        RacingGame racingGame = new RacingGame(namesOfCars, 1);
         boolean hasStageLeftBeforePlay = racingGame.hasNextStage();
 
         //when
