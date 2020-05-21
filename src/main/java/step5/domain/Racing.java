@@ -38,16 +38,12 @@ public class Racing {
     return !time.hasNext();
   }
 
-  public String getWinners () throws WinnerException {
+  public Stream<Car> getWinners () throws WinnerException {
     validateWinner();
     int winnerPosition = this.cars.stream()
                                   .map(v -> v.getPosition())
-                                  .max(Integer::compare)
-                                  .get();
-    return this.cars.stream()
-                    .filter(v -> v.getPosition() == winnerPosition)
-                    .map(v -> v.getName())
-                    .collect(Collectors.joining(", "));
+                                  .reduce(-1, Math::max);
+    return this.cars.stream().filter(v -> v.getPosition() == winnerPosition);
   }
 
   public void validateTime (int time) {
