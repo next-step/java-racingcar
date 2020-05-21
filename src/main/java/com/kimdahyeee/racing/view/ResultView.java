@@ -14,9 +14,9 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void print(List<Car> carPositions) {
+    public static void print(List<Car> cars) {
         sleepOneSecondForPrint();
-        for (Car car : carPositions) {
+        for (Car car : cars) {
             printByOneCar(car);
         }
         System.out.println();
@@ -31,10 +31,19 @@ public class ResultView {
     }
 
     private static void printByOneCar(Car car) {
+        System.out.print(car.getName() + " : ");
         for (int i = 0; i <= car.getPosition(); i++) {
             System.out.print(CAR_POSITION_DISPLAY);
         }
         System.out.println();
     }
 
+    public static void printWinner(List<Car> cars) {
+        String winners = cars.stream()
+                .map(Car::getName)
+                .reduce((s, s2) -> String.join(", ", s, s2))
+                .get();
+
+        System.out.println(winners + "가 최종 우승했습니다.");
+    }
 }

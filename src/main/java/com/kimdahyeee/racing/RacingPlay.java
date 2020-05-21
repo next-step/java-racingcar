@@ -20,6 +20,8 @@ public class RacingPlay {
             racingGame.move();
             ResultView.print(racingGame.getRacingCars());
         }
+
+        ResultView.printWinner(racingGame.getWinners());
     }
 
     private static List<String> getCarNames(String names) {
