@@ -2,6 +2,7 @@ package step4;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class RacingGame {
@@ -21,7 +22,19 @@ public class RacingGame {
     }
 
     public void readyRacingCars(String carName) {
-        String[] carNames = carName.trim().split(DELIMITER);
+        String[] carNames = convertToCarNames(carName);
+        initRacingCars(carNames);
+    }
+
+    private String[] convertToCarNames(String carName) {
+        if(Objects.isNull(carName) || carName.isEmpty()) {
+            throw new IllegalArgumentException("경주할 자동차 이름을 반드시 입력해주세요.");
+        }
+
+        return carName.trim().split(DELIMITER);
+    }
+
+    private void initRacingCars(String[] carNames) {
         this.racingCars = Arrays.stream(carNames)
             .map(RacingCar::ready)
             .collect(Collectors.toList());
