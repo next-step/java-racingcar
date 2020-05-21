@@ -1,16 +1,19 @@
 package step5.domain;
 
+import step4.RandomRacingGame;
+
 import java.util.Random;
 
 public class RandomNumberMoveStrategy implements MoveStrategy {
 
   private final Random RANDOM;
+  private static MoveStrategy instance;
 
-  public RandomNumberMoveStrategy() {
+  private RandomNumberMoveStrategy() {
     this(new Random());
   }
 
-  public RandomNumberMoveStrategy(final Random RANDOM) {
+  private RandomNumberMoveStrategy(final Random RANDOM) {
     this.RANDOM = RANDOM;
   }
 
@@ -22,5 +25,9 @@ public class RandomNumberMoveStrategy implements MoveStrategy {
   @Override
   public boolean isMoved (int number) {
     return number >= 4;
+  }
+
+  public static MoveStrategy getInstance() {
+    return instance != null ? instance : new RandomNumberMoveStrategy();
   }
 }
