@@ -1,7 +1,8 @@
-package me.daeho.step3;
+package me.daeho.step5;
 
-import me.daeho.step3.rule.DefaultForwardRule;
-import me.daeho.step3.rule.ForwardRule;
+import me.daeho.step5.domain.RacingGame;
+import me.daeho.step5.domain.DefaultForwardRule;
+import me.daeho.step5.domain.ForwardRule;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

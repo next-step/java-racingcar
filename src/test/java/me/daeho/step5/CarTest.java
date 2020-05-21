@@ -1,6 +1,7 @@
-package me.daeho.step3;
+package me.daeho.step5;
 
-import me.daeho.step3.rule.DefaultForwardRule;
+import me.daeho.step5.domain.Car;
+import me.daeho.step5.domain.DefaultForwardRule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
