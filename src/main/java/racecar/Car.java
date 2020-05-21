@@ -46,9 +46,13 @@ public class Car {
         return this.position;
     }
 
-    public String printStatus() {
+    public String makePositionStatus() {
         String status = "-".repeat(position);
-        String result = name + " : " + status;
+        return status;
+    }
+
+    public String printStatus() {
+        String result = name + " : " + makePositionStatus();
         return result;
     }
 }
