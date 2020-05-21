@@ -101,4 +101,55 @@ public class RacingCarTest {
     assertThat(gameController.getGame().getCars().get(1).getName()).isEqualTo("pobi");
     assertThat(gameController.getGame().getCars().get(2).getName()).isEqualTo("crong");
   }
+
+  @Test
+  void 우승자가_한_명일때_정상적으로_출력된다() {
+
+    //given
+    Car car1 = Car.create("honux");
+    car1.updatePosition(4);
+    Car car2 = Car.create("crong");
+    car2.updatePosition(3);
+    Car car3 = Car.create("pobi");
+    car3.updatePosition(3);
+
+    List<Car> carList = new ArrayList<>();
+    carList.add(car1);
+    carList.add(car2);
+    carList.add(car3);
+
+    //when
+    Game gameOne = Game.create(carList);
+    ResultView resultViewForOne = ResultView.create(gameOne);
+
+    //then
+    assertThat(resultViewForOne.winnerView(carList).size()).isEqualTo(1);
+    assertThat(resultViewForOne.winnerView(carList).get(0).getName()).isEqualTo("honux");
+  }
+
+  @Test
+  void 우승자가_두_명일때_정상적으로_출력된다() {
+
+    //given
+    Car car1 = Car.create("honux");
+    car1.updatePosition(8);
+    Car car2 = Car.create("crong");
+    car2.updatePosition(8);
+    Car car3 = Car.create("pobi");
+    car3.updatePosition(3);
+
+    List<Car> carList = new ArrayList<>();
+    carList.add(car1);
+    carList.add(car2);
+    carList.add(car3);
+
+    //when
+    Game gameOne = Game.create(carList);
+    ResultView resultViewForOne = ResultView.create(gameOne);
+
+    //then
+    assertThat(resultViewForOne.winnerView(carList).size()).isEqualTo(2);
+    assertThat(resultViewForOne.winnerView(carList).get(0).getName()).isEqualTo("honux");
+    assertThat(resultViewForOne.winnerView(carList).get(1).getName()).isEqualTo("crong");
+  }
 }
