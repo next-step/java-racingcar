@@ -1,10 +1,10 @@
-package step5;
+package step4;
 
-import step5.domain.CarFactory;
-import step5.domain.RacingGame;
-import step5.domain.ResultRecorder;
-import step5.view.InputView;
-import step5.view.ResultView;
+import step4.domain.CarFactory;
+import step4.domain.RacingGame;
+import step4.domain.ResultRecorder;
+import step4.view.InputView;
+import step4.view.ResultView;
 
 public class Main {
 
