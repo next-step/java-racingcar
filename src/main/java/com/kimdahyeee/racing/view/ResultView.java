@@ -9,13 +9,18 @@ public class ResultView {
     private static final String CAR_POSITION_DISPLAY = "-";
     private static final int TIME_TO_SLEEP = 1;
 
-    public static void printHeader() {
+    public static void printHeader(List<Car> cars) {
         System.out.println();
         System.out.println("실행 결과");
+        printCarPosition(cars);
     }
 
     public static void print(List<Car> cars) {
         sleepOneSecondForPrint();
+        printCarPosition(cars);
+    }
+
+    private static void printCarPosition(List<Car> cars) {
         for (Car car : cars) {
             printByOneCar(car);
         }
