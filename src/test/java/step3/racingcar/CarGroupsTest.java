@@ -6,24 +6,40 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarGroupsTest {
 
-    @DisplayName("CarGroups 일급 컬렉션 생성 테스트 (CarFactory를 이용)")
+    @DisplayName("CarGroups 일급 컬렉션 정상 생성 테스트 (CarFactory를 이용)")
     @ParameterizedTest
     @MethodSource("mockCarNamesBuilder")
     public void getNewCarGroupUsingCarFactory(String[] carNames) {
         CarGroups racingCars = new CarGroups(CarFactory.makeCars(carNames));
-        int carCounts = carNames.length;
 
+        int carCounts = carNames.length;
         assertThat(racingCars.getCarGroups().size())
                 .isEqualTo(carCounts);
-        // CarGroups 일급 컬렉션 내부의 List<Car>의 초기 position값 0을 확인하는 테스트
-        // 반복문을 사용하지 않고 map으로 list화해서 테스트 해보기
-        // 이름 테스트 또한 진행
+
+        boolean isPositionsDefaultZero = racingCars.getCarGroups().stream()
+                .allMatch(car -> car.getPosition() == 0);
+        assertThat(isPositionsDefaultZero)
+                .isEqualTo(true);
+
+        List<String> testTargetCarNames = racingCars.getCarGroups().stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
+        List<String> originCarNames = Arrays.asList(carNames);
+        List<String> filteredList = testTargetCarNames.stream()
+                .filter(target -> originCarNames.stream().allMatch(Predicate.isEqual(target)))
+                .collect(Collectors.toList());
+        assertThat(filteredList.size())
+                .isEqualTo(0);
     }
 
     private static Stream<Arguments> mockCarNamesBuilder() {
