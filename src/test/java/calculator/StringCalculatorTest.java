@@ -71,8 +71,7 @@ class StringCalculatorTest {
     @CsvSource({"1", "1 + ", "+ +", "1 + 1 +", "1 + 1 3"})
     public void validationCheckElementCount(String formula) {
         Throwable throwable = catchThrowable(() -> {
-            StringCalculator stringCalculator = new StringCalculator(formula);
-            stringCalculator.calculate();
+            new StringCalculator(formula);
         });
 
         assertThat(throwable).isInstanceOf(IllegalArgumentException.class)

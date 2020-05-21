@@ -1,56 +1,48 @@
 package racingcar.race;
 
-import java.util.ArrayList;
+import racingcar.DiceRacingRule;
+import racingcar.RacingDice;
+
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Racing {
 
-    private final List<Car> carList = new ArrayList<>();
-    private final Dice dice;
-    private int raceTime = 0;
+    private static final RacingRule DEFAULT_RACING_RULE = new DiceRacingRule(RacingDice.newInstance());
 
-    public Racing(Dice dice, int raceTime) {
+    private final CarsJoinRacing racingCar;
+    private final RacingRule racingRule;
+    private int raceTime;
+
+    private Racing(RacingRule racingRule, String carNames, int raceTime) {
         checkRacingCount(raceTime);
 
         this.raceTime = raceTime;
-        this.dice = dice;
+        this.racingRule = racingRule;
+        this.racingCar = CarsJoinRacing.newInstance(carNames);
     }
 
-    public void joinRace(int carCount) {
-        for(int i = 0 ; i < carCount ; i++) {
-            carList.add(new Car());
-        }
+    public static Racing applyRacing(String carNames, int raceTime) {
+        return applyRacing(DEFAULT_RACING_RULE, carNames, raceTime);
+    }
+
+    public static Racing applyRacing(RacingRule racingRule, String carNames, int raceTime) {
+        return new Racing(racingRule == null ? DEFAULT_RACING_RULE : racingRule, carNames, raceTime);
     }
 
     public void start(GameResultReceiver receiver) {
         for(int i = 0 ; i < raceTime ; i++) {
-            race();
-            receiver.notifyFinishRace(getRaceResult());
+            racingCar.race(racingRule);
+            receiver.notifyFinishRace(racingCar.getRaceResult());
         }
+    }
+
+    public List<RacingScoreCard> getWinner() {
+        return racingCar.getWinner();
     }
 
     private void checkRacingCount(int racingCount) {
         if(racingCount <= 0) {
             throw new IllegalArgumentException("The number of racingCount must be at least 1.");
         }
-    }
-
-    private List<Integer> getRaceResult() {
-        return carList.stream().map(Car::getPosition).collect(Collectors.toList());
-    }
-
-    private void race() {
-        for(Car car : carList) {
-            car.drive(getMoveForwardCount());
-        }
-    }
-
-    private int getMoveForwardCount() {
-        int forwardCount = 1;
-        if( dice.generate() < 4) {
-            forwardCount = 0;
-        }
-        return forwardCount;
     }
 }
