@@ -5,24 +5,20 @@ import java.util.Scanner;
 public class InputViewProcessor {
 
     private static final Scanner scanner = new Scanner(System.in);
-    private static final int INPUT_LIMIT = 1;
+    private static final String SEPARATOR = ",";
 
     private InputViewProcessor() {
     }
 
-    public static int getUserInput(String instructionMessage) {
+    public static String[] getCarNames(String instructionMessage) {
         System.out.println(instructionMessage);
-        int userInput = scanUserInput();
-        validateUserInput(userInput);
+        String[] carNames = scanner.next().split(SEPARATOR);
+        return carNames;
+    }
+
+    public static int getGameTryCounts(String instructionMessage) {
+        System.out.println(instructionMessage);
+        int userInput = scanner.nextInt();
         return userInput;
-    }
-
-    private static int scanUserInput() {
-        return scanner.nextInt();
-    }
-
-    private static void validateUserInput(int userInput) {
-        if (userInput < INPUT_LIMIT)
-            throw new IllegalArgumentException(Message.ERROR);
     }
 }

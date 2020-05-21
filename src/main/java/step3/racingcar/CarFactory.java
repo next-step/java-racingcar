@@ -1,17 +1,17 @@
 package step3.racingcar;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class CarFactory {
 
     private CarFactory() {
     }
 
-    public static List<Car> makeCars(int carCounts) {
-        return Stream.generate(() -> new Car(new RandomMovingStrategy()))
-                .limit(carCounts)
+    public static List<Car> makeCars(String[] carNames) {
+        return Arrays.stream(carNames)
+                .map(name -> new Car(name, new RandomMovingStrategy()))
                 .collect(Collectors.toList());
     }
 }
