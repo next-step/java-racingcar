@@ -8,20 +8,18 @@ import racingcar.view.ResultView;
 
 public class GameController {
 
-  private int carNum;
   private int attemptNum;
   private Game game;
 
-  private GameController(int carNum, int attemptNum) {
-    this.carNum = carNum;
+  private GameController(int attemptNum, String[] names) {
     this.attemptNum = attemptNum;
-    this.game = Game.create(gameCars(this.carNum));
+    this.game = Game.create(gameCars(names));
   }
 
-  private List<Car> gameCars(int carNum) {
+  private List<Car> gameCars(String[] names) {
     List<Car> carList = new ArrayList<>();
-    for (int i = 0; i < carNum; i++) {
-      carList.add(Car.create("car " + i));
+    for (String name : names) {
+      carList.add(Car.create(name));
     }
     return carList;
   }
@@ -38,10 +36,6 @@ public class GameController {
     return resultView.printView();
   }
 
-  public int getCarNum() {
-    return carNum;
-  }
-
   public int getAttemptNum() {
     return attemptNum;
   }
@@ -50,7 +44,7 @@ public class GameController {
     return game;
   }
 
-  public static GameController create(int carNum, int attemptNum) {
-    return new GameController(carNum, attemptNum);
+  public static GameController create(int attemptNum, String[] names) {
+    return new GameController(attemptNum, names);
   }
 }
