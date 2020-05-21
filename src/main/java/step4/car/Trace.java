@@ -16,4 +16,8 @@ public class Trace {
     public int getPosition() {
         return position;
     }
+
+    public boolean isSamePosition(int position){
+        return this.position == position;
+    }
 }

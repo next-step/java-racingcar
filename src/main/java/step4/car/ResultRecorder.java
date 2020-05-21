@@ -24,7 +24,7 @@ public class ResultRecorder {
         int maxPosition = findMaxPosition(last);
 
         return last.stream()
-                .filter(trace -> trace.getPosition() == maxPosition)
+                .filter(trace -> trace.isSamePosition(maxPosition))
                 .map(Trace::getName)
                 .collect(Collectors.toList());
     }
