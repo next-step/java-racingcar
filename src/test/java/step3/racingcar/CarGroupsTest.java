@@ -34,7 +34,7 @@ public class CarGroupsTest {
         List<String> testTargetCarNames = carGroups.getCarNames();
         List<String> originCarNames = Arrays.asList(carNames);
         List<String> filteredList = testTargetCarNames.stream()
-                .filter(target -> originCarNames.stream().allMatch(Predicate.isEqual(target)))
+                .filter(target -> originCarNames.stream().noneMatch(Predicate.isEqual(target)))
                 .collect(Collectors.toList());
         assertThat(filteredList.size())
                 .isEqualTo(0);
@@ -65,11 +65,10 @@ public class CarGroupsTest {
 
     private static Stream<Arguments> mockCarNamesBuilder() {
         return Stream.of(
-                Arguments.of(
-                       new String[]{"a", "b", "c", "d", "e"},
-                       new String[]{"java", "js", "python", "go"},
-                       new String[]{"tdd", "cleanCode"}
-                )
+                Arguments.of((Object) new String[]{"a", "b", "c", "d", "e"}),
+                Arguments.of((Object) new String[]{"java", "js", "python", "go"}),
+                Arguments.of((Object) new String[]{"a"}),
+                Arguments.of((Object) new String[]{"tdd", "cleanCode"})
         );
     }
 }

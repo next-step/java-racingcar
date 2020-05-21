@@ -30,8 +30,7 @@ public class RacingGame {
             playerCars.move();
             ResultViewProcessor.printResult(playerCars);
         }
-        //List<Car> winnerCars = Car.getWinnerCars(cars);
-        //ResultViewProcessor.printWinnerNames(winnerCars);
+        ResultViewProcessor.printWinnerCarNames(playerCars);
     }
 
     public String[] getCarNames() {

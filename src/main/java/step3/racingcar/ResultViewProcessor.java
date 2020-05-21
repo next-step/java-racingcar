@@ -34,11 +34,12 @@ public class ResultViewProcessor {
         System.out.println();
     }
 
-    public static void printWinnerNames(List<Car> winnerCars) {
+    public static void printWinnerCarNames(CarGroups carGroups) {
+        List<String> winnerCarNames = carGroups.getWinnerCarNames();
         StringBuilder stringBuilder = new StringBuilder();
-        for (Car car : winnerCars) {
+        for (String winnerCarName : winnerCarNames) {
             appendComma(stringBuilder);
-            stringBuilder.append(car.getName());
+            stringBuilder.append(winnerCarName);
         }
         System.out.println(stringBuilder.toString() + Message.RESULT_FOOTER);
     }

@@ -36,27 +36,4 @@ class CarTest {
                 Arguments.of((Object) "java,js,python,r".split(","))
         );
     }
-
-    @DisplayName("가장 많이 주행한 car 객체 list를 리턴받는 테스트")
-    @ParameterizedTest
-    @MethodSource("mockCarFactory")
-    public void getWinnerCars(String[] carNames) {
-        //Given
-        List<Car> cars = CarFactory.makeCars(carNames);
-        List<Car> cars2 = CarFactory.makeCars(carNames);
-
-        //When
-        for (int i = 0; i < 10; i++) {
-            cars.forEach(Car::move);
-        }
-        List<Car> winnerCars = Car.getWinnerCars(cars);
-        List<Car> winnerCars2 = Car.getWinnerCars(cars2);
-
-        //Then
-        assertThat(winnerCars.size()).isBetween(1, carNames.length);
-        assertThat(winnerCars2.size()).isEqualTo(cars2.size());
-        for (Car car : winnerCars) {
-            assertThat(car.getPosition() == winnerCars.get(0).getPosition()).isTrue();
-        }
-    }
 }
