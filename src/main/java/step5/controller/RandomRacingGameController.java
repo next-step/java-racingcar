@@ -5,6 +5,8 @@ import step5.Exception.WinnerException;
 import step5.domain.*;
 import step5.view.*;
 
+import java.util.stream.Stream;
+
 import static step5.view.ResultView.*;
 
 /**
@@ -36,15 +38,21 @@ public class RandomRacingGameController {
     return Racing.of(Cars.of(cars), time, moveStrategy);
   }
 
-  public void resultRacing (Racing racing) throws WinnerException {
-    printResultText();
+  public Stream<Car> getRaceWinners (Racing racing) throws WinnerException {
     while (!racing.isRaceEnd()) printRace(racing.race());
-    printWinner(racing.getWinners());
+    return racing.getWinners();
+  }
+
+  public void printRacingResult (Racing racing) throws WinnerException {
+    printResultText();
+    printWinner(getRaceWinners(racing));
   }
 
   public static void main(String[] args) throws WinnerException {
     RandomRacingGameController controller = new RandomRacingGameController();
-    controller.resultRacing(controller.createRacing());
+    controller.printRacingResult(
+      controller.createRacing()
+    );
   }
 
 }

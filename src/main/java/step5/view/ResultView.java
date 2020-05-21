@@ -31,7 +31,8 @@ public class ResultView {
     );
   }
 
-  public static void printWinner (String winners) {
+  public static void printWinner (Stream<Car> cars) {
+    String winners = cars.map(v -> v.getName()).collect(Collectors.joining(", "));
     System.out.printf("%s가 최종 우승 했습니다.\n", winners);
   }
 
