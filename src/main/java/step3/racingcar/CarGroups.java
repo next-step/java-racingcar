@@ -13,4 +13,8 @@ public class CarGroups {
     public List<Car> getCarGroups() {
         return carGroups;
     }
+
+    public void move() {
+        this.carGroups.forEach(Car::move);
+    }
 }
