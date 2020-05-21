@@ -28,7 +28,7 @@ public class RacingGame {
     }
 
     private List<Car> getCars(int numberOfCars) {
-        return IntStream.range(0, numberOfCars).mapToObj(i -> new Car(CAR_START_POSITION)).collect(Collectors.toList());
+        return IntStream.range(0, numberOfCars).mapToObj(i -> new Car("carName", CAR_START_POSITION)).collect(Collectors.toList());
     }
 
     public void playStage() {

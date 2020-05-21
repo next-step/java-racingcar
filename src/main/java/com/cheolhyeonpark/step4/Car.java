@@ -4,9 +4,11 @@ import java.util.Objects;
 
 public class Car {
 
+    private String name;
     private int position;
 
-    public Car(int position) {
+    public Car(String name, int position) {
+        this.name = name;
         this.position = position;
     }
 
@@ -14,6 +16,10 @@ public class Car {
         if (isMovable) {
             this.position++;
         }
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getPosition() {
@@ -25,11 +31,12 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return position == car.position;
+        return position == car.position &&
+                Objects.equals(name, car.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position);
+        return Objects.hash(name, position);
     }
 }
