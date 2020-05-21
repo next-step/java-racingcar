@@ -1,5 +1,6 @@
-package step4.car;
+package step5.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
@@ -49,10 +50,11 @@ public class RacingGame {
     }
 
     private void tryMove() {
+        List<Trace> traces = new ArrayList<>();
         for (Car car : entryCars) {
-            car.move(movingStrategy);
+            traces.add(car.move(movingStrategy));
         }
-        resultRecorder.recordCurrentPosition(entryCars);
+        resultRecorder.recordCurrentPosition(traces);
     }
 
     private void tryCountCheck(int tryCount) {

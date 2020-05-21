@@ -1,4 +1,4 @@
-package step4.car;
+package step5.domain;
 
 public class Trace {
     private final String name;
@@ -15,5 +15,9 @@ public class Trace {
 
     public int getPosition() {
         return position;
+    }
+
+    public boolean isSamePosition(int position) {
+        return this.position == position;
     }
 }
