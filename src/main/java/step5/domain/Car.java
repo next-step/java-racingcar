@@ -1,8 +1,5 @@
 package step5.domain;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
-
 public class Car {
   private final String name;
   private int position;

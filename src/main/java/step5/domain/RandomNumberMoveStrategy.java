@@ -28,6 +28,7 @@ public class RandomNumberMoveStrategy implements MoveStrategy {
   }
 
   public static MoveStrategy getInstance() {
-    return instance != null ? instance : new RandomNumberMoveStrategy();
+    if (instance == null) instance = new RandomNumberMoveStrategy();
+    return instance;
   }
 }
