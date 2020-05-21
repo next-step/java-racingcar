@@ -21,12 +21,22 @@ public class Racing {
         this.racingCar = CarsJoinRacing.newInstance(carNames);
     }
 
+    private Racing(RacingRule racingRule, CarsJoinRacing carsJoinRacing, int raceTime) {
+        this.raceTime = raceTime;
+        this.racingRule = racingRule;
+        this.racingCar = carsJoinRacing;
+    }
+
     public static Racing applyRacing(String carNames, int raceTime) {
         return applyRacing(DEFAULT_RACING_RULE, carNames, raceTime);
     }
 
     public static Racing applyRacing(RacingRule racingRule, String carNames, int raceTime) {
         return new Racing(racingRule == null ? DEFAULT_RACING_RULE : racingRule, carNames, raceTime);
+    }
+
+    public static Racing applyRacing(RacingRule racingRule, CarsJoinRacing racingCar, int raceTime) {
+        return new Racing(racingRule == null ? DEFAULT_RACING_RULE : racingRule, racingCar, raceTime);
     }
 
     public void start(GameResultReceiver receiver) {

@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.DiceRacingRule;
 import racingcar.RacingDice;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
@@ -95,17 +96,19 @@ class RacingTest {
     @DisplayName("우승자가 제대로 리턴되는지 테스트")
     @Test
     public void getWinnerAfterFinalRacingTest() {
-        final int[] winnerTargetIndex = {1, 2};
-
-        Racing racing = Racing.applyRacing(new RacingTestRule(winnerTargetIndex),
-                DEFAULT_CONNECT_CAR_NAMES,
-                1);
+        List<Car> cars = List.of(
+                new Car("벤츠", 1),
+                new Car("제네시스", 2),
+                new Car("아우디", 4),
+                new Car("볼보", 4));
+        Racing racing = Racing.applyRacing(() -> 1, CarsJoinRacing.newInstance(cars),1);
         racing.start(racingScorecards -> {});
         List<RacingScoreCard> list = racing.getWinner();
 
         List<String> winnerNames = list.stream().map(RacingScoreCard::getName).collect(Collectors.toList());
+
         assertThat(winnerNames.size()).isEqualTo(2);
-        assertThat(winnerNames).contains("test02", "test03");
+        assertThat(winnerNames).contains("아우디", "볼보");
     }
 
 }
