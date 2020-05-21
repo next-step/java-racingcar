@@ -13,11 +13,12 @@ class RacingGameTest {
 
     @Test
     @DisplayName("RacingGameTest 초기화 테스")
-    void move() {
+    void moveCars() {
 
         List<RacingCar> racingCarList = new ArrayList<>();
-        RacingGame racingGameTest = new RacingGame(2, racingCarList);
+        String[] CarNames = {"pobi", "ggang"};
 
-        assertThat(racingCarList.size()).isEqualTo(2);
+        RacingGame racingGameTest = new RacingGame(CarNames);
+        assertThat(racingGameTest.getRacingCarList()).hasSize(2);
     }
 }

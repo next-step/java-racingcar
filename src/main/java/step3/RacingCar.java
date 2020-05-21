@@ -5,9 +5,18 @@ public class RacingCar {
     private static final int MOVE_DISTANCE = 1;
 
     private int currentPosition;
+    private String carName;
+
+    public RacingCar(String inputCarName) {
+        this.carName = inputCarName;
+    }
 
     public int getCurrentPosition() {
         return currentPosition;
+    }
+
+    public String getCarName() {
+        return carName;
     }
 
     public void move(int power) {
