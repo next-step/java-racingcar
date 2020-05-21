@@ -6,4 +6,8 @@
    
  - Car 테스트 
    1. Mockito 사용하지 않고 테스트를 위해 inner Class로 테스트용 ForwardRule 구현체 사용 
+   
+ - Controller 추가
+   1. Controller를 통해 RacingGame 제어 
+   2. 각 기능에 대한 validation 추가
     
