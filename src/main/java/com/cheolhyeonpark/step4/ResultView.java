@@ -18,6 +18,7 @@ public class ResultView {
     }
 
     public void printPosition(Car car) {
+        System.out.print(car.getName() + " : ");
         IntStream.range(0, car.getPosition()).mapToObj(i -> POSITION_BAR).forEach(System.out::print);
         System.out.println();
     }
