@@ -42,6 +42,18 @@ public class CarGroupsTest {
                 .isEqualTo(0);
     }
 
+    @DisplayName("CarGroups에 Move를 요청함")
+    @ParameterizedTest
+    @MethodSource("mockCarNamesBuilder")
+    public void moveCarGroups(String[] carNames) {
+        CarGroups carGroups = new CarGroups(CarFactory.makeCars(carNames));
+        carGroups.move();
+        boolean isCarGroupsMoved = carGroups.getCarGroups()
+                .stream()
+                .allMatch(car -> car.getPosition() >= 0);
+        assertThat(isCarGroupsMoved).isEqualTo(true);
+    }
+
     private static Stream<Arguments> mockCarNamesBuilder() {
         return Stream.of(
                 Arguments.of(

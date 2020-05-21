@@ -24,7 +24,7 @@ public class RacingGame {
     }
 
     public void run() {
-        List<Car> cars = CarFactory.makeCars(this.carNames);
+        CarGroups playerCars = new CarGroups(CarFactory.makeCars(this.carNames));
         ResultViewProcessor.printResultHeader(Message.RESULT_HEADER);
         for (int i = INDEX_ZERO; i < gameTryCounts; i++) {
             cars.forEach(Car::move);
