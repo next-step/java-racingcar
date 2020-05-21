@@ -9,18 +9,14 @@ public class InputView {
     private final Scanner scanner = new Scanner(System.in);
 
     public RacingGame settingRacingGame() {
-        int carCount = getCarCount();
+        String[] carNames = getCarNames();
         int time = getTime();
-        return new RacingGame(carCount, time);
+        return new RacingGame(carNames, time);
     }
 
-    private int getCarCount() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        try{
-            return scanner.nextInt();
-        } catch (InputMismatchException e) {
-            throw new InputMismatchException("숫자가 아닙니다.");
-        }
+    private String[] getCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        return scanner.next().split(",");
     }
 
     private int getTime() {

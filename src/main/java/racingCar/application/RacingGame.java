@@ -2,20 +2,17 @@ package racingCar.application;
 
 import racingCar.domain.MoveBehavior;
 import racingCar.domain.RacingCar;
-import racingCar.domain.RandomMove;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.*;
 
 public class RacingGame {
-    private final int carCount;
+    private final String[] carNames;
     private final int time;
     private List<RacingCar> racingCarList;
 
-    public RacingGame(int carCount, int time) {
-        validateRange(carCount, time);
-        this.carCount = carCount;
+    public RacingGame(String[] carNames, int time) {
+        validateRange(carNames.length, time);
+        this.carNames = carNames;
         this.time = time;
         initRacingCars();
     }
@@ -27,9 +24,8 @@ public class RacingGame {
     }
 
     private void initRacingCars() {
-        racingCarList = Stream.generate(RacingCar::new)
-                            .limit(carCount)
-                            .collect(Collectors.toList());
+        racingCarList = new ArrayList<>();
+        Arrays.stream(carNames).forEach(name -> racingCarList.add(new RacingCar(name)));
     }
 
     // TODO 구현
