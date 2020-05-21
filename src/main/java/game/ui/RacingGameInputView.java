@@ -1,7 +1,11 @@
 package game.ui;
 
+import game.CarName;
+
+import java.util.List;
+
 public interface RacingGameInputView {
     public int getTime();
 
-    public int getNumberOfCar();
+    public List<CarName> getCarNameList();
 }

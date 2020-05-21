@@ -14,7 +14,7 @@ class CarTest {
     @Test
     public void verify_callMovePolicy_shouldSucceed() {
         MovePolicy movePolicy = mock(MovePolicy.class);
-        Car car = new Car(0, movePolicy);
+        Car car = new Car(new CarName(""), 0, movePolicy);
         car.move();
         verify(movePolicy).isMovable();
     }
@@ -26,7 +26,7 @@ class CarTest {
         MovePolicy movePolicy = mock(MovePolicy.class);
         when(movePolicy.isMovable()).thenReturn(true);
 
-        Car car = new Car(initPosition, movePolicy);
+        Car car = new Car(new CarName(""), initPosition, movePolicy);
         for (int i = 0; i < round; i++) {
             car.move();
         }
@@ -40,7 +40,7 @@ class CarTest {
         MovePolicy movePolicy = mock(MovePolicy.class);
         when(movePolicy.isMovable()).thenReturn(false);
 
-        Car car = new Car(initPosition, movePolicy);
+        Car car = new Car(new CarName(""), initPosition, movePolicy);
         for (int i = 0; i < round; i++) {
             car.move();
         }

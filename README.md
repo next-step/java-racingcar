@@ -36,7 +36,7 @@
    * 자동차에 이름을 부여할 수 있다.
    * interface.RacingGameInputView
       * int getTime(): comment 출력 후 게임 횟수를 입력받고 반환
-      * List<CarName> getCarList(): comment 출력 후 Car 이름을 입력받고 반환
+      * List<CarName> getCarNameList(): comment 출력 후 Car 이름을 입력받고 반환
    * class.ConsoleRacingGameInputView
       * RacingGameInputView 구현체
 4. 자동차의 상태를 화면에 출력한다. 어느 시점에 출력할 것인지에 대한 제약은 없다.

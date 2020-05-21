@@ -5,9 +5,10 @@ import game.ui.RacingGameResultView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class RacingGame {
+    private static final int INIT_POSITION = 0;
+
     private final MovePolicy movePolicy;
     private final RacingGameInputView racingGameInputView;
     private final RacingGameResultView racingGameResultView;
@@ -19,10 +20,10 @@ public class RacingGame {
     }
 
     public void play() {
-        int numberOfCar = racingGameInputView.getNumberOfCar();
+        List<CarName> carNameList = racingGameInputView.getCarNameList();
         int time = racingGameInputView.getTime();
         List<Car> carList = new ArrayList<>();
-        IntStream.range(0, numberOfCar).forEach(i -> carList.add(new Car(0, movePolicy)));
+        carNameList.forEach(carName -> carList.add(new Car(carName, INIT_POSITION, movePolicy)));
 
         for (int i = 0; i < time; i++) {
             racingGameResultView.printRound(i + 1);
