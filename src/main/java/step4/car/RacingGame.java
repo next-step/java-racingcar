@@ -1,45 +1,37 @@
 package step4.car;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class RacingGame {
 
     private final int tryCount;
-    private final List<Car> entryCars = new ArrayList<>();
-    private MovingStrategy movingStrategy;
-    private ResultRecorder resultRecorder;
+    private final List<Car> entryCars;
+    private final MovingStrategy movingStrategy;
+    private final ResultRecorder resultRecorder;
 
-    private RacingGame(int tryCount, MovingStrategy movingStrategy) {
+    private RacingGame(int tryCount, MovingStrategy movingStrategy, List<Car> entryCars) {
         tryCountCheck(tryCount);
         this.tryCount = tryCount;
         this.movingStrategy = movingStrategy;
+        this.entryCars = entryCars;
+        this.resultRecorder = new ResultRecorder();
     }
 
-    public void registerCars(String[] names) {
-        validNamesCheck(names);
-        for (String name : names) {
-            entryCars.add(Car.of(name));
-        }
-    }
-
-    public void startGame(){
+    public void startGame() {
         registerCarCheck();
-        initGame();
 
         for (int i = 0; i < tryCount; i++) {
             tryMove();
         }
     }
 
-    public static RacingGame of(int tryCount) {
-        return new RacingGame(tryCount, null);
+    public static RacingGame of(int tryCount, List<Car> cars) {
+        return new RacingGame(tryCount, new RandomMovingStrategy(), cars);
     }
 
     // 테스트용
-    public static RacingGame of(int tryCount, MovingStrategy strategy) {
-        return new RacingGame(tryCount, strategy);
+    public static RacingGame of(int tryCount, MovingStrategy strategy, List<Car> cars) {
+        return new RacingGame(tryCount, strategy, cars);
     }
 
     public List<Car> getEntryCars() {
@@ -50,31 +42,10 @@ public class RacingGame {
         return resultRecorder;
     }
 
-    private void validNamesCheck(String[] names) {
-        if (names == null || names.length <= 0) {
-            throw new IllegalArgumentException("차량 이름 목록이 null 이거나 비어있습니다.");
-        }
-
-        Arrays.stream(names)
-                .forEach(name -> {
-                    if (name == null || name.replaceAll(" ", "").isEmpty()) {
-                        throw new IllegalArgumentException("차량 이름이 유효하지 않습니다. " + name);
-                    }
-                });
-    }
-
     private void registerCarCheck() {
-        if (entryCars.isEmpty()) {
+        if (entryCars == null || entryCars.isEmpty()) {
             throw new IllegalStateException("차량이 등록되지 않았습니다.");
         }
-    }
-
-    private void initGame() {
-        if (movingStrategy == null) {
-            movingStrategy = new RandomMovingStrategy();
-        }
-        resultRecorder = new ResultRecorder();
-        entryCars.forEach(Car::initPosition);
     }
 
     private void tryMove() {

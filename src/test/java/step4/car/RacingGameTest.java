@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -17,10 +18,8 @@ class RacingGameTest {
         // given
         String[] names = {"Iron man", "Bat man", "Spider man"};
         int tryCount = 5;
-        RacingGame racingGame = RacingGame.of(tryCount);
-
-        // when
-        racingGame.registerCars(names);
+        List<Car> cars = CarFactory.createCars(names);
+        RacingGame racingGame = RacingGame.of(tryCount, cars);
 
         // then
         assertThat(racingGame.getEntryCars()).hasSize(3);
@@ -32,8 +31,8 @@ class RacingGameTest {
     public void startRacingGameTest(int tryCount) {
         // given
         String[] names = {"Iron man", "Bat man", "Spider man"};
-        RacingGame racingGame = RacingGame.of(tryCount);
-        racingGame.registerCars(names);
+        List<Car> cars = CarFactory.createCars(names);
+        RacingGame racingGame = RacingGame.of(tryCount, cars);
 
         // when
         racingGame.startGame();
@@ -46,7 +45,7 @@ class RacingGameTest {
     @DisplayName("차량 등록 안하고 start 메소드 호출 시 예외발생")
     public void whenCallStartMethodWithoutRegisterCarThenException(){
         // given
-        RacingGame racingGame = RacingGame.of(4);
+        RacingGame racingGame = RacingGame.of(4, null);
 
         // then
         assertThatIllegalStateException().isThrownBy(
@@ -60,13 +59,12 @@ class RacingGameTest {
     public void invalidCarNamesTest(String input){
         // given
         String[] names = input.split(",");
-        RacingGame racingGame = RacingGame.of(3);
 
         System.out.println(Arrays.toString(names));
 
         // then
         assertThatIllegalArgumentException().isThrownBy(
-                () -> racingGame.registerCars(names)
+                () -> CarFactory.createCars(names)
         );
     }
 }

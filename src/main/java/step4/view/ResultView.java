@@ -1,21 +1,22 @@
 package step4.view;
 
+import step4.car.Record;
+import step4.car.Trace;
+
 import java.util.List;
-import java.util.Map;
 
 public class ResultView {
 
-    public void print(List<Map<String, Integer>> result, List<String> winners){
+    public void print(List<Record> result, List<String> winners){
         System.out.println("실행 결과");
-        for (Map<String, Integer> positions : result) {
-            printResult(positions);
+        for (Record record : result) {
+            printResult(record.getTraces());
             System.out.println();
         }
         printWinner(winners);
     }
 
     private void printWinner(List<String> winners) {
-        System.out.println();
         StringBuilder sb = new StringBuilder();
         for (String winner : winners) {
             sb.append(winner).append(",");
@@ -25,16 +26,16 @@ public class ResultView {
         System.out.println(sb +"가 최종 우승했습니다.");
     }
 
-    private void printResult(Map<String, Integer> positions) {
-        for (Map.Entry<String, Integer> position : positions.entrySet()) {
-            System.out.print(position.getKey() + " ");
-            printPosition(position);
+    private void printResult(List<Trace> traces) {
+        for (Trace trace : traces) {
+            System.out.print(trace.getName() + " ");
+            printPosition(trace.getPosition());
             System.out.println();
         }
     }
 
-    private void printPosition(Map.Entry<String, Integer> position) {
-        for (int i = 0; i < position.getValue(); i++) {
+    private void printPosition(int position) {
+        for (int i = 0; i < position; i++) {
             System.out.print("-");
         }
     }
