@@ -25,10 +25,9 @@ public class RacingGame {
         IntStream.range(0, numberOfCar).forEach(i -> carList.add(new Car(0, movePolicy)));
 
         for (int i = 0; i < time; i++) {
-            racingGameResultView.printRound(i+1);
+            racingGameResultView.printRound(i + 1);
             carList.forEach(Car::move);
             carList.forEach(car -> racingGameResultView.printResult(car.getPosition()));
         }
-
     }
 }

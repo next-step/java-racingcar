@@ -5,8 +5,6 @@ import game.ui.ConsoleRacingGameResultView;
 import game.ui.RacingGameInputView;
 import game.ui.RacingGameResultView;
 
-import java.util.Random;
-
 public class Application {
 
     public static void main(String[] args) {
