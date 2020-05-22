@@ -38,6 +38,8 @@ public class ChampionTest {
     @Test
     @DisplayName("우승자 결정 메소드 테스트")
     void getChampionMethodTest(){
-        assertThat(new Champion(new Round(cars)).getChampions()).containsExactly("자동차5");
+
+        assertThat(new Champion(new Round(cars)).getChampions())
+                                                .containsExactly("자동차5");
     }
 }

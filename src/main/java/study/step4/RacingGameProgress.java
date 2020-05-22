@@ -14,6 +14,7 @@ public class RacingGameProgress {
 
     public List<Round> gameStart(CarMoveCondition moveCondition) {
         List<Round> rounds = new ArrayList<>();
+
         Round round = new Round(racingGame.getCarEntries());
 
         int tryTimes = racingGame.getTryTime();
