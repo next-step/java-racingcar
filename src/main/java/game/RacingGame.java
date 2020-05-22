@@ -4,6 +4,7 @@ import game.ui.RacingGameInputView;
 import game.ui.RacingGameResultView;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,7 +33,7 @@ public class RacingGame {
             carList.forEach(racingGameResultView::printResult);
         }
 
-        int winScore = carList.stream().max((o1, o2) -> o1.getPosition() - o2.getPosition()).map(Car::getPosition).orElse(INIT_POSITION);
+        int winScore = carList.stream().max(Comparator.comparingInt(Car::getPosition)).map(Car::getPosition).orElse(INIT_POSITION);
         racingGameResultView.announceWinner(carList.stream().filter(c -> c.getPosition() >= winScore).map(Car::getCarName).collect(Collectors.toList()));
     }
 }
