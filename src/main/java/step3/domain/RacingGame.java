@@ -1,8 +1,9 @@
-package step3;
+package step3.domain;
+
+import step3.common.RacingRandom;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGame {
     private List<RacingCar> racingCarList = new ArrayList<>();
