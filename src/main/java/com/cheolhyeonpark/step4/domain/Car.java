@@ -26,6 +26,10 @@ public class Car {
         return position;
     }
 
+    public boolean isSamePosition(int position) {
+        return this.position == position;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

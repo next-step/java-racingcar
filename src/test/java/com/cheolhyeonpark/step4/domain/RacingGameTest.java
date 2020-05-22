@@ -9,7 +9,6 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.mockito.Mockito.*;
 
 class RacingGameTest {
 
@@ -32,20 +31,6 @@ class RacingGameTest {
 
         //then
         assertThat(cars.size()).isEqualTo(3);
-    }
-
-    @Test
-    @DisplayName("스테이지 실행 확인")
-    public void runStage() {
-        //given
-        String namesOfCars = "testCar1,testCar2,testCar3";
-        RacingGame racingGame = spy(new RacingGame(namesOfCars, 5));
-
-        //when
-        racingGame.playStage();
-
-        //then
-        verify(racingGame, times(1)).playStage();
     }
 
     @Test

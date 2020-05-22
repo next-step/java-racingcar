@@ -24,6 +24,6 @@ public class Stage {
     public List<Car> getWinners() {
         int max = cars.stream().mapToInt(Car::getPosition).max()
                 .orElseThrow(() -> new RuntimeException("Couldn't find max position."));
-        return cars.stream().filter(car -> car.getPosition() == max).collect(Collectors.toList());
+        return cars.stream().filter(car -> car.isSamePosition(max)).collect(Collectors.toList());
     }
 }
