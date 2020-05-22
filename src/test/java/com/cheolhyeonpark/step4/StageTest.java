@@ -46,4 +46,22 @@ class StageTest {
         assertThat(cars.get(1).getPosition()).isEqualTo(0);
         assertThat(cars.get(2).getPosition()).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("가장 많이 전진한 차가 승리차량이 된다")
+    public void getWinners() {
+        //given
+        Dice dice = new Dice();
+        Car car1 = new Car("t1", 10);
+        Car car2 = new Car("t2", 5);
+        Car car3 = new Car("t3", 1);
+        List<Car> cars = Arrays.asList(car1, car2, car3);
+        Stage stage = new Stage(dice, cars);
+
+        //when
+        List<Car> winners = stage.getWinners();
+
+        //then
+        assertThat(winners.get(0)).isEqualTo(car1);
+    }
 }

@@ -35,4 +35,8 @@ public class RacingGame {
     public boolean hasNextStage() {
         return stageLeft > 0;
     }
+
+    public List<Car> getWinners() {
+        return stage.getWinners();
+    }
 }

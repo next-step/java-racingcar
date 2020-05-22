@@ -15,5 +15,6 @@ public class GameManager {
             racingGame.playStage();
             resultView.printStageResult(racingGame.getResultOfStage());
         }
+        resultView.printWinners(racingGame.getWinners());
     }
 }

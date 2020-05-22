@@ -64,4 +64,19 @@ class RacingGameTest {
         assertThat(hasStageLeftBeforePlay).isTrue();
         assertThat(hasStageLeftAfterPlay).isFalse();
     }
+
+    @Test
+    @DisplayName("게임이 끝난 뒤 우승자가 반환 되어야 한다")
+    public void getWinners() {
+        //given
+        String namesOfCars = "testCar1,testCar2,testCar3";
+        RacingGame racingGame = new RacingGame(namesOfCars, 1);
+
+        //when
+        racingGame.playStage();
+        List<Car> winners = racingGame.getWinners();
+
+        //then
+        assertThat(winners.isEmpty()).isFalse();
+    }
 }
