@@ -1,4 +1,4 @@
-package com.cheolhyeonpark.step4;
+package com.cheolhyeonpark.step4.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

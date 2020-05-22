@@ -1,4 +1,4 @@
-package com.cheolhyeonpark.step4;
+package com.cheolhyeonpark.step4.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -46,5 +46,19 @@ class CarTest {
 
         //then
         assertThat(result).isEqualTo(name);
+    }
+
+    @Test
+    @DisplayName("현재 자동차 위치와 같으면 true를 반환한다")
+    public void isSamePosition() {
+        //given
+        String name = "test";
+        Car car = new Car(name, 0);
+
+        //when
+        boolean isSamePosition = car.isSamePosition(0);
+
+        //then
+        assertThat(isSamePosition).isTrue();
     }
 }

@@ -1,4 +1,6 @@
-package com.cheolhyeonpark.step4;
+package com.cheolhyeonpark.step4.view;
+
+import com.cheolhyeonpark.step4.domain.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;

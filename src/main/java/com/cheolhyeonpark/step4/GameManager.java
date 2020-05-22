@@ -1,5 +1,9 @@
 package com.cheolhyeonpark.step4;
 
+import com.cheolhyeonpark.step4.domain.RacingGame;
+import com.cheolhyeonpark.step4.view.InputView;
+import com.cheolhyeonpark.step4.view.ResultView;
+
 public class GameManager {
 
     private final ResultView resultView = new ResultView();

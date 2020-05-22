@@ -1,4 +1,4 @@
-package com.cheolhyeonpark.step4;
+package com.cheolhyeonpark.step4.domain;
 
 import java.util.Objects;
 
@@ -24,6 +24,10 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    public boolean isSamePosition(int position) {
+        return this.position == position;
     }
 
     @Override

@@ -1,26 +1,20 @@
-package com.cheolhyeonpark.step4;
+package com.cheolhyeonpark.step4.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Stage {
 
-    public static final int MINIMUM_MOVABLE_DICE_NUMBER = 4;
-
-    private final Dice dice;
+    private final MovingStrategy movingStrategy;
     private final List<Car> cars;
 
-    public Stage(Dice dice, List<Car> cars) {
-        this.dice = dice;
+    public Stage(MovingStrategy movingStrategy, List<Car> cars) {
+        this.movingStrategy = movingStrategy;
         this.cars = cars;
     }
 
     public void run() {
-        cars.forEach(car -> car.move(isMovable()));
-    }
-
-    private boolean isMovable() {
-        return dice.rollDice() >= MINIMUM_MOVABLE_DICE_NUMBER;
+        cars.forEach(car -> car.move(movingStrategy.isMovable()));
     }
 
     public List<Car> getStageResult() {
@@ -30,6 +24,6 @@ public class Stage {
     public List<Car> getWinners() {
         int max = cars.stream().mapToInt(Car::getPosition).max()
                 .orElseThrow(() -> new RuntimeException("Couldn't find max position."));
-        return cars.stream().filter(car -> car.getPosition() == max).collect(Collectors.toList());
+        return cars.stream().filter(car -> car.isSamePosition(max)).collect(Collectors.toList());
     }
 }
