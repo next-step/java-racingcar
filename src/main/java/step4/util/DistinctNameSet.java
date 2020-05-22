@@ -1,4 +1,4 @@
-package step4;
+package step4.util;
 
 import java.util.HashSet;
 

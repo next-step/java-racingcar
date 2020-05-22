@@ -1,4 +1,4 @@
-package step4;
+package step4.content;
 
 public class ErrorMessages {
 

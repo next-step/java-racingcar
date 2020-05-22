@@ -1,7 +1,7 @@
-package step4;
+package step4.view;
 
-import static step4.Constants.INPUT_CAR_NAMES_MESSAGE;
-import static step4.Constants.INPUT_TRY_COUNT_MESSAGE;
+import static step4.content.Constants.INPUT_CAR_NAMES_MESSAGE;
+import static step4.content.Constants.INPUT_TRY_COUNT_MESSAGE;
 
 import java.util.Scanner;
 

@@ -1,7 +1,8 @@
-package step4;
+package step4.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Java6Assertions.catchThrowable;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.stream.Stream;
@@ -12,6 +13,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
+import step4.content.ErrorMessages;
 
 class RacingGameTest {
 
@@ -68,7 +70,7 @@ class RacingGameTest {
             Arguments.of("a,a", false),
             Arguments.of("a,b,c,d,d", false),
             Arguments.of("a,b,c,d,e", true)
-            );
+        );
     }
 
     @ParameterizedTest

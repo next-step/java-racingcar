@@ -1,11 +1,12 @@
-package step4;
+package step4.view;
 
-import static step4.Constants.COMMA;
-import static step4.Constants.POSITION_MARKER;
-import static step4.Constants.RESULT_TITLE;
-import static step4.Constants.RESULT_WINNER_MESSAGE;
+import static step4.content.Constants.COMMA;
+import static step4.content.Constants.POSITION_MARKER;
+import static step4.content.Constants.RESULT_TITLE;
+import static step4.content.Constants.RESULT_WINNER_MESSAGE;
 
 import java.util.ArrayList;
+import step4.domain.Car;
 
 public class ResultView {
 

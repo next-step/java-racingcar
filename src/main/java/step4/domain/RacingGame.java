@@ -1,12 +1,15 @@
-package step4;
+package step4.domain;
 
-import static step4.ErrorMessages.DUPLICATED_CAR_NAMES_MESSAGE;
-import static step4.ErrorMessages.INVALID_CAR_NAMES_MESSAGE;
-import static step4.ErrorMessages.INVALID_TRY_COUNT_MESSAGE;
+import static step4.content.ErrorMessages.DUPLICATED_CAR_NAMES_MESSAGE;
+import static step4.content.ErrorMessages.INVALID_CAR_NAMES_MESSAGE;
+import static step4.content.ErrorMessages.INVALID_TRY_COUNT_MESSAGE;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
+import step4.content.Constants;
+import step4.util.DistinctNameSet;
+import step4.content.ErrorMessages;
 
 public class RacingGame {
 
