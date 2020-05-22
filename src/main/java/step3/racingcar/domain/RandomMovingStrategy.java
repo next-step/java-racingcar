@@ -1,4 +1,6 @@
-package step3.racingcar;
+package step3.racingcar.domain;
+
+import step3.racingcar.domain.MovingStrategy;
 
 import java.util.Random;
 

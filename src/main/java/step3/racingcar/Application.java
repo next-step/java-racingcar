@@ -1,5 +1,9 @@
 package step3.racingcar;
 
+import step3.racingcar.controller.RacingGame;
+import step3.racingcar.domain.Message;
+import step3.racingcar.view.InputViewProcessor;
+
 public class Application {
 
     public static void main(String[] args) {

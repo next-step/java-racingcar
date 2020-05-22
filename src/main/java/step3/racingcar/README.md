@@ -15,7 +15,7 @@
 
 ## MVC 기반 리팩토링
 
-* Model
+* Domain
     * Car
     * CarFactory
     * CarGroups

@@ -1,6 +1,9 @@
-package step3.racingcar;
+package step3.racingcar.controller;
 
-import java.util.List;
+import step3.racingcar.domain.CarFactory;
+import step3.racingcar.domain.CarGroups;
+import step3.racingcar.domain.Message;
+import step3.racingcar.view.ResultViewProcessor;
 
 public class RacingGame {
 
