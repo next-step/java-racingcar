@@ -10,7 +10,7 @@ public class Main {
         String name = InputView.inputCarCountJoinRace();
         int raceTime = InputView.inputRaceTime();
 
-        Racing race = Racing.applyRacing(name, raceTime);
+        Racing race = new Racing.Builder(name, raceTime).build();
 
         OutputView.printTitle();
         race.start(OutputView::printRaceResultByTime);

@@ -4,6 +4,7 @@ import racingcar.DiceRacingRule;
 import racingcar.RacingDice;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Racing {
 
@@ -13,30 +14,38 @@ public class Racing {
     private final RacingRule racingRule;
     private final int raceTime;
 
-    private Racing(RacingRule racingRule, String carNames, int raceTime) {
-        checkRacingCount(raceTime);
+    private Racing(Builder builder) {
+        checkRacingCount(builder.raceTime);
 
-        this.raceTime = raceTime;
-        this.racingRule = racingRule;
-        this.racingCar = CarsJoinRacing.newInstance(carNames);
+        this.raceTime = builder.raceTime;
+        this.racingRule = builder.racingRule;
+        this.racingCar = builder.racingCar;
     }
 
-    private Racing(RacingRule racingRule, CarsJoinRacing carsJoinRacing, int raceTime) {
-        this.raceTime = raceTime;
-        this.racingRule = racingRule;
-        this.racingCar = carsJoinRacing;
-    }
+    public static class Builder {
+        private final int raceTime;
+        private final CarsJoinRacing racingCar;
 
-    public static Racing applyRacing(String carNames, int raceTime) {
-        return applyRacing(DEFAULT_RACING_RULE, carNames, raceTime);
-    }
+        private RacingRule racingRule = DEFAULT_RACING_RULE;
 
-    public static Racing applyRacing(RacingRule racingRule, String carNames, int raceTime) {
-        return new Racing(racingRule == null ? DEFAULT_RACING_RULE : racingRule, carNames, raceTime);
-    }
+        public Builder(String carNames, int raceTime) {
+            this.raceTime = raceTime;
+            this.racingCar = CarsJoinRacing.newInstance(carNames);;
+        }
 
-    public static Racing applyRacing(RacingRule racingRule, CarsJoinRacing racingCar, int raceTime) {
-        return new Racing(racingRule == null ? DEFAULT_RACING_RULE : racingRule, racingCar, raceTime);
+        public Builder(CarsJoinRacing racingCar, int raceTime) {
+            this.raceTime = raceTime;
+            this.racingCar = racingCar;
+        }
+
+        public Builder racingRule(RacingRule racingRule) {
+            this.racingRule = Objects.requireNonNull(racingRule);
+            return this;
+        }
+
+        public Racing build() {
+            return new Racing(this);
+        }
     }
 
     public void start(GameResultReceiver receiver) {
