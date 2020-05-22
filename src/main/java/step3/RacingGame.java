@@ -34,11 +34,13 @@ public class RacingGame {
 
     public List<String> findWinner() {
         int maxPosition = getMaxPosition();
+        List<String> winnersClub = new ArrayList<>();
 
-        return racingCarList.stream()
-                .filter(RacingCar -> RacingCar.getCurrentPosition() == maxPosition)
-                .map(RacingCar::getCarName)
-                .collect(Collectors.toList());
+        for (RacingCar car : racingCarList) {
+            car.getWinners(winnersClub, maxPosition);
+        }
+
+        return winnersClub;
     }
 }
 
