@@ -1,5 +1,9 @@
 package racingcar;
 
+import racingcar.domain.Car;
+import racingcar.domain.CarFactory;
+import racingcar.domain.RacingGame;
+import racingcar.domain.RacingResult;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -13,7 +17,7 @@ public class Application {
 
         List<Car> cars = CarFactory.create(carNames);
         RacingGame game = new RacingGame(time, cars);
-        List<Cars> results = game.run();
+        RacingResult results = game.run();
 
         ResultView.print(results);
     }

@@ -1,21 +1,20 @@
 package racingcar.view;
 
-import racingcar.Car;
-import racingcar.Cars;
-
-import java.util.List;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.RacingResult;
 
 public class ResultView {
 
     private ResultView() {
     }
 
-    public static void print(List<Cars> results) {
-        for (Cars result : results) {
-            print(result);
+    public static void print(RacingResult results) {
+        for (int i = 0; i < results.size(); i++) {
+            print(results.get(i));
         }
 
-        String winners = String.join(",", results.get(results.size() - 1).getLeaders());
+        String winners = String.join(",", results.getWinners());
         System.out.println(winners + "가 최종 우승했습니다.");
     }
 

@@ -1,40 +1,35 @@
-package racingcar;
+package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
 
     private int time;
-    private List<Car> cars;
+    private Cars cars;
     private CarMover mover;
 
     public RacingGame(int time, List<Car> cars) {
-        validate(time, cars.size());
+        validate(cars.size());
 
         this.time = time;
-        this.cars = cars;
+        this.cars = new Cars(cars);
         this.mover = new CarMover(new RandomMoveStrategy());
     }
 
-    public List<Cars> run() {
-        List<Cars> results = new ArrayList<>();
+    public RacingResult run() {
+        RacingResult results = new RacingResult();
 
         while (time > 0) {
             canMove();
             cars = mover.move(cars);
-            results.add(new Cars(cars));
+            results.add(cars);
             time--;
         }
 
         return results;
     }
 
-    private void validate(int time, int carSize) {
-        if (time < 1) {
-            throw new IllegalArgumentException(String.format("이동 횟수는 1 이상이어야 합니다. : %d", time));
-        }
-
+    private void validate(int carSize) {
         if (carSize < 1) {
             throw new IllegalArgumentException(String.format("자동차 수는 1 이상이어야 합니다. : %d", carSize));
         }
