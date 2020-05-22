@@ -10,16 +10,16 @@ public class Racing {
 
     private static final RacingRule DEFAULT_RACING_RULE = new DiceRacingRule(RacingDice.newInstance());
 
-    private final CarsJoinRacing racingCar;
+    private final CarsJoinRacing racingCars;
     private final RacingRule racingRule;
     private final int raceTime;
 
     private Racing(Builder builder) {
-        checkRacingCount(builder.raceTime);
+        checkRacingTime(builder.raceTime);
 
         this.raceTime = builder.raceTime;
         this.racingRule = builder.racingRule;
-        this.racingCar = builder.racingCar;
+        this.racingCars = builder.racingCar;
     }
 
     public static class Builder {
@@ -50,18 +50,18 @@ public class Racing {
 
     public void start(GameResultReceiver receiver) {
         for(int i = 0 ; i < raceTime ; i++) {
-            racingCar.race(racingRule);
-            receiver.notifyFinishRace(racingCar.getRaceResult());
+            racingCars.race(racingRule);
+            receiver.notifyFinishRace(racingCars.getRaceResult());
         }
     }
 
     public List<RacingScoreCard> getWinner() {
-        return racingCar.getWinner();
+        return racingCars.getWinner();
     }
 
-    private void checkRacingCount(int racingCount) {
-        if(racingCount <= 0) {
-            throw new IllegalArgumentException("The number of racingCount must be at least 1.");
+    private void checkRacingTime(int racingTime) {
+        if(racingTime <= 0) {
+            throw new IllegalArgumentException("The number of racingTime must be at least 1.");
         }
     }
 }
