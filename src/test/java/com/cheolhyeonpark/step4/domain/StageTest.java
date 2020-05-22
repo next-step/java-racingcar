@@ -1,8 +1,5 @@
-package com.cheolhyeonpark.step4;
+package com.cheolhyeonpark.step4.domain;
 
-import com.cheolhyeonpark.step4.domain.Car;
-import com.cheolhyeonpark.step4.domain.Dice;
-import com.cheolhyeonpark.step4.domain.Stage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class StageTest {
 

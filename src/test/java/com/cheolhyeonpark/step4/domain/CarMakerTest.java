@@ -1,6 +1,5 @@
-package com.cheolhyeonpark.step4;
+package com.cheolhyeonpark.step4.domain;
 
-import com.cheolhyeonpark.step4.domain.CarMaker;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
