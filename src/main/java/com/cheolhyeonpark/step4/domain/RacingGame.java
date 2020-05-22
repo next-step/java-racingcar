@@ -1,4 +1,4 @@
-package com.cheolhyeonpark.step4;
+package com.cheolhyeonpark.step4.domain;
 
 import java.util.List;
 
