@@ -1,5 +1,6 @@
 package com.cheolhyeonpark.step4.domain;
 
+import com.cheolhyeonpark.step4.domain.Car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -46,19 +47,5 @@ class CarTest {
 
         //then
         assertThat(result).isEqualTo(name);
-    }
-
-    @Test
-    @DisplayName("getResult()메서드를 호출하면 출력되는 문자열이 반환된다")
-    public void getResult() {
-        //given
-        String name = "test";
-        Car car = new Car(name, 3);
-
-        //when
-        String result = car.getResult();
-
-        //then
-        assertThat(result).isEqualTo("test : ---");
     }
 }
