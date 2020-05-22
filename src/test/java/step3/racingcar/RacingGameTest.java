@@ -18,7 +18,7 @@ class RacingGameTest {
     @MethodSource("mockRacingGameBuilder")
     public void testIfRacingGameObjectBuilds(String[] carNames, int gameTryCounts) {
         RacingGame racingGame = new RacingGame(carNames, gameTryCounts);
-        assertThat(Arrays.deepEquals(carNames, racingGame.getCarNames())).isTrue();
+        assertThat(carNames).isEqualTo(racingGame.getCarNames());
         assertThat(racingGame.getGameTryCounts()).isEqualTo(gameTryCounts);
     }
 
