@@ -1,11 +1,11 @@
 package game;
 
 public class Car {
-    private final CarName carName;
-    private int position;
-    private final MovePolicy movePolicy;
-
     private static final int MOVING_RANGE = 1;
+
+    private final CarName carName;
+    private final MovePolicy movePolicy;
+    private int position;
 
     public Car(CarName carName, int position, MovePolicy movePolicy) {
         this.carName = carName;
