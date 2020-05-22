@@ -1,18 +1,16 @@
 package racing;
 
 public class Car {
-    public int carNumber;
-    public int position;
+    private CarMoveBehavior carMoveBehavior;
+    private int position;
 
-    Car(int carNumber, int position) {
-        this.carNumber = carNumber;
-        this.position = position;
+    public Car(CarMoveBehavior carMoveBehavior) {
+        this.carMoveBehavior = carMoveBehavior;
     }
 
-    public int move(int random) {
-        if (random >= 4) {
-            this.position = this.position + 1;
+    public void move() {
+        if (carMoveBehavior.action()) {
+            position++;
         }
-        return this.position;
     }
 }

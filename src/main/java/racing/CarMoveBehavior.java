@@ -1,4 +1,5 @@
 package racing;
 
-public interface CarMove {
+public interface CarMoveBehavior {
+    boolean action();
 }
