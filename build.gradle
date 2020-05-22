@@ -10,7 +10,6 @@ repositories {
 
 dependencies {
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.10'
-    testCompile group: 'org.mockito', name: 'mockito-core', version: '3.3.3'
     testCompile('org.junit.jupiter:junit-jupiter:5.4.2')
     testCompile('org.assertj:assertj-core:3.11.1')
 }
