@@ -5,8 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 class RacingGameTest {
 
@@ -77,27 +76,6 @@ class RacingGameTest {
 
 
 
-
-
-
-
-
-/*
-
-    @DisplayName("scanner test")
-    @ParameterizedTest
-    @ValueSource(strings = {"5 3"})
-        // 여러 케이스를 넣는 경우 에러발생 합니다. scanner 를 테스트 하는 방법이 있을까요
-    void testScanner(String input) {
-
-        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
-        System.setIn(inputStream);
-
-        RacingGame racingGame = new RacingGame();
-        racingGame.play();
-
-    }
-*/
 
 
 }

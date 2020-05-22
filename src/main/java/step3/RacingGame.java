@@ -22,13 +22,14 @@ public class RacingGame {
 
     private void setupCars(int carsCnt) {
         for (int i = 0; i < carsCnt; i++) {
-            cars.add(new Car(i));
+
+            //        cars.add(new Car(i,                         ));
+
         }
     }
 
     public void play() {
         for (int i = 0; i < tryTimes; i++) {
-            System.out.println(i + 1 + " th Try.. ");
             for (Car car : cars) {
                 car.move();
             }
