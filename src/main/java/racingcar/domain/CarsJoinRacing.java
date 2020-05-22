@@ -1,4 +1,4 @@
-package racingcar.race;
+package racingcar.domain;
 
 import racingcar.util.CommonUtil;
 

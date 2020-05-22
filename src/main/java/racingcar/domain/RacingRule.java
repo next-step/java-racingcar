@@ -1,4 +1,4 @@
-package racingcar.race;
+package racingcar.domain;
 
 public interface RacingRule {
     int getMoveForward();

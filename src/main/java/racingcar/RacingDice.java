@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.race.Dice;
+import racingcar.domain.Dice;
 
 import java.util.Random;
 
