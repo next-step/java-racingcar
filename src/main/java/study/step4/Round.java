@@ -36,7 +36,7 @@ public class Round {
         return new ArrayList<>(cars);
     }
 
-    public Round gameProgress(CarMoveCondition moveCondition) {
+    public Round carsRun(CarMoveCondition moveCondition) {
         List<Car> arrivedCars = new ArrayList<>();
         for (Car car : cars){
             arrivedCars.add(car.move(moveCondition));

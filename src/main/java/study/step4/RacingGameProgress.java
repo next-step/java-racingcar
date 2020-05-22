@@ -19,7 +19,7 @@ public class RacingGameProgress {
         int tryTimes = racingGame.getTryTime();
 
         for (int i = INT_ZERO; i < tryTimes; i++) {
-            round = round.gameProgress(moveCondition);
+            round = round.carsRun(moveCondition);
             rounds.add(round);
         }
         return rounds;
