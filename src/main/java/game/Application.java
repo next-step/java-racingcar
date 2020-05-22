@@ -1,9 +1,12 @@
 package game;
 
-import game.ui.ConsoleRacingGameInputView;
-import game.ui.ConsoleRacingGameResultView;
-import game.ui.RacingGameInputView;
-import game.ui.RacingGameResultView;
+import game.domain.MovePolicy;
+import game.domain.RacingGame;
+import game.domain.RandomMovePolicy;
+import game.view.ConsoleRacingGameInputView;
+import game.view.ConsoleRacingGameResultView;
+import game.view.RacingGameInputView;
+import game.view.RacingGameResultView;
 
 public class Application {
 

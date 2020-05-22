@@ -1,4 +1,4 @@
-package game;
+package game.domain;
 
 public class Car {
     private static final int MOVING_RANGE = 1;

@@ -1,7 +1,10 @@
-package game;
+package game.domain;
 
-import game.ui.RacingGameInputView;
-import game.ui.RacingGameResultView;
+import game.domain.CarName;
+import game.domain.MovePolicy;
+import game.domain.RacingGame;
+import game.view.RacingGameInputView;
+import game.view.RacingGameResultView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

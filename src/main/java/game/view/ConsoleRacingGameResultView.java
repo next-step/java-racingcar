@@ -1,7 +1,6 @@
-package game.ui;
+package game.view;
 
-import game.Car;
-import game.CarName;
+import game.domain.Car;
 
 import java.util.Arrays;
 import java.util.List;

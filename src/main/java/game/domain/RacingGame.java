@@ -1,7 +1,7 @@
-package game;
+package game.domain;
 
-import game.ui.RacingGameInputView;
-import game.ui.RacingGameResultView;
+import game.view.RacingGameInputView;
+import game.view.RacingGameResultView;
 
 import java.util.Comparator;
 import java.util.List;

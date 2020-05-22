@@ -1,4 +1,4 @@
-package game;
+package game.domain;
 
 public class CarName {
     private final String name;

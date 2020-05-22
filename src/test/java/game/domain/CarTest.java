@@ -1,5 +1,8 @@
-package game;
+package game.domain;
 
+import game.domain.Car;
+import game.domain.CarName;
+import game.domain.MovePolicy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
