@@ -34,6 +34,6 @@ public class RacingGame {
         }
 
         int winScore = carList.stream().max(Comparator.comparingInt(Car::getPosition)).map(Car::getPosition).orElse(INIT_POSITION);
-        racingGameResultView.announceWinner(carList.stream().filter(c -> c.getPosition() >= winScore).map(Car::getCarName).collect(Collectors.toList()));
+        racingGameResultView.announceWinner(carList.stream().filter(c -> c.getPosition() >= winScore).collect(Collectors.toList()));
     }
 }
