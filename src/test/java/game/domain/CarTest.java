@@ -1,8 +1,5 @@
 package game.domain;
 
-import game.domain.Car;
-import game.domain.CarName;
-import game.domain.MovePolicy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,7 +14,7 @@ class CarTest {
     @Test
     public void verify_callMovePolicy_shouldSucceed() {
         MovePolicy movePolicy = mock(MovePolicy.class);
-        Car car = new Car(new CarName(""), 0, movePolicy);
+        Car car = new Car(new CarName("car"), 0, movePolicy);
         car.move();
         verify(movePolicy).isMovable();
     }
@@ -29,7 +26,7 @@ class CarTest {
         MovePolicy movePolicy = mock(MovePolicy.class);
         when(movePolicy.isMovable()).thenReturn(true);
 
-        Car car = new Car(new CarName(""), initPosition, movePolicy);
+        Car car = new Car(new CarName("car"), initPosition, movePolicy);
         for (int i = 0; i < round; i++) {
             car.move();
         }
@@ -43,7 +40,7 @@ class CarTest {
         MovePolicy movePolicy = mock(MovePolicy.class);
         when(movePolicy.isMovable()).thenReturn(false);
 
-        Car car = new Car(new CarName(""), initPosition, movePolicy);
+        Car car = new Car(new CarName("car"), initPosition, movePolicy);
         for (int i = 0; i < round; i++) {
             car.move();
         }

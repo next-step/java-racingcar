@@ -1,7 +1,5 @@
 package game.domain;
 
-import game.domain.MovePolicy;
-import game.domain.RandomMovePolicy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -11,7 +9,7 @@ import java.lang.reflect.Field;
 import java.util.Random;
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class RandomMovePolicyTest {
 
