@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.*;
 public class RacingGameTest {
     @Test
     public void stdRacingGameTest(){
-        RacingGame game = new RacingGame(StandardInputView.create());
+        RacingGame game = new RacingGame(StandardInputView.create(), new Random());
         game.run();
     }
 
