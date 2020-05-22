@@ -1,4 +1,4 @@
-package racingcar.race;
+package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -6,7 +6,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.DiceRacingRule;
-import racingcar.RacingDice;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -16,18 +15,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
 class RacingTest {
-
-    private final Dice DEFAULT_DICE = RacingDice.newInstance();
-    private final RacingRule DEFAULT_RACING_RULE = new DiceRacingRule(DEFAULT_DICE);
-
     private final String[] DEFAULT_CAR_NAMES = {"test01", "test02", "test03"};
     private final String DEFAULT_CONNECT_CAR_NAMES = String.join(", ", DEFAULT_CAR_NAMES);
 
     @DisplayName("입력한 자동차의 이름만큼 Race 결과가 나오는 지 테스트")
     @Test
     public void joinRaceTest() {
-        Racing race = Racing.applyRacing(DEFAULT_RACING_RULE, DEFAULT_CONNECT_CAR_NAMES, 3);
-
+        Racing race = new Racing.Builder(DEFAULT_CONNECT_CAR_NAMES, 3).build();
         race.start(gameResults ->
                 assertThat(gameResults.size()).isEqualTo(DEFAULT_CAR_NAMES.length));
     }
@@ -37,7 +31,7 @@ class RacingTest {
     @CsvSource({"3", "4"})
     public void  raceGameSetCountTest(int racingCount) {
         AtomicInteger actualRacingCount = new AtomicInteger();
-        Racing race = Racing.applyRacing(DEFAULT_CONNECT_CAR_NAMES, racingCount);
+        Racing race = new Racing.Builder(DEFAULT_CONNECT_CAR_NAMES, racingCount).build();
 
         race.start(carPositions -> actualRacingCount.getAndIncrement());
 
@@ -49,7 +43,7 @@ class RacingTest {
     @ValueSource(ints = {0, 1, 2, 3})
     public void doNotMoveTest(int diceNumber) {
         RacingRule racingRule = new DiceRacingRule(() -> diceNumber);
-        Racing race = Racing.applyRacing(racingRule, DEFAULT_CONNECT_CAR_NAMES, 10 );
+        Racing race = new Racing.Builder(DEFAULT_CONNECT_CAR_NAMES, 10).racingRule(racingRule).build();
 
         race.start(results -> {
             assertThat(results.stream().allMatch(result -> result.getPosition() == 0)).isTrue();
@@ -61,7 +55,7 @@ class RacingTest {
     @ValueSource(ints = {4, 5, 6, 7})
     public void moveTest(int diceNumber) {
         RacingRule racingRule = new DiceRacingRule(() -> diceNumber);
-        Racing race = Racing.applyRacing(racingRule, DEFAULT_CONNECT_CAR_NAMES,1);
+        Racing race = new Racing.Builder(DEFAULT_CONNECT_CAR_NAMES,1).racingRule(racingRule).build();
 
         race.start(results -> {
             assertThat(results.stream().allMatch(result -> result.getPosition() > 0)).isTrue();
@@ -72,7 +66,7 @@ class RacingTest {
     @Test
     public void raceGameSetCountZeroTest() {
         Throwable throwable = catchThrowable(() -> {
-            Racing race = Racing.applyRacing(DEFAULT_RACING_RULE, DEFAULT_CONNECT_CAR_NAMES, 0);
+            Racing race = new Racing.Builder(DEFAULT_CONNECT_CAR_NAMES, 0).build();
             race.start(System.out::println);
         });
 
@@ -83,7 +77,7 @@ class RacingTest {
     @Test
     public void moveSumTest() {
         RacingRule racingRule = new DiceRacingRule(() -> 9);
-        Racing race = Racing.applyRacing(racingRule, DEFAULT_CONNECT_CAR_NAMES, 3);
+        Racing race = new Racing.Builder(DEFAULT_CONNECT_CAR_NAMES, 3).racingRule(racingRule).build();
         AtomicInteger racedCount = new AtomicInteger();
 
         race.start(results -> {
@@ -95,17 +89,19 @@ class RacingTest {
     @DisplayName("우승자가 제대로 리턴되는지 테스트")
     @Test
     public void getWinnerAfterFinalRacingTest() {
-        final int[] winnerTargetIndex = {1, 2};
-
-        Racing racing = Racing.applyRacing(new RacingTestRule(winnerTargetIndex),
-                DEFAULT_CONNECT_CAR_NAMES,
-                1);
+        List<Car> cars = List.of(
+                new Car("벤츠", 1),
+                new Car("제네시스", 2),
+                new Car("아우디", 4),
+                new Car("볼보", 4));
+        Racing racing = new Racing.Builder(CarsJoinRacing.newInstance(cars),1).racingRule(() -> 1).build();
         racing.start(racingScorecards -> {});
         List<RacingScoreCard> list = racing.getWinner();
 
         List<String> winnerNames = list.stream().map(RacingScoreCard::getName).collect(Collectors.toList());
+
         assertThat(winnerNames.size()).isEqualTo(2);
-        assertThat(winnerNames).contains("test02", "test03");
+        assertThat(winnerNames).contains("아우디", "볼보");
     }
 
 }

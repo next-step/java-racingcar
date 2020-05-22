@@ -1,7 +1,7 @@
 package racingcar;
 
-import racingcar.race.Dice;
-import racingcar.race.RacingRule;
+import racingcar.domain.Dice;
+import racingcar.domain.RacingRule;
 
 public class DiceRacingRule implements RacingRule {
 

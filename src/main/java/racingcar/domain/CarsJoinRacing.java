@@ -1,4 +1,4 @@
-package racingcar.race;
+package racingcar.domain;
 
 import racingcar.util.CommonUtil;
 
@@ -20,13 +20,21 @@ public class CarsJoinRacing {
         cars = Collections.unmodifiableList(createCarList(splitCars));
     }
 
+    public CarsJoinRacing(List<Car> cars) {
+        this.cars = cars;
+    }
+
     public static CarsJoinRacing newInstance(String nameString) {
         return new CarsJoinRacing(nameString);
     }
 
+    public static CarsJoinRacing newInstance(List<Car> cars) {
+        return new CarsJoinRacing(cars);
+    }
+
     private List<Car> createCarList(String[] splitCarNames) {
         return Arrays.stream(splitCarNames)
-                .map(name -> new Car(name.trim()))
+                .map(name -> Car.newInstance(name.trim()))
                 .collect(Collectors.toList());
     }
 

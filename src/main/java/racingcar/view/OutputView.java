@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.race.RacingScoreCard;
+import racingcar.domain.RacingScoreCard;
 
 import java.util.List;
 import java.util.stream.Collectors;
