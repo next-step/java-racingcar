@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
 import step4.content.Constants;
-import step4.util.DistinctNameSet;
 import step4.content.ErrorMessages;
+import step4.util.DistinctNameSet;
 
 public class RacingGame {
 
