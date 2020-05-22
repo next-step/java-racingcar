@@ -1,4 +1,4 @@
-package com.cheolhyeonpark.step3;
+package com.cheolhyeonpark.step4;
 
 public class GameManager {
 
@@ -15,5 +15,6 @@ public class GameManager {
             racingGame.playStage();
             resultView.printStageResult(racingGame.getResultOfStage());
         }
+        resultView.printWinners(racingGame.getWinners());
     }
 }

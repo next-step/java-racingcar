@@ -1,6 +1,7 @@
-package com.cheolhyeonpark.step3;
+package com.cheolhyeonpark.step4;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Stage {
 
@@ -24,5 +25,11 @@ public class Stage {
 
     public List<Car> getStageResult() {
         return this.cars;
+    }
+
+    public List<Car> getWinners() {
+        int max = cars.stream().mapToInt(Car::getPosition).max()
+                .orElseThrow(() -> new RuntimeException("Couldn't find max position."));
+        return cars.stream().filter(car -> car.getPosition() == max).collect(Collectors.toList());
     }
 }
