@@ -12,3 +12,23 @@
 * 자동차 객체의 Position을 이동시키기는 기능.
 * 경기 결과를 출력하는 기능.
 * 가장 멀리 주행한 자동차들의 리스트를 가져오고 출력하는 기능.
+
+## MVC 기반 리팩토링
+
+* Model
+    * Car
+    * CarFactory
+    * CarGroups
+    * MovingStrategy
+    * RandomMovingStrategy
+    * Message
+ 
+ * Controller
+    * RacingGame
+    
+ * View
+    * InputViewProcessor
+    * ResultViewProcessor
+  
+  * ETC
+    * Application
