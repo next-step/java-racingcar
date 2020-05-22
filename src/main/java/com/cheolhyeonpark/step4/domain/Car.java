@@ -1,6 +1,8 @@
 package com.cheolhyeonpark.step4.domain;
 
 import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Car {
 
@@ -10,6 +12,11 @@ public class Car {
     public Car(String name, int position) {
         this.name = name;
         this.position = position;
+    }
+
+    public String getResult() {
+        return IntStream.range(0, position).mapToObj(i -> "-")
+                .collect(Collectors.joining("", name + " : ", ""));
     }
 
     public void move(boolean isMovable) {

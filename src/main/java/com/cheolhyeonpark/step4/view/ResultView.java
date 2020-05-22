@@ -4,7 +4,6 @@ import com.cheolhyeonpark.step4.domain.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class ResultView {
 
@@ -22,9 +21,7 @@ public class ResultView {
     }
 
     public void printPosition(Car car) {
-        System.out.print(car.getName() + " : ");
-        IntStream.range(0, car.getPosition()).mapToObj(i -> POSITION_BAR).forEach(System.out::print);
-        System.out.println();
+        System.out.println(car.getResult());
     }
 
     public void printWinners(List<Car> winners) {
