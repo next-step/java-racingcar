@@ -4,11 +4,9 @@ import java.util.Random;
 
 public class RandomNumber {
     private static Random random = new Random();
-    private static int boundNumber = 10;
+    private static final int BoundNumber = 10;
 
     public static int getRandomNumber() {
-        return random.nextInt(boundNumber);
+        return random.nextInt(BoundNumber);
     }
-
-
 }
