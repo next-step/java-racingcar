@@ -1,4 +1,4 @@
-package study.step3;
+package study.step4;
 
 import java.util.Objects;
 
@@ -53,7 +53,7 @@ public class Car {
         return carPosition + INT_ONE;
     }
 
-    public boolean isMyCurrentPosition(int maxPosition){
+    public boolean isChampionsPosition(int maxPosition){
         return this.carPosition == maxPosition;
     }
 }

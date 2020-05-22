@@ -1,4 +1,4 @@
-package study.step3;
+package study.step4;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,6 +14,8 @@ public class ResultView {
             carToString(round.getCars());
             System.out.println();
         }
+        Round lastRound = rounds.get(rounds.size()-1);
+        printChampion(new Champion(lastRound).getChampions());
     }
 
     private static void carToString(List<Car> cars) {
@@ -23,7 +25,7 @@ public class ResultView {
     }
 
    private static String convertToUnderBarSymbol(int pointInTimeCarPostion) {
-        StringBuilder stringBuilder = new StringBuilder(UNDER_BAR_SYMBOL);
+        StringBuilder stringBuilder = new StringBuilder();
         for (int i = INIT_ZERO; i < pointInTimeCarPostion; i++){
             stringBuilder.append(UNDER_BAR_SYMBOL);
         }

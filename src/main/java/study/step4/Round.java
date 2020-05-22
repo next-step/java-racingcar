@@ -1,4 +1,4 @@
-package study.step3;
+package study.step4;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,11 +36,27 @@ public class Round {
         return new ArrayList<>(cars);
     }
 
-    public Round gameResult(CarMoveCondition moveCondition) {
+    public Round carsRun(CarMoveCondition moveCondition) {
         List<Car> arrivedCars = new ArrayList<>();
         for (Car car : cars){
             arrivedCars.add(car.move(moveCondition));
         }
         return new Round(arrivedCars);
+    }
+
+    public int findMaxCarPostion(){
+        return cars.stream()
+                .mapToInt(Car:: getCarPosition)
+                .max()
+                .getAsInt();
+    }
+
+    public List<String> decideChampion(){
+        int lastMaxPosition = findMaxCarPostion();
+        return new ArrayList<>(
+                cars.stream()
+                    .filter(car -> car.isChampionsPosition(lastMaxPosition))
+                    .map(car -> car.getCarName())
+                    .collect(Collectors.toList()));
     }
 }
