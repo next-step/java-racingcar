@@ -4,18 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCars {
-    private int cars;
+    private final List<Car> carPositions;
 
     public RacingCars(int cars) {
-        this.cars = cars;
+        this.carPositions = prepareCars(cars);
     }
 
-    public List<Car> prepareCars() {
+    public List<Car> prepareCars(int cars) {
         List<Car> carsPositions = new ArrayList<>();
 
         for (int i = 0; i < cars; i++) {
             carsPositions.add(new Car());
         }
         return carsPositions;
+    }
+
+    public void moveCars() {
+        for (int i = 0; i < carPositions.size(); i++) {
+            carPositions.get(i).move(new CarForwardBehavior());
+            System.out.println(carPositions.get(i).getPosition());
+        }
     }
 }
