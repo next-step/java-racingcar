@@ -3,6 +3,7 @@ package step3;
 import java.util.Scanner;
 
 public class InputView {
+
     private int carCount;
     private int inputTime;
 

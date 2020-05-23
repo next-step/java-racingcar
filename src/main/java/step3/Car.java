@@ -1,6 +1,7 @@
 package step3;
 
 public class Car {
+
     private int position = 0;
 
     public void goPosition() {

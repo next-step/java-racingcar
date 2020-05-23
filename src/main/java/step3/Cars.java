@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
+
     private List<Car> carList = null;
     private OutputView outputView = new OutputView();
 
