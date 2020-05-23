@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.util.MovingStrategy;
+
 public class Car {
 
   private int position;
@@ -18,9 +20,8 @@ public class Car {
     return name;
   }
 
-  public int updatePosition(int random) {
-    int UPDATE_POSITION_THRESHOLD = 4;
-    if (random >= UPDATE_POSITION_THRESHOLD) {
+  public int updatePosition(MovingStrategy strategy) {
+    if (strategy.isMove()) {
       this.position = this.position + 1;
     }
     return this.position;

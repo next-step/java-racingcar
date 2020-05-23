@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import racingcar.util.RandomUtil;
+import racingcar.util.RandomMovingStrategy;
 
 public class Game {
 
@@ -12,8 +12,8 @@ public class Game {
 
   public Cars doRace() {
     this.cars.getCarList().forEach(element -> {
-      int random = RandomUtil.getRandomValue();
-      element.updatePosition(random);
+      RandomMovingStrategy strategy = RandomMovingStrategy.create();
+      element.updatePosition(strategy);
     });
     return this.cars;
   }
