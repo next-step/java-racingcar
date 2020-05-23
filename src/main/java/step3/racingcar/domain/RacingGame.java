@@ -22,6 +22,8 @@ public class RacingGame {
     }
 
     public void run() {
+        if (gameTryCounts == INDEX_ZERO)
+            throw new IllegalStateException(Message.ERROR_INVALID_STATE);
         playerCars.move();
         gameTryCounts--;
     }

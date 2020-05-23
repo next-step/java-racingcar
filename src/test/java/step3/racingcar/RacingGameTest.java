@@ -10,8 +10,8 @@ import step3.racingcar.domain.RacingGame;
 
 import java.util.Arrays;
 import java.util.stream.Stream;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+
+import static org.assertj.core.api.Assertions.*;
 
 class RacingGameTest {
 
@@ -57,12 +57,11 @@ class RacingGameTest {
         racingGame.run();
 
         assertThat(racingGame.getGameTryCounts()).isEqualTo(0);
-
         assertThat(racingGame.hasNextRound()).isEqualTo(false);
-
-        racingGame.run();
-
-        assertThat(racingGame.getGameTryCounts()).isEqualTo(0);
+        assertThatExceptionOfType(IllegalStateException.class)
+                .isThrownBy(() -> {
+                    racingGame.run();
+                });
     }
 
     @DisplayName("Racing Game 객체 생성되지 않고 IllegalArgumentException 발생 테스트")

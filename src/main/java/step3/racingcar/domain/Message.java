@@ -9,6 +9,7 @@ public class Message {
     public static final String ERROR_MAX_POSITION = "ERROR : 우승 차량을 찾을 수 없습니다.";
     public static final String RESULT_HEADER = "실행 결과";
     public static final String RESULT_FOOTER = "가 최종 우승했습니다.";
+    public static final String ERROR_INVALID_STATE = "ERROR : 더이상 플레이 할 수 없습니다.";
 
     private Message() {
     }
