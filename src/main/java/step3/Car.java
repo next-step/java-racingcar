@@ -3,10 +3,8 @@ package step3;
 public class Car {
     private int position = 0;
 
-    public void setPosition(boolean greaterCheck) {
-        if (greaterCheck) {
-            this.position += 1;
-        }
+    public void goPosition() {
+        this.position += 1;
     }
 
     public int getPosition() {

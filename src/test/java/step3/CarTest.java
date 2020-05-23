@@ -5,13 +5,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
 
@@ -32,7 +30,7 @@ class CarTest {
     @DisplayName("위치값을 변경하고 그에 따른 값 반환 테스트")
     @Test
     public void changePostionandGetPosition(){
-        car.setPosition(true);
+        car.goPosition();
         int position = car.getPosition();
         assertThat(position).isEqualTo(1);
     }
