@@ -25,12 +25,6 @@ public class InputView {
 
     private static int inputIntNumber() {
         int result = scanner.nextInt();
-        inputCheck(result);
-        return result;
-    }
-
-    public static int inputCheck(int result) {
-        if (result < 0) throw new IllegalArgumentException("It can't be negative number.");
         return result;
     }
 

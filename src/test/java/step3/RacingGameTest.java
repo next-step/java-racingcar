@@ -5,7 +5,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class RacingGameTest {
 
@@ -20,19 +21,19 @@ class RacingGameTest {
         final int moveCountTestValueInsteadOfRandom = input;
 
         // set
-        Car car = new Car(0) {
+        Car car = new Car(0, 0, new CarMoveStrategy() {
             @Override
             public int getMoveCount() {
-                return moveCountTestValueInsteadOfRandom;
+                return moveCountTestValueInsteadOfRandom > 4 ? 1 : 0;
             }
-        };
+        });
 
         // test
         int before = car.getLocation();
         car.move();
         int after = car.getLocation();
 
-        assertThat(after - before).isEqualTo(moveCountTestValueInsteadOfRandom);
+        assertThat(after - before).isEqualTo(1);
     }
 
     @DisplayName("randomless Test under 4")
@@ -44,20 +45,19 @@ class RacingGameTest {
         final int moveCountTestValueInsteadOfRandom = input;
 
         // set
-        Car car = new Car(0) {
+        Car car = new Car(0, 0, new CarMoveStrategy() {
             @Override
             public int getMoveCount() {
-                return moveCountTestValueInsteadOfRandom;
+                return moveCountTestValueInsteadOfRandom > 4 ? 1 : 0;
             }
-        };
+        });
 
         // test
         int before = car.getLocation();
         car.move();
         int after = car.getLocation();
 
-        // not move
-        assertThat(after).isEqualTo(before);
+        assertThat(after - before).isEqualTo(0);
 
     }
 
@@ -69,13 +69,9 @@ class RacingGameTest {
         assertThatIllegalArgumentException().isThrownBy(() ->
                 {
                     RacingGame racingGame = new RacingGame(carsCount, tryTimes);
-                    // racingGame.play();
                 }
         );
     }
-
-
-
 
 
 }

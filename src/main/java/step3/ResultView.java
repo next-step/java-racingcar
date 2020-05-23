@@ -8,7 +8,7 @@ public class ResultView {
 
     public static void viewResult(List<Car> cars) {
 
-        System.out.println(playTryTimes++ + " th Try.. ");
+        System.out.println(++playTryTimes + " th Try.. ");
 
         for (Car car : cars) {
             printCurrentLocation(car.getLocation());

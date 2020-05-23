@@ -10,21 +10,25 @@ public class RacingGame {
 
     private int tryTimes;
 
+    private static final String ILLEGAL_INPUT_ERROR = "Inputs can't be negative number.";
+
     private RacingGame() {
     }
 
     public RacingGame(int carsCount, int tryTimes) {
+
+        if (carsCount < 0 || tryTimes < 0) throw new IllegalArgumentException(ILLEGAL_INPUT_ERROR);
+
         // set new car
-        setupCars(InputView.inputCheck(carsCount));
+        setupCars(carsCount);
         // set play times.
-        this.tryTimes = InputView.inputCheck(tryTimes);
+        this.tryTimes = tryTimes;
+
     }
 
     private void setupCars(int carsCnt) {
         for (int i = 0; i < carsCnt; i++) {
-
-            //        cars.add(new Car(i,                         ));
-
+            cars.add(new Car(i, 0, new CarMoveRandomStrategy()));
         }
     }
 
