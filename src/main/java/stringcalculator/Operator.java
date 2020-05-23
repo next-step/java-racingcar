@@ -9,23 +9,29 @@ public enum Operator {
     private final String stringValue;
     private final BinaryExpression expression;
     static final String NOT_VALID_OPERATOR_EXCEPTION_MESSAGE = "Not valid operator string: ";
+    static final Operator[] operators;
 
     Operator(String stringValue, BinaryExpression expression) {
         this.stringValue = stringValue;
         this.expression = expression;
     }
 
-    public int operate(int a, int b) {
-        return this.expression.operate(a, b);
+    static {
+        // for caching
+        operators = values();
     }
 
     public static Operator from(String expression) {
-        for (Operator operator : Operator.values()) {
+        for (Operator operator : operators) {
             if (operator.stringValue.equals(expression)) {
                 return operator;
             }
         }
         throw new IllegalArgumentException(getErrorMessage(expression));
+    }
+
+    public int operate(int a, int b) {
+        return this.expression.operate(a, b);
     }
 
     static String getErrorMessage(String expression) {
