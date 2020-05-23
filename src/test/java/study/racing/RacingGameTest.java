@@ -1,6 +1,5 @@
 package study.racing;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -15,58 +14,41 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
-    private List<Car> carList;
 
-    @BeforeEach
-    private void setUp() {
-        carList = new ArrayList<>();
+    @ParameterizedTest
+    @ValueSource(ints = { 1, 2, 3 })
+    void move_with_numbers_under_4(int value) {
+        Car car = new Car("test");
+        car.move(value);
+
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = { 4, 5, 6, 7, 8, 9, 10 })
+    void move_with_numbers_over_4(int value) {
+        Car car = new Car("test");
+        car.move(value);
+
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    void get_winner_position() {
+        List<Car> carList = new ArrayList<>();
         carList.add(new Car("car1"));
         carList.add(new Car("car2"));
         carList.add(new Car("car3"));
-    }
 
-    @Test
-    void move() {
-        for(Car car : carList) {
-            for(int i=0; i<5; i++) {
-                car.move();
-            }
-
-            assertThat(car.getPosition()).isEqualTo(5);
-        }
-    }
-
-
-    @Test
-    void sort() {
         List<Integer> moves = Arrays.asList(1, 5, 4);
 
         for(int i=0; i<carList.size(); i++) {
             for(int j=0; j<moves.get(i); j++) {
-                carList.get(i).move();
+                carList.get(i).move(5);
             }
         }
 
-        Collections.sort(carList);
-        Collections.sort(moves);
-
-        for(int i=0; i<carList.size(); i++) {
-            assertThat(carList.get(i).getPosition()).isEqualTo(moves.get(i));
-        }
-    }
-
-    @Test
-    void get_winners() {
-        List<Integer> moves = Arrays.asList(1, 5, 4);
-
-        for(int i=0; i<carList.size(); i++) {
-            for(int j=0; j<moves.get(i); j++) {
-                carList.get(i).move();
-            }
-        }
-
-        assertThat(RacingUtils.getWinners(carList).size()).isEqualTo(1);
-        assertThat(RacingUtils.getWinners(carList).get(0).getName()).isEqualTo("car2");
-        assertThat(RacingUtils.getWinners(carList).get(0).getPosition()).isEqualTo(5);
+        assertThat(RacingUtils.getWinners(carList).get(0).getPosition())
+                .isEqualTo(Collections.max(moves));
     }
 }

@@ -1,16 +1,14 @@
 package study.racing;
 
 import study.racing.model.Car;
-import study.racing.ui.InputView;
-import study.racing.ui.ResultView;
+import study.racing.view.InputView;
+import study.racing.view.ResultView;
 import study.racing.utils.RacingUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private static final int MOVE_THRESHOLD = 4;
-
     private final InputView inputView;
     private final ResultView resultView;
 
@@ -47,13 +45,7 @@ public class RacingGame {
 
     private void move() {
         for(Car car : carList) {
-            tryToMove(car);
-        }
-    }
-
-    private void tryToMove(Car car) {
-        if(RacingUtils.getRandomNumber() >= MOVE_THRESHOLD) {
-            car.move();
+            car.move(RacingUtils.getRandomNumber());
         }
     }
 

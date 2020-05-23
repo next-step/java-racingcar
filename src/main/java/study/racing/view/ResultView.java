@@ -1,4 +1,4 @@
-package study.racing.ui;
+package study.racing.view;
 
 import study.racing.model.Car;
 
@@ -21,13 +21,13 @@ public class ResultView {
     }
 
     public void printWinners(List<Car> winners) {
-        System.out.print(winners.get(0).getName());
+        StringBuilder winnerNames = new StringBuilder(winners.get(0).getName());
 
         for(int i=1; i<winners.size(); i++) {
-            System.out.print(", " + winners.get(i).getName());
+            winnerNames.append(", ").append(winners.get(i).getName());
         }
 
-        System.out.print("가 최종 우승했습니다.\n");
+        System.out.print(winnerNames.toString() + "가 최종 우승했습니다.\n");
     }
 
 

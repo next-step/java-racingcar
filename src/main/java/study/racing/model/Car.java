@@ -1,8 +1,8 @@
 package study.racing.model;
 
-import java.util.Random;
-
 public class Car implements Comparable<Car> {
+    private static final int MOVE_THRESHOLD = 4;
+
     private String name;
     private int position = 0;
 
@@ -18,8 +18,14 @@ public class Car implements Comparable<Car> {
         return position;
     }
 
-    public void move() {
-        position++;
+    public void move(int value) {
+        if(canMove(value)) {
+            position++;
+        }
+    }
+
+    private boolean canMove(int value) {
+        return value >= MOVE_THRESHOLD;
     }
 
     @Override
