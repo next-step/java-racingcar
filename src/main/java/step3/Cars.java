@@ -14,7 +14,9 @@ public class Cars {
 
     public void playGame() {
         for (Car car:this.carsPosition) {
-            car.canGo();
+            int randomNumber = car.getRandomNumber();
+            boolean greaterCheck = car.isGreater(randomNumber);
+            car.setPosition(greaterCheck);
         }
         outputView.resultPrint(carsPosition);
     }
