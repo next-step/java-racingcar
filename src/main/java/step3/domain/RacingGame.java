@@ -14,7 +14,7 @@ public class RacingGame {
     }
 
     public RacingGame(String[] carNameList) {
-        for(String carName : carNameList) {
+        for (String carName : carNameList) {
             racingCarList.add(new RacingCar(carName));
         }
     }
@@ -28,9 +28,9 @@ public class RacingGame {
 
     public int getMaxPosition() {
         return racingCarList.stream()
-                    .mapToInt(RacingCar::getCurrentPosition)
-                    .max()
-                    .getAsInt();
+                .mapToInt(RacingCar::getCurrentPosition)
+                .max()
+                .getAsInt();
     }
 
     public List<String> findWinner() {
