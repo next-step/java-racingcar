@@ -1,6 +1,7 @@
 package racing;
 
 import racing.view.InputView;
+import racing.view.ResultView;
 
 public class RacingGameStart {
 
@@ -9,10 +10,12 @@ public class RacingGameStart {
         int times = InputView.inputTime();
 
         RacingCars racingCars = new RacingCars(cars);
+        RacingGame racingGame = new RacingGame(racingCars);
 
-        RacingGame racingGame = new RacingGame(racingCars, times);
-        racingGame.race();
+        ResultView.resultMessage();
 
-
+        for (int i = 0; i < times; i++) {
+            ResultView.resultGame(racingGame.race());
+        }
     }
 }

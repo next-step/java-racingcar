@@ -22,7 +22,10 @@ public class RacingCars {
     public void moveCars() {
         for (int i = 0; i < carPositions.size(); i++) {
             carPositions.get(i).move(new CarForwardBehavior());
-            System.out.println(carPositions.get(i).getPosition());
         }
+    }
+
+    public List<Car> getCars() {
+        return carPositions;
     }
 }
