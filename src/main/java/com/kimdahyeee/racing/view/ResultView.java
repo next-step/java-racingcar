@@ -4,6 +4,7 @@ import com.kimdahyeee.racing.Car;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 public class ResultView {
     private static final String CAR_POSITION_DISPLAY = "-";
@@ -46,8 +47,7 @@ public class ResultView {
     public static void printWinner(List<Car> cars) {
         String winners = cars.stream()
                 .map(Car::getName)
-                .reduce((s, s2) -> String.join(", ", s, s2))
-                .get();
+                .collect(Collectors.joining(","));
 
         System.out.println(winners + "가 최종 우승했습니다.");
     }

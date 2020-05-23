@@ -11,12 +11,11 @@ public class RacingPlay {
         List<String> carNames = InputView.getCarNames();
         int tryCount = InputView.getTryCount();
 
-        RacingGame racingGame = new RacingGame(carNames);
+        RacingGame racingGame = new RacingGame(tryCount, carNames);
 
         ResultView.printHeader(racingGame.getRacingCars());
-        for (int i = 0; i < tryCount; i++) {
-            racingGame.move();
-            ResultView.print(racingGame.getRacingCars());
+        while (racingGame.isNotEndGame()) {
+            ResultView.print(racingGame.move());
         }
 
         ResultView.printWinner(racingGame.getWinners());

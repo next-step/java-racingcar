@@ -20,6 +20,10 @@ public class Car implements Comparable<Car> {
         return name;
     }
 
+    public boolean sameScore(int maxScore) {
+        return this.position == maxScore;
+    }
+
     protected void move() {
         boolean canMove = getRandomNumber() >= GO_STRAIGHT_LIMIT;
 
@@ -34,10 +38,6 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car o) {
-        if (this.position < o.getPosition()) {
-            return -1;
-        }
-
-        return 1;
+        return this.position - o.getPosition();
     }
 }

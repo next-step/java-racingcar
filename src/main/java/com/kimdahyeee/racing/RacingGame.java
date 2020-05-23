@@ -1,27 +1,36 @@
 package com.kimdahyeee.racing;
 
+import com.kimdahyeee.racing.rule.RandomRule;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
     private List<Car> racingCars;
+    private int tryCount;
+    private static final int END_TRY_COUNT = 0;
 
     public List<Car> getRacingCars() {
         return racingCars;
     }
 
-    public RacingGame(List<String> names) {
+    public RacingGame(int tryCount, List<String> names) {
+        this.tryCount = tryCount;
         racingCars = new ArrayList<>();
         for (String name : names) {
             racingCars.add(new Car(name));
         }
     }
 
-    public void move() {
+    public List<Car> move() {
+        tryCount = --tryCount;
+
         for (Car car : racingCars) {
             car.move();
         }
+
+        return racingCars;
     }
 
     public List<Car> getWinners() {
@@ -31,7 +40,11 @@ public class RacingGame {
                 .getPosition();
 
         return racingCars.stream()
-                .filter(car -> car.getPosition() == maxScore)
+                .filter(car -> car.sameScore(maxScore))
                 .collect(Collectors.toList());
+    }
+
+    public boolean isNotEndGame() {
+        return tryCount != END_TRY_COUNT;
     }
 }
