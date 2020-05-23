@@ -13,13 +13,15 @@ public class Movement {
 
     public void move() {
         for(int i = 0; i < carPositions.length; i++) {
-            carPositions[i] += moveCondition();
-            view.resultView(i);
+            carPositions[i] += moveCondition(random.random());
+            view.resultView(carPositions[i]);
         }
+
+        System.out.println();
     }
 
-    private int moveCondition() {
-        if (random.random() >= 4) {
+    public int moveCondition(int randomValue) {
+        if (randomValue >= 4) {
             return 1;
         }
 
