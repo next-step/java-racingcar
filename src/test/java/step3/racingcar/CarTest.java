@@ -32,7 +32,7 @@ class CarTest {
         cars.forEach(Car::move);
 
         assertThat(cars.stream().map(Car::getPosition))
-                .contains(0, 1);
+                .containsAnyOf(0, 1);
     }
 
     private static Stream<Arguments> mockCarFactory() {

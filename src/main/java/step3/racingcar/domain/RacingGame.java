@@ -1,4 +1,4 @@
-package step3.racingcar.controller;
+package step3.racingcar.domain;
 
 import step3.racingcar.domain.CarFactory;
 import step3.racingcar.domain.CarGroups;
@@ -28,12 +28,10 @@ public class RacingGame {
 
     public void run() {
         CarGroups playerCars = new CarGroups(CarFactory.makeCars(this.carNames));
-        ResultViewProcessor.printResultHeader(Message.RESULT_HEADER);
         for (int i = INDEX_ZERO; i < gameTryCounts; i++) {
             playerCars.move();
             ResultViewProcessor.printResult(playerCars);
         }
-        ResultViewProcessor.printWinnerCarNames(playerCars);
     }
 
     public String[] getCarNames() {

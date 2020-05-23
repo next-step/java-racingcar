@@ -1,8 +1,9 @@
 package step3.racingcar;
 
-import step3.racingcar.controller.RacingGame;
 import step3.racingcar.domain.Message;
+import step3.racingcar.domain.RacingGame;
 import step3.racingcar.view.InputViewProcessor;
+import step3.racingcar.view.ResultViewProcessor;
 
 public class Application {
 
@@ -12,5 +13,8 @@ public class Application {
 
         RacingGame racingGame = new RacingGame(carNames, gameTryCounts);
         racingGame.run();
+
+        ResultViewProcessor.printResultHeader(Message.RESULT_HEADER);
+        ResultViewProcessor.printWinnerCarNames(playerCars);
     }
 }

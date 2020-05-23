@@ -4,9 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import step3.racingcar.controller.RacingGame;
+import step3.racingcar.domain.RacingGame;
 
-import java.util.Arrays;
 import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -18,7 +17,7 @@ class RacingGameTest {
     @MethodSource("mockRacingGameBuilder")
     public void testIfRacingGameObjectBuilds(String[] carNames, int gameTryCounts) {
         RacingGame racingGame = new RacingGame(carNames, gameTryCounts);
-        
+
         assertThat(carNames).isEqualTo(racingGame.getCarNames());
         assertThat(racingGame.getGameTryCounts()).isEqualTo(gameTryCounts);
     }
