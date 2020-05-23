@@ -1,12 +1,14 @@
 package step3;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Cars {
-    private final ArrayList<Car> carList = new ArrayList<>();
+    private List<Car> carList = null;
     private OutputView outputView = new OutputView();
 
     public void makeCars(int carCount) {
+        carList = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
             this.carList.add(new Car());
         }
