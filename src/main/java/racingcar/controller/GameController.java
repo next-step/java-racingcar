@@ -1,9 +1,5 @@
 package racingcar.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
 import racingcar.domain.Game;
 import racingcar.view.ResultView;
 
@@ -12,24 +8,18 @@ public class GameController {
   private int attemptNum;
   private Game game;
 
-  private GameController(Integer attemptNum, String[] names) {
+  private GameController(Integer attemptNum, Game game) {
     this.attemptNum = validateInputAttemptNum(attemptNum);
-    this.game = Game.create(gameCars(names));
+    this.game = game;
   }
 
   private Integer validateInputAttemptNum(Integer attemptNum) {
-    if (attemptNum < 1 || attemptNum > 100) {
+    int MINIMUM_THRESHOLD = 1;
+    int MAXIMUM_THRESHOLD = 100;
+    if (attemptNum < MINIMUM_THRESHOLD || attemptNum > MAXIMUM_THRESHOLD) {
       throw new IllegalArgumentException("잘못 입력하셨네요.");
     }
     return attemptNum;
-  }
-
-  private Cars gameCars(String[] names) {
-    List<Car> cars = new ArrayList<>();
-    for (String name : names) {
-      cars.add(Car.create(name));
-    }
-    return Cars.create(cars);
   }
 
   public Game proceedGame() {
@@ -39,9 +29,9 @@ public class GameController {
     return this.game;
   }
 
-  public void getResults() {
+  public ResultView getResults() {
     ResultView resultView = ResultView.create(this.game);
-    resultView.printView();
+    return resultView.printView();
   }
 
   public int getAttemptNum() {
@@ -52,7 +42,7 @@ public class GameController {
     return game;
   }
 
-  public static GameController create(int attemptNum, String[] names) {
-    return new GameController(attemptNum, names);
+  public static GameController create(int attemptNum, Game game) {
+    return new GameController(attemptNum, game);
   }
 }
