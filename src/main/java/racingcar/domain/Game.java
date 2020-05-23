@@ -6,9 +6,8 @@ import racingcar.util.RandomUtil;
 public class Game {
 
   private final List<Car> cars;
-  private int raceNum;
 
-  private Game(Cars cars) {
+  protected Game(Cars cars) {
     this.cars = cars.getCars();
   }
 
@@ -17,16 +16,11 @@ public class Game {
       int random = RandomUtil.getRandomValue();
       element.updatePosition(random);
     });
-    raceNum++;
     return this.cars;
   }
 
   public List<Car> getCars() {
     return cars;
-  }
-
-  public Integer getRaceNum() {
-    return raceNum;
   }
 
   public static Game create(Cars cars) {
