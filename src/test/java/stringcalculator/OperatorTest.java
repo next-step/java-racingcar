@@ -1,6 +1,7 @@
 package stringcalculator;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -30,5 +31,13 @@ public class OperatorTest {
     @CsvSource({"ADDITION,11,3,14", "SUBTRACTION,2,10,-8", "MULTIPLICATION,3,6,18", "DIVISION,15,5,3"})
     void operations(Operator operator, int a, int b, int expected) {
         assertThat(operator.operate(a, b)).isEqualTo(expected);
+    }
+
+    @DisplayName("0으로 나눌 시 에러를 던짐")
+    @Test
+    void divideByZeroShouldThrowIllegalArgumentException() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            Operator.DIVISION.operate(1, 0);
+        }).withMessage("Cannot divide by zero");
     }
 }
