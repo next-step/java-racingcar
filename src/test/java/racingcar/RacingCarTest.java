@@ -10,7 +10,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.controller.GameController;
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.CarsMock;
 import racingcar.domain.Game;
+import racingcar.domain.GameMock;
 import racingcar.util.RandomUtil;
 import racingcar.view.ResultView;
 
@@ -24,7 +27,9 @@ public class RacingCarTest {
     int attemptNum = 3;
     String line = "honux, pobi, crong";
     String[] names = line.split(", ");
-    gameController = GameController.create(attemptNum, names);
+    Cars cars = Cars.create(names);
+    Game game = Game.create(cars);
+    gameController = GameController.create(attemptNum, game);
   }
 
 
@@ -35,49 +40,43 @@ public class RacingCarTest {
 
   @Test
   void 랜덤값이_4이상일때_전진한다() {
-
     //given
-    Car car1 = Car.create("first car");
-    int previousPositionOfCar1 = car1.getPosition();
-    Car car2 = Car.create("second car");
-    Car car3 = Car.create("third car");
-    Car car4 = Car.create("fourth car");
-    Car car5 = Car.create("fifth car");
-
-    List<Car> carList = new ArrayList<>();
-    carList.add(car1);
-    carList.add(car2);
-    carList.add(car3);
-    carList.add(car4);
-    carList.add(car5);
-
-    Game game = Game.create(carList);
+    int NON_UPDATE_THRESHOLD = 3;
+    int UPDATE_THRESHOLD = 4;
+    String[] names = {"pobi", "crong", "honux"};
+    Cars cars = Cars.create(names);
+    int previousPositionOfCar1 = cars.getCars().get(0).getPosition();
 
     //when
-    assertThat(game.doRace().get(0).getPosition())
+    assertThat(cars.getCars().get(0).updatePosition(NON_UPDATE_THRESHOLD))
         //then
         .isEqualTo(previousPositionOfCar1);
 
     //when
-    assertThat(game.doRace().get(0).getPosition())
+    assertThat(cars.getCars().get(0).updatePosition(UPDATE_THRESHOLD))
         //then
         .isGreaterThan(previousPositionOfCar1);
   }
 
   @Test
-  void 입력한_대수만큼_자동차가_생성된다() {
-    int carNum = 4;
-    assertThat(gameController.getGame().getCars().size()).isEqualTo(carNum);
-  }
-
-  @Test
   void 입력한_횟수만큼_자동차가_경주된다() {
-    int attemptNum = 3;
-    assertThat(gameController.proceedGame().getRaceNum()).isEqualTo(attemptNum);
+
+    //given
+    int attemptNum = 4;
+    String[] names = {"pobi", "crong", "honux"};
+    Cars cars = Cars.create(names);
+    GameMock gameMock = GameMock.create(cars);
+    GameController gameController = GameController.create(attemptNum, gameMock);
+
+    //when
+    gameController.proceedGame();
+
+    //then
+    assertThat(gameMock.getAttemptNum()).isEqualTo(attemptNum);
   }
 
   @Test
-  void 입력된_횟수만큼_자동차가_표시된다() {
+  void 자동차의_전진수만큼_하이픈이_출력된다() {
     Game game = gameController.proceedGame();
     ResultView resultView = gameController.getResults();
     assertThat(game.getCars()
@@ -118,8 +117,10 @@ public class RacingCarTest {
     carList.add(car2);
     carList.add(car3);
 
+    CarsMock cars = CarsMock.create(carList);
+
     //when
-    Game gameOne = Game.create(carList);
+    GameMock gameOne = GameMock.create(cars);
     ResultView resultViewForOne = ResultView.create(gameOne);
 
     //then
@@ -143,8 +144,10 @@ public class RacingCarTest {
     carList.add(car2);
     carList.add(car3);
 
+    CarsMock cars = CarsMock.create(carList);
+
     //when
-    Game gameOne = Game.create(carList);
+    Game gameOne = Game.create(cars);
     ResultView resultViewForOne = ResultView.create(gameOne);
 
     //then
