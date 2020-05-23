@@ -12,7 +12,7 @@ public class GameController {
   private int attemptNum;
   private Game game;
 
-  private GameController(int attemptNum, String[] names) {
+  private GameController(Integer attemptNum, String[] names) {
     this.attemptNum = attemptNum;
     this.game = Game.create(gameCars(names));
   }
@@ -32,9 +32,9 @@ public class GameController {
     return this.game;
   }
 
-  public ResultView getResults() {
+  public void getResults() {
     ResultView resultView = ResultView.create(this.game);
-    return resultView.printView();
+    resultView.printView();
   }
 
   public int getAttemptNum() {
