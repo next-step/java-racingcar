@@ -44,8 +44,8 @@ public class RacingGame {
     }
 
     private void announceWinner(List<Car> carList) {
-        int max = getWinScore(carList);
-        List<String> winners = selectWinner(carList, max);
+        int winScore = getWinScore(carList);
+        List<String> winners = selectWinner(carList, winScore);
         ResultView.printWinner(winners);
     }
 
@@ -53,14 +53,14 @@ public class RacingGame {
         List<Integer> scores = new ArrayList<>();
         for (Car car : carList)
             scores.add(car.getPosition());
-        int max = Collections.max(scores);
-        return max;
+        int winScore = Collections.max(scores);
+        return winScore;
     }
 
-    private List<String> selectWinner(List<Car> carList, int max) {
+    private List<String> selectWinner(List<Car> carList, int winScore) {
         List<String> winners = new ArrayList<>();
         for (Car car : carList) {
-            if (max == car.getPosition())
+            if (winScore == car.getPosition())
                 winners.add(car.getName());
         }
         return winners;
