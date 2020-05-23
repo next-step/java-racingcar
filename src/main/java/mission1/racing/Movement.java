@@ -1,9 +1,11 @@
 package mission1.racing;
 
+import mission1.racing.view.RacingGameOutputView;
+
 public class Movement {
     private int[] carPositions;
 
-    private RacingGameView view = new RacingGameView();
+    private RacingGameOutputView outputView = new RacingGameOutputView();
     private RacingRandom random = new RacingRandom();
 
     public Movement() {};
@@ -14,7 +16,7 @@ public class Movement {
     public void move() {
         for(int i = 0; i < carPositions.length; i++) {
             carPositions[i] += moveCondition(random.random());
-            view.resultView(carPositions[i]);
+            outputView.resultView(carPositions[i]);
         }
 
         System.out.println();
