@@ -3,8 +3,7 @@ package racecar;
 import java.util.Scanner;
 
 public class InputView {
-    private InputView() {
-    }
+    private InputView() {}
 
     public static int askRepeatCount() {
         Scanner scanner = new Scanner(System.in);
