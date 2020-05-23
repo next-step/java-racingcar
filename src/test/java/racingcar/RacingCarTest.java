@@ -45,15 +45,15 @@ public class RacingCarTest {
     int UPDATE_THRESHOLD = 4;
     String[] names = {"pobi", "crong", "honux"};
     Cars cars = Cars.create(names);
-    int previousPositionOfCar1 = cars.getCars().get(0).getPosition();
+    int previousPositionOfCar1 = cars.getCarList().get(0).getPosition();
 
     //when
-    assertThat(cars.getCars().get(0).updatePosition(NON_UPDATE_THRESHOLD))
+    assertThat(cars.getCarList().get(0).updatePosition(NON_UPDATE_THRESHOLD))
         //then
         .isEqualTo(previousPositionOfCar1);
 
     //when
-    assertThat(cars.getCars().get(0).updatePosition(UPDATE_THRESHOLD))
+    assertThat(cars.getCarList().get(0).updatePosition(UPDATE_THRESHOLD))
         //then
         .isGreaterThan(previousPositionOfCar1);
   }
@@ -79,7 +79,7 @@ public class RacingCarTest {
   void 자동차의_전진수만큼_하이픈이_출력된다() {
     Game game = gameController.proceedGame();
     ResultView resultView = gameController.getResults();
-    assertThat(game.getCars()
+    assertThat(game.getCars().getCarList()
         .stream()
         .map(Car::getPosition))
         .isEqualTo(resultView.getResultListSize());
@@ -88,17 +88,17 @@ public class RacingCarTest {
   @Test
   void 자동차마다_생성되는_레이싱_수가_다르다() {
     Game game = gameController.proceedGame();
-    IntStream.range(0, game.getCars().size() - 1).forEach(i -> {
-      assertThat(game.getCars().get(i).getPosition())
-          .isNotEqualTo(game.getCars().get(i + 1).getPosition());
+    IntStream.range(0, game.getCars().getCarList().size() - 1).forEach(i -> {
+      assertThat(game.getCars().getCarList().get(i).getPosition())
+          .isNotEqualTo(game.getCars().getCarList().get(i + 1).getPosition());
     });
   }
 
   @Test
   void 입력한_이름이_자동차_이름이_된다() {
-    assertThat(gameController.getGame().getCars().get(0).getName()).isEqualTo("honux");
-    assertThat(gameController.getGame().getCars().get(1).getName()).isEqualTo("pobi");
-    assertThat(gameController.getGame().getCars().get(2).getName()).isEqualTo("crong");
+    assertThat(gameController.getGame().getCars().getCarList().get(0).getName()).isEqualTo("honux");
+    assertThat(gameController.getGame().getCars().getCarList().get(1).getName()).isEqualTo("pobi");
+    assertThat(gameController.getGame().getCars().getCarList().get(2).getName()).isEqualTo("crong");
   }
 
   @Test
