@@ -18,7 +18,7 @@ class CarTest {
     @DisplayName("car 객체 생성 및 기본값 테스트")
     @Test
     public void makeNewCarObject() {
-        Car car = new Car("abc", new RandomMovingStrategy());
+        Car car = new Car("abc");
 
         assertThat(car.getPosition()).isEqualTo(0);
     }

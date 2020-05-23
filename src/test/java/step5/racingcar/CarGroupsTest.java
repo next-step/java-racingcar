@@ -42,11 +42,11 @@ public class CarGroupsTest {
     @MethodSource("mockCarNamesBuilder")
     public void moveCarGroups(String[] carNames) {
         CarGroups carGroups = new CarGroups(CarFactory.makeCars(carNames));
-        carGroups.move();
+        carGroups.move(() -> true);
 
         boolean isCarGroupsMoved = carGroups.getCarPositions()
                 .stream()
-                .allMatch(position -> position >= 0);
+                .allMatch(position -> position == 1);
 
         assertThat(isCarGroupsMoved).isEqualTo(true);
     }
@@ -56,7 +56,7 @@ public class CarGroupsTest {
     @MethodSource("mockCarNamesBuilder")
     public void getWinnerCarsName(String[] carNames) {
         CarGroups carGroups = new CarGroups(CarFactory.makeCars(carNames));
-        carGroups.move();
+        carGroups.move(() -> true);
 
         List<String> getWinnerCarNames = carGroups.getWinnerCarNames();
 

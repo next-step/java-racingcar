@@ -11,7 +11,7 @@ public class CarFactory {
 
     public static List<Car> makeCars(String[] carNames) {
         return Arrays.stream(carNames)
-                .map(name -> new Car(name, new RandomMovingStrategy()))
+                .map(name -> new Car(name))
                 .collect(Collectors.toList());
     }
 }

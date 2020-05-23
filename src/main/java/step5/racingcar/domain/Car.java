@@ -5,12 +5,10 @@ public class Car {
     private static final int DEFAULT_POSITION = 0;
     private int position;
     private final String name;
-    private final MovingStrategy movingStrategy;
 
-    public Car(String name, MovingStrategy movingStrategy) {
+    public Car(String name) {
         this.position = DEFAULT_POSITION;
         this.name = name;
-        this.movingStrategy = movingStrategy;
     }
 
     public int getPosition() { return position; }
