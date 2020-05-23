@@ -13,8 +13,15 @@ public class GameController {
   private Game game;
 
   private GameController(Integer attemptNum, String[] names) {
-    this.attemptNum = attemptNum;
+    this.attemptNum = validateInputAttemptNum(attemptNum);
     this.game = Game.create(gameCars(names));
+  }
+
+  private Integer validateInputAttemptNum(Integer attemptNum) {
+    if (attemptNum < 1 || attemptNum > 100) {
+      throw new IllegalArgumentException("잘못 입력하셨네요.");
+    }
+    return attemptNum;
   }
 
   private Cars gameCars(String[] names) {
