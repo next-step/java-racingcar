@@ -8,10 +8,11 @@ public class Car {
         this.carMoveBehavior = carMoveBehavior;
     }
 
-    public void move() {
+    public int move() {
         if (carMoveBehavior.action()) {
             position++;
         }
+        return position;
     }
 
     public int getPosition() {
