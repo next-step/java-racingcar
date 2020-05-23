@@ -15,6 +15,6 @@ public class Application {
         racingGame.run();
 
         ResultViewProcessor.printResultHeader(Message.RESULT_HEADER);
-        ResultViewProcessor.printWinnerCarNames(playerCars);
+        //ResultViewProcessor.printWinnerCarNames(playerCars);
     }
 }
