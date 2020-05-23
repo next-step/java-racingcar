@@ -1,5 +1,5 @@
-import mission1.racing.Movement;
-import mission1.racing.RacingRandom;
+package mission1.racing;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
