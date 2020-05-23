@@ -19,8 +19,7 @@ public class RacingMain {
         RacingGame racingGame = new RacingGame(carNames);
 
         for (int i = 0; i < gameCoin; i++) {
-            racingGame.moveCars();
-            racingController.outputCars(racingGame.getRacingCarList());
+            racingController.outputCars(racingGame.moveCars());
         }
 
         racingController.outputWinners(racingGame.findWinner());

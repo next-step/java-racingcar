@@ -9,21 +9,19 @@ public class RacingGame {
     private List<RacingCar> racingCarList = new ArrayList<>();
     private RacingRandom racingRandom = new RacingRandom();
 
-    public List<RacingCar> getRacingCarList() {
-        return racingCarList;
-    }
-
     public RacingGame(String[] carNameList) {
         for (String carName : carNameList) {
             racingCarList.add(new RacingCar(carName));
         }
     }
 
-    public void moveCars() {
+    public List<RacingCar> moveCars() {
         for (RacingCar car : racingCarList) {
             int power = racingRandom.getRandomNumber();
             car.move(power);
         }
+
+        return racingCarList;
     }
 
     public int getMaxPosition() {
