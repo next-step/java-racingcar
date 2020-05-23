@@ -2,9 +2,10 @@ package step5.racingcar.domain;
 
 public class Car {
 
-    private static final int DEFAULT_POSITION = 0;
     private int position;
     private final String name;
+
+    private static final int DEFAULT_POSITION = 0;
 
     public Car(String name) {
         this.position = DEFAULT_POSITION;
