@@ -25,22 +25,19 @@ class CarTest {
 
     @DisplayName("car 객체가 움직이는지 확인하는 테스트")
     @ParameterizedTest
-    @MethodSource("mockCarFactory")
-    public void checkWhetherCarObjectMoves(String[] carNames) {
-        List<Car> cars = CarFactory.makeCars(carNames);
+    @MethodSource("mockMovableStrategy")
+    public void checkWhetherCarObjectMoves(boolean isMovable, int distance) {
+        Car car = new Car("test");
 
-        cars.forEach(Car::move);
+        car.move(() -> isMovable);
 
-        assertThat(cars.stream().map(Car::getPosition))
-                .containsAnyOf(0, 1);
+        assertThat(car.getPosition()).isEqualTo(distance);
     }
 
-    private static Stream<Arguments> mockCarFactory() {
+    private static Stream<Arguments> mockMovableStrategy() {
         return Stream.of(
-                Arguments.of((Object) "a,b,c,d,e".split(",")),
-                Arguments.of((Object) "j,a,k".split(",")),
-                Arguments.of((Object) "a".split(",")),
-                Arguments.of((Object) "java,js,python,r".split(","))
+                Arguments.of(true, 1),
+                Arguments.of(false, 0)
         );
     }
 }

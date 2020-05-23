@@ -17,7 +17,7 @@ public class Car {
 
     public String getName() { return name; }
 
-    public void move() {
+    public void move(MovingStrategy movingStrategy) {
         boolean isMovable = movingStrategy.isMovable();
         if (isMovable == true)
             position++;
