@@ -22,7 +22,7 @@ public class RacingGame {
     }
 
     public void run() {
-        if (gameTryCounts == INDEX_ZERO)
+        if (gameTryCounts < MINIMUM_LIMIT)
             throw new IllegalStateException(Message.ERROR_INVALID_STATE);
         playerCars.move();
         gameTryCounts--;
