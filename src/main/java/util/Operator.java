@@ -21,12 +21,12 @@ public class Operator {
         return res+temp;
     }
     public static double minus(double res, double temp){
-        return res+temp;
+        return res-temp;
     }
     public static double multiply(double res, double temp){
-        return res+temp;
+        return res*temp;
     }
     public static double divide(double res, double temp){
-        return res+temp;
+        return res/temp;
     }
 }
