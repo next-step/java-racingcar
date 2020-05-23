@@ -12,7 +12,7 @@ public class Car {
     public int getPosition() {
         return position;
     }
-    void move(){
+    public void move(){
         int dice =(int)(Math.random()*RANDOM_BOUND);
         position+= dice>=RANDOM_CUT?1:0;
     }
