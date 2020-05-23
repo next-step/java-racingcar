@@ -3,26 +3,20 @@ package racing;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
-    private Car car;
-    private int random;
-    private RandomNumber randomNumber;
 
-    @BeforeEach
-    void setUp() {
-        car = new Car(0, 0);
-        randomNumber = new RandomNumber();
-        random = randomNumber.getRandomNumber();
-    }
+    @ParameterizedTest
+    @DisplayName("Car 전진 또는 정지")
+    @ValueSource(ints = {1, 0})
+    void moveTest(int expected) {
+        //Car car = new Car(new CarForwardBehavior());
 
-    @Test
-    @DisplayName("Random값이 4이상일 때 Car 이동")
-    void moveTest() {
-        if (random >= 4) {
-            assertThat(car.move(random)).isEqualTo(1);
-        }
+       // assertThat(CarForwardBehavior.action()).isEqualTo(expected);
     }
 }
+

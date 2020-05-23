@@ -1,14 +1,14 @@
 package racing;
 
 public class Car {
-    private CarMoveBehavior carMoveBehavior;
+//    private CarMoveBehavior carMoveBehavior;
     private int position;
 
-    public Car(CarMoveBehavior carMoveBehavior) {
-        this.carMoveBehavior = carMoveBehavior;
-    }
+//    public Car(CarMoveBehavior carMoveBehavior) {
+//        this.carMoveBehavior = carMoveBehavior;
+//    }
 
-    public int move() {
+    public int move(CarMoveBehavior carMoveBehavior) {
         if (carMoveBehavior.action()) {
             position++;
         }
