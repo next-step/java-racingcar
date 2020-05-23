@@ -19,12 +19,13 @@
     * Car
     * CarFactory
     * CarGroups
+    * RacingGame
     * MovingStrategy
     * RandomMovingStrategy
     * Message
  
  * Controller
-    * RacingGame
+    * RacingGameController
     
  * View
     * InputViewProcessor
