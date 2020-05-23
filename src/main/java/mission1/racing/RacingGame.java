@@ -1,12 +1,11 @@
 package mission1.racing;
 
-import java.util.Scanner;
-
 public class RacingGame {
     private int time;
     private int carNumber;
 
-    Movement movement = new Movement();
+    private Movement movement;
+    private RacingGameView view = new RacingGameView();
 
     public void startGame() {
         setGame();
@@ -17,12 +16,9 @@ public class RacingGame {
     }
 
     private void setGame() {
-        Scanner scanner = new Scanner(System.in);
+        time = view.inputView("시도할 회수는 몇 회 인가요?");
+        carNumber = view.inputView("자동차 대수는 몇 대 인가요?");
 
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        carNumber = scanner.nextInt();
-
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        time = scanner.nextInt();
+        movement = new Movement(carNumber);
     }
 }

@@ -1,13 +1,20 @@
 package mission1.racing;
 
 public class Movement {
-    private int[] carPositions = {0, 0, 0};
-    RacingRandom random = new RacingRandom();
+    private int[] carPositions;
+
+    private RacingGameView view = new RacingGameView();
+    private RacingRandom random = new RacingRandom();
+
+    public Movement() {};
+    public Movement(int carNumber) {
+        carPositions = new int[carNumber];
+    }
 
     public void move() {
         for(int i = 0; i < carPositions.length; i++) {
             carPositions[i] += moveCondition();
-            showCarStatus(i);
+            view.resultView(i);
         }
     }
 
@@ -17,12 +24,5 @@ public class Movement {
         }
 
         return 0;
-    }
-
-    private void showCarStatus(int i) {
-        for(int j = 0; j < carPositions[i]; j++) {
-            System.out.print("-");
-        }
-        System.out.print("\n");
     }
 }
