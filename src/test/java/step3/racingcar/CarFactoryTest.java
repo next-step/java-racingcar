@@ -26,11 +26,8 @@ class CarFactoryTest {
                 .map(Car::getName)
                 .collect(Collectors.toList());;
         List<String> originCarNames = Arrays.asList(carNames);
-        List<String> filteredList = testTargetCarNames.stream()
-                .filter(target -> originCarNames.stream().noneMatch(Predicate.isEqual(target)))
-                .collect(Collectors.toList());
-        assertThat(filteredList.size())
-                .isEqualTo(0);
+
+        assertThat(testTargetCarNames).isEqualTo(originCarNames);
     }
 
     private static Stream<Arguments> mockCarFactory() {

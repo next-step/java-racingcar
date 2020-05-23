@@ -19,6 +19,7 @@ class CarTest {
     @Test
     public void makeNewCarObject() {
         Car car = new Car("abc", new RandomMovingStrategy());
+
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
@@ -27,7 +28,9 @@ class CarTest {
     @MethodSource("mockCarFactory")
     public void checkWhetherCarObjectMoves(String[] carNames) {
         List<Car> cars = CarFactory.makeCars(carNames);
+
         cars.forEach(Car::move);
+
         assertThat(cars.stream().map(Car::getPosition))
                 .contains(0, 1);
     }

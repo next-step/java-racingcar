@@ -21,22 +21,22 @@ public class CarGroupsTest {
     @MethodSource("mockCarNamesBuilder")
     public void getNewCarGroupUsingCarFactory(String[] carNames) {
         CarGroups carGroups = new CarGroups(CarFactory.makeCars(carNames));
+
         int carCounts = carNames.length;
+
         assertThat(carGroups.getCarNames().size())
                 .isEqualTo(carCounts);
 
         boolean isPositionsDefaultZero = carGroups.getCarPositions().stream()
                 .allMatch(position -> position == 0);
+
         assertThat(isPositionsDefaultZero)
                 .isEqualTo(true);
 
         List<String> testTargetCarNames = carGroups.getCarNames();
         List<String> originCarNames = Arrays.asList(carNames);
-        List<String> filteredList = testTargetCarNames.stream()
-                .filter(target -> originCarNames.stream().noneMatch(Predicate.isEqual(target)))
-                .collect(Collectors.toList());
-        assertThat(filteredList.size())
-                .isEqualTo(0);
+
+        assertThat(testTargetCarNames).isEqualTo(originCarNames);
     }
 
     @DisplayName("CarGroups에 Move 요청 뒤 position 테스트")
@@ -45,9 +45,11 @@ public class CarGroupsTest {
     public void moveCarGroups(String[] carNames) {
         CarGroups carGroups = new CarGroups(CarFactory.makeCars(carNames));
         carGroups.move();
+
         boolean isCarGroupsMoved = carGroups.getCarPositions()
                 .stream()
                 .allMatch(position -> position >= 0);
+
         assertThat(isCarGroupsMoved).isEqualTo(true);
     }
     
@@ -57,7 +59,9 @@ public class CarGroupsTest {
     public void getWinnerCarsName(String[] carNames) {
         CarGroups carGroups = new CarGroups(CarFactory.makeCars(carNames));
         carGroups.move();
+
         List<String> getWinnerCarNames = carGroups.getWinnerCarNames();
+
         assertThat(getWinnerCarNames.size())
                 .isGreaterThanOrEqualTo(1);
     }
