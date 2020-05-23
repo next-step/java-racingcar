@@ -4,11 +4,12 @@ import racing.view.InputView;
 import racing.view.ResultView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RacingGame {
     private int time;
     private int car;
-    private ArrayList<Car> carPositions = new ArrayList<Car>();
+    private List<Car> carPositions = new ArrayList<>();
 
     public void race() {
         car = InputView.inputCar();
