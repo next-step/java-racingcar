@@ -1,14 +1,12 @@
 package step3.racingcar.domain;
 
-import step3.racingcar.domain.CarFactory;
-import step3.racingcar.domain.CarGroups;
-import step3.racingcar.domain.Message;
-import step3.racingcar.view.ResultViewProcessor;
+import step3.racingcar.view.ResultView;
 
 public class RacingGame {
 
     private String[] carNames;
     private int gameTryCounts;
+    private CarGroups playerCars;
     private static final String BLANK_NAME = "";
     private static final int MINIMUM_LIMIT = 1;
     private static final int INDEX_ZERO = 0;
@@ -17,6 +15,7 @@ public class RacingGame {
         validateConstructors(carNames, gameTryCounts);
         this.carNames = carNames;
         this.gameTryCounts = gameTryCounts;
+        this.playerCars = new CarGroups(CarFactory.makeCars(this.carNames));
     }
 
     private void validateConstructors(String[] carNames, int gameTryCounts) {
@@ -26,12 +25,14 @@ public class RacingGame {
             throw new IllegalArgumentException(Message.ERROR_GAME_TRY_COUNTS);
     }
 
-    public void run() {
-        CarGroups playerCars = new CarGroups(CarFactory.makeCars(this.carNames));
-        for (int i = INDEX_ZERO; i < gameTryCounts; i++) {
-            playerCars.move();
-            ResultViewProcessor.printResult(playerCars);
-        }
+    public CarGroups run() {
+        playerCars.move();
+        this.gameTryCounts--;
+        return this.playerCars;
+    }
+
+    public boolean hasNextRound() {
+        return this.gameTryCounts >= MINIMUM_LIMIT;
     }
 
     public String[] getCarNames() {

@@ -5,21 +5,18 @@ import step3.racingcar.domain.CarGroups;
 
 import java.util.List;
 
-public class ResultViewProcessor {
+public class ResultView {
 
     private static final String POSITION_MARK = "-";
     private static final String DELIMITER = " : ";
     private static final String COMMA = ", ";
     private static final int INDEX_ZERO = 0;
 
-    private ResultViewProcessor() {
-    }
-
-    public static void printResultHeader(String headerMessage) {
+    public void printResultHeader(String headerMessage) {
         System.out.println(headerMessage);
     }
 
-    public static void printResult(CarGroups carGroups) {
+    public void printResult(CarGroups carGroups) {
         List<String> carNames = carGroups.getCarNames();
         List<Integer> carPositions = carGroups.getCarPositions();
         int carCounts = carNames.size();
@@ -30,14 +27,14 @@ public class ResultViewProcessor {
         System.out.println();
     }
 
-    private static void printCurrentPosition(int currentPosition) {
+    private void printCurrentPosition(int currentPosition) {
         for (int i = INDEX_ZERO; i < currentPosition; i++) {
             System.out.print(POSITION_MARK);
         }
         System.out.println();
     }
 
-    public static void printWinnerCarNames(CarGroups carGroups) {
+    public void printWinnerCarNames(CarGroups carGroups) {
         List<String> winnerCarNames = carGroups.getWinnerCarNames();
         StringBuilder stringBuilder = new StringBuilder();
         for (String winnerCarName : winnerCarNames) {
@@ -47,7 +44,7 @@ public class ResultViewProcessor {
         System.out.println(stringBuilder.toString() + Message.RESULT_FOOTER);
     }
 
-    private static void appendComma(StringBuilder stringBuilder) {
+    private void appendComma(StringBuilder stringBuilder) {
         if (stringBuilder.length() > INDEX_ZERO)
             stringBuilder.append(COMMA);
     }
