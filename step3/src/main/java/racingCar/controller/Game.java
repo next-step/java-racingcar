@@ -1,6 +1,6 @@
-package main.java.racingCar.controller;
+package src.main.java.racingCar.controller;
 
-import main.java.racingCar.view.InputViewer;
+import src.main.java.racingCar.view.InputViewer;
 
 public class Game {
     public static void main(){

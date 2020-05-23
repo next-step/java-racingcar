@@ -1,4 +1,4 @@
-package main.java.racingCar.model;
+package src.main.java.racingCar.model;
 
 public class Car {
 }
