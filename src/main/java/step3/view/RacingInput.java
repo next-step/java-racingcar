@@ -5,18 +5,21 @@ import java.util.Scanner;
 public class RacingInput {
     private static final String DELIMETER = ",";
 
-    public int inputForInt(String inputMsg) {
+    private static final String INPUT_TIMES = "시도할 회수는 몇 회 인가요";
+    private static final String INPUT_CARS = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+
+    public int inputForInt() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println(inputMsg);
+        System.out.println(INPUT_TIMES);
         int scanNumber = scanner.nextInt();
         return scanNumber;
     }
 
-    public String[] inputForString(String inputMsg) {
+    public String[] inputForString() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println(inputMsg);
+        System.out.println(INPUT_CARS);
         String scanString = scanner.nextLine();
 
         return scanString.split(DELIMETER);

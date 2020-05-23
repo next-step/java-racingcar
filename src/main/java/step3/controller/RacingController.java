@@ -11,14 +11,14 @@ public class RacingController {
     RacingInput racingInput = new RacingInput();
     RacingOutput RacingOutput = new RacingOutput();
 
-    public String[] inputForStringController(String inputMsg) {
-        String[] carNames = racingInput.inputForString(inputMsg);
+    public String[] inputForStringController() {
+        String[] carNames = racingInput.inputForString();
 
         return carNames;
     }
 
-    public int inputForIntController(String inputMsg) {
-        int gameCoin = racingInput.inputForInt(inputMsg);
+    public int inputForIntController() {
+        int gameCoin = racingInput.inputForInt();
 
         return gameCoin;
     }
