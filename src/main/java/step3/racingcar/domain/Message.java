@@ -10,6 +10,7 @@ public class Message {
     public static final String RESULT_HEADER = "실행 결과";
     public static final String RESULT_FOOTER = "가 최종 우승했습니다.";
     public static final String ERROR_INVALID_STATE = "ERROR : 더이상 플레이 할 수 없습니다.";
+    public static final String ERROR_INVALID_ORDER = "ERROR : 게임 실행 전 게임 정보를 입력 갱신하십시오.";
 
     private Message() {
     }

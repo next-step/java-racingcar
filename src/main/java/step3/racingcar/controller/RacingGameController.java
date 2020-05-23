@@ -23,6 +23,9 @@ public class RacingGameController {
     }
 
     public void startGame() {
+        if (racingGame == null) {
+            throw new IllegalStateException(Message.ERROR_INVALID_ORDER);
+        }
         resultView.printResultHeader(Message.RESULT_HEADER);
         while (racingGame.hasNextRound() == true) {
             racingGame.run();
