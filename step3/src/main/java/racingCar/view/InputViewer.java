@@ -8,11 +8,11 @@ public class InputViewer {
     public InputViewer(){
     }
     public int carInputViewer(){
-        String value = SCANNER.nextLine();
         int number = SCANNER.nextInt();
-        return 0;
+        return number;
     }
     public int tryInputViewer(){
-        return 0;
+        int number = SCANNER.nextInt();
+        return number;
     }
 }
