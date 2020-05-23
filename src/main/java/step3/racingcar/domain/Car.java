@@ -18,8 +18,8 @@ public class Car {
     public String getName() { return name; }
 
     public void move() {
-        boolean isMovable = this.movingStrategy.isMovable();
+        boolean isMovable = movingStrategy.isMovable();
         if (isMovable == true)
-            this.position++;
+            position++;
     }
 }

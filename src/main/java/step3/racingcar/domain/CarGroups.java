@@ -14,17 +14,17 @@ public class CarGroups {
     }
 
     public void move() {
-        this.carGroups.forEach(Car::move);
+        carGroups.forEach(Car::move);
     }
 
     public List<String> getCarNames() {
-        return this.carGroups.stream()
+        return carGroups.stream()
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
 
     public List<Integer> getCarPositions() {
-        return this.carGroups.stream()
+        return carGroups.stream()
                 .map(Car::getPosition)
                 .collect(Collectors.toList());
     }
@@ -38,7 +38,7 @@ public class CarGroups {
     }
 
     private int getMaxPosition() {
-        Car car = this.carGroups.stream()
+        Car car = carGroups.stream()
                 .max(Comparator.comparing(Car::getPosition))
                 .orElseThrow(() -> new NoSuchElementException(Message.ERROR_MAX_POSITION));
         return car.getPosition();

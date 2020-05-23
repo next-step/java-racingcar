@@ -1,7 +1,5 @@
 package step3.racingcar.domain;
 
-import step3.racingcar.domain.MovingStrategy;
-
 import java.util.Random;
 
 public class RandomMovingStrategy implements MovingStrategy {

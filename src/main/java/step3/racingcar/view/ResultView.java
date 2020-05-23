@@ -1,7 +1,7 @@
 package step3.racingcar.view;
 
 import step3.racingcar.domain.Message;
-import step3.racingcar.domain.CarGroups;
+import step3.racingcar.domain.RacingGame;
 
 import java.util.List;
 
@@ -16,9 +16,9 @@ public class ResultView {
         System.out.println(headerMessage);
     }
 
-    public void printResult(CarGroups carGroups) {
-        List<String> carNames = carGroups.getCarNames();
-        List<Integer> carPositions = carGroups.getCarPositions();
+    public void printResult(RacingGame racingGame) {
+        List<String> carNames = racingGame.getPlayerCars().getCarNames();
+        List<Integer> carPositions = racingGame.getPlayerCars().getCarPositions();
         int carCounts = carNames.size();
         for (int i = INDEX_ZERO; i < carCounts; i++) {
             System.out.print(carNames.get(i) + DELIMITER);
@@ -34,8 +34,8 @@ public class ResultView {
         System.out.println();
     }
 
-    public void printWinnerCarNames(CarGroups carGroups) {
-        List<String> winnerCarNames = carGroups.getWinnerCarNames();
+    public void printWinnerCarNames(RacingGame racingGame) {
+        List<String> winnerCarNames = racingGame.getPlayerCars().getWinnerCarNames();
         StringBuilder stringBuilder = new StringBuilder();
         for (String winnerCarName : winnerCarNames) {
             appendComma(stringBuilder);
