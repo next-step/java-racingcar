@@ -17,7 +17,7 @@ public class ResultView {
     this.results = Results.create();
   }
 
-  public void printView() {
+  public ResultView printView() {
     for (int carSizeIndex = 0; carSizeIndex < game.getCars().size(); carSizeIndex++) {
       results.updateResults(makeView(carSizeIndex));
       System.out.println(
@@ -26,6 +26,7 @@ public class ResultView {
     }
     winnerView(this.game.getCars())
         .forEach(element -> System.out.println("우승자: " + element.getName()));
+    return this;
   }
 
   private String makeView(int carSizeIndex) {
