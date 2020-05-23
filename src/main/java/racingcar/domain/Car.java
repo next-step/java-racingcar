@@ -19,7 +19,8 @@ public class Car {
   }
 
   public int updatePosition(int random) {
-    if (random >= 4) {
+    int UPDATE_POSITION_THRESHOLD = 4;
+    if (random >= UPDATE_POSITION_THRESHOLD) {
       this.position = this.position + 1;
     }
     return this.position;
