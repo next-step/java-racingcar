@@ -7,7 +7,7 @@ public class Results {
 
   private List<String> results = new ArrayList<>();
 
-  public Results() {}
+  private Results() {}
 
   private Results(List<String> results) {
     this.results = results;
