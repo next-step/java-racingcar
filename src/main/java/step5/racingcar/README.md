@@ -28,8 +28,8 @@
     * RacingGameController
     
  * View
-    * InputViewProcessor
-    * ResultViewProcessor
+    * InputView
+    * ResultView
   
-  * ETC
-    * Application
+  * Application
+    * Main
