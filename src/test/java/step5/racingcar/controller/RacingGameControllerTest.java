@@ -1,9 +1,9 @@
-package step3.racingcar.controller;
+package step5.racingcar.controller;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.racingcar.view.InputView;
-import step3.racingcar.view.ResultView;
+import step5.racingcar.view.InputView;
+import step5.racingcar.view.ResultView;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -28,8 +28,8 @@ class RacingGameControllerTest {
         ResultView resultView = new ResultView();
 
         RacingGameController racingGameController = new RacingGameController(inputView, resultView);
-        assertThatExceptionOfType()
-                .isThrownBy(() - {
+        assertThatExceptionOfType(IllegalStateException.class)
+                .isThrownBy(() -> {
                     racingGameController.startGame();
                 });
     }

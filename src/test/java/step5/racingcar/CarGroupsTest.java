@@ -1,16 +1,14 @@
-package step3.racingcar;
+package step5.racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import step3.racingcar.domain.CarFactory;
-import step3.racingcar.domain.CarGroups;
+import step5.racingcar.domain.CarFactory;
+import step5.racingcar.domain.CarGroups;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 

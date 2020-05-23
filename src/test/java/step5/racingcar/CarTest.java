@@ -1,13 +1,13 @@
-package step3.racingcar;
+package step5.racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import step3.racingcar.domain.Car;
-import step3.racingcar.domain.CarFactory;
-import step3.racingcar.domain.RandomMovingStrategy;
+import step5.racingcar.domain.Car;
+import step5.racingcar.domain.CarFactory;
+import step5.racingcar.domain.RandomMovingStrategy;
 
 import java.util.List;
 import java.util.stream.Stream;

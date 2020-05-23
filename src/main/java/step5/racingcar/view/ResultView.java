@@ -1,7 +1,7 @@
-package step3.racingcar.view;
+package step5.racingcar.view;
 
-import step3.racingcar.domain.Message;
-import step3.racingcar.domain.RacingGame;
+import step5.racingcar.domain.Message;
+import step5.racingcar.domain.RacingGame;
 
 import java.util.List;
 

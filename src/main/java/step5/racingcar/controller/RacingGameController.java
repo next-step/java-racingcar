@@ -1,9 +1,9 @@
-package step3.racingcar.controller;
+package step5.racingcar.controller;
 
-import step3.racingcar.domain.Message;
-import step3.racingcar.domain.RacingGame;
-import step3.racingcar.view.InputView;
-import step3.racingcar.view.ResultView;
+import step5.racingcar.domain.Message;
+import step5.racingcar.domain.RacingGame;
+import step5.racingcar.view.InputView;
+import step5.racingcar.view.ResultView;
 
 public class RacingGameController {
 
