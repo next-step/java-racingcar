@@ -8,8 +8,8 @@ public class Game {
         System.out.println("--");
         RacingGame racingGame = new RacingGame();
         InputViewer inputViewer=new InputViewer();
-        Car[] racingCar = racingGame.setAllCars(inputViewer.carInputViewer());
-        racingCar= racingGame.moveAllCars(racingCar, inputViewer.tryInputViewer());
-        racingGame.showAllCarsPosition(racingCar);
+        Car[] racingCars = racingGame.setAllCars(inputViewer.carInputViewer());
+        racingCars= racingGame.moveAllCars(racingCars, inputViewer.tryInputViewer());
+        racingGame.showAllCarsPosition(racingCars);
     }
 }

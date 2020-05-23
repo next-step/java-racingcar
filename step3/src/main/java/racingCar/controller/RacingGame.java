@@ -1,31 +1,34 @@
 package main.java.racingCar.controller;
 
 import main.java.racingCar.model.Car;
-import main.java.racingCar.view.InputViewer;
 import main.java.racingCar.view.OutputViewer;
 
 public class RacingGame {
 
-    RacingGame(){}
-    public Car[] setAllCars(int carNumber){
-        Car[] racingCar = new Car[carNumber];
-        for (int i = 0; i <carNumber; i++) {
-            racingCar[i] = new Car();
-        }
-        return racingCar;
+    RacingGame() {
     }
-    public Car[] moveAllCars(Car[] racingCar, int time) {
-        for(int i = 0; i < time; i++){
-            for (int j = 0; j < racingCar.length; j++) {
-                racingCar[j].move();
+
+    public static void showAllCarsPosition(Car[] racingCars) {
+        for (int i = 0; i < racingCars.length; i++) {
+            OutputViewer.resultOutputViewer(racingCars[i].getPosition());
+        }
+    }
+
+    public Car[] setAllCars(int carNumber) {
+        Car[] racingCars = new Car[carNumber];
+        for (int i = 0; i < carNumber; i++) {
+            racingCars[i] = new Car();
+        }
+        return racingCars;
+    }
+
+    public Car[] moveAllCars(Car[] racingCars, int time) {
+        for (int i = 0; i < time; i++) {
+            for (int j = 0; j < racingCars.length; j++) {
+                racingCars[j].move();
             }
         }
-        return racingCar;
-    }
-    public static void showAllCarsPosition(Car[] racingCar) {
-        for (int i = 0; i <racingCar.length; i++) {
-            OutputViewer.resultOutputViewer(racingCar[i].getPosition());
-        }
+        return racingCars;
     }
 
 
