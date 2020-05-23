@@ -1,12 +1,8 @@
 package racecar;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 
 public class Car {
-    private static List<Car> carList;
     private String name;
     private int position;
 
@@ -15,28 +11,8 @@ public class Car {
         this.position = 1;
     }
 
-    public static List<Car> ready(String[] carName) {
-        carList = new ArrayList<>();
-        for (int i = 0, carSize = carName.length; i < carSize; i++)
-            carList.add(new Car(carName[i].trim()));
-        return carList;
-    }
-
-    public static int getMaxPosition() {
-        List<Integer> positions = new ArrayList<>();
-        for (Car car : carList)
-            positions.add(car.position);
-        int max = Collections.max(positions);
-        return max;
-    }
-
-    public static List<String> selectWinner(int max) {
-        List<String> winners = new ArrayList<>();
-        for (Car car : carList) {
-            if (car.position == max)
-                winners.add(car.name);
-        }
-        return winners;
+    public static Car generate(String name){
+        return new Car(name.trim());
     }
 
     public int move(Random random) {
@@ -46,7 +22,7 @@ public class Car {
         return this.position;
     }
 
-    public String makePositionStatus() {
+    private String makePositionStatus() {
         String status = "-".repeat(position);
         return status;
     }
@@ -54,5 +30,13 @@ public class Car {
     public String printStatus() {
         String result = name + " : " + makePositionStatus();
         return result;
+    }
+
+    public int getPosition() {
+        return this.position;
+    }
+
+    public String getName() {
+        return this.name;
     }
 }
