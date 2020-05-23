@@ -1,39 +1,36 @@
 package study3;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
-/*
- *  move로직 클래스
- *  author : choi 
- */
 public class RacingGame {
 
+	Car car = new Car();
+	List<Car> carList = new ArrayList<>();
 	RandomGenerator rg = new RandomGenerator();
-	OutputView rv = new OutputView();
-
-	private int[] carPositions; // 자동차들의 초기 위치
-
-	// move 로직 start
-	// 이동한 값을 int 배열에 저장
-	public int[] move(int value, int number) {
 		
-		carPositions = new int[value]; // 자동차 개수 생성
-		
-		for (int j = 0; j < number; j++) { // 시도할 횟수만큼 for문
-			for (int i = 0; i < value; i++) { // 자동차개수만큼 for문
+	public RacingGame(int carNum, int carTrial) { // 시작 전 유효성 체크 // 생성자
+		ValidationCheck vc = new ValidationCheck();
+		vc.carNumberCheck(carNum);
+		vc.moveCountCheck(carTrial);
+	}	
 
-				int time = rg.RandomGenerate(); // 랜덤 값 생성
-				if (time >= 4) { // 생성한 random값이 4이상일 경우 int[]배열값 +1
-					carPositions[i] = carPositions[i] + 1;
-				}
-			}
-
-			// 시도할 횟수가 1회 끝난 후 저장된 int배열값 출력
-			System.out.println(Arrays.toString(carPositions));
-			rv.OutputView(carPositions); // 1회 끝난 int배열 값을 "-"갯수으로 변환하는 메소드
-			System.out.println(); // 시도한 횟수가 끝날때마다 개행
+	// 입력받은 만큼 자동차 생성
+	public List carParkinglot(int numCar) {
+		for (int i = 0; i < numCar; i++) {
+			carList.add(new Car());
 		}
-		return carPositions;
+		return carList;
 	}
+
+	// 자동차 이동
+	public List racingcarMove(List<Car> carList) {
+		for (Car car : carList) {
+			car.move(rg.randomGenerate());
+		}
+		return carList;
+	}
+
 }
