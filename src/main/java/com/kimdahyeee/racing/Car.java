@@ -1,15 +1,15 @@
 package com.kimdahyeee.racing;
 
-import java.util.Random;
+import com.kimdahyeee.racing.rule.Movable;
 
 public class Car implements Comparable<Car> {
-    private static final int GO_STRAIGHT_LIMIT = 4;
-    private static final int RANDOM_BOUND = 10;
     private int position;
     private String name;
+    private Movable movable;
 
-    public Car(String name) {
+    public Car(String name, Movable movable) {
         this.name = name;
+        this.movable = movable;
     }
 
     public Integer getPosition() {
@@ -25,15 +25,9 @@ public class Car implements Comparable<Car> {
     }
 
     protected void move() {
-        boolean canMove = getRandomNumber() >= GO_STRAIGHT_LIMIT;
-
-        if (canMove) {
+        if (movable.canMove()) {
             position = position + 1;
         }
-    }
-
-    protected int getRandomNumber() {
-        return new Random().nextInt(RANDOM_BOUND);
     }
 
     @Override

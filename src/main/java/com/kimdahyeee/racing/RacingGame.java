@@ -1,6 +1,6 @@
 package com.kimdahyeee.racing;
 
-import com.kimdahyeee.racing.rule.RandomRule;
+import com.kimdahyeee.racing.rule.Movable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +15,11 @@ public class RacingGame {
         return racingCars;
     }
 
-    public RacingGame(int tryCount, List<String> names) {
+    public RacingGame(int tryCount, List<String> names, Movable movable) {
         this.tryCount = tryCount;
         racingCars = new ArrayList<>();
         for (String name : names) {
-            racingCars.add(new Car(name));
+            racingCars.add(new Car(name, movable));
         }
     }
 
