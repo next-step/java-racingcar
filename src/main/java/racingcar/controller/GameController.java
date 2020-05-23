@@ -3,6 +3,7 @@ package racingcar.controller;
 import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.domain.Game;
 import racingcar.view.ResultView;
 
@@ -16,12 +17,12 @@ public class GameController {
     this.game = Game.create(gameCars(names));
   }
 
-  private List<Car> gameCars(String[] names) {
-    List<Car> carList = new ArrayList<>();
+  private Cars gameCars(String[] names) {
+    List<Car> cars = new ArrayList<>();
     for (String name : names) {
-      carList.add(Car.create(name));
+      cars.add(Car.create(name));
     }
-    return carList;
+    return Cars.create(cars);
   }
 
   public Game proceedGame() {

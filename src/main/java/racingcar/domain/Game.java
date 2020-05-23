@@ -1,16 +1,15 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import racingcar.util.RandomUtil;
 
 public class Game {
 
-  private List<Car> cars;
+  private final List<Car> cars;
   private int raceNum;
 
-  private Game(List<Car> cars) {
-    this.cars = new ArrayList<>(cars);
+  private Game(Cars cars) {
+    this.cars = cars.getCars();
   }
 
   public List<Car> doRace() {
@@ -30,7 +29,7 @@ public class Game {
     return raceNum;
   }
 
-  public static Game create(List<Car> cars) {
+  public static Game create(Cars cars) {
     return new Game(cars);
   }
 }
