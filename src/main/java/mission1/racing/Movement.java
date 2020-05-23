@@ -4,6 +4,9 @@ import mission1.racing.view.RacingGameOutputView;
 
 public class Movement {
     private int[] carPositions;
+    private final int LIMIT = 4;
+    private final int PASS_STEP = 1;
+    private final int FAIL_STEP = 0;
 
     private RacingGameOutputView outputView = new RacingGameOutputView();
     private RacingRandom random = new RacingRandom();
@@ -23,10 +26,10 @@ public class Movement {
     }
 
     public int moveCondition(int randomValue) {
-        if (randomValue >= 4) {
-            return 1;
+        if (randomValue >= LIMIT) {
+            return PASS_STEP;
         }
 
-        return 0;
+        return FAIL_STEP;
     }
 }
