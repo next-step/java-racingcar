@@ -14,7 +14,7 @@ public class OutputView {
     }
 
     private void drawRepeat(int times){
-        String join = String.join("", Collections.nCopies(times, MARK));
-        System.out.println(join);
+        String markFullString = String.join("", Collections.nCopies(times, MARK));
+        System.out.println(markFullString);
     }
 }
