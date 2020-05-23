@@ -17,7 +17,7 @@ public class Main {
         RacingCarGame racingCarGame = new RacingCarGame(carNames, moveCount);
         racingCarGame.execute(new RandomStrategy());
 
-        OutputView.printOutResult(racingCarGame.getGameResults());
+        OutputView.printOutResult(racingCarGame.getCarsList());
         OutputView.printOutWinner(racingCarGame.getWinners());
     }
 }

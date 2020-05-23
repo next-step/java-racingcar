@@ -7,7 +7,7 @@ public class RacingCarGame {
 
     private final Cars cars;
     private final int moveCount;
-    List<String> gameResults = new ArrayList<>();
+    List<Cars> carsList = new ArrayList<>();
 
     public RacingCarGame(String carNames, int moveCount) {
         this.cars = Cars.createCars(carNames);
@@ -20,9 +20,8 @@ public class RacingCarGame {
 
     public void execute(Strategy strategy) {
         for (int i = 0; i < moveCount; i++) {
-            GameResult gameResult = new GameResult(cars);
             cars.carRacing(strategy);
-            gameResults.add(gameResult.getResult());
+            carsList.add(cars);
         }
     }
 
@@ -30,8 +29,8 @@ public class RacingCarGame {
         return cars.getWinners();
     }
 
-    public List<String> getGameResults() {
-        return gameResults;
+    public List<Cars> getCarsList() {
+        return carsList;
     }
 }
 
