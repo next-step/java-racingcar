@@ -1,25 +1,24 @@
 package racingcar.domain;
 
-import java.util.List;
 import racingcar.util.RandomUtil;
 
 public class Game {
 
-  private final List<Car> cars;
+  private final Cars cars;
 
   protected Game(Cars cars) {
-    this.cars = cars.getCars();
+    this.cars = cars;
   }
 
-  public List<Car> doRace() {
-    this.cars.forEach(element -> {
+  public Cars doRace() {
+    this.cars.getCarList().forEach(element -> {
       int random = RandomUtil.getRandomValue();
       element.updatePosition(random);
     });
     return this.cars;
   }
 
-  public List<Car> getCars() {
+  public Cars getCars() {
     return cars;
   }
 

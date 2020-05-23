@@ -1,6 +1,5 @@
 package racingcar.view;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.Car;
@@ -18,20 +17,20 @@ public class ResultView {
   }
 
   public ResultView printView() {
-    for (int carSizeIndex = 0; carSizeIndex < game.getCars().size(); carSizeIndex++) {
+    for (int carSizeIndex = 0; carSizeIndex < game.getCars().getCarList().size(); carSizeIndex++) {
       results.updateResults(makeView(carSizeIndex));
       System.out.println(
-          game.getCars().get(carSizeIndex).getName() + " " + results.getLastestResult()
+          game.getCars().getCarList().get(carSizeIndex).getName() + " " + results.getLastestResult()
       );
     }
-    winnerView(this.game.getCars())
+    winnerView(this.game.getCars().getCarList())
         .forEach(element -> System.out.println("우승자: " + element.getName()));
     return this;
   }
 
   private String makeView(int carSizeIndex) {
     StringBuilder stringBuilder = new StringBuilder();
-    for (int positionIndex = 0; positionIndex < game.getCars().get(carSizeIndex).getPosition();
+    for (int positionIndex = 0; positionIndex < game.getCars().getCarList().get(carSizeIndex).getPosition();
         positionIndex++) {
       stringBuilder.append("-");
     }

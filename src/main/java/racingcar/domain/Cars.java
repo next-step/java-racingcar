@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Cars {
 
-  protected Cars(List<Car> cars) {
-    this.cars = cars;
+  protected Cars(List<Car> carList) {
+    this.carList = carList;
   }
 
-  private final List<Car> cars;
+  private final List<Car> carList;
 
-  public List<Car> getCars() {
-    return cars;
+  public List<Car> getCarList() {
+    return carList;
   }
 
   public static Cars create(String[] names) {

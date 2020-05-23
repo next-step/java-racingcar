@@ -12,9 +12,10 @@ public class GameMock extends Game {
   }
 
   @Override
-  public List<Car> doRace() {
-    List<Car> cars = super.getCars();
-    cars.forEach(element -> {
+  public Cars doRace() {
+    Cars cars = super.getCars();
+    List<Car> carList = cars.getCarList();
+    carList.forEach(element -> {
       int random = RandomUtil.getRandomValue();
       element.updatePosition(random);
     });
