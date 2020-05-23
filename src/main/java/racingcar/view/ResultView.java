@@ -5,24 +5,27 @@ import java.util.List;
 import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.Game;
+import racingcar.domain.Results;
 
 public class ResultView {
 
-  private Game game;
-  private List<String> resultList = new ArrayList<>();
+  private final Game game;
+  private final Results results;
 
   private ResultView(Game game) {
     this.game = game;
+    this.results = Results.create();
   }
 
-  public ResultView printView() {
+  public void printView() {
     for (int carSizeIndex = 0; carSizeIndex < game.getCars().size(); carSizeIndex++) {
-      String currentView = makeView(carSizeIndex);
-      resultList.add(currentView);
-      System.out.println(game.getCars().get(carSizeIndex).getName() + " " + currentView);
+      results.updateResults(makeView(carSizeIndex));
+      System.out.println(
+          game.getCars().get(carSizeIndex).getName() + " " + results.getLastestResult()
+      );
     }
-    winnerView(this.game.getCars()).forEach(element -> System.out.println("우승자: " + element.getName()));
-    return this;
+    winnerView(this.game.getCars())
+        .forEach(element -> System.out.println("우승자: " + element.getName()));
   }
 
   private String makeView(int carSizeIndex) {
@@ -46,7 +49,7 @@ public class ResultView {
   }
 
   public List<Integer> getResultListSize() {
-    return resultList.stream().map(String::length).collect(Collectors.toList());
+    return results.getResults().stream().map(String::length).collect(Collectors.toList());
   }
 
   public static ResultView create(Game game) {
