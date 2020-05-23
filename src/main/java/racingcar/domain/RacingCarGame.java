@@ -1,9 +1,13 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RacingCarGame {
 
     private final Cars cars;
     private final int moveCount;
+    List<Cars> carsList = new ArrayList<>();
 
     public RacingCarGame(String carNames, int moveCount) {
         this.cars = Cars.createCars(carNames);
@@ -15,15 +19,18 @@ public class RacingCarGame {
     }
 
     public void execute(Strategy strategy) {
-        GameResult gameResult = new GameResult(cars);
-
         for (int i = 0; i < moveCount; i++) {
             cars.carRacing(strategy);
-            gameResult.displayResult();
+            carsList.add(cars);
         }
+    }
 
-        Cars winners = cars.getWinners();
-        gameResult.displayWinner(winners);
+    public Cars getWinners() {
+        return cars.getWinners();
+    }
+
+    public List<Cars> getCarsList() {
+        return carsList;
     }
 }
 
