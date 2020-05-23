@@ -8,12 +8,8 @@ import racingcar.view.ResultView;
 public class RacingGame {
 
   public static void main(String[] args) {
-    playGame();
-  }
-
-  private static void playGame() {
-    String[] names = InputView.getUserStringInput(InputView.carInputMessage).split(", ");
-    int attemptNum = InputView.getUserNumInput(InputView.attemptInputMessage);
+    String[] names = InputView.getUserStringInput(InputView.CAR_INPUT_MESSAGE).split(", ");
+    int attemptNum = InputView.getUserNumInput(InputView.ATTEMPT_INPUT_MESSAGE);
 
     GameController gameController = GameController.create(attemptNum, names);
     Game playedGame = gameController.proceedGame();
