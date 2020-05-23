@@ -1,8 +1,8 @@
-package step4;
+package step4.domain;
 
 import java.util.Random;
 
-public class RandomMovableStrategy implements MovableStrategy{
+public class RandomMovableStrategy implements MovableStrategy {
 
     private Random random = new Random();
 

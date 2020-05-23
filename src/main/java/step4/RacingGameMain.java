@@ -1,21 +1,11 @@
 package step4;
 
+import step4.controller.RacingGameController;
+
 public class RacingGameMain {
 
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        ResultView resultView = new ResultView();
-        RacingGame racingGame = new RacingGame();
-
-        racingGame.initialize(inputView.enterCarNames(), inputView.enterTryCount());
-
-        resultView.printResultTitle();
-        for (int i = 0; i < racingGame.getTryCount(); ++i) {
-            racingGame.goCars();
-            resultView.printCurrentResult(racingGame.getCars());
-        }
-
-        racingGame.chooseWinners();
-        resultView.printWinners(racingGame.getWinners());
+        RacingGameController racingGameController = new RacingGameController();
+        racingGameController.launchGame();
     }
 }
