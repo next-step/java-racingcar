@@ -1,6 +1,5 @@
 package step3;
 
-import step3.controller.RacingController;
 import step3.domain.RacingGame;
 import step3.view.RacingInput;
 import step3.view.RacingOutput;
@@ -9,18 +8,19 @@ public class RacingMain {
 
     public static void main(String[] args) {
 
-        RacingController racingController = new RacingController();
+        RacingInput racingInput = new RacingInput();
+        RacingOutput racingOutput = new RacingOutput();
 
-        String[] carNames = racingController.inputForStringController();
-        int gameCoin = racingController.inputForIntController();
+        String[] carNames = racingInput.inputForString();
+        int gameCoin = racingInput.inputForInt();
 
         RacingGame racingGame = new RacingGame(carNames);
 
         for (int i = 0; i < gameCoin; i++) {
-            racingController.outputCars(racingGame.moveCars());
+            racingOutput.printRacing(racingGame.moveCars());
         }
 
-        racingController.outputWinners(racingGame.findWinner());
+        racingOutput.printWinner(racingGame.findWinner());
     }
 }
 
