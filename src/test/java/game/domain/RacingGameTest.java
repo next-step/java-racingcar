@@ -1,7 +1,7 @@
-package game;
+package game.domain;
 
-import game.ui.RacingGameInputView;
-import game.ui.RacingGameResultView;
+import game.view.RacingGameInputView;
+import game.view.RacingGameResultView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -26,7 +26,7 @@ class RacingGameTest {
         RacingGame racingGame = new RacingGame(movePolicy, racingGameInputView, racingGameResultView);
 
         when(racingGameInputView.getTime()).thenReturn(time);
-        List<CarName> carNameList = IntStream.range(0, numberOfCar).mapToObj(i -> new CarName("")).collect(Collectors.toList());
+        List<CarName> carNameList = IntStream.range(0, numberOfCar).mapToObj(i -> new CarName("car" + i)).collect(Collectors.toList());
         when(racingGameInputView.getCarNameList()).thenReturn(carNameList);
 
         racingGame.play();

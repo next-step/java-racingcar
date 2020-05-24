@@ -1,7 +1,6 @@
-package game.ui;
+package game.view;
 
-import game.Car;
-import game.CarName;
+import game.domain.Car;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,12 +20,12 @@ public class ConsoleRacingGameResultView implements RacingGameResultView {
     public void printResult(Car car) {
         char[] chars = new char[car.getPosition()];
         Arrays.fill(chars, FOOTPRINT);
-        System.out.println(String.format("%s : %s", car.getCarNameValue(), new String(chars)));
+        System.out.println(String.format("%s : %s", car.getCarName(), new String(chars)));
     }
 
     @Override
-    public void announceWinner(List<CarName> carNameList) {
-        String carNameString = String.join(", ", carNameList.stream().map(CarName::getName).collect(Collectors.toList()));
+    public void announceWinner(List<Car> carList) {
+        String carNameString = carList.stream().map(Car::getCarName).collect(Collectors.joining(", "));
         System.out.println(String.format(ANNOUNCE_WINNER_COMMENT_FORMAT, String.join(", ", carNameString)));
     }
 }

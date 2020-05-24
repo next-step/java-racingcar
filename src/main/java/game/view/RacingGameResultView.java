@@ -1,7 +1,6 @@
-package game.ui;
+package game.view;
 
-import game.Car;
-import game.CarName;
+import game.domain.Car;
 
 import java.util.List;
 
@@ -10,5 +9,5 @@ public interface RacingGameResultView {
 
     public void printResult(Car car);
 
-    public void announceWinner(List<CarName> carNameList);
+    public void announceWinner(List<Car> carList);
 }

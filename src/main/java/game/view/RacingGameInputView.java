@@ -1,6 +1,6 @@
-package game.ui;
+package game.view;
 
-import game.CarName;
+import game.domain.CarName;
 
 import java.util.List;
 

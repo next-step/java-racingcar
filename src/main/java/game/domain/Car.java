@@ -1,11 +1,11 @@
-package game;
+package game.domain;
 
 public class Car {
-    private final CarName carName;
-    private int position;
-    private final MovePolicy movePolicy;
-
     private static final int MOVING_RANGE = 1;
+
+    private final CarName carName;
+    private final MovePolicy movePolicy;
+    private int position;
 
     public Car(CarName carName, int position, MovePolicy movePolicy) {
         this.carName = carName;
@@ -19,11 +19,11 @@ public class Car {
         }
     }
 
-    public CarName getCarName() {
-        return carName;
+    public boolean isWin(int otherPosition) {
+        return position >= otherPosition;
     }
 
-    public String getCarNameValue() {
+    public String getCarName() {
         return carName.getName();
     }
 
