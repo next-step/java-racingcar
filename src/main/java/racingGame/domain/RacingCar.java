@@ -2,8 +2,8 @@ package racingGame.domain;
 
 public class RacingCar {
 
-	private String MOVE = "-";
-	private String STOP = "";
+	private static final String MOVE = "-";
+	private static final String STOP = "";
 	private String[] positions;
 	
 	public RacingCar(int countOfTime) {
