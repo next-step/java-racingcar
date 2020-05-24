@@ -1,42 +1,37 @@
 package racing;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
-    private int round;
-    private List<Car> carList;
+    private static final int MIN_SETTING_NUMBER = 1;
+    private final int round;
+    private final RacingCar racingCar;
+    private final RacingGameResult racingGameResult;
 
     public RacingGame(int carCount, int round) {
-        initGame(carCount, round);
-    }
-
-    public void playGame() {
-        ResultView resultView = new ResultView("실행 결과");
-
-        for (int i = 0; i < round; i++) {
-            playRound();
-            resultView.print(carList);
-        }
-    }
-
-    private void initGame(int carCount, int round) {
+        validation(carCount, round);
         this.round = round;
-        settingCar(carCount);
+        this.racingCar = new RacingCar(carCount);
+        this.racingGameResult = new RacingGameResult();
     }
 
-    private void settingCar(int count) {
-        carList = new ArrayList<>();
-
-        for (int i = 0 ; i < count ; i++) {
-            carList.add(new Car());
+    private void validation(int carCount, int round) {
+        if (carCount < MIN_SETTING_NUMBER || round < MIN_SETTING_NUMBER) {
+            throw new IllegalArgumentException();
         }
     }
 
-    private void playRound() {
-        for (Car car : carList) {
-            car.move();
+    public RacingGameResult playGame() {
+        for (int i = 0; i < round; i++) {
+            List<Integer> roundResult = playRound(racingCar.getCarList());
+            racingGameResult.addResult(roundResult);
         }
+
+        return racingGameResult;
     }
 
+    private List<Integer> playRound(List<Car> carList) {
+        return carList.stream().map(car -> car.move(Dice.cast())).collect(Collectors.toList());
+    }
 }
