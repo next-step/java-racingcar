@@ -1,5 +1,9 @@
 package step5.domain;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+
 public class RacingCar {
 
     private static final int DEFAULT_POSITION = 0;
@@ -16,6 +20,10 @@ public class RacingCar {
         return new RacingCar(name, DEFAULT_POSITION);
     }
 
+    public boolean isMaxPosition(int maxPosition) {
+        return position == maxPosition;
+    }
+
     public int forward() {
         return ++position;
     }
@@ -27,4 +35,6 @@ public class RacingCar {
     public String getName() {
         return name;
     }
+
+    public int comparePosition(final RacingCar racingCar) { return position - racingCar.position; }
 }

@@ -64,15 +64,18 @@ public class RacingGame {
     }
 
     public String getWinners() {
-        return this.racingCars.stream()
-            .filter(car -> car.currentPosition() == getMaxPosition(racingCars))
+        int maxPosition = getMaxPosition();
+
+        return racingCars.stream()
+            .filter(racingCar -> racingCar.isMaxPosition(maxPosition))
             .map(RacingCar::getName)
             .collect(Collectors.joining(DELIMITER));
     }
 
-    private int getMaxPosition(List<RacingCar> racingCars) {
+    private int getMaxPosition() {
         return racingCars.stream()
-            .map(RacingCar::currentPosition)
-            .reduce(IDENTITY, Math::max);
+            .max(RacingCar::comparePosition)
+            .get()
+            .currentPosition();
     }
 }
