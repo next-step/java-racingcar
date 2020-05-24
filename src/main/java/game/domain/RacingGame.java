@@ -33,9 +33,9 @@ public class RacingGame {
 
     private List<Car> setUpCarList() {
         List<CarName> carNameList = racingGameInputView.getCarNameList();
-        return carNameList.stream().map(carName -> {
-            return new Car(carName, INIT_POSITION, movePolicy);
-        }).collect(Collectors.toList());
+        return carNameList.stream().map(carName ->
+            new Car(carName, INIT_POSITION, movePolicy)
+        ).collect(Collectors.toList());
     }
 
     private int setUpTime() {
