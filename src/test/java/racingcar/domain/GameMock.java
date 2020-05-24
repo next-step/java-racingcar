@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 import java.util.List;
-import racingcar.util.RandomUtil;
+import racingcar.util.RandomMovingStrategy;
 
 public class GameMock extends Game {
 
@@ -16,8 +16,8 @@ public class GameMock extends Game {
     Cars cars = super.getCars();
     List<Car> carList = cars.getCarList();
     carList.forEach(element -> {
-      int random = RandomUtil.getRandomValue();
-      element.updatePosition(random);
+      RandomMovingStrategy strategy = RandomMovingStrategy.create();
+      element.updatePosition(strategy);
     });
     attemptNum++;
     return cars;
