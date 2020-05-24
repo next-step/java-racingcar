@@ -1,35 +1,36 @@
 package mission1.racing;
 
+import mission1.racing.model.Car;
 import mission1.racing.view.RacingGameOutputView;
 
+import java.util.ArrayList;
+
 public class Movement {
-    private int[] carPositions;
+    private ArrayList<Car> cars = new ArrayList<>();
     private final int LIMIT = 4;
-    private final int PASS_STEP = 1;
-    private final int FAIL_STEP = 0;
 
     private RacingGameOutputView outputView = new RacingGameOutputView();
     private RacingRandom random = new RacingRandom();
 
     public Movement() {};
     public Movement(int carNumber) {
-        carPositions = new int[carNumber];
+        for(int i = 0; i < carNumber; i++) {
+            cars.add(new Car());
+        }
     }
 
     public void move() {
-        for(int i = 0; i < carPositions.length; i++) {
-            carPositions[i] += moveCondition(random.random());
-            outputView.resultView(carPositions[i]);
+        for(int i = 0; i < cars.size(); i++) {
+            moveCondition(random.random(), i);
+            outputView.resultView(cars.get(i).carPositions);
         }
 
         System.out.println();
     }
 
-    public int moveCondition(int randomValue) {
+    public void moveCondition(int randomValue, int index) {
         if (randomValue >= LIMIT) {
-            return PASS_STEP;
+            cars.get(index).go();
         }
-
-        return FAIL_STEP;
     }
 }
