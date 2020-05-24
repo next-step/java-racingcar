@@ -9,13 +9,16 @@ public class ResultView {
     private static final String CHAMPION_RESULT_MESSAGE ="가 최종 우승했습니다.";
     private static final int INIT_ZERO = 0;
 
-    public static void racingResultPrint(List<Round> rounds) {
+    private ResultView() {
+    }
+
+    public static void racingResultPrint(RacingGameResult results) {
+        List<Round> rounds = results.getRounds();
         for (Round round : rounds){
             carToString(round.getCars());
             System.out.println();
         }
-        Round lastRound = rounds.get(rounds.size()-1);
-        printChampion(new Champion(lastRound).getChampions());
+        printChampion(results.getChampions());
     }
 
     private static void carToString(List<Car> cars) {
