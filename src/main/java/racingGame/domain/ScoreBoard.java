@@ -9,10 +9,14 @@ public class ScoreBoard {
 		scores = new String[countOfCar][countOfTime];
 	}
 	
-	public String[][] registScore(List<RacingCar> racingCars) {
+	public ScoreBoard registScore(List<RacingCar> racingCars) {
 		for(int i = 0 ; i < racingCars.size() ; i++) {
 			scores[i] = racingCars.get(i).getRoundPositions();
 		}
+		return this;
+	}
+	
+	public String[][] makeScoreBoard(){
 		return scores;
 	}
 	

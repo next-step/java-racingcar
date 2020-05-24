@@ -18,7 +18,7 @@ public class RacingGameCenter {
 		scoreBoard = new ScoreBoard(countOfCar, countOfTime);
 	}
 
-	public String[][] gameStart() {
+	public ScoreBoard gameStart() {
 		for(int i = 0 ; i < countOfTime ; i++) {
 			gameNRound(i);
 		}

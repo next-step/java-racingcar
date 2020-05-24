@@ -1,16 +1,19 @@
 package racingGame.view;
 
+import racingGame.domain.ScoreBoard;
+
 public class OutputView {
 	private static String[] result;
 	
-	public static void printGameScore(String[][] gameScore) {
+	public static void printGameScore(ScoreBoard scoreBoard) {
 		System.out.println("실행 결과");
 		
-		result = new String[gameScore[0].length];
+		String[][] gameResultScoreBoard = scoreBoard.makeScoreBoard();
+		result = new String[gameResultScoreBoard[0].length];
 		initializeResult();
 		
-		for(int i = 0 ; i < gameScore.length ; i++) {
-			printNRound(gameScore, i);
+		for(int i = 0 ; i < gameResultScoreBoard.length ; i++) {
+			printNRound(gameResultScoreBoard, i);
 			System.out.println();
 		}
 	}

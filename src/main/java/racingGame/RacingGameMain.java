@@ -1,10 +1,9 @@
 package racingGame;
 
-import java.util.List;
 import java.util.Scanner;
 
-import racingGame.domain.RacingCar;
 import racingGame.domain.RacingGameCenter;
+import racingGame.domain.ScoreBoard;
 import racingGame.view.InputView;
 import racingGame.view.OutputView;
 
@@ -15,9 +14,9 @@ public class RacingGameMain {
 		RacingGameCenter racingGameCenter = new RacingGameCenter(InputView.inputCountOfCars(sc), InputView.inputCountOfTimes(sc));
 		
 		// Game Start
-		String[][] gameScore = racingGameCenter.gameStart();
+		ScoreBoard scoreBoard = racingGameCenter.gameStart();
 		
 		// Output
-		OutputView.printGameScore(gameScore);
+		OutputView.printGameScore(scoreBoard);
 	}
 }
