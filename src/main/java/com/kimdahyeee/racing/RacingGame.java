@@ -7,13 +7,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
+    private static final int END_TRY_COUNT = 0;
     private List<Car> racingCars;
     private int tryCount;
-    private static final int END_TRY_COUNT = 0;
-
-    public List<Car> getRacingCars() {
-        return racingCars;
-    }
 
     public RacingGame(int tryCount, List<String> names, Movable movable) {
         this.tryCount = tryCount;
@@ -21,6 +17,10 @@ public class RacingGame {
         for (String name : names) {
             racingCars.add(new Car(name, movable));
         }
+    }
+
+    public List<Car> getRacingCars() {
+        return racingCars;
     }
 
     public List<Car> move() {
