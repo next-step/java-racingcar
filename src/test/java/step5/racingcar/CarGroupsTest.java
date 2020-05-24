@@ -20,10 +20,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarGroupsTest {
 
-    @DisplayName("CarGroups 일급 컬렉션 정상 생성 테스트 (CarFactory를 이용)")
+    @DisplayName("CarGroups 일급 컬렉션 정상 생성 테스트")
     @ParameterizedTest
     @MethodSource("mockCarNamesBuilder")
-    public void getNewCarGroupUsingCarFactory(String[] carNames) {
+    public void getNewCarGroupUsing(String[] carNames) {
         CarGroups carGroups = new CarGroups(Arrays.stream(carNames)
                 .map(name -> new Car(name, () -> true))
                 .collect(Collectors.toList()));
