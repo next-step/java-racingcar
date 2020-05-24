@@ -4,7 +4,6 @@ public class RacingGame {
 
     private int gameTryCounts;
     private final CarGroups playerCars;
-    private final MovingStrategy movingStrategy;
 
     private static final String BLANK_NAME = "";
     private static final int MINIMUM_LIMIT = 1;
@@ -14,7 +13,6 @@ public class RacingGame {
         validateConstructors(carNames, gameTryCounts);
         this.gameTryCounts = gameTryCounts;
         this.playerCars = new CarGroups(CarFactory.makeCars(carNames));
-        this.movingStrategy = new RandomMovingStrategy();
     }
 
     private void validateConstructors(String[] carNames, int gameTryCounts) {
@@ -27,7 +25,7 @@ public class RacingGame {
     public void run() {
         if (gameTryCounts < MINIMUM_LIMIT)
             throw new IllegalStateException(Message.ERROR_INVALID_STATE);
-        playerCars.move(movingStrategy);
+        playerCars.move();
         gameTryCounts--;
     }
 

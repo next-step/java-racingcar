@@ -13,8 +13,8 @@ public class CarGroups {
         this.carGroups = carGroups;
     }
 
-    public void move(MovingStrategy movingStrategy) {
-        carGroups.forEach(car -> car.move(movingStrategy));
+    public void move() {
+        carGroups.forEach(Car::move);
     }
 
     public List<String> getCarNames() {
