@@ -11,21 +11,20 @@ public class Main {
     public static void main(String[] args) {
         // Input
         RacingGameInfo racingGameInfo = InputView.settingRacingGame();
+
+        // RacingGame
         RacingGame racingGame = new RacingGame(racingGameInfo);
 
         // OutPut
-        ResultView resultView = new ResultView();
+        int time = racingGameInfo.getTime();
         System.out.println("실행 결과");
-
-        // 실행 & 출력
-        int time = racingGame.getTime();
         for (int idx = 0; idx < time; idx++) {
             racingGame.move(new RandomMove());
-            resultView.printCarsPosition(racingGame.getRacingCars().getRacingCarList());
+            ResultView.printRacingCars(racingGame.getRacingCars().getRacingCarList());
         }
 
         // Winner
-        resultView.printWinnerNames(Winners.findWinners(racingGame.getRacingCars().getRacingCarList()));
+        ResultView.printWinnerNames(Winners.findWinners(racingGame.getRacingCars().getRacingCarList()));
     }
 }
 

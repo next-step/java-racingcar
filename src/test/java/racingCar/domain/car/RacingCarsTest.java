@@ -2,8 +2,6 @@ package racingCar.domain.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingCar.domain.car.RacingCar;
-import racingCar.domain.car.RacingCars;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,5 +23,16 @@ class RacingCarsTest {
 
         assertThat(racingCarNames).hasSize(names.length)
                 .hasSameElementsAs(Arrays.asList(names));
+    }
+
+    @Test
+    void move() {
+        RacingCars racingCars = new RacingCars(names);
+
+        List<RacingCar> racingCarList = racingCars.move(() -> true);
+        int racingCarsCount = (int) racingCarList.stream()
+                .filter(racingCar -> racingCar.getPosition() == 1).count();
+
+        assertThat(racingCarsCount).isEqualTo(3);
     }
 }

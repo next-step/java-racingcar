@@ -5,21 +5,15 @@ import racingCar.domain.moveStrategy.MoveBehavior;
 import racingCar.dto.RacingGameInfo;
 
 public class RacingGame {
-    private final int time;
-    private RacingCars racingCars;
+    private final RacingCars racingCars;
 
     public RacingGame(final RacingGameInfo racingGameInfo) {
-        this.time = racingGameInfo.getTime();
         this.racingCars = new RacingCars(racingGameInfo.getCarNames());
     }
 
     // TODO 구현
     public void move(MoveBehavior moveBehavior) {
-        racingCars.getRacingCarList().forEach(racingCar -> racingCar.move(moveBehavior.isMove()));
-    }
-
-    public int getTime() {
-        return time;
+        racingCars.move(moveBehavior);
     }
 
     public RacingCars getRacingCars() {
