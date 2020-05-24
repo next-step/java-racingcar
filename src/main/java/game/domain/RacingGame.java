@@ -49,7 +49,11 @@ public class RacingGame {
     }
 
     private void announceWinner(List<Car> carList) {
-        int winScore = carList.stream().max(Comparator.comparingInt(Car::getPosition)).map(Car::getPosition).orElse(INIT_POSITION);
+        int winScore = getWinScore(carList);
         racingGameResultView.announceWinner(carList.stream().filter(c -> c.getPosition() >= winScore).collect(Collectors.toList()));
+    }
+
+    private int getWinScore(List<Car> carList) {
+        return carList.stream().max(Comparator.comparingInt(Car::getPosition)).map(Car::getPosition).orElse(INIT_POSITION);
     }
 }
