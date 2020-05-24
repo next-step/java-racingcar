@@ -8,13 +8,9 @@ public class Car {
         return position;
     }
 
-    public void move() {
-        if (isMoveTime()) {
+    public void move(int diceNumber) {
+        if (diceNumber >= MOVE_MIN_NUMBER) {
             this.position++;
         }
-    }
-
-    private boolean isMoveTime() {
-        return Dice.cast() >= MOVE_MIN_NUMBER;
     }
 }
