@@ -9,8 +9,8 @@ import racingcar.view.ResultView;
 public class RacingGame {
 
   public static void main(String[] args) {
-    String[] names = InputView.getUserStringInput(InputView.CAR_INPUT_MESSAGE).split(", ");
-    int attemptNum = InputView.getUserNumInput(InputView.ATTEMPT_INPUT_MESSAGE);
+    String[] names = InputView.getUserStringInput().split(", ");
+    int attemptNum = InputView.getUserNumInput();
 
     Game beforeGame = Game.create(Cars.create(names));
     GameController gameController = GameController.create(attemptNum, beforeGame);
