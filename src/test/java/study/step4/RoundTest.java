@@ -30,9 +30,8 @@ public class RoundTest {
     @DisplayName("차 이름 비어있을 경우 예외 발생하는지 테스트")
     void carNamesValidateTest(){
         String [] carNames = {"", " "};
-        assertThatThrownBy(() ->{
-            new Round(carNames);
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() ->
+            new Round(carNames)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
