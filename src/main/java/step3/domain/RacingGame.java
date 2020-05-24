@@ -45,7 +45,7 @@ public class RacingGame {
 
     public boolean isNotEnd() {
         racingEndRound--;
-        return racingEndRound < 0 ? true : false;
+        return racingEndRound >= 0 ? true : false;
     }
 }
 
