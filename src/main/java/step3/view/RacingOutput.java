@@ -9,6 +9,10 @@ public class RacingOutput {
     private static final String NAME_SEPARATOR = " : ";
     private static final String START_NOTICE = "실행 결과";
 
+    private RacingOutput() {
+        throw new AssertionError();
+    }
+
     public static void printRacing(List<RacingCar> racingCar) {
 
         System.out.println("");
