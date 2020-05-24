@@ -1,15 +1,15 @@
 package com.kimdahyeee.racing;
 
-import com.kimdahyeee.racing.rule.Movable;
+import com.kimdahyeee.racing.rule.MovableStrategy;
 
 public class Car implements Comparable<Car> {
     private int position;
     private String name;
-    private Movable movable;
+    private MovableStrategy movableStrategy;
 
-    public Car(String name, Movable movable) {
+    public Car(String name, MovableStrategy movableStrategy) {
         this.name = name;
-        this.movable = movable;
+        this.movableStrategy = movableStrategy;
     }
 
     public Integer getPosition() {
@@ -25,7 +25,7 @@ public class Car implements Comparable<Car> {
     }
 
     protected void move() {
-        if (movable.canMove()) {
+        if (movableStrategy.canMove()) {
             position = position + 1;
         }
     }

@@ -2,7 +2,7 @@ package com.kimdahyeee.racing.rule;
 
 import java.util.Random;
 
-public class RandomRule implements Movable {
+public class RandomStrategy implements MovableStrategy {
     private static final int RANDOM_BOUND = 10;
     private static final int GO_STRAIGHT_LIMIT = 4;
 

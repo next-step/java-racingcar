@@ -1,6 +1,6 @@
 package com.kimdahyeee.racing;
 
-import com.kimdahyeee.racing.rule.Movable;
+import com.kimdahyeee.racing.rule.MovableStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,11 +11,11 @@ public class RacingGame {
     private List<Car> racingCars;
     private int tryCount;
 
-    public RacingGame(int tryCount, List<String> names, Movable movable) {
+    public RacingGame(int tryCount, List<String> names, MovableStrategy movableStrategy) {
         this.tryCount = tryCount;
         racingCars = new ArrayList<>();
         for (String name : names) {
-            racingCars.add(new Car(name, movable));
+            racingCars.add(new Car(name, movableStrategy));
         }
     }
 
@@ -44,7 +44,7 @@ public class RacingGame {
                 .collect(Collectors.toList());
     }
 
-    public boolean isNotEndGame() {
-        return tryCount != END_TRY_COUNT;
+    public boolean isEndGame() {
+        return tryCount == END_TRY_COUNT;
     }
 }
