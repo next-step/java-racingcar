@@ -5,24 +5,23 @@ import java.util.List;
 
 public class Cars {
 
-    private List<Car> carList = null;
-    private OutputView outputView = new OutputView();
+    private List<Car> carList;
 
-    public void makeCars(int carCount) {
+
+    public Cars(int carCount){
         carList = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
             this.carList.add(new Car());
         }
     }
 
-    public void playGame() {
+    public List<Car> playGame(Dice dice) {
         for (Car car:this.carList) {
-            int randomNumber = Dice.makeRandomNumber();
-            boolean greaterCheck = car.isGreater(randomNumber);
+            boolean greaterCheck = car.canGo(dice.makeRandomNumber());
             if (greaterCheck) {
                 car.goPosition();
             }
         }
-        outputView.resultPrint(carList);
+        return this.carList;
     }
 }
