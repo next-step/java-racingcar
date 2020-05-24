@@ -7,6 +7,9 @@ public class InputView {
     private final static String TRY_TIME_INPUT_QUESTION ="시도 회수는 몇 회 인가요?";
     private final static Scanner scanner = new Scanner(System.in);
 
+    private InputView() {
+    }
+
     public static String inputCarNames(){
         System.out.println(CAR_INPUT_QUESTION);
         return scanner.nextLine();
