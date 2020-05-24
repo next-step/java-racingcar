@@ -29,6 +29,4 @@ public class RacingGameProgress {
         Round lastRound = roundResults.get(roundResults.size() - 1);
         return new RacingGameResult(roundResults, lastRound.decideChampion());
     }
-
-
 }
