@@ -24,7 +24,7 @@ public class Calculator {
     private static double checkNumber(String s) {
         try {
             return Double.parseDouble(s);
-        } catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자가 아닙니다. " + s);
         }
     }
@@ -35,9 +35,9 @@ public class Calculator {
         CheckValudation(splitInput);
 
         double result = checkNumber(splitInput[0]);
-        for(int i = 1; i < splitInput.length; i += 2) {
+        for (int i = 1; i < splitInput.length; i += 2) {
             Operator operator = Operator.getOperation(splitInput[i]);
-            result = operator.operate(result, checkNumber(splitInput[i+1]));
+            result = operator.operate(result, checkNumber(splitInput[i + 1]));
         }
 
         return result;

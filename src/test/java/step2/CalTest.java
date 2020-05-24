@@ -105,20 +105,32 @@ public class CalTest {
 
     @Test
     @DisplayName("사칙 연산 체크")
-    void operate() {
-
+    void operatePlus() {
         Operator operator = Operator.getOperation("+");
         assertThat(operator.operate(1, 2)).isEqualTo(3);
-
-        Operator operator2 = Operator.getOperation("-");
-        assertThat(operator.operate(4, 2)).isEqualTo(2);
-
-        Operator operator3 = Operator.getOperation("*");
-        assertThat(operator.operate(5, 2)).isEqualTo(10);
-
-        Operator operator4 = Operator.getOperation("/");
-        assertThat(operator.operate(6, 2)).isEqualTo(3);
-
     }
+
+    @Test
+    @DisplayName("사칙 연산 체크")
+    void operateMinus() {
+        Operator operator = Operator.getOperation("-");
+        assertThat(operator.operate(4, 2)).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("사칙 연산 체크")
+    void operateMultipul() {
+        Operator operator = Operator.getOperation("*");
+        assertThat(operator.operate(5, 2)).isEqualTo(10);
+    }
+
+    @Test
+    @DisplayName("사칙 연산 체크")
+    void operateDivision() {
+        Operator operator = Operator.getOperation("/");
+        assertThat(operator.operate(6, 2)).isEqualTo(3);
+    }
+
+
 
 }

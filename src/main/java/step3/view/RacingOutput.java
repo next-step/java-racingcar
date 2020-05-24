@@ -1,17 +1,24 @@
-package step3;
+package step3.view;
+
+import step3.domain.RacingCar;
 
 import java.util.List;
 
 public class RacingOutput {
     private static final String TIRE_MARK = "-";
+    private static final String NAME_SEPARATOR = " : ";
+    private static final String START_NOTICE = "실행 결과";
 
-    public RacingOutput() {
-        System.out.println("\n실행 결과");
+    private RacingOutput() {
+        throw new AssertionError();
     }
 
     public static void printRacing(List<RacingCar> racingCar) {
+
+        System.out.println("");
+        System.out.println(START_NOTICE);
         for(RacingCar car : racingCar) {
-            System.out.print(car.getCarName() + " : ");
+            System.out.print(car.getCarName() + NAME_SEPARATOR);
             for(int i=0; i<car.getCurrentPosition(); i++) {
                 System.out.print(TIRE_MARK);
             }
@@ -20,10 +27,12 @@ public class RacingOutput {
         System.out.println("");
     }
 
-    public static void printWinner(List<String> winnerNames) {
+    public static void printWinner(List<RacingCar> winnerNames) {
+
         StringBuilder sb = new StringBuilder();
-        for(String name : winnerNames) {
-            sb.append(name).append(",");
+
+        for(RacingCar car : winnerNames) {
+            sb.append(car.getCarName()).append(",");
         }
         sb.deleteCharAt(sb.lastIndexOf(","));
 

@@ -1,4 +1,6 @@
-package step3;
+package step3.domain;
+
+import java.util.List;
 
 public class RacingCar {
     private static final int POWER_THRESHOLD = 4;
@@ -20,7 +22,7 @@ public class RacingCar {
     }
 
     public void move(int power) {
-        if(checkPowerThreshold(power)) {
+        if (checkPowerThreshold(power)) {
             this.currentPosition += MOVE_DISTANCE;
         }
     }
@@ -28,5 +30,10 @@ public class RacingCar {
     private boolean checkPowerThreshold(int power) {
         return power >= POWER_THRESHOLD;
     }
+
+    public boolean samePosition (int maxPosition) {
+        return (currentPosition == maxPosition) ? true : false;
+    }
+
 }
 

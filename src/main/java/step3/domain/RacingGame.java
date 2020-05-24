@@ -1,4 +1,6 @@
-package step3;
+package step3.domain;
+
+import step3.common.RacingRandom;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,37 +10,42 @@ public class RacingGame {
     private List<RacingCar> racingCarList = new ArrayList<>();
     private RacingRandom racingRandom = new RacingRandom();
 
-    public List<RacingCar> getRacingCarList() {
-        return racingCarList;
-    }
+    private int racingEndRound;
 
-    public RacingGame(String[] carNameList) {
-        for(String carName : carNameList) {
+    public RacingGame(int GameCoin, String[] carNameList) {
+        racingEndRound = GameCoin;
+        for (String carName : carNameList) {
             racingCarList.add(new RacingCar(carName));
         }
     }
 
-    public void moveCars() {
+    public List<RacingCar> moveCars() {
         for (RacingCar car : racingCarList) {
             int power = racingRandom.getRandomNumber();
             car.move(power);
         }
+
+        return racingCarList;
     }
 
     public int getMaxPosition() {
         return racingCarList.stream()
-                    .mapToInt(RacingCar::getCurrentPosition)
-                    .max()
-                    .getAsInt();
+                .mapToInt(RacingCar::getCurrentPosition)
+                .max()
+                .getAsInt();
     }
 
-    public List<String> findWinner() {
+    public List<RacingCar> findWinner() {
         int maxPosition = getMaxPosition();
 
         return racingCarList.stream()
-                .filter(RacingCar -> RacingCar.getCurrentPosition() == maxPosition)
-                .map(RacingCar::getCarName)
+                .filter(car -> car.samePosition(maxPosition))
                 .collect(Collectors.toList());
+    }
+
+    public boolean isNotEnd() {
+        racingEndRound--;
+        return racingEndRound >= 0 ? true : false;
     }
 }
 
