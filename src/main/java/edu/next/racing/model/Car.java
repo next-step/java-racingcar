@@ -22,17 +22,17 @@ public abstract class Car {
     /** 자동차 현재 위치 */
     private int position = 1;
     private String name = "";
-    /** random int range */
-    private static final int MAX_RANDOM_COUNT = 10;
-    /** MOVEABLE NUMBER */
-    private static final int MOVEABLE_NUMBER = 4;
+    protected static final int MAX_RANDOM_COUNT = 10;
+    protected static final int MOVEABLE_NUMBER = 4;
     private List<Integer> record = new ArrayList<>();
-    private Random rand = new Random();
+    protected Random rand = new Random();
 
     public Car(String name) {
         this.name = name;
-        this.record.add(this.position);
+        this.record.add(position);
     }
+
+    protected abstract boolean isMoveable();
     /**
      * @return position 위치 리턴
      */
@@ -49,12 +49,11 @@ public abstract class Car {
     }
 
     public void move() {
-        this.position += (isMoveable()) ? 1 : 0;
-        this.record.add(this.position);
+        position += (isMoveable()) ? 1 : 0;
     }
 
-    protected boolean isMoveable() {
-        return (MOVEABLE_NUMBER <= rand.nextInt(MAX_RANDOM_COUNT));
+    public void record() {
+        record.add(position);
     }
 
 }

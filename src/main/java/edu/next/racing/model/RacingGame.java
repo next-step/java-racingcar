@@ -24,7 +24,6 @@ public class RacingGame {
     private int winnerPosition = 0;
     /** car object list */
     private List<Car> cars = new ArrayList<>();
-    private List<Car> winner = new ArrayList<>();
 
     public RacingGame(String[] inputCars, int time) {
         for (String name : inputCars) {
@@ -44,10 +43,18 @@ public class RacingGame {
     public void move() {
         cars.forEach(car -> {
             car.move();
+            car.record();
             winnerPosition = (car.getPosition() > winnerPosition)
                                 ? car.getPosition()
                                 : winnerPosition;
         });
+    }
+
+    private void setWinnerPosition() {
+        winnerPosition = cars.stream()
+                            .mapToInt(car -> car.getPosition())
+                            .max()
+                            .getAsInt();
     }
 
     public List<Car> getWinner() {
@@ -60,6 +67,7 @@ public class RacingGame {
         for (int i = 0; i < this.time; i++) {
             move();
         }
+        setWinnerPosition();
         return cars;
     }
 

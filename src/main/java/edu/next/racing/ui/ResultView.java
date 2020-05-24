@@ -10,7 +10,6 @@ package edu.next.racing.ui;
 import edu.next.racing.model.Car;
 
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 /**
@@ -25,6 +24,7 @@ public class ResultView {
     private List<Car> resultCars;
     private List<Car> winner;
     private int resultTime;
+    private StringBuilder uiBuilder = new StringBuilder();
 
     public ResultView(List<Car> ResultCars, int time, List<Car> winner) {
         this.resultCars = ResultCars;
@@ -48,18 +48,18 @@ public class ResultView {
     }
 
     private void displayWinner() {
-        System.out.println();
-        System.out.print(this.winner.stream()
+        System.out.println(this.winner.stream()
                             .map( car -> car.getName() )
                             .collect(Collectors.joining( "," )) + "가 최종 우승했습니다.");
     }
 
     private void drawLine(String name, int lineNumber) {
-        System.out.print(name + " : ");
+        uiBuilder.setLength(0);
+        uiBuilder.append(name + " : ");
         for (int i = 0; i < lineNumber; i++) {
-            System.out.print(LINE);
+            uiBuilder.append(LINE);
         }
-        System.out.println();
+        System.out.println(uiBuilder.toString());
     }
 
 }
