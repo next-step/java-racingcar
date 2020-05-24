@@ -3,7 +3,7 @@ package racing;
 import java.util.List;
 
 public class ResultView {
-    private String message;
+    private final String message;
 
     public ResultView(String message) {
         this.message = message;
@@ -14,12 +14,18 @@ public class ResultView {
         System.out.println(message);
     }
 
-    public void print(List<Car> carList) {
-        for (Car car : carList) {
-            drawCarPosition(car.showMyPosition());
-        }
+    public void print(List<List<Integer>> allRoundCarsPositionList) {
+        for (List<Integer> positions : allRoundCarsPositionList) {
+            printRoundPosition(positions);
 
-        System.out.println();
+            System.out.println();
+        }
+    }
+
+    private void printRoundPosition(List<Integer> positions) {
+        for (Integer position : positions) {
+            drawCarPosition(position);
+        }
     }
 
     private void drawCarPosition(int position) {
