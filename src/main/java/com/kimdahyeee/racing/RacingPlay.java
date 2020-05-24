@@ -1,6 +1,6 @@
 package com.kimdahyeee.racing;
 
-import com.kimdahyeee.racing.rule.RandomRule;
+import com.kimdahyeee.racing.rule.RandomStrategy;
 import com.kimdahyeee.racing.view.InputView;
 import com.kimdahyeee.racing.view.ResultView;
 
@@ -12,10 +12,10 @@ public class RacingPlay {
         List<String> carNames = InputView.getCarNames();
         int tryCount = InputView.getTryCount();
 
-        RacingGame racingGame = new RacingGame(tryCount, carNames, new RandomRule());
+        RacingGame racingGame = new RacingGame(tryCount, carNames, new RandomStrategy());
 
         ResultView.printHeader(racingGame.getRacingCars());
-        while (racingGame.isNotEndGame()) {
+        while (!racingGame.isEndGame()) {
             ResultView.print(racingGame.move());
         }
 

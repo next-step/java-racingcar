@@ -1,50 +1,54 @@
 package com.kimdahyeee.racing;
 
-import com.kimdahyeee.racing.rule.Movable;
+import com.kimdahyeee.racing.rule.MovableStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-    private List<Car> racingCars;
-    private int tryCount;
     private static final int END_TRY_COUNT = 0;
+    private final List<Car> racingCars;
+    private int tryCount;
+    private int maxScore;
+
+    public RacingGame(int tryCount, final List<String> names, MovableStrategy movableStrategy) {
+        this.tryCount = tryCount;
+        racingCars = new ArrayList<>();
+        for (String name : names) {
+            racingCars.add(new Car(name, movableStrategy));
+        }
+    }
+
+    public RacingGame(int tryCount, Car ... cars) {
+        this.tryCount = tryCount;
+        racingCars = new ArrayList<>();
+        for (Car car : cars) {
+            racingCars.add(car);
+        }
+    }
 
     public List<Car> getRacingCars() {
         return racingCars;
     }
 
-    public RacingGame(int tryCount, List<String> names, Movable movable) {
-        this.tryCount = tryCount;
-        racingCars = new ArrayList<>();
-        for (String name : names) {
-            racingCars.add(new Car(name, movable));
-        }
-    }
-
     public List<Car> move() {
-        tryCount = --tryCount;
+        --tryCount;
 
         for (Car car : racingCars) {
-            car.move();
+            maxScore = Math.max(car.move(), maxScore);
         }
 
         return racingCars;
     }
 
     public List<Car> getWinners() {
-        int maxScore = racingCars.stream()
-                .max(Car::compareTo)
-                .get()
-                .getPosition();
-
         return racingCars.stream()
                 .filter(car -> car.sameScore(maxScore))
                 .collect(Collectors.toList());
     }
 
-    public boolean isNotEndGame() {
-        return tryCount != END_TRY_COUNT;
+    public boolean isEndGame() {
+        return tryCount == END_TRY_COUNT;
     }
 }

@@ -1,15 +1,15 @@
 package com.kimdahyeee.racing;
 
-import com.kimdahyeee.racing.rule.Movable;
+import com.kimdahyeee.racing.rule.MovableStrategy;
 
-public class Car implements Comparable<Car> {
+public class Car {
     private int position;
-    private String name;
-    private Movable movable;
+    private final String name;
+    private final MovableStrategy movableStrategy;
 
-    public Car(String name, Movable movable) {
+    public Car(final String name, final MovableStrategy movableStrategy) {
         this.name = name;
-        this.movable = movable;
+        this.movableStrategy = movableStrategy;
     }
 
     public Integer getPosition() {
@@ -24,14 +24,11 @@ public class Car implements Comparable<Car> {
         return this.position == maxScore;
     }
 
-    protected void move() {
-        if (movable.canMove()) {
-            position = position + 1;
+    protected int move() {
+        if (movableStrategy.canMove()) {
+            ++position;
         }
-    }
 
-    @Override
-    public int compareTo(Car o) {
-        return this.position - o.getPosition();
+        return this.position;
     }
 }

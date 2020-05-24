@@ -1,5 +1,5 @@
 package com.kimdahyeee.racing.rule;
 
-public interface Movable {
+public interface MovableStrategy {
     boolean canMove();
 }
