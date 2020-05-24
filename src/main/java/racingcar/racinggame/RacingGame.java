@@ -3,10 +3,14 @@ package racingcar.racinggame;
 import racingcar.car.Car;
 import racingcar.common.RandomHelper;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     public final static int DEFAULT_RANDOM_RANGE = 10;
-    private ArrayList<Car> carList;
+    private List<Car> carList;
     private int gameCount;
     private int playCount;
 
@@ -16,13 +20,13 @@ public class RacingGame {
         gameCount = 0;
     }
 
-    public boolean makeCar(int carCount) {
+    public boolean makeCar(String[] nameArr) {
         if (!carList.isEmpty()) {
             return false;
         }
 
-        for(int i = 0; i < carCount; i++) {
-            carList.add(new Car());
+        for(int i = 0; i < nameArr.length; i++) {
+            carList.add(new Car(nameArr[i]));
         }
 
         return true;
@@ -36,7 +40,7 @@ public class RacingGame {
         return gameCount;
     }
 
-    public ArrayList<Car> getCars() {
+    public List<Car> getCars() {
         return carList;
     }
 
@@ -51,5 +55,15 @@ public class RacingGame {
 
     public int getPlayCount() {
         return this.playCount;
+    }
+
+    public List<Car> getWinner(){
+        Optional<Car> largest = carList.stream()
+                .max(Comparator.comparing(Car::getPosition));
+
+        return carList.stream()
+                .filter(car -> car.getPosition() == largest.get().getPosition())
+                .collect(Collectors.toList());
+
     }
 }
