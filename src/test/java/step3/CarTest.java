@@ -35,19 +35,11 @@ class CarTest {
         assertThat(position).isEqualTo(1);
     }
 
-    @DisplayName("javaUtil의 Random숫자를 발생시키고 난수가 정상적으로 발생 되었는지 확인")
-    @Test
-    public void getRandomNumberTest() {
-        int randomNumber = Dice.makeRandomNumber();
-        assertThat(randomNumber).isNotNull();
-    }
-
-
     @DisplayName("4보다 큰값인지 아닌지 확인")
     @ParameterizedTest
     @MethodSource
     public void isGreaterTest(int input) {
-        car.isGreater(input);
+        car.canGo(input);
     }
 
     private static Stream<Arguments> isGreaterTest() {
