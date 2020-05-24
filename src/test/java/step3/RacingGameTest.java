@@ -18,7 +18,8 @@ public class RacingGameTest {
     @Test
     @DisplayName("자동차 생성 테스트")
     void makeCarTestFunction() {
-        racingGame.makeCar(3);
+        String[] carArr = {"carA","carB","carC"};
+        racingGame.makeCar(carArr);
         int carCount = racingGame.getCars().size();
         assertThat(carCount).isEqualTo(3);
     }
@@ -34,7 +35,8 @@ public class RacingGameTest {
     @Test
     @DisplayName("게임 종료 테스트")
     void racingGameIsEndTestFunction() {
-        racingGame.makeCar(3);
+        String[] carArr = {"carA","carB","carC"};
+        racingGame.makeCar(carArr);
         int gameCount = 5;
         racingGame.setGameCount(gameCount);
         for(int i = 0; i < gameCount; i++) {
@@ -44,5 +46,4 @@ public class RacingGameTest {
         boolean isEnd = racingGame.isEnd();
         assertThat(isEnd).isEqualTo(true);
     }
-
 }
