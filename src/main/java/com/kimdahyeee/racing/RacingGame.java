@@ -24,7 +24,7 @@ public class RacingGame {
     }
 
     public List<Car> move() {
-        tryCount = --tryCount;
+        --tryCount;
 
         for (Car car : racingCars) {
             car.move();

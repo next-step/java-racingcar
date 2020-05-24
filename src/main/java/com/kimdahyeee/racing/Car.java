@@ -26,7 +26,7 @@ public class Car implements Comparable<Car> {
 
     protected void move() {
         if (movableStrategy.canMove()) {
-            position = position + 1;
+            ++position;
         }
     }
 
