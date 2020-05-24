@@ -10,7 +10,7 @@ public class RacingGameCenter {
 	
 	public RacingGameCenter(int countOfCar, int countOfTime) {
 		this.countOfTime = countOfTime;
-		racingCars = new ArrayList<RacingCar>();
+		this.racingCars = new ArrayList<RacingCar>();
 		
 		for(int i = 0 ; i < countOfCar ; i++) {
 			racingCars.add(new RacingCar(countOfTime));
