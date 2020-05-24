@@ -17,7 +17,7 @@ public class Cars {
 
     public void playGame() {
         for (Car car:this.carList) {
-            int randomNumber = car.getRandomNumber();
+            int randomNumber = Dice.makeRandomNumber();
             boolean greaterCheck = car.isGreater(randomNumber);
             if (greaterCheck) {
                 car.goPosition();

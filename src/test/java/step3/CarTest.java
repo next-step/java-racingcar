@@ -38,7 +38,7 @@ class CarTest {
     @DisplayName("javaUtil의 Random숫자를 발생시키고 난수가 정상적으로 발생 되었는지 확인")
     @Test
     public void getRandomNumberTest() {
-        int randomNumber = car.getRandomNumber();
+        int randomNumber = Dice.makeRandomNumber();
         assertThat(randomNumber).isNotNull();
     }
 

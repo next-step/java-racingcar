@@ -11,13 +11,9 @@ public class Car {
     public int getPosition() {
         return this.position;
     }
-
-    public int getRandomNumber() {
-        return Dice.makeRandomNumber();
-    }
-
     public boolean isGreater(int number) {
-        return number > 4 ? true : false;
+
+        return number >= 4 ? true : false;
     }
 
 }
