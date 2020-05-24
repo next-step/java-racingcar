@@ -22,7 +22,7 @@ public class Movement {
     public void move() {
         for(int i = 0; i < cars.size(); i++) {
             moveCondition(random.random(), i);
-            outputView.resultView(cars.get(i).carPositions);
+            outputView.resultView(cars.get(i).name, cars.get(i).carPositions);
         }
 
         System.out.println();
