@@ -1,45 +1,50 @@
 package com.kimdahyeee.racing;
 
-import com.kimdahyeee.racing.view.InputView;
-import com.kimdahyeee.racing.view.ResultView;
+import com.kimdahyeee.racing.rule.Movable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
-    private int tryCount;
     private List<Car> racingCars;
+    private int tryCount;
+    private static final int END_TRY_COUNT = 0;
 
-    public RacingGame() {
-        int carCount = InputView.getCarCount();
-        setRacingCars(carCount);
-        tryCount = InputView.getTryCount();
+    public List<Car> getRacingCars() {
+        return racingCars;
     }
 
-    private void setRacingCars(int carCount) {
+    public RacingGame(int tryCount, List<String> names, Movable movable) {
+        this.tryCount = tryCount;
         racingCars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            racingCars.add(new Car());
+        for (String name : names) {
+            racingCars.add(new Car(name, movable));
         }
     }
 
-    public void move() {
-        ResultView.printHeader();
+    public List<Car> move() {
+        tryCount = --tryCount;
 
-        for (int i = 0; i < tryCount; i++) {
-            carMove();
-            ResultView.print(racingCars);
-        }
-    }
-
-    protected void carMove() {
         for (Car car : racingCars) {
             car.move();
         }
+
+        return racingCars;
     }
 
-    public static void main(String[] args) {
-        RacingGame racingGame = new RacingGame();
-        racingGame.move();
+    public List<Car> getWinners() {
+        int maxScore = racingCars.stream()
+                .max(Car::compareTo)
+                .get()
+                .getPosition();
+
+        return racingCars.stream()
+                .filter(car -> car.sameScore(maxScore))
+                .collect(Collectors.toList());
+    }
+
+    public boolean isNotEndGame() {
+        return tryCount != END_TRY_COUNT;
     }
 }

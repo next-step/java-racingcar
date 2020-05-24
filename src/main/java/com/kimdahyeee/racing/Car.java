@@ -1,29 +1,37 @@
 package com.kimdahyeee.racing;
 
-import java.util.Random;
+import com.kimdahyeee.racing.rule.Movable;
 
-public class Car {
-    private static final int GO_STRAIGHT_LIMIT = 4;
-    private static final int DEFAULT_POSITION = 0;
-    private Integer position;
+public class Car implements Comparable<Car> {
+    private int position;
+    private String name;
+    private Movable movable;
 
-    public Car() {
-        position = DEFAULT_POSITION;
+    public Car(String name, Movable movable) {
+        this.name = name;
+        this.movable = movable;
     }
 
     public Integer getPosition() {
         return position;
     }
 
-    protected void move() {
-        boolean canMove = getRandomNumber() >= GO_STRAIGHT_LIMIT;
+    public String getName() {
+        return name;
+    }
 
-        if (canMove) {
+    public boolean sameScore(int maxScore) {
+        return this.position == maxScore;
+    }
+
+    protected void move() {
+        if (movable.canMove()) {
             position = position + 1;
         }
     }
 
-    protected int getRandomNumber() {
-        return new Random().nextInt(10);
+    @Override
+    public int compareTo(Car o) {
+        return this.position - o.getPosition();
     }
 }

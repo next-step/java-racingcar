@@ -7,3 +7,16 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+### 기능 구현 목록 - 자동차 경주
+
+- InputView 구현 (자동차 횟수, 대수 입력 용)
+- 경주 프로세스 구현 (자동차의 상태 관리)
+- ResultView 구현 (자동차의 상태 출력)
+
+### 기능 구현 목록 - 자동차 경주(우승자)
+
+- Car 객체에 이름 필드 추가
+- RacingCar 객체를 통해 Car 초기화
+- 이름 입출력 추가
+- 우승자 선정
