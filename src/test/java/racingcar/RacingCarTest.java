@@ -1,6 +1,7 @@
 package racingcar;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,8 @@ import racingcar.domain.Cars;
 import racingcar.domain.CarsMock;
 import racingcar.domain.Game;
 import racingcar.domain.GameMock;
+import racingcar.util.AlwaysUpdatingRandomMovingStrategy;
+import racingcar.util.NotUpdatingRandomMovingStrategy;
 import racingcar.util.RandomUtil;
 import racingcar.view.ResultView;
 
@@ -41,19 +44,17 @@ public class RacingCarTest {
   @Test
   void 랜덤값이_4이상일때_전진한다() {
     //given
-    int NON_UPDATE_THRESHOLD = 3;
-    int UPDATE_THRESHOLD = 4;
     String[] names = {"pobi", "crong", "honux"};
     Cars cars = Cars.create(names);
     int previousPositionOfCar1 = cars.getCarList().get(0).getPosition();
 
     //when
-    assertThat(cars.getCarList().get(0).updatePosition(NON_UPDATE_THRESHOLD))
+    assertThat(cars.getCarList().get(0).updatePosition(NotUpdatingRandomMovingStrategy.create()))
         //then
         .isEqualTo(previousPositionOfCar1);
 
     //when
-    assertThat(cars.getCarList().get(0).updatePosition(UPDATE_THRESHOLD))
+    assertThat(cars.getCarList().get(0).updatePosition(AlwaysUpdatingRandomMovingStrategy.create()))
         //then
         .isGreaterThan(previousPositionOfCar1);
   }
@@ -96,9 +97,11 @@ public class RacingCarTest {
 
   @Test
   void 입력한_이름이_자동차_이름이_된다() {
-    assertThat(gameController.getGame().getCars().getCarList().get(0).getName()).isEqualTo("honux");
-    assertThat(gameController.getGame().getCars().getCarList().get(1).getName()).isEqualTo("pobi");
-    assertThat(gameController.getGame().getCars().getCarList().get(2).getName()).isEqualTo("crong");
+    assertAll(
+        () -> assertThat(gameController.getGame().getCars().getCarList().get(0).getName()).isEqualTo("honux"),
+        () -> assertThat(gameController.getGame().getCars().getCarList().get(1).getName()).isEqualTo("pobi"),
+        () -> assertThat(gameController.getGame().getCars().getCarList().get(2).getName()).isEqualTo("crong")
+    );
   }
 
   @Test
@@ -106,11 +109,11 @@ public class RacingCarTest {
 
     //given
     Car car1 = Car.create("honux");
-    car1.updatePosition(4);
+    car1.updatePosition(AlwaysUpdatingRandomMovingStrategy.create());
     Car car2 = Car.create("crong");
-    car2.updatePosition(3);
+    car2.updatePosition(NotUpdatingRandomMovingStrategy.create());
     Car car3 = Car.create("pobi");
-    car3.updatePosition(3);
+    car3.updatePosition(NotUpdatingRandomMovingStrategy.create());
 
     List<Car> carList = new ArrayList<>();
     carList.add(car1);
@@ -120,12 +123,11 @@ public class RacingCarTest {
     CarsMock cars = CarsMock.create(carList);
 
     //when
-    GameMock gameOne = GameMock.create(cars);
-    ResultView resultViewForOne = ResultView.create(gameOne);
+    GameMock game = GameMock.create(cars);
 
     //then
-    assertThat(resultViewForOne.winnerView(carList).size()).isEqualTo(1);
-    assertThat(resultViewForOne.winnerView(carList).get(0).getName()).isEqualTo("honux");
+    assertThat(game.calculateWinner(carList).size()).isEqualTo(1);
+    assertThat(game.calculateWinner(carList).get(0).getName()).isEqualTo("honux");
   }
 
   @Test
@@ -133,11 +135,11 @@ public class RacingCarTest {
 
     //given
     Car car1 = Car.create("honux");
-    car1.updatePosition(8);
+    car1.updatePosition(AlwaysUpdatingRandomMovingStrategy.create());
     Car car2 = Car.create("crong");
-    car2.updatePosition(8);
+    car2.updatePosition(AlwaysUpdatingRandomMovingStrategy.create());
     Car car3 = Car.create("pobi");
-    car3.updatePosition(3);
+    car3.updatePosition(NotUpdatingRandomMovingStrategy.create());
 
     List<Car> carList = new ArrayList<>();
     carList.add(car1);
@@ -147,12 +149,11 @@ public class RacingCarTest {
     CarsMock cars = CarsMock.create(carList);
 
     //when
-    Game gameOne = Game.create(cars);
-    ResultView resultViewForOne = ResultView.create(gameOne);
+    Game game = Game.create(cars);
 
     //then
-    assertThat(resultViewForOne.winnerView(carList).size()).isEqualTo(2);
-    assertThat(resultViewForOne.winnerView(carList).get(0).getName()).isEqualTo("honux");
-    assertThat(resultViewForOne.winnerView(carList).get(1).getName()).isEqualTo("crong");
+    assertThat(game.calculateWinner(carList).size()).isEqualTo(2);
+    assertThat(game.calculateWinner(carList).get(0).getName()).isEqualTo("honux");
+    assertThat(game.calculateWinner(carList).get(1).getName()).isEqualTo("crong");
   }
 }
