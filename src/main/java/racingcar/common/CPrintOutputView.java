@@ -6,4 +6,8 @@ public class CPrintOutputView {
 		System.out.println(output);
 	}
 
+	public void layoutWithoutEnter(String output) {
+		System.out.print(output);
+	}
+
 }
