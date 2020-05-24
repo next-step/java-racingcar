@@ -11,7 +11,7 @@ public class Car {
     public int getPosition() {
         return this.position;
     }
-    public boolean isGreater(int number) {
+    public boolean canGo(int number) {
 
         return number >= 4 ? true : false;
     }
