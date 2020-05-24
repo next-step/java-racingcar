@@ -53,10 +53,9 @@ public class Round {
 
     public List<String> decideChampion(){
         int lastMaxPosition = findMaxCarPostion();
-        return new ArrayList<>(
-                cars.stream()
+        return cars.stream()
                     .filter(car -> car.isChampionsPosition(lastMaxPosition))
                     .map(Car::getCarName)
-                    .collect(Collectors.toList()));
+                    .collect(Collectors.toList());
     }
 }
