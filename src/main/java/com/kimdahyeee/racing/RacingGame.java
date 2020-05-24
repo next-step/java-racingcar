@@ -20,6 +20,14 @@ public class RacingGame {
         }
     }
 
+    public RacingGame(int tryCount, Car ... cars) {
+        this.tryCount = tryCount;
+        racingCars = new ArrayList<>();
+        for (Car car : cars) {
+            racingCars.add(car);
+        }
+    }
+
     public List<Car> getRacingCars() {
         return racingCars;
     }
