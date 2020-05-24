@@ -5,7 +5,12 @@ public class RacingCar {
     private int position;
 
     public RacingCar(String name) {
+        this(name, 0);
+    }
+
+    public RacingCar(String name,int position) {
         this.name = name;
+        this.position = position;
     }
 
     public String getName() {
