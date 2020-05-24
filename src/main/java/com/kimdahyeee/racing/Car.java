@@ -2,7 +2,7 @@ package com.kimdahyeee.racing;
 
 import com.kimdahyeee.racing.rule.MovableStrategy;
 
-public class Car implements Comparable<Car> {
+public class Car {
     private int position;
     private final String name;
     private final MovableStrategy movableStrategy;
@@ -24,14 +24,11 @@ public class Car implements Comparable<Car> {
         return this.position == maxScore;
     }
 
-    protected void move() {
+    protected int move() {
         if (movableStrategy.canMove()) {
             ++position;
         }
-    }
 
-    @Override
-    public int compareTo(Car o) {
-        return this.position - o.getPosition();
+        return this.position;
     }
 }

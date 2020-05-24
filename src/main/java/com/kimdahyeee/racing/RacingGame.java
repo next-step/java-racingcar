@@ -10,6 +10,7 @@ public class RacingGame {
     private static final int END_TRY_COUNT = 0;
     private final List<Car> racingCars;
     private int tryCount;
+    private int maxScore;
 
     public RacingGame(int tryCount, final List<String> names, MovableStrategy movableStrategy) {
         this.tryCount = tryCount;
@@ -27,18 +28,13 @@ public class RacingGame {
         --tryCount;
 
         for (Car car : racingCars) {
-            car.move();
+            maxScore = Math.max(car.move(), maxScore);
         }
 
         return racingCars;
     }
 
     public List<Car> getWinners() {
-        int maxScore = racingCars.stream()
-                .max(Car::compareTo)
-                .get()
-                .getPosition();
-
         return racingCars.stream()
                 .filter(car -> car.sameScore(maxScore))
                 .collect(Collectors.toList());
