@@ -9,7 +9,9 @@ public class Main {
         int round = roundQuestion.input();
 
         RacingGame racingGame = new RacingGame(carCount, round);
+        RacingGameResult gameResult = racingGame.playGame();
 
-        racingGame.playGame();
+        ResultView resultView = new ResultView("실행 결과");
+        resultView.print(gameResult.getAllRoundCarsPosition());
     }
 }
