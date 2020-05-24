@@ -1,4 +1,6 @@
-package study.step4;
+package study.step5.domain;
+
+import study.step5.dto.RacingGameResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,4 +31,6 @@ public class RacingGameProgress {
         Round lastRound = roundResults.get(roundResults.size() - 1);
         return new RacingGameResult(roundResults, lastRound.decideChampion());
     }
+
+
 }

@@ -1,4 +1,4 @@
-package study.step4;
+package study.step5.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,9 +53,10 @@ public class Round {
 
     public List<String> decideChampion(){
         int lastMaxPosition = findMaxCarPostion();
-        return cars.stream()
+        return new ArrayList<>(
+                cars.stream()
                     .filter(car -> car.isChampionsPosition(lastMaxPosition))
                     .map(Car::getCarName)
-                    .collect(Collectors.toList());
+                    .collect(Collectors.toList()));
     }
 }
