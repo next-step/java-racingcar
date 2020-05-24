@@ -4,10 +4,10 @@ import com.kimdahyeee.racing.rule.MovableStrategy;
 
 public class Car implements Comparable<Car> {
     private int position;
-    private String name;
-    private MovableStrategy movableStrategy;
+    private final String name;
+    private final MovableStrategy movableStrategy;
 
-    public Car(String name, MovableStrategy movableStrategy) {
+    public Car(final String name, final MovableStrategy movableStrategy) {
         this.name = name;
         this.movableStrategy = movableStrategy;
     }

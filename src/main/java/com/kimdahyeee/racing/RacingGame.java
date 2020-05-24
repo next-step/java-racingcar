@@ -8,10 +8,10 @@ import java.util.stream.Collectors;
 
 public class RacingGame {
     private static final int END_TRY_COUNT = 0;
-    private List<Car> racingCars;
+    private final List<Car> racingCars;
     private int tryCount;
 
-    public RacingGame(int tryCount, List<String> names, MovableStrategy movableStrategy) {
+    public RacingGame(int tryCount, final List<String> names, MovableStrategy movableStrategy) {
         this.tryCount = tryCount;
         racingCars = new ArrayList<>();
         for (String name : names) {
