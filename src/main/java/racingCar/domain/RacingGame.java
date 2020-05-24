@@ -1,7 +1,6 @@
-package racingCar.application;
+package racingCar.domain;
 
-import racingCar.domain.MoveBehavior;
-import racingCar.domain.RacingCar;
+import racingCar.domain.moveStrategy.MoveBehavior;
 
 import java.util.*;
 

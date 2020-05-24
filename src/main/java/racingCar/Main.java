@@ -1,8 +1,8 @@
 package racingCar;
 
-import racingCar.application.RacingGame;
+import racingCar.domain.RacingGame;
 import racingCar.domain.RacingGameResult;
-import racingCar.domain.RandomMove;
+import racingCar.domain.moveStrategy.RandomMove;
 import racingCar.ui.InputView;
 import racingCar.ui.ResultView;
 
