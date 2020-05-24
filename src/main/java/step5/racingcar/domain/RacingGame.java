@@ -1,19 +1,18 @@
-package step3.racingcar;
-
-import java.util.List;
+package step5.racingcar.domain;
 
 public class RacingGame {
 
-    private String[] carNames;
     private int gameTryCounts;
+    private final CarGroups playerCars;
+
     private static final String BLANK_NAME = "";
     private static final int MINIMUM_LIMIT = 1;
     private static final int INDEX_ZERO = 0;
 
     public RacingGame(String[] carNames, int gameTryCounts) {
         validateConstructors(carNames, gameTryCounts);
-        this.carNames = carNames;
         this.gameTryCounts = gameTryCounts;
+        this.playerCars = new CarGroups(CarFactory.makeCars(carNames));
     }
 
     private void validateConstructors(String[] carNames, int gameTryCounts) {
@@ -24,20 +23,19 @@ public class RacingGame {
     }
 
     public void run() {
-        CarGroups playerCars = new CarGroups(CarFactory.makeCars(this.carNames));
-        ResultViewProcessor.printResultHeader(Message.RESULT_HEADER);
-        for (int i = INDEX_ZERO; i < gameTryCounts; i++) {
-            playerCars.move();
-            ResultViewProcessor.printResult(playerCars);
-        }
-        ResultViewProcessor.printWinnerCarNames(playerCars);
+        if (gameTryCounts < MINIMUM_LIMIT)
+            throw new IllegalStateException(Message.ERROR_INVALID_STATE);
+        playerCars.move();
+        gameTryCounts--;
     }
 
-    public String[] getCarNames() {
-        return carNames;
+    public boolean hasNextRound() {
+        return gameTryCounts >= MINIMUM_LIMIT;
     }
 
     public int getGameTryCounts() {
         return gameTryCounts;
     }
+
+    public CarGroups getPlayerCars() { return playerCars; }
 }

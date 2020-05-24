@@ -1,12 +1,14 @@
-package step3.racingcar;
+package step5.racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import step5.racingcar.domain.Car;
+import step5.racingcar.domain.CarFactory;
+
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,11 +25,8 @@ class CarFactoryTest {
                 .map(Car::getName)
                 .collect(Collectors.toList());;
         List<String> originCarNames = Arrays.asList(carNames);
-        List<String> filteredList = testTargetCarNames.stream()
-                .filter(target -> originCarNames.stream().noneMatch(Predicate.isEqual(target)))
-                .collect(Collectors.toList());
-        assertThat(filteredList.size())
-                .isEqualTo(0);
+
+        assertThat(testTargetCarNames).isEqualTo(originCarNames);
     }
 
     private static Stream<Arguments> mockCarFactory() {

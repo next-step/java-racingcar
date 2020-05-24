@@ -1,24 +1,24 @@
-package step3.racingcar;
+package step5.racingcar.view;
+
+import step5.racingcar.domain.Message;
+import step5.racingcar.domain.RacingGame;
 
 import java.util.List;
 
-public class ResultViewProcessor {
+public class ResultView {
 
     private static final String POSITION_MARK = "-";
     private static final String DELIMITER = " : ";
     private static final String COMMA = ", ";
     private static final int INDEX_ZERO = 0;
 
-    private ResultViewProcessor() {
-    }
-
-    public static void printResultHeader(String headerMessage) {
+    public void printResultHeader(String headerMessage) {
         System.out.println(headerMessage);
     }
 
-    public static void printResult(CarGroups carGroups) {
-        List<String> carNames = carGroups.getCarNames();
-        List<Integer> carPositions = carGroups.getCarPositions();
+    public void printResult(RacingGame racingGame) {
+        List<String> carNames = racingGame.getPlayerCars().getCarNames();
+        List<Integer> carPositions = racingGame.getPlayerCars().getCarPositions();
         int carCounts = carNames.size();
         for (int i = INDEX_ZERO; i < carCounts; i++) {
             System.out.print(carNames.get(i) + DELIMITER);
@@ -27,15 +27,15 @@ public class ResultViewProcessor {
         System.out.println();
     }
 
-    private static void printCurrentPosition(int currentPosition) {
+    private void printCurrentPosition(int currentPosition) {
         for (int i = INDEX_ZERO; i < currentPosition; i++) {
             System.out.print(POSITION_MARK);
         }
         System.out.println();
     }
 
-    public static void printWinnerCarNames(CarGroups carGroups) {
-        List<String> winnerCarNames = carGroups.getWinnerCarNames();
+    public void printWinnerCarNames(RacingGame racingGame) {
+        List<String> winnerCarNames = racingGame.getPlayerCars().getWinnerCarNames();
         StringBuilder stringBuilder = new StringBuilder();
         for (String winnerCarName : winnerCarNames) {
             appendComma(stringBuilder);
@@ -44,7 +44,7 @@ public class ResultViewProcessor {
         System.out.println(stringBuilder.toString() + Message.RESULT_FOOTER);
     }
 
-    private static void appendComma(StringBuilder stringBuilder) {
+    private void appendComma(StringBuilder stringBuilder) {
         if (stringBuilder.length() > INDEX_ZERO)
             stringBuilder.append(COMMA);
     }
