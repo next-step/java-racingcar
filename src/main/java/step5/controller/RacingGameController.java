@@ -25,7 +25,7 @@ public class RacingGameController {
   }
 
   public void viewRace (Consumer<Stream<Car>> viewer) {
-    while (!racing.isRaceEnd()) {
+    while (racing.isRaceEnd()) {
       viewer.accept(racing.race());
     }
   }

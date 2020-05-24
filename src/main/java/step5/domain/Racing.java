@@ -35,22 +35,23 @@ public class Racing {
   }
 
   public boolean isRaceEnd () {
-    return !time.hasNext();
+    return time.hasNext();
   }
 
-  public Stream<Car> getWinners () throws WinnerException {
+  public Stream<Car> getWinners () {
     validateWinner();
-    int winnerPosition = this.cars.stream()
-                                  .map(v -> v.getPosition())
-                                  .reduce(-1, Math::max);
-    return this.cars.stream().filter(v -> v.getPosition() == winnerPosition);
+    int winnerPosition = cars.stream()
+                             .map(Car::getPosition)
+                             .reduce(-1, Math::max);
+    return cars.stream()
+               .filter(v -> v.getPosition() == winnerPosition);
   }
 
   public void validateTime (int time) {
     if (time < 1) throw new IllegalArgumentException("시도 횟수는 1 이상만 가능합니다.");
   }
 
-  public void validateWinner () throws WinnerException {
+  public void validateWinner () {
     if (time.hasNext()) throw new WinnerException();
   }
 

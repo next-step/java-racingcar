@@ -7,11 +7,11 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import step5.view.ResultView;
 
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static java.util.stream.Collectors.joining;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RacingTest {
 
@@ -29,21 +29,15 @@ public class RacingTest {
   @Test
   void 레이싱_테스트 () {
     Racing racing = Racing.of(Cars.of("a,b,c".split(",")),3, moveStrategy);
-    String[] result = new String[3];
 
-    for (int i = 0; !racing.isRaceEnd(); i++) {
-      result[i] = racing.race()
-                        .map(ResultView::getCarPositionString)
-                        .collect(Collectors.joining(","));
+    while (racing.isRaceEnd()) {
+      racing.race();
     }
-    assertThat(String.join("\n", result))
-      .isEqualTo(
-        String.join("\n",
-          String.join(",","a : -",   "b : -",   "c : -"),
-          String.join(",","a : --",  "b : --",  "c : --"),
-          String.join(",","a : ---", "b : ---", "c : ---")
-        )
-      );
+
+    assertEquals(3, racing.getWinners().count());
+    assertEquals(3, racing.getWinners().findAny()
+                                                .orElseThrow(RuntimeException::new)
+                                                .getPosition());
   }
 
   private static Stream<Arguments> provideRacingConstructorArguments () {
