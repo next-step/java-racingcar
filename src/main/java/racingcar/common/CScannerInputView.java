@@ -33,5 +33,4 @@ public class CScannerInputView {
 	public void OnInputListener(onInputListener listener) {
 		this.listener = listener;
 	}
-
 }

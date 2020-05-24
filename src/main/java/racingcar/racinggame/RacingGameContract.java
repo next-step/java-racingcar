@@ -14,5 +14,4 @@ public interface RacingGameContract {
 		void setGameNum(String number);
 		void addCars(String carName);
 	}
-
 }

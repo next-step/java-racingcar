@@ -4,6 +4,7 @@ import racingcar.common.CPrintOutputView;
 import racingcar.common.CScannerInputView;
 import racingcar.common.Message;
 
+
 public class RacingGameView implements RacingGameContract.View {
 	private RacingGameContract.Presenter presenter;
 	private CScannerInputView carQuestionInputView;
@@ -44,6 +45,7 @@ public class RacingGameView implements RacingGameContract.View {
 	public void print(String printMsg) {
 		cPrintOutputView.layoutWithoutEnter(printMsg);
 	}
+  
 	@Override
 	public void printCarPositionBySymbol(int position) {
 		String result = "";

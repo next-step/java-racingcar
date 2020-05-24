@@ -37,6 +37,7 @@ public class RacingGameTest {
     void racingGameIsEndTestFunction() {
         String[] carArr = {"carA","carB","carC"};
         racingGame.makeCar(carArr);
+
         int gameCount = 5;
         racingGame.setGameCount(gameCount);
         for(int i = 0; i < gameCount; i++) {

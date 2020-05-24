@@ -1,10 +1,10 @@
 package racingcar.car;
 
 public class Car {
+
 	public static final int DEFAULT_CAR_POSITION = 1;
 	public static final int DEFAULT_CAR_ABILITY = 1;
 	public static final int DEFAULT_VALID_MOVING_NUMBER = 4;
-
 	private int position;
 	private int moveAbility;
 	private String name;
@@ -32,5 +32,4 @@ public class Car {
 	public String getName() {
 		return this.name;
 	}
-
 }

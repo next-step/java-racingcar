@@ -1,5 +1,6 @@
 package racingcar.racinggame;
 
+
 import racingcar.car.Car;
 import racingcar.common.MessageType;
 import java.util.List;
@@ -62,3 +63,4 @@ public class RacingGamePresenter implements RacingGameContract.Presenter {
 		view.println(MessageType.INFO.message(msg));
 	}
 }
+

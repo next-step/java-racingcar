@@ -13,5 +13,4 @@ public class Message {
 	public final static String PLAY_START_MSG = "회차 시작";
 	public final static String PLAY_END_MSG = "회차 종료";
 	public final static String WINNER_MSG = "가 최종 우승했습니다.";
-
 }
