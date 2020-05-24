@@ -10,8 +10,8 @@ public class RacingMain {
 
         RacingInput racingInput = new RacingInput();
 
-        String[] carNames = racingInput.inputForString();
-        int gameCoin = racingInput.inputForInt();
+        String[] carNames = racingInput.inputCarNames();
+        int gameCoin = racingInput.inputGameCoin();
 
         RacingGame racingGame = new RacingGame(carNames);
 
