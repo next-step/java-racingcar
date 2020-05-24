@@ -4,13 +4,16 @@ import edu.next.racing.model.Car;
 
 public class TestCar extends Car {
 
-    public TestCar(String name) {
+    private boolean moveflag = false;
+
+    public TestCar(String name, boolean isMoveable) {
         super(name);
+        moveflag = isMoveable;
     }
 
     @Override
-    public boolean isMoveable() {
-        return true;
+    protected boolean isMoveable() {
+        return moveflag;
     }
 
 }
