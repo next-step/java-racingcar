@@ -4,6 +4,7 @@ import step3.common.RacingRandom;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private List<RacingCar> racingCarList = new ArrayList<>();
@@ -31,15 +32,12 @@ public class RacingGame {
                 .getAsInt();
     }
 
-    public List<String> findWinner() {
+    public List<RacingCar> findWinner() {
         int maxPosition = getMaxPosition();
-        List<String> winnersClub = new ArrayList<>();
 
-        for (RacingCar car : racingCarList) {
-            car.getWinners(winnersClub, maxPosition);
-        }
-
-        return winnersClub;
+        return racingCarList.stream()
+                .filter(car -> car.samePosition(maxPosition))
+                .collect(Collectors.toList());
     }
 }
 

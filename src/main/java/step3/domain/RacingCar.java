@@ -31,10 +31,8 @@ public class RacingCar {
         return power >= POWER_THRESHOLD;
     }
 
-    public void getWinners(List<String> winnersClub, int maxPosition) {
-        if (maxPosition == currentPosition) {
-            winnersClub.add(carName);
-        }
+    public boolean samePosition (int maxPosition) {
+        return (currentPosition == maxPosition) ? true : false;
     }
 
 }

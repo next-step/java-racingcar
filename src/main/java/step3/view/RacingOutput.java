@@ -27,12 +27,12 @@ public class RacingOutput {
         System.out.println("");
     }
 
-    public static void printWinner(List<String> winnerNames) {
+    public static void printWinner(List<RacingCar> winnerNames) {
 
         StringBuilder sb = new StringBuilder();
 
-        for(String name : winnerNames) {
-            sb.append(name).append(",");
+        for(RacingCar car : winnerNames) {
+            sb.append(car.getCarName()).append(",");
         }
         sb.deleteCharAt(sb.lastIndexOf(","));
 
