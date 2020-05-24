@@ -2,7 +2,6 @@ package racingcar.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.domain.Car;
 import racingcar.domain.Game;
 import racingcar.domain.Results;
 
@@ -23,7 +22,7 @@ public class ResultView {
           game.getCars().getCarList().get(carSizeIndex).getName() + " " + results.getLastestResult()
       );
     }
-    winnerView(this.game.getCars().getCarList())
+    game.calculateWinner(this.game.getCars().getCarList())
         .forEach(element -> System.out.println("우승자: " + element.getName()));
     return this;
   }
@@ -35,17 +34,6 @@ public class ResultView {
       stringBuilder.append("-");
     }
     return stringBuilder.toString();
-  }
-
-  public List<Car> winnerView(List<Car> cars) {
-    int longest = cars.stream()
-        .mapToInt(Car::getPosition)
-        .max()
-        .orElseThrow(() -> new RuntimeException("무엇인가 이상하네요."));
-
-    return cars.stream()
-        .filter(car -> car.getPosition() == longest)
-        .collect(Collectors.toList());
   }
 
   public List<Integer> getResultListSize() {
