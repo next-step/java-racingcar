@@ -10,7 +10,10 @@ public class RacingGame {
     private List<RacingCar> racingCarList = new ArrayList<>();
     private RacingRandom racingRandom = new RacingRandom();
 
-    public RacingGame(String[] carNameList) {
+    private int racingEndRound;
+
+    public RacingGame(int GameCoin, String[] carNameList) {
+        racingEndRound = GameCoin;
         for (String carName : carNameList) {
             racingCarList.add(new RacingCar(carName));
         }
@@ -38,6 +41,11 @@ public class RacingGame {
         return racingCarList.stream()
                 .filter(car -> car.samePosition(maxPosition))
                 .collect(Collectors.toList());
+    }
+
+    public boolean isNotEnd() {
+        racingEndRound--;
+        return racingEndRound < 0 ? true : false;
     }
 }
 

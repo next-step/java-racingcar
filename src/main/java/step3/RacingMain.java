@@ -13,9 +13,9 @@ public class RacingMain {
         String[] carNames = racingInput.inputCarNames();
         int gameCoin = racingInput.inputGameCoin();
 
-        RacingGame racingGame = new RacingGame(carNames);
+        RacingGame racingGame = new RacingGame(gameCoin, carNames);
 
-        for (int i = 0; i < gameCoin; i++) {
+        while(racingGame.isNotEnd()) {
             RacingOutput.printRacing(racingGame.moveCars());
         }
 
