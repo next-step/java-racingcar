@@ -18,8 +18,8 @@ class OutputViewTest {
 
         RacingGame racingGame = RacingGame.create(() -> true);
         racingGame.readyRacingCars(carNames);
-        OutputView.printRacingGameWinner(racingGame.getRacingCars());
+        OutputView.printRacingGameWinner(racingGame.getWinners());
 
-        assertThat(carNames + " 가 최종 우승했습니다.").isEqualTo(outContent.toString());
+        assertThat(carNames + " 가 최종 우승했습니다.\n").isEqualTo(outContent.toString());
     }
 }

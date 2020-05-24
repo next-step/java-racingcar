@@ -1,4 +1,4 @@
-package step4;
+package step5.domain;
 
 import java.util.Arrays;
 import java.util.List;
@@ -42,10 +42,10 @@ public class RacingGame {
 
     public List<RacingCar> startRacing() {
         moveForwardRacingCars();
-        return convertToRacingCarList();
+        return convertToResult();
     }
 
-    private List<RacingCar> convertToRacingCarList() {
+    private List<RacingCar> convertToResult() {
         return racingCars.stream()
             .map(car -> new RacingCar(car.getName(), car.currentPosition()))
             .collect(Collectors.toList());
@@ -64,15 +64,18 @@ public class RacingGame {
     }
 
     public String getWinners() {
-        return this.racingCars.stream()
-            .filter(car -> car.currentPosition() == getMaxPosition(racingCars))
+        int maxPosition = getMaxPosition();
+
+        return racingCars.stream()
+            .filter(racingCar -> racingCar.isMaxPosition(maxPosition))
             .map(RacingCar::getName)
             .collect(Collectors.joining(DELIMITER));
     }
 
-    private int getMaxPosition(List<RacingCar> racingCars) {
+    private int getMaxPosition() {
         return racingCars.stream()
-            .map(RacingCar::currentPosition)
-            .reduce(IDENTITY, Math::max);
+            .max(RacingCar::comparePosition)
+            .get()
+            .currentPosition();
     }
 }

@@ -1,8 +1,9 @@
-package step4;
+package step5.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import step5.domain.RacingCar;
 
 public final class OutputView {
 
