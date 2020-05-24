@@ -1,4 +1,4 @@
-package util;
+package stringCalculator.util;
 
 public class ValidationUtils {
 	public static boolean isEmpty(String targetString) {
