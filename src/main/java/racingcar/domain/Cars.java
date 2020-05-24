@@ -5,11 +5,11 @@ import java.util.List;
 
 public class Cars {
 
+  private final List<Car> carList;
+
   protected Cars(List<Car> carList) {
     this.carList = carList;
   }
-
-  private final List<Car> carList;
 
   public List<Car> getCarList() {
     return carList;
