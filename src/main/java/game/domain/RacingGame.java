@@ -50,7 +50,7 @@ public class RacingGame {
 
     private void announceWinner(List<Car> carList) {
         int winScore = getWinScore(carList);
-        racingGameResultView.announceWinner(carList.stream().filter(c -> c.getPosition() >= winScore).collect(Collectors.toList()));
+        racingGameResultView.announceWinner(carList.stream().filter(c -> c.isWin(winScore)).collect(Collectors.toList()));
     }
 
     private int getWinScore(List<Car> carList) {

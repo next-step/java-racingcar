@@ -19,6 +19,10 @@ public class Car {
         }
     }
 
+    public boolean isWin(int otherPosition) {
+        return position >= otherPosition;
+    }
+
     public String getCarName() {
         return carName.getName();
     }
