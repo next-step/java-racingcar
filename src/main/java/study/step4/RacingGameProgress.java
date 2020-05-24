@@ -12,11 +12,9 @@ public class RacingGameProgress {
         this.racingGame = racingGame;
     }
 
-    public List<Round> gameStart(CarMoveCondition moveCondition) {
+    public List<Round> progressRound(CarMoveCondition moveCondition) {
         List<Round> rounds = new ArrayList<>();
-
         Round round = new Round(racingGame.getCarEntries());
-
         int tryTimes = racingGame.getTryTime();
 
         for (int i = INT_ZERO; i < tryTimes; i++) {
@@ -25,4 +23,12 @@ public class RacingGameProgress {
         }
         return rounds;
     }
+
+    public RacingGameResult runGames(CarMoveCondition moveCondition){
+        List<Round> roundResults = progressRound(moveCondition);
+        Round lastRound = roundResults.get(roundResults.size() - 1);
+        return new RacingGameResult(roundResults, lastRound.decideChampion());
+    }
+
+
 }
