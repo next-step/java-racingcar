@@ -3,14 +3,15 @@ package racingCar;
 import racingCar.domain.RacingGame;
 import racingCar.domain.RacingGameResult;
 import racingCar.domain.moveStrategy.RandomMove;
+import racingCar.dto.RacingGameInfo;
 import racingCar.ui.InputView;
 import racingCar.ui.ResultView;
 
 public class Main {
     public static void main(String[] args) {
         // Input
-        InputView inputView = new InputView();
-        RacingGame racingGame = inputView.settingRacingGame();
+        RacingGameInfo racingGameInfo = InputView.settingRacingGame();
+        RacingGame racingGame = new RacingGame(racingGameInfo);
 
         // OutPut
         ResultView resultView = new ResultView();

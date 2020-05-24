@@ -1,6 +1,7 @@
 package racingCar.domain;
 
 import racingCar.domain.moveStrategy.MoveBehavior;
+import racingCar.dto.RacingGameInfo;
 
 import java.util.*;
 
@@ -9,17 +10,10 @@ public class RacingGame {
     private final int time;
     private List<RacingCar> racingCarList;
 
-    public RacingGame(String[] carNames, int time) {
-        validateRange(carNames.length, time);
-        this.carNames = carNames;
-        this.time = time;
+    public RacingGame(RacingGameInfo racingGameInfo) {
+        this.carNames = racingGameInfo.getCarNames();
+        this.time = racingGameInfo.getTime();
         initRacingCars();
-    }
-
-    private void validateRange(int carCount, int time) {
-        if (carCount <= 0 || time <= 0) {
-            throw new IllegalArgumentException("0이하는 경기를 진행할 수가 없습니다.");
-        }
     }
 
     private void initRacingCars() {
