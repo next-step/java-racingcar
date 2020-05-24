@@ -21,11 +21,11 @@ public class Main {
         int time = racingGame.getTime();
         for (int idx = 0; idx < time; idx++) {
             racingGame.move(new RandomMove());
-            resultView.printCarsPosition(racingGame.getRacingCarList());
+            resultView.printCarsPosition(racingGame.getRacingCars().getRacingCarList());
         }
 
         // Winner
-        RacingGameResult racingGameResult = new RacingGameResult(racingGame.getRacingCarList());
+        RacingGameResult racingGameResult = new RacingGameResult(racingGame.getRacingCars().getRacingCarList());
         resultView.printWinnerNames(racingGameResult.findWinners());
     }
 }

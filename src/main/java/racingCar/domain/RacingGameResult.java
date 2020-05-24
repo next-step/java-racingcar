@@ -1,5 +1,7 @@
 package racingCar.domain;
 
+import racingCar.domain.car.RacingCar;
+
 import java.util.List;
 import java.util.stream.Collectors;
 

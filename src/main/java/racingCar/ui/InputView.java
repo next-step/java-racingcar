@@ -1,6 +1,5 @@
 package racingCar.ui;
 
-import racingCar.domain.RacingGame;
 import racingCar.dto.RacingGameInfo;
 
 import java.util.InputMismatchException;

@@ -1,6 +1,6 @@
 package racingCar.ui;
 
-import racingCar.domain.RacingCar;
+import racingCar.domain.car.RacingCar;
 
 import java.util.List;
 
