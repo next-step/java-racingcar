@@ -7,3 +7,24 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## Commit Message Convention
+* [AngularJS Coding Convention](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 을 따르도록 한다.
+  * 형식
+    ```
+    <타입>: <설명>
+    
+    <본문(선택사항)>
+    
+    <꼬리말(선택사항)>
+    ```
+  * 커밋 타입
+    * `feat`: 새로운 기능 추가
+    * `fix`: 버그 수정
+    * `docs`: 문서 수정
+    * `style`: 포매팅, 세미콜론 누락 등
+    * `refactor`
+    * `test`: 테스트 코드 관련
+    * `chore`: 빌드 업무 수정, 패키지 매니저 수정, gitignore 등 설정 수정 등 
+* 추가 참고할 사이트 : [Conventional Commits](https://www.conventionalcommits.org/ko/v1.0.0-beta.4/)
+
