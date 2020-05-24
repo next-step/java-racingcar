@@ -42,10 +42,10 @@ public class RacingGame {
 
     public List<RacingCar> startRacing() {
         moveForwardRacingCars();
-        return convertToRacingCarList();
+        return convertToResult();
     }
 
-    private List<RacingCar> convertToRacingCarList() {
+    private List<RacingCar> convertToResult() {
         return racingCars.stream()
             .map(car -> new RacingCar(car.getName(), car.currentPosition()))
             .collect(Collectors.toList());
