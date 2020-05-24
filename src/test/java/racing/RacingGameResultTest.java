@@ -2,6 +2,7 @@ package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.domain.RacingGameResult;
 
 import java.util.ArrayList;
 import java.util.List;

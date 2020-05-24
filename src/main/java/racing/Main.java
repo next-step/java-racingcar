@@ -1,5 +1,10 @@
 package racing;
 
+import racing.controller.RacingGame;
+import racing.domain.RacingGameResult;
+import racing.view.InputView;
+import racing.view.ResultView;
+
 public class Main {
     public static void main(String[] args) {
 

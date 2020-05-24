@@ -1,4 +1,9 @@
-package racing;
+package racing.controller;
+
+import racing.domain.Car;
+import racing.domain.RacingCar;
+import racing.domain.RacingGameResult;
+import racing.util.Dice;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 public class Car {
     private static final int MOVE_MIN_NUMBER = 4;
