@@ -22,7 +22,7 @@ public class Round {
 
     private List<Car> convertToList(String[] carNames) {
         return Stream.of(carNames)
-                .map(value-> new Car(value))
+                .map(Car::new)
                 .collect(Collectors.toList());
     }
 
@@ -46,7 +46,7 @@ public class Round {
 
     public int findMaxCarPostion(){
         return cars.stream()
-                .mapToInt(Car:: getCarPosition)
+                .mapToInt(Car::getCarPosition)
                 .max()
                 .getAsInt();
     }
@@ -56,7 +56,7 @@ public class Round {
         return new ArrayList<>(
                 cars.stream()
                     .filter(car -> car.isChampionsPosition(lastMaxPosition))
-                    .map(car -> car.getCarName())
+                    .map(Car::getCarName)
                     .collect(Collectors.toList()));
     }
 }
