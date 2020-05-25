@@ -7,11 +7,9 @@
 
 package edu.next.racing.model;
 
-import edu.next.racing.ui.InputView;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.stream.Collectors;
 
 /**
  * 레이싱게임 클래스
@@ -23,103 +21,54 @@ public class RacingGame {
 
     /** repetition count */
     private int time = 0;
+    private int winnerPosition = 0;
     /** car object list */
     private List<Car> cars = new ArrayList<>();
-    /** random int range */
-    private static final int MAX_RANDOM_COUNT = 10;
-    /** MOVEABLE NUMBER */
-    private static final int MOVEABLE_NUMBER = 4;
-    private Random rand = new Random();
 
-    /**
-     * 자동차 객체 리스트 생성
-     * @param carCounts 사용자 입력한 숫자
-     */
-    public void setCars(int carCounts) {
-        for (int i = 0; i < carCounts; i++) {
-            cars.add(new Car());
+    public RacingGame(String[] inputCars, int time) {
+        for (String name : inputCars) {
+            this.setCars(name);
         }
-    }
-
-    /**
-     * 반복 횟수 setter
-     * @param time 반복 횟수
-     * @return void
-     */
-    public void setTime(int time) {
         this.time = time;
     }
 
-    /**
-     * 반복 횟수 getter
-     * @return time
-     */
+    private void setCars(String name) {
+        cars.add(new RacingCar(name));
+    }
+
     public int getTime() {
         return this.time;
     }
 
-    /**
-     * @return cars
-     */
     public void move() {
         cars.forEach(car -> {
-            car.move((isMoveable()) ? 1 : 0);
+            car.move();
+            car.record();
+            winnerPosition = (car.getPosition() > winnerPosition)
+                                ? car.getPosition()
+                                : winnerPosition;
         });
     }
 
-    /**
-     * 자동차 전진 또는 멈출
-     * @return boolean 자동차 움직임 부여
-     */
-    private boolean isMoveable() {
-        return (MOVEABLE_NUMBER <= rand.nextInt(MAX_RANDOM_COUNT));
+    private void setWinnerPosition() {
+        winnerPosition = cars.stream()
+                            .mapToInt(car -> car.getPosition())
+                            .max()
+                            .getAsInt();
     }
 
-    public String[] execute() {
+    public List<Car> getWinner() {
+        return cars.stream()
+                .filter(car -> car.getPosition() == winnerPosition)
+                .collect(Collectors.toList());
+    }
 
-        String[] resultString = new String[this.time];
-
+    public List<Car> execute() {
         for (int i = 0; i < this.time; i++) {
             move();
-            resultString[i] = carPositionIterator();
         }
-
-        return resultString;
-
+        setWinnerPosition();
+        return cars;
     }
-
-
-    /**
-     * 자동차 객체 리스트 iterator
-     * @return distanceLine
-     */
-    private String carPositionIterator() {
-
-        String distanceLine = "";
-
-        for (Car car : this.cars) {
-            distanceLine += this.displayCarLine(car.getPosition()) + "\n";
-        }
-
-        return distanceLine;
-
-    }
-
-    /**
-     * 자동차 움직인 라인 출력
-     * @param position
-     * @return line
-     */
-    private String displayCarLine(int position) {
-
-        String line = "";
-
-        for (int i = 0; i < position; i++) {
-            line += "-";
-        }
-
-        return line;
-    }
-
 
 }

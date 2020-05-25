@@ -7,7 +7,7 @@ public class StringCalculator {
 
     public double calculate(String input) {
 
-        if(!validator(input)) {
+        if(!validate(input)) {
             throw new IllegalArgumentException();
         }
 
@@ -27,7 +27,7 @@ public class StringCalculator {
         return result;
     }
 
-    private boolean validator(String input) {
+    private boolean validate(String input) {
         return !(input == null || input.equals(""));
     }
 
