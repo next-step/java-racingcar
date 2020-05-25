@@ -44,9 +44,6 @@ public class RacingGame {
         cars.forEach(car -> {
             car.move();
             car.record();
-            winnerPosition = (car.getPosition() > winnerPosition)
-                                ? car.getPosition()
-                                : winnerPosition;
         });
     }
 
@@ -58,6 +55,7 @@ public class RacingGame {
     }
 
     public List<Car> getWinner() {
+        setWinnerPosition();
         return cars.stream()
                 .filter(car -> car.getPosition() == winnerPosition)
                 .collect(Collectors.toList());
@@ -67,7 +65,6 @@ public class RacingGame {
         for (int i = 0; i < this.time; i++) {
             move();
         }
-        setWinnerPosition();
         return cars;
     }
 
