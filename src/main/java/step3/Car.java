@@ -12,6 +12,7 @@ public class Car {
     public int getPosition() {
         return this.position;
     }
+
     public boolean canGo(int number) {
 
         return number >= MINIMUM_CONDITIONS ? true : false;
