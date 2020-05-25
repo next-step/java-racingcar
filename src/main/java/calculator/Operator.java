@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.function.IntBinaryOperator;
 
 public enum Operator {
-    PLUS("+" , (a , b) -> a + b),
-    MINUS("-" , (a , b) -> a - b),
-    TIMES("*" , (a , b) -> a * b),
-    DIVIDE("/" , (a , b) -> a / b);
+    PLUS("+" , (firstOperand , secondOperand) -> firstOperand + secondOperand),
+    MINUS("-" , (firstOperand , secondOperand) -> firstOperand - secondOperand),
+    TIMES("*" , (firstOperand , secondOperand) -> firstOperand * secondOperand),
+    DIVIDE("/" , (firstOperand , secondOperand) -> firstOperand / secondOperand);
 
     private final String sign;
     private final IntBinaryOperator functionalInterface;
@@ -21,7 +21,7 @@ public enum Operator {
         return Arrays.stream(values()).filter(op -> op.sign.equals(operator)).findFirst().orElseThrow(IllegalArgumentException::new);
     }
 
-    public int apply(int a, int b) {
-        return functionalInterface.applyAsInt(a, b);
+    public int apply(int firstOperand, int secondOperand) {
+        return functionalInterface.applyAsInt(firstOperand, secondOperand);
     }
 }
