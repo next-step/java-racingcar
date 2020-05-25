@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class RacingGameInputView {
     private Scanner scanner = new Scanner(System.in);
 
-    public int inputView(String msg) {
+    public String inputView(String msg) {
         System.out.println(msg);
-        return scanner.nextInt();
+        return scanner.nextLine();
     }
 
 }

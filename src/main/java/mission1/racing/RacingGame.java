@@ -4,7 +4,6 @@ import mission1.racing.view.RacingGameInputView;
 
 public class RacingGame {
     private int time;
-    private int numberOfCars;
 
     private Movement movement;
     private RacingGameInputView inputView = new RacingGameInputView();
@@ -18,9 +17,10 @@ public class RacingGame {
     }
 
     private void setGame() {
-        time = inputView.inputView("시도할 회수는 몇 회 인가요?");
-        numberOfCars = inputView.inputView("자동차 대수는 몇 대 인가요?");
+        time = Integer.parseInt(inputView.inputView("시도할 회수는 몇 회 인가요?"));
+        String inputName = inputView.inputView("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        String[] names = inputName.split(",");
 
-        movement = new Movement(numberOfCars);
+        movement = new Movement(names);
     }
 }

@@ -13,9 +13,9 @@ public class Movement {
     private RacingRandom random = new RacingRandom();
 
     public Movement() {};
-    public Movement(int carNumber) {
-        for(int i = 0; i < carNumber; i++) {
-            cars.add(new Car());
+    public Movement(String[] inputCars) {
+        for(int i = 0; i < inputCars.length; i++) {
+            this.cars.add(new Car(inputCars[i]));
         }
     }
 
