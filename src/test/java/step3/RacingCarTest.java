@@ -1,7 +1,7 @@
 package step3;
 
 import static org.assertj.core.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -10,10 +10,10 @@ public class RacingCarTest {
 
   @ParameterizedTest
   @CsvSource({"4, 1", "3, 0"})
-  // @CsvSource({"1, 1, 4, 1", "2, 1, 4, 1", "1, 1, 3, 0", "2, 1, 3, 0"})
-  void moveRacingCarByRandomNumber(int randomNubmer, int expected) {
+  @DisplayName("입력받은 수에 따라 자동차 이동")
+  void moveRacingCarByNumber(int nubmer, int expected) {
     
-    racingCar.moveRacingCarByRandomNumber(randomNubmer);
+    racingCar.moveRacingCarByNumber(nubmer);
     assertThat(racingCar.getDistance()).isEqualTo(expected);
   }
 }
