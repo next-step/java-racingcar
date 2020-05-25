@@ -3,7 +3,7 @@ package step3;
 public class Car {
 
     private int position = 0;
-    private static int MINIMUM_CONDITIONS = 4;
+    private final static int MINIMUM_CONDITIONS = 4;
 
     public void goPosition() {
         this.position += 1;
