@@ -19,10 +19,11 @@ public class RacingCars {
         return carsPositions;
     }
 
-    public void moveCars() {
+    public List<Car> moveCars() {
         for (int i = 0; i < carPositions.size(); i++) {
             carPositions.get(i).move(new CarForwardBehavior());
         }
+        return carPositions;
     }
 
     public List<Car> getCars() {

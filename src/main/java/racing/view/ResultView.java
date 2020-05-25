@@ -1,6 +1,7 @@
 package racing.view;
 
-import racing.RacingCars;
+import racing.Car;
+import java.util.List;
 
 public class ResultView {
     public static void resultMessage() {
@@ -14,9 +15,9 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void resultGame(RacingCars racingCars) {
-        for (int i = 0; i < racingCars.getCars().size(); i++) {
-            printPosition(racingCars.getCars().get(i).getPosition());
+    public static void resultGame(List<Car> carPositions) {
+        for (int i = 0; i < carPositions.size(); i++) {
+            printPosition(carPositions.get(i).getPosition());
         }
         System.out.println();
     }
