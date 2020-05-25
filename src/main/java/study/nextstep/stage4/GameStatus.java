@@ -9,14 +9,14 @@ public class GameStatus {
     private static final int CAR_MOVE_RANDOM_LIMIT_VAL = 10;
 
     private ArrayList<Integer> status;
-    private int totalGameRun;
-    private int currentGameRun;
+    private int remainingTotalTurn;
 
-    public GameStatus(int size){
+    public GameStatus(int size, int totalTurn){
         status = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             status.add(1);
         }
+        remainingTotalTurn = totalTurn;
     }
 
     private void positionMove(int pos, Random randomModule) {
@@ -29,10 +29,16 @@ public class GameStatus {
         }
     }
 
-    public void totalTurn(Random randomModule) {
+    public boolean totalTurn(Random randomModule) {
+        if (remainingTotalTurn <= 0) {
+            return false;
+        }
+
         for (int i = 0; i < status.size(); i++) {
             positionMove(i, randomModule);
         }
+        remainingTotalTurn--;
+        return true;
     }
 
     public int getPosition(int pos) {
@@ -50,13 +56,13 @@ public class GameStatus {
             }
         }
 
-        ArrayList<Integer> result = new ArrayList<>();
+        ArrayList<Integer> winnerIndexes = new ArrayList<>();
         for (int i = 0; i < status.size(); i++) {
             if (status.get(i) == winnerMove) {
-                result.add(i);
+                winnerIndexes.add(i);
             }
         }
-        return result;
+        return winnerIndexes;
     }
 
     public String getWinnerNames(String[] names) {
