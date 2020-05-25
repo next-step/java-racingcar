@@ -3,6 +3,7 @@ package step3;
 public class Car {
 
     private int position = 0;
+    private static int MINIMUM_CONDITIONS = 4;
 
     public void goPosition() {
         this.position += 1;
@@ -13,7 +14,7 @@ public class Car {
     }
     public boolean canGo(int number) {
 
-        return number >= 4 ? true : false;
+        return number >= MINIMUM_CONDITIONS ? true : false;
     }
 
 }
