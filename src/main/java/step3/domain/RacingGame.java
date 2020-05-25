@@ -56,7 +56,8 @@ public class RacingGame {
     }
 
     public Map<Integer, int[]> getRecord() {
-        return record;
+        HashMap<Integer, int[]> copyMap = new HashMap<>(record);
+        return copyMap;
     }
 
     private void getMaxPosition() {

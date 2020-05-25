@@ -20,7 +20,7 @@ public class Car {
     }
 
     private boolean decideForward(DecideMode mode) {
-        return mode.getCanMove();
+        return mode.isCanMove();
     }
 
     public int getDistance() {

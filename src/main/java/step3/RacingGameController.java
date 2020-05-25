@@ -9,13 +9,22 @@ import java.util.Map;
 public class RacingGameController {
     private RacingGame racingGame;
     private ResultView resultView = new ResultView();
+    private String names;
     private int time;
 
     public RacingGameController() {
+        input();
+        makeNewRacingGame();
+    }
+
+    public void input() {
         InputView inputView = new InputView();
-        String names = inputView.inputCarsName();
+        names = inputView.inputCarsName();
         time = inputView.inputTimeCount();
-        racingGame = new RacingGame(names, time);
+    }
+
+    public void makeNewRacingGame() {
+        racingGame =  new RacingGame(names,time);
     }
 
     public void racingStart() {
