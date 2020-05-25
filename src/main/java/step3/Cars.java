@@ -8,20 +8,30 @@ public class Cars {
     private List<Car> carList;
 
 
-    public Cars(int carCount){
+    public Cars(int carCount) {
         carList = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
             this.carList.add(new Car());
         }
     }
 
-    public List<Car> playGame(Dice dice) {
-        for (Car car:this.carList) {
-            boolean greaterCheck = car.canGo(dice.makeRandomNumber());
+    public void playGame(Dice dice) {
+        for (Car car : this.carList) {
+            boolean greaterCheck = car.canGo(dice.makeNumber());
             if (greaterCheck) {
                 car.goPosition();
             }
         }
-        return this.carList;
+    }
+
+    public List<Integer> getPositionList() {
+
+        List<Integer> positionList = new ArrayList();
+
+        for (Car car : this.carList) {
+            positionList.add(car.getPosition());
+        }
+
+        return positionList;
     }
 }
