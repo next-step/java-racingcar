@@ -3,6 +3,7 @@ package racecar;
 import racecar.domain.Car;
 import racecar.domain.RacingGame;
 import racecar.view.InputView;
+import racecar.view.ResultView;
 
 import java.util.List;
 
@@ -19,11 +20,11 @@ public class gameController {
         //게임 실행
         for (int i = 0; i < repeatCount; i++) {
             racingGame.start(carList);
-            System.out.println();
+            ResultView.printStatus(carList);
         }
 
         //우승자 발표
-        racingGame.announceWinner(carList);
-
+        List<String> winners = racingGame.announceWinner(carList);
+        ResultView.printWinner(winners);
     }
 }

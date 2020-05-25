@@ -1,8 +1,5 @@
 package racecar.domain;
 
-import racecar.view.InputView;
-import racecar.view.ResultView;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -22,14 +19,13 @@ public class RacingGame {
         Random random = new Random();
         for (Car car : carList) {
             car.move(random);
-            ResultView.printStatus(car);
         }
     }
 
-    public void announceWinner(List<Car> carList) {
+    public List<String> announceWinner(List<Car> carList) {
         int winScore = getWinScore(carList);
         List<String> winners = selectWinner(carList, winScore);
-        ResultView.printWinner(winners);
+        return winners;
     }
 
     private int getWinScore(List<Car> carList) {
