@@ -1,4 +1,4 @@
-package step3;
+package step4;
 
 
 import org.junit.jupiter.api.BeforeEach;
@@ -37,7 +37,6 @@ public class RacingGameTest {
     void racingGameIsEndTestFunction() {
         String[] carArr = {"carA","carB","carC"};
         racingGame.makeCar(carArr);
-
         int gameCount = 5;
         racingGame.setGameCount(gameCount);
         for(int i = 0; i < gameCount; i++) {

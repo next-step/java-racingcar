@@ -4,7 +4,8 @@ import racingcar.common.CPrintOutputView;
 import racingcar.common.CScannerInputView;
 import racingcar.common.Message;
 
-public class RacingGameView implements RacingGameContract.View {	
+
+public class RacingGameView implements RacingGameContract.View {
 	private RacingGameContract.Presenter presenter;
 	private CScannerInputView carQuestionInputView;
 	private CScannerInputView gameTryQuestionInputView;
@@ -27,7 +28,7 @@ public class RacingGameView implements RacingGameContract.View {
 			presenter.addCars(input);
 			gameTryQuestionInputView.layout();
 		});
-		
+
 		gameTryQuestionInputView.OnInputListener(input -> {
 			presenter.setGameNum(input);
 			presenter.start();
@@ -37,10 +38,14 @@ public class RacingGameView implements RacingGameContract.View {
 	}
 
 	@Override
-	public void print(String printMsg) {
+	public void println(String printMsg) {
 		cPrintOutputView.layout(printMsg);
 	}
 
+	public void print(String printMsg) {
+		cPrintOutputView.layoutWithoutEnter(printMsg);
+	}
+  
 	@Override
 	public void printCarPositionBySymbol(int position) {
 		String result = "";

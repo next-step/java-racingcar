@@ -1,4 +1,4 @@
-package step3;
+package step4;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,7 +12,7 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car("testCar");
+        car = new Car("TestCar");
     }
 
     @Test
@@ -27,5 +27,11 @@ public class CarTest {
     void carStopTestFunction() {
         car.move(4);
         assertThat(car.getPosition()).isEqualTo(1);
+    }
+    @Test
+    @DisplayName("자동차 이름 설정 테스트")
+    void carNameTestFunction() {
+        String carName = car.getName();
+        assertThat(carName).isEqualTo("TestCar");
     }
 }
