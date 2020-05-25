@@ -5,7 +5,7 @@
  * 저작권 관련
  */
 
-package edu.next.racing.model;
+package edu.next.racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;

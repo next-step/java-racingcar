@@ -6,9 +6,7 @@
  */
 package edu.next.racing;
 
-import edu.next.racing.model.RacingGame;
-import edu.next.racing.ui.InputView;
-import edu.next.racing.ui.ResultView;
+import edu.next.racing.controller.RacingController;
 
 /**
  * 자동차 경주 메인 클래스
@@ -20,16 +18,10 @@ public class RacingGameApp {
 
     /** 자동차 경주 메인 */
     public static void main(String[] args) {
-        /** input ui */
-        InputView inputView = new InputView();
-        /** racingGame model */
-        RacingGame racingGame = new RacingGame(inputView.displayCreateCarCountUi(),
-                                                inputView.displayGameTimeInputUi());
-        /** result ui */
-        ResultView resultView = new ResultView(racingGame.execute(),
-                                                racingGame.getTime(),
-                                                racingGame.getWinner());
-        resultView.displayRacingResult();
+        RacingController racingController = new RacingController();
+        racingController.initalize();
+        racingController.play();
+        racingController.displayResult();
     }
 
 }
