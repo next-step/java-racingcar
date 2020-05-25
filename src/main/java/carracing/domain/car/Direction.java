@@ -1,4 +1,6 @@
-package CarRacing;
+package carracing.domain;
+
+import carracing.PositionValidator;
 
 public enum Direction {
 

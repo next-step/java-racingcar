@@ -1,11 +1,11 @@
-package CarRacing;
+package carracing.domain;
+
+import carracing.CarRacingView;
+import carracing.RandomValue;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class CarRacingGame {

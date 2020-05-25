@@ -1,4 +1,4 @@
-package StringCalculator;
+package stringcalculator;
 
 public class ArithmeticValidator implements Validator {
 

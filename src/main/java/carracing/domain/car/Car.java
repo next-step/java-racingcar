@@ -1,4 +1,6 @@
-package CarRacing;
+package carracing.domain;
+
+import carracing.RandomValue;
 
 public class Car {
 

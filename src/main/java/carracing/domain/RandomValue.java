@@ -1,14 +1,14 @@
-package CarRacing;
+package carracing;
 
 import java.util.Random;
 
-public class RandomMaxValue extends RandomValue {
+public class RandomValue {
 
-    private final int MAX_NUM = 3;
+    private final int MAX_NUM = 10;
 
-    @Override
     public int getRandomValue() {
         Random random = new Random();
         return random.nextInt(MAX_NUM);
     }
+
 }

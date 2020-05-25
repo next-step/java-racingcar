@@ -1,4 +1,6 @@
-package CarRacing;
+package carracing;
+
+import carracing.domain.Position;
 
 public class PositionValidator {
     public static void validate(Position position) {

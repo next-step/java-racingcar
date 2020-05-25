@@ -1,6 +1,4 @@
-package CarRacing;
-
-import java.util.List;
+package carracing;
 
 public interface View {
 
