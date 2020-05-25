@@ -7,6 +7,7 @@ import java.util.*;
 public class RacingGame {
     private final static int CAR_CNT_MIN = 1;
     private final static int TIME_CNT_MIN = 1;
+
     private int carCnt;
     private int time;
     private int[] carPositions;
@@ -56,7 +57,11 @@ public class RacingGame {
     }
 
     public Map<Integer, int[]> getRecord() {
-        HashMap<Integer, int[]> copyMap = new HashMap<>(record);
+        HashMap<Integer, int[]> copyMap = new HashMap<>();
+        for(int i = 0 ; i< time; i++) {
+            int tmp[] = Arrays.copyOf(record.get(i),record.get(i).length);
+            copyMap.put(i,tmp);
+        }
         return copyMap;
     }
 

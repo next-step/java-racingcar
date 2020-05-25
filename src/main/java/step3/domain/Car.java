@@ -19,10 +19,6 @@ public class Car {
         moveSelectMode(DecideMode.RANDOM_MODE);
     }
 
-    private boolean decideForward(DecideMode mode) {
-        return mode.isCanMove();
-    }
-
     public int getDistance() {
         return distance;
     }
@@ -35,5 +31,8 @@ public class Car {
         if(decideForward(mode)) {
             distance++;
         }
+    }
+    private boolean decideForward(DecideMode mode) {
+        return mode.checkMovable();
     }
 }

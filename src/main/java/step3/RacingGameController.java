@@ -15,6 +15,9 @@ public class RacingGameController {
     public RacingGameController() {
         input();
         makeNewRacingGame();
+        racingStart();
+        printRacingWithName();
+        printWinner();
     }
 
     public void input() {
