@@ -14,14 +14,13 @@ class ParserUtilsTest {
     @Test
     void getNumberError() {
         String[] strings = {"a"};
-        assertThatIllegalArgumentException().isThrownBy(() -> ParserUtils.getNumber(strings[0]));
+        assertThatIllegalArgumentException().isThrownBy(() -> ParserUtils.stringConvertNumber(strings[0]));
     }
 
     @DisplayName("입력값이 정상적일때 동작 테스트")
     @Test
     void getNumberSuccess() {
-        String[] strings = {"1", "*", "3", "+", "7"};
-        int result = ParserUtils.getNumber(strings[0]);
+        int result = ParserUtils.stringConvertNumber("1");
         assertThat(result).isEqualTo(1);
     }
 
@@ -52,6 +51,12 @@ class ParserUtilsTest {
     void checkArraySizeArraySizeOne(){
         String[] input = {"1"};
         assertThatIllegalArgumentException().isThrownBy(() -> ParserUtils.checkArraySize(input));
+    }
+
+    @DisplayName("string 배열이 null 일때 에러")
+    @Test
+    void checkArraySizeArraySizeNull(){
+        assertThatIllegalArgumentException().isThrownBy(() -> ParserUtils.checkArraySize(null));
     }
 
 

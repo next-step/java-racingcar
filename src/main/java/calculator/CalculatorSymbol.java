@@ -1,13 +1,13 @@
 package calculator;
 
-public class CalculatorSymbol {
+public final class  CalculatorSymbol {
 
     private static CalculatorSymbol calculatorSymbol = null;
 
     private CalculatorSymbol() {
     }
 
-    public static final CalculatorSymbol getInstance() {
+    public static CalculatorSymbol getInstance() {
 
         if (calculatorSymbol == null) {
             calculatorSymbol = new CalculatorSymbol();

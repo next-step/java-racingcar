@@ -6,7 +6,7 @@ public class ParserUtils {
 
     private static final String WHITESPACE = " ";
 
-    public static int getNumber(String word) {
+    public static int stringConvertNumber(String word) {
 
         if (!word.matches("^[0-9]+$")) {
             throw new IllegalArgumentException("입력 문자가 숫자가 아닙니다.");
@@ -21,9 +21,10 @@ public class ParserUtils {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
-    public static void checkArraySize(String[] list) {
-        if(list.length % 2 == 0 || list.length < 2){
-            throw new IllegalArgumentException("리스트 사이즈 오류");
-        }
+    public static void checkArraySize(String[] InputList) {
+        Optional.ofNullable(InputList).filter(list -> list.length % 2 != 0)
+                .filter(list -> list.length > 2)
+                .orElseThrow(() -> new IllegalArgumentException("리스트 사이즈 오류"));
+
     }
 }
