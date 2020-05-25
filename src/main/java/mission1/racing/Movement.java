@@ -39,13 +39,15 @@ public class Movement {
         }
     }
 
-    public void selectWinner() {
+    public String[] selectWinner() {
         for(int i = 0; i < cars.size(); i++) {
-            winner(cars.get(i));
+            isWinner(cars.get(i));
         }
+
+        return winners.toArray(new String[winners.size()]);
     }
 
-    private void winner(Car car) {
+    private void isWinner(Car car) {
         if(car.carPositions == maxPosition) {
             winners.add(car.name);
         }

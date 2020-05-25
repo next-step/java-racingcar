@@ -12,14 +12,7 @@ public class RacingGame {
 
     public void announceWinner() {
         startGame();
-        movement.selectWinner();
-
-        String[] winnerCars = new String[movement.winners.size()];
-        for(int i = 0; i < movement.winners.size(); i++) {
-            winnerCars[i] = movement.winners.get(i);
-        }
-
-        outputView.winnerView(winnerCars);
+        outputView.winnerView(movement.selectWinner());
     }
 
     private void startGame() {
