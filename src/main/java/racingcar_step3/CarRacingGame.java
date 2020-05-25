@@ -1,38 +1,26 @@
 package racingcar_step3;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class CarRacingGame {
 
-    private Random rand = new Random();
-    private List<Integer> racingPositions;
-    private Car car;
+    private List<Integer> racingPositions = new ArrayList<>();
 
-    CarRacingGame(Car car) {
-        this.car = car;
-        racingPositions = car.getCarPositions();
+    public CarRacingGame() {
     }
 
-    private int getRandom() {
-        return rand.nextInt(CarRacingEnum.RANDOM_RANGE.getValue());
-    }
-
-    public void runRacing() {
-        for (int i=0; i < car.getRacingCount(); i++) {
-            move();
+    public List<Integer> createCars(int racingCarCount) {
+        for (int i = 0; i < racingCarCount; i++) {
+            racingPositions.add(0);
         }
+        return racingPositions;
     }
 
-    private void move() {
-        for (int i=0; i < car.getRacingCarCount(); i++) {
-            int carPosition = car.getCarPositions().get(i);
-            carPosition += car.setForward(getRandom());
-            racingPositions.set(i, carPosition);
+    public List<Integer> runRacing(List<Integer> cars) {
+        for(int i = 0; i < cars.size(); i++) {
+            cars.set(i, Car.move(cars.get(i)));
         }
-    }
-
-    public List<Integer> getRacingPositions() {
-        return this.racingPositions;
+        return cars;
     }
 }

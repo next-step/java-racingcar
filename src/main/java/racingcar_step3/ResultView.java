@@ -4,14 +4,17 @@ import java.util.List;
 
 public class ResultView {
 
-    public void print(List<Integer> result) {
-        System.out.println("실행 결과 \n");
-
-        for (int positions : result) {
-            for (int i = 0; i < positions; i++) {
-                System.out.print("-");
-            }
+    public static void viewRound(List<Integer> cars) {
+        for (int car : cars) {
+            viewCarMoveInfo(car);
             System.out.println();
+        }
+        System.out.println();
+    }
+
+    private static void viewCarMoveInfo(int moveDistance) {
+        for (int i = 0; i < moveDistance; i++) {
+            System.out.print("-");
         }
     }
 }

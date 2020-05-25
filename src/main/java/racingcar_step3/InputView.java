@@ -11,6 +11,7 @@ public class InputView {
     public void input() {
         this.inputRacingCarCount();
         this.inputRacingCount();
+        validateInput(racingCarCount, racingCount);
     }
 
     private void inputRacingCarCount() {
@@ -21,6 +22,12 @@ public class InputView {
     private void inputRacingCount() {
         System.out.println("시도할 회수는 몇 회 인가요?");
         this.racingCount = Integer.parseInt(scanner.nextLine());
+    }
+
+    public void validateInput(int racingCarCount, int racingCount) {
+        if (racingCarCount <= 0 || racingCount <= 0) {
+            throw new IllegalArgumentException("Input Value Error");
+        }
     }
 
     public int getRacingCarCount() {
