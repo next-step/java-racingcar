@@ -2,7 +2,7 @@ package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -15,12 +15,12 @@ public class CarTest {
     void moveTest(int expected) {
         //Car car = new Car(new CarForwardBehavior());
 
-       // assertThat(CarForwardBehavior.action()).isEqualTo(expected);
+        // assertThat(CarForwardBehavior.action()).isEqualTo(expected);
     }
 
     @ParameterizedTest
-    @DisplayName("자동차 이름을 공백으로 입력받았을 때")
-    @NullSource
+    @DisplayName("자동차 이름이 없을 때")
+    @EmptySource
     void checkCarNameNullTest(String input) {
         assertThatThrownBy(() -> Car.checkCarName(input))
                 .isInstanceOf(IllegalArgumentException.class)

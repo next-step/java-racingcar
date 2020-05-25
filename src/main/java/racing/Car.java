@@ -1,7 +1,5 @@
 package racing;
 
-import java.util.Objects;
-
 public class Car {
     private String carName;
     private int position;
@@ -12,7 +10,7 @@ public class Car {
     }
 
     public static void checkCarName(String carName) {
-        if (Objects.isNull(carName)) {
+        if (carName.isEmpty()) {
             throw new IllegalArgumentException("이름이 비어있습니다. 이름을 모두 입력해주세요.");
         }
     }
