@@ -8,7 +8,7 @@ public class DiceWithRandom implements Dice{
     Random random = new Random();
 
     @Override
-    public int makeRandomNumber() {
+    public int makeNumber() {
 
         return random.nextInt(MAX_NUMBER);
     }
