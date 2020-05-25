@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class InputView {
     private static Scanner scanner = new Scanner(System.in);
 
-    public static int inputCar() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int car = scanner.nextInt();
-        return car;
+    public static String inputCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요.");
+        String carName = scanner.nextLine();
+        return carName;
     }
 
     public static int inputTime() {

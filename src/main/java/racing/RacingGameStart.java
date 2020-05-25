@@ -6,10 +6,10 @@ import racing.view.ResultView;
 public class RacingGameStart {
 
     public static void main(String[] args) {
-        int cars = InputView.inputCar();
+        String inputNames = InputView.inputCarNames();
         int times = InputView.inputTime();
 
-        RacingCars racingCars = new RacingCars(cars);
+        RacingCars racingCars = new RacingCars(inputNames);
 
         ResultView.resultMessage();
 
