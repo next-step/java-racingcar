@@ -1,4 +1,4 @@
-package racecar;
+package racecar.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,27 +7,7 @@ import java.util.Random;
 
 public class RacingGame {
 
-    public static void main(String[] args) {
-        //입력
-        String[] carName = InputView.askCarNames();
-        int repeatCount = InputView.askRepeatCount();
-
-        //게임 준비
-        RacingGame racingGame = new RacingGame();
-        List<Car> carList = racingGame.ready(carName);
-
-        //게임 실행
-        for (int i = 0; i < repeatCount; i++) {
-            racingGame.start(carList);
-            System.out.println();
-        }
-
-        //우승자 발표
-        racingGame.announceWinner(carList);
-
-    }
-
-    private List<Car> ready(String[] carName) {
+    public List<Car> ready(String[] carName) {
         List<Car> carList = new ArrayList<>();
         for (String name : carName) {
             carList.add(Car.generate(name));
@@ -35,18 +15,17 @@ public class RacingGame {
         return carList;
     }
 
-    private void start(List<Car> carList) {
+    public void start(List<Car> carList) {
         Random random = new Random();
         for (Car car : carList) {
             car.move(random);
-            ResultView.printStatus(car);
         }
     }
 
-    private void announceWinner(List<Car> carList) {
+    public List<String> announceWinner(List<Car> carList) {
         int winScore = getWinScore(carList);
         List<String> winners = selectWinner(carList, winScore);
-        ResultView.printWinner(winners);
+        return winners;
     }
 
     private int getWinScore(List<Car> carList) {
