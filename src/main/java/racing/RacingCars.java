@@ -20,7 +20,7 @@ public class RacingCars {
         String[] carNames = inputName.split(DELIMITER);
 
         for (int i = 0; i < carNames.length; i++) {
-                carsPositions.add(new Car(carNames[i]));
+            carsPositions.add(new Car(carNames[i]));
         }
         return carsPositions;
     }
