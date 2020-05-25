@@ -32,9 +32,9 @@ public class RacingCars {
         }
     }
 
-    public List<Car> moveCars() {
+    public List<Car> moveCars(CarMoveBehavior carMoveBehavior) {
         for (int i = 0; i < carPositions.size(); i++) {
-            carPositions.get(i).move(new CarForwardBehavior());
+            carPositions.get(i).move(carMoveBehavior);
         }
         return carPositions;
     }

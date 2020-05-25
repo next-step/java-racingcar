@@ -14,7 +14,7 @@ public class RacingGameStart {
         ResultView.resultMessage();
 
         for (int i = 0; i < times; i++) {
-            ResultView.resultGame(racingCars.moveCars());
+            ResultView.resultGame(racingCars.moveCars(new CarForwardBehavior()));
         }
     }
 }
