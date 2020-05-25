@@ -5,28 +5,15 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 public class GameStatus {
-    private static final int THRESHOLD_CAR_MOVE_RANDOM_VAL = 4;
-    private static final int CAR_MOVE_RANDOM_LIMIT_VAL = 10;
-
-    private ArrayList<Integer> status;
+    private ArrayList<Position> status;
     private int remainingTotalTurn;
 
     public GameStatus(int size, int totalTurn){
         status = new ArrayList<>();
         for (int i = 0; i < size; i++) {
-            status.add(1);
+            status.add(new Position());
         }
         remainingTotalTurn = totalTurn;
-    }
-
-    private void positionMove(int pos, Random randomModule) {
-        if (pos >= status.size()) {
-            throw new IllegalArgumentException();
-        }
-
-        if (randomModule.nextInt(CAR_MOVE_RANDOM_LIMIT_VAL) >= THRESHOLD_CAR_MOVE_RANDOM_VAL) {
-            status.set(pos, status.get(pos) + 1);
-        }
     }
 
     public boolean totalTurn(Random randomModule) {
@@ -34,14 +21,14 @@ public class GameStatus {
             return false;
         }
 
-        for (int i = 0; i < status.size(); i++) {
-            positionMove(i, randomModule);
+        for (Position stat : status) {
+            stat.run(randomModule);
         }
         remainingTotalTurn--;
         return true;
     }
 
-    public int getPosition(int pos) {
+    public Position getPosition(int pos) {
         if (pos >= status.size()) {
             throw new IllegalArgumentException();
         }
@@ -50,15 +37,15 @@ public class GameStatus {
 
     public ArrayList<Integer> getWinnerPosition() {
         int winnerMove = 0;
-        for (int stat : status) {
-            if (winnerMove < stat) {
-                winnerMove = stat;
+        for (Position stat : status) {
+            if (winnerMove < stat.getValue()) {
+                winnerMove = stat.getValue();
             }
         }
 
         ArrayList<Integer> winnerIndexes = new ArrayList<>();
         for (int i = 0; i < status.size(); i++) {
-            if (status.get(i) == winnerMove) {
+            if (status.get(i).getValue() == winnerMove) {
                 winnerIndexes.add(i);
             }
         }
