@@ -26,5 +26,6 @@ public class GameController {
         //우승자 발표
         List<String> winners = racingGame.announceWinner(carList);
         ResultView.printWinner(winners);
+
     }
 }
