@@ -7,7 +7,7 @@ import racecar.view.ResultView;
 
 import java.util.List;
 
-public class gameController {
+public class GameController {
     public static void main(String[] args) {
         //입력
         String[] carName = InputView.askCarNames();
