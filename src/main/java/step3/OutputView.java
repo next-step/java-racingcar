@@ -7,9 +7,9 @@ public class OutputView {
 
     private static String MARK = "-";
 
-    public void resultPrint(List<Car> cars){
-        for (Car car : cars){
-            drawRepeat(car.getPosition());
+    public void resultPrint(List<Integer> positionList){
+        for (Integer position : positionList){
+            drawRepeat(position);
         }
     }
 

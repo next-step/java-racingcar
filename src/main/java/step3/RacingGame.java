@@ -15,8 +15,9 @@ public class RacingGame {
         DiceWithRandom dice = new DiceWithRandom();
         for (int time = 0; time < inputView.getInputTime(); time++) {
 
-            List<Car> carList = cars.playGame(dice);
-            outputView.resultPrint(carList);
+            cars.playGame(dice);
+            List<Integer> positionList = cars.getPositionList();
+            outputView.resultPrint(positionList);
             System.out.println("============" + (time + 1) + "실행 끝==================");
         }
     }
