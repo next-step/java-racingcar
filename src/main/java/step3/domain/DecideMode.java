@@ -7,22 +7,22 @@ public enum DecideMode {
         private final Random random = new Random();
         private final int DECIDE_NUM = 4;
         @Override
-        public boolean isCanMove() {
+        public boolean checkMovable() {
             return random.nextInt(10) > DECIDE_NUM;
         }
     },
     TRUE_RETURN_MODE {
         @Override
-        public boolean isCanMove() {
+        public boolean checkMovable() {
             return true;
         }
     },
     FALSE_RETURN_MODE {
         @Override
-        public boolean isCanMove() {
+        public boolean checkMovable() {
             return false;
         }
     };
 
-    public abstract boolean isCanMove();
+    public abstract boolean checkMovable();
 }
