@@ -2,6 +2,7 @@ package stringcalculator;
 
 import java.util.Arrays;
 import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 
 public enum Operator {
     PLUS("+", (operand1, operand2) -> operand1 + operand2),
@@ -9,11 +10,11 @@ public enum Operator {
     MULTIPLE("*", (operand1, operand2) -> operand1 * operand2),
     DIVIDE("/", (operand1, operand2) -> operand1 / operand2);
 
-    private BiFunction<Double, Double, Double> mathExpression;
+    private BinaryOperator<Double> mathExpression;
     private String operator;
 
     //  생성자
-    Operator(String operator, BiFunction<Double, Double, Double> mathExpression) {
+    Operator(String operator, BinaryOperator<Double> mathExpression) {
         this.operator = operator;
         this.mathExpression = mathExpression;
     }
