@@ -1,24 +1,23 @@
 package study.racing;
 
 import study.racing.model.Car;
+import study.racing.model.Participants;
 import study.racing.view.InputView;
 import study.racing.view.ResultView;
-import study.racing.utils.RacingUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class RacingGame {
+    private static final int START_POSITION = 0;
+
     private final InputView inputView;
     private final ResultView resultView;
+    private final Participants participants;
 
-    private List<Car> carList;
     private int time;
 
     public RacingGame() {
         inputView = new InputView();
         resultView = new ResultView();
-        carList = new ArrayList<>();
+        participants = new Participants();
     }
 
     public void play() {
@@ -27,11 +26,11 @@ public class RacingGame {
         System.out.println("\n실행 결과\n");
 
         for(int i=0; i<time; i++) {
-            move();
-            resultView.printCarPositions(carList);
+            participants.move();
+            resultView.printCarPositions(participants.getParticipants());
         }
 
-        resultView.printWinners(RacingUtils.getWinners(carList));
+        resultView.printWinners(participants.getWinners());
     }
 
     private void configureGameSettings() {
@@ -39,13 +38,7 @@ public class RacingGame {
         time = inputView.scanTime();
 
         for(String carName : carNames) {
-            carList.add(new Car(carName));
-        }
-    }
-
-    private void move() {
-        for(Car car : carList) {
-            car.move(RacingUtils.getRandomNumber());
+            participants.addParticipant(new Car(carName, START_POSITION));
         }
     }
 

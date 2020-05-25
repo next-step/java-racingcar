@@ -1,9 +1,11 @@
 package study.racing.view;
 
 import study.racing.model.Car;
+import study.racing.model.Winner;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
     private static final char CAR_MOVED = '-';
@@ -20,15 +22,9 @@ public class ResultView {
         System.out.println();
     }
 
-    public void printWinners(List<Car> winners) {
-        StringBuilder winnerNames = new StringBuilder(winners.get(0).getName());
+    public void printWinners(List<Winner> winners) {
+        String winnerNames = winners.stream().map(Winner::getName).collect(Collectors.joining(", "));
 
-        for(int i=1; i<winners.size(); i++) {
-            winnerNames.append(", ").append(winners.get(i).getName());
-        }
-
-        System.out.print(winnerNames.toString() + "가 최종 우승했습니다.\n");
+        System.out.print(winnerNames + "가 최종 우승했습니다.\n");
     }
-
-
 }

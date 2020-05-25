@@ -3,11 +3,12 @@ package study.racing.model;
 public class Car implements Comparable<Car> {
     private static final int MOVE_THRESHOLD = 4;
 
-    private String name;
+    private final String name;
     private int position = 0;
 
-    public Car(String name) {
+    public Car(String name, int position) {
         this.name = name;
+        this.position = position;
     }
 
     public String getName() {
@@ -26,6 +27,10 @@ public class Car implements Comparable<Car> {
 
     private boolean canMove(int value) {
         return value >= MOVE_THRESHOLD;
+    }
+
+    public Winner toWinner() {
+        return new Winner(name);
     }
 
     @Override
