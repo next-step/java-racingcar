@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    private Car car =null;
+    private Car car = null;
 
     @BeforeEach
     public void setUp() {
@@ -29,7 +29,7 @@ class CarTest {
 
     @DisplayName("위치값을 변경하고 그에 따른 값 반환 테스트")
     @Test
-    public void changePostionandGetPosition(){
+    public void changePostionandGetPosition() {
         car.goPosition();
         int position = car.getPosition();
         assertThat(position).isEqualTo(1);
@@ -38,13 +38,16 @@ class CarTest {
     @DisplayName("4보다 큰값인지 아닌지 확인")
     @ParameterizedTest
     @MethodSource
-    public void isGreaterTest(int input) {
-        car.canGo(input);
+    public void isGreaterTest(int input, boolean expected) {
+
+        boolean result = car.canGo(input);
+
+        assertThat(result).isEqualTo(expected);
     }
 
     private static Stream<Arguments> isGreaterTest() {
         return Stream.of(
-                Arguments.of(4, false),
+                Arguments.of(4, true),
                 Arguments.of(5, true),
                 Arguments.of(0, false)
         );
