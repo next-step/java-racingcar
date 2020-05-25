@@ -11,10 +11,11 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 public class RacingGameTest {
     @Test
     public void simpleRacingGameRunTest() {
+        String[] names = {"pobi", "crong", "honux"};
         RacingGame game = new RacingGame(new InputView() {
             @Override
             public String[] getNames() {
-                return "pobi,crong,honux".split(",");
+                return names;
             }
 
             @Override
@@ -22,15 +23,16 @@ public class RacingGameTest {
                 return 5;
             }
         });
-        game.run(new DefaultStandardIORenderer());
+        assertThat(game.run(new DefaultStandardIORenderer()).getWinnerPosition().size()).isGreaterThan(0);
     }
 
     @Test
-    public void randomModuleMaximzedGameRunTest() {
+    public void randomModuleMaximizedGameRunTest() {
+        String[] names = {"runner"};
         RacingGame game = new RacingGame(new InputView() {
             @Override
             public String[] getNames() {
-                return "runner".split(",");
+                return names;
             }
 
             @Override
@@ -43,11 +45,10 @@ public class RacingGameTest {
                 return bound - 1;
             }
         });
-        game.run(new Renderer() {
+        assertThat(game.run(new Renderer() {
             int runningStatus = 2;
             @Override
             public void render(String[] names, GameStatus status) {
-                assertThat(names[0]).isEqualTo("runner");
                 assertThat(status.getPosition(0)).isEqualTo(runningStatus);
                 runningStatus++;
             }
@@ -61,14 +62,13 @@ public class RacingGameTest {
             public void renderWinner(String[] names, GameStatus status) {
                 assertThat(status.getWinnerNames(names)).isEqualTo("runner");
             }
-        });
-        // assert
+        }).getWinnerNames(names)).isEqualTo("runner");
     }
 
     @DisplayName("random값에 따른 움직임 결과 확인")
     @Test
     public void positionMoveTest() {
-        GameStatus status = new GameStatus(1);
+        GameStatus status = new GameStatus(1, 2);
         status.totalTurn(new Random() {
             @Override
             public int nextInt(int bound) {
@@ -89,7 +89,7 @@ public class RacingGameTest {
     @DisplayName("position call 잘못 되었을 때 Exception 확인")
     @Test
     public void positionExceptionTest() {
-        GameStatus status = new GameStatus(1);
+        GameStatus status = new GameStatus(1, 1);
         assertThatIllegalArgumentException().isThrownBy(() -> status.getPosition(3));
     }
 }

@@ -21,7 +21,7 @@ public class RacingGame {
 
     public GameStatus run(Renderer renderer) {
         renderer.renderFirstStatus(status);
-        while( status.totalTurn(randomModule) ){
+        while (status.totalTurn(randomModule)) {
             renderer.render(names, status);
         }
         return status;
