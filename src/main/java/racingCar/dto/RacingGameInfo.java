@@ -14,12 +14,12 @@ public class RacingGameInfo {
     }
 
     private void validateNames(String[] carNames) {
-        if (carNames.length != trimNameSize(carNames)) {
+        if (carNames.length != notEmptyCount(carNames)) {
             throw new IllegalArgumentException("빈 문자열이 있습니다.");
         }
     }
 
-    private int trimNameSize(String[] carNames) {
+    private int notEmptyCount(String[] carNames) {
         return (int) Arrays.stream(carNames).map(String::trim).filter(name -> !name.isEmpty()).count();
     }
 

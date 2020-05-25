@@ -17,14 +17,13 @@ public class Main {
 
         // OutPut
         int time = racingGameInfo.getTime();
-        System.out.println("실행 결과");
         for (int idx = 0; idx < time; idx++) {
             racingGame.move(new RandomMove());
-            ResultView.printRacingCars(racingGame.getRacingCars().getRacingCarList());
+            ResultView.printRacingCars(idx, racingGame.getRacingCars());
         }
 
         // Winner
-        ResultView.printWinnerNames(Winners.findWinners(racingGame.getRacingCars().getRacingCarList()));
+        ResultView.printWinnerNames(Winners.findWinners(racingGame.getRacingCars()));
     }
 }
 

@@ -1,15 +1,19 @@
 package racingCar.ui;
 
 import racingCar.domain.car.RacingCar;
+import racingCar.domain.car.RacingCars;
 
 import java.util.List;
 
 public class ResultView {
     private static StringBuilder stringBuilder;
 
-    public static void printRacingCars(List<RacingCar> racingCars) {
+    public static void printRacingCars(int time, RacingCars racingCars) {
         stringBuilder = new StringBuilder();
-        for (RacingCar racingCar : racingCars) {
+        if (time == 0) {
+            stringBuilder.append("실행 결과\n");
+        }
+        for (RacingCar racingCar : racingCars.getRacingCarList()) {
             stringBuilder.append(racingCar.getName()).append(" : ");
             printPosition(racingCar);
             stringBuilder.append("\n");

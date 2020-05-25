@@ -11,7 +11,6 @@ public class RacingGame {
         this.racingCars = new RacingCars(racingGameInfo.getCarNames());
     }
 
-    // TODO 구현
     public void move(MoveBehavior moveBehavior) {
         racingCars.move(moveBehavior);
     }
