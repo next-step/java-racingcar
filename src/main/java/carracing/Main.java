@@ -1,6 +1,10 @@
-package CarRacing;
+package carracing;
 
-import java.util.Scanner;
+import carracing.domain.car.CarRacingGame;
+import carracing.domain.car.CarRacingOption;
+import carracing.domain.scanner.NumberInputScanner;
+import carracing.domain.scanner.StringInputScanner;
+import carracing.view.ScannerView;
 
 public class Main {
     public static void main(String[] args) {

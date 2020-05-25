@@ -1,4 +1,4 @@
-package carracing;
+package carracing.view;
 
 public interface View {
 

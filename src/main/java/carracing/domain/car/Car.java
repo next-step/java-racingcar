@@ -1,6 +1,6 @@
-package carracing.domain;
+package carracing.domain.car;
 
-import carracing.RandomValue;
+import carracing.domain.RandomValue;
 
 public class Car {
 
@@ -32,8 +32,8 @@ public class Car {
         return position.getLocation();
     }
 
-    public void progress(RandomValue randomValue) {
-        if (this.moveCheck(randomValue)) {
+    public void progress(ProgressStrategy progressStrategy) {
+        if (progressStrategy.progress()) {
             this.move(Direction.FORWARD);
         }
     }

@@ -1,13 +1,18 @@
-package CarRacing;
+package carracing;
 
-import StringCalculator.ArithmeticExpression;
+import carracing.domain.RandomValue;
+import carracing.domain.car.Car;
+import carracing.domain.car.CarRacingGame;
+import carracing.domain.car.CarRacingOption;
+import carracing.domain.car.Position;
+import carracing.test.RandomMaxValue;
+import carracing.test.RandomMinValue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

@@ -1,4 +1,4 @@
-package carracing.domain;
+package carracing.domain.car;
 
 public class Position {
 
@@ -12,6 +12,10 @@ public class Position {
         this.setLocation(this.location + moveValue);
     }
 
+    public boolean isAtLocation(int location) {
+        return this.location == location;
+    }
+
     private void setLocation(int location) {
         this.location = location;
     }
@@ -19,6 +23,8 @@ public class Position {
     public boolean validate() {
         return this.location < 0;
     }
+
+
 
 
 }

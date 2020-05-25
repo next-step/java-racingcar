@@ -1,6 +1,6 @@
-package carracing;
+package carracing.view;
 
-import carracing.domain.Car;
+import carracing.domain.car.Car;
 
 import java.util.List;
 

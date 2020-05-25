@@ -1,4 +1,6 @@
-package carracing.domain;
+package carracing.test;
+
+import carracing.domain.RandomValue;
 
 import java.util.Random;
 

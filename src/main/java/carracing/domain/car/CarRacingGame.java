@@ -1,7 +1,7 @@
-package carracing.domain;
+package carracing.domain.car;
 
-import carracing.CarRacingView;
-import carracing.RandomValue;
+import carracing.view.CarRacingView;
+import carracing.domain.RandomValue;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -23,7 +23,7 @@ public class CarRacingGame {
         gameInit();
         for(int i=0 ; i < carRacingOption.getGameCount() ; i++) {
             carList.stream().forEach( car -> {
-                car.progress(new RandomValue());
+                car.progress(new RandomValueStrategy(new RandomValue()));
             });
             carRacingView.view(carList);
         }
