@@ -1,22 +1,25 @@
 package racing.domain;
 
+import racing.util.Dice;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class RacingCar {
+public class RacingCars {
     private final List<Car> carList;
 
-    public RacingCar() {
+    public RacingCars() {
         this.carList = new ArrayList<>();
     }
 
-    public RacingCar(int carCount) {
+    public RacingCars(int carCount) {
         this();
         joinCars(carCount);
     }
 
-    public List<Car> getCarList() {
-        return carList;
+    public List<Integer> carsMove() {
+        return carList.stream().map(car -> car.move(Dice.cast())).collect(Collectors.toList());
     }
 
     private void joinCars(int carCount) {
