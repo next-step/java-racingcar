@@ -4,7 +4,7 @@
  *
  */
 
-package study.racing.ui;
+package study.racing.view;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
