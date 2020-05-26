@@ -5,17 +5,25 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CarTest {
+  static String carName = "test";
+
   static class CarSuccessTest {
     Car car;
 
+
     @BeforeEach
     void setUp() {
-      car = new Car(new RacingCarMovingStrategy() {
+      car = new Car(carName, new RacingCarMovingStrategy() {
         @Override
         public boolean isCanMove() {
           return true;
         }
       });
+    }
+
+    @Test
+    void testGetCarName() {
+      assertThat(car.getName()).isEqualTo(carName);
     }
 
     @Test
@@ -40,6 +48,12 @@ class CarTest {
           return false;
         }
       });
+    }
+
+    @Test
+    void testGetCarName() {
+      assertThat(car.getName()).isNotEqualTo(carName);
+      assertThat(car.getName()).isEqualTo("");
     }
 
     @Test

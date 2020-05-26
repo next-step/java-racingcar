@@ -13,7 +13,7 @@ public class RacingGameTest {
   @Test
   @DisplayName("게임 진행 테스트")
   void play() {
-    racingGame = new RacingGame(2, 10);
+    racingGame = new RacingGame(new String[] {"test1", "test2"}, 10);
     racingGame.play();
   }
 }

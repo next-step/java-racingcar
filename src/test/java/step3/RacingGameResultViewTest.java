@@ -22,6 +22,18 @@ public class RacingGameResultViewTest {
       }
       RacingGameResultView.printDistancesOfRacingCarList(racingCarList);
     }
+  }
 
+  @ParameterizedTest
+  @CsvSource({"test1 test2, 20"})
+  void printNameAndDistancesOfRacingCarList(String carNameInput, int time) {
+    List<Car> racingCarList = RacingCarFactory.createRacingCarList(carNameInput.split(" "));
+
+    for (int i = 0; i < time; i++) {
+      for (Car racingCar : racingCarList) {
+        racingCar.move();
+      }
+      RacingGameResultView.printNameAndDistancesOfRacingCarList(racingCarList);
+    }
   }
 }
