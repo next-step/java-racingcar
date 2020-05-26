@@ -1,19 +1,20 @@
 package step3;
 
-import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 public class RacingGameTest {
   RacingGame racingGame;
 
-  @Test
+  @ParameterizedTest
+  @CsvSource({"test1 test2 test3, 3"})
   @DisplayName("게임 진행 테스트")
-  void play() {
-    racingGame = new RacingGame(new String[] {"test1", "test2"}, 10);
-    racingGame.play();
+  void play(String carNameInput, int time) {
+    racingGame = new RacingGame(carNameInput.split(" "), time);
+    for (int i = 0; i < 100; i++) {
+      racingGame.play();
+    }
   }
 }

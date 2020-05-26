@@ -1,5 +1,7 @@
 package step3;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -35,5 +37,38 @@ public class RacingGameResultViewTest {
       }
       RacingGameResultView.printNameAndDistancesOfRacingCarList(racingCarList);
     }
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "test1 test2 test3, 0 0 1", 
+    "test1 test2 test3, 2 0 1", 
+    "test1 test2 test3, 2 2 1",
+    "test1 test2 test3, 2 2 2"
+    })
+  void printWinner(String carNameInput, String timeInput) {
+    List<Car> racingCarList = new ArrayList<>();
+    String[] carNameArr = carNameInput.split(" ");
+    int[] timeArr = Arrays.stream(timeInput.split(" "))
+        .mapToInt(timeStr -> Integer.parseInt(timeStr)).toArray();
+
+    // racingCarList 초기화
+    for (int i = 0; i < carNameArr.length; i++) {
+      racingCarList.add(new Car(carNameArr[i], new RacingCarMovingStrategy() {
+        @Override
+        public boolean isCanMove() {
+          return true;
+        }
+      }));
+    }
+
+    // racingCarList 이동
+    for (int i = 0; i < timeArr.length; i++) {
+      for (int j = 0; j < timeArr[i]; j++) {
+        racingCarList.get(i).move();
+      }
+    }
+
+    RacingGameResultView.printWinner(racingCarList);
   }
 }

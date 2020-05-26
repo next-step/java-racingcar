@@ -26,6 +26,8 @@ public class RacingGame implements Game {
       moveRacingCars(racingCarList);
       RacingGameResultView.printNameAndDistancesOfRacingCarList(racingCarList);
     }
+
+    RacingGameResultView.printWinner(racingCarList);
   }
 
   /**

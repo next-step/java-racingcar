@@ -1,6 +1,6 @@
 package step3;
 
-public class Car {
+public class Car implements Comparable<Car> {
   private final String name;
   private int distance;
   private final CarMovingStartegy carMovingStartegy;
@@ -27,5 +27,13 @@ public class Car {
     if (carMovingStartegy.isCanMove()) {
       distance++;
     }
+  }
+
+  @Override
+  public int compareTo(Car target) {
+    if (this.distance == target.distance) {
+      return 0;
+    }
+    return this.distance < target.distance ? -1 : 1;
   }
 }
