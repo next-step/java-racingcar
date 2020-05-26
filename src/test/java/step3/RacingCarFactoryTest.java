@@ -12,10 +12,23 @@ public class RacingCarFactoryTest {
   @DisplayName("횟수에 따라 자동차 인스턴스 생성")
   void createRacingCarList(int numberOfCars) {
     List<Car> racingCarList = RacingCarFactory.createRacingCarList(numberOfCars);
-    
+
     for (Car car : racingCarList) {
-      assertThat(car).isEqualToComparingFieldByField(new RacingCar());
+      assertThat(car)
+          .isEqualToComparingFieldByFieldRecursively(new Car(new RacingCarMovingStrategy()));
     }
-    
+  }
+
+  @ParameterizedTest
+  @ValueSource(strings = {"name1, name2, name3"})
+  @DisplayName("자동차 이름 배열의 개수 만큼 인스턴스 생성")
+  void createRacingCarListWithCarName(String carNameInput) {
+    String[] carNameArr = carNameInput.split(",");
+    List<Car> racingCarList = RacingCarFactory.createRacingCarList(carNameArr);
+
+    for (int i = 0; i < carNameArr.length; i++) {
+      assertThat(racingCarList.get(i)).isEqualToComparingFieldByFieldRecursively(
+          new Car(carNameArr[i], new RacingCarMovingStrategy()));
+    }
   }
 }
