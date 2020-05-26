@@ -6,11 +6,11 @@ import java.util.List;
 
 public class RacingGame {
 
-    private List<Car> cars = new ArrayList<>();
+    private static final String ILLEGAL_INPUT_ERROR = "Inputs can't be negative number.";
 
+    private List<Car> cars = new ArrayList<>();
     private int tryTimes;
 
-    private static final String ILLEGAL_INPUT_ERROR = "Inputs can't be negative number.";
 
     private RacingGame() {
     }

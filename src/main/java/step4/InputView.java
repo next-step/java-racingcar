@@ -9,6 +9,8 @@ public class InputView {
     private static final String QUESTION_CARS_NAMES = "What are cars names into this game? : ";
     private static final String QUESTION_TRY_COUNT = "How many times try this game? : ";
 
+    private static final String INPUT_NAMES_DELIMITER = ",";
+
     public static String[] setCarsNames() {
         // input
         System.out.println(QUESTION_CARS_NAMES);
@@ -25,7 +27,7 @@ public class InputView {
 
     private static String[] inputStringArray() {
         String result = scanner.next();
-        return result.split(",");
+        return result.split(INPUT_NAMES_DELIMITER);
     }
 
     private static int inputIntNumber() {
