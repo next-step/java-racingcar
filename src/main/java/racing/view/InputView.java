@@ -4,7 +4,7 @@ import racing.util.GameScanner;
 
 public class InputView {
 
-    InputView(String message) {
+    private InputView(String message) {
         System.out.println(message);
     }
 
@@ -12,7 +12,11 @@ public class InputView {
         return new InputView(message);
     }
 
-    public int input() {
-        return GameScanner.input();
+    public int inputNumber() {
+        return GameScanner.inputNumber();
+    }
+
+    public String inputString() {
+        return GameScanner.inputString();
     }
 }
