@@ -4,12 +4,13 @@ public class Car {
 
 
     // 구분
-    private String carsName;
+    private String carName;
     private int location;
+    private int rank;
     private CarMoveStrategy carMoveStrategy;
 
     public Car(String carsName, int location, CarMoveRandomStrategy carMoveStrategy) {
-        this.carsName = carsName;
+        this.carName = carsName;
         this.location = location;
         this.carMoveStrategy = carMoveStrategy;
     }
@@ -18,12 +19,20 @@ public class Car {
         this.location += carMoveStrategy.getMoveCount();
     }
 
-    public String getCarsName() {
-        return carsName;
+    public String getCarName() {
+        return carName;
     }
 
     public int getLocation() {
         return location;
     }
 
+
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
 }

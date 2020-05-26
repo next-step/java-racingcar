@@ -35,12 +35,16 @@ public class RacingGame {
     }
 
     public void play() {
+
         for (int i = 0; i < tryTimes; i++) {
             for (Car car : cars) {
                 car.move();
             }
             ResultView.viewResult(cars);
         }
+
+        ResultView.printWinner(cars);
+
     }
 
 
