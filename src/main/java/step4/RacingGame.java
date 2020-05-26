@@ -15,20 +15,23 @@ public class RacingGame {
     private RacingGame() {
     }
 
-    public RacingGame(int carsCount, int tryTimes) {
+    public RacingGame(String[] carsNames, int tryTimes) {
 
-        if (carsCount < 0 || tryTimes < 0) throw new IllegalArgumentException(ILLEGAL_INPUT_ERROR);
+        int carsCount = carsNames.length;
+
+        if (carsCount <= 0 || tryTimes < 0) throw new IllegalArgumentException(ILLEGAL_INPUT_ERROR);
 
         // set new car
-        setupCars(carsCount);
+        setupCars(carsNames);
+
         // set play times.
         this.tryTimes = tryTimes;
 
     }
 
-    private void setupCars(int carsCnt) {
-        for (int i = 0; i < carsCnt; i++) {
-            cars.add(new Car(i, 0, new CarMoveRandomStrategy()));
+    private void setupCars(String[] carsNames) {
+        for (int i = 0; i < carsNames.length; i++) {
+            cars.add(new Car(carsNames[i], 0, new CarMoveRandomStrategy()));
         }
     }
 
