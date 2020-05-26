@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.*;
 public class RacingGameTest {
     @Test
     public void stdRacingGameTest(){
-        RacingGame game = new RacingGame(StandardInputView.create());
+        RacingGame game = new RacingGame(StandardInputView.create(), new Random());
         game.run();
     }
 
@@ -25,7 +25,7 @@ public class RacingGameTest {
             public int getCount() {
                 return 5;
             }
-        }).randomModule(new Random(){
+        }, new Random(){
             @Override
             public int nextInt(int bound) {
                 return bound - 1;
@@ -49,7 +49,7 @@ public class RacingGameTest {
             public int getCount() {
                 return 4;
             }
-        }).randomModule(new Random(){
+        }, new Random(){
             int status = 0;
             @Override
             public int nextInt(int bound) {
@@ -78,7 +78,7 @@ public class RacingGameTest {
             public int getCount() {
                 return 0;
             }
-        });
+        }, new Random());
         game.run();
         assertThatIllegalArgumentException().isThrownBy(() -> game.gameStatus.renderCarPosition(0));
     }
