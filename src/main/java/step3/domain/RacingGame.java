@@ -1,18 +1,19 @@
-package step3;
+package step3.domain;
 
 import step2.StringUtil;
 
 import java.util.*;
 
 public class RacingGame {
+    private final static int CAR_CNT_MIN = 1;
+    private final static int TIME_CNT_MIN = 1;
+
     private int carCnt;
     private int time;
     private int[] carPositions;
     private String[] carNames;
     private List<Car> cars = new ArrayList<>();
     private Map<Integer, int[]> record = new HashMap<>();
-    private final static int CAR_CNT_MIN = 1;
-    private final static int TIME_CNT_MIN = 1;
     private int maxPosition = 0;
     private Map<Integer, List<String>> recordOfName = new HashMap<>();
 
@@ -41,14 +42,6 @@ public class RacingGame {
         }
     }
 
-    public void printRacing() {
-        ResultView resultView = new ResultView();
-        resultView.printTitle();
-        for (int i = 0; i < time; i++) {
-            resultView.printRoundCarPosition(record.get(i));
-        }
-    }
-
     public int[] getCarPositions() {
         return carPositions;
     }
@@ -59,17 +52,17 @@ public class RacingGame {
         return recordOfName.get(maxPosition);
     }
 
-    public void printRacingWithName() {
-        ResultView resultView = new ResultView();
-        resultView.printTitle();
-        for (int i = 0; i < time; i++) {
-            resultView.printRoundCarPositionWithName(cars, record.get(i));
-        }
+    public List<Car> getCars() {
+        return cars;
     }
 
-    public void printRacingWinner() {
-        ResultView resultView = new ResultView();
-        resultView.printRacingWinner(getWinner());
+    public Map<Integer, int[]> getRecord() {
+        HashMap<Integer, int[]> copyMap = new HashMap<>();
+        for(int i = 0 ; i< time; i++) {
+            int tmp[] = Arrays.copyOf(record.get(i),record.get(i).length);
+            copyMap.put(i,tmp);
+        }
+        return copyMap;
     }
 
     private void getMaxPosition() {
