@@ -10,11 +10,9 @@ public class RacingGameStart {
         int times = InputView.inputTime();
 
         RacingCars racingCars = new RacingCars(inputNames);
+        RacingGame racingGame = new RacingGame(racingCars);
 
         ResultView.resultMessage();
-
-        for (int i = 0; i < times; i++) {
-            ResultView.resultGame(racingCars.moveCars(new CarForwardBehavior()));
-        }
+        racingGame.race(times);
     }
 }

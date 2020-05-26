@@ -22,7 +22,7 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void resultGame(List<Car> carPositions) {
+    public static void printResult(List<Car> carPositions) {
         for (int i = 0; i < carPositions.size(); i++) {
             printCarName(carPositions.get(i).getCarName());
             printPosition(carPositions.get(i).getPosition());
