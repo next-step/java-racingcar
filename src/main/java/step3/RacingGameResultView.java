@@ -3,12 +3,14 @@ package step3;
 import java.util.List;
 
 public class RacingGameResultView {
+  private final static String RESULT_BEGIN_MESSAGE = "\n실행결과";
+  private final static String SYMBOL_DISTANCE = "-";
 
   /**
    * 메세지 "실행결과" 출력
    */
   public static void printResultBeginMessage() {
-    System.out.println("\n실행결과");
+    System.out.println(RESULT_BEGIN_MESSAGE);
   }
 
   /**
@@ -20,7 +22,7 @@ public class RacingGameResultView {
     StringBuffer message = new StringBuffer();
 
     for (int i = 0; i < distance; i++) {
-      message.append("-");
+      message.append(SYMBOL_DISTANCE);
     } 
 
     System.out.println(message.toString());
