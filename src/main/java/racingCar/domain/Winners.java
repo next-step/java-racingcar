@@ -1,25 +1,22 @@
 package racingCar.domain;
 
+import racingCar.domain.car.RacingCar;
+import racingCar.domain.car.RacingCars;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RacingGameResult {
-    private final List<RacingCar> racingCarList;
+public class Winners {
+    public static List<RacingCar> findWinners(RacingCars racingCars) {
+        int winnerPosition = getMaxPosition(racingCars);
 
-    public RacingGameResult(List<RacingCar> racingCarList) {
-        this.racingCarList = racingCarList;
-    }
-
-    public List<RacingCar> findWinners() {
-        int winnerPosition = getMaxPosition();
-
-        return racingCarList.stream()
+        return racingCars.getRacingCarList().stream()
                 .filter(racingCar -> racingCar.getPosition() == winnerPosition)
                 .collect(Collectors.toList());
     }
 
-    private int getMaxPosition() {
-        return racingCarList.stream()
+    private static int getMaxPosition(RacingCars racingCars) {
+        return racingCars.getRacingCarList().stream()
                 .mapToInt(RacingCar::getPosition)
                 .max()
                 .orElseThrow(() -> new IllegalArgumentException("경기를 시작하지 않았습니다."));

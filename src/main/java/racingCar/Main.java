@@ -1,31 +1,29 @@
 package racingCar;
 
-import racingCar.application.RacingGame;
-import racingCar.domain.RacingGameResult;
-import racingCar.domain.RandomMove;
+import racingCar.domain.RacingGame;
+import racingCar.domain.Winners;
+import racingCar.domain.moveStrategy.RandomMove;
+import racingCar.dto.RacingGameInfo;
 import racingCar.ui.InputView;
 import racingCar.ui.ResultView;
 
 public class Main {
     public static void main(String[] args) {
         // Input
-        InputView inputView = new InputView();
-        RacingGame racingGame = inputView.settingRacingGame();
+        RacingGameInfo racingGameInfo = InputView.settingRacingGame();
+
+        // RacingGame
+        RacingGame racingGame = new RacingGame(racingGameInfo);
 
         // OutPut
-        ResultView resultView = new ResultView();
-        System.out.println("실행 결과");
-
-        // 실행 & 출력
-        int time = racingGame.getTime();
+        int time = racingGameInfo.getTime();
         for (int idx = 0; idx < time; idx++) {
             racingGame.move(new RandomMove());
-            resultView.printCarsPosition(racingGame.getRacingCarList());
+            ResultView.printRacingCars(idx, racingGame.getRacingCars());
         }
 
         // Winner
-        RacingGameResult racingGameResult = new RacingGameResult(racingGame.getRacingCarList());
-        resultView.printWinnerNames(racingGameResult.findWinners());
+        ResultView.printWinnerNames(Winners.findWinners(racingGame.getRacingCars()));
     }
 }
 
