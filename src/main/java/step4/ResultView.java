@@ -9,15 +9,14 @@ public class ResultView {
     public static void viewResult(List<Car> cars) {
 
         System.out.println(++playTryTimes + " th Try.. ");
-
         for (Car car : cars) {
-            printCurrentLocation(car.getLocation());
+            printCurrentLocation(car);
         }
 
     }
 
-    private static void printCurrentLocation(int location) {
-        System.out.println(new String(new char[location]).replace("\0", "-"));
+    private static void printCurrentLocation(Car car) {
+        System.out.println(car.getCarsName() + "\t\t : " + new String(new char[car.getLocation()]).replace("\0", "-"));
     }
 
 

@@ -18,7 +18,6 @@ public class RacingGame {
     public RacingGame(String[] carsNames, int tryTimes) {
 
         int carsCount = carsNames.length;
-
         if (carsCount <= 0 || tryTimes < 0) throw new IllegalArgumentException(ILLEGAL_INPUT_ERROR);
 
         // set new car
