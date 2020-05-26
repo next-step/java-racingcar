@@ -1,7 +1,11 @@
 package step3;
 
+import java.util.Random;
+
 public class RacingGameUtils {
-  private static final int MIN_MOVEABLE_NUMBER = 4;
+  private static final int NUMBER_MOVEABLE_MIN = 4;
+  private static final int NUMBER_RANDOM_BOUND = 10;
+  private static final Random randomGenerator = new Random();
 
   private RacingGameUtils() {}
 
@@ -12,7 +16,7 @@ public class RacingGameUtils {
    * @return boolean, 매개변수 number가 4 이상일 경우 true 반환
    */
   public static boolean isCanMove(int number) {
-    if (MIN_MOVEABLE_NUMBER <= number) {
+    if (NUMBER_MOVEABLE_MIN <= number) {
       return true;
     }
     return false;
@@ -24,6 +28,6 @@ public class RacingGameUtils {
    * @return 생성된 숫자
    */
   public static int getRandomNumber() {
-    return (int) (Math.random() * 10);
+    return randomGenerator.nextInt(NUMBER_RANDOM_BOUND);
   }
 }
