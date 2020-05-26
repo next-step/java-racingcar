@@ -49,18 +49,4 @@ class RacingGameTest {
             assertThat(carCount).isEqualTo(roundCarCount);
         }
     }
-
-    @Test
-    @DisplayName("게임을 실행하여 자동차가 범위(0~10) 내에서 잘 이동했는지 확인하는 테스트")
-    void playGameRightMoveCarTest() {
-        RacingGame racingGame = new RacingGame(1, 10);
-        RacingGameResult gameResult = racingGame.playGame();
-        List<List<Integer>> allRoundCarPositionList = gameResult.getAllRoundCarsPosition();
-        List<Integer> lastRound = allRoundCarPositionList.get(9);
-        Integer carRacedAlone = lastRound.get(0);
-        assertThat(carRacedAlone).isBetween(0, 10);
-
-    }
-
-
 }
