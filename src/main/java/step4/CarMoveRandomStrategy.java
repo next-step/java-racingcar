@@ -24,4 +24,5 @@ public class CarMoveRandomStrategy implements CarMoveStrategy {
         return (movingCount > MOVE_START_AT) ? MOVE_STEP : STAY_LOCATION;
     }
 
+
 }
