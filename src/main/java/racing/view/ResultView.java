@@ -7,6 +7,7 @@ import java.util.List;
 
 public class ResultView {
     private static final String DELIMITER = " : ";
+    private static final String COMMA = ", ";
 
     public static void resultMessage() {
         System.out.println("실행 결과");
@@ -33,9 +34,14 @@ public class ResultView {
 
     public static void printWinner(RacingGame racingGame) {
         List<String> winners = racingGame.getWinnersCarName();
-        for (String winnerName : winners) {
-            System.out.print(winnerName);
-        }
-        System.out.print("가 우승하였습니다.");
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        winners.stream().forEach(value -> stringBuilder.append(value).append(COMMA));
+
+        stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
+        stringBuilder.append("가 최종 우승했습니다.");
+
+        System.out.println(stringBuilder);
     }
 }
