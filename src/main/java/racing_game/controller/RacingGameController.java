@@ -1,13 +1,14 @@
 package racing_game.controller;
 
 import java.util.List;
-import racing_game.model.Car;
-import racing_game.model.RacingGame;
-import racing_game.model.RacingGameImpl;
+import racing_game.model.domain.Car;
+import racing_game.model.service.RacingGame;
+import racing_game.model.service.RacingGameImpl;
 import racing_game.view.RacingGameInput;
 import racing_game.view.RacingGameResultView;
 
 public class RacingGameController {
+
   public static void main(String[] args) {
     RacingGame racingGame = new RacingGameImpl(RacingGameInput.getNameOfCarsByScanner(),
         RacingGameInput.getTimeByScanner());

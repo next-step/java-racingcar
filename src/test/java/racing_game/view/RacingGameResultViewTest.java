@@ -9,9 +9,9 @@ import org.junit.jupiter.params.converter.ArgumentConversionException;
 import org.junit.jupiter.params.converter.ConvertWith;
 import org.junit.jupiter.params.converter.SimpleArgumentConverter;
 import org.junit.jupiter.params.provider.CsvSource;
-import racing_game.model.Car;
-import racing_game.model.RacingCarFactory;
-import racing_game.model.RacingCarMovingStrategy;
+import racing_game.model.domain.Car;
+import racing_game.model.domain.RacingCarFactory;
+import racing_game.model.domain.RacingCarMovingStrategy;
 
 public class RacingGameResultViewTest {
 
@@ -61,6 +61,7 @@ public class RacingGameResultViewTest {
   }
 
 }
+
 class PrintWinnerTimeArgumentConverter extends SimpleArgumentConverter {
 
   @Override
@@ -68,7 +69,7 @@ class PrintWinnerTimeArgumentConverter extends SimpleArgumentConverter {
       throws ArgumentConversionException {
     if (source instanceof String) {
       return Arrays.stream(((String) source).split(" "))
-          .mapToInt(timeStr -> Integer.parseInt(timeStr)).toArray();
+          .mapToInt(Integer::parseInt).toArray();
     }
 
     return null;
