@@ -4,7 +4,6 @@ import racing.util.Dice;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingCars {
     private final List<Car> carList;
@@ -13,18 +12,28 @@ public class RacingCars {
         this.carList = new ArrayList<>();
     }
 
-    public RacingCars(int carCount) {
+    public RacingCars(String[] carNameArray) {
         this();
-        joinCars(carCount);
+        joinCars(carNameArray);
     }
 
-    public List<Integer> carsMove() {
-        return carList.stream().map(car -> car.move(Dice.cast())).collect(Collectors.toList());
+    public List<Car> getCarList() {
+        return carList;
     }
 
-    private void joinCars(int carCount) {
-        for (int i = 0 ; i < carCount ; i++) {
-            carList.add(new Car());
+    public void carsMove() {
+        for (Car car : carList) {
+            car.move(Dice.cast());
+        }
+    }
+
+    public void addCar(Car car) {
+        carList.add(car);
+    }
+
+    private void joinCars(String[] carNameArray) {
+        for (String carName : carNameArray) {
+            this.carList.add(new Car(carName.trim()));
         }
     }
 }

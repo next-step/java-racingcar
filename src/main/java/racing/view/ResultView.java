@@ -1,40 +1,44 @@
 package racing.view;
 
+import racing.domain.Car;
+import racing.domain.RacingCars;
+import racing.domain.RacingGameResult;
+
 import java.util.List;
 
 public class ResultView {
-    private final String message;
 
     public ResultView(String message) {
-        this.message = message;
-        init();
-    }
-
-    private void init() {
         System.out.println(message);
     }
 
-    public void print(List<List<Integer>> allRoundCarsPositionList) {
-        for (List<Integer> positions : allRoundCarsPositionList) {
-            printRoundPosition(positions);
+    public void print(List<RacingCars> allRoundRacingCars) {
+        for (RacingCars racingCars : allRoundRacingCars) {
+            printRoundPosition(racingCars.getCarList());
 
             System.out.println();
         }
     }
 
-    private void printRoundPosition(List<Integer> positions) {
-        for (Integer position : positions) {
-            drawCarPosition(position);
+    private void printRoundPosition(List<Car> carList) {
+        for (Car car : carList) {
+            drawCarPosition(car);
         }
     }
 
-    private void drawCarPosition(int position) {
-        StringBuilder paper = new StringBuilder();
+    private void drawCarPosition(Car car) {
+        StringBuilder paper = new StringBuilder(car.getName());
+        paper.append(" : ");
+        int position = car.getPosition();
 
         for (int i = 0; i < position; i++) {
             paper.append("-");
         }
 
         System.out.println(paper.toString());
+    }
+
+    public void printFinalWinner(String winners) {
+        System.out.println(winners + "가 최종 우승하였습니다.");
     }
 }
