@@ -1,9 +1,8 @@
 package racing.controller;
 
+import org.apache.commons.lang3.StringUtils;
 import racing.domain.RacingCars;
 import racing.domain.RacingGameResult;
-
-import java.util.List;
 
 public class RacingGame {
     private static final int MIN_SETTING_NUMBER = 1;
@@ -11,23 +10,23 @@ public class RacingGame {
     private final RacingCars racingCars;
     private final RacingGameResult racingGameResult;
 
-    public RacingGame(int carCount, int round) {
-        validation(carCount, round);
+    public RacingGame(String carNames, int round) {
+        validation(carNames, round);
         this.round = round;
-        this.racingCars = new RacingCars(carCount);
+        this.racingCars = new RacingCars(carNames.split(","));
         this.racingGameResult = new RacingGameResult();
     }
 
-    private void validation(int carCount, int round) {
-        if (carCount < MIN_SETTING_NUMBER || round < MIN_SETTING_NUMBER) {
+    private void validation(String carNames, int round) {
+        if (StringUtils.isBlank(carNames) || round < MIN_SETTING_NUMBER) {
             throw new IllegalArgumentException();
         }
     }
 
     public RacingGameResult playGame() {
         for (int i = 0; i < round; i++) {
-            List<Integer> carPositionList = racingCars.carsMove();
-            racingGameResult.addResult(carPositionList);
+            racingCars.carsMove();
+            racingGameResult.addResult(racingCars);
         }
 
         return racingGameResult;
