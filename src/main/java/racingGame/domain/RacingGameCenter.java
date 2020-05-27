@@ -8,14 +8,16 @@ public class RacingGameCenter {
 	private List<RacingCar> racingCars;
 	private ScoreBoard scoreBoard;
 	
-	public RacingGameCenter(int countOfCar, int countOfTime) {
+	public RacingGameCenter(String carNameString, int countOfTime) {
 		this.countOfTime = countOfTime;
 		this.racingCars = new ArrayList<RacingCar>();
 		
-		for(int i = 0 ; i < countOfCar ; i++) {
-			racingCars.add(new RacingCar(countOfTime));
+		String[] carNames = carNameString.split(",");
+		
+		for(int i = 0 ; i < carNames.length ; i++) {
+			racingCars.add(new RacingCar(countOfTime, carNames[i]));
 		}
-		scoreBoard = new ScoreBoard(countOfCar, countOfTime);
+		scoreBoard = new ScoreBoard(carNames, countOfTime);
 	}
 
 	public ScoreBoard gameStart() {

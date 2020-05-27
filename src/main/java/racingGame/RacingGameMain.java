@@ -11,7 +11,7 @@ public class RacingGameMain {
 	public static void main(String[] args) {
 		// Input
 		Scanner sc = new Scanner(System.in);
-		RacingGameCenter racingGameCenter = new RacingGameCenter(InputView.inputCountOfCars(sc), InputView.inputCountOfTimes(sc));
+		RacingGameCenter racingGameCenter = new RacingGameCenter(InputView.inputCarNames(sc), InputView.inputCountOfTimes(sc));
 		
 		// Game Start
 		ScoreBoard scoreBoard = racingGameCenter.gameStart();

@@ -4,10 +4,12 @@ public class RacingCar {
 
 	private static final String MOVE = "-";
 	private static final String STOP = "";
+	private String carName;
 	private String[] positions;
 	
-	public RacingCar(int countOfTime) {
+	public RacingCar(int countOfTime, String carName) {
 		positions = new String[countOfTime];
+		this.carName = carName;
 	}
 
 	public void move(int round) {

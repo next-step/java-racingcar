@@ -16,6 +16,8 @@ public class OutputView {
 			printNRound(gameResultScoreBoard, i);
 			System.out.println();
 		}
+		
+		System.out.println(scoreBoard.getWinner() + "가 최종 우승했습니다.");
 	}
 
 	private static void initializeResult() {
@@ -25,8 +27,8 @@ public class OutputView {
 	}
 
 	private static void printNRound(String[][] gameScore, int i) {
-		for(int j = 0 ; j < gameScore[i].length ; j++) {
-			result[j] += gameScore[i][j];
+		for(int j = 0 ; j < gameScore.length ; j++) {
+			result[j] += gameScore[j][i];
 			System.out.println(result[j]);
 		}
 	}
