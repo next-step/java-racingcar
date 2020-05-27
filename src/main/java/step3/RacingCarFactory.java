@@ -16,7 +16,7 @@ public class RacingCarFactory {
     List<Car> racingCarList = new ArrayList<>();
 
     for (int i = 0; i < numberOfCars; i++) {
-      racingCarList.add(new Car(new RacingCarMovingStrategy()));
+      racingCarList.add(new Car("", new RacingCarMovingStrategy()));
     }
 
     return racingCarList;

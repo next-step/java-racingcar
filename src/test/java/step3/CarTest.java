@@ -42,18 +42,12 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-      car = new Car(new RacingCarMovingStrategy() {
+      car = new Car("", new RacingCarMovingStrategy() {
         @Override
         public boolean isCanMove() {
           return false;
         }
       });
-    }
-
-    @Test
-    void testGetCarName() {
-      assertThat(car.getName()).isNotEqualTo(carName);
-      assertThat(car.getName()).isEqualTo("");
     }
 
     @Test

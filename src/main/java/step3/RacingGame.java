@@ -4,7 +4,6 @@ import java.util.List;
 
 public class RacingGame implements Game {
   private String[] carNameArr;
-  // private int numberOfCars;
   private int time;
   private List<Car> racingCarList;
 

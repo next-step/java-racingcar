@@ -15,7 +15,7 @@ public class RacingCarFactoryTest {
 
     for (Car car : racingCarList) {
       assertThat(car)
-          .isEqualToComparingFieldByFieldRecursively(new Car(new RacingCarMovingStrategy()));
+          .isEqualToComparingFieldByFieldRecursively(new Car("", new RacingCarMovingStrategy()));
     }
   }
 

@@ -23,41 +23,13 @@ public class RacingGameResultView {
    * @param distance : int 출력할 거리
    */
   public static void printNameAndDistance(String name, int distance) {
-    StringBuffer message = new StringBuffer(name + " : ");
+    StringBuilder message = new StringBuilder(name + " : ");
 
     for (int i = 0; i < distance; i++) {
       message.append(SYMBOL_DISTANCE);
     }
 
     System.out.println(message.toString());
-  }
-
-  /**
-   * 입력 받은 거리에 따라 대쉬(-) 출력
-   * 
-   * @param distance : int 출력할 거리
-   */
-  public static void printDistance(int distance) {
-    StringBuffer message = new StringBuffer();
-
-    for (int i = 0; i < distance; i++) {
-      message.append(SYMBOL_DISTANCE);
-    }
-
-    System.out.println(message.toString());
-  }
-
-  /**
-   * 자동차들의 거리 출력
-   * 
-   * @param racingCarList : 출력할 자동차 목록
-   */
-  public static void printDistancesOfRacingCarList(List<Car> racingCarList) {
-    for (Car racingCar : racingCarList) {
-      printDistance(racingCar.getDistance());
-    }
-
-    System.out.println();
   }
 
   /**

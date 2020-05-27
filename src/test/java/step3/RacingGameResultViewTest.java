@@ -1,30 +1,18 @@
 package step3;
 
+
+import static org.assertj.core.api.Assertions.*;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.converter.ArgumentConversionException;
+import org.junit.jupiter.params.converter.ConvertWith;
+import org.junit.jupiter.params.converter.SimpleArgumentConverter;
 import org.junit.jupiter.params.provider.CsvSource;
 
 public class RacingGameResultViewTest {
-  @Test
-  void printResultMessage() {
-    RacingGameResultView.printDistance(5);
-  }
-
-  @ParameterizedTest
-  @CsvSource({"3, 20"})
-  void printDistancesOfRacingCarList(int numberOfCars, int time) {
-    List<Car> racingCarList = RacingCarFactory.createRacingCarList(numberOfCars);
-
-    for (int i = 0; i < time; i++) {
-      for (Car racingCar : racingCarList) {
-        racingCar.move();
-      }
-      RacingGameResultView.printDistancesOfRacingCarList(racingCarList);
-    }
-  }
 
   @ParameterizedTest
   @CsvSource({"test1 test2, 20"})
@@ -41,16 +29,15 @@ public class RacingGameResultViewTest {
 
   @ParameterizedTest
   @CsvSource({
-    "test1 test2 test3, 0 0 1", 
-    "test1 test2 test3, 2 0 1", 
-    "test1 test2 test3, 2 2 1",
-    "test1 test2 test3, 2 2 2"
-    })
-  void printWinner(String carNameInput, String timeInput) {
+      "test1 test2 test3, 0 0 1",
+      "test1 test2 test3, 2 0 1",
+      "test1 test2 test3, 2 2 1",
+      "test1 test2 test3, 2 2 2"
+  })
+  void printWinner(String carNameInput,
+      @ConvertWith(PrintWinnerTimeArgumentConverter.class) int[] timeArr) {
     List<Car> racingCarList = new ArrayList<>();
     String[] carNameArr = carNameInput.split(" ");
-    int[] timeArr = Arrays.stream(timeInput.split(" "))
-        .mapToInt(timeStr -> Integer.parseInt(timeStr)).toArray();
 
     // racingCarList 초기화
     for (int i = 0; i < carNameArr.length; i++) {
@@ -70,5 +57,19 @@ public class RacingGameResultViewTest {
     }
 
     RacingGameResultView.printWinner(racingCarList);
+  }
+
+}
+class PrintWinnerTimeArgumentConverter extends SimpleArgumentConverter {
+
+  @Override
+  protected int[] convert(Object source, Class<?> targetType)
+      throws ArgumentConversionException {
+    if (source instanceof String) {
+      return Arrays.stream(((String) source).split(" "))
+          .mapToInt(timeStr -> Integer.parseInt(timeStr)).toArray();
+    }
+
+    return null;
   }
 }
