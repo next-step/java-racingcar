@@ -2,6 +2,8 @@ package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.domain.Car;
+import racing.domain.RacingCars;
 import racing.domain.RacingGameResult;
 
 import java.util.Arrays;
@@ -15,15 +17,24 @@ class RacingGameResultTest {
     @Test
     @DisplayName("자동차 3대 각각의 위치를 RacingGameResult에서 받았을때 똑같은 결과가 나오는지 테스트")
     void racingResultTest() {
-        List<Integer> positionList = Arrays.asList(1, 2, 3);
+
+        List<Car> carList = Arrays.asList(new Car("test1"), new Car("test2"), new Car("test3"));
+
+        RacingCars racingCars = new RacingCars();
+        for (Car car : carList) {
+            car.move(4);
+            racingCars.addCar(car);
+        }
 
         RacingGameResult result = new RacingGameResult();
-        result.addResult(positionList);
+        result.addResult(racingCars);
+        List<Car> carList2 = racingCars.getCarList();
+        int carCount = carList2.size();
+        RacingCars round1RacingCars = result.getAllRoundRacingCars().get(0);
+        List<Car> carList1 = round1RacingCars.getCarList();
 
-        int carCount = positionList.size();
         for (int i = 0; i< carCount; i++) {
-            List<Integer> round1Position = result.getAllRoundCarsPosition().get(0);
-            assertThat(positionList.get(i)).isEqualTo(round1Position.get(i));
+            assertThat(carList2.get(0).getPosition()).isEqualTo(carList1.get(i).getPosition());
         }
     }
 }
