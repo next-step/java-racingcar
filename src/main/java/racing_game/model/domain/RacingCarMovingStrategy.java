@@ -1,4 +1,6 @@
-package racing_game.model;
+package racing_game.model.domain;
+
+import racing_game.utils.RacingGameUtils;
 
 public class RacingCarMovingStrategy implements CarMovingStartegy {
 

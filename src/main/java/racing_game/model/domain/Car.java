@@ -1,4 +1,4 @@
-package racing_game.model;
+package racing_game.model.domain;
 
 public class Car implements Comparable<Car> {
 
@@ -26,7 +26,7 @@ public class Car implements Comparable<Car> {
   }
 
   /**
-   * carMovingStartegy 에 따라 이동여부 판단하여 distance++
+   * carMovingStrategy 에 따라 이동여부 판단하여 distance++
    */
   public void move() {
     if (carMovingStartegy.isCanMove()) {

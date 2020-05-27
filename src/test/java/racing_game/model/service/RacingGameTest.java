@@ -1,12 +1,13 @@
-package racing_game.model;
+package racing_game.model.service;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racing_game.model.RacingGame;
+
 import racing_game.view.RacingGameResultView;
 
 public class RacingGameTest {
+
   RacingGame racingGame;
 
   @ParameterizedTest

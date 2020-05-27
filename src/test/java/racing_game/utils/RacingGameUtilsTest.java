@@ -1,9 +1,8 @@
-package racing_game.model;
+package racing_game.utils;
 
 import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing_game.model.RacingGameUtils;
 
 class RacingGameUtilsTest {
 

@@ -1,15 +1,18 @@
-package racing_game.model;
+package racing_game.model.domain;
 
 import static org.assertj.core.api.Assertions.*;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racing_game.model.Car;
-import racing_game.model.RacingCarMovingStrategy;
+import racing_game.model.domain.Car;
+import racing_game.model.domain.RacingCarMovingStrategy;
 
 class CarTest {
-  static String carName = "test";
+
+  static final String carName = "test";
 
   static class CarSuccessTest {
+
     Car car;
 
 
@@ -39,7 +42,9 @@ class CarTest {
       assertThat(car.getDistance()).isEqualTo(1);
     }
   }
+
   static class CarFailureTest {
+
     Car car;
 
     @BeforeEach
