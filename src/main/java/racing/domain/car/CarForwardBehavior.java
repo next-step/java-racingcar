@@ -1,4 +1,6 @@
-package racing;
+package racing.domain.car;
+
+import racing.utils.RandomNumber;
 
 public class CarForwardBehavior implements CarMoveBehavior {
     private final int BOUND_NUMBER = 10;

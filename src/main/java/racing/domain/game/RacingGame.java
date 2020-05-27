@@ -1,5 +1,7 @@
-package racing;
+package racing.domain.game;
 
+import racing.domain.car.CarForwardBehavior;
+import racing.domain.car.RacingCars;
 import racing.view.ResultView;
 
 import java.util.ArrayList;
