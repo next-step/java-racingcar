@@ -11,6 +11,12 @@ public class Car implements Comparable<Car> {
     this.carMovingStartegy = carMovingStartegy;
   }
 
+  public Car(Car car) {
+    this.name = car.name;
+    this.distance = car.distance;
+    this.carMovingStartegy = car.carMovingStartegy;
+  }
+
   public String getName() {
     return name;
   }
@@ -19,6 +25,9 @@ public class Car implements Comparable<Car> {
     return distance;
   }
 
+  /**
+   * carMovingStartegy 에 따라 이동여부 판단하여 distance++
+   */
   public void move() {
     if (carMovingStartegy.isCanMove()) {
       distance++;

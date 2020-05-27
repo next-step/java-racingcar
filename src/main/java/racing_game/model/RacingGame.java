@@ -1,45 +1,28 @@
 package racing_game.model;
 
 import java.util.List;
-import racing_game.view.RacingGameResultView;
 
-public class RacingGame implements Game {
-  private String[] carNameArr;
-  private int time;
-  private List<Car> racingCarList;
-
-  public RacingGame(String[] carNameArr, int time) {
-    this.carNameArr = carNameArr;
-    this.time = time;
-  }
-
+public interface RacingGame {
   /**
    * 지정된 횟수만큼 게임 진행
    * 
-   * 게임 진행 시 racingCar 임의 이동
-   */
-  public void play() {
-    racingCarList = RacingCarFactory.createRacingCarList(carNameArr);
-    RacingGameResultView.printResultBeginMessage();
-
-    for (int i = 0; i < time; i++) {
-      moveRacingCars(racingCarList);
-      RacingGameResultView.printNameAndDistancesOfRacingCarList(racingCarList);
-    }
-
-    RacingGameResultView.printWinner(racingCarList);
-  }
-
-  /**
    * racingCarList에 있는 racingCar들을 임의로 이동시킨다.
    * 
-   * @param racingCarList : List&lt;Car&gt; 이동시킬 자동차 목록
+   * @return racingCarList 반환
    */
-  private void moveRacingCars(List<Car> racingCarList) {
-    for (Car racingCar : racingCarList) {
-      racingCar.move();
-    }
-  }
+  List<Car> play();
+
+  /**
+   * 자동차 경주의 우승자 반환<br/>
+   * 
+   * 반환 시점에 가장 멀리간 자동차를 출력한다.
+   */
+  List<Car> getWinnerList();
+
+  /**
+   * 게임의 반복 횟수를 반환
+   * 
+   * @return int, 게임 반복 횟수
+   */
+  int getTime();
 }
-
-

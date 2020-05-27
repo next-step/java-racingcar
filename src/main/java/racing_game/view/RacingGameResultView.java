@@ -47,21 +47,16 @@ public class RacingGameResultView {
   }
 
   /**
-   * 자동차 경주의 우승자 출력<br/>
-   * 
-   * 출력 시점에 가장 멀리간 자동차를 출력한다.
+   * 자동차 경주의 우승자 출력
    * 
    * @param racingCarList : 출력할 자동차 목록
    */
-  public static void printWinner(List<Car> racingCarList) {
+  public static void printWinner(List<Car> winnerList) {
     StringBuffer message = new StringBuffer();
 
-    racingCarList.stream().filter(car -> {
-      return car.getDistance() == racingCarList.stream().max((car1, car2) -> car1.compareTo(car2))
-          .get().getDistance();
-    }).forEach(winner -> {
+    for (Car winner : winnerList) {
       message.append(winner.getName() + ", ");
-    });
+    }
 
     message.delete(message.length() - 2, message.length());
     message.append(RESULT_WINNER_MESSAGE);

@@ -1,14 +1,25 @@
 package racing_game.controller;
 
-import racing_game.model.Game;
+import java.util.List;
+import racing_game.model.Car;
 import racing_game.model.RacingGame;
+import racing_game.model.RacingGameImpl;
 import racing_game.view.RacingGameInput;
+import racing_game.view.RacingGameResultView;
 
 public class RacingGameController {
   public static void main(String[] args) {
-    Game racingGame = new RacingGame(RacingGameInput.getNameOfCarsByScanner(),
+    RacingGame racingGame = new RacingGameImpl(RacingGameInput.getNameOfCarsByScanner(),
         RacingGameInput.getTimeByScanner());
+    List<Car> racingCarList;
 
-    racingGame.play();
+    RacingGameResultView.printResultBeginMessage();
+
+    for (int i = 0; i < racingGame.getTime(); i++) {
+      racingCarList = racingGame.play();
+      RacingGameResultView.printNameAndDistancesOfRacingCarList(racingCarList);
+    }
+
+    RacingGameResultView.printWinner(racingGame.getWinnerList());
   }
 }
