@@ -1,12 +1,9 @@
 package racing;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class RacingCars {
     private final List<Car> carPositions;
-
     private static final String DELIMITER = ",";
 
     public RacingCars(String inputName) {

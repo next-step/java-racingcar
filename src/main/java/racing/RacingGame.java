@@ -2,8 +2,11 @@ package racing;
 
 import racing.view.ResultView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RacingGame {
-    private RacingCars racingCars;
+    private final RacingCars racingCars;
 
     public RacingGame(RacingCars racingCars) {
         this.racingCars = racingCars;
@@ -14,5 +17,11 @@ public class RacingGame {
             racingCars.moveCars(new CarForwardBehavior());
             ResultView.printResult(racingCars.getCars());
         }
+    }
+
+    public List<String> getWinnersCarName() {
+        List<String> winnerList = new ArrayList<>();
+        RacingGameResult racingGameResult = new RacingGameResult(racingCars.getCars(), winnerList);
+        return racingGameResult.getWinnerList();
     }
 }

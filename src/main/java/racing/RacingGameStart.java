@@ -14,5 +14,6 @@ public class RacingGameStart {
 
         ResultView.resultMessage();
         racingGame.race(times);
+        ResultView.printWinner(racingGame);
     }
 }
