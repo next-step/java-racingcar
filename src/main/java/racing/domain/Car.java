@@ -2,14 +2,25 @@ package racing.domain;
 
 public class Car {
     private static final int MOVE_MIN_NUMBER = 4;
+    private String name;
     private int position;
 
-    public int move(int diceNumber) {
+    public Car(String name) {
+        this.name = name;
+    }
+
+    public void move(int diceNumber) {
         if (isMoveTime(diceNumber)) {
             position++;
         }
+    }
 
+    public int getPosition() {
         return position;
+    }
+
+    public String getName() {
+        return name;
     }
 
     private boolean isMoveTime(int diceNumber) {
