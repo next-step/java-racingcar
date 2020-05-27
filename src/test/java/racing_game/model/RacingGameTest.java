@@ -1,9 +1,9 @@
-package step3;
+package racing_game.model;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racing_game.model.RacingGame;
 
 public class RacingGameTest {
   RacingGame racingGame;

@@ -1,4 +1,4 @@
-package step3;
+package racing_game.model;
 
 public class Car implements Comparable<Car> {
 

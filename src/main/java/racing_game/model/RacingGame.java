@@ -1,6 +1,7 @@
-package step3;
+package racing_game.model;
 
 import java.util.List;
+import racing_game.view.RacingGameResultView;
 
 public class RacingGame implements Game {
   private String[] carNameArr;

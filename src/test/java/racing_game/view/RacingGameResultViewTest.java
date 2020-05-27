@@ -1,7 +1,5 @@
-package step3;
+package racing_game.view;
 
-
-import static org.assertj.core.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,6 +9,9 @@ import org.junit.jupiter.params.converter.ArgumentConversionException;
 import org.junit.jupiter.params.converter.ConvertWith;
 import org.junit.jupiter.params.converter.SimpleArgumentConverter;
 import org.junit.jupiter.params.provider.CsvSource;
+import racing_game.model.Car;
+import racing_game.model.RacingCarFactory;
+import racing_game.model.RacingCarMovingStrategy;
 
 public class RacingGameResultViewTest {
 
@@ -40,8 +41,8 @@ public class RacingGameResultViewTest {
     String[] carNameArr = carNameInput.split(" ");
 
     // racingCarList 초기화
-    for (int i = 0; i < carNameArr.length; i++) {
-      racingCarList.add(new Car(carNameArr[i], new RacingCarMovingStrategy() {
+    for (String s : carNameArr) {
+      racingCarList.add(new Car(s, new RacingCarMovingStrategy() {
         @Override
         public boolean isCanMove() {
           return true;

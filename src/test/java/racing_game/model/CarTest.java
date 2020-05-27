@@ -1,8 +1,10 @@
-package step3;
+package racing_game.model;
 
 import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racing_game.model.Car;
+import racing_game.model.RacingCarMovingStrategy;
 
 class CarTest {
   static String carName = "test";

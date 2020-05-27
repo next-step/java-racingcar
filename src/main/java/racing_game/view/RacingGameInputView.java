@@ -1,4 +1,4 @@
-package step3;
+package racing_game.view;
 
 public class RacingGameInputView {
   private static final String NAME_OF_CARS_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";

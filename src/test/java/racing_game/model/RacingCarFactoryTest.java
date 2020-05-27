@@ -1,10 +1,13 @@
-package step3;
+package racing_game.model;
 
 import static org.assertj.core.api.Assertions.*;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing_game.model.Car;
+import racing_game.model.RacingCarFactory;
+import racing_game.model.RacingCarMovingStrategy;
 
 public class RacingCarFactoryTest {
   @ParameterizedTest

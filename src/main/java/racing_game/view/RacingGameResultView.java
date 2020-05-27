@@ -1,6 +1,7 @@
-package step3;
+package racing_game.view;
 
 import java.util.List;
+import racing_game.model.Car;
 
 public class RacingGameResultView {
   private final static String RESULT_BEGIN_MESSAGE = "\n실행결과";
