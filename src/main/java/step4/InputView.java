@@ -2,14 +2,20 @@ package step4;
 
 import java.util.Scanner;
 
+/*
+ * Java Racing Game
+ * InputView
+ * ver. 1.0
+ * 2020.05.27
+ * Copyright ...
+ */
 public class InputView {
 
-    private static Scanner scanner = new Scanner(System.in);
 
     private static final String QUESTION_CARS_NAMES = "What are cars names into this game? : ";
-    private static final String QUESTION_TRY_COUNT = "How many times try this game? : ";
-
+    private static final String QUESTION_PLAY_TIMES = "How many times try this game? : ";
     private static final String INPUT_NAMES_DELIMITER = ",";
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static String[] setCarsNames() {
         // input
@@ -18,11 +24,11 @@ public class InputView {
         return carNames;
     }
 
-    public static int setPlayCounts() {
+    public static int setPlayTimes() {
         // input
-        System.out.println(QUESTION_TRY_COUNT);
-        int result = inputIntNumber();
-        return result;
+        System.out.println(QUESTION_PLAY_TIMES);
+        int playTimes = inputIntNumber();
+        return playTimes;
     }
 
     private static String[] inputStringArray() {

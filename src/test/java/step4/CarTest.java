@@ -6,11 +6,10 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
-
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class CarTest {
 
-    // private static final int TEST_CAR_INIT_LOCATION = 0;
     private static final int TEST_CAR_MOVE_STEP = 1;
 
 
@@ -33,6 +32,38 @@ class CarTest {
         assertThat(car.getLocation()).isEqualTo(location);
 
     }
+
+
+    // init
+    @DisplayName("init Class")
+    @ParameterizedTest
+    @CsvSource(value = {"anyTest:-1", "carTest:-229"}, delimiter = ':')
+    public void testClassInitializeWithInputError(String carName, int location) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            Car car = new Car(carName, location, new CarMoveStrategy() {
+                @Override
+                public int getMoveCount() {
+                    return 0;
+                }
+            });
+        });
+    }
+
+    // init
+    @DisplayName("init Class with null")
+    @ParameterizedTest
+    @CsvSource(value = {":0"}, delimiter = ':')
+    public void testClassInitializeWithNull(String carName, int location) {
+        assertThatNullPointerException().isThrownBy(() -> {
+            Car car = new Car(carName, location, new CarMoveStrategy() {
+                @Override
+                public int getMoveCount() {
+                    return 0;
+                }
+            });
+        });
+    }
+
 
     // move test
     @DisplayName("Move Test")

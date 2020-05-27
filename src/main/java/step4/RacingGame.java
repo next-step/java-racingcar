@@ -2,29 +2,37 @@ package step4;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
+/*
+ * Racing Game
+ * ver. 1.0
+ * 2020.05.27
+ * Copyright ...
+ */
 public class RacingGame {
 
     private static final String ILLEGAL_INPUT_ERROR = "Inputs can't be negative number.";
-
+    private static final String RANKED_STRING_DELIMITER = ",";
     private List<Car> cars = new ArrayList<>();
-    private int tryTimes;
-
+    private int playTimes;
 
     private RacingGame() {
     }
 
-    public RacingGame(String[] carsNames, int tryTimes) {
+    public RacingGame(String[] carsNames, int playTimes) {
 
         int carsCount = carsNames.length;
-        if (carsCount <= 0 || tryTimes < 0) throw new IllegalArgumentException(ILLEGAL_INPUT_ERROR);
+        if (carsCount <= 0 || playTimes < 0) throw new IllegalArgumentException(ILLEGAL_INPUT_ERROR);
 
-        // set new car
+        /* set new car */
         setupCars(carsNames);
 
-        // set play times.
-        this.tryTimes = tryTimes;
+        /* set play times. */
+        this.playTimes = playTimes;
 
     }
 
@@ -36,15 +44,24 @@ public class RacingGame {
 
     public void play() {
 
-        for (int i = 0; i < tryTimes; i++) {
+        for (int i = 0; i < playTimes; i++) {
             for (Car car : cars) {
                 car.move();
             }
             ResultView.viewResult(cars);
         }
 
-        ResultView.printWinner(cars);
+        /* result */
+        String winners = getWinners(cars);
+        ResultView.printWinner(winners);
 
+    }
+
+    private String getWinners(List<Car> cars) {
+        Optional<Car> max = cars.stream().max((o1, o2) -> (o1.getLocation() >= o2.getLocation()) ? 1 : -1);
+        Stream<Car> ranked = cars.stream().filter(o -> o.getLocation() == max.get().getLocation());
+        String winners = ranked.map(Car::getCarName).collect(Collectors.joining(RANKED_STRING_DELIMITER));
+        return winners;
     }
 
 

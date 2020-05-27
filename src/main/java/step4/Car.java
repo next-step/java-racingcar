@@ -1,14 +1,26 @@
 package step4;
 
+/*
+ * Java Racing Game
+ * Car
+ * ver. 1.0
+ * 2020.05.27
+ * Copyright ...
+ */
 public class Car {
 
-
     // 구분
-    private String carName;
+    private final String carName;
     private int location;
     private CarMoveStrategy carMoveStrategy;
 
     public Car(String carsName, int location, CarMoveStrategy carMoveStrategy) {
+
+        if (carsName.isEmpty() || location < 0) {
+            throw new IllegalArgumentException("Null or Empty");
+        }
+
+
         this.carName = carsName;
         this.location = location;
         this.carMoveStrategy = carMoveStrategy;
