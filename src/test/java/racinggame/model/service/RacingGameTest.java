@@ -1,10 +1,10 @@
-package racing_game.model.service;
+package racinggame.model.service;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import racing_game.view.RacingGameResultView;
+import racinggame.view.RacingGameResultView;
 
 public class RacingGameTest {
 

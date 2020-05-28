@@ -1,4 +1,4 @@
-package racing_game.view;
+package racinggame.view;
 
 public class RacingGameInputView {
 

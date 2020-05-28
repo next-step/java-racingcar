@@ -1,4 +1,4 @@
-package racing_game.model.domain;
+package racinggame.model.domain;
 
 public class Car implements Comparable<Car> {
 

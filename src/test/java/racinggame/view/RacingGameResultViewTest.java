@@ -1,4 +1,4 @@
-package racing_game.view;
+package racinggame.view;
 
 
 import java.util.ArrayList;
@@ -9,9 +9,10 @@ import org.junit.jupiter.params.converter.ArgumentConversionException;
 import org.junit.jupiter.params.converter.ConvertWith;
 import org.junit.jupiter.params.converter.SimpleArgumentConverter;
 import org.junit.jupiter.params.provider.CsvSource;
-import racing_game.model.domain.Car;
-import racing_game.model.domain.RacingCarFactory;
-import racing_game.model.domain.RacingCarMovingStrategy;
+import racinggame.model.domain.Car;
+import racinggame.model.domain.RacingCarFactory;
+
+import racinggame.model.domain.RacingCarMovingStrategy;
 
 public class RacingGameResultViewTest {
 

@@ -1,10 +1,10 @@
-package racing_game.model.service;
+package racinggame.model.service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import racing_game.model.domain.Car;
-import racing_game.model.domain.RacingCarFactory;
+import racinggame.model.domain.Car;
+import racinggame.model.domain.RacingCarFactory;
 
 public class RacingGameImpl implements RacingGame {
 

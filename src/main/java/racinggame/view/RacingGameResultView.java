@@ -1,7 +1,7 @@
-package racing_game.view;
+package racinggame.view;
 
 import java.util.List;
-import racing_game.model.domain.Car;
+import racinggame.model.domain.Car;
 
 public class RacingGameResultView {
 

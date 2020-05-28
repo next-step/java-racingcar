@@ -1,7 +1,7 @@
-package racing_game.model.service;
+package racinggame.model.service;
 
 import java.util.List;
-import racing_game.model.domain.Car;
+import racinggame.model.domain.Car;
 
 public interface RacingGame {
 

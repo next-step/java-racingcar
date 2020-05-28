@@ -1,11 +1,9 @@
-package racing_game.model.domain;
+package racinggame.model.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racing_game.model.domain.Car;
-import racing_game.model.domain.RacingCarMovingStrategy;
 
 class CarTest {
 

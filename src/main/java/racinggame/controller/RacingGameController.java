@@ -1,11 +1,11 @@
-package racing_game.controller;
+package racinggame.controller;
 
 import java.util.List;
-import racing_game.model.domain.Car;
-import racing_game.model.service.RacingGame;
-import racing_game.model.service.RacingGameImpl;
-import racing_game.view.RacingGameInput;
-import racing_game.view.RacingGameResultView;
+import racinggame.model.domain.Car;
+import racinggame.model.service.RacingGame;
+import racinggame.model.service.RacingGameImpl;
+import racinggame.view.RacingGameInput;
+import racinggame.view.RacingGameResultView;
 
 public class RacingGameController {
 
