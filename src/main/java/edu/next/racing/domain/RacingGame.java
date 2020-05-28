@@ -21,7 +21,6 @@ public class RacingGame {
 
     /** repetition count */
     private int time = 0;
-    private int winnerPosition = 0;
     /** car object list */
     private List<Car> cars = new ArrayList<>();
 
@@ -47,15 +46,15 @@ public class RacingGame {
         });
     }
 
-    private void setWinnerPosition() {
-        winnerPosition = cars.stream()
+    private int setWinnerPosition() {
+        return cars.stream()
                             .mapToInt(car -> car.getPosition())
                             .max()
                             .getAsInt();
     }
 
     public List<Car> getWinner() {
-        setWinnerPosition();
+        int winnerPosition = setWinnerPosition();
         return cars.stream()
                 .filter(car -> car.getPosition() == winnerPosition)
                 .collect(Collectors.toList());

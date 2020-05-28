@@ -19,7 +19,6 @@ public class RacingGameApp {
     /** 자동차 경주 메인 */
     public static void main(String[] args) {
         RacingController racingController = new RacingController();
-        racingController.initalize();
         racingController.play();
         racingController.displayResult();
     }

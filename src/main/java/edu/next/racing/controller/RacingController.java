@@ -7,17 +7,18 @@ import edu.next.racing.view.ResultView;
 
 public class RacingController {
 
-    RacingGame game;
-    InputView inputView;
-    ResultView resultView;
+    private RacingGame game ;
+    private InputView inputView;
+    private ResultView resultView;
 
-    public void initalize() {
-        this.game = new RacingGame(inputView.displayInputStringUi(),
+    public RacingController() {
+        inputView = new InputView();
+        game = new RacingGame(inputView.displayInputStringUi(),
                 inputView.displayGameTimeInputUi());
     }
 
     public void play() {
-        this.resultView = new ResultView(game.execute(),
+        resultView = new ResultView(game.execute(),
                 game.getTime(),
                 game.getWinner());
     }
