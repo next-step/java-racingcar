@@ -13,7 +13,7 @@ public class Calculator {
         this.input = input;
     }
 
-    static double convertStringToDouble(String input) {
+    private double convertStringToDouble(String input) {
         try {
             return Double.parseDouble(input);
         } catch (NumberFormatException e) {
@@ -21,7 +21,7 @@ public class Calculator {
         }
     }
 
-    double runCalculator() {
+    public double runCalculator() {
         List<String> splits = Letters.splitBlank(this.input);
 
         double totalNumber = convertStringToDouble(splits.get(INITIAL_FIRST_INDEX_FOR_CALCULATOR));

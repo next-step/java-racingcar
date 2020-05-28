@@ -13,15 +13,20 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("계산")
 class CalculatorTest {
+    private Calculator calculator;
+
     private static Stream<String> convertStringToDouble() {
-        return Stream.of("t", "", "  ");
+        return Stream.of("t", "x", "~");
     }
 
     @ParameterizedTest
     @MethodSource
     @DisplayName("숫자가 아닌 다른 문자가 들어왔을 때_NumberFormatException 예외처리 발생시킴")
     void convertStringToDouble(String input) {
-        assertThatThrownBy(() -> Calculator.convertStringToDouble(input)).isInstanceOf(IllegalArgumentException.class)
+        calculator = new Calculator(input);
+        assertThatThrownBy(() ->
+                calculator.runCalculator()
+        ).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("연산하기위해 숫자를 입력해주세요.");
     }
 
