@@ -34,10 +34,13 @@ public class RacingGameImpl implements RacingGame {
 
   @Override
   public List<Car> getWinnerList() {
+    int maxDistance = racingCarList.stream()
+        .max(Car::compareTo)
+        .get()
+        .getDistance();
     List<Car> winnerList = racingCarList.stream()
-        .filter(car -> car.getDistance() == racingCarList.stream().max(
-            Car::compareTo)
-            .get().getDistance()).collect(Collectors.toList());
+        .filter(car -> car.getDistance() == maxDistance)
+        .collect(Collectors.toList());
 
     for (int i = 0, endpoint = winnerList.size(); i < endpoint; i++) {
       winnerList.set(i, new Car(winnerList.get(i)));
