@@ -16,7 +16,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        testCar = new Car("super ");
+        testCar = new Car("super");
     }
 
     @Test
@@ -39,6 +39,15 @@ class CarTest {
         testCar.move(4);
         assertThat("super").isEqualTo(testCar.getName());
         assertThat(1).isEqualTo(testCar.getPosition());
+    }
 
+    @Test
+    @DisplayName("position 비교로 자동차의 깊은복사가 잘 이루어지는지 테스트")
+    void deepCopyTest() {
+        testCar.move(4);
+        Car deepCopyCar = testCar.deepCopyCar();
+        deepCopyCar.move(4);
+
+        assertThat(testCar.getPosition()).isNotEqualTo(deepCopyCar.getPosition());
     }
 }
