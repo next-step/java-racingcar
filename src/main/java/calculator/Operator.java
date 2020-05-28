@@ -51,8 +51,7 @@ public enum Operator {
     public static boolean isContains(String symbol) {
         return Arrays.stream(Operator.values())
                 .map(Operator::getSymbol)
-                .collect(Collectors.toList())
-                .contains(symbol);
+                .anyMatch(operator -> operator.equals(symbol));
     }
 
     public static void checkOperationSign(String operation) {
