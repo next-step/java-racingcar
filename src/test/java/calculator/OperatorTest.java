@@ -19,10 +19,10 @@ class OperatorTest {
         defaultNumber = 2;
     }
 
-    @CsvSource(value = {"*:true", "/:true", "-:true", "/:true", "!:false"}, delimiter = ':')
+    @CsvSource(value = {"+:PLUS", "*:MULTIPLY", "-:MINUS", "/:DIVIDE"}, delimiter = ':')
     @ParameterizedTest
-    void isContains_메소드를_검증한다(String symbol, boolean expected) {
-        assertThat(Operator.isContains(symbol)).isEqualTo(expected);
+    void 메소드를_검증한다(String symbol, String expected) {
+        assertThat(Operator.getOperator(symbol).name()).isEqualTo(expected);
     }
 
     @ParameterizedTest

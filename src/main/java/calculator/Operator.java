@@ -23,12 +23,6 @@ public enum Operator {
             throw new ArithmeticException("제로로 나누는건 허용되지 않습니다.");
     }
 
-    public static boolean isContains(String symbol) {
-        return Arrays.stream(Operator.values())
-                .map(Operator::getSymbol)
-                .anyMatch(operator -> operator.equals(symbol));
-    }
-
     public static Operator getOperator(String letter) {
         return Arrays.stream(Operator.values())
                 .filter(operator -> operator.symbol.equals(letter))
