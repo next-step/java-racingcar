@@ -5,18 +5,28 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.domain.car.Car;
+import racing.domain.car.TestCarForwardBehavior;
+import racing.domain.car.TestCarStopBehavior;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
     @ParameterizedTest
-    @DisplayName("Car 전진 또는 정지")
-    @ValueSource(ints = {1, 0})
+    @DisplayName("Car 전진")
+    @ValueSource(ints = 1)
     void moveTest(int expected) {
-        //Car car = new Car(new CarForwardBehavior());
+        Car car = new Car("car");
+        assertThat(car.move(new TestCarForwardBehavior())).isEqualTo(expected);
+    }
 
-        // assertThat(CarForwardBehavior.action()).isEqualTo(expected);
+    @ParameterizedTest
+    @DisplayName("Car 정지")
+    @ValueSource(ints = 0)
+    void stopTest(int expected) {
+        Car car = new Car("car");
+        assertThat(car.move(new TestCarStopBehavior())).isEqualTo(expected);
     }
 
     @ParameterizedTest

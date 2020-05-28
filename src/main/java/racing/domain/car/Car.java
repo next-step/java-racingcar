@@ -15,10 +15,11 @@ public class Car {
         }
     }
 
-    public void move(CarMoveBehavior carMoveBehavior) {
+    public int move(CarMoveBehavior carMoveBehavior) {
         if (carMoveBehavior.action()) {
             position++;
         }
+        return position;
     }
 
     public String getCarName() {
