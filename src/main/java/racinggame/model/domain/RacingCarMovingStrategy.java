@@ -1,6 +1,6 @@
 package racinggame.model.domain;
 
-import racinggame.utils.RacingGameUtils;
+import racinggame.utils.RandomNumberUtils;
 
 public class RacingCarMovingStrategy implements CarMovingStartegy {
 
@@ -13,6 +13,6 @@ public class RacingCarMovingStrategy implements CarMovingStartegy {
    */
   @Override
   public boolean isCanMove() {
-    return NUMBER_MOVEABLE_MIN <= RacingGameUtils.getRandomNumber();
+    return NUMBER_MOVEABLE_MIN <= RandomNumberUtils.getRandomNumber();
   }
 }

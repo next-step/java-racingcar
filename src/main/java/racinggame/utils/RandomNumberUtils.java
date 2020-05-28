@@ -1,13 +1,12 @@
 package racinggame.utils;
 
 import java.util.Random;
-
-public class RacingGameUtils {
+public class RandomNumberUtils {
 
   private static final int NUMBER_RANDOM_BOUND = 10;
   private static final Random randomGenerator = new Random();
 
-  private RacingGameUtils() {
+  private RandomNumberUtils() {
   }
 
   /**
