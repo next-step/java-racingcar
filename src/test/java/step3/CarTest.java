@@ -9,14 +9,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Car 테스트")
 class CarTest {
-    private Car car;
+    Car car;
 
     @BeforeEach
     void setUp() {
         this.car = new Car();
     }
 
-    @DisplayName("move() 테스트")
+    @DisplayName("move()")
     @ParameterizedTest
     @ValueSource(ints = {5, 1, 7})
     void move(int count) {

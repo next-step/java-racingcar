@@ -1,7 +1,5 @@
 package step3;
 
-import java.util.List;
-
 public class ResultView {
 
     public ResultView() {
@@ -9,10 +7,10 @@ public class ResultView {
         System.out.println("실행결과");
     }
 
-    public void showResult(List<Car> carList) {
-        for (int i = 0; i < carList.size(); i++) {
-            printPosition(carList.get(i).getCurrentPosition());
-        }
+    public void showResult(CarList carList) {
+        carList.getCarList().forEach(it -> {
+            printPosition(it.getCurrentPosition());
+        });
         System.out.println();
     }
 

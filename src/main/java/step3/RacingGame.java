@@ -1,27 +1,33 @@
 package step3;
 
-import java.util.ArrayList;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RacingGame {
-    private ArrayList<Car> carPositions = new ArrayList<Car>();
+    private CarList carList;
     private Random random = new Random();
 
     public RacingGame(int carCnt) {
-        for (int i = 0; i < carCnt; i++) {
-            carPositions.add(new Car());
-        }
+        carList = new CarList(
+                Stream.generate(() -> new Car())
+                        .limit(carCnt)
+                        .collect(Collectors.toList())
+        );
     }
 
-    public ArrayList<Car> play() {
-        for (int i = 0; i < carPositions.size(); i++) {
-            if (getDistance())
-                carPositions.get(i).move();
-        }
-        return carPositions;
+    public void play() {
+        carList.getCarList().forEach(it -> {
+            if (isMove())
+                it.move();
+        });
     }
 
-    private boolean getDistance() {
+    private boolean isMove() {
         return random.nextInt(10) >= 4;
+    }
+
+    public CarList getCarList() {
+        return carList;
     }
 }
