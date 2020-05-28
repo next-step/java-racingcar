@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class RacingGameInput {
 
+  private static final String DELIMETER_SPLIT_CARNAME = ",";
   private static final Scanner scanner = new Scanner(System.in);
 
   /**
@@ -16,7 +17,7 @@ public class RacingGameInput {
   public static String[] getNameOfCarsByScanner() {
     RacingGameInputView.printNameOfCarsInputMessage();
 
-    return scanner.nextLine().split(",");
+    return scanner.nextLine().split(DELIMETER_SPLIT_CARNAME);
   }
 
   /**

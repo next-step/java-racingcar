@@ -8,7 +8,7 @@ import racinggame.model.domain.RacingCarFactory;
 
 public class RacingGameImpl implements RacingGame {
 
-  private final int time;
+  private int time;
   private final List<Car> racingCarList;
 
   /**
@@ -27,6 +27,7 @@ public class RacingGameImpl implements RacingGame {
     for (Car racingCar : racingCarList) {
       racingCar.move();
     }
+      this.time --;
 
     return new ArrayList<>(racingCarList);
   }
@@ -46,8 +47,8 @@ public class RacingGameImpl implements RacingGame {
   }
 
   @Override
-  public int getTime() {
-    return this.time;
+  public boolean isEnd() {
+    return this.time == 0;
   }
 }
 

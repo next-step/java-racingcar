@@ -9,6 +9,8 @@ public interface RacingGame {
    * 지정된 횟수만큼 게임 진행
    * <p>
    * racingCarList에 있는 racingCar들을 임의로 이동시킨다.
+   * <p>
+   * 진행 시 time --
    *
    * @return racingCarList 반환
    */
@@ -22,9 +24,11 @@ public interface RacingGame {
   List<Car> getWinnerList();
 
   /**
-   * 게임의 반복 횟수를 반환
+   * 게임의 종료 여부 확인
+   * <p>
+   * time이 0이 될 경우 게임 종료
    *
-   * @return int, 게임 반복 횟수
+   * @return boolean, 게임 종료 여부
    */
-  int getTime();
+  boolean isEnd();
 }

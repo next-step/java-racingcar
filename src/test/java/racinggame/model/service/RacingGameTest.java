@@ -1,6 +1,7 @@
 package racinggame.model.service;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -17,7 +18,7 @@ public class RacingGameTest {
     RacingGameResultView.printResultBeginMessage();
 
     racingGame = new RacingGameImpl(carNameInput.split(" "), time);
-    for (int i = 0; i < racingGame.getTime(); i++) {
+    while(!racingGame.isEnd()){
       RacingGameResultView.printNameAndDistancesOfRacingCarList(racingGame.play());
     }
 
