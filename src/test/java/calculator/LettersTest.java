@@ -26,8 +26,8 @@ class LettersTest {
     @ParameterizedTest
     @CsvSource(value = {"1 2 3 4 5=5", "2=1"}, delimiter = '=')
     @DisplayName("입력된 문자열을 공백형태로 자른 후 갯수 체크한다")
-    void convertStringToStrings(String input, int resultSize) {
-        List<String> inputs = Letters.convertStringToStrings(input);
+    void splitBlank(String input, int resultSize) {
+        List<String> inputs = Letters.splitBlank(input);
         assertThat(inputs.size()).isEqualTo(resultSize);
     }
 }

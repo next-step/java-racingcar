@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class Letters {
     private static final String DELIMITER = " ";
 
-    public static List<String> convertStringToStrings(String inputData) {
+    public static List<String> splitBlank(String inputData) {
         checkBlank(inputData);
 
         return Arrays.stream(inputData.split(DELIMITER))

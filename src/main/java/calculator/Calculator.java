@@ -22,7 +22,7 @@ public class Calculator {
     }
 
     double runCalculator() {
-        List<String> splits = Letters.convertStringToStrings(this.input);
+        List<String> splits = Letters.splitBlank(this.input);
 
         double totalNumber = convertStringToDouble(splits.get(INITIAL_FIRST_INDEX_FOR_CALCULATOR));
         for (int i = INITIAL_OPERATOR_FOR_CALCULATOR; i < splits.size(); i += STEP_FOR_CALCULATOR) {
