@@ -11,10 +11,14 @@ public class Car implements Comparable<Car> {
     this.carMovingStartegy = carMovingStartegy;
   }
 
-  public Car(Car car) {
+  private Car(Car car) {
     this.name = car.name;
     this.distance = car.distance;
     this.carMovingStartegy = car.carMovingStartegy;
+  }
+
+  public static Car newInstance(Car car){
+    return new Car(car);
   }
 
   public String getName() {
