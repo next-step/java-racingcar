@@ -63,7 +63,7 @@ class OperatorTest {
     @ValueSource(strings = {"2", "#"})
     void 연산자연산기호가아닌경우_IllegalArgumentException(String operation) {
         assertThatThrownBy(() -> {
-            Operator.checkOperationSign(operation);
+            Operator.getOperator(operation);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력값이 잘못되었습니다. 사칙연산부호를 입력해주세요.");
     }

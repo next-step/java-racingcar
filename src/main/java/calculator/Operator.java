@@ -2,8 +2,6 @@ package calculator;
 
 import java.util.Arrays;
 import java.util.function.DoubleBinaryOperator;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public enum Operator {
     PLUS("+", Operator::add),
@@ -12,18 +10,12 @@ public enum Operator {
     DIVIDE("/", Operator::divide);
 
     private static final int ZERO_NUMBER = 0;
-    private static final String REGEX_OPERATOR = "[\\*\\+-/]";
-    private static final Pattern pattern = Pattern.compile(REGEX_OPERATOR);
     private String symbol;
     private DoubleBinaryOperator binaryOperator;
 
     Operator(String symbol, DoubleBinaryOperator binaryOperator) {
         this.symbol = symbol;
         this.binaryOperator = binaryOperator;
-    }
-
-    private static boolean isOperator(String operation) {
-        return pattern.matcher(operation).matches();
     }
 
     private static double add(double startNumber, double endNumber) {
@@ -54,26 +46,11 @@ public enum Operator {
                 .anyMatch(operator -> operator.equals(symbol));
     }
 
-    public static void checkOperationSign(String operation) {
-        if (!isOperator(operation)) {
-            throw new IllegalArgumentException("입력값이 잘못되었습니다. 사칙연산부호를 입력해주세요.");
-        }
-    }
-
     public static Operator getOperator(String letter) {
-        checkOperationSign(letter);
-
-        switch (letter) {
-            case "+":
-                return PLUS;
-            case "-":
-                return MINUS;
-            case "*":
-                return MULTIPLY;
-            case "/":
-                return DIVIDE;
-        }
-        return null;
+        return Arrays.stream(Operator.values())
+                .filter(operator -> operator.symbol.equals(letter))
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException("입력값이 잘못되었습니다. 사칙연산부호를 입력해주세요."));
     }
 
     private String getSymbol() {
