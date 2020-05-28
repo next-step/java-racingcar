@@ -12,13 +12,11 @@ public class RacingGameController {
   public static void main(String[] args) {
     RacingGame racingGame = new RacingGameImpl(RacingGameInput.getNameOfCarsByScanner(),
         RacingGameInput.getTimeByScanner());
-    List<Car> racingCarList;
 
     RacingGameResultView.printResultBeginMessage();
 
     for (int i = 0; i < racingGame.getTime(); i++) {
-      racingCarList = racingGame.play();
-      RacingGameResultView.printNameAndDistancesOfRacingCarList(racingCarList);
+      RacingGameResultView.printNameAndDistancesOfRacingCarList(racingGame.play());
     }
 
     RacingGameResultView.printWinner(racingGame.getWinnerList());
