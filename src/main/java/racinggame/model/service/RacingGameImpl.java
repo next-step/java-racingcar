@@ -38,8 +38,8 @@ public class RacingGameImpl implements RacingGame {
             Car::compareTo)
             .get().getDistance()).collect(Collectors.toList());
 
-    for (int i = 0; i < racingCarList.size(); i++) {
-      racingCarList.add(i, new Car(racingCarList.get(i)));
+    for (int i = 0, endpoint = winnerList.size(); i < endpoint; i++) {
+      winnerList.set(i, new Car(winnerList.get(i)));
     }
 
     return winnerList;
