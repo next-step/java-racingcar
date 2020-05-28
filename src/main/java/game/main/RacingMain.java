@@ -1,4 +1,7 @@
-package game;
+package game.main;
+
+import game.InputView;
+import game.RacingGame;
 
 public class RacingMain {
 
@@ -8,6 +11,6 @@ public class RacingMain {
 
         int count = InputView.create().getRacingCount(); // 시도 횟수 입력
 
-        RacingGame.create().racing(cars,count); //경주 게임
+        RacingGame.create().racing(cars, count); //경주 게임
     }
 }
