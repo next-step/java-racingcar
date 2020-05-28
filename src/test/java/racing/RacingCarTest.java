@@ -1,6 +1,6 @@
 package racing;
 
-import edu.next.racing.model.Car;
+import edu.next.racing.domain.Car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

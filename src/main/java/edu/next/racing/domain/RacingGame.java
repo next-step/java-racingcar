@@ -5,7 +5,7 @@
  * 저작권 관련
  */
 
-package edu.next.racing.model;
+package edu.next.racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,6 @@ public class RacingGame {
 
     /** repetition count */
     private int time = 0;
-    private int winnerPosition = 0;
     /** car object list */
     private List<Car> cars = new ArrayList<>();
 
@@ -44,20 +43,18 @@ public class RacingGame {
         cars.forEach(car -> {
             car.move();
             car.record();
-            winnerPosition = (car.getPosition() > winnerPosition)
-                                ? car.getPosition()
-                                : winnerPosition;
         });
     }
 
-    private void setWinnerPosition() {
-        winnerPosition = cars.stream()
+    private int setWinnerPosition() {
+        return cars.stream()
                             .mapToInt(car -> car.getPosition())
                             .max()
                             .getAsInt();
     }
 
     public List<Car> getWinner() {
+        int winnerPosition = setWinnerPosition();
         return cars.stream()
                 .filter(car -> car.getPosition() == winnerPosition)
                 .collect(Collectors.toList());
@@ -67,7 +64,6 @@ public class RacingGame {
         for (int i = 0; i < this.time; i++) {
             move();
         }
-        setWinnerPosition();
         return cars;
     }
 

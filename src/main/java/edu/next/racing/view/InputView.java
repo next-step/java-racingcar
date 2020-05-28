@@ -5,7 +5,7 @@
  * 저작권 관련
  */
 
-package edu.next.racing.ui;
+package edu.next.racing.view;
 
 import java.util.Scanner;
 
@@ -22,7 +22,7 @@ public class InputView {
     public static final String GAME_TIME_INPUT_MESSAGE = "시도할 회수는 몇 회 인가요?";
     private Scanner sc = new Scanner(System.in);
 
-    public String[] displayCreateCarCountUi() {
+    public String[] displayInputStringUi() {
         printString(CAR_INPUT_MESSAGE);
         return sc.nextLine().split(DELIMITER);
     }

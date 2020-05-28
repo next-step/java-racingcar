@@ -1,8 +1,9 @@
 package racing;
 
-import edu.next.racing.model.Car;
+import edu.next.racing.domain.Car;
+import edu.next.racing.domain.CarInterface;
 
-public class TestCar extends Car {
+public class TestCar extends Car implements CarInterface {
 
     private boolean moveflag = false;
 
@@ -12,7 +13,7 @@ public class TestCar extends Car {
     }
 
     @Override
-    protected boolean isMoveable() {
+    public boolean isMoveable() {
         return moveflag;
     }
 

@@ -5,7 +5,7 @@
  * 저작권 관련
  */
 
-package edu.next.racing.model;
+package edu.next.racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.Random;
  * @version 1.0.0
  * @author GwangJunChoi
  */
-public abstract class Car {
+public class Car implements CarInterface{
 
     /** 자동차 현재 위치 */
     private int position = 1;
@@ -32,7 +32,6 @@ public abstract class Car {
         this.record.add(position);
     }
 
-    protected abstract boolean isMoveable();
     /**
      * @return position 위치 리턴
      */
@@ -56,4 +55,8 @@ public abstract class Car {
         record.add(position);
     }
 
+    @Override
+    public boolean isMoveable() {
+        return true;
+    }
 }

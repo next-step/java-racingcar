@@ -5,9 +5,9 @@
  * 저작권 관련
  */
 
-package edu.next.racing.ui;
+package edu.next.racing.view;
 
-import edu.next.racing.model.Car;
+import edu.next.racing.domain.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,7 +32,7 @@ public class ResultView {
         this.winner = winner;
     }
 
-    public void displayRacingResult() {
+    public void displayResult() {
         System.out.println("결과 출력");
         for (int i = 0; i <= this.resultTime; i++) {
             System.out.println();
