@@ -21,50 +21,55 @@ class OperatorTest {
 
     @CsvSource(value = {"+:PLUS", "*:MULTIPLY", "-:MINUS", "/:DIVIDE"}, delimiter = ':')
     @ParameterizedTest
-    void 메소드를_검증한다(String symbol, String expected) {
+    @DisplayName("연산자 검증한다.")
+    void getOperator(String symbol, String expected) {
         assertThat(Operator.getOperator(symbol).name()).isEqualTo(expected);
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1=3", "2=4", "-1=1", "-3=-1"}, delimiter = '=')
-    void 덧셈(int endNumber, int result) {
+    @DisplayName("뎃셈 연산 검증한다.")
+    void PLUS_apply(int endNumber, int result) {
         assertThat(Operator.PLUS.apply(defaultNumber, endNumber)).isEqualTo(result);
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1=1", "2=0", "-1=3", "-3=5"}, delimiter = '=')
-    void 뺄셈(int endNumber, int result) {
+    @DisplayName("뺄셈 연산 검증한다.")
+    void MINUS_apply(int endNumber, int result) {
         assertThat(Operator.MINUS.apply(defaultNumber, endNumber)).isEqualTo(result);
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1=2", "2=1"}, delimiter = '=')
-    void 나눗셈(int endNumber, int result) {
+    @DisplayName("나눗셈 연산 검증한다.")
+    void DIVIDE_apply(int endNumber, int result) {
         assertThat(Operator.DIVIDE.apply(defaultNumber, endNumber)).isEqualTo(result);
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1=2", "2=4", "3=6"}, delimiter = '=')
-    void 곱셈(int endNumber, int result) {
+    @DisplayName("곱셈 연산 검증한다.")
+    void MULTIPLY_apply(int endNumber, int result) {
         assertThat(Operator.MULTIPLY.apply(defaultNumber, endNumber)).isEqualTo(result);
     }
 
     @Test
-    void 연산시_Zero로_나누게되면_ArithmeticException() {
+    @DisplayName("연산시_Zero로_나누게되면_ArithmeticException")
+    void checkZeroDivide() {
         int endNumber = 0;
 
-        assertThatThrownBy(() -> {
-            Operator.checkZeroDivide(endNumber);
-        }).isInstanceOf(ArithmeticException.class)
+        assertThatThrownBy(() ->
+                Operator.checkZeroDivide(endNumber)).isInstanceOf(ArithmeticException.class)
                 .hasMessageContaining("제로로 나누는건 허용되지 않습니다.");
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"2", "#"})
-    void 연산자연산기호가아닌경우_IllegalArgumentException(String operation) {
-        assertThatThrownBy(() -> {
-            Operator.getOperator(operation);
-        }).isInstanceOf(IllegalArgumentException.class)
+    @DisplayName("사칙연산자외에 형태가 들어왔을 때 예외처리를 확인한다.")
+    void getOperator_IllegalArgumentException(String operation) {
+        assertThatThrownBy(() ->
+                Operator.getOperator(operation)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력값이 잘못되었습니다. 사칙연산부호를 입력해주세요.");
     }
 }

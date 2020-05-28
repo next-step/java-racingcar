@@ -16,16 +16,17 @@ class LettersTest {
     @ParameterizedTest
     @NullSource
     @EmptySource
-    void 입력_값이_null이거나_빈_공백_문자일_경우_IllegalArgumentException(String input) {
-        assertThatThrownBy(() -> {
-            Letters.checkBlank(input);
-        }).isInstanceOf(IllegalArgumentException.class)
+    @DisplayName("입력된 값이 null 값인지 체크")
+    void checkBlank(String input) {
+        assertThatThrownBy(() ->
+                Letters.checkBlank(input)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("값을 입력해주세요.");
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1 2 3 4 5=5", "2=1"}, delimiter = '=')
-    void 입력된_문자열_공백타입으로_글자_자른다(String input, int resultSize) {
+    @DisplayName("입력된 문자열을 공백형태로 자른 후 갯수 체크한다")
+    void convertStringToStrings(String input, int resultSize) {
         List<String> inputs = Letters.convertStringToStrings(input);
         assertThat(inputs.size()).isEqualTo(resultSize);
     }

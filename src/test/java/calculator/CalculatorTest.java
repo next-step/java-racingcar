@@ -12,17 +12,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @DisplayName("계산")
 class CalculatorTest {
     @Test
-    void 숫자로형변환이안되면_NumberFormatException() {
+    @DisplayName("숫자가 아닌 다른 문자가 들어왔을 때_NumberFormatException 예외처리 발생시킴")
+    void convertStringToDouble() {
         String input = "t";
-        assertThatThrownBy(() -> {
-            Calculator.convertStringToDouble(input);
-        }).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() -> Calculator.convertStringToDouble(input)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("연산하기위해 숫자를 입력해주세요.");
     }
 
     @ParameterizedTest
     @CsvSource(value = {"2 + 3 * 4 / 2=10", "2 * 12=24", "1 + 2 - 4=-1", "8 / 2 + 3 * 6 - 1=41"}, delimiter = '=')
-    void 사칙_연산을_모두_포함하는_기능(String input, int result) {
+    @DisplayName("문자열 계산기가 정상 동작가능한지 확인 한다.")
+    void runCalculator(String input, int result) {
         assertThat(new Calculator(input).runCalculator()).isEqualTo(result);
     }
 }
