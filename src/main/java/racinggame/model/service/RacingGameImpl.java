@@ -1,9 +1,9 @@
 package racinggame.model.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import racinggame.model.domain.Car;
+import racinggame.model.domain.CarDTO;
 import racinggame.model.domain.RacingCarFactory;
 
 public class RacingGameImpl implements RacingGame {
@@ -23,18 +23,18 @@ public class RacingGameImpl implements RacingGame {
   }
 
   @Override
-  public List<Car> play() {
+  public List<CarDTO> play() {
     for (Car racingCar : racingCarList) {
       racingCar.move();
     }
 
     this.time--;
 
-    return RacingCarFactory.copyRacingCarList(racingCarList);
+    return RacingCarFactory.createRacingCarDTOList(racingCarList);
   }
 
   @Override
-  public List<Car> getWinnerList() {
+  public List<CarDTO> getWinnerList() {
     int maxDistance = racingCarList.stream()
         .max(Car::compareTo)
         .get()
@@ -43,7 +43,7 @@ public class RacingGameImpl implements RacingGame {
         .filter(car -> car.getDistance() == maxDistance)
         .collect(Collectors.toList());
 
-    return RacingCarFactory.copyRacingCarList(winnerList);
+    return RacingCarFactory.createRacingCarDTOList(winnerList);
   }
 
   @Override

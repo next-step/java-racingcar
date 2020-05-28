@@ -1,7 +1,5 @@
 package racinggame.controller;
 
-import java.util.List;
-import racinggame.model.domain.Car;
 import racinggame.model.service.RacingGame;
 import racinggame.model.service.RacingGameImpl;
 import racinggame.view.RacingGameInput;

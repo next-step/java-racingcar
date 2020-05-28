@@ -1,7 +1,7 @@
 package racinggame.model.service;
 
 import java.util.List;
-import racinggame.model.domain.Car;
+import racinggame.model.domain.CarDTO;
 
 public interface RacingGame {
 
@@ -14,14 +14,15 @@ public interface RacingGame {
    *
    * @return racingCarList 반환
    */
-  List<Car> play();
+  List<CarDTO> play();
 
   /**
    * 자동차 경주의 우승자 반환<br/>
    * <p>
    * 반환 시점에 가장 멀리간 자동차를 출력한다.
+   * @return 우승자 목록
    */
-  List<Car> getWinnerList();
+  List<CarDTO> getWinnerList();
 
   /**
    * 게임의 종료 여부 확인

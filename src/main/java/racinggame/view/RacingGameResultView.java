@@ -1,7 +1,7 @@
 package racinggame.view;
 
 import java.util.List;
-import racinggame.model.domain.Car;
+import racinggame.model.domain.CarDTO;
 
 public class RacingGameResultView {
 
@@ -39,8 +39,8 @@ public class RacingGameResultView {
    *
    * @param racingCarList : 출력할 자동차 목록
    */
-  public static void printNameAndDistancesOfRacingCarList(List<Car> racingCarList) {
-    for (Car racingCar : racingCarList) {
+  public static void printNameAndDistancesOfRacingCarList(List<CarDTO> racingCarList) {
+    for (CarDTO racingCar : racingCarList) {
       printNameAndDistance(racingCar.getName(), racingCar.getDistance());
     }
 
@@ -52,10 +52,10 @@ public class RacingGameResultView {
    *
    * @param winnerList : 출력할 자동차 목록
    */
-  public static void printWinner(List<Car> winnerList) {
+  public static void printWinner(List<CarDTO> winnerList) {
     StringBuilder message = new StringBuilder();
 
-    for (Car winner : winnerList) {
+    for (CarDTO winner : winnerList) {
       message.append(winner.getName()).append(", ");
     }
 

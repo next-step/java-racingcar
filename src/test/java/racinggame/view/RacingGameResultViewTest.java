@@ -25,7 +25,7 @@ public class RacingGameResultViewTest {
       for (Car racingCar : racingCarList) {
         racingCar.move();
       }
-      RacingGameResultView.printNameAndDistancesOfRacingCarList(racingCarList);
+      RacingGameResultView.printNameAndDistancesOfRacingCarList(RacingCarFactory.createRacingCarDTOList(racingCarList));
     }
   }
 
@@ -58,7 +58,7 @@ public class RacingGameResultViewTest {
       }
     }
 
-    RacingGameResultView.printWinner(racingCarList);
+    RacingGameResultView.printWinner(RacingCarFactory.createRacingCarDTOList(racingCarList));
   }
 
 }
