@@ -12,19 +12,13 @@ class CarTest {
 
     private static final int TEST_CAR_MOVE_STEP = 1;
 
-
     // init
     @DisplayName("init Class")
     @ParameterizedTest
     @CsvSource(value = {"carName:0", "anyTest:6", "carTest:9"}, delimiter = ':')
     public void testClassInitialize(String carName, int location) {
 
-        Car car = new Car(carName, location, new CarMoveStrategy() {
-            @Override
-            public int getMoveCount() {
-                return TEST_CAR_MOVE_STEP;
-            }
-        });
+        Car car = new Car(carName, location, () -> TEST_CAR_MOVE_STEP);
 
         // test
 
@@ -40,12 +34,7 @@ class CarTest {
     @CsvSource(value = {"anyTest:-1", "carTest:-229"}, delimiter = ':')
     public void testClassInitializeWithInputError(String carName, int location) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            Car car = new Car(carName, location, new CarMoveStrategy() {
-                @Override
-                public int getMoveCount() {
-                    return 0;
-                }
-            });
+            Car car = new Car(carName, location, () -> 0);
         });
     }
 
@@ -55,12 +44,7 @@ class CarTest {
     @CsvSource(value = {":0"}, delimiter = ':')
     public void testClassInitializeWithNull(String carName, int location) {
         assertThatNullPointerException().isThrownBy(() -> {
-            Car car = new Car(carName, location, new CarMoveStrategy() {
-                @Override
-                public int getMoveCount() {
-                    return 0;
-                }
-            });
+            Car car = new Car(carName, location, () -> 0);
         });
     }
 
@@ -72,12 +56,7 @@ class CarTest {
     public void testMoveStep(int input) {
 
         // ready
-        Car car = new Car("testCarName", input, new CarMoveStrategy() {
-            @Override
-            public int getMoveCount() {
-                return TEST_CAR_MOVE_STEP;
-            }
-        });
+        Car car = new Car("testCarName", input, () -> TEST_CAR_MOVE_STEP);
 
         // set
         car.move();

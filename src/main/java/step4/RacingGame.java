@@ -24,7 +24,7 @@ public class RacingGame {
         if (carsCount <= 0 || playTimes < 0) throw new IllegalArgumentException(ILLEGAL_INPUT_ERROR);
 
         /* set new car */
-        this.cars = Cars.of(carsNames, new CarMoveRandomStrategy());
+        this.cars = Cars.of(carsNames, 0, new CarMoveRandomStrategy());
 
         /* set play times. */
         this.playTimes = playTimes;
