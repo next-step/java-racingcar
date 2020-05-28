@@ -16,7 +16,7 @@ class LettersTest {
     @ValueSource(strings = {"", "  "})
     void 입력_값이_null이거나_빈_공백_문자일_경우_IllegalArgumentException(String input) {
         assertThatThrownBy(() -> {
-            Letters.checkBlack(input);
+            Letters.checkBlank(input);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("값을 입력해주세요.");
     }

@@ -8,13 +8,13 @@ public class Letters {
     private static final String DELIMITER = " ";
 
     public static List<String> convertStringToStrings(String inputData) {
-        checkBlack(inputData);
+        checkBlank(inputData);
 
         return Arrays.stream(inputData.split(DELIMITER))
                 .collect(Collectors.toList());
     }
 
-    static void checkBlack(String inputData) {
+    static void checkBlank(String inputData) {
         if (inputData == null || inputData.trim().isEmpty()) {
             throw new IllegalArgumentException("값을 입력해주세요.");
         }
