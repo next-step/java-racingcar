@@ -11,34 +11,34 @@ public class Cars {
 
     private static final String RANKED_STRING_DELIMITER = ",";
 
-    private List<Car> cars = new ArrayList<>();
+    private List<Car> carsList = new ArrayList<>();
 
-    public Cars(List<Car> cars) {
-        this.cars = cars;
+    public static Cars of(String[] carNames, CarMoveStrategy carMoveStrategy) {
+
+        Cars cars = new Cars();
+        Arrays.stream(carNames).forEachOrdered(name -> {
+            cars.carsList.add(new Car(name, 0, carMoveStrategy));
+        });
+
+        return cars;
     }
 
-    public void setupCars(String[] carsNames, CarMoveStrategy carMoveStrategy) {
-        Arrays.stream(carsNames).forEachOrdered(name ->
-                cars.add(new Car(name, 0, carMoveStrategy)));
-    }
 
     public String getWinners() {
 
-        Optional<Car> max = cars.stream().max((o1, o2) -> (o1.getLocation() >= o2.getLocation()) ? 1 : -1);
-        Stream<Car> ranked = cars.stream().filter(o -> o.getLocation() == max.get().getLocation());
+        Optional<Car> max = carsList.stream().max((o1, o2) -> (o1.getLocation() >= o2.getLocation()) ? 1 : -1);
+        Stream<Car> ranked = carsList.stream().filter(o -> o.getLocation() == max.get().getLocation());
         String winners = ranked.map(Car::getCarName).collect(Collectors.joining(RANKED_STRING_DELIMITER));
 
         return winners;
     }
 
     public void move() {
-        cars.stream().forEach(car -> {
-            car.move();
-        });
+        carsList.stream().forEach(Car::move);
     }
 
     public void printCurrentLocation() {
-        cars.stream().forEachOrdered(car -> {
+        carsList.stream().forEachOrdered(car -> {
             System.out.println(car.getCarName() + "\t\t : "
                     + new String(new char[car.getLocation()]).replace("\0", "-"));
         });
