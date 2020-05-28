@@ -54,13 +54,12 @@ class OperatorTest {
         assertThat(Operator.MULTIPLY.apply(defaultNumber, endNumber)).isEqualTo(result);
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(ints = {2, 3})
     @DisplayName("연산시_Zero로_나누게되면_ArithmeticException")
-    void checkZeroDivide() {
-        int endNumber = 0;
-
+    void checkZeroDivide(int startNumber) {
         assertThatThrownBy(() ->
-                Operator.checkZeroDivide(endNumber)).isInstanceOf(ArithmeticException.class)
+                Operator.DIVIDE.apply(startNumber, 0)).isInstanceOf(ArithmeticException.class)
                 .hasMessageContaining("제로로 나누는건 허용되지 않습니다.");
     }
 
