@@ -1,14 +1,16 @@
 package racinggame.view;
 
 
+import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.converter.ArgumentConversionException;
-import org.junit.jupiter.params.converter.ConvertWith;
-import org.junit.jupiter.params.converter.SimpleArgumentConverter;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import racinggame.model.domain.Car;
 import racinggame.model.domain.RacingCarFactory;
 
@@ -25,21 +27,15 @@ public class RacingGameResultViewTest {
       for (Car racingCar : racingCarList) {
         racingCar.move();
       }
-      RacingGameResultView.printNameAndDistancesOfRacingCarList(RacingCarFactory.createRacingCarDTOList(racingCarList));
+      RacingGameResultView.printNameAndDistancesOfRacingCarList(
+          RacingCarFactory.createRacingCarDTOList(racingCarList));
     }
   }
 
   @ParameterizedTest
-  @CsvSource({
-      "test1 test2 test3, 0 0 1",
-      "test1 test2 test3, 2 0 1",
-      "test1 test2 test3, 2 2 1",
-      "test1 test2 test3, 2 2 2"
-  })
-  void printWinner(String carNameInput,
-      @ConvertWith(PrintWinnerTimeArgumentConverter.class) int[] timeArr) {
+  @MethodSource("carNameWithTimeProvider")
+  void printWinner(String[] carNameArr, int[] timeArr) {
     List<Car> racingCarList = new ArrayList<>();
-    String[] carNameArr = carNameInput.split(" ");
 
     // racingCarList 초기화
     for (String s : carNameArr) {
@@ -58,21 +54,18 @@ public class RacingGameResultViewTest {
       }
     }
 
-    RacingGameResultView.printWinner(RacingCarFactory.createRacingCarDTOList(racingCarList));
-  }
-
-}
-
-class PrintWinnerTimeArgumentConverter extends SimpleArgumentConverter {
-
-  @Override
-  protected int[] convert(Object source, Class<?> targetType)
-      throws ArgumentConversionException {
-    if (source instanceof String) {
-      return Arrays.stream(((String) source).split(" "))
-          .mapToInt(Integer::parseInt).toArray();
+    for (int i = 0, endpoint = racingCarList.size(); i < endpoint; i++) {
+      assertThat(racingCarList.get(i).getDistance()).isEqualTo(timeArr[i]);
     }
-
-    return null;
   }
+
+  static Stream<Arguments> carNameWithTimeProvider() {
+    return Stream.of(
+        arguments(new String[]{"test1", "test2", "test3"}, new int []{0, 0, 1}),
+        arguments(new String[]{"test1", "test2", "test3"}, new int []{2, 0, 1}),
+        arguments(new String[]{"test1", "test2", "test3"}, new int []{2, 2, 1}),
+        arguments(new String[]{"test1", "test2", "test3"}, new int []{2, 2, 2})
+    );
+  }
+
 }
