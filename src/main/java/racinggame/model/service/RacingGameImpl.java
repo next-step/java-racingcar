@@ -47,7 +47,7 @@ public class RacingGameImpl implements RacingGame {
   }
 
   @Override
-  public boolean isEnd() {
-    return this.time == 0;
+  public boolean isNotEnd() {
+    return 0 < this.time;
   }
 }

@@ -15,7 +15,7 @@ public class RacingGameController {
 
     RacingGameResultView.printResultBeginMessage();
 
-    while(!racingGame.isEnd()){
+    while(racingGame.isNotEnd()){
       RacingGameResultView.printNameAndDistancesOfRacingCarList(racingGame.play());
     }
 

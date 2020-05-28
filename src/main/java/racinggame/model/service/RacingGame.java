@@ -30,5 +30,5 @@ public interface RacingGame {
    *
    * @return boolean, 게임 종료 여부
    */
-  boolean isEnd();
+  boolean isNotEnd();
 }
