@@ -13,14 +13,6 @@ public class Calculator {
         this.input = input;
     }
 
-    private double convertStringToDouble(String input) {
-        try {
-            return Double.parseDouble(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("연산하기위해 숫자를 입력해주세요.");
-        }
-    }
-
     public double runCalculator() {
         List<String> splits = Letters.splitBlank(this.input);
 
@@ -33,5 +25,13 @@ public class Calculator {
             totalNumber = operation.apply(totalNumber, secondNumber);
         }
         return totalNumber;
+    }
+
+    private double convertStringToDouble(String input) {
+        try {
+            return Double.parseDouble(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("연산하기위해 숫자를 입력해주세요.");
+        }
     }
 }
