@@ -15,6 +15,13 @@ public class Car {
         }
     }
 
+    public Car deepCopyCar() {
+        Car copyCar = new Car(this.name);
+        copyCar.position = this.position;
+
+        return copyCar;
+    }
+
     public int getPosition() {
         return position;
     }
