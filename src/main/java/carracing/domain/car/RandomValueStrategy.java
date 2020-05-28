@@ -4,15 +4,11 @@ import carracing.domain.RandomValue;
 
 public class RandomValueStrategy implements ProgressStrategy {
 
-    RandomValue randomValue;
-    private final int  MOVE_CHECK_VALUE = 4;
-
-    public RandomValueStrategy(RandomValue randomValue) {
-        this.randomValue = randomValue;
-    }
+    protected static final int  MOVE_CHECK_VALUE = 4;
 
     @Override
     public boolean progress() {
+        RandomValue randomValue = new RandomValue();
         return randomValue.getRandomValue() > MOVE_CHECK_VALUE;
     }
 }

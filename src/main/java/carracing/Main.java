@@ -1,10 +1,12 @@
 package carracing;
 
+import carracing.domain.car.Car;
 import carracing.domain.car.CarRacingGame;
 import carracing.domain.car.CarRacingOption;
-import carracing.domain.scanner.NumberInputScanner;
-import carracing.domain.scanner.StringInputScanner;
+import carracing.view.CarRacingView;
 import carracing.view.ScannerView;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,6 +16,7 @@ public class Main {
         String ASK_ATTEMPT_NUMBER = "시도할 회수는 몇 회 인가요?";
 
         ScannerView scannerView = new ScannerView();
+        CarRacingView carracingView = new CarRacingView();
         NumberInputScanner numberInputScanner = new NumberInputScanner();
         StringInputScanner stringInputScanner = new StringInputScanner();
 
@@ -27,6 +30,12 @@ public class Main {
 
         CarRacingGame carRacingGame = new CarRacingGame(new CarRacingOption(carNames, carNumber, gameCount));
 
-        carRacingGame.gameStart();
+        for(int i = 0 ; i < gameCount ; i++) {
+            carRacingGame.gameStart();
+            List<Car> resultList = carRacingGame.gameResult();
+            carracingView.view(resultList);
+        }
+
+        carracingView.resultView(carRacingGame.gameFinish());
     }
 }

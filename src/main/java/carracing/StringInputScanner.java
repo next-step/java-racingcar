@@ -1,4 +1,4 @@
-package carracing.domain.scanner;
+package carracing;
 
 import java.util.Scanner;
 

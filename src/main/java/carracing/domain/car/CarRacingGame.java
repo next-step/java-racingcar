@@ -23,7 +23,7 @@ public class CarRacingGame {
         gameInit();
         for(int i=0 ; i < carRacingOption.getGameCount() ; i++) {
             carList.stream().forEach( car -> {
-                car.progress(new RandomValueStrategy(new RandomValue()));
+                car.progress(new RandomValueStrategy());
             });
             carRacingView.view(carList);
         }
@@ -36,6 +36,14 @@ public class CarRacingGame {
         for(int i=0 ; i<carRacingOption.getCarCount() ; i++) {
             carList.add(new Car(carNames[i], String.valueOf(i) , new Position()));
         }
+    }
+
+    public List<Car> gameFinish() {
+        return this.gameWinner(carList);
+    }
+
+    public List<Car> gameResult() {
+        return carList;
     }
 
     public List<Car> gameWinner(List<Car> carList) {
