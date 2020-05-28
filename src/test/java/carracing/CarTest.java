@@ -1,12 +1,10 @@
 package carracing;
 
+import carracing.domain.*;
 import carracing.domain.car.Car;
 import carracing.domain.car.Direction;
 import carracing.domain.car.Position;
 import carracing.domain.car.RandomValueStrategy;
-import carracing.test.PositionRestrictionsStrategy;
-import carracing.test.RandomMaxValue;
-import carracing.test.RandomMinValue;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -53,7 +51,7 @@ public class CarTest {
     @DisplayName("Car Progress Test With True Value")
     public void carProgressTestWithTrueValue() {
         Car car = new Car("1", new Position());
-        car.progress(new RandomValueStrategy(new RandomMinValue()));
+        car.progress(new RandomMinValueStrategy());
         assertThat(car.isLocationAt(1)).isTrue();
     }
 
@@ -61,7 +59,7 @@ public class CarTest {
     @DisplayName("Car Progress Test With False Value")
     public void carProgressTestWithFalseValue() {
         Car car = new Car("1", new Position());
-        car.progress(new RandomValueStrategy(new RandomMaxValue()));
+        car.progress(new RandomMaxValueStrategy());
         assertThat(car.isLocationAt(0)).isTrue();
     }
 

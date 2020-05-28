@@ -1,4 +1,4 @@
-package carracing.test;
+package carracing.domain;
 
 import carracing.domain.car.Car;
 import carracing.domain.car.ProgressStrategy;
