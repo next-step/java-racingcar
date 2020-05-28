@@ -3,7 +3,8 @@ package calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.EmptySource;
+import org.junit.jupiter.params.provider.NullSource;
 
 import java.util.List;
 
@@ -13,7 +14,8 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 @DisplayName("입력된 문자열")
 class LettersTest {
     @ParameterizedTest
-    @ValueSource(strings = {"", "  "})
+    @NullSource
+    @EmptySource
     void 입력_값이_null이거나_빈_공백_문자일_경우_IllegalArgumentException(String input) {
         assertThatThrownBy(() -> {
             Letters.checkBlank(input);
