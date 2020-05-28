@@ -9,7 +9,7 @@ public class Calculator {
     private static final int INCREMENT_SECOND_INDEX_NUMBER_FOR_CALCULATOR = 1;
     private String input;
 
-    Calculator(String input){
+    Calculator(String input) {
         this.input = input;
     }
 

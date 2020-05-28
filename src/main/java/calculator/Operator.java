@@ -18,26 +18,9 @@ public enum Operator {
         this.binaryOperator = binaryOperator;
     }
 
-    private static double add(double startNumber, double endNumber) {
-        return startNumber + endNumber;
-    }
-
-    private static double subtract(double startNumber, double endNumber) {
-        return startNumber - endNumber;
-    }
-
     public static void checkZeroDivide(double endNumber) {
         if (endNumber == ZERO_NUMBER)
             throw new ArithmeticException("제로로 나누는건 허용되지 않습니다.");
-    }
-
-    private static double divide(double startNumber, double endNumber) {
-        checkZeroDivide(endNumber);
-        return startNumber / endNumber;
-    }
-
-    private static double multiply(double startNumber, double endNumber) {
-        return startNumber * endNumber;
     }
 
     public static boolean isContains(String symbol) {
@@ -53,11 +36,28 @@ public enum Operator {
                 .orElseThrow(() -> new IllegalArgumentException("입력값이 잘못되었습니다. 사칙연산부호를 입력해주세요."));
     }
 
-    private String getSymbol() {
-        return symbol;
+    private static double add(double startNumber, double endNumber) {
+        return startNumber + endNumber;
+    }
+
+    private static double subtract(double startNumber, double endNumber) {
+        return startNumber - endNumber;
+    }
+
+    private static double divide(double startNumber, double endNumber) {
+        checkZeroDivide(endNumber);
+        return startNumber / endNumber;
+    }
+
+    private static double multiply(double startNumber, double endNumber) {
+        return startNumber * endNumber;
     }
 
     public double apply(double startNumber, double endNumber) {
         return binaryOperator.applyAsDouble(startNumber, endNumber);
+    }
+
+    private String getSymbol() {
+        return symbol;
     }
 }
