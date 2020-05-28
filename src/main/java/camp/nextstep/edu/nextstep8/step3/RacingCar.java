@@ -8,6 +8,7 @@ public class RacingCar {
     private final static int GO_STANDARD_VALUE = 4;
     private int number;
     private List<String> position = new ArrayList<>();
+    private List<Integer> debugPosition = new ArrayList<>();
 
     public RacingCar(int number) {
         this.number = number;
@@ -25,18 +26,14 @@ public class RacingCar {
         return position;
     }
 
-    public void setPosition(List<String> position) {
-        this.position = position;
-    }
-
     public void goOrStop(int randomValue) {
         if(GO_STANDARD_VALUE < randomValue) {
             this.position.add(LANE);
         }
+        debugPosition.add(randomValue);
     }
 
-    public void printPosition(){
-        this.position.forEach(s -> System.out.print(s));
-        System.out.println();
+    public List<Integer> getDebugPosition() {
+        return debugPosition;
     }
 }

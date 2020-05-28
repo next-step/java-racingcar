@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.function.Function;
 
 public class RacingGameInputView {
-    public int getParticipatedCount() {
+    public int getCarNumbers() {
         return getValueFromInputStream("참가할 자동차는 몇 대 인가요?", Scanner::nextInt);
     }
 
