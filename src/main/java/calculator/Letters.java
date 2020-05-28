@@ -6,15 +6,19 @@ import java.util.stream.Collectors;
 
 public class Letters {
     private static final String DELIMITER = " ";
+    private final String inputData;
 
-    public static List<String> splitBlank(String inputData) {
-        checkBlank(inputData);
+    public Letters(String inputData) {
+        this.inputData = inputData;
+        checkBlank();
+    }
 
+    public List<String> splitBlank() {
         return Arrays.stream(inputData.split(DELIMITER))
                 .collect(Collectors.toList());
     }
 
-    static void checkBlank(String inputData) {
+    public void checkBlank() {
         if (inputData == null || inputData.trim().isEmpty()) {
             throw new IllegalArgumentException("값을 입력해주세요.");
         }

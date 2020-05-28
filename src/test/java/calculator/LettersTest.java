@@ -13,13 +13,16 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 
 @DisplayName("입력된 문자열")
 class LettersTest {
+    Letters letters;
+
     @ParameterizedTest
     @NullSource
     @EmptySource
     @DisplayName("입력된 값이 null 값인지 체크")
     void checkBlank(String input) {
         assertThatThrownBy(() ->
-                Letters.checkBlank(input)).isInstanceOf(IllegalArgumentException.class)
+                letters = new Letters(input)
+        ).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("값을 입력해주세요.");
     }
 
@@ -27,7 +30,8 @@ class LettersTest {
     @CsvSource(value = {"1 2 3 4 5=5", "2=1"}, delimiter = '=')
     @DisplayName("입력된 문자열을 공백형태로 자른 후 갯수 체크한다")
     void splitBlank(String input, int resultSize) {
-        List<String> inputs = Letters.splitBlank(input);
+        letters = new Letters(input);
+        List<String> inputs = letters.splitBlank();
         assertThat(inputs.size()).isEqualTo(resultSize);
     }
 }

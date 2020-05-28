@@ -14,7 +14,8 @@ public class Calculator {
     }
 
     public double runCalculator() {
-        List<String> splits = Letters.splitBlank(this.input);
+        Letters letters = new Letters(input);
+        List<String> splits = letters.splitBlank();
 
         double totalNumber = convertStringToDouble(splits.get(INITIAL_FIRST_INDEX_FOR_CALCULATOR));
         for (int i = INITIAL_OPERATOR_FOR_CALCULATOR; i < splits.size(); i += STEP_FOR_CALCULATOR) {
