@@ -27,12 +27,9 @@ public class CarRacingTest {
     @Test
     @DisplayName("Test1 자동차 이동")
     void carMoveOne() {
-        boolean isMove = car.move();
+        car.move();
         int moveDistance = car.getTotalDistance();
-
-        if (isMove) {
-            assertThat(moveDistance).isEqualTo(1);
-        }
+        assertThat(moveDistance).isEqualTo(1);
     }
 
     @Test

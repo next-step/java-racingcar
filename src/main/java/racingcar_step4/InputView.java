@@ -2,13 +2,15 @@ package racingcar_step4;
 
 import com.google.common.base.Splitter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class InputView {
 
-    public static String[] getCarNames() throws RuntimeException {
+    public static List<Car> getCarNames() throws RuntimeException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
 
@@ -22,13 +24,22 @@ public class InputView {
         return Integer.parseInt(scanner.nextLine());
     }
 
-    private static String[] parseCarNames(String text) throws RuntimeException {
-        String[] names = new String[0];
+    private static List<Car> parseCarNames(String text) throws RuntimeException {
+        List<String> cars = new ArrayList<>();
 
         if (checkPattern(text)) {
-            names = Splitter.on(',').splitToList(text).toArray(names);
+            cars = Splitter.on(',').splitToList(text);
         }
-        return names;
+        return setCarsName(cars);
+    }
+
+    private static List<Car> setCarsName(List<String> cars) {
+        List<Car> carNames = new ArrayList<>();
+
+        for (String name : cars) {
+            carNames.add(new Car(name, 0));
+        }
+        return carNames;
     }
 
     public static boolean checkPattern(String text) throws RuntimeException {

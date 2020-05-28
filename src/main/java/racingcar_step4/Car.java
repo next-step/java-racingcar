@@ -5,15 +5,13 @@ import java.util.Random;
 public class Car implements Comparable<Car>{
 
     private String carName;
-    private int totalDistance = 0;
-
-    private Random rand = new Random();
+    private int totalDistance;
 
     public Car() {
     }
 
     public Car(String carName) {
-        this.carName = carName;
+        this(carName, 0);
     }
 
     public Car(String carName, int totalDistance) {
@@ -21,16 +19,16 @@ public class Car implements Comparable<Car>{
         this.totalDistance = totalDistance;
     }
 
-    public boolean move() {
+    public int move() {
         int randomNumber = getRandom ();
         if(randomNumber >= CarRacingConstants.MOVE_POSSIBLE_VALUE) {
-            totalDistance += CarRacingConstants.FORWARD_VALUE;
-            return true;
+            return totalDistance += CarRacingConstants.FORWARD_VALUE;
         }
-        return false;
+        return totalDistance;
     }
 
     private int getRandom() {
+        Random rand = new Random();
         return rand.nextInt(CarRacingConstants.RANDOM_RANGE);
     }
 

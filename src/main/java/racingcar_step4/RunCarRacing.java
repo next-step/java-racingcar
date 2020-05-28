@@ -4,12 +4,12 @@ import java.util.List;
 
 public class RunCarRacing {
     public static void main(String[] args) {
-        CarRacingGame carRacingGame = new CarRacingGame();
 
-        String[] names = InputView.getCarNames();
+        List<Car> cars = InputView.getCarNames();
         int racingCount = InputView.getRacingCount();
 
-        List<Car> cars = carRacingGame.createCars(names);
+        CarRacingGame carRacingGame = new CarRacingGame(cars);
+        cars = carRacingGame.getCars();
 
         for (int i=0; i < racingCount; i++) {
             cars = carRacingGame.runRacing();
