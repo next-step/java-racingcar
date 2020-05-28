@@ -23,4 +23,14 @@ public class RacingCarFactory {
 
     return racingCarList;
   }
+
+  public static List<Car> copyRacingCarList(List<Car> racingCarList){
+    List<Car> copiedRacingCarList = new ArrayList<>(racingCarList);
+
+    for (int i = 0, endpoint = racingCarList.size(); i < endpoint; i++) {
+      racingCarList.set(i, Car.newInstance(racingCarList.get(i)));
+    }
+
+    return copiedRacingCarList;
+  }
 }

@@ -27,9 +27,10 @@ public class RacingGameImpl implements RacingGame {
     for (Car racingCar : racingCarList) {
       racingCar.move();
     }
-      this.time --;
 
-    return new ArrayList<>(racingCarList);
+    this.time--;
+
+    return RacingCarFactory.copyRacingCarList(racingCarList);
   }
 
   @Override
@@ -42,11 +43,7 @@ public class RacingGameImpl implements RacingGame {
         .filter(car -> car.getDistance() == maxDistance)
         .collect(Collectors.toList());
 
-    for (int i = 0, endpoint = winnerList.size(); i < endpoint; i++) {
-      winnerList.set(i, new Car(winnerList.get(i)));
-    }
-
-    return winnerList;
+    return RacingCarFactory.copyRacingCarList(winnerList);
   }
 
   @Override
@@ -54,5 +51,3 @@ public class RacingGameImpl implements RacingGame {
     return this.time == 0;
   }
 }
-
-
