@@ -11,16 +11,10 @@ public class RacingGame {
     private final RacingGameResult racingGameResult;
 
     public RacingGame(String carNames, int round) {
-        validation(carNames, round);
+        validateParameters(carNames, round);
         this.round = round;
-        this.racingCars = new RacingCars(carNames.split(","));
+        this.racingCars = new RacingCars(carNames);
         this.racingGameResult = new RacingGameResult();
-    }
-
-    private void validation(String carNames, int round) {
-        if (StringUtils.isBlank(carNames) || round < MIN_SETTING_NUMBER) {
-            throw new IllegalArgumentException();
-        }
     }
 
     public RacingGameResult playGame() {
@@ -31,4 +25,11 @@ public class RacingGame {
 
         return racingGameResult;
     }
+
+    private void validateParameters(String carNames, int round) {
+        if (StringUtils.isBlank(carNames) || round < MIN_SETTING_NUMBER) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
