@@ -7,7 +7,7 @@ public class Calculator {
     private static final int INITIAL_FIRST_INDEX_FOR_CALCULATOR = 0;
     private static final int INITIAL_OPERATOR_FOR_CALCULATOR = 1;
     private static final int INCREMENT_SECOND_INDEX_NUMBER_FOR_CALCULATOR = 1;
-    private String input;
+    private final String input;
 
     Calculator(String input) {
         this.input = input;
