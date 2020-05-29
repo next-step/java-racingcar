@@ -5,6 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/*
+ * Cars
+ * ver. 1.0
+ * 2020.05.28
+ * Copyright ...
+ */
 public class Cars {
 
     private static final String RANKED_STRING_DELIMITER = ",";

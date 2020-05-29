@@ -1,4 +1,4 @@
-package step4;
+package step5.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -20,6 +20,8 @@ class CarsTest {
 
         Cars cars = Cars.of(carName.split(""), location, () -> TEST_CAR_MOVE_STEP);
         assertThat(cars.getCarsList().size()).isEqualTo(carName.split("").length);
+        assertThat(cars.getCarsList().stream().filter(car -> car.getLocation() == location).count()).isEqualTo(carName.split("").length);
+
     }
 
     // init with error
