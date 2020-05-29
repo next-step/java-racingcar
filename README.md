@@ -18,3 +18,10 @@
   - 곱셈
   - 구분자 split 하기
   - 사칙 연산을 모두 포함하는 기능
+
+## 자동차 경주
+- TDD 목록
+  - 4이상일 경우엔 전진
+  - 4이하인 경우엔 count 증가 X
+  - 숫자가 아닌 경우 IllegalArgumentException
+  
