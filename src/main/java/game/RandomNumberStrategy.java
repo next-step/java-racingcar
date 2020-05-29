@@ -6,14 +6,14 @@ import java.util.Random;
 
 public class RandomNumberStrategy implements MovingStrategy {
 
-    public final Integer POINT_FORWARD = POINT;
+    private static final Integer POINT = 4;
 
-    public final static Integer POINT = 4;
+    private static final Integer POINT_FORWARD = POINT;
 
-    public final static Integer RANDOM_NUMBER_MAX = 10;
+    private static final Integer RANDOM_NUMBER_MAX = 10;
 
-    public int move(int count) {
-        return getMovePosition(count);
+    public int move(int playCount) {
+        return getMovePosition(playCount);
     }
 
     /**
@@ -21,10 +21,10 @@ public class RandomNumberStrategy implements MovingStrategy {
      *
      * @return
      */
-    private int getMovePosition(int count) {
+    private int getMovePosition(int playCount) {
 
         int result = 0;
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < playCount; i++) {
             result += getPoint();
         }
         return result;
@@ -51,5 +51,9 @@ public class RandomNumberStrategy implements MovingStrategy {
      */
     private boolean isGoForward() {
         return new Random().nextInt(RANDOM_NUMBER_MAX) >= POINT_FORWARD;
+    }
+
+    public static RandomNumberStrategy create() {
+        return new RandomNumberStrategy();
     }
 }
