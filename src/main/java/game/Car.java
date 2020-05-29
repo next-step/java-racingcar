@@ -3,7 +3,7 @@ package game;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Car extends RandomNumberStrategy {
+public class Car {
 
     public String name;
 
@@ -45,18 +45,8 @@ public class Car extends RandomNumberStrategy {
         this.maxPosition = Math.max(this.maxPosition, currentPosition);
     }
 
-    public static List<Car> createCarEntry(String[] cars) {
-        if (cars.length == 0 || cars == null) {
-            return null;
-        }
-
-        List<Car> carEntry = new ArrayList<>(cars.length);
-
-        for (String car : cars) {
-            carEntry.add(new Car(car));
-        }
-
-        return carEntry;
+    public static Car create(String name){
+        return new Car(name);
     }
 
     @Override
