@@ -17,6 +17,9 @@ public class Cars {
 
     private List<Car> carsList = new ArrayList<>();
 
+    private Cars() {
+    }
+
     public static Cars of(String[] carNames, int location, CarMoveStrategy carMoveStrategy) {
 
         Cars cars = new Cars();
@@ -38,17 +41,7 @@ public class Cars {
         carsList.forEach(Car::move);
     }
 
-
-    public void printCurrentLocation() {
-        carsList.stream().forEachOrdered(car -> {
-            System.out.println(car.getCarName() + "\t\t : "
-                    + new String(new char[car.getLocation()]).replace("\0", "-"));
-
-
-        });
-    }
-
-    public List<Car> getCarsList() {
+     public List<Car> getCarsList() {
         return carsList;
     }
 

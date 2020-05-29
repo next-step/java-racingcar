@@ -1,7 +1,9 @@
 package step5;
 
+import step5.domain.Cars;
 import step5.domain.RacingGame;
 import step5.view.InputView;
+import step5.view.ResultView;
 
 /*
  * Java Racing Game
@@ -22,9 +24,15 @@ public class MainApplication {
 
         RacingGame racingGame = new RacingGame(carsNames, playTimes);
 
-        racingGame.play();
+        // play
+        for (int i = 0; i < playTimes; i++) {
+            Cars cars = racingGame.play();
+            /* result */
+            ResultView.viewResult(cars);
+        }
+
+        ResultView.printWinner(racingGame.getWinners());
 
     }
-
 
 }

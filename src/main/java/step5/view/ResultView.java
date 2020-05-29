@@ -15,8 +15,20 @@ public class ResultView {
     public static void viewResult(Cars cars) {
 
         System.out.println(++playTimes + " th Try.. ");
-        cars.printCurrentLocation();
+        printCurrentLocation(cars);
+
     }
+
+    public static void printCurrentLocation(Cars cars) {
+
+        cars.getCarsList().forEach(car -> {
+            System.out.println(car.getCarName() + "\t\t : "
+                    + new String(new char[car.getLocation()]).replace("\0", "-"));
+
+        });
+
+    }
+
 
     public static void printWinner(String winners) {
         System.out.println(winners + "\t\t is(are) Winner(s). ");

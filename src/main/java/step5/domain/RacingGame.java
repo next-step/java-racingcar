@@ -1,7 +1,5 @@
 package step5.domain;
 
-import step5.view.ResultView;
-
 /*
  * Racing Game
  * ver. 1.0
@@ -34,17 +32,21 @@ public class RacingGame {
     }
 
 
-    public void play() {
+    public Cars play() {
 
-        for (int i = 0; i < playTimes; i++) {
-            cars.move();
-            ResultView.viewResult(cars);
-        }
+        cars.move();
 
-        /* result */
-        String winners = cars.getWinners();
-        ResultView.printWinner(winners);
-
+        return cars;
     }
+
+    public String getWinners() {
+
+        String winners = cars.getWinners();
+
+        return winners;
+    }
+
+
+
 
 }

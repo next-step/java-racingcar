@@ -5,12 +5,37 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-
 import static org.assertj.core.api.Assertions.*;
 
 class CarTest {
 
     private static final int TEST_CAR_MOVE_STEP = 1;
+
+    // Test
+    @DisplayName("randomless Test")
+    @ParameterizedTest
+    @CsvSource(value = {"1:0","2:0","3:0","4:0","5:1","6:1","7:1","8:1","9:1"}, delimiter = ':')
+    void testRandomlessUpper(int input, int expected) {
+
+        // ready
+        final int moveCountTestValueInsteadOfRandom = input;
+
+        // set
+        Car car = new Car(new String("any"), 0, new CarMoveStrategy() {
+            @Override
+            public int getMoveCount() {
+                return moveCountTestValueInsteadOfRandom > 4 ? 1 : 0;
+            }
+        });
+
+        // test
+        int before = car.getLocation();
+        car.move();
+        int after = car.getLocation();
+
+        assertThat(after - before).isEqualTo(expected);
+    }
+
 
     // init
     @DisplayName("init Class")
