@@ -26,11 +26,11 @@ public class RacingCar {
         return position;
     }
 
-    public void goOrStop(int randomValue) {
-        if(GO_STANDARD_VALUE < randomValue) {
+    public void goOrStop(int condition) {
+        if(GO_STANDARD_VALUE <= condition) {
             this.position.add(LANE);
         }
-        debugPosition.add(randomValue);
+        debugPosition.add(condition);
     }
 
     public List<Integer> getDebugPosition() {
