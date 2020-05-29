@@ -18,9 +18,6 @@ import static org.mockito.Mockito.*;
 class RacingGameTest {
 
     @Mock
-    RacingCar racingCar;
-
-    @Mock
     RacingGameInputView inputView;
 
     @Mock
