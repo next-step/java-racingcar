@@ -1,79 +1,38 @@
 package calculator;
 
-class Calculator {
-    private static final String DELIMITER = " ";
-    private static final int FIRST_INDEX_FOR_CALCULATOR = 0;
+import java.util.List;
+
+public class Calculator {
     private static final int STEP_FOR_CALCULATOR = 2;
+    private static final int INITIAL_FIRST_INDEX_FOR_CALCULATOR = 0;
+    private static final int INITIAL_OPERATOR_FOR_CALCULATOR = 1;
+    private static final int INCREMENT_SECOND_INDEX_NUMBER_FOR_CALCULATOR = 1;
+    private final String input;
 
-    static int add(int startNumber, int endNumber) {
-        return startNumber + endNumber;
+    Calculator(String input) {
+        this.input = input;
     }
 
-    static int subtract(int startNumber, int endNumber) {
-        return startNumber - endNumber;
-    }
+    public double runCalculator() {
+        Letters letters = new Letters(input);
+        List<String> splits = letters.splitBlank();
 
-    static int divide(int startNumber, int endNumber) {
-        return startNumber / endNumber;
-    }
+        double totalNumber = convertStringToDouble(splits.get(INITIAL_FIRST_INDEX_FOR_CALCULATOR));
+        for (int i = INITIAL_OPERATOR_FOR_CALCULATOR; i < splits.size(); i += STEP_FOR_CALCULATOR) {
+            Operator operation = Operator.getOperator(splits.get(i));
 
-    static int multiple(int startNumber, int endNumber) {
-        return startNumber * endNumber;
-    }
+            double secondNumber = convertStringToDouble(splits.get(i + INCREMENT_SECOND_INDEX_NUMBER_FOR_CALCULATOR));
 
-    static boolean isOperator(String operation) {
-        return operation.matches("[\\*\\+-/]");
-    }
-
-    static void checkOperationSign(String operation) {
-        if (!isOperator(operation)) {
-            throw new IllegalArgumentException("입력값이 잘못되었습니다. 사칙연산부호를 입력해주세요.");
+            totalNumber = operation.apply(totalNumber, secondNumber);
         }
+        return totalNumber;
     }
 
-    static void isBlack(String inputData) {
-        if (inputData == null || inputData.trim().isEmpty()) {
-            throw new IllegalArgumentException("값을 입력해주세요.");
-        }
-    }
-
-    static int stringConvertToInt(String input) {
+    private double convertStringToDouble(String input) {
         try {
-            return Integer.parseInt(input);
+            return Double.parseDouble(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("연산하기위해 숫자를 입력해주세요.");
         }
-    }
-
-    static int runCalculator(String input) {
-        isBlack(input);
-        String[] splits = input.split(DELIMITER);
-
-        int totalNumber = stringConvertToInt(splits[FIRST_INDEX_FOR_CALCULATOR]);
-        for (int i = 1; i < splits.length; i += STEP_FOR_CALCULATOR) {
-            String operation = splits[i];
-            checkOperationSign(operation);
-
-            int endNumber = stringConvertToInt(splits[i + 1]);
-
-            totalNumber = getTotalNumber(totalNumber, operation, endNumber);
-        }
-        return totalNumber;
-    }
-
-    private static int getTotalNumber(int totalNumber, String operation, int endNumber) {
-        if ("+".equals(operation)) {
-            totalNumber = add(totalNumber, endNumber);
-        }
-        if ("-".equals(operation)) {
-            totalNumber = subtract(totalNumber, endNumber);
-        }
-        if ("*".equals(operation)) {
-            totalNumber = multiple(totalNumber, endNumber);
-        }
-        if ("/".equals(operation)) {
-            totalNumber = divide(totalNumber, endNumber);
-        }
-        return totalNumber;
     }
 }
