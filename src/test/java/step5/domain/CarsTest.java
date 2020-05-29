@@ -1,8 +1,9 @@
-package step4;
+package step5.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -20,6 +21,8 @@ class CarsTest {
 
         Cars cars = Cars.of(carName.split(""), location, () -> TEST_CAR_MOVE_STEP);
         assertThat(cars.getCarsList().size()).isEqualTo(carName.split("").length);
+        assertThat(cars.getCarsList().stream().filter(car -> car.getLocation() == location).count()).isEqualTo(carName.split("").length);
+
     }
 
     // init with error
@@ -43,15 +46,11 @@ class CarsTest {
         Cars cars = Cars.of(carName.split(RANKED_STRING_DELIMITER), location, () -> TEST_CAR_MOVE_STEP);
 
         cars.move();
-
         cars.getCarsList().get(0).move();
-
         System.out.println(cars.getWinners());
 
         assertThat(cars.getWinners().contains("winner")).isTrue();
 
-
     }
-
 
 }
