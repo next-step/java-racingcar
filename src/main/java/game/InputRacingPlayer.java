@@ -1,14 +1,22 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
 public class InputRacingPlayer extends InputView {
 
-    private final static String CAR_NAME_PATTERN = "^[a-zA-Z0-9가-힣,]*$";
+    private static final String CAR_NAME_PATTERN = "^[a-zA-Z0-9가-힣,]*$";
 
-    private final static String CAR_NAME_REGEX = ",";
+    private static final String CAR_NAME_REGEX = ",";
+
+    private static final String PLAYER_INPUT_VIEW_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+
+    private static final String PLAYER_INPUT_WARNING_MESSAGE = "자동차 이름은 영문 or 숫자 or 한글과 ','로 을 입력하세요.";
+
+    private static final String PLAYER_NAME_WARNING_MESSAGE = "자동차 이름을 입력하세요.";
+
 
     public InputRacingPlayer() {
         super();
@@ -20,16 +28,22 @@ public class InputRacingPlayer extends InputView {
      * @return
      */
     public List<Car> getCarPlayer() {
-        super.viewMessage("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        super.viewMessage(PLAYER_INPUT_VIEW_MESSAGE);
 
-        List<Car> carEntry = Car.createCarEntry(getPlayerNames());
+        String[] carNames = getPlayerNames();
+
+        List<Car> carEntry = new ArrayList<>(carNames.length);
+
+        for (String car : carNames) {
+            carEntry.add(Car.create(car));
+        }
 
         return carEntry;
     }
 
     public String[] getPlayerNames() {
 
-        String input = Optional.ofNullable(super.getScanner().nextLine()).orElseThrow(() -> new IllegalArgumentException("자동차 이름을 입력하세요."));
+        String input = Optional.ofNullable(super.getScanner().nextLine()).orElseThrow(() -> new IllegalArgumentException(PLAYER_NAME_WARNING_MESSAGE));
 
         validateInputString(input);
 
@@ -41,7 +55,7 @@ public class InputRacingPlayer extends InputView {
         String[] carNames = input.split(CAR_NAME_REGEX);
 
         if (carNames.length == 0 || carNames == null) {
-            throw new IllegalArgumentException("자동차 이름은 영문 or 숫자 or 한글과 ','로 을 입력하세요.");
+            throw new IllegalArgumentException(PLAYER_INPUT_WARNING_MESSAGE);
         }
 
         return carNames;
@@ -52,7 +66,7 @@ public class InputRacingPlayer extends InputView {
         boolean regex = Pattern.matches(CAR_NAME_PATTERN, input);
 
         if (!regex) {
-            throw new IllegalArgumentException("자동차 이름은 영문 or 숫자 or 한글과 ','로 을 입력하세요.");
+            throw new IllegalArgumentException(PLAYER_INPUT_WARNING_MESSAGE);
         }
     }
 

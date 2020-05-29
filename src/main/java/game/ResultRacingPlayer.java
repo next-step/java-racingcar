@@ -3,6 +3,13 @@ package game;
 import java.util.List;
 
 public class ResultRacingPlayer extends ResultView {
+
+    private static final String PLAYER_NAME_SEPARATOR = " : ";
+
+    private static final String WINNER_NAME_SEPARATOR = ", ";
+
+    private static final String WINNING_MESSAGE = "가 최종 우승했습니다.";
+
     public ResultRacingPlayer() {
         super();
     }
@@ -24,7 +31,7 @@ public class ResultRacingPlayer extends ResultView {
     public void printCars(List<Car> cars, int currentPosition) {
 
         for (Car car : cars) {
-            printContents(car.getName() + " : ");
+            printContents(car.getName() + PLAYER_NAME_SEPARATOR);
             printPosition(car.getPosition().get(currentPosition));
         }
     }
@@ -48,14 +55,14 @@ public class ResultRacingPlayer extends ResultView {
             stringBuilder.append(car.getName());
         }
 
-        printContents(stringBuilder.toString() + "가 최종 우승했습니다.");
+        printContents(stringBuilder.toString() + WINNING_MESSAGE);
 
         printLine();
     }
 
     public void printComma(StringBuilder stringBuilder) {
         if (stringBuilder.length() > 0) {
-            stringBuilder.append(", ");
+            stringBuilder.append(WINNER_NAME_SEPARATOR);
         }
     }
 
