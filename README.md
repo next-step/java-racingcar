@@ -16,3 +16,13 @@
 4. Fix - 오류사항 발생 시 수정
 5. Simply - 코드 단순화 적용(선택)
 6. Refactor - 코드리뷰 후 적용
+
+#### Step4 자동차 경주(우승자)
+
+1. ADD - ,로 구분한 자동차 개수를 생성
+2. ADD - WinnerClass생성 우승자 로직 구현
+3. ADD - 우승자를 리스트에 담아 출력할 Class 구현
+4. TEST - 우승자 테스트
+5. Fix
+6. Simply 
+7. Refactor
