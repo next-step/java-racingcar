@@ -26,8 +26,8 @@ public class Movement {
             Car car = cars.get(i);
 
             moveCondition(random.random(), i);
-            checkMaxPosition(car.carPositions);
-            outputView.resultView(car.name, car.carPositions);
+            checkMaxPosition(car.getCarPositions());
+            outputView.resultView(car.getName(), car.getCarPositions());
         }
 
         System.out.println();
@@ -48,8 +48,8 @@ public class Movement {
     }
 
     private void isWinner(Car car) {
-        if(car.carPositions == maxPosition) {
-            winners.add(car.name);
+        if(car.getCarPositions() == maxPosition) {
+            winners.add(car.getName());
         }
     }
 

@@ -1,8 +1,8 @@
 package mission1.racing.model;
 
 public class Car {
-    public String name;
-    public int carPositions;
+    private String name;
+    private int carPositions;
 
     public Car() {}
     public Car(String name) {
@@ -11,5 +11,13 @@ public class Car {
 
     public void go() {
         carPositions++;
+    }
+
+    public int getCarPositions() {
+        return carPositions;
+    }
+
+    public String getName() {
+        return name;
     }
 }
