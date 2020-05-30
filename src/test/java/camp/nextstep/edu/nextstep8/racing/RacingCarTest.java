@@ -35,3 +35,4 @@ class RacingCarTest {
         assertThat(racingCar.getPosition()).isEqualTo(0);
     }
 }
+
