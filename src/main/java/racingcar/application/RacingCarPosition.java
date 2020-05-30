@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.application;
+
+import racingcar.utils.Const;
 
 import java.util.stream.IntStream;
 

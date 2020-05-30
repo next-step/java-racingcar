@@ -1,4 +1,9 @@
-package racingcar;
+package racingcar.application;
+
+import racingcar.domain.RacingCar;
+import racingcar.utils.Const;
+import racingcar.utils.RandomUtils;
+import racingcar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
