@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Racing {
-    public static final int INITIAL_NUM = 0;
+    private static final int INITIAL_NUM = 0;
     private final int tryTime;
     private List<RacingCar> racingCars;
 
