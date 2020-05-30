@@ -1,9 +1,10 @@
-package study3;
+package study4;
 
 public class Car {
-
-	private int position = 0; // 위치
-	private static String mov = "-";
+	
+	private String carName= ""; // 자동차 이름
+	private int position = 0; // 자동차 위치정보
+	private static String move = "-";
 	
 	public Car() {
 		
@@ -11,6 +12,14 @@ public class Car {
 
 	public int getPosition() {
 		return position;
+	}
+	
+	public void setCarName(String carName) {
+		this.carName = carName;
+	}
+
+	public String getCarName() {
+		return carName;
 	}
 
 	public int move(int inNum) {
@@ -22,7 +31,7 @@ public class Car {
 	
 	public void outputnumCarResult(Car car) {
 		for (int i = 0; i < car.getPosition(); i++) {
-			System.out.print(mov);
+			System.out.print(move);
 		}
 		System.out.println();
 	}
