@@ -24,9 +24,9 @@ public class RacingGame {
     }
 
     private void setGame() {
-        String inputName = inputView.inputView("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        String inputName = inputView.inputCarsNameView();
         String[] names = inputName.split(",");
-        time = Integer.parseInt(inputView.inputView("시도할 회수는 몇 회 인가요?"));
+        time = inputView.inputNumOfCarsView();
 
         movement = new Movement(names);
     }
