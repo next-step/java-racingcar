@@ -3,13 +3,13 @@ package racingcar;
 import java.util.List;
 
 public class ResultView {
-    public static List<RacingCarPositions> racingCarPositions;
+    private static List<RacingCarPositions> racingCarPositions;
 
     public ResultView(List<RacingCarPositions> racingCarPositions) {
         this.racingCarPositions = racingCarPositions;
     }
 
-    public static void results() {
+    public void results() {
         System.out.println("실행결과");
         racingCarPositions.forEach(carPosition -> {
             carPosition.get().forEach(
