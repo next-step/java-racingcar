@@ -16,15 +16,16 @@ public class RacingGame {
         this.record = new ArrayList<>();
     }
 
-    public void raceStart() {
-        RacingEntry entry = new RacingEntry(generateRandomRuleEntry(carNumbers));
+    public List<Integer> raceStart() {
+        RacingEntry entry = new RacingEntry(generateRandomRuleEntryList(carNumbers));
         for(int i = 0; i < raceTimes; i++){
             entry.move();
             record(entry);
         }
+        return record;
     }
 
-    public List<RacingCar> generateRandomRuleEntry(int carNumbers) {
+    public List<RacingCar> generateRandomRuleEntryList(int carNumbers) {
         List<RacingCar> entryList = new ArrayList<>();
         for (int i = 0; i < carNumbers; i++){
             entryList.add(new RacingCar(new RandomForwardingRule()));
