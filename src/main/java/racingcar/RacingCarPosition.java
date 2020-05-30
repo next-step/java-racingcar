@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.stream.IntStream;
+
 public class RacingCarPosition {
     private static final String PROGRESS_POSITION = "-";
     private final int position;
@@ -11,9 +13,8 @@ public class RacingCarPosition {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            builder.append(PROGRESS_POSITION);
-        }
+        IntStream.range(Const.INITIAL_NUM, position)
+                .forEach(position -> builder.append(PROGRESS_POSITION));
         return builder.toString();
     }
 }

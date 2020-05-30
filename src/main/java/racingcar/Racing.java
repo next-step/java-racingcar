@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Racing {
-    private static final int INITIAL_NUM = 0;
     private final int tryTime;
     private List<RacingCar> racingCars;
 
@@ -16,14 +15,14 @@ public class Racing {
     }
 
     private List<RacingCar> createRacingCar(int carNum) {
-        return IntStream.range(INITIAL_NUM, carNum)
+        return IntStream.range(Const.INITIAL_NUM, carNum)
                 .mapToObj(car -> new RacingCar())
                 .collect(Collectors.toList());
     }
 
     public ResultView startRace() {
         List<RacingCarPositions> racingCarPositions = new ArrayList<>();
-        IntStream.range(INITIAL_NUM, tryTime)
+        IntStream.range(Const.INITIAL_NUM, tryTime)
                 .forEach(tryNum -> racingCarPositions.add(moveCars()));
         return ResultView.from(racingCarPositions);
     }
