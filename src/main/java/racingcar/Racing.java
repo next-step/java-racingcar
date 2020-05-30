@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Racing {
@@ -31,5 +32,9 @@ public class Racing {
             int randomNumber = Utils.generateRandomNum();
             car.move(() -> car.isMove(randomNumber));
         });
+    }
+
+    public List<RacingCar> getRacingCar() {
+        return Collections.unmodifiableList(racingCars);
     }
 }

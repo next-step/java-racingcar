@@ -5,5 +5,9 @@ public class RacingMain {
         int carNum = InputView.carNum();
         int tryNum = InputView.tryTime();
 
+        Racing racing = new Racing(carNum, tryNum);
+        racing.startRace();
+
+        ResultView.results(racing.getRacingCar());
     }
 }
