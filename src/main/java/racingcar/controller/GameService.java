@@ -3,19 +3,19 @@ package racingcar.controller;
 import racingcar.domain.Game;
 import racingcar.view.ResultView;
 
-public class GameController {
+public class GameService {
 
   private int attemptNum;
   private Game game;
+  final int MINIMUM_THRESHOLD = 1;
+  final int MAXIMUM_THRESHOLD = 100;
 
-  private GameController(Integer attemptNum, Game game) {
+  private GameService(Integer attemptNum, Game game) {
     this.attemptNum = validateInputAttemptNum(attemptNum);
     this.game = game;
   }
 
   private Integer validateInputAttemptNum(Integer attemptNum) {
-    int MINIMUM_THRESHOLD = 1;
-    int MAXIMUM_THRESHOLD = 100;
     if (attemptNum < MINIMUM_THRESHOLD || attemptNum > MAXIMUM_THRESHOLD) {
       throw new IllegalArgumentException("잘못 입력하셨네요.");
     }
@@ -42,7 +42,7 @@ public class GameController {
     return game;
   }
 
-  public static GameController create(int attemptNum, Game game) {
-    return new GameController(attemptNum, game);
+  public static GameService create(int attemptNum, Game game) {
+    return new GameService(attemptNum, game);
   }
 }
