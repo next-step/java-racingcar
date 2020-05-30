@@ -1,10 +1,12 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Racing {
+    public static final int INITIAL_NUM = 0;
     private final int tryTime;
     private List<RacingCar> racingCars;
 
@@ -14,17 +16,14 @@ public class Racing {
     }
 
     private List<RacingCar> createRacingCar(int carNum) {
-        List<RacingCar> racingCars = new ArrayList<>(carNum);
-        for (int i = 0; i < carNum; i++) {
-            racingCars.add(new RacingCar());
-        }
-        return racingCars;
+        return IntStream.range(INITIAL_NUM, carNum)
+                .mapToObj(car -> new RacingCar())
+                .collect(Collectors.toList());
     }
 
     public void startRace() {
-        for (int i = 0; i < tryTime; i++) {
-            moveCars();
-        }
+        IntStream.range(INITIAL_NUM, tryTime)
+                .forEach(tryNum -> moveCars());
     }
 
     private void moveCars() {
