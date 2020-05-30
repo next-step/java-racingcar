@@ -16,7 +16,7 @@ public class RacingCar {
     }
 
     public void move() {
-        if (forwardingRule.canFoward()) {
+        if (forwardingRule.canForward()) {
             position++;
         }
     }
