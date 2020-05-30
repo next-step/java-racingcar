@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RacingEntryTest {
-    @DisplayName("Entry에 있는 자동차가 를 모두 움직 였을 경우 움직인 결과가 잘 반영 되는지 확인")
+    @DisplayName("Entry에 있는 자동차가 모두 움직 였을 경우 움직인 결과가 잘 반영 되는지 확인")
     @Test
     public void moveTest() {
         // given
@@ -28,7 +28,7 @@ class RacingEntryTest {
         assertThat(movedCarCount).isEqualTo(carNumbers);
     }
 
-    @DisplayName("Entry에 있는 자동차가 를 모두 움직이지 않은 경우 움직인 결과가 잘 반영 되는지 확인")
+    @DisplayName("Entry에 있는 자동차가 모두 움직이지 않은 경우 움직인 결과가 잘 반영 되는지 확인")
     @Test
     public void notMoveTest() {
         // given
