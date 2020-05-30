@@ -5,8 +5,8 @@ public class RacingCar {
     private static final String PROGRESS_POSITION = "-";
     private int position;
 
-    public int move(IMovingStrategy iMovingStrategy) {
-        if (iMovingStrategy.isMove()) {
+    public int move(MovingStrategy movingStrategy) {
+        if (movingStrategy.isMove()) {
             return ++position;
         }
         return position;

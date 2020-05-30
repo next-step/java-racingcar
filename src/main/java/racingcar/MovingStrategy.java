@@ -1,6 +1,6 @@
 package racingcar;
 
 @FunctionalInterface
-public interface IMovingStrategy {
+public interface MovingStrategy {
     boolean isMove();
 }
