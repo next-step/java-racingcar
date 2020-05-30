@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.controller.GameController;
+import racingcar.controller.GameService;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.CarsMock;
@@ -23,7 +23,7 @@ import racingcar.view.ResultView;
 @DisplayName("자동차 경주의 핵심 로직을 테스트한다.")
 public class RacingCarTest {
 
-  GameController gameController;
+  GameService gameService;
 
   @BeforeEach
   void setUp() {
@@ -32,7 +32,7 @@ public class RacingCarTest {
     String[] names = line.split(", ");
     Cars cars = Cars.create(names);
     Game game = Game.create(cars);
-    gameController = GameController.create(attemptNum, game);
+    gameService = GameService.create(attemptNum, game);
   }
 
 
@@ -67,10 +67,10 @@ public class RacingCarTest {
     String[] names = {"pobi", "crong", "honux"};
     Cars cars = Cars.create(names);
     GameMock gameMock = GameMock.create(cars);
-    GameController gameController = GameController.create(attemptNum, gameMock);
+    GameService gameService = GameService.create(attemptNum, gameMock);
 
     //when
-    gameController.proceedGame();
+    gameService.proceedGame();
 
     //then
     assertThat(gameMock.getAttemptNum()).isEqualTo(attemptNum);
@@ -78,8 +78,8 @@ public class RacingCarTest {
 
   @Test
   void 자동차의_전진수만큼_하이픈이_출력된다() {
-    Game game = gameController.proceedGame();
-    ResultView resultView = gameController.getResults();
+    Game game = gameService.proceedGame();
+    ResultView resultView = gameService.getResults();
     assertThat(game.getCars().getCarList()
         .stream()
         .map(Car::getPosition))
@@ -88,7 +88,7 @@ public class RacingCarTest {
 
   @Test
   void 자동차마다_생성되는_레이싱_수가_다르다() {
-    Game game = gameController.proceedGame();
+    Game game = gameService.proceedGame();
     IntStream.range(0, game.getCars().getCarList().size() - 1).forEach(i -> {
       assertThat(game.getCars().getCarList().get(i).getPosition())
           .isNotEqualTo(game.getCars().getCarList().get(i + 1).getPosition());
@@ -98,9 +98,9 @@ public class RacingCarTest {
   @Test
   void 입력한_이름이_자동차_이름이_된다() {
     assertAll(
-        () -> assertThat(gameController.getGame().getCars().getCarList().get(0).getName()).isEqualTo("honux"),
-        () -> assertThat(gameController.getGame().getCars().getCarList().get(1).getName()).isEqualTo("pobi"),
-        () -> assertThat(gameController.getGame().getCars().getCarList().get(2).getName()).isEqualTo("crong")
+        () -> assertThat(gameService.getGame().getCars().getCarList().get(0).getName()).isEqualTo("honux"),
+        () -> assertThat(gameService.getGame().getCars().getCarList().get(1).getName()).isEqualTo("pobi"),
+        () -> assertThat(gameService.getGame().getCars().getCarList().get(2).getName()).isEqualTo("crong")
     );
   }
 
