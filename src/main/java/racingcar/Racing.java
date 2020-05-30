@@ -1,7 +1,6 @@
 package racingcar;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -22,38 +21,24 @@ public class Racing {
                 .collect(Collectors.toList());
     }
 
-    public void startRace() {
-        IntStream.range(INITIAL_NUM, tryTime)
-                .forEach(tryNum -> moveCars());
-    }
-
-    public ResultView startRace2() {
+    public ResultView startRace() {
         List<RacingCarPositions> racingCarPositions = new ArrayList<>();
         IntStream.range(INITIAL_NUM, tryTime)
-                .forEach(tryNum -> {
-                    racingCarPositions.add(moveCars2());
-                });
+                .forEach(tryNum -> racingCarPositions.add(moveCars()));
         return ResultView.from(racingCarPositions);
     }
 
-    private void moveCars() {
-        racingCars.forEach(car -> {
-            int randomNumber = RandomUtils.generateRandomNum();
-            car.move(() -> car.isMove(randomNumber));
-        });
-    }
-
-    private RacingCarPositions moveCars2() {
+    private RacingCarPositions moveCars() {
         List<RacingCarPosition> racingCarPositions = new ArrayList<>();
         racingCars.forEach(car -> {
-            int randomNumber = RandomUtils.generateRandomNum();
-            car.move(() -> car.isMove(randomNumber));
+            moveCar(car);
             racingCarPositions.add(new RacingCarPosition(car.getPosition()));
         });
         return new RacingCarPositions(racingCarPositions);
     }
 
-    public List<RacingCar> getRacingCar() {
-        return Collections.unmodifiableList(racingCars);
+    private void moveCar(RacingCar car) {
+        int randomNumber = RandomUtils.generateRandomNum();
+        car.move(() -> car.isMove(randomNumber));
     }
 }

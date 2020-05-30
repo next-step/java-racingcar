@@ -9,13 +9,7 @@ public class ResultView {
         this.racingCarPositions = racingCarPositions;
     }
 
-    public static void results(List<RacingCar> racingCars) {
-        System.out.println("실행결과");
-        racingCars.forEach(racingCar ->
-                System.out.println(racingCar.toString()));
-    }
-
-    public static void results2() {
+    public static void results() {
         System.out.println("실행결과");
         racingCarPositions.forEach(carPosition -> {
             carPosition.get().forEach(

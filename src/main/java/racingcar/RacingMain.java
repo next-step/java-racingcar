@@ -7,7 +7,7 @@ public class RacingMain {
 
 //        Racing racing = new Racing(carNum, tryNum);
         Racing racing = new Racing(2, 4);
-        ResultView resultView = racing.startRace2();
-        resultView.results2();
+        ResultView resultView = racing.startRace();
+        resultView.results();
     }
 }
