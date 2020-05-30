@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.util.RandomMovingStrategy;
 
 public class Game {
 
@@ -13,11 +12,7 @@ public class Game {
   }
 
   public Cars doRace() {
-    this.cars.getCarList().forEach(car -> {
-      RandomMovingStrategy strategy = RandomMovingStrategy.create();
-      car.updatePosition(strategy);
-    });
-    return this.cars;
+    return cars.move();
   }
 
   public List<Car> calculateWinner(List<Car> cars) {

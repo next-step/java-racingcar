@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.util.RandomMovingStrategy;
 
 public class Cars {
 
@@ -13,6 +14,14 @@ public class Cars {
 
   public List<Car> getCarList() {
     return carList;
+  }
+
+  public Cars move() {
+    carList.forEach(car -> {
+      RandomMovingStrategy strategy = RandomMovingStrategy.create();
+      car.updatePosition(strategy);
+    });
+    return this;
   }
 
   public static Cars create(String[] names) {
