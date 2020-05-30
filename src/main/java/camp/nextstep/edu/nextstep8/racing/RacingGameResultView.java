@@ -21,9 +21,9 @@ public class RacingGameResultView {
             System.out.println("=====[" + (i+1) + " ROUND" + "]=====");
             for(int j = 0; j < carNumbers; j++) {
                 printSymbol(record.get(positionIndex++));
-                System.out.println();
+                printNewLine();
             }
-            System.out.println();
+            printNewLine();
         }
     }
 
@@ -31,6 +31,10 @@ public class RacingGameResultView {
         for(int i = 0; i < count; i++) {
             System.out.print(DISPLAY_SYMBOL);
         }
+    }
+
+    private void printNewLine() {
+        System.out.println();
     }
 }
 
