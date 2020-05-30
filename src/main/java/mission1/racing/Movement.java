@@ -16,13 +16,13 @@ public class Movement {
 
     public Movement() {};
     public Movement(String[] inputCars) {
-        for(int i = 0; i < inputCars.length; i++) {
-            this.cars.add(new Car(inputCars[i]));
+        for (String inputCar : inputCars) {
+            this.cars.add(new Car(inputCar));
         }
     }
 
     public void move() {
-        for(int i = 0; i < cars.size(); i++) {
+        for (int i = 0; i < cars.size(); i++) {
             Car car = cars.get(i);
 
             moveCondition(random.random(), i);
@@ -40,21 +40,21 @@ public class Movement {
     }
 
     public String[] selectWinner() {
-        for(int i = 0; i < cars.size(); i++) {
-            isWinner(cars.get(i));
+        for (Car car : cars) {
+            isWinner(car);
         }
 
         return winners.toArray(new String[winners.size()]);
     }
 
     private void isWinner(Car car) {
-        if(car.getCarPositions() == maxPosition) {
+        if (car.getCarPositions() == maxPosition) {
             winners.add(car.getName());
         }
     }
 
     private void checkMaxPosition(int p) {
-        if(maxPosition < p) {
+        if (maxPosition < p) {
             maxPosition = p;
         }
     }

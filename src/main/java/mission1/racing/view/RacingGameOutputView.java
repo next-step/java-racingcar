@@ -11,7 +11,7 @@ public class RacingGameOutputView {
     }
 
     public void winnerView(String[] winners) {
-        for(int i = 0; i < winners.length - 1; i++) {
+        for (int i = 0; i < winners.length - 1; i++) {
             System.out.print(winners[i] + ", ");
         }
 

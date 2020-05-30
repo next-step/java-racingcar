@@ -18,7 +18,7 @@ public class RacingGame {
     private void startGame() {
         setGame();
 
-        for(int i = 0; i < time; i++) {
+        for (int i = 0; i < time; i++) {
             movement.move();
         }
     }
