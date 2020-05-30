@@ -29,7 +29,7 @@ public class Racing {
 
     private void moveCars() {
         racingCars.forEach(car -> {
-            int randomNumber = Utils.generateRandomNum();
+            int randomNumber = RandomUtils.generateRandomNum();
             car.move(() -> car.isMove(randomNumber));
         });
     }

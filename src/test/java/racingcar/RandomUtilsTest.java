@@ -5,13 +5,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class UtilsTest {
+@DisplayName("랜덤숫자 생성하는 유틸")
+class RandomUtilsTest {
     @Test
     @DisplayName("0에서 9사이의 랜덤값을 가져온다.")
     void random() {
         //given
         //when
-        int random = Utils.generateRandomNum();
+        int random = RandomUtils.generateRandomNum();
 
         //then
         assertThat(random).isBetween(0, 9);
