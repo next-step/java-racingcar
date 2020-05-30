@@ -12,3 +12,4 @@ public class RandomForwardingRule implements ForwardingRule {
         return FORWARD_STANDARD_VALUE <= RANDOM.nextInt(RANDOM_RANGE);
     }
 }
+

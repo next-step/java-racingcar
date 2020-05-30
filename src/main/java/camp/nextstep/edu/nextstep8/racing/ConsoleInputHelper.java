@@ -14,3 +14,4 @@ public class ConsoleInputHelper {
         return resolver.apply(scanner);
     }
 }
+

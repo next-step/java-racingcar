@@ -15,3 +15,4 @@ public class RacingGameApplication {
         resultView.showResult();
     }
 }
+

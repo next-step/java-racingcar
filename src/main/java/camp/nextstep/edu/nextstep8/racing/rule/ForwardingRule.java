@@ -4,3 +4,4 @@ package camp.nextstep.edu.nextstep8.racing.rule;
 public interface ForwardingRule {
     boolean canForward();
 }
+
