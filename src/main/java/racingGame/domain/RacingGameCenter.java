@@ -24,12 +24,13 @@ public class RacingGameCenter {
 		for(int i = 0 ; i < countOfTime ; i++) {
 			gameNRound(i);
 		}
-		return scoreBoard.registScore(racingCars);
+		return scoreBoard;
 	}
 
 	private void gameNRound(int round) {
 		for(int j = 0 ; j < racingCars.size() ; j++) {
 			racingCars.get(j).move(round);
+			scoreBoard.registScore(racingCars, round);
 		}
 	}
 }

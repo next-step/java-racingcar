@@ -17,6 +17,10 @@ public class OutputView {
 			System.out.println();
 		}
 		
+		printWinner(scoreBoard);
+	}
+
+	private static void printWinner(ScoreBoard scoreBoard) {
 		System.out.println(scoreBoard.getWinner() + "가 최종 우승했습니다.");
 	}
 

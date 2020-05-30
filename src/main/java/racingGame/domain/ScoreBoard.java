@@ -1,83 +1,83 @@
 package racingGame.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ScoreBoard {
-	private String[] carNames;
-	private String[][] scores;
-	private String winnerName;
+	private List<Round> round;
+	private List<RacingCar> racingCars;
+	private String winners;
 	
 	public ScoreBoard(String[] carNames, int countOfTime) {
-		this.carNames = carNames;
-		this.scores = new String[carNames.length][countOfTime];
-		this.winnerName = "";
+		round = new ArrayList<Round>();
+		for(int i = 0; i < countOfTime; i++) {
+			round.add(new Round(carNames));
+		}
+		winners = "";
 	}
 	
-	public ScoreBoard registScore(List<RacingCar> racingCars) {
-		for(int i = 0 ; i < racingCars.size() ; i++) {
-			scores[i] = racingCars.get(i).getRoundPositions();
-		}
-		return this;
+	public void registScore(List<RacingCar> racingCars, int nRound) {
+		round.get(nRound).registNRoundScore(racingCars, nRound);
+		this.racingCars = racingCars;
 	}
 	
 	public String[][] makeScoreBoard(){
-		registWinner();
-		for(int i = 0; i < carNames.length; i++) {
-			scores[i][0] = (carNames[i] + " : " + scores[i][0]);
+		int countOfCar = round.get(0).getCarNames().length;
+		String[][] scores = new String[countOfCar][round.size()];
+		for(int i = 0; i < countOfCar; i++) {
+			scores[i] = makeNRoundScoreBoard(i); 
 		}
 		return scores;
 	}
-	
-	public String registWinner() {
-		for(int i = 0; i < carNames.length; i++) {
-			winnerName = makingWinnerList(i);
-		}
-		return winnerName;
-	}
 
-	private String makingWinnerList(int targetPosition) {
-		int winnerPosition = getWinnerCount();
-		if(winnerPosition == getCarPositionCount(targetPosition)) {
-			winnerName = addComma(winnerName);
-			winnerName += carNames[targetPosition];
+	private String[] makeNRoundScoreBoard(int orderOfCar) {
+		String[] scores = new String[round.size()];
+		for(int j = 0; j < round.size(); j++) {
+			scores[j] = round.get(j).getScore()[orderOfCar];
+			if(j == 0) {
+				scores[j] = (round.get(j).getCarNames()[orderOfCar] + " : " + scores[j]);
+			}
 		}
-		return winnerName;
-	}
-
-	private String addComma(String winnerName) {
-		if(!"".equals(winnerName)) {
-			winnerName += ",";
-		}
-		return winnerName;
-	}
-
-	private int getWinnerCount() {
-		int winnerPosition = 0;
-		
-		for(int i = 0; i < carNames.length; i++) {
-			int curPosition = getCarPositionCount(i);
-			winnerPosition = compareWinnerPosition(winnerPosition, curPosition);
-		}
-		
-		return winnerPosition;
-	}
-
-	private int compareWinnerPosition(int winnerPosition, int curPosition) {
-		if(winnerPosition < curPosition) {
-			winnerPosition = curPosition;
-		}
-		return winnerPosition;
+		return scores;
 	}
 
 	public String getWinner() {
-		return winnerName;
+		int winnerPosition = getWinnerPosition();
+		
+		for(int i = 0; i < racingCars.size(); i++) {
+			winners += addComma(compareWinnerPosition(winnerPosition, i), i);
+		}
+		
+		return winners;
 	}
 
-	public int getCarPositionCount(int idx) {
-		String targetPositionString = "";
-		for(int i = 0; i < scores[idx].length; i++) {
-			targetPositionString += scores[idx][i]; 
+	private String addComma(String winner, int i) {
+		if(!winner.isEmpty() 
+				&& i != 0 
+				&& !winners.isEmpty()) {
+			return "," + winner;
 		}
-		return targetPositionString.length();
+		
+		return "" + winner;
+	}
+
+	private String compareWinnerPosition(int winnerPosition, int orderOfCar) {
+		if(racingCars.get(orderOfCar).getCountOfPosition() == winnerPosition) {
+			return racingCars.get(orderOfCar).getCarName();
+		}
+		return "";
+	}
+
+	private int getWinnerPosition() {
+		int winnerPosition = 0;
+		for(int i = 0; i < racingCars.size(); i++) {
+			int targetPosition = racingCars.get(i).getCountOfPosition();
+			winnerPosition = registWinnerPosition(winnerPosition, targetPosition);
+		}
+		return winnerPosition;
+	}
+
+	private int registWinnerPosition(int winnerPosition, int targetPosition) {
+		return (winnerPosition < targetPosition) ? targetPosition : winnerPosition;
 	}
 }
