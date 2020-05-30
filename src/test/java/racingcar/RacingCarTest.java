@@ -22,4 +22,19 @@ class RacingCarTest {
         //then
         assertThat(result).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1:0", "4:1"}, delimiter = ':')
+    @DisplayName("4이상일 경우엔 위치가 증가하고 4이하시에 위치가 변함이 없음을 확인한다.")
+    void isMove(int movingNumber, int expected) {
+        //given
+        RacingCar racingCar = new RacingCar();
+
+        //when
+        boolean isMoving = racingCar.isMove(movingNumber);
+
+        //then
+        int result = racingCar.move(() -> isMoving);
+        assertThat(result).isEqualTo(expected);
+    }
 }
