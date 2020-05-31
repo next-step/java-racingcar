@@ -12,6 +12,7 @@ public class InputView {
         int numberOfCars = Integer.parseInt(scan.nextLine().trim());
         System.out.println(QUESTION_TOTAL_ROUNDS);
         int totalRounds = Integer.parseInt(scan.nextLine().trim());
+        System.out.println();
         scan.close();
         return new InputView(numberOfCars, totalRounds);
     }
