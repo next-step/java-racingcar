@@ -6,14 +6,18 @@ public class StringCalculator {
         if (isBlank(input)) {
             throw new IllegalArgumentException();
         }
+
         String[] strArray = split(input);
         int sum = toInt(strArray[0]);
 
         for (int i = 1; i < strArray.length; i += 2) {
-            String operator = strArray[i];
-            int number = toInt(strArray[i + 1]);
-            sum = calculate(operator, sum, number);
-
+            try {
+                String operator = strArray[i];
+                int number = toInt(strArray[i + 1]);
+                sum = calculate(operator, sum, number);
+            } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException();
+            }
         }
         return sum;
     }
@@ -33,5 +37,4 @@ public class StringCalculator {
     private String[] split(String value) {
         return value.split(" ");
     }
-
 }
