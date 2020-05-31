@@ -4,28 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.assertj.core.util.Arrays;
-
 public class ScoreBoard {
 	private List<Round> round;
 	private List<RacingCar> racingCars;
 	private List<String> winners;
 
 	public ScoreBoard(String[] carNames, int countOfTime) {
-		round = new ArrayList<Round>();
+		this.round = new ArrayList<Round>();
 		for (int i = 0; i < countOfTime; i++) {
 			round.add(new Round(carNames));
 		}
-		winners = new ArrayList<String>();
+		this.winners = new ArrayList<String>();
 	}
 
-	public void registScore(List<RacingCar> racingCars, int nRound) {
-		round.get(nRound).registNRoundScore(racingCars, nRound);
-		this.racingCars = racingCars;
+	public void registScore(RacingCar racingCar, int nRound) {
+		round.get(nRound).registNRoundScore(racingCar, nRound);
 	}
 
 	public String[][] makeScoreBoard() {
-		int countOfCar = round.get(0).getCarNames().length;
+		int countOfCar = round.get(0).getCarNames().size();
 		String[][] scores = new String[countOfCar][round.size()];
 		for (int i = 0; i < countOfCar; i++) {
 			scores[i] = makeNRoundScoreBoard(i);
@@ -36,24 +33,29 @@ public class ScoreBoard {
 	private String[] makeNRoundScoreBoard(int orderOfCar) {
 		String[] scores = new String[round.size()];
 		for (int j = 0; j < round.size(); j++) {
-			scores[j] = round.get(j).getScore()[orderOfCar];
+			scores[j] = round.get(j).getScore().get(orderOfCar);
 			if (j == 0) {
-				scores[j] = (round.get(j).getCarNames()[orderOfCar] + " : " + scores[j]);
+				scores[j] = (round.get(j).getCarNames().get(orderOfCar) + " : " + scores[j]);
 			}
 		}
 		return scores;
 	}
 
 	public String getWinner() {
-		int winnerPosition = getWinnerPosition();
-
-		for (int i = 0; i < racingCars.size(); i++) {
-			registWinner(compareWinnerPosition(winnerPosition, i));
-		}
-
 		return winners.stream()
 						.map(String::valueOf)
 						.collect(Collectors.joining(","));
+	}
+
+	public ScoreBoard registWinners(List<RacingCar> racingCars) {
+		this.racingCars = racingCars;
+		int winnerPosition = getWinnerPosition();
+		
+		for (int i = 0; i < racingCars.size(); i++) {
+			String winner = compareWinnerPosition(winnerPosition, i);
+			registWinner(winner);
+		}
+		return this;
 	}
 
 	private void registWinner(String winner) {
