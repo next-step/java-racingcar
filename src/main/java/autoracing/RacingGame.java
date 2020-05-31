@@ -1,26 +1,34 @@
 package autoracing;
 
-import java.util.Scanner;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class RacingGame {
-    private static final String QUESTION_NUMBER_OF_CARS = "자동차 대수는 몇 대인가요?";
-    private static final String QUESTION_ROUNDS = "시도할 횟수는 몇 회인가요?";
 
-    private int numberOfCars;
-    private int rounds;
+    private final int totalRounds;
+    private final List<Car> participants;
 
-    public RacingGame(int numberOfCars, int rounds) {
-        this.numberOfCars = numberOfCars;
-        this.rounds = rounds;
+    public RacingGame(int numberOfCars, int totalRounds) {
+        this.totalRounds = totalRounds;
+        this.participants = IntStream.range(0, numberOfCars)
+                .mapToObj(i -> new Car())
+                .collect(Collectors.toList());
     }
 
     public static RacingGame createFromConsole() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println(QUESTION_NUMBER_OF_CARS);
-        int numberOfCars = Integer.parseInt(scan.nextLine().trim());
-        System.out.println(QUESTION_ROUNDS);
-        int rounds = Integer.parseInt(scan.nextLine().trim());
-        scan.close();
-        return new RacingGame(numberOfCars, rounds);
+        InputView inputView = InputView.takeInput(System.in);
+        return new RacingGame(inputView.getNumberOfCars(), inputView.getTotalRounds());
+    }
+
+    public void start() {
+        for (int currentRounds = 0; currentRounds < totalRounds; currentRounds++) {
+            participants.forEach(Car::race);
+        }
+    }
+
+    public void replayResult() {
+        ResultView resultView = new ResultView(participants, totalRounds, "-");
+        resultView.show();
     }
 }
