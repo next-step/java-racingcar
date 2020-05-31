@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class Car {
     private static final Random RANDOM = new Random();
+    private static final int DRIVING_THRESHOLD = 4;
 
     private final List<Movement> history;
 
@@ -30,6 +31,6 @@ public class Car {
     }
 
     private boolean canGoForward(int randomValue) {
-        return randomValue >= 4;
+        return randomValue >= DRIVING_THRESHOLD;
     }
 }
