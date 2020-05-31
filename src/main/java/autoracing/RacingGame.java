@@ -14,7 +14,7 @@ public class RacingGame {
         this.rounds = rounds;
     }
 
-    public static RacingGame inputFromConsole() {
+    public static RacingGame createFromConsole() {
         Scanner scan = new Scanner(System.in);
         System.out.println(QUESTION_NUMBER_OF_CARS);
         int numberOfCars = Integer.parseInt(scan.nextLine().trim());
