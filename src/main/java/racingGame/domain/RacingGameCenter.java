@@ -8,26 +8,29 @@ public class RacingGameCenter {
 	private List<RacingCar> racingCars;
 	private ScoreBoard scoreBoard;
 	
-	public RacingGameCenter(int countOfCar, int countOfTime) {
+	public RacingGameCenter(String carNameString, int countOfTime) {
 		this.countOfTime = countOfTime;
-		racingCars = new ArrayList<RacingCar>();
+		this.racingCars = new ArrayList<RacingCar>();
 		
-		for(int i = 0 ; i < countOfCar ; i++) {
-			racingCars.add(new RacingCar(countOfTime));
+		String[] carNames = carNameString.split(",");
+		
+		for(int i = 0 ; i < carNames.length ; i++) {
+			racingCars.add(new RacingCar(countOfTime, carNames[i]));
 		}
-		scoreBoard = new ScoreBoard(countOfCar, countOfTime);
+		scoreBoard = new ScoreBoard(carNames, countOfTime);
 	}
 
-	public String[][] gameStart() {
+	public ScoreBoard gameStart() {
 		for(int i = 0 ; i < countOfTime ; i++) {
 			gameNRound(i);
 		}
-		return scoreBoard.registScore(racingCars);
+		return scoreBoard;
 	}
 
 	private void gameNRound(int round) {
 		for(int j = 0 ; j < racingCars.size() ; j++) {
 			racingCars.get(j).move(round);
+			scoreBoard.registScore(racingCars, round);
 		}
 	}
 }
