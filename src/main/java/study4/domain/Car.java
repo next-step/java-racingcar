@@ -1,4 +1,4 @@
-package study4;
+package study4.domain;
 
 public class Car {
 	
@@ -6,8 +6,8 @@ public class Car {
 	private int position = 0; // 자동차 위치정보
 	private static String move = "-";
 	
-	public Car() {
-		
+	public Car(String carName) {
+		this.carName = carName;
 	}
 
 	public int getPosition() {

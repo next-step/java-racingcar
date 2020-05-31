@@ -1,4 +1,4 @@
-package study4;
+package study4.domain;
 
 public class ValidationCheck {
 

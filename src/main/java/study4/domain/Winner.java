@@ -1,4 +1,4 @@
-package study4;
+package study4.domain;
 
 import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
@@ -10,7 +10,7 @@ public class Winner {
 
 	private static final String suffix = "가 최종 우승 했습니다.";
 
-	List<String> winnerCarList = new ArrayList();
+	List<String> winnerCarList = new ArrayList(); // 자동차 이름만 저장하는 배열
 	int max = -1;
 
 	public List<String> winnerMaxPosition(List<Car> carlist) {
@@ -32,7 +32,6 @@ public class Winner {
 	public int maxcompare(int max, int carPosition, String carName) {
 		if (max == carPosition) {
 			winnerCarList.add(carName);
-
 		}
 
 		return carPosition;

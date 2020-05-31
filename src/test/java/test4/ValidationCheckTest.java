@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import study4.RacingGame;
-import study4.ValidationCheck;
+import study4.domain.RacingGame;
+import study4.domain.ValidationCheck;
 
 class ValidationCheckTest {
 	

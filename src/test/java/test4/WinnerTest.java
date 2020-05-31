@@ -9,10 +9,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import study4.Car;
-import study4.RacingGame;
-import study4.ResultView;
-import study4.Winner;
+import study4.domain.Car;
+import study4.domain.RacingGame;
+import study4.domain.Winner;
+import study4.view.ResultView;
 
 class WinnerTest {
 

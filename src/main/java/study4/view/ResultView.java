@@ -1,11 +1,12 @@
-package study4;
+package study4.view;
 
 import java.util.Arrays;
 import java.util.List;
 
+import study4.domain.Car;
+
 public class ResultView {
 	
-	Car car = new Car();
 	public ResultView() {
 		System.out.println("실행결과");
 	}

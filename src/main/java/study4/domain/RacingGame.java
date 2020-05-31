@@ -1,4 +1,4 @@
-package study4;
+package study4.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class RacingGame {
 
-	Car car = new Car();
 	List<Car> carList = new ArrayList<>();
 	RandomGenerator rg = new RandomGenerator();
 
@@ -21,8 +20,7 @@ public class RacingGame {
 		String[] names = carName.split(",");
 
 		for (int i = 0; i < names.length; i++) {
-			carList.add(new Car());
-			carList.get(i).setCarName(names[i]); // 이름저장
+			carList.add(new Car(names[i]));
 		}
 
 		return carList;
