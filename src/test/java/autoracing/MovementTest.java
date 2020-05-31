@@ -28,4 +28,13 @@ public class MovementTest {
         assertThat(Movement.ONE_FORWARD.getDistance()).isEqualTo(1);
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {-20, 35, 78989})
+    public void equality(int distance) {
+        Movement m1 = Movement.from(distance);
+        Movement m2 = Movement.from(distance);
+        assertThat(m1).isEqualTo(m2);
+    }
+
+
 }
