@@ -1,23 +1,34 @@
 package autoracing;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class Car {
-    private int mileage;
+    private static final Random RANDOM = new Random();
+
+    private final List<Movement> history;
 
     public Car() {
+        this.history = new ArrayList<>();
     }
 
-    public int getMileage() {
-        return mileage;
+    public List<Movement> getHistory() {
+        return new ArrayList<>(history);
     }
 
-    public boolean canGoForward(int randomValue) {
-        return randomValue >= 4;
+    public void race() {
+        race(RANDOM.nextInt(10));
     }
 
-    public int race(int randomValue) {
+    public void race(int randomValue) {
         if (canGoForward(randomValue)) {
-            mileage++;
+            history.add(Movement.STATIONARY);
         }
-        return mileage;
+        history.add(Movement.ONE_FORWARD);
+    }
+
+    private boolean canGoForward(int randomValue) {
+        return randomValue >= 4;
     }
 }
