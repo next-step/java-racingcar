@@ -7,7 +7,7 @@ import racingGame.domain.ScoreBoard;
 import racingGame.view.InputView;
 import racingGame.view.OutputView;
 
-public class RacingGameMain {
+public class RacingGameController {
 	public static void main(String[] args) {
 		// Input
 		RacingGameCenter racingGameCenter = new RacingGameCenter(InputView.inputCarNames(), InputView.inputCountOfTimes());
