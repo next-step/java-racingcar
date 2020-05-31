@@ -22,4 +22,13 @@ class RacingGameTest {
         Cars cars = racingGame.play();
         assertThat(cars.getCars().get(0).getPosition()).isEqualTo(1);
     }
+
+    @DisplayName("우승자 계산")
+    @Test
+    void calcWinner() {
+        Cars cars = racingGame.play();
+        cars.getCars().get(0).move();
+        List<String> winnerNames = racingGame.calcWinner(cars);
+        assertThat(winnerNames.get(0)).isEqualTo("c1");
+    }
 }

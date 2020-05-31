@@ -9,13 +9,12 @@ public class GameStarter {
 
         int playCnt = inputView.getPlayCount();
         ResultView resultView = new ResultView();
+        Cars cars = null;
         for (int i = 0; i < playCnt; i++) {
-            Cars cars = racingGame.play();
-            resultView.showResult(cars, isLastGame(playCnt, i));
+            cars = racingGame.play();
+            resultView.showResult(cars);
         }
-    }
 
-    private static boolean isLastGame(int playCnt, int curPlayCnt) {
-        return curPlayCnt == playCnt - 1 ? true : false;
+        resultView.showWinner(racingGame.calcWinner(cars));
     }
 }
