@@ -41,4 +41,5 @@ class WinnerTest {
 		winnerCarList = winner.winnerMaxPosition(carList);
 		assertThat(자동차이름).containsOnlyOnce(winnerCarList.get(0));
 	}
+	
 }

@@ -10,12 +10,13 @@ import study4.view.ResultView;
 
 public class RacingMain {
 	
-	static InputView inputview;
-	static ResultView resultview;
-	static Winner winner = new Winner();
-
+	
 	public static void main(String[] args) {
-
+		
+		InputView inputview;
+		ResultView resultview;
+		Winner winner = new Winner();
+		
 		inputview = new InputView(); // Racing Input
 		String carName = inputview.carInputMessages();
 		int carTrial = inputview.trialInputMessages();

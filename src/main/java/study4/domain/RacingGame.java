@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -17,12 +18,15 @@ public class RacingGame {
 	}
 
 	public List splitCarName(String carName) {
+		
 		String[] names = carName.split(",");
-
-		for (int i = 0; i < names.length; i++) {
-			carList.add(new Car(names[i]));
-		}
-
+		
+		// 리팩토링
+		Arrays.stream(names)
+			.map(Car::new)
+			.map(carList::add)
+			.collect(Collectors.toList());
+		
 		return carList;
 	}
 

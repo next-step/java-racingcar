@@ -2,7 +2,7 @@ package study4.domain;
 
 public class Car {
 	
-	private String carName= ""; // 자동차 이름
+	private String carName; // 자동차 이름
 	private int position = 0; // 자동차 위치정보
 	private static String move = "-";
 	
