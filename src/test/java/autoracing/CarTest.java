@@ -1,5 +1,6 @@
 package autoracing;
 
+import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -7,32 +8,42 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CarTest {
+    @Test
+    public void newCar() {
+        Car car = new Car();
+        Condition<Car> init = new Condition<>(c -> c.getLocation(0) == Location.STARTING_LINE, "init");
+        assertThat(car).is(init);
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> car.getLocation(1))
+                .withMessage("The car has never played that round '1'.");
+    }
+
     @ParameterizedTest
     @ValueSource(ints = {1, 5, 17})
-    public void shouldRecordWhenGoForward(int distance) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public void shouldRecordWhenDriving(int distance) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Car car = new Car();
-        Method method = Car.class.getDeclaredMethod("goForward", int.class);
+        Method method = Car.class.getDeclaredMethod("drive", int.class);
         method.setAccessible(true);
         method.invoke(car, distance);
-        int historySize = car.getHistory().size();
-        assertThat(historySize).isEqualTo(1);
-        assertThat(getLastMovement(car)).isEqualTo(Movement.from(distance));
+        int lastRound = car.getLastRound();
+        assertThat(lastRound).isEqualTo(1);
+        assertThat(car.getLocation(lastRound)).isEqualToComparingFieldByField(new Location(distance, 1));
     }
 
     @Test
-    public void shouldRecordWhenStop() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public void shouldRecordWhenStay() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Car car = new Car();
-        Method method = Car.class.getDeclaredMethod("stop");
+        Method method = Car.class.getDeclaredMethod("stay");
         method.setAccessible(true);
         method.invoke(car);
-        int historySize = car.getHistory().size();
-        assertThat(historySize).isEqualTo(1);
-        assertThat(getLastMovement(car)).isEqualTo(Movement.STATIONARY);
+        int lastRound = car.getLastRound();
+        assertThat(lastRound).isEqualTo(1);
+        assertThat(car.getLocation(lastRound)).isEqualToComparingFieldByField(new Location(0, 1));
     }
 
     @ParameterizedTest
@@ -45,28 +56,13 @@ public class CarTest {
         assertThat(enableGoForward).isEqualTo(expectedGoForward);
     }
 
-    /**
-     * 적절해 보이지 않는다.
-     */
-    @Test
-    public void shouldRecordStationaryOrGoForwardOneWhenRace() {
-        Car car = new Car();
-        IntStream.range(0, 1000).forEach(car::race);
-        assertThat(car.getHistory()).containsOnly(Movement.STATIONARY, Movement.ONE_FORWARD);
-    }
-
     @ParameterizedTest
-    @ValueSource(ints = {0, 1, 3, 8, 10, 100})
+    @ValueSource(ints = {0, 1, 3, 8, 10, 987})
     public void hasHistorySameAmountAsRounds(int rounds) {
         Car car = new Car();
         for (int i = 0; i < rounds; i++) {
             car.race();
         }
-        assertThat(car.getHistory().size()).isEqualTo(rounds);
-    }
-
-    public Movement getLastMovement(Car car) {
-        int size = car.getHistory().size();
-        return car.getHistory().get(size - 1);
+        assertThat(car.getLastRound()).isEqualTo(rounds);
     }
 }

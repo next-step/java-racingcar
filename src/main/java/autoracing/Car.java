@@ -8,14 +8,11 @@ public class Car {
     private static final Random RANDOM = new Random();
     private static final int DRIVING_THRESHOLD = 4;
 
-    private final List<Movement> history;
+    private final List<Location> history;
 
     public Car() {
         this.history = new ArrayList<>();
-    }
-
-    public List<Movement> getHistory() {
-        return new ArrayList<>(history);
+        this.history.add(Location.STARTING_LINE);
     }
 
     public void race() {
@@ -24,18 +21,33 @@ public class Car {
 
     public void race(int randomValue) {
         if (canGoForward(randomValue)) {
-            goForward(1);
+            drive(1);
             return;
         }
-        stop();
+        stay();
     }
 
-    private void goForward(int distance) {
-        history.add(Movement.from(distance));
+    public int getLastRound() {
+        return history.size() - 1;
     }
 
-    private void stop() {
-        history.add(Movement.STATIONARY);
+    public Location getLocation(int round) {
+        if (round > getLastRound()) {
+            throw new IllegalArgumentException(String.format("The car has never played that round '%d'.", round));
+        }
+        return history.get(round);
+    }
+
+    private Location getLatestLocation() {
+        return history.get(history.size() - 1);
+    }
+
+    private void drive(int distance) {
+        history.add(getLatestLocation().move(distance));
+    }
+
+    private void stay() {
+        drive(0);
     }
 
     private boolean canGoForward(int randomValue) {
