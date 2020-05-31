@@ -24,6 +24,7 @@ public class Car {
     public void race(int randomValue) {
         if (canGoForward(randomValue)) {
             history.add(Movement.ONE_FORWARD);
+            return;
         }
         history.add(Movement.STATIONARY);
     }
