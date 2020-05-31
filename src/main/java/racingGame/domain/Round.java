@@ -1,28 +1,30 @@
 package racingGame.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Round {
-	private String[] carNames;
-	private String[] score;
+	private List<String> carNames;
+	private List<String> score;
 	
 	public Round(String[] carNames) {
-		this.carNames = carNames;
-		this.score = new String[carNames.length];
+		this.carNames = new ArrayList<String>();
+		this.score = new ArrayList<String>();
+		for(int i = 0; i < carNames.length; i++) {
+			this.carNames.add(carNames[i]);
+		}
 	}
 
-	public Round registNRoundScore(List<RacingCar> racingCars, int nRound) {
-		for(int i = 0; i < racingCars.size(); i++) {
-			score[i] = racingCars.get(i).getRoundPositions(nRound);
-		}
+	public Round registNRoundScore(RacingCar racingCar, int nRound) {
+			score.add(racingCar.getRoundPositions(nRound));
 		return this;
 	}
 
-	public String[] getCarNames() {
+	public List<String> getCarNames() {
 		return carNames;
 	}
 
-	public String[] getScore() {
+	public List<String> getScore() {
 		return score;
 	}
 }

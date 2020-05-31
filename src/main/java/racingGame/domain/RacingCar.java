@@ -1,7 +1,5 @@
 package racingGame.domain;
 
-import java.util.Arrays;
-
 public class RacingCar {
 
 	private static final String MOVE = "-";
