@@ -14,6 +14,10 @@ public class Car {
         this.name = name;
     }
 
+    public Car(int position) {
+        this.carPositions = position;
+    }
+
     public void go() {
         int LIMIT = 4;
 

@@ -25,6 +25,10 @@ public class RacingGame {
         outputView.winnerView(winners.toArray(new String[winners.size()]));
     }
 
+    public int getMaxPosition() {
+        return maxPosition;
+    }
+
     private void getWinners(Car car) {
         if (car.isWinner(maxPosition)) {
             winners.add(car.getName());
@@ -41,7 +45,7 @@ public class RacingGame {
         System.out.println();
     }
 
-    private void checkMaxPosition(int p) {
+    public void checkMaxPosition(int p) {
         if (maxPosition < p) {
             maxPosition = p;
         }
