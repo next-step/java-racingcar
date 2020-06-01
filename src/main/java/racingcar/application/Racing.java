@@ -14,9 +14,15 @@ public class Racing {
     private List<RacingCar> racingCars;
 
     public Racing(String inputCarNames, int tryTime) {
+        existCarNames(inputCarNames);
         String[] splitCarNames = splitComma(inputCarNames);
         racingCars = createRacingCar(splitCarNames);
         this.tryTime = tryTime;
+    }
+
+    private void existCarNames(String inputCarNames) {
+        if (inputCarNames == null || inputCarNames.isEmpty())
+            throw new NullPointerException("이름을 입력해주세요.");
     }
 
     private String[] splitComma(String inputCarNames) {
