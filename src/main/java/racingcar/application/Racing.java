@@ -18,12 +18,6 @@ public class Racing {
         this.tryTime = tryTime;
     }
 
-    private List<RacingCar> createRacingCar(int carNum) {
-        return IntStream.range(Const.INITIAL_NUM, carNum)
-                .mapToObj(car -> new RacingCar())
-                .collect(Collectors.toList());
-    }
-
     public List<RacingCarPositions> startRace() {
         List<RacingCarPositions> racingCarPositions = new ArrayList<>();
         IntStream.range(Const.INITIAL_NUM, tryTime)
@@ -31,11 +25,15 @@ public class Racing {
         return racingCarPositions;
     }
 
+    private List<RacingCar> createRacingCar(int carNum) {
+        return IntStream.range(Const.INITIAL_NUM, carNum)
+                .mapToObj(car -> new RacingCar())
+                .collect(Collectors.toList());
+    }
+
     private RacingCarPositions moveCars() {
         List<RacingCarPosition> racingCarPositions = new ArrayList<>();
-        racingCars.forEach(car -> {
-            racingCarPositions.add(new RacingCarPosition(moveCar(car)));
-        });
+        racingCars.forEach(car -> racingCarPositions.add(new RacingCarPosition(moveCar(car))));
         return new RacingCarPositions(racingCarPositions);
     }
 
