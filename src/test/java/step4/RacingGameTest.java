@@ -2,7 +2,6 @@ package step4;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step4.strategy.TestMove;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingGameTest {
 
     private List<String> carNames = new ArrayList<>(Arrays.asList("c1", "c2", "c3"));
-    private RacingGame racingGame = new RacingGame(carNames, new TestMove());
+    private RacingGame racingGame = new RacingGame(carNames, () -> true);
 
     @DisplayName("play시 자동차 이동 확인")
     @Test
