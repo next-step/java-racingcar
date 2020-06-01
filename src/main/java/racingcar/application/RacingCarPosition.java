@@ -6,8 +6,8 @@ import racingcar.utils.Const;
 import java.util.stream.IntStream;
 
 public class RacingCarPosition {
-    private static final int NUMBER_MOVING_STANDARD = 4;
-    private static final String PROGRESS_POSITION = "-";
+    private final int NUMBER_MOVING_STANDARD = 4;
+    private final String PROGRESS_POSITION = "-";
     private int position;
 
     public RacingCarPosition(int position) {
