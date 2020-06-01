@@ -22,8 +22,9 @@ class WinnerTest {
 	Car pobi;
 	Car conan;
 	Car nana;
-	
+
 	List<Car> winnerlist;
+
 	@BeforeEach
 	void 시작_하기전_메소드() {
 		pobi = new Car("pobi", 3);
@@ -41,13 +42,13 @@ class WinnerTest {
 	void 우승자_구하기() {
 		assertThat(winnerlist).hasSize(2);
 	}
-	
+
 	@Test
 	@DisplayName("우승자는 포비와 나나다")
 	void 우승자는_포비와나나_를_포함한다() {
 		assertThat(winnerlist).contains(pobi, nana);
 	}
-		
+
 	@Test
 	@DisplayName("우승자의 position이 최대값이다.")
 	void 우승자의_최대값은_max와같다() {

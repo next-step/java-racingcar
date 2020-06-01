@@ -52,11 +52,15 @@ public class Winner {
 			System.out.print(winnerList.get(0).getCarName() + suffix);
 		}
 		if (winnerList.size() != 1) { // winnerList가 2개 이상일 때
-			for(Car car : winnerList) {
-			System.out.print(String.join(",", car.getCarName()) + suffix);
-			}
+			morethanTwoWinners(winnerList);
 		}
 
 		return winnerList;
+	}
+
+	private void morethanTwoWinners(List<Car> winnerList) {
+		for (Car car : winnerList) {
+			System.out.print(String.join(",", car.getCarName()) + suffix);
+		}
 	}
 }

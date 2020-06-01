@@ -18,15 +18,12 @@ public class RacingGame {
 	}
 
 	public static List splitCarName(String carName) {
-		
+
 		String[] names = carName.split(",");
-		
+
 		// 리팩토링
-		Arrays.stream(names)
-			.map(Car::new)
-			.map(carList::add)
-			.collect(Collectors.toList());
-		
+		Arrays.stream(names).map(Car::new).map(carList::add).collect(Collectors.toList());
+
 		return carList;
 	}
 
