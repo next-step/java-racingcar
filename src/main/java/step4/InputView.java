@@ -30,4 +30,10 @@ public class InputView {
 
 
     }
+    public int getInputTime(){
+        return this.inputTime;
+    }
+    public String[] getnameList(){
+        return this.nameList;
+    };
 }
