@@ -15,6 +15,6 @@ public class GameStarter {
             resultView.showResult(cars);
         }
 
-        resultView.showWinner(racingGame.calcWinner(cars));
+        resultView.showWinner(cars.getWinnerNames());
     }
 }

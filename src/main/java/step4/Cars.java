@@ -1,8 +1,10 @@
 package step4;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
+    private int maxPosition;
     private List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -11,5 +13,17 @@ public class Cars {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public List<String> getWinnerNames() {
+        calcMaxPosition();
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
+    private void calcMaxPosition() {
+        maxPosition = cars.stream().mapToInt(Car::getPosition).max().getAsInt();
     }
 }

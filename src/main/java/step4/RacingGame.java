@@ -26,12 +26,4 @@ public class RacingGame {
     private void calcMove(Car car) {
         if (moveStrategy.move()) car.move();
     }
-
-    public List<String> calcWinner(Cars cars) {
-        int maxPosition = cars.getCars().stream().mapToInt(Car::getPosition).max().getAsInt();
-        return cars.getCars().stream()
-                .filter(car -> car.getPosition() == maxPosition)
-                .map(Car::getName)
-                .collect(Collectors.toList());
-    }
 }
