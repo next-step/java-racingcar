@@ -16,6 +16,10 @@ public class RacingCar {
         return carName;
     }
 
+    public int getPosition() {
+        return position.getPosition();
+    }
+
     public boolean isMove(int randomNumber) {
         return randomNumber >= NUMBER_MOVING_STANDARD;
     }

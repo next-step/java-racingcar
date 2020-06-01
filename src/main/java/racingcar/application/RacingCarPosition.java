@@ -25,6 +25,10 @@ public class RacingCarPosition {
         return randomNumber >= NUMBER_MOVING_STANDARD;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();

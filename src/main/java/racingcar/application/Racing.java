@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Racing {
-    private final String SYMBOL_COMMA = ",";
     private final int tryTime;
     private List<RacingCar> racingCars;
 
@@ -21,7 +20,7 @@ public class Racing {
     }
 
     private String[] splitComma(String inputCarNames) {
-        return inputCarNames.split(SYMBOL_COMMA);
+        return inputCarNames.split(Const.SYMBOL_COMMA);
     }
 
     public List<RacingCarPositions> startRace() {

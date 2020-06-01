@@ -1,5 +1,6 @@
 package racingcar.application;
 
+import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 
@@ -12,5 +13,6 @@ public class RacingMain {
         Racing racing = new Racing("pobi,crong,honux", 4);
 
         ResultView.results(racing.getRacingCars(), racing.startRace());
+        ResultView.whoIsWinner(racing.getRacingCars());
     }
 }
