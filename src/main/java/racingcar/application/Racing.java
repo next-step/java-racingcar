@@ -20,6 +20,13 @@ public class Racing {
         this.tryTime = tryTime;
     }
 
+    public List<RacingCarPositions> startRace() {
+        List<RacingCarPositions> racingCarPositions = new ArrayList<>();
+        IntStream.range(Const.INITIAL_NUM, tryTime)
+                .forEach(tryNum -> racingCarPositions.add(moveCars()));
+        return racingCarPositions;
+    }
+
     private void existCarNames(String inputCarNames) {
         if (inputCarNames == null || inputCarNames.isEmpty())
             throw new NullPointerException("이름을 입력해주세요.");
@@ -27,13 +34,6 @@ public class Racing {
 
     private String[] splitComma(String inputCarNames) {
         return inputCarNames.split(Const.SYMBOL_COMMA);
-    }
-
-    public List<RacingCarPositions> startRace() {
-        List<RacingCarPositions> racingCarPositions = new ArrayList<>();
-        IntStream.range(Const.INITIAL_NUM, tryTime)
-                .forEach(tryNum -> racingCarPositions.add(moveCars()));
-        return racingCarPositions;
     }
 
     private List<RacingCar> createRacingCar(String[] carNames) {
