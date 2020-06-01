@@ -14,10 +14,6 @@ public class RacingCarPosition {
         this.position = position;
     }
 
-    public int getPosition() {
-        return position;
-    }
-
     public int move(MovingStrategy movingStrategy) {
         if (movingStrategy.isMove()) {
             return ++position;

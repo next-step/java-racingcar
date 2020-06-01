@@ -3,7 +3,6 @@ package racingcar.application;
 import racingcar.domain.RacingCar;
 import racingcar.utils.Const;
 import racingcar.utils.RandomUtils;
-import racingcar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,18 +34,13 @@ public class Racing {
     private RacingCarPositions moveCars() {
         List<RacingCarPosition> racingCarPositions = new ArrayList<>();
         racingCars.forEach(car -> {
-            racingCarPositions.add(new RacingCarPosition(moveCar2(car)));
+            racingCarPositions.add(new RacingCarPosition(moveCar(car)));
         });
         return new RacingCarPositions(racingCarPositions);
     }
 
-    private void moveCar(RacingCar car) {
+    private int moveCar(RacingCar car) {
         int randomNumber = RandomUtils.generateRandomNum();
-        car.move2(() -> car.isMove(randomNumber));
-    }
-
-    private int moveCar2(RacingCar car) {
-        int randomNumber = RandomUtils.generateRandomNum();
-        return car.position2.move(() -> car.isMove(randomNumber));
+        return car.position.move(() -> car.isMove(randomNumber));
     }
 }
