@@ -15,7 +15,7 @@ class RacingTest {
     @ParameterizedTest
     @CsvSource(value = {"pobi,crong,honux=3"}, delimiter = '=')
     @DisplayName("경주할 자동자를 split로 분리한 후 명수가 맞는지 확인한다.")
-    void name(String inputCarNames, int expected) {
+    void splitComma(String inputCarNames, int expected) {
         Racing racing = new Racing(inputCarNames, Const.INITIAL_NUM);
         assertThat(racing.getRacingCars().size()).isEqualTo(expected);
     }
