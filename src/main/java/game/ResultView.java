@@ -2,9 +2,7 @@ package game;
 
 public class ResultView {
 
-    public final static String LOG = "-";
-
-    public final static String LOG_DISPLAY = LOG;
+    public final static String LOG_DISPLAY = "-";
 
     /**
      * 경기 결과 화면 출력
@@ -21,6 +19,7 @@ public class ResultView {
 
     /**
      * 입력 문자 횟수 만큼 화면에 출력
+     *
      * @param displayCount
      * @param logDisplay
      */

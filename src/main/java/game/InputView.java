@@ -14,8 +14,13 @@ public class InputView {
         this.scanner = scanner;
     }
 
+    public Scanner getScanner() {
+        return scanner;
+    }
+
     /**
      * 압력 항목 요구 메시지 화면 출력
+     *
      * @param message
      */
     public void viewMessage(String message) {
@@ -57,6 +62,7 @@ public class InputView {
 
         return input;
     }
+
 
     public static InputView create() {
         return new InputView();
