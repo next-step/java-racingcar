@@ -35,14 +35,18 @@ public class Racing {
     private RacingCarPositions moveCars() {
         List<RacingCarPosition> racingCarPositions = new ArrayList<>();
         racingCars.forEach(car -> {
-            moveCar(car);
-            racingCarPositions.add(new RacingCarPosition(car.getPosition()));
+            racingCarPositions.add(new RacingCarPosition(moveCar2(car)));
         });
         return new RacingCarPositions(racingCarPositions);
     }
 
     private void moveCar(RacingCar car) {
         int randomNumber = RandomUtils.generateRandomNum();
-        car.move(() -> car.isMove(randomNumber));
+        car.move2(() -> car.isMove(randomNumber));
+    }
+
+    private int moveCar2(RacingCar car) {
+        int randomNumber = RandomUtils.generateRandomNum();
+        return car.position2.move(() -> car.isMove(randomNumber));
     }
 }
