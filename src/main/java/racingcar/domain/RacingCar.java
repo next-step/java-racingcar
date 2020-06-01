@@ -1,21 +1,26 @@
 package racingcar.domain;
 
+import racingcar.application.RacingCarPosition;
+import racingcar.utils.Const;
+
 public class RacingCar {
     private static final int NUMBER_MOVING_STANDARD = 4;
-    private int position;
+    public RacingCarPosition position = new RacingCarPosition(Const.INITIAL_NUM);
+    private final String carName;
 
-    public int move(MovingStrategy movingStrategy) {
-        if (movingStrategy.isMove()) {
-            return ++position;
-        }
-        return position;
+    public RacingCar(String carName) {
+        this.carName = carName;
+    }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public int getPosition() {
+        return position.getPosition();
     }
 
     public boolean isMove(int randomNumber) {
         return randomNumber >= NUMBER_MOVING_STANDARD;
-    }
-
-    public int getPosition() {
-        return position;
     }
 }

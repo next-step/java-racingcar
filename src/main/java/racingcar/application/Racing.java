@@ -3,7 +3,6 @@ package racingcar.application;
 import racingcar.domain.RacingCar;
 import racingcar.utils.Const;
 import racingcar.utils.RandomUtils;
-import racingcar.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,35 +13,47 @@ public class Racing {
     private final int tryTime;
     private List<RacingCar> racingCars;
 
-    public Racing(int carNum, int tryTime) {
-        racingCars = createRacingCar(carNum);
+    public Racing(String inputCarNames, int tryTime) {
+        existCarNames(inputCarNames);
+        String[] splitCarNames = splitComma(inputCarNames);
+        racingCars = createRacingCar(splitCarNames);
         this.tryTime = tryTime;
     }
 
-    private List<RacingCar> createRacingCar(int carNum) {
-        return IntStream.range(Const.INITIAL_NUM, carNum)
-                .mapToObj(car -> new RacingCar())
-                .collect(Collectors.toList());
-    }
-
-    public ResultView startRace() {
+    public List<RacingCarPositions> startRace() {
         List<RacingCarPositions> racingCarPositions = new ArrayList<>();
         IntStream.range(Const.INITIAL_NUM, tryTime)
                 .forEach(tryNum -> racingCarPositions.add(moveCars()));
-        return ResultView.from(racingCarPositions);
+        return racingCarPositions;
+    }
+
+    private void existCarNames(String inputCarNames) {
+        if (inputCarNames == null || inputCarNames.isEmpty())
+            throw new NullPointerException("이름을 입력해주세요.");
+    }
+
+    private String[] splitComma(String inputCarNames) {
+        return inputCarNames.split(Const.SYMBOL_COMMA);
+    }
+
+    private List<RacingCar> createRacingCar(String[] carNames) {
+        return IntStream.range(Const.INITIAL_NUM, carNames.length)
+                .mapToObj(index -> new RacingCar(carNames[index]))
+                .collect(Collectors.toList());
     }
 
     private RacingCarPositions moveCars() {
         List<RacingCarPosition> racingCarPositions = new ArrayList<>();
-        racingCars.forEach(car -> {
-            moveCar(car);
-            racingCarPositions.add(new RacingCarPosition(car.getPosition()));
-        });
+        racingCars.forEach(car -> racingCarPositions.add(new RacingCarPosition(moveCar(car))));
         return new RacingCarPositions(racingCarPositions);
     }
 
-    private void moveCar(RacingCar car) {
+    private int moveCar(RacingCar car) {
         int randomNumber = RandomUtils.generateRandomNum();
-        car.move(() -> car.isMove(randomNumber));
+        return car.position.move(() -> car.isMove(randomNumber));
+    }
+
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
     }
 }
