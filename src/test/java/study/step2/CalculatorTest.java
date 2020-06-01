@@ -5,105 +5,66 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import stringcalculator.Calculator;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+
 
 public class CalculatorTest {
 
-    private Calculator calculator = new Calculator();
-
-    private static double calculate(String operator, double operand1, double operand2){
-        return Calculator.calculate(operator, operand1, operand2);
-    }
-
+    private Calculator calculator;
 
     @BeforeEach
-    void Calculator(){
-
+    void Calculator() {
+        calculator = new Calculator();
     }
 
-    @DisplayName("덧셈기능 테스트")
-    @Test
-    void add(){
-        //String result = calculator.trimInputExpression("2 + 3");
-
+    @DisplayName("정상 계산식 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"5 * 4 / 2:10", "10 + 2 * 3 / 4:9"}, delimiter = ':')
+    void normalCalculation(String inputExpression, double expectedResult){
+        double result = calculator.calculate(inputExpression);
+        assertThat(result).isEqualTo(expectedResult);
     }
 
-    @DisplayName("덧셈기능 테스트")
-    @Test
-    void calculateTest(){
-
-        String input = "2 + 3 + 5";
-        String[] split = input.split(" ");
-
-        //  홀짝으로 분리. 그다음 calculate mapping은 어떻게 진행해야할까요?
-        IntStream.range(0, split.length).filter(i -> i % 2 == 0).forEach(i -> System.out.println(split[i]));
-        IntStream myIntStream = IntStream.range(0, split.length).filter(i -> i % 2 == 0);
-
-        //List<Integer> intList = myIntStream.mapToObj(i->i).collect(Collectors.toList());
-
-
-        IntStream.range(0, split.length).filter(i -> i % 2 != 0).forEach(i -> System.out.println(split[i]));
-    }
-
-
-    @DisplayName("뺄셈기능 테스트")
-    @Test
-    void sub(){
-//        double result = calculator.trimInputExpression("5 - 4");
-//        assertThat(result).isEqualTo(1.0);
-    }
-
-    @DisplayName("뺄셈기능 테스트")
-    @Test
-    void mutiple(){
-//        double result = calculator.trimInputExpression("3 * 4");
-//        assertThat(result).isEqualTo(12.0);
-    }
-
-    @DisplayName("나눗셈 기능 테스트")
-    @Test
-    void divide(){
-//        double result = calculator.trimInputExpression("4 / 2");
-//        assertThat(result).isEqualTo(20.0);
+    @DisplayName("비정상 계산식 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"5 * 4 / 2:10", "10 + 2 * 3 / 4:9"}, delimiter = ':')
+    void abnormalCalculation(String inputExpression, double expectedResult){
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            calculator.calculate(inputExpression);
+        });
     }
 
     @DisplayName("입력값 null or 공백 테스트")
     @Test
     @ParameterizedTest
     @ValueSource(strings = {"", " "})
-    void IsEmptyOrNullString(String input){
-        assertTrue(Strings.isNullOrEmpty(input));
+    void IsEmptyOrNullString(String inputExpression){
+        assertThat(calculator.inputExpressionIsNotNull(inputExpression)).isEqualTo(true);
     }
 
-    @DisplayName("적절한 연산자가 들어왔는지 테스트")
-    @Test
-    void isNotOperator(){
-        assertThatThrownBy(() -> calculator.isNotValidOperator("2 # 4"))
-        .isInstanceOf(IllegalArgumentException.class)
-        .hasMessageContaining("잘못된 연산자 입력");
-
+    @DisplayName("정상 연산자 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"+:5", "*:6", "-:1", "/:1.5"}, delimiter = ':')
+    void normalOperator(String inputExpression, double expectedResult){
+        double operand1 = 3, operand2 = 2;
+        assertThat(calculator.getOperation(inputExpression, operand1, operand2)).isEqualTo(expectedResult);
     }
 
-    @DisplayName("사칙연산을 모두 포함하는 기능 구현")
-    @Test
-    void calculatorTest(){
-//        double result = calculator.trimInputExpression("2 + 3 * 4");
-//        assertThat(result).isEqualTo(20.0);
+    @DisplayName("정상 연산자 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"@:5", "(:6", "^:1", "$:1.5"}, delimiter = ':')
+    void abnormalOperator(String inputExpression, double expectedResult){
+        double operand1 = 3, operand2 = 2;
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            calculator.getOperation(inputExpression, operand1, operand2);
+        });
     }
-
-
-
 
 }
