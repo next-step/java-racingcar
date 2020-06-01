@@ -9,7 +9,6 @@ public class RandomGenerator {
 
 	public int randomGenerate() {
 		Random ran = new Random();
-		int a = ran.nextInt(randomrange);
-		return a;
+		return ran.nextInt(randomrange);
 	}
 }

@@ -3,11 +3,15 @@ package study4.domain;
 public class Car {
 	
 	private String carName; // 자동차 이름
-	private int position = 0; // 자동차 위치정보
+	private int position; // 자동차 위치정보
 	private static String move = "-";
 	
 	public Car(String carName) {
+		this(carName, 0);
+	}
+	public Car(String carName, int position) {
 		this.carName = carName;
+		this.position = position;
 	}
 
 	public int getPosition() {
