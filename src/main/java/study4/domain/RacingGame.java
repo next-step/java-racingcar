@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class RacingGame {
 
-	List<Car> carList = new ArrayList<>();
+	static List<Car> carList = new ArrayList();
 	RandomGenerator rg = new RandomGenerator();
 
 	public RacingGame(String carName, int carTrial) { // 시작 전 유효성 체크 // 생성자
@@ -17,7 +17,7 @@ public class RacingGame {
 		vc.moveCountCheck(carTrial);
 	}
 
-	public List splitCarName(String carName) {
+	public static List splitCarName(String carName) {
 		
 		String[] names = carName.split(",");
 		

@@ -19,10 +19,11 @@ class WinnerTest {
 
 	List<Car> carlist = new ArrayList();
 	Winner winner = new Winner();
-	static Car pobi;
-	static Car conan;
-	static Car nana;
-
+	Car pobi;
+	Car conan;
+	Car nana;
+	
+	List<Car> winnerlist;
 	@BeforeEach
 	void 시작_하기전_메소드() {
 		pobi = new Car("pobi", 3);
@@ -32,23 +33,24 @@ class WinnerTest {
 		carlist.add(pobi);
 		carlist.add(conan);
 		carlist.add(nana);
-		
+		winnerlist = winner.winnerMaxPosition(carlist);
 	}
 
 	@Test
-	@DisplayName("우승자는 두명이다 + 우승자는 pobi와 nana를 포함한다.")
+	@DisplayName("우승자는 두명이다")
 	void 우승자_구하기() {
-
-		List<Car> winnerlist = winner.winnerMaxPosition(carlist);
-
 		assertThat(winnerlist).hasSize(2);
-		assertThat(winnerlist).contains(pobi, nana);
-		assertThat(winnerlist.get(0).getPosition()).isEqualTo(3);
 	}
 	
 	@Test
+	@DisplayName("우승자는 포비와 나나다")
+	void 우승자는_포비와나나_를_포함한다() {
+		assertThat(winnerlist).contains(pobi, nana);
+	}
+		
+	@Test
+	@DisplayName("우승자의 position이 최대값이다.")
 	void 우승자의_최대값은_max와같다() {
-		List<Car> winnerlist = winner.winnerMaxPosition(carlist);
 		assertThat(winnerlist.get(0).getPosition()).isEqualTo(3);
 	}
 }
