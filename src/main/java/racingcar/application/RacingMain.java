@@ -11,6 +11,6 @@ public class RacingMain {
 //        Racing racing = new Racing(carNum, tryNum);
         Racing racing = new Racing("pobi,crong,honux", 4);
 
-        ResultView.results(racing.startRace());
+        ResultView.results(racing.getRacingCars(), racing.startRace());
     }
 }

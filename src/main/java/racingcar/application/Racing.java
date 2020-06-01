@@ -33,7 +33,7 @@ public class Racing {
 
     private List<RacingCar> createRacingCar(String[] carNames) {
         return IntStream.range(Const.INITIAL_NUM, carNames.length)
-                .mapToObj(car -> new RacingCar())
+                .mapToObj(index -> new RacingCar(carNames[index]))
                 .collect(Collectors.toList());
     }
 
