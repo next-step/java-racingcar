@@ -4,17 +4,17 @@ import java.util.Scanner;
 
 public class InputView {
     private final int numberOfCar;
-    private final int attempt;
+    private final int numberOfRound;
 
     private final static Scanner SCANNER = new Scanner(System.in);
 
-    private InputView(int numberOfCar, int attempt) {
+    private InputView(int numberOfCar, int numberOfRound) {
         this.numberOfCar = numberOfCar;
-        this.attempt = attempt;
+        this.numberOfRound = numberOfRound;
     }
 
     public static InputView enterInput() {
-        return new InputView(enterNumberOfCar(), enterAttempt());
+        return new InputView(enterNumberOfCar(), enterNumberOfRound());
     }
 
     private static int enterNumberOfCar() {
@@ -22,7 +22,7 @@ public class InputView {
         return SCANNER.nextInt();
     }
 
-    private static int enterAttempt() {
+    private static int enterNumberOfRound() {
         System.out.println("시도 횟수를 입력하세요.");
         return SCANNER.nextInt();
     }
@@ -31,7 +31,7 @@ public class InputView {
         return numberOfCar;
     }
 
-    public int getAttempt() {
-        return attempt;
+    public int getNumberOfRound() {
+        return numberOfRound;
     }
 }
