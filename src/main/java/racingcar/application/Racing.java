@@ -25,11 +25,11 @@ public class Racing {
                 .collect(Collectors.toList());
     }
 
-    public ResultView startRace() {
+    public List<RacingCarPositions> startRace() {
         List<RacingCarPositions> racingCarPositions = new ArrayList<>();
         IntStream.range(Const.INITIAL_NUM, tryTime)
                 .forEach(tryNum -> racingCarPositions.add(moveCars()));
-        return ResultView.from(racingCarPositions);
+        return racingCarPositions;
     }
 
     private RacingCarPositions moveCars() {
