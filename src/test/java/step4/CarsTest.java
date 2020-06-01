@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,5 +24,13 @@ class CarsTest {
     @Test
     void carsSize() {
         assertThat(cars.getCars().size()).isEqualTo(2);
+    }
+
+    @DisplayName("우승자 계산")
+    @Test
+    void calcWinner() {
+        cars.getCars().get(0).move();
+        List<String> winnerNames = cars.getWinnerNames();
+        assertThat(winnerNames.get(0)).isEqualTo("c1");
     }
 }
