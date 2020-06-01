@@ -9,7 +9,7 @@ public class RacingMain {
 //        int tryNum = InputView.tryTime();
 
 //        Racing racing = new Racing(carNum, tryNum);
-        Racing racing = new Racing(2, 4);
+        Racing racing = new Racing("pobi,crong,honux", 4);
 
         ResultView.results(racing.startRace());
     }

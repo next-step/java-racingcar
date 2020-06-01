@@ -10,12 +10,18 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Racing {
+    private final String SYMBOL_COMMA = ",";
     private final int tryTime;
     private List<RacingCar> racingCars;
 
-    public Racing(int carNum, int tryTime) {
-        racingCars = createRacingCar(carNum);
+    public Racing(String inputCarNames, int tryTime) {
+        String[] splitCarNames = splitComma(inputCarNames);
+        racingCars = createRacingCar(splitCarNames);
         this.tryTime = tryTime;
+    }
+
+    private String[] splitComma(String inputCarNames) {
+        return inputCarNames.split(SYMBOL_COMMA);
     }
 
     public List<RacingCarPositions> startRace() {
@@ -25,8 +31,8 @@ public class Racing {
         return racingCarPositions;
     }
 
-    private List<RacingCar> createRacingCar(int carNum) {
-        return IntStream.range(Const.INITIAL_NUM, carNum)
+    private List<RacingCar> createRacingCar(String[] carNames) {
+        return IntStream.range(Const.INITIAL_NUM, carNames.length)
                 .mapToObj(car -> new RacingCar())
                 .collect(Collectors.toList());
     }
@@ -40,5 +46,9 @@ public class Racing {
     private int moveCar(RacingCar car) {
         int randomNumber = RandomUtils.generateRandomNum();
         return car.position.move(() -> car.isMove(randomNumber));
+    }
+
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
     }
 }
