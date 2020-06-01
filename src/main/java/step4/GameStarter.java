@@ -9,12 +9,11 @@ public class GameStarter {
 
         int playCnt = inputView.getPlayCount();
         ResultView resultView = new ResultView();
-        Cars cars = null;
         for (int i = 0; i < playCnt; i++) {
-            cars = racingGame.play();
-            resultView.showResult(cars);
+            racingGame.play();
+            resultView.showResult(racingGame.getCars());
         }
 
-        resultView.showWinner(cars.getWinnerNames());
+        resultView.showWinner(racingGame.getCars().getWinnerNames());
     }
 }

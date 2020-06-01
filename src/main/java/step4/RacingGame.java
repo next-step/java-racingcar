@@ -16,14 +16,11 @@ public class RacingGame {
         this.moveStrategy = moveStrategy;
     }
 
-    public Cars play() {
-        cars.getCars().forEach(it -> {
-            calcMove(it);
-        });
-        return cars;
+    public void play() {
+        cars.move(moveStrategy);
     }
 
-    private void calcMove(Car car) {
-        if (moveStrategy.move()) car.move();
+    public Cars getCars() {
+        return cars;
     }
 }

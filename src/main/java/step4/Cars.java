@@ -1,5 +1,7 @@
 package step4;
 
+import step4.strategy.MoveStrategy;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,5 +27,12 @@ public class Cars {
 
     private void calcMaxPosition() {
         maxPosition = cars.stream().mapToInt(Car::getPosition).max().getAsInt();
+    }
+
+    public void move(MoveStrategy moveStrategy) {
+        cars.forEach(car -> {
+            if (moveStrategy.move())
+                car.move();
+        });
     }
 }
