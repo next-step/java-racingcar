@@ -11,7 +11,7 @@ public class Car {
 
     public static void checkCarName(String carName) {
         if (carName.isEmpty()) {
-            throw new IllegalArgumentException("이름이 비어있습니다. 이름을 모두 입력해주세요.");
+            throw new IllegalArgumentException("이름이 비어있습니다. 이름을 입력해주세요.");
         }
     }
 
