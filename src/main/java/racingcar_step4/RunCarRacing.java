@@ -1,5 +1,10 @@
 package racingcar_step4;
 
+import racingcar_step4.domain.Cars;
+import racingcar_step4.model.Car;
+import racingcar_step4.view.InputView;
+import racingcar_step4.view.ResultView;
+
 import java.util.List;
 
 public class RunCarRacing {
@@ -8,16 +13,15 @@ public class RunCarRacing {
         List<Car> cars = InputView.getCarNames();
         int racingCount = InputView.getRacingCount();
 
-        CarRacingGame carRacingGame = new CarRacingGame(cars);
-        cars = carRacingGame.getCars();
+        Cars racingCar = new Cars(cars);
+        cars = racingCar.getCars();
 
         for (int i=0; i < racingCount; i++) {
-            cars = carRacingGame.runRacing();
+            cars = racingCar.runRacing();
             ResultView.viewRound(cars);
         }
 
-        RacingCarRank racingCarRank = new RacingCarRank();
-        List<Car> winner = racingCarRank.rankCars(cars);
+        List<Car> winner = racingCar.rankCars(cars);
         ResultView.viewRacingCarWinners(winner);
     }
 }

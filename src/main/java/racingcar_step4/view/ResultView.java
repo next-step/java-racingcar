@@ -1,4 +1,6 @@
-package racingcar_step4;
+package racingcar_step4.view;
+
+import racingcar_step4.model.Car;
 
 import java.util.List;
 

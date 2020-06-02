@@ -1,17 +1,38 @@
-package racingcar_step4;
+package racingcar_step4.domain;
+
+import racingcar_step4.model.Car;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class RacingCarRank {
+public class Cars {
 
-    private List<Car> winners;
+    private List<Car> cars;
+
+    public Cars() {
+    }
+
+    public Cars(List<Car> names) {
+        this.cars = names;
+    }
+
+    public List<Car> runRacing() {
+        for (Car car : cars) {
+            car.move();
+        }
+        return cars;
+    }
+
+    public List<Car> getCars() {
+        return this.cars;
+    }
 
     public List<Car> rankCars(List<Car> cars) {
-        reverseSortCars(cars);
 
-        winners = new ArrayList<>();
+        List<Car> winners = new ArrayList<>();
+
+        reverseSortCars(cars);
         Car winner = cars.get(0);
         winners.add(winner);
 
@@ -27,7 +48,7 @@ public class RacingCarRank {
 
     private void checkSameScore(Car winner, Car otherCar) {
         if (winner.compareTo(otherCar) == 0) {
-            winners.add(otherCar);
+            cars.add(otherCar);
         }
     }
 }
