@@ -1,6 +1,8 @@
-package study.nextstep.stage4;
+package study.nextstep.stage5.view;
 
-public class DefaultStandardIORenderer implements Renderer{
+import study.nextstep.stage5.domain.GameStatus;
+
+public class DefaultStandardIORenderer implements Renderer {
     private static final String POSITION_RENDER_CHARACTER = "-";
 
     @Override
