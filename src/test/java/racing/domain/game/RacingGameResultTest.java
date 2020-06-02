@@ -2,7 +2,7 @@ package racing.domain.game;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racing.domain.car.Car;
+import racing.domain.car.RacingCars;
 import racing.domain.car.TestCarForwardBehavior;
 import racing.domain.car.TestCarStopBehavior;
 
@@ -12,39 +12,33 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameResultTest {
-    private List<Car> carPositions;
+    private RacingCars racingCars;
     private List<String> winnerList;
 
     @BeforeEach
     void setup() {
-        carPositions = new ArrayList<>();
         winnerList = new ArrayList<>();
 
-        Car car1 = new Car("pobi");
-        Car car2 = new Car("crong");
-        Car car3 = new Car("honux");
+        RacingCars racingCars = new RacingCars("pobi,crong,honux");
 
-        car1.move(new TestCarForwardBehavior());
-        car1.move(new TestCarForwardBehavior());
-        carPositions.add(car1);
+        racingCars.getCars().get(0).move(new TestCarForwardBehavior());
+        racingCars.getCars().get(0).move(new TestCarForwardBehavior());
 
-        car2.move(new TestCarForwardBehavior());
-        car2.move(new TestCarStopBehavior());
-        carPositions.add(car2);
+        racingCars.getCars().get(1).move(new TestCarForwardBehavior());
+        racingCars.getCars().get(1).move(new TestCarStopBehavior());
 
-        car3.move(new TestCarForwardBehavior());
-        car3.move(new TestCarForwardBehavior());
-        carPositions.add(car3);
+        racingCars.getCars().get(2).move(new TestCarForwardBehavior());
+        racingCars.getCars().get(2).move(new TestCarForwardBehavior());
 
-        winnerList.add(car1.getCarName());
-        winnerList.add(car3.getCarName());
+        winnerList.add(racingCars.getCars().get(0).getCarName());
+        winnerList.add(racingCars.getCars().get(2).getCarName());
     }
 
     @Test
     void getWinners() {
-        RacingGameResult racingGameResult = new RacingGameResult(carPositions, winnerList);
+        List<String> winner = new ArrayList<>();
+        RacingGameResult racingGameResult = new RacingGameResult(racingCars, winner);
 
         assertThat(racingGameResult.getWinnerList()).isEqualTo(winnerList);
     }
-
 }

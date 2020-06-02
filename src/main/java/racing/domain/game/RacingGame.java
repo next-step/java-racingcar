@@ -23,7 +23,7 @@ public class RacingGame {
 
     public List<String> getWinnersCarName() {
         List<String> winnerList = new ArrayList<>();
-        RacingGameResult racingGameResult = new RacingGameResult(racingCars.getCars(), winnerList);
+        RacingGameResult racingGameResult = new RacingGameResult(racingCars, winnerList);
         return racingGameResult.getWinnerList();
     }
 }

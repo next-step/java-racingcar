@@ -1,35 +1,38 @@
 package racing.domain.game;
 
 import racing.domain.car.Car;
+import racing.domain.car.RacingCars;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGameResult {
-    private final List<Car> carPositions;
-    private static List<String> winnerList;
+    private RacingCars racingCars;
+    private List<String> winnerList;
 
-    public RacingGameResult(List<Car> carPositions, List<String> winners) {
-        this.carPositions = carPositions;
+    public RacingGameResult(RacingCars racingCars, List<String> winners) {
+        this.racingCars = racingCars;
         this.winnerList = getWinnerCars(getMaxPosition());
     }
 
     public int getMaxPosition() {
-        return carPositions.stream()
+        return racingCars.getCars()
+                .stream()
                 .max(Comparator.comparing(Car::getPosition))
                 .get()
                 .getPosition();
     }
 
     public List<String> getWinnerCars(int maxCarPosition) {
-        return carPositions.stream()
+        return racingCars.getCars()
+                .stream()
                 .filter(list -> list.getPosition() == maxCarPosition)
                 .map(list -> list.getCarName())
                 .collect(Collectors.toList());
     }
 
-    public static List<String> getWinnerList() {
+    public List<String> getWinnerList() {
         return winnerList;
     }
 }
