@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class RacingTest {
     RacingRandom random = new RacingRandom();
     RacingGame racingGame = new RacingGame();
+    Car car = new Car(5);
 
     @DisplayName("랜덤의 범위가 0~9인지 확인")
     @Test
@@ -31,18 +32,26 @@ public class RacingTest {
             positions[i] = Integer.parseInt(strNums[i]);
         }
 
+        int max = 0;
         for (int p : positions) {
-            racingGame.checkMaxPosition(p);
+            max = racingGame.checkMaxPosition(max, p);
         }
 
-        assertEquals(racingGame.getMaxPosition(), expected);
+        assertEquals(max, expected);
     }
 
     @DisplayName("우승자를 제대로 가져오는지 확인 - 파라미터와 동일한 경우 true 반환")
     @ParameterizedTest
     @CsvSource(value = {"1 : false", "3 : false", "5 : true", "6 : false", "0 : false"}, delimiter = ':')
-    void testMaxPosition(int maxPosition, boolean expected) {
-        Car car = new Car(5);
+    void testGetWinner(int maxPosition, boolean expected) {
         assertEquals(car.isWinner(maxPosition), expected);
     }
+
+    @DisplayName("자동차의 이동이 제대로 이뤄지는지 확인 - 파라미터가 4이상일때 true return")
+    @ParameterizedTest
+    @CsvSource(value = {"1 : false", "3 : false", "5 : true", "6 : true", "0 : false"}, delimiter = ':')
+    void testCarMovementCondition(int randomValue, boolean expected) {
+        assertEquals(car.moveCondition(randomValue), expected);
+    }
 }
+
