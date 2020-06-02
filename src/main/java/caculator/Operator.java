@@ -6,14 +6,14 @@ import java.util.function.BiFunction;
 
 public class Operator {
 
-    private static final Map<String, BiFunction<Double, Double, Double>> OPERATOR_MAP  = new HashMap<String, BiFunction<Double, Double, Double>>()
-    {{
-        put("+", (left, right) -> left + right);
-        put("-", (left, right) -> left - right);
-        put("/", (left, right) -> left / right);
-        put("*", (left, right) -> left * right);
-    }};
-
+    private static final Map<String, BiFunction<Double, Double, Double>> OPERATOR_MAP  = new HashMap<>();
+    static {
+        OPERATOR_MAP.put("+", (left, right) -> left + right);
+        OPERATOR_MAP.put("-", (left, right) -> left - right);
+        OPERATOR_MAP.put("/", (left, right) -> left / right);
+        OPERATOR_MAP.put("*", (left, right) -> left * right);
+    }
+    
     public double calculate(final double left, final String operator, final String right) {
         if (!isNumeric(right)) throw new IllegalArgumentException();
         return calculate(left, operator, Double.parseDouble(right));

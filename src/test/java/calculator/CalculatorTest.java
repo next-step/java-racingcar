@@ -4,8 +4,12 @@ import caculator.Calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -43,14 +47,18 @@ public class CalculatorTest {
 
     @ParameterizedTest
     @DisplayName("모든 사칙 연산 테스트")
-    @CsvSource({
-            "7, 10 * 2 / 5 - 3 + 6",
-            "26, 50 * 4 / 8 - 6 + 7",
-            "-2, 4 + 2 + 5 - 12 * 6 / 3"
-    })
+    @MethodSource("provideOperationForCalculationLogic")
     void testAllOperator(double expected, String expression) {
         double actual = calculator.calculate(expression);
         assertThat(actual).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> provideOperationForCalculationLogic() {
+        return Stream.of(
+                Arguments.of(7, "10 * 2 / 5 - 3 + 6"),
+                Arguments.of(26, "50 * 4 / 8 - 6 + 7"),
+                Arguments.of(-2, "4 + 2 + 5 - 12 * 6 / 3")
+        );
     }
 
     @ParameterizedTest
