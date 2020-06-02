@@ -35,6 +35,10 @@ public class RacingGame {
         return Math.max(max, position);
     }
 
+    public List<String> getWinnersArrayList() {
+        return winners;
+    }
+
     private String[] getWinners() {
         int maxPosition = getMaxPosition();
         for (Car car: cars) addWinner(car, maxPosition);
@@ -42,7 +46,7 @@ public class RacingGame {
         return winners.toArray(new String[winners.size()]);
     }
 
-    private void addWinner(Car car, int maxPosition) {
+    public void addWinner(Car car, int maxPosition) {
         if (car.isWinner(maxPosition)) {
             winners.add(car.getName());
         }
