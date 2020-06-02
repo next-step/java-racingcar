@@ -48,11 +48,11 @@ public class GameStatusTest {
     public void firstRunnerWinTest() {
         GameStatus status = new GameStatus(3, 3);
         while (status.totalTurn(new Random() {
-            int runner = 1;
+            boolean isFirstRunner = true;
             @Override
             public int nextInt(int bound) {
-                if (runner == 1) {
-                    runner--;
+                if (isFirstRunner) {
+                    isFirstRunner = false;
                     return bound - 1;
                 }
                 return 0;
