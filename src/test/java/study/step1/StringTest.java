@@ -1,4 +1,4 @@
-package study;
+package study.step1;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -32,7 +32,7 @@ public class StringTest {
         String input = "abc";
         int index = 5;
         assertThatThrownBy(() -> {
-            char result = input.charAt(index);
+            input.charAt(index);
         }).isInstanceOf(StringIndexOutOfBoundsException.class)
                 .hasMessage("Index: %d, Size: %d", index, input.length());
     }
