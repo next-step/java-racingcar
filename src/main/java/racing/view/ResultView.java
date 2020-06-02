@@ -4,6 +4,7 @@ import racing.domain.car.Car;
 import racing.domain.game.RacingGame;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
     private static final String DELIMITER = " : ";
@@ -35,13 +36,9 @@ public class ResultView {
     public static void printWinner(RacingGame racingGame) {
         List<String> winners = racingGame.getWinnersCarName();
 
-        StringBuilder stringBuilder = new StringBuilder();
+        String winnerNames = winners.stream()
+                .collect(Collectors.joining(COMMA));
 
-        winners.stream().forEach(value -> stringBuilder.append(value).append(COMMA));
-
-        stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
-        stringBuilder.append("가 최종 우승했습니다.");
-
-        System.out.println(stringBuilder);
+        System.out.println(winnerNames + "가 최종 우승했습니다.");
     }
 }
