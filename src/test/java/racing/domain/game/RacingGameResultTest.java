@@ -3,8 +3,8 @@ package racing.domain.game;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racing.domain.car.RacingCars;
-import racing.domain.car.TestCarForwardBehavior;
-import racing.domain.car.TestCarStopBehavior;
+import racing.domain.test.TestCarForwardBehavior;
+import racing.domain.test.TestCarStopBehavior;
 
 import java.util.ArrayList;
 import java.util.List;
