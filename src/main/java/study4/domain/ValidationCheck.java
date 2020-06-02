@@ -1,4 +1,4 @@
-package study4;
+package study4.domain;
 
 public class ValidationCheck {
 
@@ -6,7 +6,7 @@ public class ValidationCheck {
 		if (carName.equals("") || carName.equals(" ")) {
 			throw new IllegalArgumentException("자동차이름을 다시 입력해주세요.");
 		}
-		
+
 		if (!carName.contains(",")) {
 			throw new IllegalArgumentException("이름을 ,로 구분지어 주세요");
 		}

@@ -5,7 +5,6 @@ import java.util.List;
 
 public class ResultView {
 	
-	Car car = new Car();
 	public ResultView() {
 		System.out.println("실행결과");
 	}

@@ -1,14 +1,14 @@
-package study4;
+package study4.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
-	Car car = new Car();
-	List<Car> carList = new ArrayList<>();
+	static List<Car> carList = new ArrayList();
 	RandomGenerator rg = new RandomGenerator();
 
 	public RacingGame(String carName, int carTrial) { // 시작 전 유효성 체크 // 생성자
@@ -17,13 +17,12 @@ public class RacingGame {
 		vc.moveCountCheck(carTrial);
 	}
 
-	public List splitCarName(String carName) {
+	public static List splitCarName(String carName) {
+
 		String[] names = carName.split(",");
 
-		for (int i = 0; i < names.length; i++) {
-			carList.add(new Car());
-			carList.get(i).setCarName(names[i]); // 이름저장
-		}
+		// 리팩토링
+		Arrays.stream(names).map(Car::new).map(carList::add).collect(Collectors.toList());
 
 		return carList;
 	}

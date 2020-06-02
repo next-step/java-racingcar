@@ -5,40 +5,53 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import study4.Car;
-import study4.RacingGame;
-import study4.ResultView;
-import study4.Winner;
+import study4.domain.Car;
+import study4.domain.RacingGame;
+import study4.domain.Winner;
+import study4.view.ResultView;
 
 class WinnerTest {
 
-	String 자동차이름 = "pobi,choi";
-	ResultView resultview = new ResultView();
+	List<Car> carlist = new ArrayList();
 	Winner winner = new Winner();
-	List<String> winnerCarList = new ArrayList();
+	Car pobi;
+	Car conan;
+	Car nana;
 
-	int max1 = -1;
-	int 시도횟수 = 5;
-
-	RacingGame rg = new RacingGame(자동차이름, 시도횟수);
-	List<Car> carList = rg.splitCarName(자동차이름);
+	List<Car> winnerlist;
 
 	@BeforeEach
-	@DisplayName("우승자 체크 시작 전 메소드")
-	void 우승자_체크_시작전_메소드() {
+	void 시작_하기전_메소드() {
+		pobi = new Car("pobi", 3);
+		conan = new Car("conan", 2);
+		nana = new Car("nana", 3);
 
-		carList = resultview.outputResult(rg.racingcarMove(carList));
-
+		carlist.add(pobi);
+		carlist.add(conan);
+		carlist.add(nana);
+		winnerlist = winner.winnerMaxPosition(carlist);
 	}
 
 	@Test
-	@DisplayName("우승자는 carName에 속한다")
-	void 우승자가_입력값에_포함되는지_검증하는_메소드() {
-		winnerCarList = winner.winnerMaxPosition(carList);
-		assertThat(자동차이름).containsOnlyOnce(winnerCarList.get(0));
+	@DisplayName("우승자는 두명이다")
+	void 우승자_구하기() {
+		assertThat(winnerlist).hasSize(2);
+	}
+
+	@Test
+	@DisplayName("우승자는 포비와 나나다")
+	void 우승자는_포비와나나_를_포함한다() {
+		assertThat(winnerlist).contains(pobi, nana);
+	}
+
+	@Test
+	@DisplayName("우승자의 position이 최대값이다.")
+	void 우승자의_최대값은_max와같다() {
+		assertThat(winnerlist.get(0).getPosition()).isEqualTo(3);
 	}
 }

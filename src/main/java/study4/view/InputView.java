@@ -1,4 +1,4 @@
-package study4;
+package study4.view;
 
 import java.util.ArrayList;
 import java.util.List;

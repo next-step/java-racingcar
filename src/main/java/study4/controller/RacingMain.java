@@ -1,18 +1,22 @@
-package study4;
+package study4.controller;
 
 import java.util.List;
 import java.util.Scanner;
 
+import study4.domain.RacingGame;
+import study4.domain.Winner;
+import study4.view.InputView;
+import study4.view.ResultView;
+
 public class RacingMain {
-	// 함수(또는 메소드)의 길이가 15라인을 넘어가지 않도록 구현한다.
-	// 위 규칙 적용을 위해 객체 선언을 main메소드 밖으로 빼고 static으로 선언해도 괜찮나요?
-
-	static InputView inputview;
-	static ResultView resultview;
-	static Winner winner = new Winner();
-
+	
+	
 	public static void main(String[] args) {
-
+		
+		InputView inputview;
+		ResultView resultview;
+		Winner winner = new Winner();
+		
 		inputview = new InputView(); // Racing Input
 		String carName = inputview.carInputMessages();
 		int carTrial = inputview.trialInputMessages();
