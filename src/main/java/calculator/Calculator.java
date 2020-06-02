@@ -6,28 +6,30 @@ import java.util.Queue;
 public class Calculator {
     public String inputer(String input) {
         String[] inputArr = input.split(" ");
-        if(inputArr.length < 3 || input.length() % 2 != 1){
-            throw new IllegalArgumentException();
+
+        if(inputArr.length < 3 || inputArr.length % 2 != 1){
+            throw new IllegalArgumentException("입력값 오류");
         }
 
         Queue<String> queue = new LinkedList<>();
-        for(int i=0; i<inputArr.length; i++) {
+        for (int i=0; i<inputArr.length; i++) {
             queue.offer(inputArr[i]);
         }
 
-        int res = Integer.valueOf(queue.poll());
+        int result = 0;
+        try {
+            result = Integer.valueOf(queue.poll());
 
-        while(!queue.isEmpty()) {
-            String symbol = queue.poll();
-            int b = Integer.valueOf(queue.poll());
-            res = calculate(symbol, res, b);
+            while(!queue.isEmpty()) {
+                String symbol = queue.poll();
+                int num = Integer.valueOf(queue.poll());
+                result = CalculatorType.calculate(symbol, result, num);
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException("숫자가 아닌 입력값 오류");
         }
 
-        return String.valueOf(res);
-    }
-
-    int calculate(String symbol, int a, int b) {
-            return CalculatorType.calculate(symbol, a, b);
+        return String.valueOf(result);
     }
 
 }

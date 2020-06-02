@@ -27,7 +27,7 @@ public class CalculatorTest {
 
     @DisplayName("예외처리")
     @ParameterizedTest
-    @ValueSource(strings = {"5 % 3", " ", "3 3"})
+    @ValueSource(strings = {"5 % 3", " ", "3 3", "a b"})
     void exceptionTest(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> calculator.inputer(input));
     }
