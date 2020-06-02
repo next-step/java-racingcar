@@ -19,9 +19,9 @@ public class RacingGameResult {
     public int getMaxPosition() {
         return racingCars.getCars()
                 .stream()
-                .max(Comparator.comparing(Car::getPosition))
-                .get()
-                .getPosition();
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(() -> new IllegalArgumentException());
     }
 
     public List<String> getWinnerCars(int maxCarPosition) {
