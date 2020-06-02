@@ -13,7 +13,7 @@ public class RacingCarsTest {
     @DisplayName("자동차 이름을 공백으로 받을 때")
     @ValueSource(strings = {" "})
     void checkEmptyInputName(String input) {
-        assertThatThrownBy(() -> RacingCars.checkInputName(input))
+        assertThatThrownBy(() -> new RacingCars(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름이 비어있습니다. 이름을 입력해주세요.");
     }
@@ -22,7 +22,7 @@ public class RacingCarsTest {
     @DisplayName("자동차 이름을 null로 받을 때")
     @NullSource
     void checkNullInputName(String input) {
-        assertThatThrownBy(() -> RacingCars.checkInputName(input))
+        assertThatThrownBy(() -> new RacingCars(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름이 비어있습니다. 이름을 입력해주세요.");
     }

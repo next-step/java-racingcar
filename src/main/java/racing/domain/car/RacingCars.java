@@ -24,7 +24,7 @@ public class RacingCars {
         return carsPositions;
     }
 
-    public static void checkInputName(String inputName) {
+    private void checkInputName(String inputName) {
         if (Objects.isNull(inputName) || inputName.equals(" ")) {
             throw new IllegalArgumentException("이름이 비어있습니다. 이름을 입력해주세요.");
         }
