@@ -10,12 +10,18 @@ public class Car {
         this.carName = inputCarName;
     }
 
-    public void goPosition() {
-        this.position += 1;
+    public void goStopPosition(boolean greaterCheck) {
+        if(greaterCheck){
+            this.position += 1;
+        }
     }
 
     public int getPosition() {
         return this.position;
+    }
+
+    public String getCarName() {
+        return this.carName;
     }
 
     public boolean canGo(int number) {

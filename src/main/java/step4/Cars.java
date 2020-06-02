@@ -20,20 +20,11 @@ public class Cars {
     public void playGame(Dice dice) {
         for (Car car : this.carList) {
             boolean greaterCheck = car.canGo(dice.makeNumber());
-            if (greaterCheck) {
-                car.goPosition();
-            }
+            car.goStopPosition(greaterCheck);
         }
     }
 
-    public List<Integer> getPositionList() {
-
-        List<Integer> positionList = new ArrayList();
-
-        for (Car car : this.carList) {
-            positionList.add(car.getPosition());
-        }
-
-        return positionList;
+    public List<Car> getCarList() {
+        return this.carList;
     }
 }

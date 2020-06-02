@@ -19,8 +19,8 @@ public class  ParserUtils {
         }
     }
 
-    private static void isBlank(String name) {
-        if(name.isBlank()){
+    private static void isBlank(String inputName) {
+        if(inputName.isEmpty()){
             throw new IllegalArgumentException("입력문자에 공백이 있습니다.");
         }
     }

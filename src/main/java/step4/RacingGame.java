@@ -15,8 +15,8 @@ public class RacingGame {
         for (int time = 0; time < inputView.getInputTime(); time++) {
 
             cars.playGame(dice);
-            List<Integer> positionList = cars.getPositionList();
-            outputView.resultPrint(positionList);
+            List<Car> carList = cars.getCarList();
+            outputView.resultPrint(carList);
             System.out.println("============" + (time + 1) + "실행 끝==================");
         }
     }
