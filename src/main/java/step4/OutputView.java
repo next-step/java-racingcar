@@ -9,12 +9,13 @@ public class OutputView {
 
     public void resultPrint(List<Car> positionList) {
         for (Car car : positionList) {
-            drawRepeat(car.getPosition(), car.getCarName());
+            String resultOutputString = makeResultString(car.getPosition(), car.getCarName());
+            System.out.println(resultOutputString);
         }
     }
 
-    private void drawRepeat(int times, String carName) {
+    private String makeResultString(int times, String carName) {
         String markFullString = String.join("", Collections.nCopies(times, MARK));
-        System.out.println(carName + ": " + markFullString);
+        return carName + ": " + markFullString;
     }
 }

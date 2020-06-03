@@ -1,7 +1,4 @@
 package step4;
-
-import step3.Dice;
-
 import java.util.Random;
 
 public class DiceWithRandom implements Dice {

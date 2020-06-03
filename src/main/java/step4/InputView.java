@@ -9,7 +9,7 @@ public class InputView {
     private Scanner scanner;
     private String[] nameList;
 
-    public InputView(Scanner scan){
+    public InputView(Scanner scan) {
         scanner = scan;
     }
 
@@ -27,13 +27,15 @@ public class InputView {
         if (inputTime < 1) {
             throw new IllegalArgumentException("반복횟수가 0보다 작을 수 없습니다.");
         }
-
-
     }
-    public int getInputTime(){
+
+    public int getInputTime() {
         return this.inputTime;
     }
-    public String[] getnameList(){
+
+    public String[] getnameList() {
         return this.nameList;
-    };
+    }
+
+    ;
 }

@@ -1,7 +1,5 @@
 package step4;
 
-import step3.Dice;
-
 import java.util.ArrayList;
 import java.util.List;
 
