@@ -1,6 +1,8 @@
 package autoracing;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,19 +20,12 @@ public class LocationTest {
         assertThat(startingLine.move(13)).isNotEqualTo(startingLine);
     }
 
-    @Test
-    public void testMove() {
+    @ParameterizedTest
+    @CsvSource({"3,3", "-2,-2", "0,0"})
+    public void testMove(int movement, int expectingDistance) {
         Location startingLine = Location.STARTING_LINE;
-        Location goingForward = startingLine.move(3);
+        Location goingForward = startingLine.move(movement);
         assertThat(goingForward.getRound()).isEqualTo(startingLine.getRound() + 1);
-        assertThat(goingForward.getDistance()).isEqualTo(3);
-
-        Location goingBackward = goingForward.move(-2);
-        assertThat(goingBackward.getRound()).isEqualTo(goingForward.getRound() + 1);
-        assertThat(goingBackward.getDistance()).isEqualTo(1);
-
-        Location stoping = goingBackward.move(0);
-        assertThat(stoping.getRound()).isEqualTo(goingBackward.getRound() + 1);
-        assertThat(stoping.getDistance()).isEqualTo(1);
+        assertThat(goingForward.getDistance()).isEqualTo(expectingDistance);
     }
 }
