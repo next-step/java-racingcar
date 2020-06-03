@@ -2,7 +2,9 @@ package racing.view;
 
 import racing.domain.car.Car;
 import racing.domain.game.RacingGame;
+import racing.domain.game.RacingGameResult;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,7 +36,9 @@ public class ResultView {
     }
 
     public static void printWinner(RacingGame racingGame) {
-        List<String> winners = racingGame.getWinnersCarName();
+        List<String> winners = new ArrayList<>();
+        RacingGameResult racingGameResult = new RacingGameResult(racingGame.getRacingCars(), winners);
+        winners = racingGameResult.getWinnerList();
 
         String winnerNames = winners.stream()
                 .collect(Collectors.joining(COMMA));

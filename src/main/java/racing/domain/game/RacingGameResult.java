@@ -3,7 +3,6 @@ package racing.domain.game;
 import racing.domain.car.Car;
 import racing.domain.car.RacingCars;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
