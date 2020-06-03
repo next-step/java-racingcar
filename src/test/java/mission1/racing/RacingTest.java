@@ -67,11 +67,12 @@ public class RacingTest {
         assertEquals(car.isWinner(maxPosition), expected);
     }
 
-    @DisplayName("자동차의 이동이 제대로 이뤄지는지 확인 - 파라미터가 4이상일때 true return")
+    @DisplayName("자동차의 이동이 제대로 이뤄지는지 확인 - 파라미터가 4 이상일때 carPosition 증가 ")
     @ParameterizedTest
-    @CsvSource(value = {"1 : false", "3 : false", "5 : true", "6 : true", "0 : false"}, delimiter = ':')
-    void testCarMovementCondition(int randomValue, boolean expected) {
-        assertEquals(car.moveCondition(randomValue), expected);
+    @CsvSource(value = {"0, 5", "1, 5", "3, 5", "4, 6", "5, 6", "6, 6"}, delimiter = ',')
+    void testCarGo(int randomValue, int expectedPosition) {
+        car.go(randomValue);
+        assertEquals(car.getCarPositions(), expectedPosition);
     }
 }
 

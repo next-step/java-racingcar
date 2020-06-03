@@ -8,8 +8,6 @@ public class Car {
     private int carPositions;
     private final int LIMIT = 4;
 
-    private RacingRandom random = new RacingRandom();
-
     public Car(String name) {
         this.name = name;
     }
@@ -18,8 +16,8 @@ public class Car {
         this.carPositions = position;
     }
 
-    public void go() {
-        if (moveCondition(random.random())) {
+    public void go(int randomValue) {
+        if (moveCondition(randomValue)) {
             carPositions++;
         }
     }
@@ -36,7 +34,7 @@ public class Car {
         return name;
     }
 
-    public boolean moveCondition(int randomValue) {
+    private boolean moveCondition(int randomValue) {
         return randomValue >= LIMIT;
     }
 }

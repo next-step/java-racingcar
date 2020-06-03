@@ -12,6 +12,7 @@ public class RacingGame {
 
     private Car[] cars;
     private List<String> winners = new ArrayList<>();
+    private RacingRandom random = new RacingRandom();
 
     public void announceWinners() {
         setGame();
@@ -56,7 +57,7 @@ public class RacingGame {
 
     private void startGame() {
         for (Car car : cars) {
-            car.go();
+            car.go(random.random());
             RacingGameOutputView.resultView(car.getName(), car.getCarPositions());
         }
 
