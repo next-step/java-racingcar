@@ -11,5 +11,6 @@
 - [ ] `RandomRacingRule`로 떼어 냈더니 `canGoForward()`를 어떻게 테스트해야 할 지 전혀 감이 잡히지 않습니다...
 - [ ] 조건을 달아서 하나의 테스트 코드로 만드는 것이 가능할까요? 가능하다면 그게 적절한 방안인가요?
   - 예를 들어, `RandomRacingRule`의 경우 `bound`가 0 이하일 경우 `IllegalArgumentException`을 던지고, 아닐 경우 잘 생성된다. 라는 걸 표현하고 싶어요.
+- [ ] [이 리뷰](https://github.com/next-step/java-racingcar/pull/950#discussion_r433089480)에서 말씀하시는 것이, RacingRule이라는 녀석을 넣음으로, 객체 비교가 애매해진 것 같아요... 이러한 경우에도 expectCar 객체를 만드는 게 좋은 선택인가요?
 - [x] [~~private method는 어떻게 테스트하는 것이 좋을까요?~~](https://github.com/next-step/java-racingcar/pull/950#discussion_r433089075)
 - [x] [~~test code에서 반복되는 코드를 묶어서 메소드로 만드는 게 적절한 걸까요?~~](https://github.com/next-step/java-racingcar/pull/950#discussion_r433089085)
