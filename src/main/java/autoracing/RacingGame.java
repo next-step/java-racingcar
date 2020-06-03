@@ -28,7 +28,7 @@ public class RacingGame {
     }
 
     public void replayResult() {
-        ResultView resultView = new ResultView(participants, totalRounds, "-");
+        ResultView resultView = new ResultView(participants, totalRounds, "-", "실행 결과");
         resultView.show();
     }
 }

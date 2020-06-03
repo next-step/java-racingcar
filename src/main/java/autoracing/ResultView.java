@@ -11,12 +11,13 @@ public class ResultView {
     private final List<Car> cars;
     private final int totalRounds;
     private final CharSequence traceSign;
-    private String resultTitle = "실행 결과";
+    private final String resultTitle;
 
-    public ResultView(List<Car> cars, int totalRounds, CharSequence traceSign) {
+    public ResultView(List<Car> cars, int totalRounds, CharSequence traceSign, String resultTitle) {
         this.cars = cars;
         this.totalRounds = totalRounds;
         this.traceSign = traceSign;
+        this.resultTitle = resultTitle;
     }
 
     public void show() {
