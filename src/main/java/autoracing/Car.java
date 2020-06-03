@@ -2,25 +2,19 @@ package autoracing;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Car {
-    private static final Random RANDOM = new Random();
-    private static final int DRIVING_THRESHOLD = 4;
-
     private final List<Location> history;
+    private final RacingRule rule;
 
-    public Car() {
+    public Car(RacingRule rule) {
         this.history = new ArrayList<>();
         this.history.add(Location.STARTING_LINE);
+        this.rule = rule;
     }
 
     public void race() {
-        race(RANDOM.nextInt(10));
-    }
-
-    public void race(int randomValue) {
-        if (canGoForward(randomValue)) {
+        if (rule.canGoForward()) {
             drive(1);
             return;
         }
@@ -48,9 +42,5 @@ public class Car {
 
     private void stay() {
         drive(0);
-    }
-
-    private boolean canGoForward(int randomValue) {
-        return randomValue >= DRIVING_THRESHOLD;
     }
 }
