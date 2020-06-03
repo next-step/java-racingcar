@@ -39,7 +39,7 @@ public class Car {
     }
 
     private Location getLatestLocation() {
-        return history.get(history.size() - 1);
+        return history.get(getLastRound());
     }
 
     private void drive(int distance) {
