@@ -1,5 +1,8 @@
 package stringcalculator;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum Operator {
     ADDITION("+", (int a, int b) -> a + b),
     SUBTRACTION("-", (int a, int b) -> a - b),
@@ -11,30 +14,29 @@ public enum Operator {
         return a / b;
     });
 
-    private final String stringValue;
-    private final BinaryExpression expression;
     static final String NOT_VALID_OPERATOR_EXCEPTION_MESSAGE = "Not valid operator string: ";
-    static final Operator[] operators;
+    static final Map<String, Operator> operators;
 
     static {
-
+        operators = new HashMap<>();
+        for (Operator o : values()) {
+            operators.put(o.stringValue, o);
+        }
     }
+
+    private final String stringValue;
+    private final BinaryExpression expression;
 
     Operator(String stringValue, BinaryExpression expression) {
         this.stringValue = stringValue;
         this.expression = expression;
     }
 
-    static {
-        // for caching
-        operators = values();
-    }
 
     public static Operator from(String expression) {
-        for (Operator operator : operators) {
-            if (operator.stringValue.equals(expression)) {
-                return operator;
-            }
+        Operator operator = operators.get(expression);
+        if (operator != null) {
+            return operator;
         }
         throw new IllegalArgumentException(getErrorMessage(expression));
     }
