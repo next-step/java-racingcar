@@ -16,18 +16,18 @@ public class RacingGame {
     public void announceWinners() {
         setGame();
 
-        for (int i = 0; i < time; i++) startGame();
+        for (int i = 0; i < time; i++) {
+            startGame();
+        }
 
         RacingGameOutputView.winnerView(getWinners());
     }
 
     public int getMaxPosition() {
         int maxPosition = 0;
-
         for (Car car : cars)  {
             maxPosition = checkMaxPosition(maxPosition, car.getCarPositions());
         }
-
         return maxPosition;
     }
 
@@ -41,7 +41,9 @@ public class RacingGame {
 
     private String[] getWinners() {
         int maxPosition = getMaxPosition();
-        for (Car car: cars) addWinner(car, maxPosition);
+        for (Car car: cars) {
+            addWinner(car, maxPosition);
+        }
 
         return winners.toArray(new String[winners.size()]);
     }
