@@ -16,6 +16,8 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CarTest {
+    private final int NEVER_PLAYED_ROUND_WHEN_CAR_RACED_ONLY_ONCE = 2;
+
     private RacingRule rule;
 
     @BeforeAll
@@ -69,15 +71,17 @@ public class CarTest {
             car.race();
         }
         int expectedNeverPlayedRound = rounds + 1;
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            car.getLocation(expectedNeverPlayedRound);
-        }).withMessage(String.format("The car has never played that round '%d'.", expectedNeverPlayedRound));
+        assertThatIllegalArgumentExceptionIsThrownByCarGetLocation(car, expectedNeverPlayedRound);
     }
 
     private Location getFirstRoundLocation(Car car) {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            car.getLocation(2);
-        }).withMessage("The car has never played that round '2'.");
+        assertThatIllegalArgumentExceptionIsThrownByCarGetLocation(car, NEVER_PLAYED_ROUND_WHEN_CAR_RACED_ONLY_ONCE);
         return car.getLocation(1);
+    }
+
+    private void assertThatIllegalArgumentExceptionIsThrownByCarGetLocation(Car car, int round) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            car.getLocation(round);
+        }).withMessage(String.format("The car has never played that round '%d'.", round));
     }
 }
