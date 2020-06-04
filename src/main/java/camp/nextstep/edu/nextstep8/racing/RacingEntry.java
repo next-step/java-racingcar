@@ -1,5 +1,7 @@
 package camp.nextstep.edu.nextstep8.racing;
 
+import camp.nextstep.edu.nextstep8.racing.rule.ForwardingRule;
+
 import java.util.List;
 
 public class RacingEntry {
@@ -9,8 +11,8 @@ public class RacingEntry {
         this.entryList = entryList;
     }
 
-    public void move() {
-        entryList.forEach(RacingCar::move);
+    public void move(ForwardingRule forwardingRule) {
+        entryList.forEach(car -> car.move(forwardingRule));
     }
 
     public List<RacingCar> getEntryList() {

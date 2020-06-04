@@ -20,8 +20,8 @@ class RacingEntryTest {
         int carNumbers = 3;
 
         // when
-        RacingEntry racingEntry = new RacingEntry(generateEntryList(carNumbers, new MoveForwardingRuleStub()));
-        racingEntry.move();
+        RacingEntry racingEntry = new RacingEntry(generateEntryList(carNumbers));
+        racingEntry.move(new MoveForwardingRuleStub());
 
         // then
         int movedCarCount = (int) racingEntry.getEntryList().stream().filter(r -> r.getPosition() > 0).count();
@@ -35,18 +35,18 @@ class RacingEntryTest {
         int carNumbers = 3;
 
         // when
-        RacingEntry racingEntry = new RacingEntry(generateEntryList(carNumbers, new NotMoveForwardingRuleStub()));
-        racingEntry.move();
+        RacingEntry racingEntry = new RacingEntry(generateEntryList(carNumbers));
+        racingEntry.move(new NotMoveForwardingRuleStub());
 
         // then
         int movedCarCount = (int) racingEntry.getEntryList().stream().filter(r -> r.getPosition() > 0).count();
         assertThat(movedCarCount).isEqualTo(0);
     }
 
-    private List<RacingCar> generateEntryList(int carNumbers, ForwardingRule forwardingRule) {
+    private List<RacingCar> generateEntryList(int carNumbers) {
         List<RacingCar> entryList = new ArrayList<>();
         for(int i = 0; i < carNumbers; i++) {
-            entryList.add(new RacingCar(forwardingRule));
+            entryList.add(new RacingCar(String.valueOf(i)));
         }
         return entryList;
     }

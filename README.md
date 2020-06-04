@@ -28,8 +28,8 @@ end code block
 </pre>
 ## 기능 요구사항
 ### 초간단 자동차 경주 게임을 구현한다.
-* [ ] [feat#1] 각 자동차에 이름을 부여할 수 있다. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
-* [ ] [feat#2] 자동차 이름은 쉼표(,)를 기준으로 구분한다.
+* [X] [feat#1] 각 자동차에 이름을 부여할 수 있다. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
+* [X] [feat#2] 자동차 이름은 쉼표(,)를 기준으로 구분한다.
 * [ ] [feat#3] 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.
 <pre><code>경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).
 pobi,crong,honux
@@ -81,15 +81,15 @@ pobi, honux가 최종 우승했습니다.</code></pre>
 ## 개선 요구사항
 ### step3 에서 나왔던 리뷰사항들
 * [X] [fix#01] 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
-* [ ] [fix#02] [RacingGame.java] 포지션 List를 저장하기 보다 Entry객체를 저장할 것관
-* [ ] [fix#03] [RacingGame.java] 포지션 List를 저장하기 보다 Entry객체를 저장할 것 (fix#07과 연)
-* [ ] [fix#04] [RacingGameResultView.java] StringBuilder를 활용할 것
-* [ ] [fix#05] [RacingEntryTest.java] 스트림을 사용할 땐 가독성을 위하여 기능단위로 줄바꿈 할 것
+* [X] [fix#02] [RacingGame.java] 포지션 List를 저장하기 보다 Entry객체를 저장할 것관
+* [X] [fix#03] [RacingGame.java] 포지션 List를 저장하기 보다 Entry객체를 저장할 것 (fix#07과 연관)
+* [X] [fix#04] [RacingGameResultView.java] StringBuilder를 활용할 것
+* [X] [fix#05] [RacingEntryTest.java] 스트림을 사용할 땐 가독성을 위하여 기능단위로 줄바꿈 할 것
 * [X] [fix#06] [RacingCar.java] ForwardingRule이라는 상태값이 반드시 필요하지 않으므로 move() 메소드를 실행 할때 Rule이 반영 될 수 있도록 변경할 것
-* [ ] [fix#07] [RacingGameResultView.java] 출력하는 행위가 너무 복잡하므로 구조개선 할 
-* [ ] [fix#08] [RacingGameResultView.java] 상수는 static final로 선언 할 것
-* [ ] [fix#09] [RacingEntryTest.java] @ParameterizedTest를 활용할 것
-* [ ] [fix#10] [RacingGameTest.java] assertAll을 사용할 것 (차이점도 알아 둘 것)
+* [X] [fix#07] [RacingGameResultView.java] 출력하는 행위가 너무 복잡하므로 구조개선 할 
+* [X] [fix#08] [RacingGameResultView.java] 상수는 static final로 선언 할 것
+* [X] [fix#09] [RacingEntryTest.java] @ParameterizedTest를 활용할 것
+* [X] [fix#10] [RacingGameTest.java] assertAll을 사용할 것 (차이점도 알아 둘 것)
     * <pre><code>assertAll(
         () -> assertThat(result.size()).isEqualTo(carNumbers * raceTimes),
         () -> assertThat(result.stream()

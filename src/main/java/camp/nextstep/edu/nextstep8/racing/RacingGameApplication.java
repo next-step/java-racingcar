@@ -4,14 +4,18 @@ import java.util.List;
 import java.util.Scanner;
 
 public class RacingGameApplication {
+
+
     public static void main(String[] args) {
-        int carNumbers = ConsoleInputHelper.getValue("참가할 자동차는 몇 대 인가요?", Scanner::nextInt);
-        int raceTimes = ConsoleInputHelper.getValue("시도할 횟수는 몇 회 인가요?", Scanner::nextInt);
+        RacingGameInput input = new RacingGameInput();
 
-        RacingGame racingGame = new RacingGame(carNumbers, raceTimes);
-        List<Integer> result = racingGame.raceStart();
+        String cars = input.getCars();
+        int raceTimes = input.getRoundTimes();
 
-        RacingGameResultView resultView = new RacingGameResultView(result, carNumbers, raceTimes);
+        RacingGame racingGame = new RacingGame(cars, raceTimes);
+        List<RacingEntry> record = racingGame.raceStart();
+
+        RacingGameResultView resultView = new RacingGameResultView(record);
         resultView.showResult();
     }
 }
