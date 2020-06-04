@@ -26,18 +26,25 @@ class CarsTest {
         cars.playGame(new DiceWithInput(3));
         List<Car> carList = cars.getCarList();
 
-        List<String> result = new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
         for (Car car : carList) {
-            result.add(car.getCarName());
+            result.add(car.getPosition());
         }
-        assertThat(result).contains("HO", "SOO", "RAM");
+        assertThat(result).contains(0, 0, 0);
     }
 
     @DisplayName("DiceWithInput을 사용, 4보다 클때")
     @Test
-    public void playGameGrater() {
+    public void playGameGreater() {
         cars.playGame(new DiceWithInput(4));
-        List<Car> positionList = cars.getCarList();
+        List<Car> carList = cars.getCarList();
+        List<Integer> result = new ArrayList<>();
+        for (Car car : carList) {
+            result.add(car.getPosition());
+        }
+
+        assertThat(result).contains(1, 1, 1);
+
 
     }
 }
