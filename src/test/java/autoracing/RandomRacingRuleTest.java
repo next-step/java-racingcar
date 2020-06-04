@@ -2,6 +2,7 @@ package autoracing;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,5 +22,12 @@ public class RandomRacingRuleTest {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             new RandomRacingRule(10, 11);
         }).withMessage("drivingThreshold must be less than, or equal to bound.");
+    }
+
+    @ParameterizedTest
+    @CsvSource({"0,false", "1,false", "2,false", "3,false", "4,true", "5,true", "6,true", "7,true", "8,true", "9,true"})
+    public void shouldGoForward(int generatingNumber, boolean expectedGoForward) {
+        RandomRacingRule rule = new RandomRacingRule(10, 4, (bound) -> generatingNumber);
+        assertThat(rule.canGoForward()).isEqualTo(expectedGoForward);
     }
 }
