@@ -1,6 +1,7 @@
 package camp.nextstep.edu.nextstep8.racing;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGameResultView {
     private static final String DISPLAY_SYMBOL = "-";
@@ -22,8 +23,29 @@ public class RacingGameResultView {
             output.append(ENTER);
         }
         System.out.println(output.toString());
+        congratulationWinner();
     }
+
+    public void congratulationWinner() {
+        List<RacingCar> finalEntryList = records.get(records.size()-1).getEntryList();
+        System.out.println(getWinner(finalEntryList) + "가 최종 우승했습니다.");
+    }
+
+    private String getWinner(List<RacingCar> entryList) {
+        return entryList.stream()
+                .filter(car -> car.getPosition() >= getWinnerPosition(entryList))
+                .map(car -> car.getName())
+                .collect(Collectors.joining(","));
+    }
+
+    private int getWinnerPosition(List<RacingCar> entryList) {
+        return entryList.stream()
+                .mapToInt(c -> c.getPosition())
+                .max().getAsInt();
+    }
+
     private String generateDistance(int count) {
+        System.out.println(count);
         StringBuilder builder = new StringBuilder();
         for(int i = 0; i < count; i++) {
             builder.append(DISPLAY_SYMBOL);
@@ -31,4 +53,3 @@ public class RacingGameResultView {
         return builder.toString();
     }
 }
-

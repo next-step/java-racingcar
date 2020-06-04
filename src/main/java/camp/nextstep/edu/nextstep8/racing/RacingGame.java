@@ -5,7 +5,6 @@ import camp.nextstep.edu.nextstep8.racing.rule.RandomForwardingRule;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 

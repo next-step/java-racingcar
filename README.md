@@ -30,7 +30,7 @@ end code block
 ### 초간단 자동차 경주 게임을 구현한다.
 * [X] [feat#1] 각 자동차에 이름을 부여할 수 있다. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
 * [X] [feat#2] 자동차 이름은 쉼표(,)를 기준으로 구분한다.
-* [ ] [feat#3] 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.
+* [X] [feat#3] 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.
 <pre><code>경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).
 pobi,crong,honux
 시도할 회수는 몇회인가요?
@@ -82,7 +82,7 @@ pobi, honux가 최종 우승했습니다.</code></pre>
 ### step3 에서 나왔던 리뷰사항들
 * [X] [fix#01] 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
 * [X] [fix#02] [RacingGame.java] 포지션 List를 저장하기 보다 Entry객체를 저장할 것관
-* [X] [fix#03] [RacingGame.java] 포지션 List를 저장하기 보다 Entry객체를 저장할 것 (fix#07과 연관)
+* [X] [fix#03] [RacingGame.java] 포지션 List를 저장하기 보다 Entry객체를 저장할 것 (fix#07과 연)
 * [X] [fix#04] [RacingGameResultView.java] StringBuilder를 활용할 것
 * [X] [fix#05] [RacingEntryTest.java] 스트림을 사용할 땐 가독성을 위하여 기능단위로 줄바꿈 할 것
 * [X] [fix#06] [RacingCar.java] ForwardingRule이라는 상태값이 반드시 필요하지 않으므로 move() 메소드를 실행 할때 Rule이 반영 될 수 있도록 변경할 것
