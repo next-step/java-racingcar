@@ -10,6 +10,11 @@ public class Car {
         this.carName = inputCarName;
     }
 
+    public Car(String inputCarName, int position) {
+        this.carName = inputCarName;
+        this.position = position;
+    }
+
     public void goStopPosition(boolean greaterCheck) {
         if(greaterCheck){
             this.position += 1;

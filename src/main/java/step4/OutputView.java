@@ -18,4 +18,9 @@ public class OutputView {
         String markFullString = String.join("", Collections.nCopies(times, MARK));
         return carName + ": " + markFullString;
     }
+
+    public void printWinner(List<String> carList){
+        String winnerNames = String.join(",", carList);
+        System.out.println(winnerNames+ "가 최종 우승했습니다.");
+    }
 }

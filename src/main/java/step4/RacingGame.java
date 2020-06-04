@@ -12,6 +12,7 @@ public class RacingGame {
 
         OutputView outputView = new OutputView();
         DiceWithRandom dice = new DiceWithRandom();
+
         for (int time = 0; time < inputView.getInputTime(); time++) {
 
             cars.playGame(dice);
@@ -19,6 +20,9 @@ public class RacingGame {
             outputView.resultPrint(carList);
             System.out.println("============" + (time + 1) + "실행 끝==================");
         }
+
+        List<String> winner = cars.getWinner();
+        outputView.printWinner(winner);
     }
 
 
