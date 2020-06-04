@@ -10,8 +10,15 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 public class RandomRacingRuleTest {
     @ParameterizedTest
-    @ValueSource(ints = {Integer.MIN_VALUE, -3297392, -1, 0})
+    @ValueSource(ints = {Integer.MAX_VALUE, 4567832, 1})
     public void boundMustBeGreaterThanZero(int bound) {
+        RandomRacingRule rule = new RandomRacingRule(bound, 0);
+        assertThat(rule).isNotNull();
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {Integer.MIN_VALUE, -3297392, -1, 0})
+    public void throwIllegalArgumentExceptionWhenBoundIsLessThanOrEqualToZero(int bound) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             new RandomRacingRule(bound, 0);
         }).withMessage("bound must be greater than zero.");
