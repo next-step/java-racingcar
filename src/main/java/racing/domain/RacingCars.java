@@ -1,21 +1,20 @@
 package racing.domain;
 
-import org.apache.commons.lang3.StringUtils;
-import racing.util.Dice;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCars {
-    private final List<Car> carList;
+    private final List<Car> carList = new ArrayList<>();
 
     public RacingCars() {
-        this.carList = new ArrayList<>();
     }
 
     public RacingCars(String carNames) {
-        this();
         joinCars(carNames);
+    }
+
+    public int getJoinedCarCount() {
+        return carList.size();
     }
 
     public List<Car> getCarList() {
@@ -26,9 +25,10 @@ public class RacingCars {
         carList.add(car);
     }
 
-    public void carsMove() {
-        for (Car car : carList) {
-            car.move(Dice.cast());
+    public void carsMove(List<Integer> diceResultList) {
+        int carCount = carList.size();
+        for (int i = 0 ; i < carCount ; i++) {
+            carList.get(i).move(diceResultList.get(i));
         }
     }
 
@@ -57,14 +57,7 @@ public class RacingCars {
         String[] carNamesArray = carNames.split(",");
         for (String carName : carNamesArray) {
             carName = carName.trim();
-            validateName(carName);
             this.carList.add(new Car(carName));
-        }
-    }
-
-    private void validateName(String carName) {
-        if (StringUtils.isBlank(carName)) {
-            throw new IllegalArgumentException();
         }
     }
 

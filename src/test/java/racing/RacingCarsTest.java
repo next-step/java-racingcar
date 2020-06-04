@@ -3,11 +3,15 @@ package racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.domain.Car;
 import racing.domain.RacingCars;
+import racing.util.Dice;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -18,11 +22,15 @@ class RacingCarsTest {
     @Test
     @DisplayName("자동차 대수 테스트")
     void racingCarSizeTest() {
-        int carCount = 4;
+        //given
+        int expectedCarCount = 4;
         String carNames = "test1, test2, test3";
         RacingCars racingCars = new RacingCars(carNames);
         racingCars.addCar(new Car("test4"));
-        assertThat(racingCars.getCarList()).hasSize(carCount);
+        //when
+        List<Car> carList = racingCars.getCarList();
+        //then
+        assertThat(carList).hasSize(expectedCarCount);
     }
 
     @ParameterizedTest
@@ -38,11 +46,12 @@ class RacingCarsTest {
 
         String carNames = "test1, test2, test3";
         RacingCars racingCars = new RacingCars(carNames);
-        racingCars.carsMove();
-        racingCars.carsMove();
-        racingCars.carsMove();
-        racingCars.carsMove();
-        racingCars.carsMove();
+        int carCount = racingCars.getJoinedCarCount();
+        racingCars.carsMove(Dice.castByCarCount(carCount));
+        racingCars.carsMove(Dice.castByCarCount(carCount));
+        racingCars.carsMove(Dice.castByCarCount(carCount));
+        racingCars.carsMove(Dice.castByCarCount(carCount));
+        racingCars.carsMove(Dice.castByCarCount(carCount));
 
         List<Car> carList = racingCars.getCarList();
 
@@ -63,13 +72,12 @@ class RacingCarsTest {
 
         String carNames = "test1, test2, test3";
         RacingCars racingCars = new RacingCars(carNames);
-        racingCars.carsMove();
-        racingCars.carsMove();
+        int carCount = racingCars.getJoinedCarCount();
+        racingCars.carsMove(Dice.castByCarCount(carCount));
+        racingCars.carsMove(Dice.castByCarCount(carCount));
         List<Car> roundCarList = racingCars.getCarList();
         List<Car> snapShot = racingCars.getDeepCopyRacingCars().getCarList();
         List<Car> comparedSameCarList = new ArrayList<>();
-
-        int carCount = roundCarList.size();
 
         for (Car targetCar : roundCarList) {
             for (Car car : snapShot) {
@@ -99,5 +107,19 @@ class RacingCarsTest {
         }
 
         assertThat(carCount).isNotEqualTo(comparedSameCarList2.size());
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1:false", "2:false", "3:false", "4:true", "5:true", "6:true"}, delimiter = ':')
+    @DisplayName("차가 이동했는지 안했는지 확인하는 테스트")
+    void carMoveTesT(int input, boolean expected) {
+        String carNames = "test1";
+        RacingCars racingCars = new RacingCars(carNames);
+        assertThat(racingCars.getCarList().size()).isEqualTo(1);
+
+        racingCars.carsMove(Collections.singletonList(input));
+        Car car = racingCars.getCarList().get(0);
+
+        assertThat(car.getPosition() > 0).isEqualTo(expected);
     }
 }
