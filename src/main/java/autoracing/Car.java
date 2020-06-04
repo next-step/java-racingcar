@@ -21,10 +21,6 @@ public class Car {
         stay();
     }
 
-    public int getLastRound() {
-        return history.size() - 1;
-    }
-
     public Location getLocation(int round) {
         if (round > getLastRound()) {
             throw new IllegalArgumentException(String.format("The car has never played that round '%d'.", round));
@@ -34,6 +30,10 @@ public class Car {
 
     private Location getLatestLocation() {
         return history.get(getLastRound());
+    }
+
+    private int getLastRound() {
+        return history.size() - 1;
     }
 
     private void drive(int distance) {

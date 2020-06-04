@@ -40,9 +40,7 @@ public class CarTest {
         Method method = Car.class.getDeclaredMethod("drive", int.class);
         method.setAccessible(true);
         method.invoke(car, distance);
-        int lastRound = car.getLastRound();
-        assertThat(lastRound).isEqualTo(1);
-        assertThat(car.getLocation(lastRound)).isEqualToComparingFieldByField(new Location(distance, 1));
+        assertThat(getFirstRoundLocation(car)).isEqualToComparingFieldByField(new Location(distance, 1));
     }
 
     @Test
@@ -51,9 +49,7 @@ public class CarTest {
         Method method = Car.class.getDeclaredMethod("stay");
         method.setAccessible(true);
         method.invoke(car);
-        int lastRound = car.getLastRound();
-        assertThat(lastRound).isEqualTo(1);
-        assertThat(car.getLocation(lastRound)).isEqualToComparingFieldByField(new Location(0, 1));
+        assertThat(getFirstRoundLocation(car)).isEqualToComparingFieldByField(new Location(0, 1));
     }
 
     @ParameterizedTest
@@ -61,7 +57,7 @@ public class CarTest {
     public void testCanGoForward(boolean canGoForward, int distance) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Car car = new Car(new MockRacingRule(canGoForward));
         car.race();
-        Location location = car.getLocation(car.getLastRound());
+        Location location = getFirstRoundLocation(car);
         assertThat(location.getDistance()).isEqualTo(distance);
     }
 
@@ -72,6 +68,16 @@ public class CarTest {
         for (int i = 0; i < rounds; i++) {
             car.race();
         }
-        assertThat(car.getLastRound()).isEqualTo(rounds);
+        int expectedNeverPlayedRound = rounds + 1;
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            car.getLocation(expectedNeverPlayedRound);
+        }).withMessage(String.format("The car has never played that round '%d'.", expectedNeverPlayedRound));
+    }
+
+    private Location getFirstRoundLocation(Car car) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            car.getLocation(2);
+        }).withMessage("The car has never played that round '2'.");
+        return car.getLocation(1);
     }
 }
