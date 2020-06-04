@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import step3.Car;
 
 import java.util.stream.Stream;
 
@@ -14,11 +13,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    private step3.Car car = null;
+    private Car car = null;
 
     @BeforeEach
     public void setUp() {
-        car = new Car();
+        car = new Car("HO");
     }
 
     @DisplayName("현재의 위치값을 반환")
@@ -30,10 +29,18 @@ class CarTest {
 
     @DisplayName("위치값을 변경하고 그에 따른 값 반환 테스트")
     @Test
-    public void changePostionandGetPosition() {
-        car.goPosition();
+    public void changePostionAndGetPosition() {
+        car.goStopPosition(true);
         int position = car.getPosition();
         assertThat(position).isEqualTo(1);
+    }
+
+    @DisplayName("위치값을 변경하지 않고 그에 따른 값 반환 테스트")
+    @Test
+    public void stayAndGetPosition() {
+        car.goStopPosition(false);
+        int position = car.getPosition();
+        assertThat(position).isEqualTo(0);
     }
 
     @DisplayName("4보다 큰값인지 아닌지 확인")

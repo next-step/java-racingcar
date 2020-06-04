@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -25,7 +26,11 @@ class CarsTest {
         cars.playGame(new DiceWithInput(3));
         List<Car> carList = cars.getCarList();
 
-        assertThat(carList).contains();
+        List<String> result = new ArrayList<>();
+        for (Car car : carList) {
+            result.add(car.getCarName());
+        }
+        assertThat(result).contains("HO", "SOO", "RAM");
     }
 
     @DisplayName("DiceWithInput을 사용, 4보다 클때")
