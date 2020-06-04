@@ -6,14 +6,16 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class RandomRacingRuleTest {
     @ParameterizedTest
     @ValueSource(ints = {Integer.MAX_VALUE, 4567832, 1})
     public void boundMustBeGreaterThanZero(int bound) {
-        RandomRacingRule rule = new RandomRacingRule(bound, 0);
-        assertThat(rule).isNotNull();
+        assertThatCode(() -> {
+            new RandomRacingRule(bound, 0);
+        }).doesNotThrowAnyException();
     }
 
     @ParameterizedTest
