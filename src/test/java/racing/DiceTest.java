@@ -16,4 +16,11 @@ class DiceTest {
         assertThat(Dice.cast()).isBetween(0, 9);
     }
 
+    @Test
+    @DisplayName("요청한 갯수만큼 주사위 결과의 count가 나오는지 테스트")
+    void castDiceByCarCountTest () {
+        int requestCount = 10;
+        assertThat(requestCount).isEqualTo(Dice.castByCarCount(requestCount).size());
+    }
+
 }
