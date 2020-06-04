@@ -1,6 +1,7 @@
 package racingcar_step4.domain;
 
 import racingcar_step4.model.Car;
+import racingcar_step4.model.MovingStrategy;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,9 +18,9 @@ public class Cars {
         this.cars = names;
     }
 
-    public List<Car> runRacing() {
+    public List<Car> runRacing(MovingStrategy movingStrategy) {
         for (Car car : cars) {
-            car.move();
+            car.move(movingStrategy);
         }
         return cars;
     }
