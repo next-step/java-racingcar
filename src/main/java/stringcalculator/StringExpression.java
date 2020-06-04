@@ -1,9 +1,10 @@
 package stringcalculator;
 
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 public class StringExpression {
-    private static final String ELEMENT_REGEX = "^(\\d+|\\+|-|\\*|\\/)$";
+    private static final Pattern ELEMENT_REGEX = Pattern.compile("^(\\d+|\\+|-|\\*|\\/)$");
     static final String INPUT_NULL_EXCEPTION_MESSAGE = "Expression cannot be null.";
     static final String INPUT_EMPTY_OR_WHITESPACE_ONLY_EXCEPTION_MESSAGE = "Expression cannot be empty, or whitespace-only string.";
     private final String[] elements;
@@ -35,7 +36,7 @@ public class StringExpression {
     }
 
     private void checkElementsAreValid(String[] elements) {
-        if (!Arrays.stream(elements).allMatch(e -> e.matches(ELEMENT_REGEX))) {
+        if (!Arrays.stream(elements).allMatch(e -> ELEMENT_REGEX.matcher(e).matches())) {
             throw new IllegalArgumentException("Expression are not valid elements.");
         }
     }
