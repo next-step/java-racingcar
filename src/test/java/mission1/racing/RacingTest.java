@@ -31,18 +31,32 @@ public class RacingTest {
             positions[i] = Integer.parseInt(strNums[i]);
         }
 
+        int max = 0;
         for (int p : positions) {
-            racingGame.checkMaxPosition(p);
+            max = racingGame.checkMaxPosition(max, p);
         }
 
-        assertEquals(racingGame.getMaxPosition(), expected);
+        assertEquals(max, expected);
     }
 
-    @DisplayName("우승자를 제대로 가져오는지 확인 - 파라미터와 동일한 경우 true 반환")
+    @DisplayName("maxPosition과 동일한 위치에 있는 차는 우승한다. ")
     @ParameterizedTest
-    @CsvSource(value = {"1 : false", "3 : false", "5 : true", "6 : false", "0 : false"}, delimiter = ':')
-    void testMaxPosition(int maxPosition, boolean expected) {
-        Car car = new Car(5);
-        assertEquals(car.isWinner(maxPosition), expected);
+    @CsvSource(value = {"1,2,2,10 : 1", "1,2,3,4 : 0", "10,10,10,10 : 4"}, delimiter = ':')
+    void testAddWinner(String strPosition, int numberOfWinners) {
+        int maxPosition = 10;
+
+        String[] strNums = strPosition.split(",");
+        Car[] cars = new Car[strNums.length];
+
+        for (int i = 0; i < strNums.length; i++) {
+            cars[i] = new Car(Integer.parseInt(strNums[i]));
+        }
+
+        for (Car car : cars) {
+            racingGame.addWinner(car, maxPosition);
+        }
+
+        assertEquals(racingGame.getWinnersArrayList().size(), numberOfWinners);
     }
 }
+

@@ -1,7 +1,7 @@
 package mission1.racing.view;
 
 public class RacingGameOutputView {
-    public void resultView(String carName, int carPosition) {
+    public static void resultView(String carName, int carPosition) {
         System.out.print(carName + ": ");
 
         for (int i = 0; i < carPosition; i++) {
@@ -10,7 +10,7 @@ public class RacingGameOutputView {
         System.out.print("\n");
     }
 
-    public void winnerView(String[] winners) {
+    public static void winnerView(String[] winners) {
         for (int i = 0; i < winners.length - 1; i++) {
             System.out.print(winners[i] + ", ");
         }

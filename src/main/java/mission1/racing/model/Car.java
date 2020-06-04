@@ -6,10 +6,8 @@ import mission1.racing.view.RacingGameOutputView;
 public class Car {
     private String name;
     private int carPositions;
+    private final int LIMIT = 4;
 
-    private RacingRandom random = new RacingRandom();
-
-    public Car() {}
     public Car(String name) {
         this.name = name;
     }
@@ -18,10 +16,8 @@ public class Car {
         this.carPositions = position;
     }
 
-    public void go() {
-        int LIMIT = 4;
-
-        if (random.random() >= LIMIT) {
+    public void go(int randomValue) {
+        if (moveCondition(randomValue)) {
             carPositions++;
         }
     }
@@ -36,5 +32,9 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    private boolean moveCondition(int randomValue) {
+        return randomValue >= LIMIT;
     }
 }
