@@ -85,7 +85,7 @@ pobi, honux가 최종 우승했습니다.</code></pre>
 * [ ] [fix#03] [RacingGame.java] 포지션 List를 저장하기 보다 Entry객체를 저장할 것
 * [ ] [fix#04] [RacingGameResultView.java] StringBuilder를 활용할 것
 * [ ] [fix#05] [RacingEntryTest.java] 스트림을 사용할 땐 가독성을 위하여 기능단위로 줄바꿈 할 것
-* [ ] [fix#06] [RacingCar.java] ForwardingRule이라는 상태값이 반드시 필요하지 않으므로 move() 메소드를 실행 할때 Rule이 반영 될 수 있도록 변경할 것
+* [X] [fix#06] [RacingCar.java] ForwardingRule이라는 상태값이 반드시 필요하지 않으므로 move() 메소드를 실행 할때 Rule이 반영 될 수 있도록 변경할 것
 * [ ] [fix#07] [RacingGameResultView.java] 출력하는 행위가 너무 복잡하므로 구조개선 할 
 * [ ] [fix#08] [RacingGameResultView.java] 상수는 static final로 선언 할 것
 * [ ] [fix#09] [RacingEntryTest.java] @ParameterizedTest를 활용할 것
