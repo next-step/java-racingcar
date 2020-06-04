@@ -11,12 +11,9 @@ public class RandomRacingRule implements RacingRule {
     private final int drivingThreshold;
 
     public RandomRacingRule(int bound, int drivingThreshold) {
-        if (bound <= 0) {
-            throw new IllegalArgumentException(BAD_BOUND);
-        }
-        if (drivingThreshold > bound) {
-            throw new IllegalArgumentException(BAD_DRIVING_THRESHOLD);
-        }
+        assertBoundGreaterThanZero(bound);
+        assertDrivingThresholdLessThanOrEqualToBound(drivingThreshold, bound);
+
         this.bound = bound;
         this.drivingThreshold = drivingThreshold;
     }
@@ -24,5 +21,17 @@ public class RandomRacingRule implements RacingRule {
     @Override
     public boolean canGoForward() {
         return RANDOM.nextInt(bound) >= drivingThreshold;
+    }
+
+    private void assertBoundGreaterThanZero(int bound) {
+        if (bound <= 0) {
+            throw new IllegalArgumentException(BAD_BOUND);
+        }
+    }
+
+    private void assertDrivingThresholdLessThanOrEqualToBound(int drivingThreshold, int bound) {
+        if (drivingThreshold > bound) {
+            throw new IllegalArgumentException(BAD_DRIVING_THRESHOLD);
+        }
     }
 }
