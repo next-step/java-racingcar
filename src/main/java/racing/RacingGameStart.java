@@ -1,21 +1,21 @@
 package racing;
 
+import racing.domain.car.RacingCars;
+import racing.domain.game.RacingGame;
 import racing.view.InputView;
 import racing.view.ResultView;
 
 public class RacingGameStart {
 
     public static void main(String[] args) {
-        int cars = InputView.inputCar();
+        String inputNames = InputView.inputCarNames();
         int times = InputView.inputTime();
 
-        RacingCars racingCars = new RacingCars(cars);
+        RacingCars racingCars = new RacingCars(inputNames);
         RacingGame racingGame = new RacingGame(racingCars);
 
         ResultView.resultMessage();
-
-        for (int i = 0; i < times; i++) {
-            ResultView.resultGame(racingGame.race());
-        }
+        racingGame.race(times);
+        ResultView.printWinner(racingGame);
     }
 }

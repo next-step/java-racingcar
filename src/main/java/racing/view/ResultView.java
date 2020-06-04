@@ -1,10 +1,23 @@
 package racing.view;
 
-import racing.RacingCars;
+import racing.domain.car.Car;
+import racing.domain.game.RacingGame;
+import racing.domain.game.RacingGameResult;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
+    private static final String DELIMITER = " : ";
+    private static final String COMMA = ", ";
+
     public static void resultMessage() {
         System.out.println("실행 결과");
+    }
+
+    public static void printCarName(String carName) {
+        System.out.print(carName + DELIMITER);
     }
 
     public static void printPosition(int carPosition) {
@@ -14,10 +27,22 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void resultGame(RacingCars racingCars) {
-        for (int i = 0; i < racingCars.getCars().size(); i++) {
-            printPosition(racingCars.getCars().get(i).getPosition());
+    public static void printResult(List<Car> carPositions) {
+        for (int i = 0; i < carPositions.size(); i++) {
+            printCarName(carPositions.get(i).getCarName());
+            printPosition(carPositions.get(i).getPosition());
         }
         System.out.println();
+    }
+
+    public static void printWinner(RacingGame racingGame) {
+        List<String> winners = new ArrayList<>();
+        RacingGameResult racingGameResult = new RacingGameResult(racingGame.getRacingCars(), winners);
+        winners = racingGameResult.getWinnerList();
+
+        String winnerNames = winners.stream()
+                .collect(Collectors.joining(COMMA));
+
+        System.out.println(winnerNames + "가 최종 우승했습니다.");
     }
 }
