@@ -80,7 +80,7 @@ pobi, honux가 최종 우승했습니다.</code></pre>
 
 ## 개선 요구사항
 ### step3 에서 나왔던 리뷰사항들
-* [ ] [fix#01] 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
+* [X] [fix#01] 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
 * [ ] [fix#02] [RacingGame.java] 포지션 List를 저장하기 보다 Entry객체를 저장할 것
 * [ ] [fix#03] [RacingGame.java] 포지션 List를 저장하기 보다 Entry객체를 저장할 것
 * [ ] [fix#04] [RacingGameResultView.java] StringBuilder를 활용할 것
