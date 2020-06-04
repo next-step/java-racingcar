@@ -81,8 +81,8 @@ pobi, honux가 최종 우승했습니다.</code></pre>
 ## 개선 요구사항
 ### step3 에서 나왔던 리뷰사항들
 * [X] [fix#01] 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
-* [ ] [fix#02] [RacingGame.java] 포지션 List를 저장하기 보다 Entry객체를 저장할 것
-* [ ] [fix#03] [RacingGame.java] 포지션 List를 저장하기 보다 Entry객체를 저장할 것
+* [ ] [fix#02] [RacingGame.java] 포지션 List를 저장하기 보다 Entry객체를 저장할 것관
+* [ ] [fix#03] [RacingGame.java] 포지션 List를 저장하기 보다 Entry객체를 저장할 것 (fix#07과 연)
 * [ ] [fix#04] [RacingGameResultView.java] StringBuilder를 활용할 것
 * [ ] [fix#05] [RacingEntryTest.java] 스트림을 사용할 땐 가독성을 위하여 기능단위로 줄바꿈 할 것
 * [X] [fix#06] [RacingCar.java] ForwardingRule이라는 상태값이 반드시 필요하지 않으므로 move() 메소드를 실행 할때 Rule이 반영 될 수 있도록 변경할 것
