@@ -34,5 +34,13 @@ class RacingCarTest {
         // then
         assertThat(racingCar.getPosition()).isEqualTo(0);
     }
+
+    @DisplayName("자동차에 이름이 부여 되었는지 확인")
+    @Test
+    public void nameTest() {
+        // given
+        // when
+        // then
+    }
 }
 
