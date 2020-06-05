@@ -13,10 +13,10 @@ class RacingCarTest {
     @Test
     public void moveForwardTest() {
         // given
-        RacingCar racingCar = new RacingCar(new MoveForwardingRuleStub());
+        RacingCar racingCar = new RacingCar("POBI");
 
         // when
-        racingCar.move();
+        racingCar.move(new MoveForwardingRuleStub());
 
         // then
         assertThat(racingCar.getPosition()).isGreaterThan(0);
@@ -26,13 +26,24 @@ class RacingCarTest {
     @Test
     public void notMoveForwardTest() {
         // given
-        RacingCar racingCar = new RacingCar(new NotMoveForwardingRuleStub());
+        RacingCar racingCar = new RacingCar("POBI");
 
         // when
-        racingCar.move();
+        racingCar.move(new NotMoveForwardingRuleStub());
 
         // then
         assertThat(racingCar.getPosition()).isEqualTo(0);
+    }
+
+    @DisplayName("자동차에 이름이 부여 되었는지 확인")
+    @Test
+    public void nameTest() {
+        // given
+        String name = "POBI";
+        RacingCar racingCar = new RacingCar(name);
+
+        // when & then
+        assertThat(racingCar.getName()).isEqualTo(name);
     }
 }
 

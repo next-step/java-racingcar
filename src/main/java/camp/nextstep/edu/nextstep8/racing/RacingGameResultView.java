@@ -1,40 +1,54 @@
 package camp.nextstep.edu.nextstep8.racing;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGameResultView {
-    private static String DISPLAY_SYMBOL = "-";
-    private List<Integer> record;
+    private static final String DISPLAY_SYMBOL = "-";
+    private static final String ENTER = "\n";
+    private List<RacingEntry> records;
 
-    private int carNumbers;
-    private int raceTimes;
-
-    public RacingGameResultView(List<Integer> record, int carNumbers, int raceTimes) {
-        this.carNumbers = carNumbers;
-        this.record = record;
-        this.raceTimes = raceTimes;
+    public RacingGameResultView(List<RacingEntry> records) {
+        this.records = records;
     }
 
     public void showResult() {
-        int positionIndex = 0;
-        for(int i = 0; i < raceTimes; i++) {
-            System.out.println("=====[" + (i+1) + " ROUND" + "]=====");
-            for(int j = 0; j < carNumbers; j++) {
-                printSymbol(record.get(positionIndex++));
-                printNewLine();
+        StringBuilder output = new StringBuilder();
+        int round = 1;
+        for(RacingEntry record : records) {
+            output.append("=====[" + (round++) + " ROUND" + "]=====" + ENTER);
+            for(RacingCar car : record.getEntryList()) {
+                output.append(car.getName() + " : " + generateDistance(car.getPosition()) + ENTER);
             }
-            printNewLine();
+            output.append(ENTER);
         }
+        System.out.println(output.toString());
+        congratulationWinner();
     }
 
-    private void printSymbol(int count) {
+    public void congratulationWinner() {
+        List<RacingCar> finalEntryList = records.get(records.size()-1).getEntryList();
+        System.out.println(getWinner(finalEntryList) + " 가 최종 우승했습니다.");
+    }
+
+    private String getWinner(List<RacingCar> entryList) {
+        return entryList.stream()
+                .filter(car -> car.getPosition() >= getWinnerPosition(entryList))
+                .map(car -> car.getName())
+                .collect(Collectors.joining(","));
+    }
+
+    private int getWinnerPosition(List<RacingCar> entryList) {
+        return entryList.stream()
+                .mapToInt(c -> c.getPosition())
+                .max().getAsInt();
+    }
+
+    private String generateDistance(int count) {
+        StringBuilder builder = new StringBuilder();
         for(int i = 0; i < count; i++) {
-            System.out.print(DISPLAY_SYMBOL);
+            builder.append(DISPLAY_SYMBOL);
         }
-    }
-
-    private void printNewLine() {
-        System.out.println();
+        return builder.toString();
     }
 }
-

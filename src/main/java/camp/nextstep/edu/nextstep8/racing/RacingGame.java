@@ -1,42 +1,51 @@
 package camp.nextstep.edu.nextstep8.racing;
 
+import camp.nextstep.edu.nextstep8.racing.rule.ForwardingRule;
 import camp.nextstep.edu.nextstep8.racing.rule.RandomForwardingRule;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
-    private int carNumbers;
-    private int raceTimes;
-    private List<Integer> record;
+    private static final String SEPARATOR = ",";
 
-    public RacingGame(int carNumbers, int raceTimes) {
-        this.carNumbers = carNumbers;
-        this.raceTimes = raceTimes;
-        this.record = new ArrayList<>();
+    private int roundTimes;
+    private List<RacingCar> entryList;
+    private List<RacingEntry> record = new ArrayList<>();
+
+    public RacingGame(String cars, int roundTimes) {
+        this.entryList = generateEntryList(cars);
+        this.roundTimes = roundTimes;
     }
 
-    public List<Integer> raceStart() {
-        RacingEntry entry = new RacingEntry(generateRandomRuleEntryList(carNumbers));
-        for(int i = 0; i < raceTimes; i++){
-            entry.move();
-            record(entry);
+    public List<RacingEntry> raceStart() {
+        RacingEntry entry = new RacingEntry(entryList);
+        for(int i = 0; i < roundTimes; i++){
+            entry.move(getRaceRule());
+            record.add(getSnapShot(entry));
         }
+
         return record;
     }
 
-    public List<RacingCar> generateRandomRuleEntryList(int carNumbers) {
-        List<RacingCar> entryList = new ArrayList<>();
-        for (int i = 0; i < carNumbers; i++){
-            entryList.add(new RacingCar(new RandomForwardingRule()));
-        }
-        return entryList;
+    public List<RacingCar> generateEntryList(String cars) {
+        return Arrays.stream(cars.split(SEPARATOR))
+                .map(RacingCar::new)
+                .collect(Collectors.toList());
     }
 
-    private void record(RacingEntry entry) {
-        for(RacingCar racingCar : entry.getEntryList()) {
-            record.add(racingCar.getPosition());
+    public ForwardingRule getRaceRule() {
+        return new RandomForwardingRule();
+    }
+
+    private RacingEntry getSnapShot(RacingEntry origin) {
+        List<RacingCar> snapShotEntryList = new ArrayList<>();
+        for(RacingCar orginCar : origin.getEntryList()) {
+            snapShotEntryList.add(new RacingCar(orginCar.getName(), orginCar.getPosition()));
         }
+        return new RacingEntry(snapShotEntryList);
     }
 }
 
