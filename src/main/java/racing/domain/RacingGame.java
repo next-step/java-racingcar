@@ -1,38 +1,39 @@
 package racing.domain;
 
-import racing.util.ListCopier;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
-    private final List<Integer> carLocations;
+    private final List<Car> cars;
     private final int numberOfRound;
 
-    private final RacingResult racingResult = new RacingResult();
+    public RacingGame(String carNames, int numberOfRound) {
+        NameParser nameParser = new NameParser();
 
-    public RacingGame(int numberOfCar, int numberOfRound) {
-        this.carLocations = new ArrayList<>(Collections.nCopies(numberOfCar, 0));
+        this.cars = nameParser.parse(carNames);
         this.numberOfRound = numberOfRound;
     }
 
     public RacingResult play(final MoveStrategy moveStrategy) {
-        for (int i = 0; i < numberOfRound; i++) {
+        final RacingResult racingResult = new RacingResult();
+        for (int i = 1; i <= numberOfRound; i++) {
             racingResult.put(i, getRoundResultBy(moveStrategy));
         }
         return racingResult;
     }
 
-    private List<Integer> getRoundResultBy(final MoveStrategy moveStrategy) {
-        for (int i = 0; i < carLocations.size(); i++) {
-            final int currentLocation = carLocations.get(i) + getMoveDistance(moveStrategy.isMovable());
-            carLocations.set(i, currentLocation);
+    private List<Car> getRoundResultBy(final MoveStrategy moveStrategy) {
+        for (Car car : cars) {
+            car.move(moveStrategy.isMovable());
         }
-        return ListCopier.copyList(carLocations);
+        return cloneCars(cars);
     }
 
-    private int getMoveDistance(boolean isMovable) {
-        return isMovable ? 1 : 0;
+    private List<Car> cloneCars(final List<Car> cars) {
+        List<Car> clonedList = new ArrayList<>();
+        for (Car car : cars) {
+            clonedList.add(new Car(car.getName(), car.getLocation()));
+        }
+        return clonedList;
     }
 }
