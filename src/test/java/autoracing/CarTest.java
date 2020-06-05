@@ -1,6 +1,5 @@
 package autoracing;
 
-import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -9,7 +8,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -32,18 +30,12 @@ public class CarTest {
         assertThatIllegalArgumentExceptionIsThrownByCarGetLocation(car, 1);
     }
 
-    @Test
-    public void shouldRecordWhenDriving() {
-        Car car = new Car(() -> true);
+    @ParameterizedTest
+    @CsvSource({"true,1", "false,0"})
+    public void shouldRecordWhenRacing(boolean driveOrNot, int expectedDistance) {
+        Car car = new Car(() -> driveOrNot);
         car.race();
-        assertThat(getFirstRoundLocation(car)).isEqualToComparingFieldByField(new Location(1, 1));
-    }
-
-    @Test
-    public void shouldRecordWhenStay() {
-        Car car = new Car(() -> false);
-        car.race();
-        assertThat(getFirstRoundLocation(car)).isEqualToComparingFieldByField(new Location(0, 1));
+        assertThat(getFirstRoundLocation(car)).isEqualToComparingFieldByField(new Location(expectedDistance, 1));
     }
 
     @ParameterizedTest
