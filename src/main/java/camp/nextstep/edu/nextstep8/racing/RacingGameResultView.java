@@ -1,7 +1,6 @@
 package camp.nextstep.edu.nextstep8.racing;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGameResultView {
     private static final String DISPLAY_SYMBOL = "-";
@@ -13,42 +12,38 @@ public class RacingGameResultView {
     }
 
     public void showResult() {
+       showAllRecordResult(records);
+       congratulationWinner();
+    }
+
+    private void showAllRecordResult(List<RacingEntry> records) {
         StringBuilder output = new StringBuilder();
         int round = 1;
         for(RacingEntry record : records) {
             output.append("=====[" + (round++) + " ROUND" + "]=====" + ENTER);
-            for(RacingCar car : record.getEntryList()) {
-                output.append(car.getName() + " : " + generateDistance(car.getPosition()) + ENTER);
-            }
-            output.append(ENTER);
+            output.append(generateDistance(record.getEntryList()));
         }
         System.out.println(output.toString());
-        congratulationWinner();
     }
 
-    public void congratulationWinner() {
-        List<RacingCar> finalEntryList = records.get(records.size()-1).getEntryList();
-        System.out.println(getWinner(finalEntryList) + " 가 최종 우승했습니다.");
+    private String generateDistance(List<RacingCar> entryList) {
+        StringBuilder builder = new StringBuilder();
+        for(RacingCar car : entryList) {
+            builder.append(car.getName() + " : " + makeDistanceSymbol(car.getPosition()) + ENTER);
+        }
+        return builder.toString();
     }
 
-    private String getWinner(List<RacingCar> entryList) {
-        return entryList.stream()
-                .filter(car -> car.getPosition() >= getWinnerPosition(entryList))
-                .map(car -> car.getName())
-                .collect(Collectors.joining(","));
-    }
-
-    private int getWinnerPosition(List<RacingCar> entryList) {
-        return entryList.stream()
-                .mapToInt(c -> c.getPosition())
-                .max().getAsInt();
-    }
-
-    private String generateDistance(int count) {
+    private String makeDistanceSymbol(int count) {
         StringBuilder builder = new StringBuilder();
         for(int i = 0; i < count; i++) {
             builder.append(DISPLAY_SYMBOL);
         }
         return builder.toString();
+    }
+
+    public void congratulationWinner() {
+        int finalRoundIndex = records.size() - 1;
+        System.out.println(records.get(finalRoundIndex).getWinner() + " 가 최종 우승했습니다.");
     }
 }

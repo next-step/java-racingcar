@@ -43,7 +43,11 @@ public class RacingGame {
     private RacingEntry getSnapShot(RacingEntry origin) {
         List<RacingCar> snapShotEntryList = new ArrayList<>();
         for(RacingCar orginCar : origin.getEntryList()) {
-            snapShotEntryList.add(new RacingCar(orginCar.getName(), orginCar.getPosition()));
+            try {
+                snapShotEntryList.add((RacingCar)orginCar.clone());
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
         }
         return new RacingEntry(snapShotEntryList);
     }

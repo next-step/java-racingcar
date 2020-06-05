@@ -2,7 +2,7 @@ package camp.nextstep.edu.nextstep8.racing;
 
 import camp.nextstep.edu.nextstep8.racing.rule.ForwardingRule;
 
-public class RacingCar {
+public class RacingCar implements Cloneable {
     private int position;
     private String name;
 
@@ -34,6 +34,11 @@ public class RacingCar {
             throw new IllegalArgumentException("자동차 이름을 확인해 주세요");
         }
         return name;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }
 

@@ -28,6 +28,20 @@ class RacingEntryTest {
         assertThat(movedCarCount).isEqualTo(carNumbers);
     }
 
+    @DisplayName("Entry에 있는 자동차가 모두 움직 였을 경우 승자가 1,2,3 인지 확인")
+    @Test
+    public void moveAllWinnerTest() {
+        // given
+        int carNumbers = 3;
+
+        // when
+        RacingEntry racingEntry = new RacingEntry(generateEntryList(carNumbers));
+        racingEntry.move(new MoveForwardingRuleStub());
+
+        // then
+        assertThat(racingEntry.getWinner()).isEqualTo("0,1,2");
+    }
+
     @DisplayName("Entry에 있는 자동차가 모두 움직이지 않은 경우 움직인 결과가 잘 반영 되는지 확인")
     @Test
     public void notMoveTest() {
