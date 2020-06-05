@@ -1,6 +1,6 @@
 package autoracing;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Car {
@@ -8,7 +8,8 @@ public class Car {
     private final RacingRule rule;
 
     public Car(RacingRule rule) {
-        this.history = Arrays.asList(Location.STARTING_LINE);
+        this.history = new ArrayList<>();
+        this.history.add(Location.STARTING_LINE);
         this.rule = rule;
     }
 
