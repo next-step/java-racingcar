@@ -29,9 +29,7 @@ public class CarTest {
     public void newCar() {
         Car car = new Car(rule);
         assertThat(car.getLocation(0)).isEqualTo(Location.STARTING_LINE);
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> car.getLocation(1))
-                .withMessage("The car has never played that round '1'.");
+        assertThatIllegalArgumentExceptionIsThrownByCarGetLocation(car, 1);
     }
 
     @ParameterizedTest
