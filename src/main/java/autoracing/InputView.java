@@ -1,24 +1,27 @@
 package autoracing;
 
 import java.io.InputStream;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class InputView {
-    private static final String QUESTION_NUMBER_OF_CARS = "자동차 대수는 몇 대인가요?";
+    private static final String QUESTION_CAR_NAMES = "경주할 자동차 이름을 입력하세요. (이름은 쉼표(,)를 기준으로 구분)";
     private static final String QUESTION_TOTAL_ROUNDS = "시도할 횟수는 몇 회인가요?";
 
-    private final int numberOfCars;
+    private final List<String> carNames;
     private final int totalRounds;
 
-    public InputView(int numberOfCars, int totalRounds) {
-        this.numberOfCars = numberOfCars;
+    public InputView(List<String> carNames, int totalRounds) {
+        this.carNames = carNames;
         this.totalRounds = totalRounds;
     }
 
     public static InputView takeInput(InputStream inputStream) {
         Scanner scan = new Scanner(inputStream);
 
-        int numberOfCars = takeNumberOfCars(scan);
+        List<String> numberOfCars = takeCarNames(scan);
         int totalRounds = takeTotalRounds(scan);
         System.out.println();
 
@@ -27,9 +30,15 @@ public class InputView {
         return new InputView(numberOfCars, totalRounds);
     }
 
-    private static int takeNumberOfCars(Scanner scan) {
-        System.out.println(QUESTION_NUMBER_OF_CARS);
-        return Integer.parseInt(scan.nextLine().trim());
+    private static List<String> takeCarNames(Scanner scan) {
+        System.out.println(QUESTION_CAR_NAMES);
+        return parseCarNames(scan.nextLine());
+    }
+
+    private static List<String> parseCarNames(String carNamesInput) {
+        return Arrays.stream(carNamesInput.trim().split(","))
+                .map(String::trim)
+                .collect(Collectors.toList());
     }
 
     private static int takeTotalRounds(Scanner scan) {
@@ -37,8 +46,8 @@ public class InputView {
         return Integer.parseInt(scan.nextLine().trim());
     }
 
-    public int getNumberOfCars() {
-        return numberOfCars;
+    public List<String> getCarNames() {
+        return carNames;
     }
 
     public int getTotalRounds() {

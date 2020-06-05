@@ -1,9 +1,9 @@
 package autoracing;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -14,10 +14,11 @@ public class RacingGameTest {
 
     @Test
     public void shouldCreateCars() {
-        int numberOfCars = 4;
+        List<String> carNames = Arrays.asList("Mercedes", "Ferrari", "Lamborghini", "McLaren");
+        int numberOfCars = carNames.size();
         int totalRounds = 5;
         RacingRule rule = () -> true;
-        RacingGame game = new RacingGame(numberOfCars, totalRounds, rule);
+        RacingGame game = new RacingGame(carNames, totalRounds, rule);
 
         assertThat(game).isNotNull()
                 .extracting("totalRounds")
