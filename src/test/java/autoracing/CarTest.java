@@ -39,15 +39,6 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"true,1", "false,0"})
-    public void testCanGoForward(boolean canGoForward, int distance) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Car car = new Car(new MockRacingRule(canGoForward));
-        car.race();
-        Location location = getFirstRoundLocation(car);
-        assertThat(location.getDistance()).isEqualTo(distance);
-    }
-
-    @ParameterizedTest
     @ValueSource(ints = {0, 1, 3, 8, 10, 987})
     public void hasHistorySameAmountAsRounds(int rounds) {
         Car car = new Car(rule);
