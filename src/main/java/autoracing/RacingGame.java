@@ -11,7 +11,7 @@ public class RacingGame {
     public RacingGame(List<String> carNames, int totalRounds, RacingRule rule) {
         this.totalRounds = totalRounds;
         this.participants = carNames.stream()
-                .map(name -> new Car(rule))
+                .map(name -> new Car(name, rule))
                 .collect(Collectors.toList());
     }
 

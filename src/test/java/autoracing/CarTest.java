@@ -25,7 +25,8 @@ public class CarTest {
 
     @Test
     public void newCar() {
-        Car car = new Car(rule);
+        Car car = new Car("Neo", rule);
+        assertThat(car.getName()).isEqualTo("Neo");
         assertThat(car.getLocation(0)).isEqualTo(Location.STARTING_LINE);
         assertThatIllegalArgumentExceptionIsThrownByCarGetLocation(car, 1);
     }
@@ -33,7 +34,7 @@ public class CarTest {
     @ParameterizedTest
     @CsvSource({"true,1", "false,0"})
     public void shouldRecordWhenRacing(boolean driveOrNot, int expectedDistance) {
-        Car car = new Car(() -> driveOrNot);
+        Car car = new Car("Neo", () -> driveOrNot);
         car.race();
         assertThat(getFirstRoundLocation(car)).isEqualToComparingFieldByField(new Location(expectedDistance, 1));
     }
@@ -41,7 +42,7 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 3, 8, 10, 987})
     public void hasHistorySameAmountAsRounds(int rounds) {
-        Car car = new Car(rule);
+        Car car = new Car("Neo", rule);
         for (int i = 0; i < rounds; i++) {
             car.race();
         }

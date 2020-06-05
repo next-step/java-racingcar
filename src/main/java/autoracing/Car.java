@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Car {
+    private final String name;
     private final List<Location> history;
     private final RacingRule rule;
 
-    public Car(RacingRule rule) {
+    public Car(String name, RacingRule rule) {
+        this.name = name;
         this.history = new ArrayList<>();
         this.history.add(Location.STARTING_LINE);
         this.rule = rule;
@@ -19,6 +21,10 @@ public class Car {
             return;
         }
         stay();
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Location getLocation(int round) {
