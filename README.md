@@ -100,7 +100,7 @@ pobi, honux가 최종 우승했습니다.</code></pre>
                 .filter(r -> r > 0)
                 .count()).isEqualTo(carNumbers * raceTimes));</code></pre>
 ### step4 에서 나왔던 리뷰사항들
-* [ ] [fix#01] [RacingCar.java] 자동차 이름에 validation을 추가할 것
+* [X] [fix#01] [RacingCar.java] 자동차 이름에 validation을 추가할 것
 * [ ] [fix#02] [RacingCar.java] RacingCar 객체 clone 하기
 * [X] [fix#03] [RacingGameInputTest.java] UI 테스트 하지 않기 
 * [ ] [fix#04] [RacingGameResultView.java] records.size()-1 보다 의미있는 변수로 수정하기

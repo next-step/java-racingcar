@@ -7,11 +7,11 @@ public class RacingCar {
     private String name;
 
     public RacingCar(String name) {
-        this.name = name;
+        this(name, 0);
     }
 
     public RacingCar(String name, int position) {
-        this.name = name;
+        this.name = validateEmptyElseGet(name);
         this.position = position;
     }
 
@@ -26,6 +26,13 @@ public class RacingCar {
     }
 
     public String getName() {
+        return name;
+    }
+
+    private String validateEmptyElseGet(String name) {
+        if(null == name || name.equals("")) {
+            throw new IllegalArgumentException("자동차 이름을 확인해 주세요");
+        }
         return name;
     }
 }
