@@ -24,8 +24,9 @@ public class RacingGame {
         RacingEntry entry = new RacingEntry(entryList);
         for(int i = 0; i < roundTimes; i++){
             entry.move(getRaceRule());
-            record.add(entry);
+            record.add(getSnapShot(entry));
         }
+
         return record;
     }
 
@@ -37,6 +38,14 @@ public class RacingGame {
 
     public ForwardingRule getRaceRule() {
         return new RandomForwardingRule();
+    }
+
+    private RacingEntry getSnapShot(RacingEntry origin) {
+        List<RacingCar> snapShotEntryList = new ArrayList<>();
+        for(RacingCar orginCar : origin.getEntryList()) {
+            snapShotEntryList.add(new RacingCar(orginCar.getName(), orginCar.getPosition()));
+        }
+        return new RacingEntry(snapShotEntryList);
     }
 }
 

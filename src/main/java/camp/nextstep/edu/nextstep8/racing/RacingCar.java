@@ -1,7 +1,6 @@
 package camp.nextstep.edu.nextstep8.racing;
 
 import camp.nextstep.edu.nextstep8.racing.rule.ForwardingRule;
-import camp.nextstep.edu.nextstep8.racing.rule.RandomForwardingRule;
 
 public class RacingCar {
     private int position;
@@ -9,6 +8,11 @@ public class RacingCar {
 
     public RacingCar(String name) {
         this.name = name;
+    }
+
+    public RacingCar(String name, int position) {
+        this.name = name;
+        this.position = position;
     }
 
     public void move(ForwardingRule forwardingRule) {

@@ -28,7 +28,7 @@ public class RacingGameResultView {
 
     public void congratulationWinner() {
         List<RacingCar> finalEntryList = records.get(records.size()-1).getEntryList();
-        System.out.println(getWinner(finalEntryList) + "가 최종 우승했습니다.");
+        System.out.println(getWinner(finalEntryList) + " 가 최종 우승했습니다.");
     }
 
     private String getWinner(List<RacingCar> entryList) {
@@ -45,7 +45,6 @@ public class RacingGameResultView {
     }
 
     private String generateDistance(int count) {
-        System.out.println(count);
         StringBuilder builder = new StringBuilder();
         for(int i = 0; i < count; i++) {
             builder.append(DISPLAY_SYMBOL);
