@@ -78,6 +78,10 @@ pobi, honux가 최종 우승했습니다.</code></pre>
     * 힌트: if 조건절에서 값을 return하는 방식으로 구현하면 else를 사용하지 않아도 된다.
     * else를 쓰지 말라고 하니 switch/case로 구현하는 경우가 있는데 switch/case도 허용하지 않는다.
 
+## 리팩토링 요구사항
+* 핵심 비지니스 로직을 가지는 객체를 domain 패키지, UI 관련한 객체를 view 패키지에 구현한다.
+* MVC 패턴 기반으로 리팩토링해 view 패키지의 객체가 domain 패키지 객체에 의존할 수 있지만, domain 패키지의 객체는 view 패키지 객체에 의존하지 않도록 구현한다.
+
 ## 개선 요구사항
 ### step3 에서 나왔던 리뷰사항들
 * [X] [fix#01] 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
@@ -95,4 +99,11 @@ pobi, honux가 최종 우승했습니다.</code></pre>
         () -> assertThat(result.stream()
                 .filter(r -> r > 0)
                 .count()).isEqualTo(carNumbers * raceTimes));</code></pre>
+### step4 에서 나왔던 리뷰사항들
+* [ ] [fix#01] [RacingCar.java] 자동차 이름에 validation을 추가할 것
+* [ ] [fix#02] [RacingCar.java] RacingCar 객체 clone 하기
+* [ ] [fix#03] [RacingGameInputTest.java] UI 테스트 하지 않기 
+* [ ] [fix#04] [RacingGameResultView.java] records.size()-1 보다 의미있는 변수로 수정하기
+* [ ] [fix#05] [RacingGameResultView.java] 비즈니스 로직 분리하기
+* [ ] [fix#06] [RacingGameResultView.java] 들여쓰기 1까지만 허용하기
 
