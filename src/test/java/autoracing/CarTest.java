@@ -32,22 +32,17 @@ public class CarTest {
         assertThatIllegalArgumentExceptionIsThrownByCarGetLocation(car, 1);
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {1, 5, 17})
-    public void shouldRecordWhenDriving(int distance) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Car car = new Car(rule);
-        Method method = Car.class.getDeclaredMethod("drive", int.class);
-        method.setAccessible(true);
-        method.invoke(car, distance);
-        assertThat(getFirstRoundLocation(car)).isEqualToComparingFieldByField(new Location(distance, 1));
+    @Test
+    public void shouldRecordWhenDriving() {
+        Car car = new Car(() -> true);
+        car.race();
+        assertThat(getFirstRoundLocation(car)).isEqualToComparingFieldByField(new Location(1, 1));
     }
 
     @Test
-    public void shouldRecordWhenStay() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Car car = new Car(rule);
-        Method method = Car.class.getDeclaredMethod("stay");
-        method.setAccessible(true);
-        method.invoke(car);
+    public void shouldRecordWhenStay() {
+        Car car = new Car(() -> false);
+        car.race();
         assertThat(getFirstRoundLocation(car)).isEqualToComparingFieldByField(new Location(0, 1));
     }
 
