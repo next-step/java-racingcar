@@ -28,8 +28,7 @@ public class CarTest {
     @Test
     public void newCar() {
         Car car = new Car(rule);
-        Condition<Car> init = new Condition<>(c -> c.getLocation(0) == Location.STARTING_LINE, "init");
-        assertThat(car).is(init);
+        assertThat(car.getLocation(0)).isEqualTo(Location.STARTING_LINE);
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> car.getLocation(1))
                 .withMessage("The car has never played that round '1'.");
