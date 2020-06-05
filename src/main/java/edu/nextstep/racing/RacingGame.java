@@ -13,8 +13,6 @@ public class RacingGame {
         resultViewer = new ResultView();
         inputView = new InputView();
         carList = new ArrayList<>();
-
-        setUp();
     }
 
     public void setUp() {
@@ -41,7 +39,10 @@ public class RacingGame {
         resultViewer.view("실행 결과");
 
         for (int i = 0; i < carNum; i++) {
-            resultViewer.view(String.valueOf(carList.get(i).getStatus()));
+            for (int j = 0; j < carList.get(i).getStatus(); j++) {
+                resultViewer.carLineView();
+            }
+            resultViewer.newLine();
         }
     }
 
