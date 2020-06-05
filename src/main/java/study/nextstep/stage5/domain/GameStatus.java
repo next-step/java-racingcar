@@ -1,14 +1,22 @@
 package study.nextstep.stage5.domain;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
 public class GameStatus {
-    private ArrayList<Position> status;
+    private List<Position> status;
     private int remainingTotalTurn;
 
     public GameStatus(int size, int totalTurn){
+        if (size <= 0) {
+            throw new IllegalArgumentException("인원수가 잘못되었습니다");
+        }
+        if (totalTurn <= 0) {
+            throw new IllegalArgumentException("게임 진행 회수가 부족합니다");
+        }
+
         status = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             status.add(new Position());
@@ -29,15 +37,15 @@ public class GameStatus {
     }
 
     public Position getPosition(int pos) {
-        if (pos >= status.size()) {
-            throw new IllegalArgumentException();
+        if (pos < 0 || status.size() <= pos) {
+            throw new IllegalArgumentException("사람 번호를 벗어났습니다");
         }
         return status.get(pos);
     }
 
     public ArrayList<Integer> getWinnerPosition() {
         if (remainingTotalTurn > 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("아직 게임이 끝나지 않았습니다");
         }
 
         int winnerMove = 0;

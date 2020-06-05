@@ -8,6 +8,12 @@ import static org.assertj.core.api.Assertions.*;
 
 public class GameStatusTest {
     @Test
+    public void invalidGameStatusInitializeTest() {
+        assertThatIllegalArgumentException().isThrownBy(() -> new GameStatus(-1, 1));
+        assertThatIllegalArgumentException().isThrownBy(() -> new GameStatus(1, -1));
+    }
+
+    @Test
     public void notGameFinishedTest() {
         GameStatus status = new GameStatus(1, 3);
         assertThatIllegalArgumentException().isThrownBy(() -> status.getWinnerPosition());
