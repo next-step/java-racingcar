@@ -28,4 +28,9 @@ public class Car {
     public int getLocation() {
         return location;
     }
+
+    public Car getClone() {
+        return new Car(name, location);
+    }
+
 }
