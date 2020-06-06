@@ -15,7 +15,7 @@ public class Car {
         this.position = position;
     }
 
-    public void goStopPosition(boolean greaterCheck) {
+    private void decidePosition(boolean greaterCheck) {
         if (greaterCheck) {
             this.position += 1;
         }
@@ -29,9 +29,12 @@ public class Car {
         return this.carName;
     }
 
-    public boolean canGo(int number) {
+    public void move(int number) {
+        decidePosition(number >= MINIMUM_CONDITIONS ? true : false);
+    }
 
-        return number >= MINIMUM_CONDITIONS ? true : false;
+    public boolean isSamePosition(Integer inputposition){
+        return position == inputposition;
     }
 
 }

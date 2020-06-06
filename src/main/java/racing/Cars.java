@@ -7,10 +7,15 @@ import java.util.stream.Collectors;
 public class Cars {
 
     private List<Car> carList;
+    private int[] carPostions;
+    private int maxPosition = 0;
 
 
     public Cars(String[] carNameList) {
+
         carList = new ArrayList<>();
+        carPostions = new int[carNameList.length];
+
         for (int i = 0; i < carNameList.length; i++) {
             this.carList.add(new Car(carNameList[i]));
         }
@@ -27,10 +32,12 @@ public class Cars {
 
     public void playGame(Dice dice) {
 
-        for (Car car : this.carList) {
-            boolean greaterCheck = car.canGo(dice.makeNumber());
-            car.goStopPosition(greaterCheck);
+        for (int i =0; i < carList.size(); i ++) {
+            Car car = carList.get(i);
+            car.move(dice.makeNumber());
+            carPostions[i] = car.getPosition();
         }
+
     }
 
     public List<Car> getCarList() {
@@ -39,25 +46,21 @@ public class Cars {
 
     public List<String> getWinner() {
 
-        int maxPosition = getMaxPostion(this.carList);
+        getMaxPostion();
 
-        return makeWinnerList(carList, maxPosition);
+        return makeWinnerList(carList);
     }
 
-    private int getMaxPostion(List<Car> carList) {
+    private void getMaxPostion() {
 
-        int maxPostion = 0;
-
-        for (Car car : carList) {
-            int currentPostion = car.getPosition();
-            maxPostion = Integer.max(maxPostion, currentPostion);
+        for (Integer position : carPostions) {
+            maxPosition = Integer.max(maxPosition, position);
         }
 
-        return maxPostion;
     }
 
-    private List<String> makeWinnerList(List<Car> carList, int maxPosition) {
-        return carList.stream().filter(car -> car.getPosition() == maxPosition)
+    private List<String> makeWinnerList(List<Car> carList) {
+        return carList.stream().filter(car -> car.isSamePosition(maxPosition))
                 .map(car -> car.getCarName()).collect(Collectors.toList());
     }
 }
