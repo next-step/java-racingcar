@@ -15,11 +15,11 @@ public class ParserUtils {
 
     public static void checkBlank(String[] nameList) {
         for (String name : nameList) {
-            isBlank(name);
+            isEmpty(name);
         }
     }
 
-    private static void isBlank(String inputName) {
+    private static void isEmpty(String inputName) {
         if (inputName.isEmpty()) {
             throw new IllegalArgumentException("입력문자에 공백이 있습니다.");
         }
