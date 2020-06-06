@@ -1,6 +1,7 @@
-package racingcar_step4;
+package racingcar_step4.view;
 
 import com.google.common.base.Splitter;
+import racingcar_step4.model.Car;
 
 import java.util.ArrayList;
 import java.util.List;

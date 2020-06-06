@@ -1,8 +1,8 @@
-package racingcar_step4;
-
-import java.util.Random;
+package racingcar_step4.model;
 
 public class Car implements Comparable<Car>{
+
+    private static final int FORWARD_VALUE = 1;
 
     private String carName;
     private int totalDistance;
@@ -19,17 +19,11 @@ public class Car implements Comparable<Car>{
         this.totalDistance = totalDistance;
     }
 
-    public int move() {
-        int randomNumber = getRandom ();
-        if(randomNumber >= CarRacingConstants.MOVE_POSSIBLE_VALUE) {
-            return totalDistance += CarRacingConstants.FORWARD_VALUE;
+    public int move(MovingStrategy movingStrategy) {
+        if(movingStrategy.isMove()) {
+            return totalDistance += FORWARD_VALUE;
         }
         return totalDistance;
-    }
-
-    private int getRandom() {
-        Random rand = new Random();
-        return rand.nextInt(CarRacingConstants.RANDOM_RANGE);
     }
 
     public String getCarName() {
