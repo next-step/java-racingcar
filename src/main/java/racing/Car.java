@@ -33,7 +33,7 @@ public class Car {
         decidePosition(number >= MINIMUM_CONDITIONS ? true : false);
     }
 
-    public boolean isSamePosition(Integer inputposition){
+    public boolean isSamePosition(Integer inputposition) {
         return position == inputposition;
     }
 
