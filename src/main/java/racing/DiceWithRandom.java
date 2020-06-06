@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class DiceWithRandom implements Dice {
 
-    private final static int MAX_NUMBER = 10;
-    Random random = new Random();
+    private final int MAX_NUMBER = 10;
+    private Random random = new Random();
 
     @Override
     public int makeNumber() {
