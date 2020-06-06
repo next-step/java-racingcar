@@ -1,16 +1,10 @@
 package edu.nextstep.racing;
 
 public class RacingCar {
-    RandomNumber randomNumber = null;
-    int carPosition = 0;
+    private int carPosition = 0;
 
-    RacingCar() {
-        randomNumber = new RandomNumber();
-    }
-
-    public void move() {
-        int randomNum = randomNumber.generator();
-        if(randomNum >= 4) {
+    public void move(MovingCheck movingCheck) {
+        if(movingCheck.isMovable()) {
             this.carPosition++;
         }
     }
