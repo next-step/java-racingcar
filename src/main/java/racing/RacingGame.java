@@ -12,7 +12,7 @@ public class RacingGame {
         Cars cars = new Cars(inputView.getnameList());
 
         OutputView outputView = new OutputView();
-        DiceWithRandom dice = new DiceWithRandom();
+        Dice dice = new DiceWithRandom();
 
         for (int time = 0; time < inputView.getInputTime(); time++) {
 
