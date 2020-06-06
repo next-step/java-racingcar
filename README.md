@@ -16,7 +16,7 @@
 * car List를 다룰 Cars클래스 및 내부에 게임 시작 기능
 
 
-## step4 구현할 기능 목록
+## racing 구현할 기능 목록
 * 유저로부터 입력받을 inputView
 * 입력받은 자동차 이름을 분리할 split 메서드
 * 동작후 화면에 출력해줄 outPutView

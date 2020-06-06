@@ -1,4 +1,4 @@
-package step4;
+package racing;
 
 public class Car {
 
@@ -16,7 +16,7 @@ public class Car {
     }
 
     public void goStopPosition(boolean greaterCheck) {
-        if(greaterCheck){
+        if (greaterCheck) {
             this.position += 1;
         }
     }

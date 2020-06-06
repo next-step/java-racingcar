@@ -1,12 +1,10 @@
-package step3;
+package racing;
 
-import java.util.Random;
-
-public class DiceWithInput implements Dice{
+public class DiceWithInput implements Dice {
 
     private int number;
 
-    public DiceWithInput(int input){
+    public DiceWithInput(int input) {
         this.number = input;
     }
 

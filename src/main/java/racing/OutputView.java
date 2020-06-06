@@ -1,4 +1,4 @@
-package step4;
+package racing;
 
 import java.util.Collections;
 import java.util.List;
@@ -19,8 +19,8 @@ public class OutputView {
         return carName + ": " + markFullString;
     }
 
-    public void printWinner(List<String> carList){
+    public void printWinner(List<String> carList) {
         String winnerNames = String.join(",", carList);
-        System.out.println(winnerNames+ "가 최종 우승했습니다.");
+        System.out.println(winnerNames + "가 최종 우승했습니다.");
     }
 }

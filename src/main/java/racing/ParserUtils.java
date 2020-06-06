@@ -1,8 +1,8 @@
-package step4;
+package racing;
 
 import java.util.Optional;
 
-public class  ParserUtils {
+public class ParserUtils {
 
     private static final String COMMA = ",";
 
@@ -14,13 +14,13 @@ public class  ParserUtils {
     }
 
     public static void checkBlank(String[] nameList) {
-        for (String name: nameList) {
+        for (String name : nameList) {
             isBlank(name);
         }
     }
 
     private static void isBlank(String inputName) {
-        if(inputName.isEmpty()){
+        if (inputName.isEmpty()) {
             throw new IllegalArgumentException("입력문자에 공백이 있습니다.");
         }
     }

@@ -1,8 +1,8 @@
-package step3;
+package racing;
 
 import java.util.Random;
 
-public class DiceWithRandom implements Dice{
+public class DiceWithRandom implements Dice {
 
     private final static int MAX_NUMBER = 10;
     Random random = new Random();

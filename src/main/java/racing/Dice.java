@@ -1,4 +1,4 @@
-package step3;
+package racing;
 
 public interface Dice {
 

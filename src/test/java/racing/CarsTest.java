@@ -1,4 +1,4 @@
-package step4;
+package racing;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,12 +14,12 @@ class CarsTest {
     private Cars cars;
     private Cars positionCars;
     private String[] nameList = {"HO", "SOO", "RAM"};
-    private int[] positionList = {3,3,5};
+    private int[] positionList = {3, 3, 5};
 
     @BeforeEach
     public void setUp() {
         cars = new Cars(nameList);
-        positionCars = new Cars(nameList,positionList);
+        positionCars = new Cars(nameList, positionList);
 
     }
 
@@ -62,7 +61,7 @@ class CarsTest {
 
     @DisplayName("포지션이 각자 다를때 출력")
     @Test
-    public void getWinnerPostionSet(){
+    public void getWinnerPostionSet() {
         List<String> winner = positionCars.getWinner();
         assertThat(winner.size()).isEqualTo(1);
         assertThat(winner).contains("RAM");
