@@ -99,6 +99,7 @@ pobi, honux가 최종 우승했습니다.</code></pre>
         () -> assertThat(result.stream()
                 .filter(r -> r > 0)
                 .count()).isEqualTo(carNumbers * raceTimes));</code></pre>
+
 ### step4 에서 나왔던 리뷰사항들
 * [X] [fix#01] [RacingCar.java] 자동차 이름에 validation을 추가할 것
 * [X] [fix#02] [RacingCar.java] RacingCar 객체 clone 하기
@@ -106,4 +107,17 @@ pobi, honux가 최종 우승했습니다.</code></pre>
 * [X] [fix#04] [RacingGameResultView.java] records.size()-1 보다 의미있는 변수로 수정하기
 * [X] [fix#05] [RacingGameResultView.java] 비즈니스 로직 분리하기
 * [X] [fix#06] [RacingGameResultView.java] 들여쓰기 1까지만 허용하기
+
+### step5 에서 나왔던 리뷰사항들
+* [ ] [fix#01] [RacingCar.java] Objects.isNull() 활용해보기
+* [ ] [fix#02] [RacingCar.java] 유효서 검사에서 값 검증만 하기 
+* [ ] [fix#03] [RacingCar.java] Position에 대한 검증도 해보기, name, position 불변객체 만들기
+* [ ] [fix#04] [RacingGame.java] CheckedException과 UnCheckedException의 차이점 학습하기
+* [ ] [fix#05] [RacingGame.java] List<RacinCar> 말고 일급컬렉션을 가지고 있도록 수정
+* [ ] [fix#06] [RacingGame.java] List<RacingEntry> record 상태 제거 하기 (굳이 필요 없음)
+* [ ] [fix#07] [RacingGame.java] 객체 내부에서만 사용하는 생성자는 private
+* [ ] [fix#08] [RacingGameResultView.java] 객체의 가지고 있는 상태를 활용할 것 (굳이 왜 파라미터로 넘겼지??)
+* [ ] [fix#09] [RacingCarTest.java] 문법 변경하기 
+    * <pre><code> assertThatThrownBy(() ->new RacingCar(name)).isInstanceOf(IllegalArgumentException.class)</code></pre>
+
 
