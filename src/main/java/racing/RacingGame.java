@@ -19,7 +19,6 @@ public class RacingGame {
             cars.playGame(dice);
             List<Car> carList = cars.getCarList();
             outputView.resultPrint(carList);
-            System.out.println("============" + (time + 1) + "실행 끝==================");
         }
 
         List<String> winner = cars.getWinner();
