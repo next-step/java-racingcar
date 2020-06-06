@@ -20,45 +20,37 @@ class CarTest {
         car = new Car("HO");
     }
 
-    @DisplayName("현재의 위치값을 반환")
+
+    @DisplayName("입력값이 4보다 작을때 포지션의 위치값 변화 없음")
     @Test
-    public void getPositionTest() {
-        int position = car.getPosition();
-        assertThat(position).isEqualTo(0);
+    public void moveLessCondition() {
+        car.move(3);
+        assertThat(car.getPosition()).isEqualTo(0);
+
     }
 
-    @DisplayName("위치값을 변경하고 그에 따른 값 반환 테스트")
+    @DisplayName("입력값이 4보다 작을때 포지션의 위치값 변화 없음")
     @Test
-    public void changePostionAndGetPosition() {
-        car.goStopPosition(true);
-        int position = car.getPosition();
-        assertThat(position).isEqualTo(1);
+    public void moveGreaterCondition() {
+        car.move(5);
+        assertThat(car.getPosition()).isEqualTo(1);
+
     }
 
-    @DisplayName("위치값을 변경하지 않고 그에 따른 값 반환 테스트")
+    @DisplayName("한번 이동한 자동차의 현재 위치와 외부에서 입력한 위치 최대값이 동일할때")
     @Test
-    public void stayAndGetPosition() {
-        car.goStopPosition(false);
-        int position = car.getPosition();
-        assertThat(position).isEqualTo(0);
+    public void isSamePosition() {
+        car.move(5);
+        boolean checkResult = car.isSamePosition(1);
+        assertThat(checkResult).isEqualTo(true);
     }
 
-    @DisplayName("4보다 큰값인지 아닌지 확인")
-    @ParameterizedTest
-    @MethodSource
-    public void isGreaterTest(int input, boolean expected) {
-
-        boolean result = car.canGo(input);
-
-        assertThat(result).isEqualTo(expected);
-    }
-
-    private static Stream<Arguments> isGreaterTest() {
-        return Stream.of(
-                Arguments.of(4, true),
-                Arguments.of(5, true),
-                Arguments.of(0, false)
-        );
+    @DisplayName("한번 이동한 자동차의 현재 위치와 외부에서 입력한 위치 최대값이 동일하지 않을때")
+    @Test
+    public void isNotSamePosition() {
+        car.move(5);
+        boolean checkResult = car.isSamePosition(2);
+        assertThat(checkResult).isEqualTo(false);
     }
 
 }
