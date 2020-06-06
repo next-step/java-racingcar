@@ -10,8 +10,8 @@ import java.util.List;
 public class RacingView {
 
     public void print(final RacingResult racingResult) {
-        for (int i = 1; i <= racingResult.getRacingRoundSize(); i++) {
-            printRoundResult(racingResult.getRoundResult(i));
+        for (List<Car> roundResult : racingResult.getRacingResult()) {
+            printRoundResult(roundResult);
         }
         Printer.printWinner(Winners.getWinners(racingResult.getLastRoundResult()));
     }

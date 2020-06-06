@@ -3,27 +3,24 @@ package racing.domain;
 import java.util.*;
 
 public class RacingResult {
-    private final Map<Integer, List<Car>> racingResult = new HashMap<>();
+    private final List<List<Car>> racingResult = new ArrayList<>();
 
-    public void put(final int racingRound, final List<Car> cars) {
-        if (cars == null || cars.isEmpty()) throw new IllegalArgumentException();
-        racingResult.put(racingRound, cars);
+    public void add(final List<Car> cars) {
+        if ((cars == null) || (cars.isEmpty())) {
+            throw new IllegalArgumentException();
+        }
+        racingResult.add(cars);
     }
 
-    public List<Car> getRoundResult(final int round) {
-        if (!isValid(round)) throw new IllegalArgumentException();
-        return racingResult.get(round);
+    public List<List<Car>> getRacingResult() {
+        return racingResult;
     }
 
     public List<Car> getLastRoundResult() {
-        return racingResult.get(getRacingRoundSize());
+        return racingResult.get(racingResult.size() - 1);
     }
 
     public int getRacingRoundSize() {
         return racingResult.size();
-    }
-
-    private boolean isValid(final int round) {
-        return round > 0 || round <= getRacingRoundSize();
     }
 }
