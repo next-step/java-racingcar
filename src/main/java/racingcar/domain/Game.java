@@ -1,26 +1,36 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Game {
 
-  private List<Car> cars;
+  private final Cars cars;
 
-  private Game(List<Car> cars) {
-    this.cars = new ArrayList<>(cars);
+  protected Game(Cars cars) {
+    this.cars = cars;
   }
 
-  public List<Car> doRace(int random) {
-    this.cars.forEach(element -> element.updatePosition(random));
-    return this.cars;
+  public Cars doRace() {
+    return cars.move();
   }
 
-  public List<Car> getCars() {
+  public List<Car> calculateWinner(List<Car> cars) {
+    int longest = cars.stream()
+        .mapToInt(Car::getPosition)
+        .max()
+        .orElseThrow(() -> new RuntimeException("무엇인가 이상하네요."));
+
+    return cars.stream()
+        .filter(car -> car.getPosition() == longest)
+        .collect(Collectors.toList());
+  }
+
+  public Cars getCars() {
     return cars;
   }
 
-  public static Game create(List<Car> cars) {
+  public static Game create(Cars cars) {
     return new Game(cars);
   }
 }
