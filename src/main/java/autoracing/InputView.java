@@ -46,8 +46,8 @@ public class InputView {
         return Integer.parseInt(scan.nextLine().trim());
     }
 
-    public List<String> getCarNames() {
-        return carNames;
+    public List<Car> getCars() {
+        return carNames.stream().map(Car::new).collect(Collectors.toList());
     }
 
     public int getTotalRounds() {

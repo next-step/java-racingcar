@@ -15,11 +15,11 @@ public class RacingGameIntegrationTest {
         InputView input = InputView.takeInput(inputStream);
 
         RacingGame game = new RacingGame(
-                input.getCarNames(),
                 input.getTotalRounds(),
-                new RandomRacingRule(ruleBound, ruleThreshold)
+                input.getCars()
         );
 
+        game.setRule(new RandomRacingRule(ruleBound, ruleThreshold));
         game.start();
         game.replayResult();
     }

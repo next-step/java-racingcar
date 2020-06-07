@@ -15,7 +15,8 @@ public class InputViewTest {
         String inputValues = "Mercedes, Ferrari, Lamborghini, McLaren\n4\n";
         InputStream inputStream = new ByteArrayInputStream(inputValues.getBytes());
         InputView input = InputView.takeInput(inputStream);
-        assertThat(input.getCarNames()).isEqualTo(Arrays.asList("Mercedes", "Ferrari", "Lamborghini", "McLaren"));
+        assertThat(input.getCars()).extracting("name")
+                .contains("Mercedes", "Ferrari", "Lamborghini", "McLaren");
         assertThat(input.getTotalRounds()).isEqualTo(4);
     }
 }

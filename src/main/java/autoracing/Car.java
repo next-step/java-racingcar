@@ -4,15 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Car {
+    private static final RacingRule NO_RULE = () -> {
+        System.out.println("WARN: the car has no rule.");
+        return false;
+    };
+
     private final String name;
     private final List<Location> history;
-    private final RacingRule rule;
+    private RacingRule rule;
 
     public Car(String name, RacingRule rule) {
         this.name = name;
         this.history = new ArrayList<>();
         this.history.add(Location.STARTING_LINE);
         this.rule = rule;
+    }
+
+    public Car(String name) {
+        this(name, NO_RULE);
     }
 
     public void race() {
@@ -32,6 +41,10 @@ public class Car {
             throw new IllegalArgumentException(String.format("The car has never played that round '%d'.", round));
         }
         return history.get(round);
+    }
+
+    public void setRule(RacingRule rule) {
+        this.rule = rule;
     }
 
     private Location getLatestLocation() {

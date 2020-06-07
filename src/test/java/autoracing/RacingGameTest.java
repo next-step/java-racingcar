@@ -5,27 +5,28 @@ import org.junit.jupiter.api.TestInstance;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RacingGameTest {
-    private RacingRule rule;
-
     @Test
     public void shouldCreateCars() {
         List<String> carNames = Arrays.asList("Mercedes", "Ferrari", "Lamborghini", "McLaren");
-        int numberOfCars = carNames.size();
+        List<Car> cars = carNames.stream().map(Car::new).collect(Collectors.toList());
+        int numberOfCars = cars.size();
         int totalRounds = 5;
         RacingRule rule = () -> true;
-        RacingGame game = new RacingGame(carNames, totalRounds, rule);
+
+        RacingGame game = new RacingGame(totalRounds, cars);
+        game.setRule(rule);
 
         assertThat(game).isNotNull()
                 .extracting("totalRounds")
                 .containsExactly(totalRounds);
 
         assertThat(game).extracting("participants")
-                .flatExtracting((cars) -> (List<Car>) cars)
+                .flatExtracting((participants) -> (List<Car>) participants)
                 .doesNotContainNull()
                 .hasSize(numberOfCars)
                 .filteredOn("rule", rule)

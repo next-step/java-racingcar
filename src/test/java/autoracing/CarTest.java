@@ -7,8 +7,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.lang.reflect.InvocationTargetException;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
@@ -24,17 +22,42 @@ public class CarTest {
     }
 
     @Test
-    public void newCar() {
+    public void newCarWithRule() {
         Car car = new Car("Neo", rule);
-        assertThat(car.getName()).isEqualTo("Neo");
-        assertThat(car.getLocation(0)).isEqualTo(Location.STARTING_LINE);
+        assertThatCarNameIsEqualToExpectedName(car, "Neo");
+        assertThatCarLocationIsEqaulToStartingLine(car);
         assertThatIllegalArgumentExceptionIsThrownByCarGetLocation(car, 1);
+    }
+
+    @Test
+    public void newCarWithoutRule() {
+        Car car = new Car("Neo");
+        assertThatCarNameIsEqualToExpectedName(car, "Neo");
+        assertThatCarLocationIsEqaulToStartingLine(car);
+        assertThatIllegalArgumentExceptionIsThrownByCarGetLocation(car, 1);
+
+        int round = 1000;
+        for (int i = 0; i < round; i++) {
+            car.race();
+        }
+        assertThat(car.getLocation(0))
+                .as("The car without rule never move forward.")
+                .isEqualTo(Location.STARTING_LINE);
     }
 
     @ParameterizedTest
     @CsvSource({"true,1", "false,0"})
     public void shouldRecordWhenRacing(boolean driveOrNot, int expectedDistance) {
         Car car = new Car("Neo", () -> driveOrNot);
+        car.race();
+        assertThat(getFirstRoundLocation(car)).isEqualToComparingFieldByField(new Location(expectedDistance, 1));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"true,1", "false,0"})
+    public void shouldRecordWhenRacingWithSettingRule(boolean driveOrNot, int expectedDistance) {
+        Car car = new Car("Neo");
+        car.setRule(() -> driveOrNot);
         car.race();
         assertThat(getFirstRoundLocation(car)).isEqualToComparingFieldByField(new Location(expectedDistance, 1));
     }
@@ -59,5 +82,13 @@ public class CarTest {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             car.getLocation(round);
         }).withMessage(String.format("The car has never played that round '%d'.", round));
+    }
+
+    private void assertThatCarNameIsEqualToExpectedName(Car car, String name) {
+        assertThat(car.getName()).isEqualTo(name);
+    }
+
+    private void assertThatCarLocationIsEqaulToStartingLine(Car car) {
+        assertThat(car.getLocation(0)).isEqualTo(Location.STARTING_LINE);
     }
 }

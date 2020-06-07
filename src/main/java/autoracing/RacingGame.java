@@ -9,16 +9,20 @@ public class RacingGame {
     private final int totalRounds;
     private final List<Car> participants;
 
-    public RacingGame(List<String> carNames, int totalRounds, RacingRule rule) {
+    public RacingGame(int totalRounds, List<Car> participants) {
         this.totalRounds = totalRounds;
-        this.participants = carNames.stream()
-                .map(name -> new Car(name, rule))
-                .collect(Collectors.toList());
+        this.participants = participants;
     }
 
     public static RacingGame createFromConsole(RacingRule rule) {
         InputView inputView = InputView.takeInput(System.in);
-        return new RacingGame(inputView.getCarNames(), inputView.getTotalRounds(), rule);
+        RacingGame newGame = new RacingGame(inputView.getTotalRounds(), inputView.getCars());
+        newGame.setRule(rule);
+        return newGame;
+    }
+
+    public void setRule(RacingRule rule) {
+        participants.forEach(participant -> participant.setRule(rule));
     }
 
     public void start() {
