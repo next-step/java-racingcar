@@ -26,9 +26,13 @@ public class ResultView {
 
     private String renderRound(int round) {
         return racingGame.getParticipants().stream()
-                .map(car -> renderCarLocation(car, round))
+                .map(car -> renderCarLocationWithName(car, round))
                 .collect(Collectors.joining("\n"))
                 + "\n";
+    }
+
+    private String renderCarLocationWithName(Car car, int round) {
+        return String.format("%s : %s", car.getName(), renderCarLocation(car, round));
     }
 
     private String renderCarLocation(Car car, int round) {
