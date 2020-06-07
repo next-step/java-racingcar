@@ -8,32 +8,33 @@ public class RacingGame {
     private final int numberOfRound;
 
     public RacingGame(String carNames, int numberOfRound) {
-        NameParser nameParser = new NameParser();
-
-        this.cars = nameParser.parse(carNames);
+        if (!isValid(numberOfRound))  {
+            throw new IllegalArgumentException();
+        }
+        this.cars = CarFactory.generateCars(carNames);
         this.numberOfRound = numberOfRound;
+    }
+
+    private boolean isValid(final int numberOfRound) {
+        return numberOfRound > 0;
     }
 
     public RacingResult play(final MoveStrategy moveStrategy) {
         final RacingResult racingResult = new RacingResult();
-        for (int i = 1; i <= numberOfRound; i++) {
-            racingResult.put(i, getRoundResultBy(moveStrategy));
+
+        for (int i = 0; i < numberOfRound; i++) {
+            racingResult.add(getRoundResultBy(moveStrategy));
         }
         return racingResult;
     }
 
     private List<Car> getRoundResultBy(final MoveStrategy moveStrategy) {
+        final List<Car> roundResult = new ArrayList<>();
+
         for (Car car : cars) {
             car.move(moveStrategy.isMovable());
+            roundResult.add(car.getClone());
         }
-        return cloneCars(cars);
-    }
-
-    private List<Car> cloneCars(final List<Car> cars) {
-        List<Car> clonedList = new ArrayList<>();
-        for (Car car : cars) {
-            clonedList.add(new Car(car.getName(), car.getLocation()));
-        }
-        return clonedList;
+        return roundResult;
     }
 }

@@ -26,9 +26,8 @@ public class RacingGameTest {
         RacingGame racingGame = new RacingGame(cars, numberOfRound);
         RacingResult racingResult = racingGame.play(new ForceMoveStrategy());
 
-        for (int i = 1; i <= numberOfRound; i++) {
-            int numberOfRaceCar = racingResult.getRoundResult(i).size();
-            assertThat(numberOfRaceCar).isEqualTo(3);
+        for (List<Car> roundResult : racingResult.getRacingResult()) {
+            assertThat(roundResult.size()).isEqualTo(3);
         }
     }
 
@@ -38,10 +37,11 @@ public class RacingGameTest {
         RacingGame racingGame = new RacingGame(cars, numberOfRound);
         RacingResult racingResult = racingGame.play(new ForceMoveStrategy());
 
-        for (int i = 1; i <= numberOfRound; i++) {
-            int shouldLocation = i;
-            List<Car> roundResult = racingResult.getRoundResult(i);
-            roundResult.forEach((car -> assertThat(car.getLocation()).isEqualTo(shouldLocation)));
+        int shouldLocation = 1;
+        for (List<Car> roundResult : racingResult.getRacingResult()) {
+            int finalShouldLocation = shouldLocation;
+            roundResult.forEach((car) -> assertThat(car.getLocation()).isEqualTo(finalShouldLocation));
+            shouldLocation++;
         }
     }
 
@@ -51,9 +51,8 @@ public class RacingGameTest {
         RacingGame racingGame = new RacingGame(cars, numberOfRound);
         RacingResult racingResult = racingGame.play(new SuspendMoveStrategy());
 
-        for (int i = 1; i <= numberOfRound; i++) {
-            List<Car> roundResult = racingResult.getRoundResult(i);
-            roundResult.forEach((car -> assertThat(car.getLocation()).isEqualTo(0)));
+        for (List<Car> roundResult : racingResult.getRacingResult()) {
+            roundResult.forEach((car) -> assertThat(car.getLocation()).isEqualTo(0));
         }
     }
 }
