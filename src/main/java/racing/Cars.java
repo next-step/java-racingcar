@@ -7,35 +7,31 @@ import java.util.stream.Collectors;
 public class Cars {
 
     private List<Car> carList;
-    private int[] carPostions;
+    private int[] carPositions;
     private int maxPosition = 0;
 
 
     public Cars(String[] carNameList) {
-
-        carList = new ArrayList<>();
-        carPostions = new int[carNameList.length];
-
-        for (int i = 0; i < carNameList.length; i++) {
-            this.carList.add(new Car(carNameList[i]));
-        }
+        this(carNameList, new int[carNameList.length]);
     }
 
     public Cars(String[] carNameList, int[] positionList) {
 
         carList = new ArrayList<>();
+        carPositions = new int[carNameList.length];
 
         for (int i = 0; i < carNameList.length; i++) {
             this.carList.add(new Car(carNameList[i], positionList[i]));
+            carPositions[i] = positionList[i];
         }
     }
 
     public void playGame(Dice dice) {
 
-        for (int i =0; i < carList.size(); i ++) {
+        for (int i = 0; i < carList.size(); i++) {
             Car car = carList.get(i);
             car.move(dice.makeNumber());
-            carPostions[i] = car.getPosition();
+            carPositions[i] = car.getPosition();
         }
 
     }
@@ -53,7 +49,7 @@ public class Cars {
 
     private void getMaxPostion() {
 
-        for (Integer position : carPostions) {
+        for (Integer position : carPositions) {
             maxPosition = Integer.max(maxPosition, position);
         }
 

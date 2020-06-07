@@ -2,12 +2,12 @@ package racing;
 
 public class Car {
 
-    private int position = 0;
+    private int position;
     private final static int MINIMUM_CONDITIONS = 4;
     private String carName;
 
     public Car(String inputCarName) {
-        this.carName = inputCarName;
+        this(inputCarName, 0);
     }
 
     public Car(String inputCarName, int position) {
