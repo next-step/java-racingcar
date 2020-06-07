@@ -7,6 +7,7 @@
 
 # QUESTIONS
 
+- [ ] expected 객체를 만드는 것이 참 어려운 것 같습니다... 뭔가 계속 뱅뱅 돌아가다가 assertj의 기능을 써서 비교를 하게 되더라고요...
 - [ ] [~~조건을 달아서 하나의 테스트 코드로 만드는 것이 가능할까요? 가능하다면 그게 적절한 방안인가요?~~](https://github.com/next-step/java-racingcar/pull/950#discussion_r435045177)
   - 예를 들어, `RandomRacingRule`의 경우 `bound`가 0 이하일 경우 `IllegalArgumentException`을 던지고, 아닐 경우 잘 생성된다. 라는 걸 표현하고 싶어요.
   - [ ] [이 리뷰](https://github.com/next-step/java-racingcar/pull/950#discussion_r435045177)에서 말씀하신 정상일 때의 테스트 코드라는 것이 감이 잡히지 않아서. ~~고민하다가 이것이 NotNull이다~~ AssertJ 문서를 보다가 doesNotThrowAnyException으로 테스트 코드를 작성하게 되었는데, 더 나은 방법이 있을까요?
