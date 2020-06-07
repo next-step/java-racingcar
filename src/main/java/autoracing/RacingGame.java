@@ -1,5 +1,6 @@
 package autoracing;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,5 +38,19 @@ public class RacingGame {
     public void replayResult() {
         ResultView resultView = new ResultView(this, "-", "실행 결과");
         resultView.show();
+    }
+
+    public List<Car> getWinners() {
+        int winnerDistance = getWinnerDistance();
+        return participants.stream()
+                .filter((car) -> car.getLocation(totalRounds).getDistance() == winnerDistance)
+                .collect(Collectors.toList());
+    }
+
+    private int getWinnerDistance() {
+        Car oneOfWinner = participants.stream()
+                .max(Comparator.comparingInt(a -> a.getLocation(totalRounds).getDistance()))
+                .orElseThrow(() -> new IllegalArgumentException(""));
+        return oneOfWinner.getLocation(totalRounds).getDistance();
     }
 }
