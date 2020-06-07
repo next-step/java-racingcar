@@ -26,8 +26,16 @@ public class RacingGame {
         }
     }
 
+    public int getTotalRounds() {
+        return totalRounds;
+    }
+
+    public List<Car> getParticipants() {
+        return participants;
+    }
+
     public void replayResult() {
-        ResultView resultView = new ResultView(participants, totalRounds, "-", "실행 결과");
+        ResultView resultView = new ResultView(this, "-", "실행 결과");
         resultView.show();
     }
 }

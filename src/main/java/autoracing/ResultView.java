@@ -1,33 +1,31 @@
 package autoracing;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ResultView {
 
     private static final int DEFAULT_TRACE_DISTANCE = 1;
-    private final List<Car> cars;
-    private final int totalRounds;
+    private final RacingGame racingGame;
     private final CharSequence traceSign;
     private final String resultTitle;
 
-    public ResultView(List<Car> cars, int totalRounds, CharSequence traceSign, String resultTitle) {
-        this.cars = cars;
-        this.totalRounds = totalRounds;
+
+    public ResultView(RacingGame racingGame, CharSequence traceSign, String resultTitle) {
+        this.racingGame = racingGame;
         this.traceSign = traceSign;
         this.resultTitle = resultTitle;
     }
 
     public void show() {
         System.out.println(resultTitle);
-        IntStream.range(0, totalRounds)
+        IntStream.range(0, racingGame.getTotalRounds())
                 .forEach(round -> System.out.println(renderRound(round)));
     }
 
     private String renderRound(int round) {
-        return cars.stream()
+        return racingGame.getParticipants().stream()
                 .map(car -> renderCarLocation(car, round))
                 .collect(Collectors.joining("\n"))
                 + "\n";
