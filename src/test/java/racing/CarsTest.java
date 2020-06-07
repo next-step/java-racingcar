@@ -12,18 +12,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarsTest {
 
     private Cars cars;
-    private Cars positionCars;
     private String[] nameList = {"HO", "SOO", "RAM"};
-    private int[] positionList = {3, 3, 5};
 
     @BeforeEach
     public void setUp() {
         cars = new Cars(nameList);
-        positionCars = new Cars(nameList, positionList);
-
     }
 
-    @DisplayName("DiceWithInput을 사용,  4보다 작을때 ")
+    @DisplayName("DiceWithInput을 사용,  4미만일때 ")
     @Test
     public void playGameLess() {
 
@@ -37,7 +33,7 @@ class CarsTest {
         assertThat(result).contains(0, 0, 0);
     }
 
-    @DisplayName("DiceWithInput을 사용, 4보다 클때")
+    @DisplayName("DiceWithInput을 사용, 4이상일때")
     @Test
     public void playGameGreater() {
         cars.playGame(new DiceWithInput(4));
@@ -46,24 +42,29 @@ class CarsTest {
         for (Car car : carList) {
             result.add(car.getPosition());
         }
-
         assertThat(result).contains(1, 1, 1);
-
-
     }
 
-    @DisplayName("모두가 0일때 승자 출력")
+    @DisplayName(" 승자가 중복일때 우승자 정보 반환")
     @Test
-    public void getWinner() {
+    public void getWinnerMulti() {
+
+        int[] positionList = {1,1,3};
+        Cars cars = new Cars(nameList, positionList);
+
         List<String> winner = cars.getWinner();
-        assertThat(winner.size()).isEqualTo(3);
-    }
-
-    @DisplayName("포지션이 각자 다를때 출력")
-    @Test
-    public void getWinnerPostionSet() {
-        List<String> winner = positionCars.getWinner();
-        assertThat(winner.size()).isEqualTo(1);
         assertThat(winner).contains("RAM");
     }
+
+    @DisplayName("승자가 한명일때 우승자 정보 반환")
+    @Test
+    public void getWinnerOnlyOne() {
+
+        int[] positionList = {1,3,2};
+
+        Cars cars = new Cars(nameList, positionList);
+        List<String> winner = cars.getWinner();
+        assertThat(winner).contains("SOO");
+    }
+
 }
