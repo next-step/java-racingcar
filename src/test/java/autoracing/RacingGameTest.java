@@ -1,7 +1,6 @@
 package autoracing;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,8 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingGameTest {
     @Test
     public void shouldCreateCars() {
-        List<String> carNames = Arrays.asList("Mercedes", "Ferrari", "Lamborghini", "McLaren");
-        List<Car> cars = carNames.stream().map(Car::new).collect(Collectors.toList());
+        List<Car> cars = makeCars("Mercedes", "Ferrari", "Lamborghini", "McLaren");
         int numberOfCars = cars.size();
         int totalRounds = 5;
         RacingRule rule = () -> true;
@@ -31,5 +29,34 @@ public class RacingGameTest {
                 .hasSize(numberOfCars)
                 .filteredOn("rule", rule)
                 .hasSize(numberOfCars);
+    }
+
+    @Test
+    public void shouldReturnedParticipantsThatHasDrivenLongestDistance() {
+        List<Car> cars = makeCars("Mercedes", "Ferrari", "Lamborghini", "McLaren", "Renault", "Ford");
+        RacingRule alwaysGo = () -> true;
+        RacingRule neverGo = () -> false;
+        setRuleToCars(cars, alwaysGo, 0, 2, 4);
+        setRuleToCars(cars, neverGo, 1, 3, 5);
+        int totalRounds = 6;
+
+        RacingGame game = new RacingGame(totalRounds, cars);
+        game.start();
+        List<Car> winners = game.getWinners();
+
+        assertThat(winners).containsExactly(cars.get(0), cars.get(2), cars.get(4));
+        assertThat(winners.stream().map(winner -> winner.getLocation(totalRounds)))
+                .extracting("distance")
+                .containsOnly(totalRounds);
+    }
+
+    private List<Car> makeCars(String... carNames) {
+        return Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
+    }
+
+    private void setRuleToCars(List<Car> cars, RacingRule rule, int... carNums) {
+        Arrays.stream(carNums).forEach(num -> {
+            cars.get(num).setRule(rule);
+        });
     }
 }

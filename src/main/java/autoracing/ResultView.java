@@ -22,6 +22,7 @@ public class ResultView {
         System.out.println(resultTitle);
         IntStream.range(0, racingGame.getTotalRounds())
                 .forEach(round -> System.out.println(renderRound(round)));
+        System.out.println(renderAnnouncingWinners());
     }
 
     private String renderRound(int round) {
@@ -38,5 +39,13 @@ public class ResultView {
     private String renderCarLocation(Car car, int round) {
         int distanceFromStartingLine = car.getLocation(round).getDistance() + DEFAULT_TRACE_DISTANCE;
         return String.join("", Collections.nCopies(distanceFromStartingLine, traceSign));
+    }
+
+    private String renderAnnouncingWinners() {
+        return String.format("%s가 최종 우승했습니다.", renderWinners());
+    }
+
+    private String renderWinners() {
+        return racingGame.getWinners().stream().map(Car::getName).collect(Collectors.joining(", "));
     }
 }
