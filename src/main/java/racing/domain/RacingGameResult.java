@@ -21,7 +21,7 @@ public class RacingGameResult {
 
     public List<Car> getWinners() {
         int winnerPosition = getLastRacingCars().getWinnerPosition();
-        List<Car> finalRoundCars = getLastRacingCars().getCarList();
+        List<Car> finalRoundCars = getLastRacingCars().getCars();
 
         return finalRoundCars.stream().filter(car -> comparePosition(car.getPosition(), winnerPosition)).collect(Collectors.toList());
     }

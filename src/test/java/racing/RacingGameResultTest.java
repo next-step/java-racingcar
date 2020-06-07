@@ -29,9 +29,9 @@ class RacingGameResultTest {
         result.addResult(cars);
 
         Cars round1Cars = result.getAllRoundCars().get(0);
-        List<Car> carList1 = round1Cars.getCarList();
+        List<Car> carList1 = round1Cars.getCars();
 
-        List<Car> carList2 = cars.getCarList();
+        List<Car> carList2 = cars.getCars();
         int carCount = carList2.size();
 
         for (int i = 0; i< carCount; i++) {

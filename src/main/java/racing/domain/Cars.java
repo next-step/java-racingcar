@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private final List<Car> carList = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
 
     public Cars() {
     }
@@ -14,39 +14,39 @@ public class Cars {
     }
 
     public int getJoinedCarCount() {
-        return carList.size();
+        return cars.size();
     }
 
-    public List<Car> getCarList() {
-        return carList;
+    public List<Car> getCars() {
+        return cars;
     }
 
     public void addCar(Car car) {
-        carList.add(car);
+        cars.add(car);
     }
 
     public void carsMove(List<Integer> diceResultList) {
-        int carCount = carList.size();
+        int carCount = cars.size();
         for (int i = 0 ; i < carCount ; i++) {
-            carList.get(i).move(diceResultList.get(i));
+            cars.get(i).move(diceResultList.get(i));
         }
     }
 
     public Cars getDeepCopyRacingCars() {
         List<Car> snapShot = new ArrayList<>();
-        for (Car car : carList) {
+        for (Car car : cars) {
             snapShot.add(car.deepCopyCar());
         }
 
         Cars snapShotRacingCar = new Cars();
-        snapShotRacingCar.carList.addAll(snapShot);
+        snapShotRacingCar.cars.addAll(snapShot);
 
         return snapShotRacingCar;
     }
 
     public int getWinnerPosition() {
         int maxPosition = 0;
-        for (Car car : carList) {
+        for (Car car : cars) {
             maxPosition = getMaxPosition(car.getPosition(), maxPosition);
         }
 
@@ -57,7 +57,7 @@ public class Cars {
         String[] carNamesArray = carNames.split(",");
         for (String carName : carNamesArray) {
             carName = carName.trim();
-            this.carList.add(new Car(carName));
+            this.cars.add(new Car(carName));
         }
     }
 

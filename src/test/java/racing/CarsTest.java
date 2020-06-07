@@ -27,7 +27,7 @@ class CarsTest {
         Cars cars = new Cars(carNames);
         cars.addCar(new Car("test4"));
         //when
-        List<Car> carList = cars.getCarList();
+        List<Car> carList = cars.getCars();
         //then
         assertThat(carList).hasSize(expectedCarCount);
     }
@@ -52,7 +52,7 @@ class CarsTest {
         cars.carsMove(Dice.castByCarCount(carCount));
         cars.carsMove(Dice.castByCarCount(carCount));
 
-        List<Car> carList = cars.getCarList();
+        List<Car> carList = cars.getCars();
 
         int winnerPosition = 0;
         for (Car car : carList) {
@@ -74,8 +74,8 @@ class CarsTest {
         int carCount = cars.getJoinedCarCount();
         cars.carsMove(Dice.castByCarCount(carCount));
         cars.carsMove(Dice.castByCarCount(carCount));
-        List<Car> roundCarList = cars.getCarList();
-        List<Car> snapShot = cars.getDeepCopyRacingCars().getCarList();
+        List<Car> roundCarList = cars.getCars();
+        List<Car> snapShot = cars.getDeepCopyRacingCars().getCars();
         List<Car> comparedSameCarList = new ArrayList<>();
 
         for (Car targetCar : roundCarList) {
@@ -114,10 +114,10 @@ class CarsTest {
     void carMoveTesT(int input, boolean expected) {
         String carNames = "test1";
         Cars cars = new Cars(carNames);
-        assertThat(cars.getCarList().size()).isEqualTo(1);
+        assertThat(cars.getCars().size()).isEqualTo(1);
 
         cars.carsMove(Collections.singletonList(input));
-        Car car = cars.getCarList().get(0);
+        Car car = cars.getCars().get(0);
 
         assertThat(car.getPosition() > 0).isEqualTo(expected);
     }

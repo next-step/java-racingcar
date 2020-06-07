@@ -56,7 +56,7 @@ class RacingGameTest {
         List<Cars> allRoundCars = gameResult.getAllRoundCars();
 
         for (Cars cars : allRoundCars) {
-            int oneRoundCarCount = cars.getCarList().size();
+            int oneRoundCarCount = cars.getCars().size();
             assertThat(carCount).isEqualTo(oneRoundCarCount);
         }
     }

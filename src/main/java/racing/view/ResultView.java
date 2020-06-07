@@ -13,7 +13,7 @@ public class ResultView {
 
     public void print(List<Cars> allRoundCars) {
         for (Cars cars : allRoundCars) {
-            printRoundPosition(cars.getCarList());
+            printRoundPosition(cars.getCars());
 
             System.out.println();
         }
