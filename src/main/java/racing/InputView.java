@@ -18,7 +18,7 @@ public class InputView {
         String carNameString = this.scanner.next();
 
         nameList = ParserUtils.stringToArray(carNameString);
-        ParserUtils.checkBlank(nameList);
+        ParserUtils.checkEmptyOrBlank(nameList);
 
         System.out.println("시도할 회수는 몇 회 인가요?");
         inputTime = this.scanner.nextInt();

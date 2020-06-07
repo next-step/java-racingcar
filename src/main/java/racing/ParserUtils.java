@@ -13,15 +13,15 @@ public class ParserUtils {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
-    public static void checkBlank(String[] nameList) {
+    public static void checkEmptyOrBlank(String[] nameList) {
         for (String name : nameList) {
             isEmpty(name);
         }
     }
 
     private static void isEmpty(String inputName) {
-        if (inputName.isEmpty()) {
-            throw new IllegalArgumentException("입력문자에 공백이 있습니다.");
+        if (inputName.trim().isEmpty()) {
+            throw new IllegalArgumentException("이름이 입력되지 않았습니다.");
         }
     }
 
