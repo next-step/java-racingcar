@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.controller.RacingGame;
-import racing.domain.RacingCars;
+import racing.domain.Cars;
 import racing.domain.RacingGameResult;
 
 import java.util.List;
@@ -41,9 +41,9 @@ class RacingGameTest {
         int roundCount = 10;
         RacingGame racingGame = new RacingGame("test", roundCount);
         RacingGameResult gameResult = racingGame.playGame();
-        List<RacingCars> allRoundRacingCars = gameResult.getAllRoundRacingCars();
+        List<Cars> allRoundCars = gameResult.getAllRoundCars();
 
-        assertThat(roundCount).isEqualTo(allRoundRacingCars.size());
+        assertThat(roundCount).isEqualTo(allRoundCars.size());
     }
 
     @Test
@@ -53,10 +53,10 @@ class RacingGameTest {
         int carCount = carNames.split(",").length;
         RacingGame racingGame = new RacingGame(carNames, 4);
         RacingGameResult gameResult = racingGame.playGame();
-        List<RacingCars> allRoundRacingCars = gameResult.getAllRoundRacingCars();
+        List<Cars> allRoundCars = gameResult.getAllRoundCars();
 
-        for (RacingCars racingCars : allRoundRacingCars) {
-            int oneRoundCarCount = racingCars.getCarList().size();
+        for (Cars cars : allRoundCars) {
+            int oneRoundCarCount = cars.getCarList().size();
             assertThat(carCount).isEqualTo(oneRoundCarCount);
         }
     }

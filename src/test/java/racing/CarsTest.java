@@ -6,18 +6,17 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.domain.Car;
-import racing.domain.RacingCars;
+import racing.domain.Cars;
 import racing.util.Dice;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("레이싱카 클래스 테스트")
-class RacingCarsTest {
+class CarsTest {
 
     @Test
     @DisplayName("자동차 대수 테스트")
@@ -25,10 +24,10 @@ class RacingCarsTest {
         //given
         int expectedCarCount = 4;
         String carNames = "test1, test2, test3";
-        RacingCars racingCars = new RacingCars(carNames);
-        racingCars.addCar(new Car("test4"));
+        Cars cars = new Cars(carNames);
+        cars.addCar(new Car("test4"));
         //when
-        List<Car> carList = racingCars.getCarList();
+        List<Car> carList = cars.getCarList();
         //then
         assertThat(carList).hasSize(expectedCarCount);
     }
@@ -37,7 +36,7 @@ class RacingCarsTest {
     @ValueSource(strings = {"", " ,1 ,2", " ,3, ", "1 , , 3"})
     @DisplayName("자동차들의 이름 문자열에 공백이름이 들어가는지 확인 테스트")
     void nameBlankCheckTest(String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> new RacingCars(input));
+        assertThatIllegalArgumentException().isThrownBy(() -> new Cars(input));
     }
 
     @Test
@@ -45,15 +44,15 @@ class RacingCarsTest {
     void getWinnerPositionTest() {
 
         String carNames = "test1, test2, test3";
-        RacingCars racingCars = new RacingCars(carNames);
-        int carCount = racingCars.getJoinedCarCount();
-        racingCars.carsMove(Dice.castByCarCount(carCount));
-        racingCars.carsMove(Dice.castByCarCount(carCount));
-        racingCars.carsMove(Dice.castByCarCount(carCount));
-        racingCars.carsMove(Dice.castByCarCount(carCount));
-        racingCars.carsMove(Dice.castByCarCount(carCount));
+        Cars cars = new Cars(carNames);
+        int carCount = cars.getJoinedCarCount();
+        cars.carsMove(Dice.castByCarCount(carCount));
+        cars.carsMove(Dice.castByCarCount(carCount));
+        cars.carsMove(Dice.castByCarCount(carCount));
+        cars.carsMove(Dice.castByCarCount(carCount));
+        cars.carsMove(Dice.castByCarCount(carCount));
 
-        List<Car> carList = racingCars.getCarList();
+        List<Car> carList = cars.getCarList();
 
         int winnerPosition = 0;
         for (Car car : carList) {
@@ -62,7 +61,7 @@ class RacingCarsTest {
                 winnerPosition = position;
             }
         }
-        assertThat(winnerPosition).isEqualTo(racingCars.getWinnerPosition());
+        assertThat(winnerPosition).isEqualTo(cars.getWinnerPosition());
     }
 
 
@@ -71,12 +70,12 @@ class RacingCarsTest {
     void getDeepCopyRacingCarsTest() {
 
         String carNames = "test1, test2, test3";
-        RacingCars racingCars = new RacingCars(carNames);
-        int carCount = racingCars.getJoinedCarCount();
-        racingCars.carsMove(Dice.castByCarCount(carCount));
-        racingCars.carsMove(Dice.castByCarCount(carCount));
-        List<Car> roundCarList = racingCars.getCarList();
-        List<Car> snapShot = racingCars.getDeepCopyRacingCars().getCarList();
+        Cars cars = new Cars(carNames);
+        int carCount = cars.getJoinedCarCount();
+        cars.carsMove(Dice.castByCarCount(carCount));
+        cars.carsMove(Dice.castByCarCount(carCount));
+        List<Car> roundCarList = cars.getCarList();
+        List<Car> snapShot = cars.getDeepCopyRacingCars().getCarList();
         List<Car> comparedSameCarList = new ArrayList<>();
 
         for (Car targetCar : roundCarList) {
@@ -114,11 +113,11 @@ class RacingCarsTest {
     @DisplayName("차가 이동했는지 안했는지 확인하는 테스트")
     void carMoveTesT(int input, boolean expected) {
         String carNames = "test1";
-        RacingCars racingCars = new RacingCars(carNames);
-        assertThat(racingCars.getCarList().size()).isEqualTo(1);
+        Cars cars = new Cars(carNames);
+        assertThat(cars.getCarList().size()).isEqualTo(1);
 
-        racingCars.carsMove(Collections.singletonList(input));
-        Car car = racingCars.getCarList().get(0);
+        cars.carsMove(Collections.singletonList(input));
+        Car car = cars.getCarList().get(0);
 
         assertThat(car.getPosition() > 0).isEqualTo(expected);
     }

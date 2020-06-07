@@ -3,13 +3,13 @@ package racing.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingCars {
+public class Cars {
     private final List<Car> carList = new ArrayList<>();
 
-    public RacingCars() {
+    public Cars() {
     }
 
-    public RacingCars(String carNames) {
+    public Cars(String carNames) {
         joinCars(carNames);
     }
 
@@ -32,13 +32,13 @@ public class RacingCars {
         }
     }
 
-    public RacingCars getDeepCopyRacingCars() {
+    public Cars getDeepCopyRacingCars() {
         List<Car> snapShot = new ArrayList<>();
         for (Car car : carList) {
             snapShot.add(car.deepCopyCar());
         }
 
-        RacingCars snapShotRacingCar = new RacingCars();
+        Cars snapShotRacingCar = new Cars();
         snapShotRacingCar.carList.addAll(snapShot);
 
         return snapShotRacingCar;

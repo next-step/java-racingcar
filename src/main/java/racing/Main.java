@@ -17,7 +17,7 @@ public class Main {
         RacingGameResult gameResult = racingGame.playGame();
 
         ResultView resultView = new ResultView("실행 결과");
-        resultView.print(gameResult.getAllRoundRacingCars());
+        resultView.print(gameResult.getAllRoundCars());
         resultView.printFinalWinner(gameResult.getWinners());
     }
 }
