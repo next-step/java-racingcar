@@ -8,18 +8,14 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class RacingGameTest {
-    ResultView resultView;
-    InputView inputView;
     private RacingGame racingGame;
     private RacingCarMovingCheck racingCarMovingCheck;
 
     @BeforeEach
     void setUp() {
-        this.resultView = new ResultView();
-        this.inputView = new InputView();
         RandomNumber randomNumber = new RandomNumber();
         this.racingCarMovingCheck = new RacingCarMovingCheck(randomNumber);
-        this.racingGame = new RacingGame(resultView, inputView, racingCarMovingCheck);
+        this.racingGame = new RacingGame(racingCarMovingCheck);
     }
 
     @DisplayName("레이싱 게임 전체 테스트")

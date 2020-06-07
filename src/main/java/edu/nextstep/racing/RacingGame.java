@@ -3,16 +3,16 @@ package edu.nextstep.racing;
 import java.util.ArrayList;
 
 public class RacingGame {
-    ResultView resultViewer;
-    InputView inputView;
-    MovingCheck movingCheck;
-    ArrayList<RacingCar> carList;
+    private static ResultView resultViewer;
+    private static InputView inputView;
+    private MovingCheck movingCheck;
+    private ArrayList<RacingCar> carList;
     private int carNum = 0;
     private int gameNum = 0;
 
-    RacingGame(ResultView resultView, InputView inputView, MovingCheck movingCheck) {
-        this.resultViewer = resultView;
-        this.inputView = inputView;
+    RacingGame(MovingCheck movingCheck) {
+        resultViewer = new ResultView();
+        inputView = new InputView();
         this.movingCheck = movingCheck;
         carList = new ArrayList<>();
     }

@@ -3,7 +3,7 @@ package edu.nextstep.racing;
 import java.util.Random;
 
 public class RandomNumber {
-    Random random;
+    private Random random;
 
     RandomNumber() {
         random = new Random();

@@ -1,7 +1,7 @@
 package edu.nextstep.racing;
 
 public class RacingCarMovingCheck implements MovingCheck {
-    RandomNumber randomNumber;
+    private RandomNumber randomNumber;
 
     RacingCarMovingCheck(RandomNumber randomNumber) {
         this.randomNumber = randomNumber;
