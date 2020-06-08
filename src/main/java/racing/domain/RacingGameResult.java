@@ -5,30 +5,30 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGameResult {
-    private final List<RacingCars> allRoundRacingCars;
+    private final List<Cars> allRoundCars;
 
     public RacingGameResult() {
-        allRoundRacingCars = new ArrayList<>();
+        allRoundCars = new ArrayList<>();
     }
 
-    public void addResult(RacingCars racingCars) {
-        allRoundRacingCars.add(racingCars.getDeepCopyRacingCars());
+    public void addResult(Cars cars) {
+        allRoundCars.add(cars.getDeepCopyRacingCars());
     }
 
-    public List<RacingCars> getAllRoundRacingCars() {
-        return allRoundRacingCars;
+    public List<Cars> getAllRoundCars() {
+        return allRoundCars;
     }
 
     public List<Car> getWinners() {
         int winnerPosition = getLastRacingCars().getWinnerPosition();
-        List<Car> finalRoundCars = getLastRacingCars().getCarList();
+        List<Car> finalRoundCars = getLastRacingCars().getCars();
 
         return finalRoundCars.stream().filter(car -> comparePosition(car.getPosition(), winnerPosition)).collect(Collectors.toList());
     }
 
-    private RacingCars getLastRacingCars() {
-        int finalRound = allRoundRacingCars.size() - 1;
-        return allRoundRacingCars.get(finalRound);
+    private Cars getLastRacingCars() {
+        int finalRound = allRoundCars.size() - 1;
+        return allRoundCars.get(finalRound);
     }
 
     private boolean comparePosition(int position1, int position2) {

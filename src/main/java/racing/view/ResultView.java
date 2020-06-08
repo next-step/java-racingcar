@@ -1,7 +1,7 @@
 package racing.view;
 
 import racing.domain.Car;
-import racing.domain.RacingCars;
+import racing.domain.Cars;
 
 import java.util.List;
 
@@ -11,9 +11,9 @@ public class ResultView {
         System.out.println(message);
     }
 
-    public void print(List<RacingCars> allRoundRacingCars) {
-        for (RacingCars racingCars : allRoundRacingCars) {
-            printRoundPosition(racingCars.getCarList());
+    public void print(List<Cars> allRoundCars) {
+        for (Cars cars : allRoundCars) {
+            printRoundPosition(cars.getCars());
 
             System.out.println();
         }

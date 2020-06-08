@@ -3,8 +3,9 @@ package racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.domain.Car;
-import racing.domain.RacingCars;
+import racing.domain.Cars;
 import racing.domain.RacingGameResult;
+import racing.domain.AlwaysMoveMovingStrategy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,19 +20,19 @@ class RacingGameResultTest {
     void racingResultTest() {
         List<Car> carList = Arrays.asList(new Car("test1"), new Car("test2"), new Car("test3"));
 
-        RacingCars racingCars = new RacingCars();
+        Cars cars = new Cars();
         for (Car car : carList) {
-            car.move(4);
-            racingCars.addCar(car);
+            car.move(new AlwaysMoveMovingStrategy());
+            cars.addCar(car);
         }
 
         RacingGameResult result = new RacingGameResult();
-        result.addResult(racingCars);
+        result.addResult(cars);
 
-        RacingCars round1RacingCars = result.getAllRoundRacingCars().get(0);
-        List<Car> carList1 = round1RacingCars.getCarList();
+        Cars round1Cars = result.getAllRoundCars().get(0);
+        List<Car> carList1 = round1Cars.getCars();
 
-        List<Car> carList2 = racingCars.getCarList();
+        List<Car> carList2 = cars.getCars();
         int carCount = carList2.size();
 
         for (int i = 0; i< carCount; i++) {
@@ -45,16 +46,16 @@ class RacingGameResultTest {
         String winnerName = "test1";
         List<Car> carList = Arrays.asList(new Car(winnerName), new Car("test2"), new Car("test3"));
 
-        RacingCars racingCars = new RacingCars();
+        Cars cars = new Cars();
         for (Car car : carList) {
             if (winnerName.equals(car.getName())) {
-                car.move(4);
+                car.move(new AlwaysMoveMovingStrategy());
             }
-            racingCars.addCar(car);
+            cars.addCar(car);
         }
 
         RacingGameResult result = new RacingGameResult();
-        result.addResult(racingCars);
+        result.addResult(cars);
 
         List<Car> winners = result.getWinners();
 
