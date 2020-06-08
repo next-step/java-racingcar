@@ -12,11 +12,11 @@ public class RacingGameResultView {
     }
 
     public void showResult() {
-       showAllRecordResult(records);
+       showAllRecordResult();
        congratulationWinner();
     }
 
-    private void showAllRecordResult(List<RacingEntry> records) {
+    private void showAllRecordResult() {
         StringBuilder output = new StringBuilder();
         int round = 1;
         for(RacingEntry record : records) {

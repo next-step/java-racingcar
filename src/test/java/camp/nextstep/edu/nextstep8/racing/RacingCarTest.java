@@ -54,10 +54,9 @@ class RacingCarTest {
         String name = "";
 
         // when & then
-        assertThatThrownBy(() -> {
-            RacingCar racingCar = new RacingCar(name);
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름을 확인해 주세요");
+        assertThatThrownBy(() -> new RacingCar(name))
+                .hasMessage("자동차 이름을 확인해 주세요")
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
 }

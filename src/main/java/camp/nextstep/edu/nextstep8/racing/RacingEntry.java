@@ -2,6 +2,7 @@ package camp.nextstep.edu.nextstep8.racing;
 
 import camp.nextstep.edu.nextstep8.racing.rule.ForwardingRule;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,7 +18,7 @@ public class RacingEntry {
     }
 
     public List<RacingCar> getEntryList() {
-        return entryList;
+        return Collections.unmodifiableList(entryList);
     }
 
     public String getWinner() {
