@@ -1,6 +1,6 @@
 package calculator;
 
-public final class  CalculatorSymbol {
+public final class CalculatorSymbol {
 
     private static CalculatorSymbol calculatorSymbol = null;
 
