@@ -12,6 +12,13 @@ public class Round {
         this.round = round;
     }
 
+    public List<Car> start(Cars cars, Fuel fuel) {
+        for(int i = 0; i < round; i++) {
+            return cars.move(fuel);
+        }
+        return null;
+    };
+
     private void valid(int round) {
         if(round == 0) {
             throw new IllegalArgumentException();
@@ -31,14 +38,5 @@ public class Round {
         return Objects.hash(round);
     }
 
-    public int getRound() {
-        return round;
-    }
 
-    public List<Car> start(Cars cars, Fuel fuel) {
-        for(int i = 0; i < round; i++) {
-            return cars.move(fuel);
-        }
-        return null;
-    };
 }

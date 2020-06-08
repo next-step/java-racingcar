@@ -1,5 +1,6 @@
 package step4;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -8,35 +9,32 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RaceTest {
 
-    @Test
-    void create() {
-        int rounds = 3;
-        String names = "peter,kassie,oak";
-        Cars cars = new Cars(names);
-        Round round = new Round(rounds);
+    Cars cars;
+    Round round;
+    Race race;
+    Fuel fuel;
 
-        Race race = new Race(cars, round);
-
-        assertThat(race).isEqualTo(new Race(cars, new Round(rounds)));
-    }
-
-    @Test
-    void start() {
-        Fuel fuel = new Fuel() {
+    @BeforeEach
+    void setUp() {
+        cars = new Cars("peter,kassie,oak");
+        round = new Round(3);
+        race = new Race(cars, round);
+        fuel = new Fuel() {
             @Override
             protected int getRandom() {
                 return 4;
             }
         };
+    }
 
-        int rounds = 3;
-        String names = "peter,kassie,oak";
-        Cars cars = new Cars(names);
-        Round round = new Round(rounds);
-        Race race = new Race(cars, round);
+    @Test
+    void create() {
+        assertThat(race).isEqualTo(new Race(cars, new Round(3)));
+    }
 
+    @Test
+    void start() {
         List<Car> list = race.start(fuel);
-
         assertThat(list.get(0).getPosition()).isEqualTo(1);
     }
 }

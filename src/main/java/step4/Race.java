@@ -13,10 +13,7 @@ public class Race {
     }
 
     public List<Car> start(Fuel fuel) {
-        for(int i = 0; i < round.getRound(); i++) {
-            return cars.move(fuel);
-        }
-        return null;
+        return round.start(cars, fuel);
     };
 
     @Override
