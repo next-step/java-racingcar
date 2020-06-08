@@ -1,10 +1,9 @@
 package racing.domain.game;
 
-import racing.domain.car.Car;
 import racing.domain.car.RacingCars;
+import racing.view.ResultView;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGameResult {
     private RacingCars racingCars;
@@ -16,19 +15,20 @@ public class RacingGameResult {
     }
 
     public int getMaxPosition() {
-        return racingCars.getCars()
-                .stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElseThrow(() -> new IllegalArgumentException());
+        return RacingGame.findMaxPosition(racingCars);
     }
 
     public List<String> getWinnerCars(int maxCarPosition) {
-        return racingCars.getCars()
-                .stream()
-                .filter(list -> list.getPosition() == maxCarPosition)
-                .map(list -> list.getCarName())
-                .collect(Collectors.toList());
+        return RacingGame.findWinnersCars(racingCars, maxCarPosition);
+    }
+
+    public void resultRacing(int times) {
+        RacingGame racingGame = new RacingGame(racingCars);
+        List<RacingCars> racingCarsList = racingGame.race(times);
+
+        for (int i = 0; i < racingCarsList.size(); i++) {
+            ResultView.printResult(racingCars.getCars());
+        }
     }
 
     public List<String> getWinnerList() {

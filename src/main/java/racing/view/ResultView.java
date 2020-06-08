@@ -27,10 +27,10 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void printResult(List<Car> carPositions) {
-        for (int i = 0; i < carPositions.size(); i++) {
-            printCarName(carPositions.get(i).getCarName());
-            printPosition(carPositions.get(i).getPosition());
+    public static void printResult(List<Car> cars) {
+        for (int i = 0; i < cars.size(); i++) {
+            printCarName(cars.get(i).getCarName());
+            printPosition(cars.get(i).getPosition());
         }
         System.out.println();
     }
