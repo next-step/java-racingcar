@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RaceTest {
 
@@ -33,5 +34,10 @@ public class RaceTest {
     void start() {
         List<Car> list = race.start(fuel);
         assertThat(list.get(0).getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    void cars_and_round_is_valid() {
+        assertThatThrownBy(() -> new Race(null, null)).isInstanceOf(IllegalArgumentException.class) ;
     }
 }

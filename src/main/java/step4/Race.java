@@ -8,8 +8,15 @@ public class Race {
     private final Round round;
 
     public Race(Cars cars, Round round) {
+        valid(cars, round);
         this.cars = cars;
         this.round = round;
+    }
+
+    private void valid(Cars cars, Round round) {
+        if(cars == null || round == null) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public List<Car> start(Fuel fuel) {

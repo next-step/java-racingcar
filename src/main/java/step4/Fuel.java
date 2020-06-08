@@ -4,7 +4,8 @@ import java.util.Random;
 
 public class Fuel {
 
-    private static int MAXIMUM_NUMBER = 9;
+    private static final int MAXIMUM_NUMBER = 9;
+    private static final int VALID_NUMBER = 4;
     private int fuel;
 
     public Fuel() {
@@ -16,13 +17,11 @@ public class Fuel {
     }
 
     public boolean isValid(){
-        return this.fuel >= 4;
+        return this.fuel >= VALID_NUMBER;
     }
 
     public boolean equals(Object o) {
         Fuel f = (Fuel) o;
         return getClass().equals(f.getClass());
     }
-
-
 }

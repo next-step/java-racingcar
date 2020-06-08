@@ -4,11 +4,13 @@ import java.util.Objects;
 
 public class Car {
 
+    private static final int INITIAL_POSITION = 0;
+
     private final Name name;
     private Position position;
 
     public static Car of(String name) {
-        return new Car(name, 0);
+        return new Car(name, INITIAL_POSITION);
     }
 
     Car(String name, int position) {
