@@ -2,9 +2,8 @@ package racingcar.racinggame;
 
 import racingcar.car.Car;
 import racingcar.common.RandomHelper;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RacingGame {
@@ -13,43 +12,34 @@ public class RacingGame {
     private int gameCount;
     private int playCount;
 
-    public RacingGame() {
+    public RacingGame(int gameCount , String[] carNames) {
         this.carList = new ArrayList<>();
-        playCount = 0;
-        gameCount = 0;
-    }
+        this.playCount = 0;
+        this.gameCount = gameCount;
 
-    public boolean makeCar(String[] nameArr) {
-        if (!carList.isEmpty()) {
-            return false;
+        if(carNames == null || carNames.length ==0) {
+            throw new UnsupportedOperationException("Parameter is not valid");
         }
 
-        for(int i = 0; i < nameArr.length; i++) {
-            carList.add(new Car(nameArr[i]));
+        for (int i = 0; i < carNames.length; i++) {
+            carList.add(new Car(carNames[i]));
         }
-
-        return true;
-    }
-
-    public void setGameCount(int count) {
-        this.gameCount = count;
     }
 
     public int getGameCount() {
         return gameCount;
     }
 
-
     public List<Car> getCars() {
         return carList;
     }
 
-    public void play(){
+    public void play() {
         this.carList.forEach(car -> car.move(RandomHelper.getRandomNumber(DEFAULT_RANDOM_RANGE)));
         playCount++;
     }
 
-    public boolean isEnd(){
+    public boolean isEnd() {
         return playCount >= gameCount;
     }
 
@@ -57,13 +47,10 @@ public class RacingGame {
         return this.playCount;
     }
 
-    public List<Car> getWinner(){
-        Optional<Car> largest = carList.stream()
-                .max(Comparator.comparing(Car::getPosition));
-
+    public List<Car> getWinner() {
+        Car winner = Collections.max(carList);
         return carList.stream()
-                .filter(car -> car.getPosition() == largest.get().getPosition())
+                .filter(car -> car.isEqualPosition(winner.getPosition()))
                 .collect(Collectors.toList());
-
     }
 }

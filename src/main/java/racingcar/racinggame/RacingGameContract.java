@@ -6,12 +6,12 @@ public interface RacingGameContract {
 		void print(String msg);
 		void println(String msg);
 		void printCarPositionBySymbol(int position);
+		void layoutCarQuestion();
+		void layoutGameTryQuestion();
 	}
 
 	interface Presenter {
 		void setView(View view);
-		void start();
-		void setGameNum(String number);
-		void addCars(String carName);
+		void start(int gameCount, String[] carNames);
 	}
 }

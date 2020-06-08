@@ -12,14 +12,14 @@ public class RacingGameTest {
 
     @BeforeEach
     void setUp() {
-        racingGame = new RacingGame();
+        int gameCount = 5;
+        String[] carArr = {"carA","carB","carC"};
+        racingGame = new RacingGame(gameCount ,carArr);
     }
 
     @Test
     @DisplayName("자동차 생성 테스트")
     void makeCarTestFunction() {
-        String[] carArr = {"carA","carB","carC"};
-        racingGame.makeCar(carArr);
         int carCount = racingGame.getCars().size();
         assertThat(carCount).isEqualTo(3);
     }
@@ -27,19 +27,14 @@ public class RacingGameTest {
     @Test
     @DisplayName("게임 생성 테스트")
     void racingGameCountTestFunction() {
-        racingGame.setGameCount(6);
         int gameCount = racingGame.getGameCount();
-        assertThat(gameCount).isEqualTo(6);
+        assertThat(gameCount).isEqualTo(5);
     }
 
     @Test
     @DisplayName("게임 종료 테스트")
     void racingGameIsEndTestFunction() {
-        String[] carArr = {"carA","carB","carC"};
-        racingGame.makeCar(carArr);
-        int gameCount = 5;
-        racingGame.setGameCount(gameCount);
-        for(int i = 0; i < gameCount; i++) {
+        for(int i = 0; i < racingGame.getGameCount(); i++) {
             racingGame.play();
         }
 

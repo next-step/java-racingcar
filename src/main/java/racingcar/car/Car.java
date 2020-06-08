@@ -1,6 +1,6 @@
 package racingcar.car;
 
-public class Car {
+public class Car implements Comparable<Car>{
 
 	public static final int DEFAULT_CAR_POSITION = 1;
 	public static final int DEFAULT_CAR_ABILITY = 1;
@@ -31,5 +31,14 @@ public class Car {
 
 	public String getName() {
 		return this.name;
+	}
+
+	@Override
+	public int compareTo(Car otherCar) {
+		return Integer.compare(this.position , otherCar.getPosition());
+	}
+
+	public boolean isEqualPosition(int otherPosition){
+		return this.position == otherPosition ? true : false;
 	}
 }

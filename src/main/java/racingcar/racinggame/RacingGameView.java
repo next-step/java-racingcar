@@ -1,51 +1,35 @@
 package racingcar.racinggame;
 
-import racingcar.common.CPrintOutputView;
-import racingcar.common.CScannerInputView;
+import racingcar.common.ConsolePrintOutputView;
+import racingcar.common.ConsoleScannerInputView;
 import racingcar.common.Message;
 
 
 public class RacingGameView implements RacingGameContract.View {
 	private RacingGameContract.Presenter presenter;
-	private CScannerInputView carQuestionInputView;
-	private CScannerInputView gameTryQuestionInputView;
-	private CPrintOutputView cPrintOutputView;
+	private ConsoleScannerInputView consoleScannerInputView;
+	private ConsolePrintOutputView consolePrintOutputView;
 	public final static String DEFAULT_CAR_POSITION_SYMBOL = "-";
+	private String[] carNames;
+	private int gameCount;
 
 	@Override
 	public void init() {
 		presenter = new RacingGamePresenter();
 		presenter.setView(this);
-
-		carQuestionInputView = new CScannerInputView();
-		gameTryQuestionInputView = new CScannerInputView();
-		cPrintOutputView = new CPrintOutputView();
-
-		carQuestionInputView.setLabel(Message.CAR_QUESTION_MSG);
-		gameTryQuestionInputView.setLabel(Message.GAME_TRY_QUESTION_MSG);
-
-		carQuestionInputView.OnInputListener(input -> {
-			presenter.addCars(input);
-			gameTryQuestionInputView.layout();
-		});
-
-		gameTryQuestionInputView.OnInputListener(input -> {
-			presenter.setGameNum(input);
-			presenter.start();
-		});
-
-		carQuestionInputView.layout();
+		consoleScannerInputView = new ConsoleScannerInputView();
+		consolePrintOutputView = new ConsolePrintOutputView();
 	}
 
 	@Override
 	public void println(String printMsg) {
-		cPrintOutputView.layout(printMsg);
+		consolePrintOutputView.layout(printMsg);
 	}
 
 	public void print(String printMsg) {
-		cPrintOutputView.layoutWithoutEnter(printMsg);
+		consolePrintOutputView.layoutWithoutEnter(printMsg);
 	}
-  
+
 	@Override
 	public void printCarPositionBySymbol(int position) {
 		String result = "";
@@ -53,6 +37,44 @@ public class RacingGameView implements RacingGameContract.View {
 		for (int i = 0; i < position; i++) {
 			result = result.concat(DEFAULT_CAR_POSITION_SYMBOL);
 		}
-		cPrintOutputView.layout(result);
+		consolePrintOutputView.layout(result);
 	}
+
+	@Override
+	public void layoutCarQuestion() {
+		consoleScannerInputView.setLabel(Message.CAR_QUESTION_MSG);
+		consoleScannerInputView.OnInputListener(input -> {
+			if (input == null || input.isEmpty()) {
+				println("자동차 이름을 입력해주세요.");
+				layoutCarQuestion();
+				return;
+			}
+			if (input.split(",").length == 1) {
+				println("한대의 자동차는 경주를 할수 없습니다.");
+				layoutCarQuestion();
+				return;
+			}
+			carNames = input.split(",");
+		});
+		consoleScannerInputView.layout();
+	}
+	@Override
+	public void layoutGameTryQuestion() {
+		consoleScannerInputView.setLabel(Message.GAME_TRY_QUESTION_MSG);
+		consoleScannerInputView.OnInputListener(input -> {
+			try {
+				this.gameCount = Integer.parseInt(input);
+			} catch (Exception e) {
+				println("정수의 숫자만 입력가능합니다.");
+				layoutGameTryQuestion();
+				return;
+			}
+			presenter.start(gameCount ,carNames);
+		});
+
+		consoleScannerInputView.layout();
+	}
+
+
+
 }
