@@ -32,8 +32,8 @@ public class CarsTest {
 
     @Test
     void move() {
-        List<Car> movedCars = cars.move(fuel);
-        assertThat(movedCars.get(0).getPosition()).isEqualTo(1);
+        Result movedCars = cars.move(fuel);
+        assertThat(movedCars.getResult().get(0).getPosition()).isEqualTo(1);
     }
 
     @Test

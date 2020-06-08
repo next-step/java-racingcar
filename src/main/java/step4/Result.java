@@ -11,7 +11,9 @@ public class Result {
         this.result = result;
     }
 
-
+    public List<Car> getResult() {
+        return this.result;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -25,4 +27,6 @@ public class Result {
     public int hashCode() {
         return Objects.hash(result);
     }
+
+
 }

@@ -24,11 +24,16 @@ public class Cars {
         }
     }
 
-    public List<Car> move(Fuel fuel) {
+    public Result move(Fuel fuel) {
+        List<Car> list = moveCars(fuel);
+        return new Result(list);
+    }
+
+    private List<Car> moveCars(Fuel fuel) {
         return cars.stream().map(car -> {
-            car.move(fuel);
-            return car;
-        }).collect(Collectors.toList());
+                car.move(fuel);
+                return car;
+            }).collect(Collectors.toList());
     }
 
     private void invalid(String names) {
