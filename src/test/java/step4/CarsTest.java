@@ -1,5 +1,6 @@
 package step4;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -10,41 +11,33 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarsTest {
 
-    @Test
-    void create() {
-        Cars cars = new Cars("peter,kassie,oak");
-        assertThat(cars).isEqualTo(new Cars("peter,kassie,oak"));
-    }
+    Cars cars; List<Car> result; Fuel fuel;
 
-    @Test
-    void move() {
-        Fuel fuel = new Fuel() {
+    @BeforeEach
+    void setUp() {
+        cars = new Cars("peter,kassie,oak");
+        result = getResult();
+        fuel = new Fuel() {
             @Override
             protected int getRandom() {
                 return 4;
             }
         };
-        Cars cars = new Cars("peter,kassie,oak");
+    }
 
-        List<Car> result = new ArrayList<>();
-        result.add(Car.of("peter"));
-        result.add(Car.of("kassie"));
-        result.add(Car.of("oak"));
+    @Test
+    void create() {
+        assertThat(cars).isEqualTo(new Cars("peter,kassie,oak"));
+    }
 
+    @Test
+    void move() {
         List<Car> movedCars = cars.move(fuel);
         assertThat(movedCars.get(0).getPosition()).isEqualTo(1);
     }
 
     @Test
     void create_cars_from_name() {
-        List<Car> result = new ArrayList<>();
-        result.add(Car.of("peter"));
-        result.add(Car.of("kassie"));
-        result.add(Car.of("oak"));
-
-        String names = "peter,kassie,oak";
-        Cars cars = new Cars(names);
-
         assertThat(cars.getCars()).isEqualTo(result);
     }
 
@@ -52,6 +45,14 @@ public class CarsTest {
     void name_is_valid() {
         assertThatThrownBy(() -> new Cars("")).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> new Cars(null)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    private List<Car> getResult() {
+        List<Car> result = new ArrayList<>();
+        result.add(Car.of("peter"));
+        result.add(Car.of("kassie"));
+        result.add(Car.of("oak"));
+        return result;
     }
 
 

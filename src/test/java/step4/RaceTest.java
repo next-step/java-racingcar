@@ -9,10 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RaceTest {
 
-    Cars cars;
-    Round round;
-    Race race;
-    Fuel fuel;
+    Cars cars; Round round; Race race; Fuel fuel;
 
     @BeforeEach
     void setUp() {

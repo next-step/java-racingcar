@@ -3,6 +3,7 @@ package step4;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -24,12 +25,10 @@ public class Cars {
     }
 
     public List<Car> move(Fuel fuel) {
-        List<Car> list = new ArrayList<>();
-        for(Car car : cars) {
+        return cars.stream().map(car -> {
             car.move(fuel);
-            list.add(car);
-        }
-        return list;
+            return car;
+        }).collect(Collectors.toList());
     }
 
     private void invalid(String names) {
