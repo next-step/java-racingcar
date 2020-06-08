@@ -3,7 +3,6 @@ package racing.domain;
 import org.apache.commons.lang3.StringUtils;
 
 public class Car {
-    private static final int MOVE_MIN_NUMBER = 4;
     private String name;
     private int position;
 
@@ -18,8 +17,8 @@ public class Car {
         }
     }
 
-    public void move(int diceNumber) {
-        if (isMoveTime(diceNumber)) {
+    public void move(MovingStrategy movingStrategy) {
+        if (movingStrategy.isMove()) {
             position++;
         }
     }
@@ -37,9 +36,5 @@ public class Car {
 
     public String getName() {
         return name;
-    }
-
-    private boolean isMoveTime(int diceNumber) {
-        return diceNumber >= MOVE_MIN_NUMBER;
     }
 }
