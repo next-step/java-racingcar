@@ -1,5 +1,6 @@
 package step4;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Round {
@@ -33,4 +34,11 @@ public class Round {
     public int getRound() {
         return round;
     }
+
+    public List<Car> start(Cars cars, Fuel fuel) {
+        for(int i = 0; i < round; i++) {
+            return cars.move(fuel);
+        }
+        return null;
+    };
 }
