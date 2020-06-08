@@ -20,7 +20,7 @@ public class RacingGame {
         RacingGameResult racingGameResult = new RacingGameResult();
 
         for (int i = 0; i < round; i++) {
-            cars.carsMove(Dice.castByCarCount(cars.getJoinedCarCount()));
+            cars.moveCars(Dice.castByCarCount(cars.getJoinedCarCount()));
             racingGameResult.addResult(cars);
         }
 
