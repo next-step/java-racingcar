@@ -12,12 +12,9 @@ public class Round {
         this.round = round;
     }
 
-    public List<Car> start(Cars cars, Fuel fuel) {
-        for(int i = 0; i < round; i++) {
-            return cars.move(fuel);
-        }
-        return null;
-    };
+    public int getRound() {
+        return this.round;
+    }
 
     private void valid(int round) {
         if(round == 0) {

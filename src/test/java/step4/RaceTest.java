@@ -10,13 +10,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RaceTest {
 
-    Cars cars; Round round; Race race; Fuel fuel;
+    Cars cars; Race race; Fuel fuel;
 
     @BeforeEach
     void setUp() {
         cars = new Cars("peter,kassie,oak");
-        round = new Round(3);
-        race = new Race(cars, round);
+        race = new Race(cars, 3);
         fuel = new Fuel() {
             @Override
             protected int getRandom() {
@@ -27,17 +26,12 @@ public class RaceTest {
 
     @Test
     void create() {
-        assertThat(race).isEqualTo(new Race(cars, new Round(3)));
+        assertThat(race).isEqualTo(new Race(cars, 3));
     }
 
-    @Test
-    void start() {
-        List<Car> list = race.start(fuel);
-        assertThat(list.get(0).getPosition()).isEqualTo(1);
-    }
 
     @Test
     void cars_and_round_is_valid() {
-        assertThatThrownBy(() -> new Race(null, null)).isInstanceOf(IllegalArgumentException.class) ;
+        assertThatThrownBy(() -> new Race(null, 0)).isInstanceOf(IllegalArgumentException.class) ;
     }
 }

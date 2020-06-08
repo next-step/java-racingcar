@@ -17,22 +17,6 @@ public class RoundTest {
     }
 
     @Test
-    void move_cars_each_round() {
-        Fuel fuel = new Fuel() {
-            @Override
-            protected int getRandom() {
-                return 4;
-            }
-        };
-
-        Cars cars = new Cars("peter,kassie,oak");
-
-        Round round = new Round(3);
-        List<Car> list = round.start(cars, fuel);
-        assertThat(list.get(0).getPosition()).isEqualTo(1);
-    }
-
-    @Test
     void round_is_valid() {
         assertThatThrownBy(() -> new Round(0)).isInstanceOf(IllegalArgumentException.class);
     }

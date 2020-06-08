@@ -1,41 +1,35 @@
 package step4;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class Race {
     private final Cars cars;
-    private final Round round;
+    private final int rounds;
+    private final List<Result> results = new ArrayList<>();
 
-    public Race(Cars cars, Round round) {
-        valid(cars, round);
-        this.cars = cars;
-        this.round = round;
-    }
-
-    private void valid(Cars cars, Round round) {
-        if(cars == null || round == null) {
+    public Race(Cars cars, int rounds) {
+        if(cars == null || rounds == 0) {
             throw new IllegalArgumentException();
         }
+        this.cars = cars;
+        this.rounds = rounds;
     }
 
-    public List<Car> start(Fuel fuel) {
-        return round.start(cars, fuel);
-    };
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Race race = (Race) o;
-        return Objects.equals(cars, race.cars) &&
-                Objects.equals(round, race.round);
+        return rounds == race.rounds &&
+                Objects.equals(cars, race.cars) &&
+                Objects.equals(results, race.results);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cars, round);
+        return Objects.hash(cars, rounds, results);
     }
-
-
 }
