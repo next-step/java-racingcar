@@ -1,37 +1,62 @@
 package autoracing;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.TestInstance;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RacingGameTest {
-    private RacingRule rule;
+    @Test
+    public void shouldCreateCars() {
+        List<Car> cars = makeCars("Mercedes", "Ferrari", "Lamborghini", "McLaren");
+        int numberOfCars = cars.size();
+        int totalRounds = 5;
+        RacingRule rule = () -> true;
 
-    @BeforeAll
-    public void init() {
-        this.rule = new RandomRacingRule(10, 4);
+        RacingGame game = new RacingGame(totalRounds, cars);
+        game.setRule(rule);
+
+        assertThat(game).isNotNull()
+                .extracting("totalRounds")
+                .containsExactly(totalRounds);
+
+        assertThat(game).extracting("participants")
+                .flatExtracting((participants) -> (List<Car>) participants)
+                .doesNotContainNull()
+                .hasSize(numberOfCars)
+                .filteredOn("rule", rule)
+                .hasSize(numberOfCars);
     }
 
-    @ParameterizedTest
-    @CsvSource({"3,5", "2,7"})
-    public void shouldCreateCars(int numberOfCars, int totalRounds) throws NoSuchFieldException, IllegalAccessException {
-        RacingGame game = new RacingGame(numberOfCars, totalRounds, rule);
+    @Test
+    public void shouldReturnedParticipantsThatHasDrivenLongestDistance() {
+        List<Car> cars = makeCars("Mercedes", "Ferrari", "Lamborghini", "McLaren", "Renault", "Ford");
+        RacingRule alwaysGo = () -> true;
+        RacingRule neverGo = () -> false;
+        setRuleToCars(cars, alwaysGo, 0, 2, 4);
+        setRuleToCars(cars, neverGo, 1, 3, 5);
+        int totalRounds = 6;
 
-        Field participantsMember = RacingGame.class.getDeclaredField("participants");
-        participantsMember.setAccessible(true);
-        List<Car> participants = (List<Car>) participantsMember.get(game);
-        assertThat(participants.size()).isEqualTo(numberOfCars);
+        RacingGame game = new RacingGame(totalRounds, cars);
+        game.start();
+        List<Car> winners = game.getWinners();
 
-        Field totalRoundsMember = RacingGame.class.getDeclaredField("totalRounds");
-        totalRoundsMember.setAccessible(true);
-        int savedRounds = (int) totalRoundsMember.get(game);
-        assertThat(savedRounds).isEqualTo(totalRounds);
+        assertThat(winners).containsExactly(cars.get(0), cars.get(2), cars.get(4));
+        assertThat(winners.stream().map(winner -> winner.getLocation(totalRounds)))
+                .extracting("distance")
+                .containsOnly(totalRounds);
+    }
+
+    private List<Car> makeCars(String... carNames) {
+        return Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
+    }
+
+    private void setRuleToCars(List<Car> cars, RacingRule rule, int... carNums) {
+        Arrays.stream(carNums).forEach(num -> {
+            cars.get(num).setRule(rule);
+        });
     }
 }

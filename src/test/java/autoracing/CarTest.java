@@ -1,6 +1,5 @@
 package autoracing;
 
-import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -8,14 +7,13 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CarTest {
+    private final int NEVER_PLAYED_ROUND_WHEN_CAR_RACED_ONLY_ONCE = 2;
+
     private RacingRule rule;
 
     @BeforeAll
@@ -24,54 +22,73 @@ public class CarTest {
     }
 
     @Test
-    public void newCar() {
-        Car car = new Car(rule);
-        Condition<Car> init = new Condition<>(c -> c.getLocation(0) == Location.STARTING_LINE, "init");
-        assertThat(car).is(init);
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> car.getLocation(1))
-                .withMessage("The car has never played that round '1'.");
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {1, 5, 17})
-    public void shouldRecordWhenDriving(int distance) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Car car = new Car(rule);
-        Method method = Car.class.getDeclaredMethod("drive", int.class);
-        method.setAccessible(true);
-        method.invoke(car, distance);
-        int lastRound = car.getLastRound();
-        assertThat(lastRound).isEqualTo(1);
-        assertThat(car.getLocation(lastRound)).isEqualToComparingFieldByField(new Location(distance, 1));
+    public void newCarWithRule() {
+        Car car = new Car("Neo", rule);
+        assertThatCarNameIsEqualToExpectedName(car, "Neo");
+        assertThatCarLocationIsEqaulToStartingLine(car);
+        assertThatIllegalArgumentExceptionIsThrownByCarGetLocation(car, 1);
     }
 
     @Test
-    public void shouldRecordWhenStay() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Car car = new Car(rule);
-        Method method = Car.class.getDeclaredMethod("stay");
-        method.setAccessible(true);
-        method.invoke(car);
-        int lastRound = car.getLastRound();
-        assertThat(lastRound).isEqualTo(1);
-        assertThat(car.getLocation(lastRound)).isEqualToComparingFieldByField(new Location(0, 1));
+    public void newCarWithoutRule() {
+        Car car = new Car("Neo");
+        assertThatCarNameIsEqualToExpectedName(car, "Neo");
+        assertThatCarLocationIsEqaulToStartingLine(car);
+        assertThatIllegalArgumentExceptionIsThrownByCarGetLocation(car, 1);
+
+        int round = 1000;
+        for (int i = 0; i < round; i++) {
+            car.race();
+        }
+        assertThat(car.getLocation(0))
+                .as("The car without rule never move forward.")
+                .isEqualTo(Location.STARTING_LINE);
     }
 
     @ParameterizedTest
     @CsvSource({"true,1", "false,0"})
-    public void testCanGoForward(boolean canGoForward, int distance) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Car car = new Car(new MockRacingRule(canGoForward));
+    public void shouldRecordWhenRacing(boolean driveOrNot, int expectedDistance) {
+        Car car = new Car("Neo", () -> driveOrNot);
         car.race();
-        Location location = car.getLocation(car.getLastRound());
-        assertThat(location.getDistance()).isEqualTo(distance);
+        assertThat(getFirstRoundLocation(car)).isEqualToComparingFieldByField(new Location(expectedDistance, 1));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"true,1", "false,0"})
+    public void shouldRecordWhenRacingWithSettingRule(boolean driveOrNot, int expectedDistance) {
+        Car car = new Car("Neo");
+        car.setRule(() -> driveOrNot);
+        car.race();
+        assertThat(getFirstRoundLocation(car)).isEqualToComparingFieldByField(new Location(expectedDistance, 1));
     }
 
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 3, 8, 10, 987})
     public void hasHistorySameAmountAsRounds(int rounds) {
-        Car car = new Car(rule);
+        Car car = new Car("Neo", rule);
         for (int i = 0; i < rounds; i++) {
             car.race();
         }
-        assertThat(car.getLastRound()).isEqualTo(rounds);
+        int expectedNeverPlayedRound = rounds + 1;
+        assertThatIllegalArgumentExceptionIsThrownByCarGetLocation(car, expectedNeverPlayedRound);
+    }
+
+    private Location getFirstRoundLocation(Car car) {
+        assertThatIllegalArgumentExceptionIsThrownByCarGetLocation(car, NEVER_PLAYED_ROUND_WHEN_CAR_RACED_ONLY_ONCE);
+        return car.getLocation(1);
+    }
+
+    private void assertThatIllegalArgumentExceptionIsThrownByCarGetLocation(Car car, int round) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            car.getLocation(round);
+        }).withMessage(String.format("The car has never played that round '%d'.", round));
+    }
+
+    private void assertThatCarNameIsEqualToExpectedName(Car car, String name) {
+        assertThat(car.getName()).isEqualTo(name);
+    }
+
+    private void assertThatCarLocationIsEqaulToStartingLine(Car car) {
+        assertThat(car.getLocation(0)).isEqualTo(Location.STARTING_LINE);
     }
 }
