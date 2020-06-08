@@ -2,7 +2,7 @@ package racingcar.common;
 
 import java.util.Scanner;
 
-public class CScannerInputView {
+public class ConsoleScannerInputView {
 	private Scanner scan;
 	private String label;
 	private String value;
@@ -12,7 +12,7 @@ public class CScannerInputView {
 		void onInput(String input);
 	}
 
-	public CScannerInputView() {
+	public ConsoleScannerInputView() {
 		this.init();
 	}
 
