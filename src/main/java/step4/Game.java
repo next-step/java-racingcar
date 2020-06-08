@@ -1,6 +1,5 @@
 package step4;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class Game {
@@ -14,7 +13,7 @@ public class Game {
     }
 
     public Result start(Fuel fuel) {
-        return new Result(new ArrayList<>());
+        return cars.move(fuel);
     }
 
     @Override

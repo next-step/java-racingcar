@@ -26,6 +26,6 @@ public class GameTest {
         Cars cars = new Cars("peter,kassie,oak");
         Game game = new Game(cars, round);
         Result result = game.start(fuel);
-        assertThat(result);
+        assertThat(result.getResult().get(0).getPosition()).isEqualTo(1);
     }
 }

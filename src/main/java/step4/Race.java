@@ -10,13 +10,27 @@ public class Race {
     private final List<Result> results = new ArrayList<>();
 
     public Race(Cars cars, int rounds) {
-        if(cars == null || rounds == 0) {
-            throw new IllegalArgumentException();
-        }
+        valid(cars, rounds);
         this.cars = cars;
         this.rounds = rounds;
     }
 
+    public void start(Fuel fuel) {
+        for (int round = 0; round < rounds; round++) {
+            Game game = new Game(cars, round);
+            results.add(game.start(fuel));
+        }
+    }
+
+    public List<Result> getResults() {
+        return results;
+    }
+
+    private void valid(Cars cars, int rounds) {
+        if(cars == null || rounds == 0) {
+            throw new IllegalArgumentException();
+        }
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -32,4 +46,7 @@ public class Race {
     public int hashCode() {
         return Objects.hash(cars, rounds, results);
     }
+
+
+
 }

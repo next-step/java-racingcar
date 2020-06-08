@@ -29,6 +29,11 @@ public class RaceTest {
         assertThat(race).isEqualTo(new Race(cars, 3));
     }
 
+    @Test
+    void start() {
+        race.start(fuel);
+        assertThat(race.getResults().get(0)).isEqualTo(cars.move(fuel));
+    }
 
     @Test
     void cars_and_round_is_valid() {
