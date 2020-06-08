@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.domain.Car;
 import racing.domain.Cars;
+import racing.domain.AlwaysMoveMovingStrategy;
 import racing.util.Dice;
 
 import java.util.ArrayList;
@@ -46,11 +47,11 @@ class CarsTest {
         String carNames = "test1, test2, test3";
         Cars cars = new Cars(carNames);
         int carCount = cars.getJoinedCarCount();
-        cars.carsMove(Dice.castByCarCount(carCount));
-        cars.carsMove(Dice.castByCarCount(carCount));
-        cars.carsMove(Dice.castByCarCount(carCount));
-        cars.carsMove(Dice.castByCarCount(carCount));
-        cars.carsMove(Dice.castByCarCount(carCount));
+        cars.moveCars(Dice.castByCarCount(carCount));
+        cars.moveCars(Dice.castByCarCount(carCount));
+        cars.moveCars(Dice.castByCarCount(carCount));
+        cars.moveCars(Dice.castByCarCount(carCount));
+        cars.moveCars(Dice.castByCarCount(carCount));
 
         List<Car> carList = cars.getCars();
 
@@ -72,8 +73,8 @@ class CarsTest {
         String carNames = "test1, test2, test3";
         Cars cars = new Cars(carNames);
         int carCount = cars.getJoinedCarCount();
-        cars.carsMove(Dice.castByCarCount(carCount));
-        cars.carsMove(Dice.castByCarCount(carCount));
+        cars.moveCars(Dice.castByCarCount(carCount));
+        cars.moveCars(Dice.castByCarCount(carCount));
         List<Car> roundCarList = cars.getCars();
         List<Car> snapShot = cars.getDeepCopyRacingCars().getCars();
         List<Car> comparedSameCarList = new ArrayList<>();
@@ -89,7 +90,7 @@ class CarsTest {
         int round2More = 2;
         for (int j = 0; j < round2More; j ++) {
             for (Car car : roundCarList) {
-                car.move(4);
+                car.move(new AlwaysMoveMovingStrategy());
             }
         }
 
@@ -116,7 +117,7 @@ class CarsTest {
         Cars cars = new Cars(carNames);
         assertThat(cars.getCars().size()).isEqualTo(1);
 
-        cars.carsMove(Collections.singletonList(input));
+        cars.moveCars(Collections.singletonList(input));
         Car car = cars.getCars().get(0);
 
         assertThat(car.getPosition() > 0).isEqualTo(expected);

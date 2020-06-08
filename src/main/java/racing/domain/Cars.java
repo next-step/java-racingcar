@@ -25,10 +25,15 @@ public class Cars {
         cars.add(car);
     }
 
-    public void carsMove(List<Integer> diceResultList) {
-        int carCount = cars.size();
-        for (int i = 0 ; i < carCount ; i++) {
-            cars.get(i).move(diceResultList.get(i));
+    public void moveCars(List<Integer> diceNumberList) {
+        int carsCount = cars.size();
+
+        if (diceNumberList.size() != carsCount) {
+            throw new IllegalArgumentException("dice number 갯수가 맞지 않습니다.");
+        }
+
+        for (int i = 0 ; i < carsCount ; i++) {
+            cars.get(i).move(RandomMovingStrategy.isMove(diceNumberList.get(i)));
         }
     }
 
@@ -68,4 +73,5 @@ public class Cars {
 
         return position2;
     }
+
 }

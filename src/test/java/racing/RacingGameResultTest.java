@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import racing.domain.Car;
 import racing.domain.Cars;
 import racing.domain.RacingGameResult;
+import racing.domain.AlwaysMoveMovingStrategy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,7 +22,7 @@ class RacingGameResultTest {
 
         Cars cars = new Cars();
         for (Car car : carList) {
-            car.move(4);
+            car.move(new AlwaysMoveMovingStrategy());
             cars.addCar(car);
         }
 
@@ -48,7 +49,7 @@ class RacingGameResultTest {
         Cars cars = new Cars();
         for (Car car : carList) {
             if (winnerName.equals(car.getName())) {
-                car.move(4);
+                car.move(new AlwaysMoveMovingStrategy());
             }
             cars.addCar(car);
         }
