@@ -1,15 +1,15 @@
 package edu.nextstep.racing;
 
 public class ResultView {
-    public void view(String contents) {
+    public static void view(String contents) {
         System.out.println(contents);
     }
 
-    public void carLineView() {
+    public static void carLineView() {
         System.out.print("-");
     }
 
-    public void newLine() {
+    public static void newLine() {
         System.out.println();
     }
 }
