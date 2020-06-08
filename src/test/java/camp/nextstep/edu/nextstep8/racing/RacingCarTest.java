@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingCarTest {
 
@@ -45,5 +46,18 @@ class RacingCarTest {
         // when & then
         assertThat(racingCar.getName()).isEqualTo(name);
     }
+
+    @DisplayName(("자동차에 이름이 부여되지 않을 경우 Exception 발생"))
+    @Test
+    public void nameThrownTest() {
+        // given
+        String name = "";
+
+        // when & then
+        assertThatThrownBy(() -> new RacingCar(name))
+                .hasMessage("자동차 이름을 확인해 주세요")
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
 

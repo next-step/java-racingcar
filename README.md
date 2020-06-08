@@ -78,6 +78,10 @@ pobi, honux가 최종 우승했습니다.</code></pre>
     * 힌트: if 조건절에서 값을 return하는 방식으로 구현하면 else를 사용하지 않아도 된다.
     * else를 쓰지 말라고 하니 switch/case로 구현하는 경우가 있는데 switch/case도 허용하지 않는다.
 
+## 리팩토링 요구사항
+* 핵심 비지니스 로직을 가지는 객체를 domain 패키지, UI 관련한 객체를 view 패키지에 구현한다.
+* MVC 패턴 기반으로 리팩토링해 view 패키지의 객체가 domain 패키지 객체에 의존할 수 있지만, domain 패키지의 객체는 view 패키지 객체에 의존하지 않도록 구현한다.
+
 ## 개선 요구사항
 ### step3 에서 나왔던 리뷰사항들
 * [X] [fix#01] 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
@@ -96,3 +100,35 @@ pobi, honux가 최종 우승했습니다.</code></pre>
                 .filter(r -> r > 0)
                 .count()).isEqualTo(carNumbers * raceTimes));</code></pre>
 
+### step4 에서 나왔던 리뷰사항들
+* [X] [fix#01] [RacingCar.java] 자동차 이름에 validation을 추가할 것
+* [X] [fix#02] [RacingCar.java] RacingCar 객체 clone 하기
+* [X] [fix#03] [RacingGameInputTest.java] UI 테스트 하지 않기 
+* [X] [fix#04] [RacingGameResultView.java] records.size()-1 보다 의미있는 변수로 수정하기
+* [X] [fix#05] [RacingGameResultView.java] 비즈니스 로직 분리하기
+* [X] [fix#06] [RacingGameResultView.java] 들여쓰기 1까지만 허용하기
+
+### step5 에서 나왔던 리뷰사항들
+* [X] [fix#01] [RacingCar.java] Objects.isNull() 활용해보기
+* [X] [fix#02] [RacingCar.java] 유효성 검사에서 값 검증만 하기 
+* [X] [fix#03] [RacingCar.java] Position에 대한 검증도 해보기, name, position 불변객체 만들기
+* [X] [fix#04] [RacingGame.java] CheckedException과 UnCheckedException의 차이점 학습하기
+* [X] [fix#05] [RacingGame.java] List<RacinCar> 말고 일급컬렉션을 가지고 있도록 수정
+* [X] [fix#06] [RacingGame.java] List<RacingEntry> record 상태 제거 하기 (굳이 필요 없음)
+* [X] [fix#07] [RacingGame.java] 객체 내부에서만 사용하는 생성자는 private
+* [X] [fix#08] [RacingGameResultView.java] 객체의 가지고 있는 상태를 활용할 것 (굳이 왜 파라미터로 넘겼지??)
+* [X] [fix#09] [RacingCarTest.java] 문법 변경하기 
+    * <pre><code> assertThatThrownBy(() ->new RacingCar(name)).isInstanceOf(IllegalArgumentException.class)</code></pre>
+
+
+#### 불변객체 
+* 불변 객체는 가리키고 있는 주소값 혹은 불변 객체를 통해 얻을 수 있는 값들의 힙 영역에 있는 데이터 그 자체 가 변경되지 않는 것을 의미 한다
+* Setter를 생성하지 않는 것
+* 외부에서 특정한 메시지를 보내고 싶은 경우 값을 반환하는 것이 아니라 메시지를 처리하는 메소드를 작성함으로써 불변의 형태를 완성 할 수 있다.
+
+#### Checked Exception vs Unchecked Exception 
+* 예외 복구 전략이 명확하고 그것이 가능하다면 Checked Exceptio을 try catch로 잡고 해당 복구를 하는 것이 좋다
+* **하지만** 그러한 경우는 흔하지 않으며 Checked Exception이 발생하면 더 구체적인 Unchecked Exception을 발생시키고 예외에 대한 메시지를 명확하게 전달하는 것이 효과적
+* 무책임하게 상위 메서드로 throw를 던지는 행위는 하지 않는 것이 좋음
+    * 왜냐하면 상위 메서드들의 책임이 그만큼 증가 
+    * Checked Exception은 기본 트랜잭션에 속성에서는 **Rollback 을 진행하지 않음** 
