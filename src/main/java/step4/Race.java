@@ -6,23 +6,28 @@ public class Race {
 
     private final Cars cars;
     private final int rounds;
+    private final Game game;
 
     public Race(Cars cars, int rounds) {
         valid(cars, rounds);
         this.cars = cars;
         this.rounds = rounds;
+        this.game = new Game(cars,rounds);
     }
 
     public void start() {
         OutputView.start();
         for (int round = 1; round <= rounds; round++) {
-            Game game = new Game(cars, round);
             Result result = game.start();
             OutputView.render(result);
-            if(round == rounds) {
+            if(isFinal(round)) {
                 OutputView.winner(result);
             }
         }
+    }
+
+    private boolean isFinal(int round) {
+        return round == rounds;
     }
 
 

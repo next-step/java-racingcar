@@ -3,8 +3,6 @@ package step4;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -28,8 +26,6 @@ public class RaceTest {
     void create() {
         assertThat(race).isEqualTo(new Race(cars, 3));
     }
-
-
 
     @Test
     void cars_and_round_is_valid() {

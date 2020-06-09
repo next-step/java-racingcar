@@ -13,7 +13,7 @@ public class Game {
     }
 
     public Result start() {
-        return cars.move();
+        return cars.move(new Fuel());
     }
 
     @Override

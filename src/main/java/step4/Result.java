@@ -1,7 +1,9 @@
 package step4;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Result {
 
@@ -13,6 +15,19 @@ public class Result {
 
     public List<Car> getResult() {
         return this.result;
+    }
+
+    public int getMax() {
+        return result.stream()
+                .max(Comparator.comparing(Car::getPosition))
+                .orElseThrow(IllegalAccessError::new)
+                .getPosition();
+    }
+
+    public List<Car> getWinners(int maximum) {
+        return result.stream()
+                .filter(car -> car.getPosition() == maximum)
+                .collect(Collectors.toList());
     }
 
     @Override

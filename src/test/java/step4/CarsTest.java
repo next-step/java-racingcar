@@ -1,6 +1,7 @@
 package step4;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class CarsTest {
 
     @Test
     void move() {
-        Result movedCars = cars.move();
+        Result movedCars = cars.move(fuel);
         assertThat(movedCars.getResult().get(0).getPosition()).isEqualTo(1);
     }
 
@@ -54,6 +55,4 @@ public class CarsTest {
         result.add(Car.of("oak"));
         return result;
     }
-
-
 }

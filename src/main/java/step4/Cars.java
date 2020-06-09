@@ -24,14 +24,14 @@ public class Cars {
         }
     }
 
-    public Result move() {
-        List<Car> list = moveCars();
+    public Result move(Fuel fuel) {
+        List<Car> list = moveCars(fuel);
         return new Result(list);
     }
 
-    private List<Car> moveCars() {
+    private List<Car> moveCars(Fuel fuel) {
         return cars.stream().map(car -> {
-                car.move(new Fuel());
+                car.move(fuel);
                 return car;
             }).collect(Collectors.toList());
     }

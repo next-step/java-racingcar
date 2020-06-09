@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Car {
 
+    private static final int STEP = 1;
     private static final int INITIAL_POSITION = 0;
 
     private final Name name;
@@ -20,8 +21,12 @@ public class Car {
 
     public void move(Fuel fuel) {
         if(fuel.isValid()) {
-           this.position += 1;
+            this.position += STEP;
         }
+    }
+
+    public String getName() {
+        return name.getName();
     }
 
     public int getPosition() {
@@ -48,9 +53,5 @@ public class Car {
                 "name=" + name +
                 ", position=" + position +
                 '}';
-    }
-
-    public String getName() {
-        return name.getName();
     }
 }

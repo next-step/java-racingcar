@@ -6,18 +6,18 @@ public class Fuel {
 
     private static final int MAXIMUM_NUMBER = 9;
     private static final int VALID_NUMBER = 4;
-    private int fuel;
+    private Random fuel;
 
     public Fuel() {
         this.fuel = getRandom();
     }
 
-    protected int getRandom() {
-        return new Random().nextInt(MAXIMUM_NUMBER);
+    protected Random getRandom() {
+        return new Random();
     }
 
     public boolean isValid(){
-        return this.fuel >= VALID_NUMBER;
+        return this.fuel.nextInt(MAXIMUM_NUMBER) >= VALID_NUMBER;
     }
 
     public boolean equals(Object o) {
