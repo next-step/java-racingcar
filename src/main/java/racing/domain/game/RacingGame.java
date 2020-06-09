@@ -18,7 +18,7 @@ public class RacingGame {
     public List<RacingCars> race(int times) {
         List<RacingCars> racingCarsList = new ArrayList<>();
         for (int i = 0; i < times; i++) {
-            racingCars.moveCars(new CarForwardBehavior());
+            RacingCars racingCars = this.racingCars.moveCars(new CarForwardBehavior());
             racingCarsList.add(racingCars);
         }
         return racingCarsList;

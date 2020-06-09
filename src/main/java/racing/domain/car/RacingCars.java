@@ -12,6 +12,10 @@ public class RacingCars {
         this.cars = prepareCars(inputName);
     }
 
+    public RacingCars(List<Car> cars) {
+        this.cars = cars;
+    }
+
     public List<Car> prepareCars(String inputName) {
         List<Car> cars = new ArrayList<>();
 
@@ -20,7 +24,7 @@ public class RacingCars {
         String[] carNames = inputName.split(DELIMITER);
 
         for (int i = 0; i < carNames.length; i++) {
-            cars.add(new Car(carNames[i]));
+            cars.add(new Car(carNames[i], 0));
         }
         return cars;
     }
@@ -31,10 +35,12 @@ public class RacingCars {
         }
     }
 
-    public void moveCars(CarMoveBehavior carMoveBehavior) {
-        for (int i = 0; i < cars.size(); i++) {
-            cars.get(i).move(carMoveBehavior);
+    public RacingCars moveCars(CarMoveBehavior carMoveBehavior) {
+        List<Car> executedCars = new ArrayList<>();
+        for (Car car : cars) {
+            executedCars.add(car.move(carMoveBehavior));
         }
+        return new RacingCars(executedCars);
     }
 
     public List<Car> getCars() {

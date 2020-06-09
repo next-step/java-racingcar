@@ -26,7 +26,7 @@ public class RacingGameResult {
         RacingGame racingGame = new RacingGame(racingCars);
         List<RacingCars> racingCarsList = racingGame.race(times);
 
-        for(RacingCars cars:racingCarsList){
+        for (RacingCars cars : racingCarsList) {
             ResultView.printResult(cars.getCars());
         }
     }

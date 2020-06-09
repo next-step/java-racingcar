@@ -4,9 +4,10 @@ public class Car {
     private String carName;
     private int position;
 
-    public Car(String carName) {
+    public Car(String carName, int position) {
         checkCarName(carName);
         this.carName = carName;
+        this.position = position;
     }
 
     public static void checkCarName(String carName) {
@@ -15,11 +16,11 @@ public class Car {
         }
     }
 
-    public int move(CarMoveBehavior carMoveBehavior) {
+    public Car move(CarMoveBehavior carMoveBehavior) {
         if (carMoveBehavior.action()) {
             position++;
         }
-        return position;
+        return new Car(carName, position);
     }
 
     public String getCarName() {
