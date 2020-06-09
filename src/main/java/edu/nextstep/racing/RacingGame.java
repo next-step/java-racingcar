@@ -19,8 +19,11 @@ public class RacingGame<T> {
         startGame(movingCheck, carNames, gameNum);
     }
 
-    public void setUpTest(MovingCheck movingCheck, String[] carNames, int gameNum) {
-        startGame(movingCheck, carNames, gameNum);
+    public void setUpTest(MovingCheck movingCheck, String carNames, int gameNum) {
+        if (carNames.isEmpty()) {
+            throw new IllegalArgumentException("input data is empty");
+        }
+        startGame(movingCheck, carNames.split(","), gameNum);
     }
 
     public void startGame(MovingCheck movingCheck, String[] carNames, int gameNum) {
@@ -32,27 +35,42 @@ public class RacingGame<T> {
             carList.add(new RacingCar(carNames[i]));
         }
 
+        ResultView.view("실행 결과");
+
         for (int i = 0; i < gameNum; i++) {
             for (int j = 0; j < carNames.length; j++) {
                 RacingCar car = (RacingCar)carList.get(j);
                 car.move(movingCheck);
             }
+            resultGame(carNames.length);
+            ResultView.newLine();
         }
 
-        resultGame(carNames.length);
+        ArrayList winnerList = new ArrayList<>();
+        int winnerPosition = 0;
+        for (int i = 0; i < carList.size(); i++) {
+            if ( ((RacingCar)carList.get(i)).getStatus() > winnerPosition ) {
+                winnerPosition = ((RacingCar)carList.get(i)).getStatus();
+            }
+        }
+
+        for (int i = 0; i < carList.size(); i++) {
+            if ( ((RacingCar)carList.get(i)).getStatus() == winnerPosition ) {
+                winnerList.add(carList.get(i));
+            }
+        }
+
+        ResultView.winnerView(winnerList);
     }
 
     public void resultGame(int carNum) {
-        ResultView.view("실행 결과");
-
         for (int i = 0; i < carNum; i++) {
             RacingCar car = (RacingCar)carList.get(i);
-            ResultView.view(car.getCarName() + " : ");
+            ResultView.carView(car.getCarName());
             for (int j = 0; j < car.getStatus(); j++) {
                 ResultView.carLineView();
             }
             ResultView.newLine();
         }
     }
-
 }

@@ -16,7 +16,7 @@ public class RacingCarTest {
         RandomNumber randomNumber = new RandomNumber();
         this.racingCarMovingCheck = new RacingCarMovingCheck(randomNumber);
         this.movingCheckTest = new MovingCheckTest();
-        racingCar = new RacingCar();
+        racingCar = new RacingCar("pobi");
     }
 
     @DisplayName("자동차 이동 테스트")
