@@ -1,4 +1,7 @@
-package autoracing;
+package autoracing.view;
+
+import autoracing.domain.Car;
+import autoracing.domain.RacingGame;
 
 import java.util.Collections;
 import java.util.stream.Collectors;

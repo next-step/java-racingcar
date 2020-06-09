@@ -1,4 +1,6 @@
-package autoracing;
+package autoracing.view;
+
+import autoracing.domain.Car;
 
 import java.io.InputStream;
 import java.util.Arrays;

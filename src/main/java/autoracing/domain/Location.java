@@ -1,4 +1,4 @@
-package autoracing;
+package autoracing.domain;
 
 public class Location {
     public static Location STARTING_LINE = new Location(0);

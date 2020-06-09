@@ -1,10 +1,9 @@
-package autoracing;
+package autoracing.view;
 
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

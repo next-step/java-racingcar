@@ -1,4 +1,4 @@
-package autoracing;
+package autoracing.domain;
 
 @FunctionalInterface
 public interface RacingRule {

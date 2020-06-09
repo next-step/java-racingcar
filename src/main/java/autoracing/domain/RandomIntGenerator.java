@@ -1,4 +1,4 @@
-package autoracing;
+package autoracing.domain;
 
 import java.util.Random;
 
