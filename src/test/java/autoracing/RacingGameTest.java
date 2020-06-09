@@ -3,10 +3,13 @@ package autoracing;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
 public class RacingGameTest {
     @Test
@@ -29,6 +32,21 @@ public class RacingGameTest {
                 .hasSize(numberOfCars)
                 .filteredOn("rule", rule)
                 .hasSize(numberOfCars);
+    }
+
+    @Test
+    public void throwExceptionWhenBadArgumentWasPassedByConstructor() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            new RacingGame(0, Arrays.asList(new Car("Audi")));
+        }).withMessage("total rounds must be greater than zero.");
+
+        assertThatNullPointerException().isThrownBy(() -> {
+            new RacingGame(1, null);
+        }).withMessage("participants must not be null.");
+
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            new RacingGame(1, Collections.emptyList());
+        }).withMessage("the number of participants must be greater than zero.");
     }
 
     @Test

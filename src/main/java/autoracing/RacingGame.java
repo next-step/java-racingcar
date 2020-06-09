@@ -1,15 +1,27 @@
 package autoracing;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
+    private static final String BAD_TOTAL_ROUNDS = "total rounds must be greater than zero.";
+    private static final String NULL_PARTICIPANTS = "participants must not be null.";
+    private static final String BAD_PARTICIPANTS = "the number of participants must be greater than zero.";
 
     private final int totalRounds;
     private final List<Car> participants;
 
     public RacingGame(int totalRounds, List<Car> participants) {
+        if (totalRounds < 1) {
+            throw new IllegalArgumentException(BAD_TOTAL_ROUNDS);
+        }
+        if (participants == null) {
+            throw new NullPointerException(NULL_PARTICIPANTS);
+        }
+        if (participants.isEmpty()) {
+            throw new IllegalArgumentException(BAD_PARTICIPANTS);
+        }
+
         this.totalRounds = totalRounds;
         this.participants = participants;
     }
@@ -55,6 +67,6 @@ public class RacingGame {
         return participants.stream()
                 .map(car -> car.getLocation(totalRounds).getDistance())
                 .max(Integer::compareTo)
-                .orElseThrow(() -> new IllegalArgumentException(""));
+                .orElseThrow(() -> new IllegalArgumentException(BAD_PARTICIPANTS));
     }
 }
