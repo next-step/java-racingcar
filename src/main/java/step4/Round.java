@@ -12,7 +12,7 @@ public class Round {
     }
 
     private void valid(int round) {
-        if(round == 0) {
+        if(round != 5) {
             throw new IllegalArgumentException();
         }
     }

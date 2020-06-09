@@ -38,6 +38,11 @@ public class CarsTest {
     }
 
     @Test
+    void valid_number_of_car() {
+        assertThatThrownBy(() -> cars.split("pater,kassie")).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void create_cars_from_name() {
         assertThat(cars.getCars()).isEqualTo(result);
     }

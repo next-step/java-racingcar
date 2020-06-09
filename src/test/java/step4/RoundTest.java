@@ -12,8 +12,8 @@ public class RoundTest {
 
     @Test
     void create() {
-        Round round = new Round(3);
-        assertThat(round).isEqualTo(new Round(3));
+        Round round = new Round(5);
+        assertThat(round).isEqualTo(new Round(5));
     }
 
     @Test

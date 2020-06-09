@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
+    private static final int VALID_NUMBER_OF_CARS = 3;
     private static final String SPLIT_REGEX = ",";
     private static final String EMPTY = "";
 
@@ -19,6 +20,9 @@ public class Cars {
 
     public void split(String names) {
         String[] list = names.split(SPLIT_REGEX);
+        if(list.length != VALID_NUMBER_OF_CARS) {
+            throw new IllegalArgumentException();
+        }
         for(String name: list) {
             this.cars.add(Car.of(name));
         }
