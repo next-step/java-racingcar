@@ -3,7 +3,6 @@ package racing;
 public class Car {
 
     private final static int MINIMUM_CONDITIONS = 4;
-
     private int position;
     private String carName;
 
@@ -13,11 +12,11 @@ public class Car {
 
     public Car(String inputCarName, int position) {
 
-        if(inputCarName.trim().isEmpty()){
+        if (inputCarName.trim().isEmpty()) {
             throw new IllegalArgumentException("이름이 입력되지 않았습니다.");
         }
 
-        if(position < 0){
+        if (position < 0) {
             throw new IllegalArgumentException("위치값이 0보다 작을 수 없습니다.");
         }
 
@@ -40,7 +39,13 @@ public class Car {
     }
 
     public void move(int number) {
-        decidePosition(number >= MINIMUM_CONDITIONS ? true : false);
+        if (canMove(number)) {
+            this.position++;
+        }
+    }
+
+    private boolean canMove(int number) {
+        return number >= MINIMUM_CONDITIONS;
     }
 
     public boolean isSamePosition(Integer inputposition) {
