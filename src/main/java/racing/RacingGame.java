@@ -1,6 +1,5 @@
 package racing;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class RacingGame {
@@ -8,21 +7,24 @@ public class RacingGame {
     public static void main(String[] args) {
 
         InputView inputView = new InputView(new Scanner(System.in));
-        inputView.getUserInput();
-        Cars cars = new Cars(inputView.getnameList());
+        inputView.runUserInput();
 
+        String[] names = inputView.getNames();
+        Valid.checkEmptyOrBlank(names);
+
+        inputView.runTimeInput();
+        int inputTime = inputView.getInputTime();
+        Valid.timeGreaterThenZero(inputTime);
+
+        Cars initCars = new Cars(names);
         OutputView outputView = new OutputView();
         Dice dice = new DiceWithRandom();
 
-        for (int time = 0; time < inputView.getInputTime(); time++) {
-
-            cars.playGame(dice);
-            List<Car> carList = cars.getCarList();
-            outputView.resultPrint(carList);
+        for (int time = 0; time < inputTime; time++) {
+            initCars.playGame(dice);
+            outputView.resultPrint(initCars.getCars());
         }
-
-        List<String> winner = cars.getWinner();
-        outputView.printWinner(winner);
+        outputView.printWinner(initCars.getWinner());
     }
 
 
