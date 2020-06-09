@@ -16,8 +16,8 @@ class CarTest {
     void move() {
         Fuel fuel = new Fuel() {
             @Override
-            protected int getRandom() {
-                return 4;
+            public boolean isValid() {
+                return true;
             }
         };
         Car peter = Car.of("peter");

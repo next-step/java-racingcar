@@ -12,8 +12,8 @@ public class Game {
         this.round = round;
     }
 
-    public Result start(Fuel fuel) {
-        return cars.move(fuel);
+    public Result start() {
+        return cars.move();
     }
 
     @Override

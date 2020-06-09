@@ -18,8 +18,8 @@ public class RaceTest {
         race = new Race(cars, 3);
         fuel = new Fuel() {
             @Override
-            protected int getRandom() {
-                return 4;
+            public boolean isValid() {
+                return true;
             }
         };
     }
@@ -29,11 +29,7 @@ public class RaceTest {
         assertThat(race).isEqualTo(new Race(cars, 3));
     }
 
-    @Test
-    void start() {
-        race.start(fuel);
-        assertThat(race.getResults().get(0)).isEqualTo(cars.move(fuel));
-    }
+
 
     @Test
     void cars_and_round_is_valid() {

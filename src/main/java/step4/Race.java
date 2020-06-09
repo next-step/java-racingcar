@@ -1,13 +1,11 @@
 package step4;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class Race {
+
     private final Cars cars;
     private final int rounds;
-    private final List<Result> results = new ArrayList<>();
 
     public Race(Cars cars, int rounds) {
         valid(cars, rounds);
@@ -15,16 +13,18 @@ public class Race {
         this.rounds = rounds;
     }
 
-    public void start(Fuel fuel) {
-        for (int round = 0; round < rounds; round++) {
+    public void start() {
+        OutputView.start();
+        for (int round = 1; round <= rounds; round++) {
             Game game = new Game(cars, round);
-            results.add(game.start(fuel));
+            Result result = game.start();
+            OutputView.render(result);
+            if(round == rounds) {
+                OutputView.winner(result);
+            }
         }
     }
 
-    public List<Result> getResults() {
-        return results;
-    }
 
     private void valid(Cars cars, int rounds) {
         if(cars == null || rounds == 0) {
@@ -38,15 +38,11 @@ public class Race {
         if (o == null || getClass() != o.getClass()) return false;
         Race race = (Race) o;
         return rounds == race.rounds &&
-                Objects.equals(cars, race.cars) &&
-                Objects.equals(results, race.results);
+                Objects.equals(cars, race.cars);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cars, rounds, results);
+        return Objects.hash(cars, rounds);
     }
-
-
-
 }

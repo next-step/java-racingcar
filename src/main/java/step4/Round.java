@@ -1,6 +1,5 @@
 package step4;
 
-import java.util.List;
 import java.util.Objects;
 
 public class Round {
@@ -10,10 +9,6 @@ public class Round {
     public Round(int round) {
         valid(round);
         this.round = round;
-    }
-
-    public int getRound() {
-        return this.round;
     }
 
     private void valid(int round) {

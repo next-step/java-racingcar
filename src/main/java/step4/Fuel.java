@@ -13,7 +13,7 @@ public class Fuel {
     }
 
     protected int getRandom() {
-        return new Random(MAXIMUM_NUMBER).nextInt();
+        return new Random().nextInt(MAXIMUM_NUMBER);
     }
 
     public boolean isValid(){

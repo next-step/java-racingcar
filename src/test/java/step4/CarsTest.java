@@ -19,8 +19,8 @@ public class CarsTest {
         result = getResult();
         fuel = new Fuel() {
             @Override
-            protected int getRandom() {
-                return 4;
+            public boolean isValid() {
+                return true;
             }
         };
     }
@@ -32,7 +32,7 @@ public class CarsTest {
 
     @Test
     void move() {
-        Result movedCars = cars.move(fuel);
+        Result movedCars = cars.move();
         assertThat(movedCars.getResult().get(0).getPosition()).isEqualTo(1);
     }
 

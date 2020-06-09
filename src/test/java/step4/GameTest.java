@@ -16,16 +16,10 @@ public class GameTest {
 
     @Test
     void start() {
-        Fuel fuel = new Fuel() {
-            @Override
-            protected int getRandom() {
-                return 4;
-            }
-        };
         int round = 1;
         Cars cars = new Cars("peter,kassie,oak");
         Game game = new Game(cars, round);
-        Result result = game.start(fuel);
+        Result result = game.start();
         assertThat(result.getResult().get(0).getPosition()).isEqualTo(1);
     }
 }

@@ -7,7 +7,7 @@ public class Car {
     private static final int INITIAL_POSITION = 0;
 
     private final Name name;
-    private Position position;
+    private int position;
 
     public static Car of(String name) {
         return new Car(name, INITIAL_POSITION);
@@ -15,17 +15,17 @@ public class Car {
 
     Car(String name, int position) {
         this.name = new Name(name);
-        this.position = new Position(position);
+        this.position = position;
     }
 
     public void move(Fuel fuel) {
         if(fuel.isValid()) {
-            this.position = position.move();
+           this.position += 1;
         }
     }
 
     public int getPosition() {
-        return this.position.getPosition();
+        return this.position;
     }
 
     @Override
@@ -48,5 +48,9 @@ public class Car {
                 "name=" + name +
                 ", position=" + position +
                 '}';
+    }
+
+    public String getName() {
+        return name.getName();
     }
 }

@@ -28,5 +28,12 @@ public class Result {
         return Objects.hash(result);
     }
 
+    @Override
+    public String toString() {
+        return "Result{" +
+                "result=" + result +
+                '}';
+    }
+
 
 }
