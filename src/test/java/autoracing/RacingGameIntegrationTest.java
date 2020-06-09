@@ -12,7 +12,7 @@ import java.io.InputStream;
 
 public class RacingGameIntegrationTest {
     @ParameterizedTest
-    @CsvSource(value = {"Mercedes,Ferrari,Lamborghini,McLaren:4:10:4"}, delimiter = ':')
+    @CsvSource(value = {"Mercedes,Ferrari,Lamborghini,McLaren,Ford,Lenault:4:10:4"}, delimiter = ':')
     public void racingGame(String numberOfCars, Integer totalRounds, int ruleBound, int ruleThreshold) {
         String inputValues = numberOfCars + "\n" + totalRounds.toString() + "\n";
         InputStream inputStream = new ByteArrayInputStream(inputValues.getBytes());
@@ -26,6 +26,7 @@ public class RacingGameIntegrationTest {
         game.setRule(new RandomRacingRule(ruleBound, ruleThreshold));
         game.start();
 
-        new ResultView(game).show();
+        ResultView resultView = new ResultView.Builder(game).build();
+        resultView.show();
     }
 }
