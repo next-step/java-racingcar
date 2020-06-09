@@ -2,6 +2,7 @@ package autoracing;
 
 import autoracing.domain.RacingGame;
 import autoracing.domain.RandomRacingRule;
+import autoracing.view.CarTrackRenderer;
 import autoracing.view.InputView;
 import autoracing.view.ResultView;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -26,7 +27,9 @@ public class RacingGameIntegrationTest {
         game.setRule(new RandomRacingRule(ruleBound, ruleThreshold));
         game.start();
 
-        ResultView resultView = new ResultView.Builder(game).build();
+        ResultView resultView = new ResultView.Builder(game)
+                .carTrackRenderer(new CarTrackRenderer("ㅁ", ":", "-"))
+                .build();
         resultView.show();
     }
 }
