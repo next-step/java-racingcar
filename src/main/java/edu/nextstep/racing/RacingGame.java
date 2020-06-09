@@ -47,6 +47,7 @@ public class RacingGame<T> {
 
         for (int i = 0; i < carNum; i++) {
             RacingCar car = (RacingCar)carList.get(i);
+            ResultView.view(car.getCarName() + " : ");
             for (int j = 0; j < car.getStatus(); j++) {
                 ResultView.carLineView();
             }
