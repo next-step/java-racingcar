@@ -16,7 +16,16 @@ public class Cars {
 
     public Cars(String[] carNames, int[] positions) {
 
-        ParserUtils.checkEmptyOrBlank(carNames);
+        if(positions == null){
+            throw new IllegalArgumentException("position이 null입니다.");
+        }
+
+        if(carNames == null){
+            throw new IllegalArgumentException("carName이 null입니다.");
+        }
+
+        Valid.checkEmptyOrBlank(carNames);
+        Valid.sizeCompare(carNames, positions);
 
         cars = new ArrayList<>();
 

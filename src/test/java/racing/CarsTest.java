@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class CarsTest {
 
@@ -65,6 +66,21 @@ class CarsTest {
         Cars cars = new Cars(nameList, positionList);
         List<String> winner = cars.getWinner();
         assertThat(winner).contains("SOO");
+    }
+
+    @DisplayName("position이 null값일때 에러 발생")
+    @Test
+    public void getWinnerWithPositionNull() {
+
+        assertThatIllegalArgumentException().isThrownBy(() -> new Cars(nameList, null));
+    }
+
+    @DisplayName("name이 null값일때 에러 발생")
+    @Test
+    public void getWinnerWithNamesNull() {
+
+        int[] positionList = {1,2,3};
+        assertThatIllegalArgumentException().isThrownBy(() -> new Cars(null, positionList));
     }
 
 }

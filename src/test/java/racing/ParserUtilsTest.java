@@ -3,30 +3,38 @@ package racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class ParserUtilsTest {
 
-    @DisplayName("자동차 이름이 모두 정상적으로 입력됬을때")
+
+
+    @DisplayName("3개의 이름이 넘어왓을때 3개의 이름리스트 반환")
     @Test
-    void checkBlank() {
-        String[] nameList = {"HO", "SOO", "RAM"};
-        ParserUtils.checkEmptyOrBlank(nameList);
+    public void stringToArraySuccess(){
+        String nameString = "HO,SOO,RAM";
+        String[] names = ParserUtils.stringToArray(nameString);
+
+        assertThat(names).contains("HO","SOO","RAM");
     }
 
-    @DisplayName("마지막 자동차 이름이 공백일때")
+    @DisplayName("이름이 공백으로 넘어왔을때 에러 발생")
     @Test
-    void checkWhiteSpaceError() {
-        String[] nameList = {"HO", "SOO", " "};
+    public void stringToArrayFailWithEmpty(){
+        String nameString = "";
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> ParserUtils.checkEmptyOrBlank(nameList));
+                .isThrownBy(() ->ParserUtils.stringToArray(nameString));
+
     }
 
-    @DisplayName("마지막 자동차 이름을 입력하지 않았을때")
+    @DisplayName("이름 문자열이 null일때 에러 발생")
     @Test
-    void checkEmptyError() {
-        String[] nameList = {"HO", "SOO", ""};
+    public void stringToArrayFailWithNull(){
+        String nameString = null;
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> ParserUtils.checkEmptyOrBlank(nameList));
+                .isThrownBy(() ->ParserUtils.stringToArray(nameString));
+
     }
+
 }
