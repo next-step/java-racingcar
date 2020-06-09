@@ -3,6 +3,7 @@ package autoracing;
 import autoracing.domain.RacingGame;
 import autoracing.domain.RandomRacingRule;
 import autoracing.view.InputView;
+import autoracing.view.ResultView;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -24,6 +25,7 @@ public class RacingGameIntegrationTest {
 
         game.setRule(new RandomRacingRule(ruleBound, ruleThreshold));
         game.start();
-        game.replayResult();
+
+        new ResultView(game).show();
     }
 }

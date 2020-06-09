@@ -9,6 +9,8 @@ import java.util.stream.IntStream;
 
 public class ResultView {
     private static final int DEFAULT_TRACE_DISTANCE = 1;
+    private static final String DEFAULT_TRACE_SIGN = "-";
+    private static final String DEFAULT_RESULT_TITLE = "실행 결과";
 
     private final RacingGame racingGame;
     private final CharSequence traceSign;
@@ -18,6 +20,10 @@ public class ResultView {
         this.racingGame = racingGame;
         this.traceSign = traceSign;
         this.resultTitle = resultTitle;
+    }
+
+    public ResultView(RacingGame racingGame) {
+        this(racingGame, DEFAULT_TRACE_SIGN, DEFAULT_RESULT_TITLE);
     }
 
     public void show() {

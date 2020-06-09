@@ -46,11 +46,6 @@ public class RacingGame {
         return participants;
     }
 
-    public void replayResult() {
-        ResultView resultView = new ResultView(this, "-", "실행 결과");
-        resultView.show();
-    }
-
     public List<Car> getWinners() {
         int winnerDistance = getWinnerDistance();
         return participants.stream()
