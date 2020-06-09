@@ -1,8 +1,9 @@
-package racing.domain.game;
+package racing.controller;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.controller.RacingGameResult;
 import racing.domain.car.RacingCars;
 import racing.domain.test.TestCarForwardBehavior;
 import racing.domain.test.TestCarStopBehavior;

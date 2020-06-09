@@ -2,7 +2,7 @@ package racing.view;
 
 import racing.domain.car.Car;
 import racing.domain.game.RacingGame;
-import racing.domain.game.RacingGameResult;
+import racing.controller.RacingGameResult;
 
 import java.util.ArrayList;
 import java.util.List;
