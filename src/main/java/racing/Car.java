@@ -12,13 +12,8 @@ public class Car implements Comparable<Car> {
 
     public Car(String inputCarName, int position) {
 
-        if (inputCarName.trim().isEmpty()) {
-            throw new IllegalArgumentException("이름이 입력되지 않았습니다.");
-        }
-
-        if (position < 0) {
-            throw new IllegalArgumentException("위치값이 0보다 작을 수 없습니다.");
-        }
+        Valid.isEmpty(inputCarName);
+        Valid.positionMinusCheck(position);
 
         this.carName = inputCarName;
         this.position = position;

@@ -20,7 +20,7 @@ public class Valid {
         }
     }
 
-    public static void greaterThenZero(int inputTime){
+    public static void timeGreaterThenZero(int inputTime){
 
         if (inputTime < 1) {
             throw new IllegalArgumentException("반복횟수는 0보다 커야합니다.");
@@ -32,4 +32,24 @@ public class Valid {
             throw new IllegalArgumentException("이름 사이즈와 위치 사이즈가 일치 하지 않습니다.");
         }
     }
+
+    public static void positionMinusCheck(int position) {
+        if(position < 0){
+            throw new IllegalArgumentException("position은 음수가 될 수 없습니다.");
+        }
+    }
+
+    public static void positionsNullCheck(int[] positions) {
+
+        if(positions == null){
+            throw new IllegalArgumentException("position이 null입니다.");
+        }
+
+    }
+    public static void carNamesNullCheck(String[] carNames) {
+        if (carNames == null) {
+            throw new IllegalArgumentException("carName이 null입니다.");
+        }
+    }
+
 }
