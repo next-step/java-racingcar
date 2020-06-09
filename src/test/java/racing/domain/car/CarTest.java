@@ -16,16 +16,18 @@ public class CarTest {
     @DisplayName("Car 전진")
     @ValueSource(ints = 1)
     void moveTest(int expected) {
-        Car car = new Car("car");
-        assertThat(car.move(new TestCarForwardBehavior())).isEqualTo(expected);
+        Car car = new Car("car", 0);
+        car = car.move(new TestCarForwardBehavior());
+        assertThat(car.getPosition()).isEqualTo(expected);
     }
 
     @ParameterizedTest
     @DisplayName("Car 정지")
     @ValueSource(ints = 0)
     void stopTest(int expected) {
-        Car car = new Car("car");
-        assertThat(car.move(new TestCarStopBehavior())).isEqualTo(expected);
+        Car car = new Car("car", 0);
+        car = car.move(new TestCarStopBehavior());
+        assertThat(car.getPosition()).isEqualTo(expected);
     }
 
     @ParameterizedTest
@@ -34,6 +36,6 @@ public class CarTest {
     void checkCarNameNullTest(String input) {
         assertThatThrownBy(() -> Car.checkCarName(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("이름이 비어있습니다. 이름을 모두 입력해주세요.");
+                .hasMessage("이름이 비어있습니다. 이름을 입력해주세요.");
     }
 }
