@@ -23,13 +23,13 @@ public class ResultView {
         private RacingGame racingGame;
         private CharSequence traceSign;
         private String resultTitle;
-        private Function<RacingGame, WinnersRenderer> winnersRendererSupplier;
+        private WinnersRenderer winnerRenderer;
 
         public Builder(RacingGame racingGame) {
             this.racingGame = racingGame;
             this.traceSign = DEFAULT_TRACE_SIGN;
             this.resultTitle = DEFAULT_RESULT_TITLE;
-            this.winnersRendererSupplier = (game) -> new WinnersRenderer(game.getWinners());
+            this.winnerRenderer = new WinnersRenderer();
         }
 
         public Builder racingGame(RacingGame racingGame) {
@@ -47,13 +47,13 @@ public class ResultView {
             return this;
         }
 
-        public Builder winnersRenderer(Function<RacingGame, WinnersRenderer> thunk) {
-            this.winnersRendererSupplier = thunk;
+        public Builder winnersRenderer(WinnersRenderer winnersRenderer) {
+            this.winnerRenderer = winnersRenderer;
             return this;
         }
 
         public ResultView build() {
-            return new ResultView(racingGame, traceSign, resultTitle, winnersRendererSupplier.apply(racingGame));
+            return new ResultView(racingGame, traceSign, resultTitle, winnerRenderer);
         }
     }
 
@@ -92,6 +92,6 @@ public class ResultView {
     }
 
     private String renderWinners() {
-        return winnersRenderer.render();
+        return winnersRenderer.render(racingGame.getWinners());
     }
 }

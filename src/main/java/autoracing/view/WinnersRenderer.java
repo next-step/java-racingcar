@@ -8,19 +8,17 @@ import java.util.stream.Collectors;
 public class WinnersRenderer {
     private static final String DEFAULT_DELIMITER = ", ";
 
-    private List<Car> winners;
     private CharSequence delimiter;
 
-    public WinnersRenderer(List<Car> winners, CharSequence delimiter) {
-        this.winners = winners;
+    public WinnersRenderer(CharSequence delimiter) {
         this.delimiter = delimiter;
     }
 
-    public WinnersRenderer(List<Car> winners) {
-        this(winners, DEFAULT_DELIMITER);
+    public WinnersRenderer() {
+        this(DEFAULT_DELIMITER);
     }
 
-    public String render() {
+    public String render(List<Car> winners) {
         return winners.stream().map(Car::getName).collect(Collectors.joining(delimiter));
     }
 }

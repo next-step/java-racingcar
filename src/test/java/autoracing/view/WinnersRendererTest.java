@@ -41,8 +41,8 @@ public class WinnersRendererTest {
                 "McLaren");
 
         RacingGame game = new RacingGame(1, merge(winners, losers));
-        WinnersRenderer renderer = new WinnersRenderer(game.getWinners(), ",");
+        WinnersRenderer renderer = new WinnersRenderer(",");
 
-        assertThat(renderer.render()).isEqualTo("Ford,Renault");
+        assertThat(renderer.render(game.getWinners())).isEqualTo("Ford,Renault");
     }
 }
