@@ -1,6 +1,8 @@
 package autoracing.view;
 
 import autoracing.domain.Car;
+import autoracing.domain.RacingGame;
+import autoracing.domain.RacingRule;
 
 import java.io.InputStream;
 import java.util.Arrays;
@@ -18,6 +20,13 @@ public class InputView {
     public InputView(List<String> carNames, int totalRounds) {
         this.carNames = carNames;
         this.totalRounds = totalRounds;
+    }
+
+    public static RacingGame createFromConsole(RacingRule rule) {
+        InputView inputView = InputView.takeInput(System.in);
+        RacingGame newGame = new RacingGame(inputView.getTotalRounds(), inputView.getCars());
+        newGame.setRule(rule);
+        return newGame;
     }
 
     public static InputView takeInput(InputStream inputStream) {

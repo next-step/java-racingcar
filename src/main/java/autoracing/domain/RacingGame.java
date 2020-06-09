@@ -1,6 +1,5 @@
 package autoracing.domain;
 
-import autoracing.view.InputView;
 import autoracing.view.ResultView;
 
 import java.util.List;
@@ -27,13 +26,6 @@ public class RacingGame {
 
         this.totalRounds = totalRounds;
         this.participants = participants;
-    }
-
-    public static RacingGame createFromConsole(RacingRule rule) {
-        InputView inputView = InputView.takeInput(System.in);
-        RacingGame newGame = new RacingGame(inputView.getTotalRounds(), inputView.getCars());
-        newGame.setRule(rule);
-        return newGame;
     }
 
     public void setRule(RacingRule rule) {
