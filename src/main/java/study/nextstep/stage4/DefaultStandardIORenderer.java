@@ -6,7 +6,8 @@ public class DefaultStandardIORenderer implements Renderer{
     @Override
     public void render(String[] names, GameStatus status) {
         for (int i = 0; i < names.length; i++) {
-            System.out.printf("%s : %s%n", names[i], POSITION_RENDER_CHARACTER.repeat(status.getPosition(i)));
+            System.out.printf("%s : %s%n", names[i],
+                    POSITION_RENDER_CHARACTER.repeat(status.getPosition(i).getValue()));
         }
         System.out.println();
     }
