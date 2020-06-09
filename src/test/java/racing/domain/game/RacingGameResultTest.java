@@ -20,7 +20,7 @@ public class RacingGameResultTest {
     void setup() {
         winnerList = new ArrayList<>();
 
-        RacingCars racingCars = new RacingCars("pobi,crong,honux");
+        racingCars = new RacingCars("pobi,crong,honux");
 
         racingCars.getCars().get(0).move(new TestCarForwardBehavior());
         racingCars.getCars().get(0).move(new TestCarForwardBehavior());
