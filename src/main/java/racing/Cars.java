@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
-    private List<Car> carList;
+    private List<Car> cars;
     private int[] carPositions;
     private int maxPosition = 0;
 
@@ -17,34 +17,34 @@ public class Cars {
 
     public Cars(String[] carNameList, int[] positionList) {
 
-        carList = new ArrayList<>();
+        cars = new ArrayList<>();
         carPositions = new int[carNameList.length];
 
         for (int i = 0; i < carNameList.length; i++) {
-            this.carList.add(new Car(carNameList[i], positionList[i]));
+            this.cars.add(new Car(carNameList[i], positionList[i]));
             carPositions[i] = positionList[i];
         }
     }
 
     public void playGame(Dice dice) {
 
-        for (int i = 0; i < carList.size(); i++) {
-            Car car = carList.get(i);
+        for (int i = 0; i < cars.size(); i++) {
+            Car car = cars.get(i);
             car.move(dice.makeNumber());
             carPositions[i] = car.getPosition();
         }
 
     }
 
-    public List<Car> getCarList() {
-        return this.carList;
+    public List<Car> getCars() {
+        return this.cars;
     }
 
     public List<String> getWinner() {
 
         getMaxPostion();
 
-        return makeWinnerList(carList);
+        return makeWinnerList(cars);
     }
 
     private void getMaxPostion() {
