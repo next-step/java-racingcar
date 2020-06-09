@@ -50,7 +50,9 @@ public class Cars {
     }
 
     private List<String> makeWinnerList(List<Car> inputCars) {
-        return inputCars.stream().filter(car -> car.isSamePosition(maxPosition))
-                .map(car -> car.getCarName()).collect(Collectors.toList());
+        return inputCars.stream()
+                .filter(car -> car.isSamePosition(maxPosition))
+                .map(car -> car.getCarName())
+                .collect(Collectors.toList());
     }
 }
