@@ -7,3 +7,9 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 구현할 기능 목록
+* UI 로직(InputView, ResultView 클래스)
+* 랜덤 값 생성 메서드
+* 자동차 도메인
+* 전체 게임 횟수/자동차 상태 관리 로직(RacingGame 클래스)
