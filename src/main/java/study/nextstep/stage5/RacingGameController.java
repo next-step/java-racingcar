@@ -7,19 +7,16 @@ import study.nextstep.stage5.view.Renderer;
 import java.util.Random;
 
 public class RacingGameController {
-    private String[] names;
     private GameStatus status;
 
     public RacingGameController(InputView view){
-        names = view.getNames();
-
-        status = new GameStatus(names.length, view.getCount());
+        status = new GameStatus(view.getNames(), view.getCount());
     }
 
     public GameStatus run(Renderer renderer, Random randomModule) {
         renderer.renderFirstStatus(status);
         while (status.totalTurn(randomModule)) {
-            renderer.render(names, status);
+            renderer.render(status);
         }
         return status;
     }

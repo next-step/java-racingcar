@@ -1,16 +1,17 @@
 package study.nextstep.stage5.domain;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-public class GameStatus {
+public class GameStatus implements Iterable<Position>{
     private List<Position> status;
     private int remainingTotalTurn;
 
-    public GameStatus(int size, int totalTurn){
-        if (size <= 0) {
+    public GameStatus(String[] names, int totalTurn){
+        if (names == null || names.length <= 0) {
             throw new IllegalArgumentException("인원수가 잘못되었습니다");
         }
         if (totalTurn <= 0) {
@@ -18,8 +19,8 @@ public class GameStatus {
         }
 
         status = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            status.add(new Position());
+        for (String name : names) {
+            status.add(new Position(name));
         }
         remainingTotalTurn = totalTurn;
     }
@@ -43,29 +44,32 @@ public class GameStatus {
         return status.get(pos);
     }
 
-    public ArrayList<Integer> getWinnerPosition() {
+    public ArrayList<Position> getWinnerPosition() {
         if (remainingTotalTurn > 0) {
             throw new IllegalArgumentException("아직 게임이 끝나지 않았습니다");
         }
 
-        int winnerMove = 0;
+        Position winner = null;
         for (Position stat : status) {
-            if (winnerMove < stat.getValue()) {
-                winnerMove = stat.getValue();
-            }
+            winner = stat.compareWinner(winner);
         }
 
-        ArrayList<Integer> winnerIndexes = new ArrayList<>();
-        for (int i = 0; i < status.size(); i++) {
-            if (status.get(i).getValue() == winnerMove) {
-                winnerIndexes.add(i);
+        ArrayList<Position> winnerIndexes = new ArrayList<>();
+        for (Position stat : status) {
+            if (stat.isWinner(winner)) {
+                winnerIndexes.add(stat);
             }
         }
         return winnerIndexes;
     }
 
-    public String getWinnerNames(String[] names) {
-        return getWinnerPosition().stream().map(pos -> names[pos])
+    public String getWinnerNames() {
+        return getWinnerPosition().stream().map(pos -> pos.getName())
                 .collect(Collectors.joining(", "));
+    }
+
+    @Override
+    public Iterator<Position> iterator() {
+        return (Iterator<Position>) status;
     }
 }
