@@ -8,12 +8,11 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ResultView {
-
     private static final int DEFAULT_TRACE_DISTANCE = 1;
+
     private final RacingGame racingGame;
     private final CharSequence traceSign;
     private final String resultTitle;
-
 
     public ResultView(RacingGame racingGame, CharSequence traceSign, String resultTitle) {
         this.racingGame = racingGame;
