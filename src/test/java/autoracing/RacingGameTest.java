@@ -2,10 +2,12 @@ package autoracing;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -51,30 +53,53 @@ public class RacingGameTest {
 
     @Test
     public void shouldReturnedParticipantsThatHasDrivenLongestDistance() {
-        List<Car> cars = makeCars("Mercedes", "Ferrari", "Lamborghini", "McLaren", "Renault", "Ford");
-        RacingRule alwaysGo = () -> true;
-        RacingRule neverGo = () -> false;
-        setRuleToCars(cars, alwaysGo, 0, 2, 4);
-        setRuleToCars(cars, neverGo, 1, 3, 5);
-        int totalRounds = 6;
+        int totalRounds = 4;
+        RacingRule mockRule = () -> false;
+        List<Location> history4Distance = new ArrayList<>(Arrays.asList(
+                Location.STARTING_LINE,
+                new Location(1),
+                new Location(2),
+                new Location(3),
+                new Location(4)
+        ));
+        List<Location> history3Distance = new ArrayList<>(Arrays.asList(
+                Location.STARTING_LINE,
+                new Location(1),
+                new Location(2),
+                new Location(3),
+                new Location(3)
+        ));
 
-        RacingGame game = new RacingGame(totalRounds, cars);
+        List<Car> expectedWinners = makeCarsWithHistory(mockRule, history4Distance, "Winner1", "Winner2");
+        List<Car> expectedLosers = makeCarsWithHistory(mockRule, history3Distance, "Loser1", "Loser1");
+
+        RacingGame game = new RacingGame(totalRounds, merge(expectedWinners, expectedLosers));
         game.start();
         List<Car> winners = game.getWinners();
 
-        assertThat(winners).containsExactly(cars.get(0), cars.get(2), cars.get(4));
+        assertThat(winners).containsAll(expectedWinners);
         assertThat(winners.stream().map(winner -> winner.getLocation(totalRounds)))
                 .extracting("distance")
-                .containsOnly(totalRounds);
+                .containsOnly(4);
     }
 
     private List<Car> makeCars(String... carNames) {
         return Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
     }
 
+    private List<Car> makeCarsWithHistory(RacingRule rule, List<Location> history, String... carNames) {
+        return Arrays.stream(carNames)
+                .map(name -> Car.createWithHistory(name, rule, history))
+                .collect(Collectors.toList());
+    }
+
     private void setRuleToCars(List<Car> cars, RacingRule rule, int... carNums) {
         Arrays.stream(carNums).forEach(num -> {
             cars.get(num).setRule(rule);
         });
+    }
+
+    private List<Car> merge(List<Car> a, List<Car> b) {
+        return Stream.concat(a.stream(), b.stream()).collect(Collectors.toList());
     }
 }

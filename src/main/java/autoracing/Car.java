@@ -13,15 +13,23 @@ public class Car {
     private final List<Location> history;
     private RacingRule rule;
 
-    public Car(String name, RacingRule rule) {
+    private Car(String name, RacingRule rule, List<Location> history) {
         this.name = name;
-        this.history = new ArrayList<>();
-        this.history.add(Location.STARTING_LINE);
         this.rule = rule;
+        this.history = history;
+    }
+
+    public Car(String name, RacingRule rule) {
+        this(name, rule, new ArrayList<>());
+        this.history.add(Location.STARTING_LINE);
     }
 
     public Car(String name) {
         this(name, NO_RULE);
+    }
+
+    public static Car createWithHistory(String name, RacingRule rule, List<Location> history) {
+        return new Car(name, rule, history);
     }
 
     public void race() {
