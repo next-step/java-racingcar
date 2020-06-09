@@ -6,9 +6,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
+import static autoracing.domain.CarTest.makeCars;
+import static autoracing.domain.CarTest.makeCarsWithHistory;
+import static autoracing.domain.CarTest.merge;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.assertThatNullPointerException;
@@ -81,25 +82,5 @@ public class RacingGameTest {
         assertThat(winners.stream().map(winner -> winner.getLocation(totalRounds)))
                 .extracting("distance")
                 .containsOnly(4);
-    }
-
-    private List<Car> makeCars(String... carNames) {
-        return Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
-    }
-
-    private List<Car> makeCarsWithHistory(RacingRule rule, List<Location> history, String... carNames) {
-        return Arrays.stream(carNames)
-                .map(name -> Car.createWithHistory(name, rule, history))
-                .collect(Collectors.toList());
-    }
-
-    private void setRuleToCars(List<Car> cars, RacingRule rule, int... carNums) {
-        Arrays.stream(carNums).forEach(num -> {
-            cars.get(num).setRule(rule);
-        });
-    }
-
-    private List<Car> merge(List<Car> a, List<Car> b) {
-        return Stream.concat(a.stream(), b.stream()).collect(Collectors.toList());
     }
 }
