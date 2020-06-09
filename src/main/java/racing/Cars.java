@@ -1,15 +1,14 @@
 package racing;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
 
     private List<Car> cars;
-    private int[] carPositions;
     private int maxPosition = 0;
-
 
     public Cars(String[] carNames) {
         this(carNames, new int[carNames.length]);
@@ -17,12 +16,12 @@ public class Cars {
 
     public Cars(String[] carNames, int[] positions) {
 
+        ParserUtils.checkEmptyOrBlank(carNames);
+
         cars = new ArrayList<>();
-        carPositions = new int[carNames.length];
 
         for (int i = 0; i < carNames.length; i++) {
             this.cars.add(new Car(carNames[i], positions[i]));
-            carPositions[i] = positions[i];
         }
     }
 
@@ -31,7 +30,6 @@ public class Cars {
         for (int i = 0; i < cars.size(); i++) {
             Car car = cars.get(i);
             car.move(dice.makeNumber());
-            carPositions[i] = car.getPosition();
         }
 
     }
@@ -48,11 +46,7 @@ public class Cars {
     }
 
     private void getMaxPostion() {
-
-        for (Integer position : carPositions) {
-            maxPosition = Integer.max(maxPosition, position);
-        }
-
+        maxPosition = Collections.max(cars).getPosition();
     }
 
     private List<String> makeWinnerList(List<Car> inputCars) {

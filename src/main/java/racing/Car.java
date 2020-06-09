@@ -1,6 +1,6 @@
 package racing;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
     private final static int MINIMUM_CONDITIONS = 4;
     private int position;
@@ -22,12 +22,6 @@ public class Car {
 
         this.carName = inputCarName;
         this.position = position;
-    }
-
-    private void decidePosition(boolean greaterCheck) {
-        if (greaterCheck) {
-            this.position += 1;
-        }
     }
 
     public int getPosition() {
@@ -52,4 +46,8 @@ public class Car {
         return position == inputposition;
     }
 
+    @Override
+    public int compareTo(Car car) {
+        return this.position - car.getPosition();
+    }
 }

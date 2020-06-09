@@ -24,7 +24,7 @@ class CarsTest {
     public void playGameLess() {
 
         cars.playGame(new DiceWithInput(3));
-        List<Car> carList = cars.getCarList();
+        List<Car> carList = cars.getCars();
 
         List<Integer> result = new ArrayList<>();
         for (Car car : carList) {
@@ -37,7 +37,7 @@ class CarsTest {
     @Test
     public void playGameGreater() {
         cars.playGame(new DiceWithInput(4));
-        List<Car> carList = cars.getCarList();
+        List<Car> carList = cars.getCars();
         List<Integer> result = new ArrayList<>();
         for (Car car : carList) {
             result.add(car.getPosition());
@@ -45,15 +45,15 @@ class CarsTest {
         assertThat(result).contains(1, 1, 1);
     }
 
-    @DisplayName(" 승자가 중복일때 우승자 정보 반환")
+    @DisplayName("승자가 중복일때 우승자 정보 반환")
     @Test
     public void getWinnerMulti() {
 
-        int[] positionList = {1,1,3};
+        int[] positionList = {1,3,3};
         Cars cars = new Cars(nameList, positionList);
 
         List<String> winner = cars.getWinner();
-        assertThat(winner).contains("RAM");
+        assertThat(winner).contains("SOO","RAM");
     }
 
     @DisplayName("승자가 한명일때 우승자 정보 반환")
