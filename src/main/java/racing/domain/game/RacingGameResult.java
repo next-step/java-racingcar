@@ -26,8 +26,8 @@ public class RacingGameResult {
         RacingGame racingGame = new RacingGame(racingCars);
         List<RacingCars> racingCarsList = racingGame.race(times);
 
-        for (int i = 0; i < racingCarsList.size(); i++) {
-            ResultView.printResult(racingCars.getCars());
+        for(RacingCars cars:racingCarsList){
+            ResultView.printResult(cars.getCars());
         }
     }
 
