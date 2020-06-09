@@ -45,12 +45,13 @@ public class CarTest {
                 .isEqualTo(Location.STARTING_LINE);
     }
 
+
     @ParameterizedTest
     @CsvSource({"true,1", "false,0"})
     public void shouldRecordWhenRacing(boolean driveOrNot, int expectedDistance) {
         Car car = new Car("Neo", () -> driveOrNot);
         car.race();
-        assertThat(getFirstRoundLocation(car)).isEqualToComparingFieldByField(new Location(expectedDistance, 1));
+        assertThat(getFirstRoundLocation(car)).isEqualToComparingFieldByField(new Location(expectedDistance));
     }
 
     @ParameterizedTest
@@ -59,7 +60,7 @@ public class CarTest {
         Car car = new Car("Neo");
         car.setRule(() -> driveOrNot);
         car.race();
-        assertThat(getFirstRoundLocation(car)).isEqualToComparingFieldByField(new Location(expectedDistance, 1));
+        assertThat(getFirstRoundLocation(car)).isEqualToComparingFieldByField(new Location(expectedDistance));
     }
 
     @ParameterizedTest
