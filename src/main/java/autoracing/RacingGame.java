@@ -52,9 +52,9 @@ public class RacingGame {
     }
 
     private int getWinnerDistance() {
-        Car oneOfWinner = participants.stream()
-                .max(Comparator.comparingInt(a -> a.getLocation(totalRounds).getDistance()))
+        return participants.stream()
+                .map(car -> car.getLocation(totalRounds).getDistance())
+                .max(Integer::compareTo)
                 .orElseThrow(() -> new IllegalArgumentException(""));
-        return oneOfWinner.getLocation(totalRounds).getDistance();
     }
 }
