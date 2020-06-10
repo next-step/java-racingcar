@@ -1,7 +1,5 @@
 package autoracing.domain;
 
-import autoracing.view.ResultView;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
