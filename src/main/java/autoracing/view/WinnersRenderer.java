@@ -3,19 +3,20 @@ package autoracing.view;
 import autoracing.domain.Car;
 
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class WinnersRenderer {
-    private static final String DEFAULT_DELIMITER = ", ";
+    private static final Pattern PHRASE_FORMAT_REGEX = Pattern.compile("^(?:(?!%s).)*%s(?!.*%s).*$");
+    private static final String BAD_PHRASE_FORMAT = "the phrase format includes '%s' only once.";
 
-    private CharSequence delimiter;
+    private final CharSequence delimiter;
 
-    public WinnersRenderer(CharSequence delimiter) {
+    public WinnersRenderer(String phraseFormat, CharSequence delimiter) {
+        if (!PHRASE_FORMAT_REGEX.matcher(phraseFormat).matches()) {
+            throw new IllegalArgumentException(BAD_PHRASE_FORMAT);
+        }
         this.delimiter = delimiter;
-    }
-
-    public WinnersRenderer() {
-        this(DEFAULT_DELIMITER);
     }
 
     public String render(List<Car> winners) {

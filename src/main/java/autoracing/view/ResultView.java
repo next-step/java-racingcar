@@ -16,10 +16,9 @@ public class ResultView {
     private int maxNameSize = NOT_INITIALIZED;
 
     public static class Builder {
-        private static final String DEFAULT_CAR_SIGN = "-";
-        private static final String DEFAULT_TRACE_SIGN = "-";
-        private static final String DEFAULT_STARTING_LINE = " : ";
         private static final String DEFAULT_RESULT_TITLE = "실행 결과";
+        private static final WinnersRenderer DEFAULT_WINNERS_RENDERER = new WinnersRenderer("%s가 최종 우승했습니다.", ", ");
+        private static final CarTrackRenderer DEFAULT_CAR_TRACK_RENDERER = new CarTrackRenderer("-", " : ", "-");
 
         private RacingGame racingGame;
         private String resultTitle;
@@ -29,8 +28,8 @@ public class ResultView {
         public Builder(RacingGame racingGame) {
             this.racingGame = racingGame;
             this.resultTitle = DEFAULT_RESULT_TITLE;
-            this.winnerRenderer = new WinnersRenderer();
-            this.carTrackRenderer = new CarTrackRenderer(DEFAULT_CAR_SIGN, DEFAULT_STARTING_LINE, DEFAULT_TRACE_SIGN);
+            this.winnerRenderer = DEFAULT_WINNERS_RENDERER;
+            this.carTrackRenderer = DEFAULT_CAR_TRACK_RENDERER;
         }
 
         public Builder racingGame(RacingGame racingGame) {
