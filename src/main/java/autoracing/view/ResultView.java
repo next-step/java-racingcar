@@ -76,6 +76,13 @@ public class ResultView {
         }
     }
 
+    private void calculateMaxNameSize() {
+        this.maxNameSize = racingGame.getParticipants().stream()
+                .map(participant -> participant.getName().length())
+                .max(Integer::compareTo)
+                .orElseThrow(() -> new IllegalArgumentException("participants must not be empty."));
+    }
+
     private void print() {
         System.out.println(resultTitle);
         printRace();
@@ -97,13 +104,6 @@ public class ResultView {
 
     private String renderCarTrack(Car car, int round) {
         return carTrackRenderer.render(car, round, maxNameSize);
-    }
-
-    private void calculateMaxNameSize() {
-        this.maxNameSize = racingGame.getParticipants().stream()
-                .map(participant -> participant.getName().length())
-                .max(Integer::compareTo)
-                .orElseThrow(() -> new IllegalArgumentException("participants must not be empty."));
     }
 
     private String renderAnnouncingWinners() {
