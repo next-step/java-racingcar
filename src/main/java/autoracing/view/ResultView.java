@@ -6,6 +6,8 @@ import autoracing.domain.RacingGame;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static autoracing.domain.AssertUtils.assertNotNull;
+
 public class ResultView {
     private static final int NOT_INITIALIZED = -1;
 
@@ -20,12 +22,18 @@ public class ResultView {
         private static final WinnersRenderer DEFAULT_WINNERS_RENDERER = new WinnersRenderer("%s가 최종 우승했습니다.", ", ");
         private static final CarTrackRenderer DEFAULT_CAR_TRACK_RENDERER = new CarTrackRenderer("-", " : ", "-");
 
+        private static final String NULL_RACING_GAME = "racingGame must be not null.";
+        private static final String NULL_RESULT_TITLE = "resultTitle must be not null.";
+        private static final String NULL_WINNERS_RENDERER = "winnersRenderer must be not null.";
+        private static final String NULL_CAR_TRACK_RENDERER = "carTrackRenderer must be not null.";
+
         private final RacingGame racingGame;
         private String resultTitle;
         private WinnersRenderer winnerRenderer;
         private CarTrackRenderer carTrackRenderer;
 
         public Builder(RacingGame racingGame) {
+            assertNotNull(racingGame, NULL_RACING_GAME);
             this.racingGame = racingGame;
             this.resultTitle = DEFAULT_RESULT_TITLE;
             this.winnerRenderer = DEFAULT_WINNERS_RENDERER;
@@ -33,16 +41,19 @@ public class ResultView {
         }
 
         public Builder resultTitle(String resultTitle) {
+            assertNotNull(resultTitle, NULL_RESULT_TITLE);
             this.resultTitle = resultTitle;
             return this;
         }
 
         public Builder winnersRenderer(WinnersRenderer winnersRenderer) {
+            assertNotNull(winnersRenderer, NULL_WINNERS_RENDERER);
             this.winnerRenderer = winnersRenderer;
             return this;
         }
 
         public Builder carTrackRenderer(CarTrackRenderer carTrackRenderer) {
+            assertNotNull(carTrackRenderer, NULL_CAR_TRACK_RENDERER);
             this.carTrackRenderer = carTrackRenderer;
             return this;
         }
