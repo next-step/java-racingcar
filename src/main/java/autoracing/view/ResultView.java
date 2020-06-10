@@ -70,7 +70,7 @@ public class ResultView {
             calculateMaxNameSize();
         }
         System.out.println(resultTitle);
-        IntStream.range(0, racingGame.getTotalRounds())
+        IntStream.rangeClosed(0, racingGame.getTotalRounds())
                 .forEach(round -> System.out.println(renderRound(round)));
         System.out.println(renderAnnouncingWinners());
     }
