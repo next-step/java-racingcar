@@ -28,9 +28,9 @@ public class ResultView {
     }
 
     public static void printResult(List<Car> cars) {
-        for (int i = 0; i < cars.size(); i++) {
-            printCarName(cars.get(i).getCarName());
-            printPosition(cars.get(i).getPosition());
+        for(Car car : cars){
+            printCarName(car.getCarName());
+            printPosition(car.getPosition());
         }
         System.out.println();
     }
