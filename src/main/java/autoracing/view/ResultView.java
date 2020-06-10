@@ -20,7 +20,7 @@ public class ResultView {
         private static final WinnersRenderer DEFAULT_WINNERS_RENDERER = new WinnersRenderer("%s가 최종 우승했습니다.", ", ");
         private static final CarTrackRenderer DEFAULT_CAR_TRACK_RENDERER = new CarTrackRenderer("-", " : ", "-");
 
-        private RacingGame racingGame;
+        private final RacingGame racingGame;
         private String resultTitle;
         private WinnersRenderer winnerRenderer;
         private CarTrackRenderer carTrackRenderer;
@@ -30,11 +30,6 @@ public class ResultView {
             this.resultTitle = DEFAULT_RESULT_TITLE;
             this.winnerRenderer = DEFAULT_WINNERS_RENDERER;
             this.carTrackRenderer = DEFAULT_CAR_TRACK_RENDERER;
-        }
-
-        public Builder racingGame(RacingGame racingGame) {
-            this.racingGame = racingGame;
-            return this;
         }
 
         public Builder resultTitle(String resultTitle) {
