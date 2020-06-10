@@ -1,4 +1,7 @@
-package racing;
+package racing.domain;
+
+import racing.utils.Dice;
+import racing.utils.Valid;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,10 +19,7 @@ public class Cars {
 
     public Cars(String[] carNames, int[] positions) {
 
-        Valid.positionsNullCheck(positions);
-        Valid.carNamesNullCheck(carNames);
-        Valid.sizeCompare(carNames, positions);
-
+        Valid.sizeCompare(carNames,positions);
         cars = new ArrayList<>();
 
         for (int i = 0; i < carNames.length; i++) {

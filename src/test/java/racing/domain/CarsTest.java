@@ -1,8 +1,9 @@
-package racing;
+package racing.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.utils.DiceWithInput;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,12 +27,10 @@ class CarsTest {
 
         cars.playGame(new DiceWithInput(3));
         List<Car> carList = cars.getCars();
-
-        List<Integer> result = new ArrayList<>();
         for (Car car : carList) {
-            result.add(car.getPosition());
+            assertThat(car.getPosition()).isEqualTo(0);
         }
-        assertThat(result).contains(0, 0, 0);
+
     }
 
     @DisplayName("DiceWithInput을 사용, 4이상일때")
@@ -39,11 +38,9 @@ class CarsTest {
     public void playGameGreater() {
         cars.playGame(new DiceWithInput(4));
         List<Car> carList = cars.getCars();
-        List<Integer> result = new ArrayList<>();
         for (Car car : carList) {
-            result.add(car.getPosition());
+            assertThat(car.getPosition()).isEqualTo(1);
         }
-        assertThat(result).contains(1, 1, 1);
     }
 
     @DisplayName("승자가 중복일때 우승자 정보 반환")
@@ -70,17 +67,26 @@ class CarsTest {
 
     @DisplayName("position이 null값일때 에러 발생")
     @Test
-    public void getWinnerWithPositionNull() {
+    public void constructorWithPositionNull() {
 
         assertThatIllegalArgumentException().isThrownBy(() -> new Cars(nameList, null));
     }
 
     @DisplayName("name이 null값일때 에러 발생")
     @Test
-    public void getWinnerWithNamesNull() {
+    public void constructorWithNamesNull() {
 
         int[] positionList = {1,2,3};
         assertThatIllegalArgumentException().isThrownBy(() -> new Cars(null, positionList));
+    }
+
+    @DisplayName("namelist배열과 position배열 사이즈가 다를때 에러발생")
+    @Test
+    public void constructorWithlistSizeNotEqual() {
+
+        int[] threeSizePositons = {1,2,3};
+        String[] twoSizeNames= {"a","b"};
+        assertThatIllegalArgumentException().isThrownBy(() -> new Cars(twoSizeNames, threeSizePositons));
     }
 
 }

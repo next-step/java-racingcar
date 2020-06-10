@@ -23,3 +23,8 @@
 * 자동차 정보를 담을 Car Class 
 * 여러대의 Car를 담고있을 Collection인 Cars 일급컬렉션
 
+##step5 MVC 리팩토링
+### 요구사항
+* 핵심 비지니스 로직을 가지는 객체를 domain패키지, UI관련 객체를 view패키지에 구현
+* MVC패턴 기반으로 리펙토링한다.
+* View패키지의 객체가 domain패키지 객체에 의존할 수 있지만, domain 패키지의 객체는 view패키지에 의존하지 않는다.

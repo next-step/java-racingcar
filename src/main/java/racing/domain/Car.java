@@ -1,4 +1,6 @@
-package racing;
+package racing.domain;
+
+import racing.utils.Valid;
 
 public class Car implements Comparable<Car> {
 

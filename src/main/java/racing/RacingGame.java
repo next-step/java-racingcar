@@ -1,5 +1,12 @@
 package racing;
 
+import racing.domain.Cars;
+import racing.utils.Dice;
+import racing.utils.DiceWithRandom;
+import racing.utils.Valid;
+import racing.view.InputView;
+import racing.view.OutputView;
+
 import java.util.Scanner;
 
 public class RacingGame {
@@ -8,18 +15,13 @@ public class RacingGame {
 
         InputView inputView = new InputView(new Scanner(System.in));
         inputView.runUserInput();
-
-        String[] names = inputView.getNames();
-        Valid.checkEmptyOrBlank(names);
-
         inputView.runTimeInput();
         int inputTime = inputView.getInputTime();
         Valid.timeGreaterThenZero(inputTime);
 
-        Cars initCars = new Cars(names);
-        OutputView outputView = new OutputView();
+        Cars initCars = new Cars(inputView.getNames());
         Dice dice = new DiceWithRandom();
-
+        OutputView outputView = new OutputView();
         for (int time = 0; time < inputTime; time++) {
             initCars.playGame(dice);
             outputView.resultPrint(initCars.getCars());

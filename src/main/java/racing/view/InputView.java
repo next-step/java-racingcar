@@ -1,4 +1,6 @@
-package racing;
+package racing.view;
+
+import racing.utils.ParserUtils;
 
 import java.util.Scanner;
 
