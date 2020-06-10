@@ -40,7 +40,7 @@ public class Valid {
             throw new IllegalArgumentException("position이 null입니다.");
         }
 
-        if(carNames == null){
+        if (carNames == null) {
             throw new IllegalArgumentException("carName이 null입니다.");
         }
 

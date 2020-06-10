@@ -58,7 +58,7 @@ class CarTest {
     @ParameterizedTest
     @MethodSource
     public void isSamePosition(int input, boolean result) {
-        Car customCar = new Car("Custom",5);
+        Car customCar = new Car("Custom", 5);
         boolean checkResult = customCar.isSamePosition(input);
         assertThat(checkResult).isEqualTo(result);
     }

@@ -2,5 +2,5 @@ package racing.utils;
 
 public interface Dice {
 
-     int makeNumber();
+    int makeNumber();
 }

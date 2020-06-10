@@ -19,7 +19,7 @@ public class Cars {
 
     public Cars(String[] carNames, int[] positions) {
 
-        Valid.sizeCompare(carNames,positions);
+        Valid.sizeCompare(carNames, positions);
         cars = new ArrayList<>();
 
         for (int i = 0; i < carNames.length; i++) {

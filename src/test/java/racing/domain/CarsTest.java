@@ -47,18 +47,18 @@ class CarsTest {
     @Test
     public void getWinnerMulti() {
 
-        int[] positionList = {1,3,3};
+        int[] positionList = {1, 3, 3};
         Cars cars = new Cars(nameList, positionList);
 
         List<String> winner = cars.getWinner();
-        assertThat(winner).contains("SOO","RAM");
+        assertThat(winner).contains("SOO", "RAM");
     }
 
     @DisplayName("승자가 한명일때 우승자 정보 반환")
     @Test
     public void getWinnerOnlyOne() {
 
-        int[] positionList = {1,3,2};
+        int[] positionList = {1, 3, 2};
 
         Cars cars = new Cars(nameList, positionList);
         List<String> winner = cars.getWinner();
@@ -76,7 +76,7 @@ class CarsTest {
     @Test
     public void constructorWithNamesNull() {
 
-        int[] positionList = {1,2,3};
+        int[] positionList = {1, 2, 3};
         assertThatIllegalArgumentException().isThrownBy(() -> new Cars(null, positionList));
     }
 
@@ -84,8 +84,8 @@ class CarsTest {
     @Test
     public void constructorWithlistSizeNotEqual() {
 
-        int[] threeSizePositons = {1,2,3};
-        String[] twoSizeNames= {"a","b"};
+        int[] threeSizePositons = {1, 2, 3};
+        String[] twoSizeNames = {"a", "b"};
         assertThatIllegalArgumentException().isThrownBy(() -> new Cars(twoSizeNames, threeSizePositons));
     }
 

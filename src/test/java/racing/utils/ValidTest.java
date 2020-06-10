@@ -57,7 +57,7 @@ class ValidTest {
     @DisplayName("carNames가 null일때")
     @Test
     void sizeCompareWithCarNamesIsNull() {
-        int[] positions= {1,2,3};
+        int[] positions = {1, 2, 3};
         assertThatIllegalArgumentException().isThrownBy(() -> {
             Valid.sizeCompare(null, positions);
         });
@@ -66,7 +66,7 @@ class ValidTest {
     @DisplayName("postions가 null일때")
     @Test
     void sizeCompareWithPositionIsNull() {
-        String[] names= {"A","B","C"};
+        String[] names = {"A", "B", "C"};
         assertThatIllegalArgumentException().isThrownBy(() -> {
             Valid.sizeCompare(names, null);
         });
@@ -75,8 +75,8 @@ class ValidTest {
     @DisplayName("postions와 names사이즈가 일치하지 않을때")
     @Test
     void sizeCompareNamesAndPostionsSizeNotEqual() {
-        String[] names= {"A","B","C"};
-        int[] positions = {1,2};
+        String[] names = {"A", "B", "C"};
+        int[] positions = {1, 2};
         assertThatIllegalArgumentException().isThrownBy(() -> {
             Valid.sizeCompare(names, positions);
         });
@@ -86,8 +86,8 @@ class ValidTest {
     @Test
     void sizeCompareNamesAndPostionsSizeEqual() {
 
-        String[] names= {"A","B","C"};
-        int[] positions = {1,2,3};
+        String[] names = {"A", "B", "C"};
+        int[] positions = {1, 2, 3};
 
         Valid.sizeCompare(names, positions);
 
