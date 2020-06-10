@@ -80,7 +80,7 @@ public class ResultView {
     private void print() {
         System.out.println(resultTitle);
         printRace();
-        System.out.println(renderAnnouncingWinners());
+        printAnnouncingWinners();
     }
 
     private void printRace() {
@@ -100,11 +100,11 @@ public class ResultView {
         return carTrackRenderer.render(car, round, maxNameSize);
     }
 
-    private String renderAnnouncingWinners() {
-        return String.format("%s가 최종 우승했습니다.", renderWinners());
+    private void printAnnouncingWinners() {
+        System.out.println(renderAnnouncingWinners());
     }
 
-    private String renderWinners() {
+    private String renderAnnouncingWinners() {
         return winnersRenderer.render(racingGame.getWinners());
     }
 }
