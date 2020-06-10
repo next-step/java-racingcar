@@ -3,16 +3,42 @@ package autoracing.view;
 import autoracing.domain.Car;
 
 import java.util.Collections;
+import java.util.Objects;
+
+import static autoracing.domain.AssertUtils.assertNotNull;
 
 public class CarTrackRenderer {
-    private String carSign;
-    private String startingLine;
-    private String traceSign;
+    private static final String NULL_CAR_SIGN = "carSign must be not null.";
+    private static final String NULL_STARTING_LINE = "startingLine must be not null.";
+    private static final String NULL_TRACE_SIGN = "traceSign must be not null.";
+
+    private final String carSign;
+    private final String startingLine;
+    private final String traceSign;
 
     public CarTrackRenderer(String carSign, String startingLine, String traceSign) {
+        assertNotNull(carSign, NULL_CAR_SIGN);
+        assertNotNull(startingLine, NULL_STARTING_LINE);
+        assertNotNull(traceSign, NULL_TRACE_SIGN);
+
         this.carSign = carSign;
         this.startingLine = startingLine;
         this.traceSign = traceSign;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CarTrackRenderer that = (CarTrackRenderer) o;
+        return carSign.equals(that.carSign) &&
+                startingLine.equals(that.startingLine) &&
+                traceSign.equals(that.traceSign);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carSign, startingLine, traceSign);
     }
 
     public String render(Car car, int round, int maxNameSize) {
