@@ -66,20 +66,33 @@ public class ResultView {
     }
 
     public void show() {
+        calculateMaxNameSizeOnlyOnce();
+        print();
+    }
+
+    private void calculateMaxNameSizeOnlyOnce() {
         if (maxNameSize == NOT_INITIALIZED) {
             calculateMaxNameSize();
         }
+    }
+
+    private void print() {
         System.out.println(resultTitle);
-        IntStream.rangeClosed(0, racingGame.getTotalRounds())
-                .forEach(round -> System.out.println(renderRound(round)));
+        printRace();
         System.out.println(renderAnnouncingWinners());
     }
 
-    private String renderRound(int round) {
+    private void printRace() {
+        IntStream.rangeClosed(0, racingGame.getTotalRounds())
+                .forEach(round -> System.out.println(renderRound(round, "\n")));
+
+    }
+
+    private String renderRound(int round, String divider) {
         return racingGame.getParticipants().stream()
                 .map(car -> renderCarTrack(car, round))
                 .collect(Collectors.joining("\n"))
-                + "\n";
+                + divider;
     }
 
     private String renderCarTrack(Car car, int round) {
