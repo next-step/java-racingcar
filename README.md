@@ -53,3 +53,4 @@
 - [x] winner를 구하는 과정을 view와 분리
 - [x] Fuel를 전략 패턴으로 변경
 - [x] demeter 법칙 
+
