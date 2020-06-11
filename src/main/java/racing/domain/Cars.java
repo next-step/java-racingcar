@@ -3,9 +3,7 @@ package racing.domain;
 import racing.utils.Dice;
 import racing.utils.Valid;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -36,18 +34,25 @@ public class Cars {
 
     }
 
-    public List<Car> getCars() {
-        return this.cars;
+    public Map getCars() {
+
+        Map<String,Integer> returnCars =new LinkedHashMap<>();
+
+        for (Car car: this.cars) {
+            returnCars.put(car.getCarName(),car.getPosition());
+        }
+
+        return returnCars;
     }
 
     public List<String> getWinner() {
 
-        getMaxPostion();
+        setMaxPostion();
 
         return makeWinnerList(cars);
     }
 
-    private void getMaxPostion() {
+    private void setMaxPostion() {
         maxPosition = Collections.max(cars).getPosition();
     }
 

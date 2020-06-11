@@ -4,16 +4,19 @@ import racing.domain.Car;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 public class OutputView {
 
     private static String MARK = "-";
 
-    public void resultPrint(List<Car> positions) {
-        for (Car car : positions) {
-            String resultOutputString = makeResultString(car.getPosition(), car.getCarName());
+    public void resultPrint(Map<String,Integer> cars) {
+
+        for (Map.Entry<String, Integer> car: cars.entrySet()) {
+            String resultOutputString = makeResultString(car.getValue(), car.getKey());
             System.out.println(resultOutputString);
         }
+        System.out.println();
     }
 
     private String makeResultString(int times, String carName) {
