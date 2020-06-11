@@ -1,4 +1,4 @@
-package autoracing;
+package autoracing.domain;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -7,12 +7,31 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CarTest {
     private final int NEVER_PLAYED_ROUND_WHEN_CAR_RACED_ONLY_ONCE = 2;
+
+    public static List<Car> makeCars(String... carNames) {
+        return Arrays.stream(carNames).map(Car::new).collect(Collectors.toList());
+    }
+
+    public static List<Car> makeCarsWithHistory(RacingRule rule, List<Location> history, String... carNames) {
+        return Arrays.stream(carNames)
+                .map(name -> Car.createWithHistory(name, rule, history))
+                .collect(Collectors.toList());
+    }
+
+    public static List<Car> merge(List<Car> a, List<Car> b) {
+        return Stream.concat(a.stream(), b.stream()).collect(Collectors.toList());
+    }
 
     private RacingRule rule;
 
@@ -45,12 +64,13 @@ public class CarTest {
                 .isEqualTo(Location.STARTING_LINE);
     }
 
+
     @ParameterizedTest
     @CsvSource({"true,1", "false,0"})
     public void shouldRecordWhenRacing(boolean driveOrNot, int expectedDistance) {
         Car car = new Car("Neo", () -> driveOrNot);
         car.race();
-        assertThat(getFirstRoundLocation(car)).isEqualToComparingFieldByField(new Location(expectedDistance, 1));
+        assertThat(getFirstRoundLocation(car)).isEqualToComparingFieldByField(new Location(expectedDistance));
     }
 
     @ParameterizedTest
@@ -59,7 +79,7 @@ public class CarTest {
         Car car = new Car("Neo");
         car.setRule(() -> driveOrNot);
         car.race();
-        assertThat(getFirstRoundLocation(car)).isEqualToComparingFieldByField(new Location(expectedDistance, 1));
+        assertThat(getFirstRoundLocation(car)).isEqualToComparingFieldByField(new Location(expectedDistance));
     }
 
     @ParameterizedTest

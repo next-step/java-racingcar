@@ -1,4 +1,4 @@
-package autoracing;
+package autoracing.domain;
 
 public class RandomRacingRule implements RacingRule {
     static final String BAD_BOUND = "bound must be greater than zero.";

@@ -1,4 +1,4 @@
-package autoracing;
+package autoracing.domain;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -11,7 +11,6 @@ public class LocationTest {
     public void testStartingLine() {
         Location startingLine = Location.STARTING_LINE;
         assertThat(startingLine.getDistance()).isEqualTo(0);
-        assertThat(startingLine.getRound()).isEqualTo(0);
     }
 
     @Test
@@ -25,7 +24,6 @@ public class LocationTest {
     public void testMove(int movement, int expectingDistance) {
         Location startingLine = Location.STARTING_LINE;
         Location goingForward = startingLine.move(movement);
-        assertThat(goingForward.getRound()).isEqualTo(startingLine.getRound() + 1);
         assertThat(goingForward.getDistance()).isEqualTo(expectingDistance);
     }
 }
