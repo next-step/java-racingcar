@@ -42,18 +42,16 @@ public class Cars {
     }
 
     private List<Car> moveCars(Fuel fuel) {
-        return cars.stream().map(car -> {
-                car.move(fuel);
-                return car;
-            }).collect(Collectors.toList());
+        cars.forEach(car -> car.move(fuel));
+        return cars;
     }
 
     private void validate(String names) {
-        if(names == EMPTY) {
-            throw new IllegalArgumentException(Error.EMPTY);
-        }
         if(names == null) {
             throw new IllegalArgumentException(Error.NULL);
+        }
+        if(names == EMPTY) {
+            throw new IllegalArgumentException(Error.EMPTY);
         }
     }
 
