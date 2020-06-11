@@ -40,7 +40,7 @@ public class Result {
         return (sub, element) -> sub + element.getName() + NAME_SEPARATOR;
     }
 
-    List<Car> getWinners(int maximum) {
+    public List<Car> getWinners(int maximum) {
         return result.stream()
                 .filter(car -> car.getPosition() == maximum)
                 .collect(Collectors.toList());

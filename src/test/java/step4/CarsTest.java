@@ -21,8 +21,8 @@ public class CarsTest {
     @BeforeEach
     void setUp() {
         cars = new Cars("peter,kassie,oak");
-        result = getResult();
         fuel = new MockFuel();
+        result = getResult();
     }
 
     @Test
@@ -32,8 +32,11 @@ public class CarsTest {
 
     @Test
     void move() {
+        Car car = Car.of("peter");
+        car.move(fuel);
         Result movedCars = cars.move(fuel);
-        assertThat(movedCars.getResult().get(0).getPosition()).isEqualTo(1);
+
+        assertThat(movedCars.getResult()).contains(car);
     }
 
     @Test
