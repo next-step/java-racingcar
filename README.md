@@ -1,10 +1,6 @@
 # 자동차 경주 (우승자)
 
 ## TODO
-- [ ] 에러 메세지 내용 추가
-- [ ] winner를 구하는 과정을 view와 분리
-- [ ] map과 collection 리펙토링
-- [ ] null이 먼저
 - [ ] Fuel를 전략 패턴으로 변경 
 - [ ] demeter 법칙 
 
@@ -52,3 +48,8 @@
 - [x] 자동차는 총 3대
 - [x] validate 메소드 따로 분리
 - [x] 메소드는 동사형
+- [x] map과 collection 리펙토링
+- [x] null이 먼저
+- [x] 에러 메세지 내용 추가
+- [x] getWinner 테스트 생성
+- [x] winner를 구하는 과정을 view와 분리

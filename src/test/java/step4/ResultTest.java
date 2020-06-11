@@ -38,10 +38,17 @@ public class ResultTest {
     }
 
     @Test
-    void getWinners() {
+    void getWinnerList() {
         Result result = cars.move(fuel);
         List<Car> winners = result.getWinners(1);
         assertThat(winners.size()).isEqualTo(3);
+    }
+
+    @Test
+    void getWinner() {
+        Result result = cars.move(fuel);
+        String winner = result.getWinner();
+        assertThat(winner).isEqualTo("peter, kassie, oak");
     }
 
     private List<Car> getCarList() {

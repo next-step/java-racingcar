@@ -3,10 +3,15 @@ package step4;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
 public class Result {
 
+    private static final String NAME_SEPARATOR = ", ";
+    private static final String DELIMITER = "";
+    private static final int SUBSTRING_START = 0;
+    private static final int SUBSTRING_END = 2;
     private List<Car> result;
 
     public Result(List<Car> result) {
@@ -24,7 +29,19 @@ public class Result {
                 .getPosition();
     }
 
-    public List<Car> getWinners(int maximum) {
+    public String getWinner() {
+        int maximum = getMax();
+        List<Car> winners = getWinners(maximum);
+        String winner = winners.stream()
+                .reduce(DELIMITER, getWinnerBiFunction(), String::concat);
+        return winner.substring(SUBSTRING_START, winner.length() - SUBSTRING_END);
+    };
+
+    private static BiFunction<String, Car, String> getWinnerBiFunction() {
+        return (sub, element) -> sub + element.getName() + NAME_SEPARATOR;
+    }
+
+    List<Car> getWinners(int maximum) {
         return result.stream()
                 .filter(car -> car.getPosition() == maximum)
                 .collect(Collectors.toList());
