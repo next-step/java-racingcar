@@ -3,7 +3,7 @@ package racing;
 import racing.domain.Cars;
 import racing.utils.Dice;
 import racing.utils.DiceWithRandom;
-import racing.utils.Valid;
+import racing.utils.InputValid;
 import racing.view.InputView;
 import racing.view.OutputView;
 
@@ -19,7 +19,7 @@ public class RacingGame {
 
         int inputTime = inputView.getInputTime();
 
-        Valid.timeGreaterThenZero(inputTime);
+        InputValid.timeGreaterThenZero(inputTime);
 
         Cars initCars = new Cars(inputView.getNames());
         Dice dice = new DiceWithRandom();

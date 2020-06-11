@@ -1,10 +1,11 @@
 package racing.domain;
 
-import racing.utils.Valid;
+import racing.utils.InputValid;
 
 public class Car implements Comparable<Car> {
 
     private final static int MINIMUM_CONDITIONS = 4;
+    private static int POSITION_MIN_VALUE = 0;
     private int position;
     private String carName;
 
@@ -14,8 +15,8 @@ public class Car implements Comparable<Car> {
 
     public Car(String inputCarName, int position) {
 
-        Valid.isEmpty(inputCarName);
-        Valid.positionMinusCheck(position);
+        InputValid.isEmpty(inputCarName);
+        positionMinusCheck(position);
 
         this.carName = inputCarName;
         this.position = position;
@@ -47,4 +48,12 @@ public class Car implements Comparable<Car> {
     public int compareTo(Car car) {
         return this.position - car.getPosition();
     }
+
+    private void positionMinusCheck(int position) {
+
+        if (position < POSITION_MIN_VALUE) {
+            throw new IllegalArgumentException("position은 음수가 될 수 없습니다.");
+        }
+    }
+
 }

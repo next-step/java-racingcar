@@ -1,7 +1,7 @@
 package racing.domain;
 
 import racing.utils.Dice;
-import racing.utils.Valid;
+import racing.utils.InputValid;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -17,7 +17,7 @@ public class Cars {
 
     public Cars(String[] carNames, int[] positions) {
 
-        Valid.sizeCompare(carNames, positions);
+        sizeCompare(carNames, positions);
         cars = new ArrayList<>();
 
         for (int i = 0; i < carNames.length; i++) {
@@ -35,10 +35,10 @@ public class Cars {
 
     public Map getCars() {
 
-        Map<String,Integer> returnCars =new LinkedHashMap<>();
+        Map<String, Integer> returnCars = new LinkedHashMap<>();
 
-        for (Car car: this.cars) {
-            returnCars.put(car.getCarName(),car.getPosition());
+        for (Car car : this.cars) {
+            returnCars.put(car.getCarName(), car.getPosition());
         }
 
         return returnCars;
@@ -60,5 +60,19 @@ public class Cars {
                 .filter(car -> car.isSamePosition(maxPosition))
                 .map(car -> car.getCarName())
                 .collect(Collectors.toList());
+    }
+
+    private void sizeCompare(String[] carNames, int[] positions) {
+        if (positions == null) {
+            throw new IllegalArgumentException("position이 null입니다.");
+        }
+
+        if (carNames == null) {
+            throw new IllegalArgumentException("carName이 null입니다.");
+        }
+
+        if (carNames.length != positions.length) {
+            throw new IllegalArgumentException("이름 사이즈와 위치 사이즈가 일치 하지 않습니다.");
+        }
     }
 }

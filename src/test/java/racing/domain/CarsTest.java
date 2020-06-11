@@ -4,9 +4,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racing.utils.DiceWithInput;
+import racing.utils.InputValid;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -26,9 +28,9 @@ class CarsTest {
     public void playGameLess() {
 
         cars.playGame(new DiceWithInput(3));
-        List<Car> carList = cars.getCars();
-        for (Car car : carList) {
-            assertThat(car.getPosition()).isEqualTo(0);
+        Map<String,Integer> resultCars = cars.getCars();
+        for (Map.Entry<String, Integer> car: resultCars.entrySet()) {
+            assertThat(car.getValue()).isEqualTo(0);
         }
 
     }
@@ -37,9 +39,9 @@ class CarsTest {
     @Test
     public void playGameGreater() {
         cars.playGame(new DiceWithInput(4));
-        List<Car> carList = cars.getCars();
-        for (Car car : carList) {
-            assertThat(car.getPosition()).isEqualTo(1);
+        Map<String,Integer> resultCars = cars.getCars();
+        for (Map.Entry<String, Integer> car: resultCars.entrySet()) {
+            assertThat(car.getValue()).isEqualTo(1);
         }
     }
 
