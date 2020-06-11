@@ -1,0 +1,21 @@
+package step4;
+
+import org.junit.jupiter.api.Test;
+import step4.model.Round;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+public class RoundTest {
+
+    @Test
+    void create() {
+        Round round = new Round(5);
+        assertThat(round).isEqualTo(new Round(5));
+    }
+
+    @Test
+    void round_is_valid() {
+        assertThatThrownBy(() -> new Round(0)).isInstanceOf(IllegalArgumentException.class);
+    }
+}
