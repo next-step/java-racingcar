@@ -27,8 +27,7 @@ public class Cars {
 
     public void playGame(Dice dice) {
 
-        for (int i = 0; i < cars.size(); i++) {
-            Car car = cars.get(i);
+        for (Car car : cars) {
             car.move(dice.makeNumber());
         }
 
