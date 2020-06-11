@@ -1,4 +1,4 @@
-package step4;
+package step4.model;
 
 import java.util.Objects;
 
@@ -13,7 +13,7 @@ public class Game {
     }
 
     public Result start() {
-        return cars.move(new Fuel());
+        return cars.move(new RandomFuel());
     }
 
     @Override

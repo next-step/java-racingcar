@@ -1,4 +1,7 @@
-package step4;
+package step4.view;
+
+import step4.model.Car;
+import step4.model.Result;
 
 import java.util.Collections;
 import java.util.function.BiFunction;

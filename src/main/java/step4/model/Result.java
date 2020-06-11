@@ -1,4 +1,4 @@
-package step4;
+package step4.model;
 
 import java.util.Comparator;
 import java.util.List;
@@ -30,8 +30,7 @@ public class Result {
     }
 
     public String getWinner() {
-        int maximum = getMax();
-        List<Car> winners = getWinners(maximum);
+        List<Car> winners = getWinners(getMax());
         String winner = winners.stream()
                 .reduce(DELIMITER, getWinnerBiFunction(), String::concat);
         return winner.substring(SUBSTRING_START, winner.length() - SUBSTRING_END);

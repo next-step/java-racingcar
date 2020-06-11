@@ -1,9 +1,10 @@
-package step4;
+package step4.model;
+
+import step4.util.Error;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class Cars {
 

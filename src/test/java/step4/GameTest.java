@@ -1,6 +1,8 @@
 package step4;
 
 import org.junit.jupiter.api.Test;
+import step4.model.Cars;
+import step4.model.Game;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

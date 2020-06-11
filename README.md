@@ -1,7 +1,7 @@
 # 자동차 경주 (우승자)
 
 ## TODO
-- [ ] Fuel를 전략 패턴으로 변경 
+ 
 - [ ] demeter 법칙 
 
 ## Done
@@ -53,3 +53,4 @@
 - [x] 에러 메세지 내용 추가
 - [x] getWinner 테스트 생성
 - [x] winner를 구하는 과정을 view와 분리
+- [x] Fuel를 전략 패턴으로 변경

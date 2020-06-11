@@ -1,6 +1,7 @@
 package step4;
 
 import org.junit.jupiter.api.Test;
+import step4.model.Name;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

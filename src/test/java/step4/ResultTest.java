@@ -2,6 +2,11 @@ package step4;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import step4.mock.MockFuel;
+import step4.model.Car;
+import step4.model.Cars;
+import step4.model.Fuel;
+import step4.model.Result;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,12 +21,7 @@ public class ResultTest {
     void setUp() {
         list = getCarList();
         cars = new Cars("peter,kassie,oak");
-        fuel = new Fuel() {
-            @Override
-            public boolean isValid() {
-                return true;
-            }
-        };
+        fuel = new MockFuel();
     }
 
     @Test

@@ -1,4 +1,6 @@
-package step4;
+package step4.model;
+
+import step4.view.OutputView;
 
 import java.util.Objects;
 
