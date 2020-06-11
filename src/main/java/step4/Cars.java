@@ -32,7 +32,7 @@ public class Cars {
 
     private void validateCarsSize(String[] list) {
         if (list.length != VALID_CARS_SIZE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.INVALID_SIZE);
         }
     }
 
@@ -50,10 +50,10 @@ public class Cars {
 
     private void validate(String names) {
         if(names == EMPTY) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.EMPTY);
         }
         if(names == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.NULL);
         }
     }
 

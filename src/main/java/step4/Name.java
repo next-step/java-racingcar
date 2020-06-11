@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Name {
 
+    private static final String EMPTY = "";
     private final String name;
 
     public Name(String name) {
@@ -12,11 +13,11 @@ public class Name {
     }
 
     private void invalid(String name) {
-        if(name == "") {
-            throw new IllegalArgumentException();
+        if(name == EMPTY) {
+            throw new IllegalArgumentException(Error.EMPTY);
         }
         if(name == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.NULL);
         }
     }
 

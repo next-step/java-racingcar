@@ -9,7 +9,7 @@ public class Race {
     private final Game game;
 
     public Race(Cars cars, int rounds) {
-        valid(cars, rounds);
+        validate(cars, rounds);
         this.cars = cars;
         this.rounds = rounds;
         this.game = new Game(cars,rounds);
@@ -31,7 +31,7 @@ public class Race {
     }
 
 
-    private void valid(Cars cars, int rounds) {
+    private void validate(Cars cars, int rounds) {
         if(cars == null || rounds == 0) {
             throw new IllegalArgumentException();
         }

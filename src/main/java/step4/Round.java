@@ -13,7 +13,7 @@ public class Round {
 
     private void valid(int round) {
         if(round != 5) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.INVALID);
         }
     }
 
