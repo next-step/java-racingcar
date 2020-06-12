@@ -15,7 +15,6 @@ public class InputView {
 
     public static int inputer() {
         int number = scanner.nextInt();
-
         return number;
     }
 }

@@ -20,4 +20,4 @@
 * 자동차 도메인에 자동차명 필드 추가
 * [UI 로직] 출력 로직에서 자동차명 출력 기능 추가
 * [test] 추가 로직에 대한 테스트 코드 작성
-* [Refactor] indent 1단계 제한, else 제거
+* [Refactor] indent 1c단계 제한, else 제거
