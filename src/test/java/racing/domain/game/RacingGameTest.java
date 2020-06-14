@@ -30,7 +30,7 @@ public class RacingGameTest {
     @Test
     @DisplayName("maxPosition 확인")
     void findMaxPositionTest() {
-        assertThat(racingGame.findMaxPosition(racingCars)).isEqualTo(2);
+        assertThat(racingGame.findMaxPosition()).isEqualTo(2);
     }
 
 }

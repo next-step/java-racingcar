@@ -16,7 +16,7 @@ public class CarTest {
     @DisplayName("Car 전진")
     @ValueSource(ints = 1)
     void moveTest(int expected) {
-        Car car = new Car("car", 0);
+        Car car = new Car("car");
         car = car.move(new TestCarForwardBehavior());
         assertThat(car.getPosition()).isEqualTo(expected);
     }
@@ -25,7 +25,7 @@ public class CarTest {
     @DisplayName("Car 정지")
     @ValueSource(ints = 0)
     void stopTest(int expected) {
-        Car car = new Car("car", 0);
+        Car car = new Car("car");
         car = car.move(new TestCarStopBehavior());
         assertThat(car.getPosition()).isEqualTo(expected);
     }
