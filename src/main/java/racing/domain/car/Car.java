@@ -4,7 +4,11 @@ public class Car {
     private String carName;
     private int position;
 
-    public Car(String carName, int position) {
+    public Car(String carName) {
+        this(carName, 0);
+    }
+
+    private Car(String carName, int position) {
         checkCarName(carName);
         this.carName = carName;
         this.position = position;
