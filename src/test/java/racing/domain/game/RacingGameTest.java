@@ -7,8 +7,6 @@ import racing.domain.car.RacingCars;
 import racing.domain.test.TestCarForwardBehavior;
 import racing.domain.test.TestCarStopBehavior;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {

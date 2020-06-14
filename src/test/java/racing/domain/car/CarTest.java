@@ -38,4 +38,12 @@ public class CarTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이름이 비어있습니다. 이름을 입력해주세요.");
     }
+
+    @ParameterizedTest
+    @DisplayName("Car 생성")
+    @ValueSource(strings = "pobi")
+    void createCar(String expected) {
+        Car car = new Car("pobi");
+        assertThat(car.getCarName()).isEqualTo(expected);
+    }
 }
