@@ -22,7 +22,7 @@ public class RacingGameStart {
         RacingGameResult racingGameResult = new RacingGameResult(racingCars, winnerList);
 
         ResultView.resultMessage();
-        racingGameResult.resultRacing(times);
+        ResultView.printResult(racingGame.race(times));
         ResultView.printWinner(racingGame);
     }
 }

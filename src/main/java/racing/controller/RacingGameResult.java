@@ -2,7 +2,6 @@ package racing.controller;
 
 import racing.domain.car.RacingCars;
 import racing.domain.game.RacingGame;
-import racing.view.ResultView;
 
 import java.util.List;
 
@@ -22,15 +21,6 @@ public class RacingGameResult {
 
     public List<String> resultWinnerCars(int maxCarPosition) {
         return RacingGame.findWinnerCars(racingCars, maxCarPosition);
-    }
-
-    public void resultRacing(int times) {
-        RacingGame racingGame = new RacingGame(racingCars);
-        List<RacingCars> racingCarsList = racingGame.race(times);
-
-        for (RacingCars cars : racingCarsList) {
-            ResultView.printResult(cars.getCars());
-        }
     }
 
     public List<String> getWinnerList() {

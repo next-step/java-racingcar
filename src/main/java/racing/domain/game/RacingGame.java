@@ -1,5 +1,6 @@
 package racing.domain.game;
 
+import racing.controller.RacingGameResult;
 import racing.domain.car.CarForwardBehavior;
 import racing.domain.car.RacingCars;
 
