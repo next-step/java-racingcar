@@ -1,12 +1,10 @@
 package racing.domain.game;
 
-import racing.domain.car.Car;
 import racing.domain.car.CarForwardBehavior;
 import racing.domain.car.RacingCars;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingGame {
     private final RacingCars racingCars;
@@ -24,20 +22,12 @@ public class RacingGame {
         return racingCarsList;
     }
 
-    public static int findMaxPosition(RacingCars racingCars) {
-        return racingCars.getCars()
-                .stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElseThrow(() -> new IllegalArgumentException());
+    public int findMaxPosition() {
+        return racingCars.findMaxPosition();
     }
 
-    public static List<String> findWinnersCars(RacingCars racingCars, int maxCarPosition) {
-        return racingCars.getCars()
-                .stream()
-                .filter(list -> list.getPosition() == maxCarPosition)
-                .map(list -> list.getCarName())
-                .collect(Collectors.toList());
+    public static List<String> findWinnerCars(RacingCars racingCars, int maxCarPosition) {
+        return racingCars.findWinnersCars(racingCars.getCars(), maxCarPosition);
     }
 
     public RacingCars getRacingCars() {

@@ -12,15 +12,16 @@ public class RacingGameResult {
 
     public RacingGameResult(RacingCars racingCars, List<String> winners) {
         this.racingCars = racingCars;
-        this.winnerList = getWinnerCars(getMaxPosition());
+        this.winnerList = resultWinnerCars(resultMaxPosition());
     }
 
-    public int getMaxPosition() {
-        return RacingGame.findMaxPosition(racingCars);
+    private int resultMaxPosition() {
+        RacingGame racingGame = new RacingGame(racingCars);
+        return racingGame.findMaxPosition();
     }
 
-    public List<String> getWinnerCars(int maxCarPosition) {
-        return RacingGame.findWinnersCars(racingCars, maxCarPosition);
+    public List<String> resultWinnerCars(int maxCarPosition) {
+        return RacingGame.findWinnerCars(racingCars, maxCarPosition);
     }
 
     public void resultRacing(int times) {

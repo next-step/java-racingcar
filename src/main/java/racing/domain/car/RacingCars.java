@@ -3,6 +3,7 @@ package racing.domain.car;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class RacingCars {
     private static final String DELIMITER = ",";
@@ -41,6 +42,20 @@ public class RacingCars {
             executedCars.add(car.move(carMoveBehavior));
         }
         return new RacingCars(executedCars);
+    }
+
+    public int findMaxPosition() {
+        return this.cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(() -> new IllegalArgumentException());
+    }
+
+    public List<String> findWinnersCars(List<Car> cars, int maxCarPosition) {
+        return this.cars.stream()
+                .filter(list -> list.getPosition() == maxCarPosition)
+                .map(list -> list.getCarName())
+                .collect(Collectors.toList());
     }
 
     public List<Car> getCars() {
