@@ -21,17 +21,17 @@ public class RacingGameTest {
 
     @DisplayName("레이싱 게임 전체 테스트")
     @ParameterizedTest
-    @CsvSource(value = { "3:5", "5:6", "7:4" }, delimiter = ':')
-    void gameTest(String carNum, String gameNum) {
-        racingGame.setUpTest(racingCarMovingCheck, Integer.valueOf(carNum), Integer.valueOf(gameNum));
+    @CsvSource(value = { "pobi,crong,honux:5" }, delimiter = ':')
+    void gameTest(String carNames, String gameNum) {
+        racingGame.setUpTest(racingCarMovingCheck, carNames, Integer.valueOf(gameNum));
     }
 
     @DisplayName("잘못된 데이터 입력")
     @ParameterizedTest
-    @CsvSource(value = { "-1:-2", "-4:0" }, delimiter = ':')
-    void inputDataTest(String carNum, String gameNum) {
+    @CsvSource(value = { "pobitest:1", "racingcar:-2", "nextstep:0" }, delimiter = ':')
+    void inputDataTest(String carNames, String gameNum) {
         assertThatIllegalArgumentException().isThrownBy( () -> racingGame.setUpTest(
-                racingCarMovingCheck, Integer.valueOf(carNum), Integer.valueOf(gameNum)));
+                racingCarMovingCheck, carNames, Integer.valueOf(gameNum)));
     }
 
 }
