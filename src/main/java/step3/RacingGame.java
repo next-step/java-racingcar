@@ -27,5 +27,6 @@ public class RacingGame {
                 car.move();
             }
         }
+        return RacingCars;
     }
 }
