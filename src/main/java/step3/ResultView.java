@@ -11,7 +11,6 @@ public class ResultView {
         for (int i = 0; i < positions; i++) {
             System.out.println("-");
         }
-        System.out.println();
     }
 
     public void showResult(List<RacingCar> racingCars){
