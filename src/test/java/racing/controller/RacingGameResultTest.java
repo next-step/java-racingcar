@@ -1,8 +1,9 @@
-package racing.domain.game;
+package racing.controller;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.controller.RacingGameResult;
 import racing.domain.car.RacingCars;
 import racing.domain.test.TestCarForwardBehavior;
 import racing.domain.test.TestCarStopBehavior;
@@ -20,7 +21,7 @@ public class RacingGameResultTest {
     void setup() {
         winnerList = new ArrayList<>();
 
-        RacingCars racingCars = new RacingCars("pobi,crong,honux");
+        racingCars = new RacingCars("pobi,crong,honux");
 
         racingCars.getCars().get(0).move(new TestCarForwardBehavior());
         racingCars.getCars().get(0).move(new TestCarForwardBehavior());

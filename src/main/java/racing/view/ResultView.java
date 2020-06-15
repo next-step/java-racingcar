@@ -1,8 +1,9 @@
 package racing.view;
 
+import racing.controller.RacingGameResult;
 import racing.domain.car.Car;
+import racing.domain.car.RacingCars;
 import racing.domain.game.RacingGame;
-import racing.domain.game.RacingGameResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,12 +28,18 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void printResult(List<Car> carPositions) {
-        for (int i = 0; i < carPositions.size(); i++) {
-            printCarName(carPositions.get(i).getCarName());
-            printPosition(carPositions.get(i).getPosition());
+    public static void printResult(List<RacingCars> racingCarsList) {
+        for (RacingCars racingCars : racingCarsList) {
+            printCarNameAndPosition(racingCars);
+            System.out.println();
         }
-        System.out.println();
+    }
+
+    private static void printCarNameAndPosition(RacingCars racingCars) {
+        for (Car car : racingCars.getCars()) {
+            printCarName(car.getCarName());
+            printPosition(car.getPosition());
+        }
     }
 
     public static void printWinner(RacingGame racingGame) {

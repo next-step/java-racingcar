@@ -1,42 +1,64 @@
 package racing.domain.car;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class RacingCars {
     private static final String DELIMITER = ",";
-
-    private final List<Car> carPositions;
+    private final List<Car> cars;
 
     public RacingCars(String inputName) {
-        this.carPositions = prepareCars(inputName);
+        this.cars = prepareCars(inputName);
+    }
+
+    public RacingCars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public List<Car> prepareCars(String inputName) {
-        List<Car> carsPositions = new ArrayList<>();
+        List<Car> cars = new ArrayList<>();
 
         checkInputName(inputName);
 
         String[] carNames = inputName.split(DELIMITER);
 
         for (int i = 0; i < carNames.length; i++) {
-            carsPositions.add(new Car(carNames[i]));
+            cars.add(new Car(carNames[i]));
         }
-        return carsPositions;
+        return cars;
     }
 
     private void checkInputName(String inputName) {
-        if (Objects.isNull(inputName) || inputName.equals(" ")) {
+        if (Objects.isNull(inputName) || inputName.trim().isEmpty()) {
             throw new IllegalArgumentException("이름이 비어있습니다. 이름을 입력해주세요.");
         }
     }
 
-    public void moveCars(CarMoveBehavior carMoveBehavior) {
-        for (int i = 0; i < carPositions.size(); i++) {
-            carPositions.get(i).move(carMoveBehavior);
+    public RacingCars moveCars(CarMoveBehavior carMoveBehavior) {
+        List<Car> executedCars = new ArrayList<>();
+        for (Car car : cars) {
+            executedCars.add(car.move(carMoveBehavior));
         }
+        return new RacingCars(executedCars);
+    }
+
+    public int findMaxPosition() {
+        return this.cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(() -> new IllegalArgumentException());
+    }
+
+    public List<String> findWinnersCars(List<Car> cars, int maxCarPosition) {
+        return this.cars.stream()
+                .filter(list -> list.getPosition() == maxCarPosition)
+                .map(list -> list.getCarName())
+                .collect(Collectors.toList());
     }
 
     public List<Car> getCars() {
-        return carPositions;
+        return cars;
     }
 }
