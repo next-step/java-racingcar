@@ -24,7 +24,6 @@ class RacingCarTest {
         for (int i = 0; i < count ; i++) {
             racingCar.move();
         }
-
         assertThat(racingCar.currentPosition()).isEqualTo(count);
     }
 
