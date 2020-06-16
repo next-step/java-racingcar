@@ -29,4 +29,8 @@ public class RacingGame {
         }
         return RacingCars;
     }
+
+    public List<RacingCar> getRacingCarList() {
+        return RacingCars;
+    }
 }
