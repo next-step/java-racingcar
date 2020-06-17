@@ -3,7 +3,6 @@ import java.util.List;
 
 public class ResultView {
 
-
     public void printPosition(int positions){
         for (int i = 0; i < positions; i++) {
             System.out.print("-");
