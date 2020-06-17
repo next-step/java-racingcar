@@ -5,7 +5,6 @@ import java.util.Random;
 import java.util.List;
 
 public class RacingGame {
-
     private List<RacingCar> racingCars = new ArrayList<>();
     private Random distance = new Random();
     private InputView inputView = new InputView();
