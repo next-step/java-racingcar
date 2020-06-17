@@ -17,13 +17,13 @@ public class RacingGame {
         }
     }
 
-    public int randomDistance() {
-        return distance.nextInt(10);
+    public boolean canMove() {
+        return distance.nextInt(10) >= 4;
     }
 
     public List<RacingCar> playRacingGame() {
         for (RacingCar car: racingCars){
-            if(randomDistance() >= 4){
+            if(canMove()) {
                 car.move();
             }
         }
@@ -34,12 +34,12 @@ public class RacingGame {
         return racingCars;
     }
 
-    public void initRacingGame(){
+    public void initRacingGame() {
         int carCount = inputView.numberOfCar();
         setRacingGame(carCount);
     }
 
-    public void startRacingGame(){
+    public void startRacingGame() {
         int gameCount = inputView.numberOfGame();
         for (int i = 0; i < gameCount; i++) {
             playRacingGame();
@@ -47,7 +47,7 @@ public class RacingGame {
         }
     }
 
-    public void getRacingGameResult(){
+    public void getRacingGameResult() {
         resultView.showResult(getRacingCarList());
     }
 
