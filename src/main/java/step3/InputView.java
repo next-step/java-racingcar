@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class InputView {
 
-    Scanner scanner = new Scanner(System.in);
+    final Scanner scanner = new Scanner(System.in);
 
     public int numberOfCar(){
         System.out.println("자동차 대수는 몇 대 인가요?");
