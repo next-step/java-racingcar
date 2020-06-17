@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RacingGame {
     //  게임 진행하는 클래스 https://github.com/next-step/java-racingcar/pull/909/commits/db637e88d70bc34ed8f1c854c55e8ce82eb3a19c
-    private List<RacingCar> RacingCars;
+    private List<RacingCar> racingCars = new ArrayList<>();
     private Random distance = new Random();
 
     //  게임 진행 생성자
