@@ -4,10 +4,11 @@ import java.util.List;
 public class ResultView {
 
     public void printPosition(int positions){
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < positions; i++) {
-            System.out.print("-");
+            result.append("-");
         }
-        System.out.println();
+        System.out.println(result.toString());
     }
 
     public void showResult(List<RacingCar> racingCars){
