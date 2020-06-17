@@ -8,9 +8,11 @@ public class ResultView {
     }
 
     public void printPosition(int positions){
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < positions; i++) {
-            System.out.println("-");
+            result.append("-");
         }
+        System.out.println(result.toString());
     }
 
     public void showResult(List<RacingCar> racingCars){
