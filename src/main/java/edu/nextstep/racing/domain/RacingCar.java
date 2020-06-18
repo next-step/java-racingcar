@@ -1,4 +1,4 @@
-package edu.nextstep.racing;
+package edu.nextstep.racing.domain;
 
 public class RacingCar {
     private int carPosition = 0;
@@ -11,17 +11,17 @@ public class RacingCar {
         this.carName = carName;
     }
 
-    public void move(MovingCheck movingCheck) {
+    void move(MovingCheck movingCheck) {
         if(movingCheck.isMovable()) {
             this.carPosition++;
         }
     }
 
-    public int getStatus() {
+    int getStatus() {
         return this.carPosition;
     }
 
-    public String getCarName() {
+    String getCarName() {
         return this.carName;
     }
 }

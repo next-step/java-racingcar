@@ -1,5 +1,7 @@
 package edu.nextstep.racing;
 
+import edu.nextstep.racing.domain.RacingGame;
+import edu.nextstep.racing.domain.RacingCarMovingCheck;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;

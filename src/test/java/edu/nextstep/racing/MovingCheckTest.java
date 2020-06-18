@@ -1,5 +1,7 @@
 package edu.nextstep.racing;
 
+import edu.nextstep.racing.domain.MovingCheck;
+
 public class MovingCheckTest implements MovingCheck {
     private boolean flag;
 
