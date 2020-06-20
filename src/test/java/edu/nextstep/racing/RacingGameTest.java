@@ -1,5 +1,6 @@
 package edu.nextstep.racing;
 
+import edu.nextstep.racing.controller.RacingController;
 import edu.nextstep.racing.domain.RacingGame;
 import edu.nextstep.racing.domain.RacingCarMovingCheck;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,11 +14,13 @@ public class RacingGameTest {
     private RacingGame racingGame;
     private RacingCarMovingCheck racingCarMovingCheck;
     private RandomNumber randomNumber;
+    private RacingController racingController;
 
     @BeforeEach
     void setUp() {
         randomNumber = new RandomNumber();
         racingCarMovingCheck = new RacingCarMovingCheck(randomNumber);
+        racingController = new RacingController();
         this.racingGame = new RacingGame();
     }
 
@@ -25,15 +28,15 @@ public class RacingGameTest {
     @ParameterizedTest
     @CsvSource(value = { "pobi,crong,honux:5" }, delimiter = ':')
     void gameTest(String carNames, String gameNum) {
-        racingGame.setUpTest(racingCarMovingCheck, carNames, Integer.valueOf(gameNum));
+        racingController.setUpTest(racingGame, racingCarMovingCheck, carNames, Integer.valueOf(gameNum));
     }
 
     @DisplayName("잘못된 데이터 입력")
     @ParameterizedTest
     @CsvSource(value = { "pobitest:1", "racingcar:-2", "nextstep:0" }, delimiter = ':')
     void inputDataTest(String carNames, String gameNum) {
-        assertThatIllegalArgumentException().isThrownBy( () -> racingGame.setUpTest(
-                racingCarMovingCheck, carNames, Integer.valueOf(gameNum)));
+        assertThatIllegalArgumentException().isThrownBy( () -> racingController.setUpTest(
+                racingGame, racingCarMovingCheck, carNames, Integer.valueOf(gameNum)));
     }
 
 }
