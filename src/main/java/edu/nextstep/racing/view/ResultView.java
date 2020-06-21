@@ -1,4 +1,6 @@
-package edu.nextstep.racing;
+package edu.nextstep.racing.view;
+
+import edu.nextstep.racing.domain.RacingCar;
 
 import java.util.ArrayList;
 

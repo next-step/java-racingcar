@@ -1,10 +1,10 @@
-package edu.nextstep.racing;
+package edu.nextstep.racing.domain;
 
 public class RacingCar {
     private int carPosition = 0;
     private String carName;
 
-    RacingCar(String carName) {
+    public RacingCar(String carName) {
         if (carName.length() > 5) {
             throw new IllegalArgumentException("Car name is too long");
         }

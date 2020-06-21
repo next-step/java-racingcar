@@ -1,5 +1,7 @@
 package edu.nextstep.racing;
 
+import edu.nextstep.racing.domain.RacingCar;
+import edu.nextstep.racing.domain.RacingCarMovingCheck;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,6 +13,7 @@ public class RacingCarTest {
     private RacingCarMovingCheck racingCarMovingCheck;
     private MovingCheckTest movingCheckTest;
 
+    @DisplayName("도메인 테스트 연습")
     @BeforeEach
     void setUp() {
         RandomNumber randomNumber = new RandomNumber();

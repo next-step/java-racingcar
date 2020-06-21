@@ -1,9 +1,11 @@
-package edu.nextstep.racing;
+package edu.nextstep.racing.domain;
+
+import edu.nextstep.racing.RandomNumber;
 
 public class RacingCarMovingCheck implements MovingCheck {
     private RandomNumber randomNumber;
 
-    RacingCarMovingCheck(RandomNumber randomNumber) {
+    public RacingCarMovingCheck(RandomNumber randomNumber) {
         this.randomNumber = randomNumber;
     }
 
