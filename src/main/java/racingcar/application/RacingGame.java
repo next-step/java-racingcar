@@ -8,6 +8,7 @@ import racingcar.utils.Const;
 import racingcar.utils.RandomUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -23,14 +24,7 @@ public class RacingGame {
         this.tryTime = tryTime;
     }
 
-    public List<RacingCarPositions> startRace() {
-        List<RacingCarPositions> racingCarPositions = new ArrayList<>();
-        IntStream.range(Const.INITIAL_NUM, tryTime)
-                .forEach(tryNum -> racingCarPositions.add(moveCars()));
-        return racingCarPositions;
-    }
-
-    public RacingViews startRace2() {
+    public RacingViews startRace() {
         List<RacingCarPositions> racingCarPositions = new ArrayList<>();
         IntStream.range(Const.INITIAL_NUM, tryTime)
                 .forEach(tryNum -> racingCarPositions.add(moveCars()));
@@ -44,6 +38,13 @@ public class RacingGame {
 
     private String[] splitComma(String inputCarNames) {
         return inputCarNames.split(Const.SYMBOL_COMMA);
+    }
+
+    public List<String> getNames(){
+        return getRacingCars()
+                .stream()
+                .map(racingCar -> racingCar.getCarName())
+                .collect(Collectors.toList());
     }
 
     private List<RacingCar> createRacingCar(String[] carNames) {

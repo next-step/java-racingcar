@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.utils.Const;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -41,4 +43,17 @@ public class RacingCars {
     public int hashCode() {
         return Objects.hash(racingCars);
     }
+
+    @Override
+    public String toString() {
+        List<String> names =
+                racingCars
+                .stream()
+                .map(racingCar -> racingCar.getCarName())
+                .collect(Collectors.toList());
+
+        return String.join(Const.SYMBOL_COMMA, names);
+    }
+
+
 }

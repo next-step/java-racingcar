@@ -8,4 +8,8 @@ public class RacingViews {
     public RacingViews(List<RacingCarPositions> racingCarPositions) {
         this.racingCarPositions = racingCarPositions;
     }
+
+    public List<RacingCarPositions> get() {
+        return racingCarPositions;
+    }
 }
