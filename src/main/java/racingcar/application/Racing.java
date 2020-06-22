@@ -50,7 +50,7 @@ public class Racing {
 
     private int moveCar(RacingCar car) {
         int randomNumber = RandomUtils.generateRandomNum();
-        return car.position.move(() -> car.isMove(randomNumber));
+        return car.position.move(() -> car.position.isMove(randomNumber));
     }
 
     public List<RacingCar> getRacingCars() {
