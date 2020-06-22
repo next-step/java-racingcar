@@ -1,6 +1,9 @@
 package racingcar.application;
 
 import racingcar.domain.RacingCar;
+import racingcar.domain.RacingCarPosition;
+import racingcar.domain.RacingCarPositions;
+import racingcar.domain.RacingViews;
 import racingcar.utils.Const;
 import racingcar.utils.RandomUtils;
 
@@ -9,11 +12,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class Racing {
+public class RacingGame {
     private final int tryTime;
     private List<RacingCar> racingCars;
 
-    public Racing(String inputCarNames, int tryTime) {
+    public RacingGame(String inputCarNames, int tryTime) {
         existCarNames(inputCarNames);
         String[] splitCarNames = splitComma(inputCarNames);
         racingCars = createRacingCar(splitCarNames);
@@ -25,6 +28,13 @@ public class Racing {
         IntStream.range(Const.INITIAL_NUM, tryTime)
                 .forEach(tryNum -> racingCarPositions.add(moveCars()));
         return racingCarPositions;
+    }
+
+    public RacingViews startRace2() {
+        List<RacingCarPositions> racingCarPositions = new ArrayList<>();
+        IntStream.range(Const.INITIAL_NUM, tryTime)
+                .forEach(tryNum -> racingCarPositions.add(moveCars()));
+        return new RacingViews(racingCarPositions);
     }
 
     private void existCarNames(String inputCarNames) {
@@ -50,7 +60,7 @@ public class Racing {
 
     private int moveCar(RacingCar car) {
         int randomNumber = RandomUtils.generateRandomNum();
-        return car.position.move(() -> car.position.isMove(randomNumber));
+        return car.move(() -> car.isMove(randomNumber));
     }
 
     public List<RacingCar> getRacingCars() {

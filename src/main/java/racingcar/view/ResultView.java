@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.application.RacingCarPositions;
+import racingcar.domain.RacingCarPositions;
 import racingcar.domain.RacingCar;
 import racingcar.utils.Const;
 

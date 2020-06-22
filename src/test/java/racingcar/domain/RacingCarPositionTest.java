@@ -1,10 +1,11 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racingcar.application.RacingCarPosition;
+import racingcar.domain.RacingCar;
+import racingcar.domain.RacingCarPosition;
 import racingcar.utils.Const;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -12,11 +13,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("자동차 경주에 쓰여지는 자동차 상태")
 class RacingCarPositionTest {
-    RacingCarPosition racingCarPosition;
+    RacingCar racingCarPosition;
 
     @BeforeEach
     void setUp() {
-        racingCarPosition = new RacingCarPosition(Const.INITIAL_NUM);
+        racingCarPosition = new RacingCar("ddd");
     }
 
     @ParameterizedTest
