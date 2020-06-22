@@ -3,7 +3,6 @@ package racingcar.application;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
-
 public class RacingMain {
     public static void main(String[] args) {
         String carNames = InputView.carNames();
