@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
+import racingcar.domain.RacingCars;
 import racingcar.utils.Const;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,7 +18,8 @@ class RacingGameTest {
     @DisplayName("경주할 자동자를 split로 분리한 후 명수가 맞는지 확인한다.")
     void splitComma(String inputCarNames, int expected) {
         RacingGame racingGame = new RacingGame(inputCarNames, Const.INITIAL_NUM);
-        assertThat(racingGame.getRacingCars().size()).isEqualTo(expected);
+        RacingCars racingCars = racingGame.getRacingCars();
+        assertThat(racingCars.get().size()).isEqualTo(expected);
     }
 
     @ParameterizedTest
@@ -27,7 +29,7 @@ class RacingGameTest {
     void existCarNames(String input) {
         assertThatThrownBy(() ->
                 new RacingGame(input, Const.INITIAL_NUM)
-        ).isInstanceOf(NullPointerException.class)
+        ).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("이름을 입력해주세요.");
     }
 }

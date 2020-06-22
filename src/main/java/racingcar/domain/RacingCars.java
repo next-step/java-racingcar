@@ -23,6 +23,17 @@ public class RacingCars {
         );
     }
 
+    public List<String> getNames() {
+        return racingCars
+                .stream()
+                .map(racingCar -> racingCar.getCarName())
+                .collect(Collectors.toList());
+    }
+
+    public List<RacingCar> get() {
+        return racingCars;
+    }
+
     private int getWinnerPosition() {
         return this.racingCars
                 .stream()
@@ -54,6 +65,4 @@ public class RacingCars {
 
         return String.join(Const.SYMBOL_COMMA, names);
     }
-
-
 }
