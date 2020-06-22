@@ -29,7 +29,7 @@ public class Racing {
 
     private void existCarNames(String inputCarNames) {
         if (inputCarNames == null || inputCarNames.isEmpty())
-            throw new NullPointerException("이름을 입력해주세요.");
+            throw new IllegalArgumentException("이름을 입력해주세요.");
     }
 
     private String[] splitComma(String inputCarNames) {
