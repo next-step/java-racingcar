@@ -13,7 +13,7 @@ public class RacingMain {
         RacingGame racingGame = new RacingGame("1,2,3");
 
         RacingCars racingCars = racingGame.getRacingCars();
-        ResultView.results(racingCars.getNames(), racingGame.startRace(2));
+        ResultView.results(racingGame.startRace(2));
 
         ResultView.whoIsWinner(racingCars.whoIsWinners());
     }

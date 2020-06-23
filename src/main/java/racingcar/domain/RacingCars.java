@@ -24,13 +24,6 @@ public class RacingCars {
         );
     }
 
-    public List<String> getNames() {
-        return racingCars
-                .stream()
-                .map(racingCar -> racingCar.toString())
-                .collect(Collectors.toList());
-    }
-
     public List<RacingCar> get() {
         return racingCars;
     }
@@ -40,7 +33,7 @@ public class RacingCars {
         racingCars
                 .forEach(car -> {
                     RacingCar resultCar = carMove(car);
-                    racingCarPositions.add(new RacingCarPosition(resultCar.getPosition()));
+                    racingCarPositions.add(new RacingCarPosition(resultCar));
                 });
         return new RacingCarPositions(racingCarPositions);
     }
