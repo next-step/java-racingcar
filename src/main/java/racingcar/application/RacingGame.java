@@ -1,16 +1,20 @@
 package racingcar.application;
 
 import racingcar.domain.RacingCar;
+import racingcar.domain.RacingCarPositions;
 import racingcar.domain.RacingCars;
 import racingcar.domain.RacingViews;
 import racingcar.utils.Const;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingGame {
     private final int tryTime;
     private RacingCars racingCars;
+
 
     public RacingGame(String inputCarNames, int tryTime) {
         existCarNames(inputCarNames);
@@ -19,8 +23,11 @@ public class RacingGame {
         this.tryTime = tryTime;
     }
 
-    public RacingViews startRace() {
-        return new RacingViews(tryTime, racingCars);
+    public List<RacingCarPositions> startRace() {
+        List<RacingCarPositions> racingCarPositionHistories = new ArrayList<>();
+        IntStream.range(Const.INITIAL_NUM, tryTime)
+                .forEach(it -> racingCarPositionHistories.add(racingCars.moveCars()));
+        return racingCarPositionHistories;
     }
 
     private void existCarNames(String inputCarNames) {

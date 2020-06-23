@@ -9,9 +9,8 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class ResultView {
-    public static void results(List<String> names, RacingViews racingViews) {
+    public static void results(List<String> names, List<RacingCarPositions> racingCarPositions) {
         System.out.println("실행결과");
-        List<RacingCarPositions> racingCarPositions = racingViews.get();
         racingCarPositions
                 .forEach(carPosition -> {
                     carMovementHistory(names, carPosition);

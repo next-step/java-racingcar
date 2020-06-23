@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import racingcar.utils.Const;
+import racingcar.utils.RandomUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,22 @@ public class RacingCars {
         return racingCars;
     }
 
+    public RacingCarPositions moveCars() {
+        List<RacingCarPosition> racingCarPositions = new ArrayList<>();
+        racingCars
+                .forEach(car -> {
+                    RacingCar resultCar = carMove(car);
+                    racingCarPositions.add(new RacingCarPosition(resultCar.getPosition()));
+                });
+        return new RacingCarPositions(racingCarPositions);
+    }
+
+    private RacingCar carMove(RacingCar racingCar) {
+        int random = RandomUtils.generateRandomNum();
+        racingCar.move(() -> racingCar.isMove(random));
+        return racingCar;
+    }
+
     private int getWinnerPosition() {
         return this.racingCars
                 .stream()
@@ -59,9 +76,9 @@ public class RacingCars {
     public String toString() {
         List<String> names =
                 racingCars
-                .stream()
-                .map(racingCar -> racingCar.getCarName())
-                .collect(Collectors.toList());
+                        .stream()
+                        .map(racingCar -> racingCar.getCarName())
+                        .collect(Collectors.toList());
 
         return String.join(Const.SYMBOL_COMMA, names);
     }
