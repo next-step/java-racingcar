@@ -1,17 +1,19 @@
 package racingcar.application;
 
+import racingcar.domain.RacingCars;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
-
 
 public class RacingMain {
     public static void main(String[] args) {
         String carNames = InputView.carNames();
         int tryNum = InputView.tryTime();
 
-        Racing racing = new Racing(carNames, tryNum);
+        RacingGame racingGame = new RacingGame(carNames);
 
-        ResultView.results(racing.getRacingCars(), racing.startRace());
-        ResultView.whoIsWinner(racing.getRacingCars());
+        RacingCars racingCars = racingGame.getRacingCars();
+        ResultView.results(racingGame.startRace(tryNum));
+
+        ResultView.whoIsWinner(racingCars.whoIsWinners());
     }
 }
