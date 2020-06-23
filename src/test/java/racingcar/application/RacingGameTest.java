@@ -17,7 +17,7 @@ class RacingGameTest {
     @CsvSource(value = {"pobi,crong,honux=3"}, delimiter = '=')
     @DisplayName("경주할 자동자를 split로 분리한 후 명수가 맞는지 확인한다.")
     void splitComma(String inputCarNames, int expected) {
-        RacingGame racingGame = new RacingGame(inputCarNames, Const.INITIAL_NUM);
+        RacingGame racingGame = new RacingGame(inputCarNames);
         RacingCars racingCars = racingGame.getRacingCars();
         assertThat(racingCars.get().size()).isEqualTo(expected);
     }
@@ -28,7 +28,7 @@ class RacingGameTest {
     @DisplayName("입력된 값이 null 값인지 체크")
     void existCarNames(String input) {
         assertThatThrownBy(() ->
-                new RacingGame(input, Const.INITIAL_NUM)
+                new RacingGame(input)
         ).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("이름을 입력해주세요.");
     }

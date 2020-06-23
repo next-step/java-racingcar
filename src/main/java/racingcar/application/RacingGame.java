@@ -11,18 +11,15 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RacingGame {
-    private final int tryTime;
     private RacingCars racingCars;
 
-
-    public RacingGame(String inputCarNames, int tryTime) {
+    public RacingGame(String inputCarNames) {
         existCarNames(inputCarNames);
         String[] splitCarNames = splitComma(inputCarNames);
         racingCars = createRacingCar(splitCarNames);
-        this.tryTime = tryTime;
     }
 
-    public List<RacingCarPositions> startRace() {
+    public List<RacingCarPositions> startRace(int tryTime) {
         List<RacingCarPositions> racingCarPositionHistories = new ArrayList<>();
         IntStream.range(Const.INITIAL_NUM, tryTime)
                 .forEach(it -> racingCarPositionHistories.add(racingCars.moveCars()));

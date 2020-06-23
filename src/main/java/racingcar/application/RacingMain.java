@@ -10,10 +10,10 @@ public class RacingMain {
 //        int tryNum = InputView.tryTime();
 
 //        RacingGame racingGame = new RacingGame(carNames, tryNum);
-        RacingGame racingGame = new RacingGame("1,2,3", 2);
+        RacingGame racingGame = new RacingGame("1,2,3");
 
         RacingCars racingCars = racingGame.getRacingCars();
-        ResultView.results(racingCars.getNames(), racingGame.startRace());
+        ResultView.results(racingCars.getNames(), racingGame.startRace(2));
 
         ResultView.whoIsWinner(racingCars.whoIsWinners());
     }
