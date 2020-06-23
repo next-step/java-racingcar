@@ -14,14 +14,18 @@ public class ResultView {
         List<RacingCarPositions> racingCarPositions = racingViews.get();
         racingCarPositions
                 .forEach(carPosition -> {
-                    IntStream.range(Const.INITIAL_NUM, carPosition.get().size())
-                            .forEach(position -> {
-                                        String print = String.format("%s : %s", names.get(position), carPosition.get().get(position));
-                                        System.out.println(print);
-                                    }
-                            );
+                    carMovementHistory(names, carPosition);
                     System.out.println();
                 });
+    }
+
+    private static void carMovementHistory(List<String> names, RacingCarPositions carPosition) {
+        IntStream.range(Const.INITIAL_NUM, carPosition.get().size())
+                .forEach(position -> {
+                            String print = String.format("%s : %s", names.get(position), carPosition.get().get(position));
+                            System.out.println(print);
+                        }
+                );
     }
 
     public static void whoIsWinner(RacingCars racingCars) {
