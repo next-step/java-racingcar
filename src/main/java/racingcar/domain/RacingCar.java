@@ -17,10 +17,6 @@ public class RacingCar {
         this.position = position;
     }
 
-    public String getCarName() {
-        return carName;
-    }
-
     public int getPosition() {
         return position;
     }
@@ -56,9 +52,6 @@ public class RacingCar {
 
     @Override
     public String toString() {
-        return "RacingCar{" +
-                "carName='" + carName + '\'' +
-                ", position=" + position +
-                '}';
+        return carName;
     }
 }

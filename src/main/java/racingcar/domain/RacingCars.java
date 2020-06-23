@@ -27,7 +27,7 @@ public class RacingCars {
     public List<String> getNames() {
         return racingCars
                 .stream()
-                .map(racingCar -> racingCar.getCarName())
+                .map(racingCar -> racingCar.toString())
                 .collect(Collectors.toList());
     }
 
@@ -77,7 +77,7 @@ public class RacingCars {
         List<String> names =
                 racingCars
                         .stream()
-                        .map(racingCar -> racingCar.getCarName())
+                        .map(racingCar -> racingCar.toString())
                         .collect(Collectors.toList());
 
         return String.join(Const.SYMBOL_COMMA, names);

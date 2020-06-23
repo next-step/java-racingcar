@@ -2,7 +2,6 @@ package racingcar.view;
 
 import racingcar.domain.RacingCarPositions;
 import racingcar.domain.RacingCars;
-import racingcar.domain.RacingViews;
 import racingcar.utils.Const;
 
 import java.util.List;
