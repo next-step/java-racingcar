@@ -1,8 +1,7 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.in;
+import static org.assertj.core.api.Assertions.*;
 
 class FirstTest {
 
@@ -25,6 +24,15 @@ class FirstTest {
 
         String[] expected = {"1", "2"};
         assertThat(split).containsExactly(expected);
+    }
+
+    @Test
+    @DisplayName("\"abc\"를 받아서 StringindexOutOfBoundsException을 발생시킨다")
+    void thirdChatAtExceptionTest() {
+        String input = "abc";
+        assertThatThrownBy(() -> input.charAt(3))
+                .isInstanceOf(StringIndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: 3");
     }
 
 
