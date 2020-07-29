@@ -37,6 +37,7 @@ public class _02_SetTest {
         assertThat(numbers.contains(n)).isTrue();
     }
 
+    @DisplayName("요구사항3-contains")
     @ParameterizedTest
     @CsvSource(value={"1:true","2:true","3:true","4:false","5:false"}, delimiter = ':')
     void contains2(int n, boolean result) {
