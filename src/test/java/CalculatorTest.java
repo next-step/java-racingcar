@@ -31,6 +31,16 @@ class CalculatorTest {
         int plus = calculator.plus(input);
 
         assertThat(plus).isEqualTo(result);
-
     }
+
+    @Test
+    @DisplayName("두 개의 숫자를 입력받아 뺼셈")
+    void minusTwoOperand(){
+        String input = "2 - 1";
+        int result = calculator.minus(input);
+
+        assertThat(result).isEqualTo(1);
+    }
+
+
 }

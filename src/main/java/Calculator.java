@@ -1,7 +1,6 @@
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Calculator {
 
@@ -17,5 +16,16 @@ public class Calculator {
             }
         }
         return result;
+    }
+
+    public int minus(String input) {
+        String[] split = input.split(" ");
+
+        List<Integer> collect = Arrays.stream(split)
+                .filter(e -> !e.equals("-"))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
+        return collect.get(0) - collect.get(1);
     }
 }
