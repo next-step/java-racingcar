@@ -24,7 +24,7 @@ class CalculatorTest {
         assertThat(plus).isEqualTo(3);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "[{index}] {0} 결과는 {1}")
     @CsvSource(value = {"1 + 2 + 3:6", "1 + 2 + 3 + 4 + 5:15"}, delimiter = ':')
     @DisplayName("여러 개의 숫자를 입력 받아 덧셈")
     void plusTest(String input, int result) {
@@ -40,6 +40,15 @@ class CalculatorTest {
         int result = calculator.minus(input);
 
         assertThat(result).isEqualTo(1);
+    }
+
+    @ParameterizedTest(name = "[{index}] {0} 결과는 {1}")
+    @CsvSource(value = {"4:4", "4 - 2 - 1:1", "10 - 1 - 1 - 1 - 2:5"}, delimiter = ':')
+    @DisplayName("여러 개의 숫자를 입력 받아 뺄셈")
+    void minusTest(String input, int expected) {
+        int actual = calculator.minus(input);
+
+        assertThat(actual).isEqualTo(expected);
     }
 
 

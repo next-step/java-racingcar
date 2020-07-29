@@ -21,11 +21,12 @@ public class Calculator {
     public int minus(String input) {
         String[] split = input.split(" ");
 
-        List<Integer> collect = Arrays.stream(split)
+        List<Integer> operands = Arrays.stream(split)
                 .filter(e -> !e.equals("-"))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
 
-        return collect.get(0) - collect.get(1);
+        if (operands.size() == 0) throw new IllegalArgumentException("잘못된 입력 값");
+        return operands.stream().reduce((a, b) -> a - b).get();
     }
 }
