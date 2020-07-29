@@ -9,10 +9,11 @@ public class Calculator {
         String[] split = input.split(" ");
 
         int result = 0;
+        if (split.length > 2) result = Integer.parseInt(split[0]);
         for (int i = 0; i < split.length; i++) {
             String s = split[i];
             if (s.equalsIgnoreCase("+")) {
-                result += Integer.parseInt(split[i-1]) + Integer.parseInt(split[i+1]);
+                result += Integer.parseInt(split[i+1]);
             }
         }
         return result;
