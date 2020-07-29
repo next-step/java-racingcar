@@ -3,10 +3,9 @@ package study;
 
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.*;
 
-public class SpringTest {
+public class StringTest {
 
     @Test
     void split() {
@@ -30,6 +29,9 @@ public class SpringTest {
     void stringIndexOutOfBoundsException() {
         assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
                 .isThrownBy(() -> "abc".charAt(4));
+
+        assertThatThrownBy(() -> "abc".charAt(5)
+        ).isInstanceOf(StringIndexOutOfBoundsException.class);
     }
 
 }
