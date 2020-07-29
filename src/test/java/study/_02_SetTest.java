@@ -27,7 +27,8 @@ public class _02_SetTest {
     @DisplayName("요구사항1-size")
     @Test
     void size() {
-        assertThat(numbers.size()).isEqualTo(3);
+//        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @DisplayName("요구사항2-contains")
