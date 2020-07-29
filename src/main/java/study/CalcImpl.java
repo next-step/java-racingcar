@@ -14,11 +14,11 @@ public class CalcImpl implements Calc {
     }
 
     private void preconditions(String input) {
-        if(input == null || input.trim().equals("")) throw new IllegalArgumentException();
+        if (input == null || input.trim().equals("")) throw new IllegalArgumentException();
     }
 
     private int doCal(int operand1, int operand2, String operation) {
-        switch(operation) {
+        switch (operation) {
             case "+": return plus(operand1, operand2);
             case "-": return subtract(operand1, operand2);
             case "*": return multiply(operand1, operand2);
