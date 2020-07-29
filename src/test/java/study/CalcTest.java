@@ -53,7 +53,7 @@ public class CalcTest {
     @ParameterizedTest
     @ValueSource(strings = {"", "   "})
     @NullSource
-    @DisplayName(value = "0으로 나눌 경우 또는 정수로 떨어지지 않을 경우 예외테스트")
+    @DisplayName(value = "input값 공백 또는 NULL 체크 예외테스트")
     void 공백_NULL_예외처리(String input) {
         assertTrue(StringUtils.isBlank(input));
         assertThatIllegalArgumentException().isThrownBy(()->{
