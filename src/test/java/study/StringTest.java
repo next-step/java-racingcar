@@ -73,5 +73,4 @@ public class StringTest {
                 charAtExampleInput.charAt(3);
             }).withMessageMatching("String index out of range: 3");
     }
-
 }
