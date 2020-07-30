@@ -23,4 +23,15 @@ class CarRacingGame {
         this.numberOfAttempts = configuration.get("numberOfAttempts");
     }
 
+    private void print() {
+        ResultView.print(cars);
+    }
+
+    void start() {
+        for (int i = 0; i < numberOfAttempts; i ++) {
+            cars.forEach(Car::move);
+            print();
+        }
+    }
+
 }
