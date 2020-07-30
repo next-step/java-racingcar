@@ -13,13 +13,15 @@ public class StringCalculator {
     String[] pieces = newSentenceAsString.split(" ");
     int result = 0;
     for (int i = 0; i < pieces.length; i = i + 2) {
-      if (pieces[i].equals("+")) {
+      String expression = pieces[i];
+
+      if (expression.equals("+")) {
         result += Integer.parseInt(pieces[i + 1]);
-      } else if (pieces[i].equals("-")) {
+      } else if (expression.equals("-")) {
         result -= Integer.parseInt(pieces[i + 1]);
-      } else if (pieces[i].equals("*")) {
+      } else if (expression.equals("*")) {
         result *= Integer.parseInt(pieces[i + 1]);
-      } else if (pieces[i].equals("/")) {
+      } else if (expression.equals("/")) {
         result /= Integer.parseInt(pieces[i + 1]);
       } else {
         throw new IllegalArgumentException();

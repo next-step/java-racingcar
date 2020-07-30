@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -23,39 +22,27 @@ public class StringCalculatorTest {
             StringCalculator.calculate(sentenceAsString));
   }
 
-  @DisplayName("더하기")
+  @DisplayName("단일 연산")
   @ParameterizedTest
-  @CsvSource(value = {"1=1", "1 + 1=2", "1 + 1 + 1=3"}, delimiter = '=')
-  void add(String sentenceAsString, int expected) {
+  @CsvSource(value = {"1=1",
+      "1 + 1=2", "1 + 1 + 1=3",
+      "2 - 1=1", "3 - 2 - 1=0",
+      "1 * 1=1", "1 * 1 * 1=1",
+      "1 / 1=1", "1 / 1 / 1=1"
+  }, delimiter = '=')
+  void givenOneExpress_whenCalculate_thenExpected(String sentenceAsString, int expected) {
     assertThat(StringCalculator.calculate(sentenceAsString))
         .isEqualTo(expected);
   }
 
-  @DisplayName("빼기")
+  @DisplayName("사칙 연산")
   @ParameterizedTest
-  @CsvSource(value = {"1=1", "2 - 1=1", "3 - 2 - 1=0"}, delimiter = '=')
-  void subtract(String sentenceAsString, int expected) {
+  @CsvSource(value = {
+      "2 + 3 * 4 / 2=10",
+  }, delimiter = '=')
+  void givenMultiExpress_whenCalculate_thenExpected(String sentenceAsString, int expected) {
     assertThat(StringCalculator.calculate(sentenceAsString))
         .isEqualTo(expected);
   }
-
-  @DisplayName("곱하기")
-  @ParameterizedTest
-  @CsvSource(value = {"1=1", "1 * 1=1", "1 * 1 * 1=1"}, delimiter = '=')
-  void multiply(String sentenceAsString, int expected) {
-    assertThat(StringCalculator.calculate(sentenceAsString))
-        .isEqualTo(expected);
-  }
-
-  @DisplayName("나누기")
-  @ParameterizedTest
-  @CsvSource(value = {"1=1", "1 / 1=1", "1 / 1 / 1=1"}, delimiter = '=')
-  void divide(String sentenceAsString, int expected) {
-    assertThat(StringCalculator.calculate(sentenceAsString))
-        .isEqualTo(expected);
-  }
-
-
-
 
 }
