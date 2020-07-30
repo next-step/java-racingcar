@@ -30,29 +30,10 @@ public class StringCalculator {
             int targetNumber = Integer.parseInt(splitExpression[i]);
             String operations = splitExpression[i - 1];
 
-            result = calculateWithOperations(result, targetNumber, operations);
+            ArithmeticOperations operation = ArithmeticOperations.of(operations);
+            result = operation.calculate(result, targetNumber);
         }
 
         return result;
-    }
-
-    private int calculateWithOperations(int value1, int value2, String operations) {
-        if ("+".equals(operations)) {
-            return value1 + value2;
-        }
-
-        if ("-".equals(operations)) {
-            return value1 - value2;
-        }
-
-        if ("*".equals(operations)) {
-            return value1 * value2;
-        }
-
-        if ("/".equals(operations)) {
-            return value1 / value2;
-        }
-
-        throw new IllegalArgumentException("invalid arithmetic operations");
     }
 }
