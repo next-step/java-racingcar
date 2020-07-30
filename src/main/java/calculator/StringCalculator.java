@@ -1,8 +1,8 @@
 package calculator;
 
-import common.CommonConstant;
-
 public class StringCalculator {
+
+    private static final String EMPTY_SPACE_CHARACTER = " ";
 
     private String valueToCalculate;
     private InputValidator inputValidator;
@@ -13,7 +13,7 @@ public class StringCalculator {
     }
 
     public int execute() {
-        String[] inputValues = valueToCalculate.split(CommonConstant.EMPTY_SPACE_CHARACTER);
+        String[] inputValues = valueToCalculate.split(EMPTY_SPACE_CHARACTER);
         int leftValue = Integer.parseInt(inputValues[0]);
         int maxI = inputValues.length;
 
