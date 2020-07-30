@@ -7,3 +7,13 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 구현할 기능 목록
+
+1. 게임에 필요한 객체
+    1. 게임
+    2. 자동차
+2. 게임 UI 객체
+    1. input view
+    2. output view
+3. 단위 Test
