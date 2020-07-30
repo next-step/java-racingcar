@@ -3,7 +3,6 @@ package study;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-<<<<<<< HEAD
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringTest {
@@ -24,14 +23,5 @@ public class StringTest {
         assertThatThrownBy(() -> {
             "abc".charAt(3);
         }).isInstanceOf(StringIndexOutOfBoundsException.class);
-=======
-
-public class StringTest {
-    @Test
-    void split() {
-        String[] result = "1,2".split(",");
-        assertThat(result).containsExactly("1","2");
-
->>>>>>> e20b19bf346217ecd7ec060849d7136534781bc9
     }
 }
