@@ -21,9 +21,9 @@ public class Calculator {
     }
 
     public int calculate(String input) {
-        String[] split = input.split(" ");
+        if (input == null || input.isEmpty()) throw new IllegalArgumentException("입력 값을 넣어주세요.");
 
-        if (split.length == 0) throw new IllegalArgumentException("입력 값을 넣어주세요.");
+        String[] split = input.split(" ");
 
         int result = Integer.parseInt(split[0]);
 
