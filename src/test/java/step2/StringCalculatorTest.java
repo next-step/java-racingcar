@@ -80,55 +80,6 @@ class StringCalculatorTest {
         assertThat(stringCalculator.filterOperatorStringFromStringArray(given)).containsExactly("/","*","+","-");
     }
 
-    @DisplayName("주어진 두 수 덧셈")
-    @Test
-    void add() {
-        Integer givenOne = 1;
-        Integer givenTheOther = 2;
-        assertThat(stringCalculator.add(givenOne,givenTheOther)).isEqualTo(3);
-    }
-
-    @DisplayName("주어진 두 수 뺄셈")
-    @Test
-    void subtract() {
-        Integer givenOne = 2;
-        Integer givenTheOther = 1;
-        assertThat(stringCalculator.subtract(givenOne,givenTheOther)).isEqualTo(1);
-    }
-
-    @DisplayName("주어진 두 수 곱셈")
-    @Test
-    void multiply() {
-        Integer givenOne = 1;
-        Integer givenTheOther = 2;
-        assertThat(stringCalculator.multiply(givenOne,givenTheOther)).isEqualTo(2);
-    }
-
-    @DisplayName("주어진 두 수 나눗셈")
-    @Test
-    void divide() {
-        Integer givenOne = 5;
-        Integer givenTheOther = 3;
-        assertThat(stringCalculator.divide(givenOne,givenTheOther)).isEqualTo(1);
-    }
-
-    @DisplayName("0으로 나누면 IllegalArgumentException 발생")
-    @Test
-    void throwIllegalArgumentExceptionWhenDividingZero() {
-        Integer givenOne = 5;
-        Integer givenTheOther = 0;
-        assertThrows(IllegalArgumentException.class,()->stringCalculator.divide(givenOne,givenTheOther));
-    }
-
-    @DisplayName("사칙연산 기호가 아닌 기호를 발견하면 IllegalArgumentException 발생")
-    @Test
-    void throwIllegalArgumentExceptionWhenGivenNonValidOperator() {
-        Integer givenOne = 5;
-        Integer givenTheOther = 0;
-        String givenOperator = "&";
-        assertThrows(IllegalArgumentException.class,()->stringCalculator.computeWithRightOperator(givenOne,givenTheOther,givenOperator));
-    }
-
     @DisplayName("입력받은 식에 대해서 계산하기")
     @ParameterizedTest
     @CsvSource(value = {"2 + 3 * 4 / 2:10", "1 * 1 + 2 / 3 - 1:0"}, delimiter = ':')
