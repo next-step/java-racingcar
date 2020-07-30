@@ -62,7 +62,7 @@ class StringCalculatorTest {
 
     @ParameterizedTest
     @NullAndEmptySource
-    @ValueSource(strings = { "3+5", "- 3 + 6", "3.5 / 10", "10 / 2 * 5*2" })
+    @ValueSource(strings = { "3+5", "3 $ 2", "- 3 + 6", "3.5 / 10", "10 / 2 * 5*2" })
     public void calculate_ShouldThrow_IllegalArgumentException(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> calculator.calculate(input));
     }
