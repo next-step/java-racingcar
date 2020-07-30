@@ -82,7 +82,7 @@ class StringCalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = { "-5", "-3", "0", "2" ,"4", "19", "65534" })
     public void convertToInt_shouldReturn_Integer(String numberString) {
-        assertThat(calculator.converToInt(numberString)).isEqualTo(Integer.parseInt(numberString));
+        assertThat(calculator.convertToInt(numberString)).isEqualTo(Integer.parseInt(numberString));
     }
 
     @ParameterizedTest
