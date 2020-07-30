@@ -1,28 +1,58 @@
 package step2;
 
+import step2.core.*;
+import step2.util.StringUtils;
+
+import static step2.common.ArithmethicConst.*;
+import static step2.common.ExceptionMessage.*;
+
 public class Calculator {
 
-    private final String SPACE = " ";
+    public int process(String inputVal){
 
-    public String[] splitInputValBySpace(String inputVal) throws IndexOutOfBoundsException{
-        return inputVal.split(SPACE);
+        String[] splitInputValBySpace = StringUtils.splitInputValBySpace(inputVal);
+        validationInputValue(splitInputValBySpace);
+
+        int resultValue = Integer.parseInt(splitInputValBySpace[ZERO]);
+
+        int arithmethicCount = getArithmethicCount(splitInputValBySpace.length);
+
+        for(int i=0; i< arithmethicCount; i++){
+            String operation = splitInputValBySpace[getOperationIndex(i)];
+            String operationValue = splitInputValBySpace[getOperationValueIndex(i)];
+
+            Arithmetic arithmetic = selectOperation(operation);
+
+            resultValue = arithmetic.calculate(resultValue,Integer.parseInt(operationValue));
+        }
+
+        return resultValue;
     }
 
-    public int add(int firstVal, int secondVal){
-        return firstVal + secondVal;
+    private int getOperationIndex(int i){
+        return TWO * i + ONE;
     }
 
-    public int minus(int firstVal, int secondVal){
-        return firstVal - secondVal;
+    private int getOperationValueIndex(int i){
+        return TWO * (i + ONE);
     }
 
-    public int multiply(int firstVal, int secondVal){
-        return firstVal * secondVal;
+    private Arithmetic selectOperation(String operation){
+        switch (operation){
+            case OPERATION_ADDITION: return new AdditionArithmetic();
+            case OPERATION_SUBTRACT: return new SubtractionArithmetic();
+            case OPERATION_MULTIPLY: return new MultiplyArithmetic();
+            case OPERATION_DIVIDE: return new DivideArithmetic();
+            default: throw new IllegalArgumentException(INVALID_OPERATION);
+        }
     }
 
-    public int devide(int firstVal, int secondVal){
-        return firstVal / secondVal;
+    private int getArithmethicCount(int totalLength){
+        return  totalLength / TWO;
     }
 
+    private void validationInputValue(String[] inputVal){
+        if (inputVal.length % TWO != ONE) throw new IllegalArgumentException(ILLEGAL_ARGS_COUNT);
 
+    }
 }
