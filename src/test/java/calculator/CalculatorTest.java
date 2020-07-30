@@ -28,7 +28,7 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1:1", "1 + 2:3", "3 - 1 * 3:6"}, delimiter = ':')
+    @CsvSource(value = {"1:1", "1 + 2:3", "3 - 1 * 3:6", "1 + 2 - 3 * 4 / 5:0"}, delimiter = ':')
     public void 정상_결과_도출(String equation, int result) {
 
         Calculator calculator = new Calculator(equation);

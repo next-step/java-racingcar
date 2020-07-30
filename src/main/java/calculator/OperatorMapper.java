@@ -4,6 +4,7 @@ import resource.StringResources;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class OperatorMapper {
 
@@ -18,10 +19,9 @@ public class OperatorMapper {
 
     public static Operator getOperator(char op) throws IllegalArgumentException {
 
-        if (mapper.containsKey(op)) {
-            return mapper.get(op);
-        }
-
-        throw new IllegalArgumentException(StringResources.ERR_INCORRECT_OPERATOR);
+        Optional<Operator> operator = Optional.ofNullable(mapper.get(op));
+        return operator.orElseThrow(() ->
+                new IllegalArgumentException(StringResources.ERR_INCORRECT_OPERATOR)
+        );
     }
 }
