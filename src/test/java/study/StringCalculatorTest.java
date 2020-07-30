@@ -19,15 +19,15 @@ class StringCalculatorTest {
     }
 
     @Test
-    public void plus() {
-        assertThat(calculator.plus(5, 10)).isEqualTo(15);
-        assertThat(calculator.plus(5, -5)).isEqualTo(0);
+    public void add() {
+        assertThat(calculator.add(5, 10)).isEqualTo(15);
+        assertThat(calculator.add(5, -5)).isEqualTo(0);
     }
 
     @Test
-    public void minus() {
-        assertThat(calculator.minus(5, -5)).isEqualTo(10);
-        assertThat(calculator.minus(5, 5)).isEqualTo(0);
+    public void subtract() {
+        assertThat(calculator.subtract(5, -5)).isEqualTo(10);
+        assertThat(calculator.subtract(5, 5)).isEqualTo(0);
     }
 
     @Test
@@ -92,7 +92,7 @@ class StringCalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = { "3 + 5:8", "3 - 5:-3", "3 * 5:15", "3 / 5:0", "3 + 5 - 90 / 4 * 7:-149"}, delimiter = ':')
+    @CsvSource(value = { "3 + 5:8", "3 - 5:-2", "3 * 5:15", "3 / 5:0", "3 + 5 - 90 / 4 * 7:-140"}, delimiter = ':')
     public void calculate(String expression, int exceptedResult) {
         assertThat(calculator.calculate(expression)).isEqualTo(exceptedResult);
     }
