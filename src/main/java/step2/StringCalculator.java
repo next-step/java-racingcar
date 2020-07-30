@@ -27,11 +27,6 @@ public class StringCalculator {
                     .findFirst()
                     .orElseThrow(() -> new IllegalArgumentException(String.format("올바르지 않은 사칙연산자 입니다. [%s]", operator)));
         }
-
-        @Override
-        public String toString() {
-            return this.value;
-        }
     }
 
     /***
@@ -62,6 +57,36 @@ public class StringCalculator {
         return string == null || string.trim().isEmpty();
     }
 
+    /**
+     * 문자열 배열에서 사칙연산에 쓰이는 값을 추출한다.
+     * @param values
+     * @return
+     */
+    private List<Integer> getValues(String[] values) {
+        List<Integer> result = new ArrayList<>();
+
+        for (int index = 1; index < values.length; index = index + 2) {
+            result.add(Integer.parseInt(values[index]));
+        }
+
+        return result;
+    }
+
+    /**
+     * 문자열 배열에서 사칙연산으로 쓰이는 값을 추출한다.
+     * @param values
+     * @return
+     */
+    private List<String> getOperations(String[] values) {
+        List<String> result = new ArrayList<>();
+
+        for (int index = 0; index < values.length; index = index + 2) {
+            result.add(values[index]);
+        }
+
+        return result;
+    }
+
     /***
      * 사용자가 입력한 문자열 값을 사칙연산을 수행하여 결과를 반환한다.
      * 입력 문자열의 숫자와 사칙 연산 사이에는 반드시 빈 공백 문자열이 있다고 가정한다.
@@ -74,20 +99,15 @@ public class StringCalculator {
     public int compute(String text) {
         valid(text);
 
-        String[] textValues = text.trim().split(" ");
+        int result;
+        String[] stringValues = text.trim().split(" ");
 
-        List<Integer> values = new ArrayList<>();
-        List<String> operations = new ArrayList<>();
+        result = Integer.parseInt(stringValues[0]);
 
-        int result = Integer.parseInt(textValues[0]);
+        stringValues = Arrays.copyOfRange(stringValues, 1, stringValues.length);
 
-        for (int index = 1; index < textValues.length; index++) {
-            if (index % 2 == 0) {
-                values.add(Integer.parseInt(textValues[index]));
-                continue;
-            }
-            operations.add(textValues[index]);
-        }
+        List<String> operations = getOperations(stringValues);
+        List<Integer> values = getValues(stringValues);
 
         for (int index = 0; index < values.size(); index++) {
             Operator operation = Operator.toEnum(operations.get(index));
