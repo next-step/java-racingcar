@@ -13,8 +13,8 @@ public class StringCalculatorTest {
     void calculate() {
         String expression = "2 + 3 * 4 / 2";
 
-        StringCalculator calculator = new StringCalculator();
-        int result = calculator.calculate(expression);
+        StringCalculator calculator = new StringCalculator(expression);
+        int result = calculator.calculate();
 
         assertThat(result).isEqualTo(10);
     }
@@ -25,8 +25,8 @@ public class StringCalculatorTest {
         String expression = "2 + 3 * 4 % 2";
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            StringCalculator calculator = new StringCalculator();
-            calculator.calculate(expression);
+            StringCalculator calculator = new StringCalculator(expression);
+            calculator.calculate();
         });
     }
 }
