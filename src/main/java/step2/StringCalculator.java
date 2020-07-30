@@ -22,7 +22,6 @@ public class StringCalculator {
         }
 
         static Operator toEnum(String operator) {
-            System.out.println(values());
             return Arrays.stream(values())
                     .filter(enumeration -> enumeration.value.equals(operator))
                     .findFirst()
