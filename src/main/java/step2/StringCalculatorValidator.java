@@ -13,9 +13,19 @@ public class StringCalculatorValidator {
         return this;
     }
 
-    public StringCalculatorValidator validateExpressionStartOrEndNumber(String[] stringArray) {
-        if(!NUMBER_REGEX.matches(stringArray[0]) || !NUMBER_REGEX.matches(stringArray[stringArray.length-1])) {
+    public StringCalculatorValidator validateExpressionStartOrEndNumber(String[] inputElements) {
+        if(!NUMBER_REGEX.matches(inputElements[0]) || !NUMBER_REGEX.matches(inputElements[inputElements.length-1])) {
             throw new IllegalArgumentException(NONE_VALID_INPUT_VALUE.toString());
+        }
+        return this;
+    }
+
+    public StringCalculatorValidator validateOperatorPlacedBetweenNumbers(String[] inputElements) {
+        int inputElementsLength = inputElements.length;
+        for(int i = 1 ; i < inputElementsLength ; i++) {
+            String prevElement = inputElements[i-1];
+            String nowElement = inputElements[i];
+            validateParametersAreNotSameRegex(prevElement, nowElement);
         }
         return this;
     }
@@ -25,5 +35,11 @@ public class StringCalculatorValidator {
             throw new IllegalArgumentException(NONE_VALID_INPUT_VALUE.toString());
         }
         return this;
+    }
+
+    private void validateParametersAreNotSameRegex(String first, String second) {
+        if(NUMBER_REGEX.matches(first) == NUMBER_REGEX.matches(second)) {
+            throw new IllegalArgumentException(NONE_VALID_INPUT_VALUE.toString());
+        }
     }
 }

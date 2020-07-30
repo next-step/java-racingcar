@@ -48,6 +48,7 @@ public class StringCalculator {
 
         stringCalculatorValidator.validateIsNotNullOrEmpty(expression)
                                 .validateExpressionStartOrEndNumber(splitElements)
+                                .validateOperatorPlacedBetweenNumbers(splitElements)
                                 .validateOperatorCount(operatorElements.length, numberElements.length);
 
         Integer result = numberElements[0];

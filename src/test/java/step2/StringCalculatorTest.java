@@ -1,6 +1,5 @@
 package step2;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -8,16 +7,11 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class StringCalculatorTest {
 
-    private StringCalculator stringCalculator;
-
-    @BeforeEach
-    void setUp() {
-        this.stringCalculator = new StringCalculator();
-    }
+    private final StringCalculator stringCalculator = new StringCalculator();
 
     @DisplayName("공백 기준으로 String 나누기")
     @Test
@@ -70,8 +64,6 @@ class StringCalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"2 + 3 * 4 / 2:10", "1 * 1 + 2 / 3 - 1:0"}, delimiter = ':')
     void calculate(String expression, Integer expectedResult) {
-        String given = "2 + 3 * 4 / 2";
-
         assertThat(stringCalculator.calculate(expression)).isEqualTo(expectedResult);
     }
 
@@ -82,11 +74,11 @@ class StringCalculatorTest {
         assertThrows(IllegalArgumentException.class,()->stringCalculator.calculate(expression));
     }
 
-    //TODO: 아래 테스트 코드의 파라미터도 익셉션 던지게 바꾸기
+    @DisplayName("숫자 연산자 연산자 와 같이 올바른 순서의 식이 아닐 때 IllegalArgumentException 발생")
     @Test
     void 끄기_전에_생각난_테스트코드() {
         String given = "2 2 + + 2";
-        assertThat(stringCalculator.calculate(given)).isEqualTo(6);
+        assertThrows(IllegalArgumentException.class,()->stringCalculator.calculate(given));
     }
 
 }
