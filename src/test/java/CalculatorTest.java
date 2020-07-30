@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.in;
 
 class CalculatorTest {
 
@@ -63,6 +64,16 @@ class CalculatorTest {
         int result = calculator.multiply(input);
 
         assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("두 개의 숫자를 입력 받아 나눗셈")
+    void divideTest() {
+        String input = "4 / 2";
+
+        int result = calculator.divider(input);
+
+        assertThat(result).isEqualTo(2);
     }
 
 

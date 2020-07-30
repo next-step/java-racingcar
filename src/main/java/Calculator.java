@@ -40,4 +40,15 @@ public class Calculator {
                 .reduce((a, b) -> a * b)
                 .orElseThrow(IllegalArgumentException::new);
     }
+
+    public int divider(String input) {
+        List<String> operand = Arrays.stream(input.split(" "))
+                .filter(e -> !e.equals("/"))
+                .collect(Collectors.toList());
+
+        return operand.stream()
+                .map(Integer::parseInt)
+                .reduce((a, b) -> a / b)
+                .orElseThrow(IllegalArgumentException::new);
+    }
 }

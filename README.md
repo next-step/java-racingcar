@@ -44,7 +44,7 @@ output : 10
 - [x] ~~여러 개의 숫자를 입력 받아 뺄셈~~
 - [x] 두 개의 숫자를 입력 받아 곱셈
 - [ ] ~~여러 개의 숫자를 입력 받아 곱셈~~
-- [ ] 두 개의 숫자를 입력 받아 나눗셈
+- [x] 두 개의 숫자를 입력 받아 나눗셈
 - [ ] ~~여러 개의 숫자를 입력 받아 나눗셈~~
 - [ ] 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
 - [ ] 사칙 연산 기호가 아닌 경우 IllegalArgumentException throw
