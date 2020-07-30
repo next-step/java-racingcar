@@ -3,6 +3,9 @@ package step2;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.BiFunction;
+import java.util.stream.IntStream;
 
 /***
  * 사용자가 입력한 문자열 값에 따라 사칙연산을 수행할 수 있는 계산기를 구현한 클래스
@@ -10,15 +13,21 @@ import java.util.List;
 public class StringCalculator {
 
     private enum Operator {
-        PLUS("+"),
-        MINUS("-"),
-        MULTIPLY("*"),
-        DIVIDE("/");
+        PLUS("+", (param1, param2) -> param1 + param2),
+        MINUS("-", (param1, param2) -> param1 - param2),
+        MULTIPLY("*", (param1, param2) -> param1 * param2),
+        DIVIDE("/", (param1, param2) -> param1 / param2);
 
         private String value;
+        private BiFunction<Integer, Integer, Integer> expression;
 
-        Operator(String operator) {
+        Operator(String operator, BiFunction<Integer, Integer, Integer> expression) {
             this.value = operator;
+            this.expression = expression;
+        }
+
+        public Integer apply(int param1, int param2) {
+            return this.expression.apply(param1, param2);
         }
 
         static Operator toEnum(String operator) {
@@ -59,6 +68,7 @@ public class StringCalculator {
 
     /**
      * 문자열 배열에서 사칙연산에 쓰이는 값을 추출한다.
+     *
      * @param values
      * @return
      */
@@ -74,6 +84,7 @@ public class StringCalculator {
 
     /**
      * 문자열 배열에서 사칙연산으로 쓰이는 값을 추출한다.
+     *
      * @param values
      * @return
      */
@@ -99,36 +110,19 @@ public class StringCalculator {
     public int compute(String text) {
         valid(text);
 
-        int result;
+        AtomicInteger result = new AtomicInteger();
         String[] stringValues = text.trim().split(" ");
 
-        result = Integer.parseInt(stringValues[0]);
+        result.set(Integer.parseInt(stringValues[0]));
 
         stringValues = Arrays.copyOfRange(stringValues, 1, stringValues.length);
 
         List<String> operations = getOperations(stringValues);
         List<Integer> values = getValues(stringValues);
 
-        for (int index = 0; index < values.size(); index++) {
-            Operator operation = Operator.toEnum(operations.get(index));
-            int value = values.get(index);
+        IntStream.range(0, values.size())
+                .forEach(index -> result.set(Operator.toEnum(operations.get(index)).apply(result.get(), values.get(index))));
 
-            switch (operation) {
-                case PLUS:
-                    result += value;
-                    break;
-                case MINUS:
-                    result -= value;
-                    break;
-                case MULTIPLY:
-                    result *= value;
-                    break;
-                case DIVIDE:
-                    result = Math.round(result / value);
-                    break;
-            }
-        }
-
-        return result;
+        return result.get();
     }
 }
