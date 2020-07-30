@@ -1,0 +1,5 @@
+package study;
+
+class Car {
+
+}
