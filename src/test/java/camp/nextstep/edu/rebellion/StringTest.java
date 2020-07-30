@@ -39,4 +39,21 @@ public class StringTest {
                 () -> assertThat(result).containsExactly("1")
         );
     }
+
+    @DisplayName("(1,2) 문자열이 주어졌을 때 substring 메소드를 활용하여 () 제거")
+    @Test
+    public void substringTest() {
+        // given
+        String str = "(1,2)";
+
+        // when
+        String deletedPrefix = str.substring(str.indexOf("(") + 1);
+        String deletedSuffix = deletedPrefix.substring(0, deletedPrefix.indexOf(")"));
+
+        // then
+        assertAll(
+                () -> assertThat(deletedPrefix).isEqualTo("1,2)"),
+                () -> assertThat(deletedSuffix).isEqualTo("1,2")
+        );
+    }
 }
