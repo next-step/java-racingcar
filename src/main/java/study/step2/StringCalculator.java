@@ -24,6 +24,7 @@ public class StringCalculator {
     public int calculate(String input) {
         checkEmpty(input);
         String[] parts = input.split(DELIMITER);
+        checkLengthIsOdd(parts.length);
 
         int memory = convertToInt(parts[0]);
         for (int i = 1; i < parts.length; i += 2) {
@@ -47,6 +48,12 @@ public class StringCalculator {
     private void checkEmpty(String input) {
         if (input == null || input.trim().equals("")) {
             throw new IllegalArgumentException("Input shouldn't be empty.");
+        }
+    }
+
+    private void checkLengthIsOdd(int length) {
+        if (length % 2 != 1) {
+            throw new IllegalArgumentException("Total count of numbers and operations should be a odd number.");
         }
     }
 
