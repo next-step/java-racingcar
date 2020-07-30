@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class StringTest {
@@ -55,5 +56,30 @@ public class StringTest {
                 () -> assertThat(deletedPrefix).isEqualTo("1,2)"),
                 () -> assertThat(deletedSuffix).isEqualTo("1,2")
         );
+    }
+
+    @DisplayName("abc 문자열이 주어졌을 때 chartAt()을 활용하여 특정 위치의 문자를 가져오는지 확인")
+    @Test
+    public void charAtTest() {
+        // given
+        String str = "abc";
+
+        // when
+        char result  = str.charAt(0);
+
+        // then
+        assertThat(result).isEqualTo('a');
+    }
+
+    @DisplayName("chartAt()을 활용하여 특정 위치의 문자를 가져올 때 위치 값 벗어나면 Exception 발생")
+    @Test
+    public void charAtThrownExceptionTest() {
+        // given
+        String str = "abc";
+
+        // when
+        assertThatThrownBy(() -> str.charAt(10))
+                .isInstanceOf(IndexOutOfBoundsException.class)
+                .hasMessage("String index out of range: 10");
     }
 }
