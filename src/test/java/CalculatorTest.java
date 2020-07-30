@@ -4,6 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CalculatorTest {
@@ -49,6 +53,16 @@ class CalculatorTest {
         int actual = calculator.minus(input);
 
         assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("두 개의 숫자를 입력 받아 곱셈")
+    void multiplyBiTest() {
+        String input = "2 * 3";
+
+        int result = calculator.multiply(input);
+
+        assertThat(result).isEqualTo(6);
     }
 
 

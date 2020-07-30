@@ -29,4 +29,15 @@ public class Calculator {
         if (operands.size() == 0) throw new IllegalArgumentException("잘못된 입력 값");
         return operands.stream().reduce((a, b) -> a - b).get();
     }
+
+    public int multiply(String input) {
+        List<String> operand = Arrays.stream(input.split(" "))
+                .filter(e -> !e.equals("*"))
+                .collect(Collectors.toList());
+
+        return operand.stream()
+                .map(Integer::parseInt)
+                .reduce((a, b) -> a * b)
+                .orElseThrow(IllegalArgumentException::new);
+    }
 }
