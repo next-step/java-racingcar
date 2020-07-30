@@ -1,4 +1,4 @@
-package study;
+package study.step2;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
