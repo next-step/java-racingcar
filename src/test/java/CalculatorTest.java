@@ -84,4 +84,11 @@ class CalculatorTest {
         assertThatIllegalArgumentException().isThrownBy(() -> calculator.calculate(input));
     }
 
+    @Test
+    @DisplayName("사칙 연산 기호가 아닌 경우 IllegalArgumentException throw")
+    void throwNotOperatorTest() {
+        String input = "1 ) 2";
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> calculator.calculate(input));
+    }
 }

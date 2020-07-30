@@ -47,5 +47,5 @@ output : 10
 - [x] 두 개의 숫자를 입력 받아 나눗셈
 - [ ] ~~여러 개의 숫자를 입력 받아 나눗셈~~
 - [x] 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
-- [ ] 사칙 연산 기호가 아닌 경우 IllegalArgumentException throw
+- [x] 사칙 연산 기호가 아닌 경우 IllegalArgumentException throw
 - [x] 사칙 연산을 모두 포함하는 연산 테스트
