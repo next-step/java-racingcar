@@ -4,51 +4,53 @@ import java.util.stream.Collectors;
 
 public class Calculator {
 
-    public int plus(String input) {
+    public int plus(int a, int b) {
+        return a + b;
+    }
+
+    public int minus(int a, int b) {
+        return a - b;
+    }
+
+    public int multiply(int a, int b) {
+        return a * b;
+    }
+
+    public int divider(int a, int b) {
+        return a / b;
+    }
+
+    public int calculate(String input) {
         String[] split = input.split(" ");
 
-        int result = 0;
-        if (split.length > 2) result = Integer.parseInt(split[0]);
+        if (split.length == 0) throw new IllegalArgumentException("입력 값을 넣어주세요.");
+
+        int result = Integer.parseInt(split[0]);
+
         for (int i = 0; i < split.length; i++) {
-            String s = split[i];
-            if (s.equalsIgnoreCase("+")) {
-                result += Integer.parseInt(split[i+1]);
+            char c = split[i].charAt(0);
+            if (Character.isDigit(c)) {
+                continue;
+            }
+            int nextValue = Integer.parseInt(split[i+1]);
+            switch (c) {
+                case '+':
+                    plus(result, nextValue);
+                    break;
+                case '-':
+                    minus(result, nextValue);
+                    break;
+                case '*':
+                    multiply(result, nextValue);
+                    break;
+                case '/':
+                    divider(result, nextValue);
+                    break;
+                default:
+                    throw new IllegalArgumentException();
             }
         }
+
         return result;
-    }
-
-    public int minus(String input) {
-        String[] split = input.split(" ");
-
-        List<Integer> operands = Arrays.stream(split)
-                .filter(e -> !e.equals("-"))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-
-        if (operands.size() == 0) throw new IllegalArgumentException("잘못된 입력 값");
-        return operands.stream().reduce((a, b) -> a - b).get();
-    }
-
-    public int multiply(String input) {
-        List<String> operand = Arrays.stream(input.split(" "))
-                .filter(e -> !e.equals("*"))
-                .collect(Collectors.toList());
-
-        return operand.stream()
-                .map(Integer::parseInt)
-                .reduce((a, b) -> a * b)
-                .orElseThrow(IllegalArgumentException::new);
-    }
-
-    public int divider(String input) {
-        List<String> operand = Arrays.stream(input.split(" "))
-                .filter(e -> !e.equals("/"))
-                .collect(Collectors.toList());
-
-        return operand.stream()
-                .map(Integer::parseInt)
-                .reduce((a, b) -> a / b)
-                .orElseThrow(IllegalArgumentException::new);
     }
 }

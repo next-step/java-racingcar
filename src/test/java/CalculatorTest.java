@@ -1,15 +1,8 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.in;
 
 class CalculatorTest {
 
@@ -23,8 +16,7 @@ class CalculatorTest {
     @Test
     @DisplayName("두 개의 숫자를 입력 받아 덧셈")
     void plusBiOperand() {
-        String input = "1 + 2";
-        int plus = calculator.plus(input);
+        int plus = calculator.plus(1, 2);
 
         assertThat(plus).isEqualTo(3);
     }
@@ -41,8 +33,7 @@ class CalculatorTest {
     @Test
     @DisplayName("두 개의 숫자를 입력받아 뺼셈")
     void minusTwoOperand(){
-        String input = "2 - 1";
-        int result = calculator.minus(input);
+        int result = calculator.minus(2, 1);
 
         assertThat(result).isEqualTo(1);
     }
@@ -59,9 +50,7 @@ class CalculatorTest {
     @Test
     @DisplayName("두 개의 숫자를 입력 받아 곱셈")
     void multiplyBiTest() {
-        String input = "2 * 3";
-
-        int result = calculator.multiply(input);
+        int result = calculator.multiply(2, 3);
 
         assertThat(result).isEqualTo(6);
     }
@@ -69,12 +58,20 @@ class CalculatorTest {
     @Test
     @DisplayName("두 개의 숫자를 입력 받아 나눗셈")
     void divideTest() {
-        String input = "4 / 2";
-
-        int result = calculator.divider(input);
+        int result = calculator.divider(4, 2);
 
         assertThat(result).isEqualTo(2);
     }
 
+    @Test
+    @DisplayName("사칙 연산을 모두 포함하는 연산 테스트")
+    void calculateTest() {
+        String input = "1 * 4 - 2 + 3 / 5";
+        int expected = 1;
+
+        int actual = calculator.calculate(input);
+
+        assertThat(actual).isEqualTo(expected);
+    }
 
 }
