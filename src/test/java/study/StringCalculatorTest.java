@@ -2,6 +2,9 @@ package study;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EmptySource;
+import org.junit.jupiter.params.provider.NullSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -24,6 +27,17 @@ public class StringCalculatorTest {
     void calculateWithInvalidSymbol() {
         String expression = "2 + 3 * 4 % 2";
 
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            StringCalculator calculator = new StringCalculator(expression);
+            calculator.calculate();
+        });
+    }
+
+    @DisplayName("입력 값이 빈 공백 문자인 경우 exception 발생")
+    @ParameterizedTest
+    @NullSource
+    @EmptySource
+    void calculatorWithEmptyExpression(String expression) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             StringCalculator calculator = new StringCalculator(expression);
             calculator.calculate();
