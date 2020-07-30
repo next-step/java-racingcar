@@ -2,20 +2,18 @@ package step2;
 
 
 import step2.enums.Operator;
+import step2.enums.RegexPattern;
 
 import java.util.Arrays;
 
 import static step2.enums.ExceptionMessages.INPUT_VALUE_IS_NULL_OR_EMPTY;
 import static step2.enums.ExceptionMessages.NONE_VALID_INPUT_VALUE;
+import static step2.enums.RegexPattern.*;
 
 public class StringCalculator {
 
-    private static final String WHITE_SPACE_REGEX = "\\s+";
-    private static final String NUMBER_REGEX = "\\d";
-    private static final String OPERATOR_REGEX = "[+*-/]";
-
     public String[] splitStringByWhiteSpace(String expression) {
-        String[] splitResult = expression.split(WHITE_SPACE_REGEX);
+        String[] splitResult = WHITE_SPACE_REGEX.split(expression);
         if(splitResult.length < 2) {
             throw new IllegalArgumentException(NONE_VALID_INPUT_VALUE.toString());
         }
@@ -29,7 +27,7 @@ public class StringCalculator {
     }
 
     public void validateExpressionStartOrEndNumber(String[] stringArray) {
-        if(!stringArray[0].matches(NUMBER_REGEX) || !stringArray[stringArray.length-1].matches(NUMBER_REGEX)) {
+        if(!NUMBER_REGEX.matches(stringArray[0]) || !NUMBER_REGEX.matches(stringArray[stringArray.length-1])) {
             throw new IllegalArgumentException(NONE_VALID_INPUT_VALUE.toString());
         }
     }
@@ -80,8 +78,8 @@ public class StringCalculator {
 
     }
 
-    private String[] filterStringArrayByRegex(String[] stringArray, String regex) {
-        return Arrays.stream(stringArray).filter(string -> string.matches(regex)).toArray(String[]::new);
+    private String[] filterStringArrayByRegex(String[] stringArray, RegexPattern regexPattern) {
+        return Arrays.stream(stringArray).filter(string -> regexPattern.matches(string)).toArray(String[]::new);
     }
 
 }
