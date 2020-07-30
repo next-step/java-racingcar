@@ -6,11 +6,12 @@ import step2.enums.RegexPattern;
 
 import java.util.Arrays;
 
-import static step2.enums.ExceptionMessages.INPUT_VALUE_IS_NULL_OR_EMPTY;
 import static step2.enums.ExceptionMessages.NONE_VALID_INPUT_VALUE;
 import static step2.enums.RegexPattern.*;
 
 public class StringCalculator {
+
+    private final StringCalculatorValidator stringCalculatorValidator = new StringCalculatorValidator();
 
     public String[] splitStringByWhiteSpace(String expression) {
         String[] splitResult = WHITE_SPACE_REGEX.split(expression);
@@ -18,24 +19,6 @@ public class StringCalculator {
             throw new IllegalArgumentException(NONE_VALID_INPUT_VALUE.toString());
         }
         return splitResult;
-    }
-
-    public void validateIsNotNullOrEmpty(String string) {
-        if(string == null || string.trim().isEmpty()) {
-            throw new IllegalArgumentException(INPUT_VALUE_IS_NULL_OR_EMPTY.toString());
-        }
-    }
-
-    public void validateExpressionStartOrEndNumber(String[] stringArray) {
-        if(!NUMBER_REGEX.matches(stringArray[0]) || !NUMBER_REGEX.matches(stringArray[stringArray.length-1])) {
-            throw new IllegalArgumentException(NONE_VALID_INPUT_VALUE.toString());
-        }
-    }
-
-    public void validateOperatorCount(int operatorCount, int numberCount) {
-        if(numberCount - operatorCount != 1) {
-            throw new IllegalArgumentException(NONE_VALID_INPUT_VALUE.toString());
-        }
     }
 
     public Integer parseStringToInteger(String numberString) {
@@ -59,12 +42,13 @@ public class StringCalculator {
     }
 
     public Integer calculate(String expression) {
-        validateIsNotNullOrEmpty(expression);
         String[] splitElements = splitStringByWhiteSpace(expression);
-        validateExpressionStartOrEndNumber(splitElements);
         String[] operatorElements = filterOperatorStringFromStringArray(splitElements);
         Integer[] numberElements = transformStringArrayToIntegerArray(filterNumberStringFromStringArray(splitElements));
-        validateOperatorCount(operatorElements.length,numberElements.length);
+
+        stringCalculatorValidator.validateIsNotNullOrEmpty(expression)
+                                .validateExpressionStartOrEndNumber(splitElements)
+                                .validateOperatorCount(operatorElements.length, numberElements.length);
 
         Integer result = numberElements[0];
 

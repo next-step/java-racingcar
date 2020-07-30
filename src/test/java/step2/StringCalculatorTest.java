@@ -34,20 +34,6 @@ class StringCalculatorTest {
         assertThrows(IllegalArgumentException.class,()->stringCalculator.splitStringByWhiteSpace(given));
     }
 
-    @DisplayName("문자열이 비어있으면 IllegalArgumentException 발생")
-    @ParameterizedTest
-    @ValueSource(strings={""," ","   "})
-    void assertIsNotNullOrEmpty(String string) {
-        assertThrows(IllegalArgumentException.class,()->stringCalculator.validateIsNotNullOrEmpty(string));
-    }
-
-    @DisplayName("String 배열이 숫자가 아닌 값으로 시작하거나 끝나면 IllegalArgumentException 발생")
-    @Test
-    void assertExpressionStartOrEndNumber() {
-        String[] given = new String[]{"-","1","+","2"};
-        assertThrows(IllegalArgumentException.class,()->stringCalculator.validateExpressionStartOrEndNumber(given));
-    }
-
     @DisplayName("String을 Integer로 변환")
     @Test
     void parseStringToInteger() {
