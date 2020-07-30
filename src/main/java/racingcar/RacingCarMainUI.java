@@ -2,12 +2,14 @@ package racingcar;
 
 import java.util.Scanner;
 
+import racingcar.domain.MotorRacing;
+
 public class RacingCarMainUI {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        inputCount();
-        racingResultDisplay();
+        final Counter counter = inputCount();
+        racingResultDisplay(counter);
     }
 
     private static Counter inputCount() {
@@ -20,7 +22,15 @@ public class RacingCarMainUI {
         return new Counter(carCount, tryCount);
     }
 
-    private static void racingResultDisplay(){
+    private static void racingResultDisplay(Counter counter){
+        final MotorRacing motorRacing = new MotorRacing(counter.getCarCout());
+
         System.out.println("실행 결과");
+
+        int tryCount = counter.getTryCount();
+        for(int i = 0; tryCount > i; ++i) {
+            motorRacing.racing(tryCount);
+            System.out.println(motorRacing + "\n");
+        }
     }
 }
