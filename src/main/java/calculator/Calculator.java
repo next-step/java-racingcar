@@ -3,6 +3,9 @@ package calculator;
 import resource.StringResources;
 import util.StringUtils;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Calculator {
 
     private final String equation;

@@ -25,19 +25,7 @@ public enum Operator {
     public static Operator of(String param) throws IllegalArgumentException {
 
         char op = param.charAt(0);
-
-        switch (op) {
-            case '+':
-                return Operator.PLUS;
-            case '-':
-                return Operator.SUBTRACT;
-            case '*':
-                return Operator.MULTIPLY;
-            case '/':
-                return Operator.DIVISION;
-        }
-
-        throw new IllegalArgumentException(StringResources.ERR_INCORRECT_OPERATOR);
+        return OperatorMapper.getOperator(op);
     }
 
     public int calculate(int a, int b) throws ArithmeticException {
