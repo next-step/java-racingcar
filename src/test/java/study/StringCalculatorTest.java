@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
-import study.StringCalculator;
+import study.step2.StringCalculator;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -54,43 +54,6 @@ class StringCalculatorTest {
         assertThat(calculator.multiply(928363, 0)).isEqualTo(0);
     }
 
-    // NOTE: KDY - NullAndEmptySource 는 현재 EXPERIMENTAL 상태이다.
-    @ParameterizedTest
-    @NullAndEmptySource
-    public void checkEmpty_ShouldThrow_IllegalArgumentException(String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> calculator.checkEmpty(input));
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = { "2", "2+3", "2.3", "3 :3", "3 / 3" })
-    public void checkEmpty_ShouldReturn_True(String input) {
-        assertThat(calculator.checkEmpty(input)).isEqualTo(true);
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = { ".", "4", "$", "{", "@" })
-    public void checkValidOperator_ShouldThrow_IllegalArgumentException(String operator) {
-        assertThatIllegalArgumentException().isThrownBy(() -> calculator.checkValidOperator(operator));
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = { "+", "-", "*", "/" })
-    public void checkValidOperator_ShouldReturn_True(String operator) {
-        assertThat(calculator.checkValidOperator(operator)).isEqualTo(true);
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = { "-5", "-3", "0", "2" ,"4", "19", "65534" })
-    public void convertToInt_shouldReturn_Integer(String numberString) {
-        assertThat(calculator.convertToInt(numberString)).isEqualTo(Integer.parseInt(numberString));
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = { "-", "+-552", "5,553", "english" })
-    public void convertToInt_shouldThrow_IllegalArgumentException(String wrongInput) {
-        assertThatIllegalArgumentException().isThrownBy(() -> calculator.convertToInt(wrongInput));
-    }
-
     @ParameterizedTest
     @CsvSource(value = { "3 + 5:8", "3 - 5:-2", "3 * 5:15", "3 / 5:0", "3 + 5 - 90 / 4 * 7:-140"}, delimiter = ':')
     public void calculate(String expression, int exceptedResult) {
@@ -98,7 +61,8 @@ class StringCalculatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = { "4.2", "5 1 2", ".", "5+5", "3 + 5 ; 4", "5 - 3 * 20 . 5" })
+    @NullAndEmptySource
+    @ValueSource(strings = { "3+5", "- 3 + 6", "3.5 / 10", "10 / 2 * 5*2" })
     public void calculate_ShouldThrow_IllegalArgumentException(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> calculator.calculate(input));
     }
