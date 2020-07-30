@@ -20,7 +20,7 @@ class CalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"2 + 3 * 4 / 2,10", "2 + 3 - 1 * 4 / 2,8", "2 + 3,5", "2 - 3,-1", "3 * 4,12", "4 / 2,2"})
+    @CsvSource(value = {"2 + 3 * 4 / 2 = 10", "2 + 3 - 1 * 4 / 2 = 8", "2 + 3 = 5", "2 - 3 = -1", "3 * 4 = 12", "4 / 2 = 2"}, delimiter = '=')
     @DisplayName("사칙연산")
     void test(String input, int result) {
         assertThat(calculator.calculate(input)).isEqualTo(result);
