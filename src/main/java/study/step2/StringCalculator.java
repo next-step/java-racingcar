@@ -1,69 +1,52 @@
 package study.step2;
 
+import study.step2.operators.*;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 public class StringCalculator {
     private static final String DELIMITER = " ";
-    private static final String[] VALID_OPERATORS = new String[] { "+", "-", "*", "/" };
 
-    int memory;
+    private final Map<String, Operator> operators;
 
-    public int add(int leftValue, int rightValue) {
-        return leftValue + rightValue;
-    }
+    public StringCalculator() {
+        Map<String, Operator> operators = new HashMap<>();
+        operators.put("+", new AddOperator());
+        operators.put("-", new SubtractOperator());
+        operators.put("*", new MultiplyOperator());
+        operators.put("/", new DivideOperator());
 
-    public int subtract(int leftValue, int rightValue) {
-        return leftValue - rightValue;
-    }
-
-    public int divide(int leftValue, int rightValue) {
-        return leftValue / rightValue;
-    }
-
-    public int multiply(int leftValue, int rightValue) {
-        return leftValue * rightValue;
+        this.operators = Collections.unmodifiableMap(operators);
     }
 
     public int calculate(String input) {
         checkEmpty(input);
         String[] parts = input.split(DELIMITER);
 
-        memory = convertToInt(parts[0]);
-        for (int i = 1; i < parts.length - 1; i += 2) {
-            int convertedNumber = convertToInt(parts[i + 1]);
-            memory = evaluatePart(parts[i], convertedNumber);
+        int memory = convertToInt(parts[0]);
+        for (int i = 1; i < parts.length; i += 2) {
+            Operator operator = getOperator(parts[i]);
+            int value = convertToInt(parts[i + 1]);
+
+            memory = operator.evaluate(memory, value);
         }
+
         return memory;
     }
 
-    private int evaluatePart(String operator, int number) {
-        checkValidOperator(operator);
-        switch (operator) {
-            case "+":
-                return add(memory, number);
-            case "-":
-                return subtract(memory, number);
-            case "*":
-                return multiply(memory, number);
-            case "/":
-                return divide(memory, number);
+    private Operator getOperator(String operator) {
+        if (!operators.containsKey(operator)) {
+            throw new IllegalArgumentException(String.format("%s is not a valid operator", operator));
         }
 
-        throw new IllegalArgumentException();
+        return operators.get(operator);
     }
 
     private void checkEmpty(String input) {
         if (input == null || input.trim().equals("")) {
             throw new IllegalArgumentException("Input shouldn't be empty.");
-        }
-    }
-
-    private void checkValidOperator(String operator) {
-        boolean result = false;
-        for (String validOperator : VALID_OPERATORS) {
-            result |= validOperator.equals(operator);
-        }
-
-        if (!result) {
-            throw new IllegalArgumentException(String.format("%s is not operator", operator));
         }
     }
 
