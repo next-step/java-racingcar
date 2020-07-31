@@ -15,11 +15,9 @@ class CarTest {
 
     private Car car;
 
-    private static final Integer ATTEMPT_COUNT_FOR_TEST = 3;
-
     @BeforeEach
     void setup() {
-        this.car = new Car(ATTEMPT_COUNT_FOR_TEST);
+        this.car = new Car();
     }
 
     @ParameterizedTest
