@@ -29,7 +29,7 @@ public class SetCollectionTest {
     @Test
     public void sizeTest() {
         // when & then
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @DisplayName("contains 가 정상적으로 동작하는지 확인")
