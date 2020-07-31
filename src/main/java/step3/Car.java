@@ -6,17 +6,14 @@ public class Car {
 
     private Integer distance;
 
-    private final Integer attemptCount;
-
     private final Random dice = new Random();
 
     private static final Integer DICE_BOUND = 10;
 
     private static final Integer GO_ABLE_SCORE = 4;
 
-    public Car(Integer attemptCount) {
+    public Car() {
         this.distance = 0;
-        this.attemptCount = attemptCount;
     }
 
     public Integer go() {
