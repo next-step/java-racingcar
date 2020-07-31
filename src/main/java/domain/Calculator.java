@@ -10,7 +10,6 @@ public class Calculator {
 
 
     private void validationInput(String numberStr) {
-        System.out.println("??");
         if (numberStr == null || numberStr.trim().isEmpty()) {
             throw new IllegalArgumentException("빈 공백 문자열은 존재 할 수 없습니다.");
         }
