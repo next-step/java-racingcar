@@ -28,7 +28,7 @@ public enum Operation {
 		}
 
 		boolean correctOperation = Stream.of(values())
-										 .anyMatch(value -> value.equals(operation));
+										 .anyMatch(value -> value.sign.equals(operation));
 
 		if (!correctOperation) {
 			throw new CalculatorException("올바르지 못한 연산자가 입력되었습니다.");
