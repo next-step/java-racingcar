@@ -20,6 +20,8 @@ public class SetTest {
         numbers.add(3);
 
     }
+    //csvsource comma-separated values : test
+    //@ValueSource , @EnumSource, @MethodSource
     @ParameterizedTest
     @CsvSource(value={"1:true", "3;true", "4:false"}, delimiter = ':')
     public void contains(int number, boolean result){
