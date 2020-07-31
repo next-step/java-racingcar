@@ -125,7 +125,23 @@ void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(String input, String ex
 * 공백 문자열을 빈 공백 문자로 분리하려면 String 클래스의 split(" ") 메소드를 활용한다.
 * 반복적인 패턴을 찾아 반복문으로 구현한다.
 
-    
+### Step2 리뷰 사항
+* [ ] [fix01][전체파일] if 다음에 공백, for 다음에 공백 컨벤션 준수하기 
+* [ ] [fix02][CalculationOperator.java] operation 이름을 의미있게 변경하기
+* [ ] [fix03][Calculator.java] validate 조건문 간소 하기 
+* [ ] [fix04][Calculator.java] reduce를 활용하여 lamda식 변경해보기 
+<pre><code>
+private static int makeResult(List<Integer> numbers, List<CalculationOperator> operators) {
+        int[] index = { 0 };
+        int result = numbers.stream()
+                            .reduce((preOperand, postOperand) -> {
+                                 int sum = operators.get(index[0]).operation(preOperand, postOperand);
+                                 index[0] += 1;
+                                 return sum;
+                            }).get();
+        return result;
+    }
+</code></pre>
 
 # 3단계 - 자동차 경주
 ### 기능 요구사항
