@@ -12,12 +12,16 @@ public class RaceCondition {
         this.cars = this.prepareCars(participationCount);
     }
 
-    List<CarWentResult> attempt() {
-        return this.cars.stream().map(car -> car.go()).collect(Collectors.toList());
+    AttemptResult attempt() {
+        return new AttemptResult(orderGo());
     }
 
     Integer getCarsCount() {
         return this.cars.size();
+    }
+
+    List<CarWentResult> orderGo() {
+        return this.cars.stream().map(car -> car.go()).collect(Collectors.toList());
     }
 
     private List<Car> prepareCars(Integer participationCount) {

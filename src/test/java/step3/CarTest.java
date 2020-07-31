@@ -9,7 +9,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
 
@@ -17,7 +16,7 @@ class CarTest {
 
     @BeforeEach
     void setup() {
-        this.car = new Car();
+        this.car = new Car(1);
     }
 
     @ParameterizedTest

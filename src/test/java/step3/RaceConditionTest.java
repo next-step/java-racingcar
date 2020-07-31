@@ -11,9 +11,9 @@ class RaceConditionTest {
     @DisplayName("참가자 수와 1회 이동을 시도한 결과의 수가 같은가")
     @ParameterizedTest
     @ValueSource(ints = {3,4,5,0})
-    void attempt(Integer participationCount) {
+    void orderGo(Integer participationCount) {
         RaceCondition raceCondition = new RaceCondition(participationCount);
-        assertThat(raceCondition.attempt().size()).isEqualTo(participationCount);
+        assertThat(raceCondition.orderGo().size()).isEqualTo(participationCount);
     }
 
     @DisplayName("참가자 수와 raceCondition 객체 안의 차량 수가 같은가")

@@ -21,7 +21,7 @@ public class Car {
 
     public CarWentResult go() {
         attemptGoing(isAbleToGo(rollDice()));
-        return new CarWentResult(this);
+        return new CarWentResult(this.distance, this.carNumber);
     }
 
     public Integer getDistance() {

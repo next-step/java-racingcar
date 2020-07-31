@@ -6,9 +6,9 @@ public class CarWentResult {
 
     Integer carNumber;
 
-    public CarWentResult(Car car) {
-        this.distance = car.getDistance();
-        this.carNumber = car.getCarNumber();
+    public CarWentResult(Integer distance, Integer carNumber) {
+        this.distance = distance;
+        this.carNumber = carNumber;
     }
 
     public Integer getDistance() {
