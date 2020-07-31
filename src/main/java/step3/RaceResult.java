@@ -14,6 +14,10 @@ public class RaceResult {
         return attemptResults.get(attemptResults.size()-1).getFistCarNumber();
     }
 
+    public List<AttemptResult> getAttemptResults() {
+        return attemptResults;
+    }
+
     Integer attemptResultsSize() {
         return this.attemptResults.size();
     }

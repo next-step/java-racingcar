@@ -21,5 +21,7 @@ public class AttemptResult {
                         .orElseThrow(()->new IllegalStateException(NOT_FOUND_FIRST));
     }
 
-
+    public List<CarWentResult> getCarWentResults() {
+        return carWentResults;
+    }
 }
