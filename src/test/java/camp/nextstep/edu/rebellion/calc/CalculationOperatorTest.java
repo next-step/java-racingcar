@@ -40,6 +40,7 @@ class CalculationOperatorTest {
     public void notSupportedOperatorTest() {
         // given
         String operator = "(";
+
         // when & then
         assertThatThrownBy(() -> CalculationOperator.of(operator))
                 .isInstanceOf(IllegalArgumentException.class)
