@@ -2,12 +2,12 @@ package util;
 
 public final class Common {
 
-    public static boolean checkValue(String number) {
+    public static boolean isStringNumber(String number) {
         try {
             Double.parseDouble(number);
             return false;
-        }catch (Exception e) {
-            return  true;
+        } catch (NumberFormatException e) {
+            return true;
         }
     }
 
