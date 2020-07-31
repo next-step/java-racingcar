@@ -6,36 +6,38 @@ public class Car {
 
     private Integer distance;
 
+    private final Integer carNumber;
+
     private final Random dice = new Random();
 
     private static final Integer DICE_BOUND = 10;
 
     private static final Integer GO_ABLE_SCORE = 4;
 
-    public Car() {
+    public Car(Integer carNumber) {
         this.distance = 0;
+        this.carNumber = carNumber;
     }
 
-    public Integer go() {
-        return attemptGoing(isAbleToGo(rollDice()));
+    public CarWentResult go() {
+        attemptGoing(isAbleToGo(rollDice()));
+        return new CarWentResult(this);
     }
 
-    Integer getDistance() {
+    public Integer getDistance() {
         return this.distance;
     }
 
+    public Integer getCarNumber() {
+        return this.carNumber;
+    }
+
     Integer attemptGoing(boolean goingPossibility) {
-        if(goingPossibility) {
-            return ++this.distance;
-        }
-        return distance;
+        return goingPossibility ? ++this.distance : this.distance;
     }
 
     boolean isAbleToGo(Integer score) {
-        if(score >= GO_ABLE_SCORE) {
-            return true;
-        }
-        return false;
+        return score >= GO_ABLE_SCORE;
     }
 
     Integer rollDice() {
