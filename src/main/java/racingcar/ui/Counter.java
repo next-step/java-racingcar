@@ -1,6 +1,6 @@
-package racingcar;
+package racingcar.ui;
 
-final class Counter {
+public final class Counter {
     private final int carCout;
     private final int tryCount;
 
