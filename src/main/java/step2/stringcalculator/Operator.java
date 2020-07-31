@@ -1,4 +1,4 @@
-package stringcalculator;
+package step2.stringcalculator;
 
 public enum Operator {
 
