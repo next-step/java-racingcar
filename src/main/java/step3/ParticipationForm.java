@@ -2,9 +2,9 @@ package step3;
 
 public class ParticipationForm {
 
-    private Integer participationCount;
+    private final Integer participationCount;
 
-    private Integer attemptCount;
+    private final Integer attemptCount;
 
     public ParticipationForm(Integer participationCount, Integer attemptCount) {
         this.participationCount = participationCount;

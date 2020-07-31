@@ -9,7 +9,7 @@ public class Reception {
 
     private static final String HOW_MANY_PARTICIPATION = "자동차 대수는 몇 대 인가요?";
     private static final String HOW_MANY_ATTEMPT = "시도할 회수는 몇 회 인가요?";
-    private static final String PLEASE_INPUT_INTEGER = "잘못 입력 하셨습니다. 소숫점이 없는 숫자로 입력해주세요.";
+    private static final String PLEASE_INPUT_INTEGER = "잘못 입력 하셨습니다. 자연수로 입력 해 주세요.";
 
     public static ParticipationForm takeParticipationForm() {
         Integer participationCount;
@@ -27,9 +27,7 @@ public class Reception {
             attemptCount = getAttemptCount();
         }
 
-        ParticipationForm participationForm = new ParticipationForm(participationCount, attemptCount);
-        System.out.println(" 대수 : '" + participationForm.getParticipationCount() + "' 시도 횟수 : '" + participationForm.getAttemptCount() + "'");
-        return participationForm;
+        return new ParticipationForm(participationCount, attemptCount);
     }
 
     private static Integer getParticipationCount() {
