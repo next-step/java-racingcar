@@ -36,18 +36,27 @@ public class Calculator {
     }
 
     public static void validate(List<Integer> numbers, List<CalculationOperator> operators) {
-        if(numbers.size() == operators.size() + 1) {
-            return;
+        if (numbers.size() != operators.size() + 1) {
+            throw new IllegalArgumentException("수식이 올바르지 않습니다");
         }
-        throw new IllegalArgumentException("수식이 올바르지 않습니다");
     }
 
     private static int makeResult(List<Integer> numbers, List<CalculationOperator> operators) {
+        /*
         int idx = 0;
         int result = numbers.get(0);
-        for(int i = 1; i < numbers.size(); i++) {
+        for (int i = 1; i < numbers.size(); i++) {
             result = operators.get(idx++).operation(result, numbers.get(i));
         }
+        return result;
+         */
+        int[] index = { 0 };
+        int result = numbers.stream()
+                .reduce((val1, val2) -> {
+                    int median = operators.get(index[0]).compute(val1, val2);
+                    index[0] += 1;
+                    return median;
+                }).get();
         return result;
     }
 }

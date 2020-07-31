@@ -8,7 +8,7 @@ public enum CalculationOperator {
     SUB("-", (val1, val2) -> (val1 - val2)),
     MUL("*", (val1, val2) -> (val1 * val2)),
     DIV("/", (val1, val2) -> {
-        if(0 == val2) {
+        if (0 == val2) {
             throw new IllegalArgumentException("0으로 나눌 수 없습니다");
         }
         return (val1 / val2);
@@ -22,7 +22,7 @@ public enum CalculationOperator {
         this.expression = expression;
     }
 
-    public int operation(int val1, int val2) {
+    public int compute(int val1, int val2) {
         return this.expression.apply(val1, val2);
     }
 
