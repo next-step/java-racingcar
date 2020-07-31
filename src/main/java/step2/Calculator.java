@@ -3,21 +3,26 @@ package step2;
 import step2.core.*;
 import step2.util.StringUtils;
 
-import static step2.common.ArithmethicConst.*;
+import static step2.common.ArithmethicConstants.*;
 import static step2.common.ExceptionMessage.*;
 
 public class Calculator {
+
+    private final int FIRST_VALUE_IN_INPUT_VAL = 0;
+
+    private final int ONE = 1;
+    private final int TWO = 2;
 
     public int process(String inputVal){
 
         String[] splitInputValBySpace = StringUtils.splitInputValBySpace(inputVal);
         validationInputValue(splitInputValBySpace);
 
-        int resultValue = Integer.parseInt(splitInputValBySpace[ZERO]);
+        int resultValue = Integer.parseInt(splitInputValBySpace[FIRST_VALUE_IN_INPUT_VAL]);
 
         int arithmethicCount = getArithmethicCount(splitInputValBySpace.length);
 
-        for(int i=0; i< arithmethicCount; i++){
+        for(int i = 0; i < arithmethicCount; i++){
             String operation = splitInputValBySpace[getOperationIndex(i)];
             String operationValue = splitInputValBySpace[getOperationValueIndex(i)];
 
