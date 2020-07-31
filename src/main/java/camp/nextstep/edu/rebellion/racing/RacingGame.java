@@ -11,14 +11,10 @@ public class RacingGame {
     private final Record record;
     private final int rounds;
 
-    private RacingGame(int carNumbers, int rounds) {
+    public RacingGame(int carNumbers, int rounds) {
         this.rounds = rounds;
         this.entry = enroll(carNumbers);
         this.record = new Record();
-    }
-
-    public static RacingGame ready(int carNumbers, int rounds) {
-        return new RacingGame(carNumbers, rounds);
     }
 
     public Record start() {

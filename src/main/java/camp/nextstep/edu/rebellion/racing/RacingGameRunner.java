@@ -5,7 +5,7 @@ public class RacingGameRunner {
         int carNumbers = InputView.getCarNumbers();
         int rounds = InputView.getRounds();
 
-        RacingGame game = RacingGame.ready(carNumbers, rounds);
+        RacingGame game = new RacingGame(carNumbers, rounds);
         Record record = game.start();
 
         ResultView.showResult(record);
