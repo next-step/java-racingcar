@@ -18,8 +18,9 @@ public class Calculator {
     }
 
     private void validationInput(String[] numbers) {
-        Arrays.stream(numbers)
-                .forEach(num -> validationInput(num));
+        for (String number : numbers) {
+            validationInput(number);
+        }
     }
 
 
@@ -37,8 +38,8 @@ public class Calculator {
                 number = Integer.parseInt(operator[i - 1]);
             }
 
-            Operation v = Operation.findByInputMark(operator[i]);
-            number = v.calculate(number, operator[i + 1]);
+            Operation operation = Operation.findByInputMark(operator[i]);
+            number = operation.calculate(number, operator[i + 1]);
 
         }
 

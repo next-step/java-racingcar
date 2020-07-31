@@ -36,7 +36,7 @@ public enum Operation {
 
     public int calculate(Integer origin, String number) {
         int parseNumber = Integer.parseInt(number);
-        return this.expression.apply(origin, parseNumber);
+        return expression.apply(origin, parseNumber);
     }
 
     public String getMark() {
