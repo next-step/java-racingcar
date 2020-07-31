@@ -15,7 +15,7 @@ public class CalculatorApplication {
 		String userInput = scanner.nextLine();
 		int result = calculator.execute(userInput);
 
-		System.out.println("결과는 " + result + "입니다.");
+		System.out.println(String.format("결과는 %s입니다.", result));
 
 	}
 }
