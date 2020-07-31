@@ -8,13 +8,13 @@ public class ControlTower {
 
     private Integer attemptCount;
 
-    public List<AttemptResult> startCarRacing(ParticipationForm participationForm) {
+    public RaceResult startCarRacing(ParticipationForm participationForm) {
         this.attemptCount = participationForm.getAttemptCount();
         RaceCondition raceCondition = prepareRaceCondition(participationForm.getParticipationCount());
-        return run(raceCondition);
+        return new RaceResult(run(raceCondition));
     }
 
-    private List<AttemptResult> run(RaceCondition raceCondition) {
+    List<AttemptResult> run(RaceCondition raceCondition) {
         return IntStream.range(0,this.attemptCount)
                         .mapToObj(index -> raceCondition.attempt())
                         .collect(Collectors.toList());

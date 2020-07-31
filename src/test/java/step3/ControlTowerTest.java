@@ -20,7 +20,7 @@ class ControlTowerTest {
     @DisplayName("레이싱 결과 리스트의 크기가 ParticipationForm의 attemptCount와 같은지 확인")
     @Test
     void startCarRacing() {
-        assertThat(controlTower.startCarRacing(MOCK_PARTICIPATION_FORM).size()).isEqualTo(MOCK_PARTICIPATION_FORM.getAttemptCount());
+        assertThat(controlTower.startCarRacing(MOCK_PARTICIPATION_FORM).attemptResultsSize()).isEqualTo(MOCK_PARTICIPATION_FORM.getAttemptCount());
     }
 
 }
