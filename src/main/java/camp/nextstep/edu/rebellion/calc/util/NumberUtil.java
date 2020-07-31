@@ -9,7 +9,7 @@ public class NumberUtil {
     private NumberUtil(){}
 
     public static boolean isNumeric(String str) {
-        if(isEmpty(str)) {
+        if (isEmpty(str)) {
             return false;
         }
         return pattern.matcher(str).matches();

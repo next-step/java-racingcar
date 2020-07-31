@@ -7,7 +7,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CalculationOperatorTest {
     @DisplayName("사칙연산이 정상적으로 수행되는지 확인")
@@ -20,7 +19,7 @@ class CalculationOperatorTest {
     }, delimiter = ':')
     public void calculationOperationTest(String operator, int val1, int val2, int expected) {
         // when
-        int result = CalculationOperator.of(operator).operation(val1, val2);
+        int result = CalculationOperator.of(operator).compute(val1, val2);
 
         // then
         assertThat(result).isEqualTo(expected);
@@ -30,7 +29,7 @@ class CalculationOperatorTest {
     @Test
     public void divideZeroTest() {
         // when & then
-        assertThatThrownBy(() -> CalculationOperator.DIV.operation(10, 0))
+        assertThatThrownBy(() -> CalculationOperator.DIV.compute(10, 0))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("0으로 나눌 수 없습니다");
     }

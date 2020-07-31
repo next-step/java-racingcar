@@ -126,10 +126,10 @@ void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(String input, String ex
 * 반복적인 패턴을 찾아 반복문으로 구현한다.
 
 ### Step2 리뷰 사항
-* [ ] [fix01][전체파일] if 다음에 공백, for 다음에 공백 컨벤션 준수하기 
-* [ ] [fix02][CalculationOperator.java] operation 이름을 의미있게 변경하기
-* [ ] [fix03][Calculator.java] validate 조건문 간소 하기 
-* [ ] [fix04][Calculator.java] reduce를 활용하여 lamda식 변경해보기 
+* [x] [fix01][전체파일] if 다음에 공백, for 다음에 공백 컨벤션 준수하기 
+* [x] [fix02][CalculationOperator.java] operation 이름을 의미있게 변경하기
+* [x] [fix03][Calculator.java] validate 조건문 간소화 하기 
+* [x] [fix04][Calculator.java] reduce를 활용하여 lamda식 변경해보기 
 <pre><code>
 private static int makeResult(List<Integer> numbers, List<CalculationOperator> operators) {
         int[] index = { 0 };
