@@ -100,4 +100,4 @@ void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(String input, String ex
     * Introduction to AssertJ 문서 참고해 assertj의 다양한 활용법 익힌다.
     
 ### Step1 리뷰 사항
-* [ ] [fix01][SetCollectionTest.java] hasSize를 활용할 수 있습니다
+* [x] [fix01][SetCollectionTest.java] hasSize를 활용할 수 있습니다
