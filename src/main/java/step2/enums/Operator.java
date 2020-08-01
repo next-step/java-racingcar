@@ -1,11 +1,15 @@
 package step2.enums;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
-import static step2.enums.ExceptionMessages.CAN_NOT_DIVIDE_ZERO;
-import static step2.enums.ExceptionMessages.IS_NOT_OPERATOR;
+import static step2.constants.ExceptionMessages.CAN_NOT_DIVIDE_ZERO;
+import static step2.constants.ExceptionMessages.IS_NOT_OPERATOR;
 
 public enum Operator {
 
@@ -14,7 +18,7 @@ public enum Operator {
     MULTIPLY_OPERATOR("*", (one, theOther) -> one * theOther),
     DIVIDE_OPERATOR("/", (one, theOther) -> {
                                                     if(theOther == 0) {
-                                                        throw new IllegalArgumentException(CAN_NOT_DIVIDE_ZERO.toString());
+                                                        throw new IllegalArgumentException(CAN_NOT_DIVIDE_ZERO);
                                                     }
                                                     return one / theOther;
                                                 });
@@ -23,6 +27,9 @@ public enum Operator {
 
     private BiFunction<Integer, Integer, Integer> computeFunction;
 
+    private static final Map<String, Operator> valuesMap = Collections.unmodifiableMap(Arrays.stream(Operator.values())
+                                                                                        .collect(Collectors.toMap(operator -> operator.sign,Function.identity())));
+
     Operator(String sign, BiFunction<Integer, Integer, Integer> computeFunction) {
         this.sign = sign;
         this.computeFunction = computeFunction;
@@ -30,11 +37,11 @@ public enum Operator {
 
     public static Operator get(String sign) {
         return getOperator(sign)
-                .orElseThrow(()->new IllegalArgumentException(IS_NOT_OPERATOR.toString()));
+                .orElseThrow(()->new IllegalArgumentException(IS_NOT_OPERATOR));
     }
 
     private static Optional<Operator> getOperator(String sign) {
-        return Arrays.stream(Operator.values()).filter(operator -> operator.sign.equals(sign)).findFirst();
+        return Optional.ofNullable(valuesMap.get(sign));
     }
 
     public Integer compute(Integer one, Integer thOther) {
