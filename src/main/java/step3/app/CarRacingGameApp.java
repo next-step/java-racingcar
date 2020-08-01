@@ -7,7 +7,6 @@ import step3.output.ResultView;
 import step3.service.CarRacingGame;
 
 import java.util.List;
-import java.util.Map;
 
 public class CarRacingGameApp {
 
