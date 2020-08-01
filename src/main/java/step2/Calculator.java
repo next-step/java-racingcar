@@ -1,9 +1,7 @@
 package step2;
 
-import step2.core.*;
 import step2.util.StringUtils;
 
-import static step2.common.ArithmethicConstants.*;
 import static step2.common.ExceptionMessage.*;
 
 public class Calculator {
@@ -26,9 +24,8 @@ public class Calculator {
             String operation = splitInputValBySpace[getOperationIndex(i)];
             String operationValue = splitInputValBySpace[getOperationValueIndex(i)];
 
-            Arithmetic arithmetic = selectOperation(operation);
+            resultValue = OperatorType.calculate(operation,resultValue,Integer.parseInt(operationValue));
 
-            resultValue = arithmetic.calculate(resultValue,Integer.parseInt(operationValue));
         }
 
         return resultValue;
@@ -40,16 +37,6 @@ public class Calculator {
 
     private int getOperationValueIndex(int i){
         return TWO * (i + ONE);
-    }
-
-    private Arithmetic selectOperation(String operation){
-        switch (operation){
-            case OPERATION_ADDITION: return new AdditionArithmetic();
-            case OPERATION_SUBTRACT: return new SubtractionArithmetic();
-            case OPERATION_MULTIPLY: return new MultiplyArithmetic();
-            case OPERATION_DIVIDE: return new DivideArithmetic();
-            default: throw new IllegalArgumentException(INVALID_OPERATION);
-        }
     }
 
     private int getArithmethicCount(int totalLength){
