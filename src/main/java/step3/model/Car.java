@@ -10,16 +10,16 @@ public class Car {
 
     private int position = 1;
 
-    public int getPower(int max) {
-        return PICKER.nextInt(max);
+    public int getPower() {
+        return PICKER.nextInt(PowerConfig.MAX);
     }
 
     public int getForwardDistance(int power) {
-        return (power >= 4) ? 1 : 0;
+        return (power >= PowerConfig.CONDITION) ? 1 : 0;
     }
 
     public void move() {
-        int power = getPower(PowerConfig.MAX);
+        int power = getPower();
         int forwardDistance = getForwardDistance(power);
         position += forwardDistance;
     }
