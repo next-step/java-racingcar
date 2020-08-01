@@ -41,4 +41,5 @@
 
 ---
 ## Refactoring List Follow Code Review 
-1. Reception, Announcer 클래스에 private 생성자 추가 및 Reception 클래스의 takeParticipationForm 중복 제거 
+1. Reception, Announcer 클래스에 private 생성자 추가 및 Reception 클래스의 takeParticipationForm 중복 제거
+2. UI 패키지 추가, MessageConstant 클래스 추가, RaceCondition->RacePlayers 명칭 변경 및 내부 private 메소드 정의 

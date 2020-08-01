@@ -1,10 +1,10 @@
-package step3;
+package step3.dto;
 
 public class CarWentResult {
 
-    Integer distance;
+    private final Integer distance;
 
-    Integer carNumber;
+    private final Integer carNumber;
 
     public CarWentResult(Integer distance, Integer carNumber) {
         this.distance = distance;

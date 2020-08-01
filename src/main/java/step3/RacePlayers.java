@@ -1,27 +1,27 @@
 package step3;
 
+import step3.dto.CarWentResult;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class RaceCondition {
+public class RacePlayers {
 
     private final List<Car> cars;
 
-    public RaceCondition(Integer participationCount) {
+    public RacePlayers(Integer participationCount) {
         this.cars = this.prepareCars(participationCount);
     }
 
-    AttemptResult attempt() {
+    public AttemptResult attempt() {
         return new AttemptResult(orderGo());
     }
 
-    Integer getCarsCount() {
-        return this.cars.size();
-    }
-
-    List<CarWentResult> orderGo() {
-        return this.cars.stream().map(car -> car.go()).collect(Collectors.toList());
+    private List<CarWentResult> orderGo() {
+        return this.cars.stream()
+                        .map(car -> car.go())
+                        .collect(Collectors.toList());
     }
 
     private List<Car> prepareCars(Integer participationCount) {

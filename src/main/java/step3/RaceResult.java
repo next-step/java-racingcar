@@ -4,7 +4,7 @@ import java.util.List;
 
 public class RaceResult {
 
-    private List<AttemptResult> attemptResults;
+    private final List<AttemptResult> attemptResults;
 
     public RaceResult(List<AttemptResult> attemptResults) {
         this.attemptResults = attemptResults;

@@ -1,16 +1,16 @@
-package step3;
+package step3.ui;
+
+import step3.dto.ParticipationForm;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.function.Supplier;
 
+import static step3.ui.MessageConstant.*;
+
 public class Reception {
 
     private static final Scanner SCANNER = new Scanner(System.in);
-
-    private static final String HOW_MANY_PARTICIPATION = "자동차 대수는 몇 대 인가요?";
-    private static final String HOW_MANY_ATTEMPT = "시도할 회수는 몇 회 인가요?";
-    private static final String PLEASE_INPUT_INTEGER = "잘못 입력 하셨습니다. 자연수로 입력 해 주세요.";
 
     private Reception() {}
 
@@ -25,14 +25,14 @@ public class Reception {
     private static Integer retryUntilGettingRightValue(Supplier<Integer> supplier) {
         boolean retryFlag = true;
         Integer result = 0;
-        do {
+        while (retryFlag) {
             try {
                 result = supplier.get();
                 retryFlag = false;
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage()+"\n");
+                System.out.println(e.getMessage()+NEW_LINE);
             }
-        } while (retryFlag);
+        }
 
         return result;
     }

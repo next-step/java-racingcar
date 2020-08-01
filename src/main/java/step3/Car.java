@@ -1,5 +1,7 @@
 package step3;
 
+import step3.dto.CarWentResult;
+
 import java.util.Random;
 
 public class Car {

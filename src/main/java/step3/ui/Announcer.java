@@ -1,27 +1,31 @@
-package step3;
+package step3.ui;
+
+import step3.AttemptResult;
+import step3.dto.CarWentResult;
+import step3.RaceResult;
 
 import java.util.List;
 
-public class Announcer {
+import static step3.ui.MessageConstant.*;
 
-    private static final String RESULT_MESSAGE = "실행 결과";
+public class Announcer {
 
     private Announcer() {}
 
     public static void announceRaceResult(RaceResult raceResult) {
-        System.out.println("\n"+RESULT_MESSAGE);
+        System.out.println(NEW_LINE+RESULT_MESSAGE);
         List<AttemptResult> attemptResults = raceResult.getAttemptResults();
         attemptResults.forEach(attemptResult -> {
             List<CarWentResult> carWentResults = attemptResult.getCarWentResults();
             carWentResults.forEach(carWentResult -> printResult(carWentResult));
-            System.out.println("\n");
+            System.out.println(NEW_LINE);
         });
     }
 
     private static void printResult(CarWentResult carWentResult) {
         StringBuilder stringBuilder = new StringBuilder();
         for(int i = 0 ; i < carWentResult.getDistance() ; i ++) {
-            stringBuilder.append("-");
+            stringBuilder.append(DISTANCE_INDICATOR);
         }
         System.out.println(stringBuilder.toString());
 
