@@ -36,7 +36,7 @@ public class CarTest {
     @Test
     @DisplayName("이동한다.")
     public void move() {
-        assertThat(car.move()).isGreaterThanOrEqualTo(0);
+        assertThat(car.move().getPosition()).isGreaterThanOrEqualTo(0);
     }
 
 }
