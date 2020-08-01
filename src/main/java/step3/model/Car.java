@@ -18,11 +18,10 @@ public class Car {
         return (power >= 4) ? 1 : 0;
     }
 
-    public Car move() {
+    public void move() {
         int power = getPower(PowerConfig.MAX);
         int forwardDistance = getForwardDistance(power);
         position += forwardDistance;
-        return this;
     }
 
     public int getPosition() {
