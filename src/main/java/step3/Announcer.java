@@ -2,9 +2,11 @@ package step3;
 
 import java.util.List;
 
-public class Anncouncer {
+public class Announcer {
 
     private static final String RESULT_MESSAGE = "실행 결과";
+
+    private Announcer() {}
 
     public static void announceRaceResult(RaceResult raceResult) {
         System.out.println("\n"+RESULT_MESSAGE);

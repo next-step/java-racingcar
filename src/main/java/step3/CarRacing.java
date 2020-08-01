@@ -6,6 +6,6 @@ public class CarRacing {
         ControlTower controlTower = new ControlTower();
         ParticipationForm participationForm = Reception.takeParticipationForm();
         RaceResult raceResult = controlTower.startCarRacing(participationForm);
-        Anncouncer.announceRaceResult(raceResult);
+        Announcer.announceRaceResult(raceResult);
     }
 }

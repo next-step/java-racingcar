@@ -38,3 +38,7 @@
 9. 입력 값을 토대로 경주를 컨트롤 하는 클래스
 10. 경주 결과를 전달하는 데이터 클래스
 11. 경주 결과를 출력해주는 UI 클래스
+
+---
+## Refactoring List Follow Code Review 
+1. Reception, Announcer 클래스에 private 생성자 추가 및 Reception 클래스의 takeParticipationForm 중복 제거 
