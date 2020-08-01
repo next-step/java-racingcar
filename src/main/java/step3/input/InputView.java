@@ -1,12 +1,12 @@
-package study;
+package step3.input;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-class InputView {
+public class InputView {
 
-    static Map<String, Integer> getConfiguration() {
+    public static Map<String, Integer> getConfiguration() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("자동차 대수는 몇 대 인가요?");
         int numberOfCars = scanner.nextInt();
