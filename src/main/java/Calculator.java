@@ -1,20 +1,16 @@
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
 
 public class Calculator {
 
     public static int calculate(ArithmeticArguments args) {
+        int result = args.nextOperand();
 
         while (args.hasNextOperator()) {
-            Integer[] operands = args.nextOperands();
+            Integer operand = args.nextOperand();
             Operator operator = args.nextOperator();
 
-            int result = operator.operate(operands[0], operands[1]);
-
-            args.setResult(result);
+            result = operator.operate(result, operand);
         }
 
-        return args.getResult();
+        return result;
     }
 }

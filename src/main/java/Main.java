@@ -1,5 +1,3 @@
-import java.util.List;
-import java.util.Scanner;
 
 public class Main {
 
@@ -12,9 +10,6 @@ public class Main {
             int result = Calculator.calculate(new ArithmeticArguments(expression));
 
             System.out.println(result);
-        } catch (ArithmeticFormatException e) {
-            System.out.println("Not Arithmetic Expression");
-            e.printStackTrace();
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }

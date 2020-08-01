@@ -1,6 +1,4 @@
-import java.awt.*;
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -9,6 +7,9 @@ public class ArithmeticParser {
     private static final String OPERATOR_PATTERN = "[-*/+]";
     private static final String OPERAND_PATTERN = "[0-9]+";
 
+    private ArithmeticParser() {
+    }
+    
     public static List<Integer> extractOperandsFromString(String expression) {
         return Stream.of(expression.split(" "))
                 .filter(element -> Pattern.matches(OPERAND_PATTERN, element))

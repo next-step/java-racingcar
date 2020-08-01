@@ -2,9 +2,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ArithmeticArgumentsTest {
@@ -17,7 +15,10 @@ class ArithmeticArgumentsTest {
 
     @Test
     void nextOperandsTest() {
-        assertThat(args.nextOperands()).isEqualTo(new Integer[] {2, 3});
+        assertThat(this.args.nextOperand()).isEqualTo(2);
+        assertThat(this.args.nextOperand()).isEqualTo(3);
+        assertThat(this.args.nextOperand()).isEqualTo(4);
+        assertThat(this.args.nextOperand()).isEqualTo(2);
     }
 
     @ParameterizedTest
@@ -28,19 +29,13 @@ class ArithmeticArgumentsTest {
 
 
     @Test
-    void hasNextOperatorTest(String operator) {
+    void hasNextOperatorTest() {
         assertThat(args.hasNextOperator()).isTrue();
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4})
-    void setResultTest(int nums) {
-        args.setResult(nums);
-        assertThat(args.getResult()).isEqualTo(nums);
-    }
-
-    @Test
-    void getResultTest() {
-        assertThat(Calculator.calculate(args)).isEqualTo(10);
+        assertThat(args.nextOperator()).isEqualTo(Operator.ADD);
+        assertThat(args.hasNextOperator()).isTrue();
+        assertThat(args.nextOperator()).isEqualTo(Operator.MULTIPLY);
+        assertThat(args.hasNextOperator()).isTrue();
+        assertThat(args.nextOperator()).isEqualTo(Operator.DIVIDE);
+        assertThat(args.hasNextOperator()).isFalse();
     }
 }

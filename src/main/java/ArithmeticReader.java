@@ -9,14 +9,14 @@ public class ArithmeticReader {
         this.reader = new Scanner(System.in);
     }
 
-    public String read() throws ArithmeticFormatException {
+    public String read() {
         String expression = reader.nextLine();
 
         if (isArithmeticExpression(expression)) {
             return expression;
         }
 
-        throw new ArithmeticFormatException(new IllegalArgumentException());
+        throw new IllegalArgumentException("잘못된 수식을 입력하셨습니다.");
     }
 
     public boolean isArithmeticExpression(String expression) {
