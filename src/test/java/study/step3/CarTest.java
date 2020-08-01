@@ -23,7 +23,7 @@ public class CarTest {
     @ValueSource(ints = {1, 5, 7, 10})
     @DisplayName("파워(엔진출력)를 구한다.")
     public void getPower(int max) {
-        assertThat(car.getPower(max)).isGreaterThanOrEqualTo(0);
+        assertThat(car.getPower()).isGreaterThanOrEqualTo(0);
     }
 
     @ParameterizedTest
@@ -34,9 +34,18 @@ public class CarTest {
     }
 
     @Test
+    @DisplayName("현재 위치를 가져온다.")
+    public void getPosition() {
+        assertThat(car.getPosition()).isGreaterThanOrEqualTo(0);
+    }
+
+    @Test
     @DisplayName("이동한다.")
     public void move() {
-        assertThat(car.move().getPosition()).isGreaterThanOrEqualTo(0);
+        int beforePosition = car.getPosition();
+        car.move();
+        int afterPosition = car.getPosition();
+        assertThat(afterPosition).isGreaterThanOrEqualTo(beforePosition);
     }
 
 }
