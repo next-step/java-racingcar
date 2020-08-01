@@ -4,6 +4,7 @@ import java.util.Random;
 
 class MotorRacingRandomMoveRule implements MotorRacingRule {
     public static final int RACE_CONDITION = 4;
+    public static final int RACE_MOVE_BOUND = 10;
     private final Random random;
 
     public MotorRacingRandomMoveRule() {
@@ -16,6 +17,6 @@ class MotorRacingRandomMoveRule implements MotorRacingRule {
     }
 
     int getRaceConditionRange() {
-        return random.nextInt(10);
+        return random.nextInt(RACE_MOVE_BOUND);
     }
 }
