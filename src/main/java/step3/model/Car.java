@@ -11,7 +11,7 @@ public class Car {
     }
 
     public int getForwardDistance(int power) {
-        return 0;
+        return (power >= 4) ? 1 : 0;
     }
 
 }
