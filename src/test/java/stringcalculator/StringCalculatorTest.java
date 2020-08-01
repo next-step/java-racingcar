@@ -1,4 +1,10 @@
-package stringcalculator.stringcalculator;
+package stringcalculator;
+
+import com.sun.codemodel.internal.JExpression;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import stringcalculator.StringCalculator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,48 +25,86 @@ public class StringCalculatorTest {
 
      */
 
-    // 문자열 입력값
+    //******** 계획 : custom Exception message 관리 및 테스트 케이스 추가 *************//
+    //******** 심화 : JUnit Parameterized Test & Custom Exception github 확인 ******//
 
-
-
-    @Test
-    public void StringAndPlus (){
-        String equation = "1+1";
-        double result = StringCalculator.calculate(equation);
-        assertThat(result).isEqualTo(2.0);
-    }
-    @Test
-    public void null_or_emptystring (){
-        assertThatIllegalArgumentException().isThrownBy(()->{
-
+    @DisplayName("입력값 공백 문자 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = "")
+    public void null_or_emptystring (String emptyString){
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            StringCalculator stringCalculator = new StringCalculator(emptyString);
+            stringCalculator.calculate();
         });
     }
 
-    @Test
-    public void not_calculable_symbol (){
-        assertThatIllegalArgumentException().isThrownBy(()->{});
+    @DisplayName("지정 문자열 외 입력 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"1 [ 2", "5 % 1", " ^ 6", " 3     * 2"})
+    public void not_calculable_symbol (String expression){
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            StringCalculator stringCalculator = new StringCalculator(expression);
+            stringCalculator.calculate();
+        });
     }
 
-    @Test
-    public void split_add_test(){
-        int result1 = scal.split_add("1 c 2");
-        assertThat(result1).isEqualTo(3);
+    @DisplayName("나눗셈 0으로 나눌 경우 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"4 / 0", "0 / 0"})
+    public void divide_by_zero (String expression){
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            StringCalculator stringCalculator = new StringCalculator(expression);
+            stringCalculator.calculate();
+        });
     }
 
+    @DisplayName("사칙연산 기능 테스트")
     @Test
-    public void split_substract(){
-        assertThat("").isEqualTo(0);
+    public void featureTest () {
+        //after test -> refactor : plus, minus, multi
+        String expression = "3 + 4 - 2 * 3";
+        StringCalculator fullscal = new StringCalculator(expression);
+
+        assertThat(fullscal.calculate()).isEqualTo(15);
     }
 
+    @DisplayName("덧셈 기능 테스트")
     @Test
-    public void split_multiple(){
-        assertThat("").isEqualTo(0);
+    public void StringAndPlus () {
+        String expression = "1 + 1";
+        StringCalculator scal = new StringCalculator(expression);
+
+        assertThat(scal.calculate()).isEqualTo(2);
     }
 
+    @DisplayName("곱셈 기능 테스트")
     @Test
-    public void split_divide(){
-        assertThat("").isEqualTo(0);
+    public void StringAndMultipler (){
+        String expression = "2 * 2";
+        StringCalculator scal = new StringCalculator(expression);
+
+        assertThat(scal.calculate()).isEqualTo(4);
     }
 
-    //사칙 연산 모두 포함 기능 구현 후 테스트?
+    @DisplayName("뺄셈 기능 테스트")
+    @Test
+    public void StringAndMinus (){
+        String expression = "10 - 3";
+        StringCalculator scal = new StringCalculator(expression);
+
+        assertThat(scal.calculate()).isEqualTo(7);
+    }
+
+    @DisplayName("나눗셈 기능 테스트")
+    @Test
+    public void StringAndDivider (){
+        String expression = "10 / 5";
+        StringCalculator scal = new StringCalculator(expression);
+
+        assertThat(scal.calculate()).isEqualTo(2);
+    }
+
+
+
+
 }

@@ -1,41 +1,35 @@
-package stringcalculator.stringcalculator;
+package stringcalculator;
 
 public class StringCalculator {
-    public double calculate(String equation){
-        if(equation.contains("+")){
-            return processAddition(equation);
-            //processAddition - refactoring
-            //String[] components = equation.split("\\+");
-            //return calculate(components[0]) + calculate(components[1]);
+    // 입력 문자열의 '숫자' 와 '사칙연산' 사이 반드시, 빈 공백 문자열, final 변수 지정
+    //******** SPLIT DELIMITER & REGEX 학습 필요 *************//
+    private static final String DELIMITER = " ";
+
+    //Singleton 생성자 유지
+    //******** null값 에러, 인스턴스화 방지 로직 구별 필요 *************//
+
+    private final String expression;
+
+    public StringCalculator(String expression) {
+        if (expression == null || expression.isEmpty()) {
+            throw new IllegalArgumentException(" ");
         }
-        if (equation.matches("[0-9]+")){
-            return Double.parseDouble(equation);
-        }
-        return Double.NaN;
+        this.expression = expression;
     }
 
-    private double processAddition(String equation){
-        String[] components = equation.split("\\+");
-        return calculate(components[0]) + calculate(components[1]);
-    }
-
-    public static int split_add(String text) {
-        if (text == null || text.isEmpty()) {
-            return 0;
+    //******** 심화 : Colletion API 활용하여 숫자, 연산자 관리  *************//
+    //******** 심화 : Scanner.input 통해 parseInt 및 반복문 적용 *************//
+    public int calculate(){
+        String[] splitExpression = expression.split(" ");
+        int number = Integer.parseInt(splitExpression[0]);
+        // num, op, num -> for 구문 (i = i+2), 이후 number은 parseInt(i+1)
+        for (int i = 1; i < splitExpression.length; i = i + 2) {
+            StringCalOperator strOperation = StringCalOperator.findOperation(splitExpression[i]);
+            number = strOperation.applyAsInt(number, Integer.parseInt(splitExpression[i + 1]));
         }
-
-        String[] values = text.split(",|:");
-        return sum(values);
+        return number;
     }
 
-    private static int sum(String[] values) {
-        int result = 0;
-        for (String value : values) {
-            result += Integer.parseInt(value);
-        }
-        return result;
-    }
-    //not_calculable_symbol
-
-    //add~multiple (divide : round )
 }
+
+
