@@ -8,7 +8,7 @@ public class Car {
 
     private static final Random PICKER = new Random();
 
-    private int position;
+    private int position = 1;
 
     public int getPower(int max) {
         return PICKER.nextInt(max);
