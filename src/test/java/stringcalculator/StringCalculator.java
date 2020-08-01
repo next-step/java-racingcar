@@ -3,29 +3,8 @@ package stringcalculator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.IntBinaryOperator;
 
 public final class StringCalculator {
-
-    private enum Operator {
-
-        PLUS('+', (a, b) -> a + b),
-        MINUS('-', (a, b) -> a - b),
-        MULTIPLY('*', (a, b) -> a * b),
-        DIVIDE('/', (a, b) -> a / b);
-
-        private final char op;
-        private final IntBinaryOperator operator;
-
-        Operator(char op, IntBinaryOperator operator) {
-            this.op = op;
-            this.operator = operator;
-        }
-
-        public int apply(int left, int right) {
-            return operator.applyAsInt(left, right);
-        }
-    }
 
     private final Map<Character, Operator> operatorMap = new HashMap<>();
 
@@ -33,7 +12,7 @@ public final class StringCalculator {
 
     public StringCalculator() {
         for (Operator operator : Operator.values()) {
-            operatorMap.put(operator.op, operator);
+            operatorMap.put(operator.getSymbol(), operator);
         }
     }
 
@@ -42,7 +21,9 @@ public final class StringCalculator {
     }
 
     private void verifyTokenSize(String[] tokens) {
-        if (tokens.length % 2 == 0) throw new IllegalArgumentException("Does it end with an operator?");
+        if (tokens.length % 2 == 0) {
+            throw new IllegalArgumentException("Does it end with an operator?");
+        }
     }
 
     public int calculate(String input) {
