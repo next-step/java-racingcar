@@ -1,16 +1,16 @@
 package racingcar.ui;
 
 public final class Counter {
-    private final int carCout;
+    private final int carCount;
     private final int tryCount;
 
-    public Counter(int carCout, int tryCount) {
-        this.carCout = carCout;
+    public Counter(int carCount, int tryCount) {
+        this.carCount = carCount;
         this.tryCount = tryCount;
     }
 
-    public int getCarCout() {
-        return carCout;
+    public int getCarCount() {
+        return carCount;
     }
 
     public int getTryCount() {
