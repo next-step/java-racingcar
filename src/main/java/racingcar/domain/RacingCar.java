@@ -8,7 +8,7 @@ class RacingCar {
         this.mileage = 0;
     }
 
-    public void race(MotorRacingRule motorRacingRule){
+    public void racing(MotorRacingRule motorRacingRule){
         if(motorRacingRule.pass()) {
             mileage++;
         }

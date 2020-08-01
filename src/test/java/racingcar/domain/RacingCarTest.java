@@ -11,7 +11,7 @@ class RacingCarTest {
     void go() {
         RacingCar car = new RacingCar();
         MotorRacingRule moveRule = () -> true;
-        car.race(moveRule);
+        car.racing(moveRule);
         assertThat(car.getMileage()).isPositive();
     }
 
@@ -20,7 +20,7 @@ class RacingCarTest {
     void stop() {
         RacingCar car = new RacingCar();
         MotorRacingRule moveRule = () -> false;
-        car.race(moveRule);
+        car.racing(moveRule);
         assertThat(car.getMileage()).isZero();
     }
 }

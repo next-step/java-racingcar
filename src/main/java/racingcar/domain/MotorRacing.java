@@ -27,19 +27,19 @@ public class MotorRacing {
     public MotorRacingDisplayResults racing(final int raceRound){
         final MotorRacingDisplayResults motorRacingDisplayResults = new MotorRacingDisplayResults();
         for(int round = 0; raceRound > round; ++round) {
-            motorRacingDisplayResults.saveEachRound(allCarRaceStart());
+            motorRacingDisplayResults.saveEachRound(allCarsStartRacing());
         }
         return motorRacingDisplayResults;
     }
 
-    private MotorRacingDisplayRoundResult allCarRaceStart() {
+    private MotorRacingDisplayRoundResult allCarsStartRacing() {
         final List<Integer> collect = racingCars.stream()
-                                          .peek(this::carRace)
+                                          .peek(this::runMotorRace)
                                           .map(RacingCar::getMileage)
                                           .collect(toList());
         return new MotorRacingDisplayRoundResult(Collections.unmodifiableList(collect));
     }
-    private void carRace(RacingCar car){
-        car.race(motorRacingRule);
+    private void runMotorRace(RacingCar car){
+        car.racing(motorRacingRule);
     }
 }
