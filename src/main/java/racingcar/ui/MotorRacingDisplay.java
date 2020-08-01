@@ -2,17 +2,12 @@ package racingcar.ui;
 
 import java.util.stream.Stream;
 
-import racingcar.domain.MotorRacing;
 import racingcar.ui.dto.MotorRacingDisplayResults;
 
 public class MotorRacingDisplay {
-    public static void racingResultDisplay(Counter counter){
-        final MotorRacing motorRacing = MotorRacing.randomMotorRacing(counter.getCarCout());
+    public static void racingResultDisplay(MotorRacingDisplayResults results){
         display("실행 결과");
-
-        MotorRacingDisplayResults results = motorRacing.racing(counter.getTryCount());
         display(results);
-
     }
 
     public static void display(Object o){
