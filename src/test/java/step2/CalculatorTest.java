@@ -5,17 +5,15 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import step2.core.*;
 import step2.util.StringUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static step2.common.ArithmethicConstants.*;
 
 class CalculatorTest {
 
     private Calculator calculator = new Calculator();
-
-    private Arithmetic arithmetic;
 
     @ParameterizedTest
     @CsvSource(value = {"1 + 2:3","1:1","1 + 2 + 3:5"}, delimiter = ':')
@@ -48,8 +46,7 @@ class CalculatorTest {
     @CsvSource(value = {"1:2:3","0:2:2","0:0:0"}, delimiter = ':')
     @DisplayName("입력값 더하기 값이 원하는 값이 나오는지 확인")
     void addTest(int firstVal, int secondVal, int resultVal) {
-        arithmetic = new AdditionArithmetic();
-        int addResult = arithmetic.calculate(firstVal, secondVal);
+        int addResult = OperatorType.calculate(OPERATION_ADDITION,firstVal,secondVal);
         assertThat(addResult).isEqualTo(resultVal);
     }
 
@@ -57,8 +54,7 @@ class CalculatorTest {
     @CsvSource(value = {"1:2:-1","3:1:2","3:3:0"}, delimiter = ':')
     @DisplayName("입력값 빼기 값이 원하는 값이 나오는지 확인")
     void minus(int firstVal, int secondVal, int resultVal) {
-        arithmetic = new SubtractionArithmetic();
-        int minusResult = arithmetic.calculate(firstVal, secondVal);
+        int minusResult = OperatorType.calculate(OPERATION_SUBTRACT,firstVal,secondVal);
         assertThat(minusResult).isEqualTo(resultVal);
     }
 
@@ -66,8 +62,7 @@ class CalculatorTest {
     @CsvSource(value = {"1:2:2","0:2:0","3:1:3"}, delimiter = ':')
     @DisplayName("입력값 곱하기 값이 원하는 값이 나오는지 확인")
     void multiply(int firstVal, int secondVal, int resultVal) {
-        arithmetic = new MultiplyArithmetic();
-        int multiplyResult = arithmetic.calculate(firstVal, secondVal);
+        int multiplyResult = OperatorType.calculate(OPERATION_MULTIPLY,firstVal,secondVal);
         assertThat(multiplyResult).isEqualTo(resultVal);
     }
 
@@ -75,8 +70,7 @@ class CalculatorTest {
     @CsvSource(value = {"10:5:2","0:2:0","2:2:1"}, delimiter = ':')
     @DisplayName("입력값 나누기 값이 원하는 값이 나오는지 확인")
     void devide(int firstVal, int secondVal, int resultVal) {
-        arithmetic = new DivideArithmetic();
-        int devideResult = arithmetic.calculate(firstVal, secondVal);
+        int devideResult = OperatorType.calculate(OPERATION_DIVIDE,firstVal,secondVal);
         assertThat(devideResult).isEqualTo(resultVal);
     }
 
@@ -102,7 +96,7 @@ class CalculatorTest {
     @ValueSource(strings = {"1 / 0"})
     @DisplayName("통합테스트 예외(0으로 나눌때)")
     void divideZeroExceptionTest(String inputVal){
-        assertThatExceptionOfType(IllegalArgumentException.class)
+        assertThatExceptionOfType(ArithmeticException.class)
             .isThrownBy(() -> {
                 calculator.process(inputVal);
             });
