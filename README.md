@@ -7,3 +7,8 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 기능목록
+1. 간단한 UI 객체 생성
+2. 레이싱에 필요한 객체 설계
+3. 레이싱 결과 표시위해 UI객체와 연동
