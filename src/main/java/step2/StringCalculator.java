@@ -9,8 +9,8 @@ class StringCalculator {
     private enum OperatorType {
 
         ADD("+", (x, y) -> x + y),
-        SUBSTRACT("-", (x, y) -> x - y),
-        MULTIPL("*", (x, y) -> x * y),
+        SUBTRACT("-", (x, y) -> x - y),
+        MULTIPLY("*", (x, y) -> x * y),
         DIVIDE("/", (x, y) -> {
             try {
                 return x / y;
@@ -39,7 +39,7 @@ class StringCalculator {
                     .stream(values())
                     .filter(operatorType -> operatorType.getOperator().equals(operator))
                     .mapToInt(filtered -> filtered.getOperation().apply(x, y))
-                    .max()
+                    .findFirst()
                     .orElse(0);
         }
 
@@ -57,7 +57,8 @@ class StringCalculator {
             throw new IllegalArgumentException();
         }
 
-        return input.split(" ");
+        String delimiter = " ";
+        return input.split(delimiter);
     }
 
     private void validateInputs(String[] inputs) throws IllegalArgumentException {
@@ -70,8 +71,9 @@ class StringCalculator {
     }
 
     private void validate(String string, int index) throws IllegalArgumentException {
+        String emptyBlankSpace = "";
         if (
-                ("".equals(string))
+                (emptyBlankSpace.equals(string))
                         || (index % 2 == 0 && !validateStringToInteger(string))
                         || (index % 2 != 0 && !OperatorType.validateOperator(string))
         ) {
@@ -96,9 +98,9 @@ class StringCalculator {
                 .range(0, inputs.length / 2)
                 .reduce(Integer.parseInt(inputs[0]), (accumulator, index) -> {
                     int converted = index * 2 + 1;
-                    String operater = inputs[converted];
+                    String operator = inputs[converted];
                     int operand = Integer.parseInt(inputs[converted + 1]);
-                    return OperatorType.operate(operater, accumulator, operand);
+                    return OperatorType.operate(operator, accumulator, operand);
                 });
     }
 }
