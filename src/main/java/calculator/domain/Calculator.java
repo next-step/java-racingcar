@@ -1,6 +1,6 @@
-package domain;
+package calculator.domain;
 
-import constant.ExceptionMessage;
+import calculator.constant.ExceptionMessage;
 
 public class Calculator {
 
