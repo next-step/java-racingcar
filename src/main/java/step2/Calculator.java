@@ -1,9 +1,9 @@
-package setp2;
+package step2;
 
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-import static setp2.Operator.calculate;
+import static step2.Operator.calculate;
 
 public class Calculator {
     private final String[] formula;

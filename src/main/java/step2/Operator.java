@@ -1,4 +1,4 @@
-package setp2;
+package step2;
 
 import java.math.BigInteger;
 import java.util.Arrays;
