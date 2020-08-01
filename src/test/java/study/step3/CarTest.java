@@ -23,14 +23,20 @@ public class CarTest {
     @ValueSource(ints = {1, 5, 7, 10})
     @DisplayName("파워(엔진출력)를 구한다.")
     public void getPower(int max) {
-        assertThat(car.getPower(max)).isGreaterThan(0);
+        assertThat(car.getPower(max)).isGreaterThanOrEqualTo(0);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 4, 6, 9, 10})
     @DisplayName("주행할 거리를 구한다.")
     public void getForwardDistance(int power) {
-        assertThat(car.getForwardDistance(power)).isGreaterThan(0);
+        assertThat(car.getForwardDistance(power)).isGreaterThanOrEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("이동한다.")
+    public void move() {
+        assertThat(car.move()).isGreaterThanOrEqualTo(0);
     }
 
 }
