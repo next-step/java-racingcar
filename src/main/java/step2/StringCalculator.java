@@ -52,6 +52,14 @@ class StringCalculator {
         }
     }
 
+    private String[] splitInput(String input) throws IllegalArgumentException {
+        if (input == null) {
+            throw new IllegalArgumentException();
+        }
+
+        return input.split(" ");
+    }
+
     private void validateInputs(String[] inputs) throws IllegalArgumentException {
         if (inputs.length % 2 == 0) {
             throw new IllegalArgumentException();
@@ -81,17 +89,13 @@ class StringCalculator {
     }
 
     int calculateString(String input) throws IllegalArgumentException {
-        if (input == null) {
-            throw new IllegalArgumentException();
-        }
-
-        String[] inputs = input.split(" ");
+        String[] inputs = splitInput(input);
         validateInputs(inputs);
 
         return IntStream
                 .range(0, inputs.length / 2)
                 .reduce(Integer.parseInt(inputs[0]), (accumulator, index) -> {
-                    int converted = 2 * index + 1;
+                    int converted = index * 2 + 1;
                     String operater = inputs[converted];
                     int operand = Integer.parseInt(inputs[converted + 1]);
                     return OperatorType.operate(operater, accumulator, operand);
