@@ -31,7 +31,7 @@ public class StringTest {
         assertEquals("1,2", result);
     }
 
-    @DisplayName("특정 위치의 문자 반환")
+    @DisplayName("특정 위치의 문자 반환 - 위치 값 벗어나는 예외 처리")
     @Test
     void charAtException() {
         assertThatThrownBy(() -> {
