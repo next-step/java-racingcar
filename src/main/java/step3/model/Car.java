@@ -1,10 +1,14 @@
 package step3.model;
 
+import step3.config.PowerConfig;
+
 import java.util.Random;
 
 public class Car {
 
     private static final Random PICKER = new Random();
+
+    private int position;
 
     public int getPower(int max) {
         return PICKER.nextInt(max);
@@ -12,6 +16,17 @@ public class Car {
 
     public int getForwardDistance(int power) {
         return (power >= 4) ? 1 : 0;
+    }
+
+    public Car move() {
+        int power = getPower(PowerConfig.MAX);
+        int forwardDistance = getForwardDistance(power);
+        position += forwardDistance;
+        return this;
+    }
+
+    public int getPosition() {
+        return position;
     }
 
 }
