@@ -1,4 +1,4 @@
-package study.step3;
+package step3;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

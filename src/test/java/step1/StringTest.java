@@ -1,4 +1,4 @@
-package study.step1;
+package step1;
 
 import org.junit.jupiter.api.Test;
 

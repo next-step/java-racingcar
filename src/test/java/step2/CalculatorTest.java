@@ -1,12 +1,10 @@
-package study.step2;
+package step2;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import step2.Calculator;
-import step2.StringCalculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -24,7 +22,7 @@ class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"2 + 3 * 4 / 2 = 10", "2 + 3 - 1 * 4 / 2 = 8", "2 + 3 = 5", "2 - 3 = -1", "3 * 4 = 12", "4 / 2 = 2"}, delimiter = '=')
     @DisplayName("사칙연산")
-    void test(String input, int result) {
+    void calculator(String input, int result) {
         assertThat(calculator.calculate(input)).isEqualTo(result);
     }
 
