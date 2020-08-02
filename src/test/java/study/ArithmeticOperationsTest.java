@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ArithmeticOperationsTest {
@@ -40,12 +41,21 @@ class ArithmeticOperationsTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"10,2,5", "30,4,7", "10,7,1"})
+    @CsvSource({"10,2,5", "30,4,7", "10,7,1", "0,10,0"})
     void division(int value1, int value2, int expectValue) {
         ArithmeticOperations operations = ArithmeticOperations.DIVISION;
 
         Integer result = operations.calculate(value1, value2);
 
         assertThat(result).isEqualTo(expectValue);
+    }
+
+    @Test
+    void divisionByZero() {
+        ArithmeticOperations operations = ArithmeticOperations.DIVISION;
+
+        assertThatThrownBy(()->operations.calculate(10, 0))
+                .isInstanceOf(IllegalArgumentException.class);
+
     }
 }

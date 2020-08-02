@@ -6,7 +6,13 @@ public enum ArithmeticOperations {
     ADDITION("+", (v1, v2) -> v1 + v2),
     SUBTRACTION("-", (v1, v2) -> v1 - v2),
     MULTIPLICATION("*", (v1, v2) -> v1 * v2),
-    DIVISION("/", (v1, v2) -> v1 / v2);
+    DIVISION("/", (v1, v2) -> {
+        if (v2 == 0) {
+            throw new IllegalArgumentException("Can not be divided by zero");
+        }
+
+        return v1 / v2;
+    });
 
     private final String operation;
     private final BiFunction<Integer, Integer, Integer> calculate;
