@@ -43,4 +43,9 @@ public class CarRacingView {
         });
     }
 
+    public static void main(String[] args) {
+        CarRacingView racingView = new CarRacingView();
+        racingView.prepareCarRacing();
+        racingView.startCarRacing();
+    }
 }
