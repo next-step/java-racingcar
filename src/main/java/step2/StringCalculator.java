@@ -10,12 +10,16 @@ public class StringCalculator implements Calculator {
     @Override
     public int calculate(String input) {
         validateInputString(input);
-        String[] splited = input.split(SPLIT_REGEX);
+        String[] splited = split(input);
         int calculationResult = Integer.valueOf(splited[0]);
         for (int i = 1; i < splited.length; i = i + 2) {
             calculationResult = calculateWithOperation(calculationResult, Integer.valueOf(splited[i + 1]), splited[i]);
         }
         return calculationResult;
+    }
+
+    private String[] split(String input) {
+        return input.split(SPLIT_REGEX);
     }
 
     private void validateInputString(String input) {
