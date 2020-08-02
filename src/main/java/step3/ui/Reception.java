@@ -11,6 +11,7 @@ import static step3.constants.MessageConstant.*;
 public class Reception {
 
     private static final Scanner SCANNER = new Scanner(System.in);
+    private static final Integer INIT = 0;
 
     private Reception() {}
 
@@ -24,7 +25,7 @@ public class Reception {
 
     private static Integer retryUntilGettingRightValue(Supplier<Integer> supplier) {
         boolean retryFlag = true;
-        Integer result = 0;
+        Integer result = INIT;
         while (retryFlag) {
             try {
                 result = supplier.get();

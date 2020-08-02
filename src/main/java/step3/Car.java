@@ -8,6 +8,8 @@ import java.util.Objects;
 
 public class Car {
 
+    private static final Integer INIT_DISTANCE = 0;
+
     private final Integer carNumber;
 
     private final MoveStrategy moveStrategy;
@@ -17,13 +19,13 @@ public class Car {
     public Car(Integer carNumber) {
         this.carNumber = carNumber;
         this.moveStrategy = new Dice();
-        this.distance = 0;
+        this.distance = INIT_DISTANCE;
     }
     //For Test Code
-    public Car(MoveStrategy moveStrategy) {
-        this.carNumber = 0;
+    public Car(Integer carNumber, MoveStrategy moveStrategy) {
+        this.carNumber = carNumber;
         this.moveStrategy = moveStrategy;
-        this.distance = 0;
+        this.distance = INIT_DISTANCE;
     }
 
     @Override

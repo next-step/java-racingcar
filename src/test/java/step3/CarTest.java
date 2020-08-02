@@ -15,7 +15,7 @@ class CarTest {
     @ParameterizedTest
     @CsvSource(value= {"true:1", "false:0"}, delimiter = ':')
     void go(boolean movePossibility, Integer result) {
-        Car car = new Car(new TestMoveStrategy(()->movePossibility));
+        Car car = new Car(0, new TestMoveStrategy(()->movePossibility));
         Integer beforeDistance = car.getDistance();
         Integer afterDistance = car.go().getDistance();
         assertThat(afterDistance - beforeDistance).isEqualTo(result);
