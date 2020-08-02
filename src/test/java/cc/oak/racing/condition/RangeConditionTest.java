@@ -26,14 +26,14 @@ public class RangeConditionTest {
     }
 
     @Test
-    @DisplayName("주어진 값이 null 일 때")
+    @DisplayName("주어진 값이 null 일 때 예외발생")
     public void isMeetCondition_ShouldThrow_IllegalArgumentException_OnNull() {
         Condition<Integer> condition = createRangeCondition(0, 0);
         assertThatIllegalArgumentException().isThrownBy(() -> condition.isMeetCondition(null));
     }
 
     @Test
-    @DisplayName("min이 max 보다 클 때")
+    @DisplayName("min이 max 보다 클 때 예외발생")
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public void isMeetCondition_ShouldThrow_IllegalArgumentException_OnMinIsGreaterThanMax() {
         assertThatIllegalArgumentException().isThrownBy(() -> createRangeCondition(10, -5));
