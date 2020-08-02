@@ -38,13 +38,12 @@ public class CarTest {
         assertThat(car.getPosition()).isGreaterThanOrEqualTo(0);
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1})
     @DisplayName("이동한다.")
-    public void move() {
-        int beforePosition = car.getPosition();
-        car.move();
-        int afterPosition = car.getPosition();
-        assertThat(afterPosition).isGreaterThanOrEqualTo(beforePosition);
+    public void move(int forwardDistance) {
+        car.move(forwardDistance);
+        assertThat(car.move(forwardDistance).getPosition()).isEqualTo(1 + forwardDistance);
     }
 
 }
