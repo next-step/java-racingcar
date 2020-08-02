@@ -1,13 +1,14 @@
 package racingcar.ui;
 
 import racingcar.Car;
+import resource.StringResources;
 
 public class ResultView {
 
     private final static char MOVE_MARK = '-';
 
     public static void printStart() {
-        System.out.println("실행 결과");
+        System.out.println(StringResources.GAME_RESULT);
     }
 
     public static void printResult(Car car) {

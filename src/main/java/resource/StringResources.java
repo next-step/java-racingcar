@@ -10,4 +10,5 @@ public class StringResources {
     // Text Resources
     public static final String ASK_NUMBER_OF_CARS = "자동차 대수는 몇 대 인가요?";
     public static final String ASK_TRY_COUNT = "시도할 수는 몇 회 인가요?";
+    public static final String GAME_RESULT = "실행 결과";
 }
