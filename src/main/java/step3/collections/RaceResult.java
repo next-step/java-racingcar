@@ -1,4 +1,4 @@
-package step3;
+package step3.collections;
 
 import java.util.List;
 
@@ -18,7 +18,4 @@ public class RaceResult {
         return attemptResults;
     }
 
-    Integer attemptResultsSize() {
-        return this.attemptResults.size();
-    }
 }

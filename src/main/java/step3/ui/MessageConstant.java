@@ -13,5 +13,8 @@ public class MessageConstant {
 
     public static final String NEW_LINE = "\n";
 
+    //AttemptResult
+    public static final String NOT_FOUND_FIRST = "경주 시도 결과가 없습니다.";
+
     private MessageConstant() {}
 }

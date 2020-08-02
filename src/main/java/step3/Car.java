@@ -2,6 +2,7 @@ package step3;
 
 import step3.dto.CarWentResult;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Car {
@@ -19,6 +20,19 @@ public class Car {
     public Car(Integer carNumber) {
         this.distance = 0;
         this.carNumber = carNumber;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return carNumber.equals(car.carNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carNumber);
     }
 
     public CarWentResult go() {

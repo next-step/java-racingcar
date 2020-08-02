@@ -1,8 +1,8 @@
 package step3.ui;
 
-import step3.AttemptResult;
+import step3.collections.AttemptResult;
 import step3.dto.CarWentResult;
-import step3.RaceResult;
+import step3.collections.RaceResult;
 
 import java.util.List;
 

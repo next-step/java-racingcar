@@ -1,5 +1,8 @@
 package step3;
 
+import step3.collections.AttemptResult;
+import step3.collections.RacePlayers;
+import step3.collections.RaceResult;
 import step3.dto.ParticipationForm;
 
 import java.util.List;

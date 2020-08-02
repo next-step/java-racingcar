@@ -51,7 +51,7 @@ public class Reception {
         try {
             return SCANNER.nextInt();
         } catch (InputMismatchException e) {
-            throw new IllegalArgumentException(PLEASE_INPUT_INTEGER);
+            throw new IllegalArgumentException(PLEASE_INPUT_INTEGER, e);
         } finally {
             SCANNER.nextLine();
         }
