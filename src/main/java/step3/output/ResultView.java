@@ -1,16 +1,14 @@
 package step3.output;
 
-import step3.service.CarRacingGame;
-
 import java.util.List;
 
 public class ResultView {
 
     private static final Character MARK = '-';
 
-    public static void printResult() {
+    public static void printResult(List<List<Integer>> scoreboard) {
         System.out.println("실행 결과");
-        CarRacingGame.scoreboard.forEach(ResultView::printPositions);
+        scoreboard.forEach(ResultView::printPositions);
     }
 
     private static void printPositions(List<Integer> positions) {
