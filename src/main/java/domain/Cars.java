@@ -1,5 +1,7 @@
 package domain;
 
+import view.ResultView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -19,7 +21,7 @@ public class Cars {
             int randomNumber = random.nextInt(10);
 
             car.move(randomNumber);
-            System.out.println(car.printLocation());
+            ResultView.print(cars);
         }
     }
 
