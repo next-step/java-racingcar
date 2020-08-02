@@ -8,9 +8,9 @@ import step3.ui.Reception;
 public class CarRacing {
 
     public static void main(String[] args) {
-        ControlTower controlTower = new ControlTower();
         ParticipationForm participationForm = Reception.takeParticipationForm();
-        RaceResult raceResult = controlTower.startCarRacing(participationForm);
+        ControlTower controlTower = new ControlTower(participationForm);
+        RaceResult raceResult = controlTower.startCarRacing();
         Announcer.announceRaceResult(raceResult);
     }
 }

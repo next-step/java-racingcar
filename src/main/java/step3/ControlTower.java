@@ -11,24 +11,23 @@ import java.util.stream.IntStream;
 
 public class ControlTower {
 
-    private Integer attemptCount;
+    private final Integer attemptCount;
 
-    public RaceResult startCarRacing(ParticipationForm participationForm) {
+    private final RacePlayers racePlayers;
+
+    public ControlTower(ParticipationForm participationForm) {
         this.attemptCount = participationForm.getAttemptCount();
-        RacePlayers racePlayers = prepareRaceCondition(participationForm.getParticipationCount());
-        return new RaceResult(run(racePlayers));
+        this.racePlayers = new RacePlayers(participationForm.getParticipationCount());
     }
 
-    List<AttemptResult> run(RacePlayers racePlayers) {
+    public RaceResult startCarRacing() {
+        return new RaceResult(run(this.racePlayers));
+    }
+
+    private List<AttemptResult> run(RacePlayers racePlayers) {
         return IntStream.range(0,this.attemptCount)
                         .mapToObj(index -> racePlayers.attempt())
                         .collect(Collectors.toList());
 
     }
-    private RacePlayers prepareRaceCondition(Integer participationCount) {
-        return new RacePlayers(participationCount);
-    }
-
-
-
 }

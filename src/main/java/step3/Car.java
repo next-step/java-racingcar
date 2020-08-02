@@ -44,10 +44,6 @@ public class Car {
         return this.distance;
     }
 
-    public Integer getCarNumber() {
-        return this.carNumber;
-    }
-
     Integer attemptGoing(boolean goingPossibility) {
         return goingPossibility ? ++this.distance : this.distance;
     }

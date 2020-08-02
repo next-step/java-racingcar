@@ -46,7 +46,6 @@ public class RacePlayers {
     private List<Car> prepareCars(Integer participationCount) {
         return IntStream.range(0,participationCount)
                 .mapToObj(index -> new Car(index))
-                .peek(car -> System.out.println(car.getCarNumber()))
                 .collect(Collectors.toList());
     }
 
