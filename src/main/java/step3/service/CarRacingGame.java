@@ -1,5 +1,6 @@
 package step3.service;
 
+import step3.factory.CarFactory;
 import step3.model.Car;
 
 import java.util.ArrayList;
@@ -13,8 +14,8 @@ public class CarRacingGame {
     private List<Car> cars;
     private int numberOfAttempts;
 
-    public CarRacingGame(List<Car> cars, int numberOfAttempts) {
-        this.cars = cars;
+    public CarRacingGame(int numberOfCars, int numberOfAttempts) {
+        this.cars = CarFactory.create(numberOfCars);
         this.numberOfAttempts = numberOfAttempts;
     }
 
