@@ -42,8 +42,8 @@ public class CarTest {
     @ValueSource(ints = {0, 1})
     @DisplayName("이동한다.")
     public void move(int forwardDistance) {
-        car.move(forwardDistance);
-        assertThat(car.move(forwardDistance).getPosition()).isEqualTo(1 + forwardDistance);
+        int currentPosition = car.getPosition();
+        assertThat(car.move(forwardDistance).getPosition()).isEqualTo(currentPosition + forwardDistance);
     }
 
 }

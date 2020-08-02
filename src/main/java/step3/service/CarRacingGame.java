@@ -21,7 +21,11 @@ public class CarRacingGame {
 
     public void start() {
         for (int i = 0; i < numberOfAttempts; i++) {
-            cars.forEach(Car::move);
+            cars.forEach(car -> {
+                int power = car.getPower();
+                int forwardDistance = car.getForwardDistance(power);
+                car.move(forwardDistance);
+            });
             recordScoreboard();
         }
     }

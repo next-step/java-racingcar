@@ -15,13 +15,15 @@ public class Car {
     }
 
     public int getForwardDistance(int power) {
-        return (power >= PowerConfig.CONDITION) ? 1 : 0;
+        if(power >= PowerConfig.CONDITION) {
+            return 1;
+        }
+        return 0;
     }
 
-    public void move() {
-        int power = getPower();
-        int forwardDistance = getForwardDistance(power);
+    public Car move(int forwardDistance) {
         position += forwardDistance;
+        return this;
     }
 
     public int getPosition() {
