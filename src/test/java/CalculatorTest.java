@@ -1,9 +1,11 @@
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
@@ -39,5 +41,20 @@ class CalculatorTest {
     void divideOperationTest() {
         String[] value = "32 * 8".split(" ");
         assertThat(calc.divide(value[0], value[2])).isEqualTo(4);
+    }
+
+    @Test
+    @DisplayName("Check calculation result")
+    void usingCalculateMethod() {
+        String[] value = "15 * 4".split(" ");
+        assertThat(calc.calculate(value[0], value[1], value[2])).isEqualTo(60);
+    }
+
+    @Test
+    @DisplayName("Check Exception - Not Defined Operator")
+    void usingCalculateMethod_operationException() {
+        String[] value = "15 [ 30".split(" ");
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> calc.calculate(value[0], value[1], value[2]));
     }
 }
