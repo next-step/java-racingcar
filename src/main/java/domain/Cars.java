@@ -8,7 +8,9 @@ import java.util.Random;
 
 public class Cars {
     private final List<Car> cars = new ArrayList();
+
     private final Random random = new Random();
+    private static final int RANDOM_NUMBER_BOUND = 10;
 
     public Cars(int numberOfCar) {
         for (int i = 0; i < numberOfCar; i++) {
@@ -18,11 +20,11 @@ public class Cars {
 
     public void race() {
         for (Car car : cars) {
-            int randomNumber = random.nextInt(10);
-
+            int randomNumber = random.nextInt(RANDOM_NUMBER_BOUND);
             car.move(randomNumber);
-            ResultView.print(cars);
         }
+
+        ResultView.print(cars);
     }
 
     public int getNumberOfCars() {
