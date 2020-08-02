@@ -8,6 +8,10 @@ public abstract class StringPrinter<T> implements Printer<T> {
     }
 
     public StringPrinter(Printer<String> stringPrinter) {
+        if (stringPrinter == null) {
+            throw new IllegalArgumentException("stringPrinter is null!");
+        }
+
         this.stringPrinter = stringPrinter;
     }
 }
