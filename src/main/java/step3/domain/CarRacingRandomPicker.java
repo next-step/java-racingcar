@@ -8,15 +8,12 @@ public class CarRacingRandomPicker {
 
     private static final Random PICKER = new Random();
 
-    public int getPower() {
+    public static int getPower() {
         return PICKER.nextInt(PowerConfig.MAX);
     }
 
-    public int getForwardDistance(int power) {
-        if(power >= PowerConfig.CONDITION) {
-            return 1;
-        }
-        return 0;
+    private CarRacingRandomPicker() {
+        throw new AssertionError();
     }
 
 }
