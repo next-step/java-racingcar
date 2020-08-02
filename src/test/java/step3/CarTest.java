@@ -19,10 +19,9 @@ public class CarTest {
         car = new Car();
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {1, 5, 7, 10})
+    @Test
     @DisplayName("파워(엔진출력)를 구한다.")
-    public void getPower(int max) {
+    public void getPower() {
         assertThat(car.getPower()).isGreaterThanOrEqualTo(0);
     }
 
