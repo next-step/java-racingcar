@@ -1,8 +1,9 @@
 package step3.app;
 
+import step3.domain.CarRacingGame;
+import step3.domain.CarRacingScoreboard;
 import step3.input.InputView;
 import step3.output.ResultView;
-import step3.service.CarRacingGame;
 
 public class CarRacingGameApp {
 
@@ -11,7 +12,7 @@ public class CarRacingGameApp {
         int numberOfAttempts = InputView.getNumberOfAttempts();
         CarRacingGame carRacingGame = new CarRacingGame(numberOfCars, numberOfAttempts);
         carRacingGame.start();
-        ResultView.printResult(carRacingGame.getScoreboard());
+        ResultView.printResult(CarRacingScoreboard.getScoreboard());
     }
 
 }
