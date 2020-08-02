@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class CarRacingGame {
 
-    public static List<List<Integer>> scoreboard = new ArrayList<>();
+    private List<List<Integer>> scoreboard = new ArrayList<>();
 
     private List<Car> cars;
     private int numberOfAttempts;
@@ -29,6 +29,10 @@ public class CarRacingGame {
         scoreboard.add(cars.stream()
                 .map(car -> car.getPosition())
                 .collect(Collectors.toList()));
+    }
+
+    public List<List<Integer>> getScoreboard() {
+        return scoreboard;
     }
 
 }
