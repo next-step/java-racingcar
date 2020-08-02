@@ -3,6 +3,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ArithmeticArgumentsTest {
@@ -10,7 +12,10 @@ class ArithmeticArgumentsTest {
 
     @BeforeEach
     void setUp() {
-        this.args = new ArithmeticArguments("2 + 3 * 4 / 2");
+        Integer[] operands = new Integer[] {2, 3, 4, 2};
+        Operator[] operators = new Operator[] {Operator.ADD, Operator.MULTIPLY, Operator.DIVIDE};
+
+        args = new ArithmeticArguments(Arrays.asList(operands), Arrays.asList(operators));
     }
 
     @Test

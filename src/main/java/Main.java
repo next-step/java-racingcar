@@ -1,17 +1,20 @@
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        ArithmeticReader reader = new ArithmeticReader();
+        Scanner scanner = new Scanner(System.in);
 
         try {
-            String expression = reader.read();
+            String expression = scanner.nextLine();
 
-            int result = Calculator.calculate(new ArithmeticArguments(expression));
+            ArithmeticArguments arguments = ArithmeticArgumentFactory.createArgs(expression);
+
+            int result = Calculator.calculate(arguments);
 
             System.out.println(result);
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 }

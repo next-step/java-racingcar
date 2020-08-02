@@ -5,7 +5,7 @@ public class Calculator {
         int result = args.nextOperand();
 
         while (args.hasNextOperator()) {
-            Integer operand = args.nextOperand();
+            int operand = args.nextOperand();
             Operator operator = args.nextOperator();
 
             result = operator.operate(result, operand);
