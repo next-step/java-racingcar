@@ -20,19 +20,6 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("파워(엔진출력)를 구한다.")
-    public void getPower() {
-        assertThat(car.getPower()).isGreaterThanOrEqualTo(0);
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {1, 4, 6, 9, 10})
-    @DisplayName("주행할 거리를 구한다.")
-    public void getForwardDistance(int power) {
-        assertThat(car.getForwardDistance(power)).isGreaterThanOrEqualTo(0);
-    }
-
-    @Test
     @DisplayName("현재 위치를 가져온다.")
     public void getPosition() {
         assertThat(car.getPosition()).isGreaterThanOrEqualTo(0);
