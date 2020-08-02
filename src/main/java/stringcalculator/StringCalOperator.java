@@ -11,7 +11,7 @@ public enum StringCalOperator implements IntBinaryOperator {
     MUL("*", (lVal, rVal) -> (lVal * rVal)),
     DIV("/", (lVal, rVal) -> {
         if (rVal == 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Constants.DIVIDE_BY_ZERO);
         }
         return (lVal / rVal);
     });
@@ -39,7 +39,7 @@ public enum StringCalOperator implements IntBinaryOperator {
         return Arrays.stream(values())
                 .filter(s -> s.operator.equals(operator))
                 .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(()-> new IllegalArgumentException(Constants.WRONG_OPERATOR_SYMBOL));
     }
 }
 
