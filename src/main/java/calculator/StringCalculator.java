@@ -1,16 +1,17 @@
 package calculator;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class StringCalculator {
+
+    public static final String ERROR_MSG_BLANK = "입력에 0 또는 NULL 값을 넣을 수 없습니다.";
 
     public int calculate(String text) {
 
         if(isBlank(text)){
-            throw new IllegalArgumentException("입력에 0 또는 NULL 값을 넣을 수 없습니다.");
+            throw new IllegalArgumentException(ERROR_MSG_BLANK);
         }
         return sumText(splitText(text));
     }
@@ -20,25 +21,20 @@ public class StringCalculator {
     }
 
 
-    private Queue<String> splitText (String text) {
+    private List<String> splitText (String text) {
         String[] values = text.split(" ");
-        Queue<String> textQueue = new LinkedList<>();
-        Arrays.stream(values).map(value -> textQueue.add(value)).collect(Collectors.toList());
-        return textQueue;
+        List<String> textList = new ArrayList<>();
+        Arrays.stream(values).map(value -> textList.add(value)).collect(Collectors.toList());
+        return textList;
     }
 
-    private int sumText(Queue<String> textQueue) {
-        int result = 0;
-        while (!textQueue.isEmpty()) {
-            String text = textQueue.poll();
-            if(MathOperator.hasMathOperator(text)){
-                String nextText = textQueue.poll();
-                MathOperator mathOperator = MathOperator.findByMathOperatorCode(text);
-                result = mathOperator.apply(result, Integer.parseInt(nextText));
-            } else {
-                result = Integer.parseInt(text);
-            }
-        }
-        return result;
+    private int sumText(List<String> textList) {
+        return IntStream.range(0, textList.size() / 2)
+                .reduce(Integer.parseInt(textList.get(0)), (result, index) -> {
+                    int operatorIndex = index * 2 + 1;
+                    String operatorText = textList.get(operatorIndex);
+                    int nextNumber = Integer.parseInt(textList.get(operatorIndex + 1));
+                    return MathOperator.operate(operatorText, result, nextNumber);
+                });
     }
 }

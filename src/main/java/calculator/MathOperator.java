@@ -8,7 +8,12 @@ public enum MathOperator {
     PLUS("+", (value1, value2) -> value1 + value2),
     SUBTRACT("-", (value1, value2) -> value1 - value2),
     MULTIPLY("*", (value1, value2) -> value1 * value2),
-    DIVIDE("/", (value1, value2) -> value1 / value2);
+    DIVIDE("/", (value1, value2) -> {
+        if(value2 == 0) {
+            throw new IllegalArgumentException("0 으로 나누기는 불가능 합니다.");
+        }
+        return value1 / value2;
+    });
 
     private final String operator;
     private BiFunction<Integer, Integer, Integer> expression;
@@ -18,7 +23,7 @@ public enum MathOperator {
         this.expression = expression;
     }
 
-    public static MathOperator findByMathOperatorCode(String code) {
+    /*public static MathOperator findByMathOperatorCode(String code) {
         return Arrays.stream(MathOperator.values())
                 .filter(mathOperator -> mathOperator.getOperator().equals(code))
                 .findFirst()
@@ -29,13 +34,22 @@ public enum MathOperator {
          return Arrays.stream(MathOperator.values())
                  .filter(mathOperator -> mathOperator.getOperator().equals(code))
                  .findFirst().isPresent();
-    }
+    }*/
 
-    public Integer apply(int param1, int param2) {
-        return this.expression.apply(param1, param2);
+    public static int operate(String operatorCode, int x, int y) {
+        return Arrays
+                .stream(values())
+                .filter(mathOperator -> mathOperator.getOperator().equals(operatorCode))
+                .mapToInt(filtered-> filtered.getOperation().apply(x, y))
+                .findFirst()
+                .orElse(0);
     }
 
     public String getOperator() {
         return operator;
+    }
+
+    private BiFunction<Integer, Integer, Integer> getOperation() {
+        return expression;
     }
 }

@@ -1,8 +1,11 @@
 package calculator;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,17 +17,30 @@ class StringCalculatorTest {
     private StringCalculator cal;
 
     @BeforeAll
-    public void setUp() {
+    void setUp() {
         cal = new StringCalculator();
     }
 
+    @ParameterizedTest
+    @DisplayName("샘플 데이터 테스트")
+    @CsvSource(value = {
+            "2 + 3 * 4 / 2=10",
+            "2 + 3 - 4 * 5 / 2=2",
+            "7 + 5 * 9 / 6=18",
+            "9 + 6 * 3 / 5 + 1=10",
+            "7 + 7 * 4 / 8=7",
+    }, delimiter = '=')
+    void sample_data_test(String text, int expected) {
+        assertEquals(expected, cal.calculate(text));
+    }
+
     @Test
-    public void null_또는_빈문자() {
+    @DisplayName("NULL 또는 빈문자")
+    void null_or_empty_test() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
                     cal.calculate("");
-                }).withMessageMatching("입력에 0 또는 NULL 값을 넣을 수 없습니다.");
-
+                }).withMessageMatching(StringCalculator.ERROR_MSG_BLANK);
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
             cal.calculate(null);
@@ -32,19 +48,9 @@ class StringCalculatorTest {
     }
 
     @Test
-    public void 숫자_하나() throws Exception {
+    @DisplayName("숫자_하나")
+    void one_data_test() throws Exception {
         assertEquals(1, cal.calculate("1"));
-    }
-
-    @Test
-    public void 샘플_데이터() throws Exception {
-        assertAll(
-                () -> assertEquals(10, cal.calculate("2 + 3 * 4 / 2")),
-                () -> assertEquals(8, cal.calculate("1 + 4 * 8 / 5")),
-                () -> assertEquals(18, cal.calculate("7 + 5 * 9 / 6")),
-                () -> assertEquals(9, cal.calculate("9 + 6 * 3 / 5")),
-                () -> assertEquals(7, cal.calculate("7 + 7 * 4 / 8"))
-                );
     }
 
 }
