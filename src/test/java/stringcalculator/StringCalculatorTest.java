@@ -2,12 +2,15 @@ package stringcalculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import org.junit.jupiter.api.Test;
 import stringcalculator.util.StringCalculator;
+import study.StringsForTest;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StringCalculatorTest {
     /*
@@ -26,16 +29,17 @@ public class StringCalculatorTest {
     //** 계획 : custom Exception message 관리 및 테스트 케이스 추가 *************//
     //**  심화 : JUnit Parameterized Test & Custom Exception github 확인 ******//
 
-
+    //FINAL : stringCalculator 변수선언 불필요,@EmptySource로 변경 (08.02)
     @DisplayName("입력값 공백 문자 테스트")
     @ParameterizedTest
-    @ValueSource(strings = "")
-    public void null_or_emptystring (String expression){
-        assertThatThrownBy(() -> {
-            StringCalculator stringCalculator = new StringCalculator(expression);
-        }).isInstanceOf(IllegalArgumentException.class)
+    @EmptySource
+    public void null_or_emptystring(String expression){
+        assertThatThrownBy(() ->
+                StringCalculator.calculate(expression))
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Constants.INPUT_VALUE_IS_EMPTY);
     }
+
     //** 심화 : enum 변경에 따른  테스트 오류: StringCalOperatorTest.java로 이동->*****//
     /*
     @DisplayName("지정 문자열 외 입력 테스트")
@@ -62,47 +66,36 @@ public class StringCalculatorTest {
     @DisplayName("사칙연산 기능 테스트")
     @Test
     public void featureTest () {
-        //after test -> refactor : plus, minus, multi
         String expression = "3 + 4 - 2 * 3";
-        StringCalculator fullscal = new StringCalculator(expression);
-
-        assertThat(fullscal.calculate()).isEqualTo(15);
+        assertThat(StringCalculator.calculate(expression)).isEqualTo(15);
     }
 
     @DisplayName("덧셈 기능 테스트")
     @Test
     public void StringAndPlus () {
         String expression = "1 + 1";
-        StringCalculator scal = new StringCalculator(expression);
-
-        assertThat(scal.calculate()).isEqualTo(2);
+        assertThat(StringCalculator.calculate(expression)).isEqualTo(2);
     }
 
     @DisplayName("곱셈 기능 테스트")
     @Test
     public void StringAndMultipler (){
         String expression = "2 * 2";
-        StringCalculator scal = new StringCalculator(expression);
-
-        assertThat(scal.calculate()).isEqualTo(4);
+        assertThat(StringCalculator.calculate(expression)).isEqualTo(4);
     }
 
     @DisplayName("뺄셈 기능 테스트")
     @Test
     public void StringAndMinus (){
         String expression = "10 - 3";
-        StringCalculator scal = new StringCalculator(expression);
-
-        assertThat(scal.calculate()).isEqualTo(7);
+        assertThat(StringCalculator.calculate(expression)).isEqualTo(7);
     }
 
     @DisplayName("나눗셈 기능 테스트 (0으로 나누는 경우는 OperatorTest)")
     @Test
     public void StringAndDivider (){
         String expression = "10 / 5";
-        StringCalculator scal = new StringCalculator(expression);
-
-        assertThat(scal.calculate()).isEqualTo(2);
+        assertThat(StringCalculator.calculate(expression)).isEqualTo(2);
     }
 
 }
