@@ -14,5 +14,7 @@ public class CarFactory {
         }
         return cars;
     }
-
+    private CarFactory() {
+        throw new AssertionError();
+    }
 }
