@@ -1,25 +1,29 @@
 package step3;
 
 import step3.dto.CarWentResult;
+import step3.stretegy.Dice;
+import step3.stretegy.MoveStrategy;
 
 import java.util.Objects;
-import java.util.Random;
 
 public class Car {
 
-    private Integer distance;
-
     private final Integer carNumber;
 
-    private final Random dice = new Random();
+    private final MoveStrategy moveStrategy;
 
-    private static final Integer DICE_BOUND = 10;
-
-    private static final Integer GO_ABLE_SCORE = 4;
+    private Integer distance;
 
     public Car(Integer carNumber) {
-        this.distance = 0;
         this.carNumber = carNumber;
+        this.moveStrategy = new Dice();
+        this.distance = 0;
+    }
+    //For Test Code
+    public Car(MoveStrategy moveStrategy) {
+        this.carNumber = 0;
+        this.moveStrategy = moveStrategy;
+        this.distance = 0;
     }
 
     @Override
@@ -36,23 +40,16 @@ public class Car {
     }
 
     public CarWentResult go() {
-        attemptGoing(isAbleToGo(rollDice()));
-        return new CarWentResult(this.distance, this.carNumber);
+        updateDistance(moveStrategy.isAbleToMove(moveStrategy.attemptMove()));
+        return new CarWentResult(this.carNumber, this.distance);
     }
 
     public Integer getDistance() {
         return this.distance;
     }
 
-    Integer attemptGoing(boolean goingPossibility) {
+    private Integer updateDistance(boolean goingPossibility) {
         return goingPossibility ? ++this.distance : this.distance;
     }
 
-    boolean isAbleToGo(Integer score) {
-        return score >= GO_ABLE_SCORE;
-    }
-
-    Integer rollDice() {
-        return dice.nextInt(DICE_BOUND);
-    }
 }

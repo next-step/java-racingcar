@@ -6,7 +6,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.function.Supplier;
 
-import static step3.ui.MessageConstant.*;
+import static step3.constants.MessageConstant.*;
 
 public class Reception {
 

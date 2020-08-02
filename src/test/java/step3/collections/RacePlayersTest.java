@@ -1,10 +1,9 @@
-package step3;
+package step3.collections;
 
 import com.sun.tools.javac.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.collections.AttemptResult;
-import step3.collections.RacePlayers;
+import step3.Car;
 import step3.dto.CarWentResult;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,12 +18,12 @@ class RacePlayersTest {
     @Test
     void attempt() {
         AttemptResult assertAttemptResult = new AttemptResult(List.of(new CarWentResult(0,0),
-                                                                    new CarWentResult(0,1),
-                                                                    new CarWentResult(0,2)));
+                                                                    new CarWentResult(1,0),
+                                                                    new CarWentResult(2,0)));
         assertThat(racePlayers.attempt()).isEqualTo(assertAttemptResult);
 
     }
-//
+
     @DisplayName("참가자 수와 raceCondition 객체 안의 차량 수가 같은가")
     @Test
     void getCarsCount() {

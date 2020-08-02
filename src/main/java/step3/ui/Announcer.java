@@ -6,7 +6,7 @@ import step3.collections.RaceResult;
 
 import java.util.List;
 
-import static step3.ui.MessageConstant.*;
+import static step3.constants.MessageConstant.*;
 
 public class Announcer {
 

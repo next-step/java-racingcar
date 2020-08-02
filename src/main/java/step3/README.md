@@ -45,3 +45,4 @@
 2. UI 패키지 추가, MessageConstant 클래스 추가, RaceCondition->RacePlayers 명칭 변경 및 내부 private 메소드 정의
 3. collections 패키지 분리, 테스트 코드만을 위한 size 메소드 제거 후 eqaulsAndHashcode 재정의로 테스트코드에서는 동등성 비교
 4. ControlTower에 멤버 변수로 RacePlayers 갖게 변경, ControllTowerTest 클래스의 테스트 검증에 객체 동등성 비교 사용, Car 클래스의 불필요한 메서드 제거
+5. MoveStrategy 인터페이스 추가 및 구현체로 Dice 추가 (Car에서 랜덤 요소 분리)가, Car 클래스 리팩토링, Dice 테스트 추가, Car 테스트 수정, constants 패키지 추가

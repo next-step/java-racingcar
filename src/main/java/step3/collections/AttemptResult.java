@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
-import static step3.ui.MessageConstant.NOT_FOUND_FIRST;
+import static step3.constants.MessageConstant.NOT_FOUND_FIRST;
 
 public class AttemptResult {
 

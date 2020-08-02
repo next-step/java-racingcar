@@ -4,13 +4,13 @@ import java.util.Objects;
 
 public class CarWentResult {
 
-    private final Integer distance;
-
     private final Integer carNumber;
 
-    public CarWentResult(Integer distance, Integer carNumber) {
-        this.distance = distance;
+    private final Integer distance;
+
+    public CarWentResult(Integer carNumber, Integer distance) {
         this.carNumber = carNumber;
+        this.distance = distance;
     }
 
     @Override
@@ -26,11 +26,11 @@ public class CarWentResult {
         return Objects.hash(carNumber);
     }
 
-    public Integer getDistance() {
-        return distance;
-    }
-
     public Integer getCarNumber() {
         return carNumber;
+    }
+
+    public Integer getDistance() {
+        return distance;
     }
 }

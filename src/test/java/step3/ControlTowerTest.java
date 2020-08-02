@@ -1,7 +1,6 @@
 package step3;
 
 import com.sun.tools.javac.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step3.collections.AttemptResult;
@@ -23,13 +22,13 @@ class ControlTowerTest {
         RaceResult assertRaceResult = new RaceResult(List.of(
                 new AttemptResult(List.of(
                         new CarWentResult(0,0),
-                        new CarWentResult(0,1),
-                        new CarWentResult(0,2)
+                        new CarWentResult(1,0),
+                        new CarWentResult(2,0)
                 )),
                 new AttemptResult(List.of(
                         new CarWentResult(0,0),
-                        new CarWentResult(0,1),
-                        new CarWentResult(0,2)
+                        new CarWentResult(1,0),
+                        new CarWentResult(2,0)
                 ))
         ));
         assertThat(controlTower.startCarRacing()).isEqualTo(assertRaceResult);

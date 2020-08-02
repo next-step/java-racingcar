@@ -1,45 +1,44 @@
 package step3;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import step3.stretegy.MoveStrategy;
 
-import java.util.stream.IntStream;
+import java.util.function.Supplier;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    private Car car;
-
-    @BeforeEach
-    void setup() {
-        this.car = new Car(1);
-    }
-
+    @DisplayName("moveStrategy에서 true인 값이 올 때만 1만큼 이동한다.")
     @ParameterizedTest
     @CsvSource(value= {"true:1", "false:0"}, delimiter = ':')
-    void attemptGoing(boolean goingPossibility, Integer result) {
-        Integer beforeDistance = this.car.getDistance();
-        Integer afterDistance = car.attemptGoing(goingPossibility);
+    void go(boolean movePossibility, Integer result) {
+        Car car = new Car(new TestMoveStrategy(()->movePossibility));
+        Integer beforeDistance = car.getDistance();
+        Integer afterDistance = car.go().getDistance();
         assertThat(afterDistance - beforeDistance).isEqualTo(result);
+
     }
 
-    @ParameterizedTest
-    @CsvSource(value= {"1:false", "2:false", "3:false", "4:true", "5:true", "9:true"}, delimiter = ':')
-    void isAbleToGo(Integer score, boolean result) {
-        assertThat(car.isAbleToGo(score)).isEqualTo(result);
-    }
+    private class TestMoveStrategy implements MoveStrategy<Boolean> {
 
-    @DisplayName("10만번 random 값을 뽑는 것 모두 0-9 사이의 값이어야 한다.")
-    @Test
-    void rollDice() {
-        Integer givenStart = 0;
-        Integer givenEnd = 100000;
+        private Supplier<Boolean> supplier;
 
-        IntStream.range(givenStart,givenEnd).forEach(index -> assertThat(car.rollDice()).isBetween(0,9));
+        TestMoveStrategy(Supplier<Boolean> supplier) {
+            this.supplier = supplier;
+        }
+
+        @Override
+        public Supplier<Boolean> attemptMove() {
+            return supplier;
+        }
+
+        @Override
+        public boolean isAbleToMove(Supplier<Boolean> supplier) {
+            return supplier.get();
+        }
     }
 
 }
