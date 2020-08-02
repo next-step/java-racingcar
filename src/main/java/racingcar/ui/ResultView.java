@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.ui;
+
+import racingcar.Car;
 
 public class ResultView {
 
@@ -11,7 +13,7 @@ public class ResultView {
     public static void printResult(Car car) {
 
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < car.getMoveCount(); i++) {
+        for (int i = 0; i < car.getMoveCount() + 1; i++) {
             sb.append(MOVE_MARK);
         }
         System.out.println(sb.toString());
