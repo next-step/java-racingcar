@@ -16,7 +16,7 @@ class IntRandomGeneratorTest {
 
     @Test
     void generate() {
-        assertThat(generator.generate(1, 10))
-                .isBetween(1, 10);
+        assertThat(generator.generate(0, 9))
+                .isBetween(0, 9);
     }
 }
