@@ -1,19 +1,23 @@
 package racingcar;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class ResultView {
 
-    private final List<String> moveViews;
+    private final static char MOVE_MARK = '-';
 
-    public ResultView(List<Car> lacingCars) {
-        moveViews = lacingCars.stream()
-                .map(Car::toResultString)
-                .collect(Collectors.toList());
+    public static void printStart() {
+        System.out.println("실행 결과");
     }
 
-    public void printResult() {
-        moveViews.forEach(System.out::println);
+    public static void printResult(Car car) {
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < car.getMoveCount(); i++) {
+            sb.append(MOVE_MARK);
+        }
+        System.out.println(sb.toString());
+    }
+
+    public static void lineFeed() {
+        System.out.println();
     }
 }

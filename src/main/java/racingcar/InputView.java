@@ -6,25 +6,16 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private final int numberOfCars;
-    private final int tryCount;
+    private static final Scanner scanner = new Scanner(System.in);
 
-    public InputView() {
-
-        Scanner scanner = new Scanner(System.in);
+    public static RacingData input() {
 
         System.out.println(StringResources.ASK_NUMBER_OF_CARS);
-        numberOfCars = scanner.nextInt();
+        int numberOfCars = scanner.nextInt();
 
         System.out.println(StringResources.ASK_TRY_COUNT);
-        tryCount = scanner.nextInt();
-    }
+        int tryCount = scanner.nextInt();
 
-    public int getNumberOfCars() {
-        return numberOfCars;
-    }
-
-    public int getTryCount() {
-        return tryCount;
+        return new RacingData(numberOfCars, tryCount);
     }
 }

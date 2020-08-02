@@ -7,22 +7,30 @@ import java.util.stream.Stream;
 public class RacingGame {
 
     private final List<Car> lacingCars;
+    private final RacingData racingData;
 
     public RacingGame() {
 
-        InputView inputView = new InputView();
+        racingData = InputView.input();
 
         lacingCars = Stream.iterate(0, i -> i + 1)
-                .limit(inputView.getNumberOfCars())
-                .map(i -> new Car(inputView.getTryCount()))
+                .limit(racingData.getNumberOfCars())
+                .map(i -> new Car())
                 .collect(Collectors.toList());
     }
 
     public void start() {
-        lacingCars.forEach(Car::moveAndStop);
+
+        ResultView.printStart();
+
+        for (int i = 0; i < racingData.getNumberOfCars(); i++) {
+            moveCars(i);
+            ResultView.printResult(lacingCars.get(i));
+            ResultView.lineFeed();
+        }
     }
 
-    public void printResult() {
-        new ResultView(lacingCars).printResult();
+    public void moveCars(int i) {
+        lacingCars.get(i).moveAndStop();
     }
 }

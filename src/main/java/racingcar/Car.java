@@ -10,13 +10,6 @@ public class Car {
 
     private int moveCount = 0;
 
-    public Car(int tryCount) {
-
-        for (int i = 0; i < tryCount; i++) {
-            moveAndStop();
-        }
-    }
-
     public void moveAndStop() {
 
         if (isMoveCondition(random.nextInt(RANDOM_RANGE))) {
@@ -28,14 +21,7 @@ public class Car {
         return randomNumber >= MOVE_CONDITION;
     }
 
-    public String toResultString() {
-
-        StringBuilder stringBuilder = new StringBuilder();
-
-        for (int i = 0; i < moveCount; i++) {
-            stringBuilder.append('-');
-        }
-
-        return stringBuilder.toString();
+    public int getMoveCount() {
+        return moveCount;
     }
 }
