@@ -27,8 +27,11 @@ public class CarRacingView {
 
         carRacing.start(new CarRacingListener() {
             @Override
-            public void carMoved(int movedDistance) {
-                char[] array = new char[movedDistance];
+            public void carMoved(int movedDistance) {}
+
+            @Override
+            public void carMovedComplete(int totalDistance) {
+                char[] array = new char[totalDistance];
                 Arrays.fill(array, CAR_RACING_PRINT_SYMBOL);
                 System.out.println(array);
             }

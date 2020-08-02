@@ -2,13 +2,13 @@ package racing;
 
 public class Car {
 
-    private int movedDistance = 0;
+    private int totalDistance = 0;
 
     public void move(int distance) {
-        movedDistance += distance;
+        totalDistance += distance;
     }
 
-    public int getMovedDistance() {
-        return movedDistance;
+    public int getTotalDistance() {
+        return totalDistance;
     }
 }
