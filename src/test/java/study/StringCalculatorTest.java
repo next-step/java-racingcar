@@ -3,6 +3,7 @@ package study;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 
@@ -38,6 +39,16 @@ public class StringCalculatorTest {
     @NullSource
     @EmptySource
     void calculatorWithEmptyExpression(String expression) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            StringCalculator calculator = new StringCalculator(expression);
+            calculator.calculate();
+        });
+    }
+
+    @DisplayName("잘못된 수식 입력한 경우 exception 발생")
+    @ParameterizedTest
+    @CsvSource({"3 + + 2 *", "2 + 3 * 4 -", "+ - * / %"})
+    void calculatorWithInvalidExpressions(String expression) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             StringCalculator calculator = new StringCalculator(expression);
             calculator.calculate();
