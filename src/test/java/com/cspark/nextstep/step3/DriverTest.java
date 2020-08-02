@@ -18,19 +18,19 @@ class DriverTest {
     void setUp() {
         this.dice = new Dice(MIN, MAX);
         this.racingCar = new RacingCar();
-        this.driver = new Driver(dice, racingCar);
+        this.driver = new Driver(racingCar);
     }
 
     @DisplayName("전진/정지 운전하다")
     @Test
     void drive() {
-        assertThat(driver.drive())
+        assertThat(driver.drive(dice))
                 .isLessThanOrEqualTo(1);
-        assertThat(driver.drive())
+        assertThat(driver.drive(dice))
                 .isLessThanOrEqualTo(2);
-        assertThat(driver.drive())
+        assertThat(driver.drive(dice))
                 .isLessThanOrEqualTo(3);
-        assertThat(driver.drive())
+        assertThat(driver.drive(dice))
                 .isLessThanOrEqualTo(4);
     }
 }

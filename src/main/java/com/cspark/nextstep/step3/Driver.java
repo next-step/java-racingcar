@@ -5,19 +5,17 @@ import java.util.List;
 
 public class Driver {
 
+    private RacingCar racingCar;
     private List<Boolean> records;
 
-    private Dice generator;
-    private RacingCar racingCar;
-
-    public Driver(Dice generator, RacingCar racingCar) {
+    public Driver(RacingCar racingCar) {
         this.records = new ArrayList<>();
-        this.generator = generator;
         this.racingCar = racingCar;
     }
 
-    public int drive() {
-        records.add(generator.cast() > 3);
+    public int drive(Dice dice) {
+        records.add(dice.cast() > 3);
         return racingCar.race(records);
     }
+
 }

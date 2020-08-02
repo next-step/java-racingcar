@@ -12,5 +12,8 @@ public class InteractiveScanner {
         int numberOfRepeats = scanner.nextInt();
 
         System.out.println(String.format("자동차 %d대, %d회 실행 결과", numberOfCars, numberOfRepeats));
+        MotorRace motorRace = new MotorRace(numberOfCars, numberOfRepeats);
+        motorRace.game();
     }
+
 }
