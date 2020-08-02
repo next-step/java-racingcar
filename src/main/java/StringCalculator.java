@@ -1,26 +1,46 @@
 public class StringCalculator {
-    private static final String DIVIDE_BY_ZERO = "0으로 나눌 수 없습니다.";
 
-    public String[] split(String input) {
+    public static String[] split(String input) {
         return input.split(" ");
     }
 
-    public int plus(int firstValue, int secondValue) {
-        return firstValue + secondValue;
-    }
-
-    public int minus(int firstValue, int secondValue) {
-        return firstValue - secondValue;
-    }
-
-    public int multiply(int firstValue, int secondValue) {
-        return firstValue * secondValue;
-    }
-
-    public int divide(int firstValue, int secondValue) {
-        if (secondValue == 0) {
-            throw new IllegalArgumentException(DIVIDE_BY_ZERO);
+    public static void isBlank(String input) {
+        if (input.equals(" ") || input == null) {
+            throw new IllegalArgumentException(ExceptionMessage.INPUT_VALUE_EMPTY);
         }
-        return firstValue / secondValue;
+    }
+
+    public static int toInt(String input) {
+        return Integer.parseInt(input);
+    }
+
+    public static int calculateSymbols(int firstValue, char operator, int secondValue) {
+        if (operator == '+')
+            return Operator.plus(firstValue, secondValue);
+
+        if (operator == '-')
+            return Operator.minus(firstValue, secondValue);
+
+        if (operator == '*')
+            return Operator.multiply(firstValue, secondValue);
+
+        if (operator == '/')
+            return Operator.divide(firstValue, secondValue);
+
+        throw new IllegalArgumentException(ExceptionMessage.NOT_ARITHMETIC_SIMBOLS);
+    }
+
+    public static int calculate(String[] splitInput) {
+        int result = toInt(splitInput[0]);
+
+        for (int i = 0; i < splitInput.length -2 ; i += 2) {
+            result = calculateSymbols(result, splitInput[i + 1].charAt(0), toInt(splitInput[i + 2]));
+        }
+        return result;
+    }
+
+    public static int calculateResult(String input) {
+        isBlank(input);
+        return calculate(split(input));
     }
 }

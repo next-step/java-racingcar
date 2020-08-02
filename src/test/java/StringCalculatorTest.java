@@ -1,3 +1,4 @@
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,35 +22,23 @@ public class StringCalculatorTest {
         stringCalculator = new StringCalculator();
     }
 
-
     @Test
     public void input_Split_Test() {
         assertThat(stringCalculator.split("2 + 3 * 4 / 2")).containsExactly("2", "+", "3", "*", "4", "/", "2");
     }
 
     @Test
-    public void puls() {
-        assertThat(stringCalculator.plus(2, 4)).isEqualTo(6);
+    public void input_Calculate_Symbols_Test() {
+        assertThat(stringCalculator.calculateSymbols(2, '+', 3)).isEqualTo(5);
     }
 
     @Test
-    public void minus() {
-        assertThat(stringCalculator.minus(2, 4)).isEqualTo(-2);
+    public void input_Blank_Test() {
+        assertThatIllegalArgumentException().isThrownBy(() -> stringCalculator.isBlank(" ")).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    public void multiply() {
-        assertThat(stringCalculator.multiply(2, 4)).isEqualTo(8);
+    public void symbols_Exception_Test() {
+        assertThatIllegalArgumentException().isThrownBy(() -> stringCalculator.calculateSymbols(1, '.', 4)).isInstanceOf(IllegalArgumentException.class);
     }
-
-    @Test
-    public void divide() {
-        assertThat(stringCalculator.divide(4, 2)).isEqualTo(2);
-    }
-
-    @Test
-    public void divide_By_Zero() {
-        assertThatThrownBy(() -> stringCalculator.divide(3, 0)).isInstanceOf(IllegalArgumentException.class);
-    }
-
 }
