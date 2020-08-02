@@ -33,16 +33,31 @@ public class Main {
     }
 
     public void start() {
-        int totalCarCount = inputView.readTotalNumberOfCars();
-        int totalRoundCount = inputView.readTotalRoundCount();
+        int totalCarCount = readTotalNumberOfCarsUntilValid();
+        int totalRoundCount = readTotalRoundCountUntilValid();
 
         resultView.printResultHeader();
-
         RacingRound round = racingGame.createRound(totalCarCount, totalRoundCount);
         while(round.hasNextRound()) {
             round.nextRound();
             resultView.printCar(round);
         }
+    }
+
+    private int readTotalNumberOfCarsUntilValid() {
+        int totalCarCount;
+        do {
+            totalCarCount = inputView.readTotalNumberOfCars();
+        } while (totalCarCount < 0);
+        return totalCarCount;
+    }
+
+    private int readTotalRoundCountUntilValid() {
+        int totalRoundCount;
+        do {
+            totalRoundCount = inputView.readTotalRoundCount();
+        } while (totalRoundCount < 0);
+        return totalRoundCount;
     }
 
     public static void main(String[] args) {
