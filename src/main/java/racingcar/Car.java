@@ -1,18 +1,13 @@
 package racingcar;
 
-import java.util.Random;
-
 public class Car {
 
-    private static final Random random = new Random();
-    private static final int RANDOM_RANGE = 10;
     private static final int MOVE_CONDITION = 4;
-
     private int moveCount = 0;
 
-    public void moveAndStop() {
+    public void moveAndStop(int fuel) {
 
-        if (isMoveCondition(random.nextInt(RANDOM_RANGE))) {
+        if (isMoveCondition(fuel)) {
             moveCount++;
         }
     }
