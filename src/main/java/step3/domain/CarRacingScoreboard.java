@@ -12,7 +12,7 @@ public class CarRacingScoreboard {
 
     public void recordScoreboard(List<Car>cars) {
         scoreboard.add(cars.stream()
-                .map(car -> car.getPosition())
+                .map(Car::getPosition)
                 .collect(Collectors.toList()));
     }
 
