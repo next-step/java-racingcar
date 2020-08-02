@@ -16,7 +16,7 @@ public class CarRacingGameApp {
         List<Car> cars = CarFactory.create(numberOfCars);
         CarRacingGame carRacingGame = new CarRacingGame(cars, numberOfAttempts);
         carRacingGame.start();
-        ResultView.printResult();
+        ResultView.printResult(carRacingGame.getScoreboard());
     }
 
 }
