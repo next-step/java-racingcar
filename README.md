@@ -200,7 +200,7 @@ int number = scanner.nextInt();
     * else를 쓰지 말라고 하니 switch/case로 구현하는 경우가 있는데 switch/case도 허용하지 않는다.
 
 ### Step3 리뷰사항 
-* [ ] [fix01][Entry.java] Domain과 View를 분리할 것
+* [x] [fix01][Entry.java] Domain과 View를 분리할 것
     * 만약 View의 변화로 인해 도메인 수정이 일어난다면 코드의 의존성을 넘어 아키텍처 강한 의존성이 생기게 됨
     * 비지니스 로직과 출력 로직을 도메인이 책임지고 있기 때문에 단일 책임의 원칙에도 위배
     * View 같은 세부 정보를 참조하여 복잡성을 더 추가한다면 복잡도가 더 증가하고 테스트 하기가 어려움
