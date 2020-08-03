@@ -2,12 +2,11 @@ package step2;
 
 import java.util.Objects;
 
-public class StringCalculator implements Calculator {
+public class StringCalculator {
 
     private static final String EMPTY_STRING = "";
     private static final String SPLIT_REGEX = " ";
 
-    @Override
     public int calculate(String input) {
         validateInputString(input);
         String[] splited = split(input);
