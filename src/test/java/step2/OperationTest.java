@@ -20,4 +20,5 @@ public class OperationTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ExceptionMessage.SYMBOL_NOT_ARITHMETIC);
     }
+
 }
