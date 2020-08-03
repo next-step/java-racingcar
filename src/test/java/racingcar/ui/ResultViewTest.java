@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ResultViewTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-
+    private final String NAME_OF_CAR = "TEST";
     @BeforeEach
     public void setUpStreams() {
         System.setOut(new PrintStream(outContent));
@@ -31,7 +31,7 @@ public class ResultViewTest {
     @Test
     void printMoveCarTest() {
 
-        Car car = new Car();
+        Car car = new Car(NAME_OF_CAR);
         car.moveAndStop(5);
         ResultView.printResult(car);
         printMessageTest("--\n");
@@ -40,7 +40,7 @@ public class ResultViewTest {
     @DisplayName("정지한 자동차 출력 테스트")
     @Test
     void printStopCarTest() {
-        Car car = new Car();
+        Car car = new Car(NAME_OF_CAR);
         car.moveAndStop(1);
         ResultView.printResult(car);
         printMessageTest("-\n");

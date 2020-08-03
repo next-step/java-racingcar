@@ -11,7 +11,7 @@ public class RacingGameTest {
 
     @BeforeEach
     void setUp() {
-        input = new ParameterInput(3, 5);
+        input = new ParameterInput("a,b,c", 3, 5);
     }
 
     @Test

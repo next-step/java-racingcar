@@ -15,8 +15,10 @@ public class RacingGame {
 
         racingData = racingDataInput.getRacingData();
 
+        String[] names = racingData.getNames().split(",");
+
         for (int i = 0; i < racingData.getNumberOfCars(); i++) {
-            racingCars.add(new Car());
+            racingCars.add(new Car(names[i]));
         }
     }
 

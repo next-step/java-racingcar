@@ -13,10 +13,13 @@ public class ResultView {
 
     public static void printResult(Car car) {
 
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder(car.getName());
+        sb.append(" : ");
+
         for (int i = 0; i < car.getMoveCount() + 1; i++) {
             sb.append(MOVE_MARK);
         }
+
         System.out.println(sb.toString());
     }
 

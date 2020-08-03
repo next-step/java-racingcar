@@ -7,12 +7,17 @@ public class ScannerInput extends RacingDataInput {
     private static final Scanner scanner = new Scanner(System.in);
 
     @Override
-    int inputNumberOfCars() {
+    public String inputNames() {
+        return scanner.nextLine();
+    }
+
+    @Override
+    public int inputNumberOfCars() {
         return scannerInput();
     }
 
     @Override
-    int inputTryCount() {
+    public int inputTryCount() {
         return scannerInput();
     }
 
