@@ -37,7 +37,7 @@ public class RacingCar implements Cloneable {
     }
 
     private void validateName(String name) {
-        if(StringUtil.isEmpty(name) || MAX_NAME_LENGTH < name.length()) {
+        if (StringUtil.isEmpty(name) || MAX_NAME_LENGTH < name.length()) {
             throw new IllegalArgumentException("이름이 최대 길이를 초과했습니다 "
                     + name.length());
         }
