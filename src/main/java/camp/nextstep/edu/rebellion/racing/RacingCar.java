@@ -9,9 +9,14 @@ public class RacingCar implements Cloneable {
     private final String name;
     private int position;
 
-    public RacingCar(String name){
+    private RacingCar(String name, int position) {
         validateName(name);
         this.name = name;
+        this.position = position;
+    }
+
+    public RacingCar(String name){
+        this(name, 0);
     }
 
     public void move(RacingRule rule) {
@@ -28,12 +33,8 @@ public class RacingCar implements Cloneable {
         return this.position;
     }
 
-    public RacingCar clone() {
-        try {
-            return (RacingCar) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new IllegalArgumentException("자동차 객체를 복사하는데 실패하였습니다");
-        }
+    public RacingCar copy() {
+        return new RacingCar(this.name, this.position);
     }
 
     private void validateName(String name) {

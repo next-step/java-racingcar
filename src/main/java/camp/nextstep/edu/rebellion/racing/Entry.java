@@ -19,7 +19,7 @@ public class Entry {
 
     public SnapShotEntry getSnapshot() {
         return this.cars.stream()
-                .map(car -> car.clone())
+                .map(car -> car.copy())
                 .collect(Collectors.collectingAndThen(Collectors.toList(),
                         SnapShotEntry::new));
     }

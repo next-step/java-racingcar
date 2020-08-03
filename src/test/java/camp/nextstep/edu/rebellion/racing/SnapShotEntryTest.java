@@ -28,13 +28,13 @@ class SnapShotEntryTest {
         record.keep(entry);
 
         // then
-        assertThat(record.getFinalRoundSnapShot().getWinners()).
-                containsExactly("A","B","C");
+        assertThat(record.getFinalRoundSnapShot().getWinners())
+                .containsExactly("A","B","C");
     }
 
     @DisplayName("외부에서 의도치 않은 접근으로 값을 변경할 때 변경이 안되는지 확인")
     @Test
-    void testClone() {
+    void testAttack() {
         SnapShotEntry snapshot = new SnapShotEntry(Arrays.asList(generateCar("A")));
         RacingRule alwaysGoRule = () -> true;
 
