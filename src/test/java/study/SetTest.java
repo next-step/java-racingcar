@@ -26,7 +26,7 @@ public class SetTest {
         numbers.add(2);
         numbers.add(3);*/
 
-        numbers = new HashSet<Integer>(Arrays.asList(1, 1, 2, 3));
+        numbers = new HashSet<Integer>(Arrays.asList(1, 1, 2, 3, 4));
 
         // 초기화 이후에 변경이 불가한 Set
         // numbers = Collections.unmodifiableSet(new HashSet<Integer>(Arrays.asList(1, 2, 3)));
@@ -39,7 +39,7 @@ public class SetTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3,})
+    @ValueSource(ints = {1, 2, 3, 4})
     void contains(int number) {
         assertThat(numbers.contains(number)).isTrue();
     }
