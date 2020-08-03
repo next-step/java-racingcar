@@ -1,10 +1,12 @@
-package cc.oakk.racing.condition;
+package cc.oakk.racing.predicate;
 
-public class RangeCondition implements Condition<Integer> {
+import java.util.function.Predicate;
+
+public class RangePredicate implements Predicate<Integer> {
     private final int min;
     private final int max;
 
-    public RangeCondition(int min, int max) {
+    public RangePredicate(int min, int max) {
         if (max < min) {
             throw new IllegalArgumentException("min is larger than a max argument.");
         }
@@ -14,7 +16,7 @@ public class RangeCondition implements Condition<Integer> {
     }
 
     @Override
-    public boolean isMeetCondition(Integer source) {
+    public boolean test(Integer source) {
         if (source == null) {
             throw new IllegalArgumentException("source is null!");
         }

@@ -1,14 +1,16 @@
-package cc.oakk.racing.condition;
+package cc.oakk.racing.predicate;
 
 import cc.oakk.racing.Car;
 import cc.oakk.racing.converter.Converter;
 
+import java.util.function.Predicate;
+
 public class CarForwardCondition<T> {
-    private Condition<T> condition;
+    private Predicate<T> predicate;
     private Converter<Car, T> carConverter;
 
-    public CarForwardCondition(Condition<T> condition, Converter<Car, T> carConverter) {
-        if (condition == null) {
+    public CarForwardCondition(Predicate<T> predicate, Converter<Car, T> carConverter) {
+        if (predicate == null) {
             throw new IllegalArgumentException("condition is null!");
         }
 
@@ -16,12 +18,12 @@ public class CarForwardCondition<T> {
             throw new IllegalArgumentException("carConverter is null!");
         }
 
-        this.condition = condition;
+        this.predicate = predicate;
         this.carConverter = carConverter;
     }
 
     public boolean isConvertedCarMeetCondition(Car car) {
         T convertedCar = carConverter.convert(car);
-        return condition.isMeetCondition(convertedCar);
+        return predicate.test(convertedCar);
     }
 }
