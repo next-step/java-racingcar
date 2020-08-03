@@ -1,6 +1,10 @@
 package camp.nextstep.edu.rebellion.racing;
 
+import java.util.stream.Collectors;
+
 public class ResultView {
+    private static final String ROUND_TITLE = "[%4d] ROUND";
+    private static final String WINNER_DELIMITER = ",";
     private static final String POSITION_LANE = "-";
     private static final String ENTER = "\n";
 
@@ -8,11 +12,11 @@ public class ResultView {
         StringBuilder builder = new StringBuilder();
         int round = 1;
         for (SnapShotEntry snapShotEntry : record.getSnapShots()) {
-            builder.append("ROUND " + round++).append(ENTER);
+            builder.append(String.format(ROUND_TITLE, round++)).append(ENTER);
             builder.append(generatePane(snapShotEntry));
         }
 
-        builder.append(record.getFinalRoundSnapShot().getWinners() + "가 최종 우승했습니다 :+1");
+        builder.append(generateWinners(record.getFinalRoundSnapShot()) + "가 최종 우승했습니다");
         System.out.println(builder.toString());
     }
 
@@ -23,6 +27,11 @@ public class ResultView {
                         .append(makeLane(car.getName(), car.getPosition())).append(ENTER)
                 );
         return builder.toString();
+    }
+
+    private static String generateWinners(SnapShotEntry snapShotEntry) {
+        return snapShotEntry.getWinners().stream()
+                .collect(Collectors.joining(WINNER_DELIMITER));
     }
 
     private static String makeLane(String name, int position) {

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,16 +22,27 @@ class RecordTest {
                 generateCar("3")));
         RacingRule alwaysGoRule = () -> true;
         Record record = new Record();
-        String expectedLane = "-\n-\n-";
 
         // when
         entry.move(alwaysGoRule);
         record.keep(entry);
-        List<String> result = record.getRecordLane();
+
+        List<SnapShotEntry> result = record.getSnapShots();
+        SnapShotEntry snapShotEntry = result.get(0);
 
         // then
-        assertThat(result).containsExactly(expectedLane);
-        assertThat(result).hasSize(1);
+        assertAll(
+                () -> assertThat(snapShotEntry).isNotNull(),
+                () -> assertThat(result).hasSize(1),
+                () -> assertThat(snapShotEntry.getCars().stream()
+                        .map(car -> car.getName())
+                        .collect(Collectors.toList()))
+                        .containsExactly("1", "2", "3"),
+                () -> assertThat(snapShotEntry.getCars().stream()
+                        .mapToInt(car -> car.getPosition())
+                        .sum())
+                        .isEqualTo(3)
+        );
     }
 
     private RacingCar generateCar(String name) {

@@ -3,6 +3,8 @@ package camp.nextstep.edu.rebellion.racing;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,26 +13,35 @@ class RacingGameTest {
     @Test
     public void startTest() {
         // given
-        int carNumbers = 3;
         int rounds = 5;
-        RacingGameStub racingGameStub = new RacingGameStub(carNumbers, rounds);
-        String expectedLane1 = "-\n-\n-";
-        String expectedLane2 = "--\n--\n--";
-        String expectedLane3 = "---\n---\n---";
-        String expectedLane4 = "----\n----\n----";
-        String expectedLane5 = "-----\n-----\n-----";
+        String cars = "A,B,C";
+        RacingGameStub racingGameStub = new RacingGameStub(cars, rounds);
 
         // when
         Record record = racingGameStub.start();
+        List<SnapShotEntry> snapShotEntries = record.getSnapShots();
+        SnapShotEntry round1 = snapShotEntries.get(0);
+        SnapShotEntry round2 = snapShotEntries.get(1);
+        SnapShotEntry round3 = snapShotEntries.get(2);
+        SnapShotEntry round4 = snapShotEntries.get(3);
+        SnapShotEntry finalRound = record.getFinalRoundSnapShot();
 
         // then
         assertAll(
-                () -> assertThat(record.getRecordLane()).hasSize(rounds),
-                () -> assertThat(record.getRecordLane()).contains(expectedLane1),
-                () -> assertThat(record.getRecordLane()).contains(expectedLane2),
-                () -> assertThat(record.getRecordLane()).contains(expectedLane3),
-                () -> assertThat(record.getRecordLane()).contains(expectedLane4),
-                () -> assertThat(record.getRecordLane()).contains(expectedLane5)
+                () -> assertThat(record.getSnapShots()).hasSize(rounds),
+                () -> assertThat(getTotalDistances(round1)).isEqualTo(3),
+                () -> assertThat(getTotalDistances(round2)).isEqualTo(6),
+                () -> assertThat(getTotalDistances(round3)).isEqualTo(9),
+                () -> assertThat(getTotalDistances(round4)).isEqualTo(12),
+                () -> assertThat(getTotalDistances(finalRound)).isEqualTo(15),
+                () -> assertThat(record.getFinalRoundSnapShot().getWinners())
+                        .containsExactly("A", "B", "C")
         );
+    }
+
+    private int getTotalDistances(SnapShotEntry snapShotEntry) {
+        return snapShotEntry.getCars().stream()
+                .mapToInt(car -> car.getPosition())
+                .sum();
     }
 }

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RacingCarTest {
@@ -34,5 +35,17 @@ class RacingCarTest {
 
         // then
         assertThat(car.getPosition()).isZero();
+    }
+
+    @DisplayName("자동차 이름이 다섯글자를 초과할 경우 예외 발생")
+    @Test
+    public void nameTest() {
+        // when & then
+        assertThatThrownBy(
+                () -> {
+                    RacingCar car = new RacingCar("123456");
+                }
+        ).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("이름이 최대 길이를 초과했습니다 6");
     }
 }
