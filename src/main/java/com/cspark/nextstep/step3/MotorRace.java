@@ -2,8 +2,10 @@ package com.cspark.nextstep.step3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 public class MotorRace {
+    private final Function<Dice, Boolean> rule = (d) -> d.cast() > 3;
 
     private List<Driver> drivers;
     private int numberOfRepeats;
@@ -18,7 +20,7 @@ public class MotorRace {
 
     private void createTeam(int numberOfCars) {
         for (int i = 0; i < numberOfCars; i++) {
-            drivers.add(new Driver(new RacingCar()));
+            drivers.add(new Driver(rule));
         }
     }
 

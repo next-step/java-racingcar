@@ -11,14 +11,12 @@ class DriverTest {
     private final int MIN = 0;
     private final int MAX = 9;
     private Dice dice;
-    private RacingCar racingCar;
     private Driver driver;
 
     @BeforeEach
     void setUp() {
         this.dice = new Dice(MIN, MAX);
-        this.racingCar = new RacingCar();
-        this.driver = new Driver(racingCar);
+        this.driver = new Driver((d) -> d.cast() > 3);
     }
 
     @DisplayName("전진/정지 운전하다")
