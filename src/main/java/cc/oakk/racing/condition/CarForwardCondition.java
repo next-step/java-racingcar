@@ -4,8 +4,8 @@ import cc.oakk.racing.Car;
 import cc.oakk.racing.converter.Converter;
 
 public class CarForwardCondition<T> {
-    Condition<T> condition;
-    Converter<Car, T> carConverter;
+    private Condition<T> condition;
+    private Converter<Car, T> carConverter;
 
     public CarForwardCondition(Condition<T> condition, Converter<Car, T> carConverter) {
         if (condition == null) {
