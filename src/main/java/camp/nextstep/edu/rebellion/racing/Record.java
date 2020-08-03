@@ -1,15 +1,20 @@
 package camp.nextstep.edu.rebellion.racing;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Record {
-    private final List<String> recordLane = new ArrayList<>();
+    private final List<SnapShotEntry> snapShots = new ArrayList<>();
     public void keep(Entry entry) {
-        recordLane.add(entry.getAllPositionLanes());
+        snapShots.add(entry.getSnapshot());
     }
 
-    public List<String> getRecordLane() {
-        return recordLane;
+    public List<SnapShotEntry> getSnapShots() {
+        return Collections.unmodifiableList(this.snapShots);
+    }
+
+    public SnapShotEntry getFinalRoundSnapShot() {
+        return snapShots.get(snapShots.size() - 1);
     }
 }

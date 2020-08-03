@@ -2,7 +2,7 @@ package camp.nextstep.edu.rebellion.racing;
 
 import camp.nextstep.edu.rebellion.racing.rule.RacingRule;
 
-public class RacingCar {
+public class RacingCar implements Cloneable {
     private final String name;
     private int position;
 
@@ -16,7 +16,19 @@ public class RacingCar {
         }
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public int getPosition() {
         return this.position;
+    }
+
+    public RacingCar clone() {
+        try {
+            return (RacingCar) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new IllegalArgumentException("자동차 객체를 복사하는데 실패하였습니다");
+        }
     }
 }
