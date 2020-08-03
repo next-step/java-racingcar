@@ -13,18 +13,6 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StringCalculatorTest {
-    /*
-     구현 목적 : 사용자가 입력한 문자열 값 따라 사칙연산 수행
-     요구 사항
-        1. 입력 문자열의 '숫자' 와 '사칙연산' 사이 반드시, 빈 공백 문자열
-        2. 나눗셈: 결과 값 정수로 떨어지는 값으로 한정
-        3. 입력값에 따라 계산 순서 결정
-
-     클린 코드
-        1. 단위 테스트 (각 사칙연산, 입력값 null, 사칙연산 기호 불일치 등)
-        2. 메소드 분리 노력
-
-     */
 
     //** 계획 : custom Exception message 관리 및 테스트 케이스 추가 *************//
     //**  심화 : JUnit Parameterized Test & Custom Exception github 확인 ******//
