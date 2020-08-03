@@ -28,12 +28,15 @@ class EntryTest {
         // given
         Entry entry = new Entry(cars);
         RacingRule alwaysGoRule = () -> true;
-        String expectedLane = "-\n-\n-";
 
         // when
         entry.move(alwaysGoRule);
 
         // then
-        assertThat(entry.getAllPositionLanes()).isEqualTo(expectedLane);
+        SnapShotEntry snapShotEntry = entry.getSnapshot();
+        assertThat(snapShotEntry.getCars().stream()
+                .mapToInt(car -> car.getPosition())
+                .sum())
+                .isEqualTo(3);
     }
 }
