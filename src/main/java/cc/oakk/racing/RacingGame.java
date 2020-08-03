@@ -26,11 +26,11 @@ public class RacingGame {
     }
 
     private void validateCreateRoundArguments(int totalCarCount, int totalRoundCount) {
-        if (totalCarCount < 0) {
+        if (totalCarCount <= 0) {
             throw new IllegalArgumentException("totalCarCount should be greater than 0.");
         }
 
-        if (totalRoundCount < 0) {
+        if (totalRoundCount <= 0) {
             throw new IllegalArgumentException("totalRoundCount should be greater than 0.");
         }
     }

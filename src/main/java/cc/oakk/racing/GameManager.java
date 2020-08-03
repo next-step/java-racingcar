@@ -49,7 +49,7 @@ public class GameManager {
         int totalCarCount;
         do {
             totalCarCount = inputView.readTotalNumberOfCars();
-        } while (totalCarCount < 0);
+        } while (totalCarCount <= 0);
         return totalCarCount;
     }
 
@@ -57,7 +57,7 @@ public class GameManager {
         int totalRoundCount;
         do {
             totalRoundCount = inputView.readTotalRoundCount();
-        } while (totalRoundCount < 0);
+        } while (totalRoundCount <= 0);
         return totalRoundCount;
     }
 }

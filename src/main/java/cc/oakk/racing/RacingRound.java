@@ -16,7 +16,7 @@ public class RacingRound implements Printable<Car> {
             throw new IllegalArgumentException("cars are null!");
         }
 
-        if (totalRoundCount < 0) {
+        if (totalRoundCount <= 0) {
             throw new IllegalArgumentException("totalRoundCount should be greater than zero.");
         }
 
