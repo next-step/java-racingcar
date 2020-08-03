@@ -1,6 +1,7 @@
 package racing.domain;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -39,4 +40,13 @@ public class CarRacingTest {
         assertThat(carRacing.getRacingCount()).isEqualTo(0);
     }
 
+    @Test
+    @DisplayName("이동거리 랜덤 범위 확인")
+    void getRandomDistance() {
+        CarRacing racing = new CarRacing(1, 1);
+        for (int i = 0; i < 10; i++) {
+            int distance = racing.getRandomDistance();
+            assertThat(distance).isBetween(CarRacingProperty.MIN_RANDOM_DISTANCE, CarRacingProperty.MAX_RANDOM_DISTANCE);
+        }
+    }
 }

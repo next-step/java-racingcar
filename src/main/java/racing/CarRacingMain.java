@@ -14,7 +14,7 @@ public class CarRacingMain {
 
         RacingResultView.printHeader();
         while (!carRacing.isComplete()) {
-            carRacing.race((movedDistance, totalDistance) -> RacingResultView.printCarMovedDistance(totalDistance));
+            carRacing.race(RacingResultView::printCarMovedDistance);
             RacingResultView.printFooter();
         }
     }
