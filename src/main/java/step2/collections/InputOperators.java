@@ -16,7 +16,7 @@ public class InputOperators {
         return this.operators.length;
     }
 
-    public String get(Integer index) {
+    public String get(int index) {
         return this.operators[index];
     }
 

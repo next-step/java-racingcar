@@ -60,3 +60,4 @@
     4. RacePlayers -> RacingCars 이름 변경
     5. MoveStrategy 제네릭 제거, Random의 범위를 제한하는 Wrapper Class 인 BoundedDice 클래스 작성
     6. Announcer 클래스 내부 메소드 좀더 쪼개기
+3. refactor - step2 2차 코드리뷰 누락 분 반영(불필요한 Wrapper class -> primitive type)

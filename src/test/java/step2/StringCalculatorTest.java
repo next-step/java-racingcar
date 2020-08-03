@@ -14,7 +14,7 @@ class StringCalculatorTest {
     @DisplayName("입력받은 식에 대해서 계산하기")
     @ParameterizedTest
     @CsvSource(value = {"2 + 3 * 4 / 2:10", "1 * 1 + 2 / 3 - 1:0"}, delimiter = ':')
-    void calculate(String expression, Integer expectedResult) {
+    void calculate(String expression, int expectedResult) {
         assertThat(StringCalculator.calculate(expression)).isEqualTo(expectedResult);
     }
 

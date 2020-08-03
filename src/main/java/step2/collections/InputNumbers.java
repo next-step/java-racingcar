@@ -16,7 +16,7 @@ public class InputNumbers {
         return this.numbers.length;
     }
 
-    public int get(Integer index) {
+    public int get(int index) {
         return this.numbers[index];
     }
 
