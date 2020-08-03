@@ -7,6 +7,11 @@ public class Calculator {
     Deque<String> inputList;
     String[] calcSet;
 
+    public Calculator() {
+        inputList = new LinkedList<>();
+        calcSet = new String[3];
+    }
+
     public int add(String value1, String value2) {
         return Integer.parseInt(value1) + Integer.parseInt(value2);
     }
@@ -41,9 +46,8 @@ public class Calculator {
     // 좀더 간단하게 구현하는 방법이 있지 않을까 싶은데..
     public int totalCalculate(String value) {
         int result;
-        calcSet = new String[]{"", "", ""};
+        isNullOrBlank(value);
         String[] splitList = value.split(" ");
-        inputList = new LinkedList<>();
         inputList.addAll(Arrays.asList(splitList));
         while (inputList.size() != 1) {
             calcSet[0] = inputList.pop();
@@ -53,5 +57,12 @@ public class Calculator {
             inputList.addFirst(String.valueOf(result));
         }
         return Integer.parseInt(inputList.pop());
+    }
+
+    // Null 값에 대한 Exception 낼 부분 확인
+    public void isNullOrBlank(String value) {
+        if (value.equals("")) {
+            throw new IllegalArgumentException();
+        }
     }
 }

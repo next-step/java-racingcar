@@ -18,7 +18,6 @@ class CalculatorTest {
     void splitString() {
         String[] value = "1 + 2".split(" ");
         assertThat(value).contains("+");
-        //Arrays.stream(value).forEach(System.out::println);
     }
 
     @Test
@@ -60,6 +59,7 @@ class CalculatorTest {
                 .isThrownBy(() -> calc.calculate(value[0], value[1], value[2]));
     }
 
+    // 기능을 모두 totalCalculate로 옮김. 그대로 둘 필요가 있을까?
     @Test
     void MultiOperationTest() {
         String[] input = "1 + 2 + 3".split(" ");
@@ -75,7 +75,6 @@ class CalculatorTest {
             result = calc.calculate(temp[0], temp[1], temp[2]);
             value.addFirst(String.valueOf(result));
         }
-
         assertThat(result).isEqualTo(6);
     }
 
@@ -83,7 +82,25 @@ class CalculatorTest {
     // 이 경우 상위 테스트는 그대로 두는게 맞을지?
     @ParameterizedTest
     @ValueSource(strings = {"1 + 3 - 2"})
+    @DisplayName("Several Calculation with Only one Method used")
     void MultiOperationCalculationWithOneMethod(String input) {
         assertThat(calc.totalCalculate(input)).isEqualTo(2);
+    }
+
+    //조금 복잡한 경우?
+    @ParameterizedTest
+    @ValueSource(strings = {"1 * 3 - 23 / 4 * 4"})
+    @DisplayName("Several Calculation with Only one Method used_Complex")
+    void MultiOperationCalculationWithOneMethod2(String input) {
+        assertThat(calc.totalCalculate(input)).isEqualTo(-20);
+    }
+
+    //Exception Check
+    //Input 자체가 Null일 경우는?
+    @ParameterizedTest
+    @ValueSource(strings = {""})
+    void NullStringInputValueExceptionTest(String input) {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> calc.totalCalculate(input));
     }
 }
