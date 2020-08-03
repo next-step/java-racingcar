@@ -23,11 +23,13 @@ public class Cars {
             int randomNumber = random.nextInt(RANDOM_NUMBER_BOUND);
             car.move(randomNumber);
         }
-
-        ResultView.print(cars);
     }
 
     public int getNumberOfCars() {
         return cars.size();
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }

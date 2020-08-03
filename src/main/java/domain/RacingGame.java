@@ -1,6 +1,7 @@
 package domain;
 
 import view.InputView;
+import view.ResultView;
 
 public class RacingGame {
 
@@ -10,9 +11,10 @@ public class RacingGame {
 
         Cars cars = new Cars(numberOfCars);
 
-        System.out.println("실행 결과");
+        ResultView.printResultLine();
         for (int i = 0; i < time; i++) {
             cars.race();
+            ResultView.printLocations(cars.getCars());
         }
     }
 }

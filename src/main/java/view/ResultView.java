@@ -5,12 +5,29 @@ import domain.Car;
 import java.util.List;
 
 public class ResultView {
-    public static void print(List<Car> cars) {
+    private static final String LOCATION_SIGN = "-";
 
+    private ResultView() {
+    }
+
+    public static void printResultLine() {
+        System.out.println("실행 결과");
+    }
+
+    public static void printLocations(List<Car> cars) {
         for (Car car : cars) {
-            System.out.println(car.printLocation());
+            printLocationToSign(car);
         }
 
         System.out.println();
+    }
+
+    public static void printLocationToSign(Car car) {
+        String movement = "";
+
+        for (int i = 0; i < car.getLocation(); i++) {
+            movement = movement.concat(LOCATION_SIGN);
+        }
+        System.out.println(movement);
     }
 }

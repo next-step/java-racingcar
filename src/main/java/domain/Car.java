@@ -3,7 +3,6 @@ package domain;
 
 public class Car {
     private static final int MOVABLE_NUMBER = 4;
-    private static final String LOCATION_SIGN = "-";
 
     private int location;
 
@@ -19,15 +18,6 @@ public class Car {
         if (randomNumber >= MOVABLE_NUMBER) {
             location++;
         }
-    }
-
-    public String printLocation() {
-        String movement = "";
-
-        for (int i = 0; i < location; i++) {
-            movement = movement.concat(LOCATION_SIGN);
-        }
-        return movement;
     }
 
     public int getLocation() {

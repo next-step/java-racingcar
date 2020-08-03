@@ -36,13 +36,4 @@ public class CarTest {
 
         assertThat(car.getLocation()).isEqualTo(expectValue);
     }
-
-    @DisplayName("자동차의 현재 위치에 따라 -를 출력한다")
-    @ParameterizedTest
-    @CsvSource({"0, ''", "1,-", "2,--", "3,---"})
-    void printLocation(int randomNumber, String expectValue) {
-        Car car = new Car(randomNumber);
-
-        assertThat(car.printLocation()).isEqualTo(expectValue);
-    }
 }
