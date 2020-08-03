@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 public final class CarRacingProperty {
 
