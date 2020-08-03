@@ -44,4 +44,6 @@ public class SetCollectionTest {
 
         assertThat(numbers.contains(number)).isEqualTo(expected);
     }
+
+
 }

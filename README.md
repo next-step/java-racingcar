@@ -7,3 +7,9 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 2020.08.03 테스트 예제 커밋
+* String Test / Set Test
+## 사칙 연산 계산기 구현 
+* 사용자가 입력한 문자열 값에 따라 사칙연산을 수행할 수 있는 계산기 구현.
+
