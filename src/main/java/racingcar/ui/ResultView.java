@@ -3,6 +3,9 @@ package racingcar.ui;
 import racingcar.Car;
 import resource.StringResources;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class ResultView {
 
     private final static char MOVE_MARK = '-';
@@ -25,5 +28,9 @@ public class ResultView {
 
     public static void lineFeed() {
         System.out.println();
+    }
+
+    public static void printWinnerNames(String winnerNames) {
+        System.out.println(winnerNames + StringResources.GAME_RESULT_WINNERS);
     }
 }

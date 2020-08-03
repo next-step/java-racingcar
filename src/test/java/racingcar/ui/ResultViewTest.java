@@ -3,6 +3,8 @@ package racingcar.ui;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.Car;
 import resource.StringResources;
 
@@ -34,7 +36,7 @@ public class ResultViewTest {
         Car car = new Car(NAME_OF_CAR);
         car.moveAndStop(5);
         ResultView.printResult(car);
-        printMessageTest("--\n");
+        printMessageTest(NAME_OF_CAR + " : --\n");
     }
 
     @DisplayName("정지한 자동차 출력 테스트")
@@ -43,7 +45,7 @@ public class ResultViewTest {
         Car car = new Car(NAME_OF_CAR);
         car.moveAndStop(1);
         ResultView.printResult(car);
-        printMessageTest("-\n");
+        printMessageTest(NAME_OF_CAR + " : -\n");
     }
 
     @DisplayName("라인 피드 테스트")
@@ -52,6 +54,16 @@ public class ResultViewTest {
         ResultView.lineFeed();
         printMessageTest("\n");
     }
+
+    @DisplayName("우승자 출력 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = { "a, b", "c, d" })
+    public void printWinnerNamesTest(String winnerNames) {
+        ResultView.printWinnerNames(winnerNames);
+        printMessageTest(winnerNames + StringResources.GAME_RESULT_WINNERS + "\n");
+    }
+
+
 
     private void printMessageTest(String testMessage) {
         assertThat(testMessage).isEqualTo(outContent.toString());

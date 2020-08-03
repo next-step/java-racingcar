@@ -5,6 +5,8 @@ import racingcar.ui.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalInt;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -14,7 +16,6 @@ public class RacingGame {
     public RacingGame(RacingDataInput racingDataInput) {
 
         racingData = racingDataInput.getRacingData();
-
         String[] names = racingData.getNames().split(",");
 
         for (int i = 0; i < racingData.getNumberOfCars(); i++) {
@@ -33,6 +34,25 @@ public class RacingGame {
 
             ResultView.lineFeed();
         }
+    }
+
+    public void end() {
+
+        ResultView.lineFeed();
+        ResultView.printWinnerNames(getWinnerNames());
+    }
+
+    public String getWinnerNames() {
+
+        OptionalInt maxMoveCount = racingCars.stream()
+                .mapToInt(Car::getMoveCount)
+                .reduce(Integer::max);
+
+        int max = maxMoveCount.orElse(0);
+        return racingCars.stream()
+                .filter(car -> car.getMoveCount() == max)
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
     }
 
     private void moveCar(int fuel) {
