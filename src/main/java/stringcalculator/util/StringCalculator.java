@@ -3,12 +3,22 @@ package stringcalculator.util;
 import stringcalculator.Constants;
 import stringcalculator.StringCalOperator;
 
+import java.util.Scanner;
+
 public class StringCalculator {
     // 입력 문자열의 '숫자' 와 '사칙연산' 사이 반드시, 빈 공백 문자열, final 변수 지정
 
     //인스턴스화 방지 위한 private 생성자 선언 (08.02)
     private StringCalculator(){
         throw new IllegalArgumentException(Constants.PROTECTED_UTIL_CLASS);
+    }
+
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please use Blank between every number & operator");
+        System.out.print("You want to Calculate : ");
+        String expression = scanner.nextLine();
+        System.out.print("The Answer is : " + calculate(expression));
     }
 
     public static int calculate(String expression){
