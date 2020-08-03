@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import java.util.Arrays;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -63,6 +62,6 @@ public class MotorRacingTest {
         MotorRacing motorRacing = new MotorRacing(carNames, positiveMotorRacingRule);
         MotorRacingDisplayResults motorRacingDisplayResults = motorRacing.racing(raceRound);
         String result = motorRacingDisplayResults.toString();
-        assertThat(result.replace("\n", "\\n")).isEqualTo(expected);
+        assertThat(result.replace("\n", "\\n")).contains(expected);
     }
 }

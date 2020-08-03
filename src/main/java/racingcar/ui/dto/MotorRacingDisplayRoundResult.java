@@ -11,9 +11,11 @@ public class MotorRacingDisplayRoundResult {
     public static final String NEW_LINE = "\n";
     public static final String BLANK = "";
     private List<RacingResult> roundCarRaceResultList;
+    private static MotorRacingDisplayWinnerResults winnerResults = new MotorRacingDisplayWinnerResults();
 
     public MotorRacingDisplayRoundResult(List<RacingResult> roundCarRaceResultList) {
         this.roundCarRaceResultList = roundCarRaceResultList;
+        roundCarRaceResultList.forEach(winnerResults::accumulateRacingTotalMileage);
     }
 
     private String repate(int raceResult){
@@ -24,7 +26,7 @@ public class MotorRacingDisplayRoundResult {
     }
 
     private String displayRacingResult(RacingResult racingResult){
-        if("".equals(racingResult.getPrefix())){
+        if(racingResult.isEmptyPrefix()){
             return repate(racingResult.getTotalMileage());
         }
         return String.format("%s : %s", racingResult.getPrefix(), repate(racingResult.getTotalMileage()));
@@ -36,6 +38,9 @@ public class MotorRacingDisplayRoundResult {
                                      .map(this::displayRacingResult)
                                      .collect(Collectors.joining(NEW_LINE))
             ;
+    }
 
+    public static MotorRacingDisplayWinnerResults getWinnerResults() {
+        return winnerResults;
     }
 }

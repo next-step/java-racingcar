@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-public class RacingResult {
+public final class RacingResult  {
     private final String prefix;
     private final int totalMileage;
 
@@ -19,6 +19,10 @@ public class RacingResult {
 
     public String getPrefix() {
         return prefix;
+    }
+
+    public boolean isEmptyPrefix(){
+        return "".equals(getPrefix());
     }
 
     public int getTotalMileage() {

@@ -18,6 +18,18 @@ public class MotorRacingDisplayResults {
 
     @Override
     public String toString() {
+        return getCollectDisplayRoundResults() + getDisplayWinners();
+    }
+
+    private String getDisplayWinners() {
+        List<String> winners = MotorRacingDisplayRoundResult.getWinnerResults().getWinners();
+        if(winners.isEmpty()){
+            return "";
+        }
+        return "\n\n" + String.join(", ", winners) + "가 최종 우승했습니다.";
+    }
+
+    private String getCollectDisplayRoundResults() {
         return carRaceDisplayResults.stream()
             .map(MotorRacingDisplayRoundResult::toString)
             .collect(Collectors.joining(ROUND_RESULT_SEPARATOR));
