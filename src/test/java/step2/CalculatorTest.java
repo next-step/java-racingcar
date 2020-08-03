@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 @DisplayName("문자열 계산기 테스트")
 class CalculatorTest {
 
-    private Calculator calculator;
+    private StringCalculator calculator;
 
     @BeforeEach
     void setUp() {
