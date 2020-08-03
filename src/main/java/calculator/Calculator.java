@@ -1,47 +1,32 @@
 package calculator;
 
-import java.util.LinkedList;
-import java.util.Objects;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Calculator {
 
-	private final LinkedList<Integer> numberGroup = new LinkedList<>();
-	private final LinkedList<OperatorType> operatorTypeGroup = new LinkedList<>();
-	private int result = 0;
+	private int convertInteger(final String s) {
+		if (Objects.isNull(s) || s.isEmpty() || !s.matches("-?\\d+(\\.\\d+)?")) {
+			throw new IllegalArgumentException("숫자가 잘못되었습니다.");
+		}
+		return Integer.parseInt(s);
+	}
 
-	public int calculate(final String inputValues) {
-		if(inputValues.trim().isEmpty()) {
+	private boolean validateCalculator(final String inputExpression) {
+		return Objects.isNull(inputExpression) || inputExpression.trim().isEmpty();
+	}
+
+	public int calculate(final String inputExpression) {
+		if (validateCalculator(inputExpression)) {
 			throw new IllegalArgumentException();
 		}
 
-		initialize(inputValues);
+		final List<String> inputGroup = Arrays.asList(inputExpression.split(" "));
+		int result = convertInteger(inputGroup.get(0));
 
-		int index = 0;
-		for(final OperatorType type : operatorTypeGroup) {
-			result = type.getOperator().operate(index > 0 ?
-					result : numberGroup.removeFirst(), numberGroup.removeFirst());
-			index++;
+		for (int i = 1; i < inputGroup.size(); i += 2) {
+			result = OperatorType.getOperatorTypeByCode(inputGroup.get(i)).calculate(result, convertInteger(inputGroup.get(i + 1)));
 		}
 
 		return result;
-	}
-
-	private void initialize(final String inputValues) {
-		final StringTokenizer st = new StringTokenizer(inputValues);
-
-		while (st.hasMoreTokens()) {
-			final String value = st.nextToken();
-
-			if (isDigit(value)) {
-				numberGroup.add(Integer.valueOf(value));
-			} else {
-				operatorTypeGroup.add(OperatorType.getOperatorTypeByCode(value));
-			}
-		}
-	}
-
-	private boolean isDigit(final String s) {
-		return Objects.nonNull(s) && !s.isEmpty() && s.matches("-?\\d+(\\.\\d+)?");
 	}
 }

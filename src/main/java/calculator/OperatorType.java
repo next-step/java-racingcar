@@ -1,40 +1,40 @@
 package calculator;
 
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.function.BiFunction;
 
 public enum OperatorType {
-	PLUS("+", new AddOperator()),
-	MINUS("-", new SubtractOperator()),
-	DIVIDE("/", new DivideOperator()),
-	MULTIPLY("*", new MultiplyOperator());
+	ADDITION("+", Integer::sum),
+	SUBTRACTION("-", (val1, val2) -> val1 - val2),
+	MULTIPLY("*", (val1, val2) -> val1 * val2),
+	DIVIDE("/", (val1, val2) -> {
+		if (val2 == 0) {
+			throw new ArithmeticException("0으로 나눌 수 없습니다.");
+		}
+		return val1 / val2;
+	});
 
-	private final String type;
-	private final Operator operator;
+	private final String symbol;
+	private final BiFunction<Integer, Integer, Integer> expression;
 
-	public String getType() {
-		return type;
+	OperatorType(final String symbol, final BiFunction<Integer, Integer, Integer> expression) {
+		this.symbol = symbol;
+		this.expression = expression;
 	}
 
-	public Operator getOperator() {
-		return operator;
-	}
-
-	OperatorType(final String type, final Operator operator) {
-		this.type = type;
-		this.operator = operator;
+	public int calculate(final int num1, final int num2) {
+		return expression.apply(num1, num2);
 	}
 
 	public static OperatorType getOperatorTypeByCode(final String type) {
-		if(Objects.isNull(type) || type.isEmpty()) {
+		if (Objects.isNull(type) || type.isEmpty()) {
 			throw new IllegalArgumentException("계산 문자열이 잘못 되었습니다.");
 		}
 
-		for(final OperatorType operatorType : values()) {
-			if(type.equals(operatorType.getType())) {
-				return operatorType;
-			}
-		}
-
-		throw new IllegalArgumentException("연산자가 잘못 되었습니다.");
+		return Arrays.stream(OperatorType.values())
+				.filter(it -> type.contains(it.symbol))
+				.findFirst()
+				.orElseThrow(() -> new IllegalArgumentException("연산자가 잘못 되었습니다."));
 	}
 }
