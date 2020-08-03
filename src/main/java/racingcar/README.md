@@ -8,6 +8,7 @@
           2. 사용자 입력 (n : 자동차 대수, m : 이동 시행 횟수)
           3. 1.의 전진은 조건부 (0~9 사이 random값 구한 후, 그 random갑 >= 4)
           4. 자동차 상태(누적 이동 시행) 화면에 출력, 단 어느 시점에 출력할 것인지 제약은 없음 
+(질문) : SampleCase 각각 4회, 4회, 5회 이동내역? 4. 시점 관련 이해 못함
 ###### 힌트
 `Scanner scanner = new Scanner(System.in);
  String value = scanner.nextLine(); 
