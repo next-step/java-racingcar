@@ -24,7 +24,6 @@ public class AvailableCalculation {
             i++;
             num = operation.applyAsInt(num, Integer.parseInt(splitInput[i]));
         }
-
         return num;
     }
 }

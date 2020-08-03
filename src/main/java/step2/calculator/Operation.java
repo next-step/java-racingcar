@@ -1,7 +1,6 @@
 package step2.calculator;
 
 import step2.common.ExceptionMessage;
-
 import java.util.Arrays;
 import java.util.function.IntBinaryOperator;
 
@@ -37,6 +36,5 @@ public enum Operation implements IntBinaryOperator{
                 .findFirst()
                 .orElseThrow(()->new IllegalArgumentException(ExceptionMessage.SYMBOL_NOT_ARITHMETIC));
     }
-
 
 }
