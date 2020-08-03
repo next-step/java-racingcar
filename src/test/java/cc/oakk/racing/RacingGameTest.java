@@ -1,6 +1,6 @@
-package cc.oak.racing;
+package cc.oakk.racing;
 
-import cc.oak.racing.condition.CarForwardCondition;
+import cc.oakk.racing.condition.CarForwardCondition;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,6 @@
-package cc.oak.racing.converter;
+package cc.oakk.racing.converter;
 
-import cc.oak.racing.Car;
+import cc.oakk.racing.Car;
 
 import java.util.Random;
 

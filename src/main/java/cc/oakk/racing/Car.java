@@ -1,8 +1,8 @@
-package cc.oak.racing;
+package cc.oakk.racing;
 
-import cc.oak.racing.condition.CarForwardCondition;
-import cc.oak.racing.printer.Printable;
-import cc.oak.racing.printer.Printer;
+import cc.oakk.racing.condition.CarForwardCondition;
+import cc.oakk.racing.printer.Printable;
+import cc.oakk.racing.printer.Printer;
 
 public class Car implements Printable<Car> {
     private int movedDistance;

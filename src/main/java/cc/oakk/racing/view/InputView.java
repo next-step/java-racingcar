@@ -1,4 +1,4 @@
-package cc.oak.racing.view;
+package cc.oakk.racing.view;
 
 public interface InputView {
     int readTotalNumberOfCars();

@@ -1,4 +1,4 @@
-package cc.oak.racing.condition;
+package cc.oakk.racing.condition;
 
 public class RangeCondition implements Condition<Integer> {
     private final int min;

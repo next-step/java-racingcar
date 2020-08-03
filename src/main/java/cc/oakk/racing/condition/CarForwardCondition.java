@@ -1,7 +1,7 @@
-package cc.oak.racing.condition;
+package cc.oakk.racing.condition;
 
-import cc.oak.racing.Car;
-import cc.oak.racing.converter.Converter;
+import cc.oakk.racing.Car;
+import cc.oakk.racing.converter.Converter;
 
 public class CarForwardCondition<T> {
     Condition<T> condition;

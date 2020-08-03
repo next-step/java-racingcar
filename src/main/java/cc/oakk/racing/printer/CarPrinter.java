@@ -1,6 +1,6 @@
-package cc.oak.racing.printer;
+package cc.oakk.racing.printer;
 
-import cc.oak.racing.Car;
+import cc.oakk.racing.Car;
 
 public class CarPrinter extends StringPrinter<Car> {
     private static final String DISTANCE_SYMBOL = "-";

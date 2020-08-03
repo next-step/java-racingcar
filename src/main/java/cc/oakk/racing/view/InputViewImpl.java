@@ -1,7 +1,7 @@
-package cc.oak.racing.view;
+package cc.oakk.racing.view;
 
-import cc.oak.racing.printer.Printer;
-import cc.oak.racing.printer.StandardPrinter;
+import cc.oakk.racing.printer.Printer;
+import cc.oakk.racing.printer.StandardPrinter;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package cc.oak.racing;
+package cc.oakk.racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

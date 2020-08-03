@@ -1,7 +1,7 @@
-package cc.oak.racing.view;
+package cc.oakk.racing.view;
 
-import cc.oak.racing.Car;
-import cc.oak.racing.printer.Printable;
+import cc.oakk.racing.Car;
+import cc.oakk.racing.printer.Printable;
 
 public interface ResultView {
     void printResultHeader();

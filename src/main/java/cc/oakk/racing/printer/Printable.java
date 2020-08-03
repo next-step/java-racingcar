@@ -1,4 +1,4 @@
-package cc.oak.racing.printer;
+package cc.oakk.racing.printer;
 
 public interface Printable<T> {
     void print(Printer<T> printer);

@@ -1,10 +1,10 @@
-package cc.oak.racing.view;
+package cc.oakk.racing.view;
 
-import cc.oak.racing.Car;
-import cc.oak.racing.printer.Printable;
-import cc.oak.racing.printer.Printer;
-import cc.oak.racing.printer.StandardPrinter;
-import cc.oak.racing.printer.StringPrinter;
+import cc.oakk.racing.Car;
+import cc.oakk.racing.printer.Printable;
+import cc.oakk.racing.printer.Printer;
+import cc.oakk.racing.printer.StandardPrinter;
+import cc.oakk.racing.printer.StringPrinter;
 
 public class ResultViewImpl implements ResultView {
     private final StringPrinter<Car> carPrinter;
