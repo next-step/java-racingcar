@@ -12,11 +12,14 @@ public class RacingGame {
 
     private final List<Car> racingCars = new ArrayList<>();
     private final RacingData racingData;
+    private final Fuel fuel;
 
-    public RacingGame(RacingDataInput racingDataInput) {
+    public RacingGame(RacingDataInput racingDataInput, Fuel fuel) {
 
         racingData = racingDataInput.getRacingData();
         String[] names = racingData.getNames().split(",");
+
+        this.fuel = fuel;
 
         for (int i = 0; i < racingData.getNumberOfCars(); i++) {
             racingCars.add(new Car(names[i]));
@@ -29,7 +32,7 @@ public class RacingGame {
         ResultView.printStart();
 
         for (int i = 0; i < racingData.getTryCount(); i++) {
-            moveCar(Fuel.inject());
+            moveCar(fuel);
             printCurrentStatus();
 
             ResultView.lineFeed();
@@ -37,8 +40,6 @@ public class RacingGame {
     }
 
     public void end() {
-
-        ResultView.lineFeed();
         ResultView.printWinnerNames(getWinnerNames());
     }
 
@@ -55,7 +56,7 @@ public class RacingGame {
                 .collect(Collectors.joining(", "));
     }
 
-    private void moveCar(int fuel) {
+    private void moveCar(Fuel fuel) {
         for (int i = 0; i < racingData.getNumberOfCars(); i++) {
             racingCars.get(i).moveAndStop(fuel);
         }

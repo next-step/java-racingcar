@@ -1,13 +1,10 @@
 package racingcar;
 
-import java.util.Random;
+import java.util.function.IntSupplier;
 
-public class Fuel {
+@FunctionalInterface
+public interface Fuel extends IntSupplier {
 
-    private static final Random random = new Random();
-    private static final int RANDOM_RANGE = 10;
-
-    public static int inject() {
-        return random.nextInt(RANDOM_RANGE);
-    }
+    @Override
+    int getAsInt();
 }

@@ -19,7 +19,7 @@ public class RacingGameTest {
     @Test
     public void game() {
 
-        RacingGame racingGame = new RacingGame(input);
+        RacingGame racingGame = new RacingGame(input, new RandomFuel());
         racingGame.start();
         racingGame.end();
     }

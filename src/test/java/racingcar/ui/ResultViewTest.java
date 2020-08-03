@@ -34,7 +34,7 @@ public class ResultViewTest {
     void printMoveCarTest() {
 
         Car car = new Car(NAME_OF_CAR);
-        car.moveAndStop(5);
+        car.moveAndStop(() -> 5);
         ResultView.printResult(car);
         printMessageTest(NAME_OF_CAR + " : --\n");
     }
@@ -43,7 +43,7 @@ public class ResultViewTest {
     @Test
     void printStopCarTest() {
         Car car = new Car(NAME_OF_CAR);
-        car.moveAndStop(1);
+        car.moveAndStop(() -> 1);
         ResultView.printResult(car);
         printMessageTest(NAME_OF_CAR + " : -\n");
     }
@@ -62,8 +62,6 @@ public class ResultViewTest {
         ResultView.printWinnerNames(winnerNames);
         printMessageTest(winnerNames + StringResources.GAME_RESULT_WINNERS + "\n");
     }
-
-
 
     private void printMessageTest(String testMessage) {
         assertThat(testMessage).isEqualTo(outContent.toString());

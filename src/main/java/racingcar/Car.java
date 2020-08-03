@@ -10,9 +10,9 @@ public class Car {
         this.name = name;
     }
 
-    public void moveAndStop(int fuel) {
+    public void moveAndStop(Fuel fuel) {
 
-        if (isMoveCondition(fuel)) {
+        if (isMoveCondition(fuel.getAsInt())) {
             moveCount++;
         }
     }
