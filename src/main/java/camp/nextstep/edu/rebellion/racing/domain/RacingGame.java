@@ -1,19 +1,17 @@
-package camp.nextstep.edu.rebellion.racing;
+package camp.nextstep.edu.rebellion.racing.domain;
 
 import camp.nextstep.edu.rebellion.racing.rule.RacingRule;
 import camp.nextstep.edu.rebellion.racing.rule.RandomMoveRule;
 
-import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-    private static final String DELIMITER = ",";
-
     private final Entry entry;
     private final Record record;
     private final int rounds;
 
-    public RacingGame(String cars, int rounds) {
+    public RacingGame(List<String> cars, int rounds) {
         this.rounds = rounds;
         this.entry = enroll(cars);
         this.record = new Record();
@@ -31,8 +29,9 @@ public class RacingGame {
         return new RandomMoveRule();
     }
 
-    private Entry enroll(String cars) {
-        return Arrays.stream(cars.split(DELIMITER))
+    private Entry enroll(List<String> cars) {
+        return cars
+                .stream()
                 .map(RacingCar::new)
                 .collect(Collectors
                         .collectingAndThen(Collectors.toList(), Entry::new));

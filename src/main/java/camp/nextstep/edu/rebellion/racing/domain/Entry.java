@@ -1,4 +1,4 @@
-package camp.nextstep.edu.rebellion.racing;
+package camp.nextstep.edu.rebellion.racing.domain;
 
 import camp.nextstep.edu.rebellion.racing.rule.RacingRule;
 

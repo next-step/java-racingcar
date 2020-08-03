@@ -1,4 +1,4 @@
-package camp.nextstep.edu.rebellion.racing;
+package camp.nextstep.edu.rebellion.racing.domain;
 
 import java.util.Collections;
 import java.util.List;
