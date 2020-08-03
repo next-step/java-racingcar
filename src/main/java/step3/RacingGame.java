@@ -19,6 +19,7 @@ public class RacingGame {
 
     /**
      * 자동차의 갯수를 반환한다.
+     *
      * @return
      */
     public int getNumberOfCars() {
@@ -27,6 +28,7 @@ public class RacingGame {
 
     /**
      * 시도 횟수를 반환한다.
+     *
      * @return
      */
     public int getNumberOfAttempts() {
@@ -35,6 +37,7 @@ public class RacingGame {
 
     /**
      * 현재 진행된 라운드를 반환한다.
+     *
      * @return
      */
     public int getRound() {
@@ -43,6 +46,7 @@ public class RacingGame {
 
     /**
      * 생성자를 설정해 초기화를 한다.
+     *
      * @param numberOfCar
      * @param numberOfAttempts
      */
@@ -56,6 +60,7 @@ public class RacingGame {
 
     /**
      * 자동차 게임에 진행시 사용되는 자동차 목록을 만들어 반환한다.
+     *
      * @param numberOfCar
      * @return
      */
@@ -70,6 +75,7 @@ public class RacingGame {
 
     /**
      * 다음 경기 유무를 판별한다.
+     *
      * @return
      */
     public boolean hasNextRace() {

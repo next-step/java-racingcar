@@ -14,6 +14,7 @@ public class Car {
 
     /**
      * 0 ~ 9 의 값중에 임의의 값(출력)을 반환한다.
+     *
      * @return
      */
     private int getPower() {
@@ -31,6 +32,7 @@ public class Car {
     /**
      * 전진한다.
      * 출력이 4보다 작은 경우 움직이지 않는다.
+     *
      * @param power
      */
     public void go(int power) {
@@ -42,6 +44,7 @@ public class Car {
 
     /**
      * 현재 위치를 반환한다.
+     *
      * @return
      */
     public int getCurrentPosition() {
