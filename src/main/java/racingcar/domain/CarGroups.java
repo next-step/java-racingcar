@@ -7,8 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarGroups {
-    private static final int MIN_CAR_SIZE = 1;
+    public static final int MIN_CAR_SIZE = 1;
     private List<Car> cars;
+
+    public CarGroups(List<Car> cars) {
+        this.cars = cars;
+    }
 
     public CarGroups(int count) {
         readyCars(count);
@@ -16,6 +20,10 @@ public class CarGroups {
 
     public List<Car> getCars() {
         return this.cars;
+    }
+
+    public int getCarsSize() {
+        return this.cars.size();
     }
 
     public void readyCars(int count) {
