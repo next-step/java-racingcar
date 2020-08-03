@@ -9,16 +9,16 @@ public class StringCalculator {
 
     private StringCalculator() {}
 
-    public static Integer calculate(String expression) {
+    public static int calculate(String expression) {
         ExpressionSeparator expressionSeparator = new ExpressionSeparator(expression);
 
         InputNumbers inputNumbers = expressionSeparator.getInputNumbers();
         InputOperators inputOperators = expressionSeparator.getInputOperators();
 
-        Integer result = inputNumbers.get(0);
+        int result = inputNumbers.get(0);
 
         for(int i = 1; i < inputNumbers.size() ; i++) {
-            Integer number = inputNumbers.get(i);
+            int number = inputNumbers.get(i);
 
             result = computeWithRightOperator(result,number, inputOperators.get(i-1));
         }
@@ -27,7 +27,7 @@ public class StringCalculator {
 
     }
 
-    private static Integer computeWithRightOperator(Integer one, Integer theOther, String operator) {
+    private static int computeWithRightOperator(int one, int theOther, String operator) {
         return Operator.get(operator).compute(one, theOther);
     }
 

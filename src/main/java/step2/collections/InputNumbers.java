@@ -1,18 +1,29 @@
 package step2.collections;
 
+import java.util.Arrays;
+
+import static step2.constants.RegexPattern.NUMBER_REGEX;
+
 public class InputNumbers {
 
-    private final Integer[] numbers;
+    private final int[] numbers;
 
-    public InputNumbers(Integer[] numbers) {
-        this.numbers = numbers;
+    public InputNumbers(String[] expressions) {
+        this.numbers = filterNumber(expressions);
     }
 
-    public Integer size() {
+    public int size() {
         return this.numbers.length;
     }
 
-    public Integer get(Integer index) {
+    public int get(Integer index) {
         return this.numbers[index];
+    }
+
+    private int[] filterNumber(String[] stringArray) {
+        return Arrays.stream(stringArray)
+                .filter(string -> NUMBER_REGEX.matcher(string).matches())
+                .mapToInt(Integer::parseInt)
+                .toArray();
     }
 }

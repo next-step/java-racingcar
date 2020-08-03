@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.function.ToIntBiFunction;
 import java.util.stream.Collectors;
 
 import static step2.constants.ExceptionMessages.CAN_NOT_DIVIDE_ZERO;
@@ -25,12 +26,12 @@ public enum Operator {
 
     private String sign;
 
-    private BiFunction<Integer, Integer, Integer> computeFunction;
+    private ToIntBiFunction<Integer, Integer> computeFunction;
 
     private static final Map<String, Operator> valuesMap = Collections.unmodifiableMap(Arrays.stream(Operator.values())
                                                                                         .collect(Collectors.toMap(operator -> operator.sign,Function.identity())));
 
-    Operator(String sign, BiFunction<Integer, Integer, Integer> computeFunction) {
+    Operator(String sign, ToIntBiFunction<Integer, Integer> computeFunction) {
         this.sign = sign;
         this.computeFunction = computeFunction;
     }
@@ -44,7 +45,7 @@ public enum Operator {
         return Optional.ofNullable(valuesMap.get(sign));
     }
 
-    public Integer compute(Integer one, Integer thOther) {
-        return this.computeFunction.apply(one, thOther);
+    public int compute(Integer one, Integer thOther) {
+        return this.computeFunction.applyAsInt(one, thOther);
     }
 }
