@@ -2,7 +2,7 @@ package simpleracing.input;
 
 public class CarRacingInitValue {
 	private int carCount;
-	private int gameCount;
+	private int tryCount;
 
 	public int getCarCount() {
 		return carCount;
@@ -12,11 +12,11 @@ public class CarRacingInitValue {
 		this.carCount = carCount;
 	}
 
-	public int getGameCount() {
-		return gameCount;
+	public int getTryCount() {
+		return tryCount;
 	}
 
-	public void setGameCount(int gameCount) {
-		this.gameCount = gameCount;
+	public void setTryCount(int tryCount) {
+		this.tryCount = tryCount;
 	}
 }

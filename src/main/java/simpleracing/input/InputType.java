@@ -13,7 +13,7 @@ public enum InputType {
 			  (initValue, carCount) -> initValue.setCarCount(Integer.parseInt(carCount))),
 	GAME_COUNT("시도할 회수는 몇 회 인가요?",
 			   count -> validateCount(count, "시도할 회수는 0회 이하일 수 없습니다."),
-			   (initValue, gameCount) -> initValue.setGameCount(Integer.parseInt(gameCount)));
+			   (initValue, gameCount) -> initValue.setTryCount(Integer.parseInt(gameCount)));
 
 	static {
 		String numberPattern = "^[-+]?(0|[1-9][0-9]*)(\\\\.[0-9]+)?([eE][-+]?[0-9]+)?$";
