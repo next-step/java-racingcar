@@ -1,5 +1,11 @@
+import java.util.Arrays;
+import java.util.Deque;
+import java.util.LinkedList;
 
 public class Calculator {
+
+    Deque<String> inputList;
+    String[] calcSet;
 
     public int add(String value1, String value2) {
         return Integer.parseInt(value1) + Integer.parseInt(value2);
@@ -29,5 +35,23 @@ public class Calculator {
             return divide(value1, value2);
 
         throw new IllegalArgumentException();
+    }
+
+    // string 결과값만 받아서 계산
+    // 좀더 간단하게 구현하는 방법이 있지 않을까 싶은데..
+    public int totalCalculate(String value) {
+        int result;
+        calcSet = new String[]{"", "", ""};
+        String[] splitList = value.split(" ");
+        inputList = new LinkedList<>();
+        inputList.addAll(Arrays.asList(splitList));
+        while (inputList.size() != 1) {
+            calcSet[0] = inputList.pop();
+            calcSet[1] = inputList.pop();
+            calcSet[2] = inputList.pop();
+            result = calculate(calcSet[0], calcSet[1], calcSet[2]);
+            inputList.addFirst(String.valueOf(result));
+        }
+        return Integer.parseInt(inputList.pop());
     }
 }

@@ -1,12 +1,14 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
-import java.util.stream.Stream;
+import java.util.Deque;
+import java.util.LinkedList;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
 
@@ -56,5 +58,32 @@ class CalculatorTest {
         String[] value = "15 [ 30".split(" ");
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> calc.calculate(value[0], value[1], value[2]));
+    }
+
+    @Test
+    void MultiOperationTest() {
+        String[] input = "1 + 2 + 3".split(" ");
+        Deque<String> value = new LinkedList<>(Arrays.asList(input));
+        int result = 0;
+
+        // Refactoring 어떻게?
+        while (value.size() != 1) {
+            String[] temp = {"", "", ""};
+            temp[0] = value.pop();
+            temp[1] = value.pop();
+            temp[2] = value.pop();
+            result = calc.calculate(temp[0], temp[1], temp[2]);
+            value.addFirst(String.valueOf(result));
+        }
+
+        assertThat(result).isEqualTo(6);
+    }
+
+    // 상위 코드에 구현한 로직을 Calculator의 Method, totalCalculate로 구현완료.
+    // 이 경우 상위 테스트는 그대로 두는게 맞을지?
+    @ParameterizedTest
+    @ValueSource(strings = {"1 + 3 - 2"})
+    void MultiOperationCalculationWithOneMethod(String input) {
+        assertThat(calc.totalCalculate(input)).isEqualTo(2);
     }
 }
