@@ -1,12 +1,12 @@
-package camp.nextstep.edu.rebellion.racing;
+package camp.nextstep.edu.rebellion.racing.domain;
 
+import camp.nextstep.edu.rebellion.racing.domain.RacingCar;
 import camp.nextstep.edu.rebellion.racing.rule.RacingRule;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RacingCarTest {
     @DisplayName("자동차가 움직이는지 확인")

@@ -1,5 +1,9 @@
-package camp.nextstep.edu.rebellion.racing;
+package camp.nextstep.edu.rebellion.racing.domain;
 
+import camp.nextstep.edu.rebellion.racing.domain.Entry;
+import camp.nextstep.edu.rebellion.racing.domain.RacingCar;
+import camp.nextstep.edu.rebellion.racing.domain.Record;
+import camp.nextstep.edu.rebellion.racing.domain.SnapShotEntry;
 import camp.nextstep.edu.rebellion.racing.rule.RacingRule;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,7 @@
-package camp.nextstep.edu.rebellion.racing;
+package camp.nextstep.edu.rebellion.racing.view;
+
+import camp.nextstep.edu.rebellion.racing.domain.Record;
+import camp.nextstep.edu.rebellion.racing.domain.SnapShotEntry;
 
 import java.util.stream.Collectors;
 

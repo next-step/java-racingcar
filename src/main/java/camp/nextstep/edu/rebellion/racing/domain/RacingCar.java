@@ -1,4 +1,4 @@
-package camp.nextstep.edu.rebellion.racing;
+package camp.nextstep.edu.rebellion.racing.domain;
 
 import camp.nextstep.edu.rebellion.racing.rule.RacingRule;
 import camp.nextstep.edu.rebellion.racing.util.StringUtil;
@@ -9,9 +9,14 @@ public class RacingCar implements Cloneable {
     private final String name;
     private int position;
 
-    public RacingCar(String name){
+    private RacingCar(String name, int position) {
         validateName(name);
         this.name = name;
+        this.position = position;
+    }
+
+    public RacingCar(String name){
+        this(name, 0);
     }
 
     public void move(RacingRule rule) {
@@ -28,16 +33,12 @@ public class RacingCar implements Cloneable {
         return this.position;
     }
 
-    public RacingCar clone() {
-        try {
-            return (RacingCar) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new IllegalArgumentException("자동차 객체를 복사하는데 실패하였습니다");
-        }
+    public RacingCar copy() {
+        return new RacingCar(this.name, this.position);
     }
 
     private void validateName(String name) {
-        if(StringUtil.isEmpty(name) || MAX_NAME_LENGTH < name.length()) {
+        if (StringUtil.isEmpty(name) || MAX_NAME_LENGTH < name.length()) {
             throw new IllegalArgumentException("이름이 최대 길이를 초과했습니다 "
                     + name.length());
         }

@@ -1,4 +1,4 @@
-package camp.nextstep.edu.rebellion.racing;
+package camp.nextstep.edu.rebellion.racing.domain;
 
 import camp.nextstep.edu.rebellion.racing.rule.RacingRule;
 
@@ -19,7 +19,7 @@ public class Entry {
 
     public SnapShotEntry getSnapshot() {
         return this.cars.stream()
-                .map(car -> car.clone())
+                .map(car -> car.copy())
                 .collect(Collectors.collectingAndThen(Collectors.toList(),
                         SnapShotEntry::new));
     }

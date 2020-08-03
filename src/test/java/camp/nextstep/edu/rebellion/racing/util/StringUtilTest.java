@@ -2,6 +2,10 @@ package camp.nextstep.edu.rebellion.racing.util;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,5 +35,23 @@ class StringUtilTest {
 
         // then
         assertThat(expected).isTrue();
+    }
+
+    @DisplayName("문자열을 리스트로 잘 변환하는지 확인")
+    @ParameterizedTest
+    @CsvSource(value = {
+            "A,B,C:A:3",
+            "AA,  BB,CC:CC:3"},
+            delimiter = ':')
+    public void convertListTest(String str, String containValue, int expected) {
+        // when
+        List<String> result = StringUtil.convertList(str, ",");
+
+        // then
+        assertAll(
+                () -> assertThat(result).hasSize(expected),
+                () -> assertThat(result).contains(containValue)
+        );
+
     }
 }

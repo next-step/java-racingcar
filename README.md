@@ -276,4 +276,19 @@ pobi, honux가 최종 우승했습니다.</code></pre>
 * else 예약어를 쓰지 않는다.
     * 힌트: if 조건절에서 값을 return하는 방식으로 구현하면 else를 사용하지 않아도 된다.
     * else를 쓰지 말라고 하니 switch/case로 구현하는 경우가 있는데 switch/case도 허용하지 않는다.
-        
+       
+### Step4 리뷰 사항
+* [x] [fix01][SnapShotEntry.java] cars를 가져올 때, 불변 객체로 만들어 보기
+* [x] [fix02][RacingCar.java] Object의 clone 보다 복사 객체를 이용하여 개선해보기 
+    * clone을 지양하는 이유
+        * Object의 clone 사용시 복제하려는 객체 내에 변경 가능한 인스턴스 객체 필드가 있을 경우 **얕은 복사**가 되며,
+        * Object의 clone 메소드는 Checked Exception인 CloneNotSupportedException을 처리하도록 선언되어있지만 복사하다 예외가 발생하는 시점은 
+        **런타임 시점**이기에 선언된 예외 타입의 예외 시점과 발생하는 예외 시점이 맞지 않는 보기 불편한(?) 문제
+        * clone 메서드 **재 정의시 clone시 규약을 지키지 않으면 더욱 큰 문제**를 야기 할 수 있는 문제
+* [x] [fix03][SnapShotEntry.java] 최대 거리를 한번만 가져오도록 수정 
+ 
+# 5단계 - 자동차 경주(리팩토링)
+### 리팩토링 요구사항
+* 핵심 비지니스 로직을 가지는 객체를 domain 패키지, UI 관련한 객체를 view 패키지에 구현한다.
+* MVC 패턴 기반으로 리팩토링해 view 패키지의 객체가 domain 패키지 객체에 의존할 수 있지만, domain 패키지의 객체는 view 패키지 객체에 의존하지 않도록 구현한다.
+* 테스트 가능한 부분과 테스트하기 힘든 부분을 분리해 테스트 가능한 부분에 대해서만 단위 테스트를 진행한다.

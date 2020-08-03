@@ -40,7 +40,7 @@ public class SetCollectionTest {
         assertTrue(numbers.contains(input));
     }
 
-    @DisplayName("conaints 가 정상적으로 동작하는지 false 상황도 추가하여 확인")
+    @DisplayName("contains 가 정상적으로 동작하는지 false 상황도 추가하여 확인")
     @ParameterizedTest
     @CsvSource(value = {
             "1:true",
