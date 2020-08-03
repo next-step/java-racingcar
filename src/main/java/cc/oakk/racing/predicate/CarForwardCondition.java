@@ -22,7 +22,7 @@ public class CarForwardCondition<T> {
         this.carConverter = carConverter;
     }
 
-    public boolean isConvertedCarMeetCondition(Car car) {
+    public boolean isCarFowardable(Car car) {
         T convertedCar = carConverter.convert(car);
         return predicate.test(convertedCar);
     }

@@ -13,7 +13,7 @@ public class Car implements Printable<Car> {
     }
 
     public void tryMoveForward() {
-        if (carForwardCondition.isConvertedCarMeetCondition(this)) {
+        if (carForwardCondition.isCarFowardable(this)) {
             moveForward();
         }
     }
