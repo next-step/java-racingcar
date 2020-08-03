@@ -44,6 +44,22 @@ public class CalculatorTest {
                 .withMessage(StringResources.ERR_DIVIDED_BY_ZERO);
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {"+:3", "-:1", "*:2", "/:2"}, delimiter = ':')
+    public void 매핑_성공(char op, int result) {
+
+        Operator operator = OperatorMapper.getOperator(op);
+        assertThat(operator.calculate(2, 1)).isEqualTo(result);
+    }
+
+    @Test
+    public void 매핑_실패() {
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> OperatorMapper.getOperator('('))
+                .withMessage(StringResources.ERR_INCORRECT_OPERATOR);
+    }
+
     private void illegalArgumentException(String equation, String resource) {
 
         assertThatIllegalArgumentException()
