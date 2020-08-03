@@ -12,7 +12,7 @@ import cc.oakk.racing.view.InputViewImpl;
 import cc.oakk.racing.view.ResultView;
 import cc.oakk.racing.view.ResultViewImpl;
 
-public class Main {
+public class GameManager {
     private static final int MIN = 0;
     private static final int MAX = 4;
 
@@ -20,7 +20,7 @@ public class Main {
     private final ResultView resultView;
     private final RacingGame racingGame;
 
-    public Main() {
+    public GameManager() {
         this.inputView = new InputViewImpl();
 
         StringPrinter<Car> carPrinter = new CarPrinter();
