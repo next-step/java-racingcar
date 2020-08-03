@@ -7,12 +7,12 @@ public class InputView {
 
     private InputView() {}
 
-    public static int getCarNumbers() {
-        System.out.print("참가할 자동차는 몇 대 입니까? ");
-        if (SCANNER.hasNextInt()) {
-            return SCANNER.nextInt();
+    public static String getCarNames() {
+        System.out.print("참가할 자동차 이름을 입력해주세요 (이름은 쉼표로 구분됩니다) ");
+        if (SCANNER.hasNextLine()) {
+           return SCANNER.nextLine().trim();
         }
-        throw new IllegalArgumentException("입력 값이 없거나 숫자형식이 아닙니다");
+        throw new IllegalArgumentException("입력 값이 없습니다");
     }
 
     public static int getRounds() {
@@ -23,4 +23,3 @@ public class InputView {
         throw new IllegalArgumentException("입력 값이 없거나 숫자형식이 아닙니다");
     }
 }
-
