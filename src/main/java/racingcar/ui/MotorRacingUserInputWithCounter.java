@@ -4,13 +4,14 @@ import java.util.Scanner;
 
 import static racingcar.ui.MotorRacingDisplay.display;
 
-public class MotorRacingUserInput {
+public class MotorRacingUserInputWithCounter {
     private static final Scanner scanner = new Scanner(System.in);
+    public static final String CAR_NAME_SPLIT_STR = ",";
 
-    public static Counter inputCount() {
+    public static UserInputInfoWithCount input() {
         final int carCount = inputCarCount();
         final int tryCount = inputTryCount();
-        return new Counter(carCount, tryCount);
+        return new UserInputInfoWithCount(carCount, tryCount);
     }
 
     private static int inputTryCount() {
@@ -22,4 +23,5 @@ public class MotorRacingUserInput {
         display("자동차 대수는 몇 대 인가요?");
         return scanner.nextInt();
     }
+
 }

@@ -23,11 +23,17 @@ public class MotorRacingDisplayRoundResult {
             ;
     }
 
+    private String displayRacingResult(RacingResult racingResult){
+        if("".equals(racingResult.getPrefix())){
+            return repate(racingResult.getTotalMileage());
+        }
+        return String.format("%s : %s", racingResult.getPrefix(), repate(racingResult.getTotalMileage()));
+    }
+
     @Override
     public String toString() {
         return roundCarRaceResultList.stream()
-                                     .map(RacingResult::getTotalMileage)
-                                     .map(this::repate)
+                                     .map(this::displayRacingResult)
                                      .collect(Collectors.joining(NEW_LINE))
             ;
 
