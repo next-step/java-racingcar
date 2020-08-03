@@ -1,21 +1,24 @@
 package domain;
 
 
+import Strategy.MovableStrategy;
+
 public class Car {
-    private static final int MOVABLE_NUMBER = 4;
-
     private int location;
+    private MovableStrategy movableStrategy;
 
-    public Car() {
+    public Car(MovableStrategy movableStrategy) {
         this.location = 0;
+        this.movableStrategy = movableStrategy;
     }
 
-    public Car(int location) {
+    public Car(int location, MovableStrategy movableStrategy) {
         this.location = location;
+        this.movableStrategy = movableStrategy;
     }
 
     public void move(int randomNumber) {
-        if (randomNumber >= MOVABLE_NUMBER) {
+        if (movableStrategy.move(randomNumber)) {
             location++;
         }
     }

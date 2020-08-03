@@ -1,5 +1,6 @@
 package racing.domain;
 
+import Strategy.AboveNumberMove;
 import domain.Car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,7 +14,7 @@ public class CarTest {
     @DisplayName("자동차 인스턴스 생성시에 위치를 확인한다")
     @Test
     void newCar() {
-        Car initCar = new Car();
+        Car initCar = new Car(new AboveNumberMove(4));
 
         assertThat(initCar.getLocation()).isZero();
     }
@@ -22,7 +23,7 @@ public class CarTest {
     @ParameterizedTest
     @CsvSource({"0,0", "1,1", "2,2"})
     void newCar(int location, int expectedLocation) {
-        Car car = new Car(location);
+        Car car = new Car(location, new AboveNumberMove(4));
 
         assertThat(car.getLocation()).isEqualTo(expectedLocation);
     }
@@ -31,7 +32,7 @@ public class CarTest {
     @ParameterizedTest
     @CsvSource({"1,0", "2,0", "3,0", "4,1", "5,1"})
     void move(int randomNumber, int expectValue) {
-        Car car = new Car();
+        Car car = new Car(new AboveNumberMove(4));
         car.move(randomNumber);
 
         assertThat(car.getLocation()).isEqualTo(expectValue);
