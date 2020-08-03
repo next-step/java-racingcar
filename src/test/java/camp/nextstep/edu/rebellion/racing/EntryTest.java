@@ -31,9 +31,12 @@ class EntryTest {
 
         // when
         entry.move(alwaysGoRule);
-        
 
         // then
-        // assertThat(entry.getAllPositionLanes()).isEqualTo(expectedLane);
+        SnapShotEntry snapShotEntry = entry.getSnapshot();
+        assertThat(snapShotEntry.getCars().stream()
+                .mapToInt(car -> car.getPosition())
+                .sum())
+                .isEqualTo(3);
     }
 }
