@@ -33,9 +33,9 @@ public class MotorRacing {
     }
 
     private MotorRacingDisplayRoundResult allCarsStartRacing() {
-        final List<Integer> collect = racingCars.stream()
+        final List<RacingResult> collect = racingCars.stream()
                                           .peek(this::runMotorRace)
-                                          .map(RacingCar::getMileage)
+                                          .map(RacingCar::getResult)
                                           .collect(toList());
         return new MotorRacingDisplayRoundResult(Collections.unmodifiableList(collect));
     }

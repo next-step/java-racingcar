@@ -1,24 +1,14 @@
 package racingcar.domain;
 
-class RacingCar {
-
-    private int mileage;
-
-    public RacingCar() {
-        this.mileage = 0;
+interface RacingCar {
+    static RacingCar attend(){
+        return new IncreaseMileageRacingCar();
+    }
+    static RacingCar attend(String name){
+        return new NamedRacingCar(name);
     }
 
-    public void racing(MotorRacingRule motorRacingRule){
-        if(motorRacingRule.pass()) {
-            mileage++;
-        }
-    }
+    void racing(MotorRacingRule motorRacingRule);
 
-    public int getMileage() {
-        return mileage;
-    }
-
-    public static RacingCar attend(){
-        return new RacingCar();
-    }
+    RacingResult getResult();
 }
