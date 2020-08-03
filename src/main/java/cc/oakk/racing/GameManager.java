@@ -59,9 +59,4 @@ public class GameManager {
         } while (totalRoundCount < 0);
         return totalRoundCount;
     }
-
-    public static void main(String[] args) {
-        Main main = new Main();
-        main.start();
-    }
 }
