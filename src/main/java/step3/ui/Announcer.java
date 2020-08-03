@@ -15,14 +15,16 @@ public class Announcer {
     public static void announceRaceResult(RaceResult raceResult) {
         System.out.println(NEW_LINE+RESULT_MESSAGE);
         List<AttemptResult> attemptResults = raceResult.getAttemptResults();
-        attemptResults.forEach(attemptResult -> {
-            List<CarWentResult> carWentResults = attemptResult.getCarWentResults();
-            carWentResults.forEach(carWentResult -> printResult(carWentResult));
-            System.out.println(NEW_LINE);
-        });
+        attemptResults.forEach(attemptResult -> printAttemptResult(attemptResult));
     }
 
-    private static void printResult(CarWentResult carWentResult) {
+    private static void printAttemptResult(AttemptResult attemptResult) {
+        List<CarWentResult> carWentResults = attemptResult.getCarWentResults();
+        carWentResults.forEach(carWentResult -> printCarWentResult(carWentResult));
+        System.out.println(NEW_LINE);
+    }
+
+    private static void printCarWentResult(CarWentResult carWentResult) {
         StringBuilder stringBuilder = new StringBuilder();
         for(int i = 0 ; i < carWentResult.getDistance() ; i ++) {
             stringBuilder.append(DISTANCE_INDICATOR);

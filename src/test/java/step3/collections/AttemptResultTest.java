@@ -18,14 +18,14 @@ class AttemptResultTest {
         AttemptResult attemptResult = new AttemptResult(List.of(new CarWentResult(0,1),
                                                                 new CarWentResult(1,0),
                                                                 new CarWentResult(2,2)));
-        assertThat(attemptResult.getFistCarNumber()).isEqualTo(2);
+        assertThat(attemptResult.getFirstCarNumber()).isEqualTo(2);
     }
 
     @DisplayName("경주 시도 결과가 없으면 IllegalStateException 던짐")
     @Test
     void throwExceptionOfGetFistCarNumber() {
         AttemptResult attemptResult = new AttemptResult(Collections.EMPTY_LIST);
-        assertThrows(IllegalStateException.class,()->attemptResult.getFistCarNumber());
+        assertThrows(IllegalStateException.class,()->attemptResult.getFirstCarNumber());
     }
 
 }

@@ -16,6 +16,17 @@ public class AttemptResult {
         this.carWentResults = carWentResults;
     }
 
+    public int getFirstCarNumber() {
+        return this.carWentResults.stream()
+                        .max(Comparator.comparingInt(CarWentResult::getDistance))
+                        .map(CarWentResult::getCarNumber)
+                        .orElseThrow(()->new IllegalStateException(NOT_FOUND_FIRST));
+    }
+
+    public List<CarWentResult> getCarWentResults() {
+        return carWentResults;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -27,17 +38,5 @@ public class AttemptResult {
     @Override
     public int hashCode() {
         return Objects.hash(carWentResults);
-    }
-
-    public Integer getFistCarNumber() {
-        return this.carWentResults.stream()
-                        .sorted(Comparator.comparingInt(CarWentResult::getDistance).reversed())
-                        .findFirst()
-                        .map(CarWentResult::getCarNumber)
-                        .orElseThrow(()->new IllegalStateException(NOT_FOUND_FIRST));
-    }
-
-    public List<CarWentResult> getCarWentResults() {
-        return carWentResults;
     }
 }

@@ -11,6 +11,18 @@ public class RaceResult {
         this.attemptResults = attemptResults;
     }
 
+    public int getFinalWinnerCarNumber() {
+        return getLastAttemptResult().getFirstCarNumber();
+    }
+
+    public List<AttemptResult> getAttemptResults() {
+        return attemptResults;
+    }
+
+    private AttemptResult getLastAttemptResult() {
+        return this.attemptResults.get(attemptResults.size()-1);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -22,14 +34,6 @@ public class RaceResult {
     @Override
     public int hashCode() {
         return Objects.hash(attemptResults);
-    }
-
-    public Integer getFinalWinnerCarNumber() {
-        return attemptResults.get(attemptResults.size()-1).getFistCarNumber();
-    }
-
-    public List<AttemptResult> getAttemptResults() {
-        return attemptResults;
     }
 
 }

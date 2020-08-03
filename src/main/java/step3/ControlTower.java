@@ -1,7 +1,7 @@
 package step3;
 
 import step3.collections.AttemptResult;
-import step3.collections.RacePlayers;
+import step3.collections.RacingCars;
 import step3.collections.RaceResult;
 import step3.dto.ParticipationForm;
 
@@ -11,22 +11,22 @@ import java.util.stream.IntStream;
 
 public class ControlTower {
 
-    private final Integer attemptCount;
+    private final int attemptCount;
 
-    private final RacePlayers racePlayers;
+    private final RacingCars racingCars;
 
     public ControlTower(ParticipationForm participationForm) {
         this.attemptCount = participationForm.getAttemptCount();
-        this.racePlayers = new RacePlayers(participationForm.getParticipationCount());
+        this.racingCars = new RacingCars(participationForm.getParticipationCount());
     }
 
     public RaceResult startCarRacing() {
-        return new RaceResult(run(this.racePlayers));
+        return new RaceResult(run(this.racingCars));
     }
 
-    private List<AttemptResult> run(RacePlayers racePlayers) {
+    private List<AttemptResult> run(RacingCars racingCars) {
         return IntStream.range(0,this.attemptCount)
-                        .mapToObj(index -> racePlayers.attempt())
+                        .mapToObj(index -> racingCars.attempt())
                         .collect(Collectors.toList());
 
     }

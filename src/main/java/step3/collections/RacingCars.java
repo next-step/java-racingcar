@@ -8,29 +8,16 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class RacePlayers {
+public class RacingCars {
 
     private final List<Car> cars;
 
-    public RacePlayers(Integer participationCount) {
+    public RacingCars(int participationCount) {
         this.cars = this.prepareCars(participationCount);
     }
 
-    public RacePlayers(List<Car> cars) {
+    public RacingCars(List<Car> cars) {
         this.cars = cars;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        RacePlayers that = (RacePlayers) o;
-        return cars.equals(that.cars);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(cars);
     }
 
     public AttemptResult attempt() {
@@ -43,10 +30,23 @@ public class RacePlayers {
                         .collect(Collectors.toList());
     }
 
-    private List<Car> prepareCars(Integer participationCount) {
+    private List<Car> prepareCars(int participationCount) {
         return IntStream.range(0,participationCount)
                 .mapToObj(index -> new Car(index))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCars that = (RacingCars) o;
+        return cars.equals(that.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars);
     }
 
 }

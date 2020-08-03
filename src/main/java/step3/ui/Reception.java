@@ -4,31 +4,31 @@ import step3.dto.ParticipationForm;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.function.Supplier;
+import java.util.function.IntSupplier;
 
 import static step3.constants.MessageConstant.*;
 
 public class Reception {
 
     private static final Scanner SCANNER = new Scanner(System.in);
-    private static final Integer INIT = 0;
+    private static final int INIT = 0;
 
     private Reception() {}
 
     public static ParticipationForm takeParticipationForm() {
-        Integer participationCount = retryUntilGettingRightValue(getParticipationCount());
+        int participationCount = retryUntilGettingRightValue(getParticipationCount());
 
-        Integer attemptCount = retryUntilGettingRightValue(getAttemptCount());
+        int attemptCount = retryUntilGettingRightValue(getAttemptCount());
 
         return new ParticipationForm(participationCount, attemptCount);
     }
 
-    private static Integer retryUntilGettingRightValue(Supplier<Integer> supplier) {
+    private static int retryUntilGettingRightValue(IntSupplier supplier) {
         boolean retryFlag = true;
-        Integer result = INIT;
+        int result = INIT;
         while (retryFlag) {
             try {
-                result = supplier.get();
+                result = supplier.getAsInt();
                 retryFlag = false;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage()+NEW_LINE);
@@ -38,16 +38,16 @@ public class Reception {
         return result;
     }
 
-    private static Supplier<Integer> getParticipationCount() {
+    private static IntSupplier getParticipationCount() {
         return ()->sayQuestionAndGetAnswer(HOW_MANY_PARTICIPATION);
     }
 
-    private static Supplier<Integer> getAttemptCount() {
+    private static IntSupplier getAttemptCount() {
         return ()->sayQuestionAndGetAnswer(HOW_MANY_ATTEMPT);
 
     }
 
-    private static Integer sayQuestionAndGetAnswer(String question) {
+    private static int sayQuestionAndGetAnswer(String question) {
         System.out.println(question);
         try {
             return SCANNER.nextInt();
