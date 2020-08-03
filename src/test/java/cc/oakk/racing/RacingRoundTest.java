@@ -9,9 +9,10 @@ import static org.assertj.core.api.Assertions.*;
 
 public class RacingRoundTest {
     @Test
-    @DisplayName("생성자의 totalRoundCount 인자가 0 미만일 때 예외발생")
+    @DisplayName("생성자의 totalRoundCount 인자가 0 이하일 때 예외발생")
     public void constructor_ShouldThrow_IllegalArgumentException_OnBelowZeroArgument() {
-        assertThatIllegalArgumentException().isThrownBy(() -> new RacingRound(new ArrayList<>(), -2));
+        assertThatIllegalArgumentException().isThrownBy(() -> new RacingRound(new ArrayList<>(), 0));
+        assertThatIllegalArgumentException().isThrownBy(() -> new RacingRound(new ArrayList<>(), -5));
     }
 
     @Test
