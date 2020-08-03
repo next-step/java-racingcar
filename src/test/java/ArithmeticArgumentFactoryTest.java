@@ -3,6 +3,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import stringcalculator.ArithmeticArgumentFactory;
+import stringcalculator.ArithmeticArguments;
+import stringcalculator.Operator;
 
 import java.util.Arrays;
 
@@ -24,7 +27,7 @@ class ArithmeticArgumentFactoryTest {
         assertThat(args.nextOperator()).isEqualTo(makeArgs().nextOperator());
     }
 
-    @DisplayName("정확한 ArithmeticArguments 생성 여부에 대한 테스팅")
+    @DisplayName("정확한 stringcalculator.ArithmeticArguments 생성 여부에 대한 테스팅")
     ArithmeticArguments makeArgs() {
         Integer[] operands = new Integer[] {2, 3, 4, 2};
         Operator[] operators = new Operator[] {Operator.ADD, Operator.MULTIPLY, Operator.DIVIDE};

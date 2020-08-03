@@ -1,20 +1,21 @@
-import java.util.Scanner;
+import racingcar.InputView;
+import racingcar.ResultView;
+import racingcar.User;
+import racingcar.UserArguments;
 
 public class Main {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        InputView inputView = new InputView();
+        UserArguments userArgs = inputView.createUserArgument();
+        User user = User.createUser(userArgs);
+        ResultView resultView = new ResultView();
 
-        try {
-            String expression = scanner.nextLine();
+        while (user.hasNext()) {
+            user.moveCars();
+            user.nextStep();
 
-            ArithmeticArguments arguments = ArithmeticArgumentFactory.createArgs(expression);
-
-            int result = Calculator.calculate(arguments);
-
-            System.out.println(result);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            resultView.printAllCars(user.getCars());
         }
     }
 }
