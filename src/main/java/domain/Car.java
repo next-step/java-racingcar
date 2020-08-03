@@ -2,10 +2,10 @@ package domain;
 
 
 public class Car {
-    private int location;
-
     private static final int MOVABLE_NUMBER = 4;
     private static final String LOCATION_SIGN = "-";
+
+    private int location;
 
     public Car() {
         this.location = 0;
