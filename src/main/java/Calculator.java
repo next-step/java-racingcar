@@ -61,7 +61,7 @@ public class Calculator {
 
     // Null 값에 대한 Exception 낼 부분 확인
     public void isNullOrBlank(String value) {
-        if (value.equals("")) {
+        if (value.equals("") || value.equals(" ")) {
             throw new IllegalArgumentException();
         }
     }

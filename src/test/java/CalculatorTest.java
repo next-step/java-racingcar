@@ -40,7 +40,7 @@ class CalculatorTest {
 
     @Test
     void divideOperationTest() {
-        String[] value = "32 * 8".split(" ");
+        String[] value = "32 / 8".split(" ");
         assertThat(calc.divide(value[0], value[2])).isEqualTo(4);
     }
 
@@ -100,6 +100,16 @@ class CalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {""})
     void NullStringInputValueExceptionTest(String input) {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> calc.totalCalculate(input));
+    }
+
+    //Exception Check
+    //Input 자체가 공백일 경우는?
+    //Parameter를 위와 아래가 비슷한 기능을 하는데, 합치는 방법은 없을까?
+    @ParameterizedTest
+    @ValueSource(strings = {" "})
+    void SpaceStringInputValueExceptionTest(String input) {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> calc.totalCalculate(input));
     }
