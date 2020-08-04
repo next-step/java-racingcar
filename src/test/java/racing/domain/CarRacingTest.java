@@ -49,4 +49,37 @@ public class CarRacingTest {
             assertThat(distance).isBetween(CarRacingProperty.MIN_RANDOM_DISTANCE, CarRacingProperty.MAX_RANDOM_DISTANCE);
         }
     }
+
+    @Test
+    @DisplayName("자동차 이름을 쉼표로 구분하여 부여한다.")
+    void should_success_when_commaSplitInput() {
+        // given
+        CarRacing racing = new CarRacing();
+        String[] names = {"pobi","crong","honux"};
+
+        // when
+        racing.addCarNames(String.join(",", names));
+
+        // then
+        assertThat(racing.getCarCount()).isEqualTo(3);
+        assertThat(racing.getCarNames()).isEqualTo(names);
+    }
+
+    @Test
+    @DisplayName("경주 완료 후 정상적으로 우승자가 한 명 이상 나오는지?")
+    void completeRace_normalInput_returnWinner() {
+        // given
+        CarRacing racing = new CarRacing();
+        racing.addCarNames("pobi,crong,honux");
+        racing.tryCount(3);
+
+        // when
+        while (!racing.isComplete()) {
+            racing.race();
+        }
+
+        // then
+        List<Winner> winners = racing.getWinners();
+        assertThat(winners.size()).isGreaterThanOrEqualTo(1);
+    }
 }
