@@ -19,7 +19,7 @@ public class CarRacing {
     private final List<Car> cars;
     private boolean complete = false;
     private int racingCount = 0;
-    private CarRacingInfo racingInfo;
+    private final CarRacingInfo racingInfo;
 
     public CarRacing(String inputNames, int tryCount) {
 
