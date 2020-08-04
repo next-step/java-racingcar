@@ -14,21 +14,13 @@ public class StringTest {
 		String[] values ="1,2".split(",");
 		assertThat(values).contains("1");
 		assertThat(values).contains("2");
-		
-		
-		
 	}
-	
-	
 	
 	@Test
 	public void charAt() {
 		assertThatThrownBy(() ->{
 			"abc".charAt(3);
-			
 		}).isInstanceOf(StringIndexOutOfBoundsException.class);
-		
-
 	}	
 
 }
