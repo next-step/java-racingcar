@@ -3,8 +3,8 @@ package racing.domain;
 import common.Verify;
 import org.apache.commons.lang3.StringUtils;
 
-import static racing.domain.CarRacingProperty.MIN_MOVABLE_DISTANCE;
 import static racing.domain.CarRacingProperty.MIN_CAR_NAME_LENGTH;
+import static racing.domain.CarRacingProperty.MIN_MOVABLE_DISTANCE;
 
 public class Car {
 
@@ -34,7 +34,4 @@ public class Car {
         return distance;
     }
 
-    public static void main(String[] args) {
-        Car car = new Car("ddddd");
-    }
 }
