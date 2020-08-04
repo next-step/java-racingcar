@@ -41,104 +41,46 @@ public class CalculatorTest {
 		signs.add("/");
 	}
 	
+	@Test
+	public void calculateWithSign() {
+		
+		assertThatIllegalArgumentException().isThrownBy(() -> {
+			Calculator.calculateWithSign(1, 2, "}");
+		});
+		
+		assertThatIllegalArgumentException().isThrownBy(() -> {
+			Calculator.calculateWithSign(3, 0, "/");
+		});
+	}
 	
 	@Test
-	public int calculate()
-	{
-		int result = 0;
-		for(int i = 0; i < signs.size(); i++)
-		{
-			switch (signs.get(i)) {
-			case "+":
-				result = add(numbers.get(0), numbers.get(1));
-				removeNumbers(numbers, result);
-				break;
-			case "-":
-				result = substract(numbers.get(0), numbers.get(1));
-				removeNumbers(numbers, result);
-				break;
-			case "*":
-				result = multiple(numbers.get(0), numbers.get(1));
-				removeNumbers(numbers, result);
-				break;
-			case "/":
-				result = divide(numbers.get(0), numbers.get(1));
-				removeNumbers(numbers, result);
-				break;
-			default:
-				break;
-			}
-		}
-		return result;
-		
-		
+	public void calculateWithList() {
+		assertThatIllegalArgumentException().isThrownBy(() -> {
+			Calculator.calculateWithList(numbers, signs);
+		});
 	}
 	
 	//앞의 두 수를 제거하고, 결과값을 맨 앞으로 넣음
 	@Test
-	public static void removeNumbers(List<Integer> numbers, int result)
-	{
+	public static void removeNumbers(List<Integer> numbers, int result) {
 		numbers.set(0, result);
 		numbers.remove(1);
 	}
 		
-	
-	
 	@Test
-	public int add(int a, int b)
-	{
-		return a+b;
-	}
-	
-	@Test
-	public int substract(int a, int b)
-	{
-		return a-b;
-	}
-	@Test
-	public int multiple(int a, int b)
-	{
-		return a*b;
-	}
-	@Test
-	public int divide(int a, int b)
-	{
-		return a/b;
-	}
-	
-	
-	@Test
-	public void splitTest()
-	{
+	public void splitTest() {
 		String values="2 + 3 * 4 / 2";
-		//assertThatIllegalArgumentException 적용시 에러가 납니다.. 테스트 코드쪽에서 어떻게 작성해야 하는지 모르겠습니다.
-//		assertThatIllegalArgumentException().isThrownBy(() -> {
+		assertThatIllegalArgumentException().isThrownBy(() -> {
 			Calculator.split(values);
-//		});
+		});
 	}
 	
 	@Test
-	public void checkNumbersTest()
-	{
-		String values="j";
-		//assertThatIllegalArgumentException 적용시 에러가 납니다.. 테스트 코드쪽에서 어떻게 작성해야 하는지 모르겠습니다.
-//		assertThatIllegalArgumentException().isThrownBy(() -> {
-			Calculator.checkNumbers(values);
-//		});
-	}
-	
-	
-    //java.lang.NullPointerException 으로 테스트가 되지 않습니다...
-	//Null값이 없는데 나오는 이유가 뭔지 모르겠습니다.
-	@Test
-//	@ValueSource(strings = {"2","+","3","*","4","/","2"})
-//	public void pushTest(String values)
-	public void pushTest()
-	{
+	public void pushTest() {
 		String[] values = {"2","+","3","*","4","/","2"};
-//		assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> { 
-		Calculator.push(values);
-//		}).withMessageMatching("");
+		assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> { 
+			Calculator.seperatePush(values, numbers, signs);;
+		}).withMessageMatching("");
 
 	}
 	
