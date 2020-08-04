@@ -6,18 +6,18 @@ import org.junit.jupiter.api.Test;
 
 class MotorRaceTest {
 
-    private MotorRace motorRace;
-    private String[] names = {"pobi", "crong", "honux"};
+  private MotorRace motorRace;
+  private final String[] names = {"pobi", "crong", "honux"};
 
+  @BeforeEach
+  void setUp() {
+    this.motorRace = new MotorRace(names, 5);
+  }
 
-    @BeforeEach
-    void setUp() {
-        this.motorRace = new MotorRace(names, 5);
-    }
+  @DisplayName("자동차 게임")
+  @Test
+  void game() {
+    this.motorRace.game();
+  }
 
-    @DisplayName("자동차 게임")
-    @Test
-    void game() {
-        this.motorRace.game();
-    }
 }

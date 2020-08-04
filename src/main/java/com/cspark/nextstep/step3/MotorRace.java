@@ -6,46 +6,48 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class MotorRace {
-    private final Function<Dice, Boolean> rule = (d) -> d.cast() > 3;
 
-    private List<Driver> drivers;
-    private int numberOfRepeats;
-    private Dice dice;
+  private final Function<Dice, Boolean> rule = (d) -> d.cast() > 3;
 
-    public MotorRace(String[] driverNames, int numberOfRepeats) {
-        this.drivers = createTeam(driverNames);
-        this.numberOfRepeats = numberOfRepeats;
-        this.dice = new Dice(0, 9);
+  private List<Driver> drivers;
+  private final int numberOfRepeats;
+  private final Dice dice;
+
+  public MotorRace(String[] driverNames, int numberOfRepeats) {
+    this.drivers = createTeam(driverNames);
+    this.numberOfRepeats = numberOfRepeats;
+    this.dice = new Dice(0, 9);
+  }
+
+  private List<Driver> createTeam(String[] driverNames) {
+    List<Driver> drivers = new ArrayList<>();
+    for (String driverName : driverNames) {
+      drivers.add(new Driver(driverName, rule));
     }
 
-    private List<Driver> createTeam(String[] driverNames) {
-        List<Driver> drivers = new ArrayList<>();
-        for (String driverName : driverNames) {
-            drivers.add(new Driver(driverName, rule));
-        }
+    return drivers;
+  }
 
-        return drivers;
+  public void game() {
+    for (int i = 0; i < numberOfRepeats; i++) {
+      lap();
     }
+  }
 
-    public void game() {
-        for (int i = 0; i < numberOfRepeats; i++) {
-            lap();
-        }
+  private void lap() {
+    for (Driver driver : drivers) {
+      driver.drive(dice);
     }
+  }
 
-    private void lap() {
-        for (Driver driver : drivers) {
-            driver.drive(dice);
-        }
-    }
+  public List<Driver> podium() {
+    return drivers = this.drivers.stream()
+        .collect(Collectors.groupingBy(driver -> driver.forwardCount()))
+        .entrySet().stream()
+        .reduce((a, b) -> a.getKey() > b.getKey() ? a : b)
+        .map(d -> d.getValue())
+        .get();
 
-    public List<Driver> podium() {
-        return drivers = this.drivers.stream()
-            .collect(Collectors.groupingBy(driver -> driver.forwardCount()))
-            .entrySet().stream()
-            .reduce((a, b) -> a.getKey() > b.getKey() ? a : b)
-            .map(d -> d.getValue())
-            .get();
+  }
 
-    }
 }
