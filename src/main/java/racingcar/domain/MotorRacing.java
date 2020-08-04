@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import racingcar.ui.dto.MotorRacingDisplayResults;
@@ -20,8 +21,20 @@ public class MotorRacing {
         this.motorRacingRule = motorRacingRule;
     }
 
+    MotorRacing(Set<String> carNames, MotorRacingRule motorRacingRule) {
+        this.racingCars = carNames.stream()
+                                  .map(RacingCar::attend)
+                                  .collect(toList())
+        ;
+        this.motorRacingRule = motorRacingRule;
+    }
+
     public static MotorRacing randomMotorRacing(int carCount){
         return new MotorRacing(carCount,  new MotorRacingRandomMoveRule());
+    }
+
+    public static MotorRacing randomMotorRacing(Set<String> carNames){
+        return new MotorRacing(carNames,  new MotorRacingRandomMoveRule());
     }
 
     public MotorRacingDisplayResults racing(final int raceRound){
@@ -33,9 +46,9 @@ public class MotorRacing {
     }
 
     private MotorRacingDisplayRoundResult allCarsStartRacing() {
-        final List<Integer> collect = racingCars.stream()
+        final List<RacingResult> collect = racingCars.stream()
                                           .peek(this::runMotorRace)
-                                          .map(RacingCar::getMileage)
+                                          .map(RacingCar::getResult)
                                           .collect(toList());
         return new MotorRacingDisplayRoundResult(Collections.unmodifiableList(collect));
     }

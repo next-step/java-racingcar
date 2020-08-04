@@ -4,14 +4,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import racingcar.domain.RacingResult;
+
 public class MotorRacingDisplayRoundResult {
     public static final String MILEAGE_GAGE = "-";
     public static final String NEW_LINE = "\n";
     public static final String BLANK = "";
-    private List<Integer> roundCarRaceResultList;
+    private List<RacingResult> roundCarRaceResultList;
+    private static MotorRacingDisplayWinnerResults winnerResults = new MotorRacingDisplayWinnerResults();
 
-    public MotorRacingDisplayRoundResult(List<Integer> roundCarRaceResultList) {
+    public MotorRacingDisplayRoundResult(List<RacingResult> roundCarRaceResultList) {
         this.roundCarRaceResultList = roundCarRaceResultList;
+        roundCarRaceResultList.forEach(winnerResults::accumulateRacingTotalMileage);
     }
 
     private String repate(int raceResult){
@@ -21,12 +25,22 @@ public class MotorRacingDisplayRoundResult {
             ;
     }
 
+    private String displayRacingResult(RacingResult racingResult){
+        if(racingResult.isEmptyPrefix()){
+            return repate(racingResult.getTotalMileage());
+        }
+        return String.format("%s : %s", racingResult.getPrefix(), repate(racingResult.getTotalMileage()));
+    }
+
     @Override
     public String toString() {
         return roundCarRaceResultList.stream()
-                                     .map(this::repate)
+                                     .map(this::displayRacingResult)
                                      .collect(Collectors.joining(NEW_LINE))
             ;
+    }
 
+    public static MotorRacingDisplayWinnerResults getWinnerResults() {
+        return winnerResults;
     }
 }

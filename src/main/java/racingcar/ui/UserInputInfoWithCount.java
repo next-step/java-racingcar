@@ -1,10 +1,11 @@
 package racingcar.ui;
 
-public final class Counter {
+@Deprecated
+public final class UserInputInfoWithCount {
     private final int carCount;
     private final int tryCount;
 
-    public Counter(int carCount, int tryCount) {
+    public UserInputInfoWithCount(int carCount, int tryCount) {
         this.carCount = carCount;
         this.tryCount = tryCount;
     }
