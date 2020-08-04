@@ -3,15 +3,13 @@ package calculator.common;
 import java.util.regex.Pattern;
 
 public enum ExpressionPattern {
-	EXP("[0-9](\\s(\\+|\\-|\\*|\\/)\\s[0-9])+", "문자열 계산식 패턴"),
-	OPR("[\\+|\\-|\\*|\\/]", "연산자 패턴");
+	EXPRESSION_PATTERN("[0-9](\\s(\\+|\\-|\\*|\\/)\\s[0-9])+"),
+	OPERATION_PATTERN("[\\+|\\-|\\*|\\/]");
 
 	private String pattern;
-	private String description;
 
-	ExpressionPattern(String pattern, String description) {
+	ExpressionPattern(String pattern) {
 		this.pattern = pattern;
-		this.description = description;
 	}
 
 	public boolean isMatch(String value) {

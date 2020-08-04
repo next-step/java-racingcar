@@ -6,59 +6,62 @@ import calculator.expression.Expression;
  * 문자열 사칙연산 계산기
  */
 public class Calculator {
+
+	private Calculator() {
+		throw new AssertionError("해당 클래스는 인스턴스화 할 수 없습니다.");
+	}
+
 	/**
 	 * 문자열 사칙계산 main method
-	 * @param value
-	 * @return
 	 */
 	public static int process(String value) {
 		Expression expression = new Expression(value);
 		int result = expression.getNextNumber();
 
 		//operator 수 만큼 연산을 수행하므로 연산자가 있는지 먼저 확인.
-		while(expression.hasNextOperator() && expression.hasNextNumber()) {
-			int a = result;
+		while (expression.hasNextOperator() && expression.hasNextNumber()) {
+			int x = result;
 			String operator = expression.getNextOperator();
-			int b = expression.getNextNumber();
+			int y = expression.getNextNumber();
 
-			result = calculate(operator, a, b);
+			result = calculate(operator, x, y);
 		}
 
 		return result;
 	}
 
-	public static int calculate(String operator, int a, int b) {
+	public static int calculate(String operator, int x, int y) {
 		switch (operator) {
 			case "+":
-				return add(a, b);
+				return add(x, y);
 			case "-":
-				return subtract(a, b);
+				return subtract(x, y);
 			case "*":
-				return multiply(a, b);
+				return multiply(x, y);
 			case "/":
-				return divide(a, b);
+				return divide(x, y);
 		}
 
-		throw new IllegalArgumentException();
+		throw new IllegalArgumentException("[" + operator + "]  잘못된 연산자 입니다.");
 	}
 
-	private static int add(int a, int b) {
-		return a + b;
+	private static int add(int x, int y) {
+		return x + y;
 	}
 
-	private static int subtract(int a, int b) {
-		return a - b;
+	private static int subtract(int x, int y) {
+		return x - y;
 	}
 
-	private static int multiply(int a, int b) {
-		return a * b;
+	private static int multiply(int x, int y) {
+		return x * y;
 	}
 
-	private static int divide(int a, int b) {
-		if (b == 0) {
+	private static int divide(int x, int y) {
+		if (y == 0) {
 			throw new IllegalArgumentException("0으로 나눌 수 없습니다.");
 		}
 
-		return a / b ;
+		return x / y;
 	}
 }

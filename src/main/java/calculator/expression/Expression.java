@@ -4,7 +4,6 @@ import calculator.common.ExpressionPattern;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class Expression {
 	private String[] expression;
@@ -12,7 +11,7 @@ public class Expression {
 	private Operators operators;
 
 	public Expression(String expression) {
-		if (!ExpressionPattern.EXP.isMatch(expression)) {
+		if (!ExpressionPattern.EXPRESSION_PATTERN.isMatch(expression)) {
 			throw new IllegalArgumentException("비정상적인 문자열 수식입니다.");
 		}
 
@@ -24,14 +23,14 @@ public class Expression {
 		List<String> operators = new ArrayList<>();
 		List<Integer> numbers = new ArrayList<>();
 
-		Stream.of(expression)
-				.forEach(value -> {
-					if (ExpressionPattern.OPR.isMatch(value)) {
-						operators.add(value);
-					} else {
-						numbers.add(Integer.parseInt(value));
-					}
-				});
+		for (String value : expression) {
+			if (ExpressionPattern.OPERATION_PATTERN.isMatch(value)) {
+				operators.add(value);
+				continue;
+			}
+
+			numbers.add(Integer.parseInt(value));
+		}
 
 		this.numbers = new Numbers(numbers);
 		this.operators = new Operators(operators);

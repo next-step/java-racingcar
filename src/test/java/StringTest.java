@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class StringTest {
+class StringTest {
 
 	@DisplayName("구분자를 기준으로 문자열분리")
 	@ParameterizedTest
@@ -20,7 +20,7 @@ public class StringTest {
 		assertEquals(length, actual.length);
 	}
 
-	@DisplayName("괄화를 제외한 값 추출")
+	@DisplayName("괄호를 제외한 값 추출")
 	@Test
 	void replace() {
 		String value = "(1,2)";
