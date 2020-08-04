@@ -8,6 +8,7 @@ import java.util.stream.IntStream;
  * 자동차를 가지고 경기(게임)를 하는 클래스
  */
 public class RacingGame {
+
     /**
      * 경기에 사용되는 자동차 목록
      */
@@ -106,14 +107,30 @@ public class RacingGame {
         if (!this.hasNextRace())
             return;
 
+        PrintMessage.println();
+
         for (Car car : this.listOfCarsUsed) {
             car.go();
             car.showMeThePosition();
         }
 
         this.round++;
+    }
 
-        PrintMessage.println();
+    /**
+     * 경기에서 우승한 자동차 목록을 출력한다.
+     */
+    private void showMeTheChampion() {
+        // 경기가 모두 끝났으면 우승자를 판별하여 출력한다.
+        if (!this.hasNextRace())
+            PrintMessage.print(
+                    "\n%s 가 최종 우승했습니다.",
+                    String.join(", ",
+                            this.getChampions()
+                                    .stream()
+                                    .map(car -> car.getName())
+                                    .collect(Collectors.toList()))
+            );
     }
 
     /**
@@ -123,6 +140,8 @@ public class RacingGame {
         while (this.hasNextRace()) {
             this.racing();
         }
+
+        this.showMeTheChampion();
     }
 
     /**
@@ -139,17 +158,5 @@ public class RacingGame {
         return this.listOfCarsUsed.stream()
                 .filter(car -> car.getCurrentPosition() == max)
                 .collect(Collectors.toList());
-    }
-
-    /**
-     * 경기에서 우승한 자동차 목록을 출력한다.
-     */
-    public void showMeTheChampion() {
-        // 경기가 모두 끝났으면 우승자를 판별하여 출력한다.
-        if (!this.hasNextRace())
-            PrintMessage.print(
-                    "%s 가 최종 우승했습니다. \n",
-                    String.join(", ", this.getChampions().stream().map(car -> car.getName()).collect(Collectors.toList()))
-            );
     }
 }

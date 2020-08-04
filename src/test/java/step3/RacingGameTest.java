@@ -76,7 +76,6 @@ class RacingGameTest {
         RacingGame racingGame = new RacingGame(cars, 0);
         racingGame.racingAll();
 
-        racingGame.showMeTheChampion();
         assertThat(racingGame.getChampions()).containsExactly(car1);
     }
 
@@ -97,7 +96,6 @@ class RacingGameTest {
         RacingGame racingGame = new RacingGame(cars, 0);
         racingGame.racingAll();
 
-        racingGame.showMeTheChampion();
         assertThat(racingGame.getChampions()).containsExactly(car1, car2);
     }
 }
