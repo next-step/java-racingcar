@@ -3,6 +3,7 @@ package com.cspark.nextstep.step3;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class MotorRace {
     private final Function<Dice, Boolean> rule = (d) -> d.cast() > 3;
@@ -38,4 +39,13 @@ public class MotorRace {
         }
     }
 
+    public List<Driver> podium() {
+        return drivers = this.drivers.stream()
+            .collect(Collectors.groupingBy(driver -> driver.forwardCount()))
+            .entrySet().stream()
+            .reduce((a, b) -> a.getKey() > b.getKey() ? a : b)
+            .map(d -> d.getValue())
+            .get();
+
+    }
 }

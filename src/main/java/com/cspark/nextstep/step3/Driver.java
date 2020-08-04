@@ -23,4 +23,14 @@ public class Driver {
         return racingCar.race(name, records);
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public long forwardCount() {
+        return records.stream()
+            .filter(b -> b)
+            .count();
+    }
+
 }
