@@ -1,8 +1,9 @@
 package step3;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 /**
  * 자동차를 가지고 경기(게임)를 하는 클래스
@@ -65,12 +66,9 @@ public class RacingGame {
      * @return
      */
     private List<Car> newRaceCars(int numberOfCar) {
-        List<Car> cars = new ArrayList<>();
-
-        IntStream.range(0, numberOfCar)
-                .forEach(number -> cars.add(new Car()));
-
-        return cars;
+        return Stream.generate(Car::new)
+                .limit(numberOfCar)
+                .collect(Collectors.toList());
     }
 
     /**
