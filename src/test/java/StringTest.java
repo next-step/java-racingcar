@@ -17,10 +17,10 @@ public class StringTest {
     @Test
     public void substring() {
         String value = "(1,2)";
-        int begininIndex = value.indexOf("(");
+        int beginIndex = value.indexOf("(");
         int endIndex = value.indexOf(")");
 
-        String result = value.substring(begininIndex + 1, endIndex);
+        String result = value.substring(beginIndex + 1, endIndex);
         assertThat(result).isEqualTo("1,2");
     }
 }
