@@ -28,10 +28,12 @@ public class MotorRace {
     return drivers;
   }
 
-  public void game() {
+  public List<Driver> game() {
     for (int i = 0; i < numberOfRepeats; i++) {
       lap();
     }
+
+    return drivers;
   }
 
   private void lap() {
@@ -41,7 +43,7 @@ public class MotorRace {
   }
 
   public List<Driver> podium() {
-    return drivers = this.drivers.stream()
+    return drivers = drivers.stream()
         .collect(Collectors.groupingBy(driver -> driver.forwardCount()))
         .entrySet().stream()
         .reduce((a, b) -> a.getKey() > b.getKey() ? a : b)
