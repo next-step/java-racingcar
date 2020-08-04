@@ -12,12 +12,8 @@ import java.util.Scanner;
 import static org.assertj.core.api.Assertions.*;
 
 public class StringCalculatorTest {
-    StringCalculator calculator;
+    StringCalculator calculator = new StringCalculator();
 
-    @BeforeEach
-    void setUp(){
-       calculator = new StringCalculator();
-    }
 
     @DisplayName("더하기")
     @Test
@@ -45,14 +41,22 @@ public class StringCalculatorTest {
     void isBlank(String input){
         assertThatIllegalArgumentException().isThrownBy(()->{
             calculator.isBlack(input);
-        });
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("IllegalException 발생 하는지 테스트")
     @Test
     void isFourOperations(){
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(()->{
                     StringCalculator.isFourOperations("3 ^ 5");
+                    StringCalculator.isFourOperations("1 +- 5");
                 });
+    }
+
+    @DisplayName("계산기 잘 작동하니")
+    @Test
+    void doCalculate(){
+        assertThat(calculator.doCalculate("12 + 3 * 4 / 7")).isEqualTo(8);
     }
 }
