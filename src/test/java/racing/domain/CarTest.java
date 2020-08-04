@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
 
@@ -25,6 +26,22 @@ class CarTest {
         car.move(9);
         car.move(9);
         assertThat(car.getDistance()).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("자동차에 이름 부여")
+    void setNameToCar() {
+        String name = "monds";
+        Car car = new Car(name);
+        assertThat(car.getName()).isEqualTo(name);
+    }
+
+    @Test
+    @DisplayName("특정 길이 이상의 이름 부여")
+    void setName_over5Length_exceptThrown() {
+        assertThatThrownBy(() -> {
+            Car car = new Car("nameee");
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
 }
