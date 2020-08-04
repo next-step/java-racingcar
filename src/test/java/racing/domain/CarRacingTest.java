@@ -24,7 +24,7 @@ public class CarRacingTest {
         }
 
         assertThat(carRacing.isComplete()).isTrue();
-        assertThat(carRacing.getCarCount()).isEqualTo(3);
+        assertThat(carRacing.getRacingInfo().getCarCount()).isEqualTo(3);
         assertThat(carRacing.getRacingCount()).isEqualTo(5);
     }
 
@@ -51,8 +51,8 @@ public class CarRacingTest {
         String[] names = {"pobi","crong","honux"};
         CarRacing racing = new CarRacing(String.join(",", names), 5);
 
-        assertThat(racing.getCarCount()).isEqualTo(3);
-        assertThat(racing.getCarNames()).isEqualTo(names);
+        assertThat(racing.getRacingInfo().getCarCount()).isEqualTo(3);
+        assertThat(racing.getRacingInfo().getCarNames()).isEqualTo(names);
     }
 
     @Test
@@ -67,7 +67,7 @@ public class CarRacingTest {
         }
 
         // then
-        String[] winners = racing.getWinners();
+        String[] winners = racing.getRacingInfo().getWinners();
         System.out.println(Arrays.toString(winners));
         assertThat(winners.length).isGreaterThanOrEqualTo(1);
     }
@@ -84,7 +84,7 @@ public class CarRacingTest {
         racing.race((name, distance) -> distances.add(distance));
 
         // then
-        assertThat(racing.getMaxMovedDistance()).isEqualTo(Collections.max(distances));
+        assertThat(racing.getRacingInfo().getMaxMovedDistance()).isEqualTo(Collections.max(distances));
     }
 
     @Test
@@ -98,6 +98,6 @@ public class CarRacingTest {
         racing.race();
 
         // then
-        assertThatThrownBy(racing::getWinners).isInstanceOf(IllegalStateException.class);
+        assertThatThrownBy(() -> racing.getRacingInfo().getWinners()).isInstanceOf(IllegalStateException.class);
     }
 }
