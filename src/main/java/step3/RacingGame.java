@@ -3,7 +3,6 @@ package step3;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 /**
  * 자동차를 가지고 경기(게임)를 하는 클래스
@@ -49,32 +48,28 @@ public class RacingGame {
 
     /**
      * 생성자를 설정해 초기화를 한다.
+     *
      * @param namesOfCarsText
      * @param numberOfAttempts
      */
     public RacingGame(String namesOfCarsText, int numberOfAttempts) {
         this.namesOfCars = namesOfCarsText.split(",");
-
-        for (String carName : this.namesOfCars) {
-            if (carName.length() > 5) throw new RuntimeException("자동차의 이름은 5글자를 초과할 수 없습니다.");
-        }
-
         this.numberOfAttempts = numberOfAttempts;
 
         this.numberOfCar = namesOfCars.length;
         this.round = 0;
-        this.cars = this.newRaceCars(numberOfCar);
+        this.cars = this.newRaceCars(namesOfCars);
     }
 
     /**
      * 자동차 게임에 진행시 사용되는 자동차 목록을 만들어 반환한다.
      *
-     * @param numberOfCar
+     * @param namesOfCars
      * @return
      */
-    private List<Car> newRaceCars(int numberOfCar) {
-        return Stream.generate(Car::new)
-                .limit(numberOfCar)
+    private List<Car> newRaceCars(String[] namesOfCars) {
+        return IntStream.range(0, namesOfCars.length)
+                .mapToObj(index -> new Car(namesOfCars[index]))
                 .collect(Collectors.toList());
     }
 

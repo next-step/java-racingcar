@@ -4,7 +4,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingGameTest {
 
@@ -14,14 +13,6 @@ class RacingGameTest {
         RacingGame racingGame = new RacingGame(namesOfCarsText, numberOfAttempts);
         assertThat(racingGame.getNumberOfCars()).isEqualTo(namesOfCarsText.split(",").length);
         assertThat(racingGame.getNumberOfAttempts()).isEqualTo(numberOfAttempts);
-    }
-
-    @ParameterizedTest
-    @CsvSource(value = {"yongdae", "tester"})
-    void constructorWithThrowRuntimeException(String namesOfCarsText) {
-        assertThatThrownBy(() -> {
-            RacingGame racingGame = new RacingGame(namesOfCarsText, 0);
-        }).isInstanceOf(RuntimeException.class);
     }
 
     @ParameterizedTest

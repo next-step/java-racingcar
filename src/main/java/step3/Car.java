@@ -13,7 +13,25 @@ public class Car {
     private static final int MAX_POWER = 10;
     private static final int MIN_POWER = 4;
 
+    private String name = "";
+
     private int position = 0;
+
+    /**
+     * 생성자를 통해 초기화한다.
+     */
+    public Car() {}
+
+    /**
+     * 생성자를 통해 초기화한다.
+     *
+     * @param name
+     */
+    public Car(String name) {
+        if (name.length() > 5) throw new RuntimeException("자동차의 이름은 5글자를 초과할 수 없습니다.");
+
+        this.name = name;
+    }
 
     /**
      * 0 ~ 9 의 값중에 임의의 값(출력)을 반환한다.
@@ -22,6 +40,15 @@ public class Car {
      */
     private int getPower() {
         return engine.nextInt(MAX_POWER);
+    }
+
+    /**
+     * 자동차의 이름을 반환한다.
+     *
+     * @return
+     */
+    public String getName() {
+        return this.name;
     }
 
     /**
