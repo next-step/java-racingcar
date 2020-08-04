@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import static racingcar.ui.MotorRacingDisplay.display;
 
+@Deprecated
 public class MotorRacingUserInputWithCounter {
     private static final Scanner scanner = new Scanner(System.in);
     public static final String CAR_NAME_SPLIT_STR = ",";

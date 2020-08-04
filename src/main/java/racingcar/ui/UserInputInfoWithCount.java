@@ -1,5 +1,6 @@
 package racingcar.ui;
 
+@Deprecated
 public final class UserInputInfoWithCount {
     private final int carCount;
     private final int tryCount;

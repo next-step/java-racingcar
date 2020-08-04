@@ -8,16 +8,16 @@ import java.util.stream.Stream;
 
 import static racingcar.ui.MotorRacingDisplay.display;
 
-public class MotorRacingUserInputWithCarNames {
+public class MotorRacingUserInput {
     private static final Scanner scanner = new Scanner(System.in);
     public static final String CAR_NAME_SPLIT_STR = ",";
 
-    public static UserInputInfoWithCarNames input(){
+    public static UserInputInfo input(){
         final Set<String> carNames =  Stream.of(inputCarNames())
                                             .map(String::trim)
                                             .collect(Collectors.toCollection(LinkedHashSet::new ));
         final int tryCount = inputTryCount();
-        return new UserInputInfoWithCarNames(carNames, tryCount);
+        return new UserInputInfo(carNames, tryCount);
     }
 
     private static String[] inputCarNames(){
