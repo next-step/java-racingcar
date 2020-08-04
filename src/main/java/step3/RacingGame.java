@@ -98,6 +98,15 @@ public class RacingGame {
     }
 
     /**
+     * System.out.print() 함수를 이용해 message를 출력한다.
+     *
+     * @param message
+     */
+    private void printMessage(String message) {
+        System.out.print(message);
+    }
+
+    /**
      * 자동차 경기를 진행한다.
      * 정해진 시도 횟수보다 많은 경기가 진행되지 않는다.
      */
@@ -109,10 +118,10 @@ public class RacingGame {
         for (Car car : this.listOfCarsUsed) {
             car.go();
 
-            if (car.getCurrentPosition() > 0) System.out.print(String.format("%s : ", car.getName()));
+            if (car.getCurrentPosition() > 0) printMessage(String.format("%s : ", car.getName()));
             IntStream.range(0, car.getCurrentPosition())
-                    .forEach(number -> System.out.print("-"));
-            System.out.println();
+                    .forEach(number -> printMessage("-"));
+            printMessage("\n");
         }
 
         this.round++;
@@ -124,7 +133,7 @@ public class RacingGame {
     public void racingAll() {
         while (this.hasNextRace()) {
             this.racing();
-            System.out.println();
+            printMessage("\n");
         }
     }
 
@@ -150,6 +159,10 @@ public class RacingGame {
     public void showMeTheChampion() {
         // 경기가 모두 끝났으면 우승자를 판별하여 출력한다.
         if (!this.hasNextRace())
-            System.out.println(String.join(", ", this.getChampions().stream().map(car -> car.getName()).collect(Collectors.toList())) + "가 최종 우승했습니다.");
+            printMessage(
+                    String.format("%s 가 최종 우승했습니다. \n",
+                            String.join(", ", this.getChampions().stream().map(car -> car.getName()).collect(Collectors.toList()))
+                    )
+            );
     }
 }
