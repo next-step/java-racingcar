@@ -1,5 +1,7 @@
 package step3.view.output;
 
+import java.util.stream.Stream;
+
 public class OutputView {
 
     private static final String MOVED_PRINTING = "_";
