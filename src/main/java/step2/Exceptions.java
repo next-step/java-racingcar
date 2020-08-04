@@ -1,9 +1,9 @@
 package step2;
 
 public class Exceptions {
-    final String[] ARITHMETIC_EXPRESSION = {"+", "-", "/", "*"};
+    final static String[] ARITHMETIC_EXPRESSION = {"+", "-", "/", "*"};
 
-    public boolean isStringEmpty(String testingValue) {
+    public static boolean isStringEmpty(String testingValue) {
         try {
             if (testingValue.isBlank()) {
                 throw new IllegalArgumentException("문자열이 공백 혹은 비어있습니다.");
@@ -17,7 +17,7 @@ public class Exceptions {
         }
     }
 
-    public boolean isArithmeticExpression(String testingValue) {
+    public static boolean isArithmeticExpression(String testingValue) {
         boolean result = false;
 
         try {

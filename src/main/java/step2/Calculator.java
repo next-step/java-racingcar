@@ -9,16 +9,15 @@ public class Calculator {
     public int stringCalculatingProcessor(String rawInput) {
         String[] inputArithmeticInventory = rawInput.split(" ");
         String operand = "+";
-        Exceptions exception = new Exceptions();
         int sum = 0;
         //TODO: 입력을 어떻게 stream으로 해결 할 수 있을까
         for (int i = 0; i < inputArithmeticInventory.length; i++) {
             String currentArithmeticInput = inputArithmeticInventory[i];
 
-            if (exception.isStringEmpty(currentArithmeticInput)) {
+            if (Exceptions.isStringEmpty(currentArithmeticInput)) {
                 break;
             }
-            if (exception.isArithmeticExpression(currentArithmeticInput)) {
+            if (Exceptions.isArithmeticExpression(currentArithmeticInput)) {
                 operand = currentArithmeticInput;
                 continue;
             }
