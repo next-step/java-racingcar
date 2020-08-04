@@ -65,19 +65,6 @@ public class RacingGame {
     }
 
     /**
-     * 생성자를 설정해 초기화를 한다.
-     *
-     * @param listOfCarsUsed
-     * @param numberOfAttempts
-     */
-    public RacingGame(List<Car> listOfCarsUsed, int numberOfAttempts) {
-        this.listOfCarsUsed = listOfCarsUsed;
-        this.numberOfAttempts = numberOfAttempts;
-
-        this.round = 0;
-    }
-
-    /**
      * 자동차 게임에 진행시 사용되는 자동차 목록을 만들어 반환한다.
      *
      * @param namesOfCars
@@ -126,7 +113,7 @@ public class RacingGame {
             PrintMessage.print(
                     "\n%s 가 최종 우승했습니다.",
                     String.join(", ",
-                            this.getChampions()
+                            this.getChampions(this.listOfCarsUsed)
                                     .stream()
                                     .map(car -> car.getName())
                                     .collect(Collectors.toList()))
@@ -149,13 +136,13 @@ public class RacingGame {
      *
      * @return
      */
-    public List<Car> getChampions() {
-        int max = this.listOfCarsUsed.stream()
+    public static List<Car> getChampions(List<Car> cars) {
+        int max = cars.stream()
                 .mapToInt(Car::getCurrentPosition)
                 .max()
                 .orElse(-1);
 
-        return this.listOfCarsUsed.stream()
+        return cars.stream()
                 .filter(car -> car.getCurrentPosition() == max)
                 .collect(Collectors.toList());
     }

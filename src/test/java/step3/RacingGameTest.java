@@ -73,10 +73,7 @@ class RacingGameTest {
         car2.go(5);
         cars.add(car2);
 
-        RacingGame racingGame = new RacingGame(cars, 0);
-        racingGame.racingAll();
-
-        assertThat(racingGame.getChampions()).containsExactly(car1);
+        assertThat(RacingGame.getChampions(cars)).containsExactly(car1);
     }
 
     @Test
@@ -93,9 +90,6 @@ class RacingGameTest {
         car2.go(5);
         cars.add(car2);
 
-        RacingGame racingGame = new RacingGame(cars, 0);
-        racingGame.racingAll();
-
-        assertThat(racingGame.getChampions()).containsExactly(car1, car2);
+        assertThat(RacingGame.getChampions(cars)).containsExactly(car1, car2);
     }
 }
