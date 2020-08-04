@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package step3.view.input;
 
 import org.junit.jupiter.api.DisplayName;
@@ -22,4 +23,10 @@ class InputViewTest {
 //        InputView.CYCLE_COUNT_VIEW.printCount(inputCycleCount);
         /* TODO: System.out 으로 사용하는 화면 입력은 어떻게 유닛 테스트를 제작할까?*/
     }
+=======
+import static org.junit.jupiter.api.Assertions.*;
+
+class InputViewTest {
+
+>>>>>>> b195028... feat 자동차 대수, 시도 횟수 입력 기능 제작
 }
