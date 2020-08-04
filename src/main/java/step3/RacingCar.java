@@ -2,9 +2,21 @@ package step3;
 
 import step3.domain.Car;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class RacingCar {
+
+    public static Map<Integer, Car> preparedCar(int racingCarNumber) {
+        Map<Integer, Car> map = new HashMap<>();
+
+        for (int i = 1; i <= racingCarNumber; i++) {
+            Car car = new Car(i);
+            map.put(car.getCarId(), car);
+        }
+        return map;
+    }
 
     public static int getAccelateNumber() {
         Random random = new Random();
