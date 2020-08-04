@@ -56,4 +56,4 @@ output : 10
 ### 기능 구현 목록
 
 - [x] randomNumber 가 4 이하면 이하의 자동차를 진행시지 않는다.
-- [ ] randomNumber 가 4 이하면 이하의 자동차를 진행시킨다.
+- [ ] randomNumber 가 4 이상이면 자동차를 진행시킨다.
