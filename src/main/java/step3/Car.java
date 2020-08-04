@@ -1,6 +1,7 @@
 package step3;
 
 import java.util.Random;
+import java.util.stream.IntStream;
 
 /***
  * 자동차 게임에서 이용되는 자동차 클래스
@@ -80,5 +81,20 @@ public class Car {
      */
     public int getCurrentPosition() {
         return position;
+    }
+
+    /**
+     * 현재 자동차의 위치를 출력한다.
+     */
+    public void showMeThePosition() {
+        if (this.getCurrentPosition() == 0)
+            return;
+
+        PrintMessage.print("%s : ", this.getName());
+
+        IntStream.range(0, this.getCurrentPosition())
+                .forEach(number -> PrintMessage.print("-"));
+
+        PrintMessage.println();
     }
 }
