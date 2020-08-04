@@ -13,4 +13,14 @@ public class StringTest {
         result = "1".split(",");
         assertThat(result).containsExactly("1");
     }
+
+    @Test
+    public void substring() {
+        String value = "(1,2)";
+        int begininIndex = value.indexOf("(");
+        int endIndex = value.indexOf(")");
+
+        String result = value.substring(begininIndex + 1, endIndex);
+        assertThat(result).isEqualTo("1,2");
+    }
 }
