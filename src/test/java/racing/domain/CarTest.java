@@ -11,7 +11,7 @@ class CarTest {
     @Test
     @DisplayName("차 이동 시 최소거리 이상 확인")
     void move() {
-        Car car = new Car();
+        Car car = new Car("monds");
         int distance = car.getDistance();
         car.move(3);
         assertThat(car.getDistance()).isEqualTo(distance);
@@ -22,7 +22,7 @@ class CarTest {
     @Test
     @DisplayName("최종 이동거리 확인")
     void getTotalDistance() {
-        Car car = new Car();
+        Car car = new Car("monds");
         car.move(9);
         car.move(9);
         assertThat(car.getDistance()).isEqualTo(2);
