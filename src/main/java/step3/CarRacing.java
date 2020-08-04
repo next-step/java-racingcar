@@ -16,7 +16,7 @@ public class CarRacing {
     }
 
    static void doRacing(final int cars,final int tries){
-        int[] carsRecord = new int[cars];
+        int[] carsRecord = new int[cars];h
 
         Random random = new Random();
         for(int i=0;i< tries;i++) {
