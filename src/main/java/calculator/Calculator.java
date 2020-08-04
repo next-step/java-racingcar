@@ -24,7 +24,8 @@ public class Calculator {
 		int result = convertInteger(inputGroup.get(0));
 
 		for (int i = 1; i < inputGroup.size(); i += 2) {
-			result = OperatorType.getOperatorTypeByCode(inputGroup.get(i)).calculate(result, convertInteger(inputGroup.get(i + 1)));
+			result = OperatorType.getOperatorTypeByCode(inputGroup.get(i))
+					.calculate(result, convertInteger(inputGroup.get(i + 1)));
 		}
 
 		return result;
