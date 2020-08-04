@@ -9,7 +9,7 @@ public class FakeDiceRoller implements DiceRoller {
     }
 
     public boolean goeThan4() {
-        return randomNumber >= 4;
+        return randomNumber >= CRITERIA_NUM;
     }
 
     public int getRandomNumber() {
