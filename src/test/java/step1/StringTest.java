@@ -1,4 +1,4 @@
-package study;
+package step1;
 
 import org.junit.jupiter.api.Test;
 
@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringTest {
+
     @Test
     public void split() {
         String[] result = "1,2".split(",");
