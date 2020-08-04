@@ -3,6 +3,7 @@ package calculator;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 
 public enum OperatorType {
 	ADDITION("+", Integer::sum),
@@ -18,7 +19,7 @@ public enum OperatorType {
 	private final String symbol;
 	private final BiFunction<Integer, Integer, Integer> expression;
 
-	OperatorType(final String symbol, final BiFunction<Integer, Integer, Integer> expression) {
+	OperatorType(final String symbol, final BinaryOperator<Integer> expression) {
 		this.symbol = symbol;
 		this.expression = expression;
 	}
