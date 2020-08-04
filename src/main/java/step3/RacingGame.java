@@ -10,9 +10,11 @@ import java.util.stream.Stream;
  */
 public class RacingGame {
 
-    private int numberOfCar;
+    private String[] namesOfCars;
 
     private int numberOfAttempts;
+
+    private int numberOfCar;
 
     private int round;
 
@@ -47,14 +49,19 @@ public class RacingGame {
 
     /**
      * 생성자를 설정해 초기화를 한다.
-     *
-     * @param numberOfCar
+     * @param namesOfCarsText
      * @param numberOfAttempts
      */
-    public RacingGame(int numberOfCar, int numberOfAttempts) {
-        this.numberOfCar = numberOfCar;
+    public RacingGame(String namesOfCarsText, int numberOfAttempts) {
+        this.namesOfCars = namesOfCarsText.split(",");
+
+        for (String carName : this.namesOfCars) {
+            if (carName.length() > 5) throw new RuntimeException("자동차의 이름은 5글자를 초과할 수 없습니다.");
+        }
+
         this.numberOfAttempts = numberOfAttempts;
 
+        this.numberOfCar = namesOfCars.length;
         this.round = 0;
         this.cars = this.newRaceCars(numberOfCar);
     }
