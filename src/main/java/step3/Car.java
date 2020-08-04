@@ -10,6 +10,9 @@ public class Car {
 
     private Random engine = new Random();
 
+    private static final int MAX_POWER = 10;
+    private static final int MIN_POWER = 4;
+
     private int position = 0;
 
     /**
@@ -18,7 +21,7 @@ public class Car {
      * @return
      */
     private int getPower() {
-        return engine.nextInt(10);
+        return engine.nextInt(MAX_POWER);
     }
 
     /**
@@ -36,7 +39,7 @@ public class Car {
      * @param power
      */
     public void go(int power) {
-        if (power < 4)
+        if (power < MIN_POWER)
             return;
 
         position++;
