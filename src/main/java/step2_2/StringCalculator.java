@@ -49,7 +49,7 @@ public class StringCalculator {
     static void isBlack(String input) throws IllegalArgumentException{
         if(input == null || input.trim().isEmpty()){
             throw new IllegalArgumentException("isBlank@func exception!!");
-        }
+       }
     }
     static void isFourOperations(String input) throws IllegalArgumentException{
         String[] inputs = input.split(" ");
@@ -88,6 +88,7 @@ public class StringCalculator {
                 result = Operation.MULTI.calculate(result,Integer.parseInt(inputs[i+1]));
             }else if(inputs[i].equals(Operation.DIV.getOperationType())) {
                 result = Operation.DIV.calculate(result,Integer.parseInt(inputs[i+1]));
+
             }
         }
         return result;
