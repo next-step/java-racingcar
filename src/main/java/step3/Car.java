@@ -12,6 +12,7 @@ public class Car {
 
     private static final int MAX_POWER = 10;
     private static final int MIN_POWER = 4;
+    private static final int VALID_NAME_MAX_LENGTH = 5;
 
     private String name = "";
 
@@ -28,7 +29,7 @@ public class Car {
      * @param name
      */
     public Car(String name) {
-        if (name.length() > 5) throw new RuntimeException("자동차의 이름은 5글자를 초과할 수 없습니다.");
+        if (name.length() > VALID_NAME_MAX_LENGTH) throw new RuntimeException("자동차의 이름은 5글자를 초과할 수 없습니다.");
 
         this.name = name;
     }
