@@ -52,6 +52,5 @@ class CarTest {
 
     private void expectIllegalArgumentException(String carName) {
         assertThatThrownBy(() -> new Car(carName)).isInstanceOf(IllegalArgumentException.class);
-
     }
 }

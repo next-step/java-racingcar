@@ -5,7 +5,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -53,7 +57,7 @@ public class CarRacingTest {
     }
 
     @Test
-    @DisplayName("경주 완료 후 정상적으로 우승자가 한 명 이상 나오는지?")
+    @DisplayName("경주 완료 후 정상적으로 우승자 한 명 이상 체크")
     void completeRace_normalInput_returnWinner() {
         // given
         CarRacing racing = new CarRacing("pobi,crong,honux", 3);
@@ -64,7 +68,37 @@ public class CarRacingTest {
         }
 
         // then
-        List<Winner> winners = racing.getWinners();
-        assertThat(winners.size()).isGreaterThanOrEqualTo(1);
+        String[] winners = racing.getWinners();
+        System.out.println(Arrays.toString(winners));
+        assertThat(winners.length).isGreaterThanOrEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("최대 이동 거리 로직 체크")
+    void getMaxMovedDistance() {
+        // given
+        String[] names = {"pobi","crong","honux"};
+        CarRacing racing = new CarRacing(String.join(",", names), 1);
+
+        // when
+        List<Integer> distances = new ArrayList<>();
+        racing.race((name, distance) -> distances.add(distance));
+
+        // then
+        assertThat(racing.getMaxMovedDistance()).isEqualTo(Collections.max(distances));
+    }
+
+    @Test
+    @DisplayName("레이스가 종료되기 전에 우승자 가져올 경우")
+    void getWinners_notCompletedRace_exceptThrown() {
+        // given
+        String[] names = {"pobi","crong","honux"};
+        CarRacing racing = new CarRacing(String.join(",", names), 5);
+
+        // when
+        racing.race();
+
+        // then
+        assertThatThrownBy(racing::getWinners).isInstanceOf(IllegalStateException.class);
     }
 }
