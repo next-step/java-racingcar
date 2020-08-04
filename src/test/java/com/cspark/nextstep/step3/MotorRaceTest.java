@@ -17,14 +17,26 @@ class MotorRaceTest {
     this.motorRace = new MotorRace(names, 5);
   }
 
-  @DisplayName("자동차 경주")
+  @DisplayName("자동차명 수와 드라이버 수 비교")
   @Test
-  void game() {
+  void given3CarNames_whenGame_thenNumberOfDriversIsEqualsToNumberOfCar() {
     List<Driver> drivers = motorRace.game();
 
     assertThat(drivers.size())
         .as("입력된 자동차명과 드라이버 명수 비교")
         .isEqualTo(names.length);
+  }
+
+  @DisplayName("자동차명 수와 드라이버 수 비교")
+  @Test
+  void givenNumberOfRepeats_whenGame_thenRecordCountIsEqualsToNumberOfRepeats() {
+    List<Driver> drivers = motorRace.game();
+
+    drivers.stream()
+        .map(d -> d.getRecords().size())
+        .forEach(recordCount -> assertThat(recordCount)
+            .as("입력된 이동 횟수와 이동한 이력 카운트와 비교")
+            .isEqualTo(5));
   }
 
 }
