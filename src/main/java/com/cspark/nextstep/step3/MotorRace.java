@@ -12,24 +12,30 @@ public class MotorRace {
     private Dice dice;
 
     public MotorRace(int numberOfCars, int numberOfRepeats) {
-        this.drivers = new ArrayList<>();
+        this.drivers = createTeam(numberOfCars);
         this.numberOfRepeats = numberOfRepeats;
         this.dice = new Dice(0, 9);
-        createTeam(numberOfCars);
     }
 
-    private void createTeam(int numberOfCars) {
+    private List<Driver> createTeam(int numberOfCars) {
+        List<Driver> drivers = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
             drivers.add(new Driver(rule));
         }
+
+        return drivers;
     }
 
     public void game() {
         for (int i = 0; i < numberOfRepeats; i++) {
-            for (Driver driver : drivers) {
-                driver.drive(dice);
-            }
-            System.out.println("ended of " + (i + 1) + "\n");
+            lap();
         }
     }
+
+    private void lap() {
+        for (Driver driver : drivers) {
+            driver.drive(dice);
+        }
+    }
+
 }
