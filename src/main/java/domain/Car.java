@@ -1,7 +1,7 @@
 package domain;
 
 
-import Strategy.MovableStrategy;
+import strategy.MovableStrategy;
 
 public class Car {
     private int location;

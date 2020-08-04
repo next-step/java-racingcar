@@ -1,6 +1,7 @@
 package domain;
 
-import Strategy.AboveNumberMove;
+import strategy.AboveNumberMove;
+import strategy.RandomNumberGenerator;
 import view.InputView;
 import view.ResultView;
 
@@ -12,7 +13,7 @@ public class RacingGame {
         int numberOfCars = InputView.inputNumberOfCar();
         int time = InputView.inputTime();
 
-        Cars cars = new Cars(numberOfCars, new AboveNumberMove(MOVABLE_NUMBER));
+        Cars cars = new Cars(numberOfCars, new AboveNumberMove(MOVABLE_NUMBER), new RandomNumberGenerator());
 
         ResultView.printResultLine();
         for (int i = 0; i < time; i++) {
