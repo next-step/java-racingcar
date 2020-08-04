@@ -6,7 +6,14 @@ import java.util.Scanner;
  *  사용자의 입력을 받아 입력한 값을 반환해주는 작업을 처리하는 클래스
  */
 public class InputScanner {
+
+    private final static InputScanner INPUT_SCANNER = new InputScanner();
+
     private final static Scanner scanner = new Scanner(System.in);
+
+    public static InputScanner getInstance() {
+        return INPUT_SCANNER;
+    }
 
     public static void printMessage(String message) {
         System.out.printf(message);
