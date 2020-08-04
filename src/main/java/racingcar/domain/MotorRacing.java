@@ -22,8 +22,10 @@ public class MotorRacing {
     }
 
     MotorRacing(Set<String> carNames, MotorRacingRule motorRacingRule) {
-        this.racingCars = carNames.stream().map(RacingCar::attend)
-                .collect(toList());
+        this.racingCars = carNames.stream()
+                                  .map(RacingCar::attend)
+                                  .collect(toList())
+        ;
         this.motorRacingRule = motorRacingRule;
     }
 
