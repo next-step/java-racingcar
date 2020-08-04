@@ -7,3 +7,9 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 기능 구현
+1. 입력값을 받을수 있는 기능 구현
+2. 입력값에 따른 자동차 객체 생성 
+3. 이동에 대한 Role에대한 규칙 반영
+4. 출력 ResultView에 대한 테스트 구현
