@@ -7,10 +7,10 @@ import racing.view.RacingResultView;
 public class CarRacingMain {
 
     public static void main(String[] args) {
-        int carCount = RacingInputView.carCount();
+        String carNames = RacingInputView.carNames();
         int raceCount = RacingInputView.raceCount();
 
-        CarRacing carRacing = new CarRacing(carCount, raceCount);
+        CarRacing carRacing = new CarRacing(carNames, raceCount);
 
         RacingResultView.printHeader();
         while (!carRacing.isComplete()) {
