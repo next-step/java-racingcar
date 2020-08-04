@@ -2,5 +2,5 @@ package racing.domain;
 
 @FunctionalInterface
 public interface RaceFunction {
-    void compute(int totalDistance);
+    void compute(String carName, int totalDistance);
 }

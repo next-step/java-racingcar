@@ -7,4 +7,10 @@ public final class Verify {
             throw new IllegalArgumentException(errorMessage);
         }
     }
+
+    public static void checkState(boolean expression, String errorMessage) {
+        if (!expression) {
+            throw new IllegalStateException(errorMessage);
+        }
+    }
 }

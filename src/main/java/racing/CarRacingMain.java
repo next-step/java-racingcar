@@ -17,5 +17,7 @@ public class CarRacingMain {
             carRacing.race(RacingResultView::printCarMovedDistance);
             RacingResultView.printFooter();
         }
+
+        RacingResultView.printRaceWinners(carRacing.getWinners());
     }
 }

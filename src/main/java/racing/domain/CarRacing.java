@@ -3,9 +3,7 @@ package racing.domain;
 import common.Verify;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import static racing.domain.CarRacingProperty.*;
 
@@ -13,7 +11,7 @@ public class CarRacing {
 
     private final int tryCount;
     private final Random random;
-    private List<Car> cars;
+    private final List<Car> cars;
     private boolean complete = false;
     private int racingCount = 0;
 
@@ -58,8 +56,16 @@ public class CarRacing {
                 .toArray(String[]::new);
     }
 
-    public List<Winner> getWinners() {
-        return null;
+    public String[] getWinners() {
+        Verify.checkState(complete, "아직 레이스가 끝나지 않았습니다.");
+        return cars.stream()
+                .filter(car -> car.getDistance() == getMaxMovedDistance())
+                .map(Car::getName)
+                .toArray(String[]::new);
+    }
+
+    public int getMaxMovedDistance() {
+        return Collections.max(cars, Comparator.comparingInt(Car::getDistance)).getDistance();
     }
 
     public int getRandomDistance() {
@@ -70,7 +76,7 @@ public class CarRacing {
         for (Car car : cars) {
             car.move(getRandomDistance());
             if (mappingFunction != null) {
-                mappingFunction.compute(car.getDistance());
+                mappingFunction.compute(car.getName(), car.getDistance());
             }
         }
     }
