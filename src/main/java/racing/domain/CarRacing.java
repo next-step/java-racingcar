@@ -9,6 +9,10 @@ import static racing.domain.CarRacingProperty.*;
 
 public class CarRacing {
 
+    private static final String TRY_COUNT_ERROR_MESSAGE = "경주 시도 횟수는 1 이상이어야 합니다";
+    private static final String INVALID_NAMES_ERROR_MESSAGE = "Car names input not allowed blank";
+    private static final String RACE_NOT_COMPLETED_MESSAGE = "아직 레이스가 끝나지 않았습니다";
+
     private final int tryCount;
     private final Random random;
     private final List<Car> cars;
@@ -17,8 +21,8 @@ public class CarRacing {
 
     public CarRacing(String inputNames, int tryCount) {
 
-        Verify.checkArgument(tryCount > 0, "경주 시도 횟수는 1 이상이어야 합니다");
-        Verify.checkArgument(StringUtils.isNotBlank(inputNames), "Car names input not allowed blank");
+        Verify.checkArgument(tryCount > 0, TRY_COUNT_ERROR_MESSAGE);
+        Verify.checkArgument(StringUtils.isNotBlank(inputNames), INVALID_NAMES_ERROR_MESSAGE);
 
         this.tryCount = tryCount;
 
@@ -57,7 +61,7 @@ public class CarRacing {
     }
 
     public String[] getWinners() {
-        Verify.checkState(complete, "아직 레이스가 끝나지 않았습니다.");
+        Verify.checkState(complete, RACE_NOT_COMPLETED_MESSAGE);
         return cars.stream()
                 .filter(car -> car.getDistance() == getMaxMovedDistance())
                 .map(Car::getName)
