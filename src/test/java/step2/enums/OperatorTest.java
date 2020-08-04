@@ -20,9 +20,9 @@ class OperatorTest {
     @DisplayName("주어진 Operator에 따른 연산 실행")
     @ParameterizedTest
     @CsvSource(value = {"+:7", "-:1", "*:12", "/:1"}, delimiter = ':')
-    void add(String operator, Integer expectedResult) {
-        Integer givenOne = 4;
-        Integer givenTheOther = 3;
+    void add(String operator, int expectedResult) {
+        int givenOne = 4;
+        int givenTheOther = 3;
         assertThat(Operator.get(operator).compute(givenOne, givenTheOther)).isEqualTo(expectedResult);
     }
 
