@@ -8,16 +8,20 @@ import java.util.stream.IntStream;
  * 자동차를 가지고 경기(게임)를 하는 클래스
  */
 public class RacingGame {
+    /**
+     * 경기에 사용되는 자동차 목록
+     */
+    private List<Car> listOfCarsUsed;
 
-    private String[] namesOfCars;
-
+    /**
+     * 경기 시도 횟수
+     */
     private int numberOfAttempts;
 
-    private int numberOfCar;
-
+    /**
+     * 현재 진행되고 있는 경기 Round
+     */
     private int round;
-
-    private List<Car> cars;
 
     /**
      * 자동차의 갯수를 반환한다.
@@ -25,7 +29,7 @@ public class RacingGame {
      * @return
      */
     public int getNumberOfCars() {
-        return this.numberOfCar;
+        return this.listOfCarsUsed.size();
     }
 
     /**
@@ -53,27 +57,23 @@ public class RacingGame {
      * @param numberOfAttempts
      */
     public RacingGame(String namesOfCarsText, int numberOfAttempts) {
-        this.namesOfCars = namesOfCarsText.split(",");
+        this.listOfCarsUsed = this.createListOfCarsInUse(namesOfCarsText.split(","));
         this.numberOfAttempts = numberOfAttempts;
 
-        this.numberOfCar = namesOfCars.length;
         this.round = 0;
-        this.cars = this.newRaceCars(namesOfCars);
     }
 
     /**
      * 생성자를 설정해 초기화를 한다.
      *
-     * @param cars
+     * @param listOfCarsUsed
      * @param numberOfAttempts
      */
-    public RacingGame(List<Car> cars, int numberOfAttempts) {
-        this.namesOfCars = cars.stream().map(car -> car.getName()).toArray(String[]::new);
+    public RacingGame(List<Car> listOfCarsUsed, int numberOfAttempts) {
+        this.listOfCarsUsed = listOfCarsUsed;
         this.numberOfAttempts = numberOfAttempts;
 
-        this.numberOfCar = cars.size();
         this.round = 0;
-        this.cars = cars;
     }
 
     /**
@@ -82,7 +82,7 @@ public class RacingGame {
      * @param namesOfCars
      * @return
      */
-    private List<Car> newRaceCars(String[] namesOfCars) {
+    private List<Car> createListOfCarsInUse(String[] namesOfCars) {
         return IntStream.range(0, namesOfCars.length)
                 .mapToObj(index -> new Car(namesOfCars[index].trim()))
                 .collect(Collectors.toList());
@@ -106,7 +106,7 @@ public class RacingGame {
         if (!this.hasNextRace())
             return;
 
-        for (Car car : this.cars) {
+        for (Car car : this.listOfCarsUsed) {
             car.go();
 
             if (car.getCurrentPosition() > 0) System.out.print(String.format("%s : ", car.getName()));
@@ -134,12 +134,12 @@ public class RacingGame {
      * @return
      */
     public List<Car> getChampions() {
-        int max = this.cars.stream()
+        int max = this.listOfCarsUsed.stream()
                 .mapToInt(Car::getCurrentPosition)
                 .max()
                 .orElse(-1);
 
-        return this.cars.stream()
+        return this.listOfCarsUsed.stream()
                 .filter(car -> car.getCurrentPosition() == max)
                 .collect(Collectors.toList());
     }
