@@ -49,9 +49,13 @@ class MotorRacingDisplayWinnerResults {
         return Collections.max(winners.values());
     }
 
+    boolean isMaxTotalMileage(int totalMileage){
+        return totalMileage == getMaxTotalMileage();
+    }
+
     List<String> getWinners(){
         return winners.entrySet().stream()
-               .filter(e->e.getValue() == getMaxTotalMileage())
+               .filter(e -> isMaxTotalMileage(e.getValue()))
                .map(Map.Entry::getKey)
                .collect(toList());
     }
