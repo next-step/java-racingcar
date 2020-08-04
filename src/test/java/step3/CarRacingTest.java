@@ -6,7 +6,6 @@ public class CarRacingTest {
 
     @Test
     void doRacing(){
-        CarRacing.doRacing();
     }
 
 }
