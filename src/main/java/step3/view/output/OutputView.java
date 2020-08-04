@@ -4,6 +4,7 @@ import java.util.stream.Stream;
 
 public class OutputView {
 
+<<<<<<< HEAD
     private static final String MOVED_PRINTING = "_";
 
     public static void printingMovement(int movementCount) {
