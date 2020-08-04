@@ -6,11 +6,13 @@ import java.util.function.Function;
 
 public class Driver {
 
+    private String name;
     private final Function<Dice, Boolean> rule;
     private RacingCar racingCar;
     private List<Boolean> records;
 
-    public Driver(Function<Dice, Boolean> rule) {
+    public Driver(String name, Function<Dice, Boolean> rule) {
+        this.name = name;
         this.rule = rule;
         this.records = new ArrayList<>();
         this.racingCar = new RacingCar();
@@ -18,7 +20,7 @@ public class Driver {
 
     public int drive(Dice dice) {
         records.add(rule.apply(dice));
-        return racingCar.race(records);
+        return racingCar.race(name, records);
     }
 
 }

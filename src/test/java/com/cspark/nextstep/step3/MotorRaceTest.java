@@ -5,11 +5,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class MotorRaceTest {
+
     private MotorRace motorRace;
+    private String[] names = {"pobi", "crong", "honux"};
+
 
     @BeforeEach
     void setUp() {
-        this.motorRace = new MotorRace(3, 5);
+        this.motorRace = new MotorRace(names, 5);
     }
 
     @DisplayName("자동차 게임")

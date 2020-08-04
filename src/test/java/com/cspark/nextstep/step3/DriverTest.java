@@ -18,7 +18,7 @@ class DriverTest {
     void setUp() {
         this.falseDice = new Dice(MIN, 3);
         this.trueDice = new Dice(4, MAX);
-        this.driver = new Driver((d) -> d.cast() > 3);
+        this.driver = new Driver("pcs", (d) -> d.cast() > 3);
     }
 
     @DisplayName("전진 할 수 있다.")

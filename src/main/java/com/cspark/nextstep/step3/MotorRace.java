@@ -11,16 +11,16 @@ public class MotorRace {
     private int numberOfRepeats;
     private Dice dice;
 
-    public MotorRace(int numberOfCars, int numberOfRepeats) {
-        this.drivers = createTeam(numberOfCars);
+    public MotorRace(String[] driverNames, int numberOfRepeats) {
+        this.drivers = createTeam(driverNames);
         this.numberOfRepeats = numberOfRepeats;
         this.dice = new Dice(0, 9);
     }
 
-    private List<Driver> createTeam(int numberOfCars) {
+    private List<Driver> createTeam(String[] driverNames) {
         List<Driver> drivers = new ArrayList<>();
-        for (int i = 0; i < numberOfCars; i++) {
-            drivers.add(new Driver(rule));
+        for (String driverName : driverNames) {
+            drivers.add(new Driver(driverName, rule));
         }
 
         return drivers;
