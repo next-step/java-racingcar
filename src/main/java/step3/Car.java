@@ -21,7 +21,8 @@ public class Car {
     /**
      * 생성자를 통해 초기화한다.
      */
-    public Car() {}
+    public Car() {
+    }
 
     /**
      * 생성자를 통해 초기화한다.
@@ -67,10 +68,9 @@ public class Car {
      * @param power
      */
     public void go(int power) {
-        if (power < MIN_POWER)
-            return;
-
-        position++;
+        if (power >= MIN_POWER) {
+            position++;
+        }
     }
 
     /**
