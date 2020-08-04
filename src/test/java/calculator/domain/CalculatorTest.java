@@ -1,4 +1,4 @@
-package domain;
+package calculator.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,18 +14,14 @@ class CalculatorTest {
     @DisplayName("디폴트 생성자 예외 처리 테스트")
     @Test
     void defaultConstructTest() {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            Calculator calculator = new Calculator();
-        });
+        assertThatIllegalArgumentException().isThrownBy(Calculator::new);
     }
 
     @DisplayName("입력 값 공백 문자일 경우 테스트")
     @ParameterizedTest
     @ValueSource(strings = "")
     void emptyStringTest(String emptyString) {
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            Calculator calculator = new Calculator(emptyString);
-        });
+        assertThatIllegalArgumentException().isThrownBy(() -> new Calculator(emptyString));
     }
 
     @DisplayName("잘못된 입력 수식 테스트")
