@@ -9,7 +9,7 @@ public class InputScanner {
 
     private final static InputScanner INPUT_SCANNER = new InputScanner();
 
-    private final static Scanner scanner = new Scanner(System.in);
+    private final static Scanner SCANNER = new Scanner(System.in);
 
     public static InputScanner getInstance() {
         return INPUT_SCANNER;
@@ -20,7 +20,7 @@ public class InputScanner {
     }
 
     public static int getInt() {
-        return scanner.nextInt();
+        return SCANNER.nextInt();
     }
 
     public static int getInputNumberOfCar() {
