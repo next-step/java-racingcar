@@ -1,6 +1,5 @@
 package racingcar;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -8,12 +7,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
-    private Car car;
-
-    @BeforeEach
-    void setUp() {
-        this.car = Car.createCar();
-    }
+    private static final int FORWARD = 1;
+    private static final int STOP = 0;
+    private Car car = Car.createCar();
 
     @Test
     void createCarTest() {
@@ -27,7 +23,9 @@ class CarTest {
         this.car.move(fuel);
         int next = this.car.getPosition();
 
-        assertThat(prev).isEqualTo(next);
+        int state = next - prev;
+
+        assertThat(state).isEqualTo(STOP);
     }
 
     @ParameterizedTest
@@ -37,6 +35,8 @@ class CarTest {
         this.car.move(fuel);
         int next = this.car.getPosition();
 
-        assertThat(prev).isLessThan(next);
+        int state = next - prev;
+
+        assertThat(state).isEqualTo(FORWARD);
     }
 }
