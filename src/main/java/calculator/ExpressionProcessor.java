@@ -8,6 +8,6 @@ public class ExpressionProcessor {
         if (Objects.isNull(expression) || expression.isEmpty()) {
             throw new IllegalArgumentException("null 또는 빈 공백의 문자열입니다.");
         }
-        return null;
+        return expression.split(" ");
     }
 }
