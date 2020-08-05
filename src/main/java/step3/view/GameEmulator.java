@@ -10,6 +10,8 @@ import java.util.stream.IntStream;
 
 public class GameEmulator {
 
+    private static final int PRINT_MIN_POSITION = 0;
+
     /**
      * 게임 결과를 출력한다.
      *
@@ -40,15 +42,25 @@ public class GameEmulator {
      * @param car
      */
     public static void showMeThePosition(Car car) {
-        if (car.getCurrentPosition() == 0)
+        if (car.getCurrentPosition() <= PRINT_MIN_POSITION)
             return;
 
         PrintMessage.print("%s : ", car.getName());
-
-        IntStream.range(0, car.getCurrentPosition())
-                .forEach(number -> PrintMessage.print("-"));
-
+        PrintMessage.print(getTailsOfCar(car));
         PrintMessage.println();
+    }
+
+    /**
+     * 현재 자동차가 이동한 위치만큼의 "-" 문자값을 얻는다.
+     *
+     * @param car
+     * @return
+     */
+    private static String getTailsOfCar(Car car) {
+        return String.join("", IntStream.range(0, car.getCurrentPosition())
+                .mapToObj(number -> "-")
+                .collect(Collectors.toList())
+        );
     }
 
     /**
@@ -69,6 +81,7 @@ public class GameEmulator {
 
     /**
      * 경기에서 우승한 자동차 목록을 출력한다.
+     *
      * @param cars
      */
     public static void showMeTheChampions(List<Car> cars) {
