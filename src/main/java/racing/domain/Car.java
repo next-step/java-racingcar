@@ -3,10 +3,10 @@ package racing.domain;
 import java.util.Random;
 
 public class Car {
-    static final int RANDOM_MAX_NUM = 10;
-    int location;
+    private static final int RANDOM_MAX_NUM = 10;
+    private int location;
 
-    Car() {
+    public Car() {
         this.location = 0;
     }
 
