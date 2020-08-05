@@ -9,7 +9,7 @@ public class StringUtils {
     }
 
     public static boolean isNumeric(String string) {
-        if (string == null) {
+        if (isBlank(string)) {
             return false;
         }
         try {
