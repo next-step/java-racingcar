@@ -4,8 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.car.Cars;
 import racingcar.car.CountOfCars;
-import racingcar.engine.FixedFourPowerEngine;
-import racingcar.engine.RandomPowerEngine;
+import racingcar.engine.FixedGoPowerEngine;
 
 import java.util.List;
 
@@ -17,7 +16,7 @@ class ResultTest {
     void newInstance() {
         //given
         CountOfCars countOfCars = CountOfCars.newInstance(3);
-        Cars cars = Cars.newInstance(countOfCars, new FixedFourPowerEngine());
+        Cars cars = Cars.newInstance(countOfCars, new FixedGoPowerEngine());
         cars.move();
 
         //when

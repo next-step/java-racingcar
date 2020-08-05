@@ -2,8 +2,8 @@ package racingcar.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.engine.FixedThreePowerEngine;
-import racingcar.engine.FixedFourPowerEngine;
+import racingcar.engine.FixedStopPowerEngine;
+import racingcar.engine.FixedGoPowerEngine;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,7 +13,7 @@ class CarTest {
     @DisplayName("자동차 생성")
     @Test
     void newCar() {
-        Car car = Car.newInstance(new FixedFourPowerEngine());
+        Car car = Car.newInstance(new FixedGoPowerEngine());
 
         //then
         assertThat(car).isNotNull();
@@ -22,17 +22,17 @@ class CarTest {
     @DisplayName("현재위치 확인")
     @Test
     void getPosition() {
-        Car car = Car.newInstance(new FixedFourPowerEngine());
+        Car car = Car.newInstance(new FixedGoPowerEngine());
 
         //then
         assertEquals(1, car.getPosition());
     }
 
-    @DisplayName("power가 4보다 크면 전진")
+    @DisplayName("power가 4 이상이면 전진")
     @Test
     void move() {
         //given
-        Car car = Car.newInstance(new FixedFourPowerEngine());
+        Car car = Car.newInstance(new FixedGoPowerEngine());
         int before = car.getPosition();
 
         //when
@@ -46,7 +46,7 @@ class CarTest {
     @Test
     void stop() {
         //given
-        Car car = Car.newInstance(new FixedThreePowerEngine());
+        Car car = Car.newInstance(new FixedStopPowerEngine());
         int before = car.getPosition();
 
         //when

@@ -7,18 +7,16 @@ import java.util.List;
 
 public class Cars {
     private List<Car> cars;
-    private PowerEngine powerEngine;
 
     private Cars(CountOfCars countOfCars, PowerEngine powerEngine) {
-        this.powerEngine = powerEngine;
-        this.cars = registerCars(countOfCars);
+        this.cars = registerCars(countOfCars, powerEngine);
     }
 
-    private List<Car> registerCars(CountOfCars countOfCars) {
+    private List<Car> registerCars(CountOfCars countOfCars, PowerEngine powerEngine) {
         List<Car> cars = new ArrayList<>();
 
         for (int i = 0; i < countOfCars.getCount(); i++) {
-            cars.add(Car.newInstance(this.powerEngine));
+            cars.add(Car.newInstance(powerEngine));
         }
 
         return cars;

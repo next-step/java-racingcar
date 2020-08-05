@@ -2,7 +2,7 @@ package racingcar.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.engine.FixedFourPowerEngine;
+import racingcar.engine.FixedGoPowerEngine;
 import racingcar.engine.RandomPowerEngine;
 
 import java.util.List;
@@ -29,15 +29,13 @@ class CarsTest {
     @Test
     void moveAllCars() {
         //given
-        CountOfCars countOfCars = new CountOfCars(3);
-        Cars cars = Cars.newInstance(countOfCars, new FixedFourPowerEngine());
+        CountOfCars countOfCars = CountOfCars.newInstance(3);
+        Cars cars = Cars.newInstance(countOfCars, new FixedGoPowerEngine());
 
         //when
         List<Car> result = cars.move();
 
         //then
-        for (Car car : result) {
-            assertEquals(2, car.getPosition());
-        }
+        result.forEach(car -> assertEquals(2, car.getPosition()));
     }
 }
