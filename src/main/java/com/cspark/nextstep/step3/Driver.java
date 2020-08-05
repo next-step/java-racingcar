@@ -6,19 +6,33 @@ import java.util.function.Function;
 
 public class Driver {
 
-    private final Function<Dice, Boolean> rule;
-    private RacingCar racingCar;
-    private List<Boolean> records;
+  private final String name;
+  private final Function<Dice, Boolean> rule;
+  private final List<Boolean> records;
 
-    public Driver(Function<Dice, Boolean> rule) {
-        this.rule = rule;
-        this.records = new ArrayList<>();
-        this.racingCar = new RacingCar();
-    }
+  public Driver(String name, Function<Dice, Boolean> rule) {
+    this.name = name;
+    this.rule = rule;
+    this.records = new ArrayList<>();
+  }
 
-    public int drive(Dice dice) {
-        records.add(rule.apply(dice));
-        return racingCar.race(records);
-    }
+  public String getName() {
+    return name;
+  }
+
+  public List<Boolean> getRecords() {
+    return records;
+  }
+
+  public int drive(Dice dice) {
+    records.add(rule.apply(dice));
+    return records.get(records.size() - 1) ? 1 : 0;
+  }
+
+  public long forwardCount() {
+    return records.stream()
+        .filter(b -> b)
+        .count();
+  }
 
 }

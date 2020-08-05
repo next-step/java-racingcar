@@ -30,7 +30,7 @@ public class StringCalculator {
     int result = 0;
     for (int i = 0; i < pieces.length; i = i + 2) {
       Calculator calculator = operators.get(pieces[i]);
-      if (calculator ==null) {
+      if (calculator == null) {
         throw new IllegalArgumentException();
       }
 

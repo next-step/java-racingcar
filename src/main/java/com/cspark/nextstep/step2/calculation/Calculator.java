@@ -4,7 +4,7 @@ import java.util.function.BiFunction;
 
 public abstract class Calculator {
 
-  private BiFunction<Integer, Integer, Integer> operator;
+  private final BiFunction<Integer, Integer, Integer> operator;
 
   public Calculator(BiFunction<Integer, Integer, Integer> operator) {
     this.operator = operator;

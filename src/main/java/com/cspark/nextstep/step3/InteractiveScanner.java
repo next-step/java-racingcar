@@ -1,19 +1,25 @@
 package com.cspark.nextstep.step3;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class InteractiveScanner {
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int numberOfCars = scanner.nextInt();
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        int numberOfRepeats = scanner.nextInt();
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
 
-        System.out.println(String.format("자동차 %d대, %d회 실행 결과", numberOfCars, numberOfRepeats));
-        MotorRace motorRace = new MotorRace(numberOfCars, numberOfRepeats);
-        motorRace.game();
-    }
+    InputView inputView = new InputView(scanner);
+    String[] driverNames = inputView.script1();
+    int numberOfRepeats = inputView.script2();
+
+    System.out.println(String.format("자동차 %d대, %d회 실행 결과", driverNames.length, numberOfRepeats));
+    MotorRace motorRace = new MotorRace(driverNames, numberOfRepeats);
+    List<Driver> drivers = motorRace.game();
+
+    OutputView outputView = new OutputView(numberOfRepeats, drivers);
+
+    outputView.displayLaps();
+    outputView.displayWinner(motorRace.podium());
+  }
 
 }
