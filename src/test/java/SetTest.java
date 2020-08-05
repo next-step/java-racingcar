@@ -46,9 +46,9 @@ public class SetTest {
 
     // Check the comment if I want to use a default delimiter.
     // The default delimiter is character ,
+    // Here is the example : @CsvSource(value = {"1,true","2,true","3,true","4,false","5,false"})
     @ParameterizedTest
     @CsvSource(value = {"1:true","2:true","3:true","4:false","5:false"}, delimiter = ':')
-    //@CsvSource(value = {"1,true","2,true","3,true","4,false","5,false"})
     @DisplayName("Case4: Using CsvSource annotation for check whether a specific value contains.")
     void request3(int value, boolean expected){
         assertThat(numbers.contains(value)).isEqualTo(expected);
