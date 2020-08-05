@@ -16,16 +16,16 @@ public class Calculator {
     }
 
     public int calculate(String[] inputArr) {
-        ArithmeticOperator operator = new ArithmeticOperator();
+       // ArithmeticOperator operator = new ArithmeticOperator();
         int result = 0;
         result = Integer.parseInt(inputArr[0]);
         for(int i=1;i<inputArr.length;i++) {
-            if(operator.isArithmeticiOperator(inputArr[i])) {
+            /*if(operator.isArithmeticiOperator(inputArr[i])) {
                 result = operator.calculateAAndB(result, Integer.parseInt(inputArr[i + 1]), inputArr[i]);
                 i++;
             } else {
                 throw new IllegalArgumentException();
-            }
+            }*/
         }
         return result;
     }

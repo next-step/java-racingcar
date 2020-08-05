@@ -1,58 +1,26 @@
 package unittest;
 
-public class ArithmeticOperator {
+import java.util.function.BiFunction;
 
-    String ADD_OPERATOR = "+";
-    String SUBSTRACT_OPERATOR = "-";
-    String MULTIPLY_OPERATOR = "*";
-    String DIVIDE_OPERATOR = "/";
+public enum ArithmeticOperator {
 
-    public int calculateAAndB(int a, int b, String operator) {
-        int result = 0;
+    ADD_OPERATOR("+", (a, b) -> a + b),
+    SUBSTRACT_OPERATOR("-", (a, b) -> a - b),
+    MULTIPLY_OPERATOR("*", ( a, b) -> a * b),
+    DIVIDE_OPERATOR("/", (a, b) -> a / b);
 
-        if(ADD_OPERATOR.equals(operator)) {
-            result = add(a, b);
-        }
-        if(SUBSTRACT_OPERATOR.equals(operator)) {
-            result = substract(a, b);
-        }
-        if(MULTIPLY_OPERATOR.equals(operator)) {
-            result = multiply(a, b);
-        }
-        if(DIVIDE_OPERATOR.equals(operator)) {
-            result = divide(a, b);
-        }
+    private String operator;
+    private BiFunction<Integer, Integer, Integer> expression;
 
-        return result;
+
+    ArithmeticOperator(String operater, BiFunction<Integer, Integer, Integer> expression) {
+        this.operator = operater;
+        this.expression = expression;
+    }
+
+    public int calculate(int a, int b) {
+        return expression.apply(a, b);
     }
 
 
-    public int add(int a, int b) {
-
-        return a + b;
-    }
-
-
-    public int substract(int a, int b) {
-        return a - b;
-    }
-
-
-    public int multiply(int a, int b) {
-        return a * b;
-    }
-
-
-    public int divide(int a, int b) {
-        return a / b;
-    }
-
-    public boolean isArithmeticiOperator(String operator) {
-        boolean result = false;
-        if(ADD_OPERATOR.equals(operator) || SUBSTRACT_OPERATOR.equals(operator)
-                || MULTIPLY_OPERATOR.equals(operator) || DIVIDE_OPERATOR.equals(operator)) {
-            result = true;
-        }
-        return result;
-    }
 }
