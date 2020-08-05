@@ -2,6 +2,9 @@ package com.hskim.nextstep.step02.utils;
 
 public class StringUtils {
 
+    private StringUtils() {
+
+    }
      /*
         https://www.baeldung.com/java-check-string-number
         Check if a string is numeric in java
