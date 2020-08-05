@@ -5,14 +5,14 @@ import racing.message.ViewMsg;
 import java.util.Scanner;
 
 public class InputView {
-    final int car;
-    final int repeat;
+    final int carCount;
+    final int repeatCount;
 
     public InputView() {
         System.out.println(ViewMsg.START_MSG_CAR.getMsg());
-        this.car = inputNumber();
+        this.carCount = inputNumber();
         System.out.println(ViewMsg.START_MSG_REPEAT.getMsg());
-        this.repeat = inputNumber();
+        this.repeatCount = inputNumber();
     }
 
     private int inputNumber() {
@@ -20,11 +20,11 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public int getCar() {
-        return car;
+    public int getCarCount() {
+        return carCount;
     }
 
-    public int getRepeat() {
-        return repeat;
+    public int getrepeatCount() {
+        return repeatCount;
     }
 }
