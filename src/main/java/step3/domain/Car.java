@@ -39,6 +39,18 @@ public class Car {
     }
 
     /**
+     * 생성자를 통해 초기화한다.
+     *
+     * @param name
+     */
+    public Car(String name, int position) {
+        if (name.length() > VALID_NAME_MAX_LENGTH) throw new RuntimeException("자동차의 이름은 5글자를 초과할 수 없습니다.");
+
+        this.name = name;
+        this.position = position;
+    }
+
+    /**
      * 0 ~ 9 의 값중에 임의의 값(출력)을 반환한다.
      *
      * @return
