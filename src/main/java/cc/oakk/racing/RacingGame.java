@@ -29,7 +29,7 @@ public class RacingGame {
         }
 
         if (carNames.size() <= 0) {
-            throw new IllegalArgumentException("totalCarCount should be greater than 0.");
+            throw new IllegalArgumentException("carNames's size should be greater than 0.");
         }
 
         if (totalRoundCount <= 0) {
