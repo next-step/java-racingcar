@@ -23,19 +23,6 @@ public enum MathOperator {
         this.expression = expression;
     }
 
-    /*public static MathOperator findByMathOperatorCode(String code) {
-        return Arrays.stream(MathOperator.values())
-                .filter(mathOperator -> mathOperator.getOperator().equals(code))
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("연산 기호를 찾을 수 없습니다."));
-    }
-
-    public static Boolean hasMathOperator(String code) {
-         return Arrays.stream(MathOperator.values())
-                 .filter(mathOperator -> mathOperator.getOperator().equals(code))
-                 .findFirst().isPresent();
-    }*/
-
     public static int operate(String operatorCode, int x, int y) {
         return Arrays
                 .stream(values())
