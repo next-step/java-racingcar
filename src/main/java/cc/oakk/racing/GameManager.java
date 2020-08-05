@@ -5,6 +5,7 @@ import cc.oakk.racing.predicate.RangePredicate;
 import cc.oakk.racing.converter.Converter;
 import cc.oakk.racing.converter.CarRandomIntConverter;
 import cc.oakk.racing.printer.CarPrinter;
+import cc.oakk.racing.printer.RankingPrinter;
 import cc.oakk.racing.printer.StringPrinter;
 import cc.oakk.racing.view.InputView;
 import cc.oakk.racing.view.InputViewImpl;
@@ -26,7 +27,8 @@ public class GameManager {
         this.inputView = new InputViewImpl();
 
         StringPrinter<Car> carPrinter = new CarPrinter();
-        this.resultView = new ResultViewImpl(carPrinter);
+        StringPrinter<Ranking> rankingPrinter = new RankingPrinter();
+        this.resultView = new ResultViewImpl(carPrinter, rankingPrinter);
 
         Predicate<Integer> predicate = new RangePredicate(MIN, MAX);
         Converter<Car, Integer> converter = new CarRandomIntConverter();
@@ -44,6 +46,7 @@ public class GameManager {
             round.nextRound();
             resultView.printCar(round);
         }
+        resultView.printRanking(round.getRanking());
     }
 
     private int readTotalNumberOfCarsUntilValid() {
