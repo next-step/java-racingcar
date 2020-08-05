@@ -17,7 +17,7 @@ public class Main {
         inputView.printPhraseToConsole("시도할 회수는 몇 회 인가요?");
         carSimulator.setGameRepeatNum(inputView.getIntegerFromConsoleInput());
 
-        inputView.printPhraseToConsole("실행 결과");
+        resultView.printPhraseToConsole("실행 결과");
         carSimulator.simulate(resultView);
     }
 }

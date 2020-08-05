@@ -6,6 +6,7 @@ import com.hskim.nextstep.step03.ui.ResultView;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -48,6 +49,8 @@ public class RacingCarSimulator {
 
             runGame(index, resultView);
         }
+
+        resultView.printPhraseToConsole(findWinners() + "가 최종 우승했습니다.");
     }
 
     private void runGame(int gameNo, ResultView resultView) {
@@ -55,6 +58,19 @@ public class RacingCarSimulator {
         resultView.printPhraseToConsole(" === GAME No." + gameNo + " ===");
         racingCarList.forEach(rc -> resultView.printPhraseToConsole(resultView.makeMoveProgressString(rc)));
         resultView.printPhraseToConsole("");
+    }
+
+    private String findWinners() {
+
+        int winnerTotalDistance = racingCarList.stream()
+                .map(RacingCar::getTotalMovedDistance)
+                .max(Integer::compareTo)
+                .orElseThrow(() -> new IllegalStateException(ExceptionMessage.FAIL_TO_FIND_WINNER.getExceptionMessage()));
+
+        return racingCarList.stream()
+                .filter(racingCar -> racingCar.getTotalMovedDistance() == winnerTotalDistance)
+                .map(RacingCar::getCarName)
+                .collect(Collectors.joining(", "));
     }
 
     //getter

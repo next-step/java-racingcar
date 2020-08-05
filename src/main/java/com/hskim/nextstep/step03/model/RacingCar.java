@@ -36,7 +36,7 @@ public class RacingCar {
     }
 
     // getter
-    public String  getCarName() {
+    public String getCarName() {
         return carName;
     }
 
