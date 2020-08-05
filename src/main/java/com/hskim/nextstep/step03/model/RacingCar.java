@@ -22,7 +22,7 @@ public class RacingCar {
 
     public int moveForward(int distance) {
 
-        if(checkMovable()) {
+        if (checkMovable()) {
             movedHistory.add(distance);
             return totalMovedDistance += distance;
         }
@@ -40,6 +40,8 @@ public class RacingCar {
         return carNo;
     }
 
-    public int getTotalMovedDistance() { return totalMovedDistance; }
+    public int getTotalMovedDistance() {
+        return totalMovedDistance;
+    }
 
 }

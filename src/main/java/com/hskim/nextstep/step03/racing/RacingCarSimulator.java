@@ -35,7 +35,7 @@ public class RacingCarSimulator {
 
     public void simulate(ResultView resultView) {
 
-        for(int index = 1 ; index <= gameRepeatNum ; index++){
+        for (int index = 1; index <= gameRepeatNum; index++) {
 
             runGame(index, resultView);
         }
@@ -43,7 +43,7 @@ public class RacingCarSimulator {
 
     private void runGame(int gameNo, ResultView resultView) {
 
-        resultView.printPhraseToConsole(" === GAME No."+gameNo+" ===");
+        resultView.printPhraseToConsole(" === GAME No." + gameNo + " ===");
         racingCarList.forEach(rc -> resultView.printPhraseToConsole(makeMoveProgressString(rc)));
         resultView.printPhraseToConsole("");
     }

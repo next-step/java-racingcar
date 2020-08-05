@@ -4,7 +4,7 @@ import com.hskim.nextstep.step02.utils.StringUtils;
 
 import java.util.Scanner;
 
-public class InputView extends View{
+public class InputView extends View {
 
     private Scanner scanner;
 
@@ -17,7 +17,7 @@ public class InputView extends View{
 
         String input = scanner.nextLine();
 
-        if(StringUtils.isNumeric(input)) {
+        if (StringUtils.isNumeric(input)) {
 
             return Integer.parseInt(input);
         }

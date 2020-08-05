@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
 
         RacingCarSimulator carSimulator = new RacingCarSimulator();
-        InputView inputView= new InputView();
+        InputView inputView = new InputView();
         ResultView resultView = new ResultView();
 
         inputView.printPhraseToConsole("자동차 대수는 몇 대 인가요?");

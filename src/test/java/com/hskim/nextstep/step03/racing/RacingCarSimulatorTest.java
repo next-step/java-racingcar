@@ -26,7 +26,7 @@ public class RacingCarSimulatorTest {
      */
     @DisplayName("setRacingCarList() & getRacingCarList() 메소드 검증")
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3,4,5})
+    @ValueSource(ints = {1, 2, 3, 4, 5})
     void racingCarListGetterSetterTest(int carNum) {
 
         racingCarSimulator.setRacingCarList(carNum);

@@ -10,6 +10,7 @@ import java.util.Random;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+
 /*
     com.hskim.nextstep.step03 - RandomUtils class 테스트
  */
@@ -28,12 +29,12 @@ public class RandomUtilsTest {
     @RepeatedTest(1000)
     void getRandomIntegerTest() {
 
-        assertThat(RandomUtils.getRandomInteger(ENOUGH_BIG_NUMBER)).isBetween(0, ENOUGH_BIG_NUMBER-1);
+        assertThat(RandomUtils.getRandomInteger(ENOUGH_BIG_NUMBER)).isBetween(0, ENOUGH_BIG_NUMBER - 1);
     }
 
     @DisplayName("Mockito를 이용한 Random - nextInt() 메소드 테스트")
     @ParameterizedTest
-    @ValueSource(ints = {3,5,7,15,29})
+    @ValueSource(ints = {3, 5, 7, 15, 29})
     void getRandomIntegerMockTest(int value) {
 
         // given

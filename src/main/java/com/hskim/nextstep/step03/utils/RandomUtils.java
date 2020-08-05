@@ -10,7 +10,7 @@ public class RandomUtils {
 
     }
 
-    public static int getRandomInteger(int bound){
+    public static int getRandomInteger(int bound) {
 
         return random.nextInt(bound);
     }
