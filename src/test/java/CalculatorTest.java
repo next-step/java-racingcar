@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EmptySource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
@@ -10,6 +13,8 @@ import java.util.LinkedList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
+@DisplayName("Test Set For Calculation class - " +
+        "Four operations and Null, Blank Exception")
 class CalculatorTest {
 
     Calculator calc = new Calculator();
@@ -59,6 +64,12 @@ class CalculatorTest {
                 .isThrownBy(() -> calc.calculate(value[0], value[1], value[2]));
     }
 
+    @ParameterizedTest
+    @NullSource
+    void usingCheckNullAndBlankMethod(String input) {
+        assertThat(calc.isNullOrBlank(input)).isTrue();
+    }
+
     // 기능을 모두 totalCalculate로 옮김. 그대로 둘 필요가 있을까?
     @Test
     void MultiOperationTest() {
@@ -84,7 +95,7 @@ class CalculatorTest {
     @ValueSource(strings = {"1 + 3 - 2"})
     @DisplayName("Several Calculation with Only one Method used")
     void MultiOperationCalculationWithOneMethod(String input) {
-        assertThat(calc.totalCalculate(input)).isEqualTo(2);
+        assertThat(calc.calculateWithFullString(input)).isEqualTo(2);
     }
 
     //조금 복잡한 경우?
@@ -92,25 +103,36 @@ class CalculatorTest {
     @ValueSource(strings = {"1 * 3 - 23 / 4 * 4"})
     @DisplayName("Several Calculation with Only one Method used_Complex")
     void MultiOperationCalculationWithOneMethod2(String input) {
-        assertThat(calc.totalCalculate(input)).isEqualTo(-20);
+        assertThat(calc.calculateWithFullString(input)).isEqualTo(-20);
+    }
+
+
+    // NULL, Empty value에 대해서 Exception 발생여부 체크
+    @ParameterizedTest
+    @NullAndEmptySource
+    void NullAndEmptyStringInputValueExceptionTest(String input) {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> calc.calculateWithFullString(input));
     }
 
     //Exception Check
     //Input 자체가 Null일 경우는?
+    //아래와 같이 수정
     @ParameterizedTest
-    @ValueSource(strings = {""})
+    @NullSource
     void NullStringInputValueExceptionTest(String input) {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> calc.totalCalculate(input));
+                .isThrownBy(() -> calc.calculateWithFullString(input));
     }
 
     //Exception Check
     //Input 자체가 공백일 경우는?
     //Parameter를 위와 아래가 비슷한 기능을 하는데, 합치는 방법은 없을까?
+    //EmptySource 사용
     @ParameterizedTest
-    @ValueSource(strings = {" "})
+    @EmptySource
     void SpaceStringInputValueExceptionTest(String input) {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> calc.totalCalculate(input));
+                .isThrownBy(() -> calc.calculateWithFullString(input));
     }
 }
