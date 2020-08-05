@@ -5,11 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -24,7 +19,6 @@ public class CarRacingTest {
         }
 
         assertThat(carRacing.isComplete()).isTrue();
-        assertThat(carRacing.getRacingInfo().getCarCount()).isEqualTo(3);
         assertThat(carRacing.getRacingCount()).isEqualTo(5);
     }
 
@@ -46,16 +40,6 @@ public class CarRacingTest {
     }
 
     @Test
-    @DisplayName("자동차 이름을 쉼표로 구분하여 부여한다.")
-    void should_success_when_commaSplitInput() {
-        String[] names = {"pobi","crong","honux"};
-        CarRacing racing = new CarRacing(String.join(",", names), 5);
-
-        assertThat(racing.getRacingInfo().getCarCount()).isEqualTo(3);
-        assertThat(racing.getRacingInfo().getCarNames()).isEqualTo(names);
-    }
-
-    @Test
     @DisplayName("경주 완료 후 정상적으로 우승자 한 명 이상 체크")
     void completeRace_normalInput_returnWinner() {
         // given
@@ -67,24 +51,8 @@ public class CarRacingTest {
         }
 
         // then
-        String[] winners = racing.getRacingInfo().getWinners();
-        System.out.println(Arrays.toString(winners));
+        String[] winners = racing.getWinners();
         assertThat(winners.length).isGreaterThanOrEqualTo(1);
-    }
-
-    @Test
-    @DisplayName("최대 이동 거리 로직 체크")
-    void getMaxMovedDistance() {
-        // given
-        String[] names = {"pobi","crong","honux"};
-        CarRacing racing = new CarRacing(String.join(",", names), 1);
-
-        // when
-        List<Integer> distances = new ArrayList<>();
-        racing.race((name, distance) -> distances.add(distance));
-
-        // then
-        assertThat(racing.getRacingInfo().getMaxMovedDistance()).isEqualTo(Collections.max(distances));
     }
 
     @Test
@@ -98,6 +66,6 @@ public class CarRacingTest {
         racing.race();
 
         // then
-        assertThatThrownBy(() -> racing.getRacingInfo().getWinners()).isInstanceOf(IllegalStateException.class);
+        assertThatThrownBy(racing::getWinners).isInstanceOf(IllegalStateException.class);
     }
 }

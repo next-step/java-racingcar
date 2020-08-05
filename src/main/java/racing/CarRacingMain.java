@@ -18,6 +18,6 @@ public class CarRacingMain {
             RacingResultView.printFooter();
         }
 
-        RacingResultView.printRaceWinners(carRacing.getRacingInfo().getWinners());
+        RacingResultView.printRaceWinners(carRacing.getWinners());
     }
 }
