@@ -25,7 +25,8 @@ class ExpressionTest {
 	@ValueSource(strings = {"1", "1+2", "1 // 2", "2 / 1 4", ""})
 	void newInstanceException(String value) {
 		assertThatIllegalArgumentException()
-				.isThrownBy(() -> new Expression(value));
+				.isThrownBy(() -> new Expression(value))
+				.withMessageContaining("비정상적인 문자열 수식입니다.");
 	}
 
 	@DisplayName("사칙연산을 진행할 값이 남아있는지 확인")
