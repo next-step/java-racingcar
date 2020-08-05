@@ -1,6 +1,4 @@
-package step3;
-
-import step3.domain.Car;
+package step3.domain;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +27,5 @@ public class RacingCar {
         }
         return car.brake();
     }
-
-
-
+    
 }

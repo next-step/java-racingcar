@@ -5,20 +5,16 @@ public class Car {
     private static String ACCELATE_SIGN = "-";
     private static String BRAKE_SIGN = "";
 
-
     private int carId;
     private String mileAge;
 
     public Car(int carId) {
         this.carId = carId;
+        this.mileAge = "";
     }
 
     public int getCarId() {
         return carId;
-    }
-
-    public void setCarId(int carId) {
-        this.carId = carId;
     }
 
     public String getMileAge() {
@@ -37,11 +33,4 @@ public class Car {
         return BRAKE_SIGN;
     }
 
-    @Override
-    public String toString() {
-        return "Car{" +
-                "carId=" + carId +
-                ", mileAge='" + mileAge + '\'' +
-                '}';
-    }
 }
