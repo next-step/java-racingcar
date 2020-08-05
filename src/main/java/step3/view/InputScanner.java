@@ -1,4 +1,6 @@
-package step3;
+package step3.view;
+
+import step3.lib.PrintMessage;
 
 import java.util.Scanner;
 

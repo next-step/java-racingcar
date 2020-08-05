@@ -1,4 +1,6 @@
-package step3;
+package step3.domain;
+
+import step3.lib.PrintMessage;
 
 import java.util.Random;
 import java.util.stream.IntStream;
