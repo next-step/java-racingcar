@@ -5,10 +5,16 @@ import cc.oakk.racing.printer.Printable;
 import cc.oakk.racing.printer.Printer;
 
 public class Car implements Printable<Car>, Comparable<Car> {
+    private static final String NO_NAME = "no-name";
+
     private final String name;
     private final CarForwardCondition<?> carForwardCondition;
 
     private int movedDistance;
+
+    public Car(CarForwardCondition<?> carForwardCondition) {
+        this(NO_NAME, carForwardCondition);
+    }
 
     public Car(String name, CarForwardCondition<?> carForwardCondition) {
         this.name = name;
