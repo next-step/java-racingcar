@@ -1,6 +1,6 @@
 package simpleracing.input;
 
-public class CarRacingInitValue {
+public class CarRacingInitValue implements InitValue {
 	private int carCount;
 	private int tryCount;
 
