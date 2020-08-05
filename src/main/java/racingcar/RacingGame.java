@@ -3,6 +3,7 @@ package racingcar;
 import racingcar.common.RandomGenerator;
 
 public class RacingGame {
+    private static final int INPUT_RANGE = 10;
     private final Car[] cars;
     private final int numberOfTrials;
 
@@ -24,7 +25,7 @@ public class RacingGame {
 
     private void moveCars() {
         for (Car car : this.cars) {
-            int fuel = RandomGenerator.generateRandomInt();
+            int fuel = RandomGenerator.generateRandomInt(INPUT_RANGE);
 
             car.move(fuel);
         }
