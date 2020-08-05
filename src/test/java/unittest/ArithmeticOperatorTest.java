@@ -5,10 +5,28 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class ArithmeticOperatorTest {
+
+    @DisplayName("오퍼레이터 찾기 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"+:true", "-:true", "*:true", "/:true"}, delimiter = ':')
+    public void getOperator(String inputOperator, boolean expected) {
+        assertThat(ArithmeticOperator.getOperator(inputOperator)).isNotNull();
+    }
+
+    @DisplayName("오퍼레이터 찾기 테스트 --> 오류 발생")
+    @ParameterizedTest
+    @ValueSource(strings = {"9", "^", "#"})
+    public void getOperatorByIllegalArgumen(String inputOperator) {
+        assertThatThrownBy(() ->
+                ArithmeticOperator.getOperator(inputOperator)
+        ).isInstanceOf(IllegalArgumentException.class);
+    }
 
     @DisplayName("더하기 테스트")
     @ParameterizedTest

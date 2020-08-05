@@ -1,5 +1,6 @@
 package unittest;
 
+import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public enum ArithmeticOperator {
@@ -9,8 +10,8 @@ public enum ArithmeticOperator {
     MULTIPLY_OPERATOR("*", ( a, b) -> a * b),
     DIVIDE_OPERATOR("/", (a, b) -> a / b);
 
-    private String operator;
-    private BiFunction<Integer, Integer, Integer> expression;
+    String operator;
+    BiFunction<Integer, Integer, Integer> expression;
 
 
     ArithmeticOperator(String operater, BiFunction<Integer, Integer, Integer> expression) {
@@ -20,6 +21,13 @@ public enum ArithmeticOperator {
 
     public int calculate(int a, int b) {
         return expression.apply(a, b);
+    }
+
+    public static ArithmeticOperator getOperator(String inputOperator) {
+        return Arrays.stream(ArithmeticOperator.values())
+                .filter(value -> value.operator.equals(inputOperator))
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException());
     }
 
 
