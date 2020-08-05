@@ -14,7 +14,8 @@ public class Car {
         this.movableStrategy = movableStrategy;
     }
 
-    public Car(int location, MovableStrategy movableStrategy) {
+    public Car(String player, int location, MovableStrategy movableStrategy) {
+        this.player = player;
         this.location = location;
         this.movableStrategy = movableStrategy;
     }
