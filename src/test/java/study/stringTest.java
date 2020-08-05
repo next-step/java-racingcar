@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.*;
 public class stringTest {
 
     @Test
+    @DisplayName("split 테스트")
     void spilt() {
         String str = "1,2";
         String strArr[] = str.split(",");
@@ -18,6 +19,7 @@ public class stringTest {
     }
 
     @Test
+    @DisplayName("subString 테스트")
     void subString() {
         String str = "(1,2)";
 
@@ -29,11 +31,9 @@ public class stringTest {
     void charAt() {
         String str = "abc";
 
-        //assertThatThrownBy()
         assertThatThrownBy(() -> str.charAt(3))
                 .isInstanceOf(StringIndexOutOfBoundsException.class);
 
-        //assertThatExceptionOfType()
         assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
                 .isThrownBy(() -> str.charAt(3));
 
