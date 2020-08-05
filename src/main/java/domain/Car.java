@@ -4,10 +4,12 @@ package domain;
 import strategy.MovableStrategy;
 
 public class Car {
+    private String player;
     private int location;
     private MovableStrategy movableStrategy;
 
-    public Car(MovableStrategy movableStrategy) {
+    public Car(String player, MovableStrategy movableStrategy) {
+        this.player = player;
         this.location = 0;
         this.movableStrategy = movableStrategy;
     }
@@ -21,6 +23,10 @@ public class Car {
         if (movableStrategy.move(randomNumber)) {
             location++;
         }
+    }
+
+    public String getPlayer() {
+        return player;
     }
 
     public int getLocation() {

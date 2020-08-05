@@ -5,15 +5,16 @@ import strategy.NumberGeneratorStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class Cars {
     private final List<Car> cars = new ArrayList();
     private final NumberGeneratorStrategy numberGeneratorStrategy;
 
-    public Cars(int numberOfCar, MovableStrategy movableStrategy, NumberGeneratorStrategy numberGeneratorStrategy) {
+    public Cars(Set<String> players, MovableStrategy movableStrategy, NumberGeneratorStrategy numberGeneratorStrategy) {
         this.numberGeneratorStrategy = numberGeneratorStrategy;
-        for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car(movableStrategy));
+        for (String player : players) {
+            cars.add(new Car(player, movableStrategy));
         }
     }
 

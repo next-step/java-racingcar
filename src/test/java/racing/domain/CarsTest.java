@@ -1,5 +1,6 @@
 package racing.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import strategy.AboveNumberMove;
 import domain.Car;
 import domain.Cars;
@@ -7,21 +8,33 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import strategy.RandomNumberGenerator;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
 
+    private Set<String> players = new HashSet<>();
+
+    @BeforeEach
+    void setUp() {
+        players.add("pobi");
+        players.add("crong");
+        players.add("honux");
+    }
+
     @DisplayName("레이싱 게임을 위한 자동차가 입력받은 개수만큼 생성되는지 확인한다")
     @Test
     void makeCars() {
-        Cars cars = new Cars(5, new AboveNumberMove(4), new RandomNumberGenerator());
+        Cars cars = new Cars(players, new AboveNumberMove(4), new RandomNumberGenerator());
 
-        assertThat(cars.getCars()).hasSize(5);
+        assertThat(cars.getCars()).hasSize(3);
     }
 
     @Test
     void race() {
-        Cars cars = new Cars(3, new AboveNumberMove(0), new RandomNumberGenerator());
+        Cars cars = new Cars(players, new AboveNumberMove(0), new RandomNumberGenerator());
 
         cars.race();
 
