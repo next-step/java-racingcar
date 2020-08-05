@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.domain.CarGroups;
+import racingcar.domain.Cars;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
@@ -13,10 +13,10 @@ public class RacingApplication {
         int carCount = InputView.inputCarCount();
         int round = InputView.inputRound();
 
-        CarGroups cars = new CarGroups(carCount);
+        Cars cars = new Cars(carCount);
         for (int i = 0; i < round; i++) {
-            cars.moveCars();
-            ResultView.markMove(cars.getCars());
+            cars.moveAll();
+            ResultView.markMove(cars.getCarList());
         }
     }
 }

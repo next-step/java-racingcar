@@ -6,36 +6,36 @@ import racingcar.util.RandomGenerator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarGroups {
+public class Cars {
     public static final int MIN_CAR_SIZE = 1;
-    private List<Car> cars;
+    private List<Car> carList;
 
-    public CarGroups(List<Car> cars) {
-        this.cars = cars;
+    public Cars(List<Car> cars) {
+        this.carList = cars;
     }
 
-    public CarGroups(int count) {
+    public Cars(int count) {
         readyCars(count);
     }
 
-    public List<Car> getCars() {
-        return this.cars;
+    public List<Car> getCarList() {
+        return this.carList;
     }
 
-    public int getCarsSize() {
-        return this.cars.size();
+    public int getSize() {
+        return this.carList.size();
     }
 
     public void readyCars(int count) {
         validate(count);
-        this.cars = new ArrayList<>();
+        this.carList = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            this.cars.add(new Car());
+            this.carList.add(new Car());
         }
     }
 
-    public void moveCars() {
-        for (Car car : this.cars) {
+    public void moveAll() {
+        for (Car car : this.carList) {
             car.move(RandomGenerator.getNumber());
         }
     }
