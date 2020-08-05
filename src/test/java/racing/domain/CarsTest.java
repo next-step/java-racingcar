@@ -40,4 +40,13 @@ public class CarsTest {
 
         assertThat(cars.getCars()).extracting(Car::getLocation).containsExactly(1, 1, 1);
     }
+
+    @Test
+    void getWinner() {
+        Cars cars = new Cars(players, new AboveNumberMove(0), new RandomNumberGenerator());
+
+        String winners = cars.getWinners();
+
+        assertThat(winners).contains(players);
+    }
 }

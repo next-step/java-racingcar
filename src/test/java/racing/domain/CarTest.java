@@ -23,7 +23,7 @@ public class CarTest {
     @ParameterizedTest
     @CsvSource({"0,0", "1,1", "2,2"})
     void newCar(int location, int expectedLocation) {
-        Car car = new Car(location, new AboveNumberMove(4));
+        Car car = new Car("joy", location, new AboveNumberMove(4));
 
         assertThat(car.getLocation()).isEqualTo(expectedLocation);
     }
