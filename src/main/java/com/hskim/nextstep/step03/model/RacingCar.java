@@ -7,7 +7,7 @@ import java.util.List;
 
 public class RacingCar {
 
-    private String carName;
+    private final String carName;
     private static final int RANDOM_BOUND = 10;
     private static final int MOVABLE_LOWER_BOUND = 4;
     private List<Integer> movedHistory;
