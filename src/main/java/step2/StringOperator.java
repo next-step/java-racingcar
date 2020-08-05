@@ -30,9 +30,9 @@ public enum StringOperator {
             .filter(stringOperator -> stringOperator.operator.equals(operator))
             .findFirst();
         return so.orElseThrow(() -> new IllegalArgumentException(
-            "Possible operators are [" + Arrays.stream(StringOperator.values()).
-                map(o -> o.operator).
-                collect(Collectors.toList()) + "]"));
+            "Possible operators are [" + Arrays.stream(StringOperator.values())
+                .map(o -> o.operator)
+                .collect(Collectors.toList()) + "]"));
     }
 
     public int calculate(int a, int b) {
