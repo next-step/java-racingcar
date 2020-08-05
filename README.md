@@ -49,3 +49,11 @@ output : 10
 - [x] 입력 값이 null이거나 빈 공백 문자일 경우 IllegalArgumentException throw
 - [x] 사칙 연산 기호가 아닌 경우 IllegalArgumentException throw
 - [x] 사칙 연산을 모두 포함하는 연산 테스트
+
+
+## 3단계
+
+### 기능 구현 목록
+
+- [x] randomNumber 가 4 이하면 이하의 자동차를 진행시지 않는다.
+- [ ] randomNumber 가 4 이상이면 자동차를 진행시킨다.
