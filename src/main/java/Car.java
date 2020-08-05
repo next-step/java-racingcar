@@ -2,10 +2,12 @@ import java.util.stream.IntStream;
 
 public class Car {
     private final DiceRoller diceRoller;
-    int length;
+    private final String name;
+    private int length;
 
-    public Car(DiceRoller diceRoller) {
+    public Car(DiceRoller diceRoller, String name) {
         this.diceRoller = diceRoller;
+        this.name = name;
         this.length = 1;
     }
 
@@ -19,7 +21,12 @@ public class Car {
         return length;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void printLength() {
+        System.out.print(name + " : ");
         IntStream.range(0, length).forEach(e -> System.out.print("-"));
     }
 }
