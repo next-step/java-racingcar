@@ -10,10 +10,17 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 class ExpressionProcessorTest {
 
+    @Test
+    @DisplayName("공백을 기준으로 수식 분리 테스트")
+    void splitExpression() {
+        assertThat(ExpressionProcessor.splitExpression("2 + 3 / 4 * 5"))
+                .containsExactly("2", "+", "3", "/", "4", "*", "5");
+    }
+
     @ParameterizedTest
     @NullAndEmptySource
     @DisplayName("입력 값이 null이거나 빈 공백 문자일 경우")
-    void splitExpression(String expression) {
+    void splitExpressionWithIllegalArumentException(String expression) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             String[] arguments = ExpressionProcessor.splitExpression(expression);
         });
