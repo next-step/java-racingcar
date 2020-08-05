@@ -1,10 +1,7 @@
 package racingcar.ui;
 
-import racingcar.Car;
+import racingcar.domain.Car;
 import resource.StringResources;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class ResultView {
 

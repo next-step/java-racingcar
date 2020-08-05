@@ -1,6 +1,6 @@
 package racingcar.ui;
 
-import racingcar.RacingData;
+import racingcar.domain.RacingData;
 import resource.StringResources;
 
 public abstract class RacingDataInput {

@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import racingcar.ui.RacingDataInput;
 import racingcar.ui.ResultView;
@@ -12,14 +12,14 @@ public class RacingGame {
 
     private final List<Car> racingCars = new ArrayList<>();
     private final RacingData racingData;
-    private final Fuel fuel;
+    private final Engine movable;
 
-    public RacingGame(RacingDataInput racingDataInput, Fuel fuel) {
+    public RacingGame(RacingDataInput racingDataInput, Engine movable) {
 
         racingData = racingDataInput.getRacingData();
         String[] names = racingData.getNames().split(",");
 
-        this.fuel = fuel;
+        this.movable = movable;
 
         for (int i = 0; i < racingData.getNumberOfCars(); i++) {
             racingCars.add(new Car(names[i]));
@@ -32,7 +32,7 @@ public class RacingGame {
         ResultView.printStart();
 
         for (int i = 0; i < racingData.getTryCount(); i++) {
-            moveCar(fuel);
+            moveCar(movable);
             printCurrentStatus();
 
             ResultView.lineFeed();
@@ -56,9 +56,9 @@ public class RacingGame {
                 .collect(Collectors.joining(", "));
     }
 
-    private void moveCar(Fuel fuel) {
+    private void moveCar(Engine movable) {
         for (int i = 0; i < racingData.getNumberOfCars(); i++) {
-            racingCars.get(i).moveAndStop(fuel);
+            racingCars.get(i).moveAndStop(movable);
         }
     }
 

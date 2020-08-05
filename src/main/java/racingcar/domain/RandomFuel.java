@@ -1,15 +1,13 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Random;
-import java.util.function.IntSupplier;
 
-public class RandomFuel implements Fuel {
+public class RandomFuel {
 
     private static final Random random = new Random();
     private static final int RANDOM_RANGE = 10;
 
-    @Override
-    public int getAsInt() {
+    public static int nextInt() {
         return random.nextInt(RANDOM_RANGE);
     }
 }
