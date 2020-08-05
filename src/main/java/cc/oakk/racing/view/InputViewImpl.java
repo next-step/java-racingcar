@@ -3,7 +3,7 @@ package cc.oakk.racing.view;
 import cc.oakk.racing.printer.Printer;
 import cc.oakk.racing.printer.StandardPrinter;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class InputViewImpl implements InputView {
     private final Printer<String> stringPrinter;
@@ -23,6 +23,17 @@ public class InputViewImpl implements InputView {
     public int readTotalNumberOfCars() {
         stringPrinter.print("자동차 대수는 몇 대 인가요?\n");
         return scanner.nextInt();
+    }
+
+    @Override
+    public List<String> readNameOfCars() {
+        stringPrinter.print("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).\n");
+        String input =  scanner.next();
+        String[] names = input.split(",");
+        if (names.length == 0) {
+            throw new RuntimeException("Invalid string.");
+        }
+        return Arrays.asList(names);
     }
 
     @Override

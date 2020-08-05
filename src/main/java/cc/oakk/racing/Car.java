@@ -5,10 +5,13 @@ import cc.oakk.racing.printer.Printable;
 import cc.oakk.racing.printer.Printer;
 
 public class Car implements Printable<Car> {
-    private int movedDistance;
+    private final String name;
     private final CarForwardCondition<?> carForwardCondition;
 
-    public Car(CarForwardCondition<?> carForwardCondition) {
+    private int movedDistance;
+
+    public Car(String name, CarForwardCondition<?> carForwardCondition) {
+        this.name = name;
         this.carForwardCondition = carForwardCondition;
     }
 
@@ -20,6 +23,10 @@ public class Car implements Printable<Car> {
 
     private void moveForward() {
         movedDistance++;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getMovedDistance() {

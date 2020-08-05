@@ -11,6 +11,7 @@ import cc.oakk.racing.view.InputViewImpl;
 import cc.oakk.racing.view.ResultView;
 import cc.oakk.racing.view.ResultViewImpl;
 
+import java.util.List;
 import java.util.function.Predicate;
 
 public class GameManager {
@@ -34,11 +35,11 @@ public class GameManager {
     }
 
     public void start() {
-        int totalCarCount = readTotalNumberOfCarsUntilValid();
+        List<String> carNames = inputView.readNameOfCars();
         int totalRoundCount = readTotalRoundCountUntilValid();
 
         resultView.printResultHeader();
-        RacingRound round = racingGame.createRound(totalCarCount, totalRoundCount);
+        RacingRound round = racingGame.createRound(carNames, totalRoundCount);
         while(round.hasNextRound()) {
             round.nextRound();
             resultView.printCar(round);
