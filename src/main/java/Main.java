@@ -6,7 +6,7 @@ public class Main {
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
 
-        UserArguments userArgs = inputView.createUserArgument();
+        GameInputs userArgs = inputView.createUserArgument();
         RacingGame racingGame = RacingGame.createGame(userArgs);
 
         GameResults results = racingGame.start();

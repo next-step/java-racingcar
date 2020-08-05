@@ -5,18 +5,11 @@ import java.util.List;
 
 public class Car {
     private static final int THRESHOLD = 4;
+    private static final int START_POINT = 1;
     private int position;
 
     private Car() {
-        this.position = 1;
-    }
-
-    private Car(Car car) {
-        this.position = car.getPosition();
-    }
-
-    public int getPosition() {
-        return this.position;
+        this.position = START_POINT;
     }
 
     public void move(int fuel) {
@@ -25,12 +18,8 @@ public class Car {
         }
     }
 
-    public static Car createCar() {
+    private static Car createCar() {
         return new Car();
-    }
-
-    public static Car cloneCar(Car car) {
-        return new Car(car);
     }
 
     public static Car[] createAllCars(int numberOfCars) {
@@ -43,18 +32,13 @@ public class Car {
         return cars;
     }
 
-    /**
-     * Deep copy for Cars
-     * @param cars
-     * @return list of cloned Cars
-     */
-    public static List<Car> cloneAllCars(Car[] cars) {
-        List<Car> cloneCars = new ArrayList<>();
+    public static List<Integer> getPositions(Car[] cars) {
+        List<Integer> positions = new ArrayList<>();
 
         for (Car car : cars) {
-            cloneCars.add(cloneCar(car));
+            positions.add(car.position);
         }
 
-        return cloneCars;
+        return positions;
     }
 }

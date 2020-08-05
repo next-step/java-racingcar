@@ -8,14 +8,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
     private int numberOfCars;
-    private int numberfOfTrials;
+    private int numberOfTrials;
     private RacingGame racingGame;
 
     @BeforeEach
     void setUp() {
         numberOfCars = 3;
-        numberfOfTrials = 5;
-        UserArguments args = UserArguments.createUserArgs(numberOfCars, numberfOfTrials);
+        numberOfTrials = 5;
+        GameInputs args = GameInputs.createUserArgs(numberOfCars, numberOfTrials);
 
         racingGame = RacingGame.createGame(args);
     }
@@ -25,7 +25,7 @@ class RacingGameTest {
     void racingGameTest() {
         GameResults results = racingGame.start();
 
-        assertThat(results.getSteps()).hasSize(numberfOfTrials);
+        assertThat(results.getSteps()).hasSize(numberOfTrials);
         assertThat(results.getSteps().get(0)).hasSize(numberOfCars);
     }
 }

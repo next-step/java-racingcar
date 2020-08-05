@@ -1,11 +1,12 @@
 package racingcar;
 
+import racingcar.common.Messages;
+
 import java.io.PrintWriter;
 import java.util.List;
 
 
 public class ResultView {
-    private static final String MESSAGE = "실행 결과";
     private final PrintWriter writer;
 
     public ResultView() {
@@ -13,28 +14,26 @@ public class ResultView {
     }
 
     public void printGameResult(GameResults results) {
-        List<List<Car>> steps = results.getSteps();
+        List<List<Integer>> steps = results.getSteps();
 
-        writer.println(MESSAGE);
+        writer.println(Messages.RESULT_START_MESSAGE.valueOf());
 
-        for (List<Car> step : steps) {
-            printAllCars(step);
+        for (List<Integer> step : steps) {
+            printAllSteps(step);
         }
     }
 
-    private void printAllCars(List<Car> cars) {
-        for (Car car : cars) {
-            this.printCar(car);
+    private void printAllSteps(List<Integer> positions) {
+        for (Integer pos : positions) {
+            this.printCar(pos);
         }
-        writer.println("");
+        writer.println(Messages.RESULT_EMPTY_STRING.valueOf());
     }
 
-    private void printCar(Car car) {
-        int position = car. getPosition();
-
+    private void printCar(Integer position) {
         for (int i = 0; i < position; ++ i) {
-            writer.print('-');
+            writer.print(Messages.RESULT_CAR_SHAPE.valueOf());
         }
-        writer.println("");
+        writer.println(Messages.RESULT_EMPTY_STRING.valueOf());
     }
 }

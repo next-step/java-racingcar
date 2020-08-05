@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.common.Messages;
+
 import java.util.Scanner;
 
 public class InputView {
@@ -9,13 +11,13 @@ public class InputView {
         this.scanner = new Scanner(System.in);
     }
 
-    public UserArguments createUserArgument() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
+    public GameInputs createUserArgument() {
+        System.out.println(Messages.INPUT_FOR_NUMBER_OF_CAR.valueOf());
         int numberOfCars = this.scanner.nextInt();
 
-        System.out.println("시도할 회수는 몇 회 인가요?");
+        System.out.println(Messages.INPUT_FOR_NUMBER_OF_TRIALS.valueOf());
         int numberOfTrials = this.scanner.nextInt();
 
-        return UserArguments.createUserArgs(numberOfCars, numberOfTrials);
+        return GameInputs.createUserArgs(numberOfCars, numberOfTrials);
     }
 }
