@@ -11,6 +11,7 @@ repositories {
 dependencies {
     testCompile('org.junit.jupiter:junit-jupiter:5.4.2')
     testCompile('org.assertj:assertj-core:3.11.1')
+    testImplementation group: 'org.mockito', name: 'mockito-all', version: '1.9.5'
 }
 
 test {

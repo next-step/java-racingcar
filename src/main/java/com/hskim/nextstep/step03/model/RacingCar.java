@@ -7,22 +7,22 @@ import java.util.List;
 
 public class RacingCar {
 
-    private int carNo;
+    private final String carName;
     private static final int RANDOM_BOUND = 10;
     private static final int MOVABLE_LOWER_BOUND = 4;
     private List<Integer> movedHistory;
     private int totalMovedDistance;
 
-    public RacingCar(int carNo) {
+    public RacingCar(String carName) {
 
-        this.carNo = carNo;
+        this.carName = carName;
         movedHistory = new LinkedList<>();
         totalMovedDistance = 0;
     }
 
     public int moveForward(int distance) {
 
-        if(checkMovable()) {
+        if (checkMovable()) {
             movedHistory.add(distance);
             return totalMovedDistance += distance;
         }
@@ -36,10 +36,12 @@ public class RacingCar {
     }
 
     // getter
-    public int getCarNo() {
-        return carNo;
+    public String getCarName() {
+        return carName;
     }
 
-    public int getTotalMovedDistance() { return totalMovedDistance; }
+    public int getTotalMovedDistance() {
+        return totalMovedDistance;
+    }
 
 }

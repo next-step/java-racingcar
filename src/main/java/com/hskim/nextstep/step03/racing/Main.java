@@ -8,16 +8,16 @@ public class Main {
     public static void main(String[] args) {
 
         RacingCarSimulator carSimulator = new RacingCarSimulator();
-        InputView inputView= new InputView();
+        InputView inputView = new InputView();
         ResultView resultView = new ResultView();
 
-        inputView.printPhraseToConsole("자동차 대수는 몇 대 인가요?");
-        carSimulator.setRacingCarList(inputView.getIntegerFromConsoleInput());
+        inputView.printPhraseToConsole("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        carSimulator.setRacingCarList(inputView.getStringFromConsoleInput());
 
         inputView.printPhraseToConsole("시도할 회수는 몇 회 인가요?");
         carSimulator.setGameRepeatNum(inputView.getIntegerFromConsoleInput());
 
-        inputView.printPhraseToConsole("실행 결과");
+        resultView.printPhraseToConsole("실행 결과");
         carSimulator.simulate(resultView);
     }
 }
