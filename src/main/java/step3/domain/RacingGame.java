@@ -1,6 +1,5 @@
 package step3.domain;
 
-import step3.domain.Car;
 import step3.lib.PrintMessage;
 
 import java.util.List;
