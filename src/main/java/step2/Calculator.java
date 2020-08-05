@@ -9,37 +9,34 @@ public class Calculator {
     public int stringCalculatingProcessor(String rawInput) {
         String[] inputArithmeticInventory = rawInput.split(" ");
         String operand = "+";
-        int sum = 0;
+        int total = 0;
         //TODO: 입력을 어떻게 stream으로 해결 할 수 있을까
         for (int i = 0; i < inputArithmeticInventory.length; i++) {
             String currentArithmeticInput = inputArithmeticInventory[i];
+            int calculatedTotal = total;
+            String finalOperand = operand;
 
-            if (Exceptions.isStringEmpty(currentArithmeticInput)) {
+            if (UserInputValidation.isStringEmpty(currentArithmeticInput)) {
                 break;
             }
-            if (Exceptions.isArithmeticExpression(currentArithmeticInput)) {
+
+            if (Arrays.stream(CalculatingProcess.values())
+                    .anyMatch(el -> el.getOperand().equals(currentArithmeticInput))) {
                 operand = currentArithmeticInput;
                 continue;
             }
+
             if (i == 0) {
-                sum = Integer.parseInt(currentArithmeticInput);
+                total = Integer.parseInt(currentArithmeticInput);
                 continue;
             }
-            sum = processCalculating(operand, new int[]{sum, Integer.parseInt(currentArithmeticInput)});
+
+            total = Arrays.stream(CalculatingProcess.values())
+                    .filter(el -> el.getOperand().equals(finalOperand))
+                    .map(calculator -> calculator.getCalculation(calculatedTotal, Integer.parseInt(currentArithmeticInput)))
+                    .findFirst().get();
         }
 
-        return sum;
-    }
-
-    private Integer processCalculating(String operator, int[] parameters) {
-        int parameter1 = parameters[0];
-        int parameter2 = parameters[1];
-
-        Stream<CalculatingProcess> calculatingStream = Arrays.stream(CalculatingProcess.values());
-
-        return calculatingStream
-                .filter(el -> el.getOperand().equals(operator))
-                .map(calculator -> calculator.getCalculation(parameter1, parameter2))
-                .findFirst().get(); //TODO:어떻게 하면 더 좋게 처리 할 수 있을까.
+        return total;
     }
 }
