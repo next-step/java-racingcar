@@ -45,7 +45,7 @@ public class RequirementTest {
                                      finalChampion == car.getLocation())
                          .map(CarSketch::getName)
                          .collect(Collectors.joining(","));
-        System.out.print("win is : " + msg);
+        System.out.println("win is : " + msg);
     }
 
     class CarSketch {
