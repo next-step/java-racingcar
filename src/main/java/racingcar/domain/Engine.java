@@ -10,7 +10,7 @@ public class Engine {
     private final Fuel fuel;
 
     public Engine() {
-        this(RandomPower::nextInt);
+        this(() -> RandomPower.getInstance().nextInt());
     }
 
     public Engine(Fuel fuel) {
