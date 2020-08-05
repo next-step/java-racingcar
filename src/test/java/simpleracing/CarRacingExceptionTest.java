@@ -9,17 +9,17 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import simpleracing.input.InputView;
+import simpleracing.input.CarRacingInput;
 
 @DisplayName("자동차 경주 예외 테스트")
 public class CarRacingExceptionTest {
 
-	private InputView inputView;
+	private CarRacingInput carRacingInput;
 	private ByteArrayInputStream testIn;
 
 	@BeforeEach
 	public void before() {
-		this.inputView = new InputView();
+		this.carRacingInput = new CarRacingInput();
 	}
 
 	private void provideInput(String data) {
@@ -33,7 +33,7 @@ public class CarRacingExceptionTest {
 	public void carCountEmptyExceptionTest(String carCount) {
 		provideInput(carCount);
 
-		assertThatIllegalArgumentException().isThrownBy(() -> inputView.input())
+		assertThatIllegalArgumentException().isThrownBy(() -> carRacingInput.input())
 											.withMessage("질문에 대한 내용을 입력해주세요.");
 	}
 
@@ -43,7 +43,7 @@ public class CarRacingExceptionTest {
 	public void generatedCarCountExceptionTest(String carCount) {
 		provideInput(carCount);
 
-		assertThatIllegalArgumentException().isThrownBy(() -> inputView.input())
+		assertThatIllegalArgumentException().isThrownBy(() -> carRacingInput.input())
 											.withMessage("자동차 대수는 0대 이하일 수 없습니다.");
 	}
 
@@ -53,7 +53,7 @@ public class CarRacingExceptionTest {
 	public void carCountCharExceptionTest(String carCount) {
 		provideInput(carCount);
 
-		assertThatIllegalArgumentException().isThrownBy(() -> inputView.input())
+		assertThatIllegalArgumentException().isThrownBy(() -> carRacingInput.input())
 											.withMessage("숫자로 입력해주세요.");
 	}
 
@@ -63,7 +63,7 @@ public class CarRacingExceptionTest {
 	public void gameCountEmptyExceptionTest(String input) {
 		provideInput(input);
 
-		assertThatIllegalArgumentException().isThrownBy(() -> inputView.input())
+		assertThatIllegalArgumentException().isThrownBy(() -> carRacingInput.input())
 											.withMessage("질문에 대한 내용을 입력해주세요.");
 	}
 
@@ -73,7 +73,7 @@ public class CarRacingExceptionTest {
 	public void generatedGameCountExceptionTest(String input) {
 		provideInput(input);
 
-		assertThatIllegalArgumentException().isThrownBy(() -> inputView.input())
+		assertThatIllegalArgumentException().isThrownBy(() -> carRacingInput.input())
 											.withMessage("시도할 회수는 0회 이하일 수 없습니다.");
 	}
 
@@ -83,7 +83,7 @@ public class CarRacingExceptionTest {
 	public void gameCountCharExceptionTest(String carCount) {
 		provideInput(carCount);
 
-		assertThatIllegalArgumentException().isThrownBy(() -> inputView.input())
+		assertThatIllegalArgumentException().isThrownBy(() -> carRacingInput.input())
 											.withMessage("숫자로 입력해주세요.");
 	}
 }
