@@ -9,7 +9,7 @@ public enum Operation {
     SUBTRACTION("-", BigDecimal::subtract),
     MULTIPLICATION("*", BigDecimal::multiply),
     DIVISION("/", (x, y) -> {
-        if (BigDecimal.ZERO.equals(y)) {
+        if (BigDecimal.ZERO.compareTo(y) == 0) {
             throw new ArithmeticException(ExceptionMessage.DIVISION_BY_ZERO);
         }
         return x.divideToIntegralValue(y);
