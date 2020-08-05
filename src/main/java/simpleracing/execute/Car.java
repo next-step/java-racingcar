@@ -2,6 +2,7 @@ package simpleracing.execute;
 
 import static java.util.stream.Collectors.toList;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -13,10 +14,16 @@ import lombok.EqualsAndHashCode;
 public class Car {
 	private int id;
 	private List<Integer> randomValues;
+	private CarGame carRacingGame;
 
-	public Car(int id, List<Integer> randomValues) {
+	public Car(int id, CarGame carRacingGame) {
 		this.id = id;
-		this.randomValues = randomValues;
+		this.carRacingGame = carRacingGame;
+		this.randomValues = new ArrayList<>();
+	}
+
+	public void play() {
+		carRacingGame.play(this);
 	}
 
 	public List<Direction> getDirections() {
@@ -25,9 +32,23 @@ public class Car {
 						   .collect(toList());
 	}
 
-	public int getTryCount() {
-		return this.randomValues.size();
+	public void addGameResult(int result) {
+		this.randomValues.add(result);
 	}
+
+	public String getLocationOf(int round) {
+		String currentValue = "";
+		for (int i = 0; i < round; i++) {
+			String current = Direction.getBy(randomValues.get(i)).getSign();
+			currentValue += current;
+		}
+		return currentValue;
+	}
+
+	public String getLocation() {
+		return getLocationOf(randomValues.size());
+	}
+
 
 	@Override
 	public String toString() {
