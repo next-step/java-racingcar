@@ -4,7 +4,7 @@ import cc.oakk.racing.predicate.CarForwardCondition;
 import cc.oakk.racing.printer.Printable;
 import cc.oakk.racing.printer.Printer;
 
-public class Car implements Printable<Car> {
+public class Car implements Printable<Car>, Comparable<Car> {
     private final String name;
     private final CarForwardCondition<?> carForwardCondition;
 
@@ -36,5 +36,15 @@ public class Car implements Printable<Car> {
     @Override
     public void print(Printer<Car> printer) {
         printer.print(this);
+    }
+
+    @Override
+    public int compareTo(Car target) {
+        int targetDistance = target.getMovedDistance();
+
+        if (movedDistance == targetDistance) {
+            return 0;
+        }
+        return movedDistance > targetDistance ? 1 : -1;
     }
 }
