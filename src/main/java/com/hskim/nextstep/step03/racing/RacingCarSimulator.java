@@ -1,6 +1,5 @@
 package com.hskim.nextstep.step03.racing;
 
-import com.hskim.nextstep.step02.utils.StringUtils;
 import com.hskim.nextstep.step03.model.RacingCar;
 import com.hskim.nextstep.step03.ui.ResultView;
 
@@ -44,17 +43,8 @@ public class RacingCarSimulator {
     private void runGame(int gameNo, ResultView resultView) {
 
         resultView.printPhraseToConsole(" === GAME No." + gameNo + " ===");
-        racingCarList.forEach(rc -> resultView.printPhraseToConsole(makeMoveProgressString(rc)));
+        racingCarList.forEach(rc -> resultView.printPhraseToConsole(resultView.makeMoveProgressString(rc)));
         resultView.printPhraseToConsole("");
-    }
-
-    private String makeMoveProgressString(RacingCar racingCar) {
-
-        return new StringBuilder()
-                .append(racingCar.getCarNo())
-                .append(". ")
-                .append(StringUtils.repeat("-", racingCar.moveForward(1)))
-                .toString();
     }
 
     //getter
