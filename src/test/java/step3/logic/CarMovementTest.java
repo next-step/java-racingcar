@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package step3.logic;
 
 import org.junit.jupiter.api.DisplayName;
@@ -12,4 +13,10 @@ class CarMovementTest {
     void isCarGoingForward() {
         assertThat(CarMovement.isCarGoingForward()).isFalse();
     }
+=======
+import static org.junit.jupiter.api.Assertions.*;
+
+class CarMovementTest {
+
+>>>>>>> 4d321b2... feat 랜덤값 및 정지 전진 로직 구현
 }
