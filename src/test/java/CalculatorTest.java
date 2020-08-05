@@ -25,72 +25,13 @@ class CalculatorTest {
         assertThat(value).contains("+");
     }
 
-    @Test
-    void addOperationTest() {
-        String[] value = "1 + 2".split(" ");
-        assertThat(calc.add(value[0], value[2])).isEqualTo(3);
-    }
-
-    @Test
-    void subOperationTest() {
-        String[] value = "1 - 2".split(" ");
-        assertThat(calc.sub(value[0], value[2])).isEqualTo(-1);
-    }
-
-    @Test
-    void multiplicationOperationTest() {
-        String[] value = "5 * 7".split(" ");
-        assertThat(calc.multiply(value[0], value[2])).isEqualTo(35);
-    }
-
-    @Test
-    void divideOperationTest() {
-        String[] value = "32 / 8".split(" ");
-        assertThat(calc.divide(value[0], value[2])).isEqualTo(4);
-    }
-
-    @Test
-    @DisplayName("Check calculation result")
-    void usingCalculateMethod() {
-        String[] value = "15 * 4".split(" ");
-        assertThat(calc.calculate(value[0], value[1], value[2])).isEqualTo(60);
-    }
-
-    @Test
-    @DisplayName("Check Exception - Not Defined Operator")
-    void usingCalculateMethod_operationException() {
-        String[] value = "15 [ 30".split(" ");
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> calc.calculate(value[0], value[1], value[2]));
-    }
-
+    /* 기본 연산에 대한 Test는 OperationTest로 분리 */
     @ParameterizedTest
     @NullSource
     void usingCheckNullAndBlankMethod(String input) {
         assertThat(calc.isNullOrBlank(input)).isTrue();
     }
 
-    // 기능을 모두 totalCalculate로 옮김. 그대로 둘 필요가 있을까?
-    @Test
-    void MultiOperationTest() {
-        String[] input = "1 + 2 + 3".split(" ");
-        Deque<String> value = new LinkedList<>(Arrays.asList(input));
-        int result = 0;
-
-        // Refactoring 어떻게?
-        while (value.size() != 1) {
-            String[] temp = {"", "", ""};
-            temp[0] = value.pop();
-            temp[1] = value.pop();
-            temp[2] = value.pop();
-            result = calc.calculate(temp[0], temp[1], temp[2]);
-            value.addFirst(String.valueOf(result));
-        }
-        assertThat(result).isEqualTo(6);
-    }
-
-    // 상위 코드에 구현한 로직을 Calculator의 Method, totalCalculate로 구현완료.
-    // 이 경우 상위 테스트는 그대로 두는게 맞을지?
     @ParameterizedTest
     @ValueSource(strings = {"1 + 3 - 2"})
     @DisplayName("Several Calculation with Only one Method used")
@@ -108,6 +49,7 @@ class CalculatorTest {
 
 
     // NULL, Empty value에 대해서 Exception 발생여부 체크
+    // Calculator의 Exception Test
     @ParameterizedTest
     @NullAndEmptySource
     void NullAndEmptyStringInputValueExceptionTest(String input) {
@@ -116,8 +58,7 @@ class CalculatorTest {
     }
 
     //Exception Check
-    //Input 자체가 Null일 경우는?
-    //아래와 같이 수정
+    // 입력 단계에서 Exception 테스트 체크
     @ParameterizedTest
     @NullSource
     void NullStringInputValueExceptionTest(String input) {
@@ -126,9 +67,8 @@ class CalculatorTest {
     }
 
     //Exception Check
-    //Input 자체가 공백일 경우는?
-    //Parameter를 위와 아래가 비슷한 기능을 하는데, 합치는 방법은 없을까?
     //EmptySource 사용
+    //
     @ParameterizedTest
     @EmptySource
     void SpaceStringInputValueExceptionTest(String input) {
