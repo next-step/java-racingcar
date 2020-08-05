@@ -2,53 +2,25 @@ package calculator;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.function.BiFunction;
 
 public enum Operation {
-    ADDITION("+") {
-        @Override
-        double calculate(double x, double y) {
-            BigDecimal x1 = new BigDecimal(x);
-            BigDecimal y1 = new BigDecimal(y);
-
-            return x1.add(y1).doubleValue();
+    ADDITION("+", (x, y) -> x.add(y).doubleValue()),
+    SUBTRACTION("-", (x, y) -> x.subtract(y).doubleValue()),
+    MULTIPLICATION("*", (x, y) -> x.multiply(y).doubleValue()),
+    DIVISION("/", (x, y) -> {
+        if (BigDecimal.ZERO.equals(y)) {
+            throw new ArithmeticException(ExceptionMessage.DIVISION_BY_ZERO);
         }
-    },
-    SUBTRACTION("-") {
-        @Override
-        double calculate(double x, double y) {
-            BigDecimal x1 = new BigDecimal(x);
-            BigDecimal y1 = new BigDecimal(y);
-
-            return x1.subtract(y1).doubleValue();
-        }
-    },
-    MULTIPLICATION("*") {
-        @Override
-        double calculate(double x, double y) {
-            BigDecimal x1 = new BigDecimal(x);
-            BigDecimal y1 = new BigDecimal(y);
-
-            return x1.multiply(y1).doubleValue();
-        }
-    },
-    DIVISION("/") {
-        @Override
-        double calculate(double x, double y) {
-            if (y == 0) {
-                throw new ArithmeticException(ExceptionMessage.DIVISION_BY_ZERO);
-            }
-
-            BigDecimal x1 = new BigDecimal(x);
-            BigDecimal y1 = new BigDecimal(y);
-
-            return x1.divideToIntegralValue(y1).doubleValue();
-        }
-    };
+        return x.divideToIntegralValue(y).doubleValue();
+    });
 
     private final String symbol;
+    private final BiFunction<BigDecimal, BigDecimal, Double> calculate;
 
-    Operation(String symbol) {
+    Operation(String symbol, BiFunction<BigDecimal, BigDecimal, Double> calculate) {
         this.symbol = symbol;
+        this.calculate = calculate;
     }
 
     public static Operation of(String symbol) {
@@ -62,6 +34,8 @@ public enum Operation {
         return symbol;
     }
 
-    abstract double calculate(double x, double y);
+    public double calculate(double x, double y) {
+        return this.calculate.apply(BigDecimal.valueOf(x), BigDecimal.valueOf(y));
+    }
 
 }
