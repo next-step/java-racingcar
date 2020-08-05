@@ -19,7 +19,7 @@ class CarTest {
     @CsvSource(value = {"yongdae", "tester"})
     void constructorWithThrowRuntimeException(String name) {
         assertThatThrownBy(() -> {
-            Car car = new Car(name);
+            new Car(name);
         }).isInstanceOf(RuntimeException.class);
     }
 

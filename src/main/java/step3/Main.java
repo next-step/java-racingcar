@@ -1,6 +1,7 @@
 package step3;
 
 import step3.domain.RacingGame;
+import step3.view.GameEmulator;
 import step3.view.InputScanner;
 
 public class Main {
@@ -13,6 +14,6 @@ public class Main {
                 inputNumberOfTry
         );
 
-        racingGame.racingAll();
+        GameEmulator.getResult(racingGame);
     }
 }
