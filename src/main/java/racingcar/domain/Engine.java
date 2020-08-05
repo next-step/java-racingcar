@@ -1,33 +1,34 @@
 package racingcar.domain;
 
-public abstract class Engine {
+public class Engine {
 
     private static final int DEFAULT_MOVE_CONDITION = 4;
-    private final int moveDistance;
-    private MovementRule rule;
+    private static final int MOVE = 1;
+    private static final int STOP = 0;
 
-    abstract int fuelInject();
+    private final MovementRule rule;
+    private final Fuel fuel;
 
     public Engine() {
-        rule = (fuel) -> fuel > DEFAULT_MOVE_CONDITION;
-        moveDistance = 1;
+        rule = (condition) -> condition > DEFAULT_MOVE_CONDITION;
+        fuel = RandomFuel::nextInt;
     }
 
-    public Engine(int moveDistance) {
-        super();
-        this.moveDistance = moveDistance;
+    public Engine(Fuel fuel) {
+        this((condition) -> condition > DEFAULT_MOVE_CONDITION, fuel);
     }
 
-    public Engine(MovementRule rule, int moveDistance) {
+    public Engine(MovementRule rule, Fuel fuel) {
         this.rule = rule;
-        this.moveDistance = moveDistance;
+        this.fuel = fuel;
     }
 
     public final int move() {
 
-        if (rule.isEnoughFuel(fuelInject())) {
-            return moveDistance;
+        if (rule.isEnoughFuel(fuel.getAsInt())) {
+            return MOVE;
         }
-        return 0;
+
+        return STOP;
     }
 }

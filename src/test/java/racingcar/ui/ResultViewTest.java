@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
+import racingcar.domain.Engine;
 import resource.StringResources;
 
 import java.io.ByteArrayOutputStream;
@@ -17,6 +18,7 @@ public class ResultViewTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final String NAME_OF_CAR = "TEST";
+
     @BeforeEach
     public void setUpStreams() {
         System.setOut(new PrintStream(outContent));
@@ -33,8 +35,7 @@ public class ResultViewTest {
     @Test
     void printMoveCarTest() {
 
-        Car car = new Car(NAME_OF_CAR);
-        car.moveAndStop(() -> 5);
+        Car car = new Car(new Engine(() -> 5), NAME_OF_CAR);
         ResultView.printResult(car);
         printMessageTest(NAME_OF_CAR + " : --\n");
     }
@@ -42,8 +43,7 @@ public class ResultViewTest {
     @DisplayName("정지한 자동차 출력 테스트")
     @Test
     void printStopCarTest() {
-        Car car = new Car(NAME_OF_CAR);
-        car.moveAndStop(() -> 1);
+        Car car = new Car(new Engine(() -> 5), NAME_OF_CAR);
         ResultView.printResult(car);
         printMessageTest(NAME_OF_CAR + " : -\n");
     }

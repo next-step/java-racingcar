@@ -3,27 +3,22 @@ package racingcar.domain;
 import racingcar.ui.RacingDataInput;
 import racingcar.ui.ResultView;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
 public class RacingGame {
 
-    private final List<Car> racingCars = new ArrayList<>();
+    private final List<Car> racingCars;
     private final RacingData racingData;
-    private final Engine movable;
 
-    public RacingGame(RacingDataInput racingDataInput, Engine movable) {
+    public RacingGame(RacingDataInput racingDataInput, Engine engine) {
 
         racingData = racingDataInput.getRacingData();
-        String[] names = racingData.getNames().split(",");
-
-        this.movable = movable;
-
-        for (int i = 0; i < racingData.getNumberOfCars(); i++) {
-            racingCars.add(new Car(names[i]));
-        }
+        racingCars = Arrays.stream(racingData.getNames())
+                .map((name) -> new Car(engine, name))
+                .collect(Collectors.toList());
     }
 
     public void start() {
@@ -32,7 +27,7 @@ public class RacingGame {
         ResultView.printStart();
 
         for (int i = 0; i < racingData.getTryCount(); i++) {
-            moveCar(movable);
+            moveCar();
             printCurrentStatus();
 
             ResultView.lineFeed();
@@ -56,9 +51,9 @@ public class RacingGame {
                 .collect(Collectors.joining(", "));
     }
 
-    private void moveCar(Engine movable) {
+    private void moveCar() {
         for (int i = 0; i < racingData.getNumberOfCars(); i++) {
-            racingCars.get(i).moveAndStop(movable);
+            racingCars.get(i).moveAndStop();
         }
     }
 

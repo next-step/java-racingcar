@@ -6,6 +6,7 @@ public class StringResources {
     public static final String ERR_INCORRECT_EQUATION = "Please enter the correct equation";
     public static final String ERR_INCORRECT_OPERATOR = "Please enter the correct operator.";
     public static final String ERR_DIVIDED_BY_ZERO = "It cannot be divided by zero.";
+    public static final String ERR_INVALID_CAR_DATA = "입력한 자동차 대수와 이름의 수가 일치하지 않습니다.";
 
     // Text Resources
     public static final String ASK_NUMBER_OF_CARS = "자동차 대수는 몇 대 인가요?";
