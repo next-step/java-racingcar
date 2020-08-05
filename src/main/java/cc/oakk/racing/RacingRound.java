@@ -37,6 +37,10 @@ public class RacingRound implements Printable<Car> {
         return this;
     }
 
+    public Ranking getRanking() {
+        return new Ranking(cars);
+    }
+
     @Override
     public void print(Printer<Car> printer) {
         cars.forEach(car -> car.print(printer));
