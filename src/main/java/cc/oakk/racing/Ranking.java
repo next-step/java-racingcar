@@ -12,7 +12,7 @@ public class Ranking implements Printable<Ranking> {
     private Set<Car> carSet;
 
     public Ranking(List<Car> cars) {
-        initRanksSet(cars);
+        initCarSet(cars);
         initRanksMap(cars);
     }
 
@@ -32,7 +32,7 @@ public class Ranking implements Printable<Ranking> {
         return carSet.size();
     }
 
-    private void initRanksSet(List<Car> cars) {
+    private void initCarSet(List<Car> cars) {
         carSet = new TreeSet<>();
         carSet.addAll(cars);
 
