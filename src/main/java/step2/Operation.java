@@ -2,71 +2,34 @@ package step2;
 
 public class Operation {
 
-    private static final String[] OPERATORS = {"+", "-", "*", "/"};
-
-    public Operation() {
+    private Operation(){
     }
 
-    public int calculate(String expression) throws IllegalArgumentException {
+    private static final String SEPARATOR = " ";
 
-        String[] ops = expression.split(" ");
+    public static int calculate(String expression) {
 
-        Integer operand = convert(ops[0]);
-        String operator = null;
-        for (int i = 1; i < ops.length; i++) {
-            if (operator == null) {
-                operator = ops[i];
-                continue;
-            }
+        String[] ops = expression.split(SEPARATOR);
 
-            Integer value = convert(ops[i]);
-            if (operand != null && operator != null) {
-                operand = getValue(operator, operand, value);
-                operator = null;
-            }
+        int operand = convert(ops[0]);
+        String operator;
+        for (int i = 1; i < ops.length; i += 2) {
+            operator = ops[i];
+            operand = getValue(operator, operand, convert(ops[i+1]));
+
         }
-
         return operand;
     }
 
-    private int convert(String s) {
+    private static int convert(String s) {
         if (s == null || s.isEmpty()) {
             throw new IllegalArgumentException("Input number is null or empty");
         }
         return Integer.parseInt(s);
     }
 
-    private int getValue(String operator, int a, int b) {
-        switch (operator) {
-            case "+":
-                return add(a, b);
-            case "-":
-                return subtract(a, b);
-            case "*":
-                return multiply(a, b);
-            case "/":
-                return divide(a, b);
-            default:
-                throw new IllegalArgumentException("Possible operators are [" + OPERATORS + "]");
-        }
+    private static int getValue(String operator, int a, int b) {
+        return StringOperator.of(operator).calculate(a, b);
     }
 
-    int add(int a, int b) {
-        return a + b;
-    }
-
-    int subtract(int a, int b) {
-        return a - b;
-    }
-
-    int multiply(int a, int b) {
-        return a * b;
-    }
-
-    int divide(int a, int b) {
-        if (b == 0) {
-            throw new ArithmeticException("Cannot divide by 0.");
-        }
-        return a / b;
-    }
 }

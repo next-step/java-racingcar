@@ -4,59 +4,65 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class OperationTest {
-
-    Operation operation = new Operation();
 
     @BeforeEach
     void setUp() {
     }
 
-    @Test
-    void add() {
-        assertThat(operation.add(1, 2)).isEqualTo(1 + 2);
+    @ParameterizedTest
+    @CsvSource(value = {"1:2"}, delimiter = ':')
+    void add(int a, int b) {
+        assertThat(StringOperator.ADD.calculate(a, b)).isEqualTo(a + b);
     }
 
-    @Test
-    void subtract() {
-        assertThat(operation.subtract(1, 2)).isEqualTo(1 - 2);
+    @ParameterizedTest
+    @CsvSource(value = {"1:2"}, delimiter = ':')
+    void subtract(int a, int b) {
+        assertThat(StringOperator.SUBTRACT.calculate(a, b)).isEqualTo(a - b);
     }
 
-    @Test
-    void multiply() {
-        assertThat(operation.multiply(1, 2)).isEqualTo(1 * 2);
+    @ParameterizedTest
+    @CsvSource(value = {"1:2"}, delimiter = ':')
+    void multiply(int a, int b) {
+        assertThat(StringOperator.MULTIPLY.calculate(a, b)).isEqualTo(a * b);
     }
 
-    @Test
-    void divide() {
-        assertThat(operation.divide(4, 2)).isEqualTo(4 / 2);
+    @ParameterizedTest
+    @CsvSource(value = {"4:2"}, delimiter = ':')
+    void divide(int a, int b) {
+        assertThat(StringOperator.DIVIDE.calculate(a, b)).isEqualTo(a / b);
     }
 
-    @Test
-    void divideByZero() {
+    @ParameterizedTest
+    @CsvSource(value = {"1:0"}, delimiter = ':')
+    void divideByZero(int a, int b) {
         assertThatExceptionOfType(ArithmeticException.class)
-            .isThrownBy(() -> operation.divide(1, 0));
+            .isThrownBy(() -> StringOperator.DIVIDE.calculate(a, b));
     }
 
-    @Test
-    void calculate() {
-        assertThat(operation.calculate("2 + 3 * 4 / 2")).isEqualTo(10);
+    @ParameterizedTest
+    @CsvSource(value = {"2 + 3 * 4 / 2:10"}, delimiter = ':')
+    void calculate(String expression, int result) {
+        assertThat(Operation.calculate(expression)).isEqualTo(result);
     }
 
-    @Test
-    void invalidExpressionOperand() {
+    @ParameterizedTest
+    @ValueSource(strings = {" + "})
+    void invalidExpressionOperand(String expression) {
         assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> operation.calculate(" + "));
+            .isThrownBy(() -> Operation.calculate(expression));
     }
 
-    @Test
-    void invalidExpressionOperator() {
+    @ParameterizedTest
+    @ValueSource(strings = {"1 ? 2 ", "2 2 2"})
+    void invalidExpressionOperator(String expression) {
         assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> operation.calculate("1 ? 2"));
-        assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() -> operation.calculate("2 2 2"));
+            .isThrownBy(() -> Operation.calculate(expression));
     }
 
 }
