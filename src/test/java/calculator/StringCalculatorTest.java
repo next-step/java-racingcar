@@ -3,7 +3,10 @@ package calculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StringCalculatorTest {
@@ -43,5 +46,14 @@ class StringCalculatorTest {
     void divide() {
         int result = StringCalculator.divide(x, y);
         assertEquals(result, 1);
+    }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    @DisplayName("입력 값이 null이거나 빈 공백 문자일 경우")
+    void splitExpression(String expression) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            String[] arguments = StringCalculator.splitExpression(expression);
+        });
     }
 }
