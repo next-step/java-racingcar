@@ -22,9 +22,12 @@ public class CarGame {
             for (Car car : cars) {
                 car.printLength();
                 System.out.println();
-                car.go();
+                if (i != playCnt-1) car.go();
             }
             System.out.println();
         }
+
+        Referee referee = new Referee(cars);
+        System.out.println(referee.getWinnersCarNames() + "가 최종 우승 했습니다.");
     }
 }
