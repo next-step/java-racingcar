@@ -57,12 +57,8 @@ public enum InputType {
 		return question;
 	}
 
-	public void validate(String value) {
-		this.validate.accept(value);
-	}
-
 	public void setInit(CarRacingInitValue initValue, String value) {
-		this.validate(value);
+		this.validate.accept(value);
 		this.carRacingInitValueConsumer.accept(initValue, value);
 	}
 }
