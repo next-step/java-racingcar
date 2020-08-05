@@ -1,6 +1,7 @@
 package step3;
 
 import java.util.Random;
+import java.util.stream.IntStream;
 
 /***
  * 자동차 게임에서 이용되는 자동차 클래스
@@ -10,7 +11,30 @@ public class Car {
 
     private Random engine = new Random();
 
+    private static final int MAX_POWER = 10;
+    private static final int MIN_POWER = 4;
+    private static final int VALID_NAME_MAX_LENGTH = 5;
+
+    private String name = "";
+
     private int position = 0;
+
+    /**
+     * 생성자를 통해 초기화한다.
+     */
+    public Car() {
+    }
+
+    /**
+     * 생성자를 통해 초기화한다.
+     *
+     * @param name
+     */
+    public Car(String name) {
+        if (name.length() > VALID_NAME_MAX_LENGTH) throw new RuntimeException("자동차의 이름은 5글자를 초과할 수 없습니다.");
+
+        this.name = name;
+    }
 
     /**
      * 0 ~ 9 의 값중에 임의의 값(출력)을 반환한다.
@@ -18,7 +42,16 @@ public class Car {
      * @return
      */
     private int getPower() {
-        return engine.nextInt(10);
+        return engine.nextInt(MAX_POWER);
+    }
+
+    /**
+     * 자동차의 이름을 반환한다.
+     *
+     * @return
+     */
+    public String getName() {
+        return this.name;
     }
 
     /**
@@ -36,10 +69,9 @@ public class Car {
      * @param power
      */
     public void go(int power) {
-        if (power < 4)
-            return;
-
-        position++;
+        if (power >= MIN_POWER) {
+            position++;
+        }
     }
 
     /**
@@ -49,5 +81,20 @@ public class Car {
      */
     public int getCurrentPosition() {
         return position;
+    }
+
+    /**
+     * 현재 자동차의 위치를 출력한다.
+     */
+    public void showMeThePosition() {
+        if (this.getCurrentPosition() == 0)
+            return;
+
+        PrintMessage.print("%s : ", this.getName());
+
+        IntStream.range(0, this.getCurrentPosition())
+                .forEach(number -> PrintMessage.print("-"));
+
+        PrintMessage.println();
     }
 }
