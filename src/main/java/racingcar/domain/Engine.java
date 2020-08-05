@@ -10,12 +10,11 @@ public class Engine {
     private final Fuel fuel;
 
     public Engine() {
-        rule = (condition) -> condition > DEFAULT_MOVE_CONDITION;
-        fuel = RandomFuel::nextInt;
+        this(RandomPower::nextInt);
     }
 
     public Engine(Fuel fuel) {
-        this((condition) -> condition > DEFAULT_MOVE_CONDITION, fuel);
+        this((power) -> power >= DEFAULT_MOVE_CONDITION, fuel);
     }
 
     public Engine(MovementRule rule, Fuel fuel) {
@@ -25,7 +24,7 @@ public class Engine {
 
     public final int move() {
 
-        if (rule.isEnoughFuel(fuel.getAsInt())) {
+        if (rule.isEnoughPower(fuel.getAsInt())) {
             return MOVE;
         }
 

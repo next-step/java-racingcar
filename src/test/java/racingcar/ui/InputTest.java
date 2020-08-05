@@ -6,7 +6,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import racingcar.domain.RacingData;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class InputTest {
 
@@ -17,8 +16,9 @@ public class InputTest {
     public void parameterInputSuccess(String names, int numberOfCars, int tryCount) {
 
         RacingDataInput input = new ParameterInput(names, numberOfCars, tryCount);
+        RacingData racingData = input.getRacingData();
 
-        assertThat(input.getRacingData().getNumberOfCars()).isEqualTo(numberOfCars);
-        assertThat(input.getRacingData().getTryCount()).isEqualTo(tryCount);
+        assertThat(racingData.getNumberOfCars()).isEqualTo(numberOfCars);
+        assertThat(racingData.getTryCount()).isEqualTo(tryCount);
     }
 }

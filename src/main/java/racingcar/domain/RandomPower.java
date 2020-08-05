@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import java.util.Random;
 
-public class RandomFuel {
+public class RandomPower {
 
     private static final Random random = new Random();
     private static final int RANDOM_RANGE = 10;

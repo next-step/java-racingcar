@@ -4,6 +4,8 @@ import resource.StringResources;
 
 public class RacingData {
 
+    private static final int MAX_SIZE_OF_NAME = 5;
+
     private final String[] names;
     private final int numberOfCars;
     private final int tryCount;
@@ -11,12 +13,21 @@ public class RacingData {
     public RacingData(String names, int numberOfCars, int tryCount) {
         this.names = names.split(",");
         this.numberOfCars = numberOfCars;
+        this.tryCount = tryCount;
 
         if (this.names.length != numberOfCars) {
             throw new IllegalArgumentException(StringResources.ERR_INVALID_CAR_DATA);
         }
 
-        this.tryCount = tryCount;
+        for (String name : this.names) {
+            verifyNameLength(name);
+        }
+    }
+
+    private void verifyNameLength(String name) {
+        if (name.length() > MAX_SIZE_OF_NAME) {
+            throw new IllegalArgumentException(StringResources.ERR_LONG_NAME);
+        }
     }
 
     public String[] getNames() {

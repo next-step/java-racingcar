@@ -1,12 +1,12 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.RacingGame;
-import racingcar.domain.RandomFuel;
 import racingcar.ui.ParameterInput;
 import racingcar.ui.RacingDataInput;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
 
@@ -21,8 +21,12 @@ public class RacingGameTest {
     @Test
     public void game() {
 
-//        RacingGame racingGame = new RacingGame(input, new RandomFuel());
-//        racingGame.start();
-//        racingGame.end();
+        Engine engine = new Engine(() -> 5);
+
+        RacingGame racingGame = new RacingGame(input, engine);
+        racingGame.start();
+        racingGame.end();
+
+        assertThat(racingGame.getWinnerNames()).isEqualTo("a, b, c");
     }
 }

@@ -36,6 +36,7 @@ public class ResultViewTest {
     void printMoveCarTest() {
 
         Car car = new Car(new Engine(() -> 5), NAME_OF_CAR);
+        car.moveAndStop();
         ResultView.printResult(car);
         printMessageTest(NAME_OF_CAR + " : --\n");
     }
