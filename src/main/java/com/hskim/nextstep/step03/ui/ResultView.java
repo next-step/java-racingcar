@@ -11,8 +11,8 @@ public class ResultView extends View {
             간단한 String concatenation에는  StringBuilder가 필요하지 않다. 컴파일러 단에서 효율적으로 처리된다.
             StringBuilder -> + 로 refactor
          */
-        return String.valueOf(racingCar.getCarNo()) +
-                ". " +
+        return String.valueOf(racingCar.getCarName()) +
+                " : " +
                 StringUtils.repeat("-", racingCar.moveForward(1));
     }
 }

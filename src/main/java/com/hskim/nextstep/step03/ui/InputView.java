@@ -25,4 +25,9 @@ public class InputView extends View {
         System.out.println("Invalid input!!. Please input number string.");
         throw new IllegalArgumentException();
     }
+
+    public String getStringFromConsoleInput() {
+
+        return scanner.nextLine();
+    }
 }

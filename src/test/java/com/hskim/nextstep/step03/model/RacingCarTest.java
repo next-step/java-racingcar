@@ -16,7 +16,7 @@ public class RacingCarTest {
     @BeforeEach
     void setup() {
 
-        racingCar = new RacingCar(1);
+        racingCar = new RacingCar("test");
     }
 
     @DisplayName("moveForward() 메소드 검증")

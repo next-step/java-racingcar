@@ -1,5 +1,6 @@
 package com.hskim.nextstep.step03.racing;
 
+import com.hskim.nextstep.step03.exception.ExceptionMessage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,13 +25,30 @@ public class RacingCarSimulatorTest {
     /*
         setRacingCarList로 만들어진 racingCarList의 크기가 getRacingCarList로 가져온 크기와 같은지 검증
      */
-    @DisplayName("setRacingCarList() & getRacingCarList() 메소드 검증")
+    @DisplayName("setRacingCarList() & getRacingCarList() 메소드 정상작동 검증")
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4, 5})
-    void racingCarListGetterSetterTest(int carNum) {
+    @ValueSource(strings = {"kim,lee,park", "choi,jung", "hyun,yuk,kwag,han,won", "jang"})
+    void racingCarListGetterSetterSuccessTest(String carName) {
 
-        racingCarSimulator.setRacingCarList(carNum);
-        assertThat(racingCarSimulator.getRacingCarList().size()).isEqualTo(carNum);
+        racingCarSimulator.setRacingCarList(carName);
+        assertThat(racingCarSimulator.getRacingCarList().size()).isEqualTo(getCarNum(carName));
     }
 
+    /*
+        자동차 이름의 길이가 @{RancingCarSimulator.CAR_NAME_LIMIT}를 초과하면 예외발생
+     */
+    @DisplayName("setRacingCarList() 메소드 예외 상황 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"samuel,kim,lee", "michael,su", "ray,nick,jordan"})
+    void setRacingCarListExceptionTest(String carName) {
+
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> racingCarSimulator.setRacingCarList(carName))
+                .withMessage(ExceptionMessage.EXCEED_CAR_NAME_LENGTH.getExceptionMessage());
+    }
+
+    private int getCarNum(String carName) {
+
+        return carName.split(",").length;
+    }
 }
