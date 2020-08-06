@@ -3,6 +3,7 @@ package step3;
 import step3.dto.Car;
 import step3.dto.Competition;
 import step3.view.InputView;
+import step3.view.ResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,9 +35,11 @@ public class CarRacing {
 
     private void startRacing(){
         RacingRound round = new RacingRound();
+        ResultView resultView = new ResultView();
 
         for(int i = 0; i< totalRound; i++){
             round.playRound(entryList);
+            resultView.showCompeetitionPosition(entryList);
         }
     }
 

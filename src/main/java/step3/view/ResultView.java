@@ -19,6 +19,7 @@ public class ResultView {
 
         StringBuilder movePosition = new StringBuilder();
 
+        movePosition.append(car.getEntryNameTag());
         for(int i = 0; i < nowPosition; i++){
             movePosition.append(CAR_MOVING_PATH);
         }
