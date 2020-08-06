@@ -14,7 +14,7 @@ public class DoOneForward implements DoRace {
         return Constants.ZERO_FORWARD;
     }
 
-    private boolean forwardOkRandomCondition(){
+    private static boolean forwardOkRandomCondition(){
         /* Random Interface?? */
         return Constants.FORWARD_OK_COND_NUM <= Random.nextInt(Constants.RANDOM_BOUND);
     }

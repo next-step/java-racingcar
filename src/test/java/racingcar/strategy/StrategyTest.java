@@ -1,11 +1,36 @@
 package racingcar.strategy;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racingcar.Constants;
+import racingcar.domain.Car;
+
+import static org.assertj.core.api.Assertions.*;
 
 public class StrategyTest {
 // Day 1 : 우선 핵심로직 : whenXXX() & UI로직 : showXXX() 쌍으로 나열 후 분리 예정
+    /**
+     * Mock & Fake 객체 활용 Random값 테스트
+     */
+    @DisplayName("Mock : 전진할 수 있다 ")
+    @Test
+    public void CanOneForward() {
+        car = new Car(c -> true);
+        // (forwardOkRandomCondition()) 해당 랜덤한 조건이 true
+        assertThat(car.move()).isEqualTo(Constants.ONE_FORWARD);
+    }
+
+    @DisplayName("Mock : 멈춤할 수 있다")
+    @Test
+    public void CanZeroForward() {
+        car = new Car(c -> false);
+        // (forwardOkRandomCondition()) 해당 랜덤한 조건이 false
+        assertThat(car.move()).isEqualTo(Constants.ZERO_FORWARD);
+    }
+
+    ////////////////////////////////////////////////////////////////////
     @DisplayName("n : 자동차 대수 입력값 없거나 0일 경우")
     @ParameterizedTest
     @CsvSource
@@ -25,23 +50,6 @@ public class StrategyTest {
         //실행 결과 println('') * n
     }
 
-    @DisplayName("1회 이동 시행 시, random값 in (4~9)이면 '전진' 확인")
-    @ParameterizedTest
-    @CsvSource
-    public void whenRndNumIsEqOrLargerThan4DoesForward() {
-        //return position = 현재position + 1
-        //UI logic : showRndNumIsEqOrLargerThan4DoesForward()
-        //println(실행 결과 \n 현재 - 개수 +'-')
-    }
-
-    @DisplayName("1회 이동 시행 시, random값 in (0~3)이면 '멈춤' 확인")
-    @ParameterizedTest
-    @CsvSource
-    public void whenRndNumIsSmallerThan4DoesStop() {
-        //return position = 현재position
-        //UI logic : showRndNumIsSmallerThan4DoesStop()
-        //println(실행 결과 \n 현재 - 개수)
-    }
 
     // Day 1. MAX '-', MIN '-' 경우의수 확인하는 것으로 2개 테스트 분기 고민
     @DisplayName("n : 자동차 대수 1개, m : 1개 이상일 경우, 전진:m회 /멈춤:0회")
