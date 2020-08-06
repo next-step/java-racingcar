@@ -11,10 +11,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarFactoryTest {
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4, 5})
+    @ValueSource(strings = {"pobi", "crong", "honux"})
+    @DisplayName("자동자 단일생성")
+    public void create(String name) {
+        assertThat(CarFactory.create(name)).hasSize(1);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"pobi,crong,honux"})
     @DisplayName("자동자 생성")
-    public void create(int numberOfCars) {
-        assertThat(CarFactory.create(numberOfCars)).hasSize(numberOfCars);
+    public void create(String names) {
+        assertThat(CarFactory.creates(names)).hasSize(1);
     }
 
 }
