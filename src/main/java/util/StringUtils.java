@@ -27,4 +27,18 @@ public class StringUtils {
         }
         return Double.parseDouble(string);
     }
+
+    public static String repeat(String string, int repeat) {
+        if(string == null || repeat <= 0) {
+            return "";
+        }
+
+        StringBuilder stringBuilder = new StringBuilder(repeat);
+
+        for(int i = 0; i < repeat; ++i) {
+            stringBuilder.append(string);
+        }
+
+        return stringBuilder.toString();
+    }
 }
