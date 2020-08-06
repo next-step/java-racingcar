@@ -31,12 +31,12 @@ public class Step3_Execute {
 
     private void playGame() {
         for (int loop = 0; loop < this.numberOfCars; loop++) {
-            randomize(loop);
+            stepForwardByRandom(loop);
             System.out.println(OutputView.getDashDistance(challengerList.get(loop).showDistance()));
         }
     }
 
-    private void randomize(int loop) {
+    private void stepForwardByRandom(int loop) {
         if (rand.nextInt(RANDOM_BOUNDARY) >= CONDITION_FOR_STEP_FORWARD) {
             challengerList.get(loop).increseDistance();
         }
