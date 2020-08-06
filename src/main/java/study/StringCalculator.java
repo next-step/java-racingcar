@@ -4,69 +4,42 @@ import java.util.Scanner;
 
 public class StringCalculator {
 
-    public static int plus(int a, int b) {
-        return a+b;
-    }
-
-    public static int minus(int a, int b) {
-        return a-b;
-    }
-
-    public static int multiply(int a, int b) {
-        return a*b;
-    }
-
-    public static int devide(int a, int b) {
-        return a/b;
-    }
-
-    public static int calculate(String calculation, int num, int result){
-        switch (calculation){
-            case "+":
-                result = plus(num,result);
-                break;
-            case "-":
-                result = minus(num,result);
-                break;
-            case "*":
-                result = multiply(num,result);
-                break;
-            case "/":
-                result = devide(num,result);
-                break;
-        }
-        return result;
+    //연산
+    public static int calculate(CalculationType calculator, int num, int result){
+        return CalculationType.calculate(calculator, num, result);
     }
 
     //null값 체크
-    public static void stringCheck(String string){
-        if(string==null||string.equals("")||string.equals(" ")){
+    public static void checkString(String string){
+        if(string==null||string.trim().equals("")){
             throw new IllegalArgumentException();
         }
     }
 
     //input 값 분리
-    public static String[] stringSplit(String string) {
+    public static String[] splitString(String string) {
         String[] stringArray = string.split(" ");
         return stringArray;
     }
 
     //사칙연산 체크
-    public static String calculationCheck(String inputString) {
-        boolean flag = false;
-        for(CalculationType type : CalculationType.values()) {
-            if(inputString.equals(type.getCalculation())){
-                flag = true;
-                break;
-            }else{
-                flag = false;
-            }
+    public static CalculationType checkCalculation(String inputString) {
+        return CalculationType.checkCalculationType(inputString);
+    }
+
+    //최종 결과값 얻기
+    public static int getResult(String inputString) {
+        String[] inputStringArray = splitString(inputString);
+        int result = Integer.parseInt(inputStringArray[0]);
+        int index = 1;
+
+        while(index < inputStringArray.length){
+            CalculationType calculation = checkCalculation(inputStringArray[index]);
+            int num = Integer.parseInt(inputStringArray[index+1]);
+            result = calculate(calculation, num,  result);
+            index = index+2;
         }
-        if(flag) {
-            return inputString;
-        }else {
-            throw new IllegalArgumentException();
-        }
+        return result;
     }
 
     public static void main(String[] args) throws Exception {
@@ -74,19 +47,8 @@ public class StringCalculator {
         Scanner scanner = new Scanner(System.in);
         String inputString = scanner.nextLine();;
 
-        stringCheck(inputString);
+        checkString(inputString);
 
-        String[] inputStringArray = stringSplit(inputString);
-        int result = Integer.parseInt(inputStringArray[0]);
-        int index = 1;
-
-        while(index < inputStringArray.length){
-            String calculation = calculationCheck(inputStringArray[index]);
-            int num = Integer.parseInt(inputStringArray[index+1]);
-            result = calculate(calculation, num, result);
-            index = index+2;
-        }
-
-        System.out.println("결과값은 " + result + "입니다.");
+        System.out.println("결과값은 " + getResult(inputString) + "입니다.");
     }
 }
