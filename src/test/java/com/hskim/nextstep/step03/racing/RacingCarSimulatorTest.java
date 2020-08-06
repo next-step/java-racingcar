@@ -1,11 +1,15 @@
 package com.hskim.nextstep.step03.racing;
 
+import com.hskim.nextstep.step02.utils.StringUtils;
 import com.hskim.nextstep.step03.exception.ExceptionMessage;
+import com.hskim.nextstep.step03.model.RacingCar;
+import com.hskim.nextstep.step03.utils.ValidationUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -30,7 +34,10 @@ public class RacingCarSimulatorTest {
     @ValueSource(strings = {"kim,lee,park", "choi,jung", "hyun,yuk,kwag,han,won", "jang"})
     void racingCarListGetterSetterSuccessTest(String carName) {
 
-        racingCarSimulator.setRacingCarList(carName);
+        List<String> carNameList = StringUtils.getParsedStringList(carName, RacingCarSimulator.CAR_NAME_DELIMITER);
+        ValidationUtils.validateStringLengthLimitWithList(carNameList,
+                RacingCar.CAR_NAME_LIMIT, ExceptionMessage.EXCEED_CAR_NAME_LENGTH);
+        racingCarSimulator.setRacingCarList(carNameList);
         assertThat(racingCarSimulator.getRacingCarList().size()).isEqualTo(getCarNum(carName));
     }
 
@@ -43,12 +50,18 @@ public class RacingCarSimulatorTest {
     void setRacingCarListExceptionTest(String carName) {
 
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> racingCarSimulator.setRacingCarList(carName))
+                .isThrownBy(() -> {
+                    List<String> carNameList =
+                            StringUtils.getParsedStringList(carName, RacingCarSimulator.CAR_NAME_DELIMITER);
+                    ValidationUtils.validateStringLengthLimitWithList(carNameList,
+                            RacingCar.CAR_NAME_LIMIT, ExceptionMessage.EXCEED_CAR_NAME_LENGTH);
+                    racingCarSimulator.setRacingCarList(carNameList);
+                })
                 .withMessage(ExceptionMessage.EXCEED_CAR_NAME_LENGTH.getExceptionMessage());
     }
 
-    private int getCarNum(String carName) {
+    private int getCarNum(String carNames) {
 
-        return carName.split(",").length;
+        return StringUtils.getParsedStringList(carNames, RacingCarSimulator.CAR_NAME_DELIMITER).size();
     }
 }

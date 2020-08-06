@@ -9,10 +9,11 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RacingCarSimulator {
 
-    public static final int CAR_NAME_LIMIT = 5;
+    public static final String CAR_NAME_DELIMITER = ",";
     private List<RacingCar> racingCarList;
     private int gameRepeatNum;
 
@@ -22,20 +23,11 @@ public class RacingCarSimulator {
         gameRepeatNum = 0;
     }
 
-    public void setRacingCarList(String carNames) {
+    public void setRacingCarList(List<String> carNameList) {
 
-        racingCarList = Arrays.stream(carNames.split(","))
-                .peek(this::validateCarName)
+        racingCarList = carNameList.stream()
                 .map(RacingCar::new)
                 .collect(Collectors.toList());
-    }
-
-    private void validateCarName(String carName) {
-
-        if (carName.length() > CAR_NAME_LIMIT) {
-
-            throw new IllegalArgumentException(ExceptionMessage.EXCEED_CAR_NAME_LENGTH.getExceptionMessage());
-        }
     }
 
     public void setGameRepeatNum(int repeatNum) {
