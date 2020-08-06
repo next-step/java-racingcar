@@ -3,11 +3,7 @@ package com.cspark.nextstep.step2;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-import com.cspark.nextstep.step2.calculation.Addition;
 import com.cspark.nextstep.step2.calculation.Calculator;
-import com.cspark.nextstep.step2.calculation.Division;
-import com.cspark.nextstep.step2.calculation.Multiplication;
-import com.cspark.nextstep.step2.calculation.Subtraction;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -31,7 +27,7 @@ public class StringCalculatorTest {
   @DisplayName("기능 분리 테스트: 덧셈")
   @Test
   void add() {
-    Calculator calculator = new Addition();
+    Calculator calculator = (x, y) -> x + y;
     assertThat(calculator.calculate(1, 1))
         .isEqualTo(2);
   }
@@ -39,7 +35,7 @@ public class StringCalculatorTest {
   @DisplayName("기능 분리 테스트: 뺄셈")
   @Test
   void subtraction() {
-    Calculator calculator = new Subtraction();
+    Calculator calculator= (x, y) -> x - y;
     assertThat(calculator.calculate(1, 1))
         .isEqualTo(0);
   }
@@ -47,7 +43,7 @@ public class StringCalculatorTest {
   @DisplayName("기능 분리 테스트: 곱셈")
   @Test
   void multiply() {
-    Calculator calculator = new Multiplication();
+    Calculator calculator =  (x, y) -> x * y;
     assertThat(calculator.calculate(2, 2))
         .isEqualTo(4);
   }
@@ -55,7 +51,7 @@ public class StringCalculatorTest {
   @DisplayName("기능 분리 테스트: 나누셈")
   @Test
   void divide() {
-    Calculator calculator = new Division();
+    Calculator calculator = (x, y) -> x / y;
     assertThat(calculator.calculate(2, 2))
         .isEqualTo(1);
   }
