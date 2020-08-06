@@ -12,13 +12,12 @@ public class RacingGame {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int carNumber = InputView.setRacingCarNumber(scanner);
-        int gameCount = InputView.setMotorRacingCount(scanner);
+        int racingCarNumber = InputView.setRacingCarNumber(scanner);
+        int motorRacingCount = InputView.setMotorRacingCount(scanner);
 
-        Map<Integer, Car> carInfoMap = RacingCar.preparedCar(carNumber);
+        Map<Integer, Car> carInfoMap = RacingCar.preparationForGame(racingCarNumber);
 
         ResultView.gameResult();
-        ResultView.carRace(carInfoMap, carNumber, gameCount);
-
+        ResultView.carRace(carInfoMap, racingCarNumber, motorRacingCount);
     }
 }

@@ -14,23 +14,22 @@ public class ResultView {
     public static void carRace(Map<Integer, Car> carInfoMap, int racingCarNumber, int gameCount) {
         for (int i = 1; i <= gameCount; i++) {
             for (int j = 1; j <= racingCarNumber; j++) {
-                Car racingCar = carInfoMap.get(j);
-                String carState = racingCar.getMileAge();
-                System.out.println(play(racingCar, j, carState, carInfoMap));
+                Car car = carInfoMap.get(j);
+                String mileAge = car.getMileAge();
+                System.out.println(play(car, j, mileAge));
             }
             System.out.println();
         }
     }
 
-    public static String play(Car racingCar, int j, String carState, Map<Integer, Car> carInfoMap ) {
+    public static String play(Car racingCar, int j, String mileAge) {
         if (racingCar.getCarId() == j) {
-            int randomCondition = RacingCar.getAccelateNumber();
-            carState += RacingCar.racing(racingCar, randomCondition);
+            int raceCondition = RacingCar.raceCondition();
+            mileAge += racingCar.race(raceCondition);
 
-            racingCar.setMileAge(carState);
-            carInfoMap.put(racingCar.getCarId(), racingCar);
+            racingCar.setMileAge(mileAge);
         }
-        return carState;
+        return mileAge;
     }
 
 
