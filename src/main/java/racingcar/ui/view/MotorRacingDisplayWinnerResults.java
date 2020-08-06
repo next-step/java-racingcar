@@ -18,10 +18,10 @@ class MotorRacingDisplayWinnerResults {
     }
 
     public void accumulateRacingTotalMileage(RacingResult racingResult){
-        if(racingResult.isEmptyPrefix()){
+        if(racingResult.isNotNamedRacingResult()){
             return;
         }
-        String carName = racingResult.getPrefix();
+        String carName = racingResult.getRacingCarName();
         int currentTotalMileage = racingResult.getTotalMileage();
         registerRacingCar(carName);
         accumulate(carName, currentTotalMileage);

@@ -35,7 +35,7 @@ class RacingCarTest {
     void validNameTest(final String testName) {
         int length = RacingCar.attend(testName)
                               .getResult()
-                              .getPrefix()
+                              .getRacingCarName()
                               .length()
             ;
         assertThat(length).isLessThanOrEqualTo(NamedRacingCar.MAX_NAME_LEN);

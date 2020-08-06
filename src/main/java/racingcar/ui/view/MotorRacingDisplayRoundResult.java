@@ -26,10 +26,10 @@ public class MotorRacingDisplayRoundResult {
     }
 
     private String displayRacingResult(RacingResult racingResult){
-        if(racingResult.isEmptyPrefix()){
+        if(racingResult.isNotNamedRacingResult()){
             return repate(racingResult.getTotalMileage());
         }
-        return String.format("%s : %s", racingResult.getPrefix(), repate(racingResult.getTotalMileage()));
+        return String.format("%s : %s", racingResult.getRacingCarName(), repate(racingResult.getTotalMileage()));
     }
 
     @Override
