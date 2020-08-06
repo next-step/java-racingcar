@@ -3,7 +3,6 @@ package calculator;
 import calculator.util.StringUtils;
 
 public class Calculator {
-
     private static final String DELIMITER = " ";
 
     public double calculate(String input) {
