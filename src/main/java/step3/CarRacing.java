@@ -1,5 +1,7 @@
 package step3;
 
+import step3.dto.Car;
+import step3.dto.Competition;
 import step3.view.InputView;
 
 import java.util.ArrayList;
@@ -26,11 +28,16 @@ public class CarRacing {
         }
     }
 
-    public void startRacing(){
+    public void race(){
 
     }
 
-    private void playRound(){
+    private void startRacing(){
+        RacingRound round = new RacingRound();
 
+        for(int i = 0; i< totalRound; i++){
+            round.playRound(entryList);
+        }
     }
+
 }
