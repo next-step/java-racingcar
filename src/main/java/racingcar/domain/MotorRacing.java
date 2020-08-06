@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 import racingcar.domain.core.RacingCar;
+import racingcar.domain.rule.MotorRacingRule;
 import racingcar.ui.view.MotorRacingDisplayResults;
 import racingcar.ui.view.MotorRacingDisplayRoundResult;
 
@@ -31,11 +32,11 @@ public class MotorRacing {
     }
 
     public static MotorRacing randomMotorRacing(int carCount){
-        return new MotorRacing(carCount,  new MotorRacingRandomMoveRule());
+        return new MotorRacing(carCount,  MotorRacingRule.defaultMoveRule());
     }
 
     public static MotorRacing randomMotorRacing(Set<String> carNames){
-        return new MotorRacing(carNames,  new MotorRacingRandomMoveRule());
+        return new MotorRacing(carNames,  MotorRacingRule.defaultMoveRule());
     }
 
     public MotorRacingDisplayResults racing(final int raceRound){

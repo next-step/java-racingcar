@@ -1,6 +1,6 @@
 package racingcar.domain.core;
 
-import racingcar.domain.MotorRacingRule;
+import racingcar.domain.rule.MotorRacingRule;
 import racingcar.domain.RacingResult;
 
 public interface RacingCar {
