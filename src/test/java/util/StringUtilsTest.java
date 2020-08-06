@@ -1,6 +1,7 @@
 package util;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -48,4 +49,12 @@ public class StringUtilsTest {
                 .isThrownBy(() -> StringUtils.getNumber(input));
     }
 
+    @DisplayName("반복 문자열 생성 메소드(repeat) 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"s,5:sssss", "hi,0:''"}, delimiter = ':')
+    void repeat_test(String input, String result) {
+        String[] inputArray = input.split(",");
+        assertThat(StringUtils.repeat(inputArray[0], Integer.parseInt(inputArray[1])))
+                .isEqualTo(result);
+    }
 }
