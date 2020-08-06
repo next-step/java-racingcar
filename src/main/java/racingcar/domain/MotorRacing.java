@@ -16,6 +16,7 @@ public class MotorRacing {
     private final List<RacingCar> racingCars;
     private final MotorRacingRule motorRacingRule;
 
+    @Deprecated
     MotorRacing(int carCount, MotorRacingRule motorRacingRule) {
         this.racingCars = Stream.generate(RacingCar::attend)
             .limit(carCount)
@@ -31,6 +32,7 @@ public class MotorRacing {
         this.motorRacingRule = motorRacingRule;
     }
 
+    @Deprecated
     public static MotorRacing randomMotorRacing(int carCount){
         return new MotorRacing(carCount,  MotorRacingRule.defaultMoveRule());
     }
