@@ -27,39 +27,20 @@ public class CarRacingExceptionTest {
 		System.setIn(testIn);
 	}
 
-	@DisplayName("생성할 자동차 수를 입력하지 않았을 때 발생하는 예외 테스트")
+	@DisplayName("생성할 자동차 이름을 입력하지 않았을 때 발생하는 예외 테스트")
 	@ParameterizedTest
 	@ValueSource(strings = {"\n", "  \n"})
-	public void carCountEmptyExceptionTest(String carCount) {
+	public void carNameEmptyExceptionTest(String carCount) {
 		provideInput(carCount);
 
 		assertThatIllegalArgumentException().isThrownBy(() -> carRacingInput.input())
 											.withMessage("질문에 대한 내용을 입력해주세요.");
 	}
 
-	@DisplayName("생성할 자동차 수가 0대 이하일 때 발생하는 예외 테스트")
-	@ParameterizedTest
-	@ValueSource(strings = {"0", "-1", "-200", "-37"})
-	public void generatedCarCountExceptionTest(String carCount) {
-		provideInput(carCount);
-
-		assertThatIllegalArgumentException().isThrownBy(() -> carRacingInput.input())
-											.withMessage("자동차 대수는 0대 이하일 수 없습니다.");
-	}
-
-	@DisplayName("생성할 자동차 수에 문자로 입력했을 때 발생하는 예외 테스트")
-	@ParameterizedTest
-	@ValueSource(strings = {"s", "a", "monitor", "tdd", "-"})
-	public void carCountCharExceptionTest(String carCount) {
-		provideInput(carCount);
-
-		assertThatIllegalArgumentException().isThrownBy(() -> carRacingInput.input())
-											.withMessage("숫자로 입력해주세요.");
-	}
 
 	@DisplayName("생성할 게임 회수를 입력하지 않았을 때 발생하는 예외 테스트")
 	@ParameterizedTest
-	@ValueSource(strings = {"10\n\n", "3\n   "})
+	@ValueSource(strings = {"pobi,crong,honux\n\n", "pobi,crong,honux\n   "})
 	public void gameCountEmptyExceptionTest(String input) {
 		provideInput(input);
 
@@ -69,7 +50,8 @@ public class CarRacingExceptionTest {
 
 	@DisplayName("생성할 게임 회수가 0회 이하일 때 발생하는 예외 테스트")
 	@ParameterizedTest
-	@ValueSource(strings = {"10\n-20", "1\n-1", "3\n-200", "20\n-37", "20\n0"})
+	@ValueSource(strings = {"pobi,crong,honux\n-20", "pobi,crong,honux\n-1", "pobi,crong,honux\n-200", "pobi,crong,honux\n-37",
+							"pobi,crong,honux\n0"})
 	public void generatedGameCountExceptionTest(String input) {
 		provideInput(input);
 
@@ -79,7 +61,8 @@ public class CarRacingExceptionTest {
 
 	@DisplayName("생성할 게임 회수에 문자로 입력했을 때 발생하는 예외 테스트")
 	@ParameterizedTest
-	@ValueSource(strings = {"10\ns", "10\na", "10\nmonitor", "10\ntdd", "10\n-"})
+	@ValueSource(strings = {"pobi,crong,honux\ns", "pobi,crong,honux\na", "pobi,crong,honux\nmonitor", "pobi,crong,honux\ntdd",
+							"pobi,crong,honux\n-"})
 	public void gameCountCharExceptionTest(String carCount) {
 		provideInput(carCount);
 
