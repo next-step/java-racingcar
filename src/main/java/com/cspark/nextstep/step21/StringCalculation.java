@@ -1,18 +1,8 @@
 package com.cspark.nextstep.step21;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class StringCalculation {
-
-  private final static List<Calculable> CALCULATORS = new ArrayList<>();
-  static {
-    CALCULATORS.add(new AdditionCalculator());
-    CALCULATORS.add(new SubtractionCalculator());
-    CALCULATORS.add(new MultiplicationCalculator());
-    CALCULATORS.add(new DivisionCalculator());
-  }
 
   public static int calculate(String sentence) {
     inputValidate(sentence);
@@ -20,7 +10,8 @@ public class StringCalculation {
     String[] values = sentence.split(" ");
     int result = toInt(values[0]);
     for (int i = 1; i < values.length; i += 2) {
-      result = calculate(values[i], result, toInt(values[i + 1]));
+      result = Calculation.of(values[i])
+          .calculate(result, toInt(values[i + 1]));
     }
 
     return result;
@@ -30,14 +21,6 @@ public class StringCalculation {
     if (Objects.isNull(sentence) || sentence.trim().length() == 0) {
       throw new IllegalArgumentException("잘못된 입력값입니다.");
     }
-  }
-
-  private static Integer calculate(String operator, int first, int second) {
-    return CALCULATORS.stream()
-        .filter(calculable -> calculable.isSupport(operator))
-        .findFirst()
-        .map(calculable -> calculable.calculate(first, second))
-        .orElseThrow(() -> new IllegalArgumentException("지원하지 않는 연산입니다."));
   }
 
   private static int toInt(String value) {
