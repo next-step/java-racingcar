@@ -3,7 +3,10 @@ package racingcar.ui;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.Car;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.domain.Car;
+import racingcar.domain.Engine;
 import resource.StringResources;
 
 import java.io.ByteArrayOutputStream;
@@ -14,6 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ResultViewTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final String NAME_OF_CAR = "TEST";
 
     @BeforeEach
     public void setUpStreams() {
@@ -31,19 +35,18 @@ public class ResultViewTest {
     @Test
     void printMoveCarTest() {
 
-        Car car = new Car();
-        car.moveAndStop(5);
+        Car car = new Car(new Engine(() -> 5), NAME_OF_CAR);
+        car.moveAndStop();
         ResultView.printResult(car);
-        printMessageTest("--\n");
+        printMessageTest(NAME_OF_CAR + " : --\n");
     }
 
     @DisplayName("정지한 자동차 출력 테스트")
     @Test
     void printStopCarTest() {
-        Car car = new Car();
-        car.moveAndStop(1);
+        Car car = new Car(new Engine(() -> 5), NAME_OF_CAR);
         ResultView.printResult(car);
-        printMessageTest("-\n");
+        printMessageTest(NAME_OF_CAR + " : -\n");
     }
 
     @DisplayName("라인 피드 테스트")
@@ -51,6 +54,14 @@ public class ResultViewTest {
     void lineFeedTest() {
         ResultView.lineFeed();
         printMessageTest("\n");
+    }
+
+    @DisplayName("우승자 출력 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = { "a, b", "c, d" })
+    public void printWinnerNamesTest(String winnerNames) {
+        ResultView.printWinnerNames(winnerNames);
+        printMessageTest(winnerNames + StringResources.GAME_RESULT_WINNERS + "\n");
     }
 
     private void printMessageTest(String testMessage) {

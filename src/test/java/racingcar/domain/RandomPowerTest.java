@@ -1,17 +1,17 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class FuelTest {
+public class RandomPowerTest {
 
     @DisplayName("랜덤값 범위 검증")
-    @RepeatedTest(value = 10)
+    @RepeatedTest(100)
     void makeRandomIntValue() {
-
-        assertThat(Fuel.inject()).isGreaterThanOrEqualTo(0)
+        assertThat(RandomPower.getInstance().nextInt())
+                .isGreaterThanOrEqualTo(0)
                 .isLessThan(10);
     }
 }

@@ -1,6 +1,6 @@
 package racingcar.ui;
 
-import racingcar.Car;
+import racingcar.domain.Car;
 import resource.StringResources;
 
 public class ResultView {
@@ -13,14 +13,21 @@ public class ResultView {
 
     public static void printResult(Car car) {
 
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder(car.getName());
+        sb.append(" : ");
+
         for (int i = 0; i < car.getMoveCount() + 1; i++) {
             sb.append(MOVE_MARK);
         }
+
         System.out.println(sb.toString());
     }
 
     public static void lineFeed() {
         System.out.println();
+    }
+
+    public static void printWinnerNames(String winnerNames) {
+        System.out.println(winnerNames + StringResources.GAME_RESULT_WINNERS);
     }
 }
