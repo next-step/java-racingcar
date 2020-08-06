@@ -37,6 +37,6 @@ public class RacingGame {
     }
 
     public boolean isAvailableGame() {
-        return carNumber >= 0 && attemptNumber >= 0;
+        return carNumber > 0 && attemptNumber > 0;
     }
 }
