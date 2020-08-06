@@ -4,7 +4,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.HashMap;
 import java.util.Map;
 
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -19,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class StringCalculatorTest {
 
 
+
     private static Map<String, String> operator = new HashMap<>();
     static {
         operator.put("+", "PLUS");
@@ -26,6 +26,7 @@ public class StringCalculatorTest {
         operator.put("/", "DIVISION");
         operator.put("*", "MULTIPLY");
     }
+
 
 
     @ParameterizedTest
@@ -42,6 +43,7 @@ public class StringCalculatorTest {
         int answer = Integer.parseInt(arguments[0]); // 첫 숫자 초기화
         int answer1 = stringCalculator.answer(arguments, length, answer);
         assertThat(answer1).isEqualTo(10);
+
         String[] arguments = fourArithmeticOperations.split(" ");
 
 
@@ -72,6 +74,7 @@ public class StringCalculatorTest {
             System.out.println("operation");
             throw new IllegalArgumentException();
         }
+
     }
 
 }
