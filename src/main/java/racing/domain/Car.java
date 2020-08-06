@@ -16,7 +16,7 @@ public class Car {
         }
     }
 
-    public int getRandomNum() {
+    private int getRandomNum() {
         return new Random().nextInt(RANDOM_MAX_NUM);
     }
 
