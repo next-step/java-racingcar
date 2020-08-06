@@ -1,20 +1,20 @@
 package racing.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.Consumer;
+import org.apache.commons.lang3.RandomUtils;
 
-import static racing.domain.CarRacingProperty.CAR_NAME_SEPARATOR;
+import java.util.ArrayList;
+import java.util.List;
+
+import static racing.domain.CarRacingProperty.*;
 
 public class Cars {
 
     private final List<Car> cars;
+    private int maxDistance;
 
-    public Cars(String inputNames) {
+    public Cars(String carNames) {
         cars = new ArrayList<>();
-        parseInputNames(inputNames);
+        createCars(carNames);
     }
 
     public int getCarCount() {
@@ -27,17 +27,37 @@ public class Cars {
                 .toArray(String[]::new);
     }
 
-    public int getMaxMovedDistance() {
-        return Collections.max(cars, Comparator.comparingInt(Car::getDistance))
-            .getDistance();
+    public void moveCars(CarConsumer carConsumer) {
+        cars.forEach(car -> {
+            int distance = car.move(getRandomNumber());
+            maxDistance = Math.max(distance, maxDistance);
+            acceptCarConsumer(car, carConsumer);
+        });
     }
 
-    public void forEach(Consumer<Car> action) {
-        cars.forEach(action);
+    public String[] getMaxMovedCarNames() {
+        return cars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .map(Car::getName)
+                .toArray(String[]::new);
     }
 
-    private void parseInputNames(String inputNames) {
-        String[] names = inputNames.split(CAR_NAME_SEPARATOR);
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public int getRandomNumber() {
+        return RandomUtils.nextInt(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
+    }
+
+    private void acceptCarConsumer(Car car, CarConsumer carConsumer) {
+        if (carConsumer != null) {
+            carConsumer.accept(car.getName(), car.getDistance());
+        }
+    }
+
+    private void createCars(String carNames) {
+        String[] names = carNames.split(CAR_NAME_SEPARATOR);
         for (String name : names) {
             cars.add(new Car(name));
         }

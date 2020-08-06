@@ -1,6 +1,5 @@
 package racing.domain;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -9,8 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class CarTest {
 
     @Test
-    @DisplayName("차 이동 시 최소거리 이상 확인")
-    void move() {
+    void 차_이동시_최소거리_이상_확인() {
         Car car = new Car("monds");
         int distance = car.getDistance();
         car.move(3);
@@ -20,8 +18,7 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("최종 이동거리 확인")
-    void getTotalDistance() {
+    void 최종_이동거리_확인() {
         Car car = new Car("monds");
         car.move(9);
         car.move(9);
@@ -29,22 +26,19 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("자동차에 이름 부여")
-    void setNameToCar() {
+    void 자동차에_이름_부여() {
         String name = "monds";
         Car car = new Car(name);
         assertThat(car.getName()).isEqualTo(name);
     }
 
     @Test
-    @DisplayName("특정 길이 이상의 이름 부여")
-    void setName_over5Length_exceptThrown() {
+    void 특정_길이_이상의_이름_부여() {
         expectIllegalArgumentException("nameee");
     }
 
     @Test
-    @DisplayName("자동차 이름에 blank 부여")
-    void setName_blankInput_exceptThrown() {
+    void 자동차_이름에_blank_부여() {
         expectIllegalArgumentException(null);
         expectIllegalArgumentException("");
         expectIllegalArgumentException("  ");

@@ -1,33 +1,55 @@
 package racing.domain;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.Collections;
+import java.util.Comparator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
 
+    private final String[] names = {"pobi","crong","honux"};
+
     @Test
-    @DisplayName("자동차 개수 확인")
-    void getCarCount() {
-        String[] names = {"pobi","crong","honux"};
+    void 자동차_개수() {
         Cars cars = new Cars(String.join(",", names));
         assertThat(cars.getCarCount()).isEqualTo(3);
     }
 
     @Test
-    @DisplayName("자동차 이름 확인")
-    void getCarNames() {
-        String[] names = {"pobi","crong","honux"};
+    void 자동차_이름() {
         Cars cars = new Cars(String.join(",", names));
         assertThat(cars.getCarNames()).isEqualTo(names);
     }
 
     @Test
-    @DisplayName("최대 이동 거리")
-    void getMaxMovedDistance() {
-        String[] names = {"pobi","crong","honux"};
+    void 가장_많이_이동한_차_이름() {
+        // given
         Cars cars = new Cars(String.join(",", names));
-        assertThat(cars.getMaxMovedDistance()).isEqualTo(0);
+
+        // when
+        cars.moveCars((carName, distance) -> {});
+
+        // then
+        int maxDistance = Collections.max(cars.getCars(), Comparator.comparingInt(Car::getDistance))
+                .getDistance();
+        String[] names = cars.getCars()
+                .stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .map(Car::getName)
+                .toArray(String[]::new);
+
+        assertThat(cars.getMaxMovedCarNames()).isEqualTo(names);
+    }
+
+    @Test
+    void 랜덤_범위_확인() {
+        Cars cars = new Cars(String.join(",", names));
+        for (int i = 0; i < 10; i++) {
+            int randomNumber = cars.getRandomNumber();
+            assertThat(randomNumber)
+                    .isBetween(CarRacingProperty.MIN_RANDOM_NUMBER, CarRacingProperty.MAX_RANDOM_NUMBER);
+        }
     }
 }
