@@ -13,9 +13,9 @@ public enum Direction {
 	ADVANCE("-"),
 	STOP(StringUtils.EMPTY);
 
-	static final int ADVANCE_CONDITION_VALUE = 4;
+	private static final int ADVANCE_CONDITION_VALUE = 4;
 
-	final String sign;
+	private final String sign;
 
 	public static Direction getBy(int value) {
 		return value >= ADVANCE_CONDITION_VALUE ? Direction.ADVANCE : Direction.STOP;
