@@ -23,7 +23,7 @@ class ExpressionProcessorTest {
     void splitExpressionWithIllegalArumentException(String expression) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             String[] arguments = ExpressionProcessor.splitExpression(expression);
-        });
+        }).withMessage(ExceptionMessage.EMPTY_OR_NULL_ARGUMENT.getMessage());
     }
 
     @Test
@@ -40,6 +40,22 @@ class ExpressionProcessorTest {
     void isNotOperator() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             Operator operator = Operator.of("!");
-        });
+        }).withMessage(ExceptionMessage.NOT_ARITHMETIC_OPERATOR.getMessage());
+    }
+
+    @Test
+    @DisplayName("숫자만 반환 테스트")
+    void getNumbers() {
+        ExpressionProcessor processor = new ExpressionProcessor("2 + 3 / 4 * 5");
+        assertThat(processor.getNumbers())
+                .containsExactly(2, 3, 4, 5);
+    }
+
+    @Test
+    @DisplayName("연산자만 반환 테스트")
+    void getOperators() {
+        ExpressionProcessor processor = new ExpressionProcessor("2 + 3 / 4 * 5");
+        assertThat(processor.getOperators())
+                .containsExactly(Operator.PLUS, Operator.DIVIDE, Operator.MULTIPLY);
     }
 }
