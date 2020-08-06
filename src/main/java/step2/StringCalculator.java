@@ -7,14 +7,6 @@ public class StringCalculator {
 	private static final Pattern ONLY_NUMBER_PATTERN = Pattern.compile("^[0-9]+$");
 	private static final Pattern BLANK_PATTERN = Pattern.compile("^\\s*$");
 
-	private static List<Calculator> calculators = new ArrayList<>();
-	static {
-		calculators.add(new AdditionCalculator());
-		calculators.add(new SubtractionCalculator());
-		calculators.add(new MultiplicationCalculator());
-		calculators.add(new DivisionCalculator());
-	}
-
 	private static boolean isNumberPattern(String str) {
 		return ONLY_NUMBER_PATTERN.matcher(str).matches();
 	}
@@ -46,9 +38,8 @@ public class StringCalculator {
 	}
 
 	public String calculate(int num2, String op, int num1) {
-		Optional<Calculator> maybeCalculator = calculators.stream().filter(o -> o.isValidOperator(op)).findFirst();
-		Calculator calculator = maybeCalculator.orElseThrow(IllegalArgumentException::new);
-		return String.valueOf(calculator.calculate(num1, num2));
+		Operator operator = Operator.of(op);
+		return operator.calculate(num1, num2);
 	}
 
 	public boolean isEmpty(String str) {
