@@ -14,7 +14,7 @@ import simpleracing.view.OutputView;
 
 public class CarRacingExecutor {
 
-	InputView carRacingInput;
+	private InputView carRacingInput;
 	private CarGame racingGame;
 	private OutputView carRacingOutput;
 
@@ -27,11 +27,14 @@ public class CarRacingExecutor {
 	public void execute() {
 		CarRacingInitValue initValue = carRacingInput.input();
 
-		List<Car> cars = IntStream.range(0, initValue.getCarCount())
-								  .mapToObj(carNumber -> new Car(carNumber, this.racingGame))
-								  .collect(toList());
-
-		this.playGame(initValue, cars);
+		this.playGame(initValue, IntStream.range(0, initValue.getCarCount())
+										  .mapToObj(carNumber -> new Car(carNumber,
+																		 initValue.getNames()
+																				  .get(carNumber)
+																				  .trim(),
+																		 this.racingGame)
+												   )
+										  .collect(toList()));
 		carRacingOutput.render();
 
 	}
