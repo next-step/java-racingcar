@@ -1,16 +1,6 @@
 package calculator;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class StringCalculator {
-    private static List<Operation> operations = new ArrayList<>();
-    static {
-        operations.add(new PlusOperation());
-        operations.add(new MinusOperation());
-        operations.add(new MultipleOperation());
-        operations.add(new DivideOperation());
-    }
 
     public static int calculate(String value) {
         String[] values = value.split(" ");
