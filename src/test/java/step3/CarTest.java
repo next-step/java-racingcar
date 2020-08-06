@@ -2,6 +2,7 @@ package step3;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import step3.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -18,7 +19,7 @@ class CarTest {
     @CsvSource(value = {"yongdae", "tester"})
     void constructorWithThrowRuntimeException(String name) {
         assertThatThrownBy(() -> {
-            Car car = new Car(name);
+            new Car(name);
         }).isInstanceOf(RuntimeException.class);
     }
 

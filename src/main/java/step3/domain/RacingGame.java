@@ -1,4 +1,4 @@
-package step3;
+package step3.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -52,6 +52,16 @@ public class RacingGame {
     }
 
     /**
+     * 현재 게임에 이용되는 자동차 목록을 반환한다.
+     *
+     * @return
+     */
+    public List<Car> getListOfCarsUsed() {
+        return this.listOfCarsUsed;
+    }
+
+
+    /**
      * 생성자를 설정해 초기화를 한다.
      *
      * @param namesOfCarsText
@@ -94,56 +104,8 @@ public class RacingGame {
         if (!this.hasNextRace())
             return;
 
-        PrintMessage.println();
-
-        for (Car car : this.listOfCarsUsed) {
-            car.go();
-            car.showMeThePosition();
-        }
+        for (Car car : this.listOfCarsUsed) car.go();
 
         this.round++;
-    }
-
-    /**
-     * 경기에서 우승한 자동차 목록을 출력한다.
-     */
-    private void showMeTheChampion() {
-        // 경기가 모두 끝났으면 우승자를 판별하여 출력한다.
-        if (!this.hasNextRace())
-            PrintMessage.print(
-                    "\n%s 가 최종 우승했습니다.",
-                    String.join(", ",
-                            this.getChampions(this.listOfCarsUsed)
-                                    .stream()
-                                    .map(car -> car.getName())
-                                    .collect(Collectors.toList()))
-            );
-    }
-
-    /**
-     * 정해진 시도 횟수 만큼의 모든 경기를 진행한다.
-     */
-    public void racingAll() {
-        while (this.hasNextRace()) {
-            this.racing();
-        }
-
-        this.showMeTheChampion();
-    }
-
-    /**
-     * 경기에서 우승한 자동차 목록을 반환한다.
-     *
-     * @return
-     */
-    public static List<Car> getChampions(List<Car> cars) {
-        int max = cars.stream()
-                .mapToInt(Car::getCurrentPosition)
-                .max()
-                .orElse(-1);
-
-        return cars.stream()
-                .filter(car -> car.getCurrentPosition() == max)
-                .collect(Collectors.toList());
     }
 }

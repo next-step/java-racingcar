@@ -1,4 +1,6 @@
-package step3;
+package step3.domain;
+
+import step3.lib.PrintMessage;
 
 import java.util.Random;
 import java.util.stream.IntStream;
@@ -34,6 +36,18 @@ public class Car {
         if (name.length() > VALID_NAME_MAX_LENGTH) throw new RuntimeException("자동차의 이름은 5글자를 초과할 수 없습니다.");
 
         this.name = name;
+    }
+
+    /**
+     * 생성자를 통해 초기화한다.
+     *
+     * @param name
+     */
+    public Car(String name, int position) {
+        if (name.length() > VALID_NAME_MAX_LENGTH) throw new RuntimeException("자동차의 이름은 5글자를 초과할 수 없습니다.");
+
+        this.name = name;
+        this.position = position;
     }
 
     /**
