@@ -15,4 +15,9 @@ public class CarRacingRapScore {
         return cars;
     }
 
+    public List<Car> findBestScoreCars() {
+        int bestScore = cars.stream().map(Car::getPosition).max(Integer::compareTo).get();
+        return cars.stream().filter(car -> car.getPosition() == bestScore).collect(Collectors.toList());
+    }
+
 }
