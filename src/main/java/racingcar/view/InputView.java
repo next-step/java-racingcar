@@ -9,9 +9,11 @@ import static racingcar.util.Printer.display;
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static int inputCarCount() {
-        display(RacingMessage.INPUT_CAR_COUNT);
-        return scanner.nextInt();
+    private InputView() {}
+
+    public static String inputCars() {
+        display(RacingMessage.INPUT_CAR_LIST);
+        return scanner.nextLine();
     }
 
     public static int inputRound() {

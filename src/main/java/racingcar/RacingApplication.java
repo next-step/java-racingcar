@@ -10,13 +10,15 @@ public class RacingApplication {
     }
 
     public static void startRacing() {
-        int carCount = InputView.inputCarCount();
+        String carList = InputView.inputCars();
         int round = InputView.inputRound();
 
-        Cars cars = new Cars(carCount);
+        Cars cars = new Cars(carList);
         for (int i = 0; i < round; i++) {
-            cars.moveAll();
-            ResultView.markMove(cars.getCarList());
+            cars.moveCars();
+            ResultView.markRacing(cars);
         }
+
+        ResultView.printWinner(cars);
     }
 }
