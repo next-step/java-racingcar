@@ -1,9 +1,13 @@
 package com.cspark.nextstep.step21;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class StringCalculationTest {
 
@@ -33,5 +37,15 @@ class StringCalculationTest {
   void divide() {
     assertThat(StringCalculation.calculate("4 / 2"))
         .isEqualTo(2);
+  }
+
+  @DisplayName("null, 빈 문자열, 공백 문자열은 에러 발생")
+  @ParameterizedTest
+  @NullAndEmptySource
+  @ValueSource(strings = {" "})
+  void giveBlankOrNull_whenCalculate_thenThrowsIllegalArgumentException(String value) {
+    assertThatThrownBy(() ->
+        StringCalculation.calculate(value))
+        .isInstanceOf(IllegalArgumentException.class);
   }
 }

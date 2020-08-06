@@ -1,8 +1,14 @@
 package com.cspark.nextstep.step21;
 
+import java.util.Objects;
+
 public class StringCalculation {
 
   public static int calculate(String sentence) {
+    if (Objects.isNull(sentence) || sentence.trim().length() == 0) {
+      throw new IllegalArgumentException("잘못된 입력값입니다.");
+    }
+
     String[] values = sentence.split(" ");
     String operator = values[1];
 
