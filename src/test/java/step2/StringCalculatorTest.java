@@ -3,6 +3,7 @@ package step2;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
@@ -26,11 +27,12 @@ class StringCalculatorTest {
 	}
 
 	@DisplayName(value = "사칙연산 실패 에러 발생 테스트")
-	@Test
-	void getFailResult() {
-		String str = "  ";
-		assertThatIllegalArgumentException().isThrownBy(() -> { stringCalculator.getResult(str); })
-				.withMessage("입력 값이 null이거나 빈 공백 문자");
+	@ParameterizedTest
+	@ValueSource(strings = {"  ", "+", "* 3 ", " 4", "* 4 4", "1+2", "+3-2", "4.5 + 5.5", "4 - 2 *"})
+	void getFailResult(String str) {
+		assertThat(stringCalculator.isPossibleCalculate(str)).isFalse();
+		//assertThatIllegalArgumentException().isThrownBy(() -> { stringCalculator.getResult(str); })
+		//		.withMessage("계산할 수 없는 문자열");
 	}
 
 	@DisplayName(value = "각 연산자별 사칙연산 테스트")
@@ -49,10 +51,11 @@ class StringCalculatorTest {
 	}
 
 	@DisplayName(value = "덧셈 테스트")
-	@Test
-	void addition() {
-		assertThat(stringCalculator.calculate(102, "+", 10))
-				.isEqualTo("112")
+	@ParameterizedTest
+	@CsvSource(value = {"2 + 3=5", "1 + 1 + 10000=10002", "0 + 999=999", "1=1"}, delimiter = '=')
+	void addition(String value, String expected) {
+		assertThat(stringCalculator.getResult(value))
+				.isEqualTo(expected)
 				.isNotEmpty();
 	}
 

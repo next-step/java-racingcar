@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 public class StringCalculator {
 	private static final Pattern ONLY_NUMBER_PATTERN = Pattern.compile("^[0-9]+$");
 	private static final Pattern BLANK_PATTERN = Pattern.compile("^\\s*$");
+	private static final String SEPARATOR = " ";
 
 	private static boolean isNumberPattern(String str) {
 		return ONLY_NUMBER_PATTERN.matcher(str).matches();
@@ -16,11 +17,11 @@ public class StringCalculator {
 	}
 
 	public String getResult(String str) {
-		if(this.isEmpty(str)) {
-			throw new IllegalArgumentException("입력 값이 null이거나 빈 공백 문자");
+		if(!this.isPossibleCalculate(str)) {
+			throw new IllegalArgumentException("계산할 수 없는 문자열");
 		}
 
-		String[] values = str.split(" ");
+		String[] values = str.split(SEPARATOR);
 		Stack<String> expression = new Stack<>();
 		for(String value : values) {
 			expression.push(value);
@@ -42,8 +43,17 @@ public class StringCalculator {
 		return operator.calculate(num1, num2);
 	}
 
+	public boolean isPossibleCalculate(String str) {
+		String[] strings = str.split(SEPARATOR);
+		return !isEmpty(str) && isLengthOver3(str) && strings.length%3 == 0;
+	}
+
 	public boolean isEmpty(String str) {
 		return null == str || str.length() == 0 || isBlankPattern(str);
+	}
+
+	public boolean isLengthOver3(String str) {
+		return str.length() >= 3;
 	}
 
 }

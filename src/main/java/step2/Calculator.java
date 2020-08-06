@@ -1,5 +1,5 @@
 package step2;
 
-public interface Op {
+public interface Calculator {
 	int calculate(int num1, int num2);
 }

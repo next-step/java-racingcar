@@ -11,11 +11,11 @@ public enum Operator {
 	;
 
 	private final String operator;
-	private final Op op;
+	private final Calculator calculator;
 
-	Operator(String operator, Op op) {
+	Operator(String operator, Calculator calculator) {
 		this.operator = operator;
-		this.op = op;
+		this.calculator = calculator;
 	}
 
 	public static Operator of(String value) {
@@ -24,6 +24,6 @@ public enum Operator {
 	}
 
 	public String calculate(int num1, int num2) {
-		return String.valueOf(op.calculate(num1, num2));
+		return String.valueOf(calculator.calculate(num1, num2));
 	}
 }
