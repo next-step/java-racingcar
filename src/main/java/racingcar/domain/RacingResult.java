@@ -1,28 +1,29 @@
 package racingcar.domain;
 
 public final class RacingResult  {
-    private final String prefix;
+    public static final String DEFAULT_RACING_CAR_NAME = "";
+    private final String racingCarName;
     private final int totalMileage;
 
-    RacingResult(String prefix, int totalMileage) {
-        this.prefix = prefix;
+    RacingResult(String racingCarName, int totalMileage) {
+        this.racingCarName = racingCarName;
         this.totalMileage = totalMileage;
     }
 
     public static RacingResult defaultResult(int totalMileage){
-        return new RacingResult("", totalMileage);
+        return new RacingResult(DEFAULT_RACING_CAR_NAME, totalMileage);
     }
 
     public static RacingResult namedResult(String name, int totalMileage){
         return new RacingResult(name, totalMileage);
     }
 
-    public String getPrefix() {
-        return prefix;
+    public String getRacingCarName() {
+        return racingCarName;
     }
 
-    public boolean isEmptyPrefix(){
-        return "".equals(getPrefix());
+    public boolean isNotNamedRacingResult(){
+        return DEFAULT_RACING_CAR_NAME.equals(getRacingCarName());
     }
 
     public int getTotalMileage() {

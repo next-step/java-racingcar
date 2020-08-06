@@ -1,4 +1,4 @@
-package racingcar.ui.dto;
+package racingcar.ui.view;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

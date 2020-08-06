@@ -1,4 +1,4 @@
-package racingcar.ui.dto;
+package racingcar.ui.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,10 +26,10 @@ public class MotorRacingDisplayRoundResult {
     }
 
     private String displayRacingResult(RacingResult racingResult){
-        if(racingResult.isEmptyPrefix()){
+        if(racingResult.isNotNamedRacingResult()){
             return repate(racingResult.getTotalMileage());
         }
-        return String.format("%s : %s", racingResult.getPrefix(), repate(racingResult.getTotalMileage()));
+        return String.format("%s : %s", racingResult.getRacingCarName(), repate(racingResult.getTotalMileage()));
     }
 
     @Override
@@ -40,7 +40,7 @@ public class MotorRacingDisplayRoundResult {
             ;
     }
 
-    public static MotorRacingDisplayWinnerResults getWinnerResults() {
-        return winnerResults;
+    static List<String> getWinnerResults() {
+        return winnerResults.getWinners();
     }
 }

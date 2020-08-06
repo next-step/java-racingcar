@@ -1,4 +1,7 @@
-package racingcar.domain;
+package racingcar.domain.core;
+
+import racingcar.domain.rule.MotorRacingRule;
+import racingcar.domain.RacingResult;
 
 import static racingcar.domain.RacingResult.defaultResult;
 

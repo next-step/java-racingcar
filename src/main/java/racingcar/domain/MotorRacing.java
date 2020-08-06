@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import racingcar.ui.dto.MotorRacingDisplayResults;
-import racingcar.ui.dto.MotorRacingDisplayRoundResult;
+import racingcar.domain.core.RacingCar;
+import racingcar.domain.rule.MotorRacingRule;
+import racingcar.ui.view.MotorRacingDisplayResults;
+import racingcar.ui.view.MotorRacingDisplayRoundResult;
 
 import static java.util.stream.Collectors.toList;
 
@@ -14,6 +16,7 @@ public class MotorRacing {
     private final List<RacingCar> racingCars;
     private final MotorRacingRule motorRacingRule;
 
+    @Deprecated
     MotorRacing(int carCount, MotorRacingRule motorRacingRule) {
         this.racingCars = Stream.generate(RacingCar::attend)
             .limit(carCount)
@@ -29,12 +32,13 @@ public class MotorRacing {
         this.motorRacingRule = motorRacingRule;
     }
 
+    @Deprecated
     public static MotorRacing randomMotorRacing(int carCount){
-        return new MotorRacing(carCount,  new MotorRacingRandomMoveRule());
+        return new MotorRacing(carCount,  MotorRacingRule.defaultMoveRule());
     }
 
     public static MotorRacing randomMotorRacing(Set<String> carNames){
-        return new MotorRacing(carNames,  new MotorRacingRandomMoveRule());
+        return new MotorRacing(carNames,  MotorRacingRule.defaultMoveRule());
     }
 
     public MotorRacingDisplayResults racing(final int raceRound){

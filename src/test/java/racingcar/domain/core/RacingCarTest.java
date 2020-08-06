@@ -1,9 +1,12 @@
-package racingcar.domain;
+package racingcar.domain.core;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import racingcar.domain.rule.MotorRacingRule;
+import racingcar.domain.RacingResult;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -35,7 +38,7 @@ class RacingCarTest {
     void validNameTest(final String testName) {
         int length = RacingCar.attend(testName)
                               .getResult()
-                              .getPrefix()
+                              .getRacingCarName()
                               .length()
             ;
         assertThat(length).isLessThanOrEqualTo(NamedRacingCar.MAX_NAME_LEN);
