@@ -23,12 +23,14 @@ public class Main {
         List<String> carNameList = StringUtils.getParsedStringList(carNames, RacingCarSimulator.CAR_NAME_DELIMITER);
         ValidationUtils.validateStringLengthLimitWithList(carNameList,
                 RacingCar.CAR_NAME_LIMIT, ExceptionMessage.EXCEED_CAR_NAME_LENGTH);
+
         carSimulator.setRacingCarList(carNameList);
 
         inputView.printPhraseToConsole("시도할 회수는 몇 회 인가요?");
         carSimulator.setGameRepeatNum(inputView.getIntegerFromConsoleInput());
 
-        resultView.printPhraseToConsole("실행 결과");
-        carSimulator.simulate(resultView);
+        carSimulator.simulate();
+
+        resultView.printRacingSimulateResult(carSimulator);
     }
 }

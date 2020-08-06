@@ -1,23 +1,27 @@
 package com.hskim.nextstep.step03.racing;
 
 import com.hskim.nextstep.step03.exception.ExceptionMessage;
+import com.hskim.nextstep.step03.model.Racing;
 import com.hskim.nextstep.step03.model.RacingCar;
-import com.hskim.nextstep.step03.ui.ResultView;
 
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingCarSimulator {
 
+    private static final int MOVE_DISTANCE_PER_GAME = 1;
     public static final String CAR_NAME_DELIMITER = ",";
     private List<RacingCar> racingCarList;
     private int gameRepeatNum;
+    private List<Racing> racingHistory;
 
     public RacingCarSimulator() {
 
         racingCarList = Collections.emptyList();
         gameRepeatNum = 0;
+        racingHistory = new LinkedList<>();
     }
 
     public void setRacingCarList(List<String> carNameList) {
@@ -32,24 +36,27 @@ public class RacingCarSimulator {
         gameRepeatNum = repeatNum;
     }
 
-    public void simulate(ResultView resultView) {
+    public void simulate() {
 
         for (int index = 1; index <= gameRepeatNum; index++) {
 
-            runGame(index, resultView);
+            runGame(index);
         }
-
-        resultView.printPhraseToConsole(findWinners() + "가 최종 우승했습니다.");
     }
 
-    private void runGame(int gameNo, ResultView resultView) {
+    private void runGame(int gameNo) {
 
-        resultView.printPhraseToConsole(" === GAME No." + gameNo + " ===");
-        racingCarList.forEach(rc -> resultView.printPhraseToConsole(resultView.makeMoveProgressString(rc)));
-        resultView.printPhraseToConsole("");
+        Racing racing = new Racing(gameNo);
+
+        racingCarList.forEach(racingCar -> {
+            racingCar.moveForward(MOVE_DISTANCE_PER_GAME);
+            racing.addRecord(racingCar);
+        });
+
+        racingHistory.add(racing);
     }
 
-    private String findWinners() {
+    public List<RacingCar> findWinners() {
 
         int winnerTotalDistance = racingCarList.stream()
                 .map(RacingCar::getTotalMovedDistance)
@@ -58,8 +65,7 @@ public class RacingCarSimulator {
 
         return racingCarList.stream()
                 .filter(racingCar -> racingCar.getTotalMovedDistance() == winnerTotalDistance)
-                .map(RacingCar::getCarName)
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.toList());
     }
 
     //getter
@@ -67,7 +73,5 @@ public class RacingCarSimulator {
         return racingCarList;
     }
 
-    public int getGameRepeatNum() {
-        return gameRepeatNum;
-    }
+    public List<Racing> getRacingHistory() { return racingHistory; }
 }
