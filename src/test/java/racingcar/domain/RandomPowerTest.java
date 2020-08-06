@@ -10,7 +10,7 @@ public class RandomPowerTest {
     @DisplayName("랜덤값 범위 검증")
     @RepeatedTest(100)
     void makeRandomIntValue() {
-        assertThat(RandomPower.nextInt())
+        assertThat(RandomPower.getInstance().nextInt())
                 .isGreaterThanOrEqualTo(0)
                 .isLessThan(10);
     }

@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import resource.StringResources;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class RacingDataTest {
@@ -21,14 +23,21 @@ public class RacingDataTest {
         assertThat(racingData.getTryCount()).isEqualTo(tryCount);
     }
 
-    @DisplayName("RacingData 생성 실패")
+    @DisplayName("RacingData 생성 실패 - 자동차 대수와 자동차 이름 개수 불일치")
     @ParameterizedTest
-    @CsvSource(value = {"a,b,c:2:5", "a,b:3:4"},
-            delimiter = ':')
+    @CsvSource(value = {"a,b,c:2:5", "a,b:3:4"}, delimiter = ':')
     public void makeRacingDataFail(String names, int numberOfCars, int tryCount) {
+        assertThatIllegalArgumentException()
+            .isThrownBy(() -> new RacingData(names, numberOfCars, tryCount))
+            .withMessage(StringResources.ERR_INVALID_CAR_DATA);;
+    }
 
-        assertThatThrownBy(() -> {
-            RacingData racingData = new RacingData(names, numberOfCars, tryCount);
-        }).isInstanceOf(IllegalArgumentException.class);
+    @DisplayName("RacingData 생성 실패 - 너무 긴 자동차 이름")
+    @ParameterizedTest
+    @CsvSource(value = {"abcdef,abcde,abcd:3:5", "aaaaaaaaaaaa,b:2:4"}, delimiter = ':')
+    public void tooLongNameData(String names, int numberOfCars, int tryCount) {
+        assertThatIllegalArgumentException()
+            .isThrownBy(() -> new RacingData(names, numberOfCars, tryCount))
+            .withMessage(StringResources.ERR_LONG_NAME);
     }
 }
