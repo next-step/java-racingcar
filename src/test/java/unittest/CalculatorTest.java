@@ -47,7 +47,10 @@ public class CalculatorTest {
 
     static Stream<Arguments> getStringArrayParameter() {
         return Stream.of(
-                Arguments.of(new String[]{"1", "+", "2"}, 3)
+                Arguments.of(new String[]{"1", "+", "2"}, 3),
+                Arguments.of(new String[]{"1", "*", "2"}, 2),
+                Arguments.of(new String[]{"1", "-", "2"}, -1),
+                Arguments.of(new String[]{"4", "/", "2"}, 2)
         );
     }
 }
