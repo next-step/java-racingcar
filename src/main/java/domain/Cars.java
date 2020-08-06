@@ -1,37 +1,48 @@
 package domain;
 
-import Strategy.AboveNumberMove;
-import Strategy.MovableStrategy;
-import view.ResultView;
+import strategy.MovableStrategy;
+import strategy.NumberGeneratorStrategy;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Random;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars = new ArrayList();
+    private final NumberGeneratorStrategy numberGeneratorStrategy;
 
-    private final Random random = new Random();
-    private static final int RANDOM_NUMBER_BOUND = 10;
-
-    public Cars(int numberOfCar, MovableStrategy movableStrategy) {
-        for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car(movableStrategy));
+    public Cars(Set<String> players, MovableStrategy movableStrategy, NumberGeneratorStrategy numberGeneratorStrategy) {
+        this.numberGeneratorStrategy = numberGeneratorStrategy;
+        for (String player : players) {
+            cars.add(new Car(player, movableStrategy));
         }
     }
 
     public void race() {
         for (Car car : cars) {
-            int randomNumber = random.nextInt(RANDOM_NUMBER_BOUND);
-            car.move(randomNumber);
+            car.move(numberGeneratorStrategy.generate());
         }
-    }
-
-    public int getNumberOfCars() {
-        return cars.size();
     }
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public String getWinners() {
+        Integer maxLocation = this.getMaxLocation();
+
+        return cars.stream()
+                .filter(it -> it.getLocation() == maxLocation)
+                .map(Car::getPlayer)
+                .collect(Collectors.joining(", "));
+    }
+
+    private Integer getMaxLocation() {
+        return cars.stream()
+                .max(Comparator.comparingInt(Car::getLocation))
+                .map(Car::getLocation)
+                .orElse(0);
     }
 }

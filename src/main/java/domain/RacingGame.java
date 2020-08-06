@@ -1,23 +1,27 @@
 package domain;
 
-import Strategy.AboveNumberMove;
+import strategy.AboveNumberMove;
+import strategy.RandomNumberGenerator;
 import view.InputView;
 import view.ResultView;
+
+import java.util.Set;
 
 public class RacingGame {
 
     private static final int  MOVABLE_NUMBER = 4;
 
     public void start() {
-        int numberOfCars = InputView.inputNumberOfCar();
+        Set<String> numberOfCars = InputView.inputNumberOfCar();
         int time = InputView.inputTime();
 
-        Cars cars = new Cars(numberOfCars, new AboveNumberMove(MOVABLE_NUMBER));
+        Cars cars = new Cars(numberOfCars, new AboveNumberMove(MOVABLE_NUMBER), new RandomNumberGenerator());
 
         ResultView.printResultLine();
         for (int i = 0; i < time; i++) {
             cars.race();
             ResultView.printLocations(cars.getCars());
         }
+        ResultView.printWinners(cars);
     }
 }

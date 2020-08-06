@@ -1,4 +1,4 @@
-package Strategy;
+package strategy;
 
 public interface MovableStrategy {
     boolean move(int number);
