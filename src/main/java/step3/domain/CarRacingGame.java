@@ -14,8 +14,8 @@ public class CarRacingGame {
     private final int numberOfAttempts;
     private List<CarRacingRapScore> rapResults = new ArrayList<>();
 
-    public CarRacingGame(int numberOfCars, int numberOfAttempts) {
-        this.cars = CarFactory.create(numberOfCars);
+    public CarRacingGame(String[] names, int numberOfAttempts) {
+        this.cars = CarFactory.creates(names);
         this.numberOfAttempts = numberOfAttempts;
     }
 
