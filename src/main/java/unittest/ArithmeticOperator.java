@@ -27,7 +27,7 @@ public enum ArithmeticOperator {
         return Arrays.stream(ArithmeticOperator.values())
                 .filter(value -> value.operator.equals(inputOperator))
                 .findAny()
-                .orElseThrow(() -> new IllegalArgumentException());
+                .orElseThrow(() -> new IllegalArgumentException("Is Not ArithmeticOperator(+, -, *, %)"));
     }
 
 
