@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import racingcar.ui.InputView;
 import resource.StringResources;
 
 public class RacingData {
@@ -11,6 +12,7 @@ public class RacingData {
     private final int tryCount;
 
     public RacingData(String names, int numberOfCars, int tryCount) {
+
         this.names = names.split(",");
         this.numberOfCars = numberOfCars;
         this.tryCount = tryCount;
@@ -22,6 +24,11 @@ public class RacingData {
         for (String name : this.names) {
             verifyNameLength(name);
         }
+    }
+
+    public static RacingData of(InputView inputView) {
+        return new RacingData(inputView.getNames(),
+                inputView.getNumberOfCars(), inputView.getTryCount());
     }
 
     private void verifyNameLength(String name) {
