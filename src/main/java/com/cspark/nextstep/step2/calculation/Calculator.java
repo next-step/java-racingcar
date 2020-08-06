@@ -1,17 +1,8 @@
 package com.cspark.nextstep.step2.calculation;
 
-import java.util.function.BiFunction;
+@FunctionalInterface
+public interface Calculator {
 
-public abstract class Calculator {
-
-  private final BiFunction<Integer, Integer, Integer> operator;
-
-  public Calculator(BiFunction<Integer, Integer, Integer> operator) {
-    this.operator = operator;
-  }
-
-  public Integer calculate(int x, int y) {
-    return operator.apply(x, y);
-  }
+  int calculate(int x, int y);
 
 }
