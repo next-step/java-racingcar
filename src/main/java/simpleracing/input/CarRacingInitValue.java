@@ -1,22 +1,19 @@
 package simpleracing.input;
 
-public class CarRacingInitValue implements InitValue {
+import java.util.List;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class CarRacingInitValue {
 	private int carCount;
 	private int tryCount;
+	private List<String> names;
 
-	public int getCarCount() {
-		return carCount;
-	}
-
-	public void setCarCount(int carCount) {
-		this.carCount = carCount;
-	}
-
-	public int getTryCount() {
-		return tryCount;
-	}
-
-	public void setTryCount(int tryCount) {
-		this.tryCount = tryCount;
+	public void setNames(List<String> names) {
+		this.names = names;
+		this.carCount = names.size();
 	}
 }
