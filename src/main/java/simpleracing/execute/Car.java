@@ -1,57 +1,34 @@
 package simpleracing.execute;
 
-import static java.util.stream.Collectors.toList;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
-
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(of = {"id"})
 public class Car {
 	private int id;
-	private List<Integer> randomValues;
+	private String name;
 	private CarGame carRacingGame;
+	private String location;
 
-	public Car(int id, CarGame carRacingGame) {
+	public Car(int id, String name, CarGame carRacingGame) {
 		this.id = id;
+		this.name = name;
 		this.carRacingGame = carRacingGame;
-		this.randomValues = new ArrayList<>();
+		this.location = Direction.STOP.getSign();
 	}
 
 	public void play() {
 		carRacingGame.play(this);
 	}
 
-	public List<Direction> getDirections() {
-		return randomValues.stream()
-						   .map(value -> Direction.getBy(value))
-						   .collect(toList());
-	}
-
-	public void addGameResult(int result) {
-		this.randomValues.add(result);
-	}
-
-	public String getLocationOf(int round) {
-		String currentValue = "";
-		for (int i = 0; i < round; i++) {
-			String current = Direction.getBy(randomValues.get(i)).getSign();
-			currentValue += current;
-		}
-		return currentValue;
-	}
-
 	public String getLocation() {
-		return getLocationOf(randomValues.size());
+		return this.location;
 	}
 
+	public String getName() {
+		return this.name;
+	}
 
-	@Override
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
+	public void move(Direction direction) {
+		location += direction.getSign();
 	}
 }
