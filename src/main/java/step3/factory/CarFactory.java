@@ -1,6 +1,5 @@
 package step3.factory;
 
-import step3.domain.BasicForwardStrategy;
 import step3.domain.Car;
 import step3.domain.ForwardStrategy;
 
@@ -11,14 +10,10 @@ public class CarFactory {
 
     private static ForwardStrategy forwardStrategy;
 
-    static {
-        forwardStrategy = new BasicForwardStrategy();
-    }
-
     public static List<Car> create(int numberOfCars) {
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car(forwardStrategy));
+            cars.add(new Car());
         }
         return cars;
     }
