@@ -1,6 +1,9 @@
-package racingcar.domain;
+package racingcar.domain.core;
 
 import java.util.regex.Pattern;
+
+import racingcar.domain.MotorRacingRule;
+import racingcar.domain.RacingResult;
 
 import static racingcar.domain.RacingResult.namedResult;
 

@@ -1,6 +1,9 @@
-package racingcar.domain;
+package racingcar.domain.core;
 
-interface RacingCar {
+import racingcar.domain.MotorRacingRule;
+import racingcar.domain.RacingResult;
+
+public interface RacingCar {
     static RacingCar attend(){
         return new IncreaseMileageRacingCar();
     }
