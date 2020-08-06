@@ -1,7 +1,4 @@
-package step5.stretegy;
-
-import step5.stretegy.BoundedDice;
-import step5.stretegy.MoveStrategy;
+package step5.domain.stretegy;
 
 import java.util.function.IntSupplier;
 

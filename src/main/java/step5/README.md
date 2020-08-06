@@ -9,3 +9,4 @@
 ---
 ## Feature List
 0. step4 소스 복사 커밋으로 시작!
+1. Car 클래스,  MoveStrategy 인터페이스, DiceStrategy 클래스, BoundedDice 클래스 domain 패키지로 이동 (strategy 패키지는 도메인 패키지 하위로)

@@ -1,10 +1,10 @@
-package step5;
+package step5.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step5.Car;
-import step5.stretegy.MoveStrategy;
+import step5.domain.Car;
+import step5.domain.stretegy.MoveStrategy;
 
 import java.util.function.BooleanSupplier;
 

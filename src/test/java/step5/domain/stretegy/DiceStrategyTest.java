@@ -1,9 +1,7 @@
-package step5.stretegy;
+package step5.domain.stretegy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step5.stretegy.DiceStrategy;
-import step5.stretegy.MoveStrategy;
 
 import java.util.function.IntSupplier;
 

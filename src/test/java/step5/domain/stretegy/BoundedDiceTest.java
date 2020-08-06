@@ -1,9 +1,8 @@
-package step5.stretegy;
+package step5.domain.stretegy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import step5.stretegy.BoundedDice;
 
 import java.util.stream.IntStream;
 

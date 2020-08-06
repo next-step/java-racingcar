@@ -1,8 +1,8 @@
-package step5;
+package step5.domain;
 
 import step5.dto.CarWentResult;
-import step5.stretegy.DiceStrategy;
-import step5.stretegy.MoveStrategy;
+import step5.domain.stretegy.DiceStrategy;
+import step5.domain.stretegy.MoveStrategy;
 
 import java.util.Objects;
 

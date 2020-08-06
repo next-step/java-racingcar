@@ -3,9 +3,7 @@ package step5.collections;
 import com.sun.tools.javac.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step5.Car;
-import step5.collections.AttemptResult;
-import step5.collections.RacingCars;
+import step5.domain.Car;
 import step5.dto.CarWentResult;
 
 import static org.assertj.core.api.Assertions.assertThat;

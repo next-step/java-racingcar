@@ -1,4 +1,4 @@
-package step5.stretegy;
+package step5.domain.stretegy;
 
 public interface MoveStrategy {
 
