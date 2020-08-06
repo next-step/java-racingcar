@@ -15,11 +15,4 @@ public class InputViewTest {
     void Check_String_How_Many_Cars_Or_How_Many_Trials(String value, String expected) {
         assertThat(question.askQuestion(value)).isEqualTo(expected);
     }
-
-    @ParameterizedTest
-    @CsvSource(value = {"1,4,4", "2,3,3"})
-    void Record_Cars_In_InputView(String qNumber, int input, int expected) {
-        question.enterAnswerForQuestion(qNumber, input);
-        assertThat(question.getAnswer(qNumber)).isEqualTo(expected);
-    }
 }
