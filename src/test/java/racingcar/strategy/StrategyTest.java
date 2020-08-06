@@ -31,6 +31,7 @@ public class StrategyTest {
     }
 
     ////////////////////////////////////////////////////////////////////
+    /* Strategy 아닌 Cars 일급 콜렉션 용 Test로 이관
     @DisplayName("n : 자동차 대수 입력값 없거나 0일 경우")
     @ParameterizedTest
     @CsvSource
@@ -39,6 +40,8 @@ public class StrategyTest {
         //showZeroOrBlankCarCount()
         //실행 결과 println('')
     }
+     */
+
 
     // int 0 (position) 또는 emptyString을 반환?
     @DisplayName("m : 이동 시행 횟수 입력값 없거나 0일 경우")
