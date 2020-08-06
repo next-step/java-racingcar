@@ -73,5 +73,7 @@ public class RacingCarSimulator {
         return racingCarList;
     }
 
-    public List<Racing> getRacingHistory() { return racingHistory; }
+    public List<Racing> getRacingHistory() {
+        return racingHistory;
+    }
 }

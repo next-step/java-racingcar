@@ -10,6 +10,7 @@ import java.util.*;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
+
 /*
     com.hskim.nextstep.step02 - StringCalculator class 테스트
  */
