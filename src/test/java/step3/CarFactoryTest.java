@@ -1,6 +1,7 @@
 package step3;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import step3.factory.CarFactory;
@@ -17,11 +18,11 @@ public class CarFactoryTest {
         assertThat(CarFactory.create(name).getName()).isEqualTo(name);
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"pobi,crong,honux"})
+    @Test
     @DisplayName("자동자 생성")
-    public void create(String[] names) {
-        assertThat(CarFactory.creates(names)).hasSize(1);
+    public void creates() {
+        String[] names = { "pobi", "crong", "honux" };
+        assertThat(CarFactory.creates(names)).hasSize(names.length);
     }
 
 }
