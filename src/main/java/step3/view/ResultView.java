@@ -1,6 +1,6 @@
 package step3.view;
 
-import step3.Car;
+import step3.dto.Car;
 
 import java.util.List;
 

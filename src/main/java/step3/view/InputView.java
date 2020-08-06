@@ -1,6 +1,6 @@
 package step3.view;
 
-import step3.Competition;
+import step3.dto.Competition;
 
 import java.util.Scanner;
 
