@@ -3,8 +3,8 @@ package step3;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.domain.BasicForwardStrategy;
 import step3.domain.Car;
+import step3.domain.MoveOneForwardStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,7 +15,7 @@ public class CarTest {
 
     @BeforeEach
     public void setUp() {
-        car = new Car(new BasicForwardStrategy());
+        car = new Car();
     }
 
     @Test
@@ -28,7 +28,7 @@ public class CarTest {
     @DisplayName("이동한다.")
     public void move() {
         int currentPosition = car.getPosition();
-        assertThat(car.move().getPosition()).isGreaterThanOrEqualTo(currentPosition);
+        assertThat(car.move(new MoveOneForwardStrategy()).getPosition()).isIn(currentPosition, currentPosition + 1);
     }
 
 }
