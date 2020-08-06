@@ -1,6 +1,6 @@
 package calculator;
 
-import calculator.util.StringUtils;
+import util.StringUtils;
 
 public class Calculator {
     private static final String DELIMITER = " ";

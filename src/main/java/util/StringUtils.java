@@ -1,4 +1,4 @@
-package calculator.util;
+package util;
 
 import calculator.ExceptionMessage;
 
@@ -8,7 +8,7 @@ public class StringUtils {
         return input == null || input.replace(" ", "").equals("");
     }
 
-    public static boolean isNumeric(String string) {
+    public static boolean validateNumber(String string) {
         if (isBlank(string)) {
             return false;
         }
@@ -22,9 +22,9 @@ public class StringUtils {
     }
 
     public static double getNumber(String string) {
-        if (isNumeric(string)) {
-            return Double.parseDouble(string);
+        if (!validateNumber(string)) {
+            throw new IllegalArgumentException(string + ExceptionMessage.INVALID_INPUT_NUMBER);
         }
-        throw new IllegalArgumentException(string + ExceptionMessage.INVALID_INPUT_NUMBER);
+        return Double.parseDouble(string);
     }
 }

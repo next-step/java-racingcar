@@ -1,4 +1,4 @@
-package calculator.util;
+package util;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -29,8 +29,8 @@ public class StringUtilsTest {
     @DisplayName("숫자 형식 여부 테스트")
     @ParameterizedTest
     @CsvSource(value = {"3030:true", "3.1415926:true", "000:true", "OOO:false", "string:false"}, delimiter = ':')
-    void isNumeric_test(String input, boolean result) {
-        assertThat(StringUtils.isNumeric(input)).isEqualTo(result);
+    void validateNumber_test(String input, boolean result) {
+        assertThat(StringUtils.validateNumber(input)).isEqualTo(result);
     }
 
     @DisplayName("String to Number 변환 테스트")
