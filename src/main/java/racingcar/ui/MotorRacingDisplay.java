@@ -2,7 +2,7 @@ package racingcar.ui;
 
 import java.util.stream.Stream;
 
-import racingcar.ui.dto.MotorRacingDisplayResults;
+import racingcar.ui.view.MotorRacingDisplayResults;
 
 public class MotorRacingDisplay {
     public static void racingResultDisplay(MotorRacingDisplayResults results){

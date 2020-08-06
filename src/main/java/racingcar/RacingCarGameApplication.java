@@ -3,7 +3,7 @@ package racingcar;
 import racingcar.domain.MotorRacing;
 import racingcar.ui.MotorRacingUserInput;
 import racingcar.ui.UserInputInfo;
-import racingcar.ui.dto.MotorRacingDisplayResults;
+import racingcar.ui.view.MotorRacingDisplayResults;
 
 import static racingcar.ui.MotorRacingDisplay.racingResultDisplay;
 

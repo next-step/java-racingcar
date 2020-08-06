@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import racingcar.ui.dto.MotorRacingDisplayResults;
-import racingcar.ui.dto.MotorRacingDisplayRoundResult;
+import racingcar.ui.view.MotorRacingDisplayResults;
+import racingcar.ui.view.MotorRacingDisplayRoundResult;
 
 import static java.util.stream.Collectors.toList;
 

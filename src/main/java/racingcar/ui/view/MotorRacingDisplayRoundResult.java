@@ -1,4 +1,4 @@
-package racingcar.ui.dto;
+package racingcar.ui.view;
 
 import java.util.List;
 import java.util.stream.Collectors;

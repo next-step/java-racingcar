@@ -8,7 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import racingcar.domain.RacingResult;
-import racingcar.ui.dto.MotorRacingDisplayRoundResult;
+import racingcar.ui.view.MotorRacingDisplayRoundResult;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static racingcar.domain.RacingResult.defaultResult;
