@@ -31,7 +31,7 @@ class CarTest {
     @DisplayName("Car 전진 테스트")
     @ParameterizedTest
     @ValueSource(strings = {"유재석"})
-    void stopTest(String name) {
+    void carMoveTest(String name) {
         MoveAbility positiveMoveAbility = () -> true;
         car = new Car(name, 0, positiveMoveAbility);
         car.move();
