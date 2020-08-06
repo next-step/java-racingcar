@@ -18,6 +18,6 @@ public class InputView {
         System.out.println(Messages.INPUT_FOR_NUMBER_OF_TRIALS.valueOf());
         int numberOfTrials = this.scanner.nextInt();
 
-        return GameInputs.createUserArgs(numberOfCars, numberOfTrials);
+        return GameInputs.createGameInputs(numberOfCars, numberOfTrials);
     }
 }

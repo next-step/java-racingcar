@@ -24,13 +24,13 @@ public class ResultView {
     }
 
     private void printAllSteps(List<Integer> positions) {
-        for (Integer pos : positions) {
+        for (int pos : positions) {
             this.printCar(pos);
         }
         writer.println(Messages.RESULT_EMPTY_STRING.valueOf());
     }
 
-    private void printCar(Integer position) {
+    private void printCar(int position) {
         for (int i = 0; i < position; ++ i) {
             writer.print(Messages.RESULT_CAR_SHAPE.valueOf());
         }

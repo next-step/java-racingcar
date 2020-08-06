@@ -9,7 +9,7 @@ public class GameInputs {
         this.numberOfTrials = numberOfTrials;
     }
 
-    public static GameInputs createUserArgs(int numberOfCars, int numberOfTrials) {
+    public static GameInputs createGameInputs(int numberOfCars, int numberOfTrials) {
         return new GameInputs(numberOfCars, numberOfTrials);
     }
 

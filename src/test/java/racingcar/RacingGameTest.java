@@ -15,7 +15,7 @@ class RacingGameTest {
     void setUp() {
         numberOfCars = 3;
         numberOfTrials = 5;
-        GameInputs args = GameInputs.createUserArgs(numberOfCars, numberOfTrials);
+        GameInputs args = GameInputs.createGameInputs(numberOfCars, numberOfTrials);
 
         racingGame = RacingGame.createGame(args);
     }

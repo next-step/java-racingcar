@@ -15,7 +15,7 @@ class RacingGameInputsTest {
     void setUp() {
         numberOfCars = 3;
         numberOfTrials = 5;
-        this.args = GameInputs.createUserArgs(numberOfCars, numberOfTrials);
+        this.args = GameInputs.createGameInputs(numberOfCars, numberOfTrials);
     }
 
     @Test
