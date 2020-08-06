@@ -16,7 +16,7 @@ public class OutputView {
   public void displayLaps() {
     for (int lap = 0; lap < totalOfRepeats; lap++) {
       displayLap(lap);
-      System.out.print("\n");
+      System.out.print(System.lineSeparator());
     }
   }
 

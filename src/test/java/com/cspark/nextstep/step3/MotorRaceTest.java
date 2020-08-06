@@ -27,7 +27,7 @@ class MotorRaceTest {
         .isEqualTo(names.length);
   }
 
-  @DisplayName("자동차명 수와 드라이버 수 비교")
+  @DisplayName("입력된 이동수와 각 드라이버 레코드 카운트 비교")
   @Test
   void givenNumberOfRepeats_whenGame_thenRecordCountIsEqualsToNumberOfRepeats() {
     List<Driver> drivers = motorRace.game();

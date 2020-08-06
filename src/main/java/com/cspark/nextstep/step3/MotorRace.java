@@ -2,6 +2,7 @@ package com.cspark.nextstep.step3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -44,10 +45,10 @@ public class MotorRace {
 
   public List<Driver> podium() {
     return drivers = drivers.stream()
-        .collect(Collectors.groupingBy(driver -> driver.forwardCount()))
+        .collect(Collectors.groupingBy(Driver::forwardCount))
         .entrySet().stream()
         .reduce((a, b) -> a.getKey() > b.getKey() ? a : b)
-        .map(d -> d.getValue())
+        .map(Entry::getValue)
         .get();
 
   }

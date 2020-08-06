@@ -17,12 +17,12 @@ public class InputView {
     this.scanner = scanner;
   }
 
-  public String[] script1() {
+  public String[] nameScript() {
     System.out.println(SCRIPT_Q_NAME);
     return question1.apply(scanner);
   }
 
-  public int script2() {
+  public int repeatsScript() {
     System.out.println(SCRIPT_Q_REPEATS);
     return question2.apply(scanner);
   }

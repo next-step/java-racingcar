@@ -9,6 +9,8 @@ public class Driver {
   private final String name;
   private final Function<Dice, Boolean> rule;
   private final List<Boolean> records;
+  private final int FORWARD = 1;
+  private final int STOP = 0;
 
   public Driver(String name, Function<Dice, Boolean> rule) {
     this.name = name;
@@ -26,7 +28,7 @@ public class Driver {
 
   public int drive(Dice dice) {
     records.add(rule.apply(dice));
-    return records.get(records.size() - 1) ? 1 : 0;
+    return records.get(records.size() - 1) ? FORWARD : STOP;
   }
 
   public long forwardCount() {
