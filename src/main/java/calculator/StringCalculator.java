@@ -13,8 +13,8 @@ public class StringCalculator {
     }
 
     private static int calculate(int first, int second, String operator) {
-        Operator op = Operator.of(operator);
-        return op.operate(first, second);
+        return Operator.of(operator)
+                       .operate(first, second);
     }
 
     private static int toInt(String value) {

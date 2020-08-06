@@ -1,7 +1,6 @@
 package calculator;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 public enum Operator {
     PLUS("+", (x, y) -> x + y),
@@ -10,19 +9,21 @@ public enum Operator {
     DIVIDE("/", (x, y) -> x / y);
 
     private final String operator;
-    private final Op op;
+    private final Operation operation;
 
-    Operator(String operator, Op operation) {
+    Operator(String operator, Operation operation) {
         this.operator = operator;
-        this.op = operation;
+        this.operation = operation;
     }
 
     public static Operator of(String value) {
-        Optional<Operator> maybeOperation = Arrays.stream(values()).filter(o -> o.operator.equals(value)).findFirst();
-        return maybeOperation.orElseThrow(IllegalArgumentException::new);
+        return Arrays.stream(values())
+                     .filter(o -> o.operator.equals(value))
+                     .findFirst()
+                     .orElseThrow(IllegalArgumentException::new);
     }
 
     public int operate(int first, int second) {
-        return op.operate(first, second);
+        return operation.operate(first, second);
     }
 }

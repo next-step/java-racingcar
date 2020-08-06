@@ -1,5 +1,5 @@
 package calculator;
 
-public interface Op {
+public interface Operation {
     int operate(int x, int y);
 }
