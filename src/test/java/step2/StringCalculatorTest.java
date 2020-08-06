@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.*;
@@ -49,7 +51,7 @@ class StringCalculatorTest {
 	@DisplayName(value = "덧셈 테스트")
 	@Test
 	void addition() {
-		assertThat(stringCalculator.addition(102, 10))
+		assertThat(stringCalculator.calculate(102, "+", 10))
 				.isEqualTo("112")
 				.isNotEmpty();
 	}
@@ -57,15 +59,15 @@ class StringCalculatorTest {
 	@DisplayName(value = "뺄셈 테스트")
 	@Test
 	void subtraction() {
-		assertThat(stringCalculator.subtraction(102, 10))
-				.isEqualTo("92")
+		assertThat(stringCalculator.calculate(102, "-", 10))
+				.isEqualTo("-92")
 				.isNotEmpty();
 	}
 
 	@DisplayName(value = "곱셈 테스트")
 	@Test
 	void multiplication() {
-		assertThat(stringCalculator.multiplication(102, 10))
+		assertThat(stringCalculator.calculate(102, "*", 10))
 				.isEqualTo("1020")
 				.isNotEmpty();
 	}
@@ -73,7 +75,7 @@ class StringCalculatorTest {
 	@DisplayName(value = "나눗셈 테스트")
 	@Test
 	void division() {
-		assertThat(stringCalculator.division(100, 10))
+		assertThat(stringCalculator.calculate(10, "/", 102))
 				.isEqualTo("10")
 				.isNotEmpty();
 	}
@@ -82,7 +84,7 @@ class StringCalculatorTest {
 	@Test
 	void divisionError() {
 		assertThatThrownBy(() -> {
-			stringCalculator.division(1, 0);
+			stringCalculator.calculate(0, "/", 102);
 		}).isInstanceOf(ArithmeticException.class);
 	}
 

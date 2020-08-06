@@ -1,10 +1,27 @@
 package step2;
 
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.*;
+import java.util.regex.Pattern;
 
 public class StringCalculator {
-	private static final String ONLY_NUMBER = "^[0-9]+$";
+	private static final Pattern ONLY_NUMBER_PATTERN = Pattern.compile("^[0-9]+$");
+	private static final Pattern BLANK_PATTERN = Pattern.compile("^\\s*$");
+
+	private static List<Calculator> calculators = new ArrayList<>();
+	static {
+		calculators.add(new AdditionCalculator());
+		calculators.add(new SubtractionCalculator());
+		calculators.add(new MultiplicationCalculator());
+		calculators.add(new DivisionCalculator());
+	}
+
+	private static boolean isNumberPattern(String str) {
+		return ONLY_NUMBER_PATTERN.matcher(str).matches();
+	}
+
+	private static boolean isBlankPattern(String str) {
+		return BLANK_PATTERN.matcher(str).matches();
+	}
 
 	public String getResult(String str) {
 		if(this.isEmpty(str)) {
@@ -15,51 +32,27 @@ public class StringCalculator {
 		Stack<String> expression = new Stack<>();
 		for(String value : values) {
 			expression.push(value);
-			if(value.matches(ONLY_NUMBER) && expression.size() == 3) {
-				expression.push(this.calculate(Integer.parseInt(expression.pop()), expression.pop(), Integer.parseInt(expression.pop())));
-			}
+			stackCalculatedValue(expression, value);
 		}
 		return expression.pop();
+
+	}
+
+	public Stack<String> stackCalculatedValue(Stack<String> expression, String value) {
+		if(isNumberPattern(value) && expression.size() == 3) {
+			expression.push(this.calculate(Integer.parseInt(expression.pop()), expression.pop(), Integer.parseInt(expression.pop())));
+		}
+		return expression;
 	}
 
 	public String calculate(int num2, String op, int num1) {
-		if("+".equals(op)) {
-			return this.addition(num1, num2);
-		}
-		if("-".equals(op)) {
-			return this.subtraction(num1, num2);
-		}
-		if("*".equals(op)) {
-			return this.multiplication(num1, num2);
-		}
-		if("/".equals(op)) {
-			return this.division(num1, num2);
-		}
-		throw new IllegalArgumentException("사칙연산 연산자 오입력");
-
+		Optional<Calculator> maybeCalculator = calculators.stream().filter(o -> o.isValidOperator(op)).findFirst();
+		Calculator calculator = maybeCalculator.orElseThrow(IllegalArgumentException::new);
+		return String.valueOf(calculator.calculate(num1, num2));
 	}
 
 	public boolean isEmpty(String str) {
-		return null == str || str.length() == 0 || str.matches("^\\s*$");
-	}
-
-	public String addition(int num1, int num2) {
-		return Integer.toString(num1 + num2);
-	}
-
-	public String subtraction(int num1, int num2) {
-		return Integer.toString(num1 - num2);
-	}
-
-	public String multiplication(int num1, int num2) {
-		return Integer.toString(num1*num2);
-	}
-
-	public String division(int num1, int num2) {
-		if(num2 == 0) {
-			throw new ArithmeticException("나눗셈 식의 분모는 0이 될 수 없습니다.");
-		}
-		return Integer.toString(num1/num2);
+		return null == str || str.length() == 0 || isBlankPattern(str);
 	}
 
 }
