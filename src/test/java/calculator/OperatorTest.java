@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class OperatorTest {
@@ -43,5 +44,13 @@ class OperatorTest {
     void divide() {
         int result = Operator.DIVIDE.compute(x, y);
         assertEquals(result, 1);
+    }
+
+    @Test
+    @DisplayName("0으로 나누는 경우")
+    void divideWithIllegalArgumentException() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            int result = Operator.DIVIDE.compute(x, 0);
+        }).withMessage(ExceptionMessage.DIVIDED_BY_ZERO.getMessage());
     }
 }

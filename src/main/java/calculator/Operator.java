@@ -3,20 +3,25 @@ package calculator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 
 public enum Operator {
     PLUS((x, y) -> x + y),
     MINUS((x, y) -> x - y),
     MULTIPLY((x, y) -> x * y),
-    DIVIDE((x, y) -> x / y);
+    DIVIDE((x, y) -> {
+        if (y == 0) {
+            throw new IllegalArgumentException(ExceptionMessage.DIVIDED_BY_ZERO.getMessage());
+        }
+        return x / y;
+    });
 
     private static final Map<String, Operator> BY_SYMBOL = new HashMap<>();
 
-    private final BiFunction<Integer, Integer, Integer> function;
+    private final BinaryOperator<Integer> operation;
 
-    Operator(BiFunction<Integer, Integer, Integer> function) {
-        this.function = function;
+    Operator(BinaryOperator<Integer> operation) {
+        this.operation = operation;
     }
 
     static {
@@ -28,10 +33,10 @@ public enum Operator {
 
     public static Operator of(String symbol) {
         return Optional.ofNullable(BY_SYMBOL.get(symbol))
-                .orElseThrow(() -> new IllegalArgumentException("사칙연산 기호가 아닙니다."));
+                .orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.NOT_ARITHMETIC_OPERATOR.getMessage()));
     }
 
     public Integer compute(int x, int y) {
-        return this.function.apply(x, y);
+        return this.operation.apply(x, y);
     }
 }
