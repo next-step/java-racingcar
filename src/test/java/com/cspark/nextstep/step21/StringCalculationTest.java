@@ -50,12 +50,19 @@ class StringCalculationTest {
         .hasMessage("잘못된 입력값입니다.");
   }
 
-  @DisplayName("사직연사 기호가 아닐 경우 에러 발생")
+  @DisplayName("사칙연산 기호가 아닐 경우 에러 발생")
   @Test
   void giveWrongOperator_whenCalculate_thenThrowsIllegalArgumentException() {
     assertThatThrownBy(() ->
         StringCalculation.calculate("1 % 2"))
         .isInstanceOf(IllegalArgumentException.class)
         .hasMessage("지원하지 않는 연산입니다.");
+  }
+
+  @DisplayName("문자열 사칙연산")
+  @Test
+  void complexCalculate() {
+    assertThat(StringCalculation.calculate("2 + 3 * 4 / 2"))
+        .isEqualTo(10);
   }
 }

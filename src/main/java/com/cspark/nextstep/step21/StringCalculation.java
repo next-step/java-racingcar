@@ -8,8 +8,12 @@ public class StringCalculation {
     inputValidate(sentence);
 
     String[] values = sentence.split(" ");
+    int result = toInt(values[0]);
+    for (int i = 1; i < values.length; i += 2) {
+      result = calculate(values[i], result, toInt(values[i + 1]));
+    }
 
-    return calculate(values[1], toInt(values[0]), toInt(values[2]));
+    return result;
   }
 
   private static void inputValidate(String sentence) {
