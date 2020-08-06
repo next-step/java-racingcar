@@ -4,7 +4,7 @@ public class Car {
     private int distance;
 
     public Car() {
-        this.distance = 0;
+        this.distance = 1;
     }
 
     public int showDistance() {

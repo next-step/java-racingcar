@@ -9,10 +9,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("OutputView Test")
 public class OutputViewTest {
 
-    OutputView outputView = new OutputView();
-
     @Test
     void OutputView_GetDashDistance() {
-        assertThat(outputView.getDashDistance(4)).isEqualTo("----");
+        assertThat(OutputView.getDashDistance(4)).isEqualTo("----");
     }
+
 }
