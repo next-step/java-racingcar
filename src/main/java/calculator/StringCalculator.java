@@ -1,7 +1,6 @@
 package calculator;
 
 public class StringCalculator {
-
     public static int calculate(String value) {
         String[] values = value.split(" ");
         int result = toInt(values[0]);
