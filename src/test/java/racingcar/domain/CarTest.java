@@ -33,7 +33,7 @@ class CarTest {
     @ValueSource(strings = {"유재석"})
     void stopTest(String name) {
         MoveAbility positiveMoveAbility = () -> true;
-        car = new Car("유재석", 0, positiveMoveAbility);
+        car = new Car(name, 0, positiveMoveAbility);
         car.move();
         assertThat(car.getPosition())
                 .isOne();
