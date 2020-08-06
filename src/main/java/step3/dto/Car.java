@@ -25,9 +25,11 @@ public class Car {
     }
 
     public String getEntryNameTag(){
+        return makeNameTag();
+    }
 
+    private String makeNameTag(){
         String entryNumber = getEntryNumberToString();
-
         StringBuilder nameTag = new StringBuilder();
         int length = entryNumber.length();
 
@@ -37,7 +39,6 @@ public class Car {
 
         return nameTag.toString();
     }
-
     private String getEntryNumberToString() {
         return String.valueOf(entryNumber);
     }
