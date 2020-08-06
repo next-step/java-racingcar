@@ -14,13 +14,13 @@ public class CarFactoryTest {
     @ValueSource(strings = {"pobi", "crong", "honux"})
     @DisplayName("자동자 단일생성")
     public void create(String name) {
-        assertThat(CarFactory.create(name)).hasSize(1);
+        assertThat(CarFactory.create(name).getName()).isEqualTo(name);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"pobi,crong,honux"})
     @DisplayName("자동자 생성")
-    public void create(String names) {
+    public void create(String[] names) {
         assertThat(CarFactory.creates(names)).hasSize(1);
     }
 
