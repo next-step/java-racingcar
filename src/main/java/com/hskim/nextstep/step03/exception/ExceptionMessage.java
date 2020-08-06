@@ -1,7 +1,6 @@
 package com.hskim.nextstep.step03.exception;
 
 import com.hskim.nextstep.step03.model.RacingCar;
-import com.hskim.nextstep.step03.racing.RacingCarSimulator;
 
 /**
  * Created by hs kim on 2020/08/05

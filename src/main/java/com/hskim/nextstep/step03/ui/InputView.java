@@ -2,7 +2,6 @@ package com.hskim.nextstep.step03.ui;
 
 import com.hskim.nextstep.step02.utils.StringUtils;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class InputView extends View {
