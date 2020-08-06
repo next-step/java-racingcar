@@ -29,7 +29,7 @@ class SplitterTest {
 
     @DisplayName("입력 텍스트 중복 체크 테스트")
     @ParameterizedTest
-    @ValueSource(strings = {"유재석,유재석,이효리", "이효리,유재석,정지훈,이효"})
+    @ValueSource(strings = {"유재석,유재석,이효리", "이효리,유재석,정지훈,이효리"})
     void validateDuplicatedTextTest(String text) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> Splitter.splitText(text));
