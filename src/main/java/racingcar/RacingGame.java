@@ -23,7 +23,7 @@ public class RacingGame {
         return new RacingGame(carNumber, attemptNumber);
     }
 
-    RacingResult race() {
+    RacingResult progress() {
         List<RacingCar> racingCars = new ArrayList<>();
 
         for (int car = 0; car < carNumber; car++) {
