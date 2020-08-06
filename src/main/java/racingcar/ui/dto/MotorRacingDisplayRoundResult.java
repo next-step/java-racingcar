@@ -40,7 +40,7 @@ public class MotorRacingDisplayRoundResult {
             ;
     }
 
-    public static MotorRacingDisplayWinnerResults getWinnerResults() {
-        return winnerResults;
+    static List<String> getWinnerResults() {
+        return winnerResults.getWinners();
     }
 }
