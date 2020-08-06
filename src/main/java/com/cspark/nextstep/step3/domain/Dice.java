@@ -1,4 +1,4 @@
-package com.cspark.nextstep.step3;
+package com.cspark.nextstep.step3.domain;
 
 import java.util.Random;
 
