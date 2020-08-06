@@ -1,48 +1,51 @@
 package racingcar.domain;
 
 import racingcar.constant.RacingMessage;
-import racingcar.util.RandomGenerator;
+import racingcar.util.Splitter;
 
-import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 public class Cars {
-    public static final int MIN_CAR_SIZE = 1;
-    private List<Car> carList;
+    private final List<Car> carList;
 
-    public Cars(List<Car> cars) {
-        this.carList = cars;
+    public Cars(List<Car> carList) {
+        this.carList = carList;
     }
 
-    public Cars(int count) {
-        readyCars(count);
+    public Cars(String carNames) {
+        this.carList = Collections.unmodifiableList(readyCars(carNames));
     }
 
     public List<Car> getCarList() {
         return this.carList;
     }
 
-    public int getSize() {
-        return this.carList.size();
+    private List<Car> readyCars(String carNames) {
+        List<String> names = Splitter.splitText(carNames);
+        return names.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
-    public void readyCars(int count) {
-        validate(count);
-        this.carList = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            this.carList.add(new Car());
-        }
+    public List<Car> findWinners() {
+        return carList.stream()
+                .filter(car -> car.isFirstPosition(findFirstPositionCar()))
+                .collect(Collectors.toList());
     }
 
-    public void moveAll() {
+    public Car findFirstPositionCar() {
+        return carList.stream()
+                .max(Comparator.comparingInt(Car::getPosition))
+                .orElseThrow(() -> new NoSuchElementException(RacingMessage.NOT_FOUND_FIRST_POSITION_CAR));
+    }
+
+    public void moveCars() {
         for (Car car : this.carList) {
-            car.move(RandomGenerator.getNumber());
-        }
-    }
-
-    private void validate(int count) {
-        if (count < MIN_CAR_SIZE) {
-            throw new IllegalArgumentException(RacingMessage.VALIDATE_MINIMUM_CAR);
+            car.move();
         }
     }
 }
