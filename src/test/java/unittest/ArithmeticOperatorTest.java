@@ -19,6 +19,13 @@ public class ArithmeticOperatorTest {
         assertThat(ArithmeticOperator.getOperator(inputOperator)).isNotNull();
     }
 
+    @DisplayName("오퍼레이터 찾기은 계산 처리 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"+:2:3:5", "-:3:1:2", "*:4:8:32", "/:4:2:2"}, delimiter = ':')
+    public void getOperatorAndApply(String inputOperator, int a, int b, int excpected) {
+        assertThat(ArithmeticOperator.getOperator(inputOperator).expression.apply(a, b)).isEqualTo(excpected);
+    }
+
     @DisplayName("오퍼레이터 찾기 테스트 --> 오류 발생")
     @ParameterizedTest
     @ValueSource(strings = {"9", "^", "#"})

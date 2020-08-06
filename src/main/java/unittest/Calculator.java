@@ -1,5 +1,7 @@
 package unittest;
 
+import java.util.Arrays;
+
 public class Calculator {
 
     public int sumText(String inputText) {
@@ -16,16 +18,10 @@ public class Calculator {
     }
 
     public int calculate(String[] inputArr) {
-       // ArithmeticOperator operator = new ArithmeticOperator();
         int result = 0;
-        result = Integer.parseInt(inputArr[0]);
+        //Arrays.stream(inputArr).forEach(ArithmeticOperator.getOperator());
         for(int i=1;i<inputArr.length;i++) {
-            /*if(operator.isArithmeticiOperator(inputArr[i])) {
-                result = operator.calculateAAndB(result, Integer.parseInt(inputArr[i + 1]), inputArr[i]);
-                i++;
-            } else {
-                throw new IllegalArgumentException();
-            }*/
+
         }
         return result;
     }
