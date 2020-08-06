@@ -1,18 +1,12 @@
 package racingcar.domain;
 
-import racingcar.strategy.RacingStrategy;
+import racingcar.strategy.DoRace;
 
-public abstract class Car {
-    //추상화 클래스이면 private 생성자 통한 인스턴스화 방지 가능?
-    //   private Car(){}
-    private int seq;
+public class Car {
+    //추상화 클래스? private 생성자 통한 인스턴스화 방지 가능? private Car(){}
+    public Car(){}
     private int position;
-    private RacingStrategy racingStrategy;
-
-    //*********************************Getter/Setter 대신 구현 방법 고민 //
-    public int getSeq() {
-        return seq;
-    }
+    private DoRace doRace;
 
     public Car(int position) {
         this.position = position;
@@ -22,11 +16,16 @@ public abstract class Car {
         return position;
     }
 
-    public void setRacingStrategy(RacingStrategy racingStrategy) {
-        this.racingStrategy = racingStrategy;
+    public void setDoRace(DoRace doRace) {
+        this.doRace = doRace;
     }
 
+    /* Test Case 예시
+       car.setDoRace(new DoOneForward());
+       car.move();
+       : OneForward()만큼 움직이는지 확인
+     */
     public int move() {
-        racingStrategy.move();
+        return doRace.move();
     }
 }

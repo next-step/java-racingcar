@@ -8,12 +8,16 @@
           2. 사용자 입력 (n : 자동차 대수, m : 이동 시행 횟수)
           3. 1.의 전진은 조건부 (0~9 사이 random값 구한 후, 그 random갑 >= 4)
           4. 자동차 상태(누적 이동 시행) 화면에 출력, 단 어느 시점에 출력할 것인지 제약은 없음 
-(질문) : SampleCase 각각 4회, 4회, 5회 이동내역? 4. 시점 관련 이해 못함
+    
+        (질문) : 4. 어느 시점에 출력할 것인지 제약이 없다는 의미
+        (이슬님 답변) : 매 시행시마다 출력 또는 전체 cars에 대한 출력 1회에 대한 의사결정 제약이 없다
+
 ###### 힌트
 `Scanner scanner = new Scanner(System.in);
  String value = scanner.nextLine(); 
  int number = scanner.nextInt();`  
  `int randomNum = java.util.Random.nextInt(10);`
+
 ##### 구현 요구 사항 
           1. 모든 로직에 단위 테스트 구현
              (단, 입출력 UI 로직은 제외)
@@ -23,6 +27,33 @@
           3. else 예약어 사용 X
              switch/case문도 사용 X 
              HINT : if (조건절) { } return null;
+             
+##### 구현 test case 
+    자동차 대수는 몇 대 인가요?
+    3
+    시도할 회수는 몇 회 인가요?
+    5
+    
+    실행 결과
+    -
+    -
+    -
+    
+    --
+    -
+    --
+    
+    ---
+    --
+    ---
+    
+    ----
+    ---
+    ----
+    
+    ----
+    ----
+    -----
 
 ##### 기능 목록 
         Day 1
