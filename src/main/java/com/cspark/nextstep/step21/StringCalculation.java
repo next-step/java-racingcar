@@ -24,7 +24,11 @@ public class StringCalculation {
       return toInt(values[0]) * toInt(values[2]);
     }
 
-    return toInt(values[0]) / toInt(values[2]);
+    if (operator.equals("/")) {
+      return toInt(values[0]) / toInt(values[2]);
+    }
+
+    throw new IllegalArgumentException("지원하지 않는 연산입니다.");
   }
 
   private static int toInt(String value) {

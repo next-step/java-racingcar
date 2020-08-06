@@ -46,6 +46,16 @@ class StringCalculationTest {
   void giveBlankOrNull_whenCalculate_thenThrowsIllegalArgumentException(String value) {
     assertThatThrownBy(() ->
         StringCalculation.calculate(value))
-        .isInstanceOf(IllegalArgumentException.class);
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessage("잘못된 입력값입니다.");
+  }
+
+  @DisplayName("사직연사 기호가 아닐 경우 에러 발생")
+  @Test
+  void giveWrongOperator_whenCalculate_thenThrowsIllegalArgumentException() {
+    assertThatThrownBy(() ->
+        StringCalculation.calculate("1 % 2"))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessage("지원하지 않는 연산입니다.");
   }
 }
