@@ -1,3 +1,5 @@
+package stringcalculator;
+
 public enum ArithmeticPattern {
     EXPRESSION("\\d+( [-*/+] \\d+)+"),
     OPERATOR("[-*/+]"),

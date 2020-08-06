@@ -1,20 +1,16 @@
-import java.util.Scanner;
+import racingcar.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        InputView inputView = new InputView();
+        ResultView resultView = new ResultView();
 
-        try {
-            String expression = scanner.nextLine();
+        GameInputs userArgs = inputView.createUserArgument();
+        RacingGame racingGame = RacingGame.createGame(userArgs);
 
-            ArithmeticArguments arguments = ArithmeticArgumentFactory.createArgs(expression);
+        GameResults results = racingGame.start();
 
-            int result = Calculator.calculate(arguments);
-
-            System.out.println(result);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        resultView.printGameResult(results);
     }
 }
