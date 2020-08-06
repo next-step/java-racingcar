@@ -2,14 +2,9 @@ package step3.domain;
 
 public class Car implements Cloneable {
 
-    private final ForwardStrategy forwardStrategy;
     private int position = 1;
 
-    public Car(ForwardStrategy forwardStrategy) {
-        this.forwardStrategy = forwardStrategy;
-    }
-
-    public Car move() {
+    public Car move(ForwardStrategy forwardStrategy) {
         position += forwardStrategy.calculateForwardDistance();
         return this;
     }
@@ -23,7 +18,7 @@ public class Car implements Cloneable {
         try {
             return (Car) super.clone();
         } catch (CloneNotSupportedException e) {
-            return new Car(null);
+            return new Car();
         }
     }
 

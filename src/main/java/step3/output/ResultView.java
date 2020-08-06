@@ -1,6 +1,7 @@
 package step3.output;
 
 import step3.domain.Car;
+import step3.domain.CarRacingRapScore;
 
 import java.util.List;
 
@@ -8,9 +9,9 @@ public class ResultView {
 
     private static final Character MARK = '-';
 
-    private List<List<Car>> rapResults;
+    private List<CarRacingRapScore> rapResults;
 
-    public ResultView(List<List<Car>> rapResults) {
+    public ResultView(List<CarRacingRapScore> rapResults) {
         this.rapResults = rapResults;
     }
 
@@ -19,8 +20,8 @@ public class ResultView {
         rapResults.forEach(this::printPositions);
     }
 
-    private void printPositions(List<Car> cars) {
-        cars.forEach(this::printPositionOfAttempt);
+    private void printPositions(CarRacingRapScore score) {
+        score.getCars().forEach(this::printPositionOfAttempt);
         System.out.println();
     }
 
