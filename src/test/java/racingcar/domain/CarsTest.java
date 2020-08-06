@@ -1,54 +1,45 @@
 package racingcar.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.status.MoveAbility;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CarsTest {
+    private Cars cars;
+    private final MoveAbility positiveMoveAbility = () -> true;
 
-    @DisplayName("입력받은 숫자만큼 자동차 생성 여부 테스트")
+    @BeforeEach
+    void setUp() {
+        List<Car> carList = Arrays.asList(
+                new Car("유재석", 5, positiveMoveAbility),
+                new Car("이효리", 10, positiveMoveAbility),
+                new Car("정지훈", 15, positiveMoveAbility));
+
+        cars = new Cars(carList);
+    }
+
+    @DisplayName("우승자 찾기 테스트")
     @Test
-    void readyCarsTest() {
-        int expectedSize = 3;
-        Cars cars = new Cars(expectedSize);
-        assertThat(cars.getSize())
-                .isEqualTo(expectedSize);
+    void findWinnersTest() {
+        assertThat(cars.findWinners())
+                .containsExactly(cars.findFirstPositionCar());
     }
 
-    @DisplayName("최소 차량 수 유효성 체크 테스트")
-    @ParameterizedTest
-    @ValueSource(ints = {Cars.MIN_CAR_SIZE - 1, Cars.MIN_CAR_SIZE - 2})
-    void validateTest(int count) {
-        assertThatIllegalArgumentException().isThrownBy(() -> new Cars(count));
-    }
-
-    @DisplayName("이동 가능한 차량들의 이동 테스트")
+    @DisplayName("Cars 이동 테스트")
     @Test
     void moveCarsTest() {
-        Cars cars = new Cars(findMoveAbleCars());
-        cars.moveAll();
-
-        assertThat(cars.getCarList().stream()
-                .map(Car::getPosition)
-                .collect(Collectors.toList()))
-                .containsExactly(1, 1, 1, 1, 1);
-    }
-
-    private List<Car> findMoveAbleCars() {
-        MoveAbility positiveMoveAbility = number -> true;
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            cars.add(new Car(positiveMoveAbility));
-        }
-        return cars;
+        cars.moveCars();
+        assertAll("cars",
+                () -> assertEquals(cars.getCarList().get(0).getPosition(), 6),
+                () -> assertEquals(cars.getCarList().get(1).getPosition(), 11),
+                () -> assertEquals(cars.getCarList().get(2).getPosition(), 16));
     }
 }
