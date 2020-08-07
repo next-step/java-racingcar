@@ -1,18 +1,26 @@
 package racing.view;
 
 import racing.message.ViewMsg;
+import racing.util.ValidatorUtils;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class InputView {
-    final int carCount;
-    final int repeatCount;
+    private final String[] arrName;
+    private final int repeatCount;
 
-    public InputView() {
+    public InputView() throws Exception {
         System.out.println(ViewMsg.START_MSG_CAR.getMsg());
-        this.carCount = inputNumber();
+        arrName = inputString().split(",");
+        checkName();
         System.out.println(ViewMsg.START_MSG_REPEAT.getMsg());
         this.repeatCount = inputNumber();
+    }
+
+    private String inputString() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
     }
 
     private int inputNumber() {
@@ -20,11 +28,17 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public int getCarCount() {
-        return carCount;
+    public String[] getCarNames() {
+        return arrName;
     }
 
     public int getrepeatCount() {
         return repeatCount;
+    }
+
+    private void checkName() throws Exception {
+        Arrays.stream(this.arrName).forEach(name -> {
+            ValidatorUtils.name(name);
+        });
     }
 }

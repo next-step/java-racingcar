@@ -1,5 +1,6 @@
 package racing.view;
 
+import racing.domain.Car;
 import racing.message.ViewMsg;
 
 public class ResultView {
@@ -14,4 +15,13 @@ public class ResultView {
         }
         return result;
     }
+
+    public void viewGameStatus(Car car) {
+            System.out.println(car.getName() + " : " + this.getLocationVisualization(car.getLocation()));
+    }
+
+    public void printVictory(String names) {
+        System.out.println(names + ViewMsg.VICTORY_MSG.getMsg());
+    }
+
 }

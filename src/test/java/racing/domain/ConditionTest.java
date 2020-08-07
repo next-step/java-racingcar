@@ -12,4 +12,10 @@ public class ConditionTest {
     public void checkMove(boolean result, int iNumber) {
         Assertions.assertThat(Condition.checkMove(iNumber)).isEqualTo(result);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"true:asr", "false:testJava", "true:test", "true:java1", "false:moneymoney", "false:hanseoCho"}, delimiter = ':')
+    public void checkMove(boolean result, String iName) {
+        Assertions.assertThat(Condition.checkName(iName)).isEqualTo(result);
+    }
 }

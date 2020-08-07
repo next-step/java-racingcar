@@ -12,7 +12,7 @@ public class CarTest {
 
     @BeforeEach
     public void before() {
-        car = new Car();
+        car = new Car("test");
     }
 
     @ParameterizedTest
@@ -29,6 +29,11 @@ public class CarTest {
         }
 
         Assertions.assertThat(car.getLocation()).isEqualTo(maxNum);
+    }
+
+    @Test
+    public void inputName() {
+        Assertions.assertThat("test").isEqualTo(car.getName());
     }
 
 }

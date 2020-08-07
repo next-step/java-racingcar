@@ -4,9 +4,11 @@ import java.util.Random;
 
 public class Car {
     private static final int RANDOM_MAX_NUM = 10;
+    private String name;
     private int location;
 
-    public Car() {
+    public Car(String name) {
+        this.name = name;
         this.location = 0;
     }
 
@@ -16,7 +18,7 @@ public class Car {
         }
     }
 
-    public int getRandomNum() {
+    private int getRandomNum() {
         return new Random().nextInt(RANDOM_MAX_NUM);
     }
 
@@ -30,5 +32,9 @@ public class Car {
 
     public int getLocation() {
         return location;
+    }
+
+    public String getName() {
+        return name;
     }
 }
