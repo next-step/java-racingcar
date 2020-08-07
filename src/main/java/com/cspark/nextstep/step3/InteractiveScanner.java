@@ -26,7 +26,7 @@ public class InteractiveScanner {
     // 레이싱 경주
     Function<Dice, Boolean> rule = (d) -> d.cast() > 3;
     RoundIterable rounds = new RoundIterable(roundCount, makeDrivers(driverNames, rule));
-    Dice dice = new Dice(0, 9);
+    Dice dice = new Dice(0, 10);
 
     for (Round round : rounds) {
       List<Driver> race = round.race(dice);
