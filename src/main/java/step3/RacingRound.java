@@ -14,9 +14,6 @@ public class RacingRound {
 
     private void goAndStopThisCar(Car car) {
         if(MoveCar.moveCondition()) return;
-
         car.movePosition();
     }
-
-
 }
