@@ -10,7 +10,7 @@ public class Competition {
         this.rount = rount;
     }
 
-    public static Competition create(int paticipate, int rount){
+    public static Competition create(int paticipate, int rount) {
         return new Competition(paticipate, rount);
     }
 

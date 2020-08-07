@@ -17,19 +17,19 @@ public class Car {
         return new Car(entryNumber, position);
     }
 
-    public void movePosition(){
+    public void movePosition() {
         position++;
     }
 
-    public int nowPosition(){
+    public int nowPosition() {
         return position;
     }
 
-    public String getEntryNameTag(){
+    public String getEntryNameTag() {
         return makeNameTag();
     }
 
-    private String makeNameTag(){
+    private String makeNameTag() {
         String entryNumber = getEntryNumberToString();
         StringBuilder nameTag = new StringBuilder();
         int length = entryNumber.length();

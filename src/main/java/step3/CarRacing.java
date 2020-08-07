@@ -23,22 +23,20 @@ public class CarRacing {
         carRacing.race();
     }
 
-    public void initCarRace(){
+    public void initCarRace() {
         InputView inputView = new InputView();
-
         Competition competition = inputView.eventStart();
 
         totalRound = competition.getRount();
 
         int totalEntryCount = competition.getPaticipate();
-
-        for(int i = 0; i< totalEntryCount; i++){
+        for(int i = 0; i < totalEntryCount; i++) {
             Car racer = Car.participateRacing(i + 1, STARTING_POSITION);
             entryList.add(racer);
         }
     }
 
-    public void race(){
+    public void race() {
         initCarRace();
 
         System.out.println(RACE_RESULT_TEXT);
@@ -46,11 +44,11 @@ public class CarRacing {
         startRacing();
     }
 
-    private void startRacing(){
+    private void startRacing() {
         RacingRound round = new RacingRound();
         ResultView resultView = new ResultView();
 
-        for(int i = 0; i< totalRound; i++){
+        for(int i = 0; i < totalRound; i++){
             round.playRound(entryList);
             resultView.showCompeetitionPosition(entryList);
         }
