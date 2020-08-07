@@ -19,15 +19,15 @@ public class InputView {
     public static int inputCome(){
         Scanner sc = new Scanner(System.in);
 
-        String input;
+        int input;
 
-       try{
-           input=sc.nextLine();
-           return Integer.parseInt(input);
-       }catch (NumberFormatException e){
+        try{
+           input=sc.nextInt();
+           return input;
+        }catch (IllegalArgumentException e){
            System.out.println("정수만 입력가능합니다");
            e.printStackTrace();
-       }
-       return 0;
+        }
+        return -1;
     }
 }

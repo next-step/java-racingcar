@@ -1,22 +1,22 @@
 package step3.model;
 
 public class Car{
-    int RandomValue;
     private int position =0;
 
     public Car(){
 
     }
 
-    public Car(int randomValue) {
-        RandomValue = randomValue;
-    }
-
-    public void move(int randomValue){
-        if(randomValue >=4){
-            position++;
+    public void move(int movePoint){
+        if(isMove(movePoint)){
+            this.position++;
         }
     }
+
+    public boolean isMove(int movePoint){
+        return movePoint >= 4;
+    }
+
     public int getPosition(){
         return position;
     }

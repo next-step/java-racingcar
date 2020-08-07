@@ -8,6 +8,6 @@ class FotStartRacing{
         InputView.initShow();
 
         CarRacing race =  new CarRacing(InputView.cars,InputView.tries);
-        race.playTime();
+        race.gameStart();
     }
 }
