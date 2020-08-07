@@ -9,11 +9,11 @@ public class StringCarculator {
         inputExpressionInValidException(inputExpression);
 
         List<String> expressions = Arrays.asList(inputExpression.split(CommonConstant.DELIMITER));
-        int resultValue = Integer.parseInt(expressions.get(0));
+        int resultValue = stringToInt(expressions.get(0));
 
         for (int i = 1; i < expressions.size(); i += 2) {
             String operator = expressions.get(i);
-            int number = Integer.parseInt(expressions.get(i + 1));
+            int number = stringToInt(expressions.get(i + 1));
             resultValue = Operator.operate(operator, resultValue, number);
         }
         return resultValue;
@@ -23,6 +23,10 @@ public class StringCarculator {
         if (inputExpression == null || inputExpression.trim().isEmpty()) {
             throw new IllegalArgumentException(CommonConstant.INVALID_INPUT_EXPRESSION);
         }
+    }
+
+    private int stringToInt(String value) {
+        return Integer.parseInt(value);
     }
 
 }
