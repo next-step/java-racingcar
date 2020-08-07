@@ -7,13 +7,12 @@ public class RacingCar {
 
     private static int[] racingResult;
 
-    public static int getRandomValueUnder10() {
-        Random random = new Random();
-        return random.nextInt(10);
-    }
+    public static int[] racing(int racingCount) {
+        racingResult = new int[racingCount];
 
-    public static boolean isGreaterThan3(int randomNum) {
-        return randomNum > 3;
+        Arrays.stream(racingResult).forEach(val -> run());
+
+        return racingResult;
     }
 
     public static int run() {
@@ -22,13 +21,13 @@ public class RacingCar {
         return isGreaterThan3==true?randomNum:0;
 
     }
+    public static int getRandomValueUnder10() {
+        Random random = new Random();
+        return random.nextInt(10);
+    }
 
-    public static int[] racing(int racingCount) {
-        racingResult = new int[racingCount];
-
-        Arrays.stream(racingResult).forEach(val -> run());
-
-        return racingResult;
+    public static boolean isGreaterThan3(int randomNum) {
+        return randomNum > 3;
     }
 
     public static int getRacingResult(int racingTurn) {
