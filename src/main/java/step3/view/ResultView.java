@@ -8,10 +8,13 @@ public class ResultView {
 
     private final String CAR_MOVING_PATH = "-";
 
+    private final String LINE_FOR_SEPERATE = "";
+
     public void showCompeetitionPosition(List<Car> cars){
         for(Car car : cars){
             printThisCarPosition(car);
         }
+        System.out.println(LINE_FOR_SEPERATE);
     }
 
     private void printThisCarPosition(Car car){
