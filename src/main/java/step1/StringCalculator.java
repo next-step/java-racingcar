@@ -1,21 +1,23 @@
+package step1;
+
 import org.junit.platform.commons.util.StringUtils;
 
 public class StringCalculator {
 	
-	public int plus(int i, int j) {
-		return i+j;
+	private int plus(int i, int j) {
+		return i + j;
 	}
 	
-	public int minus(int i, int j) {
-		return i-j;
+	private int minus(int i, int j) {
+		return i - j;
 	}
 	
-	public int multiply(int i, int j) {
-		return i*j;
+	private int multiply(int i, int j) {
+		return i * j;
 	}
 	
-	public int divide(int i, int j) {
-		return i/j;
+	private int divide(int i, int j) {
+		return i / j;
 	}
 	
 	public int calc(String str) {
