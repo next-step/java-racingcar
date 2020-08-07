@@ -26,9 +26,8 @@ public class CarRacingExecutor {
 
 	public void execute() {
 		CarRacingInitValue initValue = carRacingInput.input();
-
 		List<Car> cars = this.generateCarsForRacing(initValue);
-		this.playGame(initValue, cars);
+		this.playGame(cars, initValue.getTryCount());
 		this.judgeRacingResult(cars);
 		carRacingOutput.render();
 
@@ -45,8 +44,8 @@ public class CarRacingExecutor {
 						.collect(toList());
 	}
 
-	private void playGame(CarRacingInitValue initValue, List<Car> cars) {
-		IntStream.range(0, initValue.getTryCount())
+	private void playGame(List<Car> cars, int tryCount) {
+		IntStream.range(0, tryCount)
 				 .forEach(round -> {
 					 cars.stream()
 						 .forEach(car -> car.play());
