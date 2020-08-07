@@ -7,15 +7,15 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingGameTest {
-    private int numberOfCars;
+    private String[] nameOfCars;
     private int numberOfTrials;
     private RacingGame racingGame;
 
     @BeforeEach
     void setUp() {
-        numberOfCars = 3;
+        nameOfCars = new String[] {"pobi", "eesuel", "nextStep"};
         numberOfTrials = 5;
-        GameInputs args = GameInputs.createGameInputs(numberOfCars, numberOfTrials);
+        GameInputs args = GameInputs.createGameInputs(nameOfCars, numberOfTrials);
 
         racingGame = RacingGame.createGame(args);
     }
@@ -25,7 +25,10 @@ class RacingGameTest {
     void racingGameTest() {
         GameResults results = racingGame.start();
 
-        assertThat(results.getSteps()).hasSize(numberOfTrials);
-        assertThat(results.getSteps().get(0)).hasSize(numberOfCars);
+        // 최초 초기 상태 저장 + 1
+        int expectedSize = numberOfTrials + 1;
+
+        assertThat(results.getSteps()).hasSize(expectedSize);
+        assertThat(results.getSteps().get(0)).hasSize(nameOfCars.length);
     }
 }

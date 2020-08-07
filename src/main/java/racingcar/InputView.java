@@ -12,12 +12,14 @@ public class InputView {
     }
 
     public GameInputs createUserArgument() {
-        System.out.println(Messages.INPUT_FOR_NUMBER_OF_CAR.valueOf());
-        int numberOfCars = this.scanner.nextInt();
+        System.out.println(Messages.INPUT_FOR_NAME_OF_CARS.valueOf());
+        String line = this.scanner.nextLine();
+
+        String[] names = line.split(",");
 
         System.out.println(Messages.INPUT_FOR_NUMBER_OF_TRIALS.valueOf());
         int numberOfTrials = this.scanner.nextInt();
 
-        return GameInputs.createGameInputs(numberOfCars, numberOfTrials);
+        return GameInputs.createGameInputs(names, numberOfTrials);
     }
 }

@@ -1,25 +1,30 @@
 package racingcar;
 
+import java.util.*;
+
 public class RacingGame {
     private final Cars cars;
     private final int numberOfTrials;
 
     private RacingGame(GameInputs args) {
         this.numberOfTrials = args.getNumberOfTrials();
-        this.cars = Cars.createAllCars(args.getNumberOfCars());
+        this.cars = Cars.createAllCars(args.getNameOfCars());
     }
 
-    public GameResults start() {
-        GameResults result = GameResults.createResult();
+    public GameResults start() throws NoSuchElementException {
+        List<Map<String, Integer>> steps = new ArrayList<>();
 
-        result.addStep(cars.getPositions());
+        steps.add(cars.getState());
 
         for (int step = 0; step < this.numberOfTrials; step++) {
             cars.moveCars();
-            result.addStep(cars.getPositions());
+            steps.add(cars.getState());
         }
 
-        return result;
+        int max = this.cars.getMaxPosition();
+        List<String> winners = this.cars.find(max);
+
+        return GameResults.createResult(steps, winners);
     }
 
     public static RacingGame createGame(GameInputs args) {
