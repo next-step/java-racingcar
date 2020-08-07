@@ -1,66 +1,59 @@
 package com.hskim.nextstep.step03.racing;
 
 import com.hskim.nextstep.step03.exception.ExceptionMessage;
+import com.hskim.nextstep.step03.model.MovableStrategy;
+import com.hskim.nextstep.step03.model.Racing;
 import com.hskim.nextstep.step03.model.RacingCar;
-import com.hskim.nextstep.step03.ui.ResultView;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingCarSimulator {
 
-    public static final int CAR_NAME_LIMIT = 5;
+    private static final int MOVE_DISTANCE_PER_GAME = 1;
+    public static final String CAR_NAME_DELIMITER = ",";
     private List<RacingCar> racingCarList;
-    private int gameRepeatNum;
+    private final int gameRepeatCount;
+    private final List<Racing> racingHistory;
+    private final MovableStrategy movableStrategy;
 
-    public RacingCarSimulator() {
+    public RacingCarSimulator(List<String> carNameList, int gameRepeatCount, MovableStrategy movableStrategy) {
 
-        racingCarList = Collections.emptyList();
-        gameRepeatNum = 0;
+        setRacingCarList(carNameList);
+        this.gameRepeatCount = gameRepeatCount;
+        racingHistory = new LinkedList<>();
+        this.movableStrategy = movableStrategy;
     }
 
-    public void setRacingCarList(String carNames) {
+    private void setRacingCarList(List<String> carNameList) {
 
-        racingCarList = Arrays.stream(carNames.split(","))
-                .peek(this::validateCarName)
+        racingCarList = carNameList.stream()
                 .map(RacingCar::new)
                 .collect(Collectors.toList());
     }
 
-    private void validateCarName(String carName) {
+    public void simulate() {
 
-        if (carName.length() > CAR_NAME_LIMIT) {
+        for (int index = 1; index <= gameRepeatCount; index++) {
 
-            throw new IllegalArgumentException(ExceptionMessage.EXCEED_CAR_NAME_LENGTH.getExceptionMessage());
+            runGame(index);
         }
     }
 
-    public void setGameRepeatNum(int repeatNum) {
+    private void runGame(int gameNo) {
 
-        gameRepeatNum = repeatNum;
+        Racing racing = new Racing(gameNo);
+
+        racingCarList.forEach(racingCar -> {
+            racingCar.moveForward(MOVE_DISTANCE_PER_GAME, movableStrategy);
+            racing.addRecord(racingCar);
+        });
+
+        racingHistory.add(racing);
     }
 
-    public void simulate(ResultView resultView) {
-
-        for (int index = 1; index <= gameRepeatNum; index++) {
-
-            runGame(index, resultView);
-        }
-
-        resultView.printPhraseToConsole(findWinners() + "가 최종 우승했습니다.");
-    }
-
-    private void runGame(int gameNo, ResultView resultView) {
-
-        resultView.printPhraseToConsole(" === GAME No." + gameNo + " ===");
-        racingCarList.forEach(rc -> resultView.printPhraseToConsole(resultView.makeMoveProgressString(rc)));
-        resultView.printPhraseToConsole("");
-    }
-
-    private String findWinners() {
+    public List<RacingCar> findWinners() {
 
         int winnerTotalDistance = racingCarList.stream()
                 .map(RacingCar::getTotalMovedDistance)
@@ -69,16 +62,10 @@ public class RacingCarSimulator {
 
         return racingCarList.stream()
                 .filter(racingCar -> racingCar.getTotalMovedDistance() == winnerTotalDistance)
-                .map(RacingCar::getCarName)
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.toList());
     }
 
-    //getter
-    public List<RacingCar> getRacingCarList() {
-        return racingCarList;
-    }
-
-    public int getGameRepeatNum() {
-        return gameRepeatNum;
+    public List<Racing> getRacingHistory() {
+        return racingHistory;
     }
 }

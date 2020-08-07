@@ -1,8 +1,13 @@
 package com.hskim.nextstep.step02.utils;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,5 +33,16 @@ public class StringUtilsTest {
         String with = argArr[0];
         int count = Integer.valueOf(argArr[1]);
         assertThat(StringUtils.repeat(with, count)).isEqualTo(expected);
+    }
+
+    @DisplayName("문자열과 구분자를 받아 문자열 리스트를 반환하는 getParsedStringList() 메소드 검증")
+    @Test
+    void getParsedStringListTest() {
+
+        String origin = "test1,test2,test3";
+        String delimiter = ",";
+        List<String> expected = new LinkedList<>(Arrays.asList("test1", "test2", "test3"));
+
+        assertThat(StringUtils.getParsedStringList(origin, delimiter)).isEqualTo(expected);
     }
 }

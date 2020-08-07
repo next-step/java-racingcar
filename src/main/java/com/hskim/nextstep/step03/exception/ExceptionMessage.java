@@ -1,14 +1,16 @@
 package com.hskim.nextstep.step03.exception;
 
-import com.hskim.nextstep.step03.racing.RacingCarSimulator;
+import com.hskim.nextstep.step03.model.RacingCar;
 
 /**
  * Created by hs kim on 2020/08/05
  */
 public enum ExceptionMessage {
 
-    EXCEED_CAR_NAME_LENGTH("Car name length can't exceed " + RacingCarSimulator.CAR_NAME_LIMIT + "."),
-    FAIL_TO_FIND_WINNER("Fail to find winner. Check state.");
+    DEFAULT_EXCEPTION_MESSAGE("Exception occurred!"),
+    EXCEED_CAR_NAME_LENGTH("Car name length can't exceed " + RacingCar.CAR_NAME_LIMIT + "."),
+    FAIL_TO_FIND_WINNER("Fail to find winner. Check state."),
+    NOT_NUMBER_STRING("Invalid input!!. Please input number string.");
 
     ExceptionMessage(String exceptionMessage) {
 

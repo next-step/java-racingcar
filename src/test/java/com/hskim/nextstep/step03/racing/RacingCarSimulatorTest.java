@@ -1,54 +1,50 @@
 package com.hskim.nextstep.step03.racing;
 
-import com.hskim.nextstep.step03.exception.ExceptionMessage;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import com.hskim.nextstep.step03.model.RacingCar;
+import com.hskim.nextstep.step03.model.RandomMovableStrategy;
+import org.junit.jupiter.api.*;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 /*
     com.hskim.nextstep.step03 - RacingCarSimulator class 테스트
  */
 public class RacingCarSimulatorTest {
 
-    private RacingCarSimulator racingCarSimulator;
+    private static RandomMovableStrategy randomMovableStrategy;
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void setUp() {
 
-        racingCarSimulator = new RacingCarSimulator();
+        randomMovableStrategy = mock(RandomMovableStrategy.class);
     }
 
     /*
-        setRacingCarList로 만들어진 racingCarList의 크기가 getRacingCarList로 가져온 크기와 같은지 검증
+        모두 항상 이동한다고 가정하여 테스트
      */
-    @DisplayName("setRacingCarList() & getRacingCarList() 메소드 정상작동 검증")
-    @ParameterizedTest
-    @ValueSource(strings = {"kim,lee,park", "choi,jung", "hyun,yuk,kwag,han,won", "jang"})
-    void racingCarListGetterSetterSuccessTest(String carName) {
+    @DisplayName("findWinners() 메소드 검증")
+    @Test
+    void findWinnersTest() {
 
-        racingCarSimulator.setRacingCarList(carName);
-        assertThat(racingCarSimulator.getRacingCarList().size()).isEqualTo(getCarNum(carName));
-    }
+        // given
+        RacingCarSimulator racingCarSimulator = new RacingCarSimulator(
+                Arrays.asList("winner1", "winner2", "winner3", "winner4"),
+                5, randomMovableStrategy);
+        racingCarSimulator.simulate();
 
-    /*
-        자동차 이름의 길이가 @{RancingCarSimulator.CAR_NAME_LIMIT}를 초과하면 예외발생
-     */
-    @DisplayName("setRacingCarList() 메소드 예외 상황 테스트")
-    @ParameterizedTest
-    @ValueSource(strings = {"samuel,kim,lee", "michael,su", "ray,nick,jordan"})
-    void setRacingCarListExceptionTest(String carName) {
+        // when
+        when(randomMovableStrategy.isMovable()).thenReturn(true);
+        List<String> winnerNameList = racingCarSimulator.findWinners().stream()
+                .map(RacingCar::getCarName)
+                .collect(Collectors.toList());
 
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> racingCarSimulator.setRacingCarList(carName))
-                .withMessage(ExceptionMessage.EXCEED_CAR_NAME_LENGTH.getExceptionMessage());
-    }
-
-    private int getCarNum(String carName) {
-
-        return carName.split(",").length;
+        // then
+        assertThat(winnerNameList).isEqualTo(Arrays.asList("winner1", "winner2", "winner3", "winner4"));
     }
 }

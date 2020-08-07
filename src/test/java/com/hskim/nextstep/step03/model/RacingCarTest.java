@@ -2,9 +2,12 @@ package com.hskim.nextstep.step03.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 /*
     com.hskim.nextstep.step03 - RacingCar class 테스트
@@ -14,18 +17,38 @@ public class RacingCarTest {
     private RacingCar racingCar;
 
     @BeforeEach
-    void setup() {
+    void setUp() {
 
         racingCar = new RacingCar("test");
     }
 
-    @DisplayName("moveForward() 메소드 검증")
-    @Test
-    void moveForwardTest() {
+    @DisplayName("moveForward() 메소드 이동한 경우 검증")
+    @ParameterizedTest
+    @ValueSource(ints = {3, 5, 7, 9, 2, 4, 6, 8})
+    void moveForwardMovedTest(int distance) {
 
-        // 초기화 후 총 이동거리 = 0
-        assertThat(racingCar.getTotalMovedDistance()).isEqualTo(0);
-        // 3만큼 이동할 수도 안 할수도 있음.
-        assertThat(racingCar.moveForward(3)).isIn(0, 3);
+        // given
+        RandomMovableStrategy randomMovableStrategy = mock(RandomMovableStrategy.class);
+
+        // when
+        when(randomMovableStrategy.isMovable()).thenReturn(true);
+
+        // then
+        assertThat(racingCar.moveForward(distance, randomMovableStrategy)).isEqualTo(distance);
+    }
+
+    @DisplayName("moveForward() 메소드 이동 실패 한 경 검증")
+    @ParameterizedTest
+    @ValueSource(ints = {3, 5, 7, 9, 2, 4, 6, 8})
+    void moveForwardStayTest(int distance) {
+
+        // given
+        RandomMovableStrategy randomMovableStrategy = mock(RandomMovableStrategy.class);
+
+        // when
+        when(randomMovableStrategy.isMovable()).thenReturn(false);
+
+        // then
+        assertThat(racingCar.moveForward(distance, randomMovableStrategy)).isEqualTo(0);
     }
 }

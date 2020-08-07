@@ -1,12 +1,13 @@
 package com.hskim.nextstep.step03.ui;
 
 import com.hskim.nextstep.step02.utils.StringUtils;
+import com.hskim.nextstep.step03.exception.ExceptionMessage;
 
 import java.util.Scanner;
 
 public class InputView extends View {
 
-    private Scanner scanner;
+    private final Scanner scanner;
 
     public InputView() {
 
@@ -22,8 +23,7 @@ public class InputView extends View {
             return Integer.parseInt(input);
         }
 
-        System.out.println("Invalid input!!. Please input number string.");
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(ExceptionMessage.NOT_NUMBER_STRING.getExceptionMessage());
     }
 
     public String getStringFromConsoleInput() {
