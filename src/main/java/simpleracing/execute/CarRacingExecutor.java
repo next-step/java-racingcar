@@ -52,6 +52,6 @@ public class CarRacingExecutor {
 
 	private void judgeRacingResult(List<Car> cars) {
 		referee.judge(cars);
-		carRacingOutput.addWinner(referee.announceWinner());
+		carRacingOutput.addWinnerContentBy(referee);
 	}
 }

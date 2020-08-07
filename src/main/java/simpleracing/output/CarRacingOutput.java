@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import simpleracing.execute.Car;
+import simpleracing.execute.CarRacingReferee;
 import simpleracing.execute.Direction;
 
 public class CarRacingOutput {
@@ -22,10 +23,11 @@ public class CarRacingOutput {
 		result += "\n";
 	}
 
-	public void addWinner(List<Car> cars) {
-		result += String.format(WINNER_CONTENT, cars.stream()
-													.map(car -> car.getName())
-													.collect(Collectors.joining("와 ")));
+	public void addWinnerContentBy(CarRacingReferee referee) {
+		result += String.format(WINNER_CONTENT, referee.announceWinner()
+													   .stream()
+													   .map(car -> car.getName())
+													   .collect(Collectors.joining("와 ")));
 	}
 
 	public void render() {
