@@ -25,7 +25,7 @@ public class StringCalculatorTest {
     @DisplayName("문자열 계산기 구현")
     @CsvSource(value = {"2 + 3 * 4 / 2:10", "2 * 5 / 2:5", "5 - 3 / 1:2"}, delimiter = ':')
     void stringCalculatorTest(String inputExpression, int expected) {
-        int resultValue = stringCarculator.calculate(inputExpression);
+        int resultValue = stringCarculator.compute(inputExpression);
 
         assertThat(resultValue).isEqualTo(expected);
     }
@@ -35,7 +35,7 @@ public class StringCalculatorTest {
     @DisplayName("문자열 계산기 덧셈 계산")
     @CsvSource(value = {"1 + 2:3", "4 + 6:10", "5 + 4:9"}, delimiter = ':')
     void stringCalculatorAdditionTest(String inputExpression, int expected) {
-        int resultValue = stringCarculator.calculate(inputExpression);
+        int resultValue = stringCarculator.compute(inputExpression);
 
         assertThat(resultValue).isEqualTo(expected);
     }
@@ -44,7 +44,7 @@ public class StringCalculatorTest {
     @DisplayName("문자열 계산기 곱셈 계산")
     @CsvSource(value = {"5 * 5:25", "7 * 1:7", "4 * 7:28"}, delimiter = ':')
     void stringCalculatorMultiplication(String inputExpression, int expected) {
-        int resultValue = stringCarculator.calculate(inputExpression);
+        int resultValue = stringCarculator.compute(inputExpression);
 
         assertThat(resultValue).isEqualTo(expected);
     }
@@ -53,7 +53,7 @@ public class StringCalculatorTest {
     @DisplayName("문자열 계산기 나눗셈 계산")
     @CsvSource(value = {"5 / 5:1", "100 / 10:10", "44 / 2:22"}, delimiter = ':')
     void stringCalculatorDivisionTest(String inputExpression, int expected) {
-        int resultValue = stringCarculator.calculate(inputExpression);
+        int resultValue = stringCarculator.compute(inputExpression);
 
         assertThat(resultValue).isEqualTo(expected);
     }
@@ -63,7 +63,7 @@ public class StringCalculatorTest {
     @DisplayName("문자열 계산기 뺄셈 계산")
     @CsvSource(value = {"5 - 4:1", "100 - 15:85", "7 - 7:0"}, delimiter = ':')
     void stringCalculatorSubtractionTest(String inputExpression, int expected) {
-        int resultValue = stringCarculator.calculate(inputExpression);
+        int resultValue = stringCarculator.compute(inputExpression);
 
         assertThat(resultValue).isEqualTo(expected);
     }
@@ -84,7 +84,7 @@ public class StringCalculatorTest {
     void inValidOperatorTest() {
         String expression = "&";
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            Operator.operate(expression, 1, 2);
+            Operator.of(expression);
         }).withMessageMatching(expression + CommonConstant.INVALID_OPERATOR);
 
     }
@@ -94,7 +94,7 @@ public class StringCalculatorTest {
     void divisionExceptionTest() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> {
-                    Operator.operate("/", 5, 0);
+                    StringCarculator.calculate("/", 5, 0);
                 }).withMessageMatching(CommonConstant.INVALID_DIVIDED_BY_ZERO);
     }
 

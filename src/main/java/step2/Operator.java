@@ -1,57 +1,35 @@
 package step2;
 
+import java.util.Arrays;
+import java.util.Optional;
+
 public enum Operator {
 
-    PLUS("+") {
-        @Override
-        public int apply(int firstNumber, int secondNumber) {
-            return firstNumber + secondNumber;
+    PLUS("+", (firstNumber, secondNumber) -> firstNumber + secondNumber),
+    MINUS("-", (firstNumber, secondNumber) -> firstNumber - secondNumber),
+    MULTIPLY_BY("*", (firstNumber, secondNumber) -> firstNumber * secondNumber),
+    DIVIDED_BY("/", (firstNumber, secondNumber) -> {
+        if (secondNumber == 0) {
+            throw new IllegalArgumentException(CommonConstant.INVALID_DIVIDED_BY_ZERO);
         }
-    },
-    MINUS("-") {
-        @Override
-        public int apply(int firstNumber, int secondNumber) {
-            return firstNumber - secondNumber;
-        }
-    },
-    MULTIPLY_BY("*") {
-        @Override
-        public int apply(int firstNumber, int secondNumber) {
-            return firstNumber * secondNumber;
-        }
-    },
-    DIVIDED_BY("/") {
-        @Override
-        public int apply(int firstNumber, int secondNumber) {
-            if (secondNumber == 0) {
-                throw new IllegalArgumentException(CommonConstant.INVALID_DIVIDED_BY_ZERO);
-            }
-            return firstNumber / secondNumber;
-        }
-    };
+        return firstNumber / secondNumber;
+    });
 
     private String operator;
+    private Calculation calculation;
 
-    Operator(String operator) {
+    Operator(String operator, Calculation calculation) {
         this.operator = operator;
+        this.calculation = calculation;
     }
 
-    public abstract int apply(int firstNumber, int secondNumber);
+    public static Operator of(String value) {
+        Optional<Operator> operators = Arrays.stream(values()).filter(o -> o.operator.equals(value)).findFirst();
+        return operators.orElseThrow(() -> new IllegalArgumentException(value + CommonConstant.INVALID_OPERATOR));
+    }
 
-    public static int operate(String operator, int firstNumber, int secondNumber) {
-        if (operator.equals(PLUS.operator)) {
-            return Operator.PLUS.apply(firstNumber, secondNumber);
-        }
-        if (operator.equals(MINUS.operator)) {
-            return Operator.MINUS.apply(firstNumber, secondNumber);
-        }
-        if (operator.equals(MULTIPLY_BY.operator)) {
-            return Operator.MULTIPLY_BY.apply(firstNumber, secondNumber);
-        }
-        if (operator.equals(DIVIDED_BY.operator)) {
-            return Operator.DIVIDED_BY.apply(firstNumber, secondNumber);
-        }
-        throw new IllegalArgumentException(operator + CommonConstant.INVALID_OPERATOR);
+    public int calculate(int firstNumber, int secondNumber) {
+        return calculation.calculate(firstNumber, secondNumber);
     }
 
 }

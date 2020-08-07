@@ -5,7 +5,7 @@ import java.util.List;
 
 public class StringCarculator {
 
-    public int calculate(String inputExpression) {
+    public int compute(String inputExpression) {
         inputExpressionInValidException(inputExpression);
 
         List<String> expressions = Arrays.asList(inputExpression.split(CommonConstant.DELIMITER));
@@ -14,9 +14,14 @@ public class StringCarculator {
         for (int i = 1; i < expressions.size(); i += 2) {
             String operator = expressions.get(i);
             int number = stringToInt(expressions.get(i + 1));
-            resultValue = Operator.operate(operator, resultValue, number);
+            resultValue = calculate(operator, resultValue, number);
         }
         return resultValue;
+    }
+
+    public static int calculate(String operator, int firstNumber, int secondNumber) {
+        Operator operation = Operator.of(operator);
+        return operation.calculate(firstNumber, secondNumber);
     }
 
     public static void inputExpressionInValidException(String inputExpression) {
