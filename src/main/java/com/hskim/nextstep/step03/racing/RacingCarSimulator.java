@@ -16,7 +16,7 @@ public class RacingCarSimulator {
     private List<RacingCar> racingCarList;
     private final int gameRepeatCount;
     private final List<Racing> racingHistory;
-    private MovableStrategy movableStrategy;
+    private final MovableStrategy movableStrategy;
 
     public RacingCarSimulator(List<String> carNameList, int gameRepeatCount, MovableStrategy movableStrategy) {
 

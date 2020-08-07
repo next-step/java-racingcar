@@ -1,13 +1,8 @@
 package com.hskim.nextstep.step03.racing;
 
-import com.hskim.nextstep.step02.utils.StringUtils;
-import com.hskim.nextstep.step03.exception.ExceptionMessage;
 import com.hskim.nextstep.step03.model.RacingCar;
 import com.hskim.nextstep.step03.model.RandomMovableStrategy;
-import com.hskim.nextstep.step03.utils.ValidationUtils;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
 import java.util.List;

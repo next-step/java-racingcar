@@ -4,8 +4,8 @@ import com.hskim.nextstep.step03.utils.RandomUtils;
 
 public class RandomMovableStrategy implements MovableStrategy {
 
-    private int randomBound;
-    private int lowerBound;
+    private final int randomBound;
+    private final int lowerBound;
 
     public RandomMovableStrategy(int randomBound, int lowerBound) {
 
