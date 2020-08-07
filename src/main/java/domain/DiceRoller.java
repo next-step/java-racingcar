@@ -1,3 +1,5 @@
+package domain;
+
 public interface DiceRoller {
     int CRITERIA_NUM = 4;
 
