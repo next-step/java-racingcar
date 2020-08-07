@@ -4,7 +4,6 @@ import com.hskim.nextstep.step03.exception.ExceptionMessage;
 import com.hskim.nextstep.step03.model.Racing;
 import com.hskim.nextstep.step03.model.RacingCar;
 
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,31 +13,26 @@ public class RacingCarSimulator {
     private static final int MOVE_DISTANCE_PER_GAME = 1;
     public static final String CAR_NAME_DELIMITER = ",";
     private List<RacingCar> racingCarList;
-    private int gameRepeatNum;
+    private int gameRepeatCount;
     private List<Racing> racingHistory;
 
-    public RacingCarSimulator() {
+    public RacingCarSimulator(List<String> carNameList, int gameRepeatCount) {
 
-        racingCarList = Collections.emptyList();
-        gameRepeatNum = 0;
+        setRacingCarList(carNameList);
+        this.gameRepeatCount = gameRepeatCount;
         racingHistory = new LinkedList<>();
     }
 
-    public void setRacingCarList(List<String> carNameList) {
+    private void setRacingCarList(List<String> carNameList) {
 
         racingCarList = carNameList.stream()
                 .map(RacingCar::new)
                 .collect(Collectors.toList());
     }
 
-    public void setGameRepeatNum(int repeatNum) {
-
-        gameRepeatNum = repeatNum;
-    }
-
     public void simulate() {
 
-        for (int index = 1; index <= gameRepeatNum; index++) {
+        for (int index = 1; index <= gameRepeatCount; index++) {
 
             runGame(index);
         }
@@ -66,11 +60,6 @@ public class RacingCarSimulator {
         return racingCarList.stream()
                 .filter(racingCar -> racingCar.getTotalMovedDistance() == winnerTotalDistance)
                 .collect(Collectors.toList());
-    }
-
-    //getter
-    public List<RacingCar> getRacingCarList() {
-        return racingCarList;
     }
 
     public List<Racing> getRacingHistory() {

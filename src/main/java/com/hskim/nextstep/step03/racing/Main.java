@@ -13,7 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        RacingCarSimulator carSimulator = new RacingCarSimulator();
+        RacingCarSimulator carSimulator;
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
 
@@ -24,11 +24,11 @@ public class Main {
         ValidationUtils.stringLengthLimit(carNameList,
                 RacingCar.CAR_NAME_LIMIT, ExceptionMessage.EXCEED_CAR_NAME_LENGTH);
 
-        carSimulator.setRacingCarList(carNameList);
 
         inputView.printPhraseToConsole("시도할 회수는 몇 회 인가요?");
-        carSimulator.setGameRepeatNum(inputView.getIntegerFromConsoleInput());
+        int repeatCount = inputView.getIntegerFromConsoleInput();
 
+        carSimulator = new RacingCarSimulator(carNameList, repeatCount);
         carSimulator.simulate();
 
         resultView.printRacingSimulateResult(carSimulator);
