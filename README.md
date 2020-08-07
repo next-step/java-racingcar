@@ -1,14 +1,17 @@
 # 자동차 경주 게임
 
+##Step 5
+
+#### 기능 목록
+ResultView.showFinalChampion 로직 분리
+RunRace Domain으로 변경
+신규 Controller생성
+결승점 판단 객체 추가
+
 ##Step 4
 Step3에서 개선점
 1. sudo코드를 sketchTest를 작성 후 Class로 확장하는 개발 Outside In TDD 적용 
 2. 기존 Car.RaceRecode를 제거 후 Car에 상태값을 가짐
-
-#### 기능 목록
-
-#### 문의
-
 
 ##Step 3
 #### 기능 흐름
