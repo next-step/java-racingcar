@@ -4,10 +4,11 @@ import java.util.Random;
 
 public class CarRacing {
 	private static final int CAN_MOVE_NUM = 4;
+	private static final int RANDOM_LIMIT = 9;
 	private static final String MOVE_MARK = "-";
 	private static final Random random = new Random();
 
-	public void showRaceResult() {
+	public static void main(String[] args) {
 		int carCount = InputView.requestHowManyCar();
 		int times = InputView.requestHowManyTimes();
 
@@ -39,10 +40,13 @@ public class CarRacing {
 	}
 
 	public static StringBuilder canMoveForward(StringBuilder car) {
-		if(random.nextInt(9) >= CAN_MOVE_NUM) {
+		if(isMoveNum(random.nextInt(RANDOM_LIMIT))) {
 			car.append(MOVE_MARK);
 		}
 		return car;
 	}
 
+	public static boolean isMoveNum(int randomNumber) {
+		return randomNumber >= CAN_MOVE_NUM;
+	}
 }
