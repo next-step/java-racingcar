@@ -16,4 +16,5 @@ public class CarRacingGame implements CarGame {
 		int randomValue = randomValueGenerator.nextInt(RANDOM_MAX_VALUE);
 		car.move(Direction.getBy(randomValue));
 	}
+
 }

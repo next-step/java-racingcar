@@ -9,32 +9,35 @@ import simpleracing.input.CarRacingInitValue;
 import simpleracing.input.CarRacingInput;
 import simpleracing.input.InputView;
 import simpleracing.output.CarRacingOutput;
-import simpleracing.view.OutputView;
 
 
 public class CarRacingExecutor {
 
 	private InputView carRacingInput;
 	private CarGame racingGame;
-	private OutputView carRacingOutput;
+	private CarRacingReferee referee;
+	private CarRacingOutput carRacingOutput;
 
 	public CarRacingExecutor() {
 		this.carRacingInput = new CarRacingInput();
 		this.racingGame = new CarRacingGame();
+		this.referee = new CarRacingReferee();
 		this.carRacingOutput = new CarRacingOutput();
 	}
 
 	public void execute() {
 		CarRacingInitValue initValue = carRacingInput.input();
 
-		this.playGame(initValue, IntStream.range(0, initValue.getCarCount())
-										  .mapToObj(carNumber -> new Car(carNumber,
-																		 initValue.getNames()
-																				  .get(carNumber)
-																				  .trim(),
-																		 this.racingGame)
-												   )
-										  .collect(toList()));
+		List<Car> cars = IntStream.range(0, initValue.getCarCount())
+								  .mapToObj(carNumber -> new Car(carNumber,
+																 initValue.getNames()
+																		  .get(carNumber)
+																		  .trim(),
+																 this.racingGame)
+										   )
+								  .collect(toList());
+		this.playGame(initValue, cars);
+		this.referee(cars);
 		carRacingOutput.render();
 
 	}
@@ -44,7 +47,12 @@ public class CarRacingExecutor {
 				 .forEach(round -> {
 					 cars.stream()
 						 .forEach(car -> car.play());
-					 this.carRacingOutput.addRenderingView(cars);
+					 this.carRacingOutput.addSituation(cars);
 				 });
+	}
+
+	private void referee(List<Car> cars) {
+		referee.judgeRacingResult(cars);
+		carRacingOutput.addWinner(referee.announceWinner());
 	}
 }
