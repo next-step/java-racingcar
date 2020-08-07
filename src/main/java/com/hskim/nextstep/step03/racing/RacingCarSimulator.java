@@ -1,6 +1,7 @@
 package com.hskim.nextstep.step03.racing;
 
 import com.hskim.nextstep.step03.exception.ExceptionMessage;
+import com.hskim.nextstep.step03.model.MovableStrategy;
 import com.hskim.nextstep.step03.model.Racing;
 import com.hskim.nextstep.step03.model.RacingCar;
 
@@ -13,14 +14,16 @@ public class RacingCarSimulator {
     private static final int MOVE_DISTANCE_PER_GAME = 1;
     public static final String CAR_NAME_DELIMITER = ",";
     private List<RacingCar> racingCarList;
-    private int gameRepeatCount;
-    private List<Racing> racingHistory;
+    private final int gameRepeatCount;
+    private final List<Racing> racingHistory;
+    private MovableStrategy movableStrategy;
 
-    public RacingCarSimulator(List<String> carNameList, int gameRepeatCount) {
+    public RacingCarSimulator(List<String> carNameList, int gameRepeatCount, MovableStrategy movableStrategy) {
 
         setRacingCarList(carNameList);
         this.gameRepeatCount = gameRepeatCount;
         racingHistory = new LinkedList<>();
+        this.movableStrategy = movableStrategy;
     }
 
     private void setRacingCarList(List<String> carNameList) {
@@ -43,7 +46,7 @@ public class RacingCarSimulator {
         Racing racing = new Racing(gameNo);
 
         racingCarList.forEach(racingCar -> {
-            racingCar.moveForward(MOVE_DISTANCE_PER_GAME);
+            racingCar.moveForward(MOVE_DISTANCE_PER_GAME, movableStrategy);
             racing.addRecord(racingCar);
         });
 

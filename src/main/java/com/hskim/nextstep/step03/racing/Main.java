@@ -3,6 +3,7 @@ package com.hskim.nextstep.step03.racing;
 import com.hskim.nextstep.step02.utils.StringUtils;
 import com.hskim.nextstep.step03.exception.ExceptionMessage;
 import com.hskim.nextstep.step03.model.RacingCar;
+import com.hskim.nextstep.step03.model.RandomMovableStrategy;
 import com.hskim.nextstep.step03.ui.InputView;
 import com.hskim.nextstep.step03.ui.ResultView;
 import com.hskim.nextstep.step03.utils.ValidationUtils;
@@ -10,6 +11,9 @@ import com.hskim.nextstep.step03.utils.ValidationUtils;
 import java.util.List;
 
 public class Main {
+
+    private static final int RANDOM_BOUND = 10;
+    private static final int MOVABLE_LOWER_BOUND = 4;
 
     public static void main(String[] args) {
 
@@ -28,7 +32,8 @@ public class Main {
         inputView.printPhraseToConsole("시도할 회수는 몇 회 인가요?");
         int repeatCount = inputView.getIntegerFromConsoleInput();
 
-        carSimulator = new RacingCarSimulator(carNameList, repeatCount);
+        carSimulator = new RacingCarSimulator(carNameList, repeatCount,
+                new RandomMovableStrategy(RANDOM_BOUND, MOVABLE_LOWER_BOUND));
         carSimulator.simulate();
 
         resultView.printRacingSimulateResult(carSimulator);
