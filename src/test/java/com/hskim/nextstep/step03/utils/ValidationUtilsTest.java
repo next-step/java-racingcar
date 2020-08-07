@@ -18,7 +18,7 @@ public class ValidationUtilsTest {
 
         int limit = 3;
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            ValidationUtils.validateStringLengthLimit(target, limit);
+            ValidationUtils.stringLengthLimit(target, limit);
         });
     }
 }

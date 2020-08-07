@@ -21,7 +21,7 @@ public class Main {
         String carNames = inputView.getStringFromConsoleInput();
 
         List<String> carNameList = StringUtils.getParsedStringList(carNames, RacingCarSimulator.CAR_NAME_DELIMITER);
-        ValidationUtils.validateStringLengthLimitWithList(carNameList,
+        ValidationUtils.stringLengthLimit(carNameList,
                 RacingCar.CAR_NAME_LIMIT, ExceptionMessage.EXCEED_CAR_NAME_LENGTH);
 
         carSimulator.setRacingCarList(carNameList);

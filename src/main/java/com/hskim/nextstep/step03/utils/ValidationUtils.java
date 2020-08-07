@@ -10,12 +10,12 @@ public class ValidationUtils {
 
     }
 
-    public static void validateStringLengthLimit(String target, int limit) {
+    public static void stringLengthLimit(String target, int limit) {
 
-        validateStringLengthLimit(target, limit, ExceptionMessage.DEFAULT_EXCEPTION_MESSAGE);
+        stringLengthLimit(target, limit, ExceptionMessage.DEFAULT_EXCEPTION_MESSAGE);
     }
 
-    public static void validateStringLengthLimit(String target, int limit, ExceptionMessage exceptionMessage) {
+    public static void stringLengthLimit(String target, int limit, ExceptionMessage exceptionMessage) {
 
         if (target.length() > limit) {
 
@@ -23,13 +23,13 @@ public class ValidationUtils {
         }
     }
 
-    public static void validateStringLengthLimitWithList(List<String> list, int limit) {
+    public static void stringLengthLimit(List<String> list, int limit) {
 
-        validateStringLengthLimitWithList(list, limit, ExceptionMessage.DEFAULT_EXCEPTION_MESSAGE);
+        stringLengthLimit(list, limit, ExceptionMessage.DEFAULT_EXCEPTION_MESSAGE);
     }
 
-    public static void validateStringLengthLimitWithList(List<String> list, int limit, ExceptionMessage exceptionMessage) {
+    public static void stringLengthLimit(List<String> list, int limit, ExceptionMessage exceptionMessage) {
 
-        list.forEach(element -> validateStringLengthLimit(element, limit, exceptionMessage));
+        list.forEach(element -> stringLengthLimit(element, limit, exceptionMessage));
     }
 }

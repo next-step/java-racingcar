@@ -40,7 +40,7 @@ public class RacingCarSimulatorTest {
     void racingCarListGetterSetterSuccessTest(String carName) {
 
         List<String> carNameList = StringUtils.getParsedStringList(carName, RacingCarSimulator.CAR_NAME_DELIMITER);
-        ValidationUtils.validateStringLengthLimitWithList(carNameList,
+        ValidationUtils.stringLengthLimit(carNameList,
                 RacingCar.CAR_NAME_LIMIT, ExceptionMessage.EXCEED_CAR_NAME_LENGTH);
         racingCarSimulator.setRacingCarList(carNameList);
         assertThat(racingCarSimulator.getRacingCarList().size()).isEqualTo(getCarNum(carName));
@@ -58,7 +58,7 @@ public class RacingCarSimulatorTest {
                 .isThrownBy(() -> {
                     List<String> carNameList =
                             StringUtils.getParsedStringList(carName, RacingCarSimulator.CAR_NAME_DELIMITER);
-                    ValidationUtils.validateStringLengthLimitWithList(carNameList,
+                    ValidationUtils.stringLengthLimit(carNameList,
                             RacingCar.CAR_NAME_LIMIT, ExceptionMessage.EXCEED_CAR_NAME_LENGTH);
                     racingCarSimulator.setRacingCarList(carNameList);
                 })
