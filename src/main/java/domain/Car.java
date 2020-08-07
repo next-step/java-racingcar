@@ -26,9 +26,4 @@ public class Car {
     public String getName() {
         return name;
     }
-
-    public void printLength() {
-        System.out.print(name + " : ");
-        IntStream.range(0, length).forEach(e -> System.out.print("-"));
-    }
 }
