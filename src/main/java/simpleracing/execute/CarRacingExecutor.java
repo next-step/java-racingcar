@@ -27,18 +27,22 @@ public class CarRacingExecutor {
 	public void execute() {
 		CarRacingInitValue initValue = carRacingInput.input();
 
-		List<Car> cars = IntStream.range(0, initValue.getCarCount())
-								  .mapToObj(carNumber -> new Car(carNumber,
-																 initValue.getNames()
-																		  .get(carNumber)
-																		  .trim(),
-																 this.racingGame)
-										   )
-								  .collect(toList());
+		List<Car> cars = this.generateCarsForRacing(initValue);
 		this.playGame(initValue, cars);
 		this.judgeRacingResult(cars);
 		carRacingOutput.render();
 
+	}
+
+	private List<Car> generateCarsForRacing(CarRacingInitValue initValue) {
+		return IntStream.range(0, initValue.getCarCount())
+						.mapToObj(carNumber -> new Car(carNumber,
+													   initValue.getNames()
+																.get(carNumber)
+																.trim(),
+													   this.racingGame)
+								 )
+						.collect(toList());
 	}
 
 	private void playGame(CarRacingInitValue initValue, List<Car> cars) {
