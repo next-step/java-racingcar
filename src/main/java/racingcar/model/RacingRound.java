@@ -4,20 +4,24 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingRound {
-    private List<RacingCar> racingCarList;
+    private List<RacingCar> racingCars;
 
-    public RacingRound(List<RacingCar> racingCarList) {
-        this.racingCarList = racingCarList;
+    public RacingRound(List<RacingCar> cars) {
+        this.racingCars = cars.stream().map(RacingCar::clone).collect(Collectors.toList());
     }
 
-    public void race(Rule racingRule) {
-        this.racingCarList.forEach(racingCar -> racingCar.run(racingRule));
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
     }
 
-    public String getRoundRecord() {
-        return this.racingCarList.stream()
-                .map(racingCar -> racingCar.makeMark(racingCar.getCarPosition()))
-                .collect(Collectors.joining("\n"));
-    }
+    public List<RacingCar> findBestScoreCars() {
+        int bestScore = racingCars.stream()
+                .map(RacingCar::getCarPosition)
+                .max(Integer::compareTo)
+                .get();
 
+        return racingCars.stream()
+                .filter(car -> car.getCarPosition() == bestScore)
+                .collect(Collectors.toList());
+    }
 }

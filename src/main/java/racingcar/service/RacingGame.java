@@ -1,40 +1,54 @@
 package racingcar.service;
 
 import racingcar.model.*;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class RacingGame {
+    private static final String racingCarNamePattern = "^[a-zA-Z0-9]{1,6}$";
 
-    private RacingRound racingRound;
-    private RacingRecord racingRecord;
     private int racingCount;
+    private List<RacingCar> racingCars;
+    private List<RacingRound> roundResults = new ArrayList<>();
 
-    public RacingGame(int racingCarNumber, int racingCount) {
+    public RacingGame(List<String> racingCarList, int racingCount) {
         this.racingCount = racingCount;
-        this.racingRound =  participate(racingCarNumber);
-        this.racingRecord = new RacingRecord();
+        this.racingCars = participate(racingCarList);
     }
 
-    public RacingRecord start() {
+    public void start() {
         for (int i = 0; i < racingCount; i++) {
-            racingRound.race(adjustRule());
-            racingRecord.record(racingRound);
+            roundResults.add(new RacingRound(racingCars.stream()
+                    .map(racingCar -> racingCar.run(adjustRule()))
+                    .map(RacingCar::clone)
+                    .collect(Collectors.toList())));
         }
-        return racingRecord;
     }
 
-    public RacingRound participate(int racingCarNumber) {
+    public List<RacingRound> getRacingResults() {
+        return roundResults;
+    }
+
+    public List<RacingCar> participate(List<String> racingCarList) {
         List<RacingCar> cars = new ArrayList<>();
-        for (int i = 0; i < racingCarNumber; i++) {
-            cars.add(new RacingCar(String.valueOf(i)));
+        for (int i = 0; i < racingCarList.size(); i++) {
+            cars.add(new RacingCar(racingCarList.get(i)));
         }
-        return new RacingRound(cars);
+        return cars;
     }
 
     public Rule adjustRule() {
         return new RacingRule();
+    }
+
+    public static boolean validateCarName(List<String> racingCarNameList) {
+        Predicate<String> carNamePattern = Pattern
+                .compile(racingCarNamePattern)
+                .asPredicate();
+        return racingCarNameList.stream().allMatch(carNamePattern);
     }
 
 }
