@@ -7,13 +7,12 @@ import java.util.stream.IntStream;
 
 import simpleracing.input.CarRacingInitValue;
 import simpleracing.input.CarRacingInput;
-import simpleracing.input.InputView;
 import simpleracing.output.CarRacingOutput;
 
 
 public class CarRacingExecutor {
 
-	private InputView carRacingInput;
+	private CarRacingInput carRacingInput;
 	private CarGame racingGame;
 	private CarRacingReferee referee;
 	private CarRacingOutput carRacingOutput;
