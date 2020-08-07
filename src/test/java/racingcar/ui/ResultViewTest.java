@@ -37,7 +37,7 @@ public class ResultViewTest {
 
         Car car = new Car(new Engine(() -> 5), NAME_OF_CAR);
         car.moveAndStop();
-        ResultView.printResult(car);
+        ResultView.printCarStatus(car);
         printMessageTest(NAME_OF_CAR + " : --\n");
     }
 
@@ -45,7 +45,7 @@ public class ResultViewTest {
     @Test
     void printStopCarTest() {
         Car car = new Car(new Engine(() -> 5), NAME_OF_CAR);
-        ResultView.printResult(car);
+        ResultView.printCarStatus(car);
         printMessageTest(NAME_OF_CAR + " : -\n");
     }
 

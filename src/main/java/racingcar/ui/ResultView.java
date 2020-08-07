@@ -1,7 +1,10 @@
 package racingcar.ui;
 
 import racingcar.domain.Car;
+import racingcar.domain.RacingData;
 import resource.StringResources;
+
+import java.util.List;
 
 public class ResultView {
 
@@ -11,7 +14,13 @@ public class ResultView {
         System.out.println(StringResources.GAME_RESULT);
     }
 
-    public static void printResult(Car car) {
+    public static void printSetResult(RacingData racingData, List<Car> racingCars) {
+        for (int i = 0; i < racingData.getNumberOfCars(); i++) {
+            printCarStatus(racingCars.get(i));
+        }
+    }
+
+    public static void printCarStatus(Car car) {
 
         StringBuilder sb = new StringBuilder(car.getName());
         sb.append(" : ");

@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import racingcar.ui.RacingDataInput;
 import racingcar.ui.ResultView;
 
 import java.util.Arrays;
@@ -13,28 +12,27 @@ public class RacingGame {
     private final List<Car> racingCars;
     private final RacingData racingData;
 
-    public RacingGame(RacingDataInput racingDataInput, Engine engine) {
+    public RacingGame(RacingData racingData, Engine engine) {
 
-        racingData = racingDataInput.getRacingData();
+        this.racingData = racingData;
         racingCars = Arrays.stream(racingData.getNames())
                 .map((name) -> new Car(engine, name))
                 .collect(Collectors.toList());
     }
 
-    public void start() {
+    public void run() {
 
         ResultView.lineFeed();
         ResultView.printStart();
 
         for (int i = 0; i < racingData.getTryCount(); i++) {
             moveCar();
-            printCurrentStatus();
-
+            ResultView.printSetResult(racingData, racingCars);
             ResultView.lineFeed();
         }
     }
 
-    public void end() {
+    public void result() {
         ResultView.printWinnerNames(getWinnerNames());
     }
 
@@ -54,12 +52,6 @@ public class RacingGame {
     private void moveCar() {
         for (int i = 0; i < racingData.getNumberOfCars(); i++) {
             racingCars.get(i).moveAndStop();
-        }
-    }
-
-    private void printCurrentStatus() {
-        for (int i = 0; i < racingData.getNumberOfCars(); i++) {
-            ResultView.printResult(racingCars.get(i));
         }
     }
 }
