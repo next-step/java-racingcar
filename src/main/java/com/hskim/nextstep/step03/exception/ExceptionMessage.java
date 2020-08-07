@@ -9,7 +9,8 @@ public enum ExceptionMessage {
 
     DEFAULT_EXCEPTION_MESSAGE("Exception occurred!"),
     EXCEED_CAR_NAME_LENGTH("Car name length can't exceed " + RacingCar.CAR_NAME_LIMIT + "."),
-    FAIL_TO_FIND_WINNER("Fail to find winner. Check state.");
+    FAIL_TO_FIND_WINNER("Fail to find winner. Check state."),
+    NOT_NUMBER_STRING("Invalid input!!. Please input number string.");
 
     ExceptionMessage(String exceptionMessage) {
 

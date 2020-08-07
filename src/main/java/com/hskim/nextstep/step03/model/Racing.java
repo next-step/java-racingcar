@@ -5,8 +5,8 @@ import java.util.Map;
 
 public class Racing {
 
-    private int racingNo;
-    private Map<String, Integer> recordMap;
+    private final int racingNo;
+    private final Map<String, Integer> recordMap;
 
     public Racing(int racingNo) {
 

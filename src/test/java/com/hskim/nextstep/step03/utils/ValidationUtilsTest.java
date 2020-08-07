@@ -11,10 +11,10 @@ import static org.assertj.core.api.Assertions.*;
  */
 public class ValidationUtilsTest {
 
-    @DisplayName("validateStringLength() 테스트")
+    @DisplayName("stringLengthLimit() 테스트")
     @ParameterizedTest
     @ValueSource(strings = {"abcde", "longlong", "rest", "need"})
-    void validateStringLengthTest(String target) {
+    void stringLengthLimitTest(String target) {
 
         int limit = 3;
         assertThatIllegalArgumentException().isThrownBy(() -> {

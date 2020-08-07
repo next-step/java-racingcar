@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 
 public class ResultView extends View {
 
-    private static String DISTANCE_SYMBOL = "-";
-    private static String WINNER_DELIMITER = ", ";
+    private static final String DISTANCE_SYMBOL = "-";
+    private static final String WINNER_DELIMITER = ", ";
 
     public void printRacingSimulateResult(RacingCarSimulator racingCarSimulator) {
 

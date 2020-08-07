@@ -45,6 +45,6 @@ public class RacingCarSimulatorTest {
                 .collect(Collectors.toList());
 
         // then
-        assertThat(winnerNameList).isEqualTo(Arrays.asList("winner1", "winner2", "winner2", "winner4"));
+        assertThat(winnerNameList).isEqualTo(Arrays.asList("winner1", "winner2", "winner3", "winner4"));
     }
 }
