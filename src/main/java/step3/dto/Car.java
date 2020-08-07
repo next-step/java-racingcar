@@ -4,6 +4,7 @@ public class Car {
     private int entryNumber;
     private int position;
 
+    private final String NAME_TAG_PREFIX_STRING_CAR = "CAR";
     private final String NAME_TAG_SEPERATOR_SEMICOLLON = "|";
     private final String NAME_TAG_EMTPY_SPACE = "    ";
 
@@ -34,6 +35,7 @@ public class Car {
         int length = entryNumber.length();
 
         String newPrefix = NAME_TAG_EMTPY_SPACE.substring(length);
+        nameTag.append(NAME_TAG_PREFIX_STRING_CAR);
         nameTag.append(entryNumber).append(newPrefix);
         nameTag.append(NAME_TAG_SEPERATOR_SEMICOLLON);
 
