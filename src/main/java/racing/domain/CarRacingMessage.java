@@ -1,8 +1,5 @@
 package racing.domain;
 
-/**
- * Created by monds on 2020-08-07
- */
 public final class CarRacingMessage {
 
     public static final String TRY_COUNT_ERROR_MESSAGE = "경주 시도 횟수는 1 이상이어야 합니다";

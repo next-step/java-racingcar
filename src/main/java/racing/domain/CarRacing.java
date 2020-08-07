@@ -10,7 +10,6 @@ public class CarRacing {
     private final Cars cars;
     private final int tryCount;
 
-    private boolean complete = false;
     private int racingCount = 0;
 
     public CarRacing(String carNames, int tryCount) {
@@ -26,15 +25,14 @@ public class CarRacing {
     }
 
     public void race(CarConsumer carConsumer) {
-        Verify.checkArgument(!complete, RACE_COMPLETED_MESSAGE);
+        Verify.checkState(!isComplete(), RACE_COMPLETED_MESSAGE);
 
         cars.moveCars(carConsumer);
         racingCount++;
-        complete = tryCount == racingCount;
     }
 
     public boolean isComplete() {
-        return complete;
+        return tryCount == racingCount;
     }
 
     public int getRacingCount() {
@@ -42,7 +40,7 @@ public class CarRacing {
     }
 
     public String[] getWinners() {
-        Verify.checkState(complete, RACE_NOT_COMPLETED_MESSAGE);
+        Verify.checkState(isComplete(), RACE_NOT_COMPLETED_MESSAGE);
         return cars.getMaxMovedCarNames();
     }
 
