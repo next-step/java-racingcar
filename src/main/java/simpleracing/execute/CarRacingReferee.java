@@ -19,7 +19,7 @@ public class CarRacingReferee {
 		return this.winner;
 	}
 
-	public void judgeRacingResult(List<Car> cars) {
+	public void judge(List<Car> cars) {
 		int distanceOfWinner = getDistanceOfWinner(cars);
 
 		this.winner = cars.stream()

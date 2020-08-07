@@ -36,7 +36,7 @@ public class CarRacingExecutor {
 										   )
 								  .collect(toList());
 		this.playGame(initValue, cars);
-		this.referee(cars);
+		this.judgeRacingResult(cars);
 		carRacingOutput.render();
 
 	}
@@ -50,8 +50,8 @@ public class CarRacingExecutor {
 				 });
 	}
 
-	private void referee(List<Car> cars) {
-		referee.judgeRacingResult(cars);
+	private void judgeRacingResult(List<Car> cars) {
+		referee.judge(cars);
 		carRacingOutput.addWinner(referee.announceWinner());
 	}
 }
