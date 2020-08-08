@@ -17,8 +17,13 @@ public class CarRacingRapScore {
     }
 
     public List<Car> findBestScoreCars() {
-        int bestScore = cars.stream().map(Car::getPosition).max(Integer::compareTo).get();
-        return cars.stream().filter(car -> car.getPosition() == bestScore).collect(Collectors.toList());
+        int bestScore = cars.stream()
+                .map(Car::getPosition)
+                .max(Integer::compareTo)
+                .orElseThrow(IllegalArgumentException::new);
+        return cars.stream()
+                .filter(car -> car.checkPosition(bestScore))
+                .collect(Collectors.toList());
     }
 
 }

@@ -15,6 +15,10 @@ public class Car implements Cloneable {
         return this;
     }
 
+    public boolean checkPosition(int position) {
+        return this.position == position;
+    }
+
     public int getPosition() {
         return position;
     }
