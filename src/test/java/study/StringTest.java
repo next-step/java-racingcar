@@ -1,5 +1,7 @@
 package study;
 
+import org.assertj.core.api.Assertions;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -8,10 +10,10 @@ import org.junit.jupiter.api.Test;
 public class StringTest {
     @Test
     void split() {
-        String[] result = "(1,2)".substring(1,4).split(",");
-        assertThat(result).containsExactly("1","2");
-
+        String[] valuse = "3 + 4".split(" ");
+        assertThat(valuse).containsExactly("3", "+", "4");
     }
+
 
     @Test
     public void charAt() {
