@@ -1,6 +1,5 @@
 package racing.domain;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -11,8 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class CarRacingTest {
 
     @Test
-    @DisplayName("정상적인 입력값으로 정상적으로 수행하고 초기화하는지 테스트")
-    public void should_success_when_normalInput() {
+    void 정상적인_입력값_테스트() {
         CarRacing carRacing = new CarRacing("a,b,c", 5);
         while (!carRacing.isComplete()) {
             carRacing.race();
@@ -24,24 +22,12 @@ public class CarRacingTest {
 
     @ParameterizedTest
     @ValueSource(ints = {0, -5, -10})
-    @DisplayName("0 이하의 시도 횟수 입력값")
-    public void race_invalidTryInput_exceptThrown(int tryCount) {
+    void 숫자_0_이하의_시도_횟수_입력(int tryCount) {
         assertThatThrownBy(() -> new CarRacing("a,b,c", tryCount)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    @DisplayName("이동거리 랜덤 범위 확인")
-    void getRandomDistance() {
-        CarRacing racing = new CarRacing("a,b,c", 1);
-        for (int i = 0; i < 10; i++) {
-            int distance = racing.getRandomDistance();
-            assertThat(distance).isBetween(CarRacingProperty.MIN_RANDOM_DISTANCE, CarRacingProperty.MAX_RANDOM_DISTANCE);
-        }
-    }
-
-    @Test
-    @DisplayName("경주 완료 후 정상적으로 우승자 한 명 이상 체크")
-    void completeRace_normalInput_returnWinner() {
+    void 경주_완료_후_정상적으로_우승자_한_명_이상_체크() {
         // given
         CarRacing racing = new CarRacing("pobi,crong,honux", 3);
 
@@ -56,8 +42,7 @@ public class CarRacingTest {
     }
 
     @Test
-    @DisplayName("레이스가 종료되기 전에 우승자 가져올 경우")
-    void getWinners_notCompletedRace_exceptThrown() {
+    void 레이스가_종료되기_전에_우승자_가져올_경우() {
         // given
         String[] names = {"pobi","crong","honux"};
         CarRacing racing = new CarRacing(String.join(",", names), 5);
