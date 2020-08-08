@@ -28,7 +28,8 @@ class RacingGameTest {
         // 최초 초기 상태 저장 + 1
         int expectedSize = numberOfTrials + 1;
 
-        assertThat(results.getSteps()).hasSize(expectedSize);
-        assertThat(results.getSteps().get(0)).hasSize(nameOfCars.length);
+        GameStepList steps = results.getSteps();
+
+        assertThat(steps.getSteps()).hasSize(expectedSize);
     }
 }

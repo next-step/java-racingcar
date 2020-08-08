@@ -26,13 +26,12 @@ class CarMovementCreationTest {
     @Test
     void moveCarTest() {
         int fuel = 4;
-        int expected = car.getPosition();
+        int previousPosition = car.getPosition();
 
         car.move(fuel);
 
         int actual = car.getPosition();
-
-        expected++;
+        int expected = previousPosition + 1;
 
         assertThat(expected).isEqualTo(actual);
     }

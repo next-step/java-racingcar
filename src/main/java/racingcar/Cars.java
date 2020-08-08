@@ -30,20 +30,17 @@ public class Cars {
         }
     }
 
-    public Map<String, Integer> getState() {
-        Map<String, Integer> stateOfCars = new HashMap<>();
+    public List<CarState> getStates() {
+        List<CarState> states = new ArrayList<>();
 
         for (Car car : this.cars) {
-            String name = car.toString();
-            Integer position = car.getPosition();
-
-            stateOfCars.put(name, position);
+            states.add(car.getState());
         }
 
-        return stateOfCars;
+        return states;
     }
 
-    public int getMaxPosition() throws NoSuchElementException {
+    private int getMaxPosition() {
         Car car =  Arrays.stream(this.cars)
                 .max(Car::compareTo)
                 .orElseThrow(()->new NoSuchElementException("승자가 없습니다."));
@@ -51,9 +48,11 @@ public class Cars {
         return car.getPosition();
     }
 
-    public List<String> find(int position) {
+    public List<String> findByMaxPosition() {
+        int maxPosition = getMaxPosition();
+
         return Arrays.stream(this.cars)
-                .filter(car -> car.getPosition() == position)
+                .filter(car -> car.getPosition() == maxPosition)
                 .map(Car::toString)
                 .collect(Collectors.toList());
     }

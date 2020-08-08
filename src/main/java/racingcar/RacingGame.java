@@ -11,18 +11,26 @@ public class RacingGame {
         this.cars = Cars.createAllCars(args.getNameOfCars());
     }
 
-    public GameResults start() throws NoSuchElementException {
-        List<Map<String, Integer>> steps = new ArrayList<>();
+    public GameResults start() {
+        GameStepList steps = GameStepList.createSteps();
 
-        steps.add(cars.getState());
+        steps.addStep(
+                GameStep.createGameStep(
+                    CarStateList.makeCarStateList(cars.getStates())
+                )
+        );
 
         for (int step = 0; step < this.numberOfTrials; step++) {
             cars.moveCars();
-            steps.add(cars.getState());
+
+            steps.addStep(
+                    GameStep.createGameStep(
+                            CarStateList.makeCarStateList(cars.getStates())
+                    )
+            );
         }
 
-        int max = this.cars.getMaxPosition();
-        List<String> winners = this.cars.find(max);
+        List<String> winners = this.cars.findByMaxPosition();
 
         return GameResults.createResult(steps, winners);
     }

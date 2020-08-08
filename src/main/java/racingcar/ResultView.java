@@ -4,7 +4,6 @@ import racingcar.common.Messages;
 
 import java.io.PrintWriter;
 import java.util.List;
-import java.util.Map;
 
 
 public class ResultView {
@@ -16,7 +15,7 @@ public class ResultView {
     }
 
     public void printGameResult(GameResults results) {
-        List<Map<String, Integer>> steps = results.getSteps();
+        GameStepList steps = results.getSteps();
         List<String> winners = results.getWinners();
 
         writer.println(Messages.RESULT_START_MESSAGE.valueOf());
@@ -25,22 +24,23 @@ public class ResultView {
         printWinners(winners);
     }
 
-    private void printAllSteps(List<Map<String, Integer>> steps) {
-        for (Map<String, Integer> step : steps) {
-            printAllCars(step);
-        }
+    private void printAllSteps(GameStepList steps) {
+        steps.getSteps()
+                .stream().forEach(this::printAllCars);
     }
 
-    private void printAllCars(Map<String, Integer> cars) {
-        for (Map.Entry<String, Integer> car : cars.entrySet()) {
-            this.printCar(car);
-        }
+    private void printAllCars(GameStep step) {
+        CarStateList carStateList = step.getCarStateList();
+
+        carStateList.getStates()
+                .stream().forEach(this::printCar);
+
         writer.println(Messages.RESULT_EMPTY_STRING.valueOf());
     }
 
-    private void printCar(Map.Entry<String, Integer> car) {
-        String name = car.getKey();
-        int position = car.getValue();
+    private void printCar(CarState stateOfCar) {
+        String name = stateOfCar.getName();
+        int position = stateOfCar.getPosition();
 
         writer.print(name + Messages.RESULT_CAR_STATE_SPERATOR.valueOf());
 

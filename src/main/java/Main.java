@@ -4,7 +4,7 @@ import java.util.NoSuchElementException;
 
 public class Main {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         InputView inputView = new InputView();
         ResultView resultView = new ResultView();
 

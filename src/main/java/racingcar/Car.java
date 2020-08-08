@@ -18,6 +18,10 @@ public class Car implements Comparable<Car> {
         }
     }
 
+    public CarState getState() {
+        return CarState.makeCarState(this.name, this.position);
+    }
+
     public int getPosition() {
         return this.position;
     }
