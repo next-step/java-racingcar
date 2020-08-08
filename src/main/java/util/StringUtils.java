@@ -8,23 +8,20 @@ public class StringUtils {
         return input == null || input.trim().equals("");
     }
 
-    public static boolean validateNumber(String string) {
+    public static void validateNumber(String string) {
         if (isBlank(string)) {
-            return false;
+            throw new IllegalArgumentException(string + ExceptionMessage.INVALID_EMPTY_INPUT_NUMBER);
         }
         try {
             Double.parseDouble(string);
         } catch (NumberFormatException e) {
-            return false;
+            throw new IllegalArgumentException(string + ExceptionMessage.INVALID_FORMAT_INPUT_NUMBER);
         }
-
-        return true;
     }
 
     public static double getNumber(String string) {
-        if (!validateNumber(string)) {
-            throw new IllegalArgumentException(string + ExceptionMessage.INVALID_INPUT_NUMBER);
-        }
+        validateNumber(string);
+
         return Double.parseDouble(string);
     }
 

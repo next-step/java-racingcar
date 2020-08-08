@@ -72,7 +72,7 @@ public class CalculatorTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> calculator.calculate(input))
                 .withMessageStartingWith(input.split(" ")[0])
-                .withMessageContaining(ExceptionMessage.INVALID_INPUT_NUMBER);
+                .withMessageContaining(ExceptionMessage.INVALID_FORMAT_INPUT_NUMBER);
     }
 
     @DisplayName("빈 문자열 입력 테스트")
