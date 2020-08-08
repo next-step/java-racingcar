@@ -17,7 +17,7 @@ public class CarRacingGame {
 
     public CarRacingGame(String csvNameLineOfCars, int numberOfAttempts) {
         String[] names = splitAndValidateCsvNameLineOfCars(csvNameLineOfCars);
-        this.cars = CarFactory.creates(names);
+        this.cars = CarFactory.createsCarsByNames(names);
         this.numberOfAttempts = numberOfAttempts;
     }
 

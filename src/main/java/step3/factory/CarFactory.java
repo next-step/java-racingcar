@@ -8,11 +8,7 @@ import java.util.stream.Collectors;
 
 public class CarFactory {
 
-    public static Car create(String name) {
-        return new Car(name);
-    }
-
-    public static List<Car> creates(String[] names) {
+    public static List<Car> createsCarsByNames(String[] names) {
         return Arrays.stream(names)
                 .map(Car::new)
                 .collect(Collectors.toList());
