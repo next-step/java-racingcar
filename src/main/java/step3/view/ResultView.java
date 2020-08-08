@@ -7,8 +7,10 @@ import java.util.Map;
 
 public class ResultView {
 
+    private static final String GAME_RESULT = "게임 결과";
+
     public static void gameResult() {
-        System.out.println("게임 결과");
+        System.out.println(GAME_RESULT);
     }
 
     public static void carRace(Map<Integer, Car> carInfoMap, int racingCarNumber, int gameCount) {

@@ -6,6 +6,9 @@ import java.util.Random;
 
 public class RacingCar {
 
+    private static final int RACE_CONDITION_BASE_VALUE = 10;
+    private static Random random = new Random();
+
     public static Map<Integer, Car> preparationForGame(int racingCarNumber) {
         Map<Integer, Car> carInfoMap = new HashMap<>();
 
@@ -17,8 +20,7 @@ public class RacingCar {
     }
 
     public static int raceCondition() {
-        Random random = new Random();
-        return random.nextInt(10);
+        return random.nextInt(RACE_CONDITION_BASE_VALUE);
     }
 
 }
