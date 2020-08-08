@@ -1,15 +1,15 @@
 package step3.view;
 
-import step3.domain.RacingCar;
 import step3.domain.Car;
+import step3.domain.RacingCar;
 
 import java.util.Map;
 
 public class ResultView {
 
     private static final String GAME_RESULT = "게임 결과";
-    private static String ACCELATE_SIGN = "-";
-    private static String BRAKE_SIGN = "";
+    public static String ACCELATE_SIGN = "-";
+    public static String BRAKE_SIGN = "";
 
     public static void gameResult() {
         System.out.println(GAME_RESULT);
@@ -17,24 +17,31 @@ public class ResultView {
 
     public static void carRace(Map<Integer, Car> carInfoMap, int racingCarNumber, int gameCount) {
         for (int i = 1; i <= gameCount; i++) {
-            for (int j = 1; j <= racingCarNumber; j++) {
-                Car car = carInfoMap.get(j);
-                String mileAge = car.getMileAge();
-                System.out.println(play(car, j, mileAge));
-            }
-            System.out.println();
+            participatingCars(carInfoMap, racingCarNumber);
         }
     }
 
-    public static String play(Car racingCar, int j, String mileAge) {
-        if (racingCar.getCarId() == j) {
-            int raceCondition = RacingCar.raceCondition();
-            mileAge += racingCar.move(raceCondition, RacingCar.MOVEMENT_POLICY);
+    public static void participatingCars(Map<Integer, Car> carInfoMap, int racingCarNumber) {
+        for (int i = 1; i <= racingCarNumber; i++) {
+            Car car = carInfoMap.get(i);
+            String mileAge = car.getMileAge();
 
-            racingCar.setMileAge(mileAge);
+            boolean raceResult = RacingCar.receStart(car, i);
+            mileAge += printMovement(raceResult);
+            car.setMileAge(mileAge);
+
+            System.out.println(mileAge);
         }
-        return mileAge;
+        System.out.println();
     }
+
+    public static String printMovement(boolean raceResult) {
+        if (raceResult) {
+            return ACCELATE_SIGN;
+        }
+        return BRAKE_SIGN;
+    }
+
 
 
 }

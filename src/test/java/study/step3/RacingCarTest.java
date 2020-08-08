@@ -27,11 +27,11 @@ public class RacingCarTest {
     @ParameterizedTest
     @DisplayName("자동차 전진")
     @CsvSource(value = {"5:-----", "3:---"}, delimiter = ':')
-    void accelateTest(int motorRacingCount, String expected) {
+    void accelateTest(int gameCount, String expected) {
         car = new RacingCar(1);
         String mileAge = "";
-        for (int i = 1; i <= motorRacingCount; i++) {
-            mileAge += car.accelerate();
+        for (int i = 1; i <= gameCount; i++) {
+            mileAge += ResultView.ACCELATE_SIGN;
         }
         car.setMileAge(mileAge);
         assertThat(car.getMileAge()).isEqualTo(expected);
@@ -40,11 +40,11 @@ public class RacingCarTest {
     @ParameterizedTest
     @DisplayName("자동차 정지")
     @CsvSource(value = {"5:''", "3:''"}, delimiter = ':')
-    void brakeTest(int motorRacingCount, String expected) {
+    void brakeTest(int gameCount, String expected) {
         car = new RacingCar(1);
         String mileAge = "";
-        for (int i = 1; i <= motorRacingCount; i++) {
-            mileAge += car.brake();
+        for (int i = 1; i <= gameCount; i++) {
+            mileAge += ResultView.BRAKE_SIGN;
         }
         car.setMileAge(mileAge);
         assertThat(car.getMileAge()).isEqualTo(expected);
