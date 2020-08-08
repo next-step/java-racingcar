@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package step3.logic;
 
 import org.junit.jupiter.api.DisplayName;
@@ -25,4 +26,10 @@ class CarMovementLoggerTest {
 
         assertThat(carMovementLogger.getCarMovementLog()).isEqualTo(2);
     }
+=======
+import static org.junit.jupiter.api.Assertions.*;
+
+class CarMovementLoggerTest {
+
+>>>>>>> a72fa8c... feat 전체 로직 구현
 }

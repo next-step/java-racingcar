@@ -16,5 +16,4 @@ public class CarMovementLogger {
     public int getCarMovementLog() {
         return this.carMovement;
     }
-
 }
