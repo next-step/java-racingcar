@@ -30,9 +30,10 @@ public class CarRacing {
 
         totalRound = competition.getRount();
 
-        int totalEntryCount = competition.getPaticipate();
-        for(int i = 0; i < totalEntryCount; i++) {
-            Car racer = Car.participateRacing(i + 1, STARTING_POSITION);
+        String[] carNames = competition.getPaticipate();
+
+        for(String carName : carNames) {
+            Car racer = Car.participateRacing(carName, STARTING_POSITION);
             entryList.add(racer);
         }
     }

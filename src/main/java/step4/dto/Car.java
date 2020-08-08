@@ -1,20 +1,19 @@
 package step4.dto;
 
 public class Car {
-    private int entryNumber;
     private int position;
+    private String entryName;
 
-    private final String NAME_TAG_PREFIX_STRING_CAR = "CAR";
-    private final String NAME_TAG_SEPERATOR_SEMICOLLON = "|";
-    private final String NAME_TAG_EMTPY_SPACE = "    ";
+    private final String NAME_TAG_SEPERATOR_SEMICOLLON = ":";
+    private final String NAME_TAG_EMTPY_SPACE = "      ";
 
-    private Car(int entryNumber, int position) {
-        this.entryNumber = entryNumber;
+    private Car(String entryName, int position) {
+        this.entryName = entryName;
         this.position = position;
     }
 
-    public static Car participateRacing(int entryNumber, int position){
-        return new Car(entryNumber, position);
+    public static Car participateRacing(String entryName, int position){
+        return new Car(entryName, position);
     }
 
     public void movePosition() {
@@ -30,18 +29,13 @@ public class Car {
     }
 
     private String makeNameTag() {
-        String entryNumber = getEntryNumberToString();
         StringBuilder nameTag = new StringBuilder();
-        int length = entryNumber.length();
+        int length = entryName.length();
 
         String newPrefix = NAME_TAG_EMTPY_SPACE.substring(length);
-        nameTag.append(NAME_TAG_PREFIX_STRING_CAR);
-        nameTag.append(entryNumber).append(newPrefix);
+        nameTag.append(entryName).append(newPrefix);
         nameTag.append(NAME_TAG_SEPERATOR_SEMICOLLON);
 
         return nameTag.toString();
-    }
-    private String getEntryNumberToString() {
-        return String.valueOf(entryNumber);
     }
 }
