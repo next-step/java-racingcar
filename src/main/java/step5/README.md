@@ -17,3 +17,4 @@
     3. CarWentResult 불필요한 Comparable 구현 제거
     4. Reception.retryUntilGettingRightValue while, try-catch 로인한 2depth의 인덴트 1depth로 분리
     5. AttemptResultTest @ParameterizedTest 적용, 객체 생서 테스트 작성
+3. System.in, System.out이 아닌 다른 입,출력이 있을 수 있으므로 InputChannel, OutputChannel 인터페이스와 그 구현체 작성
