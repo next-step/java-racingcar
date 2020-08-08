@@ -6,6 +6,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import strategy.RandomNumberGenerator;
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,7 +16,7 @@ public class CarTest {
     @DisplayName("자동차 인스턴스 생성시에 위치를 확인한다")
     @Test
     void newCar() {
-        Car initCar = new Car("joy", new AboveNumberMove(4));
+        Car initCar = Car.of("joy", new AboveNumberMove(4, new RandomNumberGenerator()));
 
         assertThat(initCar.getLocation()).isZero();
     }
@@ -23,17 +25,18 @@ public class CarTest {
     @ParameterizedTest
     @CsvSource({"0,0", "1,1", "2,2"})
     void newCar(int location, int expectedLocation) {
-        Car car = new Car("joy", location, new AboveNumberMove(4));
+        Car car = Car.locationOf("joy", location, new AboveNumberMove(0, new RandomNumberGenerator()));
 
         assertThat(car.getLocation()).isEqualTo(expectedLocation);
     }
 
-    @DisplayName("자동차가 랜덤수가 4이상이면 움직인다")
+    @DisplayName("자동차가 랜덤수가 4 이상이면 움직인다")
     @ParameterizedTest
-    @CsvSource({"1,0", "2,0", "3,0", "4,1", "5,1"})
+    @CsvSource({"1, 0", "2, 0", "3, 0", "4, 1", "5, 1"})
     void move(int randomNumber, int expectValue) {
-        Car car = new Car("joy", new AboveNumberMove(4));
-        car.move(randomNumber);
+        Car car = Car.of("joy", new AboveNumberMove(4, () -> randomNumber));
+
+        car.move();
 
         assertThat(car.getLocation()).isEqualTo(expectValue);
     }

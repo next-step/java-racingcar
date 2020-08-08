@@ -9,6 +9,7 @@ public class ResultView {
     private static final String LOCATION_SIGN = "-";
     private static final String RESULT_LINE = "실행 결과";
     private static final String WINNER_ALERT = "%s가 최종 우승했습니다.";
+    private static final String NAME_COLON = " : ";
 
     private ResultView() {
     }
@@ -31,7 +32,7 @@ public class ResultView {
         for (int i = 0; i < car.getLocation(); i++) {
             movement = movement.concat(LOCATION_SIGN);
         }
-        System.out.println(car.getPlayer() + " : " + movement);
+        System.out.println(car.getPlayer() + NAME_COLON + movement);
     }
 
     public static void printWinners(Cars cars) {

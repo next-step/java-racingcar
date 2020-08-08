@@ -22,8 +22,8 @@ public class Car {
         return new Car(player, location, movableStrategy);
     }
 
-    public void move(int randomNumber) {
-        if (movableStrategy.move(randomNumber)) {
+    public void move() {
+        if (movableStrategy.move()) {
             location++;
         }
     }
