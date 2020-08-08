@@ -19,8 +19,10 @@ public enum Operator {
 	}
 
 	public static Operator of(String value) {
-		Optional<Operator> maybeOperator = Arrays.stream(values()).filter(o -> o.operator.equals(value)).findFirst();
-		return maybeOperator.orElseThrow(IllegalArgumentException::new);
+		return Arrays.stream(values())
+		             .filter(o -> o.operator.equals(value))
+		             .findFirst();
+		             .orElseThrow(IllegalArgumentException::new);
 	}
 
 	public String calculate(int num1, int num2) {
