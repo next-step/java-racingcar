@@ -2,9 +2,9 @@ package step3.model;
 
 import java.util.Random;
 
+import static step3.constant.MagicNumber.*;
+
 public class Car {
-    public static final int RANDOM_BOUNDARY = 10;
-    public static final int CONDITION_FOR_STEP_FORWARD = 4;
     private int distance;
     private static Random rand = new Random();
 

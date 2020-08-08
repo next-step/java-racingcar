@@ -5,9 +5,9 @@ import step3.model.Car;
 import java.util.Collections;
 import java.util.List;
 
+import static step3.constant.MagicNumber.*;
+
 public class OutputView {
-    public static final String BANNER_STRING = "실행 결과";
-    public static final String DASH_STRING = "-";
 
     public static String getDashDistance(int value) {
         // 현재 이 String을 Thread Safe로 할 의미가 없으므로, StringBuilder로 수정
