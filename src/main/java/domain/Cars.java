@@ -10,14 +10,14 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private final List<Car> cars = new ArrayList();
+    private final List<Car> cars;
     private final NumberGeneratorStrategy numberGeneratorStrategy;
 
     public Cars(Set<String> players, MovableStrategy movableStrategy, NumberGeneratorStrategy numberGeneratorStrategy) {
         this.numberGeneratorStrategy = numberGeneratorStrategy;
-        for (String player : players) {
-            cars.add(new Car(player, movableStrategy));
-        }
+        this.cars = players.stream()
+                .map(it -> Car.of(it, movableStrategy))
+                .collect(Collectors.toList());
     }
 
     public void race() {
