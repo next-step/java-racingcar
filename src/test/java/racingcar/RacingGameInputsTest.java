@@ -8,20 +8,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RacingGameInputsTest {
     private GameInputs args;
-    private int numberOfCars;
+    private String[] nameOfCars;
     private int numberOfTrials;
 
     @BeforeEach
     void setUp() {
-        numberOfCars = 3;
+        nameOfCars = new String[] {"pobi", "eesuel", "nextStep"};
         numberOfTrials = 5;
-        this.args = GameInputs.createGameInputs(numberOfCars, numberOfTrials);
+        this.args = GameInputs.createGameInputs(nameOfCars, numberOfTrials);
     }
 
     @Test
     void getArgsTest() {
         assertAll("Arguments",
-                () -> assertEquals(numberOfCars, this.args.getNumberOfCars()),
+                () -> assertEquals(nameOfCars, this.args.getNameOfCars()),
                 () -> assertEquals(numberOfTrials, this.args.getNumberOfTrials())
         );
     }

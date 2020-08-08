@@ -1,24 +1,25 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameResults {
-    private List<List<Integer>> steps;
+    private final GameStepList steps;
+    private final List<String> winners;
 
-    private GameResults() {
-        steps = new ArrayList<>();
+    private GameResults(GameStepList steps, List<String> winners) {
+        this.steps = steps;
+        this.winners = winners;
     }
 
-    public void addStep(List<Integer> positions) {
-        steps.add(positions);
-    }
-
-    public List<List<Integer>> getSteps() {
+    public GameStepList getSteps() {
         return this.steps;
     }
 
-    public static GameResults createResult() {
-        return new GameResults();
+    public static GameResults createResult(GameStepList steps, List<String> winners) {
+        return new GameResults(steps, winners);
+    }
+
+    public List<String> getWinners() {
+        return this.winners;
     }
 }

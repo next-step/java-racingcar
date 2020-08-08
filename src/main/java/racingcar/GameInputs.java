@@ -1,20 +1,20 @@
 package racingcar;
 
 public class GameInputs {
-    private final int numberOfCars;
+    private final String[] names;
     private final int numberOfTrials;
 
-    private GameInputs(int numberOfCars, int numberOfTrials) {
-        this.numberOfCars = numberOfCars;
+    private GameInputs(String[] names, int numberOfTrials) {
+        this.names = names;
         this.numberOfTrials = numberOfTrials;
     }
 
-    public static GameInputs createGameInputs(int numberOfCars, int numberOfTrials) {
-        return new GameInputs(numberOfCars, numberOfTrials);
+    public static GameInputs createGameInputs(String[] names, int numberOfTrials) {
+        return new GameInputs(names, numberOfTrials);
     }
 
-    public int getNumberOfCars() {
-        return this.numberOfCars;
+    public String[] getNameOfCars() {
+        return this.names;
     }
 
     public int getNumberOfTrials() {
