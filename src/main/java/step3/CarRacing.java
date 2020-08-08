@@ -32,7 +32,7 @@ public class CarRacing {
 
 	private static StringBuilder moveForward(StringBuilder[] cars) {
 		StringBuilder roundResult = new StringBuilder();
-		for (int i=0; i < cars.length; i++) {
+		for (int i = 0; i < cars.length; i++) {
 			cars[i] = canMoveForward(cars[i]);
 			roundResult.append(cars[i]).append("\n");
 		}
