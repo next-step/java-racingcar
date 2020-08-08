@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class CarRacingGame {
 
-    private static final ForwardStrategy FORWARD_STRATEGY = new MoveOneForwardStrategy();
+    private static final ForwardStrategy FORWARD_STRATEGY = new RandomForwardStrategy();
 
     private final List<Car> cars;
     private final int numberOfAttempts;
