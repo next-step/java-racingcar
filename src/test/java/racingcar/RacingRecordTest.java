@@ -5,46 +5,42 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import racingcar.model.RacingCar;
-import racingcar.model.RacingRecord;
 import racingcar.model.RacingRound;
-import racingcar.model.Rule;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RacingRecordTest {
 
-    private RacingRound racingRound;
+    private List<String> carNames;
 
     @BeforeAll
     void setUp() {
-        racingRound = new RacingRound(Arrays.asList(
-                new RacingCar("1"),
-                new RacingCar("2"),
-                new RacingCar("3")
-        ));
-
-        Rule racingRule = () -> true;
-        racingRound.race(racingRule);
+        carNames = Arrays.asList(
+                "YANG",
+                "KYUNG",
+                "JUNG"
+        );
     };
 
 
     @Test
-    @DisplayName("경기 결과가 생성 되는지 테스트")
+    @DisplayName("최종 우승자 파악 테스트")
     void getRoundRecordTest() {
         // given
-        RacingRecord racingRecord = new RacingRecord();
+        RacingGameStub racingGameStub = new RacingGameStub(carNames, carNames.size());
 
         // when
-        racingRecord.record(racingRound);
-        List<String> allRecord = racingRecord.getAllRecord();
+        racingGameStub.start();
+        List<RacingRound> racingResults = racingGameStub.getRacingResults();
 
         // then
-        assertThat(allRecord).containsExactly("-\n-\n-");
+        RacingRound racingRound = racingResults.get(racingResults.size()-1);
+        List<RacingCar> bestScoreCars = racingRound.findBestScoreCars();
+        assertFalse(bestScoreCars.isEmpty());
     }
-
-
 }
