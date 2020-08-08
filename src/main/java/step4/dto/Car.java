@@ -1,8 +1,8 @@
 package step4.dto;
 
 public class Car {
-    private int position;
     private String entryName;
+    private int position;
 
     private final String NAME_TAG_SEPERATOR_SEMICOLLON = ":";
     private final String NAME_TAG_EMTPY_SPACE = "      ";
@@ -22,6 +22,10 @@ public class Car {
 
     public int nowPosition() {
         return position;
+    }
+
+    public String name(){
+        return entryName;
     }
 
     public String getEntryNameTag() {
