@@ -6,7 +6,6 @@ public class InputScanner {
 
     static public int scanInput() {
         Scanner scanner = new Scanner(System.in);
-
         return scanner.nextInt();
     }
 }
