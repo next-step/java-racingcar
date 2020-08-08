@@ -5,7 +5,6 @@ import step3.domain.CarRacingRapScore;
 
 import java.text.MessageFormat;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ResultView {
 
@@ -26,11 +25,8 @@ public class ResultView {
     }
 
     private String getCsvNameOfBestScoreCars() {
-        List<String> namesOfBestScoreCars = rapResults.get(rapResults.size() - 1)
-                .findBestScoreCars()
-                .stream()
-                .map(car -> car.getName())
-                .collect(Collectors.toList());
+        CarRacingRapScore finalRapScore = rapResults.get(rapResults.size() - 1);
+        List<String> namesOfBestScoreCars = finalRapScore.findBestScoreCarNames();
         return String.join(DELIMITER, namesOfBestScoreCars);
     }
 
