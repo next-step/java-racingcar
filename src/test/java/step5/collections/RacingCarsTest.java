@@ -12,7 +12,7 @@ class RacingCarsTest {
 
     private static final String[] PARTICIPATION_NAMES = new String[]{"0","1","2"};
 
-    private final RacingCars racingCars = new RacingCars(PARTICIPATION_NAMES);
+    private final RacingCars racingCars = RacingCars.fromParticipationNames(PARTICIPATION_NAMES);
 
     @DisplayName("참가자 수와 1회 이동을 시도한 결과의 수가 같은가")
     @Test
@@ -24,10 +24,10 @@ class RacingCarsTest {
 
     }
 
-    @DisplayName("참가자 수와 raceCondition 객체 안의 차량 수가 같은가")
+    @DisplayName("참가자 수와 RacingCars 객체 안의 차량 수가 같은가")
     @Test
     void getCarsCount() {
-        RacingCars assertRacingCars = new RacingCars(List.of(new Car("0"), new Car("1"), new Car("2")));
+        RacingCars assertRacingCars = RacingCars.fromCars(List.of(new Car("0"), new Car("1"), new Car("2")));
         assertThat(racingCars).isEqualTo(assertRacingCars);
     }
 

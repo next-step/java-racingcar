@@ -17,7 +17,7 @@ public class ControlTower {
 
     public ControlTower(ParticipationForm participationForm) {
         this.attemptCount = participationForm.getAttemptCount();
-        this.racingCars = new RacingCars(participationForm.getParticipationNames());
+        this.racingCars = RacingCars.fromParticipationNames(participationForm.getParticipationNames());
     }
 
     public RaceResult startCarRacing() {

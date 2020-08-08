@@ -12,11 +12,19 @@ public class RacingCars {
 
     private final List<Car> cars;
 
-    public RacingCars(String[] participationNames) {
+    public static RacingCars fromParticipationNames(String[] participationNames) {
+        return new RacingCars(participationNames);
+    }
+
+    public static RacingCars fromCars(List<Car> cars) {
+        return new RacingCars(cars);
+    }
+
+    private RacingCars(String[] participationNames) {
         this.cars = this.prepareCars(participationNames);
     }
 
-    public RacingCars(List<Car> cars) {
+    private RacingCars(List<Car> cars) {
         this.cars = cars;
     }
 

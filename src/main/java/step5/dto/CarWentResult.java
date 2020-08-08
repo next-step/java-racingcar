@@ -2,7 +2,7 @@ package step5.dto;
 
 import java.util.Objects;
 
-public class CarWentResult implements Comparable<CarWentResult> {
+public class CarWentResult {
 
     private final String carName;
 
@@ -34,14 +34,4 @@ public class CarWentResult implements Comparable<CarWentResult> {
         return Objects.hash(carName);
     }
 
-    @Override
-    public int compareTo(CarWentResult o) {
-        if(o.getDistance() > this.getDistance()) {
-            return 1;
-        }
-        if(this.getDistance() > o.getDistance()) {
-            return -1;
-        }
-        return 0;
-    }
 }

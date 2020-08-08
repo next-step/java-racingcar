@@ -2,8 +2,6 @@ package step5.dto;
 
 public class ParticipationForm {
 
-
-
     private final String[] participationNames;
 
     private final int attemptCount;

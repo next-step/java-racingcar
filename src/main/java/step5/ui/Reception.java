@@ -30,19 +30,21 @@ public class Reception {
     }
 
     private static <T> T retryUntilGettingRightValue(Supplier<T> supplier) {
-        boolean retryFlag = true;
-        T result = null;
-
-        while (retryFlag) {
-            try {
-                result = supplier.get();
-                retryFlag = false;
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage()+NEW_LINE);
-            }
-        }
+        T result;
+        do{
+            result = getSupplierValue(supplier);
+        } while (result == null);
 
         return result;
+    }
+
+    private static <T> T getSupplierValue(Supplier<T> supplier) {
+        try {
+            return supplier.get();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage()+NEW_LINE);
+            return null;
+        }
     }
 
     private static Supplier<String[]> getParticipationNames() {

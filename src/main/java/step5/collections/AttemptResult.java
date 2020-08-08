@@ -9,21 +9,24 @@ import static step5.constants.MessageConstant.NOT_FOUND_FIRST;
 
 public class AttemptResult {
 
-    private static final int FIRST_INDEX = 0;
-
-    private List<CarWentResult> carWentResults;
+    private final List<CarWentResult> carWentResults;
 
     public AttemptResult(List<CarWentResult> carWentResults) {
         this.carWentResults = carWentResults;
     }
 
     public String getWinnersNames() {
-        List<CarWentResult> originResult = this.carWentResults;
-        if(originResult.size() == 0) {
-            throw new IllegalStateException(NOT_FOUND_FIRST);
-        }
-        List<CarWentResult> sorted = sortByDistanceDesc(originResult);
-        return collectWinnersNames(sorted);
+        int firstDistance = this.carWentResults
+                                .stream()
+                                .max(Comparator.comparing(CarWentResult::getDistance))
+                                .map(CarWentResult::getDistance)
+                                .orElseThrow(() -> new IllegalStateException(NOT_FOUND_FIRST));
+
+        return this.carWentResults
+                    .stream()
+                    .filter(carWentResult -> carWentResult.getDistance() == firstDistance)
+                    .map(CarWentResult::getCarName)
+                    .collect(Collectors.joining(", "));
     }
 
     public List<CarWentResult> getCarWentResults() {
@@ -41,19 +44,5 @@ public class AttemptResult {
     @Override
     public int hashCode() {
         return Objects.hash(carWentResults);
-    }
-
-    private List<CarWentResult> sortByDistanceDesc(List<CarWentResult> carWentResults) {
-        return carWentResults.stream()
-                .sorted(Comparator.comparingInt(CarWentResult::getDistance).reversed())
-                .collect(Collectors.toList());
-    }
-
-    private String collectWinnersNames(List<CarWentResult> sorted) {
-        int firstDistance = sorted.get(FIRST_INDEX).getDistance();
-        return sorted.stream()
-                .filter(carWentResult -> carWentResult.getDistance() == firstDistance)
-                .map(carWentResult -> carWentResult.getCarName())
-                .collect(Collectors.joining(","));
     }
 }

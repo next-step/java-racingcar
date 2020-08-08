@@ -10,3 +10,10 @@
 ## Feature List
 0. step4 소스 복사 커밋으로 시작!
 1. Car 클래스,  MoveStrategy 인터페이스, DiceStrategy 클래스, BoundedDice 클래스 domain 패키지로 이동 (strategy 패키지는 도메인 패키지 하위로)
+2. step4 코드리뷰 내용 반영
+    1. AttemptResult.getWinnersNames 로직 개선
+    2. AttemptResult.carWentResults에 final 키워드 추가
+    3. RacingCars 생성자 private으로 숨기고 정적 팩토리 메소드 작성
+    3. CarWentResult 불필요한 Comparable 구현 제거
+    4. Reception.retryUntilGettingRightValue while, try-catch 로인한 2depth의 인덴트 1depth로 분리
+    5. AttemptResultTest @ParameterizedTest 적용, 객체 생서 테스트 작성
