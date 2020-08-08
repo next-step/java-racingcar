@@ -7,21 +7,28 @@ public class RacingRound {
     private List<RacingCar> racingCars;
 
     public RacingRound(List<RacingCar> cars) {
-        this.racingCars = cars.stream().map(RacingCar::clone).collect(Collectors.toList());
+        this.racingCars = cars;
     }
 
     public List<RacingCar> getRacingCars() {
         return racingCars;
     }
 
-    public List<RacingCar> findBestScoreCars() {
-        int bestScore = racingCars.stream()
-                .map(RacingCar::getCarPosition)
-                .max(Integer::compareTo)
-                .get();
+    public List<String> findWinners() {
+        final RacingCar maxPositionCar = findMaxPositionCar();
+        return findSamePositionCars(maxPositionCar);
+    }
 
+    private RacingCar findMaxPositionCar() {
         return racingCars.stream()
-                .filter(car -> car.getCarPosition() == bestScore)
+                .max(RacingCar::compareTo)
+                .orElseThrow(() -> new IllegalArgumentException("참가한 자동차 리스트가 비었습니다."));
+    }
+
+    private List<String> findSamePositionCars(RacingCar maxPositionCar) {
+        return racingCars.stream()
+                .filter(maxPositionCar::isSamePosition)
+                .map(RacingCar::getCarName)
                 .collect(Collectors.toList());
     }
 }

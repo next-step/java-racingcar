@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.service.RacingGame;
+import racingcar.model.RacingCar;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +15,7 @@ public class InputView {
         String racingCarNames = scanner.nextLine();
         List<String> carNameList = Arrays.asList(racingCarNames.split(","));
 
-        boolean isCorrectCarName = RacingGame.validateCarName(carNameList);
+        boolean isCorrectCarName = RacingCar.validateCarName(carNameList);
         if(!isCorrectCarName) {
             throw new IllegalArgumentException("자동차 이름은 숫자와 문자 조합이고 5자를 초과할 수 없습니다.");
         }

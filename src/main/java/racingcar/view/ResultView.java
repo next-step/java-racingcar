@@ -27,7 +27,7 @@ public class ResultView {
             builder.append(printRoundResult(racingRound)).append("\n");
         }
 
-        builder.append("*** 최종 우승자는 ").append(getFinalWinners()).append(" 입니다. ***");
+        builder.append("*** 최종 우승자는 ").append(printFinalWinners()).append(" 입니다. ***");
         System.out.println(builder.toString());
     }
 
@@ -51,12 +51,10 @@ public class ResultView {
         return builder.toString();
     }
 
-    private String getFinalWinners() {
-            List<String> bestScoreCarNames = racingResults.get(racingResults.size() - 1)
-                    .findBestScoreCars()
+    private String printFinalWinners() {
+            return racingResults.get(racingResults.size() - 1)
+                    .findWinners()
                     .stream()
-                    .map(car -> car.getCarName())
-                    .collect(Collectors.toList());
-            return String.join(DELIMITER, bestScoreCarNames);
+                    .collect(Collectors.joining(DELIMITER));
     }
 }

@@ -3,12 +3,9 @@ package racingcar.service;
 import racingcar.model.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-    private static final String racingCarNamePattern = "^[a-zA-Z0-9]{1,6}$";
 
     private int racingCount;
     private List<RacingCar> racingCars;
@@ -23,7 +20,6 @@ public class RacingGame {
         for (int i = 0; i < racingCount; i++) {
             roundResults.add(new RacingRound(racingCars.stream()
                     .map(racingCar -> racingCar.run(adjustRule()))
-                    .map(RacingCar::clone)
                     .collect(Collectors.toList())));
         }
     }
@@ -44,11 +40,5 @@ public class RacingGame {
         return new RacingRule();
     }
 
-    public static boolean validateCarName(List<String> racingCarNameList) {
-        Predicate<String> carNamePattern = Pattern
-                .compile(racingCarNamePattern)
-                .asPredicate();
-        return racingCarNameList.stream().allMatch(carNamePattern);
-    }
 
 }
