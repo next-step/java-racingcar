@@ -8,6 +8,7 @@ public class RacingCar {
 
     private static final int RACE_CONDITION_BASE_VALUE = 10;
     private static Random random = new Random();
+    public static int MOVEMENT_POLICY = 3;
 
     public static Map<Integer, Car> preparationForGame(int racingCarNumber) {
         Map<Integer, Car> carInfoMap = new HashMap<>();

@@ -33,8 +33,8 @@ public class Car {
         return BRAKE_SIGN;
     }
 
-    public String race(int racingCondition) {
-        if (racingCondition > 3) {
+    public String race(int racingCondition, int movementPolicy) {
+        if (racingCondition > movementPolicy) {
             return accelerate();
         }
         return brake();

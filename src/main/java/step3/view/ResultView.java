@@ -27,7 +27,7 @@ public class ResultView {
     public static String play(Car racingCar, int j, String mileAge) {
         if (racingCar.getCarId() == j) {
             int raceCondition = RacingCar.raceCondition();
-            mileAge += racingCar.race(raceCondition);
+            mileAge += racingCar.race(raceCondition, RacingCar.MOVEMENT_POLICY);
 
             racingCar.setMileAge(mileAge);
         }

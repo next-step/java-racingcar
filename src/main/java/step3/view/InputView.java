@@ -1,7 +1,5 @@
 package step3.view;
 
-import com.sun.scenario.effect.impl.prism.PrImage;
-
 import java.util.Scanner;
 
 public class InputView {
