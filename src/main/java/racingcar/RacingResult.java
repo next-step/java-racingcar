@@ -17,9 +17,9 @@ public class RacingResult {
         return new RacingResult(attempt, raceRecords);
     }
 
-    public static RacingResult aggregate(int attempt, List<RacingCar> racingCars) {
+    public static RacingResult aggregate(int attempt, List<RacingVehicle> racingCars) {
         List<RaceRecord> raceRecords = racingCars.stream()
-                .map(RacingCar::getRaceRecord)
+                .map(RacingVehicle::getRaceRecord)
                 .collect(Collectors.toList());
 
         return RacingResult.create(attempt, raceRecords);

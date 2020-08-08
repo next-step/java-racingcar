@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RacingResultTest {
     private static final int ATTEMPT_NUMBER = 5;
 
-    private List<RacingCar> racingCars;
+    private List<RacingVehicle> racingCars;
 
     @BeforeEach
     void setUp() {
@@ -22,8 +22,8 @@ class RacingResultTest {
         Random random = new Random();
 
         for (int i = 0; i < 3; i++) {
-            RacingCar racingCar = RacingCar.create(random);
-            racingCar.race(ATTEMPT_NUMBER);
+            RacingVehicle racingCar = RacingVehicle.create(random);
+            racingCar.race(ATTEMPT_NUMBER, random);
 
             racingCars.add(racingCar);
         }
@@ -44,7 +44,7 @@ class RacingResultTest {
         int testAttempt = 1;
 
         List<Integer> isExpectedResultByAttempt = racingCars.stream()
-                .map(RacingCar::getRaceRecord)
+                .map(RacingVehicle::getRaceRecord)
                 .map(raceRecord -> raceRecord.getBy(testAttempt))
                 .collect(Collectors.toList());
 

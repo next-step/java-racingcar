@@ -2,7 +2,6 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * @author daheekim
@@ -11,12 +10,10 @@ import java.util.Random;
 public class RacingGame {
     private int carNumber;
     private int attemptNumber;
-    private Random random;
 
     private RacingGame(int carNumber, int attemptNumber) {
         this.carNumber = carNumber;
         this.attemptNumber = attemptNumber;
-        this.random = new Random();
     }
 
     public static RacingGame of(int carNumber, int attemptNumber) {
@@ -24,12 +21,13 @@ public class RacingGame {
     }
 
     RacingResult progress() {
-        List<RacingCar> racingCars = new ArrayList<>();
+        List<RacingVehicle> racingCars = new ArrayList<>();
 
         for (int car = 0; car < carNumber; car++) {
-            RacingCar racingCar = RacingCar.create(random);
-            racingCar.race(attemptNumber);
+            RacingCar racingCar = new RacingCar();
+            racingCar.setCarMover(new RandomCarMover());
 
+            racingCar.race(attemptNumber);
             racingCars.add(racingCar);
         }
 

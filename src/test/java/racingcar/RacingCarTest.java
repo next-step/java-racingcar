@@ -21,7 +21,7 @@ class RacingCarTest {
     @DisplayName("race 메소드 실행 전 테스트")
     @Test
     void race_before_test() {
-        RacingCar racingCar = RacingCar.create(random);
+        RacingVehicle racingCar = RacingVehicle.create(random);
 
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
                 .isThrownBy(() -> racingCar.getRaceRecord().getBy(0))
@@ -31,9 +31,9 @@ class RacingCarTest {
     @DisplayName("race 메소드 실행 후 테스트")
     @Test
     void race_after_test() {
-        RacingCar racingCar = RacingCar.create(random);
+        RacingVehicle racingCar = RacingVehicle.create(random);
 
-        racingCar.race(ATTEMPT_NUMBER);
+        racingCar.race(ATTEMPT_NUMBER, random);
 
         // racingCar의 raceRecord 생성 여부 확인
         assertThat(racingCar.getRaceRecord()).isNotNull();
