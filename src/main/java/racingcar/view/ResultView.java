@@ -4,6 +4,7 @@ import racingcar.RacingResult;
 import util.StringUtils;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * @author daheekim
@@ -16,9 +17,10 @@ public class ResultView {
     public static void print(RacingResult racingResult) {
         System.out.println(LINE_SEPARATOR + "실행 결과");
 
-        for (int attempt = 0; attempt < racingResult.getAttempt(); attempt++) {
-            printResultByAttempt(racingResult.getResultByAttempt(attempt));
-        }
+        Stream.iterate(0, attempt -> attempt + 1)
+                .limit(racingResult.getAttempt())
+                .map(racingResult::getResultByAttempt)
+                .forEach(ResultView::printResultByAttempt);
     }
 
     private static void printResultByAttempt(List<Integer> resultByAttempt) {
