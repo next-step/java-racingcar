@@ -34,7 +34,7 @@ public class CarRacing {
 		StringBuilder roundResult = new StringBuilder();
 		for (int i = 0; i < cars.length; i++) {
 			cars[i] = canMoveForward(cars[i]);
-			roundResult.append(cars[i]).append("\n");
+			roundResult.append(cars[i]).append(System.lineSeparator());
 		}
 		return roundResult;
 	}
