@@ -7,3 +7,11 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 자동차 경주 구현 (step3)
+초간단 자동차 경주 게임을 구현한다.
+
+- [ ] InputView
+- [ ] ResultView
+- [ ] 자동차 구현
+- [ ] 자동차 경주 게임 구현
