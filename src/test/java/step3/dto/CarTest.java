@@ -27,7 +27,7 @@ class CarTest {
         int nowPosition = car.nowPosition();
         assertThat(nowPosition).isEqualTo(endPosition);
     }
-
+  
     @ParameterizedTest
     @CsvSource(value = {"1:2","2:1","3:0"}, delimiter = ':')
     @DisplayName("차량이 랜덤함수의 결과대로 이동했는지 확인")

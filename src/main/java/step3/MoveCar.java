@@ -10,11 +10,13 @@ public class MoveCar {
     private static final int MOVE_CRITERION_UNDER_4 = 4;
 
     public static boolean moveCondition(Car car) {
+
         int randomVal = new Random().nextInt(RANDOM_MAXIMUM_BOUND);
 
         if(randomVal < MOVE_CRITERION_UNDER_4) return false;
 
         car.movePosition();
+
         return true;
     }
 
