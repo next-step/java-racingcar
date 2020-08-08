@@ -13,6 +13,8 @@ public class CarRacingGame implements CarGame {
 
 	@Override
 	public void play(Car car) {
-		car.addGameResult(randomValueGenerator.nextInt(RANDOM_MAX_VALUE));
+		int randomValue = randomValueGenerator.nextInt(RANDOM_MAX_VALUE);
+		car.move(Direction.getBy(randomValue));
 	}
+
 }

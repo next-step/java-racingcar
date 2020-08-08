@@ -7,41 +7,54 @@ import java.util.stream.IntStream;
 
 import simpleracing.input.CarRacingInitValue;
 import simpleracing.input.CarRacingInput;
-import simpleracing.input.InputView;
 import simpleracing.output.CarRacingOutput;
-import simpleracing.view.OutputView;
 
 
 public class CarRacingExecutor {
 
-	InputView carRacingInput;
+	private CarRacingInput carRacingInput;
 	private CarGame racingGame;
-	private OutputView carRacingOutput;
+	private CarRacingReferee referee;
+	private CarRacingOutput carRacingOutput;
 
 	public CarRacingExecutor() {
 		this.carRacingInput = new CarRacingInput();
 		this.racingGame = new CarRacingGame();
+		this.referee = new CarRacingReferee();
 		this.carRacingOutput = new CarRacingOutput();
 	}
 
 	public void execute() {
 		CarRacingInitValue initValue = carRacingInput.input();
-
-		List<Car> cars = IntStream.range(0, initValue.getCarCount())
-								  .mapToObj(carNumber -> new Car(carNumber, this.racingGame))
-								  .collect(toList());
-
-		this.playGame(initValue, cars);
+		List<Car> cars = this.generateCarsForRacing(initValue);
+		this.playGame(cars, initValue.getTryCount());
+		this.judgeRacingResult(cars);
 		carRacingOutput.render();
 
 	}
 
-	private void playGame(CarRacingInitValue initValue, List<Car> cars) {
-		IntStream.range(0, initValue.getTryCount())
+	private List<Car> generateCarsForRacing(CarRacingInitValue initValue) {
+		return IntStream.range(0, initValue.getCarCount())
+						.mapToObj(carNumber -> new Car(carNumber,
+													   initValue.getNames()
+																.get(carNumber)
+																.trim(),
+													   this.racingGame)
+								 )
+						.collect(toList());
+	}
+
+	private void playGame(List<Car> cars, int tryCount) {
+		IntStream.range(0, tryCount)
 				 .forEach(round -> {
 					 cars.stream()
 						 .forEach(car -> car.play());
-					 this.carRacingOutput.addRenderingView(cars);
+					 this.carRacingOutput.addSituation(cars);
 				 });
+	}
+
+	private void judgeRacingResult(List<Car> cars) {
+		referee.judge(cars);
+		carRacingOutput.addWinnerContentBy(referee);
 	}
 }
