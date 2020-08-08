@@ -25,7 +25,7 @@ public class RacingGame {
 
         for (int car = 0; car < carNumber; car++) {
             RacingCar racingCar = new RacingCar();
-            racingCar.setCarMover(new RandomCarMover());
+            racingCar.setCarMover(new RandomNumberMover());
 
             racingCar.race(attemptNumber);
             racingCars.add(racingCar);

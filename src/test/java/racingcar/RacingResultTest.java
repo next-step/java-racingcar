@@ -22,8 +22,9 @@ class RacingResultTest {
         Random random = new Random();
 
         for (int i = 0; i < 3; i++) {
-            RacingVehicle racingCar = RacingVehicle.create(random);
-            racingCar.race(ATTEMPT_NUMBER, random);
+            RacingCar racingCar = new RacingCar();
+            racingCar.setCarMover(new RandomNumberMover());
+            racingCar.race(ATTEMPT_NUMBER);
 
             racingCars.add(racingCar);
         }

@@ -17,7 +17,7 @@ class RacingGameTest {
         int attempt = 5;
 
         racingGame = RacingGame.of(car, attempt);
-        RacingResult racingResult = racingGame.race();
+        RacingResult racingResult = racingGame.progress();
 
         assertThat(racingResult).isNotNull();
         assertThat(racingResult.getAttempt()).isEqualTo(attempt);
