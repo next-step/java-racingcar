@@ -8,13 +8,7 @@ public class RacingRound {
 
     public void playRound(List<Car> entryList) {
         for(Car car : entryList){
-            goAndStopThisCar(car);
+            MoveCar.moveCondition(car);
         }
-    }
-
-    private void goAndStopThisCar(Car car) {
-        if(MoveCar.moveCondition()) return;
-
-        car.movePosition();
     }
 }
