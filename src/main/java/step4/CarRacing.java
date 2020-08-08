@@ -5,6 +5,7 @@ import step4.dto.Car;
 import step4.dto.Competition;
 import step4.view.InputView;
 import step4.view.ResultView;
+import step4.view.WinnerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +45,20 @@ public class CarRacing {
         System.out.println(RACE_RESULT_TEXT);
 
         startRacing();
+
+        List<Car> winnersCar = judgeRacing();
+
+        showResult(winnersCar);
+    }
+
+    private void showResult(List<Car> winnersCar) {
+        WinnerView winnerView = new WinnerView();
+        winnerView.racingResult(winnersCar);
+    }
+
+    private List<Car> judgeRacing() {
+        JudgeRacingResult judgeRacingResult = new JudgeRacingResult();
+        return judgeRacingResult.getWinnerInRaceResult(entryList);
     }
 
     private void startRacing() {
