@@ -13,11 +13,11 @@ public enum Operator {
     });
 
     private final String operator;
-    private final Op op;
+    private final Operate operate;
 
-    Operator(String operator, Op op) {
+    Operator(String operator, Operate operate) {
         this.operator = operator;
-        this.op = op;
+        this.operate = operate;
     }
 
     public static Operator from(String value) {
@@ -34,6 +34,6 @@ public enum Operator {
     }
 
     public int operate(int a, int b) {
-        return op.operate(a, b);
+        return operate.operate(a, b);
     }
 }
