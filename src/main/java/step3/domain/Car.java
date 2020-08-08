@@ -22,10 +22,14 @@ public abstract class Car {
         this.mileAge = mileAge;
     }
 
-    public abstract String accelerate();
+    public boolean accelerate() {
+        return true;
+    }
 
-    public abstract String brake();
+    public boolean brake() {
+        return false;
+    }
 
-    public abstract String move(int racingCondition, int movementPolicy);
+    public abstract boolean move(int racingCondition, int movementPolicy);
 
 }

@@ -2,30 +2,15 @@ package step3.domain;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 public class RacingCar extends Car {
-
-    private static final int RACE_CONDITION_BASE_VALUE = 10;
-    private static Random random = new Random();
-    public static int MOVEMENT_POLICY = 3;
 
     public RacingCar(int carId) {
         super(carId);
     }
 
     @Override
-    public String accelerate() {
-        return "-";
-    }
-
-    @Override
-    public String brake() {
-        return "";
-    }
-
-    @Override
-    public String move(int racingCondition, int movementPolicy) {
+    public boolean move(int racingCondition, int movementPolicy) {
         if (racingCondition > movementPolicy) {
             return accelerate();
         }
@@ -42,7 +27,5 @@ public class RacingCar extends Car {
         return carInfoMap;
     }
 
-    public static int raceCondition() {
-        return random.nextInt(RACE_CONDITION_BASE_VALUE);
-    }
+
 }
