@@ -5,7 +5,7 @@ import calculator.ExceptionMessage;
 public class StringUtils {
 
     public static boolean isBlank(String input) {
-        return input == null || input.replace(" ", "").equals("");
+        return input == null || input.trim().equals("");
     }
 
     public static boolean validateNumber(String string) {
