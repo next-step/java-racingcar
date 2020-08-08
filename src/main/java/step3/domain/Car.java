@@ -1,9 +1,6 @@
 package step3.domain;
 
-public class Car {
-
-    private static String ACCELATE_SIGN = "-";
-    private static String BRAKE_SIGN = "";
+public abstract class Car {
 
     private int carId;
     private String mileAge;
@@ -25,19 +22,10 @@ public class Car {
         this.mileAge = mileAge;
     }
 
-    public String accelerate() {
-        return ACCELATE_SIGN;
-    }
+    public abstract String accelerate();
 
-    public String brake() {
-        return BRAKE_SIGN;
-    }
+    public abstract String brake();
 
-    public String race(int racingCondition, int movementPolicy) {
-        if (racingCondition > movementPolicy) {
-            return accelerate();
-        }
-        return brake();
-    }
+    public abstract String move(int racingCondition, int movementPolicy);
 
 }

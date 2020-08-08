@@ -8,6 +8,8 @@ import java.util.Map;
 public class ResultView {
 
     private static final String GAME_RESULT = "게임 결과";
+    private static String ACCELATE_SIGN = "-";
+    private static String BRAKE_SIGN = "";
 
     public static void gameResult() {
         System.out.println(GAME_RESULT);
@@ -27,7 +29,7 @@ public class ResultView {
     public static String play(Car racingCar, int j, String mileAge) {
         if (racingCar.getCarId() == j) {
             int raceCondition = RacingCar.raceCondition();
-            mileAge += racingCar.race(raceCondition, RacingCar.MOVEMENT_POLICY);
+            mileAge += racingCar.move(raceCondition, RacingCar.MOVEMENT_POLICY);
 
             racingCar.setMileAge(mileAge);
         }
