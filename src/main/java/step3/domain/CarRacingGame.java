@@ -34,10 +34,11 @@ public class CarRacingGame {
 
     public void start() {
         for (int i = 0; i < numberOfAttempts; i++) {
-            rapResults.add(new CarRacingRapScore(cars.stream()
+            List<Car> rapResult = cars.stream()
                     .map(car -> car.move(FORWARD_STRATEGY))
                     .map(Car::clone)
-                    .collect(Collectors.toList())));
+                    .collect(Collectors.toList());
+            rapResults.add(new CarRacingRapScore(rapResult));
         }
     }
 
