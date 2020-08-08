@@ -4,8 +4,6 @@
 
 #### 기능 목록
 ResultView.showFinalChampion 로직 분리
-RunRace Domain으로 변경
-신규 Controller생성
 결승점 판단 객체 추가
 
 ##Step 4
