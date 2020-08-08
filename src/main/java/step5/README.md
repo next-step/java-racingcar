@@ -18,3 +18,4 @@
     4. Reception.retryUntilGettingRightValue while, try-catch 로인한 2depth의 인덴트 1depth로 분리
     5. AttemptResultTest @ParameterizedTest 적용, 객체 생서 테스트 작성
 3. System.in, System.out이 아닌 다른 입,출력이 있을 수 있으므로 InputChannel, OutputChannel 인터페이스와 그 구현체 작성
+4. collections 패키지에있던 일급 객체들도 domain 패키지 밑으로 이동, ParticipationForm 생성자에도 carName이 5글자 이하인지 확인하는 validation 추가 (View에서도 확인하지만, 서버 밸리데이션, ui 밸리데이션과 같은 개념으로 추가)

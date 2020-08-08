@@ -3,9 +3,8 @@ package step5;
 import com.sun.tools.javac.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step5.ControlTower;
-import step5.collections.AttemptResult;
-import step5.collections.RaceResult;
+import step5.domain.collections.AttemptResult;
+import step5.domain.collections.RaceResult;
 import step5.dto.CarWentResult;
 import step5.dto.ParticipationForm;
 

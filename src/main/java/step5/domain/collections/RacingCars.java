@@ -1,4 +1,4 @@
-package step5.collections;
+package step5.domain.collections;
 
 import step5.domain.Car;
 import step5.dto.CarWentResult;

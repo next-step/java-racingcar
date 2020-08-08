@@ -1,6 +1,4 @@
-package step5.collections;
-
-import step5.collections.AttemptResult;
+package step5.domain.collections;
 
 import java.util.List;
 import java.util.Objects;

@@ -1,9 +1,9 @@
 package step5;
 
-import step5.collections.RaceResult;
-import step5.collections.RacingCars;
+import step5.domain.collections.RaceResult;
+import step5.domain.collections.RacingCars;
 import step5.dto.ParticipationForm;
-import step5.collections.AttemptResult;
+import step5.domain.collections.AttemptResult;
 
 import java.util.List;
 import java.util.stream.Collectors;
