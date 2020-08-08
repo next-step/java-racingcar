@@ -12,6 +12,7 @@ import java.util.List;
  */
 public class Cars {
     private static final int MIN_INPUT_CAR_NUMBER = 1;
+
     private List<Car> cars;
 
     public Cars(int inputCarCount) {
@@ -29,9 +30,10 @@ public class Cars {
             cars.add(new Car());
         }
     }
-    public void moveCars() {
+
+    public void moveCars(RandomValueGenerator randomValue) {
         for (Car car : cars) {
-            car.moveCount(RandomValueGenerator.createRandomValue());
+            car.moveCount(randomValue.createRandomValue());
         }
     }
 
