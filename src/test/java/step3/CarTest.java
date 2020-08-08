@@ -28,7 +28,7 @@ public class CarTest {
     @DisplayName("이동한다.")
     public void move() {
         int currentPosition = car.getPosition();
-        assertThat(car.move(new MoveOneForwardStrategy()).getPosition()).isIn(currentPosition, currentPosition + 1);
+        assertThat(car.move(new MoveOneForwardStrategy()).getPosition()).isEqualTo(currentPosition + 1);
     }
 
 }
