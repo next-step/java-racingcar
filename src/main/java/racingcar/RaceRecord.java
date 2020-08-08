@@ -1,18 +1,13 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RaceRecord {
 
     private List<Integer> record;
 
-    public RaceRecord() {
-        this.record = new ArrayList<>();
-    }
-
-    public void add(int move) {
-        record.add(move);
+    public RaceRecord(List<Integer> record) {
+        this.record = record;
     }
 
     public int getBy(int attemptTime) {

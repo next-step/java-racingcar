@@ -10,7 +10,6 @@ public class RacingVehicle {
     RaceRecord raceRecord;
 
     public RacingVehicle() {
-        raceRecord = new RaceRecord();
     }
 
     public RaceRecord getRaceRecord() {

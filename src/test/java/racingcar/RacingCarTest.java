@@ -21,9 +21,8 @@ class RacingCarTest {
     @DisplayName("race 메소드 실행 전 테스트")
     @Test
     void race_before_test() {
-        assertThatExceptionOfType(IndexOutOfBoundsException.class)
-                .isThrownBy(() -> racingCar.getRaceRecord().getBy(0))
-                .withMessageMatching("Index: \\d+, Size: \\d+");
+        assertThatExceptionOfType(NullPointerException.class)
+                .isThrownBy(() -> racingCar.getRaceRecord().getBy(0));
     }
 
     @DisplayName("race 메소드 실행 후 테스트")

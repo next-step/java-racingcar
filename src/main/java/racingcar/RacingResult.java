@@ -6,11 +6,11 @@ import java.util.stream.Collectors;
 public class RacingResult {
 
     private int attempt;
-    private List<RaceRecord> result;
+    private RaceRecords raceRecords;
 
     private RacingResult(int attempt, List<RaceRecord> raceRecords) {
         this.attempt = attempt;
-        this.result = raceRecords;
+        this.raceRecords = new RaceRecords(raceRecords);
     }
 
     private static RacingResult create(int attempt, List<RaceRecord> raceRecords) {
@@ -30,8 +30,6 @@ public class RacingResult {
     }
 
     public List<Integer> getResultByAttempt(int attempt) {
-        return result.stream()
-                .map(raceRecord -> raceRecord.getBy(attempt))
-                .collect(Collectors.toList());
+        return raceRecords.getResultByAttempt(attempt);
     }
 }
