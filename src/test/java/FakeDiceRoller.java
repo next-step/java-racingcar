@@ -1,3 +1,5 @@
+import domain.DiceRoller;
+
 import java.util.Random;
 
 public class FakeDiceRoller implements DiceRoller {
