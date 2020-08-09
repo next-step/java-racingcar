@@ -2,8 +2,8 @@ package racingcar.game;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.car.CarNames;
 import racingcar.car.Cars;
-import racingcar.car.CountOfCars;
 import racingcar.engine.FixedGoPowerEngine;
 
 import java.util.List;
@@ -17,13 +17,16 @@ class ResultsTest {
     void addResult() {
         //given
         Results results = Results.newInstance();
-        Cars cars = Cars.newInstance(CountOfCars.newInstance(2), new FixedGoPowerEngine());
+        String nameValues = "pobi,crong,honux";
+        CarNames carNames = CarNames.newInstance(nameValues);
+        Cars cars = Cars.newInstance(carNames, new FixedGoPowerEngine());
 
         //when
         results.add(Result.newInstance(cars));
 
         //then
+        int expected = 1;
         List<Result> resultList = results.getResults();
-        assertEquals(1, resultList.size());
+        assertEquals(expected, resultList.size());
     }
 }

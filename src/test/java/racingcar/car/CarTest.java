@@ -9,11 +9,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CarTest {
+    private static CarName carName = CarName.newInstance("car1");
 
     @DisplayName("자동차 생성")
     @Test
     void newCar() {
-        Car car = Car.newInstance(new FixedGoPowerEngine());
+        //when
+        Car car = Car.newInstance(carName, new FixedGoPowerEngine());
 
         //then
         assertThat(car).isNotNull();
@@ -22,17 +24,18 @@ class CarTest {
     @DisplayName("현재위치 확인")
     @Test
     void getPosition() {
-        Car car = Car.newInstance(new FixedGoPowerEngine());
+        Car car = Car.newInstance(carName, new FixedGoPowerEngine());
 
         //then
-        assertEquals(1, car.getPosition());
+        int expected = 0;
+        assertEquals(0, car.getPosition());
     }
 
     @DisplayName("power가 4 이상이면 전진")
     @Test
     void move() {
         //given
-        Car car = Car.newInstance(new FixedGoPowerEngine());
+        Car car = Car.newInstance(carName, new FixedGoPowerEngine());
         int before = car.getPosition();
 
         //when
@@ -46,7 +49,7 @@ class CarTest {
     @Test
     void stop() {
         //given
-        Car car = Car.newInstance(new FixedStopPowerEngine());
+        Car car = Car.newInstance(carName, new FixedStopPowerEngine());
         int before = car.getPosition();
 
         //when

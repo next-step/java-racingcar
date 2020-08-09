@@ -15,27 +15,30 @@ class CarsTest {
     @Test
     void newCars() {
         //given
-        CountOfCars countOfCars = CountOfCars.newInstance(4);
+        String nameValue = "pobi,crong,honux";
+        CarNames carNames = CarNames.newInstance(nameValue);
 
         //when
-        Cars cars = Cars.newInstance(countOfCars, new RandomPowerEngine());
+        Cars cars = Cars.newInstance(carNames, new RandomPowerEngine());
 
         //then
         List<Car> carList = cars.getCars();
-        assertEquals(countOfCars.getCount(), carList.size());
+        assertEquals(carNames.getNames().size(), carList.size());
     }
 
     @DisplayName("등록된 자동차들 1회씩 전진")
     @Test
     void moveAllCars() {
         //given
-        CountOfCars countOfCars = CountOfCars.newInstance(3);
-        Cars cars = Cars.newInstance(countOfCars, new FixedGoPowerEngine());
+        String nameValue = "pobi,crong,honux";
+        CarNames carNames = CarNames.newInstance(nameValue);
+        Cars cars = Cars.newInstance(carNames, new FixedGoPowerEngine());
 
         //when
         List<Car> result = cars.move();
 
         //then
-        result.forEach(car -> assertEquals(2, car.getPosition()));
+        int expected = 1;
+        result.forEach(car -> assertEquals(expected, car.getPosition()));
     }
 }

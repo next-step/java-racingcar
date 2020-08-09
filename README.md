@@ -26,6 +26,6 @@
     * Result 객체에서 이름도 출력하도록 기능개선 
 * [ ] 자동차 이름은 쉼표(,)를 기준으로 구분한다.
     * CountOfCars -> Players 로 변경.
-    * player 내부에서 split. Player 생성
+    * carName 내부에서 split. Player 생성
 * [ ] 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한명 이상일 수 있다.
     * Results 내부에서 우승자 판단 기능 추가

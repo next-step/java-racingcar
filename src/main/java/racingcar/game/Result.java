@@ -1,6 +1,7 @@
 package racingcar.game;
 
 import org.apache.commons.lang3.StringUtils;
+import racingcar.car.Car;
 import racingcar.car.Cars;
 
 import java.util.List;
@@ -11,8 +12,12 @@ public class Result {
 
     private Result(Cars cars) {
         this.statusList = cars.getCars().stream()
-                .map(car -> StringUtils.repeat("-", car.getPosition()))
+                .map(car -> createResultText(car))
                 .collect(Collectors.toList());
+    }
+
+    private String createResultText(Car car) {
+        return car.getName() + " : " + StringUtils.repeat("-", car.getPosition());
     }
 
     public static Result newInstance(Cars cars) {
