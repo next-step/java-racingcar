@@ -1,26 +1,17 @@
 package step3.factory;
 
-import step3.domain.BasicForwardStrategy;
 import step3.domain.Car;
-import step3.domain.ForwardStrategy;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarFactory {
 
-    private static ForwardStrategy forwardStrategy;
-
-    static {
-        forwardStrategy = new BasicForwardStrategy();
-    }
-
-    public static List<Car> create(int numberOfCars) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car(forwardStrategy));
-        }
-        return cars;
+    public static List<Car> createsCarsByNames(String[] names) {
+        return Arrays.stream(names)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     private CarFactory() {

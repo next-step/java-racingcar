@@ -2,20 +2,29 @@ package step3.domain;
 
 public class Car implements Cloneable {
 
-    private final ForwardStrategy forwardStrategy;
+    private final String name;
+
     private int position = 1;
 
-    public Car(ForwardStrategy forwardStrategy) {
-        this.forwardStrategy = forwardStrategy;
+    public Car(String name) {
+        this.name = name;
     }
 
-    public Car move() {
+    public Car move(ForwardStrategy forwardStrategy) {
         position += forwardStrategy.calculateForwardDistance();
         return this;
     }
 
+    public boolean checkPosition(int position) {
+        return this.position == position;
+    }
+
     public int getPosition() {
         return position;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override

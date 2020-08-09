@@ -7,9 +7,9 @@ import step3.output.ResultView;
 public class CarRacingGameApp {
 
     public static void main(String[] args) {
-        int numberOfCars = InputView.getNumberOfCars();
+        String csvNameLineOfCars = InputView.getCsvNameLineOfCars();
         int numberOfAttempts = InputView.getNumberOfAttempts();
-        CarRacingGame carRacingGame = new CarRacingGame(numberOfCars, numberOfAttempts);
+        CarRacingGame carRacingGame = new CarRacingGame(csvNameLineOfCars, numberOfAttempts);
         carRacingGame.start();
         ResultView resultView = new ResultView(carRacingGame.getRapResults());
         resultView.printResult();
