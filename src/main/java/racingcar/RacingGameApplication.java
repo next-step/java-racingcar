@@ -15,7 +15,7 @@ public class RacingGameApplication {
 
         racingGame.checkAvailableGame();
 
-        RacingResult racingResult = racingGame.progress();
+        RacingResult racingResult = racingGame.progress(new RandomNumberMover());
         ResultView.print(racingResult);
     }
 }

@@ -2,42 +2,40 @@ package racingcar;
 
 import calculator.ExceptionMessage;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toList;
 
 /**
  * @author daheekim
  * @version : 0.0.0
  */
 public class RacingGame {
-    private int carNumber;
     private int attemptNumber;
+    private RacingCars racingCars;
 
-    private RacingGame(int carNumber, int attemptNumber) {
-        this.carNumber = carNumber;
+    private RacingGame(RacingCars racingCars, int attemptNumber) {
+        this.racingCars = racingCars;
         this.attemptNumber = attemptNumber;
     }
 
-    public static RacingGame of(int carNumber, int attemptNumber) {
-        return new RacingGame(carNumber, attemptNumber);
+    public static RacingGame of(List<String> carNames, int attemptNumber) {
+        RacingCars racingCars = carNames.stream()
+                .map(RacingCar::new)
+                .collect(collectingAndThen(toList(), RacingCars::new));
+
+        return new RacingGame(racingCars, attemptNumber);
     }
 
-    RacingResult progress() {
-        List<RacingVehicle> racingCars = new ArrayList<>();
-
-        for (int car = 0; car < carNumber; car++) {
-            RacingCar racingCar = new RacingCar();
-            racingCar.setCarMover(new RandomNumberMover());
-
-            racingCar.race(attemptNumber);
-            racingCars.add(racingCar);
-        }
+    RacingResult progress(CarMover carMover) {
+        racingCars.race(carMover, attemptNumber);
 
         return RacingResult.aggregate(attemptNumber, racingCars);
     }
 
     public void checkAvailableGame() {
-        if (carNumber < 1) {
+        if (racingCars.size() < 1) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_RACING_CAR_NUMBER);
         }
 

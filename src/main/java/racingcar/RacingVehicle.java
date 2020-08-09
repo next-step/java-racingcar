@@ -6,7 +6,7 @@ package racingcar;
  */
 public class RacingVehicle {
 
-    private CarMover carMover;
+//    private CarMover carMover;
     RaceRecord raceRecord;
 
     public RacingVehicle() {
@@ -16,12 +16,12 @@ public class RacingVehicle {
         return raceRecord;
     }
 
-    public void setCarMover(CarMover carMover) {
-        this.carMover = carMover;
-    }
-
-    public boolean movable() {
-        return carMover.movable();
-    }
+//    public void setCarMover(CarMover carMover) {
+//        this.carMover = carMover;
+//    }
+//
+//    public boolean movable() {
+//        return carMover.movable();
+//    }
 
 }
