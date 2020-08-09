@@ -7,7 +7,10 @@ import java.util.List;
 
 public class JudgeRacingResult {
 
-    public List getWinnerInRaceResult(List<Car> entryList){
+    private JudgeRacingResult() {
+    }
+
+    public static List getWinnerInRaceResult(List<Car> entryList){
         int winnerPosition = getWinnerPosition(entryList);
         List<Car> winnerList = new ArrayList<>();
 
@@ -18,11 +21,11 @@ public class JudgeRacingResult {
         return winnerList;
     }
 
-    private void addCarIfWinner(List<Car> winnerList, int winnerPosition, Car car ){
+    private static void addCarIfWinner(List<Car> winnerList, int winnerPosition, Car car ){
         if( winnerPosition == car.nowPosition()) winnerList.add(car);
     }
 
-    private int getWinnerPosition(List<Car> entryList){
+    private static int getWinnerPosition(List<Car> entryList){
         int winnerPosition = 0;
 
         for(Car car : entryList){
