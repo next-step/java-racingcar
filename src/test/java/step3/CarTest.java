@@ -2,11 +2,9 @@ package step3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.generator.RandomGenerator;
 import step3.model.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static step3.generator.RandomGenerator.generateValue;
 
 @DisplayName("Step3 - 자동차 Object에 대한 Test")
 public class CarTest {

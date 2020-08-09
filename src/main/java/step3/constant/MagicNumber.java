@@ -8,6 +8,4 @@ public class MagicNumber {
     public static final String QUESTION_NUMBER_TWO = "2";
     public static final String BANNER_STRING = "실행 결과";
     public static final String DASH_STRING = "-";
-    public static final int RANDOM_BOUNDARY = 10;
-    public static final int CONDITION_FOR_STEP_FORWARD = 4;
 }
