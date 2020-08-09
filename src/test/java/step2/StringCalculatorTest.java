@@ -26,13 +26,11 @@ class StringCalculatorTest {
 				.containsPattern(Pattern.compile("^[0-9]+$"));
 	}
 
-	@DisplayName(value = "사칙연산 실패 에러 발생 테스트")
+	@DisplayName(value = "사칙연산 실패 에러 발생 조건 테스트")
 	@ParameterizedTest
 	@ValueSource(strings = {"  ", "+", "* 3 ", " 4", "* 4 4", "1+2", "+3-2", "4.5 + 5.5", "4 - 2 *"})
 	void getFailResult(String str) {
 		assertThat(stringCalculator.isPossibleCalculate(str)).isFalse();
-		//assertThatIllegalArgumentException().isThrownBy(() -> { stringCalculator.getResult(str); })
-		//		.withMessage("계산할 수 없는 문자열");
 	}
 
 	@DisplayName(value = "각 연산자별 사칙연산 테스트")
@@ -41,13 +39,6 @@ class StringCalculatorTest {
 	void calculate(String op) {
 		int num1 = 2, num2 = 3;
 		assertThat(stringCalculator.calculate(num2, op, num1)).isNotEmpty();
-	}
-
-	@DisplayName(value = "빈 공백 입력 테스트")
-	@ParameterizedTest
-	@ValueSource(strings = {"", "   "})
-	void isEmpty(String str) {
-		assertTrue(stringCalculator.isEmpty(str));
 	}
 
 	@DisplayName(value = "덧셈 테스트")

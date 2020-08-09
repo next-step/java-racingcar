@@ -31,7 +31,7 @@ public class StringCalculator {
 
 	}
 
-	public Stack<String> stackCalculatedValue(Stack<String> expression, String value) {
+	private Stack<String> stackCalculatedValue(Stack<String> expression, String value) {
 		if(isNumberPattern(value) && expression.size() == 3) {
 			expression.push(this.calculate(Integer.parseInt(expression.pop()), expression.pop(), Integer.parseInt(expression.pop())));
 		}
@@ -44,16 +44,19 @@ public class StringCalculator {
 	}
 
 	public boolean isPossibleCalculate(String str) {
-		String[] strings = str.split(SEPARATOR);
-		return !isEmpty(str) && isLengthOver3(str) && strings.length%3 == 0;
+		return !isEmpty(str) && isLengthOver3(str) && isValidExpression(str.split(SEPARATOR));
 	}
 
-	public boolean isEmpty(String str) {
+	private boolean isEmpty(String str) {
 		return null == str || str.length() == 0 || isBlankPattern(str);
 	}
 
-	public boolean isLengthOver3(String str) {
+	private boolean isLengthOver3(String str) {
 		return str.length() >= 3;
+	}
+
+	private boolean isValidExpression(String[] strings) {
+		return ONLY_NUMBER_PATTERN.matcher(strings[0]).matches() && ONLY_NUMBER_PATTERN.matcher(strings[strings.length-1]).matches();
 	}
 
 }
