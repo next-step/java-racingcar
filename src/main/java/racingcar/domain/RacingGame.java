@@ -20,7 +20,6 @@ public class RacingGame {
         for (int i = 0; i < round; i++) {
             cars.moveCars(randomValue);
             ResultView.printResult(cars);
-            System.out.println();
         }
     }
 }
