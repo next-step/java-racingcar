@@ -11,10 +11,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CarTest {
     private Car car;
 
-    @DisplayName("Car 디폴트 생성자 테스트")
+    @DisplayName("Car start position 테스트")
     @Test
     void noArgsConstructorTest() {
-        car = new Car();
+        car = Car.of("유재석");
         assertThat(car.getPosition())
                 .isZero();
     }
@@ -23,7 +23,7 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(strings = {"유재석", "이효리"})
     void createCarTest(String name) {
-        car = new Car(name);
+        car = Car.of(name);
         assertThat(car.getName())
                 .isEqualTo(name);
     }

@@ -6,23 +6,18 @@ import racingcar.domain.status.MoveAbility;
 public class Car {
     private static final int START_POSITION = 0;
 
-    private String name;
+    private final String name;
     private int position;
     private final MoveAbility moveAbility;
-
-    public Car() {
-        this.position = START_POSITION;
-        this.moveAbility = new CarMoveAbility();
-    }
-
-    public Car(String name) {
-        this(name, START_POSITION, new CarMoveAbility());
-    }
 
     public Car(String name, int position, MoveAbility moveAbility) {
         this.name = name;
         this.position = position;
         this.moveAbility = moveAbility;
+    }
+
+    public static Car of(String name) {
+        return new Car(name, START_POSITION, new CarMoveAbility());
     }
 
     public void move() {
