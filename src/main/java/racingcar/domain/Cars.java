@@ -27,7 +27,7 @@ public class Cars {
     private List<Car> readyCars(String carNames) {
         List<String> names = Splitter.splitText(carNames);
         return names.stream()
-                .map(Car::new)
+                .map(Car::of)
                 .collect(Collectors.toList());
     }
 
