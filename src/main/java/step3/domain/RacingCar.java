@@ -5,8 +5,9 @@ import java.util.Map;
 
 public class RacingCar extends Car {
 
-    public RacingCar(int carId) {
+    public RacingCar(int carId, String mileAge) {
         super(carId);
+        super.mileAge = mileAge;
     }
 
     @Override
@@ -21,7 +22,7 @@ public class RacingCar extends Car {
         Map<Integer, Car> carInfoMap = new HashMap<>();
 
         for (int carId = 1; carId <= racingCarNumber; carId++) {
-            Car car = new RacingCar(carId);
+            Car car = new RacingCar(carId, "");
             carInfoMap.put(car.getCarId(), car);
         }
         return carInfoMap;
