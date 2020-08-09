@@ -1,5 +1,5 @@
 package racingcar.utils;
 
-public interface RandomValueGenerator {
+public interface NumberGenerator {
     int createRandomValue();
 }

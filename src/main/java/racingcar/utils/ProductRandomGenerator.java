@@ -2,7 +2,7 @@ package racingcar.utils;
 
 import java.util.Random;
 
-public class ProductRandomGenerator implements RandomValueGenerator {
+public class ProductRandomGenerator implements NumberGenerator {
     private static final int LIMIT_RANDOM_VALUE = 9;
 
     @Override
