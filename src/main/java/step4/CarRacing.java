@@ -31,10 +31,10 @@ public class CarRacing {
 
         totalRound = competition.getRount();
 
-        String[] carNames = competition.getPaticipate();
+        List<String> carNames = competition.getPaticipate();
 
         for(String carName : carNames) {
-            Car racer = Car.participateRacing(carName, STARTING_POSITION);
+            Car racer = Car.participateRacing(carName.trim(), STARTING_POSITION);
             entryList.add(racer);
         }
     }
@@ -57,8 +57,7 @@ public class CarRacing {
     }
 
     private List<Car> judgeRacing() {
-        JudgeRacingResult judgeRacingResult = new JudgeRacingResult();
-        return judgeRacingResult.getWinnerInRaceResult(entryList);
+        return JudgeRacingResult.getWinnerInRaceResult(entryList);
     }
 
     private void startRacing() {
