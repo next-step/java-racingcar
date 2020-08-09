@@ -28,7 +28,7 @@ class CarTest {
                 .isEqualTo(name);
     }
 
-    @DisplayName("Car 전진 테스트")
+    @DisplayName("Car 전진하는 경우 테스트")
     @ParameterizedTest
     @ValueSource(strings = {"유재석"})
     void carMoveTest(String name) {
@@ -37,5 +37,16 @@ class CarTest {
         car.move();
         assertThat(car.getPosition())
                 .isOne();
+    }
+
+    @DisplayName("Car 전지하지 않는 경우 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"유재석"})
+    void carStopTest(String name) {
+        MoveAbility positiveMoveAbility = () -> false;
+        car = new Car(name, 0, positiveMoveAbility);
+        car.move();
+        assertThat(car.getPosition())
+                .isZero();
     }
 }
