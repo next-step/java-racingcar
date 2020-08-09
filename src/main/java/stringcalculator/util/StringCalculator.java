@@ -18,11 +18,28 @@ public class StringCalculator {
         return applyStrOperator(expression);
     }
 
+    /**
+     * 기존 applyStrOperator refactor 실패원인 : expression과 expression[i] 인자 불일치
+     * javajigi님 tip : 인자를 단일 (String expression)으로 복수의 쪼개진 expression에 대해
+     * String[] expressions = expression.split(" "); 로 정의
+     */
+    public static int reCalculate(String expression) {
+        String[] expressions = expression.split("");
+        int first = toInt(0, expressions);
+        int second = toInt(2, expressions);
+        String operator = expressions[1];
+        return first + second;
+    }
+
+    private static int toInt(int i, String[] expressions) {
+        return Integer.parseInt(expressions[i]);
+    }
+
     private static int applyStrOperator(String expression) {
-        int number = Integer.parseInt(splitBySpace(expression)[0]);
+        int number = toInt(0, splitBySpace(expression));
         for (int i = 1; i < splitBySpace(expression).length; i = i + 2) {
             StringCalOperator strOperation = StringCalOperator.findOperation(splitBySpace(expression)[i]);
-            number = strOperation.applyAsInt(number, Integer.parseInt(splitBySpace(expression)[i + 1]));
+            number = strOperation.applyAsInt(number, toInt(i + 1, splitBySpace(expression)));
         }
         return number;
     }
