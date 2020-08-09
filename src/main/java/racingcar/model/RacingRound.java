@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RacingRound {
+    private static final String RACING_CAR_EMPTY_MESSAGE = "참가한 자동차 리스트가 비었습니다.";
     private List<RacingCar> racingCars;
 
     public RacingRound(List<RacingCar> cars) {
@@ -14,7 +15,7 @@ public class RacingRound {
         return racingCars;
     }
 
-    public List<String> findWinners() {
+    public List<String> getWinners() {
         final RacingCar maxPositionCar = findMaxPositionCar();
         return findSamePositionCars(maxPositionCar);
     }
@@ -22,7 +23,7 @@ public class RacingRound {
     private RacingCar findMaxPositionCar() {
         return racingCars.stream()
                 .max(RacingCar::compareTo)
-                .orElseThrow(() -> new IllegalArgumentException("참가한 자동차 리스트가 비었습니다."));
+                .orElseThrow(() -> new IllegalArgumentException(RACING_CAR_EMPTY_MESSAGE));
     }
 
     private List<String> findSamePositionCars(RacingCar maxPositionCar) {

@@ -24,7 +24,7 @@ public class RacingGame {
         }
     }
 
-    public List<RacingRound> getRacingResults() {
+    public List<RacingRound> getRoundResults() {
         return roundResults;
     }
 
