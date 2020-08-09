@@ -14,16 +14,16 @@ public class ResultView {
 
     public static void printLocationsByCars(final List<Car> cars) {
         for (final Car car : cars) {
-            printLocationByCar(car);
+            System.out.println(printLocationByCar(car));
         }
         System.out.println();
     }
 
-    private static void printLocationByCar(final Car car) {
+    public static String printLocationByCar(final Car car) {
         final StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < car.getLocation(); i++) {
             stringBuilder.append(DISPLAY_MOVEMENT);
         }
-        System.out.println(stringBuilder.toString());
+        return stringBuilder.toString();
     }
 }

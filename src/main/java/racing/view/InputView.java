@@ -15,21 +15,29 @@ public class InputView {
         System.out.println(QUESTION_NUMBER_OF_CARS);
         final int numberOfCars = scanner.nextInt();
 
-        if(numberOfCars < MIN_INPUT_VALUE) {
+        if(!validNumberOfCars(numberOfCars)) {
             throw new IllegalArgumentException(INVALID_NUMBER_OF_CARS);
         }
 
         return numberOfCars;
     }
 
+    public static boolean validNumberOfCars(final int numberOfCars) {
+        return numberOfCars > MIN_INPUT_VALUE;
+    }
+
     public static int getNumberOfAttempt() {
         System.out.println(QUESTION_NUMBER_OF_ATTEMPT);
         final int numberOfAttempt = scanner.nextInt();
 
-        if(numberOfAttempt < MIN_INPUT_VALUE) {
+        if(!validNumberOfAttempt(numberOfAttempt)) {
             throw new IllegalArgumentException(INVALID_NUMBER_OF_ATTEMPT);
         }
 
         return numberOfAttempt;
+    }
+
+    public static boolean validNumberOfAttempt(final int numberOfAttempt) {
+        return numberOfAttempt > MIN_INPUT_VALUE;
     }
 }
