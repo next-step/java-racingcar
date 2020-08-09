@@ -7,7 +7,12 @@ public enum Operator {
 	PLUS("+", (x, y) -> x + y),
 	MINUS("-", (x, y) -> x - y),
 	MULTIPLE("*", (x, y) -> x * y),
-	DIVIDE("/", (x, y) -> x / y)
+	DIVIDE("/", (x, y) -> {
+		if(y == 0) {
+			throw new IllegalArgumentException();
+		}
+		return x / y;
+	})
 	;
 
 	private final String operator;

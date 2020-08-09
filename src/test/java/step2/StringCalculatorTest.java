@@ -88,7 +88,7 @@ class StringCalculatorTest {
 	void divisionError() {
 		assertThatThrownBy(() -> {
 			stringCalculator.calculate(0, "/", 102);
-		}).isInstanceOf(ArithmeticException.class);
+		}).isInstanceOf(IllegalArgumentException.class);
 	}
 
 	@DisplayName(value = "사칙연산 기호가 아닌 경우 에러 발생 테스트")
