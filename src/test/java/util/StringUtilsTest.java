@@ -1,12 +1,12 @@
-package calculator.util;
+package util;
 
+import calculator.ExceptionMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -26,11 +26,22 @@ public class StringUtilsTest {
         assertFalse(StringUtils.isBlank(input));
     }
 
-    @DisplayName("숫자 형식 여부 테스트")
+    @DisplayName("숫자 형식 여부(true) 테스트")
     @ParameterizedTest
-    @CsvSource(value = {"3030:true", "3.1415926:true", "000:true", "OOO:false", "string:false"}, delimiter = ':')
-    void isNumeric_test(String input, boolean result) {
-        assertThat(StringUtils.isNumeric(input)).isEqualTo(result);
+    @ValueSource(strings = {"3030", "3.1415926", "000"})
+    void validateNumber_true_test(String input) {
+        assertThatCode(() -> {
+            StringUtils.validateNumber(input);
+        }).doesNotThrowAnyException();;
+    }
+
+    @DisplayName("숫자 형식 여부(false) 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"OOO", "string"})
+    void validateNumber_false_test(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> StringUtils.validateNumber(input))
+                .withMessage("%s", input+ExceptionMessage.INVALID_FORMAT_INPUT_NUMBER);
     }
 
     @DisplayName("String to Number 변환 테스트")
@@ -48,4 +59,12 @@ public class StringUtilsTest {
                 .isThrownBy(() -> StringUtils.getNumber(input));
     }
 
+    @DisplayName("반복 문자열 생성 메소드(repeat) 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"s,5:sssss", "hi,0:''"}, delimiter = ':')
+    void repeat_test(String input, String result) {
+        String[] inputArray = input.split(",");
+        assertThat(StringUtils.repeat(inputArray[0], Integer.parseInt(inputArray[1])))
+                .isEqualTo(result);
+    }
 }
