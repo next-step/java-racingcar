@@ -2,7 +2,6 @@ package step3.execute;
 
 import step3.model.Car;
 import step3.view.InputView;
-import step3.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;

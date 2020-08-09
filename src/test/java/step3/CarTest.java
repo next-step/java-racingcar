@@ -26,6 +26,7 @@ public class CarTest {
     }
 
     @Test
+    @DisplayName("Car 객체에 정의된 수행전략에 의해 자동차가 움직이는지 확인")
     void increate_Car_Distance_with_Randomize() {
         challenger = new Car();
         for (int i = 0; i <= 10; i++) {
