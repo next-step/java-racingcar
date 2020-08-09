@@ -11,9 +11,9 @@ public class RacingGame {
     private List<RacingCar> racingCars;
     private List<RacingRound> roundResults = new ArrayList<>();
 
-    public RacingGame(List<String> racingCarList, int racingCount) {
+    public RacingGame(List<String> racingCars, int racingCount) {
         this.racingCount = racingCount;
-        this.racingCars = participate(racingCarList);
+        this.racingCars = participate(racingCars);
     }
 
     public void start() {
@@ -28,10 +28,10 @@ public class RacingGame {
         return roundResults;
     }
 
-    public List<RacingCar> participate(List<String> racingCarList) {
+    public List<RacingCar> participate(List<String> racingCars) {
         List<RacingCar> cars = new ArrayList<>();
-        for (int i = 0; i < racingCarList.size(); i++) {
-            cars.add(new RacingCar(racingCarList.get(i)));
+        for (int i = 0; i < racingCars.size(); i++) {
+            cars.add(new RacingCar(racingCars.get(i)));
         }
         return cars;
     }

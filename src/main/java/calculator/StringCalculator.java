@@ -23,17 +23,17 @@ public class StringCalculator {
 
     private List<String> splitText (String text) {
         String[] values = text.split(" ");
-        List<String> textList = new ArrayList<>();
-        Arrays.stream(values).map(value -> textList.add(value)).collect(Collectors.toList());
-        return textList;
+        List<String> texts = new ArrayList<>();
+        Arrays.stream(values).map(value -> texts.add(value)).collect(Collectors.toList());
+        return texts;
     }
 
-    private int sumText(List<String> textList) {
-        return IntStream.range(0, textList.size() / 2)
-                .reduce(Integer.parseInt(textList.get(0)), (result, index) -> {
+    private int sumText(List<String> texts) {
+        return IntStream.range(0, texts.size() / 2)
+                .reduce(Integer.parseInt(texts.get(0)), (result, index) -> {
                     int operatorIndex = index * 2 + 1;
-                    String operatorText = textList.get(operatorIndex);
-                    int nextNumber = Integer.parseInt(textList.get(operatorIndex + 1));
+                    String operatorText = texts.get(operatorIndex);
+                    int nextNumber = Integer.parseInt(texts.get(operatorIndex + 1));
                     return MathOperator.operate(operatorText, result, nextNumber);
                 });
     }
