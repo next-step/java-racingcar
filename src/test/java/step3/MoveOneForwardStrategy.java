@@ -1,4 +1,6 @@
-package step3.domain;
+package step3;
+
+import step3.domain.ForwardStrategy;
 
 public class MoveOneForwardStrategy implements ForwardStrategy {
 

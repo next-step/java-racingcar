@@ -3,7 +3,6 @@ package step3;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.domain.MoveOneForwardStrategy;
 import step3.domain.ForwardStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;

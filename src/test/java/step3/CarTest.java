@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step3.domain.Car;
-import step3.domain.MoveOneForwardStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,6 +28,13 @@ public class CarTest {
     public void move() {
         int currentPosition = car.getPosition();
         assertThat(car.move(new MoveOneForwardStrategy()).getPosition()).isEqualTo(currentPosition + 1);
+    }
+
+    @Test
+    @DisplayName("정지한다.")
+    public void stop() {
+        int currentPosition = car.getPosition();
+        assertThat(car.move(() -> 0).getPosition()).isEqualTo(currentPosition);
     }
 
 }
