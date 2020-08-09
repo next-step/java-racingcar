@@ -1,26 +1,28 @@
 package racingcar;
 
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toList;
 
 public class RacingResult {
 
     private int attempt;
     private RaceRecords raceRecords;
 
-    private RacingResult(int attempt, List<RaceRecord> raceRecords) {
+    private RacingResult(int attempt, RaceRecords raceRecords) {
         this.attempt = attempt;
-        this.raceRecords = new RaceRecords(raceRecords);
+        this.raceRecords = raceRecords;
     }
 
-    private static RacingResult create(int attempt, List<RaceRecord> raceRecords) {
+    private static RacingResult create(int attempt, RaceRecords raceRecords) {
         return new RacingResult(attempt, raceRecords);
     }
 
     public static RacingResult aggregate(int attempt, List<RacingVehicle> racingCars) {
-        List<RaceRecord> raceRecords = racingCars.stream()
+        RaceRecords raceRecords = racingCars.stream()
                 .map(RacingVehicle::getRaceRecord)
-                .collect(Collectors.toList());
+                .collect(collectingAndThen(toList(), RaceRecords::new));
 
         return RacingResult.create(attempt, raceRecords);
     }
