@@ -22,7 +22,7 @@ class CarsTest {
     public void 자동차_그룹_생성(int carCount) {
         int verificationValue = carCount;
         Cars cars = new Cars(carCount);
-        assertThat(cars.getCars().size()).isEqualTo(verificationValue);
+        assertThat(cars.stream().count()).isEqualTo(verificationValue);
     }
 
 }

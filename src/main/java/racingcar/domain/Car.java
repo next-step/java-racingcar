@@ -11,17 +11,21 @@ public class Car {
 
     private int position;
 
-    public int getPosition() {
-        return position;
-    }
-
     public Car() {
         this.position = START_POSITION;
     }
 
-    public void moveCount(int randomValue) {
+    public int getPosition() {
+        return position;
+    }
+
+    public void move() {
+        position++;
+    }
+
+    public void moveAble(int randomValue) {
         if(randomValue >= MOVEABLE_REFERENCE_VALUE) {
-            position++;
+            move();
         }
     }
 }
