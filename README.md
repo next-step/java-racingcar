@@ -7,3 +7,10 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 기능 목록
+* 사용자 입력 UI
+* 자동차 전진 / 정지
+* 레이싱
+* 레이싱 UI
+* 테스트
