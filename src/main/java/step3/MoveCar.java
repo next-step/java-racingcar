@@ -13,7 +13,9 @@ public class MoveCar {
 
         int randomVal = new Random().nextInt(RANDOM_MAXIMUM_BOUND);
 
-        if(randomVal < MOVE_CRITERION_UNDER_4) return false;
+        if(randomVal < MOVE_CRITERION_UNDER_4) {
+            return false;
+        }
 
         car.movePosition();
 
