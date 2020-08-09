@@ -1,6 +1,5 @@
 package step3.strategy;
 
-import step3.constant.MagicNumber;
 import step3.generator.RandomGenerator;
 
 public class RacingGameMovementStrategy implements MovementStrategy {

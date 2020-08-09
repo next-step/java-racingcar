@@ -1,7 +1,6 @@
 package step3.model;
 
 import step3.strategy.MovementStrategy;
-import step3.strategy.RacingGameMovementStrategy;
 
 public class Car {
     private int distance;
@@ -9,7 +8,11 @@ public class Car {
 
     public Car() {
         this.distance = 1;
-        movement = new RacingGameMovementStrategy();
+    }
+
+    public Car(int initaialDistance, MovementStrategy strategy) {
+        this.distance = initaialDistance;
+        this.movement = strategy;
     }
 
     public int showDistance() {
