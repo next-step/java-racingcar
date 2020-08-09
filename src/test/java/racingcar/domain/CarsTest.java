@@ -18,12 +18,7 @@ class CarsTest {
 
     @BeforeEach
     void setUp() {
-        List<Car> carList = Arrays.asList(
-                new Car("유재석", 5, positiveMoveAbility),
-                new Car("이효리", 10, positiveMoveAbility),
-                new Car("정지훈", 15, positiveMoveAbility));
-
-        cars = new Cars(carList);
+        cars = new Cars(createCars());
     }
 
     @DisplayName("우승자 찾기 테스트")
@@ -37,9 +32,17 @@ class CarsTest {
     @Test
     void moveCarsTest() {
         cars.moveCars();
+
         assertAll("cars",
-                () -> assertEquals(cars.getCarList().get(0).getPosition(), 6),
-                () -> assertEquals(cars.getCarList().get(1).getPosition(), 11),
-                () -> assertEquals(cars.getCarList().get(2).getPosition(), 16));
+                () -> assertEquals(cars.getCarList().get(0).getPosition(), createCars().get(0).getPosition() + 1),
+                () -> assertEquals(cars.getCarList().get(1).getPosition(), createCars().get(1).getPosition() + 1),
+                () -> assertEquals(cars.getCarList().get(2).getPosition(), createCars().get(2).getPosition() + 1));
+    }
+
+    private List<Car> createCars() {
+        return Arrays.asList(
+                new Car("유재석", 5, positiveMoveAbility),
+                new Car("이효리", 10, positiveMoveAbility),
+                new Car("정지훈", 15, positiveMoveAbility));
     }
 }

@@ -43,8 +43,8 @@ class CarTest {
     @ParameterizedTest
     @ValueSource(strings = {"유재석"})
     void carStopTest(String name) {
-        MoveAbility positiveMoveAbility = () -> false;
-        car = new Car(name, 0, positiveMoveAbility);
+        MoveAbility negativeMoveAbility = () -> false;
+        car = new Car(name, 0, negativeMoveAbility);
         car.move();
         assertThat(car.getPosition())
                 .isZero();
