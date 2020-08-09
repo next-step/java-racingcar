@@ -17,11 +17,4 @@ class CarRacingTest {
 		assertThat(CarRacing.getNewCars(4)).allMatch(Objects::nonNull);
 	}
 
-	@DisplayName(value = "전진 조건 통과 여부 테스트")
-	@ParameterizedTest
-	@CsvSource(value = {"0:false", "3:false", "4:true", "9:true"}, delimiter = ':')
-	public void isMoveNum(int value, boolean expected) {
-		assertThat(CarRacing.isMoveNum(value)).isEqualTo(expected);
-	}
-
 }
