@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
-import racingcar.model.RacingCar;
 import racingcar.model.RacingRound;
 
 import java.util.Arrays;
@@ -36,11 +35,11 @@ public class RacingRecordTest {
 
         // when
         racingGameStub.start();
-        List<RacingRound> racingResults = racingGameStub.getRacingResults();
+        List<RacingRound> racingResults = racingGameStub.getRoundResults();
 
         // then
         RacingRound racingRound = racingResults.get(racingResults.size()-1);
-        List<RacingCar> bestScoreCars = racingRound.findBestScoreCars();
+        List<String> bestScoreCars = racingRound.getWinners();
         assertFalse(bestScoreCars.isEmpty());
     }
 }

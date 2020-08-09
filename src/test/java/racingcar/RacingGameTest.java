@@ -5,6 +5,7 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.model.RacingRound;
+import racingcar.view.InputValidater;
 import racingcar.view.ResultView;
 
 import java.util.Arrays;
@@ -12,8 +13,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RacingGameTest {
@@ -29,10 +30,10 @@ public class RacingGameTest {
         String expectedMark3 = "YANG : ---\nKYUNG : ---\nJUN : ---\n";
 
         // when
-        List<String> carNameList = Arrays.asList(carNames.split(","));
-        RacingGameStub racingGameStub = new RacingGameStub(carNameList, carNameList.size());
+        List<String> racingCarNames = Arrays.asList(carNames.split(","));
+        RacingGameStub racingGameStub = new RacingGameStub(racingCarNames, racingCarNames.size());
         racingGameStub.start();
-        List<RacingRound> racingResults = racingGameStub.getRacingResults();
+        List<RacingRound> racingResults = racingGameStub.getRoundResults();
 
         ResultView resultView = new ResultView(racingResults);
 
@@ -53,9 +54,10 @@ public class RacingGameTest {
     @ParameterizedTest
     @ValueSource(strings = {"YANG,KYUNG,JUN7575"})
     @DisplayName("자동차 이름 유효성 검사 테스트")
-    public void validate_car_names(String carNames) {
-        List<String> carNameList = Arrays.asList(carNames.split(","));
-        RacingGameStub racingGameStub = new RacingGameStub(carNameList, carNameList.size());
-        assertEquals(Boolean.FALSE, racingGameStub.validateCarName(carNameList));
+    public void validate_car_names(String racingCarNames) {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    InputValidater.validateCarNames(racingCarNames);
+                }).withMessageMatching("자동차 이름은 숫자와 문자 조합이고 5자를 초과할 수 없습니다.");
     }
 }
