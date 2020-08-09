@@ -45,6 +45,7 @@ public class StringCalculator {
 
 	public boolean isPossibleCalculate(String str) {
 		return !isEmpty(str) && isLengthOver3(str) && isValidExpression(str.split(SEPARATOR));
+
 	}
 
 	private boolean isEmpty(String str) {
