@@ -12,5 +12,7 @@ public class ExceptionMessage {
 
     public static final String INVALID_RACING_CAR_NUMBER = "자동차 대수는 적어도 1대 이상이어야 합니다.";
     public static final String INVALID_RACING_ATTEMPT_NUMBER = "시도 횟수는 적어도 1번 이상이어야 합니다.";
-    public static final String INVALID_RACING_CAR_NAME = "자동차 이름은 5자를 초과할 수 없습니다.";
+
+    public static final String RACING_CAR_NAME_IS_TOO_LONG = "자동차 이름은 5자를 초과할 수 없습니다.";
+    public static final String RACING_CAR_NAME_IS_TOO_SHORT = "자동차 이름은 적어도 1글자 이상이어야 합니다.";
 }

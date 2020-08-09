@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 
 public class RacingCar extends RacingVehicle {
     private static final int FIRST_ATTEMPT = 0;
+    private static final int NAME_MIN_LENGTH = 1;
     private static final int NAME_MAX_LENGTH = 5;
 
     private String name;
@@ -43,8 +44,12 @@ public class RacingCar extends RacingVehicle {
     }
 
     public static void checkNameValidation(RacingCar racingCar) {
+        if (racingCar.getName().length() < NAME_MIN_LENGTH) {
+            throw new IllegalArgumentException(ExceptionMessage.RACING_CAR_NAME_IS_TOO_SHORT);
+        }
+
         if (racingCar.getName().length() > NAME_MAX_LENGTH) {
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_RACING_CAR_NAME);
+            throw new IllegalArgumentException(ExceptionMessage.RACING_CAR_NAME_IS_TOO_LONG);
         }
     }
 }
