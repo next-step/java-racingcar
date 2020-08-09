@@ -2,6 +2,7 @@ package cc.oakk.racing;
 
 import cc.oakk.racing.printer.Printable;
 import cc.oakk.racing.printer.Printer;
+import cc.oakk.racing.util.Validator;
 
 import java.util.List;
 
@@ -12,17 +13,8 @@ public class RacingRound implements Printable<Car> {
     private int currentRoundCount = 0;
 
     public RacingRound(List<Car> cars, int totalRoundCount) {
-        if (cars == null) {
-            throw new IllegalArgumentException("cars are null!");
-        }
-
-        if (cars.size() <= 0) {
-            throw new IllegalArgumentException("cars' size should be greater than zero.!");
-        }
-
-        if (totalRoundCount <= 0) {
-            throw new IllegalArgumentException("totalRoundCount should be greater than zero.");
-        }
+        Validator.checkList(cars);
+        Validator.checkGreaterThanZero(totalRoundCount);
 
         this.cars = cars;
         this.totalRoundCount = totalRoundCount;

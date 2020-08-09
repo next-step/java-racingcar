@@ -1,6 +1,7 @@
 package cc.oakk.racing;
 
 import cc.oakk.racing.predicate.CarForwardCondition;
+import cc.oakk.racing.util.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,17 +25,8 @@ public class RacingGame {
     }
 
     private void validateCreateRoundArguments(List<String> carNames, int totalRoundCount) {
-        if (carNames == null) {
-            throw new IllegalArgumentException("carNames is null.");
-        }
-
-        if (carNames.size() <= 0) {
-            throw new IllegalArgumentException("carNames's size should be greater than 0.");
-        }
-
-        if (totalRoundCount <= 0) {
-            throw new IllegalArgumentException("totalRoundCount should be greater than 0.");
-        }
+        Validator.checkList(carNames);
+        Validator.checkGreaterThanZero(totalRoundCount);
     }
 
     private Car createCar(String name) {
