@@ -1,9 +1,10 @@
 package racingcar.domain;
 
-import racingcar.utils.RandomValueGenerator;
+import racingcar.utils.NumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * 경주에 참여하는 자동차들의 정보를 담당
@@ -12,6 +13,7 @@ import java.util.List;
  */
 public class Cars {
     private static final int MIN_INPUT_CAR_NUMBER = 1;
+    private static final int MOVEABLE_REFERENCE_VALUE = 4;
 
     private List<Car> cars;
 
@@ -20,8 +22,8 @@ public class Cars {
         createCars(inputCarCount);
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public Stream<Car> stream() {
+        return cars.stream();
     }
 
     public void createCars(int inputCarCount) {
@@ -31,9 +33,9 @@ public class Cars {
         }
     }
 
-    public void moveCars(RandomValueGenerator randomValue) {
+    public void moveCars(NumberGenerator randomValue) {
         for (Car car : cars) {
-            car.moveCount(randomValue.createRandomValue());
+            car.moveAble(randomValue.createRandomValue());
         }
     }
 

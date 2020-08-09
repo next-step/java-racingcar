@@ -19,7 +19,7 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     public void 값이_4이상일때_1칸_전진한다(int number) {
-        car.moveCount(number);
+        car.moveAble(number);
         assertThat(car.getPosition()).isOne();
     }
 
@@ -27,7 +27,7 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3})
     public void 값이_4이하면_움직이지_않는다(int number) {
-        car.moveCount(number);
+        car.moveAble(number);
         assertThat(car.getPosition()).isZero();
     }
 }
