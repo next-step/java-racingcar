@@ -10,9 +10,9 @@ public class RaceRecords {
         this.raceRecords = raceRecords;
     }
 
-    public List<Integer> getResultByAttempt(int attempt) {
+    public List<String> getResultByAttempt(int attempt) {
         return raceRecords.stream()
-                .map(raceRecord -> raceRecord.getBy(attempt))
+                .map(raceRecord -> raceRecord.getResultByAttempt(attempt))
                 .collect(Collectors.toList());
     }
 }

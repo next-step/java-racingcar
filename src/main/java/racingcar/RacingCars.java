@@ -2,6 +2,9 @@ package racingcar;
 
 import java.util.List;
 
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toList;
+
 public class RacingCars {
 
     List<RacingCar> racingCars;
@@ -20,5 +23,11 @@ public class RacingCars {
 
     public void checkNameValidation() {
         racingCars.forEach(RacingCar::checkNameValidation);
+    }
+
+    public RaceRecords getRaceRecords() {
+        return racingCars.stream()
+                .map(RacingVehicle::getRaceRecord)
+                .collect(collectingAndThen(toList(), RaceRecords::new));
     }
 }

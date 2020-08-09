@@ -27,7 +27,7 @@ public class RacingCar extends RacingVehicle {
                 .limit(attemptNumber)
                 .forEach(attempt -> move(record, attempt, carMover));
 
-        raceRecord = new RaceRecord(record);
+        raceRecord = new RaceRecord(name, record);
     }
 
     private void move(List<Integer> record, int attempt, CarMover carMover) {
