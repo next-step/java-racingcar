@@ -5,9 +5,9 @@ import java.util.Map;
 
 public class RacingCar extends Car {
 
-    public RacingCar(int carId, String mileAge) {
+    public RacingCar(int carId, int position) {
         super(carId);
-        super.mileAge = mileAge;
+        super.position = position;
     }
 
     @Override
@@ -22,14 +22,22 @@ public class RacingCar extends Car {
         Map<Integer, Car> carInfoMap = new HashMap<>();
 
         for (int carId = 1; carId <= racingCarNumber; carId++) {
-            Car car = new RacingCar(carId, "");
+            Car car = new RacingCar(carId, 0);
             carInfoMap.put(car.getCarId(), car);
         }
         return carInfoMap;
     }
 
+    public static int updatePosition(boolean raceResult) {
+        if (raceResult) {
+            return 1;
+        }
+        return 0;
+    }
+
     public static boolean receStart(Car racingCar, int racingCarNumber) {
         boolean result = false;
+
         if (racingCar.getCarId() == racingCarNumber) {
             int raceConditionResult = RacingRule.raceCondition();
             result = racingCar.move(raceConditionResult, RacingRule.MOVEMENT_POLICY);

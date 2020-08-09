@@ -16,7 +16,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
 
-    private Car car;
     private Map<Integer, Car> carInfoMap;
 
     @BeforeEach
@@ -28,26 +27,33 @@ public class RacingCarTest {
     @DisplayName("자동차 전진")
     @CsvSource(value = {"5:-----", "3:---"}, delimiter = ':')
     void accelateTest(int gameCount, String expected) {
-        car = new RacingCar(1, "");
         String mileAge = "";
         for (int i = 1; i <= gameCount; i++) {
             mileAge += ResultView.ACCELATE_SIGN;
         }
-        car = new RacingCar(car.getCarId(), mileAge);
-        assertThat(car.getMileAge()).isEqualTo(expected);
+        assertThat(mileAge).isEqualTo(expected);
     }
 
     @ParameterizedTest
     @DisplayName("자동차 정지")
     @CsvSource(value = {"5:''", "3:''"}, delimiter = ':')
     void brakeTest(int gameCount, String expected) {
-        car = new RacingCar(1, "");
         String mileAge = "";
         for (int i = 1; i <= gameCount; i++) {
             mileAge += ResultView.BRAKE_SIGN;
         }
-        car = new RacingCar(car.getCarId(), mileAge);
-        assertThat(car.getMileAge()).isEqualTo(expected);
+        assertThat(mileAge).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @DisplayName("Position에 따른 자동차 전진")
+    @CsvSource(value = {"5:8", "5:4", "5:7"}, delimiter = ':')
+    public void positinoTest(int gameCount, int position) {
+        String mileAge = "";
+        for (int i = 0; i < gameCount; i++) {
+            mileAge = ResultView.printMovement(position);
+        }
+        assertThat(mileAge).hasSize(position);
     }
 
     @ParameterizedTest

@@ -1,10 +1,8 @@
 package step3.view;
 
 import step3.domain.Car;
-import step3.domain.CarVo;
 import step3.domain.RacingCar;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class ResultView {
@@ -24,15 +22,15 @@ public class ResultView {
     }
 
     public static void participatingCars(Map<Integer, Car> carInfoMap, int racingCarNumber) {
-
         for (int i = 1; i <= racingCarNumber; i++) {
             Car car = carInfoMap.get(i);
-            String mileAge = car.getMileAge();
+            int carPosition = car.getPosition();
 
             boolean raceResult = RacingCar.receStart(car, i);
-            mileAge += printMovement(raceResult);
+            carPosition += RacingCar.updatePosition(raceResult);
+            String mileAge = printMovement(carPosition);
 
-            car = new RacingCar(car.getCarId(), mileAge);
+            car = new RacingCar(car.getCarId(), carPosition);
             carInfoMap.put(car.getCarId(), car);
 
             System.out.println(mileAge);
@@ -40,11 +38,14 @@ public class ResultView {
         System.out.println();
     }
 
-    public static String printMovement(boolean raceResult) {
-        if (raceResult) {
-            return ACCELATE_SIGN;
+
+
+    public static String printMovement(int position) {
+        String mileAge = "";
+        for (int i = 0; i < position; i++) {
+            mileAge += ACCELATE_SIGN;
         }
-        return BRAKE_SIGN;
+        return mileAge;
     }
 
 }

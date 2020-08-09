@@ -5,19 +5,19 @@ import java.util.Objects;
 public abstract class Car {
 
     private int carId;
-    protected String mileAge;
+    protected int position;
 
     public Car(int carId) {
         this.carId = carId;
-        this.mileAge = "";
+        this.position = 0;
     }
 
     public int getCarId() {
         return carId;
     }
 
-    public String getMileAge() {
-        return mileAge;
+    public int getPosition() {
+        return position;
     }
 
     public boolean accelerate() {
@@ -36,11 +36,11 @@ public abstract class Car {
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
         return carId == car.carId &&
-                Objects.equals(mileAge, car.mileAge);
+                Objects.equals(position, car.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(carId, mileAge);
+        return Objects.hash(carId, position);
     }
 }
