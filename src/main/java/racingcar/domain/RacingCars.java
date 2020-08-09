@@ -5,12 +5,21 @@ import java.util.List;
 
 public class Cars {
 
+    private int carCounts;
+    private int racingCounts;
+
     private List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
+    public List<Integer> allDoRace() {
+        return cars.stream()
+                .mapToInt(c ->new Car(c.getPosition(), ))
+                .list
+    }
+/*
     public List<Integer> raceCars(List<Car> cars, int racingCounts) {
         List<Car> carList = new ArrayList<Car>();
         for (i = 1; i <= racingCounts; i++) {
@@ -19,5 +28,5 @@ public class Cars {
             }
         }
     }
-
+*/
 }
