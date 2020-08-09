@@ -1,5 +1,6 @@
 package racing;
 
+import racing.view.InputView;
 import racing.view.ResultView;
 
 public class Game {
@@ -40,6 +41,17 @@ public class Game {
         for (int i = 0; i < tryCount; i++) {
             play();
         }
+    }
+
+    public static void main(String[] args) {
+        int carCount = InputView.getCarCount();
+        int tryCount = InputView.getTryCount();
+        Random random = new Under10Random();
+
+        Game game = new Game(carCount, tryCount, random);
+
+        game.playAll();
+
     }
 
 }
