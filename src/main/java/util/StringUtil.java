@@ -2,7 +2,7 @@ package util;
 
 import java.util.regex.Pattern;
 
-public class Strings {
+public class StringUtil {
     public static boolean isBlank(String input) {
         return input == null || input.trim().isEmpty();
     }
@@ -12,5 +12,7 @@ public class Strings {
     public static boolean isCalculate(String input) {
         return Pattern.matches("|\\(|\\)|\\+|\\-|\\*|\\/", input);
     }
-
+    public static int StringToInt(String input) {
+        return Integer.parseInt(input);
+    }
 }
