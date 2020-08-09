@@ -1,21 +1,20 @@
 package racingcar;
 
-import racingcar.service.RacingGame;
+import controller.RacingController;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
-import java.util.List;
-
 public class RacingCarApp {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        List<String> racingCarNameList = inputView.getRacingCarNames();
-        int racingRound = inputView.getRacingRound();
 
-        RacingGame racingGame = new RacingGame(racingCarNameList, racingRound);
-        racingGame.start();
+        String racingCarName = InputView.getInputCarName();
+        String racingRound = InputView.getRacingRound();
 
-        ResultView resultView = new ResultView(racingGame.getRacingResults());
-        resultView.displayRacing();
+        RacingController racingController = new RacingController(racingCarName, racingRound);
+        racingController.startRace();
+
+        ResultView resultView = new ResultView(racingController.getRacingResults());
+        resultView.displayRacingResult();
+        resultView.displayWinnersResult();
     }
 }
