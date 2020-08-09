@@ -24,6 +24,7 @@ public class InputView {
 
         RacingGame racingGame = RacingGame.of(carNames, attemptNumber);
 
+        System.out.println();
         scanner.close();
         return racingGame;
     }
