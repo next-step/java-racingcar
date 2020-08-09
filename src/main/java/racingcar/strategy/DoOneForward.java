@@ -1,22 +1,17 @@
 package racingcar.strategy;
 
-import racingcar.Constants;
-
-import java.util.Random;
+import static racingcar.Constants.*;
 
 public class DoOneForward implements DoRace {
 
+    int position;
+    OneForwardCondition oneForwardCondition = new OneForwardCondition();
+
     @Override
-    public int move() {
-        if (forwardOkRandomCondition()) {
-            return Constants.ONE_FORWARD;
+    public int race() {
+        if (oneForwardCondition.pass()) {
+            return position += ONE_FORWARD;
         }
-        return Constants.ZERO_FORWARD;
+        return position += ZERO_FORWARD;
     }
-
-    private static boolean forwardOkRandomCondition(){
-        /* Random Interface?? */
-        return Constants.FORWARD_OK_COND_NUM <= Random.nextInt(Constants.RANDOM_BOUND);
-    }
-
 }
