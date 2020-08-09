@@ -1,16 +1,23 @@
 package racingcar;
 
+import calculator.ExceptionMessage;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
 public class RacingCar extends RacingVehicle {
     private static final int FIRST_ATTEMPT = 0;
+    private static final int NAME_MAX_LENGTH = 5;
 
     private String name;
 
     public RacingCar(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void race(int attemptNumber, CarMover carMover) {
@@ -35,4 +42,9 @@ public class RacingCar extends RacingVehicle {
         record.add(move);
     }
 
+    public static void checkNameValidation(RacingCar racingCar) {
+        if (racingCar.getName().length() > NAME_MAX_LENGTH) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_RACING_CAR_NAME);
+        }
+    }
 }

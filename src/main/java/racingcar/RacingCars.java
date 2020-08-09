@@ -17,4 +17,8 @@ public class RacingCars {
     public int size() {
         return racingCars.size();
     }
+
+    public void checkNameValidation() {
+        racingCars.forEach(RacingCar::checkNameValidation);
+    }
 }

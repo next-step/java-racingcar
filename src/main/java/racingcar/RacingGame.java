@@ -42,5 +42,7 @@ public class RacingGame {
         if (attemptNumber < 1) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_RACING_ATTEMPT_NUMBER);
         }
+
+        racingCars.checkNameValidation();
     }
 }
