@@ -2,6 +2,9 @@ package util;
 
 import exception.ExceptionMessage;
 
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class StringUtils {
 
     public static boolean isBlank(String input) {
@@ -26,16 +29,12 @@ public class StringUtils {
     }
 
     public static String repeat(String string, int repeat) {
-        if (string == null || repeat <= 0) {
+        if (string == null) {
             return "";
         }
 
-        StringBuilder stringBuilder = new StringBuilder(repeat);
-
-        for (int i = 0; i < repeat; ++i) {
-            stringBuilder.append(string);
-        }
-
-        return stringBuilder.toString();
+        return IntStream.range(0, repeat)
+                .mapToObj(i -> string)
+                .collect(Collectors.joining(""));
     }
 }
