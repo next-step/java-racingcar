@@ -14,7 +14,8 @@ public class ResultView {
 
     public void draw(Car car) {
         for (int i = 0; i < car.getMoveCount(); i++) {
-            System.out.println(Util.moveStirng);
+            System.out.print(Util.moveStirng);
         }
+        System.out.println();
     }
 }

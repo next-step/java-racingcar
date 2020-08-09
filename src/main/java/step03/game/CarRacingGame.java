@@ -36,6 +36,7 @@ public class CarRacingGame {
             Car car = cars.get(i);
             resultView.draw(car);
         }
+        System.out.println();
     }
 
     public List<Car> getCars() {
