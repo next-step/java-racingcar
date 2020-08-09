@@ -1,3 +1,5 @@
+package stringCalculator;
+
 public final class ExceptionMessage {
     // private 생성자를 만들면 객체 생성을 막을 수 있다.
     private ExceptionMessage() { }

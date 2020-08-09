@@ -1,3 +1,5 @@
+package stringCalculator;
+
 public class StringCalculator {
     public static String[] split(String input) {
         return input.split(" ");
