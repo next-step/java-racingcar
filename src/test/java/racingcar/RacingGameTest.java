@@ -1,10 +1,15 @@
 package racingcar;
 
+import calculator.ExceptionMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.stream.Stream;
+
+import static org.assertj.core.api.Assertions.*;
 
 class RacingGameTest {
     private static final int ZERO = 0;
@@ -23,26 +28,38 @@ class RacingGameTest {
         assertThat(racingResult.getAttempt()).isEqualTo(attempt);
     }
 
-    @DisplayName("isAvailableGame 메소드 true 반환하는 경우 테스트")
-    @Test
-    void isAvailableGame_true_test() {
-        racingGame = RacingGame.of(3, 1);
-        assertTrue(racingGame.isAvailableGame());
+    @DisplayName("checkAvailableGame 메소드 테스트")
+    @ParameterizedTest
+    @MethodSource("provideGameValidInput")
+    void checkAvailableGame_test(int carNumber, int attemptNumber) {
+        racingGame = RacingGame.of(carNumber, attemptNumber);
 
-        racingGame = RacingGame.of(1000, 22);
-        assertTrue(racingGame.isAvailableGame());
+        assertThatCode(() -> racingGame.checkAvailableGame()).doesNotThrowAnyException();;
     }
 
-    @DisplayName("isAvailableGame 메소드 false 반환하는 경우 테스트")
-    @Test
-    void isAvailableGame_false_test() {
-        racingGame = RacingGame.of(ZERO, ZERO);
-        assertFalse(racingGame.isAvailableGame());
+    @DisplayName("checkAvailableGame 메소드 예외 반환 테스트")
+    @ParameterizedTest
+    @MethodSource("provideGameInvalidInput")
+    void checkAvailableGame_test(int carNumber, int attemptNumber, String exceptionMessage) {
+        racingGame = RacingGame.of(carNumber, attemptNumber);
 
-        racingGame = RacingGame.of(2, ZERO);
-        assertFalse(racingGame.isAvailableGame());
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> racingGame.checkAvailableGame())
+                .withMessage(exceptionMessage);
+    }
 
-        racingGame = RacingGame.of(-1, 33);
-        assertFalse(racingGame.isAvailableGame());
+    private static Stream<Arguments> provideGameValidInput() {
+        return Stream.of(
+                Arguments.of(3, 1),
+                Arguments.of(1000, 22)
+        );
+    }
+
+    private static Stream<Arguments> provideGameInvalidInput() {
+        return Stream.of(
+                Arguments.of(ZERO, ZERO, ExceptionMessage.INVALID_RACING_CAR_NUMBER),
+                Arguments.of(2, ZERO, ExceptionMessage.INVALID_RACING_ATTEMPT_NUMBER),
+                Arguments.of(-1, 33, ExceptionMessage.INVALID_RACING_CAR_NUMBER)
+        );
     }
 }

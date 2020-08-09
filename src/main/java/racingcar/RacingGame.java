@@ -1,5 +1,7 @@
 package racingcar;
 
+import calculator.ExceptionMessage;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +36,13 @@ public class RacingGame {
         return RacingResult.aggregate(attemptNumber, racingCars);
     }
 
-    public boolean isAvailableGame() {
-        return carNumber > 0 && attemptNumber > 0;
+    public void checkAvailableGame() {
+        if (carNumber < 1) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_RACING_CAR_NUMBER);
+        }
+
+        if (attemptNumber < 1) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_RACING_ATTEMPT_NUMBER);
+        }
     }
 }

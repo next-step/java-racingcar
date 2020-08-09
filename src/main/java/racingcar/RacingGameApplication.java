@@ -13,10 +13,9 @@ public class RacingGameApplication {
         InputView inputView = new InputView();
         RacingGame racingGame = inputView.scanRacingGameInfo();
 
-        if (racingGame.isAvailableGame()) {
-            RacingResult racingResult = racingGame.progress();
+        racingGame.checkAvailableGame();
 
-            ResultView.print(racingResult);
-        }
+        RacingResult racingResult = racingGame.progress();
+        ResultView.print(racingResult);
     }
 }
