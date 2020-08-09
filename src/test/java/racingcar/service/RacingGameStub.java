@@ -1,8 +1,6 @@
-package racingcar;
+package racingcar.service;
 
-import racingcar.model.Rule;
-import racingcar.service.RacingGame;
-
+import racingcar.domain.Rule;
 import java.util.List;
 
 public class RacingGameStub extends RacingGame {

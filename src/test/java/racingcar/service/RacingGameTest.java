@@ -1,10 +1,10 @@
-package racingcar;
+package racingcar.service;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.model.RacingRound;
+import racingcar.domain.RacingRound;
 import racingcar.view.InputValidater;
 import racingcar.view.ResultView;
 

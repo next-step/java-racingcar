@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.model.RacingRound;
+import racingcar.domain.RacingRound;
 
 import java.util.List;
 import java.util.stream.Collectors;
