@@ -2,6 +2,7 @@ package step3.model;
 
 public class Car{
     private int position =0;
+    public  static final int MOVE_OR_STOP_VALUE = 4;
 
     public Car(){
 
@@ -14,7 +15,7 @@ public class Car{
     }
 
     public boolean isMove(int movePoint){
-        return movePoint >= 4;
+        return movePoint >= MOVE_OR_STOP_VALUE;
     }
 
     public int getPosition(){

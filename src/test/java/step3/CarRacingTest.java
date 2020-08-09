@@ -18,10 +18,12 @@ public class CarRacingTest {
     @DisplayName("난수 생성 테스트")
     public void createRandom(){
         final int BIG_NUMBER = 10000;
-        CarRacing car = new CarRacing();
+
+        CarRacing car = new CarRacing(1,2);
+        Random random = new Random();
 
         for(int i=0; i< BIG_NUMBER;i++ ){
-            assertThat(car.createRandom(new Random())).isBetween(0,9);
+            assertThat(car.createRandom(random)).isBetween(0,9);
         }
     }
 
@@ -29,8 +31,9 @@ public class CarRacingTest {
     @DisplayName("난수 Mock 테스트 ")
     public void createRandom2(){
         //given
+        final int RANDOM_MAX_VALUE = 10;
         Random random = mock(Random.class);
-        when(random.nextInt()).thenReturn(5);
+        when(random.nextInt(RANDOM_MAX_VALUE)).thenReturn(5);
         CarRacing carRacing = new CarRacing(3,3);
 
         //when
@@ -46,7 +49,7 @@ public class CarRacingTest {
     @DisplayName("numofcar_인풋에러")
     void checkCars(){
         assertThatThrownBy(()->{
-            new CarRacing(0,5);
+            new CarRacing(-1,5);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("numofcar_인풋에러");
     }
@@ -55,7 +58,7 @@ public class CarRacingTest {
     @DisplayName("numoftry_인풋에러")
     void checkTries(){
         assertThatThrownBy(()->{
-            new CarRacing(3,0);
+            new CarRacing(3,-1);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("numoftry_인풋에러");
     }

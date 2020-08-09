@@ -9,11 +9,9 @@ public class CarRacing {
 
     int numOfCars;
     int numOfTries;
-    public Car[] cars;
+    Car[] cars;
+    static final int RANDOM_MAX_VALUE = 10;
 
-    public CarRacing(){
-        this(0,0);
-    }
 
     public CarRacing(int numOfCars, int numOfTries) {
         validate(numOfCars,numOfTries);
@@ -33,12 +31,12 @@ public class CarRacing {
     }
 
     private void checkCars(int numOfCars){
-        if(numOfCars <=0 ){
+        if(numOfCars < 0){
             throw new IllegalArgumentException("numofcar_인풋에러");
         }
     }
     private void checkTries(int numOfTries){
-        if(numOfTries <= 0){
+        if(numOfTries < 0){
             throw new IllegalArgumentException("numoftry_인풋에러");
         }
     }
@@ -52,17 +50,15 @@ public class CarRacing {
     }
 
     void run(Car[] cars){
+        Random random = new Random();
 
         for(int i=0; i< numOfCars;i++){
-            cars[i].move(createRandom(new Random()));
+            cars[i].move(createRandom(random));
         }
     }
 
     public int createRandom(Random random){
-        return random.nextInt(10);
-
-//      createRandom2() 테스트 시,
-//      return random.nextInt();
+        return random.nextInt(RANDOM_MAX_VALUE);
     }
 
 }
