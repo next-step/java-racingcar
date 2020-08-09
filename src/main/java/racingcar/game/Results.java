@@ -1,6 +1,7 @@
 package racingcar.game;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Results {
@@ -20,5 +21,11 @@ public class Results {
 
     public List<Result> getResults() {
         return results;
+    }
+
+    public List<String> getWinners() {
+        int lastStage = this.results.size() - 1;
+        Result result = this.results.get(lastStage);
+        return result.determineWinners();
     }
 }
