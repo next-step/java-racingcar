@@ -5,7 +5,6 @@ import util.StringUtils;
 import java.util.List;
 
 public class RaceRecord {
-    private static final String LINE_SEPARATOR = System.lineSeparator();
     private static final String RACE_TRACK = "-";
     private static final String DELIMITER = " : ";
 
@@ -17,11 +16,15 @@ public class RaceRecord {
         this.record = record;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public int getBy(int attemptTime) {
         return record.get(attemptTime);
     }
 
-    public String getResultByAttempt(int attempt) {
-        return name + " : " + StringUtils.repeat(RACE_TRACK, getBy(attempt));
+    public String getResultStringByAttempt(int attempt) {
+        return name + DELIMITER + StringUtils.repeat(RACE_TRACK, getBy(attempt));
     }
 }

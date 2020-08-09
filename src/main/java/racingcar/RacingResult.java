@@ -27,4 +27,8 @@ public class RacingResult {
     public List<String> getResultByAttempt(int attempt) {
         return raceRecords.getResultByAttempt(attempt);
     }
+
+    public String getWinner(int lastAttempt) {
+        return raceRecords.getWinner(lastAttempt);
+    }
 }
