@@ -4,16 +4,20 @@ import java.util.stream.Stream;
 
 public class OutputView {
 
-    static final private String MOVED_PRINTING = "_";
+    private static final String MOVED_PRINTING = "_";
 
-    static public void printingMovement(int movementCount) {
+    public static void printingMovement(int movementCount) {
         for (int i = 0; i < movementCount; i++) {
             System.out.print(MOVED_PRINTING);
         }
         System.out.println();
     }
 
-    static public void printingNewLine() {
+    public static void printingNewLine() {
         System.out.println();
+    }
+
+    public static void printingText(OutputText outputText) {
+        System.out.println(outputText.getQuestion());
     }
 }
