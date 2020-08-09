@@ -1,6 +1,6 @@
 package step3.view;
 
-import step3.model.Car;
+import step3.model.SetScore;
 
 import java.util.Collections;
 import java.util.List;
@@ -16,20 +16,18 @@ public class OutputView {
         return dashString.append(String.join("", Collections.nCopies(value, DASH_STRING))).toString();
     }
 
-    private static void showDistanceOfCar(List<Car> challengerList) {
-        // For문으로 구성된 내용을 Stream으로 모두 변경 진행
-
-        challengerList.stream()
-                .map(car -> getDashDistance(car.showDistance()))
-                .forEach(System.out::println);
-    }
-
-    public static void runOutputView(List<Car> challengerList) {
-        showDistanceOfCar(challengerList);
-        System.out.println();
-    }
-
-    public static void showOutputViewBanner() {
+    public static void showResultOfGame(List<SetScore> scoreBoard) {
         System.out.println(BANNER_STRING);
+        // For문으로 구성된 내용을 Stream으로 모두 변경 진행
+        for (SetScore setScore : scoreBoard) {
+            showDistanceOfEachGameSet(setScore);
+            System.out.println();
+        }
+    }
+
+    private static void showDistanceOfEachGameSet(SetScore scoreBoard) {
+        for (int loop1 = 0; loop1 < scoreBoard.getNumberOfParticipants(); loop1++) {
+            System.out.println(getDashDistance(scoreBoard.getScoreOfCar(loop1)));
+        }
     }
 }
