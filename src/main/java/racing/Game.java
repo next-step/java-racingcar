@@ -26,7 +26,7 @@ public class Game {
         return tryCount;
     }
 
-    public void play() {
+    void play() {
         for (Car car : cars) {
             if (random.getRandomNumber() >= 4) {
                 car.move();
@@ -34,6 +34,12 @@ public class Game {
         }
 
         ResultView.print(cars);
+    }
+
+    public void playAll() {
+        for (int i = 0; i < tryCount; i++) {
+            play();
+        }
     }
 
 }
