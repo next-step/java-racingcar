@@ -1,6 +1,13 @@
 package racing;
 
 public class Car {
-    private int no;
     private int position;
+
+    public void move() {
+        position++;
+    }
+
+    public int getPosition() {
+        return position;
+    }
 }

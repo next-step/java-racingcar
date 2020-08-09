@@ -26,4 +26,13 @@ class GameTest {
         assertThat(result).isBetween(0, 9);
     }
 
+    @Test
+    @DisplayName("자동차를 전진시킨다")
+    public void move_car() {
+        Car car = new Car();
+        car.move();
+
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
 }
