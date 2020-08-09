@@ -1,16 +1,19 @@
 package racing;
 
-import java.util.Random;
-
 public class Game {
 
-    public static final int RANDOM_MAX = 10;
     private Car[] cars;
     private int tryCount;
+    private racing.Random random;
 
-    public Game(int carCount, int tryCount) {
-        this.cars = new Car[carCount];
+    public Game(int carCount, int tryCount, racing.Random random) {
+        cars = new Car[carCount];
+        for (int i = 0; i < carCount; i++) {
+            cars[i] = new Car();
+        }
+
         this.tryCount = tryCount;
+        this.random = random;
     }
 
     public Car[] getCars() {
@@ -21,8 +24,12 @@ public class Game {
         return tryCount;
     }
 
-    int getRandom() {
-        Random random = new Random();
-        return random.nextInt(RANDOM_MAX);
+    public void play() {
+        for (Car car : cars) {
+            if (random.getRandomNumber() >= 4) {
+                car.move();
+            }
+        }
     }
+
 }
