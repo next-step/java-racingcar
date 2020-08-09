@@ -5,7 +5,7 @@ public class Car {
     private int position;
 
     private final String NAME_TAG_SEPERATOR_SEMICOLLON = ":";
-    private final String NAME_TAG_EMTPY_SPACE = "      ";
+    private final String NAME_TAG_FIXED_SIX_SPACE = "      ";
 
     private Car(String entryName, int position) {
         this.entryName = entryName;
@@ -36,7 +36,7 @@ public class Car {
         StringBuilder nameTag = new StringBuilder();
         int length = entryName.length();
 
-        String newPrefix = NAME_TAG_EMTPY_SPACE.substring(length);
+        String newPrefix = NAME_TAG_FIXED_SIX_SPACE.substring(length);
         nameTag.append(entryName).append(newPrefix);
         nameTag.append(NAME_TAG_SEPERATOR_SEMICOLLON);
 
