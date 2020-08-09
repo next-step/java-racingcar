@@ -1,6 +1,7 @@
 package cc.oakk.racing;
 
 import cc.oakk.racing.predicate.CarForwardCondition;
+import cc.oakk.racing.util.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,27 +16,20 @@ public class RacingGame {
         this.carForwardCondition = carForwardCondition;
     }
 
-    public RacingRound createRound(int totalCarCount, int totalRoundCount) {
-        validateCreateRoundArguments(totalCarCount, totalRoundCount);
+    public RacingRound createRound(List<String> carNames, int totalRoundCount) {
+        validateCreateRoundArguments(carNames, totalRoundCount);
 
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < totalCarCount; i++) {
-            cars.add(createCar());
-        }
+        carNames.forEach(name -> cars.add(createCar(name)));
         return new RacingRound(cars, totalRoundCount);
     }
 
-    private void validateCreateRoundArguments(int totalCarCount, int totalRoundCount) {
-        if (totalCarCount <= 0) {
-            throw new IllegalArgumentException("totalCarCount should be greater than 0.");
-        }
-
-        if (totalRoundCount <= 0) {
-            throw new IllegalArgumentException("totalRoundCount should be greater than 0.");
-        }
+    private void validateCreateRoundArguments(List<String> carNames, int totalRoundCount) {
+        Validator.checkList(carNames);
+        Validator.checkGreaterThanZero(totalRoundCount);
     }
 
-    private Car createCar() {
-        return new Car(carForwardCondition);
+    private Car createCar(String name) {
+        return new Car(name, carForwardCondition);
     }
 }
