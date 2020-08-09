@@ -1,8 +1,7 @@
-package step3.app;
+package domain;
 
-import step3.domain.CarRacingGame;
-import step3.input.InputView;
-import step3.output.ResultView;
+import view.InputView;
+import view.ResultView;
 
 public class CarRacingGameApp {
 

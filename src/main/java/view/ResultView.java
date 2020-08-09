@@ -1,7 +1,7 @@
-package step3.output;
+package view;
 
-import step3.domain.Car;
-import step3.domain.CarRacingRapScore;
+import domain.Car;
+import domain.CarRacingRapScore;
 
 import java.text.MessageFormat;
 import java.util.List;

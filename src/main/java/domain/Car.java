@@ -1,4 +1,4 @@
-package step3.domain;
+package domain;
 
 public class Car implements Cloneable {
 

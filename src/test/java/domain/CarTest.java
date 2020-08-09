@@ -1,9 +1,11 @@
-package step3;
+package domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.domain.Car;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,7 +22,21 @@ public class CarTest {
     @Test
     @DisplayName("현재 위치를 가져온다.")
     public void getPosition() {
-        assertThat(car.getPosition()).isGreaterThanOrEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1,true", "2,false", "3,false"})
+    @DisplayName("위치를 체크한다.")
+    public void checkPosition(int position, boolean result) {
+        assertThat(car.checkPosition(position)).isEqualTo(result);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"jylee"})
+    @DisplayName("자동차 이름을 가져온다.")
+    public void getName(String name) {
+        assertThat(car.getName()).isEqualTo(name);
     }
 
     @Test

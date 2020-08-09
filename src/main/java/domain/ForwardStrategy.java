@@ -1,4 +1,4 @@
-package step3.domain;
+package domain;
 
 @FunctionalInterface
 public interface ForwardStrategy {
