@@ -7,7 +7,7 @@ import static java.util.stream.Collectors.toList;
 
 public class RacingCars {
 
-    List<RacingCar> racingCars;
+    private List<RacingCar> racingCars;
 
     public RacingCars(List<RacingCar> racingCars) {
         this.racingCars = racingCars;
