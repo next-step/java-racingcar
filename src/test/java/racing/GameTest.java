@@ -73,18 +73,4 @@ class GameTest {
         assertThat(game.getCars()[0].getPosition()).isEqualTo(0);
     }
 
-    @Test
-    @DisplayName("자동차 상태를 출력한다")
-    public void print() {
-        // given
-        Game game = new Game(3, 0, () -> 4);
-
-        // when
-        game.play();
-
-        // then
-        game.print();
-
-    }
-
 }

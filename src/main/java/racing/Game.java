@@ -1,5 +1,7 @@
 package racing;
 
+import racing.view.ResultView;
+
 public class Game {
 
     private Car[] cars;
@@ -30,17 +32,8 @@ public class Game {
                 car.move();
             }
         }
-    }
 
-    public void print() {
-        System.out.println("실행결과");
-
-        for (Car car : cars) {
-            for (int i = 0; i < car.getPosition(); i++) {
-                System.out.print("-");
-            }
-            System.out.println();
-        }
+        ResultView.print(cars);
     }
 
 }
