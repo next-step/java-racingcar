@@ -18,4 +18,12 @@ class GameTest {
         assertThat(game.getTryCount()).isEqualTo(3);
     }
 
+    @Test
+    @DisplayName("랜덤한 값을 생성한다")
+    public void create_random_between_1_and_10() {
+        Game game = new Game(0, 0);
+        int result = game.getRandom();
+        assertThat(result).isBetween(0, 9);
+    }
+
 }

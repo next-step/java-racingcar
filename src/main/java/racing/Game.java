@@ -1,7 +1,10 @@
 package racing;
 
+import java.util.Random;
+
 public class Game {
 
+    public static final int RANDOM_MAX = 10;
     private Car[] cars;
     private int tryCount;
 
@@ -16,5 +19,10 @@ public class Game {
 
     public int getTryCount() {
         return tryCount;
+    }
+
+    int getRandom() {
+        Random random = new Random();
+        return random.nextInt(RANDOM_MAX);
     }
 }
