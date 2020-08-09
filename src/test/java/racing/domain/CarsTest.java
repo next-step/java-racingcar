@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import strategy.RandomNumberGenerator;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,23 +28,23 @@ public class CarsTest {
     @DisplayName("레이싱 게임을 위한 자동차가 입력받은 개수만큼 생성되는지 확인한다")
     @Test
     void makeCars() {
-        Cars cars = new Cars(players, new AboveNumberMove(4), new RandomNumberGenerator());
+        Cars cars = new Cars(players, new AboveNumberMove(4, new RandomNumberGenerator()));
 
-        assertThat(cars.getCars()).hasSize(3);
+        assertThat(cars.race()).hasSize(3);
     }
 
     @Test
     void race() {
-        Cars cars = new Cars(players, new AboveNumberMove(0), new RandomNumberGenerator());
+        Cars cars = new Cars(players, () -> true);
 
-        cars.race();
+        List<Car> result = cars.race();
 
-        assertThat(cars.getCars()).extracting(Car::getLocation).containsExactly(1, 1, 1);
+        assertThat(result).extracting(Car::getLocation).containsExactly(1, 1, 1);
     }
 
     @Test
     void getWinner() {
-        Cars cars = new Cars(players, new AboveNumberMove(0), new RandomNumberGenerator());
+        Cars cars = new Cars(players, () -> true);
 
         String winners = cars.getWinners();
 

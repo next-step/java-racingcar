@@ -15,12 +15,11 @@ public class RacingGame {
         Set<String> numberOfCars = InputView.inputNumberOfCar();
         int time = InputView.inputTime();
 
-        Cars cars = new Cars(numberOfCars, new AboveNumberMove(MOVABLE_NUMBER), new RandomNumberGenerator());
+        Cars cars = new Cars(numberOfCars, new AboveNumberMove(MOVABLE_NUMBER, new RandomNumberGenerator()));
 
         ResultView.printResultLine();
         for (int i = 0; i < time; i++) {
-            cars.race();
-            ResultView.printLocations(cars.getCars());
+            ResultView.printLocations(cars.race());
         }
         ResultView.printWinners(cars);
     }

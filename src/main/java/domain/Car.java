@@ -4,15 +4,9 @@ package domain;
 import strategy.MovableStrategy;
 
 public class Car {
-    private String player;
+    private final String player;
     private int location;
-    private MovableStrategy movableStrategy;
-
-    public Car(String player, MovableStrategy movableStrategy) {
-        this.player = player;
-        this.location = 0;
-        this.movableStrategy = movableStrategy;
-    }
+    private final MovableStrategy movableStrategy;
 
     public Car(String player, int location, MovableStrategy movableStrategy) {
         this.player = player;
@@ -20,8 +14,16 @@ public class Car {
         this.movableStrategy = movableStrategy;
     }
 
-    public void move(int randomNumber) {
-        if (movableStrategy.move(randomNumber)) {
+    public static Car of(String player, MovableStrategy movableStrategy) {
+        return new Car(player, 0, movableStrategy);
+    }
+
+    public static Car locationOf(String player, int location, MovableStrategy movableStrategy) {
+        return new Car(player, location, movableStrategy);
+    }
+
+    public void move() {
+        if (movableStrategy.move()) {
             location++;
         }
     }
