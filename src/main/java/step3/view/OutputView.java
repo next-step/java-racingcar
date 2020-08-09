@@ -1,5 +1,6 @@
 package step3.view;
 
+import step3.generator.RandomGenerator;
 import step3.model.Car;
 
 import java.util.Collections;
@@ -18,8 +19,7 @@ public class OutputView {
 
     private void playGame(List<Car> challengerList) {
         // For문으로 구성된 내용을 Stream으로 모두 변경 진행
-        challengerList
-                .forEach(Car::increaseDistanceWithRandom);
+        challengerList.forEach(Car::accelerateCar);
         challengerList.stream()
                 .map(car -> getDashDistance(car.showDistance()))
                 .forEach(System.out::println);
