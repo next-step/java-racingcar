@@ -2,10 +2,7 @@ package racing;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import racing.behavior.CarMovable;
-import racing.behavior.Movable;
 import racing.domain.Car;
 
 import java.util.List;
