@@ -32,4 +32,15 @@ public class Game {
         }
     }
 
+    public void print() {
+        System.out.println("실행결과");
+
+        for (Car car : cars) {
+            for (int i = 0; i < car.getPosition(); i++) {
+                System.out.print("-");
+            }
+            System.out.println();
+        }
+    }
+
 }
