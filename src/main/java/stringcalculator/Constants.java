@@ -10,6 +10,6 @@ public final class Constants {
     /* UI VIEW (Optional) */
     public static final String INSTRUCTION = "Please use Blank between every number & operator";
     public static final String INPUT_CONSOLE = "You want to Calculate :  ";
-    public static final String OUTPUT_CONSOLE = "The Answer is : ";
+    public static final String OUTPUT_CONSOLE = "The Answer is :  \n";
 }
 

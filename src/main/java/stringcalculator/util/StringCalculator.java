@@ -1,7 +1,7 @@
 package stringcalculator.util;
 
 import stringcalculator.Constants;
-import stringcalculator.StringCalOperator;
+import static stringcalculator.StringCalOperator.findOperation;
 
 public class StringCalculator {
     // 입력 문자열의 '숫자' 와 '사칙연산' 사이 반드시, 빈 공백 문자열, final 변수 지정
@@ -18,28 +18,21 @@ public class StringCalculator {
         return applyStrOperator(expression);
     }
 
-    /**
+    private static int toInt(String expression) {
+        return Integer.parseInt(expression);
+    }
+
+    /** 08.10
      * 기존 applyStrOperator refactor 실패원인 : expression과 expression[i] 인자 불일치
      * javajigi님 tip : 인자를 단일 (String expression)으로 복수의 쪼개진 expression에 대해
      * String[] expressions = expression.split(" "); 로 정의
      */
-    public static int reCalculate(String expression) {
-        String[] expressions = expression.split("");
-        int first = toInt(0, expressions);
-        int second = toInt(2, expressions);
-        String operator = expressions[1];
-        return first + second;
-    }
-
-    private static int toInt(int i, String[] expressions) {
-        return Integer.parseInt(expressions[i]);
-    }
 
     private static int applyStrOperator(String expression) {
-        int number = toInt(0, splitBySpace(expression));
-        for (int i = 1; i < splitBySpace(expression).length; i = i + 2) {
-            StringCalOperator strOperation = StringCalOperator.findOperation(splitBySpace(expression)[i]);
-            number = strOperation.applyAsInt(number, toInt(i + 1, splitBySpace(expression)));
+        String[] expressions = expression.split(" ");
+        int number = toInt(expressions[0]);
+        for (int i = 1; i < expressions.length; i = i + 2) {
+            number = findOperation(expressions[i]).applyAsInt(number, toInt(expressions[i+1]));
         }
         return number;
     }
@@ -48,9 +41,6 @@ public class StringCalculator {
         return expression == null || expression.isEmpty();
     }
 
-    private static String[] splitBySpace(String expression){
-        return expression.split(" ");
-    }
 
 }
 
