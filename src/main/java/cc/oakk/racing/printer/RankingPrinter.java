@@ -4,9 +4,12 @@ import cc.oakk.racing.Car;
 import cc.oakk.racing.Ranking;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RankingPrinter extends StringPrinter<Ranking> {
     private static final String DELIMITER = ", ";
+    private static final String PREFIX = "";
+    private static final String SUFFIX = "가 최종 우승했습니다.";
 
     @Override
     public void print(Ranking source) {
@@ -14,18 +17,9 @@ public class RankingPrinter extends StringPrinter<Ranking> {
             throw new IllegalArgumentException("Ranking's size is below 0.");
         }
 
-        StringBuilder builder = new StringBuilder();
         List<Car> winners = source.getWinner();
-        winners.forEach(car -> builder.append(car.getName())
-            .append(DELIMITER));
+        String joinedResult = winners.stream().map(Car::getName).collect(Collectors.joining(DELIMITER, PREFIX, SUFFIX));
 
-        deleteDelimiter(builder)
-            .append("가 최종 우승했습니다.");
-
-        stringPrinter.print(builder.toString());
-    }
-
-    private StringBuilder deleteDelimiter(StringBuilder builder) {
-        return builder.delete(builder.length() - DELIMITER.length(), builder.length());
+        stringPrinter.print(joinedResult);
     }
 }
