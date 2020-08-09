@@ -47,10 +47,6 @@ public class Car implements Printable<Car>, Comparable<Car> {
     @Override
     public int compareTo(Car target) {
         int targetDistance = target.getMovedDistance();
-
-        if (movedDistance == targetDistance) {
-            return 0;
-        }
-        return movedDistance > targetDistance ? 1 : -1;
+        return movedDistance - targetDistance;
     }
 }
