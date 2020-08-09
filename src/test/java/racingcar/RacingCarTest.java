@@ -9,6 +9,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class RacingCarTest {
     private static final int ATTEMPT_NUMBER = 4;
+    private static final int ATTEMPT_NUMBER_ZERO = 0;
 
     private RacingCar racingCar;
 
@@ -34,5 +35,18 @@ class RacingCarTest {
         assertThat(racingCar.getRaceRecord()).isNotNull();
         // racingCar의 raceRecord가 마지막 attempt까지 잘 생성되었는지 확인
         assertThat(racingCar.getRaceRecord().getBy(ATTEMPT_NUMBER - 1)).isNotNull();
+    }
+
+    @DisplayName("race 메소드 - raceRecord 생성 테스트")
+    @Test
+    void race_test() {
+        racingCar.race(ATTEMPT_NUMBER_ZERO);
+
+        // racingCar의 raceRecord가 빈 리스트로 생성되었는지 확인
+        assertThat(racingCar.getRaceRecord()).isNotNull();
+        // racingCar의 raceRecord가
+        assertThatExceptionOfType(IndexOutOfBoundsException.class)
+                .isThrownBy(() -> racingCar.getRaceRecord().getBy(ATTEMPT_NUMBER_ZERO))
+                .withMessageMatching("Index: \\d+, Size: \\d+");
     }
 }

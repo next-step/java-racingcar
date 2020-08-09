@@ -10,9 +10,9 @@ class RacingGameTest {
     private static final int ZERO = 0;
     private RacingGame racingGame;
 
-    @DisplayName("race 메소드 테스트")
+    @DisplayName("progress 메소드 테스트")
     @Test
-    void race_test() {
+    void progress_test() {
         int car = 3;
         int attempt = 5;
 
