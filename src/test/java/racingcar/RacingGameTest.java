@@ -1,6 +1,6 @@
 package racingcar;
 
-import calculator.ExceptionMessage;
+import exception.ExceptionMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

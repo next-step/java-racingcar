@@ -1,6 +1,6 @@
 package util;
 
-import calculator.ExceptionMessage;
+import exception.ExceptionMessage;
 
 public class StringUtils {
 

@@ -1,4 +1,4 @@
-package calculator;
+package exception;
 
 public class ExceptionMessage {
 

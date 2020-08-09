@@ -1,6 +1,6 @@
 package racingcar;
 
-import calculator.ExceptionMessage;
+import exception.ExceptionMessage;
 
 import java.util.ArrayList;
 import java.util.List;
