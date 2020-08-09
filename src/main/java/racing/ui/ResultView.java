@@ -17,7 +17,7 @@ public class ResultView {
 
     private void printRaceRecord(RaceRecord raceRecord) {
         System.out.println("RACE :: " + raceRecord.getRaceId());
-        raceRecord.getTrackRecord().stream()
+        raceRecord.getTrackRecords().stream()
                 .map(r -> StringUtil.makeRepeatString(r, RAIL_STRING))
                 .forEach(System.out::println);
     }

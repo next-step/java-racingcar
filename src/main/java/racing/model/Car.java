@@ -10,8 +10,8 @@ public class Car {
         this.location = location;
     }
 
-    public void go(boolean canGo) {
-        if (canGo) {
+    public void go(boolean isMovable) {
+        if (isMovable) {
             location++;
         }
     }

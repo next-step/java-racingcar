@@ -18,6 +18,8 @@ public class CarRacing {
     public static final int RANDOM_STANDARD = 4;
 
     public CarRacing(int carNumber, int times) {
+        validateParameter(carNumber, times);
+
         this.cars = new ArrayList<>();
         this.raceRecords = new ArrayList<>();
         this.times = times;
@@ -27,8 +29,8 @@ public class CarRacing {
         }
     }
 
-    public void start() {
-        for (int i = 0; i < times; i++) {
+    public void run() {
+        for (int i = 1; i <= times; i++) {
             step(i);
         }
     }
@@ -38,14 +40,14 @@ public class CarRacing {
             car.go(isMovable());
         }
 
-        raceRecords.add(new RaceRecord(raceNumber, makeRaceTrace()));
+        raceRecords.add(new RaceRecord(raceNumber, makeTrackRecords()));
     }
 
     private boolean isMovable(){
         return RandomUtil.randomInt(RANDOM_BOUND) >= RANDOM_STANDARD;
     }
 
-    private List<Integer> makeRaceTrace() {
+    private List<Integer> makeTrackRecords() {
         return cars.stream()
                 .map(Car::getLocation)
                 .collect(Collectors.toList());
@@ -53,6 +55,16 @@ public class CarRacing {
 
     public List<RaceRecord> getRaceRecords() {
         return raceRecords;
+    }
+
+    private void validateParameter(int carNumber, int times) {
+        if (carNumber <= 0) {
+            throw new IllegalArgumentException("경주 자동차는 한대 이상이어야 합니다");
+        }
+
+        if (times <= 0) {
+            throw new IllegalArgumentException("경기 횟수는 1회 이상이어야 합니다.");
+        }
     }
 
 }
