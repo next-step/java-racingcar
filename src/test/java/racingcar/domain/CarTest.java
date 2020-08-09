@@ -39,7 +39,7 @@ class CarTest {
                 .isOne();
     }
 
-    @DisplayName("Car 전지하지 않는 경우 테스트")
+    @DisplayName("Car 전진하지 않는 경우 테스트")
     @ParameterizedTest
     @ValueSource(strings = {"유재석"})
     void carStopTest(String name) {
