@@ -3,6 +3,7 @@ import racingcar.strategy.DoRace;
 import racingcar.strategy.RaceCondition;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,9 +24,10 @@ public class RacingCars {
         return carList;
     }
 
+
     public List<Integer> allDoRace(int carCounts, int racingCounts) {
         this.carList = new ArrayList<>(carCounts);
-        List<Integer> resultList = new ArrayList<>( );
+        List<Integer> resultList = Arrays.asList(0);
 
         if (racingCounts == 0) {
             return resultList;
@@ -50,4 +52,4 @@ public class RacingCars {
             }
         }
     }
-*
+*/
