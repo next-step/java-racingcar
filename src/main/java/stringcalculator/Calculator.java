@@ -4,16 +4,19 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Calculator {
-    public String[] inputExpression() {
+    public String input() {
         Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine().split(" ");
+        return scanner.nextLine();
     }
 
-    public int calculate(String[] expressions) {
-        if (isNullOrBlank(expressions[0])) {
+    public int calculate(String input) {
+        if (isNullOrBlank(input)) {
             throw new IllegalArgumentException("입력 값이 공백 문자열이거나 null 입니다.");
         }
+        String[] expressions = input.split(" ");
+
         int firstOperand = Integer.parseInt(expressions[0]);
+
         for (int i = 1; i < expressions.length; i = i + 2) {
             firstOperand = calculate(firstOperand, Integer.parseInt(expressions[i + 1]), expressions[i].toString());
         }
