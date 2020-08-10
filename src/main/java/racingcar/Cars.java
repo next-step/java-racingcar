@@ -1,7 +1,9 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Cars {
@@ -11,21 +13,20 @@ public class Cars {
         makeCars(carCount);
     }
 
-    public Stream<Car> stream(){
-        return cars.stream();
+    public List<Car> carList() {
+        return Collections.unmodifiableList(cars);
     }
 
     public void makeCars(int carCount) {
-        cars = new ArrayList<>();
-        for(int i = 0; i< carCount; i++){
-            cars.add(new Car());
-        }
+        cars = Stream.generate(() -> new Car())
+                .limit(carCount)
+                .collect(Collectors.toList());
     }
 
-    public void moveCars(){
-        for(Car car : cars){
+    public void moveCars() {
+        cars.forEach(car -> {
             int random = RacingGame.randomNumber();
             car.move(random);
-        }
+        });
     }
 }

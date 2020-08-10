@@ -10,13 +10,13 @@ public class Car {
         this.statusLine = STATUS_LINE;
     }
 
-    public void move(int random){
-        if(MIN_RANDOM_NUMBER < random){
+    public void move(int random) {
+        if (MIN_RANDOM_NUMBER < random) {
             statusLine++;
         }
     }
 
-    public int getStatusLine(){
+    public int getStatusLine() {
         return statusLine;
     }
 
