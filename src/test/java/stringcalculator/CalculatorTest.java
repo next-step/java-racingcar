@@ -3,6 +3,8 @@ package stringcalculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -32,6 +34,16 @@ class CalculatorTest {
             calculator.calculate(" ");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력 값이 공백 문자열이거나 null 입니다.");
+    }
+
+    @ParameterizedTest
+    @DisplayName("올바른 사칙 연산 기호가 아닌 경우")
+    @ValueSource(strings = {"2 + 3 * 4 # 2"})
+    public void isNotValidOperator(String input) {
+        assertThatThrownBy(() -> {
+            calculator.calculate(input);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("사칙연산 기호가 아닙니다.");
     }
 
 
