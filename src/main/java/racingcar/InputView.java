@@ -11,7 +11,7 @@ public class InputView {
         this.scanner = new Scanner(System.in);
     }
 
-    public GameInputs createUserArgument() {
+    public GameInputs createGameInputs() {
         System.out.println(Messages.INPUT_FOR_NAME_OF_CARS.valueOf());
         String line = this.scanner.nextLine();
 
