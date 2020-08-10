@@ -4,23 +4,25 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import racingcar.common.ExceptionMessage;
 
 public class CarNames {
-    private final static String nameValuePattern = "[^,]+([,][^,]+)*";
+    private final static String NAME_VALUE_PATTERN = "[^,]+([,][^,]+)*";
+    private final static String DELIMITER = ",";
     private List<CarName> names;
 
     private CarNames(String nameValue) {
         validate(nameValue);
 
-        this.names = Stream.of(nameValue.split(","))
+        this.names = Stream.of(nameValue.split(DELIMITER))
                 .map(name -> CarName.newInstance(name))
                 .collect(Collectors.toList());
     }
 
     private void validate(String nameValue) {
 
-        if (!Pattern.matches(nameValuePattern, nameValue)) {
-            throw new IllegalArgumentException("[" + nameValue + "]잘못된 입력입니다.");
+        if (!Pattern.matches(NAME_VALUE_PATTERN, nameValue)) {
+            throw new IllegalArgumentException(ExceptionMessage.WRONG_CAR_NAMES.buildMessage(nameValue));
         }
     }
 

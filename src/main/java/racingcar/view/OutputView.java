@@ -8,7 +8,7 @@ import java.util.List;
 
 public class OutputView {
     public static void printResults(Results results) {
-        System.out.println("실행 결과");
+        DisplayText.OUTPUT_RESULT_TITLE.printMessage();
         List<Result> gameResult = results.getResults();
         gameResult.forEach(result -> {
             printResult(result);
@@ -25,6 +25,6 @@ public class OutputView {
 
     private static void printWinners(Results results) {
         String winners = StringUtils.join(results.getWinners(), ", ");
-        System.out.println(winners + "가 최종 우승했습니다.");
+        DisplayText.OUTPUT_RESULT_WINNER.printMessage(winners);
     }
 }

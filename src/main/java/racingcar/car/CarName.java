@@ -1,6 +1,7 @@
 package racingcar.car;
 
 import org.apache.commons.lang3.StringUtils;
+import racingcar.common.ExceptionMessage;
 
 public class CarName {
     private static int MAXIMUM_SIZE = 5;
@@ -13,7 +14,7 @@ public class CarName {
 
     private void validate(String name) {
         if (StringUtils.isBlank(name) || name.length() > MAXIMUM_SIZE) {
-            throw new IllegalArgumentException("[" + name + "]잘못된 자동차 이름입니다. 1~5자의 이름을 입력하세요.");
+            throw new IllegalArgumentException(ExceptionMessage.WRONG_CAR_NAME.buildMessage(name));
         }
     }
 
