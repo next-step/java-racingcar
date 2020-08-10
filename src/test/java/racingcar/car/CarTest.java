@@ -28,7 +28,7 @@ class CarTest {
 
         //then
         int expected = 0;
-        assertEquals(0, car.getPosition());
+        assertEquals(expected, car.getPosition());
     }
 
     @DisplayName("power가 4 이상이면 전진")

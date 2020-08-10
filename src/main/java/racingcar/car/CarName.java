@@ -3,6 +3,7 @@ package racingcar.car;
 import org.apache.commons.lang3.StringUtils;
 
 public class CarName {
+    private static int MAXIMUM_SIZE = 5;
     private String name;
 
     private CarName(String name) {
@@ -11,7 +12,7 @@ public class CarName {
     }
 
     private void validate(String name) {
-        if (StringUtils.isBlank(name) || name.length() > 5) {
+        if (StringUtils.isBlank(name) || name.length() > MAXIMUM_SIZE) {
             throw new IllegalArgumentException("[" + name + "]잘못된 자동차 이름입니다. 1~5자의 이름을 입력하세요.");
         }
     }
