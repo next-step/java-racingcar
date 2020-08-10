@@ -11,6 +11,9 @@ public class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
 
+    private InputView() {
+    }
+
     public static int getNumberOfCars() {
         System.out.println(QUESTION_NUMBER_OF_CARS);
         final int numberOfCars = scanner.nextInt();

@@ -8,6 +8,9 @@ public class ResultView {
     private static final String RACING_END_MESSAGE = "실행 결과";
     private static final String DISPLAY_MOVEMENT = "-";
 
+    private ResultView() {
+    }
+
     public static void printRacingGameResult() {
         System.out.println(RACING_END_MESSAGE);
     }
