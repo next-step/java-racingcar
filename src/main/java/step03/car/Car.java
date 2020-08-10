@@ -10,13 +10,22 @@ package step03.car;
 public class Car {
 
     private int moveCount = 0;
+    private final String carName;
     private static final int moveStandard = 4;
+
+    public Car(String carName) {
+        this.carName = carName;
+    }
 
     public void AdvanceOneSpace(int moveCount) {
 
         if (moveCount >= moveStandard) {
             this.moveCount += 1;
         }
+    }
+
+    public String getCarName() {
+        return carName;
     }
 
     public int getMoveCount() {

@@ -12,11 +12,11 @@ import java.util.List;
  */
 public class CarCenter {
 
-    public List<Car> makingCar(int carNum) {
+    public List<Car> makingCar(String[] carNum) {
 
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carNum; i++) {
-            cars.add(new Car());
+        for (int i = 0; i < carNum.length; i++) {
+            cars.add(new Car(carNum[i]));
         }
 
         return cars;
