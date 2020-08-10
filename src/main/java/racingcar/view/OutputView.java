@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static java.lang.System.out;
-import static racingcar.racing.Racing.moveCarForward;
 
 public class OutputView {
     public static void printCarStatus(List<Car> cars) {
@@ -36,13 +35,8 @@ public class OutputView {
         out.println(winnerMessage + "(이)가 최종 우승했습니다.");
     }
 
-    public static void resultView(List<Car> cars, int tryCount) {
+    public static void resultView(List<Car> cars) {
         out.println("실행 결과");
-        for(int i=0; i < tryCount; i++) {
-            cars = moveCarForward(cars);
-            printCarStatus(cars);
-            out.println();
-        }
         int maxStatus = getWinnerStatus(cars);
         printRacingWinner(cars, maxStatus);
     }

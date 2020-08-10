@@ -41,6 +41,6 @@ class OutputViewTest {
 
     @Test
     void 실행_결과출력_성공() {
-        resultView(cars, 5);
+        resultView(cars);
     }
 }
