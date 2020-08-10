@@ -23,7 +23,8 @@ public class Car {
         this.distance++;
     }
 
-    public void accelerateCar() {
+    public void accelerateCar(MovementStrategy tmpStrategy) {
+        this.movement = tmpStrategy;
         if (movement.movementAction()) {
             increaseDistance();
         }
