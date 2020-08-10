@@ -1,5 +1,6 @@
 package racingcar.game;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.car.CarNames;
@@ -13,15 +14,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ResultsTest {
 
+    private Results results;
+    private Cars cars;
+
+    @BeforeEach
+    void setUp() {
+        results = Results.newInstance();
+        String nameValues = "pobi,crong,honux";
+        CarNames carNames = CarNames.newInstance(nameValues);
+        cars = Cars.newInstance(carNames, new FixedGoPowerEngine());
+    }
+
     @DisplayName("한 라운드 결과 추가")
     @Test
     void addResult() {
-        //given
-        Results results = Results.newInstance();
-        String nameValues = "pobi,crong,honux";
-        CarNames carNames = CarNames.newInstance(nameValues);
-        Cars cars = Cars.newInstance(carNames, new FixedGoPowerEngine());
-
         //when
         results.add(Result.newInstance(cars));
 
@@ -35,10 +41,6 @@ class ResultsTest {
     @Test
     void getWinnerList() {
         //given
-        Results results = Results.newInstance();
-        String nameValues = "pobi,crong,honux";
-        CarNames carNames = CarNames.newInstance(nameValues);
-        Cars cars = Cars.newInstance(carNames, new FixedGoPowerEngine());
         cars.move();
 
         //when
