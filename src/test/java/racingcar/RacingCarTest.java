@@ -22,6 +22,8 @@ public class RacingCarTest {
      */
 
 
+    RacingCar RacingCar = new RacingCar();
+
     @ParameterizedTest
     @CsvSource(value={"3:3", "5:5"}, delimiter = ':')
     public void 레이싱_결과가져오기(int racingTurn, int expected) {
@@ -46,8 +48,8 @@ public class RacingCarTest {
     }
 
     @Test
-    public void 얼마나갈지(){
-        assertThat(RacingCar.run()).isStrictlyBetween(0, 9);
+    public void 얼마나갈지() {
+        assertThat(RacingCar.run()).isStrictlyBetween(-1, 10);
     }
 
 
