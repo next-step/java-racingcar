@@ -1,6 +1,6 @@
-package step3;
+package step4;
 
-import step3.dto.Car;
+import step4.dto.Car;
 
 import java.util.Random;
 
@@ -10,7 +10,6 @@ public class MoveCar {
     private static final int MOVE_CRITERION_UNDER_4 = 4;
 
     public static boolean moveCondition(Car car) {
-
         int randomVal = new Random().nextInt(RANDOM_MAXIMUM_BOUND);
 
         if(randomVal < MOVE_CRITERION_UNDER_4) {
@@ -18,7 +17,6 @@ public class MoveCar {
         }
 
         car.movePosition();
-
         return true;
     }
 
