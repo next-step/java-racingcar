@@ -10,7 +10,8 @@ public class CarRacing {
     int numOfCars;
     int numOfTries;
     Car[] cars;
-    static final int RANDOM_MAX_VALUE = 10;
+    int[][] recordCarMove;
+    final int RANDOM_MAX_VALUE = 10;
 
 
     public CarRacing(int numOfCars, int numOfTries) {
@@ -18,7 +19,7 @@ public class CarRacing {
         this.numOfCars = numOfCars;
         this.numOfTries = numOfTries;
         cars= new Car[numOfCars];
-
+        recordCarMove = new int[numOfTries][numOfCars];
 
         for(int i=0; i< cars.length;i++){
             cars[i] = new Car();
@@ -42,18 +43,19 @@ public class CarRacing {
     }
 
 
-    public void gameStart(){
+    public int[][] gameStart(){
         for(int i=0; i< numOfTries;i++){
-            run(cars);
-            ResultView.resultShow(cars);
+            run(i,cars);
         }
+        return recordCarMove;
     }
 
-    void run(Car[] cars){
+    void run(int tries, Car[] cars){
         Random random = new Random();
 
         for(int i=0; i< numOfCars;i++){
             cars[i].move(createRandom(random));
+            recordCarMove[tries][i] =cars[i].getPosition();
         }
     }
 
