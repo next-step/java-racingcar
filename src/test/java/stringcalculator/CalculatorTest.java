@@ -4,8 +4,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -44,6 +46,34 @@ class CalculatorTest {
             calculator.calculate(input);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("사칙연산 기호가 아닙니다.");
+    }
+
+    @ParameterizedTest
+    @DisplayName("덧셈")
+    @CsvSource(value = {"1 + 2 : 3", "4 + 2 : 6"}, delimiter = ':')
+    public void add(String input, int result) {
+        assertThat(calculator.calculate(input)).isEqualTo(result);
+    }
+
+    @ParameterizedTest
+    @DisplayName("뺄셈")
+    @CsvSource(value = {"5 - 3 : 2", "7 - 2 : 5"}, delimiter = ':')
+    public void subtract(String input, int result) {
+        assertThat(calculator.calculate(input)).isEqualTo(result);
+    }
+
+    @ParameterizedTest
+    @DisplayName("곱셈")
+    @CsvSource(value = {"4 * 2 : 8", "3 * 3 : 9"}, delimiter = ':')
+    public void multiple(String input, int result) {
+        assertThat(calculator.calculate(input)).isEqualTo(result);
+    }
+
+    @ParameterizedTest
+    @DisplayName("나눗셈")
+    @CsvSource(value = {"16 / 2 : 8", "6 / 3 : 2"}, delimiter = ':')
+    public void divide(String input, int result) {
+        assertThat(calculator.calculate(input)).isEqualTo(result);
     }
 
 
