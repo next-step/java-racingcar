@@ -12,9 +12,9 @@ import java.util.List;
  */
 public class CarCenter {
 
-    public List<Car> makingCar(String[] carNum) {
+    public List<Car> makingCar(final String[] carNum) {
 
-        List<Car> cars = new ArrayList<>();
+        final List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carNum.length; i++) {
             cars.add(new Car(carNum[i]));
         }

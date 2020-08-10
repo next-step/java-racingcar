@@ -19,10 +19,10 @@ import java.util.Scanner;
 public class InputView {
 
     public static void main(String[] args) {
-        Scanner input = Util.input();
+        final Scanner input = Util.input();
 
         System.out.println(Util.WHATYOURNAME);
-        String[] carName = input.nextLine().split(",");
+        final String[] carName = input.nextLine().split(",");
         for (int i = 0; i< carName.length; i++) {
             System.out.println(carName[i]);
         }
@@ -31,12 +31,12 @@ public class InputView {
         int tryNum = input.nextInt();
         System.out.println(Util.RESULT);
 
-        InputView inputView = new InputView();
+        final InputView inputView = new InputView();
 
-        CarCenter carCenter = new CarCenter();
-        List<Car> cars = carCenter.makingCar(carName);
+        final CarCenter carCenter = new CarCenter();
+        final List<Car> cars = carCenter.makingCar(carName);
 
-        CarRacingGame carRacingGame = new CarRacingGame();
+        final CarRacingGame carRacingGame = new CarRacingGame();
         while (tryNum-- > 0) {
             carRacingGame.racing(cars, new CalculatorRandomScore());
         }

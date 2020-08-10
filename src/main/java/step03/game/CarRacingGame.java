@@ -17,20 +17,21 @@ public class CarRacingGame {
 
     private List<Car> cars;
 
-    public void racing(List<Car> cars, ScoreCalculate scoreCalculate) {
+    public void racing(final List<Car> cars, final ScoreCalculate scoreCalculate) {
 
         for (int i = 0; i < cars.size(); i++) {
 
-            int randomNum = scoreCalculate.calculateScore();
+            final int randomNum = scoreCalculate.calculateScore();
             cars.get(i).AdvanceOneSpace(randomNum);
-            this.cars = cars;
 
             drawScoreBard();
+
+            this.cars = cars;
         }
     }
 
     public void drawScoreBard() {
-        ResultView resultView = new ResultView();
+        final ResultView resultView = new ResultView();
 
         for (int i = 0; i < cars.size(); i++) {
             Car car = cars.get(i);

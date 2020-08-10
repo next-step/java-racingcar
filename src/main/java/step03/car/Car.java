@@ -13,11 +13,11 @@ public class Car {
     private final String carName;
     private static final int moveStandard = 4;
 
-    public Car(String carName) {
+    public Car(final String carName) {
         this.carName = carName;
     }
 
-    public void AdvanceOneSpace(int moveCount) {
+    public void AdvanceOneSpace(final int moveCount) {
         if (moveCount >= moveStandard) {
             this.moveCount += 1;
         }
