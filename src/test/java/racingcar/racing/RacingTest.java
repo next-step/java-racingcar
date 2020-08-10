@@ -8,6 +8,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static racingcar.racing.Racing.*;
+import static racingcar.view.OutputView.resultView;
 
 public class RacingTest {
     @Test

@@ -3,11 +3,9 @@ package racingcar.racing;
 import racingcar.car.Car;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import static java.lang.System.*;
-import static racingcar.random.GenerateRandom.moveCarForward;
-import static racingcar.random.GenerateRandom.randomForward;
-import static racingcar.view.OutputView.printCarStatus;
+import static racingcar.view.OutputView.resultView;
 
 public class Racing {
     public static void racingStart(int carCount, int tryCount) {
@@ -23,12 +21,7 @@ public class Racing {
         return cars;
     }
 
-    public static void resultView(List<Car> cars, int tryCount) {
-        out.println("실행 결과");
-        for(int i=0; i < tryCount; i++) {
-            cars = moveCarForward(cars, randomForward());
-            printCarStatus(cars);
-            out.println();
-        }
+    public static List<Car> moveCarForward(List<Car> cars, int forwardYn) {
+        return cars.stream().peek(car -> car.move(forwardYn)).collect(Collectors.toList());
     }
 }

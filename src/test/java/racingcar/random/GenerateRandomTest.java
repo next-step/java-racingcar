@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.random.GenerateRandom.moveCarForward;
+import static racingcar.racing.Racing.moveCarForward;
 import static racingcar.random.GenerateRandom.randomForward;
 
 class GenerateRandomTest {

@@ -14,9 +14,5 @@ public class GenerateRandom {
         Random random = new Random();
         return random.nextInt(RANDOM_BOUND) > MINIMUM_VALUE ? 1 : 0;
     }
-
-    public static List<Car> moveCarForward(List<Car> cars, int forwardYn) {
-        return cars.stream().peek(car -> car.move(forwardYn)).collect(Collectors.toList());
-    }
 }
 
