@@ -19,6 +19,14 @@ class RacingCarTest {
         racingCar = new RacingCar();
     }
 
+    @ParameterizedTest
+    @DisplayName("setName and getName")
+    @ValueSource(strings = {"pobi", "crong", "honux"})
+    void setNameAndGetName(String name) {
+        racingCar.setName(name);
+        then(racingCar.getName()).isEqualTo(name);
+    }
+
     @Test
     @DisplayName("racord")
     void record() {
