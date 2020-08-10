@@ -15,15 +15,6 @@ public class Car {
         this.powerEngine = powerEngine;
     }
 
-    private Car(PowerEngine powerEngine) {
-        this.position = START_POSITION;
-        this.powerEngine = powerEngine;
-    }
-
-    public static Car newInstance(PowerEngine powerEngine) {
-        return new Car(powerEngine);
-    }
-
     public static Car newInstance(CarName carName, PowerEngine powerEngine) {
         return new Car(carName, powerEngine);
     }
