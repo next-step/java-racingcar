@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -16,6 +17,23 @@ class OperatorTest {
     public void setArguments() {
         this.x = 3;
         this.y = 2;
+    }
+
+    @Test
+    @DisplayName("사칙연산 기호 테스트")
+    void isOperator() {
+        assertThat(Operator.of("+")).isEqualTo(Operator.PLUS);
+        assertThat(Operator.of("-")).isEqualTo(Operator.MINUS);
+        assertThat(Operator.of("*")).isEqualTo(Operator.MULTIPLY);
+        assertThat(Operator.of("/")).isEqualTo(Operator.DIVIDE);
+    }
+
+    @Test
+    @DisplayName("사친연산 기호가 아닌 경우")
+    void isNotOperator() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            Operator operator = Operator.of("!");
+        }).withMessage(ExceptionMessage.NOT_ARITHMETIC_OPERATOR.getMessage());
     }
 
     @Test
