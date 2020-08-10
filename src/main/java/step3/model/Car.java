@@ -1,15 +1,18 @@
 package step3.model;
 
-import java.util.Random;
-
-import static step3.constant.MagicNumber.*;
+import step3.strategy.MovementStrategy;
 
 public class Car {
     private int distance;
-    private static Random rand = new Random();
+    private MovementStrategy movement;
 
     public Car() {
         this.distance = 1;
+    }
+
+    public Car(int initaialDistance, MovementStrategy strategy) {
+        this.distance = initaialDistance;
+        this.movement = strategy;
     }
 
     public int showDistance() {
@@ -20,8 +23,9 @@ public class Car {
         this.distance++;
     }
 
-    public void increaseDistanceWithRandom() {
-        if (rand.nextInt(RANDOM_BOUNDARY) >= CONDITION_FOR_STEP_FORWARD) {
+    public void accelerateCar(MovementStrategy tmpStrategy) {
+        this.movement = tmpStrategy;
+        if (movement.movementAction()) {
             increaseDistance();
         }
     }
