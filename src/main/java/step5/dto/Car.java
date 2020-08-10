@@ -6,6 +6,7 @@ public class Car {
 
     private final String NAME_TAG_SEPERATOR_SEMICOLLON = ":";
     private final String NAME_TAG_FIXED_SIX_SPACE = "      ";
+    private static final int MOVE_CRITERION_UNDER_4 = 4;
 
     private Car(String entryName, int position) {
         this.entryName = entryName;
@@ -16,7 +17,13 @@ public class Car {
         return new Car(entryName, position);
     }
 
-    public void movePosition() {
+    public void moveRound(int diceNumber){
+        if(diceNumber >= MOVE_CRITERION_UNDER_4) {
+            movePosition();
+        }
+    }
+
+    private void movePosition() {
         position++;
     }
 
