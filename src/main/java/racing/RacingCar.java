@@ -1,11 +1,21 @@
-package racingcar;
+package racing.racingcar;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class RacingCar {
 
     int[] racingResult;
+
+    public RacingCar(int racingCount) {
+        RacingCar racingCar = new RacingCar();
+        racingCar.racing(racingCount);
+
+    }
+
+    public RacingCar() {
+
+    }
+
 
     public int[] racing(int racingCount) {
         racingResult = new int[racingCount];

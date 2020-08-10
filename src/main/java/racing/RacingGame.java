@@ -1,8 +1,6 @@
-package racingcar;
+package racing.racingcar;
 
-import java.util.Arrays;
 import java.util.Scanner;
-import java.util.stream.Stream;
 
 public class RacingGame {
 

@@ -1,4 +1,4 @@
-package racingcar;
+package racing.racingcar;
 
 public class ResultView {
 }
