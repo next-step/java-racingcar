@@ -19,6 +19,10 @@ public class Car {
         return status;
     }
 
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     public String getName() { return name; }
 
     public void move() {

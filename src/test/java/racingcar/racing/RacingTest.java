@@ -9,7 +9,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static racingcar.racing.Racing.*;
-import static racingcar.view.OutputView.resultView;
 
 public class RacingTest {
     String[] carsName;
@@ -36,10 +35,5 @@ public class RacingTest {
     @Test
     void 자동차_전진_성공() {
         moveCarForward(cars);
-    }
-
-    @Test
-    void 레이싱_결과_성공() {
-        resultView(cars, 5);
     }
 }
