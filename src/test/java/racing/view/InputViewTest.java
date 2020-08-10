@@ -20,6 +20,6 @@ public class InputViewTest {
     @Test
     void validInputNumberOfAttempt() {
         assertThat(validNumberOfAttempt(0)).isFalse();
-        assertThat(validNumberOfAttempt(5)).isFalse();
+        assertThat(validNumberOfAttempt(5)).isTrue();
     }
 }
