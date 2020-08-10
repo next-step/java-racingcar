@@ -13,8 +13,15 @@ public class RacingCar extends RacingVehicle {
 
     private String name;
 
-    public RacingCar(String name) {
+    private RacingCar(String name) {
         this.name = name;
+    }
+
+    public static RacingCar create(String name) {
+        RacingCar racingCar = new RacingCar(name);
+
+        racingCar.checkNameValidation();
+        return racingCar;
     }
 
     public String getName() {
@@ -43,12 +50,12 @@ public class RacingCar extends RacingVehicle {
         record.add(move);
     }
 
-    public static void checkNameValidation(RacingCar racingCar) {
-        if (racingCar.getName().length() < NAME_MIN_LENGTH) {
+    public void checkNameValidation() {
+        if (this.getName().length() < NAME_MIN_LENGTH) {
             throw new IllegalArgumentException(ExceptionMessage.RACING_CAR_NAME_IS_TOO_SHORT);
         }
 
-        if (racingCar.getName().length() > NAME_MAX_LENGTH) {
+        if (this.getName().length() > NAME_MAX_LENGTH) {
             throw new IllegalArgumentException(ExceptionMessage.RACING_CAR_NAME_IS_TOO_LONG);
         }
     }

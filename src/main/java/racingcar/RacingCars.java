@@ -17,14 +17,6 @@ public class RacingCars {
         racingCars.forEach(racingCar -> racingCar.race(attemptNumber, carMover));
     }
 
-    public int size() {
-        return racingCars.size();
-    }
-
-    public void checkNameValidation() {
-        racingCars.forEach(RacingCar::checkNameValidation);
-    }
-
     public RaceRecords getRaceRecords() {
         return racingCars.stream()
                 .map(RacingVehicle::getRaceRecord)

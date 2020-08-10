@@ -21,8 +21,10 @@ public class RacingGame {
     }
 
     public static RacingGame of(List<String> carNames, int attemptNumber) {
+        checkAvailableGame(carNames, attemptNumber);
+
         RacingCars racingCars = carNames.stream()
-                .map(RacingCar::new)
+                .map(RacingCar::create)
                 .collect(collectingAndThen(toList(), RacingCars::new));
 
         return new RacingGame(racingCars, attemptNumber);
@@ -34,15 +36,13 @@ public class RacingGame {
         return RacingResult.aggregate(attemptNumber, racingCars);
     }
 
-    public void checkAvailableGame() {
-        if (racingCars.size() < 1) {
+    private static void checkAvailableGame(List<String> carNames, int attemptNumber) {
+        if (carNames.size() < 1) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_RACING_CAR_NUMBER);
         }
 
         if (attemptNumber < 1) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_RACING_ATTEMPT_NUMBER);
         }
-
-        racingCars.checkNameValidation();
     }
 }

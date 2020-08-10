@@ -12,31 +12,19 @@ import java.util.Scanner;
  * @version : 0.0.0
  */
 public class InputView {
-    private Scanner scanner;
+    private static final Scanner scanner = new Scanner(System.in);;
 
-    public InputView() {
-        scanner = new Scanner(System.in);
+    private InputView() {
     }
 
-    public RacingGame scanRacingGameInfo() {
-        List<String> carNames = getCarNumber();
-        int attemptNumber = getAttemptNumber();
-
-        RacingGame racingGame = RacingGame.of(carNames, attemptNumber);
-
-        System.out.println();
-        scanner.close();
-        return racingGame;
-    }
-
-    private List<String> getCarNumber() {
+    public static List<String> getCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String value = scanner.nextLine();
 
         return Arrays.asList(value.split(","));
     }
 
-    private int getAttemptNumber() {
+    public static int getAttemptNumber() {
         System.out.println("시도할 회수는 몇 회 인가요?");
         String value = scanner.nextLine();
 

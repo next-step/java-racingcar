@@ -10,10 +10,8 @@ import racingcar.view.ResultView;
 public class RacingGameApplication {
 
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        RacingGame racingGame = inputView.scanRacingGameInfo();
-
-        racingGame.checkAvailableGame();
+        RacingGame racingGame = RacingGame.of(InputView.getCarNames()
+                ,InputView.getAttemptNumber());
 
         RacingResult racingResult = racingGame.progress(new RandomNumberMover());
         ResultView.print(racingResult);
