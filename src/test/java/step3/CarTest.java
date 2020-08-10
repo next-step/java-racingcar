@@ -29,13 +29,7 @@ public class CarTest {
     @Test
     @DisplayName("Car 객체에 정의된 수행전략에 의해 자동차가 움직이는지 확인 - 임시 true 전략 준 뒤 값이 증가하는지 Test")
     void increate_Car_Distance_with_Randomize() {
-
-        MovementStrategy tmpStrategy = new MovementStrategy() {
-            @Override
-            public boolean movementAction() {
-                return true;
-            }
-        };
+        MovementStrategy tmpStrategy = () -> true;
         challenger = new Car(1, tmpStrategy);
         challenger.accelerateCar();
         assertThat(challenger.showDistance()).isGreaterThan(1);
