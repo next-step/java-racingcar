@@ -10,8 +10,4 @@ public class OutputView {
         }
         System.out.println();
     }
-
-    public static void printingText(String outputText) {
-        System.out.println(outputText);
-    }
 }

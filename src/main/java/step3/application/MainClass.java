@@ -12,12 +12,12 @@ import java.util.stream.Stream;
 public class MainClass {
 
     public static void main(String[] args) {
-        OutputView.printingText(OutputText.CAR_COUNT_VIEW);
+        System.out.println(OutputText.CAR_COUNT_VIEW);
         int inputCarCount = InputScanner.scanInput();
 
-        OutputView.printingText(OutputText.CYCLE_COUNT_VIEW);
+        System.out.println(OutputText.CYCLE_COUNT_VIEW);
         int inputCycleCount = InputScanner.scanInput();
-        OutputView.printingText(OutputText.RESULT_TEXT);
+        System.out.println(OutputText.RESULT_TEXT);
 
         List<Car> cars = Stream.generate(Car::new)
                 .limit(inputCarCount)
