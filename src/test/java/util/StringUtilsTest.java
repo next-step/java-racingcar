@@ -72,7 +72,8 @@ public class StringUtilsTest {
     @DisplayName("반복 문자열 생성 메소드(repeat) - null 문자열 테스트")
     @Test
     void repeat_null_test() {
-        assertThat(StringUtils.repeat(null, 3))
-                .isEqualTo("");
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> StringUtils.repeat(null, 3))
+                .withMessage(ExceptionMessage.INVALID_INPUT_STRING);
     }
 }

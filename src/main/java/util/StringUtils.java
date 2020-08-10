@@ -30,7 +30,7 @@ public class StringUtils {
 
     public static String repeat(String string, int repeat) {
         if (string == null) {
-            return "";
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT_STRING);
         }
 
         return IntStream.range(0, repeat)
