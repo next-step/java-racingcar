@@ -1,4 +1,4 @@
-package step3.domain;
+package domain;
 
 public class Car implements Cloneable {
 
@@ -7,7 +7,14 @@ public class Car implements Cloneable {
     private int position = 1;
 
     public Car(String name) {
+        validateName(name);
         this.name = name;
+    }
+
+    private void validateName(String name) {
+        if(name == null || name.isEmpty() || name.length() > 5) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public Car move(ForwardStrategy forwardStrategy) {

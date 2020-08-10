@@ -1,10 +1,8 @@
-package step3;
+package domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.domain.MoveOneForwardStrategy;
-import step3.domain.ForwardStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,7 +19,7 @@ public class ForwardStrategyTest {
     @Test
     @DisplayName("이동거리를 계산한다.")
     public void getPosition() {
-        assertThat(forwardStrategy.calculateForwardDistance()).isIn(0, 1);
+        assertThat(forwardStrategy.calculateForwardDistance()).isEqualTo(1);
     }
 
 }
