@@ -6,6 +6,7 @@ import java.util.List;
 
 import static java.lang.System.*;
 import static racingcar.random.GenerateRandom.moveCarForward;
+import static racingcar.random.GenerateRandom.randomForward;
 import static racingcar.view.OutputView.printCarStatus;
 
 public class Racing {
@@ -25,7 +26,7 @@ public class Racing {
     public static void resultView(List<Car> cars, int tryCount) {
         out.println("실행 결과");
         for(int i=0; i < tryCount; i++) {
-            cars = moveCarForward(cars);
+            cars = moveCarForward(cars, randomForward());
             printCarStatus(cars);
             out.println();
         }

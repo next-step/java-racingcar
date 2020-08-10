@@ -7,8 +7,16 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 public class GenerateRandom {
-    public static List<Car> moveCarForward(List<Car> cars) {
+    private static final int RANDOM_BOUND = 10;
+    private static final int MINIMUM_VALUE = 3;
+
+    public static int randomForward() {
         Random random = new Random();
-        return cars.stream().peek(car -> car.setStatus(random.nextInt(10) > 3 ? car.getStatus() + 1 : car.getStatus())).collect(Collectors.toList());
+        return random.nextInt(RANDOM_BOUND) > MINIMUM_VALUE ? 1 : 0;
+    }
+
+    public static List<Car> moveCarForward(List<Car> cars, int forwardYn) {
+        return cars.stream().peek(car -> car.move(forwardYn)).collect(Collectors.toList());
     }
 }
+
