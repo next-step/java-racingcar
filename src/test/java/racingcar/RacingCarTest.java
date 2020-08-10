@@ -18,7 +18,7 @@ class RacingCarTest {
 
     @BeforeEach
     void setUp() {
-        racingCar = new RacingCar(NAME);
+        racingCar = RacingCar.create(NAME);
     }
 
     @DisplayName("race 메소드 실행 전 테스트")
@@ -56,9 +56,7 @@ class RacingCarTest {
     @ParameterizedTest
     @ValueSource(strings = {"DD", "LALA", "MOMO", "ab12"})
     void checkNameValidation_valid_test(String name) {
-        RacingCar racingCar = new RacingCar(name);
-
-        assertThatCode(() -> RacingCar.checkNameValidation(racingCar))
+        assertThatCode(() -> RacingCar.checkNameValidation(name))
                 .doesNotThrowAnyException();
     }
 
@@ -66,10 +64,8 @@ class RacingCarTest {
     @ParameterizedTest
     @ValueSource(strings = {"", "DUNDUN", "1234567890"})
     void checkNameValidation_invalid_test(String name) {
-        RacingCar racingCar = new RacingCar(name);
-
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> RacingCar.checkNameValidation(racingCar))
+                .isThrownBy(() -> RacingCar.checkNameValidation(name))
                 .withMessageContaining("자동차 이름은 ");
     }
 }

@@ -36,23 +36,19 @@ class RacingGameTest {
         assertThat(racingResult.getAttempt()).isEqualTo(attempt);
     }
 
-    @DisplayName("checkAvailableGame 메소드 테스트")
+    @DisplayName("of 메소드 테스트")
     @ParameterizedTest
     @MethodSource("provideGameValidInput")
-    void checkAvailableGame_test(List<String> carNames, int attemptNumber) {
-        racingGame = RacingGame.of(carNames, attemptNumber);
-
-        assertThatCode(() -> racingGame.checkAvailableGame()).doesNotThrowAnyException();;
+    void of_test(List<String> carNames, int attemptNumber) {
+        assertThatCode(() -> RacingGame.of(carNames, attemptNumber)).doesNotThrowAnyException();;
     }
 
     @DisplayName("checkAvailableGame 메소드 예외 반환 테스트")
     @ParameterizedTest
     @MethodSource("provideGameInvalidInput")
     void checkAvailableGame_test(List<String> carNames, int attemptNumber, String exceptionMessage) {
-        racingGame = RacingGame.of(carNames, attemptNumber);
-
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> racingGame.checkAvailableGame())
+                .isThrownBy(() ->  RacingGame.of(carNames, attemptNumber))
                 .withMessage(exceptionMessage);
     }
 

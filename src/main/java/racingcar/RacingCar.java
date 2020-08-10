@@ -18,10 +18,9 @@ public class RacingCar extends RacingVehicle {
     }
 
     public static RacingCar create(String name) {
-        RacingCar racingCar = new RacingCar(name);
+        checkNameValidation(name);
 
-        racingCar.checkNameValidation();
-        return racingCar;
+        return new RacingCar(name);
     }
 
     public String getName() {
@@ -50,12 +49,12 @@ public class RacingCar extends RacingVehicle {
         record.add(move);
     }
 
-    public void checkNameValidation() {
-        if (this.getName().length() < NAME_MIN_LENGTH) {
+    public static void checkNameValidation(String name) {
+        if (name.length() < NAME_MIN_LENGTH) {
             throw new IllegalArgumentException(ExceptionMessage.RACING_CAR_NAME_IS_TOO_SHORT);
         }
 
-        if (this.getName().length() > NAME_MAX_LENGTH) {
+        if (name.length() > NAME_MAX_LENGTH) {
             throw new IllegalArgumentException(ExceptionMessage.RACING_CAR_NAME_IS_TOO_LONG);
         }
     }
