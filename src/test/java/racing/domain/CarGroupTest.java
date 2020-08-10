@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racing.view.ResultView;
 
 import java.util.Arrays;
 
@@ -27,13 +28,11 @@ public class CarGroupTest {
 
     @Test
     public void getTopLocation() {
-        carGroup.print(5);
-        carGroup.getTopLocation();
+        Assertions.assertThat(carGroup.getTopLocation()).isEqualTo(0);
     }
     @Test
-    public  void getWinnerNames() {
-        carGroup.print(5);
-        carGroup.getWinnerNames();
+    public void getWinnerNames() {
+        Assertions.assertThat(carGroup.getWinnerNames()).isEqualTo("str, text, java");
     }
 
 }
