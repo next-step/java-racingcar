@@ -4,11 +4,7 @@ import java.util.List;
 
 public class Car {
 
-	List<String> status;
-	
-	public Car() {
-		status = new ArrayList<String>();
-	}
+	private final List<String> status = new ArrayList<String>();
 	
 	public void run(int randomNum) {
 		if(isRunable(randomNum)) {
@@ -18,7 +14,7 @@ public class Car {
 		printStatus();
 	}
 
-	public void printStatus() {
+	private void printStatus() {
 		StringBuilder strStatus = new StringBuilder();
 		
 		status.forEach(strStatus::append);
@@ -26,7 +22,7 @@ public class Car {
 		System.out.println(strStatus.toString());
 	}
 	
-	public boolean isRunable(int randomNum) {
+	private boolean isRunable(int randomNum) {
 		return randomNum >= 4;
 	}
 }

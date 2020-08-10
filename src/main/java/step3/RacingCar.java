@@ -5,10 +5,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class RacingCar {
-	
+	private List<Car> carList = new ArrayList<Car>();
+
 	public List<Car> init(int value) {
-		List<Car> carList = new ArrayList<Car>();
-		
 		for(int i = 0 ; i < value ; i ++) {
 			carList.add(new Car());
 		}
@@ -27,7 +26,7 @@ public class RacingCar {
 	}
 	
 	
-	public int getRandomNum() {
+	private int getRandomNum() {
 		Random random = new Random();		
 		return random.nextInt(10);
 	}
