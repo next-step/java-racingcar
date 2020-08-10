@@ -19,8 +19,7 @@ public class RaceRecords {
     public String getWinner(int lastAttempt) {
         int winnerRecord = raceRecords.stream()
                 .map(raceRecord -> raceRecord.getBy(lastAttempt))
-                .max(Integer::compare)
-                .orElse(0);
+                .reduce(0, Math::max);
 
         return raceRecords.stream()
                 .filter(raceRecord -> raceRecord.getBy(lastAttempt) == winnerRecord)
