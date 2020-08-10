@@ -1,7 +1,7 @@
 package racingcar;
 
 import racingcar.game.RacingGame;
-import racingcar.game.Results;
+import racingcar.game.RacingGameResult;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -11,8 +11,8 @@ public class RacingGameMain {
         int round = InputView.getRound();
 
         RacingGame racingGame = RacingGame.newGame(nameValues, round);
-        Results results = racingGame.go();
+        RacingGameResult racingGameResult = racingGame.go();
 
-        OutputView.printResults(results);
+        OutputView.printResults(racingGameResult);
     }
 }

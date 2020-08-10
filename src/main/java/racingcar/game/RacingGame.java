@@ -18,14 +18,14 @@ public class RacingGame {
         return new RacingGame(nameValues, round);
     }
 
-    public Results go() {
-        Results results = Results.newInstance();
+    public RacingGameResult go() {
+        RacingGameResult racingGameResult = RacingGameResult.newInstance();
 
         for (int i = 0; i < this.round; i++) {
             cars.move();
-            results.add(Result.newInstance(this.cars));
+            racingGameResult.add(RoundResult.newInstance(this.cars));
         }
 
-        return results;
+        return racingGameResult;
     }
 }

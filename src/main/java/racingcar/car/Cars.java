@@ -1,6 +1,7 @@
 package racingcar.car;
 
 import racingcar.engine.PowerEngine;
+import racingcar.game.CarStatus;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,5 +30,11 @@ public class Cars {
         }
 
         return getCars();
+    }
+
+    public List<CarStatus> snapshotStatus() {
+        return this.cars.stream()
+                .map(car -> CarStatus.newInstance(car))
+                .collect(Collectors.toList());
     }
 }

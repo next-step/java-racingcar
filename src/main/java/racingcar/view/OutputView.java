@@ -1,30 +1,34 @@
 package racingcar.view;
 
 import org.apache.commons.lang3.StringUtils;
-import racingcar.game.Result;
-import racingcar.game.Results;
+import racingcar.game.CarStatus;
+import racingcar.game.RoundResult;
+import racingcar.game.RacingGameResult;
 
 import java.util.List;
 
 public class OutputView {
-    public static void printResults(Results results) {
+    public static void printResults(RacingGameResult racingGameResult) {
         DisplayText.OUTPUT_RESULT_TITLE.printMessage();
-        List<Result> gameResult = results.getResults();
-        gameResult.forEach(result -> {
+        List<RoundResult> gameRoundResult = racingGameResult.getRoundResults();
+        gameRoundResult.forEach(result -> {
             printResult(result);
             System.out.println();
         });
 
-        printWinners(results);
+        printWinners(racingGameResult);
     }
 
-    private static void printResult(Result result) {
-        List<String> statusList = result.getStatusList();
-        statusList.forEach(System.out::println);
+    private static void printResult(RoundResult roundResult) {
+        List<CarStatus> statusList = roundResult.getCarStatuses();
+        statusList.forEach(carStatus -> {
+            String printValue = carStatus.getCarName() + " : " + StringUtils.repeat("-", carStatus.getPosition());
+            System.out.println(printValue);
+        });
     }
 
-    private static void printWinners(Results results) {
-        String winners = StringUtils.join(results.getWinners(), ", ");
+    private static void printWinners(RacingGameResult racingGameResult) {
+        String winners = StringUtils.join(racingGameResult.getWinners(), ", ");
         DisplayText.OUTPUT_RESULT_WINNER.printMessage(winners);
     }
 }
