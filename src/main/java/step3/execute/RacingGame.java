@@ -13,15 +13,13 @@ import static step3.view.OutputView.*;
 
 public class RacingGame {
     private List<Car> challengerList;
-    private InputView inputView;
     private List<SetScore> scoreBoard;
+    private int trialCounts;
+    private int numberOfCars;
 
-    public RacingGame() {
-        initializeGame();
-    }
-
-    public void initializeGame() {
-        inputView = new InputView();
+    public RacingGame(int counts, int trials) {
+        this.numberOfCars = counts;
+        this.trialCounts = trials;
     }
 
     public void initializeGameVariable(int numberOfCars, int trialCounts) {
@@ -37,21 +35,24 @@ public class RacingGame {
     public void playGame(int gameSet) {
         // For문으로 구성된 내용을 Stream으로 모두 변경 진행
         challengerList.forEach(Car::accelerateCar);
-        for (int loop = 0; loop < inputView.getNumberOfCars(); loop++) {
+        for (int loop = 0; loop < this.numberOfCars; loop++) {
             scoreBoard.get(gameSet).setScoreOfCar(loop, challengerList.get(loop).showDistance());
         }
     }
 
     public void run() {
         // Input 입력
-        inputView.runInputView();
+        //inputView.runInputView();
         // Game에서 사용하는 변수 초기화
-        initializeGameVariable(inputView.getNumberOfCars(), inputView.getTrialCounts());
-        Stream.iterate(0, i -> i + 1)
-                .limit(inputView.getTrialCounts())
-                .forEach(this::playGame);
+        initializeGameVariable(this.numberOfCars, this.trialCounts);
+        for (int loop = 0; loop < this.trialCounts; loop++) {
+            playGame(loop);
+        }
+        //Stream.iterate(0, i -> i + 1)
+        //        .limit(inputView.getTrialCounts())
+        //        .forEach(this::playGame);
 
         //결과 출력
-        showResultOfGame(scoreBoard);
+        //showResultOfGame(scoreBoard);
     }
 }
