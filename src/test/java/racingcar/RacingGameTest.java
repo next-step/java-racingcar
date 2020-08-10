@@ -16,7 +16,6 @@ import static org.assertj.core.api.Assertions.*;
 
 class RacingGameTest {
     private static final int ZERO = 0;
-    private RacingGame racingGame;
     private List<String> carName;
 
     @BeforeEach
@@ -29,7 +28,7 @@ class RacingGameTest {
     void progress_test() {
         int attempt = 5;
 
-        racingGame = RacingGame.of(carName, attempt);
+        RacingGame racingGame = RacingGame.of(carName, attempt);
         RacingResult racingResult = racingGame.progress(new RandomNumberMover());
 
         assertThat(racingResult).isNotNull();

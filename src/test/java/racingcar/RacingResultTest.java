@@ -54,12 +54,8 @@ class RacingResultTest {
     void getResultByAttempt_test() {
         int testAttempt = 1;
 
-        List<String> isExpectedResultByAttempt = racingCars.getRaceRecords()
-                .getResultByAttempt(testAttempt);
-
         RacingResult racingResult = RacingResult.aggregate(ATTEMPT_NUMBER, racingCars);
-        assertThat(racingResult.getResultByAttempt(testAttempt)).hasSameSizeAs(isExpectedResultByAttempt);
-        assertThat(racingResult.getResultByAttempt(testAttempt).get(0)).isEqualTo(isExpectedResultByAttempt.get(0));
+        assertThat(racingResult.getResultByAttempt(testAttempt)).hasSize(3);
     }
 
     @DisplayName("getWinner 메소드 테스트")
