@@ -22,8 +22,7 @@ class JudgeRacingResultTest {
         entryList.add(car1);
         entryList.add(car2);
 
-        JudgeRacingResult judgeRacingResult = new JudgeRacingResult();
-        List winnerInRaceResult = judgeRacingResult.getWinnerInRaceResult(entryList);
+        List winnerInRaceResult = JudgeRacingResult.getWinnerInRaceResult(entryList);
 
         assertThat(winnerInRaceResult).hasSize(winnerCount);
     }
