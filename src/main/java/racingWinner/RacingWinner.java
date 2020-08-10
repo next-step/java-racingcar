@@ -5,25 +5,16 @@ import java.util.Scanner;
 public class RacingWinner {
 	
 	public static void main(String[] args) {
-		System.out.println("°æÁÖÇÒ ÀÚµ¿Â÷ ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä(ÀÌ¸§Àº ½°Ç¥(,)¸¦ ±âÁØÀ¸·Î ±¸ºĞ).");
+		System.out.println("ê²½ì£¼í•  ìë™ì°¨ ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”(ì´ë¦„ì€ ì‰¼í‘œ(,)ë¥¼ ê¸°ì¤€ìœ¼ë¡œ êµ¬ë¶„).");
 		Scanner scanner = new Scanner(System.in);
 		String carsName = scanner.nextLine();
-		
 		String[] carsNameArray = carsName.split(",");
-		if(!MakeCar.makeCarsCondition(carsNameArray)) {
-			System.out.println("°æÁÖÇÒ ÀÚµ¿Â÷ ÀÌ¸§Àº 5ÀÚ¸¦ ÃÊ°úÇÒ ¼ö ¾÷½À´Ïµğ.");
-			return;
-		}
-		
-		List<Car> cars = MakeCar.makeCars(carsNameArray);
-		System.out.println(cars.size());
-		System.out.println("½ÃµµÇÒ È¸¼ö´Â ¸î È¸ ÀÎ°¡¿ä?");
+		List<Car> cars = MakeCars.makeCars(carsNameArray);
+		System.out.println("ì‹œë„í•  íšŒìˆ˜ëŠ” ëª‡íšŒì¸ê°€ìš”?");
 		int reps = scanner.nextInt();
-		RunOrStop.racing(cars, reps);
-		RunOrStop.getWinner(cars);
-		
+		PrintCar.racing(cars, reps);
+		GetWinners.getWinner(cars);
 	}
-	
 }
 
 
