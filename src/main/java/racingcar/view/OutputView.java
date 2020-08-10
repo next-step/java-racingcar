@@ -11,6 +11,7 @@ public class OutputView {
     public static void printCarStatus(List<Car> cars) {
         cars.forEach(car -> {
             StringBuilder track = new StringBuilder();
+            track.append(car.getName()).append(" : ");
             for(int i=1; i <= car.getStatus(); i++) {
                 track.append("-");
             }

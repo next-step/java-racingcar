@@ -15,9 +15,9 @@ class OutputViewTest {
 
     @BeforeEach
     void init() {
-        cars.add(new Car(1));
-        cars.add(new Car(1));
-        cars.add(new Car(1));
+        cars.add(new Car("애플", 1));
+        cars.add(new Car("삼성", 1));
+        cars.add(new Car("구글", 1));
     }
 
     @Test

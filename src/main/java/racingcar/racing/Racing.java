@@ -9,15 +9,15 @@ import java.util.stream.Collectors;
 import static racingcar.view.OutputView.resultView;
 
 public class Racing {
-    public static void racingStart(int carCount, int tryCount) {
-        List<Car> cars = initCars(carCount);
+    public static void racingStart(String[] carsName, int tryCount) {
+        List<Car> cars = initCars(carsName);
         resultView(cars, tryCount);
     }
 
-    public static List<Car> initCars(int carCount) {
+    public static List<Car> initCars(String[] carsName) {
         List<Car> cars = new ArrayList<>();
-        for(int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+        for(String name : carsName) {
+            cars.add(new Car(name));
         }
         return cars;
     }

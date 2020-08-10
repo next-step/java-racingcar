@@ -1,5 +1,6 @@
 package racingcar.racing;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.car.Car;
 
@@ -11,32 +12,34 @@ import static racingcar.racing.Racing.*;
 import static racingcar.view.OutputView.resultView;
 
 public class RacingTest {
+    String[] carsName;
+    List<Car> cars = new ArrayList<>();
+
+    @BeforeEach
+    void init() {
+        carsName = new String[]{"애플", "삼성", "구글"};
+        cars.add(new Car("애플"));
+        cars.add(new Car("삼성"));
+        cars.add(new Car("구글"));
+    }
+
     @Test
     void 경주시작_임의값_성공(){
-        racingStart(3, 5);
+        racingStart(carsName, 5);
     }
 
     @Test
     void 자동차_초기화_성공() {
-        assertEquals(3, initCars(3).size());
+        assertEquals(3, initCars(carsName).size());
     }
 
     @Test
     void 자동차_전진_성공() {
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car());
-        cars.add(new Car());
-
         moveCarForward(cars);
     }
 
     @Test
     void 레이싱_결과_성공() {
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car());
-        cars.add(new Car());
-        cars.add(new Car());
-
         resultView(cars, 5);
     }
 }

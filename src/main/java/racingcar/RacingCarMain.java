@@ -2,13 +2,14 @@ package racingcar;
 
 
 import static racingcar.racing.Racing.racingStart;
-import static racingcar.view.InputView.getSystemIn;
+import static racingcar.view.InputView.getSystemInInt;
+import static racingcar.view.InputView.getSystemInString;
 
 public class RacingCarMain {
     public static void main(String[] args) {
-        int carCount = getSystemIn("자동차 대수는 몇 대 인가요?");
-        int tryCount = getSystemIn("시도할 회수는 몇 회 인가요?");
+        String[] carsName = getSystemInString("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).").split(",");
+        int tryCount = getSystemInInt("시도할 회수는 몇 회 인가요?");
 
-        racingStart(carCount, tryCount);
+        racingStart(carsName, tryCount);
     }
 }
