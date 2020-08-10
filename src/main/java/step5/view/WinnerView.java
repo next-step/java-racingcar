@@ -6,7 +6,7 @@ import step5.dto.Car;
 import java.util.List;
 import java.util.StringJoiner;
 
-import static step4.TextConstant.TEXT_SHOW_WINNER;
+import static step5.TextConstant.TEXT_SHOW_WINNER;
 
 public class WinnerView {
 
