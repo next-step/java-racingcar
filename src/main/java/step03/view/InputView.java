@@ -37,9 +37,7 @@ public class InputView {
         final List<Car> cars = carCenter.makingCar(carName);
 
         final CarRacingGame carRacingGame = new CarRacingGame();
-        while (tryNum-- > 0) {
-            carRacingGame.racing(cars, new CalculatorRandomScore());
-        }
+        carRacingGame.racing(tryNum, cars, new CalculatorRandomScore());
     }
 
 }
