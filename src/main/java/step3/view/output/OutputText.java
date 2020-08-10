@@ -1,17 +1,10 @@
 package step3.view.output;
 
-public enum OutputText {
-    CAR_COUNT_VIEW("자동차 대수는 몇 대 인가요?"),
-    CYCLE_COUNT_VIEW("시도할 회수는 몇 회 인가요?"),
-    RESULT_TEXT("실행 결과:");
+public class OutputText {
 
-    private final String question;
+    public static final String CAR_COUNT_VIEW = "자동차 대수는 몇 대 인가요?";
+    public static final String CYCLE_COUNT_VIEW = "시도할 회수는 몇 회 인가요?";
+    public static final String RESULT_TEXT = "실행 결과:";
 
-    OutputText(String question) {
-        this.question = question;
-    }
-
-    public String getQuestion() {
-        return this.question;
-    }
+    private OutputText () {}
 }

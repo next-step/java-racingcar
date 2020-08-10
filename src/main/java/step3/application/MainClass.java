@@ -25,9 +25,7 @@ public class MainClass {
 
         for (int i = 0; i < inputCycleCount; i++) {
             cars.forEach(Car::makeCarMove);
-            OutputView.printingNewLine();
+            System.out.println();
         }
-
-
     }
 }

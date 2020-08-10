@@ -9,14 +9,8 @@ public class Car {
     private static final int CAR_GOING_DECISION_POINT = 4;
     private int carMovement = 0;
 
-    private int generateRandomCount() {
-        Random randomGenerator = new Random();
-
-        return randomGenerator.nextInt(10);
-    }
-
     public void makeCarMove() {
-        if (CAR_GOING_DECISION_POINT <= generateRandomCount()) {
+        if (CAR_GOING_DECISION_POINT <= RandomGenerator.generateRandomCount()) {
             this.carMovement++;
         }
         OutputView.printingMovement(this.carMovement);

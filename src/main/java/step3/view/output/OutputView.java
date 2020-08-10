@@ -1,7 +1,5 @@
 package step3.view.output;
 
-import java.util.stream.Stream;
-
 public class OutputView {
 
     private static final String MOVED_PRINTING = "_";
@@ -13,11 +11,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printingNewLine() {
-        System.out.println();
-    }
-
-    public static void printingText(OutputText outputText) {
-        System.out.println(outputText.getQuestion());
+    public static void printingText(String outputText) {
+        System.out.println(outputText);
     }
 }
