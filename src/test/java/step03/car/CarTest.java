@@ -24,7 +24,6 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class CarTest {
 
-
     @ParameterizedTest
     @ValueSource(ints = {4, 4, 6})
     @DisplayName("Car 이동 테스트")

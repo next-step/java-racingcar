@@ -18,7 +18,6 @@ import java.util.Scanner;
  */
 public class InputView {
 
-
     public static void main(String[] args) {
         Scanner input = Util.input();
 
@@ -41,8 +40,6 @@ public class InputView {
         while (tryNum-- > 0) {
             carRacingGame.racing(cars, new CalculatorRandomScore());
         }
-
-
     }
 
 }

@@ -19,7 +19,6 @@ class CarCenterTest {
 
     @Test
     public void makingCarTest() {
-
         int carNum = 3;
 
         List<Car> cars = new ArrayList<>();
@@ -29,4 +28,5 @@ class CarCenterTest {
 
         assertThat(cars.size()).isEqualTo(carNum);
     }
+
 }

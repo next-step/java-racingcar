@@ -24,4 +24,5 @@ public class Util {
     public static Scanner input() {
         return new Scanner(System.in);
     }
+
 }

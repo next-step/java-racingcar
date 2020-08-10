@@ -21,4 +21,5 @@ class CalculatorRandomScoreTest {
 
         assertThat(result).isLessThan(11);
     }
+
 }

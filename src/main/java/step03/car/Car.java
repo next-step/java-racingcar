@@ -18,7 +18,6 @@ public class Car {
     }
 
     public void AdvanceOneSpace(int moveCount) {
-
         if (moveCount >= moveStandard) {
             this.moveCount += 1;
         }
