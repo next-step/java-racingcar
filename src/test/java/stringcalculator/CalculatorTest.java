@@ -76,6 +76,16 @@ class CalculatorTest {
         assertThat(calculator.calculate(input)).isEqualTo(result);
     }
 
+    @ParameterizedTest
+    @DisplayName("0으로 나눈 경우")
+    @ValueSource(strings = {"15 / 0"})
+    public void divideWithZero(String input) {
+        assertThatThrownBy(() -> {
+            calculator.calculate(input);
+        }).isInstanceOf(ArithmeticException.class)
+                .hasMessageContaining("0으로 나눌 수 없습니다.");
+    }
+
 
 
 }
