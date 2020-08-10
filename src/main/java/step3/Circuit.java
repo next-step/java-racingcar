@@ -10,6 +10,7 @@ public class Circuit {
     private final AtomicInteger rounds;
     private List<Car> cars = new ArrayList<>();
 
+
     public Circuit(int count, int rounds) {
         this.count = count;
         this.rounds = new AtomicInteger(rounds);
@@ -27,9 +28,11 @@ public class Circuit {
     }
 
     public void printStatus() {
-        cars.forEach(car -> {
-            System.out.println(car.getMiles());
-        });
+        ResultView.printStatus(cars.stream());
+    }
+
+    int getRounds(){
+        return rounds.get();
     }
 
 }
