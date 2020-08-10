@@ -1,4 +1,4 @@
-package racing.model;
+package racing.car.model;
 
 public class Car {
 
@@ -10,10 +10,8 @@ public class Car {
         this.location = location;
     }
 
-    public void go(boolean isMovable) {
-        if (isMovable) {
-            location++;
-        }
+    public void go() {
+        location++;
     }
 
     public int getId() {

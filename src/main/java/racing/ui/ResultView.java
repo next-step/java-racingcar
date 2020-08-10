@@ -1,7 +1,7 @@
 package racing.ui;
 
-import racing.CarRacing;
-import racing.model.RaceRecord;
+import racing.car.CarRacing;
+import racing.car.model.RaceRecord;
 import racing.util.StringUtil;
 
 import java.util.List;

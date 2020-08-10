@@ -4,7 +4,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.CarRacing;
+import racing.car.CarRacing;
+import racing.car.RandomMovableRule;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -27,7 +28,7 @@ class ResultViewTest {
         System.setErr(new PrintStream(errContent));
 
         resultView = new ResultView();
-        carRacing = new CarRacing(3, 3);
+        carRacing = new CarRacing(3, 3, new RandomMovableRule());
         carRacing.run();
     }
 

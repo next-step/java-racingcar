@@ -1,8 +1,7 @@
-package racing;
+package racing.car;
 
-import racing.model.Car;
-import racing.model.RaceRecord;
-import racing.util.RandomUtil;
+import racing.car.model.Car;
+import racing.car.model.RaceRecord;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,16 +12,15 @@ public class CarRacing {
     private List<Car> cars;
     private int times;
     private List<RaceRecord> raceRecords;
+    private MovableRule movableRule;
 
-    public static final int RANDOM_BOUND = 10;
-    public static final int RANDOM_STANDARD = 4;
-
-    public CarRacing(int carNumber, int times) {
+    public CarRacing(int carNumber, int times, MovableRule movableRule) {
         validateParameter(carNumber, times);
 
         this.cars = new ArrayList<>();
         this.raceRecords = new ArrayList<>();
         this.times = times;
+        this.movableRule = movableRule;
 
         for (int i = 0; i < carNumber; i++) {
             cars.add(new Car(i, 0));
@@ -37,14 +35,16 @@ public class CarRacing {
 
     private void step(int raceNumber) {
         for (Car car : cars) {
-            car.go(isMovable());
+            racing(car);
         }
 
         raceRecords.add(new RaceRecord(raceNumber, makeTrackRecords()));
     }
 
-    private boolean isMovable(){
-        return RandomUtil.randomInt(RANDOM_BOUND) >= RANDOM_STANDARD;
+    private void racing(Car car) {
+        if (movableRule.isMovable()) {
+            car.go();
+        }
     }
 
     private List<Integer> makeTrackRecords() {
