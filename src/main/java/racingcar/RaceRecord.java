@@ -1,13 +1,8 @@
 package racingcar;
 
-import util.StringUtils;
-
 import java.util.List;
 
 public class RaceRecord {
-    private static final String RACE_TRACK = "-";
-    private static final String DELIMITER = " : ";
-
     private String name;
     private List<Integer> record;
 
@@ -24,7 +19,4 @@ public class RaceRecord {
         return record.get(attemptTime);
     }
 
-    public String getResultStringByAttempt(int attempt) {
-        return name + DELIMITER + StringUtils.repeat(RACE_TRACK, getBy(attempt));
-    }
 }

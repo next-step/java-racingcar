@@ -23,10 +23,6 @@ public class RacingCar extends RacingVehicle {
         return new RacingCar(name);
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void race(int attemptNumber, CarMover carMover) {
         List<Integer> record = new ArrayList<>();
 

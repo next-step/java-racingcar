@@ -16,12 +16,21 @@ public class ResultView {
     public static void print(RacingResult racingResult) {
         System.out.println(RESULT_MESSAGE);
 
+        printResultByAttempt(racingResult);
+        printWinner(racingResult);
+    }
+
+    private static void printWinner(RacingResult racingResult) {
+        int lastAttempt = racingResult.getAttempt() - 1;
+
+        System.out.println(racingResult.getWinner(lastAttempt) + WINNER_MESSAGE);
+    }
+
+    private static void printResultByAttempt(RacingResult racingResult) {
         Stream.iterate(0, attempt -> attempt + 1)
                 .limit(racingResult.getAttempt())
                 .map(racingResult::getResultByAttempt)
                 .forEach(ResultView::printResultByAttempt);
-
-        System.out.println(racingResult.getWinner(racingResult.getAttempt() -1) + WINNER_MESSAGE);
     }
 
     private static void printResultByAttempt(List<String> resultByAttempt) {
