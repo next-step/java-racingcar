@@ -18,7 +18,7 @@ public class StringTest {
 
     @Test
     void Substring() {
-        String values = "(1,2)".substring(1,4);
+        String values = "(1,2)".substring(1, 4);
         assertThat(values).contains("1,2");
     }
 

@@ -10,12 +10,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class SetTest {
     private Set<Integer> numbers;
 
-    @BeforeEach // 각 Test 메소드 전에 실행되는 Annotation, 중복되는 초기화 작업을 위해 필요
+    @BeforeEach
+        // 각 Test 메소드 전에 실행되는 Annotation, 중복되는 초기화 작업을 위해 필요
     void setUp() {
         numbers = new HashSet<>();
         numbers.add(1);
