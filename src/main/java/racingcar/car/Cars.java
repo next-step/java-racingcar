@@ -1,29 +1,23 @@
 package racingcar.car;
 
 import racingcar.engine.PowerEngine;
+import racingcar.game.CarStatus;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private List<Car> cars;
 
-    private Cars(CountOfCars countOfCars, PowerEngine powerEngine) {
-        this.cars = registerCars(countOfCars, powerEngine);
+    private Cars(CarNames carNames, PowerEngine powerEngine) {
+        this.cars = carNames.getNames()
+                .stream()
+                .map(name -> Car.newInstance(name, powerEngine))
+                .collect(Collectors.toList());
     }
 
-    private List<Car> registerCars(CountOfCars countOfCars, PowerEngine powerEngine) {
-        List<Car> cars = new ArrayList<>();
-
-        for (int i = 0; i < countOfCars.getCount(); i++) {
-            cars.add(Car.newInstance(powerEngine));
-        }
-
-        return cars;
-    }
-
-    public static Cars newInstance(CountOfCars countOfCars, PowerEngine powerEngine) {
-        return new Cars(countOfCars, powerEngine);
+    public static Cars newInstance(CarNames carNames, PowerEngine powerEngine) {
+        return new Cars(carNames, powerEngine);
     }
 
     public List<Car> getCars() {
@@ -36,5 +30,11 @@ public class Cars {
         }
 
         return getCars();
+    }
+
+    public List<CarStatus> snapshotStatus() {
+        return this.cars.stream()
+                .map(car -> CarStatus.newInstance(car))
+                .collect(Collectors.toList());
     }
 }

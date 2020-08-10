@@ -3,18 +3,20 @@ package racingcar.car;
 import racingcar.engine.PowerEngine;
 
 public class Car {
-    private static int START_POSITION = 1;
+    private static int START_POSITION = 0;
 
+    private CarName carName;
     private PowerEngine powerEngine;
     private int position;
 
-    private Car(PowerEngine powerEngine) {
+    private Car(CarName carName, PowerEngine powerEngine) {
         this.position = START_POSITION;
+        this.carName = carName;
         this.powerEngine = powerEngine;
     }
 
-    public static Car newInstance(PowerEngine powerEngine) {
-        return new Car(powerEngine);
+    public static Car newInstance(CarName carName, PowerEngine powerEngine) {
+        return new Car(carName, powerEngine);
     }
 
     public int getPosition() {
@@ -23,5 +25,9 @@ public class Car {
 
     public void move() {
         this.position = this.position + this.powerEngine.go();
+    }
+
+    public String getName() {
+        return this.carName.getName();
     }
 }
