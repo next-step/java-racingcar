@@ -1,6 +1,7 @@
 package racingcar.racing;
 
 import racingcar.car.Car;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,7 +22,7 @@ public class Racing {
         return cars;
     }
 
-    public static List<Car> moveCarForward(List<Car> cars, int forwardYn) {
-        return cars.stream().peek(car -> car.move(forwardYn)).collect(Collectors.toList());
+    public static List<Car> moveCarForward(List<Car> cars) {
+        return cars.stream().peek(Car::move).collect(Collectors.toList());
     }
 }

@@ -22,6 +22,15 @@ public class RacingTest {
     }
 
     @Test
+    void 자동차_전진_성공() {
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car());
+        cars.add(new Car());
+
+        moveCarForward(cars);
+    }
+
+    @Test
     void 레이싱_결과_성공() {
         List<Car> cars = new ArrayList<>();
         cars.add(new Car());

@@ -1,20 +1,13 @@
 package racingcar.random;
 
 import org.junit.jupiter.api.Test;
-import racingcar.car.Car;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.racing.Racing.moveCarForward;
 import static racingcar.random.GenerateRandom.randomForward;
 
 class GenerateRandomTest {
     @Test
-    void 자동차_전진_성공여부_랜덤발생_성공() {
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car(2));
-        assertThat(moveCarForward(cars, randomForward()).get(0).getStatus()).isGreaterThanOrEqualTo(2);
+    void 임의조건으로_랜덤발생() {
+        assertThat(randomForward()).isGreaterThanOrEqualTo(0);
     }
 }

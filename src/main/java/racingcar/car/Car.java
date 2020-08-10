@@ -1,5 +1,7 @@
 package racingcar.car;
 
+import static racingcar.random.GenerateRandom.randomForward;
+
 public class Car {
     private int status = 1;
 
@@ -14,7 +16,7 @@ public class Car {
         return status;
     }
 
-    public void move(int forward) {
-        this.status = this.status + forward;
+    public void move() {
+        this.status = this.status + randomForward();
     }
 }

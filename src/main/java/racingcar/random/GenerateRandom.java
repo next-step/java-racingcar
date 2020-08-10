@@ -1,10 +1,6 @@
 package racingcar.random;
 
-import racingcar.car.Car;
-
-import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 public class GenerateRandom {
     private static final int RANDOM_BOUND = 10;
