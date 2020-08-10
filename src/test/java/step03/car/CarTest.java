@@ -29,7 +29,7 @@ class CarTest {
     @DisplayName("Car 이동 테스트")
     public void moveTest(int moveCount) {
         final Car car = new Car("choijunwoo");
-        car.AdvanceOneSpace(moveCount);
+        car.advanceOneSpace(moveCount);
         assertThat(car.getMoveCount()).isEqualTo(1);
 
     }

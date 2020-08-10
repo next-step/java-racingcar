@@ -8,17 +8,16 @@ package step03.car;
  * Time : 9:23 오후
  */
 public class Car {
-
+    private static final int MOVESTANDARD = 4;
     private int moveCount = 0;
     private final String carName;
-    private static final int moveStandard = 4;
 
     public Car(final String carName) {
         this.carName = carName;
     }
 
-    public void AdvanceOneSpace(final int moveCount) {
-        if (moveCount >= moveStandard) {
+    public void advanceOneSpace(final int moveCount) {
+        if (moveCount >= MOVESTANDARD) {
             this.moveCount += 1;
         }
     }

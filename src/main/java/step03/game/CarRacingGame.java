@@ -22,7 +22,7 @@ public class CarRacingGame {
         for (int i = 0; i < cars.size(); i++) {
 
             final int randomNum = scoreCalculate.calculateScore();
-            cars.get(i).AdvanceOneSpace(randomNum);
+            cars.get(i).advanceOneSpace(randomNum);
 
             drawScoreBard();
 

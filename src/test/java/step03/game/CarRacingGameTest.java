@@ -35,7 +35,7 @@ class CarRacingGameTest {
         assertThat(i).isEqualTo(5);
 
         for (int m = 0; m < cars.size(); m++) {
-            cars.get(i).AdvanceOneSpace(scoreCalculate.calculateScore());
+            cars.get(i).advanceOneSpace(scoreCalculate.calculateScore());
             System.out.println(cars.get(i).getMoveCount());
         }
     }
