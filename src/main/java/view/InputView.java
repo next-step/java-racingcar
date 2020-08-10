@@ -15,7 +15,7 @@ public class InputView {
         Value.setRound(checkInputValue(scanner.nextInt()));
     }
 
-    static int checkInputValue(int inputValue) {
+    public static int checkInputValue(int inputValue) {
         if(inputValue < 0 || inputValue != (int)inputValue) {
             throw new IllegalArgumentException();
         }

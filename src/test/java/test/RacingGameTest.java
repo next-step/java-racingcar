@@ -2,29 +2,35 @@ package test;
 
 import core.RacingGame;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import view.InputView;
+
+import static org.assertj.core.api.Assertions.*;
+
 
 public class RacingGameTest {
 
-    @Test
-    void 인풋값정수테스트() {
-
+    @ParameterizedTest
+    @ValueSource(ints = {-1})
+    void checkInputValue(int input) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            InputView.checkInputValue(input);
+        });
     }
 
-    @Test
-    void 인풋값양수테스트() {
-
-    }
-
-    @Test
-    void 랜덤테스트4미만(int input) {
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3})
+    void testRand(int input) {
         String result = RacingGame.compareRandNum(input);
-
+        assertThat(result).isEqualTo("");
     }
 
-    @Test
-    void 랜덤테스트4이상(int input) {
+    @ParameterizedTest
+    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    void testRand2(int input) {
         String result = RacingGame.compareRandNum(input);
-
+        assertThat(result).isEqualTo("-");
     }
 
 
