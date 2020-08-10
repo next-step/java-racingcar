@@ -10,7 +10,7 @@ public class ResultView {
 
     public String getLocationVisualization(int location) {
         String result = "";
-        for (int i=0; i<location; i++) {
+        for (int i = 0; i < location; i++) {
             result += "-";
         }
         return result;

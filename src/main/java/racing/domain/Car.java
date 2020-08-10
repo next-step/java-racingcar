@@ -26,7 +26,7 @@ public class Car {
         return Condition.checkMove(randomNum);
     }
 
-    public void move() {
+    void move() {
         this.location++;
     }
 
