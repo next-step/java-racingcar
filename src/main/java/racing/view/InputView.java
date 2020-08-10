@@ -3,6 +3,7 @@ package racing.view;
 import racing.message.ViewMsg;
 import racing.util.ValidatorUtils;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class InputView {
@@ -18,7 +19,7 @@ public class InputView {
 
     private String[] inputCarNames() {
         System.out.println(ViewMsg.START_MSG_CAR.getMsg());
-        return inputString().split(",");
+        return Arrays.stream(inputString().split(",")).map(String::trim).toArray(String[]::new);
     }
 
     private int inputRepeatCount() {
