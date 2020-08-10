@@ -21,7 +21,7 @@ class CarNamesTest {
 
         //then
         assertThat(carNames).isNotNull();
-        assertThat(carNames.getNames().size()).isEqualTo(expectedSize);
+        assertThat(carNames.getNames()).hasSize(expectedSize);
     }
 
     @DisplayName("잘못된 이름목록을 받은경우 에러를 발생시킨다.")
