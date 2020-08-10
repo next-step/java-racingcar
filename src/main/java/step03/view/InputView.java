@@ -23,10 +23,7 @@ public class InputView {
 
         System.out.println(Util.WHATYOURNAME);
         final String[] carName = input.nextLine().split(",");
-        for (int i = 0; i< carName.length; i++) {
-            System.out.println(carName[i]);
-        }
-
+        
         System.out.println(Util.HOWMUCHTRY);
         int tryNum = input.nextInt();
         System.out.println(Util.RESULT);

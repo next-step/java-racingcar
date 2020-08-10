@@ -35,10 +35,11 @@ public class CarRacingGame extends AbstCarRacingGame{
     public void drawScoreBard() {
         final ResultView resultView = new ResultView();
 
-        for (int i = 0; i < cars.size(); i++) {
-            Car car = cars.get(i);
-            resultView.draw(car);
-        }
+        resultView.draw(cars);
+//        for (int i = 0; i < cars.size(); i++) {
+//            Car car = cars.get(i);
+//            resultView.draw(car);
+//        }
         System.out.println();
     }
 }
