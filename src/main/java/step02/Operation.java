@@ -1,3 +1,5 @@
+package step02;
+
 /**
  * Project : java-racingcar
  *

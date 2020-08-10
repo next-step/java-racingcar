@@ -1,4 +1,4 @@
-package step03;
+package step03.car;
 
 import org.junit.jupiter.api.Test;
 import step03.car.Car;

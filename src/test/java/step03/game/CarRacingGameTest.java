@@ -1,4 +1,4 @@
-package step03;
+package step03.game;
 
 import org.junit.jupiter.api.Test;
 import step03.calculatescore.CalculatorRandomScore;
@@ -23,9 +23,9 @@ class CarRacingGameTest {
     public void raceTest() {
         final int carNum = 3;
         int tryNum = 5;
-
+        String[] carName = {"choi, cho, kim"};
         final CarCenter carCenter = new CarCenter();
-        final List<Car> cars = carCenter.makingCar(carNum);
+        final List<Car> cars = carCenter.makingCar(carName);
         final ScoreCalculate scoreCalculate = new CalculatorRandomScore();
 
         int i = 0;

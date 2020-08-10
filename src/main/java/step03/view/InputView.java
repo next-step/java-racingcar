@@ -28,9 +28,6 @@ public class InputView {
             System.out.println(carName[i]);
         }
 
-//        System.out.println(Util.HOWMANYCAR);
-//        int carNum = input.nextInt();
-
         System.out.println(Util.HOWMUCHTRY);
         int tryNum = input.nextInt();
         System.out.println(Util.RESULT);
@@ -39,7 +36,6 @@ public class InputView {
 
         CarCenter carCenter = new CarCenter();
         List<Car> cars = carCenter.makingCar(carName);
-        //List<Car> cars = carCenter.makingCar(carNum);
 
         CarRacingGame carRacingGame = new CarRacingGame();
         while (tryNum-- > 0) {
