@@ -14,19 +14,15 @@ import java.util.List;
  * @comment :
  * Time : 11:02 오후
  */
-public class CarRacingGame {
+public class CarRacingGame extends AbstCarRacingGame{
 
     private List<Car> cars;
-
-    public void racing(int tryNum, final List<Car> cars, final ScoreCalculate scoreCalculate) {
-        while (tryNum-- > 0) {
-            gameStart(cars, scoreCalculate);
-
-        }
+    public List<Car> getCars() {
+        return cars;
     }
 
-    public void gameStart(final List<Car> cars, final ScoreCalculate scoreCalculate) {
-
+    @Override
+    public void gameStart(List<Car> cars, ScoreCalculate scoreCalculate) {
         for (int i = 0; i < cars.size(); i++) {
             final int randomNum = scoreCalculate.calculateScore();
             cars.get(i).advanceOneSpace(randomNum);
@@ -35,7 +31,7 @@ public class CarRacingGame {
         }
     }
 
-
+    @Override
     public void drawScoreBard() {
         final ResultView resultView = new ResultView();
 
@@ -45,9 +41,4 @@ public class CarRacingGame {
         }
         System.out.println();
     }
-
-    public List<Car> getCars() {
-        return cars;
-    }
-
 }
