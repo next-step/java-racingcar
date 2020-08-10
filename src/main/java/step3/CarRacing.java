@@ -14,7 +14,7 @@ public class CarRacing {
 			Round.play(cars);
 		}
 
-		ResultView.printResult(Round.getRoundScoreRecord());
+		ResultView.printResult();
 	}
 
 	public static List<Car> getNewCars(int carCount) {

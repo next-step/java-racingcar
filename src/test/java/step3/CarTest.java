@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class CarTest {
 
@@ -14,9 +15,22 @@ public class CarTest {
 	@ParameterizedTest
 	@CsvSource(value = {"3:0", "1:0", "4:1", "6:1", "8:1"}, delimiter = ':')
 	void moveForward(int value, int expected) {
+		Car expect = new Car();
+		expect.moveForward(value);
+
+		Car actual = new Car();
+		actual.moveForward(value);
+
+		assertAll(
+				() -> assertThat(actual).isEqualTo(expect)
+				, () -> assertThat(actual.getRecord()).isEqualTo(expected)
+		);
+
+		/*
 		Car car = new Car();
 		car.moveForward(value);
 		assertThat(car.getRecord()).isEqualTo(expected);
+		*/
 	}
 
 }

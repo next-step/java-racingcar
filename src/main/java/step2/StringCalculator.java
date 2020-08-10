@@ -8,16 +8,16 @@ public class StringCalculator {
 	private static final Pattern BLANK_PATTERN = Pattern.compile("^\\s*$");
 	private static final String SEPARATOR = " ";
 
-	private static boolean isNumberPattern(String str) {
-		return ONLY_NUMBER_PATTERN.matcher(str).matches();
+	private static boolean isNumberPattern(String term) {
+		return ONLY_NUMBER_PATTERN.matcher(term).matches();
 	}
 
-	private static boolean isBlankPattern(String str) {
-		return BLANK_PATTERN.matcher(str).matches();
+	private static boolean isBlankPattern(String term) {
+		return BLANK_PATTERN.matcher(term).matches();
 	}
 
 	public String getResult(String str) {
-		if(!this.isPossibleCalculate(str)) {
+		if (!this.isPossibleCalculate(str)) {
 			throw new IllegalArgumentException("계산할 수 없는 문자열");
 		}
 
@@ -31,11 +31,11 @@ public class StringCalculator {
 
 	}
 
-	private Stack<String> stackCalculatedValue(Stack<String> expression, String value) {
+	private void stackCalculatedValue(Stack<String> expression, String value) {
 		if(isNumberPattern(value) && expression.size() == 3) {
 			expression.push(this.calculate(Integer.parseInt(expression.pop()), expression.pop(), Integer.parseInt(expression.pop())));
 		}
-		return expression;
+		//return expression;
 	}
 
 	public String calculate(int num2, String op, int num1) {
@@ -43,7 +43,7 @@ public class StringCalculator {
 		return operator.calculate(num1, num2);
 	}
 
-	public boolean isPossibleCalculate(String str) {
+	private boolean isPossibleCalculate(String str) {
 		return !isEmpty(str) && isLengthOver3(str) && isValidExpression(str.split(SEPARATOR));
 
 	}

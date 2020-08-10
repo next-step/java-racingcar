@@ -8,7 +8,7 @@ public enum Operator {
 	MINUS("-", (x, y) -> x - y),
 	MULTIPLE("*", (x, y) -> x * y),
 	DIVIDE("/", (x, y) -> {
-		if(y == 0) {
+		if (y == 0) {
 			throw new IllegalArgumentException();
 		}
 		return x / y;
