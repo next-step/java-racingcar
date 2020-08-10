@@ -27,8 +27,8 @@ public class InputView {
     return question2.apply(scanner);
   }
 
-  public void printDashboard(int numberOfDrivers, int roundCount) {
-    System.out.println(String.format("자동차 %d대, %d회 실행 결과", numberOfDrivers, roundCount));
+  public void printDashboard(int numberOfCars, int roundCount) {
+    System.out.println(String.format("자동차 %d대, %d회 실행 결과", numberOfCars, roundCount));
   }
 
 }
