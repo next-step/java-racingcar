@@ -14,12 +14,13 @@ import java.util.List;
  */
 public abstract class AbstCarRacingGame {
 
-    public void racing(int tryNum, final List<Car> cars, final ScoreCalculate scoreCalculate) {
+    public List<Car> racing(int tryNum, final List<Car> cars, final ScoreCalculate scoreCalculate) {
         while (tryNum-- > 0) {
             gameStart(cars, scoreCalculate);
         }
+
+        return cars;
     }
 
     abstract public void gameStart(final List<Car> cars, final ScoreCalculate scoreCalculate);
-    abstract public void drawScoreBard();
 }

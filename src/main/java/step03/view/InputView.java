@@ -23,7 +23,7 @@ public class InputView {
 
         System.out.println(Util.WHATYOURNAME);
         final String[] carName = input.nextLine().split(",");
-        
+
         System.out.println(Util.HOWMUCHTRY);
         int tryNum = input.nextInt();
         System.out.println(Util.RESULT);
@@ -34,7 +34,9 @@ public class InputView {
         final List<Car> cars = carCenter.makingCar(carName);
 
         final CarRacingGame carRacingGame = new CarRacingGame();
-        carRacingGame.racing(tryNum, cars, new CalculatorRandomScore());
+        List<Car> resultCar = carRacingGame.racing(tryNum, cars, new CalculatorRandomScore());
+
+        carRacingGame.drawWinnerBoard();
     }
 
 }

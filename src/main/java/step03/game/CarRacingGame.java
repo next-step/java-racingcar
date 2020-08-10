@@ -1,7 +1,9 @@
 package step03.game;
 
 import step03.calculatescore.CalculatorRandomScore;
+import step03.calculatescore.ResultCalculate;
 import step03.calculatescore.ScoreCalculate;
+import step03.calculatescore.WinnerCalculate;
 import step03.car.Car;
 import step03.view.ResultView;
 
@@ -20,6 +22,7 @@ public class CarRacingGame extends AbstCarRacingGame{
     public List<Car> getCars() {
         return cars;
     }
+    private final ResultView resultView = new ResultView();
 
     @Override
     public void gameStart(List<Car> cars, ScoreCalculate scoreCalculate) {
@@ -27,19 +30,17 @@ public class CarRacingGame extends AbstCarRacingGame{
             final int randomNum = scoreCalculate.calculateScore();
             cars.get(i).advanceOneSpace(randomNum);
             this.cars = cars;
-            drawScoreBard();
         }
+        drawScoreBoard();
     }
 
-    @Override
-    public void drawScoreBard() {
-        final ResultView resultView = new ResultView();
+    public void drawWinnerBoard() {
+        resultView.getWinnerScore(cars, new WinnerCalculate());
+    }
 
+    public void drawScoreBoard() {
         resultView.draw(cars);
-//        for (int i = 0; i < cars.size(); i++) {
-//            Car car = cars.get(i);
-//            resultView.draw(car);
-//        }
         System.out.println();
     }
+
 }

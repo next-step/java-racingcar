@@ -48,11 +48,11 @@ public class StringCalculatorTest {
         int answer1 = stringCalculator.answer(arguments, length, answer);
         assertThat(answer1).isEqualTo(10);
 
-        String[] arguments = fourArithmeticOperations.split(" ");
+        String[] argus = fourArithmeticOperations.split(" ");
 
 
-        int length = arguments.length;
-        int answer = Integer.parseInt(arguments[0]); // 첫 숫자 초기화
+        int len = argus.length;
+        int ans = Integer.parseInt(argus[0]); // 첫 숫자 초기화
 
         for (int i = 1; i < length; i += 2) {
             nullValidation(arguments[i]);
