@@ -11,8 +11,17 @@ public class CarStatus {
         this.position = car.getPosition();
     }
 
+    private CarStatus(String carName, int position) {
+        this.carName = carName;
+        this.position = position;
+    }
+
     public static CarStatus newInstance(Car car) {
         return new CarStatus(car);
+    }
+
+    public static CarStatus newInstance(String carName, int position) {
+        return new CarStatus(carName, position);
     }
 
     public String getCarName() {
@@ -21,5 +30,9 @@ public class CarStatus {
 
     public int getPosition() {
         return position;
+    }
+
+    public boolean equalsPosition(int position) {
+        return this.position == position;
     }
 }

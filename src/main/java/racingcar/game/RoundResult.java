@@ -1,19 +1,17 @@
 package racingcar.game;
 
-import racingcar.car.Cars;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RoundResult {
     private List<CarStatus> carStatuses;
 
-    private RoundResult(Cars cars) {
-        this.carStatuses = cars.snapshotStatus();
+    private RoundResult(List<CarStatus> carStatuses) {
+        this.carStatuses = carStatuses;
     }
 
-    public static RoundResult newInstance(Cars cars) {
-        return new RoundResult(cars);
+    public static RoundResult newInstance(List<CarStatus> carStatuses) {
+        return new RoundResult(carStatuses);
     }
 
     public int maxPosition() {
@@ -25,7 +23,7 @@ public class RoundResult {
 
     public List<String> determineWinners(int winnerPosition) {
         return carStatuses.stream()
-                .filter(carStatus -> winnerPosition == carStatus.getPosition())
+                .filter(carStatus -> carStatus.equalsPosition(winnerPosition))
                 .map(CarStatus::getCarName)
                 .collect(Collectors.toList());
     }
