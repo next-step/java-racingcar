@@ -24,8 +24,10 @@ public enum Operator {
     }
 
     public static Operator of(String value) {
-        Optional<Operator> operators = Arrays.stream(values()).filter(o -> o.operator.equals(value)).findFirst();
-        return operators.orElseThrow(() -> new IllegalArgumentException(value + CommonConstant.INVALID_OPERATOR));
+        return Arrays.stream(values())
+                .filter(o -> o.operator.equals(value))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(value + CommonConstant.INVALID_OPERATOR));
     }
 
     public int calculate(int firstNumber, int secondNumber) {
