@@ -1,4 +1,4 @@
-package cc.oakk.racing;
+package cc.oakk.racing.model;
 
 import cc.oakk.racing.model.Car;
 import cc.oakk.racing.model.predicate.CarForwardCondition;
