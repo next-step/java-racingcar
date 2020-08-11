@@ -1,13 +1,13 @@
 package cc.oakk.racing.controller;
 
-import cc.oakk.racing.model.Car;
-import cc.oakk.racing.model.RacingGame;
-import cc.oakk.racing.model.RacingRound;
-import cc.oakk.racing.model.Ranking;
-import cc.oakk.racing.model.predicate.CarForwardCondition;
-import cc.oakk.racing.model.predicate.RangePredicate;
-import cc.oakk.racing.model.converter.Converter;
-import cc.oakk.racing.model.converter.CarRandomIntConverter;
+import cc.oakk.racing.domain.Car;
+import cc.oakk.racing.domain.RacingGame;
+import cc.oakk.racing.domain.RacingRound;
+import cc.oakk.racing.domain.Ranking;
+import cc.oakk.racing.domain.predicate.CarForwardCondition;
+import cc.oakk.racing.domain.predicate.RangePredicate;
+import cc.oakk.racing.domain.converter.Converter;
+import cc.oakk.racing.domain.converter.CarRandomIntConverter;
 import cc.oakk.racing.view.printer.CarPrinter;
 import cc.oakk.racing.view.printer.RankingPrinter;
 import cc.oakk.racing.view.printer.StringPrinter;

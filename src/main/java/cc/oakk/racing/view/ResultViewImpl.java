@@ -1,7 +1,7 @@
 package cc.oakk.racing.view;
 
-import cc.oakk.racing.model.Car;
-import cc.oakk.racing.model.Ranking;
+import cc.oakk.racing.domain.Car;
+import cc.oakk.racing.domain.Ranking;
 import cc.oakk.racing.view.printer.Printable;
 import cc.oakk.racing.view.printer.Printer;
 import cc.oakk.racing.view.printer.StandardPrinter;

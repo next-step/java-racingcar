@@ -1,8 +1,6 @@
-package cc.oakk.racing.model;
+package cc.oakk.racing.domain;
 
-import cc.oakk.racing.model.Car;
-import cc.oakk.racing.model.Ranking;
-import cc.oakk.racing.model.predicate.CarForwardCondition;
+import cc.oakk.racing.domain.predicate.CarForwardCondition;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

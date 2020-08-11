@@ -1,6 +1,6 @@
-package cc.oakk.racing.model;
+package cc.oakk.racing.domain;
 
-import cc.oakk.racing.model.predicate.CarForwardCondition;
+import cc.oakk.racing.domain.predicate.CarForwardCondition;
 import cc.oakk.racing.view.printer.Printable;
 import cc.oakk.racing.view.printer.Printer;
 

@@ -1,7 +1,7 @@
-package cc.oakk.racing.model.predicate;
+package cc.oakk.racing.domain.predicate;
 
-import cc.oakk.racing.model.Car;
-import cc.oakk.racing.model.converter.Converter;
+import cc.oakk.racing.domain.Car;
+import cc.oakk.racing.domain.converter.Converter;
 
 import java.util.function.Predicate;
 

@@ -1,4 +1,4 @@
-package cc.oakk.racing.model.predicate;
+package cc.oakk.racing.domain.predicate;
 
 import java.util.function.Predicate;
 

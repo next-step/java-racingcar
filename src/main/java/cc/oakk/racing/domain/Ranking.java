@@ -1,4 +1,4 @@
-package cc.oakk.racing.model;
+package cc.oakk.racing.domain;
 
 import cc.oakk.racing.view.printer.Printable;
 import cc.oakk.racing.view.printer.Printer;
