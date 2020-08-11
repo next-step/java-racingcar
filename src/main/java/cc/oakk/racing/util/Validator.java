@@ -3,6 +3,8 @@ package cc.oakk.racing.util;
 import java.util.List;
 
 public class Validator {
+    private Validator() {}
+
     public static void checkList(List<?> list) {
         if (list == null) {
             throw new IllegalArgumentException("Given list is null.");
