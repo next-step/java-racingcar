@@ -21,14 +21,14 @@ public class RacingGameTest {
 
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3})
-    void testRand(int input) {
-        String result = RacingGame.compareRandNum(input);
+    void move(int input) {
+        String result = RacingGame.compareRandNum(input);;
         assertThat(result).isEqualTo("");
     }
 
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-    void testRand2(int input) {
+    void stop(int input) {
         String result = RacingGame.compareRandNum(input);
         assertThat(result).isEqualTo("-");
     }

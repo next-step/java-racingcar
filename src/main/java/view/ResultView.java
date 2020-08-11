@@ -1,15 +1,13 @@
 package view;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public class ResultView {
 
-    public static void printOutputValue(List<String> race) {
-        race.stream().forEach(System.out::print);
-        println();
-    }
-
-    public static void println() {
+    public static void printOutputValue(Stream<String> race) {
+        race.forEach(System.out::print);
         System.out.println();
     }
+
 }

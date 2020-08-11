@@ -2,6 +2,7 @@ package core;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Car {
     List<String> roundResult;
@@ -10,11 +11,9 @@ public class Car {
         roundResult = new ArrayList<>();
     }
 
-    public List<String> getRoundResult() {
-        return roundResult;
+    public Stream<String> stream() {
+        return roundResult.stream() ;
     }
 
-    public void setRoundResult(List<String> roundResult) {
-        this.roundResult = roundResult;
-    }
+    public void addResult(String result) { roundResult.add(result) ; }
 }
