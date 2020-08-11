@@ -35,7 +35,11 @@ public class ResultView {
     }
 
     public static void printRacingWinners(final RacingCars racingCars) {
+        System.out.println(toStringRacingWinners(racingCars));
+    }
+
+    public static String toStringRacingWinners(final RacingCars racingCars) {
         final String winners = String.join(SEPARATOR, racingCars.getWinners());
-        System.out.println(String.format(RESULT_RACING_WINNERS_MESSAGE, winners));
+        return String.format(RESULT_RACING_WINNERS_MESSAGE, winners);
     }
 }
