@@ -1,3 +1,5 @@
+package stringCalculator;
+
 import java.util.Scanner;
 
 public class Main {

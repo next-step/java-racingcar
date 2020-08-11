@@ -1,31 +1,52 @@
 package racingcar.domain;
 
-/**
- * 자동차에 대한 정보를 담당
- * 자동차의 전진 여부를 판단하고 전진시키는 역할이 필요
- * 자동차는 랜덤 값이 4 이상일 때 1칸 전진할 수 있다.
- */
 public class Car {
     private static final int START_POSITION = 0;
-    private static final int MOVEABLE_REFERENCE_VALUE = 4;
+    private static final int MAX_NAME_LENGTH = 5;
 
     private int position;
+    private String name;
 
-    public Car() {
+    public Car(String name) {
+        validate(name);
+        this.name = name;
         this.position = START_POSITION;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getPosition() {
         return position;
     }
 
-    public void move() {
-        position++;
+    public void move(boolean moveAble) {
+        if(moveAble) {
+            position++;
+        }
     }
 
-    public void moveAble(int randomValue) {
-        if(randomValue >= MOVEABLE_REFERENCE_VALUE) {
-            move();
+    public void validate(String name) {
+        validateNameLength(name);
+        isBlank(name);
+        isNull(name);
+    }
+    public void validateNameLength(String name) {
+        if (name.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException("이름은 5자를 초과할 수 없습니다.");
+        }
+    }
+
+    public void isBlank(String name) {
+        if (name.trim().isEmpty()) {
+            throw new IllegalArgumentException("공백은 입력할 수 없습니다.");
+        }
+    }
+
+    public void isNull(String name) {
+        if (name == null) {
+            throw new NullPointerException("Null 값은 입력할 수 없습니다.");
         }
     }
 }
