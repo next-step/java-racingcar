@@ -28,18 +28,13 @@ public class Car {
 
 		if (obj instanceof Car) {
 			Car anotherCar = (Car) obj;
-			return sameValues(this, anotherCar);
+			return this.record == anotherCar.record;
 		}
 		return false;
 	}
 
-	private boolean sameValues(Car car, Car anCar) {
-		return car.record == anCar.record;
-	}
-
 	@Override
 	public int hashCode() {
-		return Integer.hashCode(record);
+		return super.hashCode();
 	}
-
 }
