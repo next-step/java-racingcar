@@ -13,11 +13,11 @@ public class CarRacing {
 		for (int i = 0; i < times; i++) {
 			Round.play(cars);
 		}
-
 		ResultView.printResult();
+		ResultView.printWinner(new Winner().findWinner(cars));
 	}
 
-	public static List<Car> getNewCars(String[] carsName) {
+	private static List<Car> getNewCars(String[] carsName) {
 		List<Car> cars = new ArrayList<>();
 		for (String name : carsName) {
 			cars.add(new Car(name));
