@@ -18,4 +18,8 @@ public class Car {
         }
         OutputView.printingMovement(this.carMovement);
     }
+
+    public String getCarName() {
+        return this.carName;
+    }
 }

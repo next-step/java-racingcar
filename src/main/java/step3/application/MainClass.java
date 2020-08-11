@@ -1,6 +1,7 @@
 package step3.application;
 
 import step3.logic.Car;
+import step3.logic.RacingSupporter;
 import step3.view.input.InputScanner;
 import step3.view.output.OutputText;
 import step3.view.output.OutputView;
@@ -19,13 +20,11 @@ public class MainClass {
         int inputCycleCount = InputScanner.scanIntInput();
         System.out.println(OutputText.RESULT_TEXT);
 
-//        List<Car> cars = Stream.generate(() -> new Car())
-//                .limit(inputCarCount)
-//                .collect(Collectors.toList());
+        List<Car> cars = RacingSupporter.setCarsForRacing(RacingSupporter.getTeamReady(inputCarNames));
 
-//        for (int i = 0; i < inputCycleCount; i++) {
-//            cars.forEach(Car::makeCarMove);
-//            System.out.println();
-//        }
+        for (int i = 0; i < inputCycleCount; i++) {
+            cars.forEach(Car::makeCarMove);
+            System.out.println();
+        }
     }
 }
