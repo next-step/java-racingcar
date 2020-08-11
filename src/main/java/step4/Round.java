@@ -12,7 +12,7 @@ public class Round {
 			car.moveForward(getRandomNumber());
 			ResultView.saveRoundScore(car);
 		}
-		ResultView.setNextRound();
+		ResultView.nextRound();
 	}
 
 	private static int getRandomNumber() {

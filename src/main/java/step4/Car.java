@@ -1,7 +1,6 @@
 package step4;
 
 public class Car {
-
 	private static final int CAN_MOVE_NUM = 4;
 
 	private final String name;
@@ -10,6 +9,14 @@ public class Car {
 	public Car(String name) {
 		this.name = name;
 		this.record = 0;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public int getRecord() {
+		return record;
 	}
 
 	public void moveForward(int randomNumber) {
