@@ -27,6 +27,10 @@ public class Car {
         return this.distance.get(i);
     }
 
+    public List<Integer> getAllRecords() {
+        return distance;
+    }
+
     public void moveWithStrategy(MovementStrategy strategy) {
         int lastScore = distance.get(distance.size() - 1);
         distance.add(strategy.doAction(lastScore));

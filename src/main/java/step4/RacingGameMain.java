@@ -2,6 +2,7 @@ package step4;
 
 import step4.model.RacingGame;
 import step4.view.InputView;
+import step4.view.OutputView;
 
 import java.util.Arrays;
 
@@ -16,6 +17,6 @@ public class RacingGameMain {
             raceGame.playGame();
         }
 
-
+        OutputView.showResultOfGame(raceGame.getPlayerList(), inputView.getTrialCounts());
     }
 }
