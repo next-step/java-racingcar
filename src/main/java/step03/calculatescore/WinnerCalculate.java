@@ -3,6 +3,7 @@ package step03.calculatescore;
 import step03.car.Car;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -15,9 +16,17 @@ import java.util.List;
 public class WinnerCalculate implements ResultCalculate{
 
     @Override
-    public int resultCalculate(List<Car> cars) {
-        Arrays.asList(cars);
+    public int resultCalculate(final List<Car> cars) {
+        Collections.sort(cars);
 
         return cars.get(0).getMoveCount();
     }
+
+    @Override
+    public int getWinnerScore(final List<Car> cars) {
+        int winnerScore = resultCalculate(cars);
+
+        return winnerScore;
+    }
+
 }

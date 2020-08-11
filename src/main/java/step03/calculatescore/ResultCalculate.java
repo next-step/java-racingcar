@@ -12,5 +12,8 @@ import java.util.List;
  * Time : 10:52 오후
  */
 public interface ResultCalculate {
-    int resultCalculate(List<Car> cars);
+
+    int resultCalculate(final List<Car> cars);
+
+    int getWinnerScore(final List<Car> cars);
 }
