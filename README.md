@@ -7,3 +7,13 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 자동차 경주 구현 (step3)
+초간단 자동차 경주 게임을 구현한다.
+
+**기능 목록**
+- [x] InputView : 자동차 대수, 시도할 회수 입력받기
+- [x] ResultView : 자동차의 상태 화면에 출력하기
+- [x] 자동차 구현
+- [x] 자동차 경주 게임 구현
+- [x] 랜덤값에 따라 자동차 이동 
