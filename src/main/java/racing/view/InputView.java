@@ -57,6 +57,6 @@ public class InputView {
             throw new IllegalArgumentException(INVALID_NAME_OF_CARS);
         }
 
-        return Arrays.asList(inputCarNames.trim().split(CAR_NAME_SPLIT_VALUE));
+        return Arrays.asList(inputCarNames.split(CAR_NAME_SPLIT_VALUE));
     }
 }

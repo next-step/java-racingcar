@@ -23,7 +23,7 @@ public class Car {
     }
 
     public static String validateName(final String name) {
-        if(name.isEmpty() || name.length() > MAX_CAR_NAME_LENGTH) {
+        if(name.trim().isEmpty() || name.trim().length() > MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException(INVALID_CAR_NAME_LENGTH);
         }
         return name;
