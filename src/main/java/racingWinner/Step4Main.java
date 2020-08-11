@@ -14,6 +14,7 @@ public class Step4Main {
 		int reps = scanner.nextInt();
 		RacingGame.racing(cars, reps);
 		RacingGame.getWinner2(cars);
+		
 	}
 }
 

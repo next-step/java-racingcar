@@ -15,7 +15,7 @@ public class PrintGame {
 		}
 	}
 	
-	//Stream<Car>
+	//Stream<Car> 
 	public static void printWinner(Stream<Car> winner) {
 //		for(int i = 0; i < winner.size(); i++) {
 //		System.out.print(winner.get(i).getName() + seperator(winner.size(), i + 1));

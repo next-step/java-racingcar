@@ -5,7 +5,6 @@ public class Car {
 
 	private final static int STRING_MAX_LENGTH = 5;
 	private final static int RUN = 4;
-	
 	private String name;
 	private int location = 0;
 	

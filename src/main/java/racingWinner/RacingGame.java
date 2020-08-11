@@ -16,7 +16,7 @@ public class RacingGame {
 			PrintGame.printCars(cars);
 			System.out.println();
 			System.out.println();
-		}
+		} 
 	}
 	
 	

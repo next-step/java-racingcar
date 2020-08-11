@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingWinner.RacingGame.getMaxLocationWithList;
 import org.junit.jupiter.api.Test;
 public class RacingWinnerTest {
-	
+	 
 	private List<Car> carsList;
 	private String[] carNamesArrayTrue;
 	private String[] carNamesArrayFalse;
