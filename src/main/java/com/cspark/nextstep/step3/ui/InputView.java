@@ -1,4 +1,4 @@
-package com.cspark.nextstep.step3;
+package com.cspark.nextstep.step3.ui;
 
 import java.util.Scanner;
 import java.util.function.Function;
@@ -17,14 +17,18 @@ public class InputView {
     this.scanner = scanner;
   }
 
-  public String[] script1() {
+  public String[] nameScript() {
     System.out.println(SCRIPT_Q_NAME);
     return question1.apply(scanner);
   }
 
-  public int script2() {
+  public int roundScript() {
     System.out.println(SCRIPT_Q_REPEATS);
     return question2.apply(scanner);
+  }
+
+  public void printDashboard(int numberOfCars, int roundCount) {
+    System.out.println(String.format("자동차 %d대, %d회 실행 결과", numberOfCars, roundCount));
   }
 
 }
