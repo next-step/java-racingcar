@@ -1,6 +1,6 @@
 package com.cspark.nextstep.step3;
 
-import com.cspark.nextstep.step3.domain.CarRace;
+import com.cspark.nextstep.step3.domain.Cars;
 import com.cspark.nextstep.step3.domain.Dice;
 import com.cspark.nextstep.step3.domain.Scorecard;
 import com.cspark.nextstep.step3.ui.InputView;
@@ -23,13 +23,13 @@ public class InteractiveScanner {
     // 레이싱 경주
     Function<Dice, Boolean> rule = (d) -> d.cast() > 3;
     Dice dice = new Dice(0, 10);
-    CarRace carRace = new CarRace(roundCount, carNames, rule);
-    while (carRace.hasNextLap()) {
-      List<Scorecard> scorecards = carRace.race(dice);
+    Cars cars = new Cars(roundCount, carNames, rule);
+    while (cars.hasNextLap()) {
+      List<Scorecard> scorecards = cars.race(dice);
       OutputView.displayLap(scorecards);  // 누적 전진,후진 이력
     }
 
     // 우승자
-    OutputView.displayWinner(carRace.podium());
+    OutputView.displayWinner(cars.podium());
   }
 }

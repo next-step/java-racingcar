@@ -6,14 +6,14 @@ import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class CarRace {
+public class Cars {
 
   private final int roundCount;
   private final List<Car> cars;
 
   private int currentCount = 0;
 
-  public CarRace(int roundCount, String[] carNames, Function<Dice, Boolean> rule) {
+  public Cars(int roundCount, String[] carNames, Function<Dice, Boolean> rule) {
     this.roundCount = roundCount;
     this.cars = makeCars(carNames, rule);
   }
@@ -38,7 +38,7 @@ public class CarRace {
 
   private List<Scorecard> scorecard() {
     return cars.stream()
-        .map(d -> Scorecard.of(d))
+        .map(Scorecard::of)
         .collect(Collectors.toList());
   }
 
