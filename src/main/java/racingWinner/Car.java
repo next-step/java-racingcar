@@ -10,7 +10,6 @@ public class Car {
 	private int location = 0;
 	
 	public Car(String name) {
-		// TODO Auto-generated constructor stub
 		//객체가 스스로 판단하게 변경
 		if(name.length() > STRING_MAX_LENGTH) {
 			throw new IllegalArgumentException("차 이름은 5자를 초과할 수 없습니다.");
@@ -20,7 +19,6 @@ public class Car {
 	
 	//카 객체 스스로 책임 runOrStopCondition
 	public void go(int condition) {
-		// TODO Auto-generated method stub
 		if(RUN <= condition) {
 			++this.location;
 		}
@@ -41,12 +39,6 @@ public class Car {
 		return location;
 	}
 	
-	public String printCar() {
-		String value = this.name + " : ";
-		for(int i = 0; i < location; i++) {
-			value = value + "-";
-		}
-		return value;
-	}
+	
 
 }

@@ -10,8 +10,7 @@ import org.junit.jupiter.api.Test;
 import racingWinner.Car;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingWinner.GetWinners.getMaxLocation;
-import static racingWinner.GetWinners.getMaxLocationWithList;
+import static racingWinner.RacingGame.getMaxLocationWithList;
 import org.junit.jupiter.api.Test;
 public class RacingWinnerTest {
 	
@@ -74,13 +73,6 @@ public class RacingWinnerTest {
 		assertThatThrownBy(() -> {
 			Car car = new Car("lengthOver");
 		}).isInstanceOf(IllegalArgumentException.class);
-	}
-	
-
-	@Test
-	public void checkMaxLocation() {
-		assertThat(getMaxLocation(4, carsList.get(2))).isEqualTo(4);
-		assertThat(getMaxLocation(4, carsList.get(0))).isEqualTo(4);
 	}
 	
 	@Test
