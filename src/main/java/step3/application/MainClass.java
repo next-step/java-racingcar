@@ -13,19 +13,19 @@ public class MainClass {
 
     public static void main(String[] args) {
         System.out.println(OutputText.CAR_COUNT_VIEW);
-        int inputCarCount = InputScanner.scanInput();
+        String inputCarNames = InputScanner.scanStringInput();
 
         System.out.println(OutputText.CYCLE_COUNT_VIEW);
-        int inputCycleCount = InputScanner.scanInput();
+        int inputCycleCount = InputScanner.scanIntInput();
         System.out.println(OutputText.RESULT_TEXT);
 
-        List<Car> cars = Stream.generate(Car::new)
-                .limit(inputCarCount)
-                .collect(Collectors.toList());
+//        List<Car> cars = Stream.generate(() -> new Car())
+//                .limit(inputCarCount)
+//                .collect(Collectors.toList());
 
-        for (int i = 0; i < inputCycleCount; i++) {
-            cars.forEach(Car::makeCarMove);
-            System.out.println();
-        }
+//        for (int i = 0; i < inputCycleCount; i++) {
+//            cars.forEach(Car::makeCarMove);
+//            System.out.println();
+//        }
     }
 }
