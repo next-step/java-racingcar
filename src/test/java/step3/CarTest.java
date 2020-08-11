@@ -21,16 +21,8 @@ public class CarTest {
 		Car actual = new Car();
 		actual.moveForward(value);
 
-		assertAll(
-				() -> assertThat(actual).isEqualTo(expect)
-				, () -> assertThat(actual.getRecord()).isEqualTo(expected)
-		);
+		assertThat(actual).isEqualTo(expect);
 
-		/*
-		Car car = new Car();
-		car.moveForward(value);
-		assertThat(car.getRecord()).isEqualTo(expected);
-		*/
 	}
 
 }
