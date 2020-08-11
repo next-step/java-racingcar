@@ -53,13 +53,13 @@ public class RacingWinnerTest {
        
     }
 	@Test
-	public void condition() {
+	public void 조건() {
 //		assertThat(runOrStopCondition(3)).isEqualTo(false);
 //		assertThat(runOrStopCondition(9)).isEqualTo(true);
 	}
 //	
 	@Test
-	public void go()
+	public void 전진()
 	{
 		Car car = carsList.get(0);
 		assertThat(car.getLocation()).isEqualTo(1);
