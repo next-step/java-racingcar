@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @version : 0.0.0
  */
 public class InputView {
-    private static final Scanner scanner = new Scanner(System.in);;
+    private static final Scanner scanner = new Scanner(System.in);
 
     private InputView() {
     }
