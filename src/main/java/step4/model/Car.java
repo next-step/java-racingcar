@@ -1,16 +1,32 @@
 package step4.model;
 
-public class Car {
-    private String name;
+import java.util.ArrayList;
+import java.util.List;
 
-    public Car(String name) {
-        if (name.length() > 5) {
+public class Car {
+    private final String carName;
+    private final List<Integer> distance;
+
+    public Car(String carName) {
+        if (carName.length() > 5) {
             throw new IllegalArgumentException();
         }
-        this.name = name;
+        this.carName = carName;
+
+        this.distance = new ArrayList<>();
+        distance.add(0);
     }
 
-    public String getName() {
-        return this.name;
+    public String getCarName() {
+        return this.carName;
+    }
+
+    public int getScore(int i) {
+        return distance.get(i);
+    }
+
+    public void moveForward() {
+        int lastScore = distance.get(distance.size() - 1);
+        distance.add(lastScore + 1);
     }
 }
