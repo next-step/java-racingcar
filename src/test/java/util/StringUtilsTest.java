@@ -1,7 +1,8 @@
 package util;
 
-import calculator.ExceptionMessage;
+import exception.ExceptionMessage;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -66,5 +67,13 @@ public class StringUtilsTest {
         String[] inputArray = input.split(",");
         assertThat(StringUtils.repeat(inputArray[0], Integer.parseInt(inputArray[1])))
                 .isEqualTo(result);
+    }
+
+    @DisplayName("반복 문자열 생성 메소드(repeat) - null 문자열 테스트")
+    @Test
+    void repeat_null_test() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> StringUtils.repeat(null, 3))
+                .withMessage(ExceptionMessage.INVALID_INPUT_STRING);
     }
 }

@@ -3,6 +3,8 @@ package racingcar.view;
 import racingcar.RacingGame;
 import util.StringUtils;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -10,32 +12,19 @@ import java.util.Scanner;
  * @version : 0.0.0
  */
 public class InputView {
-    private static final int SCAN_RETRY_COUNT = 3;
-    private Scanner scanner;
+    private static final Scanner scanner = new Scanner(System.in);;
 
-    public InputView() {
-        scanner = new Scanner(System.in);
+    private InputView() {
     }
 
-    public RacingGame scanRacingGameInfo() {
-        int carNumber = getCarNumber();
-        int attemptNumber = getAttemptNumber();
-
-        RacingGame racingGame = RacingGame.of(carNumber, attemptNumber);
-
-        scanner.close();
-        return racingGame;
-    }
-
-    private int getCarNumber() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
+    public static List<String> getCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String value = scanner.nextLine();
 
-        StringUtils.validateNumber(value);
-        return Integer.parseInt(value);
+        return Arrays.asList(value.split(","));
     }
 
-    private int getAttemptNumber() {
+    public static int getAttemptNumber() {
         System.out.println("시도할 회수는 몇 회 인가요?");
         String value = scanner.nextLine();
 
