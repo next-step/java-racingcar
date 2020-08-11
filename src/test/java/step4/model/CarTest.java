@@ -1,10 +1,9 @@
 package step4.model;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import step4.strategy.RacingGameLoseMovementStrategy;
 import step4.strategy.RacingGameWinMovementStrategy;
 
 import static org.assertj.core.api.Assertions.*;
@@ -39,10 +38,19 @@ public class CarTest {
 
     @ParameterizedTest
     @CsvSource(value = {"1,1"})
-    @DisplayName("입력된 boolean값에 따라 차량이 전진할 것인지, 멈춰있을것인지 결정")
-    void check_Strategy_Car_Object_With_Strategy_Interface(int value, int expected) {
+    @DisplayName("입력된 boolean값에 따라 차량이 전진할 것인지, 멈춰있을것인지 결정 - Win Case")
+    void check_Strategy_Car_Object_With_Strategy_Interface_Win(int value, int expected) {
         car = new Car("Check");
         car.moveWithStrategy(new RacingGameWinMovementStrategy());
+        assertThat(car.getScore(value)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1,0"})
+    @DisplayName("입력된 boolean값에 따라 차량이 전진할 것인지, 멈춰있을것인지 결정 - Lose Case")
+    void check_Strategy_Car_Object_With_Strategy_Interface_Lose(int value, int expected) {
+        car = new Car("Check");
+        car.moveWithStrategy(new RacingGameLoseMovementStrategy());
         assertThat(car.getScore(value)).isEqualTo(expected);
     }
 }
