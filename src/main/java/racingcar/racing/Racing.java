@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static java.lang.System.out;
 import static racingcar.validate.CarValidate.validateCarsName;
 import static racingcar.view.OutputView.printCarStatus;
 import static racingcar.view.OutputView.resultView;
@@ -18,7 +17,7 @@ public class Racing {
         for(int i=0; i < tryCount; i++) {
             cars = moveCarForward(cars);
             printCarStatus(cars);
-            out.println();
+            System.out.println();
         }
         resultView(cars);
     }

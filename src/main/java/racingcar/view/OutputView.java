@@ -6,8 +6,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static java.lang.System.out;
-
 public class OutputView {
     public static void printCarStatus(List<Car> cars) {
         cars.forEach(car -> {
@@ -16,7 +14,7 @@ public class OutputView {
             for(int i=1; i <= car.getStatus(); i++) {
                 track.append("-");
             }
-            out.println(track);
+            System.out.println(track);
         });
     }
 
@@ -32,11 +30,11 @@ public class OutputView {
                                 .filter(car -> car.getStatus() == maxStatus)
                                 .map(Car::getName)
                                 .collect(Collectors.joining(", "));
-        out.println(winnerMessage + "(이)가 최종 우승했습니다.");
+        System.out.println(winnerMessage + "(이)가 최종 우승했습니다.");
     }
 
     public static void resultView(List<Car> cars) {
-        out.println("실행 결과");
+        System.out.println("실행 결과");
         int maxStatus = getWinnerStatus(cars);
         printRacingWinner(cars, maxStatus);
     }
