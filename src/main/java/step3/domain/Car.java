@@ -4,16 +4,16 @@ import java.util.Objects;
 
 public abstract class Car {
 
-    private int carId;
+    private String carName;
     protected int position;
 
-    public Car(int carId) {
-        this.carId = carId;
+    public Car(String carName) {
+        this.carName = carName;
         this.position = 0;
     }
 
-    public int getCarId() {
-        return carId;
+    public String getCarName() {
+        return carName;
     }
 
     public int getPosition() {
@@ -35,12 +35,13 @@ public abstract class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return carId == car.carId &&
+        return carName == car.carName &&
                 Objects.equals(position, car.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(carId, position);
+        return Objects.hash(carName, position);
     }
+
 }

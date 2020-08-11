@@ -3,11 +3,15 @@ package step3.view;
 import step3.domain.Car;
 import step3.domain.RacingCar;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class ResultView {
 
     private static final String GAME_RESULT = "게임 결과";
+    private static final String PRINT_WINNER_TEXT = "가 최종 우승했습니다.";
     public static String ACCELATE_SIGN = "-";
     public static String BRAKE_SIGN = "";
 
@@ -15,29 +19,29 @@ public class ResultView {
         System.out.println(GAME_RESULT);
     }
 
-    public static void carRace(Map<Integer, Car> carInfoMap, int racingCarNumber, int gameCount) {
+    public static void carRace(Map<String, Car> carInfoMap, int gameCount) {
         for (int i = 1; i <= gameCount; i++) {
-            participatingCars(carInfoMap, racingCarNumber);
+            participatingCars(carInfoMap);
         }
     }
 
-    public static void participatingCars(Map<Integer, Car> carInfoMap, int racingCarNumber) {
-        for (int i = 1; i <= racingCarNumber; i++) {
-            Car car = carInfoMap.get(i);
+    public static void participatingCars(Map<String, Car> carInfoMap) {
+        Set<String> keys = carInfoMap.keySet();
+        for (String carName : keys) {
+            Car car = carInfoMap.get(carName);
             int carPosition = car.getPosition();
 
-            boolean raceResult = RacingCar.receStart(car, i);
+            boolean raceResult = RacingCar.raceStart(carInfoMap, car.getCarName());
             carPosition += RacingCar.updatePosition(raceResult);
             String mileAge = printMovement(carPosition);
 
-            car = new RacingCar(car.getCarId(), carPosition);
-            carInfoMap.put(car.getCarId(), car);
+            car = new RacingCar(car.getCarName(), carPosition);
+            carInfoMap.put(car.getCarName(), car);
 
-            System.out.println(mileAge);
+            System.out.println(car.getCarName() + " : " + mileAge);
         }
         System.out.println();
     }
-
 
 
     public static String printMovement(int position) {
@@ -46,6 +50,25 @@ public class ResultView {
             mileAge += ACCELATE_SIGN;
         }
         return mileAge;
+    }
+
+    public static String printWinner(List<String> winners) {
+        StringBuffer winnerMember = new StringBuffer();
+        Iterator<String> iterator = winners.iterator();
+
+        while (iterator.hasNext()) {
+            winnerMember.append(iterator.next());
+            findNextValue(iterator, winnerMember);
+        }
+        winnerMember.append(PRINT_WINNER_TEXT);
+        return winnerMember.toString();
+    }
+
+    public static StringBuffer findNextValue(Iterator<String> iterator, StringBuffer winnerMember) {
+        if (iterator.hasNext()) {
+            winnerMember.append(", ");
+        }
+        return winnerMember;
     }
 
 }
