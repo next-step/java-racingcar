@@ -1,4 +1,7 @@
-package racingcar;
+package view;
+
+import domain.RacingCar;
+import domain.Track;
 
 import java.util.Arrays;
 import java.util.NoSuchElementException;
@@ -25,7 +28,7 @@ public class ResultView {
         System.out.println(racingCar.getName() + LAPS_DELIMITER + LAP_MART.repeat(racingCar.record()));
     }
 
-    void printlnRace(Track track) {
+    public void printlnRace(Track track) {
         changeLines();
         printlnMessage(RESULT_MESSAGE);
         IntStream.range(BEGIN_INDEX, track.getRounds()).forEach(round -> {
@@ -36,7 +39,7 @@ public class ResultView {
         });
     }
 
-    void printlnWinners(String[] winners) {
+    public void printlnWinners(String[] winners) {
         String winnersString = Arrays.stream(winners)
                 .reduce((accumulator, combiner) -> accumulator + WINNERS_DELIMITER + combiner)
                 .orElseThrow(NoSuchElementException::new);
