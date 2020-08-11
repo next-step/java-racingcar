@@ -37,15 +37,17 @@ public class CarTest {
     @ValueSource(strings = {"자동차 이름은", "myCarName"})
     void shouldExceptionForNameLengthGreaterThanMaxLength(final String carName) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> Car.of(carName, new CarMovable()));
+                .isThrownBy(() -> Car.of(carName, new CarMovable()))
+                .withMessage("자동차 이름의 길이를 확인해 주세요.");
     }
 
     @DisplayName("자동차 이름 공백 또는 빈 값일 경우 테스트")
     @ParameterizedTest
-    @ValueSource(strings = {"    ", ""})
+    @ValueSource(strings = {"    ", "", "\n", "  \n "})
     void shouldExceptionForNameNullOrEmpty(final String carName) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> Car.of(carName, new CarMovable()));
+                .isThrownBy(() -> Car.of(carName, new CarMovable()))
+                .withMessage("자동차 이름의 길이를 확인해 주세요.");
     }
 
     @DisplayName("자동차 전진 하는 경우 확인 테스트")
