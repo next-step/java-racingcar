@@ -1,9 +1,7 @@
 package step2;
 
-
 import java.util.Arrays;
 import java.util.function.BiFunction;
-
 
 public enum OperatorType {
     PLUS("+", (value1, value2) ->  value1 + value2),
@@ -33,4 +31,5 @@ public enum OperatorType {
     private String getOperator() {
         return operator;
     }
+
 }
