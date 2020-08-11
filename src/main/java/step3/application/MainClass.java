@@ -4,11 +4,8 @@ import step3.logic.Car;
 import step3.logic.RacingSupporter;
 import step3.view.input.InputScanner;
 import step3.view.output.OutputText;
-import step3.view.output.OutputView;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class MainClass {
 

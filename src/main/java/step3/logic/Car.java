@@ -16,6 +16,7 @@ public class Car {
         if (this.CAR_GOING_DECISION_POINT <= RandomGenerator.generateRandomCount()) {
             this.carMovement++;
         }
+        System.out.print(this.carName);
         OutputView.printingMovement(this.carMovement);
     }
 
