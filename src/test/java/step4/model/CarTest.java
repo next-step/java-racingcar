@@ -37,11 +37,21 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"0,0"})
+    @CsvSource(value = {"1,1"})
     @DisplayName("차량이 전진 가능한가에 대해 확인")
     void create_Car_Object_And_Increase_distance(int value, int expected) {
         car = new Car("One");
         car.moveForward();
         assertThat(car.getScore(value)).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1,0"})
+    @DisplayName("차량이 전진하지 않고 멈춰있을 수 있는지 확인")
+    void create_Car_Object_And_No_Diff_Distance(int value, int expected) {
+        car = new Car("One");
+        car.stop();
+        assertThat(car.getScore(value)).isEqualTo(expected);
+    }
+
 }

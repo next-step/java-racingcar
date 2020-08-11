@@ -29,4 +29,9 @@ public class Car {
         int lastScore = distance.get(distance.size() - 1);
         distance.add(lastScore + 1);
     }
+
+    public void stop() {
+        int lastScore = distance.get(distance.size() - 1);
+        distance.add(lastScore);
+    }
 }
