@@ -5,13 +5,13 @@ import step3.controller.CarRacing;
 import step3.utility.UserInput;
 import step3.view.ResultView;
 
-class FotStartRacing{
+class FotStartRacing {
     public static void main(String[] args) {
         UserInput input = InputView.initShow();
 
-        CarRacing race =  new CarRacing(input.getCars(),input.getTries());
-        int[][] result = race.gameStart();
+        CarRacing race = new CarRacing(input.getnumOfCars(), input.getTries());
+        race.gameStart();
 
-        ResultView.resultShow(result);
+//        ResultView.resultShow(result);
     }
 }

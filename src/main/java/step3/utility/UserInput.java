@@ -2,16 +2,16 @@ package step3.utility;
 
 public class UserInput {
 
-    int cars;
-    int tries;
+    private int numOfCars;
+    private int tries;
 
-    public UserInput(int cars, int tries) {
-        this.cars = cars;
+    public UserInput(int numOfCars, int tries) {
+        this.numOfCars = numOfCars;
         this.tries = tries;
     }
 
-    public int getCars() {
-        return cars;
+    public int getnumOfCars() {
+        return numOfCars;
     }
 
     public int getTries() {

@@ -28,20 +28,15 @@ class CarTest {
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
-    @Test
-    void isMove(){
-        assertThat(car.isMove(3)).isEqualTo(false);
-    }
-
     @ParameterizedTest
     @ValueSource(ints = {4,5,6})
-    void isMove2(int input){
+    void isMove_true_test(int input){
         assertThat(car.isMove(input)).isEqualTo(true);
     }
 
     @ParameterizedTest
     @ValueSource(ints ={0,2,3})
-    void isMove3(int input ){
+    void isMove_false_test(int input ){
         assertThat(car.isMove(input)).isFalse();
     }
 }
