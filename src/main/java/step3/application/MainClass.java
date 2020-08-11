@@ -23,5 +23,7 @@ public class MainClass {
             cars.forEach(Car::makeCarMove);
             System.out.println();
         }
+
+        RacingSupporter.getWinners(cars);
     }
 }

@@ -1,7 +1,6 @@
 package step3.logic;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RacingSupporter {
@@ -11,11 +10,23 @@ public class RacingSupporter {
     }
 
     public static List<Car> setCarsForRacing(String[] teamNames) {
-        List<Car> cars = Arrays.stream(teamNames)
+
+        return Arrays.stream(teamNames)
                 .filter(name -> name.length() < 5)
                 .map(Car::new)
                 .collect(Collectors.toList());
+    }
 
-        return cars;
+    public static void getWinners(List<Car> cars) {
+        List<Car> winners = cars.stream()
+                .collect(Collectors.groupingBy(
+                        Car::getCarMovedCount,
+                        TreeMap::new,
+                        Collectors.toList()
+                ))
+                .lastEntry()
+                .getValue();
+
+        winners.forEach(car -> System.out.println(car.getCarName()));
     }
 }

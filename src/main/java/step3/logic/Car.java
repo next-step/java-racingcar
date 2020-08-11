@@ -23,4 +23,8 @@ public class Car {
     public String getCarName() {
         return this.carName;
     }
+
+    public int getCarMovedCount() {
+        return this.carMovement;
+    }
 }
