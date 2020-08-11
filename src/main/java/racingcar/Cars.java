@@ -7,20 +7,24 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Cars {
-    private List<Car> cars;
+    private List<Car> cars = new ArrayList<>();
 
-    public Cars(int carCount) {
-        makeCars(carCount);
+    public Cars(List<String> carName) {
+        makeCars(carName);
     }
 
     public List<Car> carList() {
-        return Collections.unmodifiableList(cars);
+//        return Collections.unmodifiableList(cars);
+        return cars;
     }
 
-    public void makeCars(int carCount) {
-        cars = Stream.generate(() -> new Car())
-                .limit(carCount)
-                .collect(Collectors.toList());
+    public void makeCars(List<String> carName) {
+        /*cars = Stream.generate(() -> new Car(carName.get()))
+                .limit(carName.size())
+                .collect(Collectors.toList());*/
+        for (int i = 0; i < carName.size(); i++) {
+            cars.add(new Car(carName.get(i)));
+        }
     }
 
     public void moveCars() {

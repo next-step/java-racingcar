@@ -5,9 +5,11 @@ public class Car {
     private static final int MIN_RANDOM_NUMBER = 3;
 
     private int statusLine;
+    private String carName;
 
-    public Car() {
+    public Car(String carName) {
         this.statusLine = STATUS_LINE;
+        this.carName = carName;
     }
 
     public void move(int random) {
@@ -18,6 +20,10 @@ public class Car {
 
     public int getStatusLine() {
         return statusLine;
+    }
+
+    public String getCarName() {
+        return carName;
     }
 
 }
