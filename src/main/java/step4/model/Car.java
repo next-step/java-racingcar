@@ -1,5 +1,7 @@
 package step4.model;
 
+import step4.strategy.MovementStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,25 +24,11 @@ public class Car {
     }
 
     public int getScore(int i) {
-        return distance.get(i);
+        return this.distance.get(i);
     }
 
-    public void moveForward() {
+    public void moveWithStrategy(MovementStrategy strategy) {
         int lastScore = distance.get(distance.size() - 1);
-        distance.add(lastScore + 1);
-    }
-
-    public void stop() {
-        int lastScore = distance.get(distance.size() - 1);
-        distance.add(lastScore);
-    }
-
-    public void moveWithStrategy(boolean strategy) {
-        if (strategy) {
-            moveForward();
-        }
-        if (!strategy) {
-            stop();
-        }
+        distance.add(strategy.doAction(lastScore));
     }
 }
