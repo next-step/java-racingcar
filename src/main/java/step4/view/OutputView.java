@@ -28,19 +28,28 @@ public class OutputView {
 
     private static void showWinner(List<Car> cars, int maximum) {
         List<String> winnerMembers = new ArrayList<>();
-        OptionalInt maxScore = cars.stream()
-                .flatMap(l -> l.getAllRecords().stream())
-                .distinct()
-                .mapToInt(i -> Integer.parseInt(String.valueOf(i)))
-                .max();
+        int maxScore = getMaximumScoreFromParticipants(cars);
         for (Car car : cars) {
-            winnerMembers.add(findWinnerPlayer(maximum, maxScore.getAsInt(), car));
+            winnerMembers.add(findWinnerPlayer(maximum, maxScore, car));
         }
+        printWinnersFromParticipants(winnerMembers);
+    }
+
+    private static void printWinnersFromParticipants(List<String> winnerMembers) {
         System.out.printf("%s" + WINNER_COMMENT + "%n",
                 winnerMembers.stream()
                         .filter(Objects::nonNull)
                         .collect(Collectors.joining(", "))
         );
+    }
+
+    private static int getMaximumScoreFromParticipants(List<Car> cars) {
+        OptionalInt maxScore = cars.stream()
+                .flatMap(l -> l.getAllRecords().stream())
+                .distinct()
+                .mapToInt(i -> Integer.parseInt(String.valueOf(i)))
+                .max();
+        return maxScore.getAsInt();
     }
 
     private static String findWinnerPlayer(int maximum, int maxScore, Car car) {
