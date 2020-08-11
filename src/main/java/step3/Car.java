@@ -10,6 +10,10 @@ public class Car {
 		this.record = 0;
 	}
 
+	public int getRecord() {
+		return record;
+	}
+
 	public void moveForward(int randomNumber) {
 		if (randomNumber >= CAN_MOVE_NUM) {
 			record++;
