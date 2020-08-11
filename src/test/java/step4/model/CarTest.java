@@ -54,4 +54,12 @@ public class CarTest {
         assertThat(car.getScore(value)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {"true,1,1", "false,1,0"})
+    @DisplayName("입력된 boolean값에 따라 차량이 전진할 것인지, 멈춰있을것인지 결정")
+    void check_Strategy_Car_Object_With_Boolean_Data(boolean strategy, int value, int expected) {
+        car = new Car("Check");
+        car.moveWithStrategy(strategy);
+        assertThat(car.getScore(value)).isEqualTo(expected);
+    }
 }

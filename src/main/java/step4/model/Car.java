@@ -34,4 +34,13 @@ public class Car {
         int lastScore = distance.get(distance.size() - 1);
         distance.add(lastScore);
     }
+
+    public void moveWithStrategy(boolean strategy) {
+        if (strategy) {
+            moveForward();
+        }
+        if (!strategy) {
+            stop();
+        }
+    }
 }
