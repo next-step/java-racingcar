@@ -11,7 +11,11 @@ public class RacingSupporter {
     }
 
     public static List<Car> setCarsForRacing(String[] teamNames) {
-        List<Car> cars = Arrays.stream(teamNames).map(Car::new).collect(Collectors.toList());
+        List<Car> cars = Arrays.stream(teamNames)
+                .filter(name -> name.length() < 5)
+                .map(Car::new)
+                .collect(Collectors.toList());
+
         return cars;
     }
 }
