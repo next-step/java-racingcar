@@ -1,7 +1,7 @@
-package cc.oakk.racing;
+package cc.oakk.racing.model;
 
-import cc.oakk.racing.printer.Printable;
-import cc.oakk.racing.printer.Printer;
+import cc.oakk.racing.view.printer.Printable;
+import cc.oakk.racing.view.printer.Printer;
 
 import java.util.*;
 

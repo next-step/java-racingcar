@@ -1,6 +1,6 @@
-package cc.oakk.racing;
+package cc.oakk.racing.model;
 
-import cc.oakk.racing.predicate.CarForwardCondition;
+import cc.oakk.racing.model.predicate.CarForwardCondition;
 import cc.oakk.racing.util.Validator;
 
 import java.util.ArrayList;

@@ -1,8 +1,8 @@
-package cc.oakk.racing;
+package cc.oakk.racing.model;
 
-import cc.oakk.racing.predicate.CarForwardCondition;
-import cc.oakk.racing.printer.Printable;
-import cc.oakk.racing.printer.Printer;
+import cc.oakk.racing.model.predicate.CarForwardCondition;
+import cc.oakk.racing.view.printer.Printable;
+import cc.oakk.racing.view.printer.Printer;
 
 public class Car implements Printable<Car>, Comparable<Car> {
     private static final String NO_NAME = "no-name";

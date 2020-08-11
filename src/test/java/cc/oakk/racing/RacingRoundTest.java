@@ -1,6 +1,8 @@
 package cc.oakk.racing;
 
-import cc.oakk.racing.predicate.CarForwardCondition;
+import cc.oakk.racing.model.Car;
+import cc.oakk.racing.model.RacingRound;
+import cc.oakk.racing.model.predicate.CarForwardCondition;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

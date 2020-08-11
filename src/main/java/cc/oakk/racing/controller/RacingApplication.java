@@ -1,4 +1,4 @@
-package cc.oakk.racing;
+package cc.oakk.racing.controller;
 
 public class RacingApplication {
     public static void main(String[] args) {

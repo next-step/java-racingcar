@@ -1,4 +1,4 @@
-package cc.oakk.racing.printer;
+package cc.oakk.racing.view.printer;
 
 public final class StandardPrinter implements Printer<String> {
     @Override
