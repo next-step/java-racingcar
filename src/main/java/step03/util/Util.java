@@ -20,9 +20,19 @@ public class Util {
     public static final String HOWMUCHTRY = "시도할 회수는 몇 회 인가요?";
     public static final String RESULT = "실행결과";
     public static final String MOVESTRING = "-";
+    public static final String WHOISWINNER = "가 최종 우승했습니다.";
+
 
     public static Scanner input() {
         return new Scanner(System.in);
+    }
+
+    public static String removeLastComma(StringBuffer winners) {
+        // TODO Auto-generated method stub
+        int last = winners.lastIndexOf(", ");
+        String result = winners.toString().substring(0, last);
+
+        return result;
     }
 
 }
