@@ -2,20 +2,16 @@ package racingcar;
 
 import java.util.Random;
 
-class RacingCar {
+public class RacingCar {
 
-    private final Random random = new Random();
-    private String name;
+    private static final Random RANDOM = new Random();
+    private static final int BOUND = 10;
+    private static final int BENCHMARK = 4;
+
+    private final String name;
     private int laps = 0;
 
-    RacingCar() {
-    }
-
-    RacingCar(String name) {
-        this.setName(name);
-    }
-
-    public void setName(String name) {
+    public RacingCar(String name) {
         this.name = name;
     }
 
@@ -28,9 +24,7 @@ class RacingCar {
     }
 
     public void race() {
-        int bound = 10;
-        int benchmark = 4;
-        if (random.nextInt(bound) >= benchmark) {
+        if (RANDOM.nextInt(BOUND) >= BENCHMARK) {
             laps++;
         }
     }

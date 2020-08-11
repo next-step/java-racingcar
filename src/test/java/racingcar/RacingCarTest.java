@@ -12,33 +12,36 @@ import static org.assertj.core.api.BDDAssertions.then;
 
 class RacingCarTest {
 
+    private static final String DEFAULT_NAME = "name";
+    private static final int BEGIN_INDEX = 0;
+
     private RacingCar racingCar;
 
     @BeforeEach
     void setUp() {
-        racingCar = new RacingCar();
+        racingCar = new RacingCar(DEFAULT_NAME);
     }
 
     @ParameterizedTest
-    @DisplayName("setName and getName")
+    @DisplayName("test getName()")
     @ValueSource(strings = {"pobi", "crong", "honux"})
-    void setNameAndGetName(String name) {
-        racingCar.setName(name);
+    void getName(String name) {
+        RacingCar racingCar = new RacingCar(name);
         then(racingCar.getName()).isEqualTo(name);
     }
 
     @Test
-    @DisplayName("racord")
+    @DisplayName("test racord()")
     void record() {
         int expected = 0;
         then(racingCar.record()).isEqualTo(expected);
     }
 
     @ParameterizedTest
-    @DisplayName("race")
+    @DisplayName("test race()")
     @ValueSource(ints = {1, 2, 3, 4, 5})
     void race(int rounds) {
-        IntStream.range(0, rounds).forEach(round -> racingCar.race());
-        then(racingCar.record()).matches(laps -> 0 <= laps && laps <= rounds);
+        IntStream.range(BEGIN_INDEX, rounds).forEach(round -> racingCar.race());
+        then(racingCar.record()).matches(laps -> BEGIN_INDEX <= laps && laps <= rounds);
     }
 }

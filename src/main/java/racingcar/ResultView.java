@@ -1,9 +1,17 @@
 package racingcar;
 
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 import java.util.stream.IntStream;
 
-class ResultView {
+public class ResultView {
+
+    private static final String RESULT_MESSAGE = "실행결과";
+    private static final String LAPS_DELIMITER = " : ";
+    private static final String LAP_MART = "-";
+    private static final String WINNERS_DELIMITER = ", ";
+    private static final String WINNERS_MESSAGE = "이(가) 최종 우승했습니다.";
+    private static final int BEGIN_INDEX = 0;
 
     private void changeLines() {
         System.out.println();
@@ -14,34 +22,24 @@ class ResultView {
     }
 
     private void printlnLaps(RacingCar racingCar) {
-        String delimiter = " : ";
-        String lapMart = "-";
-        System.out.println(racingCar.getName() + delimiter + lapMart.repeat(racingCar.record()));
+        System.out.println(racingCar.getName() + LAPS_DELIMITER + LAP_MART.repeat(racingCar.record()));
     }
 
-    void printlnRace(RacingCar[] entries, int rounds) {
+    void printlnRace(Track track) {
         changeLines();
-        printlnMessage("실행결과");
-        IntStream.range(0, rounds).forEach(round -> {
-            Arrays.stream(entries)
-                    .peek(RacingCar::race)
+        printlnMessage(RESULT_MESSAGE);
+        IntStream.range(BEGIN_INDEX, track.getRounds()).forEach(round -> {
+            track.race();
+            Arrays.stream(track.getEntries())
                     .forEach(this::printlnLaps);
             changeLines();
         });
     }
 
-    void printlnWinners(RacingCar[] entries) {
-        String delimiter = ", ";
-        String message = "이(가) 최종 우승했습니다.";
-        int winningLaps = Arrays.stream(entries)
-                .map(RacingCar::record)
-                .max(Integer::compare)
-                .get();
-        String winners = Arrays.stream(entries)
-                .filter(racingCar -> racingCar.record() == winningLaps)
-                .map(RacingCar::getName)
-                .reduce((accumulator, combiner) -> accumulator + delimiter + combiner)
-                .get();
-        printlnMessage(winners + message);
+    void printlnWinners(String[] winners) {
+        String winnersString = Arrays.stream(winners)
+                .reduce((accumulator, combiner) -> accumulator + WINNERS_DELIMITER + combiner)
+                .orElseThrow(NoSuchElementException::new);
+        printlnMessage(winnersString + WINNERS_MESSAGE);
     }
 }
