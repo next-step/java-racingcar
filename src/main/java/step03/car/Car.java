@@ -7,7 +7,7 @@ package step03.car;
  * @comment : Car의 책임 : 차는 움직인다.
  * Time : 9:23 오후
  */
-public class Car {
+public class Car implements Comparable<Car>{
     private static final int MOVESTANDARD = 4;
     private int moveCount = 0;
     private final String carName;
@@ -28,6 +28,11 @@ public class Car {
 
     public int getMoveCount() {
         return moveCount;
+    }
+
+    @Override
+    public int compareTo(final Car o) {
+        return this.moveCount <= o.moveCount ? 1 : -1;
     }
 
 }
