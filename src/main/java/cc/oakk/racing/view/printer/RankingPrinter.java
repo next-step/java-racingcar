@@ -18,7 +18,9 @@ public class RankingPrinter extends StringPrinter<Ranking> {
         }
 
         List<Car> winners = source.getWinner();
-        String joinedResult = winners.stream().map(Car::getName).collect(Collectors.joining(DELIMITER, PREFIX, SUFFIX));
+        String joinedResult = winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(DELIMITER, PREFIX, SUFFIX));
 
         stringPrinter.print(joinedResult);
     }
