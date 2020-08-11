@@ -1,9 +1,8 @@
 package racing.domain;
 
-import java.util.Random;
+import racing.util.RandomUtil;
 
 public class Car {
-    private static final int RANDOM_MAX_NUM = 10;
     private String name;
     private int location;
 
@@ -13,20 +12,16 @@ public class Car {
     }
 
     public void run() {
-        if (isCondition(getRandomNum())) {
+        if (isCondition(RandomUtil.getRandomNum())) {
             move();
         }
-    }
-
-    private int getRandomNum() {
-        return new Random().nextInt(RANDOM_MAX_NUM);
     }
 
     public boolean isCondition(int randomNum) {
         return Condition.checkMove(randomNum);
     }
 
-    public void move() {
+    void move() {
         this.location++;
     }
 

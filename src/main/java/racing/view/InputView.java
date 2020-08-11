@@ -7,38 +7,41 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class InputView {
-    private final String[] arrName;
+    private final Scanner scanner = new Scanner(System.in);
+    private final String[] carNames;
     private final int repeatCount;
 
     public InputView() throws Exception {
+        carNames = inputCarNames();
+        ValidatorUtils.validName(carNames);
+        repeatCount = inputRepeatCount();
+    }
+
+    private String[] inputCarNames() {
         System.out.println(ViewMsg.START_MSG_CAR.getMsg());
-        arrName = inputString().split(",");
-        checkName();
+        return Arrays.stream(inputString().split(",")).map(String::trim).toArray(String[]::new);
+    }
+
+    private int inputRepeatCount() {
         System.out.println(ViewMsg.START_MSG_REPEAT.getMsg());
-        this.repeatCount = inputNumber();
+        return inputNumber();
     }
 
     private String inputString() {
-        Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
 
     private int inputNumber() {
-        Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
 
     public String[] getCarNames() {
-        return arrName;
+        return carNames;
     }
 
     public int getrepeatCount() {
         return repeatCount;
     }
 
-    private void checkName() throws Exception {
-        Arrays.stream(this.arrName).forEach(name -> {
-            ValidatorUtils.name(name);
-        });
-    }
+
 }
