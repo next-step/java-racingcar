@@ -28,15 +28,14 @@ public class InputView {
         int tryNum = input.nextInt();
         System.out.println(Util.RESULT);
 
-        final InputView inputView = new InputView();
-
         final CarCenter carCenter = new CarCenter();
         final List<Car> cars = carCenter.makingCar(carName);
 
         final CarRacingGame carRacingGame = new CarRacingGame();
-        List<Car> resultCar = carRacingGame.racing(tryNum, cars, new CalculatorRandomScore());
+        carRacingGame.racing(tryNum, cars, new CalculatorRandomScore());
 
-        carRacingGame.drawWinnerBoard();
+        final ResultView resultView = new ResultView();
+        resultView.drawWinnerBoard(cars, new WinnerCalculate());
     }
 
 }

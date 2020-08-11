@@ -23,17 +23,13 @@ public class CarRacingGame extends AbstCarRacingGame{
     private final ResultView resultView = new ResultView();
 
     @Override
-    public void gameStart(List<Car> cars, ScoreCalculate scoreCalculate) {
+    public void gameStart(final List<Car> cars, final ScoreCalculate scoreCalculate) {
         for (int i = 0; i < cars.size(); i++) {
             final int randomNum = scoreCalculate.calculateScore();
             cars.get(i).advanceOneSpace(randomNum);
             this.cars = cars;
         }
         drawScoreBoard();
-    }
-
-    public void drawWinnerBoard() {
-        resultView.getWinnerScore(cars, new WinnerCalculate());
     }
 
     public void drawScoreBoard() {

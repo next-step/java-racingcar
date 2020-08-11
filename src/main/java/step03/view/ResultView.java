@@ -31,9 +31,22 @@ public class ResultView {
         System.out.println();
     }
 
-    public void getWinnerScore(List<Car> cars, ResultCalculate resultCalculate) {
-        int winnerScore = resultCalculate.resultCalculate(cars);
-        System.out.println(winnerScore);
+    public void drawWinnerBoard(final List<Car> cars, final ResultCalculate winnerCalculate) {
+        int winnerScore = winnerCalculate.getWinnerScore(cars);
+
+        StringBuffer winners = new StringBuffer();
+        Car car;
+
+        for (int i = 0; i < cars.size(); i++) {
+            car = cars.get(i);
+            if (car.getMoveCount() == winnerScore) {
+                winners.append(car.getCarName());
+                winners.append(", ");
+            }
+        }
+        String resultWinner = Util.removeLastComma(winners);
+
+        System.out.println(resultWinner+Util.WHOISWINNER);
     }
 
 }
