@@ -9,9 +9,9 @@ public class InputView {
 
     private static Scanner sc = new Scanner(System.in);
 
-    public static int makeCarsName() {
+    public static String makeCarsName() {
         System.out.println(INPUT_CARS_NAMING);
-        return sc.nextInt();
+        return sc.nextLine();
     }
 
     public static int getCountOfRepeat() {
