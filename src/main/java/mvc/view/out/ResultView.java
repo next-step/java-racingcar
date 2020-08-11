@@ -3,7 +3,7 @@ package mvc.view.out;
 import mvc.common.Messages;
 import mvc.domain.dto.CarState;
 import mvc.domain.dto.GameSteps;
-import mvc.domain.dto.StateOfCarsList;
+import mvc.domain.dto.StateOfCars;
 import mvc.domain.dto.GameResults;
 
 import java.io.PrintWriter;
@@ -32,9 +32,10 @@ public class ResultView {
                 .stream().forEach(this::printAllStateOfCars);
     }
 
-    private void printAllStateOfCars(StateOfCarsList stateOfCarsList) {
+    private void printAllStateOfCars(StateOfCars stateOfCarsList) {
         stateOfCarsList.getStates()
-                .stream().forEach(this::printCar);
+                .stream()
+                .forEach(this::printCar);
 
         writer.println(Messages.EMPTY_STRING.valueOf());
     }

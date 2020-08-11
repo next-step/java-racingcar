@@ -3,7 +3,7 @@ package mvc.domain.game;
 
 import mvc.domain.car.Cars;
 import mvc.domain.dto.GameSteps;
-import mvc.domain.dto.StateOfCarsList;
+import mvc.domain.dto.StateOfCars;
 import mvc.domain.dto.GameInputs;
 import mvc.domain.dto.GameResults;
 
@@ -21,16 +21,12 @@ public class RacingGame {
     public GameResults startGame() {
         GameSteps steps = GameSteps.createSteps();
 
-        steps.addStep(
-                StateOfCarsList.makeCarStateList(this.cars.getStates())
-        );
+        steps.addStep(this.cars.getStates());
 
         for (int step = 0; step < this.numberOfTrials; step++) {
             cars.moveCars();
 
-            steps.addStep(
-                    StateOfCarsList.makeCarStateList(this.cars.getStates())
-            );
+            steps.addStep(this.cars.getStates());
         }
 
         List<String> winners = this.cars.findByMaxPosition();

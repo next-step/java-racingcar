@@ -1,10 +1,11 @@
 package mvc.domain.car;
 
 import mvc.domain.dto.CarState;
+import mvc.domain.dto.StateOfCars;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,19 +17,16 @@ class CarsTest {
         String[] names = new String[]{"pobi", "eeseul", "teacher"};
 
         Cars cars = Cars.createAllCars(names);
-
-        List<String> nameList = Arrays.asList(names);
+        StateOfCars states = cars.getStates();
 
         //when
-        boolean expected = true;
-
-        List<CarState> states = cars.getStates();
-
-        for (CarState state : states) {
-            expected &= nameList.contains(state.getName());
-        }
+        List<String> actualName = states.getStates()
+                .stream()
+                .map(CarState::getName)
+                .collect(Collectors.toList());
 
         //then
-        assertThat(expected).isTrue();
+        assertThat(actualName).contains(names);
+        assertThat(actualName).hasSize(names.length);
     }
 }

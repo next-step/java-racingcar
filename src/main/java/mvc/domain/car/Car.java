@@ -1,6 +1,5 @@
 package mvc.domain.car;
 
-
 import mvc.domain.dto.CarState;
 
 public class Car implements Comparable<Car> {
@@ -25,8 +24,8 @@ public class Car implements Comparable<Car> {
         return CarState.makeCarState(this.name, this.position);
     }
 
-    public int getPosition() {
-        return this.position;
+    public boolean equalsPosition(int position) {
+        return this.position == position;
     }
 
     public static Car createCar(String name) {
@@ -35,7 +34,7 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car other) {
-        return this.getPosition() - other.getPosition();
+        return this.position - other.position;
     }
 
     @Override

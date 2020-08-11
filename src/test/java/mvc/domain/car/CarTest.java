@@ -30,12 +30,15 @@ class CarTest {
 
     @Test
     void 연료주입에_따른_Car_전진_테스팅() {
+        CarState carState = car.getState();
+
         int fuel = 4;
-        int previousPosition = car.getPosition();
+        int previousPosition = carState.getPosition();
 
         car.move(fuel);
 
-        int actual = car.getPosition();
+        int actual = car.getState()
+                .getPosition();
         int expected = previousPosition + 1;
 
         assertThat(expected).isEqualTo(actual);
@@ -43,12 +46,14 @@ class CarTest {
 
     @Test
     void 연료주입에_따른_Car_정지_테스팅() {
+        CarState carState = car.getState();
+
         int fuel = 1;
-        int expected = car.getPosition();
+        int expected = carState.getPosition();
 
         car.move(fuel);
 
-        int actual = car.getPosition();
+        int actual = carState.getPosition();
 
         assertThat(expected).isEqualTo(actual);
     }

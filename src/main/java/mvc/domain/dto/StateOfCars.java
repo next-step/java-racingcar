@@ -3,10 +3,10 @@ package mvc.domain.dto;
 
 import java.util.List;
 
-public class StateOfCarsList {
+public class StateOfCars {
     private final List<CarState> states;
 
-    private StateOfCarsList(List<CarState> states) {
+    private StateOfCars(List<CarState> states) {
         this.states = states;
     }
 
@@ -14,7 +14,7 @@ public class StateOfCarsList {
         return this.states;
     }
 
-    public static StateOfCarsList makeCarStateList(List<CarState> states) {
-        return new StateOfCarsList(states);
+    public static StateOfCars makeCarStateList(List<CarState> states) {
+        return new StateOfCars(states);
     }
 }

@@ -20,8 +20,13 @@ public class RacingGameController {
 
     public void start() {
         GameResults results = this.racingGame.startGame();
-
         this.viewResolver.printGameResult(results);
+    }
+
+    public static void main(String[] args) {
+        RacingGameController controller = RacingGameController.createGameController();
+
+        controller.start();
     }
 
     public static RacingGameController createGameController() {

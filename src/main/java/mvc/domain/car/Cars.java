@@ -2,6 +2,7 @@ package mvc.domain.car;
 
 import mvc.common.RandomGenerator;
 import mvc.domain.dto.CarState;
+import mvc.domain.dto.StateOfCars;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,29 +35,30 @@ public class Cars {
         }
     }
 
-    public List<CarState> getStates() {
+    public StateOfCars getStates() {
         List<CarState> states = new ArrayList<>();
 
         for (Car car : this.cars) {
             states.add(car.getState());
         }
 
-        return states;
+        return StateOfCars.makeCarStateList(states);
     }
 
     private int getMaxPosition() {
-        Car car =  Arrays.stream(this.cars)
+        CarState maxState =  Arrays.stream(this.cars)
                 .max(Car::compareTo)
+                .map(Car::getState)
                 .orElseThrow(()->new NoSuchElementException("승자가 없습니다."));
 
-        return car.getPosition();
+        return maxState.getPosition();
     }
 
     public List<String> findByMaxPosition() {
         int maxPosition = getMaxPosition();
 
         return Arrays.stream(this.cars)
-                .filter(car -> car.getPosition() == maxPosition)
+                .filter(car -> car.equalsPosition(maxPosition))
                 .map(Car::toString)
                 .collect(Collectors.toList());
     }

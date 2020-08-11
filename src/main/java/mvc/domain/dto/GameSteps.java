@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameSteps {
-    private final List<StateOfCarsList> steps;
+    private final List<StateOfCars> steps;
 
     private GameSteps() {
         steps = new ArrayList<>();
     }
 
-    public void addStep(StateOfCarsList step) {
+    public void addStep(StateOfCars step) {
         steps.add(step);
     }
 
-    public List<StateOfCarsList> getSteps() {
+    public List<StateOfCars> getSteps() {
         return this.steps;
     }
 
