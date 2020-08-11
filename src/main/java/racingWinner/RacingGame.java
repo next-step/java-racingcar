@@ -20,7 +20,7 @@ public class RacingGame {
 	}
 	
 	
-	//자동차 생성
+	//make Car
 	public static List<Car> makeCars(String[] carNamesArray) {
 		List<Car> cars = new ArrayList<Car>();
 		for(int i = 0; i < carNamesArray.length; i++) {
