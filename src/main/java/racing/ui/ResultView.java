@@ -17,9 +17,10 @@ public class ResultView {
 
     private void printRaceRecord(RaceRecord raceRecord) {
         System.out.println("RACE :: " + raceRecord.getRaceId());
-        raceRecord.getTrackRecords().stream()
-                .map(r -> StringUtil.makeRepeatString(r, RAIL_STRING))
-                .forEach(System.out::println);
+        raceRecord.getTrackRecords().forEach(
+            (key, value) -> System.out.printf("%s : %s \n", key, StringUtil.makeRepeatString(value, RAIL_STRING))
+        );
+        System.out.println();
     }
 
 }

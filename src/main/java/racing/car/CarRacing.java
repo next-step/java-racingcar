@@ -14,16 +14,16 @@ public class CarRacing {
     private List<RaceRecord> raceRecords;
     private MovableRule movableRule;
 
-    public CarRacing(int carNumber, int times, MovableRule movableRule) {
-        validateParameter(carNumber, times);
+    public CarRacing(String[] names, int times, MovableRule movableRule) {
+        validateParameter(names.length, times);
 
         this.cars = new ArrayList<>();
         this.raceRecords = new ArrayList<>();
         this.times = times;
         this.movableRule = movableRule;
 
-        for (int i = 0; i < carNumber; i++) {
-            cars.add(new Car(i, 0));
+        for (String name : names) {
+            cars.add(new Car(name, 0));
         }
     }
 
@@ -38,19 +38,13 @@ public class CarRacing {
             racing(car);
         }
 
-        raceRecords.add(new RaceRecord(raceNumber, makeTrackRecords()));
+        raceRecords.add(RaceRecord.of(raceNumber, cars));
     }
 
     private void racing(Car car) {
         if (movableRule.isMovable()) {
             car.go();
         }
-    }
-
-    private List<Integer> makeTrackRecords() {
-        return cars.stream()
-                .map(Car::getLocation)
-                .collect(Collectors.toList());
     }
 
     public List<RaceRecord> getRaceRecords() {
