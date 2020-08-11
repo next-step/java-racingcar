@@ -3,35 +3,30 @@ package com.cspark.nextstep.step3.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
-import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class Cars {
 
-  private final int roundCount;
   private final List<Car> cars;
 
-  private int currentCount = 0;
-
-  public Cars(int roundCount, String[] carNames, Function<Dice, Boolean> rule) {
-    this.roundCount = roundCount;
-    this.cars = makeCars(carNames, rule);
+  public Cars(String[] carNames) {
+    this.cars = makeCars(carNames);
   }
 
-  private List<Car> makeCars(String[] carNames, Function<Dice, Boolean> rule) {
+  private List<Car> makeCars(String[] carNames) {
     List<Car> cars = new ArrayList<>();
 
     for (String carName : carNames) {
-      cars.add(new Car(carName, rule));
+      cars.add(new Car(carName));
     }
 
     return cars;
   }
 
-  public List<Scorecard> race(Dice dice) {
-    currentCount++;
+  public List<Scorecard> race(RaceRule raceRule, Dice dice) {
     for (Car car : cars) {
-      car.drive(dice);
+      car.drive(() -> raceRule.apply(dice));
     }
     return scorecard();
   }
@@ -40,10 +35,6 @@ public class Cars {
     return cars.stream()
         .map(Scorecard::of)
         .collect(Collectors.toList());
-  }
-
-  public boolean hasNextLap() {
-    return currentCount < roundCount;
   }
 
   public List<Scorecard> podium() {

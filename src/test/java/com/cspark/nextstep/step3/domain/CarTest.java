@@ -18,13 +18,13 @@ class CarTest {
   void setUp() {
     this.falseDice = new Dice(MIN, 3);
     this.trueDice = new Dice(4, MAX);
-    this.car = new Car("pcs", (d) -> d.cast() > 3);
+    this.car = new Car("pcs");
   }
 
   @DisplayName("전진 할 수 있다.")
   @Test
   void driveForward() {
-    car.drive(trueDice);
+    car.drive(() -> true);
     assertThat(car.forwardCount())
         .isOne();
   }
@@ -32,7 +32,7 @@ class CarTest {
   @DisplayName("정지 할 수 있다.")
   @Test
   void driveStop() {
-    car.drive(falseDice);
+    car.drive(() -> false);
     assertThat(car.forwardCount())
         .isZero();
   }
