@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 @DisplayName("도메인 Car에 대한 기능테스트")
 public class CarTest {
@@ -17,5 +18,12 @@ public class CarTest {
     void create_Car_Domain_With_Name_Test(String name, String expected) {
         car = new Car(name);
         assertThat(car.getName()).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"Lavender", "Lanister", "Rasputin"})
+    void create_Car_Domain_Exception_name_size_restriction(String name) {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> car = new Car(name));
     }
 }
