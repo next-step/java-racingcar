@@ -24,15 +24,12 @@ public class Cars {
         return cars;
     }
 
-    public List<Car> move() {
-        for (Car car : cars) {
-            car.move();
-        }
-
-        return getCars();
+    public List<CarStatus> move() {
+        cars.forEach(car -> car.move());
+        return roundStatus();
     }
 
-    public List<CarStatus> snapshotStatus() {
+    private List<CarStatus> roundStatus() {
         return this.cars.stream()
                 .map(car -> CarStatus.newInstance(car))
                 .collect(Collectors.toList());

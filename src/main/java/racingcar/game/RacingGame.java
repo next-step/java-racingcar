@@ -4,6 +4,8 @@ import racingcar.car.CarNames;
 import racingcar.car.Cars;
 import racingcar.engine.RandomPowerEngine;
 
+import java.util.List;
+
 public class RacingGame {
     private Cars cars;
     private int round;
@@ -22,8 +24,8 @@ public class RacingGame {
         RacingGameResult racingGameResult = RacingGameResult.newInstance();
 
         for (int i = 0; i < this.round; i++) {
-            cars.move();
-            racingGameResult.add(RoundResult.newInstance(this.cars));
+            List<CarStatus> roundStatus = cars.move();
+            racingGameResult.add(RoundResult.newInstance(roundStatus));
         }
 
         return racingGameResult;

@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.engine.FixedGoPowerEngine;
-import racingcar.engine.RandomPowerEngine;
 import racingcar.game.CarStatus;
 
 import java.util.List;
@@ -33,24 +32,35 @@ class CarsTest {
         assertEquals(carNames.getNames().size(), carList.size());
     }
 
-    @DisplayName("등록된 자동차들 1회씩 전진")
+//    @DisplayName("등록된 자동차들 1회씩 전진")
+//    @Test
+//    void moveAllCars() {
+//        //when
+//        List<Car> result = cars.move();
+//
+//        //then
+//        int expected = 1;
+//        result.forEach(car -> assertEquals(expected, car.getPosition()));
+//    }
+
+//    @DisplayName("자동차 경주 현재상태 반환")
+//    @Test
+//    void snapshotStatus() {
+//        //when
+//        List<CarStatus> carStatuses = cars.snapshotStatus();
+//
+//        //then
+//        assertEquals(carStatuses.size(), carNames.getNames().size());
+//    }
+
+    @DisplayName("등록된 자동차들 1회씩 전진하고 자동차들의 상태 목록을 반환한다.")
     @Test
-    void moveAllCars() {
+    void moveAllCars2() {
         //when
-        List<Car> result = cars.move();
+        List<CarStatus> result = cars.move();
 
         //then
         int expected = 1;
-        result.forEach(car -> assertEquals(expected, car.getPosition()));
-    }
-
-    @DisplayName("자동차 경주 현재상태 반환")
-    @Test
-    void snapshotStatus() {
-        //when
-        List<CarStatus> carStatuses = cars.snapshotStatus();
-
-        //then
-        assertEquals(carStatuses.size(), carNames.getNames().size());
+        result.forEach(carStatus -> assertThat(carStatus.equalsPosition(expected)).isTrue());
     }
 }
