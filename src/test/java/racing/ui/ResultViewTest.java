@@ -26,9 +26,10 @@ class ResultViewTest {
     void setUpStreams() {
         System.setOut(new PrintStream(outContent));
         System.setErr(new PrintStream(errContent));
+        String[] names = {"lee", "hong", "kim"};
 
         resultView = new ResultView();
-        carRacing = new CarRacing(3, 3, new RandomMovableRule());
+        carRacing = new CarRacing(names, 3, new RandomMovableRule());
         carRacing.run();
     }
 
