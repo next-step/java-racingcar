@@ -28,7 +28,7 @@ public class Util {
     }
 
     public static String removeLastComma(StringBuffer winners) {
-        // TODO Auto-generated method stub
+
         int last = winners.lastIndexOf(", ");
         String result = winners.toString().substring(0, last);
 

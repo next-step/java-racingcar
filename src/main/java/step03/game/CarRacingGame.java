@@ -1,7 +1,6 @@
 package step03.game;
 
 import step03.calculatescore.ScoreCalculate;
-import step03.calculatescore.WinnerCalculate;
 import step03.car.Car;
 import step03.view.ResultView;
 
