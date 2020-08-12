@@ -16,6 +16,7 @@ public class ValidationUtilsTest {
     void invalid_name_nullOrBlank() {
         assertThat(validName(null)).isFalse();
         assertThat(validName("")).isFalse();
+        assertThat(validName("    ")).isFalse();
     }
 
     @Test
