@@ -20,15 +20,15 @@ public abstract class Car {
         return position;
     }
 
-    public boolean accelerate() {
+    public boolean canAccelerate() {
         return true;
     }
 
-    public boolean brake() {
+    public boolean canBrake() {
         return false;
     }
 
-    public abstract boolean move(int racingCondition, int movementPolicy);
+    public abstract boolean canMove(int racingCondition, int movementPolicy);
 
     @Override
     public boolean equals(Object o) {

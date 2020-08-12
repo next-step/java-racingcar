@@ -12,11 +12,11 @@ public class RacingCar extends Car {
     }
 
     @Override
-    public boolean move(int racingCondition, int movementPolicy) {
+    public boolean canMove(int racingCondition, int movementPolicy) {
         if (racingCondition > movementPolicy) {
-            return accelerate();
+            return canAccelerate();
         }
-        return brake();
+        return canBrake();
     }
 
     public static Map<String, Car> preparationForGame(String racingCarName) {
@@ -44,13 +44,13 @@ public class RacingCar extends Car {
         return 0;
     }
 
-    public static boolean raceStart(Map<String, Car> carInfoMap, String racingCarName) {
+    public static boolean isRaceStart(Map<String, Car> carInfoMap, String racingCarName) {
         boolean result = false;
 
         if (carInfoMap.containsKey(racingCarName)) {
             Car racingCar = carInfoMap.get(racingCarName);
             int raceConditionResult = RacingRule.raceCondition();
-            result = racingCar.move(raceConditionResult, RacingRule.MOVEMENT_POLICY);
+            result = racingCar.canMove(raceConditionResult, RacingRule.MOVEMENT_POLICY);
         }
         return result;
     }
