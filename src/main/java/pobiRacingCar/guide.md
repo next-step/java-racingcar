@@ -1,9 +1,11 @@
 ## **자동차 경주(4단계)**
 ##### Shortcuts
     * Command + N : Generate (Annotation, Override, Test method...)
+                  : Generate Equals & HashCode (null여부 , field 정의)
     * Alt + Enter : auto Import, create Class (주의 : test 아닌 main dir)
                     @Test : method -> (1) class 생성 -> (2) method도 class내에 생성
     * Command + Alt + C : constant refactoring (magic number -> static constant)
+    
 #### [기능 요구사항]
 * 각 자동차에 이름을 부여할 수 있다. 자동차 이름은 5자를 초과할 수 없다.
 * 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
@@ -13,7 +15,7 @@
 
 ### 요구사항 분석 --> 구현할 기능 목록 
 #####1. 자동차 이름 입력 ("," 기준) 후 자동차 객체 생성
-    [ ] (a) 참여자 이름 split하고 자동차 생성 
+    [V] (a) 참여자 이름 split하고 자동차 생성 
     [V] (b) 1자 이상, 5자 이하 정상 이름인지 확인
 #####2. 자동차 이동/경주 횟수 및 거리 계산
     [ ] (c) 매 회 자동차 이동 (유무 / 거리) 계산
