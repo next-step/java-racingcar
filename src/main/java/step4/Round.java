@@ -1,4 +1,4 @@
-package step3;
+package step4;
 
 import java.util.List;
 import java.util.Random;
@@ -12,7 +12,7 @@ public class Round {
 			car.moveForward(getRandomNumber());
 			ResultView.saveRoundScore(car);
 		}
-		ResultView.setNextRound();
+		ResultView.nextRound();
 	}
 
 	private static int getRandomNumber() {

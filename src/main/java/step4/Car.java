@@ -1,13 +1,18 @@
-package step3;
+package step4;
 
 public class Car {
-
 	private static final int CAN_MOVE_NUM = 4;
 
+	private final String name;
 	private int record;
 
-	public Car() {
+	public Car(String name) {
+		this.name = name;
 		this.record = 0;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	public int getRecord() {
@@ -28,13 +33,18 @@ public class Car {
 
 		if (obj instanceof Car) {
 			Car anotherCar = (Car) obj;
-			return this.record == anotherCar.record;
+			return sameValues(this, anotherCar);
 		}
 		return false;
 	}
 
+	private boolean sameValues(Car car, Car anCar) {
+		return car.name.equals(anCar.name) && car.record == anCar.record;
+	}
+
 	@Override
 	public int hashCode() {
-		return super.hashCode();
+		return this.name != null ? this.name.hashCode() : 0;
 	}
+
 }

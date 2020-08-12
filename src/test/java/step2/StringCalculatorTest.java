@@ -26,13 +26,6 @@ class StringCalculatorTest {
 				.containsPattern(Pattern.compile("^[0-9]+$"));
 	}
 
-	@DisplayName(value = "사칙연산 실패 에러 발생 조건 테스트")
-	@ParameterizedTest
-	@ValueSource(strings = {"  ", "+", "* 3 ", " 4", "* 4 4", "1+2", "+3-2", "4.5 + 5.5", "4 - 2 *"})
-	void getFailResult(String str) {
-		assertThat(stringCalculator.isPossibleCalculate(str)).isFalse();
-	}
-
 	@DisplayName(value = "각 연산자별 사칙연산 테스트")
 	@ParameterizedTest
 	@ValueSource(strings = {"+", "-", "*", "/"})
@@ -43,7 +36,7 @@ class StringCalculatorTest {
 
 	@DisplayName(value = "덧셈 테스트")
 	@ParameterizedTest
-	@CsvSource(value = {"2 + 3=5", "1 + 1 + 10000=10002", "0 + 999=999", "1=1"}, delimiter = '=')
+	@CsvSource(value = {"2 + 3=5", "1 + 1 + 10000=10002", "0 + 999=999"}, delimiter = '=')
 	void addition(String value, String expected) {
 		assertThat(stringCalculator.getResult(value))
 				.isEqualTo(expected)
