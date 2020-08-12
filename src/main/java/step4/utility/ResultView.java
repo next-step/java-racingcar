@@ -1,6 +1,7 @@
-package step3.utility;
+package step4.utility;
 
-import step3.model.CarRecord;
+import step4.controller.CarRacing;
+import step4.model.CarRecord;
 
 public class ResultView {
     static final int FIRST_ELEMENT = 0;
@@ -9,10 +10,13 @@ public class ResultView {
         for (int i = 0; i < cars[FIRST_ELEMENT].getRecordList().size(); i++) {
             eachTries(i, cars);
         }
+        CarRacing.calculateWinner(cars);
     }
 
     private static void eachTries(int i, CarRecord[] cars) {
         for (int l = 0; l < cars.length; l++) {
+            System.out.print(cars[l].getCarName() + ": ");
+
             int length = cars[l].getRecordList().get(i);
             ResultView.eachCarRecord(length);
         }
