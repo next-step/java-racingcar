@@ -15,9 +15,9 @@ class OutputViewTest {
 
     @BeforeEach
     void init() {
-        cars.add(new Car("애플", 1));
-        cars.add(new Car("삼성", 1));
-        cars.add(new Car("구글", 1));
+        cars.add(new Car("애플", 4));
+        cars.add(new Car("삼성", 5));
+        cars.add(new Car("구글", 3));
     }
 
     @Test
@@ -27,15 +27,11 @@ class OutputViewTest {
 
     @Test
     void 가장높은_상태값_출력_성공() {
-        cars.get(1).setStatus(5);
         assertEquals(5, getWinnerStatus(cars));
     }
 
     @Test
     void 우승자_출력_성공() {
-        cars.get(0).setStatus(4);
-        cars.get(1).setStatus(5);
-        cars.get(2).setStatus(5);
         printRacingWinner(cars, 5);
     }
 
