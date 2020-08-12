@@ -1,4 +1,4 @@
-package step03;
+package step03.calculatescore;
 
 import org.junit.jupiter.api.Test;
 import step03.calculatescore.CalculatorRandomScore;
@@ -21,4 +21,5 @@ class CalculatorRandomScoreTest {
 
         assertThat(result).isLessThan(11);
     }
+
 }

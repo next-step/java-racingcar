@@ -13,32 +13,27 @@ import java.util.List;
  * @comment :
  * Time : 11:02 오후
  */
-public class CarRacingGame {
+public class CarRacingGame extends AbstCarRacingGame{
 
     private List<Car> cars;
-
-    public void racing(List<Car> cars, ScoreCalculate scoreCalculate) {
-
-        for (int i = 0; i < cars.size(); i++) {
-
-            int randomNum = scoreCalculate.calculateScore();
-            cars.get(i).AdvanceOneSpace(randomNum);
-            this.cars = cars;
-
-            drawScoreBard();
-        }
-    }
-
-    public void drawScoreBard() {
-        ResultView resultView = new ResultView();
-
-        for (int i = 0; i < cars.size(); i++) {
-            Car car = cars.get(i);
-            resultView.draw(car);
-        }
-    }
-
     public List<Car> getCars() {
         return cars;
     }
+    private final ResultView resultView = new ResultView();
+
+    @Override
+    public void gameStart(final List<Car> cars, final ScoreCalculate scoreCalculate) {
+        for (int i = 0; i < cars.size(); i++) {
+            final int randomNum = scoreCalculate.calculateScore();
+            cars.get(i).advanceOneSpace(randomNum);
+            this.cars = cars;
+        }
+        drawScoreBoard();
+    }
+
+    public void drawScoreBoard() {
+        resultView.draw(cars);
+        System.out.println();
+    }
+
 }

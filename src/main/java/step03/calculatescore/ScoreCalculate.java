@@ -10,4 +10,5 @@ package step03.calculatescore;
 public interface ScoreCalculate {
 
     int calculateScore();
+
 }

@@ -1,10 +1,11 @@
 package step03.view;
 
-import step03.game.CarRacingGame;
-import step03.util.Util;
 import step03.calculatescore.CalculatorRandomScore;
+import step03.calculatescore.WinnerCalculate;
 import step03.car.Car;
 import step03.car.CarCenter;
+import step03.game.CarRacingGame;
+import step03.util.Util;
 
 import java.util.List;
 import java.util.Scanner;
@@ -18,28 +19,24 @@ import java.util.Scanner;
  */
 public class InputView {
 
-
     public static void main(String[] args) {
-        Scanner input = Util.input();
+        final Scanner input = Util.input();
 
-        System.out.println(Util.howManyCars);
-        int carNum = input.nextInt();
+        System.out.println(Util.WHATYOURNAME);
+        final String[] carName = input.nextLine().split(",");
 
-        System.out.println(Util.howMuchTry);
+        System.out.println(Util.HOWMUCHTRY);
         int tryNum = input.nextInt();
-        System.out.println(Util.result);
+        System.out.println(Util.RESULT);
 
-        InputView inputView = new InputView();
+        final CarCenter carCenter = new CarCenter();
+        final List<Car> cars = carCenter.makingCar(carName);
 
-        CarCenter carCenter = new CarCenter();
-        List<Car> cars = carCenter.makingCar(carNum);
+        final CarRacingGame carRacingGame = new CarRacingGame();
+        carRacingGame.racing(tryNum, cars, new CalculatorRandomScore());
 
-        CarRacingGame carRacingGame = new CarRacingGame();
-        while (tryNum-- > 0) {
-            carRacingGame.racing(cars, new CalculatorRandomScore());
-        }
-
-
+        final ResultView resultView = new ResultView();
+        resultView.drawWinnerBoard(cars, new WinnerCalculate());
     }
 
 }

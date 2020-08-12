@@ -1,4 +1,4 @@
-package step03;
+package step03.car;
 
 import org.junit.jupiter.api.Test;
 import step03.car.Car;
@@ -19,14 +19,14 @@ class CarCenterTest {
 
     @Test
     public void makingCarTest() {
-
         int carNum = 3;
 
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carNum; i++) {
-            cars.add(new Car());
+            cars.add(new Car("choijunwoo"));
         }
 
         assertThat(cars.size()).isEqualTo(carNum);
     }
+
 }
