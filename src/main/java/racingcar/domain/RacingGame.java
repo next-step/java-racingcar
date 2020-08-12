@@ -1,6 +1,4 @@
-package racingcar.racing;
-
-import racingcar.domain.Car;
+package racingcar.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,7 +9,7 @@ import static racingcar.utils.ValidateUtils.validateCarsName;
 import static racingcar.view.OutputView.printCarStatus;
 import static racingcar.view.OutputView.resultView;
 
-public class Racing {
+public class RacingGame {
     public static void racingStart(String carsName, int tryCount) {
         String[] carsArray = validateCarsName(carsName);
         List<Car> cars = initCars(carsArray);

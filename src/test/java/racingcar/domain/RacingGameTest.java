@@ -1,16 +1,15 @@
-package racingcar.racing;
+package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static racingcar.racing.Racing.moveCarForward;
-import static racingcar.racing.Racing.racingStart;
+import static racingcar.domain.RacingGame.moveCarForward;
+import static racingcar.domain.RacingGame.racingStart;
 
-public class RacingTest {
+public class RacingGameTest {
     List<Car> cars = new ArrayList<>();
 
     @BeforeEach
