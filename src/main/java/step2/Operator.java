@@ -1,7 +1,6 @@
 package step2;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 public enum Operator {
 
@@ -9,7 +8,7 @@ public enum Operator {
     MINUS("-", (firstNumber, secondNumber) -> firstNumber - secondNumber),
     MULTIPLY_BY("*", (firstNumber, secondNumber) -> firstNumber * secondNumber),
     DIVIDED_BY("/", (firstNumber, secondNumber) -> {
-        if (secondNumber == 0) {
+        if (secondNumber == CommonConstant.ZERO_NUMBER) {
             throw new IllegalArgumentException(CommonConstant.INVALID_DIVIDED_BY_ZERO);
         }
         return firstNumber / secondNumber;
