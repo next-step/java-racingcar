@@ -1,13 +1,25 @@
 package racingcarbasic;
 
+import java.util.Arrays;
+
 public class RacingCarMain {
 
     public static void main(String[] args) {
-        /* 자동차 대수와 움직일 횟수 받기 */
+        /* 자동차 대수와 이동 횟수 받기 */
         InputView inputView = new InputView();
         int carNum = inputView.getCarNum();
         int moveCount = inputView.getMoveCount();
 
         System.out.println(carNum +" "+moveCount);
+
+        /* 이동 또는 멈춤 */
+        int[] carMoveCount = new int[carNum+1];
+        Arrays.fill(carMoveCount, 0);
+
+        RacingCar racingCar = new RacingCar();
+        for(int i=0; i<moveCount; i++) {
+            carMoveCount = racingCar.getMoveCount(carMoveCount);
+        }
+
     }
 }
