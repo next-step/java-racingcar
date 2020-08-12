@@ -22,7 +22,7 @@ class CarTest {
     void 자동차_임의이동_성공() {
         Car car = new Car("구글");
         car.move(1);
-        assertThat(car.getPosition()).isGreaterThanOrEqualTo(2);
+        assertThat(car.getPosition().getPosition()).isGreaterThanOrEqualTo(2);
     }
 
 }
