@@ -20,7 +20,7 @@ public class Competition {
         return carNames;
     }
 
-    public int getRount() {
+    public int getRound() {
         return rount;
     }
 }

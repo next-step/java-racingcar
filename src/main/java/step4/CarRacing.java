@@ -3,6 +3,7 @@ package step4;
 
 import step4.dto.Car;
 import step4.dto.Competition;
+import step4.util.JudgeRacingResult;
 import step4.view.InputView;
 import step4.view.ResultView;
 import step4.view.WinnerView;
@@ -10,7 +11,8 @@ import step4.view.WinnerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import static step3.TextConstant.RACE_RESULT_TEXT;
+import static step4.TextConstant.RACE_RESULT_TEXT;
+
 
 public class CarRacing {
 
@@ -29,7 +31,7 @@ public class CarRacing {
         InputView inputView = new InputView();
         Competition competition = inputView.eventStart();
 
-        totalRound = competition.getRount();
+        totalRound = competition.getRound();
 
         List<String> carNames = competition.getPaticipate();
 
