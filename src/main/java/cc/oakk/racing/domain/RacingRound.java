@@ -8,28 +8,22 @@ import java.util.List;
 
 public class RacingRound implements Printable<Car> {
     private final List<Car> cars;
-    private final int totalRoundCount;
+    private final RoundCount roundCount;
 
-    private int currentRoundCount = 0;
-
-    public RacingRound(List<Car> cars, int totalRoundCount) {
+    public RacingRound(List<Car> cars, int roundCount) {
         Validator.checkList(cars);
-        Validator.checkGreaterThanZero(totalRoundCount);
 
         this.cars = cars;
-        this.totalRoundCount = totalRoundCount;
+        this.roundCount = new RoundCount(roundCount);
     }
 
     public boolean hasNextRound() {
-        return totalRoundCount > currentRoundCount;
+        return roundCount.hasNextRound();
     }
 
     public RacingRound nextRound() {
-        if (!hasNextRound()) {
-            throw new IndexOutOfBoundsException("Round has over!");
-        }
+        roundCount.increase();
         cars.forEach(Car::tryMoveForward);
-        currentRoundCount++;
         return this;
     }
 
