@@ -1,21 +1,21 @@
 package racing.domain;
 
+import racing.view.InputView;
 import racing.view.ResultView;
 
-import static racing.view.InputView.getNumberOfAttempt;
-import static racing.view.InputView.getNumberOfCars;
-import static racing.view.ResultView.printRacingGameResult;
+import java.util.List;
 
 public class RacingGame {
 
     public void start() {
-        final int numberOfCar = getNumberOfCars();
-        final int numberOfAttempt = getNumberOfAttempt();
+        final List<String> carNames = InputView.getNameByRacingCars();
+        final int roundCnt = InputView.getNumberOfAttempt();
 
-        printRacingGameResult();
-        final RacingCars racingCars = RacingCars.of(numberOfCar);
-        for (int i = 0; i < numberOfAttempt; i++) {
+        final RacingCars racingCars = RacingCars.of(carNames);
+        ResultView.printRacingGameResult();
+        for (int i = 0; i < roundCnt; i++) {
             ResultView.printLocationsByCars(racingCars.raceOfCars(racingCars.getCars()));
         }
+        ResultView.printRacingWinners(racingCars);
     }
 }
