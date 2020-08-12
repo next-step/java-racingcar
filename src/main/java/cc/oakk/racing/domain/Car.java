@@ -7,7 +7,7 @@ import cc.oakk.racing.view.printer.Printer;
 import java.util.Objects;
 
 public class Car implements Printable<Car>, Comparable<Car> {
-    private static final String NO_NAME = "no-name";
+    private static final String NO_NAME = "N/A";
 
     private final CarName name;
     private final CarForwardCondition<?> carForwardCondition;
