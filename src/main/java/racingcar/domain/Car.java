@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import java.util.Objects;
 
-import static racingcar.random.GenerateRandom.randomForward;
+import static racingcar.utils.RandomValueGenerator.randomForward;
 
 public class Car {
     private int status = 1;

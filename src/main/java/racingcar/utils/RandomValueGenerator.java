@@ -1,8 +1,8 @@
-package racingcar.random;
+package racingcar.utils;
 
 import java.util.Random;
 
-public class GenerateRandom {
+public class RandomValueGenerator {
     private static final int RANDOM_BOUND = 10;
     private static final int MINIMUM_VALUE = 3;
 
