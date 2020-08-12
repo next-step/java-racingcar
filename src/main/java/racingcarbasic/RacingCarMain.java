@@ -13,7 +13,7 @@ public class RacingCarMain {
         System.out.println(carNum +" "+moveCount);
 
         /* 이동 또는 멈춤 */
-        int[] carMoveCount = new int[carNum+1];
+        int[] carMoveCount = new int[carNum];
         Arrays.fill(carMoveCount, 0);
 
         RacingCar racingCar = new RacingCar();

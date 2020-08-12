@@ -6,7 +6,7 @@ public class RacingCar {
     public int[] getMoveCount (int[] carMoveNum) {
 
         for (int i=0; i< carMoveNum.length; i++) {
-            if(move()) {
+            if(move(getRandomNum())) {
                 carMoveNum[i]++;
             }
         }
@@ -14,10 +14,14 @@ public class RacingCar {
         return carMoveNum;
     }
 
-    public boolean move() {
+    public int getRandomNum() {
         Random random = new Random();
         int randomNum = random.nextInt(10);
 
+        return randomNum;
+    }
+
+    public boolean move(int randomNum) {
         if(randomNum>=4) {
             return true;
         }
