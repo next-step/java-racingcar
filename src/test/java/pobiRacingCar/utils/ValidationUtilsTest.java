@@ -8,6 +8,13 @@ public class ValidationUtilsTest {
     @Test
     void valid_name() {
         assertThat(validName("pobi")).isTrue();
+        assertThat(validName("crong")).isTrue();
+        assertThat(validName("honux")).isTrue();
+    }
 
+    @Test
+    void invalid_name() {
+        assertThat(validName(null)).isFalse();
+        assertThat(validName("")).isFalse();
     }
 }
