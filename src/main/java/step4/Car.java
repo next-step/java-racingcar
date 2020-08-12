@@ -1,18 +1,20 @@
 package step4;
 
+import java.util.Objects;
+
 public class Car {
 	private static final int CAN_MOVE_NUM = 4;
 
-	private final String name;
+	private final CarName name;
 	private int record;
 
 	public Car(String name) {
-		this.name = name;
+		this.name = new CarName(name);
 		this.record = 0;
 	}
 
 	public String getName() {
-		return name;
+		return name.getValue();
 	}
 
 	public int getRecord() {
@@ -26,25 +28,17 @@ public class Car {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-
-		if (obj instanceof Car) {
-			Car anotherCar = (Car) obj;
-			return sameValues(this, anotherCar);
-		}
-		return false;
-	}
-
-	private boolean sameValues(Car car, Car anCar) {
-		return car.name.equals(anCar.name) && car.record == anCar.record;
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Car car = (Car) o;
+		return record == car.record &&
+				name.equals(car.name);
 	}
 
 	@Override
 	public int hashCode() {
-		return this.name != null ? this.name.hashCode() : 0;
+		return Objects.hash(name, record);
 	}
 
 }
