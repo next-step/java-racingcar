@@ -12,11 +12,20 @@ public class RacingCar extends Car {
     }
 
     @Override
-    public boolean canMove(int racingCondition, int movementPolicy) {
+    public int canMove(int racingCondition, int movementPolicy) {
         if (racingCondition > movementPolicy) {
-            return canAccelerate();
+            return 1;
         }
-        return canBrake();
+        return 0;
+    }
+
+    public static int isRaceStart(Map<String, Car> carInfoMap, String racingCarName, int position) {
+        if (carInfoMap.containsKey(racingCarName)) {
+            Car racingCar = carInfoMap.get(racingCarName);
+            int raceConditionResult = RacingRule.raceCondition();
+            return racingCar.canMove(raceConditionResult, RacingRule.MOVEMENT_POLICY);
+        }
+        return position;
     }
 
     public static Map<String, Car> preparationForGame(String racingCarName) {
@@ -35,24 +44,6 @@ public class RacingCar extends Car {
         if (carName.length() > CAR_NAME_LENGTH_POLICY) {
             throw new IllegalArgumentException("자동차의 이름은 5글자를 초과할 수 없습니다.");
         }
-    }
-
-    public static int updatePosition(boolean raceResult) {
-        if (raceResult) {
-            return 1;
-        }
-        return 0;
-    }
-
-    public static boolean isRaceStart(Map<String, Car> carInfoMap, String racingCarName) {
-        boolean result = false;
-
-        if (carInfoMap.containsKey(racingCarName)) {
-            Car racingCar = carInfoMap.get(racingCarName);
-            int raceConditionResult = RacingRule.raceCondition();
-            result = racingCar.canMove(raceConditionResult, RacingRule.MOVEMENT_POLICY);
-        }
-        return result;
     }
 
     public static int findMaxPosition(Map<String, Car> carInfoMap) {
