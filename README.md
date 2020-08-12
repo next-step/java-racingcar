@@ -7,3 +7,12 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 기능 목록
+1. 자동차 수 입력
+2. 이동 횟수 입력 
+3. 전진 기능 (random 함수 이용) 
+4. 자동차 상태 출력
+5. 단위 테스트
+    * 전진
+    * 멈춤
