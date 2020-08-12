@@ -1,4 +1,4 @@
-package racingcar.validate;
+package racingcar.utils;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -6,9 +6,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static racingcar.validate.CarValidate.validateCarsName;
+import static racingcar.utils.ValidateUtils.validateCarsName;
 
-public class CarValidateTest {
+public class ValidateUtilsTest {
     @Test
     void 자동차이름_유효성_검사() {
         String carsName = "애플,삼성,구글";

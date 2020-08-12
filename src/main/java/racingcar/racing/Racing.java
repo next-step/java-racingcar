@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static racingcar.validate.CarValidate.validateCarsName;
+import static racingcar.utils.ValidateUtils.validateCarsName;
 import static racingcar.view.OutputView.printCarStatus;
 import static racingcar.view.OutputView.resultView;
 

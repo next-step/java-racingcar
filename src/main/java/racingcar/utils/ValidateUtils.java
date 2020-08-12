@@ -1,6 +1,6 @@
-package racingcar.validate;
+package racingcar.utils;
 
-public class CarValidate {
+public class ValidateUtils {
     public static String[] validateCarsName(String carsName) {
         String[] carsArray = carsName.split(",");
         for(String carName : carsArray) {
