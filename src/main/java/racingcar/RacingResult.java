@@ -1,13 +1,12 @@
 package racingcar;
 
-import util.StringUtils;
-
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toMap;
+
 public class RacingResult {
-    private static final String RACE_TRACK = "-";
-    private static final String DELIMITER = " : ";
 
     private int attempt;
     private RaceRecords raceRecords;
@@ -29,12 +28,10 @@ public class RacingResult {
         return attempt;
     }
 
-    public List<String> getResultByAttempt(int attempt) {
-        return raceRecords.getRaceRecords().stream()
-                .map(raceRecord -> raceRecord.getName()
-                        + DELIMITER
-                        + StringUtils.repeat(RACE_TRACK, raceRecord.getBy(attempt)))
-                .collect(Collectors.toList());
+    public Map<String, Integer> getResultByAttempt(int attempt) {
+        return raceRecords.getRaceRecords()
+                .stream()
+                .collect(toMap(RaceRecord::getName, raceRecord -> raceRecord.getBy(attempt)));
     }
 
     public String getWinner(int lastAttempt) {
