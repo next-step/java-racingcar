@@ -2,12 +2,12 @@ package racingcar.racing;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.car.Car;
+import racingcar.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 import static racingcar.racing.Racing.*;
 
 public class RacingTest {
@@ -23,7 +23,9 @@ public class RacingTest {
     @Test
     void 자동차_초기화_성공() {
         String[] carsArray = {"애플", "삼성", "구글"};
-        assertEquals(3, initCars(carsArray).size());
+        List<Car> cars = initCars(carsArray);
+        assertThat(cars).hasSize(3);
+        assertThat(cars).containsExactly(new Car("애플"), new Car("삼성"), new Car("구글"));
     }
 
     @Test

@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.car.Car;
+import racingcar.domain.Car;
 
 import java.util.Comparator;
 import java.util.List;
