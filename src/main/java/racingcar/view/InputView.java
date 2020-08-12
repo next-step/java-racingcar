@@ -1,6 +1,5 @@
 package racingcar.view;
 
-import racingcar.RacingGame;
 import util.StringUtils;
 
 import java.util.Arrays;

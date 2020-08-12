@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import exception.ExceptionMessage;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import racingcar.domain.RacingGame;
+import racingcar.domain.RacingResult;
+import racingcar.domain.RandomNumberMover;
 
 import java.util.Arrays;
 import java.util.List;

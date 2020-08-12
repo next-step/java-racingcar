@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import exception.ExceptionMessage;
 
@@ -30,7 +30,7 @@ public class RacingGame {
         return new RacingGame(racingCars, attemptNumber);
     }
 
-    RacingResult progress(CarMover carMover) {
+    public RacingResult progress(CarMover carMover) {
         racingCars.race(carMover, attemptNumber);
 
         return RacingResult.aggregate(attemptNumber, racingCars);
