@@ -13,8 +13,13 @@ public class ValidationUtilsTest {
     }
 
     @Test
-    void invalid_name() {
+    void invalid_name_nullOrBlank() {
         assertThat(validName(null)).isFalse();
         assertThat(validName("")).isFalse();
+    }
+
+    @Test
+    void invalid_name_overBound() {
+        assertThat(validName("harrypotter")).isFalse();
     }
 }

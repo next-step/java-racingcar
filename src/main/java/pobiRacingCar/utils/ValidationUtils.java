@@ -5,6 +5,9 @@ public class ValidationUtils {
         if (StringUtils.isNullOrBlank(name)) {
            return false;
         }
+        if (name.length() > 5) {
+            return false;
+        }
         return true;
     }
 }
