@@ -28,7 +28,7 @@ public class CarPrinter extends StringPrinter<Car> {
         StringBuilder builder = new StringBuilder();
         builder.append(car.getName());
         builder.append(NAME_DELIMITER);
-        for (int i = 0; i < car.getMovedDistance(); i++) {
+        for (int i = 0; i < car.getMovedDistance().getPosition(); i++) {
             builder.append(DISTANCE_SYMBOL);
         }
         builder.append("\n");
