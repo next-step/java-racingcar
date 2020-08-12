@@ -1,12 +1,12 @@
-package racingcar;
+package domain;
 
-import domain.RacingCar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.BDDAssertions.then;
@@ -40,9 +40,12 @@ class RacingCarTest {
 
     @ParameterizedTest
     @DisplayName("test race()")
-    @ValueSource(ints = {1, 2, 3, 4, 5})
+    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
     void race(int rounds) {
-        IntStream.range(BEGIN_INDEX, rounds).forEach(round -> racingCar.race());
-        then(racingCar.record()).matches(laps -> BEGIN_INDEX <= laps && laps <= rounds);
+        IntStream.range(BEGIN_INDEX, rounds).forEach(round -> {
+            int prevLaps = racingCar.record();
+            racingCar.race();
+            then(racingCar.record()).matches(laps -> laps == prevLaps || laps == prevLaps + 1);
+        });
     }
 }
