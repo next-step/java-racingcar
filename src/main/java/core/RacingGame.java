@@ -26,7 +26,7 @@ public class RacingGame {
             int randNum = new Random().nextInt(10);
 
             car.addResult(compareRandNum(randNum));
-            ResultView.printOutputValue(car.roundResult.stream());
+            ResultView.printOutputValue(car);
         }
     }
 
