@@ -27,6 +27,6 @@ public class RacingGameTest {
 
     @Test
     void 자동차_전진_성공() {
-        moveCarForward(cars);
+        moveCarForward(new Cars(cars));
     }
 }

@@ -31,6 +31,10 @@ public class Car {
         }
     }
 
+    public boolean isWinner(int maxPosition) {
+        return this.position.isWinner(maxPosition);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
