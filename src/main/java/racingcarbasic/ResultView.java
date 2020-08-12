@@ -7,9 +7,9 @@ public class ResultView {
     }
 
     public void ResultPrint(int[] carMoveCount) {
-        for(int p: carMoveCount) {
+        for (int p : carMoveCount) {
             System.out.println(new String(new char[p]).replace("\0", "-"));
         }
-        System.out.println("");
+        System.out.println();
     }
 }

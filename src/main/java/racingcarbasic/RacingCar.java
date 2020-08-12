@@ -3,10 +3,10 @@ package racingcarbasic;
 import java.util.Random;
 
 public class RacingCar {
-    public int[] getMoveCount (int[] carMoveNum) {
+    public int[] getMoveCount(int[] carMoveNum) {
 
-        for (int i=0; i< carMoveNum.length; i++) {
-            if(move(getRandomNum())) {
+        for (int i = 0; i < carMoveNum.length; i++) {
+            if (move(getRandomNum())) {
                 carMoveNum[i]++;
             }
         }
@@ -22,9 +22,6 @@ public class RacingCar {
     }
 
     public boolean move(int randomNum) {
-        if(randomNum>=4) {
-            return true;
-        }
-        return false;
+        return randomNum >= 4;
     }
 }
