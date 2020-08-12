@@ -17,9 +17,15 @@ public class RacingCarMain {
         Arrays.fill(carMoveCount, 0);
 
         RacingCar racingCar = new RacingCar();
+        ResultView resultView = new ResultView();
         for(int i=0; i<moveCount; i++) {
             carMoveCount = racingCar.getMoveCount(carMoveCount);
+
+            /* 실행 결과 출력 */
+            resultView.ResultPrint(carMoveCount);
         }
+
+
 
     }
 }
