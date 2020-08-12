@@ -5,14 +5,12 @@ import java.util.stream.Collectors;
 
 import static racingcar.domain.CarFactory.initCars;
 import static racingcar.utils.RandomValueGenerator.randomForward;
-import static racingcar.utils.ValidateUtils.validateCarsName;
 import static racingcar.view.OutputView.printCarStatus;
 import static racingcar.view.OutputView.resultView;
 
 public class RacingGame {
     public static void racingStart(String carsName, int tryCount) {
-        String[] carsArray = validateCarsName(carsName);
-        List<Car> cars = initCars(carsArray);
+        List<Car> cars = initCars(carsName);
         for(int i=0; i < tryCount; i++) {
             cars = moveCarForward(cars);
             printCarStatus(cars);

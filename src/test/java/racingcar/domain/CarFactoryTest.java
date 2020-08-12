@@ -10,8 +10,8 @@ import static racingcar.domain.CarFactory.initCars;
 public class CarFactoryTest {
     @Test
     void 자동차_초기화_성공() {
-        String[] carsArray = {"애플", "삼성", "구글"};
-        List<Car> cars = initCars(carsArray);
+        String carsName = "애플,삼성,구글";
+        List<Car> cars = initCars(carsName);
         assertThat(cars).hasSize(3);
         assertThat(cars).containsExactly(new Car("애플"), new Car("삼성"), new Car("구글"));
     }

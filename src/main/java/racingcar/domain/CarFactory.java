@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarFactory {
-    public static List<Car> initCars(String[] carsName) {
+    public static List<Car> initCars(String carsName) {
+        String[] carsArray = carsName.split(",");
         List<Car> cars = new ArrayList<>();
-        for(String name : carsName) {
+        for(String name : carsArray) {
             cars.add(new Car(name));
         }
         return cars;
