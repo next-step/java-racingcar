@@ -35,20 +35,16 @@ public class CarRacingExecutor {
 
 	private List<Car> generateCarsForRacing(CarRacingInitValue initValue) {
 		return IntStream.range(0, initValue.getCarCount())
-						.mapToObj(carNumber -> new Car(carNumber,
-													   initValue.getNames()
+						.mapToObj(carNumber -> new Car(initValue.getNames()
 																.get(carNumber)
-																.trim(),
-													   this.racingGame)
-								 )
+																.trim()))
 						.collect(toList());
 	}
 
 	private void playGame(List<Car> cars, int tryCount) {
 		IntStream.range(0, tryCount)
 				 .forEach(round -> {
-					 cars.stream()
-						 .forEach(car -> car.play());
+					 racingGame.play(cars);
 					 this.carRacingOutput.addSituation(cars);
 				 });
 	}

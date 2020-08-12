@@ -1,20 +1,21 @@
 package simpleracing.execute;
 
-import java.util.Random;
+import java.util.List;
 
 public class CarRacingGame implements CarGame {
 
-	private static final int RANDOM_MAX_VALUE = 10;
-	private Random randomValueGenerator;
+	private Movable moving;
 
 	public CarRacingGame() {
-		this.randomValueGenerator = new Random();
+		this.moving = new RacingMoving();
 	}
 
 	@Override
-	public void play(Car car) {
-		int randomValue = randomValueGenerator.nextInt(RANDOM_MAX_VALUE);
-		car.move(Direction.getBy(randomValue));
+	public void play(List<Car> cars) {
+		cars.stream()
+			.forEach(car -> {
+				car.play(moving);
+			});
 	}
 
 }

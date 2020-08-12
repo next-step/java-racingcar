@@ -1,23 +1,12 @@
 package simpleracing.execute;
 
-import lombok.EqualsAndHashCode;
-
-@EqualsAndHashCode(of = {"id"})
 public class Car {
-	private int id;
 	private String name;
-	private CarGame carRacingGame;
 	private String location;
 
-	public Car(int id, String name, CarGame carRacingGame) {
-		this.id = id;
+	public Car(String name) {
 		this.name = name;
-		this.carRacingGame = carRacingGame;
 		this.location = Direction.STOP.getSign();
-	}
-
-	public void play() {
-		carRacingGame.play(this);
 	}
 
 	public String getLocation() {
@@ -26,6 +15,16 @@ public class Car {
 
 	public String getName() {
 		return this.name;
+	}
+
+	public void play(Movable moving) {
+		if (moving.possible()) {
+			advance();
+		}
+	}
+
+	private void advance() {
+		location += Direction.ADVANCE.getSign();
 	}
 
 	public void move(Direction direction) {
