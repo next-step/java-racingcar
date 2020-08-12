@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static racingcar.domain.CarFactory.initCars;
+import static racingcar.utils.RandomValueGenerator.randomForward;
 import static racingcar.utils.ValidateUtils.validateCarsName;
 import static racingcar.view.OutputView.printCarStatus;
 import static racingcar.view.OutputView.resultView;
@@ -23,6 +24,6 @@ public class Racing {
     }
 
     public static List<Car> moveCarForward(List<Car> cars) {
-        return cars.stream().peek(Car::move).collect(Collectors.toList());
+        return cars.stream().peek(car -> car.move(randomForward())).collect(Collectors.toList());
     }
 }

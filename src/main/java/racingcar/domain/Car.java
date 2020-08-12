@@ -2,8 +2,6 @@ package racingcar.domain;
 
 import java.util.Objects;
 
-import static racingcar.utils.RandomValueGenerator.randomForward;
-
 public class Car {
     private int status = 1;
     private final String name;
@@ -27,8 +25,8 @@ public class Car {
 
     public String getName() { return name; }
 
-    public void move() {
-        this.status = this.status + randomForward();
+    public void move(int randomNo) {
+        this.status = this.status + randomNo;
     }
 
     @Override
@@ -44,4 +42,5 @@ public class Car {
     public int hashCode() {
         return Objects.hash(status, name);
     }
+
 }
