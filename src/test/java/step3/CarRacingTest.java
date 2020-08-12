@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step3.controller.CarRacing;
 import step3.model.Car;
+import step3.utility.ReturnValue;
 
 import java.util.Random;
 
@@ -16,49 +17,29 @@ public class CarRacingTest {
 
     @Test
     @DisplayName("난수 생성 테스트")
-    public void createRandom(){
+    public void createRandom() {
         final int BIG_NUMBER = 10000;
 
-        CarRacing car = new CarRacing(1,2);
-        Random random = new Random();
-
-        for(int i=0; i< BIG_NUMBER;i++ ){
-            assertThat(car.createRandom(random)).isBetween(0,9);
+        for (int i = 0; i < BIG_NUMBER; i++) {
+            assertThat(ReturnValue.returnValue()).isBetween(0, 9);
         }
     }
 
-    @Test
-    @DisplayName("난수 Mock 테스트 ")
-    public void createRandom2(){
-        //given
-        final int RANDOM_MAX_VALUE = 10;
-        Random random = mock(Random.class);
-        when(random.nextInt(RANDOM_MAX_VALUE)).thenReturn(5);
-        CarRacing carRacing = new CarRacing(3,3);
-
-        //when
-        int result = carRacing.createRandom(random);
-        Car car =  new  Car();
-        car.move(result);
-
-        //then
-        assertThat(car.getPosition()).isEqualTo(1);
-    }
 
     @Test
     @DisplayName("numofcar_인풋에러")
-    void checkCars(){
-        assertThatThrownBy(()->{
-            new CarRacing(-1,5);
+    void checkCars() {
+        assertThatThrownBy(() -> {
+            new CarRacing(-1, 5);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("numofcar_인풋에러");
     }
 
     @Test
     @DisplayName("numoftry_인풋에러")
-    void checkTries(){
-        assertThatThrownBy(()->{
-            new CarRacing(3,-1);
+    void checkTries() {
+        assertThatThrownBy(() -> {
+            new CarRacing(3, -1);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("numoftry_인풋에러");
     }

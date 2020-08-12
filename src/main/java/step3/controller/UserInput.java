@@ -1,4 +1,4 @@
-package step3.utility;
+package step3.controller;
 
 public class UserInput {
 

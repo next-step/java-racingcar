@@ -1,5 +1,7 @@
 package step3.utility;
 
+import step3.controller.UserInput;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

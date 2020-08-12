@@ -2,18 +2,14 @@ package step3.controller;
 
 import step3.model.Car;
 import step3.model.CarRecord;
-import step3.view.ResultView;
-
-import java.util.Random;
+import step3.utility.ReturnValue;
 
 public class CarRacing {
 
     private int numOfCars;
     private int numOfTries;
     private Car[] cars;
-//    private int[][] recordCarMove;
     private CarRecord[] carRecord;
-    private final int RANDOM_MAX_VALUE = 10;
 
 
     public CarRacing(int numOfCars, int numOfTries) {
@@ -22,10 +18,10 @@ public class CarRacing {
         this.numOfTries = numOfTries;
         cars = new Car[numOfCars];
         carRecord = new CarRecord[numOfCars];
-//        recordCarMove = new int[numOfTries][numOfCars];
 
         for (int i = 0; i < cars.length; i++) {
             cars[i] = new Car();
+            carRecord[i] = new CarRecord();
         }
     }
 
@@ -46,27 +42,21 @@ public class CarRacing {
         }
     }
 
-
     public void gameStart() {
         for (int i = 0; i < numOfTries; i++) {
-            run(i, cars);
+            run();
         }
-//        return recordCarMove;
     }
 
-    void run(int tries, Car[] cars) {
-        Random random = new Random();
-
+    void run() {
         for (int i = 0; i < numOfCars; i++) {
-            cars[i].move(createRandom(random));
-            System.out.println(cars[i].getPosition());
+            cars[i].move(ReturnValue.returnValue());
             carRecord[i].resultRecording(cars[i].getPosition());
-//            recordCarMove[tries][i] = cars[i].getPosition();
         }
     }
 
-    public int createRandom(Random random) {
-        return random.nextInt(RANDOM_MAX_VALUE);
+    public CarRecord[] getCarRecord() {
+        return carRecord;
     }
 }
 

@@ -7,9 +7,11 @@ public class CarRecord {
 
     private List<Integer> recordList = new ArrayList<>();
 
-    public void resultRecording(int position){
-        System.out.println(position);
+    public void resultRecording(int position) {
         recordList.add(position);
     }
 
+    public List<Integer> getRecordList() {
+        return recordList;
+    }
 }
