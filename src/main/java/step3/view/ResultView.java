@@ -31,7 +31,7 @@ public class ResultView {
             Car car = carInfoMap.get(carName);
             int carPosition = car.getPosition();
 
-            carPosition += RacingCar.isRaceStart(carInfoMap, car.getCarName(), carPosition);
+            carPosition = RacingCar.isRaceStart(carInfoMap, car.getCarName(), carPosition);
             String mileAge = printMovement(carPosition);
 
             car = new RacingCar(car.getCarName(), carPosition);

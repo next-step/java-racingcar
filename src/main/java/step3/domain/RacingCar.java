@@ -23,7 +23,7 @@ public class RacingCar extends Car {
         if (carInfoMap.containsKey(racingCarName)) {
             Car racingCar = carInfoMap.get(racingCarName);
             int raceConditionResult = RacingRule.raceCondition();
-            return racingCar.canMove(raceConditionResult, RacingRule.MOVEMENT_POLICY);
+            position += racingCar.canMove(raceConditionResult, RacingRule.MOVEMENT_POLICY);
         }
         return position;
     }
