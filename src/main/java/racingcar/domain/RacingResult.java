@@ -9,14 +9,14 @@ import static java.util.stream.Collectors.toMap;
 public class RacingResult {
 
     private int attempt;
-    private RaceRecords raceRecords;
+    private List<RaceRecord> raceRecords;
 
-    private RacingResult(int attempt, RaceRecords raceRecords) {
+    private RacingResult(int attempt, List<RaceRecord> raceRecords) {
         this.attempt = attempt;
         this.raceRecords = raceRecords;
     }
 
-    private static RacingResult create(int attempt, RaceRecords raceRecords) {
+    private static RacingResult create(int attempt, List<RaceRecord> raceRecords) {
         return new RacingResult(attempt, raceRecords);
     }
 
@@ -29,19 +29,16 @@ public class RacingResult {
     }
 
     public Map<String, Integer> getResultByAttempt(int attempt) {
-        return raceRecords.getRaceRecords()
-                .stream()
+        return raceRecords.stream()
                 .collect(toMap(RaceRecord::getName, raceRecord -> raceRecord.getBy(attempt)));
     }
 
     public String getWinner(int lastAttempt) {
-        List<RaceRecord> raceRecordList = raceRecords.getRaceRecords();
-
-        int winnerRecord = raceRecordList.stream()
+        int winnerRecord = raceRecords.stream()
                 .map(raceRecord -> raceRecord.getBy(lastAttempt))
                 .reduce(0, Math::max);
 
-        return raceRecordList.stream()
+        return raceRecords.stream()
                 .filter(raceRecord -> raceRecord.getBy(lastAttempt) == winnerRecord)
                 .map(RaceRecord::getName)
                 .collect(Collectors.joining(","));
