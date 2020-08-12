@@ -2,10 +2,10 @@ package racingcar.racing;
 
 import racingcar.domain.Car;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static racingcar.domain.CarFactory.initCars;
 import static racingcar.utils.ValidateUtils.validateCarsName;
 import static racingcar.view.OutputView.printCarStatus;
 import static racingcar.view.OutputView.resultView;
@@ -20,14 +20,6 @@ public class Racing {
             System.out.println();
         }
         resultView(cars);
-    }
-
-    public static List<Car> initCars(String[] carsName) {
-        List<Car> cars = new ArrayList<>();
-        for(String name : carsName) {
-            cars.add(new Car(name));
-        }
-        return cars;
     }
 
     public static List<Car> moveCarForward(List<Car> cars) {

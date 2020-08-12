@@ -7,8 +7,8 @@ import racingcar.domain.Car;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.racing.Racing.*;
+import static racingcar.racing.Racing.moveCarForward;
+import static racingcar.racing.Racing.racingStart;
 
 public class RacingTest {
     List<Car> cars = new ArrayList<>();
@@ -18,14 +18,6 @@ public class RacingTest {
         cars.add(new Car("애플"));
         cars.add(new Car("삼성"));
         cars.add(new Car("구글"));
-    }
-
-    @Test
-    void 자동차_초기화_성공() {
-        String[] carsArray = {"애플", "삼성", "구글"};
-        List<Car> cars = initCars(carsArray);
-        assertThat(cars).hasSize(3);
-        assertThat(cars).containsExactly(new Car("애플"), new Car("삼성"), new Car("구글"));
     }
 
     @Test
