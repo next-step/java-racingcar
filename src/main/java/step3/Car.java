@@ -1,27 +1,41 @@
 package step3;
 
-import java.util.Random;
+import java.util.Objects;
 
 public class Car {
 
-    private static final Random random = new Random();
-
+    private final String name;
     private int miles = 0;
 
-    private boolean canAdvance() {
-        return random.nextInt(10) >= 4;
+    public Car(String name) {
+        this.name = name;
     }
 
-    public boolean advance() {
-        boolean res = canAdvance();
-        if (res) {
+    public void advance(AdvanceCondition strategy) {
+        if (strategy.canAdvance()) {
             this.miles++;
         }
-        return res;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public int getMiles() {
         return this.miles;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Car)) {
+            return false;
+        }
+        Car car = (Car) obj;
+        return name.equals(car.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
 }

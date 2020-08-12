@@ -2,8 +2,11 @@ package step3;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class CircuitTest {
 
@@ -11,7 +14,14 @@ class CircuitTest {
 
     @BeforeEach
     void init() {
-        circuit = new Circuit(3, 5);
+        circuit = new Circuit(Arrays.asList("pobi", "crong", "honux"), 5);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"pobi", "crong", "honux"})
+    void getCars(String name) {
+        Car car = new Car(name);
+        assertThat(car).isIn(circuit.getCars());
     }
 
     @Test

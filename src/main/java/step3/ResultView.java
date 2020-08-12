@@ -5,10 +5,21 @@ import java.util.stream.Stream;
 public class ResultView {
 
     public static final String TRACK = "-";
+    public static final String DELIMITER = " : ";
+
+    private ResultView(){}
 
     public static void printStatus(Stream<Car> cars) {
-        cars.map((c) -> convertToTrack(c.getMiles()))
+        cars.map(ResultView::addNamePrefix)
             .forEach(System.out::println);
+    }
+
+    private static String addNamePrefix(Car car) {
+        return new StringBuilder()
+            .append(car.getName())
+            .append(DELIMITER)
+            .append(convertToTrack(car.getMiles()))
+            .toString();
     }
 
     private static String convertToTrack(int miles) {
