@@ -38,8 +38,8 @@ public class RacingGame {
         }
     }
 
-    public boolean isEnd() {
-        return this.tryNo == 0;
+    public boolean racing() {
+        return this.tryNo > 0;
     }
 
     public List<Car> getCars() {
