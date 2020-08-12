@@ -7,3 +7,11 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+
+#step3.
+* 자동차 Car class 구현
+* 경주차와 주행 횟수를 관리하는 Circuit class 구현
+* 입출력 UI를 처리하는 InputView와 ResultView class 구현
+* Car, Circuit에 대한 TC 작성
+
