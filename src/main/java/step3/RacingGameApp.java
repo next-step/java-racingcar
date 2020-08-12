@@ -10,11 +10,9 @@ public class RacingGameApp {
         
         Racing racing = new Racing(racingCars, racingRound);
         
-        for (int i = 0; i < racingRound; i++) {
-        	racing.setRacingResult(racing.getRacingCars());
-        	System.out.println("----------"+(i+1)+"Round----------");
-        	ResultView.resultRacing(racing.getRacingCars());
+        for(int i = 1; i <= racingRound; i++) {
+        	System.out.println("-------------"+i+" Round------------");
+        	ResultView.resultRacing(racing.gameStart());
         }
-        
 	}
 }

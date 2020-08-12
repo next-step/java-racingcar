@@ -1,7 +1,8 @@
 package step3;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Racing {
 	
@@ -13,21 +14,14 @@ public class Racing {
 	Racing(int racingCars, int racingRound) {
 		validationRound(racingRound);
 		validationCars(racingCars);
-		setRacingCars(racingCars);
+		createRacingCars(racingCars);
 	}
 
-    private void setRacingCars(int racingCars){
-    	List<Car> cars = new ArrayList<Car>();
-    	for(int i = 0; i < racingCars; i++) {
-    		cars.add(new Car());
-    	}
-    	this.cars = cars;
+    private void createRacingCars(int racingCars){
+    	this.cars = Stream.generate(Car::new)
+    			.limit(racingCars)
+    			.collect(Collectors.toList());
     }
-    
-	public List<Car> getRacingCars(){
-		return this.cars;
-	}
-	
 
 	private void validationRound(int racingRound) {
 		if(racingRound < minimumRacingRound) {
@@ -41,10 +35,11 @@ public class Racing {
     	}
     }
     
-    public List<Car> setRacingResult(List<Car> cars){
-    	for(int i = 0; i < cars.size(); i++) {
-    		cars.get(i).tryToMove(ValueGenerator.randomValue());
+    public List<Car> gameStart(){
+    	for(Car car : this.cars) {
+    		car.tryToMove(ValueGenerator.randomValue());
     	}
-    	return this.cars;
+		return cars;
     }
+    
 }
