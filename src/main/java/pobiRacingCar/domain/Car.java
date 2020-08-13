@@ -6,8 +6,8 @@ import java.util.Random;
 public class Car {
     public static final int MAX_BOUND = 10;
     public static final int FORWARD_NUM = 4;
-    private final String name;
-    private int position = 0;
+    private final String name; //원시값 name -> Name Obj
+    private int position = 0; //원시값 position -> Position Obj
 
     public Car(final String name) { this.name = name.trim();
     }
