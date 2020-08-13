@@ -17,7 +17,7 @@ public class RacingGame {
         System.out.println(ResultView.startResultMessage());
 
         for (int i = 0; i < repeat; i++) {
-            cars.moveCars();
+            cars.moveCars(randomNumber());
             ResultView.drawResult(cars);
         }
 

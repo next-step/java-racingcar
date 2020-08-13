@@ -14,23 +14,16 @@ public class Cars {
     }
 
     public List<Car> carList() {
-//        return Collections.unmodifiableList(cars);
         return cars;
     }
 
     public void makeCars(List<String> carName) {
-        /*cars = Stream.generate(() -> new Car(carName.get()))
-                .limit(carName.size())
-                .collect(Collectors.toList());*/
-        for (int i = 0; i < carName.size(); i++) {
-            cars.add(new Car(carName.get(i)));
-        }
+        cars = carName.stream().map(Car::new).collect(Collectors.toList());
     }
 
-    public void moveCars() {
+    public void moveCars(int randomValue) {
         cars.forEach(car -> {
-            int random = RacingGame.randomNumber();
-            car.move(random);
+            car.move(randomValue);
         });
     }
 }
