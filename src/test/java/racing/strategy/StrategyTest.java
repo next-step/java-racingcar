@@ -31,7 +31,7 @@ public class StrategyTest {
         assertThat(randomStrategy.getRandomValue()).isLessThan(10);
     }
 
-    @DisplayName("레이싱전략으로 4보다 작은지 판단")
+    @DisplayName("레이싱전략으로 4보다 작은지 판단k")
     @ParameterizedTest
     @CsvSource(value={"3:false", "5:true", "8:true"}, delimiter = ':')
     public void 작은지_판단_4보다(int value, boolean expected) {

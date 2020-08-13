@@ -1,8 +1,14 @@
-package racing.racingcar;
+package racing;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
+import racing.strategy.DefaultMoveStategy;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,36 +27,22 @@ public class RacingCarTest {
      */
 
 
-    RacingCar RacingCar = new RacingCar();
+    RacingCar RacingCar = new RacingCar(new DefaultMoveStategy());
 
+    @DisplayName("자동차 N번 움직이기(결과 배열 비교)")
     @ParameterizedTest
-    @CsvSource(value={"3:3", "5:5"}, delimiter = ':')
-    public void 레이싱_결과가져오기(int racingTurn, int expected) {
-        assertThat(RacingCar.getRacingResult(racingTurn)).isNotNull();
+    @MethodSource("getRacingResultParamter")
+    public void 자동차_N번_움직이기(int n, Integer[] expected) {
+        assertThat(RacingCar.move(n)).isEqualTo(expected);
     }
 
-    @ParameterizedTest
-    @CsvSource(value={"3:3", "5:5"}, delimiter = ':')
-    public void 레이싱_결과(int racingCount, int expected) {
-        assertThat(RacingCar.racing(racingCount)).hasSize(expected);
+    static Stream<Arguments> getRacingResultParamter() {
+        return Stream.of(
+                Arguments.of(3, new Integer[]{1, 1, 1}),
+                Arguments.of(4, new Integer[]{1, 1, 1, 1}),
+                Arguments.of(1, new Integer[]{1})
+        );
     }
-
-    @Test
-    public void 랜덤값가져오기_10보다_작은(){
-        assertThat(RacingCar.getRandomValueUnder10()).isLessThan(10);
-    }
-
-    @ParameterizedTest
-    @CsvSource(value={"3:false", "5:true"}, delimiter = ':')
-    public void 최소값보다_큰지_판단(int randomValue, boolean expected){
-        assertThat(RacingCar.isGreaterThan3(randomValue)).isEqualTo(expected);
-    }
-
-    @Test
-    public void 얼마나갈지() {
-        assertThat(RacingCar.run()).isStrictlyBetween(-1, 10);
-    }
-
 
 
 
