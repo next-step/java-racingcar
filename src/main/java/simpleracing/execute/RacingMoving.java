@@ -11,7 +11,7 @@ public class RacingMoving implements Movable {
 	}
 
 	@Override
-	public boolean possible() {
+	public boolean isPossible() {
 		int value = randomValueGenerator.nextInt(RANDOM_MAX_VALUE);
 		return Direction.getBy(value) == Direction.ADVANCE;
 	}

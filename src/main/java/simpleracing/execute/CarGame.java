@@ -1,7 +1,9 @@
 package simpleracing.execute;
 
-import java.util.List;
-
 public interface CarGame {
-	void play(List<Car> cars);
+	void play();
+
+	void judge(CarRacingReferee referee);
+
+	String getRacingResult();
 }

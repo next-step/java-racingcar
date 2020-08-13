@@ -11,20 +11,22 @@ public class CarRacingReferee {
 
 	private List<Car> winner;
 
-	public List<Car> announceWinner() {
-		if (winner == null || winner.isEmpty()) {
-			throw new CarRacingException("아직 경기가 끝나지 않아 결과가 나오지 않았습니다.");
-		}
-
-		return this.winner;
-	}
-
-	public void judge(List<Car> cars) {
+	public List<Car> judge(List<Car> cars) {
 		int distanceOfWinner = getDistanceOfWinner(cars);
 
 		this.winner = cars.stream()
 						  .filter(car -> getDistanceOf(car) == distanceOfWinner)
 						  .collect(toList());
+
+		return this.announceWinner();
+	}
+
+	private List<Car> announceWinner() {
+		if (winner == null || winner.isEmpty()) {
+			throw new CarRacingException("아직 경기가 끝나지 않아 결과가 나오지 않았습니다.");
+		}
+
+		return this.winner;
 	}
 
 	private int getDistanceOf(Car car) {

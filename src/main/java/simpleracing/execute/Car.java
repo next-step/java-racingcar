@@ -18,8 +18,8 @@ public class Car {
 	}
 
 	public void play(Movable moving) {
-		if (moving.possible()) {
-			advance();
+		if (moving.isPossible()) {
+			this.advance();
 		}
 	}
 
