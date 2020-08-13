@@ -8,6 +8,9 @@ public class Car {
     private int miles = 0;
 
     public Car(String name) {
+        if (name.length() > 5) {
+            throw new NameLengthException("Name shouldn't be longer than 5 letters.");
+        }
         this.name = name;
     }
 
