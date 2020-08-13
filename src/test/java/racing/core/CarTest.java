@@ -10,6 +10,8 @@ import java.util.Random;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CarTest {
 
@@ -19,43 +21,31 @@ class CarTest {
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
     @DisplayName("이동 성공 테스트")
     void moveSuccess(int randomNumber) {
-        // given
         Random random = new Random() {
             @Override
             public int nextInt(int bound) {
                 return randomNumber;
             }
         };
-
-        // when
-        String route = car.move(random.nextInt(RacingGame.TOTAL_CASES));
-
-        // then
-        assertThat(route).isEqualTo("-");
+        assertTrue(car.move(random.nextInt(RacingGame.TOTAL_CASES)));
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("이동 실패 테스트")
     void moveFailed(int randomNumber) {
-        // given
         Random random = new Random() {
             @Override
             public int nextInt(int bound) {
                 return randomNumber;
             }
         };
-
-        // when
-        String route = car.move(random.nextInt(RacingGame.TOTAL_CASES));
-
-        // then
-        assertThat(route).isEqualTo("");
+        assertFalse(car.move(random.nextInt(RacingGame.TOTAL_CASES)));
     }
 
     @ParameterizedTest
     @MethodSource("provideArrayOfNumbersAndResult")
-    @DisplayName("전체 이동 경로 확인 테스트")
+    @DisplayName("차 객체 하나가 이동한 총 거리 테스트")
     void route(int[] randomNumbers, String result) {
         // then
         String route = "";
@@ -67,7 +57,7 @@ class CarTest {
                     return r;
                 }
             };
-            route = car.move(random.nextInt(RacingGame.TOTAL_CASES));
+            route += car.move(random.nextInt(RacingGame.TOTAL_CASES)) ? "-" : "";
         }
 
         // then
