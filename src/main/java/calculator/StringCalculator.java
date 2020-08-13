@@ -1,6 +1,19 @@
 package calculator;
 
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Optional;
+
 public class StringCalculator {
+    private static List<Operation> operations = new ArrayList<>();
+    static {
+        operations.add(new PlusOperation());
+        operations.add(new MinusOperation());
+        operations.add(new MultipleOperation());
+        operations.add(new DivideOperation());
+    }
+
     public static int calculate(String value) {
         String[] values = value.split(" ");
         int result = toInt(values[0]);
@@ -14,19 +27,12 @@ public class StringCalculator {
     }
 
     private static int calculate(int first, int second, String operator) {
-        if (operator.equals("+")) {
-            return first + second;
-        }
-        if (operator.equals("-")) {
-            return first - second;
-        }
-        if (operator.equals("*")) {
-            return first * second;
-        }
-        if (operator.equals("/")) {
-            return first / second;
-        }
-        throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
+        Optional<Operation> maybeOperation = operations.stream()
+                                                    .filter(o -> o.isSupport(operator))
+                                                    .findFirst();
+        Operation operation = maybeOperation.orElseThrow(IllegalArgumentException::new);
+
+        return operation.operate(first, second);
     }
 
     private static int toInt(String value) {
