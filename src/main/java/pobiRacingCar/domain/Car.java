@@ -26,12 +26,8 @@ public class Car {
         if (getRandomNo() >= FORWARD_NUM)
             this.position++;
     }
+    그리고 아래의 getRandomNo()는 RacingGame 상위 노드 객체로 이동
     */
-
-    private int getRandomNo() {
-        Random random = new Random();
-        return random.nextInt(MAX_BOUND);
-    }
 
     @Override
     public boolean equals(Object o) {
