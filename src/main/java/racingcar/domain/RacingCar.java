@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class RacingCar extends RacingVehicle {
-    private static final int FIRST_ATTEMPT = 0;
     private static final int NAME_MIN_LENGTH = 1;
     private static final int NAME_MAX_LENGTH = 5;
 
@@ -24,25 +23,17 @@ public class RacingCar extends RacingVehicle {
     }
 
     public void race(int attemptNumber, CarMover carMover) {
-        List<Integer> record = new ArrayList<>();
+        List<Boolean> record = new ArrayList<>();
 
         Stream.iterate(0, attempt -> attempt + 1)
                 .limit(attemptNumber)
-                .forEach(attempt -> move(record, attempt, carMover));
+                .forEach(attempt -> move(record, carMover));
 
         raceRecord = new RaceRecord(name, record);
     }
 
-    private void move(List<Integer> record, int attempt, CarMover carMover) {
-        int move = (attempt == FIRST_ATTEMPT)
-                ? 0
-                : record.get(attempt - 1);
-
-        if (carMover.movable()) {
-            move += 1;
-        }
-
-        record.add(move);
+    private void move(List<Boolean> record, CarMover carMover) {
+        record.add(carMover.movable());
     }
 
     public static void checkNameValidation(String name) {

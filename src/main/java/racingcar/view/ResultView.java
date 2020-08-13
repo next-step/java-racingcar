@@ -28,7 +28,7 @@ public class ResultView {
     private static void printWinner(RacingResult racingResult) {
         int lastAttempt = racingResult.getAttempt() - 1;
 
-        System.out.println(racingResult.getWinner(lastAttempt) + WINNER_MESSAGE);
+        System.out.println(racingResult.getWinner() + WINNER_MESSAGE);
     }
 
     private static void printResultByAttempt(RacingResult racingResult) {

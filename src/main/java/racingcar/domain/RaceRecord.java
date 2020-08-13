@@ -1,14 +1,15 @@
 package racingcar.domain;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public class RaceRecord {
     private String name;
-    private List<Integer> record;
+    private List<Boolean> records;
 
-    public RaceRecord(String name, List<Integer> record) {
+    public RaceRecord(String name, List<Boolean> records) {
         this.name = name;
-        this.record = record;
+        this.records = records;
     }
 
     public String getName() {
@@ -16,7 +17,15 @@ public class RaceRecord {
     }
 
     public int getBy(int attemptTime) {
-        return record.get(attemptTime);
+        return Stream.iterate(0, attempt -> attempt + 1)
+                .limit(attemptTime)
+                .mapToInt(attempt -> records.get(attempt).compareTo(Boolean.TRUE))
+                .sum();
     }
 
+    public int getLastRecord() {
+        return records.stream()
+                .mapToInt(record -> record.compareTo(Boolean.TRUE))
+                .sum();
+    }
 }

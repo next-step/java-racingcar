@@ -33,13 +33,13 @@ public class RacingResult {
                 .collect(toMap(RaceRecord::getName, raceRecord -> raceRecord.getBy(attempt)));
     }
 
-    public String getWinner(int lastAttempt) {
-        int winnerRecord = raceRecords.stream()
-                .map(raceRecord -> raceRecord.getBy(lastAttempt))
+    public String getWinner() {
+        long winnerRecord = raceRecords.stream()
+                .map(RaceRecord::getLastRecord)
                 .reduce(0, Math::max);
 
         return raceRecords.stream()
-                .filter(raceRecord -> raceRecord.getBy(lastAttempt) == winnerRecord)
+                .filter(raceRecord -> raceRecord.getLastRecord() == winnerRecord)
                 .map(RaceRecord::getName)
                 .collect(Collectors.joining(","));
     }
