@@ -1,4 +1,4 @@
-package step4;
+package step5.domain;
 
 import java.util.Objects;
 
@@ -21,8 +21,8 @@ public class Car {
 		return record;
 	}
 
-	public void moveForward(int randomNumber) {
-		if (randomNumber >= CAN_MOVE_NUM) {
+	public void moveForward(int number) {
+		if (number >= CAN_MOVE_NUM) {
 			record++;
 		}
 	}

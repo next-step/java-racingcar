@@ -1,4 +1,9 @@
-package step4;
+package step5;
+
+
+import step5.domain.Cars;
+import step5.view.InputView;
+import step5.view.ResultView;
 
 public class CarRacing {
 
@@ -7,9 +12,8 @@ public class CarRacing {
 		int times = InputView.requestHowManyTimes();
 
 		Cars participants = new Cars(carsName);
-
 		for (int i = 0; i < times; i++) {
-			ResultView.saveRoundResult(Round.play(participants));
+			ResultView.saveRoundResult(participants.playRound(new Always4Strategy()));
 		}
 		ResultView.printRacingResult();
 		ResultView.printWinner(participants.findWinner());

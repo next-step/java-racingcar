@@ -1,18 +1,16 @@
 package step4;
 
-import java.util.List;
 import java.util.Random;
 
 public class Round {
 	private static final Random RANDOM = new Random();
 	private static final int RANDOM_LIMIT = 9;
 
-	public static void play(List<Car> cars) {
-		for (Car car : cars) {
+	public static Cars play(Cars participants) {
+		for (Car car : participants.getRacingCars()) {
 			car.moveForward(getRandomNumber());
-			ResultView.saveRoundScore(car);
 		}
-		ResultView.nextRound();
+		return participants;
 	}
 
 	private static int getRandomNumber() {

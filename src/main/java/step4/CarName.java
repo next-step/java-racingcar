@@ -1,18 +1,19 @@
 package step4;
 
-public class NameValidator {
+public class CarName {
 	private static final int NAME_LENGTH_LIMIT = 5;
 	private static final String SEPARATOR = ",";
+	private final String name;
 
-	public static String[] splitValidName(String carsName) {
-		String[] names = carsName.split(SEPARATOR);
-		for (String name : names) {
-			isNameLengthOverLimit(name);
-		}
-		return names;
+	public CarName(String name) {
+		this.name = isNameLengthOverLimit(name);
 	}
 
-	private static String isNameLengthOverLimit(String name) {
+	public String getValue() {
+		return name;
+	}
+
+	private String isNameLengthOverLimit(String name) {
 		if (name.length() <= NAME_LENGTH_LIMIT) {
 			return name;
 		}
