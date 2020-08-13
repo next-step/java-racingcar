@@ -9,6 +9,7 @@ import java.util.Random;
 public class RacingGame {
 
     public static final int TOTAL_CASES = 10;
+    public static final String NEW_LINE = "\n";
     public List<Car> cars;
     public int trials;
 
@@ -18,9 +19,14 @@ public class RacingGame {
         this.trials = numberOfTrials;
     }
 
-    public void run() {
-        ResultView resultView = start();
-        resultView.printResult();
+    public ResultView run(Random random) {
+        String board = "";
+        for (int i = 0; i < trials; i++) {
+            board += cars.stream()
+                    .map(car -> car.move(random.nextInt(TOTAL_CASES)) + NEW_LINE)
+                    .reduce("", (trial, track) -> trial += track) + NEW_LINE;
+        }
+        return new ResultView(board);
     }
 
     private List<Car> makeUpEntry(int numberOfCars) {
@@ -29,17 +35,5 @@ public class RacingGame {
             cars.add(new Car());
         }
         return cars;
-    }
-
-    private ResultView start() {
-        Random random = new Random();
-        ResultView resultView = new ResultView();
-
-        for (int i = 0; i < trials; i++) {
-            cars.stream()
-                    .forEach(car -> resultView.trace(car.move(random.nextInt(TOTAL_CASES))));
-            resultView.nextTrial();
-        }
-        return resultView;
     }
 }

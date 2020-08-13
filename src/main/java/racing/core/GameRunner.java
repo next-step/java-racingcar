@@ -10,6 +10,7 @@ public class GameRunner {
     public static void main(String[] args) {
         InputView inputView = new InputView();
         RacingGame game = new RacingGame(inputView.howManyCars(), inputView.howManyTrials());
-        game.run();
+        ResultView resultView = game.run(new Random());
+        resultView.printResult();
     }
 }

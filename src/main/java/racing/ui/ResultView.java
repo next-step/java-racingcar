@@ -1,19 +1,29 @@
 package racing.ui;
 
+import java.util.Objects;
+
 public class ResultView {
 
-    private static final String NEW_LINE = "\n";
     private String board = "";
 
-    public void trace(String route) {
-        board += (route + NEW_LINE);
-    }
-
-    public void nextTrial() {
-        board += NEW_LINE;
+    public ResultView(String board) {
+        this.board = board;
     }
 
     public void printResult() {
         System.out.println(board);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ResultView that = (ResultView) o;
+        return board.equals(that.board);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(board);
     }
 }
