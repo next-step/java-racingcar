@@ -11,6 +11,9 @@ public class StringCalculator {
     }
 
     private static int calculate(int first, int second, String operator) {
+        if (operator.equals("+")) {
+            return first + second;
+        }
         if (operator.equals("-")) {
             return first - second;
         }
@@ -20,7 +23,7 @@ public class StringCalculator {
         if (operator.equals("/")) {
             return first / second;
         }
-        return first + second;
+        throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
     }
 
     private static int toInt(String value) {

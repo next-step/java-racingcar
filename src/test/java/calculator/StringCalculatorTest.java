@@ -8,6 +8,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringCalculatorTest {
+    @DisplayName("사칙 연산 기호가 아닌 경우 Exception throw")
+    @Test
+    void 사칙연산_기호_아닌_경우_에러() {
+        assertThatThrownBy(() -> {
+            calculate("3 & 1");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Test
     @DisplayName("덧셈에 대한 단위테스트")
