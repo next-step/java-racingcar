@@ -4,8 +4,8 @@ public class StringCalculator {
 
     private MathematicalExpression expression;
 
-    public StringCalculator(MathematicalExpression expression) {
-        this.expression = expression;
+    public StringCalculator(String value) {
+        this.expression = new MathematicalExpression(value);
     }
 
     public int execute() {

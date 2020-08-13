@@ -3,8 +3,7 @@ package calculator;
 public class CalculatorRunner {
 
     public static void main(String[] args) {
-        MathematicalExpression expression = new MathematicalExpression("2 + 3 * 4 / 2");
-        StringCalculator calculator = new StringCalculator(expression);
+        StringCalculator calculator = new StringCalculator("2 + 3 * 4 / 2");
         System.out.println(calculator.execute());
     }
 }

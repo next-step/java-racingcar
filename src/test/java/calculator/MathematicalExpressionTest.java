@@ -21,7 +21,7 @@ class MathematicalExpressionTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"1 + 10 3", "1 + 10 3 1", "1 + 10 + +", "2 + - 4 * 1 2", "+ 2 - 1 * 3 / 2 5"})
+    @ValueSource(strings = {"1 + 10 3", "1 + 10 3 1", "1 + 10 + +", "2 + - 4 * 1 2", "+ 2 - 1 * 3 / 2 5", "+ 2 - 1 * 3 /"})
     @DisplayName("연산자와 피연산자의 개수, 순서가 올바르지 않은 경우")
     void calculateWithIllegalArgumentException(String input) {
         assertThatIllegalArgumentException().isThrownBy(() -> {

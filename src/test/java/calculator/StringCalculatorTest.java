@@ -12,8 +12,7 @@ class StringCalculatorTest {
     @ParameterizedTest
     @CsvSource({"1 + 10 / 3, 3", "10 / 4 * 2 + 1 - 4, 1"})
     void execute(String input, int result) {
-        MathematicalExpression expression = new MathematicalExpression(input);
-        StringCalculator calculator = new StringCalculator(expression);
+        StringCalculator calculator = new StringCalculator(input);
         assertEquals(calculator.execute(), result);
     }
 }

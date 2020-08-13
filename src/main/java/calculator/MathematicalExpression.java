@@ -2,6 +2,10 @@ package calculator;
 
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class MathematicalExpression {
 
@@ -15,8 +19,8 @@ public class MathematicalExpression {
         if (isNotValidExpression(arguments)) {
             throw new IllegalArgumentException(ExceptionMessage.NOT_EXPECTED_ARGUMENT.getMessage());
         }
-        this.numbers = filter(arguments, true);
-        this.operators = filter(arguments, false);
+        this.numbers = filter(arguments, this::isNumber, Integer::parseInt).toArray(Integer[]::new);
+        this.operators = filter(arguments, a -> !isNumber(a), Operator::of).toArray(Operator[]::new);
     }
 
     private String[] splitExpression(String expression) {
@@ -26,13 +30,10 @@ public class MathematicalExpression {
         return expression.split(DELIMITER);
     }
 
-    private <T> T[] filter(String[] arguments, boolean needNumber) {
-        return (T[]) Arrays.stream(arguments)
-                .filter(a -> !(isNumber(a) ^ needNumber))
-                .map(a -> needNumber ? Integer.parseInt(a) : Operator.of(a))
-                .toArray(size -> {
-                    return needNumber ? new Integer[size] : new Operator[size];
-                });
+    private <T> Stream<T> filter(String[] arguments, Predicate<String> isNumberOrNot, Function<String, T> mapper) {
+        return Arrays.stream(arguments)
+                .filter(isNumberOrNot)
+                .map(mapper);
     }
 
     private boolean isNumber(String value) {
@@ -48,15 +49,8 @@ public class MathematicalExpression {
         if (arguments.length % 2 == 0) {
             return true;
         }
-        for (int i = 0; i < arguments.length; i += 2) {
-            if (!isNumber(arguments[i])) {
-                return true;
-            }
-            if (i != arguments.length - 1 && isNumber(arguments[i + 1])) {
-                return true;
-            }
-        }
-        return false;
+        return IntStream.range(0, arguments.length)
+                .anyMatch(i -> (i % 2 == 0) != isNumber(arguments[i]));
     }
 
     public Integer[] getNumbers() {
