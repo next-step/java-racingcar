@@ -20,7 +20,7 @@ public abstract class Car {
         return position;
     }
 
-    public abstract int canMove(int racingCondition, int movementPolicy);
+    public abstract int move(int racingCondition, int movementPolicy);
 
     @Override
     public boolean equals(Object o) {

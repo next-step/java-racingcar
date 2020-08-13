@@ -5,9 +5,9 @@ import step3.domain.RacingCar;
 import step3.view.InputView;
 import step3.view.ResultView;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 public class RacingGame {
 
@@ -19,11 +19,35 @@ public class RacingGame {
         int motorRacingCount = InputView.setMotorRacingCount(scanner);
 
         ResultView.gameResult();
-        ResultView.carRace(carInfoMap, motorRacingCount);
+
+        play(carInfoMap, motorRacingCount);
 
         int maxPosition = RacingCar.findMaxPosition(carInfoMap);
-        List<String> winners = RacingCar.racingCarWinner(carInfoMap, maxPosition);
-        String winnerMmeber = ResultView.printWinner(winners);
+        String winnerMmeber = ResultView.printWinner(carInfoMap, maxPosition);
         System.out.println(winnerMmeber);
     }
+
+    private static void play(Map<String, Car> carInfoMap, int motorRacingCount) {
+        for (int i = 1; i <= motorRacingCount; i++) {
+            Set<String> keys = carInfoMap.keySet();
+            race(carInfoMap, keys);
+            System.out.println();
+        }
+    }
+
+    private static void race(Map<String, Car> carInfoMap, Set<String> keys) {
+        for (String carName : keys) {
+            Car car = carInfoMap.get(carName);
+            int carPosition = car.getPosition();
+
+            carPosition = RacingCar.raceStart(carInfoMap, car.getCarName(), carPosition);
+
+            car = new RacingCar(car.getCarName(), carPosition);
+            carInfoMap.put(car.getCarName(), car);
+
+            String mileAge = ResultView.printMovement(carPosition);
+            System.out.println(car.getCarName() + " : " + mileAge);
+        }
+    }
+    
 }
