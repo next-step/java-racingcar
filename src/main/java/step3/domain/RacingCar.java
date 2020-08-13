@@ -4,6 +4,7 @@ import java.util.*;
 
 public class RacingCar extends Car {
 
+    private static final int UPDATE_POSITION_NUMBER = 1;
     public static final String CAR_DELIMITER = ",";
 
     public RacingCar(String carName, int position) {
@@ -14,9 +15,9 @@ public class RacingCar extends Car {
     @Override
     public int move(int racingCondition, int movementPolicy) {
         if (racingCondition > movementPolicy) {
-            return 1;
+            return UPDATE_POSITION_NUMBER;
         }
-        return 0;
+        return ZERO_NUMBER;
     }
 
     public static Map<String, Car> preparationForGame(String racingCarName) {
@@ -25,7 +26,7 @@ public class RacingCar extends Car {
 
         for (String carName : racingCarArray) {
             ValidationCarName.carNameInvalidException(carName);
-            Car car = new RacingCar(carName, 0);
+            Car car = new RacingCar(carName, ZERO_NUMBER);
             carInfoMap.put(car.getCarName(), car);
         }
         return carInfoMap;

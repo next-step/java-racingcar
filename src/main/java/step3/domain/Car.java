@@ -4,12 +4,13 @@ import java.util.Objects;
 
 public abstract class Car {
 
+    public static int ZERO_NUMBER = 0;
     private String carName;
     protected int position;
 
     public Car(String carName) {
         this.carName = carName;
-        this.position = 0;
+        this.position = ZERO_NUMBER;
     }
 
     public String getCarName() {

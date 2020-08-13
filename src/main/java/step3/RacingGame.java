@@ -11,6 +11,8 @@ import java.util.Set;
 
 public class RacingGame {
 
+    public static final int GAME_START_NUMBER = 1;
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String racingCarName = InputView.setRacingCarNumber(scanner);
@@ -28,7 +30,7 @@ public class RacingGame {
     }
 
     private static void play(Map<String, Car> carInfoMap, int motorRacingCount) {
-        for (int i = 1; i <= motorRacingCount; i++) {
+        for (int i = GAME_START_NUMBER; i <= motorRacingCount; i++) {
             Set<String> keys = carInfoMap.keySet();
             race(carInfoMap, keys);
             System.out.println();
@@ -49,5 +51,5 @@ public class RacingGame {
             System.out.println(car.getCarName() + " : " + mileAge);
         }
     }
-    
+
 }
