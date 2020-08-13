@@ -1,5 +1,9 @@
 package racingcar;
 
+import racingcar.domain.Cars;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
