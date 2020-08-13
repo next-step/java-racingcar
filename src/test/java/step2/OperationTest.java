@@ -10,10 +10,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class OperationTest {
 
-    @BeforeEach
-    void setUp() {
-    }
-
     @ParameterizedTest
     @CsvSource(value = {"1:2"}, delimiter = ':')
     void add(int a, int b) {
