@@ -1,3 +1,4 @@
+import step3.domain.Racing;
 import step3.view.InputView;
 
 public class RacingGame {
@@ -8,7 +9,9 @@ public class RacingGame {
         String carNumber = inputView.carNumberInput();
         String attemptNumber = inputView.attemptNumberInput();
 
-        System.out.println("car Number : " + carNumber + " attempt Number : " + attemptNumber);
+        Racing racing = new Racing(carNumber, attemptNumber);
+
+        racing.racingStart();
 
     }
 }
