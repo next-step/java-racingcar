@@ -20,10 +20,7 @@ public class CarRacingResult {
 
 	private String replayRecords() {
 		return allRecords.stream()
-						 .map(records -> records.getRecords()
-												.stream()
-												.map(record -> record.getCarName() + " : " + record.drawLocation())
-												.collect(joining("\n")))
+						 .map(records -> records.viewRecord())
 						 .collect(Collectors.joining("\n\n"));
 	}
 
