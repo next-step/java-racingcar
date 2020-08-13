@@ -17,6 +17,12 @@ public class StringCalculatorTest {
     }
 
     @Test
+    @DisplayName("계산")
+    void 계산() {
+        assertThat(calculate("4 / 2 * 5 - 3")).isEqualTo(7);
+    }
+
+    @Test
     @DisplayName("덧셈에 대한 단위테스트")
     void 덧셈() {
         assertThat(calculate("3 + 1")).isEqualTo(4);

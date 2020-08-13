@@ -3,11 +3,14 @@ package calculator;
 public class StringCalculator {
     public static int calculate(String value) {
         String[] values = value.split(" ");
-        int first = toInt(values[0]);
-        int second = toInt(values[2]);
-        String operator = values[1];
+        int result = toInt(values[0]);
 
-        return calculate(first, second, operator);
+        for (int i = 1; i < values.length; i+=2) {
+            String operator = values[i];
+            int second = toInt(values[i + 1]);
+            result = calculate(result, second, operator);
+        }
+        return result;
     }
 
     private static int calculate(int first, int second, String operator) {
