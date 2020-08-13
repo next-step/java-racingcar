@@ -23,15 +23,15 @@ class RacingResultTest {
     void setUp() {
         List<RacingCar> racingCarList = new ArrayList<>();
 
-        RacingCar racingCar1 = RacingCar.create("DD");
+        RacingCar racingCar1 = RacingCar.of("DD");
         racingCar1.race(ATTEMPT_NUMBER, RANDOM_NUMBER_CAR_MOVER);
         racingCarList.add(racingCar1);
 
-        RacingCar racingCar2 = RacingCar.create("LALA");
+        RacingCar racingCar2 = RacingCar.of("LALA");
         racingCar2.race(ATTEMPT_NUMBER, RANDOM_NUMBER_CAR_MOVER);
         racingCarList.add(racingCar2);
 
-        RacingCar racingCar3 = RacingCar.create("MOMO");
+        RacingCar racingCar3 = RacingCar.of("MOMO");
         racingCar3.race(ATTEMPT_NUMBER, RANDOM_NUMBER_CAR_MOVER);
         racingCarList.add(racingCar3);
 

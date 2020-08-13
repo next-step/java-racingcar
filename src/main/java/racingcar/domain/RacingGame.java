@@ -24,7 +24,7 @@ public class RacingGame {
         checkAvailableGame(carNames, attemptNumber);
 
         RacingCars racingCars = carNames.stream()
-                .map(RacingCar::create)
+                .map(RacingCar::of)
                 .collect(collectingAndThen(toList(), RacingCars::new));
 
         return new RacingGame(racingCars, attemptNumber);

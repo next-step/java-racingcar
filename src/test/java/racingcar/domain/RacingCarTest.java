@@ -20,7 +20,7 @@ class RacingCarTest {
 
     @BeforeEach
     void setUp() {
-        racingCar = RacingCar.create(NAME);
+        racingCar = RacingCar.of(NAME);
     }
 
     @DisplayName("race 메소드 실행 전 테스트")

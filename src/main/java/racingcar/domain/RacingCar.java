@@ -17,7 +17,7 @@ public class RacingCar extends RacingVehicle {
         this.name = name;
     }
 
-    public static RacingCar create(String name) {
+    public static RacingCar of(String name) {
         checkNameValidation(name);
 
         return new RacingCar(name);
