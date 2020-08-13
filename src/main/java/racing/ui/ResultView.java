@@ -1,29 +1,22 @@
 package racing.ui;
 
-import java.util.Objects;
+import racing.core.Snapshot;
+
+import java.util.List;
 
 public class ResultView {
 
-    private String board = "";
+    private List<Snapshot> snapshots;
+    private int numberOfCars;
 
-    public ResultView(String board) {
-        this.board = board;
+    public ResultView(List<Snapshot> snapshots, int numberOfCars) {
+        this.snapshots = snapshots;
+        this.numberOfCars = numberOfCars;
     }
 
     public void printResult() {
-        System.out.println(board);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ResultView that = (ResultView) o;
-        return board.equals(that.board);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(board);
+        for (int i = 0; i < snapshots.size(); i++) {
+            System.out.println(snapshots.get(i) + (i % numberOfCars == numberOfCars - 1? "\n" : ""));
+        }
     }
 }

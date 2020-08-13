@@ -3,8 +3,9 @@ package racing.core;
 public class Car {
 
     public static final int CONDITION = 4;
+    private int position;
 
-    public boolean move(int random) {
-        return random >= CONDITION;
+    public Snapshot move(int random) {
+        return new Snapshot(random >= CONDITION ? ++position : position);
     }
 }
