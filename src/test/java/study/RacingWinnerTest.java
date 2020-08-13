@@ -1,37 +1,36 @@
 package study;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import racingWinner.Car;
+import racingWinner.CarFactory;
+import racingWinner.RacingGame;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static racingWinner.RacingGame.getMaxLocationWithList;
-import org.junit.jupiter.api.Test;
 public class RacingWinnerTest {
 	 
-	private List<Car> carsList;
+	private List<CarFactory> carsList;
 	private String[] carNamesArrayTrue;
 	private String[] carNamesArrayFalse;
 	
 	@BeforeEach
     void setUp() {
         carsList = new ArrayList<>();
-        Car car = new Car("pobi");
+        CarFactory car = new CarFactory("pobi");
         car.go(5);
         carsList.add(car);
         
-        Car car2 = new Car("crong");
+        CarFactory car2 = new CarFactory("crong");
         car.go(5);
         car.go(5);
         car.go(5);
         carsList.add(car2);
         
-        Car car3 = new Car("honux");
+        CarFactory car3 = new CarFactory("honux");
         car.go(5);
         car.go(5);
         car.go(5);
@@ -61,7 +60,7 @@ public class RacingWinnerTest {
 	@Test
 	public void 전진()
 	{
-		Car car = carsList.get(0);
+		CarFactory car = carsList.get(0);
 		assertThat(car.getLocation()).isEqualTo(1);
 		car.go(5);
 		assertThat(car.getLocation()).isEqualTo(2);
@@ -71,13 +70,20 @@ public class RacingWinnerTest {
 	@Test
 	public void checkName() {
 		assertThatThrownBy(() -> {
-			Car car = new Car("lengthOver");
+			CarFactory car = new CarFactory("lengthOver");
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
 	
 	@Test
 	public void checkMaxLocationWithList() {
-		assertThat(getMaxLocationWithList(carsList)).isEqualTo(5);
+		RacingGame racingGame = new RacingGame(carsList);
+		assertThat(racingGame.getMaxLocationWithList()).isEqualTo(5);
 	}
+	
+	@Test
+	public void checkRacingGameAll() {
+		
+	}
+	
 	
 }
