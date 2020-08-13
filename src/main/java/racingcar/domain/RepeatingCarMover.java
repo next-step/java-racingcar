@@ -5,11 +5,7 @@ public class RepeatingCarMover implements CarMover {
 
     @Override
     public boolean movable() {
-        if (flag) {
-            flag = false;
-            return flag;
-        }
-        flag = true;
+        flag = !flag;
         return flag;
     }
 }

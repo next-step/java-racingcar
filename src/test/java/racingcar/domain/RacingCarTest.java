@@ -33,7 +33,7 @@ class RacingCarTest {
     @DisplayName("race 메소드 실행 후 테스트")
     @Test
     void race_after_test() {
-        racingCar.race(ATTEMPT_NUMBER, ALWAYS_MOVE_CAR_MOVER);
+        racingCar.race(ATTEMPT_NUMBER, RANDOM_NUMBER_CAR_MOVER);
 
         // racingCar의 raceRecord 생성 여부 확인
         assertThat(racingCar.getRaceRecord()).isNotNull();
@@ -44,7 +44,7 @@ class RacingCarTest {
     @DisplayName("race 메소드 - raceRecord 생성 테스트")
     @Test
     void race_test() {
-        racingCar.race(ATTEMPT_NUMBER_ZERO, ALWAYS_MOVE_CAR_MOVER);
+        racingCar.race(ATTEMPT_NUMBER_ZERO, RANDOM_NUMBER_CAR_MOVER);
 
         // racingCar의 raceRecord가 빈 리스트로 생성되었는지 확인
         assertThat(racingCar.getRaceRecord()).isNotNull();
