@@ -1,6 +1,5 @@
 package racing.core;
 
-import racing.ui.InputView;
 import racing.ui.ResultView;
 
 import java.util.ArrayList;
@@ -13,24 +12,15 @@ public class RacingGame {
     public List<Car> cars;
     public int trials;
 
-    public RacingGame() {
-        InputView inputView = new InputView();
+    public RacingGame(int numberOfCars, int numberOfTrials) {
         // ready
-        this.cars = howManyCars(inputView);
-        this.trials = howManyTrials(inputView);
+        this.cars = makeUpEntry(numberOfCars);
+        this.trials = numberOfTrials;
     }
 
     public void run() {
         ResultView resultView = start();
         resultView.printResult();
-    }
-
-    private List<Car> howManyCars(InputView inputView) {
-        return makeUpEntry(inputView.getNumber("자동차 대수는 몇 대 인가요?"));
-    }
-
-    private int howManyTrials(InputView inputView) {
-        return inputView.getNumber("시도할 회수는 몇 회 인가요?");
     }
 
     private List<Car> makeUpEntry(int numberOfCars) {
