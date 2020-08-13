@@ -27,12 +27,8 @@ public class StringCalculator {
     }
 
     private static int calculate(int first, int second, String operator) {
-        Optional<Operation> maybeOperation = operations.stream()
-                                                    .filter(o -> o.isSupport(operator))
-                                                    .findFirst();
-        Operation operation = maybeOperation.orElseThrow(IllegalArgumentException::new);
-
-        return operation.operate(first, second);
+        Operator op = Operator.of(operator);
+        return op.operate(first, second);
     }
 
     private static int toInt(String value) {
