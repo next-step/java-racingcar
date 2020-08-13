@@ -6,12 +6,13 @@
 - [x] UI 로직을 `InputView`, `ResultView`와 같은 클래스를 추가해 분리한다.
 
 ### 핵심 로직
-- [x] 전진하는 조건은 0에서 9 사이에서 random 값을 구한 후 random 값이 4이상일 경우이다.
+- [x] 전진하는 조건은 0에서 9 사이에서 random 값을 구한 후 random 값이 4 이상일 경우이다.
+- [x] 자동차의 움직임을 결정짓는 객체를 설계한다.
 
 ### 코드 구현 제약
 - [x] else 예약어를 쓰지 않는다.
 - [ ] 모든 로직에 단위 테스트를 구현한다. (단, UI 로직 제외)
   - [x] `Car.move()`
   - [ ] `RacingGame.run()`
-  - [ ] `ResultView.trace()`
-  - [ ] `ResultView.nextTrial()`
+    - [x] `RacingGame.run()` 코드와 테스트 코드의 중복 (반복)
+    - [ ] 모두 전진하지 않은 경우, 모두 전진한 경우, 랜덤값에 따른 전진 결과 비교
