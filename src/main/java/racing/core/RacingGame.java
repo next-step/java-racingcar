@@ -2,11 +2,9 @@ package racing.core;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
 
-    public static final int TOTAL_CASES = 10;
     public List<Car> cars;
     public int trials;
 
@@ -15,11 +13,10 @@ public class RacingGame {
         this.trials = numberOfTrials;
     }
 
-    public List<Snapshot> run(Random random) {
+    public List<Snapshot> run(Move movement) {
         List<Snapshot> snapshots = new ArrayList<>();
         for (int i = 0; i < trials; i++) {
-            cars.stream()
-                    .forEach(c -> snapshots.add(c.move(random.nextInt(TOTAL_CASES))));
+            cars.stream().forEach(c -> snapshots.add(c.move(movement)));
         }
         return snapshots;
     }

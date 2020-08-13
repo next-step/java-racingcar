@@ -4,7 +4,6 @@ import racing.ui.InputView;
 import racing.ui.ResultView;
 
 import java.util.List;
-import java.util.Random;
 
 public class GameRunner {
 
@@ -16,7 +15,7 @@ public class GameRunner {
 
         // 경주
         RacingGame game = new RacingGame(numberOfCars, numberOfTrials);
-        List<Snapshot> snapshots = game.run(new Random());
+        List<Snapshot> snapshots = game.run(new RandomMove());
 
         // 결과 출력
         ResultView resultView = new ResultView(snapshots, numberOfCars);
