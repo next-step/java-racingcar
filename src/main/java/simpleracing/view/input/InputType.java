@@ -1,4 +1,4 @@
-package simpleracing.input;
+package simpleracing.view.input;
 
 import static java.util.stream.Collectors.toList;
 
@@ -18,11 +18,11 @@ import lombok.AllArgsConstructor;
 public enum InputType {
 	CAR_COUNT("자동차 대수는 몇 대 인가요?",
 			  count -> validateCount(count, "자동차 대수는 0대 이하일 수 없습니다."),
-			  (initValue, carCount) -> initValue.setCarCount(Integer.parseInt(carCount)),
+			  (initValue, carCount) -> initValue.setNumberOfCars(Integer.parseInt(carCount)),
 			  Boolean.FALSE, 2),
 	GAME_COUNT("시도할 회수는 몇 회 인가요?",
 			   count -> validateCount(count, "시도할 회수는 0회 이하일 수 없습니다."),
-			   (initValue, gameCount) -> initValue.setTryCount(Integer.parseInt(gameCount)),
+			   (initValue, gameCount) -> initValue.setNumberOfAttempts(Integer.parseInt(gameCount)),
 			   Boolean.TRUE, 1),
 	CAR_NAME("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).",
 			 names -> validateNames(names, "자동차의 이름을 규칙에 맞게 입력해주세요.(예 : pobi,crong,honux"),

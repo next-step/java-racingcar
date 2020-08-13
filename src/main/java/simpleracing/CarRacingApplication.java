@@ -1,6 +1,6 @@
 package simpleracing;
 
-import simpleracing.execute.CarRacingExecutor;
+import simpleracing.domain.executor.CarRacingExecutor;
 
 public class CarRacingApplication {
 
