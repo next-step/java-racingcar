@@ -1,4 +1,6 @@
-package step3.model;
+package step3.view.output;
+
+import step3.model.Car;
 
 import java.util.StringJoiner;
 

@@ -1,6 +1,4 @@
-package step3.logic;
-
-import step3.view.output.OutputView;
+package step3.model;
 
 public class Car {
 
@@ -16,8 +14,6 @@ public class Car {
         if (this.CAR_GOING_DECISION_POINT <= RandomGenerator.generateRandomCount()) {
             this.carMovement++;
         }
-        System.out.print(this.playerName);
-        OutputView.printingMovement(this.carMovement);
     }
 
     public String getCarName() { return this.playerName; }

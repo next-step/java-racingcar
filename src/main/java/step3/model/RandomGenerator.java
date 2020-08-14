@@ -1,4 +1,4 @@
-package step3.logic;
+package step3.model;
 
 import java.util.Random;
 

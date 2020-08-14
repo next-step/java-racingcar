@@ -1,6 +1,6 @@
-package step3.application;
+package step3.controller;
 
-import step3.logic.Cars;
+import step3.model.Cars;
 import step3.view.input.InputScanner;
 import step3.view.output.OutputText;
 
@@ -18,9 +18,8 @@ public class MainClass {
 
         for (int i = 0; i < inputCycleCount; i++) {
             cars.runRace();
-            System.out.println();
         }
-
-        System.out.println(cars.sortWinners());
+        cars.sortWinners();
+        System.out.println(cars.getGameResult());
     }
 }

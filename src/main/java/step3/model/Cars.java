@@ -1,4 +1,6 @@
-package step3.logic;
+package step3.model;
+
+import step3.view.output.RaceRecorder;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,9 +12,11 @@ public class Cars {
     private static final String DIAMETER = ",";
     private static final int NAME_LENGTH_LIMIT = 5;
     private List<Car> cars;
+    private RaceRecorder raceRecorder;
 
     public Cars(String players) {
         setPlayerNameForEachCar(players.split(DIAMETER));
+        this.raceRecorder = new RaceRecorder();
     }
 
     private void setPlayerNameForEachCar(String[] playerNames) {
@@ -23,21 +27,30 @@ public class Cars {
     }
 
     public void runRace() {
-        this.cars.forEach(Car::makeCarMove);
+        this.cars.forEach(car -> {
+            car.makeCarMove();
+            raceRecorder.saveRacingRecord(car);
+        });
+        raceRecorder.appendNewLine();
     }
 
-    public String sortWinners() {
+    public void sortWinners() {
+        String result = this.cars.stream()
+                            .collect(Collectors.groupingBy(
+                                    Car::getCarMovedCount,
+                                    TreeMap::new,
+                                    Collectors.toList()
+                            ))
+                            .lastEntry()
+                            .getValue()
+                            .stream()
+                            .map(Car::getCarName)
+                            .collect(Collectors.joining(DIAMETER));
 
-        return this.cars.stream()
-                .collect(Collectors.groupingBy(
-                        Car::getCarMovedCount,
-                        TreeMap::new,
-                        Collectors.toList()
-                ))
-                .lastEntry()
-                .getValue()
-                .stream()
-                .map(Car::getCarName)
-                .collect(Collectors.joining(DIAMETER));
+        raceRecorder.saveWinners(result);
+    }
+
+    public String getGameResult() {
+        return this.raceRecorder.getResultString();
     }
 }
