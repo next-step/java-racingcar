@@ -1,5 +1,7 @@
 package pobiRacingCar.domain;
 
+import javafx.geometry.Pos;
+
 import java.util.Objects;
 import java.util.Random;
 
@@ -7,14 +9,18 @@ public class Car {
     public static final int MAX_BOUND = 10;
     public static final int FORWARD_NUM = 4;
     //private final String name; //원시값 name -> Name Obj, 그 자체 validation가능.
-    private final CarName name;
-    private int position = 0; //원시값 position -> Position Obj
+    private final CarName name; //init null
+    private final Position position = new Position(0); //init 0
+    // private int position = 0; //원시값 position -> Position Obj , 그 자체 validation가능.
 
     public Car(final String name) { //원시값 name -> Name Obj  this.name = name.trim();
         this.name = new CarName(name);
     }
 
-    public int getPosition() { return position; }
+    //public int getPosition() { return position; } 원시값 position -> Position Obj
+    public Position getPosition() {
+        return position;
+    }
 
     //public String getName() { return name; }  원시값 name -> Name Obj
     public CarName getName() {
