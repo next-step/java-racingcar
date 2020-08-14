@@ -8,7 +8,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class CarNameTest {
     @Test
     void doCreateCarName() {
-        CarName name = new CarName("pobi");
         assertThat(new CarName("pobi")).isEqualTo(new CarName("pobi"));
     }
 
