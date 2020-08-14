@@ -46,7 +46,7 @@ class RacingResultTest {
         assertThat(racingResult).isNotNull();
         assertThat(racingResult.getAttempt()).isEqualTo(ATTEMPT_NUMBER);
         assertThat(racingResult.getResultByAttempt(ATTEMPT_NUMBER - 1)).hasSize(3);
-        assertThat(racingResult.getWinner(ATTEMPT_NUMBER - 1)).isNotBlank();
+        assertThat(racingResult.getWinner()).isNotBlank();
     }
 
     @DisplayName("getResultByAttempt 메소드 테스트")
@@ -64,10 +64,10 @@ class RacingResultTest {
     void getWinner_test(Stream<String> names, boolean result) {
         RacingResult racingResult = RacingResult.aggregate(ATTEMPT_NUMBER, racingCars);
 
-        assertThat(racingResult.getWinner(ATTEMPT_NUMBER - 1)).isNotBlank();
+        assertThat(racingResult.getWinner()).isNotBlank();
 
         assertThat(names.anyMatch(name -> racingResult
-                .getWinner(ATTEMPT_NUMBER - 1)
+                .getWinner()
                 .contains(name))).isEqualTo(result);
 
     }
