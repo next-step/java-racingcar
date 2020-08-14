@@ -2,75 +2,81 @@ package study.step3;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
-import step3.domain.RacingCar;
-import step3.domain.Car;
-import step3.view.ResultView;
+import org.junit.jupiter.api.Test;
+import step3.domain.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RacingCarTest {
 
-    private Map<Integer, Car> carInfoMap;
+    private Map<String, Car> carInfoMap;
 
     @BeforeEach
     void setUp() {
         carInfoMap = new HashMap<>();
     }
 
-    @ParameterizedTest
-    @DisplayName("자동차 전진")
-    @CsvSource(value = {"5:-----", "3:---"}, delimiter = ':')
-    void accelateTest(int gameCount, String expected) {
-        String mileAge = "";
-        for (int i = 1; i <= gameCount; i++) {
-            mileAge += ResultView.ACCELATE_SIGN;
-        }
-        assertThat(mileAge).isEqualTo(expected);
-    }
-
-    @ParameterizedTest
-    @DisplayName("자동차 정지")
-    @CsvSource(value = {"5:''", "3:''"}, delimiter = ':')
-    void brakeTest(int gameCount, String expected) {
-        String mileAge = "";
-        for (int i = 1; i <= gameCount; i++) {
-            mileAge += ResultView.BRAKE_SIGN;
-        }
-        assertThat(mileAge).isEqualTo(expected);
-    }
-
-    @ParameterizedTest
-    @DisplayName("Position에 따른 자동차 전진")
-    @CsvSource(value = {"5:8", "5:4", "5:7"}, delimiter = ':')
-    public void positinoTest(int gameCount, int position) {
-        String mileAge = "";
-        for (int i = 0; i < gameCount; i++) {
-            mileAge = ResultView.printMovement(position);
-        }
-        assertThat(mileAge).hasSize(position);
-    }
-
-    @ParameterizedTest
-    @DisplayName("참여하는 자동차 대수 확인")
-    @ValueSource(ints = 3)
-    void preparedCarTest(int racingCarNumber) {
-        Map<Integer, Car> carInfoMap = RacingCar.preparationForGame(racingCarNumber);
+    @Test
+    @DisplayName("게임에 참여하는 자동차")
+    void prepareGame() {
+        carInfoMap = RacingCar.preparationForGame("pobi,crong,honux");
         assertThat(carInfoMap).hasSize(3);
+        assertThat(carInfoMap).containsKey("pobi");
+        assertThat(carInfoMap).containsKey("crong");
+        assertThat(carInfoMap).containsKey("honux");
     }
 
-    @ParameterizedTest
-    @DisplayName("레이싱 기능")
-    @CsvSource(value = {"3:5", "2:7"}, delimiter = ':')
-    void racingTest(int racingCarNumber, int motorRacingCount) {
-        carInfoMap = RacingCar.preparationForGame(racingCarNumber);
-        ResultView.carRace(carInfoMap, racingCarNumber, motorRacingCount);
+    @Test
+    @DisplayName("6글자 이상의 자동차 이름이 입력되면 IllegalArgumentException 발생")
+    void invalidCarName() {
+        assertThatThrownBy(() -> {
+            ValidationCarName.carNameInvalidException("hangyeol");
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("자동차 전진 조건 확인")
+    void accelateTest() {
+        carInfoMap = RacingCar.preparationForGame("tommy");
+        Car car = carInfoMap.get("tommy");
+        int position = car.move(4, RacingRule.MOVEMENT_POLICY);
+        assertThat(position).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("자동차 정지 조건 확인")
+    void brakeTest() {
+        carInfoMap = RacingCar.preparationForGame("tommy");
+        Car car = carInfoMap.get("tommy");
+        int position = car.move(3, RacingRule.MOVEMENT_POLICY);
+        assertThat(position).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("우승자 이동거리 확인")
+    void winnerMileAge() {
+        carInfoMap.put("tommy", new RacingCar("tommy", 7));
+        carInfoMap.put("pobi", new RacingCar("pobi", 4));
+        carInfoMap.put("crong", new RacingCar("crong", 7));
+        int maxPosition = RacingCar.findMaxPosition(carInfoMap);
+        assertThat(maxPosition).isEqualTo(7);
+    }
+
+    @Test
+    @DisplayName("우승자 확인")
+    void findWinners() {
+        carInfoMap.put("tommy", new RacingCar("tommy", 7));
+        carInfoMap.put("pobi", new RacingCar("pobi", 4));
+        carInfoMap.put("crong", new RacingCar("crong", 7));
+        int maxPosition = RacingCar.findMaxPosition(carInfoMap);
+        String winners = Winners.findWinners(carInfoMap, maxPosition);
+        String[] winnerArray = winners.split(", ");
+        assertThat(winnerArray).contains("crong");
+        assertThat(winnerArray).contains("tommy");
+    }
 
 }
