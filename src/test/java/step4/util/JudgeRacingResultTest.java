@@ -1,9 +1,10 @@
-package step4;
+package step4.util;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import step4.dto.Car;
+import step4.util.JudgeRacingResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +23,7 @@ class JudgeRacingResultTest {
         entryList.add(car1);
         entryList.add(car2);
 
-        JudgeRacingResult judgeRacingResult = new JudgeRacingResult();
-        List winnerInRaceResult = judgeRacingResult.getWinnerInRaceResult(entryList);
+        List winnerInRaceResult = JudgeRacingResult.getWinnerInRaceResult(entryList);
 
         assertThat(winnerInRaceResult).hasSize(winnerCount);
     }

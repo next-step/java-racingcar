@@ -1,17 +1,17 @@
-package step4;
+package step5;
 
 
-import step4.dto.Car;
-import step4.dto.Competition;
-import step4.util.JudgeRacingResult;
-import step4.view.InputView;
-import step4.view.ResultView;
-import step4.view.WinnerView;
+import step5.dto.Competition;
+import step5.dto.Car;
+import step5.util.JudgeRacingResult;
+import step5.view.InputView;
+import step5.view.ResultView;
+import step5.view.WinnerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static step4.TextConstant.RACE_RESULT_TEXT;
+import static step5.TextConstant.RACE_RESULT_TEXT;
 
 
 public class CarRacing {
