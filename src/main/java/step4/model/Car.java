@@ -2,11 +2,12 @@ package step4.model;
 
 public class Car {
 
+    private static final int MAX_LENGTH = 5;
+    private static final int ZERO = 0;
+    private static final int MOVE_OR_STOP_VALUE = 4;
+
     private String name;
-    public static final int MAX_LENGTH = 5;
-    public static final int ZERO = 0;
     private int position = 0;
-    public static final int MOVE_OR_STOP_VALUE = 4;
 
     public String getName() {
         return name;
@@ -18,8 +19,8 @@ public class Car {
     }
 
     private void validate(String name) {
-        validateOfLength(name);
         validateOfNull(name);
+        validateOfLength(name);
     }
 
     private void validateOfLength(String name) {

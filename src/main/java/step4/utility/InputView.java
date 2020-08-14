@@ -12,6 +12,10 @@ public class InputView {
     static final String QUESTION_TRY_NUMBER = "시도할 회수는 몇 회 인가요?";
     static final String RESULT = "\n실행 결과";
 
+    private InputView() {
+       throw new AssertionError("생성자 생성 불가!");
+    }
+
     public static UserInput initShow() {
         System.out.println(QUESTION_CAR_NAME);
         Car[] cars = inputCarName();

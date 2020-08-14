@@ -44,14 +44,15 @@ class CarTest {
     void Name_공백인경우(String names) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             new Car(names);
-        });
+        }).withMessageContaining("Name length error");
     }
 
     @Test
     void Name_널인경우() {
         assertThatThrownBy(() -> {
             new Car(null);
-        }).isInstanceOf(NullPointerException.class);
+        }).isInstanceOf(NullPointerException.class)
+                .hasMessageContaining("널값은 입력할 수 없습니다");
     }
 
     @ParameterizedTest

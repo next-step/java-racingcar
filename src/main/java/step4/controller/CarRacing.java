@@ -1,8 +1,8 @@
 package step4.controller;
 
-import step4.model.CarRecord;
 import step4.model.Car;
-import step4.utility.ReturnValue;
+import step4.model.CarRecord;
+import step4.utility.ReturnRandomValue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,13 +13,11 @@ public class CarRacing {
     private Car[] cars;
     private int numOfTries;
     private CarRecord[] carRecord;
-    private int numOfCars;
 
     public CarRacing(Car[] cars, int numOfTries) {
         this.cars = cars;
         this.numOfTries = numOfTries;
-        numOfCars = cars.length;
-        carRecord = new CarRecord[numOfCars];
+        carRecord = new CarRecord[cars.length];
 
         for (int i = 0; i < cars.length; i++) {
             carRecord[i] = new CarRecord(cars[i].getName());
@@ -37,8 +35,8 @@ public class CarRacing {
     }
 
     void run() {
-        for (int i = 0; i < numOfCars; i++) {
-            cars[i].move(ReturnValue.returnValue());
+        for (int i = 0; i < cars.length; i++) {
+            cars[i].move(ReturnRandomValue.returnValue());
             carRecord[i].resultRecording(cars[i].getPosition());
         }
     }
@@ -69,7 +67,9 @@ public class CarRacing {
     private static List<String> topOfRace(int[] record, CarRecord[] cars) {
         List<String> result = new ArrayList<>();
 
-        int maxValue = Arrays.stream(record).max().getAsInt();
+        int maxValue = Arrays.stream(record)
+                        .max()
+                        .getAsInt();
 
         for (int i = 0; i < record.length; i++) {
             if (record[i] == maxValue) {

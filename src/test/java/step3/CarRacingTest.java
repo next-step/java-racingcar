@@ -3,15 +3,10 @@ package step3;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step3.controller.CarRacing;
-import step3.model.Car;
 import step3.utility.ReturnValue;
-
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class CarRacingTest {
 
