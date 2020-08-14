@@ -1,49 +1,52 @@
 package step3.domain;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class RacingCar extends Car {
 
-    public RacingCar(int carId, int position) {
-        super(carId);
+    private static final int UPDATE_POSITION_NUMBER = 1;
+    public static final String CAR_DELIMITER = ",";
+
+    public RacingCar(String carName, int position) {
+        super(carName);
         super.position = position;
     }
 
     @Override
-    public boolean move(int racingCondition, int movementPolicy) {
+    public int move(int racingCondition, int movementPolicy) {
         if (racingCondition > movementPolicy) {
-            return accelerate();
+            return UPDATE_POSITION_NUMBER;
         }
-        return brake();
+        return ZERO_NUMBER;
     }
 
-    public static Map<Integer, Car> preparationForGame(int racingCarNumber) {
-        Map<Integer, Car> carInfoMap = new HashMap<>();
+    public static Map<String, Car> preparationForGame(String racingCarName) {
+        Map<String, Car> carInfoMap = new HashMap<>();
+        String[] racingCarArray = racingCarName.split(CAR_DELIMITER);
 
-        for (int carId = 1; carId <= racingCarNumber; carId++) {
-            Car car = new RacingCar(carId, 0);
-            carInfoMap.put(car.getCarId(), car);
+        for (String carName : racingCarArray) {
+            ValidationCarName.carNameInvalidException(carName);
+            Car car = new RacingCar(carName, ZERO_NUMBER);
+            carInfoMap.put(car.getCarName(), car);
         }
         return carInfoMap;
     }
 
-    public static int updatePosition(boolean raceResult) {
-        if (raceResult) {
-            return 1;
-        }
-        return 0;
-    }
-
-    public static boolean receStart(Car racingCar, int racingCarNumber) {
-        boolean result = false;
-
-        if (racingCar.getCarId() == racingCarNumber) {
+    public static int raceStart(Map<String, Car> carInfoMap, String racingCarName, int position) {
+        if (carInfoMap.containsKey(racingCarName)) {
+            Car racingCar = carInfoMap.get(racingCarName);
             int raceConditionResult = RacingRule.raceCondition();
-            result = racingCar.move(raceConditionResult, RacingRule.MOVEMENT_POLICY);
+            position += racingCar.move(raceConditionResult, RacingRule.MOVEMENT_POLICY);
         }
-        return result;
+        return position;
     }
 
+    public static int findMaxPosition(Map<String, Car> carInfoMap) {
+        return carInfoMap.values()
+                .stream()
+                .max(Comparator.comparingInt(Car::getPosition))
+                .get()
+                .position;
+    }
 
 }

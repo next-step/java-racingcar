@@ -4,43 +4,37 @@ import java.util.Objects;
 
 public abstract class Car {
 
-    private int carId;
+    public static int ZERO_NUMBER = 0;
+    private String carName;
     protected int position;
 
-    public Car(int carId) {
-        this.carId = carId;
-        this.position = 0;
+    public Car(String carName) {
+        this.carName = carName;
+        this.position = ZERO_NUMBER;
     }
 
-    public int getCarId() {
-        return carId;
+    public String getCarName() {
+        return carName;
     }
 
     public int getPosition() {
         return position;
     }
 
-    public boolean accelerate() {
-        return true;
-    }
-
-    public boolean brake() {
-        return false;
-    }
-
-    public abstract boolean move(int racingCondition, int movementPolicy);
+    public abstract int move(int racingCondition, int movementPolicy);
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return carId == car.carId &&
+        return carName == car.carName &&
                 Objects.equals(position, car.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(carId, position);
+        return Objects.hash(carName, position);
     }
+
 }

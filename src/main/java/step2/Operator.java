@@ -1,7 +1,6 @@
 package step2;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 public enum Operator {
 
@@ -9,7 +8,7 @@ public enum Operator {
     MINUS("-", (firstNumber, secondNumber) -> firstNumber - secondNumber),
     MULTIPLY_BY("*", (firstNumber, secondNumber) -> firstNumber * secondNumber),
     DIVIDED_BY("/", (firstNumber, secondNumber) -> {
-        if (secondNumber == 0) {
+        if (secondNumber == CommonConstant.ZERO_NUMBER) {
             throw new IllegalArgumentException(CommonConstant.INVALID_DIVIDED_BY_ZERO);
         }
         return firstNumber / secondNumber;
@@ -24,8 +23,10 @@ public enum Operator {
     }
 
     public static Operator of(String value) {
-        Optional<Operator> operators = Arrays.stream(values()).filter(o -> o.operator.equals(value)).findFirst();
-        return operators.orElseThrow(() -> new IllegalArgumentException(value + CommonConstant.INVALID_OPERATOR));
+        return Arrays.stream(values())
+                .filter(o -> o.operator.equals(value))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(value + CommonConstant.INVALID_OPERATOR));
     }
 
     public int calculate(int firstNumber, int secondNumber) {
