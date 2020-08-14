@@ -48,7 +48,7 @@ public class RacingGame {
             carInfoMap.put(car.getCarName(), car);
 
             String mileAge = ResultView.printMovement(carPosition);
-            System.out.println(car.getCarName() + " : " + mileAge);
+            System.out.println(ResultView.printCarMileAge(car, mileAge));
         }
     }
 

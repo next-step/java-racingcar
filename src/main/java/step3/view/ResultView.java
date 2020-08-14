@@ -24,7 +24,11 @@ public class ResultView {
     }
 
     public static String printWinner(Map<String, Car> carInfoMap, int maxPosition) {
-        return Winners.findWinner(carInfoMap, maxPosition) + PRINT_WINNER_TEXT;
+        return Winners.findWinners(carInfoMap, maxPosition) + PRINT_WINNER_TEXT;
+    }
+
+    public static String printCarMileAge(Car car, String mileAge) {
+        return car.getCarName() + " : " + mileAge;
     }
 
 }
