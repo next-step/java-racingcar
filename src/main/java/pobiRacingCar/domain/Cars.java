@@ -13,6 +13,10 @@ public class Cars {
     public List<Car> findWinners() {
         int maxPosition = getMaxPosition( );
 
+        return filterWinners(maxPosition);
+    }
+
+    private List<Car> filterWinners(int maxPosition) {
         List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
             Position position = car.getPosition();
