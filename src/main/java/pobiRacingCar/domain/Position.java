@@ -3,13 +3,22 @@ package pobiRacingCar.domain;
 import java.util.Objects;
 
 public class Position {
-    private final int position;
+    private int position;
 
     public Position(int position) {
         if (position < 0) {
             throw new IllegalArgumentException("can't be minus");
         }
         this.position = position;
+    }
+    /* Position 자체를 return */
+    public Position move() {
+        position = position + 1;
+        return this;
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     @Override

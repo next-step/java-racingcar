@@ -18,6 +18,7 @@ public class Car {
     }
 
     //public int getPosition() { return position; } 원시값 position -> Position Obj
+    /** position에 move() 위임하니 getter/setter 불필요 ,DOMAIN 에서는 setter 불필요 getter은 UI용*/
     public Position getPosition() {
         return position;
     }
@@ -30,7 +31,11 @@ public class Car {
     //move() getRandom 즉 Random 객체에 의존 : 아예 외부에서 고정값(int 등)전달받게 하라
     public void move(int randomNo) {
         if (randomNo >= FORWARD_NUM)
-            this.position++;
+        /**
+         * 메시지 객체에 위임, Car이 position 강제않고 position 객체에게 자율성 보장!
+         */
+            position.move();
+        //    this.position++;
     }
     /*
     public void move() {
