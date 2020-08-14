@@ -31,12 +31,12 @@ public class RacingCarTest {
 
     @DisplayName("자동차 N번 움직이기(결과 배열 비교)")
     @ParameterizedTest
-    @MethodSource("getRacingResultParamter")
+    @MethodSource("getMoveResultParamter")
     public void 자동차_N번_움직이기(int n, Integer[] expected) {
         assertThat(RacingCar.move(n)).isEqualTo(expected);
     }
 
-    static Stream<Arguments> getRacingResultParamter() {
+    static Stream<Arguments> getMoveResultParamter() {
         return Stream.of(
                 Arguments.of(3, new Integer[]{1, 1, 1}),
                 Arguments.of(4, new Integer[]{1, 1, 1, 1}),

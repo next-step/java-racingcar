@@ -25,5 +25,14 @@ public class RacingCar {
         return Stream.generate(() -> this.moveStrategy.move()).limit(racingCount).toArray(Integer[]::new);
     }
 
+    public int getRacingResult(int roundOfRacing) {
+        return racingResult[roundOfRacing-1];
+    }
 
+    @Override
+    public String toString() {
+        return "RacingCar{" +
+                "racingResult=" + Arrays.toString(racingResult) +
+                '}';
+    }
 }
