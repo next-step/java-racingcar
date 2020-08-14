@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import exception.ExceptionMessage;
 
@@ -24,13 +24,13 @@ public class RacingGame {
         checkAvailableGame(carNames, attemptNumber);
 
         RacingCars racingCars = carNames.stream()
-                .map(RacingCar::create)
+                .map(RacingCar::of)
                 .collect(collectingAndThen(toList(), RacingCars::new));
 
         return new RacingGame(racingCars, attemptNumber);
     }
 
-    RacingResult progress(CarMover carMover) {
+    public RacingResult progress(CarMover carMover) {
         racingCars.race(carMover, attemptNumber);
 
         return RacingResult.aggregate(attemptNumber, racingCars);

@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -23,15 +23,15 @@ class RacingResultTest {
     void setUp() {
         List<RacingCar> racingCarList = new ArrayList<>();
 
-        RacingCar racingCar1 = RacingCar.create("DD");
+        RacingCar racingCar1 = RacingCar.of("DD");
         racingCar1.race(ATTEMPT_NUMBER, RANDOM_NUMBER_CAR_MOVER);
         racingCarList.add(racingCar1);
 
-        RacingCar racingCar2 = RacingCar.create("LALA");
+        RacingCar racingCar2 = RacingCar.of("LALA");
         racingCar2.race(ATTEMPT_NUMBER, RANDOM_NUMBER_CAR_MOVER);
         racingCarList.add(racingCar2);
 
-        RacingCar racingCar3 = RacingCar.create("MOMO");
+        RacingCar racingCar3 = RacingCar.of("MOMO");
         racingCar3.race(ATTEMPT_NUMBER, RANDOM_NUMBER_CAR_MOVER);
         racingCarList.add(racingCar3);
 
@@ -46,7 +46,7 @@ class RacingResultTest {
         assertThat(racingResult).isNotNull();
         assertThat(racingResult.getAttempt()).isEqualTo(ATTEMPT_NUMBER);
         assertThat(racingResult.getResultByAttempt(ATTEMPT_NUMBER - 1)).hasSize(3);
-        assertThat(racingResult.getWinner(ATTEMPT_NUMBER - 1)).isNotBlank();
+        assertThat(racingResult.getWinner()).isNotBlank();
     }
 
     @DisplayName("getResultByAttempt 메소드 테스트")
@@ -64,10 +64,10 @@ class RacingResultTest {
     void getWinner_test(Stream<String> names, boolean result) {
         RacingResult racingResult = RacingResult.aggregate(ATTEMPT_NUMBER, racingCars);
 
-        assertThat(racingResult.getWinner(ATTEMPT_NUMBER - 1)).isNotBlank();
+        assertThat(racingResult.getWinner()).isNotBlank();
 
         assertThat(names.anyMatch(name -> racingResult
-                .getWinner(ATTEMPT_NUMBER - 1)
+                .getWinner()
                 .contains(name))).isEqualTo(result);
 
     }

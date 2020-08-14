@@ -1,9 +1,7 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.List;
-
-import static java.util.stream.Collectors.collectingAndThen;
-import static java.util.stream.Collectors.toList;
+import java.util.stream.Collectors;
 
 public class RacingCars {
 
@@ -17,9 +15,9 @@ public class RacingCars {
         racingCars.forEach(racingCar -> racingCar.race(attemptNumber, carMover));
     }
 
-    public RaceRecords getRaceRecords() {
+    public List<RaceRecord> getRaceRecords() {
         return racingCars.stream()
                 .map(RacingVehicle::getRaceRecord)
-                .collect(collectingAndThen(toList(), RaceRecords::new));
+                .collect(Collectors.toList());
     }
 }

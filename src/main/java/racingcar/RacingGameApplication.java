@@ -1,5 +1,8 @@
 package racingcar;
 
+import racingcar.domain.RacingGame;
+import racingcar.domain.RacingResult;
+import racingcar.domain.RandomNumberMover;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 

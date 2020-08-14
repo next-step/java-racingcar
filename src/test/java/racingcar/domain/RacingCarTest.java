@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -13,12 +13,14 @@ class RacingCarTest {
     private static final int ATTEMPT_NUMBER_ZERO = 0;
     private static final String NAME = "happy";
     private static final CarMover RANDOM_NUMBER_CAR_MOVER = new RandomNumberMover();
+    private static final CarMover ALWAYS_MOVE_CAR_MOVER = new AlwaysMoveCarMover();
+    private static final CarMover REPEATING_CAR_MOVER = new RepeatingCarMover();
 
     private RacingCar racingCar;
 
     @BeforeEach
     void setUp() {
-        racingCar = RacingCar.create(NAME);
+        racingCar = RacingCar.of(NAME);
     }
 
     @DisplayName("race 메소드 실행 전 테스트")
@@ -39,17 +41,15 @@ class RacingCarTest {
         assertThat(racingCar.getRaceRecord().getBy(ATTEMPT_NUMBER - 1)).isNotNull();
     }
 
-    @DisplayName("race 메소드 - raceRecord 생성 테스트")
+    @DisplayName("race 메소드 - attempt 0인 경우, raceRecord 생성 테스트")
     @Test
-    void race_test() {
-        racingCar.race(ATTEMPT_NUMBER_ZERO, RANDOM_NUMBER_CAR_MOVER);
+    void race_zero_attempt_test() {
+        racingCar.race(ATTEMPT_NUMBER_ZERO, ALWAYS_MOVE_CAR_MOVER);
 
         // racingCar의 raceRecord가 빈 리스트로 생성되었는지 확인
         assertThat(racingCar.getRaceRecord()).isNotNull();
-        // racingCar의 raceRecord가
-        assertThatExceptionOfType(IndexOutOfBoundsException.class)
-                .isThrownBy(() -> racingCar.getRaceRecord().getBy(ATTEMPT_NUMBER_ZERO))
-                .withMessageMatching("Index: \\d+, Size: \\d+");
+        // racingCar의 raceRecord의 이동여부가 없음을 확인
+        assertThat(racingCar.getRaceRecord().getBy(ATTEMPT_NUMBER_ZERO)).isEqualTo(0);
     }
 
     @DisplayName("checkNameValidation 유효한 car 이름 테스트")
