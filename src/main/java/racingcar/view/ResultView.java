@@ -1,7 +1,8 @@
-package racingcar;
+package racingcar.view;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
