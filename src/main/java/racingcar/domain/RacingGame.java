@@ -15,8 +15,9 @@ public class RacingGame {
         int round = InputView.inputRoundNumber();
 
         Cars cars = new Cars(carNames);
+        CarMove carMove = new CarMove();
         for (int i = 0; i < round; i++) {
-            cars.moveCars(new CarMove());
+            cars.moveCars(carMove);
             ResultView.printResult(cars);
         }
         ResultView.printWinner(cars.winnerIs(cars));

@@ -21,5 +21,4 @@ class CarsTest {
         Cars cars = new Cars(inputView.names(carNames));
         assertThat(cars.stream().count()).isEqualTo(verificationValue);
     }
-
 }
