@@ -15,10 +15,13 @@ class CarTest {
     @Test
     @DisplayName("차동차 객체 생성 테스트")
     public void makeCarMove() {
-        List<Car> cars = Stream.generate(Car::new)
-                .limit(4)
-                .collect(Collectors.toList());
+        Car car = new Car("밤밤");
 
-        assertThat(cars.size()).isEqualTo(4);
+        car.makeCarMove();
+        car.makeCarMove();
+        car.makeCarMove();
+
+        assertThat(car.getCarName()).isEqualTo("밤밤");
+        assertThat(car.getCarMovedCount()).isGreaterThan(0);
     }
 }
