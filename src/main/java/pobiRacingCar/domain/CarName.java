@@ -1,11 +1,20 @@
 package pobiRacingCar.domain;
 
+import pobiRacingCar.utils.StringUtils;
+import pobiRacingCar.utils.ValidationUtils;
+
 import java.util.Objects;
 
 public class CarName {
     private final String name;
 
     public CarName(String name) {
+        if (StringUtils.isNullOrBlank(name)) {
+            throw new IllegalArgumentException( "이름은 null값 빈값 안 됩니다 " );
+        }
+        if (name.length() > 5) {
+            throw new IllegalArgumentException( "이름은 5자 이하" );
+        }
         this.name = name;
     }
 
@@ -21,4 +30,5 @@ public class CarName {
     public int hashCode() {
         return Objects.hash(name);
     }
+
 }

@@ -14,8 +14,10 @@ public class CarNameTest {
 
     @Test
     void invalidCarName() {
-        assertThatThrownBy(() -> new CarName(null).isInstanceOf(IllegalArgumentException.class));
-        assertThatThrownBy(() -> new CarName("").isInstanceOf(IllegalArgumentException.class));
-        assertThatThrownBy(() -> new CarName("  ").isInstanceOf(IllegalArgumentException.class));
+        assertThatThrownBy(() -> new CarName(null)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new CarName("")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new CarName("    ")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new CarName("helloworld")).isInstanceOf(IllegalArgumentException.class);
+
     }
 }
