@@ -1,6 +1,7 @@
 package pobiRacingCar.domain;
 
 import pobiRacingCar.utils.StringUtils;
+import pobiRacingCar.utils.ValidationUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,6 +26,9 @@ public class RacingGame {
        String[] names = carNames.split(",");
        List<Car> cars = new ArrayList<>();
        for (String name : names) {
+           if (!ValidationUtils.validName(name)) {
+               throw new IllegalArgumentException("name length should be under 5");
+           }
            cars.add(new Car(name)); //cars리스트에 Car 객체 자체 생성
        }
        return cars;
