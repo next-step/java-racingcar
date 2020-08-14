@@ -5,8 +5,11 @@ import java.util.Objects;
 public class Position {
     private final int position;
 
-    public Position(int i) {
-        this.position = i;
+    public Position(int position) {
+        if (position < 0) {
+            throw new IllegalArgumentException("can't be minus");
+        }
+        this.position = position;
     }
 
     @Override
