@@ -19,13 +19,13 @@ public class RaceRecord {
     public int getBy(int attemptTime) {
         return Stream.iterate(0, attempt -> attempt + 1)
                 .limit(attemptTime)
-                .mapToInt(attempt -> records.get(attempt).compareTo(Boolean.TRUE))
+                .mapToInt(attempt -> records.get(attempt) ? 1 : 0)
                 .sum();
     }
 
-    public int getLastRecord() {
+    public int getTotalRecord() {
         return records.stream()
-                .mapToInt(record -> record.compareTo(Boolean.TRUE))
+                .mapToInt(record -> record ? 1 : 0)
                 .sum();
     }
 }

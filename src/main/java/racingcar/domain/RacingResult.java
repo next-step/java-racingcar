@@ -35,11 +35,11 @@ public class RacingResult {
 
     public String getWinner() {
         long winnerRecord = raceRecords.stream()
-                .map(RaceRecord::getLastRecord)
+                .map(RaceRecord::getTotalRecord)
                 .reduce(0, Math::max);
 
         return raceRecords.stream()
-                .filter(raceRecord -> raceRecord.getLastRecord() == winnerRecord)
+                .filter(raceRecord -> raceRecord.getTotalRecord() == winnerRecord)
                 .map(RaceRecord::getName)
                 .collect(Collectors.joining(","));
     }
