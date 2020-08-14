@@ -9,12 +9,10 @@ public class Cars {
 
     private static final String DIAMETER = ",";
     private static final int NAME_LENGTH_LIMIT = 5;
-    private String winnerPlayers;
-    public List<Car> cars;
+    private List<Car> cars;
 
     public Cars(String players) {
         setPlayerNameForEachCar(players.split(DIAMETER));
-        this.winnerPlayers = "";
     }
 
     private void setPlayerNameForEachCar(String[] playerNames) {
@@ -29,17 +27,17 @@ public class Cars {
     }
 
     public String sortWinners() {
-        List<Car> winners = this.cars.stream()
+
+        return this.cars.stream()
                 .collect(Collectors.groupingBy(
                         Car::getCarMovedCount,
                         TreeMap::new,
                         Collectors.toList()
                 ))
                 .lastEntry()
-                .getValue();
-
-        winners.forEach(car -> this.winnerPlayers += car.getCarName() + " ");
-
-        return this.winnerPlayers;
+                .getValue()
+                .stream()
+                .map(Car::getCarName)
+                .collect(Collectors.joining(DIAMETER));
     }
 }
