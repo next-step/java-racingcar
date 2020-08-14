@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarsTest {
     @Test
     void findWinner() {
-        Car pobi new Car("pobi");
+        Car pobi = new Car("pobi");
         pobi.move(4);
         pobi.move(3);
         Car crong = new Car("crong");

@@ -1,12 +1,31 @@
 package pobiRacingCar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private List<Car> carsList;
+    private final List<Car> cars; //input cars 외 추가 x final
 
-    public Cars(List<Car> carsList) {
-        this.carsList = carsList;
-        return carsList;
+    public Cars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public List<Car> findWinners() {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            Position position = car.getPosition();
+            if (maxPosition < position.getPosition()) {
+                maxPosition = position.getPosition();
+            }
+        }
+
+        List<Car> winners = new ArrayList<>();
+        for (Car car : cars) {
+            Position position = car.getPosition();
+            if (position.getPosition() == maxPosition) {
+                winners.add(car);
+            }
+        }
+        return winners;
     }
 }

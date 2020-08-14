@@ -6,7 +6,9 @@ import pobiRacingCar.view.ResultView;
 
 public class RacingMain {
     public static void main(String[] args) {
+        /*
         String carNames = InputView.getCarNames();
+
         int tryNo = InputView.getTryNo();
 
         RacingGame racingGame = new RacingGame(carNames, tryNo);
@@ -15,5 +17,7 @@ public class RacingMain {
             ResultView.printCars(racingGame.getCars());
         }
         ResultView.printWinners(racingGame.getWinners());
+
+         */
     }
 }
