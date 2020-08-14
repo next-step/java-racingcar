@@ -60,4 +60,7 @@ public class RacingGame {
     public boolean racing() { return this.tryNo > 0;}
 
     public List<Car> getCars() { return Collections.unmodifiableList(cars);}
+
+    public Object getWinners() { return null;
+    }
 }
