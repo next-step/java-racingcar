@@ -10,13 +10,13 @@ public class Car {
     private final CarName name;
     private int position = 0; //원시값 position -> Position Obj
 
-    public Car(final String name) { //this.name = name.trim();
+    public Car(final String name) { //원시값 name -> Name Obj  this.name = name.trim();
         this.name = new CarName(name);
     }
 
     public int getPosition() { return position; }
 
-    //public String getName() { return name; }
+    //public String getName() { return name; }  원시값 name -> Name Obj
     public CarName getName() {
         return name;
     }
