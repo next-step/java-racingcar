@@ -1,10 +1,10 @@
-package simpleracing.input;
+package simpleracing.view.input;
 
 import java.util.Scanner;
 
 public class CarRacingInput {
 
-	public CarRacingInitValue input() {
+	public static CarRacingInitValue input() {
 		Scanner scanner = new Scanner(System.in);
 		CarRacingInitValue initValue = initGame(scanner);
 		scanner.close();
@@ -12,7 +12,7 @@ public class CarRacingInput {
 		return initValue;
 	}
 
-	private CarRacingInitValue initGame(Scanner scanner) {
+	private static CarRacingInitValue initGame(Scanner scanner) {
 		CarRacingInitValue initValue = new CarRacingInitValue();
 
 		for (InputType inputType : InputType.getUsableInputType()) {
