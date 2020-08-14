@@ -1,11 +1,12 @@
 package calculator;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class MathematicalExpression {
 
@@ -19,8 +20,8 @@ public class MathematicalExpression {
         if (isNotValidExpression(arguments)) {
             throw new IllegalArgumentException(ExceptionMessage.NOT_EXPECTED_ARGUMENT.getMessage());
         }
-        this.numbers = filter(arguments, this::isNumber, Integer::parseInt).toArray(Integer[]::new);
-        this.operators = filter(arguments, a -> !isNumber(a), Operator::of).toArray(Operator[]::new);
+        this.numbers = filter(arguments, this::isNumber, Integer::parseInt).toArray(new Integer[0]);
+        this.operators = filter(arguments, a -> !isNumber(a), Operator::of).toArray(new Operator[0]);
     }
 
     private String[] splitExpression(String expression) {
@@ -30,10 +31,11 @@ public class MathematicalExpression {
         return expression.split(DELIMITER);
     }
 
-    private <T> Stream<T> filter(String[] arguments, Predicate<String> isNumberOrNot, Function<String, T> mapper) {
+    private <T> List<T> filter(String[] arguments, Predicate<String> isNumberOrNot, Function<String, T> mapper) {
         return Arrays.stream(arguments)
                 .filter(isNumberOrNot)
-                .map(mapper);
+                .map(mapper)
+                .collect(Collectors.toList());
     }
 
     private boolean isNumber(String value) {
