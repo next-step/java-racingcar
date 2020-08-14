@@ -11,13 +11,7 @@ public class Cars {
     }
 
     public List<Car> findWinners() {
-        int maxPosition = 0;
-        for (Car car : cars) {
-            Position position = car.getPosition();
-            if (maxPosition < position.getPosition()) {
-                maxPosition = position.getPosition();
-            }
-        }
+        int maxPosition = getMaxPosition( );
 
         List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
@@ -27,5 +21,16 @@ public class Cars {
             }
         }
         return winners;
+    }
+
+    private int getMaxPosition() {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            Position position = car.getPosition();
+            if (maxPosition < position.getPosition()) {
+                maxPosition = position.getPosition();
+            }
+        }
+        return maxPosition;
     }
 }
