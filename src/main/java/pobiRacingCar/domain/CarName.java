@@ -4,6 +4,9 @@ import pobiRacingCar.utils.StringUtils;
 
 import java.util.Objects;
 
+/**
+ * 원시값 포장 : name 변수만 갖고 있어도 valid 등 가능
+ */
 public class CarName {
     public static final int NAME_LENGTH = 5;
     private final String name;
