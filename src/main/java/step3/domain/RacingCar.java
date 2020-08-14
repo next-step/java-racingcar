@@ -42,7 +42,11 @@ public class RacingCar extends Car {
     }
 
     public static int findMaxPosition(Map<String, Car> carInfoMap) {
-        return carInfoMap.values().stream().max(Comparator.comparingInt(Car::getPosition)).get().position;
+        return carInfoMap.values()
+                .stream()
+                .max(Comparator.comparingInt(Car::getPosition))
+                .get()
+                .position;
     }
 
 }

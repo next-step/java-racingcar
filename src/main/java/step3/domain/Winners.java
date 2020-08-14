@@ -7,7 +7,7 @@ public class Winners {
     public static final String WINNERS_COMMA_DELIMITER = ", ";
     private static List<String> winners;
 
-    public static String findWinner(Map<String, Car> carInfoMap, int maxPosition) {
+    public static String findWinners(Map<String, Car> carInfoMap, int maxPosition) {
         winners = new ArrayList<>();
 
         for (String carName : carInfoMap.keySet()) {
