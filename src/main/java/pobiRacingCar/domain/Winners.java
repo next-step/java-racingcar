@@ -18,4 +18,8 @@ public class Winners {
         }
         return String.join(",", winnerNames);
     }
+
+    public List<Car> getWinners() {
+        return winners;
+    }
 }

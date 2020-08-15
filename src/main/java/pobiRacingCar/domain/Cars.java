@@ -16,6 +16,10 @@ public class Cars {
         return filterWinners(getMaxPosition( ));
     }
 
+    public Winners findWinners2() {
+        return new Winners(filterWinners(getMaxPosition()));
+    }
+
     /**
      * getter 대신 객체 메세지, 위임
      * (객체.getXXX() == 어떤 값) : 테스트 힘듦 좌변 2개 우변 1개 검증

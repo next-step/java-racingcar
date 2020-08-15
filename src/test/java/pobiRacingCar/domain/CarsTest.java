@@ -19,9 +19,9 @@ public class CarsTest {
         //List<Car> cars = Arrays.asList(pobi, crong);
         Cars cars = new Cars(Arrays.asList(pobi, crong));
 
-        List<Car> winners = cars.findWinners();
-        assertThat(winners).hasSize(1);
-        assertThat(winners).containsExactly(pobi);
+        Winners winners = cars.findWinners2();
+        assertThat(winners.getWinners()).hasSize(1);
+        assertThat(winners.getWinners()).containsExactly(pobi); //not Optimal, but now Winners Obj
 
     }
 }
