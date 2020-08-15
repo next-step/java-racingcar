@@ -2,9 +2,11 @@ package step3;
 
 import step3.domain.Car;
 import step3.domain.RacingCar;
+import step3.domain.Winners;
 import step3.view.InputView;
 import step3.view.ResultView;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
@@ -25,7 +27,8 @@ public class RacingGame {
         play(carInfoMap, motorRacingCount);
 
         int maxPosition = RacingCar.findMaxPosition(carInfoMap);
-        String winnerMember = ResultView.printWinner(carInfoMap, maxPosition);
+        List<String> winners = Winners.findWinners(carInfoMap, maxPosition);
+        String winnerMember = ResultView.printWinner(winners);
         System.out.println(winnerMember);
     }
 
