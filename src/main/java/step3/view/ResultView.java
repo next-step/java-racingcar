@@ -23,11 +23,11 @@ public class ResultView {
         return mileAge;
     }
 
-    public static String printWinner(List<String> winnerNames) {
+    public static String printWinners(List<String> winnerNames) {
         return String.join(WINNERS_COMMA_DELIMITER, winnerNames) + PRINT_WINNER_TEXT;
     }
 
-    public static String printCarMileAge(Car car, String mileAge) {
+    public static String printMileAgeCar(Car car, String mileAge) {
         return car.getCarName() + " : " + mileAge;
     }
 

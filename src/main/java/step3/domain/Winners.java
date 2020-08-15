@@ -6,18 +6,18 @@ public class Winners {
 
     private static List<String> winners;
 
-    public static List<String> findWinners(Map<String, Car> carInfoMap, int maxPosition) {
+    public static List<String> findWinners(Map<String, Car> carInfoMap, int positionMax) {
         winners = new ArrayList<>();
 
         for (String carName : carInfoMap.keySet()) {
             Car car = carInfoMap.get(carName);
-            verifyWinner(winners, car, maxPosition);
+            verifyWinner(winners, car, positionMax);
         }
         return winners;
     }
 
-    private static List<String> verifyWinner(List<String> winnerNames, Car car, int maxPosition) {
-        if (car.getPosition() == maxPosition) {
+    private static List<String> verifyWinner(List<String> winnerNames, Car car, int positionMax) {
+        if (car.getPosition() == positionMax) {
             winnerNames.add(car.getCarName());
         }
         return winnerNames;
