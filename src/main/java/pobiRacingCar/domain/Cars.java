@@ -11,15 +11,21 @@ public class Cars {
     }
 
     public List<Car> findWinners() {
-        int maxPosition = getMaxPosition( );
-
-        return filterWinners(maxPosition);
+        return filterWinners(getMaxPosition( ));
     }
+
+    /**
+     * getter 대신 객체 메세지, 위임
+     * (객체.getXXX() == 어떤 값) : 테스트 힘듦 좌변 2개 우변 1개 검증
+     * 반면 그 객체에 위임해서 if () {exception } return norm 2:13
+     */
+
 
     private List<Car> filterWinners(int maxPosition) {
         List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
             Position position = car.getPosition();
+            //if (position.isWinner()) { //position에게 maxPosition 위임 메시지
             if (position.getPosition() == maxPosition) {
                 winners.add(car);
             }

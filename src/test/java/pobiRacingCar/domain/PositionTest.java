@@ -22,4 +22,12 @@ public class PositionTest {
         Position movedPosition = new Position(1).move();
         assertThat(movedPosition).isEqualTo(new Position(2));
     }
+
+    @Test
+    void isWinner() {
+        Position position = new Position(10);
+        assertThat(position.isWinner(10)).isTrue();
+        assertThat(position.isWinner(9)).isFalse();
+    }
+
 }
