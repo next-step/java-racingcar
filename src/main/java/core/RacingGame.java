@@ -10,34 +10,27 @@ import java.util.stream.IntStream;
 
 public class RacingGame {
 
-    static List<Car> carList;
+    List<Car> carList;
 
-    RacingGame() {
+    RacingGame(int carCount) {
         carList = new ArrayList<>();
-        IntStream.range(0,InputView.carCount).forEach(i -> carList.add(new Car()));
+        IntStream.range(0,carCount).forEach(i -> carList.add(new Car(0)));
     }
 
-    void startGame() {
-        IntStream.range(0,InputView.round).forEach(i -> startRound());
+    void startGame(int round) {
+        IntStream.range(0,round).forEach(i -> startRound());
     }
 
     void startRound() {
-        for(Car car : carList) {
-            int randNum = new Random().nextInt(10);
-
-            car.addResult(compareRandNum(randNum));
-            ResultView.printOutputValue(car.roundResult.stream());
-        }
+        carList.stream().forEach(car -> car.carAction(new Random().nextInt(10)));
+        ResultView.printOutputValue(carList);
     }
 
-    public static String compareRandNum(int randNum) {
-        if(randNum >= 4) {
-            return new MoveAction().carAction();
-        }
-        return new StopAction().carAction();
+    public static void main(String args[]) {
+        GameSettings gameSettings = InputView.getInputValue();
+        RacingGame racingGame = new RacingGame(gameSettings.carCount);
+        racingGame.startGame(gameSettings.round);
     }
-
-
 }
 
 

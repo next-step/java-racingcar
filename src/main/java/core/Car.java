@@ -1,19 +1,30 @@
 package core;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
 
-public class Car {
-    List<String> roundResult;
+public class Car implements CarAction{
+    static final int GOING_NUM = 4;
+    public int position;
 
-    Car() {
-        roundResult = new ArrayList<>();
+    public Car(int position) {
+        this.position = position;
     }
 
-    public Stream<String> stream() {
-        return roundResult.stream() ;
+    public void carAction(int randNum) {
+        move(isMove(randNum));
     }
 
-    public void addResult(String result) { roundResult.add(result) ; }
+    public void move(boolean isMove) {
+        if(isMove) {
+            this.position++;
+        }
+    }
+
+    @Override
+    public boolean isMove(int randNum) {
+        if(randNum >= GOING_NUM) {
+            return true;
+        }
+        return false;
+    }
+
 }
