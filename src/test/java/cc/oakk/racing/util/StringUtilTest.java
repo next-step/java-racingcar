@@ -2,6 +2,7 @@ package cc.oakk.racing.util;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -21,12 +22,16 @@ public class StringUtilTest {
         assertThat(StringUtil.isEmpty(source)).isFalse();
     }
 
-    @Test
-    void isLengthGreaterThanOrEqual() {
-        assertThat(StringUtil.isLengthGreaterThanOrEqual("abc", 3)).isTrue();
-        assertThat(StringUtil.isLengthGreaterThanOrEqual("ab", 3)).isFalse();
-        assertThat(StringUtil.isLengthGreaterThanOrEqual("", 3)).isFalse();
-        assertThat(StringUtil.isLengthGreaterThanOrEqual("abc", 0)).isTrue();
+    @ParameterizedTest
+    @CsvSource(value = { "abc,3", "abc,0" })
+    void isLengthGreaterThanOrEqual_Should_Return_True(String text, int number) {
+        assertThat(StringUtil.isLengthGreaterThanOrEqual(text, number)).isTrue();
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = { "ab,3", ",0" })
+    void isLengthGreaterThanOrEqual_ShouldReturn_False(String text, int number) {
+        assertThat(StringUtil.isLengthGreaterThanOrEqual(text, number)).isFalse();
     }
 
     @Test
