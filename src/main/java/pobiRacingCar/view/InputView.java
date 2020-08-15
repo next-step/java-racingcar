@@ -4,7 +4,7 @@ import pobiRacingCar.domain.Car;
 import pobiRacingCar.domain.Cars;
 
 public class InputView {
-    Cars cars = new Cars();
+ /*   Cars cars = new Cars();
     Car car = new Car("");
     public static String getCarNames() {
 
@@ -14,4 +14,6 @@ public class InputView {
     public static int getTryNo() {
         return tryno;
     }
+
+  */
 }
