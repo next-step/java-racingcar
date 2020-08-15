@@ -13,11 +13,11 @@ public class PositionTest {
 
     @Test
     void increase() {
-        Position position = new Position(0);
-        position.increase();
-        position.increase();
-        position.increase();
-        assertThat(position.getPosition()).isEqualTo(3);
+        Position position = new Position(0).increase()
+                .increase()
+                .increase();
+
+        assertThat(position.compareTo(new Position(4))).isEqualTo(0);
     }
 
     @Test

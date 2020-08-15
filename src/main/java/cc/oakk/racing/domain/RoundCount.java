@@ -13,11 +13,12 @@ public class RoundCount {
         this.roundCount = roundCount;
     }
 
-    public void increase() {
+    public RoundCount increase() {
         if (!hasNextRound()) {
             throw new IndexOutOfBoundsException("Round has over!");
         }
-        currentRoundCount ++;
+        currentRoundCount++;
+        return this;
     }
 
     public boolean hasNextRound() {
