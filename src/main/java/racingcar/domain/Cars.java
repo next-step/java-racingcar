@@ -3,13 +3,11 @@ package racingcar.domain;
 import racingcar.utils.CarMove;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Cars {
-
     private List<Car> cars;
 
     public Cars(String[] name) {
@@ -29,7 +27,7 @@ public class Cars {
 
     public void moveCars(CarMove carMove) {
         for (Car car : cars) {
-            car.move(carMove.moveAble());
+            car.move(carMove);
         }
     }
 
@@ -40,11 +38,11 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public int getMaxPosition(Cars maxPosition) {
-        return maxPosition.stream()
-                .max(Comparator.comparing(Car::getPosition))
-                .get()
-                .getPosition();
+    public int getMaxPosition(Cars positions) {
+        return positions.stream()
+                .map(Car::getPosition)
+                .reduce(0, Math::max);
     }
+
 
 }

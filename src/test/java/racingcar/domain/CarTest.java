@@ -5,6 +5,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.exception.ExceptionHandler;
+import racingcar.utils.CarMove;
+import racingcar.utils.TestMove;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
@@ -20,14 +23,16 @@ public class CarTest {
     @DisplayName("자동차 전진 테스트")
     @Test
     public void 값이_4이상일때_1칸_전진한다() {
-        car.move(true);
+        CarMove move = new CarMove();
+        car.move(move);
         assertThat(car.getPosition()).isOne();
     }
 
     @DisplayName("자동차 전진 예외 테스트")
     @Test
     public void 값이_4이하면_움직이지_않는다() {
-        car.move(false);
+        TestMove move = new TestMove();
+        car.move(move);
         assertThat(car.getPosition()).isZero();
     }
 
@@ -43,7 +48,7 @@ public class CarTest {
     @ValueSource(strings = {"poooobi", "crooooong", "hooooonux"})
     public void 이름길이_초과_예외_테스트(String input) {
         assertThatThrownBy(() -> {
-            car.validateNameLength(input);
+            ExceptionHandler.validateNameLength(input);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -52,7 +57,7 @@ public class CarTest {
     @ValueSource(strings = {"", "   ", "            "})
     public void 이름길이_공백_예외_테스트(String input) {
         assertThatThrownBy(() -> {
-            car.isBlank(input);
+            ExceptionHandler.isBlank(input);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -60,7 +65,7 @@ public class CarTest {
     @Test
     public void 이름_널_예외_테스트() {
         assertThatThrownBy(() -> {
-            car.isNull(null);
+            ExceptionHandler.isNull(null);
         }).isInstanceOf(NullPointerException.class);
     }
 }
