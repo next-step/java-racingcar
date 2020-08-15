@@ -1,6 +1,6 @@
 package step5.model;
 
-import step5.streategy.RacingGameMovementStrategy;
+import step5.streategy.MovementStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +16,12 @@ public class RacingGame {
         players = new Participants(playerList);
     }
 
-    public Participants playGame() {
-        players.moveCarWithStrategy(new RacingGameMovementStrategy());
+    public Participants playGame(MovementStrategy strategy) {
+        players.moveCarWithStrategy(strategy);
         return players;
+    }
+
+    public List<String> getWinnerPlayers() {
+        return players.getWinnerMember();
     }
 }

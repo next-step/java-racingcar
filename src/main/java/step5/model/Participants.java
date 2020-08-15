@@ -54,4 +54,10 @@ public class Participants {
                 .map(Car::getName)
                 .toArray(String[]::new));
     }
+
+    public List<Integer> getScoreOfParticipants() {
+        return Arrays.asList(participants.stream()
+                .map(Car::getDistance)
+                .toArray(Integer[]::new));
+    }
 }

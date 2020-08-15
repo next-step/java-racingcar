@@ -42,4 +42,5 @@ public class ParticipantsTest {
         Participants partc = new Participants(cars);
         assertThat(partc.getMemberOfParticipants()).containsExactly("John", "Kim", "Jayce");
     }
+
 }

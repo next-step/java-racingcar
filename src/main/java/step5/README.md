@@ -12,11 +12,11 @@
     - [x] InputView 구현
         - [x] 질문 1 구현 (차량 이름 입력)
         - [x] 질문 2 구현 (시도 횟수)
-    - [ ] OutputView 구현 
-        - [ ] 시행 결과 출력
-        - [ ] 차량 움직임 거리
+    - [X] OutputView 구현 
+        - [X] 시행 결과 출력
+        - [X] 차량 움직임 거리
  
 - Controller (Main) 구현
     - [x] InputView 출력
     - [x] RacingGame 동작
-    - [ ] OutputView 출력
+    - [X] OutputView 출력
