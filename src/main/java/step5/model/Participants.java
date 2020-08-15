@@ -1,6 +1,10 @@
 package step5.model;
 
+import step5.streategy.MovementStrategy;
+import step5.streategy.RacingGameMovementStrategy;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -39,4 +43,15 @@ public class Participants {
         return null;
     }
 
+    public void moveCarWithStrategy(MovementStrategy movementStrategy) {
+        for (Car car : participants) {
+            car.moveWithStrategy(movementStrategy);
+        }
+    }
+
+    public List<String> getMemberOfParticipants() {
+        return Arrays.asList(participants.stream()
+                .map(Car::getName)
+                .toArray(String[]::new));
+    }
 }

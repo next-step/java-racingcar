@@ -35,4 +35,11 @@ public class ParticipantsTest {
         Participants partc = new Participants(cars);
         assertThat(partc.getWinnerMember().get(0)).isEqualTo("John");
     }
+
+    @Test
+    void check_first_collection_getParticipantsNameList() {
+        List<Car> cars = new ArrayList<>(Arrays.asList(new Car("John"), new Car("Kim"), new Car("Jayce")));
+        Participants partc = new Participants(cars);
+        assertThat(partc.getMemberOfParticipants()).containsExactly("John", "Kim", "Jayce");
+    }
 }
