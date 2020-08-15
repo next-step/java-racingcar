@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import step5.streategy.MovementStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,5 +30,13 @@ public class CarTest {
         car = new Car(name);
         car.goForward();
         assertThat(car.getDistance()).isEqualTo(expected);
+    }
+
+    @Test
+    void move_Car_with_Strategy() {
+        car = new Car("john");
+        MovementStrategy movementStrategy = () -> true;
+        car.moveWithStrategy(movementStrategy);
+        assertThat(car.getDistance()).isEqualTo(1);
     }
 }
