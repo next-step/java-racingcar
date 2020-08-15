@@ -25,9 +25,13 @@ public class Cars {
         List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
             Position position = car.getPosition();
-            //if (position.isWinner()) { //position에게 maxPosition 위임 메시지
-            if (position.getPosition() == maxPosition) {
+            if (position.isWinner(maxPosition)) {//position에게 maxPosition 위임 메시지, 상태 가진 position 객체가 확인
                 winners.add(car);
+            /*
+              if (position.getPosition() == maxPosition) {  getter 통해 정보 추출
+                winners.add(car);
+
+             */
             }
         }
         return winners;
