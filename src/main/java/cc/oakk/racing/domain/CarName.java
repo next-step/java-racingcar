@@ -5,7 +5,8 @@ import cc.oakk.racing.util.StringUtil;
 import java.util.Objects;
 
 public class CarName {
-    private static final int MAX_LENGTH = 5;
+    public static final int MAX_LENGTH = 5;
+
     private final String name;
 
     public CarName(String name) {
