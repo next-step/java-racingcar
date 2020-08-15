@@ -10,28 +10,28 @@ public class InputView {
     private static final String CAR_NUMBER_CENTENCE = "자동차 대수는 몇 대 인가요?";
     private static final String TRY_NUMBER_CENTENCE = "시도할 횟수는 몇 회 인가요?";
     private static final String EXEPTION_WORDING = "잘못된 입력값 입니다.";
-    private String inputValue;
+    private int inputValue;
 
 
-    public String carNumberInput() {
+    public int carNumberInput() {
         System.out.println(CAR_NUMBER_CENTENCE);
         input();
         return inputValue;
     }
 
-    public String attemptNumberInput() {
+    public int attemptNumberInput() {
         System.out.println(TRY_NUMBER_CENTENCE);
         input();
         return inputValue;
     }
 
-    private String input() {
+    private int input() {
 
-        inputValue = scan.nextLine();
+        inputValue = scan.nextInt();
 
         try {
 
-            if(!StringUtils.isNumeric(inputValue)) {
+            if(inputValue == 0) {
                 throw new IllegalArgumentException(EXEPTION_WORDING);
             }
 

@@ -1,17 +1,26 @@
 import step3.domain.Racing;
 import step3.view.InputView;
+import step3.view.ResultView;
 
 public class RacingGame {
+
+    private static ResultView resultView;
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
 
-        String carNumber = inputView.carNumberInput();
-        String attemptNumber = inputView.attemptNumberInput();
+        int carNumber = inputView.carNumberInput();
+        int attemptNumber = inputView.attemptNumberInput();
 
-        Racing racing = new Racing(carNumber, attemptNumber);
+        Racing racing = new Racing(carNumber,attemptNumber);
 
-        racing.racingStart();
+        resultView = new ResultView(racing);
+
+        resultView.resultOutput();
+
+
+
+
 
     }
 }

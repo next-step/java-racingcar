@@ -1,49 +1,35 @@
 package step3.domain;
 
-import step3.view.ResultView;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Racing {
 
+    private Cars cars;
     private int attemptNumber;
-    private List<Car> cars;
     private final RacingRule racingRule;
-    private final ResultView resultView;
 
-    public Racing(String number, String attemptNumber) {
-        this.attemptNumber = Integer.parseInt(attemptNumber);
-        int carNumber = Integer.parseInt(number);
+    public Racing(int carNumber, int attemptNumber) {
         this.racingRule = new RacingRule();
-        this.cars = new ArrayList<>();
-        this.resultView = new ResultView();
+        this.cars = new Cars(carNumber);
+        this.attemptNumber = attemptNumber;
 
-        for (int i = 0; i < carNumber; i++) {
-            Car car = new Car();
-            cars.add(car);
-        }
 
     }
 
-    public List<Car> getCars() {
+    public Cars getCars() {
         return cars;
     }
 
-    private void racingRule() {
-        cars.forEach(car -> {
+    public int getAttemptNumber() {
+        return attemptNumber;
+    }
+
+    public void racingRule() {
+
+        cars.getCars().forEach(car->{
             car.moveCar(racingRule.moveRule());
-            resultView.resultOutput(car.getStatus());
         });
 
         System.out.println(" ");
-    }
-
-    public void racingStart() {
-        System.out.println("실행 결과");
-        IntStream.range(0, attemptNumber)
-                .forEach(x -> racingRule());
     }
 }

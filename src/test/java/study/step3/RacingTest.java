@@ -23,22 +23,15 @@ public class RacingTest {
         racingRule = new RacingRule();
     }
 
-    @Test
-    @DisplayName("자동차 객체 생성 테스트")
-    void 자동차_객체_생성() {
-        Car car = new Car();
-        assertEquals(car.moveCar(false), 0);
-    }
-
 
     @ParameterizedTest
     @CsvSource(value = {"3,7", "4,6"}, delimiter = ',')
 
-    void 입력값_자동차_객체_생성(String input, String attempt) {
+    void 입력값_자동차_객체_생성(int input, int attempt) {
 
         for (int i = 0; i < 5; i++) {
             Racing racing = new Racing(input,attempt);
-            assertEquals(racing.getCars().size(), Integer.parseInt(input));
+            assertEquals(racing.getCars().getCars().size(), input);
         }
     }
 

@@ -2,18 +2,18 @@ package step3.domain;
 
 public class Car {
 
-    private int status;
+    private int distance;
 
     public Car() {
-        this.status = 0;
+        this.distance = 0;
     }
 
-    public int getStatus() {
-        return status;
+    public int getDistance() {
+        return distance;
     }
 
     public int moveCar(boolean move) {
-        return move ? this.status++ : this.status;
+        return move ? this.distance++ : this.distance;
     }
 
 }
