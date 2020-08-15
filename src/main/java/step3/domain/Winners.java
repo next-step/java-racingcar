@@ -5,6 +5,7 @@ import java.util.*;
 public class Winners {
 
     public static final String WINNERS_COMMA_DELIMITER = ", ";
+
     private static List<String> winners;
 
     public static String findWinners(Map<String, Car> carInfoMap, int maxPosition) {
