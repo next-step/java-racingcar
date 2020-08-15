@@ -32,11 +32,22 @@ public class CarTest {
         assertThat(car.getDistance()).isEqualTo(expected);
     }
 
-    @Test
-    void move_Car_with_Strategy() {
-        car = new Car("john");
+    @ParameterizedTest
+    @CsvSource(value = {"Jayce,1"})
+    @DisplayName("승리하는 전략의 경우 차량 전진 확인")
+    void move_Car_with_Strategy_goForward(String name, int expected) {
+        car = new Car(name);
         MovementStrategy movementStrategy = () -> true;
         car.moveWithStrategy(movementStrategy);
-        assertThat(car.getDistance()).isEqualTo(1);
+        assertThat(car.getDistance()).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"Jayce,0"})
+    void move_Car_with_strategy_noAction(String name, int expected) {
+        car = new Car(name);
+        MovementStrategy movementStrategy = () -> false;
+        car.moveWithStrategy(movementStrategy);
+        assertThat(car.getDistance()).isEqualTo(expected);
     }
 }
