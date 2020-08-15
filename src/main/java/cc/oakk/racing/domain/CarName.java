@@ -1,6 +1,6 @@
 package cc.oakk.racing.domain;
 
-import cc.oakk.racing.util.StringUtil;
+import cc.oakk.racing.util.StringUtils;
 
 import java.util.Objects;
 
@@ -10,11 +10,11 @@ public class CarName {
     private final String name;
 
     public CarName(String name) {
-        if (StringUtil.isEmpty(name)) {
+        if (StringUtils.isEmpty(name)) {
             throw new IllegalArgumentException("Given name is empty!");
         }
 
-        if (StringUtil.isLengthGreaterThanOrEqual(name, MAX_LENGTH)) {
+        if (StringUtils.isLengthGreaterThanOrEqual(name, MAX_LENGTH)) {
             throw new IllegalArgumentException(String.format("name's length shouldn't be greater than %d.", MAX_LENGTH));
         }
 

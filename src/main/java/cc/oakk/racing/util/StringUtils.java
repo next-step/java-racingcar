@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class StringUtil {
+public class StringUtils {
     public static final String EMPTY_STRING = "";
 
-    private StringUtil() {}
+    private StringUtils() {}
 
     public static boolean isEmpty(String value) {
         return value == null || value.trim().equals(EMPTY_STRING);
