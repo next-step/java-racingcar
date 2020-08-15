@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import step5.streategy.MovementStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class CarTest {
     Car car;
@@ -21,6 +22,14 @@ public class CarTest {
     @DisplayName("초기 생성 후 내부에 거리가 0인지 확인")
     void check_Car_distance(String name, int expected) {
         assertThat(new Car(name).getDistance()).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"Lavender", "Lanister", "Rasputin"})
+    @DisplayName("이름 제약조건 추가 : 5자리 넘어갈 시 Exception")
+    void create_Car_Domain_Exception_name_size_restriction(String name) {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> car = new Car(name));
     }
 
     @ParameterizedTest
