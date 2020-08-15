@@ -21,6 +21,11 @@ public class Position {
         return this.position ==  maxPosition;
     }
 
+
+    public boolean isBigger(int maxPosition) {
+        return this.position == maxPosition;
+    }
+
     public int getPosition() {
         return position;
     }

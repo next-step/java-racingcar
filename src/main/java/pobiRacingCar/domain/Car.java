@@ -47,6 +47,10 @@ public class Car {
         return this.position.isWinner(maxPosition);  //car이 winner인지 판단하려고 보니, 알 수 없으므로 position에게 메시지, 위임
     }
 
+    public boolean isBigger(int maxPosition) {
+        return this.position.isBigger(maxPosition);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -1,5 +1,7 @@
 package pobiRacingCar.domain;
 
+import javafx.geometry.Pos;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,8 +47,9 @@ public class Cars {
         for (Car car : cars) {
             Position position = car.getPosition();
             if (maxPosition < position.getPosition()) {
-                maxPosition = position.getPosition();
+                maxPosition = position.getPosition( );
             }
+
         }
         return maxPosition;
     }
