@@ -24,10 +24,13 @@ public class Cars {
     private List<Car> filterWinners(int maxPosition) {
         List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
-            Position position = car.getPosition();
+            if (car.isWinner(maxPosition)) {//Car에 isWinner() { return 아래 항 } 위임, position에 대해 접근x
+                winners.add(car);
+            // Position position = car.getPosition(); 아래 isWinner(maxPos)하고 보니, 여기도 getter 쓰는 상황
+            /*
             if (position.isWinner(maxPosition)) {//position에게 maxPosition 위임 메시지, 상태 가진 position 객체가 확인
                 winners.add(car);
-            /*
+
               if (position.getPosition() == maxPosition) {  getter 통해 정보 추출
                 winners.add(car);
 

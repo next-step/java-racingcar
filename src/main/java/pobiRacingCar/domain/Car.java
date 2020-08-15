@@ -1,7 +1,5 @@
 package pobiRacingCar.domain;
 
-import javafx.geometry.Pos;
-
 import java.util.Objects;
 import java.util.Random;
 
@@ -44,6 +42,10 @@ public class Car {
     }
     그리고 아래의 getRandomNo()는 RacingGame 상위 노드 객체로 이동
     */
+
+    public boolean isWinner(int maxPosition) {
+        return this.position.isWinner(maxPosition);  //car이 winner인지 판단하려고 보니, 알 수 없으므로 position에게 메시지, 위임
+    }
 
     @Override
     public boolean equals(Object o) {
