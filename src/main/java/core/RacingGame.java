@@ -24,6 +24,7 @@ public class RacingGame {
     void startRound() {
         carList.stream().forEach(car -> car.carAction(new Random().nextInt(10)));
         ResultView.printOutputValue(carList);
+
     }
 
     public static void main(String args[]) {
