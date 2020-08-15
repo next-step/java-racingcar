@@ -18,6 +18,18 @@ public class CarsTest {
         Winners winners = cars.findWinners2();
         assertThat(winners.getWinners()).hasSize(1);
         assertThat(winners.getWinners()).containsExactly(pobi); //not Optimal, but now Winners Obj
+    }
+
+    @Test
+    void findWinners() {
+        Car pobi = new Car("pobi", 4);
+        Car crong = new Car("crong", 3);
+        Car honux = new Car("honux", 4);
+        Cars cars = new Cars(Arrays.asList(pobi, crong, honux));
+
+        Winners winners = cars.findWinners2();
+        assertThat(winners.getWinners()).hasSize(2);
+        assertThat(winners.getWinners()).containsExactly(pobi,honux);
 
     }
 }
