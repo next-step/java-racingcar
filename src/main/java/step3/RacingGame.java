@@ -25,8 +25,8 @@ public class RacingGame {
         play(carInfoMap, motorRacingCount);
 
         int maxPosition = RacingCar.findMaxPosition(carInfoMap);
-        String winnerMmeber = ResultView.printWinner(carInfoMap, maxPosition);
-        System.out.println(winnerMmeber);
+        String winnerMember = ResultView.printWinner(carInfoMap, maxPosition);
+        System.out.println(winnerMember);
     }
 
     private static void play(Map<String, Car> carInfoMap, int motorRacingCount) {
