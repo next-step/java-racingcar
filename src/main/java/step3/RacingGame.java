@@ -6,19 +6,18 @@ import step3.domain.Winners;
 import step3.view.InputView;
 import step3.view.ResultView;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class RacingGame {
 
-    public static final int GAME_START_NUMBER = 1;
+    private static final String CAR_DELIMITER = ",";
+    private static final int GAME_START_NUMBER = 1;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String racingCarName = InputView.setRacingCarNumber(scanner);
-        Map<String, Car> carInfoMap = RacingCar.preparationForGame(racingCarName);
+        String participatingCar = InputView.setRacingCarNumber(scanner);
+        String[] participatedCar = checkParticipatedCars(participatingCar);
+        Map<String, Car> carInfoMap = preparationForGame(participatedCar);
 
         int motorRacingCount = InputView.setMotorRacingCount(scanner);
 
@@ -26,7 +25,7 @@ public class RacingGame {
 
         play(carInfoMap, motorRacingCount);
 
-        int maxPosition = RacingCar.findMaxPosition(carInfoMap);
+        int maxPosition = Winners.findMaxPosition(carInfoMap);
         List<String> winners = Winners.findWinners(carInfoMap, maxPosition);
         String winnerMember = ResultView.printWinner(winners);
         System.out.println(winnerMember);
@@ -53,6 +52,19 @@ public class RacingGame {
             String mileAge = ResultView.printMovement(carPosition);
             System.out.println(ResultView.printCarMileAge(car, mileAge));
         }
+    }
+
+    private static String[] checkParticipatedCars(String racingCarNames) {
+        return racingCarNames.split(CAR_DELIMITER);
+    }
+
+    public static Map<String, Car> preparationForGame(String[] participatedCar) {
+        Map<String, Car> carInfoMap = new HashMap<>();
+
+        Arrays.stream(participatedCar)
+                .map(RacingCar::new)
+                .forEach(car -> carInfoMap.put(car.getCarName(), car));
+        return carInfoMap;
     }
 
 }
