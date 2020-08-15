@@ -10,12 +10,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarsTest {
     @Test
     void findWinner() {
-        Car pobi = new Car("pobi");
-        pobi.move(4);
-        pobi.move(3);
-        Car crong = new Car("crong");
-        crong.move(3);
-        crong.move(3);
+        Car pobi = new Car("pobi", 7);
+        Car crong = new Car("crong", 6);
         //List<Car> cars = Arrays.asList(pobi, crong);
         Cars cars = new Cars(Arrays.asList(pobi, crong));
 

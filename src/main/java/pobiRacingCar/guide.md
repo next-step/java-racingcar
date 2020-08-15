@@ -7,6 +7,7 @@
     * Command + Alt + C : constant refactoring (magic number -> static constant)
     * Alt + Command + M : extract Method refactoring
     14:18, getMaxPosition도 메시지위임, int maxPosition 대신 Position obj, stream API
+    생성자 this( ) overwrite확인 필요 , const 많은 것 구
 #### [기능 요구사항]
 * 각 자동차에 이름을 부여할 수 있다. 자동차 이름은 5자를 초과할 수 없다.
 * 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
