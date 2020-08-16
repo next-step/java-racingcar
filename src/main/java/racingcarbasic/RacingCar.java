@@ -1,9 +1,9 @@
 package racingcarbasic;
 
 public class RacingCar {
-    private MoveStrategy moveStrategy;
     String name;
     int step;
+    private MoveStrategy moveStrategy;
 
     public RacingCar(String name, int step) {
         this.name = name;
@@ -11,7 +11,7 @@ public class RacingCar {
     }
 
     public void move(int num) {
-        if(moveStrategy.move(num))
+        if (moveStrategy.move(num))
             step++;
     }
 
