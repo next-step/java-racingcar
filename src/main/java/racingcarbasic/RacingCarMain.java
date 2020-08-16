@@ -13,9 +13,9 @@ public class RacingCarMain {
         System.out.println(carNum + " " + moveCount);
 
         /* 이동 또는 멈춤 */
-        int[] carMoveCount = new int[carNum];
-        Arrays.fill(carMoveCount, 0);
-
+        for (int n: carNum) {
+            RacingCar car+n = new RacingCar("car"+n, 0);
+        }
         RacingCar racingCar = new RacingCar();
         ResultView resultView = new ResultView();
         for (int i = 0; i < moveCount; i++) {
