@@ -1,6 +1,5 @@
 package racing;
 
-import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -13,6 +12,7 @@ import racing.car.MovableRule;
 import racing.car.RandomMovableRule;
 import racing.car.model.RaceRecord;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -22,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class CarRacingTest {
-    public String[] names = {"lee", "hong", "kim", "jung", "park"};
+    public List<String> names = Arrays.asList("lee", "hong", "kim", "jung", "park");
 
     @DisplayName("성공 :: carRacing 10번 반복 테스트")
     @RepeatedTest(10)
@@ -34,7 +34,7 @@ class CarRacingTest {
         carRacing.run();
 
         // then
-        assertThat(carRacing.getRaceRecords().size()).isEqualTo(5);
+        assertThat(carRacing.getRaceRecords().size()).isEqualTo(3);
     }
 
     @DisplayName("실패 :: 잘못된 입력값")
@@ -58,7 +58,7 @@ class CarRacingTest {
 
         // then
         List<RaceRecord> raceRecords = carRacing.getRaceRecords();
-        assertThat(raceRecords.size()).isEqualTo(2);
+        assertThat(raceRecords.size()).isEqualTo(3);
         raceRecords.forEach(r -> {
             assertThat(r.getTrackRecords().size()).isEqualTo(5);
         });
@@ -67,16 +67,16 @@ class CarRacingTest {
 
     private static Stream<Arguments> getArguments() {
         return Stream.of(
-                Arguments.of(Arrays.array("lee", "kim", "hong"), 10), // null strings should be considered blank
-                Arguments.of(Arrays.array("tony", "jen"), 3),
-                Arguments.of(Arrays.array("tony", "haha", "mini", "toto"), 5)
+                Arguments.of(Arrays.asList("lee", "kim", "hong"), 10), // null strings should be considered blank
+                Arguments.of(Arrays.asList("tony", "jen"), 3),
+                Arguments.of(Arrays.asList("tony", "haha", "mini", "toto"), 5)
         );
     }
 
     @DisplayName("모든 차가 움직인 경우")
     @ParameterizedTest
     @MethodSource("getArguments")
-    void run_success(String[] names, int times) {
+    void run_success(List<String> names, int times) {
         // given
         MovableRule movableRule = () -> true;
         CarRacing carRacing = new CarRacing(names, times, movableRule);
@@ -98,7 +98,7 @@ class CarRacingTest {
     @DisplayName("모든 차가 움직이지 않은 경우")
     @ParameterizedTest
     @MethodSource("getArguments")
-    void run_fail(String[] names, int times) {
+    void run_fail(List<String> names, int times) {
         // given
         MovableRule movableRule = () -> false;
         CarRacing carRacing = new CarRacing(names, times, movableRule);
@@ -120,7 +120,7 @@ class CarRacingTest {
     @DisplayName("승자 확인하기")
     @ParameterizedTest
     @MethodSource("getArguments")
-    void findWinner(String[] names, int times) {
+    void findWinner(List<String> names, int times) {
         // given
         MovableRule movableRule = () -> true;
         CarRacing carRacing = new CarRacing(names, times, movableRule);
@@ -130,7 +130,7 @@ class CarRacingTest {
         List<String> winners = carRacing.findWinner();
 
         // then
-        assertThat(winners.size()).isEqualTo(names.length);
+        assertThat(winners.size()).isEqualTo(names.size());
     }
 
 }

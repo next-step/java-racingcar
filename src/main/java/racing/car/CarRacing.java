@@ -16,8 +16,8 @@ public class CarRacing {
     private List<RaceRecord> raceRecords;
     private MovableRule movableRule;
 
-    public CarRacing(String[] names, int times, MovableRule movableRule) {
-        validateParameter(names.length, times);
+    public CarRacing(List<String> names, int times, MovableRule movableRule) {
+        validateParameter(names.size(), times);
 
         this.cars = new ArrayList<>();
         this.raceRecords = new ArrayList<>();
