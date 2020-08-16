@@ -4,7 +4,7 @@ import step3.model.Cars;
 import step3.view.input.InputScanner;
 import step3.view.output.OutputText;
 
-public class MainClass {
+public class MainController {
 
     public static void main(String[] args) {
         System.out.println(OutputText.CAR_COUNT_VIEW);

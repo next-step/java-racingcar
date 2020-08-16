@@ -6,28 +6,25 @@ import java.util.StringJoiner;
 
 public class RaceRecorder {
 
-    private static final String MOVED_PRINTING = "_";
-    private static final String NEW_LINE = "\n";
-    private static final String WINNER = "우승자: ";
-    private StringJoiner source;
+    private StringBuffer source;
 
     public RaceRecorder() {
-        this.source = new StringJoiner("", "", NEW_LINE);
+        this.source = new StringBuffer();
     }
 
     public void saveRacingRecord(Car car) {
-        StringJoiner result = new StringJoiner("", car.getCarName(), NEW_LINE);
+        StringJoiner result = new StringJoiner("", car.getCarName(), OutputText.NEW_LINE);
 
         for (int i = 0; i < car.getCarMovedCount(); i++) {
-            result.add(MOVED_PRINTING);
+            result.add(OutputText.MOVED_PRINTING);
         }
 
-        source.add(result.toString());
+        source.append(result.toString());
     }
 
     public void saveWinners(String result) {
-        source.add(WINNER);
-        source.add(result);
+        source.append(OutputText.WINNER);
+        source.append(result);
     }
 
     public String getResultString() {
@@ -35,6 +32,8 @@ public class RaceRecorder {
     }
 
     public void appendNewLine() {
-        this.source.add(NEW_LINE);
+        this.source.append(OutputText.NEW_LINE);
     }
+
+    public void appendError(String error) { this.source.append(error); }
 }

@@ -1,10 +1,13 @@
 package step3.model;
 
+import step3.view.output.OutputText;
 import step3.view.output.RaceRecorder;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.TreeMap;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -20,8 +23,10 @@ public class Cars {
     }
 
     private void setPlayerNameForEachCar(String[] playerNames) {
+        checkNameLength(playerNames);
+
         this.cars = Arrays.stream(playerNames)
-                .filter(name -> name.length() < NAME_LENGTH_LIMIT)
+                .filter(s -> s.length() < NAME_LENGTH_LIMIT)
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
@@ -52,5 +57,16 @@ public class Cars {
 
     public String getGameResult() {
         return this.raceRecorder.getResultString();
+    }
+
+    private void checkNameLength(String[] playerNames) {
+        try {
+            Arrays.stream(playerNames)
+                    .filter(s -> s.length() > NAME_LENGTH_LIMIT)
+                    .findFirst()
+                    .ifPresent(NumberFormatException::new);
+        } catch (Exception e) {
+            raceRecorder.appendError(OutputText.LENGTH_ERROR);
+        }
     }
 }
