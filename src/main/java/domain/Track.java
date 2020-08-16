@@ -2,9 +2,12 @@ package domain;
 
 import java.util.Arrays;
 import java.util.NoSuchElementException;
+import java.util.Random;
 
 public class Track {
 
+    private static final Random RANDOM = new Random();
+    private static final int BOUND = 10;
     private final RacingCar[] entries;
     private final int rounds;
 
@@ -25,7 +28,7 @@ public class Track {
 
     public void race() {
         Arrays.stream(entries)
-                .forEach(RacingCar::race);
+                .forEach(racingCar -> racingCar.race(RANDOM.nextInt(BOUND)));
     }
 
     public String[] getWinners() {

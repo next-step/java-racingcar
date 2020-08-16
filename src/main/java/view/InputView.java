@@ -43,8 +43,7 @@ public class InputView {
     public int getRounds() {
         setupScanner();
         System.out.println(ROUNDS_REQUEST);
-        int rounds = scanner.nextInt();
-        return rounds;
+        return scanner.nextInt();
     }
 
     public void close() {

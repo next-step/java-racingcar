@@ -1,11 +1,7 @@
 package domain;
 
-import java.util.Random;
-
 public class RacingCar {
 
-    private static final Random RANDOM = new Random();
-    private static final int BOUND = 10;
     private static final int BENCHMARK = 4;
 
     private final String name;
@@ -23,8 +19,8 @@ public class RacingCar {
         return laps;
     }
 
-    public void race() {
-        if (RANDOM.nextInt(BOUND) >= BENCHMARK) {
+    public void race(int bound) {
+        if (bound >= BENCHMARK) {
             laps++;
         }
     }

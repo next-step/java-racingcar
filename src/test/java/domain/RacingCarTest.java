@@ -4,17 +4,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.IntStream;
 
 import static org.assertj.core.api.BDDAssertions.then;
 
 class RacingCarTest {
 
     private static final String DEFAULT_NAME = "name";
-    private static final int BEGIN_INDEX = 0;
 
     private RacingCar racingCar;
 
@@ -40,12 +37,9 @@ class RacingCarTest {
 
     @ParameterizedTest
     @DisplayName("test race()")
-    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
-    void race(int rounds) {
-        IntStream.range(BEGIN_INDEX, rounds).forEach(round -> {
-            int prevLaps = racingCar.record();
-            racingCar.race();
-            then(racingCar.record()).matches(laps -> laps == prevLaps || laps == prevLaps + 1);
-        });
+    @CsvSource(value = {"0:0", "1:0", "2:0", "3:0", "4:1", "5:1", "6:1", "7:1", "8:1", "9:1"}, delimiter = ':')
+    void race(int bound, int laps) {
+        racingCar.race(bound);
+        then(racingCar.record()).isEqualTo(laps);
     }
 }
