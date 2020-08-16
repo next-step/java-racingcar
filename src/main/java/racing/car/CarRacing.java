@@ -5,7 +5,6 @@ import racing.car.model.RaceRecord;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -64,11 +63,10 @@ public class CarRacing {
     }
 
     public List<String> findWinner() {
-        Comparator<Car> carComparator = Comparator.comparing(Car::getLocation);
-        int longestDistance = Collections.max(cars, carComparator).getLocation();
+        Collections.sort(cars);
 
         return cars.stream()
-                .filter(car -> car.getLocation() == longestDistance)
+                .filter(car -> cars.get(0).compareTo(car) == 0)
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
