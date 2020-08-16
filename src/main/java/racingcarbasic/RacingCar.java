@@ -1,8 +1,7 @@
 package racingcarbasic;
 
-import java.util.Random;
-
 public class RacingCar {
+    private MoveStrategy moveStrategy;
     String name;
     int step;
 
@@ -11,25 +10,13 @@ public class RacingCar {
         this.step = step;
     }
 
-    public int[] getMoveCount(int[] carMoveNum) {
-
-        for (int i = 0; i < carMoveNum.length; i++) {
-            if (move(getRandomNum())) {
-                carMoveNum[i]++;
-            }
-        }
-
-        return carMoveNum;
+    public void move(int num) {
+        if(moveStrategy.move(num))
+            step++;
     }
 
-    public int getRandomNum() {
-        Random random = new Random();
-        int randomNum = random.nextInt(10);
-
-        return randomNum;
+    public void setMoveStrategy(MoveStrategy moveStrategy) {
+        this.moveStrategy = moveStrategy;
     }
 
-    public boolean move(int randomNum) {
-        return randomNum >= 4;
-    }
 }

@@ -1,6 +1,8 @@
 package racingcarbasic;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 public class RacingCarMain {
 
@@ -12,17 +14,25 @@ public class RacingCarMain {
 
         System.out.println(carNum + " " + moveCount);
 
-        /* 이동 또는 멈춤 */
-        for (int n: carNum) {
-            RacingCar car+n = new RacingCar("car"+n, 0);
+        /* RacingCar 인스턴스 생성 */
+        ArrayList<RacingCar> carList = new ArrayList<>();
+        for (int n=0; n<carNum; n++) {
+            carList.add(new RacingCar("car" + n, 0));
         }
-        RacingCar racingCar = new RacingCar();
-        ResultView resultView = new ResultView();
-        for (int i = 0; i < moveCount; i++) {
-            carMoveCount = racingCar.getMoveCount(carMoveCount);
 
-            /* 실행 결과 출력 */
-            resultView.ResultPrint(carMoveCount);
+        ResultView resultView = new ResultView();
+        for(int i=0; i<moveCount; i++) {
+            for (RacingCar car : carList) {
+                /* 0~9까지 랜덤값 생성 */
+                Random random = new Random();
+                int randomNum = random.nextInt(10);
+
+                /* 이동 또는 멈춤 전략 */
+                car.setMoveStrategy(new StraightMove());
+                car.move(randomNum);
+            }
+
+            resultView.ResultPrint();
         }
 
 
