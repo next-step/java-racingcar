@@ -9,6 +9,7 @@ public abstract class Car {
     protected int position;
 
     public Car(String carName) {
+        ValidationCarName.carNameInvalidException(carName);
         this.carName = carName;
         this.position = ZERO_NUMBER;
     }

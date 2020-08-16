@@ -3,9 +3,11 @@ package study.step3;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.RacingGame;
 import step3.domain.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,7 +25,8 @@ public class RacingCarTest {
     @Test
     @DisplayName("게임에 참여하는 자동차")
     void prepareGame() {
-        carInfoMap = RacingCar.preparationForGame("pobi,crong,honux");
+        carInfoMap = RacingGame.preparationForGame(new String[]{"pobi", "crong", "honux"});
+        
         assertThat(carInfoMap).hasSize(3);
         assertThat(carInfoMap).containsKey("pobi");
         assertThat(carInfoMap).containsKey("crong");
@@ -41,18 +44,20 @@ public class RacingCarTest {
     @Test
     @DisplayName("자동차 전진 조건 확인")
     void accelateTest() {
-        carInfoMap = RacingCar.preparationForGame("tommy");
+        carInfoMap = RacingGame.preparationForGame(new String[]{"tommy"});
         Car car = carInfoMap.get("tommy");
         int position = car.move(4, RacingRule.MOVEMENT_POLICY);
+
         assertThat(position).isEqualTo(1);
     }
 
     @Test
     @DisplayName("자동차 정지 조건 확인")
     void brakeTest() {
-        carInfoMap = RacingCar.preparationForGame("tommy");
+        carInfoMap = RacingGame.preparationForGame(new String[]{"tommy"});
         Car car = carInfoMap.get("tommy");
         int position = car.move(3, RacingRule.MOVEMENT_POLICY);
+
         assertThat(position).isEqualTo(0);
     }
 
@@ -62,7 +67,8 @@ public class RacingCarTest {
         carInfoMap.put("tommy", new RacingCar("tommy", 7));
         carInfoMap.put("pobi", new RacingCar("pobi", 4));
         carInfoMap.put("crong", new RacingCar("crong", 7));
-        int maxPosition = RacingCar.findMaxPosition(carInfoMap);
+        int maxPosition = Winners.findMaxPosition(carInfoMap);
+
         assertThat(maxPosition).isEqualTo(7);
     }
 
@@ -72,11 +78,11 @@ public class RacingCarTest {
         carInfoMap.put("tommy", new RacingCar("tommy", 7));
         carInfoMap.put("pobi", new RacingCar("pobi", 4));
         carInfoMap.put("crong", new RacingCar("crong", 7));
-        int maxPosition = RacingCar.findMaxPosition(carInfoMap);
-        String winners = Winners.findWinners(carInfoMap, maxPosition);
-        String[] winnerArray = winners.split(", ");
-        assertThat(winnerArray).contains("crong");
-        assertThat(winnerArray).contains("tommy");
+        int maxPosition = Winners.findMaxPosition(carInfoMap);
+        List<String> winners = Winners.findWinners(carInfoMap, maxPosition);
+
+        assertThat(winners).contains("crong");
+        assertThat(winners).contains("tommy");
     }
 
 }
