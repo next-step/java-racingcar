@@ -32,7 +32,7 @@ public class RacingCarMain {
                 car.move(randomNum);
             }
 
-            resultView.ResultPrint();
+            resultView.ResultPrint(carList);
         }
 
 
