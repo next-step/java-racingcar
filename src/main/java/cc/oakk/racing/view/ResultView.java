@@ -1,8 +1,8 @@
 package cc.oakk.racing.view;
 
-import cc.oakk.racing.Car;
-import cc.oakk.racing.Ranking;
-import cc.oakk.racing.printer.Printable;
+import cc.oakk.racing.domain.Car;
+import cc.oakk.racing.domain.Ranking;
+import cc.oakk.racing.view.printer.Printable;
 
 public interface ResultView {
     void printResultHeader();

@@ -1,6 +1,6 @@
-package cc.oakk.racing;
+package cc.oakk.racing.domain;
 
-import cc.oakk.racing.predicate.CarForwardCondition;
+import cc.oakk.racing.domain.predicate.CarForwardCondition;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +16,7 @@ public class CarTest {
         car.tryMoveForward();
         car.tryMoveForward();
         
-        assertThat(car.getMovedDistance()).isEqualTo(3);
+        assertThat(car.getMovedDistance().compareTo(new Position(3))).isEqualTo(0);
     }
     
     @Test
@@ -28,7 +28,7 @@ public class CarTest {
         car.tryMoveForward();
         car.tryMoveForward();
 
-        assertThat(car.getMovedDistance()).isEqualTo(0);
+        assertThat(car.getMovedDistance().compareTo(new Position(0))).isEqualTo(0);
     }
 
     private Car createMovingCar() {

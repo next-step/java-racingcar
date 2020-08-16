@@ -1,4 +1,4 @@
-package cc.oakk.racing.printer;
+package cc.oakk.racing.view.printer;
 
 public abstract class StringPrinter<T> implements Printer<T> {
     protected final Printer<String> stringPrinter;

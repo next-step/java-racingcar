@@ -1,6 +1,6 @@
-package cc.oakk.racing.printer;
+package cc.oakk.racing.view.printer;
 
-import cc.oakk.racing.Car;
+import cc.oakk.racing.domain.Car;
 
 public class CarPrinter extends StringPrinter<Car> {
     private static final String DISTANCE_SYMBOL = "-";
@@ -28,7 +28,7 @@ public class CarPrinter extends StringPrinter<Car> {
         StringBuilder builder = new StringBuilder();
         builder.append(car.getName());
         builder.append(NAME_DELIMITER);
-        for (int i = 0; i < car.getMovedDistance(); i++) {
+        for (int i = 0; i < car.getMovedDistance().getPosition(); i++) {
             builder.append(DISTANCE_SYMBOL);
         }
         builder.append("\n");

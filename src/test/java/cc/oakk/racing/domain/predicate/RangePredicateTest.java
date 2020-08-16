@@ -1,4 +1,4 @@
-package cc.oakk.racing.predicate;
+package cc.oakk.racing.domain.predicate;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

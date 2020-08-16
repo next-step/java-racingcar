@@ -1,11 +1,11 @@
 package cc.oakk.racing.view;
 
-import cc.oakk.racing.Car;
-import cc.oakk.racing.Ranking;
-import cc.oakk.racing.printer.Printable;
-import cc.oakk.racing.printer.Printer;
-import cc.oakk.racing.printer.StandardPrinter;
-import cc.oakk.racing.printer.StringPrinter;
+import cc.oakk.racing.domain.Car;
+import cc.oakk.racing.domain.Ranking;
+import cc.oakk.racing.view.printer.Printable;
+import cc.oakk.racing.view.printer.Printer;
+import cc.oakk.racing.view.printer.StandardPrinter;
+import cc.oakk.racing.view.printer.StringPrinter;
 
 public class ResultViewImpl implements ResultView {
     private final StringPrinter<Car> carPrinter;

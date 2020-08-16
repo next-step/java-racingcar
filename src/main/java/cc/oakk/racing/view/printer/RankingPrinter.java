@@ -1,7 +1,8 @@
-package cc.oakk.racing.printer;
+package cc.oakk.racing.view.printer;
 
-import cc.oakk.racing.Car;
-import cc.oakk.racing.Ranking;
+import cc.oakk.racing.domain.Car;
+import cc.oakk.racing.domain.CarName;
+import cc.oakk.racing.domain.Ranking;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,7 +19,10 @@ public class RankingPrinter extends StringPrinter<Ranking> {
         }
 
         List<Car> winners = source.getWinner();
-        String joinedResult = winners.stream().map(Car::getName).collect(Collectors.joining(DELIMITER, PREFIX, SUFFIX));
+        String joinedResult = winners.stream()
+                .map(Car::getName)
+                .map(CarName::toString)
+                .collect(Collectors.joining(DELIMITER, PREFIX, SUFFIX));
 
         stringPrinter.print(joinedResult);
     }
