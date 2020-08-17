@@ -1,22 +1,20 @@
 package racing.ui;
 
-import racing.core.TrackInfo;
+import racing.core.Trial;
 
 import java.util.List;
 
 public class ResultView {
 
-    private List<TrackInfo> trackInfos;
-    private int numberOfCars;
+    private List<Trial> trials;
 
-    public ResultView(List<TrackInfo> trackInfos, int numberOfCars) {
-        this.trackInfos = trackInfos;
-        this.numberOfCars = numberOfCars;
+    public ResultView(List<Trial> trials) {
+        this.trials = trials;
     }
 
     public void printResult() {
-        for (int i = 0; i < trackInfos.size(); i++) {
-            System.out.println(trackInfos.get(i) + (i % numberOfCars == numberOfCars - 1? "\n" : ""));
+        for (Trial each : trials) {
+            System.out.println(each);
         }
     }
 }

@@ -11,9 +11,9 @@ public class Cars {
         this.cars = cars;
     }
 
-    public List<TrackInfo> nextTrial(MoveStrategy movement) {
+    public Trial nextTrial(MoveStrategy movement) {
         List<TrackInfo> tracks = new ArrayList<>();
         cars.stream().forEach(car -> tracks.add(car.move(movement)));
-        return tracks;
+        return new Trial(tracks);
     }
 }

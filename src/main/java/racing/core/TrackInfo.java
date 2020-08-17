@@ -5,10 +5,16 @@ import java.util.stream.IntStream;
 
 public class TrackInfo {
 
-    public int position;
+    private int position;
 
     public TrackInfo(int position) {
         this.position = position;
+    }
+
+    public String getTrack() {
+        return IntStream.range(0, position)
+                .mapToObj(position -> "-")
+                .reduce("", String::concat);
     }
 
     @Override
@@ -22,12 +28,5 @@ public class TrackInfo {
     @Override
     public int hashCode() {
         return Objects.hash(position);
-    }
-
-    @Override
-    public String toString() {
-        return IntStream.range(0, position)
-                .mapToObj(position -> "-")
-                .reduce("", (result, element) -> result += element);
     }
 }
