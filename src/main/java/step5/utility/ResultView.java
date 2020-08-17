@@ -1,10 +1,13 @@
-package step4.utility;
+package step5.utility;
 
-import step4.model.Car;
-import step4.model.Cars;
-import step4.model.Winners;
+import step5.model.Car;
+import step5.model.Cars;
+import step5.model.Winners;
 
 public class ResultView {
+    private ResultView(){
+        throw new AssertionError("생성자 생성 불가!");
+    }
 
     public static void resultShow(Cars cars, int numOfTries) {
         for (int i = 0; i < numOfTries; i++) {

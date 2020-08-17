@@ -1,4 +1,4 @@
-package step4.model;
+package step5.model;
 
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class WinnersTest {
     @Test
-    void create(){
+    void createWinnerNames(){
         Winners winners = new Winners(Arrays.asList(
                 new Car("zorba"), new Car("lhb")
         ));

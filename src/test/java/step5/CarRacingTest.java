@@ -1,8 +1,8 @@
-package step4;
+package step5;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step4.utility.ReturnRandomValue;
+import step5.utility.ReturnRandomValue;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

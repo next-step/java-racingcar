@@ -1,6 +1,6 @@
-package step4.controller;
+package step5.controller;
 
-import step4.model.Cars;
+import step5.model.Cars;
 
 public class CarRacing {
     private int numOfTries;
