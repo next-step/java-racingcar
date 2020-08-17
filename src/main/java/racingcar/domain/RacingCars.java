@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static racingcar.Constants.INIT_POSITION;
+
 /**
  * 일급 콜렉션, 콜렉션 wrapping하며 그 콜렉션 외에 다른 변수는 없는 상태
  * 해당 콜렉션이 아닌 단순 배열/리스트는 ..List ...Arr 로 해서 헷갈리지 않게
@@ -28,7 +30,7 @@ public class RacingCars {
     public static ArrayList<Car> createCars(int carCounts) {
         ArrayList<Car> cars = new ArrayList<>(carCounts);
         for (int i = 0 ; i < carCounts; i++) {
-            cars.add(new Car(0));
+            cars.add(new Car(new Position(INIT_POSITION)));
         }
         return cars;
     }

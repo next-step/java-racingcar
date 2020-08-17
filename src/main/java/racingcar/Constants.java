@@ -13,10 +13,6 @@ public final class Constants {
     public static final int FORWARD_OK_COND_NUM = 4;
     public static final int RANDOM_BOUND = 10;
 
-    /** Mock Test **/
-    public static final RaceCondition ALWAYS_ONE_FORWARD_COND = () -> true;
-    public static final RaceCondition ALWAYS_ZERO_FORWARD_COND = () -> false;
-
     /** UI View **/
     public static final String ASK_CAR_COUNT = "자동차 대수는 몇 대 인가요?";
     public static final String ASK_RACING_COUNT = "시도할 회수는 몇 회 인가요?";

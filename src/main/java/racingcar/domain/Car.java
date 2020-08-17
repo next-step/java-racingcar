@@ -6,20 +6,18 @@ import racingcar.strategy.RaceCondition;
 import java.util.Objects;
 
 public class Car {
-    private int position;
+    private Position position;
 
-    public Car(int position) {
+    public Car(Position position) {
         this.position = position;
     }
 
-    public int getPosition() {
+    public Position getPosition() {
         return position;
     }
 
-    public int move(RaceCondition raceCondition, DoRace doRace) {
-        if (raceCondition.pass()) {
-            return position += doRace.race();
-        } return position;
+    public Position move(RaceCondition raceCondition, DoRace doRace) {
+        return position.move(raceCondition, doRace);
     }
 
     @Override
