@@ -4,11 +4,6 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Calculator {
-    public String input() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
-    }
-
     public int calculate(String input) {
         if (isNullOrBlank(input)) {
             throw new IllegalArgumentException("입력 값이 공백 문자열이거나 null 입니다.");
