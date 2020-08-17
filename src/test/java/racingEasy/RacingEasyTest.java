@@ -8,20 +8,20 @@ import static racingEasy.RacingEasy.runOrStop;
 public class RacingEasyTest {
 
 	@Test
-	public void 조건() {
+	public void a() {
 		assertThat(runOrStopCondition(3)).isEqualTo(false);
 		assertThat(runOrStopCondition(9)).isEqualTo(true);
 		assertThat(runOrStopCondition(10)).isEqualTo(false);
 	}
 	
 	@Test
-	public void 전진()
+	public void b()
 	{
 		assertThat(runOrStop(4, 1)).isEqualTo(2);
 	}
 	
 	@Test
-	public void 멈춤()
+	public void c()
 	{
 		assertThat(runOrStop(2, 3)).isEqualTo(3);
 	}
