@@ -1,5 +1,6 @@
 package racing.core;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -15,18 +16,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    private Car car = new Car("test");
+    private static String carName = "test";
+    private Car car;
+
+    @BeforeEach
+    private void setUp() {
+        car = new Car(carName);
+    }
 
     @Test
     @DisplayName("이동 성공 테스트")
     void moveSuccess() {
-        assertThat(car.move(() -> true)).isEqualTo(new TrackInfo(1));
+        assertThat(car.move(() -> true)).isEqualTo(new TrackInfo(carName, 1));
     }
 
     @Test
     @DisplayName("이동 실패 테스트")
     void moveFailed() {
-        assertThat(car.move(() -> false)).isEqualTo(new TrackInfo(0));
+        assertThat(car.move(() -> false)).isEqualTo(new TrackInfo(carName, 0));
     }
 
     @ParameterizedTest
@@ -45,10 +52,10 @@ class CarTest {
         MoveStrategy always = () -> true;
 
         return Stream.of(
-                Arguments.of(new MoveStrategy[] {always, always, always}, new TrackInfo(3)),
-                Arguments.of(new MoveStrategy[] {never, never, never, never, never}, new TrackInfo(0)),
-                Arguments.of(new MoveStrategy[] {always, always, always, always, always}, new TrackInfo(5)),
-                Arguments.of(new MoveStrategy[] {never, never, never, always}, new TrackInfo(1))
+                Arguments.of(new MoveStrategy[] {always, always, always}, new TrackInfo(carName, 3)),
+                Arguments.of(new MoveStrategy[] {never, never, never, never, never}, new TrackInfo(carName, 0)),
+                Arguments.of(new MoveStrategy[] {always, always, always, always, always}, new TrackInfo(carName, 5)),
+                Arguments.of(new MoveStrategy[] {never, never, never, always}, new TrackInfo(carName, 1))
         );
     }
 }

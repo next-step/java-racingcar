@@ -18,7 +18,7 @@ public class Trial {
     @Override
     public String toString() {
         return tracks.stream()
-                .map(trackInfo -> trackInfo.getTrack() + "\n")
+                .map(trackInfo -> trackInfo.getTrackInfo() + "\n")
                 .reduce("", String::concat);
     }
 

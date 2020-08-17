@@ -16,6 +16,6 @@ public class Car {
         if (movement.canMove()) {
             position++;
         }
-        return new TrackInfo(position);
+        return new TrackInfo(name, position);
     }
 }
