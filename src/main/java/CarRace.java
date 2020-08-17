@@ -1,7 +1,12 @@
+import car.Car;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class CarRace {
 
+    private List<Car> carList = new ArrayList<>();
     private int carNumber;
     private int executionNumber;
 
