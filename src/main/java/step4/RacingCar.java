@@ -8,7 +8,7 @@ public class RacingCar {
 
     private List<Car> carList = new ArrayList<Car>();
 
-    public List<Car> init(String value) {
+    private List<Car> init(String value) {
         String[] list = value.split(",");
 
         for(int i = 0 ; i < list.length ; i ++) {
@@ -32,7 +32,7 @@ public class RacingCar {
         System.out.println(getWinner(cars)+"가 최종 우승했습니다.");
     }
 
-    private String getWinner(List<Car> cars) {
+    public String getWinner(List<Car> cars) {
         StringBuilder str = new StringBuilder();
 
         cars.sort( (a, b) -> b.getCurrentStatus() - a.getCurrentStatus());
@@ -55,6 +55,10 @@ public class RacingCar {
     private int getRandomNum() {
         Random random = new Random();
         return random.nextInt(10);
+    }
+
+    public int getCarListSize(){
+        return carList.size();
     }
 
     public static void main(String[] args) {

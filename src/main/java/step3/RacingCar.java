@@ -24,8 +24,7 @@ public class RacingCar {
 			System.out.println();
 		}
 	}
-	
-	
+
 	private int getRandomNum() {
 		Random random = new Random();		
 		return random.nextInt(10);

@@ -1,6 +1,6 @@
 package step1;
 
-import org.junit.platform.commons.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public class StringCalculator {
 	

@@ -21,7 +21,11 @@ public class Car {
 		
 		System.out.println(strStatus.toString());
 	}
-	
+
+	public int getStatus(){
+		return status.size();
+	}
+
 	private boolean isRunable(int randomNum) {
 		return randomNum >= 4;
 	}
