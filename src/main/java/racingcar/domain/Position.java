@@ -13,8 +13,8 @@ public class Position {
     }
 
     public Position move(RaceCondition raceCondition, DoRace doRace) {
-        if (raceCondition.pass( )) {
-            this.position = position + doRace.race( );
+        if (raceCondition.pass()) {
+            this.position = position + doRace.race();
         }
         return new Position(position);
     }
