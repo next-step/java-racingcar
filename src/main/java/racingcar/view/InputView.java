@@ -5,18 +5,25 @@ import java.util.Scanner;
 import static racingcar.Constants.*;
 
 public class InputView {
-    static Scanner scanner = new Scanner(System.in);
+    private static InputChannel inputChannel;
+    private static OutputChannel outputChannel;
+
+    public InputView(InputChannel inputChannel, OutputChannel outputChannel) {
+        this.inputChannel = inputChannel;
+        this.outputChannel = outputChannel;
+    }
+
     private static int carCounts;
     private static int racingCounts;
 
     public static int getCarCounts() {
-        System.out.println(ASK_CAR_COUNT);
-        return carCounts = scanner.nextInt( );
+        outputChannel.printLine(ASK_CAR_COUNT);
+        return carCounts = inputChannel.getIntValue();
     }
 
     public static int getRacingCounts() {
-        System.out.println(ASK_RACING_COUNT);
-        return racingCounts = scanner.nextInt( );
+        outputChannel.printLine(ASK_RACING_COUNT);
+        return racingCounts = inputChannel.getIntValue();
     }
 }
 
