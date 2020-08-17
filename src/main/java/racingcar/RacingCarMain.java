@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.domain.RacingCars;
 import racingcar.view.InputView;
+import racingcar.view.OutputChannel;
 import racingcar.view.ResultView;
 
 
@@ -12,12 +13,12 @@ public class RacingCarMain {
         int racingCounts = InputView.getRacingCounts();
 
         RacingCars racingCars = new RacingCars(carCounts, racingCounts);
-        ResultView.printStartResult();
+        ResultView resultView = new ResultView(OutputChannel.createSystemOut());
+        resultView.printStartResult();
         while (racingCars.yesRacingCond( )) {
             racingCars.yesRacingCars( );
-
-        ResultView.printCars(racingCars.getCars());
-        ResultView.printLine();
+        resultView.printCars(racingCars.getCars());
+        resultView.printLine();
         }
     }
 
