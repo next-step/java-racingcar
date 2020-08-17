@@ -23,8 +23,6 @@ public class RacingCarMain {
             racingCars.yesRacingCars( );
         ResultView.printCars(racingCars.getCars( ));
         }
-
-        ResultView.printResults();
     }
 
 }
