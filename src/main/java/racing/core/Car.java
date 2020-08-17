@@ -4,10 +4,10 @@ public class Car {
 
     private int position;
 
-    public Snapshot move(MoveStrategy movement) {
+    public TrackInfo move(MoveStrategy movement) {
         if (movement.canMove()) {
             position++;
         }
-        return new Snapshot(position);
+        return new TrackInfo(position);
     }
 }

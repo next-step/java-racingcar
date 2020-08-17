@@ -15,10 +15,10 @@ public class GameRunner {
 
         // 경주
         RacingGame game = new RacingGame(numberOfCars, numberOfTrials);
-        List<Snapshot> snapshots = game.run(new RandomMoveStrategy());
+        List<TrackInfo> trackInfos = game.run(new RandomMoveStrategy());
 
         // 결과 출력
-        ResultView resultView = new ResultView(snapshots, numberOfCars);
+        ResultView resultView = new ResultView(trackInfos, numberOfCars);
         resultView.printResult();
     }
 }

@@ -13,12 +13,12 @@ public class RacingGame {
         this.trials = numberOfTrials;
     }
 
-    public List<Snapshot> run(MoveStrategy movement) {
-        List<Snapshot> snapshots = new ArrayList<>();
+    public List<TrackInfo> run(MoveStrategy movement) {
+        List<TrackInfo> trackInfos = new ArrayList<>();
         for (int i = 0; i < trials; i++) {
-            cars.stream().forEach(c -> snapshots.add(c.move(movement)));
+            cars.stream().forEach(c -> trackInfos.add(c.move(movement)));
         }
-        return snapshots;
+        return trackInfos;
     }
 
     private List<Car> makeUpEntry(int numberOfCars) {

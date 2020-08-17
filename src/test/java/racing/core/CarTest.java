@@ -17,20 +17,20 @@ class CarTest {
     @Test
     @DisplayName("이동 성공 테스트")
     void moveSuccess() {
-        assertThat(car.move(() -> true)).isEqualTo(new Snapshot(1));
+        assertThat(car.move(() -> true)).isEqualTo(new TrackInfo(1));
     }
 
     @Test
     @DisplayName("이동 실패 테스트")
     void moveFailed() {
-        assertThat(car.move(() -> false)).isEqualTo(new Snapshot(0));
+        assertThat(car.move(() -> false)).isEqualTo(new TrackInfo(0));
     }
 
     @ParameterizedTest
     @MethodSource("provideArrayOfMoveAndActual")
     @DisplayName("car 객체 하나가 이동한 총 거리 테스트")
-    void snapshot(MoveStrategy[] movements, Snapshot expected) {
-        Snapshot actual = null;
+    void snapshot(MoveStrategy[] movements, TrackInfo expected) {
+        TrackInfo actual = null;
         for (MoveStrategy m : movements) {
             actual = car.move(m);
         }
@@ -42,10 +42,10 @@ class CarTest {
         MoveStrategy always = () -> true;
 
         return Stream.of(
-                Arguments.of(new MoveStrategy[] {always, always, always}, new Snapshot(3)),
-                Arguments.of(new MoveStrategy[] {never, never, never, never, never}, new Snapshot(0)),
-                Arguments.of(new MoveStrategy[] {always, always, always, always, always}, new Snapshot(5)),
-                Arguments.of(new MoveStrategy[] {never, never, never, always}, new Snapshot(1))
+                Arguments.of(new MoveStrategy[] {always, always, always}, new TrackInfo(3)),
+                Arguments.of(new MoveStrategy[] {never, never, never, never, never}, new TrackInfo(0)),
+                Arguments.of(new MoveStrategy[] {always, always, always, always, always}, new TrackInfo(5)),
+                Arguments.of(new MoveStrategy[] {never, never, never, always}, new TrackInfo(1))
         );
     }
 }
