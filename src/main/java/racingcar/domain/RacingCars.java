@@ -1,5 +1,7 @@
 package racingcar.domain;
+import racingcar.strategy.DoOneForward;
 import racingcar.strategy.DoRace;
+import racingcar.strategy.OneForwardCondition;
 import racingcar.strategy.RaceCondition;
 
 import java.sql.Array;
@@ -19,7 +21,7 @@ public class RacingCars {
     private int carCounts;
     private int racingCounts;
 
-    public List<Car> getCars() {
+    public List<Car> getCars() {  //unModifiable acc. to javajigi
         return cars;
     }
 
@@ -35,6 +37,25 @@ public class RacingCars {
         }
         return cars;
     }
+
+    public void yesRacingCars() {
+        this.racingCounts--;
+        moveCars();
+    }
+
+    public boolean yesRacingCond() {
+        return this.racingCounts > 0;
+    }
+/*
+    private void moveCars() {
+        for (Car car : cars) {
+            car.move(new OneForwardCondition(), new DoOneForward());
+        }
+    }
+
+
+*/
+
 }
 
 
