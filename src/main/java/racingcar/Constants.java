@@ -1,6 +1,7 @@
 package racingcar;
 
 
+import racingcar.strategy.RaceCondition;
 
 public final class Constants {
 
@@ -11,6 +12,10 @@ public final class Constants {
     public static final int ZERO_FORWARD = 0; //Stop이면 또다른 Strategy같음, 여집합의 개념으로 ZERO도입
     public static final int FORWARD_OK_COND_NUM = 4;
     public static final int RANDOM_BOUND = 10;
+
+    /** Mock Test **/
+    public static final RaceCondition ALWAYS_ONE_FORWARD_COND = () -> true;
+    public static final RaceCondition ALWAYS_ZERO_FORWARD_COND = () -> false;
 
     /** UI View **/
     public static final String ASK_CAR_COUNT = "자동차 대수는 몇 대 인가요?";
