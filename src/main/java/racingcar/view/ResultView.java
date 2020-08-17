@@ -13,8 +13,11 @@ import static racingcar.Constants.*;
 import static racingcar.utils.StringUtils.repeat;
 
 public class ResultView{
+    public static void printStartResult() {
+        System.out.println("\n"+SAY_VIEW_RESULT);
+    }
+
     public static void printCars(List<Car> cars) {
-        System.out.println(SAY_VIEW_RESULT);
         cars.forEach(ResultView::dashPosition);
     }
 
