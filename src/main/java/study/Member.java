@@ -15,5 +15,6 @@ public class Member {
 
     public int getAge(){
         return age;
+
     }
 }
