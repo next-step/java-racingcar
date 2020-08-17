@@ -28,8 +28,7 @@ public class CarTest {
     @Test
     public void assertCarCanOneForward() {
         RaceCondition alwaysOneForwardCond = () -> true;
-        DoOneForward doOneForward = new DoOneForward();
-        assertThat(car.move(alwaysOneForwardCond, doOneForward))
+        assertThat(car.move(alwaysOneForwardCond, new DoOneForward()))
                 .isEqualTo(ONE_FORWARD);
     }
 
@@ -37,7 +36,6 @@ public class CarTest {
     @Test
     public void assertCarCanZeroForward() {
         RaceCondition alwaysZeroForwardCond = () -> false;
-        DoOneForward doOneForward = new DoOneForward();
-        assertThat(car.move(alwaysZeroForwardCond, doOneForward))
+        assertThat(car.move(alwaysZeroForwardCond, new DoOneForward()))
                 .isEqualTo(ZERO_FORWARD);  }
 }
