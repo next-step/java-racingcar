@@ -5,12 +5,9 @@ import carracing.domain.Game;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Random;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import static org.assertj.core.api.Assertions.*;
-
-public class CarRacingTest {
-    private Game game;
+public class GameTest {
 
     @Test
     @DisplayName("입력값 inputValid() Exception")
@@ -22,14 +19,9 @@ public class CarRacingTest {
     }
 
     @Test
-    @DisplayName("4 이상인경우 true 반환")
-    void Car_isMove_테스트() {
-        Car car = new Car(1);
-
-        car.setPosition(1);
-        assertThat(car.isMove()).isFalse();
-
-        car.setPosition(4);
-        assertThat(car.isMove()).isTrue();
+    @DisplayName("start 테스트")
+    void stsrt_테스트() {
+        Game game = new Game(3, 5);
+        game.start();
     }
 }
