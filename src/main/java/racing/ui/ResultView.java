@@ -25,7 +25,7 @@ public class ResultView {
     }
 
     private void printWinner(CarRacing carRacing) {
-        String winners = String.join(", ", carRacing.findWinner());
+        String winners = String.join(", ", carRacing.findWinnerNames());
         System.out.println(winners + "가 최종 우승 했습니다.");
     }
 

@@ -127,7 +127,7 @@ class CarRacingTest {
 
         // when
         carRacing.run();
-        List<String> winners = carRacing.findWinner();
+        List<String> winners = carRacing.findWinnerNames();
 
         // then
         assertThat(winners.size()).isEqualTo(names.size());

@@ -1,7 +1,5 @@
 package racing.car.model;
 
-import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 public class RaceRecord {
@@ -14,11 +12,8 @@ public class RaceRecord {
         this.trackRecords = trackRecords;
     }
 
-    public static RaceRecord of(int raceId, List<Car> cars) {
-        Map<String, Integer> trackRecords = new LinkedHashMap<>();
-        for (Car car : cars) {
-            trackRecords.put(car.getName(), car.getLocation());
-        }
+    public static RaceRecord of(int raceId, Cars cars) {
+        Map<String, Integer> trackRecords = cars.getTrackRecords();
 
         return new RaceRecord(raceId, trackRecords);
     }

@@ -1,31 +1,27 @@
 package racing.car;
 
-import racing.car.model.Car;
+import racing.car.model.Cars;
 import racing.car.model.RaceRecord;
+import racing.car.model.Winners;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CarRacing {
+    private static final int START_LOCATION = 0;
 
-    private List<Car> cars;
     private int times;
+    private Cars cars;
     private List<RaceRecord> raceRecords;
     private MovableRule movableRule;
 
     public CarRacing(List<String> names, int times, MovableRule movableRule) {
         validateParameter(names.size(), times);
 
-        this.cars = new ArrayList<>();
+        this.cars = new Cars(names, START_LOCATION);
         this.raceRecords = new ArrayList<>();
         this.times = times;
         this.movableRule = movableRule;
-
-        for (String name : names) {
-            cars.add(new Car(name, 0));
-        }
     }
 
     public void run() {
@@ -35,21 +31,17 @@ public class CarRacing {
     }
 
     private void step(int raceNumber) {
-        for (Car car : cars) {
-            racing(car);
-        }
+        cars.racingOneGame(movableRule);
 
         raceRecords.add(RaceRecord.of(raceNumber, cars));
     }
 
-    private void racing(Car car) {
-        if (movableRule.isMovable()) {
-            car.go();
-        }
-    }
-
     public List<RaceRecord> getRaceRecords() {
         return raceRecords;
+    }
+
+    public List<String> findWinnerNames() {
+        return Winners.of(cars).getWinnerNames();
     }
 
     private void validateParameter(int carNumber, int times) {
@@ -60,15 +52,6 @@ public class CarRacing {
         if (times <= 0) {
             throw new IllegalArgumentException("경기 횟수는 1회 이상이어야 합니다.");
         }
-    }
-
-    public List<String> findWinner() {
-        Collections.sort(cars);
-
-        return cars.stream()
-                .filter(car -> cars.get(0).compareTo(car) == 0)
-                .map(Car::getName)
-                .collect(Collectors.toList());
     }
 
 }
