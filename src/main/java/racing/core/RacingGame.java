@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RacingGame {
 
-    public List<Car> cars;
+    public Cars cars;
     public int trials;
 
     public RacingGame(int numberOfCars, int numberOfTrials) {
@@ -14,18 +14,18 @@ public class RacingGame {
     }
 
     public List<TrackInfo> run(MoveStrategy movement) {
-        List<TrackInfo> trackInfos = new ArrayList<>();
+        List<TrackInfo> allTracks = new ArrayList<>();
         for (int i = 0; i < trials; i++) {
-            cars.stream().forEach(c -> trackInfos.add(c.move(movement)));
+            allTracks.addAll(cars.nextTrial(movement));
         }
-        return trackInfos;
+        return allTracks;
     }
 
-    private List<Car> makeUpEntry(int numberOfCars) {
-        List<Car> cars = new ArrayList<>(numberOfCars);
+    private Cars makeUpEntry(int numberOfCars) {
+        List<Car> carList = new ArrayList<>(numberOfCars);
         for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
+            carList.add(new Car());
         }
-        return cars;
+        return new Cars(carList);
     }
 }
