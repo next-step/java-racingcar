@@ -27,8 +27,8 @@ public class RacingCars {
         this.racingCounts = racingCounts;
     }
 
-    public static ArrayList<Car> createCars(int carCounts) {
-        ArrayList<Car> cars = new ArrayList<>(carCounts);
+    public static List<Car> createCars(int carCounts) {
+        List<Car> cars = new ArrayList<>(carCounts);
         for (int i = 0 ; i < carCounts; i++) {
             cars.add(new Car(new Position(INIT_POSITION)));
         }
