@@ -46,15 +46,12 @@ public class RacingCars {
     public boolean yesRacingCond() {
         return this.racingCounts > 0;
     }
-/*
+
     private void moveCars() {
         for (Car car : cars) {
             car.move(new OneForwardCondition(), new DoOneForward());
         }
     }
-
-
-*/
 
 }
 
