@@ -1,5 +1,6 @@
 package step4;
 
+import step4.model.Cars;
 import step4.utility.InputView;
 import step4.controller.CarRacing;
 import step4.controller.UserInput;
@@ -10,8 +11,8 @@ class FotStartRacing {
         UserInput input = InputView.initShow();
 
         CarRacing race = new CarRacing(input.getCars(), input.getTries());
-        race.gameStart();
+        Cars cars = race.gameStart();
 
-        ResultView.resultShow(race.getCarRecord());
+        ResultView.resultShow(cars, input.getTries());
     }
 }

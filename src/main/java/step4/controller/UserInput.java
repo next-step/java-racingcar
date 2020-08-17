@@ -1,18 +1,18 @@
 package step4.controller;
 
-import step4.model.Car;
+import step4.model.Cars;
 
 public class UserInput {
 
-    private Car[] cars;
+    private Cars cars;
     private int tries;
 
-    public UserInput(Car[] cars, int tries) {
+    public UserInput(Cars cars, int tries) {
         this.cars = cars;
         this.tries = tries;
     }
 
-    public Car[] getCars() {
+    public Cars getCars() {
         return cars;
     }
 

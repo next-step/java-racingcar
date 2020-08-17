@@ -2,8 +2,11 @@ package step4.utility;
 
 import step4.controller.UserInput;
 import step4.model.Car;
+import step4.model.Cars;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -13,12 +16,12 @@ public class InputView {
     static final String RESULT = "\n실행 결과";
 
     private InputView() {
-       throw new AssertionError("생성자 생성 불가!");
+        throw new AssertionError("생성자 생성 불가!");
     }
 
     public static UserInput initShow() {
         System.out.println(QUESTION_CAR_NAME);
-        Car[] cars = inputCarName();
+        Cars cars = inputCarName();
 
         System.out.println(QUESTION_TRY_NUMBER);
         int tries = inputTries();
@@ -27,24 +30,13 @@ public class InputView {
         return new UserInput(cars, tries);
     }
 
-    private static int inputTries() {
-        Scanner sc = new Scanner(System.in);
 
-        try {
-            int input = sc.nextInt();
-            return input;
-        } catch (InputMismatchException e) {
-            e.printStackTrace();
-            throw new IllegalArgumentException("정수만 가능합니다");
-        }
-    }
-
-    private static Car[] inputCarName() {
+    private static Cars inputCarName() {
         Scanner sc = new Scanner(System.in);
 
         String input;
         String inputs[];
-        Car carName[];
+        Cars carName;
 
         try {
             input = sc.nextLine();
@@ -58,14 +50,26 @@ public class InputView {
         }
     }
 
-    private static Car[] genName(String[] inputs) {
-        int length = inputs.length;
+    private static Cars genName(String[] inputs) {
+        List<Car> carName = new ArrayList<>();
 
-        Car[] carName = new Car[length];
-
-        for (int i = 0; i < length; i++) {
-            carName[i] = new Car(inputs[i]);
+        for (int i = 0; i < inputs.length; i++) {
+            carName.add(new Car(inputs[i]));
         }
-        return carName;
+        Cars cars = new Cars(carName);
+
+        return cars;
+    }
+
+    private static int inputTries() {
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            int input = sc.nextInt();
+            return input;
+        } catch (InputMismatchException e) {
+            e.printStackTrace();
+            throw new IllegalArgumentException("정수만 가능합니다");
+        }
     }
 }
