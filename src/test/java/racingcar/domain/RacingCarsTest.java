@@ -4,6 +4,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racingcar.strategy.DoOneForward;
+import racingcar.strategy.RaceCondition;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,6 +34,16 @@ public class RacingCarsTest {
     @DisplayName("자동차 대수 입력값 없거나 0일 경우")
     @Test
     public void whenZeroOrBlankCarCounts() {
+        /*
+        Car alwaysZeroForwardCar = new Car(0);
+        Car alwaysOneForwardCar = new Car(0);
+        List<Car> testCars = Arrays.asList(alwaysOneForwardCar, alwaysZeroForwardCar);
+        RaceCondition alwaysOneForwardCond = () -> true;
+        RaceCondition alwaysZeroForwardCond = () -> false;
+        alwaysZeroForwardCar.move(alwaysZeroForwardCond, new DoOneForward());
+        alwaysOneForwardCar.move(alwaysOneForwardCond, new DoOneForward());
+        RacingCars racingCars2 = new RacingCars(2, 5);
+        */
 
     }
 

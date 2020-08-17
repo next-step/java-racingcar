@@ -6,7 +6,6 @@ import java.util.Random;
 
 public class OneForwardCondition implements RaceCondition {
         Random random = new Random();
-        //Predicate<Integer> not reusable
 
     @Override
     public boolean pass() {

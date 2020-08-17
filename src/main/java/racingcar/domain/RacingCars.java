@@ -1,8 +1,6 @@
 package racingcar.domain;
 import racingcar.strategy.DoOneForward;
-import racingcar.strategy.DoRace;
 import racingcar.strategy.OneForwardCondition;
-import racingcar.strategy.RaceCondition;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,7 +14,6 @@ import java.util.List;
 public class RacingCars {
 
     private List<Car> cars;
-    private int carCounts;
     private int racingCounts;
 
     public List<Car> getCars() {  //unModifiable acc. to javajigi
@@ -54,7 +51,7 @@ public class RacingCars {
 }
 
 
-/*
+/* BEFORE
     public List<Integer> allDoRace(int carCounts, int racingCounts) {
         this.carList = new ArrayList<>(carCounts);
         List<Integer> resultList = Arrays.asList(0);

@@ -1,16 +1,12 @@
-package racingcar.view;
+package racingcar;
 
 import racingcar.domain.RacingCars;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
-import java.util.Scanner;
-
-import static racingcar.Constants.*;
 
 public class RacingCarMain {
     public static void main(String[] args) {
-
-        //  Scanner scanner = new Scanner(System.in); - InputView
-        //    System.out.println(""); -OutputView
 
         int carCounts = InputView.getCarCounts();
         int racingCounts = InputView.getRacingCounts();
@@ -19,6 +15,7 @@ public class RacingCarMain {
         ResultView.printStartResult();
         while (racingCars.yesRacingCond( )) {
             racingCars.yesRacingCars( );
+
         ResultView.printCars(racingCars.getCars());
         ResultView.printLine();
         }

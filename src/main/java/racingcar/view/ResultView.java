@@ -1,12 +1,6 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
-import racingcar.strategy.DoOneForward;
-import racingcar.strategy.OneForwardCondition;
-import racingcar.strategy.RaceCondition;
-import racingcar.utils.StringUtils;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import static racingcar.Constants.*;
