@@ -86,6 +86,13 @@ class CalculatorTest {
                 .hasMessageContaining(Constants.DIVIDE_BY_ZERO);
     }
 
+    @ParameterizedTest
+    @DisplayName("문자열 계산기")
+    @CsvSource(value = {"4 * 3 + 6 / 9 - 1 : 1"}, delimiter = ':')
+    public void calculate(String input, int result) {
+        assertThat(calculator.calculate(input)).isEqualTo(result);
+    }
+
 
 
 }
