@@ -1,4 +1,6 @@
-package racing.car.model;
+package racing.domain;
+
+import java.util.Objects;
 
 public class Car implements Comparable<Car> {
 
@@ -33,8 +35,27 @@ public class Car implements Comparable<Car> {
         }
     }
 
+    public boolean isEqualLocation(Car car) {
+        return this.location == car.location;
+    }
+
     @Override
     public int compareTo(Car c) {
         return c.location - this.location;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return location == car.location &&
+                Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, location);
+    }
+
 }
