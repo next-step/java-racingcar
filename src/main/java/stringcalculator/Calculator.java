@@ -6,14 +6,14 @@ import java.util.Scanner;
 public class Calculator {
     public int calculate(String input) {
         if (isNullOrBlank(input)) {
-            throw new IllegalArgumentException("입력 값이 공백 문자열이거나 null 입니다.");
+            throw new IllegalArgumentException(Constants.INPUT_VALUE_IS_NULL_OR_EMPTY);
         }
         String[] expressions = input.split(" ");
 
         int firstOperand = Integer.parseInt(expressions[0]);
 
         for (int i = 1; i < expressions.length; i = i + 2) {
-            firstOperand = calculate(firstOperand, Integer.parseInt(expressions[i + 1]), expressions[i].toString());
+            firstOperand = calculate(firstOperand, Integer.parseInt(expressions[i + 1]), expressions[i]);
         }
 
         return firstOperand;
@@ -33,7 +33,7 @@ public class Calculator {
         } else if (operator.equals("/")) {
             return divide(firstOperand, secondOperand);
         } else {
-            throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
+            throw new IllegalArgumentException(Constants.IS_NOT_VALID_OPERATOR);
         }
 
     }
@@ -52,7 +52,7 @@ public class Calculator {
 
     private int divide(int firstOperand, int secondOperand) {
         if (secondOperand == 0) {
-            throw new ArithmeticException("0으로 나눌 수 없습니다.");
+            throw new ArithmeticException(Constants.DIVIDE_BY_ZERO);
         }
         return firstOperand / secondOperand;
     }

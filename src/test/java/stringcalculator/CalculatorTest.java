@@ -26,7 +26,7 @@ class CalculatorTest {
         assertThatThrownBy(() -> {
             calculator.calculate(null);
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("입력 값이 공백 문자열이거나 null 입니다.");
+                .hasMessageContaining(Constants.INPUT_VALUE_IS_NULL_OR_EMPTY);
     }
 
     @Test
@@ -35,7 +35,7 @@ class CalculatorTest {
         assertThatThrownBy(() -> {
             calculator.calculate(" ");
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("입력 값이 공백 문자열이거나 null 입니다.");
+                .hasMessageContaining(Constants.INPUT_VALUE_IS_NULL_OR_EMPTY);
     }
 
     @ParameterizedTest
@@ -45,7 +45,7 @@ class CalculatorTest {
         assertThatThrownBy(() -> {
             calculator.calculate(input);
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("사칙연산 기호가 아닙니다.");
+                .hasMessageContaining(Constants.IS_NOT_VALID_OPERATOR);
     }
 
     @ParameterizedTest
@@ -83,7 +83,7 @@ class CalculatorTest {
         assertThatThrownBy(() -> {
             calculator.calculate(input);
         }).isInstanceOf(ArithmeticException.class)
-                .hasMessageContaining("0으로 나눌 수 없습니다.");
+                .hasMessageContaining(Constants.DIVIDE_BY_ZERO);
     }
 
 
