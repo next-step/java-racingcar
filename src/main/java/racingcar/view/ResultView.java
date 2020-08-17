@@ -7,19 +7,19 @@ import static racingcar.Constants.*;
 import static racingcar.utils.StringUtils.repeat;
 
 public class ResultView{
+
     public static void printStartResult() {
         System.out.println("\n"+SAY_VIEW_RESULT);
     }
-
     public static void printCars(List<Car> cars) {
-        cars.forEach(ResultView::dashPosition);
+        cars.forEach(ResultView::printPosition);
     }
 
-    public static void dashPosition(Car car) {
-        System.out.println(repeat("-", car.getPosition()));
+    public static void printPosition(Car car) {
+        System.out.println(repeat(PRINT_GO, car.getPosition()));
     }
 
     public static void printLine() {
-        System.out.println("");
+        System.out.println(BLANK_LINE);
     }
 }
