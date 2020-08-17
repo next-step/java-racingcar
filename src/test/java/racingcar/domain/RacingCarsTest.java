@@ -5,11 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RacingCarsTest {
 
@@ -17,11 +14,12 @@ public class RacingCarsTest {
     @ParameterizedTest
     @CsvSource(value = {"1:0","3:0"}, delimiter = ':')
     public void whenZeroOrBlankRacingCounts(int carCounts, int racingCounts) {
-        new Car(0);
-        List<Car> carList = new ArrayList<>();
-        RacingCars racingCars = new RacingCars(carList);
-        List<Integer> expected = Arrays.asList(0);
-        assertEquals(expected, racingCars.allDoRace(carCounts, racingCounts));
+
+    }
+
+    @Test
+    void createCarsTest() {
+        assertThat(RacingCars.createCars(5).size()).isEqualTo(5);
     }
 
     @DisplayName("자동차 대수 입력값 없거나 0일 경우")

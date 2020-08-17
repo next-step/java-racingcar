@@ -2,6 +2,7 @@ package racingcar.domain;
 import racingcar.strategy.DoRace;
 import racingcar.strategy.RaceCondition;
 
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,17 +15,30 @@ import java.util.stream.Collectors;
 
 public class RacingCars {
 
-    private List<Car> carList;
+    private List<Car> cars;
+    private int carCounts;
+    private int racingCounts;
 
-    public RacingCars(List<Car> carList) {
-        this.carList = carList;
+    public List<Car> getCars() {
+        return cars;
     }
 
-    public List<Car> getCarList() {
-        return carList;
+    public RacingCars(int carCounts, int racingCounts) {
+        this.cars = createCars(carCounts);
+        this.racingCounts = racingCounts;
     }
 
+    public static ArrayList<Car> createCars(int carCounts) {
+        ArrayList<Car> cars = new ArrayList<>(carCounts);
+        for (int i = 0 ; i < carCounts; i++) {
+            cars.add(new Car(0));
+        }
+        return cars;
+    }
+}
 
+
+/*
     public List<Integer> allDoRace(int carCounts, int racingCounts) {
         this.carList = new ArrayList<>(carCounts);
         List<Integer> resultList = Arrays.asList(0);
@@ -40,16 +54,8 @@ public class RacingCars {
         resultList.addAll(allDoRace(carCounts, racingCounts));
         return resultList;
     }
-}
+
+ */
 
 
-/*
-    public List<Integer> raceCars(List<Car> cars, int racingCounts) {
-        List<Car> carList = new ArrayList<Car>();
-        for (i = 1; i <= racingCounts; i++) {
-            for (j = 0; j < cars.size(); j++) {
-                return carList.add(cars[j].move());
-            }
-        }
-    }
-*/
+
