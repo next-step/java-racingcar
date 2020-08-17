@@ -1,5 +1,8 @@
 package racingcar.view;
 
+import racingcar.domain.RacingCars;
+
+import javax.xml.transform.Result;
 import java.util.Scanner;
 
 import static racingcar.Constants.*;
@@ -9,11 +12,19 @@ public class RacingCarMain {
     int racingCounts = 0;
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        //  Scanner scanner = new Scanner(System.in); - InputView
+        //    System.out.println(""); -OutputView
 
-        InputView inputView = new InputView();
-        System.out.println("");
-        ResultView resultView = new ResultView();
+        int carCounts = InputView.getCarCounts( );
+        int racingCounts = InputView.getRacingCounts( );
+
+        RacingCars racingCars = new RacingCars(carCounts, racingCounts);
+        while (racingCars.yesRacingCond( )) {
+            racingCars.yesRacingCars( );
+        ResultView.printCars(racingCars.getCars( ));
+        }
+
+        ResultView.printResults();
     }
 
 }
