@@ -9,6 +9,8 @@ import racing.car.RandomMovableRule;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,9 +28,10 @@ class ResultViewTest {
     void setUpStreams() {
         System.setOut(new PrintStream(outContent));
         System.setErr(new PrintStream(errContent));
+        List<String> names = Arrays.asList("lee", "hong", "kim");
 
         resultView = new ResultView();
-        carRacing = new CarRacing(3, 3, new RandomMovableRule());
+        carRacing = new CarRacing(names, 3, new RandomMovableRule());
         carRacing.run();
     }
 

@@ -4,6 +4,7 @@ import racing.car.model.Car;
 import racing.car.model.RaceRecord;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,16 +15,16 @@ public class CarRacing {
     private List<RaceRecord> raceRecords;
     private MovableRule movableRule;
 
-    public CarRacing(int carNumber, int times, MovableRule movableRule) {
-        validateParameter(carNumber, times);
+    public CarRacing(List<String> names, int times, MovableRule movableRule) {
+        validateParameter(names.size(), times);
 
         this.cars = new ArrayList<>();
         this.raceRecords = new ArrayList<>();
         this.times = times;
         this.movableRule = movableRule;
 
-        for (int i = 0; i < carNumber; i++) {
-            cars.add(new Car(i, 0));
+        for (String name : names) {
+            cars.add(new Car(name, 0));
         }
     }
 
@@ -38,19 +39,13 @@ public class CarRacing {
             racing(car);
         }
 
-        raceRecords.add(new RaceRecord(raceNumber, makeTrackRecords()));
+        raceRecords.add(RaceRecord.of(raceNumber, cars));
     }
 
     private void racing(Car car) {
         if (movableRule.isMovable()) {
             car.go();
         }
-    }
-
-    private List<Integer> makeTrackRecords() {
-        return cars.stream()
-                .map(Car::getLocation)
-                .collect(Collectors.toList());
     }
 
     public List<RaceRecord> getRaceRecords() {
@@ -65,6 +60,15 @@ public class CarRacing {
         if (times <= 0) {
             throw new IllegalArgumentException("경기 횟수는 1회 이상이어야 합니다.");
         }
+    }
+
+    public List<String> findWinner() {
+        Collections.sort(cars);
+
+        return cars.stream()
+                .filter(car -> cars.get(0).compareTo(car) == 0)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 
 }

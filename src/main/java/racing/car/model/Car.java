@@ -1,12 +1,13 @@
 package racing.car.model;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
-    private int id;
+    private String name;
     private int location;
 
-    public Car(int id, int location) {
-        this.id = id;
+    public Car(String name, int location) {
+        validateParameter(name, location);
+        this.name = name;
         this.location = location;
     }
 
@@ -14,12 +15,26 @@ public class Car {
         location++;
     }
 
-    public int getId() {
-        return id;
+    public String getName() {
+        return name;
     }
 
     public int getLocation() {
         return location;
     }
 
+    public void validateParameter(String name, int location) {
+        if (name.length() > 5 || name.length() <= 0) {
+            throw new IllegalArgumentException("이름이 올바르지 않습니다. (5자 이하)");
+        }
+
+        if (location < 0) {
+            throw new IllegalArgumentException("시작 위치는 0이상이어야 합니다.");
+        }
+    }
+
+    @Override
+    public int compareTo(Car c) {
+        return c.location - this.location;
+    }
 }
