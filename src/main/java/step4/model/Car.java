@@ -1,5 +1,8 @@
 package step4.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Car {
 
     private static final int MAX_LENGTH = 5;
@@ -8,6 +11,11 @@ public class Car {
 
     private String name;
     private int position = 0;
+    private List<Integer> recordMove;
+
+    public int getRecordMove(int i) {
+        return recordMove.get(i);
+    }
 
     public String getName() {
         return name;
@@ -16,6 +24,7 @@ public class Car {
     public Car(String name) {
         validate(name);
         this.name = name;
+        recordMove = new ArrayList<>();
     }
 
     private void validate(String name) {
@@ -39,6 +48,7 @@ public class Car {
         if (isMove(movePoint)) {
             this.position++;
         }
+        recordMove.add(position);
     }
 
     public boolean isMove(int movePoint) {
@@ -48,4 +58,5 @@ public class Car {
     public int getPosition() {
         return position;
     }
+
 }
