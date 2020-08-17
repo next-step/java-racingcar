@@ -3,6 +3,8 @@ package racingcar.domain;
 import racingcar.strategy.DoRace;
 import racingcar.strategy.RaceCondition;
 
+import java.util.Objects;
+
 public class Car {
     private int position;
 
@@ -18,5 +20,18 @@ public class Car {
         if (raceCondition.pass()) {
             return position += doRace.race();
         } return position;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass( ) != o.getClass( )) return false;
+        Car car = (Car) o;
+        return position == car.position;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position);
     }
 }
