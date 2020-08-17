@@ -19,7 +19,10 @@ public class ResultView{
     }
 
     public static void dashPosition(Car car) {
-        repeat("-", car.getPosition());
+        System.out.println(repeat("-", car.getPosition()));
     }
 
+    public static void printLine() {
+        System.out.println("");
+    }
 }
