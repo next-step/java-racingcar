@@ -15,7 +15,7 @@ public class GameRunner {
 
         // 경주
         RacingGame game = new RacingGame(numberOfCars, numberOfTrials);
-        List<Snapshot> snapshots = game.run(new RandomMove());
+        List<Snapshot> snapshots = game.run(new RandomMoveStrategy());
 
         // 결과 출력
         ResultView resultView = new ResultView(snapshots, numberOfCars);

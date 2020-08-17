@@ -17,37 +17,35 @@ class CarTest {
     @Test
     @DisplayName("이동 성공 테스트")
     void moveSuccess() {
-        Move movement = new AlwaysMove();
-        assertThat(car.move(movement)).isEqualTo(new Snapshot(1));
+        assertThat(car.move(() -> true)).isEqualTo(new Snapshot(1));
     }
 
     @Test
     @DisplayName("이동 실패 테스트")
     void moveFailed() {
-        Move movement = new NeverMove();
-        assertThat(car.move(movement)).isEqualTo(new Snapshot(0));
+        assertThat(car.move(() -> false)).isEqualTo(new Snapshot(0));
     }
 
     @ParameterizedTest
     @MethodSource("provideArrayOfMoveAndActual")
     @DisplayName("car 객체 하나가 이동한 총 거리 테스트")
-    void snapshot(Move[] movements, Snapshot expected) {
+    void snapshot(MoveStrategy[] movements, Snapshot expected) {
         Snapshot actual = null;
-        for (Move m : movements) {
+        for (MoveStrategy m : movements) {
             actual = car.move(m);
         }
         assertThat(actual).isEqualTo(expected);
     }
 
     private static Stream<Arguments> provideArrayOfMoveAndActual() {
-        Move never = new NeverMove();
-        Move always = new AlwaysMove();
+        MoveStrategy never = () -> false;
+        MoveStrategy always = () -> true;
 
         return Stream.of(
-                Arguments.of(new Move[] {always, always, always}, new Snapshot(3)),
-                Arguments.of(new Move[] {never, never, never, never, never}, new Snapshot(0)),
-                Arguments.of(new Move[] {always, always, always, always, always}, new Snapshot(5)),
-                Arguments.of(new Move[] {never, never, never, always}, new Snapshot(1))
+                Arguments.of(new MoveStrategy[] {always, always, always}, new Snapshot(3)),
+                Arguments.of(new MoveStrategy[] {never, never, never, never, never}, new Snapshot(0)),
+                Arguments.of(new MoveStrategy[] {always, always, always, always, always}, new Snapshot(5)),
+                Arguments.of(new MoveStrategy[] {never, never, never, always}, new Snapshot(1))
         );
     }
 }

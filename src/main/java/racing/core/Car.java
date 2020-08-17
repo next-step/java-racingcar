@@ -4,7 +4,10 @@ public class Car {
 
     private int position;
 
-    public Snapshot move(Move movement) {
-        return new Snapshot(movement.canMove() ? ++position : position);
+    public Snapshot move(MoveStrategy movement) {
+        if (movement.canMove()) {
+            position++;
+        }
+        return new Snapshot(position);
     }
 }
