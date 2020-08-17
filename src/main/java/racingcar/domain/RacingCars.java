@@ -4,11 +4,9 @@ import racingcar.strategy.DoRace;
 import racingcar.strategy.OneForwardCondition;
 import racingcar.strategy.RaceCondition;
 
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * 일급 콜렉션, 콜렉션 wrapping하며 그 콜렉션 외에 다른 변수는 없는 상태
@@ -22,7 +20,7 @@ public class RacingCars {
     private int racingCounts;
 
     public List<Car> getCars() {  //unModifiable acc. to javajigi
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
     public RacingCars(int carCounts, int racingCounts) {
