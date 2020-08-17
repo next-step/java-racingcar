@@ -11,8 +11,8 @@ public class RacingGame {
     public Cars cars;
     public int numberOfTrials;
 
-    public RacingGame(int numberOfCars, int numberOfTrials) {
-        this.cars = makeUpEntry(numberOfCars);
+    public RacingGame(String[] namesOfCars, int numberOfTrials) {
+        this.cars = makeUpEntry(namesOfCars);
         this.numberOfTrials = numberOfTrials;
     }
 
@@ -24,10 +24,10 @@ public class RacingGame {
         return trials;
     }
 
-    private Cars makeUpEntry(int numberOfCars) {
-        List<Car> carList = new ArrayList<>(numberOfCars);
-        for (int i = 0; i < numberOfCars; i++) {
-            carList.add(new Car());
+    private Cars makeUpEntry(String[] namesOfCars) {
+        List<Car> carList = new ArrayList<>(namesOfCars.length);
+        for (String eachName : namesOfCars) {
+            carList.add(new Car(eachName));
         }
         return new Cars(carList);
     }

@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
-    private Car car = new Car();
+    private Car car = new Car("test");
 
     @Test
     @DisplayName("이동 성공 테스트")

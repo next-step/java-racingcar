@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RacingGameTest {
 
-    private static int numberOfCars = 3;
-    private static int numberOfTrials = 3;
+    private String[] namesOfCars = new String[] {"test1", "test2", "test3"};
+    private int numberOfTrials = 3;
 
     @Test
     @DisplayName("모든 차가 전혀 이동하지 경우 테스트")
@@ -27,7 +27,7 @@ class RacingGameTest {
         );
 
         // when
-        List<Trial> actual = new RacingGame(expected.get(0).getNumberOfTrack(), expected.size()).run(() -> false);
+        List<Trial> actual = new RacingGame(namesOfCars, expected.size()).run(() -> false);
 
         // then
         assertEquals(expected, actual);
@@ -44,7 +44,7 @@ class RacingGameTest {
         );
 
         // when
-        List<Trial> actual = new RacingGame(expected.get(0).getNumberOfTrack(), expected.size()).run(() -> true);
+        List<Trial> actual = new RacingGame(namesOfCars, expected.size()).run(() -> true);
 
         // then
         assertEquals(expected, actual);
