@@ -16,8 +16,8 @@ public class RacingCarMain {
         resultView.printStartResult();
         while (racingCars.yesRacingCond( )) {
             racingCars.yesRacingCars( );
-        resultView.printCars(racingCars.getCars());
-        resultView.printLine();
+            resultView.printCars(racingCars.getCars());
+            resultView.printLine();
         }
     }
 
