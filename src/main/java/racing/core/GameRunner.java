@@ -1,5 +1,8 @@
 package racing.core;
 
+import racing.core.domain.RacingGame;
+import racing.core.dto.Trial;
+import racing.core.patterns.RandomMoveStrategy;
 import racing.ui.InputView;
 import racing.ui.ResultView;
 

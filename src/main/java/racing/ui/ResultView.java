@@ -1,6 +1,6 @@
 package racing.ui;
 
-import racing.core.Trial;
+import racing.core.dto.Trial;
 
 import java.util.List;
 

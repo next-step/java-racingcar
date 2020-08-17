@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import racing.core.domain.Car;
+import racing.core.dto.TrackInfo;
+import racing.core.patterns.MoveStrategy;
 
 import java.util.stream.Stream;
 

@@ -2,6 +2,9 @@ package racing.core;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.core.domain.RacingGame;
+import racing.core.dto.TrackInfo;
+import racing.core.dto.Trial;
 
 import java.util.Arrays;
 import java.util.List;
