@@ -7,10 +7,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.car.CarRacing;
-import racing.car.MovableRule;
-import racing.car.RandomMovableRule;
-import racing.car.model.RaceRecord;
+import racing.domain.CarRacing;
+import racing.domain.MovableRule;
+import racing.domain.RandomMovableRule;
+import racing.domain.RaceRecord;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,6 +1,4 @@
-package racing.car.model;
-
-import racing.car.MovableRule;
+package racing.domain;
 
 import java.util.*;
 import java.util.stream.Collectors;

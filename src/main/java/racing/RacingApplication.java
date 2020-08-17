@@ -1,17 +1,21 @@
 package racing;
 
-import racing.car.CarRacing;
-import racing.ui.InputView;
-import racing.ui.ResultView;
+import racing.domain.CarRacing;
+import racing.domain.RandomMovableRule;
+import racing.view.InputView;
+import racing.view.ResultView;
+
+import java.util.List;
 
 public class RacingApplication {
 
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        ResultView resultView = new ResultView();
+        List<String> names = InputView.getCarNames();
+        int times = InputView.getTimes();
 
-        CarRacing carRacing = inputView.makeCarRacing();
+        CarRacing carRacing = new CarRacing(names, times, new RandomMovableRule());
         carRacing.run();
-        resultView.printResult(carRacing);
+
+        ResultView.printResult(carRacing);
     }
 }

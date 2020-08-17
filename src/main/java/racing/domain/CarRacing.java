@@ -1,8 +1,4 @@
-package racing.car;
-
-import racing.car.model.Cars;
-import racing.car.model.RaceRecord;
-import racing.car.model.Winners;
+package racing.domain;
 
 import java.util.ArrayList;
 import java.util.List;

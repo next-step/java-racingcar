@@ -1,11 +1,11 @@
-package racing.ui;
+package racing.view;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.car.CarRacing;
-import racing.car.RandomMovableRule;
+import racing.domain.CarRacing;
+import racing.domain.RandomMovableRule;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

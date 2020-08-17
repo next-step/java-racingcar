@@ -3,6 +3,8 @@ package racing.car.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.domain.Car;
+import racing.domain.Winners;
 
 import java.util.Arrays;
 import java.util.List;

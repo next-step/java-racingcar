@@ -2,12 +2,13 @@ package racing.car.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class CarTest {
-    private racing.car.model.Car car;
+    private Car car;
 
     @Test
     @DisplayName("자동차 이름 5글자 초과인 경우")
@@ -22,7 +23,7 @@ class CarTest {
     void go() {
         // given
         int firstLocation = 10;
-        car = new racing.car.model.Car("lee", firstLocation);
+        car = new Car("lee", firstLocation);
 
         // when
         car.go();
