@@ -3,6 +3,9 @@ package racingcarbasic;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class RacingCarMain {
 
@@ -15,10 +18,9 @@ public class RacingCarMain {
         System.out.println(carNum + " " + moveCount);
 
         /* RacingCar 인스턴스 생성 */
-        List<RacingCar> carList = new ArrayList<>();
-        for (int n = 0; n < carNum; n++) {
-            carList.add(new RacingCar("car" + n, 0));
-        }
+        List<RacingCar> carList = Stream.generate(() -> new RacingCar("car", 0))
+                .limit(carNum)
+                .collect(Collectors.toList());
 
         ResultView resultView = new ResultView();
         for (int i = 0; i < moveCount; i++) {
@@ -32,7 +34,7 @@ public class RacingCarMain {
                 car.move(randomNum);
             }
 
-            resultView.ResultPrint(carList);
+            //resultView.ResultPrint(carList);
         }
 
 
