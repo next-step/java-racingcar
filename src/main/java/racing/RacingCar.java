@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 public class RacingCar {
 
-    Integer[] racingResult;
+    public Integer[] racingResult;
     MoveStrategy moveStrategy;
 
     public RacingCar() { }

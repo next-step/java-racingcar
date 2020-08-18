@@ -4,6 +4,7 @@ package racing;
 import racing.strategy.MoveStrategy;
 import racing.strategy.RacingMoveStategy;
 import racing.view.InputView;
+import racing.view.ResultView;
 
 import java.util.List;
 import java.util.stream.Collectors;
