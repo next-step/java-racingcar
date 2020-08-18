@@ -1,9 +1,17 @@
 package racingcarbasic;
 
 public class RacingCar {
-    String name;
-    int step;
+    private String name;
+    private int step;
     private MoveStrategy moveStrategy;
+
+    public String getName() {
+        return name;
+    }
+
+    public int getStep() {
+        return step;
+    }
 
     public RacingCar(String name, int step) {
         this.name = name;

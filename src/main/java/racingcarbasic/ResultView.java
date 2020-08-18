@@ -10,7 +10,7 @@ public class ResultView {
 
     public void ResultPrint(ArrayList<RacingCar> carList) {
         for (RacingCar car : carList) {
-            int step = car.step;
+            int step = car.getStep();
             System.out.println(new String(new char[step]).replace("\0", "-"));
         }
         System.out.println();
