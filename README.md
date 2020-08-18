@@ -187,7 +187,7 @@ T 타입 인자를 받고 결과로 boolean을 리턴
 
 ***
 
-###일급 클래스(First Class Collection)
+###일급 컬렉션 (First Class Collection)
 
 Collection을 Wrapping하면서, 그 외 다른 변수가 없는 클래스의 상태
 
