@@ -7,11 +7,11 @@ public class Car {
     private static final int MOVE_POSITION = 4;
 
     private int position = 0;
-    private int carNumber;
+    private String carName;
     private String output = "";
 
-    public Car(int carNumber) {
-        this.carNumber = carNumber;
+    public Car(String carName) {
+        this.carName = carName;
     }
 
     private int getPower() {
@@ -30,8 +30,8 @@ public class Car {
         return position;
     }
 
-    public int getCarNumber() {
-        return this.carNumber;
+    public String getCarName() {
+        return carName;
     }
 
 }

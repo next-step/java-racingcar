@@ -15,7 +15,7 @@ public class CarTest {
     @Test
     @DisplayName("Car 객체 생성 후 position 설정")
     void Car_객체생성() {
-        Car car = new Car(1);
+        Car car = new Car("car1");
         car.setPosition();
         assertThat(car.getPosition());
 

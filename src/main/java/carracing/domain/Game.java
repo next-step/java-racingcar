@@ -4,24 +4,24 @@ import carracing.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Game {
 
-    private int carCount = 0;
     private int tryCount = 0;
     private List<Car> cars = null;
 
-    public Game(int carCount, int tryCount){
-        inputValid(carCount, tryCount);
+    public Game(String carNames, int tryCount){
+        inputValid(carNames, tryCount);
 
         this.tryCount = tryCount;
-        this.cars = this.generateCars(carCount);
+        this.cars = this.generateCars(carNames);
 
     }
 
-    private void inputValid(int carCount, int tryCount) {
-        if( carCount == 0 || tryCount == 0) throw new IllegalArgumentException("입력값을 확인해주세요.");
+    private void inputValid(String carNames, int tryCount) {
+        if( carNames.trim().isEmpty() || tryCount == 0) {
+            throw new IllegalArgumentException("입력값을 확인해주세요.");
+        }
     }
 
     public void start() {
@@ -30,11 +30,12 @@ public class Game {
         }
     }
 
-    private List<Car> generateCars(int carCount) {
+    private List<Car> generateCars(String carNames) {
         List<Car> cars = new ArrayList<>();
+        String[] carName = carNames.split(",");
 
-        for (int i = 1; i <= carCount; i++) {
-            Car car = new Car(i);
+        for (int i = 0; i < carName.length; i++) {
+            Car car = new Car(carName[i]);
             cars.add(car);
         }
         return cars;
