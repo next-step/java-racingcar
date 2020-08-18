@@ -64,7 +64,6 @@ class CarTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"abcdef", "가나다라마바", "123456", "----*("})
-    @DisplayName("자동차 이름 5글자 제한 테스트")
     void 자동차_이름_5글자_초과_테스트(String name) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             Car actual = new Car(name);
@@ -73,7 +72,6 @@ class CarTest {
 
     @ParameterizedTest
     @NullAndEmptySource
-    @DisplayName("자동차 이름 빈 문자열 제한 테스트")
     void 자동차_이름_빈_문자열_테스트(String name) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             Car actual = new Car(name);
