@@ -29,6 +29,13 @@ class CalculatorTest {
         assertThrows(IllegalArgumentException.class, () -> calculator.calculate(input));
     }
 
+    @DisplayName("피연산자가 숫자가 아닌 경우 NumberFormatException throw")
+    @ParameterizedTest
+    @ValueSource(strings = {"ss dd 5 / 2"})
+    public void inputNotOperator (String input) {
+        assertThrows(NumberFormatException.class, () -> calculator.calculate(input));
+    }
+
     @DisplayName("사칙 연산을 모두 포함하는 기능 구현")
     @ParameterizedTest(name = "{index} {displayName} {0} = {1}")
     @CsvSource({"2 + 3 * 4 / 2, 10", "3 * 5 / 2, 7", "10 + 100 * 5 / 2, 275"})
@@ -36,6 +43,8 @@ class CalculatorTest {
         assertEquals(calculator.calculate(input), result);
     }
 }
+
+
 
 
 

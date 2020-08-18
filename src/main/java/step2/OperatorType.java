@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public enum OperatorType {
-    PLUS("+", (value1, value2) ->  value1 + value2),
-    MINUS("-", (value1, value2) -> value1 - value2),
-    MULTIPLY("*", (value1, value2) -> value1 * value2),
-    DIVIDE("/", (value1, value2) -> value1 / value2);
+    PLUS("+", (firstOperand, secondOperand) ->  firstOperand + secondOperand),
+    MINUS("-", (firstOperand, secondOperand) -> firstOperand - secondOperand),
+    MULTIPLY("*", (firstOperand, secondOperand) -> firstOperand * secondOperand),
+    DIVIDE("/", (firstOperand, secondOperand) -> firstOperand / secondOperand);
 
     private String operator;
     private BiFunction<Integer, Integer, Integer> operation;
@@ -21,7 +21,7 @@ public enum OperatorType {
         return Arrays.stream(OperatorType.values())
                 .filter((opType) -> operator.equals(opType.getOperator()))
                 .findAny()
-                .orElseThrow(() -> new IllegalArgumentException());
+                .orElseThrow(() -> new IllegalArgumentException("인자값이 연산자 문자열이 아닙니다."));
     }
 
     public Integer calculate(Integer firstOperand, Integer secondOperand) {
@@ -31,5 +31,6 @@ public enum OperatorType {
     private String getOperator() {
         return operator;
     }
-
 }
+
+
