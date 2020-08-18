@@ -12,6 +12,9 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
+        if (cars.isEmpty()) {
+            throw new IllegalArgumentException("경주에 참가할 자동차가 존재하지 않습니다.");
+        }
         this.cars = cars;
     }
 

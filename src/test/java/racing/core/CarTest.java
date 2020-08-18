@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 import racing.core.domain.Car;
 import racing.core.dto.TrackInfo;
 import racing.core.patterns.MoveStrategy;
@@ -13,6 +15,7 @@ import racing.core.patterns.MoveStrategy;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class CarTest {
 
@@ -57,6 +60,24 @@ class CarTest {
                 Arguments.of(new MoveStrategy[] {always, always, always, always, always}, new TrackInfo(carName, 5)),
                 Arguments.of(new MoveStrategy[] {never, never, never, always}, new TrackInfo(carName, 1))
         );
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"abcdef", "가나다라마바", "123456", "----*("})
+    @DisplayName("자동차 이름 5글자 제한 테스트")
+    void 자동차_이름_5글자_초과_테스트(String name) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            Car actual = new Car(name);
+        }).withMessage("자동차 이름은 5자를 초과할 수 없습니다.");
+    }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    @DisplayName("자동차 이름 빈 문자열 제한 테스트")
+    void 자동차_이름_빈_문자열_테스트(String name) {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            Car actual = new Car(name);
+        }).withMessage("자동차 이름은 반드시 문자나 숫자를 포함해야 합니다.");
     }
 }
 
