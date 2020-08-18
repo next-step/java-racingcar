@@ -1,6 +1,7 @@
 package racingcarbasic;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RacingCarMain {
@@ -14,7 +15,7 @@ public class RacingCarMain {
         System.out.println(carNum + " " + moveCount);
 
         /* RacingCar 인스턴스 생성 */
-        ArrayList<RacingCar> carList = new ArrayList<>();
+        List<RacingCar> carList = new ArrayList<>();
         for (int n = 0; n < carNum; n++) {
             carList.add(new RacingCar("car" + n, 0));
         }
