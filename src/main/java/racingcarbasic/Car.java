@@ -1,6 +1,6 @@
 package racingcarbasic;
 
-public class RacingCar {
+public class Car {
     private String name;
     private int step;
     private MoveStrategy moveStrategy;
@@ -13,13 +13,13 @@ public class RacingCar {
         return step;
     }
 
-    public RacingCar(String name, int step) {
+    public Car(String name, int step) {
         this.name = name;
         this.step = step;
     }
 
-    public void move(int num) {
-        if (moveStrategy.move(num))
+    public void move() {
+        if (moveStrategy.move())
             step++;
     }
 

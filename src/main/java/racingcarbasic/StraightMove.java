@@ -1,8 +1,14 @@
 package racingcarbasic;
 
+import java.util.Random;
+
 class StraightMove implements MoveStrategy {
     @Override
-    public boolean move(int num) {
-        return num >= 4;
+    public boolean move() {
+        return new Random().nextInt(10) >=4;
     }
 }
+
+
+
+
