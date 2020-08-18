@@ -7,23 +7,19 @@ import java.util.stream.Collectors;
 import step5.util.StringUtil;
 
 public class CarFactory {
-	private final static String DELEMETER = ",";
-	
-	private List<Car> cars;
-	public CarFactory(String[] carNamesArray) {
-		cars = Arrays.stream(carNamesArray)
-				.map(Car::new)
-				.collect(Collectors.toList());
-	}
-	
-	public CarFactory(String carNames) {
-		if(StringUtil.isEmpty(carNames)) {
+	public final static String DELEMETER = ",";
+
+	public static List<Car> create(String carName) {
+		if (StringUtil.isEmpty(carName)) {
 			throw new IllegalArgumentException("차 이름을 입력해주세요.");
 		}
-		new CarFactory(StringUtil.stringSplit(carNames, DELEMETER));
+		String[] carNamesArray= StringUtil.stringSplit(carName,DELEMETER);
+		return createCarWithArray(carNamesArray);
 	}
-	
-	public List<Car> getCars() {
-		return cars;
+
+	public static List<Car> createCarWithArray(String[] carNameArray) {
+		return Arrays.stream(carNameArray)
+				.map(Car::new)
+				.collect(Collectors.toList());
 	}
 }

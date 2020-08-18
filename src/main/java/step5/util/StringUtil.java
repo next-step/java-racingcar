@@ -5,7 +5,6 @@ public class StringUtil {
 		if(value == null) {
 			return true;
 		}
-		
 		return "".equals(value);
 	}
 	

@@ -9,11 +9,16 @@ import org.junit.jupiter.api.Test;
 public class CarFactoryTest {
 
 	@Test
-	public void makeCarTest() {
-		String[] Carname = {"abc","def"};
-		CarFactory carFactory = new CarFactory(Carname);
-		List<Car> cars= carFactory.getCars();
+	public void makeCarTestWithString() {
+		String carnames = "abc,def";
+		List<Car> cars= CarFactory.create(carnames);
 		assertThat(cars).contains(new Car("abc"), new Car("def"));
-		
+	}
+
+	@Test
+	public void makeCarTestWithArray() {
+		String[] carname = {"abc","def"};
+		List<Car> cars = CarFactory.createCarWithArray(carname);
+		assertThat(cars).contains(new Car("abc"), new Car("def"));
 	}
 }

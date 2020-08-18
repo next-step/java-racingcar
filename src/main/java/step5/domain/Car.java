@@ -1,5 +1,7 @@
 package step5.domain;
 
+import java.util.Objects;
+
 public class Car {
 	private final static int STRING_MAX_LENGTH = 5;
 	private final static int RUN = 4;
@@ -7,14 +9,14 @@ public class Car {
 	private int location = 0;
 	
 	public Car(String name) {
+		this(name,0);
+	}
+	
+	public Car(String name, int location) {
 		if(name.length() > STRING_MAX_LENGTH) {
 			throw new IllegalArgumentException("차 이름은 " + STRING_MAX_LENGTH + "자를 초과할 수 없습니다.");
 		}
 		this.name = name;
-	}
-	
-	public Car(String name, int location) {
-		new Car(name);
 		this.location = location;
 	}
 
@@ -40,32 +42,16 @@ public class Car {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + location;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Car car = (Car) o;
+		return location == car.location &&
+				Objects.equals(name, car.name);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Car other = (Car) obj;
-		if (location != other.location)
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		return true;
+	public int hashCode() {
+		return Objects.hash(name, location);
 	}
-	
-	
 }

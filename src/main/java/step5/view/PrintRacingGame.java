@@ -11,7 +11,7 @@ public class PrintRacingGame {
 			printEnter();
 		}
 	}
-	
+
 	public static void printReps(int reps) {
 		System.out.println(reps + "번째");
 	}

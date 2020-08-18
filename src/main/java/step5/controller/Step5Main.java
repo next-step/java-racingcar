@@ -6,26 +6,22 @@ import java.util.Scanner;
 
 import step5.domain.Car;
 import step5.domain.CarFactory;
+import step5.domain.InputUtil;
 import step5.domain.RacingGame;
 import step5.util.StringUtil;
 import step5.view.PrintRacingGame;
 
 public class Step5Main {
-	
-	public static void main(String[] args) {
-		System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-		Scanner scanner = new Scanner(System.in);
-		String carsName = scanner.nextLine();
-		CarFactory carFactory = new CarFactory(carsName);
-		List<Car> carList = carFactory.getCars();
-		
-		System.out.println("시도할 회수는 몇회인가요?");
-		int reps = scanner.nextInt();
-		Random random = new Random();
-		RacingGame racingGame = new RacingGame(carList);
-		racingGame.racing(reps, random);
-		PrintRacingGame.printWinner(racingGame.getWinner());
-		
-		
-	}
+
+    public static void main(String[] args) {
+        String carsName = InputUtil.returnString("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        List<Car> carList = CarFactory.create(carsName);
+
+        int reps = InputUtil.returnInteger("시도할 회수는 몇회인가요?");
+
+        Random random = new Random();
+        RacingGame racingGame = new RacingGame(carList, reps, random);
+        PrintRacingGame.printWinner(racingGame.getWinner());
+
+    }
 }
