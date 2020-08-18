@@ -16,7 +16,8 @@ public class ResultView {
     }
 
     private String joinNames(List<String> namesOfWinners) {
-        return namesOfWinners.stream().collect(Collectors.joining(","));
+        return namesOfWinners.stream()
+                .collect(Collectors.joining(","));
     }
 
     public void printResult() {
