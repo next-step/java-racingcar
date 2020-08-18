@@ -1,5 +1,6 @@
 package racing;
 
+import racing.strategy.DefaultMoveStategy;
 import racing.strategy.MoveStrategy;
 
 import java.util.Arrays;
@@ -10,11 +11,15 @@ public class RacingCar {
 
     public Integer[] racingResult;
     MoveStrategy moveStrategy;
-
-    public RacingCar() { }
+    private String nameOfCar;
 
     public RacingCar(MoveStrategy moveStrategy) {
        this.moveStrategy = moveStrategy;
+    }
+
+    public RacingCar(MoveStrategy MoveStrategy, String nameOfCar) {
+        this.moveStrategy = moveStrategy;
+        this.nameOfCar = nameOfCar;
     }
 
     public void startRacing(int racingCount) {
@@ -34,5 +39,9 @@ public class RacingCar {
         return "RacingCar{" +
                 "racingResult=" + Arrays.toString(racingResult) +
                 '}';
+    }
+
+    public String getName() {
+        return this.nameOfCar;
     }
 }

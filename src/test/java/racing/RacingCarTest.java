@@ -44,6 +44,12 @@ public class RacingCarTest {
         );
     }
 
-
+    @DisplayName("자동차 이름 설정 후 출력")
+    @ParameterizedTest
+    @CsvSource(value = {"3번차:3번차", "에디차:에디차"}, delimiter = ':')
+    public void 자동차_이름_설정_후_출력_테스트(String inputName, String expected) {
+        RacingCar car = new RacingCar(new DefaultMoveStategy(), inputName);
+        assertThat(car.getName()).isEqualTo(expected);
+    }
 
 }
