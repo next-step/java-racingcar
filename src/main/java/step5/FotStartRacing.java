@@ -10,7 +10,8 @@ class FotStartRacing {
     public static void main(String[] args) {
         UserInput input = InputView.initShow();
 
-        CarRacing race = new CarRacing(input.getCars(), input.getTries());
+        CarRacing race = new CarRacing(input.getUserInputForCarName()
+                            , input.getTries());
         Cars cars = race.gameStart();
 
         ResultView.resultShow(cars, input.getTries());

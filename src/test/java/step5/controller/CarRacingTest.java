@@ -1,7 +1,9 @@
-package step5;
+package step5.controller;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step5.controller.CarRacing;
+import step5.model.Cars;
 import step5.utility.ReturnRandomValue;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,4 +20,11 @@ public class CarRacingTest {
         }
     }
 
+    @Test
+    public void returnCarsObj(){
+        String carNames[] = {"hbl","zorba"};
+        Cars cars = CarRacing.returnCarsObj(carNames);
+
+        assertThat(cars.getCars()).hasSize(2);
+    }
 }

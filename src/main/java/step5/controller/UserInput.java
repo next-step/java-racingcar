@@ -1,19 +1,17 @@
 package step5.controller;
 
-import step5.model.Cars;
-
 public class UserInput {
 
-    private Cars cars;
+    private String userInputForCarName ;
     private int tries;
 
-    public UserInput(Cars cars, int tries) {
-        this.cars = cars;
+    public UserInput(String userInputForCarName , int tries) {
+        this.userInputForCarName = userInputForCarName;
         this.tries = tries;
     }
 
-    public Cars getCars() {
-        return cars;
+    public String getUserInputForCarName() {
+        return userInputForCarName;
     }
 
     public int getTries() {

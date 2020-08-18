@@ -12,6 +12,10 @@ public class Cars {
         this.cars =  cars;
     }
 
+    public static Cars makeCars(List<Car> cars){
+        return new Cars(cars);
+    }
+
     public Winners findWinners() {
         return new Winners(filterWinners(getMaxPosition()));
     }
@@ -37,8 +41,7 @@ public class Cars {
         List<Car> winners = new ArrayList<>();
 
         for (Car car : cars) {
-            int position = car.getPosition();
-            if(position == maxPosition){
+            if(car.equalsPosition(maxPosition)){
                 winners.add(car);
             }
         }

@@ -21,45 +21,28 @@ public class InputView {
 
     public static UserInput initShow() {
         System.out.println(QUESTION_CAR_NAME);
-        Cars cars = inputCarName();
+        String userInputForCarName = inputCarName();
 
         System.out.println(QUESTION_TRY_NUMBER);
         int tries = inputTries();
 
         System.out.println(RESULT);
-        return new UserInput(cars, tries);
+        return new UserInput(userInputForCarName , tries);
     }
 
 
-    private static Cars inputCarName() {
+    private static String inputCarName() {
         Scanner sc = new Scanner(System.in);
 
-        String input;
-        String inputs[];
-        Cars carName;
-
         try {
-            input = sc.nextLine();
-            inputs = input.split(",");
-            carName = genName(inputs);
-
-            return carName;
+            String input = sc.nextLine();
+            return input;
         } catch (InputMismatchException e) {
             e.printStackTrace();
             throw new IllegalArgumentException("정수만 입력가능합니다");
         }
     }
 
-    private static Cars genName(String[] inputs) {
-        List<Car> carName = new ArrayList<>();
-
-        for (int i = 0; i < inputs.length; i++) {
-            carName.add(new Car(inputs[i]));
-        }
-        Cars cars = new Cars(carName);
-
-        return cars;
-    }
 
     private static int inputTries() {
         Scanner sc = new Scanner(System.in);
