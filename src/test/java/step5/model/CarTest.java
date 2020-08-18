@@ -3,6 +3,7 @@ package step5.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
@@ -11,20 +12,12 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 class CarTest {
     Car car = new Car("temp");
 
+    @DisplayName("이동하거나 정지하는 경우")
     @ParameterizedTest
-    @ValueSource(ints = {4, 6, 8})
-    @DisplayName("이동하는 경우")
-    void move_ok(int randomValue) {
+    @CsvSource(value ={"4:1","9:1","3:0","1:0"},delimiter =':')
+    void move(int randomValue, int moveCount){
         car.move(randomValue);
-        assertThat(car.getPosition()).isEqualTo(1);
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {-1, 3, 2})
-    @DisplayName("정지하는 경우")
-    void move_not_ok(int randomValue) {
-        car.move(randomValue);
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(moveCount);
     }
 
     @ParameterizedTest

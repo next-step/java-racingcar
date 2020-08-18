@@ -4,6 +4,8 @@ import step5.utility.ReturnRandomValue;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
@@ -24,28 +26,17 @@ public class Cars {
         return cars;
     }
 
-    private int getMaxPosition() {
-        int maxPosition = 0;
-
-        for (Car car : cars) {
-            int position = car.getPosition();
-
-            if(position > maxPosition ){
-                maxPosition =  position;
-            }
-        }
-        return maxPosition;
+    int getMaxPosition() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElseThrow(NoSuchElementException::new);
     }
 
-    private List<Car> filterWinners(int maxPosition) {
-        List<Car> winners = new ArrayList<>();
-
-        for (Car car : cars) {
-            if(car.equalsPosition(maxPosition)){
-                winners.add(car);
-            }
-        }
-        return winners;
+    List<Car> filterWinners(int maxPosition) {
+        return cars.stream()
+                .filter(car->car.equalsPosition(maxPosition))
+                .collect(Collectors.toList());
     }
 
     public void carsMove(){
