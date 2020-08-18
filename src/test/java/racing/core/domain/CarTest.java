@@ -8,7 +8,6 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.core.domain.Car;
 import racing.core.dto.TrackInfo;
 import racing.core.patterns.MoveStrategy;
 
