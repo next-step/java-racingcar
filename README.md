@@ -171,6 +171,8 @@ T 타입 인자를 받고 결과로 boolean을 리턴
     System.out.println("10 is bigger than 5? -> " + isBiggerThanFive.test(10));
     // 결과
     // 10 is bigger than 5? -> true
+
+***
     
 ### 전략 패턴 (Strategy Pattern)
 객체가 할 수 있는 행위를 각각 전략 클래스로 생성하고, 유사한 행위들을 캡슐화하는 인터페이스를 정의하여, 동적으로 행위의 수정이 필요한 경우 전략을 바꾸는 것만으로도 행위의 수정이 가능하도록 만든 패턴 <br/>
@@ -182,5 +184,13 @@ T 타입 인자를 받고 결과로 boolean을 리턴
 - 확장성(신규 클래스) 및 알고리즘 변경 용이 
 
 [참고 예제 사이트] https://victorydntmd.tistory.com/292
+
+***
+
+###일급 클래스(First Class Collection)
+
+Collection을 Wrapping하면서, 그 외 다른 변수가 없는 클래스의 상태
+
+[참고 사이트] https://jojoldu.tistory.com/412
 
 
