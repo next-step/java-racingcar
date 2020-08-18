@@ -11,4 +11,8 @@ public class OutputView {
         }
         System.out.println(carName + " : " + output);
     }
+
+    public void viewWinner(String winner) {
+        System.out.println("최종 우승했습니다.");
+    }
 }

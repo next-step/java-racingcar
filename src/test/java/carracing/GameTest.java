@@ -26,5 +26,6 @@ public class GameTest {
     void stsrt_테스트(String carNames, int tryCount) {
         Game game = new Game(carNames, tryCount);
         game.start();
+        game.end();
     }
 }

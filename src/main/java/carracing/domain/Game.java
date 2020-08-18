@@ -10,6 +10,8 @@ public class Game {
     private int tryCount = 0;
     private List<Car> cars = null;
 
+    OutputView outputView = new OutputView();
+
     public Game(String carNames, int tryCount){
         inputValid(carNames, tryCount);
 
@@ -50,7 +52,12 @@ public class Game {
     }
 
     private void viewOutPut(Car car) {
-        OutputView outputView = new OutputView();
         outputView.getResultView(car);
+    }
+
+    public void end() {
+        Winner winner = new Winner(cars);
+        outputView.viewWinner(winner.getWinner());
+
     }
 }
