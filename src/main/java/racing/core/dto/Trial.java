@@ -11,10 +11,6 @@ public class Trial {
         this.tracks = tracks;
     }
 
-    public int getNumberOfTrack() {
-        return tracks.size();
-    }
-
     @Override
     public String toString() {
         return tracks.stream()
