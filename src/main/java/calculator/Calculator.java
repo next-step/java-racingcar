@@ -50,6 +50,7 @@ public class Calculator {
     private List<Integer> getValue(String[] splitExpression) {
         List<Integer> valueList = new ArrayList<>();
         for(int idx = 0; idx <= splitExpression.length; idx = idx + 2) {
+            validInteger(splitExpression[idx]);
             valueList.add(Integer.parseInt(splitExpression[idx]));
         }
         return valueList;

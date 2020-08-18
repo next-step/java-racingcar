@@ -1,8 +1,10 @@
 package carracing.domain;
 
+import java.util.Random;
+
 public class Car {
 
-    final static int MOVE_POSITION = 4;
+    private static final int MOVE_POSITION = 4;
 
     private int position = 0;
     private int carNumber;
@@ -12,20 +14,24 @@ public class Car {
         this.carNumber = carNumber;
     }
 
-    public void setPosition(int random) {
-        this.position = random;
+    private int getPower() {
+        Random random = new Random();
+        return random.nextInt(10);
     }
 
-    public boolean isMove() {
-        if(position < MOVE_POSITION) return false;
-        return true;
-    }
-
-    public void getGraphics() {
-       String carNumber = String.valueOf(this.carNumber) + " : ";
-        if(isMove()){
-            this.output += "-";
+    public void setPosition() {
+        if(getPower() < MOVE_POSITION) {
+            return;
         }
-        System.out.println(carNumber + this.output);
+        position++;
     }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public int getCarNumber() {
+        return this.carNumber;
+    }
+
 }
