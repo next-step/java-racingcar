@@ -31,4 +31,8 @@ public class RacingGame {
         }
         return new Cars(carList);
     }
+
+    public List<String> getNamesOfWinners() {
+        return cars.getNamesOfWinners();
+    }
 }
