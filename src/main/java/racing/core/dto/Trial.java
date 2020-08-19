@@ -11,11 +11,8 @@ public class Trial {
         this.tracks = tracks;
     }
 
-    @Override
-    public String toString() {
-        return tracks.stream()
-                .map(trackInfo -> trackInfo.getTrackInfo() + "\n")
-                .reduce("", String::concat);
+    public List<TrackInfo> getTracks() {
+        return tracks;
     }
 
     @Override

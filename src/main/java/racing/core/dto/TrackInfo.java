@@ -13,11 +13,12 @@ public class TrackInfo {
         this.position = position;
     }
 
-    public String getTrackInfo() {
-        String track = IntStream.range(0, position)
-                .mapToObj(position -> "-")
-                .reduce("", String::concat);
-        return String.format("%s : %s", carName, track);
+    public String getCarName() {
+        return carName;
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     @Override
