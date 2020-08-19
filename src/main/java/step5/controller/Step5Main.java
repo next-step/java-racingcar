@@ -19,8 +19,8 @@ public class Step5Main {
 
         int reps = InputUtil.returnInteger("시도할 회수는 몇회인가요?");
 
-        Random random = new Random();
-        RacingGame racingGame = new RacingGame(carList, reps, random);
+        RacingGame racingGame = new RacingGame(carList, reps, new Random());
+        racingGame.racing();
         PrintRacingGame.printWinner(racingGame.getWinner());
 
     }
