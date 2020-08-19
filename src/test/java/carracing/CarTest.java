@@ -1,6 +1,7 @@
 package carracing;
 
 import carracing.domain.Car;
+import carracing.domain.CarPowerCondition;
 import carracing.domain.Game;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,8 +16,8 @@ public class CarTest {
     @Test
     @DisplayName("Car 객체 생성 후 position 설정")
     void Car_객체생성() {
-        Car car = new Car(1);
-        car.setPosition();
+        Car car = new Car("car1");
+        car.setPosition(new CarPowerCondition(car.getPower()));
         assertThat(car.getPosition());
 
     }
