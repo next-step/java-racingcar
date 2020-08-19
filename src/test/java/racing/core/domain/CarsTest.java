@@ -2,13 +2,24 @@ package racing.core.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racing.core.exception.ErrorMessage;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CarsTest {
+
+    @Test
+    @DisplayName("생성자에서 리스트에 대한 검증")
+    void createCars() {
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            Cars cars = new Cars(new ArrayList<>());
+        }).withMessage(ErrorMessage.EMPTY_CARS.getMessage());
+    }
 
     @Test
     @DisplayName("우승자 이름 테스트")

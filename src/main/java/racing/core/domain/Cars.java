@@ -16,10 +16,14 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
+        validateList(cars);
+        this.cars = cars;
+    }
+
+    private void validateList(List<Car> cars) {
         if (cars.isEmpty()) {
             throw new IllegalArgumentException(ErrorMessage.EMPTY_CARS.getMessage());
         }
-        this.cars = cars;
     }
 
     public Trial nextTrial(MoveStrategy movement) {
