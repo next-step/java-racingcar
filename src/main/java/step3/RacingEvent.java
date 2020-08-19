@@ -1,52 +1,31 @@
 package step3;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
-class RacingEvent {
+public class RacingEvent {
 
-    private int carCount;
-    private int tryCount;
-    private ArrayList<RacingCar> participatedCarList = new ArrayList<>();
-    private ResultView view = new ResultView();
+    private ArrayList<Car> carList = new ArrayList<>();
 
-    RacingEvent(){
-        setUpRacingEvent();
-        readyForRacingEvent();
-        startRacingEvent();
+    public RacingEvent(int carCount, int tryCount){
+        readyEvent(carCount);
+        startEvent(tryCount);
     }
 
-    private void setUpRacingEvent(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        carCount = scanner.nextInt();
-        System.out.println("시도할 회수는 몇 회 인가요?");
-        tryCount = scanner.nextInt();
-        System.out.println("");
-        System.out.println("실행결과");
+    public ArrayList<Car> getCarList(){
+        return this.carList;
     }
 
-    private void readyForRacingEvent(){
-        for(int i = 0; i < carCount; i++){
-            participatedCarList.add(new RacingCar());
+    private void readyEvent(int count){
+        for(int i = 0; i < count; i++){
+            carList.add(new Car());
         }
     }
 
-    private void startRacingEvent(){
-        for(int i = 0; i < tryCount; i++){
-            for(RacingCar car : participatedCarList){
-                car.tryMoveForward();
+    private void startEvent(int count){
+        for(int i = 0; i < count; i++){
+            for(Car car : carList){
+                car.moveForward(new Forward().tryMove());
             }
         }
     }
-
-    void showRacingGame(){
-        for(int i = 1; i <= tryCount; i++){
-            for(RacingCar car : participatedCarList){
-                view.showCurrentPosition(i, car.getSuccessCount());
-            }
-            System.out.println("");
-        }
-    }
-
 }
