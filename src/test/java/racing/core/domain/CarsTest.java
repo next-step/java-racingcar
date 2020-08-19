@@ -22,10 +22,10 @@ class CarsTest {
     @Test
     @DisplayName("생성자에서 리스트에 대한 검증")
     void createCars() {
-        List<Car> carList = Arrays.stream(names)
+        List<Car> participants = Arrays.stream(names)
                 .map(Car::new)
                 .collect(Collectors.toList());
-        Cars cars = new Cars(carList);
+        Cars cars = new Cars(participants);
         assertNotNull(cars);
     }
 
@@ -84,7 +84,6 @@ class CarsTest {
         Car first = new Car(names[0]);
         Car second = new Car(names[1]);
         Car third = new Car(names[2]);
-
         Cars cars = new Cars(Arrays.asList(first, second, third));
 
         first.move(() -> true);
@@ -104,39 +103,38 @@ class CarsTest {
 
     @Test
     @DisplayName("우승자 이름 테스트")
-    void getNameOfWinner() {
+    void getWinner() {
         // given
         Car winner = new Car(names[0]);
         Car second = new Car(names[1]);
         Car third = new Car(names[2]);
+        Cars cars = new Cars(Arrays.asList(winner, second, third));
 
         winner.move(() -> true);
-
-        Cars cars = new Cars(Arrays.asList(winner, second, third));
         cars.nextTrial(() -> false);
 
         // when
-        List<String> actual = cars.getNamesOfWinners();
+        List<Car> actual = cars.getWinners();
 
         // then
-        List<String> expected = Arrays.asList(winner.getName());
+        List<Car> expected = Arrays.asList(winner);
         assertEquals(expected, actual);
     }
 
     @Test
     @DisplayName("공통 우승자 이름 테스트")
-    void getNamesOfWinners() {
+    void getCoWinners() {
         // given
-        Cars cars = new Cars(Arrays.stream(names)
+        List<Car> participants = Arrays.stream(names)
                 .map(Car::new)
-                .collect(Collectors.toList()));
+                .collect(Collectors.toList());
+        Cars cars = new Cars(participants);
         cars.nextTrial(() -> true);
 
         // when
-        List<String> actual = cars.getNamesOfWinners();
+        List<Car> actual = cars.getWinners();
 
         // then
-        List<String> expected = Arrays.asList(names);
-        assertEquals(expected, actual);
+        assertEquals(participants, actual);
     }
 }

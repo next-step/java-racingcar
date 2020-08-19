@@ -21,7 +21,7 @@ public class GameRunner {
         List<Trial> trials = game.run(new RandomMoveStrategy());
 
         // 결과 출력
-        ResultView resultView = new ResultView(trials, game.getNamesOfWinners());
+        ResultView resultView = new ResultView(trials, game.getWinners());
         resultView.printResult();
     }
 }

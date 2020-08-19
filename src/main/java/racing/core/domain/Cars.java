@@ -33,11 +33,10 @@ public class Cars {
         return new Trial(tracks);
     }
 
-    public List<String> getNamesOfWinners() {
+    public List<Car> getWinners() {
         List<Car> orderedCars = getCarsOrderedByPositionDesc();
         return orderedCars.stream()
                 .filter(car -> orderedCars.get(WINNER).isSamePosition(car))
-                .map(Car::getName)
                 .collect(Collectors.toList());
     }
 

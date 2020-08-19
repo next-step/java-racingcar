@@ -1,5 +1,6 @@
 package racing.ui;
 
+import racing.core.domain.Car;
 import racing.core.dto.TrackInfo;
 import racing.core.dto.Trial;
 
@@ -12,13 +13,14 @@ public class ResultView {
     private List<Trial> trials;
     private String winners;
 
-    public ResultView(List<Trial> trials, List<String> namesOfWinners) {
+    public ResultView(List<Trial> trials, List<Car> winners) {
         this.trials = trials;
-        this.winners = joinNames(namesOfWinners);
+        this.winners = joinNames(winners);
     }
 
-    private String joinNames(List<String> namesOfWinners) {
-        return namesOfWinners.stream()
+    private String joinNames(List<Car> winners) {
+        return winners.stream()
+                .map(Car::getName)
                 .collect(Collectors.joining(","));
     }
 

@@ -1,7 +1,6 @@
 package racing.core.dto;
 
 import java.util.Objects;
-import java.util.stream.IntStream;
 
 public class TrackInfo {
 

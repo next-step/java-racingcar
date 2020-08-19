@@ -27,13 +27,13 @@ public class RacingGame {
     }
 
     private Cars makeUpEntry(String[] namesOfCars) {
-        List<Car> carList = Arrays.stream(namesOfCars)
+        List<Car> participants = Arrays.stream(namesOfCars)
                 .map(Car::new)
                 .collect(Collectors.toList());
-        return new Cars(carList);
+        return new Cars(participants);
     }
 
-    public List<String> getNamesOfWinners() {
-        return cars.getNamesOfWinners();
+    public List<Car> getWinners() {
+        return cars.getWinners();
     }
 }
