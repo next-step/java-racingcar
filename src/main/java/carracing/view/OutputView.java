@@ -1,13 +1,21 @@
 package carracing.view;
 
-import carracing.domain.Car;
+import carracing.domain.car.Car;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class OutputView {
 
-    public void getResultView(List<Car> cars) {
-        cars.stream()
+    public void getResultView(List<List<Car>> carsList) {
+        carsList.stream()
+                .flatMap(List::stream)
+                //.flatMap(carList -> Stream.of(carList.getPosition()))
+                .collect(Collectors.toList())
+                //.forEach(System.out::println);
                 .forEach(car -> showResultByCar(car));
         System.out.println("");
     }

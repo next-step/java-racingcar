@@ -1,5 +1,8 @@
 package carracing.domain;
 
+import carracing.domain.car.Car;
+import carracing.domain.car.Cars;
+import carracing.domain.car.strategy.CarPowerCondition;
 import carracing.view.OutputView;
 
 import java.util.ArrayList;
@@ -14,7 +17,6 @@ public class Game {
 
     public Game(String carNames, int tryCount){
         inputValid(carNames, tryCount);
-
         this.tryCount = tryCount;
         this.cars = this.generateCars(carNames);
 
@@ -37,21 +39,23 @@ public class Game {
         return cars;
     }
 
-    public void start() {
+    public List<List<Car>> start() {
+        List<List<Car>> racingResult = new ArrayList<>();
         for(int i = 0; i < this.tryCount; i++) {
-            showCarRacing(play());
+            List<Car> carList = play();
+            racingResult.add(carList);
         }
+        return racingResult;
     }
 
     private List<Car> play() {
+        List<Car> playCars = new ArrayList<>();
         for(Car car : cars) {
-            car.setPosition(new CarPowerCondition(car.getPower()));
+            car.setPosition(new CarPowerCondition());
+            playCars.add(car);
+            //System.out.println("==>"+car.getPosition());
         }
-        return cars;
-    }
-
-    private void showCarRacing(List<Car> cars) {
-        outputView.getResultView(cars);
+        return playCars;
     }
 
     public void end() {
