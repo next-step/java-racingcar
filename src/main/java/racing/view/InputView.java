@@ -1,5 +1,9 @@
 package racing.view;
 
+import racing.util.StringUtil;
+import racing.util.Validator;
+
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class InputView {
@@ -11,10 +15,10 @@ public class InputView {
         return Integer.parseInt(scan.nextLine());
     }
 
-    public static int getRacingCarInputWithName() {
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)기준으로 구분).");
-
-        String inputString = scan.nextLine();
+    public static String[] getRacingCarInputWithName() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,  )기준으로 구분).");
+        String inputStr  = scan.nextLine();
+        return Validator.validate(StringUtil.split(inputStr));
     }
 
     public static int getRacingInput() {

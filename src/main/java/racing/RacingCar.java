@@ -17,7 +17,7 @@ public class RacingCar {
        this.moveStrategy = moveStrategy;
     }
 
-    public RacingCar(MoveStrategy MoveStrategy, String nameOfCar) {
+    public RacingCar(MoveStrategy moveStrategy, String nameOfCar) {
         this.moveStrategy = moveStrategy;
         this.nameOfCar = nameOfCar;
     }

@@ -13,6 +13,8 @@ import java.util.stream.Stream;
 public class RacingGame {
 
     private MoveStrategy moveStrategy;
+    private RacingCarList racingCarList;
+    public RacingGame() { }
 
     public static void main(String[] args) {
         int countOfRacingCar = InputView.getRacingCarInput();
@@ -25,7 +27,6 @@ public class RacingGame {
         System.out.println(racingResult);
         ResultView.viewRacingResult(racingResult);
     }
-    public RacingGame() {}
 
     public RacingGame(MoveStrategy moveStrategy) {
         this.moveStrategy = moveStrategy;
