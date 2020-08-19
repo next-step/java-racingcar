@@ -4,7 +4,9 @@ import racing.core.dto.Trial;
 import racing.core.patterns.MoveStrategy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -25,10 +27,9 @@ public class RacingGame {
     }
 
     private Cars makeUpEntry(String[] namesOfCars) {
-        List<Car> carList = new ArrayList<>(namesOfCars.length);
-        for (String eachName : namesOfCars) {
-            carList.add(new Car(eachName));
-        }
+        List<Car> carList = Arrays.stream(namesOfCars)
+                .map(Car::new)
+                .collect(Collectors.toList());
         return new Cars(carList);
     }
 
