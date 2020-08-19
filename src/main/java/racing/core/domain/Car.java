@@ -1,6 +1,7 @@
 package racing.core.domain;
 
 import racing.core.dto.TrackInfo;
+import racing.core.exception.ErrorMessage;
 import racing.core.patterns.MoveStrategy;
 
 import java.util.Objects;
@@ -19,10 +20,10 @@ public class Car implements Comparable<Car> {
 
     private void validateName(String name) {
         if (Objects.isNull(name) || name.isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름은 반드시 문자나 숫자를 포함해야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.NULL_OR_EMPTY_VALUE.getMessage());
         }
         if (name.length() > LENGTH_LIMIT) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+            throw new IllegalArgumentException(ErrorMessage.LENGTH_OVER.getMessage());
         }
     }
 

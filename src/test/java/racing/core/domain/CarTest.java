@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racing.core.dto.TrackInfo;
+import racing.core.exception.ErrorMessage;
 import racing.core.patterns.MoveStrategy;
 
 import java.util.stream.Stream;
@@ -66,7 +67,7 @@ class CarTest {
     void 자동차_이름_5글자_초과_테스트(String name) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             Car actual = new Car(name);
-        }).withMessage("자동차 이름은 5자를 초과할 수 없습니다.");
+        }).withMessage(ErrorMessage.LENGTH_OVER.getMessage());
     }
 
     @ParameterizedTest
@@ -74,7 +75,7 @@ class CarTest {
     void 자동차_이름_빈_문자열_테스트(String name) {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             Car actual = new Car(name);
-        }).withMessage("자동차 이름은 반드시 문자나 숫자를 포함해야 합니다.");
+        }).withMessage(ErrorMessage.NULL_OR_EMPTY_VALUE.getMessage());
     }
 }
 

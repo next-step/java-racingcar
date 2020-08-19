@@ -2,6 +2,7 @@ package racing.core.domain;
 
 import racing.core.dto.TrackInfo;
 import racing.core.dto.Trial;
+import racing.core.exception.ErrorMessage;
 import racing.core.patterns.MoveStrategy;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class Cars {
 
     public Cars(List<Car> cars) {
         if (cars.isEmpty()) {
-            throw new IllegalArgumentException("경주에 참가할 자동차가 존재하지 않습니다.");
+            throw new IllegalArgumentException(ErrorMessage.EMPTY_CARS.getMessage());
         }
         this.cars = cars;
     }
