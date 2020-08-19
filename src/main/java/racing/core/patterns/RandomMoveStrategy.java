@@ -1,11 +1,11 @@
-package racing.core;
+package racing.core.patterns;
 
 import java.util.Random;
 
-public class RandomMove implements Move {
+public class RandomMoveStrategy implements MoveStrategy {
 
-    public static final int TOTAL_CASES = 10;
-    public static final int CONDITION = 4;
+    private static final int TOTAL_CASES = 10;
+    private static final int CONDITION = 4;
 
     private Random random = new Random();
 

@@ -1,22 +1,47 @@
 package racing.ui;
 
-import racing.core.Snapshot;
+import racing.core.domain.Car;
+import racing.core.dto.TrackInfo;
+import racing.core.dto.Trial;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class ResultView {
 
-    private List<Snapshot> snapshots;
-    private int numberOfCars;
+    private List<Trial> trials;
+    private String winners;
 
-    public ResultView(List<Snapshot> snapshots, int numberOfCars) {
-        this.snapshots = snapshots;
-        this.numberOfCars = numberOfCars;
+    public ResultView(List<Trial> trials, List<Car> winners) {
+        this.trials = trials;
+        this.winners = joinNames(winners);
+    }
+
+    private String joinNames(List<Car> winners) {
+        return winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(","));
     }
 
     public void printResult() {
-        for (int i = 0; i < snapshots.size(); i++) {
-            System.out.println(snapshots.get(i) + (i % numberOfCars == numberOfCars - 1? "\n" : ""));
-        }
+        trials.stream()
+                .map(this::parseString)
+                .forEach(System.out::println);
+        System.out.println(winners + "가 최종 우승했습니다.");
+    }
+
+    private String parseString(Trial trial) {
+        return trial.getTracks()
+                .stream()
+                .map(this::mapTrackInfoToString)
+                .reduce("", String::concat);
+    }
+
+    private String mapTrackInfoToString(TrackInfo trackInfo) {
+        String track = IntStream.range(0, trackInfo.getPosition())
+                .mapToObj(position -> "-")
+                .reduce("", String::concat);
+        return String.format("%s : %s\n", trackInfo.getCarName(), track);
     }
 }
