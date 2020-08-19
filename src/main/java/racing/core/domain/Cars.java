@@ -27,8 +27,9 @@ public class Cars {
     }
 
     public Trial nextTrial(MoveStrategy movement) {
-        List<TrackInfo> tracks = new ArrayList<>();
-        cars.stream().forEach(car -> tracks.add(car.move(movement)));
+        List<TrackInfo> tracks = cars.stream()
+                .map(car -> car.move(movement))
+                .collect(Collectors.toList());
         return new Trial(tracks);
     }
 
