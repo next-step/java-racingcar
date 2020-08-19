@@ -1,11 +1,9 @@
 package carracing;
 
-import carracing.domain.Car;
+import carracing.domain.car.Car;
 import carracing.domain.Game;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.*;
 

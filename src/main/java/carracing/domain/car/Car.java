@@ -1,6 +1,6 @@
-package carracing.domain;
+package carracing.domain.car;
 
-import java.util.Random;
+import carracing.domain.car.strategy.CarCondition;
 
 public class Car {
 
@@ -18,14 +18,9 @@ public class Car {
         }
     }
 
-    public int getPower() {
-        Random random = new Random();
-        return random.nextInt(10);
-    }
-
     public void setPosition(CarCondition carCondition) {
         if(carCondition.isMovable()) {
-            position++;
+            position += 1;
         }
         return;
     }
@@ -38,4 +33,7 @@ public class Car {
         return carName;
     }
 
+    public boolean isMaxPosition(int maxPosition) {
+        return maxPosition <= position;
+    }
 }

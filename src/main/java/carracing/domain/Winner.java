@@ -1,5 +1,7 @@
 package carracing.domain;
 
+import carracing.domain.car.Car;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -15,7 +17,7 @@ public class Winner {
     protected String getWinner() {
         int maxPosition = getMaxPosition();
         return cars.stream()
-                .filter(car -> maxPosition <= car.getPosition())
+                .filter(car -> car.isMaxPosition(maxPosition))
                 .flatMap(car -> Stream.of(car.getCarName()))
                 .collect(Collectors.joining(","));
     }

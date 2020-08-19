@@ -1,7 +1,7 @@
 package carracing;
 
-import carracing.domain.Car;
-import carracing.domain.CarPowerCondition;
+import carracing.domain.car.Car;
+import carracing.domain.car.strategy.CarPowerCondition;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -38,7 +38,10 @@ public class WinnerTest {
         cars.add(car1);
         cars.add(car2);
 
-        String name = cars.stream().filter(car -> maxPosition <= car.getPosition()).flatMap(car -> Stream.of(car.getCarName())).collect(Collectors.joining(","));
+        String name = cars.stream()
+                .filter(car -> maxPosition <= car.getPosition())
+                .flatMap(car -> Stream.of(car.getCarName()))
+                .collect(Collectors.joining(","));
         System.out.println(name);
 
 
