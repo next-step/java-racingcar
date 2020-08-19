@@ -13,25 +13,31 @@ public class Winner {
 
     protected String getWinner() {
         int maxPosition = getMaxPosition();
-        String winnerName = null;
+        String winnerName = "";
         for(Car car : cars) {
-            if(maxPosition >= car.getPosition()) {
+            if(maxPosition <= car.getPosition()) {
                 winnerName += car.getCarName();
             }
         }
+
+        //cars.stream().forEach( car -> maxPosition <= car.getPosition() );
+
+        return  winnerName;
         
     }
 
     private void setPositions() {
+        positions = new int[cars.size()];
         int idx = 0;
         for(Car car : cars) {
-            positions[idx++] = car.getPosition();
+            positions[idx] = car.getPosition();
+            idx++;
         }
     }
 
     //제일 큰 점수 가져오기
     private int getMaxPosition() {
         setPositions();
-        return Arrays.stream(positions).sorted().findFirst().getAsInt();
+        return Arrays.stream(positions).max().getAsInt();
     }
 }

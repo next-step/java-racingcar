@@ -9,5 +9,6 @@ public class Application {
         InputView inputView = new InputView();
         Game game = new Game(inputView.getInputCarNames(), inputView.getInputTryCount());
         game.start();
+        game.end();
     }
 }

@@ -12,7 +12,7 @@ public class OutputView {
         System.out.println(carName + " : " + output);
     }
 
-    public void viewWinner(String winner) {
-        System.out.println("최종 우승했습니다.");
+    public void viewWinner(String winnerName) {
+        System.out.println(winnerName + "최종 우승했습니다.");
     }
 }

@@ -1,6 +1,5 @@
 package carracing;
 
-import carracing.domain.Car;
 import carracing.domain.Game;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
