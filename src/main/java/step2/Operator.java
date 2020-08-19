@@ -24,6 +24,14 @@ enum Operator {
         this.operation = operation;
     }
 
+    public static Operator findOperator(String symbol){
+
+        Operator operator = OPERATOR_MAP.get(symbol);
+
+        if(operator == null) throw new IllegalArgumentException();
+        return operator;
+    }
+
     public String getSymbol() {
         return symbol;
     }
@@ -32,11 +40,4 @@ enum Operator {
         return operation.apply(first, second);
     }
 
-    public static Operator findOperator(String symbol){
-
-        Operator operator = OPERATOR_MAP.get(symbol);
-
-        if(operator == null) throw new IllegalArgumentException();
-        return operator;
-    }
 }
