@@ -18,7 +18,7 @@ public class RacingGame {
     private int reps;
 
     public RacingGame(List<Car> carList) {
-        this.cars = carList;
+        this(carList,0,null);
     }
 
     public RacingGame(List<Car> carList, int reps, Random random) {
