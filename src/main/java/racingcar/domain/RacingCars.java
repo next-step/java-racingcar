@@ -1,6 +1,6 @@
 package racingcar.domain;
 import racingcar.strategy.DoOneForward;
-import racingcar.strategy.OneForwardCondition;
+import racingcar.strategy.OneOrZeroForwardCondition;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -47,7 +47,7 @@ public class RacingCars {
     }
 
     private void moveCars() {
-        for (Car car:cars) {car.move(new OneForwardCondition(), new DoOneForward());
+        for (Car car:cars) {car.move(new OneOrZeroForwardCondition(), new DoOneForward());
         }
     }
 

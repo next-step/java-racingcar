@@ -4,7 +4,7 @@ import static racingcar.Constants.*;
 
 import java.util.Random;
 
-public class OneForwardCondition implements RaceCondition {
+public class OneOrZeroForwardCondition implements RaceCondition {
         Random random = new Random();
 
     @Override
