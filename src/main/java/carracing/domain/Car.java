@@ -5,10 +5,8 @@ import java.util.Random;
 public class Car {
 
     private static final int MOVE_POSITION = 4;
-
     private int position = 0;
     private String carName;
-    private String output = "";
 
     public Car(String carName) {
         this.carName = carName;

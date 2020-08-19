@@ -13,6 +13,6 @@ public class OutputView {
     }
 
     public void viewWinner(String winnerName) {
-        System.out.println(winnerName + "최종 우승했습니다.");
+        System.out.println(winnerName + "가 최종 우승했습니다.");
     }
 }
