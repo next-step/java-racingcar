@@ -3,7 +3,6 @@ package step2;
 import java.util.Collections;
 import java.util.Map;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -16,7 +15,7 @@ enum Operator {
         return first / second;
     });
 
-    private static final Map<String, Operator> operatorMap = Collections.unmodifiableMap(Stream.of(values()).collect(Collectors.toMap(operator -> operator.getSymbol(), operator -> operator)));
+    private static final Map<String, Operator> OPERATOR_MAP = Collections.unmodifiableMap(Stream.of(values()).collect(Collectors.toMap(operator -> operator.getSymbol(), operator -> operator)));
     private String symbol;
     private BiFunction<Integer, Integer, Integer> operation;
 
@@ -35,7 +34,7 @@ enum Operator {
 
     public static Operator findOperator(String symbol){
 
-        Operator operator = operatorMap.get(symbol);
+        Operator operator = OPERATOR_MAP.get(symbol);
 
         if(operator == null) throw new IllegalArgumentException();
         return operator;
