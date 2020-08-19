@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RacingEventTest {
+class RacingEventTest {
 
     private RacingEvent racingEvent = new RacingEvent(5, 3);
 

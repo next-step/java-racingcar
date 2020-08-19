@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CarTest {
+class CarTest {
 
-    Car car = new Car();
+    private Car car = new Car();
 
     @DisplayName("car 전진시 이동 이력 쌓이는지 테스트")
     @Test

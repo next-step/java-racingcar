@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class InputView {
 
-    int carCount;
-    int tryCount;
+    private int carCount;
+    private int tryCount;
 
     public InputView(){
         getEventInfo();

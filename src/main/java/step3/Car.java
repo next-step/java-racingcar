@@ -6,7 +6,7 @@ public class Car {
     private ArrayList<Integer> positionHistory;
 
     Car(){
-        positionHistory = new ArrayList<Integer>();
+        positionHistory = new ArrayList<>();
         positionHistory.add(0);
     }
 
