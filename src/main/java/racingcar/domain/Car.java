@@ -17,7 +17,7 @@ public class Car {
     }
 
     public Position move(RaceCondition raceCondition, DoRace doRace) {
-        return position.move(raceCondition, doRace);
+        return position.increase(raceCondition, doRace);
     }
 
     @Override

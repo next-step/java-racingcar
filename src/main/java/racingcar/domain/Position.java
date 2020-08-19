@@ -12,7 +12,7 @@ public class Position {
         this.position = position;
     }
 
-    public Position move(RaceCondition raceCondition, DoRace doRace) {
+    public Position increase(RaceCondition raceCondition, DoRace doRace) {
         if (raceCondition.pass()) {
             this.position = position + doRace.race();
         }
