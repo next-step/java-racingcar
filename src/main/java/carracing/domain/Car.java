@@ -4,34 +4,38 @@ import java.util.Random;
 
 public class Car {
 
-    private static final int MOVE_POSITION = 4;
-
     private int position = 0;
-    private int carNumber;
-    private String output = "";
+    private String carName;
 
-    public Car(int carNumber) {
-        this.carNumber = carNumber;
+    public Car(String carName) {
+        validCarName(carName);
+        this.carName = carName;
     }
 
-    private int getPower() {
+    private void validCarName(String carName) {
+        if(carName.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5글자를 초과할수 없습니다.");
+        }
+    }
+
+    public int getPower() {
         Random random = new Random();
         return random.nextInt(10);
     }
 
-    public void setPosition() {
-        if(getPower() < MOVE_POSITION) {
-            return;
+    public void setPosition(CarCondition carCondition) {
+        if(carCondition.isMovable()) {
+            position++;
         }
-        position++;
+        return;
     }
 
     public int getPosition() {
         return position;
     }
 
-    public int getCarNumber() {
-        return this.carNumber;
+    public String getCarName() {
+        return carName;
     }
 
 }
