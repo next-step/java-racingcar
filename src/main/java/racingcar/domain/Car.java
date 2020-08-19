@@ -16,9 +16,8 @@ public class Car {
         return position;
     }
 
-    public Position move(RaceCondition raceCondition, DoRace doRace) {
-        return position.increase(raceCondition, doRace);
-    }
+    public void move(RaceCondition raceCondition, DoRace doRace) {
+        position.increase(raceCondition, doRace);}
 
     @Override
     public boolean equals(Object o) {

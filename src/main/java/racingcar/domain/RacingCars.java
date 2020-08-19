@@ -8,19 +8,19 @@ import java.util.List;
 
 import static racingcar.Constants.INIT_POSITION;
 
+
 /**
  * 일급 콜렉션, 콜렉션 wrapping하며 그 콜렉션 외에 다른 변수는 없는 상태
  * 해당 콜렉션이 아닌 단순 배열/리스트는 ..List ...Arr 로 해서 헷갈리지 않게
  */
 
 public class RacingCars {
-
-    private List<Car> cars;
+    private int carCounts;
     private int racingCounts;
+    private List<Car> cars;
 
-    public List<Car> getCars() {  //unModifiable acc. to javajigi
-        return Collections.unmodifiableList(cars);
-    }
+    public List<Car> getCars() { return Collections.unmodifiableList(cars);}
+
 
     public RacingCars(int carCounts, int racingCounts) {
         this.cars = createCars(carCounts);
@@ -28,14 +28,16 @@ public class RacingCars {
     }
 
     public static List<Car> createCars(int carCounts) {
-        List<Car> cars = new ArrayList<>(carCounts);
-        for (int i = 0 ; i < carCounts; i++) {
-            cars.add(new Car(new Position(INIT_POSITION)));
+        List<Car> carList = new ArrayList<>(carCounts);
+         for (int i = 0 ; i < carCounts; i++) {
+            carList.add(new Car(new Position(INIT_POSITION)));
         }
-        return cars;
+        return carList;
     }
 
+
     public void yesRacingCars() {
+
         this.racingCounts--;
         moveCars();
     }
@@ -45,12 +47,12 @@ public class RacingCars {
     }
 
     private void moveCars() {
-        for (Car car : cars) {
-            car.move(new OneForwardCondition(), new DoOneForward());
+        for (Car car:cars) {car.move(new OneForwardCondition(), new DoOneForward());
         }
     }
 
 }
+
 
 
 /* BEFORE

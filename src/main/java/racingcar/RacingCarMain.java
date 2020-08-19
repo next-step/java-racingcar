@@ -10,7 +10,7 @@ import racingcar.view.ResultView;
 public class RacingCarMain {
     public static void main(String[] args) {
 
-        InputView inputView = new InputView(InputChannel.createSystemIn(), OutputChannel.createSystemOut());
+    InputView inputView = new InputView(InputChannel.createSystemIn(), OutputChannel.createSystemOut());
         RacingCars racingCars = new RacingCars(inputView.getCarCounts(),inputView.getRacingCounts());
         ResultView resultView = new ResultView(OutputChannel.createSystemOut());
         resultView.printStartResult();
@@ -19,6 +19,7 @@ public class RacingCarMain {
             resultView.printCars(racingCars.getCars());
             resultView.printLine();
         }
+
     }
 
 }

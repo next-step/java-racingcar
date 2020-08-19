@@ -17,6 +17,7 @@ public class ResultView{
     public static void printStartResult() {
         outputChannel.printLine("\n"+SAY_VIEW_RESULT);
     }
+
     public static void printCars(List<Car> cars) {
         cars.forEach(ResultView::printPosition);
     }
@@ -28,4 +29,6 @@ public class ResultView{
     public static void printLine() {
         outputChannel.printLine(BLANK_LINE);
     }
+
+
 }

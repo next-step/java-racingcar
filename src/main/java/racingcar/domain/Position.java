@@ -12,15 +12,14 @@ public class Position {
         this.position = position;
     }
 
-    public Position increase(RaceCondition raceCondition, DoRace doRace) {
-        if (raceCondition.pass()) {
-            this.position = position + doRace.race();
-        }
-        return new Position(position);
+    public int getPosition() {
+        return this.position;
     }
 
-    public int getPosition() {
-        return position;
+    public void increase(RaceCondition raceCondition, DoRace doRace) {
+        if (raceCondition.pass()) {
+            position += doRace.race();
+        }
     }
 
     @Override
@@ -35,4 +34,5 @@ public class Position {
     public int hashCode() {
         return Objects.hash(position);
     }
+
 }
