@@ -26,12 +26,6 @@ public class Game {
         }
     }
 
-    public void start() {
-        for(int i = 0; i < this.tryCount; i++) {
-            play();
-        }
-    }
-
     private List<Car> generateCars(String carNames) {
         List<Car> cars = new ArrayList<>();
         String[] carName = carNames.split(",");
@@ -43,16 +37,21 @@ public class Game {
         return cars;
     }
 
-    private void play() {
-        for(Car car : cars) {
-            car.setPosition(new CarPowerCondition(car.getPower()));
-            this.viewOutPut(car);
+    public void start() {
+        for(int i = 0; i < this.tryCount; i++) {
+            showCarRacing(play());
         }
-        System.out.println("");
     }
 
-    private void viewOutPut(Car car) {
-        outputView.getResultView(car);
+    private List<Car> play() {
+        for(Car car : cars) {
+            car.setPosition(new CarPowerCondition(car.getPower()));
+        }
+        return cars;
+    }
+
+    private void showCarRacing(List<Car> cars) {
+        outputView.getResultView(cars);
     }
 
     public void end() {

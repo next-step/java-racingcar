@@ -14,9 +14,15 @@ public class Winner {
 
     protected String getWinner() {
         int maxPosition = getMaxPosition();
-        return cars.stream().filter(car -> maxPosition <= car.getPosition()).flatMap(car -> Stream.of(car.getCarName())).collect(Collectors.joining(","));
+        return cars.stream()
+                .filter(car -> maxPosition <= car.getPosition())
+                .flatMap(car -> Stream.of(car.getCarName()))
+                .collect(Collectors.joining(","));
     }
     private int getMaxPosition() {
-        return cars.stream().flatMapToInt(car -> IntStream.of(car.getPosition())).max().getAsInt();
+        return cars.stream()
+                .flatMapToInt(car -> IntStream.of(car.getPosition()))
+                .max()
+                .getAsInt();
     }
 }

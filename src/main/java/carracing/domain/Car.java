@@ -8,7 +8,14 @@ public class Car {
     private String carName;
 
     public Car(String carName) {
+        validCarName(carName);
         this.carName = carName;
+    }
+
+    private void validCarName(String carName) {
+        if(carName.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5글자를 초과할수 없습니다.");
+        }
     }
 
     public int getPower() {
