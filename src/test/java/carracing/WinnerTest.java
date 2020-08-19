@@ -1,6 +1,7 @@
 package carracing;
 
 import carracing.domain.Car;
+import carracing.domain.CarPowerCondition;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -24,14 +25,14 @@ public class WinnerTest {
         int maxPosition = 1;
 
         Car car1 = new Car("car1");
-        car1.setPosition();
-        car1.setPosition();
-        car1.setPosition();
+        car1.setPosition(new CarPowerCondition(car1.getPower()));
+        car1.setPosition(new CarPowerCondition(car1.getPower()));
+        car1.setPosition(new CarPowerCondition(car1.getPower()));
 
         Car car2 = new Car("car2");
-        car2.setPosition();
-        car2.setPosition();
-        car2.setPosition();
+        car2.setPosition(new CarPowerCondition(car2.getPower()));
+        car2.setPosition(new CarPowerCondition(car2.getPower()));
+        car2.setPosition(new CarPowerCondition(car2.getPower()));
 
         List<Car> cars = new ArrayList<>();
         cars.add(car1);

@@ -45,7 +45,7 @@ public class Game {
 
     private void play() {
         for(Car car : cars) {
-            car.setPosition();
+            car.setPosition(new CarPowerCondition(car.getPower()));
             this.viewOutPut(car);
         }
         System.out.println("");

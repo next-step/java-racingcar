@@ -4,7 +4,6 @@ import java.util.Random;
 
 public class Car {
 
-    private static final int MOVE_POSITION = 4;
     private int position = 0;
     private String carName;
 
@@ -12,16 +11,16 @@ public class Car {
         this.carName = carName;
     }
 
-    private int getPower() {
+    public int getPower() {
         Random random = new Random();
         return random.nextInt(10);
     }
 
-    public void setPosition() {
-        if(getPower() < MOVE_POSITION) {
-            return;
+    public void setPosition(CarCondition carCondition) {
+        if(carCondition.isMovable()) {
+            position++;
         }
-        position++;
+        return;
     }
 
     public int getPosition() {
