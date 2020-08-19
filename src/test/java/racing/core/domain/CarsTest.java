@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class CarsTest {
 
@@ -21,6 +22,16 @@ class CarsTest {
     @Test
     @DisplayName("생성자에서 리스트에 대한 검증")
     void createCars() {
+        List<Car> carList = Arrays.stream(names)
+                .map(Car::new)
+                .collect(Collectors.toList());
+        Cars cars = new Cars(carList);
+        assertNotNull(cars);
+    }
+
+    @Test
+    @DisplayName("생성자에서 빈 리스트에 대한 검증")
+    void createCarsWithEmptyList() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
             Cars cars = new Cars(new ArrayList<>());
         }).withMessage(ErrorMessage.EMPTY_CARS.getMessage());
