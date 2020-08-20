@@ -1,7 +1,5 @@
 package racing.domain;
 
-import racing.behavior.CarMovable;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -17,11 +15,11 @@ public class RacingCars {
     }
 
     public static RacingCars of(final List<String> carNames) {
-        final List<Car> cars = new ArrayList<>();
+        final List<Car> racingCars = new ArrayList<>();
         for (final String name : carNames) {
-            cars.add(Car.of(name, new CarMovable()));
+            racingCars.add(Car.of(name));
         }
-        return new RacingCars(cars);
+        return new RacingCars(racingCars);
     }
 
     public List<Car> getCars() {
@@ -36,8 +34,10 @@ public class RacingCars {
     }
 
     public List<String> getWinners() {
+        final int maxLocation = getMaxLocation();
+
         return this.cars.stream()
-                .filter(car -> car.getLocation() == getMaxLocation())
+                .filter(car -> car.isCorrectMaxLocation(maxLocation))
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
