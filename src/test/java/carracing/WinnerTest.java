@@ -3,11 +3,12 @@ package carracing;
 import carracing.domain.car.Car;
 import carracing.domain.car.strategy.CarPowerCondition;
 import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.*;
+
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class WinnerTest {
 
@@ -25,14 +26,14 @@ public class WinnerTest {
         int maxPosition = 1;
 
         Car car1 = new Car("car1");
-        car1.setPosition(new CarPowerCondition(car1.getPower()));
-        car1.setPosition(new CarPowerCondition(car1.getPower()));
-        car1.setPosition(new CarPowerCondition(car1.getPower()));
+        car1.setPosition(new CarPowerCondition());
+        car1.setPosition(new CarPowerCondition());
+        car1.setPosition(new CarPowerCondition());
 
         Car car2 = new Car("car2");
-        car2.setPosition(new CarPowerCondition(car2.getPower()));
-        car2.setPosition(new CarPowerCondition(car2.getPower()));
-        car2.setPosition(new CarPowerCondition(car2.getPower()));
+        car2.setPosition(new CarPowerCondition());
+        car2.setPosition(new CarPowerCondition());
+        car2.setPosition(new CarPowerCondition());
 
         List<Car> cars = new ArrayList<>();
         cars.add(car1);
@@ -40,10 +41,9 @@ public class WinnerTest {
 
         String name = cars.stream()
                 .filter(car -> maxPosition <= car.getPosition())
-                .flatMap(car -> Stream.of(car.getCarName()))
+                .map(Car::getCarName)
                 .collect(Collectors.joining(","));
-        System.out.println(name);
 
-
+        assertThat(name).isNotBlank();
     }
 }

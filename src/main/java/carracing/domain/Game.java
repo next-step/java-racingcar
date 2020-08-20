@@ -7,19 +7,18 @@ import carracing.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Game {
 
     private int tryCount = 0;
     private List<Car> cars = null;
 
-    OutputView outputView = new OutputView();
-
     public Game(String carNames, int tryCount){
         inputValid(carNames, tryCount);
         this.tryCount = tryCount;
         this.cars = this.generateCars(carNames);
-
     }
 
     private void inputValid(String carNames, int tryCount) {
@@ -39,28 +38,30 @@ public class Game {
         return cars;
     }
 
-    public List<List<Car>> start() {
-        List<List<Car>> racingResult = new ArrayList<>();
+    /* 시도횟수 만큼 반복 */
+    public List<Cars> start() throws CloneNotSupportedException {
+        List<Cars> racingResult = new ArrayList<>();
         for(int i = 0; i < this.tryCount; i++) {
-            List<Car> carList = play();
+            Cars carList = play();
             racingResult.add(carList);
         }
         return racingResult;
     }
 
-    private List<Car> play() {
-        List<Car> playCars = new ArrayList<>();
+    /* 차의 대수 만큼 반복 */
+    private Cars play() throws CloneNotSupportedException {
+        List<Car> newCarList = new ArrayList<>();
         for(Car car : cars) {
             car.setPosition(new CarPowerCondition());
-            playCars.add(car);
-            //System.out.println("==>"+car.getPosition());
+            Car newCar = (Car)car.clone();
+            newCarList.add(newCar);
         }
-        return playCars;
+
+        Cars carList = new Cars(newCarList);
+        return carList;
     }
 
-    public void end() {
-        Winner winner = new Winner(cars);
-        outputView.viewWinner(winner.getWinner());
-
+    public List<Car> getCars() {
+        return cars;
     }
 }

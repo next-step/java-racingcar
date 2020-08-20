@@ -14,7 +14,7 @@ public class CarTest {
     @DisplayName("Car 객체 생성 후 position 설정")
     void Car_객체생성() {
         car = new Car("car1");
-        car.setPosition(new CarPowerCondition(car.getPower()));
+        car.setPosition(new CarPowerCondition());
         assertThat(car.getPosition());
 
     }

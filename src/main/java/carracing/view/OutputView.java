@@ -1,6 +1,7 @@
 package carracing.view;
 
 import carracing.domain.car.Car;
+import carracing.domain.car.Cars;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,12 +11,14 @@ import java.util.stream.Stream;
 
 public class OutputView {
 
-    public void getResultView(List<List<Car>> carsList) {
+    public void getResultView(List<Cars> carsList) {
         carsList.stream()
-                .flatMap(List::stream)
-                //.flatMap(carList -> Stream.of(carList.getPosition()))
-                .collect(Collectors.toList())
-                //.forEach(System.out::println);
+                .map(Cars::getCars)
+                .forEach(carList -> getCarListForNewLine(carList));
+    }
+
+    void getCarListForNewLine(List<Car> carList) {
+        carList.stream()
                 .forEach(car -> showResultByCar(car));
         System.out.println("");
     }

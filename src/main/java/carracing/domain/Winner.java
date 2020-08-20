@@ -14,7 +14,7 @@ public class Winner {
         this.cars = cars;
     }
 
-    protected String getWinner() {
+    public String getWinner() {
         int maxPosition = getMaxPosition();
         return cars.stream()
                 .filter(car -> car.isMaxPosition(maxPosition))
@@ -23,7 +23,7 @@ public class Winner {
     }
     private int getMaxPosition() {
         return cars.stream()
-                .flatMapToInt(car -> IntStream.of(car.getPosition()))
+                .mapToInt(Car::getPosition)
                 .max()
                 .getAsInt();
     }

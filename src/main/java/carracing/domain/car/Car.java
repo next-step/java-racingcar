@@ -2,7 +2,7 @@ package carracing.domain.car;
 
 import carracing.domain.car.strategy.CarCondition;
 
-public class Car {
+public class Car implements Cloneable {
 
     private int position = 0;
     private String carName;
@@ -35,5 +35,9 @@ public class Car {
 
     public boolean isMaxPosition(int maxPosition) {
         return maxPosition <= position;
+    }
+
+    public Object clone() throws CloneNotSupportedException{
+        return super.clone();
     }
 }
