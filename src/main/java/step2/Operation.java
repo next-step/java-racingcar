@@ -31,4 +31,5 @@ public class Operation {
     private static int getValue(String operator, int a, int b) {
         return StringOperator.of(operator).calculate(a, b);
     }
+
 }

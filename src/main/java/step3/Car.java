@@ -11,6 +11,7 @@ public class Car {
         if (name.length() > 5) {
             throw new NameLengthException("Name shouldn't be longer than 5 letters.");
         }
+
         this.name = name;
     }
 

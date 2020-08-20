@@ -16,6 +16,7 @@ public class CarRace {
         }
 
         ResultView.printWinner(circuit.getWinners().stream());
+
     }
 
 }
