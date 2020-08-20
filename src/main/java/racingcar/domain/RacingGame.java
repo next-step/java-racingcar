@@ -8,12 +8,6 @@ import java.util.List;
 
 import static racingcar.Constants.INIT_POSITION;
 
-
-/**
- * 일급 콜렉션, 콜렉션 wrapping하며 그 콜렉션 외에 다른 변수는 없는 상태
- * 해당 콜렉션이 아닌 단순 배열/리스트는 ..List ...Arr 로 해서 헷갈리지 않게
- */
-
 public class RacingGame {
     private int carCounts;
     private int racingCounts;
@@ -21,8 +15,8 @@ public class RacingGame {
 
     public List<Car> getCars() { return Collections.unmodifiableList(cars);}
 
-
     public RacingGame(int carCounts, int racingCounts) {
+        this.carCounts = carCounts;
         this.cars = createCars(carCounts);
         this.racingCounts = racingCounts;
     }
@@ -34,7 +28,6 @@ public class RacingGame {
         }
         return carList;
     }
-
 
     public void yesRacingCars() {
         this.racingCounts--;
