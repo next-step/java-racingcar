@@ -5,6 +5,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class RacingCarTest {
@@ -33,5 +35,14 @@ public class RacingCarTest {
         assertThatThrownBy(() -> {
             validationName.validateName(new String[]{"ccccccc", "a", "abc"});
         }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 전부_우승자일_경우() {
+        String[] nameList = {"a","car","eeee","rrrr","ff"};
+        RacingCars racingCars = RacingCars.of(nameList, () -> true);
+        racingCars.moveCars();
+
+        assertThat(racingCars.getWinners()).isEqualTo(Arrays.asList(nameList));
     }
 }
