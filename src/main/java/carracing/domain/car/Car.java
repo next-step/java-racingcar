@@ -1,6 +1,6 @@
 package carracing.domain.car;
 
-import carracing.domain.car.strategy.CarCondition;
+import carracing.domain.car.strategy.CarMovingCondition;
 
 public class Car implements Cloneable {
 
@@ -18,8 +18,8 @@ public class Car implements Cloneable {
         }
     }
 
-    public void movingCarByPosition(CarCondition carCondition) {
-        if(carCondition.isMovable()) {
+    public void movingCarByPosition(CarMovingCondition carMovingCondition) {
+        if(carMovingCondition.isMovable()) {
             position += 1;
         }
         return;
