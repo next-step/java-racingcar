@@ -15,3 +15,9 @@
 * 입출력 UI를 처리하는 InputView와 ResultView class 구현
 * Car, Circuit에 대한 TC 작성
 
+
+#step4.
+* name을 갖는 Car class 변경, 길이 예외사항 구현
+* 우승자 선별 메소드 추가
+* 우승자를 출력하는 UI 메소드 추가
+

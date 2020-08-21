@@ -28,6 +28,29 @@ public class Circuit {
         return false;
     }
 
+    public List<Car> getWinners() {
+        if (rounds.get() > 0) {
+            throw new IllegalStateException("Race not ended. Lap remains: " + rounds + " rounds left.");
+        }
+
+        int max = 0;
+        List<Car> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            if (car.getMiles() > max) {
+                max = car.getMiles();
+                winners = new ArrayList<>();
+                winners.add(car);
+                continue;
+            }
+
+            if (car.getMiles() == max) {
+                winners.add(car); // add ties
+            }
+        }
+        return winners;
+    }
+
     List<Car> getCars() {
         return this.cars;
     }
