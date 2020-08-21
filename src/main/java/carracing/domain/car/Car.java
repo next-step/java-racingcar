@@ -37,7 +37,11 @@ public class Car implements Cloneable {
         return maxPosition <= position;
     }
 
-    public Object clone() throws CloneNotSupportedException{
-        return super.clone();
+    public Car clone() {
+        try {
+            return (Car) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e.getMessage());
+        }
     }
 }
