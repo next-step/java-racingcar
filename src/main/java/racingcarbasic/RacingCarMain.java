@@ -16,7 +16,7 @@ public class RacingCarMain {
         System.out.println(carNum + " " + moveCount);
 
         /* RacingCar 인스턴스 생성 */
-        RacingCars racingCars = RacingCars.of(carNum);
+        RacingCars racingCars = RacingCars.of(carNum, new StraightMove());
 
         ResultView resultView = new ResultView();
         for (int i = 0; i < moveCount; i++) {

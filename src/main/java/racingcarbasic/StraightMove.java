@@ -8,7 +8,3 @@ class StraightMove implements MoveStrategy {
         return new Random().nextInt(10) >= 4;
     }
 }
-
-
-
-
