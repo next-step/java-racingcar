@@ -5,8 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.in;
+import static org.assertj.core.api.Assertions.*;
 
 public class RacingCarTest {
 
@@ -28,5 +27,11 @@ public class RacingCarTest {
         assertThat(racingCars.getCarList()).allMatch(car -> car.getStep() == 0);
     }
 
-
+    @Test
+    void 이름_검증() {
+        ValidationName validationName = new ValidationName();
+        assertThatThrownBy(() -> {
+            validationName.validateName(new String[]{"ccccccc", "a", "abc"});
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }
