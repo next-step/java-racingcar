@@ -37,7 +37,7 @@ public class RacingCars {
                 .max().orElse(-1);
 
         return carList.stream()
-                .filter(car -> car.getStep()==maxNum)
+                .filter(car -> car.getStep() == maxNum)
                 .map(car -> car.getName())
                 .collect(Collectors.toList());
     }
