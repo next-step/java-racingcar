@@ -4,10 +4,13 @@ public class StringCalculator {
     public static int calculate(String value) {
         String[] values = value.split(" ");
         int first = toInt(values[0]);
-        int second = toInt(values[2]);
-        String operator = values[1];
-
-        return calculate(first, second, operator);
+        for (int i = 1 ; i < values.length; i+=2){
+            // 0 아닌 1 (base 이미 first values[0]), ++(+1)아닌 +=2, 연산자와 정수 구분
+            String operator = values[i];
+            int second = toInt(values[i+1]);
+            first = calculate(first, second, operator);
+        }
+        return first;
 
     }
 

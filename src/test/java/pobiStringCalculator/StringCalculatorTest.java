@@ -20,7 +20,7 @@ public class StringCalculatorTest {
     @DisplayName("복합 계산")
     @Test
     void multiOperatorTest() {
-        assertThat(calculate("3 + 1 * 2 / 4")).isEqualTo(2);
+        assertThat(calculate("3 + 1 * 2 / 4")).isEqualTo(2); // loop 필요
     }
 
     @Test
