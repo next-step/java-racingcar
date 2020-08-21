@@ -17,6 +17,11 @@ public class StringCalculatorTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("복합 계산")
+    @Test
+    void multiOperatorTest() {
+        assertThat(calculate("3 + 1 * 2 / 4")).isEqualTo(2);
+    }
 
     @Test
     void plusTest() {

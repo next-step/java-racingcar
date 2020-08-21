@@ -12,6 +12,9 @@ public class StringCalculator {
     }
 
     private static int calculate(int first, int second, String operator) {
+        if (operator.equals("+")) {
+            return first + second;
+        }
         if (operator.equals("-")) {
             return first - second;
         }
@@ -21,7 +24,7 @@ public class StringCalculator {
         if (operator.equals("/")) {
             return first / second;
         }
-        return first + second;
+        throw new IllegalArgumentException("not supported operator");
     }
 
     private static int toInt(String value) {
