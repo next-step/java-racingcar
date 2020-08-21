@@ -6,18 +6,18 @@ import java.util.stream.Stream;
 
 public class RacingCars {
     private final List<Car> carList;
-    private MoveStrategy moveStrategy;
+    private final MoveStrategy moveStrategy;
 
     public RacingCars(List<Car> carList, MoveStrategy moveStrategy) {
         this.carList = carList;
         this.moveStrategy = moveStrategy;
     }
 
-    public static RacingCars of (Integer carNum, MoveStrategy moveStrategy) {
+    public static RacingCars of(Integer carNum, MoveStrategy moveStrategy) {
         return new RacingCars(
                 Stream.generate(() -> new Car("car", 0))
-                .limit(carNum)
-                .collect(Collectors.toList()), moveStrategy);
+                        .limit(carNum)
+                        .collect(Collectors.toList()), moveStrategy);
     }
 
     public List<Car> getCarList() {
@@ -26,9 +26,9 @@ public class RacingCars {
 
     public void moveCars() {
         carList.forEach(car -> {
-                    car.setMoveStrategy(moveStrategy);
-                    car.move();
-                });
+            car.setMoveStrategy(moveStrategy);
+            car.move();
+        });
     }
 }
 

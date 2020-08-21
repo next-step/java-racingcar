@@ -1,8 +1,6 @@
 package racingcarbasic;
 
 
-import java.util.List;
-
 public class ResultView {
     public ResultView() {
         System.out.println("실행 결과");
