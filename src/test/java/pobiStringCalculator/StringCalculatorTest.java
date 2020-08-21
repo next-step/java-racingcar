@@ -1,11 +1,23 @@
 package pobiStringCalculator;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Java6Assertions.assertThatThrownBy;
 import static pobiStringCalculator.StringCalculator.calculate;
 
 public class StringCalculatorTest {
+
+    @DisplayName("사칙연산 기호 아닌 경우 Exception")
+    @Test
+    void notOperatorTest() {
+        assertThatThrownBy(() -> {
+            calculate("3 : 1");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+
     @Test
     void plusTest() {
         assertThat(calculate("3 + 1")).isEqualTo(4);
