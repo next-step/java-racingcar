@@ -1,15 +1,11 @@
 package carracing;
 
 import carracing.domain.Game;
-import carracing.domain.Winner;
-import carracing.domain.car.Car;
 import carracing.domain.car.Cars;
 import carracing.view.InputView;
 import carracing.view.OutputView;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Application {
     public static void main(String arg[]) throws CloneNotSupportedException {
@@ -28,7 +24,7 @@ public class Application {
         outputView.getResultView(listOfList);
 
         /* 우승자 출력 */
-        Winner winner = new Winner(game.getCars());
-        outputView.viewWinner(winner.getWinner());
+        Cars completedCars = new Cars(game.getCars());
+        outputView.viewWinner(completedCars.getWinner());
     }
 }
