@@ -6,6 +6,7 @@
                     @Test : method -> (1) class 생성 -> (2) method도 class내에 생성
     * Command + Alt + C : constant refactoring (magic number -> static constant)
     * Alt + Command + M : extract Method refactoring
+    * Ctrl + Shift + R : Run
     14:18, getMaxPosition도 메시지위임, int maxPosition 대신 Position obj, stream API
     생성자 this( ) overwrite확인 필요 , const 많은 것 구
 #### [기능 요구사항]
