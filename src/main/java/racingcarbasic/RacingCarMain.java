@@ -16,19 +16,13 @@ public class RacingCarMain {
         System.out.println(carNum + " " + moveCount);
 
         /* RacingCar 인스턴스 생성 */
-        List<Car> carList = Stream.generate(() -> new Car("car", 0))
-                .limit(carNum)
-                .collect(Collectors.toList());
-
-        /* 일급 컬렉션 선언*/
-        RacingCars racingCars = new RacingCars(carList);
+        RacingCars racingCars = RacingCars.of(carNum);
 
         ResultView resultView = new ResultView();
         for (int i = 0; i < moveCount; i++) {
-            racingCars.moveCars(carList);
-            resultView.ResultPrint(carList);
+            racingCars.moveCars();
+            resultView.ResultPrint(racingCars);
         }
-
 
     }
 }
