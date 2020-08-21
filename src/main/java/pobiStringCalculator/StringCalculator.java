@@ -7,6 +7,11 @@ public class StringCalculator {
         int second = toInt(values[2]);
         String operator = values[1];
 
+        return calculate(first, second, operator);
+
+    }
+
+    private static int calculate(int first, int second, String operator) {
         if (operator.equals("-")) {
             return first - second;
         }
@@ -17,7 +22,6 @@ public class StringCalculator {
             return first / second;
         }
         return first + second;
-
     }
 
     private static int toInt(String value) {
