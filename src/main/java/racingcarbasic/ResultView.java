@@ -7,10 +7,11 @@ public class ResultView {
     }
 
     public void ResultPrint(RacingCars racingCars) {
-        for (Car car : racingCars.getCarList()) {
-            int step = car.getStep();
-            System.out.println(new String(new char[step]).replace("\0", "-"));
-        }
+        racingCars.getCarList()
+                .forEach(car -> {
+                    int step = car.getStep();
+                    System.out.println(new String(new char[step]).replace("\0", "-"));
+                });
         System.out.println();
     }
 }
