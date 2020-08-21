@@ -9,14 +9,11 @@ public class RacingCars {
         this.carList = carList;
     }
 
-    public List<Car> moveCars(List<Car> carList) {
-        carList.stream()
-                .forEach(car -> {
+    public void moveCars(List<Car> carList) {
+        carList.forEach(car -> {
                     car.setMoveStrategy(new StraightMove());
                     car.move();
                 });
-
-        return carList;
     }
 }
 
