@@ -1,7 +1,7 @@
 package carracing;
 
 import carracing.domain.car.Car;
-import carracing.domain.car.strategy.CarPowerCondition;
+import carracing.domain.car.strategy.CarMovingConditionByRandom;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
@@ -26,14 +26,14 @@ public class WinnerTest {
         int maxPosition = 1;
 
         Car car1 = new Car("car1");
-        car1.setPosition(new CarPowerCondition());
-        car1.setPosition(new CarPowerCondition());
-        car1.setPosition(new CarPowerCondition());
+        car1.movingCarByPosition(new CarMovingConditionByRandom());
+        car1.movingCarByPosition(new CarMovingConditionByRandom());
+        car1.movingCarByPosition(new CarMovingConditionByRandom());
 
         Car car2 = new Car("car2");
-        car2.setPosition(new CarPowerCondition());
-        car2.setPosition(new CarPowerCondition());
-        car2.setPosition(new CarPowerCondition());
+        car2.movingCarByPosition(new CarMovingConditionByRandom());
+        car2.movingCarByPosition(new CarMovingConditionByRandom());
+        car2.movingCarByPosition(new CarMovingConditionByRandom());
 
         List<Car> cars = new ArrayList<>();
         cars.add(car1);

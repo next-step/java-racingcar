@@ -18,7 +18,7 @@ public class Car implements Cloneable {
         }
     }
 
-    public void setPosition(CarCondition carCondition) {
+    public void movingCarByPosition(CarCondition carCondition) {
         if(carCondition.isMovable()) {
             position += 1;
         }

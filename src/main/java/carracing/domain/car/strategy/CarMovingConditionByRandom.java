@@ -2,14 +2,9 @@ package carracing.domain.car.strategy;
 
 import java.util.Random;
 
-public class CarPowerCondition implements CarCondition {
+public class CarMovingConditionByRandom implements CarMovingCondition {
 
     private static final int MOVE_POSITION = 4;
-    private int power;
-
-    public CarPowerCondition() {
-        this.power = getPower();
-    }
 
     public int getPower() {
         Random random = new Random();
@@ -18,6 +13,6 @@ public class CarPowerCondition implements CarCondition {
 
     @Override
     public boolean isMovable() {
-        return power >= MOVE_POSITION;
+        return getPower() >= MOVE_POSITION;
     }
 }

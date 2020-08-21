@@ -2,13 +2,10 @@ package carracing.domain;
 
 import carracing.domain.car.Car;
 import carracing.domain.car.Cars;
-import carracing.domain.car.strategy.CarPowerCondition;
-import carracing.view.OutputView;
+import carracing.domain.car.strategy.CarMovingConditionByRandom;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Game {
 
@@ -39,7 +36,7 @@ public class Game {
     }
 
     /* 시도횟수 만큼 반복 */
-    public List<Cars> start() throws CloneNotSupportedException {
+    public List<Cars> start() {
         List<Cars> racingResult = new ArrayList<>();
         for(int i = 0; i < this.tryCount; i++) {
             Cars carList = play();
@@ -49,10 +46,10 @@ public class Game {
     }
 
     /* 차의 대수 만큼 반복 */
-    private Cars play() throws CloneNotSupportedException {
+    private Cars play() {
         List<Car> newCarList = new ArrayList<>();
         for(Car car : cars) {
-            car.setPosition(new CarPowerCondition());
+            car.movingCarByPosition(new CarMovingConditionByRandom());
             Car newCar = (Car)car.clone();
             newCarList.add(newCar);
         }

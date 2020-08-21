@@ -1,5 +1,5 @@
 package carracing.domain.car.strategy;
 
-public interface CarCondition {
+public interface CarMovingCondition {
     boolean isMovable();
 }

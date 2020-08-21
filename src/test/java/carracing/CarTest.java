@@ -2,7 +2,7 @@ package carracing;
 
 import carracing.domain.car.Car;
 import carracing.domain.car.Cars;
-import carracing.domain.car.strategy.CarPowerCondition;
+import carracing.domain.car.strategy.CarMovingConditionByRandom;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,8 +18,9 @@ public class CarTest {
     @DisplayName("Car 객체 생성 후 position 설정")
     void Car_객체생성() {
         car = new Car("car1");
-        car.setPosition(new CarPowerCondition());
-        assertThat(car.getPosition());
+        car.movingCarByPosition(new CarMovingConditionByRandom());
+        assertThat(car.getCarName()).isEqualTo("car1");
+        assertThat(car.getPosition()).isNotZero();
 
     }
 
@@ -40,12 +41,11 @@ public class CarTest {
         assertThat(carsList.getCars().size()).isEqualTo(0);
 
         car = new Car("car1");
-        car.setPosition(new CarPowerCondition());
+        car.movingCarByPosition(new CarMovingConditionByRandom());
         carList.add(car);
 
         assertThat(carList.size()).isEqualTo(1);
-        /* carList에 add 해도 carsList의 객체가 변경되지 않음.*/
-        assertThat(carsList.getCars().size()).isEqualTo(0);
+        assertThat(carsList.getCars().size()).isEqualTo(0); //carList에 add 해도 carsList의 객체가 변경되지 않음.
 
     }
 }
