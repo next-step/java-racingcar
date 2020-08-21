@@ -1,9 +1,19 @@
 package stringcalculator;
 
-import java.util.Objects;
-import java.util.Scanner;
+import calculator.*;
+
+import java.util.*;
 
 public class Calculator {
+    private static List<Operation> operations = new ArrayList<>();
+    static {
+        operations.add(new PlusOperation());
+        operations.add(new MinusOperation());
+        operations.add(new MultipleOperation());
+        operations.add(new DivideOperation());
+    }
+
+
     public int calculate(String input) {
         if (isNullOrBlank(input)) {
             throw new IllegalArgumentException(Constants.INPUT_VALUE_IS_NULL_OR_EMPTY);
@@ -24,17 +34,12 @@ public class Calculator {
     }
 
     private int calculate(int firstOperand, int secondOperand, String operator) {
-        if (operator.equals("+")) {
-            return add(firstOperand, secondOperand);
-        } else if (operator.equals("-")) {
-            return subtract(firstOperand, secondOperand);
-        } else if (operator.equals("*")) {
-            return multiple(firstOperand, secondOperand);
-        } else if (operator.equals("/")) {
-            return divide(firstOperand, secondOperand);
-        }
-        throw new IllegalArgumentException(Constants.IS_NOT_VALID_OPERATOR);
+        // 찾은 연산자
+        Optional<Operation> maybeOperation = operations.stream().filter(o -> o.isSupport(operator)).findFirst();
 
+        Operation operation = maybeOperation.orElseThrow(() -> new IllegalArgumentException(Constants.IS_NOT_VALID_OPERATOR));
+
+        return operation.operate(firstOperand, secondOperand);
     }
 
     private int add(int firstOperand, int secondOperand) {
