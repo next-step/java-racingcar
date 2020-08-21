@@ -41,5 +41,4 @@ public class InputView {
         String[] carNames = inputValue.split(",");
         return carNames;
     }
-
 }

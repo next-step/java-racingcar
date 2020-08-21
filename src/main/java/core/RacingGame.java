@@ -35,7 +35,6 @@ public class RacingGame {
         RacingGame racingGame = new RacingGame(GameSettings.carNames);
         racingGame.startGame(GameSettings.round);
     }
-
 }
 
 
