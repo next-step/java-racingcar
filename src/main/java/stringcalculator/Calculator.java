@@ -32,9 +32,8 @@ public class Calculator {
             return multiple(firstOperand, secondOperand);
         } else if (operator.equals("/")) {
             return divide(firstOperand, secondOperand);
-        } else {
-            throw new IllegalArgumentException(Constants.IS_NOT_VALID_OPERATOR);
         }
+        throw new IllegalArgumentException(Constants.IS_NOT_VALID_OPERATOR);
 
     }
 
