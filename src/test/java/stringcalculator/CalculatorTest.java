@@ -23,18 +23,16 @@ class CalculatorTest {
     @Test
     @DisplayName("입력 값이 null 인 경우")
     public void nullInputTest() {
-        assertThatThrownBy(() -> {
-            calculator.calculate(null);
-        }).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() -> calculator.calculate(null))
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Constants.INPUT_VALUE_IS_NULL_OR_EMPTY);
     }
 
     @Test
     @DisplayName("입력 값이 공백 경우")
     public void blankInputTest() {
-        assertThatThrownBy(() -> {
-            calculator.calculate(" ");
-        }).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() -> calculator.calculate(" "))
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Constants.INPUT_VALUE_IS_NULL_OR_EMPTY);
     }
 
@@ -42,9 +40,9 @@ class CalculatorTest {
     @DisplayName("올바른 사칙 연산 기호가 아닌 경우")
     @ValueSource(strings = {"2 + 3 * 4 # 2"})
     public void isNotValidOperator(String input) {
-        assertThatThrownBy(() -> {
-            calculator.calculate(input);
-        }).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() ->
+            calculator.calculate(input))
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Constants.IS_NOT_VALID_OPERATOR);
     }
 
@@ -80,9 +78,8 @@ class CalculatorTest {
     @DisplayName("0으로 나눈 경우")
     @ValueSource(strings = {"15 / 0"})
     public void divideWithZero(String input) {
-        assertThatThrownBy(() -> {
-            calculator.calculate(input);
-        }).isInstanceOf(ArithmeticException.class)
+        assertThatThrownBy(() -> calculator.calculate(input))
+                .isInstanceOf(ArithmeticException.class)
                 .hasMessageContaining(Constants.DIVIDE_BY_ZERO);
     }
 
