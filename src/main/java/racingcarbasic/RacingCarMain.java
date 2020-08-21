@@ -18,7 +18,7 @@ public class RacingCarMain {
         ResultView resultView = new ResultView();
         for (int i = 0; i < moveCount; i++) {
             racingCars.moveCars();
-            resultView.ResultPrint(racingCars);
+            resultView.printResult(racingCars);
         }
 
     }
