@@ -8,7 +8,19 @@ import static pobiStringCalculator.StringCalculator.calculate;
 public class StringCalculatorTest {
     @Test
     void plusTest() {
-        // int result = calculate("3 + 1"); input string output int, static import l
         assertThat(calculate("3 + 1")).isEqualTo(4);
     }
+    @Test
+    void minusTest() {
+        assertThat(calculate("3 - 1")).isEqualTo(2);
+    }
+    @Test
+    void multiplyTest() {
+        assertThat(calculate("4 * 2")).isEqualTo(8);
+    }
+    @Test
+    void divideTest() {
+        assertThat(calculate("4 / 2")).isEqualTo(2);
+    }
+
 }
