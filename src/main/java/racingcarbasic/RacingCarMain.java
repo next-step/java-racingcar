@@ -21,5 +21,8 @@ public class RacingCarMain {
             resultView.printResult(racingCars);
         }
 
+        /* 우승자 출력 */
+        resultView.printWinners(racingCars.getWinners());
+
     }
 }
