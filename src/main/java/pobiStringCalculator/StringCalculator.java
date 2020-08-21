@@ -1,6 +1,18 @@
 package pobiStringCalculator;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 public class StringCalculator {
+    private static List<Operation> operations = new ArrayList<>();
+    static {
+        operations.add(new PlusOperation());
+        operations.add(new MinusOperation());
+        operations.add(new MultiOperation());
+        operations.add(new DividOperation());
+
+    }
     public static int calculate(String value) {
         String[] values = value.split(" ");
         int result = toInt(values[0]);
@@ -15,19 +27,11 @@ public class StringCalculator {
     }
 
     private static int calculate(int first, int second, String operator) {
-        if (operator.equals("+")) {
-            return first + second;
-        }
-        if (operator.equals("-")) {
-            return first - second;
-        }
-        if (operator.equals("*")) {
-            return first * second;
-        }
-        if (operator.equals("/")) {
-            return first / second;
-        }
-        throw new IllegalArgumentException("not supported operator");
+        //operations.stream() local variable선언 시 Optional<Operation> 자동 반환 : 에러값not Operation고려해 지정
+        Optional<Operation> op = operations.stream( )
+                .filter(o -> o.isSupport(operator)).findFirst( );
+        Operation op2 = op.orElseThrow(IllegalArgumentException::new);
+        return op2.operate(first, second);
     }
 
     private static int toInt(String value) {
