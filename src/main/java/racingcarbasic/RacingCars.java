@@ -1,8 +1,8 @@
 package racingcarbasic;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class RacingCars {
     private final List<Car> carList;
@@ -13,10 +13,10 @@ public class RacingCars {
         this.moveStrategy = moveStrategy;
     }
 
-    public static RacingCars of(Integer carNum, MoveStrategy moveStrategy) {
+    public static RacingCars of(String[] carNameList, MoveStrategy moveStrategy) {
         return new RacingCars(
-                Stream.generate(() -> new Car("car", 0))
-                        .limit(carNum)
+                Arrays.stream(carNameList)
+                        .map(name -> new Car(name, 0))
                         .collect(Collectors.toList()), moveStrategy);
     }
 

@@ -3,6 +3,7 @@ package racingcarbasic;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.in;
 
 public class RacingCarTest {
 
@@ -20,5 +21,11 @@ public class RacingCarTest {
         racingCars.moveCars();
 
         assertThat(racingCars.getCarList()).allMatch(car -> car.getStep() == 0);
+    }
+
+    @Test
+    void name() {
+        InputView inputView = new InputView();
+        inputView.getCarName();
     }
 }
