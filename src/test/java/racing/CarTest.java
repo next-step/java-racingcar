@@ -1,9 +1,9 @@
 package racing;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racing.behavior.CarMovable;
 import racing.behavior.Movable;
 import racing.domain.Car;
 
@@ -16,7 +16,7 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(strings = "pobi")
     void initialCar(final String carName) {
-        final Car car = Car.of(carName, new CarMovable());
+        final Car car = Car.of(carName);
 
         assertThat(car.getLocation()).isZero();
         assertThat(car).isNotNull();
@@ -26,7 +26,7 @@ public class CarTest {
     @ParameterizedTest
     @ValueSource(strings = {"jace", "mia", "noel"})
     void initialCars(final String carName) {
-        final Car car = Car.of(carName, new CarMovable());
+        final Car car = Car.of(carName);
 
         assertThat(car.getName()).isEqualTo(carName);
         assertThat(car.getLocation()).isZero();
@@ -37,17 +37,25 @@ public class CarTest {
     @ValueSource(strings = {"자동차 이름은", "myCarName"})
     void shouldExceptionForNameLengthGreaterThanMaxLength(final String carName) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> Car.of(carName, new CarMovable()))
+                .isThrownBy(() -> Car.of(carName))
                 .withMessage("자동차 이름의 길이를 확인해 주세요.");
     }
 
     @DisplayName("자동차 이름 공백 또는 빈 값일 경우 테스트")
     @ParameterizedTest
     @ValueSource(strings = {"    ", "", "\n", "  \n "})
-    void shouldExceptionForNameNullOrEmpty(final String carName) {
+    void shouldExceptionForNameEmpty(final String carName) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> Car.of(carName, new CarMovable()))
+                .isThrownBy(() -> Car.of(carName))
                 .withMessage("자동차 이름의 길이를 확인해 주세요.");
+    }
+
+    @DisplayName("자동차 이름 공백 또는 빈 값일 경우 테스트")
+    @Test
+    void shouldExceptionForNameNull() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> Car.of(null))
+                .withMessage("자동차의 이름을 올바르게 입력해 주세요.");
     }
 
     @DisplayName("자동차 전진 하는 경우 확인 테스트")
