@@ -28,4 +28,10 @@ public class StringTest {
             "abc".charAt(3);
         }).isInstanceOf(StringIndexOutOfBoundsException.class);
     }
+
+    @Test
+    void splitBySpace() {
+        String[] values = "3 + 4".split(" ");
+        assertThat(values).containsExactly("3", "+", "4");
+    }
 }
