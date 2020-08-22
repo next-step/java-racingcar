@@ -21,7 +21,6 @@ public class ResultView{
     }
 
     public static void printCars(List<Car> cars) {
-
         cars.forEach(ResultView::printPosition);
     }
 

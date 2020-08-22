@@ -2,9 +2,12 @@ package racingcar.domain;
 import racingcar.strategy.DoOneForward;
 import racingcar.strategy.OneOrZeroForwardCondition;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static racingcar.Constants.EMPTY_CAR;
 
 public class RacingGame {
     private final RacingCounts racingCounts;
@@ -29,17 +32,26 @@ public class RacingGame {
         return Cars.createCars(newCars);
     }
 
-    public Cars startRacing() {
-        for (int i = 0; i < getRacingCounts() ; i++) {
-            moveCars();
+    public List<Car> startRacing() {
+        List<Car> carsAfterRace = new ArrayList<>( );
+        if (getRacingCounts() == 0) {
+            return carsAfterRace;
         }
-        return cars;
+        carsAfterRace.addAll(moveOnceCars().getCars());
+        carsAfterRace.add(EMPTY_CAR);
+        countDownRacingCounts( );
+        return carsAfterRace;
     }
 
-    private void moveCars() {
+    private int countDownRacingCounts() {
+        return getRacingCounts() - 1;
+    }
+
+    private Cars moveOnceCars() {
         for (Car car:getCars()) {
             car.move(new OneOrZeroForwardCondition(), new DoOneForward());
         }
+        return this.cars;
     }
 
 }

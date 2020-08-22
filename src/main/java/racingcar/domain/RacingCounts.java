@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class RacingCounts {
 
-    private final int racingCounts;
+    private int racingCounts;
 
     public RacingCounts(int racingCounts) {
         this.racingCounts = racingCounts;

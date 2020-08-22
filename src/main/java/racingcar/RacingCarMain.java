@@ -15,8 +15,9 @@ public class RacingCarMain {
         RacingGame racingGame = new RacingGame(inputView.getCarCounts(), new RacingCounts(inputView.getRacingCounts()));
         ResultView resultView = new ResultView(OutputChannel.createSystemOut());
         resultView.printStartResult();
-        resultView.printCars(racingGame.startRacing().getCars());
-        resultView.printLine( );
+        for (int i = 0 ; i < racingGame.getRacingCounts() ; i++) {
+            resultView.printCars(racingGame.startRacing());
+        }
     }
 
 }

@@ -1,11 +1,17 @@
 package racingcar;
 
 
+import racingcar.domain.Car;
 import racingcar.strategy.RaceCondition;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public final class Constants {
 
     public static final String PROTECTED_UTIL_CLASS = "입력 화면은 임의로 생성할 수 없습니다";
+    public static final Car EMPTY_CAR = new Car();
+
     /** Strategy **/
     public static final int INIT_POSITION = 0;
 
