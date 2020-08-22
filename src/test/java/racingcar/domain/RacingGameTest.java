@@ -12,20 +12,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
 
-    @DisplayName("carCounts 만큼 createCars")
+    @DisplayName("carCounts 만큼, position 0인 cars create")
     @Test
     void createCarsbyCarCounts() {
         RacingGame game = new RacingGame(2, new RacingCounts(3));
         List<Car> newCars = game.createCars(2).getCars();
         assertThat(newCars).hasSize(2);
-    //    assertThat(newCars).containsExactly(new Car());
-    }
-
-    @Test
-    void startRacingTest() {
-        RacingGame game = new RacingGame(2, new RacingCounts(3));
-        List<Car> cars = game.startRacing().getRaceResults();
-        assertThat(cars).hasSize(2);
-        // assertThat(cars).containsExactly()
+        assertThat(newCars.get(0).getPosition()).isEqualTo(0);
+        assertThat(newCars.get(1).getPosition()).isEqualTo(0);
     }
 }
