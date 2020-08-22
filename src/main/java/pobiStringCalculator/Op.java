@@ -1,4 +1,5 @@
 package pobiStringCalculator;
 
-public interface OperApply {
+public interface Op {
+    int operate(int x, int y);
 }

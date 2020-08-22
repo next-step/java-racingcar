@@ -5,9 +5,4 @@ public class MinusOperation implements Operation {
     public boolean isSupport(String operator) {
         return operator.equals("-");
     }
-
-    @Override
-    public int operate(int x, int y) {
-        return x - y;
-    }
 }
