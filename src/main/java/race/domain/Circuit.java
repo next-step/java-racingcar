@@ -1,9 +1,11 @@
-package step3;
+package race.domain;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 public class Circuit {
 
@@ -33,29 +35,25 @@ public class Circuit {
             throw new IllegalStateException("Race not ended. Lap remains: " + rounds + " rounds left.");
         }
 
-        int max = 0;
-        List<Car> winners = new ArrayList<>();
-
-        for (Car car : cars) {
-            if (car.getMiles() > max) {
-                max = car.getMiles();
-                winners = new ArrayList<>();
-                winners.add(car);
-                continue;
-            }
-
-            if (car.getMiles() == max) {
-                winners.add(car); // add ties
-            }
-        }
-        return winners;
+        int max = getMaxMiles();
+        return cars.stream()
+            .filter(car -> car.getMiles() == max)
+            .collect(Collectors.toList());
     }
 
-    List<Car> getCars() {
+    private int getMaxMiles() {
+        return cars.stream()
+            .max(Comparator.comparingInt(Car::getMiles))
+            .orElseThrow(()
+                -> new IllegalStateException("Cannot get max miles from cars.stream(). Stream may be empty."))
+            .getMiles();
+    }
+
+    public List<Car> getCars() {
         return this.cars;
     }
 
-    int getRounds() {
+    public int getRounds() {
         return rounds.get();
     }
 

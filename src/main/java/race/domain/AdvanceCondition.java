@@ -1,4 +1,4 @@
-package step3;
+package race.domain;
 
 @FunctionalInterface
 public interface AdvanceCondition {

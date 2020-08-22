@@ -1,7 +1,8 @@
-package step3;
+package race.view;
 
+import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import race.domain.Car;
 
 public class ResultView {
 
@@ -11,13 +12,15 @@ public class ResultView {
     private ResultView() {
     }
 
-    public static void printStatus(Stream<Car> cars) {
-        cars.map(ResultView::addNamePrefix)
+    public static void printStatus(List<Car> cars) {
+        cars.stream()
+            .map(ResultView::addNamePrefix)
             .forEach(System.out::println);
     }
 
-    public static void printWinner(Stream<Car> cars) {
-        String names = cars.map(Car::getName)
+    public static void printWinner(List<Car> cars) {
+        String names = cars.stream()
+            .map(Car::getName)
             .collect(Collectors.joining(", "));
         System.out.println(names + "가 최종 우승했습니다.");
     }

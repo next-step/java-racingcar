@@ -1,4 +1,4 @@
-package step3;
+package race.domain;
 
 import java.util.Objects;
 
