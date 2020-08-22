@@ -5,4 +5,5 @@ public class DividOperation implements Operation {
     public boolean isSupport(String operator) {
         return operator.equals("/");
     }
+
 }
