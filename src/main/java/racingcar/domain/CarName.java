@@ -1,13 +1,15 @@
 package racingcar.domain;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Objects;
 
 public class CarName {
-    private static final int NAME_LENGTH = 5;
+    public static final int NAME_LENGTH = 5;
     private final String name;
 
     public CarName(String name) {
-        if(name.length() < 1) {
+        if(StringUtils.isBlank(name)) {
             throw new IllegalArgumentException("이름은 최소 1자 이상이어야 합니다.");
         }
         if(name.length() > NAME_LENGTH) {
