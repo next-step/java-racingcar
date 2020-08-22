@@ -27,10 +27,11 @@ public class RacingGame {
         return carList;
     }
 
-    public void startRacing() {
+    public List<Car> startRacing() {
         if (yesRacingCond()) {
             yesRacingCars();
         }
+        return getCars();
     }
 
     public void yesRacingCars() {
