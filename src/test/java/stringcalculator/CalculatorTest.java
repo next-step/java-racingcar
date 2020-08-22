@@ -29,7 +29,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("입력 값이 공백 경우")
+    @DisplayName("입력 값이 공백인 경우")
     public void blankInputTest() {
         assertThatThrownBy(() -> calculator.calculate(" "))
                 .isInstanceOf(IllegalArgumentException.class)
