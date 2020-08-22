@@ -7,12 +7,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingEventTest {
 
-    private RacingEvent racingEvent = new RacingEvent(5, 3);
+    private RacingEvent racingEvent = new RacingEvent();
 
-    @DisplayName("참여 car 수를 입력하면 입력한 만큼의 car가 생성되는지 테스트")
+    @DisplayName("RacingEvent ready시 원하는 수만큼 car 생성 테스트")
     @Test
-    void readyEventTest(){
-        assertThat(racingEvent.getCarList().size()).isEqualTo(5);
-    }
+    void readyRacingEvent(){
+        racingEvent.readyEvent(3);
 
+        assertThat(racingEvent.getCars().size()).isEqualTo(3);
+    }
 }

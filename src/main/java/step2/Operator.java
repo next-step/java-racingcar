@@ -28,7 +28,9 @@ enum Operator {
 
         Operator operator = OPERATOR_MAP.get(symbol);
 
-        if(operator == null) throw new IllegalArgumentException();
+        if(operator == null){
+            throw new IllegalArgumentException();
+        }
         return operator;
     }
 

@@ -2,12 +2,12 @@ package step3.view;
 
 public class ResultView {
 
-    public ResultView(){
+    public void startResult(){
         System.out.println("실행결과");
     }
 
-    public void showPositionHistory(int moveCount){
-        for(int i = 1; i <= moveCount; i++){
+    public void showPosition(int moveCount){
+        for(int i = 0; i < moveCount; i++){
             System.out.print("-");
         }
         System.out.println("");

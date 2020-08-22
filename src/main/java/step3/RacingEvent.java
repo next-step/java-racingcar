@@ -1,31 +1,40 @@
 package step3;
 
+import step3.view.ResultView;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class RacingEvent {
 
-    private ArrayList<Car> carList = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
+    private ResultView resultView = new ResultView();
 
-    public RacingEvent(int carCount, int tryCount){
-        readyEvent(carCount);
-        startEvent(tryCount);
+    public List<Car> getCars(){
+        return this.cars;
     }
 
-    public ArrayList<Car> getCarList(){
-        return this.carList;
-    }
-
-    private void readyEvent(int count){
-        for(int i = 0; i < count; i++){
-            carList.add(new Car());
+    void readyEvent(int CarCount){
+        for(int i = 0; i < CarCount; i++){
+            cars.add(new Car());
         }
     }
 
-    private void startEvent(int count){
-        for(int i = 0; i < count; i++){
-            for(Car car : carList){
-                car.moveForward(new Forward().tryMove());
+    void startEvent(int tryCount){
+        resultView.startResult();
+        for(int i = 0; i < tryCount; i++){
+            System.out.println("");
+            moveCars();
+        }
+    }
+
+    private void moveCars(){
+        for(Car car : cars){
+            if(new Forward().successForward()){
+                car.moveForward();
             }
+            resultView.showPosition(car.getCurrentPosition());
         }
     }
+
 }
