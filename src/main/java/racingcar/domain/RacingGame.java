@@ -23,7 +23,7 @@ public class RacingGame {
 
     public static List<Car> createCars(int carCounts) {
         List<Car> carList = new ArrayList<>(carCounts);
-         for (int i = 0 ; i < carCounts; i++) {
+        for (int i = 0; i < carCounts; i++) {
             carList.add(new Car(new Position(INIT_POSITION)));
         }
         return carList;
@@ -39,7 +39,8 @@ public class RacingGame {
     }
 
     private void moveCars() {
-        for (Car car:cars) {car.move(new OneOrZeroForwardCondition(), new DoOneForward());
+        for (Car car:cars) {
+            car.move(new OneOrZeroForwardCondition(), new DoOneForward());
         }
     }
 

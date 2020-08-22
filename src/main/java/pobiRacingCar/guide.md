@@ -8,6 +8,7 @@
     * Alt + Command + M : extract Method refactoring ***
     * Ctrl + Shift + R : Run
     * Shift + Fn + F6 : Rename var
+    * Option + Command + L : alignment
     14:18, getMaxPosition도 메시지위임, int maxPosition 대신 Position obj, stream API
     생성자 this( ) overwrite확인 필요 , const 많은 것 구
 #### [기능 요구사항]
