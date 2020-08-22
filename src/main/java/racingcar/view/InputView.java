@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.Constants;
+import stringcalculator.Constants;
 
 import static racingcar.Constants.*;
 

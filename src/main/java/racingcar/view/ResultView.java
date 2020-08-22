@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
+import stringcalculator.Constants;
 
 import java.util.List;
 
@@ -10,6 +11,10 @@ import static racingcar.utils.StringUtils.repeat;
 public class ResultView{
 
     private static OutputChannel outputChannel;
+
+    private ResultView(){
+        throw new IllegalArgumentException(Constants.PROTECTED_UTIL_CLASS);
+    }
 
     public ResultView(OutputChannel outputChannel) {
         this.outputChannel = outputChannel;

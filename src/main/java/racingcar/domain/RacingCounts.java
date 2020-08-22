@@ -13,11 +13,11 @@ public class RacingCounts {
         return this.racingCounts;
     }
 
-    private boolean ZeroOrMinusRacingCounts() {
+    public boolean checkZeroOrMinusRacingCounts() {
         return getRacingCounts() <= 0;
     }
 
-    private int countDownRacingCounts() {
+    public int decreaseRacingCounts() {
         return getRacingCounts() - 1;
     }
 

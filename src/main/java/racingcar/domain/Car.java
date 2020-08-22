@@ -18,7 +18,7 @@ public class Car {
     }
 
     public int getPosition() {
-        return position.getPosition(); //Position getPosition() -> int getPosition() 변경
+        return position.getPosition();
     }
 
     public void move(RaceCondition raceCondition, DoRace doRace) {
