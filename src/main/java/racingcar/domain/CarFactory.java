@@ -1,15 +1,12 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class CarFactory {
     public static Cars initCars(String carsName) {
-        String[] carsArray = carsName.split(",");
-        List<Car> cars = new ArrayList<>();
-        for(String name : carsArray) {
-            cars.add(new Car(name));
-        }
-        return new Cars(cars);
+        return new Cars(Arrays.stream(carsName.split(","))
+                .map(Car::new)
+                .collect(Collectors.toList()));
     }
 }
