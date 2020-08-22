@@ -7,8 +7,8 @@ import java.util.stream.Stream;
 public enum OperEnum {
     PLUS("+", (x, y) -> x + y),
     MINUS("-", (x, y) -> x - y),
-    MULTI("*", (x, y) -> x * y),
-    DIVID("/", (x, y) -> x / y);
+    MULTIPLE("*", (x, y) -> x * y),
+    DIVIDE("/", (x, y) -> x / y);
 
 
     private final String operator;

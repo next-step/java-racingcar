@@ -9,7 +9,7 @@ public class OperEnumTest {
     void of() {
         assertThat(OperEnum.of("+")).isEqualTo(OperEnum.PLUS);
         assertThat(OperEnum.of("-")).isEqualTo(OperEnum.MINUS);
-        assertThat(OperEnum.of("*")).isEqualTo(OperEnum.MULTI);
-        assertThat(OperEnum.of("/")).isEqualTo(OperEnum.DIVID);
+        assertThat(OperEnum.of("*")).isEqualTo(OperEnum.MULTIPLE);
+        assertThat(OperEnum.of("/")).isEqualTo(OperEnum.DIVIDE);
     }
 }
