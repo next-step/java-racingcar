@@ -10,7 +10,6 @@ public final class Constants {
     public static final int INIT_POSITION = 0;
 
     public static final int ONE_FORWARD = 1;
-    public static final int ZERO_FORWARD = 0; //Stop이면 또다른 Strategy같음, 여집합의 개념으로 ZERO도입
     public static final int FORWARD_OK_COND_NUM = 4;
     public static final int RANDOM_BOUND = 10;
 

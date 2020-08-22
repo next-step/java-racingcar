@@ -6,16 +6,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static racingcar.Constants.INIT_POSITION;
-
 public class RacingGame {
-    private int racingCounts;
+    private RacingCounts racingCounts;
     private Cars cars;
 
+    public int getRacingCounts() {
+        return racingCounts.getRacingCounts();
+    }
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars.getCars()); }
 
-    public RacingGame(int carCounts, int racingCounts) {
+    public RacingGame(int carCounts, RacingCounts racingCounts) {
         this.cars = createCars(carCounts);
         this.racingCounts = racingCounts;
     }
@@ -28,24 +29,15 @@ public class RacingGame {
         return Cars.createCars(newCars);
     }
 
-    public List<Car> startRacing() {
-        if (yesRacingCond()) {
-            yesRacingCars();
+    public Cars startRacing() {
+        for (int i = 0; i < getRacingCounts() ; i++) {
+            moveCars();
         }
-        return getCars();
-    }
-
-    public void yesRacingCars() {
-        this.racingCounts--;
-        moveCars();
-    }
-
-    public boolean yesRacingCond() {
-        return this.racingCounts > 0;
+        return cars;
     }
 
     private void moveCars() {
-        for (Car car:cars.getCars()) {
+        for (Car car:getCars()) {
             car.move(new OneOrZeroForwardCondition(), new DoOneForward());
         }
     }

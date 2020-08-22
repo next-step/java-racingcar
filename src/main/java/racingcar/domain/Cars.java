@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,7 +17,6 @@ public class Cars {
     public static Cars createCars(List<Car> cars) {
         return new Cars(cars);
     }
-
 
     @Override
     public boolean equals(Object o) {

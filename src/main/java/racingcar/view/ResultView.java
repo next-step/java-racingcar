@@ -1,6 +1,8 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
+import racingcar.domain.RacingCounts;
+
 import java.util.List;
 
 import static racingcar.Constants.*;
@@ -19,6 +21,7 @@ public class ResultView{
     }
 
     public static void printCars(List<Car> cars) {
+
         cars.forEach(ResultView::printPosition);
     }
 
