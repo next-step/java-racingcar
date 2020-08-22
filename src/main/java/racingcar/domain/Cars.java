@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Cars {
     private final List<Car> cars;
@@ -27,7 +28,7 @@ public class Cars {
     }
 
     private int getMaxPosition() {
-        return cars.stream()
+        return getStream()
                 .max(Comparator.comparing(car -> car.getPosition()))
                 .get()
                 .getPosition();
@@ -35,5 +36,13 @@ public class Cars {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public Stream<Car> getStream() {
+        return cars.stream();
+    }
+
+    public int getSize() {
+        return cars.size();
     }
 }

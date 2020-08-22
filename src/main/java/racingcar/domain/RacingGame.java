@@ -19,6 +19,6 @@ public class RacingGame {
     }
 
     public static Cars moveCarForward(Cars cars) {
-        return new Cars(cars.getCars().stream().peek(car -> car.move(randomForward())).collect(Collectors.toList()));
+        return new Cars(cars.getStream().peek(car -> car.move(randomForward())).collect(Collectors.toList()));
     }
 }
