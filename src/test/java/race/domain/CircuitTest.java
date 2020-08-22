@@ -1,12 +1,15 @@
-package step3;
+package race.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import race.domain.Car;
+import race.domain.Circuit;
 
 class CircuitTest {
 
@@ -31,5 +34,13 @@ class CircuitTest {
             circuit.lap();
         }
         assertThat(circuit.getRounds()).isEqualTo(0);
+    }
+
+    @Test
+    void getWinnerIllegalStateException() {
+        int rounds = circuit.getRounds();
+        if (rounds > 0) {
+            assertThatThrownBy(() -> circuit.getWinners()).isInstanceOf(IllegalStateException.class);
+        }
     }
 }

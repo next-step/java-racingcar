@@ -1,9 +1,11 @@
-package step3;
+package race.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
+import race.domain.Car;
+import race.domain.NameLengthException;
 
 class CarTest {
 

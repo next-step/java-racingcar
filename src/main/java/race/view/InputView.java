@@ -1,4 +1,4 @@
-package step3;
+package race.view;
 
 import java.util.ArrayList;
 import java.util.Collections;
