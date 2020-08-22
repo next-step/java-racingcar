@@ -24,7 +24,7 @@ public class RacingCarMain {
 
     private static void printRacingGameResult(RacingGame racingGame) {
         for (int i = 0; i < racingGame.getRacingCounts(); i++) {
-            printCars(racingGame.startRacing());
+            printCars(racingGame.startRacing().getRaceResults());
         }
     }
 

@@ -24,7 +24,7 @@ public class RacingGameTest {
     @Test
     void startRacingTest() {
         RacingGame game = new RacingGame(2, new RacingCounts(3));
-        List<Car> cars = game.startRacing();
+        List<Car> cars = game.startRacing().getRaceResults();
         assertThat(cars).hasSize(2);
         // assertThat(cars).containsExactly()
     }

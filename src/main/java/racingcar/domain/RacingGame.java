@@ -11,7 +11,6 @@ import static racingcar.Constants.EMPTY;
 public class RacingGame {
     private final RacingCounts racingCounts;
     private final Cars cars;
-    public static final List<Car> race_results = new ArrayList<>( );
 
     public int getRacingCounts() {
         return racingCounts.getRacingCounts();
@@ -32,16 +31,21 @@ public class RacingGame {
         return Cars.createCars(newCars);
     }
 
-    public List<Car> startRacing() {
-        List<Car> race_results = new ArrayList<>();
+    public RaceResults startRacing() {
+        RaceResults raceResults = new RaceResults();
         if (ZeroOrMinusRacingCounts()) {
-            return race_results;
+            return raceResults;
         }
-        race_results.addAll(moveOnceCars().getCars());
-        race_results.add(EMPTY);
+        getRaceResults(raceResults).addAll(moveOnceCars().getCars());
+        getRaceResults(raceResults).add(EMPTY);
         countDownRacingCounts();
-        return race_results;
+        return raceResults;
     }
+
+    private List<Car> getRaceResults(RaceResults raceResults) {
+        return raceResults.getRaceResults( );
+    }
+
     private boolean ZeroOrMinusRacingCounts() {
         return racingCounts.checkZeroOrMinusRacingCounts( );
     }
