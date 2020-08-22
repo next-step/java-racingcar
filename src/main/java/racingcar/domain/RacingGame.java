@@ -9,14 +9,12 @@ import java.util.List;
 import static racingcar.Constants.INIT_POSITION;
 
 public class RacingGame {
-    private int carCounts;
     private int racingCounts;
     private List<Car> cars;
 
     public List<Car> getCars() { return Collections.unmodifiableList(cars);}
 
     public RacingGame(int carCounts, int racingCounts) {
-        this.carCounts = carCounts;
         this.cars = createCars(carCounts);
         this.racingCounts = racingCounts;
     }
