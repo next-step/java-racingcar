@@ -1,6 +1,7 @@
 package step3;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.operation.Operation;
 import step3.view.InputView;
 import step3.view.ResultView;
 
@@ -18,11 +19,11 @@ public class RaceCarTest {
     @Test
     public void 경주() {
         InputView inputView = new InputView();
+        Operation operation = new Operation();
         int numOfCars = inputView.numOfCars("3");
         int numOfAtp = inputView.numberOfAttempts("5");
 
-        ResultView resultView = new ResultView();
-        resultView.resultView(numOfAtp, numOfCars);
+        operation.gameStart(numOfAtp, numOfCars);
 
     }
 

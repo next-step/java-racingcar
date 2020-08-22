@@ -1,30 +1,30 @@
 package step3.operation;
 
+import step3.view.InputView;
+import step3.view.ResultView;
+
 import java.util.Random;
 
 public class Operation {
 
-    /* 게임 실행 */
-    public void gameStart(int numOfAtp, int numOfCars) {
-        int[] game = new int[numOfCars];
-
-        for(int i = 0; i < numOfAtp ; i++) {
-            int[] result = makeRandomValue(numOfCars);
-            progress(game, result);
-            System.out.println();
-        }
+    public static void main(String[] args) {
+        InputView inputView = new InputView();
+        gameStart(inputView.numberOfAttempts("5"), inputView.numOfCars("3"));
     }
 
-    /* 진행 */
+    public static void gameStart(int numOfAtp, int numOfCars) {
+        ResultView resultView = new ResultView();
+        resultView.viewProgress(numOfAtp, numOfCars);
+    }
+
     public void progress(int[] game, int[] result) {
+        ResultView resultView = new ResultView();
         for(int w = 0 ; w < game.length; w++) {
             game[w] = decideToMove(result[w], game[w]);
-            showToMove(game[w]);
-            System.out.println();
+            resultView.showToMove(game[w]);
         }
     }
 
-    /* Go or Stop 결정 */
     public int decideToMove(int result, int game) {
         if(result >= 4) {
             return game + 1;
@@ -32,16 +32,7 @@ public class Operation {
         return game;
     }
 
-    /* '-' 표현 */
-    public void showToMove(int game) {
-        for(int z = 0 ; z < game ; z++) {
-            System.out.print("-");
-        }
-    }
-
-    /* 0~10 랜덤 수 생성 */
     public int[] makeRandomValue(int numOfCars) {
-
         Random random = new Random();
         int[] randomValue = new int[numOfCars];
         for(int i = 0; i < randomValue.length; i++) {
