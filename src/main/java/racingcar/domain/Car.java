@@ -8,7 +8,7 @@ import java.util.Objects;
 import static racingcar.Constants.INIT_POSITION;
 
 public class Car {
-    private Position position;
+    private final Position position;
 
     public Car(){
         this(new Position(INIT_POSITION));}

@@ -7,8 +7,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
-    private RacingCounts racingCounts;
-    private Cars cars;
+    private final RacingCounts racingCounts;
+    private final Cars cars;
 
     public int getRacingCounts() {
         return racingCounts.getRacingCounts();
