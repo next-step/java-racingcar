@@ -5,8 +5,13 @@ import racingcar.strategy.RaceCondition;
 
 import java.util.Objects;
 
+import static racingcar.Constants.INIT_POSITION;
+
 public class Car {
     private Position position;
+
+    public Car(){
+        this(new Position(INIT_POSITION));}
 
     public Car(Position position) {
         this.position = position;

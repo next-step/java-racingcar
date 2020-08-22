@@ -11,6 +11,14 @@ public class Cars {
         this.cars = cars;
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public static Cars createCars(List<Car> cars) {
+        return new Cars(cars);
+    }
+
 
     @Override
     public boolean equals(Object o) {

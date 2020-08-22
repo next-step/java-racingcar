@@ -10,21 +10,22 @@ import static racingcar.Constants.INIT_POSITION;
 
 public class RacingGame {
     private int racingCounts;
-    private List<Car> cars;
+    private Cars cars;
 
-    public List<Car> getCars() { return Collections.unmodifiableList(cars);}
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars.getCars()); }
 
     public RacingGame(int carCounts, int racingCounts) {
         this.cars = createCars(carCounts);
         this.racingCounts = racingCounts;
     }
 
-    public static List<Car> createCars(int carCounts) {
-        List<Car> carList = new ArrayList<>(carCounts);
+    public static Cars createCars(int carCounts) {
+        List<Car> newCars = new ArrayList<>(carCounts);
         for (int i = 0; i < carCounts; i++) {
-            carList.add(new Car(new Position(INIT_POSITION)));
+            newCars.add(new Car());
         }
-        return carList;
+        return Cars.createCars(newCars);
     }
 
     public List<Car> startRacing() {
@@ -44,7 +45,7 @@ public class RacingGame {
     }
 
     private void moveCars() {
-        for (Car car:cars) {
+        for (Car car:cars.getCars()) {
             car.move(new OneOrZeroForwardCondition(), new DoOneForward());
         }
     }
