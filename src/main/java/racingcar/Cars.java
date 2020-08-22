@@ -3,21 +3,17 @@ package racingcar;
 import java.util.Collections;
 import java.util.List;
 
-public class CarList {
+public class Cars {
     private static List<Car> cars;
 
-    public CarList(final List<Car> cars) {
-        // 변경 불가한 list 만들기
+    public Cars(final List<Car> cars) {
         this.cars = Collections.unmodifiableList(cars);
     }
 
     public void move(RandomMove randomMove) {
-        int position = new Car().getPosition();
-        for(Car car : cars) {
-            if(randomMove.canMove()){
-                car.move();
-            }
-        }
+        cars.stream()
+                .filter(car -> randomMove.canMove())
+                .forEach(car -> car.move());
     }
 
     public List<Car> getCar() {
