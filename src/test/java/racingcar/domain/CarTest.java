@@ -14,7 +14,7 @@ public class CarTest {
     @Test
     public void assertCarInitPositionIsZero() {
 
-        assertThat(new Car(new Position(0)).getPosition().getPosition()).isEqualTo(INIT_POSITION);
+        assertThat(new Car(new Position(0)).getPosition()).isEqualTo(INIT_POSITION);
 
     }
     /**

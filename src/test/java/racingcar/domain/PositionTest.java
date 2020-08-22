@@ -14,7 +14,7 @@ public class PositionTest {
         Car car1 = new Car(new Position(3));
         RaceCondition alwaysOneForward = () -> true;
         car1.move(alwaysOneForward, new DoOneForward());
-        assertThat(car1.getPosition().getPosition()).isEqualTo(4);
+        assertThat(car1.getPosition()).isEqualTo(4);
     }
 
     @Test
@@ -22,6 +22,6 @@ public class PositionTest {
         Car car2 = new Car(new Position(3));
         RaceCondition alwaysZeroForward = () -> false;
         car2.move(alwaysZeroForward, new DoOneForward());
-        assertThat(car2.getPosition().getPosition()).isEqualTo(3);
+        assertThat(car2.getPosition()).isEqualTo(3);
     }
 }

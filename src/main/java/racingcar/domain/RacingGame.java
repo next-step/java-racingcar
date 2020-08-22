@@ -29,6 +29,12 @@ public class RacingGame {
         return carList;
     }
 
+    public void startRacing() {
+        if (yesRacingCond()) {
+            yesRacingCars();
+        }
+    }
+
     public void yesRacingCars() {
         this.racingCounts--;
         moveCars();

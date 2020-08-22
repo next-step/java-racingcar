@@ -23,7 +23,7 @@ public class ResultView{
     }
 
     public static void printPosition(Car car) {
-        outputChannel.printLine(repeat(PRINT_GO, car.getPosition().getPosition()));
+        outputChannel.printLine(repeat(PRINT_GO, car.getPosition()));
     }
 
     public static void printLine() {

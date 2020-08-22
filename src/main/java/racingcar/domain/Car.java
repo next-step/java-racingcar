@@ -12,8 +12,14 @@ public class Car {
         this.position = position;
     }
 
+    /*
     public Position getPosition() {
         return position;
+    }
+    */
+
+    public int getPosition() {
+        return position.getPosition();
     }
 
     public void move(RaceCondition raceCondition, DoRace doRace) {
