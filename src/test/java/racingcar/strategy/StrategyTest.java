@@ -1,5 +1,6 @@
 package racingcar.strategy;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
@@ -12,20 +13,20 @@ public class StrategyTest {
     @DisplayName("1만큼 전진 전략 확인")
     @Test
     void OneForwardPosition() {
-        Car car1 = new Car(new Position(3));
+        Car car = new Car();
         RaceCondition alwaysOneForward = () -> true;
-        car1.move(alwaysOneForward, new DoOneForward());
-        int actual = car1.getPosition();
-        assertThat(actual).isEqualTo(4);
+        car.move(alwaysOneForward, new DoOneForward());
+        int actual = car.getPosition();
+        assertThat(actual).isEqualTo(1);
     }
 
     @DisplayName("0만큼 전진, 즉 멈춤 전략 확인")
     @Test
     void ZeroForwardPosition() {
-        Car car2 = new Car(new Position(3));
+        Car car = new Car();
         RaceCondition alwaysZeroForward = () -> false;
-        car2.move(alwaysZeroForward, new DoOneForward());
-        int actual = car2.getPosition();
-        assertThat(actual).isEqualTo(3);
+        car.move(alwaysZeroForward, new DoOneForward());
+        int actual = car.getPosition();
+        assertThat(actual).isEqualTo(0);
     }
 }
