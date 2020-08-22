@@ -55,7 +55,7 @@ public class RacingGame {
 
     private Cars moveOnceCars() {
         for (Car car : getCars()) {
-            car.move(new OneOrZeroForwardCondition( ), new DoOneForward( ));
+            car.move(new OneOrZeroForwardCondition(), new DoOneForward());
         }
         return this.cars;
     }

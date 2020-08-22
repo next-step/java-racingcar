@@ -1,11 +1,14 @@
 package racingcar;
 
+import racingcar.domain.Car;
 import racingcar.domain.RacingCounts;
 import racingcar.domain.RacingGame;
 import racingcar.view.InputChannel;
 import racingcar.view.InputView;
 import racingcar.view.OutputChannel;
 import racingcar.view.ResultView;
+
+import java.util.List;
 
 import static racingcar.view.InputView.getCarCounts;
 import static racingcar.view.InputView.getRacingCounts;
@@ -24,8 +27,12 @@ public class RacingCarMain {
 
     private static void printRacingGameResult(RacingGame racingGame) {
         for (int i = 0; i < racingGame.getRacingCounts(); i++) {
-            printCars(racingGame.startRacing().getRaceResults());
+            printCars(getRaceResults(racingGame));
         }
+    }
+
+    private static List<Car> getRaceResults(RacingGame racingGame) {
+        return racingGame.startRacing().getRaceResults();
     }
 
 }
