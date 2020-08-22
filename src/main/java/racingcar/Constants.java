@@ -2,10 +2,6 @@ package racingcar;
 
 
 import racingcar.domain.Car;
-import racingcar.strategy.RaceCondition;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public final class Constants {
 
@@ -24,6 +20,5 @@ public final class Constants {
     public static final String ASK_RACING_COUNT = "시도할 회수는 몇 회 인가요?";
     public static final String SAY_VIEW_RESULT = "실행 결과";
     public static final String PRINT_GO = "-";
-    public static final String BLANK_LINE = "";
 
 }

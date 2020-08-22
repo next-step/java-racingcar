@@ -1,7 +1,6 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
-import racingcar.domain.RacingCounts;
 
 import java.util.List;
 
@@ -27,10 +26,5 @@ public class ResultView{
     public static void printPosition(Car car) {
         outputChannel.printLine(repeat(PRINT_GO, car.getPosition()));
     }
-
-    public static void printLine() {
-        outputChannel.printLine(BLANK_LINE);
-    }
-
 
 }

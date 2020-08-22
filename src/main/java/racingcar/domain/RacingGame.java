@@ -10,6 +10,7 @@ import java.util.List;
 import static racingcar.Constants.EMPTY_CAR;
 
 public class RacingGame {
+    public static List<Car> RACE_RESULTS = new ArrayList<>( );
     private final RacingCounts racingCounts;
     private final Cars cars;
 
@@ -33,16 +34,19 @@ public class RacingGame {
     }
 
     public List<Car> startRacing() {
-        List<Car> carsAfterRace = new ArrayList<>( );
-        if (getRacingCounts() == 0) {
-            return carsAfterRace;
+        List<Car> RACE_RESULTS = new ArrayList<>();
+        if (ZeroOrMinusRacingCounts()) {
+            return RACE_RESULTS;
         }
-        carsAfterRace.addAll(moveOnceCars().getCars());
-        carsAfterRace.add(EMPTY_CAR);
-        countDownRacingCounts( );
-        return carsAfterRace;
+        RACE_RESULTS.addAll(moveOnceCars().getCars());
+        RACE_RESULTS.add(EMPTY_CAR);
+        countDownRacingCounts();
+        return RACE_RESULTS;
     }
 
+    private boolean ZeroOrMinusRacingCounts() {
+        return getRacingCounts() <= 0;
+    }
     private int countDownRacingCounts() {
         return getRacingCounts() - 1;
     }
