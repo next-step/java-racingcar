@@ -17,8 +17,8 @@ public class Car {
         this.position = new Position(position);
     }
 
-    public Position getPosition() {
-        return position;
+    public int getPosition() {
+        return position.getPosition();
     }
 
     public CarName getName() {

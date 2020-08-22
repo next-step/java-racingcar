@@ -7,7 +7,7 @@ public class OutputView {
         cars.getCars().forEach(car -> {
             StringBuilder track = new StringBuilder();
             track.append(car.getName().getName()).append(" : ");
-            for(int i=1; i <= car.getPosition().getPosition(); i++) {
+            for(int i=1; i <= car.getPosition(); i++) {
                 track.append("-");
             }
             System.out.println(track);

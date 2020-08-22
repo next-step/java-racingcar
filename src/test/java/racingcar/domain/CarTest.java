@@ -21,8 +21,8 @@ class CarTest {
     @Test
     void 자동차_임의이동_성공() {
         Car car = new Car("구글");
-        car.move(1);
-        assertThat(car.getPosition().getPosition()).isGreaterThanOrEqualTo(2);
+        car.move(5);
+        assertThat(car.getPosition()).isGreaterThanOrEqualTo(2);
     }
 
 }

@@ -1,14 +1,15 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 public class Cars {
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(List<Car> cars) {
-        this.cars = cars;
+        this.cars = Collections.unmodifiableList(cars);
     }
 
     public Winners findWinners() {
@@ -22,14 +23,13 @@ public class Cars {
                 winners.add(car);
             }
         }
-        return winners;
+        return Collections.unmodifiableList(winners);
     }
 
     private int getMaxPosition() {
         return cars.stream()
-                .max(Comparator.comparing(car -> car.getPosition().getPosition()))
+                .max(Comparator.comparing(car -> car.getPosition()))
                 .get()
-                .getPosition()
                 .getPosition();
     }
 
