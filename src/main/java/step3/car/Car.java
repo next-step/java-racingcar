@@ -1,7 +1,7 @@
-package car;
+package step3.car;
 
-import command.Command;
-import java.util.ArrayList;
+import step3.command.Command;
+
 import java.util.List;
 
 public class Car {

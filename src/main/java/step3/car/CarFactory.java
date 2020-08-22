@@ -1,6 +1,6 @@
-package car;
+package step3.car;
 
-import command.CommandFactory;
+import step3.command.CommandFactory;
 
 public class CarFactory {
 

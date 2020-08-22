@@ -1,4 +1,4 @@
-package command;
+package step3.command;
 
 import java.util.ArrayList;
 import java.util.List;

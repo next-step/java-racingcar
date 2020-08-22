@@ -1,8 +1,10 @@
-import car.Car;
+package step3;
+
+import
+import step3.car.Car;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class CarRace {
 
