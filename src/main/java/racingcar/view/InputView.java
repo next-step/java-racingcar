@@ -11,16 +11,16 @@ public class InputView {
     public int round;
 
     public void input() {
-        getCarNumber();
-        getRound();
+        inputCarNumber();
+        inputRound();
     }
 
-    private void getCarNumber() {
+    private void inputCarNumber() {
         System.out.println(Constants.INPUT_CAR_NUMBER_COMMANDS);
         setCarNumber(scanner.nextInt());
     }
 
-    private void getRound() {
+    private void inputRound() {
         System.out.println(Constants.INPUT_ROUND_NUMBER_COMMANDS);
         setRound(scanner.nextInt());
     }
@@ -31,5 +31,13 @@ public class InputView {
 
     public void setRound(int round) {
         this.round = round;
+    }
+
+    public int getCarNumber() {
+        return carNumber;
+    }
+
+    public int getRound() {
+        return round;
     }
 }
