@@ -2,11 +2,6 @@ import java.util.Scanner;
 
 public class StringCalculator {
 
-    public String input() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
-    }
-
     public String[] splitValue(String value) {
         return value.split(" ");
     }
@@ -25,14 +20,18 @@ public class StringCalculator {
     }
 
     public int verifyOperator(int prev, char operator, int next) {
-        if (operator == '+')
+        if (operator == '+') {
             return add(prev, next);
-        if (operator == '-')
+        }
+        if (operator == '-') {
             return subtract(prev, next);
-        if (operator == '*')
+        }
+        if (operator == '*') {
             return multiply(prev, next);
-        if (operator == '/')
+        }
+        if (operator == '/') {
             return divide(prev, next);
+        }
         throw new IllegalArgumentException("사칙연산 기호가 아닙니다.");
     }
 

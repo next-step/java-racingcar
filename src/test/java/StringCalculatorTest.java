@@ -3,6 +3,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,20 +18,12 @@ class StringCalculatorTest {
          calculator = new StringCalculator();
     }
 
-    @DisplayName("공백 입력 예외 출력")
-    @Test
-    void emptyTest() {
-        assertThatThrownBy(() -> {
-            calculator.calculate(" ");
-        }).isInstanceOf(IllegalArgumentException.class)
-          .hasMessageContaining("입력 값이 null이거나 빈 공백입니다.");
-    }
-
     @DisplayName("null 입력 예외 출력")
-    @Test
-    void nullTest() {
+    @NullAndEmptySource
+    @ParameterizedTest
+    void nullTest(String input) {
         assertThatThrownBy(() -> {
-            calculator.calculate(null);
+            calculator.calculate(input);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력 값이 null이거나 빈 공백입니다.");
     }
