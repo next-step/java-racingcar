@@ -14,6 +14,6 @@ class RacingEventTest {
     void readyRacingEvent(){
         racingEvent.readyEvent(3);
 
-        assertThat(racingEvent.getCars().size()).isEqualTo(3);
+        assertThat(racingEvent.getPositionHistory().size()).isEqualTo(3);
     }
 }

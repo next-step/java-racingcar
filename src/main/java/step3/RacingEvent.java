@@ -3,38 +3,32 @@ package step3;
 import step3.view.ResultView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RacingEvent {
 
-    private List<Car> cars = new ArrayList<>();
-    private ResultView resultView = new ResultView();
+    private Map<Car, List<Integer>> positionHistory = new HashMap();
 
-    public List<Car> getCars(){
-        return this.cars;
+    public Map<Car, List<Integer>> getPositionHistory() {
+        return positionHistory;
     }
 
-    void readyEvent(int CarCount){
-        for(int i = 0; i < CarCount; i++){
-            cars.add(new Car());
+    void readyEvent(int carCount){
+        for(int i = 0; i < carCount; i++){
+            positionHistory.put(new Car(), new ArrayList<>());
         }
     }
 
     void startEvent(int tryCount){
-        resultView.startResult();
         for(int i = 0; i < tryCount; i++){
-            System.out.println("");
             moveCars();
         }
     }
 
     private void moveCars(){
-        for(Car car : cars){
-            if(new Forward().successForward()){
-                car.moveForward();
-            }
-            resultView.showPosition(car.getCurrentPosition());
-        }
+        positionHistory.forEach((k, v) -> v.add(k.moveForward(new Forward().successForward())));
     }
 
 }

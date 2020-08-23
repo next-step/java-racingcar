@@ -6,8 +6,11 @@ public class Car {
 
     private int currentPosition;
 
-    public void moveForward(){
-        currentPosition++;
+    public int moveForward(boolean success){
+        if(success){
+            currentPosition++;
+        }
+        return currentPosition;
     }
 
     public int getCurrentPosition(){

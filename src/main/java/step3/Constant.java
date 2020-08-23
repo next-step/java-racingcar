@@ -1,6 +1,9 @@
 package step3;
 
 class Constant {
-    static final Integer FOUR = 4;
-    static final Integer TEN = 10;
+
+    private Constant(){};
+
+    static final Integer FORWARD_MIN = 4;
+    static final Integer FORWARD_MAX = 10;
 }

@@ -14,5 +14,8 @@ public class Main {
         racingEvent.readyEvent(inputView.getCarCount());
         racingEvent.startEvent(inputView.getTryCount());
 
+        ResultView resultView = new ResultView();
+        resultView.startResult();
+        resultView.showRacingResult(racingEvent.getPositionHistory(), inputView.getTryCount());
     }
 }

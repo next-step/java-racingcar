@@ -8,7 +8,7 @@ class Forward implements CarMovement {
 
     @Override
     public boolean successForward() {
-        return Constant.FOUR <= random.nextInt(Constant.TEN);
+        return Constant.FORWARD_MIN <= random.nextInt(Constant.FORWARD_MAX);
     }
 
 }
