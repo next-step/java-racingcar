@@ -1,10 +1,22 @@
 package step3.car;
 
-import step3.command.CommandFactory;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
 
 public class CarFactory {
 
-    CommandFactory commandFactory;
+    public static List<Car> createCarList(int carNumber) {
+            if (carNumber < 1) {
+                throw new IllegalArgumentException("createCarList의 인자값은 최소 1 이상이어야 합니다.");
+            }
 
-    p
+            List<Car> carList = new ArrayList<>();
+
+            for (int i = 0; i < carNumber; i++) {
+                carList.add(Car.createCar());
+            }
+
+            return carList;
+    }
 }

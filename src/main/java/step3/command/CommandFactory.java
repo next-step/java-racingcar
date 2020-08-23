@@ -6,32 +6,29 @@ import java.util.Random;
 
 public class CommandFactory {
 
-    private static final Random random =  new Random();
-    private int execNumber;
+    private static final Random RANDOM =  new Random();
 
-    private CommandFactory() {}
-
-    public CommandFactory getInstance() {
-
-    }
+    private CommandFactory(){}
 
     public static List<Command> createCommandList(int execNumber) {
         List<Command> commandList = new ArrayList<>();
 
         for (int i = 0; i < execNumber; i++) {
-            commandList.add(getCommand());
+            commandList.add(getCommand(getRandomValue()));
         }
 
         return commandList;
     }
 
-    private static Command getCommand() {
-        int randomValue = random.nextInt(10);
-
+    public static Command getCommand(int randomValue) {
         if (randomValue >= 4) {
             return Command.GO;
         }
 
         return Command.STOP;
+    }
+
+    private static int getRandomValue() {
+        return RANDOM.nextInt(10);
     }
 }

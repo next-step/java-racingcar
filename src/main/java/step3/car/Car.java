@@ -4,17 +4,33 @@ import step3.command.Command;
 
 import java.util.List;
 
-public class Car {
-    private List<Command> commandList;
-    private
+import static step3.command.Command.GO;
 
-    public Car(List<Command> list) {
-        this.commandList = list;
+public class Car {
+
+    private List<Command> commandList;
+
+    private Car(){};
+
+    public static Car createCar() {
+        return new Car();
     }
 
-    public
+    public void setCommandList(List<Command> commandList) {
+        this.commandList = commandList;
+    }
 
-    public void
+    public int getCarProgress(int currentLocation) {
+        int currentProgress = 0;
 
+        for (int i = 0; i <= currentLocation; i++) {
+            if (this.commandList.get(i).equals(GO)) {
+                currentProgress++;
+            }
+        }
 
+        return currentProgress;
+    }
 }
+
+
