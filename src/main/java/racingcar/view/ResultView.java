@@ -24,7 +24,7 @@ public class ResultView{
     }
 
     public static void printPosition(Car car) {
-        outputChannel.printLine(repeat(PRINT_GO, car.getPosition()));
+        outputChannel.printLine(car.getCarName()+" : "+repeat(PRINT_GO, car.getPosition()));
     }
 
     public static void printEmptyLine() {

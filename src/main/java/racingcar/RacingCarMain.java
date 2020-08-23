@@ -1,5 +1,6 @@
-package racingcar.domain;
+package racingcar;
 
+import racingcar.domain.RacingGame;
 import racingcar.view.InputChannel;
 import racingcar.view.InputView;
 import racingcar.view.OutputChannel;
