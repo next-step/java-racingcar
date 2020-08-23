@@ -76,12 +76,6 @@
         * test = when adding missing tests
         * chore = maintain 
         
-##### 코드 리뷰 내역
-         Day 1
-            * 
-         
-         Day 2
-            * 
             
             
          
