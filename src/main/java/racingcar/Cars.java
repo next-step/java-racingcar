@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Cars {
-    private static List<Car> cars;
+    private List<Car> cars;
 
     public Cars(final List<Car> cars) {
         this.cars = Collections.unmodifiableList(cars);

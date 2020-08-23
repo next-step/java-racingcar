@@ -12,10 +12,14 @@ public class ResultView {
     }
 
     public void printResult(List<Car> cars) {
-        for(Car car: cars) {
-            for(int i = 0; i< car.getPosition(); i++)
-                System.out.print(MOVEMENT);
-            System.out.println();
-        }
+        cars.stream()
+                .forEach(car -> {
+                    int position = car.getPosition();
+                    for(int i = 0; i < position; i++){
+                        System.out.print(MOVEMENT);
+                    }
+                    System.out.println();
+                });
+        System.out.println();
     }
 }

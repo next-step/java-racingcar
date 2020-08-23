@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingCar {
-    private static CarList cars;
+    private static Cars cars;
     private final int numCars;
     private final int numTry;
     private final RandomMove randomMove;
@@ -20,14 +20,14 @@ public class RacingCar {
         cars.move(randomMove);
     }
 
-    public CarList carReady(final int numCars) {
+    public Cars carReady(final int numCars) {
         List<Car> cars = new ArrayList<>();
 
         for(int i = 0; i < numCars; i++) {
             cars.add(new Car());
         }
 
-        return new CarList(cars);
+        return new Cars(cars);
     }
 
     public List<Car> getCarList() {

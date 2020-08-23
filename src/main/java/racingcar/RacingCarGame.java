@@ -18,7 +18,6 @@ public class RacingCarGame {
             racingCar.racingPlay();
             resultView.printResult(racingCar.getCarList());
 
-            System.out.println();
             tryNum --;
         }
     }
