@@ -3,7 +3,7 @@ package racingcarbasic;
 public class Car {
     private final String name;
     private int step;
-    private MoveStrategy moveStrategy;
+    private final MoveStrategy moveStrategy;
 
     public Car(String name, int step, MoveStrategy moveStrategy) {
         this.name = name;
