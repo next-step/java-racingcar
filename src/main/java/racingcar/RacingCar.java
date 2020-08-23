@@ -37,14 +37,17 @@ public class RacingCar {
         return scanner.nextInt();
     }
 
+    private static int getRandomNumber() {
+        Random rand = new Random();
+        return rand.nextInt(10);
+    }
+
     private static void resultView(String[] cars) {
         System.out.println(Constants.RESULT_MESSAGE);
-        Random rand = new Random();
 
         for (int i = 0; i < round; i++) {
             for (int j = 0; j < carNumber; j++) {
-                int randomNumber = rand.nextInt(10);
-                if (randomNumber >= 4) {
+                if (getRandomNumber() >= Constants.MOVE_CONDITION) {
                     cars[j] += "-";
                 }
                 System.out.println(cars[j]);
