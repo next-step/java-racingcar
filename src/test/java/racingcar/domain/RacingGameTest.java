@@ -11,7 +11,7 @@ public class RacingGameTest {
 
     @DisplayName("carCounts 만큼, position 0인 cars create")
     @Test
-    void createCarsbyCarCounts() {
+    void carsReadyForRacingGameTest() {
         RacingGame game = new RacingGame("pobi,crong", 3);
         List<Car> newCars = game.getCars();
         assertThat(newCars).hasSize(2);
