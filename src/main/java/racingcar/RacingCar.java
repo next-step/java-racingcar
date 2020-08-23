@@ -34,7 +34,20 @@ public class RacingCar {
 
     private static int input() {
         Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
+        String value = scanner.nextLine();
+        if (!isNumeric(value)) {
+            throw new IllegalArgumentException(Constants.INVALID_INPUT);
+        }
+        return Integer.parseInt(value);
+    }
+
+    private static boolean isNumeric(String value) {
+        try {
+            Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
     }
 
     private static int getRandomNumber() {
