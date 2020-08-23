@@ -5,7 +5,10 @@ import java.util.Random;
 public class Car {
     private static final int MIN_NUMBER = 4;
     private static final int RANDOM_MAX_NUMBER = 10;
+
     private int location;
+
+    private Random random = new Random();
 
     public Car() {
         this.location = 0;
@@ -18,14 +21,14 @@ public class Car {
     }
 
     private int getRandomNumber() {
-        return new Random().nextInt(RANDOM_MAX_NUMBER);
+        return random.nextInt(RANDOM_MAX_NUMBER);
     }
 
-    public void move() {
+    private void move() {
         this.location++;
     }
 
-    public boolean checkMove(int randomNumber) {
+    private boolean checkMove(int randomNumber) {
         return randomNumber >= MIN_NUMBER;
     }
 
