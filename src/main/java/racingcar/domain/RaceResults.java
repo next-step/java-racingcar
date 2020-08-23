@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,10 +9,6 @@ public class RaceResults {
 
     public RaceResults(List<Car> raceResults) {
         this.raceResults = raceResults;
-    }
-
-    public RaceResults(){
-        this(new ArrayList<>());
     }
 
     public List<Car> getRaceResults() {
