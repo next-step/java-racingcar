@@ -1,5 +1,9 @@
 package racingcar.domain;
 
+import racingcar.strategy.DoOneForward;
+import racingcar.strategy.OneOrZeroForwardCondition;
+
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,6 +17,11 @@ public class Cars {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public void moveCars() {
+        cars.forEach(car
+                -> car.move(new OneOrZeroForwardCondition( ), new DoOneForward( )));
     }
 
     @Override

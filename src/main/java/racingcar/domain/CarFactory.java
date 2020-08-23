@@ -14,7 +14,7 @@ public class CarFactory {
         String[] values = value.split(INPUT_DELIMITER);
         List<Car> newCars = Arrays.stream(values)
                                 .filter(o -> isValid(o))
-                                .map(o -> new Car(o))
+                                .map(o -> new Car(o.trim()))
                                 .collect(Collectors.toList( ));
         return newCars;
     }
