@@ -1,6 +1,8 @@
-package racingcarbasic;
+package racingcar;
 
 import org.junit.jupiter.api.Test;
+import racingcar.domain.RacingCars;
+import racingcar.domain.ValidationUtil;
 
 import java.util.Arrays;
 
@@ -28,7 +30,7 @@ public class RacingCarTest {
     }
 
     @Test
-    void 이름_검증() {
+    void 이름_검증_5자_넘을_때() {
         ValidationUtil validationUtil = new ValidationUtil();
         assertThatThrownBy(() -> {
             validationUtil.validateInputName(new String[]{"ccccccc", "a", "abc"});

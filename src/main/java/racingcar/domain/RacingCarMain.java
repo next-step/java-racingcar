@@ -1,4 +1,7 @@
-package racingcarbasic;
+package racingcar.domain;
+
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 public class RacingCarMain {
 
