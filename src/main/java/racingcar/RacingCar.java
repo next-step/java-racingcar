@@ -14,6 +14,7 @@ public class RacingCar {
         String[] cars = new String[carNumber];
         Arrays.fill(cars, "");
 
+        resultView(cars);
     }
 
     private static void inputView() {
@@ -36,5 +37,20 @@ public class RacingCar {
         return scanner.nextInt();
     }
 
+    private static void resultView(String[] cars) {
+        System.out.println(Constants.RESULT_MESSAGE);
+        Random rand = new Random();
+
+        for (int i = 0; i < round; i++) {
+            for (int j = 0; j < carNumber; j++) {
+                int randomNumber = rand.nextInt(10);
+                if (randomNumber >= 4) {
+                    cars[j] += "-";
+                }
+                System.out.println(cars[j]);
+            }
+            System.out.println();
+        }
+    }
 
 }
