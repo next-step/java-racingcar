@@ -1,7 +1,7 @@
 package racingcar;
 
 
-import static racingcar.racing.Racing.racingStart;
+import static racingcar.domain.RacingGame.racingStart;
 import static racingcar.view.InputView.getInputCarsName;
 import static racingcar.view.InputView.getInputTryCount;
 
