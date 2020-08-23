@@ -29,9 +29,9 @@ public class RacingCarTest {
 
     @Test
     void 이름_검증() {
-        ValidationName validationName = new ValidationName();
+        ValidationUtil validationUtil = new ValidationUtil();
         assertThatThrownBy(() -> {
-            validationName.validateName(new String[]{"ccccccc", "a", "abc"});
+            validationUtil.validateInputName(new String[]{"ccccccc", "a", "abc"});
         }).isInstanceOf(IllegalArgumentException.class);
     }
 

@@ -9,8 +9,8 @@ public class RacingCarMain {
         int moveCount = inputView.getMoveCount();
 
         /* 자동차 이름 검사 */
-        ValidationName validationName = new ValidationName();
-        validationName.validateName(carNameList);
+        ValidationUtil validationUtil = new ValidationUtil();
+        validationUtil.validateInputName(carNameList);
 
         /* RacingCar 인스턴스 생성 */
         RacingCars racingCars = RacingCars.of(carNameList, new StraightMove());
