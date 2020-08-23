@@ -5,9 +5,10 @@ public class Car {
     private int step;
     private MoveStrategy moveStrategy;
 
-    public Car(String name, int step) {
+    public Car(String name, int step, MoveStrategy moveStrategy) {
         this.name = name;
         this.step = step;
+        this.moveStrategy = moveStrategy;
     }
 
     public String getName() {
@@ -22,9 +23,4 @@ public class Car {
         if (moveStrategy.move())
             step++;
     }
-
-    public void setMoveStrategy(MoveStrategy moveStrategy) {
-        this.moveStrategy = moveStrategy;
-    }
-
 }
