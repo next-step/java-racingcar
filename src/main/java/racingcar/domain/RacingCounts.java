@@ -13,14 +13,6 @@ public class RacingCounts {
         return this.racingCounts;
     }
 
-    public boolean checkZeroOrMinusRacingCounts() {
-        return getRacingCounts() <= 0;
-    }
-
-    public int decreaseRacingCounts() {
-        return getRacingCounts() - 1;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

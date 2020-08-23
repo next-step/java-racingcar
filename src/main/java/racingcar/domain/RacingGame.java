@@ -33,24 +33,13 @@ public class RacingGame {
 
     public RaceResults startRacing() {
         RaceResults raceResults = new RaceResults();
-        if (ZeroOrMinusRacingCounts()) {
-            return raceResults;
-        }
         getRaceResults(raceResults).addAll(moveOnceCars().getCars());
         getRaceResults(raceResults).add(EMPTY);
-        countDownRacingCounts();
         return raceResults;
     }
 
     private List<Car> getRaceResults(RaceResults raceResults) {
         return raceResults.getRaceResults( );
-    }
-
-    private boolean ZeroOrMinusRacingCounts() {
-        return racingCounts.checkZeroOrMinusRacingCounts( );
-    }
-    private int countDownRacingCounts() {
-        return racingCounts.decreaseRacingCounts();
     }
 
     private Cars moveOnceCars() {
