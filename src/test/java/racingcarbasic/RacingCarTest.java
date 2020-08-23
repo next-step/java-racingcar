@@ -1,23 +1,46 @@
 package racingcarbasic;
 
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RacingCarTest {
 
-    @ParameterizedTest
-    @CsvSource(value = {"0, 1, 2, 3, 4, 5, 6, 7, 8, 9"}, delimiter = ',')
-    void 전진(int num) {
-        MoveStrategy functionalTest = () -> num >= 0;
-        assertThat(functionalTest.move()).isEqualTo(true);
+    @Test
+    void 전진() {
+        String[] name = {"car", "car", "car", "car", "car"};
+        RacingCars racingCars = RacingCars.of(name, () -> true);
+        racingCars.moveCars();
+
+        assertThat(racingCars.getCarList()).allMatch(car -> car.getStep() == 1);
     }
 
-    @ParameterizedTest
-    @CsvSource(value = {"0, 1, 2, 3, 4, 5, 6, 7, 8, 9"}, delimiter = ',')
-    void 멈춤(int num) {
-        MoveStrategy functionalTest = () -> num >= 10;
-        assertThat(functionalTest.move()).isEqualTo(false);
+    @Test
+    void 멈춤() {
+        String[] name = {"car", "car", "car", "car", "car"};
+        RacingCars racingCars = RacingCars.of(name, () -> false);
+        racingCars.moveCars();
+
+        assertThat(racingCars.getCarList()).allMatch(car -> car.getStep() == 0);
+    }
+
+    @Test
+    void 이름_검증() {
+        ValidationUtil validationUtil = new ValidationUtil();
+        assertThatThrownBy(() -> {
+            validationUtil.validateInputName(new String[]{"ccccccc", "a", "abc"});
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 전부_우승자일_경우() {
+        String[] nameList = {"a", "car", "eeee", "rrrr", "ff"};
+        RacingCars racingCars = RacingCars.of(nameList, () -> true);
+        racingCars.moveCars();
+
+        assertThat(racingCars.getWinners()).isEqualTo(Arrays.asList(nameList));
     }
 }

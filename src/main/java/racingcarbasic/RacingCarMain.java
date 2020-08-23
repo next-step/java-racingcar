@@ -1,34 +1,28 @@
 package racingcarbasic;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-
 public class RacingCarMain {
 
     public static void main(String[] args) {
-        /* 자동차 대수와 이동 횟수 받기 */
+        /* 자동차 이름 리스트와 이동 횟수 받기 */
         InputView inputView = new InputView();
-        int carNum = inputView.getCarNum();
+        String[] carNameList = inputView.getCarNameList();
         int moveCount = inputView.getMoveCount();
 
-        System.out.println(carNum + " " + moveCount);
+        /* 자동차 이름 검사 */
+        ValidationUtil validationUtil = new ValidationUtil();
+        validationUtil.validateInputName(carNameList);
 
         /* RacingCar 인스턴스 생성 */
-        List<Car> carList = Stream.generate(() -> new Car("car", 0))
-                .limit(carNum)
-                .collect(Collectors.toList());
-
-        /* 일급 컬렉션 선언*/
-        RacingCars racingCars = new RacingCars(carList);
+        RacingCars racingCars = RacingCars.of(carNameList, new StraightMove());
 
         ResultView resultView = new ResultView();
         for (int i = 0; i < moveCount; i++) {
-            racingCars.moveCars(carList);
-            resultView.ResultPrint(carList);
+            racingCars.moveCars();
+            resultView.printResult(racingCars);
         }
 
+        /* 우승자 출력 */
+        resultView.printWinners(racingCars.getWinners());
 
     }
 }
