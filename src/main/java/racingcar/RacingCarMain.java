@@ -11,6 +11,7 @@ import racingcar.view.ResultView;
 import java.util.List;
 
 import static racingcar.view.ResultView.printCars;
+import static racingcar.view.ResultView.printEmptyLine;
 
 public class RacingCarMain {
     public static void main(String[] args) {
@@ -25,6 +26,7 @@ public class RacingCarMain {
     private static void printRacingGameResult(RacingGame racingGame) {
         for (int i = 0; i < racingGame.getRacingCounts(); i++) {
             printCars(getRaceResults(racingGame));
+            printEmptyLine();
         }
     }
 

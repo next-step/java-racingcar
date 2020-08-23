@@ -28,4 +28,7 @@ public class ResultView{
         outputChannel.printLine(repeat(PRINT_GO, car.getPosition()));
     }
 
+    public static void printEmptyLine() {
+        outputChannel.printLine(EMPTY_LINE);
+    }
 }

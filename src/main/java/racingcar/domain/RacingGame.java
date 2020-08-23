@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static racingcar.Constants.EMPTY;
-
 public class RacingGame {
     private final RacingCounts racingCounts;
     private final Cars cars;
@@ -34,7 +32,6 @@ public class RacingGame {
     public RaceResults startRacing() {
         RaceResults raceResults = new RaceResults();
         getRaceResults(raceResults).addAll(moveOnceCars().getCars());
-        getRaceResults(raceResults).add(EMPTY);
         return raceResults;
     }
 
