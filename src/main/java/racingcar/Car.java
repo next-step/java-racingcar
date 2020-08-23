@@ -6,4 +6,12 @@ public class Car {
     public Car() {
         this.position = 0;
     }
+
+    public void movePosition() {
+        this.position++;
+    }
+
+    public int getPosition() {
+        return position;
+    }
 }

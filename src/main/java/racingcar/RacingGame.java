@@ -22,13 +22,14 @@ public class RacingGame {
     public static void gameStart(List<Car> cars, int round) {
         System.out.println(Constants.RESULT_MESSAGE);
         ResultView resultView = new ResultView();
+
         for (int i = 0; i < round; i++) {
-            for (int j = 0; j < cars.size(); j++) {
+            cars.forEach(car -> {
                 if (isMove()) {
-                    cars.get(j).position++;
+                    car.movePosition();
                 }
-                resultView.printResult(cars.get(j).position);
-            }
+                resultView.printResult(car.getPosition());
+            });
             System.out.println();
         }
     }
