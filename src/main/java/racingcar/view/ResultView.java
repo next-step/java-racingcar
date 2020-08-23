@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.domain.Car_old;
+import racingcar.domain.Car;
 
 import java.util.List;
 
@@ -19,11 +19,11 @@ public class ResultView{
         outputChannel.printLine("\n"+SAY_VIEW_RESULT);
     }
 
-    public static void printCars(List<Car_old> cars) {
+    public static void printCars(List<Car> cars) {
         cars.forEach(ResultView::printPosition);
     }
 
-    public static void printPosition(Car_old car) {
+    public static void printPosition(Car car) {
         outputChannel.printLine(repeat(PRINT_GO, car.getPosition()));
     }
 

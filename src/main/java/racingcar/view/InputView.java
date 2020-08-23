@@ -1,7 +1,5 @@
 package racingcar.view;
 
-import stringcalculator.Constants;
-
 import static racingcar.Constants.*;
 
 public class InputView {
@@ -13,14 +11,16 @@ public class InputView {
         this.outputChannel = outputChannel;
     }
 
-    public static int getCarCounts() {
-        outputChannel.printLine(ASK_CAR_COUNT);
-        return inputChannel.getIntValue();
+    public static String getCarNames() {
+        outputChannel.printLine(ASK_CAR_NAMES);
+        return inputChannel.getStringValue();
     }
 
     public static int getRacingCounts() {
         outputChannel.printLine(ASK_RACING_COUNT);
         return inputChannel.getIntValue();
     }
+
+
 }
 

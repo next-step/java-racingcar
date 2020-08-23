@@ -14,4 +14,10 @@ public class SystemIn implements InputChannel {
             scanner.nextLine();
         }
     }
+
+    @Override
+    public String getStringValue() {
+        return scanner.nextLine();
+
+    }
 }
