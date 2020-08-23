@@ -7,18 +7,18 @@ import java.util.Random;
 
 public class Operation {
 
+    static ResultView resultView = new ResultView();
+
     public static void main(String[] args) {
         InputView inputView = new InputView();
         gameStart(inputView.numberOfAttempts("5"), inputView.numOfCars("3"));
     }
 
     public static void gameStart(int numOfAtp, int numOfCars) {
-        ResultView resultView = new ResultView();
         resultView.viewProgress(numOfAtp, numOfCars);
     }
 
     public void progress(int[] game, int[] result) {
-        ResultView resultView = new ResultView();
         for(int w = 0 ; w < game.length; w++) {
             game[w] = decideToMove(result[w], game[w]);
             resultView.showToMove(game[w]);
