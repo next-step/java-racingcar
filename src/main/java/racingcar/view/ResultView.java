@@ -24,10 +24,11 @@ public class ResultView{
     }
 
     public static void printPosition(Car car) {
-        outputChannel.printLine(car.getCarName()+" : "+repeat(PRINT_GO, car.getPosition()));
+        outputChannel.printLine(car.getCarName() + SAY_CAR_NAMES + repeat(PRINT_GO, car.getPosition()));
     }
-
     public static void printEmptyLine() {
         outputChannel.printLine(EMPTY_LINE);
     }
+
+    public static void printWinners() {outputChannel.printLine(SAY_WINNERS_NAMES); }
 }
