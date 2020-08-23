@@ -1,7 +1,6 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
-import stringcalculator.Constants;
+import racingcar.domain.Car_old;
 
 import java.util.List;
 
@@ -20,11 +19,11 @@ public class ResultView{
         outputChannel.printLine("\n"+SAY_VIEW_RESULT);
     }
 
-    public static void printCars(List<Car> cars) {
+    public static void printCars(List<Car_old> cars) {
         cars.forEach(ResultView::printPosition);
     }
 
-    public static void printPosition(Car car) {
+    public static void printPosition(Car_old car) {
         outputChannel.printLine(repeat(PRINT_GO, car.getPosition()));
     }
 

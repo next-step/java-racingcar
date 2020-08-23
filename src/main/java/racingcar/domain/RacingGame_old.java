@@ -4,27 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class RacingGame {
+public class RacingGame_old {
     private final RacingCounts racingCounts;
-    private final Cars cars;
+    private final Cars_old carsOld;
 
     public int getRacingCounts() {
         return racingCounts.getRacingCounts();
     }
-    public List<Car> getCars() {
-        return cars.getCars(); }
+    public List<Car_old> getCars() {
+        return carsOld.getCars(); }
 
-    public RacingGame(int carCounts, RacingCounts racingCounts) {
-        this.cars = createCars(carCounts);
+    public RacingGame_old(int carCounts, RacingCounts racingCounts) {
+        this.carsOld = createCars(carCounts);
         this.racingCounts = racingCounts;
     }
 
-    public static Cars createCars(int carCounts) {
-        List<Car> newCars = new ArrayList<>(carCounts);
+    public static Cars_old createCars(int carCounts) {
+        List<Car_old> newCars = new ArrayList<>(carCounts);
         for (int i = 0; i < carCounts; i++) {
-            newCars.add(new Car());
+            newCars.add(new Car_old());
         }
-        return Cars.createCars(newCars);
+        return Cars_old.createCars(newCars);
     }
 
     public RaceResults startRacing() {
@@ -33,12 +33,12 @@ public class RacingGame {
         return raceResults;
     }
 
-    private List<Car> moveOnceCars() {
-        Cars.moveCars();
+    private List<Car_old> moveOnceCars() {
+        Cars_old.moveCars();
         return this.getCars();
     }
 
-    private List<Car> getRaceResults(RaceResults raceResults) {
+    private List<Car_old> getRaceResults(RaceResults raceResults) {
         return raceResults.getRaceResults( );
     }
 }

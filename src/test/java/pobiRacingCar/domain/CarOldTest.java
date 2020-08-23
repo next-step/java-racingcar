@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CarTest {
+public class CarOldTest {
     @Test
     void oneForwardTrue() {
         Car car = new Car("pobi");
