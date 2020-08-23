@@ -8,10 +8,6 @@ public class InputView {
     private static InputChannel inputChannel;
     private static OutputChannel outputChannel;
 
-    private InputView(){
-        throw new IllegalArgumentException(Constants.PROTECTED_UTIL_CLASS);
-    }
-
     public InputView(InputChannel inputChannel, OutputChannel outputChannel) {
         this.inputChannel = inputChannel;
         this.outputChannel = outputChannel;

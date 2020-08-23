@@ -12,10 +12,6 @@ public class ResultView{
 
     private static OutputChannel outputChannel;
 
-    private ResultView(){
-        throw new IllegalArgumentException(Constants.PROTECTED_UTIL_CLASS);
-    }
-
     public ResultView(OutputChannel outputChannel) {
         this.outputChannel = outputChannel;
     }
