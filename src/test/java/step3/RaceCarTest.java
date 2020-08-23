@@ -10,9 +10,9 @@ public class RaceCarTest {
     @DisplayName("자동차 대수 & 시도할 횟수 입력 테스트")
     @Test
     public void 자동차수_및_시도횟수_입력() {
-        InputView iv = new InputView();
-        iv.numOfCars("3");
-        iv.numberOfAttempts("5");
+        InputView inputView = new InputView();
+        inputView.numOfCars("3");
+        inputView.numberOfAttempts("5");
     }
 
     @DisplayName("최종 테스트")
