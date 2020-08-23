@@ -4,40 +4,27 @@ import java.util.regex.Pattern;
 
 public class Calculator {
 
-    private String formula;
-    private int result = 0;
-    private Operator currentOperator = Operator.PLUS;
+    private static final Pattern REG_EXP = Pattern.compile("^[0-9]*$");
+    private Formula formula;
 
-    public int calculateFormula(){
-        for(String input : formula.split(" ")){
-            calculatePartial(input);
-        }
-
-        return result;
-    }
-
-    public void setFormula(String formula){
+    Calculator(Formula formula){
         this.formula = formula;
     }
 
-    private void calculatePartial(String input){
+    public int calculate(){
 
-        String regExp = "^[0-9]*$";
+        int result = 0;
+        Operator currentOperator = Operator.PLUS;
 
-        if(Pattern.matches(regExp, input)){
-            result = currentOperator.operate(result, Integer.parseInt(input));
-            return;
-        }
-
-        for(Operator operator : Operator.values()){
-            if(operator.getSymbol().equals(input)){
-                currentOperator = operator;
-                return;
+        for(String input : formula.getFormula()){
+            if(REG_EXP.matcher(input).find()){
+                result = currentOperator.operate(result, Integer.parseInt(input));
+                continue;
             }
+            currentOperator = Operator.findOperator(input);
         }
 
-        throw new IllegalArgumentException();
-
+        return result;
     }
 
 }

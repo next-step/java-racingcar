@@ -4,10 +4,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Calculator calculator = new Calculator();
-        String formula = "2 + 3 * 4 / 2";
-        calculator.setFormula(formula);
-
-        System.out.println(calculator.calculateFormula());
+        Calculator calculator = new Calculator(new Formula("2 + 3 * 4 / 2"));
+        int result = calculator.calculate();
+        System.out.println("result : " + result);
     }
 }
