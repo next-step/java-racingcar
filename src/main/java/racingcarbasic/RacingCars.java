@@ -32,14 +32,16 @@ public class RacingCars {
     }
 
     public List<String> getWinners() {
-        int maxNum = carList.stream()
-                .mapToInt(car -> car.getStep())
-                .max().orElse(-1);
-
         return carList.stream()
-                .filter(car -> car.getStep() == maxNum)
+                .filter(car -> car.getStep() == getMaxStep())
                 .map(car -> car.getName())
                 .collect(Collectors.toList());
+    }
+
+    public int getMaxStep() {
+        return carList.stream()
+                .mapToInt(car -> car.getStep())
+                .max().orElse(-1);
     }
 }
 
