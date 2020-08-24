@@ -1,4 +1,4 @@
-package racingcar.strategy;
+package racingcar.strategy.condition;
 
 @FunctionalInterface
 public interface RaceCondition {

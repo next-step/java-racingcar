@@ -1,10 +1,10 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static racingcar.Constants.INPUT_DELIMITER;
+import static racingcar.utils.Constants.INPUT_DELIMITER;
 import static racingcar.utils.CarNameValidation.isValid;
 
 public class CarFactory {

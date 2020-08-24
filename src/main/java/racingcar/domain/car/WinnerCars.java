@@ -1,18 +1,18 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import static racingcar.Constants.WINNER_NAMES_DELIMITER;
-import static racingcar.domain.Cars.findWinners;
+import static racingcar.utils.Constants.WINNER_NAMES_DELIMITER;
+import static racingcar.domain.car.Cars.findWinners;
 import static racingcar.utils.StringUtils.getNames;
 
-public class Winners {
+public class WinnerCars {
 
     private final List<Car> winners;
 
-    public Winners(List<Car> winners) {
+    public WinnerCars(List<Car> winners) {
         this.winners = winners;
     }
 
@@ -31,8 +31,8 @@ public class Winners {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass( ) != o.getClass( )) return false;
-        Winners winners1 = (Winners) o;
-        return Objects.equals(winners, winners1.winners);
+        WinnerCars winnerCars1 = (WinnerCars) o;
+        return Objects.equals(winners, winnerCars1.winners);
     }
 
     @Override

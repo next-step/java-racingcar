@@ -1,6 +1,6 @@
-package racingcar.strategy;
+package racingcar.strategy.raceStrategy;
 
-import static racingcar.Constants.*;
+import static racingcar.utils.Constants.*;
 
 public class DoOneForward implements DoRace {
     

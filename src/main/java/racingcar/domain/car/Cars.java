@@ -1,7 +1,7 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
-import racingcar.strategy.DoOneForward;
-import racingcar.strategy.OneOrZeroForwardCondition;
+import racingcar.strategy.raceStrategy.DoOneForward;
+import racingcar.strategy.condition.OneOrZeroForwardCondition;
 
 import java.util.*;
 

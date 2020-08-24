@@ -1,9 +1,12 @@
 package racingcar.domain;
 
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Cars;
+
 import java.util.List;
 import java.util.Objects;
 
-import static racingcar.domain.CarFactory.createCars;
+import static racingcar.domain.car.CarFactory.createCars;
 
 public class RacingGame {
 

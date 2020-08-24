@@ -2,8 +2,8 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.strategy.DoOneForward;
-import racingcar.strategy.RaceCondition;
+import racingcar.strategy.raceStrategy.DoOneForward;
+import racingcar.strategy.condition.RaceCondition;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

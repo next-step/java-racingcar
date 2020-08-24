@@ -1,6 +1,10 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Position;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Cars;
+
 import java.util.ArrayList;
 import java.util.List;
 

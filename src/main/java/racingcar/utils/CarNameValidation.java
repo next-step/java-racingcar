@@ -1,6 +1,6 @@
 package racingcar.utils;
 
-import static racingcar.Constants.NAME_LENGTH_MAX;
+import static racingcar.utils.Constants.NAME_LENGTH_MAX;
 import static racingcar.utils.StringUtils.isNullOrBlank;
 
 public class CarNameValidation {

@@ -1,13 +1,16 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Position;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.WinnerCars;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class WinnersTest {
+public class WinnerCarsTest {
 
     @Test
     void winnersNamesTest() {
@@ -18,7 +21,7 @@ public class WinnersTest {
         carList.add(pobi);
         carList.add(crong);
         carList.add(honux);
-        assertThat(Winners.getWinnersNames(carList)).isEqualTo("crong, honux");
+        assertThat(WinnerCars.getWinnersNames(carList)).isEqualTo("crong, honux");
 
 
     }

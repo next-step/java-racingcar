@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.domain.car.Car;
+
 import java.util.List;
 import java.util.Objects;
 

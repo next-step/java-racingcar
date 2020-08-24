@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class WinnersTest {
+public class WinnerCarsTest {
     @Test
     void create() {
         Winners winners = new Winners(Arrays.asList(new Car("pobi"), new Car("crong")));

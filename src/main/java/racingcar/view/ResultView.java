@@ -1,13 +1,12 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
-import racingcar.domain.Winners;
+import racingcar.domain.car.Car;
 
 import java.util.List;
 
-import static racingcar.Constants.*;
-import static racingcar.domain.Cars.findWinners;
-import static racingcar.domain.Winners.getWinnersNames;
+import static racingcar.utils.Constants.*;
+import static racingcar.domain.car.Cars.findWinners;
+import static racingcar.domain.car.WinnerCars.getWinnersNames;
 import static racingcar.utils.StringUtils.repeat;
 
 public class ResultView{

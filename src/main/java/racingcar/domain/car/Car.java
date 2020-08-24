@@ -1,11 +1,12 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
-import racingcar.strategy.DoRace;
-import racingcar.strategy.RaceCondition;
+import racingcar.domain.Position;
+import racingcar.strategy.raceStrategy.DoRace;
+import racingcar.strategy.condition.RaceCondition;
 
 import java.util.Objects;
 
-import static racingcar.Constants.INIT_POSITION;
+import static racingcar.utils.Constants.INIT_POSITION;
 
 public class Car {
 

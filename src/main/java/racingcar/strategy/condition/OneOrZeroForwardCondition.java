@@ -1,6 +1,6 @@
-package racingcar.strategy;
+package racingcar.strategy.condition;
 
-import static racingcar.Constants.*;
+import static racingcar.utils.Constants.*;
 
 import java.util.Random;
 

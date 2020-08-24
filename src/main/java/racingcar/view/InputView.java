@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import static racingcar.Constants.*;
+import static racingcar.utils.Constants.*;
 
 public class InputView {
     private static InputChannel inputChannel;
