@@ -32,5 +32,5 @@ public class ResultView{
         outputChannel.printLine(EMPTY_LINE);
     }
 
-    public static void printWinners(List<Car> cars) {outputChannel.printLine(getWinnersNames(findWinners(cars)) + SAY_WINNERS_NAMES); }
+    public static void printWinners(List<Car> cars) {outputChannel.printLine(getWinnersNames(findWinners(cars)) + SAY_WINNER_CARS_NAMES); }
 }

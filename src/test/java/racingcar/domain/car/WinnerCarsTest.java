@@ -2,8 +2,7 @@ package racingcar.domain.car;
 
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Position;
-import racingcar.domain.car.Car;
-import racingcar.domain.car.WinnerCars;
+import static racingcar.domain.car.WinnerCars.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +20,6 @@ public class WinnerCarsTest {
         carList.add(pobi);
         carList.add(crong);
         carList.add(honux);
-        assertThat(WinnerCars.getWinnersNames(carList)).isEqualTo("crong, honux");
-
-
+        assertThat(getWinnersNames(carList)).isEqualTo("crong, honux");
     }
 }
