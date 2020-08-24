@@ -25,7 +25,6 @@ public class CarTest {
         assertThat(car.getOwner()).isEqualTo("test");
     }
 
-
     @Test
     @DisplayName("car owner name exception test")
     public void test2(){

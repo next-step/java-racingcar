@@ -1,64 +1,29 @@
 package step4;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+
 import java.util.Scanner;
 
 public class RacingCar {
 
-    private List<Car> carList = new ArrayList<Car>();
+    Cars cars = new Cars();
 
-    private List<Car> init(String value) {
+    private void init(String value) {
         String[] list = value.split(",");
 
         for(int i = 0 ; i < list.length ; i ++) {
-            carList.add(new Car(list[i]));
+            cars.add(new Car(list[i]));
         }
-
-        return carList;
     }
 
     public void run(String value, int number) {
-        List<Car> cars = init(value);
-
-        for(int i = 0 ; i < number; i ++) {
-            cars.stream()
-                    .forEach(car -> {
-                        car.run(getRandomNum());
-                    });
-            System.out.println();
+        for(int i = 0; i < number ; i ++){
+            cars.run();
         }
 
-        System.out.println(getWinner(cars)+"가 최종 우승했습니다.");
+        printWinner(cars);
     }
 
-    public String getWinner(List<Car> cars) {
-        StringBuilder str = new StringBuilder();
-
-        cars.sort( (a, b) -> b.getCurrentStatus() - a.getCurrentStatus());
-
-        str.append(cars.get(0).getOwner());
-        int max = cars.get(0).getCurrentStatus();
-        int size = cars.size();
-        for(int i = 1 ; i < size; i ++) {
-
-            Car currentCar = cars.get(i);
-            if(max != currentCar.getCurrentStatus()) {
-                break;
-            }
-            str.append(",").append(currentCar.getOwner());
-        }
-
-        return str.toString();
-    }
-
-    private int getRandomNum() {
-        Random random = new Random();
-        return random.nextInt(10);
-    }
-
-    public int getCarListSize(){
-        return carList.size();
+    private void printWinner(Cars cars){
+        System.out.println(cars.printWinner()+"가 최종 우승했습니다.");
     }
 
     public static void main(String[] args) {

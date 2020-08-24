@@ -7,7 +7,9 @@ public class Car {
     private List<String> status = new ArrayList<String>();
 
     public Car(String owner) {
-        if(owner.length() > 5) throw new IllegalArgumentException("Exceed max owner name length");
+        if(owner.length() > 5) {
+            throw new IllegalArgumentException("Exceed max owner name length");
+        }
         this.owner = owner;
     }
 
@@ -37,5 +39,9 @@ public class Car {
 
     private boolean isRunable(int randomNum) {
         return randomNum >= 4;
+    }
+
+    public boolean isWinner(int maxStatusSize){
+        return status.size() == maxStatusSize;
     }
 }
