@@ -12,7 +12,7 @@ public class ResultView {
 
     private ResultView() {};
 
-    public static void printRoundResult(List<Car> cars) {
+    public static void printRoundResult(Cars cars) {
         cars.stream().forEach(car -> System.out.println(getStringFromPosition(car)));
         System.out.println();
     }
@@ -24,11 +24,11 @@ public class ResultView {
 
     public static String getStringFromPosition(Car car) {
         return IntStream.range(0, car.position)
-                        .mapToObj(i -> "-")
-                        .collect(Collectors.joining(""));
+                .mapToObj(i -> "-")
+                .collect(Collectors.joining(""));
     }
 
     public static List<String> getWinnersName(Cars cars) {
-        return Cars.getWinnersName(cars);
+        return Cars.getWinnersNames(cars);
     }
 }

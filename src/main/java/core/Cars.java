@@ -1,49 +1,50 @@
 package core;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Cars {
     private static int WINNER_POSITION;
-    private final List<Car> cars;
+    private List<Car> cars;
 
-    Cars(List<Car> carList) {
-        this.cars = carList;
+    public Cars(String[] carNames) {
+        cars = new ArrayList<>();
+        Arrays.stream(carNames).forEach(carName -> cars.add(Car.create(carName)));
     }
 
-    public static Cars create(List<Car> carList) {
-        return new Cars(carList);
+    public Stream<Car> stream() {
+        return cars.stream();
     }
 
-    public static List<Car> startRound(Cars cars) {
-        cars.cars.stream().forEach(car -> car.carAction(new RandomNumberMoveStrategy()));
-        return cars.cars;
+    public void startRound(MoveStrategy moveStrategy) {
+        stream().forEach(car -> car.carAction(moveStrategy));
     }
 
-    public void addCar(Car car) {
-        this.cars.add(car);
+    public static List<Car> getWinnersList(Cars cars) {
+        return cars.getWinnersCars()
+                .stream()
+                .filter(car -> car.position == WINNER_POSITION)
+                .collect(Collectors.toList());
     }
 
-    public static List<Car> getWinners(Cars cars) {
-        List<Car> winners = cars.sortCars(cars)
-                                .stream()
-                                .filter(car -> car.position == WINNER_POSITION)
-                                .collect(Collectors.toList());
-        return winners;
-    }
-
-    private List<Car> sortCars(Cars cars) {
-        List<Car> comparedCars = new ArrayList<>(cars.cars);
-        Collections.sort(comparedCars);
+    private List<Car> getWinnersCars() {
+        List<Car> comparedCars = cars.stream()
+                .sorted((a, b) -> a.compareTo(b))
+                .collect(Collectors.toList());
         WINNER_POSITION = comparedCars.get(0).position;
         return comparedCars;
     }
 
-    public static List<String> getWinnersName(Cars cars) {
+    public static List<String> getWinnersNames(Cars cars) {
         List<String> winnersName = new ArrayList<>();
-        getWinners(cars).stream().forEach(car -> winnersName.add(car.name));
+        getWinnersList(cars)
+                .stream()
+                .map(car -> winnersName.add(car.name))
+                .collect(Collectors.toList());
         return winnersName;
     }
 }

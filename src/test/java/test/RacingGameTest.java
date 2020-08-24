@@ -13,8 +13,9 @@ public class RacingGameTest {
     @DisplayName("입력한 이름에 따른 자동차 생성 테스트")
     @Test
     void 자동차생성테스트() {
-        Cars result = RacingGame.createCarList(new String[]{"carName1","carName2"});
-        assertThat(result).extracting("name").contains("carName1","carName2");
+        RacingGame racingGame = new RacingGame(new String[]{"carName1","carName2"});
+        Cars result = racingGame.createCarList(new String[]{"carName1","carName2"});
+        assertThat(result.stream()).extracting("name").contains("carName1","carName2");
     }
 }
 

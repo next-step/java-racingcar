@@ -1,6 +1,5 @@
 package core;
 
-
 import java.util.Objects;
 
 public class Car implements Comparable<Car> {
@@ -33,16 +32,8 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car o) {
-        int result = 0;
-        if(this.position < o.position) {
-            result = 1;
-        }
-        if(this.position == o.position) {
-            result = 0;
-        }
-        if(this.position > o.position) {
-            result = -1;
-        }
-        return result;
+        return  this.position < o.position ? 1 :
+                this.position > o.position ? -1 :
+                        0;
     }
 }

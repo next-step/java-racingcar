@@ -9,15 +9,14 @@ import java.util.stream.IntStream;
 
 public class RacingGame {
 
-    static Cars cars;
+    private Cars cars;
 
-    RacingGame(String[] carNames) {
+    public RacingGame(String[] carNames) {
         createCarList(carNames);
     }
 
-    public static Cars createCarList(String[] carNames) {
-        cars = Cars.create(new ArrayList<>());
-        Arrays.stream(carNames).forEach(carName -> cars.addCar(Car.create(carName)));
+    public Cars createCarList(String[] carNames) {
+        cars = new Cars(carNames);
         return cars;
     }
 
@@ -27,13 +26,15 @@ public class RacingGame {
     }
 
     void startRound() {
-        ResultView.printRoundResult(Cars.startRound(cars));
+        cars.startRound(new RandomNumberMoveStrategy());
+        ResultView.printRoundResult(cars);
     }
 
     public static void main(String args[]) {
-        InputView.getInputValue();
-        RacingGame racingGame = new RacingGame(GameSettings.carNames);
-        racingGame.startGame(GameSettings.round);
+        String[] carNames = InputView.getNamesOfCars();
+        int round = InputView.getRound();
+        RacingGame racingGame = new RacingGame(carNames);
+        racingGame.startGame(round);
     }
 
 }

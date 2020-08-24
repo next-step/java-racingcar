@@ -3,7 +3,9 @@ package test;
 import core.AlwaysMoveStrategy;
 import core.AlwaysStopStrategy;
 import core.Car;
+import core.MoveStrategy;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -14,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CarTest {
-    
+
     @DisplayName("자동차 생성 테스트")
     @ParameterizedTest
     @ValueSource(strings = {"carName1","carName2"})

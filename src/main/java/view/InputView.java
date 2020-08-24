@@ -1,7 +1,5 @@
 package view;
 
-import core.GameSettings;
-
 import java.util.Scanner;
 
 public class InputView {
@@ -12,17 +10,18 @@ public class InputView {
 
     private InputView() {};
 
-    public static void getInputValue(){
+    public static String[] getNamesOfCars(){
         System.out.println(CAR_GUIDE);
         String carNameString = scanner.nextLine();
         checkCarNamesValue(carNameString);
-        String[] carNames = splitString(carNameString);
+        return splitString(carNameString);
+    }
 
+    public static int getRound() {
         System.out.println(ROUND_GUIDE);
         int round = scanner.nextInt();
         checkRoundValue(round);
-
-        GameSettings.settings(carNames, round);
+        return round;
     }
 
     public static void checkRoundValue(int inputValue) {
@@ -38,8 +37,7 @@ public class InputView {
     }
 
     public static String[] splitString(String inputValue) {
-        String[] carNames = inputValue.split(",");
-        return carNames;
+        return inputValue.split(",");
     }
 
 }

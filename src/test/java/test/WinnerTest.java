@@ -8,30 +8,32 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class WinnerTest {
 
-    Car first = Car.create("first");
-    Car second = Car.create("second");
-    Car winner = Car.create("winner");
-    Cars cars = Cars.create(Arrays.asList(first, second, winner));
+    Cars cars = new Cars(new String[]{"first","second","winner"});
 
     @DisplayName("우승자 결정 테스트")
     @Test
     void 우승자결정테스트() {
-        winner.carAction(new AlwaysMoveStrategy());
-        List<String> winnersName = Cars.getWinnersName(cars);
+        cars.stream().filter(car -> car.name == "winner")
+                .collect(Collectors.toList())
+                .get(0)
+                .carAction(new AlwaysMoveStrategy());
+        List<String> winnersName = Cars.getWinnersNames(cars);
         assertThat(winnersName).isEqualTo(Arrays.asList("winner"));
     }
-    
+
     @DisplayName("공동 우승자 테스트")
     @Test
     void 공동우승자테스트() {
-        first.carAction(new AlwaysMoveStrategy());
-        second.carAction(new AlwaysMoveStrategy());
-        List<String> winnersName = Cars.getWinnersName(cars);
+        cars.stream().filter(car -> car.name == "first" || car.name == "second")
+                .collect(Collectors.toList())
+                .forEach(car -> car.carAction(new AlwaysMoveStrategy()));
+        List<String> winnersName = Cars.getWinnersNames(cars);
         assertThat(winnersName).isEqualTo(Arrays.asList("first","second"));
 
     }
