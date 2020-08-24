@@ -19,15 +19,20 @@ public class Winners {
     }
 
     public static String getWinnersNames(List<Car> winners) {
-        List<String> winnersNamesList = findWinners(winners).stream()
-                                .map(o -> o.getCarName())
-                                .collect(Collectors.toList());
-        StringBuffer sb = new StringBuffer();
-        sb.append(winnersNamesList.get(0));
+        List<String> winnersNamesList = collectWinnerNames(winners);
+        StringBuffer winnerNamesBuffer = new StringBuffer();
+        winnerNamesBuffer.append(winnersNamesList.get(0));
         for (int i = 1; i < winnersNamesList.size() ; i++) {
-            sb.append(", "+winnersNamesList.get(i));
+            winnerNamesBuffer.append(", ");
+            winnerNamesBuffer.append(winnersNamesList.get(i));
         }
-        return sb.toString();
+        return winnerNamesBuffer.toString();
+    }
+
+    private static List<String> collectWinnerNames(List<Car> winners) {
+        return findWinners(winners).stream( )
+                .map(o -> o.getCarName( ))
+                .collect(Collectors.toList( ));
     }
 
     @Override
