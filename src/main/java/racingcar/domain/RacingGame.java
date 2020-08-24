@@ -24,9 +24,9 @@ public class RacingGame {
         return racingCounts.getRacingCounts();
     }
 
-    public List<Car> startRacing() {
+    public List<Car> recordRacing() {
         RaceResults raceResults = new RaceResults(getCars());
-        cars.moveCars();
+        cars.moveCars(getCars());
         return raceResults.getRaceResults();
     }
 

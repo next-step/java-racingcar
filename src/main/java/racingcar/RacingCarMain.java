@@ -13,7 +13,7 @@ public class RacingCarMain {
         ResultView resultView = new ResultView(OutputChannel.createSystemOut( ));
         resultView.printStartResult();
         for (int i = 0 ; i < racingGame.getRacingCounts(); i++) {
-            resultView.printCars(racingGame.startRacing());
+            resultView.printCars(racingGame.recordRacing());
             resultView.printEmptyLine();
         }
         resultView.printWinners();
