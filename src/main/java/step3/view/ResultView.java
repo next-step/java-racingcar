@@ -5,10 +5,12 @@ import step3.operation.Operation;
 public class ResultView {
 
     public void showToMove(int game) {
+        String str = "";
         for(int z = 0 ; z < game ; z++) {
-            System.out.print("-");
+//            System.out.print("-");
+            str += "-";
         }
-        System.out.println();
+        System.out.println(str);
     }
 
     public void viewProgress(int numOfAtp, int numOfCars) {
@@ -20,4 +22,5 @@ public class ResultView {
             System.out.println();
         }
     }
+
 }

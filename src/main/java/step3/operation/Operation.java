@@ -3,16 +3,12 @@ package step3.operation;
 import step3.view.InputView;
 import step3.view.ResultView;
 
+import java.util.HashMap;
 import java.util.Random;
 
 public class Operation {
 
     static ResultView resultView = new ResultView();
-
-    public static void main(String[] args) {
-        InputView inputView = new InputView();
-        gameStart(inputView.numberOfAttempts("5"), inputView.numOfCars("3"));
-    }
 
     public static void gameStart(int numOfAtp, int numOfCars) {
         resultView.viewProgress(numOfAtp, numOfCars);
@@ -40,4 +36,5 @@ public class Operation {
         }
         return randomValue;
     }
+
 }
