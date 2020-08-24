@@ -1,4 +1,7 @@
-package step4;
+package step4.view;
+
+import step4.domain.Car;
+import step4.domain.Cars;
 
 import java.util.Scanner;
 
