@@ -8,6 +8,7 @@ import static racingcar.domain.Cars.findWinners;
 
 public class Winners {
 
+    public static final String WINNER_NAMES_DELIMITER = ", ";
     private final List<Car> winners;
 
     public Winners(List<Car> winners) {
@@ -23,8 +24,7 @@ public class Winners {
         StringBuffer winnerNamesBuffer = new StringBuffer();
         winnerNamesBuffer.append(winnersNamesList.get(0));
         for (int i = 1; i < winnersNamesList.size() ; i++) {
-            winnerNamesBuffer.append(", ");
-            winnerNamesBuffer.append(winnersNamesList.get(i));
+            winnerNamesBuffer.append(WINNER_NAMES_DELIMITER + winnersNamesList.get(i));
         }
         return winnerNamesBuffer.toString();
     }
