@@ -39,5 +39,4 @@ public class InputView {
     public static String[] splitString(String inputValue) {
         return inputValue.split(",");
     }
-
 }

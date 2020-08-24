@@ -36,4 +36,5 @@ public class Car implements Comparable<Car> {
                 this.position > o.position ? -1 :
                         0;
     }
+
 }

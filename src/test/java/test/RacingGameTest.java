@@ -1,6 +1,5 @@
 package test;
 
-
 import core.Cars;
 import core.RacingGame;
 import org.junit.jupiter.api.DisplayName;
