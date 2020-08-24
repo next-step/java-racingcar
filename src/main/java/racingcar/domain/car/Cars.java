@@ -30,10 +30,7 @@ public class Cars {
     public static List<Car> findWinners(List<Car> cars) {
         List<Car> winnerList = new ArrayList<>( );
         for (Car car : cars) {
-            if (car.getPosition( ) == getMaxPosition(cars)) {
-                winnerList.add(car);
-            }
-            if (car.getPosition( ) > getMaxPosition(cars)) {
+            if (car.getPosition( ) >= getMaxPosition(cars)) {
                 winnerList.add(car);
             }
         }
