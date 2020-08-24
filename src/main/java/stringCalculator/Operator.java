@@ -1,10 +1,7 @@
-package StringCalculator;
+package stringCalculator;
 
 import java.util.Arrays;
 
-/**
- * 연산자
- */
 public enum Operator {
     PLUS("+"){
         @Override
@@ -42,10 +39,6 @@ public enum Operator {
 
     public abstract int calculate(int num1, int num2);
 
-    /**
-     * 사칙 연산자인지 확인 후 값 저장
-     * @param operator 연산자
-     */
     public static Operator setOperator(String operator) {
         return Arrays.stream(Operator.values())
                 .filter(operator1 -> operator1.value.equals(operator))
