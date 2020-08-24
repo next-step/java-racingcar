@@ -9,7 +9,7 @@ import racingcar.view.ResultView;
 public class RacingCarMain {
     public static void main(String[] args) {
         InputView inputView = new InputView(InputChannel.createSystemIn( ), OutputChannel.createSystemOut( ));
-        RacingGame racingGame = new RacingGame(InputView.getCarNames(), InputView.getRacingCounts());
+        RacingGame racingGame = new RacingGame(inputView.getCarNames(), inputView.getRacingCounts());
         ResultView resultView = new ResultView(OutputChannel.createSystemOut( ));
         resultView.printStartResult();
         for (int i = 0 ; i < racingGame.getRacingCounts(); i++) {

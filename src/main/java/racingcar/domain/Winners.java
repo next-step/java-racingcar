@@ -4,29 +4,21 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import static racingcar.Constants.WINNER_NAMES_DELIMITER;
 import static racingcar.domain.Cars.findWinners;
+import static racingcar.utils.StringUtils.getNames;
 
 public class Winners {
 
-    public static final String WINNER_NAMES_DELIMITER = ", ";
     private final List<Car> winners;
 
     public Winners(List<Car> winners) {
         this.winners = winners;
     }
 
-    public List<Car> getWinners() {
-        return winners;
-    }
-
     public static String getWinnersNames(List<Car> winners) {
         List<String> winnersNamesList = collectWinnerNames(winners);
-        StringBuffer winnerNamesBuffer = new StringBuffer();
-        winnerNamesBuffer.append(winnersNamesList.get(0));
-        for (int i = 1; i < winnersNamesList.size() ; i++) {
-            winnerNamesBuffer.append(WINNER_NAMES_DELIMITER + winnersNamesList.get(i));
-        }
-        return winnerNamesBuffer.toString();
+        return getNames(winnersNamesList, WINNER_NAMES_DELIMITER);
     }
 
     private static List<String> collectWinnerNames(List<Car> winners) {

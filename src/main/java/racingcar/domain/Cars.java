@@ -29,13 +29,11 @@ public class Cars {
 
     public static List<Car> findWinners(List<Car> cars) {
         List<Car> winnerList = new ArrayList<>( );
-        int maxPosition = 0;
         for (Car car : cars) {
             if (car.getPosition( ) == getMaxPosition(cars)) {
                 winnerList.add(car);
             }
             if (car.getPosition( ) > getMaxPosition(cars)) {
-                maxPosition = car.getPosition( );
                 winnerList.add(car);
             }
         }

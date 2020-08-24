@@ -1,10 +1,6 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Cars;
-import racingcar.strategy.DoOneForward;
-import racingcar.strategy.RaceCondition;
-
 import java.util.ArrayList;
 import java.util.List;
 
