@@ -9,6 +9,9 @@ public final class Constants {
     public static final int FORWARD_OK_COND_NUM = 4;
     public static final int RANDOM_BOUND = 10;
 
+    /** Utils **/
+    public static final int NAME_LENGTH_MAX = 5;
+
     /** UI View **/
     public static final String INPUT_DELIMITER = ",";
     public static final String ASK_CAR_NAMES = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)";

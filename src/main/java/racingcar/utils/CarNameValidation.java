@@ -1,10 +1,9 @@
 package racingcar.utils;
 
+import static racingcar.Constants.NAME_LENGTH_MAX;
 import static racingcar.utils.StringUtils.isNullOrBlank;
 
 public class CarNameValidation {
-
-    public static final int NAME_LENGTH_MAX = 5;
 
     public static boolean isValid(String input) {
         if (isNullOrBlank(input)) {
