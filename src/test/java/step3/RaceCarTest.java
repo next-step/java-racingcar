@@ -19,6 +19,13 @@ public class RaceCarTest {
         assertThat(operation.decideToMove(random, 0)).isEqualTo(result);
     }
 
+    @DisplayName("10보다 작은 random 수 생성 테스트")
+    @Test
+    public void random_수_생성() {
+        Operation operation = new Operation();
+        operation.makeRandomValue(10);
+    }
+
     @DisplayName("최종 테스트")
     @Test
     public void 경주() {
