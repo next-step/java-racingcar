@@ -3,13 +3,11 @@ package step03.calculatescore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import step03.car.Car;
-import step03.car.CarCenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Project : java-racingcar
@@ -24,31 +22,16 @@ class WinnerCalculateTest {
 
     @BeforeEach
     public void init() {
-
-        int tryNum = 5;
-        String carTestName = "choi,jo,kim";
-        String[] carName = carTestName.split(",");
-        final CarCenter carCenter = new CarCenter();
-        cars = carCenter.makingCar(carName);
-        final ScoreCalculate scoreCalculate = new CalculatorRandomScore();
-
-        int round = 5;
-        while (round-- > 0) {
-            for (int m = 0; m < cars.size(); m++) {
-                cars.get(m).advanceOneSpace(scoreCalculate.calculateScore());
-            }
-        }
+        cars.add(new Car("junwoo", 2));
+        cars.add(new Car("sunga", 3));
+        cars.add(new Car("mesung",1));
     }
 
     @Test
-    public void winnerCalculateTest() {
-        int winnerCount = Integer.MAX_VALUE;
-
-        for (int i = 0; i < cars.size(); i++) {
-            int moveCount = cars.get(i).getMoveCount();
-            if (winnerCount > moveCount) {
-                winnerCount = moveCount;
-            }
-        }
+    public void resultCalculateTest() {
+        ResultCalculate resultCalculate = new WinnerCalculate();
+        int i = resultCalculate.resultCalculate(cars);
+        assertThat(i).isEqualTo(3);
     }
+
 }
