@@ -1,13 +1,16 @@
-package step4;
+package step4.domain;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Car {
+    public static final int OWNER_MAX_LENGTH = 5;
     private final String owner;
-    private List<String> status = new ArrayList<String>();
+    private List<String> status = new ArrayList<>();
 
     public Car(String owner) {
-        if(owner.length() > 5) throw new IllegalArgumentException("Exceed max owner name length");
+        if(owner.length() > OWNER_MAX_LENGTH) {
+            throw new IllegalArgumentException("Exceed max owner name length");
+        }
         this.owner = owner;
     }
 
@@ -37,5 +40,9 @@ public class Car {
 
     private boolean isRunable(int randomNum) {
         return randomNum >= 4;
+    }
+
+    public boolean isWinner(int maxStatusSize){
+        return status.size() == maxStatusSize;
     }
 }
