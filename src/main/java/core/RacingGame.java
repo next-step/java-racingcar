@@ -4,33 +4,37 @@ import view.InputView;
 import view.ResultView;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class RacingGame {
 
-    List<Car> carList;
+    private Cars cars;
 
-    RacingGame(int carCount) {
-        carList = new ArrayList<>();
-        IntStream.range(0,carCount).forEach(i -> carList.add(new Car(0)));
+    public RacingGame(String[] carNames) {
+        createCarList(carNames);
+    }
+
+    public Cars createCarList(String[] carNames) {
+        cars = new Cars(carNames);
+        return cars;
     }
 
     void startGame(int round) {
         IntStream.range(0,round).forEach(i -> startRound());
+        ResultView.printWinnersName(cars);
     }
 
     void startRound() {
-        carList.stream().forEach(car -> car.carAction(new Random().nextInt(10)));
-        ResultView.printOutputValue(carList);
-
+        cars.startRound(new RandomNumberMoveStrategy());
+        ResultView.printRoundResult(cars);
     }
 
     public static void main(String args[]) {
-        GameSettings gameSettings = InputView.getInputValue();
-        RacingGame racingGame = new RacingGame(gameSettings.carCount);
-        racingGame.startGame(gameSettings.round);
+        String[] carNames = InputView.getNamesOfCars();
+        int round = InputView.getRound();
+        RacingGame racingGame = new RacingGame(carNames);
+        racingGame.startGame(round);
     }
 }
 
