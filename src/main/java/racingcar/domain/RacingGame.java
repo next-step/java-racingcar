@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
+import racingcar.domain.car.WinnerCars;
 
 import java.util.List;
 import java.util.Objects;
@@ -28,8 +29,13 @@ public class RacingGame {
 
     public List<Car> recordRacing() {
         RaceResults raceResults = new RaceResults(getCars());
-        cars.moveCars(getCars());
+        cars.moveCars();
         return raceResults.getRaceResults();
+    }
+
+    public String recordWinnerCars() {
+        WinnerCars winnercars = new WinnerCars(cars.findWinners());
+        return winnercars.getWinnersNames();
     }
 
     @Override

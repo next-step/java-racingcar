@@ -16,6 +16,6 @@ public class RacingCarMain {
             resultView.printCars(racingGame.recordRacing());
             resultView.printEmptyLine();
         }
-        resultView.printWinners(racingGame.getCars());
+        resultView.printWinners(racingGame.recordWinnerCars());
     }
 }

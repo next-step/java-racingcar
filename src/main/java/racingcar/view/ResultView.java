@@ -1,12 +1,11 @@
 package racingcar.view;
 
 import racingcar.domain.car.Car;
+import racingcar.domain.car.WinnerCars;
 
 import java.util.List;
 
 import static racingcar.utils.Constants.*;
-import static racingcar.domain.car.Cars.findWinners;
-import static racingcar.domain.car.WinnerCars.getWinnersNames;
 import static racingcar.utils.StringUtils.repeat;
 
 public class ResultView{
@@ -32,5 +31,5 @@ public class ResultView{
         outputChannel.printLine(EMPTY_LINE);
     }
 
-    public static void printWinners(List<Car> cars) {outputChannel.printLine(getWinnersNames(findWinners(cars)) + SAY_WINNER_CARS_NAMES); }
+    public static void printWinners(String winnerCarsNames) {outputChannel.printLine(winnerCarsNames + SAY_WINNER_CARS_NAMES); }
 }

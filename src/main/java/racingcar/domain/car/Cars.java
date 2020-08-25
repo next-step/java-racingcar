@@ -13,7 +13,7 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static int getMaxPosition(List<Car> cars) {
+    public int getMaxPosition() {
         int maxPosition = 0;
         for (Car car : cars) {
             if (car.getPosition() >= maxPosition) {
@@ -23,14 +23,15 @@ public class Cars {
         return maxPosition;
     }
 
-    public void moveCars(List<Car> cars) {
-        cars.forEach(o -> o.move(new OneOrZeroForwardCondition(), new DoOneForward()));
+    public void moveCars() {
+        this.cars.forEach(car
+                -> car.move(new OneOrZeroForwardCondition(), new DoOneForward()));
     }
 
-    public static List<Car> findWinners(List<Car> cars) {
+    public List<Car> findWinners() {
         List<Car> winnerList = new ArrayList<>( );
         for (Car car : cars) {
-            if (car.getPosition( ) >= getMaxPosition(cars)) {
+            if (car.getPosition( ) >= getMaxPosition()) {
                 winnerList.add(car);
             }
         }

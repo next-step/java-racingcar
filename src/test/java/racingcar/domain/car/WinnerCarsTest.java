@@ -20,6 +20,7 @@ public class WinnerCarsTest {
         carList.add(pobi);
         carList.add(crong);
         carList.add(honux);
-        assertThat(getWinnersNames(carList)).isEqualTo("crong, honux");
+        WinnerCars winnerCars = new WinnerCars(carList);
+        assertThat(winnerCars.getWinnersNames()).isEqualTo("crong, honux");
     }
 }
