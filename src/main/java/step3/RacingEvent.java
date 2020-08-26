@@ -3,38 +3,56 @@ package step3;
 import step3.view.ResultView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RacingEvent {
 
-    private List<Car> cars = new ArrayList<>();
-    private ResultView resultView = new ResultView();
+    private List<String> winnerNames = new ArrayList<>();
+    private Map<Car, List<Integer>> positionHistory = new HashMap<>();
 
-    public List<Car> getCars(){
-        return this.cars;
+    Map<Car, List<Integer>> getPositionHistory() {
+        return positionHistory;
     }
 
-    void readyEvent(int CarCount){
-        for(int i = 0; i < CarCount; i++){
-            cars.add(new Car());
+    void readyEvent(String[] cars){
+        for(String name : cars){
+            positionHistory.put(new Car(name), new ArrayList<>());
         }
     }
 
     void startEvent(int tryCount){
-        resultView.startResult();
         for(int i = 0; i < tryCount; i++){
-            System.out.println("");
             moveCars();
         }
     }
 
-    private void moveCars(){
-        for(Car car : cars){
-            if(new Forward().successForward()){
-                car.moveForward();
-            }
-            resultView.showPosition(car.getCurrentPosition());
+    List<String> getWinnersNames(){
+        int maxPosition = maxPosition();
+        for(Car car : positionHistory.keySet()){
+            findWinner(car, maxPosition);
         }
+
+        return winnerNames;
     }
 
+    private void moveCars(){
+        positionHistory.forEach((k, v) -> v.add(k.moveForward(new Forward().isSuccess())));
+    }
+
+    private int maxPosition(){
+
+    int max = 0;
+        for(Car car : positionHistory.keySet()){
+        max = Math.max(max, car.getCurrentPosition());
+    }
+        return max;
+}
+
+    private void findWinner(Car car, int maxPosition){
+        if(maxPosition == car.getCurrentPosition()){
+            winnerNames.add(car.getName());
+        }
+    }
 }
