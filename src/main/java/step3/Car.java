@@ -8,7 +8,7 @@ public class Car {
     Car(){}
 
     Car(String name){
-        if(name.length() > 5){
+        if(name.length() > Constant.CAR_NAME_LENGHT_LIMIT){
             throw new IllegalArgumentException();
         }
         this.name = name;

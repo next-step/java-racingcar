@@ -3,6 +3,7 @@ package step2;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
@@ -12,13 +13,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class OperatorTest {
 
-    List<Integer> answers = initOperatorTest();
     @DisplayName("plus, minus, multiply, divide 테스트")
     @ParameterizedTest
-    @ValueSource(strings = {"+", "-", "*", "/"})
-    void operatorTest(String operator){
+    @CsvSource(value = {"+, 12", "-, 8", "*, 20", "/,5"}, delimiter = ',')
+    void operatorTest(String value, String result){
 
-        assertThat(answers.contains(Operator.findOperator(operator).operate(10, 2))).isTrue();
+        assertThat(Operator.findOperator(value).operate(10, 2)).isEqualTo(Integer.parseInt(result));
 
     }
 
@@ -48,16 +48,6 @@ class OperatorTest {
     void operatorDivideTest(){
         int result = Operator.DIVIDE.operate(100, 10);
         assertThat(result).isEqualTo(10);
-    }
-
-    private List<Integer> initOperatorTest(){
-        List<Integer> answers = new ArrayList<>();
-        answers.add(12);
-        answers.add(8);
-        answers.add(20);
-        answers.add(5);
-
-        return answers;
     }
 
 }

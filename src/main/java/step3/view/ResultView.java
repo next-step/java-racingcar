@@ -1,18 +1,15 @@
 package step3.view;
 
 import step3.Car;
+import step3.Constant;
 
 import java.util.List;
 import java.util.Map;
 
 public class ResultView {
 
-    public void startResult(){
-        System.out.println("실행결과");
-    }
-
     public void showResultIntro(){
-        System.out.println("실행결과");
+        System.out.println(Constant.RACING_RESULT);
     }
 
     public void showRacingResult(Map<Car, List<Integer>> map, int tryCount){
@@ -24,21 +21,14 @@ public class ResultView {
     }
 
     public void showWinners(List<String> winners) {
-        StringBuilder names = new StringBuilder();
-        for (int i = 0; i < winners.size(); i++) {
-            names.append(addCommaToName(winners.get(i), i, winners.size() - 1));
-            System.out.println(names + "가 최종 우승했습니다.");
-        }
-    }
-
-    private String addCommaToName(String name, int index, int size){
-        return index != size ? name + "," : name;
+        String names = String.join(",", winners);
+        System.out.println(names + Constant.RACING_RESULT_ANNOUNCEMENT);
     }
 
     private void showPosition(Car car, int position){
-        System.out.print(car.getName() + " : ");
+        System.out.print(car.getName() + Constant.CAR_NAME_BORDER);
         for(int i = 0; i < position; i++){
-            System.out.print("-");
+            System.out.print(Constant.CAR_POSITION_UNIT);
         }
         System.out.println("");
 

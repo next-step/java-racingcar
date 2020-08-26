@@ -7,13 +7,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingEventTest {
 
-    private RacingEvent racingEvent = new RacingEvent();
-
     @DisplayName("RacingEvent ready 시 원하는 수만큼 car 생성 테스트")
     @Test
     void readyRacingEvent(){
         String[] names = {"test1", "test2"};
-        racingEvent.readyEvent(names);
+        RacingEvent racingEvent = new RacingEvent(names);
         assertThat(racingEvent.getPositionHistory().size()).isEqualTo(2);
     }
 
@@ -21,7 +19,7 @@ class RacingEventTest {
     @Test
     void getWinnersNamesTest(){
         String[] names = {"test1", "test2"};
-        racingEvent.readyEvent(names);
+        RacingEvent racingEvent = new RacingEvent(names);
         racingEvent.startEvent(1);
         assertThat(racingEvent.getWinnersNames().size() > 0).isTrue();
     }

@@ -10,8 +10,7 @@ public class Main {
         InputView inputView = new InputView();
 
         inputView.getEventInfo();
-        RacingEvent racingEvent = new RacingEvent();
-        racingEvent.readyEvent(inputView.getCars());
+        RacingEvent racingEvent = new RacingEvent(inputView.getCars());
         racingEvent.startEvent(inputView.getTryCount());
 
         ResultView resultView = new ResultView();
