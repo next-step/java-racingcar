@@ -17,12 +17,13 @@ public class CarsTest {
     private static final int BOUND = 1;
     private static final RandomMove RANDOM_MOVE = new RandomMove(STANDARD_MOVEMENT, BOUND);
     private Car car;
+    private String NAME = "pobi";
     private List<Car> carList = new ArrayList<>();
     private Cars cars;
 
     @BeforeEach
     void setup() {
-        car = new Car();
+        car = new Car(NAME);
         carList.add(car);
         cars = new Cars(carList);
     }

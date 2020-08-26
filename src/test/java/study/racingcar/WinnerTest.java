@@ -3,36 +3,33 @@ package study.racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.Car;
 import racingcar.RacingCar;
 import racingcar.RandomMove;
+import racingcar.Winner;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.List;
 
-public class RacingCarTest {
+public class WinnerTest {
     private static final int STANDARD_MOVEMENT = 0;
     private static final int BOUND = 1;
     private static final RandomMove RANDOM_MOVE = new RandomMove(STANDARD_MOVEMENT, BOUND);
-    private String NAME_ONE = "pobi";
+    private Car car;
     private String NAME = "pobi,crong";
+    private Winner winner = new Winner();
     private RacingCar racingCar;
 
     @BeforeEach
     void setup() {
+        car = new Car(NAME);
         racingCar = new RacingCar(NAME, RANDOM_MOVE);
     }
 
     @Test
-    @DisplayName("레이싱 차 준비 됐는지")
-    void isRacingCar() {
-        assertEquals(NAME_ONE, racingCar.carReady(NAME).getCar().get(0).getName());
+    @DisplayName("우승자 찾기")
+    void findWinner() {
+        List<Car> cars = racingCar.getCarList();
+        cars.get(0).move();
+        winner.findWinner(cars);
     }
-
-    @Test
-    @DisplayName("차 움직임 테스트")
-    void canCarPlay() {
-        racingCar.racingPlay();
-
-        assertEquals(1, racingCar.getCarList().get(0).getPosition());
-    }
-
 }
