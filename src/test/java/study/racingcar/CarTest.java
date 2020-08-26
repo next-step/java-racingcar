@@ -10,10 +10,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CarTest {
     private Car car;
+    private String NAME = "pobi";
 
     @BeforeEach
     void setup() {
-        car = new Car();
+        car = new Car(NAME);
+    }
+
+    @Test
+    @DisplayName("차 이름 가져오는지")
+    void isCarNameCorrect() {
+        assertThat(car.getName()).isEqualTo(NAME);
     }
 
     @Test
@@ -23,16 +30,10 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("차 전진")
+    @DisplayName("차 이동 했는지")
     void isCarMove() {
         car.move();
         assertEquals(1, car.getPosition());
     }
 
-    @Test
-    @DisplayName("차 정지")
-    void isCarStop() {
-        assertEquals(0, car.getPosition());
-    }
-    
 }
