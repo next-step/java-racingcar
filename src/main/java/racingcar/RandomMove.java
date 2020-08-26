@@ -22,10 +22,7 @@ public class RandomMove {
 
     public boolean canMove() {
         int randomNum = random.nextInt(bound);
-        if(randomNum >= standard) {
-            return true;
-        }
-        return false;
+        return randomNum >= standard;
     }
 
 }

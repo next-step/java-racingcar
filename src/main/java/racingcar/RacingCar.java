@@ -5,14 +5,10 @@ import java.util.List;
 
 public class RacingCar {
     private static Cars cars;
-    private final int numCars;
-    private final int numTry;
     private final RandomMove randomMove;
 
-    public RacingCar(int numCars, int numTry, RandomMove randomMove) {
+    public RacingCar(int numCars, RandomMove randomMove) {
         this.cars = carReady(numCars);
-        this.numCars = numCars;
-        this.numTry = numTry;
         this.randomMove = randomMove;
     }
 

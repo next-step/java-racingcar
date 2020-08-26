@@ -11,7 +11,7 @@ public class RacingCarGame {
         int carNum = inputView.viewNumberOfCars();
         int tryNum = inputView.viewNumberOfTry();
 
-        RacingCar racingCar = new RacingCar(carNum, tryNum, new RandomMove());
+        RacingCar racingCar = new RacingCar(carNum, new RandomMove());
 
         resultView.printResultMessage();
         while(tryNum != 0) {

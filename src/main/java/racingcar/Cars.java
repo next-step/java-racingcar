@@ -13,7 +13,7 @@ public class Cars {
     public void move(RandomMove randomMove) {
         cars.stream()
                 .filter(car -> randomMove.canMove())
-                .forEach(car -> car.move());
+                .forEach(Car::move);
     }
 
     public List<Car> getCar() {
