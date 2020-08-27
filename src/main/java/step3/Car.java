@@ -1,17 +1,32 @@
 package step3;
 
-import java.util.ArrayList;
-
 public class Car {
 
+    private String name;
     private int currentPosition;
 
-    public void moveForward(){
-        currentPosition++;
+    Car(){}
+
+    Car(String name){
+        if(name.length() > Constant.CAR_NAME_LENGHT_LIMIT){
+            throw new IllegalArgumentException();
+        }
+        this.name = name;
+    }
+
+    public int moveForward(boolean isSuccess){
+        if(isSuccess){
+            currentPosition++;
+        }
+        return currentPosition;
     }
 
     public int getCurrentPosition(){
         return currentPosition;
+    }
+
+    public String getName(){
+        return this.name;
     }
 
 }

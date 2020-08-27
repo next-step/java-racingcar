@@ -1,40 +1,61 @@
 package step3;
 
-import step3.view.ResultView;
-
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RacingEvent {
 
-    private List<Car> cars = new ArrayList<>();
-    private ResultView resultView = new ResultView();
+    private Map<Car, List<Integer>> positionHistory = new HashMap<>();
 
-    public List<Car> getCars(){
-        return this.cars;
+    Map<Car, List<Integer>> getPositionHistory() {
+        return positionHistory;
     }
 
-    void readyEvent(int CarCount){
-        for(int i = 0; i < CarCount; i++){
-            cars.add(new Car());
-        }
+    RacingEvent(String[] cars){
+        readyEvent(cars);
     }
 
     void startEvent(int tryCount){
-        resultView.startResult();
         for(int i = 0; i < tryCount; i++){
-            System.out.println("");
             moveCars();
         }
     }
 
-    private void moveCars(){
-        for(Car car : cars){
-            if(new Forward().successForward()){
-                car.moveForward();
-            }
-            resultView.showPosition(car.getCurrentPosition());
+    List<String> getWinnersNames(){
+        List<String> winnerNames = new ArrayList<>();
+
+        int maxPosition = PositionMax();
+        for(Car car : positionHistory.keySet()){
+            findWinner(car, maxPosition, winnerNames);
+        }
+
+        return winnerNames;
+    }
+
+    private void readyEvent(String[] cars){
+        for(String name : cars){
+            positionHistory.put(new Car(name), new ArrayList<>());
         }
     }
 
+    private void moveCars(){
+        positionHistory.forEach((k, v) -> v.add(k.moveForward(new Forward().isSuccess())));
+    }
+
+    private int PositionMax(){
+
+    int max = 0;
+        for(Car car : positionHistory.keySet()){
+        max = Math.max(max, car.getCurrentPosition());
+    }
+        return max;
+}
+
+    private void findWinner(Car car, int maxPosition, List<String> winnerNames){
+        if(maxPosition == car.getCurrentPosition()){
+            winnerNames.add(car.getName());
+        }
+    }
 }
