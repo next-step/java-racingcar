@@ -21,6 +21,7 @@ class RacingEventTest {
         String[] names = {"test1", "test2"};
         RacingEvent racingEvent = new RacingEvent(names);
         racingEvent.startEvent(1);
-        assertThat(racingEvent.getWinnersNames().size() > 0).isTrue();
+        assertThat(racingEvent.getWinnersNames(racingEvent.getPositionHistory())).isNotEmpty();
     }
+
 }

@@ -1,9 +1,6 @@
 package step3;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class RacingEvent {
 
@@ -13,48 +10,46 @@ public class RacingEvent {
         return positionHistory;
     }
 
-    RacingEvent(String[] cars){
+    RacingEvent(String[] cars) {
         readyEvent(cars);
     }
 
-    void startEvent(int tryCount){
-        for(int i = 0; i < tryCount; i++){
+    void startEvent(int tryCount) {
+        for (int i = 0; i < tryCount; i++) {
             moveCars();
         }
     }
 
-    List<String> getWinnersNames(){
+    List<String> getWinnersNames(Map<Car, List<Integer>> positionHistory) {
         List<String> winnerNames = new ArrayList<>();
+        int maxPosition = calculateMaxPosition();
 
-        int maxPosition = PositionMax();
-        for(Car car : positionHistory.keySet()){
-            findWinner(car, maxPosition, winnerNames);
-        }
+        positionHistory.keySet().stream().forEach(car -> findWinner(car, maxPosition, winnerNames));
 
         return winnerNames;
     }
 
-    private void readyEvent(String[] cars){
-        for(String name : cars){
+    private void readyEvent(String[] cars) {
+        for (String name : cars) {
             positionHistory.put(new Car(name), new ArrayList<>());
         }
     }
 
-    private void moveCars(){
+    private void moveCars() {
         positionHistory.forEach((k, v) -> v.add(k.moveForward(new Forward().isSuccess())));
     }
 
-    private int PositionMax(){
+    private int calculateMaxPosition() {
 
-    int max = 0;
-        for(Car car : positionHistory.keySet()){
-        max = Math.max(max, car.getCurrentPosition());
-    }
+        int max = 0;
+        for (Car car : positionHistory.keySet()) {
+            max = Math.max(max, car.getCurrentPosition());
+        }
         return max;
-}
+    }
 
-    private void findWinner(Car car, int maxPosition, List<String> winnerNames){
-        if(maxPosition == car.getCurrentPosition()){
+    private void findWinner(Car car, int maxPosition, List<String> winnerNames) {
+        if (maxPosition == car.getCurrentPosition()) {
             winnerNames.add(car.getName());
         }
     }
