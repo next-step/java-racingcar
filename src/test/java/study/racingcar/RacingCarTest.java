@@ -3,10 +3,10 @@ package study.racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.RacingCar;
-import racingcar.RandomMove;
+import racingcar.domain.RacingCar;
+import racingcar.domain.RandomMove;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
     private static final int STANDARD_MOVEMENT = 0;
@@ -24,7 +24,7 @@ public class RacingCarTest {
     @Test
     @DisplayName("레이싱 차 준비 됐는지")
     void isRacingCar() {
-        assertEquals(NAME_ONE, racingCar.carReady(NAME).getCar().get(0).getName());
+        assertThat(racingCar.carReady(NAME).getCar().get(0).getName()).isEqualTo(NAME_ONE);
     }
 
     @Test
@@ -32,7 +32,7 @@ public class RacingCarTest {
     void canCarPlay() {
         racingCar.racingPlay();
 
-        assertEquals(1, racingCar.getCarList().get(0).getPosition());
+        assertThat(racingCar.getCarList().get(0).getPosition()).isEqualTo(1);
     }
 
 }
