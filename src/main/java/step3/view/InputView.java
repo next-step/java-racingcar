@@ -11,10 +11,13 @@ public class InputView {
 
     public void getEventInfo(){
         Scanner scanner = new Scanner(System.in);
+
         System.out.println(Constant.INPUT_RACING_CAR_NAMES);
         cars = scanner.nextLine().split(",");
+
         System.out.println(Constant.INPUT_TRY_COUNT);
         tryCount = Integer.parseInt(scanner.nextLine());
+
         System.out.println("");
     }
 

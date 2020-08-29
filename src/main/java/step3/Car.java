@@ -2,10 +2,8 @@ package step3;
 
 public class Car {
 
-    private String name;
+    private final String name;
     private int currentPosition;
-
-    Car(){}
 
     Car(String name){
         if(name.length() > Constant.CAR_NAME_LENGHT_LIMIT){

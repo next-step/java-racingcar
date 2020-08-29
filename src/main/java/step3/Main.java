@@ -16,7 +16,7 @@ public class Main {
         ResultView resultView = new ResultView();
         resultView.showResultIntro();
         resultView.showRacingResult(racingEvent.getPositionHistory(), inputView.getTryCount());
-        resultView.showWinners(racingEvent.getWinnersNames());
+        resultView.showWinners(racingEvent.getWinnersNames(racingEvent.getPositionHistory()));
 
     }
 }
