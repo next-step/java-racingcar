@@ -15,7 +15,7 @@ public class RandomMove {
         this(STANDARD_MOVEMENT, RANDOM_BOUND);
     }
 
-    private RandomMove(int standard, int bound) {
+    public RandomMove(int standard, int bound) {
         this.standard = standard;
         this.bound = bound;
     }
