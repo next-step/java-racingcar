@@ -3,10 +3,9 @@ package study.racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.Car;
+import racingcar.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CarTest {
     private Car car;
@@ -30,10 +29,16 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("차 이동 했는지")
+    @DisplayName("차 전진")
     void isCarMove() {
         car.move();
-        assertEquals(1, car.getPosition());
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("차 정지")
+    void isCarStop() {
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
 }
