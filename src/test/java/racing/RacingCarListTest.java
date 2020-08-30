@@ -9,6 +9,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racing.strategy.DefaultMoveStategy;
 import racing.strategy.MoveStrategy;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -39,7 +41,7 @@ public class RacingCarListTest {
     @MethodSource("getNameOfCarListWithCountOfRacing")
     public void 레이싱카리스트_레이싱시작_처리_테스트(String[] input, int countOfRacing, Integer[] expected) {
         MoveStrategy strategy = new DefaultMoveStategy();
-        racingCarList = new RacingCarList(RacingCarList.setRacingCars(input, strategy));
+        racingCarList = new RacingCarList(input, strategy);
         racingCarList.startRacing(countOfRacing);
 
         racingCarList.getRecingCarList().stream().
@@ -48,6 +50,38 @@ public class RacingCarListTest {
                                          );
 
     }
+
+    @DisplayName("자동차 갯수 구하기")
+    @ParameterizedTest
+    @MethodSource("getNameOfCarList")
+    public void 레이싱카리스트에서_자동차갯수_구하기(String[] input, int excpected) {
+        MoveStrategy strategy = new DefaultMoveStategy();
+        racingCarList = new RacingCarList(input, strategy);
+        assertThat(racingCarList.getCountOfRacingCar()).isEqualTo(excpected);
+
+    }
+
+    @DisplayName("몇라운드 진행했는지")
+    @ParameterizedTest
+    @MethodSource("getNameOfCarListWithCountOfRacing")
+    public void 레이싱이_몇번_진행됐는지_가져오기(String[] input, int countOfRacing) {
+        MoveStrategy strategy = new DefaultMoveStategy();
+        racingCarList = new RacingCarList(input, strategy);
+        racingCarList.startRacing(countOfRacing);
+        assertThat(racingCarList.getCountOfRacingRound()).isEqualTo(countOfRacing);
+
+    }
+
+    @DisplayName("우승자 가져오기")
+    @ParameterizedTest
+    @MethodSource("getNameOfCarListWithWinner")
+    public void 우승자_가져오기(String[] input, int countOfRacing, String[] excpected) {
+        MoveStrategy strategy = new DefaultMoveStategy();
+        racingCarList = new RacingCarList(input, strategy);
+        racingCarList.startRacing(countOfRacing);
+        assertThat(racingCarList.getCarsOfWinnerName()).isEqualTo(Arrays.asList(excpected));
+    }
+
 
     static Stream<Arguments> getNameOfCarList() {
         return Stream.of(
@@ -60,6 +94,13 @@ public class RacingCarListTest {
         return Stream.of(
                 Arguments.of(new String[]{"조경현", "에디", "자바지기"}, 1, new Integer[]{1}),
                 Arguments.of(new String[]{"1번차", "2번차", "3번차", "4번차"}, 3, new Integer[]{1, 1, 1})
+        );
+    }
+
+    static Stream<Arguments> getNameOfCarListWithWinner() {
+        return Stream.of(
+                Arguments.of(new String[]{"조경현", "에디", "자바지기"}, 1, new String[]{"조경현", "에디", "자바지기"}),
+                Arguments.of(new String[]{"1번차", "2번차", "3번차", "4번차"}, 3, new String[]{"1번차", "2번차", "3번차", "4번차"})
         );
     }
 

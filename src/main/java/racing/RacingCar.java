@@ -31,8 +31,30 @@ public class RacingCar {
     }
 
     public int getRacingResult(int roundOfRacing) {
+
         return racingResult[roundOfRacing-1];
     }
+
+    public int getRacingResultSum(int roundOfRacing) {
+        int result = 0;
+
+        for(int i=0;i<roundOfRacing;i++) {
+            result += racingResult[i];
+        }
+
+        return result;
+    }
+
+    public int getRacingResult() {
+        int result = 0;
+
+        for(int i=0;i<racingResult.length;i++) {
+            result += racingResult[i];
+        }
+
+        return result;
+    }
+
 
     @Override
     public String toString() {

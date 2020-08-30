@@ -41,6 +41,7 @@ public class RacingGameTest {
         assertThat(racingGame.startRacing(countOfRacing, racingCarList)).extracting("racingResult").isEqualTo(expected);
     }
 
+
     static Stream<Arguments> getRacingGameParamter() {
         DefaultMoveStategy defaultMoveStategy = new DefaultMoveStategy();
         RacingCar beforeMoveCar = new RacingCar(defaultMoveStategy);

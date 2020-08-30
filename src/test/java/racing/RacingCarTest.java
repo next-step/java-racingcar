@@ -52,4 +52,12 @@ public class RacingCarTest {
         assertThat(car.getName()).isEqualTo(expected);
     }
 
+    @DisplayName("자동차 움직이기")
+    @ParameterizedTest
+    @CsvSource(value = {"3번차:3번차", "에디차:에디차"}, delimiter = ':')
+    public void 자동차이동테스트(String inputName, String expected) {
+        RacingCar car = new RacingCar(new DefaultMoveStategy(), inputName);
+        car.startRacing(3);
+    }
+
 }
