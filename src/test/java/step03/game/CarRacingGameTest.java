@@ -37,6 +37,7 @@ class CarRacingGameTest {
         if (carRacingGame.getRandomNum() >= 4) {
             assertThat(cars.get(0).getMoveCount()).isGreaterThan(2);
             assertThat(cars.get(1).getMoveCount()).isGreaterThan(4);
+
         }
     }
 

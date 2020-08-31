@@ -3,11 +3,11 @@ package step03.calculatescore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import step03.car.Car;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
 
 /**
  * Project : java-racingcar
@@ -33,5 +33,5 @@ class WinnerCalculateTest {
         int i = resultCalculate.resultCalculate(cars);
         assertThat(i).isEqualTo(3);
     }
-
+  
 }

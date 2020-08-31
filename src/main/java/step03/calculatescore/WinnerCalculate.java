@@ -12,6 +12,9 @@ import java.util.List;
  * @comment :
  * Time : 10:53 오후
  */
+
+public class WinnerCalculate {
+
 public class WinnerCalculate {
 
     public int resultCalculate(List<Car> cars) {

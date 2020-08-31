@@ -26,6 +26,7 @@ public class CarRacingGame extends AbstCarRacingGame{
     public void gameStart(final List<Car> cars, final ScoreCalculate scoreCalculate) {
         for (int i = 0; i < cars.size(); i++) {
             randomNum = scoreCalculate.calculateScore();
+
             cars.get(i).advanceOneSpace(randomNum);
             this.cars = cars;
         }
@@ -40,6 +41,5 @@ public class CarRacingGame extends AbstCarRacingGame{
     public int getRandomNum() {
         return this.randomNum;
     }
-
 
 }
