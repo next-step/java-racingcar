@@ -29,7 +29,7 @@ class WinnerCalculateTest {
 
     @Test
     public void resultCalculateTest() {
-        ResultCalculate resultCalculate = new WinnerCalculate();
+        WinnerCalculate resultCalculate = new WinnerCalculate();
         int i = resultCalculate.resultCalculate(cars);
         assertThat(i).isEqualTo(3);
     }

@@ -1,6 +1,6 @@
 package step03.view;
 
-import step03.calculatescore.ResultCalculate;
+import step03.calculatescore.WinnerCalculate;
 import step03.car.Car;
 import step03.util.Util;
 
@@ -31,7 +31,7 @@ public class ResultView {
         System.out.println();
     }
 
-    public void drawWinnerBoard(final List<Car> cars, final ResultCalculate winnerCalculate) {
+    public void drawWinnerBoard(final List<Car> cars, final WinnerCalculate winnerCalculate) {
         int winnerScore = winnerCalculate.getWinnerScore(cars);
 
         StringBuffer winners = new StringBuffer();

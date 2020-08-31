@@ -3,9 +3,7 @@ package step03.game;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import step03.calculatescore.CalculatorRandomScore;
-import step03.calculatescore.ScoreCalculate;
 import step03.car.Car;
-import step03.car.CarCenter;
 
 import java.util.ArrayList;
 import java.util.List;
