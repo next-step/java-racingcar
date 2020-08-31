@@ -2,7 +2,8 @@ package racing.view;
 
 
 import racing.RacingCar;
-import racing.RacingCarList;
+import racing.RacingCars;
+import racing.RacingGame;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,13 +14,14 @@ public class ResultView {
     static String COMMA = ",";
 
 
-    public static void viewRacingResult(List<RacingCar> racingResult) {
+    public static void viewRacingScore(RacingGame racingGame) {
 
-        int totalRacingRound = racingResult.get(0).racingResult.length;
+        racingGame.getCountOfRacing();
+
+        int totalRacingRound = racingGame.getCountOfRacing();
         for(int i=1;i<=totalRacingRound;i++) {
-            viewRacingRoundResult(i, racingResult);
+            viewRacingRoundResult(i,   racingGame.getRacingCars().getRecingCarList());
         }
-
 
     }
 
@@ -51,13 +53,14 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void viewRacingResult(RacingCarList racingCarList) {
-        viewRacingResult(racingCarList.getRecingCarList());
-        viewRacingWinner(racingCarList);
+    public static void viewRacingResult(RacingGame racingGame) {
+
+        viewRacingScore(racingGame);
+        viewRacingWinner(racingGame);
     }
 
-    private static void viewRacingWinner(RacingCarList racingCarList) {
-        ArrayList<String> winnerList = racingCarList.getCarsOfWinnerName();
+    private static void viewRacingWinner(RacingGame racingGame) {
+        ArrayList<String> winnerList = racingGame.getRacingCars().getCarsOfWinnerName();
 
         StringBuilder sb = new StringBuilder();
 

@@ -9,29 +9,18 @@ import java.util.stream.Stream;
 
 public class RacingCar {
 
-    public Integer[] racingResult;
-    MoveStrategy moveStrategy;
+    private Integer[] racingResult;
     private String nameOfCar;
 
-    public RacingCar(MoveStrategy moveStrategy) {
-       this.moveStrategy = moveStrategy;
-    }
-
-    public RacingCar(MoveStrategy moveStrategy, String nameOfCar) {
-        this.moveStrategy = moveStrategy;
+    public RacingCar(String nameOfCar) {
         this.nameOfCar = nameOfCar;
     }
 
-    public void startRacing(int racingCount) {
-        racingResult = move(racingCount);
-    }
-
-    public Integer[] move(int racingCount) {
-        return Stream.generate(() -> this.moveStrategy.move()).limit(racingCount).toArray(Integer[]::new);
+    public void move(int racingCount, MoveStrategy moveStrategy) {
+        racingResult = Stream.generate(() -> moveStrategy.move()).limit(racingCount).toArray(Integer[]::new);
     }
 
     public int getRacingResult(int roundOfRacing) {
-
         return racingResult[roundOfRacing-1];
     }
 
@@ -46,13 +35,8 @@ public class RacingCar {
     }
 
     public int getRacingResult() {
-        int result = 0;
 
-        for(int i=0;i<racingResult.length;i++) {
-            result += racingResult[i];
-        }
-
-        return result;
+        return getRacingResultSum(racingResult.length);
     }
 
 
