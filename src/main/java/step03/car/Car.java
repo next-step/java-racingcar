@@ -12,8 +12,10 @@ public class Car implements Comparable<Car>{
     private int moveCount = 0;
     private final String carName;
 
-    public Car(final String carName) {
+    public Car(final String carName, final int moveCount) {
         this.carName = carName;
+        this.moveCount = moveCount;
+
     }
 
     public void advanceOneSpace(final int moveCount) {

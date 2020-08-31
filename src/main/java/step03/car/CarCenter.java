@@ -16,7 +16,7 @@ public class CarCenter {
 
         final List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carNum.length; i++) {
-            cars.add(new Car(carNum[i]));
+            cars.add(new Car(carNum[i], 0));
         }
 
         return cars;

@@ -20,11 +20,13 @@ public class CarRacingGame extends AbstCarRacingGame{
         return cars;
     }
     private final ResultView resultView = new ResultView();
+    private int randomNum;
 
     @Override
     public void gameStart(final List<Car> cars, final ScoreCalculate scoreCalculate) {
         for (int i = 0; i < cars.size(); i++) {
-            final int randomNum = scoreCalculate.calculateScore();
+            randomNum = scoreCalculate.calculateScore();
+
             cars.get(i).advanceOneSpace(randomNum);
             this.cars = cars;
         }
@@ -34,6 +36,10 @@ public class CarRacingGame extends AbstCarRacingGame{
     public void drawScoreBoard() {
         resultView.draw(cars);
         System.out.println();
+    }
+
+    public int getRandomNum() {
+        return this.randomNum;
     }
 
 }

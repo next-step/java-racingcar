@@ -28,7 +28,7 @@ class CarTest {
     @ValueSource(ints = {4, 4, 6})
     @DisplayName("Car 이동 테스트")
     public void moveTest(int moveCount) {
-        final Car car = new Car("choijunwoo");
+        final Car car = new Car("choijunwoo", 0);
         car.advanceOneSpace(moveCount);
         assertThat(car.getMoveCount()).isEqualTo(1);
 

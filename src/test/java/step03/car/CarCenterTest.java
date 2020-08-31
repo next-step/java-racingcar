@@ -23,7 +23,7 @@ class CarCenterTest {
 
         List<Car> cars = new ArrayList<>();
         for (int i = 0; i < carNum; i++) {
-            cars.add(new Car("choijunwoo"));
+            cars.add(new Car("choijunwoo", 0));
         }
 
         assertThat(cars.size()).isEqualTo(carNum);
