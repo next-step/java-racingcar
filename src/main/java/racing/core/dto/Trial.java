@@ -6,14 +6,14 @@ import java.util.Objects;
 
 public class Trial {
 
-    private final Cars stateOfCarsAtThatTrial;
+    private final Cars cars;
 
     public Trial(Cars stateOfCarsAtThatTrial) {
-        this.stateOfCarsAtThatTrial = stateOfCarsAtThatTrial;
+        this.cars = stateOfCarsAtThatTrial;
     }
 
-    public Cars getStateOfCarsAtThatTrial() {
-        return stateOfCarsAtThatTrial;
+    public Cars getCarsAtThatTrial() {
+        return cars;
     }
 
     @Override
@@ -21,11 +21,11 @@ public class Trial {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Trial trial = (Trial) o;
-        return stateOfCarsAtThatTrial.equals(trial.stateOfCarsAtThatTrial);
+        return cars.equals(trial.cars);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(stateOfCarsAtThatTrial);
+        return Objects.hash(cars);
     }
 }
