@@ -1,7 +1,6 @@
-package racing;
+package racing.domain;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -28,7 +27,7 @@ public class RacingCarTest {
      */
 
 
-    RacingCar RacingCar = new RacingCar("에디");
+    racing.RacingCar RacingCar = new racing.RacingCar("에디");
 
     @DisplayName("자동차 N번 움직이기(결과 배열 비교)")
     @ParameterizedTest
@@ -50,7 +49,7 @@ public class RacingCarTest {
     @ParameterizedTest
     @CsvSource(value = {"3번차:3번차", "에디차:에디차"}, delimiter = ':')
     public void 자동차_이름_설정_후_출력_테스트(String inputName, String expected) {
-        RacingCar car = new RacingCar(inputName);
+        racing.RacingCar car = new RacingCar(inputName);
         assertThat(car.getName()).isEqualTo(expected);
     }
 

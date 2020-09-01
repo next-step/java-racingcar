@@ -1,10 +1,8 @@
-package racing;
+package racing.domain;
 
-import racing.strategy.DefaultMoveStategy;
 import racing.strategy.MoveStrategy;
 
 import java.util.Arrays;
-import java.util.Random;
 import java.util.stream.Stream;
 
 public class RacingCar {
