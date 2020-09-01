@@ -1,10 +1,8 @@
 package racingcar.domain.car;
 
-import racingcar.strategy.raceStrategy.DoOneForward;
-import racingcar.strategy.condition.OneOrZeroForwardCondition;
-
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static racingcar.utils.RandomInt.returnRandom;
 
@@ -37,17 +35,11 @@ public class Cars {
         }
     }
 
-//    public void moveCars() {
-//        this.cars.forEach(car
-//                -> car.move(new OneOrZeroForwardCondition(), new DoOneForward()));
-//    }
-
-
-
-    public List<Car> filterWinners(int maxPosition) {
+    public String findWinnerNames(int maxPosition) {
         return cars.stream()
-                .filter(car -> car.equalToPosition(maxPosition))
-                .collect(Collectors.toList());
+                .filter(car -> car.equalToMaxPosition(maxPosition))
+                .flatMap(car -> Stream.of(car.getCarName()))
+                .collect(Collectors.joining(","));
     }
 
 

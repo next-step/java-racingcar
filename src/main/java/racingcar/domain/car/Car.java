@@ -15,12 +15,10 @@ public class Car {
 
     private final String carName;
     private Position position;
-    private List<Integer> recordCarMove;
 
     public Car(String carName, Position position) {
         this.carName = carName;
         this.position = position;
-        recordCarMove = new ArrayList<>();
     }
 
     public Car(String carName) {
@@ -39,32 +37,20 @@ public class Car {
         return position.getPosition();
     }
 
-    public int getRecordCarMove(int i) {
-        return recordCarMove.get(i);
-    }
 
-    public boolean equalToPosition(int maxPosition) {
-       if (position.getPosition() == maxPosition) {
-           return true;
-       }
-       return false;
+    public boolean equalToMaxPosition(int maxPosition) {
+        return position.getPosition() == maxPosition;
     }
 
     public void move2(int movePoint){
         if (pass2(movePoint)) {
             position.increase2();
         }
-        recordCarMove.add(position.getPosition());
     }
 
     private boolean pass2(int movePoint) {
         return movePoint >= FORWARD_OK_COND_NUM;
     }
-
-//    public void move(RaceCondition raceCondition, DoRace doRace) {
-//        position.increase(raceCondition, doRace);
-//        recordCarMove.add(position.getPosition());
-//    }
 
     @Override
     public boolean equals(Object o) {
@@ -72,12 +58,11 @@ public class Car {
         if (o == null || getClass( ) != o.getClass( )) return false;
         Car car = (Car) o;
         return Objects.equals(carName, car.carName) &&
-                Objects.equals(position, car.position) &&
-                Objects.equals(recordCarMove, car.recordCarMove);
+                Objects.equals(position, car.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(carName, position, recordCarMove);
+        return Objects.hash(carName, position);
     }
 }
