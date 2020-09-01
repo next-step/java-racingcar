@@ -4,6 +4,8 @@ import racingcar.domain.Position;
 import racingcar.strategy.raceStrategy.DoRace;
 import racingcar.strategy.condition.RaceCondition;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static racingcar.utils.Constants.INIT_POSITION;
@@ -12,6 +14,8 @@ public class Car {
 
     private final String carName;
     private Position position;
+    private List<Integer> recordCarMove;
+
 
     public Car(String carName) {
         this (carName, new Position(INIT_POSITION));
@@ -20,6 +24,7 @@ public class Car {
     public Car(String carName, Position position) {
         this.carName = carName;
         this.position = position;
+        recordCarMove = new ArrayList<>();
     }
 
     public String getCarName() {
@@ -45,20 +50,18 @@ public class Car {
         position.increase(raceCondition, doRace);
     }
 
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass( ) != o.getClass( )) return false;
         Car car = (Car) o;
         return Objects.equals(carName, car.carName) &&
-                Objects.equals(position, car.position);
+                Objects.equals(position, car.position) &&
+                Objects.equals(recordCarMove, car.recordCarMove);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(carName, position);
+        return Objects.hash(carName, position, recordCarMove);
     }
-
 }
