@@ -2,8 +2,6 @@ package racing.core.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racing.core.dto.TrackInfo;
-import racing.core.dto.Trial;
 import racing.core.exception.ErrorMessage;
 
 import java.util.ArrayList;
@@ -22,10 +20,7 @@ class CarsTest {
     @Test
     @DisplayName("생성자에서 리스트에 대한 검증")
     void createCars() {
-        List<Car> participants = Arrays.stream(names)
-                .map(Car::new)
-                .collect(Collectors.toList());
-        Cars cars = new Cars(participants);
+        Cars cars = Cars.of(names);
         assertNotNull(cars);
     }
 
@@ -33,69 +28,66 @@ class CarsTest {
     @DisplayName("생성자에서 빈 리스트에 대한 검증")
     void createCarsWithEmptyList() {
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            Cars cars = new Cars(new ArrayList<>());
+            Cars cars = Cars.of(new String[]{});
         }).withMessage(ErrorMessage.EMPTY_CARS.getMessage());
     }
 
     @Test
-    @DisplayName("모든 자동차가 이동한 trial 결과 테스트")
-    void nextTrialAllMoved() {
-        // given
-        Cars cars = new Cars(Arrays.stream(names)
-                .map(Car::new)
-                .collect(Collectors.toList()));
-
+    @DisplayName("모든 자동차가 이동한 runTrial 결과 테스트")
+    void runTrialAllMoved() {
         // when
-        Trial actual = cars.nextTrial(() -> true);
+        Cars actual = Cars.of(names).runTrial(() -> true);
 
         // then
-        List<TrackInfo> tracks = Arrays.stream(names)
-                .map(name -> new TrackInfo(name, 1))
-                .collect(Collectors.toList());
-        Trial expected = new Trial(tracks);
+        List<Car> before = parseCar(names);
+        List<Car> after = new ArrayList<>();
+
+        for (Car car : before) {
+            after.add(car.move(() -> true));
+        }
+        Cars expected = Cars.of(after);
 
         assertEquals(expected, actual);
     }
 
     @Test
-    @DisplayName("모든 자동차가 정지한 trial 결과 테스트")
-    void nextTrialAllStopped() {
+    @DisplayName("모든 자동차가 정지한 runTrial 결과 테스트")
+    void runTrialAllStopped() {
         // given
-        Cars cars = new Cars(Arrays.stream(names)
-                .map(Car::new)
-                .collect(Collectors.toList()));
-
-        // when
-        Trial actual = cars.nextTrial(() -> false);
+        Cars actual = Cars.of(names).runTrial(() -> false);
 
         // then
-        List<TrackInfo> tracks = Arrays.stream(names)
-                .map(name -> new TrackInfo(name, 0))
-                .collect(Collectors.toList());
-        Trial expected = new Trial(tracks);
+        List<Car> before = parseCar(names);
+        List<Car> after = new ArrayList<>();
+
+        for (Car car : before) {
+            after.add(car.move(() -> false));
+        }
+        Cars expected = Cars.of(after);
 
         assertEquals(expected, actual);
     }
 
     @Test
-    @DisplayName("trial 결과 테스트")
-    void nextTrial() {
+    @DisplayName("runTrial 결과 테스트")
+    void runTrial() {
         // given
         Car first = new Car(names[0]);
         Car second = new Car(names[1]);
         Car third = new Car(names[2]);
-        Cars cars = new Cars(Arrays.asList(first, second, third));
 
-        first.move(() -> true);
+        first = first.move(() -> true);
+
+        Cars cars = Cars.of(Arrays.asList(first, second, third));
 
         // when
-        Trial actual = cars.nextTrial(() -> false);
+        Cars actual = cars.runTrial(() -> false);
 
         // then
-        Trial expected = new Trial(Arrays.asList(
-                new TrackInfo(first.getName(), 1),
-                new TrackInfo(second.getName(), 0),
-                new TrackInfo(third.getName(), 0)
+        Cars expected = Cars.of(Arrays.asList(
+                new Car(first.getName(), 1),
+                new Car(second.getName(), 0),
+                new Car(third.getName(), 0)
         ));
 
         assertEquals(expected, actual);
@@ -108,10 +100,11 @@ class CarsTest {
         Car winner = new Car(names[0]);
         Car second = new Car(names[1]);
         Car third = new Car(names[2]);
-        Cars cars = new Cars(Arrays.asList(winner, second, third));
 
-        winner.move(() -> true);
-        cars.nextTrial(() -> false);
+        winner = winner.move(() -> true);
+        Cars cars = Cars.of(Arrays.asList(winner, second, third));
+
+        cars = cars.runTrial(() -> false);
 
         // when
         List<Car> actual = cars.getWinners();
@@ -128,13 +121,19 @@ class CarsTest {
         List<Car> participants = Arrays.stream(names)
                 .map(Car::new)
                 .collect(Collectors.toList());
-        Cars cars = new Cars(participants);
-        cars.nextTrial(() -> true);
+        Cars cars = Cars.of(participants);
+        cars.runTrial(() -> true);
 
         // when
         List<Car> actual = cars.getWinners();
 
         // then
         assertEquals(participants, actual);
+    }
+
+    private List<Car> parseCar(String[] namesOfCars) {
+        return Arrays.stream(namesOfCars)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 }

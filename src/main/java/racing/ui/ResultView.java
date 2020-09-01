@@ -1,7 +1,6 @@
 package racing.ui;
 
 import racing.core.domain.Car;
-import racing.core.dto.TrackInfo;
 import racing.core.dto.Trial;
 
 import java.util.List;
@@ -35,16 +34,17 @@ public class ResultView {
     }
 
     private String parseString(Trial trial) {
-        return trial.getTracks()
+        return trial.getStateOfCarsAtThatTrial()
+                .getCars()
                 .stream()
-                .map(this::mapTrackInfoToString)
+                .map(this::mapCarToString)
                 .reduce("", String::concat);
     }
 
-    private String mapTrackInfoToString(TrackInfo trackInfo) {
-        String track = IntStream.range(0, trackInfo.getPosition())
+    private String mapCarToString(Car car) {
+        String track = IntStream.range(0, car.getPosition())
                 .mapToObj(position -> TRACK)
                 .reduce("", String::concat);
-        return String.format("%s : %s\n", trackInfo.getCarName(), track);
+        return String.format("%s : %s\n", car.getName(), track);
     }
 }

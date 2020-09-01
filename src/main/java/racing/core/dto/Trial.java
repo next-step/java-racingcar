@@ -1,18 +1,19 @@
 package racing.core.dto;
 
-import java.util.List;
+import racing.core.domain.Cars;
+
 import java.util.Objects;
 
 public class Trial {
 
-    private List<TrackInfo> tracks;
+    private final Cars stateOfCarsAtThatTrial;
 
-    public Trial(List<TrackInfo> tracks) {
-        this.tracks = tracks;
+    public Trial(Cars stateOfCarsAtThatTrial) {
+        this.stateOfCarsAtThatTrial = stateOfCarsAtThatTrial;
     }
 
-    public List<TrackInfo> getTracks() {
-        return tracks;
+    public Cars getStateOfCarsAtThatTrial() {
+        return stateOfCarsAtThatTrial;
     }
 
     @Override
@@ -20,11 +21,11 @@ public class Trial {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Trial trial = (Trial) o;
-        return tracks.equals(trial.tracks);
+        return stateOfCarsAtThatTrial.equals(trial.stateOfCarsAtThatTrial);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(tracks);
+        return Objects.hash(stateOfCarsAtThatTrial);
     }
 }

@@ -4,12 +4,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
-import racing.core.dto.TrackInfo;
 import racing.core.dto.Trial;
 import racing.core.exception.ErrorMessage;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -42,7 +43,7 @@ class RacingGameTest {
         // given
         List<Trial> expected = new ArrayList<>(numberOfTrials);
         for (int i = 0; i < numberOfTrials; i++) {
-            expected.add(new Trial(getTracksNeverMoved()));
+            expected.add(new Trial(getCars(0)));
         }
 
         // when
@@ -58,7 +59,7 @@ class RacingGameTest {
         // given
         List<Trial> expected = new ArrayList<>(numberOfTrials);
         for (int i = 0; i < numberOfTrials; i++) {
-            expected.add(new Trial(getTracksAlwaysMoved(i + 1)));
+            expected.add(new Trial(getCars(i + 1)));
         }
 
         // when
@@ -68,19 +69,10 @@ class RacingGameTest {
         assertEquals(expected, actual);
     }
 
-    private List<TrackInfo> getTracksNeverMoved() {
-        List<TrackInfo> tracks = new ArrayList<>(namesOfCars.length);
-        for (int i = 0; i < namesOfCars.length; i++) {
-            tracks.add(new TrackInfo(namesOfCars[i], 0));
-        }
-        return tracks;
-    }
-
-    private List<TrackInfo> getTracksAlwaysMoved(int position) {
-        List<TrackInfo> tracks = new ArrayList<>(namesOfCars.length);
-        for (int i = 0; i < namesOfCars.length; i++) {
-            tracks.add(new TrackInfo(namesOfCars[i], position));
-        }
-        return tracks;
+    private Cars getCars(int position) {
+        List<Car> cars = Arrays.stream(namesOfCars)
+                .map(name -> new Car(name, position))
+                .collect(Collectors.toList());
+        return Cars.of(cars);
     }
 }

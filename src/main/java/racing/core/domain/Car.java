@@ -1,21 +1,27 @@
 package racing.core.domain;
 
-import racing.core.dto.TrackInfo;
 import racing.core.exception.ErrorMessage;
 import racing.core.patterns.MoveStrategy;
 
 import java.util.Objects;
 
-public class Car implements Comparable<Car> {
+public final class Car implements Comparable<Car> {
 
     private static final int LENGTH_LIMIT = 5;
 
-    private String name;
-    private int position;
+    private final String name;
+    private final int position;
 
     public Car(String name) {
         validateName(name);
         this.name = name;
+        this.position = 0;
+    }
+
+    public Car(String name, int position) {
+        validateName(name);
+        this.name = name;
+        this.position = position;
     }
 
     private void validateName(String name) {
@@ -27,11 +33,11 @@ public class Car implements Comparable<Car> {
         }
     }
 
-    public TrackInfo move(MoveStrategy movement) {
+    public Car move(MoveStrategy movement) {
         if (movement.canMove()) {
-            position++;
+            return new Car(name, position + 1);
         }
-        return new TrackInfo(name, position);
+        return new Car(name, position);
     }
 
     public boolean isSamePosition(Car car) {
@@ -40,6 +46,24 @@ public class Car implements Comparable<Car> {
 
     public String getName() {
         return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return position == car.position &&
+                name.equals(car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position);
     }
 
     @Override
