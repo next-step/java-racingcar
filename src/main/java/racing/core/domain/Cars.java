@@ -1,21 +1,17 @@
 package racing.core.domain;
 
-import racing.core.dto.TrackInfo;
-import racing.core.dto.Trial;
 import racing.core.exception.ErrorMessage;
 import racing.core.patterns.MoveStrategy;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
-public class Cars {
+public final class Cars {
 
     private static final int WINNER = 0;
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    private Cars(List<Car> cars) {
         validateList(cars);
         this.cars = cars;
     }
@@ -26,11 +22,12 @@ public class Cars {
         }
     }
 
-    public Trial nextTrial(MoveStrategy movement) {
-        List<TrackInfo> tracks = cars.stream()
-                .map(car -> car.move(movement))
-                .collect(Collectors.toList());
-        return new Trial(tracks);
+    public Cars runTrial(MoveStrategy movement) {
+        List<Car> after = new ArrayList<>();
+        for (Car car : cars) {
+            after.add(car.move(movement));
+        }
+        return new Cars(after);
     }
 
     public List<Car> getWinners() {
@@ -44,5 +41,33 @@ public class Cars {
         List<Car> copy = new ArrayList<>(cars);
         Collections.sort(copy);
         return copy;
+    }
+
+    public static Cars of(String[] namesOfCars) {
+        List<Car> participants = Arrays.stream(namesOfCars)
+                .map(Car::new)
+                .collect(Collectors.toList());
+        return new Cars(participants);
+    }
+
+    public static Cars of(List<Car> cars) {
+        return new Cars(cars);
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cars cars1 = (Cars) o;
+        return cars.equals(cars1.cars);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars);
     }
 }
