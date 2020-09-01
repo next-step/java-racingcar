@@ -14,37 +14,37 @@ import static racingcar.utils.Constants.INIT_POSITION;
 public class Car {
 
     private final String carName;
-    private Position position;
+    private int position;
 
-    public Car(String carName, Position position) {
+    public Car(String carName, int position) {
         this.carName = carName;
         this.position = position;
     }
 
     public Car(String carName) {
-        this (carName, new Position(INIT_POSITION));
+        this (carName, INIT_POSITION));
     }
 
     public String getCarName() {
         return carName;
     }
 
-    public void Car(Position position) {
+    public void Car(int position) {
         this.position = position;
     }
 
     public int getPosition() {
-        return position.getPosition();
+        return position;
     }
 
 
     public boolean equalToMaxPosition(int maxPosition) {
-        return position.getPosition() == maxPosition;
+        return position == maxPosition;
     }
 
     public void move2(int movePoint){
         if (pass2(movePoint)) {
-            position.increase2();
+            position++;
         }
     }
 
@@ -57,8 +57,8 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass( ) != o.getClass( )) return false;
         Car car = (Car) o;
-        return Objects.equals(carName, car.carName) &&
-                Objects.equals(position, car.position);
+        return position == car.position &&
+                Objects.equals(carName, car.carName);
     }
 
     @Override
