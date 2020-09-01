@@ -10,6 +10,9 @@ import java.util.stream.IntStream;
 
 public class ResultView {
 
+    private static final String TRACK = "-";
+    private static final String DELIMITER = ",";
+
     private List<Trial> trials;
     private String winners;
 
@@ -21,7 +24,7 @@ public class ResultView {
     private String joinNames(List<Car> winners) {
         return winners.stream()
                 .map(Car::getName)
-                .collect(Collectors.joining(","));
+                .collect(Collectors.joining(DELIMITER));
     }
 
     public void printResult() {
@@ -40,7 +43,7 @@ public class ResultView {
 
     private String mapTrackInfoToString(TrackInfo trackInfo) {
         String track = IntStream.range(0, trackInfo.getPosition())
-                .mapToObj(position -> "-")
+                .mapToObj(position -> TRACK)
                 .reduce("", String::concat);
         return String.format("%s : %s\n", trackInfo.getCarName(), track);
     }
