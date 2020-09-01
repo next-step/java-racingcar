@@ -14,13 +14,8 @@ public class Cars {
         this.cars = cars;
     }
 
-
     public List<Car> getCars() {
         return cars;
-    }
-
-    public WinnerCars findWinnerCars() {
-        return new WinnerCars(filterWinners(getMaxPosition()));
     }
 
     public int getMaxPosition() {
@@ -29,13 +24,14 @@ public class Cars {
                 .map(Car::getPosition)
                 .orElseThrow(IllegalArgumentException::new);
     }
-    public void moveCars2() {
-        for (Car car : cars) {
-            car.move2(returnRandom());
-        }
-    }
+//    public void moveCars2() {
+//        for (Car car : cars) {
+//            car.move2(returnRandom());
+//        }
+//    }
 
-    public String findWinnerNames(int maxPosition) {
+    public String findWinnerNames() {
+        int maxPosition = getMaxPosition();
         return cars.stream()
                 .filter(car -> car.equalToMaxPosition(maxPosition))
                 .flatMap(car -> Stream.of(car.getCarName()))
