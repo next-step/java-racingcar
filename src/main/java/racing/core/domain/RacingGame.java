@@ -1,4 +1,4 @@
-package racing.core;
+package racing.core.domain;
 
 import racing.core.domain.Car;
 import racing.core.domain.Cars;
@@ -14,7 +14,7 @@ public class RacingGame {
     public final int numberOfTrials;
 
     public RacingGame(String[] namesOfCars, int numberOfTrials) {
-        this.cars = makeUpEntry(namesOfCars);
+        this.cars = Cars.of(namesOfCars);
         this.numberOfTrials = numberOfTrials;
     }
 
@@ -25,10 +25,6 @@ public class RacingGame {
             trials.add(new Trial(cars));
         }
         return trials;
-    }
-
-    private Cars makeUpEntry(String[] namesOfCars) {
-        return Cars.of(namesOfCars);
     }
 
     public List<Car> getWinners() {
