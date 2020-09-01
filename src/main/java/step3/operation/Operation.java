@@ -1,9 +1,7 @@
 package step3.operation;
 
-import step3.view.InputView;
+import step3.common.ExceptionMessage;
 import step3.view.ResultView;
-
-import java.util.HashMap;
 import java.util.Random;
 
 public class Operation {
@@ -14,19 +12,7 @@ public class Operation {
         resultView.viewProgress(numOfAtp, numOfCars);
     }
 
-    public static void gameStart(String names, int numOfAtp) {
-//        String[] carNames = names.split(",");
-        resultView.viewProgress(names, numOfAtp);
-    }
-
     public void progress(int[] game, int[] result) {
-        for(int w = 0 ; w < game.length; w++) {
-            game[w] = decideToMove(result[w], game[w]);
-            resultView.showToMove(game[w]);
-        }
-    }
-
-    public void progress(String[] names, int[] game, int[] result) {
         for(int w = 0 ; w < game.length; w++) {
             game[w] = decideToMove(result[w], game[w]);
             resultView.showToMove(game[w]);
