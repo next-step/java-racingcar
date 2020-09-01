@@ -2,46 +2,46 @@ package racingcar.domain;
 
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
-import racingcar.domain.car.WinnerCars;
+import racingcar.strategy.condition.OneOrZeroForwardCondition;
+import racingcar.strategy.raceStrategy.DoOneForward;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.util.stream.IntStream;
 
 import static racingcar.domain.car.CarFactory.createCars;
+import static racingcar.utils.RandomInt.returnRandom;
 
 public class RacingGame {
 
     private final Cars cars;
+    private final int racingCounts;
 
-    public RacingGame(String input) {
+    public RacingGame(String input, int racingCounts) {
         this.cars = new Cars(createCars(input));
+        this.racingCounts = racingCounts;
     }
 
     public List<Car> getCars() {
         return cars.getCars();
     }
 
-    public List<Car> recordRacing() {
-        RaceResults raceResults = new RaceResults(getCars());
-        cars.moveCars();
-        return raceResults.getRaceResults();
+    public List<Cars> startRace() {
+        List<Cars> raceResults = new ArrayList<>();
+        for (int i = 0 ; i < racingCounts; i++) {
+            raceResults.add(play());
+        }
+        return raceResults;
     }
 
-    public String recordWinnerCars() {
-        WinnerCars winnercars = new WinnerCars(cars.findWinners());
-        return winnercars.getWinnersNames();
+    private Cars play() {
+        List<Car> newCarList = new ArrayList<>();
+        for (Car car : cars.getCars()) {
+            car.move2(returnRandom());
+            newCarList.add(car);
+        }
+        Cars carList = new Cars(newCarList);
+        return carList;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass( ) != o.getClass( )) return false;
-        RacingGame that = (RacingGame) o;
-        return Objects.equals(cars, that.cars);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(cars);
-    }
 }
