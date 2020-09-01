@@ -14,13 +14,13 @@ public class Car {
         this.location = 0;
     }
 
-    public void run() {
-        if (checkMove(getRandomNumber())) {
+    public void run(int random) {
+        if (checkMove(random)) {
             move();
         }
     }
 
-    private int getRandomNumber() {
+    public int getRandomNumber() {
         return random.nextInt(RANDOM_MAX_NUMBER);
     }
 
