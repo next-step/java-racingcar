@@ -1,7 +1,5 @@
 package racing.core.domain;
 
-import racing.core.domain.Car;
-import racing.core.domain.Cars;
 import racing.core.dto.Trial;
 import racing.core.patterns.MoveStrategy;
 
