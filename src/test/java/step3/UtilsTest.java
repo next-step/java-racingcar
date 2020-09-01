@@ -1,7 +1,9 @@
 package step3;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.utils.StringUtils;
 import step3.utils.ValidationUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,4 +25,10 @@ public class UtilsTest {
         assertThat(ValidationUtils.validationName(null)).isFalse();
     }
 
+    @DisplayName("'-'로 표현")
+    @Test
+    public void repeat() {
+        String reuslt = StringUtils.repeat("-", 5);
+        assertThat("-----");
+    }
 }
