@@ -41,29 +41,5 @@ public class RacingCars {
     }
 
 
-    public ArrayList<String> getCarsOfWinnerName() {
-        int temp = 0;
-        int max = 0;
-
-        ArrayList<String> result = new ArrayList<String>();
-        for(int i = 0; i< racingCars.size(); i++) {
-            RacingCar racingCar = racingCars.get(i);
-            temp = racingCar.getRacingResult();
-
-            if(temp==max) {
-                result.add(racingCar.getName());
-            }
-
-            if(temp>max) {
-                result.clear();
-                result.add(racingCar.getName());
-                max = temp;
-            }
-
-        }
-
-        return result;
-    }
-
 
 }

@@ -27,7 +27,7 @@ public class RacingCarTest {
      */
 
 
-    racing.RacingCar RacingCar = new racing.RacingCar("에디");
+    RacingCar RacingCar = new RacingCar("에디");
 
     @DisplayName("자동차 N번 움직이기(결과 배열 비교)")
     @ParameterizedTest
@@ -49,7 +49,7 @@ public class RacingCarTest {
     @ParameterizedTest
     @CsvSource(value = {"3번차:3번차", "에디차:에디차"}, delimiter = ':')
     public void 자동차_이름_설정_후_출력_테스트(String inputName, String expected) {
-        racing.RacingCar car = new RacingCar(inputName);
+        RacingCar car = new RacingCar(inputName);
         assertThat(car.getName()).isEqualTo(expected);
     }
 

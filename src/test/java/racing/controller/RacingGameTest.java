@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
 
-    static racing.RacingGame racingGame;
+    static RacingGame racingGame;
 
 
 
