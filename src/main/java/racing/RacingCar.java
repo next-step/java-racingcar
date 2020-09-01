@@ -1,5 +1,6 @@
 package racing;
 
+import racing.strategy.DefaultMoveStategy;
 import racing.strategy.MoveStrategy;
 
 import java.util.Arrays;
@@ -8,26 +9,38 @@ import java.util.stream.Stream;
 
 public class RacingCar {
 
-    Integer[] racingResult;
-    MoveStrategy moveStrategy;
+    private Integer[] racingResult;
+    private String nameOfCar;
 
-    public RacingCar() { }
-
-    public RacingCar(MoveStrategy moveStrategy) {
-       this.moveStrategy = moveStrategy;
+    public RacingCar(String nameOfCar) {
+        this.nameOfCar = nameOfCar;
     }
 
-    public void startRacing(int racingCount) {
-        racingResult = move(racingCount);
-    }
-
-    public Integer[] move(int racingCount) {
-        return Stream.generate(() -> this.moveStrategy.move()).limit(racingCount).toArray(Integer[]::new);
+    public void move(int racingCount, MoveStrategy moveStrategy) {
+        racingResult = Stream.generate(() -> moveStrategy.move())
+                             .limit(racingCount)
+                             .toArray(Integer[]::new);
     }
 
     public int getRacingResult(int roundOfRacing) {
         return racingResult[roundOfRacing-1];
     }
+
+    public int getRacingResultSum(int roundOfRacing) {
+        int result = 0;
+
+        for(int i=0;i<roundOfRacing;i++) {
+            result += racingResult[i];
+        }
+
+        return result;
+    }
+
+    public int getRacingResult() {
+
+        return getRacingResultSum(racingResult.length);
+    }
+
 
     @Override
     public String toString() {
@@ -35,4 +48,9 @@ public class RacingCar {
                 "racingResult=" + Arrays.toString(racingResult) +
                 '}';
     }
+
+    public String getName() {
+        return this.nameOfCar;
+    }
+
 }

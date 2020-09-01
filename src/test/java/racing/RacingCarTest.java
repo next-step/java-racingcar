@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import racing.strategy.DefaultMoveStategy;
+import racing.strategy.MoveStrategy;
 
 import java.util.stream.Stream;
 
@@ -27,23 +28,31 @@ public class RacingCarTest {
      */
 
 
-    RacingCar RacingCar = new RacingCar(new DefaultMoveStategy());
+    RacingCar RacingCar = new RacingCar("에디");
 
     @DisplayName("자동차 N번 움직이기(결과 배열 비교)")
     @ParameterizedTest
     @MethodSource("getMoveResultParamter")
-    public void 자동차_N번_움직이기(int n, Integer[] expected) {
-        assertThat(RacingCar.move(n)).isEqualTo(expected);
+    public void 자동차_N번_움직이기(int n, MoveStrategy moveStrategy, int expected) {
+        RacingCar.move(n, moveStrategy);
+        assertThat(RacingCar.getRacingResult()).isEqualTo(expected);
     }
 
     static Stream<Arguments> getMoveResultParamter() {
         return Stream.of(
-                Arguments.of(3, new Integer[]{1, 1, 1}),
-                Arguments.of(4, new Integer[]{1, 1, 1, 1}),
-                Arguments.of(1, new Integer[]{1})
+                Arguments.of(3, new DefaultMoveStategy(), 3),
+                Arguments.of(4, new DefaultMoveStategy(), 4),
+                Arguments.of(1, new DefaultMoveStategy(), 1)
         );
     }
 
+    @DisplayName("자동차 이름 설정 후 출력")
+    @ParameterizedTest
+    @CsvSource(value = {"3번차:3번차", "에디차:에디차"}, delimiter = ':')
+    public void 자동차_이름_설정_후_출력_테스트(String inputName, String expected) {
+        RacingCar car = new RacingCar(inputName);
+        assertThat(car.getName()).isEqualTo(expected);
+    }
 
 
 }

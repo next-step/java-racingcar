@@ -4,6 +4,7 @@ package racing;
 import racing.strategy.MoveStrategy;
 import racing.strategy.RacingMoveStategy;
 import racing.view.InputView;
+import racing.view.ResultView;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,31 +12,37 @@ import java.util.stream.Stream;
 
 public class RacingGame {
 
-    private MoveStrategy moveStrategy;
+    private RacingCars racingCars;
+    private int countOfRacing;
+
+
+    public RacingGame(int countOfRacing) {
+        this.countOfRacing = countOfRacing;
+    }
+
+    public int getCountOfRacing() {
+        return this.countOfRacing;
+    }
+
+
 
     public static void main(String[] args) {
-        int countOfRacingCar = InputView.getRacingCarInput();
+        String[] nameOfRacingCarList = InputView.getRacingCarInputWithName();
         int countOfRacing = InputView.getRacingInput();
+        MoveStrategy moveStrategy = new RacingMoveStategy();
+        RacingGame racingGame = new RacingGame(countOfRacing);
 
-        MoveStrategy moveStategy = new RacingMoveStategy();
-        RacingGame racingGame = new RacingGame(moveStategy);
-        List<RacingCar> racingCarList = racingGame.setRacing(countOfRacing);
-        List<RacingCar> racingResult = racingGame.startRacing(countOfRacing, racingCarList);
-        System.out.println(racingResult);
-        ResultView.viewRacingResult(racingResult);
-    }
-    public RacingGame() {}
+        racingGame.start(nameOfRacingCarList, moveStrategy);
 
-    public RacingGame(MoveStrategy moveStrategy) {
-        this.moveStrategy = moveStrategy;
+        ResultView.viewRacingResult(racingGame);
     }
 
-    public List<RacingCar> setRacing(int countOfRacingCar) {
-       return Stream.generate(() -> new RacingCar(moveStrategy)).limit(countOfRacingCar).collect(Collectors.toList());
+    public void start(String[] nameOfRacingCarList, MoveStrategy moveStrategy) {
+        this.racingCars = RacingCars.of(nameOfRacingCarList);
+        racingCars.startRacing(this.countOfRacing, moveStrategy);
     }
 
-    public List<RacingCar> startRacing(int countOfRacingCar, List<RacingCar> racingCarList) {
-        racingCarList.forEach(racingCar -> racingCar.startRacing(countOfRacingCar));
-        return racingCarList;
+    public RacingCars getRacingCars() {
+        return racingCars;
     }
 }
