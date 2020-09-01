@@ -24,7 +24,7 @@ public class ResultView {
         outputChannel.printLine("\n" + SAY_VIEW_RESULT);
     }
 
-    public void printRaceResult(List<Cars> carsList) {
+    public static void printRaceResult(List<Cars> carsList) {
         carsList.stream()
                 .map(Cars::getCars)
                 .forEach(ResultView::getCarListForNewLine);

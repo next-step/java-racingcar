@@ -1,19 +1,24 @@
 package racingcar;
 
-import static racingcar.domain.RacingGamesFactory.createRacingGames;
+import racingcar.domain.RacingGame;
+import racingcar.domain.car.Cars;
+import racingcar.view.ResultView;
+
+import java.util.List;
+
 import static racingcar.view.InputView.*;
-import static racingcar.view.ResultView.*;
+import static racingcar.view.ResultView.printRaceResult;
+import static racingcar.view.ResultView.printWinners;
 
 
 public class RacingCarMain {
     public static void main(String[] args) {
-        createRacingGames(getCarNames(), getRacingCounts());
-        printStartResult();
-        printEmptyLine();
-        for (int i = 0 ; i < racingGames.getRacingCounts(); i++) {
-            printCars(racingGame.recordRacing());
-            resultView.printEmptyLine();
-       // }
-        resultView.printWinners(racingGame.recordWinnerCars());
+        RacingGame racingGame = new RacingGame(getCarNames(), getRacingCounts());
+        List<Cars> carsForRace = racingGame.startRace();
+        printRaceResult(carsForRace);
+
+        Cars cars = new Cars(racingGame.getCars( ));
+        printWinners(cars.findWinnerNames());
+        }
     }
-}
+
