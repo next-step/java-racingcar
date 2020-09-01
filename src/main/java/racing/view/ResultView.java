@@ -4,9 +4,11 @@ package racing.view;
 import racing.RacingCar;
 import racing.RacingCars;
 import racing.RacingGame;
+import racing.Winners;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
 
@@ -60,17 +62,10 @@ public class ResultView {
     }
 
     private static void viewRacingWinner(RacingGame racingGame) {
-        ArrayList<String> winnerList = racingGame.getRacingCars().getCarsOfWinnerName();
+        ArrayList<String> winnerList = Winners.getWinner(racingGame.getRacingCars());
 
-        StringBuilder sb = new StringBuilder();
+        String result = winnerList.stream().collect(Collectors.joining(COMMA, "","가 최종 우승하였습니다."));
 
-        for(int i=0;i<winnerList.size();i++) {
-            sb.append(winnerList.get(i));
-            if(i != winnerList.size()-1) {
-                sb.append(COMMA);
-            }
-        }
-        sb.append("가 최종 우승하였습니다.");
-        System.out.println(sb.toString());
+        System.out.println(result);
     }
 }

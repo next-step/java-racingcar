@@ -17,7 +17,9 @@ public class RacingCar {
     }
 
     public void move(int racingCount, MoveStrategy moveStrategy) {
-        racingResult = Stream.generate(() -> moveStrategy.move()).limit(racingCount).toArray(Integer[]::new);
+        racingResult = Stream.generate(() -> moveStrategy.move())
+                             .limit(racingCount)
+                             .toArray(Integer[]::new);
     }
 
     public int getRacingResult(int roundOfRacing) {
@@ -50,4 +52,5 @@ public class RacingCar {
     public String getName() {
         return this.nameOfCar;
     }
+
 }

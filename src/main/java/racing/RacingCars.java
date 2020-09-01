@@ -45,7 +45,6 @@ public class RacingCars {
         int temp = 0;
         int max = 0;
 
-
         ArrayList<String> result = new ArrayList<String>();
         for(int i = 0; i< racingCars.size(); i++) {
             RacingCar racingCar = racingCars.get(i);
@@ -65,4 +64,6 @@ public class RacingCars {
 
         return result;
     }
+
+
 }
