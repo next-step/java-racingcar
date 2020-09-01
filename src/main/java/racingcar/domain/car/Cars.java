@@ -4,6 +4,7 @@ import racingcar.strategy.raceStrategy.DoOneForward;
 import racingcar.strategy.condition.OneOrZeroForwardCondition;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -13,14 +14,20 @@ public class Cars {
         this.cars = cars;
     }
 
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public WinnerCars findWinnerCars() {
+        return new WinnerCars(filterWinners(getMaxPosition()));
+    }
+
     public int getMaxPosition() {
-        int maxPosition = 0;
-        for (Car car : cars) {
-            if (car.getPosition() >= maxPosition) {
-                maxPosition = car.getPosition();
-            }
-        }
-        return maxPosition;
+        return cars.stream( )
+                .mapToInt(Car::getPosition)
+                .max( )
+                .orElseThrow(IllegalArgumentException::new);
     }
 
     public void moveCars() {
@@ -28,18 +35,10 @@ public class Cars {
                 -> car.move(new OneOrZeroForwardCondition(), new DoOneForward()));
     }
 
-    public List<Car> findWinners() {
-        List<Car> winnerList = new ArrayList<>( );
-        for (Car car : cars) {
-            if (car.getPosition( ) >= getMaxPosition()) {
-                winnerList.add(car);
-            }
-        }
-        return winnerList;
-    }
-
-    public List<Car> getCars() {
-        return cars;
+    public List<Car> filterWinners(int maxPosition) {
+        return cars.stream()
+                .filter(car -> car.equalToPosition(maxPosition))
+                .collect(Collectors.toList());
     }
 
     @Override

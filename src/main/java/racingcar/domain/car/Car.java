@@ -34,8 +34,18 @@ public class Car {
         return position.getPosition();
     }
 
+    public boolean equalToPosition(int maxPosition) {
+       if (position.getPosition() == maxPosition) {
+           return true;
+       }
+       return false;
+    }
+
     public void move(RaceCondition raceCondition, DoRace doRace) {
-        position.increase(raceCondition, doRace);}
+        position.increase(raceCondition, doRace);
+    }
+
+
 
     @Override
     public boolean equals(Object o) {
@@ -50,4 +60,5 @@ public class Car {
     public int hashCode() {
         return Objects.hash(carName, position);
     }
+
 }

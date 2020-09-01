@@ -1,5 +1,6 @@
 package racingcar.domain.car;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -15,11 +16,16 @@ public class WinnerCars {
         this.winnerCars = winnerCars;
     }
 
+    public List<Car> getWinnerCars() {
+        return winnerCars;
+    }
+
     public String getWinnersNames() {
-        Cars winners = new Cars(winnerCars);
-        List<String> winnerCarsNamesList = winners.findWinners().stream( )
-                .map(winner -> winner.getCarName())
-                .collect(Collectors.toList());
+        List<String> winnerCarsNamesList = new ArrayList<>();
+
+        for (Car winner : winnerCars) {
+            winnerCarsNamesList.add(winner.getCarName());
+        }
         return getNames(winnerCarsNamesList, WINNER_CAR_NAMES_DELIMITER);
     }
 
