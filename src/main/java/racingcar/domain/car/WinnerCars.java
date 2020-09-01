@@ -20,21 +20,12 @@ public class WinnerCars {
         return winnerCars;
     }
 
-    public String getWinnersNames() {
-        List<String> winnerCarsNamesList = new ArrayList<>();
-
-        for (Car winner : winnerCars) {
-            winnerCarsNamesList.add(winner.getCarName());
-        }
-        return getNames(winnerCarsNamesList, WINNER_CAR_NAMES_DELIMITER);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass( ) != o.getClass( )) return false;
-        WinnerCars winnerCars1 = (WinnerCars) o;
-        return Objects.equals(winnerCars, winnerCars1.winnerCars);
+        WinnerCars that = (WinnerCars) o;
+        return Objects.equals(winnerCars, that.winnerCars);
     }
 
     @Override

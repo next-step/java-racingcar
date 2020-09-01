@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static racingcar.utils.Constants.FORWARD_OK_COND_NUM;
 import static racingcar.utils.Constants.INIT_POSITION;
 
 public class Car {
@@ -16,15 +17,14 @@ public class Car {
     private Position position;
     private List<Integer> recordCarMove;
 
-
-    public Car(String carName) {
-        this (carName, new Position(INIT_POSITION));
-    }
-
     public Car(String carName, Position position) {
         this.carName = carName;
         this.position = position;
         recordCarMove = new ArrayList<>();
+    }
+
+    public Car(String carName) {
+        this (carName, new Position(INIT_POSITION));
     }
 
     public String getCarName() {
@@ -39,6 +39,10 @@ public class Car {
         return position.getPosition();
     }
 
+    public int getRecordCarMove(int i) {
+        return recordCarMove.get(i);
+    }
+
     public boolean equalToPosition(int maxPosition) {
        if (position.getPosition() == maxPosition) {
            return true;
@@ -46,9 +50,21 @@ public class Car {
        return false;
     }
 
-    public void move(RaceCondition raceCondition, DoRace doRace) {
-        position.increase(raceCondition, doRace);
+    public void move2(int movePoint){
+        if (pass2(movePoint)) {
+            position.increase2();
+        }
+        recordCarMove.add(position.getPosition());
     }
+
+    private boolean pass2(int movePoint) {
+        return movePoint >= FORWARD_OK_COND_NUM;
+    }
+
+//    public void move(RaceCondition raceCondition, DoRace doRace) {
+//        position.increase(raceCondition, doRace);
+//        recordCarMove.add(position.getPosition());
+//    }
 
     @Override
     public boolean equals(Object o) {

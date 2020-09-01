@@ -6,6 +6,8 @@ import racingcar.strategy.condition.OneOrZeroForwardCondition;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static racingcar.utils.RandomInt.returnRandom;
+
 public class Cars {
 
     private final List<Car> cars;
@@ -29,11 +31,18 @@ public class Cars {
                 .map(Car::getPosition)
                 .orElseThrow(IllegalArgumentException::new);
     }
-
-    public void moveCars() {
-        this.cars.forEach(car
-                -> car.move(new OneOrZeroForwardCondition(), new DoOneForward()));
+    public void moveCars2() {
+        for (Car car : cars) {
+            car.move2(returnRandom());
+        }
     }
+
+//    public void moveCars() {
+//        this.cars.forEach(car
+//                -> car.move(new OneOrZeroForwardCondition(), new DoOneForward()));
+//    }
+
+
 
     public List<Car> filterWinners(int maxPosition) {
         return cars.stream()
