@@ -3,6 +3,7 @@ package racing.view;
 
 import racing.controller.RacingGame;
 import racing.domain.RacingCar;
+import racing.domain.RacingCars;
 import racing.domain.Winners;
 
 import java.util.ArrayList;
@@ -15,20 +16,12 @@ public class ResultView {
     static String COMMA = ",";
 
 
-    public static void viewRacingScore(RacingGame racingGame) {
-
-        racingGame.getCountOfRacing();
-
-        int totalRacingRound = racingGame.getCountOfRacing();
-        for(int i=1;i<=totalRacingRound;i++) {
-            viewRacingRoundResult(i,   racingGame.getRacingCars().getRecingCarList());
+    public static void viewRacingScore(RacingCars racingCars, int countOfRacing) {
+        for(int i=1;i<=countOfRacing;i++) {
+            viewRacingRoundResult(i, racingCars.getRecingCarList());
         }
 
     }
-
-
-
-
 
     private static void viewRacingRoundResult(int racingRound, List<RacingCar> racingResult) {
         for(int i=0;i<racingResult.size();i++){
@@ -54,14 +47,14 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void viewRacingResult(RacingGame racingGame) {
+    public static void viewRacingResult(RacingCars racingCars, int countOfRacing) {
 
-        viewRacingScore(racingGame);
-        viewRacingWinner(racingGame);
+        viewRacingScore(racingCars, countOfRacing);
+        viewRacingWinner(racingCars);
     }
 
-    private static void viewRacingWinner(RacingGame racingGame) {
-        ArrayList<String> winnerList = Winners.getWinner(racingGame.getRacingCars());
+    private static void viewRacingWinner(RacingCars racingCars) {
+        ArrayList<String> winnerList = Winners.getWinner(racingCars);
 
         String result = winnerList.stream().collect(Collectors.joining(COMMA, "","가 최종 우승하였습니다."));
 

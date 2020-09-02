@@ -5,6 +5,7 @@ import racing.domain.RacingCars;
 import racing.strategy.MoveStrategy;
 import racing.strategy.RacingMoveStategy;
 import racing.view.InputView;
+import racing.view.ResultView;
 
 public class RacingGame {
 
@@ -20,8 +21,6 @@ public class RacingGame {
         return this.countOfRacing;
     }
 
-
-
     public static void main(String[] args) {
         String[] nameOfRacingCarList = InputView.getRacingCarInputWithName();
         int countOfRacing = InputView.getRacingInput();
@@ -30,7 +29,7 @@ public class RacingGame {
 
         racingGame.start(nameOfRacingCarList, moveStrategy);
 
-        //ResultView.viewRacingResult(racingGame);
+        ResultView.viewRacingResult(racingGame.getRacingCars(), countOfRacing);
     }
 
     public void start(String[] nameOfRacingCarList, MoveStrategy moveStrategy) {
