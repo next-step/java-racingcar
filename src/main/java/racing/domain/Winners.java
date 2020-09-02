@@ -8,6 +8,8 @@ import static java.util.stream.Collectors.toCollection;
 
 public class Winners {
 
+    private Winners(){}
+
     public static ArrayList<String> getWinner(RacingCars cars) {
         ArrayList<RacingCar> carList = (ArrayList)cars.getRecingCarList();
         int max = getMaxRecord(carList);
