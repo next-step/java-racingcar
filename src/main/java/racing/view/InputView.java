@@ -8,7 +8,9 @@ import java.util.Scanner;
 
 public class InputView {
 
-    static Scanner scan = new Scanner(System.in);
+    private static Scanner scan = new Scanner(System.in);
+
+    private InputView(){};
 
     public static int getRacingCarInput() {
         System.out.println("자동차 대수는 몇대 인가요?(이름은 쉼표(,)기준으로 구분)");
