@@ -30,8 +30,6 @@ public class ResultView {
         System.out.println();
     }
 
-
-
     private static void viewRacingCarResult(int racingRound, RacingCar racingCar) {
         racingCar.getRacingResult(racingRound);
         int sumOfRacingLength = 0;
@@ -39,7 +37,9 @@ public class ResultView {
         for(int i=1;i<=racingRound;i++) {
             sumOfRacingLength += racingCar.getRacingResult(i);
         }
+
         System.out.print(racingCar.getName() + " : ");
+
         for(int i=0;i<=sumOfRacingLength;i++) {
 
             System.out.print(RACING_STATE_EXPRESSION);

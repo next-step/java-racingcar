@@ -21,17 +21,6 @@ public class RacingGame {
         return this.countOfRacing;
     }
 
-    public static void main(String[] args) {
-        String[] nameOfRacingCarList = InputView.getRacingCarInputWithName();
-        int countOfRacing = InputView.getRacingInput();
-        MoveStrategy moveStrategy = new RacingMoveStategy();
-        RacingGame racingGame = new RacingGame(countOfRacing);
-
-        racingGame.start(nameOfRacingCarList, moveStrategy);
-
-        ResultView.viewRacingResult(racingGame.getRacingCars(), countOfRacing);
-    }
-
     public void start(String[] nameOfRacingCarList, MoveStrategy moveStrategy) {
         this.racingCars = RacingCars.of(nameOfRacingCarList);
         racingCars.startRacing(this.countOfRacing, moveStrategy);
