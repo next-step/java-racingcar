@@ -12,9 +12,10 @@ import java.util.stream.Collectors;
 
 public class ResultView {
 
-    static String RACING_STATE_EXPRESSION = "-";
-    static String COMMA = ",";
+    private static String RACING_STATE_EXPRESSION = "-";
+    private static String COMMA = ",";
 
+    private ResultView(){}
 
     public static void viewRacingScore(RacingCars racingCars, int countOfRacing) {
         for(int i=1;i<=countOfRacing;i++) {
