@@ -1,10 +1,10 @@
 package racing.view;
 
 
-import racing.RacingCar;
-import racing.RacingCars;
-import racing.RacingGame;
-import racing.Winners;
+import racing.controller.RacingGame;
+import racing.domain.RacingCar;
+import racing.domain.RacingCars;
+import racing.domain.Winners;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,24 +12,17 @@ import java.util.stream.Collectors;
 
 public class ResultView {
 
-    static String RACING_STATE_EXPRESSION = "-";
-    static String COMMA = ",";
+    private static String RACING_STATE_EXPRESSION = "-";
+    private static String COMMA = ",";
 
+    private ResultView(){}
 
-    public static void viewRacingScore(RacingGame racingGame) {
-
-        racingGame.getCountOfRacing();
-
-        int totalRacingRound = racingGame.getCountOfRacing();
-        for(int i=1;i<=totalRacingRound;i++) {
-            viewRacingRoundResult(i,   racingGame.getRacingCars().getRecingCarList());
+    public static void viewRacingScore(RacingCars racingCars, int countOfRacing) {
+        for(int i=1;i<=countOfRacing;i++) {
+            viewRacingRoundResult(i, racingCars.getRecingCarList());
         }
 
     }
-
-
-
-
 
     private static void viewRacingRoundResult(int racingRound, List<RacingCar> racingResult) {
         for(int i=0;i<racingResult.size();i++){
@@ -38,8 +31,6 @@ public class ResultView {
         System.out.println();
     }
 
-
-
     private static void viewRacingCarResult(int racingRound, RacingCar racingCar) {
         racingCar.getRacingResult(racingRound);
         int sumOfRacingLength = 0;
@@ -47,7 +38,9 @@ public class ResultView {
         for(int i=1;i<=racingRound;i++) {
             sumOfRacingLength += racingCar.getRacingResult(i);
         }
+
         System.out.print(racingCar.getName() + " : ");
+
         for(int i=0;i<=sumOfRacingLength;i++) {
 
             System.out.print(RACING_STATE_EXPRESSION);
@@ -55,14 +48,14 @@ public class ResultView {
         System.out.println();
     }
 
-    public static void viewRacingResult(RacingGame racingGame) {
+    public static void viewRacingResult(RacingCars racingCars, int countOfRacing) {
 
-        viewRacingScore(racingGame);
-        viewRacingWinner(racingGame);
+        viewRacingScore(racingCars, countOfRacing);
+        viewRacingWinner(racingCars);
     }
 
-    private static void viewRacingWinner(RacingGame racingGame) {
-        ArrayList<String> winnerList = Winners.getWinner(racingGame.getRacingCars());
+    private static void viewRacingWinner(RacingCars racingCars) {
+        ArrayList<String> winnerList = Winners.getWinner(racingCars);
 
         String result = winnerList.stream().collect(Collectors.joining(COMMA, "","가 최종 우승하였습니다."));
 

@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.jupiter.api.DisplayName;
@@ -61,16 +61,6 @@ public class RacingCarsTest {
     }
 
 
-
-    @DisplayName("우승자 가져오기")
-    @ParameterizedTest
-    @MethodSource("getNameOfCarListWithWinner")
-    public void 우승자_가져오기(String[] input, int countOfRacing, String[] excpected) {
-        MoveStrategy strategy = new DefaultMoveStategy();
-        racingCars = RacingCars.of(input);
-        racingCars.startRacing(countOfRacing, strategy);
-        assertThat(racingCars.getCarsOfWinnerName()).isEqualTo(Arrays.asList(excpected));
-    }
 
 
 
