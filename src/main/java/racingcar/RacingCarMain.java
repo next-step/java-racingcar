@@ -15,6 +15,7 @@ public class RacingCarMain {
             printCars(racingGame.recordRacing());
             printEmptyLine();
         }
+
         printWinners(racingGame.getCars());
     }
 }

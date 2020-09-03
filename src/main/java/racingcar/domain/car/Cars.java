@@ -6,12 +6,19 @@ import racingcar.strategy.condition.OneOrZeroForwardCondition;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static racingcar.utils.Constants.WINNER_CAR_NAMES_DELIMITER;
+
 public class Cars {
 
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
+    }
+
+
+    public List<Car> getCars() {
+        return cars;
     }
 
     public int getMaxPosition() {
@@ -31,9 +38,12 @@ public class Cars {
                 .collect(Collectors.toList( ));
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public String getWinnersNames() {
+        return filterWinners().stream()
+                .map(Car::getCarName)
+                .collect(Collectors.joining(WINNER_CAR_NAMES_DELIMITER));
     }
+
 
     @Override
     public boolean equals(Object o) {

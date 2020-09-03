@@ -14,10 +14,8 @@ public class WinnerCars {
         this.winnerCars = winnerCars;
     }
 
-    public String getWinnersNames() {
-        return winnerCars.stream()
-                .map(Car::getCarName)
-                .collect(Collectors.joining(WINNER_CAR_NAMES_DELIMITER));
+    public List<Car> getWinnerCars() {
+        return winnerCars;
     }
 
     @Override

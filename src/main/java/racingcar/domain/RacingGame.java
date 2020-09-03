@@ -18,8 +18,8 @@ public class RacingGame {
         this.racingCounts = new RacingCounts(racingCounts);
     }
 
-    public List<Car> getCars() {
-        return cars.getCars();
+    public Cars getCars() {
+        return cars;
     }
 
     public int getRacingCounts() {
@@ -27,8 +27,8 @@ public class RacingGame {
     }
 
     public List<Car> recordRacing() {
-        RaceResults raceResults = new RaceResults(getCars());
-        cars.moveCars(getCars());
+        RaceResults raceResults = new RaceResults(getCars().getCars());
+        cars.moveCars();
         return raceResults.getRaceResults();
     }
 
