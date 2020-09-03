@@ -16,7 +16,6 @@ public class Cars {
         this.cars = cars;
     }
 
-
     public List<Car> getCars() {
         return cars;
     }
@@ -29,7 +28,8 @@ public class Cars {
     }
 
     public void moveCars() {
-        cars.forEach(o -> o.move(new OneOrZeroForwardCondition(), new DoOneForward()));
+        cars.forEach(car
+                -> car.move(new OneOrZeroForwardCondition(), new DoOneForward()));
     }
 
     public List<Car> filterWinners() {

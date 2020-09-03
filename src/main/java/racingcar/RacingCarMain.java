@@ -11,10 +11,12 @@ public class RacingCarMain {
     public static void main(String[] args) {
         RacingGame racingGame = new RacingGame(getCarNames(), getRacingCounts());
         printStartResult();
-        for (int i = 0 ; i < racingGame.getRacingCounts(); i++) {
-            printCars(racingGame.recordRacing());
-            printEmptyLine();
-        }
+//        for (int i = 0 ; i < racingGame.getRacingCounts(); i++) {
+//            printCars(racingGame.recordOneRacing());
+//            printEmptyLine();
+//        }
+        racingGame.recordAllRacing();
+        printCarsResult(racingGame.recordAllRacing());
 
         printWinners(racingGame.getCars());
     }
