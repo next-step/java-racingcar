@@ -11,11 +11,9 @@ import static racingcar.utils.StringUtils.repeat;
 
 public class ResultView{
 
-    private static OutputChannel outputChannel;
+    private static OutputChannel outputChannel = OutputChannel.createSystemOut();
 
-    public ResultView(OutputChannel outputChannel) {
-        this.outputChannel = outputChannel;
-    }
+    private ResultView() {}
 
     public static void printStartResult() {
         outputChannel.printLine("\n"+SAY_VIEW_RESULT);

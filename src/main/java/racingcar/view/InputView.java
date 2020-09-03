@@ -3,13 +3,10 @@ package racingcar.view;
 import static racingcar.utils.Constants.*;
 
 public class InputView {
-    private static InputChannel inputChannel;
-    private static OutputChannel outputChannel;
+    private static InputChannel inputChannel = InputChannel.createSystemIn();
+    private static OutputChannel outputChannel = OutputChannel.createSystemOut();
 
-    public InputView(InputChannel inputChannel, OutputChannel outputChannel) {
-        this.inputChannel = inputChannel;
-        this.outputChannel = outputChannel;
-    }
+    private InputView(){}
 
     public static String getCarNames() {
         outputChannel.printLine(ASK_CAR_NAMES);
