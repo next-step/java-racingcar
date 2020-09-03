@@ -35,7 +35,13 @@ public class Car {
     }
 
     public void move(RaceCondition raceCondition, DoRace doRace) {
-        position.increase(raceCondition, doRace);}
+        position.increase(raceCondition, doRace);
+    }
+
+    public boolean isMaxPosition(int maxPosition) {
+        return position.checkMaxPosition(maxPosition);
+    }
+
 
     @Override
     public boolean equals(Object o) {

@@ -22,6 +22,10 @@ public class Position {
         }
     }
 
+    public boolean checkMaxPosition(int maxPosition) {
+        return position >= maxPosition;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -34,4 +38,5 @@ public class Position {
     public int hashCode() {
         return Objects.hash(position);
     }
+
 }
