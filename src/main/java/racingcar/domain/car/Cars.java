@@ -8,27 +8,26 @@ import static racingcar.utils.RandomInt.returnRandom;
 
 public class Cars {
 
-    private final List<Car> cars;
+    private List<Car> cars;
 
     public Cars(List<Car> cars) {
-        this.cars = cars;
+        this.cars = new ArrayList<>(cars);
     }
 
     public List<Car> getCars() {
-        return cars;
+        return new ArrayList<>(cars);
     }
 
     public int getMaxPosition() {
-        return cars.stream( )
-                .max(Comparator.comparing(Car::getPosition))
-                .map(Car::getPosition)
-                .orElseThrow(IllegalArgumentException::new);
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .getAsInt();
+//        return cars.stream( )
+//                .max(Comparator.comparing(Car::getPosition))
+//                .map(Car::getPosition)
+//                .orElseThrow(IllegalArgumentException::new);
     }
-//    public void moveCars2() {
-//        for (Car car : cars) {
-//            car.move2(returnRandom());
-//        }
-//    }
 
     public String findWinnerNames() {
         int maxPosition = getMaxPosition();

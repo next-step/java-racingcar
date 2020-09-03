@@ -17,34 +17,32 @@ public class ResultView {
 
     private static OutputChannel outputChannel = OutputChannel.createSystemOut( );
 
-    private ResultView() {
-    }
 
     public static void printStartResult() {
         outputChannel.printLine("\n" + SAY_VIEW_RESULT);
     }
 
-    public static void printRaceResult(List<Cars> carsList) {
+    public void printRaceResult(List<Cars> carsList) {
         carsList.stream()
                 .map(Cars::getCars)
-                .forEach(ResultView::getCarListForNewLine);
+                .forEach(carList-> getCarListForNewLine(carList));
     }
 
-    private static void getCarListForNewLine(List<Car> carList) {
+    private void getCarListForNewLine(List<Car> carList) {
         carList.stream()
-                .forEach(ResultView::printResultPerCar);
+                .forEach(car-> printResultPerCar(car));
         printEmptyLine();
     }
 
-    private static void printResultPerCar(Car car) {
+    private void printResultPerCar(Car car) {
            outputChannel.printLine(car.getCarName( ) + SAY_CAR_NAMES + repeat(PRINT_GO, car.getPosition( )));
        }
 
-    public static void printEmptyLine() {
+    public void printEmptyLine() {
         outputChannel.printLine(EMPTY_LINE);
     }
 
-    public static void printWinners(String winnerNames) {
+    public void printWinners(String winnerNames) {
         outputChannel.printLine(winnerNames + SAY_WINNER_CARS_NAMES);
     }
 

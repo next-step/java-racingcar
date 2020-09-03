@@ -7,18 +7,18 @@ import racingcar.view.ResultView;
 import java.util.List;
 
 import static racingcar.view.InputView.*;
-import static racingcar.view.ResultView.printRaceResult;
-import static racingcar.view.ResultView.printWinners;
+
 
 
 public class RacingCarMain {
     public static void main(String[] args) {
+        ResultView resultView = new ResultView();
         RacingGame racingGame = new RacingGame(getCarNames(), getRacingCounts());
         List<Cars> carsForRace = racingGame.startRace();
-        printRaceResult(carsForRace);
+        resultView.printRaceResult(carsForRace);
 
-        Cars cars = new Cars(racingGame.getCars( ));
-        printWinners(cars.findWinnerNames());
-        }
+        Cars endCars = new Cars(racingGame.getCars( ));
+        resultView.printWinners(endCars.findWinnerNames());
     }
+}
 

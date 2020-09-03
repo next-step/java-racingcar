@@ -14,16 +14,26 @@ import static racingcar.utils.RandomInt.returnRandom;
 
 public class RacingGame {
 
-    private final Cars cars;
-    private final int racingCounts;
+    private List<Car> cars = null;
+    private int racingCounts = 0;
 
     public RacingGame(String input, int racingCounts) {
-        this.cars = new Cars(createCars(input));
+        this.cars = this.generateCars(input);
         this.racingCounts = racingCounts;
     }
 
+    private List<Car> generateCars(String input) { //createCars factory대신 createCars(input));
+        List<Car> cars = new ArrayList<>();
+        String[] carName = input.split(",");
+        for (int i = 0 ; i < carName.length; i++) {
+            Car car = new Car(carName[i]);
+            cars.add(car);
+        }
+        return cars;
+    }
+
     public List<Car> getCars() {
-        return cars.getCars();
+        return cars;
     }
 
     public List<Cars> startRace() {
@@ -36,7 +46,7 @@ public class RacingGame {
 
     private Cars play() {
         List<Car> newCarList = new ArrayList<>();
-        for (Car car : cars.getCars()) {
+        for (Car car : cars) {
             car.move2(returnRandom());
             newCarList.add(car);
         }
