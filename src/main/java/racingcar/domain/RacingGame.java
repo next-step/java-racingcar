@@ -2,6 +2,8 @@ package racingcar.domain;
 
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
+import racingcar.strategy.condition.OneOrZeroForwardCondition;
+import racingcar.strategy.raceStrategy.DoOneForward;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,23 +18,24 @@ public class RacingGame {
     private final String input;
 
     public RacingGame(String input, int racingCounts) {
-        this.input = input;
         this.cars = new Cars(createCars(input));
         this.racingCounts = new RacingCounts(racingCounts);
+        this.input = input;
     }
 
     public Cars getCars() {
         return cars;
     }
 
-    public String getInput() {
-        return input;
-    }
-
     public int getRacingCounts() {
         return racingCounts.getRacingCounts();
     }
 
+    public String getInput() {
+        return input;
+    }
+
+    //recordRacing or recordAllRacing()
     public List<List<Car>> recordAllRacing() {
         List<List<Car>> carsAfterAllRace = new ArrayList<>();
         for (int i = 0 ; i < racingCounts.getRacingCounts() ; i++) {
@@ -44,10 +47,8 @@ public class RacingGame {
     public List<Car> recordOneRacing() {
         List<Car> carsAfterOneRace = new ArrayList<>();
         cars.moveCars();
-//        carsAfterOneRace.addAll(cars.getCars());
         Cars newCars = new Cars(createCars(input));
         carsAfterOneRace.addAll(newCars.getCars());
-
         return carsAfterOneRace;
     }
 

@@ -14,31 +14,36 @@ public class ResultView{
 
     private static OutputChannel outputChannel = OutputChannel.createSystemOut();
 
-    private ResultView() {}
-
     public static void printStartResult() {
         outputChannel.printLine("\n"+SAY_VIEW_RESULT);
     }
 
-    public static void printCarsResult(List<List<Car>> carsList) {
-        for (int i = 0 ; i < carsList.size() ; i++) {
-            printCars(carsList.get(i));
+    public static void printCarsResult2(List<List<Car>> playCarsList) {
+        for (int i = 0 ; i < playCarsList.size( ); i++) {
+            for (int j = 0 ; j < playCarsList.get(i).size(); j++) {
+                printPosition(playCarsList.get(i).get(j));
+                System.out.println(playCarsList.get(i).get(j).getPosition());
+            }
             printEmptyLine();
         }
     }
 
-    public static void printCars(List<Car> cars) {
-        for (int i = 0; i < cars.size() ; i ++) {
-            printPosition(cars.get(i));
-        }
-    }
+//        }
+
+//    public static void printCarsResult(List<List<Car>> playCarsList) {
+//        playCarsList.stream()
+//                .forEach(ResultView::printCars);
+//
+//        }
+//
+//    public static void printCars(List<Car> cars) {
+//       cars.stream()
+//               .forEach(ResultView::printPosition);
+//       printEmptyLine();
+//    }
 
     public static void printPosition(Car car) {
-            StringBuilder printPosition = new StringBuilder();
-            for (int j = 0; j < car.getPosition(); j++) {
-                printPosition.append(PRINT_GO);
-            }
-            outputChannel.printLine(car.getCarName() + SAY_CAR_NAMES + printPosition);
+            outputChannel.printLine(car.getCarName() + SAY_CAR_NAMES + repeat(PRINT_GO, car.getPosition()));
 //        outputChannel.printLine(car.getCarName() + SAY_CAR_NAMES + repeat(PRINT_GO, car.getPosition()));
     }
     public static void printEmptyLine() {

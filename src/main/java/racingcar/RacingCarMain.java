@@ -1,7 +1,12 @@
 package racingcar;
 
 import racingcar.domain.RacingGame;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Cars;
+import racingcar.view.ResultView;
 
+
+import java.util.List;
 
 import static racingcar.view.InputView.getCarNames;
 import static racingcar.view.InputView.getRacingCounts;
@@ -15,8 +20,8 @@ public class RacingCarMain {
 //            printCars(racingGame.recordOneRacing());
 //            printEmptyLine();
 //        }
-        racingGame.recordAllRacing();
-        printCarsResult(racingGame.recordAllRacing());
+        List<List<Car>> playCars = racingGame.recordAllRacing();
+        printCarsResult2(playCars);
 
         printWinners(racingGame.getCars());
     }
