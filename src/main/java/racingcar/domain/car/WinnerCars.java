@@ -5,8 +5,6 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static racingcar.utils.Constants.WINNER_CAR_NAMES_DELIMITER;
-import static racingcar.domain.car.Cars.findWinners;
-import static racingcar.utils.StringUtils.getNames;
 
 public class WinnerCars {
 
@@ -16,15 +14,10 @@ public class WinnerCars {
         this.winnerCars = winnerCars;
     }
 
-    public static String getWinnersNames(List<Car> winnerCars) {
-        List<String> winnerCarsNamesList = collectWinnerCarsNames(winnerCars);
-        return getNames(winnerCarsNamesList, WINNER_CAR_NAMES_DELIMITER);
-    }
-
-    private static List<String> collectWinnerCarsNames(List<Car> winnerCars) {
-        return findWinners(winnerCars).stream( )
-                .map(o -> o.getCarName( ))
-                .collect(Collectors.toList( ));
+    public String getWinnersNames() {
+        return winnerCars.stream()
+                .map(Car::getCarName)
+                .collect(Collectors.joining(WINNER_CAR_NAMES_DELIMITER));
     }
 
     @Override
