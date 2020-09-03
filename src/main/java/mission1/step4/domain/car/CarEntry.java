@@ -28,9 +28,9 @@ public class CarEntry implements Iterable<Car>{
         return carEntry.get(idx);
     }
 
-    public void move() {
+    public void move(int randomValue) {
         carEntry.forEach((car) -> {
-            car.move(CarUtil.getRandomValue());
+            car.move(randomValue);
             if (car.getProgress() > topProgress) {
                 topProgress = car.getProgress();
             }

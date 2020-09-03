@@ -26,6 +26,29 @@ class CarEntryTest {
 
         assertThrows(IllegalArgumentException.class, () -> carEntry.getCar(3));
     }
+
+    @DisplayName("레이스 승자 찾기")
+    @Test
+    public void carRaceWinnerCheck() {
+        // given
+        CarEntry carEntry = new CarEntry();
+        Car car1 = Car.create("test1", new MoveByRandomValue());
+        Car car2 = Car.create("test2", new MoveByRandomValue());
+
+        carEntry.regist(car1);
+        carEntry.regist(car2);
+
+        // when
+        car1.move(3);
+        car1.move(3);
+
+        car2.move(5);
+        car2.move(5);
+
+        assertEquals(carEntry.getRaceWinner().size(), 1);
+    }
+
+
 }
 
 

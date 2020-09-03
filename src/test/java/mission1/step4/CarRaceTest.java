@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CarEntryTest {
+class CarRaceTest {
 
     @DisplayName("레이스 생성시 레이스 수행횟수를 1미만으로 설정")
     @Test

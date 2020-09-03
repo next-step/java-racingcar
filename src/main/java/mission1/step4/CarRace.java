@@ -1,5 +1,6 @@
 package mission1.step4;
 
+import mission1.step4.util.CarUtil;
 import mission1.step4.view.RenderView;
 import mission1.step4.domain.car.Car;
 import mission1.step4.domain.car.CarEntry;
@@ -33,7 +34,7 @@ public class CarRace {
 
     public void start() {
         for (int i = 0; i < executionNumber; i++) {
-            carEntry.move();
+            carEntry.move(CarUtil.getRandomValue());
             RenderView.showCarProgress(carEntry);
         }
         RenderView.showRaceWinner(carEntry.getRaceWinner());
