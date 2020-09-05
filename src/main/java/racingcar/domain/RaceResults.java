@@ -1,32 +1,27 @@
 package racingcar.domain;
+import racingcar.domain.car.Cars;
 
-import racingcar.domain.car.Car;
-
-import java.util.List;
-import java.util.Objects;
+import java.util.Map;
 
 public class RaceResults {
 
-    private final List<Car> raceResults;
+    private final int raceSeq;
+    private final Map<String, Integer> raceHist;
 
-    public RaceResults(List<Car> raceResults) {
-        this.raceResults = raceResults;
+    RaceResults(int raceSeq, Map<String, Integer> raceHist) {
+        this.raceSeq = raceSeq;
+        this.raceHist = raceHist;
     }
 
-    public List<Car> getRaceResults() {
-        return raceResults;
+    public int getRaceSeq() {
+        return raceSeq;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass( ) != o.getClass( )) return false;
-        RaceResults that = (RaceResults) o;
-        return Objects.equals(raceResults, that.raceResults);
+    public Map<String, Integer> getRaceHist() {
+        return raceHist;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(raceResults);
+    public static RaceResults of(int i, Cars cars) {
+        return new RaceResults(i, cars.getRaceHist());
     }
 }

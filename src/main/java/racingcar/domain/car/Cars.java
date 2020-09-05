@@ -57,4 +57,12 @@ public class Cars {
     public int hashCode() {
         return Objects.hash(cars);
     }
+
+    public Map<String, Integer> getRaceHist() {
+        Map<String, Integer> raceHist = new LinkedHashMap<>();
+        for (Car car : cars) {
+            raceHist.put(car.getCarName(), car.getPosition());
+        }
+        return raceHist;
+    }
 }
