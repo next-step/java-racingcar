@@ -23,12 +23,13 @@ public class RacingGameTest {
     @Test
     void allRaceResultsTest() {
         RacingGame game = new RacingGame("pobi,crong,honux", 3);
-        assertThat(game.getRaceResults()).hasSize(0);
+        assertThat(game.getRacingRecordList()).hasSize(0);
         game.start();
-        assertThat(game.getRaceResults()).hasSize(3);
-        assertThat(game.getRaceResults().get(0).getRaceHist().get("pobi")).isLessThanOrEqualTo(1);
-        assertThat(game.getRaceResults().get(2).getRaceHist().get("pobi")).isNotEqualTo(
-                game.getRaceResults().get(0).getRaceHist().get("pobi"));
+
+        assertThat(game.getRacingRecordList()).hasSize(3);
+        assertThat(game.getRacingRecordList().get(0).getRacingRecord().get("pobi")).isLessThanOrEqualTo(1);
+        assertThat(game.getRacingRecordList().get(2).getRacingRecord().get("pobi")).isNotEqualTo(
+                game.getRacingRecordList( ).get(0).getRacingRecord().get("pobi"));
 
     }
 }

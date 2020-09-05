@@ -1,0 +1,35 @@
+package racingcar.domain;
+import racingcar.domain.car.Cars;
+
+import java.util.Map;
+import java.util.Objects;
+
+public class RacingRecord {
+
+    private final Map<String, Integer> racingRecord;
+
+    RacingRecord(Map<String, Integer> racingRecord) {
+        this.racingRecord = racingRecord;
+    }
+
+    public Map<String, Integer> getRacingRecord() {
+        return racingRecord;
+    }
+
+    public static RacingRecord of(Cars cars) {
+        return new RacingRecord(cars.toRacingRecord());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass( ) != o.getClass( )) return false;
+        RacingRecord that = (RacingRecord) o;
+        return Objects.equals(racingRecord, that.racingRecord);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(racingRecord);
+    }
+}

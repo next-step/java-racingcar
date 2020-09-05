@@ -27,10 +27,13 @@ public class Cars {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
-    public Map<String, Integer> getRaceHist() {
-        Map<String, Integer> raceHist = new LinkedHashMap<>();
-        cars.forEach(car -> raceHist.put(car.getCarName(), car.getPosition()));
-        return raceHist;
+    public Map<String, Integer> toRacingRecord() {
+        return cars.stream()
+                .collect(Collectors.toMap(
+                        Car::getCarName,
+                        Car::getPosition,
+                        (first, second) -> first,
+                        LinkedHashMap::new));
     }
 
     public void moveCars() {

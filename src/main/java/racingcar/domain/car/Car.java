@@ -1,6 +1,7 @@
 package racingcar.domain.car;
 
 import racingcar.domain.Position;
+import racingcar.domain.RacingRecord;
 import racingcar.strategy.raceStrategy.DoRace;
 import racingcar.strategy.condition.RaceCondition;
 
@@ -41,7 +42,6 @@ public class Car {
     public boolean isMaxPosition(int maxPosition) {
         return position.checkMaxPosition(maxPosition);
     }
-
 
     @Override
     public boolean equals(Object o) {

@@ -1,8 +1,7 @@
 package racingcar.view;
 
-import racingcar.domain.RaceResults;
+import racingcar.domain.RacingRecord;
 import racingcar.domain.RacingGame;
-import racingcar.domain.car.Cars;
 
 import java.util.List;
 
@@ -13,10 +12,10 @@ public class ResultView{
 
     private static OutputChannel outputChannel = new SystemOut();
 
-    public static void printRaceResult(RacingGame racingGame) {
+    public static void printGameResult(RacingGame racingGame) {
         printStartResult();
-        List<RaceResults> raceResults = racingGame.getRaceResults();
-        raceResults.forEach(ResultView::printRaceRecord);
+        racingGame.getRacingRecordList()
+                .forEach(ResultView::printRacingRecord);
         printWinners(racingGame);
 
     }
@@ -25,8 +24,8 @@ public class ResultView{
         outputChannel.printLine("\n"+SAY_VIEW_RESULT);
     }
 
-    private static void printRaceRecord(RaceResults raceResults) {
-        raceResults.getRaceHist().forEach(
+    private static void printRacingRecord(RacingRecord racingRecord) {
+        racingRecord.getRacingRecord().forEach(
                 (key, value) -> outputChannel.printLine(printCars(key, value))
         );
         printEmptyLine();

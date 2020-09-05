@@ -30,11 +30,8 @@ public class CarsTest {
     }
 
     @Test
-    void getCarsRaceHistTest() {
-
-        Set<String> raceHistKeys = setUp().getRaceHist().keySet();
-        assertThat(raceHistKeys.toString()).isEqualTo("[pobi, crong, honux]");
-        assertThat(setUp().getRaceHist().get("pobi")).isEqualTo(3);
-        assertThat(setUp().getRaceHist().get("honux")).isEqualTo(4);
+    void toRacingRecordTest() {
+        assertThat(setUp().toRacingRecord().get("pobi")).isEqualTo(3);
+        assertThat(setUp().toRacingRecord().get("honux")).isEqualTo(4);
     }
 }
