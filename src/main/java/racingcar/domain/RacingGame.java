@@ -13,13 +13,11 @@ public class RacingGame {
 
     private final Cars cars;
     private final RacingCounts racingCounts;
-    private final String input;
     private final List<RaceResults> raceResults;
 
     public RacingGame(String input, int racingCounts) {
         this.cars = new Cars(createCars(input));
         this.racingCounts = new RacingCounts(racingCounts);
-        this.input = input;
         this.raceResults = new ArrayList<>();
     }
 
@@ -29,10 +27,6 @@ public class RacingGame {
 
     public int getRacingCounts() {
         return racingCounts.getRacingCounts();
-    }
-
-    public String getInput() {
-        return input;
     }
 
     public List<RaceResults> getRaceResults() {
@@ -51,7 +45,7 @@ public class RacingGame {
     private List<Car> RacingOnce() {
         List<Car> carsAfterOneRace = new ArrayList<>();
         cars.moveCars();
-        Cars newCars = new Cars(createCars(input));
+        Cars newCars = new Cars(cars.getCars( ));
         carsAfterOneRace.addAll(newCars.getCars());
         return carsAfterOneRace;
     }
@@ -67,12 +61,11 @@ public class RacingGame {
         RacingGame that = (RacingGame) o;
         return Objects.equals(cars, that.cars) &&
                 Objects.equals(racingCounts, that.racingCounts) &&
-                Objects.equals(input, that.input) &&
                 Objects.equals(raceResults, that.raceResults);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cars, racingCounts, input, raceResults);
+        return Objects.hash(cars, racingCounts, raceResults);
     }
 }
