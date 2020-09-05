@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.game;
 
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;

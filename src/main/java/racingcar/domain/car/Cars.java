@@ -1,12 +1,12 @@
 package racingcar.domain.car;
 
-import racingcar.strategy.raceStrategy.DoOneForward;
-import racingcar.strategy.condition.OneOrZeroForwardCondition;
+import racingcar.domain.car.strategy.raceStrategy.DoOneForward;
+import racingcar.domain.car.strategy.condition.OneOrZeroForwardCondition;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static racingcar.utils.Constants.WINNER_CAR_NAMES_DELIMITER;
+import static racingcar.domain.game.utils.Constants.WINNER_CAR_NAMES_DELIMITER;
 
 public class Cars {
 
@@ -20,11 +20,9 @@ public class Cars {
         return cars;
     }
 
-    public int getMaxPosition() {
-        return cars.stream()
-                .max(Comparator.comparing(Car::getPosition))
-                .map(Car::getPosition)
-                .orElseThrow(IllegalArgumentException::new);
+    public void moveCars() {
+        cars.forEach(car
+                -> car.move(new OneOrZeroForwardCondition(), new DoOneForward()));
     }
 
     public Map<String, Integer> toRacingRecord() {
@@ -36,23 +34,24 @@ public class Cars {
                         LinkedHashMap::new));
     }
 
-    public void moveCars() {
-        cars.forEach(car
-                -> car.move(new OneOrZeroForwardCondition(), new DoOneForward()));
-    }
-
-    public List<Car> filterWinners() {
-        return cars.stream( )
-                .filter(car -> car.isMaxPosition(getMaxPosition( )))
-                .collect(Collectors.toList( ));
-    }
-
     public String findWinnersNames() {
         return filterWinners().stream()
                 .map(Car::getCarName)
                 .collect(Collectors.joining(WINNER_CAR_NAMES_DELIMITER));
     }
 
+    private List<Car> filterWinners() {
+        return cars.stream( )
+                .filter(car -> car.isMaxPosition(getMaxPosition()))
+                .collect(Collectors.toList( ));
+    }
+
+    private int getMaxPosition() {
+        return cars.stream()
+                .max(Comparator.comparing(Car::getPosition))
+                .map(Car::getPosition)
+                .orElseThrow(IllegalArgumentException::new);
+    }
 
     @Override
     public boolean equals(Object o) {

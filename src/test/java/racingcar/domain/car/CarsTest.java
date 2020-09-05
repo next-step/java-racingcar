@@ -1,13 +1,9 @@
 package racingcar.domain.car;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Position;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -26,7 +22,7 @@ public class CarsTest {
     void getWinnersNamesFromTest() {
         String expectedNames = "crong, honux";
 
-        assertThat(setUp().getWinnersNames()).isEqualTo(expectedNames);
+        assertThat(setUp().findWinnersNames()).isEqualTo(expectedNames);
     }
 
     @Test

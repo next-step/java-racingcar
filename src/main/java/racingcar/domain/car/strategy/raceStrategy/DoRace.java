@@ -1,4 +1,4 @@
-package racingcar.strategy.raceStrategy;
+package racingcar.domain.car.strategy.raceStrategy;
 
 @FunctionalInterface
 public interface DoRace {

@@ -1,10 +1,10 @@
 package racingcar;
 
-import racingcar.domain.RacingGame;
+import racingcar.domain.game.RacingGame;
 
-import static racingcar.view.InputView.getCarNames;
-import static racingcar.view.InputView.getRacingCounts;
-import static racingcar.view.ResultView.*;
+import static racingcar.view.inputView.InputView.getCarNames;
+import static racingcar.view.inputView.InputView.getRacingCounts;
+import static racingcar.view.outputView.ResultView.*;
 
 public class RacingCarMain {
     public static void main(String[] args) {

@@ -1,7 +1,7 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
-import racingcar.strategy.raceStrategy.DoRace;
-import racingcar.strategy.condition.RaceCondition;
+import racingcar.domain.car.strategy.raceStrategy.DoRace;
+import racingcar.domain.car.strategy.condition.RaceCondition;
 
 import java.util.Objects;
 

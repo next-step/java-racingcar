@@ -1,6 +1,9 @@
-package racingcar.view;
+package racingcar.view.inputView;
 
-import static racingcar.utils.Constants.*;
+import racingcar.view.outputView.OutputChannel;
+import racingcar.view.outputView.SystemOut;
+
+import static racingcar.domain.game.utils.Constants.*;
 
 public class InputView {
     private static InputChannel inputChannel = new SystemIn();

@@ -1,4 +1,4 @@
-package racingcar.utils;
+package racingcar.domain.game.utils;
 
 public class StringUtils {
 

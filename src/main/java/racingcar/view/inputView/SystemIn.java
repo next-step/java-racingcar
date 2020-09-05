@@ -1,4 +1,4 @@
-package racingcar.view;
+package racingcar.view.inputView;
 
 import java.util.Scanner;
 
@@ -9,15 +9,15 @@ public class SystemIn implements InputChannel {
     @Override
     public int getIntValue() {
         try {
-            return scanner.nextInt();
+            return scanner.nextInt( );
         } finally {
-            scanner.nextLine();
+            scanner.nextLine( );
         }
     }
 
     @Override
     public String getStringValue() {
-        return scanner.nextLine();
-
+        return scanner.nextLine( );
     }
 }
+

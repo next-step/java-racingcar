@@ -1,4 +1,4 @@
-package racingcar.view;
+package racingcar.view.outputView;
 
 public class SystemOut implements OutputChannel {
 

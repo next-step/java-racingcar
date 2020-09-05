@@ -1,4 +1,4 @@
-package racingcar.utils;
+package racingcar.domain.game.utils;
 
 import org.junit.jupiter.api.Test;
 import static racingcar.domain.game.utils.StringUtils.*;

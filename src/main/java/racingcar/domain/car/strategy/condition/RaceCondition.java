@@ -1,4 +1,4 @@
-package racingcar.strategy.condition;
+package racingcar.domain.car.strategy.condition;
 
 @FunctionalInterface
 public interface RaceCondition {

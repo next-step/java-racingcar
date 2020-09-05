@@ -1,8 +1,7 @@
-package racingcar.domain;
+package racingcar.domain.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.car.Position;
 import racingcar.domain.car.strategy.raceStrategy.DoOneForward;
 import racingcar.domain.car.strategy.condition.RaceCondition;
 

@@ -1,10 +1,10 @@
-package racingcar.view;
+package racingcar.view.outputView;
 
-import racingcar.domain.RacingRecord;
-import racingcar.domain.RacingGame;
+import racingcar.domain.record.RacingRecord;
+import racingcar.domain.game.RacingGame;
 
-import static racingcar.utils.Constants.*;
-import static racingcar.utils.StringUtils.repeat;
+import static racingcar.domain.game.utils.Constants.*;
+import static racingcar.domain.game.utils.StringUtils.repeat;
 
 public class ResultView{
 
