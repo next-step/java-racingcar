@@ -2,6 +2,7 @@ package racingcar.domain;
 import racingcar.domain.car.Cars;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class RaceResults {
 
@@ -23,5 +24,19 @@ public class RaceResults {
 
     public static RaceResults of(int i, Cars cars) {
         return new RaceResults(i, cars.getRaceHist());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass( ) != o.getClass( )) return false;
+        RaceResults that = (RaceResults) o;
+        return raceSeq == that.raceSeq &&
+                Objects.equals(raceHist, that.raceHist);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(raceSeq, raceHist);
     }
 }

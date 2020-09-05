@@ -14,13 +14,4 @@ public class StringUtilsTest {
         assertThat(repeat("-", 3)).isEqualTo("---");
         assertThat(repeat("=", 4)).isEqualTo("====");
     }
-
-    @Test
-    void namesListTest() {
-        List<String> testList = new ArrayList<>();
-        testList.add("min");
-        testList.add("max");
-        assertThat(getNames(testList, ":")).isEqualTo("min:max");
-        assertThat(getNames(testList, ", ")).isEqualTo("min, max");
-    }
 }

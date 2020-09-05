@@ -18,8 +18,6 @@ public final class Constants {
     public static final String ASK_RACING_COUNT = "시도할 회수는 몇회인가요?";
     public static final String SAY_VIEW_RESULT = "실행 결과";
     public static final String PRINT_GO = "-";
-    public static final String EMPTY_LINE = "";
-    public static final String SAY_CAR_NAMES = " : ";
     public static final String WINNER_CAR_NAMES_DELIMITER = ", ";
     public static final String SAY_WINNER_CARS_NAMES = "가 최종 우승했습니다."; //pobi, honux가 최종 우승했습니다.
 

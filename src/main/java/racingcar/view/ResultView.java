@@ -2,7 +2,6 @@ package racingcar.view;
 
 import racingcar.domain.RaceResults;
 import racingcar.domain.RacingGame;
-import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 
 import java.util.List;
@@ -27,10 +26,17 @@ public class ResultView{
 
     private static void printRaceRecord(RaceResults raceResults) {
         raceResults.getRaceHist().forEach(
-                (key, value) -> System.out.printf("%s : %s \n", key, repeat(PRINT_GO, value))
+                (key, value) -> outputChannel.printLine(printCars(key, value))
         );
-        System.out.println();
+        printEmptyLine();
     }
 
-    public static void printWinners(Cars cars) {outputChannel.printLine(cars.getWinnersNames() + SAY_WINNER_CARS_NAMES); }
+    private static String printCars(String key, Integer value) {
+        return String.format("%s : %s", key, repeat(PRINT_GO, value));
+    }
+
+    private static void printEmptyLine() {outputChannel.printLine("");}
+    private static void printWinners(Cars cars) {outputChannel.printLine(cars.getWinnersNames() + SAY_WINNER_CARS_NAMES); }
+
+
 }
