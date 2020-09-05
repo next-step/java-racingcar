@@ -3,8 +3,8 @@ package racingcar.view;
 import static racingcar.utils.Constants.*;
 
 public class InputView {
-    private static InputChannel inputChannel = InputChannel.createSystemIn();
-    private static OutputChannel outputChannel = OutputChannel.createSystemOut();
+    private static InputChannel inputChannel = new SystemIn();
+    private static OutputChannel outputChannel = new SystemOut();
 
     private InputView(){}
 

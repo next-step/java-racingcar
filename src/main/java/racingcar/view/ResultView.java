@@ -11,7 +11,7 @@ import static racingcar.utils.StringUtils.repeat;
 
 public class ResultView{
 
-    private static OutputChannel outputChannel = OutputChannel.createSystemOut();
+    private static OutputChannel outputChannel = new SystemOut();
 
     public static void printRaceResult(RacingGame racingGame) {
         printStartResult();
