@@ -22,18 +22,18 @@ public class RacingGameTest {
     @Test
     void allRaceRecordTest() {
         RacingGame game = new RacingGame("pobi,crong", 3);
-        assertThat(game.recordAllRacing()).hasSize(3);
-        assertThat(game.recordAllRacing().get(0)).hasSize(2);
-        assertThat(game.recordAllRacing().get(1).get(0).getCarName()).isEqualTo("pobi");
-        assertThat(game.recordAllRacing().get(0).get(0).getPosition()).isLessThanOrEqualTo(6);
-        assertThat(game.recordAllRacing().get(1).get(0).getPosition()).isLessThanOrEqualTo(6);
+        assertThat(game.RacingAll()).hasSize(3);
+        assertThat(game.RacingAll().get(0)).hasSize(2);
+        assertThat(game.RacingAll().get(1).get(0).getCarName()).isEqualTo("pobi");
+        assertThat(game.RacingAll().get(0).get(0).getPosition()).isLessThanOrEqualTo(6);
+        assertThat(game.RacingAll().get(1).get(0).getPosition()).isLessThanOrEqualTo(6);
     }
 
     @Test
     void allRaceResultsTest() {
         RacingGame game = new RacingGame("pobi,crong,honux", 3);
         assertThat(game.getRaceResults()).hasSize(0);
-        game.recordAllRacing();
+        game.RacingAll();
         assertThat(game.getRaceResults()).hasSize(3);
         assertThat(game.getRaceResults().get(0).getRaceHist().get("pobi")).isLessThanOrEqualTo(1);
         assertThat(game.getRaceResults().get(2).getRaceHist().get("pobi")).isNotEqualTo(

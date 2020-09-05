@@ -13,15 +13,16 @@ public class ResultView{
 
     private static OutputChannel outputChannel = OutputChannel.createSystemOut();
 
-    public static void printStartResult() {
-        outputChannel.printLine("\n"+SAY_VIEW_RESULT);
-    }
-
     public static void printRaceResult(RacingGame racingGame) {
+        printStartResult();
         List<RaceResults> raceResults = racingGame.getRaceResults();
         raceResults.forEach(ResultView::printRaceRecord);
-        printWinners(racingGame.getCars( ));
+        printWinners(racingGame);
 
+    }
+
+    private static void printStartResult() {
+        outputChannel.printLine("\n"+SAY_VIEW_RESULT);
     }
 
     private static void printRaceRecord(RaceResults raceResults) {
@@ -36,7 +37,7 @@ public class ResultView{
     }
 
     private static void printEmptyLine() {outputChannel.printLine("");}
-    private static void printWinners(Cars cars) {outputChannel.printLine(cars.getWinnersNames() + SAY_WINNER_CARS_NAMES); }
+    private static void printWinners(RacingGame racingGame) {outputChannel.printLine(racingGame.findWinners() + SAY_WINNER_CARS_NAMES); }
 
 
 }

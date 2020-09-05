@@ -39,21 +39,25 @@ public class RacingGame {
         return raceResults;
     }
 
-    public List<List<Car>> recordAllRacing() {
+    public List<List<Car>> RacingAll() {
         List<List<Car>> carsAfterAllRace = new ArrayList<>();
-        for (int i = 0 ; i < racingCounts.getRacingCounts() ; i++) {
-            carsAfterAllRace.add(recordOneRacing());
+        for (int i = 0 ; i < getRacingCounts() ; i++) {
+            carsAfterAllRace.add(RacingOnce());
             raceResults.add(RaceResults.of(i, cars));
         }
         return carsAfterAllRace;
     }
 
-    public List<Car> recordOneRacing() {
+    private List<Car> RacingOnce() {
         List<Car> carsAfterOneRace = new ArrayList<>();
         cars.moveCars();
         Cars newCars = new Cars(createCars(input));
         carsAfterOneRace.addAll(newCars.getCars());
         return carsAfterOneRace;
+    }
+
+    public String findWinners() {
+        return cars.getWinnersNames();
     }
 
     @Override
