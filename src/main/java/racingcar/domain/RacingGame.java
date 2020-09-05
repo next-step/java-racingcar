@@ -33,7 +33,7 @@ public class RacingGame {
         return raceResults;
     }
 
-    public void RacingAll() {
+    public void start() {
         for (int i = 0 ; i < getRacingCounts() ; i++) {
             cars.moveCars();
             Cars newCars = new Cars(cars.getCars( ));

@@ -9,7 +9,7 @@ import static racingcar.view.ResultView.*;
 public class RacingCarMain {
     public static void main(String[] args) {
         RacingGame racingGame = new RacingGame(getCarNames(), getRacingCounts());
-        racingGame.RacingAll();
+        racingGame.start();
         printRaceResult(racingGame);
     }
 }
