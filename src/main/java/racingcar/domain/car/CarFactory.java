@@ -1,11 +1,12 @@
 package racingcar.domain.car;
 
+import racingcar.utils.CarNameValidation;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static racingcar.utils.Constants.INPUT_DELIMITER;
-import static racingcar.utils.CarNameValidation.isValid;
 
 public class CarFactory {
 
@@ -17,8 +18,8 @@ public class CarFactory {
 
     private static List<Car> collectCreateCars(String[] values) {
         return Arrays.stream(values)
-                .filter(o -> isValid(o))
-                .map(o -> new Car(o))
+                .filter(CarNameValidation::isValid)
+                .map(Car::new)
                 .collect(Collectors.toList( ));
     }
 
