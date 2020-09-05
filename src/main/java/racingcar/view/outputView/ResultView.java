@@ -3,8 +3,6 @@ package racingcar.view;
 import racingcar.domain.RacingRecord;
 import racingcar.domain.RacingGame;
 
-import java.util.List;
-
 import static racingcar.utils.Constants.*;
 import static racingcar.utils.StringUtils.repeat;
 
@@ -32,7 +30,7 @@ public class ResultView{
     }
 
     private static String printCars(String key, Integer value) {
-        return String.format("%s : %s", key, repeat(PRINT_GO, value));
+        return String.format(PRINT_FORMAT, key, repeat(PRINT_GO, value));
     }
 
     private static void printEmptyLine() {outputChannel.printLine("");}

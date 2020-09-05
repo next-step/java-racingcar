@@ -1,14 +1,17 @@
-package racingcar.domain;
+package racingcar.domain.game;
 
 import java.util.Objects;
+
+import static racingcar.domain.game.utils.CountValidation.checkNumber;
 
 public class RacingCounts {
 
     private int racingCounts;
 
     public RacingCounts(int racingCounts) {
-        this.racingCounts = racingCounts;
+        this.racingCounts = checkNumber(racingCounts);
     }
+
     public int getRacingCounts() {
         return this.racingCounts;
     }

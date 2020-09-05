@@ -3,8 +3,8 @@ package racingcar.strategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
-import racingcar.strategy.condition.RaceCondition;
-import racingcar.strategy.raceStrategy.DoOneForward;
+import racingcar.domain.car.strategy.condition.RaceCondition;
+import racingcar.domain.car.strategy.raceStrategy.DoOneForward;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

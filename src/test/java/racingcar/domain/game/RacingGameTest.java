@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import racingcar.domain.car.Car;
-import racingcar.domain.car.Cars;
+import racingcar.domain.game.RacingGame;
 
 import java.util.List;
 

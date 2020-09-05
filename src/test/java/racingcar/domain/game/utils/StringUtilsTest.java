@@ -1,10 +1,7 @@
 package racingcar.utils;
 
 import org.junit.jupiter.api.Test;
-import static racingcar.utils.StringUtils.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import static racingcar.domain.game.utils.StringUtils.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
