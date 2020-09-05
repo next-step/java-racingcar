@@ -33,21 +33,12 @@ public class RacingGame {
         return raceResults;
     }
 
-    public List<List<Car>> RacingAll() {
-        List<List<Car>> carsAfterAllRace = new ArrayList<>();
+    public void RacingAll() {
         for (int i = 0 ; i < getRacingCounts() ; i++) {
-            carsAfterAllRace.add(RacingOnce());
-            raceResults.add(RaceResults.of(i, cars));
+            cars.moveCars();
+            Cars newCars = new Cars(cars.getCars( ));
+            raceResults.add(RaceResults.of(i, newCars));
         }
-        return carsAfterAllRace;
-    }
-
-    private List<Car> RacingOnce() {
-        List<Car> carsAfterOneRace = new ArrayList<>();
-        cars.moveCars();
-        Cars newCars = new Cars(cars.getCars( ));
-        carsAfterOneRace.addAll(newCars.getCars());
-        return carsAfterOneRace;
     }
 
     public String findWinners() {
