@@ -12,11 +12,25 @@ public class PositionTest {
     @DisplayName("위치 OneForward조건 맞으면 1 증가")
     @Test
     void canIncrease() {
-        Position pos1 = new Position(3);
+        Position pos1 = new Position(1);
         RaceCondition alwaysOneForward = () -> true;
         pos1.increase(alwaysOneForward, new DoOneForward());
-        int actual = pos1.getPosition();
-        assertThat(actual).isEqualTo(4);
+
+        int expected = 2;
+
+        assertThat(pos1.getPosition()).isEqualTo(expected);
+    }
+
+    @DisplayName("위치 OneForward조건 안 맞으면 그대로")
+    @Test
+    void canNotIncrease() {
+        Position pos2 = new Position(3);
+        RaceCondition alwaysZeroForward = () -> false;
+        pos2.increase(alwaysZeroForward, new DoOneForward());
+
+        int expected = 3;
+
+        assertThat(pos2.getPosition()).isEqualTo(expected);
     }
 
 }

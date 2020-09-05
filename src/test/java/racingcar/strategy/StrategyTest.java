@@ -16,8 +16,10 @@ public class StrategyTest {
         Car car = new Car("pobi");
         RaceCondition alwaysOneForward = () -> true;
         car.move(alwaysOneForward, new DoOneForward());
-        int actual = car.getPosition();
-        assertThat(actual).isEqualTo(1);
+
+        int expected = 1;
+
+        assertThat(car.getPosition()).isEqualTo(expected);
     }
 
     @DisplayName("0만큼 전진, 즉 멈춤 전략 확인")
@@ -26,7 +28,9 @@ public class StrategyTest {
         Car car = new Car("crong");
         RaceCondition alwaysZeroForward = () -> false;
         car.move(alwaysZeroForward, new DoOneForward());
-        int actual = car.getPosition();
-        assertThat(actual).isEqualTo(0);
+
+        int expected = 0;
+
+        assertThat(car.getPosition()).isEqualTo(expected);
     }
 }
