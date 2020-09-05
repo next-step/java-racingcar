@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 
 import java.util.ArrayList;
@@ -21,8 +22,8 @@ public class RacingGame {
         this.racingRecordList = new ArrayList<>();
     }
 
-    public Cars getCars() {
-        return cars;
+    public List<Car> getCars() {
+        return cars.getCars();
     }
 
     public int getRacingCounts() {
@@ -37,12 +38,12 @@ public class RacingGame {
         for (int i = 0 ; i < getRacingCounts() ; i++) {
             cars.moveCars();
             racingRecordList
-                    .add(of(new Cars(cars.getCars())));
+                    .add(of(new Cars(getCars())));
         }
     }
 
     public String findWinners() {
-        return cars.getWinnersNames();
+        return cars.findWinnersNames();
     }
 
     @Override

@@ -3,7 +3,10 @@ package racingcar.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,11 +16,11 @@ public class RacingGameTest {
     @Test
     void carsReadyForRacingGameTest() {
         RacingGame game = new RacingGame("pobi,honux", 4);
-        Cars newCars = game.getCars();
+        List<Car> newCars = game.getCars();
 
-        assertThat(newCars.getCars()).hasSize(2);
-        assertThat(newCars.getCars().get(0).getPosition()).isEqualTo(0);
-        assertThat(newCars.getCars().get(1).getPosition()).isEqualTo(0);
+        assertThat(newCars).hasSize(2);
+        assertThat(newCars.get(0).getPosition()).isEqualTo(0);
+        assertThat(newCars.get(1).getPosition()).isEqualTo(0);
     }
 
     @Test

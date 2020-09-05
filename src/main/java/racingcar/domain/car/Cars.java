@@ -47,7 +47,7 @@ public class Cars {
                 .collect(Collectors.toList( ));
     }
 
-    public String getWinnersNames() {
+    public String findWinnersNames() {
         return filterWinners().stream()
                 .map(Car::getCarName)
                 .collect(Collectors.joining(WINNER_CAR_NAMES_DELIMITER));
