@@ -8,7 +8,7 @@ public class RacingRecord {
 
     private final Map<String, Integer> racingRecord;
 
-    RacingRecord(Map<String, Integer> racingRecord) {
+    public RacingRecord(Map<String, Integer> racingRecord) {
         this.racingRecord = racingRecord;
     }
 
@@ -16,7 +16,7 @@ public class RacingRecord {
         return racingRecord;
     }
 
-    public static RacingRecord of(Cars cars) {
+    public static RacingRecord makeRacingRecordOf(Cars cars) {
         return new RacingRecord(cars.toRacingRecord());
     }
 

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static racingcar.domain.record.RacingRecord.of;
+import static racingcar.domain.record.RacingRecord.makeRacingRecordOf;
 import static racingcar.domain.car.CarFactory.createCars;
 
 public class RacingGame {
@@ -39,7 +39,7 @@ public class RacingGame {
         for (int i = 0 ; i < getRacingCounts() ; i++) {
             cars.moveCars();
             racingRecordList
-                    .add(of(new Cars(getCars())));
+                    .add(makeRacingRecordOf(new Cars(getCars())));
         }
     }
 
