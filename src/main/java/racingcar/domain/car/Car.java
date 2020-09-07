@@ -3,6 +3,8 @@ package racingcar.domain.car;
 import racingcar.domain.car.strategy.raceStrategy.DoRace;
 import racingcar.domain.car.strategy.condition.RaceCondition;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 import static racingcar.domain.game.utils.Constants.INIT_POSITION;
@@ -31,6 +33,12 @@ public class Car {
 
     public int getPosition() {
         return position.getPosition();
+    }
+
+    public Map<String, Integer> toMap() {
+        Map<String,Integer> carMap = new HashMap<>();
+        carMap.put(carName, getPosition());
+        return carMap;
     }
 
     public void move(RaceCondition raceCondition, DoRace doRace) {

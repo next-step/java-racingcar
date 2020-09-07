@@ -22,32 +22,29 @@ public class Cars {
 
     public void moveCars() {
         cars.forEach(car
-                -> car.move(new OneOrZeroForwardCondition(), new DoOneForward()));
+                -> car.move(new OneOrZeroForwardCondition( ), new DoOneForward( )));
     }
 
     public Map<String, Integer> toRacingRecord() {
-        return cars.stream()
-                .collect(Collectors.toMap(
-                        Car::getCarName,
-                        Car::getPosition,
-                        (first, second) -> first,
-                        LinkedHashMap::new));
+        Map<String, Integer> racingRecord = new LinkedHashMap<>();
+        cars.forEach(car -> racingRecord.putAll(car.toMap()));
+        return racingRecord;
     }
 
     public String findWinnersNames() {
-        return filterWinners().stream()
+        return filterWinners( ).stream( )
                 .map(Car::getCarName)
                 .collect(Collectors.joining(WINNER_CAR_NAMES_DELIMITER));
     }
 
     private List<Car> filterWinners() {
         return cars.stream( )
-                .filter(car -> car.isMaxPosition(getMaxPosition()))
+                .filter(car -> car.isMaxPosition(getMaxPosition( )))
                 .collect(Collectors.toList( ));
     }
 
     private int getMaxPosition() {
-        return cars.stream()
+        return cars.stream( )
                 .max(Comparator.comparing(Car::getPosition))
                 .map(Car::getPosition)
                 .orElseThrow(IllegalArgumentException::new);
