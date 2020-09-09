@@ -13,7 +13,7 @@ public class CarFactory {
         String[] names = carNames.split(CAR_NAME_DELIMETER);
         List<Car> cars = new ArrayList<>();
         for (String name : names) {
-            cars.add(new Car(name));
+//            cars.add(new Car(name));
         }
         return cars;
     }

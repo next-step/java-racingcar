@@ -1,7 +1,10 @@
 package step3.operation;
 
 import step3.common.ExceptionMessage;
+import step3.domain.Car;
 import step3.view.ResultView;
+
+import java.util.List;
 import java.util.Random;
 
 public class Operation {
@@ -35,4 +38,7 @@ public class Operation {
         return randomValue;
     }
 
+    public void findWinners() {
+
+    }
 }

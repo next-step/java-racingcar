@@ -16,7 +16,7 @@ public class CarFactoryTest { //Factory 용도 : 생성
     void create() {
         List<Car> cars = CarFactory.create("crong, pobi");
         assertThat(cars).hasSize(2);
-        assertThat(cars).containsExactly(new Car("crong"), new Car("pobi"));
+//        assertThat(cars).containsExactly(new Car("crong", position), new Car("pobi", position));
     }
 
 }
