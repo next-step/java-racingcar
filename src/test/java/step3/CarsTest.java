@@ -6,7 +6,6 @@ import step3.operation.Operation;
 import step3.utils.CarFactory;
 import step3.utils.FindWinners;
 import step3.view.InputView;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CarsTest {
