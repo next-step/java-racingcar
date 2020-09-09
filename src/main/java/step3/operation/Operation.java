@@ -1,7 +1,9 @@
 package step3.operation;
 
-import step3.common.ExceptionMessage;
 import step3.domain.Car;
+import step3.utils.CarFactory;
+import step3.utils.FindWinners;
+import step3.view.InputView;
 import step3.view.ResultView;
 
 import java.util.List;
@@ -13,6 +15,16 @@ public class Operation {
 
     public static void gameStart(int numOfAtp, int numOfCars) {
         resultView.viewProgress(numOfAtp, numOfCars);
+    }
+
+    public static void gameStartByName(int numOfAtp, String names) {
+        List<Car> cars = CarFactory.create(names);
+        InputView.inputTest(names, numOfAtp);
+
+        for(int i = 0; i < numOfAtp; i++) {
+            Operation.progressByName(cars);
+        }
+        FindWinners.findWinners(cars, numOfAtp);
     }
 
     public void progress(int[] game, int[] result) {
@@ -38,7 +50,25 @@ public class Operation {
         return randomValue;
     }
 
-    public void findWinners() {
+    public static void progressByName(List<Car> cars) {
+        StringBuilder sb = new StringBuilder();
 
+        for(int j = 0; j < cars.size(); j++) {
+            int position = cars.get(j).getPosition() + process();
+            cars.get(j).setPosition(position);
+            sb.append(ResultView.progressView(cars.get(j)));
+            sb.append(System.getProperty("line.separator"));
+        }
+        ResultView.view(sb.toString());
     }
+
+    private static int process() {
+        Random random = new Random();
+        int randomNum = random.nextInt(10);
+        if(randomNum >= 4) {
+            return 1;
+        }
+        return 0;
+    }
+
 }
