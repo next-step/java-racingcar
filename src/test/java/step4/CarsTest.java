@@ -1,11 +1,12 @@
-package step3;
+package step4;
 
 import org.junit.jupiter.api.Test;
-import step3.domain.Car;
-import step3.operation.Operation;
-import step3.utils.CarFactory;
-import step3.utils.FindWinners;
-import step3.view.InputView;
+import step4.controller.Operation;
+import step4.domain.Car;
+import step4.utils.CarFactory;
+import step4.utils.FindWinners;
+import step4.view.InputView;
+
 import java.util.List;
 
 public class CarsTest {
@@ -22,8 +23,6 @@ public class CarsTest {
         for(int i = 0; i < count; i++) {
             Operation.progressByName(cars);
         }
-
         FindWinners.findWinners(cars, count);
-
     }
 }
