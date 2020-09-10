@@ -6,6 +6,8 @@ import mission1.step4.algorithm.MoveStrategyCache;
 
 public class MoveStrategyCacheForTest {
 
+    private static final int PROGRESS_CONDITION = 4;
+
     private MoveStrategyCacheForTest(){}
 
     private static class SingletonHelper{
@@ -14,7 +16,7 @@ public class MoveStrategyCacheForTest {
     }
 
     public static MoveStrategy getMoveByRandomValue(int randomValue) {
-        if (randomValue >= 4) {
+        if (randomValue >= PROGRESS_CONDITION) {
             return SingletonHelper.MOVE_STRATEGY_PROGRESS_FOR_TEST;
         }
 
