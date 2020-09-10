@@ -7,6 +7,7 @@ import java.util.Random;
 public class Operation {
 
     static ResultView resultView = new ResultView();
+    public static final int STANDARD_NUMBER = 4;
 
     public static void gameStart(int numOfAtp, int numOfCars) {
         resultView.viewProgress(numOfAtp, numOfCars);
@@ -21,7 +22,7 @@ public class Operation {
     }
 
     public int decideToMove(int result, int game) {
-        if(result >= 4) {
+        if(result >= STANDARD_NUMBER) {
             return game + 1;
         }
         return game;
