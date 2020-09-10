@@ -1,16 +1,11 @@
 package mission1.step4.domain.car;
 
-import mission1.step4.util.CarUtil;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
-public class CarEntry implements Iterable<Car>{
+public class CarEntry implements Iterable<Car> {
+
     private List<Car> carEntry = new ArrayList<>();
-    private int topProgress = 0;
 
     public void regist(Car car) {
         if (Objects.isNull(car)) {
@@ -20,26 +15,14 @@ public class CarEntry implements Iterable<Car>{
         carEntry.add(car);
     }
 
-    public Car getCar(int idx) {
-        if (carEntry.size() < idx) {
-            throw new IllegalArgumentException("엔트리에 등록된 차량의 숫자보다 높은 인덱스를 인자값 으로 허용할 수 없습니다.");
-        }
-
-        return carEntry.get(idx);
-    }
-
-    public void move(int randomValue) {
-        carEntry.forEach((car) -> {
-            car.move(randomValue);
-            if (car.getProgress() > topProgress) {
-                topProgress = car.getProgress();
-            }
-        });
-    }
-
     public List<Car> getRaceWinner() {
-        return  carEntry.stream()
-                        .filter((car) -> car.getProgress() >= topProgress)
+        int topProgress = carEntry.stream()
+                .map(Car::getProgress)
+                .max((progress1, progress2) -> progress1 - progress2)
+                .orElseThrow(() -> new IllegalStateException("엔트리에 등록된 차량이 존재하지 않습니다."));
+
+        return carEntry.stream()
+                        .filter((car) -> car.isWinnerCar(topProgress))
                         .collect(Collectors.toList());
     }
 
@@ -48,5 +31,7 @@ public class CarEntry implements Iterable<Car>{
         return carEntry.iterator();
     }
 }
+
+
 
 
