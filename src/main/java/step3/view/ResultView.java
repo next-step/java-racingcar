@@ -6,11 +6,12 @@ public class ResultView {
     public static final String DELIMETER = "-";
 
     public void showToMove(int game) {
-        String str = DELIMETER;
+        StringBuilder sb = new StringBuilder();
+        sb.append(DELIMETER);
         for (int z = 0; z < game; z++) {
-            str += DELIMETER;
+            sb.append(DELIMETER);
         }
-        System.out.println(str);
+        System.out.println(sb.toString());
     }
 
     public void viewProgress(int numOfAtp, int numOfCars) {
