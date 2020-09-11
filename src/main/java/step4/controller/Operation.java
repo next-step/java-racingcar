@@ -11,13 +11,16 @@ import java.util.Random;
 
 public class Operation {
 
-    public static void gameStartByName(int numOfAtp, String names) {
+    public static void gameStartByName() {
+        String names = InputView.inputNameView();
+        int numOfAtp = InputView.numberOfAttempts();
+
         List<Car> cars = CarFactory.create(names);
-        InputView.inputTest(names, numOfAtp);
 
         for(int i = 0; i < numOfAtp; i++) {
             Operation.progressByName(cars);
         }
+
         FindWinners.findWinners(cars, numOfAtp);
     }
     public static void progressByName(List<Car> cars) {
@@ -27,7 +30,7 @@ public class Operation {
             int position = cars.get(j).getPosition() + process();
             cars.get(j).setPosition(position);
             sb.append(ResultView.progressView(cars.get(j)));
-            sb.append(System.getProperty("line.separator"));
+            sb.append("\n");
         }
         ResultView.view(sb.toString());
     }

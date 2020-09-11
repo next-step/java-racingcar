@@ -17,10 +17,8 @@ public class FindWinners {
 
     public static List<String> makeWinnersList(List<Car> cars, int index) {
         List<String> winners = new ArrayList<>();
-        int maxPosition = 0;
-        if(maxPosition < cars.get(index).getPosition()) {
-            maxPosition = cars.get(index).getPosition();
-        }
+
+        int maxPosition = Position.maxPosition(cars.get(index));
         if(cars.get(index).getPosition() == maxPosition) {
             winners.add(cars.get(index).getName());
         }

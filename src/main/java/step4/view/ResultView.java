@@ -23,12 +23,12 @@ public class ResultView {
 
     public static void result(List<String> winners) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < winners.size(); i++) {
+        for (int i = 0 ; i < winners.size() -1 ; i++) {
             sb.append(winners.get(i));
-            if (i != winners.size() - 1) {
-                sb.append(",");
-            }
+            sb.append(",");
         }
+        sb.append(winners.get(winners.size() -1));
+
         if (winners.size() > 0) {
             sb.append("가 최종 우승했습니다.");
         }
@@ -37,4 +37,5 @@ public class ResultView {
         }
         System.out.println(sb.toString());
     }
+
 }
