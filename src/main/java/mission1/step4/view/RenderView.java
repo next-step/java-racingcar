@@ -4,34 +4,38 @@ import mission1.step4.domain.car.Car;
 import mission1.step4.domain.car.CarEntry;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RenderView {
 
     private static final String EXPRESSION = "-";
 
-    public static void showCarProgress(CarEntry carEntry) {
+    public static void showCarProgress(List<CarEntry> carRaceResultList) {
         StringBuilder sb = new StringBuilder();
 
-        for (Car car : carEntry) {
-            sb.append(car.getName() + ": ");
-            for (int i = 0; i < car.getProgress(); i++) {
-                sb.append(EXPRESSION);
+        for (CarEntry carRaceResult : carRaceResultList) {
+            for (Car car : carRaceResult) {
+                sb.append(car.getName() + ": ");
+                for (int i = 0; i < car.getProgress(); i++) {
+                    sb.append(EXPRESSION);
+                }
+                sb.append("\n");
             }
-            sb.append("\n");
         }
 
         System.out.println(sb.toString());
     }
 
-    public static void showRaceWinner(List<Car> RaceWinnerList) {
+    public static void showRaceWinner(List<Car> raceWinnerList) {
         StringBuilder sb = new StringBuilder();
 
-        for (Car car : RaceWinnerList) {
-            sb.append(",");
-            sb.append(car.getName());
-        }
+        String winners = raceWinnerList.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(","));
 
-        sb.append("가 최종 우승했습니다.");
-        System.out.println(sb.toString().replaceFirst(",", ""));
+        sb.append(winners + "가 최종 우승했습니다.");
+        System.out.println(sb.toString());
     }
 }
+
+

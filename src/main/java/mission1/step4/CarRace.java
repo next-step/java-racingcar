@@ -1,43 +1,57 @@
 package mission1.step4;
 
-import mission1.step4.util.CarUtil;
-import mission1.step4.view.RenderView;
+import mission1.step4.algorithm.MoveStrategyCache;
 import mission1.step4.domain.car.Car;
 import mission1.step4.domain.car.CarEntry;
 
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarRace {
 
-    private CarEntry carEntry = new CarEntry();
-    private int executionNumber;
+    private List<CarEntry> carRaceResultList = new ArrayList();
+    private CarEntry carEntry;
 
-    private CarRace(int executionNumber) {
-        this.executionNumber = executionNumber;
+    private CarRace(CarEntry carEntry) {
+        this.carEntry = carEntry;
     }
 
-    public static CarRace getInstance(int executionNumber) {
-        if (executionNumber < 1) {
-            throw new IllegalArgumentException("레이스는 적어도 1회 이상 진행되어야 합니다.");
-        }
-
-        return new CarRace(executionNumber);
+    public static CarRace participate(List<String> carNameList) {
+        CarEntry carEntry = new CarEntry();
+        carNameList.forEach((name) -> carEntry.regist(Car.create(name)));
+        return new CarRace(carEntry);
     }
 
-    public void join(Car car) {
-        if (Objects.isNull(car)) {
-            throw new IllegalArgumentException("레이스에 참여할 차량은 필수 값 입니다.");
+    public List<CarEntry> start(int execNum) {
+        for (int i = 0; i < execNum; i++) {
+            racing();
+            saveCarRaceResult(carEntry);
         }
 
-        carEntry.regist(car);
+        return carRaceResultList;
     }
 
-    public void start() {
-        for (int i = 0; i < executionNumber; i++) {
-            carEntry.move(CarUtil.getRandomValue());
-            RenderView.showCarProgress(carEntry);
+    public List<Car> getWinningCars() {
+        return carEntry.getRaceWinner();
+    }
+
+    private void racing() {
+        for (Car car : carEntry) {
+            car.move(MoveStrategyCache.getMoveByRandomValue());
         }
-        RenderView.showRaceWinner(carEntry.getRaceWinner());
+    }
+
+    private void saveCarRaceResult(CarEntry carEntry) {
+        CarEntry currentCarEntry = new CarEntry();
+
+        List<Car> carRaceResult = carEntry.stream()
+                                            .map((car) -> car.copy())
+                                            .collect(Collectors.toList());
+
+        carRaceResult.forEach((car) -> currentCarEntry.regist(car));
+
+        carRaceResultList.add(currentCarEntry);
     }
 }
 
