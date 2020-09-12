@@ -12,3 +12,5 @@ public class MoveStrategyCache {
         return SingletonHelper.MOVE_STRATEGY_BY_RANDOM_VALUE;
     }
 }
+
+

@@ -10,15 +10,17 @@ public class RenderView {
 
     private static final String EXPRESSION = "-";
 
-    public static void showCarProgress(CarEntry carEntry) {
+    public static void showCarProgress(List<CarEntry> carRaceResultList) {
         StringBuilder sb = new StringBuilder();
 
-        for (Car car : carEntry) {
-            sb.append(car.getName() + ": ");
-            for (int i = 0; i < car.getProgress(); i++) {
-                sb.append(EXPRESSION);
+        for (CarEntry carRaceResult : carRaceResultList) {
+            for (Car car : carRaceResult) {
+                sb.append(car.getName() + ": ");
+                for (int i = 0; i < car.getProgress(); i++) {
+                    sb.append(EXPRESSION);
+                }
+                sb.append("\n");
             }
-            sb.append("\n");
         }
 
         System.out.println(sb.toString());

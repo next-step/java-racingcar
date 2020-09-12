@@ -1,7 +1,5 @@
 package algorithm;
 
-import mission1.step4.algorithm.MoveByRandomValue;
-import mission1.step4.algorithm.MoveStrategy;
 import mission1.step4.algorithmForTest.MoveStrategyCacheForTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;

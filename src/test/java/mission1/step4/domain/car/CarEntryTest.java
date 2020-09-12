@@ -27,11 +27,11 @@ class CarEntryTest {
         carEntry.regist(car2);
 
         // when
-        car1.move(MoveStrategyCacheForTest.getMoveByRandomValue(4));
-        car1.move(MoveStrategyCacheForTest.getMoveByRandomValue(5));
+        car1.move(() -> true);
+        car1.move(() -> true);
 
-        car2.move(MoveStrategyCacheForTest.getMoveByRandomValue(4));
-        car2.move(MoveStrategyCacheForTest.getMoveByRandomValue(3));
+        car2.move(() -> true);
+        car2.move(() -> false);
 
         assertEquals(carEntry.getRaceWinner().get(0), car1);
     }

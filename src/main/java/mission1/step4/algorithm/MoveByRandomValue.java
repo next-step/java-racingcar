@@ -19,3 +19,5 @@ public class MoveByRandomValue implements MoveStrategy{
 
 
 
+
+

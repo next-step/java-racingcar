@@ -2,6 +2,7 @@ package mission1.step4.domain.car;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CarEntry implements Iterable<Car> {
 
@@ -17,13 +18,17 @@ public class CarEntry implements Iterable<Car> {
 
     public List<Car> getRaceWinner() {
         int topProgress = carEntry.stream()
-                .map(Car::getProgress)
-                .max((progress1, progress2) -> progress1 - progress2)
+                .mapToInt(Car::getProgress)
+                .max()
                 .orElseThrow(() -> new IllegalStateException("엔트리에 등록된 차량이 존재하지 않습니다."));
 
         return carEntry.stream()
                         .filter((car) -> car.isWinnerCar(topProgress))
                         .collect(Collectors.toList());
+    }
+
+    public Stream<Car> stream() {
+        return carEntry.stream();
     }
 
     @Override

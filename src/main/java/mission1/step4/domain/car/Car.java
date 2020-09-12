@@ -26,12 +26,12 @@ public class Car {
 
     public void move(MoveStrategy moveStrategy) {
         if (moveStrategy.movable()) {
-            progress++;
+            move();
         }
     }
 
     public boolean isWinnerCar(int otherProgress) {
-        return this.progress >= otherProgress;
+        return this.progress == otherProgress;
     }
 
     public String getName() {
@@ -40,6 +40,17 @@ public class Car {
 
     public int getProgress() {
         return progress;
+    }
+
+    public Car copy() {
+        Car car = new Car(this.name);
+        car.progress = this.progress;
+
+        return car;
+    }
+
+    private void move() {
+        this.progress++;
     }
 }
 
