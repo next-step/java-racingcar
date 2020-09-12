@@ -1,24 +1,20 @@
 package step3.operation;
 
-import step3.view.InputView;
 import step3.view.ResultView;
 
 import java.util.Random;
 
 public class Operation {
 
-    public static void main(String[] args) {
-        InputView inputView = new InputView();
-        gameStart(inputView.numberOfAttempts("5"), inputView.numOfCars("3"));
-    }
+    static ResultView resultView = new ResultView();
+    public static final int STANDARD_NUMBER = 4;
 
     public static void gameStart(int numOfAtp, int numOfCars) {
-        ResultView resultView = new ResultView();
         resultView.viewProgress(numOfAtp, numOfCars);
     }
 
+
     public void progress(int[] game, int[] result) {
-        ResultView resultView = new ResultView();
         for(int w = 0 ; w < game.length; w++) {
             game[w] = decideToMove(result[w], game[w]);
             resultView.showToMove(game[w]);
@@ -26,7 +22,7 @@ public class Operation {
     }
 
     public int decideToMove(int result, int game) {
-        if(result >= 4) {
+        if(result >= STANDARD_NUMBER) {
             return game + 1;
         }
         return game;
@@ -40,4 +36,5 @@ public class Operation {
         }
         return randomValue;
     }
+
 }

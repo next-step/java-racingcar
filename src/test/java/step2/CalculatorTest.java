@@ -1,6 +1,7 @@
 package step2;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import step2.calculator.AvailableCalculation;
@@ -12,7 +13,7 @@ public class CalculatorTest {
 
     @DisplayName("덧셈 테스트")
     @ParameterizedTest
-    @CsvSource(value = {"1 + 1:2","1 + 3:4","2 + 5:7"},delimiter = ':')
+    @CsvSource(value = {"1 + 1:2","1 + 3:4","2 + 5:6"},delimiter = ':')
     public void addTest(String str, int result) {
         AvailableCalculation ac = new AvailableCalculation(str);
         assertThat(ac.calculate(str)).isEqualTo(result);
@@ -59,7 +60,5 @@ public class CalculatorTest {
         AvailableCalculation ac = new AvailableCalculation(str);
         assertThat(ac.calculate(str)).isEqualTo(result);
     }
-
-
 
 }

@@ -13,7 +13,7 @@ public class AvailableCalculation {
         this.input = input;
     }
 
-    public int calculate(String input) {
+    public static int calculate(String input) {
         String[] splitInput = input.split(" ");
         int num = Integer.parseInt(splitInput[0]);
         for(int i=1; i<splitInput.length; i++) {
