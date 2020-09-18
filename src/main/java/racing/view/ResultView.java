@@ -20,7 +20,7 @@ public class ResultView {
 
     public static void printCars(List<Car> carList) {
         for (Car car : carList) {
-            System.out.println(printMovedLine(car.getPosition()));
+            System.out.println(car.getName() + " : " + printMovedLine(car.getPosition()));
         }
         System.out.println();
     }

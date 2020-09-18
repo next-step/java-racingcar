@@ -6,12 +6,19 @@ import racing.utils.ValidationUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     public List<Car> cars;
 
+    public Cars(){}
+
     public Cars(String carNames) {
         this.cars = initCars(carNames);
+    }
+
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     private List<Car> initCars(String carNames) {
@@ -34,6 +41,19 @@ public class Cars {
         for (Car car : cars) {
             car.run(car.getRandomNumber());
         }
+    }
+
+    public List<Car> findWinners() {
+        int max = getMaxPosition(this.getCars());
+        return this.getCars().stream()
+                .filter(car -> car.getPosition() == max)
+                .collect(Collectors.toList());
+    }
+
+    public int getMaxPosition(List<Car> cars) {
+        return cars.stream()
+                .map(Car::getPosition)
+                .max(Integer::compareTo).orElse(0);
     }
 
     public List<Car> getCars() {

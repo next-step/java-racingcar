@@ -20,6 +20,7 @@ public class Game {
             cars.runCars();
             ResultView.printCars(cars.getCars());
         }
+        cars.findWinners();
     }
 
 }

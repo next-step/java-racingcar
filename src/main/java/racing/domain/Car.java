@@ -1,5 +1,6 @@
 package racing.domain;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Car {
@@ -12,7 +13,11 @@ public class Car {
     private Random random = new Random();
 
     public Car(String name) {
-        this.position = 0;
+        this(0, name);
+    }
+
+    public Car(int position, String name) {
+        this.position = position;
         this.name = name;
     }
 
@@ -40,5 +45,20 @@ public class Car {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return position == car.position &&
+                Objects.equals(name, car.name) &&
+                Objects.equals(random, car.random);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position, name, random);
     }
 }
