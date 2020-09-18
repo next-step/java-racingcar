@@ -5,7 +5,7 @@ public class ValidationUtils {
 
     public static boolean isBlank(String value) {
         if (value == null || value.isEmpty()) {
-            return false;
+            return true;
         }
         return value.trim().isEmpty();
     }

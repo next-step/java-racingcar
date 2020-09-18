@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 import java.util.Random;
 
@@ -6,12 +6,14 @@ public class Car {
     private static final int MIN_NUMBER = 4;
     private static final int RANDOM_MAX_NUMBER = 10;
 
-    private int location;
+    private int position;
+    private final String name;
 
     private Random random = new Random();
 
-    public Car() {
-        this.location = 0;
+    public Car(String name) {
+        this.position = 0;
+        this.name = name;
     }
 
     public void run(int random) {
@@ -25,14 +27,18 @@ public class Car {
     }
 
     private void move() {
-        this.location++;
+        this.position++;
     }
 
     private boolean checkMove(int randomNumber) {
         return randomNumber >= MIN_NUMBER;
     }
 
-    public int getLocation() {
-        return location;
+    public int getPosition() {
+        return position;
+    }
+
+    public String getName() {
+        return name;
     }
 }

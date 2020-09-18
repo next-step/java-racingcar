@@ -7,16 +7,18 @@ import racing.view.ResultView;
 public class Game {
 
     public void run() {
-        InputView.carNumberInputView();
-        Cars cars = new Cars(InputView.inputValue());
-        InputView.tryCountInputView();
+        InputView.carNamesInputView();
+        String carNames = InputView.inputCarNames();
 
-        ResultView.resultViewMessage();
+        InputView.tryCountInputView();
         int tryCount = InputView.inputValue();
 
+        Cars cars = new Cars(carNames);
+
+        ResultView.resultViewMessage();
         for (int i = 0; i < tryCount; i++) {
             cars.runCars();
-            ResultView.printCars(cars.getCarList());
+            ResultView.printCars(cars.getCars());
         }
     }
 
