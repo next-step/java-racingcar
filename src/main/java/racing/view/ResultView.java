@@ -4,6 +4,7 @@ import racing.domain.Car;
 import racing.message.ViewMessage;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
     public static void resultViewMessage() {
@@ -23,5 +24,12 @@ public class ResultView {
             System.out.println(car.getName() + " : " + printMovedLine(car.getPosition()));
         }
         System.out.println();
+    }
+
+    public static void printWinner(List<Car> winner) {
+        String winnerNames = winner.stream()
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
+        System.out.println(winnerNames + ViewMessage.WINNER_NOTICE.getMessage());
     }
 }
