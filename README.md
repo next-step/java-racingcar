@@ -7,3 +7,14 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+In English:
+# Car racing game
+## How to proceed
+* Identify car racing game requirements.
+* After completing the implementation of the requirements, request a code review through Pull Request (hereinafter PR) to the branch corresponding to your github ID.
+* Improve the code review feedback and push again.
+* When all feedback is complete, take the next step and repeat the previous process.
+
+## Online code review process
+* [Online code review process through text and images](https://github.com/next-step/nextstep-docs/tree/master/codereview)
