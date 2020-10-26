@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.*;
 public class StringTest {
 
     @Test
+    @DisplayName(", 가 포함된 문자열을 split() 로 문자열을 쪼갤 수 있다")
     public void requirement1(){
         String source = "1,2";
         String [] result = source.split(",");
@@ -17,14 +18,27 @@ public class StringTest {
     }
 
     @Test
+    @DisplayName("구분자(,) 가 없는 문자열을 split() 로 쪼개면 원본문자열을 반환한다")
+    public void requirement1_1(){
+        String source = "1";
+        String [] result = source.split(",");
+        assertThat(result).hasSize(1);
+        assertThat(result).contains("1");
+    }
+
+    @Test
+    @DisplayName("substring() 로 원하는 문자열구간을 추출할 수 있다")
     public void requirement2(){
         String source = "(1,2)";
-        String result = source.substring(1,4);
+        int openBraceIdx = source.indexOf('(');
+        int closeBraceIdx = source.indexOf(')');
+        String result = source.substring(openBraceIdx+1,closeBraceIdx);
 
         assertThat(result).isEqualTo("1,2");
     }
 
     @Test
+    @DisplayName("charAt() 로 index 에 해당하는 문자를 접근 할 수 있다")
     public void requirement3(){
         String source = "abc";
 
