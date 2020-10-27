@@ -29,7 +29,9 @@ public class SetCollectionTest {
     @Test
     @DisplayName("1. Set size() 확인")
     public void getSetSize() {
-        assertThat(numbers.size()).isEqualTo(3);
+        int setSize = numbers.size();
+
+        assertThat(setSize).isEqualTo(3);
     }
 
     @Test
@@ -49,7 +51,7 @@ public class SetCollectionTest {
 
     @ParameterizedTest(name = "{0} 포함여부: {1}")
     @DisplayName("3. 임의의 값이 Set에 포함되어있는지 확인(Parameterized Test)")
-    @CsvSource(value={"1,true", "2,true", "3,true","4,false","5,false"}, delimiter = ',')
+    @CsvSource(value={"1:true", "2:true", "3:true","4:false","5:false"}, delimiter = ':')
     public void setContains(int number, boolean expected) {
         assertThat(numbers.contains(number)).isEqualTo(expected);
     }
