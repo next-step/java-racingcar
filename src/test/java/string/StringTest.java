@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class StringTest {
 
@@ -43,5 +44,16 @@ public class StringTest {
         assertThat(value.charAt(0)).isEqualTo('a');
         assertThat(value.charAt(1)).isEqualTo('b');
         assertThat(value.charAt(2)).isEqualTo('c');
+    }
+
+
+    @Test
+    @DisplayName("String 클래스 학습테스트 요구사항 3 - 비정상적인 인덱스")
+    void stringCharAtTest_invalidIndex() {
+        String value = "abc";
+
+        assertThatExceptionOfType(IndexOutOfBoundsException.class)
+                .isThrownBy(() -> value.charAt(4))
+                .withMessage("String index out of range: 4");
     }
 }
