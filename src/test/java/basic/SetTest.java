@@ -28,21 +28,21 @@ public class SetTest {
 
   @Test
   @DisplayName("Set의 크기를 테스트한다.")
-  void 요구사항1() {
+  void setSizeTest() {
     assertThat(numbers.size()).isEqualTo(3);
   }
 
   @ParameterizedTest
   @ValueSource(ints = {1, 2, 3})
   @DisplayName("Set에서 1,2,3값이 존재하는지 테스트한다.")
-  void 요구사항2(int number) {
+  void containNumberInSet(int number) {
     assertThat(numbers).contains(number);
   }
 
   @ParameterizedTest
   @CsvSource(value = {"1,True", "2,True", "3,True", "4,False", "5,False"})
   @DisplayName("parm값에서 Set에 존재 유무에 따라 True/False를 리턴한다.")
-  void 요구사항3(int number, boolean expected) {
+  void containElementInSet(int number, boolean expected) {
     assertEquals(expected, numbers.contains(number));
   }
 
