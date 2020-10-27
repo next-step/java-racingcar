@@ -24,4 +24,14 @@ public class StringTest {
         assertThat(split2).contains("1");
         assertThat(split2).containsExactly("1");
     }
+
+    @Test
+    @DisplayName("String 클래스 학습테스트 요구사항 2")
+    void stringSubStringTest() {
+        String value = "(1,2)";
+
+        String substring = value.substring(1, 4);
+
+        assertThat(substring).isEqualTo("1,2");
+    }
 }
