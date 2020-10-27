@@ -34,4 +34,14 @@ public class StringTest {
 
         assertThat(substring).isEqualTo("1,2");
     }
+
+    @Test
+    @DisplayName("String 클래스 학습테스트 요구사항 3 - 정상적인 인덱스")
+    void stringCharAtTest() {
+        String value = "abc";
+
+        assertThat(value.charAt(0)).isEqualTo('a');
+        assertThat(value.charAt(1)).isEqualTo('b');
+        assertThat(value.charAt(2)).isEqualTo('c');
+    }
 }
