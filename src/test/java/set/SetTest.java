@@ -32,6 +32,7 @@ public class SetTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
+    @DisplayName("Set Collection에 대한 학습 테스트 요구사항2 - contains, @ParameterizedTest 사용")
     void setContainsTest(int value) {
         assertThat(numbers.contains(value)).isTrue();
     }
