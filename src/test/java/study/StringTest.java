@@ -24,7 +24,7 @@ public class StringTest {
     }
 
     @Test
-    public void sumStringTest() {
+    public void subStringTest() {
         String input = "(1,2)";
         input = input.substring(1, input.length() - 1);
 
