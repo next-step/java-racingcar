@@ -61,7 +61,7 @@ public class StringCalculatorMatchTest {
     @Test
     @DisplayName("잘못된 형식의 식이 정규표현식과 맞는지 확인합니다")
     public void 잘못된_형식의_식_매치_테스트() {
-        final String expression = "1 + 2";
+        final String expression = "1+2-";
         final Matcher matcher = pattern.matcher(expression);
 
         assertFalse(matcher.matches());
