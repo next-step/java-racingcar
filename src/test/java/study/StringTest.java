@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.*;
 public class StringTest {
 
     @Test
-    @DisplayName(value = "String split test")
+    @DisplayName(value = "String의 split() 테스트")
     void split() throws Exception {
         String[] result = "1,2".split(",");
         assertThat(result).contains("1");
@@ -16,7 +16,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName(value = "String subString test")
+    @DisplayName(value = "String의 subString() 테스트")
     void subString() throws Exception {
         //given
         String input = "(1,2)";
@@ -31,7 +31,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName(value = "String charAt, IndexOutOfBoundsException test")
+    @DisplayName(value = "String의 charAt() 및 IndexOutOfBoundsException 테스트")
     public void charAt() throws Exception {
         //given
         String input = "abc";

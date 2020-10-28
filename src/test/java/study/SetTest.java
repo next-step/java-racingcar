@@ -25,21 +25,21 @@ public class SetTest {
     }
 
     @Test
-    @DisplayName(value = "HashSet size test")
+    @DisplayName(value = "HashSet의 size() 테스트")
     public void size() throws Exception {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1,2,3})
-    @DisplayName(value = "HashSet contains, ValueSource test")
+    @DisplayName(value = "HashSet의 contains() 및 ValueSource 테스트")
     public void isContains_ShouldReturnTrueForHashSetNumber(int number) throws Exception {
         assertThat(numbers.contains(number)).isTrue();
     }
 
     @ParameterizedTest
     @CsvSource(value = {"1,true", "2,true", "3,true", "4,false", "5,false"})
-    @DisplayName(value = "HashSet contains, CsvSource test")
+    @DisplayName(value = "HashSet의 contains() 및 CsvSource 테스트")
     public void isContains_ShouldGenerateTheExpected(int number, boolean expected) throws Exception {
         assertThat(numbers.contains(number)).isEqualTo(expected);
     }
