@@ -3,8 +3,13 @@ package stringcalculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.in;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 class StringCalculatorTest {
@@ -23,5 +28,13 @@ class StringCalculatorTest {
                 () -> assertThat(stringCalculator.calculator("1 + 2 - 3")).isEqualTo(0),
                 () -> assertThat(stringCalculator.calculator("3 / 2 - 30")).isEqualTo(-29)
         );
+    }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    @DisplayName("입력값이 null 이거나 빈 공백 문자일 경우 IllegalArgumentException throw")
+    void calculator_failingCase_nullOrEmptyInput(String input) {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> stringCalculator.calculator(input));
     }
 }
