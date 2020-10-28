@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
@@ -32,7 +33,7 @@ public class SetTest {
     }
 
     @ParameterizedTest
-    @DisplayName("JUnit의 ParameterizedTest를 활용해 중복 코드를 제거해 본다.")
+    @DisplayName("JUnit의 ParameterizedTest와 @ValueSource를 활용해 중복 코드를 제거해 본다.")
     @ValueSource(ints = {1, 2, 3})
     void contains(int input) {
         assertThat(numbers.contains(input)).isTrue();
