@@ -35,4 +35,8 @@ enum Operator {
 
         return operator;
     }
+
+    private Integer calculate(Integer num1, Integer num2) {
+        return calculate.apply(num1, num2);
+    }
 }
