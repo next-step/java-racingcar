@@ -1,18 +1,21 @@
 package calc;
 
+import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.commons.util.StringUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StringCalculator {
 
-    // 처음 숫자가 음수일 경우 정규표현식이 \s?[+\-*/]\s 이면 잡히지 않는다
-    public static final String OPERATION_REG = "\\s?[+\\-*/]\\s";
+    public static final String OPERATION_REG = "[+\\-*/]";
 
     public static final String NUMBER_REG = "\\d";
 
     /*
+    0. 주어진 식의 공백을 모두 제거한다.
     1. 숫자 배열을 생성하도록 split 한다. numbers = String#split("[+\\-/*]")
     2. 부호 배열을 생성하도록 split 한다. operations = String#split("\\d")
     3. 주어진 식의 맨 앞이 - 로 시작하는지 확인한다. String#startswith("-")
@@ -29,13 +32,15 @@ public class StringCalculator {
     public void 양수만_있는_문자열_스플릿_테스트() {
 
         // given
-        final String expression = "1";
+        final String expression = removeWhiteSpace("1");
 
         // when
         final String[] numbers = splitNumbers(expression);
+        final String[] operations = splitOperations(expression);
 
         // then
         assertThat(numbers).containsExactly("1");
+        assertTrue(Arrays.isNullOrEmpty(operations));
     }
 
     @Test
@@ -43,14 +48,16 @@ public class StringCalculator {
     public void 음수만_있는_문자열_스플릿_테스트() {
 
         // given
-        final String expression = "- 1";
+        final String expression = removeWhiteSpace("- 1");
 
         // when
         final String[] numbers = splitNumbers(expression);
+        final String[] operations = splitOperations(expression);
 
         // then
         // 사칙연산 정규표현식과 일치하는 첫 번째 문자열은 ""로 바뀐다
         assertThat(numbers).containsExactly("", "1");
+        assertThat(operations).containsExactly("-");
     }
 
     @Test
@@ -58,13 +65,17 @@ public class StringCalculator {
     public void 부호가_1개_있는_문자열_스플릿_테스트() {
 
         // given
-        final String expression = "1 + 2";
+        final String expression = removeWhiteSpace("1 + 2");
 
         // when
         final String[] numbers = splitNumbers(expression);
+        final String[] operations = splitOperations(expression);
 
         // then
         assertThat(numbers).containsExactly("1", "2");
+
+        // 부호는 숫자를 기준으로 찾는다. 주어진 숫자는 2개이므로, 배열의 크기는 2이여야 한다.
+        assertThat(operations).containsExactly("", "+");
     }
 
     @Test
@@ -72,13 +83,16 @@ public class StringCalculator {
     public void 부호가_여러_개_있는_문자열_스플릿_테스트() {
 
         // given
-        final String expression = "1 + 2 - 3 * 4 / 5";
+        final String expression = removeWhiteSpace("1 + 2 - 3 * 4 / 5");
 
         // when
         final String[] numbers = splitNumbers(expression);
+        final String[] operations = splitOperations(expression);
+
 
         // then
         assertThat(numbers).containsExactly("1", "2", "3", "4", "5");
+        assertThat(operations).containsExactly("", "+", "-", "*", "/");
     }
 
     private static String[] splitNumbers(final String expression) {
@@ -87,5 +101,9 @@ public class StringCalculator {
 
     private static String[] splitOperations(final String expression) {
         return expression.split(NUMBER_REG);
+    }
+
+    private static String removeWhiteSpace(String expression) {
+        return StringUtils.replaceWhitespaceCharacters(expression, "");
     }
 }
