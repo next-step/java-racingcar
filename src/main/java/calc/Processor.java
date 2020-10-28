@@ -9,10 +9,6 @@ public final class Processor {
     private Processor() {}
 
     public static String replaceWhitespaceCharacters(String expression) {
-        if (expression == null || expression.length() == 0) {
-            throw new IllegalArgumentException("expression must not be null");
-        }
-
         return WHITESPACE_PATTERN.matcher(expression).replaceAll("");
     }
 }
