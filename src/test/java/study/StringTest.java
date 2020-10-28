@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class StringTest {
     @Test
     void split() {
-        String[] result = "1,2".split(",");
-        assertThat(result).containsExactly("1", "2");
+        assertThat("1,2".split(",")).contains("1", "2");
+        assertThat("1".split(",")).containsExactly("1");
     }
 }
