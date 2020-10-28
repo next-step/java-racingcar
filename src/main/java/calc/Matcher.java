@@ -9,6 +9,10 @@ public final class Matcher {
     private Matcher() {}
 
     public static boolean matches(String expression) {
+        if (expression == null || expression.length() == 0) {
+            throw new IllegalArgumentException("expression must not be null");
+        }
+
         java.util.regex.Matcher matcher = pattern.matcher(expression);
 
         return matcher.matches();
