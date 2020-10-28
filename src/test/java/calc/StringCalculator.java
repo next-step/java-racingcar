@@ -16,7 +16,7 @@ public class StringCalculator {
 
     @Test
     @DisplayName("숫자만 있는 문자열을 정규표현식에 맞게 자릅니다")
-    public void 숫자만_있는_식_파_테스트() {
+    public void 양수만_있는_식_파싱_테스트() {
         final String expression = "1";
         final Matcher matcher = pattern.matcher(expression);
 
