@@ -33,10 +33,18 @@ public class SetTest {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
+    @Test
+    @DisplayName("HashSet 이 갖고 있는 값 테스트")
+    public void containsTest() {
+        assertThat(numbers.contains(1)).isTrue();
+        assertThat(numbers.contains(2)).isTrue();
+        assertThat(numbers.contains(3)).isTrue();
+    }
+
     @ParameterizedTest
     @DisplayName("중복 코드를 제거한 HashSet 이 갖고 있는 값 테스트")
     @ValueSource(ints = {1, 2, 3})
-    public void containsTest(final int number) {
+    public void containsParameterizedTest(final int number) {
         assertTrue(numbers.contains(number));
     }
 
