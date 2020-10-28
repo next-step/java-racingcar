@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StringCalculatorMatchTest {
 
-    private static final Pattern pattern = Pattern.compile("^(-?[\\d])([+-/*]\\d)*$");
+    private static final Pattern pattern = Pattern.compile("^([+-]?[\\d])([+-/*]\\d)*$");
 
     @Test
     @DisplayName("양수만 있는 식이 정규표현식과 맞는지 확인합니다")
