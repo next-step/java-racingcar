@@ -37,4 +37,11 @@ public class SetTest {
     void contains(int input) {
         assertThat(numbers.contains(input)).isTrue();
     }
+
+    @ParameterizedTest
+    @DisplayName("@CsvSource를 활용해 네거티브 테스트를 추가해 본다.")
+    @CsvSource({"1,true", "2,true", "3,true", "4,false", "5,false"})
+    void contains(int input, boolean expected) {
+        assertThat(numbers.contains(input)).isEqualTo(expected);
+    }
 }
