@@ -1,6 +1,7 @@
 package study;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -8,6 +9,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class StringTest {
     @Test
+    @DisplayName("String 의 split 함수 테스트")
     void split() {
         String[] result = "1,2".split(",");
 
@@ -19,17 +21,19 @@ public class StringTest {
     }
 
     @Test
+    @DisplayName("String 의 substring 함수 테스트")
     void substring() {
-        // (1,2)" 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 "1,2"를 반환하도록 구현
+        // (1,2)" 값이 주어졌을 때 String 의 substring() 메소드를 활용해 ()을 제거하고 "1,2"를 반환하도록 구현
         String result = "(1,2)";
         assertEquals("1,2", result.substring(1, result.length() - 1));
     }
 
     @Test
+    @DisplayName("String 의 charAt 함수 테스트")
     void charAt() {
         String abc = "abc";
 
-        // "abc" 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오는 학습 테스트
+        // "abc" 값이 주어졌을 때 String 의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오는 학습 테스트
         assertEquals(abc.charAt(0), 'a');
         assertEquals(abc.charAt(1), 'b');
         assertEquals(abc.charAt(2), 'c');
