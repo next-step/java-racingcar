@@ -9,12 +9,12 @@ public final class Separator {
     private Separator() {}
 
     // 주어진 식을 숫자 배열로 스플릿합니다
-    private static String[] splitNumbers(final String expression) {
+    public static String[] splitNumbers(final String expression) {
         return expression.split(OPERATION_REG);
     }
 
     // 주어진 식을 사칙연산 배열로 스플릿합니다
-    private static String[] splitOperations(final String expression) {
+    public static String[] splitOperations(final String expression) {
         return expression.split(NUMBER_REG);
     }
 }
