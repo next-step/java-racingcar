@@ -7,31 +7,31 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CalculatorTest {
 
-    public static final int a = 2;
+    public static final int pre = 2;
 
-    public static final int b = 5;
+    public static final int post = 5;
 
     @Test
     @DisplayName("더하기 테스트")
     public void addCalculator() {
-        assertThat(a + b).isEqualTo(7);
+        assertThat(pre + post).isEqualTo(7);
     }
 
     @Test
     @DisplayName("빼기 테스트")
     public void subtractCalculator() {
-        assertThat(a - b).isEqualTo(-3);
+        assertThat(pre - post).isEqualTo(-3);
     }
 
     @Test
     @DisplayName("곱하기 테스트")
     public void multiplyCalculator() {
-        assertThat(a * b).isEqualTo(10);
+        assertThat(pre * post).isEqualTo(10);
     }
 
     @Test
     @DisplayName("나누기 테스트")
     public void divideCalculator() {
-        assertThat(a / b).isEqualTo(0);
+        assertThat(pre / post).isEqualTo(0);
     }
 }
