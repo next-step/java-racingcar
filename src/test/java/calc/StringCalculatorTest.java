@@ -2,171 +2,68 @@ package calc;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
+import static calc.ErrorMessage.INVALID_EXPRESSION;
+import static calc.ErrorMessage.NOT_NULL;
+import static calc.StringCalculatorTestCase.BLANK;
+import static calc.StringCalculatorTestCase.DIVIDE_ZERO;
+import static calc.StringCalculatorTestCase.HAS_DOUBLE_OPERATOR;
+import static calc.StringCalculatorTestCase.HAS_LARGE_NUMBER;
+import static calc.StringCalculatorTestCase.HAS_MANY_OPERATOR;
+import static calc.StringCalculatorTestCase.HAS_NO_OPERAND;
+import static calc.StringCalculatorTestCase.HAS_ONE_OPERATOR;
+import static calc.StringCalculatorTestCase.NULL;
+import static calc.StringCalculatorTestCase.ONE;
+import static calc.StringCalculatorTestCase.PLUS_ONE;
+import static calc.StringCalculatorTestCase.START_WITH_MINUS_HAS_LARGE_NUMBER;
+import static calc.StringCalculatorTestCase.START_WITH_MINUS_HAS_MANY_OPERATIOR;
+import static calc.StringCalculatorTestCase.START_WITH_MINUS_HAS_ONE_OPERATOR;
+import static calc.StringCalculatorTestCase.START_WITH_MINUS_ONE;
+import static calc.StringCalculatorTestCase.START_WITH_PLUS_HAS_LARGE_NUMBER;
+import static calc.StringCalculatorTestCase.START_WITH_PLUS_HAS_MANY_OPERATIOR;
+import static calc.StringCalculatorTestCase.START_WITH_PLUS_HAS_ONE_OPERATIOR;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringCalculatorTest {
 
-    @Test
-    @DisplayName("양수만 있는 문자열 계산 테스트")
-    public void 양수만_있는_문자열_계산_테스트() {
-
-        // given
-        final String expression = "1";
-
-        // when
-        int result = StringCalculator.calculate(expression);
-
-        // then
-        assertThat(result).isEqualTo(1);
-    }
-
-    @Test
-    @DisplayName("음수만 있는 문자열 계산 테스트")
-    public void 음수만_있는_문자열_계산_테스트() {
-
-        // given
-        final String expression = "-1";
+    @ParameterizedTest
+    @CsvSource(value = {ONE, START_WITH_MINUS_ONE, PLUS_ONE, HAS_ONE_OPERATOR,
+            START_WITH_MINUS_HAS_ONE_OPERATOR, START_WITH_PLUS_HAS_ONE_OPERATIOR, HAS_ONE_OPERATOR,
+            HAS_MANY_OPERATOR, START_WITH_MINUS_HAS_MANY_OPERATIOR,
+            START_WITH_PLUS_HAS_MANY_OPERATIOR, HAS_LARGE_NUMBER, START_WITH_MINUS_HAS_LARGE_NUMBER,
+            START_WITH_PLUS_HAS_LARGE_NUMBER, DIVIDE_ZERO}, delimiter = '#')
+    @DisplayName("문자열 계산기 테스트")
+    public void stringCalculatorTest(final String input, final String expected) {
 
         // when
-        int result = StringCalculator.calculate(expression);
+        int result = StringCalculator.calculate(input);
 
         // then
-        assertThat(result).isEqualTo(-1);
+        assertThat(result).isEqualTo(Integer.parseInt(expected));
     }
 
-    @Test
-    @DisplayName("부호가 1개 있는 문자열 계산 테스트")
-    public void 부호가_1개_있는_문자열_계산_테스트() {
-
-        // given
-        final String expression = "1 + 2";
-
-        // when
-        int result = StringCalculator.calculate(expression);
-
-        // then
-        assertThat(result).isEqualTo(3);
-    }
-
-    @Test
-    @DisplayName("부호가 여러 개 있는 문자열 계산 테스트")
-    public void 부호가_여러_개_있는_문자열_계산_테스트() {
-
-        // given
-        final String expression = "1 + 2 - 3 * 4 / 5";
-
-        // when
-        int result = StringCalculator.calculate(expression);
-
-        // then
-        assertThat(result).isEqualTo(0);
-    }
-
-    @Test
-    @DisplayName("두 자리 이상 숫자와 부호가 여러 개 있는 문자열 계산 테스트")
-    public void 두_자리_이상_숫자와_부호가_여러_개_있는_문자열_계산_테스트() {
-
-        // given
-        final String expression = "115 + 35 - 50 * 10 / 100";
-
-        // when
-        int result = StringCalculator.calculate(expression);
-
-        // then
-        assertThat(result).isEqualTo(10);
-    }
-
-    @Test
-    @DisplayName("처음 숫자가 음수이고 부호가 여러 개 있는 문자열 계산 테스트")
-    public void 처음_숫자가_음수이고_부호가_여러_개_있는_문자열_계산_테스트() {
-
-        // given
-        final String expression = "- 1 + 2 - 3 * 4 / 5";
-
-        // when
-        int result = StringCalculator.calculate(expression);
-
-        // then
-        assertThat(result).isEqualTo(-1);
-    }
-
-    @Test
-    @DisplayName("처음 숫자가 음수이고 두 자리 이상 숫자와 부호가 여러 개 있는 문자열 계산 테스트")
-    public void 처음_숫자가_음수이고_두_자리_이상_숫자와_부호가_여러_개_있는_문자열_계산_테스트() {
-
-        // given
-        final String expression = "- 100 + 50 * 2 / 100";
-
-        // when
-        int result = StringCalculator.calculate(expression);
-
-        // then
-        assertThat(result).isEqualTo(-1);
-    }
-
-    @Test
-    @DisplayName("나누기 0 예외 처리 테스트")
-    public void 나누기_0_예외_처리_테스트() {
-
-        // given
-        final String expression = "0 / 0";
-
-        // when
-        int result = StringCalculator.calculate(expression);
-
-        // then
-        assertThat(result).isEqualTo(0);
-    }
-
-    @Test
+    @ParameterizedTest
+    @ValueSource(strings = {HAS_NO_OPERAND, HAS_DOUBLE_OPERATOR, BLANK})
     @DisplayName("잘못된 형식의 식 예외 처리 테스트")
-    public void 잘못된_형식의_식_예외_처리_테스트() {
-
-        // given
-        final String expression = "- 1 + 2 - 3 * 4 / 5 -";
+    public void invalidValueTest(String input) {
 
         // when, then
-        assertThatThrownBy(() -> StringCalculator.calculate(expression))
+        assertThatThrownBy(() -> StringCalculator.calculate(input))
                 .isExactlyInstanceOf(IllegalArgumentException.class)
-                .hasMessageMatching("invalid expression");
-    }
-
-    @Test
-    @DisplayName("연속된 부호를 가진 잘못된 식 예외 처리 테스트")
-    public void 연속된_부호를_가진_식_예외_처리_테스트() {
-
-        // given
-        final String expression = "- 1 + 2 - 3 * 4 /- 5 -";
-
-        // when, then
-        assertThatThrownBy(() -> StringCalculator.calculate(expression))
-                .isExactlyInstanceOf(IllegalArgumentException.class)
-                .hasMessageMatching("invalid expression");
-    }
-
-    @Test
-    @DisplayName("빈 값 예외 처리 테스트")
-    public void 빈_값_예외_처리_테스트() {
-        // given
-        final String expression = " ";
-
-        // when, then
-        assertThatThrownBy(() -> StringCalculator.calculate(expression))
-                .isExactlyInstanceOf(IllegalArgumentException.class)
-                .hasMessageMatching("invalid expression");
+                .hasMessageMatching(INVALID_EXPRESSION);
     }
 
     @Test
     @DisplayName("null 값 예외 처리 테스트")
-    public void null_값_예외_처리_테스트() {
-        // given
-        final String expression = null;
+    public void nullTest() {
 
         // when, then
-        assertThatThrownBy(() -> StringCalculator.calculate(expression))
+        assertThatThrownBy(() -> StringCalculator.calculate(NULL))
                 .isExactlyInstanceOf(IllegalArgumentException.class)
-                .hasMessageMatching("expression must not be null");
+                .hasMessageMatching(NOT_NULL);
     }
 }
