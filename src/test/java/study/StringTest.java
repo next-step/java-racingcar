@@ -20,6 +20,18 @@ public class StringTest {
     }
 
     @Test
+    @DisplayName("1만 Split 했을때 테스트")
+    void split2() {
+
+        String inputStr = "1";
+
+        String[] split = inputStr.split(",");
+
+        assertThat(split).containsExactly("1");
+
+    }
+
+    @Test
     @DisplayName("괄호 삭제 테스트")
     void removeBraketTest() {
 
