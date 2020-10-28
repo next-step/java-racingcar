@@ -3,9 +3,11 @@ package calc;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class StringCalculator {
 
-    public static final String OPERATION_REG = "+-*/";
+    public static final String OPERATION_REG = "[+\\-*/]";
 
     public static final String NUMBER_REG = "\\d";
 
@@ -22,16 +24,24 @@ public class StringCalculator {
      */
 
     @Test
-    @DisplayName("양수만 있는 문자열 테스트")
-    public void 양수만_있는_문자열_테스트() {
+    @DisplayName("양수만_있는_문자열_스플릿_테스트")
+    public void 양수만_있는_문자열_스플릿_테스트() {
 
+        // given
+        final String expression = "1";
+
+        // when
+        final String[] numbers = splitNumbers(expression);
+
+        // then
+        assertThat(numbers).containsExactly("1");
     }
 
-    private static String[] splitNumbers(String expression) {
+    private static String[] splitNumbers(final String expression) {
         return expression.split(OPERATION_REG);
     }
 
-    private static String[] splitOperations(String expression) {
+    private static String[] splitOperations(final String expression) {
         return expression.split(NUMBER_REG);
     }
 }
