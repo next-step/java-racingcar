@@ -7,11 +7,11 @@ public class StringCalculator extends Calculator {
 
     public static int calculate(String expression) {
 
+        // 주어진 식의 공백 제거
+        expression = StringUtils.replaceWhitespaceCharacters(expression);
+
         // 주어진 식이 올바른 형식의 식인지 확인
         Matcher.matches(expression);
-
-        // 주어진 식의 공백 제거
-        expression = Processor.replaceWhitespaceCharacters(expression);
 
         // 주어진 식에서 숫자만 추출
         final int[] numbers = convertToIntArray(expression);
@@ -25,9 +25,14 @@ public class StringCalculator extends Calculator {
 
     private static int compute(int[] numbers, String[] operations) {
 
+        // 하나의 숫자만 입력으로 받은 경우 바로 리턴한다
+        if (operations.length == 0) {
+            return numbers[0];
+        }
+
         // 첫 번째 숫자가 음수인지 확인한다
-        // 두 배열의 길이가 같지 않으면 첫 번째 숫자 앞에 부호가 달려있다
-        if (numbers.length != operations.length && operations[0].equals("-")) {
+        // 두 배열의 길이가 같으면 첫 번째 숫자 앞에 부호가 달려있다
+        if (numbers.length == operations.length && operations[0].equals("-")) {
             numbers[0] *= -1;
         }
 
