@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
     @Test
+    @DisplayName("split string made of two items by comma(,)")
     void split_comma_with_two_items() {
         String data = "1,2";
         String[] result = data.split(",");
@@ -16,6 +17,7 @@ public class StringTest {
     }
 
     @Test
+    @DisplayName("split string made of one item by comma(,)")
     void split_comma_with_one_item() {
         String data = "1";
         String[] result = data.split(",");
@@ -24,6 +26,7 @@ public class StringTest {
     }
 
     @Test
+    @DisplayName("substring string without parentheses ")
     void substring_parentheses_with_two_items() {
         String data = "(1,2)";
         String result = data.substring(1, 4);
@@ -32,7 +35,7 @@ public class StringTest {
     }
 
     @Test
-    @DisplayName("test for charAt method")
+    @DisplayName("get a character with index using charAt")
     void get_character_of_index_with_charAt() {
         String data = "abc";
         assertThat(data.charAt(0)).isEqualTo('a');
