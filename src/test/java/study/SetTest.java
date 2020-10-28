@@ -3,6 +3,8 @@ package study;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -29,12 +31,10 @@ public class SetTest {
         assertThat(numbers.size()).isEqualTo(0);
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("JUnit의 ParameterizedTest를 활용해 중복 코드를 제거해 본다.")
-    void contains() {
-        assertThat(numbers.contains(1)).isTrue();
-        assertThat(numbers.contains(2)).isTrue();
-        assertThat(numbers.contains(3)).isTrue();
+    @ValueSource(ints = {1, 2, 3})
+    void contains(int input) {
+        assertThat(numbers.contains(input)).isTrue();
     }
 }
-
