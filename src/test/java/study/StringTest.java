@@ -15,4 +15,11 @@ public class StringTest {
         //"1"을 ,로 split 했을 때 1만을 포함하는 배열이 반환되는지에 대한 학습 테스트
         assertThat(result).contains("1");
     }
+
+    @Test
+    void substring() {
+        // (1,2)" 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 "1,2"를 반환하도록 구현
+        String result = "(1,2)";
+        assertEquals("1,2", result.substring(1, result.length() - 1));
+    }
 }
