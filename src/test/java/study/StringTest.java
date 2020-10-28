@@ -7,12 +7,14 @@ import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
     @Test
+    @DisplayName("String#split 의 학습테스트")
     void split() {
         assertThat("1,2".split(",")).contains("1", "2");
         assertThat("1".split(",")).containsExactly("1");
     }
 
     @Test
+    @DisplayName("String#substring 의 학습테스트")
     void substring() {
         assertThat(stripBracket("(1,2)")).isEqualTo("1,2");
     }
