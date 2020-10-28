@@ -56,6 +56,10 @@ public class StringCalculator extends Calculator {
     }
 
     private static int operate(int pre, int post, String operation) {
+        if (post == 0) {
+            return 0;
+        }
+
         switch (operation) {
             case "+":
                 return add(pre, post);

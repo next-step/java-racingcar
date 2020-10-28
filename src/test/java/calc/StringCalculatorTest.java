@@ -79,10 +79,38 @@ public class StringCalculatorTest {
     }
 
     @Test
+    @DisplayName("나누기 0 예외 처리 테스트")
+    public void 나누기_0_예외_처리_테스트() {
+
+        // given
+        final String expression = "0 / 0";
+
+        // when
+        int result = StringCalculator.calculate(expression);
+
+        // then
+        assertThat(result).isEqualTo(0);
+    }
+
+    @Test
     @DisplayName("잘못된 형식의 식 예외 처리 테스트")
     public void 잘못된_형식의_식_예외_처리_테스트() {
+
         // given
         final String expression = "- 1 + 2 - 3 * 4 / 5 -";
+
+        // when, then
+        assertThatThrownBy(() -> StringCalculator.calculate(expression))
+                .isExactlyInstanceOf(IllegalArgumentException.class)
+                .hasMessageMatching("invalid expression");
+    }
+
+    @Test
+    @DisplayName("연속된 부호를 가진 잘못된 식 예외 처리 테스트")
+    public void 연속된_부호를_가진_식_예외_처리_테스트() {
+
+        // given
+        final String expression = "- 1 + 2 - 3 * 4 /- 5 -";
 
         // when, then
         assertThatThrownBy(() -> StringCalculator.calculate(expression))
