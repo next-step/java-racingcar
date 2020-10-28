@@ -1,8 +1,11 @@
+package step1;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class StringTest {
 
@@ -27,5 +30,19 @@ class StringTest {
         String result = input.substring(1 , input.length() -1);
         //then
         assertThat(result).isEqualTo("1,2");
+    }
+    @Test
+    @DisplayName("String abe가 주어졌을 경우 String 클래스의 charAt(n) 메소드를 확인해서 n이 범위를 넘을 경우 익셉션이 발생한다.")
+    void 요구사항_3(){
+        //given
+        String input = "abc";
+
+        //then
+        assertThat(input.charAt(0)).isEqualTo('a');
+        assertThat(input.charAt(1)).isEqualTo('b');
+        assertThat(input.charAt(2)).isEqualTo('c');
+        assertThatThrownBy(()-> input.charAt(3)).isInstanceOf(StringIndexOutOfBoundsException.class);
+        assertThatThrownBy(()-> input.charAt(-1)).isInstanceOf(StringIndexOutOfBoundsException.class);
+
     }
 }
