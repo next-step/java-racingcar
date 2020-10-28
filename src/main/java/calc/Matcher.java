@@ -6,15 +6,14 @@ public final class Matcher {
 
     private static final Pattern pattern = Pattern.compile("^([+-]?[\\d])([+-/*]\\d)*$");
 
-    private Matcher() {}
+    private Matcher() {
+    }
 
-    public static boolean matches(String expression) {
-        if (expression == null || expression.length() == 0) {
-            throw new IllegalArgumentException("expression must not be null");
-        }
-
+    public static void matches(String expression) {
         java.util.regex.Matcher matcher = pattern.matcher(expression);
 
-        return matcher.matches();
+        if (!matcher.matches()) {
+            throw new IllegalArgumentException("invalid expression");
+        }
     }
 }
