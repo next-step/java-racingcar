@@ -1,5 +1,7 @@
 package study;
 
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -7,8 +9,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class StringTest {
 
     @Test
+    @DisplayName("String Split Test")
     void split() {
-
         String inputStr = "1,2";
 
         String[] result = inputStr.split(",");
