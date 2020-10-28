@@ -56,4 +56,32 @@ class OperatorTest {
                 () -> assertThat(Operator.DIVIDE.calculate(5, 2)).isEqualTo(2)
         );
     }
+
+    @Test
+    @DisplayName("+(PLUS) 연산")
+    void plusCalculate() {
+        assertThat(Operator.PLUS.calculate(1, 2)).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("-(MINUS) 연산")
+    void minusCalculate() {
+        assertThat(Operator.MINUS.calculate(1, 2)).isEqualTo(-1);
+    }
+
+    @Test
+    @DisplayName("*(MULTIPLY) 연산")
+    void multiplyCalculate() {
+        assertThat(Operator.MULTIPLY.calculate(1, 2)).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("/(DIVIDE) 연산")
+    void divideCalculate() {
+        assertAll(
+                () -> assertThat(Operator.DIVIDE.calculate(4, 2)).isEqualTo(2),
+                () -> assertThat(Operator.DIVIDE.calculate(1, 2)).isEqualTo(0),
+                () -> assertThat(Operator.DIVIDE.calculate(5, 2)).isEqualTo(2)
+        );
+    }
 }
