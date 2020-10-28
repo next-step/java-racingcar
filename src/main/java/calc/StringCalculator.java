@@ -4,7 +4,11 @@ public class StringCalculator {
 
     private Calculator calculator;
 
-    private ExpressionMatcher matcher;
+    private static class Matcher {
 
-    private ExpressionSeparator separator;
+    }
+
+    private static class Separator {
+
+    }
 }
