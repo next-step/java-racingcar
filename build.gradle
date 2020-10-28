@@ -11,6 +11,9 @@ repositories {
 dependencies {
     testCompile('org.junit.jupiter:junit-jupiter:5.4.2')
     testCompile('org.assertj:assertj-core:3.11.1')
+    // ParameterizedTest : 버전을 jupiter와 맞추어야 에러 발생안함. 다르면 아예 찾지를 못함.
+    testCompile("org.junit.jupiter:junit-jupiter-params:5.4.2")
+
 }
 
 test {
