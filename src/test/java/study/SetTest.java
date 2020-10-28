@@ -28,5 +28,13 @@ public class SetTest {
         numbers.clear();
         assertThat(numbers.size()).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("JUnit의 ParameterizedTest를 활용해 중복 코드를 제거해 본다.")
+    void contains() {
+        assertThat(numbers.contains(1)).isTrue();
+        assertThat(numbers.contains(2)).isTrue();
+        assertThat(numbers.contains(3)).isTrue();
+    }
 }
 
