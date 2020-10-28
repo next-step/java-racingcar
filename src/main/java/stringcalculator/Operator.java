@@ -26,7 +26,7 @@ enum Operator {
         this.calculate = calculate;
     }
 
-    private static Operator findBy(String strValue) {
+    static Operator findBy(String strValue) {
         Operator operator = stringOperatorMap.get(strValue);
 
         if (operator == null) {
@@ -36,7 +36,7 @@ enum Operator {
         return operator;
     }
 
-    private Integer calculate(Integer num1, Integer num2) {
+    Integer calculate(Integer num1, Integer num2) {
         return calculate.apply(num1, num2);
     }
 }
