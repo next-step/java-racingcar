@@ -15,6 +15,6 @@ public class Calculator {
     }
 
     public static int divide(int pre, int post) {
-        return  pre / post;
+        return pre / post;
     }
 }

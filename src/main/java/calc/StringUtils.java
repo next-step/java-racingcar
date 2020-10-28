@@ -10,11 +10,7 @@ public class StringUtils {
     }
 
     public static boolean isBlank(String expression) {
-        if (expression == null || expression.isEmpty()) {
-            return true;
-        }
-
-        return false;
+        return expression == null || expression.isEmpty();
     }
 
     public static String replaceWhitespaceCharacters(String expression) {

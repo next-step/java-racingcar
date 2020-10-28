@@ -6,7 +6,8 @@ public final class Separator {
 
     private static final String NUMBER_REG = "\\d";
 
-    private Separator() {}
+    private Separator() {
+    }
 
     // 주어진 식을 숫자 배열로 스플릿합니다
     public static String[] splitNumbers(final String expression) {
