@@ -7,8 +7,6 @@ public class StringCalculator extends Calculator {
 
     public static int calculate(String expression) {
 
-        int index = 0;
-
         // 주어진 식이 올바른 형식의 식인지 확인
         Matcher.matches(expression);
 
@@ -16,57 +14,54 @@ public class StringCalculator extends Calculator {
         expression = Processor.replaceWhitespaceCharacters(expression);
 
         // 주어진 식에서 숫자만 추출
-        final int[] numbers = splitNumbers(expression);
+        final int[] numbers = convertToIntArray(expression);
 
         // 주어진 식에서 부호만 추출
         final String[] operations = Separator.splitOperations(expression);
 
-        if (numbers.length == 1) {
-            return numbers[0];
-        }
+        // 계산
+        return compute(numbers, operations);
+    }
 
-        if (operations.length == 1) {
-            if (operations[0].equals("+")) {
-                return numbers[0];
-            }
-
-            return - numbers[0];
-        }
+    private static int compute(int[] numbers, String[] operations) {
 
         // 첫 번째 숫자가 음수인지 확인한다
-        if (expression.startsWith("-")) {
+        // 두 배열의 길이가 같지 않으면 첫 번째 숫자 앞에 부호가 달려있다
+        if (numbers.length != operations.length && operations[0].equals("-")) {
             numbers[0] *= -1;
-            index++;
         }
 
-        for (int i = index; i < numbers.length - 1; i++) {
-            numbers[index + 1] = operate(numbers[index], numbers[index + 1], operations[index]);
+        for (int index = 0; index < numbers.length - 1; index++) {
+
+            // 연산 부호는 항상 1번 인덱스부터 시작한다
+            numbers[index + 1] = operate(numbers[index], numbers[index + 1], operations[index + 1]);
         }
 
         return numbers[numbers.length - 1];
     }
 
-    private static int operate(int pre, int post, String operation) {
-        switch (operation) {
-            case "+" : return add(pre, post);
-            case "-" : return subtract(pre, post);
-            case "*" : return multiply(pre, post);
-            case "/" : return divide(pre, post);
-            default : return 0;
-        }
-    }
-
-    private static int[] splitNumbers(final String expression) {
-        final String[] numbers = Separator.splitNumbers(expression);
-
+    private static int[] convertToIntArray(String expression) {
+        String[] numbers = Separator.splitNumbers(expression);
         Stream<String> stream = Arrays.stream(numbers);
-
-        // 음수로 시작하는 경우 첫 번째 숫자의 배열이 공백이 된다.
-        // 이 첫 번째 공백을 넘기기 위해 skip(1)을 한다
-        if (expression.startsWith("-")) {
+        if (numbers[0].equals("")) {
             stream = stream.skip(1);
         }
 
         return stream.mapToInt(Integer::parseInt).toArray();
+    }
+
+    private static int operate(int pre, int post, String operation) {
+        switch (operation) {
+            case "+":
+                return add(pre, post);
+            case "-":
+                return subtract(pre, post);
+            case "*":
+                return multiply(pre, post);
+            case "/":
+                return divide(pre, post);
+            default:
+                return 0;
+        }
     }
 }
