@@ -34,7 +34,7 @@ public class StringTest {
     public void removeParanthesisAndSplit() {
         String originalStr = "(1,2)";
 
-        String result = originalStr.substring(originalStr.indexOf("(")+1, originalStr.indexOf(")"));
+        String result = originalStr.substring(originalStr.indexOf("(") + 1, originalStr.indexOf(")"));
 
         assertThat(result).isEqualTo("1,2");
     }
