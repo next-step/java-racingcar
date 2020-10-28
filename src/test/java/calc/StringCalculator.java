@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.util.StringUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StringCalculator {
@@ -48,5 +49,14 @@ public class StringCalculator {
 
         assertThat(matcher.group(1)).isEqualTo("1");
         assertThat(matcher.group(2)).isEqualTo("+2");
+    }
+
+    @Test
+    @DisplayName("부호 뒤에 숫자가 없는 잘못된 형식의 문자열을 자릅니다")
+    public void 부호_뒤에_숫자가_없는_식_파싱_테스트() {
+        final String expression = StringUtils.replaceWhitespaceCharacters("1 + 2 -", "");
+        final Matcher matcher = pattern.matcher(expression);
+
+        assertFalse(matcher.matches());
     }
 }
