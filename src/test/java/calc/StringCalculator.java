@@ -5,8 +5,12 @@ import org.junit.jupiter.api.Test;
 
 public class StringCalculator {
 
+    public static final String OPERATION_REG = "+-*/";
+
+    public static final String NUMBER_REG = "\\d";
+
     /*
-    1. 숫자 배열을 생성하도록 split 한다. numbers = String#split("+\-*")
+    1. 숫자 배열을 생성하도록 split 한다. numbers = String#split("+-*")
     2. 부호 배열을 생성하도록 split 한다. operations = String#split("\\d")
     3. 주어진 식의 맨 앞이 - 로 시작하는지 확인한다. String#startswith("-")
         3-1. 만약 - 로 시작하면
@@ -21,5 +25,13 @@ public class StringCalculator {
     @DisplayName("양수만 있는 문자열 테스트")
     public void 양수만_있는_문자열_테스트() {
 
+    }
+
+    private static String[] splitNumbers(String expression) {
+        return expression.split(OPERATION_REG);
+    }
+
+    private static String[] splitOperations(String expression) {
+        return expression.split(NUMBER_REG);
     }
 }
