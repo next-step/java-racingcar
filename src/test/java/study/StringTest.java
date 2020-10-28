@@ -1,6 +1,5 @@
 package study;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -19,4 +18,14 @@ public class StringTest {
         assertThat(result).containsExactly("1", "2");
     }
 
+    @Test
+    @DisplayName("괄호 삭제 테스트")
+    void removeBraketTest() {
+
+        String inputStr = "(1,2)";
+
+        String result = inputStr.substring(1, 4);
+
+        assertThat(result).isEqualTo("1,2");
+    }
 }
