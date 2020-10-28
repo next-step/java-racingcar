@@ -11,7 +11,7 @@ class StringTest {
 
     @Test
     @DisplayName("1,2가 주어졌을때 1 2가 배열로 있는지 확인을 한다.")
-    void 요구사항_1(){
+    void 요구사항_1_1(){
         //given
         String input = "1,2";
         //when
@@ -21,6 +21,17 @@ class StringTest {
 
     }
 
+    @Test
+    @DisplayName("1을 , 로 split했을때 1만을 포함하는 배열이 반환된다.")
+    void 요구사항_1_2(){
+        //given
+        String input = "1";
+        //when
+        String[] result = input.split(",");
+        //then
+        assertThat(result).contains("1");
+
+    }
     @Test
     @DisplayName("(1,2) 가 주어졌을때 ()를 제외한 1,2가 들어있는지 확인을 한다.")
     void 요구사항_2(){
