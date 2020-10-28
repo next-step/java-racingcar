@@ -67,6 +67,20 @@ public class StringCalculator {
         assertThat(numbers).containsExactly("1", "2");
     }
 
+    @Test
+    @DisplayName("부호가 여러 개 있는 문자열 스플릿 테스트")
+    public void 부호가_여러_개_있는_문자열_스플릿_테스트() {
+
+        // given
+        final String expression = "1 + 2 - 3 * 4 / 5";
+
+        // when
+        final String[] numbers = splitNumbers(expression);
+
+        // then
+        assertThat(numbers).containsExactly("1", "2", "3", "4", "5");
+    }
+
     private static String[] splitNumbers(final String expression) {
         return expression.split(OPERATION_REG);
     }
