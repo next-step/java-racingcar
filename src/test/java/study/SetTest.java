@@ -20,7 +20,7 @@ public class SetTest {
     @DisplayName("contains")
     class Contains {
         @Test
-        void contains_test_not_using_ParameterizedTest() {
+        void not_using_ParameterizedTest() {
             assertThat(numbers.contains(1)).isTrue();
             assertThat(numbers.contains(2)).isTrue();
             assertThat(numbers.contains(3)).isTrue();
@@ -28,13 +28,13 @@ public class SetTest {
 
         @ParameterizedTest
         @ValueSource(ints = {1, 2, 3})
-        void contains_should_return_true_if_set_contain_input_number(final int input) {
+        void should_return_true_if_set_contain_input_number(final int input) {
             assertThat(numbers.contains(input)).isTrue();
         }
 
         @ParameterizedTest
         @CsvSource(value = {"1:true", "2:true", "3:true", "4:false"}, delimiter = ':')
-        void contains_should_return_true_if_set_contain_input_number(final int input, final boolean expected) {
+        void should_return_true_if_set_contain_input_number(final int input, final boolean expected) {
             //when
             final boolean result = numbers.contains(input);
 
@@ -42,6 +42,4 @@ public class SetTest {
             assertThat(result).isEqualTo(expected);
         }
     }
-
-
 }
