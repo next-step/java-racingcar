@@ -8,6 +8,10 @@ public class StringCalculator {
     private static final String DELIMITER = " ";
 
     public Integer calculator(String input) {
+        if (input == null || input.equals("")) {
+            throw new IllegalArgumentException("Input can not be null or empty.");
+        }
+
         String[] inputSplits = input.split(DELIMITER);
         List<Integer> numbers = new ArrayList<>();
         List<Operator> operators = new ArrayList<>();
