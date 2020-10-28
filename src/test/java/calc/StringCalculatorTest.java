@@ -49,7 +49,7 @@ public class StringCalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {HAS_NO_OPERAND, HAS_DOUBLE_OPERATOR, BLANK})
     @DisplayName("잘못된 형식의 식 예외 처리 테스트")
-    public void invalidValueTest(String input) {
+    public void invalidExpressionTest(String input) {
 
         // when, then
         assertThatThrownBy(() -> StringCalculator.calculate(input))
