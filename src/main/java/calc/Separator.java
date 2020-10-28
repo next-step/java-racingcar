@@ -4,7 +4,7 @@ public final class Separator {
 
     private static final String OPERATION_REG = "[+\\-*/]";
 
-    private static final String NUMBER_REG = "\\d";
+    private static final String NUMBER_REG = "\\d+";
 
     private Separator() {
     }

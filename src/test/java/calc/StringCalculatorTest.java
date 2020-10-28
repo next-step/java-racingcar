@@ -65,11 +65,39 @@ public class StringCalculatorTest {
     }
 
     @Test
+    @DisplayName("두 자리 이상 숫자와 부호가 여러 개 있는 문자열 계산 테스트")
+    public void 두_자리_이상_숫자와_부호가_여러_개_있는_문자열_계산_테스트() {
+
+        // given
+        final String expression = "115 + 35 - 50 * 10 / 100";
+
+        // when
+        int result = StringCalculator.calculate(expression);
+
+        // then
+        assertThat(result).isEqualTo(10);
+    }
+
+    @Test
     @DisplayName("처음 숫자가 음수이고 부호가 여러 개 있는 문자열 계산 테스트")
     public void 처음_숫자가_음수이고_부호가_여러_개_있는_문자열_계산_테스트() {
 
         // given
         final String expression = "- 1 + 2 - 3 * 4 / 5";
+
+        // when
+        int result = StringCalculator.calculate(expression);
+
+        // then
+        assertThat(result).isEqualTo(-1);
+    }
+
+    @Test
+    @DisplayName("처음 숫자가 음수이고 두 자리 이상 숫자와 부호가 여러 개 있는 문자열 계산 테스트")
+    public void 처음_숫자가_음수이고_두_자리_이상_숫자와_부호가_여러_개_있는_문자열_계산_테스트() {
+
+        // given
+        final String expression = "- 100 + 50 * 2 / 100";
 
         // when
         int result = StringCalculator.calculate(expression);
