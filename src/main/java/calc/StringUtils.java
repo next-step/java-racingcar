@@ -2,9 +2,13 @@ package calc;
 
 import java.util.regex.Pattern;
 
+import static calc.ErrorMessage.NOT_NULL;
+
 public class StringUtils {
 
     private static final Pattern WHITESPACE_PATTERN = Pattern.compile("\\s");
+
+    public static final String EMPTY = "";
 
     private StringUtils() {
     }
@@ -15,9 +19,9 @@ public class StringUtils {
 
     public static String replaceWhitespaceCharacters(String expression) {
         if (isBlank(expression)) {
-            throw new IllegalArgumentException("expression must not be null");
+            throw new IllegalArgumentException(NOT_NULL);
         }
 
-        return WHITESPACE_PATTERN.matcher(expression).replaceAll("");
+        return WHITESPACE_PATTERN.matcher(expression).replaceAll(EMPTY);
     }
 }
