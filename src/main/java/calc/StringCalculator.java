@@ -54,23 +54,4 @@ public class StringCalculator extends Calculator {
 
         return stream.mapToInt(Integer::parseInt).toArray();
     }
-
-    private static int operate(int pre, int post, String operation) {
-        if (post == 0) {
-            return 0;
-        }
-
-        switch (operation) {
-            case "+":
-                return add(pre, post);
-            case "-":
-                return subtract(pre, post);
-            case "*":
-                return multiply(pre, post);
-            case "/":
-                return divide(pre, post);
-            default:
-                return 0;
-        }
-    }
 }
