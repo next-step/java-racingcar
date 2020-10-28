@@ -7,7 +7,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringCalculator {
 
-    public static final String OPERATION_REG = "[+\\-*/]";
+    // 처음 숫자가 음수일 경우 정규표현식이 \s?[+\-*/]\s 이면 잡히지 않는다
+    public static final String OPERATION_REG = "\\s?[+\\-*/]\\s";
 
     public static final String NUMBER_REG = "\\d";
 
@@ -42,7 +43,7 @@ public class StringCalculator {
     public void 음수만_있는_문자열_스플릿_테스트() {
 
         // given
-        final String expression = "-1";
+        final String expression = "- 1";
 
         // when
         final String[] numbers = splitNumbers(expression);
@@ -56,6 +57,14 @@ public class StringCalculator {
     @DisplayName("부호가 1개 있는 문자열 스플릿 테스트")
     public void 부호가_1개_있는_문자열_스플릿_테스트() {
 
+        // given
+        final String expression = "1 + 2";
+
+        // when
+        final String[] numbers = splitNumbers(expression);
+
+        // then
+        assertThat(numbers).containsExactly("1", "2");
     }
 
     private static String[] splitNumbers(final String expression) {
