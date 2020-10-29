@@ -2,7 +2,8 @@ package study;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 /**
  * <pre>## stage2 요구사항
@@ -14,20 +15,14 @@ import org.junit.jupiter.api.Test;
  * * 예를 들어 2 + 3 * 4 / 2와 같은 문자열을 입력할 경우 2 + 3 * 4 / 2 실행 결과인 10을 출력해야 한다.</pre>
  */
 public class CalculatorTest {
-    @Test
-    @DisplayName("null 입력시 예외가 발생한다.")
-    void nullInput() {
-        Assertions.assertThatExceptionOfType(IllegalArgumentException.class) //
-                .isThrownBy(() -> calculate(null));
-    }
 
-    @Test
-    @DisplayName("empty string 입력시 예외가 발생한다.")
-    void emptyInput() {
+    @ParameterizedTest
+    @DisplayName("null/empty string 입력시 예외가 발생한다.")
+    @NullAndEmptySource
+    void nullAndEmptyInput(String input) {
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class) //
-                .isThrownBy(() -> calculate(""));
+                .isThrownBy(() -> calculate(input));
     }
-
 
     private long calculate(String input) {
         throw new IllegalArgumentException();
