@@ -2,6 +2,7 @@ package study;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -48,6 +49,14 @@ public class CalculatorTest {
     @CsvSource({"1 + 1,2", "1 + 1 + 1,3", "1 + 1 + 1 + 1,4", "2 + 3 + 5 + 7 + 11,28"})
     void multiEquations(String input, long expectResult) {
         assertThat(calculate(input)).isEqualTo(expectResult);
+    }
+
+    @Test
+    @DisplayName("연산자 사이에 빈공간이 없는 경우")
+    void noSpaceBetweenLettersAndNumbers() {
+        Assertions.assertThatExceptionOfType(IllegalArgumentException.class) //
+                .isThrownBy(() -> calculate("1+1")) //
+                .withMessage("연산자 사이에는 빈 공간이 한칸 있어야 합니다.");
     }
 
     private long calculate(String input) {
