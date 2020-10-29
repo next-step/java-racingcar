@@ -3,6 +3,7 @@ package study;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.BiFunction;
 import java.util.regex.Pattern;
 
 class Calculator {
@@ -55,6 +56,7 @@ class Calculator {
                 throw new IllegalArgumentException("연산자 사이에는 빈 공간이 한칸 있어야 합니다.", e);
             }
         }
+
         private final String leftHandSide;
         private final String rightHandSide;
         private final String operator;
@@ -115,6 +117,29 @@ class Calculator {
         private boolean hasLeftHandSide() {
             return !leftHandSide.isEmpty();
         }
+    }
 
+    enum Operator {
+        plus("+", (left, right) -> left + right), //
+        minus("-", (left, right) -> left - right), //
+        multiply("*", (left, right) -> left * right), //
+        divide("/", (left, right) -> {
+            if (left % right != 0) {
+                throw new IllegalArgumentException("나눗셈은 정수로 떨어져야 합니다.");
+            }
+            return left / right;
+        });
+
+        private final String operator;
+        private final BiFunction<Long, Long, Long> operationImpl;
+
+        Operator(String operator, BiFunction<Long, Long, Long> operationImpl) {
+            this.operator = operator;
+            this.operationImpl = operationImpl;
+        }
+
+        public Long apply(Long left, Long right) {
+            return operationImpl.apply(left, right);
+        }
     }
 }
