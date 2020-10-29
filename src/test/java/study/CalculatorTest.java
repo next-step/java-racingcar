@@ -92,9 +92,13 @@ public class CalculatorTest {
     }
 
     private String[] parse(String input) {
-        String lhs = input.substring(0, input.indexOf(SPACE));
-        String operator = input.substring(lhs.length() + SPACE.length(), lhs.length() + SPACE.length() + OPERATOR_LENGTH);
-        String rhs = input.substring(input.indexOf(operator) + OPERATOR_LENGTH + SPACE.length());
-        return new String[]{lhs, operator, rhs};
+        try {
+            String lhs = input.substring(0, input.indexOf(SPACE));
+            String operator = input.substring(lhs.length() + SPACE.length(), lhs.length() + SPACE.length() + OPERATOR_LENGTH);
+            String rhs = input.substring(input.indexOf(operator) + OPERATOR_LENGTH + SPACE.length());
+            return new String[]{lhs, operator, rhs};
+        } catch (StringIndexOutOfBoundsException e) {
+            throw new IllegalArgumentException("연산자 사이에는 빈 공간이 한칸 있어야 합니다.");
+        }
     }
 }
