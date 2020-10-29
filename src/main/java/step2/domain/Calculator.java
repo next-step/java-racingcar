@@ -1,7 +1,7 @@
 package step2.domain;
 
-import org.apache.commons.lang3.StringUtils;
-import step2.exception.BlankException;
+import step2.exception.EmptyException;
+import step2.exception.NullException;
 
 import static java.lang.Integer.parseInt;
 
@@ -9,6 +9,7 @@ public class Calculator {
 
     public int calculate(String input) {
         validNull(input);
+        validEmpty(input);
         String[] splits = splitBlank(input);
         int loopSize = splits.length;
         int operateResult = parseInt(splits[0]);
@@ -28,9 +29,15 @@ public class Calculator {
     }
 
     private static void validNull(String input) {
-        if (StringUtils.isBlank(input)) {
-            throw new BlankException();
+        if (input == null) {
+            throw new NullException();
         }
     }
+    private static void validEmpty(String input) {
+        if (input.isEmpty()) {
+            throw new EmptyException();
+        }
+    }
+
 
 }

@@ -1,6 +1,5 @@
 package step2.domain;
 
-import step2.exception.NotOperatorException;
 
 import java.util.Arrays;
 import java.util.function.BiFunction;
@@ -24,7 +23,7 @@ public enum Operator {
         return Arrays.stream(Operator.values())
                 .filter(value -> value.operator.equals(operator))
                 .findFirst()
-                .orElseThrow(NotOperatorException::new)
+                .orElseThrow(UnsupportedOperationException::new)
                 .operation
                 .apply(operatedNumber.getOperateResult() , operatedNumber.getNextNumber());
     }
