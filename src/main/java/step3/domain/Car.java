@@ -9,14 +9,11 @@ public class Car {
         position = 0;
     }
 
-    public void move(int movedNumber){
-        if(isMove(movedNumber)){
+    public void move(MoveStrategy moveStrategy){
+        if(moveStrategy.move(MOVE_CONDITION)){
             position++;
         }
 
-    }
-    private boolean isMove(int movedNumber){
-        return movedNumber >= MOVE_CONDITION;
     }
 
     public int getCarPosition(){

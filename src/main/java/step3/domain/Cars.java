@@ -1,10 +1,13 @@
 package step3.domain;
 
+import step3.exception.OutBoundCarListSizeException;
+
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private static final int CARS_MIN_COUNT = 1;
-    private final List<Car> cars ;
+    private final List<Car> cars;
 
     public Cars(List<Car> cars) {
         validateSize(cars);
@@ -12,14 +15,19 @@ public class Cars {
     }
 
     private void validateSize(List<Car> cars) {
-        if(cars.size() < CARS_MIN_COUNT){
+        if (cars.size() < CARS_MIN_COUNT) {
             throw new OutBoundCarListSizeException();
         }
     }
 
-    public int getCarsCount(){
-        return this.cars.size();
+    public void moveCars(MoveStrategy moveStrategy) {
+        cars.forEach(car -> car.move(moveStrategy));
     }
 
+    public List<Integer> getCarsPosition() {
+        return cars.stream()
+                .map(Car::getCarPosition)
+                .collect(Collectors.toList());
+    }
 
 }
