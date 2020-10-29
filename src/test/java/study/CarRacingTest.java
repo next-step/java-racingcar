@@ -20,6 +20,15 @@ public class CarRacingTest {
         assertThatCode(CarRacing::new).doesNotThrowAnyException();
     }
 
-    private class CarRacing {
+    @Test
+    @DisplayName("자동차 경주 객체는 경주정보 제공자를 입력받는다.")
+    void instantiationWithProvider() {
+        assertThatCode(() -> {
+            new CarRacing(new RacingInfoProvider() {
+            });
+        }).doesNotThrowAnyException();
+    }
+
+    private static class CarRacing {
     }
 }
