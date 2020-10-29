@@ -14,7 +14,6 @@ import java.util.Objects;
 import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static study.CalculatorTest.Calculator.*;
 
 /**
  * <pre>## stage2 요구사항
@@ -32,7 +31,7 @@ public class CalculatorTest {
     @NullAndEmptySource
     void nullAndEmptyInput(String input) {
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class) //
-                .isThrownBy(() -> calculate(input));
+                .isThrownBy(() -> new Calculator(input).calculate());
     }
 
     @ParameterizedTest
@@ -41,7 +40,7 @@ public class CalculatorTest {
             "1 + 1,2", "1 + 1 + 1,3", "1 + 1 + 1 + 1,4", "2 + 3 + 5 + 7 + 11,28" // 여러 수
     })
     void plusTest(String input, long expectResult) {
-        assertThat(calculate(input)).isEqualTo(expectResult);
+        assertThat(new Calculator(input).calculate()).isEqualTo(expectResult);
     }
 
     @ParameterizedTest
@@ -49,7 +48,7 @@ public class CalculatorTest {
     @ValueSource(strings = {"1+1", "1 + 1+1", "1 + 1+1 + 1"})
     void noSpaceBetweenSignAndNumbers(String input) {
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class) //
-                .isThrownBy(() -> calculate(input)) //
+                .isThrownBy(() -> new Calculator(input).calculate()) //
                 .withMessage("연산자 사이에는 빈 공간이 한칸 있어야 합니다.");
     }
 
@@ -59,7 +58,7 @@ public class CalculatorTest {
             "1 - 0,1", "3 - 1 - 1,1", "10 - 1 - 2 - 3,4" // 여러 수
     })
     void minusTest(String input, long expectResult) {
-        assertThat(calculate(input)).isEqualTo(expectResult);
+        assertThat(new Calculator(input).calculate()).isEqualTo(expectResult);
     }
 
     @ParameterizedTest
@@ -68,7 +67,7 @@ public class CalculatorTest {
             "1 * 0,0", "1 * 2 * 3,6", "10 * 20 * 300 * 0,0" // 여러 수
     })
     void multiplyTest(String input, long expectResult) {
-        assertThat(calculate(input)).isEqualTo(expectResult);
+        assertThat(new Calculator(input).calculate()).isEqualTo(expectResult);
     }
 
     @ParameterizedTest
@@ -77,14 +76,14 @@ public class CalculatorTest {
             "0 / 1,0", "10 / 2 / 5,1", "300 / 3 / 10,10" // 여러 수
     })
     void divisionTest(String input, long expectResult) {
-        assertThat(calculate(input)).isEqualTo(expectResult);
+        assertThat(new Calculator(input).calculate()).isEqualTo(expectResult);
     }
 
     @Test
     @DisplayName("'/' 연산 에서 정수로 떨어지지 않는 경우 예외처리")
     void divideResultNotIntegerException() {
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class) //
-                .isThrownBy(() -> calculate("3 / 2")) //
+                .isThrownBy(() -> new Calculator("3 / 2").calculate()) //
                 .withMessage("나눗셈은 정수로 떨어져야 합니다.");
     }
 
@@ -92,14 +91,14 @@ public class CalculatorTest {
     @DisplayName("사칙연산 연산자가 아닌경우 예외처리")
     void invalidOperator() {
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class) //
-                .isThrownBy(() -> calculate("3 ~ 2")) //
+                .isThrownBy(() -> new Calculator("3 ~ 2").calculate()) //
                 .withMessage("올바른 연산자가 아닙니다.");
     }
 
     @Test
     @DisplayName("여러 연산이 같이 있는 경우 앞쪽 연산부터 수행한다")
     void complexTest() {
-        assertThat(calculate("2 + 3 * 4 / 2")).isEqualTo(10);
+        assertThat(new Calculator("2 + 3 * 4 / 2").calculate()).isEqualTo(10);
     }
 
     static class Calculator {
@@ -130,10 +129,6 @@ public class CalculatorTest {
                 result = parsed.calculateWith(result);
             }
             return result;
-        }
-
-        public static long calculate(String formula) {
-            return new Calculator(formula).calculate();
         }
 
         private Parsed parse(String input) {
