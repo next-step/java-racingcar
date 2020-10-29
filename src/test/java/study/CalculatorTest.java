@@ -76,7 +76,7 @@ public class CalculatorTest {
         long result = 0;
         for (Parsed parsed : parsingResult) {
             long lhs = result;
-            if (parsed.hasLHSValue()) {
+            if (parsed.hasLeftHandSide()) {
                 lhs = parsed.getLeftHandSide();
             }
 
@@ -95,7 +95,7 @@ public class CalculatorTest {
             String remain = null;
 
             String tmp = rhs;
-            if (!isNumber(rhs)) {
+            if (isNotNumber(rhs)) {
                 rhs = extractPrefixNumbers(tmp);
                 remain = tmp.substring(rhs.length());
             }
@@ -109,14 +109,14 @@ public class CalculatorTest {
 
     private String extractPrefixNumbers(String input) {
         String result = input.substring(0, input.indexOf(SPACE));
-        if (!isNumber(result) && !result.isEmpty()) {
+        if (isNotNumber(result) && !result.isEmpty()) {
             throw new IllegalArgumentException("연산자 사이에는 빈 공간이 한칸 있어야 합니다.");
         }
         return result;
     }
 
-    private boolean isNumber(String input) {
-        return Pattern.matches("\\d+", input);
+    private boolean isNotNumber(String input) {
+        return !Pattern.matches("\\d+", input);
     }
 
     static class Parsed {
@@ -140,7 +140,7 @@ public class CalculatorTest {
             return Long.valueOf(rhs);
         }
 
-        public boolean hasLHSValue() {
+        public boolean hasLeftHandSide() {
             return !lhs.isEmpty();
         }
 
