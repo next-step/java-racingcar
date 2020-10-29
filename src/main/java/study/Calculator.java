@@ -77,21 +77,18 @@ class Calculator {
 
             switch (operator) {
                 case "+":
-                    return lhs + getRightHandSize();
+                    return Operator.plus.apply(lhs, getRightHandSize());
                 case "-":
-                    return lhs - getRightHandSize();
+                    return Operator.minus.apply(lhs, getRightHandSize());
                 case "*":
-                    return lhs * getRightHandSize();
+                    return Operator.multiply.apply(lhs, getRightHandSize());
             }
 
             if (!operator.equals("/")) {
                 throw new IllegalArgumentException("올바른 연산자가 아닙니다.");
             }
-            if (lhs % getRightHandSize() != 0) {
-                throw new IllegalArgumentException("나눗셈은 정수로 떨어져야 합니다.");
-            }
 
-            return lhs / getRightHandSize();
+            return Operator.divide.apply(lhs, getRightHandSize());
         }
 
         private static String extractLeftHandSide(String input) {
