@@ -22,8 +22,7 @@ public class StringTest {
     @Test
     @DisplayName("String#charAt 의 학습테스트")
     void charAt() {
-        String input = "abc";
-        assertThat(input.charAt(0)).isEqualTo('a');
+        assertThat("abc".charAt(0)).isEqualTo('a');
     }
 
     @Test
