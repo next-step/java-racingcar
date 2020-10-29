@@ -24,7 +24,7 @@ class OperatorTest {
     @CsvSource(value = {"1:2:+:3", "2:1:-:1:", "3:1:*:3", "4:2:/:2"}, delimiter = ':')
     void 연산_작동_확인(int x , int y , String operator , int expected) {
 
-        int operatedValue = Operator.operate(x, y, operator);
+        int operatedValue = Operator.operate(new OperatedNumber(x, y), operator);
         assertThat(operatedValue).isEqualTo(expected);
 
     }
