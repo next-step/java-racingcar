@@ -36,7 +36,7 @@ public enum Operator {
         .collect(Collectors.toMap(operator -> operator.sign, Function.identity())));
   }
 
-  public static Optional<Operator> getOperator(String sign) {
+  private static Optional<Operator> getOperator(String sign) {
     return Optional.ofNullable(operatorValues().get(sign));
   }
 
@@ -48,7 +48,7 @@ public enum Operator {
     return this.operator.applyAsInt(num1, num2);
   }
 
-  public static int OperatorCompute(int num1, int num2, String operator) {
+  public static int operatorCompute(int num1, int num2, String operator) {
     return Operator.get(operator).compute(num1, num2);
   }
 }

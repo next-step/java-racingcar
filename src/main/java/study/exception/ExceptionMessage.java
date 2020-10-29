@@ -7,4 +7,6 @@ public class ExceptionMessage {
   public static String IS_NOT_OPERATOR = "사칙연산 기호가 아닙니다.";
   public static String CAN_NOT_DIVIDE_ZERO = "0으로 나눌 수 없습니다.";
 
+  private ExceptionMessage() {
+  }
 }
