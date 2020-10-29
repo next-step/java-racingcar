@@ -73,7 +73,7 @@ class CalculatorTest {
                 }).withMessageMatching(Const.BAD_OPERATOR_ERROR_MSG);
         assertThatExceptionOfType(NumberFormatException.class)
                 .isThrownBy(() -> {
-                    calculator.calculate("a # b $ c");
+                    calculator.calculate("a + b - c");
                 });
     }
 }
