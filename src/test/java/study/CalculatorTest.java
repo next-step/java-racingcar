@@ -55,33 +55,31 @@ public class CalculatorTest {
             throw new IllegalArgumentException();
         }
 
-        String[] parsed = parse(input);
-        String lhs = parsed[LHS];
-        String operator = parsed[OPERATOR];
-        String rhs = parsed[RHS];
-
-        if (!rhs.contains(SPACE) && operator.equals("+")) {
-            return Long.parseLong(lhs) + Long.parseLong(rhs);
-        }
-
-        String remainInput = rhs;
-        rhs = remainInput.substring(0, remainInput.indexOf(SPACE));
-
         long result = 0;
-        if (operator.equals("+")) {
-            result = Long.parseLong(lhs) + Long.parseLong(rhs);
+        String lhs;
+        String operator;
+        String rhs;
+
+        while (true) {
+            String[] parsed = parse(input);
+            lhs = parsed[LHS];
+            operator = parsed[OPERATOR];
+            rhs = parsed[RHS];
+
+            if (!rhs.contains(SPACE) && operator.equals("+")) {
+                return Long.parseLong(lhs) + Long.parseLong(rhs);
+            }
+
+            String tmp = rhs;
+            rhs = tmp.substring(0, tmp.indexOf(SPACE));
+
+
+            if (operator.equals("+")) {
+                result = Long.parseLong(lhs) + Long.parseLong(rhs);
+            }
+
+            input = tmp.replaceFirst(rhs, String.valueOf(result));
         }
-
-        parsed = parse(remainInput);
-        lhs = String.valueOf(result);
-        operator = parsed[OPERATOR];
-        rhs = parsed[RHS];
-
-        if (operator.equals("+")) {
-            return Long.parseLong(lhs) + Long.parseLong(rhs);
-        }
-
-        throw new IllegalArgumentException();
     }
 
     private String[] parse(String input) {
