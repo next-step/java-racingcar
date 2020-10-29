@@ -60,6 +60,13 @@ public class CalculatorTest {
                 .withMessage("연산자 사이에는 빈 공간이 한칸 있어야 합니다.");
     }
 
+    @ParameterizedTest
+    @DisplayName("여러 자릿수에 다한 '-' 연산 테스트")
+    @CsvSource({"1 - 0,1", "1 - 1,0", "20 - 10,10", "123 - 32,91"})
+    void minusTest(String input, long expectResult) {
+        assertThat(calculate(input)).isEqualTo(expectResult);
+    }
+
     private long calculate(String input) {
         if (Objects.isNull(input) || input.isEmpty()) {
             throw new IllegalArgumentException();
