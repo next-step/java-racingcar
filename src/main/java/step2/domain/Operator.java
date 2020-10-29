@@ -20,13 +20,13 @@ public enum Operator {
         this.operator = operator;
         this.operation = operation;
     }
-    public static int operate(int x , int y , String operator){
+    public static int operate(OperatedNumber operatedNumber , String operator){
         return Arrays.stream(Operator.values())
                 .filter(value -> value.operator.equals(operator))
                 .findFirst()
                 .orElseThrow(NotOperatorException::new)
                 .operation
-                .apply(x , y);
+                .apply(operatedNumber.getOperateResult() , operatedNumber.getNextNumber());
     }
 
 }

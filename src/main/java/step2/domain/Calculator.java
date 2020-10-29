@@ -15,11 +15,13 @@ public class Calculator {
         for (int i = 1; i < loopSize; i+=2) {
             String operator = splits[i];
             int nextNumber = parseInt(splits[i+1]);
-            operateResult = Operator.operate(operateResult , nextNumber , operator);
+            operateResult = Operator.operate(getOperatedNumber(operateResult,nextNumber), operator);
         }
         return operateResult;
     }
-
+    private OperatedNumber getOperatedNumber(int operateResult , int nextNumber){
+        return new OperatedNumber(operateResult, nextNumber);
+    }
 
     private String[] splitBlank(String input) {
         return input.split(" ");
