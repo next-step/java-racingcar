@@ -38,16 +38,11 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest
-    @DisplayName("여러 자릿수에 다한 '+' 연산 테스트")
-    @CsvSource({"0 + 1,1", "1 + 1,2", "10 + 10,20", "123 + 32,155"})
+    @DisplayName("'+' 연산 테스트")
+    @CsvSource({"0 + 1,1", "1 + 1,2", "10 + 10,20", "123 + 32,155", // 여러 자릿수
+            "1 + 1,2", "1 + 1 + 1,3", "1 + 1 + 1 + 1,4", "2 + 3 + 5 + 7 + 11,28" // 여러 수
+    })
     void plusTest(String input, long expectResult) {
-        assertThat(calculate(input)).isEqualTo(expectResult);
-    }
-
-    @ParameterizedTest
-    @DisplayName("여러 수에 다한 '+' 연산 테스트")
-    @CsvSource({"1 + 1,2", "1 + 1 + 1,3", "1 + 1 + 1 + 1,4", "2 + 3 + 5 + 7 + 11,28"})
-    void multiEquations(String input, long expectResult) {
         assertThat(calculate(input)).isEqualTo(expectResult);
     }
 
@@ -61,18 +56,14 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest
-    @DisplayName("여러 자릿수에 다한 '-' 연산 테스트")
-    @CsvSource({"1 - 0,1", "1 - 1,0", "20 - 10,10", "123 - 32,91"})
+    @DisplayName("'-' 연산 테스트")
+    @CsvSource({"1 - 0,1", "1 - 1,0", "20 - 10,10", "123 - 32,91", // 여러 자릿수
+            "1 - 0,1", "3 - 1 - 1,1", "10 - 1 - 2 - 3,4" // 여러 수
+    })
     void minusTest(String input, long expectResult) {
         assertThat(calculate(input)).isEqualTo(expectResult);
     }
 
-    @ParameterizedTest
-    @DisplayName("여러 수에 다한 '-' 연산 테스트")
-    @CsvSource({"1 - 0,1", "3 - 1 - 1,1", "10 - 1 - 2 - 3,4"})
-    void multiMinusEquations(String input, long expectResult) {
-        assertThat(calculate(input)).isEqualTo(expectResult);
-    }
 
     private long calculate(String input) {
         if (Objects.isNull(input) || input.isEmpty()) {
