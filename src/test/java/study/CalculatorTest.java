@@ -106,6 +106,16 @@ public class CalculatorTest {
         public static final String SPACE = " ";
         public static final int OPERATOR_LENGTH = 1;
 
+        private String formula;
+
+        public Calculator(String formula) {
+            this.formula = formula;
+        }
+
+        public long calculate() {
+            return 0;
+        }
+
         public static long calculate(String input) {
             if (Objects.isNull(input) || input.isEmpty()) {
                 throw new IllegalArgumentException();
