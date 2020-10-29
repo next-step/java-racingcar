@@ -40,7 +40,7 @@ public class StringCalculatorTest {
 
     @Test
     @DisplayName("나누기 연산")
-    public void executeDividd() {
+    public void executeDivide() {
         Integer result = calculator.execute("2 / 1");
 
         assertThat(result).isEqualTo(2);
