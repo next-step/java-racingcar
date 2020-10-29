@@ -36,18 +36,6 @@ class Calculator {
     }
 
     static class SubFormula {
-        private final String lhs;
-        private final String rhs;
-        private final String operator;
-        private final String remain;
-
-        public SubFormula(String lhs, String operator, String rhs, String remain) {
-            this.lhs = lhs;
-            this.rhs = rhs;
-            this.operator = operator;
-            this.remain = remain;
-        }
-
         public static SubFormula create(String formula) {
             try {
                 String lhs = extractLeftHandSide(formula);
@@ -67,29 +55,16 @@ class Calculator {
                 throw new IllegalArgumentException("연산자 사이에는 빈 공간이 한칸 있어야 합니다.", e);
             }
         }
+        private final String lhs;
+        private final String rhs;
+        private final String operator;
+        private final String remain;
 
-        private static String extractLeftHandSide(String input) {
-            String result = input.substring(0, input.indexOf(SPACE));
-            if (isNotNumber(result) && !result.isEmpty()) {
-                throw new IllegalArgumentException("연산자 사이에는 빈 공간이 한칸 있어야 합니다.");
-            }
-            return result;
-        }
-
-        private static boolean isNotNumber(String input) {
-            return !Pattern.matches("\\d+", input);
-        }
-
-        private Long getLeftHandSide() {
-            return Long.valueOf(lhs);
-        }
-
-        private Long getRightHandSize() {
-            return Long.valueOf(rhs);
-        }
-
-        private boolean hasLeftHandSide() {
-            return !lhs.isEmpty();
+        public SubFormula(String lhs, String operator, String rhs, String remain) {
+            this.lhs = lhs;
+            this.rhs = rhs;
+            this.operator = operator;
+            this.remain = remain;
         }
 
         public long calculateWith(long defaultLhs) {
@@ -115,6 +90,30 @@ class Calculator {
             }
 
             return lhs / getRightHandSize();
+        }
+
+        private static String extractLeftHandSide(String input) {
+            String result = input.substring(0, input.indexOf(SPACE));
+            if (isNotNumber(result) && !result.isEmpty()) {
+                throw new IllegalArgumentException("연산자 사이에는 빈 공간이 한칸 있어야 합니다.");
+            }
+            return result;
+        }
+
+        private static boolean isNotNumber(String input) {
+            return !Pattern.matches("\\d+", input);
+        }
+
+        private Long getLeftHandSide() {
+            return Long.valueOf(lhs);
+        }
+
+        private Long getRightHandSize() {
+            return Long.valueOf(rhs);
+        }
+
+        private boolean hasLeftHandSide() {
+            return !lhs.isEmpty();
         }
 
     }
