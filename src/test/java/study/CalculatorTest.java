@@ -7,6 +7,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
@@ -29,6 +31,8 @@ public class CalculatorTest {
     private static final int LHS = 0;
     private static final int OPERATOR = 1;
     private static final int RHS = 2;
+
+    private static final int REMAIN = 3;
 
     @ParameterizedTest
     @DisplayName("null/empty string 입력시 예외가 발생한다.")
@@ -66,39 +70,26 @@ public class CalculatorTest {
             throw new IllegalArgumentException();
         }
 
-        long result = 0;
-        String lhs;
-        String operator;
-        String rhs;
+        List<String[]> parsingResult = new ArrayList<>();
 
-        while (true) {
+        do {
             String[] parsed = parse(input);
-            lhs = parsed[LHS];
-            operator = parsed[OPERATOR];
-            rhs = parsed[RHS];
+            parsingResult.add(new String[]{parsed[LHS], parsed[OPERATOR], parsed[RHS]});
+            input = parsed[REMAIN];
+        } while (!Objects.isNull(input));
 
-            if (isNumber(rhs) && operator.equals("+")) {
-                return Long.parseLong(lhs) + Long.parseLong(rhs);
+        long result = 0;
+        for (String[] parsed : parsingResult) {
+            long lhs = result;
+            if (!parsed[LHS].isEmpty()) {
+                lhs = Long.parseLong(parsed[LHS]);
             }
 
-            String tmp = rhs;
-
-            try {
-                rhs = tmp.substring(0, tmp.indexOf(SPACE));
-            } catch (StringIndexOutOfBoundsException e) {
-                throw new IllegalArgumentException("연산자 사이에는 빈 공간이 한칸 있어야 합니다.");
+            if (parsed[OPERATOR].equals("+")) {
+                result = lhs + Long.parseLong(parsed[RHS]);
             }
-
-            if (operator.equals("+")) {
-                result = Long.parseLong(lhs) + Long.parseLong(rhs);
-            }
-
-            input = tmp.replaceFirst(rhs, String.valueOf(result));
         }
-    }
-
-    private boolean isNumber(String rhs) {
-        return Pattern.matches("\\d+", rhs);
+        return result;
     }
 
     private String[] parse(String input) {
@@ -106,9 +97,21 @@ public class CalculatorTest {
             String lhs = input.substring(0, input.indexOf(SPACE));
             String operator = input.substring(lhs.length() + SPACE.length(), lhs.length() + SPACE.length() + OPERATOR_LENGTH);
             String rhs = input.substring(input.indexOf(operator) + OPERATOR_LENGTH + SPACE.length());
-            return new String[]{lhs, operator, rhs};
+            String remain = null;
+
+            String tmp = rhs;
+            if (!isNumber(rhs)) {
+                rhs = tmp.substring(0, tmp.indexOf(SPACE));
+                remain = tmp.substring(rhs.length());
+            }
+
+            return new String[]{lhs, operator, rhs, remain};
         } catch (StringIndexOutOfBoundsException e) {
             throw new IllegalArgumentException("연산자 사이에는 빈 공간이 한칸 있어야 합니다.");
         }
+    }
+
+    private boolean isNumber(String input) {
+        return Pattern.matches("\\d+", input);
     }
 }
