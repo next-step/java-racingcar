@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-import static org.assertj.core.api.Assertions.assertThatCode;
-
 /**
  * <pre>
  * * 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
@@ -17,25 +15,11 @@ import static org.assertj.core.api.Assertions.assertThatCode;
  * </pre>
  */
 public class CarRacingTest {
-    @Test
-    @DisplayName("자동차 경주 객체를 생성할 수 있다.")
-    void instantiation() {
-        assertThatCode(CarRacing::new).doesNotThrowAnyException();
-    }
-
-    @Test
-    @DisplayName("자동차 경주 객체는 경주정보 제공자를 입력받는다.")
-    void instantiationWithProvider() {
-        assertThatCode(() -> {
-            new CarRacing(new RacingInfoProvider() {
-            });
-        }).doesNotThrowAnyException();
-    }
 
     @Test
     @DisplayName("자동차 경주가 시작될 때 경주 정보가 없으면 예외를 발생시킨다")
     void errorWhenEmptyRacingInfo() {
-        CarRacing carRacing = new CarRacing(new StaticInfoProvider(0, 0));
+        CarRacing carRacing = createRacing(0, 0);
         assertThatExceptionOfType(IllegalStateException.class) //
                 .isThrownBy(carRacing::start);
     }
@@ -43,9 +27,13 @@ public class CarRacingTest {
     @Test
     @DisplayName("자동차 경주를 실행하면 예외가 발생하지 않는다")
     void startRacing() {
-        CarRacing carRacing = new CarRacing(new StaticInfoProvider(1, 1));
+        CarRacing carRacing = createRacing(1, 1);
 
         assertThatCode(carRacing::start).doesNotThrowAnyException();
+    }
+
+    private CarRacing createRacing(int cars, int steps) {
+        return new CarRacing(new StaticInfoProvider(cars, steps));
     }
 
     private static class CarRacing {
