@@ -1,6 +1,7 @@
 package study;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.BiFunction;
@@ -70,25 +71,12 @@ class Calculator {
         }
 
         public long calculateWith(long defaultLhs) {
-            long lhs = defaultLhs;
+            long leftHandSide = defaultLhs;
             if (hasLeftHandSide()) {
-                lhs = getLeftHandSide();
+                leftHandSide = getLeftHandSide();
             }
 
-            switch (operator) {
-                case "+":
-                    return Operator.plus.apply(lhs, getRightHandSize());
-                case "-":
-                    return Operator.minus.apply(lhs, getRightHandSize());
-                case "*":
-                    return Operator.multiply.apply(lhs, getRightHandSize());
-            }
-
-            if (!operator.equals("/")) {
-                throw new IllegalArgumentException("올바른 연산자가 아닙니다.");
-            }
-
-            return Operator.divide.apply(lhs, getRightHandSize());
+            return Operator.valueOfSign(operator).apply(leftHandSide, getRightHandSize());
         }
 
         private static String extractLeftHandSide(String input) {
@@ -127,12 +115,19 @@ class Calculator {
             return left / right;
         });
 
-        private final String operator;
+        private final String sign;
         private final BiFunction<Long, Long, Long> operationImpl;
 
-        Operator(String operator, BiFunction<Long, Long, Long> operationImpl) {
-            this.operator = operator;
+        Operator(String sign, BiFunction<Long, Long, Long> operationImpl) {
+            this.sign = sign;
             this.operationImpl = operationImpl;
+        }
+
+        public static Operator valueOfSign(String sign) {
+            return Arrays.stream(values()) //
+                    .filter(value -> value.sign.equals(sign)) //
+                    .findAny() //
+                    .orElseThrow(() -> new IllegalArgumentException("올바른 연산자가 아닙니다."));
         }
 
         public Long apply(Long left, Long right) {
