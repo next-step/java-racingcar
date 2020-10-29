@@ -1,5 +1,9 @@
 package study;
 
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
 /**
  * <pre>## stage2 요구사항
  *
@@ -10,5 +14,14 @@ package study;
  * * 예를 들어 2 + 3 * 4 / 2와 같은 문자열을 입력할 경우 2 + 3 * 4 / 2 실행 결과인 10을 출력해야 한다.</pre>
  */
 public class CalculatorTest {
+    @Test
+    @DisplayName("null 입력시 예외가 발생한다.")
+    void nullInput() {
+        Assertions.assertThatExceptionOfType(IllegalArgumentException.class) //
+                .isThrownBy(() -> calculate(null));
+    }
 
+    private long calculate(String input) {
+        throw new IllegalArgumentException();
+    }
 }
