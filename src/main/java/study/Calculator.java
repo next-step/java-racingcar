@@ -6,9 +6,6 @@ import java.util.Objects;
 import java.util.regex.Pattern;
 
 class Calculator {
-    public static final String SPACE = " ";
-    public static final int SIGN_LENGTH = 1;
-
     private String formula;
 
     public Calculator(String formula) {
@@ -36,6 +33,8 @@ class Calculator {
     }
 
     private static class SubFormula {
+        static final String SPACE = " ";
+        static final int SIGN_LENGTH = 1;
         public static SubFormula create(String formula) {
             try {
                 String leftHandSide = extractLeftHandSide(formula);
