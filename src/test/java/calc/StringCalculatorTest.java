@@ -37,13 +37,13 @@ public class StringCalculatorTest {
             START_WITH_PLUS_HAS_MANY_OPERATOR, HAS_LARGE_NUMBER, START_WITH_MINUS_HAS_LARGE_NUMBER,
             START_WITH_PLUS_HAS_LARGE_NUMBER, DIVIDE_ZERO}, delimiter = '#')
     @DisplayName("문자열 계산기 테스트")
-    public void stringCalculatorTest(final String input, final String expected) {
+    public void stringCalculatorTest(final String input, final int expected) {
 
         // when
         int result = StringCalculator.calculate(input);
 
         // then
-        assertThat(result).isEqualTo(Integer.parseInt(expected));
+        assertThat(result).isEqualTo(expected);
     }
 
     @ParameterizedTest
