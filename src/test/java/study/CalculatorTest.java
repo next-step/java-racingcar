@@ -54,7 +54,7 @@ public class CalculatorTest {
     @ParameterizedTest
     @DisplayName("연산자 사이에 빈공간이 없는 경우")
     @ValueSource(strings = {"1+1", "1 + 1+1", "1 + 1+1 + 1"})
-    void noSpaceBetweenLettersAndNumbers(String input) {
+    void noSpaceBetweenSignAndNumbers(String input) {
         Assertions.assertThatExceptionOfType(IllegalArgumentException.class) //
                 .isThrownBy(() -> calculate(input)) //
                 .withMessage("연산자 사이에는 빈 공간이 한칸 있어야 합니다.");
@@ -89,21 +89,30 @@ public class CalculatorTest {
 
     private Parsed parse(String input) {
         try {
-            String lhs = input.substring(0, input.indexOf(SPACE));
+            String lhs = extractPrefixNumbers(input);
             String operator = input.substring(lhs.length() + SPACE.length(), lhs.length() + SPACE.length() + OPERATOR_LENGTH);
             String rhs = input.substring(input.indexOf(operator) + OPERATOR_LENGTH + SPACE.length());
             String remain = null;
 
             String tmp = rhs;
             if (!isNumber(rhs)) {
-                rhs = tmp.substring(0, tmp.indexOf(SPACE));
+                rhs = extractPrefixNumbers(tmp);
                 remain = tmp.substring(rhs.length());
             }
 
+
             return new Parsed(lhs, operator, rhs, remain);
         } catch (StringIndexOutOfBoundsException e) {
+            throw new IllegalArgumentException("연산자 사이에는 빈 공간이 한칸 있어야 합니다.", e);
+        }
+    }
+
+    private String extractPrefixNumbers(String input) {
+        String result = input.substring(0, input.indexOf(SPACE));
+        if (!isNumber(result) && !result.isEmpty()) {
             throw new IllegalArgumentException("연산자 사이에는 빈 공간이 한칸 있어야 합니다.");
         }
+        return result;
     }
 
     private boolean isNumber(String input) {
